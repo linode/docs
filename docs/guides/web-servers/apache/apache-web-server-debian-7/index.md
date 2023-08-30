@@ -1,9 +1,6 @@
 ---
 slug: apache-web-server-debian-7
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Apache on your Debian 7 server, configure virtual hosting, and set up module and scripting support.'
 keywords: ["apache", "apache 2", "debian", "debian 7", "wheezy", "apache web server"]
 tags: ["web server","apache","debian"]
@@ -17,28 +14,29 @@ title: 'Apache Web Server on Debian 7 (Wheezy)'
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
- - '[Tuning Your Apache Sever](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server)'
+ - '[Tuning Your Apache Sever](/docs/guides/tuning-your-apache-server/)'
 relations:
     platform:
         key: install-apache-server
         keywords:
             - distribution: Debian 7
+authors: ["Linode"]
 ---
 
 ![Apache Web Server on Debian](Apache_Web_Server_on_Debian_7_Wheezy_smg.jpg)
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This tutorial explains how to install and configure the Apache web server on Debian 7 (Wheezy).
 
-Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP) stack, you may want to consider using our [LAMP guide for Debian 7](/docs/websites/lamp/lamp-server-on-debian-7-wheezy).
+Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP) stack, you may want to consider using our [LAMP guide for Debian 7](/docs/guides/lamp-server-on-debian-7-wheezy/).
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
--   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/getting-started#setting-the-hostname) for your server.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](/docs/products/platform/get-started/#setting-the-hostname) for your server.
 
     Issue the following commands to make sure your hostname is set properly:
 
@@ -99,7 +97,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you would like to enable Perl support, add the following lines to the `VirtualHost` entry, right above the closing `</VirtualHost>` tag:
 
 {{< file "> /etc/apache2/sites-available/example.com.conf" apache >}}

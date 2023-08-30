@@ -1,8 +1,11 @@
 ---
 title: Resources
+title_meta: "Resources for LKE (Linode Kubernetes Engine)"
 description: "Resources and other information related to Linode Kubernetes Engine (LKE) including videos, blog posts, community posts, customer stories, ebooks, and press releases."
 tab_group_main:
     weight: 40
+published: 2020-06-02
+modified: 2023-02-09
 ---
 
 ## Videos
@@ -41,7 +44,7 @@ tab_group_main:
 
 - [How Can I Deploy the Kubernetes-Metrics Server on LKE?](https://www.linode.com/community/questions/19756/how-can-i-deploy-the-kubernetes-metrics-server-on-lke)
 
-- [What’s the best way to upgrade the type of Linode’s in my LKE Cluster?](https://www.linode.com/community/questions/20168/whats-the-best-way-to-upgrade-the-type-of-linodes-in-my-lke-cluster)
+- [What’s the best way to upgrade the type of Compute Instances in my LKE Cluster?](https://www.linode.com/community/questions/20168/whats-the-best-way-to-upgrade-the-type-of-linodes-in-my-lke-cluster)
 
 - [LKE LoadBalancer or Ingress for an internal network only?](https://www.linode.com/community/questions/20160/lke-loadbalancer-or-ingress-for-an-internal-network-only)
 

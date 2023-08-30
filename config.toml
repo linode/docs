@@ -4,11 +4,11 @@ baseURL = "https://www.linode.com/docs/"
 languageCode = "en-us"
 title = "Linode Guides & Tutorials"
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+# disableKinds = ["taxonomy", "taxonomyTerm"]
 themeDir = ".."
 rssLimit = 30
 summaryLength = 15
-timeout = "2m"
+timeout = "5m"
 
 disqusShortname="linode-1"
 
@@ -18,22 +18,37 @@ enableGitInfo = true
 # The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
 home = ["HTML", "JSON", "RSS"]
 
+[taxonomies]
+bundle = "bundles"
+tags = "tags"
+authors = "authors"
+
 [frontmatter]
 lastmod = [":git", "lastmod", "date", "publishDate"]
 publishDate = ["published", "publishDate", "date"]
 
 [params]
+page_title_suffix = "Linode Docs"
 description = "Guides and tutorials on the Linode platform, Linux basics, and software installation and configuration."
 # Date and time formatting, see https://gohugo.io/functions/format/
 time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"
 time_format_default = "Monday, January 2, 2006"
-promo_code = "DOCS32SAFC"
+
+# Promo code
+promo_code = "docs032323"
 promo_code_amount = 100
-page_title_suffix = "Linode"
+promo_code_disclaimer = "This credit will be applied to any valid services used during your first 60 days."
+
+# Feedback survey
+feedback_survey_url = "https://delighted.com/t/KGQxrivu"
+feedback_survey_display = true
+feedback_survey_heading = "Your Feedback Is Important"
+feedback_survey_button_text = "Provide Feedback"
+feedback_survey_text = "Let us know if this guide was helpful to you."
 
 [params.search_config]
 app_id = "KGUN8FAIPF"
-api_key = "d4847002cd30392fe0fbd00a1da933ed"
+api_key = "d364d8e601808b96178d0776ed43b2c9"
 meta_index = "linode-documentation-sections"
 explorer_max_leafnodes = 50
 hits_per_page = 4
@@ -143,3 +158,13 @@ anchor = "smart"
 
 [permalinks]
   guides = "/guides/:slug/"
+
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    osEnv = ['(?i)^(.*)$']
+
+  [security.funcs]
+    getenv = ['^HUGO_']
+

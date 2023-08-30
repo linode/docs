@@ -1,0 +1,1 @@
+<h{{ .level }} id="{{ .id | safeURL }}" {{ with .class}}class="{{ .}}"{{ end }}>{{ .text | safeHTML }}<a href="#{{ .id | safeURL }}"{{ with .ariaLabel}} aria-label="{{ .}}"{{ end}}  class="group"><svg class="ml-2 inline-block w-5 h-5 text-brand group-hover:text-green-400"><use href="#icon--hashtag"></use></svg></a></h{{ .level }}>

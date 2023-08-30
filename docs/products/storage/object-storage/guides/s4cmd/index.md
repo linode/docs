@@ -1,46 +1,40 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using s4cmd with Object Storage"
 description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage."
+authors: ["Linode"]
 ---
 
-The [s4cmd](https://github.com/bloomreach/s4cmd) software is a command-line tool that can access S3-compatible storage services, such as Linode's Object Storage. It uses the [S3 client](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html) in Amazon's boto3 library. Compared to the popular s3cmd tool, s4cmd is typically much faster but it has less options and is less configurable. For many use cases, the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) is recommended.
+The [s4cmd](https://github.com/bloomreach/s4cmd) software is a command-line tool that can access S3-compatible storage services, such as Linode's Object Storage. It uses the [S3 client](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html) in Amazon's boto3 library. Compared to the popular s3cmd tool, s4cmd is typically much faster but it has less options and is less configurable. For many use cases, the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/) is recommended.
 
 ## Installing s4cmd
 
-The following commands will install s4cmd on various common operating systems. Additional methods of installing s4cmd can be found within the s4cmd Readme file under [Installation and Setup](https://github.com/bloomreach/s4cmd#installation-and-setup).
+To install S3cmd on both Mac and Linux systems, Python’s package manager [pip](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/) can be used.
 
-### Mac
+    sudo pip install s4cmd
 
-To install s4cmd on a Mac, python's package manager (`pip` or `pip3`) can be used.
+Some Linux distributions are also able to install s4cmd from their own package managers, but those versions may not be as up to date. See [Download S3cmd](https://s3tools.org/download) for more information.
 
-    pip3 install s4cmd
-
-### Debian and Ubuntu
-
-The APT package manager can be used to install s4cmd on Debian or Ubuntu Linux distributions.
-
-    sudo apt-get install s4cmd
+Additional methods of installing s4cmd can be found within the s4cmd Readme file under [Installation and Setup](https://github.com/bloomreach/s4cmd#installation-and-setup).
 
 ## Configuring Credentials
 
 To access Object Storage buckets and objects, s4cmd needs to know the Access Key and Secret Key to use. By default, s4cmd looks for these credentials in the `~/.s3cfg` file, which is the configuration file that s3cmd uses. If you do not have s3cmd installed and configured, create this file and add the following contents.
 
-{{< file "~/.s3cfg" >}}
+```file {title="~/.s3cfg"}
 [default]
 access_key = YOUR_ACCESS_KEY
 secret_key = YOUR_SECRET_KEY
-{{< /file >}}
+```
 
-Replace `YOUR_ACCESS_KEY` and `YOUR_SECRET_KEY` with the access key and secret key created on your Linode account. If you haven't yet created these credentials, follow the [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/) guide.
+Replace `YOUR_ACCESS_KEY` and `YOUR_SECRET_KEY` with the access key and secret key created on your Linode account. If you haven't yet created these credentials, follow the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
 
 Additional methods of configuring your credentials can be found on the s4cmd Readme file under [Installation and Setup](https://github.com/bloomreach/s4cmd#installation-and-setup).
 
 ## Specifying the Endpoint URL
 
-Originally, s4cmd was used for Amazon S3. To allow this tool to be used by other S3-compatible solutions, the `--endpoint-url` command option was added. When running any s4cmd command, you will need to specify the full endpoint url of the Linode Object Storage Cluster that your bucket resides in. For a full list of Clusters and their associated S3 endpoints, see the [Object Storage Overview](/docs/products/storage/object-storage/) page. As an example, the following command will list all buckets in the Newark data center:
+Originally, s4cmd was used for Amazon S3. To allow this tool to be used by other S3-compatible solutions, the `--endpoint-url` command option was added. When running any s4cmd command, you will need to specify the full endpoint url of the Linode Object Storage Cluster that your bucket resides in. For a full list of Clusters and their associated S3 endpoints, see the[Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) guide).
+
+As an example, the following command will list all buckets in the Newark data center:
 
     s4cmd ls --endpoint-url https://us-east-1.linodeobjects.com
 
@@ -83,6 +77,8 @@ There is currently no defined command for deleting a bucket through s4cmd.
 **Example:** Upload the file "file.txt" to the bucket called "example-bucket", located in the Newark data center:
 
     s4cmd put file.txt s3://example-bucket/ --endpoint-url https://us-east-1.linodeobjects.com
+
+{{< content "object-storage-character-warning-shortguide" >}}
 
 ### Download an Object or Directory
 

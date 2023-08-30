@@ -1,9 +1,6 @@
 ---
 slug: test-salt-locally-with-kitchen-salt
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Test Salt states locally with Kitchen and kitchen-salt.'
+description: 'This guide provides you with instructions for testing Salt states locally with Kitchen and kitchen-salt, utilities that let you test without a salt master or minions.'
 keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-15
@@ -13,13 +10,14 @@ modified_by:
 image: TestSaltStatesLocallywithKitchenSalt.png
 title: "Test Salt States Locally with KitchenSalt"
 external_resources:
-- '[KitchenSalt Documentation](https://kitchen.saltstack.com/docs/file/README.rdoc)'
+- '[KitchenSalt Documentation](https://kitchen.saltproject.io/docs/file/README.rdoc)'
 - '[Kitchen Documentation](https://docs.chef.io/kitchen.html)'
-- '[Salt Formulas](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)'
+- '[Salt Formulas](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[Writing a Test](https://kitchen.ci/docs/getting-started/writing-test/)'
 - '[Sample Pytest tests](https://github.com/gtmanfred/wordpress-formula/tree/master/tests/integration)'
 aliases: ['/applications/configuration-management/test-salt-locally-with-kitchen-salt/','/applications/configuration-management/salt/test-salt-locally-with-kitchen-salt/']
 tags: ["automation","salt"]
+authors: ["Linode"]
 ---
 
 KitchenSalt allows you to use Test Kitchen to test your Salt configurations locally without a Salt master or minions. In this guide you will install KitchenSalt and use Docker to test a Salt state. This guide was created using a system running Ubuntu 18.04.
@@ -58,7 +56,7 @@ Kitchen runs on Ruby. The following commands will install the Ruby version contr
 
 ## Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ## Install KitchenSalt
 

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-a-lamp-stack-on-ubuntu-20-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on Ubuntu 20.04 Long Term Support (LTS).'
 keywords: ["install lamp ubuntu 20.04", "apache install", "mysql install", "php", "ubuntu 20.04"]
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-20-04/','/web-servers/lamp/install-lamp-stack-on-ubuntu-20-04/']
@@ -12,9 +9,8 @@ modified: 2021-06-23
 modified_by:
   name: Linode
 published: 2021-06-25
-title: 'Installing a LAMP Stack on Ubuntu 20.04'
-h1_title: 'How to Install a LAMP Stack on Ubuntu 20.04'
-enable_h1: true
+title: 'How to Install a LAMP Stack on Ubuntu 20.04'
+title_meta: 'Installing a LAMP Stack on Ubuntu 20.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -25,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Linode"]
 ---
 
 ## What is a LAMP Stack?
@@ -41,13 +38,13 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+{{< note respectIndent=false >}}
+If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.
+{{< /note >}}
 
 ## Installation
 
@@ -98,7 +95,7 @@ KeepAliveTimeout 5
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` setting controls how long the server waits (measured in seconds) for new requests from already connected clients. Setting this to 5 will avoid wasting RAM.
 {{< /note >}}
 
@@ -163,7 +160,7 @@ You can set up virtual hosts several ways, and the following steps outline the r
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The file example above has all comment sections removed for brevity. Keep or remove the commented areas as you see fit.
 
 The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
@@ -173,7 +170,7 @@ The `ServerAlias` directive allows you to include multiple domain names or subdo
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that you do not put a space after the comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
 {{< /note >}}
 
@@ -189,7 +186,7 @@ Make sure that you do not put a space after the comma between `public_html` and 
 
         sudo a2ensite example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To disable your website, run `a2dissite example.com`.
 {{< /note >}}
 
@@ -201,7 +198,7 @@ To disable your website, run `a2dissite example.com`.
 
         sudo systemctl reload apache2
 
-Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/platform/manager/dns-manager/) for your domain to point to your Linode's IP address.
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/products/networking/dns-manager/) for your domain to point to your Linode's IP address.
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 
@@ -217,7 +214,8 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
     {{< highlight sql >}}
 CREATE DATABASE webdata;
-GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
+CREATE USER 'webuser' IDENTIFIED BY 'password';
+GRANT ALL ON webdata.* TO 'webuser';
 {{< /highlight >}}
 
 1.  Exit the SQL shell:
@@ -226,16 +224,9 @@ GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
 quit
 {{< /highlight >}}
 
-1.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+1.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
         sudo mysql_secure_installation
-
-    Answer **Y** at the following prompts:
-
-    -  Remove anonymous users?
-    -  Disallow root login remotely?
-    -  Remove test database and access to it?
-    -  Reload privilege tables now?
 
 ### PHP
 
@@ -247,7 +238,7 @@ max_input_time = 30
 error_log = /var/log/php/error.log
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
 {{< /note >}}
 
@@ -260,7 +251,7 @@ The beginning of the `php.ini` file contains examples commented out with a semic
 
         sudo systemctl restart apache2
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc`
 {{< /note >}}
 

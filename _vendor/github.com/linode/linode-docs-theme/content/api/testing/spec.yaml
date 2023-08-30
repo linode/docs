@@ -1,0 +1,56 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Linode API
+  description: |
+    Test API schema
+servers:
+- url: https://api.linode.com/v4
+tags:
+- name: Account
+  description: Test tag
+paths:
+  /account:
+    post:
+      tags:
+      - Account
+      summary: Test Endpoint
+      description: This is only a test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                skip_ipv6_rdns:
+                  type: boolean
+                  default: false
+                test:
+                  type: array
+                  description: Example array. Items should follow.
+                  items:
+                    $ref: '#/components/schemas/ExampleOne'
+      responses:
+        '200':
+          description: Success!
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    ExampleOne:
+      allOf:
+      - $ref: '#/components/schemas/ExampleTwo'
+      - type: object
+        description: Example 1 Object
+        properties:
+          test1:
+            type: string
+            description: test 1
+    ExampleTwo:
+      description: Example 2 Object
+      properties:
+        test2:
+          type: string
+          description: test 2
+    

@@ -1,9 +1,6 @@
 ---
 slug: manage-projects-with-redmine-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: ["redmine", "redmine ubuntu 9.10", "project management software", "redmine postgresql", "redmine linux"]
 tags: ["ubuntu", "ruby", "nginx", "postgresql"]
@@ -19,17 +16,18 @@ relations:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
 
 Redmine is a popular open source project management system. Written in Ruby on Rails, it gives teams the ability to track project objectives, integrates well with various source control systems, and includes customizable reporting functionality. This guide will help you install it on your Ubuntu 9.10 (Karmic) Linode. We'll be using nginx with Phusion Passenger as the web server daemon for the site. If you already have the Apache web server installed, guidance will be provided for proxying incoming Redmine requests to nginx running on a different port.
 
-We assume you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
+We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -135,7 +133,7 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
 
 {{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
 <VirtualHost 12.34.56.78:80>
@@ -223,41 +221,41 @@ Issue the following commands to install `exim4` and configure it for outgoing In
 
 Select "internet site" as the type of mail configuration to use:
 
-[![Exim general configuration on Ubuntu 9.10.](288-exim4-config-1-general.png)](288-exim4-config-1-general.png)
+![Exim general configuration on Ubuntu 9.10.](288-exim4-config-1-general.png)
 
 Specify your systems's fully qualified domain name as the system mail name:
 
-[![Exim system mail name configuration on Ubuntu 9.10.](289-exim4-config-2-system-mail-name.png)](289-exim4-config-2-system-mail-name.png)
+![Exim system mail name configuration on Ubuntu 9.10.](289-exim4-config-2-system-mail-name.png)
 
 Enter "127.0.0.1" when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, we only want to listen on localhost.
 
-[![Exim IP address configuration on Ubuntu 9.10.](290-exim4-config-3-ip-address.png)](290-exim4-config-3-ip-address.png)
+![Exim IP address configuration on Ubuntu 9.10.](290-exim4-config-3-ip-address.png)
 
 Enter "localhost.localdomain" and your fully qualified domain name when asked for the list of recipient domains.
 
-[![Exim destination domains configuration on Ubuntu 9.10.](291-exim4-config-4-destinations.png)](291-exim4-config-4-destinations.png)
+![Exim destination domains configuration on Ubuntu 9.10.](291-exim4-config-4-destinations.png)
 
 Relay domains and machines should be left blank.
 
-[![Exim relay domains configuration on Ubuntu 9.10.](292-exim4-config-5-relay-domains.png)](292-exim4-config-5-relay-domains.png)
+![Exim relay domains configuration on Ubuntu 9.10.](292-exim4-config-5-relay-domains.png)
 
-[![Exim relay machines configuration on Ubuntu 9.10.](293-exim4-config-6-relay-machines.png)](293-exim4-config-6-relay-machines.png)
+![Exim relay machines configuration on Ubuntu 9.10.](293-exim4-config-6-relay-machines.png)
 
 Specify "No" when asked about DNS queries.
 
-[![Exim DNS queries configuration on Ubuntu 9.10.](294-exim4-config-7-dns.png)](294-exim4-config-7-dns.png)
+![Exim DNS queries configuration on Ubuntu 9.10.](294-exim4-config-7-dns.png)
 
 When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.
 
-[![Exim maildirs or mbox configuration on Ubuntu 9.10.](295-exim4-config-8-maildirs.png)](295-exim4-config-8-maildirs.png)
+![Exim maildirs or mbox configuration on Ubuntu 9.10.](295-exim4-config-8-maildirs.png)
 
 Specify "No" when asked whether to split the configuration into smaller files.
 
-[![Exim config file splitting configuration on Ubuntu 9.10.](296-exim4-config-9-split.png)](296-exim4-config-9-split.png)
+![Exim config file splitting configuration on Ubuntu 9.10.](296-exim4-config-9-split.png)
 
 Enter "root" and an email address at your domain for the postmaster mail query.
 
-[![Exim postmaster configuration on Ubuntu 9.10.](297-exim4-config-10-postmaster.png)](297-exim4-config-10-postmaster.png)
+![Exim postmaster configuration on Ubuntu 9.10.](297-exim4-config-10-postmaster.png)
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 

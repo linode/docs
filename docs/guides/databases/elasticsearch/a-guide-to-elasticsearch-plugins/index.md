@@ -1,13 +1,6 @@
 ---
 slug: a-guide-to-elasticsearch-plugins
-author:
-  name: Linode
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
-description: 'This guide shows how to install a variety of useful Elasticsearch plugins.'
-og_description: 'Elasticsearch supports a wide variety of plugins which enable more powerful search features. This guide will explore how to manage, install, and use these plugins to better leverage Elasticsearch for different use cases.'
+description: "Elasticsearch supports a wide variety of plugins which enable more powerful search features. Learn how to manage, install, and use them."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
  - '[Elasticsearch reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)'
@@ -18,10 +11,12 @@ published: 2018-01-09
 modified: 2019-01-31
 modified_by:
   name: Linode
-title: 'How to Install and Use Elasticsearch Plugins'
+title: "Installing and Using Elasticsearch Plugins"
+title_meta: "How to Install and Use Elasticsearch Plugins"
 dedicated_cpu_link: true
 tags: ["ubuntu","debian","database","java"]
 aliases: ['/databases/elasticsearch/a-guide-to-elasticsearch-plugins/']
+authors: ["Tyler Langlois"]
 ---
 
 ![banner_image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg)
@@ -38,18 +33,14 @@ This guide will show to how install the following Elasticsearch plugins and inte
   * **ingest-user-agent**: parses the `User-Agent` header of HTTP requests to provide identifying information about the client that sent each request.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Installation
 
@@ -108,7 +99,7 @@ Before installing any plugins, create a test index.
           }
         }
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These settings are suitable for testing, but additional shards and replicas should be used in a production environment.
 {{< /note >}}
 
@@ -162,7 +153,7 @@ In order to use the attachment plugin, a _pipeline_ must be used to process base
 
     The `doc-parser` pipeline can now be specified when indexing documents to extract data from the `encoded_doc` field.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, the attachment processor will create a new field called `attachment` with the parsed content of the target field. See the [attachment processor documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/using-ingest-attachment.html) for additional information.
 {{< /note >}}
 

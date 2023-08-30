@@ -1,26 +1,21 @@
 ---
 slug: beginners-guide-to-go
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'An introduction to the Go language. Learn how to execute your first Go program, how to declare variables, and how to work with command line arguments from Go.'
+description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
 keywords: ['golang','go','command line arguments']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-11
 modified_by:
   name: Linode
 image: GettingStartedwithGo.png
-title: "A Beginner's Guide to Go"
-h1_title: "Getting Started with Go"
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
+title: "Getting Started with Go"
+title_meta: "A Beginner's Guide to Go"
 external_resources:
 - '[The Go Programming Language Specification](https://golang.org/ref/spec)'
 - '[Go](https://golang.org)'
 - '[Effective Go](https://golang.org/doc/effective_go.html)'
 - '[A Tour of Go](https://tour.golang.org/welcome/1)'
 aliases: ['/development/go/beginners-guide-to-go/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction
@@ -54,7 +49,7 @@ Although Go is not perfect, it has many advantages, including the following:
 
 {{< content "before-you-begin-install-go-shortguide" >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
 
@@ -82,19 +77,19 @@ func main() {
 
 * Executable programs should have a function named `main()` without any function parameters. You cannot have multiple `main()` functions in the files of a single project. Function definitions begin with the `func` keyword.
 
-    {{< note >}}
-For more information on how functions in Go are formatted and used, review our [Go Functions, Loops, and Errors](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
+    {{< note respectIndent=false >}}
+For more information on how functions in Go are formatted and used, review our [Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
 {{< /note >}}
 
 * Go packages might include `import` statements for importing other Go packages. However, Go demands that you use some functionality from each one of the packages that you import. There is a way to bypass this rule, however, it is considered a bad practice to do this.
 
     The `helloworld.go` file above imports the `fmt` package and uses the `fmt.Println()` function from that package.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, it should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
 
 For example, if the print function used in the above example was instead named `println()`, it would not be accessible to this program.
-{{</ note >}}
+{{< /note >}}
 
 * Go statements do not *need* to end with a semicolon, as the Go compiler will automatically insert semicolons where they are expected. You are free to use semicolons if you wish. For example, if you want to put two separate statements on a single line, a semicolon is needed between them.
 
@@ -128,7 +123,7 @@ Hello World!
 Hello World!
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `go run` command is usually used while experimenting and developing new Go projects. However, if you need to transfer an executable file to another system with the same architecture, you should use `go build`.
     {{< /note >}}
 
@@ -227,7 +222,7 @@ The output from this program is:
 0
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The zero value for a string variable is an empty string.
 {{< /note >}}
 
@@ -330,7 +325,7 @@ Max: 3
 
 ## Next Steps
 
-The next guide in our Go language series is our [Go Functions, Loops, and Errors](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/) tutorial. More advanced guides are listed in the [Go section index](/docs/development/go/).
+The next guide in our Go language series is our [Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial. More advanced guides are listed in the [Go section index](/docs/development/go/).
 
 ### The Standard Go Library
 

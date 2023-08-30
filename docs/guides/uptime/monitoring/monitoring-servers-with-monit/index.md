@@ -1,9 +1,6 @@
 ---
 slug: monitoring-servers-with-monit
-author:
-    name: Linode Community
-    email: docs@linode.com
-description: 'Improve uptime with Monit Server Monitoring. Monit will watch you system around the clock, and respond to out-of-the-norm events by following your instructions.'
+description: 'This guide shows how you can improve server uptime by using Monit Server Monitoring, an app that monitors your system 24x7 and recovers processes when there is a problem.'
 keywords: ["installing Monit for server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-10-15
@@ -11,14 +8,12 @@ modified: 2015-10-15
 modified_by:
     name: Linode
 title: 'Installing Monit for Server Monitoring'
-contributor:
-    name: Bill Bardon
-    link:
 external_resources:
  - '[Monit Documentation](https://mmonit.com/monit/documentation/monit.html)'
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/monitoring-servers-with-monit/']
+authors: ["Bill Bardon"]
 ---
 
 
@@ -37,8 +32,8 @@ With Monit you get:
 * Web interface for status monitoring.
 * Availability from main package repositories.
 
-{{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing Monit
@@ -72,7 +67,7 @@ Debian and Ubuntu automatically start and enable Monit after installation.
     sudo apt-get update && sudo apt-get upgrade
     sudo apt-get install monit
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Debian 10 does not include Monit in the standard repositories. In order to install Monit on Debian 10, you need to enable the `buster-backports` repository.
 
 To enable the Monit repository, include the following lines in the `/etc/apt/sources.list` file or create a new file ending in `.list` inside the `/etc/apt/sources.list.d/` directory:
@@ -124,7 +119,7 @@ Other processes may take some time to complete their own startup. Including the 
 
 ### Alerting
 
-Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](/docs/tools-reference/linux-system-administration-basics#send-email-from-your-server) for help with configuring this.
+Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](/docs/guides/linux-system-administration-basics/#send-email-from-your-server) for help with configuring this.
 
 Specify what server you will send mail through on this line:
 
@@ -163,8 +158,8 @@ You can optionally restrict web interface access to just your IP address.
     set httpd port 2812
         allow 10.0.0.1 (your ip address)
 
-{{< note >}}
-If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/security/securing-your-server#configure-a-firewall).
+{{< note respectIndent=false >}}
+If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
 {{< /note >}}
 
 ## Configure Monit's Checking Actions

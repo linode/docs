@@ -1,10 +1,6 @@
 ---
 slug: introduction-to-pyspark
-author:
-  name: Sam Foo
-  email: docs@linode.com
-description: 'Learn how to install and use PySpark on your Linode for distributed computing. In this guide, we will use an example of counting words in a corpus to learn the PySpark API.'
-og_description: 'Learn how to install and use PySpark on your Linode for distributed computing. In this guide, we will use an example of counting words in a corpus to learn the PySpark API.'
+description: "In this guide, we'll use an example of counting words in a corpus to learn the PySpark API."
 keywords: ["big data", "spark", "nltk", "mapreduce", "pyspark", "hadoop"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-31
@@ -22,6 +18,7 @@ languages: ["python"]
 dedicated_cpu_link: true
 tags: ["python"]
 aliases: ['/development/python/introduction-to-pyspark/']
+authors: ["Sam Foo"]
 ---
 
 ![Introduction to PySpark](PySpark.jpg)
@@ -104,7 +101,7 @@ The data used in this guide is a compilation of text files of every Presidential
 
     This should return a list of text files of the Inaugural Address from George Washington to Barack Obama.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The files are located in `/home/linode/nltk_data/corpora/inaugural/` where `linode` is the username.
 {{< /note >}}
 
@@ -143,7 +140,7 @@ Since PySpark is run from the shell, SparkContext is already bound to the variab
 
     Since `map` is a transformation, the function is not applied until an action takes place.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If a step is unclear, try `.collect()` to see the intermediary outputs.
 {{< /note >}}
 
@@ -151,7 +148,7 @@ If a step is unclear, try `.collect()` to see the intermediary outputs.
 
         tokenize = removed_punct.flatMap(lambda sent: sent.split(" "))
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Similar to Python's `map` function, PySpark's `map` returns an RDD with an equal number of elements (2873, in this example). `flatMap` allows transformation of an RDD to another size which is needed when tokenizing words.
 {{< /note >}}
 

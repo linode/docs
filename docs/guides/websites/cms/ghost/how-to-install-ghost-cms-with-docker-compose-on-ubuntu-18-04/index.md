@@ -1,10 +1,6 @@
 ---
 slug: how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 18.04 and using Docker Compose'
-og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
+description: "Learn how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 18.04."
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 18.04", "docker", "docker compose"]
 tags: ["nginx","ubuntu","docker","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,17 +9,19 @@ modified: 2018-08-20
 modified_by:
   name: Linode
 published: 2018-08-20
-title: How to Install Ghost CMS with Docker Compose on Ubuntu 18.04
+title: Installing Ghost CMS with Docker Compose on Ubuntu 18.04
+title_meta: How to Install Ghost CMS with Docker on Ubuntu 18.04
 external_resources:
-- '[Ghost Setup Documentation](https://docs.ghost.org/v1.0.0)'
-- '[Ghost Theme Documentation](https://themes.ghost.org/v1.0.0)'
-- '[Ghost API Documentation](https://api.ghost.org/v1.0.0)'
-- '[Ghost on Docker Hub](https://docs.docker.com/samples/library/ghost/)'
+- '[Ghost Setup Documentation](https://ghost.org/docs/)'
+- '[Ghost Theme Documentation](https://ghost.org/docs/themes/)'
+- '[Ghost API Documentation](https://ghost.org/docs/content-api/)'
+- '[Ghost on Docker Hub](https://hub.docker.com/_/ghost/)'
 relations:
     platform:
         key: how-to-install-ghost-cms
         keywords:
            - distribution: Docker
+authors: ["Linode"]
 ---
 
 <!-- ![How to Install Ghost CMS on Ubuntu 16.04](ghost-blog-ubuntu-16-04-title-graphic.png "How to Install Ghost CMS on Ubuntu 16.04") -->
@@ -36,19 +34,15 @@ In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is
 
 ## Before you Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running Ubuntu 18.04, including setting the hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace each instance of example.com in this guide with your Ghost site’s domain name.
 {{< /note >}}
 
-1.  Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Ghost Linode.
-
-1.  Ensure your system is up to date:
-
-        sudo apt update && sudo apt upgrade
+1.  Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Ghost Linode.
 
 1.  Your Ghost site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Use [Certbot](https://certbot.eff.org/) to request and download a free certificate from [Let's Encrypt](https://letsencrypt.org/):
 
@@ -60,17 +54,17 @@ Replace each instance of example.com in this guide with your Ghost site’s doma
 
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
-    {{< disclosure-note "Why not use Certbot's Docker container?" >}}
-When your certificate is periodically renewed, your web server needs to be reloaded in order to use the new certificate. This is usually accomplished by passing a web server reload command through Certbot's [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook).
+    {{< note type="secondary" title="Why not use Certbot's Docker container?" isCollapsible=true >}}
+    When your certificate is periodically renewed, your web server needs to be reloaded in order to use the new certificate. This is usually accomplished by passing a web server reload command through Certbot's [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook).
 
-In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. A workaround for this limitation would be needed to enable this architecture.
-{{< /disclosure-note >}}
+    In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. A workaround for this limitation would be needed to enable this architecture.
+    {{< /note >}}
 
-1.  Install Docker and Docker Compose before proceeding. If you haven't used Docker before, review the [Introduction to Docker](/docs/applications/containers/introduction-to-docker/), [When and Why to Use Docker](/docs/applications/containers/when-and-why-to-use-docker/), and [How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/) guides for some context on how these technologies work.
+1.  Install Docker and Docker Compose before proceeding. If you haven't used Docker before, review the [Introduction to Docker](/docs/guides/introduction-to-docker/), [When and Why to Use Docker](/docs/guides/when-and-why-to-use-docker/), and [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/) guides for some context on how these technologies work.
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

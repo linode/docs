@@ -1,33 +1,37 @@
 ---
 slug: install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy
-author:
-    name: Sam Foo
-    email: docs@linode.com
 description: 'This guide shows you how to install and access a Jupyter notebook on a Linode remotely and securely through an Apache reverse proxy.'
 keywords: ["Apache2", "Jupyter notebook", "SSL", "websocket"]
 tags: ["ssl", "proxy", "apache"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2017-08-22
-modified: 2019-02-01
+modified: 2022-12-23
 modified_by:
-    name: Sam Foo
-title: 'Install a Jupyter Notebook Server on a Linode Behind an Apache Reverse Proxy'
+    name: Linode
+title: 'Installing a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
+title_meta: 'How to Install a Jupyter Notebook Server on a Reverse Proxy'
 external_resources:
  - '[Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/)'
  - '[Anaconda Documentation](https://docs.continuum.io/)'
  - '[Certbot](https://certbot.eff.org/)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/']
+authors: ["Sam Foo"]
 ---
 
 Jupyter Notebook is an interactive, enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure on a Linode a public Jupyter Notebook server that will facilitate remote access to your computation needs using Apache as a reverse proxy.
+
+{{< note respectIndent=false >}}
+Jupyter Notebook is being replaced by [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html), the next-generation solution that includes Notebooks. Before continuing, consider if JupyterLab better suits your needs.
+{{< /note >}}
 
 ## Before You Begin
 
 Because this guide is written for Linodes running Ubuntu 16.04, you should:
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and log into your server via SSH.
-2.  Have [Apache 2.4.18 or higher](https://help.ubuntu.com/lts/serverguide/httpd.html) installed.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install Anaconda Package Manager
 
@@ -49,11 +53,11 @@ Anaconda is a package manager with built-in support for virtual environments. It
 
 ## Create a Self-Signed Certificate
 
-The official documentation recommends generating a self-signed SSL certificate to prevent sending unencrypted passwords in the Notebook from the browser. This is especially important because Jupyter Notebooks can run bash scripts. If you have a domain name, consider using [Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/) rather than a self-signed certificate.
+The official documentation recommends generating a self-signed SSL certificate to prevent sending unencrypted passwords in the Notebook from the browser. This is especially important because Jupyter Notebooks can run bash scripts. If you have a domain name, consider using [Certbot](/docs/guides/secure-http-traffic-certbot/) rather than a self-signed certificate.
 
 1.  Create a self-signed certificate valid for 365 days:
 
-        openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
 
     This command will create a `mykey.key` and `mycert.pem`.
 
@@ -76,7 +80,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
 4.  Uncomment the following lines in the configuration file:
 
-    {{< file "/.jupyter/jupyter-notebook-config.py" py >}}
+    {{< file "~/.jupyter/jupyter_notebook_config.py" py >}}
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.base_url = '/jupyter'
 c.NotebookApp.certfile = '/absolute/path/to/mycert.pem'
@@ -151,7 +155,7 @@ c.NotebookApp.trust_xheaders = True
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `/jupyter` url path can have any name as long as it matches the base url path defined in the Jupyter notebook configuration file.
 {{< /note >}}
 
