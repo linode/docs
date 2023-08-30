@@ -1,10 +1,6 @@
 ---
 slug: apache-tomcat-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
 keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat debian"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,8 +10,8 @@ modified_by:
   name: Linode
 published: 2020-03-25
 image: ApacheTomcat_Deb10.png
-title: 'How to Install Apache Tomcat on Debian 10'
-h1_title: 'Installing Apache Tomcat on Debian 10'
+title: 'Installing Apache Tomcat on Debian 10'
+title_meta: 'How to Install Apache Tomcat on Debian 10'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -28,15 +24,16 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Debian 10
+authors: ["Linode"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
 
 ## Before You Begin
 
-1.  Ensure that your system is up to date and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
+1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
 
-2.  Make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+2.  Make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
         hostname
         hostname -f
@@ -47,8 +44,8 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
         apt-get update && apt-get upgrade
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache Tomcat
@@ -57,7 +54,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
         sudo apt-get install tomcat9
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 OpenJDK will be installed as a dependency when you install the `tomcat9` package. The package `openjdk-11-jre-headless` is included with the `default-jre-headless` metapackage in Ubuntu.
 {{< /note >}}
 
@@ -89,9 +86,9 @@ If you installed the `tomcat9-admin` web application above, you can configure it
 
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
-{{</ note >}}
+{{< /note >}}
 
 Restart the Tomcat server, which will allow these changes to take effect:
 

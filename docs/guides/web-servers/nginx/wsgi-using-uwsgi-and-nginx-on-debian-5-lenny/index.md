@@ -1,10 +1,7 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
+description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Debian 5 "Lenny".'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ The uWSGI server provides a non-FastCGI method for deploying Python applications
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -63,7 +61,7 @@ Send the following sequence of commands to set the required file permissions:
 
 ## Compile nginx with uWSGI Support
 
-Issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from Debian packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/docs/web-servers/nginx/installation/debian-5-lenny) for compiling nginx from source:
+Issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from Debian packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/docs/guides/websites-with-nginx-on-debian-5-lenny/) for compiling nginx from source:
 
     apt-get install libpcre3-dev build-essential libssl-dev
     cd /opt/
@@ -158,7 +156,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 
 ## Additional Application Servers
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/) for more information. For a basic example configuration, see the following example:
 
 {{< file "nginx configuration" nginx >}}
 upstream uwsgicluster {
@@ -195,6 +193,6 @@ In this example, we create the `uwsgicluster` upstream, which has five component
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny)
+- [Installing Nginx on Debian 5 (Lenny)](/docs/guides/websites-with-nginx-on-debian-5-lenny/)
 - [Deploy a LEMP Server on Debian 5 (Lenny)](/docs/lemp-guides/debian-5-lenny/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+- [Configure nginx Proxy Servers](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)

@@ -1,9 +1,6 @@
 ---
 slug: configure-spf-and-dkim-in-postfix-on-debian-8
-author:
-    name: Linode Community
-    email: contribute@linode.com
-description: 'Configure SPF and DKIM in Postfix on Debian 8.'
+description: 'This guide provides you with step-by-step instructions for configuring your domains SPF and DKIM DNS records in Postfix mail server on Debian 8.'
 keywords: ["email", "postfix", "spf", "dkim", "debian 8", "opendkim", "dns", "dmarc"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,11 +9,7 @@ modified_by:
     name: Linode
 published: 2016-02-03
 title: 'Configure SPF and DKIM With Postfix on Debian 8'
-contributor:
-    name: Todd Knarr
-    link: https://github.com/tknarr
 external_resources:
- - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
  - '[DMARC](http://dmarc.org/)'
  - '[OpenDKIM](http://www.opendkim.org/)'
@@ -28,17 +21,18 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/']
+authors: ["Todd Knarr"]
 ---
 
-{{< note >}}
-We have created a [new version of this guide](/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9) to run on Debian 9.
+{{< note respectIndent=false >}}
+We have created a [new version of this guide](/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-9/) to run on Debian 9.
 {{< /note >}}
 
 ![SPF and DKIM with Postfix](Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
 {{< content "email-warning-shortguide" >}}
 
-[SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
+SPF (Sender Policy Framework) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
 [DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail has been tampered with in transit.
 
@@ -46,15 +40,15 @@ We have created a [new version of this guide](/docs/email/postfix/configure-spf-
 
 The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool, and identifying the exact path to the Unix socket file.
 
-{{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](/docs/email/postfix/) for assistance.
 
 Publishing an SPF DNS record without having the SPF policy agent configured within Postfix is safe; however, publishing DKIM DNS records without having OpenDKIM working correctly within Postfix can result in your email being discarded by the recipient's email server.
-{{< /caution >}}
+{{< /note >}}
 
 ## Install DKIM, SPF and Postfix
 
@@ -70,7 +64,7 @@ Publishing an SPF DNS record without having the SPF policy agent configured with
 
 ### Add SPF records to DNS
 
-The value in an SPF DNS record will look something like the following examples. The full syntax is at [the SPF record syntax page](http://www.openspf.org/SPF_Record_Syntax).
+The value in an SPF DNS record will look something like the following examples.
 
 **Example 1**  Allow mail from all hosts listed in the MX records for the domain:
 
@@ -100,7 +94,7 @@ If you're using Linode's DNS Manager, go to the domain zone page for the selecte
 
 If your DNS provider allows it (DNS Manager doesn't), you should also add a record of type SPF, filling it in the same way as you did the TXT record.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The values for the DNS records above - and for the rest of this guide - are done in the style that Linode's DNS Manager needs them to be in. If you're using another provider, that respective system may require the values in a different style. For example freedns.afraid.org requires the values to be written in the style found in BIND zonefiles. Thus, the above SPF record's value would need to be wrapped in double-quotes like this: `"v=spf1 mx -all"`. You'll need to consult your DNS provider's documentation for the exact style required.
 {{< /note >}}
 
@@ -248,7 +242,7 @@ example     example.com:YYYYMM:/etc/opendkim/keys/example.private
     - The second section is a selector used when looking up key records in DNS.
     - The third section names the file containing the signing key for the domain.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The flow for DKIM lookup starts with the sender's address. The signing table is scanned until an entry whose pattern (first item) matches the address is found. Then, the second item's value is used to locate the entry in the key table whose key information will be used. For incoming mail the domain and selector are then used to find the public key TXT record in DNS and that public key is used to validate the signature. For outgoing mail the private key is read from the named file and used to generate the signature on the message.
 {{< /note >}}
 

@@ -1,0 +1,84 @@
+{{ define "head-meta-addons" }}
+  <meta name="turbo-cache-control" content="no-preview" />
+{{ end }}
+
+{{ define "main" }}
+  <div class="flex flex-wrap-reverse items-center">
+    <h1
+      class="font-semibold leading-tight tracking-tight text-4xl text-titlecolor mr-10">
+      {{ partial "funcs/get-page-title-h1.html" . }}
+    </h1>
+
+    <div class="px-0 flex-initial pb-2" id="release-list-selector">
+      {{ $currentText := printf "%s (%d)" .LinkTitle (len .RegularPagesRecursive) }}
+      {{ $root := .FirstSection }}
+      {{ $items := slice }}
+      {{ $sections := ($root.Sections | append $root).ByWeight }}
+      {{ range $sections }}
+        {{ if ne . $ }}
+          {{ $items = $items | append (dict "text" (printf "%s (%d)" .LinkTitle (len .RegularPagesRecursive)) "url" .RelPermalink ) }}
+        {{ end }}
+      {{ end }}
+
+      {{ template "releasenotes/dropdown.html" (dict "text" $currentText "items" $items) }}
+    </div>
+  </div>
+  <div class="content prose prose-sm md:prose-lg max-w-content mt-8">
+    {{ .Content }}
+    <div class="mt-8">
+      {{ $jsonPath := printf "%sindex.json" .RelPermalink }}
+      {{ partial "releasenotes/list-pages-paginated.html" (dict "pages" .RegularPagesRecursive "key"  $jsonPath ) }}
+    </div>
+  </div>
+{{ end }}
+
+{{ define "releasenotes/dropdown.html" }}
+  <div
+    class="relative inline-block text-left w-64"
+    x-data="{ open: false }"
+    @click.away="open = false">
+    <div>
+      <button
+        type="button"
+        class="inline-flex w-full justify-center rounded-md border border-gray-200 bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+        id="menu-button"
+        aria-expanded="true"
+        aria-haspopup="true"
+        @click="open = !open">
+        {{ .text }}
+        <div class="grow-0" x-show="open">
+          <svg class="fill-current -mr-1 ml-2 h-4 w-5">
+            <use href="#icon--arrow-up"></use>
+          </svg>
+        </div>
+        <div class="grow-0" x-show="!open">
+          <svg class="fill-current -mr-1 ml-2 h-4 w-5">
+            <use href="#icon--arrow-down"></use>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <div
+      class="absolute right-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-md focus:outline-none"
+      role="menu"
+      aria-orientation="vertical"
+      aria-labelledby="menu-button"
+      tabindex="-1"
+      x-show="open"
+      x-transition>
+      <div class="py-1" role="none">
+        {{ range .items }}
+          <a
+            href="{{ .url }}"
+            class="text-titlecolor hover:text-gray-400 flex justify-center px-4 py-2 text-sm"
+            role="menuitem"
+            id="menu-item-0"
+            >{{ .text }}</a
+          >
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+{{ end }}

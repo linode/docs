@@ -1,8 +1,5 @@
 ---
 slug: manage-distributed-version-control-with-mercurial
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use the Mercurial version control system to manage source code in distributed environments.'
 keywords: ["version control", "hg", "mercurial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +13,7 @@ external_resources:
  - '[HG Init, a Guide by Joel Spolsky](http://hginit.com/)'
 audiences: ["beginner"]
 tags: ["version control system"]
+authors: ["Linode"]
 ---
 
 [Mercurial](https://www.mercurial-scm.org/) is one of the leading distributed version control systems which allows software developers and teams of collaborators to work on a common code base without the need to rely on a centralized server or constant network connection. Mercurial runs on multiple platforms and can be used to manage code projects on many different operating systems.
@@ -23,7 +21,7 @@ tags: ["version control system"]
 ## Before You Begin
 
 - You will need root access to your Linode, or a user account with `sudo` privileges.
-- Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 - Update your system.
 
 ## Installing Mercurial
@@ -39,7 +37,7 @@ tags: ["version control system"]
 
 ## Local Mercurial Workflows
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All Mercurial commands in the shell environment begin with `hg` in reference to the abbreviation for the element Mercury.
 {{< /note >}}
 

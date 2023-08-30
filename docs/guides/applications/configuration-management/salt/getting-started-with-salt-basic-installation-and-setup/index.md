@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-salt-basic-installation-and-setup
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.'
 keywords: ["salt", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,36 +11,37 @@ image: GettingStartedwithSalt.png
 published: 2015-09-22
 title: Getting Started with Salt - Basic Installation and Setup
 tags: ["automation","salt"]
+authors: ["Linode"]
 ---
 
-[Salt](https://saltstack.com/) is a Python-based configuration management platform designed to control a number of slave servers (called Minions in Salt terminology) from a single master server. This guide walks you through configuring a Salt Master and Minion, and is relevant to any supported Linux distribution.
+[Salt](https://saltproject.io/) is a Python-based configuration management platform designed to control a number of slave servers (called Minions in Salt terminology) from a single master server. This guide walks you through configuring a Salt Master and Minion, and is relevant to any supported Linux distribution.
 
 
 ## Before You Begin
 
 -  You will need at least two Linodes: One will function as the Salt Master and the other(s) as Salt Minions.
 
--  Set each Linode's [hostname](/docs/getting-started/#setting-the-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
+-  Set each Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
 
--  We recommend that you configure [private IP addresses](/docs/networking/remote-access/#adding-private-ip-addresses) for each system if your Linodes are located in the same data center.
+-  We recommend that you configure [private IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each system if your Linodes are located in the same data center.
 
 
 ## Install Using Salt Bootstrap
 
-[Salt Bootstrap](https://repo.saltstack.com/#bootstrap) is a configuration script which automatically detects the operating system it's running on, sets the correct repositories, and installs Salt. The install script is intended to be run on the Salt master and all minion machines.
+[Salt Bootstrap](https://repo.saltproject.io/#bootstrap) is a configuration script which automatically detects the operating system it's running on, sets the correct repositories, and installs Salt. The install script is intended to be run on the Salt master and all minion machines.
 
 **Salt Master**
 
-    curl -L https://bootstrap.saltstack.com -o install_salt.sh
+    curl -L https://bootstrap.saltproject.io -o install_salt.sh
     sudo sh install_salt.sh -P -M -N
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `-N` flag indicates not to install `salt-minion`, since this system is the Salt master.
 {{< /note >}}
 
 **Salt Minions**
 
-    curl -L https://bootstrap.saltstack.com -o install_salt.sh
+    curl -L https://bootstrap.saltproject.io -o install_salt.sh
     sudo sh install_salt.sh -P
 
 
@@ -64,7 +62,7 @@ interface: 203.0.113.0
 
 **Salt Minions**
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This step must be performed on *each* Salt minion.
 {{< /note >}}
 
@@ -121,7 +119,7 @@ master_finger: '4b:2a:81:79...'
 
         sudo salt-key -A
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To accept an individual minion, specify it by hostname or IP address:
 
     sudo salt-key -a hostname
@@ -131,7 +129,7 @@ To accept an individual minion, specify it by hostname or IP address:
 
         sudo salt-run manage.up
 
-For more information about Salt keys, see the *[salt-key](https://docs.saltstack.com/en/latest/ref/configuration/index.html)* man page.
+For more information about Salt keys, see the *[salt-key](https://docs.saltproject.io/en/latest/ref/configuration/index.html)* man page.
 
 ## Test Master-Minion Connection
 
@@ -151,7 +149,7 @@ minion2:
 
 ## Package Management Overview
 
-Packages are installed or removed from Minions using the *[pkg state module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.pkg.html)*. As long as you're running a Linux distribution supported by SaltStack, the Salt module controls the distribution's package manager, be it `apt`, `yum`, etc. Packages can be targeted to individual Minions by specifying the minion's hostname or IP address, or to all Minions by using `*`.
+Packages are installed or removed from Minions using the *[pkg state module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html)*. As long as you're running a Linux distribution supported by SaltStack, the Salt module controls the distribution's package manager, be it `apt`, `yum`, etc. Packages can be targeted to individual Minions by specifying the minion's hostname or IP address, or to all Minions by using `*`.
 
 Install packages using the same package name used in the system repositories of the Salt minion. For example, `apache` is the Apache httpd server package in Debian and Ubuntu, while `httpd` is the package name in RHEL-based systems. If your Salt Minions are a version of Debian or Ubuntu, you would install or remove Apache with the examples below.
 
@@ -167,7 +165,7 @@ List all packages installed on `minion1`:
 
     sudo salt 'minion1' pkg.list_pkgs
 
-Services are controlled using the *[service module](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.service.html)*.
+Services are controlled using the *[service module](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.service.html)*.
 
 Restart Apache on all Minions:
 
@@ -180,6 +178,6 @@ View status of the `mariadb` service on `minion1`:
 
 ## Next Steps
 
-Salt is a complex ecosystem which requires study and practice to thoroughly grasp. The [Salt documentation](https://docs.saltstack.com/en/latest/) has many examples, tutorials, and reference pages which will help.
+Salt is a complex ecosystem which requires study and practice to thoroughly grasp. The [Salt documentation](https://docs.saltproject.io/en/latest/) has many examples, tutorials, and reference pages which will help.
 
-Moving forward, you should start by familiarizing yourself with *[Execution Modules](https://docs.saltstack.com/en/latest/ref/modules/all/index.html#all-salt-modules)* and *[Salt States](https://docs.saltstack.com/en/latest/ref/states/index.html)*, and determine how they can be applied to your setup.
+Moving forward, you should start by familiarizing yourself with *[Execution Modules](https://docs.saltproject.io/en/latest/ref/modules/all/index.html#all-salt-modules)* and *[Salt States](https://docs.saltproject.io/en/latest/ref/states/index.html)*, and determine how they can be applied to your setup.

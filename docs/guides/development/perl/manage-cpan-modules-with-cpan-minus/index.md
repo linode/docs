@@ -1,9 +1,6 @@
 ---
 slug: manage-cpan-modules-with-cpan-minus
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use cpanminus to easily install and manage Perl modules.'
+description: 'This guide shows how you can use cpanimus to easily install and manage Perl Modules with CPAN - the Comprehensive Perl Archive Network, a source for the latest Perl Modules.'
 og_description: "This guide shows how to use cpanminus to easily install and manage Perl modules."
 keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,13 +16,14 @@ external_resources:
 audiences: ["beginner"]
 languages: ["perl"]
 tags: ["perl"]
+authors: ["Linode"]
 ---
 
 ![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)
 
 CPAN, the Comprehensive Perl Archive Network, is the primary source for publishing and fetching the latest modules and libraries for the Perl programming language. The default method for installing Perl modules, using the **CPAN Shell**, provides users with a great deal of power and flexibility, but this comes at the cost of a complex configuration and an inelegant default setup.
 
-The `cpanm` client attempts to make the power of CPAN accessible to all users, particularly those who aren't Perl developers, but have experience with the CPAN shell. This document outlines the procedures for installing cpanminus and demonstrates a number of basic use cases. If you're new to the world of Linux systems administration, you may want to review our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/) before completing this guide.
+The `cpanm` client attempts to make the power of CPAN accessible to all users, particularly those who aren't Perl developers, but have experience with the CPAN shell. This document outlines the procedures for installing cpanminus and demonstrates a number of basic use cases. If you're new to the world of Linux systems administration, you may want to review our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/) and [administration basics guide](/docs/guides/linux-system-administration-basics/) before completing this guide.
 
 ## Install Dependencies
 
@@ -77,7 +75,7 @@ You can also specify the url of a Perl module and CPAN will fetch the module fro
 
     cpanm --sudo https://cpan.metacpan.org/authors/id/O/OL/OLIVER/App-Netdisco-2.036011.tar.gz
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to run `cpanm Net::SSLeay` first in order to request a url with `https`.
 {{< /note >}}
 

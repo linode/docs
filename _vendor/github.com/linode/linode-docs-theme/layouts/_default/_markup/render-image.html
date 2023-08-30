@@ -1,10 +1,24 @@
+{{ $destination := .Destination | strings.TrimPrefix "./" }}
 {{- $img := .Page.Resources.GetMatch .Destination -}}
+{{ $width := "" }}
+{{ $height := "" }}
+{{- if $img -}}
+  {{ $width = $img.Width }}
+  {{ $height = $img.Height }}
+  {{- if le $img.Width 694  }}
+  {{/* Leave smaller images as-is. */}}
+  {{ $destination  = $img.RelPermalink }}
+  {{ $img = "" }}
+  {{ end }}
+{{- end -}}
 {{- with $img -}}
-  {{ if not ( $.Page.Scratch.Get (printf "%s-is-used" $img.RelPermalink))}}
+  {{ if not ( $.Page.Scratch.Get (printf "%s-is-used" $img.RelPermalink)) }}
     {{/* We could resize/process the images here if needed. */}}
     {{/* The elements from Markdown are: ![.Text](.Destination ".Title") */}}
-    {{ $width2x := 1388}}
-    {{ $width1x := 694}}
+    {{ $imgFull := $img }}
+    {{ $widthFull := 1600 }}
+    {{ $width2x := 1388 }}
+    {{ $width1x := 694 }}
     {{ $title := $.Title }}
     {{ $alt := $.PlainText }}
     {{ if not $title }}
@@ -16,15 +30,28 @@
     {{ if not $alt }}
       {{ $alt = $title }}
     {{ end }}
-    {{ $imgTag := partial "components/image-srcset.html" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x "lazy" true "alt" $alt "title" $title "class" "w-full" )}}
+    {{ if gt (len $imgFull.Content) 100000 }}
+      {{/* Also scale the "full sized" version that the user gets when clicking on the image. */}}
+      {{ $imgFormatOptions := "%dx jpg #FAFAFC q71" }}
+      {{ if lt $imgFull.Width $widthFull }}
+        {{/* Avoid upscaling, but we still want to compress the image. */}}
+        {{ $widthFull = $imgFull.Width }}
+      {{ end }}
+      {{ $imgFull = $imgFull.Resize (printf $imgFormatOptions $widthFull) }}
+    {{ end }}
     {{ if gt $img.Width $width1x }}
-      {{ partial "components/image-modal.html" (dict "imgTag" $imgTag "img" $img ) }}
+      {{ $scaled := (partial "funcs/scale-image" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x ) ) }}
+      {{ partial "components/image-modal.html" (dict "scaled"  $scaled "img" $imgFull "alt" $alt "title" $title "class" "w-full" ) }}
     {{ else }}
       <figure>
-        {{ $imgTag }}
+        {{ partial "components/image-srcset.html" (dict "dot" $ "img" $imgFull "width1x" $width1x "width2x" $width2x "loading" "eager" "alt" $alt "title" $title "class" "w-full" ) }}
       </figure>
     {{ end }}
   {{ end }}
 {{- else -}}
-  <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" loading="lazy"/>
+  {{ if and  (not (strings.HasPrefix $destination "http"))  (not (strings.HasPrefix $destination "/docs"))}}
+  {{/* Assume these are stored in /static. */}}
+  {{ $destination =  ($destination | relURL) }}
+  {{ end }}
+  <img src="{{ $destination | safeURL }}" alt="{{ $.Text }}" width="{{ $width }}" height="{{ $height }}">
 {{- end -}}

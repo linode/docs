@@ -1,0 +1,54 @@
+{{ define "main" }}
+  <div class="">
+    {{ partial "sections/content/title-byline.html" . }}
+    <div x-ignore class="content prose prose-sm md:prose-lg max-w-content my-8">
+      {{ .Content }}
+      {{ partial "sections/content/more.html" . }}
+    </div>
+
+    {{ partial "sections/content/alternative-guides.html" (dict "page" . "partial" "sections/content/alternative-guides-parent-list.html") }}
+
+
+    <div>
+      <p class="pt-2 md:pt-6 text-basicgray">
+        This page was originally published on
+        <time
+          datetime="{{ .PublishDate.Format site.Params.time_format_iso8601 }}">
+          {{ .PublishDate.Format site.Params.time_format_default }}.
+        </time>
+      </p>
+    </div>
+  </div>
+{{ end }}
+
+{{ define "partials/sections/content/alternative-guides-parent-list.html" }}
+  <h2>{{ .label }}</h2>
+  <div class="mt-6 flex flex-col">
+    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+        <div class="overflow-hidden shadow ring-1 ring-black/5 md:rounded-md">
+          <table class="min-w-full divide-y divide-gray-300">
+            <tbody class="">
+              {{ range $i, $e := .values }}
+                {{ $trClass := cond (modBool (add $i 1) 2) "bg-gray-200" "" }}
+                <tr class="{{ $trClass }}">
+                  <td
+                    class="whitespace-nowrap py-4 pl-4 pr-3 text-base font-semibold sm:pl-6 text-right">
+                    {{ $e.value }}
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-4 text-base">
+                    <a
+                      class="text-brand hover:text-green-400"
+                      href="{{ $e.page.RelPermalink }}">
+                      {{ $e.page.LinkTitle }}</a
+                    >
+                  </td>
+                </tr>
+              {{ end }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

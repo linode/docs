@@ -6,13 +6,19 @@
 {{ end }}
 {{ $srcSet := "" }}
 {{ $src := $.img.RelPermalink }}
-{{ $imgFormatOptions := "%dx jpg #FAFAFC q71" }}
-{{/* Many of the guide images are on the small side and we want to avoid upscaling. */}}
-{{ $width2x := cond (gt $.img.Width $.width2x) $.img.Width $.width2x }}
-{{ $resized1x := $.img.Resize (printf $imgFormatOptions $.width1x) }}
-{{ $resized2x := $.img.Resize (printf $imgFormatOptions $width2x) }}
+{{ $scaled := (partial "funcs/scale-image" $ ) }}
+{{ $loading := $.loading | default "eager" }}
 <picture>
   {{/* Note: The Google Page Speed viewport is 360x640, but make it simple for now. */}}
-  <source srcset="{{ $resized2x.RelPermalink }}" media="(min-width: 640px)" />
-  <img  width="{{ $resized1x.Width }}" height="{{ $resized1x.Height }}" src="{{ $resized1x.RelPermalink }}" {{ if $.lazy }} loading="lazy" {{ end }} alt="{{ $.alt }}" title="{{ $.title }}" {{ with $.class }}class="{{ . }}" {{ end }}/>
+  <source
+    srcset="{{ $scaled.resized2x.RelPermalink }}"
+    media="(min-width: 640px)" />
+  <img
+    width="{{ $scaled.resized1x.Width }}"
+    height="{{ $scaled.resized1x.Height }}"
+    src="{{ $scaled.resized1x.RelPermalink }}"
+    loading="{{ $loading }}"
+    alt="{{ $.alt }}"
+    title="{{ $.title }}"
+    {{ with $.class }}class="{{ . }}"{{ end }} />
 </picture>

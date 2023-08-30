@@ -1,8 +1,5 @@
 ---
 slug: lsof
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'An introduction to lsof.'
 keywords: ["UNIX", "lsof", "TCP/IP", "network", "utility"]
 tags: ["networking","linux"]
@@ -12,13 +9,11 @@ modified: 2020-12-03
 modified_by:
   name: Linode
 title: 'How to List Open Files with lsof'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[lsof on Wikipedia](https://en.wikipedia.org/wiki/Lsof)'
   - '[lsof Manual Page on die.net](https://linux.die.net/man/8/lsof)'
 aliases: ['/networking/diagnostics/lsof/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction
@@ -35,7 +30,7 @@ There are two main drawbacks of `lsof`. First, it can only display information a
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Running `lsof` without root privileges only returns the results available to the current user. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -57,7 +52,7 @@ The `lsof(8)` binary supports a large number of command line options, including 
 | `-p list` | The `-p` option allows you to select the files for the processes whose process IDs are in the `list`. The `-p` option supports the `^` character for excluding the matches from the output. |
 | `-g list` | The `-g` option allows you to select the files for the processes whose optional process group IDs are in the `list`. The `-g` option supports the `^` character for excluding the matches from the output. |
 | `-s` | The `-s` option allows you to select the network protocols and states that interest you. The `-s` option supports the `^` character for excluding the matches from the output. The correct form is `PROCOTCOL:STATE`. Possible protocols are `UDP` and `TCP`. Some possible TCP states are: `CLOSED`, `SYN-SENT`, `SYN-RECEIVED`, `ESTABLISHED`, `CLOSE-WAIT`, `LAST-ACK`, `FIN-WAIT-1`, `FIN-WAIT-2`, `CLOSING`, and `TIME-WAIT`. Possible UDP states are `Unbound` and `Idle`. |
-| `+d s` | The `+d` option option tells `lsof` to search for all open instances of directory `s` and the files and directories it contains at its top level. |
+| `+d s` | The `+d` option tells `lsof` to search for all open instances of directory `s` and the files and directories it contains at its top level. |
 | `+D directory` | The `+D` option tells `lsof` to search for all open instances of directory `directory` and all the files and directories it contains to its complete depth. |
 | `-d list` | The `-d` option specifies the `list` of file descriptors to include or exclude from the output. `-d 1,^2` means include file descriptor `1` and exclude file descriptor `2`. |
 | `-i4` | This option is used for displaying IPv4 data only. |
@@ -72,11 +67,11 @@ The `lsof(8)` binary supports a large number of command line options, including 
 | `-n` | The `-n` option prevents network numbers from being converted to host names. |
 | `-F CHARACTER` | The `-F` command instructs `lsof` to produce output that is suitable as input for other programs. For a complete explanation, consult the `lsof` manual entry. |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 By default, the output of `lsof` includes the output of each one of its command line options, like a big logical expression with multiple OR logical operators between all the command line options. However, this default behavior can change with the use of the `-a` option.
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For the full list of command line options supported by `lsof` and a more detailed explanation of the presented command line options, you should consult its manual page:
 
     man lsof
@@ -98,12 +93,12 @@ avahi-dae 669   avahi   12u      IPv4  20732    0t0      UDP    *:mdns
 avahi-dae 669   avahi   13u      IPv6  20733    0t0      UDP    *:mdns
 avahi-dae 669   avahi   14u      IPv4  20734    0t0      UDP    *:54087
 avahi-dae 669   avahi   15u      IPv6  20735    0t0      UDP    *:48582
-rsyslogd  675   root    6u       IPv4  20973    0t0      UDP    li10-121.members.linode.com:syslog
+rsyslogd  675   root    6u       IPv4  20973    0t0      UDP    17-5-7-8.ip.linodeusercontent.com:syslog
 dhclient  797   root    6u       IPv4  21828    0t0      UDP    *:bootpc
 ntpd      848   ntp     16u      IPv6  22807    0t0      UDP    *:ntp
 ntpd      848   ntp     17u      IPv4  22810    0t0      UDP    *:ntp
 ntpd      848   ntp     18u      IPv4  22814    0t0      UDP    localhost:ntp
-ntpd      848   ntp     19u      IPv4  22816    0t0      UDP    li10-121.members.linode.com:ntp
+ntpd      848   ntp     19u      IPv4  22816    0t0      UDP    17-5-7-8.ip.linodeusercontent.com:ntp
 ntpd      848   ntp     20u      IPv6  22818    0t0      UDP    localhost:ntp
 ntpd      848   ntp     24u      IPv6  24916    0t0      UDP    [2a01:7e00::f03c:91ff:fe69:1381]:ntp
 ntpd      848   ntp     25u      IPv6  24918    0t0      UDP    [fe80::f03c:91ff:fe69:1381]:ntp
@@ -203,7 +198,7 @@ apache2    27829     www-data    4u    IPv6    8626153    0t0              TCP  
 apache2    27829     www-data    6u    IPv6    8626157    0t0              TCP      *:443 (LISTEN)
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You are allowed to place the `-a` option wherever you like as `lsof` still detects the relevant options.
 {{< /note >}}
 
@@ -267,7 +262,7 @@ f3
 PTCP
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For the full list of options supported by `-F`, you should visit the manual page of `lsof`.
 {{< /note >}}
 
@@ -285,8 +280,8 @@ sshd         812      root      3u     IPv4    23674     0t0       TCP   *:ssh (
 sshd         812      root      4u     IPv6    23686     0t0       TCP   *:ssh (LISTEN)
 mysqld       1003     mysql     17u    IPv4    24217     0t0       TCP   localhost:mysql (LISTEN)
 master       1245     root      13u    IPv4    24480     0t0       TCP   *:smtp (LISTEN)
-sshd         22352    root      3u     IPv4    8613370   0t0       TCP   li10-121.members.linode.com:ssh->ppp-2-8-23-19.home.otenet.gr:60032 (ESTABLISHED)
-sshd         22361    mtsouk    3u     IPv4    8613370   0t0       TCP   li10-121.members.linode.com:ssh->ppp-2-8-23-19.home.otenet.gr:60032 (ESTABLISHED)
+sshd         22352    root      3u     IPv4    8613370   0t0       TCP   17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-8-23-19.home.otenet.gr:60032 (ESTABLISHED)
+sshd         22361    mtsouk    3u     IPv4    8613370   0t0       TCP   17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-8-23-19.home.otenet.gr:60032 (ESTABLISHED)
 apache2      24565    root      4u     IPv6    8626153   0t0       TCP   *:http (LISTEN)
 apache2      24565    root      6u     IPv6    8626157   0t0       TCP   *:https (LISTEN)
 apache2      24567    www-data  4u     IPv6    8626153   0t0       TCP   *:http (LISTEN)
@@ -305,7 +300,7 @@ apache2      24571    www-data  6u     IPv6    8626157   0t0       TCP   *:https
 
 #### Internet Connections
 
-If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/quick-answers/linux/how-to-use-grep/) and `awk`, you can list all active network connections:
+If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/guides/how-to-use-grep/) and `awk`, you can list all active network connections:
 
     sudo lsof -i -n -P | grep ESTABLISHED | awk '{print $1, $9}' | sort -u
 
@@ -313,7 +308,7 @@ If you process the output of `lsof` with some traditional UNIX command line tool
 sshd 109.74.193.253:22->2.86.23.29:60032
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `lsof -i -n -P` command can be also written as `lsof -i -nP` or alternatively as `lsof -nPi` – writing it as `lsof -inP` would generate a syntax error because `lsof` thinks that `np` is a parameter to `-i`.
 {{< /note >}}
 
@@ -324,8 +319,8 @@ The following command finds all established SSH connections to the local machine
     sudo lsof | grep sshd | grep ESTABLISHED
 
 {{< output >}}
-253.members.linode.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
-sshd    22361    mtsouk    3u    IPv4    8613370    0t0    TCP li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
+253.17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
+sshd    22361    mtsouk    3u    IPv4    8613370    0t0    TCP 17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
 {{< /output >}}
 
 The following command produces the same output as the previous command, but does so more quickly because the `-i TCP` option limits the amount of information `lsof` prints. That means `grep` has less data
@@ -347,8 +342,8 @@ The following command shows all network connections that listen to port number `
 COMMAND    PID      USER      FD    TYPE    DEVICE     SIZE/OFF    NODE    NAME
 sshd       812      root      3u    IPv4    23674      0t0         TCP     *:ssh (LISTEN)
 sshd       812      root      4u    IPv6    23686      0t0         TCP     *:ssh (LISTEN)
-sshd       22352    root      3u    IPv4    8613370    0t0         TCP     li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
-sshd       22361    mtsouk    3u    IPv4    8613370    0t0         TCP     li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
+sshd       22352    root      3u    IPv4    8613370    0t0         TCP     17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
+sshd       22361    mtsouk    3u    IPv4    8613370    0t0         TCP     17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
 {{< /output >}}
 
 ### Determine Which Program Listens to a TCP port
@@ -392,7 +387,7 @@ COMMAND    PID    USER    FD     TYPE    DEVICE    SIZE/OFF    NODE    NAME
 ntpd       848    ntp     16u    IPv6    22807     0t0         UDP     *:ntp
 ntpd       848    ntp     17u    IPv4    22810     0t0         UDP     *:ntp
 ntpd       848    ntp     18u    IPv4    22814     0t0         UDP     localhost:ntp
-ntpd       848    ntp     19u    IPv4    22816     0t0         UDP     li140-253.members.linode.com:ntp
+ntpd       848    ntp     19u    IPv4    22816     0t0         UDP     17-5-7-8.ip.linodeusercontent.com:ntp
 ntpd       848    ntp     20u    IPv6    22818     0t0         UDP     localhost:ntp
 ntpd       848    ntp     24u    IPv6    24916     0t0         UDP     [2a01:7e00::f03c:91ff:fe69:1381]:ntp
 ntpd       848    ntp     25u    IPv6    24918     0t0         UDP     [fe80::f03c:91ff:fe69:1381]:ntp
@@ -406,7 +401,7 @@ The output displays connections that use either IPv4 or IPv6. If you want to dis
 COMMAND    PID    USER    FD     TYPE    DEVICE    SIZE/OFF    NODE    NAME
 ntpd       848    ntp     17u    IPv4    22810     0t0         UDP     *:ntp
 ntpd       848    ntp     18u    IPv4    22814     0t0         UDP     localhost:ntp
-ntpd       848    ntp     19u    IPv4    22816     0t0         UDP     li140-253.members.linode.com:ntp
+ntpd       848    ntp     19u    IPv4    22816     0t0         UDP     17-5-7-8.ip.linodeusercontent.com:ntp
 {{< /output >}}
 
 ## Disabling DNS and port Number Resolving
@@ -419,7 +414,7 @@ ntpd       848    ntp     19u    IPv4    22816     0t0         UDP     li140-253
 COMMAND    PID    USER    FD     TYPE    DEVICE    SIZE/OFF    NODE    NAME
 ntpd       848    ntp     17u    IPv4    22810     0t0         UDP     *:123
 ntpd       848    ntp     18u    IPv4    22814     0t0         UDP     localhost:123
-ntpd       848    ntp     19u    IPv4    22816     0t0         UDP     li140-253.members.linode.com:123
+ntpd       848    ntp     19u    IPv4    22816     0t0         UDP     17-5-7-8.ip.linodeusercontent.com:123
 {{< /output >}}
 
 In a similar way, you can disable DNS resolving using the `-n` option:
@@ -442,8 +437,8 @@ The following command finds all network connections coming from or going to `ppp
     sudo lsof -i @ppp-2-86-23-29.home.example.com
 
 {{< output >}}
-sshd    22352    root      3u    IPv4 8613370    0t0    TCP    li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.example.com:60032 (ESTABLISHED)
-sshd    22361    mtsouk    3u    IPv4 8613370    0t0    TCP    li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.example.com:60032 (ESTABLISHED)
+sshd    22352    root      3u    IPv4 8613370    0t0    TCP    17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-86-23-29.home.example.com:60032 (ESTABLISHED)
+sshd    22361    mtsouk    3u    IPv4 8613370    0t0    TCP    17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-86-23-29.home.example.com:60032 (ESTABLISHED)
 {{< /output >}}
 
 You can also specify the range of ports that interest you as follows:
@@ -507,9 +502,9 @@ The next variation finds all `ESTABLISHED` connections owned by the `www-data` u
 
     sudo lsof -u www-data | grep -i ESTABLISHED
 {{< output >}}
-apache2  24571    www-data    29u    IPv6    8675584    0t0    TCP    li140-253.members.linode.com:https->ppp-2-86-23-29.home.otenet.gr:61383 (ESTABLISHED)
-apache2  24585    www-data    29u    IPv6    8675583    0t0    TCP    li140-253.members.linode.com:https->ppp-2-86-23-29.home.otenet.gr:61381 (ESTABLISHED)
-apache2  27827    www-data    29u    IPv6    8675582    0t0    TCP    li140-253.members.linode.com:https->ppp-2-86-23-29.home.otenet.gr:61382 (ESTABLISHED)
+apache2  24571    www-data    29u    IPv6    8675584    0t0    TCP    17-5-7-8.ip.linodeusercontent.com:https->ppp-2-86-23-29.home.otenet.gr:61383 (ESTABLISHED)
+apache2  24585    www-data    29u    IPv6    8675583    0t0    TCP    17-5-7-8.ip.linodeusercontent.com:https->ppp-2-86-23-29.home.otenet.gr:61381 (ESTABLISHED)
+apache2  27827    www-data    29u    IPv6    8675582    0t0    TCP    17-5-7-8.ip.linodeusercontent.com:https->ppp-2-86-23-29.home.otenet.gr:61382 (ESTABLISHED)
 {{< /output >}}
 
 Last, the next command finds all processes except the ones owned by `www-data` by using the `^` character:
@@ -545,9 +540,9 @@ Use the ``-h'' option to get more help information.
 
 The following command kills all of the processes owned by the `www-data` user:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Please be careful when combining `lsof` with the `kill(1)` command. Do not try to test similar commands on a live server unless you are absolutely certain you will not experience issues. For testing purposes you can use a disposable Docker image or something similar.
-{{</ caution >}}
+{{< /note >}}
 
     sudo kill -9 `lsof -t -u www-data`
 
@@ -559,7 +554,7 @@ The following command lists all network activity by a user named `mtsouk`:
 
 {{< output >}}
 COMMAND    PID      USER      FD    TYPE    DEVICE     SIZE/OFF    NODE    NAME
-sshd       22361    mtsouk    3u    IPv4    8613370    0t0         TCP     li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
+sshd       22361    mtsouk    3u    IPv4    8613370    0t0         TCP     17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
 {{< /output >}}
 
 On the other hand, the following command lists all network activity from processes not owned by the `root` or the `www-data` user:
@@ -573,12 +568,12 @@ avahi-dae    669      avahi      15u    IPv6    20735        0t0    UDP    *:485
 ntpd         848      ntp        16u    IPv6    22807        0t0    UDP    *:ntp
 ntpd         848      ntp        17u    IPv4    22810        0t0    UDP    *:ntp
 ntpd         848      ntp        18u    IPv4    22814        0t0    UDP    localhost:ntp
-ntpd         848      ntp        19u    IPv4    22816        0t0    UDP    li140-253.members.linode.com:ntp
+ntpd         848      ntp        19u    IPv4    22816        0t0    UDP    17-5-7-8.ip.linodeusercontent.com:ntp
 ntpd         848      ntp        20u    IPv6    22818        0t0    UDP    localhost:ntp
 ntpd         848      ntp        24u    IPv6    24916        0t0    UDP    [2a01:7e00::f03c:91ff:fe69:1381]:ntp
 ntpd         848      ntp        25u    IPv6    24918        0t0    UDP    [fe80::f03c:91ff:fe69:1381]:ntp
 mysqld       1003     mysql      17u    IPv4    24217        0t0    TCP    localhost:mysql (LISTEN)
-sshd         22361    mtsouk     3u     IPv4    8613370      0t0    TCP    li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
+sshd         22361    mtsouk     3u     IPv4    8613370      0t0    TCP    17-5-7-8.ip.linodeusercontent.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
 {{< /output >}}
 
 ### Find the Total Number of TCP and UDP Connections

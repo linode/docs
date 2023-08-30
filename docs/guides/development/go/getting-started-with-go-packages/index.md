@@ -1,9 +1,6 @@
 ---
 slug: getting-started-with-go-packages
-author:
-  name: Kamesh Balasubramanian
-  email: kamesh@wirecog.com
-description: 'Learn how to get started with Go packages.'
+description: 'This guide provides you with step-by-step instructions for getting started with the Go programming language, used by many modern applications, such as Docker.'
 keywords: ["go","golang","packages","export"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-06
@@ -11,9 +8,6 @@ modified: 2018-06-06
 modified_by:
   name: Linode
 title: 'Getting Started with Go Packages'
-contributor:
-  name: Kamesh Balasubramanian
-  link: https://twitter.com/EngineerKamesh
 external_resources:
   - '[A Tour of Go](https://tour.golang.org/)'
   - '[The Go Standard Library](https://golang.org/pkg/)'
@@ -21,6 +15,7 @@ external_resources:
 audiences: ["beginner"]
 languages: ["go"]
 aliases: ['/development/go/getting-started-with-go-packages/']
+authors: ["Kamesh Balasubramanian"]
 ---
 
 ## What is Go?
@@ -31,7 +26,7 @@ Go packages allow developers to organize and reuse Go code in a simple and maint
 
 ## Before You Begin
 
-If you haven't installed Go on your server yet, follow the instructions from the [Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) guide before proceeding.
+If you haven't installed Go on your server yet, follow the instructions from the [Install Go on Ubuntu](/docs/guides/install-go-on-ubuntu/) guide before proceeding.
 
 If you prefer to experiment with Go without installing it first, you can run the examples found in this guide using the [Go Playground](https://play.golang.org).
 
@@ -41,7 +36,7 @@ Packages provide the capability to organize and reuse source code.
 
 ### Declaring a Package
 
-In a text editor, create a `hellogopher.go` file in your [GOPATH](/docs/development/go/install-go-on-ubuntu/#adjust-the-path-variable) and add the following content to create a simple "Hello world" program:
+In a text editor, create a `hellogopher.go` file in your [GOPATH](/docs/guides/install-go-on-ubuntu/#adjust-the-path-variable) and add the following content to create a simple "Hello world" program:
 
 {{< file "hellogopher.go" go >}}
 package main
