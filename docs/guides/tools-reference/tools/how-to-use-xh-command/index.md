@@ -8,9 +8,6 @@ published: 2021-10-20
 modified_by:
   name: Nathaniel Stickman
 title: "Use the xh Command for HTTP Requests on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 ---
 
 `xh` is a command-line HTTP client, much like cURL. It follows HTTPie as a modern alternative to cURL. Both HTTPie and `xh` put an emphasis on readability and working with web APIs. But `xh`, being built on Rust, accomplishes this with speed.
