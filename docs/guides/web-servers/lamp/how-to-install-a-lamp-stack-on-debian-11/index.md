@@ -6,7 +6,7 @@ tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
-published: 2023-08-29
+published: 2023-08-30
 title: How to Install a LAMP Stack on Debian 11
 title_meta: 'Install a LAMP Stack on Debian 11 (Bullseye)'
 image:
@@ -24,11 +24,11 @@ aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-11/']
 authors: ["Linode"]
 ---
 
-A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 11 (Bulls eye).
+A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 11 (Bullseye).
 
 ## Before You Begin
 
-Prior to installing your LAMP stack ensure that:
+Prior to installing your LAMP stack:
 
 1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#set-the-hostname).
 
@@ -39,7 +39,8 @@ Prior to installing your LAMP stack ensure that:
     hostname -f
     ```
 
-    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.
+    {{< note >}}
+    If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.
     {{< /note >}}
 
 1.  Update your system:
@@ -66,29 +67,30 @@ Prior to installing your LAMP stack ensure that:
 1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
 
     {{< note >}}
-    As a best practice, you should create a backup of your Apache configuration file, before making any configuration changes to your Apache installation. To make a backup in your home directory:
-    `cp /etc/apache2/apache2.conf ~/apache2.conf.backup`
+    As a best practice, you should create a backup of your Apache configuration file before making any configuration changes to your Apache installation. Run the following command to make a backup in your home directory:
+    ```command
+    cp /etc/apache2/apache2.conf ~/apache2.conf.backup
+    ```
     {{< /note >}}
 
-    ```file {title="/etc/apache2/mods-available/mpm_prefork.conf"}
-# prefork MPM
-# StartServers: number of server processes to start
-# MinSpareServers: minimum number of server processes which are kept spare
-# MaxSpareServers: maximum number of server processes which are kept spare
-# MaxRequestWorkers: maximum number of server processes allowed to start
-# MaxConnectionsPerChild: maximum number of requests a server process serves
+    ```file {title="/etc/apache2/mods-available/mpm_prefork.conf" lang="apacheconf"}
+    # prefork MPM
+    # StartServers: number of server processes to start
+    # MinSpareServers: minimum number of server processes which are kept spare
+    # MaxSpareServers: maximum number of server processes which are kept spare
+    # MaxRequestWorkers: maximum number of server processes allowed to start
+    # MaxConnectionsPerChild: maximum number of requests a server process serves
 
-<IfModule mpm_prefork_module>
-        StartServers              4
-        MinSpareServers           20
-        MaxSpareServers           40
-        MaxRequestWorkers         200
-        MaxConnectionsPerChild    4500
-</IfModule>
+    <IfModule mpm_prefork_module>
+            StartServers              4
+            MinSpareServers           20
+            MaxSpareServers           40
+            MaxRequestWorkers         200
+            MaxConnectionsPerChild    4500
+    </IfModule>
 
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-
-```
+    # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+    ```
 
 
     {{< note >}}
@@ -97,15 +99,15 @@ Prior to installing your LAMP stack ensure that:
 
 1.  Enable the firewall to allow web traffic. This guide lists the commands to enable web traffic if you configured UFW on your server.
 
-    a. Check the ports that are enabled for `WWW Full` Profile:
+    a. If necessary, install UFW. Once UFW is installed, check the ports that are enabled for the `WWW Full` profile:
 
        ```command
         sudo apt install ufw
         sudo ufw app info "WWW Full"
        ```
-       Ports `80` and `443` should be listed as enabled for `WWW Full` profile.
+       Ports `80` and `443` should be listed as enabled for the `WWW Full` profile.
 
-    b. To allow incoming HTTP and HTTPS traffic for `WWW Full` profile:
+    b. To allow incoming HTTP and HTTPS traffic for the `WWW Full` profile:
 
        ```command
         sudo ufw allow in "WWW Full"
@@ -146,39 +148,36 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
 1.  Edit the `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
 
-    ```file {title="/etc/apache2/sites-available/example.com.conf"}
-<Directory /var/www/html/example.com/public_html>
-        Require all granted
-</Directory>
-<VirtualHost *:80>
-     ServerAdmin webmaster@example.com
-     ServerName example.com
-     ServerAlias www.example.com
-     DocumentRoot /var/www/html/example.com/public_html
-     ErrorLog /var/www/html/example.com/logs/error.log
-     CustomLog /var/www/html/example.com/logs/access.log combined
-</VirtualHost>
-
-```
-
+    ```file {title="/etc/apache2/sites-available/example.com.conf" lang="apacheconf"}
+    <Directory /var/www/html/example.com/public_html>
+            Require all granted
+    </Directory>
+    <VirtualHost *:80>
+         ServerAdmin webmaster@example.com
+         ServerName example.com
+         ServerAlias www.example.com
+         DocumentRoot /var/www/html/example.com/public_html
+         ErrorLog /var/www/html/example.com/logs/error.log
+         CustomLog /var/www/html/example.com/logs/access.log combined
+    </VirtualHost>
+    ```
 
     Repeat this process for any other domains you host:
 
-    ```file {title="/etc/apache2/sites-available/example.org.conf"}
-<Directory /var/www/html/example.org/public_html>
-        Require all granted
-</Directory>
+    ```file {title="/etc/apache2/sites-available/example.org.conf" lang="apacheconf"}
+    <Directory /var/www/html/example.org/public_html>
+            Require all granted
+    </Directory>
 
-<VirtualHost *:80>
-     ServerAdmin webmaster@example.org
-     ServerName example.org
-     ServerAlias www.example.org
-     DocumentRoot /var/www/html/example.org/public_html
-     ErrorLog /var/www/html/example.org/logs/error.log
-     CustomLog /var/www/html/example.org/logs/access.log combined
-</VirtualHost>
-
-```
+    <VirtualHost *:80>
+         ServerAdmin webmaster@example.org
+         ServerName example.org
+         ServerAlias www.example.org
+         DocumentRoot /var/www/html/example.org/public_html
+         ErrorLog /var/www/html/example.org/logs/error.log
+         CustomLog /var/www/html/example.org/logs/access.log combined
+    </VirtualHost>
+    ```
 
 1.  Assign ownership of `public_html` directory to the user `www-data`:
 
@@ -200,7 +199,10 @@ There can be as many virtual hosts files as needed to support the amount of doma
     ```
 
     {{< note >}}
-    If you need to disable a site, you can use issue the following command: `sudo a2dissite example.com`
+    If you need to disable a site, you can use issue the following command:
+    ```command
+    sudo a2dissite example.com
+    ```
     {{< /note >}}
 
 1.  Disable the default virtual host to minimize security risks:
@@ -249,7 +251,7 @@ Next, you can create a database and grant your users permissions to use database
 
     Enter MariaDB's root password when prompted.
 
-1.  Create a database and grant your users permissions on it. Change the database name (`webdata`) and username (`webuser`). Change the password (`password`):
+1.  Create a database and grant your users permissions on it. Substitute the database name (`webdata`), username (`webuser`), and password (`password`) with your own:
 
     ```command
     create database webdata;
@@ -268,9 +270,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
 ### Install PHP
 
-PHP 7.4 is the [latest version available](http://php.net/supported-versions.php) and has the longest period of support offered as of this guide's publishing:
-
-1.  Install PHP, the PHP Extension and Application Repository, Apache support, and MySQL support:
+1.  Install PHP 7.4, the PHP Extension and Application Repository, Apache support, and MySQL support:
 
     ```command
     sudo apt install php7.4 libapache2-mod-php7.4 php-mysql
@@ -287,15 +287,13 @@ PHP 7.4 is the [latest version available](http://php.net/supported-versions.php)
 
 1.  Open `/etc/php/7.4/apache2/php.ini` in your text editor and edit the following values. These settings are optimized for the 2GB Linode:
 
-    ```file {title="/etc/php/7.4/apache2/php.ini"}
-error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-max_input_time = 30
-
-```
-
+    ```file {title="/etc/php/7.4/apache2/php.ini" lang="text"}
+    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+    max_input_time = 30
+    ```
 
     {{< note >}}
-    Ensure that all values are uncommented, by making sure they do not start with a semicolon (**;**).
+    Ensure the above values are uncommented by making sure they do not start with a semicolon (**;**).
     {{< /note >}}
 
 1.  Create the log directory for PHP and give ownership to the Apache user (`www-data`):
@@ -306,7 +304,10 @@ max_input_time = 30
     ```
 
     {{< note >}}
-    If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-gd php-mbstring php-xml php-xmlrpc`
+    If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules:
+    ```command
+    sudo apt install php-gd php-mbstring php-xml php-xmlrpc
+    ```
     {{< /note >}}
 
 1.  Restart Apache:
@@ -323,32 +324,31 @@ In this section, you'll create a test page that shows whether Apache can render 
 
 1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the [Set Up a MariaDB Database](#set-up-a-mariadb-database) section above:
 
-     ```file {title="/var/www/html/example.com/public_html/phptest.php"}
-<html>
-<head>
-<title>PHP Test</title>
-</head>
-    <body>
-    <?php echo '<p>Hello World</p>';
+     ```file {title="/var/www/html/example.com/public_html/phptest.php" lang="php"}
+    <html>
+    <head>
+    <title>PHP Test</title>
+    </head>
+        <body>
+        <?php echo '<p>Hello World</p>';
+    
+        // In the variables section below, replace user and password with your own MariaDB credentials as created on your server
+        $servername = "localhost";
+        $username = "webuser";
+       $password = "password";
 
-    // In the variables section below, replace user and password with your own MariaDB credentials as created on your server
-    $servername = "localhost";
-    $username = "webuser";
-    $password = "password";
+        // Create MariaDB connection
+        $conn = mysqli_connect($servername, $username, $password);
 
-    // Create MariaDB connection
-    $conn = mysqli_connect($servername, $username, $password);
-
-    // Check connection - if it fails, output will include the error message
-    if (!$conn) {
-    die('<p>Connection failed: </p>' . mysqli_connect_error());
-    }
-    echo '<p>Connected successfully</p>';
-    ?>
-</body>
-</html>
-
-```
+        // Check connection - if it fails, output will include the error message
+        if (!$conn) {
+        die('<p>Connection failed: </p>' . mysqli_connect_error());
+        }
+        echo '<p>Connected successfully</p>';
+        ?>
+    </body>
+    </html>
+    ```
 
 1.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP stack are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
 
