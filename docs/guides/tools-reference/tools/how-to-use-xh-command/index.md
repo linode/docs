@@ -1,17 +1,13 @@
 ---
 slug: how-to-use-xh-command
-author:
-  name: Linode Community
-  email: docs@linode.com
+authors: ["Nathaniel Stickman"]
 description: "Learn how to start using xh to make HTTP requests on your Linux system. Similar to HTTPie, xh gives you a friendlier way to make requests than with curl. But xh also aims to do so with snappy performance."
-og_description: "Learn how to start using xh to make HTTP requests on your Linux system. Similar to HTTPie, xh gives you a friendlier way to make requests than with curl. But xh also aims to do so with snappy performance."
 keywords: ['linux xh command','curl alternative linux','how to use httpie']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-20
 modified_by:
   name: Nathaniel Stickman
 title: "Use the xh Command for HTTP Requests on Linux"
-h1_title: "Use the xh Command for HTTP Requests on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
