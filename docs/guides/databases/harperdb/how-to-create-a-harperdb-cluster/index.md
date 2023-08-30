@@ -2,8 +2,8 @@
 slug: how-to-create-a-harperdb-cluster
 title: "How to Create a HarperDB Cluster"
 description: 'This guide explains how to configure HarperDB and how to create a multi-node cluster for data replication.'
-og_description: 'This guide explains how to configure HarperDB and how to create a multi-node cluster for data replication.'
 keywords: ['install HarperDB','configure HarperDB','HarperDB cluster','data replication HarperDB']
+tags: ['database', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
 published: 2023-07-17
@@ -24,27 +24,27 @@ external_resources:
 
 HarperDB combines a flexible database, built-in API, and distribution logic into a single backend. This solution, known as an *embedded database*, allows developers to more quickly and easily create integrated web applications. HarperDB allows both NoSQL and SQL tables to be mixed together in the same database and schema. SQL tables are highly structured and normalized, while NoSQL permits more freeform data. This combination enables access to legacy data and operational systems in the same place as new business intelligence analytics.
 
-HarperDB is available through the HarperDB Cloud or as a self-hosted solution. The optional HarperDB Studio provides a visual GUI for storing or retrieving data, but requires registration. Users can configure HarperDB through either the comprehensive API or the HarperDB CLI. Unfortunately, the CLI only supports a subset of the current functionality. API calls can be embedded into an application or sent as stand-alone requests using `curl` or a similar utility.
+HarperDB is available through the HarperDB Cloud or as a self-hosted solution. The optional HarperDB Studio provides a visual GUI for storing or retrieving data but requires registration. Users can configure HarperDB through either the comprehensive API or the HarperDB CLI. Unfortunately, the CLI only supports a subset of the current functionality. API calls can be embedded into an application or sent as stand-alone requests using `curl` or a similar utility.
 
 {{< note >}}
-Users can send most SQL commands to HarperDB using the API. A full SQL parser is still under development, but should be available in an upcoming release.
+Users can send most SQL commands to HarperDB using the API. A full SQL parser is still under development but should be available in an upcoming release.
 {{< /note >}}
 
 HarperDB is optimized for fast performance and scalability, with sub-millisecond latency between the API and data layer. NoSQL data can be accessed as quickly as SQL tables in traditional *relational database management systems* (RDBMS). HarperDB is particularly useful for gaming, media, manufacturing, status reporting, and real-time updates.
 
-HarperDB also supports clustering and per-table data replication. Data replication can be configured in one or both directions. Administrators have full control over how the data is replicated within the cluster. A HarperDB instance can both send table updates to a second node and receive updates from it in return. But it can simultaneously transmit changes to a second table to another node in a unidirectional manner. HarperDB minimizes data latency between nodes, allowing clusters encompassing different regions and different continents. Clusters can grow very large, permitting virtually unlimited horizontal scaling.
+HarperDB also supports clustering and per-table data replication. Data replication can be configured in one or both directions. Administrators have full control over how the data is replicated within the cluster. A HarperDB instance can both send table updates to a second node and receive updates from it in return. However, it can simultaneously transmit changes to a second table to another node in a unidirectional manner. HarperDB minimizes data latency between nodes, allowing clusters encompassing different regions and different continents. Clusters can grow very large, permitting virtually unlimited horizontal scaling.
 
 Some advantages of HarperDB are:
 
-* The HarperDB API provides applications with direct database access. This allows the application and its data to be bundled together in a single distribution.
-* Each HarperDB node is atomic and guarantees "exactly-once" delivery. It avoids unnecessary data duplication.
-* Every node in the cluster can read, write, and replicate data.
-* HarperDB features a fast and resilient caching mechanism.
-* Connections are self-healing, allowing for fast replication even in an unstable network.
-* HarperDB support data streaming and *edge processing*. This technique pre-processes data, only storing or transmitting the most important information.
-* NoSQL tables support dynamic schemas, which can seamlessly change as new data arrives. HarperDB provides an auto-indexing function for more efficient hashing.
-* HarperDB allows SQL queries on both structured and unstructured data.
-* HarperDB's Custom Functions allow developers to add their own API endpoints and manage authentication and authorization.
+- The HarperDB API provides applications with direct database access. This allows the application and its data to be bundled together in a single distribution.
+- Each HarperDB node is atomic and guarantees "exactly-once" delivery. It avoids unnecessary data duplication.
+- Every node in the cluster can read, write, and replicate data.
+- HarperDB features a fast and resilient caching mechanism.
+- Connections are self-healing, allowing for fast replication even in an unstable network.
+- HarperDB supports data streaming and *edge processing*. This technique pre-processes data, only storing or transmitting the most important information.
+- NoSQL tables support dynamic schemas, which can seamlessly change as new data arrives. HarperDB provides an auto-indexing function for more efficient hashing.
+- HarperDB allows SQL queries on both structured and unstructured data.
+- HarperDB's Custom Functions allow developers to add their own API endpoints and manage authentication and authorization.
 
 ## Before You Begin
 
@@ -55,14 +55,14 @@ Some advantages of HarperDB are:
 1.  On a multi-user system, it is best to create a dedicated HarperDB user account with `sudo` access. Use this account for the instructions in this guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How To Install HarperDB
 
-Run these instructions on every node in the cluster. These guidelines are designed for Ubuntu 22.04 LTS users, but are similar on other Linux distributions. HarperDB is also available as a Docker container or as a `.tgz` file for offline installation. For more details on these options and on the standard installation procedure, see the [HarperDB installation instructions](https://docs.harperdb.io/docs/install-harperdb).
+Run these instructions on every node in the cluster. These guidelines are designed for Ubuntu 22.04 LTS users but are similar to other Linux distributions. HarperDB is also available as a Docker container or as a `.tgz` file for offline installation. For more details on these options and the standard installation procedure, see the [HarperDB installation instructions](https://docs.harperdb.io/docs/install-harperdb).
 
-1.  Ensure the system is up to date.
+1.  Ensure the system is up to date by executing the following command:
 
     ```command
     sudo apt-get update -y && sudo apt-get upgrade -y
@@ -74,7 +74,7 @@ Run these instructions on every node in the cluster. These guidelines are design
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
     ```
 
-1.  Log out and log back in to the terminal to activate NVM.
+1.  Log out and log back into the terminal to activate NVM.
 
     ```command
     exit
@@ -137,10 +137,10 @@ Replication occurs on a per-table basis and is configured after the schema and t
 
 1.  On the first node, use `harperdb start` to launch the application. Provide the following configuration attributes in the command.
 
-    - For `TC_AGREEMENT`, indicate `yes` to accept the terms of agreement.
-    - Define the `ROOTPATH` directory for persistent data. This example sets the directory to `/home/user/hdb`. Replace `user` with the actual name of the user account.
+    - For `TC_AGREEMENT`, indicate `yes` to accept the terms of the agreement.
+    - Define the `ROOTPATH` directory for persistent data. This example sets the directory to `/home/user/hdb`. Replace the `user` with the actual name of the user account.
     - Set the `HDB_ADMIN_USERNAME` to the name of the administrative user.
-    - Provide a password for the administrative account in `HDB_ADMIN_PASSWORD`. Replace `password` with a more secure password.
+    - Provide a password for the administrative account in `HDB_ADMIN_PASSWORD`. Replace the `password` with a more secure password.
     - Set `OPERATIONSAPI_NETWORK_PORT` to `9925`.
     - Choose a name for the `CLUSTERING_USER` and provide a password for the user in `CLUSTERING_PASSWORD`. These values must be the same for all nodes in the cluster.
     - Set `CLUSTERING_ENABLED` to `true`.
@@ -167,7 +167,7 @@ Replication occurs on a per-table basis and is configured after the schema and t
     |------------- HarperDB 4.1.2 successfully started ------------|
     ```
 
-1.  **Optional** To launch HarperDB at bootup, create a crontab entry for the application. Substitute the name of the administrative account for `user` and ensure the path reflects the release of NVM being used. In this example, the path entry reflects release `18.17` of NVM.
+1.  (**Optional**) To launch HarperDB at bootup, create a crontab entry for the application. Substitute the name of the administrative account for `user` and ensure the path reflects the release of the NVM being used. In this example, the path entry reflects release `18.17` of NVM.
 
     {{< note >}}
     To integrate HarperDB with `systemd` and start/stop it using `systemctl`, see the [HarperDB Linux documentation](https://docs.harperdb.io/docs/install-harperdb/linux).
@@ -222,7 +222,7 @@ Replication occurs on a per-table basis and is configured after the schema and t
 
 1.  Determine the network topology for the cluster. A full mesh of connections is not required. Data can be replicated to any cluster node provided it is connected to the rest of the cluster. Design some measure of resiliency into the network. If a hub-and-spoke architecture is configured, the remaining nodes would be isolated if the central node suffers an outage. As a general guideline, connect each node to two other nodes. It is not necessary to add the route in both directions. For instance, a connection between `node1` and `node2` can be added to either `node1` or `node2`. Successful negotiation establishes a bidirectional route.
 
-1.  Authentication is required to send messages to HarperDB using the API. To derive the `AuthorizationKey` from the name and password of the administrator account, use the JavaScript `btoa()` function. Run the command `btoa("HDB_ADMIN:password")` to convert the account credentials into a Base64 string. Replace `password` with the actual password.
+1.  Authentication is required to send messages to HarperDB using the API. To derive the `AuthorizationKey` from the name and password of the administrator account, use the JavaScript `btoa()` function. Run the command `btoa("HDB_ADMIN:password")` to convert the account credentials into a Base64 string. Replace the `password` with the actual password.
 
     {{< note >}}
     JavaScript commands can be executed in a web browser console. On Firefox, select **Tools->Browser Tools->Web Developer Tools** to access the console. Choose the **Console** option within the developer window, then enter the command. Alternatively, online JavaScript emulators are widely available for the same purpose. Use the result for the `AuthorizationKey` values in the following API calls. See the [Mozilla documentation](https://developer.mozilla.org/en-US/docs/Web/API/btoa) for more information.
@@ -236,7 +236,7 @@ Replication occurs on a per-table basis and is configured after the schema and t
 
     * In the `POST` header, send the command to the local HarperDB process at `http://localhost:9925`.
     * Include an `Authorization` header. Use the `AuthorizationKey` derived from the administrator account and password in the previous step.
-    * Inside the `data` header, set the `operation` to `cluster_set_routes` and set `server` to `hub`.
+    * Inside the `data` header, set the `operation` to `cluster_set_routes` and set the `server` to `hub``.
     - Use `routes` to specify a list of one or more routes to install. Each route consists of a `host` and a `port`, which is typically `9932`. The `host` is the IP address of the peer system. In the following example, replace `192.0.2.10` with the actual IP address of the peer.
 
     ```command
@@ -321,7 +321,7 @@ The following example demonstrates how to create a schema, table, and subscripti
     {"message":"schema 'dev' successfully created"}
     ```
 
-2.  Create the `dog` table within the `dev` schema. This API call invokes the `create_table` operation and sets the `hash_attribute` to `id`. This is a NoSQL table, so columns and types are not defined.
+1.  Create the `dog` table within the `dev` schema. This API call invokes the `create_table` operation and sets the `hash_attribute` to `id`. This is a NoSQL table, so columns and types are not defined.
 
     ```command
     curl --location --request POST 'http://localhost:9925' \
@@ -339,10 +339,10 @@ The following example demonstrates how to create a schema, table, and subscripti
     {"message":"table 'dev.dog' successfully created."}
     ```
 
-3.  Add a subscription to the `dog` table using the API `add_node` operation. Add the following information to the request.
+1.  Add a subscription to the `dog` table using the API `add_node` operation. Add the following information to the request.
 
-    * Set `node_name` to `hdb2` to designate it as the peer for the purpose of replication.
-    * Specify the schema and table to replicate. In this example, the `schema` is `dev` and the `table` is `dog`.
+    * Set `node_name` to `hdb2` to designate it as the peer for replication.
+    * Specify the schema and table to replicate. In this example, the `schema` is `dev` and the `table` is a `dog`.
     * To transmit updates to `hdb2` set `publish` to `true`. This configures replication in one direction only.
 
     {{< note >}}
