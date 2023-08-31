@@ -1,24 +1,19 @@
 ---
 slug: backing-up-compute-instance-to-object-storage
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Backing Up a Compute Instance to Object Storage"
 description: "Linode Object Storage offers an efficient solution for a range of storage needs, and it can also work well to store backups of your Linode Compute Instances. Follow along with this tutorial to learn how you can create system backups and store them on your object storage buckets."
 keywords: ['how to backup object storage','linux backup','snapshot object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
 published: 2023-03-08
 modified_by:
   name: Nathaniel Stickman
-title: "Backing Up a Compute Instance to Object Storage"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Oracle Cloud Infrastructure Documentation: Backing Up Snapshots to Object Storage Using rclone](https://docs.oracle.com/en-us/iaas/Content/File/Tasks/backing-up-snapshots-to-object-storage.htm)'
 - '[Ubuntu Forums: Heliode - Howto: Backup and Restore Your System!](https://ubuntuforums.org/showthread.php?t=35087)'
 ---
 
-Linode's [Object Storage](/products/object-storage/) service is a cloud-based file storage solution that offers high availability and is S3 compatible. In addition to many other data-storage uses, Linode Object Storage can also efficiently store backups of your Linode Compute Instances.
+Linode's [Object Storage](https://www.linode.com/products/object-storage/) service is a cloud-based file storage solution that offers high availability and is S3 compatible. In addition to many other data-storage uses, Linode Object Storage can also efficiently store backups of your Linode Compute Instances.
 
 In this tutorial, learn how to create full-system backups from the command line and how to store those backups on Linode Object Storage. Also, find out how you can automate and schedule the whole process.
 
