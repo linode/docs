@@ -15,14 +15,12 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Oracle Cloud Infrastructure Documentation: Backing Up Snapshots to Object Storage Using rclone](https://docs.oracle.com/en-us/iaas/Content/File/Tasks/backing-up-snapshots-to-object-storage.htm)'
-- '[OSTechNix: How To Backup Your Entire Linux System Using Rsync](https://ostechnix.com/backup-entire-linux-system-using-rsync/)'
-- '[Average Linux User: Backup and Restore Your Linux System with rsync](https://averagelinuxuser.com/backup-and-restore-your-linux-system-with-rsync/)'
 - '[Ubuntu Forums: Heliode - Howto: Backup and Restore Your System!](https://ubuntuforums.org/showthread.php?t=35087)'
 ---
 
-Linode Object Storage offers a range of benefits, with high availability and S3-compatibility. In addition to many other data-storage uses, Linode Object Storage can also efficiently store backups of your Linode Compute Instances.
+Linode's [Object Storage](/products/object-storage/) service is a cloud-based file storage solution that offers high availability and is S3 compatible. In addition to many other data-storage uses, Linode Object Storage can also efficiently store backups of your Linode Compute Instances.
 
-Learn in this tutorial how to create full-system backups from the command line and how to store those backups on Linode Object Storage. And see also how you can automate and schedule the whole process.
+In this tutorial, learn how to create full-system backups from the command line and how to store those backups on Linode Object Storage. Also, find out how you can automate and schedule the whole process.
 
 ## Before You Begin
 
@@ -34,69 +32,41 @@ Learn in this tutorial how to create full-system backups from the command line a
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## How to Create an Instance Image
+## Back Up Your Data to a Single Archive File
 
-Methods for backing up your system abound. Several useful methods are covered in our guide on [Backing Up Your Data](/docs/guides/backing-up-your-data/), including some methods specific to Linode instances.
+When determining how to back up your system, there are a significant number of tools, third-party applications, and services that offer backup solutions. Several useful methods are covered in our guide on [Backing Up Your Data](/docs/guides/backing-up-your-data/), including some methods specific to Linode instances.
 
-Since this tutorial aims to store backups on object storage, it favors methods that archive and compress your system files into a single file. This leaves a cleaner and easier to manage collection of backups. Both of the approaches covered below use tar to create a `backup.tgz` file archiving system files.
+Since the goal of this tutorial is to store backups on Object Storage, utilities that output a single backup file are preferred. This is because it is much easier to store and manage each backup as a single object on Object Storage than as potentially thousands (or millions) of separate objects.
 
-Follow along with whichever method fits your interests. Each section begins with a brief overview to give you a perspective on how the covered method operates.
+The tar command fits well here. It is able to combine multiple files or directories into a single archive file and to extract the contents of existing archive files. Such archive files are easier to manage (or share) and, when combined with optional compression algorithms, take up less storage space.
 
-### Backup via tar
-
-The tar command creates and extracts archives and is useful for compressing collections of files. Both this backup method and the next use tar for this purpose. But the simplest backup approach just uses tar itself, without any other tools.
-
-Here, you execute a `tar` command from the system's root directory (`/`). The command creates an archive of the root directory and stores it as `backup.tgz`. The first `--exclude` option ensures that tar does not attempt to archive the archive itself.
-
-The remaining `--exclude` options exclude the contents of various directories from the backup. You can adjust this as needed, but the options here provide a general guide.
+What follows is a tar command that you can use to combine most of your system's files into a single compressed archive. The command creates an archive of the root directory and stores it as `/tmp/backup.tgz`. The first `--exclude` option ensures that tar does not attempt to archive the archive itself. The remaining `--exclude` options exclude the contents of various directories from the backup. You can adjust these as needed, but the options here provide a general guide.
 
 ```command
-cd /
-sudo tar cvpzf backup.tgz --exclude='backup.tgz' --exclude='dev/*' --exclude='proc/*' --exclude='sys/*' --exclude='tmp/*' --exclude='run/*' --exclude='mnt/*' --exclude='media/*' --exclude='lost+found/*' /
-sudo mv backup.tgz /tmp
+sudo tar -vcpzf /tmp/backup.tgz --exclude='backup.tgz' --exclude='dev/*' --exclude='proc/*' --exclude='sys/*' --exclude='tmp/*' --exclude='run/*' --exclude='mnt/*' --exclude='media/*' --exclude='lost+found/*' /
 ```
 
-For convenience, the last command moves the `backup.tgz` file to the `/tmp/` directory for later processing.
-
-You can now restore your system from that backup file. Move the `backup.tgz` to the root directory, change into that directory, and extract the archive there using `tar`.
+You can now restore your system from that backup file. Assuming you are working in the directory with the `backup.tgz`, you can extract the archive into root using a `tar` command like this.
 
 ```command
-sudo mv /tmp/backup.tgz /
-cd /
-sudo tar xvpfz backup.tgz -C /
+sudo tar -vxpzf backup.tgz -C /
 ```
 
-### Backup via rsync
-
-The rsync utility provides robust and versatile options for copying data from one location to another. Here, rsync is used precisely and just to do that, but rsync also includes the noteworthy feature of incremental backups. That feature would allow you to only alter a backup directory relative to changes in the source directory or directories.
-
-Beyond its versatility, rsync also offers a faster backup operation. Though a little more complex, the rsync method can more quickly handle large backup tasks than the tar method alone.
-
-Learn more about rsync in our [Introduction to rsync](https://www.linode.com/docs/guides/introduction-to-rsync/).
-
-To start the backup, run the `rsync` command with the root directory (`/*`) as the source and a destination directory (`/tmp/backup`) to store the backup in.
-
-The `--exclude` option keeps the contents of some directories from being backed up. This should at least include the destination directory. The other options here provide a good guide for other directories to exclude, but adjust this as needed.
+Alternatively, if you want to extract the backup to a specific location, change the directory after the `-C` option to that location. For instance, to extract the backup to a `~/temp-backup-storage/` directory, use the following `tar` command.
 
 ```command
-sudo rsync -aAX --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /* /tmp/backup
+sudo tar -vxpzf backup.tgz -C ~/temp-backup-storage/
 ```
 
-From there, it is useful to compress the backup directory into a single archive file. This makes backups easier to manage and much more size efficient. To create the archive, change into the `/tmp/` directory, compress the `backup/` subdirectory, and then remove it.
+### Incremental Backups
 
-```command
-cd /tmp
-sudo tar cvpzf backup.tgz backup/
-sudo rm -r /tmp/backup/
-```
+This guide focuses on covering full backups, where most of your system's files are backed up all at once, each backup containing a full account. But some use cases prefer *incremental backups*, where each archive contains only a modification of an initial backup.
 
-Later, you can restore the backup with a similar set of commands. After extracting the archive file to `/tmp/backup/`, run the `rsync` command from above again but with the source and destination paths reversed.
+Mainly, incremental backups offer two benefits. Each backup operation, because it only archives modifications to your system's files, tends to take less time and fewer resources. For a similar reason, each archive file tends to be significantly smaller.
 
-```command
-cd /tmp
-sudo tar xvpfz backup.tgz backup/
-sudo rsync -aAX --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /tmp/backup /*
-```
+That said, incremental backups require a more involved process for restoring your system's files. For instance, a traditional incremental backup requires that you restore first the initial archive and then, in order, each subsequent archive up to your desired restoration point.
+
+The tar command also supports incremental backups, using its `--listed-incremental` option. To learn how that works and how you can create incremental backups with tar, refer to the GNU documentation on [Using tar to Perform Incremental Dumps](https://www.gnu.org/software/tar/manual/html_node/Incremental-Dumps.html).
 
 ## How to Back an Image Up to Object Storage
 
@@ -179,9 +149,7 @@ The steps here help you set these up. This example uses the tar process outlined
     #!/bin/sh
 
     # Create the backup file with tar
-    cd /
-    tar cvpzf backup.tgz --exclude='backup.tgz' --exclude='dev/*' --exclude='proc/*' --exclude='sys/*' --exclude='tmp/*' --exclude='run/*' --exclude='mnt/*' --exclude='media/*' --exclude='lost+found/*' /
-    mv backup.tgz /tmp
+    tar -vcpzf /tmp/backup.tgz --exclude='backup.tgz' --exclude='dev/*' --exclude='proc/*' --exclude='sys/*' --exclude='tmp/*' --exclude='run/*' --exclude='mnt/*' --exclude='media/*' --exclude='lost+found/*' /
 
     # Store the backup in object storage with rclone
     rclone copyto /tmp/backup.tgz linodes3:compute-backup-bucket/backups/backup-$(date +%Y%m%d-%H%M%S).tgz --config=/etc/rclone/rclone.conf
