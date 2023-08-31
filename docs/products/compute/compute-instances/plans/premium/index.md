@@ -47,6 +47,7 @@ Premium Compute Instances are currently available in select data centers.
 | Newark (New Jersey, USA) | *Not available* |
 | **Paris (France)** | **Available** |
 | Singapore | *Not available* |
+| **Stockholm (Sweden)** | **Available** |
 | Sydney (Australia) | *Not available* |
 | Tokyo (Japan) | *Not available* |
 | Toronto (Canada) | *Not available* |
