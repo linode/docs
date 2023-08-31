@@ -10,7 +10,6 @@ modified_by:
   name: Nathaniel Stickman
 external_resources:
 - '[Nginx: Deploying NGINX and NGINX Plus with Docker](https://www.nginx.com/blog/deploying-nginx-nginx-plus-docker/)'
-- '[DigitalOcean: How To Run Nginx in a Docker Container on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-22-04)'
 ---
 
 [Nginx](https://www.nginx.com/) remains one of the most widely used and adaptable web servers around, frequently used for its reverse proxy and load balancer capabilities.
