@@ -62,7 +62,7 @@ Please be aware that each of these Compute Instances will appear on your invoice
 
 1. Use [SSH]() to connect to the created sudo user of the initially deployed instance, labeled `occ-server-1`, and retrieve the contents of `~/.deployment-secrets.txt`. These are the generated tokens for adding Nomad clients to the cluster, managing jobs and the Consul service mesh. Save these tokens somewhere safe.  
 
-2. Open your web browser and navigate to `http://[ip-address]:8080`, where *[ip-address]* is your Compute Instance labeled `occ-server-1` IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
+2. Open your web browser and navigate to `http://[RDNS]`, where *[RDNS]* is your Compute Instance labeled `occ-server-1` reverse DNS address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
 3. The [Nomad Web UI](https://learn.hashicorp.com/collections/nomad/web-ui) is displayed. To authenticate you will need to provide the `nomad_user_token` from the `~/.deployment-secrets.txt` file to authenticate to the UI. From here, you can manage the cluster, jobs, integrations, and ACL tokens.
 
