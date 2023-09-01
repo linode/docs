@@ -23,7 +23,8 @@ Mastodon servers range in size from small private instances to massive public in
 {{< content "email-warning-shortguide" >}}
 
 {{< note >}}
-The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section.
+The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section. A brand new DNS records may not have propagated changes and takes up to 48 hours to take effect, although it usually happens much sooner. The deployment fails if the DNS has still not been propagated.
+
 {{< /note >}}
 
 ## Deploying a Marketplace App
