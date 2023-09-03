@@ -14,22 +14,22 @@ external_resources:
 - '[openSUSE Docs: Managing Software with Command Line Tools](https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-sw-cl.html)'
 ---
 
-Zypper is a command-line package management system for the openSUSE and SUSE Linux Enterprise (SLE) distributions. Zypper builds on the software-management functions of ZYpp (libzypp) for installing, removing, and managing packages, as well as managing package repositories on your system.
+Zypper is a command-line package management system for the openSUSE and SUSE Linux Enterprise (SLE) distributions. Zypper builds on the software-management functions of ZYpp (`libzypp`) for installing, removing, and managing packages, as well as managing package repositories on your system.
 
 ZYpp also underlies YaST, a graphical (GUI) tool that provides similar functions to command-line package managers like Zypper.
 
-Learn in this guide how to use Zypper to execute common package management tasks from the command line on your openSUSE or other supported system. The guide covers Zypper's commands for installing, managing, and navigating packages. Additionally, the guide shows you how you can add and update repositories in Zypper.
+In this guide, you learn how to use Zypper to execute common package management tasks from the command line on your openSUSE or other supported systems. The guide covers Zypper's commands for installing, managing, and navigating packages. Additionally, the guide shows you how you can add and update repositories in Zypper.
 
 ## Before You Begin
 
-Before running the commands within this guide, you will need:
+Before running the commands within this guide, you need:
 
 1. **A system running on openSUSE.** Other Linux distributions that employ the Zypper package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance in creating and securing a standard user account.
 
 {{< note respectIndent=false >}}
-Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root user (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
 ## Install Packages
@@ -40,9 +40,9 @@ Zypper's `install` command installs or updates a given package along with the pa
 sudo zypper install php8
 ```
 
-Zypper can also specify a particular version of a package. Take a look further on at the section on [viewing package information](/docs/guides/zypper-package-manager/#view-information-about-packages) for a method to get a list of available versions for a given package.
+Zypper can also specify a particular version of a package. Take a look further at the section on [viewing package information](/docs/guides/zypper-package-manager/#view-information-about-packages) for a method to get a list of available versions for a given package.
 
-Once you have a specific version, append it after the package name using a comparison operator. The simplest form of this is using `=` to specify the exact version.
+Once you have a specific version, append it after the package name using a comparison operator. The simplest form of this is using the `=` operator to specify the exact version.
 
 ```command
 sudo zypper install php8=8.0.29
@@ -56,15 +56,15 @@ sudo zypper install 'php8>=8.0.29'
 
 ## Update Packages
 
-Zypper has two kinds of updates for installed packages. The first, using the `update` command, updates packages to their latest versions. Usually this is what other package managers mean by "update," and with Zypper it is known as *package-wise* updating.
+Zypper has two kinds of updates for installed packages. The first, using the `update` command, updates packages to their latest versions. Usually, this is what other package managers mean by "update," and with Zypper it is known as *package-wise* updating.
 
-The other kind of update available in Zypper uses the `patch` command. Known as *patch-wise* updating, the process does not necessarily update a package to its latest version. Instead, a stable patches may be applied that addresses security issues or other vulnerabilities.
+The other kind of update available in Zypper uses the `patch` command. Known as *patch-wise* updating, the process does not necessarily update a package to its latest version. Instead, stable patches may be applied that address security issues or other vulnerabilities.
 
 The addition of patch-wise updating can be especially helpful when maintaining a production environment. Such an environment places a premium on maintaining stability and compatibility. Patches help keep things stable while still ensuring protection against possible vulnerabilities in your installed packages.
 
-### Package-wise Updates
+### Package-Wise Updates
 
-The `update` command manages package-wise updates. Without any arguments, the command updates all installed packages to their latest versions.
+The `update` command manages package-wise updates. Running the command without any arguments updates all installed packages to their latest versions.
 
 ```command
 sudo zypper update
@@ -82,7 +82,7 @@ Before applying updates, you may want to preview what packages an update would i
 sudo zypper list-updates
 ```
 
-### Patch-wise Updates
+### Patch-Wise Updates
 
 The `patch` command applies patch-wise updates. Running the command applies all necessary patch updates to your installed packages.
 
@@ -116,7 +116,7 @@ You can add the `--clean-deps` option to ensure that the command also uninstalls
 sudo zypper remove --clean-deps php8
 ```
 
-## Search through Packages
+## Search Through Packages
 
 Zypper's `search` command allows you to query packages available in your Zypper repositories. The command takes the search string as an argument.
 
@@ -167,7 +167,7 @@ Version        : 8.0.29-150400.4.34.1
 
 In some cases, the default (latest) version may not be what you need. For instance, the `info` command above shows that the `php8` package installs version `8.0.29`.
 
-Use a honed version of the `search` command like the one below to get a list of available versions of a given package. The `--details` option provides detailed information in the results. The `--match-exact` option ensures that the results only include the named package.
+Use a honed version of the `search` command like the one below to get a list of available versions of a given package. The `--details` option provides detailed information about the results. The `--match-exact` option ensures that the results only include the named package.
 
 ``` command
 sudo zypper search --details --match-exact php8
@@ -189,7 +189,7 @@ Zypper pulls packages, and package information, from its list of package reposit
 sudo zypper repos
 ```
 
-In some cases, a needed package may not be in one of the default repositories. For instance, examples above show that the default repositories have only up to version `8.0.29` of the `php8` package. But PHP has a version `8.2.8` available.
+In some cases, a needed package may not be in one of the default repositories. For instance, the examples above show that the default repositories have only up to version `8.0.29` of the `php8` package. But PHP has a version `8.2.8` available.
 
 Using the `addrepo` command, you can add an additional repository by its URL. Extending the `php8` example, openSUSE has a dedicated PHP repository that includes the package's newer versions.
 
@@ -230,7 +230,7 @@ S | Name                         | Type       | Version           | Arch   | Rep
 
 ## Update Package Repositories
 
-Zypper does not usually require you to manually refresh repository metadata. This contrasts some other package managers, like [APT](/docs/guides/apt-package-manager/), that require manual repository refreshes.
+Zypper does not usually require you to manually refresh repository metadata. This contrasts with some other package managers, like [APT](/docs/guides/apt-package-manager/), that require manual repository refreshes.
 
 Zypper accomplishes this with its *autorefresh* feature. This feature is enabled on all of the default repositories, and it ensures that the repositories are automatically refreshed whenever necessary.
 
