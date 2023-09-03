@@ -7,7 +7,7 @@
   padding: 0 !important;
   position: fixed !important;
   right: 0 !important;
-  z-index: 999 !important;
+  z-index: 2147483647 !important;
 }
 
 #truste-consent-content {
@@ -128,6 +128,19 @@
   .truste-buttonsColumn :is(button, a) {
     padding: 8px 16px;
   }
+}
+
+#truste-consent-content {
+  overflow: visible !important;
+}
+
+#truste-repop-msg {
+  font-size: 14px !important;
+  inset: auto 0 100% !important;
+  line-height: 20px !important;
+  margin: 0 !important;
+  padding: 16px !important;
+  position: absolute !important;
 }
 
 button#cookie-prefs-icon {

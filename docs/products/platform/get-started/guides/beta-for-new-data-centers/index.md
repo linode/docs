@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-07-27
+modified: 2023-08-09
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -67,7 +67,7 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 
 | Data Center | Cluster ID | Cluster URL |
 | --| -- | -- |
-| Chennai, India | `us-maa-1` | `https://us-maa-1.linodeobjects.com` |
+| Chennai, India | `in-maa-1` | `https://in-maa-1.linodeobjects.com` |
 | Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
 | Paris, France | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
 | Stockholm, Sweden | `se-sto-1` | `https://se-sto-1.linodeobjects.com	` |
@@ -137,8 +137,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `in-maa.webconsole.linode.com`
--   **Glish Gateway:** `maa1.glish.linode.com`
+-   **Weblish/Glish Gateway:** `in-maa.webconsole.linode.com`
 
 #### Chicago, IL, USA
 
@@ -152,8 +151,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-ord.webconsole.linode.com`
--   **Glish Gateway:** `ord2.glish.linode.com`
+-   **Weblish/Glish Gateway:** `us-ord.webconsole.linode.com`
 
 #### Paris, France
 
@@ -167,8 +165,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `fr-par.webconsole.linode.com`
--   **Glish Gateway:** `par3.glish.linode.com`
+-   **Weblish/Glish Gateway:** `fr-par.webconsole.linode.com`
 
 #### Stockholm, Sweden
 
@@ -182,8 +179,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `se-sto.webconsole.linode.com`
--   **Glish Gateway:** `sto2.glish.linode.com`
+-   **Weblish/Glish Gateway:** `se-sto.webconsole.linode.com`
 
 #### Washington, DC, USA
 
@@ -197,5 +193,4 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-iad.webconsole.linode.com`
--   **Glish Gateway:** `iad3.glish.linode.com`
+-   **Weblish/Glish Gateway:** `us-iad.webconsole.linode.com`
