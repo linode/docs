@@ -1,8 +1,9 @@
 ---
 slug: using-strapi-cms
 title: "How to Use Strapi for Content Management"
-description: "Strapi provides a flexible, and open-source, headless CMS solution, ready to take on your content management needs. Find out more and learn how you can get started with Strapi in this tutorial."
-keywords: ['strapi tutorial','open source headless cms','strapi hosting']
+description: "Strapi provides a flexible, and open-source, headless CMS solution, ready to take on your content management needs. Find out more and learn how you can get started with Strapi in this guide."
+keywords: ['strapi guide','open source headless cms','strapi hosting']
+tags: ['cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
 published: 2023-05-07
@@ -16,16 +17,16 @@ external_resources:
 
 Strapi is a headless content management system that features a high degree of customization. With customizable APIs and a database-agnostic design, Strapi can be deployed and implemented tailored to your needs. And it is a headless CMS, so you are not tied down to a particular interface for your content.
 
-This tutorial gives you everything you need to get started self-hosting a Strapi instance of your own to manage your content. Follow along to install Strapi and see how it loads and structures content. You can also see a full working example to familiarize yourself with integrating Strapi with your frontend.
+This guide gives you everything you need to get started self-hosting a Strapi instance of your own to manage your content. Follow along to install Strapi and see how it loads and structures content. You can also see a full working example to familiarize yourself with integrating Strapi with your frontend.
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Strapi?
@@ -34,7 +35,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Strapi also works exceptionally well with a Jamstack architecture. Your frontend, using whatever framework you choose, can readily access your content from Strapi APIs, allowing your content to be rendered from markup. And Strapi's APIs can be customized in myriad ways to meet your applications' needs.
 
-To learn more about the Jamstack architecture and what it offers, take a look at our guide [Getting Started with the Jamstack](/docs/guides/what-is-jamstack/).
+To learn more about the Jamstack architecture and what it offers, take a look at our [Getting Started with the Jamstack](/docs/guides/what-is-jamstack/) guide.
 
 ### Why Strapi?
 
@@ -46,7 +47,7 @@ Here is a breakdown of some of the key features that distinguish Strapi.
 
 - Strapi is a *headless CMS*, unlike the popular WordPress solution. This means that Strapi provides content management without being tied to a particular frontend. You can adopt your best fit out of the array of modern frontend frameworks — and freely switch frameworks when you need. Strapi focuses on managing your content and making it available for what meets your needs.
 
-- Strapi is open-source and self-hosted, as opposed to a managed cloud solution like Contentful. You have control of your Strapi instance, whether for more customization or for meeting your security needs. And to help you get what you want out of Strapi, you have its large and active community with a host of tips, tutorials, and answered questions.
+- Strapi is open-source and self-hosted, as opposed to a managed cloud solution like Contentful. You have control of your Strapi instance, whether for more customization or for meeting your security needs. And to help you get what you want out of Strapi, you have its large and [active community](https://strapi.io/community) with a host of tips, tutorials, and answered questions.
 
 - Strapi is fully customizable. From API to data structures, you can readily adapt Strapi to your needs. Most customization can be conducted right from Strapi's API. And beyond that, Strapi is purely open-source JavaScript, meaning that it can all be customized in familiar code should you want to go even deeper.
 
@@ -54,25 +55,25 @@ Here is a breakdown of some of the key features that distinguish Strapi.
 
 Strapi is a self-hosted CMS solution, so you need to install and start running it on your own server. You Strapi instance can be run with Docker, as outlined in the official documentation on [running Strapi in Docker](https://docs.strapi.io/dev-docs/installation/docker).
 
-This tutorial follows Strapi's Node.js setup process, Strapi's preferred installation path and a relatively straightforward one that gives you even more control. Follow along through this section to get Strapi up and running on your server, log into its administrator interface, and start working with content management.
+This guide follows Strapi's Node.js setup process, Strapi's preferred installation path and a relatively straightforward one that gives you even more control. Follow along through this section to get Strapi up and running on your server, log into its administrator interface, and start working with content management.
 
 ### Creating a Strapi Project
 
 Strapi runs as a Node.js project, which this guide sets up using the Node Package Manager (NPM). Once you run the Strapi project-setup script, you can start running your instance and create your administrator user.
 
-1. Install the appropriate version of Node. Follow along with our [Installing and Using NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide. Then install Node.
+1. Install the appropriate version of Node using NVM. Follow along with our [Installing and Using NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide, and then use the following command to install Node:
 
     ```command
     nvm install node
     ```
 
-    The command above installs the latest version of Node, which should be compatible with Strapi. However, Strapi recommends Node version `18`, and you can specify that version more precisely with the command here.
+    The command above installs the latest version of Node, which should be compatible with Strapi. However, Strapi recommends Node version `18`, and you can specify that version more precisely using the following command:
 
     ```command
     nvm install 18
     ```
 
-1. Install Python if you intend to use SQLite for Strapi's database. This is the default behavior with Strapi, and the database used in this tutorial's example. But Strapi also supports other databases, from MySQL to PostgreSQL.
+1. Install Python if you intend to use SQLite for Strapi's database. This is the default behavior with Strapi, and the database used in this guide's example. But Strapi also supports other databases, from MySQL to PostgreSQL.
 
     Refer to our [Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/) guide for steps to install Python on your system. Use the dropdown at the top of the guide to select the appropriate distribution for you.
 
@@ -123,12 +124,12 @@ Whichever way you use to access Strapi, start by navigating to its administrator
 
 ![Strapi initial administrator user creation](strapi-create-admin.png)
 
-From there, you are taken into the administrator panel for your new Strapi instance. Continue on in the tutorial to see how you can start leveraging the administrator interface to manage your content.
+From there, you are taken into the administrator panel for your new Strapi instance. Continue on in the guide to see how you can start leveraging the administrator interface to manage your content.
 
 ![Strapi administrator panel](strapi-welcome.png)
 
 {{< note >}}
-Subsequent sections of this tutorial assume you have followed the [Setting Up for Remote Access](/docs/guides/using-strapi-cms/#setting-up-for-remote-access) section below to configure Strapi for remote access.
+Subsequent sections of this guide assume you have followed the [Setting Up for Remote Access](/docs/guides/using-strapi-cms/#setting-up-for-remote-access) section below to configure Strapi for remote access.
 {{< /note >}}
 
 #### Setting Up for Remote Access
@@ -148,7 +149,7 @@ These steps use `example.com` as the access point, so replace this with your ser
       host: env('HOST', '0.0.0.0'),
       port: env.int('PORT', 1337),
       url: env('PUBLIC_URL', 'http://localhost:1337'),
-  [...]
+      [...]
     ```
 
 1. Open the `.env` file for the Strapi project, and add the line shown here to the file's end. Strapi loads its environment variables from this file at start up.
@@ -165,17 +166,17 @@ These steps use `example.com` as the access point, so replace this with your ser
     PUBLIC_URL=https://example.com:8080
     ```
 
-    However, for convenience the rest of this tutorial assumes you are using the default port `1337`.
+    However, for convenience, the rest of this guide assumes you are using the default port `1337`.
 
 1. Open the port you are using to access Strapi in your system's firewall.
 
-    - On Debian and Ubuntu, manage firwall rules using UFW. Learn more about UFW in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). With UFW configured and running, you should be able to open the necessary port with the command here.
+    - On **Debian** and **Ubuntu**, manage firwall rules using UFW. Learn more about UFW in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). With UFW configured and running, you should be able to open the necessary port using the following command:
 
         ```command
         sudo ufw allow 1337/tcp
         ```
 
-    - On CentOS and similar distributions, manage the firewall rules using Firewalld. Learn more in our guide [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/). With Firewalld configured and running, you should be able to open the necessary port with a set of commands like this.
+    - On **CentOS** and similar distributions, manage the firewall rules using Firewalld. Learn more in our guide [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/). With Firewalld configured and running, you should be able to open the necessary port using the following commands:
 
         ```command
         sudo firewall-cmd --zone=public --add-port=1337/tcp --permanent
@@ -188,7 +189,7 @@ These steps use `example.com` as the access point, so replace this with your ser
     npm run build
     ```
 
-1. Start up Strapi again.
+1. Start up Strapi again using the following command:
 
     ```command
     npm run develop
@@ -223,9 +224,9 @@ As discussed above, you can now navigate to the administrator interface for your
 
 ### Adding Content to Strapi
 
-With Strapi running, you are ready to start adding content. Further on, the tutorial shows you how to put this content to use in an example application. For now, you can see how to structure and manage your content effectively within Strapi's administrator interface.
+With Strapi running, you are ready to start adding content. Further on, the guide shows you how to put this content to use in an example application. For now, you can see how to structure and manage your content effectively within Strapi's administrator interface.
 
-Make sure you have Strapi running as above, using the `npm run develop` command. Here it is also assumed that you have Strapi running for remote access on `http://example.com:1337`.
+Make sure you have Strapi running as above, using the `npm run develop` command. Here, it is also assumed that you have Strapi running for remote access on `http://example.com:1337`.
 
 Strapi's content structures and entries are managed by two tools: the *Content-type Builder* and the *Content Manager*. To help demonstrate the distinct roles these tools play, each tool is covered separately below.
 
@@ -243,27 +244,27 @@ The Content-type Builder is only accessible while running Strapi in `develop` mo
 
 For applications that need content in sets — like blogs — you should at least have a collection type. The example later on also uses Strapi for its homepage content, so these steps also set up a single type for that.
 
-1. Create a `Post` collection type. Navigate to **Content-type Builder**, and select the **Create new collection type** option from the inner left menu. Enter `Post` for the **Display Name**, and the API-related fields should populate on their own. Select **Continue**.
+1. Create a `Post` collection type. Navigate to **Content-type Builder**, and select the **Create new collection type** option from the inner left menu. Enter `Post` for the **Display name** field, and the API-related fields should populate on their own. Click **Continue**.
 
     [![Strapi content builder for a "Post" collection](strapi-builder-post-1_small.png)](strapi-builder-post-1.png)
 
-    In the form for adding a field to the new collection, select **Text**. Then on the next form enter `name` for the **Name**, and select **Finish**.
+    In the form for adding a field to the new collection, select **Text**. Then on the next form enter `name` for the **Name** field, and click **Finish**.
 
     [![Strapi content builder, adding a field for the "Post" collection](strapi-builder-post-2_small.png)](strapi-builder-post-2.png)
 
-    From the *Post* page, select the **Add another field to this collection type** option. On the resulting form for this field, select **Rich Text**, and then enter `body` for the **Name**.
+    From the *Post* page, select the **Add another field to this collection type** option. On the resulting form for this field, select **Rich Text**, and then enter `body` for the **Name** field.
 
     ![Strapi with a completed "Post" collection](strapi-builder-post-built.png)
 
-    Finally, select **Save** from the upper right. Strapi restarts to apply the changes you have made.
+    Click **Save** from the upper right. Strapi restarts to apply the changes you have made.
 
-1. Create a `Homepage` single type. Navigate to **Content-type Builder**, and select the **Create new single type** option from the inner left menu. Enter `Homepage` for the **Display Name**, and as before the API-related fields should automatically populate. Select **Continue**.
+1. Create a `Homepage` single type. Navigate to **Content-type Builder**, and select the **Create new single type** option from the inner left menu. Enter `Homepage` for the **Display name** field, and as before the API-related fields should automatically populate. Click **Continue**.
 
     [![Strapi content builder for a "Home" single](strapi-builder-home_small.png)](strapi-builder-home.png)
 
-    Just as with the collection type above, select **Text** for the field, and name it `name`. Then, from the *Homepage* page, select to **Add another field to this single type**. This time, select the **Text** option, and on the next form give the name `description` and select the **Long text** option before selecting **Finish**.
+    Just as with the collection type above, select **Text** for the field, and name it `name`. Then, from the *Homepage* page, select the **Add another field to this single type** option. This time, select the **Text** option, and on the next form give the name `description` and select the **Long text** option before clicking **Finish**.
 
-    As before, complete the new type by selecting the **Save** button from the upper right and waiting on Strapi to restart and apply the changes.
+    As before, complete the new type by clicking the **Save** button from the upper right and waiting for Strapi to restart and apply the changes.
 
     ![Strapi with a completed "Home" single](strapi-builder-home-built.png)
 
@@ -275,39 +276,39 @@ For the example here, you should provide some content for the *Homepage* single 
 
 1. Add content for the *Homepage* single type. Navigate to the **Content Manager**, and select **Homepage** from the **Single Types** section of the inner left menu.
 
-    Recall from above that this single type has two fields: *name* and *description*. For *name*, this tutorial uses `Example Site` and for *description* it uses `Welcome to your example website, featuring content from Strapi!`.
+    Recall from above that this single type has two fields: **name** and **description**. For **name** field, this guide uses `Example Site` and for **description** field, it uses `Welcome to your example website, featuring content from Strapi!`.
 
     [![Developing the Home type content in Strapi](strapi-home-entry_small.png)](strapi-home-entry.png)
 
-    Select **Save** from the upper right to save the changes you have made. Then select **Publish** from the upper right to move the entry from *Draft* to *Published* status.
+    Click **Save** from the upper right to save the changes you have made. Then, click **Publish** from the upper right to move the entry from *Draft* to *Published* status.
 
-1. Add content entries for the *Post* collection type. Navigate to the **Content Manager**, and select **Post** from the **Collection Types** section of the inner left menu. Select **Create new entry**, and complete the form to add a new *post* item.
+1. Add content entries for the *Post* collection type. Navigate to the **Content Manager**, and select **Post** from the **Collection Types** section of the inner left menu. Click **Create new entry**, and complete the form to add a new *post* item.
 
     [![Adding a new Post entry to Strapi](strapi-post-entry_small.png)](strapi-post-entry.png)
 
-    This tutorial's example creates three entries using the steps above. Each entry in this collection type has a *name* and a *body*, and these are filled out as follows for the example content.
+    This guide's example creates three entries using the steps above. Each entry in this collection type has **name** and **body** fields, and these fields are filled out as follows for the example content.
 
-    - *name*: `First Post`; *body*: `This is the first post made on the example website.`
+    - **name**: `First Post`; **body**: `This is the first post made on the example website.`
 
-    - *name*: `Another Post`; *body*: `The example website has even more posts!`
+    - **name**: `Another Post`; **body**: `The example website has even more posts!`
 
-    - *name*: `Post the Third`; *body*: `For the example website, this is the last post`
+    - **name**: `Post the Third`; **body**: `For the example website, this is the last post`
 
-    After completing the form for each entry, select **Save** from the upper right to save the new entry. Then select the **Publish** option from the upper right, which moves the entry from *Draft* to *Published* status.
+    After completing the form for each entry, click **Save** from the upper right to save the new entry. Then, click the **Publish** option from the upper right, which moves the entry from *Draft* to *Published* status.
 
 ### Granting Access
 
 Strapi has a full and robust access control system. Within the Strapi administrator panel, you can configure users and roles with granular access and restrictions.
 
-You could explore the examples in this tutorial by creating a *Public* role with read access to the content types created above. And you can see how that works in the official [quick-start documentation](https://docs.strapi.io/dev-docs/quick-start#step-3-set-roles--permissions).
+You could explore the examples in this guide by creating a *Public* role with read access to the content types created above. And you can see how that works in the official [quick-start documentation](https://docs.strapi.io/dev-docs/quick-start#step-3-set-roles--permissions).
 
-However, a more illustrative example for this tutorial has Strapi generate an API token with the specific permissions the example application needs — and no more.
+However, a more illustrative example for this guide has Strapi generate an API token with the specific permissions the example application needs — and no more.
 
 1. From the Strapi administrator panel, navigate to **Settings** > **API Tokens**, and select **Create new API token** from the upper right.
 
 1. Complete the resulting form to create an API token to be used in the example application further on.
 
-    The tutorial's examples assume the following settings, leaving everything else at default values.
+    The guide's examples assume the following settings, leaving everything else at default values.
 
     - **Name**: `example-app-token`
 
@@ -323,7 +324,7 @@ However, a more illustrative example for this tutorial has Strapi generate an AP
 
         - **Content-type-builder**: *getComponents*, *getComponent*, *getContentTypes*, *getContentType*
 
-1. Select **Save**, and Strapi displays your new token. Be sure to copy this token, as Strapi does not allow you to look it up later.
+1. Click **Save**, and Strapi displays your new token. Be sure to copy this token, as Strapi does not allow you to look it up later.
 
 You can test your token and access to the Strapi REST API using cURL. Here is an example cURL command that uses the API token to fetch all posts. Replace `http://example.com:1337` with your actual Strapi address and `<STRAPI_API_TOKEN>` with you actual API token.
 
@@ -380,9 +381,9 @@ curl http://example.com:1337/api/posts -H "Authorization: bearer <STRAPI_API_TOK
 
 You have your own Strapi CMS operating now. With Strapi, you have a range of ways you can use the managed content in your applications — from REST and GraphQL APIs to specialized libraries.
 
-The rest of this tutorial gives you a sound working example for using your Strapi CMS for website content using a modern frontend framework.
+The rest of this guide gives you a sound working example for using your Strapi CMS for website content using a modern frontend framework.
 
-The example uses [Next.js](https://nextjs.org/) to build a website. You can learn more about Next.js in our guide [Getting Started with Next.js](/docs/guides/getting-started-next-js/).
+The example uses [Next.js](https://nextjs.org/) to build a website. You can learn more about Next.js in our [Getting Started with Next.js](/docs/guides/getting-started-next-js/) guide.
 
 But the example uses straightforward HTTP calls and concepts that should make everything readily adaptable to most any other framework.
 
@@ -401,7 +402,7 @@ For the example website, you need to use NPM to create a new Next.js project. Th
     The setup script presents you with a series of prompts for how you want to initially configure the project. For this example, choose the default option for each prompt, which you can do by pressing <kbd>Enter</kbd>.
 
     {{< note >}}
-    You may need to install Git for the script to run. You should be able to do so from your system's package manager: `sudo apt install git` on Debian and Ubuntu and `sudo dnf install git` on CentOS and similar systems.
+    You may need to install Git for the script to run. You should be able to do so from your system's package manager: `sudo apt install git` on **Debian** and **Ubuntu** and `sudo dnf install git` on **CentOS** and similar systems.
     {{< /note >}}
 
 1. Install the Axios and React Markdown packages to the project. Axios facilitates HTTP calls, and React Markdown can convert Markdown content from Strapi to webpage content.
@@ -410,7 +411,7 @@ For the example website, you need to use NPM to create a new Next.js project. Th
     npm install --save axios react-markdown
     ```
 
-1. Create a `.env.local` file in the base of the project directory. This file just needs two variables, as shown in the example here. Replace the `STRAPI_ADDRESS` value with your actual Strapi address, and replace the `STRAPI_AUTH_HEADER` value with your actual Strapi API token.
+1. Create a `.env.local` file in the base of the project directory. This file just needs two variables, as shown in the example below. Replace the `STRAPI_ADDRESS` value with your actual Strapi address, and replace the `STRAPI_AUTH_HEADER` value with your actual Strapi API token.
 
     ```file {title=".env.local"}
     STRAPI_ADDRESS='http://example.com:1337'
