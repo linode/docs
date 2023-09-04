@@ -21,7 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 8
-aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/']
+aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/','/lamp-guides/centos-5.3/index-print/']
 authors: ["Linode"]
 ---
 

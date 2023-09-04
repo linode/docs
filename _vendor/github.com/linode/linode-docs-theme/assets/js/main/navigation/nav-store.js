@@ -146,6 +146,15 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 			history.pushState({}, '', href);
 		},
 
+		pushTopResults(queryString) {
+			// Add a noindex meta tag to the page so it doesn't get indexed.
+			let meta = document.createElement('meta');
+			meta.name = 'robots';
+			meta.content = 'noindex';
+			document.head.appendChild(meta);
+			this.pushState('/docs/topresults/' + queryString);
+		},
+
 		scrollToNavBarIfPinned() {
 			if (!this.pinned) {
 				return;

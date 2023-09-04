@@ -8,6 +8,8 @@ tab_group_main:
 
 ## Blog Posts
 
+Some of the blog posts about custom images:
+
 - [Resize Disk Images](https://www.linode.com/blog/linode/resize-disk-images/)
 
 - [Release Day: Automating the Linux Distro (featuring Ubuntu 20.04)](https://www.linode.com/blog/linux/release-day-automating-the-linux-distro-featuring-ubuntu-20-04/)
@@ -17,6 +19,8 @@ tab_group_main:
 - [Clone a Linode to another Linode](https://www.linode.com/blog/linode/clone-a-linode-to-another-linode/)
 
 ## Community Posts
+
+Some of the community posts that answer questions related to custom images:
 
 - [What’s the deal with Linode Images?](https://www.linode.com/community/questions/17805/whats-the-deal-with-linode-images)
 

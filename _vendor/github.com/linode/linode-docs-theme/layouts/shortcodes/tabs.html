@@ -1,6 +1,7 @@
 {{- $class := .Get "class" | default "" -}}
 {{/* overflow-anchor: none; greatly reduces flicker in Chrome when content in tabs above expands when active. */}}
 <div
+  x-cloak
   x-data="lncTabs()"
   class="{{ $class }}"
   style="overflow-anchor: none;"
@@ -16,7 +17,7 @@
   <div class="border border-gray-500 p-4">
     {{- range (.Scratch.Get "tabsContent") -}}
       <div
-        x-show="isActive({{ .ordinal }})"
+        x-ref="tabs-content-{{ .ordinal }}"
         data-testid="tabs-content-{{ .ordinal }}">
         {{ .content }}
       </div>

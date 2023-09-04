@@ -1,0 +1,72 @@
+{{ $public := "public" }}
+{{ $githubBasePath := "https://github.com/linode/docs/edit/develop/docs" }}
+{{ if not site.IsServer }}
+{{/*  Netlify */}}
+{{ $public = "public/docs" }}
+{{ end }}
+{{ $isTest := or (not (not site.IsServer)) (site.Params.TestEnv) }}
+{{ if not $isTest }}
+{}
+{{ else }}
+{{ $isTestOrProduction := or (site.Params.TestEnv) hugo.IsProduction -}}
+{{ $brokenlinks := slice -}}
+{{ with site.Home.Store.Get "brokenlinks" -}}
+    {{- range . -}}
+    {{ $sourcePath := "" -}}
+    {{ $sourceUri := "" -}}
+    {{ $targetPath := "" -}}
+    {{ $targetUri := "" -}}
+    {{ with .source -}}
+        {{ with.File -}}
+            {{ $sourcePath = .Path -}}
+            {{- if $isTestOrProduction -}}
+            {{ $sourceUri = print $githubBasePath "/" $sourcePath -}}
+            {{- else -}}
+            {{ $sourceUri = print "vscode://file" .Filename -}}
+            {{ end -}}
+        {{ end -}}
+    {{ end -}}
+    {{ with .target -}}
+        {{ with.File -}}
+            {{ $targetPath = .Path -}}
+            {{ if $isTestOrProduction -}}
+            {{ $targetUri = print $githubBasePath "/" $sourcePath -}}
+            {{- else -}}
+            {{ $targetUri = print "vscode://file" .Filename -}}
+            {{ end -}}
+        {{ end -}}
+    {{ end -}}
+    {{ $isBroken := true -}}
+    {{ $path := .path }}
+    {{ if eq .reason "Fragment not found" }}
+    {{/* There may be some false negatives from the first check (e.g. raw HTML iported). Open the result file and check. */}}
+    {{ $content := readFile (path.Join $public $path "index.html" ) -}}
+    {{ if $content }}
+    {{ $hasHeading := strings.Contains $content (printf "id=\"%s\"" .fragment)}}
+    {{ $isBroken = not $hasHeading -}}
+    {{ end }}
+    {{ end }}
+    {{ if eq .reason "Not found" }}
+    {{ $isBroken = not (fileExists (path.Join $public $path )) -}}
+    {{ if $isBroken }}
+    {{/* Maybe HTML */}}
+    {{ $isBroken = not (fileExists (path.Join $public $path "index.html" )) -}}
+    {{ end }}
+    {{ end }}
+    {{- if $isBroken -}}
+    {{- $brokenlinks = $brokenlinks | append 
+        (dict 
+            "link" .link
+            "fragment" .fragment
+            "reason" .reason
+            "sourceRef" .sourceRef
+            "sourcePath" $sourcePath
+            "sourceUri" $sourceUri
+            "targetPath" $targetPath
+            "targetUri" $targetUri ) -}}
+    {{- end -}}
+    {{ end -}}
+{{ end -}}
+{{ $m := dict "brokenlinks" $brokenlinks -}}
+{{ $m | jsonify (dict "indent" "  ") -}}
+{{ end }}
