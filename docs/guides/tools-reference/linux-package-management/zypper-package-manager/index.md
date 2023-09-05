@@ -5,7 +5,7 @@ description: "In this guide, learn how to use Zypper, the default package manage
 keywords: ['zypper','zypp','opensuse']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
-published: 2023-08-10
+published: 2023-09-05
 modified_by:
   name: Nathaniel Stickman
 external_resources:
@@ -14,9 +14,7 @@ external_resources:
 - '[openSUSE Docs: Managing Software with Command Line Tools](https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-sw-cl.html)'
 ---
 
-Zypper is a command-line package management system for the openSUSE and SUSE Linux Enterprise (SLE) distributions. Zypper builds on the software-management functions of ZYpp (`libzypp`) for installing, removing, and managing packages, as well as managing package repositories on your system.
-
-ZYpp also underlies YaST, a graphical (GUI) tool that provides similar functions to command-line package managers like Zypper.
+Zypper is a command-line package management system for the openSUSE and SUSE Linux Enterprise (SLE) distributions. Zypper builds on the software-management functions of ZYpp (`libzypp`) for installing, removing, and managing packages, as well as managing package repositories on your system. ZYpp also underlies YaST, a graphical (GUI) tool that provides similar functions to command-line package managers like Zypper.
 
 In this guide, you learn how to use Zypper to execute common package management tasks from the command line on your openSUSE or other supported systems. The guide covers Zypper's commands for installing, managing, and navigating packages. Additionally, the guide shows you how you can add and update repositories in Zypper.
 
@@ -26,11 +24,11 @@ Before running the commands within this guide, you need:
 
 1. **A system running on openSUSE.** Other Linux distributions that employ the Zypper package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance in creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance with creating and securing a standard user account.
 
-{{< note respectIndent=false >}}
-Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root user (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
-{{< /note >}}
+    {{< note >}}
+    Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root user (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+    {{< /note >}}
 
 ## Install Packages
 

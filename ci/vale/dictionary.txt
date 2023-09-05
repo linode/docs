@@ -2672,4 +2672,5 @@ zpool
 zsh
 zshrc
 zxvf
+ZYpp
 Zypper
