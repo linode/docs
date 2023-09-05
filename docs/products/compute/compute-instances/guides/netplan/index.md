@@ -1,35 +1,42 @@
 ---
 slug: netplan
 title: "Network Configuration Using Netplan"
-description: 'Learn how to manually configure your Compute Instance’s networking using the netplan utility on Ubuntu 18.04 and newer.'
-og_description: 'Learn how to manually configure your Compute Instance’s networking using the netplan utility on Ubuntu 18.04 and newer.'
+description: "Learn how to manually configure your Compute Instance’s networking using the netplan utility on Ubuntu 18.04 and newer."
 keywords: ['netplan','network configuration','ip address']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-08-16
+published: 2023-09-05
 modified_by:
   name: Nathaniel Stickman
 external_resources:
 - '[Netplan Documentation](https://netplan.readthedocs.io/en/stable/)'
 ---
 
-[Netplan](https://netplan.io/) is a utility designed to make network configurations easier and more descriptive. It operates on Ubuntu 18.04 and newer, and works by abstracting lower level configurations in [systemd-networkd](/docs/products/compute/compute-instances/guides/systemd-networkd/) and [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/). Simply provide a YAML file describing your desired network setup, and Netplan implements the necessary back-end configurations to realize it.
+[Netplan](https://netplan.io/) is a utility designed to make network configurations easier and more descriptive. It operates on Ubuntu 18.04 (and newer) and works by abstracting lower level configurations in [systemd-networkd](/docs/products/compute/compute-instances/guides/systemd-networkd/) and [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/). Create a YAML file describing your desired network setup and Netplan implements the necessary back-end configurations to realize it.
 
 {{< note >}}
 This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
+{{< /note >}}
+
+{{< note type="warning" >}}
+By default, Linode's Network Helper tool manages networking in Ubuntu using systemd-networkd directly instead of Ubuntu's Netplan management tool. To start using Netplan, you must first remove the default systemd-networkd configuration file. This command is provided below and also included within the [Configuring IP Addresses Manually](#configuring-ip-addresses-manually) section.
+
+```command
+sudo rm /etc/systemd/network/05-eth0.network
+```
 {{< /note >}}
 
 ## Configuration Files
 
 The following details show where and how Netplan's configuration files operate:
 
--   **File Extension**: `.yaml`
+-   **File extension**: `.yaml`
 
--   **File Location**: `/etc/netplan/`
+-   **File location**: `/etc/netplan/`
 
--   **Naming Convention**: `PRIORITY-NAME.yaml`, with `PRIOTITY` being a two-digit number (`01` through `99`) that defines file ordering (processed in alpha-numeric order) and with `NAME` being a short, descriptive title.
+-   **Naming convention**: `[priority]-[name].yaml`, with *[priority]* being a two-digit number (`01` through `99`) defines file ordering (processed in alpha-numeric order) and with *[name]* being a short, descriptive title
 
--   **Default Configuration File**: `/etc/netplan/01-netcfg.yaml`
+-   **Default configuration file**: `/etc/netplan/01-netcfg.yaml`
 
 ## Starter Configuration
 
@@ -48,13 +55,11 @@ network:
 
 -   `renderer`: Defines which underlying network configuration tool to use, either `networkd` or `NetworkManager`. The default is `networkd`.
 
--   [ethernets](https://netplan.readthedocs.io/en/stable/netplan-yaml/#properties-for-device-type-ethernets): Configures physical network interfaces.
+-   `ethernets`: Configures physical network interfaces. For more details, review the associated [Properties for device types](https://netplan.readthedocs.io/en/stable/netplan-yaml/#properties-for-device-type-ethernets) section in the official documentation.
 
     In the default configuration, `eth0` introduces a configuration mapping for the primary Ethernet interface. The only option set in this case indicates that DHCP (`dhcp4`) should be used, enabling dynamic IP address assignment.
 
 Learn more about the full extent of Netplan's YAML configuration options in the [official documentation](https://netplan.readthedocs.io/en/stable/netplan-yaml/).
-
-To get started, the rest of this guide covers many configuration use cases, providing the steps needed to achieve them.
 
 ## Configuring IP Addresses Manually
 
@@ -74,13 +79,17 @@ To get started, the rest of this guide covers many configuration use cases, prov
 
 1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 
-1.  Edit your network configuration file using a text editor like [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/) with root permissions.
+1.  Remove the systemd-networkd configuration file that was automatically generated by Network Helper:
+
+    ```command
+    sudo rm /etc/systemd/network/05-eth0.network
+    ```
+
+1.  Perform any necessary configuration steps as outlined in the workflows below. You can edit your network configuration file using a text editor like [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/) with root permissions.
 
     ```command
     sudo nano /etc/netplan/01-netcfg.yaml
     ```
-
-1.  Perform any necessary configuration steps as outlined in the workflows below. When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
 1.  Once you've edited the configuration file to fit your needs, you need to generate matching backend configurations and apply the changes. To do so, run the follow Netplan commands:
 
@@ -98,10 +107,23 @@ In Netplan, IP address configuration uses the `addresses` option beneath the int
   ethernets:
     eth0:
       addresses:
-        - 192.0.2.123/24
+        - [ip-address]/[prefix]
+     routes:
+      - to: default
+        via: [gateway-ip]
 ```
 
-Each `addresses` entry takes an IP address along with the subnet prefix length. Learn more about this with a breakdown in the [Configuring Additional IPv4 Addresses](/docs/products/compute/compute-instances/guides/netplan/#configuring-additional-ipv4-addresses) section further below.
+Each `addresses` entry takes an IP address along with the subnet prefix length. In addition, you also need to add a route to the gateway.
+
+-   **[ip-address]**: The IP address to be statically configured. The address can be IPv4 (e.g `192.0.2.2`) or IPv6, as shown in the [Configuring Additional IPv6 Addresses](/docs/products/compute/compute-instances/guides/netplan/#configuring-additional-ipv6-addresses) section further below.
+
+-   **[prefix]**: The subnet prefix for the address. This depends on the type of IPv4 address you are adding:
+
+    -   Public IPv4 addresses: `/24`
+
+    -   Private IPv4 addresses: `/17`
+
+-   **[gateway-ip]**: The IPv4 address of the gateway corresponding to the primary IPv4 address on your instance.
 
 ## Configuring the Primary IPv4 Address through DHCP
 
@@ -117,30 +139,26 @@ The default Netplan configuration file shows how to enable DHCP on an interface.
 ```
 
 {{< note type="warning" >}}
-When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on your Compute Instance. If this happens, any tool or system using the original IPv4 address is no longer able to connect.
+When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on this instance from the Cloud Manager, Linode CLI, or Linode API. If this happens, any tool or system using the original IPv4 address is no longer able to connect.
 {{< /note >}}
 
 ## Configuring Additional IPv4 Addresses
 
-You can configure additional IPv4 addresses within Netplan by adding `addresses` entries beneath the interface.
+You can configure additional IPv4 addresses within Netplan by adding them to the `addresses` list/array.
 
 ```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
 ...
   ethernets:
     eth0:
       addresses:
-        - IP_ADDRESS/SUBNET_PREFIX
+        - 192.0.2.17/24
+        - [ip-address]/[prefix]
+     routes:
+      - to: default
+        via: 192.0.2.1
 ```
 
-The placeholder in the example above shows how each `addresses` entry consists of two parts: the IP address and the subnet prefix. For an IPv4 address, this breaks down as follows:
-
--   **IP_ADDRESS**: The IP address to be statically configured. The address can be IPv4 (e.g `192.0.2.2`) or IPv6, as shown in the [Configuring Additional IPv6 Addresses](/docs/products/compute/compute-instances/guides/netplan/#configuring-additional-ipv6-addresses) section further below.
-
--   **SUBNET_PREFIX**: The subnet prefix for the address. This depends on the type of IPv4 address you are adding:
-
-    -   Public IPv4 addresses: `/24`
-
-    -   Private IPv4 addresses: `/17`
+Replace *[ip-address]* with the additional IPv4 address and *[prefix]* with either `24` for public addresses or `17` for private addresses. To learn more, see the [Changing the Primary IPv4 Address](#changing-the-primary-ipv4-address) section above.
 
 ## Configuring the Primary IPv6 Address through SLAAC
 
@@ -174,14 +192,18 @@ You can configure additional IPv6 addresses just as you would IPv4 addresses, by
   ethernets:
     eth0:
       addresses:
-        - IP_ADDRESS/SUBNET_PREFIX
+        - 192.0.2.17/24
+        - [ip-address]/[prefix]
+     routes:
+      - to: default
+        via: 192.0.2.1
 ```
 
 Each `addresses` entry consists of two parts: the IP address and the subnet prefix. For an IPv6 address, that breaks down as follows:
 
--   **IP_ADDRESS**: The IP address to be statically configured. The address can be IPv6 (e.g. `2001:db8:e001:1b8c::2`) or IPv4 as shown further above.
+-   **[ip-address]**: The IP address to be statically configured. The address can be IPv6 (e.g. `2001:db8:e001:1b8c::2`) or IPv4 as shown further above.
 
--   **SUBNET_PREFIX**: The subnet prefix for the address. This depends on the type of IPv6 address you are adding:
+-   **[prefix]**: The subnet prefix for the address. This depends on the type of IPv6 address you are adding:
 
     -   IPv6 SLAAC address: `/128` (though it is recommended to configure this automatically through SLAAC, as shown in the previous section).
 
