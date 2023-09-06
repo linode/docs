@@ -1,8 +1,5 @@
 ---
 slug: use-nginx-as-a-front-end-proxy-and-software-load-balancer
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'NGINX web server can function as a capable load balancer in addition to serving static and dynamic content. This guide shows how to use it as a front-end proxy as well.'
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 tags: ["nginx", "proxy"]
@@ -18,6 +15,7 @@ external_resources:
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
  - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 dedicated_cpu_link: true
+authors: ["Linode"]
 ---
 
 The NGINX web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because NGINX uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.

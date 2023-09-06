@@ -1,25 +1,20 @@
 ---
 slug: getting-started-next-js
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Next.js has risen as a flexible and capable framework on top of React. With built-in features like routing and server-side rendering, Next.js has the ability to jump start your React application. This tutorial covers everything you need to get started with Next.js"
 keywords: ['next js vs react', 'what is next js', 'set up a next js app']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-19
+published: 2023-03-08
 modified_by:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 title: "Getting Started with Next.js"
 title_meta: "Create a Next.js App"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Next.js: Introduction](https://nextjs.org/learn/foundations/about-nextjs)'
 - '[Next.js: Create a Next.js App](https://nextjs.org/learn/basics/create-nextjs-app)'
 - '[freeCodeCamp: Get Started with Next.js – The React Library your Project Needs](https://www.freecodecamp.org/news/nextjs-tutorial/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Next.js is a framework built on top of React, extending React with a range of features for modern web development. Next gives your React applications ready access to features like routing and server-side rendering. At the same time, Next.js brings optimizations and base structures to enhance the experience both for developers and end users.
@@ -30,9 +25,9 @@ Learn all that you need to get started with Next.js in this tutorial. It explain
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -45,7 +40,7 @@ Learn all that you need to get started with Next.js in this tutorial. It explain
             sudo dnf upgrade
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Next.js?

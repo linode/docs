@@ -29,7 +29,6 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   margin-bottom: 0;
 }
 
-
 .content a {
   @apply text-brand hover:text-green-400;
 }
@@ -92,6 +91,10 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   overflow: inherit;
 }
 
+.max-w-content {
+  @apply max-w-4xl;
+}
+
 /*  Chroma overrides. Keep them here as chroma.css is auto generated.  */
 .chroma .lntd:first-of-type {
   border-right: 1px #dedee3 solid;
@@ -134,14 +137,47 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   background-color: transparent;
 }
 
+.content div.overflow-table {
+  position: relative;
+  display: block;
+  overflow-x: auto;
+}
+
+.content div.overflow-table.first-sticky {
+}
+
+.content div.overflow-table.first-sticky table th:first-child,
+.content div.overflow-table.first-sticky table td:first-child {
+  @apply sticky left-0 z-auto bg-white;
+}
+
+.content div.overflow-table tbody tr {
+  @apply even:bg-opacity-50;
+}
+
+.content table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+}
+
 .content table {
   @apply border-collapse mobile:-mx-4;
+  border-style: hidden;
+}
+
+.content div.overflow-table > table {
+  @apply border-collapse mobile:mx-0;
   border-style: hidden;
 }
 
 @screen mobile {
   .content table {
     width: calc(100% + 2rem);
+  }
+
+  .content div.overflow-table table {
+    width: 100%;
   }
 }
 
@@ -165,8 +201,12 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   border-bottom-right-radius: 10px;
 }
 
+.content tbody tr {
+  @apply bg-selected;
+}
+
 .content tbody tr td {
-  @apply bg-selected border-b;
+  @apply border-b border-selected;
 }
 
 .content tbody td code {

@@ -1,8 +1,5 @@
 ---
 slug: create-a-python-virtualenv-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on Debian 10.
 keywords: ["python", "python virtual environment", "virtualenv", "debian 10"]
 tags: ["python","debian"]
@@ -24,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/python/create-a-python-virtualenv-on-debian-10/']
+authors: ["Linode"]
 ---
 
 ## What is a Python Virtual Environment?
@@ -60,11 +58,13 @@ By default, [Python 3.7.3](https://docs.python.org/3.6/whatsnew/3.6.html) and [P
 
         virtualenv env
 
-    {{< disclosure-note "Change the Python Interpreter Version">}}
+    {{< note type="secondary" title="Change the Python Interpreter Version" isCollapsible=true >}}
 If you would like to create a virtual environment using Python3, use the `--python` option to pass the Python version you'd like to use.
 
+    ```command
     virtualenv --python=python3 env
-    {{</ disclosure-note >}}
+    ```
+    {{< /note >}}
 
     The command creates a new directory with the name you assigned to your virtual environment. This directory contains all of the isolated files, packages, modules, and executables that is used by your new environment.
 

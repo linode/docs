@@ -1,8 +1,5 @@
 ---
 slug: deploy-in-code-with-pulumi
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Learn how to install Pulumi, import the Linode module for Pulumi, and write your first Pulumi programs.'
 keywords: ["pulumi", "configuration management", "infrastructure as code", "iac", "javascript", "python"]
 tags: ["debian"]
@@ -16,6 +13,7 @@ external_resources:
 - '[Pulumi API reference](https://pulumi.io/reference/pkg/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
 aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/']
+authors: ["Linode"]
 ---
 
 ## What is Pulumi?

@@ -1,8 +1,5 @@
 ---
 slug: what-is-systemd
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with an introduction to systemd, a Linux initialization system and service monitor daemon, as well as systemd unit files.'
 keywords: ['systemd','linux', 'init', 'unit files']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,13 +8,12 @@ modified: 2018-09-12
 modified_by:
   name: Linode
 title: "What is systemd?"
-contributor:
-  name: Linode
 external_resources:
 - '[systemd Wiki](https://www.freedesktop.org/wiki/Software/systemd/)'
 - '[systemd GitHub](https://github.com/systemd/systemd)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-systemd/']
+authors: ["Linode"]
 ---
 
 systemd is a Linux initialization system and service manager that includes features like on-demand starting of daemons, mount and automount point maintenance, snapshot support, and processes tracking using Linux control groups. systemd provides a logging daemon and other tools and utilities to help with common system administration tasks.
@@ -53,8 +49,7 @@ systemd introduces the concept of *systemd units* and there are several types, s
 
 Expand the note below for a comprehensive list of all available systemd unit types.
 
-{{< disclosure-note "systemd Unit Types">}}
-
+{{< note type="secondary" title="systemd Unit Types" isCollapsible=true >}}
 | Unit Type | File Extension | Description |
 | --------- | -------------- | ----------- |
 | Service unit | `.service` | A system service. |
@@ -69,8 +64,7 @@ Expand the note below for a comprehensive list of all available systemd unit typ
 | Socket unit |	`.socket` | An inter-process communication socket. |
 | Swap unit | `.swap` |	A swap device or a swap file. |
 | Timer unit | `.timer` | A systemd timer. |
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 For most distributions using systemd, unit files are stored in the following directories:
 

@@ -1,8 +1,5 @@
 ---
 slug: how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'How to use kubectl, Terraform, and the Linode Terraform K8s module to create and configure Terraform configuration files and deploy a Kubernetes cluster.'
 keywords: ['terraform','kubernetes','orchestration','containers','k8s','kubectl','Kubernetes Terraform installer for Linode Instances','terraform-linode-k8s']
 tags: ["kubernetes", "terraform", "container"]
@@ -14,12 +11,11 @@ modified_by:
   name: Linode
 title: "Provision Unmanaged Kubernetes Cluster using Terraform"
 title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
-contributor:
-  name: Linode
 external_resources:
 - '[Kubernetes Terraform installer for Linode Instances](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)'
 aliases: ['/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/']
 deprecated: true
+authors: ["Linode"]
 ---
 
 [Terraform](https://www.terraform.io/), the orchestration tool by [HashiCorp](https://www.hashicorp.com/), can be used to deploy a Kubernetes cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes(K8s) cluster running on Ubuntu, and simplifies many of the steps involved in deploying a Kubernetes cluster with [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/). After creating master and worker nodes, the module connects over SSH to these instances and installs kubeadm, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to the `/opt/bin` directory. It also initializes kubeadm, joins the worker nodes to the master, and configures kubectl to control the cluster. Calico is installed for the container networking interface of the cluster. A kubectl config file is installed to the local environment which connects to the API server of the cluster.

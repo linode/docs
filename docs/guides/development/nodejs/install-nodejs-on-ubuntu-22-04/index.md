@@ -1,8 +1,5 @@
 ---
 slug: install-nodejs-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'You need to know how to install Node.JS on Ubuntu 22.04 Linux if you work on a cloud server with cloud apps. This tutorial gets you started? ✓ Click here!'
 keywords: ['Install Node.JS on Ubuntu 22.04','Node.JS','Node.JS Ubuntu 22.04','Ubuntu 22.04 Node.JS','Install Node.JS Linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,22 +8,21 @@ modified_by:
   name: Linode
 title: "How to Install Node.JS on Ubuntu 22.04"
 title_meta: "Installing Node.JS on Ubuntu 22.04"
-contributor:
-  name: John Mueller
 external_resources:
 - '[Installati.one: How To Install node-security on Ubuntu 22.04](https://installati.one/ubuntu/22.04/node-security/)'
+authors: ["John Mueller"]
 ---
 
 Developers use [Node.JS](https://nodejs.org/) to perform [many tasks](https://nodejs.org/en/about/). It's used to install other applications, run server-side code, and execute JavaScript for user environments such as web applications. This guide shows you how to install Node.JS on Ubuntu 22.04.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing Node.JS

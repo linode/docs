@@ -1,21 +1,16 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide provides you with step-by-step instructions for deploying your own FileCloud Server on a Linode using the One-Click Marketplace Apps."
 keywords: [ 'filecloud','marketplace', 'server']
 tags: ["cloud-manager","linode platform", "marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
 modified: 2022-06-03
 modified_by:
   name: Linode
 title: "Deploy FileCloud through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[FileCloud Official](https://www.getfilecloud.com/supportdocs/display/cloud/Home)'
 aliases: ['/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/platform/one-click/deploy-filecloud-with-one-click-apps/', '/guides/deploy-filecloud-with-one-click-apps/','/guides/deploy-filecloud-with-marketplace-apps/','/guides/filecloud-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [FileCloud](https://www.filecloud.com/) is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.

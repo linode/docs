@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows you how to create a LAMP Stack, Linux, Apache, MySQL, PHP, a common web stack for running websites, applications, and more, on Debian 5 "Lenny".'
 keywords: ["Debian LAMP Server", "Debian LAMP guide", "LAMP howto"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

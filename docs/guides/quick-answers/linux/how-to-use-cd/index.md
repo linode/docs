@@ -1,9 +1,6 @@
 ---
 slug: how-to-use-cd
-author:
-  name: Linode
-  email: docs@linode.com
-description: "Learn how to usethe cd command to navigate to different directories inside of a Linux or macOS terminal."
+description: "Learn how to use the cd command to navigate to different directories inside of a Linux or macOS terminal."
 keywords: ["linux", "how to", "cd", "change directory"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-23
@@ -15,13 +12,14 @@ title: "Using the cd Command to Navigate the Terminal"
 title_meta: "How to Use the cd Command to Navigate the Terminal"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-cd/']
+authors: ["Linode"]
 ---
 
 ## What is cd?
 
-On Linux systems, `cd` is a command that changes the directory you are in when working in the terminal. `cd` is one of the most used commands in Linux and has several shortcuts as well as two options.
+On Linux systems, `cd` is a command that changes the directory you are in when working in the terminal. The `cd` command is one of the most used commands in Linux and has several shortcuts as well as two options.
 
-## Using cd
+## Using the cd command
 
 To change directories using `cd`:
 
@@ -55,7 +53,7 @@ To change into your home directory, no matter your current location, use a tilde
 
     cd ~
 
-You can also change into your home directory by using `cd` without any arguments:
+You can also change into your home directory by using the `cd` command without any arguments:
 
     cd
 
@@ -73,7 +71,7 @@ This shortcut is helpful to toggle between two locations with long absolute path
 
 `cd` has two options, `-L` and `-P`.
 
-The `-L` option forces symbolic links to be followed. This means if you tell `cd` to change into a directory that is a symbolic link, it will follow it and move you into the directory it's pointing at instead of the directory specified. This is the standard behavior of `cd` and does not need to be specified. For example, if you want to change into `/var/example.com` but that's a symbolic link to `/var/www/example.com` by issuing the following command, you will change into `/var/www/example.com`:
+The `-L` option forces symbolic links to be followed. This means if you tell the `cd` command to change into a directory that is a symbolic link, it will follow it and move you into the directory it's pointing at instead of the directory specified. This is the standard behavior of `cd` and does not need to be specified. For example, if you want to change into `/var/example.com` but that's a symbolic link to `/var/www/example.com` by issuing the following command, you will change into `/var/www/example.com`:
 
     cd -L /var/example.com
 

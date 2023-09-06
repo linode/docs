@@ -1,17 +1,14 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Joomla on a Linode Compute Instance. A content management system to ease administration overhead for your websites."
 keywords: ['joomla','csm','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-29
 modified_by:
   name: Linode
 title: "Deploy Joomla through the Linode Marketplace"
 external_resources:
 - '[Joomla](https://www.joomla.org/)'
+authors: ["Linode"]
 ---
 
 [Joomla](https://www.joomla.org/) is an advanced CMS (content management system) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](https://www.drupal.org/) and [WordPress](https://wordpress.org/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](https://rubyonrails.org/) and [Django](https://www.djangoproject.com/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end user's perspective and easy to administer and host.

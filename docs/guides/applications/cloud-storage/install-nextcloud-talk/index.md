@@ -1,8 +1,5 @@
 ---
 slug: install-nextcloud-talk
-author:
-  name: Angel
-  email: docs@linode.com
 description: "Nextcloud 14 brings improved UI, video and text chat, and end-to-end encryption to cloud storage. We''ll show you how to install it using Docker."
 og_description: Nextcloud 14 brings improved UI, video and text chat, and end-to-end encryption to cloud storage. We''ll show you how to install it using Docker."
 keywords: ["nextcloud", "cloud", "open source hosting", "video chat"]
@@ -16,6 +13,7 @@ title: 'Introduction to Nextcloud Talk'
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 aliases: ['/applications/cloud-storage/install-nextcloud-talk/']
+authors: ["Angel Guarisma"]
 ---
 
 ## What is Nextcloud 14?

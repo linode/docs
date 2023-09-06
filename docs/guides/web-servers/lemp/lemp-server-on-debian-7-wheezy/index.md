@@ -1,8 +1,5 @@
 ---
 slug: lemp-server-on-debian-7-wheezy
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to install a LEMP (Linux, NGINX, MySQL, PHP) stack so you can host multiple websites or applications on a Linode running Debian 7 "Wheezy".'
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
@@ -26,6 +23,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 7
+authors: ["Linode"]
 ---
 
 This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.

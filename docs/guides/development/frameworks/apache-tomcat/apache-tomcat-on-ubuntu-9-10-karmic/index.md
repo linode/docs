@@ -1,9 +1,6 @@
 ---
 slug: apache-tomcat-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 9.10 (Karmic).'
 keywords: ["apache tomcat ubuntu 9.10", "java", "java ubuntu 9.10", "java servlets ubuntu karmic", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

@@ -1,8 +1,5 @@
 ---
 slug: k8s-alpha-deprecation-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that displays a deprecation notice where applied'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -13,6 +10,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/k8s-alpha-deprecation-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< note type="alert" >}}

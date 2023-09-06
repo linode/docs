@@ -1,8 +1,5 @@
 ---
 slug: using-your-systems-hosts-file
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Mapping aliases, domains or hostnames to IP addresses using the system host file.'
 keywords: ["hosts", "hosts file", "hostname", "alias", "dnsec"]
 tags: ["dns","networking","resolving"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2017-09-14
 title: Using Your System's hosts File
 aliases: ['/networking/dns/using-your-systems-hosts-file/']
+authors: ["Linode"]
 ---
 
 ![Using Your System's Hosts File](using-your-systems-hosts-files.jpg)

@@ -1,8 +1,5 @@
 ---
 slug: create-a-self-signed-tls-certificate-tls-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Self-signed TLS certificates are suitable for internal use within an organization. This guide shows how to create a certificate with OpenSSL on Debian 10.'
 keywords: ["debian tls certificate", "debian ssl certificate", "debian self certified"]
 tags: ["debian", "security", "ssl"]
@@ -21,6 +18,7 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: Debian 10
+authors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?
@@ -81,4 +79,4 @@ Email Address []:admin@example.com
 
         chmod 400 /root/certs/MyKey.key
 
-4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) **This is an important step. Do not skip it!**
+4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) **This is an important step. Do not skip it!**

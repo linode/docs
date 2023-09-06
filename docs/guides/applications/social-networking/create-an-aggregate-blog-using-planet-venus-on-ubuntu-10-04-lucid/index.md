@@ -1,9 +1,6 @@
 ---
 slug: create-an-aggregate-blog-using-planet-venus-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to use The Planet feed aggregator to provide overviews of a community by collecting community feeds on Ubuntu 10.04 "Lucid".'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
@@ -22,6 +19,7 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

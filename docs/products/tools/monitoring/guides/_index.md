@@ -9,15 +9,15 @@ tab_group_main:
 
 These introductory guides help you get up and running with monitoring your Linode services.
 
-- [Configure Shutdown Watchdog](/docs/guides/lassie-shutdown-watchdog/): "Lassie" the Shutdown Watchdog can monitor your Linodes and automatically restart them if they are shutdown unexpectedly.
+- [Configure Shutdown Watchdog](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/): "Lassie" the Shutdown Watchdog can monitor your Linodes and automatically restart them if they are shutdown unexpectedly.
 
 - [Cloud Manager Graphs](/docs/products/tools/monitoring/guides/monitoring-cloud-graphs): Cloud Manager provides several basic graphs to give you a view into the performance of your Linodes.
 
-- [Configure Email Alerts](/docs/products/tools/monitoring/guides/monitoring-email-alerts): In Cloud Manager, you can configure several server alerts to automatically email you when certain thresholds are met.
+- [Configure Email Alerts](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/): In Cloud Manager, you can configure several server alerts to automatically email you when certain thresholds are met.
 
 - [Use Third-Party Tools](/docs/products/tools/monitoring/guides/monitoring-third-party-tools): For a more detailed view of your systems, you can use third-party tools.
 
-For more basics, see the full guide on [Monitoring and Maintaining Your Server](/docs/guides/monitor-and-maintain-compute-instance/).
+For more basics, see the full guide on [Monitoring and Maintaining Your Server](/docs/products/compute/compute-instances/guides/monitor-and-maintain/).
 
 ## Themes
 
@@ -39,14 +39,14 @@ These additional guides help you with targeted topics like how to use command li
 
 - [Monitor Your System with Graphite and a Grafana Dashboard](/docs/guides/install-graphite-and-grafana/)
 
-- [Longview Pricing and Plans](/docs/guides/linode-longview-pricing-and-plans/)
+- [Longview Pricing and Plans](/docs/products/tools/longview/)
 
-- [Understanding Linode Longview](/docs/guides/what-is-longview/)
+- [Understanding Linode Longview](/docs/products/tools/longview/get-started/)
 
-- [Troubleshoot Linode Longview](/docs/guides/troubleshooting-linode-longview/)
+- [Troubleshoot Linode Longview](/docs/products/tools/longview/guides/troubleshooting/)
 
-- [Using the Linode Longview App for MySQL](/docs/guides/what-is-the-linode-longview-app-for-mysql/)
+- [Using the Linode Longview App for MySQL](/docs/products/tools/longview/guides/mysql/)
 
-- [Using the Linode Longview App for Apache](/docs/guides/what-is-the-linode-longview-app-for-apache/)
+- [Using the Linode Longview App for Apache](/docs/products/tools/longview/guides/apache/)
 
-- [Using the Linode Longview App for Nginx](/docs/guides/what-is-the-linode-longview-app-for-nginx/)
+- [Using the Linode Longview App for Nginx](/docs/products/tools/longview/guides/nginx/)

@@ -1,9 +1,5 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to import DNS records from external DNS providers by using AXFR transfers"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-28
 modified: 2022-11-08
 modified_by:
@@ -11,6 +7,7 @@ modified_by:
 title: "Incoming DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
+authors: ["Linode"]
 ---
 
 Linode supports importing DNS records from external DNS providers in one of two ways:
@@ -90,6 +87,6 @@ As part of this, a common reason for using Linode's DNS Manager as a secondary D
 
 1. Click the **Create Domain** button to create the domain zone and start the transfer.
 
-1. Once the DNS zone transfer is finished, update the authoritative name servers on your domain's registrar to use some or all of Linode's name servers (ns1.linode.com through ns5.linode.com). If desired, add them alongside your current DNS provider's name servers (so Linode operates as one of many name servers) or you can delete their name servers (so Linode the only authoritative name server).
+1. Once the DNS zone transfer is finished, update the authoritative name servers on your domain's registrar to use some or all of Linode's name servers (ns1.linode.com through ns5.linode.com). If desired, add them alongside your current DNS provider's name servers (so Linode operates as one of many name servers) or you can delete their name servers (so Linode is the only authoritative name server).
 
 Linode checks for DNS changes when the refresh time elapses for the domain *or* when it receives a NOTIFY request from one of the designated external name servers.

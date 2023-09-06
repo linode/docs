@@ -1,8 +1,5 @@
 ---
 slug: how-to-list-cron-jobs
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to display currently scheduled cron jobs, and list cron jobs satisfying various criteria.'
 keywords: ['List cron job','View cron job','Display cron job','Cron job linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,12 +8,11 @@ modified_by:
   name: Linode
 title: "List Cron Jobs on Linux"
 title_meta: "How to List Cron Jobs on Linux"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Wikipedia Cron Page](https://en.wikipedia.org/wiki/Cron)'
 - '[Crontab Man Page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html)'
 - '[Ubuntu cron documentation](https://help.ubuntu.com/community/CronHowto)'
+authors: ["Jeff Novotny"]
 ---
 
 All Linux distributions are equipped with the `cron` utility, which allows users to schedule jobs to run at certain fixed times. Cron jobs can be scheduled at the user or root level, or by software applications. This guide explains how to view cron jobs on Linux and how to list cron jobs by user or schedule.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-apps-on-kubernetes-with-helm-3
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to install apps on your K8s cluster with Helm 3, a popular package management system for Kubernetes.'
 keywords: ["helm", "kubernetes", "container", "k8s"]
 tags: ["kubernetes","cms"]
@@ -17,6 +14,7 @@ concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm Documentation](https://helm.sh/docs/)'
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
+authors: ["Linode"]
 ---
 
 ![How to Install Apps on Kubernetes with Helm](how-to-install-apps-on-kubernetes-with-helm.png)

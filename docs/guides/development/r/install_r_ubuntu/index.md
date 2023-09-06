@@ -1,8 +1,5 @@
 ---
 slug: install_r_ubuntu
-author:
-  name: Sam Foo
-  email: sfoo@linode.com
 description: 'Shortguide for installing R on Ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
@@ -15,6 +12,7 @@ published: 2018-02-07
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/r/install_r_ubuntu/']
+authors: ["Sam Foo"]
 ---
 
 1.  Open `/etc/apt/sources.list` and add the following line to the end of the file:

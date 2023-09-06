@@ -1,21 +1,16 @@
 ---
 slug: turbocharge-wordpress-search-with-solr
-author:
-    name: Karthik Shiraly
-    email: docs@linode.com
 description: 'The built-in WordPress search doesn''t always provide the best search experience. This guide provides instructions for installing Solr, a better WP search engine.'
 keywords: ["wordpress", "search", "solr", "ubuntu", "debian"]
 tags: ["ubuntu","wordpress","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-contributor:
-    name: Karthik Shiraly
-    link: https://twitter.com/pathbreaksoft
 modified: 2015-04-03
 modified_by:
     name: James Stewart
 published: 2015-04-03
 title: 'Turbocharge Your WordPress Search Using Solr'
 aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/websites/cms/turbocharge-wordpress-search-with-solr/']
+authors: ["Karthik Shiraly"]
 ---
 
 

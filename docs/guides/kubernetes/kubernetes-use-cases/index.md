@@ -1,8 +1,5 @@
 ---
 slug: kubernetes-use-cases
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides you with some use cases as well as advantages of using Kubernetes, the container and infrastructure orchestration technology.'
 keywords: ['kubernets', 'k8s', 'use','cases','advantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,10 +7,9 @@ published: 2019-09-04
 modified_by:
   name: Linode
 title: "Advantages of Using Kubernetes"
-contributor:
-  name: Linode
 aliases: ['/applications/containers/kubernetes/kubernetes-use-cases/','/kubernetes/kubernetes-use-cases/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 ---
 
 ## What is Kubernetes

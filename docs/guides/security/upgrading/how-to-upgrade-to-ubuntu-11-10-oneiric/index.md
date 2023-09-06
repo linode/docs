@@ -1,9 +1,6 @@
 ---
 slug: how-to-upgrade-to-ubuntu-11-10-oneiric
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to upgrade from Ubuntu 11.04 (Natty) to Ubuntu 11.10 (Oneiric).'
 keywords: ["ubuntu 11.10 upgrade", "ubuntu oneiric upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 11.10
+authors: ["Linode"]
 ---
 
 

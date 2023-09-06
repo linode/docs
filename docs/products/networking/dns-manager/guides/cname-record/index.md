@@ -1,15 +1,12 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to create CNAME records using Linode's DNS Manager"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-28
 modified_by:
   name: Linode
 title: "CNAME Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 ## CNAME Overview

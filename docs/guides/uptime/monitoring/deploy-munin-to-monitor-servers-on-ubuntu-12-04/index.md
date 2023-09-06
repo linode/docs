@@ -1,9 +1,6 @@
 ---
 slug: deploy-munin-to-monitor-servers-on-ubuntu-12-04
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Munin on Ubuntu 12.04 to Keep Track of Vital System Statistics and Troubleshoot Performance Problems'
 keywords: ["munin", "monitoring", "ubuntu 12.04", "munin node", "munin master"]
 tags: ["monitoring","statistics","ubuntu"]
@@ -25,6 +22,7 @@ relations:
         key: install-munin-monitoring
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the past 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. For instance, if you need to monitor memory usage or resource consumption on a per-process level, a more precise monitoring tool like Munin might be helpful.

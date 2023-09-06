@@ -1,8 +1,5 @@
 ---
 slug: deploy-kubernetes-cluster-using-kubeadm
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Use kubeadm to deploy a cluster on Linode and get started with Kubernetes."
 keywords: ['kubernetes','orchestration','docker','container']
 tags: ["docker","kubernetes","container"]
@@ -13,14 +10,13 @@ modified_by:
   name: Linode
 title: "Deploy a Kubernetes Cluster Using kubeadm"
 aliases: ['/kubernetes/getting-started-with-kubernetes/','/applications/containers/getting-started-with-kubernetes/','/applications/containers/kubernetes/getting-started-with-kubernetes/','/guides/getting-started-with-kubernetes/']
-contributor:
-  name: Linode
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes: Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)'
 - '[Kubernetes: Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)'
 - '[Kubernetes: Cluster Administration Overview](https://kubernetes.io/docs/concepts/cluster-administration/cluster-administration-overview/)'
 - '[Kubernetes: Securing a Cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)'
+authors: ["Linode"]
 ---
 
 The [kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/) tool is cloud agnostic and automates many of the tasks required to get a Kubernetes cluster up and running. By using kubeadm, you can run commands to create a *master node* (a server that maintains the state of the cluster) and *worker nodes* (servers that run your application's pods). This guide walks you through installing kubeadm and using it to deploy a Kubernetes cluster on Linode. While the kubeadm approach requires more manual steps than other Kubernetes cluster creation pathways offered by Linode, this solution is covered as way to dive deeper into the various components that make up a Kubernetes cluster and the ways in which they interact with each other to provide a scalable and reliable container orchestration mechanism.
@@ -213,7 +209,10 @@ Although previously an unnecessary step when using Docker as a container runtime
 1.  Install the `go` programming language to support later commands performed during the installation process:
 
     ```command
-    sudo apt install golang-go
+    sudo wget https://storage.googleapis.com/golang/getgo/installer_linux
+    sudo chmod +x ./installer_linux
+    sudo ./installer_linux
+    source ~/.bash_profile
     ```
 
 1.  Clone the `cri-dockerd` repository and change your working directory into the installation path:
@@ -227,7 +226,7 @@ Although previously an unnecessary step when using Docker as a container runtime
 
     ```command
     sudo mkdir bin
-    cd src && go get && go build -o ../bin/cri-dockerd
+    go build -o ../bin/cri-dockerd
     ```
 
 1.  Configure `cri-dockerd` to work with systemd:
@@ -235,7 +234,7 @@ Although previously an unnecessary step when using Docker as a container runtime
     ```command
     cd .. && mkdir -p /usr/local/bin
     install -o root -g root -m 0755 bin/cri-dockerd /usr/local/bin/cri-dockerd
-    cp -a packaging/systemd/* /etc/systemd/system
+    cp -a /cri-dockerd/packaging/systemd/* /etc/systemd/system
     sed -i -e 's,/usr/bin/cri-dockerd,/usr/local/bin/cri-dockerd,' /etc/systemd/system/cri-docker.service
     ```
 

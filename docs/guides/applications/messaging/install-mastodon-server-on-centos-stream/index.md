@@ -1,8 +1,5 @@
 ---
 slug: install-mastodon-server-on-centos-stream
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream."
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','centos stream']
 tags: ['centos', 'docker']
@@ -13,9 +10,6 @@ modified_by:
   name: Nathaniel Stickman
 title: "Install a Mastodon Server on CentOS Stream 8"
 title_meta: "How to Install a Mastodon Server on CentOS Stream 8"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -32,6 +26,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: CentOS Stream 8
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}
@@ -140,16 +135,9 @@ Mastodon participates in the [*Fediverse*](https://en.wikipedia.org/wiki/Fediver
 
 1. Using your preferred text editor, open the `docker-compose.yml` file.
 
-1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line as here: `tootsuite/mastodon:v3.3.0`.
+1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line as here: `tootsuite/mastodon:v4.0.2`.
 
     Although you can use `latest` as the release, it is recommended that you select a specific release number. The Mastodon GitHub page provides a chronological [list of Mastodon releases](https://github.com/mastodon/mastodon/releases).
-
-1. In the `db` section, add the following beneath the `image` line. Replace `password` with a password you would like to use for the PostgreSQL database that operates on the Mastodon backend.
-
-        environment:
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: mastodon_production
-          POSTGRES_USER: mastodon
 
 1. The resulting `docker-compose.yml` file should look something like [the example Docker file](docker-compose.yml).
 
@@ -159,28 +147,29 @@ Mastodon participates in the [*Fediverse*](https://en.wikipedia.org/wiki/Fediver
 
 1. Use the following commands to generate a `SECRET_KEY_BASE` and `OTP_SECRET`. Copy the output, and paste in the `SECRET_KEY_BASE` and `OTP_SECRET` lines in the `.env.production` file.
 
-        echo SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
+        echo SECRET_KEY_BASE=$(docker compose run --rm web bundle exec rake secret)
         sed -i -e "s/SECRET_KEY_BASE=/&${SECRET_KEY_BASE}/" .env.production
-        echo OTP_SECRET=$(docker-compose run --rm web bundle exec rake secret)
+        echo OTP_SECRET=$(docker compose run --rm web bundle exec rake secret)
         sed -i -e "s/OTP_SECRET=/&${OTP_SECRET}/" .env.production
 
     If either of the `sed` commands fails, repeat the previous command and try the `sed` command again.
 
-1. Generate the `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY` using the following command, and copy the output, and paste in the `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY` lines in the `.env.production` file.
+1. Generate the `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY` using the following command, copy the output, and paste it over the `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY` lines in the `.env.production` file.
 
-        docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
+        docker compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
 
 1. Fill out the remainder of the `.env.production` file's fields:
 
     - `LOCAL_DOMAIN`: Enter your Mastodon server's domain name.
-    - `DB_PASS`: Enter the password you set for the database in the `docker-compose.yml` file.
 
-    - Enter `mastodon_db_1` for `DB_HOST` and `mastodon_redis_1` for `REDIS_HOST`. In both of these values, `mastodon` corresponds to the name of the Mastodon base folder.
+    - `DB_USER`: Change this to `postgres`, and leave the `DB_PASS` field empty.
+
+    - Enter `mastodon-db-1` for `DB_HOST` and `mastodon-redis-1` for `REDIS_HOST`. In both of these values, `mastodon` corresponds to the name of the Mastodon base folder.
 
     - Fill out the `SMTP` fields with the information from your SMTP provider. If you set up your own SMTP server, use its domain name for `SMTP_SERVER` and add the following lines:
 
-        SMTP_AUTH_METHOD=plain
-        SMTP_OPENSSL_VERIFY_MODE=none
+            SMTP_AUTH_METHOD=plain
+            SMTP_OPENSSL_VERIFY_MODE=none
 
     - Comment out the sections denoted as "optional" by adding a `#` before each line in the section.
 
@@ -190,7 +179,7 @@ Mastodon participates in the [*Fediverse*](https://en.wikipedia.org/wiki/Fediver
 
 1. Build the Docker Compose environment.
 
-        docker-compose build
+        docker compose build
 
 1. Give ownership of the Mastodon `public` directory to user `991`. This is the default user ID for Mastodon, and this command ensures that it has the necessary permissions.
 
@@ -205,7 +194,7 @@ Mastodon participates in the [*Fediverse*](https://en.wikipedia.org/wiki/Fediver
 
 1. Run Mastodon's Docker Compose setup script. You are prompted to enter information about the Docker Compose services and the Mastodon instance.
 
-        docker-compose run --rm web bundle exec rake mastodon:setup
+        docker compose run --rm web bundle exec rake mastodon:setup
 
     - Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
 
@@ -217,11 +206,11 @@ Mastodon participates in the [*Fediverse*](https://en.wikipedia.org/wiki/Fediver
 
 1. Start the Docker Compose services.
 
-        docker-compose up -d
+        docker compose up -d
 
 1. Unless manually stopped, the Docker Compose services begin running automatically at system start up. Run the following command to manually stop the Docker Compose services.
 
-        docker-compose down
+        docker compose down
 
 ## Setup an HTTP/HTTPS Proxy
 

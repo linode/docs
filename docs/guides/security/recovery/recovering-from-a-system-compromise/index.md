@@ -1,8 +1,5 @@
 ---
 slug: recovering-from-a-system-compromise
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 tags: ["security","resolving","cloud manager"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2009-08-26
 title: Recovering from a System Compromise
+authors: ["Linode"]
 ---
 
 ![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")
@@ -42,7 +40,7 @@ This will delete your current images and deploy fresh disks. All data that was s
 
 ## Copy Data Offsite
 
-If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/guides/rescue-and-rebuild/) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/) explains how to copy your entire disk offsite.
+If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/) explains how to copy your entire disk offsite.
 
 ## Use a Second Linode
 
@@ -83,7 +81,7 @@ Do not log in to the new Linode from the compromised Linode. Files should be pul
 
 3.  Audit your data using tools such as `rkhunter` and [`clamav`](/docs/guides/scanning-your-linode-for-malware/). You can use additional malware scanners to be certain you aren't retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.
 
-If you're not comfortable copying from the compromised system prior to auditing the data, you can instead use the [Finnix rescue environment](/docs/guides/rescue-and-rebuild/) to examine your old disks. Once you have verified the integrity of your data, copy it to the appropriate location on your new server.
+If you're not comfortable copying from the compromised system prior to auditing the data, you can instead use the [Finnix rescue environment](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) to examine your old disks. Once you have verified the integrity of your data, copy it to the appropriate location on your new server.
 
 ### Swap IP Addresses
 
@@ -93,7 +91,7 @@ Swap IP addresses so the new Linode uses the IP address assigned to the old Lino
 To swap IP addresses, both Linodes must be located in the same data center.
 {{< /note >}}
 
-Alternatively, you can [update your DNS entries](/docs/guides/hosting-a-website-ubuntu-18-04/#add-dns-records) to point to the new Linode's IP address instead. DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
+Alternatively, you can [update your DNS entries](/docs/products/networking/dns-manager/guides/manage-dns-records/) to point to the new Linode's IP address instead. DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
 
 ### Preserving Data for Forensics and Linode Cancellation
 

@@ -1,8 +1,5 @@
 ---
 slug: crud-read-operations-use-fastapi-to-write-an-api
-author:
-  name: Chelsea Troy
-  email: heychelseatroy@gmail.com
 description: 'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
 og_description:  'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
 keywords: ['python api framework fastapi rest']
@@ -14,9 +11,7 @@ modified_by:
 title: "CRUD Read Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Read Operations: Use FastAPI to Write an API"
 tags: ["python", "django"]
-contributor:
-  name: Chelsea Troy
-  link: https://twitter.com/HeyChelseaTroy
+authors: ["Chelsea Troy"]
 ---
 ## FastAPI Features
 
@@ -37,9 +32,9 @@ Throughout this guide you learn how to use FastAPI to create the following REST 
 1. **List Programming Languages**: retrieves all the Programming Language records or filters the Programming Language records using a path parameter.
 1. **View Programming Language**: fetches a specific record based on a unique identifier.
 
-{{< disclosure-note "REST API">}}
+{{< note type="secondary" title="REST API" isCollapsible=true >}}
 The [REST protocol](https://en.wikipedia.org/wiki/Representational_state_transfer) allows servers to expose data that a client can access and manipulate. This protocol allows clients to perform create, read, update, and delete (CRUD) operations.
-{{</ disclosure-note >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 This guide does not cover integrating FastAPI with a database. FastAPI uses an in-memory data store by default. However, you can integrate FastAPI with a [long list of different database providers](https://fastapi.tiangolo.com/tutorial/sql-databases/).

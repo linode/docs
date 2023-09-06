@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Manage the most popular open-source databases on-premise or in the cloud."
 keywords: ['database','cluster','backups','configuration management']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
 modified: 2022-05-17
 modified_by:
@@ -14,6 +10,7 @@ title: "Deploy ClusterControl through the Linode Marketplace"
 aliases: ['/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
 external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'
+authors: ["Linode"]
 ---
 
 [ClusterControl](https://severalnines.com/product/clustercontrol) (by developer Severalnines) is a unified console to manage the full database lifecycle of the most popular open-source databases (on-premise or in the cloud). Provision, monitor and manage highly available database clusters in minutes with dashboards, backups, notifications, reports and automated recovery.

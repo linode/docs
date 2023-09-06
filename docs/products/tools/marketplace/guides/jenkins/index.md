@@ -1,23 +1,18 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to install Jenkins, an open source automation tool which system administrators can use to build, test, and deploy your infrastructure."
 keywords: ['jenkins','marketplace','pipeline','continuous delivery']
 tags: ["linode platform","automation","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Jenkins through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Creating Your First Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/hello-world/)'
 - '[Managing Jenkins Masters and Nodes](https://jenkins.io/doc/book/managing/)'
 - '[Managing Jenkins Plugins](https://jenkins.io/doc/book/managing/plugins/)'
 aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jenkins-with-one-click-apps/','/guides/how-to-deploy-jenkins-with-one-click-apps/','/guides/how-to-deploy-jenkins-with-marketplace-apps/','/guides/jenkins-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Jenkins](https://jenkins.io/) is an open source automation tool which can build, test, and deploy your infrastructure. It gives you access to a massive library of plugins to support automation in your project's lifecycle. You can create a [continuous delivery pipeline](https://jenkins.io/doc/pipeline/tour/hello-world/#what-is-a-jenkins-pipeline) which automates the process for getting your software from version control to your users.

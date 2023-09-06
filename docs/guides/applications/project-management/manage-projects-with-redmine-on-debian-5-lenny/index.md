@@ -1,9 +1,6 @@
 ---
 slug: manage-projects-with-redmine-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on a Debian 5 (Lenny) Linode running nginx.'
 keywords: ["redmine", "redmine debian", "redmine linux", "project management software", "redmine postgresql", "redmine linux"]
 tags: ["debian", "ruby", "nginx", "postgresql"]
@@ -19,6 +16,7 @@ relations:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

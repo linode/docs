@@ -1,8 +1,5 @@
 ---
 slug: how-to-optimize-mysql-performance-using-mysqltuner
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'This step-by-step guide shows you how to assess your MySQL database performance using MySQLTuner to ensure optimum resource usage.'
 keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
 aliases: ['/databases/mysql/mysql-performance-tuning-tutorial/','/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/','/databases/mysql/tuning-your-mysql-database/']
@@ -18,6 +15,7 @@ external_resources:
  - '[MySQLTuner](https://github.com/major/MySQLTuner-perl)'
 dedicated_cpu_link: true
 tags: ["database","mysql"]
+authors: ["Elle Krout"]
 ---
 
 Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/guides/tuning-your-apache-server/) to handle larger loads, it is beneficial to tune MySQL to additional connections.
@@ -32,7 +30,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Tools That Can Help Optimize MySQL
 
-In order to determine if your MySQL database needs to be reconfigured, it is best to look at how your resources are performing now. This can be done with the [top command](/docs/guides/top-htop-iotop/) or with the Linode [Longview](/docs/guides/what-is-longview/) service. At the very least, you should familiarize yourself with the RAM and CPU usage of your server, which can be discovered with these commands:
+In order to determine if your MySQL database needs to be reconfigured, it is best to look at how your resources are performing now. This can be done with the [top command](/docs/guides/top-htop-iotop/) or with the Linode [Longview](/docs/products/tools/longview/get-started/) service. At the very least, you should familiarize yourself with the RAM and CPU usage of your server, which can be discovered with these commands:
 
     echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
     ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20

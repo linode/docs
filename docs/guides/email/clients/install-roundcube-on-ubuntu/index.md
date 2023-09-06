@@ -1,8 +1,5 @@
 ---
 slug: install-roundcube-on-ubuntu
-author:
-  name: 'Linode Community'
-  email: 'docs@linode.com'
 description: 'This guide shows you how to install the free and open-source web-based IMAP email client with a UI similar to Gmail and Hotmail, on Ubuntu.'
 keywords: ["Roundcube", "webmail", "email", "Ubuntu"]
 aliases: ['/email/clients/install-roundcube-on-ubuntu/','/email/clients/install-roundcube-on-ubuntu-14-04/']
@@ -13,11 +10,9 @@ modified: 2017-12-18
 modified_by:
   name: 'Linode'
 title: 'Install Roundcube on Ubuntu 16.04'
-contributor:
-  name: 'Sean Webber'
-  link: 'https://github.com/seanthewebber'
 external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
+authors: ["Sean Webber"]
 ---
 
 ![Install Roundcube on Ubuntu 16.04 LTS](Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")

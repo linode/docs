@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-rust
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide explains how to install Rust on Ubuntu 20.04. We'll also teach you about Cargo, Rust's build tool and package manager."
 keywords: ['Rust','programming language','installation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,11 +10,9 @@ modified_by:
 tags: ["rust", "development", "ubuntu"]
 title: "Installing and Using Rust"
 title_meta: "How to Install and Use Rust"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Rust Programming Language](https://www.rust-lang.org/)'
+authors: ["Jeff Novotny"]
 ---
 
 This guide explains how to install [*Rust*](https://www.rust-lang.org/), a popular programming language designed to maximize performance and safety. It also discusses how to create, compile, and run a simple Rust project. Rust is somewhat similar to C++, although it is able to guarantee memory and thread safety. Rust was originally developed for use at Mozilla Research, but it has recently gained in popularity throughout the software industry. For many years now, Rust has been rated one of the top programming languages in industry surveys.

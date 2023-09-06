@@ -1,7 +1,5 @@
 ---
 slug: get-started-with-bokeh-and-python-data-visualizations
-author:
-  name: John Mueller
 description: 'This guide provides you with an overview of the utility Bokeh, which is an interactive visualization library written in Python and how to use it.'
 keywords: ['bokeh python']
 tags: ['python']
@@ -11,8 +9,7 @@ modified_by:
   name: Linode
 title: "Use Bokeh and Python to Create Data Visualizations"
 title_meta: "Get Started With Bokeh and Python Data Visualizations"
-contributor:
-  name: John Mueller
+authors: ["John Mueller"]
 ---
 
 [Bokeh](https://bokeh.org/) is an interactive visualization library that focuses on browser output. This guide introduces you to Bokeh with example code that creates line and bar graphs.

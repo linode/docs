@@ -1,9 +1,6 @@
 ---
 slug: use-mysql-relational-databases-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["mysql ubuntu 10.04", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","mysql"]
+authors: ["Linode"]
 ---
 
 

@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-openfire-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with Openfire on Debian 5 (Lenny), an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: ["openfire", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

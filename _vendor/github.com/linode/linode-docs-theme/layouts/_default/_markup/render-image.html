@@ -1,4 +1,16 @@
+{{ $destination := .Destination | strings.TrimPrefix "./" }}
 {{- $img := .Page.Resources.GetMatch .Destination -}}
+{{ $width := "" }}
+{{ $height := "" }}
+{{- if $img -}}
+  {{ $width = $img.Width }}
+  {{ $height = $img.Height }}
+  {{- if le $img.Width 694  }}
+  {{/* Leave smaller images as-is. */}}
+  {{ $destination  = $img.RelPermalink }}
+  {{ $img = "" }}
+  {{ end }}
+{{- end -}}
 {{- with $img -}}
   {{ if not ( $.Page.Scratch.Get (printf "%s-is-used" $img.RelPermalink)) }}
     {{/* We could resize/process the images here if needed. */}}
@@ -37,5 +49,9 @@
     {{ end }}
   {{ end }}
 {{- else -}}
-  <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" />
+  {{ if and  (not (strings.HasPrefix $destination "http"))  (not (strings.HasPrefix $destination "/docs"))}}
+  {{/* Assume these are stored in /static. */}}
+  {{ $destination =  ($destination | relURL) }}
+  {{ end }}
+  <img src="{{ $destination | safeURL }}" alt="{{ $.Text }}" width="{{ $width }}" height="{{ $height }}">
 {{- end -}}

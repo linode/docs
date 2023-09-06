@@ -1,9 +1,6 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on Ubuntu 9.10 (Karmic).'
 keywords: ["postfix ubuntu 9.10", "postfix karmic", "postfix dovecot", "ubuntu mail server", "linux mail server"]
 tags: ["mysql","postfix","email","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Brett Kaplan"]
 ---
 
 

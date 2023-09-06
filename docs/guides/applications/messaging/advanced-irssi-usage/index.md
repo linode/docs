@@ -1,8 +1,5 @@
 ---
 slug: advanced-irssi-usage
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Irssi is a popular IRC client featuring a flexible plugin architecture and embedded Perl interpeter. Here's how to use it."
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 tags: ["perl"]
@@ -20,6 +17,7 @@ external_resources:
  - '[The Open and Free Technology Community](https://www.oftc.net/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
+authors: ["Linode"]
 ---
 
 Irssi is a popular IRC client with a flexible plugin architecture and an embedded Perl interpreter. It can be customized to greatly improve the off-the-shelf experience. This guide will demonstrate some of the most useful features, plugins, and customizations to help you get the most out of Irssi.

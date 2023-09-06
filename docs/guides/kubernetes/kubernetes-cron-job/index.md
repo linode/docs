@@ -1,7 +1,5 @@
 ---
 slug: kubernetes-cron-job
-author:
-  name: Martin Heller
 description: 'This guide shows you how to create a Kubernetes CronJob, which you can use to automate and schedule various types of tasks on your Kubernetes clusters.'
 keywords: ['kubernetes cron job']
 tags: ['kubernetes']
@@ -11,11 +9,10 @@ modified_by:
   name: Linode
 title: "Create a Kubernetes CronJob"
 title_meta: "How to Create a Kubernetes CronJob"
-contributor:
-  name: Martin Heller
 external_resources:
 - '[Define Environment Variables for a Container](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)'
 - '[CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)'
+authors: ["Martin Heller"]
 ---
 
 Linode Kubernetes Engine (LKE) is an open source container orchestration system that helps deploy and manage containerized applications. If you are not familiar with Kubernetes, read our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). Kubernetes (K8s) includes the capability to schedule jobs to run at a particular time with [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/). CronJobs use the same scheduling syntax as **cron** and **crontab**, which are standard Linux utilities. If you are not familiar with cron, you can refer to our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide.

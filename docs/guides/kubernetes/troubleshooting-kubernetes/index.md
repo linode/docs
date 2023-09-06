@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-kubernetes
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn frequently-used troubleshooting commands for Kubernetes and review common Kubernetes issues.'
 keywords: ['kubernetes','cluster','troubleshooting','k8s','kubectl']
 tags: ["docker","kubernetes","container"]
@@ -16,6 +13,7 @@ concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Documentation - Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)'
 aliases: ['/kubernetes/troubleshooting-kubernetes/','/applications/containers/troubleshooting-kubernetes/','/applications/containers/kubernetes/troubleshooting-kubernetes/']
+authors: ["Linode"]
 ---
 
 <!-- EDITOR'S NOTE: This guide is split into two halves:
@@ -30,7 +28,7 @@ Troubleshooting issues with Kubernetes can be complex, and it can be difficult t
 {{< note title="Where to go for help outside this guide" isCollapsible=true >}}
 If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site and in `#linode` on the [Kubernetes Slack](http://slack.k8s.io/), where other Linode users (and the Kubernetes community) can offer advice.
 
-If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](/docs/guides/support/). Examples in this category include:
+If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](/docs/products/platform/get-started/guides/support/). Examples in this category include:
 
 - Kubernetes' API server not running. If kubectl does not respond as expected, this can indicate problems with the API server.
 
@@ -264,7 +262,7 @@ If you are not able to create new nodes in your cluster, you may see an error me
 Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
 ```
 
-This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/guides/support/#contacting-linode-support).
+This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
 
 ### Insufficient CPU or Memory
 

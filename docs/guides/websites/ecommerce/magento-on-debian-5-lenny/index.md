@@ -1,9 +1,6 @@
 ---
 slug: magento-on-debian-5-lenny
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Selling products online with Magento, an open source e-commerce solution on a Debian 5 (Lenny) Linode.'
 keywords: ["Magento", "Debian", "ecommerce", "Store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +15,7 @@ relations:
         key: how-to-install-magento
         keywords:
            - distribution: Debian 5
+authors: ["Stan Schwertly"]
 ---
 
 Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) and offers the user a wide variety of options.

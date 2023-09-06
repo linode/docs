@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04
-author:
-  name: Sam Foo
-  email: docs@linode.com
 description: 'This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode.'
 og_description: "This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode."
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
@@ -27,6 +24,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/development/java/how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04/']
+authors: ["Sam Foo"]
 ---
 
 ![How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04](deploy-spring-boot-nginx-reverse-proxy.jpg "How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04")
