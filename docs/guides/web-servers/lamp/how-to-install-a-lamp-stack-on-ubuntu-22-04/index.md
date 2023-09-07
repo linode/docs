@@ -18,9 +18,11 @@ external_resources:
 - '[PHP Documentation](https://www.php.net/docs.php)'
 relations:
     platform:
+        key: install-lamp-stack
         keywords:
            - distribution: Ubuntu 22.04
 authors: ["Jeff Novotny"]
+aliases: ['/lamp-guides/ubuntu-11.04-natty/']
 ---
 
 The [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) includes an operating system, web server, programming language, and database. These applications are collectively able to implement web applications and other computing solutions. This guide provides some background about the LAMP stack and explains how to install and configure it on Ubuntu 22.04 LTS. It also explains how to quickly test interactions between the applications.

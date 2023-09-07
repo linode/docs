@@ -2,8 +2,7 @@
 description: "A walkthrough on upgrading or downgrading a Compute Instance's plan, including switching to a different plan type."
 keywords: ["upgrading", "resizing", "disk space"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-08-25
+modified: 2023-08-22
 modified_by:
   name: Linode
 published: 2017-02-14
@@ -83,24 +82,28 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
     - If you're using less space than your intended plan requires, you can move onto the next step without any further action.
 
-    - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide.
+    - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) guide.
 
 1.  Resize the Compute Instance's disks to fit within the storage space of the new plan. See [Resizing a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/).
 
 ## Switching to a Different Plan Type
 
-There are quite a few types of Compute Instances available to you, each with their own value propositions and use cases. When resizing your instance, you aren't limited to the current plan type. You are able to switch to any plan across any plan type, including:
+There are multiple Compute Instance options available, each with their own benefits and use cases. When resizing your instance, you are also able to switch to a different plan type that may better suit your workload. For help deciding on a plan type, review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice and a comparison of each plan.
+
+To switch your plan type, follow the instructions outlined within [Resizing a Linode](#resizing-a-linode). When choosing the plan, select the tab that corresponds with your desired plan type.
+
+See below for the different Compute Instance plan types available:
 
 - **Dedicated CPU:** Optimized for CPU-intenseive applications. This plan type is equipped with dedicated vCPU cores, suitable for almost any workload that requires consistently high CPU performance. Use cases include production (and high traffic) websites, e-commerce sites, machine learning, data processing, and much more. See [Dedicated CPU Compute Instances](https://www.linode.com/products/dedicated-cpu/).
 
 - **Shared CPU:** Balancing performance with value. This plan type is a solid foundation for many common use cases, including development, low-traffic websites, or any workload that doesn't require consistent 100% CPU usage. See [Shared CPU Compute Instances](https://www.linode.com/products/shared/).
 
+- **Premium CPU:** Guaranteed hardware for CPU-intensive workloads. Built off of our Dedicated CPU offering, this plan comes equipped with the latest AMD EPYC™ CPUs to make sure your applications are running on the best available hardware with consistent high performance. Use cases include enterprise-grade production applications, video transcoding, and more. See [Premium CPU Compute Instances](https://www.linode.com/products/premium-cpu/).
+
 - **High Memory:** Optimized for memory-intensive applications. This plan type is also equipped with dedicated vCPU cores, though they contain more memory than other similarly priced plans. Use cases include large or high-traffic databases, caching servers, and more. See [High Memory Compute Instances](https://www.linode.com/products/high-memory/).
 
 - **GPU:** The only plan type that is equipped with high performance NVIDIA GPU cards. GPU plans are capable of processing large amounts of data in parallel, performing complex calculations much more efficiently. See [GPU Compute Instances](https://www.linode.com/products/gpu/).
 
-For help deciding on a plan type, review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice and a comparison of each plan.
-
-To switch to a different plan type, follow the instructions outlined within [Resizing a Linode](#resizing-a-linode). When choosing the plan, select the tab that corresponds with your desired plan type.
-
-![Select a different plan type](select-plan-type-tab.png)
+{{< note >}}
+Not all plan types are available in all regions. See [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/#product-availability) for plan and product availability.
+{{< /note >}}

@@ -2,7 +2,6 @@
 description: "Learn how to deploy Odoo, a self-hosted business management software suite, on the Linode platform."
 keywords: ['odoo','business','crm','ecommerce']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-22
 modified: 2022-03-08
 modified_by:

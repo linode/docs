@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with VLANs"
 description: "Use the Linode Cloud Manager to create a VLAN and attach a Compute Instance to it. When a Compute Instance is attached to a VLAN and configured, it has access to the VLAN's secure and private network."
 keywords: ['networking','vlan','private network']
 tags: ["security", "networking", "linode platform"]
@@ -50,7 +51,7 @@ When configuring a network interface, a VLAN can be selected by entering its **L
 
 ### Assigning an IPAM Address
 
-IPAM (IP Address Management) is the system that allows users to assign and manage IP addresses for each VLAN configured on a Compute Instance. When attaching a VLAN, an **IPAM Address** can be specified in address/netmask format. This should be a unique IPv4 address that doesn't already exist within the VLAN or on the public internet. It is common to use chose a /24 network within the 10.0.0.0/8 range (10.0.0.0 – 10.255.255.255). For example, if a user wishes to use the subnet 10.0.0.0/24 on a VLAN, they can assign any unique address in the range 10.0.0.0 - 10.0.0.255. Here are valid IPAM addresses for two Compute Instances connected to that VLAN:
+IPAM (IP Address Management) is the system that allows users to assign and manage IP addresses for each VLAN configured on a Compute Instance. When attaching a VLAN, an **IPAM Address** can be specified in address/netmask format. This should be a unique IPv4 address that doesn't already exist within the VLAN or on the public internet. It is common to use a /24 network within the 10.0.0.0/8 range (10.0.0.0 – 10.255.255.255). For example, if a user wishes to use the subnet 10.0.0.0/24 on a VLAN, they can assign any unique address in the range 10.0.0.0 - 10.0.0.255. Here are valid IPAM addresses for two Compute Instances connected to that VLAN:
 
 - Instance 1: `10.0.0.1/24`
 - Instance 2: `10.0.0.2/24`

@@ -33,6 +33,15 @@ const searchConfig = getSearchConfig(params);
 
 // Set up and start Alpine.
 (function () {
+	// For integration tests.
+	if (window.Cypress) {
+		window.truste = {};
+		window.addEventListener('unhandledrejection', function (e) {
+			console.error(e);
+			return false;
+		});
+	}
+
 	// Register AlpineJS plugins.
 	{
 		Alpine.plugin(intersect);
@@ -46,6 +55,18 @@ const searchConfig = getSearchConfig(params);
 		// Handles inlining of SVGs.
 		alpineRegisterDirectiveSVG(Alpine);
 	}
+
+	let fetchController = function (url) {
+		return {
+			data: {},
+			init: async function () {
+				let res = await fetch(url);
+				if (res.ok) {
+					this.data = await res.json();
+				}
+			},
+		};
+	};
 
 	// Register AlpineJS controllers.
 	{
@@ -62,13 +83,14 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncDisqus', newDisqus);
 		Alpine.data('lncPaginator', newPaginatorController);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
+		Alpine.data('lncFetch', fetchController);
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {
 			return newHomeController(searchConfig, staticData);
 		});
 
-		Alpine.data('lncSections', () => newSectionsController(searchConfig));
+		Alpine.data('lncSections', () => newSectionsController(searchConfig, params));
 
 		if (!params.enable_leak_checker) {
 			Alpine.data('lncLeakChecker', () => leackChecker(Alpine));
@@ -166,12 +188,4 @@ const searchConfig = getSearchConfig(params);
 
 		pushGTag('docs_navigate');
 	});
-
-	// For integration tests. Cypress doesn't catch these (smells like a bug).
-	if (window.Cypress) {
-		window.addEventListener('unhandledrejection', function (e) {
-			console.error(e);
-			return false;
-		});
-	}
 })();

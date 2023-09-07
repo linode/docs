@@ -2,7 +2,6 @@
 description: "Deploy Apache Airflow on a Linode Compute Instance. This provides you with an open-source workflow management platform for data engineering pipelines."
 keywords: ['airflow','workflow management','data engineering']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-23
 title: "Deploying Apache Airflow through the Linode Marketplace"
 external_resources:

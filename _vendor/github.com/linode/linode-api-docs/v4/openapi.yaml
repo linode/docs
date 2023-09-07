@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.149.0
+  version: 4.161.0
 
   title: Linode API
   description: |
@@ -39,16 +39,17 @@ info:
     <a target="_top" href="https://cloud.linode.com/profile/tokens">Linode Cloud Manager</a> or
     the [Create Personal Access Token](/docs/api/profile/#personal-access-token-create) endpoint.
 
-    All scopes for the OAuth security model ([defined below](/docs/api/profile/#oauth)) apply to this
+    All scopes for the OAuth security model ([defined below](/docs/api/#oauth)) apply to this
     security model as well.
 
-    #### Authentication
+    ### Authentication
 
     | Security Scheme Type: | HTTP |
     |-----------------------|------|
     | **HTTP Authorization Scheme** | bearer |
 
-    ### OAuth
+    ## OAuth
+
     If you only need to access the Linode API for personal use,
     we recommend that you create a [personal access token](/docs/api/#personal-access-token).
     If you're designing an application that can authenticate with an arbitrary Linode user, then
@@ -65,7 +66,7 @@ info:
         - A public client is used with applications where the client secret is not guaranteed to be secure. For example, a native app running on a user's computer may not be able to keep the client secret safe, as a user could potentially inspect the source of the application. So, native apps or apps that run in a user's browser should use a public client.
         - Public and private clients follow different workflows, as described below.
 
-    #### OAuth Workflow
+    ### OAuth Workflow
 
     The OAuth workflow is a series of exchanges between your third-party app and Linode. The workflow is used
     to authenticate a user before an application can start making API calls on the user's behalf.
@@ -137,30 +138,34 @@ info:
 
     You'll get another response with an updated `access_token` and `refresh_token`, which can then be used to refresh access again.
 
-    #### OAuth Reference
+    ### OAuth Reference
 
     | Security Scheme Type | OAuth 2.0 |
     |-----------------------|--------|
-    | **Authorization URL** | https://login.linode.com/oauth/authorize |
-    | **Token URL** | https://login.linode.com/oauth/token |
+    | **Authorization URL** | `https://login.linode.com/oauth/authorize` |
+    | **Token URL** | `https://login.linode.com/oauth/token` |
     | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`databases:read_only` - Allows access to GET Managed Databases on your Account.</li><li>`databases:read_write` - Allows access to all endpoints related to your Managed Databases.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
 
     ## Requests
 
-    Requests must be made over HTTPS to ensure transactions are encrypted. The
-    following Request methods are supported:
+    Requests must be made over HTTPS to ensure transactions are encrypted. Data included in requests must be supplied in json format unless otherwise specified in the command description.
 
-    | METHOD | USAGE |
-    |--------|-------|
-    | GET    | Retrieves data about collections and individual resources. |
-    | POST   | For collections, creates a new resource of that type. Also used to perform actions on action endpoints. |
-    | PUT    | Updates an existing resource. |
-    | DELETE | Deletes a resource. This is a destructive action. |
+    The following request methods are supported:
 
+    | METHOD  | USAGE |
+    |---------|-------|
+    | GET     | Retrieves data about collections and individual resources. |
+    | POST    | For collections, creates a new resource of that type. Also used to perform actions on action endpoints. |
+    | PUT     | Updates an existing resource. |
+    | DELETE  | Deletes a resource. This is a destructive action. |
+    | HEAD    | Returns only the response header information of a GET request |
+    | OPTIONS | Provides permitted communication options for a command |
 
     ## Responses
 
-    Actions will return one following HTTP response status codes:
+    ### Response Status Codes
+
+    Actions will return one of the following HTTP response status codes:
 
     | STATUS  | DESCRIPTION |
     |---------|-------------|
@@ -174,6 +179,38 @@ info:
     | 404 Not Found | The resource you're requesting does not exist. |
     | 429 Too Many Requests | You've hit a rate limit. |
     | 500 Internal Server Error | Please [open a Support Ticket](/docs/api/support/#support-ticket-open). |
+
+    ### Response Headers
+
+    There are many ways to access response header information for individual command URLs, depending on how you are accessing the Linode API. For example, to view HTTP response headers for the `/regions` endpoint when making requests with `curl`, use the `-I` or `--head` option as follows:
+
+    ```Shell
+    curl -I https://api.linode.com/v4/regions
+    ```
+
+    Responses may include the following headers:
+
+    | HEADER | DESCRIPTION | EXAMPLE |
+    |--------|-------------|---------|
+    | Access-Control-Allow-Credentials | Responses to credentialed requests are exposed to frontend JavaScript code. | true |
+    | Access-Control-Allow-Headers | All permissible request headers for this endpoint. | Authorization, Origin, X-Requested-With, Content-Type, Accept, X-Filter |
+    | Access-Control-Allow-Methods | Permissible HTTP methods for this endpoint | HEAD, GET, OPTIONS, POST, PUT, DELETE |
+    | Access-Control-Allow-Origin | Indicates origin access permissions. The wildcard character `*` means any origin can access the resource. | * |
+    | Access-Control-Expose-Headers | Available headers to include in response to cross-origin requests. | X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Status |
+    | Cache-Control | Controls caching in browsers and shared caches such as CDNs. | private, max-age=60, s-maxage=60 |
+    | Content-Security-Policy | Controls which resources are allowed to load. By default, resources do not load. | default-src 'none' |
+    | Content-Type | All responses are in json format. | application/json |
+    | Content-Warning | A message containing instructions for successful requests that were not able to be completed. | Please contact support for assistance. |
+    | Retry-After | The remaining time in seconds until the current [rate limit](#rate-limiting) window resets. | 60 |
+    | Strict-Transport-Security | Enforces HTTPS-only access until the returned time in seconds. | max-age=31536000 |
+    | Vary | Optional request headers that affected the response content. | Authorization, X-Filter |
+    | X-Accepted-OAuth-Scopes | Required [scopes](#oauth-reference) for accessing the requested command. | linodes:read_only |
+    | X-Customer-UUID | A unique identifier for the account owning the the [personal access token](#personal-access-token) that was used for the request. | ABCDEF01-3456-789A-BCDEF0123456789A |
+    | X-OAuth-Scopes | Allowed [scopes](#oauth-reference) associated with the [personal access token](#personal-access-token) that was used for the request. A value of `*` indicates read/write access for all scope categories. | images:read_write linodes:read_only |
+    | X-RateLimit-Limit | The maximum number of permitted requests during the [rate limit](#rate-limiting) window for this endpoint. | 800 |
+    | X-RateLimit-Remaining | The remaining number of permitted requests in the current [rate limit](#rate-limiting) window. | 798 |
+    | X-RateLimit-Reset | The time when the current [rate limit](#rate-limiting) window rests in UTC epoch seconds. | 1674747739 |
+    | X-Spec-Version | The current API version that handled the request. | 4.150.0 |
 
     ## Errors
 
@@ -192,7 +229,6 @@ info:
     but it's conceivable that fixing these errors and resubmitting may result in
     new errors coming back once we are able to get further along in the process
     of handling your request.
-
 
     Within each error object, the `field` parameter will be included if the error
     pertains to a specific field in the JSON you've submitted. This will be
@@ -342,6 +378,10 @@ info:
 
     * [Linode Create](/docs/api/linode-instances/#linode-create)
 
+    Creating Volumes has a dedicated rate limit of 25 requests per minute. That endpoint is:
+
+    * [Volume Create](/docs/api/volumes/#volume-create)
+
     `/stats` endpoints have their own dedicated rate limits of 100 requests per minute. These endpoints are:
 
     * [View Linode Statistics](/docs/api/linode-instances/#linode-statistics-view)
@@ -363,18 +403,12 @@ info:
 
     ### Rate Limit HTTP Response Headers
 
-    The Linode API includes the following HTTP response headers which are designed to help you avoid hitting rate limits that might disrupt your applications:
+    The Linode API includes the following HTTP response headers which are designed to help you avoid hitting rate limits which might disrupt your applications:
 
     * **X-RateLimit-Limit**: The maximum number of permitted requests during the rate limit window for this endpoint.
     * **X-RateLimit-Remaining**: The remaining number of permitted requests in the current rate limit window.
     * **X-RateLimit-Reset**: The time when the current rate limit window rests in UTC epoch seconds.
     * **Retry-After**: The remaining time in seconds until the current rate limit window resets.
-
-    There are many ways to access header information for your requests, depending on how you are accessing the Linode API. For example, to view HTTP response headers when making requests with `curl`, use the `-i` or `--include` option as follows:
-
-    ```Shell
-    curl -i https://api.linode.com/v4/regions
-    ```
 
     ## CLI (Command Line Interface)
 
@@ -532,7 +566,7 @@ paths:
                   example: "I'm consolidating multiple accounts into one."
       responses:
         '200':
-          description: Account cancelled
+          description: Account canceled
           content:
             application/json:
               schema:
@@ -557,7 +591,7 @@ paths:
                         reason:
                           type: string
                           description: >
-                            A string explaining that the account could not be cancelled
+                            A string explaining that the account could not be canceled
                             because there is an outstanding balance on the account
                             that must be paid first.
                           example: >
@@ -777,7 +811,7 @@ paths:
       responses:
         '200':
           description: >
-            Entity Transfer cancelled.
+            Entity Transfer canceled.
           content:
             application/json:
               schema:
@@ -1234,7 +1268,7 @@ paths:
       - Account
       summary: Maintenance List
       description: |
-        Returns a collection of Maintenance objects for any entity a user has permissions to view. Cancelled Maintenance objects are not returned.
+        Returns a collection of Maintenance objects for any entity a user has permissions to view. Canceled Maintenance objects are not returned.
 
         Currently, Linodes are the only entities available for viewing.
       operationId: getMaintenance
@@ -1653,7 +1687,7 @@ paths:
           curl -H "Content-Type: image/png" \
               -H "Authorization: Bearer $TOKEN" \
               -X PUT \
-              --data-binary "/path/to/image"
+              --data-binary "@/path/to/image"
               https://api.linode.com/v4/account/oauth-clients/edc6790ea9db4d224c5c/thumbnail
   /account/payment-methods:
     x-linode-cli-command: payment-methods
@@ -2397,7 +2431,7 @@ paths:
 
         While a transfer is pending, any unrestricted user *of any account* can access this command. After a
         transfer has been accepted, it can only be viewed by unrestricted users of the accounts that created and
-        accepted the transfer. If cancelled or expired, only unrestricted users of the account that created the
+        accepted the transfer. If canceled or expired, only unrestricted users of the account that created the
         transfer can view it.
       operationId: getServiceTransfer
       x-linode-cli-action: view
@@ -2430,12 +2464,9 @@ paths:
       - account
       summary: Service Transfer Cancel
       description: |
-        Cancels the Service Transfer for the provided token. Once cancelled, a transfer cannot be accepted or otherwise
-        acted on in any way. If cancelled in error, the transfer must be
-        [created](/docs/api/account/#service-transfer-create) again.
+        Cancels the Service Transfer for the provided token. Once canceled, a transfer cannot be accepted or otherwise acted on in any way. If canceled in error, the transfer must be [created](/docs/api/account/#service-transfer-create) again.
 
-        When cancelled, an email notification for the cancellation is sent to the account that created
-        this transfer. Transfers can not be cancelled if they are expired or have been accepted.
+        When canceled, an email notification for the cancellation is sent to the account that created this transfer. Transfers can not be canceled if they are expired or have been accepted.
 
         This command can only be accessed by the unrestricted users of the account that created this transfer.
       operationId: deleteServiceTransfer
@@ -2447,7 +2478,7 @@ paths:
       responses:
         '200':
           description: >
-            Service Transfer cancelled.
+            Service Transfer canceled.
           content:
             application/json:
               schema:
@@ -3214,790 +3245,6 @@ paths:
       - lang: CLI
         source: >
           linode-cli databases list
-  /databases/mongodb/instances:
-    x-linode-cli-command: databases
-    get:
-      tags:
-      - Databases
-      summary: Managed MongoDB Databases List
-      operationId: getDatabasesMongoDBInstances
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-list
-      x-linode-grant: read_only
-      parameters:
-      - $ref: '#/components/parameters/pageOffset'
-      - $ref: '#/components/parameters/pageSize'
-      description: |
-        Display all accessible Managed MongoDB Databases.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_only
-      responses:
-        '200':
-          description: Returns a paginated list of all accessible Managed MongoDB Databases on your Account.
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/PaginationEnvelope'
-                - type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/DatabaseMongoDB'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4/databases/mongodb/instances/
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-list
-    # post:
-    #   tags:
-    #   - Databases
-    #   summary: Managed MongoDB Database Create
-    #   operationId: postDatabasesMongoDBInstances
-    #   servers:
-    #   - url: https://api.linode.com/v4
-    #   - url: https://api.linode.com/v4beta
-    #   x-linode-cli-action: mongodb-create
-    #   x-linode-grant: add_databases
-    #   description: |
-    #     Provision a Managed MongoDB Database.
-
-    #     Restricted Users must have the `add_databases` grant to use this command.
-
-    #     New instances can take approximately 15 to 30 minutes to provision.
-
-    #     The `allow_list` is used to control access to the Managed Database.
-
-    #     * IP addresses and ranges in this list can access the Managed Database. All other sources are blocked.
-
-    #     * If `0.0.0.0/0` is a value in this list, then all IP addresses can access the Managed Database.
-
-    #     * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
-
-    #     All Managed Databases include automatic, daily backups. Up to seven backups are automatically stored for each Managed Database, providing restore points for each day of the past week.
-
-    #     All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database during configurable maintenance windows.
-
-    #     * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
-
-    #     * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
-
-    #     * To modify update the maintenance window for a Database, use the **Managed MongoDB Database Update** ([PUT /databases/mongodb/instances/{instanceId}](/docs/api/databases/#managed-mongodb-database-update)) command.
-
-    #     **Note**: Managed MongoDB clusters are currently accessible over public IP addresses. To provide an additional layer of protection, support for private IP addresses is in development.
-    #   security:
-    #   - personalAccessToken: []
-    #   - oauth:
-    #     - databases:read_write
-    #   requestBody:
-    #     description: Information about the Managed MongoDB Database you are creating.
-    #     x-linode-cli-allowed-defaults:
-    #     - region
-    #     - type
-    #     required: true
-    #     content:
-    #       application/json:
-    #         schema:
-    #           $ref: '#/components/schemas/DatabaseMongoDBRequest'
-    #   responses:
-    #     '200':
-    #       description: A new Managed MongoDB Database is provisioning.
-    #       content:
-    #         application/json:
-    #           schema:
-    #             $ref: '#/components/schemas/DatabaseMongoDB'
-    #     default:
-    #       $ref: '#/components/responses/ErrorResponse'
-    #   x-code-samples:
-    #   - lang: Shell
-    #     source: >
-    #       curl -H "Content-Type: application/json" \
-    #           -H "Authorization: Bearer $TOKEN" \
-    #           -X POST -d '{
-    #               "label": "example-db",
-    #               "region": "us-east",
-    #               "type": "g6-dedicated-2",
-    #               "cluster_size": 3,
-    #               "engine": "mongodb/4.4.10",
-    #               "encrypted": false,
-    #               "ssl_connection": false,
-    #               "replica_set": "example-replica-set",
-    #               "compression_type": "none",
-    #               "storage_engine": "wiredtiger",
-    #               "allow_list": [
-    #                 "203.0.113.1",
-    #                 "192.0.1.0/24"
-    #               ]
-    #           }' \
-    #           https://api.linode.com/v4/databases/mongodb/instances
-    #   - lang: CLI
-    #     source: >
-    #       linode-cli databases mongodb-create \
-    #         --label example-db \
-    #         --region us-east \
-    #         --type g6-dedicated-2 \
-    #         --cluster_size 3 \
-    #         --engine mongodb/4.4.10 \
-    #         --encrypted false \
-    #         --ssl_connection true \
-    #         --replica_set example-replica-set \
-    #         --storage_engine wiredtiger \
-    #         --compression_type none \
-    #         --allow_list 203.0.113.1 \
-    #         --allow_list 192.0.1.0/24
-  /databases/mongodb/instances/{instanceId}:
-    x-linode-cli-command: databases
-    parameters:
-      - name: instanceId
-        in: path
-        description: The ID of the Managed MongoDB Database.
-        required: true
-        schema:
-          type: integer
-    get:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database View
-      operationId: getDatabasesMongoDBInstance
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-view
-      x-linode-grant: read_only
-      description: |
-        Display information for a single, accessible Managed MongoDB Database.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_only
-      responses:
-        '200':
-          description: Returns information for a single Managed MongoDB Database.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DatabaseMongoDB'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4/databases/mongodb/instances/123
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-view 123
-    delete:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Delete
-      operationId: deleteDatabasesMongoDBInstance
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-delete
-      x-linode-grant: read_write
-      description: |
-        Remove a Managed MongoDB Database from your Account.
-
-        Requires `read_write` access to the Database.
-
-        The Database must have an `active`, `failed`, or `degraded` status to perform this command.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      responses:
-        '200':
-          description: Managed MongoDB Database successfully deleted.
-          content:
-            application/json:
-              schema:
-                type: object
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              -X DELETE \
-              https://api.linode.com/v4/databases/mongodb/instances/123
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-delete 123
-    put:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Update
-      operationId: putDatabasesMongoDBInstance
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-update
-      x-linode-grant: read_write
-      description: |
-        Update a Managed MongoDB Database.
-
-        Requires `read_write` access to the Database.
-
-        The Database must have an `active` status to perform this command.
-
-        Updating addresses in the `allow_list` overwrites any existing addresses.
-
-        * IP addresses and ranges on this list can access the Managed Database. All other sources are blocked.
-
-        * If `0.0.0.0/0` is a value in this list, then all IP addresses can access the Managed Database.
-
-        * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
-
-        * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
-
-        All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
-
-        * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
-
-        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      requestBody:
-        description: Updated information for the Managed MongoDB Database.
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              description: Updated information for the Managed MongoDB Database.
-              properties:
-                label:
-                  $ref: '#/components/schemas/DatabaseMongoDBRequest/properties/label'
-                allow_list:
-                  $ref: '#/components/schemas/DatabaseMongoDBRequest/properties/allow_list'
-                updates:
-                  $ref: '#/components/schemas/DatabaseMongoDB/properties/updates'
-      responses:
-        '200':
-          description: Managed Database updated successfully.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DatabaseMongoDB'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Content-Type: application/json" \
-              -H "Authorization: Bearer $TOKEN" \
-              -X PUT -d '{
-                  "label": "example-db",
-                  "allow_list": [
-                    "203.0.113.1",
-                    "192.0.1.0/24"
-                  ],
-                  "updates" = {
-                    "frequency": "monthly",
-                    "duration": 3,
-                    "hour_of_day": 12,
-                    "day_of_week": 4,
-                    "week_of_month": 3,
-                  }
-              }' \
-              https://api.linode.com/v4/databases/mongodb/instances/123
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-update 123 \
-            --label example-db \
-            --allow_list 203.0.113.1 \
-            --allow_list 192.0.1.0/24 \
-            --updates.frequency monthly \
-            --updates.duration 3 \
-            --updates.hour_of_day 12 \
-            --updates.day_of_week 4 \
-            --updates.week_of_month 3
-  /databases/mongodb/instances/{instanceId}/backups:
-    x-linode-cli-command: databases
-    parameters:
-      - name: instanceId
-        in: path
-        description: The ID of the Managed MongoDB Database.
-        required: true
-        schema:
-          type: integer
-    get:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Backups List
-      operationId: getDatabasesMongoDBInstanceBackups
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-backups-list
-      x-linode-grant: read_only
-      parameters:
-      - $ref: '#/components/parameters/pageOffset'
-      - $ref: '#/components/parameters/pageSize'
-      description: |
-        Display all backups for an accessible Managed MongoDB Database.
-
-        The Database must not be provisioning to perform this command.
-
-        Database `auto` type backups are created every 24 hours at 0:00 UTC. Each `auto` backup is retained for 7 days.
-
-        Database `snapshot` type backups are created by accessing the **Managed MongoDB Database Backup Snapshot Create** ([POST /databases/mongodb/instances/{instanceId}/backups](/docs/api/databases/#managed-mongodb-database-backup-snapshot-create)) command.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      responses:
-        '200':
-          description: Returns a paginated list of backups for the Managed MongoDB Database.
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/PaginationEnvelope'
-                - type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/DatabaseBackup'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4/databases/mongodb/instances/123/backups
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-backups-list 123
-    post:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Backup Snapshot Create
-      operationId: postDatabasesMongoDBInstanceBackup
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-backup-snapshot
-      x-linode-grant: read_write
-      description: |
-        Creates a snapshot backup of a Managed MongoDB Database.
-
-        Requires `read_write` access to the Database.
-
-        Up to 3 snapshot backups for each Database can be stored at a time. If 3 snapshots have been created for a Database, one must be deleted before another can be made.
-
-        Backups generated by this command have the type `snapshot`. Snapshot backups may take several minutes to complete, after which they will be accessible to view or restore.
-
-        The Database must have an `active` status to perform this command. If another backup is in progress, it must complete before a new backup can be initiated.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      requestBody:
-        description: Information about the snapshot backup to create.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DatabaseBackupSnapshot'
-      responses:
-        '200':
-          description: Database snapshot backup request successful.
-          content:
-            application/json:
-              schema:
-                type: object
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              -H "Content-Type: application/json" \
-              -X POST -d '{
-                  "label": "snapshot1",
-                  "target": "primary"
-              }' \
-              https://api.linode.com/v4/databases/mongodb/instances/123/backups/
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-backup-snapshot 123 \
-            --label snapshot1 \
-            --target primary
-  /databases/mongodb/instances/{instanceId}/backups/{backupId}:
-    x-linode-cli-command: databases
-    parameters:
-      - name: instanceId
-        in: path
-        description: The ID of the Managed MongoDB Database.
-        required: true
-        schema:
-          type: integer
-      - name: backupId
-        in: path
-        description: The ID of the Managed MongoDB Database backup.
-        required: true
-        schema:
-          type: integer
-    get:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Backup View
-      operationId: getDatabasesMongoDBInstanceBackup
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-backup-view
-      x-linode-grant: read_only
-      description: |
-        Display information for a single backup for an accessible Managed MongoDB Database.
-
-        The Database must not be provisioning to perform this command.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      responses:
-        '200':
-          description: Returns a single backup for the Managed MongoDB Database.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DatabaseBackup'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4/databases/mongodb/instances/123/backups/456
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-backup-view 123 456
-    delete:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Backup Delete
-      operationId: deleteDatabaseMongoDBInstanceBackup
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-backup-delete
-      description: |
-        Delete a single backup for an accessible Managed MongoDB Database.
-
-        Requires `read_write` access to the Database.
-
-        The Database must not be provisioning to perform this command.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      responses:
-        '200':
-          description: Request to delete Database backup successful.
-          content:
-            application/json:
-              schema:
-                type: object
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              -X DELETE \
-              https://api.linode.com/v4/databases/mongodb/instances/123/backups/456
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-backup-delete 123 456
-  /databases/mongodb/instances/{instanceId}/backups/{backupId}/restore:
-    x-linode-cli-command: databases
-    parameters:
-      - name: instanceId
-        in: path
-        description: The ID of the Managed MongoDB Database.
-        required: true
-        schema:
-          type: integer
-      - name: backupId
-        in: path
-        description: The ID of the Managed MongoDB Database backup.
-        required: true
-        schema:
-          type: integer
-    post:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Backup Restore
-      operationId: postDatabasesMongoDBInstanceBackupRestore
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-backup-restore
-      x-linode-grant: read_write
-      description: |
-        Restore a backup to a Managed MongoDB Database on your Account.
-
-        Requires `read_write` access to the Database.
-
-        The Database must have an `active` status to perform this command.
-
-        **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
-
-        **Note**: Currently, restoring a backup after resetting Managed Database credentials results in a failed cluster. Please contact Customer Support if this occurs.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      responses:
-        '200':
-          description: Request to restore backup successful.
-          content:
-            application/json:
-              schema:
-                type: object
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              -X POST https://api.linode.com/v4/databases/mongodb/instances/123/backups/456/restore
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-backup-restore 123 456
-  /databases/mongodb/instances/{instanceId}/credentials:
-    x-linode-cli-command: databases
-    parameters:
-      - name: instanceId
-        in: path
-        description: The ID of the Managed MongoDB Database.
-        required: true
-        schema:
-          type: integer
-    get:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Credentials View
-      operationId: getDatabasesMongoDBInstanceCredentials
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-creds-view
-      x-linode-grant: read_only
-      description: |
-        Display the root username and password for an accessible Managed MongoDB Database.
-
-        The Database must have an `active` status to perform this command.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_only
-      responses:
-        '200':
-          description: Managed Database root username and password.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DatabaseCredentials'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4/databases/mongodb/instances/123/credentials/
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-creds-view 123
-  /databases/mongodb/instances/{instanceId}/credentials/reset:
-    x-linode-cli-command: databases
-    parameters:
-      - name: instanceId
-        in: path
-        description: The ID of the Managed MongoDB Database.
-        required: true
-        schema:
-          type: integer
-    post:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Credentials Reset
-      operationId: postDatabasesMongoDBInstanceCredentialsReset
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-creds-reset
-      x-linode-grant: read_write
-      description: |
-        Reset the root password for a Managed MongoDB Database.
-
-        Requires `read_write` access to the Database.
-
-        A new root password is randomly generated and accessible with the **Managed MongoDB Database Credentials View** ([GET /databases/mongodb/instances/{instanceId}/credentials](/docs/api/databases/#managed-mongodb-database-credentials-view)) command.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
-
-        **Note**: Note that it may take several seconds for credentials to reset.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      responses:
-        '200':
-          description: Managed Database instance credentials successfully reset.
-          content:
-            application/json:
-              schema:
-                type: object
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              -X POST https://api.linode.com/v4/databases/mongodb/instances/123/credentials/reset
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-creds-reset 123
-  /databases/mongodb/instances/{instanceId}/ssl:
-    x-linode-cli-command: databases
-    parameters:
-      - name: instanceId
-        in: path
-        description: The ID of the Managed MongoDB Database.
-        required: true
-        schema:
-          type: integer
-    get:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database SSL Certificate View
-      operationId: getDatabasesMongoDBInstanceSSL
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-ssl-cert
-      x-linode-grant: read_only
-      description: |
-        Display the SSL CA certificate for an accessible Managed MongoDB Database.
-
-        The Database must have an `active` status to perform this command.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_only
-      responses:
-        '200':
-          description: Returns the SSL CA certificate of a single Managed MongoDB Database.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DatabaseSSL'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4/databases/mongodb/instances/123/ssl
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-ssl-cert 123
-  /databases/mongodb/instances/{instanceId}/patch:
-    x-linode-cli-command: databases
-    parameters:
-      - name: instanceId
-        in: path
-        description: The ID of the Managed MongoDB Database.
-        required: true
-        schema:
-          type: integer
-    post:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Patch
-      operationId: postDatabasesMongoDBInstancePatch
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-patch
-      x-linode-grant: read_write
-      description: |
-        Apply security patches and updates to the underlying operating system of the Managed MongoDB Database. This function runs during regular maintenance windows, which are configurable with the **Managed MongoDB Database Update** ([PUT /databases/mongodb/instances/{instanceId}](/docs/api/databases/#managed-mongodb-database-update)) command.
-        Requires `read_write` access to the Database.
-
-        The Database must have an `active` status to perform this command.
-
-        **Note**:
-
-        * If your database cluster is configured with a single node, you will experience downtime during this maintenance. Consider upgrading to a high availability plan to avoid any downtime due to maintenance.
-
-        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
-
-        **Note**: New MongoDB Databases cannot currently be created.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      responses:
-        '200':
-          description: Managed Database instance patch request successful.
-          content:
-            application/json:
-              schema:
-                type: object
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Authorization: Bearer $TOKEN" \
-              -X POST https://api.linode.com/v4/databases/mongodb/instances/123/patch
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-patch 123
   /databases/mysql/instances:
     x-linode-cli-command: databases
     get:
@@ -4084,6 +3331,7 @@ paths:
       requestBody:
         description: Information about the Managed MySQL Database you are creating.
         x-linode-cli-allowed-defaults:
+        - engine
         - region
         - type
         required: true
@@ -4535,7 +3783,7 @@ paths:
 
         Requires `read_write` access to the Database.
 
-        The Database must have an `active` status to perform this command.
+        The Database must have an `active`, `degraded`, or `failed` status to perform this command.
 
         **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
 
@@ -4837,6 +4085,7 @@ paths:
       requestBody:
         description: Information about the Managed PostgreSQL Database you are creating.
         x-linode-cli-allowed-defaults:
+        - engine
         - region
         - type
         required: true
@@ -5290,7 +4539,7 @@ paths:
 
         Requires `read_write` access to the Database.
 
-        The Database must have an `active` status to perform this command.
+        The Database must have an `active`, `degraded`, or `failed` status to perform this command.
 
         **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
 
@@ -5529,7 +4778,7 @@ paths:
           description: Returns a paginated list of all Managed Database types.
           content:
             application/json:
-              x-linode-cli-nested-list: engines.mysql, engines.postgresql, engines.mongodb
+              x-linode-cli-nested-list: engines.mysql, engines.postgresql
               x-linode-cli-use-schema:
                 type: object
                 properties:
@@ -5540,10 +4789,12 @@ paths:
                   _split:
                     x-linode-cli-display: 2.5
                   engines:
+                    type: object
                     properties:
                        quantity:
                         x-linode-cli-display: 3
                        price:
+                         type: object
                          properties:
                            hourly:
                              x-linode-cli-display: 4
@@ -5595,7 +4846,7 @@ paths:
           description: Returns a single Managed Database type.
           content:
             application/json:
-              x-linode-cli-nested-list: engines.mysql, engines.postgresql, engines.mongodb
+              x-linode-cli-nested-list: engines.mysql, engines.postgresql
               x-linode-cli-use-schema:
                 type: object
                 properties:
@@ -5606,10 +4857,12 @@ paths:
                   _split:
                     x-linode-cli-display: 2.5
                   engines:
+                    type: object
                     properties:
                        quantity:
                         x-linode-cli-display: 3
                        price:
+                         type: object
                          properties:
                            hourly:
                              x-linode-cli-display: 4
@@ -6465,7 +5718,7 @@ paths:
         with the URL to which image data can be uploaded.
 
         - Image data must be uploaded within 24 hours of creation or the
-        upload will be cancelled and the image deleted.
+        upload will be canceled and the image deleted.
 
         - Image uploads should be made as an HTTP PUT request to the URL returned in the `upload_to`
         response parameter, with a `Content-type: application/octet-stream` header included in the
@@ -6752,7 +6005,7 @@ paths:
 
         In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587
         on all Linodes for new accounts created after November 5th, 2019. For more information,
-        see [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode).
+        see our guide on [Running a Mail Server](/docs/guides/running-a-mail-server/).
 
         Linodes can be created in a number of ways:
 
@@ -6792,6 +6045,12 @@ paths:
             * See Linode Boot ([POST /linode/instances/{linodeId}/boot](/docs/api/linode-instances/#linode-boot)).
           * Disks and Configs must be created manually.
           * This is only recommended for advanced use cases.
+
+        * **BETA** Using cloud-init with [Metadata](/docs/products/compute/compute-instances/guides/metadata/).
+          * Automate system configuration and software installation by providing a base-64 encoded [cloud-config](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) file.
+          * Requires a compatible Image. You can determine compatible Images by checking for `cloud-init` under `capabilities` when using Images List ([GET /images](/docs/api/images/#images-list)).
+          * Requires a compatible Region.  You can determine compatible Regions by checking for `Metadata` under `capabilities` when using Regions List ([GET /regions](/docs/api/regions/#regions-list)).
+          * This feature is in beta and is currently limited to certain Regions and distributions. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
 
         **Important**: You must be an unrestricted User in order to add or modify
         tags on Linodes.
@@ -6895,7 +6154,7 @@ paths:
                 "backup_id": 1234,
                 "backups_enabled": true,
                 "swap_size": 512,
-                "image": "linode/debian9",
+                "image": "linode/ubuntu22.04",
                 "root_pass": "aComplexP@ssword",
                 "stackscript_id": 10079,
                 "stackscript_data": {
@@ -6924,7 +6183,10 @@ paths:
                 "label": "linode123",
                 "type": "g6-standard-2",
                 "region": "us-east",
-                "group": "Linode-Group"
+                "group": "Linode-Group",
+                "metadata": {
+                  "user_data": "I2Nsb3VkLWNvbmZpZw=="
+                }
               }' \
               https://api.linode.com/v4/linode/instances
       - lang: CLI
@@ -6937,9 +6199,10 @@ paths:
             --stackscript_data '{"gh_username": "linode"}' \
             --region us-east \
             --type g6-standard-2 \
-            --authorized_keys "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer"
-            --authorized_users "myUser"
-            --authorized_users "secondaryUser"
+            --authorized_keys "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer" \
+            --authorized_users "myUser" \
+            --authorized_users "secondaryUser" \
+            --metadata.user_data "I2Nsb3VkLWNvbmZpZw==)"
   /linode/instances/{linodeId}:
     parameters:
     - name: linodeId
@@ -7083,6 +6346,7 @@ paths:
 
           * Gives up any IP addresses the Linode was assigned.
           * Deletes all Disks, Backups, Configs, etc.
+          * Detaches any Volumes associated with the Linode.
           * Stops billing for the Linode and its associated services. You will be billed for time used
             within the billing period the Linode was active.
 
@@ -7252,7 +6516,7 @@ paths:
         - linodes:read_write
       responses:
         '200':
-          description: Backup service was cancelled for the specified Linode.
+          description: Backup service was canceled for the specified Linode.
           content:
             application/json:
               schema:
@@ -7373,8 +6637,13 @@ paths:
     post:
       x-linode-grant: read_write
       summary: Backup Restore
-      description: >
+      description: |
         Restores a Linode's Backup to the specified Linode.
+
+        The following conditions apply:
+          * Backups may not be restored across Regions.
+          * Only successfully completed Backups that are not undergoing maintenance can be restored.
+          * The Linode that the Backup is being restored to must not itself be in the process of creating a Backup.
       tags:
       - Linode Instances
       operationId: restoreBackup
@@ -8550,13 +7819,17 @@ paths:
                       slaac:
                         $ref: '#/components/schemas/IPAddressV6Slaac'
                       global:
-                        $ref: '#/components/schemas/IPv6Pool'
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/IPv6Range'
+                        description: |
+                          A list of IPv6 range objects assigned to this Linode.
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
+          curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/linode/instances/123/ips
       - lang: CLI
         source: >
@@ -8668,7 +7941,7 @@ paths:
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
+          curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/linode/instances/123/ips/97.107.143.141
       - lang: CLI
         source: >
@@ -8771,6 +8044,8 @@ paths:
       summary: Kernels List
       description: |
         Lists available Kernels.
+
+        Due to the extensive list of available kernels, please keep [pagination](/docs/api/#pagination) controls in mind when managing responses to this command.
       operationId: getKernels
       x-linode-cli-action:
         - list
@@ -9178,7 +8453,7 @@ paths:
     post:
       x-linode-grant: read_write
       summary: Linode Rebuild
-      description: >
+      description: |
         Rebuilds a Linode you have the `read_write` permission to modify.
 
         A rebuild will first shut down the Linode, delete all disks and configs
@@ -9189,6 +8464,13 @@ paths:
           * Requires a `root_pass` be supplied to use for the root User's Account.
           * It is recommended to supply SSH keys for the root User using the
             `authorized_keys` field.
+
+        You also have the option to resize the Linode to a different plan by including the `type` parameter with your request. Note that resizing involves migrating the Linode to a new hardware host, while rebuilding without resizing maintains the same hardware host. Resizing also requires significantly more time for completion of this command. The following additional conditions apply:
+
+          * The Linode must not have a pending migration.
+          * Your Account cannot have an outstanding balance.
+          * The Linode must not have more disk allocation than the new Type allows.
+            * In that situation, you must first delete or resize the disk to be smaller.
       tags:
       - Linode Instances
       operationId: rebuildLinodeInstance
@@ -9209,6 +8491,13 @@ paths:
               - root_pass
               allOf:
                 - $ref: '#/components/schemas/LinodeRequest'
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      description: >
+                        The ID of the [Linode Type](/docs/api/linode-types/#types-list) to resize to with this request.
+                      example: g6-standard-2
       responses:
         '200':
           description: Rebuild started.
@@ -9238,6 +8527,7 @@ paths:
                 "stackscript_data": {
                   "gh_username": "linode"
                 }
+                "type": "g6-standard-2"
               }' \
               https://api.linode.com/v4/linode/instances/123/rebuild
       - lang: CLI
@@ -9250,7 +8540,8 @@ paths:
             --authorized_users "secondaryUsername" \
             --booted true \
             --stackscript_id 10079 \
-            --stackscript_data '{"gh_username": "linode"}'
+            --stackscript_data '{"gh_username": "linode"}' \
+            --type "g6-standard-2"
   /linode/instances/{linodeId}/rescue:
     parameters:
     - name: linodeId
@@ -9343,6 +8634,8 @@ paths:
           * Your Account cannot have an outstanding balance.
           * The Linode must not have more disk allocation than the new Type allows.
             * In that situation, you must first delete or resize the disk to be smaller.
+
+        You can also resize a Linode when using the [Linode Rebuild](/docs/api/linode-instances/#linode-rebuild) command.
       tags:
       - Linode Instances
       operationId: resizeLinodeInstance
@@ -12211,7 +11504,7 @@ paths:
       summary: Managed SSH Key View
       description: |
         Returns the unique SSH public key assigned to your Linode account's
-        Managed service. If you [add this public key](/docs/guides/linode-managed/#adding-the-public-key) to a Linode on your account,
+        Managed service. If you [add this public key](/docs/products/services/managed/get-started/#adding-the-public-key) to a Linode on your account,
         Linode special forces will be able to log in to the Linode with this key
         when attempting to resolve issues.
 
@@ -12882,43 +12175,52 @@ paths:
       tags:
       - Networking
       summary: IP Addresses List
-      description: >
-        Returns a paginated list of IP Addresses on your Account, excluding
-        private addresses.
+      description: |
+        Returns a paginated list of IP Addresses on your Account, excluding private addresses.
+
+        We recommend utilizing the "skip_ipv6_rdns" option to improve performance if your application frequently accesses this command and does not require IPv6 RDNS data.
       operationId: getIPs
       x-linode-cli-action: ips-list
       security:
       - personalAccessToken: []
       - oauth:
         - ips:read_only
+      requestBody:
+        description: Options to request additional data.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                skip_ipv6_rdns:
+                  type: boolean
+                  default: false
+                  description: |
+                    When `true`, the "rdns" property for any "ipv6" type addresses always returns `null` regardless of whether RDNS data exists for the address.
+
+                    The default value is `false`.
       responses:
         '200':
           description: A paginated list of IP Addresses.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/IPAddress'
-                  page:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
-                  pages:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
-                  results:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+                $ref: '#/components/schemas/IPAddressesListResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X GET -d '{
+                "skip_ipv6_rdns": false
+                }' \
               https://api.linode.com/v4/networking/ips
       - lang: CLI
         source: >
-          linode-cli networking ips-list
+          linode-cli networking ips-list --skip_ipv6_rdns false
     post:
       x-linode-grant: read_write
       tags:
@@ -14471,6 +13773,15 @@ paths:
                   $ref: '#/components/schemas/NodeBalancer/properties/label'
                 client_conn_throttle:
                   $ref: '#/components/schemas/NodeBalancer/properties/client_conn_throttle'
+                tags:
+                  description: |
+                    An array of Tags applied to this object. Tags are for organizational purposes only.
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - test
+                  - web-dev-team
                 configs:
                   type: array
                   description: |
@@ -17160,11 +16471,14 @@ paths:
                 scopes:
                   type: string
                   format: oauth-scope
-                  description: >
-                    The scopes to create the token with.  These cannot be changed
-                    after creation, and may not exceed the scopes of the acting token.
-                    If omitted, the new token will have the same scopes as the acting
-                    token.
+                  description: |
+                    The access [scopes](/docs/api#oauth-reference) to grant to the created token. These cannot be changed after creation, and may not exceed the scopes of the acting token.
+
+                    If omitted or entered with a wildcard character (`*`), the new token will have the same scopes as the acting token.
+
+                    Multiple scopes are separated by a space character (` `).
+
+                    For example, `linodes:read_write account:read_only`.
                   example: '*'
                 expiry:
                   type: string
@@ -18154,6 +17468,73 @@ paths:
       - lang: CLI
         source: >
           linode-cli regions view us-east
+  /regions/{regionId}/availability:
+    x-linode-cli-command: regions
+    parameters:
+    - name: regionId
+      in: path
+      description: ID of the Region to look up.
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Regions
+      summary: Region Availability View
+      description: >
+        Returns availability data for a single Region.
+      operationId: getRegionAvailability
+      x-linode-cli-action: view-avail
+      responses:
+        '200':
+          description: A single Region object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegionAvailability'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/regions/us-east/availability
+      - lang: CLI
+        source: >
+          linode-cli regions view-avail us-east
+  /regions/availability:
+    x-linode-cli-command: regions
+    get:
+      tags:
+      - Regions
+      summary: Regions Availability List
+      description: |
+        Returns availability data for all Regions.
+
+        Currently, this command returns availability of select premium and GPU plans for select regions.
+      operationId: getRegionsAvailability
+      x-linode-cli-action: list-avail
+      responses:
+        '200':
+          description: Returns a Region Availability object.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RegionAvailability'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/regions/availability
+      - lang: CLI
+        source: >
+          linode-cli regions list-avail
   /support/tickets:
     x-linode-cli-command: tickets
     get:
@@ -18508,20 +17889,20 @@ paths:
   /tags:
     x-linode-cli-command: tags
     get:
-      x-linode-grant: read_only
+      x-linode-grant: unrestricted only
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Tags
       summary: Tags List
-      description: >
-        Tags are User-defined labels attached to objects in your Account, such
-        as Linodes. They are used for specifying and grouping attributes of
-        objects that are relevant to the User.
-
+      description: |
+        Tags are User-defined labels attached to objects in your Account, such as Linodes. They are used for specifying and grouping attributes of objects that are relevant to the User.
 
         This endpoint returns a paginated list of Tags on your account.
+
+        **Important**: You must be an unrestricted User in order to access, add, or modify
+        Tags information.
       operationId: getTags
       x-linode-cli-action:
         - list
@@ -18556,16 +17937,15 @@ paths:
           curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/tags
     post:
+      x-linode-grant: unrestricted only
       tags:
       - Tags
       summary: New Tag Create
-      description: >
-        Creates a new Tag and optionally tags requested objects with it
-        immediately.
+      description: |
+        Creates a new Tag and optionally tags requested objects with it immediately.
 
-
-        **Important**: You must be an unrestricted User in order to add or modify
-        Tags.
+        **Important**: You must be an unrestricted User in order to access, add, or modify
+        Tags information.
       operationId: createTag
       x-linode-cli-action: create
       security:
@@ -18671,9 +18051,11 @@ paths:
       required: true
     get:
       summary: Tagged Objects List
-      description: >
-        Returns a paginated list of all objects you've tagged with the requested
-        Tag. This is a mixed collection of all object types.
+      description: |
+        Returns a paginated list of all objects you've tagged with the requested Tag. This is a mixed collection of all object types.
+
+        **Important**: You must be an unrestricted User in order to access, add, or modify
+        Tags information.
       tags:
       - Tags
       operationId: getTaggedObjects
@@ -18734,8 +18116,8 @@ paths:
         Remove a Tag from all objects and delete it.
 
 
-        **Important**: You must be an unrestricted User in order to add or modify
-        Tags.
+        **Important**: You must be an unrestricted User in order to access, add, or modify
+        Tags information.
       tags:
       - Tags
       operationId: deleteTag
@@ -19072,7 +18454,7 @@ paths:
       description: >
         Attaches a Volume on your Account
         to an existing Linode on your Account. In order for this request to
-        complete successfully, your User must have `read_only` or `read_write`
+        complete successfully, your User must have `read_write`
         permission to the Volume and `read_write` permission to the Linode.
         Additionally, the Volume and Linode must be located in the same Region.
       tags:
@@ -19214,11 +18596,10 @@ paths:
     x-linode-cli-command: volumes
     post:
       summary: Volume Detach
-      description: >
-        Detaches a Volume on your Account
-        from a Linode on your Account. In order for this request to
-        complete successfully, your User must have `read_write` access to the
-        Volume and `read_write` access to the Linode.
+      description: |
+        Detaches a Volume on your Account from a Linode on your Account. In order for this request to complete successfully, your User must have `read_write` access to the Volume and `read_write` access to the Linode.
+
+        Volumes are automatically detached from deleted Linodes.
       tags:
       - Volumes
       operationId: detachVolume
@@ -19551,7 +18932,10 @@ components:
               example: 11/2022
         company:
           type: string
-          description: The company name associated with this Account.
+          description: |
+            The company name associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 128
           example: Linode LLC
         country:
@@ -19567,13 +18951,19 @@ components:
           x-linode-cli-display: 3
         first_name:
           type: string
-          description: The first name of the person associated with this Account.
+          description: |
+            The first name of the person associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 50
           example: John
           x-linode-cli-display: 1
         last_name:
           type: string
-          description: The last name of the person associated with this Account.
+          description: |
+            The last name of the person associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 50
           example: Smith
           x-linode-cli-display: 2
@@ -19686,6 +19076,7 @@ components:
             The name of the application you've authorized.
           example: example-app
           readOnly: true
+          x-linode-filterable: true
           x-linode-cli-display: 2
         thumbnail_url:
           type: string
@@ -19907,7 +19298,6 @@ components:
         engine:
           type: string
           enum:
-          - mongodb
           - mysql
           - postgresql
           description: The Managed Database engine type.
@@ -20114,7 +19504,7 @@ components:
           description: |
             The label for the Database snapshot backup.
 
-            * Must include only ASCII letters or numbers.
+            * Must include only ASCII letters, numbers, or underscores.
             * Must be unique among other backup labels for this Database.
           example: db-snapshot
         target:
@@ -20164,174 +19554,6 @@ components:
           description: The Managed Database engine version.
           x-linode-filterable: true
           x-linode-cli-display: 3
-    DatabaseMongoDB:
-      type: object
-      description: Managed MongoDB Databases object.
-      properties:
-        id:
-          $ref: '#/components/schemas/Database/properties/id'
-          x-linode-cli-display: 1
-        label:
-          $ref: '#/components/schemas/Database/properties/label'
-          x-linode-cli-display: 2
-        type:
-          $ref: '#/components/schemas/Database/properties/type'
-          x-linode-cli-display: 4
-        engine:
-          type: string
-          description: The Managed Database engine type.
-          example: mongodb
-          x-linode-filterable: true
-          x-linode-cli-display: 6
-          readOnly: true
-        version:
-          type: string
-          description: The Managed Database engine version.
-          example: "4.4.10"
-          x-linode-filterable: true
-          x-linode-cli-display: 7
-          readOnly: true
-        region:
-          $ref: '#/components/schemas/Database/properties/region'
-          x-linode-cli-display: 3
-        status:
-          $ref: '#/components/schemas/Database/properties/status'
-          x-linode-cli-display: 100
-          x-linode-cli-color:
-            provisioning: yellow
-            active: green
-            resuming: yellow
-            restoring: yellow
-            failed: red
-            degraded: red
-            default_: white
-        encrypted:
-          $ref: '#/components/schemas/Database/properties/encrypted'
-        allow_list:
-          $ref: '#/components/schemas/Database/properties/allow_list'
-        cluster_size:
-          $ref: '#/components/schemas/Database/properties/cluster_size'
-          x-linode-cli-display: 5
-        hosts:
-          type: object
-          readOnly: true
-          description: The primary and secondary hosts for the Managed Database. These are assigned after provisioning is complete.
-          properties:
-            primary:
-              type: string
-              description: The primary host for the Managed Database.
-              example: lin-0000-0000.servers.linodedb.net
-              nullable: true
-            secondary:
-              type: string
-              description: |
-                The secondary/private network host for the Managed Database.
-
-                A private network host and a private IP can only be used to access a Database Cluster from Linodes in the same data center and will not incur transfer costs.
-
-                **Note**: The secondary hostname is publicly viewable and accessible.
-              example: null
-              nullable: true
-        peers:
-          type: array
-          description: |
-            An array of peer addresses for this Database.
-          items:
-            type: string
-            description: |
-              The peer address of a Managed MongoDB Database cluster node. Each node in a cluster has its own unique peer address.
-          example:
-          - lin-0000-0000.servers.linodedb.net
-          - lin-0000-0001.servers.linodedb.net
-          - lin-0000-0002.servers.linodedb.net
-        replica_set:
-          nullable: true
-          default: null
-          type: string
-          maxLength: 64
-          description: |
-            Label for configuring a MongoDB [replica set](https://www.mongodb.com/docs/manual/replication/). Choose the same label on multiple Databases to include them in the same replica set.
-
-            If `null`, the Database is not included in any replica set.
-          example: null
-        ssl_connection:
-          type: boolean
-          default: true
-          example: true
-          description: |
-            Whether to require SSL credentials to establish a connection to the Managed Database.
-
-            Use the **Managed MongoDB Database Credentials View** ([GET /databases/mongodb/instances/{instanceId}/credentials](/docs/api/databases/#managed-mongodb-database-credentials-view)) command for access information.
-        compression_type:
-          type: string
-          enum:
-          - none
-          - snappy
-          - zlip
-          default: none
-          example: none
-          description: |
-            The type of data compression for this Database.
-
-            Snappy has a lower comparative compression ratio and resource consumption rate.
-
-            Zlip has a higher comparative compression ratio and resource consumption rate.
-          x-linode-cli-display: 99
-        storage_engine:
-          type: string
-          enum:
-          - mmapv1
-          - wiredtiger
-          default: wiredtiger
-          example: wiredtiger
-          description: |
-            The type of storage engine for this Database.
-
-            **Note:** MMAPV1 is not available for MongoDB versions 4.0 and above.
-        port:
-          type: integer
-          description: The access port for this Managed Database.
-          example: 27017
-          x-linode-cli-display: 98
-        created:
-          $ref: '#/components/schemas/Database/properties/created'
-        updated:
-          $ref: '#/components/schemas/Database/properties/updated'
-        updates:
-          $ref: '#/components/schemas/Database/properties/updates'
-    DatabaseMongoDBRequest:
-      type: object
-      description: Managed MongoDB Database request object.
-      required:
-        - label
-        - type
-        - engine
-        - region
-      properties:
-        label:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/label'
-        type:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/type'
-        engine:
-          type: string
-          example: mongodb/4.4.10
-          description: The Managed Database engine in engine/version format.
-        region:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/region'
-        encrypted:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/encrypted'
-        allow_list:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/allow_list'
-        cluster_size:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/cluster_size'
-        replica_set:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/replica_set'
-        ssl_connection:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/ssl_connection'
-        compression_type:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/compression_type'
-        storage_engine:
-          $ref: '#/components/schemas/DatabaseMongoDB/properties/storage_engine'
     DatabaseMySQL:
       type: object
       description: Managed MySQL Databases object.
@@ -20527,16 +19749,15 @@ components:
           enum:
           - none
           - asynch
-          - semi_synch
-          example: semi_synch
+          example: async
           description: |
             The replication method used for the Managed Database.
 
-            Defaults to `none` for a single cluster and `semi_synch` for a high availability cluster.
+            Defaults to `none` for a single cluster and `asynch` for a high availability cluster.
 
             Must be `none` for a single node cluster.
 
-            Must be `asynch` or `semi_synch` for a high availability cluster.
+            Must be `asynch` for a high availability cluster.
           x-linode-cli-display: 99
         replication_commit_type:
           type: string
@@ -20552,8 +19773,6 @@ components:
             The synchronization level of the replicating server.
 
             Must be `local` or `off` for the `asynch` replication type.
-
-            Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
           x-linode-cli-display: 100
         port:
           type: integer
@@ -20634,11 +19853,6 @@ components:
             postgresql:
               type: array
               description: Pricing details for PostgreSQL Managed Databases.
-              items:
-                $ref: '#/components/schemas/DatabaseTypeEngine'
-            mongodb:
-              type: array
-              description: Pricing details for MongoDB Managed Databases.
               items:
                 $ref: '#/components/schemas/DatabaseTypeEngine'
         memory:
@@ -20880,7 +20094,7 @@ components:
           example:
             gh_username: linode
           description: |
-            This field is required only if the StackScript being deployed requires input data from the User for successful completion. See [User Defined Fields (UDFs)](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) for more details.
+            This field is required only if the StackScript being deployed requires input data from the User for successful completion. See [User Defined Fields (UDFs)](/docs/products/tools/stackscripts/guides/write-a-custom-script/#declare-user-defined-fields-udfs) for more details.
 
             This field is required to be valid JSON.
 
@@ -21232,7 +20446,7 @@ components:
           x-linode-filterable: true
           x-linode-cli-color:
             accepted: yellow
-            cancelled: red
+            canceled: red
             completed: green
             failed: red
             pending: yellow
@@ -21241,7 +20455,7 @@ components:
           type: string
           enum:
           - accepted
-          - cancelled
+          - canceled
           - completed
           - failed
           - pending
@@ -21254,7 +20468,7 @@ components:
             Transfers can take up to 3 hours to complete.
 
 
-            `cancelled`: The transfer has been cancelled by the sender.
+            `canceled`: The transfer has been canceled by the sender.
 
 
             `completed`: The transfer has completed successfully.
@@ -21267,7 +20481,7 @@ components:
 
 
             `stale`: The transfer has exceeded its expiration date. It can no longer be accepted or
-            cancelled.
+            canceled.
           example: 'pending'
         created:
           type: string
@@ -21607,6 +20821,7 @@ components:
           readOnly: true
           description: If this Event has been read.
           example: true
+          x-linode-filterable: true
         seen:
           type: boolean
           readOnly: true
@@ -22171,6 +21386,18 @@ components:
 
             The "+order_by" and "+order" operators are not available for [filtering](/docs/api/#filtering-and-sorting) on this key.
           example: available
+        capabilities:
+          x-linode-cli-display: 8
+          type: array
+          readOnly: true
+          description: |
+            A list containing the following possible capabilities of this Image:
+
+            `cloud-init`: This Image supports cloud-init with [Metadata](/docs/products/compute/compute-instances/guides/metadata/). Only applies to public Images.
+          items:
+            type: string
+          example:
+          - cloud-init
     Invoice:
       type: object
       description: Account Invoice object
@@ -22366,7 +21593,6 @@ components:
             The Region this IP address resides in.
           example: us-east
           readOnly: true
-          x-linode-filterable: true
           x-linode-cli-display: 5
     IPAddressesAssignRequest:
       type: object
@@ -22411,6 +21637,99 @@ components:
                   with at least one public address and no more than one
                   private address once all assignments have been made.
                 example: 123
+    IPAddressesListResponse:
+      description: The response data for the IP Addresses List (GET /networking/ips) command.
+      allOf:
+        - $ref: '#/components/schemas/PaginationEnvelope'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                description: >
+                  An IP address that exists in Linode's system, either IPv4 or IPv6, specific to the response for the IP Addresses List command.
+                properties:
+                  address:
+                    type: string
+                    format: ip
+                    description: >
+                      The IP address.
+                    example: 192.0.2.141
+                    readOnly: true
+                    x-linode-filterable: true
+                    x-linode-cli-display: 1
+                  gateway:
+                    type: string
+                    nullable: true
+                    format: ip
+                    description: >
+                      The default gateway for this address.
+                    example: 192.0.2.1
+                    readOnly: true
+                  subnet_mask:
+                    type: string
+                    format: ip
+                    description: >
+                      The mask that separates host bits from network bits for this address.
+                    example: 255.255.255.0
+                    readOnly: true
+                  prefix:
+                    type: integer
+                    description: >
+                      The number of bits set in the subnet mask.
+                    example: 24
+                    x-linode-filterable: true
+                    readOnly: true
+                  type:
+                    type: string
+                    enum:
+                    - ipv4
+                    - ipv6
+                    - ipv6/pool
+                    - ipv6/range
+                    description: >
+                      The type of address this is.
+                    example: ipv4
+                    readOnly: true
+                    x-linode-filterable: true
+                    x-linode-cli-display: 2
+                  public:
+                    type: boolean
+                    description: >
+                      Whether this is a public or private IP address.
+                    example: true
+                    readOnly: true
+                    x-linode-cli-display: 3
+                  rdns:
+                    type: string
+                    description: >
+                      The reverse DNS assigned to this address. For public IPv4 addresses,
+                      this will be set to a default value provided by Linode if not
+                      explicitly set.
+                    x-linode-filterable: true
+                    x-linode-cli-display: 4
+                    example: test.example.org
+                    nullable: true
+                  linode_id:
+                    type: integer
+                    description: >
+                      The ID of the Linode this address currently belongs to. For IPv4
+                      addresses, this defaults to the Linode that this address was
+                      assigned to on creation. IPv4 addresses may be moved using the
+                      [/networking/ipv4/assign](/docs/api/networking/#ips-to-linodes-assign)
+                      endpoint. For SLAAC and link-local addresses, this value may not be changed.
+                    example: 123
+                    readOnly: true
+                    x-linode-cli-display: 6
+                  region:
+                    type: string
+                    description: >
+                      The Region this IP address resides in.
+                    example: us-east
+                    readOnly: true
+                    x-linode-filterable: true
+                    x-linode-cli-display: 5
     IPAddressesShareRequest:
       type: object
       description: A request object IP Addresses Share (POST /networking/ips/share)
@@ -22503,7 +21822,6 @@ components:
             The Region this address resides in.
           example: us-east
           readOnly: true
-          x-linode-filterable: true
           x-linode-cli-display: 5
     IPAddressV6LinkLocal:
       type: object
@@ -22529,7 +21847,7 @@ components:
           format: ip
           description: >
             The subnet mask.
-          example: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+          example: "ffff:ffff:ffff:ffff::"
           readOnly: true
         prefix:
           type: integer
@@ -22596,7 +21914,7 @@ components:
           format: ip
           description: >
             The subnet mask.
-          example: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+          example: "ffff:ffff:ffff:ffff::"
           readOnly: true
         prefix:
           type: integer
@@ -22654,8 +21972,7 @@ components:
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this pool calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 124
           x-linode-cli-display: 2
         region:
@@ -22680,15 +21997,14 @@ components:
         range:
           type: string
           description: >
-            The IPv6 range of addresses in this pool.
+            The IPv6 address of this range.
           example: '2600:3c01::'
           readOnly: true
           x-linode-cli-display: 1
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 64
           x-linode-cli-display: 2
         region:
@@ -22701,9 +22017,8 @@ components:
         route_target:
           type: string
           description: >
-            The last address in this block of IPv6 addresses.
+            The IPv6 SLAAC address.
           example: '2600:3c01::ffff:ffff:ffff:ffff'
-          nullable: true
     IPv6RangeBGP:
       type: object
       description: >
@@ -22712,15 +22027,14 @@ components:
         range:
           type: string
           description: >
-            The IPv6 range of addresses in this pool.
+            The IPv6 address of this range.
           example: '2600:3c01::'
           readOnly: true
           x-linode-cli-display: 1
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 64
           x-linode-cli-display: 2
         region:
@@ -22775,12 +22089,6 @@ components:
           type: boolean
           description: If this Kernel is suitable for KVM Linodes.
           example: true
-          readOnly: true
-        xen:
-          x-linode-filterable: true
-          type: boolean
-          description: If this Kernel is suitable for Xen Linodes.
-          example: false
           readOnly: true
         architecture:
           x-linode-filterable: true
@@ -23149,6 +22457,11 @@ components:
           description: The Linode's host machine, as a UUID.
           readOnly: true
           example: 3a3ddd59d9a78bb8de041391075df44de62bfec8
+        has_user_data:
+          type: boolean
+          description: Whether this compute instance was provisioned utilizing `user_data` provided via the Metadata service. See the [Linode Create](/docs/api/linode-instances/#linode-create) description for more information on Metadata.
+          readOnly: true
+          example: true
     LinodeConfig:
       type: object
       properties:
@@ -23160,7 +22473,15 @@ components:
           x-linode-cli-display: 1
         kernel:
           type: string
-          description: A Kernel ID to boot a Linode with. Defaults to "linode/latest-64bit".
+          default: linode/latest-64bit
+          description: |
+            A Kernel ID to boot a Linode with. Here are examples of commonly-used kernels:
+
+            * `linode/latest-64bit` (default): Our latest kernel at the time of instance boot/reboot.
+            * `linode/grub2`: The upstream distribution-supplied kernel that is installed on the primary disk, or a custom kernel if installed.
+            * `linode/direct-disk`: The MBR (Master Boot Record) of the primary disk/root device, used instead of a Linux kernel.
+
+            For a complete list of options, use the [Kernels List](/docs/api/linode-instances/#kernels-list) command.
           example: linode/latest-64bit
           x-linode-cli-display: 3
         comments:
@@ -23352,6 +22673,22 @@ components:
             If it is deployed from an Image or a Backup and you wish it to remain `offline`
             after deployment, set this to `false`.
           default: true
+        metadata:
+          type: object
+          writeOnly: true
+          description: |
+            An object containing user-defined data relevant to the creation of Linodes.
+          properties:
+            user_data:
+              type: string
+              format: byte
+              description: |
+                Base64-encoded [cloud-config](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) data.
+
+                Must not be included when cloning to an existing Linode.
+
+                Unencoded data must not exceed 65535 bytes, or about 16kb encoded.
+              example: I2Nsb3VkLWNvbmZpZwpwYWNrYWdlX3VwZGF0ZTogdHJ1ZQpwYWNrYWdlX3VwZ3JhZGU6IHRydWU=
     LinodeStats:
       type: object
       description: >
@@ -23522,28 +22859,22 @@ components:
           x-linode-filterable: true
           type: string
           readOnly: true
-          description: >
-            The class of the Linode Type. We currently offer five classes of Linodes:
+          description: |
+            The class of the Linode Type.
 
-              * nanode - Nanode instances are good for low-duty workloads,
-                where performance isn't critical. **Note:** As of June 16th, 2020, Nanodes became
-                1 GB Linodes in the Cloud Manager, however, the API, the CLI, and billing will
-                continue to refer to these instances as Nanodes.
-              * standard - Standard Shared instances are good for medium-duty workloads and
-                are a good mix of performance, resources, and price. **Note:** As of June 16th, 2020,
-                Standard Linodes in the Cloud Manager became Shared Linodes, however, the API, the CLI, and
-                billing will continue to refer to these instances as Standard Linodes.
-              * dedicated - Dedicated CPU instances are good for full-duty workloads
-                where consistent performance is important.
-              * gpu - Linodes with dedicated NVIDIA Quadro &reg; RTX 6000 GPUs accelerate highly
-                specialized applications such as machine learning, AI, and video transcoding.
-              * highmem - High Memory instances favor RAM over other resources, and can be
-                good for memory hungry use cases like caching and in-memory databases.
-                All High Memory plans contain dedicated CPU cores.
+            We currently offer six classes of compute instances:
+
+              * `nanode` - Nanode instances are good for low-duty workloads, where performance isn't critical. **Note:** As of June 16th, 2020, Nanodes became 1 GB Linodes in the Cloud Manager, however, the API, the CLI, and billing will continue to refer to these instances as Nanodes.
+              * `standard` - Standard Shared instances are good for medium-duty workloads and are a good mix of performance, resources, and price. **Note:** As of June 16th, 2020, Standard Linodes in the Cloud Manager became Shared Linodes, however, the API, the CLI, and billing will continue to refer to these instances as Standard Linodes.
+              * `dedicated` - Dedicated CPU instances are good for full-duty workloads where consistent performance is important.
+              * `premium` (limited Regions) - In addition to the features of Dedicated instances, Premium instances come equipped with the latest AMD EPYC&trade; CPUs, ensuring your applications are running on the latest hardware with consistently high performance. Only available in [Regions](/docs/api/regions/#regions-list) with "Premium Plans" in their `capabilities`
+              * `gpu` (limited Regions) - Linodes with dedicated NVIDIA Quadro&reg; RTX 6000 GPUs accelerate highly specialized applications such as machine learning, AI, and video transcoding. Only available in [Regions](/docs/api/regions/#regions-list) with "GPU Linodes" in their `capabilities`
+              * `highmem` - High Memory instances favor RAM over other resources, and can be good for memory hungry use cases like caching and in-memory databases. All High Memory plans contain dedicated CPU cores.
           enum:
           - nanode
           - standard
           - dedicated
+          - premium
           - gpu
           - highmem
           example: standard
@@ -25085,25 +24416,48 @@ components:
           properties:
             id:
               type: integer
-              description: >
+              nullable: true
+              description: |
                 The unique ID of the Notification's entity, based on the entity
                 type.
+
+                Returns `null` for the following entity types:
+                * `account`
+                * `promotion`
               example: 3456
             label:
               type: string
-              description: >
+              nullable: true
+              description: |
                 The current label for this Notification's entity.
+
+                Returns `null` for the following entity types:
+                * `entity_transfer`
+                * `promotion`
+                * `region`
               example: Linode not booting.
             type:
               type: string
+              enum:
+              - account
+              - entity_transfer
+              - linode
+              - nodebalancer
+              - promotion
+              - region
+              - ticket
+              - volume
               description: The type of entity this is related to.
               example: ticket
             url:
               type: string
-              description: >
+              nullable: true
+              description: |
                 The URL where you can access the object this Notification is for.
                 If a relative URL, it is relative to the domain you retrieved the
                 Notification from.
+
+                Returns `null` for the `promotion` entity type.
               example: /support/tickets/3456
         label:
           type: string
@@ -25653,7 +25007,7 @@ components:
       properties:
         cancel_url:
           type: string
-          description: The URL to have PayPal redirect to when Payment is cancelled.
+          description: The URL to have PayPal redirect to when Payment is canceled.
           example: https://example.org
         redirect_url:
           type: string
@@ -25786,6 +25140,7 @@ components:
         verified_phone_number:
           type: string
           format: phone
+          nullable: true
           readOnly: true
           description: |
             The phone number verified for this Profile with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
@@ -26060,6 +25415,28 @@ components:
                 The IPv6 addresses for this region's DNS resolvers, separated by commas.
               example: "2001:0db8::,2001:0db8::1"
               readOnly: true
+    RegionAvailability:
+      type: object
+      description: Compute instance availability information by [Type](/docs/api/linode-types/) and [Region](/docs/api/regions/).
+      properties:
+        region:
+          x-linode-cli-display: 1
+          x-linode-filterable: true
+          type: string
+          example: us-east
+          description: The [Region](/docs/api/regions/) ID.
+        plan:
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+          type: string
+          example: gpu-rtx6000-1.1
+          description: The compute instance [Type](/docs/api/linode-types/) ID.
+        available:
+          x-linode-cli-display: 3
+          x-linode-filterable: true
+          type: boolean
+          example: true
+          description: Whether the compute instance type is available in the region.
     RescueDevices:
       type: object
       properties:
@@ -26641,6 +26018,56 @@ components:
             A boolean value indicating if the User has Two Factor Authentication (TFA)
             enabled. See the Create Two Factor Secret ([POST /profile/tfa-enable](/docs/api/profile/#two-factor-secret-create))
             endpoint to enable TFA.
+          example: true
+        verified_phone_number:
+          type: string
+          format: phone
+          nullable: true
+          readOnly: true
+          description: |
+            The phone number verified for this User Profile with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
+
+            `null` if this User Profile has no verified phone number.
+          example: "+5555555555"
+        password_created:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+          description: |
+            The date and time when this User's current password was created.
+
+            User passwords are first created during the Account sign-up process, and updated using the [Reset Password](https://login.linode.com/forgot/password) webpage.
+
+            `null` if this User has not created a password yet.
+          example: "2018-01-01T01:01:01"
+        last_login:
+          type: object
+          readOnly: true
+          nullable: true
+          description: |
+            Information for the most recent login attempt for this User.
+
+            `null` if no login attempts have been made since creation of this User.
+
+            Access the [User Logins List All](/docs/api/account/#user-logins-list-all) command for additional login information.
+          properties:
+            login_datetime:
+              type: string
+              format: date-time
+              readOnly: true
+              description: |
+                The date and time of this User's most recent login attempt.
+              example: "2018-01-01T01:01:01"
+            status:
+              type: string
+              readOnly: true
+              enum:
+              - successful
+              - failed
+              description: |
+                The result of the most recent login attempt for this User.
+              example: successful
     UserDefinedField:
       type: object
       required:
@@ -26804,7 +26231,7 @@ components:
           x-linode-filterable: true
           x-linode-cli-color:
             accepted: yellow
-            cancelled: red
+            canceled: red
             completed: green
             failed: red
             pending: yellow
@@ -26813,7 +26240,7 @@ components:
           type: string
           enum:
           - accepted
-          - cancelled
+          - canceled
           - completed
           - failed
           - pending
@@ -26824,7 +26251,7 @@ components:
             `accepted`: The transfer has been accepted by another user and is currently in progress.
             Transfers can take up to 3 hours to complete.
 
-            `cancelled`: The transfer has been cancelled by the sender.
+            `canceled`: The transfer has been canceled by the sender.
 
             `completed`: The transfer has completed successfully.
 
@@ -26833,7 +26260,7 @@ components:
             `pending`: The transfer is ready to be accepted.
 
             `stale`: The transfer has exceeded its expiration date. It can no longer be accepted or
-            cancelled.
+            canceled.
           example: 'pending'
         created:
           type: string

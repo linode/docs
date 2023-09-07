@@ -5,7 +5,7 @@ keywords: ["style guide", "format", "formatting", "how to write", "write for us"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2023-01-20
+modified: 2023-08-29
 modified_by:
   name: Linode
 title: Linode Writer's Formatting Guide
@@ -112,24 +112,24 @@ For example:
 ```file {lang="md"}
 ## Using MySQL
 
-1. Log in to MySQL as the root user:
+1.  Log in to MySQL as the root user:
 
     ```command
     mysql -u root -p
     ```
 
-1. When prompted, enter the root password.
+1.  When prompted, enter the root password.
 
 ### Create a New MySQL User and Database
 
-1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
+1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
 
     ```command
     create database testdb;
     grant all on testdb.* to 'testuser' identified by 'password';
     ```
 
-1. Exit MySQL.
+1.  Exit MySQL.
 
     ```command
     exit
@@ -137,7 +137,7 @@ For example:
 
 ### Create a Sample Table
 
-1. Log back in as `testuser`:
+1.  Log back in as `testuser`:
 
     ```command
     mysql -u testuser -p
@@ -175,7 +175,7 @@ Use a **Bold** font weight for buttons, menu selections and anything that requir
 
 Commands that are not inline with paragraph text should be displayed with the *command shortcode*. This shortcode renders the command in a monospaced font with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the command shortcode should be referenced with Markdown's *code fence* syntax.
 
-- **Command shortcode example**
+-   **Command shortcode example**
 
     ````file
     ```command
@@ -189,7 +189,7 @@ Commands that are not inline with paragraph text should be displayed with the *c
     sudo systemctl restart apache2
     ```
 
-- **Multiline commands**
+-   **Multiline commands**
 
     The command shortcode can accept multiple lines if more than one command needs to be displayed:
 
@@ -207,7 +207,7 @@ Commands that are not inline with paragraph text should be displayed with the *c
     sudo journalctl -u apache2
     ```
 
-- **Command with title**
+-   **Command with title**
 
     The `title` parameter can be used to specify a title that displayed above a command shortcode. This can be useful to label the server or workstation that a reader should execute the command on. For example, some guides instruct the reader to set up multiple servers. Specifying a title can disambiguate which server a given command should be run on.
 
@@ -231,7 +231,7 @@ Commands that are not inline with paragraph text should be displayed with the *c
     sudo systemctl restart mysql
     ```
 
-- **Command with dark background**
+-   **Command with dark background**
 
     The `class` parameter can be used to specify that a command should be displayed with a dark background:
 
@@ -325,16 +325,16 @@ show_on_rss_feed: false
 
 <!-- Installation instructions for Python 3. -->
 
-1. Download and install Miniconda:
+1.  Download and install Miniconda:
 
     ```command
     curl -OL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86.64.sh
     ```
 
-1. You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
+1.  You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
 
-1. Check your Python version:
+1.  Check your Python version:
 
     ```command
     python --version
@@ -355,7 +355,7 @@ Use the *file shortcode* to present code examples, code snippets, and other text
 Exceptionally long files should be shown in parts, if needed. In these cases, you can add the entire file to the same directory as your guide and link to it from within the guide.
 {{< /note >}}
 
-- **File with filepath**
+-   **File with filepath**
 
     ````file
     ```file {title="/path/to/file.html"}
@@ -373,7 +373,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
-- **File with language/syntax highlighting**
+-   **File with language/syntax highlighting**
 
     A code language or syntax can be defined with the `lang` parameter to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/alecthomas/chroma).
 
@@ -393,7 +393,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
-- **File with starting line specified**
+-   **File with starting line specified**
 
     If your file snippet represents the middle of a file, you can use the `linenostart` to specify that the line numbering to the left of the snippet should start at a number other than 1:
 
@@ -413,7 +413,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
-- **File with highlighted lines**
+-   **File with highlighted lines**
 
     The `hl_lines` parameter can be used to highlight certain lines within the file. The parameter is a space-separated list of strings. Ranges of lines can also be specified:
 
@@ -445,7 +445,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     export default Header;
     ```
 
-- **Using file shortcodes within lists**
+-   **Using file shortcodes within lists**
 
     If using a file shortcode in a list, each line of the shortcode should start at the indentation level of the list. For example:
 
@@ -505,12 +505,49 @@ Headings should be written in title case and can be up to 3 levels deep.
 
 ### Images
 
-Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide, include both the original and one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (\_).
+Images can add value to the surrounding text by providing context or additional meaning. In most cases, images within documentation take the form of screenshots or diagrams, though occasionally other types of images may be necessary.
 
-When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken with mobile devices.
+-   **Image format:** All images should a PNG (*.png*) or a JPEG (*.jpg* or *.jpeg*).
 
-- **Up to 650 px wide:** `![Description of the image](filename.png "Description of the image.")`
-- **Over 650 px wide:** `[![Description of the image](filename_small.png "Description of the image.")](filename.png)`
+-   **Image size:** Images are displayed in their original size, up to the maximum width of the content area. If an image's width is larger than the width of the content area, the image is scaled down to fit within the content area and a user can click on the image to view it in a modal.
+
+```file {lang="md"}
+![Alt text](filename.png "Title text")
+```
+
+- **Alt text:** This should be a description of the image and is rendered within the image's `alt` tag. It is used for screen readers and other accessibility features.
+- **Filename:** The name of the file. Filenames cannot contain spaces and should use hyphens (-) and underscores (\_) instead.
+- **Title text:** This is the text that appears as a tooltip when a user hovers over the image. If no title is entered, the alt text is used in the `title` tag. In most cases, a specific title tag is not needed.
+
+#### Image Recommendations
+
+The height of our images, especially screenshots, should be as minimal as possible. This is to avoid screenshots taking up a lot of vertical space within our documentation, which often results in visually breaking up content that otherwise should appear together. Our Cloud Manager favors vertically stacked fields and options, which can make it difficult to minimize the height of our screenshots. Use your best judgement when determine what part of the UI is needed to convey the required information.
+
+Avoid including too much detail or information within an image. Many images are used to either show a result of an action (like displaying a web page) or are used to supplement instructions asking the reader to perform an action (like click a button). Images that show too much may confuse the reader or otherwise call attention to details that aren't important to the task at hand. In practice, this means not taking a screenshot of the entire application or browser window and instead focusing only on the UI elements related to the instructions or text.
+
+Also, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with example text, such as **example_user** or an IP address from the **192.0.2.0/24** range. This aligns with a previous recommendation of only providing necessary detail and it keeps the writer's personal information from being shown to readers. This may involve using the browser's built-in development tools to manually replace values or delete information.
+
+#### Example Wide Image
+
+Since this image is larger than the width of the content, the image is scaled to fit. When the image is clicked, a modal appears that displays the image at a larger size.
+
+This example image might be used to supplement instructions asking the reader to select a Compute Instance. Instead of taking a screenshot of the entire page in the Cloud Manager, the area has been cropped to just include relevant information. In addition, a red outline has been used to highlight the UI element that corresponds with the action the reader should perform.
+
+```file {lang="md"}
+![Screenshot of Cloud Manager Compute Instance page with a single instance selected](compute_instance_list-select_instance.png "Select a Compute Instance from the list")
+```
+
+![Screenshot of Cloud Manager Compute Instance page with a single instance selected](compute_instance_list-select_instance.png "Select a Compute Instance from the list")
+
+#### Example Narrow Image
+
+Smaller images should be displayed using their true pixel size. When taking screenshots within some software on some operating systems, the pixel size is increased (likely to account for the operating system's scaling). For instance, taking a screenshot with the Skitch tool on macOS doubles the pixel count. In these cases, use another image editing tool (like macOS's built in preview) to scale down the image to match the intended pixel width.
+
+```file {lang="md"}
+![Screenshot of the Create Firewall panel in the Cloud Manager](cloud_firewalls-create_panel.png)
+```
+
+![Screenshot of the Create Firewall panel in the Cloud Manager](cloud_firewalls-create_panel.png)
 
 ### Key Combinations
 
@@ -533,23 +570,72 @@ Internal links to other Linode guides should be relative, starting at `/docs/`, 
 
 #### Ordered Lists
 
-Ordered lists are numbered and should be used for a series of steps. These lists should be formatted by appending a `1. ` to the beginning of each step.
+Ordered lists are numbered and should be used to denote a series of steps or sequential items. Use the following guidance when creating ordered lists:
 
-```file
-1. Step 1
-1. Step 2
-1. Step 3
-```
+-   **Longer lists that may change and where nested content is possible:**
+
+    These lists should use *lazy* numbering (by appending a `1.` to each step regardless of the actual step number). There should also be *two* spaces between the numbering and the text (see [Nested Content Within Lists](#nested-content-within-lists)).
+
+    ```command
+    1.  Step 1
+    1.  Step 2
+    1.  Step 3
+    ```
+
+-   **Short lists that remain static with no nested content:**
+
+    Optionally, you can use *true* numbering when a list is likely to remain short and static during its lifecycle. Provided there is no nested content, use a single space between the number and the text.
+
+    ```command
+    1. Step 1
+    2. Step 2
+    3. Step 3
+    ```
 
 #### Unordered Lists
 
 Unordered lists are bulleted and should be used for any collection of items that do not necessarily need to be ordered. These lists should be formatted by appending a `- ` to the beginning of each step.
 
-```file
-- Item 1
-- Item 2
-- Item 3
-```
+-   **Lists where nested content is possible:**
+
+    Use *three* spaces between the bullet character (`-`) and the text. (see [Nested Content Within Lists](#nested-content-within-lists)).
+
+    ```command
+    -   Item A
+    -   Item B
+    -   Item C
+    ```
+
+-   **Lists with no nested content:**
+
+    Provided there is no nested content, you can use a single space between the bullet character and the text.
+
+    ```command
+    - Item A
+    - Item B
+    - Item C
+    ```
+
+#### Nested Content Within Lists
+
+To remain consistent across all of our guides, nested content should be indented *four* spaces and a blank line should be used above and below the content. Our Markdown processor assumes nested content starts directly below the *first* character in the text of the list item above it. With this in mind, it's important to indent the text portion of the list item to match that four space indent. In practice, there should be *two* spaces after the number (for ordered lists) and *three* spaces after the bullet for unordered lists. If this spacing is not respected, the nested content may not render properly.
+
+- **Ordered list** (`1.`): Use *two* spaces after the number.
+- **Unordered list** (`-`): Use *three* spaces after the bullet.
+
+````command
+-   Item A
+
+    This sentence is nested under *Item A*.
+
+-   Item B
+
+    ```command
+    This command is nested under *Item B*.
+    ```
+
+-   Item C
+````
 
 ### Note Shortcode
 
@@ -585,7 +671,7 @@ The shortcode accepts the following parameters:
 
 There are four unique types of notes:
 
-- **Secondary** (`type="secondary"`, title defaults to "Note")
+-   **Secondary** (`type="secondary"`, title defaults to "Note")
 
     {{< note type="secondary" >}}
     This is an example of a secondary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -595,7 +681,7 @@ There are four unique types of notes:
     ```
     {{< /note >}}
 
-- **Primary** (type is unset or `type="primary"`, title defaults to "Note")
+-   **Primary** (type is unset or `type="primary"`, title defaults to "Note")
 
     {{< note >}}
     This is an example of a primary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -605,7 +691,7 @@ There are four unique types of notes:
     ```
     {{< /note >}}
 
-- **Warning** (`type="warning"`, title defaults to "Warning")
+-   **Warning** (`type="warning"`, title defaults to "Warning")
 
     {{< note type="warning" >}}
     This is an example of a warning note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -615,7 +701,7 @@ There are four unique types of notes:
     ```
     {{< /note >}}
 
-- **Alert** (`type="alert"`, title defaults to "Important")
+-   **Alert** (`type="alert"`, title defaults to "Important")
 
     {{< note type="alert" >}}
     This is an example of an alert note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -672,19 +758,19 @@ This content is hidden until the user expands the note.
 Content within the opening and closing note shortcode tags must respect the expected indentation of any parent elements, such as list items. Since content within a list is indented (using 4 spaces), the content of a note shortcode must be indented by the same number of spaces.
 
 ```file
-- First list item.
+-   First list item.
 
     {{</* note */>}}
     This content appears within the first list item and, as such, respects its indentation.
     {{</* /note */>}}
 
-- Second list item.
+-   Second list item.
 ```
 
 If this indentation is not respected, which should only be the case for older note shortcodes made before this change, the following option is set: `respectIndent=false`. If one of these is encountered when editing an existing guide, remove `respectIndent=false` and properly indent the shortcode.
 
 ```file
-- First list item.
+-   First list item.
 
     {{</* note respectIndent=false */>}}
 This content appears within the first list item but does not respect its indentation.
@@ -705,27 +791,117 @@ Use single spaces between sentences; do not double-space.
 
 ### Tables
 
+You can create tables using standard Markdown syntax. Additionally, you can embed a Markdown table within the [table shortcode](#table-shortcode) for additional functionality.
+
 ```file {lang="md"}
-| Column Header 1 | Column Header 2|
+| Column Header 1 | Column Header 2 |
 | -- | -- |
 | **Example** | This is an example of text in the second column. |
 ```
 
-| Column Header 1 | Column Header 2|
+| Column Header 1 | Column Header 2 |
 | -- | -- |
 | **Example** | This is an example of text in the second column. |
 
-#### Table Alignment
+#### Column Text Alignment
+
+To align text within a table, modify the second row. This row separates the header from the body of the table and can be used for additional metadata, like text alignment.
+
+- Left aligned: Default behavior (if there is a need to be explicit, use `| :-- |`)
+- Center aligned: `| :--: |`
+- Right aligned: `| --: |`
+
 
 ```file {lang="md"}
 | Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
-| -- |:--:| --:|
+| -- | :--: | --: |
 | Example | Example | Example |
 ```
 
 | Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
-| -- | :--: | --:|
+| -- | :--: | --: |
 | Example | Example | Example |
+
+#### Table Shortcode
+
+The table shortcode can be used to add additional functionality to Markdown tables. By default, it adds a scrollbar when the table width is larger than the content area. This means that it can accommodate wide tables with lots of columns. It also adds alternating row background colors so that tables are easier to parse.
+
+```file {lang="md"}
+{{</* table */>}}
+| Column Header | Column Header | Column Header |
+| -- | -- | -- |
+| **Row 1** | Example | Example |
+| **Row 2** | Example | Example |
+| **Row 3** | Example | Example |
+{{</* /table */>}}
+```
+
+{{< table >}}
+| Column Header | Column Header | Column Header |
+| -- | -- | -- |
+| **Row 1** | Example | Example |
+| **Row 2** | Example | Example |
+| **Row 3** | Example | Example |
+{{< /table >}}
+
+#### Fixed First Column
+
+If you are creating a wide table and need the first column to be fixed when scrolling, use the **"first-sticky"** class.
+
+```file {lang="text"}
+{{</* table class="first-sticky" */>}}
+| Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| **Row1**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row2**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row3**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+{{</* /table */>}}
+```
+
+{{< table class="first-sticky" >}}
+| Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| **Row1**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row2**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row3**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+{{< /table >}}
+
+### Tabs
+
+Using a tabbed interface allows you to separate content into user-selectable tabs. This can be used to provide specific instructions for different versions of a software application (like MySQL 5.7 or 8), different operating systems (like macOS, Windows, or a Linux distribution), or different user tools (like the Cloud Manager, Linode CLI, or Linode API).
+
+````file
+{{</* tabs */>}}
+{{</* tab "Tab 1" */>}}
+The content only appears when *Tab 1* is selected.
+{{</* /tab */>}}
+{{</* tab "Tab 2" */>}}
+When *Tab 2* is selected, this content appears.
+{{</* /tab */>}}
+{{</* /tabs */>}}
+````
+
+{{< tabs >}}
+{{< tab "Tab 1" >}}
+The content only appears when *Tab 1* is selected.
+{{< /tab >}}
+{{< tab "Tab 2" >}}
+When *Tab 2* is selected, this content appears.
+{{< /tab >}}
+{{< /tabs >}}
+
+When a user selects a tab, the first item in each tab set that has a matching title is also selected. This means that if multiple tab sets are on a page, each with the same items, the user only needs to select an item within one tab set and all tab sets will show that item.
+
+{{< tabs >}}
+{{< tab "Tab 1" >}}
+This is *Tab 1* in the second tab set. When *Tab 1* is selected on any tab set, this content is visible.
+{{< /tab >}}
+{{< tab "Tab 2" >}}
+And here is *Tab 2* in the second tab set. When *Tab 2* is selected on any tab set, this content is visible.
+{{< /tab >}}
+{{< /tabs >}}
+
+When a tab is selected, a `tab` parameter string appears in the URL along with the title of all selected tabs. For instance, if *Tab 2* is selected in the tab sets above, `?tabs=tab-2` is appended to the URL. This allows the URL to be saved or shared, keeping the same tabs selected on the page.
 
 ### Terminal Output
 
@@ -795,7 +971,7 @@ Docs contributors can create author pages by following these steps:
 The second step is optional. If you do not follow this step, a profile page is still automatically generated from the `authors` frontmatter of the guides you have written. The second step shows you how to add custom biographical information to the profile page.
 {{< /note >}}
 
-1. On the guides you have written, update the `authors` frontmatter to reference your name. This should be formatted like:
+1.  On the guides you have written, update the `authors` frontmatter to reference your name. This should be formatted like:
 
     ```file
     authors: ["FirstName LastName"]

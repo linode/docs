@@ -1,9 +1,8 @@
 ---
 description: "Learn how your Linode account's network transfer pool is calculated and billed."
 keywords: ["network","billing","account","transfer", "overage"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-21
-modified: 2022-06-17
+modified: 2023-03-31
 modified_by:
   name: Linode
 title: "Network Transfer Usage and Costs"
@@ -11,10 +10,6 @@ tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/','/guides/network-transfer/']
 authors: ["Linode"]
 ---
-
-{{< note title="Notice of Upcoming Pricing Changes">}}
-On April 1st 2023, updated pricing will go into effect for some Compute services. This includes decreasing the cost of network transfer (egress) overage fees from $0.01/GB to $0.005/GB. For specific pricing changes, see the [Upcoming Pricing Changes](/docs/products/compute/compute-instances/guides/upcoming-pricing-changes-april-2023/) guide. To learn more general details about these changes, review the [Akamai’s Cloud Computing Services: Pricing Update](https://www.linode.com/blog/linode/akamai_cloud_computing_price_update/) blog post.
-{{< /note >}}
 
 ## Overview
 
@@ -24,18 +19,18 @@ On April 1st 2023, updated pricing will go into effect for some Compute services
 
 The following Linode services consume network transfer and, in most cases, include a set amount of outbound network transfer allowance per month. The amount of transfer is displayed along with the pricing and plan details for each service. See Linode's [pricing page](https://www.linode.com/pricing) for exact amounts.
 
-- **Compute Instances:** Consume network transfer and include 1-20 TB of transfer allowance per month, depending on plan size
+- **Compute Instances:** Consume network transfer and include 1-20 TB of transfer allowance per month, depending on plan size.
 
 - **NodeBalancers:** Consume network transfer but do not include a monthly transfer allowance.
 
-- **Object Storage:** Consumes network transfer and includes 1TB of transfer allowance per month, regardless of plan size
+- **Object Storage:** Consumes network transfer and includes 1 TB of transfer allowance per month, regardless of usage.
 
 - **Managed Databases:** Does not consume network transfer or include a monthly transfer allowance.
 
 The allowance included with each service on an account is added to an account-wide **monthly network transfer pool**. Whenever a service consumes network transfer, it is counted towards this account-wide pool and not the individual transfer allowance.
 
 {{< note >}}
-If the service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service was active.
+If a service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service is active.
 {{< /note >}}
 
 ## Usage Costs
@@ -54,7 +49,7 @@ Costs associated with network transfer can often be unexpected or confusing in a
 
 - Outbound transfer from Object Storage (over both public IPv6 and public IPv4), even to other Linode services within the same data center.
 
-All metered network transfer consumed by a service is counted toward the account-wide **monthly network transfer pool**. Any additional transfer usage that exceeds this monthly allotment costs $0.01/GB (which comes to $10/TB) and is charged at the end of the billing period.
+All metered network transfer consumed by a service is counted toward the account-wide **monthly network transfer pool**. Any additional transfer usage that exceeds this monthly allotment costs $0.005/GB (which comes to $5/TB) and is charged at the end of the billing period.
 
 {{< note >}}
 The combined monthly network transfer pool is typically enough to cover *most* common use cases for our services. You are only billed for additional network transfer if your usage exceeds this monthly pool during a billing period. If traffic for an individual service exceeds the network transfer amount specified by its plan, but the total transfer used between all of your services is still less than your monthly network transfer pool, then you are *not* charged additional fees.

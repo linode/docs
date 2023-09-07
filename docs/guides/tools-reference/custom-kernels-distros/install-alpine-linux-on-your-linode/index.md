@@ -74,7 +74,7 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
 ### Boot into Rescue Mode
 
-1.  From the Linode Cloud Manager, boot your Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
+1.  From the Linode Cloud Manager, boot your Linode into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
 
 2.  Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it in the Linode Cloud Manager. Access it by clicking the **Launch Console** link from the Linode's dashboard.
 

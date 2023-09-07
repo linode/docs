@@ -1,5 +1,6 @@
 ---
 title: "FAQs"
+title_meta: "FAQs for Creating and Managing Linode Accounts"
 description: "Find quick answers to some of the most commonly asked account and login questions."
 tab_group_main:
     weight: 60
@@ -34,4 +35,4 @@ If you are still not receiving this email, submit a support request through the 
 
 ## I'd like to provide a developer with access to my Linode account. How should I do this?
 
-When working with an outside developer or web administrator, you will likely need to provide them access to your Linode account, your Compute Instances, or both. It's important to keep in mind the level of access they will need. You, as the account owner, are ultimately responsible for the services on the account and the bill that those services generate. Review the [Create an Account for a Developer to Work on Your Linode](/docs/guides/create-limited-developer-account/) guide for instructions on creating a user account for your developer, providing them with access to Compute Instances, and granting other types of access.
+When working with an outside developer or web administrator, you will likely need to provide them access to your Linode account, your Compute Instances, or both. It's important to keep in mind the level of access they will need. You, as the account owner, are ultimately responsible for the services on the account and the bill that those services generate. Review the [Create an Account for a Developer to Work on Your Linode](/docs/products/platform/get-started/guides/developer-access/) guide for instructions on creating a user account for your developer, providing them with access to Compute Instances, and granting other types of access.

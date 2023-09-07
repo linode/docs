@@ -42,11 +42,11 @@ On KVM Linodes, the console device moves from *hvc0* in Xen to *ttyS0* .
 
 Virtual machine mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. The differences are listed below:
 
-|         | Paravirtualization  | Full-virtualization   |
-|---------|:--------------------|:----------------------|
-| Block   | Virtio SCSI         | IDE                   |
-| Net     | Virtio Net          | e1000                 |
-| Serial  | ttyS0               | ttyS0                 |
+| Device Type | Paravirtualization | Full-virtualization |
+| -- | -- | -- |
+| Block | Virtio SCSI | IDE |
+| Net | Virtio Net | e1000 |
+| Serial | ttyS0 | ttyS0 |
 
 {{< note respectIndent=false >}}
 If you're unfamiliar with these distinctions, choose paravirtualization
@@ -97,7 +97,7 @@ If your Linode is currently running on Xen, go to the Linode's Dashboard page. I
 
 ## Troubleshooting
 
-There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/guides/support/).
+There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/products/platform/get-started/guides/support/).
 
 ### Migration from Xen
 

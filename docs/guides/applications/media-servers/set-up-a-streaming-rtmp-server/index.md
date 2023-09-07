@@ -2,7 +2,7 @@
 slug: set-up-a-streaming-rtmp-server
 description: "Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch."
 keywords: ['RTMP','streaming','multi-streaming','NGINX']
-tags: ['rtmp', 'stream', 'nginx', 'vlc']
+tags: ['rtmp', 'stream', 'nginx', 'vlc', "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 image: StreamingServer.jpg

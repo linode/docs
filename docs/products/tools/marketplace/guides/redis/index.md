@@ -2,7 +2,6 @@
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
 modified: 2022-03-08
 modified_by:
@@ -58,14 +57,9 @@ For more information about the redis-cli and the commands you have available, se
 
 There are several types of Redis configurations you can use. For example, you can configure Redis as a standalone Redis installation or a Redis cluster with a primary (master) and two replicas. As a next step, you should determine which type of deployment you require for your use case by reviewing the resources provided below.
 
--  Learn about Redis Clusters by going through their related [tutorial](https://redis.io/topics/cluster-tutorial).
+- Learn about Redis Clusters by going through their related [tutorial](https://redis.io/topics/cluster-tutorial).
 - Redis Sentinel is another deployment configuration focused on high availability. See the [Redis Sentinel](https://redis.io/topics/sentinel) documentation for more details.
 - Read the [Redis Quickstart](https://redis.io/topics/quickstart) to learn about securing Redis and installing client libraries to use Redis with your applications.
 - Refer to the [Redis configuration documentation](https://redis.io/topics/config) to learn about the Redis configuration file.
 
-<<<<<<< HEAD
-=======
-Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to complete your configuration.
-
->>>>>>> upstream/develop
 {{< content "marketplace-update-note-shortguide">}}

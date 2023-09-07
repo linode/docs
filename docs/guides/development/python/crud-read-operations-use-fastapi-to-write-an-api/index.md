@@ -32,9 +32,9 @@ Throughout this guide you learn how to use FastAPI to create the following REST 
 1. **List Programming Languages**: retrieves all the Programming Language records or filters the Programming Language records using a path parameter.
 1. **View Programming Language**: fetches a specific record based on a unique identifier.
 
-{{< disclosure-note "REST API">}}
+{{< note type="secondary" title="REST API" isCollapsible=true >}}
 The [REST protocol](https://en.wikipedia.org/wiki/Representational_state_transfer) allows servers to expose data that a client can access and manipulate. This protocol allows clients to perform create, read, update, and delete (CRUD) operations.
-{{</ disclosure-note >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 This guide does not cover integrating FastAPI with a database. FastAPI uses an in-memory data store by default. However, you can integrate FastAPI with a [long list of different database providers](https://fastapi.tiangolo.com/tutorial/sql-databases/).

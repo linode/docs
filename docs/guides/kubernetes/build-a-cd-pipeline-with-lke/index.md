@@ -9,7 +9,7 @@ modified: 2022-12-14
 modified_by:
   name: Linode
 image: cd-presentation-header.png
-tags: ["kubernetes", "lke"]
+tags: ["kubernetes", "lke", "media"]
 aliases: ['/guides/lke-continuous-deployment-series/']
 authors: ["Linode"]
 ---
@@ -19,6 +19,8 @@ authors: ["Linode"]
 This series covers creating a continuous deployment pipeline within the cloud using [LKE (Linode Kubernetes Engine)](https://www.linode.com/products/kubernetes/), [GitLab](https://about.gitlab.com/), and [Helm](https://helm.sh/). Together, these products enable applications to run on a managed Kubernetes cluster (LKE) and allow for the continuous deployment of updates directly to a staging environment or a production environment.
 
 ## Presentation
+
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
 
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine](https://2021-03-lke.container.training/)
 

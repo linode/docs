@@ -24,6 +24,7 @@ external_resources:
 - '[ISO Alpha-2 country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)'
 relations:
     platform:
+        key: install-nextcloud
         keywords:
            - distribution: Ubuntu 22.04
 authors: ["Jeff Novotny"]

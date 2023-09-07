@@ -2,10 +2,9 @@
 description: "Learn how to protect your Linode account using security measures and controls built-in to the Linode platform."
 keywords: ["two-factor authentication", "password", "security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-manager-security/','/security/authentication/linode-manager-security-controls/','/security/linode-manager-security-controls-new-manager/','/platform/manager/keep-your-linode-account-safe/','/security/linode-manager-security-controls/','/security/authentication/two-factor-authentication/linode-manager-security-controls/','/guides/linode-manager-security-controls/','/guides/user-security-controls/']
 published: 2022-06-24
-modified: 2022-11-21
+modified: 2023-08-15
 modified_by:
   name: Linode
 title: "Security Controls for User Accounts"
@@ -16,11 +15,15 @@ To protect your Linode user account against unauthorized access, there are sever
 
 ## 2FA (Two-Factor Authentication)
 
-2FA (*two-factor authentication*) increases the security of your Linode account by requiring two forms of authentication: your password and an expiring token, also called an OTP (one-time passcode) or 2FA code. This follows the security principle of authenticating with something you *know* (a password) and something you *have* (the device used to generate the token). This additional layer of security reduces the risk that an unauthorized individual can gain access to your Linode account. **Linode highly recommends enabling 2FA**. See [Managing Two-Factor Authentication (2FA) on a User Account](/docs/guides/2fa/) to learn how to enable 2FA. To assist with account lockouts and recovery, you must first configure three [security questions](#security-questions) on your account before enabling 2FA.
+2FA (*two-factor authentication*) increases the security of your Linode account by requiring two forms of authentication: your password and an expiring token, also called a one-time passcode (OTP) or 2FA code. This follows the security principle of authenticating with something you *know* (a password) and something you *have* (the device used to generate the token). This additional layer of security reduces the risk that an unauthorized individual can gain access to your Linode account.
+
+If you *do not* have 2FA enabled and have not logged into your account in 90 days, an OTP is sent to the email address associated with your user account. Should you not complete the login attempt within 60 minutes, the code expires and another login attempt is required to generate a new code.
+
+**Linode highly recommends enabling 2FA**. See [Managing Two-Factor Authentication (2FA) on a User Account](/docs/guides/2fa/) to learn how to enable 2FA. To assist with account lockouts and recovery, you must first configure three [security questions](#security-questions) on your account before enabling 2FA.
 
 ![Screenshot of the 2FA setting in Cloud Manager](2fa.png)
 
-{{< note >}}
+{{< note type=warning noTitle=true >}}
 Managing 2FA through Linode is only available if *Linode* is selected as the **Login Method**. If you select a third-party authentication provider (such as Google or GitHub), 2FA is managed directly through that provider and not through Linode.
 {{< /note >}}
 

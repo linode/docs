@@ -18,7 +18,7 @@ MongoDB is a non-relational, document-oriented database that can operate over ma
 
 ### Prerequisites
 
-- Ensure you have deployed a MongoDB server instance. You can use the [Linode Marketplace App](/docs/products/tools/marketplace/guides/mongodb/) to deploy a MongoDB server instance.
+- Ensure you have deployed a MongoDB server instance.
 
 - You must have access to your MongoDB server instance and the necessary credentials to connect to your database.
 
@@ -57,7 +57,7 @@ If, upon invocation, `mongosh` doesn't execute, it may be necessary (depending o
 
 ### Install the MongoDB Shell on Debian Linux
 
-MongoDB server instances installed with a Linux package manager (`apt` or `rpm`) often have the MongoDB Shell already installed. This also includes the [Linode Marketplace MondoDB Server instance](/docs/products/tools/marketplace/guides/mongodb/). To verify that `mongosh` is installed, issue the following command to connect to your MongoDB server:
+MongoDB server instances installed with a Linux package manager (`apt` or `rpm`) often have the MongoDB Shell already installed. To verify that `mongosh` is installed, issue the following command to connect to your MongoDB server:
 
     mongosh
 
