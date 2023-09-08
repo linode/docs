@@ -1,8 +1,8 @@
 ---
 slug: how-to-set-up-mariadb-clusters-with-galera-and-ubuntu
-title: "How to Set Up MariaDB Clusters With Galera and Ubuntu"
-description: 'This guide explains how to install and configure MariaDB clusters on Ubuntu 22.04 using Galera'
-og_description: 'This guide explains how to install and configure MariaDB clusters on Ubuntu 22.04 using Galera'
+title: "How to Set up MariaDB Clusters with Galera and Ubuntu"
+description: 'This guide explains how to install and configure MariaDB clusters on Ubuntu 22.04 LTS using Galera.'
+og_description: 'This guide explains how to install and configure MariaDB clusters on Ubuntu 22.04 LTS using Galera.'
 keywords: ['install Galera Ubuntu','MariaDB Galera Cluster','MariaDB Galera Ubuntu','configure database cluster Galera']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
