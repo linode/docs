@@ -5,9 +5,9 @@ description: "Linode Object Storage is an efficient solution to store backups of
 keywords: ['how to backup object storage','linux backup','snapshot object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-03-08
+published: 2023-09-08
 modified_by:
-  name: Nathaniel Stickman
+  name: Linode
 external_resources:
 - '[Oracle Cloud Infrastructure Documentation: Backing Up Snapshots to Object Storage Using rclone](https://docs.oracle.com/en-us/iaas/Content/File/Tasks/backing-up-snapshots-to-object-storage.htm)'
 - '[Ubuntu Forums: Heliode - Howto: Backup and Restore Your System!](https://ubuntuforums.org/showthread.php?t=35087)'
@@ -29,11 +29,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Back Up Your Data to a Single Archive File
 
-There are a significant number of tools, third-party applications, and services that offer backup solutions. Several useful methods are covered in our guide on [Backing Up Your Data](/docs/guides/backing-up-your-data/), including some methods specific to Linode instances.
+There are a significant number of tools, third-party applications, and services that offer system backup solutions. Several useful methods are covered in our guide on [Backing Up Your Data](/docs/guides/backing-up-your-data/), including some methods specific to Linode instances.
 
 Since the goal of this tutorial is to store backups on Object Storage, utilities that output a single backup file are preferred. After all, it's much easier to store and manage each backup as a single object than as many separate objects.
 
-The `tar` command works well here. It is able to combine multiple files and directories into a single archive file and extract the contents of existing archive files. Such archive files are easier to manage and share. When combined with optional compression algorithms, they also take up less storage space.
+The `tar` command works well here. It can combine multiple files and directories into a single archive file as well as extract the contents of existing archive files. Such archive files are easier to manage and share. When combined with optional compression algorithms, they also take up less storage space.
 
 You can use the following `tar` command to combine most of your system's files into a single compressed archive. The command creates an archive of the root directory and stores it as `/tmp/backup.tgz`. The first `--exclude` option ensures that `tar` does not attempt to archive the archive itself. The remaining `--exclude` options exclude the contents of various directories from the backup. You can adjust these as needed, but the options here provide a general guide:
 
@@ -55,23 +55,23 @@ sudo tar -vxpzf backup.tgz -C ~/temp-backup-storage/
 
 ### Incremental Backups
 
-This guide focuses on covering full backups, where most system files are backed up all at once, with each backup containing a full account. However, some use cases prefer *incremental backups*, where each subsequent archive only contains modifications to an initial backup.
+This guide focuses on covering full backups, in which all of the files you've specified are backed up in their entirety each time you perform a backup. However, some use cases may benefit from *incremental backups*, in which each subsequent archive only contains modifications since the last backup.
 
-Incremental backups mainly offer two benefits. It tends to take less time and fewer resources because each subsequent backup operation only archives new modifications. For a similar reason, each archive file tends to be significantly smaller.
+Incremental backups mainly offer two benefits. They tend to take less time and fewer resources because each subsequent backup operation only archives new modifications. For a similar reason, each archive file tends to be significantly smaller.
 
-That said, incremental backups require a more involved restore process. A traditional incremental backup requires that you first restore the initial archive, then each subsequent archive (in order) up to your desired restoration point.
+That said, incremental backups typically require a more involved restore process. In most cases, you would first extract the initial archive and then each subsequent archive (in order) up to your desired restoration point. This is in contrast to restoring a full backup, where you only need to extract a single archive file.
 
 The tar command also supports incremental backups, using its `--listed-incremental` option. To learn how to create incremental backups with `tar`, refer to the GNU documentation on [Using tar to Perform Incremental Dumps](https://www.gnu.org/software/tar/manual/html_node/Incremental-Dumps.html).
 
-## How to Back Up an Image to Object Storage
+## Upload Backup Archive Files to Object Storage
 
-With your backup made and stored in a convenient `backup.tgz` file, you can start the process of storing it on your Linode Object Storage instance.
+With your backup made and stored in a convenient `backup.tgz` file, you can start the process of storing it on an Object Storage bucket.
 
-The [rclone](https://rclone.org/) utility handles that process efficiently, especially when you plan on automating backups (covered in the next section). You can learn more about rclone and its usage with S3 object storage in our guide [Use Rclone to Sync Files to Linode Object Storage](https://www.linode.com/docs/guides/rclone-object-storage-file-sync/).
+The [rclone](https://rclone.org/) utility handles that process efficiently, especially when you plan on automating backups (covered in the next section). You can learn more about rclone and its usage with S3 object storage in our guide [Use Rclone to Sync Files to Linode Object Storage](/docs/guides/rclone-object-storage-file-sync/).
 
 Follow along with the steps here to set up rclone and store your initial backup file to a Linode Object Storage instance.
 
-1.  Create a Linode Object Storage bucket, and generate access keys. Our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/) guide explains how.
+1.  Create a Linode Object Storage bucket and generate access keys. Our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/) guide explains how.
 
     You need to keep track of some information from this step, as it is necessary further on:
 
@@ -79,18 +79,18 @@ Follow along with the steps here to set up rclone and store your initial backup 
 
     -   The region designation for your bucket. This is displayed when selecting a region for the bucket and as part of the bucket's URL. For example, the **Atlanta** region has the designation `us-southeast-1`.
 
-    -   The access key and secret access key you generate. The cloud manager only displays the secret key once after generating it, so be sure to hold on to it.
+    -   The access key and secret access key you generate. The Cloud Manager only displays the secret key once after generating it, so be sure to hold on to it.
 
-1.  Install rclone. You can generally do so from your system's package manager, but for the latest release of rclone, you should follow the installation instructions in our [rclone guide](/docs/guides/rclone-object-storage-file-sync/#download-and-install-rclone-on-linux-and-macos) linked above.
+1.  Install rclone. You can generally do so from your system's package manager, but for the latest release of rclone, you should follow the installation instructions in our [rclone guide](/docs/guides/rclone-object-storage-file-sync/#download-and-install-rclone-on-linux-and-macos).
 
-1.  Create the `~/.config/rclone` directories:
+1.  Create the `~/.config/rclone` directory if it does not yet exist. This is where your rclone configuration files will be stored.
 
     ```command
     cd ~
     mkdir -p .config/rclone
     ```
 
-1.  Now create an `~/.config/rclone/rclone.conf` configuration file to connect rclone to your object storage bucket:
+1.  Now, create the `~/.config/rclone/rclone.conf` configuration file to connect rclone to your Object Storage bucket:
 
     ```command
     nano ~/.config/rclone/rclone.conf
@@ -110,7 +110,7 @@ Follow along with the steps here to set up rclone and store your initial backup 
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Verify rclone's connectivity to your object storage bucket with one of its `list` commands. The example below lists the buckets within your object storage instance.
+1.  Verify rclone's connectivity to your object storage bucket with one of its `list` commands. The example below lists the buckets within your Object Storage account.
 
     ```command
     rclone lsd linodes3:
@@ -120,7 +120,7 @@ Follow along with the steps here to set up rclone and store your initial backup 
               -1 2023-03-01 21:30:45        -1 compute-backup-bucket
     ```
 
-At this point, rclone is prepared to store your backups. With the `backup.tgz` file stored in `/tmp/` as shown in the previous section, you can send the backup to object storage with this command:
+At this point, rclone is prepared to store your backups. With the `backup.tgz` file stored in `/tmp/` as shown in the previous section, you can send the backup to Object Storage with this command:
 
 ```command
 rclone copyto /tmp/backup.tgz linodes3:compute-backup-bucket/backups/backup-$(date +%Y%m%d-%H%M%S).tgz
@@ -128,7 +128,7 @@ rclone copyto /tmp/backup.tgz linodes3:compute-backup-bucket/backups/backup-$(da
 
 The command stores the file in the `compute-backup-bucket` bucket, specifically in a subdirectory named `backups`. The file's name is also changed, with a timestamp appended for easier sorting and identification.
 
-Once the process is finished, you can verify the result either in the Linode Cloud Manager or from the command line using another rclone command:
+Once the process is finished, you can verify the result either in the Cloud Manager or from the command line using another rclone command:
 
 ```command
 rclone tree linodes3:compute-backup-bucket
@@ -144,19 +144,17 @@ rclone tree linodes3:compute-backup-bucket
 
 ## How to Schedule Regular Backups
 
-The whole process of creating backups and storing them on Linode Object Storage can be automated and scheduled. In fact, the methods above specifically lend themselves to this.
+The whole process of creating backups and storing them on Linode Object Storage can be automated and scheduled. In fact, the methods above specifically lend themselves to this. You essentially need two things to do this: a script to create and store backups, and a cron job to schedule execution of the script.
 
-You essentially need two things to do this: a script to create and store backups, and a cron job to schedule execution of the script.
+The instructions below walk you through this process. This example uses the `tar` process outlined above for creating backups and assumes you followed the steps above for configuring rclone.
 
-The steps here set these up. This example uses the `tar` process outlined above for creating backups and assumes you followed the steps above for configuring rclone.
-
-1.  Create a shell script to generate a backup file and then store that file in your object storage bucket:
+1.  Create a shell script to generate a backup file and then store that file in your Object Storage bucket:
 
     ```command
     sudo nano /usr/local/bin/backup-to-object-storage.sh
     ```
 
-1.  Give the `backup-to-object-storage.sh` file the following contents:
+1.  Enter the following contents into the `backup-to-object-storage.sh` script file and then save the file.
 
     ```file {title="/usr/local/bin/backup-to-object-storage.sh" lang="sh"}
     #!/bin/sh
@@ -172,8 +170,6 @@ The steps here set these up. This example uses the `tar` process outlined above 
     ```
 
     This uses commands shown earlier in this tutorial. It simply omits `sudo`, since the task runs as root, and specifies a location for the rclone configuration file.
-
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
 1.  Give the script executable permissions:
 
@@ -208,7 +204,7 @@ The steps here set these up. This example uses the `tar` process outlined above 
 
     Learn more about scheduling tasks with cron in our guide [Using Cron to Schedule Tasks for Certain Times or Intervals](/docs/guides/schedule-tasks-with-cron/). There you can see more options for setting up cron jobs and a full breakdown of scheduling frequency.
 
-The example above schedules a daily task, so checking your object storage bucket the next day should show a new backup file. You can verify the results with a command like this:
+The example above schedules a daily task, so checking your Object Storage bucket the next day should show a new backup file. You can verify the results with a command like this:
 
 ```command
 rclone tree linodes3:compute-backup-bucket
@@ -225,6 +221,6 @@ rclone tree linodes3:compute-backup-bucket
 
 ## Conclusion
 
-Your Linode Compute Instance is now equipped with a fully automated backup process, storing your backups with the efficiency of object storage. Moreover, all of the pieces can be adjusted and expanded on to your particular needs. Follow along with the links provided throughout this tutorial to learn more about the utilities and procedures used to get the most out of it.
+Your Compute Instance is now equipped with a fully automated backup solution, with each archive file stored on Linode Object Storage. Moreover, all of the pieces can be adjusted and expanded on to your particular needs. Follow along with the links provided throughout this tutorial to learn more about the utilities and procedures used to get the most out of it.
 
 The additional links below provide further reading on creating backups and can give you more context and options for the methods outlined in this tutorial.
