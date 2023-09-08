@@ -36,7 +36,7 @@ This guide will walk you through the steps needed to deploy a Kubernetes cluster
 
 ### Install Pulumi
 
-Install Pulumi on your computer by following the [Before You Begin](/docs/guides/deploy-in-code-with-pulumi/#before-you-begin) section of our [Getting Started With Pulumi](https://www.linode.com/docs/guides/deploy-in-code-with-pulumi/) guide.
+Install Pulumi on your computer by following the [Before You Begin](/docs/guides/deploy-in-code-with-pulumi/#before-you-begin) section of our [Getting Started With Pulumi](/docs/guides/deploy-in-code-with-pulumi/) guide.
 
 ### Install kubectl
 
