@@ -233,7 +233,6 @@ These instructions mount the `/dev/sda` disk. If you are mounting a different di
 1.  Mount the disk to make its contents available at the `/media/sda` directory:
 
     ```command
-    mkfs.ext4 /dev/sda
     mount -o barrier=0 /dev/sda /media/sda
     ```
 
