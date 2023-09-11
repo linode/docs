@@ -108,9 +108,9 @@ In Netplan, IP address configuration uses the `addresses` option beneath the int
     eth0:
       addresses:
         - [ip-address]/[prefix]
-     routes:
-      - to: default
-        via: [gateway-ip]
+      routes:
+        - to: default
+          via: [gateway-ip]
 ```
 
 Each `addresses` entry takes an IP address along with the subnet prefix length. In addition, you also need to add a route to the gateway.
@@ -153,9 +153,9 @@ You can configure additional IPv4 addresses within Netplan by adding them to the
       addresses:
         - 192.0.2.17/24
         - [ip-address]/[prefix]
-     routes:
-      - to: default
-        via: 192.0.2.1
+      routes:
+        - to: default
+          via: 192.0.2.1
 ```
 
 Replace *[ip-address]* with the additional IPv4 address and *[prefix]* with either `24` for public addresses or `17` for private addresses. To learn more, see the [Changing the Primary IPv4 Address](#changing-the-primary-ipv4-address) section above.
@@ -192,22 +192,23 @@ You can configure additional IPv6 addresses just as you would IPv4 addresses, by
   ethernets:
     eth0:
       addresses:
-        - 192.0.2.17/24
         - [ip-address]/[prefix]
      routes:
       - to: default
-        via: 192.0.2.1
+        via: fe80::1
 ```
 
 Each `addresses` entry consists of two parts: the IP address and the subnet prefix. For an IPv6 address, that breaks down as follows:
 
--   **[ip-address]**: The IP address to be statically configured. The address can be IPv6 (e.g. `2001:db8:e001:1b8c::2`) or IPv4 as shown further above.
+-   **[ip-address]**: The IP address to be statically configured. The address can be IPv6 (e.g., `2001:db8:e001:1b8c::2`) or IPv4 as shown further above.
 
 -   **[prefix]**: The subnet prefix for the address. This depends on the type of IPv6 address you are adding:
 
     -   IPv6 SLAAC address: `/128` (though it is recommended to configure this automatically through SLAAC, as shown in the previous section).
 
     -   IPv6 address from a range: `/64` or `/56` (depending on the size of the range).
+
+-   **[gateway-ip]**: The IPv6 address of the gateway corresponding to the primary IPv6 address on your instance.
 
 A similar break down is given specifically for IPv4 addresses in the [Configuring Additional IPv4 Addresses](/docs/products/compute/compute-instances/guides/netplan/#configuring-additional-ipv4-addresses) section further above.
 
