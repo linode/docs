@@ -43,12 +43,12 @@ This process restores *all data* that was stored on the disk at the time the bac
 
 1.  Once your backup has been restored, you can optionally power up or restart your Compute Instance using that backup. To do so, navigate to the target Compute Instance in the Cloud Manager, go to the **Configurations** tab, locate the configuration profile created during the restore process, and click the corresponding **Boot** button. For full instructions, review [Manage Configuration Profiles on a Compute Instance > Boot from a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#boot-from-a-configuration-profile).
 
-    {{< note type="warning" >}}
-    When you restore a backup, the restored disk is assigned the same [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) as the original disk.
+    {{< note type="warning" title="Warning: UUID Collisions">}}
+    When you restore a backup, the restored disk is assigned the same [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) as the original disk. In most cases, this is acceptable and does not cause issues. However, if you attempt to mount both the original disk and the corresponding restore disk at the same time (by assigning them both to devices in your Configuration Profile's **Block Device Assignment**), you will encounter a UUID "collision".
 
-    If you assign a backup-restored *root disk* in the original Configuration Profile's **Block Device Assignment** alongside your original root disk, mounting the disk will result in a UUID "collision". This is due to multiple disks sharing the same UUID.
+    When this happens, the system selects, and mounts, only one of the disks at random. This is due to both disks sharing the same UUID, and your instance *may fail to boot* since it will not be clear which disk is root. If your system does boot, you will not see any immediate indication if you are booted into the restored disk or the original disk, and you will be unable to access both disks at the same time.
 
-    When booting a configuration with multiple disks sharing the same UUID, your instance *may fail to boot* since it will not be clear which disk is root.
+    To avoid this, we recommend only restoring a backup to the same Compute Instance if you do not intend on mounting them at the same time or are comfortable modifying UUIDs. If you need access to files on both the original disk and the restored disk simultaneously (such as needing to copy files between them), we suggest [restoring the backup to a new Compute Instance](/docs/products/storage/backups/guides/restore-to-a-new-instance/).
 
     To learn more about block device assignments and viewing your disks' UUIDs, see [Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#block-device-assignment).
     {{< /note >}}
