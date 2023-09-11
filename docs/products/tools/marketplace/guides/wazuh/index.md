@@ -3,7 +3,7 @@ description: "Deploy Wazuh on a Linode Compute Instance. This provides you with 
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
-modified: 2023-08-16
+modified: 2023-09-11
 modified_by:
   name: Linode
 title: "Deploy Wazuh through the Linode Marketplace"
@@ -90,7 +90,7 @@ authors: ["Linode"]
 
 ### Access the Wazuh App
 
-1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value. Ensure that you are accessing the domain over a secure network by prefixing `https` to the domain URL.
+1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value. Ensure that you are securely accessing the website by prefixing `https` to the URL.
 
 1.  In the login screen that appears, enter `admin` as the username and enter its corresponding password (which can be found by following the [View Credentials](#view-credentials) section).
 
