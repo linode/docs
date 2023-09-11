@@ -45,7 +45,7 @@ In addition to the core infrastructure, there are a number of freely available D
 
 1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value. Ensure that you are securely accessing the website by prefixing `https` to the URL.
 
-1.  The initial configuration and installation screen for your Drupal site should be displayed. Follow the prompts for the **Choose language**, **Choose profile**, and **Verify requirements** screens, select the appropriate configuration values for your Drupal site.
+1.  The initial configuration and installation screen for your Drupal site should be displayed. Follow the prompts for the **Choose language**, **Choose profile**, and **Verify requirements** screens, selecting the appropriate configuration values for your Drupal site.
 
     ![Screenshot of the Drupal installation screen](drupal-install.png)
 
