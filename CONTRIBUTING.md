@@ -165,7 +165,7 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  Install the Node dependencies for the repository:
 
-        npm install
+        npm ci
 
 ## Tailwind v3 upgrade
 
@@ -194,7 +194,7 @@ This section is only relevant to contributors who have previously worked on the 
 1.  Within the docs repo, remove the current `node_modules` directory and then reinstall dependencies.
 
         rm -rf node_modules
-        npm i
+        npm ci
 
 1.  Now, preview the site locally and verify that the site looks as expected in your web browser.
 
