@@ -90,7 +90,7 @@ authors: ["Linode"]
 
 ### Access the Wazuh App
 
-1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value. Ensure that you are accessing the domain over a secure network by prefixing `https` to the domain URL.
 
 1.  In the login screen that appears, enter `admin` as the username and enter its corresponding password (which can be found by following the [View Credentials](#view-credentials) section).
 
