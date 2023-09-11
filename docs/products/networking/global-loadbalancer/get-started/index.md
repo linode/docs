@@ -84,9 +84,9 @@ An Entry Point defines the port the load balancer listens on and the protocol fo
 ### Configure Routes
 Routes define how the load balancer directs incoming requests to service targets. You can configure the  service target and the percentage of incoming requests that should be  directed to that target. For HTTP and HTTPS protocol load balancers, additional match conditions can be added to the route.
 
-Follow the steps to configure routes for the type of load balancer; 
-- [Routes for TCP Load Balancers](/docs/products/networking/global-loadbalancer/get-started/?tabs=cloud-manager#routes-for-tcp-load-balancers/)
-- [Routes for HTTP and HTTPs Load Balancers](/docs/products/networking/global-loadbalancer/get-started/?tabs=cloud-manager#routes-for-http-and-https-load-balancers/)
+Follow the steps to configure routes for the type of load balancer;
+- [Routes for TCP Load Balancers](/docs/products/networking/global-loadbalancer/get-started/?tabs=cloud-manager/#routes-for-tcp-load-balancers)
+- [Routes for HTTP and HTTPs Load Balancers](/docs/products/networking/global-loadbalancer/get-started/?tabs=cloud-manager/#routes-for-http-and-https-load-balancers)
 
 #### Routes for TCP Load Balancers
 For TCP load balancers, a route consists of a service target and the percentage of incoming requests that should be  directed to that target. Add as many routes/service targets as you require but the percentages for all routes must total 100. You can create a new route or select existing routes.
