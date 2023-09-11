@@ -43,17 +43,7 @@ In addition to the core infrastructure, there are a number of freely available D
 
 ### Access your Drupal Site
 
-After Drupal has finished installing, you will be able to access your Drupal site over `http://` with your Linode's IPv4 address.
-
-1. To find your Linode's IPv4 address, click on the **Linodes** link in the Cloud Manager sidebar. You will see a list of all your Linodes.
-
-1. Find the Linode you just created. Under the **IP Address** column, copy the IPv4 address.
-
-1. Navigate to the **Networking** tab.
-
-1. Paste the IPv4 address into a browser window, for example, `http://192.0.2.0`. You will be brought to the Drupal installation page.
-
-    ![View the Drupal installation page.](drupal-installation-page.png)
+1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
 1. Follow the prompts for the **Choose language**, **Choose profile**, and **Verify requirements** screens and select the appropriate configuration values for your Drupal site.
 
