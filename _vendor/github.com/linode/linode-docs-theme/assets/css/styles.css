@@ -25,7 +25,7 @@ html {
 
 body,
 html {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   line-height: 1.25;
   margin: 0;
@@ -139,7 +139,7 @@ for the smaller screens.
 
 /* Adjust how top padding for submenus works: docs only */
 .c-submenu {
-  --min-submenu-padding: var(--site-top-offset) !important;
+  --min-submenu-padding: var(--site-top-offset ) !important;
 }
 
 /* Adjust Tailwind preflight defaults applied in tailwind base. */

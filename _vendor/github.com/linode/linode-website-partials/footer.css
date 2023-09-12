@@ -7,7 +7,7 @@
   padding: 0 !important;
   position: fixed !important;
   right: 0 !important;
-  z-index: 2147483647 !important;
+  z-index: 999 !important;
 }
 
 #truste-consent-content {

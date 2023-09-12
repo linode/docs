@@ -30,7 +30,7 @@ nav.toc li > a {
 
 @screen mobile {
   nav.toc li.level-2 {
-    @apply truncate relative;
+    @apply: truncate relative;
   }
   nav.toc li.level-2 > a {
     @apply pr-10;

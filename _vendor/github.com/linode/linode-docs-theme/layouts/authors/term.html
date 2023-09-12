@@ -5,7 +5,7 @@
 {{ define "main" }}
   {{ $isLinodeAuthor := (or (eq .Title "Linode") (eq .Title "Linode Community")) }}
   <h1
-    class="font-semibold leading-tight tracking-tight text-4xl text-titlecolor w-full">
+    class="font-bold leading-tight tracking-tight text-4xl text-titlecolor w-full">
     {{ .Title }}
   </h1>
   {{ if $isLinodeAuthor }}

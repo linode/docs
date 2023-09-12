@@ -12,7 +12,7 @@
     @click.away="closeIfMobile()"
     data-testid="toc">
     <div class="flex flex-col">
-      <ul @click.stop="toggleOpen()" data-testid="toc-toggle">
+      <ul @click="toggleOpen()">
         <li class="cursor-pointer navbar__row bg-white">
           <div class="hide-if-topbar-is-pinned md:hidden h-full pr-container">
             <div class="flex items-center h-full justify-end md:hidden">
