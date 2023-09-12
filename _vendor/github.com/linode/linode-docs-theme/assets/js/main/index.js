@@ -27,6 +27,7 @@ import { newNavStore } from './navigation/nav-store';
 import { newSearchFiltersController, newSearchInputController, newSearchStore, getSearchConfig } from './search/index';
 import { newHomeController } from './sections/home/home';
 import { newSectionsController } from './sections/sections/index';
+import { newSVGViewerController } from './navigation/svg-viewer';
 
 // Set up the search configuration (as defined in config.toml).
 const searchConfig = getSearchConfig(params);
@@ -84,6 +85,7 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncPaginator', newPaginatorController);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 		Alpine.data('lncFetch', fetchController);
+		Alpine.data('lnvSVGViewer', newSVGViewerController);
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {

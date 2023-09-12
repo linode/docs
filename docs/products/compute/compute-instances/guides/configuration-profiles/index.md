@@ -3,7 +3,7 @@ description: "Learn how to create and manage configuration profiles for a Comput
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 published: 2021-04-30
-modified: 2023-02-09
+modified: 2023-09-11
 modified_by:
   name: Linode
 image: Linode-Configuration-Profiles.jpg
@@ -51,7 +51,21 @@ When adding or editing a configuration profile on a Compute Instance, the follow
     - **Run Level:** Adjust the [run level](https://en.wikipedia.org/wiki/Runlevel) of the OS to allow for advanced diagnostics. Recommended setting: *Run Default Level*.
     - **Memory Limit:** Limits the amount of memory that the Compute Instance can use. Recommended setting: *Do not set any limits on memory usage*.
 
-- **Block Device Assignment:** Assigns the Compute Instance's disks to the disk devices in Linux, making them accessible once the instance has booted up. Up to 8 disks can be assigned (`/dev/sda` through `/dev/sdg`), though it's common to only use the first two devices: `/dev/sda` as the main disk and `/dev/sdb` as the swap disk. The **Root Device** is used to select the primary disk device (commonly `/dev/sda`), though another predefined device or custom device path can be used.
+- <span id="block-device-assignment">**Block Device Assignment:**</span> Assigns the Compute Instance's disks to the disk devices in Linux, making them accessible once the instance has booted up. Up to 8 disks can be assigned (`/dev/sda` through `/dev/sdg`), though it's common to only use the first two devices: `/dev/sda` as the main disk and `/dev/sdb` as the swap disk. The **Root Device** is used to select the primary disk device (commonly `/dev/sda`), though another predefined device or custom device path can be used.
+
+    {{< note >}}
+    In some Linode distribution images, block devices are assigned using [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) in the `/etc/fstab` file to support proper disk mounting. In order to see the UUID assigned to each block device, you can use the `lsblk` command:
+    ```command
+    lsblk -f
+    ```
+    This displays block devices for your booted configuration and their current mountpoints:
+    ```output
+    NAME FSTYPE FSVER LABEL       UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+    sda  ext4   1.0   linode-root cfa3834a-c6ec-0c85-1b68-6345a69f3759   14.3G    20% /
+    sdb  swap   1                 208b24eb-47fe-4e6b-907a-d70d24af0cf0                [SWAP]
+    sdc  ext4   1.0   linode-root 72a6eb6d-941c-bf66-c5e7-636242a1efbe
+    ```
+    {{< /note >}}
 
 - **Network Interfaces:**  Assigns either a VLAN or the Public Internet to a network interface in Linux. There are a total of 3 available network interfaces: `eth0`, `eth1`, and `eth2`. If no VLANs are in use, the recommended setting is _Public Internet_ for `eth0` and _None_ for all other interfaces. See [Getting Started with VLANs](/docs/products/networking/vlans/get-started/).
 

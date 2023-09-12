@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.161.0
+  version: 4.162.0
 
   title: Linode API
   description: |
@@ -6007,6 +6007,8 @@ paths:
         on all Linodes for new accounts created after November 5th, 2019. For more information,
         see our guide on [Running a Mail Server](/docs/guides/running-a-mail-server/).
 
+        **Important**: You must be an unrestricted User in order to add or modify tags on Linodes.
+
         Linodes can be created in a number of ways:
 
         * Using a Linode Public Image distribution or a Private Image you created based on another Linode.
@@ -6051,9 +6053,6 @@ paths:
           * Requires a compatible Image. You can determine compatible Images by checking for `cloud-init` under `capabilities` when using Images List ([GET /images](/docs/api/images/#images-list)).
           * Requires a compatible Region.  You can determine compatible Regions by checking for `Metadata` under `capabilities` when using Regions List ([GET /regions](/docs/api/regions/#regions-list)).
           * This feature is in beta and is currently limited to certain Regions and distributions. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
-
-        **Important**: You must be an unrestricted User in order to add or modify
-        tags on Linodes.
       tags:
       - Linode Instances
       operationId: createLinodeInstance
@@ -6644,6 +6643,16 @@ paths:
           * Backups may not be restored across Regions.
           * Only successfully completed Backups that are not undergoing maintenance can be restored.
           * The Linode that the Backup is being restored to must not itself be in the process of creating a Backup.
+
+        {{< note type="warning" title="Warning: UUID Collisions">}}
+        When you restore a backup, the restored disk is assigned the same [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) as the original disk. In most cases, this is acceptable and does not cause issues. However, if you attempt to mount both the original disk and the corresponding restore disk at the same time (by assigning them both to devices in your Configuration Profile's **Block Device Assignment**), you will encounter a UUID "collision".
+
+        When this happens, the system selects, and mounts, only one of the disks at random. This is due to both disks sharing the same UUID, and your instance *may fail to boot* since it will not be clear which disk is root. If your system does boot, you will not see any immediate indication if you are booted into the restored disk or the original disk, and you will be unable to access both disks at the same time.
+
+        To avoid this, we recommend only restoring a backup to the same Compute Instance if you do not intend on mounting them at the same time or are comfortable modifying UUIDs. If you need access to files on both the original disk and the restored disk simultaneously (such as needing to copy files between them), we suggest either restoring the backup to a separate Compute Instance or [creating](/docs/api/linode-instances/#linode-create) a new Compute Instance with the desired `backup_id`.
+
+        To learn more about block device assignments and viewing your disks' UUIDs, see our guide on [Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#block-device-assignment).
+        {{< /note >}}
       tags:
       - Linode Instances
       operationId: restoreBackup
@@ -7772,6 +7781,14 @@ paths:
           description: Requested Linode's networking configuration.
           content:
             application/json:
+              x-linode-cli-subtables:
+                - ipv4.public
+                - ipv4.private
+                - ipv4.shared
+                - ipv4.reserved
+                - ipv6.link_local
+                - ipv6.slaac
+                - ipv6.global
               schema:
                 properties:
                   ipv4:
@@ -7903,13 +7920,13 @@ paths:
     parameters:
     - name: linodeId
       in: path
-      description: The ID of the Linode to look up.
+      description: The ID of the Linode.
       required: true
       schema:
         type: integer
     - name: address
       in: path
-      description: The IP address to look up.
+      description: The IP address.
       required: true
       schema:
         type: string
@@ -7950,9 +7967,9 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: IP Address Update
+      summary: IP Address RDNS Update
       description: |
-        Updates a the reverse DNS (RDNS) for a particular IP Address associated with this Linode.
+        Updates the reverse DNS (RDNS) for a Linode's IP Address. This may be done for both IPv4 and IPv6 addresses.
 
         Setting the RDNS to `null` for a public IPv4 address, resets it to the default "ip.linodeusercontent.com" RDNS value.
       operationId: updateLinodeIP
@@ -13062,10 +13079,11 @@ paths:
                       "ports": "22, 80, 443",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.0/24"
+                          "192.0.2.0/24",
+                          "198.51.100.2/32"
                         ],
                         "ipv6": [
-                          "2001:DB8::/32"
+                          "2001:DB8::/128"
                         ]
                       },
                     "action": "ACCEPT",
@@ -13080,10 +13098,11 @@ paths:
                       "ports": "49152-65535",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.0/24"
+                          "192.0.2.0/24",
+                          "198.51.100.2/32"
                         ],
                         "ipv6": [
-                          "2001:DB8::/32"
+                          "2001:DB8::/128"
                         ]
                       },
                       "action": "ACCEPT",
@@ -13109,8 +13128,8 @@ paths:
             --label example-firewall \
             --rules.outbound_policy ACCEPT \
             --rules.inbound_policy DROP \
-            --rules.inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}, "action": "ACCEPT"}]' \
-            --rules.outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.0/24"],"ipv6": ["2001:DB8::/32"]}, "action": "DROP", "label": "outbound-rule123", "description": "An example outbound rule description."}]'
+            --rules.inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.0/24", "198.51.100.2/32"], "ipv6": ["2001:DB8::/128"]}, "action": "ACCEPT"}]' \
+            --rules.outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.0/24", "198.51.100.2/32"],"ipv6": ["2001:DB8::/128"]}, "action": "DROP", "label": "outbound-rule123", "description": "An example outbound rule description."}]'
   /networking/firewalls/{firewallId}:
     parameters:
       - name: firewallId
@@ -13512,6 +13531,9 @@ paths:
           description: The requested Firewall Rules.
           content:
             application/json:
+              x-linode-cli-subtables:
+                - inbound
+                - outbound
               schema:
                 $ref: '#/components/schemas/Firewall/properties/rules'
         default:
@@ -13534,7 +13556,7 @@ paths:
       description: |
         Updates the inbound and outbound Rules for a Firewall.
 
-        **Note:** This command replaces all of a Firewall's `inbound` and/or `outbound` rulesets with the values specified in your request.
+        **Note:** This command replaces all of a Firewall's `inbound` and `outbound` rulesets with the values specified in your request.
       operationId: updateFirewallRules
       x-linode-cli-action: rules-update
       security:
@@ -13545,6 +13567,9 @@ paths:
         description: The Firewall Rules information to update.
         content:
           application/json:
+            x-linode-cli-subtables:
+            - inbound
+            - outbound
             schema:
               allOf:
               - $ref: '#/components/schemas/Firewall/properties/rules'
@@ -13581,10 +13606,11 @@ paths:
                       "ports": "22, 80, 443",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.0/24"
+                          "192.0.2.0/24",
+                          "198.51.100.2/32"
                         ],
                         "ipv6": [
-                          "2001:DB8::/32"
+                          "2001:DB8::/128"
                         ]
                       },
                     "action": "ACCEPT",
@@ -13599,10 +13625,11 @@ paths:
                       "ports": "49152-65535",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.0/24"
+                          "192.0.2.0/24",
+                          "198.51.100.2/32"
                         ],
                         "ipv6": [
-                          "2001:DB8::/32"
+                          "2001:DB8::/128"
                         ]
                       },
                       "action": "ACCEPT",
@@ -13615,8 +13642,8 @@ paths:
       - lang: CLI
         source: >
           linode-cli firewalls rules-update 123 \
-            --inbound '[{"action":"ACCEPT", "protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1/32", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]' \
-            --outbound '[{"action":"DROP","protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.1/32", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]'
+            --inbound '[{"action":"ACCEPT", "protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.0/24", "198.51.100.2/32"], "ipv6": ["2001:DB8::/128"]}}]' \
+            --outbound '[{"action":"DROP","protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.0/24", "198.51.100.2/32"], "ipv6": ["2001:DB8::/128`"]}}]'
   /networking/vlans:
     x-linode-cli-command: vlans
     get:
@@ -20342,7 +20369,7 @@ components:
 
             `CAA`: The value. For `issue` or `issuewild` tags, the domain of your certificate issuer. For the `iodef`
             tag, a contact or submission URL (domain, http, https, or mailto). Requirements depend on the tag for this record:
-              * `issue`: The domain of your certificate issuer. Must be a valid domain.
+              * `issue`: The domain of your certificate issuer. Must include a valid domain. May include additional parameters separated with semicolons (`;`), for example: `www.example.com; foo=bar`
               * `issuewild`: The domain of your wildcard certificate issuer. Must be a valid domain and must not start with an asterisk (`*`).
               * `iodef`: Must be either (1) a valid domain, (2) a valid domain prepended with `http://` or `https://`, or (3) a valid email address prepended with `mailto:`.
 
@@ -20942,6 +20969,8 @@ components:
             The inbound and outbound access rules to apply to the Firewall.
 
             A Firewall may have up to 25 rules across its inbound and outbound rulesets.
+
+            Multiple rules are applied in order. If two rules conflict, the first rule takes precedence. For example, if the first rule accepts inbound traffic from an address, and the second rule drops inbound traffic the same address, the first rule applies and inbound traffic from that address is accepted.
           properties:
             inbound:
               type: array
@@ -20998,41 +21027,49 @@ components:
           - ICMP
           - IPENCAP
           description: >
-            The type of network traffic to allow.
+            The type of network traffic affected by this rule.
           example: TCP
         ports:
           type: string
+          nullable: true
           description: |
-            A string representing the port or ports on which traffic will be allowed:
+            A string representing the port or ports affected by this rule:
 
             - The string may be a single port, a range of ports, or a comma-separated list of single ports and port ranges. A space is permitted following each comma.
             - A range of ports is inclusive of the start and end values for the range. The end value of the range must be greater than the start value.
             - Ports must be within 1 and 65535, and may not contain any leading zeroes. For example, port "080" is not allowed.
-            - Ports may not be specified if a rule's protocol is `ICMP` or `IPENCAP`.
-            - At least one port must be specified if a rule's protocol is `TCP` or `UDP`.
             - The ports string can have up to 15 *pieces*, where a single port is treated as one piece, and a port range is treated as two pieces. For example, the string "22-24, 80, 443" has four pieces.
+            - If no ports are configured, all ports are affected.
+            - Only allowed for the TCP and UDP protocols. Ports are not allowed for the ICMP and IPENCAP protocols.
           example: '22-24, 80, 443'
         addresses:
           type: object
-          description: >
-            Allowed IPv4 or IPv6 addresses. A Rule can have up to 255 addresses
-            or networks listed across its IPv4 and IPv6 arrays. A network and a single IP
-            are treated as equivalent when accounting for this limit.
+          description: |
+            The IPv4 and/or IPv6 addresses affected by this rule. A Rule can have up to 255 total addresses or networks listed across its IPv4 and IPv6 arrays. A network and a single IP are treated as equivalent when accounting for this limit.
+
+            Must contain `ipv4`, `ipv6`, or both.
           properties:
             ipv4:
-              description: A list of IPv4 addresses or networks. Must be in IP/mask format.
+              description: |
+                A list of IPv4 addresses or networks. Addresses must be in IP/mask format. Must not be an empty list.
+
+                If "0.0.0.0/0" is included in this list, all IPv4 addresses are affected by this rule.
               type: array
               items:
                 type: string
               example:
               - 192.0.2.0/24
+              - 198.51.100.2/32
             ipv6:
-              description: A list of IPv6 addresses or networks. Must be in IP/mask format.
+              description: |
+                A list of IPv6 addresses or networks. Addresses must be in IP/mask format. Must not be an empty list.
+
+                If "::/0" is included in this list, all IPv6 addresses are affected by this rule.
               type: array
               items:
                 type: string
               example:
-              - 2001:DB8::/32
+              - 2001:DB8::/128
         action:
           type: string
           enum:
@@ -22582,13 +22619,16 @@ components:
           description: |
             The name of this interface.
 
-            Required for `vlan` purpose interfaces. Must be an empty string or `null` for `public` purpose interfaces.
+            For `vlan` purpose interfaces:
+            * Required.
+            * Must be unique among the Linode's interfaces (a Linode cannot be attached to the same VLAN multiple times).
+            * May only consist of ASCII letters, numbers, and dashes (`-`).
+
+            For `public` purpose interfaces:
+            * In requests, must be an empty string (`""`) or `null` if included.
+            * In responses, always returns `null`.
 
             If the VLAN label is new, a VLAN is created. Up to 10 VLANs can be created in each data center region. To view your active VLANs, use the [VLANs List](/docs/api/networking/#vlans-list) endpoint.
-
-            May only consist of ASCII letters, numbers, and dashes (`-`).
-
-            Must be unique among the Linode's interfaces.
           example: example-interface
         ipam_address:
           type: string
@@ -22597,11 +22637,15 @@ components:
           description: |
             This Network Interface's private IP address in Classless Inter-Domain Routing (CIDR) notation.
 
-            Only used for `vlan` purpose interfaces. Must be an empty string or `null` for `public` purpose interfaces.
+            For `vlan` purpose interfaces:
+            * Must be unique among the Linode's interfaces to avoid conflicting addresses.
+            * Should be unique among devices attached to the VLAN to avoid conflict.
+
+            For `public` purpose interfaces:
+            * In requests, must be an empty string (`""`) or `null` if included.
+            * In responses, always returns `null`.
 
             The Linode is configured to use this address for the associated interface upon reboot if Network Helper is enabled. If Network Helper is disabled, the address can be enabled with [manual static IP configuration](/docs/guides/manual-network-configuration/).
-
-            Must be unique among the Linode's interfaces.
           example: '10.0.0.1/24'
         purpose:
           type: string
@@ -22614,7 +22658,7 @@ components:
             * `public`
               * Only one `public` interface per Linode can be defined.
               * The Linode's default public IPv4 address is assigned to the `public` interface.
-              * A Linode must have a public interface in the first/eth0 position to be reachable via the public internet upon boot without additional system configuration. If no `public` interface is configured, the Linode is not directly reachable via the public internet. In this case, access can only be established via LISH or other Linodes connected to the same VLAN.
+              * A Linode must have a public interface in the first/eth0 position to be reachable via the public internet upon boot without additional system configuration. If no `public` interface is configured, the Linode is not directly reachable via the public internet. In this case, access can only be established via [LISH](/docs/products/compute/compute-instances/guides/lish/) or other Linodes connected to the same VLAN.
 
             * `vlan`
               * Configuring a `vlan` purpose interface attaches this Linode to the VLAN with the specified `label`.
@@ -22631,9 +22675,9 @@ components:
 
         Up to three interface objects can be entered in this array. The position in the array determines the interface to which the settings apply:
 
-        - First/0:  eth0
-        - Second/1: eth1
-        - Third/2:  eth2
+        - First [0]:  eth0
+        - Second [1]: eth1
+        - Third [2]:  eth2
 
         When updating a Linode's interfaces, *each interface must be redefined*. An empty interfaces array results in a default public interface configuration only.
 
