@@ -40,7 +40,7 @@ The following details show where and how Netplan's configuration files operate:
 
 ## Starter Configuration
 
-To get a sense of how Netplan's configuration files operate, here is the default configuration file. A breakdown of the file follows, elaborating on each part's role.
+To get a sense of how Netplan's configuration files operate, here is a starter configuration file. A breakdown of the file follows, elaborating on each part's role.
 
 ```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
 network:
@@ -49,6 +49,8 @@ network:
   ethernets:
     eth0:
       dhcp4: yes
+      accept-ra: yes
+      ipv6-privacy: no
 ```
 
 -   `version`: Indicates the configuration format. The only option currently supported is `2`.
@@ -185,17 +187,17 @@ Conversely, you can disable IPv6 SLAAC addressing and, instead, statically confi
 
 ## Configuring Additional IPv6 Addresses
 
-You can configure additional IPv6 addresses just as you would IPv4 addresses, by adding `addresses` entries beneath the interface.
+You can configure additional IPv6 addresses similar to as you would IPv4 addresses, by adding `addresses` entries beneath the interface. The one main difference is that IPv6 addresses (and their associated prefixes) should be surrounded by quotation marks. In addition, the default gateway for all IPv6 addresses should be `fe80::1`.
 
 ```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
 ...
   ethernets:
     eth0:
       addresses:
-        - [ip-address]/[prefix]
+        - "[ip-address]/[prefix]"
      routes:
       - to: default
-        via: fe80::1
+        via: "fe80::1"
 ```
 
 Each `addresses` entry consists of two parts: the IP address and the subnet prefix. For an IPv6 address, that breaks down as follows:
@@ -207,8 +209,6 @@ Each `addresses` entry consists of two parts: the IP address and the subnet pref
     -   IPv6 SLAAC address: `/128` (though it is recommended to configure this automatically through SLAAC, as shown in the previous section).
 
     -   IPv6 address from a range: `/64` or `/56` (depending on the size of the range).
-
--   **[gateway-ip]**: The IPv6 address of the gateway corresponding to the primary IPv6 address on your instance.
 
 A similar break down is given specifically for IPv4 addresses in the [Configuring Additional IPv4 Addresses](/docs/products/compute/compute-instances/guides/netplan/#configuring-additional-ipv4-addresses) section further above.
 
