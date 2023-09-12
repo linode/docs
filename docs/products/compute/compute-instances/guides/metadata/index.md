@@ -3,7 +3,7 @@ title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
-modified: 2023-08-29
+modified: 2023-09-11
 modified_by:
   name: Linode
 authors: ["Linode"]
@@ -37,9 +37,9 @@ Akamai's Metadata service is available in beta and limited to select data center
 - **Data centers:** Washington, DC (`us-iad`) and Paris (`fr-par`)
 - **Distributions:** Ubuntu 22.04 LTS and Ubuntu 20.04 LTS
 
-Additional regions and distributions may be added throughout the beta period. When selecting a distribution in the Cloud Manager, the following icon designates distributions that *do not* yet have cloud-init support:
+Additional regions and distributions may be added throughout the beta period. When selecting a distribution in the Cloud Manager, the following icon designates distributions that fully support the Metadata service:
 
-![Icon that means a distribution does not support user data and cloud-init](cloud-init-not-supported.png)
+![Screenshot showing icon that indicates user data and cloud-init support for a distribution](cloud-init-supported-image.png)
 
 {{< note >}}
 Compute Instances deployed in a supported region can always access the [Metadata Service API](#access-the-metadata-service-api) to obtain instance data, regardless of the distribution. However, user data cannot be submitted for distributions that do not yet have cloud-init support.
@@ -74,11 +74,7 @@ linode-cli linodes create \
   --metadata.user_data [your-user-data]
 ```
 
-Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your cloud-config or script file as base64 by running the following command:
-
-```command
-cat *[file-path]* | base64
-```
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the CLI, user data must be a Base64-encoded string. Review the [Base64 Encoded](#base64-encoded) section below to generate the string.
 {{< /tab >}}
 {{< tab "Linode API" >}}
 Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/).
@@ -99,11 +95,7 @@ curl -H "Content-Type: application/json" \
     https://api.linode.com/v4/linode/instances
 ```
 
-Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your cloud-config or script file as base64 by running the following command:
-
-```command
-cat *[file-path]* | base64
-```
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API, user data must be a Base64-encoded string. Review the [Base64 Encoded](#base64-encoded) section below to generate the string.
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -137,6 +129,23 @@ User data can be provided in many different formats, with the most common being 
     ```
 
 -   **Other formats:** Review the [User data formats](https://cloudinit.readthedocs.io/en/latest/explanation/format.html#user-data-formats) guide within the official documentation to learn more about other types of formats supported by cloud-init.
+
+#### Base64 Encoded
+
+When submitting user data through the Linode CLI or API, you first need to encode it into [Base64](https://en.wikipedia.org/wiki/Base64) (without any line breaks/wraps). To do that, run the command below that corresponds with your local operating system. Replace *[file]* with the name (and path, if needed) of your cloud-config or script file.
+
+{{< tabs >}}
+{{< tab "macOS" >}}
+```command
+base64 --break=0 --input=[file]
+```
+{{< /tab >}}
+{{< tab "Linux" >}}
+```command
+base64 --wrap=0 [file]
+```
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Modify Cloud-Init Configuration and Save a Custom Image {#modify-cloud-init}
 

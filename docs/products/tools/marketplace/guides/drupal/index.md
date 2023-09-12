@@ -1,12 +1,12 @@
 ---
+title: "Deploy Drupal through the Linode Marketplace"
 description: "Learn how to use the Drupal Marketplace App to easily install the popular open source content management system."
 keywords: ['drupal','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
 published: 2019-03-25
-modified: 2022-07-11
+modified: 2023-09-11
 modified_by:
   name: Linode
-title: "Deploy Drupal through the Linode Marketplace"
 aliases: ['/platform/marketplace/deploying-drupal-with-marketplace-apps/','/platform/marketplace/how-to-deploy-drupal-with-marketplace-apps/', '/platform/one-click/deploying-drupal-with-one-click-apps/','/guides/deploying-drupal-with-one-click-apps/','/platform/one-click/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-marketplace-apps/','/guides/drupal-marketplace-app/']
 external_resources:
  - '[Drupal 9 Official Documentation](https://www.drupal.org/docs/understanding-drupal)'
@@ -43,31 +43,21 @@ In addition to the core infrastructure, there are a number of freely available D
 
 ### Access your Drupal Site
 
-After Drupal has finished installing, you will be able to access your Drupal site over `http://` with your Linode's IPv4 address.
+1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value. Ensure that you are securely accessing the website by prefixing `https` to the URL.
 
-1. To find your Linode's IPv4 address, click on the **Linodes** link in the Cloud Manager sidebar. You will see a list of all your Linodes.
+1.  The initial configuration and installation screen for your Drupal site should be displayed. Follow the prompts for the **Choose language**, **Choose profile**, and **Verify requirements** screens, selecting the appropriate configuration values for your Drupal site.
 
-1. Find the Linode you just created. Under the **IP Address** column, copy the IPv4 address.
+    ![Screenshot of the Drupal installation screen](drupal-install.png)
 
-1. Navigate to the **Networking** tab.
+1.  In the **Database configuration** screen, fill in the form with the values listed below. Click on **Save and Continue** when you are done.
 
-1. Paste the IPv4 address into a browser window, for example, `http://192.0.2.0`. You will be brought to the Drupal installation page.
+    - **Database name:** `drupaldb`
+    - **Database username:** `drupal`
+    - **Database password:** Enter the database user password you created when deploying the instance.
 
-    ![View the Drupal installation page.](drupal-installation-page.png)
+1. Continue to follow the prompts for the **Configure site** screen and select the appropriate configuration values for your Drupal site. When complete, you are brought to your Drupal site's admin panel where you can begin [building your Drupal site](https://www.drupal.org/documentation/build).
 
-1. Follow the prompts for the **Choose language**, **Choose profile**, and **Verify requirements** screens and select the appropriate configuration values for your Drupal site.
-
-1. In the **Database configuration** screen, fill in the form with the values in the table below. Click on **Save and Continue** when you are done.
-
-    | **Database Configuration** | **Description** |
-    |:--------:|:---------:|
-    | Database name | The Marketplace App will create a database named `drupaldb`. Provide this value in the form. |
-    | Database username | The Marketplace App will create a database user named `drupal`. Provide this value in the form. |
-    | Database password | When you deployed the Marketplace app, in the [Drupal Options](##drupal-options) section, you provided a *Database User Password*. Provide this value in the form. |
-
-1. Continue to follow the prompts for the **Configure site** screen and select the appropriate configuration values for your Drupal site. When complete, you will be brought to your Drupal site's admin panel where you can begin [building your Drupal site](https://www.drupal.org/documentation/build).
-
-    ![You will be brought to your Drupal site's admin panel where you can begin building your Drupal site.](drupal-admin-panel.png)
+    ![Screenshot of the Drupal admin panel](drupal-admin.png)
 
 ## Software Included
 
