@@ -1905,6 +1905,7 @@ replset
 repo
 repos
 reputational
+Reqres
 reseller's
 resharding
 resilvering
@@ -2611,6 +2612,7 @@ xen
 xenial
 xerus
 Xfce
+xh
 xkcd
 xlsx
 xlsxwriter
