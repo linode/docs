@@ -1,5 +1,6 @@
 ---
 title: Resources
+title_meta: "Resources for Block Storage"
 description: "Resources and other information related to Linode Block Storage including blog posts, community posts, and customer stories."
 tab_group_main:
     weight: 40
@@ -7,25 +8,29 @@ tab_group_main:
 
 ## Blog Posts
 
-- [Block Storage Now Available in Tokyo 2](/docs/blog/block-storage-now-available-in-tokyo-2/)
+Some of the blog posts about Linode Block Storage:
 
-- [Block Storage Now Available in Singapore and London](/docs/blog/block-storage-now-available-in-singapore-and-london/)
+- [Block Storage Now Available in Tokyo 2](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-tokyo-2/)
 
-- [Block Storage Now Available in Frankfurt](/docs/blog/block-storage-now-available-in-frankfurt/)
+- [Block Storage Now Available in Singapore and London](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-singapore-and-london/)
 
-- [Block Storage Now Available in Newark and Dallas](/docs/blog/block-storage-now-available-in-newark-and-dallas/)
+- [Block Storage Now Available in Frankfurt](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-frankfurt/)
 
-- [Announcing Linode Block Storage Volumes](/docs/blog/announcing-linode-block-storage-volumes/)
+- [Block Storage Now Available in Newark and Dallas](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-newark-and-dallas/)
 
-- [Nextcloud and Percona added to Linode Marketplace](/docs/blog/nextcloud-and-percona-added-to-linode-marketplace/)
+- [Announcing Linode Block Storage Volumes](https://www.linode.com/blog/cloud-storage/announcing-linode-block-storage-volumes/)
 
-- [4 Alternative Ways to Collaborate in the Cloud](/docs/blog/4-alternative-ways-to-collaborate-in-the-cloud/)
+- [Nextcloud and Percona added to Linode Marketplace](https://www.linode.com/blog/devops/nextcloud-and-percona-added-to-linode-marketplace/)
 
-- [2019: A Big Year of Innovation for Linode and a Big Thank You to Our Customers](/docs/blog/linode/2019-a-year-in-review/)
+- [4 Alternative Ways to Collaborate in the Cloud](https://www.linode.com/blog/cloud-computing/4-alternative-ways-to-collaborate-in-the-cloud/)
 
-- [Now Available: Linode Terraform Provider](/docs/blog/now-available-linode-terraform-provider/)
+- [2019: A Big Year of Innovation for Linode and a Big Thank You to Our Customers](https://www.linode.com/blog/linode/2019-a-year-in-review/)
+
+- [Now Available: Linode Terraform Provider](https://www.linode.com/blog/devops/now-available-linode-terraform-provider/)
 
 ## Community Posts
+
+Some of the community posts that answer questions related to Linode Block Storage:
 
 - [How do I move my database files to a Block Storage Volume?](https://www.linode.com/community/questions/18893/how-do-i-move-my-database-files-to-a-block-storage-volume)
 

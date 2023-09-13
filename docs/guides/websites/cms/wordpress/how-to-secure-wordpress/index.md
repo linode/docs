@@ -1,40 +1,56 @@
 ---
 slug: how-to-secure-wordpress
-author:
-  name: Hackersploit
 description: 'How to secure your WordPress installation with SSL, secure password policies, two factor authentication, backups, and a firewall.'
-og_description: 'How to secure your WordPress installation with SSL, secure password policies, two factor authentication, backups, and a firewall.'
 keywords: ["how to secure wordpress site", "how to make wordpress site secure"]
 tags: ["wordpress","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-10-28
+modified: 2022-07-08
 modified_by:
   name: Linode
 published: 2020-10-28
-title: How to Secure Wordpress
-h1_title: Securing Wordpress
+title: Securing Wordpress
+title_meta: How to Secure Wordpress
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 - '[Installing Plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins)'
 aliases: ['/websites/cms/wordpress/how-to-secure-wordpress/']
-image: How_to_Secure_WordPress.png
+image: SecureWordpress.png
+authors: ["Hackersploit"]
 ---
 
 WordPress is a popular content management and website creation software system used by millions of users today. It's easy to use and offers thousands of plugins making it simple for non-developers to create beautiful websites without having to write a single line of code. This guide helps you keep your WordPress site secure with suggestions like installing SSL certificates, installing a firewall, enabling two-factor authentication, and more.
 
-## Setting Up an SSL Certificate with CertBot
+## Securing Your Website Through HTTPS
 
-The first step in securing your WordPress installation is to ensure that you have an SSL certificate configured. You can easily generate one directly on your Linux server by using the `apache-certbot` utility.
+The first step in securing your WordPress installation is to ensure that you have a [TLS/SSL certificate](/docs/guides/what-is-a-tls-certificate/) configured using the TLS v1.2 (or later) protocol. This allows your website to be accessed securely on all major browsers, including Chrome, Firefox, Safari, and Edge (all of which require TLS v1.2 or later as of 2020). You can quickly analyze your site's current connection by navigating to your domain in a web browser. Look for the lock icon to the left of the URL in the address bar. Clicking on this lock should show a message similar to "Connection secure" if your site meets the browser's TLS requirements. You can also check a domain's certificate by using the [SSL Server Test](https://www.ssllabs.com/ssltest/) by Qualys SSL Labs.
 
-1.  To install apache-certbot run the following command:
+### Installing a TLS Certificate using Certbot
 
-        sudo apt install apache-certbot python-certbot-apache
+If your site does not yet have a certificate, you can easily generate one directly on your Linux server by using the [certbot](https://certbot.eff.org/) utility. Certbot is a free and highly regarded command-line tool for generating and renewing [Let's Encrypt](https://letsencrypt.org/) certificates.
 
-1.  You can now run the certbot command, replacing `hackersploit.org` with your domain name, so that an SSL certificate can be generated and activated:
+Install certbot and configure your TLS certificate by using one of the following guides:
 
-        sudo certbot --apache -d hackersploit.org
+- [How to Use Certbot to Install SSL/TLS Certificates for NGINX on Ubuntu 20.04](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/)
+- [How to Use Certbot to Install SSL/TLS Certificates for Apache on Ubuntu 20.04](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/)
+
+You can also follow the [installation instructions](https://certbot.eff.org/instructions) on certbot's website. This should prompt you to select your web server software as well as the operating system of your server and will output the specific instructions that should work for you.
+
+If you prefer to use a Certificate Authority other then Let's Encrypt, see the [Obtain a Commercially Signed TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) guide for further instructions.
+
+### Configuring the Web Server
+
+Next, you'll want to verify that your web server is properly configured to handle HTTPS connections using your TLS certificate. If you just created your certificate through certbot, certbot likely automatically configured your web server. Otherwise, you'll need to configure your web server manually. Since these instructions are highly dependent on the software you are using, select from one of the following guides that corresponds with your web server:
+
+- **Nginx**
+  - **Nginx documentation:** [Configuring HTTPS servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
+  - **Linode guide:** [Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
+- **Apache**
+  - **Apache documentation:** [SSL/TLS Strong Encryption: How-To
+](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
+  - **Linode guide:** [SSL Certificates with Apache on Debian & Ubuntu](/docs/guides/ssl-apache2-debian-ubuntu/)
+
 
 ## Enforcing a Strong Password Policy
 
@@ -73,15 +89,13 @@ Most WordPress installers prompt you to specify your administrator account usern
 
 An additional layer of security that can be added to the default WordPress username and password authentication system is the use of two-factor authentication (2FA). 2FA adds an additional step to authentication. The first step involves entering your username and password and the next step entails entering an authentication code generated by your authenticator application.
 
-To set up 2FA, you need to install a 2FA plugin for WordPress. There are plenty of options that exist; this example uses the plugin [2FAS Light - Google Authenticator](https://wordpress.org/plugins/2fas-light/).
+To set up 2FA, you need to install a 2FA plugin for WordPress. There are plenty of options that exist; this example uses the plugin [Two-Factor](https://wordpress.org/plugins/two-factor/).
 
 1.  Download and install the plugin into your WordPress installation. For detailed instructions, see [installing plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins).
 
 1.  After installing the plugin, all you need to do is scan the QR code with an authenticator app on your mobile device, a popular option is Google Authenticator.
 
-    ![2FAS Light Google Authenticator Instructions](secure-wordpress-2fas-light.png "2FAS Light Google Authenticator Instructions")
-
-    ![2FAS Light QR Code](secure-wordpress-2fas-light-qrcode.png "2FAS Light QR Code")
+    ![2FA QR Code](secure-wordpress-2FA-qrcode.png "2FA QR Code")
 
 1.  After scanning the QR code, you now have an additional layer of security when you login. Now you need to provide your authentication token in addition to your username and password combinations. This is extremely effective at preventing intruders from accessing your account if they have been able to obtain your username and password either through phishing or a password leak.
 
@@ -123,7 +137,7 @@ Wordfence automatically prevents attacks, provides you with the ability to scan 
 
 ## Disable PHP File Execution
 
-File execution in web applications is a potentially dangerous vulnerability that can give attackers direct access to your server and content. Attackers typically try uploading executable PHP files in the default WordPress upload directory that is typically located in in `/var/www/wordpress/wp-content/uploads/`.
+File execution in web applications is a potentially dangerous vulnerability that can give attackers direct access to your server and content. Attackers typically try uploading executable PHP files in the default WordPress upload directory that is typically located in `/var/www/wordpress/wp-content/uploads/`.
 
 You can disable file execution by typing in the following code and saving it in an `.htaccess` file in the `/var/www/wordpress/wp-content/uploads/` directory:
 
@@ -141,9 +155,9 @@ Directory browsing is a common security misconfiguration that, if left unfixed, 
 
 To disable directory browsing, create an `.htaccess` file in your site’s root directory.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If an `.htaccess` file already exists you do not need to create a new one, simply add the following line to the file.
-{{</ note >}}
+{{< /note >}}
 
 {{< file ".htaccess" >}}
 Options -Indexes

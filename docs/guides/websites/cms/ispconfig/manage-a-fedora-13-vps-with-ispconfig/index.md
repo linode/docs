@@ -1,10 +1,7 @@
 ---
 slug: manage-a-fedora-13-vps-with-ispconfig
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Installing and configuring the ISPConfig control panel to maintain your Linode.'
+description: 'This guide will show you how to configure the open-source control panel ISPConfig enabling you to setup and maintain your Linode on Fedora 13.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,13 +16,14 @@ relations:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
-Before beginning to follow this guide we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide assumes you are installing this on a clean system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.
 
@@ -42,7 +40,7 @@ Before you can install some components for ISPConfig, you will need to install s
 
 ## Install Postfix, Courier, MySQL, and Dependencies
 
-In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/email/postfix/courier-mysql-fedora-13), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
+In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/guides/email-with-postfix-courier-and-mysql-on-fedora-13/), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
 
 Issue the following command:
 
@@ -64,7 +62,7 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 ## Install Amavisd-new and SpamAssassin
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/##reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/##reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     yum install amavisd-new spamassassin unzip bzip2 perl-DBD-mysql
 
@@ -90,7 +88,7 @@ Vlogger is a tool that logs information regarding Apache. Webalizer can then be 
     mv vlogger-1.3/vlogger /usr/sbin/
     rm -rf vlogger*
 
-More information on Webalizer can be found in our [Webalizer documentation](/docs/uptime/analytics/webalizer-on-centos-5/).
+More information on Webalizer can be found in our [Webalizer documentation](/docs/guides/webalizer-on-centos-5/).
 
 ## Install fail2ban
 
@@ -98,7 +96,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
     yum install fail2ban
 
-More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/).
+More information regarding fail2ban can be found in our [fail2ban guide](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ## Installing ISPConfig
 

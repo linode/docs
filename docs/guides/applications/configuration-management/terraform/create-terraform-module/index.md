@@ -1,44 +1,53 @@
 ---
 slug: create-terraform-module
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Create a Terraform module that deploys a Linode instance from a StackScript.'
+description: 'This guide shows you how to create a Terraform module with nested root, linode_instance, and stackscripts modules using a Linode StackScripts installer.'
 keywords: ['terraform','resource','modules','provider']
+tags: ["terraform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
-modified: 2019-08-08
+modified: 2021-06-01
 modified_by:
   name: Linode
-image: CreateaTerraformModule.png
+image: create-a-terraform-module.png
 title: "Create a Terraform Module"
-contributor:
-  name: Linode
+title_meta: "How to Create a Terraform Module"
 external_resources:
 - '[Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 - '[Terraform - Creating Modules](https://www.terraform.io/docs/modules/create.html)'
 - '[Terraform - Module Sources](https://www.terraform.io/docs/modules/sources.html)'
 aliases: ['/applications/configuration-management/create-terraform-module/','/applications/configuration-management/terraform/create-terraform-module/']
+authors: ["Linode"]
 ---
-Terraform modules allow you to better organize your configuration code and make the code reusable. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The [Terraform Module Registry](https://registry.terraform.io/) hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community.
+
+Terraform is a popular orchestration tool by [HashiCorp](https://www.hashicorp.com/). It's used to build, maintain, and version infrastructure safely. Terraform modules allow you to better organize your configuration code and make the code reusable.
 
 In this guide you will create a *Linode StackScripts* module. This module will deploy a Linode instance from a StackScript you will create. This module will include nested modules that split up the required resources between the *root module*, a `linode_instance` module, and a `stackscripts` module.
+
+## Terraform Modules
+
+### What is a Terraform Module?
+
+Officially, a Terraform module contains multiple resources that are used with each other, but if you look at one, it's a directory with a set of Terraform configuration files contained within. Modules can create lightweight abstractions so your infrastructure can be described in terms of its architecture, as opposed to direct terms of physical objects. You can also host your Terraform modules on remote version control services, like Git, for others to use. The [Terraform Module Registry](https://registry.terraform.io/) hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community. Reading the ["Modules" section](https://www.terraform.io/docs/language/modules/develop/index.html) of the Terraform Language Documentation is suggested for more details.
+
+### How do I create a Terraform Module?
+
+This guide covers the creation of a Terraform module used to deploy a Linode instance. However, if you still have questions, HashiCorp has posted a [series of tutorials on Terraform modules](https://learn.hashicorp.com/collections/terraform/modules) on HashiCorp Learn, and [the "Build a Module" section](https://learn.hashicorp.com/tutorials/terraform/module-create?in=terraform/modules) is timed to take only about 15 minutes. We recommend taking that lesson to learn more.
 
 ## Before You Begin
 
 1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
-    {{</ note >}}
+    {{< /note >}}
 
-2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
+2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain a token.
 
 3. Complete the steps in the **Configure Git** section of the [Getting Started with Git](/docs/guides/how-to-configure-git/#configure-git) guide.
 
 4. Review [Deploy a WordPress Site using Terraform and StackScripts](/docs/guides/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/) to familiarize yourself with the Linode provider's StackScript resource.
 
-## Standard Module Structure
+## Standard Terraform Module Structure
 
 Terraform's standard module structure provides guidance on file and directory layouts for reusable modules. If you would like to make your module public to the Terraform community, the recommended layout allows Terraform to generate documentation and index modules for the [Terraform Module Registry](https://registry.terraform.io/).
 
@@ -54,11 +63,11 @@ Terraform's standard module structure provides guidance on file and directory la
 
 - If your modules will be hosted on Terraform's Module Registry, root modules and any nested modules should contain a `README.MD` file with a description that explains the module's intended use.
 
-- You can provide examples in a root module's subdirectory named `examples`.
+- You can provide examples in a subdirectory named `examples` of the root module directory.
 
 ## Create the Linode StackScripts Module
 
-The Linode Stackscripts module will included two nested modules that split up the required resources between the **root module**, a `linodes` module, and a `stackscripts` module. When you are done creating all required Terraform files your directory structure will look as follows:
+The Linode StackScripts module will include two nested modules that split up the required resources between the **root module**, a `linodes` module, and a `stackscripts` module. When you are done creating all required Terraform files your directory structure will look as follows:
 
 {{< output >}}
 linode_stackscripts/
@@ -69,19 +78,19 @@ linode_stackscripts/
 ├── terraform.tfvars
 ├── variables.tf
 └── modules/
-&emsp;&emsp;&emsp;&emsp;├── linodes/
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; ├── main.tf
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; ├── variables.tf
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; └── outputs.tf
-&emsp;&emsp;&emsp;&emsp;└── stackscripts/
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── main.tf
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── variables.tf
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; └── outputs.tf
+    ├── linodes/
+    |   ├── main.tf
+    │   ├── variables.tf
+    │   └── outputs.tf
+    └── stackscripts/
+        ├── main.tf
+        ├── variables.tf
+        └── outputs.tf
 {{</ output >}}
 
 {{< note >}}
 Your `linode_stackscripts` directory will likely contain other files related to the Terraform installation you completed prior to beginning the steps in this guide.
-{{</ note >}}
+{{< /note >}}
 
 ### Create the Linodes Module
 
@@ -97,7 +106,7 @@ You may need to edit your `~/.profile` directory to include the `~/linode_stacks
 
     echo 'export PATH="$PATH:$HOME/linode_stackscripts"' >> ~/.profile
     source ~/.profile
-    {{</ note >}}
+    {{< /note >}}
 
 1. Create the `modules` and `linodes` subdirectories:
 
@@ -151,8 +160,8 @@ resource "linode_sshkey" "main_key" {
 
       - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = chomp(file(local.key))` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
-        {{< note >}}
-If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the [Securing Your Server Guide](/docs/guides/securing-your-server/#create-an-authentication-key-pair).
+        {{< note respectIndent=false >}}
+If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the our guide [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair).
 {{< /note >}}
 
       {{< file >}}
@@ -179,7 +188,7 @@ resource "linode_instance" "linode_id" {
 
       - To use an existing Linode StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. Later on in the guide, you will create your own StackScript and expose its ID as an output variable in order to use its ID to deploy your Linode instance.
 
-      - StackScripts support user defined data. This means a StackScript can use the `UDF` tag to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
+      - StackScripts support user-defined data. This means a StackScript can use the `UDF` tag to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
 
 1. Create the `variables.tf` file to define your resource's required variables:
 
@@ -222,7 +231,7 @@ variable "root_pass" {
 }
 
 variable "stackscript_id" {
-  description = "Stackscript ID."
+  description = "StackScript ID."
 }
 
 variable "stackscript_data" {
@@ -254,7 +263,7 @@ Now that the `linodes` module is complete, in the next section, you will create 
 
 ### Create the StackScripts Module
 
-In this section you will create the StackScripts module. This module creates a `linode_stackscripts` resource which you can use to create and modify your own Linode StackScript.
+In this section, you will create the StackScripts module. This module creates a `linode_stackscripts` resource which you can use to create and modify your own Linode StackScript.
 
 1. Ensure you are in the `linode_stackscripts` directory and create the `stackscripts` subdirectory:
 
@@ -272,7 +281,7 @@ resource "linode_stackscript" "default" {
 }
 {{</ file >}}
 
-      The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars` file. For more information on StackScripts see the [Automate Deployments with StackScripts](/docs/guides/stackscripts/) guide and the [Linode APIv4](/docs/api/stackscripts) documentation.
+      The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars` file. For more information on StackScripts see the [StackScripts product page](/docs/products/tools/stackscripts/) and the [Linode APIv4 StackScripts reference](/docs/api/stackscripts).
 
 1. Create the `variables.tf` file to define your resource's required variables:
 
@@ -536,15 +545,15 @@ stackscript_data = {
 }
 {{</ file >}}
 
-    This file contains all sensitive data needed for your Linode deployment. Ensure you replace all values with your own secure passwords and your Linode account's APIv4 token. This file should never be tracked in version control software and should be listed in your `.gitignore` file if using [GitHub](https://github.com/).
+    This file contains all the sensitive data needed for your Linode deployment. Ensure you replace all values with your own secure passwords and your Linode account's APIv4 token. This file should never be tracked in version control software and should be listed in your `.gitignore` file if using [GitHub](https://github.com/).
 
-    {{< note >}}
-In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason the `stackscript_data` map and its values are defined in a single variable definitions file.
-    {{</ note >}}
+    {{< note respectIndent=false >}}
+In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason, the `stackscript_data` map and its values are defined in a single variable definitions file.
+    {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   There are several other options available for secrets management with Terraform. For more information on this subject, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform).
-    {{</ note >}}
+    {{< /note >}}
 
 You are now ready to apply your `linode_stackscripts` module's Terraform configuration. These steps will be completed in the next section.
 
@@ -562,13 +571,13 @@ Whenever a new provider is used in a Terraform configuration, it must first be i
 
         terraform plan -var-file="secrets.tfvars" -var-file="terraform.tfvars"
 
-    Terraform plan won’t take any action or make any changes on your Linode account. Instead, an analysis is done to determine which actions (i.e. Linode instance creations, deletions, or modifications) are required to achieve the state described in your configuration.
+    Terraform plan won’t take any action or make any changes to your Linode account. Instead, an analysis is done to determine which actions (i.e. Linode instance creations, deletions, or modifications) are required to achieve the state described in your configuration.
 
 1. You are now ready to create the infrastructure defined in your root module's `main.tf` configuration file:
 
         terraform apply -var-file="secrets.tfvars" -var-file="terraform.tfvars"
 
-    Since you are using multiple variable value files, you must call each file individually using the `var-file` argument. You will be prompted to confirm the `apply` action. Type *yes* and hit **enter**. Terraform will begin to create the resources you’ve defined throughout this guide. This process will take a couple of minutes to complete. Once the infrastructure has been successfully built you will see a similar output:
+    Since you are using multiple variable value files, you must call each file individually using the `var-file` argument. You will be prompted to confirm the `apply` action. Enter *yes*. Terraform will begin to create the resources you’ve defined throughout this guide. This process will take a couple of minutes to complete. Once the infrastructure has been successfully built you will see a similar output:
 
     {{< output >}}
   Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
@@ -603,9 +612,9 @@ terraform/
 terraform.tfstate
 {{</ file >}}
 
-    {{< note >}}
-If there are any files related to the Terraform installation steps completed before beginning this guide (i.e zip files and checksum files), you can remove these files from the `linode_stackscripts` directory, since you should not track them in version control and they are no longer necessary.
-{{</ note >}}
+    {{< note respectIndent=false >}}
+If there are any files related to the Terraform installation steps completed before beginning this guide (such as the zip files and checksum files), you can remove these files from the `linode_stackscripts` directory, since you should not track them in version control and they are no longer necessary.
+{{< /note >}}
 
 1. Initialize the git repository:
 
@@ -631,7 +640,7 @@ If there are any files related to the Terraform installation steps completed bef
 
         git push -u origin master
 
-Your Terraform module is now tracked via GitHub and can be used, shared and modified by anyone who has access to your GitHub account.
+Your Terraform module is now tracked via GitHub and can be used, shared, and modified by anyone who has access to your GitHub account.
 
 ### Invoking Your GitHub-Hosted Module
 

@@ -1,8 +1,5 @@
 ---
 slug: beginners-guide-chef
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'A look into Chef''s primary components, features, and configurations for the new Chef user'
 keywords: ["chef", "automation", "chefdk", "chef server", "chef development kit", "cookbooks", "beginners", "server automation", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,10 +11,12 @@ published: 2015-06-10
 title: A Beginner's Guide to Chef
 external_resources:
  - '[Chef](http://www.chef.io)'
- - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/)'
- - '[Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/)'
+ - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/)'
+ - '[Creating Your First Chef Cookbook](/docs/guides/creating-your-first-chef-cookbook/)'
 tags: ["automation"]
+authors: ["Elle Krout"]
 ---
+
 
 *Chef* is a declarative configuration management and automation platform used to translate infrastructure into code. This enables a development and deployment process with better testing, efficient and predictable deployments, centralized versioning, and reproducible environments across all servers.
 
@@ -25,21 +24,21 @@ tags: ["automation"]
 
 Chef works with three core components:
 
-- **A Chef server:** As the center of operations, the Chef server stores, manages, and provides configuration data to all other Chef components.
-- **Chef Workstations:** Workstations are personal computers or virtual servers where Chef's configuration code is created, tested, and changed. There can be as many workstations as needed, whether this is one per person or otherwise.
-- **Chef Nodes:** Nodes are the servers Chef pushes changes to, generally a fleet of multiple machines that require the benefits of automation. Chef can manage nodes that are virtual servers, containers, network devices, and storage devices. A Chef client is installed on every node that is under management by Chef.
+- **A Chef server:** As the center of operations, the Chef server stores, manages and provides configuration data to all other Chef components.
+- **Chef Workstations:** Workstations are personal computers or virtual servers where the configuration code for Chef is created, tested, and changed. There can be as many workstations as needed, whether this is one per person or otherwise.
+- **Chef Nodes:** Nodes are the servers Chef pushes changes to, generally a fleet of multiple machines that require the benefits of automation. Chef can manage nodes that are virtual servers, containers, network devices, and storage devices. A Chef client is installed on every node that is managed by Chef.
 
-[![Chef Workflow](chef_graph-small.png)](chef_graph.png)
+![Chef Workflow](chef_graph.png)
 
-These three components allow Chef to communicate in a mostly linear fashion, with any changes pushed from workstations to the Chef server, and then pulled from the server to the nodes and implemented on each node via their Chef client. In turn, information about the node passes to the server to determine which files are different from the current settings and need to be updated.
+These three components allow Chef to communicate in a mostly linear fashion, with any changes pushed from workstations to the Chef server, and then pulled from the server to the nodes and implemented on each node through the Chef client. In turn, information about the node passes to the server to determine which files are different from the current settings and need to be updated.
 
-After reading this guide, if you wish to further explore implementing Chef, see [Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/) and [Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/).
+After reading this guide, if you wish to further explore implementing Chef, see [Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/) and [Creating Your First Chef Cookbook](/docs/guides/creating-your-first-chef-cookbook/).
 
 ## The Chef Server
 
 The Chef server provides a communication pathway between the workstations where the infrastructure coding takes place, and the nodes that are configured by those workstations. All configuration files, cookbooks, metadata, and other information are created on workstations and stored on the Chef server. The Chef server also keeps a record of the state of all nodes at the time of the last [chef-client](#chef-client) run.
 
-A workstation communicates with the Chef server using [*Knife*](/docs/applications/configuration-management/beginners-guide-chef/#knife) and Chef command-line tools, while nodes communicate with the Chef server using the [Chef client](/docs/applications/configuration-management/beginners-guide-chef/#chef-client).
+A workstation communicates with the Chef server using [*Knife*](/docs/guides/beginners-guide-chef/#knife) and Chef command-line tools, while nodes communicate with the Chef server using the [Chef client](/docs/guides/beginners-guide-chef/#chef-client).
 
 Any changes made to your infrastructure code must pass through the Chef server to be applied to nodes. Prior to accepting or pushing changes, the Chef server authenticates all communication via its REST API using public key encryption.
 
@@ -70,7 +69,7 @@ You can generate a Chef repository using the following command: `chef generate r
 
 The Knife command-line tool is the primary way that a workstation communicates the contents of its `chef-repo` directory with a Chef server. It also provides an interface to manage nodes, cookbooks, roles, environments, and databags.
 
-- A Knife command executed from your workstation uses the following format:
+- A Knife command executed from the workstation uses the following format:
 
       knife subcommand [ARGUMENT] (options)
 
@@ -121,13 +120,13 @@ Nodes are kept up-to-date through chef-client, which runs a convergence between 
 
 ### chef-client
 
- On a node, chef-client checks the node's current configuration against the recipes and policies stored on the Chef server and brings the node up to date. The process begins with the chef-client checking the node's [run list](#run-lists), loading the required cookbooks, then checking and syncing the cookbooks with the current configuration of the node.
+On a node, chef-client checks the node's current configuration against the recipes and policies stored on the Chef server and brings the node up to date. The process begins with the chef-client checking the node's [run list](#run-lists), loading the required cookbooks, then checking and syncing the cookbooks with the current configuration of the node.
 
 The chef-client must be run with elevated privileges to configure the node correctly. It should run periodically to ensure that the server is always up to date (usually with a cron job or by setting up the chef-client to run as a service).
 
 ### Run Lists
 
-Run lists define which [recipes](/docs/applications/configuration-management/beginners-guide-chef/#recipes) a Chef node will use. The run list is an ordered list of all [*roles*](http://docs.chef.io/server_manage_roles.html) and recipes chef-client needs to pull from the Chef server. Roles define patterns and attributes across nodes.
+Run lists define which [recipes](/docs/guides/beginners-guide-chef/#recipes) a Chef node will use. The run list is an ordered list of all [*roles*](http://docs.chef.io/server_manage_roles.html) and recipes chef-client needs to pull from the Chef server. Roles define patterns and attributes across nodes.
 
 ### Ohai
 
@@ -231,7 +230,7 @@ In addition to automating deployments, Chef allows for continuous delivery utili
 
 ### What are the disadvantages to Chef?
 
- Chef users who aren't familiar with coding (specifically Ruby) may encounter a steep learning curve.
+Chef users who aren't familiar with coding (specifically Ruby) may encounter a steep learning curve.
 
 ### Where can I learn about Chef in-depth?
 

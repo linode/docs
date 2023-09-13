@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-12-04-precise
 deprecated: true
-author:
-  name: Jonathan Frederickson
-  email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on Ubuntu 12.04'
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
@@ -19,23 +16,24 @@ external_resources:
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
  - '[Nginx Home Page](http://nginx.org/)'
  - '[Nginx Documentation](http://nginx.org/en/docs/)'
- - '[Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[Nginx Configuration](/docs/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Jonathan Frederickson"]
 ---
 
 [Ruby on Rails](http://rubyonrails.org/) is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide describes the required process for deploying Ruby on Rails with [Phusion Passenger](https://www.phusionpassenger.com/) and the [Nginx](https://www.nginx.com/) web server on Debian 8.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and [set the Linode's hostname](/docs/getting-started#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check the hostname run:
 

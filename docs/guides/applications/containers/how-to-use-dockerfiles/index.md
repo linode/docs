@@ -1,231 +1,158 @@
 ---
 slug: how-to-use-dockerfiles
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
-description: 'This guide introduces Dockerfiles and how to use them to build a Docker Image on your Linode.'
-keywords: ["docker", "container", "dockerfile"]
+description: 'A guide that introduces how to use a Dockerfile and provides examples on how to use it to build and run a Docker image on your Linode.'
+keywords: ["docker", "container", "dockerfile","dockerfiles","docker image","docker images"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-09
+modified: 2021-06-17
 modified_by:
   name: Linode
 published: 2017-08-11
-title: 'How to Use Dockerfiles'
-h1_title: 'How to Use Dockerfiles'
+title: 'How to Use a Dockerfile to Build a Docker Image.'
+title_meta: 'How to Use a Dockerfile to Build a Docker Image'
 external_resources:
- - '[Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
+ - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
+ - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
  - '[Docker Docs](http://docs.docker.com/)'
- - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
- - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/how-to-use-dockerfiles/']
+authors: ["Linode"]
 ---
+![How to Use a Dockerfile](how-to-use-dockerfile.png "How to Use a Dockerfile")
 
-![How to Use Dockerfiles](how-to-use-dockerfiles.png "How to Use Dockerfiles")
+A Dockerfile is a text file of instructions which are used to automate installation and configuration of a [Docker image](/docs/guides/introduction-to-docker/#docker-images). Dockerfiles make it easy to deploy multiple Docker containers without having to maintain the same image across multiple virtual machines. Instructions are executed in the order they appear in the Dockerfile, which makes using and updating them clear and intuitive. This article covers the basics, with an example, of how a Dockerfile works.
 
-[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same image across multiple virtual machines. You can use a Dockerfile to automate installation and configuration of an image and its dependencies.
+## Before You Begin
 
-## Dockerfile Basics
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
-### How Do Dockerfiles Work?
+2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
-Dockerfiles are scripts that carry out different commands and actions to create a Docker build image. Dockerfiles automate the image creation process and simplifies your deployment pipeline. A Docker container is created from a Docker image. A [Docker registry](https://docs.docker.com/registry/) is where your public or private Docker images are stored.
+3.  This guide assumes you are comfortable with using the Docker command-line interface (CLI). To learn more about the Docker CLI, check out their [documentation](https://docs.docker.com/engine/reference/commandline/cli/).
 
-Once a Dockerfile is created, the administrator uses the `docker build` command to create an image based on the commands within the file. The commands and information within the `dockerfile` can be configured to use specific software versions and dependencies to ensure consistent and stable deployments.
+## How Does a Dockerfile Work?
+
+A Dockerfile is a script that carries out different commands and actions to build a Docker image, which can then be used to deploy a Docker container. The commands and information within the Dockerfile can be configured to use specific software versions and dependencies for stable deployments. You can also use a [Docker registry](https://docs.docker.com/registry/) to store and access your public (or private) Docker images.
+
+Once a Dockerfile is written, you can use the `docker build` command to generate a Docker image based on the Dockerfile's instructions. Then, you can deploy a container based on the image with commands like `docker run` or `docker create`.
+
+Here are common instructions that you can use in your Dockerfiles to build images:
+
+**Basic Definitions**
+
+- **FROM**: Define the base image, such as `ubuntu` or `debian`, used to start the build process. Required for each Dockerfile.
+- **MAINTAINER**: Define the full name and email address of the image creator.
+
+**Variables**
+
+- **ENV**: Set environment variables that persist when the container is deployed.
+- **ARG**: Set a passable build-time variable. Can be used as an alternative to `ENV` to create a variable that does not persist when the container is deployed from the image.
+
+**Command Execution**
+
+- **RUN**: Execute commands, such as package installation commands, on a new image layer.
+- **CMD**: Execute a specific command within the container that is deployed with the image, or set default parameters for an `ENTRYPOINT` instruction. Only one is used per Dockerfile.
+- **ENTRYPOINT**: Set a default application to be used every time a container is deployed with the image. Only one is used per Dockerfile.
+- **USER**: Set the UID (the username) to run commands in the container.
+- **WORKDIR**: Set the container path where subsequent Dockerfile commands are executed.
 
 {{< note >}}
-Do not store the Dockerfile in your root directory.
-
-Create a separate directory for the Dockerfile and place all necessary files within the same directory as the Dockerfile.
+`RUN`, `CMD`, and `ENTRYPOINT` can each be run in *shell* form, which takes normal arguments, or *exec* form, which takes arguments as a JSON array. Because *exec* form does not invoke a command shell, it is generally preferred and utilized in this guide.
 {{< /note >}}
 
-A Dockerfile uses the following commands for building the images:
+**Data Management**
 
-*  **ADD**: Copy files from a source on the host to the container's own filesystem at the set destination.
-*  **CMD**: Execute a specific command within the container.
-*  **ENTRYPOINT**: Set a default application to be used every time a container is created with the image.
-*  **ENV**: Set environment variables.
-*  **EXPOSE**: Expose a specific port to enable networking between the container and the outside world.
-*  **FROM**: Define the base image used to start the build process.
-*  **MAINTAINER**: Define the full name and email address of the image creator.
-*  **RUN**: Central executing directive for Dockerfiles.
-*  **USER**: Set the UID (the username) that will run the container.
-*  **VOLUME**: Enable access from the container to a directory on the host machine.
-*  **WORKDIR**: Set the path where the command, defined with CMD, is to be executed.
+- **ADD**: Copy files from a source to the image's filesystem at the set destination with automatic tarball and remote URL handling.
+- **COPY**: Similar to `ADD` but without automatic tarball and remote URL handling.
+- **VOLUME**: Enable access from a specified mount point in the container to a directory on the host machine.
 
-Not every command must be used. You will create a working Dockerfile example in the following section.
+**Networking**
 
-### How Do You Write Dockerfiles?
+- **EXPOSE**: Expose a specific port to enable networking between the container and the outside world.
 
-To create a Dockerfile, create an empty Dockerfile in your desired directory using the `touch` command:
+Next, we will create an example Dockerfile that utilizes some of these commands.
 
-    touch Dockerfile
+## Creating a Dockerfile
 
-You now have an empty Dockerfile in your directory. You can add commands to this fill to create your build image, however, it must include the following [Docker build steps](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/):
+To create the Dockerfile:
 
-1. FROM
-2. MAINTAINER
-3. RUN
-4. CMD
-
-Review the example Dockerfile included below to see the Docker build steps in action. The Dockerfile runs Ubuntu and installs MongoDB to a Docker container.
-
-{{< file "~/example-docker-build-directory/Dockerfile">}}
-# Install a more up to date MongoDB if the current version isn’t the latest one on Ubuntu servers
-
-FROM ubuntu
-
-MAINTAINER Jeff Attwood
-
-RUN apt-key adv --keyserver keyserver.ubuntu.com80 --recv 7F0CEB10
-
-RUN apt-get update
-
-RUN apt-get -y install apt-utils
-
-RUN apt-get -y install mongodb-10gen
-
-CMD [“usr/bin/mongod”, “--config”, “etc/mongodb.conf”]
-{{</ file >}}
-
-
-### Where Should You Store Your Dockerfile?
-
-Dockerfiles should be stored at the root of your project. For example, if you use your Dockerfile to create a container for a Geolocation app, and you develop your app locally in your home directory, your Dockerfile's location may be stored in `~/geolocation-app/Dockerfile`. When building your Docker image, you can specify where Docker should look for your Dockerfile using the `-f` option, for example:
-
-    docker build -f ~/geolocation-app/Dockerfile
-
-Replace `~/geolocation-app/Dockerfile` with the path to your own project's Dockerfile before running the command.
-
-## Get Started Creating a Dockerfile
-
-### Create Your Dockerfile
-
-Dockerfiles require a specific setup and format with no extra spaces. Docker reuses cache from the Dockerfile's previous step. This may result in commands not running properly or not running at all. To avoid this caching issue, combine `apt` commands into a single `RUN` statement. To avoid other caching issues, combine multiple `RUN` statements for commands like `apt-get update/upgrade/install`.
-
-Note that in the example below, multiple packages are installed on separate lines. This optional step is recommended by the [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments) in order to ease future updates and maintenance.
-
-1.  Create and change to a new directory and create a `Dockerfile` file:
+1.  At the command prompt (either via SSH or Lish in the Linode Manager), create and change to a new directory:
 
         mkdir ~/mydockerbuild && cd ~/mydockerbuild
-        touch Dockerfile
 
-2.  Open `Dockerfile` using a text editor and enter the following example to create a Dockerfile that installs `build-essential`, `curl`, and `make` onto a Ubuntu image:
+    {{< note respectIndent=false >}}
+This places the Docker build directory in your home directory. As a matter of good practice, do not store the Dockerfile in your home directory itself or the server's root directory. Instead, create a separate directory and place all necessary files within it (alongside the Dockerfile) as shown in this guide.
+{{< /note >}}
 
-    {{< file "Dockerfile" docker >}}
-FROM ubuntu
-MAINTAINER NAME EMAIL
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    gcc \
-    curl \
-    make
+2.  Create an example Dockerfile:
 
+        touch example_dockerfile
+
+3.  Open the Dockerfile using the text editor of your choice (for this example, we use nano):
+
+        nano example_dockerfile
+
+4.  Copy the following example into your Dockerfile. This creates a Dockerfile that generates a Debian image, sets the maintainer information, and simply returns "Hello, Sunshine!" when run:
+
+    {{< file "example_dockerfile" docker >}}
+FROM debian
+MAINTAINER Jane Doe jdoe@example.com
+CMD ["echo", "Hello, Sunshine!"]
 {{< /file >}}
 
+5.  Save the Dockerfile.
 
-        In this example:
+6.  Enter `cat example_dockerfile` and ensure the text from above is included.
 
-        *  **NAME**: Full name of the creator.
-        *  **EMAIL**: Email address of the creator.
+## Building a Docker Image from a Dockerfile
 
-3.  Save and close `Dockerfile`.
+Build the image from the Dockerfile using the `docker build` command:
 
-### Build a Docker Image from the Dockerfile
+    docker build ~/mydockerbuild -f example_dockerfile -t example_image
 
-Build the `Dockerfile` using the `docker build` command within the same directory. Substitute `NAME` in the following example with the name of the image to be created:
+Labelling your image with `example_image` makes it easier to deploy a container in the next step.
 
-    docker build --tag=“Build-Essential:Dockerfile” /path/to/file .
+The output should look something like this:
 
-To build three images using the same Dockerfile, give each image a new name. In this example, `webdev1`, `webdev2`, `webdev3`:
+{{< output >}}
+Sending build context to Docker daemon  4.096kB
+Step 1/3 : FROM debian
+ ---> 4a7a1f401734
+Step 2/3 : MAINTAINER Jane Doe jdoe@example.com
+ ---> Running in fdd81bd8b5c6
+Removing intermediate container fdd81bd8b5c6
+ ---> 1253842068a3
+Step 3/3 : CMD ["echo", "Hello, Sunshine!"]
+ ---> Running in d33e1bacf1af
+Removing intermediate container d33e1bacf1af
+ ---> a5d95e138b97
+Successfully built a5d95e138b97
+Successfully tagged example_image:latest
+{{< /output >}}
 
-    docker build -t “webdev1:Dockerfile” .
-    docker build -t “webdev2:Dockerfile” .
-    docker build -t “webdev3:Dockerfile” .
+As you can see, the instructions from `example_dockerfile` are executed in order. The image labelled `example_image` is now ready for running to deploy a container.
 
-Each image created will be tagged `Dockerfile`. To change the tag during build, change `Dockerfile`:
+## Running Your Docker Image to Deploy a Container
 
-    docker build -t “debian-webdev3:dev” .
+Running the image you just built to deploy a Docker container is now as easy as entering the following:
 
-## Running your Docker Images
-### Run Your Docker Image as a Container
+    docker run example_image
 
-Continuing from the Docker images you created in the previous section, in this section you deploy a container using the `webdev1` Docker image.
+A new container based on `example_image` is deployed, and the command specified in the `CMD` instruction is then executed from the container with the following output:
 
-The Docker `run` command is used to run a Docker image as a container. This command takes the following format:
-
-        docker run [OPTIONS] my-image-name [COMMAND] [ARG…]
-
-The `run` command has [many available options](https://docs.docker.com/engine/reference/commandline/run/) to configure your container's runtime resources.
-
-For example, to run the `webdev1` Docker image in a container, execute the following command:
-
-    docker run webdev1
+{{< output >}}
+Hello, Sunshine!
+{{< /output >}}
 
 {{< note >}}
 If the `docker run` command is executed and the Docker image is not available in your current working directory, it is pulled from the Docker registry instead.
-{{</ note >}}
+{{< /note >}}
 
-### Run Your Docker Image as a Container in Detached Mode
+## Further Reading
 
-When you execute the `docker run my-image-name` command, you launch a Docker container that is tied to your terminal session. This is also referred to as running a process in the *foreground*. When your root process is in the foreground and is tied to a terminal session, your container exits as soon as you close the terminal session. If you want your container to run even after your terminal session is closed, you can run your container in *detached* mode. This runs your container in the *background*.
+Congratulations! You've built your first Dockerfile and run your first Docker image.
 
-To run a Docker image as a container in detached mode, use the `-d` argument. You can run the `webdev1` image as a container in the background by executing the following command:
+For more examples and information on using Dockerfiles with Docker images and containers, see:
 
-    docker container run -d webdev1
+-   our guide on [How to Use Docker Images, Containers, and Dockerfiles in Depth](/docs/guides/docker-images-containers-and-dockerfiles-in-depth);
 
-Once you run this command, the root process keeps running in the background even when the terminal session is closed. To view all containers running in the background execute the following command:
-
-    docker ps
-
-The output of this command displays the `webdev1` container running in the background:
-
-{{< output >}}
-CONTAINER ID   IMAGE    COMMAND  CREATED        STATUS       PORTS          NAMES
-
-3a4sak1aday2   webdev1  "bash"   6 minutes ago  Up 29 minutes 2222->3000/tcp webdev1
-{{</ output>}}
-
-To remove the container you just started, use the following command:
-
-    docker rm webdev1
-
-To confirm that your container has been removed, run the following command:
-
-    docker ps -all
-
-You should see an output similar to the example below, which does not display any running containers:
-
-{{< output >}}
-CONTAINER ID   IMAGE    COMMAND  CREATED        STATUS       PORTS          NAMES
-{{</ output>}}
-
-### Configure your Docker Container's Ports
-
-You can use the `run` command's options to configure different aspects of your container. When your container runs on a remote host and serves its running application, you should configure its ports in order to expose the app to users.
-
-For example, you can configure your `webdev1` container to use host port `20` and container port `22` as displayed in the example command. Notice the `-d` option used in the command to run the container as a detached process.
-
-    docker run --name webdev1 -p 20:22 -d webdev1
-
-The general syntax for this command is the following:
-
-    docker run -–name <container name> -p <network port> <container port> <container image name>
-
-Each parameter is described in the following list:
-
-- `<container name>`: Name of the Docker container
-- `<host port>`: Host port that is mapped to the container's open port
-- `<container port>`: Port where Docker container listens
-- `<container image name>`: Docker image name used for your deployment
-
-To stop and delete your container, run the following command:
-
-    docker rm webdev1
-
-## Just the basics
-
-This guide covered the basics of using Dockerfiles to build images. For more information on Dockerfiles, visit the official [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) documentation.
+-   Docker's [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).

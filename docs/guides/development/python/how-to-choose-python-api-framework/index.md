@@ -1,28 +1,23 @@
 ---
 slug: how-to-choose-python-api-framework
-author:
-  name: Chelsea Troy
-  email: heychelseattoy@gmail.com
-description: 'To choose a Python framework to build an API it is important to understand each framework''s strengths and differences. You may need a minimal framework, like FastAPI, or you may need a full stack framework, like Django. This guide examines Django, Flask, FastAPI, and Bottle to help you choose a framework to write your web API.'
-og_description: 'To choose a Python framework to build an API it is important to understand each framework''s strengths and differences. You may need a minimal framework, like FastAPI, or you may need a full stack framework, like Django. This guide examines Django, Flask, FastAPI, and Bottle to help you choose a framework to write your web API.'
+description: "When choosing a Python framework to build an API , it's important to understand each framework's strengths. We'll help you decide."
 keywords: ['python api framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10
+image: ChoosePythonAPI_fw.png
 modified_by:
   name: Linode
-title: "How to Choose a Python API Framework"
-h1_title: "An Overview of Python API Frameworks"
+title: "An Overview of Python API Frameworks"
+title_meta: "How to Choose a Python API Framework"
 tags: ["python", "django"]
-contributor:
-  name: Chelsea Troy
-  link: twitter.com/HeyChelseaTroy
+authors: ["Chelsea Troy"]
 ---
 
 As one of the most popular programming languages, the Python ecosystem offers a variety of frameworks to help you build a web API. You may need to build an API to serve data to a mobile application, a frontend website, or a machine learning project. Your project may only require routing functionality provided by a framework, or it may require an admin interface and a templating system, as well. Which framework you choose depends on your specific use case. To help you choose a Python framework, this guide provides an overview on some well-known Python frameworks used to build APIs and discusses their differences and strengths.
 
 ## Django-REST
 
-Django is a full-featured web development framework that includes out-of-the-box solutions for user management, security, and database connections. To build a web API, you can use the [Django REST framework](https://www.django-rest-framework.org/tutorial/quickstart/) that is built on top of standard Django. If you ever wrote an API using [Ruby on Rails](https://www.linode.com/docs/guides/development/ror/), [Spring with Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/), or Java, then Django will feel familiar.
+Django is a full-featured web development framework that includes out-of-the-box solutions for user management, security, and database connections. To build a web API, you can use the [Django REST framework](https://www.django-rest-framework.org/tutorial/quickstart/) that is built on top of standard Django. If you ever wrote an API using [Ruby on Rails](/docs/guides/development/ror/), [Spring with Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/), or Java, then Django will feel familiar.
 
 ### When to Choose Django-REST to Build Your API
 
@@ -149,4 +144,4 @@ Since Bottle is fairly new, the framework has little organic documentation. Its 
 
 If you'd like to learn how to write an API using the FastAPI framework, take a look at the following guide:
 
-- [CRUD READ operations in Python Using FastAPI: View, List](/docs/guides/development/python/crud-read-operations-use-fastapi-to-write-an-api)
+- [CRUD READ operations in Python Using FastAPI: View, List](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/)

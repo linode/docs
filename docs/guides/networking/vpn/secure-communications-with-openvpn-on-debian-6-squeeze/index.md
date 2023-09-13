@@ -1,8 +1,5 @@
 ---
 slug: secure-communications-with-openvpn-on-debian-6-squeeze
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on a Debian 6 (Squeeze) Linode.'
 keywords: ["openvpn debian 6", "openvpn debian", "debian vpn"]
 tags: ["networking","security","vpn","debian"]
@@ -19,13 +16,14 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely, but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 
 For many private networking tasks, we urge users to consider the many capabilities of the OpenSSH package, which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
 
-Before installing OpenVPN, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/security/securing-your-server/) article as well.
+Before installing OpenVPN, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/) article as well.
 
 ## Install OpenVPN
 
@@ -108,7 +106,7 @@ In order to authenticate to the VPN, you'll need to copy a number of certificate
 -   `client1.crt`
 -   `client1.key`
 
-You can use the `scp` tool, or any [other means of transferring](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server). Be advised, these keys should transferred with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network. We recommend that you encrypt the keys for transfer, either by using a protocol like SSH, or by encrypting them with the GPG tool.
+You can use the `scp` tool, or any [other means of transferring](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server). Be advised, these keys should transferred with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network. We recommend that you encrypt the keys for transfer, either by using a protocol like SSH, or by encrypting them with the GPG tool.
 
 The keys and certificates for the server need to be relocated to the `/etc/openvpn` directory so the OpenVPN server process can access them. These files are:
 

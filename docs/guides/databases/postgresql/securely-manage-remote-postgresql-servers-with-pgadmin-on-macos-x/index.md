@@ -1,21 +1,20 @@
 ---
 slug: securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use the Open-source PgAdmin Program to Securely Manage Remote PostgreSQL Databases from a Mac OS X Workstation.'
+description: "Use the Open-source PgAdmin Program to Securely Manage Remote PostgreSQL Databases from a Mac OS X Workstation."
 keywords: ["pgadmin", "mac os x", "postgresql gui", "manage postgresql databases", "ssh tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-11-29
 modified_by:
   name: Linode
 published: 2010-04-30
-title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X
+title: "Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X"
+title_meta: "Connect to Remote PostgreSQL Servers with pgAdmin on Mac"
 aliases: ['/databases/postgresql/pgadmin-macos-x/','/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
+authors: ["Linode"]
 ---
 
 ![Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](Securely_Manage_Remote_PostgreSQL_Servers_with_pgAdmin_on_Mac_OS_X_smg.jpg)
@@ -68,7 +67,7 @@ port = 5432
 
     ![Supply a local name for your server.](pg-admin-server-name.png)
 
-4.   In the "Connections" tab enter "localhost" for the "Host name/address" field, as you'll be connecting via your SSH tunnel, and set the port to 5433. In the username and password fields, enter the credentials you specified when setting up PostgreSQL.
+4.  In the "Connections" tab enter "localhost" for the "Host name/address" field, as you'll be connecting via your SSH tunnel, and set the port to 5433. In the username and password fields, enter the credentials you specified when setting up PostgreSQL.
 
     For greater security, uncheck the "Save password" box. Click "Save" to connect to your server.
 

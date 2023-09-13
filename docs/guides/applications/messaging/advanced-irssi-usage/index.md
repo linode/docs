@@ -1,10 +1,6 @@
 ---
 slug: advanced-irssi-usage
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Irssi is a popular IRC client featuring a flexible plugin architecture and embedded Perl interpeter. This guide shows how to use these tools to customize your Irssi experience.'
-og_description: 'Irssi is a popular IRC client featuring a flexible plugin architecture and embedded Perl interpeter. This guide shows how to use these tools to customize your Irssi experience.'
+description: "Irssi is a popular IRC client featuring a flexible plugin architecture and embedded Perl interpeter. Here's how to use it."
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 tags: ["perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +9,7 @@ modified: 2018-04-10
 modified_by:
   name: Linode
 published: 2010-03-29
-title: Advanced Irssi Usage
+title: "Advanced Irssi Usage for IRC"
 external_resources:
  - '[Irssi Script Repository](http://scripts.irssi.org/)'
  - '[Irssi Themes Page](http://irssi.org/themes/)'
@@ -21,11 +17,12 @@ external_resources:
  - '[The Open and Free Technology Community](https://www.oftc.net/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
+authors: ["Linode"]
 ---
 
 Irssi is a popular IRC client with a flexible plugin architecture and an embedded Perl interpreter. It can be customized to greatly improve the off-the-shelf experience. This guide will demonstrate some of the most useful features, plugins, and customizations to help you get the most out of Irssi.
 
-This guide assumes that you are familiar with basic Irssi commands and usage. To review these commands, or for instructions on installing Irssi on your system, see our [Using Irssi for Internet Chat](/docs/applications/messaging/using-irssi-for-internet-relay-chat/) guide.
+This guide assumes that you are familiar with basic Irssi commands and usage. To review these commands, or for instructions on installing Irssi on your system, see our [Using Irssi for Internet Chat](/docs/guides/using-irssi-for-internet-relay-chat/) guide.
 
 ## Key Bindings and Aliases
 

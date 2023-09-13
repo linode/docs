@@ -1,9 +1,6 @@
 ---
 slug: how-to-upgrade-to-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to upgrade from Debian 5 (Lenny) to Debian 6 (Squeeze).'
 keywords: ["debian upgrade", "upgrade distro", "squeeze upgrade", "squeeze"]
 tags: ["security","debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 
@@ -56,7 +54,7 @@ Issue the following command to update your package lists:
 
     apt-get update
 
-When running system upgrades, you may want to start a [screen](/docs/linux-tools/utilities/screen) session. This will ensure that your system updates continue to run in the event that you are disconnected from the server. Issue the following command to install `screen`:
+When running system upgrades, you may want to start a [screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session. This will ensure that your system updates continue to run in the event that you are disconnected from the server. Issue the following command to install `screen`:
 
     apt-get install screen
 
@@ -84,7 +82,7 @@ During the upgrade process, you will be asked if you want to use `dash` instead 
 
 You will also be advised that services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) need to be restarted. In most cases the default list of services to be restarted will be fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 ## System Errors
 

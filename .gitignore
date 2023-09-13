@@ -40,9 +40,9 @@ public/
 resources/_gen/assets
 yarn.lock
 search_index/
-resources/_gen/assets
+resources/_gen/images
 hugo_stats.json
-
+.hugo_build.lock
 redirects.conf
-
-_vendor/github.com/linode/linode-docs-theme/content/typografy-test.md
+scripts/duplicates.csv
+algolia_out/

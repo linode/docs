@@ -1,18 +1,52 @@
-<div class="pt-10" x-data="lnh.OnIntersection()" x-init="() => init();">
-  <template x-if="window.trustecm.functional && (visible || (window.location.hash.startsWith('#comment-')))">
-    <div>
-      <div x-data="lnc.NewDisqusController('{{ .Site.DisqusShortname }}', lnPageInfo)" x-init="() => init()">
-        <div id="disqus_thread"></div>
-        <noscript>
-          Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-        <a href="http://disqus.com" class="dsq-brlink">
-          comments powered by
-          <span class="logo-disqus">
-            Disqus
-          </span>
-        </a>
+<div x-data="{ visible: false }">
+  <div
+    class="flex justify-between bg-gray-300 pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-6 mt-8">
+    <div class="font-regular tracking-normal">
+      <header class="font-semibold text-lg mb-4">Join the conversation.</header>
+      <div x-show="$store.nav.trustecm.functional">
+        Read other comments or post your own below. Comments must be respectful,
+        constructive, and relevant to the topic of the guide. Do not post
+        external links or advertisements. Before posting, consider if your
+        comment would be better addressed by contacting our
+        <a href="https://www.linode.com/support/">Support team</a> or asking on
+        our
+        <a href="https://www.linode.com/community/questions/">Community Site</a
+        >.
+      </div>
+      <div x-show="!$store.nav.trustecm.functional && truste.eu">
+        The Disqus commenting system for Linode Docs requires the acceptance of
+        Functional Cookies, which allow us to analyze site usage so we can
+        measure and improve performance. To view and create comments for this
+        article, please
+        <a href="#" @click="truste.eu && truste.eu.clickListener()"
+          >update your Cookie Preferences</a
+        >
+        on this website and refresh this web page. Please note: You must have
+        JavaScript enabled in your browser.
       </div>
     </div>
-  </template>
+  </div>
+
+  <div class="pt-10" x-intersect.once="visible = true">
+    <template
+      x-if="$store.nav.trustecm.functional && (visible || (window.location.hash.startsWith('#comment-')))">
+      <div>
+        <div
+          x-data="lncDisqus('{{ .Site.DisqusShortname }}', lnPageInfo)"
+          x-init="initDisqus()">
+          <div id="disqus_thread"></div>
+          <noscript>
+            Please enable JavaScript to view the
+            <a href="http://disqus.com/?ref_noscript"
+              >comments powered by Disqus.</a
+            >
+          </noscript>
+          <a href="http://disqus.com" class="dsq-brlink">
+            comments powered by
+            <span class="logo-disqus"> Disqus </span>
+          </a>
+        </div>
+      </div>
+    </template>
+  </div>
 </div>

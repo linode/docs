@@ -1,8 +1,5 @@
 ---
 slug: cakephp-on-debian-5-lenny
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Installing and configuring CakePHP for developing PHP applications on your Debian 5 (Lenny) Linode.'
 keywords: ["cakephp", "cakephp debian", "php framework", "debian", "develop php"]
 tags: ["web applications","lamp","php","debian"]
@@ -19,11 +16,12 @@ relations:
         key:  cake-php
         keywords:
             - distribution: Debian 5
+authors: ["Stan Schwertly"]
 ---
 
 CakePHP is a framework used to develop PHP applications quickly. Many people choose CakePHP because of the simple deployment process and extensive documentation available on the CakePHP website.
 
-Before installing CakePHP, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/web-servers/lamp/lamp-server-on-debian-5-lenny/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before installing CakePHP, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) as well as our [LAMP guide](/docs/guides/lamp-server-on-debian-5-lenny/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installation
 

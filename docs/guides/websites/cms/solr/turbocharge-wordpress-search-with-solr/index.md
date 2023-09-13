@@ -1,21 +1,16 @@
 ---
 slug: turbocharge-wordpress-search-with-solr
-author:
-    name: Karthik Shiraly
-    email: docs@linode.com
-description: 'Turbocharge your WordPress blog search using Solr search engine.'
+description: 'The built-in WordPress search doesn''t always provide the best search experience. This guide provides instructions for installing Solr, a better WP search engine.'
 keywords: ["wordpress", "search", "solr", "ubuntu", "debian"]
 tags: ["ubuntu","wordpress","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-contributor:
-    name: Karthik Shiraly
-    link: https://twitter.com/pathbreaksoft
 modified: 2015-04-03
 modified_by:
     name: James Stewart
 published: 2015-04-03
 title: 'Turbocharge Your WordPress Search Using Solr'
 aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/websites/cms/turbocharge-wordpress-search-with-solr/']
+authors: ["Karthik Shiraly"]
 ---
 
 
@@ -23,13 +18,13 @@ The standard search that is built into WordPress does not provide the best searc
 
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
--   WordPress must be already installed and configured. If you have not yet installed WordPress, follow the [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide.
+-   WordPress must be already installed and configured. If you have not yet installed WordPress, follow the [Manage Web Content with WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide.
 
 -   Much of this guide assumes that Solr is being installed on the same server as WordPress; however, Solr can be installed on a second server for security or scalability reasons. Alternate steps are provided should Solr be installed on a second server.
 
@@ -78,15 +73,15 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
 
 2.  Apache will provide a download link based on location:
 
-    [![Selecting an Apache download mirror site](wpsolr_select_apache_mirror_resized.png)](wpsolr_select_apache_mirror.png)
+    ![Selecting an Apache download mirror site](wpsolr_select_apache_mirror.png)
 
 3.  Click the link to open a page of Solr releases:
 
-    [![List of Solr releases](wpsolr_mirror_directory_listing_resized.png)](wpsolr_mirror_directory_listing.png)
+    ![List of Solr releases](wpsolr_mirror_directory_listing.png)
 
 4.  Click on the highest available 4.x version to see the files in that release:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Since Solr 5.x is still in beta, its configuration procedures are different from 4.x, and WPSolr is not yet compatible with the 5.x release.
 {{< /note >}}
 
@@ -111,7 +106,7 @@ For Solr to index blog posts, it needs to know the structure of the blog data. T
 1.  WPSolr provides ready-made configuration files on their website.
 Visit the [WPSolr website](http://wpsolr.com/releases/) and get the link address of the latest WPSolr release for your Solr version:
 
-    [![WPSolr Configuration Download](wpsolr_wpsolr_config_download_resized.png)](wpsolr_wpsolr_config_download.png)
+    ![WPSolr Configuration Download](wpsolr_wpsolr_config_download.png)
 
     The copied address will look similar to `http://wpsolr.com/?wpdmdl=2064`.
 
@@ -182,7 +177,7 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 
 For security purposes, Solr should run with its own user account and group.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The following commands should be run on the server where **Solr** is installed.
 {{< /note >}}
 
@@ -203,7 +198,7 @@ The following commands should be run on the server where **Solr** is installed.
 
 ### Configure Solr as a Startup Service
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Run the following commands on the server where **Solr** is installed.
 {{< /note >}}
 
@@ -213,7 +208,7 @@ Run the following commands on the server where **Solr** is installed.
 
 2.  Copy the following text into the editor, save and close it:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using a different version of Solr, change the `JETTY_HOME=/opt/solr-4.10.4/example` line to match the installed version.
 {{< /note >}}
 
@@ -433,18 +428,18 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 2.  On the **Plugins** page, activate the plugin named **Enterprise Search in seconds**:
 
-    [![Activate WPSolr plugin](wpsolr_activate_wpsolr_plugin_resized.png)](wpsolr_activate_wpsolr_plugin.png)
+    ![Activate WPSolr plugin](wpsolr_activate_wpsolr_plugin.png)
 
 3.  WordPress then displays a *plugin activated* message and adds a **WPSOLR** menu item to the sidebar:
 
-    [![After WPSolr activation](wpsolr_after_plugin_activation_resized.png)](wpsolr_after_plugin_activation.png)
+    ![After WPSolr activation](wpsolr_after_plugin_activation.png)
 
 
 ### Configure WPSolr Plugin
 
 1.  Open WPSolr page:
 
-    [![WPSolr admin page](wpsolr_open_wpsolr_admin_resized.png)](wpsolr_open_wpsolr_admin.png)
+    ![WPSolr admin page](wpsolr_open_wpsolr_admin.png)
 
 2.  Click on the button **I uploaded my 2 compatible configuration files to my Solr core**:
 
@@ -453,11 +448,11 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 3.  On the next page, select **Self Hosted** option:
 
-    [![WPSolr Hosting tab](wpsolr_wpsolr_hosting_tab_resized.png)](wpsolr_wpsolr_hosting_tab.png)
+    ![WPSolr Hosting tab](wpsolr_wpsolr_hosting_tab.png)
 
 4.  When selecting **Self Hosted**, the plugin prompts you to enter details about the Solr server:
 
-    [![WPSolr self hosting settings](wpsolr_wpsolr_hosting_tab_settings_resized.png)](wpsolr_wpsolr_hosting_tab_settings.png)
+    ![WPSolr self hosting settings](wpsolr_wpsolr_hosting_tab_settings.png)
 
     -   **Solr Host**: This should be the same value as the host typed in `/opt/solr-4.10.4/example/etc/jetty.xml`. If Solr is installed on same server as WordPress, enter `localhost`. If Solr is installed on a different server, enter the same IP address or hostname.
 
@@ -469,7 +464,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 6.  Click on the **Solr Options** tab:
 
-    [![WPSolr Indexing Options](wpsolr_wpsolr_indexing_options_resized.png)](wpsolr_wpsolr_indexing_options.png)
+    ![WPSolr Indexing Options](wpsolr_wpsolr_indexing_options.png)
 
     -   **Post types to be indexed**: Selecting all of them is recommended. **Post** indexes all blog posts, **page** all pages (such as about pages), and **attachment** all documents (such as PDFs and DOC files).
 
@@ -485,7 +480,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 8.  Open the **Solr Options > Result Options** page:
 
-    [![WPSolr Result Options](wpsolr_wpsolr_result_options_resized.png)](wpsolr_wpsolr_result_options.png)
+    ![WPSolr Result Options](wpsolr_wpsolr_result_options.png)
 
     -   **Display Suggestions (Did you mean?)**: Recommended. If selected, Solr will suggest alternate search phrases if it doesn't find any matches for the entered search phrase:
 
@@ -505,15 +500,15 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 10. Next, open the **Solr Options > Facets Options** page:
 
-    [![WPSolr Facet Options](wpsolr_wpsolr_facet_options_resized.png)](wpsolr_wpsolr_facet_options.png)
+    ![WPSolr Facet Options](wpsolr_wpsolr_facet_options.png)
 
     Press the green "+" buttons to add a facet. The ones added here are shown as filters in the search results page. Generally, *categories* and *tags* are enough, but if the blog has multiple contributors or custom taxonomies, you may also want to add these values as additional facets.
 
-    [![WPSolr Faceting](wpsolr_search_results_facets_resized.png)](wpsolr_search_results_facets.png)
+    ![WPSolr Faceting](wpsolr_search_results_facets.png)
 
 11. Go to the **Solr Operations** tab and click the **Synchronize Wordpress with my Solr index** button.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Whenever you publish a new post or page or attachment, this button must be selected for the new pages to be indexed.
 {{< /note >}}
 
@@ -532,16 +527,16 @@ The following steps will be completed while on your blog.
 
 2.  Test **search results** by entering a search phrase. Matching results should be displayed:
 
-    [![Search Results](wpsolr_search_results_resized.png)](wpsolr_search_results.png)
+    ![Search Results](wpsolr_search_results.png)
 
 3.  Test **autocorrection suggestions** by entering a word with some spelling mistakes or a word that does not occur in any of your blog posts. It should show *Did you mean* suggestions:
 
-    [![Did you mean suggestions](wpsolr_search_results_did_you_mean_resized.png)](wpsolr_search_results_did_you_mean.png)
+    ![Did you mean suggestions](wpsolr_search_results_did_you_mean.png)
 
 
 4. Test the  **document search** by creating and publishing some test posts with added file attachments (such as PDFs). Update the search data, then search for a phrase that you know occurs in your attachment. It should display matches inside those attachments:
 
-    [![Document search results](wpsolr_search_results_from_doc_pdf_resized.png)](wpsolr_search_results_from_doc_pdf.png)
+    ![Document search results](wpsolr_search_results_from_doc_pdf.png)
 
 
 ## Location of Search Data

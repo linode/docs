@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-shoutcast-dnas-server-on-linux
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
 description: 'This tutorial will guide you through setup and configuration of a SHOUTcast DNAS server for media streaming on Linux.'
 keywords: ["shoutcast", " internet radio", " streaming media", " streaming audio"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,13 +15,14 @@ external_resources:
  - '[SHOUTcast Broadcast Tools](http://www.shoutcast.com/broadcast-tools)'
  - '[SHOUTcast Transcoder MP3 Licensing](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding)'
 dedicated_cpu_link: true
+authors: ["Chris Ciufo"]
 ---
 
 ![How to Install A SHOUTcast DNAS Server on Linux](install-shoutcast-dnas-title.jpg "How to Install A SHOUTcast DNAS Server on Linux title graphic")
 
-SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
- {{< note >}}
+{{< note >}}
 Be sure to [check the broadcast tools download page](http://www.shoutcast.com/broadcast-tools) for the newest version of SHOUTcast.
 {{< /note >}}
 
@@ -105,7 +103,7 @@ ripfile=control/sc_serv.rip
 password=testing
 
 
-; password used for accessing the administation pages
+; password used for accessing the administration pages
 ; NOTE: remember to change this to something else
 adminpassword=changeme
 
@@ -130,7 +128,7 @@ streampath=/test.aac
 3.  Set the `password` and `adminpassword` variables to whatever you want them to be.
 4.  The `portbase` variable should be set to use a port you are not using for anything else. The default port for SHOUTcast is 8000.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you set the `portbase` variable to anything besides 8000, be sure to uncomment it by deleting the semicolon in front of the variable.
 {{< /note >}}
 
@@ -142,7 +140,7 @@ Now that the configuration is set and saved, we can start the server.
 
 Now, you can start the SHOUTcast server. Here's how:
 
-1.  You'll want to run your shoutcast in a [screen session](/docs/linux-tools/utilities/screen). Let's jump into a screen session by entering the following command:
+1.  You'll want to run your shoutcast in a [screen session](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/). Let's jump into a screen session by entering the following command:
 
         screen
 
@@ -166,7 +164,7 @@ Your SHOUTcast server is now running! You can now connect to it and begin your b
 
 The SHOUTcast Transcoder allows you to schedule DJ play times, broadcast an automatic playlist in a specific time slot, schedule time slots for relayed broadcasts, etc.
 
- {{< note >}}
+{{< note >}}
 To encode your streams in MP3 format, you *must* [purchase a license key from WinAmp, which costs \$5 USD](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding).
 {{< /note >}}
 

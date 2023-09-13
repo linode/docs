@@ -1,53 +1,49 @@
 ---
 slug: server-side-encryption
-author:
-  name: Ben Bigger
-  email: docs@linode.com
 description: 'This guide teaches you how to secure your Linode Object Storage data with server-side encryption using an example script written in Python.'
 og_description: 'Learn how to secure your Linode Object Storage data with server-side encryption.'
 keywords: ['object','storage','security', 'sse-c', 'aes-256', 'terraform']
 tags: ["linode platform","python","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-14
+modified: 2023-08-15
+image: UseServerSideEnc_LinObjStorage.png
 modified_by:
   name: Linode
-title: "How to Use Server-Side Encryption with Linode Object Storage"
-h1_title: "Using Server-Side Encryption with Linode Object Storage"
+title: "Using Server-Side Encryption with Linode Object Storage"
+title_meta: "How to Use Server-Side Encryption with Linode Object Storage"
 aliases: ['/platform/object-storage/server-side-encryption/']
+authors: ["Ben Bigger"]
 ---
 
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
-
-Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.
+Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.
 
 In this guide, you will [write an example Python script](#python-example-script) that will upload a simple file containing the text "Hello World!" to Linode Object Storage, encrypt the file with server-side encryption using a provided encryption key (SSE-C), decrypt and retrieve the contents of the file, then delete the file. Once completed, the components of this script can be adapted to implement server side encryption for your own specific use case.
 
 ## Before You Begin
 
--   Familiarize yourself with Linode Object Storage by reading the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
--   Create an Object Storage bucket. For demonstration purposes, you can create an Object Storage bucket and delete it after completing this guide.
+-   Familiarize yourself with the basics of Linode Object Storage by reviewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or taking a look through the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
+-   [Create an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/). For demonstration purposes, you can create an Object Storage bucket and delete it after completing this guide.
 
 ## Python Example Script
 
-1.  This section requires that Python 2.7, 3.4 or above is installed on your machine. Check your version of Python with the following command:
+1.  This section requires that Python 3.4 or above is installed on your machine. Check your version of Python with the following command:
 
-        python --version
+        python3 --version
 
 1.  Install [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), the AWS SDK for Python:
 
         pip install boto3
 
-1.  [Generate an Object Storage key pair](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair), saving the access key and secret key for use in your script.
+1.  [Generate an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/), saving the access key and secret key for use in your script.
 
 1.  Choose a 32 character encryption key for use in your script. You can use [OpenSSL](https://www.openssl.org/) to randomly generate 32 hexadecimal characters to use as your encryption key with the following command:
 
         openssl rand -hex 16
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Linode destroys encryption keys immediately after your data is encrypted. Object Storage data that is encrypted with SSE-C is unrecoverable without your encryption key.
-    {{< /caution >}}
+    {{< /note >}}
 
 1.  Using a code editor, open a new file labeled `example.py` for your Python script and enter the following:
 

@@ -1,26 +1,21 @@
 ---
 slug: how-to-build-and-use-vuejs-components
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: VueJS is a JavaScript framework for building interfaces, it is very easy to adopt and can greatly help you in structuring your applications. One of the most important features of VueJS are components. In this guide you will learn about component essentials.
+description: 'In this guide, you will learn how about the components that make up VueJS, a JavaScript framework for building interfaces, and how to use them.'
 keywords: ['vue js','javascript','vuejs','vuejs components', 'vuejs events', 'vuejs slots']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-14
 modified_by:
   name: Linode
 image: BuildingandUsingVueJSComponents.png
-title: Building and Using VueJS Components - A Tutorial
-h1_title: Building and Using VueJS Components
-contributor:
-  name: Pavel Petrov
-  link: https://github.com/WebBamboo/
+title: Building and Using VueJS Components
+title_meta: How to Build and Use VueJS Components (A Tutorial)
 external_resources:
 - '[VueJS](https://vuejs.org/)'
 audiences: ["beginner"]
 languages: ["javascript"]
 tags: ["web applications"]
 aliases: ['/development/javascript/how-to-build-and-use-vuejs-components/']
+authors: ["Pavel Petrov"]
 ---
 
 ## What are VueJS Components
@@ -36,7 +31,7 @@ In this guide you learn how to:
  - Embed content in a component [with slots](#using-slots)
  - Communicate information back to a component's parent [with events](#using-component-events)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can [download all of the example files for this guide here](how-to-build-and-use-vuejs-components.tar.gz).
 {{< /note >}}
 
@@ -395,7 +390,7 @@ Let's explore the code for this component:
 
 -   You can see how this default value is referenced for the new `rating-title` component on line 16. Whenever nothing is included between the `<rating-title></rating-title>` tags, the default value is used.
 
--   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is is not rendered.
+-   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is not rendered.
 
 ### Named Slots
 

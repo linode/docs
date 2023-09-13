@@ -1,10 +1,6 @@
 ---
 slug: how-to-add-linux-alias-command-in-bashrc-file
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Permanent Linux alias commands are saved to the shell configuration file and available for every new session you create. Learn how to save permanent aliases in the Bash .bashrc configuration file.'
-og_description: 'Permanent Linux alias commands are saved to the shell configuration file and available for every new session you create. Learn how to save permanent aliases in the Bash .bashrc configuration file.'
+description: "Permanent Linux alias commands are saved to the shell configuration file for every new session you create. Here''s how that process works."
 keywords: ["alias command bashrc"]
 aliases: ['/quick-answers/linux/how-to-add-linux-alias-command-in-bashrc-file/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +8,10 @@ modified: 2020-11-06
 modified_by:
   name: Heather Zoppetti
 published: 2020-11-17
-title: How to Add the Linux alias Command in the .bashrc File
-h1_title: Adding the Linux alias Command in the .bashrc File
+title: Adding the Linux alias Command in the .bashrc File
+title_meta: "How to Add the Linux alias Command in the .bashrc File"
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 The command line terminal is a convenient and fast tool for interfacing with the Linux operating system. However, you may find yourself sending the same commands again and again while issuing instructions to your system. This may cost you a significant amount of time, especially if your commands are lengthy, hard to remember, or just repetitive. To help save time and reduce frustration, aliasing commands can be used to create customizable shortcuts.
