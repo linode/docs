@@ -15,14 +15,11 @@ external_resources:
 
 MERN is a stack for modern web applications. It consists of MongoDB, Express JS, React, and Node.js — all well-established open-source technologies that make a solid foundation for new web applications.
 
-This guide helps you get started using your MERN stack project. It walks you through two methods for deploying your MERN project to an Ubuntu 20.04 or Debian 10 server:
+This guide helps you deploy your existing MERN stack project onto Akamai cloud compute, using the MERN Marketplace App or by manually installing the MERN stack on a new Compute Instance. After your server is set up, learn how to copy your project to your server. If you do not yet have an existing project and wish to create a new MERN application, review one of the following guides instead:
 
-- Using the Linode Marketplace one-click app
-- Using a standard server instance, without any pre-configuring
+- [Install the MERN Stack and Create an Example Application](/docs/guides/install-the-mern-stack/)
 
-Along the way, see how to copy your existing MERN app project to your server instance so you are ready to start running it.
-
-Looking to create a new MERN application? Take a look at our guide [How to Create a MERN Stack App on Ubuntu 20.04 or Debian 10](/docs/guides/creating-mern-stack-app-ubuntu-debian).
+- [Build a Basic Chat Application using the MERN Stack](/docs/guides/build-mern-stack-chat-application/)
 
 ## Before You Begin
 
@@ -123,7 +120,7 @@ You can additionally refer to our [How to Install and Use the Node Package Manag
 
 ### Installing Express JS
 
-If you have an existing MERN project using Express JS, you only need to install the project's Node.js dependencies. Doing so is covered in the [Copying Files to Your Instance](/docs/guides/deploying-mern-stack-app-ubuntu-debian/#copying-files-to-your-instance) section above.
+If you have an existing MERN project using Express JS, you only need to install the project's Node.js dependencies. Doing so is covered in the [Upload Your Application](#upload-your-application) section.
 
 Otherwise, you can add Express JS as a dependency to your NPM project using this command. This also adds the Mongoose module, which is typically the module used for connecting to MongoDB from Express JS:
 
@@ -137,7 +134,7 @@ Learn more about getting started with Express JS in our guide [Express JS Tutori
 
 ### Installing React (if necessary for server-side rendering)
 
-As with Express JS, you only need to install your Node.js dependencies if you already have React in your existing MERN project. This guide covers installing those dependencies in the [Copying Files to Your Instance](/docs/guides/deploying-mern-stack-app-ubuntu-debian/#copying-files-to-your-instance) section above.
+As with Express JS, you only need to install your Node.js dependencies if you already have React in your existing MERN project. This guide covers installing those dependencies in the [Upload Your Application](#upload-your-application) section.
 
 Otherwise, you can add React to your NPM project with a command like the one here. This also includes the Axios module, typically used for communications between React and the Express JS server:
 
@@ -275,8 +272,6 @@ These next steps then need to be taken on the server instance to pull down the p
         export NODE_OPTIONS=--openssl-legacy-provider
 
     To make this configuration persistent, add the line above to your `~/.bashrc` file.
-
-You can refer to the [Starting MERN Stack Services](/docs/guides/deploying-mern-stack-app-ubuntu-debian/#starting-mern-stack-services) section below for more on getting your MERN stack up and running.
 
 ## Start Your Application
 

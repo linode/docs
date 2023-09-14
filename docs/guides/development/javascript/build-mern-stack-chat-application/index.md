@@ -231,7 +231,7 @@ Database connection established.
 
     Once you have seen that the server is working, you can stop it with the **Ctrl** + **C** combination.
 
-1. To run the Express JS server and React simultaneously, the [Starting MERN Stack Services](/docs/guides/creating-mern-stack-app-ubuntu-debian/#starting-mern-stack-services) section below uses the `concurrently` Node.js module. Install the module using the command below:
+1. To run the Express JS server and React simultaneously, the [Starting MERN Stack Services](#starting-mern-stack-services) section below uses the `concurrently` Node.js module. Install the module using the command below:
 
         npm install --save-dev concurrently
 
@@ -427,6 +427,6 @@ When you are ready to make your application accessible to the public, take a loo
 
 You now have a working MERN stack application. This code above can form a basis that you can modify and expand on to your needs.
 
-Ready to deploy your MERN stack app to a server? Refer to our guide [How to Deploy a MERN Stack App to Linode on Ubuntu 20.04 or Debian 10](/docs/guides/deploying-mern-stack-app-ubuntu-debian). There, you can learn how to set up a server for a MERN stack and copy over your MERN project for deployment.
+Ready to deploy your MERN stack app to a server? Refer to our guide [Deploy a MERN Stack Application on Akamai](/docs/guides/deploy-a-mern-stack-application/). There, you can learn how to set up a server for a MERN stack and copy over your MERN project for deployment.
 
 One way you can enhance your MERN stack app is by adding authentication. Learn how to implement authentication into your Express JS server through our guide [User Authentication with JSON Web Tokens (JWTs) and Express](/docs/guides/how-to-authenticate-using-jwt/).
