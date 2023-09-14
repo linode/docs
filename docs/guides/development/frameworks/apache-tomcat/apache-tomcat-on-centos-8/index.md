@@ -1,10 +1,6 @@
 ---
 slug: apache-tomcat-on-centos-8
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by following this guide.'
 keywords: ["apache tomcat centos 8", "tomcat java", "java centos 8", "tomcat ubuntu"]
 tags: ["web applications","java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,8 +10,8 @@ modified_by:
   name: Linode
 published: 2020-03-25
 image: ApacheTomcat_CentOS8.png
-title: 'How to Install Apache Tomcat on CentOS 8'
-h1_title: 'Installing Apache Tomcat on CentOS 8'
+title: 'Installing Apache Tomcat on CentOS 8'
+title_meta: 'How to Install Apache Tomcat on CentOS 8'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -28,15 +24,16 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: CentOS 8
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1.  Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1.  Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -63,9 +60,9 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
         sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
 
-      {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Tomcat 9 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into `/usr/local/tomcat` directory:
 
@@ -82,28 +79,28 @@ Ensure that the version number matches the Tomcat 9 version you wish to download
 
 1.  Create a new `systemd` service file, `/etc/systemd/system/tomcat.service`, in the text editor of your choice with the following details:
 
-      {{< file "/etc/systemd/system/tomcat.service" service >}}
-[Unit]
-Description=Tomcat Server
-After=syslog.target network.target
+    ```file {title="/etc/systemd/system/tomcat.service" lang="service"}
+    [Unit]
+    Description=Tomcat Server
+    After=syslog.target network.target
 
-[Service]
-Type=forking
-User=tomcat
-Group=tomcat
+    [Service]
+    Type=forking
+    User=tomcat
+    Group=tomcat
 
-Environment=JAVA_HOME=/usr/lib/jvm/jre
-Environment='JAVA_OPTS=-Djava.awt.headless=true'
-Environment=CATALINA_HOME=/usr/local/tomcat
-Environment=CATALINA_BASE=/usr/local/tomcat
-Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
-Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
-ExecStart=/usr/local/tomcat/bin/catalina.sh start
-ExecStop=/usr/local/tomcat/bin/catalina.sh stop
+    Environment=JAVA_HOME=/usr/lib/jvm/jre
+    Environment='JAVA_OPTS=-Djava.awt.headless=true'
+    Environment=CATALINA_HOME=/usr/local/tomcat
+    Environment=CATALINA_BASE=/usr/local/tomcat
+    Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
+    Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
+    ExecStart=/usr/local/tomcat/bin/catalina.sh start
+    ExecStop=/usr/local/tomcat/bin/catalina.sh stop
 
-[Install]
-WantedBy=multi-user.target
-{{< /file >}}
+    [Install]
+    WantedBy=multi-user.target
+    ```
 
 1.  Reload the `systemd` daemon to let it know about the `tomcat.service` that you created:
 
@@ -134,9 +131,9 @@ You can test your Tomcat installation by pointing your browser at your domain na
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
-{{</ note >}}
+{{< /note >}}
 
 1.  For Tomcat versions 8+ the managers have been pre-configured to only allow access from the same IP of the server where it's installed. If you're trying to access it from a browser remotely, you'll need to comment out this configuration in the file `/usr/local/tomcat/webapps/manager/META-INF/context.xml`.
 

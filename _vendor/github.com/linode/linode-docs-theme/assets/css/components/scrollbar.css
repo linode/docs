@@ -1,27 +1,27 @@
 /* Chrome, Safari, Opera, newest Edge {*/
 body::-webkit-scrollbar {
-    /* width: 0 !important;
+  /* width: 0 !important;
     height: 0 !important; */
 }
 
 /* Firefox */
 body {
-    /* overflow: -moz-scrollbars-none; */
+  /* overflow: -moz-scrollbars-none; */
 }
 
 /* Internet Explorer, Edge */
 body {
-    /* -ms-overflow-style: none; */
+  /* -ms-overflow-style: none; */
 }
 
 /* A thin vertical scrollbar that should always be shown, even if not hovered. */
 .scrollbar-v-gray::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 4px;
+  -webkit-appearance: none;
+  width: 4px;
 }
 .scrollbar-v-gray::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    min-height: 56px;
-    background-color: #ededf4;
-    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  min-height: 56px;
+  background-color: #ededf4;
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }

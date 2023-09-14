@@ -1,9 +1,7 @@
 ---
 slug: clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04
-author:
-    name: Linode Community
-    email: docs@linode.com
-description: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
+deprecated: true
+description: 'This guide provides you with step-by-step instructions for installing and using the Clojure programming language with Immutant and WildFly on Ubuntu 14.04.'
 keywords: ["clojure", "luminus", "leiningen", "immutant", "jvm", "wildfly", "jboss", "oracle jdk 8"]
 tags: ["java", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,10 +10,7 @@ modified: 2015-12-21
 modified_by:
   name: Sergey Pariev
 published: 2016-02-18
-title: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
-contributor:
-  name: Sergey Pariev
-  link: https://twitter.com/spariev
+title: 'Deploy Clojure with Immutant and WildFly on Ubuntu 14.04'
 external_resources:
   - '[Installing Leiningen](http://leiningen.org/#install)'
   - '[Installing Oracle JDK 8](https://launchpad.net/~webupd8team/+archive/java)'
@@ -24,11 +19,7 @@ external_resources:
   - '[Script to install JBoss Wildfly 10.x as service in Linux](https://gist.github.com/sukharevd/6087988)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
-relations:
-    platform:
-        key:  clojure-immutant-wildfly
-        keywords:
-            - distribution: Ubuntu 14.04
+authors: ["Sergey Pariev"]
 ---
 
 Clojure is a general-purpose programming language with an emphasis on functional programming. It is a dialect of the Lisp programming language running on the Java Virtual Machine (JVM). While Clojure allows you to write elegant and concise code, its ability to make use of the existing JVM infrastructure, such as libraries, tools and application servers, makes it also a very practical choice.
@@ -37,23 +28,19 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 In this guide `example.com` will be used as a domain name, and `linode-user` as a name of non-root user. Substitute your own FQDN and username accordingly.
 {{< /note >}}
 
 ## Install Oracle JDK 8
 
-1.  Add Oracle Java 8 Installer PPA repository to the system. If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7/) guide.
+1.  Add Oracle Java 8 Installer PPA repository to the system. If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/guides/java-development-wildfly-centos-7/) guide.
 
         sudo add-apt-repository ppa:webupd8team/java
 
@@ -113,7 +100,7 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
     ![Luminus application main page](clj-luminus-main-page.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure port 3000 is open in firewall for this to work.
 {{< /note >}}
 

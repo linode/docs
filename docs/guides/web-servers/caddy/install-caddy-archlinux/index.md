@@ -1,19 +1,13 @@
 ---
 slug: install-caddy-archlinux
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Caddy is an open source HTTP/2-enabled web server with automatic HTTPS. This guide demonstrates how to install Caddy on Arch Linux.'
+description: "Caddy is an open source HTTP/2-enabled web server with automatic HTTPS. This guide demonstrates how to install Caddy on Arch Linux."
 keywords: ['caddy', 'install caddy', 'archlinux', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-14
-modified: 2018-12-14
+modified: 2021-12-30
 modified_by:
   name: Linode
 title: "Install Caddy on Arch Linux"
-contributor:
-  name: Claudio Costa
-  link: https://github.com/streamer45
 external_resources:
 - '[Caddy Official Documentation](https://caddyserver.com/docs)'
 relations:
@@ -23,19 +17,20 @@ relations:
             - distribution: Arch Linux
 tags: ["web server"]
 aliases: ['/web-servers/caddy/install-caddy-archlinux/']
+authors: ["Claudio Costa"]
 ---
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with the [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services).
 
-1. You will need to register your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point your domain to your Linode.
+1.  Register (purchase) your site's domain name and follow our [DNS Manager Overview](/docs/products/networking/dns-manager/#add-records) guide to point the domain to your Linode.
 
-1. Update your system with `sudo pacman -Syu`
+1.  Update your system:
 
-1. Install the development package group with `sudo pacman -S base-devel`
+        sudo pacman -Syu
 
 ## What is Caddy?
 
@@ -43,54 +38,73 @@ Caddy is an open source HTTP/2 capable web server with automatic HTTPS written i
 
 ## Install Caddy
 
-You can install Caddy on Arch Linux by using a snapshot from the *Arch User Repository* (AUR).
+You can install Caddy on Arch Linux by using the caddy package. It comes with both of Caddy's systemd service unit files, but does not enable them by default.
 
-1. Download the snapshot from the AUR:
+    sudo pacman -Syu caddy
 
-        curl https://aur.archlinux.org/cgit/aur.git/snapshot/caddy.tar.gz -o caddy.tar.gz
+## Allow HTTP and HTTPS Connections
 
-1. Unpack the snapshot:
+Caddy serves websites using HTTP and HTTPS protocols, so you need to allow access to the ports 80, and 443.
 
-        tar xf caddy.tar.gz
+    sudo firewall-cmd --permanent --zone=public --add-service=http
+    sudo firewall-cmd --permanent --zone=public --add-service=https
+    sudo firewall-cmd --reload
 
-1. Navigate to the `caddy` directory:
+## Add Web Content
 
-        cd caddy
+1.  Set up a home directory, **web root**, for your website:
 
-1. Build and install the package:
+        sudo mkdir -p /var/www/html/example.com
 
-        makepkg -si
+1.  Create a test page:
 
-## Test Caddy
+        echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' > /var/www/html/example.com/index.html
 
-1. Start the Caddy web server:
+## Configure the Caddyfile
 
-        sudo systemctl start caddy
+Add your hostname and web root to the Caddy configuration. Use an editor of your choice and replace `:80` with your domain name. Set the root directory of the site to `/var/www/html/example.com` Replace `example.com` with your site's domain name:
 
-1. Enable the Caddy service:
-
-        sudo systemctl enable caddy
-
-1. Navigate to your Linode's domain name or IP address in a web browser. You should see the Caddy default page displayed.
-
-## Configure Caddy
-
-Caddy configuration files reside in `/etc/caddy/` and website configuration files should be created in the `/etc/caddy/caddy.conf.d/` directory.
-
-1. Create a sample configuration file for your website. Replace `example.com` with your Linode's domain name. If you have not set up a domain, but still want to get started with Caddy, replace `example.com` with `:80`.
-
-    {{< file "/etc/caddy/caddy.conf.d/example.com.conf" caddy >}}
+{{< file "/etc/caddy/Caddyfile" caddy >}}
 example.com {
-    root /usr/share/caddy/
+    root * /var/www/html/example.com
+    file_server
 }
 {{< /file >}}
 
-    {{< note >}}
-If you choose to serve your site from a directory other than `/usr/share/caddy/`, you must remove the Caddy test site files located in that directory. The `/usr/share/caddy/` directory is prioritized over other locations, so any files stored in that directory will be served first, even if you have configured a different directory location.
-{{< /note >}}
+## Start and Enable the Caddy Service
 
-1. Reload Caddy:
+1.  Enable the Caddy service:
 
-        sudo systemctl reload caddy
+        sudo systemctl start caddy
 
-1. Navigate to your Linode's domain name in a web browser. You should be able to see content served from the root directory configured above.
+1. Verify that the service is active:
+
+        sudo systemctl status caddy
+
+    An output similar to the following appears:
+
+    {{< output >}}
+● caddy.service - Caddy
+   Loaded: loaded (/usr/lib/systemd/system/caddy.service; disabled; vendor preset: disabled)
+   Active: active (running) since Thu 2021-09-02 18:25:29 IST; 4s ago
+     Docs: https://caddyserver.com/docs/
+ Main PID: 19314 (caddy)
+   CGroup: /system.slice/caddy.service
+           └─19314 /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile...
+
+Sep 02 18:25:29 caddy caddy[19314]: SHELL=/sbin/nologin
+Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1270738..."}
+Sep 02 18:25:29 caddy systemd[1]: Started Caddy.
+Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1316314...]}
+Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1317837...0}
+Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1324193..."}
+Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1324632..."}
+Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1325648..."}
+Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1326034..."}
+Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1326299..."}
+Hint: Some lines were ellipsized, use -l to show in full.
+{{</ output >}}
+
+    To check the latest logs without truncation use `sudo journalctl -u caddy --no-pager | less +G`.
+
+1.  Open a web browser and visit your domain. You should see the contents of the `index.html`page that you created in the [Add Web Content section](#add-web-content).

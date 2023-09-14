@@ -1,10 +1,7 @@
 ---
 slug: how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04
-author:
-  name: Sam Foo
-  email: docs@linode.com
-description: 'Quickly create a Spring Boot application embedded on a Tomcat server through the command line. Deploy this application on a Linode through an NGINX reverse proxy.'
-og_description: "Spring Boot enables quick development of the Spring Framework. This guide shows how to create a simple Spring Boot application on Ubuntu, using an NGINX reverse proxy."
+description: 'This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode.'
+og_description: "This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode."
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
 tags: ["web applications","java","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +9,8 @@ modified: 2018-03-07
 modified_by:
   name: Linode
 published: 2018-03-07
-title: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
-h1_title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
+title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
+title_meta: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
 external_resources:
 - '[Spring Boot](https://projects.spring.io/spring-boot/)'
 - '[SDKMAN!](http://sdkman.io/)'
@@ -27,6 +24,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/development/java/how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04/']
+authors: ["Sam Foo"]
 ---
 
 ![How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04](deploy-spring-boot-nginx-reverse-proxy.jpg "How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04")
@@ -114,7 +112,7 @@ There are many build tools available. The Spring Boot CLI uses Maven by default 
 
         spring init --build=gradle --dependencies=web --name=hello hello-world
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To see a full list of possible parameters for the Spring Boot CLI, run:
 
     spring init --list

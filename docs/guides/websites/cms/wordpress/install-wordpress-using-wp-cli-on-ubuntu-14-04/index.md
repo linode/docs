@@ -1,11 +1,9 @@
 ---
 slug: install-wordpress-using-wp-cli-on-ubuntu-14-04
-author:
-    name: Linode Community
-    email: docs@linode.com
-description: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
+deprecated: true
+description: 'This guide shows how to install the popular content management system WordPress using the WP-CLI, a command line interface for WordPress, on Ubuntu 14.04.'
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
-aliases: ['/websites/cms/wordpress/install-wordpress-using-wp-cli-on-ubuntu-14-04/','/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/','/websites/cms/install-and-configure-wordpress-using-wp-cli/']
+aliases: ['/websites/cms/wordpress/install-wordpress-using-wp-cli-on-ubuntu-14-04/','/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/']
 tags: ["ubuntu","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-03-11
@@ -13,9 +11,6 @@ modified: 2017-02-15
 modified_by:
     name: Linode
 title: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
-contributor:
-    name: Navjot Singh
-    link: https://github.com/navjotjsingh
 external_resources:
  - '[WP-CLI Commands](http://wp-cli.org/commands/)'
  - '[WP-CLI Community Commands](https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands)'
@@ -24,6 +19,7 @@ relations:
         key: how-to-install-wordpress-using-wp-cli
         keywords:
            - distribution: Ubuntu 14.04
+authors: ["Navjot Singh"]
 ---
 
 
@@ -38,12 +34,12 @@ This is where WP-CLI, a powerful command line tool with which you can manage Wor
 
 This guide is written for Ubuntu 14.04. Before moving ahead, make sure you have completed the following guides:
 
-* [Getting Started with Linode](/docs/getting-started/)
-* [Securing your Server](/docs/security/securing-your-server/)
-* [How to Install a LAMP Stack on Ubuntu 14.04](/docs/web-servers/lamp/lamp-on-ubuntu-14-04/)
+* [Getting Started with Linode](/docs/products/platform/get-started/)
+* [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
+* [How to Install a LAMP Stack on Ubuntu 14.04](/docs/guides/lamp-on-ubuntu-14-04/)
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install WP-CLI

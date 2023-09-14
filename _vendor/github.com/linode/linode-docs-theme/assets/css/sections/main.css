@@ -3,22 +3,22 @@ Make it so the main content column slides over on mobile and
 does not get too small on desktop.
 */
 .main__inner {
-    min-width: 100vw;
+  min-width: 100%;
 }
 
 @screen md {
-    .main__inner {
-        min-width: 80%;
-    }
+  .main__inner {
+    min-width: 80%;
+  }
 }
 
 /*
 Bottom border on product navbar
 */
 body.type-products .main__navbar {
-    border-bottom: 2px solid var( --color-divider );
+  border-bottom: 2px solid var(--color-divider);
 }
 
 body.type-products .main__navbar nav {
-    margin-bottom: -2px;
+  margin-bottom: -2px;
 }
