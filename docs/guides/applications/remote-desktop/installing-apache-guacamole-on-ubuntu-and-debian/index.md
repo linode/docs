@@ -80,6 +80,10 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo mv guacamole-1.3.0.war /var/lib/tomcat9/webapps/guacamole.war
 
+1.  Update permissions for the file to be loaded by tomcat.
+
+        sudo chmod g+r,o+r /var/lib/tomcat9/webapps/guacamole.war
+
 1.  Restart both Apache Tomcat and Guacd.
 
         sudo systemctl restart tomcat9 guacd
