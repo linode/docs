@@ -1,0 +1,32 @@
+div {
+    float: right;
+    width: 50%;
+    text-align: left;
+}
+
+p {
+    font-style: italic;
+}
+
+header, footer {
+    float: inline-end;
+    width: 100%;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.left-column {
+    float: left;
+    width: 25%;
+    text-align: right;
+}
+
+.blue {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.blue > p {
+    font-style: normal;
+}
