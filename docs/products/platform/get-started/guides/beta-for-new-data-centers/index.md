@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-09-08
+modified: 2023-09-14
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -29,11 +29,11 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 | Jakarta, India | *Limited beta* | `id-cgk` |
 | Los Angeles, CA, USA | *Limited beta* | `us-lax` |
 | Miami, FL, USA | *Limited beta* | `us-mia` |
-| Milan, Italy | *Limited beta* | `it-mil` |
+| Milan, Italy | **Now available to all customers** | `it-mil` |
 | Osaka, Japan | *Limited beta* | `jp-osa` |
 | Paris, France | **Now available to all customers** | `fr-par` |
 | São Paulo, Brazil | *Limited beta* | `br-gru` |
-| Seattle, WA, USA | *Limited beta* | `us-sea` |
+| Seattle, WA, USA | **Now available to all customers** | `us-sea` |
 | Stockholm, Sweden | **Now available to all customers** | `se-sto` |
 | Washington, DC, USA | **Now available to all customers** | `us-iad` |
 
@@ -57,7 +57,7 @@ Services utilized as part of the beta are free to users. Once the beta period en
 
 ## Product Availability
 
-Each data center in this beta is slated to have all of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
+Each data center in this beta is slated to have most of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
 
 ### Object Storage
 
