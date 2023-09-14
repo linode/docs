@@ -28,7 +28,7 @@ external_resources:
 
 ## What are cPanel and WHM?
 
-cPanel is currently maintained by the private company cPanel, L.L.C.. It simplifies the process of hosting and deploying websites. Web service providers use cPanel to administer web sites for their customers. But companies and individuals also use it to oversee their own sites, especially when many sites reside on the same server. cPanel is a commercial application and is not available in a free or open-source version. Users require a cPanel license to use the software. [cPanel Licenses](https://store.cpanel.net/) are available in several tiers, with a [15-day free trial](https://cpanel.net/products/trial/) available.
+cPanel is currently maintained by the private company cPanel, L.L.C.. It simplifies the process of hosting and deploying websites. Web service providers use cPanel to administer web sites for their customers. Companies and individuals also use it to oversee their own sites, especially when many sites reside on the same server. cPanel is a commercial application and is not available in a free or open source version. Users require a cPanel license to use the software. [cPanel Licenses](https://store.cpanel.net/) are available in several tiers, with a [15-day free trial](https://cpanel.net/products/trial/) available.
 
 cPanel includes a powerful web-based GUI containing tools for common web administration tasks. Users can add accounts, create sites, set up email, and upload files. Access to cPanel is also available through the command line or the cPanel API. The cPanel API allows administrators to integrate automated processes into their workflow. Several third-party add-ons are available for added functionality.
 
@@ -38,20 +38,20 @@ In contrast, the cPanel interface is only used to manage individual accounts and
 
 ### The Main Features and Use Cases of cPanel
 
-cPanel makes it easier to create server accounts and subdomains and to administer these domains. Some of the main cPanel features include the following:
+cPanel makes it easier to create server accounts and subdomains and to administer these domains. Some of the main cPanel features include:
 
-- It includes an intuitive and useful user interface for accomplishing almost all site administration activities.
-- It allows administrators to create and manage domains, including subdomains.
-- It is integrated with WordPress and the WP Toolkit. This toolkit simplifies installing and administering a WordPress site.
-- Web hosting companies can provide an individual cPanel account to their users. This allows them to create, host, and manage their web sites.
-- It can create user accounts, email accounts, and shared calendars.
-- The cPanel file manager allows users to transfer, view, and manage files, sites, and folders.
-- It includes an FTP server for uploading and downloading files.
-- It features a built-in DNS manager and sophisticated networking tools.
-- It includes a large number of tools, such as the MySQL database, the PHP programming language, and a web server. It contains all the components required to perform many common tasks.
-- It can migrate sites from other servers.
-- It provides a full range of statistical, monitoring, and server management tools.
-- It prioritizes security with SSL certificates, encryption, safe lists, and optional multi-factor authentication.
+-   It includes an intuitive and useful user interface for accomplishing almost all site administration activities.
+-   It allows administrators to create and manage domains, including subdomains.
+-   It is integrated with WordPress and the WP Toolkit. This toolkit simplifies installing and administering a WordPress site.
+-   Web hosting companies can provide an individual cPanel account to their users. This allows them to create, host, and manage their web sites.
+-   It can create user accounts, email accounts, and shared calendars.
+-   The cPanel file manager allows users to transfer, view, and manage files, sites, and folders.
+-   It includes an FTP server for uploading and downloading files.
+-   It features a built-in DNS manager and sophisticated networking tools.
+-   It includes a large number of tools, such as the MySQL database, the PHP programming language, and a web server. It contains all the components required to perform many common tasks.
+-   It can migrate sites from other servers.
+-   It provides a full range of statistical, monitoring, and server management tools.
+-   It prioritizes security with SSL certificates, encryption, safe lists, and optional multi-factor authentication.
 
 ### The Advantages and Downsides of cPanel
 
@@ -59,29 +59,29 @@ cPanel boasts many advantages and is widely deployed due to its large number of 
 
 Here are some of the advantages of cPanel and WHM:
 
-- It is easy to install and widely-used.
-- It is optimized for web site hosting and management and includes many advanced tools. cPanel reduces management overhead and administrative complexity.
-- The user interface is thoughtfully laid out and easy to use.
-- cPanel is fast and responsive.
-- It contains many important and commonly-used web server components, such as a database and the PHP programming language.
-- It includes monitoring and maintenance tools.
-- The disc space and memory requirements are relatively small and reasonable in comparison to similar-complex programs.
-- It includes anti-virus protection.
-- It is compatible with all popular web browsers.
-- It supports third-party tools and WordPress add-ons and extensions.
-- It features an auto-restart mechanism.
-- It is based on Linux and considered quite stable.
+-   It is easy to install and widely used.
+-   It is optimized for web site hosting and management and includes many advanced tools. cPanel reduces management overhead and administrative complexity.
+-   The user interface is thoughtfully laid out and easy to use.
+-   cPanel is fast and responsive.
+-   It contains many important and commonly used web server components, such as a database and the PHP programming language.
+-   It includes monitoring and maintenance tools.
+-   The disc space and memory requirements are relatively small and reasonable in comparison to similarly complex programs.
+-   It includes anti-virus protection.
+-   It is compatible with all popular Web browsers.
+-   It supports third-party tools and WordPress add-ons and extensions.
+-   It features an auto-restart mechanism.
+-   It is based on Linux and considered quite stable.
 
-Some of the main drawbacks to cPanel are as follows:
+Some of the main drawbacks to cPanel are:
 
-- It is a paid commercial service and is not open source. It is considered quite expensive, especially for the premium packages.
-- It has been the target of several hacker attacks and exploits. cPanel must be vigilantly kept up-to-date to be considered secure. Third party tools can expose additional vulnerabilities.
-- The application is very complex and contains a large number of options and tools that most casual users do not require.
-- It lacks redundancy for high-availability, horizontal scaling, and load balancing. The absence of redundancy increases the chance of downtime.
-- Users are locked into the cPanel environment.
-- The interactions and division of tasks between WHM and cPanel are not always clear. For certain configuration tasks, users might have to skip back and forth between the two tools. The two interfaces are laid out differently and do not appear to be part of a common product.
-- It is prone to data corruption and loss.
-- It does not support many popular Linux distributions. It is only officially supported on Ubuntu, AlmaLinux, Rocky Linux, and Cloud Linux. It can be unofficially installed with varying degrees of success on other platforms.
+-   It is a paid commercial service and is not open source. It is considered quite expensive, especially for the premium packages.
+-   It has been the target of several hacker attacks and exploits. cPanel must be vigilantly kept up-to-date to be considered secure. Third party tools can expose additional vulnerabilities.
+-   The application is very complex and contains a large number of options and tools that most casual users do not require.
+-   It lacks redundancy for high-availability, horizontal scaling, and load balancing. The absence of redundancy increases the chance of downtime.
+-   Users are locked into the cPanel environment.
+-   The interactions and division of tasks between WHM and cPanel are not always clear. For certain configuration tasks, users might have to skip back and forth between the two tools. The two interfaces are laid out differently and do not appear to be part of a common product.
+-   It is prone to data corruption and loss.
+-   It does not support many popular Linux distributions. It is only officially supported on Ubuntu, AlmaLinux, Rocky Linux, and Cloud Linux. It can be unofficially installed with varying degrees of success on other platforms.
 
 For more information on cPanel and WHM, see the [official documentation](https://www.cpanel.net/support/).
 
@@ -91,7 +91,7 @@ For more information on cPanel and WHM, see the [official documentation](https:/
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  A fully-qualified domain name is required for the system. This name matches the hostname and can be used to access cPanel and WHM.
+1.  A fully qualified domain name is required for the system. This name matches the hostname and can be used to access cPanel and WHM.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -113,25 +113,25 @@ Before proceeding, create an account on the [cPanel store](https://store.cpanel.
 
 The system must have a minimum of 1GB of RAM, with 4GB recommended. For single-domain usage, it must also have at least 20 GB of disc space, with additional space required for more accounts. Before starting, review the [cPanel system requirements guide](https://docs.cpanel.net/installation-guide/system-requirements/) for more information.
 
-cPanel must be installed on a clean and previously-unused operating system with no other applications present. Throughout the installation process, log in and run all commands as the `root` user.
+cPanel must be installed on a clean and previously unused operating system with no other applications present. Throughout the installation process, log in and run all commands as the `root` user.
 
 This guide is designed for Ubuntu 20.04 LTS users. However, these instructions are generally applicable for other supported Linux distributions. To install cPanel, follow these steps.
 
 1.  Log in to the system as the `root` user. Do not use a different account with `sudo` privileges.
 
-1.  Ensure the system and all packages are up to date.
+1.  Ensure the system and all packages are up to date:
 
     ```command
-    apt-get update -y && apt-get upgrade -y
+    apt update -y && apt upgrade -y
     ```
 
-1.  Ensure the `perl` utility is installed.
+1.  Ensure the `perl` utility is installed:
 
     ```command
     apt install perl perl-base -y
     ```
 
-1.  Deactivate the `ufw` firewall.
+1.  Deactivate the `ufw` firewall:
 
     ```command
     iptables-save > ~/firewall.rules
@@ -139,7 +139,7 @@ This guide is designed for Ubuntu 20.04 LTS users. However, these instructions a
     systemctl disable ufw.service
     ```
 
-1.  **Optional** Increase the available swap space for better performance.
+1.  **Optional** Increase the available swap space for better performance:
 
     ```command
     fallocate -l 2G /swapfile
@@ -149,17 +149,17 @@ This guide is designed for Ubuntu 20.04 LTS users. However, these instructions a
     echo "/swapfile swap swap defaults 0 0" | tee -a /etc/fstab
     ```
 
-1.  Download and install cPanel and WHM.
-
-    {{< note >}}
-    The installation might take five to ten minutes, depending on the platform.
-    {{< /note >}}
+1.  Download and install cPanel and WHM:
 
     ```command
     cd /home && curl -o latest -L https://securedownloads.cpanel.net/latest && sh latest
     ```
 
-1.  At the end of the installation script, cPanel displays information about the application and what to do next. These instructions are explained in more detail in the next section. However, it is a good idea to copy these details to another file.
+    {{< note >}}
+    The installation might take five to ten minutes, depending on the platform.
+    {{< /note >}}
+
+1.  At the end of the installation script, cPanel displays information about the application and what to do next:
 
     ```command
     (INFO): cPanel install finished in 8 minutes and 26 seconds!
@@ -176,6 +176,8 @@ This guide is designed for Ubuntu 20.04 LTS users. However, these instructions a
     (INFO): Thank you for installing cPanel & WHM 11.112!
     ```
 
+    These instructions are explained in more detail in the next section. However, it is a good idea to copy these details to another file.
+
 ## How to Access the WHM Interface
 
 Before proceeding further, users must use WHM to register their account. Navigate to WHM remotely using the IP address and port `2087`. To access the WHM interface, follow these steps.
@@ -184,23 +186,23 @@ Before proceeding further, users must use WHM to register their account. Navigat
 These steps explain how to start with a free cPanel/WHM trial, but the steps to activate a prepaid license are very similar.
 {{< /note >}}
 
-1.  Use a web browser to connect to port `2087` of the system hosting WHM/cPanel. Enter the address in the format `https://<SYSTEM-IP-ADDRESS>:2087`, replacing `<SYSTEM-IP-ADDRESS>` with the actual IP address. Ignore any security warnings and proceed to the site. On Firefox, click the **Advanced...** button then select **Accept the Risk and Continue**.
+1.  Use a Web browser to connect to port `2087` of the system hosting WHM/cPanel. Enter the address in the format `https://EXAMPLE_IP_ADDRESS:2087`, replacing `EXAMPLE_IP_ADDRESS` with the actual IP address. Ignore any security warnings and proceed to the site. On Firefox, click the **Advanced...** button then select **Accept the Risk and Continue**.
 
     {{< note >}}
-    Upon installation, cPanel temporarily issues a SSL certificate for an auto-generated subdomain on the `cprapid.com` domain in the format. Ignore this temporary name for now and access the node using its IP address. A later step in the configuration process changes the hostname, resulting in the generation of a permanent SSL certificate for the actual domain name.
+    Upon installation, cPanel temporarily issues a SSL certificate for an auto-generated subdomain on the `cprapid.com` domain. Ignore this temporary name for now and access the node using its IP address. A later step in the configuration process changes the hostname, resulting in the generation of a permanent SSL certificate for the actual domain name.
     {{< /note >}}
 
     ```command
-    https://<SYSTEM-IP-ADDRESS>:2087
+    https://EXAMPLE_IP_ADDRESS:2087
     ```
 
-1.  The browser displays the WHM login page. Enter `root` for the `Username`. For `Password`, enter the password for the server `root` account.
+1.  The browser displays the WHM login page. Enter `root` for the **Username**. For **Password**, enter the password for the server's `root` account.
 
     ![The WHM Login page](WHM-Login.png)
 
 ### How to Register a License and Access WHM
 
-1.  Accept the `cPanel & WebHost Manager End User License Agreement`. Click on the button stating `I have read and agree to all the legal documents listed above`. Scroll to read the rest of the document. Click **Continue** to proceed.
+1.  Accept the **cPanel & WebHost Manager End User License Agreement**. Click on the button stating `I have read and agree to all the legal documents listed above`. Scroll to read the rest of the document. Click **Continue** to proceed.
 
     ![WHM Legal Agreement](WHM-Agreement.png)
 
@@ -208,7 +210,7 @@ These steps explain how to start with a free cPanel/WHM trial, but the steps to 
 
     ![WHM Get Started Page](WHM-Get-Started-Trial.png)
 
-1.  Use the credentials for the cPanel store to access the account. Enter the `Email address` and `Password` associated with the account. If you do not have an account, create one before proceeding. Select the **Sign In** button to continue.
+1.  Use the credentials for the cPanel store to access the account. Enter the **Email address** and **Password** associated with the account. If you do not have an account, create one before proceeding. Select the **Sign In** button to continue.
 
     ![Log in to the cPanel account](Cpanel-Access-Account.png)
 
@@ -220,7 +222,7 @@ These steps explain how to start with a free cPanel/WHM trial, but the steps to 
 
     ![Enter the email address for WHM](WHM-Configuration-Email.png)
 
-1.  If the activation is successful, the browser displays the main WHM dashboard.
+    If the activation is successful, the browser displays the main WHM dashboard:
 
     ![View the WHM Dashboard](WHM-Dashboard.png)
 
@@ -228,21 +230,21 @@ These steps explain how to start with a free cPanel/WHM trial, but the steps to 
 
 For proper access, the hostname should be changed to a meaningful domain name. cPanel proceeds to issue a SSL certificate based on the domain name for increased security. To change the hostname, follow these steps.
 
-1.  In the left-hand menu, expand **Networking Setup** and select the **Change Hostname** option.
+1.  In the left-hand menu, expand **Networking Setup** and select the **Change Hostname** option:
 
     ![Select the Change Hostname Option](WHM-Change-Hostname-Option.png)
 
-1.  This presents the user interface for the `Change Hostname` option. It consists of a series of instructions along with a text box for the new host name. The host name should be set to the subdomain associated with the server. This subdomain must not be used anywhere else. Click **Change** to continue.
+1.  This presents the user interface for the **Change Hostname** option. It consists of a series of instructions along with a text box for the new host name. The host name should be set to the subdomain associated with the server. This subdomain must not be used anywhere else. Click **Change** to continue.
 
     ![The Change Hostname Interface](WHM-Change-Hostname-Interface.png)
 
 1.  WHM runs a script indicating how the change is progressing. At the end, it provides an option to add a DNS entry for the new subdomain. The entry can be either added here or through a third-party DNS server.
 
     {{< note >}}
-    Adding the DNS A record through an external DNS service or on the domain registrar is recommended for most users.
+    Adding the DNS A record through an external DNS service or domain registrar is recommended for most users.
     {{< /note >}}
 
-1.  **Optional** To add an entry using WHM, click the **Add an A entry for your hostname** button.
+1.  **Optional:** To add an entry using WHM, click the **Add an A entry for your hostname** button.
 
     ![Add an A Record](Add-A-Entry-Subdomain.png)
 
@@ -276,12 +278,12 @@ Users can only access the cPanel interface if they have a cPanel account. This m
 
 1.  Enter information about the new account using the interface. Specify the following details.
 
-    - Enter the name of the domain in the `Domain` field. This would typically be a subdomain of the core domain, for instance, `testuser.example.com`.
-    - Specify a unique `username` for the account. The first eight characters must be unique within the accounts. The entire user name must be sixteen characters or less. It can only include lower case letters and numbers, and must begin with a letter. A user name beginning with `test` is not allowed.
-    - Enter a unique secure password for the `Password` field, then retype it under `Re-Type Password`. The strength indicator displays how strong the password is. It should ideally be green in color, which means it passes the basic strength threshold.
-    - For `email`, specify a contact email for the account.
-    - Choose a package for the user. A package indicates the system quotas for the user. The `default` package provides unrestricted limits. It is also possible to `Select Options Manually`.
-    - **Optional** Select, deselect, or change any remaining account privileges, for example, `CGI Access`.
+    -   Enter the name of the domain in the `Domain` field. This would typically be a subdomain of the core domain, for instance, `testuser.example.com`.
+    -   Specify a unique `username` for the account. The first eight characters must be unique within the accounts. The entire user name must be sixteen characters or less. It can only include lower case letters and numbers, and must begin with a letter. A user name beginning with `test` is not allowed.
+    -   Enter a unique secure password for the `Password` field, then retype it under `Re-Type Password`. The strength indicator displays how strong the password is. It should ideally be green in color, which means it passes the basic strength threshold.
+    -   For `email`, specify a contact email for the account.
+    -   Choose a package for the user. A package indicates the system quotas for the user. The `default` package provides unrestricted limits. It is also possible to `Select Options Manually`.
+    -   **Optional:** Select, deselect, or change any remaining account privileges, for example, `CGI Access`.
 
     ![Add New Account Details](WHM-Add-New-Account-Details.png)
 
@@ -297,21 +299,21 @@ After the account has been created, access and administer it using the cPanel in
 Immediately after it creates the account, WHM provides a shortcut button labeled **Go to cPanel**. This allows the `root` user to immediately access the cPanel interface for the new account and confirm it has been initialized correctly.
 {{< /note >}}
 
-1.  Use a web browser to access port `2083` of the subdomain associated with the new account. In the following address, replace `example.com` with the name of the domain.
+1.  Use a Web browser to access port `2083` of the subdomain associated with the new account. In the following address, replace `EXAMPLE_DOMAIN_NAME.com` with the name of the domain.
 
     {{< note >}}
     cPanel uses port `2083` while WHM uses port `2087`. Both ports are on the same server.
     {{< /note >}}
 
     ```command
-    https://testuser.example.com:2083
+    https://testuser.EXAMPLE_DOMAIN_NAME.com:2083
     ```
 
 1.  Enter the `Username` and `Password` for the account. Then select **Log in**.
 
     ![Log in to cPanel](cPanel-Login.png)
 
-1.  cPanel displays the default dashboard, containing a series of icons associated with common tasks. Scroll down to locate more options. On the right side of the screen, the dashboard displays information about the account, including account statistics.
+    cPanel displays the default dashboard, containing a series of icons associated with common tasks. Scroll down to locate more options. On the right side of the screen, the dashboard displays information about the account, including account statistics.
 
     ![The cPanel Dashboard](cPanel-Dashboard.png)
 
@@ -319,30 +321,36 @@ Immediately after it creates the account, WHM provides a shortcut button labeled
 
 cPanel allows users to configure one or more email accounts using the main cPanel dashboard. Users can access their email account using the cPanel webmail interface on the same system. To add and use an email account, follow these steps.
 
-1.  Click the **Email Accounts** icon on the cPanel dashboard. This is one of the more prominent links, located at the top left of the dashboard.
+{{< content "email-warning-shortguide" >}}
+
+1.  Click the **Email Accounts** icon on the cPanel dashboard. This is one of the more prominent links, located at the top left of the dashboard:
 
     ![The Email Accounts Icon on the Dashboard](Email-Accounts-Icon.png)
 
-1. cPanel displays the `Email Accounts` interface. A system account for the domain, with the name of the administrative user, already exists.
+    cPanel displays the `Email Accounts` interface. A system account for the domain, with the name of the administrative user, already exists:
 
     ![The Email Accounts Interface](Email-Accounts-Interface.png)
 
-1.  Click the **Create** button on the right side of the interface to add a new account.
+1.  Click the **Create** button on the right side of the interface to add a new account:
 
     ![The Create Email Account Button](Email-Create-Button.png)
 
-1.  On the next screen, add the account information. The following information is required.
+1.  On the next screen, add the account information. The following information is required:
 
-    - Add a `Username` for the account. The full email address of the account consists of the user name, the `@` symbol, and the name of the subdomain associated with the cPanel account. For instance, for an email user named `mailuser` within the subdomain `testuser.example.com`, the email address is `mailuser@testuser.example.com`.
-    - Include the `Password` information. Two options are available. The administrator can define the password when creating the account using the `Set password now` option. They must then either enter the password in the subsequent text box. They can also use the `Generate` option to create a system-generated password. Alternatively, they can choose `Send login link to alternate email address`. With this option, the user receives a link and then sets their own password when logging in.
-    - To remain on the current page after creating the account, select the `Stay on this page after I click Create` check box.
-    - Click the **Create** button when finished.
+    -   Add a **Username** for the account. The full email address of the account consists of the Username, the `@` symbol, and the name of the subdomain associated with the cPanel account. For instance, for an email user named `mailuser` within the subdomain `testuser.example.com`, the email address is `mailuser@testuser.example.com`.
+    -   Include the **Password** information. Two options are available. The administrator can define the password when creating the account using the **Set password now** option. They must then either enter the password in the subsequent text box or use the **Generate** option to create a system-generated password. Alternatively, they can choose **Send login link to alternate email address**. With this option, the user receives a link and then sets their own password when logging in.
+    -   To remain on the current page after creating the account, select the **Stay on this page after I click Create** check box.
+    -   Click the **Create** button when finished.
 
     cPanel confirms the account has been successfully created.
 
     ![Add Details about the Email Account](Create-Email-Account.png)
 
-1.  To read and send emails, use the cPanel email interface. The Webmail service is available on port `2096` of the server. For example, for the domain `testuser.example.com`, the address is https://testuser.example.com:2096. Connect to the port to display the Webmail login page.
+1.  To read and send emails, use the cPanel email interface. Connect to the port to display the Webmail login page. The Webmail service is available on port `2096` of the server. For example, the address for the domain `testuser.example.com` would be:
+
+    ```command
+    https://testuser.example.com:2096
+    ```
 
     Enter the user name for the account along with the password and click the **Log In** button. This displays the webmail interface for the account.
 
@@ -360,16 +368,16 @@ cPanel allows users to configure one or more email accounts using the main cPane
 
 ## How to Upload Files Using sFTP
 
-Users can upload files to their domain using the SSH File Transfer Protocol (SFTP) protocol. SFTP is a more secure version of FTP that uses SSH keys to encrypt the content. This guide uses [FileZilla](/docs/guides/filezilla/) to demonstrate this task, but other SFTP clients, such as [sFTP](/docs/guides/sftp-linux/), can also be used.
+Users can upload files to their domain using the SSH File Transfer Protocol (SFTP). SFTP is a more secure version of FTP that uses SSH keys to encrypt the content. This guide uses [FileZilla](/docs/guides/filezilla/) to demonstrate this task, but other SFTP clients, such as [sFTP](/docs/guides/sftp-linux/), can also be used.
 
 The SFTP client requires the following information to connect to the cPanel account. Consult the [cPanel SFTP documentation](https://docs.cpanel.net/knowledge-base/ftp/how-to-configure-your-sftp-client/) for more information.
 
-- `Hostname`: The subdomain name associated with the cPanel account, for example, `testuser.example.com`.
-- `SSH port number`: The port number for the connection. For SFTP connections, choose port `22`.
-- `Security`: Whether to use FTP or SFTP for the transfer. SFTP is recommended for transferring files.
-- `Username`: The user name associated with the cPanel account.
-- `Password`: The password for the `Username` account.
-- `Private Key`: The location of the SSH private key. cPanel requires this key to accept the connection. This key must be generated inside the cPanel interface and downloaded to another location.
+-   `Hostname`: The subdomain name associated with the cPanel account, for example, `testuser.example.com`.
+-   `SSH port number`: The port number for the connection. For SFTP connections, choose port `22`.
+-   `Security`: Whether to use FTP or SFTP for the transfer. SFTP is recommended for transferring files.
+-   `Username`: The user name associated with the cPanel account.
+-   `Password`: The password for the `Username` account.
+-   `Private Key`: The location of the SSH private key. cPanel requires this key to accept the connection. This key must be generated inside the cPanel interface and downloaded to another location.
 
 Before proceeding with the transfer, it is important to understand the [cPanel File Manager](https://docs.cpanel.net/cpanel/files/file-manager/). Each cPanel account has a home directory located at `/home/exampleuser`. Clicking on the **File Manager** icon opens the file manager to the user home directory. From within this location, users can browse the other directories. Of particular note is the `public_html` folder. This is the root directory for all website files. The `public_ftp` directory is a good staging point for uploading and downloading files.
 
@@ -519,10 +527,10 @@ To install WordPress, follow these steps.
 
 1.  The WP Toolkit displays a list of settings for the new installation.
 
-    - In the `General` section, choose a `Website Title`, a `Plugin/Theme Set`, and the `Website Language`.
-    - The `Version` should be the current release, which is the default value. The `Installation Path` should also remain at the default value.
-    - For the `WordPress Administrator`, enter the `Username` for the administrator along with their `Email`. The WP Toolkit generates a default password for the account. Click the "eye" icon to view and copy the password.
-    - New WordPress users should leave the `Database` and `Automatic Update Settings` at the current settings. Experienced WordPress users might want to review and potentially adjust these values.
+    -   In the `General` section, choose a `Website Title`, a `Plugin/Theme Set`, and the `Website Language`.
+    -   The `Version` should be the current release, which is the default value. The `Installation Path` should also remain at the default value.
+    -   For the `WordPress Administrator`, enter the `Username` for the administrator along with their `Email`. The WP Toolkit generates a default password for the account. Click the "eye" icon to view and copy the password.
+    -   New WordPress users should leave the `Database` and `Automatic Update Settings` at the current settings. Experienced WordPress users might want to review and potentially adjust these values.
 
     Click **Install** to begin the installation.
 
@@ -546,12 +554,12 @@ To install WordPress, follow these steps.
 
 cPanel includes built-in *Domain Name System* (DNS) software. This allows cPanel users to self-host their own name servers and directly manage DNS records for their domains.
 
-Most users who only intend to manage a few domains and sites should use external DNS nameservers. These can be the default name servers from the domain registrar or DNS servers hosted through a third-party service. For example, Akamai users can use the Linode DNS manager to add and manage their DNS records. This approach has the advantage of being highly-reliable and resilient, with fast propagation.
+Most users who only intend to manage a few domains and sites should use external DNS nameservers. These can be the default name servers from the domain registrar or DNS servers hosted through a third-party service. For example, Akamai users can use the Linode DNS manager to add and manage their DNS records. This approach has the advantage of being highly reliable and resilient, with fast propagation.
 
-Server administrators can also use the built-in cPanel DNS service to add, delete, or change domain records. This option is much more complicated and requires more expertise and planning. Any self-hosted name servers must be given a fully-qualified domain name. Additionally, users must configure glue records for their name servers at the domain registrar. This record includes the IP address of the cPanel system hosting the name servers and helps to avoid circular requests.
+Server administrators can also use the built-in cPanel DNS service to add, delete, or change domain records. This option is much more complicated and requires more expertise and planning. Any self-hosted name servers must be given a fully qualified domain name. Additionally, users must configure glue records for their name servers at the domain registrar. This record includes the IP address of the cPanel system hosting the name servers and helps to avoid circular requests.
 
 Unfortunately, a self-hosted DNS system lacks resiliency and is vulnerable to failures. However, two options to add redundancy are available. A backup secondary name server can be configured using an external DNS provider. The secondary server receives updates from the primary name servers and operates in read-only mode. Alternatively, multiple cPanel DNSOnly servers can be joined into a multi-server cluster. Any one of the name servers can handle an incoming request. For more information about DNS services on cPanel, consult the [cPanel DNS guide](/docs/guides/configure-name-server-dns-cpanel/).
 
 ## Conclusion
 
-cPanel is a powerful and fully-featured commercial application for creating, administering, and hosting web sites. It is pre-packaged with many useful tools including a DNS manager, a MySQL database, and the WHM server management tool. cPanel allows users to upload files and create email accounts. It also includes the WP Toolkit for installing, updating, and managing WordPress sites. cPanel can be installed manually or through the Akamai Marketplace. For more information on cPanel/WHM, see the [official documentation](https://www.cpanel.net/support/).
+cPanel is a powerful and fully featured commercial application for creating, administering, and hosting web sites. It is pre-packaged with many useful tools including a DNS manager, a MySQL database, and the WHM server management tool. cPanel allows users to upload files and create email accounts. It also includes the WP Toolkit for installing, updating, and managing WordPress sites. cPanel can be installed manually or through the Akamai Marketplace. For more information on cPanel/WHM, see the [official documentation](https://www.cpanel.net/support/).
