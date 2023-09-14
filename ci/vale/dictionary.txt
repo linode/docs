@@ -255,6 +255,7 @@ campione
 canonicalize
 canonicalization
 captcha
+Carbonio
 carootcert
 ccm
 CDNs
@@ -2657,6 +2658,7 @@ zabbix
 zapier
 zcat
 zend
+Zextras
 zgrep
 zhao
 zigbee
