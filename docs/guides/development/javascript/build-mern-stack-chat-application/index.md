@@ -1,20 +1,13 @@
 ---
-slug: creating-mern-stack-app-ubuntu-debian
-author:
-  name: Linode Community
-  email: docs@linode.com
+slug: build-mern-stack-chat-application
+authors: ["Nathaniel Stickman"]
 description: "Learn how to develop a MERN stack app for an Ubuntu or Debian server."
-og_description: "Learn how to develop a MERN stack app for an Ubuntu or Debian server."
 keywords: ['mern stack','mern tutorial','mern app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-01
+published: 2023-09-14
 modified_by:
-  name: Nathaniel Stickman
-title: "How to Create a MERN Stack App on Ubuntu 20.04 or Debian 10"
-h1_title: "How to Create a MERN Stack App on Ubuntu 20.04 or Debian 10"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+  name: Linode
+title: "Build a Basic Chat Application using the MERN Stack"
 external_resources:
 - '[MongoDB: How to Use MERN Stack](https://www.mongodb.com/languages/mern-stack-tutorial)'
 - '[Mozilla Developer Network Web Docs: Express Tutorial Part 3: Using a Database (with Mongoose)](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose)'

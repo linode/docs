@@ -1,5 +1,5 @@
 ---
-slug: how-to-create-a-mern-stack-application
+slug: install-the-mern-stack
 description: "Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!"
 keywords: ['MERN Stack Application','How to create a MERN stack application','MERN stack','MERN stack application', 'learn Linux filesystem', 'MERN stack on Linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -7,14 +7,14 @@ published: 2022-09-12
 modified: 2022-09-23
 modified_by:
   name: Linode
-title: "Create a MERN Stack Application"
-title_meta: "How to Create a MERN Stack on Linux"
+title: "Install the MERN Stack and Create an Example Application"
 external_resources:
 - '[How to Use MERN Stack: A Complete Guide](https://www.mongodb.com/languages/mern-stack-tutorial)'
 - '[The MERN stack: A complete tutorial](https://blog.logrocket.com/mern-stack-tutorial/)'
 - '[Learn the MERN Stack - Full Tutorial for Beginners (MongoDB, Express, React, NodeJS) in 12Hrs (2021)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
 - '[Learn the MERN Stack - Full Tutorial (MongoDB, Express, React, Node.js)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
-authors: ["Cameron Laird"]
+authors: ["Linode","Cameron Laird","Nathaniel Stickman"]
+aliases: ['/guides/how-to-create-a-mern-stack-application/']
 ---
 
 Of all the possible technical bases for a modern web site, ["MERN holds the leading position when it comes to popularity."](https://www.gkmit.co/blog/web-app-development/mean-vs-mern-stack-who-will-win-the-war-in-2021) This introduction makes you familiar with the essential tools used for a plurality of all web sites worldwide.
@@ -52,35 +52,47 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
         apt update -y
 
-2.  Install the networking and service dependencies Mongo requires:
+1.  Install the networking and service dependencies Mongo requires:
 
         apt install ca-certificates curl gnupg2 systemctl wget -y
 
-3.  Configure access to the official MongoDB Community Edition repository with the MongoDB public GPG key:
+1. Import the GPG key for MongoDB:
 
-        wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | apt-key add -
+        wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
 
-4.  Create a MongoDB list file:
+1. Add the MongoDB package list to APT.
 
-        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+    - On Debian 10 (Buster):
 
-5.  Update the repository cache again:
+            echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
 
-        apt update -y
+    - On Ubuntu 20.04 (Focal):
 
-6.  Install MongoDB itself:
+            echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
 
-        apt install mongodb-org -y
+1. Update the APT package index:
 
-7.  Enable and the MongoDB service:
+        sudo apt update
+
+1. Install MongoDB:
+
+        sudo apt install mongodb-org
+
+See the official documentation for more on installing MongoDB [on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) and [on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/). You can also refer to our guide [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/).
+
+#### Start MongoDB and Verify Installation
+
+Once MongoDB has been installed, enable and start the service. You can optionally test MongoDB to verify that it has installed correctly.
+
+1.  Enable and the MongoDB service:
 
         systemctl enable mongod
 
-8.  Launch the MongoDB service:
+1.  Launch the MongoDB service:
 
         systemctl start mongod
 
-9.  Verify the MongoDB service:
+1.  Verify the MongoDB service:
 
         systemctl status mongod
 
@@ -88,7 +100,7 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
     {{< output >}}… Started MongoDB Database Server.{{< /output >}}
 
-0.  For an even stronger confirmation that the Mongo server is ready for useful action, connect directly to it and issue this command:
+1.  For an even stronger confirmation that the Mongo server is ready for useful action, connect directly to it and issue this command:
 
         mongo
 
@@ -100,7 +112,7 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
     {{< output >}}… MongoDB server … "ok" : 1 …{{< /output >}}
 
-2.  Exit Mongo:
+1.  Exit Mongo:
 
         exit
 
@@ -108,39 +120,45 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
 While the acronym is MERN, the true order of its dependencies is better written as "MNRE". ReactJS and Express.js conventionally require Node.js, so the next installation steps focus on Node.js. As with MongoDB, Node.js's main trusted repository is not available in the main Ubuntu repository.
 
-1.  Run this command to adjoin it:
+1.  Install the Node Version Manager, the preferred method for installing Node.js:
 
-        curl -sL https://deb.nodesource.com/setup_16.x | bash -
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
-2.  Install Node.js itself:
+1.  Restart your shell session (logging out and logging back in), or run the following commands:
 
-        apt-get install nodejs -y
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-3.  Verify the installation:
+1.  Install the current version of Node.js:
 
-        node -v
+        nvm install node
 
-    You should see `v16.15.1` or perhaps later.
+1.  If you are deploying an existing project that uses the Yarn package manager instead of NPM, you need to install Yarn as well. You can do so with:
+
+        npm install -g yarn
+
+You can additionally refer to our [How to Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-or-update-npm) guide. If you are interested in using Yarn instead of NPM, take a look at our [How to Install and Use the Yarn Package Manager](/docs/guides/install-and-use-the-yarn-package-manager/) guide.
 
 ### Install React.js
 
-1.  Next, install React.js:
+Next, install React.js:
 
-        mkdir demonstration; cd demonstration
-        npx --yes create-react-app frontend
-        cd frontend
-        npm run build
+    mkdir demonstration; cd demonstration
+    npx --yes create-react-app frontend
+    cd frontend
+    npm run build
 
 Templates for all the HTML, CSS, and JS for your model application are now present in the demonstration/frontend directory.
 
 ### Install Express.js
 
-1.  Express.js is the final component of the basic MERN stack.
+Express.js is the final component of the basic MERN stack.
 
-        cd ..; mkdir server; cd server
-        npm init -y
-        cd ..
-        npm install cors express mongodb mongoose nodemon
+    cd ..; mkdir server; cd server
+    npm init -y
+    cd ..
+    npm install cors express mongodb mongoose nodemon
 
 ## Use the MERN stack to create an example application
 
