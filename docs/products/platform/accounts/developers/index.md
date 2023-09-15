@@ -11,23 +11,23 @@ published: 2022-11-21
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [Account View](/docs/api/account/#account-view)
+- [Account View](/docs/api/account/account-view/)
 
-- [Account Update](/docs/api/account/#account-update)
+- [Account Update](/docs/api/account/account-update/)
 
-- [Account Cancel](/docs/api/account/#account-cancel)
+- [Account Cancel](/docs/api/account/account-cancel/)
 
-- [Users List](/docs/api/account/#users-list)
+- [Users List](/docs/api/account/users-list/)
 
-- [Users Create](/docs/api/account/#user-create)
+- [Users Create](/docs/api/account/user-create/)
 
-- [Users View](/docs/api/account/#user-view)
+- [Users View](/docs/api/account/user-view/)
 
-- [User Update](/docs/api/account/#user-update)
+- [User Update](/docs/api/account/user-update/)
 
-- [User's Grants View](/docs/api/account/#users-grants-view)
+- [User's Grants View](/docs/api/account/users-grants-view/)
 
-- [User's Grants Update](/docs/api/account/#users-grants-update)
+- [User's Grants Update](/docs/api/account/users-grants-update/)
 
 ## Linode CLI
 

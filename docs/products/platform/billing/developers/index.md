@@ -12,23 +12,23 @@ published: 2022-11-17
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [List Invoices](/docs/api/account/#list-invoices)
+- [List Invoices](/docs/api/account/list-invoices/)
 
-- [View Invoice](/docs/api/account/#view-invoice)
+- [View Invoice](/docs/api/account/view-invoice/)
 
-- [List Invoice Items](/docs/api/account/#list-invoice-items)
+- [List Invoice Items](/docs/api/account/list-invoice-items/)
 
-- [List Payments](/docs/api/account/#list-payments)
+- [List Payments](/docs/api/account/list-payments/)
 
-- [Make Payment](/docs/api/account/#make-payment)
+- [Make Payment](/docs/api/account/make-payment/)
 
-- [View Payment](/docs/api/account/#view-payment)
+- [View Payment](/docs/api/account/view-payment/)
 
-- [Stage PayPal Payment](/docs/api/account/#stage-paypal-payment)
+- [Stage PayPal Payment](/docs/api/account/stage-paypal-payment/)
 
-- [Staged/Approved PayPal Payment Execute](/docs/api/account/#stagedapproved-paypal-payment-execute)
+- [Staged/Approved PayPal Payment Execute](/docs/api/account/stagedapproved-paypal-payment-execute/)
 
-- [Add/Edit Credit Card](/docs/api/account/#addedit-credit-card)
+- [Add/Edit Credit Card](/docs/api/account/addedit-credit-card/)
 
 ## Linode CLI
 

@@ -179,11 +179,11 @@ open_support_tickets = linode_client.support.tickets(SupportTicket.status == "op
 {{< /file >}}
 
 {{< note type="secondary" title="About the code" isCollapsible=true >}}
-These lines query the Linode API to get a list of the support tickets on your account. The Python binding for the [Support Tickets List](/docs/api/support/#support-tickets-list) API endpoint is accessed. The documentation for this endpoint shows the `account:read_only` authorization is needed to access it. This is why the Account resource was chosen in the [Get a Linode API Token](#get-a-linode-api-token) section.
+These lines query the Linode API to get a list of the support tickets on your account. The Python binding for the [Support Tickets List](/docs/api/support/support-tickets-list/) API endpoint is accessed. The documentation for this endpoint shows the `account:read_only` authorization is needed to access it. This is why the Account resource was chosen in the [Get a Linode API Token](#get-a-linode-api-token) section.
 
 A support ticket can be open or closed. Tickets are open when they are still awaiting a response from the support team or from the Linode customer. The second line in the example code shows how to use the Linode API's [filtering syntax](/docs/api/#filtering-and-sorting) to only get the support tickets that are currently open on your account.
 
-The list of tickets returned by `linode_client.support.tickets()` is ordered from most recent to oldest. The first element of this list is the most recent ticket on your account. The [Support Tickets List](/docs/api/support/#support-tickets-list) endpoint documentation shows the properties of each ticket object in the list.
+The list of tickets returned by `linode_client.support.tickets()` is ordered from most recent to oldest. The first element of this list is the most recent ticket on your account. The [Support Tickets List](/docs/api/support/support-tickets-list/) endpoint documentation shows the properties of each ticket object in the list.
 
 In the next section, the message contents are customized according to whether or not you have any open tickets.
 {{< /note >}}

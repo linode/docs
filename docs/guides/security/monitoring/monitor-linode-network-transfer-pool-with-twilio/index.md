@@ -26,11 +26,11 @@ It's important to keep track of how much bandwidth your account has. If you use 
 
 - Linode sends [email alerts](/docs/products/platform/get-started/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
 
-Using Twilio, you can also build a custom text message notification system for your transfer usage. Such a system would periodically send notifications to help you be aware of your transfer usage without manually checking on it. You can also configure the system to send notifications at custom transfer usage percents, instead of the standard 80%, 90%, and 100% Linode email alerts. This custom notification system relies on the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) of the Linode API.
+Using Twilio, you can also build a custom text message notification system for your transfer usage. Such a system would periodically send notifications to help you be aware of your transfer usage without manually checking on it. You can also configure the system to send notifications at custom transfer usage percents, instead of the standard 80%, 90%, and 100% Linode email alerts. This custom notification system relies on the [Network Transfer View endpoint](/docs/api/linode-instances/network-transfer-view/) of the Linode API.
 
 ## In this Guide
 
-- In the [Send Network Transfer Usage in a Text Message](#send-network-transfer-usage-in-a-text-message) section, a Python script is demonstrated that queries the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) of the Linode API. The information from this endpoint is embedded in a text message that is delivered via the Twilio API.
+- In the [Send Network Transfer Usage in a Text Message](#send-network-transfer-usage-in-a-text-message) section, a Python script is demonstrated that queries the [Network Transfer View endpoint](/docs/api/linode-instances/network-transfer-view/) of the Linode API. The information from this endpoint is embedded in a text message that is delivered via the Twilio API.
 
 - The [Set Up a Cron Job](#set-up-a-cron-job) section shows how to periodically call the Python script, so that you can frequently be informed of your network transfer usage.
 
@@ -51,14 +51,14 @@ Using Twilio, you can also build a custom text message notification system for y
     The guide instructs you to install the Linode API and Twilio API clients for Python. When following these instructions, run the commands under the limited Linux user on your Linode instance.
 
     {{< note respectIndent=false >}}
-The prerequisite guide instructs you to select the **Account** resource [when creating the Linode API key](/docs/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token). This resource is also used for the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) that's accessed by the network transfer usage notification system in the current guide.
+The prerequisite guide instructs you to select the **Account** resource [when creating the Linode API key](/docs/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token). This resource is also used for the [Network Transfer View endpoint](/docs/api/linode-instances/network-transfer-view/) that's accessed by the network transfer usage notification system in the current guide.
 {{< /note >}}
 
 1. This guide instructs you to create a Python script from within an SSH session on your Linode. You need to install and use a terminal text editor to write the script on your Linode. Common text editors include [nano](/docs/guides/use-nano-to-edit-files-in-linux/) (the easiest option for terminal beginners), [emacs](https://www.gnu.org/software/emacs/), and [vim](https://www.vim.org/).
 
 ## Send Network Transfer Usage in a Text Message
 
-This section shows how to write a Python script that queries the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) of the Linode API. The information returned by the endpoint is embedded in a text message that is sent via the Twilio API to your phone number.
+This section shows how to write a Python script that queries the [Network Transfer View endpoint](/docs/api/linode-instances/network-transfer-view/) of the Linode API. The information returned by the endpoint is embedded in a text message that is sent via the Twilio API to your phone number.
 
 The last part of this section shows how to run the script manually to deliver a single text notification. [The next section](#set-up-a-cron-job) shows how to periodically run the script.
 
@@ -127,7 +127,7 @@ pool_used_ratio = account_network_transfer.used/account_network_transfer.quota
 {{< /file >}}
 
 {{< note type="secondary" title="About the code" isCollapsible=true >}}
-The first line queries the Linode API to get an object that contains information about your account's network transfer pool for the current month. The Python binding for the [Network Utilization View](/docs/api/account/#network-utilization-view) endpoint is accessed. The documentation for this endpoint shows the `account:read_only` authorization is needed to access it. This is why the Account resource was specified in the [Before You Begin](#get-a-linode-api-token) section.
+The first line queries the Linode API to get an object that contains information about your account's network transfer pool for the current month. The Python binding for the [Network Utilization View](/docs/api/account/network-utilization-view/) endpoint is accessed. The documentation for this endpoint shows the `account:read_only` authorization is needed to access it. This is why the Account resource was specified in the [Before You Begin](#get-a-linode-api-token) section.
 
 This endpoint returns an object that has three properties:
 

@@ -177,7 +177,7 @@ Once the Packer build process completes, a new [Custom Image](/docs/products/too
 
       linode-cli linodes create --root_pass mypassword --region us-east --image linode/debian10
 
-- **Linode APIv4:** Use the Linode API to programmatically create a new Linode by reviewing the documentation outlined under [API > Linode Instances > Linode Create](/docs/api/linode-instances/#linode-create). The following example curl command will deploy a 1GB Linode (Nanode) to the Newark data center. Ensure you replace any necessary parameters, including replacing `linode/debain10` with your Custom Image's ID and assigning your own `root_pass` and `label`.
+- **Linode APIv4:** Use the Linode API to programmatically create a new Linode by reviewing the documentation outlined under [API > Linode Instances > Linode Create](/docs/api/linode-instances/linode-create/). The following example curl command will deploy a 1GB Linode (Nanode) to the Newark data center. Ensure you replace any necessary parameters, including replacing `linode/debain10` with your Custom Image's ID and assigning your own `root_pass` and `label`.
 
       curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \

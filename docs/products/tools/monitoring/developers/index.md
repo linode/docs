@@ -9,13 +9,13 @@ tab_group_main:
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [View Linode Statistics](/docs/api/linode-instances/#view-linode-statistics)
+- [View Linode Statistics](/docs/api/linode-instances/view-linode-statistics/)
 
-- [View Statistics (year/month)](/docs/api/linode-instances/#view-statistics-yearmonth)
+- [View Statistics (year/month)](/docs/api/linode-instances/view-statistics-yearmonth/)
 
-- [List Managed Stats](/docs/api/managed/#list-managed-stats)
+- [List Managed Stats](/docs/api/managed/list-managed-stats/)
 
-- [View NodeBalancer Statistics](/docs/api/nodebalancers/#view-nodebalancer-statistics)
+- [View NodeBalancer Statistics](/docs/api/nodebalancers/view-nodebalancer-statistics/)
 
 - [Longview Endpoints](/docs/api/longview/)
 

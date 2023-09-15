@@ -271,7 +271,7 @@ Run the command below, replacing *[cluster-id]* with the ID of your cluster.
 linode-cli lke cluster-nodes-recycle [cluster-id]
 ```
 
-For more details, review the CLI request sample on the [Cluster Nodes Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#cluster-nodes-recycle).
+For more details, review the CLI request sample on the [Cluster Nodes Recycle API reference](/docs/api/linode-kubernetes-engine-lke/cluster-nodes-recycle/).
 {{< /tab >}}
 {{< tab "Linode API" >}}
 Perform the API request below, replacing *[cluster-id]* with the ID of your cluster.
@@ -283,7 +283,7 @@ curl -H "Content-Type: application/json" \
       https://api.linode.com/v4/lke/clusters/[cluster-id]/recycle
 ```
 
-For more details, review the API request sample on the [Cluster Nodes Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#cluster-nodes-recycle).
+For more details, review the API request sample on the [Cluster Nodes Recycle API reference](/docs/api/linode-kubernetes-engine-lke/cluster-nodes-recycle/).
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -316,7 +316,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
       --autoscaler.min [minimum-nodes]
     ```
 
-    For more details, review the CLI request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
+    For more details, review the CLI request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/node-pool-update/).
     {{< /tab >}}
     {{< tab "Linode API" >}}
     Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
@@ -340,7 +340,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
           https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
     ```
 
-    For more details, review the shell request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
+    For more details, review the shell request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/node-pool-update/).
     {{< /tab >}}
     {{< /tabs >}}
 
@@ -371,7 +371,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
     linode-cli lke node-recycle [cluster-id] [node-id]
     ```
 
-    For more details, review the CLI request sample on the [Node Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#node-recycle).
+    For more details, review the CLI request sample on the [Node Recycle API reference](/docs/api/linode-kubernetes-engine-lke/node-recycle/).
     {{< /tab >}}
     {{< tab "Linode API" >}}
     Perform the API request below, replacing *[cluster-id]* with the ID of your cluster and *[node-id]* with the ID of the node.
@@ -383,7 +383,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
           https://api.linode.com/v4/lke/clusters/[cluster-id]/nodes/[node-id]/recycle
     ```
 
-    For more details, review the API request sample on the [Node Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#node-recycle).
+    For more details, review the API request sample on the [Node Recycle API reference](/docs/api/linode-kubernetes-engine-lke/node-recycle/).
     {{< /tab >}}
     {{< /tabs >}}
 
@@ -414,7 +414,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
       --autoscaler.min [minimum-nodes]
     ```
 
-    For more details, review the CLI request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
+    For more details, review the CLI request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/node-pool-update/).
     {{< /tab >}}
     {{< tab "Linode API" >}}
     Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
@@ -438,7 +438,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
           https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
     ```
 
-    For more details, review the shell request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
+    For more details, review the shell request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/node-pool-update/).
     {{< /tab >}}
     {{< /tabs >}}
 
@@ -473,7 +473,7 @@ These instructions cover deleting the old node pool after all nodes have been fu
         --autoscaler.min [minimum-nodes] \
     ```
 
-    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-create) (select the **CLI** tab).
+    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/node-pool-create/) (select the **CLI** tab).
     {{< /tab >}}
     {{< tab "Linode API" >}}
     Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
@@ -497,7 +497,7 @@ These instructions cover deleting the old node pool after all nodes have been fu
           }' \
           https://api.linode.com/v4/lke/clusters/[cluster-id]/pools
     ```
-    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-create).
+    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/node-pool-create/).
     {{< /tab >}}
     {{< /tabs >}}
 
@@ -530,7 +530,7 @@ These instructions cover deleting the old node pool after all nodes have been fu
     linode-cli lke pool-delete [cluster-id] [pool-id]
     ```
 
-    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-delete) (select the **CLI** tab).
+    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/node-pool-delete/) (select the **CLI** tab).
     {{< /tab >}}
     {{< tab "Linode API" >}}
     Perform the API request below, replacing *[cluster-id]* with the ID of your cluster and *[pool-id]* with the ID of the original node pool.
@@ -541,6 +541,6 @@ These instructions cover deleting the old node pool after all nodes have been fu
         https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
     ```
 
-    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-delete).
+    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/node-pool-delete/).
     {{< /tab >}}
     {{< /tabs >}}

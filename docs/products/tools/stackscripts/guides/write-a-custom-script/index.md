@@ -137,7 +137,7 @@ Linode StackScripts provide a set of default environment variables that you can 
 | `LINODE_ID` | The deployed Linode's ID number. |
 | `LINODE_LISHUSERNAME` | The deployed Linode's full [Linode Shell (LISH)](/docs/guides/using-the-lish-console/) accessible name. |
 | `LINODE_RAM` | The [RAM available on this Linode's plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/#hardware-resource-definitions). |
-| `LINODE_DATACENTERID` | The ID number of the data center containing the Linode. You can use the [Linode API](/docs/api/regions/#regions-list) to see a list of all data center IDs. |
+| `LINODE_DATACENTERID` | The ID number of the data center containing the Linode. You can use the [Linode API](/docs/api/regions/regions-list/) to see a list of all data center IDs. |
 
 ### Set your Environment Variables Using an External File
 
