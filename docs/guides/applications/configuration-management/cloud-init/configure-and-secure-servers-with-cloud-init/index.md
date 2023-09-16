@@ -158,7 +158,7 @@ service sshd restart
 
 ## Install Any Additional Required Software
 
-With cloud-config's `packages` key, you can automate software installation and management as part of server initialization. For a thorough coverage of cloud-init's package management features, and examples of ways to use it, see our guide [Use Cloud-init to Install and Update Software on New Servers](/docs/guides/manage-users-with-cloud-init/).
+With cloud-config's `packages` key, you can automate software installation and management as part of server initialization. For a thorough coverage of cloud-init's package management features, and examples of ways to use it, see our guide [Use Cloud-init to Install and Update Software on New Servers](/docs/guides/install-and-update-software-with-cloud-init/).
 
 As a basic illustration, the snippet below shows how you can install a set of software during instance initialization. The example installs software for a "LEMP" web stack — NGINX, MySQL, and PHP — a popular setup for web applications. (If you are interested, you can learn more about LEMP stacks in our guide on how to [Install a LEMP Stack](/docs/guides/how-to-install-a-lemp-stack-on-ubuntu-22-04/).)
 
