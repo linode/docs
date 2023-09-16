@@ -78,6 +78,7 @@ appserver
 appsmith
 appwrite
 apxs
+architected
 architecting
 aren
 argv
@@ -461,11 +462,13 @@ dbd
 dbs
 dbdir
 dbfiles
+DBMSs
 dbname
 dbserver
 dcid
 dcs
 deadman
+deallocated
 deallocation
 deathmatch
 debconf
@@ -959,6 +962,7 @@ ifup
 ifupdown
 ignoreip
 ignoreregex
+ILLA
 ikiwiki
 im
 imagize
@@ -1135,6 +1139,7 @@ kloxo
 knockpy
 knowledgebase
 Kodu
+Kompose
 Konqueror
 konsole
 kotin
@@ -1655,6 +1660,7 @@ pathnames
 paypal
 PBCs
 pbr
+PDFs
 pem
 pentest
 pentesting
@@ -1831,6 +1837,8 @@ rce
 rclone
 rcon
 rdbadmin
+RDBMS
+RDBMSs
 rdiff
 reachability
 readcaps

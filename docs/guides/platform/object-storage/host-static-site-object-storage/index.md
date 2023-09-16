@@ -4,7 +4,7 @@ description: "This article shows you how you can host a static website from Lino
 keywords: ['hugo','static site','object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-09
-modified: 2022-02-04
+modified: 2023-08-15
 modified_by:
   name: Linode
 title: "Deploy a Static Site using Hugo and Object Storage"
@@ -17,10 +17,6 @@ aliases: ['/platform/object-storage/host-static-site-object-storage/']
 image: host-a-static-site-using-linode-object-storage.png
 authors: ["Linode"]
 ---
-
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 ## Why Host a Static Site on Object Storage?
 

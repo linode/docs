@@ -68,3 +68,5 @@ To take advantage of the powerful parallel processing capabilities offered by GP
     1.  Run `nvidia-smi` to verify that the NVIDIA drivers and CUDA Toolkit are installed successfully. This command should output details about the driver version, CUDA version, and the GPU itself.
 
 1.  You should now be ready to run your CUDA-optimized workloads. You can optionally download NVIDIA's [CUDA code samples](https://github.com/nvidia/cuda-samples) and review CUDA's [Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html) to learn more about developing software to take advantage of a GPU instance.
+
+**Optional**: After you have completed the installation, you can [capture a custom image of the Compute Instance](/docs/products/tools/images/guides/capture-an-image/) and use it the next time you need to deploy a GPU instance.
