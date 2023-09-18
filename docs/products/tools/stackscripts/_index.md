@@ -9,8 +9,10 @@ tab_group_main:
 cascade:
     product_description: "Custom deployment scripts used to install software or configure a system on new Compute Instances."
 aliases: ['/platform/stackscripts-classic-manager/','/platform/stackscripts/','/platform/stackscripts-new-manager/','/stackscripts/','/guides/platform/stackscripts/']
-modified: 2022-12-06
+modified: 2023-09-18
 ---
+
+{{< content "metadata-stackscripts-notice" >}}
 
 [StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems. They work by running a custom script when deploying a new Compute Instance. These custom scripts store tasks that you may need to repeat often on new Compute Instances, such as:
 
