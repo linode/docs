@@ -1,9 +1,6 @@
 ---
 slug: debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Debian 5 (Lenny).'
 keywords: ["postgresql", "postgresql database", "postgresql on debian", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,11 +16,12 @@ relations:
             - distribution: Debian 5
 tags: ["debian","database","postgresql"]
 aliases: ['/databases/postgresql/debian-5-lenny/']
+authors: ["Linode"]
 ---
 
 
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Debian 5 (Lenny). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Debian 5 (Lenny). We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.
 
 ## Installing PostgreSQL
 

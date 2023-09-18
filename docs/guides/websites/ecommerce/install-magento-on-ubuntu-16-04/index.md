@@ -1,8 +1,5 @@
 ---
 slug: install-magento-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Magento Community Edition on Ubuntu 16.04 to manage your e-commerce site.'
 keywords: ["magento", "ubuntu", "e-commerce", "magento ubuntu"]
 tags: ["ubuntu", "lamp", "ssl", "cms"]
@@ -21,6 +18,7 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 aliases: ['/websites/ecommerce/install-magento-on-ubuntu-16-04/']
+authors: ["Linode"]
 ---
 
 In this guide you'll learn how to install Magento on Ubuntu 16.04. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.
@@ -29,29 +27,29 @@ In this guide you'll learn how to install Magento on Ubuntu 16.04. Magento Commu
 
 Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a [High Memory Linode](https://www.linode.com/pricing/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.1.x. If you plan to use data, themes, and extensions from an older Magento site, be sure to check for compatibility issues between the two versions since not everything may function as it did in older releases.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache, MySQL and PHP. If you haven't, refer to our [LAMP on Ubuntu 16.04](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) guide. Be aware that there are known compatibility issues with PHP 7.0.5, so check your version with `php -v` before proceeding.
+3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache, MySQL and PHP. If you haven't, refer to our [LAMP on Ubuntu 16.04](/docs/guides/install-lamp-stack-on-ubuntu-16-04/) guide. Be aware that there are known compatibility issues with PHP 7.0.5, so check your version with `php -v` before proceeding.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prepare Your Server for Magento
 
-In addition to the standard [LAMP stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) software in our guide, Magento requires a few extra dependencies. To install them:
+In addition to the standard [LAMP stack](/docs/guides/install-lamp-stack-on-ubuntu-16-04/) software in our guide, Magento requires a few extra dependencies. To install them:
 
     sudo apt-get install php7.0-common php7.0-gd php7.0-mcrypt php7.0-curl php7.0-intl php7.0-xsl php7.0-mbstring php7.0-zip php7.0-iconv mysql-client
 
@@ -69,7 +67,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
         sudo a2enmod rewrite
 
-3.  Modify the virtual host file for your Magento site to resemble the example below. If you have not previously created a virtual host file, do so now and refer to the [Configure Virtual Hosts](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/#configure-virtual-hosts) section of the LAMP on Ubuntu 16.04 guide for additional guidance.
+3.  Modify the virtual host file for your Magento site to resemble the example below. If you have not previously created a virtual host file, do so now and refer to the [Configure Virtual Hosts](/docs/guides/install-lamp-stack-on-ubuntu-16-04/#configure-virtual-hosts) section of the LAMP on Ubuntu 16.04 guide for additional guidance.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -136,7 +134,7 @@ Magento is a PHP application, so you'll need to make some adjustments to your sy
 
     It is necessary to modify **both** files. This sets the time zone for PHP's `date()` function and imposes a 2GB limit to the amount of memory PHP can use.  This value is recommended for a 4GB Linode, but could be increased for a larger server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   The value for `date.timezone` will vary based on your system's time zone. Refer to the [PHP time zone documentation](http://php.net/manual/en/timezones.php)     and ensure this value matches the time zone you set when you configured your Linode.
     {{< /note >}}
 
@@ -164,7 +162,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
     In this step, you'll also be able to download the software with optional sample data. Whether you choose this or the basic version is up to you.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When choosing a version, refer to Magento's [prerequisites](http://devdocs.magento.com/guides/v2.0/install-gde/prereq/prereq-overview.html) to ensure a particular version's compatibility with the components of your LAMP stack. As of the publication of this guide, Magento version 2.1.2 is compatible with all prerequisite package versions from the Ubuntu repositories.
 {{< /note >}}
 
@@ -172,7 +170,7 @@ When choosing a version, refer to Magento's [prerequisites](http://devdocs.magen
 
         scp /path/on/local/Magento-CE-2.*.tar.gz user@yourhost:~/
 
-    Alternatively, you can use an FTP client, like [Filezilla](/docs/tools-reference/file-transfer/filezilla), if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
+    Alternatively, you can use an FTP client, like [Filezilla](/docs/guides/filezilla/), if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
 
 3.  Log into your Linode via SSH as your standard user account. Navigate to the document root you specified in your virtual host file:
 
@@ -208,8 +206,8 @@ When choosing a version, refer to Magento's [prerequisites](http://devdocs.magen
 
     This allows your `magento` user (and members of the `www-data` group) to write to the various files they need to run and serve Magento on your site.
 
-    {{< note >}}
-The first two commands may take some time to run because they are matching various files and directories in your installation folder. It may appear that the system is inactive, but be sure to allow a couple minutes before cancelling the operations. You can always start a new SSH connection, or run these commands in a [screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session, and use tools like [htop & iotop](/docs/uptime/monitoring/top-htop-iotop#additional-top-like-programs) to monitor progress.
+    {{< note respectIndent=false >}}
+The first two commands may take some time to run because they are matching various files and directories in your installation folder. It may appear that the system is inactive, but be sure to allow a couple minutes before cancelling the operations. You can always start a new SSH connection, or run these commands in a [screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session, and use tools like [htop & iotop](/docs/guides/top-htop-iotop/#additional-top-like-programs) to monitor progress.
 {{< /note >}}
 
 4.  Restart Apache:
@@ -237,7 +235,7 @@ The first two commands may take some time to run because they are matching vario
     -   **db-user** - This is the MySQL database user you set up previously. In our example, we called it `magento` but if you chose a different name, use that here instead.
     -   **db-password** - This will be the password you configured for the `magento` MySQL user.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These are just a few of the available options to configure your Magento installation. For more information, refer to the [Magento Installation Guide](http://devdocs.magento.com/guides/v2.1/install-gde/install/cli/install-cli-install.html) and feel free to use additional options when running the script.
 {{< /note >}}
 
@@ -258,7 +256,7 @@ The dashboard is functional at this point, but you've still got work to do befor
 
 ### Set Cron Jobs
 
-Magento relies on [cron](/docs/tools-reference/tools/schedule-tasks-with-cron) to perform tasks like continuously reindexing your site and generating emails and newsletters. If you logged into your admin panel, you may have noticed an error message saying that cron jobs needed to be set. Fortunately, the cron jobs Magento uses for a base installation are very easy to configure.
+Magento relies on [cron](/docs/guides/schedule-tasks-with-cron/) to perform tasks like continuously reindexing your site and generating emails and newsletters. If you logged into your admin panel, you may have noticed an error message saying that cron jobs needed to be set. Fortunately, the cron jobs Magento uses for a base installation are very easy to configure.
 
 1.  Open the crontab for your `magento` user. Perform this step as a user with `sudo` privileges:
 
@@ -301,20 +299,20 @@ At a minimum, you should restrict write access to the `app/etc` directory before
 
 Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed. Once you're ready to deploy your site into production mode, refer to [Magento's ownership and permissions guide](http://devdocs.magento.com/guides/v2.1/config-guide/prod/prod_file-sys-perms.html) for a more comprehensive set of recommendations.
 
-{{< note >}}
-If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/tools-reference/linux-users-and-groups).
+{{< note respectIndent=false >}}
+If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
 
 ### Secure your Site with SSL
 
 Secure sockets layer (SSL) certificates are a vital part of e-commerce. They enable encrypted transmission of sensitive data, such as credit card numbers, that can be verified and trusted by clients. In fact, some payment vendors such as PayPal, require SSL certificates to be used for customer transactions.
 
-For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu) and [using SSL certificates with Apache](/docs/security/ssl/ssl-apache2-debian-ubuntu).
+For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) and [using SSL certificates with Apache](/docs/guides/ssl-apache2-debian-ubuntu/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Many payment vendors that require SSL do not support self-signed certificates. Depending on how you handle payments, it is likely you will need to purchase a commercially signed certificate.
 
-When you [configure Apache to use the SSL certificate](/docs/security/ssl/ssl-apache2-centos#configure-apache-to-use-the-ssl-certificate), if you installed Magento in a subdirectory of your site, and only want that section to be encrypted, make sure to modify your `<VirtualHost *:443>` block to match.
+When you [configure Apache to use the SSL certificate](/docs/guides/ssl-apache2-centos/#configure-apache-to-use-the-ssl-certificate), if you installed Magento in a subdirectory of your site, and only want that section to be encrypted, make sure to modify your `<VirtualHost *:443>` block to match.
 {{< /note >}}
 
 Once you've installed your SSL certificate and configured Apache to serve your site securely, you'll need to configure Magento to use secure URLs.

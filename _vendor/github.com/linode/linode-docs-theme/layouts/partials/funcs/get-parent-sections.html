@@ -1,0 +1,13 @@
+{{ $sections := partial "get-parent-sections-recursive" . }}
+{{ $sections = $sections.Reverse }}
+
+{{ return  $sections }}
+
+{{ define "partials/get-parent-sections-recursive" }}
+  {{ $sections := slice . | first 0 }}
+  {{ with .Parent }}
+    {{ $sections = $sections | append . }}
+    {{ $sections = $sections | append (partial "get-parent-sections-recursive" .) }}
+  {{ end }}
+  {{ return $sections }}
+{{ end }}

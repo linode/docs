@@ -1,20 +1,11 @@
 'use strict';
 
-var debug = 0 ? console.log.bind(console, '[dropdowns]') : function() {};
+var debug = 0 ? console.log.bind(console, '[dropdowns]') : function () {};
 
 export function newDropdownsController(dropdowns) {
 	return {
 		dropdowns: dropdowns,
-		init: function() {
-			if (document.body.classList.contains('is-topbar-pinned')) {
-				this.dropdowns.forEach((e) => {
-					if (e.hideWhenPinned) {
-						e.hidden = true;
-					}
-				});
-			}
-		},
-		toggleOpen: function(idx) {
+		toggleOpen: function (idx) {
 			let wasOpen = this.dropdowns[idx].open;
 			this.dropdowns[idx].open = !wasOpen;
 
@@ -29,30 +20,16 @@ export function newDropdownsController(dropdowns) {
 				}
 			}
 		},
-		closeAll: function() {
+		closeAll: function () {
 			this.dropdowns.forEach((e) => {
 				e.open = false;
 			});
 		},
-		isOpen: function(idx) {
+		isOpen: function (idx) {
 			return this.dropdowns[idx].open;
 		},
-		isHidden: function(idx) {
+		isHidden: function (idx) {
 			return this.dropdowns[idx].hidden;
 		},
-		receiveToggle: function(detail) {
-			debug('receiveToggle', detail);
-			switch (detail.what) {
-				case 'topbar-pinned':
-					this.dropdowns.forEach((e) => {
-						if (e.hideWhenPinned) {
-							e.hidden = detail.open;
-						}
-					});
-					break;
-				default:
-				// Ignore
-			}
-		}
 	};
 }

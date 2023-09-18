@@ -1,10 +1,6 @@
 ---
 slug: how-to-install-r-on-ubuntu-and-debian
-author:
-  name: Sam Foo
-  email: docs@linode.com
 description: 'R is a programming language commonly used for statistical analysis and data visualization. Learn how to install the base R package on your Linode.'
-og_description: 'R is a programming language commonly used for statistical analysis and data visualization. Learn how to install the base R package on your Linode.'
 keywords: ['R', 'statistics', 'R Foundation', 'data visualization']
 tags: ["statistics", "ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +13,7 @@ audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
 aliases: ['/development/r/how-to-install-r-on-ubuntu-and-debian/']
+authors: ["Sam Foo"]
 ---
 
 ![How to install R on Ubuntu and Debian](install-r-ubuntu-debian-title.jpg "How to install R on Ubuntu and Debian title graphic")
@@ -126,7 +123,7 @@ The R interpreter lacks features such as a debugger which may be needed for larg
 
         sudo dpkg -i rstudio-xenial-1.1.414-amd64.deb
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If there are missing dependencies, those can be installed with the following command:
 
     sudo apt install -f

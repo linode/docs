@@ -1,10 +1,6 @@
 ---
 slug: how-to-use-journalctl
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide shows how to use journalctl to view, search, and filter your system's logs.
-og_description: This guide shows how to use journalctl to view, search, and filter your system's logs.
 keywords: ["systemd","journalctl","logging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-05
@@ -18,6 +14,7 @@ external_resources:
   - '[journald.conf man page](https://www.freedesktop.org/software/systemd/man/journald.conf.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-journalctl/']
+authors: ["Linode"]
 ---
 
 ## What is journalctl?
@@ -36,7 +33,7 @@ If you do not see output, try running it with `sudo`:
 
     sudo journalctl
 
-If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/security/securing-your-server/#add-a-limited-user-account).
+If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ### Default Log Format and Ordering
 
@@ -52,7 +49,7 @@ Your logs will be displayed from oldest to newest. To reverse this order and dis
 
 ### Paging through Your Logs
 
-journalctl pipes its output to [the `less` command](/docs/quick-answers/linux/how-to-use-less/), which shows your logs one page at a time in your terminal. If a log line exceeds the horizontal width of your terminal window, you can use the left and right arrow keys to scroll horizontally and see the rest of the line:
+journalctl pipes its output to [the `less` command](/docs/guides/how-to-use-less/), which shows your logs one page at a time in your terminal. If a log line exceeds the horizontal width of your terminal window, you can use the left and right arrow keys to scroll horizontally and see the rest of the line:
 
 Furthermore, your logs can be navigated and searched by using all the same key commands available in `less`:
 
@@ -180,7 +177,7 @@ Fri 2018-08-31 12:00:25.543177 EDT [s=0b341b44cf194c9ca45c99101497befa;i=70d5;b=
     _SOURCE_REALTIME_TIMESTAMP=1536120282543177
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 
 In addition to the types of filters listed in the previous section, you can also filter logs by specifying values for the variables in the log record structure. For example, `journalctl _UID=0` will show logs for user ID 0 (i.e. the root user).
 
@@ -219,7 +216,7 @@ You should see a line similar to the following which describes the current limit
 Permanent journal is using 32.0M (max allowed 2.3G, trying to leave 3.5G free of 21.2G available → current limit 2.3G).
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A parallel group of settings is used when journald.conf is set to only persist the journals in memory (instead of on disk): `RuntimeMaxUse`, `RuntimeKeepFree`, `RuntimeMaxFileSize`, and `RuntimeMaxFiles`.
 {{< /note >}}
 

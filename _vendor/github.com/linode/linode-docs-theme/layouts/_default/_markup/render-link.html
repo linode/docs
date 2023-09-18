@@ -1,11 +1,49 @@
-{{ $link := .Destination }}
-{{ $isRemote := strings.HasPrefix $link "http" }}
-{{ $fragment := "" }}
+{{ $isTest := or (not (not site.IsServer)) (site.Params.TestEnv ) }}
+{{- $link := .Destination -}}
+{{- $isRemote := strings.Contains $link "://" -}}
+{{- $fragment := "" -}}
 {{- if not $isRemote -}}
-{{ $url := urls.Parse .Destination }}
-{{- if $url.Path -}}
-{{- with $url.Fragment }}{{ $fragment = printf "#%s" . }}{{ end -}}
+{{- $url := urls.Parse .Destination -}}
+{{- $fragment =  $url.Fragment -}}
+{{ $path := "" }}
+{{- if and (not $isRemote) $isTest $url.Path -}}
+  {{/* Check that the target exists. */}}
+  {{- $m := partialCached "funcs/get-linkmap.html" "-" -}}
+  {{ $path = $url.Path}}
+  {{ $destination := .Destination }}
+  {{ $hasDot := strings.Contains $path "." }}
+  {{ if and (not $hasDot) (not (strings.HasSuffix $path "/")) }}
+    {{ $path = printf "%s/" $path }}
+  {{ end }}
+  {{ $ok := true }}
+  {{ $reason := "" }}
+  {{- $page := index $m.links $path -}}
+  {{- if $page -}}
+    {{/* Page found OK, check for fragment match. */}}
+    {{- with $url.Fragment }}
+      {{/* The API section isn't built from Markdown. */}}
+      {{ if not (eq $page.Section "api") }}
+        {{ if not ($page.Fragments.Identifiers.Contains .) }}
+        {{ $ok = false }}
+        {{ $reason = "Fragment not found" }}
+        {{ end }}
+      {{ end }}
+    {{ end -}}
+  {{ else }}
+    {{ $ok = false }}
+    {{ $reason = "Not found" }}
+  {{ end }}
+  {{ if not $ok }}
+    {{/* Store it away so we can build a report later. */}}
+    {{ if not (strings.HasPrefix $path "/") }}
+      {{ $path = path.Join $.Page.RelPermalink $path }}
+    {{ end }}
+    {{ $path = strings.TrimPrefix "/docs" $path }}
+    {{ $m := dict "link" .Destination "path" $path "fragment" $fragment "reason" $reason "sourceRef" $.Page.RelPermalink "source" $.Page "target" $page }}
+    {{ site.Home.Store.SetInMap  "brokenlinks" .Destination $m }}
+  {{ else }}
+  {{ site.Home.Store.DeleteInMap  "brokenlinks" .Destination }}
+  {{ end }}
 {{- end -}}
 {{- end -}}
-<a href="{{ $link | safeURL }}" {{ with .Title}} title="{{ . }}" {{ end }}{{ if $isRemote }} target="_blank"
-    {{ end }}{{ if $fragment}} data-turbolinks="false" {{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ $link | safeURL }}" {{ with .Title }}title="{{ . }}"{{ end }}{{ if $isRemote }} target="_blank" {{ end }}{{ if $fragment }}data-turbolinks="false"{{ end }}>{{ .Text | safeHTML }}</a>

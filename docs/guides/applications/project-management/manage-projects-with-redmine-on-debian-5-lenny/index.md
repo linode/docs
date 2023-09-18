@@ -1,9 +1,6 @@
 ---
 slug: manage-projects-with-redmine-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on a Debian 5 (Lenny) Linode running nginx.'
 keywords: ["redmine", "redmine debian", "redmine linux", "project management software", "redmine postgresql", "redmine linux"]
 tags: ["debian", "ruby", "nginx", "postgresql"]
@@ -19,13 +16,14 @@ relations:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
 
 Redmine is a popular open source project management system. Written in Ruby on Rails, it gives teams the ability to track project objectives, integrates well with various source control systems, and includes customizable reporting functionality. This guide will help you install it on your Debian 5 (Lenny) Linode. We'll be using nginx with Phusion Passenger as the web server daemon for the site. If you already have the Apache web server installed, guidance will be provided for proxying incoming Redmine requests to nginx running on a different port.
 
-We assume you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
+We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
 
 ## Basic System Configuration
 
@@ -118,7 +116,7 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 10.04 LAMP guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 10.04 LAMP guide](/docs/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
 
 {{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
 <VirtualHost 12.34.56.78:80>
@@ -207,41 +205,41 @@ Issue the following commands to install `exim4` and configure it for outgoing In
 
 Select "internet site" as the type of mail configuration to use:
 
-[![Exim general configuration on Debian 5.](298-redmine-debian-5-exim-config-1.png)](298-redmine-debian-5-exim-config-1.png)
+![Exim general configuration on Debian 5.](298-redmine-debian-5-exim-config-1.png)
 
 Specify your systems's fully qualified domain name as the system mail name:
 
-[![Exim system mail name configuration on Debian 5.](299-redmine-debian-5-exim-config-2.png)](299-redmine-debian-5-exim-config-2.png)
+![Exim system mail name configuration on Debian 5.](299-redmine-debian-5-exim-config-2.png)
 
 Enter "127.0.0.1" when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, we only want to listen on localhost.
 
-[![Exim IP address configuration on Debian 5.](300-redmine-debian-5-exim-config-3.png)](300-redmine-debian-5-exim-config-3.png)
+![Exim IP address configuration on Debian 5.](300-redmine-debian-5-exim-config-3.png)
 
 Enter "localhost.localdomain" and your fully qualified domain name when asked for the list of recipient domains.
 
-[![Exim destination domains configuration on Debian 5.](301-redmine-debian-5-exim-config-4.png)](301-redmine-debian-5-exim-config-4.png)
+![Exim destination domains configuration on Debian 5.](301-redmine-debian-5-exim-config-4.png)
 
 Relay domains and machines should be left blank.
 
-[![Exim relay domains configuration on Debian 5.](302-redmine-debian-5-exim-config-5.png)](302-redmine-debian-5-exim-config-5.png)
+![Exim relay domains configuration on Debian 5.](302-redmine-debian-5-exim-config-5.png)
 
-[![Exim relay machines configuration on Debian 5.](303-redmine-debian-5-exim-config-6.png)](303-redmine-debian-5-exim-config-6.png)
+![Exim relay machines configuration on Debian 5.](303-redmine-debian-5-exim-config-6.png)
 
 Specify "No" when asked about DNS queries.
 
-[![Exim DNS queries configuration on Debian 5.](304-redmine-debian-5-exim-config-7.png)](304-redmine-debian-5-exim-config-7.png)
+![Exim DNS queries configuration on Debian 5.](304-redmine-debian-5-exim-config-7.png)
 
 When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.
 
-[![Exim maildirs or mbox configuration on Debian 5.](305-redmine-debian-5-exim-config-8.png)](305-redmine-debian-5-exim-config-8.png)
+![Exim maildirs or mbox configuration on Debian 5.](305-redmine-debian-5-exim-config-8.png)
 
 Specify "No" when asked whether to split the configuration into smaller files.
 
-[![Exim config file splitting configuration on Debian 5.](306-redmine-debian-5-exim-config-9.png)](306-redmine-debian-5-exim-config-9.png)
+![Exim config file splitting configuration on Debian 5.](306-redmine-debian-5-exim-config-9.png)
 
 Enter "root" and an email address at your domain for the postmaster mail query.
 
-[![Exim postmaster configuration on Debian 5.](307-redmine-debian-5-exim-config-10.png)](307-redmine-debian-5-exim-config-10.png)
+![Exim postmaster configuration on Debian 5.](307-redmine-debian-5-exim-config-10.png)
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 

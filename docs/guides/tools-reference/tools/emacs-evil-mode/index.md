@@ -1,16 +1,14 @@
 ---
 slug: emacs-evil-mode
-author:
-  name: Edward Angert
-  email: docs@linode.com
-description: 'How to navigate Emacs using Evil Mode.'
+description: 'This guide provides you with step-by-step instructions for navigating Emacs, a very popular and endlessly versatile text editor, using it''s infamous Evil Mode.'
 keywords: ['emacs','evil','text editor']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-05
 modified: 2018-06-05
 modified_by:
   name: Linode
-title: "How to Navigate Emacs using Evil Mode"
+title: "Navigate Emacs using Evil Mode"
+title_meta: "How to Navigate Emacs using Evil Mode"
 external_resources:
 - '[Emacs Evil GitHub](https://github.com/emacs-evil/evil)'
 - '[Emacs Evil Guide](https://github.com/noctuid/evil-guide)'
@@ -18,6 +16,7 @@ external_resources:
 - '[EmacsWiki](https://www.emacswiki.org/emacs/)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/emacs-evil-mode/']
+authors: ["Edward Angert"]
 ---
 
 ## A Vi/m Layer Makes Emacs Evil
