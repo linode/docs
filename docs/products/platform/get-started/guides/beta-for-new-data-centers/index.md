@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-09-08
+modified: 2023-09-14
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -26,14 +26,14 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 | Amsterdam, Netherlands | *Limited beta* | `nl-ams` |
 | Chennai, India | *Limited beta* | `in-maa` |
 | Chicago, IL, USA | **Now available to all customers** | `us-ord` |
-| Jakarta, India | *Limited beta* | `id-cgk` |
+| Jakarta, Indonesia | *Limited beta* | `id-cgk` |
 | Los Angeles, CA, USA | *Limited beta* | `us-lax` |
 | Miami, FL, USA | *Limited beta* | `us-mia` |
-| Milan, Italy | *Limited beta* | `it-mil` |
+| Milan, Italy | **Now available to all customers** | `it-mil` |
 | Osaka, Japan | *Limited beta* | `jp-osa` |
 | Paris, France | **Now available to all customers** | `fr-par` |
 | São Paulo, Brazil | *Limited beta* | `br-gru` |
-| Seattle, WA, USA | *Limited beta* | `us-sea` |
+| Seattle, WA, USA | **Now available to all customers** | `us-sea` |
 | Stockholm, Sweden | **Now available to all customers** | `se-sto` |
 | Washington, DC, USA | **Now available to all customers** | `us-iad` |
 
@@ -57,7 +57,7 @@ Services utilized as part of the beta are free to users. Once the beta period en
 
 ## Product Availability
 
-Each data center in this beta is slated to have all of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
+Each data center in this beta is slated to have most of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
 
 ### Object Storage
 
@@ -73,7 +73,7 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 | Amsterdam, Netherlands | `nl-ams-1` | `https://nl-ams-1.linodeobjects.com` |
 | Chennai, India | `in-maa-1` | `https://in-maa-1.linodeobjects.com` |
 | Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
-| Jakarta, India | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
+| Jakarta, Indonesia | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
 | Los Angeles, CA, USA | `us-lax-1` | `https://us-lax-1.linodeobjects.com` |
 | Miami, FL, USA | `us-mia-1` | `https://us-mia-1.linodeobjects.com` |
 | Milan, Italy | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
@@ -129,7 +129,7 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 | Amsterdam, Netherlands | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 22 |
 | Chennai, India | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 25 |
 | Chicago, IL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
-| Jakarta, India | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
+| Jakarta, Indonesia | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
 | Los Angeles, CA, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 30 |
 | Miami, FL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 28 |
 | Milan, Italy | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 27 |
@@ -186,7 +186,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
 
 -   **Weblish/Glish Gateway:** `us-ord.webconsole.linode.com`
 
-#### Jakarta, India
+#### Jakarta, Indonesia
 
 -   **Lish SSH Gateway:** `lish-id-cgk.linode.com`
 
