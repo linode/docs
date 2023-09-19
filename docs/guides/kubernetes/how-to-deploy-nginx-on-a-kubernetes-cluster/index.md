@@ -181,7 +181,7 @@ yum install ebtables ethtool
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install kubeadm, kubectl, and kubelet
 

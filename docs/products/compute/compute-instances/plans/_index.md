@@ -7,6 +7,6 @@ tab_group_main:
 published: 2023-01-12
 ---
 
-{{< content "new-data-center-notice" >}}
+{{% content "new-data-center-notice" %}}
 
-{{< content "instance-comparison-shortguide" >}}
+{{% content "instance-comparison-shortguide" %}}

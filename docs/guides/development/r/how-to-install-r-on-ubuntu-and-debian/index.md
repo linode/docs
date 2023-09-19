@@ -26,7 +26,7 @@ Although R can be installed through the default Debian or Ubuntu repository, the
 
 ## Install R on Ubuntu 16.04 and Debian 9
 
-{{< content "install_r_ubuntu" >}}
+{{% content "install_r_ubuntu" %}}
 
 ## Download Packages from CRAN
 

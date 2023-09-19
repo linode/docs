@@ -103,7 +103,7 @@ The Helm client software issues commands to your cluster. You run the client sof
 
 1. You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with [Linode's Kubernetes Engine](/docs/products/compute/kubernetes/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier (g6-standard-2) or higher. This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6 and later.
 
-    {{< content "k8s-alpha-deprecation-shortguide" >}}
+    {{% content "k8s-alpha-deprecation-shortguide" %}}
 
     {{< note >}}
     This guide's example instructions will also result in the creation of a Block Storage Volume and a NodeBalancer, which are also billable resources. If you do not want to keep using the example application after you finish reviewing your guide, make sure to [delete](#delete-a-release) these resources afterward.

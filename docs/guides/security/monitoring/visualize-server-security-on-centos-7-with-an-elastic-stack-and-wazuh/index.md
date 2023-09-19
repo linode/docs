@@ -558,7 +558,7 @@ To avoid losing iptables rules after a server reboot, save your rules to a file 
 
     ufw allow 5601/tcp comment "Kibana port"
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 ## Connect the Elastic Stack with the Wazuh API
 

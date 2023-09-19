@@ -34,7 +34,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
         sudo yum update
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Create Backups
 

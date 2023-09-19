@@ -33,11 +33,11 @@ Both Docker and Docker Compose are necessary to complete this guide.
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Docker Compose Configuration for Graphite and Grafana
 

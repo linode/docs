@@ -23,7 +23,7 @@ The primary function of Object Storage is to allow you to host files, also calle
 
 Follow these steps to upload objects to a bucket using the Cloud Manager:
 
-{{< content "object-storage-character-warning-shortguide" >}}
+{{% content "object-storage-character-warning-shortguide" %}}
 
 1.  Navigate to the **Bucket** page in the Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
 

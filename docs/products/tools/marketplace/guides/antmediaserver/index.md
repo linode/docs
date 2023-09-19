@@ -33,9 +33,9 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, c
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Ant Media Server should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -61,4 +61,4 @@ For more on Ant Media Server, check out the following resources:
 - [Ant Media Server wiki](https://github.com/ant-media/Ant-Media-Server/wiki)
 - [Publishing a Live Stream](https://github.com/ant-media/Ant-Media-Server/wiki/Publishing-Live-Streams)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

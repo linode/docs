@@ -19,9 +19,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Django should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -38,9 +38,9 @@ authors: ["Linode"]
 - **Django password** *(required)*: Enter a *strong* password for your Django user.
 - **Django user email** *(required)*: The email address you wish to use for your Django user.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -72,4 +72,4 @@ After Django has finished installing, you will be able to access your Django sit
 
     ![Django Admin Console](django-admin-console.png "Django Admin Console")
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

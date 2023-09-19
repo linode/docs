@@ -40,11 +40,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Prepare the Environment
 

@@ -13,7 +13,7 @@ aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-lino
 authors: ["Linode"]
 ---
 
-{{< content "new-data-center-notice" >}}
+{{% content "new-data-center-notice" %}}
 
 Linode offers multiple Compute Instance types, each of which can be equipped with various amounts of resources. This allows you to create a Compute Instance tailored to the requirements of your application or workload. For example, some applications may need to store a lot of data but require less processing power. Others may need more memory than CPU. Some may be especially CPU-intensive and require more computing power.
 

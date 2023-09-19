@@ -5,4 +5,4 @@ aliases: ['/products/tools/monitoring/guides/monitoring-email-alerts/']
 authors: ["Linode"]
 ---
 
-{{< content "monitoring-configure-email-alerts-shortguide" >}}
+{{% content "monitoring-configure-email-alerts-shortguide" %}}

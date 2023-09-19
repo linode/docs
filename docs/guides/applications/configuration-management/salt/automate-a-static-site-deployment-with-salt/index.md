@@ -78,7 +78,7 @@ Development of your Hugo site and your Salt formula will take place on your pers
 
 1.  Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Salt minion's IP address.
 

@@ -13,9 +13,9 @@ external_resources:
 authors: ["HackerSploit"]
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 CALDERA™ is a cybersecurity framework designed to easily automate adversary emulation, assist manual red-teams, and automate incident response.
 

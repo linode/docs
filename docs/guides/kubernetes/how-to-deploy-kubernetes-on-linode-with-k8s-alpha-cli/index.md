@@ -25,7 +25,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ## What is the k8s-alpha CLI?
 
-{{< content "k8s-alpha-deprecation-shortguide" >}}
+{{% content "k8s-alpha-deprecation-shortguide" %}}
 
 The Linode [k8s-alpha CLI](https://developers.linode.com/kubernetes/) is a plugin for the [Linode CLI](https://github.com/linode/linode-cli) that offers quick, single-command deployments of Kubernetes clusters on your Linode account. When you have it installed, creating a cluster can be as simple as:
 
@@ -107,7 +107,7 @@ Follow the instructions in the [Install Terraform](/docs/guides/how-to-build-you
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ### Configure your SSH Agent
 

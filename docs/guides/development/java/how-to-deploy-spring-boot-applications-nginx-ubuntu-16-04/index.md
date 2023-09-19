@@ -61,7 +61,7 @@ You will need a Linode with both Java 8 and NGINX. If these are already installe
 
 ### Install NGINX
 
-{{< content "install-nginx-ubuntu-ppa" >}}
+{{% content "install-nginx-ubuntu-ppa" %}}
 
 ## Install Spring Boot CLI
 The Spring Boot CLI makes creating a scaffold for a project much easier. [SDKMAN!](http://sdkman.io/) is a tool that simplifies installation of the Spring CLI and build tools such as Gradle or Maven. Using the Spring Boot CLI, a new project can be created directly from the command line.

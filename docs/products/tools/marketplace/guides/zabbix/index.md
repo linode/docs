@@ -20,9 +20,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Zabbix should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -82,4 +82,4 @@ For more on Zabbix, check out the following resources:
 - [Purchase Technical Support Contract](https://www.zabbix.com/support)
 - [Visit the Zabbix Official Forum](https://www.zabbix.com/forum)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -26,7 +26,7 @@ authors: ["Linode"]
 
 This guide provides instructions to set up SPF and DKIM with Postfix.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## What is SPF (Sender Policy Framework)?
 

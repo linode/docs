@@ -19,9 +19,9 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Harbor should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -38,11 +38,11 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 - **Database Password** *(required)*: The Harbor database password.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -56,4 +56,4 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 
 Now that you’ve accessed your dashboard, check out [the official Harbor documentation](https://goharbor.io/docs/2.3.0/administration/) to learn how to further utilize your Harbor instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -11,9 +11,9 @@ title: "Windows Red Team Defense Evasion Techniques"
 authors: ["HackerSploit"]
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 

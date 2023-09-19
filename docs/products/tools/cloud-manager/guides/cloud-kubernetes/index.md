@@ -4,4 +4,4 @@ description: "About the Linode Kubernetes Engine (LKE) in the Linode Cloud Manag
 authors: ["Linode"]
 ---
 
-{{< content "cloud-kubernetes-shortguide" >}}
+{{% content "cloud-kubernetes-shortguide" %}}

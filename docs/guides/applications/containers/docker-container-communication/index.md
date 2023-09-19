@@ -31,7 +31,7 @@ Configuring the containers to communicate with each other and the host machine c
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ## Example Node.js Application
 

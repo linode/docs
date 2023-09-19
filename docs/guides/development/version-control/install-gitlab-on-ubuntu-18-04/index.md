@@ -56,7 +56,7 @@ Before installing GitLab you should consider how many users will collaborate on 
 
     When prompted, select *Internet Site* and press **Enter**. Use your server's external DNS for *mail name* and press **Enter**.
 
-    {{< content "email-warning-shortguide" >}}
+    {{% content "email-warning-shortguide" %}}
 
 1. Add the GitLab package repository:
 

@@ -23,9 +23,9 @@ Learn all about what MongoDB is and how it works in our [Introduction to MongoDB
 
 ## Before You Begin
 
-{{< content "mongodb-deployment-methods-shortguide" >}}
+{{% content "mongodb-deployment-methods-shortguide" %}}
 
-{{< content "mongodb-shell-shortguide" >}}
+{{% content "mongodb-shell-shortguide" %}}
 
 ## Query Documents
 

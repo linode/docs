@@ -64,7 +64,7 @@ As of this writing, Elasticsearch requires Java 8.
 
 ### Elasticsearch
 
-{{< content "install_elasticsearch_debian_ubuntu" >}}
+{{% content "install_elasticsearch_debian_ubuntu" %}}
 
   You are now ready to install and use Elasticsearch plugins.
 

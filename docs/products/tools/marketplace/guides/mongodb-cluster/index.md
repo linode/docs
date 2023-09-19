@@ -24,9 +24,9 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-app-cluster-shortguide">}}
+{{% content "deploy-marketplace-app-cluster-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The MongoDB cluster should be fully deployed and configured within 5-10 minutes after the first Compute Instance has finished provisioning.
@@ -61,7 +61,7 @@ The following fields (in addition to the domain field above) are used when creat
 - **CA Common name:** This is the common name for the self-signed Certificate Authority.
 - **Common name:** This is the common name that is used for the domain.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -141,11 +141,11 @@ For more information on access control and user management, as well as other tip
 
 ### Manage Data and Collections
 
-{{< content "mongodb-example-shortguide" >}}
+{{% content "mongodb-example-shortguide" %}}
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on MongoDB, checkout the following guides:
 

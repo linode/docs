@@ -17,9 +17,9 @@ Setting up a personal game server puts you in control of the game modes and maps
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Team Fortress 2 should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
@@ -41,7 +41,7 @@ Setting up a personal game server puts you in control of the game modes and maps
 - **Maximum Rounds:** The maximum amount of rounds before the map changes.
 - **Round Time Limit:** The time per round, in minutes.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -78,4 +78,4 @@ The Team Fortress 2 Marketplace App will install the following required software
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 27014:27050/tcp, 3478:4380/udp, 27000:27030/udp, and 26901 will allow outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

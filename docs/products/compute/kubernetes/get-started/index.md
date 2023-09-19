@@ -87,7 +87,7 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Next Steps
 

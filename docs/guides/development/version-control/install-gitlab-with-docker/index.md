@@ -67,7 +67,7 @@ It takes some time for DNS changes to propagate through the internet, so it's su
 
 -   If you use a different DNS provider, review that provider's documentation for setting up a new A record.
 
-    {{< content "update-dns-at-common-name-server-authorities" >}}
+    {{% content "update-dns-at-common-name-server-authorities" %}}
 
 You can test to see if your DNS changes have propagated with the [`dig` command](/docs/guides/use-dig-to-perform-manual-dns-queries/):
 
@@ -82,7 +82,7 @@ Once your changes have propagated, you can move forward with the installation.
 ### Install Docker
 You must have Docker installed on your Linode to continue.
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ## Install the GitLab EE Image
 

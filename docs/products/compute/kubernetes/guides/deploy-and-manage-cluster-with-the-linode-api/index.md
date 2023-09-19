@@ -55,7 +55,7 @@ This guide covers how to use the Linode API to:
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ## Create an LKE Cluster
 
@@ -644,7 +644,7 @@ curl -H "Authorization: Bearer $TOKEN" \
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Where to Go From Here?
 

@@ -22,9 +22,9 @@ Chevereto requires a valid license to use the software. To purchase a license, v
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Chevereto should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -77,4 +77,4 @@ Chevereto requires a valid license to use the software. To purchase a license, v
 
 Now that you’ve accessed your dashboard, checkout [the official Chevereto documentation](https://v3-docs.chevereto.com/) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

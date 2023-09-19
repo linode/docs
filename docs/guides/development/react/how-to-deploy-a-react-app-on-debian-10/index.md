@@ -137,7 +137,7 @@ In this section, you will update your web server configuration to ensure that it
 
 You will need Node.js installed on your local computer in order to build your React app prior to copying your site files to the remote Linode server.
 
-{{< content "how-to-install-nvm" >}}
+{{% content "how-to-install-nvm" %}}
 
 ### Create an Example React App
 

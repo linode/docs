@@ -115,7 +115,7 @@ Mastodon participates in the [*Fediverse*](https://en.wikipedia.org/wiki/Fediver
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Download Mastodon
 

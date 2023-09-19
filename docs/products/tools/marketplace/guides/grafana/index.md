@@ -23,9 +23,9 @@ Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitor
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Grafana should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -40,9 +40,9 @@ Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitor
 
 - **Grafana Password** *(required)*: Set your Grafana instance's admin password. You will use this password when first logging into Grafana.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -62,4 +62,4 @@ Now that your Grafana Marketplace App is deployed, you can log into Grafana to a
 
 1. Once you are logged into Grafana, complete your configurations by [adding a data source](https://grafana.com/docs/grafana/latest/features/datasources/add-a-data-source/#add-a-data-source), [creating dashboards](https://grafana.com/docs/grafana/latest/guides/getting_started/#create-a-dashboard), and [adding users](https://grafana.com/docs/grafana/latest/permissions/overview/).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

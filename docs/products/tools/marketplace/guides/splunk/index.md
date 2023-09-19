@@ -17,9 +17,9 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Splunk should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -35,12 +35,12 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 - **Splunk Admin user** *(required)*: This will be the username you use to login the Splunk Dashboard.
 - **Splunk Admin Password** *(required)*: This will be the password you use to login the Splunk Dashboard.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -50,4 +50,4 @@ Open a browser and navigate to your [Linode's IP address](/docs/guides/find-your
 
 Now that you’ve accessed your dashboard, checkout [the official Splunk documentation](https://docs.splunk.com/Documentation/Splunk) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

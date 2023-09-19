@@ -57,7 +57,7 @@ By using Docker, you can ensure that your development is fully portable: contain
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Portainer
 

@@ -53,7 +53,7 @@ journalctl pipes its output to [the `less` command](/docs/guides/how-to-use-less
 
 Furthermore, your logs can be navigated and searched by using all the same key commands available in `less`:
 
-{{< content "how-to-navigate-less-shortguide" >}}
+{{% content "how-to-navigate-less-shortguide" %}}
 
 ### View journalctl without Paging
 

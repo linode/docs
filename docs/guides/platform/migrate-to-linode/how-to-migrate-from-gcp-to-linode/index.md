@@ -491,13 +491,13 @@ To direct your visitors to your Linode, associate your domain with [your new Lin
 
 -  Continue to use your current nameserver authority and update your DNS records with your new Linode's IP address. You should check with your current provider to see if there are any costs for their DNS services. If you are using your domain name registrar's nameservers, then they are generally free.
 
-{{< content "use-linode-name-servers" >}}
+{{% content "use-linode-name-servers" %}}
 
 ### Alternative: Use Your Current Nameservers
 
 If you'd like to continue with your current nameservers, update all of the DNS records that are assigned to your old host's IP address to use your new Linode's IP. Contact your nameserver authority for instructions on how to update your DNS records.
 
-{{< content "update-dns-at-common-name-server-authorities" >}}
+{{% content "update-dns-at-common-name-server-authorities" %}}
 
 After DNS propagation has finished, [set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
 

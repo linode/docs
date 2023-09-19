@@ -19,7 +19,7 @@ relations:
 authors: ["Linode"]
 ---
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 This guide explains how to upgrade your Linode to Ubuntu 10.10 (Maverick). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures. Ubuntu only officially supports direct upgrades between LTS releases. However, you may follow these steps to upgrade your system if you're willing to handle any potential snags that may occur.
 

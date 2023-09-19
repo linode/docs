@@ -13,9 +13,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** ILLA Builder should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -55,4 +55,4 @@ authors: ["Linode"]
 
 For additional guidance on using ILLA Builder, please see the [official documentation](https://www.illacloud.com/docs/about-illa).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -21,9 +21,9 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Kali Linux should be fully installed within 45-60 minutes after the Compute Instance has finished provisioning.
@@ -47,9 +47,9 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 - **Sudo/VNC Username** *(required)*: The VNC username you wish to create for this Compute Instance. This is used for your VNC session and will have elevated privileges (`sudo`).
 - **Sudo/VNC User Password** *(required)*: The password you wish to use for your VNC user.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -79,4 +79,4 @@ If you selected the VNC installation option, [TigerVNC](https://tigervnc.org/) i
 
 After connecting, the Kali Linux desktop should appear.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

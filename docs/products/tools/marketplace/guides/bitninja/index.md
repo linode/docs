@@ -21,9 +21,9 @@ BitNinja requires a valid license to use the software beyond the initial 7 day [
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** BitNinja should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -44,4 +44,4 @@ BitNinja requires a valid license to use the software beyond the initial 7 day [
 
 Now that you’ve deployed your BitNinja instance, check out [the official BitNinja documentation](https://doc.bitninja.io/docs/command_line_interface#usage) to learn how to further utilize your BitNinja instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

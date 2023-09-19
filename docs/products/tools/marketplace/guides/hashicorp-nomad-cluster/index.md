@@ -21,9 +21,9 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Nomad Cluster should be fully installed within 15-20 minutes after the Compute Instances have finished provisioning.
@@ -34,7 +34,7 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 - **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** We recommend 8GB Dedicated CPU or 8GB Shared CPU instances for the Nomad Cluster.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ### Nomad Cluster Options
 
@@ -96,4 +96,4 @@ The HashiCorp Nomad Cluster provides default configurations to get you started. 
 
 If you find that you need additional Clients for your Nomad Cluster, the [Nomad Clients Cluster](/docs/products/tools/marketplace/guides/hashicorp-nomad-clients-cluster/) deployment allows you to scale horizontally by deploying 3, 5, or 7 additional Compute Instances as Clients.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

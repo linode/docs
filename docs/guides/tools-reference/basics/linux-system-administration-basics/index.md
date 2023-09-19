@@ -694,7 +694,7 @@ Follow these steps to [create and host a sub-domain](/docs/products/networking/d
 
 We provide a number of guides that cover [email-related topics](/docs/email/). In this section, we'll explain how to choose an email setup that fits your needs and how to configure your Linode to send email.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ### Choose an Email Solution
 

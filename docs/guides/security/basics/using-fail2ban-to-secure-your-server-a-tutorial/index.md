@@ -312,7 +312,7 @@ fail2ban-client set JAIL addignoreip 192.0.0.1
 
 ### Fail2ban Email Alerts
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 To receive email when fail2ban is triggered, adjust the email settings:
 

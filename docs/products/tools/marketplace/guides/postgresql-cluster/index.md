@@ -20,9 +20,9 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-app-cluster-shortguide">}}
+{{% content "deploy-marketplace-app-cluster-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The PostgreSQL cluster should be fully deployed and configured within 5-10 minutes after the first Compute Instance has finished provisioning.
@@ -45,7 +45,7 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 - **PostgreSQL cluster size:** This field cannot be edited, but is used to inform you of the number of Compute Instances that are created as part of this cluster.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -191,7 +191,7 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on PostgreSQL, checkout the following guides:
 

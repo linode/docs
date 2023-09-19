@@ -111,7 +111,7 @@ if r3["ResponseMetadata"]["HTTPStatusCode"] == 204:
     |`example-encryption-key-987654321` | Your 32-character encryption key. |
     |`example-bucket-name` | The name of your Object Storage bucket. |
 
-    {{< content "object-storage-cluster-shortguide" >}}
+    {{% content "object-storage-cluster-shortguide" %}}
 
 1.  From your machine's terminal, make your script file executable:
 

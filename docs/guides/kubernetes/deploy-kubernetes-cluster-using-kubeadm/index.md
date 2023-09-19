@@ -33,7 +33,7 @@ While kubeadm automates several cluster-provisioning tasks, there are other even
 
 - If you prefer a full featured GUI, [Linode's Rancher integration](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) enables you to deploy and manage Kubernetes clusters with a simple web interface.
 
-{{< content "k8s-alpha-deprecation-shortguide" >}}
+{{% content "k8s-alpha-deprecation-shortguide" %}}
 
 ## Before You Begin
 

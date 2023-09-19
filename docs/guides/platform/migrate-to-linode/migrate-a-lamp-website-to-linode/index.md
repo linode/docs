@@ -145,4 +145,4 @@ If you are seeing any other errors on your site, try reviewing Apache's error lo
 
 The last step required to migrate is to update your DNS records to reflect your new Linode's IP. Once this is done, visitors will start loading the page from your Linode.
 
-{{< content "use-linode-name-servers" >}}
+{{% content "use-linode-name-servers" %}}

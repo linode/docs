@@ -31,7 +31,7 @@ This guide serves as an introduction to several useful data types in Go. Specifi
 
 If you're just starting with Go, we recommend reading our [Beginner's Guide to Go](/docs/guides/beginners-guide-to-go/) guide first.
 
-{{< content "before-you-begin-install-go-shortguide" >}}
+{{% content "before-you-begin-install-go-shortguide" %}}
 
 {{< note respectIndent=false >}}
 This guide was written with Go version 1.13.

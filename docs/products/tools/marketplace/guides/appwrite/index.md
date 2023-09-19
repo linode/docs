@@ -13,9 +13,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Appwrite should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -50,4 +50,4 @@ authors: ["Linode"]
 
 Now that you’ve accessed your Appwrite instance, check out [the official Appwrite documentation](https://appwrite.io/docs) to learn how to further utilize your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

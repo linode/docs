@@ -22,7 +22,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/) guide.
 {{< /note >}}
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 ## Install the Kernel and Configure Grub
 

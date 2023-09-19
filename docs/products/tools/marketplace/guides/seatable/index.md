@@ -17,9 +17,9 @@ The SeaTable Marketplace app requires the use of a custom domain. Please review 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** SeaTable should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -38,9 +38,9 @@ The SeaTable Marketplace app requires the use of a custom domain. Please review 
 
 - **Choose your timezone:** Update this field to match your timezone's identifier. For a list of timezones and their corresponding identifiers, review the [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) Wikipedia page. Locate your timezone and copy the string under the **TZ Identifier** column (for example: `America/New_York`).
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -120,4 +120,4 @@ Once you have completed the final steps to deploy SeaTable, you can access it vi
 
     ![Screenshot of the SeaTable database view](seatable-database-view.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

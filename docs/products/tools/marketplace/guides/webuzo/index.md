@@ -18,9 +18,9 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Webuzo should be fully installed within 15-20 minutes after the Compute Instance has finished provisioning. During this time, the instance is rebooted once. This time frame depends on a variety of factors, including which data center has been selected.
@@ -33,9 +33,9 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 ### Webuzo Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -77,4 +77,4 @@ Once Webuzo is fully installed, you can start using it by accessing both the Adm
 
     ![Webuzo Enduser Panel](webuzo-enduser-panel.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

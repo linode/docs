@@ -21,7 +21,7 @@ MagicSpam installs directly onto an email server without any need to change A/MX
 [MagicSpam](https://magicspam.com/store.php), [cPanel](https://cpanel.net/pricing/), and [Plesk](https://www.plesk.com/pricing/) all require a valid license. You can view and purchase licenses individually from each of their respective stores. Licenses are not available directly through Linode.
 {{< /note >}}
 
-{{< content "email-warning-shortguide">}}
+{{% content "email-warning-shortguide" %}}
 
 If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not follow this guide. Instead, install MagicSpam by following one of the below guides:
 
@@ -30,9 +30,9 @@ If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MagicSpam should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -86,4 +86,4 @@ For more on MagicSpam, check out the following resources:
 - [MagicSpam for cPanel](https://www.magicspam.com/anti-spam-protection-cpanel.php)
 - [MagicSpam for Plesk](https://www.magicspam.com/anti-spam-protection-plesk.php)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

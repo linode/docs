@@ -22,9 +22,9 @@ Keep in mind, Yacht is still in alpha and is not recommended for production use.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Yacht should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -41,7 +41,7 @@ Keep in mind, Yacht is still in alpha and is not recommended for production use.
 - **Yacht Password** *(required)* The password for your Yacht login.
 - **Yacht Compose Support:** Support for using Yacht with [Docker Compose](https://yacht.sh/Advanced/docker-compose/). - **Yacht Theme:** Yacht theme options: Default, RED, and OMV.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -161,4 +161,4 @@ Since Yacht is not configured for SSL, some additional steps are required to enc
 
 Your browser may give warnings because the certificate is not signed by a Certificate Authority, and require you to add a security exception, but the connection is now encrypted.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

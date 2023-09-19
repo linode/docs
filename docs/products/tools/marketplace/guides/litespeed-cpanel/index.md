@@ -29,9 +29,9 @@ LiteSpeed offers both free and paid plans. Visit [LiteSpeed's website](https://w
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-custom-shortguide">}}
+{{% content "marketplace-verify-custom-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** LiteSpeed cPanel should be fully installed within 10-20 minutes after the Compute Instance has finished provisioning.
@@ -124,4 +124,4 @@ Now that you’ve accessed your LiteSpeed instance, check out [the official Lite
 
     ![Screenshot of LiteSpeed WebAdmin Console](litespeed-webadmin-interface.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

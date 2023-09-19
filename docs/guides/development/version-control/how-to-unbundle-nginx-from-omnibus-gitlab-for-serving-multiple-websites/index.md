@@ -52,7 +52,7 @@ Note that NGINX cannot be disabled in older versions of GitLab Community Edition
 
 2.  While installing Postfix, you'll be asked to configure a few basic settings. On the first [ncurses](https://en.wikipedia.org/wiki/Ncurses) screen, select **Internet Site** as the mail configuration. On the second screen, enter your fully qualified domain name (FQDN). This will be used to send email to users when configuring new accounts and resetting passwords. The rest of the mail options will be configured automatically.
 
-    {{< content "email-warning-shortguide" >}}
+    {{% content "email-warning-shortguide" %}}
 
 3.  Add the GitLab CE repository and install the `gitlab-ce` package:
 

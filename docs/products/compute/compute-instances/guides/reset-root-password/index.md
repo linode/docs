@@ -28,7 +28,7 @@ All Compute Instances deployed using one of Linode's [official distribution imag
 
 1.  Enter a new password for the root user in the **New Root Password** field.
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 1.  Click **Save** to make the change.
 

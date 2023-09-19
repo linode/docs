@@ -33,7 +33,7 @@ When deciding on an email solution, there are a few options to consider. You can
 
 Email security should also a primary concern for most users and Mail-in-a-Box has robust security solutions built-in. See the [Mail-in-a-Box Security Guide](https://github.com/mail-in-a-box/mailinabox/blob/master/security.md) for more details.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 

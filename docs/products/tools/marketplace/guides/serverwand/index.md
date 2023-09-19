@@ -19,9 +19,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** ServerWand should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -56,4 +56,4 @@ Once your ServerWand is up and running, you can connect it to your ServerWand ac
 
 1. ServerWand will connect to your Linode and install all the necessary software so that it can then be managed in ServerWand.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

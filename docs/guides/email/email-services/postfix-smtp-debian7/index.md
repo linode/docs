@@ -20,7 +20,7 @@ You may want to configure Postfix to use an external SMTP provider like Mandrill
 
 ![Configure Postfix to Send Mail Using an External SMTP Server](external_smtp_tg.png "Configure Postfix to Send Mail Using an External SMTP Server")
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## What is Postfix Used For?
 

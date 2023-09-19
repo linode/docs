@@ -47,7 +47,7 @@ Although Go is not perfect, it has many advantages, including the following:
 
 ## Before You Begin
 
-{{< content "before-you-begin-install-go-shortguide" >}}
+{{% content "before-you-begin-install-go-shortguide" %}}
 
 {{< note respectIndent=false >}}
 This guide was written with Go version 1.13.

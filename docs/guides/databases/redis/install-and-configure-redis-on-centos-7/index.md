@@ -195,7 +195,7 @@ Your master/slave replication setup is working properly.
 
 ## Secure the Redis Installation
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should control access to the Redis instance. Some recommended security steps include:
 

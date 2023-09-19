@@ -37,7 +37,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 ## Set Up Nagios Email Alerts
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 {{< note respectIndent=false >}}
 This guide also provides instructions for configuring local emails, which are not subject to the above restriction. Under this configuration, emails are only delivered to users on the same machine as Nagios.

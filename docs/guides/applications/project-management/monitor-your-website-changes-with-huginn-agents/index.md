@@ -89,7 +89,7 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
         EMAIL_FROM_ADDRESS=huginn@example-domain.mailgun.org
 
-    {{< content "email-warning-shortguide" >}}
+    {{% content "email-warning-shortguide" %}}
 
 1. Create a Docker volume for Huginn's database.
 

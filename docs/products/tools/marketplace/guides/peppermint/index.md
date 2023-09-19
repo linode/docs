@@ -22,9 +22,9 @@ While Peppermint is still technically in alpha, it is stable enough for producti
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Peppermint should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -57,4 +57,4 @@ For more on Peppermint, consult the following resources:
 - [Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)
 - [Peppermint Documentation](https://docs.peppermint.sh/)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

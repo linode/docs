@@ -64,11 +64,11 @@ Replace each instance of example.com in this guide with your Ghost site’s doma
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Install Ghost
 

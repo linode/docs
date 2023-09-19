@@ -104,7 +104,7 @@ server {
 
 Your Rocket.Chat site will use an SSL certificate from [Let's Encrypt](https://letsencrypt.org), which is a free certificate provider trusted by common web browsers. A popular tool called [Certbot](https://certbot.eff.org) makes getting and using a Let's Encrypt certificate easy:
 
-{{< content "certbot-shortguide-ubuntu" >}}
+{{% content "certbot-shortguide-ubuntu" %}}
 
 ## View Your Rocket.Chat Site
 

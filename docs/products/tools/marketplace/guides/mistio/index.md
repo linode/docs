@@ -17,9 +17,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Mist.io should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
@@ -35,7 +35,7 @@ authors: ["Linode"]
 - **Mist admin user's email** *(required)*: The e-mail address of the administrator. Used as a log-in credential similar to a username.
 - **Mist admin user's password** *(required)*: The password of the Mist.io administrator account.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -72,4 +72,4 @@ The Mist.io Marketplace App installs the following software on your Linode:
 | [Docker Compose](https://docs.docker.com/compose/) | Tool for defining and running multi-container Docker applications.|
 | [Mist Community Edition](https://github.com/mistio/mist-ce) (installs the [latest version](https://github.com/mistio/mist-ce/releases/latest)) | An open source Mult-Cloud Management Platform.|
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

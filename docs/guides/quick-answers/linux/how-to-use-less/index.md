@@ -36,4 +36,4 @@ To see line numbers on each line, use the `-N` option:
 
 Use the following key commands to navigate through content viewed by `less`:
 
-{{< content "how-to-navigate-less-shortguide" >}}
+{{% content "how-to-navigate-less-shortguide" %}}

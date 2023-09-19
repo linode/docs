@@ -17,9 +17,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** FileCloud should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -32,12 +32,12 @@ authors: ["Linode"]
 
 ### FileCloud Options
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **SOA email address:** Enter the email address that should be used for the domain's SOA DNS record.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -76,4 +76,4 @@ FileCloud by default is inaccessible without either a trial or paid license key 
 
 1. Click the **Choose File** button to upload your `license.xlm` file and register your license key with this FileCloud installation.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -29,7 +29,7 @@ This guide shows how to set up Subsonic on a Linode running Debian or Ubuntu. If
 
 You will need Java installed on your system to run Subsonic.
 
-{{< content "install-java-8-ppa" >}}
+{{% content "install-java-8-ppa" %}}
 
 ## Install Subsonic
 

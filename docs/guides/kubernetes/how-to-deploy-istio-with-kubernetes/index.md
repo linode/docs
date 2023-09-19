@@ -41,7 +41,7 @@ Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kub
 
 ## Create Your Kubernetes Cluster
 
-{{< content "k8s-alpha-deprecation-shortguide" >}}
+{{% content "k8s-alpha-deprecation-shortguide" %}}
 
 There are many ways to create a Kubernetes cluster. This guide will use the Linode k8s-alpha CLI.
 

@@ -185,7 +185,7 @@ For more information on access control and user management, as well as other tip
 
 ## Manage Data and Collections
 
-{{< content "mongodb-example-shortguide" >}}
+{{% content "mongodb-example-shortguide" %}}
 
 ## Additional MongoDB Functionality
 

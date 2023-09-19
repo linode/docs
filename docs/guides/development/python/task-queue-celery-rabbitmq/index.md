@@ -37,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install a Python 3 Environment
 
-{{< content "install_python_miniconda" >}}
+{{% content "install_python_miniconda" %}}
 
 ## Install Celery
 
@@ -320,7 +320,7 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
             sudo firewall-cmd --reload
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 3.  Navigate to the directory with your Celery app and start Flower. 5555 is the default port, but this can be changed using the `--port` flag:
 

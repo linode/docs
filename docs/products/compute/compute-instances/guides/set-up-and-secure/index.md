@@ -515,7 +515,7 @@ For complete instructions on installing and configuring Fail2Ban, see our guide:
 
 ## Configure a Firewall
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 Using a *firewall* to block unwanted inbound traffic to your Compute Instance provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
@@ -569,4 +569,4 @@ These are the most basic steps to harden any Linux server, but further security 
 
 Now you can begin setting up your Compute Instance for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}

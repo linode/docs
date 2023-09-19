@@ -19,9 +19,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Plesk should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
@@ -59,4 +59,4 @@ authors: ["Linode"]
 
     ![Plesk Dashboard](plesk-dashboard-screen.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

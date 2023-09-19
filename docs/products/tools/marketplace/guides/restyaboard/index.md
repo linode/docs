@@ -19,9 +19,9 @@ Restyaboard is like an electronic sticky note for organizing tasks and to-dos. I
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Restyaboard should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -44,4 +44,4 @@ Restyaboard is like an electronic sticky note for organizing tasks and to-dos. I
 
 Now that you’ve accessed your dashboard, check out [the official Restyaboard documentation](https://restya.com/board/docs/install-restyaboard-linode-marketplace-tutorial/) to learn how to add users and further utilize your Restyaboard instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

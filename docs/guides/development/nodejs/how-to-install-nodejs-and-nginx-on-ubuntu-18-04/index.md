@@ -42,7 +42,7 @@ Don't forget to update your Linode's `/etc/hosts` file with its public IP addres
     {{< /note >}}
 
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install and Configure NGINX
 

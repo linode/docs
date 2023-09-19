@@ -17,9 +17,9 @@ The OpenLiteSpeed Node.js One-Click app automatically installs the performance w
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Node.js should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -47,4 +47,4 @@ The OpenLiteSpeed Node.js One-Click app automatically installs the performance w
 
 Now that you’ve accessed your OpenLiteSpeed Node.js instance, check out [the official OpenLiteSpeed Node.js documentation](https://docs.litespeedtech.com/cloud/images/nodejs/) to learn how to further configure your OpenLiteSpeed Node.js instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

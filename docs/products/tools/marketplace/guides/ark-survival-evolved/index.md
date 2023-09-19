@@ -19,9 +19,9 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** ARK Survival Evolved should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
@@ -42,7 +42,7 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 - **XP Multiplier:** Increases or decreases the amount of experience awarded for various actions.
 - **Server PvE:** Disables player vs player combat and enables player vs environment combat.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -83,4 +83,4 @@ The ARK: Survival Evolved Marketplace App will install the following required so
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 27015/udp, 7777:7778/udp and 27020/tcp will allow outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

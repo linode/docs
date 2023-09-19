@@ -4,4 +4,4 @@ description: "OAuth support in the Linode Cloud Manager."
 authors: ["Linode"]
 ---
 
-{{< content "cloud-oauth-apps-shortguide" >}}
+{{% content "cloud-oauth-apps-shortguide" %}}

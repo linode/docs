@@ -10,7 +10,7 @@ authors: ["Linode"]
 
 You need to install the kubectl client to your computer before proceeding. Follow the steps corresponding to your computer's operating system.
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ## Connect to a Cluster with kubectl
 

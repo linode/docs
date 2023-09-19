@@ -31,9 +31,9 @@ Your WireGuard configuration can be adjusted after you first set up your Marketp
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** WireGuard should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -156,6 +156,6 @@ This test should be performed once you have configured a WireGuard client and up
 | [**WireGuard**](https://www.wireguard.com) | VPN software. |
 | [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The Port assigned during the [WireGuard Options](#wireguard-options) step of the deployment will allow outgoing and incoming traffic. |
 
-{{< content "marketplace-update-note">}}
+{{% content "marketplace-update-note" %}}
 
 "WireGuard" is a registered trademark of Jason A. Donenfeld.

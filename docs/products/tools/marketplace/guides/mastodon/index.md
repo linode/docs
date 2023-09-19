@@ -20,7 +20,7 @@ The Mastodon platform takes a federated approach to social networking. Each Mast
 
 Mastodon servers range in size from small private instances to massive public instances and typically center on specific interests or shared principles. The biggest Mastodon server is [Mastodon.social](https://mastodon.social/about), a general-interest server created by the developers of the Mastodon platform. It has over 540,000 users and boasts a thorough [Code of Conduct](https://mastodon.social/about/more).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 {{< note >}}
 The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section. Depending on a variety of factors, new and updated DNS records can take up to 48 hours to fully propagate, though it usually happens much sooner. The deployment fails if the DNS has still not been propagated.
@@ -29,9 +29,9 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Mastodon should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -101,4 +101,4 @@ Open a web browser and navigate to the custom domain you entered when deploying 
 
 To learn more about Mastodon, check out the [official documentation](https://docs.joinmastodon.org/) and [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance. When you are ready to make your instance known to the world, you can add it to the list over at [Instances.social](https://instances.social/admin) by filling out the admin form.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

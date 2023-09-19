@@ -13,9 +13,9 @@ authors: ["Linode"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{<note>}}
 **Estimated deployment time:** Passky should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -35,7 +35,7 @@ authors: ["Linode"]
 - **Domain**: The domain name to be included in Apache vhost and used to generated SSL certificates. If none is provided the default rDNS is used.
 - **Sub Domain**: The sub domain to be included in Apache vhost and used to generated TLS/SSL certificates.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -51,4 +51,4 @@ authors: ["Linode"]
 
 1. To access the credentials stored in the Passky server you can use the client at the [Passky website](https://passky.org), by [self hosting](https://github.com/Rabbit-Company/Passky-Website#self-hosted), with a [browser extension](https://github.com/Rabbit-Company/Passky-Browser-Extension#installation) or through the [desktop application](https://github.com/Rabbit-Company/Passky-Desktop#installation).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

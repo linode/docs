@@ -39,7 +39,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
         sudo yum install -y policycoreutils-python-utils
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install Apache
 

@@ -43,7 +43,7 @@ This guide was written using version 1.14 of Kubectl.
         - You will need to deploy two Linodes. One will serve as the master node and the other will serve as a worker node.
     1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
 
-    {{< content "k8s-alpha-deprecation-shortguide" >}}
+    {{% content "k8s-alpha-deprecation-shortguide" %}}
 
 1. [Create a GitHub account](https://github.com/join) if you don't already have one.
 
@@ -75,7 +75,7 @@ Development of your Hugo site and Docker image will take place locally on your p
         brew install hugo
         ```
 
-1. {{< content "installing-docker-shortguide" >}}
+1. {{% content "installing-docker-shortguide" %}}
 
 ## Create a Hugo Site
 

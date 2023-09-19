@@ -17,9 +17,9 @@ NirvaShare is a simplified and secure enterprise file sharing solution built on 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** NirvaShare should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -34,7 +34,7 @@ NirvaShare is a simplified and secure enterprise file sharing solution built on 
 
 - **Database Password** *(required)*: Enter a *strong* password for NirvaShare database.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -50,4 +50,4 @@ From here, you will want to change the default admin password, you can do so cli
 
 Now that you’ve accessed your dashboard, checkout [the official NirvaShare documentation](https://nirvashare.com/setup-guide/) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

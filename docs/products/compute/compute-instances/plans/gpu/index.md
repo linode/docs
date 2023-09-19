@@ -54,7 +54,7 @@ Atlanta, GA, United States; Frankfurt, Germany; Newark, NJ, United States; Mumba
 
 Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCPU cores, 32 GB of memory, and 640 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page below to learn more about other instance types.
 
-{{< content "gpu-deposit-shortguide" >}}
+{{% content "gpu-deposit-shortguide" %}}
 
 ## GPU Specifications
 

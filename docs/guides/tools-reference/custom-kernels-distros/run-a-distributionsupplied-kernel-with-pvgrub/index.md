@@ -13,7 +13,7 @@ deprecated: true
 authors: ["Linode"]
 ---
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 {{< note type="alert" respectIndent=false >}}
 This guide is for legacy Xen Linodes. For newer Linodes, consult our [How to Change your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) guide.

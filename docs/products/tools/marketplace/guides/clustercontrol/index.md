@@ -23,9 +23,9 @@ ClusterControl offers both free and paid plans. Visit [Severalnines' website](ht
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** ClusterControl should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -42,10 +42,10 @@ ClusterControl offers both free and paid plans. Visit [Severalnines' website](ht
 - **CMON User Password** *(required)*: CMON user password.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Would you like to use a free Let's Encrypt SSL certificate?:** Select *yes* to generate a free Let's Encrypt certificate and enabled secure HTTPS traffic. This uses the default rDNS value for the new instance or the custom domain, if one is specified.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -59,4 +59,4 @@ From there you will see the welcome screen where you can enter the requested inf
 
 Now that you’ve accessed your dashboard, checkout [the official ClusterControl documentation](https://docs.severalnines.com/docs/clustercontrol/) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

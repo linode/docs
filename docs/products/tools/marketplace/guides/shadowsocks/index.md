@@ -20,9 +20,9 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Shadowsocks should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -37,7 +37,7 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 - **Shadowsock Password** *(required)*: Enter a *strong* password for your Shadowsocks user.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -58,4 +58,4 @@ After configuration, your `Server Preferences` should be similar to the followin
 
 ![shadowsocks-marketplace.png](shadowsocks-marketplace.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

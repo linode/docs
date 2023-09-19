@@ -22,9 +22,9 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Plex should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -48,7 +48,7 @@ The following configuration options create a secure [Limited User](/docs/product
 - **Limited User Password** *(required)*: Enter a *strong* password for the new user.
 - **Limited User SSH Key:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -228,4 +228,4 @@ The Plex Marketplace App installs the following required software on your Linode
 | [**Docker Engine**](https://docs.docker.com/engine/) | Docker Engine is an open source containerization technology for building and containerizing your applications. This Marketplace App deploys Plex Media Server as a Docker container. |
 | [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) | The Plex Media Server transmits locally-stored media files, enabling you to stream your personal media collection to any device that can support a [Plex Client](https://www.plex.tv/apps-devices/). |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -24,7 +24,7 @@ Nextcloud 14 is a cloud storage platform that offers users the ability to self-h
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ## Install Nextcloud 14 and Talk
 
@@ -72,7 +72,7 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ### Create docker-compose.yaml
 

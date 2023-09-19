@@ -54,7 +54,7 @@ Object Storage deployments in each data center are assigned a cluster ID. These 
 
 Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabytes of storage. This flat rate is prorated, so if you use Object Storage for a fraction of the month you are charged a fraction of the cost. For example, if you have Object Storage enabled for half of the month and use up to 250 gigabytes of storage you are billed $2.50 at the end of the month. Each additional gigabyte of storage over the first 250 gigabytes costs $0.02, and this usage is also prorated based on usage time.
 
-{{< content "object-storage-cancellation-shortguide" >}}
+{{% content "object-storage-cancellation-shortguide" %}}
 
 ## Technical Specifications and Considerations {#specifications}
 

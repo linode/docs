@@ -42,7 +42,7 @@ Install Terraform on your computer by following the [Install Terraform](/docs/gu
 
 ### Install kubectl
 
-{{< content how-to-install-kubectl >}}
+{{% content "how-to-install-kubectl" %}}
 
 ## Create your Terraform Configuration Files
 
