@@ -14,14 +14,14 @@ This guide shows you how to use [Linode's API](/docs/api) to create and attach a
 
 You can attach a Linode to a VLAN in three different ways using the Linode API:
 
-- As part of the configuration of a new Linode using the Linode Create ([POST /linodes/instances](/docs/api/linode-instances/#linode-create)) endpoint.
-- By creating a new configuration profile for a Linode using the Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create)) endpoint.
-- By editing an existing configuration profile of a Linode using the Configuration Profile Update ([/linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update)) endpoint.
+- As part of the configuration of a new Linode using the Linode Create ([POST /linodes/instances](/docs/api/linode-instances/linode-create/)) endpoint.
+- By creating a new configuration profile for a Linode using the Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/configuration-profile-create/)) endpoint.
+- By editing an existing configuration profile of a Linode using the Configuration Profile Update ([/linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/configuration-profile-update/)) endpoint.
 
 The steps in this guide can be adopted to create and use VLANs for your specific use case.
 
 {{< note >}}
-When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) generates network configurations for the specified network interfaces if it is enabled. You can enable Network Helper by default using the Account Settings Update ([PUT /account/settings](/docs/api/account/#account-settings-update)) endpoint. The Linode must be rebooted for any changes within its network interfaces to take effect.
+When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) generates network configurations for the specified network interfaces if it is enabled. You can enable Network Helper by default using the Account Settings Update ([PUT /account/settings](/docs/api/account/account-settings-update/)) endpoint. The Linode must be rebooted for any changes within its network interfaces to take effect.
 {{< /note >}}
 
 ## Configuring VLANs with the Interfaces Array
@@ -54,7 +54,7 @@ The Public Internet must always be set to use the network interface `eth0`.
 
 When configuring a `vlan` purpose network interface, a VLAN can be selected by specifying its `label`. Linodes that are attached to the same VLAN can privately communicate with each other over their respective `vlan` purpose interfaces.
 
-If the `label` doesn't correspond with an existing VLAN, a new VLAN is created. VLANs that already exist on an account can be viewed, along with their region and attached Linodes, using the VLANs List ([GET /network/vlans](/docs/api/networking/#vlans-list)) endpoint.
+If the `label` doesn't correspond with an existing VLAN, a new VLAN is created. VLANs that already exist on an account can be viewed, along with their region and attached Linodes, using the VLANs List ([GET /network/vlans](/docs/api/networking/vlans-list/)) endpoint.
 
 {{< note >}}
 No `label` is specified for `public` purpose interfaces. You can simply omit the property, or enter an empty string or `null`.
@@ -99,7 +99,7 @@ To illustrate each of the above configurations, the following `interfaces` array
 
 ## Attaching a VLAN to a New Linode
 
-To attach a VLAN to a new Linode, send a request to the Linode Create ([POST /linodes/instances](/docs/api/linode-instances/#linode-create)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
+To attach a VLAN to a new Linode, send a request to the Linode Create ([POST /linodes/instances](/docs/api/linode-instances/linode-create/)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
 
 The following request creates a 1GB Linode utilizing the example `interfaces` array from [above](#example-interfaces-array):
 
@@ -136,11 +136,11 @@ An `image` must be specified to set interfaces when creating a new Linode.
 
 You can attach a VLAN to an existing Linode by either creating a new configuration profile or updating an existing configuration profile for the Linode. In either case, the Linode must be rebooted to allow Network Helper to automatically adjust the necessary network configuration files on the Linode.
 
-The Linode's ID is required to utilize these methods. Use the Linodes List ([GET /linode/instances](/docs/api/linode-instances/#linodes-list)) endpoint to retrieve the IDs of each of your Linodes. To view the Disk IDs of a Linode, use the Disks List ([GET /linode/instances/{linodeId}/disks](/docs/api/linode-instances/#disks-list)) endpoint.
+The Linode's ID is required to utilize these methods. Use the Linodes List ([GET /linode/instances](/docs/api/linode-instances/linodes-list/)) endpoint to retrieve the IDs of each of your Linodes. To view the Disk IDs of a Linode, use the Disks List ([GET /linode/instances/{linodeId}/disks](/docs/api/linode-instances/disks-list/)) endpoint.
 
 ### Creating a Configuration Profile
 
-1.  To attach a VLAN to an existing Linode using a new configuration profile, send a request to the Configuration Profile Create ([POST /instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
+1.  To attach a VLAN to an existing Linode using a new configuration profile, send a request to the Configuration Profile Create ([POST /instances/{linodeId}/configs](/docs/api/linode-instances/configuration-profile-create/)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
 
     The following request creates a configuration profile utilizing the example `interfaces` array from [above](#example-interfaces-array):
 
@@ -178,7 +178,7 @@ The Linode's ID is required to utilize these methods. Use the Linodes List ([GET
 
     Note the new Configuration Profile's ID from the response.
 
-1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/#linode-reboot)) endpoint.
+1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/linode-reboot/)) endpoint.
 
         curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
@@ -189,12 +189,12 @@ The Linode's ID is required to utilize these methods. Use the Linodes List ([GET
 
 ### Updating a Configuration Profile
 
-1.  To attach a VLAN to an existing Linode using an existing configuration profile, first retrieve the Configuration Profile's ID using the Configuration Profiles List ([GET /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profiles-list)) endpoint.
+1.  To attach a VLAN to an existing Linode using an existing configuration profile, first retrieve the Configuration Profile's ID using the Configuration Profiles List ([GET /linode/instances/{linodeId}/configs](/docs/api/linode-instances/configuration-profiles-list/)) endpoint.
 
         curl -H "Authorization: Bearer $TOKEN" \
           https://api.linode.com/v4/linode/instances/123/configs
 
-1.  Using the Linode's current Configuration Profile ID, send a request to the Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
+1.  Using the Linode's current Configuration Profile ID, send a request to the Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/configuration-profile-update/)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
 
     The following request updates a configuration profile utilizing the example `interfaces` array from [above](#example-interfaces-array):
 
@@ -223,7 +223,7 @@ The Linode's ID is required to utilize these methods. Use the Linodes List ([GET
     When updating a Configuration Profile's `interfaces` array, the previous interface configurations are overwritten. Any interfaces you wish to keep attached to a Linode must be redefined when updating its Configuration Profile.
     {{< /note >}}
 
-1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/#linode-reboot)) endpoint.
+1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/linode-reboot/)) endpoint.
 
         curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \

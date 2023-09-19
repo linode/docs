@@ -11,17 +11,17 @@ published: 2021-11-12
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [List Backups](/docs/api/linode-instances/#backups-list)
+- [List Backups](/docs/api/linode-instances/backups-list/)
 
-- [Create Snapshot](/docs/api/linode-instances/#snapshot-create)
+- [Create Snapshot](/docs/api/linode-instances/snapshot-create/)
 
-- [Cancel Backups](/docs/api/linode-instances/#backups-cancel)
+- [Cancel Backups](/docs/api/linode-instances/backups-cancel/)
 
-- [Enable Backups](/docs/api/linode-instances/#backups-enable)
+- [Enable Backups](/docs/api/linode-instances/backups-enable/)
 
-- [View Backup](/docs/api/linode-instances/#backup-view)
+- [View Backup](/docs/api/linode-instances/backup-view/)
 
-- [Restore Backup](/docs/api/linode-instances/#backup-restore)
+- [Restore Backup](/docs/api/linode-instances/backup-restore/)
 
 ## Linode CLI
 

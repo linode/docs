@@ -11,7 +11,7 @@ published: 2023-04-04
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [Enable Linode Managed](/docs/api/account/#linode-managed-enable)
+- [Enable Linode Managed](/docs/api/account/linode-managed-enable/)
 
 - [Managed Endpoint Collection](/docs/api/managed)
 

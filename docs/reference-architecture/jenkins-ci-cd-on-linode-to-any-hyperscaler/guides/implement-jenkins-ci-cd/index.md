@@ -209,7 +209,7 @@ The configurations and commands used in this guide add multiple Linode instances
             linode-cli regions list
             ```
 
-        - Visit the [Regions List API endpoint](/docs/api/regions/#regions-list):
+        - Visit the [Regions List API endpoint](/docs/api/regions/regions-list/):
 
             ```command
             curl https://api.linode.com/v4/regions
