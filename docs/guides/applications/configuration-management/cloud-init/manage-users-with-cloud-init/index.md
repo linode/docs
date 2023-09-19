@@ -1,0 +1,189 @@
+---
+slug: manage-users-with-cloud-init
+title: "Use Cloud-init to Manage Users on New Servers"
+description: 'Follow along with this guide to use cloud-init for managing users and user groups on new servers.'
+og_description: 'Follow along with this guide to use cloud-init for managing users and user groups on new servers.'
+keywords: ['cloud-init','cloudinit','users','groups']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
+published: 2023-09-19
+modified_by:
+  name: Nathaniel Stickman
+external_resources:
+- '[Cloud-init Documentation - Module Reference: Users and Groups](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#users-and-groups)'
+---
+
+[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) is an industry-standard solution for automating server deployments, with support across platforms and distributions. Combining platform metadata with custom user data scripts, cloud-init can vastly simplify the process of initializing your new servers.
+
+With Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service, you can leverage cloud-init to deploy your Compute Instances. A cloud-config user data script can define everything you need to initialize your instances, from security and user set up to software installation and script deployment.
+
+This guide shows you how to start working with users as part of your cloud-init deployments. Read on for cloud-config scripts to provision users, add SSH keys, and limit root and other remote access routes.
+
+Before getting started, you should review our guide on how to [Use Cloud-init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with the present guide. And when you are ready to deploy your cloud-config the guide linked above shows you how.
+
+## Create User
+
+Within a cloud-config script, the `users` option handles user creation and most features for managing users. At its simplest, the option just features a `default` item, ensuring that cloud-init creates the default user. Whatever other users you add, it is recommended that you keep the `default` user as well.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+users:
+  - default
+```
+
+To create an additional user, add another item to the list with at least a `name` field defining the username. For instance, to create an `example-user`, you can use a configuration like this one.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+users:
+  - name: example-user
+```
+
+The cloud-init process sets up the user with a range of defaults, like a home directory and user group. But typically you want to take a bit more control of the user's creation, especially if you intend to access the user over SSH. Further sections show you features like [assigning groups](#manage-and-assign-groups) (including `sudo` access) and [adding SSH keys](#add-an-ssh-key-to-a-user) to users. In the example below, and the accompanying breakdown, you can see a range of some additional useful options for managing your new users.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+users:
+  - name: example-user
+    gecos: Example User,600-700-8090
+    shell: /bin/bash
+    lock_passwd: false
+    passwd: <PASSWORD_HASH>
+```
+
+This creates a basic user, accessible by a username and password. Here is an explanation of each of the parts at work in the example.
+
+- `name`: Defines the username for the user. This field is required when creating a new user.
+
+- `gecos`: Provides a comment on the user. This is where you can enter GECOS information, such as real name and contact details, for the user.
+
+- `shell`: Points to a shell for the user. While not required, the user may behave unexpectedly if you do not explicitly provide this field.
+
+- `lock_passwd`: Whether to disable password logins for the user. The default is `true`, and it is recommended to use SSH access instead. This is because, in addition to SSH keys generally being more secure, the password hash is included in the cloud-config, making it more difficult still to secure.
+
+- `passwd`: Defines the password for the user, via a password hash. To login with the user using this password, the `lock_passwd` option needs to be set to `false`. The password must be supplied as a hash, which you can get with the following command.
+
+    ```command
+    mkpasswd --method=SHA-512 --rounds=4096
+    ```
+
+    {{< note >}}
+    The configuration does support a `plain_text_passwd` option, where you can set a user password from plain text, rather than a hash. However, you should not use this option in a production environment, as the password can more readily be exposed.
+    {{< /note >}}
+
+For the full range of user configuration options, see cloud-init's [Users and Groups](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#users-and-groups) module reference documentation.
+
+## Manage and Assign Groups
+
+You cloud-config script can manage user groups, either independently using the `groups` option or within a `users` entry. The `groups` option gives you more control of the groups available on your system and allows you to add existing users, like the default `root` user.
+
+Take this example. Under `groups`, you have a list of groups to be added to the system. Just listing the name of a group, like `example-group` below, creates an empty group. Adding a list of usernames below a group name, as with `admin-group` below, initializes the system with those users belonging to the group.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+groups:
+  - admin-group:
+    - root
+  - example-group
+```
+
+Cloud-config scripts also have a `groups` option available within each `users` entry. Using this `groups` option provides a more user-centered approach, allowing you to create and assign groups on a user-by-user basis. In the example below, a new group gets created along with the user, and the user is assigned to that group.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+users:
+  - name: example-user
+    groups:
+      - example-group
+```
+
+By default, cloud-init creates and assigns each user to a self-named user group. So the user above, `example-user`, actually belongs to two groups: `example-user` and `example-group`. You can set `no_user_group: true` on the user to not create the `example-user` group.
+
+### Assigning Sudo Access
+
+Cloud-init controls `sudo` access on users primarily through the `sudo` option. This option takes a list of `sudo` rule strings, just they appear in the `sudoers` file. You can learn more about `sudo` access and `sudo` rules in the appropriate sections of our [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+
+In the case of the example below, a new `example-user` gets created and given `sudo` access. Access is granted in one rule, which allows the user to run any command as `sudo` after entering the user's password. The user is added to the `sudo` user group as well.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+users:
+  - name: example-user
+    groups:
+      - sudo
+    sudo:
+      - ALL=(ALL:ALL) ALL
+      - ALL=(ALL) NOPASSWD:ALL
+```
+
+Alternatively, you can use the following `sudoers` rule to permit `sudo` access without password entry. This is useful for users that you have set up SSH key access on and have not provided a password for.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+...
+    sudo:
+      - ALL=(ALL) NOPASSWD:ALL
+```
+
+## Add an SSH Key to a User
+
+Using the `ssh_authorized_keys` option, you can authorize a list of SSH public keys for accessing a user. Doing so provides a more secure authorization route than passwords, and so it is recommended over password configuration.
+
+If you do not have an SSH key pair yet, get one by following the relevant section of our guide on how to [Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair).
+
+Once you have the SSH key pair, you can add your SSH public key to the `ssh_authorized_keys` list in the user configuration. In this example, `example-user` has authorized access from two SSH keys.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+users:
+  - name: example-user
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - <SSH_PUBLIC_KEY_FIRST>
+      - <SSH_PUBLIC_KEY_SECOND>
+```
+
+With this set up, a machine with the matching SSH private key can access `example-user` over SSH. The SSH key provides the authentication, meaning that passwords do not need to be explicitly handled or transmitted.
+
+## Disable Root User
+
+From a security perspective, it is generally advisable to disable root login via SSH. Primarily, this limits the exposure of your root user and the possibility of your system being exposed and controlled with root privileges.
+
+To disable root access over SSH, you need to modify the SSH configuration file and restart your system's SSH service. All of this can be done within the cloud-config script using a series of shell commands in the `runcmd`. The example here achieves this through three commands.
+
+- The `sed` command removes any `PermitRootLogin` line already in the configuration file. Any existing setting is thus removed, and this bypasses more complicated commands that try to identify commented-out settings.
+
+- The `echo` command adds a new `PermitRootLogin` setting to the configuration file, with a value of `no` to disable the setting.
+
+- The `systemctl` command restarts the SSH service to ensure the settings take effect immediately.
+
+```file {title="cloud-config.yaml" lang="yaml"}
+runcmd:
+  - sed -i '/PermitRootLogin/d' /etc/ssh/sshd_config
+  - echo "PermitRootLogin no" >> /etc/ssh/sshd_config
+  - systemctl restart sshd
+```
+
+## Verify User Configuration
+
+Once cloud-init has completed your server's initialization, you can verify that your user and group configurations have deployed as intended. For several of the components configured throughout this tutorial, often the simplest verification is just connecting to the given user via SSH.
+
+For instance, if your cloud-config created an `example-user` with an SSH key, you should be able to connect to the server as that user via SSH. (Replace `192.0.2.0` below with the deployed servers' actual IP address.) If you disabled remote root access, you should be able to verify that similarly, by attempting to access the server as the `root` user.
+
+```command
+ssh example-user@192.0.2.0
+```
+
+To verify in more detail, you can use the `getent` and `groups` commands once you have logged into the server. The former provides the best summary of a user. Using the `getent` command with `passwd` and a username fetches that user's entry in the system.
+
+In this example, you can see an entry for an `example-user` that has a GECOS comment, home directory, and an assigned shell program.
+
+```command
+sudo getent passwd example-user
+```
+
+```output
+example-user:x:1000:1002:Example User,600-700-8090:/home/example-user:/bin/bash
+```
+
+What is lacking above is verification of the user's group. You can get that with the `groups` command followed by the username. The example below does this for example user, showing that the user belongs to the self-named group and an additional group, `example-group`.
+
+```command
+sudo groups example-user
+```
+
+```output
+example-user : example-user example-group
+```
