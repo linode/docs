@@ -338,6 +338,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:** `ap-south.webconsole.linode.com`
 
+#### Stockholm, Sweden
+
+-   **Lish SSH Gateway:** `lish-se-sto.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    3072 SHA256:oC6WZwUMm+S/myz7aEBP6YsAUXss7csmWzJRlwDfpyw lish-se-sto.linode.com (RSA)
+    256 SHA256:lr6m6BKQBqFW/iw/WDq2QQqh5kUlMjidawEEKv9lNRg lish-se-sto.linode.com (ECDSA)
+    256 SHA256:phubC9JMR6DNal0BIvu2ESvmDfs2rSquBrhKdr0IbmU lish-se-sto.linode.com (ED25519)
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `se-sto.webconsole.linode.com`
+
 #### Sydney (Australia)
 
 -   **Lish SSH Gateway:** `lish-ap-southeast.linode.com`

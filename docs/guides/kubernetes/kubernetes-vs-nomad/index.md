@@ -91,7 +91,7 @@ Below are just a few of the similarities, but they highlight key features that m
 
 -   **Rolling Deployments**: Nomad and Kubernetes support rolling upgrades that verify a deployment's health before replacing an old deployment, and each can automatically rollback changes if a deployment fails.
 
--   **External Storage Solutions**: Both Kubernetes and Nomad utilize the Container Storage Interface (CSI) standard, allowing them to leverage storage resources on cloud platforms that support CSI. Linode has its own CSI that you can learn more in our guide [How to Deploy Persistent Volume Claims with Linode](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/).
+-   **External Storage Solutions**: Both Kubernetes and Nomad utilize the Container Storage Interface (CSI) standard, allowing them to leverage storage resources on cloud platforms that support CSI. Linode has its own CSI that you can learn more in our guide [How to Deploy Persistent Volume Claims with Linode](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/).
 
 ### Differences
 

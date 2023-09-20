@@ -1,26 +1,34 @@
-import { TurboDriveTestCase } from "../helpers/turbo_drive_test_case"
+import { test } from "@playwright/test"
+import { assert } from "chai"
+import { nextBody, pathname, visitAction } from "../helpers/page"
 
-export class DriveTests extends TurboDriveTestCase {
-  path = "/src/tests/fixtures/drive.html"
+const path = "/src/tests/fixtures/drive.html"
 
-  async setup() {
-    await this.goToLocation(this.path)
-  }
+test.beforeEach(async ({ page }) => {
+  await page.goto(path)
+})
 
-  async "test drive enabled by default; click normal link"() {
-    this.clickSelector("#drive_enabled")
-    await this.nextBody
-    this.assert.equal(await this.pathname, this.path)
-    this.assert.equal(await this.visitAction, "advance")
-  }
+test("test drive enabled by default; click normal link", async ({ page }) => {
+  page.click("#drive_enabled")
+  await nextBody(page)
+  assert.equal(pathname(page.url()), path)
+})
 
-  async "test drive enabled by default; click link inside data-turbo='false'"() {
-    this.clickSelector("#drive_disabled")
-    await this.nextBody
-    this.assert.equal(await this.pathname, this.path)
-    this.assert.equal(await this.visitAction, "load")
-  }
-}
+test("test drive to external link", async ({ page }) => {
+  await page.route("https://example.com", async (route) => {
+    await route.fulfill({ body: "Hello from the outside world" })
+  })
 
+  page.click("#drive_enabled_external")
+  await nextBody(page)
 
-DriveTests.registerSuite()
+  assert.equal(await page.evaluate(() => window.location.href), "https://example.com/")
+  assert.equal(await page.textContent("body"), "Hello from the outside world")
+})
+
+test("test drive enabled by default; click link inside data-turbo='false'", async ({ page }) => {
+  page.click("#drive_disabled")
+  await nextBody(page)
+  assert.equal(pathname(page.url()), path)
+  assert.equal(await visitAction(page), "load")
+})

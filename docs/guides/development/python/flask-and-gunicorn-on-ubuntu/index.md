@@ -18,6 +18,7 @@ external_resources:
 aliases: ['/development/python/flask-and-gunicorn-on-ubuntu/']
 authors: ["Austin Balarin"]
 ---
+
 Flask is a light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. After you have developed a Flask application in a local environment, you need to prepare the application's production environment in order to run the application and serve it to the users of the application through the internet.
 
 This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode. The production environment uses [NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) as the web server and reverse proxy, [Gunicorn](https://gunicorn.org/) as the web server gateway interface (WSGI) application server, and [Supervisor](http://supervisord.org/) for monitoring and auto-reloading Gunicorn should it go down. This guide does not cover creating a Flask application or related Python concepts.
@@ -30,14 +31,14 @@ In this guide you complete the following:
 - [Install and configure Gunicorn](#install-and-configure-gunicorn)
 - [Install and configure Supervisor](#install-and-configure-supervisor)
 
-    {{< disclosure-note "Assumptions">}}
-This guide assumes you are familiar with the following concepts and skills:
+    {{< note >}}
+    This guide assumes you are familiar with the following concepts and skills:
 
-* The [Python programming language](https://docs.python.org/3/tutorial/index.html)
-* [Setting up a local virtual environment](https://docs.python-guide.org/dev/virtualenvs/) for Python programming
-* [Creating applications using Flask](https://flask.palletsprojects.com/en/1.1.x/quickstart/#)
-* Using a local and remote version control system, like [Git and GitHub](/docs/guides/how-to-use-git/).
-    {{</ disclosure-note >}}
+    * The [Python programming language](https://docs.python.org/3/tutorial/index.html)
+    * [Setting up a local virtual environment](https://docs.python-guide.org/dev/virtualenvs/) for Python programming
+    * [Creating applications using Flask](https://flask.palletsprojects.com/en/1.1.x/quickstart/#)
+    * Using a local and remote version control system, like [Git and GitHub](/docs/guides/how-to-use-git/).
+    {{< /note >}}
 
 ## Before You Begin
 1.  [Create a Flask Application](https://flask.palletsprojects.com/en/1.1.x/tutorial/) or use this [Example Blog Application](https://github.com/abalarin/Flask-on-Linode). Clone and run it on the local machine [using GitHub](/docs/guides/how-to-use-git/).
