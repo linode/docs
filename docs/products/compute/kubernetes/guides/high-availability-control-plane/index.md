@@ -3,7 +3,7 @@ description: "Learn how to enable High Availability on Linode Kubernetes Engine.
 keywords: ['kubernetes', 'lke', 'high availability', 'ha']
 tags: ["networking","kubernetes","container","education"]
 published: 2021-11-04
-modified: 2023-02-09
+modified: 2023-09-21
 modified_by:
   name: Linode
 title: "High Availability (HA) Control Plane"
@@ -18,7 +18,7 @@ Within the Linode Platform, this control plane is fully managed by LKE (the Lino
 
 ## Cost
 
-The HA control plane feature is an optional billable service that costs $60 per cluster. For more information, see our [pricing page](https://www.linode.com/pricing/).
+The HA control plane feature is an optional billable service that starts at $60/month per cluster, depending on region. For more information, see our [pricing page](https://www.linode.com/pricing/).
 
 {{< note type="alert" >}}
 While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.

@@ -10,7 +10,7 @@ tab_group_main:
 cascade:
     product_description: "A managed Kubernetes service that enables you to easily control and scale your application's infrastructure."
 published: 2020-06-02
-modified: 2023-02-09
+modified: 2023-09-21
 ---
 
 The Linode Kubernetes Engine (LKE) is a managed container orchestration engine built on top of Kubernetes. LKE enables you to quickly deploy and manage your containerized applications without needing to build (and maintain) your own Kubernetes cluster. All LKE instances are equipped with a fully-managed control plane at no additional cost. Only pay for the worker nodes that run your application and any optional [NodeBalancers](/docs/products/networking/nodebalancers/) (load balancers) and [Block Storage volumes](/docs/products/storage/block-storage/) that your application uses.
@@ -28,7 +28,7 @@ The Linode Kubernetes Engine is available across [all regions](https://www.linod
 
 ## Pricing
 
-The basic control plane infrastructure on LKE clusters is provided at no additional cost. An upgrade to a [high availability control plane](/docs/products/compute/kubernetes/guides/high-availability-control-plane/) is priced at $60/month per cluster. All other resources consumed by the cluster are billed at the normal rate, including Compute Instances, NodeBalancers, and Block Storage volumes. Review the [Pricing](https://www.linode.com/pricing/) page for more information on those costs.
+The basic control plane infrastructure on LKE clusters is provided at no additional cost. An upgrade to a [high availability control plane](/docs/products/compute/kubernetes/guides/high-availability-control-plane/) is priced starting at $60/month per cluster, depending on region. All other resources consumed by the cluster are billed at the normal rate, including Compute Instances, NodeBalancers, and Block Storage volumes. Review the [Pricing](https://www.linode.com/pricing/) page for more information on those costs.
 
 ## Technical Specifications
 

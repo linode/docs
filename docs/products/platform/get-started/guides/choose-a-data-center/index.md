@@ -4,12 +4,16 @@ description: 'This article gives you information to help you determine which dat
 keywords: ["data center", "datacenter", "dc", "speed"]
 tags: ["linode platform"]
 published: 2018-10-31
-modified: 2023-09-14
+modified: 2023-09-20
 modified_by:
   name: Linode
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
 authors: ["Linode"]
 ---
+
+{{< note >}}
+Our **Chennai** and **Mumbai** core sites are optimized for the India market. For workloads that currently serve or intend to serve the wider Asia-Pacific region, and for communication with Akamai core sites outside of India, we recommend deploying resources in our Singapore or Sydney data centers.
+{{< /note >}}
 
 Deploying your Compute Instance to a geographically advantageous data center can make a big difference in connection speeds to your server. Ideally, your site or application should be served from multiple points around the world, with requests sent to the appropriate region based on client geolocation. On a smaller scale, deploying a Compute Instance in the data center nearest to you will make it easier to work with than one in a different region or continent.
 
@@ -103,3 +107,12 @@ Below you can see that each time `cURL` is run, a different average download spe
                                  Dload  Upload   Total   Spent    Left  Speed
 100  100M  100  100M    0     0  9189k      0  0:00:11  0:00:11 --:--:-- 10.0M
 ```
+
+## Pricing
+
+Price may also be a factor when selecting your region. In general, Linode plans and services are billed at the same, flat rate across data centers. However, due to higher infrastructure costs in various global markets, pricing for some services varies from data center to data center. Regions with data center-specific pricing include:
+
+- Jakarta, Indonesia
+- São Paulo, Brazil
+
+See our [Pricing](https://www.linode.com/pricing/) page for a complete list of plans and pricing.

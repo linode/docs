@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Managed cloud-based load balancing service that provides high availability and horizontal scaling to any application."
-modified: 2022-08-24
+modified: 2023-09-21
 aliases: ['/platform/nodebalancer/','/nodebalancers/','/guides/platform/nodebalancer/']
 ---
 
@@ -51,7 +51,7 @@ NodeBalancers are available across [all regions](https://www.linode.com/global-i
 
 ## Pricing
 
-Each NodeBalancer on an account costs $10/mo ($0.015/hr).
+Each NodeBalancer on an account starts at $10/mo ($0.015/hr). [Price](https://www.linode.com/pricing/) may vary by region.
 
 ## Technical Specifications
 
