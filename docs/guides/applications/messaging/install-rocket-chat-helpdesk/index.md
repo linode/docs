@@ -14,7 +14,7 @@ external_resources:
 
 ## What Is Rocket.Chat?
 
-[Rocket.Chat](https://www.rocket.chat/) offers an open source communications platform with enterprise-grade features. Rocket.Chat combines a robust platform for communication and collaboration with a toolset for help desk and support operations.
+[Rocket.Chat](https://www.rocket.chat/) offers an open source communications platform with enterprise-grade features. It combines a robust platform for communication and collaboration with a toolset for help desk and support operations.
 
 At its core, Rocket.Chat is a platform for real-time communications with an emphasis on security. Rocket.Chat can manage conversations across your organization, similar to platforms like Slack and Microsoft Teams. However, Rocket.Chat also supports federation, letting you communicate with other companies and your wider customer base.
 
@@ -26,7 +26,7 @@ Rocket.Chat competes with tools like Slack and Microsoft Teams, with one of the 
 
 What does this mean for you, and why would you choose Rocket.Chat over alternatives like Slack and Microsoft Teams?:
 
--   Rocket.Chat Community Edition is free and can be easily self-hosted. This provides both accessibility and a high degree of control around your collaboration platform.
+-   Rocket.Chat Community Edition is free and can easily be self-hosted. This provides both accessibility and a high degree of control around your collaboration platform.
 
 -   Rocket.Chat prioritizes security, implementing some of the highest standards in the field. Rocket.Chat uses end-to-end encryption for communications and provides fine-grained, role-based permission control.
 
@@ -54,7 +54,7 @@ Along with these, the Enterprise Edition brings an array of other features and e
 
 ## Deploy Rocket.Chat on Akamai Connected Cloud
 
-When you are ready to deploy your own Rocket.Chat instance, you have several options to do so within Akamai Connected Cloud. Read on to see each and choose the approach that is best for your needs.
+When you are ready to deploy your own Rocket.Chat instance, you have several options to do so within Akamai Connected Cloud. Read on to discover them and choose the approach best for your needs.
 
 ### Deploying via the One-Click App Marketplace
 
@@ -88,7 +88,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     sudo snap install rocketchat-server
     ```
 
-Once the installation has finished, the Rocket.Chat server starts up, typically running by default on `localhost:3000`.
+Once the installation is finished, the Rocket.Chat server starts up, typically running by default on `localhost:3000`.
 
 #### Setting Up a Reverse Proxy Server
 
@@ -96,7 +96,7 @@ You can access the Rocket.Chat instance right after installation, but it is usua
 
 Should you want SSL encryption for your instance, the reverse proxy also provides a basis for setting that up. The steps in the next section show how.
 
-1.  Install NGINX to act as the reverse proxy server. You can install NGINX by following the appropriate section in our guide [Installing and Using NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/). Select your system's distribution from the drop down at the top of the page.
+1.  Install NGINX to act as the reverse proxy server. You can install NGINX by following the appropriate section in our guide [Installing and Using NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/). Select your system's distribution from the drop-down at the top of the page.
 
 1.  Create the `sites-available` and `sites-enabled` directories in `/etc/nginx/` if they do not already exist:
 
@@ -104,7 +104,7 @@ Should you want SSL encryption for your instance, the reverse proxy also provide
     sudo mkdir -p /etc/nginx/{sites-available,sites-enabled}
     ```
 
-1.  Open the main NGINX configuration file located at `/etc/nginx/nginx.conf` in a text editor like `nano`:
+1.  Open the main NGINX configuration file located at `/etc/nginx/nginx.conf` in a text editor like `nano` with root permissions:
 
     ```command
     sudo nano /etc/nginx/nginx.conf
@@ -185,7 +185,7 @@ Should you want SSL encryption for your instance, the reverse proxy also provide
     ```
     {{< /note >}}
 
-1.  Restart the NGINX server once the configuration has been verified:
+1.  Restart the NGINX server once the configuration is verified:
 
     ```command
     sudo systemctl restart nginx
@@ -207,7 +207,7 @@ With a reverse proxy in place, you can easily enable SSL encryption for your Roc
     sudo nano /etc/nginx/sites-available/rocketchat.conf
     ```
 
-1.  Certbot adds SSL configuration and a second server block. However, the Rocket.Chat server requires some different settings. Retain the `ssl_certificate` and `ssl_certificate_key` values and second `server` section. In essence, replace the whole `server` block you added earlier with the modified version shown below. Be sure to replace the three instances of `example.com` with your actual domain name.
+1.  Certbot adds SSL configuration and a second server block, however, the Rocket.Chat server requires some different settings. Retain the `ssl_certificate` and `ssl_certificate_key` values and second `server` section. In essence, replace the whole `server` block you added earlier with the modified version shown below that includes the `ssl_certificate` and `ssl_certificate_key` lines. Be sure to replace the three instances of `example.com` with your actual domain name.
 
     ```file {title="/etc/nginx/sites-available/rocketchat.conf" lang="conf" linenostart="5" hl_lines="2,9,10"}
     server {
@@ -259,7 +259,7 @@ With a reverse proxy in place, you can easily enable SSL encryption for your Roc
     ```
 ### Deploying to a Kubernetes Cluster
 
-For a more scalable solution, Rocket.Chat supports Kubernetes deployments. With a Linode Kubernetes Engine (LKE) cluster on Akamai Connected Cloud and using [Helm](https://helm.sh/), you can have a distributed Rocket.Chat instance running in only a few steps.
+For a more scalable solution, Rocket.Chat supports Kubernetes deployments. With a Linode Kubernetes Engine (LKE) cluster on Akamai Connected Cloud, use [Helm](https://helm.sh/) to get a distributed Rocket.Chat instance running in only a few steps.
 
 1.  Create an LKE cluster, and add its configuration to a local `kubectl` tool. All the steps for doing so are covered in our guide  [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/).
 
@@ -274,7 +274,7 @@ For a more scalable solution, Rocket.Chat supports Kubernetes deployments. With 
     *         lke123456-ctx   lke123456   lke123456-admin   default
     ```
 
-1.  Set kubectl to use the LKE cluster context, replacing `lke123456-ctx` below with the cluster's context name provided in the output from the command above:
+1.  Set `kubectl` to use the LKE cluster context, replacing `lke123456-ctx` below with the cluster's context name provided in the output from the command above:
 
     ```command
     kubectl config use-context lke123456-ctx
@@ -284,7 +284,7 @@ For a more scalable solution, Rocket.Chat supports Kubernetes deployments. With 
     Switched to context "lke123456-ctx".
     ```
 
-1.  Install Helm, a tool for installing applications onto Kubernetes clusters. Follow along with our guide on [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/) for all the necessary steps.
+1.  Install Helm, a tool for installing applications onto Kubernetes clusters. Follow the steps in the *Install the Helm Client* section of our guide [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-the-helm-client).
 
 1.  Add the Rocket.Chat chart to your Helm instance:
 
@@ -336,7 +336,7 @@ You have a few options to access the Rocket.Chat instance from the Kubernetes cl
 
 ## Access Rocket.Chat After Deployment
 
-With your own Rocket.Chat instance up and running, you can now access the workspace and begin setting it up to meet your needs. These next sections show you how to start using your instance, from completing the setup, to navigating the interface, to using the mobile application.
+With your own Rocket.Chat instance up and running, you can now access the workspace and begin setting it up to meet your needs. These next sections show how to start using your instance, from completing the setup, to navigating the interface, to using the mobile application.
 
 ### Completing the Rocket.Chat Setup
 
@@ -404,7 +404,7 @@ The Rocket.Chat workspace needs users to start conversations. Use either the **A
 
 From there, you have two options for adding new users:
 
--   **Invitations**: Use the **Invite** button, and enter the email addresses for prospective users. But first you need to have SMTP functions enabled on your instance. Follow the [official documentation](https://docs.rocket.chat/use-rocket.chat/workspace-administration/settings/email/email-configuration) for the appropriate steps.
+-   **Invitations**: Use the **Invite** button, and enter the email addresses for prospective users. However, you first need to have SMTP functions enabled on your instance. Follow the [official documentation](https://docs.rocket.chat/use-rocket.chat/workspace-administration/settings/email/email-configuration) for the appropriate steps.
 
     {{< content "email-warning-shortguide" >}}
 
@@ -420,13 +420,13 @@ Using Rocket.Chat's omnichannel support, you can connect your workspace to your 
 
 ### Enabling Omnichannel in Rocket.Chat
 
-1.  Access the **Settings** page, via **Administration** > **Workspace** > **Settings**, and open the **Omnichannel** option.
+1.  Access the **Settings** page via **Administration** > **Workspace** > **Settings** and open the **Omnichannel** option.
 
 1.  Ensure that **Omnichannel enabled** is toggled on, and save the changes.
 
 ### Managing Omnichannel Features in Rocket.Chat
 
-Once Omnichannel has been enabled, you can manage your instance's omnichannel setup from within the same omnichannel settings page. It is located at **Administration** > **Workspace** > **Settings** > **Omnichannel**.
+Once Omnichannel is enabled, you can manage your instance's omnichannel setup from within the same omnichannel settings page. It is located at **Administration** > **Workspace** > **Settings** > **Omnichannel**.
 
 To learn more about how to configure your workspace's omnichannel support for your needs, look through the [official documentation for omnichannel support](https://docs.rocket.chat/use-rocket.chat/omnichannel).
 
@@ -438,6 +438,4 @@ To get started, here are a couple of Rocket.Chat's omnichannel features you may 
 
 ## Conclusion
 
-Rocket.Chat is a popular open source communications and collaboration platform. Installation is extremely simple via the One-Click App Marketplace. Manual setup on an Akamai Cloud Compute Instance or deployment via the Linode Kubernetes Engine (LKE) are also pretty straightforward.
-
-Once setup, the graphical user interfaces contains all the settings admins need to manage workspaces, users, and more. You should also have some ideas for how to utilize Rocket.Chat as a capable chat and help desk tool.
+Rocket.Chat is a popular open source communications and collaboration platform. Installation is extremely simple via the One-Click App Marketplace. The process of manual setup on an Akamai Cloud Compute Instance or deployment via the Linode Kubernetes Engine (LKE) are also straightforward. Once setup, the graphical user interfaces contains all the settings admins need to manage workspaces, users, and more. You should also have some ideas for how to utilize Rocket.Chat as a capable chat and help desk tool.
