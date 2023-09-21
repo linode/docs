@@ -727,6 +727,7 @@ Freemarker
 freenom
 fremont
 freshclam
+freshdesk
 friendica
 friendster
 frontend
@@ -1586,7 +1587,7 @@ OKConfig
 okta
 oldstable
 oldfashioned
-Omnichannel
+omnichannel
 onboarding
 oneof
 ons
@@ -2108,6 +2109,7 @@ smtpd
 smush
 smux
 snakeoil
+snapcraft
 snapd
 snipcart
 snmp
@@ -2653,6 +2655,7 @@ zabbix
 zapier
 zcat
 zend
+zendesk
 zgrep
 zhao
 zigbee
