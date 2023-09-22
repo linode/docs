@@ -64,7 +64,7 @@ After the NodeBalancer is created, you can add a Cloud Firewall, select a differ
 
     ![Screenshot of the firewalls form](nodebalancer-firewall-unassign.png)
 
-1. A confirmation dialog appears. Click **Unassign Firewall** to proceed with removing the firewall from the NodeBalancer.
+1. A confirmation dialog appears. Click **Unassign Firewall** to proceed with removing the firewall from the NodeBalancer. The firewall is unassigned from the NodeBalancer  and the NodeBalancer is removed from the firewall in Cloud Firewall.
 
 ### Add a Firewall to a NodeBalancer
 

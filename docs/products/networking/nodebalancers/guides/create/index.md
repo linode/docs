@@ -37,13 +37,13 @@ Select the **region** where the NodeBalancer will reside. Regions correspond wit
 
 Select the Cloud Firewall to use with the NodeBalancer. If the firewall doesn't exist yet, [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
 
+A NodeBalancer can only be attached to one active (enabled) Cloud Firewall at a time. You can attach the same Cloud Firewall to multiple NodeBalancers or other devices.
+
 ### Cloud Firewall Inbound Rules for NodeBalancer
 - Inbound rules limit incoming network connections to the NodeBalancer based on the port(s) and sources you configure.
 - The NodeBalancer accepts traffic and routes traffic on an internal network to backend targets. For this reason, only inbound firewall rules apply to Node Balancer.
 - Inbound firewall rules such as IPv4 and IPv6 access control lists (ACLs) can be configured to *Accept* or *Drop* ingress traffic.
 - NodeBalancers accept TCP connections on all ports. When you add an inbound rule for a NodeBalancer in Cloud Firewall, select TCP as the transport layer protocol. UDP, ICMP, and IPENCAP are not supported on NodeBalancers.
-
-A NodeBalancer can only be attached to one active (enabled) Cloud Firewall at a time. You can attach the same Cloud Firewall to multiple NodeBalancers or other devices.
 
 ## Add and Configure Ports
 
