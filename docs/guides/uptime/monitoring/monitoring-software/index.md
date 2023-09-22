@@ -91,7 +91,7 @@ Here are six open source system monitoring tools, two enterprise-grade commercia
 
 **[Nagios](https://www.nagios.com/)** is among the most venerable and widely used system monitoring applications. It’s a highly extensible monitoring and alerting system that can email or text you as soon as a system or service goes offline.
 
-Nagios has two versions. Nagios Core is the open source version, while Nagios XI offers a proprietary interface and commercial support (which is also free for up to seven nodes). Akamai Connected Cloud offers [instructions for monitoring Debian and Ubuntu systems using Nagios](docs/guides/monitor-and-configure-nagios-alerts-on-debian-10-ubuntu-2004/).
+Nagios has two versions. Nagios Core is the open source version, while Nagios XI offers a proprietary interface and commercial support (which is also free for up to seven nodes). Akamai Connected Cloud offers [instructions for monitoring Debian and Ubuntu systems using Nagios](/docs/guides/monitor-and-configure-nagios-alerts-on-debian-10-ubuntu-2004/).
 
 ![A screenshot of the Nagios interface.](nagios-screenshot.png "The open source Nagios XI project remains one of the best-known system monitoring tools.")
 
