@@ -2,7 +2,7 @@
 slug: build-react-video-streaming-app
 description: "Learn how to build streaming software with two components: one for streaming videos and generating thumbnails, and the other for listing/playing them."
 og_description: "Learn how to build a video streaming application with two components: a server-side Node.js application that will stream videos and generate video thumbnails, and a client application in React that will list and play the videos."
-keywords: ['React','Nodejs','Video streaming', "video captions", "video thumbnails"]
+keywords: ['React','Node.js','Video streaming', "video captions", "video thumbnails"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-09
 modified_by:
