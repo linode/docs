@@ -25,6 +25,8 @@ There are two main ways to scale an application to increase the performance and 
 
 ## Additional Features
 
+- **Firewall Security:** [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer and related backend nodes.
+
 - **Managed:** NodeBalancers take the infrastructure management out of load balancing. They are designed to be maintenance free after initial configuration.
 
 - **Sticky Sessions:** NodeBalancers can route subsequent requests to the same backend, so all application sessions work correctly.
@@ -53,6 +55,8 @@ NodeBalancers are available across [all regions](https://www.linode.com/global-i
 
 Each NodeBalancer on an account costs $10/mo ($0.015/hr).
 
+Cloud Firewall is available at no additional charge to customers.
+
 ## Technical Specifications
 
 - Managed cloud-based load balancing service
@@ -63,6 +67,7 @@ Each NodeBalancer on an account costs $10/mo ($0.015/hr).
 - Supports HTTP and HTTPS (layer 7) load balancing through the HTTP/1.1 protocol (HTTP/2 is not yet available)
 - Supports both SSL termination (using the HTTPS protocol mode) and SSL pass-through (using the TCP protocol mode)
 - Equipped with both public IPv4 and IPv6 addresses
+- Supports inbound Cloud Firewall rules such as IPv4 and IPv6 access control lists (ACLs) to *Accept* or *Drop* ingress traffic.
 - Fully customizable health checks to ensure traffic lands on a functioning backend
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
@@ -82,3 +87,5 @@ Each NodeBalancer on an account costs $10/mo ($0.015/hr).
     - While operating in **HTTPS** mode, internal traffic sent to the backend Linodes will be unencrypted.
 
     For applications that require a very high connection rate or otherwise need to overcome the above considerations present in **HTTPS** mode, consider operating in **TCP** mode and terminating TLS on the backend Linodes.
+
+- **Cloud Firewall support:** When a Cloud Firewall is assigned to a NodeBalancer, the firewall only looks at incoming requests, this means that only inbound Cloud Firewall rules apply and outbound rules are not applicable. 

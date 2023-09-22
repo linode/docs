@@ -11,6 +11,7 @@ This guide walks you through creating a NodeBalancer through the Cloud Manager.
 1. [Open the Create NodeBalancer Form in the Cloud Manager](#open-the-create-nodebalancer-form-in-the-cloud-manager)
 1. [Set the Label](#set-the-label)
 1. [Select a Region](#select-a-region)
+1. [Assign a Cloud Firewall](#assign-a-cloud-firewall-optional)
 1. [Add and Configure Ports](#add-and-configure-ports)
 1. [Set Up Health Checks for Each Port](#set-up-health-checks-for-each-port)
 1. [Add Backend Nodes to Each Port](#add-backend-nodes-to-each-port)
@@ -31,6 +32,18 @@ Select the **region** where the NodeBalancer will reside. Regions correspond wit
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
 - [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/)
+
+## Assign a Cloud Firewall (Optional)
+
+Select the Cloud Firewall to use with the NodeBalancer. If the firewall doesn't exist yet, [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+
+### Cloud Firewall Inbound Rules for NodeBalancer
+- Inbound rules limit incoming network connections to the NodeBalancer based on the port(s) and sources you configure.
+- The NodeBalancer accepts traffic and routes traffic on an internal network to backend targets. For this reason, only inbound firewall rules apply to Node Balancer.
+- Inbound firewall rules such as IPv4 and IPv6 access control lists (ACLs) can be configured to *Accept* or *Drop* ingress traffic.
+- NodeBalancers accept TCP connections on all ports. When you add an inbound rule for a NodeBalancer in Cloud Firewall, select TCP as the transport layer protocol. UDP, ICMP, and IPENCAP are not supported on NodeBalancers.
+
+A NodeBalancer can only be attached to one active (enabled) Cloud Firewall at a time. You can attach the same Cloud Firewall to multiple NodeBalancers or other devices.
 
 ## Add and Configure Ports
 
