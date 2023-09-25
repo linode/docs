@@ -35,7 +35,6 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 | -- | -- | -- |
 | Amsterdam (Netherlands) | `nl-ams-1` | `https://nl-ams-1.linodeobjects.com` |
 | Atlanta, GA (USA) | `us-southeast-1` | `https://us-southeast-1.linodeobjects.com` |
-| Chennai (India) | `in-maa-1` | `https://in-maa-1.linodeobjects.com` |
 | Chicago, IL (USA) | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
 | Frankfurt (Germany) | `eu-central-1` | `https://eu-central-1.linodeobjects.com` |
 | Milan (Italy) | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
