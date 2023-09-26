@@ -6,7 +6,7 @@ description: 'A wide variety of system monitoring software is available. This gu
 keywords: ['monitoring software','system monitoring software','best system monitoring software','system monitoring tools','systems monitoring','it monitoring tools','it monitoring software','best monitoring software','system performance monitoring','software installation monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-09-22
+published: 2023-09-26
 modified_by:
   name: Linode
 ---
@@ -21,7 +21,7 @@ This guide explains what system monitoring software is, why you should use it, a
 
 System monitoring software tests the status and measures the performance of your IT infrastructure. At a high level, all monitoring falls into one of two buckets:
 
--   **Systems**: A *system* cab be a server, virtual machine (VM), container instance, network device, or a collection of these in a cloud deployment.
+-   **Systems**: A *system* can be a server, virtual machine (VM), container instance, network device, or a collection of these in a cloud deployment.
 
 -   **Service**: A *service* is, broadly speaking, anything that runs on a system. This might be an application on a single system, such as an Apache or Nginx web server. It could also be distributed software, such as a NoSQL database running across thousands of VMs or containers. Services also might refer to underlying tasks such as processes, APIs, or network connections.
 
@@ -39,9 +39,7 @@ Although system monitoring tools take many forms, most deliver the same core ben
 
 -   **Autodiscovery**: As the number of systems and services in your organization grows, so does the configuration and management burden, but system monitoring tools can help. Many have autodiscovery functions that poll an entire network and automatically populate their databases. Autodiscovery is much faster for initial setup than manual configuration.
 
-    There are two caveats with autodiscovery: It can lead to information overload, and might even degrade performance on some devices.
-
-    For example, if you configure monitoring software to autodiscover a network switch, every port on that switch returns data from dozens of counters, most of which aren’t useful in day-to-day IT management. Moreover, the modest CPUs and memory found in many low-end switches might not be able to keep pace with frequent polling from a monitoring system.
+    There are two caveats with autodiscovery: It can lead to information overload, and might even degrade performance on some devices. For example, if you configure monitoring software to autodiscover a network switch, every port on that switch returns data from dozens of counters, most of which aren’t useful in day-to-day IT management. Moreover, the modest CPUs and memory found in many low-end switches might not be able to keep pace with frequent polling from a monitoring system.
 
     To be sure, autodiscovery is a great time-saver for initial configuration. Once you’re up and running, it’s best practice to reduce noise levels by deleting non-critical monitored elements. You can also use different intervals for different metrics. For example, you might need to run application performance monitoring all the time, but only check for switch port errors once daily or even weekly. As with all system monitoring, the key point is to ensure you’re seeing only what you need to see.
 
@@ -59,7 +57,7 @@ Although system monitoring tools take many forms, most deliver the same core ben
 
 Here are some common criteria to use in evaluating system monitoring tools:
 
--   **Comprehensive or Point Solution?**: Many system monitoring applications have extensive, highly customizable feature sets that let you monitor anything, anywhere. Often, that’s exactly what you want, but in some situations it may be overkill.
+-   **Comprehensive or Point Solution?** Many system monitoring applications have extensive, highly customizable feature sets that let you monitor anything, anywhere. Often, that’s exactly what you want, but in some situations it may be overkill.
 
     Other monitoring products follow the Linux/Unix philosophy of "small tools doing one thing well". What if you just need to know if a service is reachable, or only want to track network latency over time?
 
@@ -71,11 +69,11 @@ Here are some common criteria to use in evaluating system monitoring tools:
 
     Many other monitoring tools sit at the opposite end of the spectrum. These comprehensive solutions can keep tabs on virtually any service, application, system, network, or cloud. They can also present the data with sophisticated modeling tools and seamlessly integrate with third-party analysis tools. Overall, this comprehensive approach is more common with system monitoring software.
 
--   **Agent or Agentless?**: Most monitoring tools don’t require the installation of agent software on the monitored system or service. Instead, they use standards-based health checks such as ping packets or Simple Network Management Protocol (SNMP) queries for monitoring.
+-   **Agent or Agentless?** Most monitoring tools don’t require the installation of agent software on the monitored system or service. Instead, they use standards-based health checks such as ping packets or Simple Network Management Protocol (SNMP) queries for monitoring.
 
     The agentless approach is easier to install and manage, and may be sufficient for many tasks, but it’s not without limits. For example, an agentless approach puts most of the processing burden on the central monitoring system. Moreover, certain services (e.g. some internal Windows functions) might not be externally visible. Even worse, a network outage might cause monitoring software to miss key events on the monitored system or service.
 
-    You may want to opt for on-board agents, or at least a monitoring tool that offers the option of using them. Agents help offload the central monitoring system, and continue data collection even if the monitoring system isn’t available.
+    You may want to opt for on-board agents, or at least a monitoring tool that offers the option of using them. Agents help offload the central monitoring system and continue data collection even if the monitoring system isn’t available.
 
 -   **Data Security**: System monitoring involves highly sensitive data (e.g. configurations, log entries, and network topologies) that you definitely don’t want an intruder to see. Look for features in monitoring tools to encrypt data both in-flight and at-rest. Most system monitoring tools support SNMP version 3, which provides authentication and encryption of data in-transit. Many application response time monitoring systems use HTTPS to send data through an encrypted tunnel. Some enterprise-scale system tools discussed here, such as [SolarWinds SAM](https://www.solarwinds.com/server-application-monitor), can encrypt log entries. It’s also best practice to limit access to/from the IP subnet and VLAN on which your monitoring system resides.
 
@@ -93,8 +91,6 @@ Here are six open source system monitoring tools, two enterprise-grade commercia
 
 Nagios has two versions. Nagios Core is the open source version, while Nagios XI offers a proprietary interface and commercial support (which is also free for up to seven nodes). Akamai Connected Cloud offers [instructions for monitoring Debian and Ubuntu systems using Nagios](/docs/guides/monitor-and-configure-nagios-alerts-on-debian-10-ubuntu-2004/).
 
-![A screenshot of the Nagios interface.](nagios-screenshot.png "The open source Nagios XI project remains one of the best-known system monitoring tools.")
-
 Both Nagios versions have flexible options for monitoring and alerting. Both versions also support a vast collection of "plugins" that extend monitoring capabilities and the types of monitored components.
 
 Nagios works with or without agents. Installed on monitored systems, the [Nagios Cross-Platform Agent](https://www.nagios.org/ncpa/) (NCPA) monitors system load, process state, disk usage, and many other tasks locally. Nagios has NCPA agents for monitoring many aspects of Linux, Windows, and macOS system behavior.
@@ -109,8 +105,6 @@ Nagios works with or without agents. Installed on monitored systems, the [Nagios
 
 Icinga supports most Nagios plugins and offers the same logical grouping of systems and services. Like Nagios, Icinga can alert you when any monitored component goes offline. Icinga Web’s top-level dashboard displays the number of hosts and services that are up or down. Additional displays show system, service, or network outages. Nagios also has reporting tools to show trends, alert histograms, and alert history, all of which can help identify problem areas.
 
-![A screenshot of the Icinga interface.](icinga-screenshot.png "The open source Icinga project began as a fork of Nagios with a modern web interface and extensibility features.")
-
 Icinga is an ideal choice for cost-sensitive small- and medium-sized organizations. If you’re willing to do the initial configuration and customization, you get a graphical overview of system and service availability. Although it’s free and open source software, the [Icinga team also has a paid subscription and support model](https://icinga.com/subscription/).
 
 -  **Description**: Comprehensive monitoring/alerting software
@@ -120,8 +114,6 @@ Icinga is an ideal choice for cost-sensitive small- and medium-sized organizatio
 ### Prometheus
 
 [Prometheus](https://prometheus.io/) is an open source event monitoring and altering tool. It makes heavy use of time-series databases, which can store large volumes of time-stamped data with fast insertion and retrieval. Prometheus provides a powerful query language called PromQL and easy visualization through integration with the [Grafana](https://grafana.com/) open source analysis and graphing tool.
-
-![A screenshot of the Prometheus/Grafana interface.](prometheus-screenshot.png "Prometheus integrates with the Grafana visualization tool to simplify presentation of large amounts of performance data.")
 
 Created by devops engineers at SoundCloud, the key design goals for Prometheus were large-scale data collection, efficient storage, and easy instrumentation of services.
 
@@ -136,8 +128,6 @@ You can extend Prometheus with built-in client libraries for Go, Java, Python, R
 ### Cacti
 
 Cacti is another open source monitoring tool best known for graphing time-based data series. Although its most common use cases are for graphing network bandwidth and server resource usage, Cacti can plot performance over time for any system or service that supports SNMP. That makes it a simple, extensible tool for understanding system, service, or network trends.
-
-![A screenshot of the Cacti interface.](cacti-screenshot.jpg "Cacti excels at graphing performance data over time. It works with any system or service that supports SNMP.")
 
 Cacti is popular among ISPs, MSPs, and cloud providers. It can provide each customer with a dedicated login, showing performance over time for their VMs and/or containers.
 
@@ -155,8 +145,6 @@ Although it began as a network monitoring tool, the open source [Observium](http
 
 Observium setup and management is straightforward. It can autodiscover devices and services, track state changes, and build time-based performance graphs. The software includes monitors for Apache, BIND, Memcached, MySQL, and other popular open source applications.
 
-![A screenshot of the Observium interface.](observium-screenshot.jpg "Observium can track any system or service using SNMP. It requires relatively little effort to configure and manage.")
-
 Observium has three pricing tiers, all able to track an unlimited number of systems and services. A free Community version auto-discovers devices using SNMP queries and graphs systems or services using RRDtool. A Professional version targets small- or medium-sized businesses with commercial support, and adds alerting and a RESTful API. An Enterprise version offers a higher level of support and the ability to scale across multiple servers.
 
 -   **Description**: Comprehensive monitoring platform with alerting available in commercial versions
@@ -169,8 +157,6 @@ Observium has three pricing tiers, all able to track an unlimited number of syst
 
 Zabbix comes with predefined templates that make quick work of basic tasks like server health checks and network interface monitoring. It’s also extensible, allowing you to write custom templates and modules. Zabbix supports agent and agentless operation, and users have reported excellent scalability with both approaches.
 
-![A screenshot of the Zabbix interface.](zabbix-screenshot.png "Zabbix includes many ready-made templates for monitoring virtually any type of system or service.")
-
 Some users report that the Zabbix design doesn’t lend itself to automated tasks, such as an out-of-the-box ability to generate and email reports. While you can do this, it requires scripting and integration with other tools.
 
 Although Zabbix is free and open source software with a GPLv2 license, it’s always been a closed development product, with all coding done by Zabbix LLC. The company also offers support and monitoring-as-a-service options.
@@ -182,8 +168,6 @@ Although Zabbix is free and open source software with a GPLv2 license, it’s al
 ### SolarWinds Server and Application Monitor (SAM)
 
 SolarWinds Server and Application Monitor (SAM) is a well-known commercial monitoring platform. The capabilities of this enterprise-scale application extend well beyond simple monitoring and alerting, and as a commercial product, it’s fully supported.
-
-![A screenshot of the SolarWinds Server and Application Monitor (SAM) interface.](sam-screenshot.png "SolarWinds Server and Application Monitor (SAM) includes more than 2,000 ready-made templates to track a very wide variety of system and application types.")
 
 SAM includes more than 1,200 ready-made templates for system and service monitoring, plus another 1,000 community-developed templates. These templates cover virtually all aspects of IT infrastructure, including operating systems, application performance monitoring, proxy servers, databases, DNS and DHCP servers, mail servers, and web services. Each of those categories includes many different systems or applications. For example, SAM offers templates to monitor 14 popular databases. You can also integrate SAM with many third-party analysis tools.
 
@@ -201,8 +185,6 @@ SAM is server-centric, and monitors any type of Windows, Linux, or Unix server, 
 
 The tool includes hundreds of ready-to-use "sensors". Similar to templates in SolarWinds SAM or Zabbix, these sensors automatically monitor popular systems, services, network devices, and cloud platforms. For data visualization, PTRG Network Monitor includes predefined topology maps, but also lets you configure your own dashboard.
 
-![A screenshot of the Paessler PRTG Network Monitor interface.](prtg-screenshot.png "PRTG Network Monitor emphasizes ease of installation and use, with many preconfigured sensors and dashboards.")
-
 PRTG Network Monitor works exclusively in agentless mode, and puts a heavy emphasis on being a turnkey solution. However, the software integrates with third-party management tools like [Splunk](https://kb.victorops.com/knowledge-base/victorops-prtg-integration/) for log analysis, [NetBrain](https://www.youtube.com/watch?v=iwP99XsFBLU) for issue remediation, and [PagerTree](https://pagertree.com/knowledge-base/integration-prtg/) or [xMatters](https://www.xmatters.com/integration/prtg-network-monitor) for alert management.
 
 Unusual among monitoring vendors, [Paessler lists pricing on its website](https://www.paessler.com/prtg/pricing). The company calculates pricing tiers based on the number of services monitored. It ranges from about 500 for small- and medium-sized businesses, up to about 10,000 for very large environments.
@@ -219,8 +201,6 @@ You can use "tools" in Site24x7, similar to "modules" in SolarWinds SAM, to moni
 
 Other tools focus on application performance monitoring (APM) for software running on Java, .NET, Node.js, PHP, or Ruby. For complex applications, such as payment systems built using multiple tiers, the APM tools use a distributed tracing mechanism to identify the exact point where faults and response-time bottlenecks occur.
 
-![A screenshot of the Site24x7 interface.](site24x7-screenshot.png "Site24x7 offers cloud-based monitoring for commercial and open source systems and services. This dashboard monitors a Microsoft Teams deployment.")
-
 Site24x7 also has tools for Linux VM, container, and cloud monitoring. You can use purpose-built tools to track performance of individual servers, Hadoop clusters, and Docker instances. Site24x7 tools also monitor Linux service metrics such as process and thread counts. For security, you can use Site24x7 to track changes to files, directories, and logs. All these tools alert you when a system or service goes offline or crosses a defined threshold.
 
 -   **Description**: Comprehensive cloud-based monitoring and alerting platform
@@ -230,10 +210,6 @@ Site24x7 also has tools for Linux VM, container, and cloud monitoring. You can u
 ### Atera & NinjaOne
 
 The final two offerings, [Atera](https://www.atera.com/) and [NinjaOne](https://www.ninjaone.com/) (formerly NinjaRMM), are commercial products in the remote monitoring and management (RMM) space. The "remote" part of RMM means these are SaaS offerings, like Site24x7. The "management" part covers proactive tasks (e.g. patch management) and automation of common tasks (e.g. disk checks and antivirus signature updating). In other words, these products not only monitor systems and services, they also reconfigure them as needed.
-
-![A screenshot of the Atera interface.](atera-screenshot.png "Atera takes a SaaS approach to system monitoring and management.")
-
-![A screenshot of the NinjaOne interface.](ninjaone-screenshot.png "NinjaOne also uses a SaaS model for system monitoring. It offers system and service alerting, and can automate common IT management tasks.")
 
 You can use either to track performance of servers, network infrastructure, and applications. Either platform can monitor physical machines, VMs, containers, cloud deployments, and any type of network infrastructure. Both also send alerts when something fails.
 
