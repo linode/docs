@@ -47,6 +47,7 @@ Premium Compute Instances are currently available in select data centers.
 | **Milan (Italy)** | **Available** |
 | Mumbai (India) | *Not available* |
 | Newark (New Jersey, USA) | *Not available* |
+| **Osaka (Japan)** | **Available** |
 | **Paris (France)** | **Available** |
 | **Seattle (Washington, USA)** | **Available** |
 | Singapore | *Not available* |
