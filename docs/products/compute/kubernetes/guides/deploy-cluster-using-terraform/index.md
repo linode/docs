@@ -71,7 +71,7 @@ Terraform defines the elements of your Linode infrastructure inside of configura
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "1.27.1"
+          version = "2.7.1"
         }
       }
     }
@@ -149,7 +149,7 @@ You are now ready to define the input variables that were referenced in your `ma
 
     variable "k8s_version" {
       description = "The Kubernetes version to use for this cluster. (required)"
-      default = "1.25"
+      default = "1.26"
     }
 
     variable "label" {
@@ -201,7 +201,7 @@ You will now need to define the values you would like to use in order to create 
 
     ```file {title="~/terraform/lke-cluster/terraform.tfvars"}
     label = "example-lke-cluster"
-    k8s_version = "1.25"
+    k8s_version = "1.26"
     region = "us-west"
     pools = [
       {

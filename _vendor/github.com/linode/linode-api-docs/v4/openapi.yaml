@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.162.0
+  version: 4.163.0
 
   title: Linode API
   description: |
@@ -6022,6 +6022,11 @@ paths:
           * You may also supply a list of usernames via the `authorized_users` field.
             * These users must have an SSH Key associated with your Profile first. See SSH Key Add ([POST /profile/sshkeys](/docs/api/profile/#ssh-key-add)) for more information.
 
+        * Using cloud-init with [Metadata](/docs/products/compute/compute-instances/guides/metadata/).
+          * Automate system configuration and software installation by providing a base-64 encoded [cloud-config](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) file.
+          * Requires a compatible Image. You can determine compatible Images by checking for `cloud-init` under `capabilities` when using Images List ([GET /images](/docs/api/images/#images-list)).
+          * Requires a compatible Region.  You can determine compatible Regions by checking for `Metadata` under `capabilities` when using Regions List ([GET /regions](/docs/api/regions/#regions-list)).
+
         * Using a StackScript.
           * See StackScripts List ([GET /linode/stackscripts](/docs/api/stackscripts/#stackscripts-list)) for
             a list of available StackScripts.
@@ -6047,12 +6052,6 @@ paths:
             * See Linode Boot ([POST /linode/instances/{linodeId}/boot](/docs/api/linode-instances/#linode-boot)).
           * Disks and Configs must be created manually.
           * This is only recommended for advanced use cases.
-
-        * **BETA** Using cloud-init with [Metadata](/docs/products/compute/compute-instances/guides/metadata/).
-          * Automate system configuration and software installation by providing a base-64 encoded [cloud-config](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) file.
-          * Requires a compatible Image. You can determine compatible Images by checking for `cloud-init` under `capabilities` when using Images List ([GET /images](/docs/api/images/#images-list)).
-          * Requires a compatible Region.  You can determine compatible Regions by checking for `Metadata` under `capabilities` when using Regions List ([GET /regions](/docs/api/regions/#regions-list)).
-          * This feature is in beta and is currently limited to certain Regions and distributions. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
       tags:
       - Linode Instances
       operationId: createLinodeInstance
@@ -6201,7 +6200,7 @@ paths:
             --authorized_keys "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer" \
             --authorized_users "myUser" \
             --authorized_users "secondaryUser" \
-            --metadata.user_data "I2Nsb3VkLWNvbmZpZw==)"
+            --metadata.user_data "I2Nsb3VkLWNvbmZpZw=="
   /linode/instances/{linodeId}:
     parameters:
     - name: linodeId
@@ -6797,6 +6796,8 @@ paths:
         returned by this endpoint.
 
         Any [tags](/docs/api/tags/#tags-list) existing on the source Linode will be cloned to the target Linode.
+
+        Linodes utilizing Metadata (`"has_user_data": true`) must be cloned to a new Linode with `metadata.user_data` included with the clone request.
       tags:
       - Linode Instances
       operationId: cloneLinodeInstance
@@ -6924,6 +6925,8 @@ paths:
 
                       * Can only be provided when cloning to a new Linode.
                     example: true
+                metadata:
+                  $ref: '#/components/schemas/LinodeRequest/properties/metadata'
       responses:
         '200':
           description: Clone started.
@@ -6947,7 +6950,10 @@ paths:
                 "backups_enabled": true,
                 "disks": [25674],
                 "configs": [23456],
-                "private_ip": true
+                "private_ip": true,
+                "metadata": {
+                  "user_data": "I2Nsb3VkLWNvbmZpZw=="
+                }
               }' \
               https://api.linode.com/v4/linode/instances/123/clone
       - lang: CLI
@@ -6960,7 +6966,8 @@ paths:
             --backups_enabled true \
             --disks 25674 \
             --configs 23456 \
-            --private_ip true
+            --private_ip true \
+            --metadata.user_data I2Nsb3VkLWNvbmZpZw==
   /linode/instances/{linodeId}/configs:
     parameters:
     - name: linodeId
@@ -8481,6 +8488,7 @@ paths:
           * Requires a `root_pass` be supplied to use for the root User's Account.
           * It is recommended to supply SSH keys for the root User using the
             `authorized_keys` field.
+          * Linodes utilizing Metadata (`"has_user_data": true`) should include `metadata.user_data` in the rebuild request to continue using the service.
 
         You also have the option to resize the Linode to a different plan by including the `type` parameter with your request. Note that resizing involves migrating the Linode to a new hardware host, while rebuilding without resizing maintains the same hardware host. Resizing also requires significantly more time for completion of this command. The following additional conditions apply:
 
@@ -8544,7 +8552,10 @@ paths:
                 "stackscript_data": {
                   "gh_username": "linode"
                 }
-                "type": "g6-standard-2"
+                "type": "g6-standard-2",
+                "metadata": {
+                  "user_data": "I2Nsb3VkLWNvbmZpZw=="
+                }
               }' \
               https://api.linode.com/v4/linode/instances/123/rebuild
       - lang: CLI
@@ -8558,7 +8569,8 @@ paths:
             --booted true \
             --stackscript_id 10079 \
             --stackscript_data '{"gh_username": "linode"}' \
-            --type "g6-standard-2"
+            --type "g6-standard-2" \
+            --metadata.userdata "I2Nsb3VkLWNvbmZpZw=="
   /linode/instances/{linodeId}/rescue:
     parameters:
     - name: linodeId
@@ -12423,6 +12435,7 @@ paths:
         * All Linodes involved must have at least one public IPv4 address after assignment.
         * Linodes may have no more than one assigned private IPv4 address.
         * Linodes may have no more than one assigned IPv6 range.
+        * Shared IP addresses cannot be swapped between Linodes.
 
         [Open a Support Ticket](/docs/api/support/#support-ticket-open) to request additional IPv4 addresses or IPv6 ranges beyond standard account limits.
 
@@ -22728,6 +22741,8 @@ components:
               format: byte
               description: |
                 Base64-encoded [cloud-config](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) data.
+
+                Cannot be modified after provisioning. To update, use either the [Linode Clone](/docs/api/linode-instances/#linode-clone) or [Linode Rebuild](/docs/api/linode-instances/#linode-rebuild) commands.
 
                 Must not be included when cloning to an existing Linode.
 
