@@ -1001,6 +1001,8 @@ inspec
 intel
 interconnectivity
 interdomain
+internets
+interoperate
 interoperation
 interruptible
 intra-application
@@ -2515,6 +2517,8 @@ vvv
 vz
 vznetaddbr
 walkthrough
+WAN
+WANs
 Wappalyzer
 Warcraft
 wasn
@@ -2579,6 +2583,8 @@ wireshark
 whitebox
 wkhtmltopdf
 wkhtmltox
+WLAN
+WLANs
 wll
 wlp6s0
 wordcloud
@@ -2589,6 +2595,7 @@ wordlists
 wordpress
 worker1
 worker2
+workgroup
 wp
 wpuser
 writability

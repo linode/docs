@@ -1,20 +1,16 @@
 ---
 slug: types-of-networks
 title: "Different Types of Computer Networks, Explained"
-description: 'What are the different types of networks and what do they do? This guide discusses the main types of computer networks and what they’re used for.'
+description: "What are the different types of networks and what do they do? This guide discusses the main types of computer networks and what they’re used for."
 keywords: ['types of networks', 'networking type', 'network connection types', 'what type of network is the internet', 'type of computer networks']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-09-18
+published: 2023-09-26
 modified_by:
   name: Linode
 ---
 
-Ask an IT manager which networking type is best, and you’re likely to receive the classic engineering response: "It depends."
-
-Networks vary widely in size and scope. Some are simple and highly localized. Others span the globe – and beyond, even going into space. Picking the right network depends on what and where you want to connect. Your type of application also matters in some cases; for example, there are special networks optimized just for storage devices.
-
-This guide describes 10 major network types and where each network might, or might not, make sense.
+Networks vary widely in size and scope. Some are simple and highly localized. Others span the globe – and beyond, even going into space. Picking the right network depends on what and where you want to connect. Your type of application also matters in some cases; for example, there are special networks optimized just for storage devices.This guide describes 10 major network types and where each network might, or might not, make sense.
 
 ## Internet
 
@@ -34,9 +30,7 @@ The basic building block of the Internet, as well as many other internets, is th
 
 **Not suitable for**: Very old legacy computers that use proprietary communications protocols
 
-## Types of Networks
-
-### Personal-Area Network (PAN)
+## Personal-Area Network (PAN)
 
 One of the simplest network types is the PAN, which wirelessly connects a few devices close to you. Devices might include your laptop, phone, tablet, and perhaps earbuds or smart speakers.
 Bluetooth is the most common protocol for PAN devices. Without obstacles (people, walls, metal, and so on), Bluetooth has a range of about 10 meters (33 feet). The central concept with PANs is that they’re personal, connecting devices for you and you alone.
@@ -53,11 +47,11 @@ A variant of the PAN is the Car Area Network (CAN), which uses Bluetooth or WLAN
 - Connecting multiple users’ devices
 - Connecting one user’s devices over any significant distance
 
-### Local-Area Network (LAN)
+## Local-Area Network (LAN)
 
 When LANs first appeared years ago, they consisted of a few PCs and printers in close proximity, always in an office setting, and always communicating either with a locally attached server or directly with one another. This was a revolutionary departure from previous network designs, where all intelligence lived on a central mainframe or minicomputer, and end-stations were essentially just dumb terminals.
 
-Today the meaning of LAN is much broader: You may have a wired LAN in your office, or at home. You may connect a much broader range of devices to LANs, including surveillance cameras, Internet of Things (IoT) devices, and even solar power controllers in home networks.
+Today the meaning of LAN is much broader. You may have a wired LAN in your office or at home. You may connect a much broader range of devices to LANs, including surveillance cameras, Internet of Things (IoT) devices, and even solar power controllers in home networks.
 
 In office settings, it’s common to segment networks into many LANs, with one or more for each workgroup (accounting, engineering, sales, etc.) or each physical area (such as floors in office buildings).
 
@@ -75,7 +69,7 @@ Enterprise-grade switches also support virtual LANs (VLANs), which provide multi
 - Computers across town or the world
 - Settings where cable installation isn’t feasible
 
-### Wireless LAN (WLAN)
+## Wireless LAN (WLAN)
 
 Connections to a wireless LAN work over the air, using radio waves. Most people think "Wi-Fi" when it comes to LAN connections without wires. Wi-Fi is a marketing term coined by an equipment makers’ consortium; the IEEE’s 802.11 working group defines the actual Wi-Fi technical standards.
 
@@ -83,7 +77,7 @@ In a typical Wi-Fi setup, your laptop, phone, and tablet all connect to a local 
 
 Performance tends to be lower on wireless networks than on wired ones. That’s because the airwaves are a shared-access medium, accessible by only one device at a time.
 
-In practical terms, this usually means when one station receives or sends traffic, all other connected stations need to remain quiet. There is a Wi-Fi technology called multiple-in, multiple-out (MIMO) where multiple stations can transmit and receive at the same time. MIMO is relatively hard to implement, or at least implement well, and tends to be found only on more expensive enterprise-grade WLAN devices.
+In practical terms, this usually means when one station receives or sends traffic, all other connected stations need to remain quiet. There is a Wi-Fi technology called multiple-in, multiple-out (MIMO) where multiple stations can transmit and receive at the same time. MIMO has been implemented on many consumer and enterprise-grade WLAN devices.
 
 Security can be a concern with WLANs, even though it’s possible to secure them at least as well as wired networks. In general, you never want to connect to an open access point at public places such as cafes or airports without also using a virtual private network (VPN, covered below).
 
@@ -97,7 +91,7 @@ Security can be a concern with WLANs, even though it’s possible to secure them
 - Computers across town or the world
 - Applications where high performance is critical
 
-### Virtual Private Network (VPN)
+## Virtual Private Network (VPN)
 
 Most networks carry traffic using the TCP/IP protocol suite – but as originally designed, TCP/IP does nothing to secure traffic against spoofing or interception. VPNs add security by creating a private network overlay atop any public network.
 
@@ -111,9 +105,11 @@ VPNs use authentication to set up a secure tunnel across a public network, and t
 - Remote access from hotels, airports, and cafes
 - Remote access to sensitive internal networks and servers
 
-**Not suitable for**: Applications where maximum performance is important
+**Not suitable for**:
 
-### Storage-Area Network (SAN)
+- Applications where maximum performance is important
+
+## Storage Area Network (SAN)
 
 As your server count grows, it’s often more efficient to provide pools of shared storage rather than equipping each new server with extensive local storage. That’s where SANs come in. They provide a dedicated high-speed network connecting servers with shared storage pools.
 
@@ -124,26 +120,30 @@ SANs differ from network-attached storage (NAS) devices, where all disks reside 
 - High-speed access to shared storage pools
 - Organizations in need of highly scalable data storage
 
-**Not suitable for**: General-purpose network connectivity
+**Not suitable for**:
 
-### Passive optical LAN (POLAN)
+- General-purpose network connectivity
 
-Although most LANs use copper cabling, fiber-optic cabling not only has far higher bandwidth capacity but also can carry different users' traffic over much longer distances. Fiber's unique characteristics enable POLANs, which use optical splitters to divide and combine user traffic. Telecom providers and ISPs typically provision POLANs.
+## Passive Optical Network (PON)
 
-In a POLAN design, an optical line terminal (OLT) serves as a central concentrator, connecting the network to the rest of the world. Optical splitters connected to an OLT then divide and combine user traffic respectively headed downstream and upstream. At the network edge, an optical network termination (ONT) device terminates the upstream fiber connection and bridges traffic to and from local devices, such as computers and phones, connected via copper patch cables.
+Although most LANs use copper cabling, fiber-optic cabling not only has far higher bandwidth capacity but also can carry different users' traffic over much longer distances. Fiber's unique characteristics enable PONs, which use optical splitters to divide and combine user traffic. Telecom providers and ISPs typically provision PONs.
 
-The "passive" part of POLAN indicates that optical components don’t require power to drive signals, reducing power and heat. Another potential energy saving: The single-mode fiber cabling in POLANs can carry signals much further than copper cabling, eliminating the need for powered repeaters. (Depending on the transceivers used, a single run of single-mode fiber can carry traffic up to 40 kilometers. In contrast, the distance limit for the most common copper cabling is 100 meters.)
+In a PON design, an optical line terminal (OLT) serves as a central concentrator, connecting the network to the rest of the world. Optical splitters connected to an OLT then divide and combine user traffic respectively headed downstream and upstream. At the network edge, an optical network termination (ONT) device terminates the upstream fiber connection and bridges traffic to and from local devices, such as computers and phones, connected via copper patch cables.
 
-Single-mode fiber tends to be more expensive than copper, mainly due to transceiver and fiber termination costs. While POLANs can be an excellent option in new deployments, you need to factor in the cost of ripping out copper cabling when evaluating them as a replacement technology.
+The "passive" part of PON indicates that optical components don’t require power to drive signals, reducing power and heat. Another potential energy saving: The single-mode fiber cabling in PONs can carry signals much further than copper cabling, eliminating the need for powered repeaters. Depending on the transceivers used, a single run of single-mode fiber can carry traffic up to 40 kilometers. In contrast, the distance limit for the most common copper cabling is 100 meters.
+
+Single-mode fiber tends to be more expensive than copper, mainly due to transceiver and fiber termination costs. While PONs can be an excellent option in new deployments, you need to factor in the cost of ripping out copper cabling when evaluating them as a replacement technology.
 
 **Suitable for**:
 
 - Connectivity over relatively long distances
 - Networks with limited power and heat budgets
 
-**Not suitable for**: Networks with significant investment in existing cabling
+**Not suitable for**:
 
-### Metropolitan-Area Network (MAN)
+- Networks with significant investment in existing cabling
+
+## Metropolitan-Area Network (MAN)
 
 MANs connect networks and computers within a wider range than any LAN could. A single MAN could encompass one city, multiple cities and towns, or a large area within a city with multiple large buildings.
 
@@ -156,9 +156,11 @@ MANs are a good option when you have multiple sites within a metropolitan region
 - Connectivity within a metropolitan area or large campus
 - Connectivity that can be provisioned and managed by an ISP or telecom provider
 
-**Not suitable for**: Smaller LANs or campuses
+**Not suitable for**:
 
-### Wide-area network (WAN)
+- Smaller LANs or campuses
+
+## Wide-area network (WAN)
 
 While the global Internet is the best-known example of a WAN, the term generically refers to any network that connects devices or networks over long distances. Telecom providers and ISPs operate WANs and sell capacity to national and multinational customers to link various business sites.
 
@@ -169,9 +171,11 @@ Some large enterprises operate their own WANs, leasing private lines from teleco
 - Connectivity across far-flung locations
 - Connectivity of arbitrarily large numbers of devices
 
-**Not suitable for**: Designs where all devices are in close proximity
+**Not suitable for**:
 
-### Software-Defined WAN (SD-WAN)
+- Designs where all devices are in close proximity
+
+## Software-Defined WAN (SD-WAN)
 
 While many WANs carry TCP/IP traffic, they often aren’t TCP/IP networks themselves. Instead, WANs usually move traffic using lower-layer technologies such as multiprotocol label switching (MPLS), long-term evolution (LTE), and an alphabet soup of older link-layer technologies. WANs running TCP/IP can be difficult to configure and manage.
 
@@ -188,8 +192,10 @@ Initial setup with SD-WANs is also much faster. Provisioning and configuring WAN
 - Complex WAN designs
 - New WAN overlays
 
-**Not suitable for**: Simple LAN or MAN installations
+**Not suitable for**:
+
+- Simple LAN or MAN installations
 
 ## Conclusion
 
-These network types differ widely in terms of scope and technology. In assessing which type makes sense for you, there are really just two questions: What kinds of devices are you looking to connect, and where are they? Armed with this networking knowledge, you can make an informed decision about which network types make the most sense for you.
+Since these network types greatly differ in terms of scope and technology, it's important to accurately assess which type makes sense for you. There are really just two questions: What kinds of devices are you looking to connect, and where are they? Armed with this networking knowledge, you can make an informed decision about which network types make the most sense for you.
