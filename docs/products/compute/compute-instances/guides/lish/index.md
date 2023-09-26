@@ -4,7 +4,7 @@ title_meta: "Access Your System Console Using Lish"
 description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 published: 2009-08-04
-modified: 2023-08-07
+modified: 2023-09-13
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -18,10 +18,6 @@ The **Lish Console**, also called the *Linode Shell*, provides direct console ac
 ## Access Lish
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Cloud Manager](https://cloud.linode.com) and use the Lish console in your web browser. This section explains both methods.
-
-{{< note >}}
-Lish used to be accessible via a direct SSH connection to your Linode's host machine, but as of May 10, 2013, all users must connect to a Lish SSH gateway to access Lish. For more information, please see [this blog post](https://blog.linode.com/2013/04/30/lish-ssh-gateway/).
-{{< /note >}}
 
 ### Through the Cloud Manager (Weblish)
 
@@ -282,6 +278,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:** `eu-west.webconsole.linode.com`
 
+#### Milan, Italy
+
+-   **Lish SSH Gateway:** `lish-it-mil.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:toVfir7U8Ixg0wELAx0qCC91ld+HIxmTwggUP/+itkU lish-it-mil.linode.com
+    ECDSA 256 SHA256:XQDX+diXFBAT8OjpN+zwZN5sukTAQwtqe+i89Kh6gXQ lish-it-mil.linode.com
+    ED25519 256 SHA256:Uxw1KbWQVz5QYHHfUzFJcZM+HLbdu6vJ/R3ksEv2k3M lish-it-mil.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `it-mil.webconsole.linode.com`
+
 #### Mumbai (India)
 
 -   **Lish SSH Gateway:** `lish-ap-west.linode.com`
@@ -324,6 +334,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:** `fr-par.webconsole.linode.com`
 
+#### Seattle, WA, USA
+
+-   **Lish SSH Gateway:** `lish-us-sea.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:XqkskcFrRzZbMU/XeR1diiNM6zCsWs2wL4pmTvBLNII lish-us-sea.linode.com
+    ECDSA 256 SHA256:FEqVGwuv/BgbLtNkcfFg7Lgm0R6KQVUnPY+wIoimrrA lish-us-sea.linode.com
+    ED25519 256 SHA256:6R7iWvSe7OQSDcVmhwrH/EJiE51+ntiub3CPXfzupDA lish-us-sea.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-sea.webconsole.linode.com`
+
 #### Singapore
 
 -   **Lish SSH Gateway:** `lish-ap-south.linode.com`
@@ -344,9 +368,9 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
     {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
     ```command
-    3072 SHA256:oC6WZwUMm+S/myz7aEBP6YsAUXss7csmWzJRlwDfpyw lish-se-sto.linode.com (RSA)
-    256 SHA256:lr6m6BKQBqFW/iw/WDq2QQqh5kUlMjidawEEKv9lNRg lish-se-sto.linode.com (ECDSA)
-    256 SHA256:phubC9JMR6DNal0BIvu2ESvmDfs2rSquBrhKdr0IbmU lish-se-sto.linode.com (ED25519)
+    RSA 3072 SHA256:oC6WZwUMm+S/myz7aEBP6YsAUXss7csmWzJRlwDfpyw lish-se-sto.linode.com
+    ECDSA 256 SHA256:lr6m6BKQBqFW/iw/WDq2QQqh5kUlMjidawEEKv9lNRg lish-se-sto.linode.com
+    ED25519 256 SHA256:phubC9JMR6DNal0BIvu2ESvmDfs2rSquBrhKdr0IbmU lish-se-sto.linode.com
     ```
     {{< /note >}}
 

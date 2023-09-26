@@ -3,15 +3,15 @@ title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
-modified: 2023-09-11
+modified: 2023-09-18
 modified_by:
   name: Linode
 authors: ["Linode"]
 ---
 
-{{< content "metadata-beta-notice" >}}
+{{< content "metadata-availability-notice" >}}
 
-When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide), and [StackScripts](/docs/products/tools/stackscripts/).
+When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide) and [StackScripts](/docs/products/tools/stackscripts/).
 
 ## Overview
 
@@ -32,12 +32,13 @@ Similar to Metadata, Linode's [StackScripts](/docs/products/tools/stackscripts/)
 
 ## Availability
 
-Akamai's Metadata service is available in beta and limited to select data centers. Additionally, user-submitted user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
+Akamai's Metadata service is available in select data centers. Additionally, user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
 
-- **Data centers:** Washington, DC (`us-iad`) and Paris (`fr-par`)
-- **Distributions:** Ubuntu 22.04 LTS and Ubuntu 20.04 LTS
+-   **Data centers:** Chennai (India), Chicago (USA), Paris (France), Milan (Italy), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
 
-Additional regions and distributions may be added throughout the beta period. When selecting a distribution in the Cloud Manager, the following icon designates distributions that fully support the Metadata service:
+-   **Distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS, Debian 11
+
+When selecting a distribution in the Cloud Manager, the following icon designates distributions that fully support the Metadata service:
 
 ![Screenshot showing icon that indicates user data and cloud-init support for a distribution](cloud-init-supported-image.png)
 
