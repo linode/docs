@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-09-13
+modified: 2023-09-21
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -42,6 +42,7 @@ Object Storage is available within the following data centers. For a full list o
 | Frankfurt (Germany) | `eu-central-1` |
 | Milan (Italy)\* | `it-mil-1` |
 | Newark, NJ (USA) | `us-east-1` |
+| Osaka (Japan)\* | `jp-osa-1` |
 | Paris (France)\* | `fr-par-1` |
 | Seattle, WA (USA)\* | `us-sea-1` |
 | Singapore | `ap-south-1` |
@@ -80,6 +81,7 @@ The tables below outline Object Storage limits. Most of the limits apply **per r
 | Frankfurt (Germany) | 5 TB | 50 million |
 | Milan (Italy) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Newark, NJ (USA) | 5 TB | 50 million |
+| Osaka (Japan) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Paris (France) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Seattle, WA (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Singapore | 5 TB | 50 million |
