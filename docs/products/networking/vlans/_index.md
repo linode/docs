@@ -39,7 +39,6 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 
 | Data center | Status |
 | -- | -- |
-| **Amsterdam (Netherlands)** | **Available** |
 | **Atlanta (Georgia, USA)** | **Available** |
 | **Chicago (Illinois, USA)** | **Available** |
 | Dallas (Texas, USA) | Not yet available |

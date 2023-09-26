@@ -38,7 +38,6 @@ Premium Compute Instances are currently available in select data centers.
 
 | Data center | Status |
 | -- | -- |
-| **Amsterdam (Netherlands)** | **Available** |
 | Atlanta (Georgia, USA) | *Not available* |
 | **Chicago (Illinois, USA)** | **Available** |
 | Dallas (Texas, USA) | *Not available* |
