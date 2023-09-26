@@ -136,6 +136,43 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
   ```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
 
+
+#### Lists padding
+
+1.  Log in to a Compute Instance that has been deployed in a supported data center using a supported distribution image.
+
+1.  Generate your API token by running the command below:
+
+    ```command
+    curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token
+    ```
+
+    Instead of receiving the token as an output string, you can save it directly to the `$TOKEN` environmental variable:
+
+    ```command
+    export TOKEN=$(curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token)
+    ```
+
+1.  Query one of the following API endpoints to receive data from the API. If you did not save the API token to the `$TOKEN` variable, replace `$TOKEN` in the commands below with your token.
+
+    -   **/v1/instance**: Output information about your instance, including plan resources.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/instance
+        ```
+
+    -   **/v1/network**: Output information about your instance's IP addresses.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/network
+        ```
+
+    -   **/v1/user-data**: Output your user data.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/user-data | base64 --decode
+        ```
+
 ### Light
 
 ```command {class="light" title="Ubuntu 16.04"}
@@ -206,6 +243,7 @@ func IsTruthfulValue(val reflect.Value) (truth bool) {
 	return
 }
 ```
+
 
 
 ###  No Title
