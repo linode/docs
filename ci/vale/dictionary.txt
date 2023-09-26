@@ -23,6 +23,7 @@ adnanh
 adodb
 aes
 ag
+agentless
 ahci0
 Aho
 ahvz
@@ -111,6 +112,7 @@ autocompletion
 autoconfiguration
 autoconfigure
 autodiscover
+autodiscovery
 autohosting
 autoindex
 autojoin
@@ -378,6 +380,7 @@ covid
 cpanel
 cpanminus
 cpu
+cpus
 CPython
 cqlsh
 cqlshrc
@@ -1425,6 +1428,7 @@ msg
 msgid
 msgpack
 msmtp
+msps
 mtr
 mtu
 multiarch
@@ -1492,6 +1496,7 @@ neomake
 neovim
 netblocks
 netboot
+netbrain
 netcat
 Netcraft
 netconfig
@@ -1582,6 +1587,7 @@ nvm
 nvme
 oauth
 obfuscator
+observium
 octopress
 odoo
 offboarding
@@ -1632,6 +1638,7 @@ owncloud
 pacman
 paas
 packagist
+paessler
 pagent
 pagespeed
 palo
@@ -1834,6 +1841,7 @@ ramdisk
 randomart
 ransomwhere
 rasa
+raspbian
 rauth
 rbac
 rbenv
@@ -1936,6 +1944,7 @@ rkhunter
 rkt
 rmdir
 rmem
+rmms
 ro
 roadmunk
 Roblox
@@ -1954,6 +1963,7 @@ rpaf
 rpc
 rpcbind
 rpmforge
+rrdtool
 rrset
 rrsets
 rrsig
@@ -2506,6 +2516,7 @@ vmlinuz
 vms
 vmstat
 vmui
+vmware
 vnc
 VPLs
 vpns
@@ -2622,6 +2633,7 @@ xkcd
 xlsx
 xlsxwriter
 xmail
+xmatters
 xming
 xml
 xmpp
