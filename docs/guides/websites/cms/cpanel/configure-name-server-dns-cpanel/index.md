@@ -22,9 +22,9 @@ external_resources:
 - '[cPanel DNS cluster documentation](https://docs.cpanel.net/whm/clusters/dns-cluster/)'
 ---
 
-[cPanel](https://www.cpanel.net/) allows administrators to host their own name servers and *Domain Name System* (DNS) records locally. Entries for new domains and websites can be added to the local name server using the *WebHost Manager* (WHM) interface. This is especially handy for servers hosting a large number of domains, especially when the DNS records change frequently. This guide explains how to configure a local DNS service using WHM and cPanel, including an overview of the various DNS redundancy options.
+[cPanel](https://www.cpanel.net/) allows administrators to host their own name servers and *Domain Name System* (DNS) records locally. Entries for new domains and websites can be added to the local name server using the *WebHost Manager* (WHM) interface. This comes in handy for servers hosting a large number of domains, especially when the DNS records change frequently. This guide explains how to configure a local DNS service using WHM and cPanel, including an overview of the various DNS redundancy options.
 
-cPanel is a web hosting application that simplifies common web and domain management tasks. It features a handy *graphical user interface* (GUI) along with other server tools. For more information on cPanel, including an overview of its features and advantages, see the [introduction to cPanel guide](/docs/guides/install-configure-cpanel-akamai/).
+cPanel is a web hosting application that simplifies common web and domain management tasks. It features a straightforward *graphical user interface* (GUI) along with other server tools. For more information on cPanel, including an overview of its features and advantages, see our [introduction to cPanel guide](/docs/guides/install-configure-cpanel-akamai/).
 
 ## Reasons for Self-Hosting a DNS Service
 
@@ -32,22 +32,28 @@ The DNS service is responsible for providing the IP address associated with a do
 
 Domain owners have several alternatives for hosting their DNS records. In most cases, domain owners host their DNS records on external DNS services. These services, from domain registrars and third-party servers, are resilient, reliable, and secure. Most DNS providers maintain a fleet of name servers. If one becomes isolated, another can take over and respond. This option is the best choice for servers with only a few sites and domains, especially when the environment is stable. It is not worth the extra effort for these organizations to maintain their own name servers.
 
-Large organizations and web hosting services often want to have more flexibility. These organizations can self-host their own DNS server and records. There are several advantages to this approach:
+However, large organizations and web hosting services often want more flexibility. These organizations can self-host their own DNS server and records. There are several advantages to this approach:
 
 -   **Convenience**: It allows administrators to quickly add records for a new domain. This is usually faster than using an external DNS provider.
+
 -   **Automation/Integration**: Some web hosting and management applications incorporate built-in name servers. This permits easy provisioning of new domains using a web interface. APIs allow them to automate an end-to-end pipeline for provisioning new domains.
+
 -   **Autonomy**: Administrators who host their own name servers have complete control over how and when they provision their records. For instance, they can provision the appropriate DNS records before creating a domain so it instantly resolves. They can also quickly port their domain records to another server or DNS service.
+
 -   **Branding**: Organizations can brand their name servers with their corporate or domain name. This provides the impression of being a larger and more professional organization.
 
 Users should account for the time and complexity involved with managing their own DNS server. A self-hosted name server is easy to misconfigure and it is very possible to omit an important step. Additionally, a self-hosted name server might be less secure than a third-party solution.
 
 ## DNS Configuration Options for cPanel
 
-All domains hosted on the cPanel server require DNS records before users can access them. These records can be hosted in several different ways.
+All domains hosted on the cPanel server require DNS records before users can access them. These records can be hosted in several different ways:
 
 -   **Third-Party DNS Servers**: The easiest approach is to use an external DNS service. This could be the DNS servers for the domain registrar or the [Linode DNS Manager](/docs/products/networking/dns-manager/get-started/). The cPanel/WHM server can be configured to use the external service for its name servers. All new domain records must be added to the external name servers.
+
 -   **Custom Self-Hosted Name Servers**: Server administrators can also define a custom fully qualified domain name for their web servers. The domain `example.com` might define the custom name servers `ns1.example.com` and `ns2.example.com`. The name servers are self-hosted on cPanel using the built-in DNS server. The self-hosted approach involves adding *glue records* at the registrar to point to the self-hosted service. The DNS *A Records* for the domain are added to the self-hosted name servers, not an external service. One drawback to this architecture is there is no redundancy, so it is not recommended for production web sites. Larger organizations typically manage their DNS records on cPanel but use dedicated DNS servers for better throughput and resiliency. The [Linode guide to custom DNS servers](/docs/guides/custom-name-servers/) provides more background about this option.
+
 -   **Self-Hosted DNS Cluster**: Most DNS software applications, including the built-in cPanel DNS service, allow users to build a multi-server DNS architecture. This permits redundancy and enhances reliability, availability, and throughput. To use the cPanel solution, two or more [cPanel DNSOnly devices](https://docs.cpanel.net/installation-guide/cpanel-dnsonly-installation/) are required. The main server operates as a control module for the fleet of DNS servers.
+
 -   **Secondary Read-Only DNS Service**: An external secondary DNS service can be added as a backup to any self-hosted solution. This read-only service is available through third-party DNS providers or from the domain registrar. DNS records, including any changes, are transmitted from the self-hosted DNS server to the secondary. If the self-hosted DNS service fails or becomes inaccessible, the secondary service can respond to incoming DNS queries. It is not even necessary to specify the self-hosted name servers as authoritative servers. In this configuration, the secondary service handles all DNS requests.
 
 ## DNS Services on cPanel
@@ -78,13 +84,13 @@ To configure the custom self-hosted name servers, follow these steps.
 
     ![Ensure PowerDNS is enabled](WHM-PowerDNS.png)
 
-1.  Ensure a custom domain for the subdomain and name servers have been created at your registrar.
+1.  If you have not done so already, create a custom domain for the subdomain and name servers at your registrar.
 
-1.  Log in to the registrar and create glue records for the custom name servers. These instructions differ between registrars. Choose meaningful names for the name servers. By convention, name servers begin with `ns`, followed by a number, the dot symbol `.`, and the domain name. For the domain `example.com`, the first name server could be `ns1.example.com`. Create at least two name servers for the domain. To get started, both name servers can point to the same system. Although this approach lacks redundancy, it is acceptable during the set-up stage.
+1.  Log in to the registrar and create glue records for the custom name servers. These instructions differ between registrars. Choose meaningful names for the name servers. By convention, name servers begin with `ns`, followed by a number, the dot symbol `.`, and the domain name. For example, the first name server for the domain `example.com` could be `ns1.example.com`. Create at least two name servers for the domain. To get started, both name servers can point to the same system. Although this approach lacks redundancy, it is acceptable during the setup stage.
 
     The basic process always involves selecting the domain, creating name servers for the domain, and providing an IP address for each name server. To use the built-in cPanel DNS server, specify the IP address of the system hosting cPanel.
 
-    For more information about how to create glue records, see the [Linode guide to setting up custom name servers](/docs/guides/custom-name-servers/#configure-glue-records). The guide contains links to the relevant instructions for some popular domain providers, including [Namecheap](https://www.namecheap.com/) and [Go Daddy](https://www.godaddy.com/).
+    For more information about how to create glue records, see the [Linode guide to setting up custom name servers](/docs/guides/custom-name-servers/#configure-glue-records). The guide contains links to the relevant instructions for a few popular domain providers, including [Namecheap](https://www.namecheap.com/) and [Go Daddy](https://www.godaddy.com/).
 
     {{< note >}}
     It might take a day or more to propagate the new name server records to all the top-level name servers serving the internet. However, in most cases, it only takes a few hours.
@@ -94,7 +100,7 @@ To configure the custom self-hosted name servers, follow these steps.
 
     ![Basic WebHost Manager interface](Basic-WebHost-Manager.png)
 
-1.  Scroll to the bottom of the interface screen to the **Nameservers** section. Enter the names of the name servers. These names must match those given to the name servers on the registrar. In this example, the name servers are `ns1.example.com` and `ns2.example.com`. Click the **Save Changes** button to apply the configuration.
+1.  Scroll to the bottom of the interface to the **Nameservers** section. Enter the names of the name servers. These names must match those given at the registrar. In this example, the name servers are `ns1.example.com` and `ns2.example.com`. Click the **Save Changes** button to apply the configuration.
 
     ![Define the Name server](Define-Nameservers.png)
 
@@ -106,9 +112,9 @@ To configure the custom self-hosted name servers, follow these steps.
 
     ![Adding the A record for the name server](Add-A-Record-Nameservers.png)
 
-1.  Configure an address record for the remaining name servers using the same steps.
+1.  Configure an *A record* for any remaining name servers using the same steps as above.
 
-1.  If a proper hostname has not been configured for the cPanel server yet, configure one now. This prompts cPanel to issue a SSL certificate for the domain name, thereby increasing security. In the left-hand menu, expand **Networking Setup** and select the **Change Hostname** option.
+1.  If a proper hostname has not yet been configured for the cPanel server, configure one now. This prompts cPanel to issue an SSL certificate for the domain name, thereby increasing security. In the left-hand menu, expand **Networking Setup** and select the **Change Hostname** option.
 
     ![Select the Change Hostname Option](WHM-Change-Hostname-Option.png)
 
@@ -116,7 +122,7 @@ To configure the custom self-hosted name servers, follow these steps.
 
     ![The Change Hostname Interface](WHM-Change-Hostname-Interface.png)
 
-1.  At the end of the configuration script, WHM provides an option to add a DNS entry for the host server's domain. An `A` record for the domain can be added here or through an external DNS service. To allow the local DNS server to manage the host name domain, click the button labeled **Add an A entry for your hostname**.
+1.  At the end of the configuration script, WHM provides an option to add a DNS entry for the host server's domain. An *A record* for the domain can be added here or through an external DNS service. To allow the local DNS server to manage the host name domain, click the button labeled **Add an A entry for your hostname**.
 
     ![Add an A Record](Add-A-Entry-Subdomain.png)
 
@@ -157,7 +163,7 @@ To be reachable across the wider internet, a new subdomain requires an `A` type 
 
 Currently, the domain is still configured to use the registrar's default name servers for domain look-ups. To switch to the custom self-hosted name servers, update the domain records on the registrar. After this change propagates, the cPanel DNS service can handle all lookups for the domain. The change typically takes a few hours to propagate, but might take up to a day in the worst case.
 
-The procedure for updating the official name servers for the domain varies between registrars. The basic procedure involves selecting the domain record on the registrar and editing the name server settings. Consult the [Linode guide to registering custom DNS name servers](/docs/guides/custom-name-servers/#change-the-name-servers-for-your-domains) for a more detailed explanation. This guide contains links to the relevant instructions for popular domain name providers.
+The procedure for updating the official name servers for the domain varies between registrars. The basic procedure involves selecting the domain record on the registrar and editing the name server settings. Consult the [Linode guide to registering custom DNS name servers](/docs/guides/custom-name-servers/#change-the-name-servers-for-your-domains) for a more detailed explanation. This guide contains links to the relevant instructions for several popular domain name providers.
 
 After a propagation is complete, verify the changes. First use the `dig` command to retrieve the DNS records for the domain from a *top-level domain* (TLD) server. For instance, for a domain ending in `.com`, use the following command:
 
@@ -215,7 +221,7 @@ To configure a secondary DNS server, follow these steps.
     disable-axfr=no
     ```
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+1.  When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
 1.  Run internal scripts on the server to rebuild and restart the DNS server:
 
@@ -248,11 +254,13 @@ The secondary DNS service must be configured on the external DNS provider. This 
 
     ![Enter the Domain Details](Domain-Add-Details.png)
 
-1.  It might take some time to transfer the domain details to the secondary server. To ensure the details have been transferred to the Linode DNS servers, run the following command from any console. The output should display the IP address of the cPanel server hosting the domain. Substitute the name of the actual domain for `example.com`. For other DNS services, use the name of their name servers instead.
+1.  It might take some time to transfer the domain details to the secondary server. To ensure the details have been transferred to the Linode DNS servers, run the following command from any console. Substitute the name of the actual domain for `example.com`. For other DNS services, use the name of their name servers instead.
 
     ```command
     dig example.com +short @ns1.linode.com.
     ```
+
+    The output should display the IP address of the cPanel server hosting the domain.
 
 1.  Add the new secondary name servers as additional name servers on the registrar. The secondary name servers can be specified either in addition to or instead of the self-hosted primary name servers on cPanel.
 
