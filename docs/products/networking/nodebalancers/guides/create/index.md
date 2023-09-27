@@ -44,6 +44,8 @@ A NodeBalancer can only be attached to one active (enabled) Cloud Firewall at a 
 - The NodeBalancer accepts traffic and routes traffic on an internal network to backend targets. For this reason, only inbound firewall rules apply to Node Balancer.
 - Inbound firewall rules such as IPv4 and IPv6 access control lists (ACLs) can be configured to *Accept* or *Drop* ingress traffic.
 - NodeBalancers accept TCP connections on all ports. When you add an inbound rule for a NodeBalancer in Cloud Firewall, select TCP as the transport layer protocol. UDP, ICMP, and IPENCAP are not supported on NodeBalancers.
+- The NodeBalancers firewall is infront of the backend nodes that are assigned to the NodeBalancer. When both the NodeBalancer and its backend nodes use Cloud Firewall, the NodeBalancers inbound firewall rules are applied to incoming requests first, before the requests reach the backend nodes.
+- A backend node server can have multiple IP addresses. The NodeBalancers firewall only controls traffic to the backend nodes IPs that are assigned to the NodeBalancers. NodeBalancer firewall rules are not applied to IPs that are not assigned to the NodeBalancer.
 
 ## Add and Configure Ports
 
