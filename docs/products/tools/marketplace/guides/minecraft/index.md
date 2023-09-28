@@ -5,7 +5,7 @@ published: 2019-04-01
 modified: 2022-04-01
 title: "Deploy a Minecraft Server through the Linode Marketplace"
 external_resources:
-- '[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server)'
+- '[Minecraft Wiki](https://minecraft.wiki/w/Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-marketplace-apps/','/guides/deploy-minecraft-marketplace-app/','/guides/minecraft-marketplace-app/']
 image: deploy-a-minecraft-server-with-oneclick-apps.png
