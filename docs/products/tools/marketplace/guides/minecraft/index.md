@@ -44,7 +44,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 - **PvP Enabled:** Enables player versus player combat on the server. *Advanced Configuration*.
 - **Force Game Mode Enabled:** Forces players to join the server's default game mode. `false` allows players to join with their previous game mode. `true` forces the default game mode.
 - **World Type:** Type of world to generate. *Default* = standard, *flat* = featureless and flat, *largebiomes* = larger biomes, *amplified* = larger height limit. *Advanced Configuration*.
-- **World Seed:** A random value used by Minecraft's world generation algorithm to create a unique world. For example: `qazwsx123`. See [Minecraft's Gamepedia](https://minecraft.gamepedia.com/Seed_(level_generation)) entry on seeds for more information. *Advanced Configuration*.
+- **World Seed:** A random value used by Minecraft's world generation algorithm to create a unique world. For example: `qazwsx123`. See [Minecraft Wiki](https://minecraft.wiki/w/Seed_(level_generation)) entry on seeds for more information. *Advanced Configuration*.
 - **Spawn Animals Enabled:** Determines if animals (sheep, chickens, squid, etc.) spawn. *Advanced Configuration*.
 - **Spawn Monsters Enabled:** Determines if monsters (creepers, skeletons, spiders, etc.) spawn. *Advanced Configuration*.
 - **Spawn NPCs Enabled:** Determines if villagers spawn. *Advanced Configuration*.
