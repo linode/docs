@@ -6,5 +6,4 @@ require (
 	github.com/hotwired/turbo v7.0.1+incompatible // indirect
 	github.com/linode/linode-api-docs/v4 v4.163.0 // indirect
 	github.com/linode/linode-docs-theme v0.0.0-20230927154026-a2afda13be9b // indirect
-	github.com/linode/linode-website-partials v0.0.0-20230927181556-032071c7cd50 // indirect
 )
