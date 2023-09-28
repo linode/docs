@@ -41,7 +41,6 @@ Plugins included with this deployment:
 ### MainConcept FFmpeg Plugins Options
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
-{{< content "marketplace-custom-domain-fields-shortguide">}}
 
 ## Getting Started after Deployment
 
