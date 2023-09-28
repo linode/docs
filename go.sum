@@ -208,3 +208,5 @@ github.com/linode/linode-website-partials v0.0.0-20230425151945-bcf8272ed6cc/go.
 github.com/linode/linode-website-partials v0.0.0-20230626191444-f675b38efa8f/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20230713145319-dfcdfcd6eb08/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20230810161521-51cd76860752/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
+github.com/linode/linode-website-partials v0.0.0-20230927181556-032071c7cd50 h1:eZzWWj611kW4UDGzrnKineEDnsRS9Ot3Ga5lBg6rE44=
+github.com/linode/linode-website-partials v0.0.0-20230927181556-032071c7cd50/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
