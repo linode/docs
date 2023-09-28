@@ -111,9 +111,9 @@ To get started, this section walks through a fully-functioning example. The exam
 
 While relatively simple, this example provides a strong base model. You can easily build on the configurations here to make Crossplane work for a diverse range of infrastructure needs.
 
-{{< caution >}}
+{{< note type="warning" >}}
 The configurations and commands used in this guide add one or more Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
-{{< /caution >}}
+{{< /note >}}
 
 1. The provider allows you to deploy Akamai Cloud (formerly Linode) instances with Crossplane.
 
