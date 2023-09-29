@@ -48,7 +48,7 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.116.1'
+          hugo-version: '0.117.0'
 
       - name: Build Hugo
         working-directory: ./docs-repo
