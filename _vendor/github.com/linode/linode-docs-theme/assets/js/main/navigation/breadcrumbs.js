@@ -2,7 +2,7 @@
 
 import { newCreateHref } from './create-href';
 
-var debug = 0 ? console.log.bind(console, '[breadcrumbs]') : function() {};
+var debug = 0 ? console.log.bind(console, '[breadcrumbs]') : function () {};
 
 export function newBreadcrumbsController(searchConfig) {
 	if (!searchConfig) {
@@ -13,11 +13,11 @@ export function newBreadcrumbsController(searchConfig) {
 	return {
 		data: {
 			breadcrumbs: {
-				sections: []
-			}
+				sections: [],
+			},
 		},
 		breadCrumbsCreated: false,
-		init: function() {
+		init: function () {
 			this.$nextTick(() => {
 				this.$store.search.withBlank((result) => {
 					let parts = hrefFactory.sectionsFromPath();
@@ -31,17 +31,19 @@ export function newBreadcrumbsController(searchConfig) {
 						if (sm) {
 							sections.push(sm);
 						} else {
-							// Missing metadata, fall back to the defaults, which should be good enough for these WordPress sections.
-							sections.push({
-								href: hrefFactory.hrefSection(key),
-								linkTitle: section
-							});
+							// Just show a link to the home page in the breadcrumbs.
+							// This is mostly a misspelled URL.
+							// We could create a path based on the location,
+							// as we do sanitize in sectionsFromPath,
+							// but let's not open up to potential XSS attacks.
+							sections.length = 0;
+							break;
 						}
 					}
 
 					this.data.breadcrumbs.sections = sections;
 				});
 			});
-		}
+		},
 	};
 }

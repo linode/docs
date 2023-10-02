@@ -1,15 +1,10 @@
 ---
 slug: yesod-nginx-mysql-on-debian-7-wheezy
-author:
-  name: Si-Qi Liu
-  email: liusq@tsinghua.edu.cn
 description: 'Installing the web framework Yesod with the server Nginx and MySQL on Debian 7'
 keywords: ["yesod", "nginx", "mysql", "debian 7"]
 tags: ["web applications","nginx","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod/yesod-nginx-mysql-on-debian-7-wheezy/']
-contributor:
-    name: Si-Qi Liu
 modified: 2014-09-25
 modified_by:
   name: Linode
@@ -27,18 +22,19 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
+authors: ["Si-Qi Liu"]
 ---
 
 
 Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).
 
-{{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
-Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Getting Started](/docs/getting-started/) guide for setting your hostname. Here's how to check.
+Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for setting your hostname. Here's how to check.
 
 1.  Enter the following commands to view the hostname:
 
@@ -55,7 +51,7 @@ Before you begin installing and configuring the components described below, plea
         apt-get update
         apt-get upgrade
 
-4. You also need Nginx and MySQL software. Please refer to [Websites with Nginx on Debian 7 (Wheezy)](/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/) and [How to Install MySQL on Debian 7](/docs/databases/mysql/how-to-install-mysql-on-debian-7/) for their installation guides.
+4. You also need Nginx and MySQL software. Please refer to [Websites with Nginx on Debian 7 (Wheezy)](/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/) and [How to Install MySQL on Debian 7](/docs/guides/how-to-install-mysql-on-debian-7/) for their installation guides.
 
 ## Install Required Packages
 
@@ -203,7 +199,7 @@ We don't need to modify this configuration file, it's acceptable as is. So you o
 
     Please wait for compilation, then you can see the scaffold of your site at http://www.yoursite.com:3000/, where ``www.yoursite.com`` is your FQDN. To stop it, just press ``Enter``.
 
-If your Linode has a firewall, the port ``3000`` is probably inaccessible from outside, so you will not be able to see your site at http://www.yoursite.com:3000/. This port is only for testing or developing, so don't open it on your firewall. Instead, you can set up an SSH tunnel on your Linode, and view your site at http://localhost:3000/ via this tunnel. Please check [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more details.
+If your Linode has a firewall, the port ``3000`` is probably inaccessible from outside, so you will not be able to see your site at http://www.yoursite.com:3000/. This port is only for testing or developing, so don't open it on your firewall. Instead, you can set up an SSH tunnel on your Linode, and view your site at http://localhost:3000/ via this tunnel. Please check [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more details.
 
 You may have noticed that we haven't configure Nginx yet. In fact, Yesod applications contain an http server called Warp, which is written in Haskell, and has a very fast run-time. Without http servers like Apache or Nginx installed, you can run standalone Yesod applications. This feature is similar to the Express framework on Node.js.
 

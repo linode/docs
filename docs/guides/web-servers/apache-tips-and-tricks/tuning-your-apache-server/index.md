@@ -1,9 +1,6 @@
 ---
 slug: tuning-your-apache-server
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
-description: Tuning your Apache server to optimize your website.
+description: 'This guide provides you with information on tuning the performance and configuration of your Apache web server to optimize the load times of your website.'
 keywords: ["configuration", "apache", "web server", "resource tuning"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/tuning-your-apache-server/','/web-servers/apache-tips-and-tricks/tuning-your-apache-server/']
@@ -18,6 +15,7 @@ external_resources:
  - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
 dedicated_cpu_link: true
 tags: ["web server","apache"]
+authors: ["Elle Krout"]
 ---
 
 ![Tuning Your Apache Server](tuning-your-apache-server.png "Tuning Your Apache Server")
@@ -26,11 +24,11 @@ Your Apache configuration settings have a major effect on your Linode's performa
 
 ## Tools
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/uptime/monitoring/top-htop-iotop/) and the load-testing program [Siege](/docs/tools-reference/tools/load-testing-with-siege/). Linode's own [Longview](/docs/platform/longview/longview/) service can also help with server monitoring. A good place to start is to familiarize yourself with the RAM and CPU usage of your server.
+There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/guides/top-htop-iotop/) and the load-testing program [Siege](/docs/guides/load-testing-with-siege/). Linode's own [Longview](/docs/products/tools/longview/get-started/) service can also help with server monitoring. A good place to start is to familiarize yourself with the RAM and CPU usage of your server.
 
 Discover usage statistics with the following variations of the `ps` command. The `ps` command is used to generate a report of the running processes on your Linode:
 
@@ -62,7 +60,7 @@ ExtendedStatus On
     {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Enabling `ExtendedStatus` consumes additional system resources.
 {{< /note >}}
 
@@ -92,7 +90,7 @@ Enabling `ExtendedStatus` consumes additional system resources.
 
 ### Apache2Buddy
 
-The Apache2Buddy script, similar to [MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/), reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, that focuses on the `MaxClients` directive, Apache2Buddy is useful. You can run the script with the following command:
+The Apache2Buddy script, similar to [MySQLTuner](/docs/guides/how-to-optimize-mysql-performance-using-mysqltuner/), reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, that focuses on the `MaxClients` directive, Apache2Buddy is useful. You can run the script with the following command:
 
     curl -sL https://raw.githubusercontent.com/richardforth/apache2buddy/master/apache2buddy.pl | sudo perl
 
@@ -100,7 +98,7 @@ The Apache2Buddy script, similar to [MySQLTuner](/docs/databases/mysql/how-to-op
 
 Apache version 2.4 offers three Multi Processing Modules (MPM) for managing your settings. Each module creates child processes, but differs in how they handle threads.
 
-{{< disclosure-note "Back up your Apache configuration file">}}
+{{< note type="warning" >}}
 Before making any changes to your Apache configuration, be sure to back up the configuration file:
 
  - On Debian/Ubuntu:
@@ -110,7 +108,7 @@ Before making any changes to your Apache configuration, be sure to back up the c
 - On CentOS/Fedora:
 
         cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ### Prefork
 The prefork module creates a number of child processes at launch, each child handles only one thread. Since these processes deal solely with one thread at a time, request speed can suffer should there be too many concurrent requests. When this occurs, some requests essentially have to wait in line to be acted upon. To handle this, you can increase the number of child processes that are spawned, however, this increases the amount of RAM being used. Prefork is the safest module, and should be used when using non-thread-safe libraries.
@@ -139,7 +137,7 @@ To use the worker or event modules, replace `<IfModule mpm_prefork_module>` with
 
 Next, you should alter the module settings you added in the previous step. To do this, you should take into consideration what each value does, and how best to change it. It is recommended to make incremental changes to your configuration settings and then monitor the effects.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 After making alterations to the Apache configuration file, restart the service.
 
 - On Debian/Ubuntu:
@@ -177,7 +175,7 @@ To get information on memory usage:
 
     free -m
 
-To receive a more detailed view of the resources Apache is using, use the [`top` command](/docs/uptime/monitoring/top-htop-iotop/).
+To receive a more detailed view of the resources Apache is using, use the [`top` command](/docs/guides/top-htop-iotop/).
 
 ### MaxConnectionsPerChild
 
@@ -191,6 +189,6 @@ When using the `worker` and `event` modules, `ServerLimit` and `ThreadLimit` det
 
 ### KeepAlive
 
-[KeepAlive](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) allows connecting clients to use a single TCP connection to make multiple requests, instead of opening a new one for each request. This decreases page load times and lowers CPU use for your web server, at the expense of an increase in your server's RAM use. A KeepAlive connection will be counted as a single "request" for the [MaxConnectionsPerChild](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/#maxconnectionsperchild).
+[KeepAlive](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) allows connecting clients to use a single TCP connection to make multiple requests, instead of opening a new one for each request. This decreases page load times and lowers CPU use for your web server, at the expense of an increase in your server's RAM use. A KeepAlive connection will be counted as a single "request" for the [MaxConnectionsPerChild](/docs/guides/tuning-your-apache-server/#maxconnectionsperchild).
 
 In the past, this setting was often disabled to conserve RAM use, but server resources have become less expensive, and the option is now enabled by default in Apache 2.4. Enabling KeepAlive can significantly benefit your site's user experience, so be wary of disabling it without testing the effects of doing so. KeepAlive can be enabled or disabled in your web server configuration, or within a Virtual Host block.

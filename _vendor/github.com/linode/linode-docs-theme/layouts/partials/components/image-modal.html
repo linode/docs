@@ -1,24 +1,56 @@
-<div x-data="{ visible: false }" x-intersect.once="visible = true" data-testid=image-modal>
+<div
+  x-data="{ visible: false }"
+  x-intersect.once="visible = true"
+  data-testid="image-modal">
+  <template x-if="!visible">
+    {{ $pix := resources.Get "images/pix.gif" }}
+    <div class="w-full bg-gray-200 rounded-lg">
+      <img
+        src="{{ $pix.RelPermalink }}"
+        style="width: 100%; aspect-ratio: {{ $.scaled.resized1x.Width }} / {{ $.scaled.resized1x.Height }};" />
+    </div>
+  </template>
   <template x-if="visible">
     <div x-data="{ open: false, hover:false, src: '' }">
-      <figure class="{{ with .class }}{{ . }}{{ end }}" @click="open = ! open; $event.preventDefault();" @keydown.escape.window="open = false" @mouseenter="hover = true" @mouseleave="hover = false">
+      <figure
+        class="{{ with .class }}{{ . }}{{ end }}"
+        @click="open = ! open; $event.preventDefault();"
+        @keydown.escape.window="open = false"
+        @mouseenter="hover = true"
+        @mouseleave="hover = false">
         <div class="relative w-full text-brand cursor-pointer group">
           <div class="">
             <template x-if="$isMobile()">
-              <img src="{{ $.scaled.resized1x.RelPermalink }}" alt="{{ $.alt }}" title="{{ $.title }}" class="img-transparent{{ with $.class }} {{ . }}{{ end }}"  @load="$event.target.classList.remove('img-transparent')">
+              <img
+                src="{{ $.scaled.resized1x.RelPermalink }}"
+                alt="{{ $.alt }}"
+                title="{{ $.title }}"
+                class="img-transparent{{ with $.class }}{{ . }}{{ end }}"
+                @load="$event.target.classList.remove('img-transparent')" />
             </template>
             <template x-if="!$isMobile()">
-              <img src="{{ $.scaled.resized2x.RelPermalink }}" alt="{{ $.alt }}" title="{{ $.title }}" class="img-transparent{{ with $.class }} {{ . }}{{ end }}"  @load="$event.target.classList.remove('img-transparent')">
+              <img
+                src="{{ $.scaled.resized2x.RelPermalink }}"
+                alt="{{ $.alt }}"
+                title="{{ $.title }}"
+                class="img-transparent{{ with $.class }}{{ . }}{{ end }}"
+                @load="$event.target.classList.remove('img-transparent')" />
             </template>
           </div>
           {{ if eq .img.MediaType.SubType "gif" }}
-            <div class="hide-if-no-js absolute group-hover:opacity-75" style="top: 50%; left: 50%; transform: translate(-50%,-50%);">
+            <div
+              class="hide-if-no-js absolute group-hover:opacity-75"
+              style="top: 50%; left: 50%; transform: translate(-50%,-50%);">
               <svg class="h-16 w-16">
                 <use href="#icon--play-circle"></use>
               </svg>
             </div>
           {{ else }}
-            <div x-transition x-show="hover" class="hide-if-no-js absolute bg-gray-100 bg-opacity-25 p-3 rounded-full" style="bottom: 2rem; right: 2rem;">
+            <div
+              x-transition
+              x-show="hover"
+              class="hide-if-no-js absolute bg-gray-100/25 p-3 rounded-full"
+              style="bottom: 2rem; right: 2rem;">
               <svg class="h-5 w-5">
                 <use href="#icon--search"></use>
               </svg>
@@ -27,14 +59,27 @@
         </div>
       </figure>
       <div class="hide-if-no-js" x-cloak>
-        <div x-transition.opacity x-show="open"
-          class="fixed flex justify-center items-center inset-0 bg-black bg-opacity-75" style="z-index: 9999;">
-          <div x-transition x-show="open"
-              class="content relative mx-4 w-auto max-w-7xl bg-transparent overflow-auto" style="max-height: 80%;">
+        <div
+          x-transition.opacity
+          x-show="open"
+          class="fixed flex justify-center items-center inset-0 bg-black/75"
+          style="z-index: 9999;">
+          <div
+            x-transition
+            x-show="open"
+            class="content relative mx-4 w-auto max-w-7xl bg-transparent overflow-auto"
+            style="max-height: 80%;">
             <template x-if="open">
-              <img src="{{ .img.RelPermalink }}" alt="{{ $.alt }}" class="w-full rounded-xl shadow-lg" @click.away="open = false">
+              <img
+                src="{{ .img.RelPermalink }}"
+                alt="{{ $.alt }}"
+                title="{{ $.title }}"
+                class="w-full rounded-xl shadow-lg"
+                @click.away="open = false" />
             </template>
-            <svg  class="h-6 w-6 absolute text-white hover:text-brand cursor-pointer" style="top: 0rem; right: 0rem;">
+            <svg
+              class="h-6 w-6 absolute text-white hover:text-brand cursor-pointer"
+              style="top: 0rem; right: 0rem;">
               <use href="#icon--times"></use>
             </svg>
           </div>

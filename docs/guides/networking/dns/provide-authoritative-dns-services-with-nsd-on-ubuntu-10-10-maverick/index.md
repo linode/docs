@@ -1,10 +1,7 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
-description: 'Install and configure NSD to handle DNS queries.'
+description: 'This guide shows how you can install and configure NSD, a lightweight name server daemon and alternative to BIND, to provide authoritative DNS on Ubuntu 10.10 "Maverick".'
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,21 +10,22 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2011-01-25
-title: 'Provide Authoritative DNS Services with NSD on Ubuntu 10.10 (Maverick)'
+title: 'Authoritative DNS Services with NSD on Ubuntu 10.10 '
 relations:
     platform:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Brett Kaplan"]
 ---
 
 NSD is a light-weight yet full-featured open source name server daemon created to provide an alternative to BIND.
 
-Before beginning, you should be familiar with basic [DNS terminology and records](/docs/dns-guides/introduction-to-dns). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
+Before beginning, you should be familiar with basic [DNS terminology and records](/docs/guides/dns-overview/). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,0 +1,60 @@
+{{ $style := "bash" }}
+{{ $class := "light" }}
+{{ $title := .Get "title" }}
+{{ $inner := .Inner }}
+{{ if .IsNamedParams }}
+  {{ with .Get "style" }}
+    {{ $style = . }}
+  {{ end }}
+  {{ with .Get "class" }}
+    {{ $class = . }}
+  {{ end }}
+{{ else }}
+  {{ with .Get 0 }}
+    {{ $style = . }}
+  {{ end }}
+{{ end }}
+{{ $opts := dict
+  "style" $style
+  "class" $class
+  "title" $title
+  "inner" $inner
+}}
+{{ template "_codeblocks/command" $opts }}
+{{/* This template is also used by the codeblock render hook doing the same. */}}
+{{ define "_codeblocks/command" }}
+  {{ $style := "bash" }}
+  {{ $class := "light" }}
+  {{ $title := .title }}
+  {{ $style := .style }}
+  {{ $class := .class }}
+  {{ if not (or (strings.Contains $class "dark") (strings.Contains $class "light")) }}
+    {{ $class = printf "light %s" $class }}
+  {{ end }}
+  {{ $copyIcon := `<button type="button" aria-label="copy" class="btn-icon copy-button"><svg class="fill-current mr-4" style="width: 0.875rem; height: 1rem;"><use href="#icon--copy"></use></svg></button>` | safeHTML }}
+  {{ with $title }}
+    <div class="text-sm font-semibold mt-4">
+      {{ . }}
+    </div>
+  {{ end }}
+  {{ $mt :=  "mt-4" }}
+  {{ if $title }}
+    {{ $mt =  "mt-2" }}
+  {{ end }}
+  <div class="relative">
+    <div
+      :class="{ 'is-scroll-x' : $isScrollX() }"
+      class="code {{ $mt }} {{ $class }} flex items-start justify-between overflow-x-auto"
+      x-data>
+      <div class="pr-2" x-ref="code">
+        {{- highlight (trim $.inner "\n" ) $style "linenos=false" -}}
+      </div>
+      <div
+        class="absolute right-0 top-0 overflow-x-none mt-4 sm:mt-5 pl-3"
+        style="background-color: inherit;"
+        @click="$copy($refs.code)">
+        {{ $copyIcon }}
+      </div>
+    </div>
+  </div>
+{{ end }}

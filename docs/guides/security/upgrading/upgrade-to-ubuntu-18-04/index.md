@@ -1,9 +1,6 @@
 ---
 slug: upgrade-to-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
-description: "A how-to guide for performing an inline upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
+description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system to the latest LTS (Long Term Support) version of Ubuntu - 18.04 LTS.'
 keywords: ["upgrading", "ubuntu", "18.04","bionic beaver"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,8 @@ modified: 2021-10-26
 modified_by:
   name: Linode
 published: 2018-04-27
-title: "How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
-h1_title: "Inline Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
-enable_h1: true
+title: "Inline Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
+title_meta: "How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
 relations:
     platform:
         key: how-to-upgrade-ubuntu
@@ -21,18 +17,19 @@ relations:
             - distribution: Ubuntu 18.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-18-04/']
 image: upgrade-ubuntu-18-title.jpg
+authors: ["Linode"]
 ---
 
 Ubuntu 18.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2023. This guide shows how to upgrade your Linode from Ubuntu 16.04 (Xenial Xerus) or Ubuntu 17.10 (Artful Aardvark) to Ubuntu 18.04 (Bionic Beaver).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Inline distribution upgrades can yield unpredictable results. Before continuing, read through our [Upgrading to the Latest Distribution (Clean Install)](/docs/guides/manually-upgrading-to-latest-distribution-version/) guide to learn more about your upgrade options, including performing a clean install of the latest distribution version.
 
-The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/using-the-linode-shell-lish) or [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/products/compute/compute-instances/guides/lish/) or [Glish](/docs/products/compute/compute-instances/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
-{{< /caution >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are upgrading from Ubuntu 17.04 you must first upgrade to Ubuntu 17.10.
 {{< /note >}}
 
@@ -60,11 +57,11 @@ Update package lists and install all updates:
 
 ### Back Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/docs/products/storage/backups/), we recommend that you [take a manual snapshot](/docs/guides/linode-backup-service#take-a-manual-snapshot) before upgrading to Ubuntu 18.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/docs/products/storage/backups/), we recommend that you [take a manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Ubuntu 18.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](/docs/guides/monitoring-and-maintaining-your-server/#apply-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates) for more information.
 
 ### Stop Services
 

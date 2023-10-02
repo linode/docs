@@ -1,10 +1,7 @@
 ---
 slug: how-to-install-openjdk-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04 & test it. ✓ Click here to read our guide today!'
-og_description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04 and test it by through a simple "Hello World" application.
+og_description: 'This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04 and test it by through a simple "Hello World" application.'
 keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "18.04"]
 aliases: ['/development/java/how-to-install-openjdk-on-ubuntu-18-04/','/development/java/install-java-on-ubuntu-18-04/']
 tags: ["java","ubuntu"]
@@ -14,11 +11,8 @@ image: Installing_Java_Development_Kit_11_on_Ubuntu1804_1200x631.png
 modified_by:
   name: Linode
 published: 2020-03-25
-title: "Install OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
-h1_title: "Installing OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
-enable_h1: true
-contributor:
-  name: Rajakavitha Kodhandapani
+title: "Installing OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
+title_meta: "Install OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
 audiences: ["beginner"]
 languages: ["java"]
 relations:
@@ -26,6 +20,7 @@ relations:
         key: install-openjdk
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 [Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Software written in Java can be compiled and run on any system, making Java a versatile platform that can be used to create anything from software to basic web applications. This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04.
@@ -36,9 +31,9 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
 
-1.  Complete the sections of our guide on [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
+1.  Complete the sections of our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
 
 1.  Ensure your system is up-to-date:
 
@@ -54,7 +49,7 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
 
         sudo apt-get install openjdk-11-jre
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 While you can run Java applications directly with the JRE, your applications will be compiled every time they are executed. This is generally slower than running applications that have already been compiled into Java bytecode, and may not be suitable if you plan to execute applications many times.
 {{< /note >}}
 
@@ -92,7 +87,7 @@ export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$PATH:$JAVA_HOME/bin
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using a shell other than Bash, such as [Zsh](https://github.com/ohmyzsh/ohmyzsh), you may need to add these lines in a different startup file instead. In the case of Zsh, this would be the `~/.zshrc` file.
 {{< /note >}}
 

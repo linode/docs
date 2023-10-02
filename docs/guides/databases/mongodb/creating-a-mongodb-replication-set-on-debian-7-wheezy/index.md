@@ -1,18 +1,16 @@
 ---
 slug: creating-a-mongodb-replication-set-on-debian-7-wheezy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Configure a MongoDB ReplSet (Debian)'
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
+description: 'This guide provides you with step-by-step instructions for creating and configuring a MongoDB ReplSet (replication set) for redundancy on Debian.'
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/debian-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/']
 modified_by:
   name: Linode
 published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
-h1_title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
+title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
+title_meta: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
@@ -25,13 +23,14 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","nosql"]
 deprecated: true
+authors: ["Linode"]
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 ## Installing MongoDB
 
@@ -73,7 +72,7 @@ It is imperative that the networking configurations are set and working properly
 
 Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Manager. Under the **Networking** tab, click on the "Add a Private IP" link to assign a private IP address to your Linode. Again, we are working with a three-member replication set, so you will need to acquire this information for each member.
 
-[![Finding your private IP address.](1700-private_ip-v3.png)](1700-private_ip-v3.png)
+![Finding your private IP address.](1700-private_ip-v3.png)
 
 ### Setting the Hosts File
 
@@ -279,7 +278,7 @@ For this replset configuration, only the hostname was required to add a new memb
 
 An example of the add member process is included for your reference. Make sure to change names and port numbers to reflect your particular configuration.
 
-[![Add a member to a replication set.](1687-add-node.png)](1687-add-node.png)
+![Add a member to a replication set.](1687-add-node.png)
 
 Use the `rs.conf()` command to check if the new member is present in the configuration file. In addition, any database should propagate almost immediately (depending on its size) over to the new member.
 

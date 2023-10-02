@@ -1,10 +1,7 @@
 ---
 slug: what-is-docker
 deprecated: true
-author:
-  name: Jon Chen
-  email: docs@linode.com
-description: 'An overview of Installing Docker, with an example use case for Nginx'
+description: 'This guide provides you with an overview of Docker, a container runtime, as well as how to use Docker to install the Nginx web server.'
 keywords: ["docker", "ubuntu", "centos", "container"]
 tags: ["ubuntu","container","docker","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,9 +11,10 @@ modified_by:
 aliases: ['/applications/containers/docker.md/','/applications/containers/what-is-docker/','/containers/docker/']
 published: 2014-01-28
 title: Docker
+authors: ["Jon Chen"]
 ---
 
-Docker is an extensible, open-source engine powered by [Linux Containers](http://linuxcontainers.org/) that automates the deployment of applications as portable, lightweight, and self-sufficient containers. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Getting Started Guide](/docs/getting-started/), that your system is up to date, and that you've logged in to your Linode as root via SSH.
+Docker is an extensible, open-source engine powered by [Linux Containers](http://linuxcontainers.org/) that automates the deployment of applications as portable, lightweight, and self-sufficient containers. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged in to your Linode as root via SSH.
 
 ## Installation
 

@@ -1,9 +1,6 @@
 ---
 slug: how-to-install-nodejs
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Node.js is a cross-platform runtime environment for server-side JavaScript applications. There are multiple ways to install and maintain Node.js and the decision of which installation method to use can quickly become a confusing one, so here are the main choices.'
+description: 'This guide will show you how to install Node.js, a cross-platform runtime environment that can power server-side JavaScript applications, on Linux.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-02-15
@@ -18,6 +15,7 @@ external_resources:
  - '[npm](https://www.npmjs.com/)'
 audiences: ["beginner"]
 languages: ["javascript"]
+authors: ["Linode"]
 ---
 
 [Node.js](https://nodejs.org/) is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses [V8](https://v8.dev/), Google's JavaScript engine, which is also found in Chromium and Chrome. Depending on the use case, Node.js can supplement or replace traditional web servers and tools such as Apache, nginx, or PHP.
@@ -40,7 +38,7 @@ Your distro's repos likely contain an LTS release of Node.js. This is a good sol
 
 [NPM](#node-package-manager-npm) (Node Package Manager) is included with installations of Node.js by other methods. Here, however, `npm` is a separate package from `nodejs` and must be installed separately.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Node.js from the distro's repositories in Debian 7 or 8, or Ubuntu 12.04 or 14.04 conflict with the [Amateur Packet Radio Node program](https://packages.debian.org/jessie/node). In this scenario, calling Node.js requires that you use the command `nodejs -$option` instead of the standard `node -$option`. One workaround is to install the package `nodejs-legacy`, which maintains a symlink from `/usr/bin/node` to `/usr/bin/nodejs` so the normal `node` commands can be used.
 
 {{< /note >}}

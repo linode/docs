@@ -1,10 +1,7 @@
 ---
 slug: lamp-on-centos-6
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
-description: 'Create a LAMP stack on a CentOS 6 Linode.'
+description: 'This guide shows you how to create a LAMP Stack, Linux, Apache, MySQL, PHP, a common web stack for running websites, applications, and more, on CentOS 6.'
 keywords: ["LAMP", "CentOS", "CentOS 6", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -24,19 +21,20 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 6
+authors: ["Alex Fornuto"]
 ---
 
 ![LAMP on CentOS 6](lamp-centos-6.png)
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a CentOS 6 system.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -60,7 +58,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 2.  Edit the `httpd.conf` under `/etc/httpd/conf/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
 
 cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
@@ -105,7 +103,7 @@ NameVirtualHost *:80
 
     Additional code blocks can be added to the file for any other domains you with to host on the Linode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 {{< /note >}}
 
@@ -121,7 +119,7 @@ NameVirtualHost *:80
 
     You should new be able to view a default Apache page on your website.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
 
 sudo service httpd reload
@@ -188,7 +186,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that all the lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 {{< /note >}}
 

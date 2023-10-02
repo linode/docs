@@ -1,25 +1,23 @@
 ---
 slug: control-network-traffic-with-iptables
-author:
-  name: Linode
-  email: docs@linode.com
 description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
-og_description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
+bundles: ['debian-security', 'centos-security', 'network-security']
 modified: 2017-02-28
 modified_by:
   name: Linode
 published: 2010-07-30
-title: Controlling Network Traffic with iptables - A Tutorial
-h1_title: A Tutorial for Controlling Network Traffic with iptables
+title: A Tutorial for Controlling Network Traffic with iptables
+title_meta: Controlling Network Traffic with iptables - A Tutorial
 external_resources:
- - '[Security Basics](/docs/security/linux-security-basics)'
+ - '[Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
  - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
 tags: ["networking","security"]
+authors: ["Linode"]
 ---
 
 **iptables** is an application that allows users to configure specific rules that will be enforced by the kernel's `netfilter` framework. It acts as a packet filter and firewall that examines and directs traffic based on port, protocol and other criteria. This guide will focus on the configuration and application of iptables rulesets and will provide examples of ways they are commonly used.
@@ -136,9 +134,9 @@ Deleting a rule is also done using the rule number. For example, to delete the r
 
     sudo iptables -D INPUT 7
 
-{{< caution >}}
-Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/security/firewalls/control-network-traffic-with-iptables#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
-{{< /caution >}}
+{{< note type="alert" respectIndent=false >}}
+Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
+{{< /note >}}
 
 ### View Your Current iptables Rules
 
@@ -163,7 +161,7 @@ On most distributions, iptables has no default rules for either IPv4 and IPv6. A
 
 ## Configure iptables
 
-iptables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as how to blacklist (block) or whitelist (allow) addresses.
+iptables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as how to block or allow addresses.
 
 ### Block Traffic by Port
 
@@ -216,7 +214,7 @@ Let's break down the example above. The first two commands add or append rules t
 
 Note that the rules described above only control incoming packets, and do not limit outgoing connections.
 
-### Whitelist/Blacklist Traffic by Address
+### Allow or Block Traffic by Address
 
 You can use iptables to block all traffic and then only allow traffic from certain IP addresses. These firewall rules limit access to specific resources at the network layer. Below is an example sequence of commands:
 
@@ -292,9 +290,9 @@ This rule breaks down as follows:
 
 Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 **These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a demonstration.
-{{< /caution >}}
+{{< /note >}}
 
 **IPv4**
 
@@ -339,7 +337,7 @@ COMMIT
 {{< /file >}}
 
 
-**Optional:** If you plan to use [Linode Longview](/docs/platform/longview/longview/) or [Linode's NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), add the respective rule after the section for allowing HTTP and HTTPS connections:
+**Optional:** If you plan to use [Linode Longview](/docs/products/tools/longview/get-started/) or [Linode's NodeBalancers](/docs/products/networking/nodebalancers/get-started/), add the respective rule after the section for allowing HTTP and HTTPS connections:
 
     # Allow incoming Longview connections from longview.linode.com
     -A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT
@@ -388,7 +386,7 @@ COMMIT
 {{< /file >}}
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 [APT](http://linux.die.net/man/8/apt) attempts to resolve mirror domains to IPv6 as a result of `apt-get update`. If you choose to entirely disable and deny IPv6, this will slow down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.
 
 To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`.
@@ -400,7 +398,7 @@ The process for deploying iptables rulesets varies depending on which Linux dist
 
 ### Debian / Ubuntu
 
-UFW is the iptables controller included with Ubuntu, but it is also available in Debian's repositories. If you prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
+UFW is the iptables controller included with Ubuntu, but it is also available in Debian's repositories. If you prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
@@ -409,13 +407,13 @@ UFW is the iptables controller included with Ubuntu, but it is also available in
         sudo iptables-restore < /tmp/v4
         sudo ip6tables-restore < /tmp/v6
 
-3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent).
 
 ### CentOS / Fedora
 
 **CentOS 7 or Fedora 20 and above**
 
-In these distros, FirewallD is used to implement firewall rules instead of using the iptables command. If you prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+In these distros, FirewallD is used to implement firewall rules instead of using the iptables command. If you prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
 
 1.  If you prefer to use iptables, FirewallD must first be stopped and disabled.
 
@@ -457,7 +455,7 @@ In these distros, FirewallD is used to implement firewall rules instead of using
         sudo service iptables save
         sudo service ip6tables save
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
 {{< /note >}}
 
@@ -551,11 +549,11 @@ If `dpkg` returns that there are no matching packages, you will need to install 
 
 During the installation, you will be prompted twice. The first prompt is asking if you would like to save your current IPv4 rules.
 
-[![Save IPv4 rules prompt.](1721-ipv4-rules.png)](1721-ipv4-rules.png)
+![Save IPv4 rules prompt.](1721-ipv4-rules.png)
 
 The second prompt is to save the rules configured for IPv6.
 
-[![Save IPv6 rules prompt.](1722-ipv6-rules.png)](1722-ipv6-rules.png)
+![Save IPv6 rules prompt.](1722-ipv6-rules.png)
 
 After the install is complete, you should see the iptables's subdirectory. Run the `ls /etc/iptables` command again to verify that your output resembles the following:
 
@@ -625,7 +623,7 @@ To verify the rules are applied and available after the system reboot use the co
 
 ## Network Lock-out
 
-When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](/docs/guides/using-the-lish-console/) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
+When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](/docs/products/compute/compute-instances/guides/lish/) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
 
 1.  Connect to the Linode Cloud Manager.
 2.  Select the Linode you wish to gain access to.

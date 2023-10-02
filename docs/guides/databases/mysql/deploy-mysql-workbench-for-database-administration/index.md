@@ -1,10 +1,6 @@
 ---
 slug: deploy-mysql-workbench-for-database-administration
-author:
-    name: Linode Community
-    email: docs@linode.com
-description: 'MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. As you explore and manipulate your data using Workbench, you will discover many more features and shortcuts that can make managing your databases easier.'
-og_description: 'MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. This tutorial will guide you through installing Workbench.'
+description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
 keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-04
@@ -12,13 +8,12 @@ modified: 2018-12-10
 modified_by:
     name: Linode
 title: 'Install MySQL Workbench for Database Administration'
-contributor:
-    name: Scott Somner
 external_resources:
   - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/deploy-mysql-workbench-for-database-administration/']
+authors: ["Scott Sumner"]
 ---
 
 
@@ -50,7 +45,7 @@ The screenshots in this guide were taken in Ubuntu but once Workbench is install
 
 When you start MySQL Workbench, you'll land at the home screen. Once you configure your database servers, as we'll do next, then they'll have shortcuts on the home screen.
 
-[![MySQL Workbench's home screen immediately after installation.](workbenchHome-small.png)](workbenchHome.png)
+![MySQL Workbench's home screen immediately after installation.](workbenchHome.png)
 
 ### Add MySQL Servers
 
@@ -58,7 +53,7 @@ The first step after running MySQL Workbench is to add your Linode as a database
 
 1.  Click the **+** adjacent to **MySQL Connections** to get the **Setup New Connection** dialog:
 
-    [![The New Connection Dialog.](workbenchHome-small.png)](workbenchHome.png)
+    ![The New Connection Dialog.](workbenchHome.png)
 
     The settings you'll need:
 
@@ -82,13 +77,13 @@ The first step after running MySQL Workbench is to add your Linode as a database
 
     *   Default Schema - This is the default database to connect to.  It's OK to leave this blank if you haven't created a database yet or don't want one to load by default.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Using MySQL Workbench (currently release 8.0.13) with multi-factor authentication for SSH connections is not supported at this time.
 {{< /note >}}
 
 2.  Once you've configured everything, click **Test Connection**.  If you didn't save your passwords then Workbench will prompt for them.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Pay attention to the **Service** area of each dialog.  Use the appropriate password (SSH or MySQL) or the connection will fail.
 {{< /note >}}
 
@@ -102,7 +97,7 @@ Pay attention to the **Service** area of each dialog.  Use the appropriate passw
 
 4.  Click **OK** to clear the message, then click **OK** again to add the connection.  You'll get a shortcut to the new connection on the home screen.
 
-    [![Shortcut to your database](workbenchHomeWithLinode-small.png)](workbenchHomeWithLinode.png)
+    ![Shortcut to your database](workbenchHomeWithLinode.png)
 
     If you have more than one Linode or other servers you administer, you can repeat this process to add all of your database servers.
 
@@ -110,11 +105,11 @@ Pay attention to the **Service** area of each dialog.  Use the appropriate passw
 
 Click on the shortcut to your Linode. You'll see connection details, then click **Connect**.
 
-[![Connection details just before connecting](workbenchInfoConnect-small.png)](workbenchInfoConnect.png)
+![Connection details just before connecting](workbenchInfoConnect.png)
 
 Workbench will prompt for passwords again, as needed. Then you'll arrive at the database screen, from where you'll do most of your work.
 
-[![The database screen](workbenchDataScreen-small.png)](workbenchDataScreen.png)
+![The database screen](workbenchDataScreen.png)
 
 ### Add Users and Privileges
 
@@ -122,7 +117,7 @@ Just like it's a bad idea to use the root account for "daily use" in the shell, 
 
 1. Click **Users and Privileges** under the **Management** pane.
 
-    [![MySQL user management](workbenchUsers-small.png)](workbenchUsers.png)
+    ![MySQL user management](workbenchUsers.png)
 
 2. Click **Add Account**.
 
@@ -148,7 +143,7 @@ MySQL Workbench is deployed in safe mode by default. This will not allow certain
 
 3.  Uncheck the line beginning with **"Safe Updates".**
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In some instances, this may instead be found under **SQL Editor**.
 {{< /note >}}
 
@@ -169,7 +164,7 @@ Start by adding a new database that you can work with.
 
     ![The new schema button.  Make sure you click the one with a plus, not the one with an i](workbenchToolbarNewSchema.png)
 
-    [![The new schema dialog](workbenchNewSchema-small.png)](workbenchNewSchema.png)
+    ![The new schema dialog](workbenchNewSchema.png)
 
     You only need a name to create the new database, but you can create an area for comments if you want. Default collation can be left blank, in which case MySQL will use the default.
 
@@ -183,7 +178,7 @@ Start by adding a new database that you can work with.
 
     Now you're back at the main database screen, and you see that **phonebook** has been added to the schema list. Double-click on any item in the schema list to switch to that database.
 
-    [![The currently selected database is displayed in bold print](workbenchSchemaSelected-small.png)](workbenchSchemaSelected.png)
+    ![The currently selected database is displayed in bold print](workbenchSchemaSelected.png)
 
 ### Add a Table
 
@@ -195,11 +190,11 @@ MySQL stores its information in a table, which resembles a spreadsheet.
 
     You'll get a screen that looks like this:
 
-    [![Creating a MySQL table](workbenchAddTable-small.png)](workbenchAddTable.png)
+    ![Creating a MySQL table](workbenchAddTable.png)
 
     **Name** is the table name you want to add, for example, **employees**.  **Schema** identifies to which database the table should be added. Note that whatever you select in the **Schema** pane becomes the default.
 
-    [![Entering field names for the phonebook](workbenchSetupTable-small.png)](workbenchSetupTable.png)
+    ![Entering field names for the phonebook](workbenchSetupTable.png)
 
     Fields are the columns of a table which hold the information that you want to store. Each table should always have an *ID* field that is configured as a **Primary Key**.
 
@@ -254,7 +249,7 @@ You can run a SQL query on a table by entering it at the top of the table view.
 
 2.  Click on the lightning bolt to run the query.  You should get results like this:
 
-    [![Who is named Bob?](workbenchSQLresults-small.png)](workbenchSQLresults.png)
+    ![Who is named Bob?](workbenchSQLresults.png)
 
 ### Export / Import Data
 
@@ -264,7 +259,7 @@ Exporting data is handy for backing up database content or moving a database to 
 
 1. Click **Data Export** under the **Management** pane.
 
-    [![Options for exporting data](workbenchExportSQL-small.png)](workbenchExportSQL.png)
+    ![Options for exporting data](workbenchExportSQL.png)
 
 2. Check the database(s) you would like to export data from on the left pane.
 
@@ -285,7 +280,7 @@ Importing data can restore a backup created with **Data Export** or can load a d
 
 1. Click **Data Import / Restore**.
 
-    [![Import options](workbenchImport-small.png)](workbenchImport.png)
+    ![Import options](workbenchImport.png)
 
 2. Select **Import from Self-Contained File**.
 
