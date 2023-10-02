@@ -35,6 +35,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Dallas, TX (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 2 |
 | Frankfurt (Germany) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 10 |
 | Fremont, CA (USA) | *Undergoing network upgrades* | - | - | 3 |
+| Jakarta (Indonesia) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
 | London (United Kingdom) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 7 |
 | Milan (Italy) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 27 |
 | Mumbai (India) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 14 |
