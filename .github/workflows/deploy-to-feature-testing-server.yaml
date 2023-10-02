@@ -50,6 +50,7 @@ env:
 
 jobs:
   deploy-to-feature-testing-server:
+    if: github.repository_owner == 'linode'
     runs-on: ubuntu-latest
 
     environment:

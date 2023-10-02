@@ -38,6 +38,7 @@ on:
 
 jobs:
   update-algolia-on-schedule:
+    if: github.repository_owner == 'linode'
     runs-on: ubuntu-latest
 
     environment:
