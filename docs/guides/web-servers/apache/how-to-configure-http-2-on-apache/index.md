@@ -1,21 +1,15 @@
 ---
 slug: how-to-configure-http-2-on-apache
-author:
-  name: Jeff Novotny
 description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
-og_description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
 keywords: ['apache https']
 tags: ['web server', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 modified_by:
   name: Linode
-title: "How to Configure HTTP/2 on Apache"
-h1_title: "Configure HTTP/2 on Apache"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Configure HTTP/2 on Apache"
+title_meta: "How to Configure HTTP/2 on Apache"
+authors: ["Jeff Novotny"]
 ---
 
 [*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) is an update to the original [*Hypertext Transfer Protocol*](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (HTTP) specification offering improvements in efficiency and latency. The new version, which adds several useful features, is compatible with browsers that only support HTTP/1. HTTP/2 has many advantages and no significant drawbacks, so upgrading to the new version is recommended. This guide explains how to configure and use HTTP/2 on an Apache server and how to test it is working.
@@ -28,18 +22,14 @@ For more comprehensive information and a collection of resources about HTTP/2, s
 
 ## Before You Begin
 
-1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
-{{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## A Summary of the HTTP/2 on Apache Configuration Process
@@ -53,9 +43,9 @@ The following high-level steps are involved in configuring HTTP/2 on [*Apache*](
 
 ### Install Apache
 
-Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics) guide.
+Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/guides/apache-configuration-basics/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 HTTP/2 support requires Apache version 2.4.17 or higher.
 {{< /note >}}
 
@@ -102,7 +92,7 @@ To properly configure Apache, you need to upgrade some of your system's `php` mo
         sudo apt-get install php7.4-fpm
         sudo a2dismod php7.4
         sudo a2enconf php7.4-fpm
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If PHP was not previously installed, the message `ERROR: Module php7.4 does not exist!` is displayed when `php7.4` is disabled. You can ignore this message.
     {{< /note >}}
 1. Enable the `proxy_fcgi` module.
@@ -135,7 +125,7 @@ To enable HTTP/2 support, enable some additional modules and configure the virtu
 
         cd /etc/apache2
         grep -r Protocols .
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Earlier versions of Apache have a different file and directory structure. The main Apache `.conf` file might be located at `/etc/httpd/httpd.conf`, `/etc/httpd/conf/httpd.conf`, or `/usr/local/apache2/apache2.conf`.
     {{< /note >}}
 1. Edit this file and add the `h2` and `h2c` protocols to the "Protocols" definition. Apache tries to negotiate the protocols in the order they are listed. Placing `h2` first prioritizes HTTP/2 over HTTP/1.1.
@@ -145,8 +135,8 @@ Earlier versions of Apache have a different file and directory structure. The ma
     Protocols h2 h2c http/1.1
     ...
     {{< /file >}}
-    {{< note >}}
-HTTP/2 support is typically configured on a system-wide basis. If you only want to enable HTTP/2 for one site, add the `h2 h2c` protocols to the virtual server entry for the site instead. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics) guide.
+    {{< note respectIndent=false >}}
+HTTP/2 support is typically configured on a system-wide basis. If you only want to enable HTTP/2 for one site, add the `h2 h2c` protocols to the virtual server entry for the site instead. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/guides/apache-configuration-basics/) guide.
     {{< /note >}}
 
 ### Enable HTTPS Support
@@ -162,7 +152,7 @@ Install Certbot using the `snap` utility. Snap is pre-installed on Ubuntu.
         sudo snap install core
         sudo snap refresh core
         snap version
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Snap is not already installed, install it using the command `sudo apt install snapd`.
     {{< /note >}}
 1. Remove any existing Certbot packages to avoid possible conflicts.
@@ -208,5 +198,5 @@ To confirm Apache is using HTTP/2, visit the website using any browser, and use 
 1. Select the **Network** tab, and reload the page again.
 1. This displays a list of several rows. Click on the row corresponding to the base domain. This reveals a new panel on the bottom right. The **Headers** tab appears by default.
 
-    [![Developer panel in Firefox](developer-panel_small.png)](developer-panel.png)
+    ![Developer panel in Firefox](developer-panel.png)
 1. If HTTP/2 is working, the `Status` reads `OK` and the version is `HTTP/2`.

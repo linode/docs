@@ -1,9 +1,6 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on Debian 6 (Squeeze) systems.'
 keywords: ["couchdb", "nosql", "json", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,13 +9,14 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2011-02-23
-title: 'Use CouchDB for Document Based Data Storage on Debian 6 (Squeeze)'
+title: 'Use CouchDB for Document Based Data Storage on Debian 6'
 relations:
     platform:
         key: couchdb-document-data-storage
         keywords:
             - distribution: Debian 6
 tags: ["debian","database","nosql"]
+authors: ["Linode"]
 ---
 
 CouchDB is a non-relational document-based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language which supports an innovative concurrency model. CouchDB does not use an SQL interface, opting for an HTTP interface and JSON as a data format for easy integration in application development.
@@ -44,7 +42,7 @@ Congratulations! In most use cases, you will not need to modify CouchDB's config
 
 ## Using CouchDB
 
-Most of your interaction with CouchDB will occur by way of the system's HTTP and JSON interface. CouchDB comes with a web-based administrative interface called "Futon". Since CouchDB is only accessible over the local interface by default, you will want to [create a secure ssh tunnel](/docs/databases/couchdb/ssh-tunnel/) in order to access CouchDB or Futon from your local machine to avoid sending data in the clear.
+Most of your interaction with CouchDB will occur by way of the system's HTTP and JSON interface. CouchDB comes with a web-based administrative interface called "Futon". Since CouchDB is only accessible over the local interface by default, you will want to [create a secure ssh tunnel](/docs/guides/access-futon-over-ssh-using-putty-on-windows/) in order to access CouchDB or Futon from your local machine to avoid sending data in the clear.
 
 Once the SSH tunnel is in place or you have configured your Linode, you can access the CouchDB HTTP interface by making a request for `http://localhost:5984`. Issue the following command:
 

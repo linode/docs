@@ -1,11 +1,10 @@
 ---
 title: Get Started
+title_meta: "Getting Started with Custom Images"
 description: "Get started with Linode Images. Learn to create an image with the Linode Images service."
 tab_group_main:
     weight: 20
 ---
-
-{{< content "images-ga-pricing-update-shortguide" >}}
 
 All Images stored on your Account are visible from the main **Images** page within the Cloud Manager. Images are divided between two tables: *Custom Images* and *Recovery Images*.
 
@@ -26,6 +25,6 @@ To take action on an Image, locate the Image within the **Images** page of the C
 
 - **Edit:** Change the *Label* and *Description* for the Image.
 - **Deploy to a New Compute Instance:** Create a new Compute Instance using the Image. See [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/).
-- **Deploy to an Existing Compute Instnace:** Rebuild an Instance or create a new disk using the Image. See [Deploy an Image to an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/).
+- **Deploy to an Existing Compute Instance:** Rebuild an Instance or create a new disk using the Image. See [Deploy an Image to an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/).
 - **Delete:** Delete the Image (cannot be undone).
 

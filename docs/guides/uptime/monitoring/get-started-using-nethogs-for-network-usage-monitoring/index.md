@@ -1,8 +1,5 @@
 ---
 slug: get-started-using-nethogs-for-network-usage-monitoring
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn@vna1.com
 description: "Learn how to install and use Nethogs, a free and open-source program designed to track network usage"
 keywords: ['how to use nethogs']
 tags: ["linux","monitoring"]
@@ -11,12 +8,9 @@ published: 2021-02-19
 image: UsingNethogs_NetworkMonitoring.png
 modified_by:
   name: Linode
-title: "How to Use Nethogs to Monitor Network Usage"
-h1_title: "Using Nethogs to Monitor Network Usage"
-enable_h1: true
-contributor:
-  name: Steven J. Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
+title: "Using Nethogs to Monitor Network Usage"
+title_meta: "How to Use Nethogs to Monitor Network Usage"
+authors: ["Steven J. Vaughan-Nichols"]
 ---
 
 [Nethogs](https://github.com/raboof/nethogs) is a free, open-source program used to track network usage. It extends the net top tool to track bandwidth by process. For example, `net top` may show that outbound traffic increased on a Linux server by protocol or subnet. But nethogs makes it easier for Linux administrators to identify which process is generating the usage spikes.
@@ -31,13 +25,9 @@ When the Linux networking monitoring tool is started, nethogs displays current n
 
 If you are using a Linode, make sure you run the steps in this section to configure your Linode, secure your server, and update your system's packages.
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Installing nethogs
 

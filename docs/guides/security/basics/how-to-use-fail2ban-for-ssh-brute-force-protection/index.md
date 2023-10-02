@@ -1,7 +1,5 @@
 ---
 slug: how-to-use-fail2ban-for-ssh-brute-force-protection
-author:
-  name: Hackersploit
 description: "Fail2Ban is an intrusion prevention framework that protects Linux systems and servers from brute-force attacks. Learn how it can do the same for SSH."
 keywords: ["using fail2ban for SSH brute-force protection", "brute-force protection with fail2ban"]
 tags: ["monitoring","security"]
@@ -10,11 +8,11 @@ modified: 2020-10-13
 modified_by:
   name: Linode
 published: 2020-10-13
-title: "How to Use Fail2Ban for SSH Brute-force Protection"
-h1_title: "Using Fail2Ban for SSH Brute-force Protection"
-enable_h1: true
+title: "Using Fail2Ban for SSH Brute-force Protection"
+title_meta: "How to Use Fail2Ban for SSH Brute-force Protection"
 image: fail2ban_bruteforceprotection.png
 aliases: ['/security/basics/how-to-use-fail2ban-for-ssh-brute-force-protection/']
+authors: ["Hackersploit"]
 ---
 
 Fail2Ban is an intrusion prevention framework written in Python that protects Linux systems and servers from brute-force attacks. You can setup Fail2Ban to provide brute-force protection for SSH on your server. This ensures that your server is secure from brute-force attacks. It also allows you to monitor the strength of the attacks in regards to the number of authentication attempts that are being made.
@@ -23,20 +21,20 @@ Brute-force attacks can be extremely powerful and may result in thousands of fai
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide uses Ubuntu, but the commands are similar for other systems.
-{{</ note >}}
+{{< /note >}}
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
 
 1.  Log into your Linode via SSH and update and upgrade.
 
         sudo apt update && sudo apt upgrade
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing And Configuring Fail2Ban
@@ -72,9 +70,9 @@ total 68
 
 Fail2Ban uses the default configuration in the `jail.conf` file. However, it is not recommended to use the default configuration files as they can be overwritten by newer updates to the Fail2Ban package. The preferred approach to creating configurations for a particular service is by creating a new configuration file in the `/etc/fail2ban` directory with the `.local` extension.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A Fail2ban jail is a configuration file that contains filters or arguments that protect your system or a particular service
-{{</ note >}}
+{{< /note >}}
 
 ## Creating SSH Jails With Fail2Ban
 
@@ -99,9 +97,9 @@ A Fail2ban jail is a configuration file that contains filters or arguments that 
 
 1.  With the information in table above you can create the `jail.local` configuration for OpenSSH server (sshd). Once you have entered the configuration options, the values used in this guide example are listed in the sample file below.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can customize the Fail2Ban configuration options and values as per your security requirements.
-{{</ note >}}
+{{< /note >}}
 
     {{< file "/etc/fail2ban/jail.local" >}}
 [sshd]
@@ -115,9 +113,9 @@ bantime = 3600
 ignoreip = 127.0.0.1
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can disable a Fail2Ban jail by setting the enabled configuration to false
-{{</ note >}}
+{{< /note >}}
 
 1.  After you have specified the configuration options and their respective values, save the file and restart the Fail2Ban service with the following command:
 
@@ -204,4 +202,4 @@ You have successfully been able to set up, implement, test, and analyze Fail2Ban
 
 ## Next Steps
 
-For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/) guide.
+For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/products/compute/compute-instances/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection) guide.

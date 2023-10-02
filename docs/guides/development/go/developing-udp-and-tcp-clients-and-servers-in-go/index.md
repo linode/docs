@@ -1,8 +1,5 @@
 ---
 slug: developing-udp-and-tcp-clients-and-servers-in-go
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'Create a TCP and UDP client and server using the Go programming language.'
 keywords: ["go", "golang", "server", "client", "TCP", "UDP", "programming", "cli"]
 tags: ["networking"]
@@ -11,14 +8,12 @@ published: 2019-06-26
 modified_by:
   name: Linode
 title: 'Create a TCP and UDP Client and Server using Go'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://www.golang.com)'
 aliases: ['/development/go/developing-udp-and-tcp-clients-and-servers-in-go/']
+authors: ["Mihalis Tsoukalos"]
 ---
-Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/applications/containers/introduction-to-docker/), [Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/), and [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
+Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/guides/introduction-to-docker/), [Kubernetes](/docs/guides/beginners-guide-to-kubernetes/), and [Terraform](/docs/guides/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
 
 In this guide, you will use the `net` package, which is a part of [Go's standard library](https://golang.org/pkg/#stdlib), to create TCP and UDP servers and clients. This guide is meant to provide instructional examples to help you become more familiar with the Go programming language.
 
@@ -32,16 +27,16 @@ Throughout this guide you will create the following:
 
 ## Before You Begin
 
-1. If you are not familiar with using Go packages, review the [Getting Started with Go Packages](/docs/development/go/getting-started-with-go-packages/) guide.
+1. If you are not familiar with using Go packages, review the [Getting Started with Go Packages](/docs/guides/getting-started-with-go-packages/) guide.
 
-1. Install Go on your computer if it is not already installed. You can follow our guide [How to Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) for installation steps.
+1. Install Go on your computer if it is not already installed. You can follow our guide [How to Install Go on Ubuntu](/docs/guides/install-go-on-ubuntu/) for installation steps.
 
     This guide requires Go version 1.8 or higher. It is considered good practice to have the [latest version of Go](https://golang.org/dl/) installed. You can check your Go version by executing the following command:
 
         go version
 
-{{< note >}}
-This guide is written for a non-root user. Depending on the TCP/IP port number that you use when running the TCP and UDP servers, you may need to prefix commands with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Depending on the TCP/IP port number that you use when running the TCP and UDP servers, you may need to prefix commands with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Protocol Definitions
@@ -59,7 +54,7 @@ Go's [`net` package](https://golang.org/pkg/net/) provides a portable interface 
 ### net Package Functions
 Use the table below as a quick reference for some of the `net` package functions used throughout this guide. To view all types and functions included in the `net` package, see [Golang's official documentation](https://golang.org/pkg/net/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All versions of `net.Dial()` and `net.Listen()` return data types that implement the [`io.Reader`](https://golang.org/pkg/io/#Reader) and [`io.Writer`](https://golang.org/pkg/io/#Writer) interfaces. This means that you can use regular [File I/O](https://golang.org/pkg/io/) functions to send and receive data from a TCP/IP connection.
 {{< /note >}}
 
@@ -77,7 +72,7 @@ All versions of `net.Dial()` and `net.Listen()` return data types that implement
 
 In this section, you will create a generic TCP client and server using Go. After creating the client and server, you will run them to test their connection with each other.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The [netcat command line utility](https://en.wikipedia.org/wiki/Netcat) can be used to test TCP/IP client and server connections.
 {{< /note >}}
 
@@ -214,12 +209,12 @@ You can now test your TCP client and server. You will need to execute the TCP se
 
         go run tcpC.go 127.0.0.1:1234
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the TCP server is not running on the expected TCP port, you will get the following error message from `tcpC.go`:
 
     dial tcp [::1]:1234: connect: connection refused
 
-    {{</ note >}}
+    {{< /note >}}
 
 
 1. You will see a `>>` prompt waiting for you to enter some text. Type in `Hello!` to receive a response from the TCP server:
@@ -251,7 +246,7 @@ If the TCP server is not running on the expected TCP port, you will get the foll
 Exiting TCP server!
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The TCP server waits before writing back to the TCP client, whereas the client writes to the TCP server first and then waits to receive an answer.
 This behavior is part of the protocol definition that governs a TCP or a UDP connection. In this example, you have implemented an unofficial protocol that is based on TCP.
 {{< /note >}}
@@ -579,6 +574,6 @@ Hello!
 .Hello!
       {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 From the shell session running the TCP server, type **CTRL-c** to interrupt program execution and then, **CTRL-D** to close all client connections and to stop the TCP server.
-    {{</ note >}}
+    {{< /note >}}

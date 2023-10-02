@@ -1,20 +1,21 @@
-{{/* 
-Loads resources from https://github.com/linode/linode-website-partials    
-See the module section in config.toml in this repo.
+{{/* Loads resources from https://github.com/linode/linode-website-partials
+  See the module section in config.toml in this repo.
 */}}
-{{ $partialsJS := resources.Match "linode/{header,attribution-inline}.js"}}
-{{ if ne (len $partialsJS) 2}}
-{{ errorf "Got %d partial JS files, expected 2" (len $partialsJS)}}
+{{ $partialsJS := resources.Match "linode/{header,attribution-inline}.js" }}
+{{ if ne (len $partialsJS) 2 }}
+  {{ errorf "Got %d partial JS files, expected 2" (len $partialsJS) }}
 {{ end }}
-{{ $js := $partialsJS | resources.Concat "linode/partials.js"  }}
+{{ $js := $partialsJS | resources.Concat "linode/partials.js" }}
 {{ $styles := (resources.Match "linode/*.css")  | resources.Concat "linode/header-footer.css" }}
-{{ if or (not $js) (not $styles)}}
-  {{ errorf "linode-website-partials: asset(s) not found"}}
+{{ if or (not $js) (not $styles) }}
+  {{ errorf "linode-website-partials: asset(s) not found" }}
 {{ end }}
-{{ if  hugo.IsProduction  }}
+{{ if  (ne hugo.Environment "development") }}
   {{ $styles = $styles | minify | fingerprint }}
 {{ end }}
 <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
 {{ partial "helpers/script-src.html" $js }}
-{{/* TrustArc for cookie consents. Also see the partial sections/before-body-end.html */}}
-<script async crossorigin src="https://consent.trustarc.com/notice?domain=linode.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1"></script>
+{{/* TrustArc for cookie consents. Also see the partial sections/before-body-end.html */}}<script
+  async
+  crossorigin
+  src="https://consent.trustarc.com/notice?domain={{ site.Params.trustarc_domain }}&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1"></script>

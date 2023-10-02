@@ -1,21 +1,13 @@
 ---
 slug: how-to-create-and-use-single-file-components-vuejs
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
-og_description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
 keywords: ["vue js","javascript","vuejs","vuejs single file components","vuejs eventbus", "vuejs event bus"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-05-20
 modified_by:
   name: Linode
-title: "How to Create Single File Components in VueJS (A Tutorial)"
-h1_title: "A Tutorial for Creating Single File Components in VueJS"
-enable_h1: true
-contributor:
-  name: Pavel Petrov
-  link: https://github.com/WebBamboo/
+title: "A Tutorial for Creating Single File Components in VueJS"
+title_meta: "How to Create Single File Components in VueJS (A Tutorial)"
 external_resources:
   - "[VueJS](https://vuejs.org/)"
   - "[Vue CLI](https://cli.vuejs.org/)"
@@ -24,9 +16,10 @@ audiences: ["beginner"]
 languages: ["javascript"]
 tags: ["web applications"]
 aliases: ['/development/javascript/how-to-create-and-use-single-file-components-vuejs/']
+authors: ["Pavel Petrov"]
 ---
 
-When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](/docs/development/javascript/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.
+When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](/docs/guides/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.
 
 Below you can see an example of a barebones single file component, which we will examine part-by-part later in the guide:
 
@@ -67,15 +60,15 @@ In this guide, you will learn:
 -   [How to build your first single file components](#building-your-first-single-file-components), and then [how to add interaction to the components](#adding-methods-to-the-components)
 -   [How to communicate between components via an event bus](#communication-between-components-via-an-event-bus)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can [download all of the example files for this guide here](vuejs-single-file-components.tar.gz).
 {{< /note >}}
 
 ## Before You Begin
 
-If you haven’t read our [Building and Using VueJS Components](/docs/development/javascript/how-to-build-and-use-vuejs-components/) already, go take a look.
+If you haven’t read our [Building and Using VueJS Components](/docs/guides/how-to-build-and-use-vuejs-components/) already, go take a look.
 
-Make sure you have Node.js installed. If you don’t, our [How to Install Node.js](/docs/development/nodejs/how-to-install-nodejs/) guide outlines different installation options.
+Make sure you have Node.js installed. If you don’t, our [How to Install Node.js](/docs/guides/how-to-install-nodejs/) guide outlines different installation options.
 
 ## What are Single File Components
 
@@ -124,7 +117,7 @@ h1 {
 
     Another benefit for your templates is that you do not have to [adjust the `{{ }}` mustache tag delimiters](https://vuejs.org/v2/api/#delimiters) to `[[ ]]` or something else if you are working with another framework that already uses them.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For example, [Symfony](https://symfony.com/) developers using VueJS would have to update their delimiter configuration, because [Twig](https://twig.symfony.com/) already uses mustache delimiters for its rendering methods. Even though this might be a fairly trivial task, using single file components eliminates that need entirely.
 {{< /note >}}
 
@@ -144,7 +137,7 @@ We'll use this tool throughout this guide; to install it, run:
 
 The Vue CLI will now be available globally on your workstation (because the `-g` flag was used).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're using [NVM](https://github.com/nvm-sh/nvm), you can install Vue CLI without `sudo`:
 
     npm install -g @vue/cli
@@ -163,7 +156,7 @@ Vue CLI v4.3.1
 Manually select features
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can specify `--packageManager=yarn` if you prefer yarn to npm.
 {{< /note >}}
 
@@ -213,7 +206,7 @@ Let's look at the directory structure of the default application and go through 
     └── main.js
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `-I node_modules` option will tell `tree` to ignore your `node_modules/` directory, which is where all of the node dependencies reside.
 {{< /note >}}
 
@@ -250,39 +243,38 @@ On lines 7, 8, and 13 you will notice the `<%= %>` syntax where the favicon link
 -   It populates the variables that you embed using the template syntax. You can see more about the default variable values exposed by webpack [here](https://github.com/jantimon/html-webpack-plugin#writing-your-own-templates).
 -   It automatically connects your index to the app bundle that webpack compiles: on line 19, you'll see a comment that says the files built by webpack are auto-injected by the build procedure.
 
-    {{< disclosure-note "More about the build procedure for index.html" >}}
+    {{< note type="secondary" title="More about the build procedure for index.html" isCollapsible=true >}}
+    This is an example of what the file will look like after the build procedure:
 
-This is an example of what the file will look like after the build procedure:
+    ```file {title="index.html" lang=html}
+    <!DOCTYPE html>
+    <html lang=en>
+    <head>
+        <meta charset=utf-8>
+        <meta http-equiv=X-UA-Compatible content="IE=edge">
+        <meta name=viewport content="width=device-width,initial-scale=1">
+        <link rel=icon href=/favicon.ico> <title>single-file-components</title>
+        <link href=/css/app.fb0c6e1c.css rel=preload as=style>
+        <link href=/js/app.ae3090b2.js rel=preload as=script>
+        <link href=/js/chunk-vendors.b4c61135.js rel=preload as=script>
+        <link href=/css/app.fb0c6e1c.css rel=stylesheet>
+    </head>
+    <body>
+        <noscript>
+            <strong>
+                We're sorry but single-file-components doesn't work properly without JavaScript enabled. Please
+                enable it to continue.
+            </strong>
+        </noscript>
+        <div id=app></div>
+        <script src=/js/chunk-vendors.b4c61135.js></script>
+        <script src=/js/app.ae3090b2.js></script>
+    </body>
+    </html>
+    ```
 
-{{< file "index.html" html >}}
-<!DOCTYPE html>
-<html lang=en>
-<head>
-    <meta charset=utf-8>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <link rel=icon href=/favicon.ico> <title>single-file-components</title>
-    <link href=/css/app.fb0c6e1c.css rel=preload as=style>
-    <link href=/js/app.ae3090b2.js rel=preload as=script>
-    <link href=/js/chunk-vendors.b4c61135.js rel=preload as=script>
-    <link href=/css/app.fb0c6e1c.css rel=stylesheet>
-</head>
-<body>
-    <noscript>
-        <strong>
-            We're sorry but single-file-components doesn't work properly without JavaScript enabled. Please
-            enable it to continue.
-        </strong>
-    </noscript>
-    <div id=app></div>
-    <script src=/js/chunk-vendors.b4c61135.js></script>
-    <script src=/js/app.ae3090b2.js></script>
-</body>
-</html>
-{{< /file >}}
-
-Notice that your app's script and CSS dependencies have been added to the file on lines 21 and 22, and that these files have random hash appended their names (e.g. `app.ae3090b2.js`). These hashes will change over time for subsequent builds of your app, and the html-webpack-plugin will keep the hash updated in your index. Without this feature, you would need to update those lines for each build.
-{{< /disclosure-note >}}
+    Notice that your app's script and CSS dependencies have been added to the file on lines 21 and 22, and that these files have random hash appended their names (e.g. `app.ae3090b2.js`). These hashes will change over time for subsequent builds of your app, and the html-webpack-plugin will keep the hash updated in your index. Without this feature, you would need to update those lines for each build.
+    {{< /note >}}
 
 The rest of the body contains these elements:
 
@@ -341,9 +333,9 @@ export default {
 This is a simple single file component relatively similar to the example we discussed above, but this example shows how to import and use components:
 
 -   On line 9, the `HelloWorld` component is imported.
--   On lines 12-14, the `HelloWorld` component is [*locally registered*](https://vuejs.org/v2/guide/components-registration.html#Local-Registration) for use within the `App` component. The registered component can only be used in the template of the parent component that registered it. Contrast this with the components in [Building and Using VueJS Components](/docs/development/javascript/how-to-build-and-use-vuejs-components/), which were [*globally registered*](https://vuejs.org/v2/guide/components-registration.html#Global-Registration).
+-   On lines 12-14, the `HelloWorld` component is [*locally registered*](https://vuejs.org/v2/guide/components-registration.html#Local-Registration) for use within the `App` component. The registered component can only be used in the template of the parent component that registered it. Contrast this with the components in [Building and Using VueJS Components](/docs/guides/how-to-build-and-use-vuejs-components/), which were [*globally registered*](https://vuejs.org/v2/guide/components-registration.html#Global-Registration).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Local registration is a valuable architectural feature for reusable components within big projects.
 {{< /note >}}
 
@@ -351,7 +343,7 @@ Local registration is a valuable architectural feature for reusable components w
 
 ## Building your First Single File Components
 
-Now that we’ve covered the basic structure of the project created by Vue CLI, let's build our own components on top of that. As in [Building and Using VueJS Components](/docs/development/javascript/how-to-build-and-use-vuejs-components/), we will again be building a rating application, but this time it will be a little more sophisticated.
+Now that we’ve covered the basic structure of the project created by Vue CLI, let's build our own components on top of that. As in [Building and Using VueJS Components](/docs/guides/how-to-build-and-use-vuejs-components/), we will again be building a rating application, but this time it will be a little more sophisticated.
 
 This is what your rating app will look like:
 
@@ -487,7 +479,7 @@ This is the main component, but there are no methods set on it yet, so for now i
 
     -   On lines 7-13, all five `Star` components are rendered from a single `<Star>` declaration with the `v-for="index in 5"` syntax. A weight is assigned to each `Star` by the `v-bind:weight="index"` syntax. The [`key` attribute](https://vuejs.org/v2/guide/list.html#Maintaining-State) is also bound to the `index`. The `enabled` and `currentRating` props will be bound to values that are described in the `<script>` section.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 The `v-for` syntax is similar to the following for loop: `for(let index=1;index<=5;index++)`.
 {{< /note >}}
 
@@ -573,7 +565,7 @@ After creating `Star.vue` and `Summary.vue`, the application can be viewed in th
 
 Because there are no methods set on the components yet, it will not be interactive.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're not still running `npm run serve` in your terminal, you'll need to re-run it from inside your project.
 {{< /note >}}
 
@@ -608,7 +600,7 @@ The application right now is a skeleton, so now we'll make it work. These three 
 
     The new additions to this declaration are the `v-on` directives, which set methods as event handlers for the custom `lightUp`, `lightDown`, and `rate` events.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `Star` component will be updated in the next section to emit those events.
 {{< /note >}}
 
@@ -657,133 +649,133 @@ methods: {
 
     -   At the end of the `rateHandler` method, the component's ratings are converted to a JSON object and saved so we can use them as a starting point the next time the page loads (line 33).
 
-    {{< disclosure-note "Full contents of App.vue">}}
-At this point, your `App.vue` should be the same as this snippet:
+    {{< note type="secondary" title="Full contents of App.vue" isCollapsible=true >}}
+    At this point, your `App.vue` should be the same as this snippet:
 
-{{< file "src/App.vue" >}}
-<template>
-    <div id="app">
-        <div class="inner">
-            <div class="ratingContainer">
-                <span class="bigRating" v-html="bigRating"></span>
-                <div>
-                    <Star
-                        v-for="index in 5"
-                        v-bind:key="index"
-                        v-bind:weight="index"
-                        v-bind:enabled="enabled"
-                        v-bind:currentRating="currentRating"
-                        v-on:lightUp="lightUpHandler"
-                        v-on:lightDown="lightDownHandler"
-                        v-on:rate="rateHandler"
-                    ></Star>
+    ```file {title="src/App.vue"}
+    <template>
+        <div id="app">
+            <div class="inner">
+                <div class="ratingContainer">
+                    <span class="bigRating" v-html="bigRating"></span>
+                    <div>
+                        <Star
+                            v-for="index in 5"
+                            v-bind:key="index"
+                            v-bind:weight="index"
+                            v-bind:enabled="enabled"
+                            v-bind:currentRating="currentRating"
+                            v-on:lightUp="lightUpHandler"
+                            v-on:lightDown="lightDownHandler"
+                            v-on:rate="rateHandler"
+                        ></Star>
+                    </div>
                 </div>
+                <Summary v-bind:ratings="ratings"></Summary>
             </div>
-            <Summary v-bind:ratings="ratings"></Summary>
         </div>
-    </div>
-</template>
+    </template>
 
-<script>
-import Star from "./components/Star.vue";
-import Summary from "./components/Summary.vue";
+    <script>
+    import Star from "./components/Star.vue";
+    import Summary from "./components/Summary.vue";
 
-export default {
-    name: "App",
-    components: { Star, Summary },
-    data: function () {
-        return {
-            currentRating: 0,
-            bigRating: "&#128566;", // Emoji: 😶
-            enabled: true,
-            ratings: [
-                {
-                    weight: 1,
-                    votes: 0,
-                },
-                {
-                    weight: 2,
-                    votes: 0,
-                },
-                {
-                    weight: 3,
-                    votes: 0,
-                },
-                {
-                    weight: 4,
-                    votes: 0,
-                },
-                {
-                    weight: 5,
-                    votes: 0,
-                },
-            ],
-        };
-    },
-    methods: {
-        lightUpHandler: function (weight) {
-            this.currentRating = weight;
+    export default {
+        name: "App",
+        components: { Star, Summary },
+        data: function () {
+            return {
+                currentRating: 0,
+                bigRating: "&#128566;", // Emoji: 😶
+                enabled: true,
+                ratings: [
+                    {
+                        weight: 1,
+                        votes: 0,
+                    },
+                    {
+                        weight: 2,
+                        votes: 0,
+                    },
+                    {
+                        weight: 3,
+                        votes: 0,
+                    },
+                    {
+                        weight: 4,
+                        votes: 0,
+                    },
+                    {
+                        weight: 5,
+                        votes: 0,
+                    },
+                ],
+            };
+        },
+        methods: {
+            lightUpHandler: function (weight) {
+                this.currentRating = weight;
 
-            // Display different emojis based on the weight
-            if (weight <= 2) {
-                this.bigRating = "&#128549;"; // Emoji: 😥
-            }
-            if (weight > 2 && weight <= 4) {
-                this.bigRating = "&#128556;"; // Emoji: 😬
-            }
-            if (weight > 4) {
-                this.bigRating = "&#128579;"; // Emoji: 🙃
+                // Display different emojis based on the weight
+                if (weight <= 2) {
+                    this.bigRating = "&#128549;"; // Emoji: 😥
+                }
+                if (weight > 2 && weight <= 4) {
+                    this.bigRating = "&#128556;"; // Emoji: 😬
+                }
+                if (weight > 4) {
+                    this.bigRating = "&#128579;"; // Emoji: 🙃
+                }
+            },
+            lightDownHandler: function () {
+                // Reset on mouse away
+                this.currentRating = 0;
+                this.bigRating = "&#128566;"; // Emoji: 😶
+            },
+            rateHandler: function (weight) {
+                this.currentRating = weight;
+
+                // Finding the relevant rating and incrementing the cast votes
+                let rating = this.ratings.find((obj) => obj.weight == weight);
+                rating.votes++;
+
+                // Disabling from voting again
+                this.enabled = false;
+
+                // Saves the votes to the browser localStorage
+                localStorage.setItem("ratings", JSON.stringify(this.ratings));
+            },
+        },
+        created: function () {
+            if (localStorage.ratings) {
+                this.ratings = JSON.parse(localStorage.ratings);
             }
         },
-        lightDownHandler: function () {
-            // Reset on mouse away
-            this.currentRating = 0;
-            this.bigRating = "&#128566;"; // Emoji: 😶
-        },
-        rateHandler: function (weight) {
-            this.currentRating = weight;
+    };
+    </script>
 
-            // Finding the relevant rating and incrementing the cast votes
-            let rating = this.ratings.find((obj) => obj.weight == weight);
-            rating.votes++;
-
-            // Disabling from voting again
-            this.enabled = false;
-
-            // Saves the votes to the browser localStorage
-            localStorage.setItem("ratings", JSON.stringify(this.ratings));
-        },
-    },
-    created: function () {
-        if (localStorage.ratings) {
-            this.ratings = JSON.parse(localStorage.ratings);
-        }
-    },
-};
-</script>
-
-<style>
-@import url(https://fonts.googleapis.com/css?family=Roboto:100, 300, 400);
-@import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-#app {
-    width: 400px;
-}
-.ratingContainer {
-    float: left;
-    width: 45%;
-    margin-right: 5%;
-    text-align: center;
-}
-.bigRating {
-    color: #333333;
-    font-size: 72px;
-    font-weight: 100;
-    line-height: 1em;
-    padding-left: 0.1em;
-}
-</style>
-{{< /file >}}
-{{< /disclosure-note >}}
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:100, 300, 400);
+    @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+    #app {
+        width: 400px;
+    }
+    .ratingContainer {
+        float: left;
+        width: 45%;
+        margin-right: 5%;
+        text-align: center;
+    }
+    .bigRating {
+        color: #333333;
+        font-size: 72px;
+        font-weight: 100;
+        line-height: 1em;
+        padding-left: 0.1em;
+    }
+    </style>
+    ```
+    {{< /note >}}
 
 ### Updating Star.vue
 
@@ -871,7 +863,7 @@ methods: {
 
     -   In the `getClass` method, the `currentRating` prop is used to determine if a star icon should be highlighted. This prop was previously bound to the `currentRating` data property of the `App` component.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 The `currentRating` prop is not a particularly beautiful solution, but we will improve on that further in the guide.
 {{< /note >}}
 
@@ -885,81 +877,81 @@ i.icon-star.hover {
 /* ... */
 {{< /file >}}
 
-    {{< disclosure-note "Full contents of Star.vue" >}}
-At this point, your `Star.vue` should be the same as this snippet:
+    {{< note type="secondary" title="Full contents of Star.vue" isCollapsible=true >}}
+    At this point, your `Star.vue` should be the same as this snippet:
 
-{{< file "src/components/Star.vue" html >}}
-<template>
-    <i
-        v-bind:class="getClass()"
-        v-on:mouseover="mouseoverHandler()"
-        v-on:mouseleave="mouseleaveHandler()"
-        v-on:click="clickHandler()"
-    ></i>
-</template>
+    ```file {title="src/components/Star.vue" lang=html}
+    <template>
+        <i
+            v-bind:class="getClass()"
+            v-on:mouseover="mouseoverHandler()"
+            v-on:mouseleave="mouseleaveHandler()"
+            v-on:click="clickHandler()"
+        ></i>
+    </template>
 
-<script>
-export default {
-    name: "Star",
-    data: function () {
-        return {
-            hover: false,
-        };
-    },
-    props: ["weight", "enabled", "currentRating"],
-    methods: {
-        getClass: function () {
-            var baseClass = "icon-star";
+    <script>
+    export default {
+        name: "Star",
+        data: function () {
+            return {
+                hover: false,
+            };
+        },
+        props: ["weight", "enabled", "currentRating"],
+        methods: {
+            getClass: function () {
+                var baseClass = "icon-star";
 
-            // Adds the hover class if you're hovering over the component or you are hovering over a star with greater weight
-            if (this.hover || this.currentRating >= this.weight) {
-                baseClass += " hover";
-            }
-            return baseClass;
+                // Adds the hover class if you're hovering over the component or you are hovering over a star with greater weight
+                if (this.hover || this.currentRating >= this.weight) {
+                    baseClass += " hover";
+                }
+                return baseClass;
+            },
+            mouseoverHandler: function () {
+                // Makes sure stars are not lighting up after vote is cast
+                if (this.enabled) {
+                    // Emits the lightUp event with the weight as a parameter
+                    this.$emit("lightUp", this.weight);
+                    // Enables hover class
+                    this.hover = true;
+                }
+            },
+            mouseleaveHandler: function () {
+                // Makes sure stars are not lighting up after vote is cast
+                if (this.enabled) {
+                    // Emits the lightDown event
+                    this.$emit("lightDown", this.weight);
+                    // Removes hover class
+                    this.hover = false;
+                }
+            },
+            clickHandler: function () {
+                // Makes sure you only vote if you haven't voted yet
+                if (this.enabled) {
+                    // Emits the rate event with the weight as parameter
+                    this.$emit("rate", this.weight);
+                } else {
+                    alert("Already voted");
+                }
+            },
         },
-        mouseoverHandler: function () {
-            // Makes sure stars are not lighting up after vote is cast
-            if (this.enabled) {
-                // Emits the lightUp event with the weight as a parameter
-                this.$emit("lightUp", this.weight);
-                // Enables hover class
-                this.hover = true;
-            }
-        },
-        mouseleaveHandler: function () {
-            // Makes sure stars are not lighting up after vote is cast
-            if (this.enabled) {
-                // Emits the lightDown event
-                this.$emit("lightDown", this.weight);
-                // Removes hover class
-                this.hover = false;
-            }
-        },
-        clickHandler: function () {
-            // Makes sure you only vote if you haven't voted yet
-            if (this.enabled) {
-                // Emits the rate event with the weight as parameter
-                this.$emit("rate", this.weight);
-            } else {
-                alert("Already voted");
-            }
-        },
-    },
-};
-</script>
+    };
+    </script>
 
-<style scoped>
-i.icon-star {
-    font-size: 20px;
-    color: #e3e3e3;
-    margin-bottom: 0.5em;
-}
-i.icon-star.hover {
-    color: yellow;
-}
-</style>
-{{< /file >}}
-{{< /disclosure-note >}}
+    <style scoped>
+    i.icon-star {
+        font-size: 20px;
+        color: #e3e3e3;
+        margin-bottom: 0.5em;
+    }
+    i.icon-star.hover {
+        color: yellow;
+    }
+    </style>
+    ```
+    {{< /note >}}
 
 1. Head to http://localhost:8080/ in your browser, and you should see that your rating application now works. Try hovering over the stars and clicking on them to observe the interaction. If you refresh the page, you can vote again, and the votes will be tallied:
 

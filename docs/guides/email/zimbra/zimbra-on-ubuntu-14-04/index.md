@@ -1,9 +1,6 @@
 ---
 slug: zimbra-on-ubuntu-14-04
 deprecated: true
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide shows how to install Zimbra, a complete self-hosted mail application, pre-configured with Postfix, OpenDKIM, Amavis, ClamAV and running on NGINX.'
 keywords: ["zimbra", "install zimbra", "mail server", "zimbra email", "zimbra email server", "mail zimbra", "open source guide", "zimbra open source", "postfix", "web mail", "opendkim", "amavis", "ubuntu tahr", "ubuntu 14.04", "ubuntu"]
 tags: ["ubuntu","postfix","email"]
@@ -13,8 +10,6 @@ modified: 2015-10-01
 modified_by:
     name: Linode
 title: 'Install Zimbra Open Source Edition on Ubuntu 14.04'
-contributor:
-    name: Bill Bardon
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
 relations:
@@ -23,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
+authors: ["Bill Bardon"]
 ---
 
 ![Install Zimbra on Ubuntu](Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)
@@ -31,19 +27,19 @@ aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
 
 {{< content "email-warning-shortguide" >}}
 
-{{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set up Your Linode
 
-1.  Create a Linode with a minimum of 4 GB of RAM. See [Getting Started](/docs/getting-started/) for help setting up your host.
+1.  Create a Linode with a minimum of 4 GB of RAM. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) for help setting up your host.
 
 2.  Deploy an Ubuntu 14.04 LTS image to your Linode. Consider using slightly less than half the available disk space for the first image, keeping the other half for taking a backup image before updates. Your partition size will depend on the number of accounts and volume of mail you expect to handle. Once deployed, boot your new host. SSH into the terminal using the command shown on the **Networking** tab in the Linode Cloud Manager and the password you entered when you created the Linode.
 
-3.  You must [set the hostname](/docs/getting-started/#setting-the-hostname) and fully qualified domain name (FQDN), and [update /etc/hosts](/docs/networking/dns/using-your-systems-hosts-file/) prior to installing Zimbra.
+3.  You must [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and fully qualified domain name (FQDN), and [update /etc/hosts](/docs/guides/using-your-systems-hosts-file/) prior to installing Zimbra.
 
-4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/docs/email/running-a-mail-server/#dns-records) for details on setting up DNS.
+4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/docs/guides/running-a-mail-server/#dns-records) for details on setting up DNS.
 
 ## Download Zimbra
 
@@ -53,7 +49,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
         wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 This Guide is about setting up a new Zimbra Linode, but if you are upgrading an existing Zimbra installation, it is very important that you read the release notes that Zimbra provides! The notes are found on the Download page where you found the software. There may be steps that are required to be performed before or after you upgrade.
 {{< /note >}}
 
@@ -142,7 +138,7 @@ This Guide is about setting up a new Zimbra Linode, but if you are upgrading an 
 
 6. Configure MX records.
 
-    If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/docs/networking/dns/dns-records-an-introduction/#mx) to resolve the problem.
+    If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/docs/guides/dns-overview/#mx) to resolve the problem.
 
         DNS ERROR resolving MX for linodemail.example.com
         It is suggested that the domain name have an MX record configured in DNS
@@ -173,7 +169,7 @@ This Guide is about setting up a new Zimbra Linode, but if you are upgrading an 
 
     By default, no administrative password is set. To set a password, enter **6** to display the `zimbra-store` menu, then **4** to type a new password at the prompt. Enter **r** to return to the main menu. For DNS, enter the `zimbra-dnscache` menu, then change the `Master DNS` IP addresses and return to the main menu.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is common to run mail servers on UTC, as they regularly accept mail from all over the world. This helps when tracing mail flow, when Daylight Saving kicks in or out, and just makes reading logs easier. You may choose to use local time if you prefer.
 {{< /note >}}
 
@@ -207,9 +203,9 @@ It is common to run mail servers on UTC, as they regularly accept mail from all 
 
     Visit your Linode's hostname or IP address in your browser using https. For example, `https://mail.example.com`. This will open the login page. Log in using the admin account and password created during the install.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Since you haven't installed a trusted cert yet, you will likely get a browser warning about an untrusted site. Bypass the warning for now. Later you can either add Zimbra's self-signed cert to your browser or install a trusted cert in Zimbra.
-{{< /caution >}}
+{{< /note >}}
 
     ![Zimbra admin console](AdminConsole.png)
 
@@ -223,7 +219,7 @@ From the admin console you can configure default settings for new accounts (Zimb
 
 ![Click label for a tool tip](Tooltip.png) ![Click More for details](Tooltipmore.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can also reach the admin console if you are already logged in to your Zimbra webmail page. A drop-down menu beside your account name in the upper right of the window provides a link to the admin console.
 {{< /note >}}
 

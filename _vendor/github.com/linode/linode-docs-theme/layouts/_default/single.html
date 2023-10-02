@@ -1,23 +1,37 @@
-{{ define "main" }}
-<div class="content">
+{{ define "_baseof_start" }}
+  {{- .Page.Store.Set "_baseof_main_layout" "content_toc" -}}
+{{ end }}
+
+{{ define "content_header" }}
   {{ partial "sections/content/title-byline.html" . }}
+
 
   <!-- If there's any other related guides (such as other distributions), show the "alternative guide" notice -->
   {{ if .Params.relations.platform }}
-    <div class="mt-6 mb-6">
-      {{ partial "sections/content/alternative-guides.html" . }}
+    <div class="mt-6">
+      {{ partial "sections/content/alternative-guides.html" (dict "page" .) }}
     </div>
   {{ end }}
 
+{{ end }}
+
+{{ define "content_main" }}
   {{/* Show a note in Spanish if that is the current language. Note that once we get more similar behavour, this should be moved to somewhere common. */}}
   <div x-data x-cloak>
-    <div class="mt-2 sm:mt-4 mb-2 sm:mb-4" x-show="$store.nav.lang == 'es'" data-testid="languageNote">
-      <blockquote class="callout border-brand" style="background-color: rgba(2,177,89,0.1);">
-        <strong class="callout-title">
-          Traducciones al Español
-        </strong>
+    <div
+      class="mt-2 sm:mt-4 mb-2 sm:mb-4"
+      x-show="$store.nav.lang == 'es'"
+      data-testid="languageNote">
+      <blockquote
+        class="callout border-brand"
+        style="background-color: rgba(2,177,89,0.1);">
+        <strong class="callout-title"> Traducciones al Español </strong>
         <div class="leading-tight">
-          Estamos traduciendo nuestros guías y tutoriales al Español. Es posible que usted esté viendo una traducción generada automáticamente. Estamos trabajando con traductores profesionales para verificar las traducciones de nuestro sitio web. Este proyecto es un trabajo en curso.
+          Estamos traduciendo nuestros guías y tutoriales al Español. Es posible
+          que usted esté viendo una traducción generada automáticamente. Estamos
+          trabajando con traductores profesionales para verificar las
+          traducciones de nuestro sitio web. Este proyecto es un trabajo en
+          curso.
         </div>
       </blockquote>
     </div>
@@ -28,12 +42,13 @@
   {{ end }}
 
   {{ if ne .Params.promo_default false }}
-  <div class="mt-8">
-    {{ partial "sections/content/promo_code.html" . }}
-  </div>
-{{ end }}
+    <div class="mt-6">
+      {{ partial "sections/content/promo_code.html" . }}
+    </div>
+  {{ end }}
 
-  <div x-ignore class="prose prose-sm md:prose-lg max-w-none mt-8">
+
+  <div x-ignore class="prose prose-sm md:prose-lg max-w-content mt-8">
     {{ .Content }}
     {{ partial "sections/content/more.html" . }}
   </div>
@@ -41,7 +56,8 @@
   <div>
     <p class="pt-2 md:pt-6 text-basicgray">
       This page was originally published on
-      <time datetime="{{ .PublishDate }}">
+      <time
+        datetime="{{ .PublishDate.Format site.Params.time_format_iso8601 }}">
         {{ .PublishDate.Format site.Params.time_format_default }}.
       </time>
     </p>
@@ -53,21 +69,21 @@
 
   <div class="flex md:hidden flex-initial mt-4">
     {{ $dropdowns := slice }}
-    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--github" "open" false "contentPartial" "sections/content/navbar__dropdown-github.html")}}
-    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--share"  "open" false "contentPartial" "sections/content/navbar__dropdown-share.html")}}
+    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--github" "open" false "contentPartial" "sections/content/navbar__dropdown-github.html") }}
+    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--share"  "open" false "contentPartial" "sections/content/navbar__dropdown-share.html") }}
     {{ partial "components/dropdowns.html" (dict "page" . "dropdowns" $dropdowns) }}
   </div>
 
   <div class="hide-if-no-js">
-    <hr class="my-8">
-
-    {{/* Add feedback links via Delighted. */}}
-    {{ partial "components/delighted/form.html" . }}
-    <hr class="mt-8">
+    {{ if ne $.Site.Params.feedback_survey_display false }}
+      <hr class="my-8" />
+      {{/* Add feedback links via Delighted. */}}
+      {{ partial "components/delighted/form.html" . }}
+    {{ end }}
+    <hr class="mt-8" />
 
     {{ if not ("api,blog" | strings.Contains .Type) }}
       {{ partial "components/disqus.html" . }}
     {{ end }}
   </div>
-</div>
 {{ end }}

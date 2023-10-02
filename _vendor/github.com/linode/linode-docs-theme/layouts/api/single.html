@@ -1,13 +1,17 @@
-{{ define "main" }}
-  
+{{ define "_baseof_start" }}
+  {{- .Page.Store.Set "_baseof_main_layout" "content_toc" -}}
+{{ end }}
+
+{{ define "content_main" }}
   {{/* See https://godoc.org/github.com/getkin/kin-openapi/openapi3#Swagger */}}
   {{ $api := partial "openapi3/get" . }}
   {{ $p := . }}
   {{/* A test page */}}
   {{ $spec := .Params.spec }}
   {{ $slug := .Slug }}
-  <div class="api-documentation content prose prose-sm md:prose-lg max-w-none">
-    <h1 class="font-bold">
+  <div
+    class="api-documentation content content__main prose prose-sm md:prose-lg max-w-content">
+    <h1 class="font-semibold">
       {{ .Title }}
       <small class="pl-3 text-sm text-gray-600 align-baseline">
         v{{ $api.Info.Version }}
@@ -15,24 +19,25 @@
     </h1>
     {{ if $spec }}
       {{ $specr := .Resources.GetMatch $spec }}
-      Download Spec Test File: <a href="{{ $specr.RelPermalink}}">spec.yaml</a>.
-      {{.Content}}
+      Download Spec Test File:
+      <a href="{{ $specr.RelPermalink }}">spec.yaml</a>.
+      {{ .Content }}
     {{ end }}
     {{ range $k, $v :=  $api.Paths }}
       {{ $parts := split $k "/" }}
       {{ $root := (index $parts 1) }}
       {{ $ops := slice (dict "o" $v.Connect "m" "Connect") (dict "o" $v.Delete "m" "Delete")  (dict "o" $v.Get "m" "Get") }}
-      {{ $ops = $ops | append  (dict "o" $v.Patch "m" "Patch") (dict "o" $v.Post "m" "Post")  (dict "o" $v.Put "m" "Put") (dict "o" $v.Trace "m" "Trace")}}
+      {{ $ops = $ops | append  (dict "o" $v.Patch "m" "Patch") (dict "o" $v.Post "m" "Post")  (dict "o" $v.Put "m" "Put") (dict "o" $v.Trace "m" "Trace") }}
       {{ range $ops }}
         {{ if .o }}
           {{ $tag := partial "openapi3/get-tags-title-op" .o }}
-          {{ if or  $spec (eq ($tag|anchorize) $slug)}}
+          {{ if or  $spec (eq ($tag|anchorize) $slug) }}
             {{ $ctx := newScratch }}
-            {{ $ctx.Set "dot" .}}
-            {{ $ctx.Set "page" $}}
-            {{ $ctx.Set "pathKey" $k}}
-            {{ $ctx.Set "path" $v}}
-            {{ $ctx.Set "api" $api}}
+            {{ $ctx.Set "dot" . }}
+            {{ $ctx.Set "page" $ }}
+            {{ $ctx.Set "pathKey" $k }}
+            {{ $ctx.Set "path" $v }}
+            {{ $ctx.Set "api" $api }}
             {{ template "openapi3/print-operation"  $ctx }}
           {{ end }}
         {{ end }}

@@ -15,26 +15,34 @@
 @import "components/all.css";
 @import "sections/all.css";
 @import "logic/all.css";
+/* purgecss start ignore */
 @import "grids/grid--base.css";
+/* purgecss end ignore */
 
 html {
   font-size: 16px;
 }
 
-@screen small {
-  html {
-    font-size: 14px;
-  }
-}
-
 body,
 html {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   line-height: 1.25;
   margin: 0;
   padding: 0;
   color: var(--color-body-text);
+}
+
+html {
+  /* At least in Chrome on MacOS, using any var calculations here makes it fall back to auto, so be explicit. */
+  scroll-padding-top: 81px;
+}
+
+@screen small {
+  html {
+    font-size: 14px;
+    scroll-padding-top: 68px;
+  }
 }
 
 body {
@@ -127,6 +135,11 @@ for the smaller screens.
 .px-container,
 .mx-container {
   @apply pl-container pr-container;
+}
+
+/* Adjust how top padding for submenus works: docs only */
+.c-submenu {
+  --min-submenu-padding: var(--site-top-offset) !important;
 }
 
 /* Adjust Tailwind preflight defaults applied in tailwind base. */
