@@ -1,39 +1,39 @@
 /* The main search panel; search listing and the filters. */
 
 .grid--base .search-panel {
-    height: 100%;
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
 }
 
 .grid--base .search-panel__filters {
-    @apply lg:pt-14;
-    grid-row: 1;
+  @apply lg:pt-14;
+  grid-row: 1;
 }
 
 .grid--base .search-panel__results {
-    @apply pt-8 md:pt-10;
-    grid-row: 2;
+  @apply pt-8 md:pt-10;
+  grid-row: 2;
 }
 
 @screen lg {
-    .grid--base .search-panel {
-        grid-template-rows: auto;
-        grid-template-columns: auto 389px;
-    }
-    .grid--base .search-panel__filters {
-        grid-row: 1;
-    }
+  .grid--base .search-panel {
+    grid-template-rows: auto;
+    grid-template-columns: auto 389px;
+  }
+  .grid--base .search-panel__filters {
+    grid-row: 1;
+  }
 
-    .grid--base .search-panel__results {
-        max-width: 1100px; /* Excluding padding, this will give a max 956px width search result panel on larger screens. */
-        grid-row: 1;
-    }
+  .grid--base .search-panel__results {
+    max-width: 1100px; /* Excluding padding, this will give a max 956px width search result panel on larger screens. */
+    grid-row: 1;
+  }
 }
 
 @screen mobile {
-    .is-search-panel_filters-open .grid--base .search-panel__results {
-        display: none;
-    }
+  .is-search-panel_filters-open .grid--base .search-panel__results {
+    display: none;
+  }
 }

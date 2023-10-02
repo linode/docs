@@ -1,8 +1,68 @@
-<blockquote class="callout border-brand" style="background-color: rgba(2,177,89,0.1);">
-  <strong class="callout-title">
-    Note
-  </strong>
-  <div class="leading-tight callout-body">
-    {{ .Inner | .Page.RenderString }}
+{{ $type := .Get "type" | default "primary" }}
+{{ $collapsible := .Get "isCollapsible" | default false }}
+{{ $noTitle := .Get "noTitle" | default false }}
+{{ $respectIndent := .Get "respectIndent" | default true }}
+{{ $title := .Get "title" }}
+{{ if and (not $noTitle) (not $title) }}
+  {{ if (strings.Contains $type "secondary") }}
+    {{ $title = "Note" }}
+  {{ else if (strings.Contains $type "primary") }}
+    {{ $title = "Note" }}
+  {{ else if (strings.Contains $type "warning") }}
+    {{ $title = "Warning" }}
+  {{ else if (strings.Contains $type "alert") }}
+    {{ $title = "Important" }}
+  {{ end }}
+{{ end }}
+{{- if $collapsible -}}
+  <div
+    x-data="{ open: false }"
+    class="note-collapsible note note-{{ $type }} leading-snug">
+    {{- with $title -}}
+      <header class="note-title font-semibold">
+        <button
+          type="button"
+          @click="open = !open"
+          class="flex justify-between w-full leading-5 font-semibold hover:text-black focus:outline-none active:bg-gray-50 active:text-titlecolor">
+          {{- . -}}
+          <div class="h-6 w-6 btn-icon flex items-center justify-center mr-2">
+            <template x-if="open">
+              <svg class="h-5 w-5">
+                <use href="#icon--arrow-up"></use>
+              </svg>
+            </template>
+            <template x-if="!open">
+              <svg class="h-5 w-5">
+                <use href="#icon--arrow-down"></use>
+              </svg>
+            </template>
+          </div>
+        </button>
+      </header>
+    {{- end -}}
+    <div
+      class="note-content {{ if $title }}mt-2{{ end }}"
+      :class="open ? 'open' : 'closed'">
+      {{- if eq $respectIndent true -}}
+        {{ .InnerDeindent | .Page.RenderString }}
+      {{- else -}}
+        {{ .Inner | .Page.RenderString }}
+      {{- end -}}
+    </div>
   </div>
-</blockquote>
+{{- else -}}
+  <div class="note note-{{ $type }} leading-snug">
+    {{- with $title -}}
+      <header class="note-title font-semibold">
+        {{- . -}}
+      </header>
+    {{- end -}}
+    <div class="note-content {{ if $title }}mt-2{{ end }}">
+      {{- if eq $respectIndent true -}}
+        {{ .InnerDeindent | .Page.RenderString }}
+      {{- else -}}
+        {{ .Inner | .Page.RenderString }}
+      {{- end -}}
+    </div>
+  </div>
+{{- end -}}

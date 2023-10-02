@@ -1,0 +1,32 @@
+{{ $respectIndent := .Get "respectIndent" | default true }}
+{{ $name := "" }}
+{{ if .IsNamedParams }}
+  {{ $name := .Get "name" }}
+{{ else }}
+  {{ $name = index .Params 0 }}
+{{ end }}
+{{ if not $name }}
+  {{ errorf "missing tab name: %s" .Position }}
+{{ end }}
+{{ $id := $name | anchorize }}
+{{ $ordinal := .Ordinal }}
+<button
+  x-ref="tab-{{ $ordinal }}"
+  x-init="initTab('{{ $id }}')"
+  @click.prevent="setActive({{ $ordinal }})"
+  class="min-w-max pt-2 pb-3 px-3 text-center border border-b-transparent leading-tight block"
+  :class="isActive({{ $ordinal }}) ? 'border-gray-500 bg-white pt border-t-2' : 'border-transparent hover:bg-gray-100 hover:border-b-gray-500'"
+  :aria-current="isActive({{ $ordinal }}) ? 'true' : 'false'">
+  {{/* Note that in Hugo < 0.115.4 the dynamic classes above were not written to hugo_stats.json (used by Tailwind). So, if these classes are not used in regular HTML, add them to the safelist in tailwind.config.json. */}}
+  {{ $name }}
+</button>
+{{/* We need to put the tab content in its own div, so pass it up to the container. */}}
+{{ if .Parent }}
+  {{ $content := "" }}
+  {{- if $respectIndent -}}
+    {{ $content = .InnerDeindent | .Page.RenderString }}
+  {{- else -}}
+    {{ $content = .Inner | .Page.RenderString }}
+  {{- end -}}
+  {{ .Parent.Scratch.Add "tabsContent" (slice (dict "ordinal" $ordinal "content" $content)) }}
+{{ end }}

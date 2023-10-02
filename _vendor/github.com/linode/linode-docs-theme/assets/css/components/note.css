@@ -1,0 +1,113 @@
+:root {
+  --color-note--secondary: 94, 96, 101;
+  --color-note--primary: 2, 177, 89;
+  --color-note--warning: 255, 147, 7;
+  --color-note--alert: 240, 38, 38;
+
+  --alpha-note--bg: 0.1;
+  --alpha-note--border: 1;
+  --alpha-note--pre: 0.2;
+}
+.note {
+  display: block;
+  @apply text-titlecolor text-base mb-2 p-4 border-l-2;
+}
+
+div + .note {
+  margin-top: 1em;
+}
+
+.content .note-content pre code {
+  background-color: transparent;
+}
+.content .note-content :last-child .code {
+  margin-bottom: 0;
+}
+.content .note-content :last-child.file {
+  margin-bottom: 0;
+}
+.note.note-secondary {
+  background-color: rgba(var(--color-note--secondary), var(--alpha-note--bg));
+  border-color: rgba(var(--color-note--secondary), var(--alpha-note--border));
+}
+.note.note-secondary .copy-button svg {
+  color: rgba(var(--color-note--secondary), 1);
+}
+.note.note-secondary code,
+.note.note-secondary pre:not(.chroma, .dark),
+.note.note-secondary .code.light {
+  background-color: #dcdddd;
+}
+
+.note.note-primary {
+  background-color: rgba(var(--color-note--primary), var(--alpha-note--bg));
+  border-color: rgba(var(--color-note--primary), var(--alpha-note--border));
+}
+.note.note-primary .copy-button svg {
+  color: rgba(var(--color-note--primary), 1);
+}
+.note.note-primary code,
+.note.note-primary pre:not(.chroma, .dark),
+.note.note-primary .code.light {
+  background-color: #c0e9d4;
+}
+
+.note.note-warning {
+  background-color: rgba(var(--color-note--warning), var(--alpha-note--bg));
+  border-color: rgba(var(--color-note--warning), var(--alpha-note--border));
+}
+.note.note-warning a,
+.note.note-warning .copy-button svg {
+  color: rgba(var(--color-note--warning), 1);
+}
+.note.note-warning a:hover {
+  color: rgba(var(--color-note--warning), 0.6);
+}
+.note.note-warning code,
+.note.note-warning pre:not(.chroma, .dark),
+.note.note-warning .code.light {
+  background-color: #fee1c7;
+}
+
+.note.note-alert {
+  background-color: rgba(var(--color-note--alert), var(--alpha-note--bg));
+  border-color: rgba(var(--color-note--alert), var(--alpha-note--border));
+}
+.note.note-alert a,
+.note.note-alert .copy-button svg {
+  color: rgba(var(--color-note--alert), 1);
+}
+.note.note-alert a:hover {
+  color: rgba(var(--color-note--alert), 0.6);
+}
+.note.note-alert code,
+.note.note-alert pre:not(.chroma, .dark),
+.note.note-alert .code.light {
+  background-color: #fac1c9;
+}
+.note-content > :first-child {
+  margin-top: 0;
+}
+
+.note-content > :last-child {
+  margin-bottom: 0;
+}
+
+.note-collapsible .note-content.closed {
+  display: none;
+}
+
+.note-collapsible .note-content.closed:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  @apply bg-gradient-to-b from-transparent to-selected;
+}
+
+.note-collapsible .note-content.open {
+  height: auto;
+}

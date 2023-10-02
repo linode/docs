@@ -1,27 +1,37 @@
 import { newQuery, QueryHandler } from './query';
-import { LRUMap, toDateString } from '../helpers';
-import { newCreateHref } from '../navigation/index';
+import { getCurrentLang, LRUMap, toDateString } from '../helpers';
+import { newCreateHref, addLangToHref } from '../navigation/index';
 import {
 	newRequestCallback,
 	newRequestCallbackFactories,
 	SearchGroupIdentifier,
-	RequestCallBackStatus
+	RequestCallBackStatus,
 } from './request';
 
-const debug = 0 ? console.log.bind(console, '[search-store]') : function() {};
-const debugFetch = 0 ? console.log.bind(console, '[search-fetch]') : function() {};
+const debug = 0 ? console.log.bind(console, '[search-store]') : function () {};
+const debugFetch = 0 ? console.log.bind(console, '[search-fetch]') : function () {};
 
 export const searchGroupIdentifiers = {
 	MAIN: 1,
-	AD_HOC: 2
+	AD_HOC: 2,
 };
 
 export function newSearchStore(searchConfig, Alpine) {
 	let results = {
 		blank: { loaded: false },
-		main: { loaded: false }
+		main: { loaded: false },
+		// Holds the last Algolia queryID.
+		lastQueryID: '',
 	};
-	const searcher = new Searcher(searchConfig, results.blank, debug);
+
+	const resultCallback = (result) => {
+		if (!result.queryID) {
+			return;
+		}
+		results.lastQueryID = result.queryID;
+	};
+
+	const searcher = new Searcher(searchConfig, results.blank, resultCallback, debug);
 	let searchEffectMain = null;
 	let searchEffectAdHoc = null;
 	const router = newCreateHref(searchConfig);
@@ -42,11 +52,18 @@ export function newSearchStore(searchConfig, Alpine) {
 		// The blank (needed for the explorer and section metadata) and the main search result.
 		results: results,
 
-		updateLocationWithQuery(state = null) {
-			let href = window.location.pathname + window.location.hash;
-			if (this.query.isFiltered() || this.query.p > 0) {
-				href += '?' + queryHandler.queryToQueryString(this.query);
+		clearQuery: function () {
+			this.query = newQuery();
+		},
+
+		updateLocationWithQuery() {
+			let search = queryHandler.queryAndLocationToQueryString(this.query);
+			let href = window.location.pathname;
+			if (search) {
+				href += '?' + search;
 			}
+			href += window.location.hash;
+
 			// See https://github.com/hotwired/turbo/issues/163#issuecomment-933691878
 			history.replaceState({ turbo: {} }, null, href);
 		},
@@ -72,7 +89,7 @@ export function newSearchStore(searchConfig, Alpine) {
 		},
 
 		init() {
-			this.results.blank.getSectionMeta = function(key) {
+			this.results.blank.getSectionMeta = function (key) {
 				if (!this.metaStatic) {
 					return null;
 				}
@@ -94,7 +111,7 @@ export function newSearchStore(searchConfig, Alpine) {
 					m = this.metaResult.get(key);
 					if (!m && sectionConfigIdx !== -1) {
 						let index = searchConfig.sectionsSorted[sectionConfigIdx];
-						m = { title: index.title, linkTitle: index.title };
+						m = { title: index.title, linkTitle: index.title, excerpt: '' };
 					}
 				}
 
@@ -111,7 +128,7 @@ export function newSearchStore(searchConfig, Alpine) {
 			// Is the main search, i.e. what you see when you're typing into the search form.
 			// This will start executing once searchEffectMain activates (see searchToggle).
 			this.searchGroupMain.push({
-				status: function() {
+				status: function () {
 					// Will be active as long as searchEffectMain is active, but
 					// the cache will prevent new remote Algolia requests as long
 					// as the query does not change.
@@ -126,7 +143,7 @@ export function newSearchStore(searchConfig, Alpine) {
 						},
 						true
 					);
-				}
+				},
 			});
 
 			searchEffectAdHoc = Alpine.effect(() => {
@@ -134,7 +151,7 @@ export function newSearchStore(searchConfig, Alpine) {
 				searcher.searchFactories(this.searchGroupAdHoc, null);
 			});
 		},
-		searchToggle: function(active) {
+		searchToggle: function (active) {
 			if (searchEffectMain === null) {
 				// Start watching.
 				searchEffectMain = Alpine.effect(() => {
@@ -143,11 +160,11 @@ export function newSearchStore(searchConfig, Alpine) {
 			}
 			searchEffectMain.active = active;
 		},
-		isSearching: function() {
+		isSearching: function () {
 			return searchEffectMain && searchEffectMain.active;
 		},
 
-		withBlank: async function(callback = () => {}) {
+		withBlank: async function (callback = () => {}) {
 			debug('withBlank');
 
 			if (this.results.blank.loaded) {
@@ -168,7 +185,7 @@ export function newSearchStore(searchConfig, Alpine) {
 			const response = await fetch('/docs/data/sections/index.json');
 			if (response.ok) {
 				const data = await response.json();
-				this.results.blank.metaStatic = data.reduce(function(m, item) {
+				this.results.blank.metaStatic = data.reduce(function (m, item) {
 					item.href = router.hrefSection(item.objectID);
 					m.set(item.objectID, item);
 					return m;
@@ -180,18 +197,18 @@ export function newSearchStore(searchConfig, Alpine) {
 				// Load section meta data from Algolia.
 				newRequestCallback(
 					{
-						indexName: searchConfig.meta_index,
+						indexName: searchConfig.indexName(searchConfig.meta_index),
 						params: 'query=&hitsPerPage=600',
 						// We load the Hugo data from the published JSON to save Algolia queries on
 						// load (for the breadcrumbs).
 						// This filter is just to save some bytes for when the Algolia data IS loaded,
 						// as the guides is the most populated section tree.
 						filters:
-							'NOT section:guides AND NOT section:api AND NOT section:products AND NOT section:content AND NOT section:development'
+							'NOT section:guides AND NOT section:api AND NOT section:products AND NOT section:content AND NOT section:development',
 					},
 					(result) => {
 						debug('withBlank.blank.metaResult:', result);
-						this.results.blank.metaResult = result.hits.reduce(function(m, hit) {
+						this.results.blank.metaResult = result.hits.reduce(function (m, hit) {
 							// The blog sections have mixed-case objectIDs, but we need this lookup to be case insensitive.
 							m.set(hit.objectID.toLowerCase(), hit);
 							return m;
@@ -200,7 +217,7 @@ export function newSearchStore(searchConfig, Alpine) {
 					}
 				),
 				newRequestCallback(createSectionRequest(), (result) => {
-					if (result.index != 'linode-merged') {
+					if (!result.index.endsWith('linode-merged')) {
 						throw `invalid state: ${result.index}`;
 					}
 					debug('withBlank.blank.result:', result);
@@ -208,13 +225,13 @@ export function newSearchStore(searchConfig, Alpine) {
 					markLoaded();
 				})
 			);
-		}
+		},
 	};
 
-	const createSectionRequest = function(query) {
+	const createSectionRequest = function (query) {
 		debug('createSectionRequest:', query);
 		let sectionConfig = searchConfig.sections_merged;
-		let facets = sectionConfig.section_facet ? [ sectionConfig.section_facet ] : [ 'section.*' ];
+		let facets = sectionConfig.section_facet ? [sectionConfig.section_facet] : ['section.*'];
 		let filteringFacetNames = [];
 		if (sectionConfig.filtering_facets) {
 			filteringFacetNames = sectionConfig.filtering_facets.map((facet) => facet.name);
@@ -226,23 +243,30 @@ export function newSearchStore(searchConfig, Alpine) {
 		let filters = sectionConfig.filters || '';
 		let facetFilters = [];
 		let attributesToHighlight = [];
+		let analyticsTags = [];
 		let page = 0;
 
 		if (query) {
 			hitsPerPage = sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
-			q = encodeURIComponent(query.q);
+			q = encodeURIComponent(query.lndq);
 			facetFilters = query.toFacetFilters();
-			attributesToHighlight = [ 'title', 'excerpt', ...filteringFacetNames ];
+			attributesToHighlight = ['title', 'excerpt', ...filteringFacetNames];
 			page = query.p;
+			if (query.isFiltered()) {
+				analyticsTags.push('active');
+			}
 		}
 
 		return {
-			indexName: sectionConfig.index,
+			indexName: searchConfig.indexName(sectionConfig.index),
+			clickAnalytics: searchConfig.click_analytics,
+			analyticsTags: analyticsTags,
 			filters: filters,
 			facetFilters: facetFilters,
 			facets: facets,
+			distinct: 1,
 			attributesToHighlight: attributesToHighlight,
-			params: `query=${q}&hitsPerPage=${hitsPerPage}&page=${page}`
+			params: `query=${q}&hitsPerPage=${hitsPerPage}&page=${page}`,
 		};
 	};
 
@@ -250,7 +274,7 @@ export function newSearchStore(searchConfig, Alpine) {
 }
 
 // Normalization of search results.
-const normalizeResult = function(self, result) {
+const normalizeResult = function (self, result) {
 	let hitsStart = 0;
 	let hitsEnd = 0;
 
@@ -264,17 +288,17 @@ const normalizeResult = function(self, result) {
 		totalNbHits: result.nbHits,
 		totalNbPages: result.nbPages,
 		hitsStart: hitsStart,
-		hitsEnd: hitsEnd
+		hitsEnd: hitsEnd,
 	};
 
 	let facets = result.facets;
 	if (facets) {
 		// Apply metadata to the section facets.
 		let facetsMeta = {};
-		Object.entries(facets).forEach(([ k, v ]) => {
+		Object.entries(facets).forEach(([k, v]) => {
 			if (k === 'docType' || k.startsWith('section.')) {
 				let obj = {};
-				Object.entries(v).forEach(([ kk, vv ]) => {
+				Object.entries(v).forEach(([kk, vv]) => {
 					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());
 					obj[kk] = { count: vv, meta: m };
 				});
@@ -286,12 +310,14 @@ const normalizeResult = function(self, result) {
 		result.facetsMeta = facetsMeta;
 	}
 
-	result.sections = function() {
+	result.sections = function () {
 		let sections = [];
 
 		if (!this.facets) {
 			return sections;
 		}
+
+		let position = 0;
 
 		for (let i = 0; ; i++) {
 			// webserver
@@ -316,12 +342,20 @@ const normalizeResult = function(self, result) {
 				}
 
 				let isGhostSection = k === 'community > question';
+				// These are also indexed on its own.
+				let hasObjectID = sectionLvl0 == 'products' || sectionLvl0 == 'guides';
+				position++;
+
 				sections.push({
 					key: k,
 					count: sectionFacets[k],
 					isGhostSection: isGhostSection,
 					sectionLvl0: sectionLvl0,
-					meta: meta
+					meta: meta,
+					// Used for Analytics.
+					hasObjectID: hasObjectID,
+					queryID: result.queryID,
+					position: position,
 				});
 			}
 		}
@@ -329,15 +363,30 @@ const normalizeResult = function(self, result) {
 		return sections;
 	};
 
-	result.hits.forEach((hit) => {
+	let lang = getCurrentLang();
+	let index = result.index;
+	let queryID = result.queryID ? result.queryID : '';
+
+	result.hits.forEach((hit, idx) => {
+		// For event tracking
+		hit.__index = index;
+		hit.__queryID = queryID;
+		if (hit.__queryID) {
+			// Only send position if we have a queryID.
+			hit.__position = idx + 1 + result.page * result.hitsPerPage;
+		}
+
 		hit.sectionTitle = hit.section;
 		if (hit.section) {
 			hit.section = hit.section.toLowerCase();
 		}
 
 		hit.rootSectionTitle = hit['section.lvl0'];
-		if (hit.rootSectionTitle && hit.rootSectionTitle.endsWith('-branches')) {
-			hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+		if (hit.rootSectionTitle) {
+			if (hit.rootSectionTitle.endsWith('-branches')) {
+				hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+			}
+			hit.rootSectionTitle = hit.rootSectionTitle.replace('-', ' ');
 		}
 
 		hit.titleHighlighted =
@@ -347,9 +396,21 @@ const normalizeResult = function(self, result) {
 			hit._highlightResult && hit._highlightResult.excerpt ? hit._highlightResult.excerpt.value : hit.excerpt;
 
 		hit.linkTitle = hit.linkTitle || hit.title;
+		hit.mainTitle = hit.title || hit.linkTitle;
+
+		if (hit.hierarchy && hit.hierarchy.length) {
+			// This is the reference-section, pick the main title from
+			// the top level.
+			let first = hit.hierarchy[0];
+			hit.mainTitle = first.title || first.linkTitle;
+		}
 
 		if (hit.href) {
 			hit.isExternalLink = hit.href.startsWith('http');
+		}
+
+		if (lang && lang !== 'en' && hit.href) {
+			hit.href = addLangToHref(hit.href, lang);
 		}
 
 		hit.firstPublishedDateString = '';
@@ -357,7 +418,7 @@ const normalizeResult = function(self, result) {
 			hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
 		}
 
-		hit.excerptTruncated = function(maxLen = 300) {
+		hit.excerptTruncated = function (maxLen = 300) {
 			let excerpt = this.excerpt || this.description;
 			if (!excerpt) {
 				return '';
@@ -372,7 +433,7 @@ const normalizeResult = function(self, result) {
 			hit.thumbnailUrl = '/docs/media/images/Linode-Default-416x234.jpg';
 		}
 
-		hit.tagsValues = function() {
+		hit.tagsValues = function () {
 			if (!this.tags) {
 				return [];
 			}
@@ -383,17 +444,18 @@ const normalizeResult = function(self, result) {
 };
 
 class SearchBatcher {
-	constructor(searchConfig, metaProvider) {
+	constructor(searchConfig, metaProvider, resultCallback = (result) => {}) {
 		const algoliaHost = `https://${searchConfig.app_id}-dsn.algolia.net`;
 		this.headers = {
 			'X-Algolia-Application-Id': searchConfig.app_id,
-			'X-Algolia-API-Key': searchConfig.api_key
+			'X-Algolia-API-Key': searchConfig.api_key,
 		};
 
 		this.urlQueries = `${algoliaHost}/1/indexes/*/queries`;
 		this.cache = new LRUMap(12); // Query cache.
 		this.cacheEnabled = true;
 		this.metaProvider = metaProvider;
+		this.resultCallback = resultCallback;
 		this.interval = () => {
 			return this.executeCount === 0 ? 300 : 100; // in ms between batch executions.
 		};
@@ -417,7 +479,7 @@ class SearchBatcher {
 	}
 
 	executeBatch(what = 'manual') {
-		let requestCallbacks = [ ...this.queue ];
+		let requestCallbacks = [...this.queue];
 
 		this.queue.length = 0;
 		this.timer = null;
@@ -455,6 +517,7 @@ class SearchBatcher {
 			let cachedResult = this.cache.get(key);
 			if (cachedResult) {
 				cb.callback(cachedResult);
+				this.resultCallback(cachedResult);
 			} else {
 				cacheMisses.push(requestCallbacks[i]);
 				cacheMissesKeys.push(key);
@@ -479,7 +542,7 @@ class SearchBatcher {
 		// There may be still be duplicate requests.
 		let requests = [];
 		let requestCallbackMap = new Map();
-		let cacheMissesKeysCopy = [ ...cacheResult.cacheMissesKeys ];
+		let cacheMissesKeysCopy = [...cacheResult.cacheMissesKeys];
 
 		cacheResult.cacheMissesKeys.length = 0;
 
@@ -497,7 +560,7 @@ class SearchBatcher {
 		}
 
 		let queries = {
-			requests: requests
+			requests: requests,
 		};
 
 		debugFetch(`fetch.POST(${queries.requests.length})`, queries);
@@ -505,13 +568,18 @@ class SearchBatcher {
 		fetch(this.urlQueries, {
 			method: 'POST',
 			headers: this.headers,
-			body: JSON.stringify(queries)
+			body: JSON.stringify(queries),
 		})
 			.then((response) => response.json())
 			.then((data) => {
 				this.fetchCount++;
+				if (!data.results) {
+					console.warn('invalid response', data);
+					return;
+				}
 				for (let i = 0; i < data.results.length; i++) {
 					let result = data.results[i];
+					this.resultCallback(result);
 					normalizeResult(this, result);
 					let key = cacheResult.cacheMissesKeys[i];
 					if (!key) {
@@ -526,15 +594,15 @@ class SearchBatcher {
 					});
 				}
 			})
-			.catch(function(error) {
+			.catch(function (error) {
 				console.warn('Algolia query failed:', error);
 			});
 	}
 }
 
 class Searcher {
-	constructor(searchConfig, metaProvider, debug = function() {}) {
-		this.batcher = new SearchBatcher(searchConfig, metaProvider);
+	constructor(searchConfig, metaProvider, resultCallback, debug = function () {}) {
+		this.batcher = new SearchBatcher(searchConfig, metaProvider, resultCallback);
 	}
 
 	searchFactories(factories, query) {
@@ -577,7 +645,7 @@ export function getSearchConfig(params) {
 	});
 
 	cfg.sectionsSorted.forEach((sectionCfg) => {
-		sectionCfg.nounPlural = function(count = 2) {
+		sectionCfg.nounPlural = function (count = 2) {
 			let noun = this.noun || this.title;
 
 			if (count === 0 || (count > 1 && !noun.endsWith('s'))) {
@@ -586,6 +654,17 @@ export function getSearchConfig(params) {
 			return noun;
 		};
 	});
+
+	cfg.indexName = function (index) {
+		if (!cfg.index_prefix) {
+			return index;
+		}
+		let prefix = cfg.index_prefix;
+		if (!prefix.endsWith('_')) {
+			prefix += '_';
+		}
+		return `${prefix}${index}`;
+	};
 
 	return cfg;
 }

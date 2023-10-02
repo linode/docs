@@ -1,37 +1,35 @@
 ---
 slug: delete-file-linux-command-line
-author:
-  name: Edward Angert
-  email: docs@linode.com
-description: 'Learn how to delete files from the Linux command line with rm.'
+description: "This guide provides you instructions for deleting files, directories, content and more using rm command from the Linux Command Line on any distribution."
 keywords: ["remove files", "delete files", "rm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-07-03
-modified: 2018-07-03
+modified: 2022-01-14
 modified_by:
   name: Edward Angert
-title: 'Use rm to Delete Files from the Linux Command Line'
+title: "Use rm to Delete Files and Directories on Linux"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/delete-file-linux-command-line/']
+authors: ["Edward Angert"]
 ---
 
-Use `rm` to remove files and directories from the command line.
+This guide shows how to use `rm` to remove files, directories, and other content from the command line in Linux.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To avoid creating examples that might remove important files, this Quick Answer uses variations of `filename.txt`. Adjust each command as needed.
 {{< /note >}}
 
 ## The Basics of Using rm to Delete a File
 
-* Delete a single file using `rm`:
+-   Delete a single file using `rm`:
 
         rm filename.txt
 
-* Delete multiple files:
+-   Delete multiple files:
 
         rm filename1.txt filename2.txt
 
-* Delete all `.txt` files in the directory:
+-   Delete all `.txt` files in the directory:
 
         rm *.txt
 
@@ -98,7 +96,7 @@ Add the `f` flag to a recursive `rm` command to skip all confirmation prompts:
 
 ### Remove Old Files Using find and rm
 
-Combine the [find command](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/)'s `-exec` option with `rm` to find and remove all files older than 28 days old.  The files that match are printed on the screen (`-print`):
+Combine the [find command](/docs/guides/find-files-in-linux-using-the-command-line/)'s `-exec` option with `rm` to find and remove all files older than 28 days old.  The files that match are printed on the screen (`-print`):
 
     find filename* -type f -mtime +28 -exec rm '{}' ';' -print
 

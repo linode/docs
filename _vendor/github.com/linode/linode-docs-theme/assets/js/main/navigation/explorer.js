@@ -4,22 +4,22 @@ import { getOffsetTop, isElementInViewport, isMobile } from '../helpers/index';
 import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from '../search/request';
 import { newCreateHref } from './create-href';
 
-var debug = 0 ? console.log.bind(console, '[explorer]') : function() {};
+var debug = 0 ? console.log.bind(console, '[explorer]') : function () {};
 
 const sectionDelimm = ' > ';
 const startLevelRegularPages = 2;
 
 // The main search result have some sections that does not fit into the left side explorer.
-const shouldSkipSection = function(lvl0) {
-	return lvl0.endsWith('-branches') || lvl0 === 'taxonomies';
+const shouldSkipSection = function (lvl0) {
+	return lvl0.endsWith('-branches') || lvl0 === 'taxonomies' || lvl0 === 'bundles';
 };
 
 // Reports whether branch1 is the same or below branch2.
-const isSameOrBelowBranch = function(branch1, branch2) {
+const isSameOrBelowBranch = function (branch1, branch2) {
 	return branch1 === branch2 || branch1.startsWith(branch2 + ' >');
 };
 
-const nodeKeyToID = function(key) {
+const nodeKeyToID = function (key) {
 	return 'node-' + key.replace(/ > /g, '-');
 };
 
@@ -33,7 +33,7 @@ export function newSearchExplorerController(searchConfig) {
 	// This comparer is used to sort both sections
 	// and leaf nodes in the explorer tree.
 	// This functions orders by 1) Ordinal 2) PubDate or 3) Title.
-	const itemsComparer = function(a, b) {
+	const itemsComparer = function (a, b) {
 		if (a.ordinal === b.ordinal) {
 			if (a.firstPublishedTime === b.firstPublishedTime) {
 				let atitle = a.linkTitle || a.title;
@@ -46,28 +46,29 @@ export function newSearchExplorerController(searchConfig) {
 		return a.ordinal - b.ordinal;
 	};
 
-	const createExplorerNodeRequest = function(query, key) {
+	const createExplorerNodeRequest = function (query, key) {
 		let maxLeafNodes = searchConfig.explorer_max_leafnodes || 100;
 		let sectionFilter = `section:${key}`;
 		let facetFilters = query.toFacetFilters();
 		let filters = '';
 
 		return {
-			indexName: searchConfig.sections_merged.index,
+			indexName: searchConfig.indexName(searchConfig.sections_merged.index),
 			filters: filters,
 			facetFilters: facetFilters.concat(facetFilters, sectionFilter),
-			params: `query=${encodeURIComponent(query.q)}&hitsPerPage=${maxLeafNodes}`
+			distinct: 0,
+			params: `query=${encodeURIComponent(query.lndq)}&hitsPerPage=${maxLeafNodes}`,
 		};
 	};
 
-	const scrollToActive = function(self, nodeInfo) {
+	const scrollToActive = function (self, nodeInfo) {
 		let offset = 30; // Add some space above.
 		let threshold = 200; // Avoid scrolling short distances if the item is in viewport.
 
 		var isDone = false;
 		var container = self.$el.parentNode;
 
-		const scroll = function(what, to) {
+		const scroll = function (what, to) {
 			if (to >= 0 && container.scrollTop !== to) {
 				container.scrollTop = to;
 			}
@@ -91,15 +92,15 @@ export function newSearchExplorerController(searchConfig) {
 		// Select the active branch or leaf node.
 		let selector = nodeInfo.isBranch ? 'div > div a' : '.is-active-page';
 
-		setTimeout(function() {
+		setTimeout(function () {
 			// We have no simple way of knowing when the left menu is finished rendered,
 			// but we want to at least try to scroll down to the active node,
 			// and as soon as possible.
-			let retries = [ 0, 200, 500, 1000, 2000 ];
+			let retries = [0, 200, 500, 1000, 2000];
 			for (let i = 0; i < retries.length; i++) {
 				let sleep = retries[i];
 
-				setTimeout(function() {
+				setTimeout(function () {
 					if (isDone) {
 						return;
 					}
@@ -124,8 +125,7 @@ export function newSearchExplorerController(searchConfig) {
 							// within the threshold distance, we just
 							// keep the current scrollTop.
 							if (oldScrollTop && threshold && isElementInViewport(active)) {
-								let change =
-									oldScrollTop < scrollTop ? scrollTop - oldScrollTop : oldScrollTop - scrollTop;
+								let change = oldScrollTop < scrollTop ? scrollTop - oldScrollTop : oldScrollTop - scrollTop;
 
 								if (change < threshold) {
 									// Avoid minor scroll changes.
@@ -144,7 +144,7 @@ export function newSearchExplorerController(searchConfig) {
 		}, 0);
 	};
 
-	const getActiveNodeInfo = function() {
+	const getActiveNodeInfo = function () {
 		let info = window.lnPageInfo;
 		if (!info) {
 			return null;
@@ -155,23 +155,23 @@ export function newSearchExplorerController(searchConfig) {
 		if (info.kind === 'home') {
 			return {
 				isBranch: isBranch,
-				branchKey: ''
+				branchKey: '',
 			};
 		} else if (info.type === 'sections' || info.type === 'api') {
 			// Dynamic section, fetch the node key from the location.
 			return {
 				isBranch: isBranch,
-				branchKey: router.sectionsFromPath().join(' > ')
+				branchKey: router.sectionsFromPath().join(' > '),
 			};
 		} else if (info.sectionsEntries) {
 			return {
 				isBranch: isBranch,
-				branchKey: info.sectionsEntries.join(' > ')
+				branchKey: info.sectionsEntries.join(' > '),
 			};
 		} else {
 			return {
 				isBranch: false,
-				branchKey: ''
+				branchKey: '',
 			};
 		}
 	};
@@ -187,18 +187,18 @@ export function newSearchExplorerController(searchConfig) {
 
 		// Contains all the root nodes (level === 1).
 		rootNode: {
-			sections: []
+			sections: [],
 		},
 
 		// The search results.
 		searchState: null,
 
 		// Maps Algolia section to the Hugo section.
-		sectionMapping: {}
+		sectionMapping: {},
 	};
 
-	data.walk = function(rootNode, shouldSkip) {
-		const walkRecursive = function(n) {
+	data.walk = function (rootNode, shouldSkip) {
+		const walkRecursive = function (n) {
 			for (let nn of n.sections) {
 				if (shouldSkip(nn)) {
 					continue;
@@ -225,13 +225,13 @@ export function newSearchExplorerController(searchConfig) {
 		open: true,
 		noTransitions: true,
 
-		init: function() {
+		init: function () {
 			// This needs to be done AFTER Alpine has made its initial updates to the DOM.
 			this.$nextTick(() => {
 				templates = {
 					templateLoopRoot: this.$refs['templateLoopRoot'],
 					templateLoopNested: this.$refs['templateLoopNested'],
-					templateTree: this.$refs['templateTree']
+					templateTree: this.$refs['templateTree'],
 				};
 				this.target = this.$refs['explorer'];
 
@@ -257,17 +257,17 @@ export function newSearchExplorerController(searchConfig) {
 
 							let section = currentKey.join(' > ');
 							let factory = {
-								status: function() {
+								status: function () {
 									return RequestCallBackStatus.Once;
 								},
-								create: function(query) {
+								create: function (query) {
 									return {
 										request: createExplorerNodeRequest(query, section),
 										callback: () => {
 											// This is just a cache warmer.
-										}
+										},
 									};
-								}
+								},
 							};
 							preloadSearches.push(newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.Main));
 						}
@@ -302,17 +302,17 @@ export function newSearchExplorerController(searchConfig) {
 			}
 		},
 
-		isOpen: function() {
+		isOpen: function () {
 			return this.$store.nav.open.explorer && this.data.loaded;
 		},
 
-		closeIfMobile: function() {
+		closeIfMobile: function () {
 			if (this.$store.nav.open.explorer && isMobile()) {
 				this.$store.nav.open.explorer = false;
 			}
 		},
 
-		load: function() {
+		load: function () {
 			if (!this.getResult()) {
 				return;
 			}
@@ -342,18 +342,18 @@ export function newSearchExplorerController(searchConfig) {
 			onLoadNodeInfo = null;
 		},
 
-		onTurbolinksBeforeVisit: function(data) {
+		onTurbolinksBeforeVisit: function (data) {
 			this.scrollTop = this.$el.parentNode.scrollTop;
 		},
 
 		// Turbolinks replaces the body that we may have changed, so restore the
 		// explorer state when navigating to a new page.
-		onTurbolinksBeforeRender: function(data) {
+		onTurbolinksBeforeRender: function (data) {
 			// Always close the left side tree menu when navigating away on mobile.
 			this.closeIfMobile();
 		},
 
-		onTurbolinksRender: function(data) {
+		onTurbolinksRender: function (data) {
 			if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
 				return;
 			}
@@ -372,7 +372,7 @@ export function newSearchExplorerController(searchConfig) {
 			}
 		},
 
-		setActiveBranch: function(nodeInfo) {
+		setActiveBranch: function (nodeInfo) {
 			let nodeKey = nodeInfo.branchKey;
 			for (let k in this.data.nodes) {
 				let n = this.data.nodes[k];
@@ -395,12 +395,12 @@ export function newSearchExplorerController(searchConfig) {
 			}
 		},
 
-		render: function() {
+		render: function () {
 			this.target.innerHTML = '';
 			this.renderNodesRecursive(this.target, 1);
 		},
 
-		renderNodesRecursive: function(ulEl, level) {
+		renderNodesRecursive: function (ulEl, level) {
 			let templ =
 				level === 1
 					? document.importNode(templates.templateLoopRoot.content.querySelector('template'), true)
@@ -424,7 +424,7 @@ export function newSearchExplorerController(searchConfig) {
 			this.renderNodesRecursive(ulEl, level);
 		},
 
-		createNode: function(opts) {
+		createNode: function (opts) {
 			let title = opts.title ? opts.title : opts.name;
 			let ordinal = opts.ordinal ? opts.ordinal : 0;
 
@@ -438,6 +438,7 @@ export function newSearchExplorerController(searchConfig) {
 				title: title,
 				key: opts.key,
 				href: opts.href,
+				hit: opts.hit,
 				active: opts.active,
 				count: opts.count,
 				icon: opts.level === 1 ? opts.section.config.explorer_icon : '',
@@ -447,40 +448,41 @@ export function newSearchExplorerController(searchConfig) {
 				disabled: false,
 				kind: opts.kind ? opts.kind : 'section',
 				isGhostSection: opts.isGhostSection,
-				sectionLvl0: opts.sectionLvl0
+				sectionLvl0: opts.sectionLvl0,
 			};
 
 			let self = this;
 
-			n.id = function() {
+			n.id = function () {
 				return nodeKeyToID(this.key);
 			};
 
-			n.children = function() {
+			n.children = function () {
 				if (this.pages.length === 0) {
 					// The sections slice is sorted and ready to use.
 					return this.sections;
 				}
 
 				const nodes = this.sections.concat(this.pages);
+
 				nodes.sort(itemsComparer);
 
 				return nodes;
 			};
 
-			n.isDisabled = function() {
+			n.isDisabled = function () {
 				return false;
 			};
 
-			n.isLeaf = function() {
+			n.isLeaf = function () {
 				return this.kind === 'page' || (this.level > 1 && (this.count === 0 || this.isGhostSection));
 			};
 
-			n.isPage = function() {
+			n.isPage = function () {
 				return this.kind === 'page';
 			};
 
-			n.setAsActive = function() {
+			n.setAsActive = function () {
 				if (!this.parent) {
 					n.active = true;
 					return;
@@ -491,7 +493,7 @@ export function newSearchExplorerController(searchConfig) {
 				});
 			};
 
-			n.onClick = function(e) {
+			n.onClick = function (e) {
 				if (e.metaKey) {
 					return;
 				}
@@ -513,6 +515,11 @@ export function newSearchExplorerController(searchConfig) {
 				}
 
 				if (this.href) {
+					// Send click events to Algolia insights.
+					if (this.hit) {
+						self.$store.nav.analytics.handler.clickHit(this.hit, 'DOCS: Explorer');
+					}
+
 					let href = this.href;
 					if (this.isLeaf() && href.startsWith('http')) {
 						return;
@@ -526,7 +533,7 @@ export function newSearchExplorerController(searchConfig) {
 						// Add a slight delay here to allow the menu
 						// to expand before we navigate.
 						// This looks more natural.
-						setTimeout(function() {
+						setTimeout(function () {
 							Turbo.visit(href);
 						}, 200);
 					}
@@ -534,24 +541,24 @@ export function newSearchExplorerController(searchConfig) {
 			};
 
 			// Detault implementations.
-			n.showBorder1 = function() {
+			n.showBorder1 = function () {
 				return false;
 			};
 
-			n.showBorder2 = function() {
+			n.showBorder2 = function () {
 				return false;
 			};
 
-			n.loadPages = function() {};
+			n.loadPages = function () {};
 
 			return n;
 		},
 
 		// loadPages loads any leaf pages into node if not already loaded.
-		loadPages: function(node) {
+		loadPages: function (node) {
 			let nodes = [];
 
-			this.data.walk(this.data.rootNode, function(nn) {
+			this.data.walk(this.data.rootNode, function (nn) {
 				if (nn.open) {
 					nodes.push(nn);
 				}
@@ -571,24 +578,34 @@ export function newSearchExplorerController(searchConfig) {
 
 			var self = this;
 
-			const addPagesToNode = function(n, hits) {
+			const addPagesToNode = function (n, hits) {
 				let pages = [];
 				for (let item of hits) {
 					let href = item.href;
+					if (item.hierarchy && item.hierarchy.length) {
+						// This is the reference-section.
+						// All pages in a section shares the same href (the section),
+						// and the best match is selected while searching using Algolia's distinct keyword.
+						// This is the explorer, and we need to link to the detail page.
+						let last = item.hierarchy[item.hierarchy.length - 1];
+						href = last.href;
+					}
 					let active = href === window.location.pathname;
+
 					pages.push(
 						self.createNode({
 							parent: n,
 							section: n.section,
 							key: href,
 							href: href,
+							hit: item,
 							active: active,
 							ordinal: item.ordinal,
 							firstPublishedTime: item.firstPublishedTime,
 							name: item.linkTitle,
 							level: n.level + 1,
 							kind: 'page',
-							count: 0
+							count: 0,
 						})
 					);
 				}
@@ -602,30 +619,30 @@ export function newSearchExplorerController(searchConfig) {
 				}
 
 				let factory = {
-					status: function() {
+					status: function () {
 						return node.open ? RequestCallBackStatus.On : RequestCallBackStatus.Off;
 					},
-					create: function(query) {
+					create: function (query) {
 						return {
 							request: createExplorerNodeRequest(query, node.key),
 							callback: (result) => {
 								addPagesToNode(node, result.hits);
 							},
-							pronto: true
+							pronto: true,
 						};
-					}
+					},
 				};
 
 				this.$store.search.addSearches(newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.Main));
 			});
 		},
 
-		buildNodes: function() {
+		buildNodes: function () {
 			var result = this.getResult();
 
 			var self = this;
 
-			this.data.parseKey = function(key) {
+			this.data.parseKey = function (key) {
 				let parts = key.split(sectionDelimm);
 				let level = parts.length;
 				let name = parts[parts.length - 1];
@@ -643,11 +660,11 @@ export function newSearchExplorerController(searchConfig) {
 					key: key,
 					name: name,
 					href: href,
-					parentKey: parentKey
+					parentKey: parentKey,
 				};
 			};
 
-			this.data.add = function(sectionResult) {
+			this.data.add = function (sectionResult) {
 				let kp = this.parseKey(sectionResult.key);
 
 				let n = this.nodes[kp.key];
@@ -668,6 +685,16 @@ export function newSearchExplorerController(searchConfig) {
 						title = section.config.title;
 					}
 
+					let hit;
+
+					if (sectionResult.hasObjectID) {
+						// Create a pseudo hit for event tracking.
+						hit = {
+							objectID: kp.href,
+							__position: sectionResult.position,
+						};
+					}
+
 					n = self.createNode({
 						key: kp.key,
 						section: section,
@@ -678,17 +705,18 @@ export function newSearchExplorerController(searchConfig) {
 						level: kp.level,
 						count: count,
 						isGhostSection: sectionResult.isGhostSection,
-						sectionLvl0: sectionResult.sectionLvl0
+						sectionLvl0: sectionResult.sectionLvl0,
+						hit: hit,
 					});
 
-					n.isDisabled = function() {
+					n.isDisabled = function () {
 						return this.disabled || this.count === 0;
 					};
 
-					n.toggleOpen = function() {
+					n.toggleOpen = function () {
 						if (!this.open) {
 							// Close open nodes on the same or lower level.
-							self.data.walk(this.parent, function(nn) {
+							self.data.walk(this.parent, function (nn) {
 								if (nn.open && nn !== n) {
 									nn.open = false;
 								}
@@ -701,11 +729,11 @@ export function newSearchExplorerController(searchConfig) {
 						}
 					};
 
-					n.loadPages = function() {
+					n.loadPages = function () {
 						self.loadPages(this);
 					};
 
-					n.hasOpenDescendants = function() {
+					n.hasOpenDescendants = function () {
 						for (let s of n.sections) {
 							if (s.open) {
 								return true;
@@ -720,11 +748,11 @@ export function newSearchExplorerController(searchConfig) {
 						return false;
 					};
 
-					n.showBorder1 = function() {
+					n.showBorder1 = function () {
 						return this.level > 1 && this.open && !this.hasOpenDescendants();
 					};
 
-					n.showBorder2 = function() {
+					n.showBorder2 = function () {
 						return this.level > 1 && this.open && this.hasOpenDescendants();
 					};
 
@@ -778,7 +806,7 @@ export function newSearchExplorerController(searchConfig) {
 			}
 		},
 
-		getResult: function() {
+		getResult: function () {
 			if (this.data.loaded) {
 				return this.$store.search.results.main.result;
 			}
@@ -786,7 +814,7 @@ export function newSearchExplorerController(searchConfig) {
 		},
 
 		// Update hidden state and facet counts based on a updated search result.
-		filterNodes: function() {
+		filterNodes: function () {
 			debug('filterNodes');
 			let result = this.getResult();
 
@@ -833,7 +861,7 @@ export function newSearchExplorerController(searchConfig) {
 		},
 
 		// Tailwind transition classes for opening of the explorer.
-		transitions: function() {
+		transitions: function () {
 			if (this.noTransitions) {
 				// No transition on initial page load. It looks jittery and gives a penalty in Lightroom.
 				return {};
@@ -842,8 +870,8 @@ export function newSearchExplorerController(searchConfig) {
 			return {
 				'x-transition:enter': 'transition-transform transition-opacity ease-out duration-500 sm:duration-700',
 				'x-transition:enter-start': 'opacity-0 transform mobile:-translate-x-8 sm:-translate-y-8',
-				'x-transition:enter-end': 'opacity-100 transform mobile:translate-x-0 sm:translate-y-0'
+				'x-transition:enter-end': 'opacity-100 transform mobile:translate-x-0 sm:translate-y-0',
 			};
-		}
+		},
 	};
 }

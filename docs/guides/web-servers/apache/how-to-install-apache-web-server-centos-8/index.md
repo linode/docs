@@ -1,10 +1,6 @@
 ---
 slug: how-to-install-apache-web-server-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Apache on your CentOS 8 server, configure virtual hosting, and set up modules and scripting.'
-og_description: 'Install Apache on your CentOS 8 server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache", "centos", "centos 8", "http", "web server"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +8,8 @@ modified: 2020-03-19
 modified_by:
   name: Linode
 published: 2020-03-19
-title: 'How to Install Apache Web Server on CentOS 8'
-h1_title: 'Installing Apache Web Server on CentOS 8'
+title: 'Installing Apache Web Server on CentOS 8'
+title_meta: 'How to Install Apache Web Server on CentOS 8'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
@@ -24,19 +20,20 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/apache/how-to-install-apache-web-server-centos-8/']
+authors: ["Linode"]
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on CentOS 8.
 
-If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide.
 
 ## Before You Begin
 
-1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
+1.  Set up your Linode in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/guides/dns-manager/) guide.
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
-    - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/getting-started/) guide.
+    - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
 
@@ -66,7 +63,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 ## Multi-Processing Modules
 
-Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In CentOS 8 the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/#multi-processing-modules) guide.
+Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In CentOS 8 the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/guides/tuning-your-apache-server/#multi-processing-modules) guide.
 
 1.  You can check which MPM is currently configured with the following command:
 

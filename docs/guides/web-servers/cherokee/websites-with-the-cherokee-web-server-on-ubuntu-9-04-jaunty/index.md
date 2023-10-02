@@ -1,9 +1,6 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.04 (Jaunty).'
 keywords: ["cherokee", "web sever", "cherokee on ubuntu", "ubuntu jaunty"]
 tags: ["web server","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This tutorial explains how to install and configure the Cherokee web server on Ubuntu 9.04 (Jaunty). This guide targets Cherokee version 0.11.6 (provided by the Ubuntu Jaunty repositories as of this writing), but the install steps should be similar for later versions. We will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Ubuntu 9.04 (Jaunty) system. If you have not followed our [getting started](/docs/getting-started/) guide, we recommend that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Ubuntu 9.04 (Jaunty) system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, we recommend that you do so prior to following these instructions.
 
 ## Check Package Sources
 
@@ -100,25 +98,25 @@ Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://l
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options. You'll still need to log in using the username and one-time password provided when you launched `cherokee-admin`.
 
-[![The cherokee-admin web server administration interface running on a Linode.](458-cherokee-ubuntu-jaunty-admin-01-home.png)](458-cherokee-ubuntu-jaunty-admin-01-home.png)
+![The cherokee-admin web server administration interface running on a Linode.](458-cherokee-ubuntu-jaunty-admin-01-home.png)
 
 ### Secure Admin Panel Access on Windows
 
 You can use [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/) to set up a secure SSH tunnel for Cherokee administration. Enter your Linode's public IP address in the session tab:
 
-[![Session information for PuTTY.](459-cherokee-putty-01-session.png)](459-cherokee-putty-01-session.png)
+![Session information for PuTTY.](459-cherokee-putty-01-session.png)
 
 Expand the "Connection -\> SSH" menus to select the "Tunnel" configuration page. Enter the values shown here:
 
-[![Configuring an SSH tunnel for Cherokee administration in PuTTY.](460-cherokee-putty-02-tunnel.png)](460-cherokee-putty-02-tunnel.png)
+![Configuring an SSH tunnel for Cherokee administration in PuTTY.](460-cherokee-putty-02-tunnel.png)
 
 Back on the session tab, enter "Cherokee Admin" in the "Saved Sessions" field and click "Save" to retain your settings for future use.
 
-[![Saving an SSH session for Cherokee administration in PuTTY.](461-cherokee-putty-03-saved-session.png)](461-cherokee-putty-03-saved-session.png)
+![Saving an SSH session for Cherokee administration in PuTTY.](461-cherokee-putty-03-saved-session.png)
 
 Click "Open" to connect to your server and start the tunnel. You may receive a warning similar to the one shown here:
 
-[![An SSH key alert in PuTTY.](462-cherokee-putty-04-alert.png)](462-cherokee-putty-04-alert.png)
+![An SSH key alert in PuTTY.](462-cherokee-putty-04-alert.png)
 
 Click "Yes" to continue, and log into your Linode as you normally would. As long as the SSH session is open you'll be able to navigate to `http://localhost:9090` in your web browser to access the Cherokee admin panel via the secure tunnel.
 

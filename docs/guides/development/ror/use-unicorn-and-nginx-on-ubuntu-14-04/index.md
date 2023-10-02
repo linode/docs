@@ -1,8 +1,5 @@
 ---
 slug: use-unicorn-and-nginx-on-ubuntu-14-04
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 14.04 '
 keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 14.04", " nginx", "reverse proxy", "ubuntu 14.04"]
 tags: ["web applications","proxy","ruby","nginx","ubuntu"]
@@ -11,13 +8,11 @@ aliases: ['/websites/ror/use-unicorn-and-nginx-on-ubuntu-14-04/','/development/r
 published: 2016-03-30
 modified: 2016-03-30
 deprecated: true
-deprecated_link: '/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04'
+deprecated_link: 'guides/use-unicorn-and-nginx-on-ubuntu-18-04/'
 modified_by:
     name: Alex Fornuto
-title: 'Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04'
-contributor:
-    name: Vaibhav Rajput
-    link: https://twitter.com/rootaux
+title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 14.04"
+title_meta: "Deploy a Rails App with Unicorn and nginx on Ubuntu 14.04"
 external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 audiences: ["beginner"]
@@ -28,6 +23,7 @@ relations:
         key: unicorn-nginx
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Vaibhav Rajput"]
 ---
 
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 14.04.
@@ -38,10 +34,10 @@ Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be 
 
 ## Before You Begin
 
-Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
+Before starting this guide, make sure that  you have read through and completed our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  Before you install any package, ensure that your hostname is correct:
@@ -131,7 +127,7 @@ pid "#{shared_dir}/pids/unicorn.pid"
 
         mkdir -p shared/pids shared/sockets shared/log
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Please note that we are still in the Rails application directory.
 {{< /note >}}
 
@@ -152,7 +148,7 @@ server unix:/home/username/example/shared/sockets/unicorn.sock fail_timeout=0;
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Edit `username` and `example` with appropriate values.
 {{< /note >}}
 
@@ -186,7 +182,7 @@ keepalive_timeout 10;
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure you change the username and example with the appropriate values.
 {{< /note >}}
 
@@ -208,7 +204,7 @@ Make sure you change the username and example with the appropriate values.
 
         sudo unicorn -c config/unicorn.rb -E production -D
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure you are in the application directory; otherwise, you will need to type in the whole path	name.
 {{< /note >}}
 

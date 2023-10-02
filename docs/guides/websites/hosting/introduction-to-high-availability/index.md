@@ -1,9 +1,6 @@
 ---
 slug: introduction-to-high-availability
-author:
-  name: Phil Zona
-  email: docs@linode.com
-description: 'Introduction to high availability concepts'
+description: 'This guide provides you with an introduction to concepts and terminology relating to high availability, a method of keeping your web servers up with maximum uptime.'
 keywords: ["high availability", "hosting", "website", "failover", "ssd ha"]
 tags: ["web server","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ title: 'Introduction to High Availability'
 external_resources:
 - '[Fault Tolerance](https://en.wikipedia.org/wiki/Fault_tolerance)'
 aliases: ['/websites/introduction-to-high-availability/','/websites/hosting/introduction-to-high-availability/']
+authors: ["Phil Zona"]
 ---
 
 ![Introduction to High Availability](Introduction_to_High_Availability_smg.jpg)
@@ -61,9 +59,9 @@ In a highly available setup, regular checks are performed to ensure that the pri
 
 In this section, we'll go over the function of each component of the high availability configuration, and explain how the pieces work together. There are a number of combinations of software to perform each task in a high availability configuration, and the software mentioned in this section serves as just one possible solution to creating a highly available site or application.
 
-The concepts discussed here are specifically geared toward the configuration described in our guide on how to [host a website with high availability](/docs/websites/host-a-website-with-high-availability), but will apply to highly available systems in general. The  diagram below shows the configuration we use in our guide.
+The concepts discussed here are specifically geared toward the configuration described in our guide on how to [host a website with high availability](/docs/guides/host-a-website-with-high-availability/), but will apply to highly available systems in general. The  diagram below shows the configuration we use in our guide.
 
-[![High availability server configuration](high-availability-diagram.png)](high-availability-diagram.png)
+![High availability server configuration](high-availability-diagram.png)
 
 ### File System
 
@@ -103,7 +101,7 @@ Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically 
 
 The load balancing component of a high availability system is one of its most important components, acting as the first barrier to handle traffic from users to the application servers. Without a load balancer, your site would be hosted on three application servers that have no way of assigning priority among themselves.
 
-Our solution to load balancing is the [NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers), a highly available component that will evenly distribute incoming traffic to one of the three application servers, ensuring that no single server experiences a much heavier load than the others.
+Our solution to load balancing is the [NodeBalancer](/docs/products/networking/nodebalancers/get-started/), a highly available component that will evenly distribute incoming traffic to one of the three application servers, ensuring that no single server experiences a much heavier load than the others.
 
 The NodeBalancer is critical because it provides a single point of access without a single point of failure. It offers backend monitoring, and failover at the top level of the highly available system (the bottom level is handled by Gluster FS and Keepalived).
 
@@ -111,4 +109,4 @@ The NodeBalancer is critical because it provides a single point of access withou
 
 A system must offer redundancy, monitoring, and failover on each service in order to be highly available. In our configuration, the NodeBalancer offers monitoring and failover for the three (redundant) application servers. The application servers read from clusters of three database and three file system nodes, which are replicated, making them redundant. Monitoring and failover are each handled separately for these clusters, ensuring that the failure of any one service does not affect the availability of the entire system.
 
-Now that you understand high availability, you can begin to apply its concepts when designing your own systems and setting up your own hosting configurations. If you're ready to get started right away, check our guide to [hosting a website with high availability](/docs/websites/host-a-website-with-high-availability) for instructions on how to set up the system described above.
+Now that you understand high availability, you can begin to apply its concepts when designing your own systems and setting up your own hosting configurations. If you're ready to get started right away, check our guide to [hosting a website with high availability](/docs/guides/host-a-website-with-high-availability/) for instructions on how to set up the system described above.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-tinc-peer-to-peer-vpn
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide details how to set up tinc, an open-source, peer-to-peer VPN on your Linode.'
 keywords: ["VPN", "tinc", "Ubuntu", "security"]
 tags: ["ubuntu","networking","security","vpn"]
@@ -13,8 +10,7 @@ modified: 2017-09-20
 modified_by:
   name: Linode
 title: 'How to Set up tinc, a Peer-to-Peer VPN'
-contributor:
-  name: Damaso Sanoja
+authors: ["Damaso Sanoja"]
 ---
 
 
@@ -28,9 +24,9 @@ From a clear two-server connection to complex mesh private network, this guide w
 
 You will need at least two Linodes for this guide. Complete the following steps for each one:
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
     This guide will use `sudo` wherever possible. Please ensure you have access to privileged user rights.
 
@@ -38,7 +34,7 @@ You will need at least two Linodes for this guide. Complete the following steps 
 
         sudo apt update && sudo apt upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In order to focus on tinc configuration, three assumptions are made:
 
 - There are no active firewalls on any server.
@@ -62,7 +58,7 @@ Before getting started, it's a good idea to make a cheat sheet for yourself list
 
 ![Two node VPN cheat-sheet](tinc-2-node-cheat-sheet.jpg)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Throughout this guide, replace the IP address for each server with the public IP address of the corresponding Linode.
 {{< /note >}}
 
@@ -124,7 +120,7 @@ ConnectTo = appserver
 
     `ConnectTo` - This value points to the tinc daemon you want to connect. When it's not present (like in the previous file), tinc enters listening mode and waits for connections.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can customize tinc behavior with many other parameters in the configuration file, for more information visit the [tinc documentation](https://www.tinc-vpn.org/documentation/tinc.conf.5).
 {{< /note >}}
 
@@ -202,7 +198,7 @@ ip route add 192.168.100.0/24 dev $INTERFACE
     {{< file "/etc/tinc/linodeVPN/tinc-down" aconf >}}
 #!/bin/sh
 ip route del 192.168.100.0/24 dev $INTERFACE
-ip addr del 192.168.100.209 dev $INTERFACE
+ip addr del 192.168.100.130 dev $INTERFACE
 ip link set $INTERFACE down
 
 {{< /file >}}
@@ -236,7 +232,7 @@ WantedBy=multi-user.target
 {{< /file >}}
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A debug level of `3` was chosen in the `tincd` command. This will log all requests from other daemons and include an authentication chain between them. See the [tincd documentation](https://www.tinc-vpn.org/documentation/tincd.8) for more information about debug levels.
 {{< /note >}}
 

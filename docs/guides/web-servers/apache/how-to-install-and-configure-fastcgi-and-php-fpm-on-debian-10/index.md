@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide will show you how to install mod_fcgid and PHP-FPM on Debian 10 with a basic configuration that uses socket connections instead of TCP."
 og_description: "This guide will show you how to install mod_fcgid and PHP-FPM on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP."
 keywords: ['list','of','keywords','and key phrases']
@@ -11,32 +8,30 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
 modified_by:
   name: Linode
-title: "How to Install FastCGI and PHP-FPM on Debian 10"
-h1_title: "Installing and Configuring FastCGI and PHP-FPM on Debian 10"
-enable_h1: true
-contributor:
-  name: Linode
+title: "Installing and Configuring FastCGI and PHP-FPM on Debian 10"
+title_meta: "How to Install FastCGI and PHP-FPM on Debian 10"
 relations:
     platform:
         key: install-fastcgi-php-fpm
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/apache/how-to-install-and-configure-fastcgi-and-php-fpm-on-debian-10/']
+authors: ["Linode"]
 ---
 
 `mod_fcgid` is an [Apache module](https://httpd.apache.org/mod_fcgid/) that uses the [FastCGI](https://en.wikipedia.org/wiki/FastCGI) protocol to provide an interface between Apache and Common Gateway Interface (CGI) programs. CGI helps a web server handle dynamic content generation and processing for scripting languages like PHP. This dynamic functionality is commonly used when running content management systems like WordPress on a LAMP stack.
 
 This guide will show you how to install `mod_fcgid` and `PHP-FPM` on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP. These steps will enable you to run PHP through `mod_fcgid`. Running PHP through `mod_fcgid` helps to reduce the amount of system resources used by forcing the web server to act as a proxy and only pass files ending with the *.php* file extension to PHP-FPM. Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users.
 
-This guide assumes that you are familiar and comfortable with setting up a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/). If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) guide.
+This guide assumes that you are familiar and comfortable with setting up a [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/). If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
 
 ## Before You Begin
 
-1. Complete the steps in the [How to Install a LAMP Stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide. After completing the LAMP stack guide, you should have an Apache virtual hosts configuration for your own website. This guide will continue to refer to the site as `example.com`.
+1. Complete the steps in the [How to Install a LAMP Stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide. After completing the LAMP stack guide, you should have an Apache virtual hosts configuration for your own website. This guide will continue to refer to the site as `example.com`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide's examples will use PHP version 7.3. When running commands related to PHP, ensure you replace any version numbers with your own system's PHP version.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Install mod_fcgid and PHP-FPM
 
@@ -86,10 +81,10 @@ listen = /run/php/php7.3-fpm.sock
 listen = /var/run/php/php7.3-fpm.sock
     {{< /file >}}
 
-1.  If the `listen = 127.0.0.1:9000` is not already uncommented, do so now.
+1.  If the `listen = 127.0.0.1` is not already uncommented, do so now.
 
     {{< file "/etc/php/7.3/fpm/pool.d/www.conf" >}}
-listen = 127.0.0.1:9000
+listen = 127.0.0.1
     {{< /file >}}
 
 1.  Restart the `php-fpm` daemon for these changes to take effect.
@@ -142,8 +137,8 @@ FcgidIOTimeout 300
 
 [PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of PHP processes to run PHP files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
 
-{{< note >}}
- To create the example bob user, you can follow the steps outlined in our [Securing Your Server](/docs/security/securing-your-server/#debian) guide.
+{{< note respectIndent=false >}}
+ To create the example bob user, you can follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#debian) guide.
 {{< /note >}}
 
 1. Create a copy of your original pool file to use as the foundation for your `example.com` pool configuration.
@@ -197,7 +192,7 @@ listen = /var/run/php/php7.3-fpm_example.com.sock
          AddType  application/x-httpd-php         .php
          AddHandler application/x-httpd-php .php
          Alias /php7-fcgi /usr/lib/cgi-bin/php7-fcgi
-         ProxyPassMatch " ^/(.*\.php(/.*)?)$" "unix:listen = /var/run/php/php7.3-fpm_example.com.sock|fcgi://localhost/var/www/html/example.com/public_html/"
+         ProxyPassMatch " ^/(.*\.php(/.*)?)$" "unix:/run/php/php7.3-fpm_example.com.sock|fcgi://localhost/var/www/html/example.com/public_html/"
      </IfModule>
 </VirtualHost>
 {{< /file >}}
@@ -206,6 +201,10 @@ listen = /var/run/php/php7.3-fpm_example.com.sock
 1.  Check the configuration file for errors.
 
         sudo apache2ctl configtest
+
+{{< note respectIndent=false >}}
+ If Apache continues to use apache handler, then Pass use `apache: a2enconf php7.3-fpm` and `a2dismod php7.3`.
+{{< /note >}}
 
 1.  If there were no errors, restart Apache.
 

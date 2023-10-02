@@ -1,31 +1,29 @@
+{{ warnf "DEPRECATION NOTICE: disclosure-note shortcode (replaced by note shortcode)\n%s" .Position }}
 {{ $text := .Inner | markdownify }}
-<blockquote class="callout border-brand" style="background-color: #F2F2F7; border-color: #D9DBE1;" x-data="{ open: false }">
-  <button type="button" @click="open = !open"
-            class="flex items-center w-full text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-titlecolor">
-    <div class="rounded-full h-6 w-6 btn-icon flex items-center justify-center border-gray-500 border mr-2">
+{{ $title :=  (.Get 0) | default  "Disclosure Note" }}
+<blockquote class="disclosure callout" x-data="{ open: false }">
+  <button
+    type="button"
+    @click="open = !open"
+    class="flex items-center w-full text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-titlecolor">
+    <div
+      class="rounded-full h-6 w-6 btn-icon flex items-center justify-center border-gray-500 border mr-2">
       <template x-if="open">
         <svg class="text-basicgray h-4 w-4">
           <use href="#icon--arrow-up"></use>
         </svg>
       </template>
       <template x-if="!open">
-        <svg class="text-basicgray h-4 w-4" >
+        <svg class="text-basicgray h-4 w-4">
           <use href="#icon--arrow-down"></use>
         </svg>
       </template>
     </div>
     <strong class="callout-title">
-      {{ default "Disclosure Note" (.Get 0) }}
+      {{ $title }}
     </strong>
   </button>
-  <div x-show="open" class="callout-body">
-    <div class="height-preservation-wrapper">
-      {{ $text }}
-    </div>
-  </div>
-  <div x-show="!open" class="callout-body">
-    <div class="height-preservation-wrapper">
-      {{ $text | truncate 100 }}
-    </div>
+  <div class="disclosure-content" :class="open ? 'open' : 'closed'">
+    {{ $text }}
   </div>
 </blockquote>

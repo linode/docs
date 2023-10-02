@@ -1,35 +1,30 @@
 ---
 slug: serve-php-php-fpm-and-nginx
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Proxy PHP requests with NGINX and FastCGI using PHP-FPM.'
+description: "This guide provides you with information on how to proxy PHP requests with the NGINX web server and FastCGI by using PHP-FPM (Fast Process Manager)."
 keywords: ["php", "php-fpm", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/serve-php-php-fpm-and-nginx/','/websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
-modified: 2018-02-19
+modified: 2021-12-29
 modified_by:
   name: Linode
 published: 2018-02-19
-title: Serve PHP with PHP-FPM and NGINX
+title: "Serve PHP with PHP-FPM and NGINX"
+image: serve-php-with-phpfpm-and-nginx-smp.jpg
 external_resources:
  - '[PHP Manual](https://secure.php.net/docs.php)'
+authors: ["Linode"]
 ---
-
-![Serve PHP with PHP-FPM and NGINX](serve-php-with-phpfpm-and-nginx-smp.jpg)
 
 The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.wikipedia.org/wiki/FastCGI) handler for [PHP](https://secure.php.net/) scripts and applications. It's commonly paired with web servers to serve applications which require a PHP framework, such as web forums or login gateways, while the web server returns HTML, JavaScript, and other non-PHP content.
 
-
 ## Before You Begin
 
-- **You will need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
+- **You need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 - You will need root access to the system, or a user account with `sudo` privileges.
 
 - Update your system’s packages.
-
 
 ## Install and Configure PHP-FPM
 
@@ -52,7 +47,7 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
         /etc/php/7.0/fpm/pool.d/www.conf
         /etc/php/7.0/cli/php.ini
 
-3.  The `listen.owner` and `listen.group` variables are set to `www-data` by default, but they need to match the user and group NGINX is running as. If you installed NGINX using our [*Getting Started with NGINX*](/docs/web-servers/) series, then your setup will be using the `nginx` user and group. You can verify with:
+3.  The `listen.owner` and `listen.group` directives determines owner for PHP-FPM socket. Those are set to `www-data` by default, but they need to match the user and group NGINX is running as. If you installed NGINX using our [*Getting Started with NGINX*](/docs/web-servers/) series, then your setup will be using the `nginx` user and group. You can verify with:
 
         ps -aux | grep nginx
 
@@ -63,12 +58,19 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
         nginx     3603  0.0  0.0  32912  2560 ?        S    18:24   0:00 nginx: worker process
         nginx     3604  0.0  0.0  32912  3212 ?        S    18:24   0:00 nginx: worker process
 
-    This shows the NGINX master process is running as `root`, and the worker processes are running as the `nginx` user and group. Change the `listen` variables to that:
+    This shows the NGINX master process is running as `root`, and the worker processes are running as the `nginx` user and group. Change the `listen` directives to that:
 
         sed -i 's/listen.owner = www-data/listen.owner = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
         sed -i 's/listen.group = www-data/listen.group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
 
-4.  When pairing NGINX with PHP-FPM, it's possible to return to NGINX a `.php` URI that does not actually exist within the site's directory structure. The PHP processor will process the URI, and execute the `.php` file, because its job is to process anything handed to it by NGINX. This presents a security problem.
+4.  By default, PHP-FPM process is run as the `www-data` user and group. Again, those need to be edited so that those match user and group of running NGINX instance, otherwise permission errors may occur when NGINX passed PHP requests to PHP-FPM.
+
+    Change `user` and `group` directives to NGINX user and group:
+
+        sed -i 's/user = www-data/user = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
+        sed -i 's/group = www-data/group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
+
+5.  When pairing NGINX with PHP-FPM, it's possible to return to NGINX a `.php` URI that does not actually exist within the site's directory structure. The PHP processor will process the URI, and execute the `.php` file, because its job is to process anything handed to it by NGINX. This presents a security problem.
 
     It's important to limit what NGINX passes to PHP-FPM so malicious scripts can't be injected into return streams to the server. Instead, the request is stopped, possibly then resulting in a 404. There are multiple ways to do this ([see the NGINX wiki](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php)) but here we chose to specify the setting in PHP-FPM rather than in NGINX's configuration.
 
@@ -76,7 +78,7 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
 
     You'll notice that `;cgi.fix_pathinfo=1` is commented out by default. Setting it to `0` and uncommenting it will enforce the configuration should there be any upstream changes in the default value in the future.
 
-5.  Restart PHP-FPM to apply the changes:
+6.  Restart PHP-FPM to apply the changes:
 
         systemctl restart php7.0-fpm.service
 
@@ -126,14 +128,15 @@ server {
     This only applicable if you allow users to upload or submit files to your site. Change the name of the directory from `uploads` to whatever suits your need.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
-  location ~* \.php$ {
-    if ($uri !~ "^/uploads/") {
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        }
-    include         fastcgi_params;
-    fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
-    fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
-  }
+  location ~ ^ /uploads/  {
+    try_files $uri =404;
+    }
+    location ~* \.php$ {
+    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+    }
 {{< /file >}}
 
 3.  Reload NGINX:

@@ -1,8 +1,10 @@
 ---
 title: Resources
+title_meta: "Resources for StackScripts"
 description: "Resources and other information related to Linode StackScripts including blog posts, community posts, and press releases."
 tab_group_main:
     weight: 40
+published: 2020-04-22
 ---
 
 ## Blog Posts
@@ -11,7 +13,7 @@ tab_group_main:
 
 ## Community Posts
 
-- [How to Debug Stackscripts](https://www.linode.com/community/questions/5897/stackscripts-how-to-debug)
+- [How to Debug StackScripts](https://www.linode.com/community/questions/5897/stackscripts-how-to-debug)
 
 - [More information StackScripts guide?](https://www.linode.com/community/questions/479/stackscript-guide)
 

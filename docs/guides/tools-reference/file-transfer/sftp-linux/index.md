@@ -1,7 +1,5 @@
 ---
 slug: sftp-linux
-author:
-  name: Jeff Novotny
 description: 'Learn how to use SFTP commands to transfer files to and from Linux servers.'
 keywords: ['what is sftp','SFTP commands','Sftp server','sftp vs ftps', 'scp vs sftp']
 tags: ['linux', 'ssh']
@@ -9,15 +7,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
 modified_by:
   name: Linode
-title: "Transferring Files with SFTP"
-h1_title: "How to Transfer Files with SFTP"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Transfer Files with SFTP"
+title_meta: "How to Transfer Files with SFTP"
 external_resources:
 - '[Wikipedia SFTP Page](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)'
 - '[IETF Draft for SSH File Transfer Protocol](https://datatracker.ietf.org/doc/html/draft-ietf-secsh-filexfer-13)'
+authors: ["Jeff Novotny"]
 ---
 
 *SSH File Transfer Protocol* (SFTP) provides a mechanism for transferring, accessing, and managing files more securely compared to earlier protocols. It is a free and open-source utility that is available on all Linux systems. SFTP extends version 2.0 of the *Secure Shell* (SSH) protocol to provide greater security. This guide provides some background information about SFTP and explains how to use it to transfer files.
@@ -60,16 +55,12 @@ In summary, SFTP is a good, all-purpose utility with more functionality than the
 
 ## Before You Begin
 
-1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-{{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Create an SFTP Connection
@@ -82,7 +73,7 @@ Before performing any file operations, first, use SFTP to establish a connection
 
         sftp username@remote_system_address
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If SFTP is not using the standard port `22`, specify the port number using the `-P` option, for example, `sftp -P port_number username@remote_system_address`.
     {{< /note >}}
 
@@ -109,7 +100,7 @@ ssh.service - OpenBSD Secure Shell server
      Active: active (running) since Tue 2021-08-31 12:13:14 UTC; 46min ago
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Virtually all Linux distributions include SSH and SFTP as part of the default package. However, if the `sftp` command is not available, install the `ssh` package using `apt` or another package manager.
 {{< /note >}}
 
@@ -197,7 +188,7 @@ Remote working directory: /home/username
 Local working directory: /home/username/accounts
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 File transfers occur to/from the local working and remote working directories. It is important to confirm both settings before performing any transfers. A common source of errors is forgetting to set the local working directory correctly.
     {{< /note >}}
 

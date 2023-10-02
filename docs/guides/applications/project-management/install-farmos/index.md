@@ -1,8 +1,5 @@
 ---
 slug: install-farmos
-author:
-  name: Angel G
-  email: docs@linode.com
 keywords: ["farmos", "Drupal", "LAMP"]
 tags: ["drupal", "lamp", "cms"]
 description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, farmOS.'
@@ -13,6 +10,7 @@ modified_by:
     name: Linode
 title: 'How to Install farmOS - a Farm Recordkeeping Application'
 aliases: ['/applications/project-management/install-farmos/']
+authors: ["Angel Guarisma"]
 ---
 
 ![Farm_OS Banner](FarmOS.png)
@@ -25,9 +23,9 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/getting-started/#set-the-hostname) and [timezone](/docs/guides/getting-started/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1.  Follow our [Securing Your Server](/docs/guides/securing-your-server) guide to [create a standard user account](/docs/guides/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/guides/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/guides/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1.  Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -65,9 +63,9 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
         sudo wget https://ftp.drupal.org/files/projects/farm-7.x-1.7-core.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the farmOS version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into your site's document root:
 
@@ -149,7 +147,7 @@ After each user is created, use the **People** tab to verify success:
 
 ### Registering a Domain Name for farmOS
 
-To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/guides/dns-manager/) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
+To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/products/networking/dns-manager/) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
 
 ### Generate a Google API Key
 

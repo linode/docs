@@ -1,9 +1,7 @@
 ---
 slug: ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 description: 'Using the PostgreSQL relational database server with Ubuntu 9.04 (Jaunty).'
 keywords: ["postgresql", "postgresql database", "postgresql on ubuntu", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,11 +17,12 @@ relations:
             - distribution: Ubuntu 9.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-9-04-jaunty/']
+authors: ["Linode"]
 ---
 
 
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.04 (Jaunty). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.04 (Jaunty). We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.
 
 ## Installing PostgreSQL
 

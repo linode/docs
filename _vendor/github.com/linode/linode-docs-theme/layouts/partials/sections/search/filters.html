@@ -1,13 +1,19 @@
 <div>
   <template x-if="$store.search.results.main.loaded">
     <div class="h-full lg:h-screen">
-      <div x-transition.opacity x-show="filters.loaded" class="hidden lg:flex container items-center justify-between mb-5">
-        <h2>
-          Filters
-        </h2>
-        <span class="text-xs text-basicgray" x-text="$store.search.results.main.result.stats.totalNbHits + ' Total Results'"></span>
+      <div
+        x-transition.opacity
+        x-show="filters.loaded"
+        class="hidden lg:flex container items-center justify-between mb-5">
+        <h2>Filters</h2>
+        <span
+          class="text-xs text-basicgray"
+          x-text="$store.search.results.main.result.stats.totalNbHits + ' Total Results'"></span>
       </div>
-      <div :class="{'border-b-gray': !filters.open}" class="flex lg:hidden navbar__row container items-center cursor-pointer text-titlecolor" @click="filters.open = !filters.open">
+      <div
+        :class="{'border-b-gray': !filters.open}"
+        class="flex lg:hidden navbar__row container items-center cursor-pointer text-titlecolor"
+        @click="filters.open = !filters.open">
         <div class="flex h-full w-full items-center justify-between">
           <div class="flex h-full items-center">
             <svg class="w-5 h-5" :class="{ 'text-brand': filters.open }">
@@ -33,29 +39,56 @@
               </button>
             </template>
           </div>
-          <span class="text-xs text-textcolor block" x-text="$store.search.results.main.result.stats.totalNbHits + ' Total Results'"></span>
+          <span
+            class="text-xs text-textcolor block"
+            x-text="$store.search.results.main.result.stats.totalNbHits + ' Total Results'"></span>
         </div>
       </div>
-      <div class="small:mt-8 block--lg container max-w-screen-md" x-show="filters.open" x-transition:enter="transition-transform transition-opacity ease-out duration-500 sm:duration-700"
-        x-transition:enter-start="opacity-0 transform -translate-y-8" x-transition:enter-end="opacity-100 transform translate-y-0">
-        <template x-for="filter in filters.data.filtersarr()" :key="filter.name">
+      <div
+        class="small:mt-8 block--lg container max-w-screen-md"
+        x-show="filters.open"
+        x-transition:enter="transition-transform transition-opacity ease-out duration-500 sm:duration-700"
+        x-transition:enter-start="opacity-0 transform -translate-y-8"
+        x-transition:enter-end="opacity-100 transform translate-y-0">
+        <template
+          x-for="filter in filters.data.filtersarr()"
+          :key="filter.name">
           <div class="mb-8" :data-testid="'search-filter-' + filter.name">
-            <h4 x-text="filter.title" class="uppercase font-semibold text-xs pb-4"></h4>
+            <h4
+              x-text="filter.title"
+              class="uppercase font-semibold text-xs pb-4"></h4>
             <div>
-              <div x-bind:class="{ 'bg-brand':  filter.allChecked }" class="inline-block mr-1 mb-2 rounded bg-gray-300 px-2 pb-2 pt-1">
+              <div
+                x-bind:class="{ 'bg-brand':  filter.allChecked }"
+                class="inline-block mr-1 mb-2 rounded bg-gray-300 px-2 pb-2 pt-1">
                 <label class="block">
-                  <input class="mr-1 leading-tight form-checkbox text-white w-3 h-3" type="checkbox" x-model="filter.allChecked" @change="apply()">
-                  <span x-bind:class="{ 'text-titlecolor':  !filter.allChecked, 'text-white': filter.allChecked }" class="text-xxs font-semibold">
+                  <input
+                    class="mr-1 leading-tight form-checkbox text-white w-3 h-3"
+                    type="checkbox"
+                    x-model="filter.allChecked"
+                    @change="apply()" />
+                  <span class="text-xxs font-semibold text-titlecolor">
                     All
                   </span>
                 </label>
               </div>
-              <template x-for="checkbox in filter.checkboxes" :key="checkbox.value">
-                <div x-bind:class="{ 'bg-brand':  checkbox.checked }" class="inline-block mr-1 mb-2 bg-gray-300 rounded px-2 pb-2 pt-1">
+              <template
+                x-for="checkbox in filter.checkboxes"
+                :key="checkbox.value">
+                <div
+                  x-bind:class="{ 'bg-brand':  checkbox.checked }"
+                  class="inline-block mr-1 mb-2 bg-gray-300 rounded px-2 pb-2 pt-1">
                   <label class="block">
-                    <input class="mr-1 leading-tight form-checkbox text-white w-3 h-3" type="checkbox" x-model="checkbox.checked" @change="apply()">
-                    <span x-bind:class="{ 'text-titlecolor':  !checkbox.checked && checkbox.count > 0, 'text-white': checkbox.checked, 'text-gray-400': !checkbox.checked && checkbox.count === 0 }" class="text-xxs font-semibold capitalize" style="letter-spacing: 0.07px;"
-                                    x-text="checkbox.title"></span>
+                    <input
+                      class="mr-1 leading-tight form-checkbox text-white w-3 h-3"
+                      type="checkbox"
+                      x-model="checkbox.checked"
+                      @change="apply()" />
+                    <span
+                      x-bind:class="{ 'text-titlecolor':  checkbox.checked || (!checkbox.checked && checkbox.count > 0), 'text-gray-400': !checkbox.checked && checkbox.count === 0 }"
+                      class="text-xxs font-semibold"
+                      style="letter-spacing: 0.07px;"
+                      x-text="checkbox.title"></span>
                   </label>
                 </div>
               </template>
@@ -64,8 +97,18 @@
         </template>
         <template x-if="filters.data.filters.get('tags')">
           <div class="mb-8" data-testid="search-filter-tags">
-            <h4 class="uppercase font-semibold text-xs pb-4" x-html="filters.data.filters.get('tags').title"></h4>
-            {{ partial "sections/search/filters__tags.html" . }}
+            <h4
+              class="uppercase font-semibold text-xs pb-4"
+              x-html="filters.data.filters.get('tags').title"></h4>
+            {{ partial "sections/search/filters__tags.html" (dict "facet" "tags" "singular" "tag") }}
+          </div>
+        </template>
+        <template x-if="filters.data.filters.get('authors')">
+          <div class="mb-8" data-testid="search-filter-authors">
+            <h4
+              class="uppercase font-semibold text-xs pb-4"
+              x-html="filters.data.filters.get('authors').title"></h4>
+            {{ partial "sections/search/filters__tags.html" (dict "facet" "authors" "singular" "author") }}
           </div>
         </template>
       </div>

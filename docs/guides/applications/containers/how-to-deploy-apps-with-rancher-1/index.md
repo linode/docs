@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-apps-with-rancher-1
-author:
-  name: Angel
-  email: docs@linode.com
 description: 'This guide shows how to use the open source Rancher platform to deploy applications and containers to remote hosts.'
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["container","docker","kubernetes"]
@@ -17,6 +14,7 @@ external_resources:
 deprecated: true
 deprecated_link: applications/containers/how-to-deploy-apps-with-rancher/
 aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-1/']
+authors: ["Angel Guarisma"]
 ---
 
 ## What is Rancher?
