@@ -20,9 +20,9 @@ The acronym CRUD refers to the four basic transactional operations in SQL: creat
 
 The `DELETE` statement removes a single row, a group of rows that meet some criteria, or all rows from a single database table. If the specified row does not exist, the `DELETE` statement fails. If the specified row does exist but has a foreign key constraint with an existing reference, the `DELETE` statement fails unless an `ON DELETE CASCADE` trigger applies.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Be cautious when executing `DELETE` statements, because they permanently remove database rows. The effects can be even more extensive when an `ON DELETE CASCADE` trigger exists. This is because if a row in a parent table is deleted, then all the corresponding records in the child table are automatically deleted.
-{{< /caution >}}
+{{< /note >}}
 
 This guide includes several verification techniques to ensure that you are deleting only the desired rows, and also ways to save rows elsewhere before removing them.
 

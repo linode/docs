@@ -164,9 +164,9 @@ To start, you need to configure your Jenkins server to enable the agents and fac
 
 Now you have what you need to support three build agents. This tutorial deploys a Linode Compute instance for each of these build agents, using Terraform to automate the process. This also makes it relatively easy to horizontally scale the number of agents as needed later.
 
-{{< caution >}}
+{{< note type="warning" >}}
 The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
-{{< /caution >}}
+{{< /note >}}
 
 1. Install Terraform. Follow the relevant section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide to do so.
 
