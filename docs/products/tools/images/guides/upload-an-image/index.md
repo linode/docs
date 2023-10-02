@@ -1,23 +1,25 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 image: UploadAnImage.png
 title: Upload an Image
 description: "How to upload an image with Linode Images."
+authors: ["Linode"]
 ---
 
-{{< content "images-ga-pricing-update-shortguide" >}}
+## Requirements and Considerations
 
-## Limits and Considerations
+When creating an image file to upload as a Custom Image, keep the following limits, requirements, and considerations in mind.
 
-### Overall
+- Review the overall [Technical Specifications](/docs/products/tools/images/#technical-specifications) of the Custom Images service.
 
-{{< content "images-limits-shortguide" >}}
+- **Raw disk image:** The image file must be a [raw disk image](https://en.wikipedia.org/wiki/IMG_(file_format)) (`.img`). Other file formats will not work.
 
-### Specific to Uploading an Image from a File
+- **Compressed using gzip:** The image file must be compressed using [gzip](https://en.wikipedia.org/wiki/Gzip) (`.gz`) before uploading it. Other compression algorithms are not compatible.
 
-{{< content "upload-image-requirements-shortguide" >}}
+- **Maximum file size is 5GB:** The maximum *compressed* size for an image file is 5GB. Larger file sizes are not supported through our current upload tooling. For the maximum *uncompressed* size, see the image size limit within the [Technical Specifications](/docs/products/tools/images/#technical-specifications).
+
+- **Pricing considerations:** Custom Images are billed based on the *uncompressed* size of the uploaded image file.
+
+- **For compatibility, use unpartitioned disks formatted with ext3 or ext4 file systems:** [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) and other Linode Helpers are compatible with non-partitioned image files formatted using the ext3 or ext4 file systems. Partitioned disks and other file systems may be used, but some manual configuration may be required.
 
 ## Creating or Obtaining an Image File
 
@@ -36,7 +38,7 @@ After the image file has been created, it needs to be compressed using the gzip 
 
 -   **Linux and macOS**: Run the following command, replacing *[file.img.gz]* with the file name of your image. See [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/guides/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/) for additional information on gzip.
 
-        gzip [file.img] [file.img.gz]
+        gzip [file.img]
 
 -   **Windows**: Use a third party tool that supports gzip compression, such as [7-Zip](https://www.7-zip.org/).
 
@@ -60,11 +62,11 @@ Once you have obtained a compatible image file that meets all the requirements, 
 
     ![Image status](images-upload-status.png "Image status")
 
-    If there is an error when processing the uploaded image file, the newly created Image may be deleted and an error message will be written to the [Events](https://cloud.linode.com/events) log. See [Understanding Events and the Activity Feed](/docs/guides/cloud-manager-events-and-activity-feeds/) for more details on viewing Cloud Manager Events.
+    If there is an error when processing the uploaded image file, the newly created Image may be deleted and an error message will be written to the [Events](https://cloud.linode.com/events) log. See [Understanding Events and the Activity Feed](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/) for more details on viewing Cloud Manager Events.
 
 ## Uploading an Image File through the Linode CLI
 
-Another method for uploading a compatible image file is directly through the [Linode CLI](https://www.linode.com/docs/guides/linode-cli/).
+Another method for uploading a compatible image file is directly through the [Linode CLI](/docs/products/tools/cli/get-started/).
 
 1.  Run the following command to install or update the Linode CLI:
 
@@ -87,7 +89,7 @@ Another method for uploading a compatible image file is directly through the [Li
 
         linode-cli image-upload --label "Example Image" --description "Some details about the image" --region "us-east" ~/Downloads/image-file.img.gz
 
-4. After running the above command, a progress bar will be displayed that indicates the total progress of the file upload. Once completed, a single data row table will be outputted with the details regarding the new Custom Image and a status of *pending_upload*.
+4. After running the above command, a progress bar will be displayed that indicates the total progress of the file upload. Once completed, a single data row table will be outputted with the details regarding the new Custom Image and a status of `pending_upload`.
 
     The image upload may take a few minutes to fully process. To verify that the image is available for use, run the following command and make sure the new Custom Image has a status of *available*:
 

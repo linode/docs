@@ -1,9 +1,6 @@
 ---
 slug: multicraft-on-debian
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
-description: 'Installation of MultiCraft on a Linode running Debian or Ubuntu'
+description: 'This guide will show you how to install MultiCraft, a free and open-source control panel for Minecraft servers, running on a Linode running Debian.'
 keywords: ["minecraft", "debian", "multicraft"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -23,12 +20,13 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Debian
+authors: ["Alex Fornuto"]
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.
 
-{{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
@@ -55,8 +53,8 @@ Multicraft for Linux depends on several software packages in order to run.
 
 {{< /file >}}
 
-    {{< note >}}
-If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
+    {{< note respectIndent=false >}}
+If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server). Be sure to configure the `AllowOverride` option on your custom virtual host.
 {{< /note >}}
 
 4.  Reload the Apache configuration:
@@ -83,33 +81,33 @@ If you want a dedicated Apache virtual host for Multicraft, follow the instructi
 
     This will launch an interactive script that will prompt you to configure several options. If you've purchased a license for Multicraft, enter it when prompted. If you're unsure which option to choose, press `return` to select the default option.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Because of the insecure nature of FTP, we strongly recommend that you **not** enable the built-in FTP server when prompted.
-{{< /caution >}}
+{{< /note >}}
 
 ## Configuring the Control Panel
 
 1.  In your local web browser, navigate to `http://12.34.56.78/multicraft/install.php`, replacing `12.34.56.78` with your Linode's IP address or domain name. Click on `Start Installation`:
 
-    [![Multicraft Installer.](multicraft-init_small.png)](multicraft-init.png)
+    ![Multicraft Installer.](multicraft-init.png)
 
 2.  Multicraft will check your requirements. If you completed the steps above without issue, your page should reflect the results shown below:
 
-    [![Multicraft Requirements Check.](multicraft-reqs_small.png)](multicraft-reqs.png)
+    ![Multicraft Requirements Check.](multicraft-reqs.png)
 
     Click `Continue`.
 
 3.  Multicraft will attempt to copy the default `config.php` file into place. If successful, click `Continue`:
 
-    [![Multicraft Configuration File Transfer.](multicraft-config_small.png)](multicraft-config.png)
+    ![Multicraft Configuration File Transfer.](multicraft-config.png)
 
 4.  On the next page, click on `Initialize Database`. Afterwards, click `Continue`:
 
-    [![Multicraft Database Creation.](multicraft-db_small.png)](multicraft-db.png)
+    ![Multicraft Database Creation.](multicraft-db.png)
 
 5.  The next page will attempt to connect to the panel database. You should see the message `Connection successful`. You can now click on the `Login` button and sign in with the username and password `admin`:
 
-    [![Multicraft Panel Database Connection.](multicraft-panel_small.png)](multicraft-panel.png)
+    ![Multicraft Panel Database Connection.](multicraft-panel.png)
 
 6.  After logging in you will be directed back to the previous page, where you can now click on `Continue`. The next page will allow you to configure your basic settings. When done, click `Save`.
 
@@ -122,7 +120,7 @@ Because of the insecure nature of FTP, we strongly recommend that you **not** en
 
 8.  Back in your browser, click on `Refresh`. You should see the daemon in a green box. Click `Continue`:
 
-    [![Multicraft Daemon Configuration.](multicraft-daemon_small.png)](multicraft-daemon.png)
+    ![Multicraft Daemon Configuration.](multicraft-daemon.png)
 
 9.  Your configuration of the Multicraft control panel is now complete. As per the instructions on the page, delete the `install.php` file from your terminal:
 
@@ -140,7 +138,7 @@ Because of the insecure nature of FTP, we strongly recommend that you **not** en
 
 3.  Back in the Multicraft web interface, click on `Servers`, then `Create Server`. Fill in the options as you see fit, but be sure to add `minecraft_server.1.8.1.jar` (or your downloaded version) in the `JAR File` field:
 
-    [![Multicraft Server Settings.](multicraft-server-settings_small.png)](multicraft-server-settings.png)
+    ![Multicraft Server Settings.](multicraft-server-settings.png)
 
 4.  The first time you attempt to start the Minecraft server it will fail. By checking the Console view, you should see the following output:
 

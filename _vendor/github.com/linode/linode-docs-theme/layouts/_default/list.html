@@ -1,15 +1,15 @@
 {{ define "head-meta-addons" }}
   {{/* Turbolinks previews does not work that well for pages with lots of JS rendered content. */}}
-  <meta name="turbo-cache-control" content="no-preview">
+  <meta name="turbo-cache-control" content="no-preview" />
 {{ end }}
 
-{{ define "main"}}
+{{ define "main" }}
   <noscript>
     {{ $isDynamic := eq .RelPermalink "/docs/sections/" }}
     {{ if $isDynamic }}
-    {{ partial "components/nojs.html" . }}
+      {{ partial "components/nojs.html" . }}
     {{ else }}
-    {{ template "list-nojs" . }}
+      {{ template "list-nojs" . }}
     {{ end }}
   </noscript>
   {{ template "list-js" . }}
@@ -21,36 +21,57 @@
     <template x-if="loaded">
       <div>
         <div class="mb-8" x-show="loaded">
-          <div class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
-            <h1 class="font-bold tracking-tighter pb-4 lg:pb-0 pr-4" x-text="data.meta.title"></h1>
+          <div
+            class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
+            <h1
+              class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4"
+              x-html="data.meta.title"></h1>
             <div x-show="!uiState.noToggleGuidesLink">
-              <button @click="toggleShowGuides();"
-                  class="py-1 px-3 text-sm text-brand focus:outline-none no-underline font-semibold border border-brand rounded-full" data-testid="showGuides">
-                <span x-text="`${data.result.nbHits} ${data.sectionConfig.nounPlural(data.result.nbHits)} Available`" data-testid="nbHits"></span>
+              <button
+                @click="toggleShowGuides();"
+                class="py-1 px-3 text-sm text-brand focus:outline-none no-underline font-semibold border border-brand rounded-full"
+                data-testid="showGuides">
+                <span
+                  x-text="`${data.result.nbHits} ${data.sectionConfig.nounPlural(data.result.nbHits)} Available`"
+                  data-testid="nbHits"></span>
               </button>
             </div>
             <div x-show="uiState.noToggleGuidesLink">
-              <span x-text="`${data.result.nbHits} ${data.sectionConfig.nounPlural(data.result.nbHits)} Available`" class="py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full"></span>
+              <span
+                x-text="`${data.result.nbHits} ${data.sectionConfig.nounPlural(data.result.nbHits)} Available`"
+                class="py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full"></span>
             </div>
           </div>
           <div class="mb-8">
             <p x-html="data.meta.excerpt"></p>
           </div>
-          <hr class="mb-6">
+          <hr class="mb-6" />
         </div>
         <template x-if="uiState.showSectionsTiles()">
           <section class="mb-6 w-full">
-            <h2 class="mb-12 text-2" x-text="data.meta.title + ' Categories'"></h2>
+            <h2
+              class="mb-12 text-2"
+              x-text="data.meta.title + ' Categories'"></h2>
             <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
               <template x-for="(item, i) in data.sections" :key="item.key">
                 <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
-                  <a class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand" :href="item.href">
+                  <a
+                    class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand"
+                    :href="item.href">
                     <div class="flex flex-col justify-center w-full">
                       <div class="w-full flex justify-center mb-8">
-                        <div class="w-24 h-24" x-svg="item.thumbnailInline || item.thumbnail"></div>
+                        <div
+                          class="w-24 h-24"
+                          x-svg="item.thumbnailInline || item.thumbnail"></div>
                       </div>
-                      <h3 x-html="item.linkTitle" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
-                      <span x-html="`${item.count} ${data.sectionConfig.nounPlural(item.count)}`" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
+                      <h3
+                        x-html="item.linkTitle"
+                        class="text-center text-lg mb-2"
+                        style="letter-spacing: -0.2px;"></h3>
+                      <span
+                        x-html="`${item.count} ${data.sectionConfig.nounPlural(item.count)}`"
+                        class="text-center text-basicgray text-sm"
+                        style="letter-spacing: -0.3px;"></span>
                     </div>
                   </a>
                 </div>
@@ -59,15 +80,26 @@
           </section>
         </template>
         <div x-show="uiState.showGuidesWithSortOption()">
-          <div class="mb-6 md:mb-8 flex flex-col md:flex-row justify-between md:relative">
+          <div
+            class="mb-6 md:mb-8 flex flex-col md:flex-row justify-between md:relative">
             <div class="flex">
-              <h2 class="text-2 mb-4 md:mb-0 text-titlecolor tracking-tight font-semibold" x-text="data.meta.title + ' Guides'"></h2>
+              <h2
+                class="text-2 mb-4 md:mb-0 text-titlecolor tracking-tight font-semibold"
+                x-text="data.meta.title + ' Guides'"></h2>
               <div class="hidden md:block" style="width: 250px;"></div>
             </div>
-            <div class="md:absolute right-0 w-full md:w-64 rounded border bg-white border-basicgray">
-              <div class="flex items-center justify-between px-4 h-8 border-b-gray">
-                <div class="font-semibold text-xs text-gray-700" x-text="'Sort ' + data.meta.title + ' Guides'"></div>
-                <button @click="uiState.sorting.open = !uiState.sorting.open" type="button" class="btn-icon text-basicgray hover:text-gray-400" data-testid="openSort">
+            <div
+              class="md:absolute right-0 w-full md:w-64 rounded border bg-white border-basicgray">
+              <div
+                class="flex items-center justify-between px-4 h-8 border-b-gray">
+                <div
+                  class="font-semibold text-xs text-gray-700"
+                  x-text="'Sort ' + data.meta.title + ' Guides'"></div>
+                <button
+                  @click="uiState.sorting.open = !uiState.sorting.open"
+                  type="button"
+                  class="btn-icon text-basicgray hover:text-gray-400"
+                  data-testid="openSort">
                   <template x-if="uiState.sorting.open">
                     <svg class="text-titlecolor fill-current h-3 w-3">
                       <use href="#icon--times"></use>
@@ -81,25 +113,43 @@
                 </button>
               </div>
               <div x-transition x-show="uiState.sorting.open">
-                <template x-for="(sortOption, i) in uiState.sorting.options" :key="sortOption.field">
+                <template
+                  x-for="(sortOption, i) in uiState.sorting.options"
+                  :key="sortOption.field">
                   <div class="flex justify-between">
-                    <button @click="uiState.sorting.sort(sortOption)" x-text="sortOption.title" :class="{ 'text-titlecolor': sortOption.enabled, 'text-basicgray': !sortOption.enabled }"
-                              class="block px-4 text-xs leading-none focus:outline-none" data-testid="sortTitle"></button>
+                    <button
+                      @click="uiState.sorting.sort(sortOption)"
+                      x-text="sortOption.title"
+                      :class="{ 'text-titlecolor': sortOption.enabled, 'text-basicgray': !sortOption.enabled }"
+                      class="block px-4 text-xs leading-none focus:outline-none"
+                      data-testid="sortTitle"></button>
                     <div class="flex justify-end pr-2 space-x-1">
-                      <button class="p-2" :class="{ 'focus:outline-none text-sm bg-gray-200 rounded-full text-titlecolor': sortOption.enabled &&  !sortOption.down }"
-                                  @click="sortOption.down = false; uiState.sorting.sort(sortOption)" data-testid="sortUp">
-                        <svg :class="{ 'text-titlecolor':  sortOption.enabled &&  !sortOption.down, 'text-basicgray':  !sortOption.enabled ||  sortOption.down }"
-                                      class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <button
+                        class="p-2"
+                        :class="{ 'focus:outline-none text-sm bg-gray-200 rounded-full text-titlecolor': sortOption.enabled &&  !sortOption.down }"
+                        @click="sortOption.down = false; uiState.sorting.sort(sortOption)"
+                        data-testid="sortUp">
+                        <svg
+                          :class="{ 'text-titlecolor':  sortOption.enabled &&  !sortOption.down, 'text-basicgray':  !sortOption.enabled ||  sortOption.down }"
+                          class="fill-current h-4 w-4"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512">
                           <path
-                                          d="M304 376h-64a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM28 128h44v336a16 16 0 0 0 16 16h16a16 16 0 0 0 16-16V128h44a12 12 0 0 0 8.73-20.24l-68-72a12 12 0 0 0-17.44 0l-68 72A12 12 0 0 0 28 128zm404 56H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm64-96H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h256a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM368 280H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z" />
+                            d="M304 376h-64a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM28 128h44v336a16 16 0 0 0 16 16h16a16 16 0 0 0 16-16V128h44a12 12 0 0 0 8.73-20.24l-68-72a12 12 0 0 0-17.44 0l-68 72A12 12 0 0 0 28 128zm404 56H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm64-96H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h256a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM368 280H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z" />
                         </svg>
                       </button>
-                      <button class="p-2" :class="{ 'focus:outline-none text-sm bg-gray-200 rounded-full text-titlecolor': sortOption.enabled &&  sortOption.down }"
-                                  @click="sortOption.down = true; uiState.sorting.sort(sortOption)" data-testid="sortDown">
-                        <svg :class="{ 'text-titlecolor':  sortOption.enabled &&  sortOption.down, 'text-basicgray':  !sortOption.enabled ||  !sortOption.down }"
-                                      class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <button
+                        class="p-2"
+                        :class="{ 'focus:outline-none text-sm bg-gray-200 rounded-full text-titlecolor': sortOption.enabled &&  sortOption.down }"
+                        @click="sortOption.down = true; uiState.sorting.sort(sortOption)"
+                        data-testid="sortDown">
+                        <svg
+                          :class="{ 'text-titlecolor':  sortOption.enabled &&  sortOption.down, 'text-basicgray':  !sortOption.enabled ||  !sortOption.down }"
+                          class="fill-current h-4 w-4"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512">
                           <path
-                                          d="M304 376h-64a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm-140 8h-44V48a16 16 0 0 0-16-16H88a16 16 0 0 0-16 16v336H28a12 12 0 0 0-8.73 20.24l68 72a12 12 0 0 0 17.44 0l68-72A12 12 0 0 0 164 384zm268-200H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm64-96H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h256a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM368 280H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z" />
+                            d="M304 376h-64a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm-140 8h-44V48a16 16 0 0 0-16-16H88a16 16 0 0 0-16 16v336H28a12 12 0 0 0-8.73 20.24l68 72a12 12 0 0 0 17.44 0l68-72A12 12 0 0 0 164 384zm268-200H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm64-96H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h256a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM368 280H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z" />
                         </svg>
                       </button>
                     </div>
@@ -111,17 +161,26 @@
         </div>
         <template x-if="uiState.showGuidesPerSection()">
           <div class="space-y-10">
-            <template  x-for="(k, i) in Object.keys(data.hitsBySection)" :key="k">
+            <template
+              x-for="(k, i) in Object.keys(data.hitsBySection)"
+              :key="k">
               <div class="">
-                <h4 class="text-2xl mb-5 text-titlecolor tracking-tight font-semibold">
+                <h4
+                  class="text-2xl mb-5 text-titlecolor tracking-tight font-semibold">
                   <ul class="inline-flex flex-wrap">
                     <template x-for="(s,j) in data.sectionsFromKey(k)">
                       <li class="flex items-center">
-                        <span x-text="s.linkTitle" class="max-w-sm truncate"></span>
+                        <span
+                          x-text="s.linkTitle"
+                          class="max-w-sm truncate"></span>
                         <template x-if="j < data.sectionsFromKey(k).length -1">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mx-2 h-6 w-5 text-basicgray" fill="currentColor" viewBox="0 0 192 512">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="mx-2 h-6 w-5 text-basicgray"
+                            fill="currentColor"
+                            viewBox="0 0 192 512">
                             <path
-                                          d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z" />
+                              d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z" />
                           </svg>
                         </template>
                       </li>
@@ -129,22 +188,30 @@
                   </ul>
                 </h4>
                 <ul class="mb-5">
-                  <template x-for="(item, j) in data.hitsBySection[k]" :key="item.href">
+                  <template
+                    x-for="(item, j) in data.hitsBySection[k]"
+                    :key="item.href">
                     <li class="pb-2" data-testid="sorted-item">
-                      <a class="text-titlecolor hover:text-gray-400" :href="item.href" x-html="item.linkTitle"></a>
+                      <a
+                        class="text-titlecolor hover:text-gray-400"
+                        :href="item.href"
+                        x-html="item.linkTitle"></a>
                     </li>
                   </template>
                 </ul>
-                <hr class="my-12">
+                <hr class="my-12" />
               </div>
             </template>
           </div>
         </template>
         <template x-if="uiState.showSortedGuideList()">
           <div>
-            <template  x-for="(item, i) in data.result.hits" :key="item.href">
+            <template x-for="(item, i) in data.result.hits" :key="item.href">
               <div class="w-2/3 flex flex-col" data-testid="sorted-item">
-                <a class="mb-1  text-titlecolor hover:text-gray-400" x-text="item.linkTitle" :href="item.href"></a>
+                <a
+                  class="mb-1  text-titlecolor hover:text-gray-400"
+                  x-text="item.linkTitle"
+                  :href="item.href"></a>
                 <div class="text-textcolor text-sm mb-4">
                   <span x-text="item.firstPublishedDateString"></span>
                   <span x-text="item.sectionTitle"></span>
@@ -154,22 +221,42 @@
           </div>
         </template>
         <template x-if="uiState.showGuidesTiles()">
-          <div class="space-y-8">
-            <template x-for="(item, i) in data.result.hits">
-              <div class="bg-white rounded-md md:flex md:items-center" :class="{ 'shadow-sm': i === 0 }">
-                <div class="h-full bg-gray-200">
-                  <div class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
-                    <img class="absolute top-0 h-full w-full img-transparent object-cover" alt="Article thumbnail" :src="item.thumbnailUrl" @load="$event.target.classList.remove('img-transparent')" loading="lazy">
+          {{/* Paginated tiles listing. */}}
+          <div>
+            <div class="space-y-8">
+              <template x-for="(item, i) in data.result.hits">
+                <div
+                  class="bg-white rounded-md md:flex md:items-center"
+                  :class="{ 'shadow-sm': i === 0 }">
+                  <div class="h-full bg-gray-200">
+                    <div
+                      class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
+                      <img
+                        class="absolute top-0 h-full w-full img-transparent object-cover"
+                        alt="Article thumbnail"
+                        :src="item.thumbnailUrl"
+                        @load="$event.target.classList.remove('img-transparent')"
+                        loading="lazy" />
+                    </div>
+                  </div>
+                  <div class="px-6 md:pl-10 py-4">
+                    <a
+                      class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400"
+                      :target="item.isExternalLink ? '_blank' : ''"
+                      :href="item.href">
+                      <h3
+                        class="mb-2 text-2xl "
+                        x-html="item.linkTitle"
+                        data-testid="tile-title"></h3>
+                    </a>
+                    <p
+                      class="text-darkgray leading-6 text-sm md:text-base"
+                      x-html="item.excerptTruncated(160)"></p>
                   </div>
                 </div>
-                <div class="px-6 md:pl-10 py-4">
-                  <a class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400" :href="item.href">
-                    <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
-                  </a>
-                  <p class="text-darkgray leading-6 text-sm md:text-base" x-html="item.excerptTruncated(160)"></p>
-                </div>
-              </div>
-            </template>
+              </template>
+            </div>
+            {{ template "section-list-pagination" (dict "result" "data.result" "page" "data.page" "class" "mt-10") }}
           </div>
         </template>
       </div>
@@ -180,15 +267,17 @@
 {{ define "list-nojs" }}
   <section class="mb-6 w-full">
     <div class="mb-8">
-      <div class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
-        <h1 class="font-bold tracking-tighter pb-4 lg:pb-0 pr-4">
+      <div
+        class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
+        <h1 class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4">
           {{ .Title }}
           {{ if .Sections }}
             Categories
           {{ end }}
         </h1>
         <div>
-          <span class="py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full">
+          <span
+            class="py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full">
             {{ T (printf "%s-count-available" .Section )   (len .RegularPagesRecursive) }}
           </span>
         </div>
@@ -196,20 +285,26 @@
       <div class="mb-8">
         {{ .Summary }}
       </div>
-      <hr class="mb-6">
+      <hr class="mb-6" />
     </div>
     <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
       {{ range .Sections }}
         <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
-          <a class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand" href="{{ .RelPermalink }}">
+          <a
+            class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand"
+            href="{{ .RelPermalink }}">
             <div class="flex flex-col justify-center w-full">
               <div class="w-full flex justify-center mb-8">
                 {{ partial "helpers/bundle-image.html" (dict "page" . "class" "w-24 h-24" "command" "Resize" "options" "640x jpg") }}
               </div>
-              <h3 class="text-center text-lg mb-2" style="letter-spacing: -0.2px;">
+              <h3
+                class="text-center text-lg mb-2"
+                style="letter-spacing: -0.2px;">
                 {{ .LinkTitle }}
               </h3>
-              <span class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;">
+              <span
+                class="text-center text-basicgray text-sm"
+                style="letter-spacing: -0.3px;">
                 {{ $numGuides := len .RegularPagesRecursive }}
                 {{ T (printf "%s-count" .Section )   (len .RegularPagesRecursive ) }}
               </span>
@@ -218,28 +313,67 @@
         </div>
       {{ end }}
     </div>
-    
+
     <div class="mt-8 space-y-8">
       {{ range $i, $ := .RegularPages }}
-        <div class="bg-white rounded-md md:flex md:items-center{{ if eq $i 0 }} shadow-sm{{ end }}">
+        <div
+          class="bg-white rounded-md md:flex md:items-center{{ if eq $i 0 }}
+            shadow-sm
+          {{ end }}">
           <div class="h-full bg-gray-200">
-            <div class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
+            <div
+              class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
               {{ partial "helpers/bundle-image.html" (dict "page" . "class" "absolute top-0 h-full w-full object-cover" "command" "Resize" "options" "640x jpg") }}
             </div>
           </div>
           <div class="px-6 md:pl-10 py-4">
-            <a href="{{ .RelPermalink }}" class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400">
+            <a
+              href="{{ .RelPermalink }}"
+              class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400">
               <h3 class="mb-2 text-2xl ">
                 {{ .LinkTitle }}
               </h3>
             </a>
-            <p class="text-darkgray leading-6 text-sm md:text-base three-lines-ellipsis">
-              {{ .Summary  }}
+            <p
+              class="text-darkgray leading-6 text-sm md:text-base three-lines-ellipsis">
+              {{ .Summary }}
             </p>
           </div>
         </div>
       {{ end }}
     </div>
   </section>
-  
+{{ end }}
+
+{{ define "section-list-pagination" }}
+  <template x-if="{{ .result }}">
+    <nav
+      class="{{ .class }} py-3 flex items-center justify-between border-t border-divider"
+      data-testid="pagination"
+      aria-label="Pagination">
+      <div class="hidden sm:block">
+        <p
+          class="text-sm text-textcolor font-medium"
+          x-text="`Showing ${ {{ .result }}.stats.hitsStart} to ${ {{ .result }}.stats.hitsEnd} of ${ {{ .result }}.stats.totalNbHits} results`"></p>
+      </div>
+      <div class="flex-1 flex justify-between sm:justify-end">
+        <button
+          :disabled="{{ .page }} === 1"
+          type="button"
+          data-testid="prev"
+          @click="incrPage(-1)"
+          class="relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+          Previous
+        </button>
+        <button
+          :disabled="{{ .page }} >= {{ .result }}.stats.totalNbPages"
+          type="button"
+          data-testid="next"
+          @click="incrPage(1)"
+          class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+          Next
+        </button>
+      </div>
+    </nav>
+  </template>
 {{ end }}

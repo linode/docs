@@ -1,0 +1,15 @@
+{{/* The ToC shown in the main content section on desktop. */}}
+<div
+  id="toc-component-main"
+  data-testid="toc-main"
+  class="toc-main bg-white z-10 w-full h-full"
+  x-data="lncToc({setProgress: false, desktopOnly: true})"
+  x-init="initToC()"
+  x-show="enabled"
+  @scroll.window="onScroll()"
+  @hashchange.window="onHashchange();">
+  <h3 class="font-semibold uppercase mb-3">On this page</h3>
+  <div class="toc__inner">
+    <ol id="toc-main-ol" x-ref="ol"></ol>
+  </div>
+</div>

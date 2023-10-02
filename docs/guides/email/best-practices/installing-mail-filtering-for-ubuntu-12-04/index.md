@@ -1,10 +1,7 @@
 ---
 slug: installing-mail-filtering-for-ubuntu-12-04
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
-description: 'Configuring Virus and Spam protection for your mail server.'
+description: 'This guide shows how to configure mail filtering on your server by making use of popular filtering and anti-spam apps like Amavis-new, ClamAV, and SpamAssassin.'
 keywords: ["email", "mail", "postfix", "dovecot", "mysql", "ubuntu", "12.04", "clamav", "spamassassin", "amavis"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,17 +16,18 @@ external_resources:
  - '[The Official ClamAV Site](http://www.clamav.net/)'
  - '[Ubuntu Community Documentation](https://help.ubuntu.com/community/PostfixAmavisNew)'
  - '[Whitelisting and Blacklisting in Amavis](http://www.akadia.com/services/postfix_amavisd.html#Globally%20Sender%20Whitelists%20and%20Blacklists)'
+authors: ["Alex Fornuto"]
 ---
 
 If you're running a mail server, it's a good idea to have spam and virus filtering. Spam can flood your users' inboxes, and those running insecure local PCs are susceptible to virus infection. Protecting your email server protects your clients and you. This guide goes through the installation and configuration of virus and spam filtering, using Amavis-new, ClamAV, and SpamAssassin.
 
- {{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This is a generic introductory guide. You are responsible for ensuring that your virus/spam filtering system meets the needs of your environment.
-{{< /caution >}}
+{{< /note >}}
 
 ## Prerequisites
 
-This guide assumes you have already followed our [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guides and are running Ubuntu 12.04 LTS. This guide is written for the root user, and all commands listed require root privileges.
+This guide assumes you have already followed our [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guides and are running Ubuntu 12.04 LTS. This guide is written for the root user, and all commands listed require root privileges.
 
 ## Installation
 
@@ -170,7 +168,7 @@ use strict;
 
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Be sure to remove all four **\#** symbols, as shown above.
 {{< /note >}}
 
@@ -240,7 +238,7 @@ smtp-amavis     unix    -       -       -       -       2       smtp
 
 You'll want to test that your email server is removing malicious emails from your users' inboxes. [The European Expert Group For IT-Security](http://www.eicar.org/) has files available for download that will be seen by ClamAV as a virus. You can download these test virus files [here](http://www.eicar.org/85-0-Download.html).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Please be aware that if you are running antivirus software locally, it may block these test files. Be sure to read the `Important Note` section of the EICAR download page before you continue.
 {{< /note >}}
 

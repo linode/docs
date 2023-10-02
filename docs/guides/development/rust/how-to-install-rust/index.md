@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-rust
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide explains how to install Rust on Ubuntu 20.04. We'll also teach you about Cargo, Rust's build tool and package manager."
 keywords: ['Rust','programming language','installation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,30 +8,23 @@ image: RUST1.jpg
 modified_by:
   name: Linode
 tags: ["rust", "development", "ubuntu"]
-title: "How to Install and Use Rust"
-h1_title: "Installing and Using Rust"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Installing and Using Rust"
+title_meta: "How to Install and Use Rust"
 external_resources:
 - '[Rust Programming Language](https://www.rust-lang.org/)'
+authors: ["Jeff Novotny"]
 ---
 
 This guide explains how to install [*Rust*](https://www.rust-lang.org/), a popular programming language designed to maximize performance and safety. It also discusses how to create, compile, and run a simple Rust project. Rust is somewhat similar to C++, although it is able to guarantee memory and thread safety. Rust was originally developed for use at Mozilla Research, but it has recently gained in popularity throughout the software industry. For many years now, Rust has been rated one of the top programming languages in industry surveys.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of Linode's [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  Update the system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. For information about the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. For information about the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Advantages of the Rust Programming Language
@@ -45,7 +35,7 @@ Rust runs as quickly as C++ does, but is safer to use. This is because it emphas
 
 The typical, and most straightforward, way to install Rust is by using `rustup`. This is Rust's main installation program and version manager. These instructions are designed for Ubuntu, but are generally applicable to most Linux distributions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To experiment with Rust before downloading it, try the [*Rust Playground*](https://play.rust-lang.org/). This is an open source educational program that allows beginners to write and run simple Rust programs.
 {{< /note >}}
 
@@ -53,7 +43,7 @@ To experiment with Rust before downloading it, try the [*Rust Playground*](https
 
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For those who do not want to use `curl`, it is also possible to download `rustup-init` directly. A list of all the versions of `rustup-init` can be found on Rust's [installation methods page](https://rust-lang.github.io/rustup/installation/other.html). For Ubuntu systems, select the`x86_64-unknown-linux-gnu` file.
 {{< /note >}}
 
@@ -91,7 +81,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 ...
     {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is also possible to use Git to install Rust. Clone the [Rust GitHub repository](https://github.com/rust-lang/rustup) and run `cargo run --release`. See the `rustup` [installation page](https://rust-lang.github.io/rustup/installation/other.html) for more information.
 {{< /note >}}
 

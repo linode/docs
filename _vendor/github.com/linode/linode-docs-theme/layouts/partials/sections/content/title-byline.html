@@ -1,4 +1,5 @@
-<h1 class="font-bold leading-tight tracking-tight text-4xl text-titlecolor w-full">
+<h1
+  class="font-semibold leading-tight tracking-tight text-4xl text-titlecolor w-full">
   {{ if and .Params.enable_h1 .Params.h1_title }}
     {{ .Params.h1_title }}
   {{ else }}
@@ -13,14 +14,15 @@
       Updated
     {{ end }}
     {{ $authorLink := partial "funcs/get-author-link.html" . }}
-    <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format site.Params.time_format_default }}</time>{{ with $authorLink }}, by {{ $authorLink }}{{ end }}
+    <time datetime="{{ .Lastmod.Format site.Params.time_format_iso8601 }}"
+      >{{ .Lastmod.Format site.Params.time_format_default }}</time
+    >{{ with $authorLink }}, by {{ $authorLink }}{{ end }}
   </span>
-
 
   <div class="hidden md:flex flex-initial float-right">
     {{ $dropdowns := slice }}
-    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--github" "open" false "contentPartial" "sections/content/navbar__dropdown-github.html")}}
-    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--share"  "open" false "contentPartial" "sections/content/navbar__dropdown-share.html")}}
+    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--github" "open" false "contentPartial" "sections/content/navbar__dropdown-github.html") }}
+    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--share"  "open" false "contentPartial" "sections/content/navbar__dropdown-share.html") }}
     {{ partial "components/dropdowns.html" (dict "page" . "dropdowns" $dropdowns) }}
   </div>
 </div>
