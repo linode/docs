@@ -30,6 +30,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Data center | IP Sharing support | Failover method | Software | ID |
 | -- | -- | -- | -- | -- |
 | Atlanta, GA (USA) | *Undergoing network upgrades* | - | - | 4 |
+| Chennai (India) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 25 |
 | Chicago, IL (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
 | Dallas, TX (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 2 |
 | Frankfurt (Germany) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 10 |

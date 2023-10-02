@@ -39,6 +39,7 @@ Premium Compute Instances are currently available in select data centers.
 | Data center | Status |
 | -- | -- |
 | Atlanta (Georgia, USA) | *Not available* |
+| **Chennai (India)** | **Available** |
 | **Chicago (Illinois, USA)** | **Available** |
 | Dallas (Texas, USA) | *Not available* |
 | Frankfurt (Germany) | *Not available* |
