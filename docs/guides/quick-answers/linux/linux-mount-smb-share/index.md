@@ -114,7 +114,7 @@ The following sections detail how to mount an SMB share on Ubuntu, but the essen
     mount -t cifs //[server-ip]/[share-path] /[mount-point]
     ```
 
-    In the example below, the SMB server's IP is 192.0.2.17, the share's path is SharedFiles, and the mount point is /mnt/smb_share.
+    In the example below, the SMB server's IP is 192.0.2.17, the share's path is SharedFiles, and the mount point is `/mnt/smb_share`.
 
     ```command
     mount -t cifs //192.0.2.17/SharedFiles /mnt/smb_share
