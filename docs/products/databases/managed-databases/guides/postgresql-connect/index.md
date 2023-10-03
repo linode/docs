@@ -6,6 +6,8 @@ modified: 2022-07-28
 authors: ["Linode"]
 ---
 
+{{< content "dbass-eos" >}}
+
 To connect to a PostgreSQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a PostgreSQL client. This guide details how to access your database using popular tools.
 
 ## View Connection Details
