@@ -38,6 +38,7 @@ Object Storage is available within the following data centers. For a full list o
 | Data Center | Cluster ID |
 | -- | -- | -- | -- |
 | Atlanta, GA (USA) | `us-southeast-1` |
+| Chennai (India)\* | `in-maa-1` |
 | Chicago, IL (USA)\* | `us-ord-1` |
 | Frankfurt (Germany) | `eu-central-1` |
 | Milan (Italy)\* | `it-mil-1` |
@@ -77,6 +78,7 @@ The tables below outline Object Storage limits. Most of the limits apply **per r
 | Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> |
 | -- | -- | -- |
 | Atlanta, GA (USA) | 5 TB | 50 million |
+| Chennai (India) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Chicago, IL (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Frankfurt (Germany) | 5 TB | 50 million |
 | Milan (Italy) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |

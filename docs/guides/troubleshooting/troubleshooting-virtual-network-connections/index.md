@@ -58,7 +58,7 @@ Successful messages are returned from each host indicating that the circuit port
 
 Similar to Windows VNC, a Mac connection must have a valid circuit connection between the VNC server and its client host. A Mac connection can use either use Apple’s Remote Desktop Software (RDS) or another VNC app like RealVNC or TigerVNC. Mac hosts also use the `ping` command to test the connection between their hosts.
 
-```commmand
+```command
 ping myhost.mynetwork.com:5901
 ```
 

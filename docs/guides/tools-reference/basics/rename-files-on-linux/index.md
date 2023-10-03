@@ -122,7 +122,7 @@ If your Ubuntu Linode is brand new, it probably doesn't have the rename command 
 
         ls
 
-    You should see the same files as before, but with .bak extensions:
+    You should see the same files as before, but with `.bak` extensions:
 
     {{< output >}}test1.bak test2.bak{{< /output >}}
 
