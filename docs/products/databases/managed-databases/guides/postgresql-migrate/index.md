@@ -5,6 +5,8 @@ published: 2022-06-17
 authors: ["Linode"]
 ---
 
+{{< content "dbass-eos" >}}
+
 This guide covers how to migrate an existing PostgreSQL database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
 
 - **Source database:** The original database running on a software, system, or machine that you wish to decommission. This could be PostgreSQL running within your own Linux server, a development database on your local machine, or even a cloud database.

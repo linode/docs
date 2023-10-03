@@ -19,7 +19,7 @@ You can learn more about Appsmith and how to host your own instance in our guide
 
 This tutorial covers everything you need to connect your Appsmith instance to the Linode API. With this, you can build your own Linode cloud manager or integrate Linode control into your application.
 
-While this tutorial is specifically concerned with the Linode API, similar steps can be readily adapted to numerous other APIs. By the end, you should be prepared to connect other Linode APIs (like those for Linode managed databases) or other external APIs.
+While this tutorial is specifically concerned with the Linode API, similar steps can be readily adapted to numerous other APIs. By the end, you should be prepared to connect other Linode APIs or other external APIs.
 
 ## Before You Begin
 
