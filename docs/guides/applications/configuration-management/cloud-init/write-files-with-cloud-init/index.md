@@ -5,10 +5,10 @@ description: "Find out how you can use cloud-init to automate writing and modify
 og_description: "Find out how you can use cloud-init to automate writing and modifying files during your new servers' initialization."
 keywords: ['cloud-init','cloudinit','write files','sed']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
+authors: ["Nathaniel Stickman"]
 published: 2023-09-27
 modified_by:
-  name: Linode
+  name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation - Module Reference: Write Files](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#write-files)'
 - '[Cloud-init Documentation - Examples : Writing Out Arbitrary Files](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#writing-out-arbitrary-files)'
