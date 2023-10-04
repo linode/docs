@@ -3133,6 +3133,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all available Managed Database engine types and versions. Engine IDs are used when creating new Managed Databases.
       responses:
         '200':
@@ -3179,6 +3181,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single Managed Database engine type and version.
       responses:
         '200':
@@ -3214,6 +3218,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all Managed Databases that are accessible by your User, regardless of engine type.
 
         For more detailed information on a particular Database instance, make a request to its `instance_uri`.
@@ -3261,6 +3267,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all accessible Managed MySQL Databases.
       security:
       - personalAccessToken: []
@@ -3301,6 +3309,8 @@ paths:
       x-linode-cli-action: mysql-create
       x-linode-grant: add_databases
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Provision a Managed MySQL Database.
 
         Restricted Users must have the `add_databases` grant to use this command.
@@ -3401,6 +3411,8 @@ paths:
       x-linode-cli-action: mysql-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single, accessible Managed MySQL Database.
       security:
       - personalAccessToken: []
@@ -3434,6 +3446,8 @@ paths:
       x-linode-cli-action: mysql-delete
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Remove a Managed MySQL Database from your Account.
 
         Requires `read_write` access to the Database.
@@ -3474,6 +3488,8 @@ paths:
       x-linode-cli-action: mysql-update
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Update a Managed MySQL Database.
 
         Requires `read_write` access to the Database.
@@ -3577,6 +3593,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all backups for an accessible Managed MySQL Database.
 
         The Database must not be provisioning to perform this command.
@@ -3623,6 +3641,8 @@ paths:
       x-linode-cli-action: mysql-backup-snapshot
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Creates a snapshot backup of a Managed MySQL Database.
 
         Requires `read_write` access to the Database.
@@ -3692,6 +3712,8 @@ paths:
       x-linode-cli-action: mysql-backup-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single backup for an accessible Managed MySQL Database.
 
         The Database must not be provisioning to perform this command.
@@ -3726,6 +3748,8 @@ paths:
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-backup-delete
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Delete a single backup for an accessible Managed MySQL Database.
 
         Requires `read_write` access to the Database.
@@ -3779,6 +3803,8 @@ paths:
       x-linode-cli-action: mysql-backup-restore
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Restore a backup to a Managed MySQL Database on your Account.
 
         Requires `read_write` access to the Database.
@@ -3829,6 +3855,8 @@ paths:
       x-linode-cli-action: mysql-creds-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the root username and password for an accessible Managed MySQL Database.
 
         The Database must have an `active` status to perform this command.
@@ -3873,6 +3901,8 @@ paths:
       x-linode-cli-action: mysql-creds-reset
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Reset the root password for a Managed MySQL Database.
 
         Requires `read_write` access to the Database.
@@ -3923,6 +3953,8 @@ paths:
       x-linode-cli-action: mysql-ssl-cert
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the SSL CA certificate for an accessible Managed MySQL Database.
 
         The Database must have an `active` status to perform this command.
@@ -3967,6 +3999,8 @@ paths:
       x-linode-cli-action: mysql-patch
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Apply security patches and updates to the underlying operating system of the Managed MySQL Database. This function runs during regular maintenance windows, which are configurable with the **Managed MySQL Database Update** ([PUT /databases/mysql/instances/{instanceId}](/docs/api/databases/#managed-mysql-database-update)) command.
 
         Requires `read_write` access to the Database.
@@ -4015,6 +4049,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all accessible Managed PostgreSQL Databases.
       security:
       - personalAccessToken: []
@@ -4055,6 +4091,8 @@ paths:
       x-linode-cli-action: postgresql-create
       x-linode-grant: add_databases
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Provision a Managed PostgreSQL Database.
 
         Restricted Users must have the `add_databases` grant to use this command.
@@ -4157,6 +4195,8 @@ paths:
       x-linode-cli-action: postgresql-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single, accessible Managed PostgreSQL Database.
       security:
       - personalAccessToken: []
@@ -4190,6 +4230,8 @@ paths:
       x-linode-cli-action: postgresql-delete
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Remove a Managed PostgreSQL Database from your Account.
 
         Requires `read_write` access to the Database.
@@ -4230,6 +4272,8 @@ paths:
       x-linode-cli-action: postgresql-update
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Update a Managed PostgreSQL Database.
 
         Requires `read_write` access to the Database.
@@ -4333,6 +4377,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all backups for an accessible Managed PostgreSQL Database.
 
         The Database must not be provisioning to perform this command.
@@ -4379,6 +4425,8 @@ paths:
       x-linode-cli-action: postgresql-backup-snapshot
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Creates a snapshot backup of a Managed PostgreSQL Database.
 
         Requires `read_write` access to the Database.
@@ -4448,6 +4496,8 @@ paths:
       x-linode-cli-action: postgresql-backup-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single backup for an accessible Managed PostgreSQL Database.
 
         The Database must not be provisioning to perform this command.
@@ -4482,6 +4532,8 @@ paths:
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: postgresql-backup-delete
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Delete a single backup for an accessible Managed PostgreSQL Database.
 
         Requires `read_write` access to the Database.
@@ -4535,6 +4587,8 @@ paths:
       x-linode-cli-action: postgresql-backup-restore
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Restore a backup to a Managed PostgreSQL Database on your Account.
 
         Requires `read_write` access to the Database.
@@ -4585,6 +4639,8 @@ paths:
       x-linode-cli-action: postgresql-creds-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the root username and password for an accessible Managed PostgreSQL Database.
 
         The Database must have an `active` status to perform this command.
@@ -4629,6 +4685,8 @@ paths:
       x-linode-cli-action: postgresql-creds-reset
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Reset the root password for a Managed PostgreSQL Database.
 
         Requires `read_write` access to the Database.
@@ -4679,6 +4737,8 @@ paths:
       x-linode-cli-action: postgresql-ssl-cert
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the SSL CA certificate for an accessible Managed PostgreSQL Database.
 
         The Database must have an `active` status to perform this command.
@@ -4723,6 +4783,8 @@ paths:
       x-linode-cli-action: postgresql-patch
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Apply security patches and updates to the underlying operating system of the Managed PostgreSQL Database. This function runs during regular maintenance windows, which are configurable with the **Managed PostgreSQL Database Update** ([PUT /databases/postgresql/instances/{instanceId}](/docs/api/databases/#managed-postgresql-database-update)) command.
 
         Requires `read_write` access to the Database.
@@ -4770,6 +4832,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all Managed Database node types. The type and number of nodes determine the resources and price of a Managed Database instance.
 
         Each Managed Database can have one node type. In the case of a high availabilty Database, all nodes are provisioned according to the chosen type.
@@ -4840,6 +4904,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the details of a single Managed Database type. The type and number of nodes determine the resources and price of a Managed Database instance.
       responses:
         '200':
@@ -6798,6 +6864,8 @@ paths:
         Any [tags](/docs/api/tags/#tags-list) existing on the source Linode will be cloned to the target Linode.
 
         Linodes utilizing Metadata (`"has_user_data": true`) must be cloned to a new Linode with `metadata.user_data` included with the clone request.
+
+        **Note:** Only Next Generation Network (NGN) data centers support VLANs. If a VLAN is attached to your Linode and you attempt clone it to a non-NGN data center, the cloning will not initiate. If a Linode cannot be cloned because of an incompatibility, you will be prompted to select a different data center or contact support.
       tags:
       - Linode Instances
       operationId: cloneLinodeInstance
@@ -8166,6 +8234,8 @@ paths:
         If you have these features enabled on your Linode and attempt to migrate to an NGN data center,
         the migration will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
+
+        **Note:** Only Next Generation Network (NGN) data centers support VLANs. If a VLAN is attached to your Linode and you attempt to migrate it to a non-NGN data center, the migration will not initiate. If a Linode cannot be migrated because of an incompatibility, you will be prompted to select a different data center or contact support.
       tags:
        - Linode Instances
       operationId: migrateLinodeInstance
@@ -9479,7 +9549,7 @@ paths:
                 -X POST -d '{
                   "label": "cluster12345",
                   "region": "us-central",
-                  "k8s_version": "1.25",
+                  "k8s_version": "1.27",
                   "tags": ["ecomm", "blogs"],
                   "control_plane": {
                       "high_availability": true
@@ -9506,7 +9576,7 @@ paths:
           linode-cli lke cluster-create \
             --label cluster12345 \
             --region us-central \
-            --k8s_version 1.25 \
+            --k8s_version 1.27 \
             --control_plane.high_availability true \
             --node_pools.type g6-standard-4 --node_pools.count 6 \
             --node_pools.type g6-standard-8 --node_pools.count 3 \
@@ -9666,7 +9736,7 @@ paths:
           linode-cli lke cluster-update 12345 \
             --label lkecluster54321 \
             --control_plane.high_availability true \
-            --k8s_version 1.25 \
+            --k8s_version 1.27 \
             --tags ecomm \
             --tags blog \
             --tags prod \
@@ -10587,10 +10657,10 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-                https://api.linode.com/v4/lke/versions/1.25
+                https://api.linode.com/v4/lke/versions/1.27
       - lang: CLI
         source: >
-          linode-cli lke version-view 1.25
+          linode-cli lke version-view 1.27
   /longview/clients:
     x-linode-cli-command: longview
     get:
@@ -22622,11 +22692,17 @@ components:
       description: >
         The Network Interface to apply to this Linode's configuration profile.
       properties:
+        id:
+          readOnly: true
+          type: integer
+          description: The unique ID representing this interface.
+          example: 101
+          x-linode-cli-display: 1
         label:
           type: string
           minLength: 1
           maxLength: 64
-          pattern: '/[a-z0-9-]+/'
+          pattern: '[a-zA-Z0-9-]+'
           x-linode-filterable: true
           nullable: true
           description: |
@@ -22643,6 +22719,7 @@ components:
 
             If the VLAN label is new, a VLAN is created. Up to 10 VLANs can be created in each data center region. To view your active VLANs, use the [VLANs List](/docs/api/networking/#vlans-list) endpoint.
           example: example-interface
+          x-linode-cli-display: 2
         ipam_address:
           type: string
           format: ip/netmask
@@ -22677,16 +22754,20 @@ components:
               * Configuring a `vlan` purpose interface attaches this Linode to the VLAN with the specified `label`.
               * The Linode is configured to use the specified `ipam_address`, if any.
           example: vlan
+          x-linode-cli-display: 3
     LinodeConfigInterfaces:
       type: array
       items:
         $ref: '#/components/schemas/LinodeConfigInterface'
+      minItems: 1
+      maxItems: 3
+      uniqueItems: true
       required:
       - purpose
       description: |
         An array of Network Interfaces to add to this Linode's Configuration Profile.
 
-        Up to three interface objects can be entered in this array. The position in the array determines the interface to which the settings apply:
+        At least one and up to three interface objects can be entered in this array. The position in the array determines which of the Linode's network interfaces is configured:
 
         - First [0]:  eth0
         - Second [1]: eth1
@@ -22700,10 +22781,13 @@ components:
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
-        the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
-        you will be prompted to select a different data center or contact support.
+        the migration or cloning will not initiate. If a Linode cannot be migrated or cloned because of an incompatibility, you will be prompted to select a different data center or contact support.
 
         **Note:** See the [VLANs Overview](/docs/products/networking/vlans/#technical-specifications) guide to view additional specifications and limitations.
+      example:
+      - {"id": 101, "purpose": "public", "ipam_address": null, "label": null}
+      - {"id": 102, "purpose": "vlan", "ipam_address": "10.0.0.1/24", "label": "vlan-1"}
+      - {"id": 103, "purpose": "vlan", "ipam_address": "10.0.0.2/24", "label": "vlan-2"}
     LinodeRequest:
       type: object
       description: Common properties for creating and rebuilding Linodes.
@@ -23088,7 +23172,7 @@ components:
             and the latest supported patch version will be deployed.
           x-linode-filterable: true
           x-linode-cli-display: 4
-          example: "1.25"
+          example: "1.27"
         control_plane:
           type: object
           description: >
@@ -23290,7 +23374,7 @@ components:
             A Kubernetes version number available for deployment
             to a Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version.
-          example: "1.25"
+          example: "1.27"
     LongviewClient:
       type: object
       description: >
