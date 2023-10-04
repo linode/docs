@@ -12,6 +12,13 @@ interface Request {
 	params: string;
 }
 
+ interface RequestMeta {
+	query: Query;
+	pronto: boolean;
+	fileCacheID: string;
+}
+
+
 interface Result {
 	hits: Record<string, any>[];
 	facets: Record<string, Record<string, number>>;
@@ -26,7 +33,10 @@ interface Result {
 interface RequestCallback {
 	request: Request;
 	callback(result: Result): void;
-	pronto: boolean;
+	meta?: RequestMeta;
+
+	isFiltered(): boolean;
+	getFileCacheID(): string;
 }
 
 export enum RequestCallBackStatus {
@@ -52,12 +62,26 @@ export const newRequestCallbackFactories = function(): RequestCallBackFactory[] 
 export const newRequestCallback = function(
 	request: Request,
 	callback: (result: Result) => void,
-	pronto?: boolean
+	meta?: RequestMeta
 ): RequestCallback {
+
+
 	return {
 		request: request,
 		callback: callback,
-		pronto: pronto
+		meta: meta,
+		isFiltered: function(): boolean {
+			if (!meta || !meta.query) {
+				return false;
+			}
+			return meta.query.isFiltered();
+		},
+		getFileCacheID: function(): string {
+			if (!meta) {
+				return '';
+			}
+			return  meta.fileCacheID;
+		}
 	};
 };
 
