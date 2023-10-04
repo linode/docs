@@ -115,7 +115,7 @@ protect=1
 
             curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
 
-    1. Install NodeJS:
+    1. Install Node.js:
 
             yum install -y nodejs
 

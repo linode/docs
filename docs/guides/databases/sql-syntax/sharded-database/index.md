@@ -230,3 +230,5 @@ Sharding allows a database to scale horizontally, taking advantage of the increa
 Sharding can be accomplished using range sharding, hash sharding, or directory-based sharding. Range sharding is the easiest method, but is more likely to result in unequal shards. Hash sharding more effectively distributes the records, but is more difficult to implement. Directory-based sharding groups related items together on the same shard.
 
 A sharded database can be implemented using multiple Linode servers. Linode allows you to configure a full web application on a powerful Linux operating system running the industry-standard LAMP stack. Choose from a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative. Similarly, you can also use [Linode's Managed Database service](/docs/products/databases/managed-databases/) to deploy a database cluster without the need to install and maintain the database infrastructure.
+
+{{< content "dbass-eos" >}}

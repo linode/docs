@@ -4,7 +4,7 @@ title_meta: "Access Your System Console Using Lish"
 description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 published: 2009-08-04
-modified: 2023-09-13
+modified: 2023-09-21
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -208,6 +208,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:** `us-southeast.webconsole.linode.com`
 
+#### Chennai (India)
+
+-   **Lish SSH Gateway:** `lish-in-maa.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:kXCaKnn1nVlVEC5SCuez6FApcXr/2UUiaSANUy0rlLI lish-in-maa.linode.com
+    ECDSA 256 SHA256:Jj+pb1AkDdKs77o6ozgkOk83rg7auLSOQrnebE8n91o lish-in-maa.linode.com
+    ED25519 256 SHA256:v1KaIB0togivalP7OVvlrLpu/y80qsm5cj50qclTWc0 lish-in-maa.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `in-maa.webconsole.linode.com`
+
 #### Chicago, IL (USA)
 
 -   **Lish SSH Gateway:** `lish-us-ord.linode.com`
@@ -278,7 +292,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:** `eu-west.webconsole.linode.com`
 
-#### Milan, Italy
+#### Milan (Italy)
 
 -   **Lish SSH Gateway:** `lish-it-mil.linode.com`
 
@@ -320,7 +334,21 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:** `us-east.webconsole.linode.com`
 
-#### Paris, France
+#### Osaka (Japan)
+
+-   **Lish SSH Gateway:** `lish-jp-osa.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:VXDxZ8+0b1Q54Bzvt7a6A4bvvKAI5OHxBYxwIC4OsDQ lish-jp-osa.linode.com
+    ECDSA 256 SHA256:qM6cfmK2/Vrho1exDZ9qe4cLWVdp5U0dv5MJ22K+lwE lish-jp-osa.linode.com
+    ED25519 256 SHA256:1CJ7P/i5XUP6XWizukQ7XIEiQ5rlIM+06N6qF2WfDMc lish-jp-osa.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `jp-osa.webconsole.linode.com`
+
+#### Paris (France)
 
 -   **Lish SSH Gateway:** `lish-fr-par.linode.com`
 
@@ -334,7 +362,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:** `fr-par.webconsole.linode.com`
 
-#### Seattle, WA, USA
+#### Seattle, WA (USA)
 
 -   **Lish SSH Gateway:** `lish-us-sea.linode.com`
 
@@ -362,7 +390,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:** `ap-south.webconsole.linode.com`
 
-#### Stockholm, Sweden
+#### Stockholm (Sweden)
 
 -   **Lish SSH Gateway:** `lish-se-sto.linode.com`
 

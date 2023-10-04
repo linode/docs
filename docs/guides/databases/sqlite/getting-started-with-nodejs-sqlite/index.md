@@ -1,6 +1,6 @@
 ---
 slug: getting-started-with-nodejs-sqlite
-description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
+description: 'With npm and sqlite3, you can make your Node.js applications shine. This guide explains how you can install Node.js SQLite, create a SQLite database, create tables, and insert data.'
 keywords: ['nodejs sqlite']
 tags: ['nodejs', 'sqlite', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -9,8 +9,8 @@ modified: 2022-01-14
 image: NodeSQLite.jpg
 modified_by:
   name: Linode
-title: "Getting Started with NodeJS SQLite"
-title_meta: "NodeJS SQLite3: A Beginner's Guide to Installation & Usage"
+title: "Getting Started with Node.js SQLite"
+title_meta: "Node.js SQLite3: A Beginner's Guide to Installation & Usage"
 external_resources:
 - '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
 - '[Marvel Cinematic Universe](https://www.marvel.com/movies)'

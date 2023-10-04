@@ -11,7 +11,7 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2023-09-13
+modified: 2023-09-21
 aliases: ['/guides/platform/vlan/']
 ---
 
@@ -40,6 +40,7 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 | Data center | Status |
 | -- | -- |
 | **Atlanta (Georgia, USA)** | **Available** |
+| **Chennai (India)** | **Available** |
 | **Chicago (Illinois, USA)** | **Available** |
 | Dallas (Texas, USA) | Not yet available |
 | **Frankfurt (Germany)** | **Available** |
@@ -48,6 +49,7 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 | **Milan (Italy)** | **Available** |
 | **Mumbai (India)** | **Available** |
 | **Newark (New Jersey, USA)** | **Available** |
+| **Osaka (Japan)** | **Available** |
 | **Paris (France)** | **Available** |
 | **Seattle (Washington, USA)** | **Available** |
 | **Singapore** | **Available** |

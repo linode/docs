@@ -34,7 +34,7 @@ Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wik
 
 Markdown files for guides are stored under the `docs/guides/` content directory. This content directory is then further subdivided into categories for different technical topics. New guides should be placed with a category that they most closely align with. For example, if you are writing a new guide on the Apache web server, it would be placed under `docs/guides/web-servers/apache/`.
 
-A new subdirectory is created for each guide. This subdirectory should contain a file called `index.md`, which will be where the guide's markdown is written to. For example, if your guide's title is `My Apache Guide`, then you would create its Markdown file at `docs/guides/web-servers/apache/my-apache-guide/index.md`.
+A new subdirectory is created for each guide. This subdirectory should contain a file called `index.md`, which will be where the guide's Markdown is written to. For example, if your guide's title is `My Apache Guide`, then you would create its Markdown file at `docs/guides/web-servers/apache/my-apache-guide/index.md`.
 
 A [Hugo archetype](https://gohugo.io/content-management/archetypes/) is available to create new Markdown files. For example, if you wanted to create the `My Apache Guide` example guide, you could run this command from inside your cloned docs repository:
 
