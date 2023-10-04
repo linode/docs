@@ -2,7 +2,12 @@
 
 import { getIntParamFromLocation, setDocumentMeta, updatePaginationParamInLocation } from '../../helpers/index';
 import { newCreateHref } from '../../navigation/index';
-import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from 'js/main/search/request';
+import {
+	newRequestCallback,
+	newRequestCallbackFactoryTarget,
+	SearchGroupIdentifier,
+	RequestCallBackStatus,
+} from 'js/main/search/request';
 
 var debug = 0 ? console.log.bind(console, '[list]') : function () {};
 
@@ -39,18 +44,14 @@ export function newSectionsController(searchConfig, params) {
 					params: `query=${query.lndq}`,
 				};
 
-				return {
-					request: request,
-					callback: (result) => {
-						self.$store.search.withBlank(() => {
-							self.data.show = false;
-							self.handleResult(result);
-							self.$nextTick(() => {
-								self.$store.nav.scrollToNavBarIfPinned();
-							});
+				return newRequestCallback(request, (result) => {
+					self.$store.search.withBlank(() => {
+						self.handleResult(result);
+						self.$nextTick(() => {
+							self.$store.nav.scrollToNavBarIfPinned();
 						});
-					},
-				};
+					});
+				});
 			},
 		};
 
