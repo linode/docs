@@ -9,10 +9,16 @@
     bindEvents();
     setActiveMenuItem();
   };
+  var setScrollY = function() {
+    document.documentElement.style.setProperty("--site-scroll-y", window.scrollY + "px");
+  };
   var bindEvents = function() {
-    window.addEventListener("scroll", function() {
-      document.documentElement.style.setProperty("--site-scroll-y", window.scrollY + "px");
-    });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setScrollY);
+    } else {
+      setScrollY();
+    }
+    window.addEventListener("scroll", setScrollY);
     $header.addEventListener("toggle:on", function(event) {
       setHtmlScrollState(false);
     });
@@ -43,7 +49,7 @@
       current_path = "/events/";
     } else if (current_path.match(/^\/content|content-type|featuring|series\/.+/)) {
       current_path = "/content/";
-    } else if (current_path.match(/^\/award|media\-coverage|press\-release\/.+/)) {
+    } else if (current_path.match(/^\/media\-coverage|press\-release\/.+/)) {
       current_path = "/company/press/";
     }
     var $current_links = $header.querySelectorAll(':scope a.o-menu__link[href*="' + current_path + '"');
