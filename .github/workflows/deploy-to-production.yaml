@@ -195,12 +195,10 @@ jobs:
       env:
         HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
         HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
-        HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
-        HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
       working-directory: ./docs-repo
       run: |
         hugo config
-        hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
+        hugo -b "${{ vars.DOCS_WEBSITE_URL }}" --gc --minify -d public
 
     - name: Set up SSH agent (docs webserver key)
       uses: webfactory/ssh-agent@v0.7.0
