@@ -135,10 +135,6 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 {{< content "cloud-api-keys-shortguide" >}}
 
-{{< note respectIndent=false >}}
-Currently, Cloud Firewall permissions can not be set for Personal Access Tokens using the Cloud Manager, and the Linode API should be used directly for this purpose. For more information, see our [API documentation](/docs/api/profile/#personal-access-tokens-list) and our guide on [Getting Started with Cloud Firewall](/docs/guides/getting-started-with-cloud-firewall/#limiting-user-access-to-cloud-firewalls-with-the-linode-api)
-{{< /note >}}
-
 ### OAuth Apps
 
 {{< content "cloud-oauth-apps-shortguide" >}}
