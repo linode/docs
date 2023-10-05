@@ -1,4 +1,4 @@
 ---
 title: Beta Programs
-slug: betas
+slug: beta-programs
 ---
