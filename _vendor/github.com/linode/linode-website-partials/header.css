@@ -577,12 +577,12 @@ body.om-position-floating-top {
   float: left;
   height: 48px;
   margin-right: 16px;
-  overflow: hidden;
+  overflow: clip;
   width: 48px;
 }
 .c-submenu .o-menu__title .body {
   display: block;
-  overflow: hidden;
+  overflow: clip;
 }
 .c-submenu .o-menu__title .description {
   display: block;
@@ -594,7 +594,7 @@ body.om-position-floating-top {
   color: var(--c-featured-color, #32363b);
   display: flex;
   max-width: 565px;
-  overflow: hidden;
+  overflow: clip;
   padding: 16px 24px 24px;
   position: relative;
 }
@@ -929,7 +929,7 @@ body.om-position-floating-top {
   text-transform: uppercase;
 }
 .c-site-header__topbar .c-notification__message {
-  overflow: hidden;
+  overflow: clip;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -954,7 +954,7 @@ body.om-position-floating-top {
   white-space: nowrap;
 }
 .c-site-header__topbar .o-menu__item--search .o-menu__link {
-  overflow: hidden;
+  overflow: clip;
   white-space: nowrap;
   width: 16px;
 }

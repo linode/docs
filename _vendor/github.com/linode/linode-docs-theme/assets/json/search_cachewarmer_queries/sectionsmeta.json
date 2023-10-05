@@ -1,0 +1,5 @@
+{
+  "indexName": "linode-merged-sorted",
+  "facets": ["section.*"],
+  "filters": "section.lvl0:guides AND NOT excludeFromViews:home"
+}

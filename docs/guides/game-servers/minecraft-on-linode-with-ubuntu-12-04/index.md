@@ -243,7 +243,7 @@ Once you’re ready to continue and have logged out of your server, log back in 
         2013-09-22 23:47:27 [INFO] Saving chunks for level 'world'/The End
         minecraft@li510-161:~$
 
-These next sections contain descriptions for certain files or directories in your `/minecraft` directory. These are not all the files that you may want to configure, nor are these complete descriptions. For more details, see the [Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki).
+These next sections contain descriptions for certain files or directories in your `/minecraft` directory. These are not all the files that you may want to configure, nor are these complete descriptions. For more details, see the [Minecraft Wiki](http://minecraft.wiki/w/Minecraft_Wiki).
 
 ### Edit the Configuration Files
 
@@ -279,14 +279,14 @@ Any time you modify these files while the game is running, you will need to stop
 -   `/world_nether`
 -   `/world_the_end`
 
-The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/products/storage/backups/) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://www.minecraftwiki.net/wiki/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
+The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/products/storage/backups/) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://minecraft.wiki/w/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
 
 ## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Official Minecraft Site](http://minecraft.net/)
-- [Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)
+- [Minecraft Wiki](http://minecraft.wiki/w/Minecraft_Wiki)
 - [Official CraftBukkit Site](http://dl.bukkit.org/)
 - [Bukkit Plugins](http://dev.bukkit.org/bukkit-plugins/)
 

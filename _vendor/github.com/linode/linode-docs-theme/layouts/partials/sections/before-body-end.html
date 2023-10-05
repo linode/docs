@@ -15,7 +15,7 @@
       fill="#fff"></path>
   </svg>
 </button>
-{{ partial "jslibs/instantpage/script-src.html" "-" }}
+{{ partial "helpers/script-src.html" (dict "js" (resources.Get "jslibs/instantpage/instantpage.js") "nodefer" true ) }}
 {{/* Add the GTag info to a temporary array which is handled in the backing script. */}}
 {{ with $.Params.gtags }}
   <script>

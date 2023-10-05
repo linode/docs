@@ -13,8 +13,6 @@ aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-lino
 authors: ["Linode"]
 ---
 
-{{< content "new-data-center-notice" >}}
-
 Linode offers multiple Compute Instance types, each of which can be equipped with various amounts of resources. This allows you to create a Compute Instance tailored to the requirements of your application or workload. For example, some applications may need to store a lot of data but require less processing power. Others may need more memory than CPU. Some may be especially CPU-intensive and require more computing power.
 
 This guide provides you with the information needed to select the most appropriate instance, helping you sort through all of Linode's offerings and land on the right one for the job.
@@ -140,6 +138,8 @@ When selecting a plan, it is important to understand the hardware resources allo
 
 ## Pricing
 
-If you run a business, you likely need to think about pricing when considering which plan is right for you. You can view all the pricing at [Linode Pricing](https://www.linode.com/pricing/). You can also compare cost per month and save with Linode's predictable and transparent pricing with our [Cloud Estimator](https://www.linode.com/estimator/). Explore bundled compute, storage, and transfer packages against AWS, GCP, and Azure.
+If you run a business or not, you likely need to think about pricing when considering which plan is right for you. You can view all pricing on our [Pricing](https://www.linode.com/pricing/) page. Note that pricing and plan options may vary between regions.
+
+Compare cost per month and save with Linode’s predictable and transparent pricing using our [Cloud Estimator](https://www.linode.com/estimator/). Explore bundled compute, storage, and transfer packages against AWS, GCP, and Azure.
 
 Migrating from on-premise or between cloud providers for hosting, cloud storage, or cloud computing? Use our [Total Cost of Ownership (TCO) cloud pricing calculator](https://www.linode.com/cloud-pricing-calculator/) to receive a full cost breakdown and technical recommendations.

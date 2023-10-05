@@ -189,11 +189,11 @@ sdb    8:16   0  512M  0 disk [SWAP]{{< /output >}}
 
 ## How to Mount File Systems on Linux
 
-You can mount file systems for a single session using the `mount` command, and permanently by editing **/etc/fstab**. Mounting needs to be done by an administrator, either by logging in as **root** or by using the `sudo` command. There are some cases where mounting is done automatically, like when you insert a USB flash drive. Here are a few examples using the `mount` command, plus the preparatory `mkdir` command to create the mount point.
+You can mount file systems for a single session using the `mount` command, and permanently by editing `/etc/fstab`. Mounting needs to be done by an administrator, either by logging in as **root** or by using the `sudo` command. There are some cases where mounting is done automatically, like when you insert a USB flash drive. Here are a few examples using the `mount` command, plus the preparatory `mkdir` command to create the mount point.
 
 ### Mount a Windows Floppy Disk
 
-1.  This command is only necessary if the **/mnt/floppy** directory doesn’t already exist:
+1.  This command is only necessary if the `/mnt/floppy` directory doesn’t already exist:
 
         mkdir /mnt/floppy
 
@@ -201,11 +201,11 @@ You can mount file systems for a single session using the `mount` command, and p
 
         mount -t msdos /dev/fd0 /mnt/floppy
 
-    The contents of the floppy disk in **/dev/fd0/** should now be accessible from **/mnt/floppy**.
+    The contents of the floppy disk in `/dev/fd0` should now be accessible from `/mnt/floppy`.
 
 ### Mount a CD-ROM
 
-1. Once again, the first command is only necessary if the /mnt/cdrom directory doesn’t already exist.
+1. Once again, the first command is only necessary if the `/mnt/cdrom` directory doesn’t already exist.
 
         mkdir /mnt/cdrom
 
@@ -213,7 +213,7 @@ You can mount file systems for a single session using the `mount` command, and p
 
         mount -t iso9660 /dev/cdrom /mnt/cdrom
 
-    The contents of the compact disc in **/dev/cdrom/** should now be accessible from **/mnt/cdrom**.
+    The contents of the compact disc in `/dev/cdrom/` should now be accessible from `/mnt/cdrom`.
 
 ### Mount a Disk Drive Permanently
 
@@ -247,7 +247,7 @@ Most modern distros automatically mount USB drives when you insert them.
 
         mount /dev/sdd1 /media/usb
 
-    The contents of the USB drive in **/dev/sdd1/** should now be accessible from **/media/usb**.
+    The contents of the USB drive in `/dev/sdd1` should now be accessible from `/media/usb`.
 
 {{< note respectIndent=false >}}
 If the USB drive uses the exFAT file system, you may need to install the FUSE [exFAT module and tools](https://linuxize.com/post/how-to-mount-an-exfat-drive-on-ubuntu/).
@@ -263,7 +263,7 @@ If the USB drive uses the exFAT file system, you may need to install the FUSE [e
 
         mount ~/my_image.iso /media/iso -o loop
 
-    The contents of the ISO file in your root directory should now be accessible from **/media/iso**.
+    The contents of the ISO file in your root directory should now be accessible from `/media/iso`.
 
 ### Mount a Remote File System
 
@@ -283,11 +283,11 @@ The network file system (NFS) supports mounting remote file systems as shares fo
 
         mkdir /media/nfs
 
-3.  Now edit **/etc/fstab** as discussed above. The new line in should look something like the following:
+3.  Now edit `/etc/fstab` as discussed above. The new line in should look something like the following:
 
         123.45.67.8:/my_share /media/nfs  nfs defaults  0 0
 
-4.  Then you can use a partial `mount` command, which completes from /etc/fstab.
+4.  Then you can use a partial `mount` command, which completes from `/etc/fstab`.
 
         mount /media/nfs
 

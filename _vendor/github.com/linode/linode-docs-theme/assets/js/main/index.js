@@ -42,6 +42,7 @@ const searchConfig = getSearchConfig(params);
 			return false;
 		});
 	}
+	__stopWatch('index.js.start');
 
 	// Register AlpineJS plugins.
 	{
@@ -101,14 +102,8 @@ const searchConfig = getSearchConfig(params);
 
 	// Set up AlpineJS stores.
 	{
-		Alpine.store('search', newSearchStore(searchConfig, Alpine));
+		Alpine.store('search', newSearchStore(searchConfig, params, Alpine));
 		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params, Alpine));
-	}
-
-	if (!isMobile()) {
-		// We always need the blank resul set in desktop, so load that early.
-		let store = Alpine.store('search');
-		store.withBlank();
 	}
 
 	// Start Alpine.
@@ -120,6 +115,9 @@ const searchConfig = getSearchConfig(params);
 
 // Set up global event listeners etc.
 (function () {
+	if (!window.__stopWatch) {
+		window.__stopWatch = function (name) {};
+	}
 	// Set up a global function to send events to Google Analytics.
 	window.gtag = function (event) {
 		this.dataLayer = this.dataLayer || [];
