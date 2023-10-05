@@ -4,7 +4,7 @@ description: 'This article gives you information to help you determine which dat
 keywords: ["data center", "datacenter", "dc", "speed"]
 tags: ["linode platform"]
 published: 2018-10-31
-modified: 2023-09-14
+modified: 2023-09-25
 modified_by:
   name: Linode
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
@@ -110,3 +110,12 @@ Below you can see that each time `cURL` is run, a different average download spe
                                  Dload  Upload   Total   Spent    Left  Speed
 100  100M  100  100M    0     0  9189k      0  0:00:11  0:00:11 --:--:-- 10.0M
 ```
+
+## Pricing
+
+Price may also be a factor when selecting your region. In general, Linode plans and services are billed at the same, flat rate across data centers. However, due to higher infrastructure costs in various global markets, pricing for some services varies from data center to data center. Regions with data center-specific pricing include:
+
+- Jakarta, Indonesia
+- São Paulo, Brazil
+
+See our [Pricing](https://www.linode.com/pricing/) page for a complete list of plans and pricing.

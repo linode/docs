@@ -2,7 +2,7 @@
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2023-08-23
+modified: 2023-09-20
 modified_by:
   name: Linode
 title: "Create a Compute Instance"
@@ -28,11 +28,11 @@ This guide walks you through creating a Compute Instance (also frequently called
 
 Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *Linode*. This opens the **Create Linode** form.
 
-![Open Create form in the Cloud Manager](create-instance-create.png)
+![Open Create form in the Cloud Manager](create-instance-create.jpg)
 
 ## Choose a Distribution, App, or Image
 
-![Distribution selection in Cloud Manager](create-instance-distribution.png)
+![Distribution selection in Cloud Manager](create-instance-distribution.jpg)
 
 One of the first steps to deploy a Compute Instance is to decide *what* you actually wish to deploy. You're able to select a Linux distribution for a barebones install, a Marketplace App with your desired software, and a few other options.
 
@@ -52,9 +52,11 @@ This guide assumes you are creating a Compute Instance from a **Distribution**. 
 
 ## Select a Region
 
-![Region selection in Cloud Manager](create-instance-region.png)
+![Region selection in Cloud Manager](create-instance-region.jpg)
 
-Next, you must select the **region** that the Compute Instance will reside. Regions correspond with individual data centers, each located in a different geographical area. You should likely select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality. If you wish to make use of a particular Linode product or service, you may also wish to verify that the product is available within your desired data center.
+Next, you must select the **region** where the Compute Instance will reside. Regions correspond with individual data centers, each located in a different geographical area. You should likely select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality. If you wish to make use of a particular Linode product or service, you may also wish to verify that the product is available within your desired data center.
+
+You need to select a region before selecting your plan type. [Pricing](https://www.linode.com/pricing/) may vary between data centers.
 
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
@@ -62,9 +64,12 @@ Next, you must select the **region** that the Compute Instance will reside. Regi
 
 ## Choose an Instance Type and Plan
 
-![Plan selection in Cloud Manager](create-instance-plan.png)
+![Plan selection in Cloud Manager](create-instance-choose-a-plan.jpg)
 
-Linode offers a few different instance types and plan sizes, each with a preset amount of hardware resources (such as vCPU cores, memory, and storage space). The table below displays a list of instance types along with their plan sizes and use cases. Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice on selecting the best plan for your needs, application’s requirements, and pricing considerations.
+Linode offers a few different instance types and plan sizes, each with a preset amount of hardware resources (such as vCPU cores, memory, and storage space). The table below displays a list of instance types along with their plan sizes and use cases.
+
+Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice on selecting the best plan for your needs, application’s requirements, and pricing considerations. Note that [pricing and plan](https://www.linode.com/pricing/) options may vary between data centers.
+
 
 {{< note >}}
 You can resize to a different plan size or instance type at any time. This means your aren't locked in to whichever plan you select here. See [Resizing a Compute Instance](/docs/products/compute/compute-instances/guides/resize/) for instructions.
@@ -108,7 +113,7 @@ User data can be provided to the Metadata service, which is then consumed by clo
 
 ## Deploy the Instance
 
-![Summary section in Cloud Manager](create-instance-summary.png)
+![Summary section in Cloud Manager](create-instance-summary.jpg)
 
 Confirm the details for this Compute Instance within the *Linode Summary* section. Once you are satisfied, click **Create Linode** to start the deployment process. This process can take anywhere from 3 minutes for Distribution Images to up to 30 minutes for some Marketplace Apps. After the creation process has started, you are automatically redirected to the detail page for this instance. From here, you can follow the status as the instance is deployed as well as see information about the new instance, such as the IP addresses.
 
