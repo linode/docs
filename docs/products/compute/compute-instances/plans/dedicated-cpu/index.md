@@ -3,7 +3,7 @@ title: "Dedicated CPU Compute Instances"
 linkTitle: "Dedicated CPU"
 description: "Dedicated CPU Compute Instances are virtual machines that provide gauranteed CPU resources. They are ideal for a variety of production applications and CPU-intensive workloads."
 published: 2023-01-18
-modified: 2023-03-31
+modified: 2023-09-21
 aliases: ['/products/compute/dedicated-cpu/','/platform/dedicated-cpu/getting-started-with-dedicated-cpu/','/guides/getting-started-with-dedicated-cpu/','/platform/dedicated-cpu/dedicated-cpu-use-cases/','/guides/dedicated-cpu-use-cases/','/platform/dedicated-cpu/','/guides//platform/dedicated-cpu/']
 tags: ["media"]
 ---
@@ -52,7 +52,7 @@ Dedicated CPU instances are available across [all regions](https://www.linode.co
 | Outbound Network Transfer | 4 TB - 12 TB |
 | Outbound Network Bandwidth | 4 Gbps - 12 Gbps |
 
-Pricing starts at $36 for a Dedicated CPU Compute Instance with 2 vCPU cores, 4GB memory, and 80GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#compute-dedicated) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page below to learn more about other instance types.
+Pricing starts at $36/month for a Dedicated CPU Compute Instance with 2 vCPU cores, 4GB of memory, and 80 GB of SSD storage. Pricing may vary by region. Review the [Pricing page](https://www.linode.com/pricing/#compute-dedicated) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.
 
 ## Dedicated CPU Use Cases
 

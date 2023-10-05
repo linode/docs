@@ -1,24 +1,24 @@
 ---
-slug: an-overview-of-the-linode-cloud-manager
-description: "This guide provides you with an overview of the Linode Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
+slug: an-overview-of-the-cloud-manager
+description: "This guide provides you with an overview of the Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/']
+aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/']
 published: 2019-12-20
-modified: 2020-01-29
+modified: 2023-09-20
 modified_by:
   name: Linode
 image: AnOverviewoftheLinodeCloudManager.png
-title: "An Overview of the Linode Cloud Manager"
+title: "An Overview of the Cloud Manager"
 tags: ["linode platform","cloud manager"]
 authors: ["Linode"]
 ---
 
-The [Linode Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, managed Kubernetes clusters, add backups to your Linodes, deploy Marketplace Apps, track event notifications, create Object Storage buckets, and more. The Cloud Manager is implemented solely atop our [public APIv4](/docs/api), which gives you access to all our latest products and services.
+The [Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, manage Kubernetes clusters, add backups to your Linodes, deploy Marketplace Apps, track event notifications, create Object Storage buckets, and more. The Cloud Manager is implemented solely atop our [public APIv4](/docs/api), which gives you access to all our latest products and services.
 
 ## In this Guide
 
-This guide provides an overview of the features and services available in Linode's Cloud Manager. Some of the topics that will be discussed are:
+This guide provides an overview of the features and services available in the Cloud Manager. Some of the topics that will be discussed are:
 
 - An introduction to each section of the Cloud Manager, including links to related guides throughout our documentation library.
 - The location of commonly used Cloud Manager features.
@@ -59,10 +59,6 @@ This guide provides an overview of the features and services available in Linode
 ### Zone Files
 
 The Cloud Manager automatically ensures that your Domain's zone file does not contain any errors when a Domain Record is created or updated.
-
-{{< note respectIndent=false >}}
-This Cloud Manager and [API v4](/docs/api) functionality is currently under active development.
-{{< /note >}}
 
 - When creating a Zone File for a Domain, the [Linode API v4](/docs/api) checks for any errors that may exist. If an error is found, the Cloud Manager will respond with the corresponding error. This means that the Cloud Manager will not allow you to create an invalid zone file.
 
@@ -111,11 +107,11 @@ The Cloud Manager does not support forcing password expirations. Forcing passwor
 
 ## Tags
 
-Linode’s Cloud Manager and [API v4](/docs/api) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linodes](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/guides/tags-and-groups/) guide to learn how to create, apply, and search for tags.
+The Cloud Manager and [API v4](/docs/api) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linode instances](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/guides/tags-and-groups/) guide to learn how to create, apply, and search for tags.
 
 ## Events and Activity Feeds
 
-Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/products/tools/cli/get-started/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
+Tasks performed using the Cloud Manager or other account specific tools like Linode’s [CLI](/docs/products/tools/cli/get-started/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
 
 For more details, see the [Understanding Events and Activity Feeds](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/) guide.
 
@@ -139,10 +135,6 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 {{< content "cloud-api-keys-shortguide" >}}
 
-{{< note respectIndent=false >}}
-Currently, Cloud Firewall permissions can not be set for Personal Access Tokens using the Linode Cloud Manager and the Linode API should be used directly for this purpose. For more information, see our [API documentation](/docs/api/profile/#personal-access-tokens-list) and our guide on [Getting Started With Cloud Firewall](/docs/products/networking/cloud-firewall/get-started/#limiting-user-access-to-cloud-firewalls-with-the-linode-api)
-{{< /note >}}
-
 ### OAuth Apps
 
 {{< content "cloud-oauth-apps-shortguide" >}}
@@ -165,6 +157,6 @@ Cloud Manager provides a Dark Mode that you can toggle on and off depending on y
 
 ### Accessibility
 
-The Linode Cloud Manager has been built with accessibility in mind. Currently, the Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
+The Cloud Manager has been built with accessibility in mind. Currently, the Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
 
-We have received a lot of helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. If you have comments or requests regarding accessibility, let us know by filling out our [feedback form](https://www.linode.com/feedback/).
+We have received much helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. If you have comments or requests regarding accessibility, let us know by filling out our [feedback form](https://www.linode.com/feedback/).
