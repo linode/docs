@@ -19,7 +19,7 @@ Neoj4 is the [world's most popular graph database](https://db-engines.com/en/ran
 
 ## Before You Begin
 
-1.  If you have not already done so, create an Akamai account and Compute Instance. See our [Getting Started](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. You need two Ubuntu 22.04 LTS instances in the same datacenter. While it's possible to experiment with Neo4j on a single-core instance backed by one gigabyte of RAM, practical Neo4j applications generally occupy at least four cores and eight or more gigabytes of RAM. Also be sure to add a private IP address.
+1.  If you have not already done so, create an Akamai account and Compute Instance. See our [Getting Started](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. You need two Ubuntu 22.04 LTS instances in the same datacenter. While it's possible to experiment with Neo4j on a single-core instance backed by one gigabyte of RAM, practical Neo4j applications generally occupy at least four cores and eight or more gigabytes of RAM. Also be sure to add a private IP address to both instances.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
@@ -39,7 +39,7 @@ The commands, file contents, and other instructions provided throughout this gui
 
 ## Install Neo4j
 
-Follow the steps below on both Ubuntu 22.04 LTS cloud compute instances.
+Follow the steps below on both Ubuntu 22.04 LTS cloud compute instances to install Neo4j.
 
 1.  Install Neo4j's missing dependencies:
 
@@ -77,7 +77,7 @@ Neo4j is now installed on your instances.
 
 ## Activate Neo4j
 
-Only follow the steps below on the first instance.
+Only follow the steps below on the first instance, this instance acts as the Neo4j server.
 
 1.  Start the Neo4j service:
 
@@ -105,7 +105,7 @@ Only follow the steps below on the first instance.
          Active: active (running) since Fri 2023-09-29 19:36:26 EDT; 3s ago
     ```
 
-    When done, press the <kbd>Q</kbd> key to close the output and return to the terminal prompt.
+    When done, press the <kbd>q</kbd> key to close the output and return to the terminal prompt.
 
 Neo4j is now active on your first instance.
 
@@ -230,7 +230,7 @@ Neo4j's Cypher language is capable of much more. The [Getting Started with Cyphe
 
 ## Neo4j Configuration Essentials
 
-Neo4j is an enterprise-class database manager whose typical installations measure in the terabytes. Neo4j configuration is a deep subject that the [Neo4j Operations Manual v5](https://neo4j.com/docs/operations-manual/current/) only begins to reveal. However, everyone who works with Ubuntu 22.04 LTS installations needs to be familiar with the basic configuration procedure.
+Neo4j is an enterprise-class database manager whose typical installations measure in the terabytes. Neo4j configuration is a deep subject that the [Neo4j Operations Manual v5](https://neo4j.com/docs/operations-manual/current/) only begins to reveal. However, everyone who works with Ubuntu 22.04 LTS installations needs to be familiar with this basic configuration procedure.
 
 1.  Open Neo4j's installation configuration file, located by default at `/etc/neo4j/neo4j.conf` in Ubuntu 22.04 LTS:
 
@@ -250,7 +250,7 @@ Neo4j's default configuration is solid, with few reasons to alter it. To configu
 
 ### Accept Local Network Connections
 
-Below are the essential updates your first Ubuntu instance needs to enable local network connections.
+Below are the essential updates your Neo4j server needs to enable local network connections.
 
 1.  Open `neo4j.conf` in a text editor with root permissions:
 
@@ -274,7 +274,7 @@ Below are the essential updates your first Ubuntu instance needs to enable local
 
     Enabling this line (by removing the comment) alerts Neo4j to listen to all IPv4 network interfaces.
 
-    Restriction to specific IPv4 ports, and extension to IPv6, are other possibilities for advanced practitioners. For the moment, activation of `default_listen` is the only update you need to make to Neo4j itself.
+    Restriction to specific IPv4 ports, and extension to IPv6, are other possibilities for advanced practitioners. For now, activation of `default_listen` is the only update you need to make to Neo4j itself.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
@@ -366,9 +366,9 @@ This demonstrates management of Neo4j data through a local network connection.
 
 ### Accept a Remote Connection
 
-Below are the essential updates your Ubuntu instance needs to enable a remote connection to your local desktop for use with the Neo4j Browser.
+Below are the essential updates your Neo4j server needs to enable a remote connection to your local desktop for use with the Neo4j Browser.
 
-1.  Return to instance one and update the default firewall settings to allow access from a single remote machine (e.g. your desktop):
+1.  Return to the terminal of your Neo4j server and update the default firewall settings to allow access from a single remote machine (e.g. your desktop):
 
     ```command {title="Instance 1"}
     sudo ufw allow from YOUR_IP_ADDRESS to any port 7687,7474 proto tcp
@@ -397,7 +397,7 @@ Below are the essential updates your Ubuntu instance needs to enable a remote co
     22/tcp (v6)                ALLOW       Anywhere (v6)
     ```
 
-You should now be able to access your Neo4j instance from a web browser on your local desktop, which is explained in the next section.
+You should now be able to access your Neo4j instance from a web browser on your local desktop (covered in the next section).
 
 Neo4j is a general-purpose platform, so each of these exercises provides but one example of typical usage. You can adapt these instructions to your own situation. For example, your architecture might call for connections from exactly one external network endpoint which hosts a special-purpose application server. Alternatively, you might use Neo4j as an authoritative data store accessed by hundreds or even thousands of distinct client applications and their connections.
 
