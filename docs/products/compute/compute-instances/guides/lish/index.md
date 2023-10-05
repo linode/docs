@@ -278,6 +278,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:**`us-west.webconsole.linode.com`
 
+#### Jakarta (Indonesia)
+
+-   **Lish SSH Gateway:** `lish-id-cgk.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:n+f2JBMBYvvJUw11nYafKrX1nU3gdohnWfj9qdTXU+I lish-id-cgk.linode.com
+    ECDSA 256 SHA256:CwM8d4D9yU0Mw/Odu4bxs6OWpfzJHSrSUUgtkZNRvsk lish-id-cgk.linode.com
+    ED25519 256 SHA256:RvdTsLHAWcjmXU2h5JD821Xk4x40FcHLzpX2/ppMLh0 lish-id-cgk.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `id-cgk.webconsole.linode.com`
+
 #### London (UK)
 
 -   **Lish SSH Gateway:** `lish-eu-west.linode.com`

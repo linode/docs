@@ -3,7 +3,7 @@ title: "Premium Compute Instances"
 linkTitle: "Premium"
 description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-peformance for your workloads."
 published: 2023-07-06
-modified: 2023-09-13
+modified: 2023-09-25
 ---
 
 Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-peformance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
@@ -38,12 +38,14 @@ Premium Compute Instances are currently available in select data centers.
 
 | Data center | Status |
 | -- | -- |
+| **Amsterdam (Netherlands)** | **Available** |
 | Atlanta (Georgia, USA) | *Not available* |
 | **Chennai (India)** | **Available** |
 | **Chicago (Illinois, USA)** | **Available** |
 | Dallas (Texas, USA) | *Not available* |
 | Frankfurt (Germany) | *Not available* |
 | Fremont (California, USA) | *Not available* |
+| **Jakarta (Indonesia)** | **Available** |
 | London (United Kingdom) | *Not available* |
 | **Milan (Italy)** | **Available** |
 | Mumbai (India) | *Not available* |
@@ -68,4 +70,4 @@ Premium Compute Instances are currently available in select data centers.
 | Outbound Network Transfer | 4 TB - 12 TB |
 | Outbound Network Bandwidth | 4 Gbps - 12 Gbps |
 
-Pricing starts at $43 for a Premium Compute Instance with 2 vCPU cores, 4GB memory, and 80GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page below to learn more about other instance types.
+Pricing starts at $43/month for a Premium CPU Compute Instance with 2 vCPU cores, 4GB of memory, and 80 GB of SSD storage. Pricing may vary by region. Review the [Pricing page](https://www.linode.com/pricing/) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.

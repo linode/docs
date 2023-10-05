@@ -5,7 +5,7 @@ og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
 keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
 tags: ["linode platform","cloud manager","networking"]
 published: 2016-08-23
-modified: 2023-04-27
+modified: 2023-09-21
 modified_by:
   name: Linode
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
@@ -81,7 +81,7 @@ Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
 
 {{< note >}}
-Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
+Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead. Note that pricing for additional public IPv4 addresses may vary by region.
 {{< /note >}}
 
 ## Configuring rDNS

@@ -26,7 +26,7 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 | Amsterdam, Netherlands | *Limited beta* | `nl-ams` |
 | Chennai, India | **Now available to all customers** | `in-maa` |
 | Chicago, IL, USA | **Now available to all customers** | `us-ord` |
-| Jakarta, Indonesia | *Limited beta* | `id-cgk` |
+| Jakarta, Indonesia | **Now available to all customers** | `id-cgk` |
 | Los Angeles, CA, USA | *Limited beta* | `us-lax` |
 | Miami, FL, USA | *Limited beta* | `us-mia` |
 | Milan, Italy | **Now available to all customers** | `it-mil` |
