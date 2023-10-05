@@ -34,6 +34,7 @@ An important consideration when choosing a data center is the availability of sp
 | Dallas         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
 | Frankfurt      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
 | Fremont        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Jakarta        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
 | Milan          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
