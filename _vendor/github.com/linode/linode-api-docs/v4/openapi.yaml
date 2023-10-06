@@ -1,7 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.163.0
-
+  version: 4.164.2
   title: Linode API
   description: |
     ## Introduction
@@ -370,7 +369,7 @@ info:
 
     ### Linode APIv4 Rate Limits
 
-    With the Linode API, you can generally make up to 1,600 general API requests every two minutes. Additionally, all endpoints have a rate limit of 800 requests per minute unless otherwise specified below.
+    With the Linode API, you can generally make up to 1,600 general API requests every two minutes. Additionally, all commands have a rate limit of 800 requests per minute, and all GET commands that return paginated data collections have a rate limit of 400 requests per minute, unless otherwise specified below.
 
     **Note:** There may be rate limiting applied at other levels outside of the API, for example, at the load balancer.
 
@@ -381,6 +380,10 @@ info:
     Creating Volumes has a dedicated rate limit of 25 requests per minute. That endpoint is:
 
     * [Volume Create](/docs/api/volumes/#volume-create)
+
+    Listing Images has a dedicated rate limit of 20 requests per minute. That endpoint is:
+
+    * [Images List](/docs/api/images/#images-list)
 
     `/stats` endpoints have their own dedicated rate limits of 100 requests per minute. These endpoints are:
 
@@ -532,6 +535,147 @@ paths:
             --state PA \
             --tax_id ATU99999999 \
             --zip 19102
+  /account/betas:
+    x-linode-cli-command: betas
+    get:
+      tags:
+      - Beta Programs
+      summary: Enrolled Beta Programs List
+      operationId: getEnrolledBetaPrograms
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      x-linode-cli-action: enrolled
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all enrolled Beta Programs for your Account. Includes inactive as well as active Beta Programs.
+
+        Only unrestricted Users can access this command.
+      responses:
+        '200':
+          description: Returns a paginated list of all enrolled Beta Program objects for the Account.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/BetaProgramEnrolled'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/betas \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli betas enrolled
+    post:
+      tags:
+      - Beta Programs
+      summary: Beta Program Enroll
+      operationId: enrollBetaProgram
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      x-linode-cli-action: enroll
+      x-linode-grant: unrestricted only
+      description: |
+        Enroll your Account in an active Beta Program.
+
+        Only unrestricted Users can access this command.
+
+        To view active Beta Programs, use the Beta Programs List command.
+
+        Active Beta Programs may have a limited number of enrollments. If a Beta Program has reached is maximum number of enrollments, an error is returned even though the request is successful.
+
+        Beta Programs with `"greenlight_only": true` can only be enrolled by Accounts that participate in the [Greenlight](https://www.linode.com/green-light/) program.
+      requestBody:
+        description: Updated information for the Managed MySQL Database.
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - id
+              type: object
+              description: The Beta Program ID to enroll in for your Account.
+              properties:
+                id:
+                  $ref: '#/components/schemas/BetaProgram/properties/id'
+      responses:
+        '200':
+          description: Enrollment request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/betas \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X POST -d '{
+                  "id": "example_open"
+              }'
+      - lang: CLI
+        source: >
+          linode-cli betas enroll --id example_open
+  /account/betas/{betaId}:
+    x-linode-cli-command: betas
+    parameters:
+    - $ref: '#/components/parameters/betaId'
+    get:
+      tags:
+      - Beta Programs
+      summary: Enrolled Beta Program View
+      operationId: getEnrolledBetaProgram
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      x-linode-cli-action: enrolled-view
+      x-linode-grant: unrestricted only
+      description: |
+        Display an enrolled Beta Program for your Account. The Beta Program may be inactive.
+
+        Only unrestricted Users can access this command.
+      responses:
+        '200':
+          description: Returns an enrolled Beta Program object for the Account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaProgramEnrolled'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/betas/$betaId \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli betas enrolled-view $betaId
   /account/cancel:
     x-linode-cli-command: account
     post:
@@ -2707,6 +2851,8 @@ paths:
           description: Returns a single Transfer object.
           content:
             application/json:
+              x-linode-cli-subtables:
+              - region_transfers
               schema:
                 $ref: '#/components/schemas/Transfer'
         default:
@@ -3047,7 +3193,7 @@ paths:
                     "global": {
                       "add_linodes": true,
                       "add_nodebalancers": false,
-                      "add_databases": true;
+                      "add_databases": true,
                       "add_domains": true,
                       "add_longview": false,
                       "add_stackscripts": true,
@@ -3118,6 +3264,90 @@ paths:
                     ]
                 }' \
                 https://api.linode.com/v4/account/users/example_user/grants
+  /betas:
+    x-linode-cli-command: betas
+    get:
+      tags:
+      - Beta Programs
+      summary: Beta Programs List
+      operationId: getBetaPrograms
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      x-linode-cli-action:
+      - list
+      - ls
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all active Beta Programs.
+
+        Only unrestricted Users can access this command.
+      responses:
+        '200':
+          description: Returns a paginated list of all available Beta Program objects.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/BetaProgram'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/betas \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli betas list
+  /betas/{betaId}:
+    x-linode-cli-command: betas
+    parameters:
+    - $ref: '#/components/parameters/betaId'
+    get:
+      tags:
+      - Beta Programs
+      summary: Beta Program View
+      operationId: getBetaProgram
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      x-linode-cli-action: view
+      x-linode-grant: unrestricted only
+      description: |
+        Display information about a Beta Program. This command can be used to access inactive as well as active Beta Programs.
+
+        Only unrestricted Users can access this command.
+      responses:
+        '200':
+          description: Returns a paginated list of all available Beta Program objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaProgram'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/betas/$betaId \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli beta view $betaId
   /databases/engines:
     x-linode-cli-command: databases
     get:
@@ -8214,21 +8444,19 @@ paths:
     post:
       x-linode-grant: read_write
       summary: DC Migration/Pending Host Migration Initiate
-      description: >
+      description: |
         Initiate a pending host migration that has been scheduled by Linode or
         initiate a cross data center (DC) migration.  A list of pending migrations,
         if any, can be accessed from [GET /account/notifications](/docs/api/account/#notifications-list).
         When the migration begins, your Linode will be shutdown if not already off.
         If the migration initiated the shutdown, it will reboot the Linode when completed.
 
-
         To initiate a cross DC migration, you must pass a `region` parameter to the
         request body specifying the target data center region.
         You can view a list of all available regions and their feature capabilities
-        from [GET /regions](/docs/api/regions/#regions-list). If your Linode has a DC migration already queued
+        from [GET /regions](/docs/api/regions/#regions-list). See our [Pricing Page](https://www.linode.com/pricing/) for Region-specific pricing, which applies after migration is complete. If your Linode has a DC migration already queued
         or you have initiated a previously scheduled migration, you will not be able to initiate
         a DC migration until it has completed.
-
 
         **Note:** Next Generation Network (NGN) data centers do not support IPv6 `/116` pools or IP Failover.
         If you have these features enabled on your Linode and attempt to migrate to an NGN data center,
@@ -9420,6 +9648,8 @@ paths:
           description: A single Linode Type.
           content:
             application/json:
+              x-linode-cli-subtables:
+              - region_prices
               schema:
                 $ref: '#/components/schemas/LinodeType'
         default:
@@ -10523,7 +10753,7 @@ paths:
           curl -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $TOKEN" \
                 -X POST -d '{
-                  "kubeconfig": true;
+                  "kubeconfig": true,
                   "servicetoken": true
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345/regenerate
@@ -15729,12 +15959,10 @@ paths:
       description: |
         Provisions a new Object Storage Key on your account.
 
-        Accounts with negative balances cannot access this command.
-
+        * Accounts with negative balances cannot access this command.
+        * A successful request triggers an `obj_access_key_create` event.
         * To create a Limited Access Key with specific permissions, send a `bucket_access` array.
-
         * To create a Limited Access Key without access to any buckets, send an empty `bucket_access` array.
-
         * To create an Access Key with unlimited access to all clusters and all buckets, omit the `bucket_access` array.
       tags:
       - Object Storage
@@ -15833,6 +16061,8 @@ paths:
       summary: Object Storage Key Update
       description: |
         Updates an Object Storage Key on your account.
+
+        * A successful request triggers an `obj_access_key_update` event.
       security:
       - personalAccessToken: []
       - oauth:
@@ -15880,7 +16110,9 @@ paths:
       - url: https://api.linode.com/v4
       summary: Object Storage Key Revoke
       description: |
-        Revokes an Object Storage Key.  This keypair will no longer be usable by third-party clients.
+        Revokes an Object Storage Key. This keypair will no longer be usable by third-party clients.
+
+        * A successful request triggers an `obj_access_key_delete` event.
       security:
       - personalAccessToken: []
       - oauth:
@@ -18879,6 +19111,13 @@ components:
                 items:
                   $ref: '#/components/schemas/ErrorObject'
   parameters:
+    betaId:
+      name: betaId
+      in: path
+      description: The ID of the Beta Program.
+      required: true
+      schema:
+        type: string
     pageOffset:
       name: page
       in: query
@@ -19331,6 +19570,90 @@ components:
           readOnly: true
           description: >
             A list of the disks that are part of the Backup.
+    BetaProgram:
+      type: object
+      description: An object representing Beta Program information.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the Beta Program.
+          example: example_open
+          x-linode-cli-display: 1
+        label:
+          type: string
+          readOnly: true
+          x-linode-filterable: true
+          description: The name of the Beta Program.
+          example: Example Open Beta
+          x-linode-cli-display: 2
+        description:
+          type: string
+          readOnly: true
+          nullable: true
+          description: Additional details regarding the Beta Program.
+          example: "This is an open public beta for an example feature."
+          x-linode-cli-display: 3
+        greenlight_only:
+          type: boolean
+          readOnly: true
+          x-linode-filterable: true
+          description: Whether the Beta Program requires [Green Light](https://www.linode.com/green-light/) participation for enrollment.
+          example: true
+          x-linode-cli-display: 4
+        started:
+          type: string
+          format: date-time
+          readOnly: true
+          x-linode-filterable: true
+          description: The start date-time of the Beta Program.
+          example: '2023-07-11T00:00:00'
+          x-linode-cli-display: 5
+        ended:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          x-linode-filterable: true
+          description: |
+            The date-time that the Beta Program ended.
+
+            `null` indicates that the Beta Program is ongoing.
+          example: null
+          x-linode-cli-display: 6
+        more_info:
+          type: string
+          readOnly: true
+          nullable: true
+          description: Additional source of information for the Beta Program.
+          example: https://www.linode.com/green-light/
+          x-linode-cli-display: 7
+    BetaProgramEnrolled:
+      type: object
+      description: An object representing an enrolled Beta Program for the Account.
+      properties:
+        id:
+          $ref: '#/components/schemas/BetaProgram/properties/id'
+          x-linode-cli-display: 1
+        label:
+          $ref: '#/components/schemas/BetaProgram/properties/label'
+          x-linode-cli-display: 2
+        description:
+          $ref: '#/components/schemas/BetaProgram/properties/description'
+          x-linode-cli-display: 3
+        started:
+          $ref: '#/components/schemas/BetaProgram/properties/started'
+          x-linode-cli-display: 4
+        ended:
+          $ref: '#/components/schemas/BetaProgram/properties/ended'
+          x-linode-cli-display: 5
+        enrolled:
+          type: string
+          format: date-time
+          readOnly: true
+          x-linode-filterable: true
+          description: The date-time of Account enrollment to the Beta Program.
+          example: '2023-09-11T00:00:00'
+          x-linode-cli-display: 6
     CreditCard:
       type: object
       description: |
@@ -19596,7 +19919,7 @@ components:
           x-linode-cli-display: 2
         created:
           type: string
-          format: datetime
+          format: date-time
           example: '2022-01-01T00:01:01'
           description: A time value given in a combined date and time format that represents when the database backup was created.
           x-linode-filterable: true
@@ -20753,6 +21076,9 @@ components:
           - oauth_client_delete
           - oauth_client_secret_reset
           - oauth_client_update
+          - obj_access_key_create
+          - obj_access_key_delete
+          - obj_access_key_update
           - password_reset
           - payment_method_add
           - payment_submitted
@@ -21574,6 +21900,18 @@ components:
           description: The amount of the Invoice after taxes in US Dollars.
           example: 132.50
           x-linode-cli-display: 6
+        billing_source:
+          type: string
+          enum:
+          - akamai
+          - linode
+          readOnly: true
+          description: |
+            `akamai`: This Invoice was generated according to the terms of an agreement between the customer and Akamai.
+
+            `linode`: This Invoice was generated according to the default terms, prices, and discounts.
+          example: linode
+          x-linode-cli-display: 3.5
     InvoiceItem:
       type: object
       description: An InvoiceItem object.
@@ -21634,6 +21972,16 @@ components:
           readOnly: true
           description: The monthly service fee in US Dollars for this Item.
           example: 5.05
+        region:
+          type: string
+          readOnly: true
+          nullable: true
+          description: |
+            The ID of the applicable Region associated with this Invoice Item.
+
+            `null` if there is no applicable Region.
+          example: us-west
+          x-linode-cli-display: 7
     IPAddress:
       type: object
       description: >
@@ -23025,8 +23373,10 @@ components:
         price:
           type: object
           readOnly: true
-          description: >
-            Cost in US dollars, broken down into hourly and monthly charges.
+          description: |
+            The default cost of provisioning this Linode Type. Prices are in US dollars, broken down into hourly and monthly charges.
+
+            Certain Regions have different prices from the default. For Region-specific prices, see `region_prices`.
           properties:
             hourly:
               type: number
@@ -23038,6 +23388,23 @@ components:
               description: Cost (in US dollars) per month.
               example: 20
               x-linode-cli-display: 10
+        region_prices:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The Region ID for these prices.
+                example: us-east
+              hourly:
+                type: number
+                description: Cost (in US dollars) per hour for this Region.
+                example: 0.036
+              monthly:
+                type: number
+                description: Cost (in US dollars) per month for this Region.
+                example: 24
         addons:
           type: object
           readOnly: true
@@ -23053,7 +23420,10 @@ components:
               properties:
                 price:
                   type: object
-                  description: Cost of enabling Backups for this Linode Type.
+                  description: |
+                    The default cost of enabling Backups for this Linode Type. Prices are in US dollars, broken down into hourly and monthly charges.
+
+                    Certain Regions have different prices from the default. For Region-specific prices, see `region_prices`.
                   properties:
                     hourly:
                       type: number
@@ -23065,6 +23435,23 @@ components:
                       description: >
                         The cost (in US dollars) per month to add Backups service.
                       example: 5
+                region_prices:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The Region ID for these prices.
+                        example: us-east
+                      hourly:
+                        type: number
+                        description: Cost (in US dollars) per hour to add Backups service in this Region.
+                        example: 0.0096
+                      monthly:
+                        type: number
+                        description: Cost (in US dollars) per month to add Backups service in this Region.
+                        example: 6
         network_out:
           x-linode-filterable: true
           type: integer
@@ -23113,7 +23500,7 @@ components:
           description: >
             The number of GPUs this Linode Type offers.
           example: 0
-          x-linode-cli-display: 11
+          x-linode-cli-display: 6.5
     LKECluster:
       type: object
       description: A Kubernetes cluster.
@@ -26065,14 +26452,15 @@ components:
           example: null
     Transfer:
       type: object
-      description: >
-        An object representing your network utilization for the current month,
-        in Gigabytes.
+      description: |
+        An object representing your network utilization for the current month, in Gigabytes.
+
+        Certain Regions have separate utilization quotas and rates. For Region-specific network utilization data, see `region_transfers`.
       properties:
         billable:
           type: integer
           readOnly: true
-          description: >
+          description: |
             The amount of your transfer pool that is billable this billing cycle.
           example: 0
           x-linode-cli-display: 3
@@ -26090,6 +26478,33 @@ components:
             The amount of network usage you have used this billing cycle.
           example: 2
           x-linode-cli-display: 2
+        region_transfers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The Region ID for this network utilization data.
+                example: us-east
+              billable:
+                type: integer
+                readOnly: true
+                description: |
+                  The amount of your transfer pool that is billable this billing cycle for this Region.
+                example: 0
+              quota:
+                type: integer
+                readOnly: true
+                description: >
+                  The amount of network usage allowed this billing cycle for this Region.
+                example: 5010
+              used:
+                type: integer
+                readOnly: true
+                description: >
+                  The amount of network usage you have used this billing cycle for this Region.
+                example: 1
     Tag:
       type: object
       description: >
@@ -26648,6 +27063,8 @@ components:
 tags:
   - name: Account
     description: Use the Account endpoints to manage user settings, billing, and payments. You can also initiate and maintain OAuth client application authentication, enable the Linode Managed service, and create new users on your account.
+  - name: Beta Programs
+    description: Use the Beta Programs endpoint to view information to view information about available beta programs. To sign up for eligible beta programs, use the [Beta Program Join]() Account command.
   - name: Databases
     description: Managed Databases is Linode's fully-managed, high-performance database service. Use the Managed Databases endpoints to create and manage database clusters.
   - name: Domains
