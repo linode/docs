@@ -1,8 +1,8 @@
 ---
 slug: working-with-graph-data-structures
 title: "Working with Graph Data Structures in the Real World"
-description: 'Two to three sentences describing your guide.'
-keywords: ['Graph Algorithms and Approaches', 'Directed Versus Undirected Graphs', 'DFS vs BFS', 'Weighted Graphs', 'Minimum Spanning Trees']
+description: 'This comprehensive guide delves into graph terminology, essential algorithms, weighted graphs, and their real-world applications, providing valuable insights for effective data graph usage.'
+keywords: ['Directed Versus Undirected Graphs', 'DFS vs BFS', 'Weighted Graphs', 'Minimum Spanning Trees']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
 published: 2023-10-07
