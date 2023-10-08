@@ -85,7 +85,7 @@ Property GDBs consist of the following components:
 
 In a labeled property graph, vertices are called nodes and include a uniquely identifiable ID and property values to characterize them. To visualize how Labels and Properties function within a graph database, see Figure 1 below:
 
-![Figure 1](Figure_1.png "Figure 1")
+![Figure 1](figure_1.png "Figure 1")
 
 The figure above illustrates the relationship between nodes (`:PERSON` and `:ASSET`) along with their respective properties (`Olivia`, `since 2000`, and `square footage 3000`).
 
@@ -107,7 +107,7 @@ For example, a customer information table might look like:
 
 As for a graph database, data is unstructured, where nodes can be tagged with labels and hold any number of key-value pairs (aka properties). To visualize this concept, consider the simplified example depicted in Figure 2 below:
 
-![Figure 2](Figure_2.png "Figure 2")
+![Figure 2](figure_2.png "Figure 2")
 
 The figure above illustrates the relationship between two nodes (`Bob` and `Mary`) and the edge (`loves`) that connect them.
 
@@ -169,4 +169,4 @@ Here are five examples of popular relational databases:
 
 Graph databases are here to stay. When you have highly complex relationships between data, this is the type of database you should consider. They are outstanding options for fraud detection, 360-degree customer views, recommendation engines, network/operations mapping, AI knowledge graphs, social networking, and supply chain mapping. Any use case where data relationships are constantly changing is an ideal place for graph databases.
 
-To find out how you can work with various databases on Linode, check out the[ list of supported databases](https://www.linode.com/docs/guides/list-of-databases/), which includes links on how to install them.
+To find out how you can work with various databases on Linode, check out the[ list of supported databases](/docs/guides/list-of-databases/), which includes links on how to install them.
