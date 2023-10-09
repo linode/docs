@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-09-21
+modified: 2023-10-06
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -32,7 +32,7 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 | Milan, Italy | **Now available to all customers** | `it-mil` |
 | Osaka, Japan | **Now available to all customers** | `jp-osa` |
 | Paris, France | **Now available to all customers** | `fr-par` |
-| São Paulo, Brazil | *Limited beta* | `br-gru` |
+| São Paulo, Brazil | **Now available to all customers** | `br-gru` |
 | Seattle, WA, USA | **Now available to all customers** | `us-sea` |
 | Stockholm, Sweden | **Now available to all customers** | `se-sto` |
 | Washington, DC, USA | **Now available to all customers** | `us-iad` |

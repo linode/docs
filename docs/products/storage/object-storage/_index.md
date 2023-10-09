@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-09-21
+modified: 2023-10-06
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -46,6 +46,7 @@ Object Storage is available within the following data centers. For a full list o
 | Newark, NJ (USA) | `us-east-1` |
 | Osaka (Japan)\* | `jp-osa-1` |
 | Paris (France)\* | `fr-par-1` |
+| São Paulo (Brazil)\* | `br-gru-1` |
 | Seattle, WA (USA)\* | `us-sea-1` |
 | Singapore | `ap-south-1` |
 | Stockholm (Sweden)\* | `se-sto-1` |
@@ -58,6 +59,10 @@ Object Storage deployments in each data center are assigned a cluster ID. These 
 ## Pricing
 
 Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabytes of storage. This flat rate is prorated, so if you use Object Storage for a fraction of the month you are charged a fraction of the cost. For example, if you have Object Storage enabled for half of the month and use up to 250 gigabytes of storage you are billed $2.50 at the end of the month. Each additional gigabyte of storage over the first 250 gigabytes costs $0.02, and this usage is also prorated based on usage time.
+
+{{< note >}}
+Object Storage for our **Jakarta** and **São Paulo** data centers is in currently in beta. While in beta, the Object Storage service remains free to use in these regions.
+{{< /note >}}
 
 {{< content "object-storage-cancellation-shortguide" >}}
 
@@ -73,7 +78,6 @@ The tables below outline Object Storage limits. Most of the limits apply **per r
 | Maximum number of buckets | 1,000 buckets |
 | Maximum file upload size | 5 GB (5 TB with multipart uploads) |
 | Rate limit (per bucket) | 750 requests per second |
-| Rate limit (per bucket) | 750 requests per second |
 
 
 | Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> |
@@ -87,6 +91,7 @@ The tables below outline Object Storage limits. Most of the limits apply **per r
 | Newark, NJ (USA) | 5 TB | 50 million |
 | Osaka (Japan) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Paris (France) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
+| São Paulo (Brazil) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Seattle, WA (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Singapore | 5 TB | 50 million |
 | Stockholm (Sweden) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |

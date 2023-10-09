@@ -3,7 +3,7 @@ title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
-modified: 2023-09-21
+modified: 2023-10-06
 modified_by:
   name: Linode
 aliases: ['/guides/ip-failover/']
@@ -42,6 +42,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Newark, NJ (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 6 |
 | Osaka (Japan) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 26 |
 | Paris (France) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 19 |
+| São Paulo (Brazil) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 21 |
 | Seattle, WA, USA | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 20 |
 | Singapore | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 9 |
 | Stockholm (Sweden) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 23 |
