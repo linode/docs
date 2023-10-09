@@ -73,7 +73,6 @@ The tables below outline Object Storage limits. Most of the limits apply **per r
 | Maximum number of buckets | 1,000 buckets |
 | Maximum file upload size | 5 GB (5 TB with multipart uploads) |
 | Rate limit (per bucket) | 750 requests per second |
-| Rate limit (per bucket) | 750 requests per second |
 
 
 | Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> |
