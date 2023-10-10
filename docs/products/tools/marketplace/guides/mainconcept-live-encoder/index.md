@@ -9,7 +9,8 @@ modified_by:
 authors: ["Linode"]
 ---
 
-[MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is a powerful all-in-one encoding engine designed to simplify common broadcast and OTT video workflows. With renowned MainConcept HEVC and AVC codecs built in, our intuitive user-interface allows you to package content for multiscreen delivery, using common input sources, in real time.
+[MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) 
+is a media encoding platform focused on broadcast and OTT workflows. It utilized MainConcept HEVC and AVC codecs, and ships with a web GUI to streamline packaging common input sources for multiscreen delivery.
 
 ## Deploying a Marketplace App
 
@@ -37,8 +38,8 @@ Now that your MainConcept Live Encoder Marketplace App is deployed, you can log 
 
 1. Open a browser and navigate to the domain you created in the beginning of your deployment. If you did not use a Domain, you can use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-1. Once you visit the MainConcept Live Encoder URL, you can enter `admin` as the *username* and `admin` as the *password*. Please ensure you change the default password after logging into your MainConcept Live Encoder instance.
+2. Once you visit the MainConcept Live Encoder URL, you can enter `admin` as the *username* and `admin` as the *password*. Please ensure you change the default password after logging into your MainConcept Live Encoder instance.
 
-Now that MainConcept Live Encoder are deployed, please visit [MainConcept official documentation](https://www.mainconcept.com/live-encoder). 
+Please visit [MainConcept official documentation](https://www.mainconcept.com/live-encoder). 
 
 {{< content "marketplace-update-note-shortguide">}}
