@@ -28,6 +28,8 @@ authors: ["Linode"]
 
 ### MainConcept 2GO P2 AVC Ultra Transcoder Options
 
+- **API Port** : Sets the port for the HTTP REST API endpoint. Defaults to 8080
+
 {{< content "marketplace-limited-user-fields-shortguide">}}
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
