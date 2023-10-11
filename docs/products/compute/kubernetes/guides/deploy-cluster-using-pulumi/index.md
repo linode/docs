@@ -16,11 +16,9 @@ external_resources:
 
 ## In this Guide
 
-This guide will walk you through the steps needed to deploy a Kubernetes cluster using LKE and the popular *infrastructure as code (IaC)* tool, [Pulumi](https://www.pulumi.com/). Throughout the guide you will:
-
-- [Prepare your local environment by installing Pulumi](#prepare-your-local-environment) and [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/).
+This guide walks you through the steps needed to deploy a Kubernetes cluster using LKE and the popular *infrastructure as code (IaC)* tool, [Pulumi](https://www.pulumi.com/).
 - [Create reusable Pulumi infrastructure code to define your Kubernetes cluster's resources](#create-your-pulumi-infrastructure-code).
-- [Optionally, you will destroy the cluster you create using Pulumi](#destroy-your-kubernetes-cluster-optional).
+- [Optionally, destroy the cluster you create using Pulumi](#destroy-your-kubernetes-cluster-optional).
 
 ## Before you Begin
 
@@ -29,31 +27,24 @@ This guide will walk you through the steps needed to deploy a Kubernetes cluster
     {{< note >}}
     Ensure that your token has, at minimum, Read/Write permissions for Compute Instances, Kubernetes, NodeBalancers, and Volumes.
     {{< /note >}}
-
-1. Review the [Getting Started With Pulumi](/docs/guides/deploy-in-code-with-pulumi/) guide to familiarize yourself with Pulumi concepts if you have not used the tool before. This guide assumes familiarity with Pulumi and one of the [supported programming languages](https://www.pulumi.com/docs/languages-sdks/). In this guide, we will use Typescript for the code examples.
-
-## Prepare your Local Environment
-
-### Install Pulumi
-
-Install Pulumi on your computer by following the [Before You Begin](/docs/guides/deploy-in-code-with-pulumi/#before-you-begin) section of our [Getting Started With Pulumi](/docs/guides/deploy-in-code-with-pulumi/) guide.
-
+1. Download and [install Pulumi](https://www.pulumi.com/docs/install/) on your local machine.
+1. Review the [Getting Started With Pulumi](/docs/guides/deploy-in-code-with-pulumi/) guide to familiarize yourself with Pulumi concepts if you have not used the tool before. You need to be familiar with Pulumi and one of the [supported programming languages](https://www.pulumi.com/docs/languages-sdks/). In this guide, Typescript is used for the code examples.
 ### Install kubectl
 
 {{< content how-to-install-kubectl >}}
 
 ## Create your Pulumi Infrastructure Code
 
-In this section, you will create Pulumi infrastructure code that define the resources needed to create a Kubernetes cluster. You will create a minimal Pulumi project containing your [resources](https://www.pulumi.com/docs/concepts/resources/), a [stack](https://www.pulumi.com/docs/concepts/stack/) which is an instance of your Pulumi program, and the [configuration values](https://www.pulumi.com/docs/concepts/config/) for your stack. Setting up your Pulumi project in this way will allow you to reuse your Pulumi program to deploy more Kubernetes clusters, if desired, by way of additional stacks.
+Create Pulumi infrastructure code that define the resources needed to create a Kubernetes cluster. You can create a minimal Pulumi project containing your [resources](https://www.pulumi.com/docs/concepts/resources/), a [stack](https://www.pulumi.com/docs/concepts/stack/) which is an instance of your Pulumi program, and the [configuration values](https://www.pulumi.com/docs/concepts/config/) for your stack. Setting up your Pulumi project in this way allows you to reuse your Pulumi program to deploy more Kubernetes clusters, if desired, by way of additional stacks.
 
 ### Create your Pulumi project
 
-Pulumi defines the elements of your Linode infrastructure using a regular programming language. Pulumi refers to these infrastructure elements as *resources*. Once you declare your Pulumi infrastructure, you run `pulumi up`, which results in the creation of those resources on the Linode platform. The Linode Provider for Pulumi exposes the Linode resources you will need to deploy a Kubernetes cluster using LKE.
+Pulumi defines the elements of your Linode infrastructure using a regular programming language. Pulumi refers to these infrastructure elements as *resources*. After you declare your Pulumi infrastructure, you run `pulumi up` to create resources on the Linode platform. The Linode Provider for Pulumi exposes the Linode resources you need to deploy a Kubernetes cluster using LKE.
 
-1. Create a new directory for the Pulumi project containing your LKE cluster's setup. Replace `lke-cluster` with your preferred directory name.
+1. Create a new directory for the Pulumi project containing your LKE cluster's setup. Replace `<lke-cluster>` with your preferred directory name.
 
     ```command
-    mkdir lke-cluster
+    mkdir <lke-cluster>
     ```
 
 1. In this new folder, create a new Pulumi project using the `linode-typescript` template:
@@ -72,10 +63,10 @@ Pulumi defines the elements of your Linode infrastructure using a regular progra
       oci-java                           A minimal Java Pulumi program with Maven builds
     ```
 
-    After selecting the template, the wizard will ask you for some more information:
+    After selecting the template, the wizard prompts you for some more information:
 
     ```command
-    This command will walk you through creating a new Pulumi project.
+    This command walks you through creating a new Pulumi project.
 
     Enter a value or leave blank to accept the (default), and press <ENTER>.
     Press ^C at any time to quit.
@@ -104,7 +95,7 @@ Pulumi defines the elements of your Linode infrastructure using a regular progra
     To perform an initial deployment, run `pulumi up`
     ```
 
-    Wherever a default value is presented between brackets, you can press the `<Enter>` key to accept this value. The wizard already asks you the name of the first stack to create, in this case called `dev`.
+    Wherever a default value is presented between brackets, you can press the `<Enter>` key to accept this value. The wizard prompts you to enter the name of the first stack to create, in this case called `dev`.
 
 1. Using the text editor of your choice, open the `index.ts` file and create your cluster’s main configuration. Replace the contents to the file with the following:
 
@@ -133,7 +124,7 @@ Pulumi defines the elements of your Linode infrastructure using a regular progra
 
     This file contains your cluster’s setup and [stack outputs](https://www.pulumi.com/docs/concepts/stack/#outputs). In this example, you make use of Pulumi's stack config so that your Pulumi program can be easily reused across different clusters.
 
-    The cluster configuration will be set using [stack configuration](https://www.pulumi.com/docs/concepts/config/). Each stack can have a different infrastructure configuration. This strategy can help you reuse, share, and version control your Pulumi programs.
+    The cluster configuration is set using [stack configuration](https://www.pulumi.com/docs/concepts/config/). Each stack can have a different infrastructure configuration. This strategy can help you reuse, share, and version control your Pulumi programs.
 
     The Pulumi program uses the Linode provider to create a Kubernetes cluster. All arguments within the `linode.LkeCluster` resource are required, except for `tags`. The `pools` argument accepts a list of pool objects. In order to read the configuration for all the pools at once, the Pulumi program makes use of Pulumi's [structured configuration](https://www.pulumi.com/docs/concepts/config/#structured-configuration). Structured configuration allows for list values, maps & objects. Finally, [stack outputs](https://www.pulumi.com/docs/concepts/stack/#outputs) are defined in order to capture your cluster's output properties that will be returned to Pulumi after creating your cluster.
 
@@ -149,11 +140,11 @@ Pulumi defines the elements of your Linode infrastructure using a regular progra
 
 ### Define your Stack Configuration
 
-You will now need to define the values you would like to use in order to create your Kubernetes cluster. These values are stored as configuration in the stack file. Stack configuration should be the only place that requires updating when reusing the program created in this guide to deploy a new Kubernetes cluster or to add a new node pool to the cluster.
+You need to define the values you would like to use in order to create your Kubernetes cluster. These values are stored as configuration in the stack file. Stack configuration should be the only place that requires updating when reusing the program created in this guide to deploy a new Kubernetes cluster or to add a new node pool to the cluster.
 
 Stack configuration is usually set using the Pulumi CLI using the command [`pulumi config set`](https://www.pulumi.com/docs/cli/commands/pulumi_config_set/).
 
-1. The Pulumi program for our cluster uses the `Config` object to retrieve a few named configuration items. We can set values for the (current) `dev` stack with the following commands:
+1. The Pulumi program for our cluster uses the `Config` object to retrieve a few named configuration items. You can set values for the (current) `dev` stack with the following commands:
 
     ```command
     pulumi config set label "example-lke-cluster"
@@ -161,7 +152,7 @@ Stack configuration is usually set using the Pulumi CLI using the command [`pulu
     pulumi config set region "us-west"
     ```
 
-    So far, we provided the values for stack configuration which are simple strings. As mentioned before, Pulumi also supports Structured Configuration, allowing list, map and object values. The commands to set such values are a bit more complex but still fully supported.
+    So far, the values for stack configuration are simple strings. Pulumi also supports Structured Configuration, allowing list, map and object values. The commands to set such values are a bit more complex but still fully supported.
 
     ```command
     pulumi config set --path 'pools[0].count' 3
@@ -170,7 +161,7 @@ Stack configuration is usually set using the Pulumi CLI using the command [`pulu
 
     With the `dev` stack active as the current stack, the values should be added to the `Pulumi.dev.yaml` stack configuration file.
 
-    Pulumi will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.26` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
+    Pulumi uses the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster is located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool uses Kubernetes version `1.26` and the cluster is named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
 
 ## Deploy your Kubernetes Cluster
 
@@ -198,7 +189,7 @@ Now that all your Pulumi configuration is ready, you can deploy your Kubernetes 
     This last method commits the environment variable to your shell’s history, so take care when using this method.
     {{< /note >}}
 
-1. Preview the updates Pulumi will execute before deploying your infrastructure. This command won't take any actions or make any changes on your Linode account. It will provide a report displaying all the resources that will be created or modified when the plan is executed.
+1. Preview the updates Pulumi executes before deploying your infrastructure. This command won't take any actions or make any changes on your Linode account. It provides a report displaying all the resources that is created or modified when the plan is executed.
 
     ```command
     pulumi preview
@@ -210,7 +201,7 @@ Now that all your Pulumi configuration is ready, you can deploy your Kubernetes 
     pulumi up
     ```
 
-    Pulumi will begin to create the resources you’ve defined throughout this guide. This process will take several minutes to complete. Once the cluster has been successfully created the output will include a success message and the values that you exposed as stack outputs when creating your `index.ts` file.
+    Pulumi begins to create the resources you’ve defined. This process takes several minutes to complete. After the cluster has been successfully created the output includes a success message and the values that you exposed as stack outputs when creating your `index.ts` file.
 
     ```output
     Updating (team-ce/dev)
@@ -267,7 +258,7 @@ Now that all your Pulumi configuration is ready, you can deploy your Kubernetes 
 
 ### Connect to your LKE Cluster
 
-Now that your Kubernetes cluster is deployed, you can use kubectl to connect to it and begin defining your workload. In this section, you will access your cluster's kubeconfig and use it to connect to your cluster with kubectl.
+Now that your Kubernetes cluster is deployed, you can use kubectl to connect to it and begin defining your workload. Access your cluster's kubeconfig and use it to connect to your cluster with kubectl.
 
 1. Use Pulumi to access your cluster's kubeconfig, decode its contents, and save them to a file. Pulumi returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred file name.
 
@@ -276,14 +267,14 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
     ```
 
     {{< note >}}
-    Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -di` with `base64 -D` or just `base64 -d`. To determine which `base64` option to use, issue the following command:
+    Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -di` with `base64 -D` or just `base64 -d`. To determine which `base64` option to use the following command:
 
     ```command
     base64 --help
     ```
     {{< /note >}}
 
-1. Add the kubeconfig file to your `$KUBECONFIG` environment variable. This will give kubectl access to your cluster's kubeconfig file.
+1. Add the kubeconfig file to your `$KUBECONFIG` environment variable. This gives kubectl access to your cluster's kubeconfig file.
 
     ```command
     export KUBECONFIG=lke-cluster-config.yaml
@@ -301,7 +292,7 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
     kubectl get nodes
     ```
 
-    Your output will resemble the following example, but will vary depending on your own cluster’s configurations.
+    Your output resembles the following example, but will vary depending on your own cluster’s configurations.
 
     ```output
     NAME                            STATUS   ROLES    AGE     VERSION
@@ -322,7 +313,7 @@ Pulumi includes a `destroy` command to remove resources managed by Pulumi.
     pulumi destroy
     ```
 
-    Pulumi will first display the list of resources & stack outputs that will be deleted.
+    Pulumi first displays the list of resources & stack outputs that need to be deleted.
 
     ```output
     Previewing destroy (team-ce/dev)
@@ -379,4 +370,4 @@ Pulumi includes a `destroy` command to remove resources managed by Pulumi.
       details
     ```
 
-    If you want to continue deleted the cluster, select `yes` after the preview and press `<Enter>`. Pulumi will now delete the cluster and the nodepool.
+    If you want to continue deleted the cluster, select `yes` after the preview and press `<Enter>`. Pulumi now deletes the cluster and the nodepool.
