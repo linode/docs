@@ -31,8 +31,6 @@ This guide walks you through the steps needed to deploy a Kubernetes cluster usi
 1. Review the [Getting Started With Pulumi](/docs/guides/deploy-in-code-with-pulumi/) guide to familiarize yourself with Pulumi concepts if you have not used the tool before. You need to be familiar with Pulumi and one of the [supported programming languages](https://www.pulumi.com/docs/languages-sdks/). In this guide, Typescript is used for the code examples.
 1. [Install kubectl](docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#install-kubectl) on your local machine.
 
-{{< content how-to-install-kubectl >}}
-
 ## Create your Pulumi Infrastructure Code
 
 Create Pulumi infrastructure code that define the resources needed to create a Kubernetes cluster. You can create a minimal Pulumi project containing your [resources](https://www.pulumi.com/docs/concepts/resources/), a [stack](https://www.pulumi.com/docs/concepts/stack/) which is an instance of your Pulumi program, and the [configuration values](https://www.pulumi.com/docs/concepts/config/) for your stack. Setting up your Pulumi project in this way allows you to reuse your Pulumi program to deploy more Kubernetes clusters, if desired, by way of additional stacks.
