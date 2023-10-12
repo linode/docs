@@ -192,5 +192,5 @@ sudo groups example-user
 ```
 
 ```output
-example-user : example-user example-group
+example-user : example-user sudo example-group
 ```
