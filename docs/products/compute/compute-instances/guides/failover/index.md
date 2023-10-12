@@ -3,7 +3,7 @@ title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
-modified: 2023-10-06
+modified: 2023-10-12
 modified_by:
   name: Linode
 aliases: ['/guides/ip-failover/']
@@ -29,6 +29,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 
 | Data center | IP Sharing support | Failover method | Software | ID |
 | -- | -- | -- | -- | -- |
+| Amsterdam (Netherlands) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 22 |
 | Atlanta, GA (USA) | *Undergoing network upgrades* | - | - | 4 |
 | Chennai (India) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 25 |
 | Chicago, IL (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |

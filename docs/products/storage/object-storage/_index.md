@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-10-06
+modified: 2023-10-12
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -37,6 +37,7 @@ Object Storage is available within the following data centers. For a full list o
 
 | Data Center | Cluster ID |
 | -- | -- | -- | -- |
+| Amsterdam (Netherlands)\* | `nl-ams-1` |
 | Atlanta, GA (USA) | `us-southeast-1` |
 | Chennai (India)\* | `in-maa-1` |
 | Chicago, IL (USA)\* | `us-ord-1` |
@@ -82,6 +83,7 @@ The tables below outline Object Storage limits. Most of the limits apply **per r
 
 | Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> |
 | -- | -- | -- |
+| Amsterdam (Netherlands) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Atlanta, GA (USA) | 5 TB | 50 million |
 | Chennai (India) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Chicago, IL (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
