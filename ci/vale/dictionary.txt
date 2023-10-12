@@ -470,6 +470,7 @@ dbname
 dbserver
 dcid
 dcs
+Ddosify
 deadman
 deallocated
 deallocation
