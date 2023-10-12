@@ -1,8 +1,8 @@
 ---
 slug: run-shell-commands-with-cloud-init
 title: "Use Cloud-init to Run Commands and Bash Scripts on First Boot"
-description: 'In this tutorial, find out how you can use cloud-init to run shell commands and Bash script on first booting up a new server.'
-og_description: 'In this tutorial, find out how you can use cloud-init to run shell commands and Bash script on first booting up a new server.'
+description: 'In this tutorial, find out how you can use cloud-init to run shell commands and Bash scripts on first booting up a new server.'
+og_description: 'In this tutorial, find out how you can use cloud-init to run shell commands and Bash scripts on first booting up a new server.'
 keywords: ['cloud-init','cloudinit','bash','shell script']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
@@ -13,19 +13,19 @@ external_resources:
 - '[Cloud-init Documentation - Examples: Run Commands on First Boot](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#run-commands-on-first-boot)'
 ---
 
-[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) automates the process of initializing new servers with an industry-standard, cross-platform approach. Cloud-init leverages metadata from your cloud platform to handle the deployment while taking custom user data to script the server setup to your needs.
+[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) is an industry-standard, cross-platform tool that automates the process of initializing new servers. Cloud-init leverages metadata from your cloud platform to handle the deployment while taking custom user data to script the server setup to your needs.
 
 Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service lets you deploy Compute Instances using cloud-init. Applying a cloud-config script, you can define everything from security and user setup to software installation and shell script execution.
 
-This guide covers how to use cloud-init to run shell commands as part of server deployment. Whether you need to execute a single shell statement or a full Bash script, cloud-init can automatically run commands on your system's first boot.
+This guide covers how to use cloud-init to run shell commands as part of server deployment. Whether you need to execute a single shell statement or a full Bash script, cloud-init can automatically run the necessary commands on your system's first boot.
 
 Before getting started, review our guide on how to [Use Cloud-init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with this guide. When you are ready to deploy your cloud-config, the guide linked above shows how.
 
 ## Run Commands with `runcmd` Directive
 
-The `runcmd` option is the primary way to execute shell commands within cloud-config. The option takes a list of commands, which cloud-init then runs during the initialization process.
+The `runcmd` option is the primary way to execute shell commands within cloud-config. The option takes a list of commands, which cloud-init then runs sequentially during the initialization process.
 
-Each command given to `runcmd` can be entered either as a list or as a string. The string directly gives the command, just as you would input the command into the shell. As a list, the first item is the command, and each subsequent item is an option to the command, in order.
+Each command given to `runcmd` can be entered either as a list or as a string. The string directly gives the command, just as you would input the command into the shell. As a list, the first item is the command, and each subsequent item is an option to the command, in order. Execution follows the same approach as [execve(3)](https://linux.die.net/man/3/execve).
 
 To demonstrate, the example below provides a `runcmd` that uses both approaches. Each command runs a similar operation, appending a line to a `/run/test.txt`.
 
@@ -36,7 +36,7 @@ runcmd:
 ```
 
 {{< note >}}
-Cloud-init recommends against writing files to the `/tmp/` directory in your cloud-config as that directory is prone to being cleared during boot processes. Instead, cloud-init recommends using the `/run/` directory, as in the example above and the examples to follow.
+Cloud-init recommends against writing files to the `/tmp/` directory in your cloud-config as that directory is prone to being cleared during boot processes. Instead, cloud-init recommends using the `/run/` directory for temporary files, as in the example above and the examples to follow.
 {{< /note >}}
 
 ## Run Commands with `bootcmd` Directive
@@ -69,7 +69,7 @@ If your script is hosted and accessible remotely, the most straightforward solut
 
 However, most use cases favor adding the shell script directly as part of the cloud-init initialization, without hosting the script file elsewhere. In such cases, you can use cloud-init's `write_files` option to create the script file on initialization. To learn more about writing files with cloud-init, read our guide on how to [Use Cloud-init to Write to a File](/docs/guides/write-files-with-cloud-init/). The guide includes explanations of all the `write_files` options used here.
 
-The example that follows demonstrates how to use `write_files` and `runcmd` together in your cloud-config to create and execute a shell script. `write_files` creates a simple script file at `/run/scripts/test-script.sh` and gives the script executable permissions. The script runs with Bash and appends a line to the `/run/testing.txt` file. `runcmd` executes the `test-script.sh` file as a command. This example uses the `sh` command to run the shell script:
+The example that follows demonstrates how `write_files` and `runcmd` can operate together in your cloud-config to create and execute a shell script. `write_files` creates a simple script file at `/run/scripts/test-script.sh` and gives the script executable permissions. The script `content` runs with Bash and appends a line to the `/run/testing.txt` file. `runcmd` executes the `test-script.sh` file as a command. This example uses the `sh` command to run the shell script:
 
 ```file {title="cloud-config.yaml" lang="yaml"}
 write_files:
@@ -86,9 +86,9 @@ runcmd:
 
 ## Verify that Commands or Script has Run
 
-After your instacne is deployed using cloud-init, verify the successful execution of commands. How you do so varies based on the nature of the commands. However, the most consistent way is to check the output in the cloud-init log file, located at `/var/log/cloud-init-output.log`.
+After your instacne is deployed using cloud-init, verify the successful execution of commands. How you do so varies based on the nature of the commands. However, since many commands generate shell output by default, the most consistent way is to check the output in the cloud-init log file, located at `/var/log/cloud-init-output.log`.
 
-In the cases of the example `bootcmd` commands above, each uses `echo` to output to the terminal. Thus, you can verify these command by searching the cloud-init logs for the output. The example below simplifies this by using `grep` to filter the logs down to lines containing the text from the commands.
+For instance, the example `bootcmd` commands above each use `echo` to output to the terminal. Thus, you can verify those commands by searching the cloud-init logs for the output. The example simplifies the search by using `grep` to filter the logs down to lines containing known output text from the commands.
 
 ```command
 sudo cat /var/log/cloud-init-output.log | grep 'executed successfully!'
@@ -99,9 +99,9 @@ Boot command executed successfully!
 Instance initialization command executed successfully!
 ```
 
-Many command-line tools output information to the terminal, and this makes them straightforward to verify using the cloud-init logs.
+Many command-line tools output information to the terminal, and this makes them straightforward to verify using the cloud-init logs. However, some commands output to their own log files. If not, you can always log actions with `echo` commands alongside your main commands. For example, the other commands above that run with `runcmd` output text to a `/run/testing.txt` file.
 
-The other example commands that run with `runcmd` output text to a `/run/testing.txt` file. This may be the case with other commands you run from cloud-init. The command you are using may automatically generate logs, or you may choose to manually incorporate logging, like with the example commands. In either case, reviewing the content of the appropriate log file can confirm cloud-init's successful execution of the commands:
+This may be the case with other commands you run from cloud-init. The command you are using may automatically generate logs, or you may choose to manually incorporate logging, like with the example commands. In either case, reviewing the content of the appropriate log file can confirm cloud-init's successful execution of the commands:
 
 ```command
 sudo cat /run/testing.txt
