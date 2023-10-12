@@ -58,10 +58,20 @@ The example defines a set of file contents as well as details like ownership and
 
 An additional `defer` option can be useful when you want to delay creation of the file until the final stage of cloud-init's initialization. That way, you can ensure that a file is only created after all user creation and software installation.
 
-Here is an example showing that feature off by creating an [Apache Web Server](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) configuration. Using the `defer` option ensures that Apache is installed and the Apache user (typically `www-data` on Debian and Ubuntu) is created before the file.
+Here is a further example showing that feature off by creating an [Apache Web Server](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) configuration. Using the `defer` option ensures that Apache is installed and the Apache user (typically `www-data` on Debian and Ubuntu) is created before the file.
 
-```file {title="cloud-config.yaml" lang="yaml"}
+```file {title="cloud-config.yaml" lang="yaml" hl_lines="12-24"}
 write_files:
+  - path: /var/www/html/example.com/index.html
+    content: |
+      <html>
+      <body>
+        <h1>Hello, World!</h1>
+        <p>Welcome to the example web page!</p>
+      </body>
+      </html>
+    owner: 'root:root'
+    permissions: '0644'
   - path: /etc/apache2/sites-available/example.com.conf
     content: |
       <VirtualHost *:80>
@@ -85,8 +95,31 @@ When you need to modify a file, cloud-init has a couple of approaches to use:
 
 -   The `write_files` option can achieve basic file modifications with its `append: true` option. For instance, the example below modifies the SSH service configuration by adding a `PermitRootLogin no` rule:
 
-    ```file {title="cloud-config.yaml" lang="yaml"}
+    ```file {title="cloud-config.yaml" lang="yaml" hl_lines="25-27"}
     write_files:
+      - path: /var/www/html/example.com/index.html
+        content: |
+          <html>
+          <body>
+            <h1>Hello, World!</h1>
+            <p>Welcome to the example web page!</p>
+          </body>
+          </html>
+        owner: 'root:root'
+        permissions: '0644'
+      - path: /etc/apache2/sites-available/example.com.conf
+        content: |
+          <VirtualHost *:80>
+              ServerAdmin webmaster@example.com
+              ServerName example.com
+              ServerAlias www.example.com
+              DocumentRoot /var/www/example.com/html/
+              ErrorLog /var/www/example.com/logs/error.log
+              CustomLog /var/www/example.com/logs/access.log combined
+          </VirtualHost>
+        owner: 'www-data:www-data'
+        permissions: '0640'
+        defer: true
       - path: /etc/ssh/sshd_config
         content: PermitRootLogin no
         append: true
