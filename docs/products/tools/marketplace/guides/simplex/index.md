@@ -11,9 +11,9 @@ external_resources:
 - '[SimpleX Official](https://simplex.chat/)'
 ---
 
-SimpleX Chat is the first messaging platform that has no user identifiers of any kind - 100% private by design.
+SimpleX Chat is a private messaging platform that uses temporary anonymous identifiers to eliminate the need for long-term user identification. This app deploys a self-hosted SMP relay server used to pass messages in the SimpleX network. It also installs the XFTP server to support XFTP file transfer protocol.
 
-## Deploying a Marketplace App 
+## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -26,7 +26,7 @@ SimpleX Chat is the first messaging platform that has no user identifiers of any
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for SimpleX Chat.
+- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared CPU Compute Instance for SimpleX Chat.
 
 ### SimpleX Options
 
@@ -42,10 +42,18 @@ SimpleX Chat is the first messaging platform that has no user identifiers of any
 
 ## Getting Started after Deployment
 
-Once the SimpleX Server is up and running you can display your SMP and XFTP connection strings with this command on the server:
+Once the SimpleX Server is up and running you can display your SMP and XFTP connection strings with the following command while logged into the server:
 
+```command
+docker-compose --project-directory /etc/docker/compose/simplex logs grep 'Server address' | uniq
+```
 
-      docker-compose --project-directory /etc/docker/compose/simplex logs grep 'Server address' | uniq
+To start using your server, you will need to configure it to work with your SimpleX app. Available apps can be downloaded here: [Download SimpleX apps](https://simplex.chat/downloads/)
 
+For more information on configuration and linking the SimpleX app to your SMP server, please see the following documentation from SimpleX:
 
-Please see the following documentation: [SMP Documentation](https://simplex.chat/docs/server.html) and [XFTP Documentation](https://simplex.chat/docs/xftp-server.html)
+- [Hosting your own SMP Server](https://simplex.chat/docs/server.html)
+
+- [Hosting your own XFTP Server](https://simplex.chat/docs/xftp-server.html)
+
+{{< content "marketplace-update-note-shortguide">}}

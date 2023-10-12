@@ -9,8 +9,7 @@ modified_by:
 authors: ["Linode"]
 ---
 
-[MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) 
-is a media encoding platform focused on broadcast and OTT workflows. It utilized MainConcept HEVC and AVC codecs, and ships with a web GUI to streamline packaging common input sources for multiscreen delivery.
+[MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is a media encoding platform focused on broadcast and OTT workflows. Live Encoder utilizes MainConcept HEVC and AVC codecs, and ships ready-to-use with a web GUI to streamline packaging common input sources for multi-screen delivery.
 
 ## Deploying a Marketplace App
 
@@ -25,21 +24,37 @@ is a media encoding platform focused on broadcast and OTT workflows. It utilized
 ## Configuration Options
 
 - **Supported distributions:** CentOS Stream 9
-- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for MainConcept Live Encoder.
+- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared CPU Compute Instance for MainConcept Live Encoder.
 
 ### MainConcept Live Encoder Options
+
+- **Email address for SSL Generation (Required):** This is the contact email address used for communication regarding the SSL certificate created during deployment. This should be the email address of your web server administrator.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
 ## Getting Started after Deployment
 
-Now that your MainConcept Live Encoder Marketplace App is deployed, you can log into MainConcept Live Encoder Dashboard.
+Once your MainConcept Live Encoder Marketplace App is deployed, you can log into the MainConcept Live Encoder Dashboard in your browser.
 
-1. Open a browser and navigate to the domain you created in the beginning of your deployment. If you did not use a Domain, you can use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1. Open a browser and navigate to the domain you created in the beginning of your deployment. If you did not use a domain, you can use your Compute Instance's rDNS, which may look like the example below:
 
-2. Once you visit the MainConcept Live Encoder URL, you can enter `admin` as the *username* and `admin` as the *password*. Please ensure you change the default password after logging into your MainConcept Live Encoder instance.
+    ```
+    203-0-113-1.ip.linodeusercontent.com
+    ```
 
-Please visit [MainConcept official documentation](https://www.mainconcept.com/live-encoder). 
+    See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-rdns) guide for information on viewing and configuring your rDNS.
+
+2. Once the login prompt loads, enter `admin` as the *Username* and `admin` as the *Password*.
+
+    ![MainConcept Live Encoder Login](mainconcept-live-encoder-login.jpg "MainConcept Live Encoder Login")
+
+    {{< note type="warning" title="Important">}}
+    Please ensure you change the default password after logging into your MainConcept Live Encoder instance. To change your password, select the **Users** tab, find your user named "admin", and click the **Op** option.
+    {{< /note >}}
+
+## Next Steps
+
+Please see [the official documentation for MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) for more information on usage and resources.
 
 {{< content "marketplace-update-note-shortguide">}}
