@@ -4,7 +4,7 @@ title_meta: "Access Your System Console Using Lish"
 description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 published: 2009-08-04
-modified: 2023-10-12
+modified: 2023-10-16
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -319,6 +319,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish/Glish Gateway:** `eu-west.webconsole.linode.com`
+
+#### Miami, FL, USA
+
+-   **Lish SSH Gateway:** `lish-us-mia.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:kfwzGjXR+WV1JxvufbsZTv4qzVUI5Nkmh3Z3/XhpAT8 lish-us-mia.linode.com
+    ECDSA 256 SHA256:cZVK7bB8cwci3sXJJNIaBlX9Z3DlBj3hAL5J8Hc+vr0 lish-us-mia.linode.com
+    ED25519 256 SHA256:+sBLV01KzOiVJw4OJGmO71+NUm2cE7ndpj1aqW2tNLg lish-us-mia.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-mia.webconsole.linode.com`
 
 #### Milan (Italy)
 
