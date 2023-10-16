@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-10-12
+modified: 2023-10-16
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -36,13 +36,14 @@ Using Object Storage to host your static site files means you do not have to wor
 Object Storage is available within the following data centers. For a full list of specifications for each region, review the [Technical Specifications](#specifications).
 
 | Data Center | Cluster ID |
-| -- | -- | -- | -- |
+| -- | -- |
 | Amsterdam (Netherlands)\* | `nl-ams-1` |
 | Atlanta, GA (USA) | `us-southeast-1` |
 | Chennai (India)\* | `in-maa-1` |
 | Chicago, IL (USA)\* | `us-ord-1` |
 | Frankfurt (Germany) | `eu-central-1` |
 | Jakarta (Indonesia)\* | `id-cgk-1` |
+| Miami, FL (USA)\* | `us-mia-1` |
 | Milan (Italy)\* | `it-mil-1` |
 | Newark, NJ (USA) | `us-east-1` |
 | Osaka (Japan)\* | `jp-osa-1` |
@@ -89,6 +90,7 @@ The tables below outline Object Storage limits. Most of the limits apply **per r
 | Chicago, IL (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Frankfurt (Germany) | 5 TB | 50 million |
 | Jakarta (Indonesia) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
+| Miami, FL (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Milan (Italy) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Newark, NJ (USA) | 5 TB | 50 million |
 | Osaka (Japan) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
