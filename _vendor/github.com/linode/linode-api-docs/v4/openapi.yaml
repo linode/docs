@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.164.2
+  version: 4.166.0
   title: Linode API
   description: |
     ## Introduction
@@ -2787,7 +2787,7 @@ paths:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $TOKEN" \
                 -X PUT -d '{
-                    "network_helper": true,
+                    "network_helper": true
                 }' \
                 https://api.linode.com/v4/account/settings
         - lang: CLI
@@ -3228,7 +3228,7 @@ paths:
                       {
                         "id": 345,
                         "permissions": "read_only"
-                      },
+                      }
                     ],
                     "longview": [
                       {
@@ -3785,7 +3785,7 @@ paths:
                     "duration": 3,
                     "hour_of_day": 12,
                     "day_of_week": 4,
-                    "week_of_month": 3,
+                    "week_of_month": 3
                   }
               }' \
               https://api.linode.com/v4/databases/mysql/instances/123
@@ -4569,7 +4569,7 @@ paths:
                     "duration": 3,
                     "hour_of_day": 12,
                     "day_of_week": 4,
-                    "week_of_month": 3,
+                    "week_of_month": 3
                   }
               }' \
               https://api.linode.com/v4/databases/postgresql/instances/123
@@ -8849,7 +8849,7 @@ paths:
                 "stackscript_id": 10079,
                 "stackscript_data": {
                   "gh_username": "linode"
-                }
+                },
                 "type": "g6-standard-2",
                 "metadata": {
                   "user_data": "I2Nsb3VkLWNvbmZpZw=="
@@ -9953,12 +9953,12 @@ paths:
           curl -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $TOKEN" \
                 -X PUT -d '{
-                  "label": "lkecluster54321"
-                  "tags" : ["ecomm", "blog", "prod", "monitoring"]
+                  "label": "lkecluster54321",
+                  "tags" : ["ecomm", "blog", "prod", "monitoring"],
                   "control_plane": {
                       "high_availability": true
                     },
-                  "k8s_version": "1.17"
+                  "k8s_version": "1.27"
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345
       - lang: CLI
@@ -18383,13 +18383,14 @@ paths:
               --linodes 456 \
               --volumes 9082 \
               --volumes 10003
-  /tags/{label}:
+  /tags/{tagLabel}:
     x-linode-cli-command: tags
     parameters:
-    - name: label
+    - name: tagLabel
       in: path
       schema:
         type: string
+        description: The `label` of the Tag to access.
       required: true
     get:
       summary: Tagged Objects List
@@ -18451,7 +18452,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              "https://api.linode.com/v4/tags/example tag"
+              https://api.linode.com/v4/tags/$tagLabel
     delete:
       summary: Tag Delete
       description: >
@@ -20732,7 +20733,10 @@ components:
             `NS`: The subdomain, if any, to use with the Domain of the Record. Wildcard NS records (`*`) are not supported.
 
             `MX`: The mail subdomain. For example, `sub` for the address `user@sub.example.com` under the `example.com`
-            Domain. Must be an empty string (`""`) for a Null MX Record.
+            Domain.
+            * The left-most subdomain component may be an asterix (`*`) to designate a wildcard subdomain.
+            * Other subdomain components must only contain letters, digits, and hyphens, start with a letter, end with a letter or digit, and contain less than 64 characters.
+            * Must be an empty string (`""`) for a Null MX Record.
 
             `CNAME`: The hostname. Must be unique. Required.
 
@@ -20759,10 +20763,11 @@ components:
 
             `NS`: The name server. Must be a valid domain. Required.
 
-            `MX`: The mail server. Must be a valid domain unless creating a Null MX Record. To create a
-            [Null MX Record](https://datatracker.ietf.org/doc/html/rfc7505), first
-            [remove](/docs/api/domains/#domain-record-delete) any additional MX records, create an MX record with empty strings
-            (`""`) for the `target` and `name`. If a Domain has a Null MX record, new MX records cannot be created. Required.
+            `MX`: The mail server. Must be a valid domain unless creating a Null MX Record. Required.
+            * Must have less than 254 total characters.
+            * The left-most domain component may be an asterix (`*`) to designate a wildcard domain.
+            * Other domain components must only contain letters, digits, and hyphens, start with a letter, end with a letter or digit, and contain less than 64 characters.
+            * To create a [Null MX Record](https://datatracker.ietf.org/doc/html/rfc7505), first [remove](/docs/api/domains/#domain-record-delete) any additional MX records, then create an MX record with empty strings (`""`) for the `target` and `name`. If a Domain has a Null MX record, new MX records cannot be created.
 
             `CNAME`: The alias. Must be a valid domain. Required.
 
