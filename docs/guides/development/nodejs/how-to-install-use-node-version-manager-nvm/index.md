@@ -20,7 +20,7 @@ The [*Node Version Manager (NVM)*](https://github.com/nvm-sh/nvm) is an open sou
 
 ## Advantages of NVM
 
-Node changes quickly and testing applications with different versions is often difficult. Since NVM enables quick and effortless switching between Node versions, it is much easier to test version compatibility and upgrades with multiple libraries. NVM stores the Node versions and associated modules inside your user directory, so `sudo` is not necessary. NVM also simplifies the installation and compilation process because Node versions no longer have to be obtained directly from the distribution channel.
+Because Node changes quickly, testing applications with different versions is often difficult. Since NVM enables quick and effortless switching between Node versions, it is much easier to test version compatibility and upgrades with multiple libraries. NVM stores the Node versions and associated modules inside your user directory, so `sudo` is not necessary. NVM also simplifies the installation and compilation process because Node versions no longer have to be obtained directly from the distribution channel.
 
 ## A Summary of the NVM Installation and Configuration Process
 
@@ -35,25 +35,30 @@ A complete NVM installation consists of the following high-level steps, and each
 
 These instructions cover how to install NVM. While these are generally valid for most Linux distributions, some of the `.bashrc` directives might vary slightly on different shells. You can install and use NVM regardless of whether you have already installed Node. NVM alters `path` variables to select different versions of Node, so it works with pre-existing installations.
 
-1.  Install NVM using either `curl` or `wget`.
+1.  Install NVM using either `curl` or `wget`:
 
+    {{< tabs >}}
+    {{< tab "cURL" >}}
     To install NVM using `curl`, run the following command:
 
     ```command
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
     ```
-
+    {{< /tab >}}
+    {{< tab "wget" >}}
     To install NVM using `wget`, run the following command:
 
     ```command
     wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
     ```
+    {{< /tab >}}
+    {{< /tabs >}}
 
     {{< note >}}
     You can also install NVM using GIT or with a manual download and installation. Consult the GIT section of the [NVM Documentation Guide](https://github.com/nvm-sh/nvm#git-install) for detailed instructions.
     {{< /note >}}
 
-1.  Source the new instructions NVM added to `.bashrc` during the installation process. You can either exit and re-enter the shell console, or manually source your `.bashrc` file. This file is almost always located at the root of your home directory.
+1.  Source the new instructions NVM added to `.bashrc` during the installation process. You can either exit and re-enter the shell console, or manually source your `.bashrc` file. This file is almost always located at the root of your home directory:
 
     ```command
     source ~/.bashrc
@@ -79,7 +84,7 @@ These instructions cover how to install NVM. While these are generally valid for
     We recommend leaving the default settings. Use caution if changing them for any reason.
     {{< /note >}}
 
-1.  Confirm you have successfully installed NVM:
+1.  Confirm that NVM is successfully installed:
 
     ```command
     command -v nvm
@@ -91,7 +96,7 @@ These instructions cover how to install NVM. While these are generally valid for
     nvm
     ```
 
-    If you see the message `nvm: command not found`, confirm the original installation completed successfully and repeat step #2 of this section to source the `.bashrc` file.
+    If you see the message `nvm: command not found`, confirm the original installation completed successfully and repeat step two of this section to source the `.bashrc` file.
 
 1.  Confirm the version of NVM that is running with the following command:
 
@@ -195,45 +200,45 @@ stable -> 21.0 (-> v21.0.0) (default)
 
 To select a different version of Node, use the `nvm use` command.
 
-Specify the version number of Node (major or minor release):
+1.  Specify the version number of Node (major or minor release):
 
-```command
-nvm use 17
-```
+    ```command
+    nvm use 17
+    ```
 
-```output
-Now using node v17.0.1 (npm v8.1.0)
-```
+    ```output
+    Now using node v17.0.1 (npm v8.1.0)
+    ```
 
-Alternatively, use an alias such as `node`:
+1.  Alternatively, use an alias such as `node`:
 
-```command
-nvm use node
-```
+    ```command
+    nvm use node
+    ```
 
-```output
-Now using node v21.0.0 (npm v10.2.0)
-```
+    ```output
+    Now using node v21.0.0 (npm v10.2.0)
+    ```
 
-You can confirm the current version of Node with `nvm current`:
+1.  You can confirm the current version of Node with `nvm current`:
 
-```command
-nvm current
-```
+    ```command
+    nvm current
+    ```
 
-```output
-v21.0.0
-```
+    ```output
+    v21.0.0
+    ```
 
-You can also confirm the version of Node currently in use with the `-v` flag:
+1.  You can also confirm the version of Node currently in use with the `-v` flag:
 
-```command
-node -v
-```
+    ```command
+    node -v
+    ```
 
-```output
-v21.0.0
-```
+    ```output
+    v21.0.0
+    ```
 
 {{< note >}}
 To use the system's version of Node, run the command:
@@ -268,15 +273,15 @@ To exit the Node prompt and return to the Linux terminal, press <kbd>Control</kb
 
 ## Creating NVM Aliases
 
-You might find it convenient to refer to a Node version by a different or easier to remember name. NVM already provides some pre-made defaults such as `default` and `node`, which refers to the latest version. But you can use the `alias` command to change the value of an existing alias or create a brand-new alias.
+You might find it convenient to refer to a Node version by a different or easier to remember name. NVM already provides some pre-made defaults such as `default` and `node`, which refers to the latest version. However, you can use the `alias` command to change the value of an existing alias or create a brand-new alias.
 
-1.  Use the `nvm alias` command to change the default Node version. Follow the `alias` keyword with the `default` alias and the new version of Node it should reference.
+1.  Use the `nvm alias` command to change the default Node version. Follow the `alias` keyword with the `default` alias and the new version of Node it should reference:
 
     ```command
     nvm alias default 19
     ```
 
-    NVM confirms the new value for the alias.
+    NVM confirms the new value for the alias:
 
     ```output
     default -> 19 (-> v19.9.0)
@@ -314,69 +319,69 @@ You might find it convenient to refer to a Node version by a different or easier
 
 ## Use NVM to Install Latest LTS Node.js Release
 
-Any Node.js version can be in one of the following three release phases: "Current", "Active Long Term Support (LTS)", and "Maintenance". The LTS release includes new features, bug fixes, and updates that have been approved. This section shows how to install the latest LTS version of Node.js using NVM.
+Any Node.js version can be in one of the following three release phases: *Current*, *Long Term Support (LTS)*, and *Maintenance*. The LTS release includes new features, bug fixes, and updates that have been approved. This section shows how to install the latest LTS version of Node.js using NVM.
 
-Use the following command to install the latest LTS version of Node.js on your system:
+1.  Use the following command to install the latest LTS version of Node.js on your system:
 
-```command
-nvm install --lts
-```
+    ```command
+    nvm install --lts
+    ```
 
-You should see the following output:
+    You should see the following output:
 
-```output
-Installing latest LTS version.
-Downloading and installing node v18.18.2...
-Downloading https://nodejs.org/dist/v18.18.2/node-v18.18.2-linux-x64.tar.xz...
-######################################################################### 100.0%
-Computing checksum with sha256sum
-Checksums matched!
-Now using node v18.18.2 (npm v9.8.1)
-```
+    ```output
+    Installing latest LTS version.
+    Downloading and installing node v18.18.2...
+    Downloading https://nodejs.org/dist/v18.18.2/node-v18.18.2-linux-x64.tar.xz...
+    ######################################################################### 100.0%
+    Computing checksum with sha256sum
+    Checksums matched!
+    Now using node v18.18.2 (npm v9.8.1)
+    ```
 
-After the installation is complete NVM automatically switches to the latest LTS version of Node.js that you just installed.
+    After the installation is complete NVM automatically switches to the latest LTS version of Node.js that you just installed.
 
-To install a specific LTS release other than the latest, use the `--lts` argument along with the release name that you want to install. The example command installs the "gallium" (v16) LTS release of Node.js:
+1.  To install a specific LTS release other than the latest, use the `--lts` argument along with the release name that you want to install. The example command installs the "gallium" LTS (v16) release of Node.js:
 
-```command
-nvm install --lts=gallium
-```
+    ```command
+    nvm install --lts=gallium
+    ```
 
-```output
-Installing with latest version of LTS line: gallium
-Downloading and installing node v16.20.2...
-Downloading https://nodejs.org/dist/v16.20.2/node-v16.20.2-linux-x64.tar.xz...
-######################################################################### 100.0%
-Computing checksum with sha256sum
-Checksums matched!
-Now using node v16.20.2 (npm v8.19.4)
-```
+    ```output
+    Installing with latest version of LTS line: gallium
+    Downloading and installing node v16.20.2...
+    Downloading https://nodejs.org/dist/v16.20.2/node-v16.20.2-linux-x64.tar.xz...
+    ######################################################################### 100.0%
+    Computing checksum with sha256sum
+    Checksums matched!
+    Now using node v16.20.2 (npm v8.19.4)
+    ```
 
-Refer to the [Node.js Releases page](https://nodejs.org/en/about/releases/) for LTS release names.
+    Refer to the [Node.js Releases page](https://nodejs.org/en/about/releases/) for LTS release names.
 
-To switch to the latest LTS version of Node.js that is already installed on your system, use the following command:
+1.  To switch to the latest LTS version of Node.js that is already installed on your system, use the following command:
 
-```command
-nvm use --lts
-```
+    ```command
+    nvm use --lts
+    ```
 
-```output
-Now using node v18.18.2 (npm v9.8.1)
-```
+    ```output
+    Now using node v18.18.2 (npm v9.8.1)
+    ```
 
-To switch to a specific LTS version of Node.js, append the `/RELEASE_NAME` to the command. This example switches to the "gallium" LTS line of Node.js:
+1.  To switch to a specific LTS version of Node.js, append `/RELEASE_NAME` to the command. This example switches to the "gallium" LTS line of Node.js:
 
-```command
-nvm use lts/gallium
-```
+    ```command
+    nvm use lts/gallium
+    ```
 
-```output
-Now using node v16.20.2 (npm v8.19.4)
-```
+    ```output
+    Now using node v16.20.2 (npm v8.19.4)
+    ```
 
 ## Additional NVM Capabilities
 
-Although NVM is very straightforward to use, it also provides some advanced capabilities. See the [*NVM GitHub page*](https://github.com/nvm-sh/nvm) for a full list of all advanced topics.
+Although NVM is very straightforward to use, it also provides some advanced capabilities. See the [NVM GitHub page](https://github.com/nvm-sh/nvm) for a full list of all advanced topics.
 
 1.  NVM allows you to migrate packages from an earlier version of Node. The `nvm install` command can be used with the optional `-reinstall-packages-from=` flag to install a new version of Node with the packages from an earlier release. The following command installs the latest version of Node, but it also performs a reinstall of the packages from the `default` version of Node and links them.
 
@@ -398,7 +403,7 @@ Although NVM is very straightforward to use, it also provides some advanced capa
     Reinstalling packages does not update the NPM version.
     {{< /note >}}
 
-1.  NVM enables you to define custom colors to display the various Node versions and aliases. These colors are defined on the [*NVM GitHub page*](https://github.com/nvm-sh/nvm). Use the command `nvm set-colors COLOR_KEY`. If you add the `--no-colors` flag to a command, the information is displayed in black-and-white.
+1.  NVM enables you to define custom colors to display the various Node versions and aliases using the `nvm set-colors COLOR_KEY` command. These colors are defined on the [NVM GitHub page](https://github.com/nvm-sh/nvm). If you add the `--no-colors` flag to a command, the information is displayed in black-and-white.
 
     ```command
     nvm set-colors rgBcm
@@ -410,7 +415,7 @@ Although NVM is very straightforward to use, it also provides some advanced capa
 
 NVM allows you to uninstall Node versions that are no longer required.
 
-Run the command `nvm uninstall` with the version of Node you'd like to remove. You cannot remove a version you are currently using, so you must switch to a different version first.
+Run the command `nvm uninstall` with the version of Node you'd like to remove.
 
 ```command
 nvm uninstall 17.0.1
@@ -421,6 +426,10 @@ NVM confirms the Node version has been removed.
 ```output
 Uninstalled node v17.0.1
 ```
+
+{{< note >}}
+You cannot remove a version you are currently using, so you must switch to a different version first.
+{{< /note >}}
 
 ## NVM Uninstall Steps
 
@@ -447,5 +456,5 @@ If you no longer intend to use NVM, you can uninstall it with the `unload` comma
     ```
 
 {{< note >}}
-If you only want to go back to using the system's version of Node, you do not have to uninstall NVM. In this case, run the command `nvm use system`.
+If you only want to go back to using the system's version of Node, you do not have to uninstall NVM. In this case, run the command `nvm use system` instead.
 {{< /note >}}
