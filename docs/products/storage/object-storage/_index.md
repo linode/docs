@@ -70,18 +70,17 @@ Object Storage for our **Jakarta** and **São Paulo** data centers is in current
 
 ## Technical Specifications and Considerations {#specifications}
 
-The tables below outline Object Storage limits. Most of the limits apply **per region, per account**, unless otherwise specified.
+The table below outlines default Object Storage limits. Limits apply **per region, per account**, unless otherwise specified.
 
 | Resource | Limit |
 | -- | -- |
-| Minimum storage | 250 GB |
 | Maximum storage | 100 TB (Up to 1,000 TB by request)* |
 | Maximum number of objects | 100 million (Up to 1 billion by request)* |
 | Maximum number of buckets | 1,000 buckets |
 | Maximum file upload size | 5 GB (5 TB with multipart uploads) |
 | Rate limit (per bucket) | 750 requests per second |
 
-*Limit varies by region. Data centers with different bucket limits are listed in the table below:
+*Limit varies by region. Data centers with exceptions to the default bucket limits are listed in the table below:
 
 | Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> |
 | -- | -- | -- |
