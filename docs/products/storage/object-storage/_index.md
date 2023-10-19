@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-10-16
+modified: 2023-10-18
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -70,36 +70,24 @@ Object Storage for our **Jakarta** and **São Paulo** data centers is in current
 
 ## Technical Specifications and Considerations {#specifications}
 
-The tables below outline Object Storage limits. Most of the limits apply **per region, per account**, unless otherwise specified.
+The table below outlines default Object Storage limits. Limits apply **per region, per account**, unless otherwise specified.
 
 | Resource | Limit |
 | -- | -- |
-| Minimum storage | 250 GB |
-| Maximum storage | *varies by region (see table below)* |
-| Maximum number of objects | *varies by region (see table below)* |
+| Maximum storage | 100 TB (Up to 1,000 TB by request)* |
+| Maximum number of objects | 100 million (Up to 1 billion by request)* |
 | Maximum number of buckets | 1,000 buckets |
 | Maximum file upload size | 5 GB (5 TB with multipart uploads) |
 | Rate limit (per bucket) | 750 requests per second |
 
+*Limit varies by region. Data centers with exceptions to the default bucket limits are listed in the table below:
 
 | Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> |
 | -- | -- | -- |
-| Amsterdam (Netherlands) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Atlanta, GA (USA) | 5 TB | 50 million |
-| Chennai (India) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
-| Chicago, IL (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Frankfurt (Germany) | 5 TB | 50 million |
-| Jakarta (Indonesia) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
-| Miami, FL (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
-| Milan (Italy) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Newark, NJ (USA) | 5 TB | 50 million |
-| Osaka (Japan) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
-| Paris (France) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
-| São Paulo (Brazil) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
-| Seattle, WA (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Singapore | 5 TB | 50 million |
-| Stockholm (Sweden) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
-| Washington, DC (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 
 If your workloads require additional storage or need to accommodate more objects, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements. Among other factors, the total capacity of the region is considered when processing a limit increase request. For larger enterprise workloads, consider using one of the data centers designated as *higher capacity* (see [Availability](#availability)).
 
