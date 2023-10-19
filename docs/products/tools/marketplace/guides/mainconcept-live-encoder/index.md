@@ -9,7 +9,11 @@ modified_by:
 authors: ["Linode"]
 ---
 
-[MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is a media encoding platform focused on broadcast and OTT workflows. Live Encoder utilizes MainConcept HEVC and AVC codecs, and ships ready-to-use with a web GUI to streamline packaging common input sources for multi-screen delivery.
+The [MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is a powerful all-in-one encoding engine designed to simplify common broadcast and OTT video workflows. With renowned MainConcept software HEVC and AVC codecs with optional GPU decoding as well as encoding powered by NVIDIA and Intel Quick Sync Video built in, the intuitive user interface or the flexible REST API allows you to package content for multiscreen delivery, using common input sources, in real-time. 
+
+You can set up a live workflow to ingest, prepare, and stream audio-visual content that is compatible with every type of consumer device. It doesn’t matter if you are delivering video directly to a CDN, to an online video platform via RTMP or with low-latency protocols Zixi and SRT, the Live Encoder ensures your live video is delivered reliably and in the highest possible quality. 
+
+Besides MPEG-H 3D Audio creation, the software features many output streaming protocols like RTMP, RTSP, Zixi, SRT, TS over UDP/HTTP, MPEG-DASH, HLS and MP4 archiving files. The Live Encoder can be used in both contribution and distribution encoding workflows. 
 
 ## Deploying a Marketplace App
 
@@ -24,7 +28,7 @@ authors: ["Linode"]
 ## Configuration Options
 
 - **Supported distributions:** CentOS Stream 9
-- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared CPU Compute Instance for MainConcept Live Encoder.
+- **Recommended plan:** We recommend a 16GB Dedicated CPU or Shared CPU Compute Instance for MainConcept Live Encoder.
 
 ### MainConcept Live Encoder Options
 
@@ -55,6 +59,6 @@ Once your MainConcept Live Encoder Marketplace App is deployed, you can log into
 
 ## Next Steps
 
-Please see [the official documentation for MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) for more information on usage and resources.
+Please see [the official documentation for MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) for more information on usage and resources. For support regarding the tool or software itself, use the information in the sidebar to contact their support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
 {{< content "marketplace-update-note-shortguide">}}

@@ -1,6 +1,6 @@
 ---
-title: "Deploy MainConcept FFMPEG Plugins through the Linode Marketplace"
-description: "Deploy MainConcept FFMPEG Plugins, an enterprise ready set of FFMPEG tools, on a Linode Compute Instance.'"
+title: "Deploy MainConcept Plugins for FFmpeg through the Linode Marketplace"
+description: "Deploy MainConcept Plugins for FFmpeg, an enterprise ready set of FFmpeg tools, on a Linode Compute Instance.'"
 keywords: ['ffmpeg','encoding','video']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
@@ -9,9 +9,11 @@ modified_by:
 authors: ["Linode"]
 ---
 
-[MainConcept FFmpeg Plugins](https://www.mainconcept.com/ffmpeg) provide specific media encoding tools for compute-intensive transcoding workloads. The MainConcept FFMPEG Plugins are focused on proprietary solutions such as hybrid GPU support and xHE-AAC audio format. Use cases include both VOD and live production workflows.
+The [MainConcept Plugins for FFmpeg](https://www.mainconcept.com/ffmpeg) make improving visual quality and performance quick and simple with advanced features that are not available with open source, such as Hybrid GPU acceleration, professional production format and xHE-AAC audio as well as MPEG-H 3D audio content creation. Perfectly suited for both VOD and live production workflows, the FFmpeg plugins give you the best of both worlds. 
 
-Plugins included with this deployment:
+The different MainConcept Plugins for FFmpeg enable users to create decoding, encoding and transcoding workflows or services based on FFmpeg. Deployed on Linode, they significantly boost both performance and quality of your audio and video content. 
+
+The following MainConcept Plugins for FFmpeg are included with this deployment:
 - [Hybrid HEVC Encoder](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20Hybrid%20HEVC%20Encoder%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 - [HEVC Decoder](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20HEVC%20Decoder%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 - [AVC Broadcast Encoder](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20AVC%20Broadcast%20Encoder%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
@@ -22,6 +24,8 @@ Plugins included with this deployment:
 - [MPEG-2 TS Broadcast Delivery](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20MPEG-2%20TS%20Broadcast%20Delivery%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 - [MPEG-2 Production Format Encoder](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20MPEG-2%20Encoder%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 
+These versions of the MainConcept Plugins for FFmpeg are free demo versions. They add a watermark to the processed video, limit the multiplexing time or mute audio from time to time. If you are interested in deploying the full versions of the Plugins for FFmpeg , please contact [sales@mainconcept.com](mailto:sales@mainconcept.com).  
+
 ## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
@@ -29,15 +33,15 @@ Plugins included with this deployment:
 {{< content "marketplace-verify-standard-shortguide">}}
 
 {{< note >}}
-**Estimated deployment time:** MainConcept FFMPEG Plugins should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** MainConcept Plugins for FFmpeg should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
 ## Configuration Options
 
 - **Supported distributions:** Debian 11
-- **Recommended plan:** At minimum, we recommend a 2GB Shared CPU Compute Instance for MainConcept FFmpeg Plugins.
+- **Recommended plan:** At minimum, we recommend a 16GB Shared CPU Compute Instance for MainConcept Plugins for FFmpeg.
 
-### MainConcept FFmpeg Plugins Options
+### MainConcept Plugins for FFmpeg Options
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
@@ -79,8 +83,10 @@ Below are some example commands using `ffmpeg`:
 
 ## Next Steps
 
-For more information on using MainConcept FFmpeg plugins, including command line formatting, see MainConcept's official documentation and user guides:
+For more information on using MainConcept Plugins for FFmpeg, including command line formatting, see MainConcept's official documentation and user guides:
 
 - [MainConcept's official documentation on FFmpeg Plugins](https://www.mainconcept.com/ffmpeg)
+
+For support regarding the tool or software itself, use the information in the sidebar to contact their support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
 {{< content "marketplace-update-note-shortguide">}}
