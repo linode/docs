@@ -9,13 +9,13 @@ modified_by:
 authors: ["Linode"]
 ---
 
-The [MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is a powerful all-in-one encoding engine designed to simplify common broadcast and OTT video workflows. With renowned MainConcept software HEVC and AVC codecs with optional GPU decoding as well as encoding powered by NVIDIA and Intel Quick Sync Video built in, the intuitive user interface or the flexible REST API allows you to package content for multiscreen delivery, using common input sources, in real-time. 
+The [MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is an all-in-one encoding engine designed to simplify common broadcast and OTT video workflows. It features HEVC and AVC codecs with optional GPU decoding, as well as encoding powered by NVIDIA and Intel Quick Sync Video built in. MainConcept Live Encoder allows you to package content for multi-screen delivery in real-time using common input sources via a graphic user interface or REST API.
 
-You can set up a live workflow to ingest, prepare, and stream audio-visual content that is compatible with every type of consumer device. It doesn’t matter if you are delivering video directly to a CDN, to an online video platform via RTMP or with low-latency protocols Zixi and SRT, the Live Encoder ensures your live video is delivered reliably and in the highest possible quality. 
+Using the Live Encoder, you are able to set up a live workflow to ingest, prepare, and stream audio-visual content that is compatible with all consumer devices. Video delivery options include, but are not limited to: direct to CDN, online video via RTMP, or low-latency protocols like Zixi and SRT.
 
-Besides MPEG-H 3D Audio creation, the software features many output streaming protocols like RTMP, RTSP, Zixi, SRT, TS over UDP/HTTP, MPEG-DASH, HLS and MP4 archiving files. The Live Encoder can be used in both contribution and distribution encoding workflows. 
+In addition to MPEG-H DC audio creation, output streaming protocols include: RTMP, RTSP, Zixi, SRT, TS over UDP/HTTP, MPEG-DASH, HLS, and MP4 archiving files. The Live Encoder can be used in both contribution and distribution encoding workflows.
 
-This version of the MainConcept Live Encoder is a free demo version. It adds a watermark to the processed video and mutes audio from time to time. If you are interested in deploying the full version of the Live Encoder, please contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
+The version of MainConcept Live Encoder in this deployment is a free demo. It adds a watermark to the processed video and intermittently mutes audio. If you wish to deploy the full version of the Live Encoder, contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
 
 ## Deploying a Marketplace App
 
@@ -61,6 +61,6 @@ Once your MainConcept Live Encoder Marketplace App is deployed, you can log into
 
 ## Next Steps
 
-Please see [the official documentation for MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) for more information on usage and resources. For support regarding the tool or software itself, use the information in the sidebar to contact their support or search the [MainConcept community forum](https://forum.mainconcept.com/).
+Please see [the official documentation for MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) for more information on usage and resources. For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
 {{< content "marketplace-update-note-shortguide">}}

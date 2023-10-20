@@ -9,11 +9,11 @@ modified_by:
 authors: ["Linode"]
 ---
 
-The [MainConcept P2 AVC-ULTRA Transcoder](https://www.mainconcept.com/transcoders) from the Pro Camera Transcoders for Sony & Panasonic product line is an optimized Docker container for file-based transcoding to professional Panasonic camera formats like P2 AVC-Intra, P2 AVC LongG and AVC-Intra RP2027. It supports a wide range of input formats. The ready-to-use product can be controlled via command line, REST API or container management tools without programming skills required.  
+The [MainConcept P2 AVC-ULTRA Transcoder](https://www.mainconcept.com/transcoders) from the Pro Camera Transcoders for Sony & Panasonic product line is an optimized Docker container for file-based transcoding to professional Panasonic camera formats such as P2 AVC-Intra, P2 AVC LongG, and AVC-Intra RP2027. MainConcept P2 AVC-ULTRA Transcoder supports a wide range of input formats, and is ready-to-use out of the box. It can be controlled via command line, REST API, or various container management tools.
 
-The P2 AVC-ULTRA Transcoder includes the popular MainConcept codecs, pre-packaged as a single optimized containerized application for fast and flexible deployment to any workflow as a service or direct Linode server instance. 
+The P2 AVC-ULTRA Transcoder includes MainConcept's codecs, pre-packaged as a single, optimized containerized application for fast and flexible deployment to any workflow as a service or direct Compute Instance.
 
-This version of the P2 AVC-ULTRA Transcoder is a free demo version that shows how MainConcept Codecs and related libraries work and perform in a cloud environment. It adds a watermark to the processed video and mutes audio from time to time. If you are interested in deploying the full version of the P2 AVC-ULTRA Transcoder, please contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
+This version of the P2 AVC-ULTRA Transcoder is a free version that demonstrates how MainConcept codecs and related libraries work and perform in a cloud environment. It adds a watermark to processed video and intermittently mutes audio. If you wish to deploy the full version of the P2 AVC-ULTRA Transcoder, contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
 
 ## Deploying a Marketplace App
 
@@ -71,6 +71,6 @@ Parameters for various options can be configured by editing the `properties.txt`
 
 ## Next Steps
 
-For additional usage information and formatting guidelines, please see the official documentation for MainConcept P2 AVC-ULTRA Transcoder by navigating to [MainConcept's Transcoders page](https://www.mainconcept.com/transcoders), and selecting **P2 AVC-ULTRA Transcoder**. For support regarding the tool or software itself, use the information in the sidebar to contact their support or search the [MainConcept community forum](https://forum.mainconcept.com/).
+For additional usage information and formatting guidelines, please see the official documentation for MainConcept P2 AVC-ULTRA Transcoder by navigating to [MainConcept's Transcoders page](https://www.mainconcept.com/transcoders), and selecting **P2 AVC-ULTRA Transcoder**. For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
 {{< content "marketplace-update-note-shortguide">}}

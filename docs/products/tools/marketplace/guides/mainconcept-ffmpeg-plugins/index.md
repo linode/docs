@@ -9,9 +9,9 @@ modified_by:
 authors: ["Linode"]
 ---
 
-The [MainConcept Plugins for FFmpeg](https://www.mainconcept.com/ffmpeg) make improving visual quality and performance quick and simple with advanced features that are not available with open source, such as Hybrid GPU acceleration, professional production format and xHE-AAC audio as well as MPEG-H 3D audio content creation. Perfectly suited for both VOD and live production workflows, the FFmpeg plugins give you the best of both worlds. 
+The [MainConcept Plugins for FFmpeg](https://www.mainconcept.com/ffmpeg) are media encoding tools that use advanced features such as Hybrid GPU acceleration, professional production format, xHE-AAC audio, and MPEG-H 3D audio content creation to help improve visual quality and performance. Use cases include both VOD and live production workflows.
 
-The different MainConcept Plugins for FFmpeg enable users to create decoding, encoding and transcoding workflows or services based on FFmpeg. Deployed on Linode, they significantly boost both performance and quality of your audio and video content. 
+The different MainConcept Plugins for FFmpeg enable users to create decoding, encoding, and transcoding workflows or services based on FFmpeg.
 
 The following MainConcept Plugins for FFmpeg are included with this deployment:
 - [Hybrid HEVC Encoder](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20Hybrid%20HEVC%20Encoder%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
@@ -24,7 +24,7 @@ The following MainConcept Plugins for FFmpeg are included with this deployment:
 - [MPEG-2 TS Broadcast Delivery](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20MPEG-2%20TS%20Broadcast%20Delivery%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 - [MPEG-2 Production Format Encoder](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20MPEG-2%20Encoder%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 
-These versions of the MainConcept Plugins for FFmpeg are free demo versions. They add a watermark to the processed video, limit the multiplexing time or mute audio from time to time. If you are interested in deploying the full versions of the Plugins for FFmpeg, please contact [sales@mainconcept.com](mailto:sales@mainconcept.com).  
+The versions of MainConcept Plugins for FFmpeg included in this deployment are free demos. They add a watermark to processed video, limit the multiplexing time, and intermittently mute audio. If you wish to deploy the full versions of MainConcept Plugins for FFmpeg, contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
 
 ## Deploying a Marketplace App
 
@@ -87,6 +87,6 @@ For more information on using MainConcept Plugins for FFmpeg, including command 
 
 - [MainConcept's official documentation on FFmpeg Plugins](https://www.mainconcept.com/ffmpeg)
 
-For support regarding the tool or software itself, use the information in the sidebar to contact their support or search the [MainConcept community forum](https://forum.mainconcept.com/).
+For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
 {{< content "marketplace-update-note-shortguide">}}
