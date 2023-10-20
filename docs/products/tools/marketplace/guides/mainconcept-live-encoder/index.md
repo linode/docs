@@ -1,7 +1,7 @@
 ---
 title: "Deploy MainConcept Live Encoder through the Linode Marketplace"
 description: "Deploy MainConcept Live Encoder, an enterprise ready live encoder for broadcast and OTT video workflows, on a Linode Compute Instance."
-keywords: ['encoder','video','live','rtmp','rtsp','rtp','udp','zixi','srt','mpeg-dash','hls', 'sdi']
+keywords: ['encoder','video','live','rtmp','rtsp','rtp','udp','zixi','srt','mpeg-dash','hls']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
 modified_by:
