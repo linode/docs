@@ -383,10 +383,7 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 1.  The Install steps for the WordPress app appears. Provide the details and click **Next**.
     After you provide the details click **Install**.
 
-1.  In the project's **Installed Apps** view, your new WordPress app lis isted.
-1.  Click on the name of the app:
-
-    ![Rancher deployed apps list - WordPress app in middle of provisioning](default-project-app-view-wordpress-provisioning-link-highlighted.png "Rancher deployed apps list - WordPress app in middle of provisioning")
+1.  In the project's **Installed Apps** view, your new WordPress app is listed.
 
 1.  In the **Workloads** section the MariaDB and WordPress deployments for your app is displayed.
 
