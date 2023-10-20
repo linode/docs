@@ -10,7 +10,7 @@ aliases: ['/products/tools/linode-api/get-started/','/platform/api/getting-start
 tags: ["managed hosting"]
 ---
 
-The Linode API allows you to automate any task that can be performed by the Cloud Manager. This includes creating and managing all of our products (like Compute Instances and Managed Databases), your customer account (like adding new users or viewing invoices), and even creating support tickets. As an example of an API call, the command below deploys a new 2GB Compute Instance in the Newark data center using the Debian 11 image.
+The Linode API allows you to automate any task that can be performed by the Cloud Manager. This includes creating and managing all of our products (like Compute Instances and Firewalls), your customer account (like adding new users or viewing invoices), and even creating support tickets. As an example of an API call, the command below deploys a new 2GB Compute Instance in the Newark data center using the Debian 11 image.
 
 ```command
 curl -X POST https://api.linode.com/v4/linode/instances \

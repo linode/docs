@@ -136,7 +136,7 @@ To install both Docker Engine and Docker Compose, follow these steps.
     sudo docker run hello-world
     ```
 
-    If everything is installed correctly, Docker displays the message as as shown in the output below.
+    If everything is installed correctly, Docker displays the message as shown in the output below.
 
     ```output
     Hello from Docker!

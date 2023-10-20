@@ -110,7 +110,6 @@ This template includes common API logic and functions.
   {{ with $op }}
     {{ $action := .Summary | anchorize }}
     {{ $.Set "action" $action }}
-    {{ $.Set "debug"  (eq $action "list-tagged-objects") }}
     {{ with $op.Servers }}
       {{ $server = index . 0 }}
       {{ $url = printf "%s%s" $server.URL $pathKey }}
@@ -640,8 +639,11 @@ This template includes common API logic and functions.
 
 {{ define "partials/openapi3/get-response-example-property" }}
   {{ $result := .Example }}
-  {{ with .Properties }}
-    {{ $result = partial "openapi3/get-response-example-properties" . }}
+  {{ $isSet := and ($result) (eq .Type "array") }}
+  {{ if not $isSet }}
+    {{ with .Properties }}
+      {{ $result = partial "openapi3/get-response-example-properties" . }}
+    {{ end }}
   {{ end }}
   {{ return $result }}
 {{ end }}

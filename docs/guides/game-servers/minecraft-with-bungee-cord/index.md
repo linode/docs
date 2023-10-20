@@ -6,7 +6,7 @@ tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
- - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
+ - '[Minecraft Wiki](http://minecraft.wiki/w/Minecraft_Wiki)'
  - '[Official BungeeCord Site](https://www.spigotmc.org/wiki/bungeecord/)'
  - '[BungeeCord and Spigot Forums](https://www.spigotmc.org/)'
 published: 2015-09-09
