@@ -1,7 +1,7 @@
 ---
 title: "Deploy MainConcept XDCAM Transcoder through the Linode Marketplace"
-description: "Deploy MainConcept XDCAM Transcoder, an enterprise ready XDCAM Transcoder, on a Linode Compute Instance.'"
-keywords: ['transcoder','encoder','video']
+description: "Deploy MainConcept XDCAM Transcoder, an enterprise ready tool to create Sony XDCAM camera formats on a Linode Compute Instance."
+keywords: ['transcoder','encoder','video','sony','xdcam','xdcam hd','xdcam ex','xdcam imx','dvcam','rest api']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
 modified_by:

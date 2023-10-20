@@ -1,7 +1,7 @@
 ---
 title: "Deploy MainConcept Plugins for FFmpeg through the Linode Marketplace"
-description: "Deploy MainConcept Plugins for FFmpeg, an enterprise ready set of FFmpeg tools, on a Linode Compute Instance.'"
-keywords: ['ffmpeg','encoding','video']
+description: "Deploy MainConcept Plugins for FFmpeg, an enterprise ready set of FFmpeg tools for creating transcoding workflows, on a Linode Compute Instance."
+keywords: ['ffmpeg','encoding','decoding','video','vvc','hevc','avc','mpeg-h','xhe-aac','mpeg-2 ts']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
 modified_by:
@@ -24,7 +24,7 @@ The following MainConcept Plugins for FFmpeg are included with this deployment:
 - [MPEG-2 TS Broadcast Delivery](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20MPEG-2%20TS%20Broadcast%20Delivery%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 - [MPEG-2 Production Format Encoder](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20MPEG-2%20Encoder%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 
-These versions of the MainConcept Plugins for FFmpeg are free demo versions. They add a watermark to the processed video, limit the multiplexing time or mute audio from time to time. If you are interested in deploying the full versions of the Plugins for FFmpeg , please contact [sales@mainconcept.com](mailto:sales@mainconcept.com).  
+These versions of the MainConcept Plugins for FFmpeg are free demo versions. They add a watermark to the processed video, limit the multiplexing time or mute audio from time to time. If you are interested in deploying the full versions of the Plugins for FFmpeg, please contact [sales@mainconcept.com](mailto:sales@mainconcept.com).  
 
 ## Deploying a Marketplace App
 

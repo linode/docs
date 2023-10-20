@@ -1,7 +1,7 @@
 ---
 title: "Deploy MainConcept Live Encoder through the Linode Marketplace"
-description: "Deploy MainConcept Live Encoder, an enterprise ready live encoder, on a Linode Compute Instance.'"
-keywords: ['ffmpeg','encoder','video']
+description: "Deploy MainConcept Live Encoder, an enterprise ready live encoder for broadcast and OTT video workflows, on a Linode Compute Instance."
+keywords: ['encoder','video','live','rtmp','rtsp','rtp','udp','zixi','srt','mpeg-dash','hls', 'sdi']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
 modified_by:
@@ -14,6 +14,8 @@ The [MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is a po
 You can set up a live workflow to ingest, prepare, and stream audio-visual content that is compatible with every type of consumer device. It doesn’t matter if you are delivering video directly to a CDN, to an online video platform via RTMP or with low-latency protocols Zixi and SRT, the Live Encoder ensures your live video is delivered reliably and in the highest possible quality. 
 
 Besides MPEG-H 3D Audio creation, the software features many output streaming protocols like RTMP, RTSP, Zixi, SRT, TS over UDP/HTTP, MPEG-DASH, HLS and MP4 archiving files. The Live Encoder can be used in both contribution and distribution encoding workflows. 
+
+This version of the MainConcept Live Encoder is a free demo version. It adds a watermark to the processed video and mutes audio from time to time. If you are interested in deploying the full version of the Live Encoder, please contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
 
 ## Deploying a Marketplace App
 
