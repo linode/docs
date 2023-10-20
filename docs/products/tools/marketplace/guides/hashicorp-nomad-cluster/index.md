@@ -16,7 +16,6 @@ This Marketplace App deploys 6 Compute Instances to create a highly available, r
 
 Please be aware that each Compute Instance will appear on your invoice as a separate item. If you would rather deploy Hashicorp Nomad on a single Compute Instance, see [Deploy Hashicorp Nomad through the Linode Marketplace](/docs/products/tools/marketplace/guides/hashicorp-nomad/).
 
-**Note:** There can only be one Marketplace Nomad Cluster per datacenter.
 {{< /note >}}
 
 ## Deploying a Marketplace App
