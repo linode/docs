@@ -33,7 +33,7 @@ The first command should show your short hostname, and the second should show yo
 
 ## Install Confluence
 
-Edit the `/etc/apt/sources.list` file, adding the following "mutliverse" repository lines if they don't already exist. The multiverse repository is required to allow the installation of the Sun Java 6 JDK; alternate Java JDK packages (such as OpenJDK) are not supported by Confluence as of this writing.
+Edit the `/etc/apt/sources.list` file, adding the following "multiverse" repository lines if they don't already exist. The multiverse repository is required to allow the installation of the Sun Java 6 JDK; alternate Java JDK packages (such as OpenJDK) are not supported by Confluence as of this writing.
 
 {{< file "/etc/apt/sources.list" >}}
 ## multiverse repositories

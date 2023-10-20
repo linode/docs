@@ -1,7 +1,7 @@
 ---
 title: "Premium Compute Instances"
 linkTitle: "Premium"
-description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-peformance for your workloads."
+description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-performance for your workloads."
 published: 2023-07-06
 modified: 2023-10-16
 ---
