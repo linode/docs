@@ -16,7 +16,7 @@ authors: ["Nathaniel Stickman"]
 
 Git is a widely used Version Control System (VCS) known for its versatility. Git utilizes local clones of central repositories to bring more effective collaboration. It also keeps track of all the committed changes along the way, so things are readily recoverable.
 
-You might need that recoverability after an inadvertent commit, or to undo the most recent commit for any reason. Git has the ability to revert the last commit, and this tutorial shows you exactly how. It covers methods using both the `revert` and `reset` commands, and explains the differences.
+You might need that recoverability after an inadvertent commit, or to undo the most recent commit for any reason. Git can revert the last commit, and this tutorial shows you exactly how. It covers methods using both the `revert` and `reset` commands and explains the differences.
 
 Learn more about Git generally in our guide [Git vs SVN: Pros and Cons of Each Version Control System](/docs/guides/svn-vs-git/#what-is-the-git-version-control-system).
 
@@ -30,7 +30,7 @@ These next few steps set you up with an example Git repository similar to the on
 
 The steps presume you have already installed Git and done basic configuration (e.g. user email address and name). If you have not done this yet, you can learn how in our guide [How to Install Git and Clone a GitHub Repository](/docs/guides/how-to-install-git-and-clone-a-github-repository/).
 
-1.  Create a new directory for your Git repository, and change into that directory. Here, the new directory, `git-example` is created in the current user's home directory:
+1.  Create a new directory for your Git repository, and change it into that directory. Here, the new directory, `git-example` is created in the current user's home directory:
 
         mkdir ~/git-example
         cd ~/git-example
@@ -73,7 +73,7 @@ e3c534a Added text to first file.
 0b24777 Initialized repo.
 {{< /output >}}
 
-## How to Use revert on the Last Git Commit
+## How to Use revert Command on the Last Git Commit
 
 Git's `revert` command undoes a commit by comparing the changes made in that commit to the repository's previous state. The command then creates a new commit that reverts the changes.
 
@@ -115,7 +115,7 @@ You can even check the modified file to see that the changes have been reversed.
 
     cat example-file-2.txt
 
-## How to Use reset to Undo Git Commits
+## How to Use reset Command to Undo Git Commits
 
 Git's `reset` command can also be used to revert the last commit. The command is more radical than `revert` and works by removing commits entirely from the repository's commit history. Essentially, `reset` "rewinds" you to a previous commit, eliminating later commits and history along the way.
 
@@ -144,7 +144,7 @@ e3c534a (HEAD -> master) Added text to first file.
 0b24777 Initialized repo.
 {{< /output >}}
 
-The difference is that, if you ran the `--soft` option with the command, you can still find the changes to the file in the working directory. For this example, that is the `example-file-2.txt` file:
+The difference is that, if you run the `--soft` option with the command, you can still find the changes to the file in the working directory. For this example, that is the `example-file-2.txt` file:
 
     cat example-file-2.txt
 
@@ -152,17 +152,17 @@ The difference is that, if you ran the `--soft` option with the command, you can
 Some example text for the second file.
 {{< /output >}}
 
-### reset vs revert
+### reset vs rever
 
 The main difference between the `revert` and `reset` commands is the commit history.
 
 The `revert` command aims to maintain a full commit history, undoing a commit by assessing changes and making a new commit that reverses them. This actually means that the `revert` command adds to the commit history. It gives you full transparency to past commits and their reversions.
 
-The `reset` command, on the other hand, discards commits even from the commit history, making them impossible to recover later. And `reset` can even do the same for local file changes. This option keeps you from seeing reversions and the original commits that are reverted.
+The `reset` command, on the other hand, discards commits even from the commit history, making them impossible to recover later. The `reset` command can even do the same for local file changes. This option keeps you from seeing reversions and the original commits that are reverted.
 
 Generally, it is recommended that you use `revert` for backing out a commit. It keeps a record of the removed commit and leaves the possibility of assessing and accessing the commit history later.
 
-By contrast, the `reset` command should be used sparingly. Take a good look at the situation to ensure that it cannot be remedied by the `revert` command before you make the decision to apply `reset`. The `reset` option might be preferred, however, for immediately undoing mistaken commits, when there is less chance that you need options for recovering the changes.
+By contrast, the `reset` command should be used sparingly. Take a good look at the situation to ensure that it cannot be remedied by the `revert` command before you decide to apply `reset`. The `reset` option might be preferred, however, for immediately undoing mistaken commits, when there is less chance that you need options for recovering the changes.
 
 ## Conclusion
 
