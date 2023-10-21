@@ -47,13 +47,11 @@ lrwxrwxrwx 2 owner group 4.0K 2009-08-13 10:16 team.docs
 
 A way to understand the meaning of this column is to divide the bits into groups:
 
-{{< table >}}
 | File Type | User | Group | Global |
 | -- | -- | -- | -- |
 | `d` **Directory**     | `rwx` | `r-x` | `r-x` |
 | `-` **Regular file**  | `rw-` | `r--` | `r--` |
 | `l` **Symbolic Link** | `rwx` | `rwx` | `rwx` |
-{{< /table >}}
 
 The first character represents the type of file. The remaining nine bits in groups of three represent the permissions for the user, group, and global respectively. Each stands for:
 
@@ -91,14 +89,12 @@ chmod g+w ~/example.txt
 
 This grants write permissions to all members of the usergroup that owns the `~/example.txt` file. Other possible options to change permissions of targeted users are:
 
-{{< table >}}
 | Who (Letter) | Meaning |
 | -- | -- |
 | **u** | user   |
 | **g** | group  |
 | **o** | others |
 | **a** | all    |
-{{< /table >}}
 
 The `+` operator grants permissions whereas the `-` operator takes away permissions. Copying permissions is also possible using the `=` operator, for example:
 
@@ -142,7 +138,6 @@ Disregarding the first bit, each bit that is occupied with a `-` can be replaced
 
 This is called octal notation because the binary numbers are converted to base-8 by using the digits 0 to 7:
 
-{{< table >}}
 | Binary | Octal | Permission |
 |--|--|--|
 | 000 | 0 | --- |
@@ -153,7 +148,6 @@ This is called octal notation because the binary numbers are converted to base-8
 | 101 | 5 | r-x |
 | 110 | 6 | rw- |
 | 111 | 7 | rwx |
-{{< /table >}}
 
 Each digit is independent of the other two. Therefore, `750` means the current user can read, write, and execute, the group cannot write, and others cannot read, write, or execute.
 
