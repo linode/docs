@@ -133,6 +133,7 @@ The steps below implement such an NGINX proxy. These steps add another `server` 
         proxy_intercept_errors off;
 
         proxy_cache CACHE;
+        proxy_cache_path /path/to/cache/dir keys_zone=CACHE:10m;
         proxy_cache_valid 200 48h;
         proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
         proxy_cache_lock on;
