@@ -111,7 +111,7 @@ After you have your Linode up and running with Docker, you can then install and 
     If you are interested in setting up an SSL certificate with Rancher, you may consider also creating an NGINX container with an SSL certificate that proxies traffic to the Rancher container.
     {{< /note >}}
 
-1.  You should see a welcome screen from Rancher. The instructions to find the randamly generated password appears. The default user name is `admin`.
+1.  You should see a welcome screen from Rancher. The instructions to find the randamly generated password appear. The default user name is `admin`.
 1.  The system then prompts you to set a password.
 1.  The `Server URL` section should already show your Rancher server's IP address. Click **Continue**.
 1.  The default home page for your Rancher application appears. This page normally displays a list of all of your Kubernetes clusters. Since you have not created a cluster yet, no clusters are listed.
@@ -385,7 +385,7 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 
 1.  In the project's **Installed Apps** view, your new WordPress app is listed.
 
-1.  In the **Workloads** section the MariaDB and WordPress deployments for your app is displayed.
+1.  In the **Workloads** section the MariaDB and WordPress deployments for your app are displayed.
 
 1.  The **Deployments** section displays the **Endpoints** or thte address of the NodeBalancer that was created for your app.
 
@@ -467,8 +467,7 @@ Rancher also provides an easy way to scale your app's deployments:
 
 1.  Click the **Deployments** and then click the **wordpress** app.
 
-1.  In the **Deployment** page that appears,
- increase the count in the **Scale**.
+1.  In the **Deployment** page that appears, increase the count in the **Scale**.
     ![Rancher WordPress workloads - deployment name highlighted](wordpress-app-wordpress-workload-link-highlighted.png "Rancher WordPress workloads - deployment name highlighted")
 
 1.  A second Pod appears in the **Pods by State** section on this page, that displays the status of the pod that is being created. Eventually, the new Pod is labelled as **Running**.
