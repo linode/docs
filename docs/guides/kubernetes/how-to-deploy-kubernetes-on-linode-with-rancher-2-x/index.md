@@ -111,8 +111,8 @@ After you have your Linode up and running with Docker, you can then install and 
     If you are interested in setting up an SSL certificate with Rancher, you may consider also creating an NGINX container with an SSL certificate that proxies traffic to the Rancher container.
     {{< /note >}}
 
-1.  You should see a welcome screen from Rancher. The instructions to find the randamly generated password appears. The defauly user name is àdmin`.
-1. The system then prompts you to set a password.
+1.  You should see a welcome screen from Rancher. The instructions to find the randamly generated password appears. The default user name is `admin`.
+1.  The system then prompts you to set a password.
 1.  The `Server URL` section should already show your Rancher server's IP address. Click **Continue**.
 1.  The default home page for your Rancher application appears. This page normally displays a list of all of your Kubernetes clusters. Since you have not created a cluster yet, no clusters are listed.
 
@@ -144,9 +144,9 @@ In order to use LKE on Rancher, the LKE Cluster Driver must be manually activate
 
 Once Rancher been installed and the cluster driver has been activated, a new LKE Cluster can be created at any time:
 
-1.  Return to the home page.
+1. Return to the home page.
 
-1.  Click the **Create** button. The **Cluster:Create** form appears.
+1. Click the **Create** button. The **Cluster:Create** form appears.
 
 1. Under the `Create a cluster in hosted Kubernetes Provider` option, find and click on the `LKE` button.
 
