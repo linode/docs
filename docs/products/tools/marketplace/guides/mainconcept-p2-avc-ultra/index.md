@@ -13,7 +13,7 @@ The [MainConcept P2 AVC-ULTRA Transcoder](https://www.mainconcept.com/transcoder
 
 The P2 AVC-ULTRA Transcoder includes MainConcept's codecs, pre-packaged as a single, optimized containerized application for fast and flexible deployment to any workflow as a service or direct Compute Instance.
 
-This version of the P2 AVC-ULTRA Transcoder is a free version that demonstrates how MainConcept codecs and related libraries work and perform in a cloud environment. It adds a watermark to processed video and intermittently mutes audio. If you wish to deploy the full version of the P2 AVC-ULTRA Transcoder, contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
+This version of the P2 AVC-ULTRA Transcoder is a free version that demonstrates how MainConcept codecs and related libraries work and perform in a cloud environment. It adds a watermark to processed video and intermittently mutes audio. If you wish to deploy the full version of the P2 AVC-ULTRA Transcoder, please visit the [MainConcept on Linode](https://www.mainconcept.com/akamai-linode) website.
 
 ## Deploying a Marketplace App
 

@@ -24,7 +24,7 @@ The following MainConcept Plugins for FFmpeg are included with this deployment:
 - [MPEG-2 TS Broadcast Delivery](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20MPEG-2%20TS%20Broadcast%20Delivery%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 - [MPEG-2 Production Format Encoder](https://www.mainconcept.com/hubfs/PDFs/User%20Guides/MainConcept%20MPEG-2%20Encoder%20Plug-In%20for%20FFmpeg%20User%20Guide.pdf)
 
-The versions of MainConcept Plugins for FFmpeg included in this deployment are free demos. They add a watermark to processed video, limit the multiplexing time, and intermittently mute audio. If you wish to deploy the full versions of MainConcept Plugins for FFmpeg, contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
+The versions of MainConcept Plugins for FFmpeg included in this deployment are free demos. They add a watermark to processed video, limit the multiplexing time, and intermittently mute audio. If you wish to deploy the full versions of MainConcept Plugins for FFmpeg, please visit the [MainConcept on Linode](https://www.mainconcept.com/akamai-linode) website.
 
 ## Deploying a Marketplace App
 

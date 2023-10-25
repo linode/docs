@@ -15,7 +15,7 @@ Using the Live Encoder, you are able to set up a live workflow to ingest, prepar
 
 In addition to MPEG-H DC audio creation, output streaming protocols include: RTMP, RTSP, Zixi, SRT, TS over UDP/HTTP, MPEG-DASH, HLS, and MP4 archiving files. The Live Encoder can be used in both contribution and distribution encoding workflows.
 
-The version of MainConcept Live Encoder in this deployment is a free demo. It adds a watermark to the processed video and intermittently mutes audio. If you wish to deploy the full version of the Live Encoder, contact [sales@mainconcept.com](mailto:sales@mainconcept.com).
+The version of MainConcept Live Encoder in this deployment is a free demo. It adds a watermark to the processed video and intermittently mutes audio. If you wish to deploy the full version of the Live Encoder, please visit the [MainConcept on Linode](https://www.mainconcept.com/akamai-linode) website.
 
 ## Deploying a Marketplace App
 
