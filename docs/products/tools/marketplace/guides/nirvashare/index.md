@@ -27,20 +27,24 @@ NirvaShare is a simplified and secure enterprise file sharing solution built on 
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### NirvaShare Configuration Options
 
-- **Database Password** *(required)*: Enter a *strong* password for NirvaShare database.
+- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+
+{{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
-After NirvaShare has finished installing, you can access your NirvaShare instance by visiting your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/) at port 8080. (for example, `http://192.0.2.0:8080`)
+Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
-Once you visit the NirvaShare IP address you will be prompted with a Login page, you can enter `admin` as the *username* and `admin` as the *password*.
+Once you visit the NirvaShare URL you will be prompted with a Login page, you can enter `admin` as the *username* and `admin` as the *password*. 
 
 ![Nirvashare Login.](nirvashare-login.png)
 
