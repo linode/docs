@@ -16,10 +16,6 @@ authors: ["Linode"]
 
 [Peppermint Ticket Management](https://peppermint.sh/) is a ticket management system that allows teams and solo users the ability create & track tickets, todo items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.
 
-{{< note type="alert" >}}
-While Peppermint is still technically in alpha, it is stable enough for production use.
-{{< /note >}}
-
 ## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
@@ -32,14 +28,22 @@ While Peppermint is still technically in alpha, it is stable enough for producti
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
-## Getting Started after Deployment
+## Peppermint options
+
+- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+
+{{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ### Access your Peppermint App
 
-After Peppermint has finished installing, you can access your Peppermint server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server in your browser using your Linode's IPv4 address and port `5001`(for example `192.0.2.0:5001`).
+AOpen your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 ![Peppermint login screen](peppermint.png)
 
