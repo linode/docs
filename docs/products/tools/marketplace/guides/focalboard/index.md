@@ -27,7 +27,7 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Focalboard Options
@@ -44,7 +44,7 @@ authors: ["Linode"]
 
 ### Accessing the Focalboard App
 
-1.  Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
     ![Screenshot of the URL bar](focalboard-url.png)
 
@@ -59,8 +59,6 @@ authors: ["Linode"]
 1.  You are automatically logged in and the **Create Board** screen should display.
 
     ![The Focalboard Create a Board page](focalboard-create-board.png)
-
-
 
 
 Now that you’ve accessed your dashboard, check out [the official Focalboard documentation](https://www.focalboard.com/guide/user/) to learn how to further utilize your Focalboard instance.
