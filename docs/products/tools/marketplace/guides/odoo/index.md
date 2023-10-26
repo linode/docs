@@ -27,14 +27,12 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Odoo Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
-- **Postgres Password for the Odoo user** *(required)*: Enter a *strong* password for the Odoo user account.
-- **MySQL User Password** *(required)*: Enter a *strong* password for the MySQL user.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
@@ -46,7 +44,7 @@ authors: ["Linode"]
 
 ### Accessing the Odoo App
 
-1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+1.  Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 1.  Within the Odoo setup page that appears, save the automatically generated admin password (also called the *master password*), enter *odoo* as the **Database Name**, and fill out the remaining details for your account.
 
