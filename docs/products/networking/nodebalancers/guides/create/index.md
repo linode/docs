@@ -35,17 +35,37 @@ Select the **region** where the NodeBalancer will reside. Regions correspond wit
 
 ## Assign a Cloud Firewall (Optional)
 
-Select the Cloud Firewall to use with the NodeBalancer. If the firewall doesn't exist yet, [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
-
 A NodeBalancer can only be attached to one active (enabled) Cloud Firewall at a time. You can attach the same Cloud Firewall to multiple NodeBalancers or other devices.
+
+Select the Cloud Firewall from the **Assign Firewall** pull down to use with the NodeBalancer.
+
+If the firewall doesn't exist yet, you can create the firewall using either the Firewall application, or the NodeBalancer application. Rules for the firewall, can only be added in the Firewall application.
+
+To create a firewall and add rules using the Firewall application, see [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+
+To create a firewall using the NodeBalancer  application, in the *NodeBalancer Create* form click the **Create Firewall**. This displays the *Create Firewall* drawer. Configure the required field.
+
+| **Configuration** | **Description** |
+| --------------- | --------------- |
+| **Label** (Required)| The label is used as an identifier for this Cloud Firewall. |
+| **Additional Linodes** (Optional)| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
+| **NodeBalancers** (Optional) | The NodeBalancers on which to apply this Firewall. A list of all NodeBalancers on your account are visible. You can skip this configuration if the NodeBalancer is not listed or created yet.|
+
+Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the the *Nodebalancers Create* form.
+
+{{< note >}}
+By default, a new Cloud Firewall accepts all inbound and outbound connections. Only inbound firewall rules apply to NodeBalancers. Custom rules can be added in the Firewall application as needed. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+{{< /note >}}
 
 ### Cloud Firewall Inbound Rules for NodeBalancer
 - Inbound rules limit incoming network connections to the NodeBalancer based on the port(s) and sources you configure.
 - The NodeBalancer accepts traffic and routes traffic on an internal network to backend targets. For this reason, only inbound firewall rules apply to Node Balancer.
-- Inbound firewall rules such as IPv4 and IPv6 access control lists (ACLs) can be configured to *Accept* or *Drop* ingress traffic.
+- Inbound firewall rules such as IPv4 and IPv6 access control lists (ACLs) can be configured to *Accept* or *Drop* ingress traffic to the NodeBalancer.
 - NodeBalancers can accept TCP connections on all ports. When you add an inbound rule for a NodeBalancer in Cloud Firewall, select TCP as the transport layer protocol. UDP, ICMP, and IPENCAP are not currently supported on NodeBalancers.
 - The NodeBalancers firewall is infront of the backend nodes that are assigned to the NodeBalancer. When both the NodeBalancer and its backend nodes use Cloud Firewall, the NodeBalancers inbound firewall rules are applied to incoming requests first, before the requests reach the backend nodes.
-- A backend node server (Linode) can have multiple IP addresses. The NodeBalancers firewall only controls traffic to the backend nodes IPs that are assigned to the NodeBalancers. NodeBalancer firewall rules are not applied to IPs that are not assigned to the NodeBalancer.
+- A backend node server (Linode) can have multiple IP addresses. The NodeBalancer firewall only controls traffic to the backend nodes IPs that are assigned to the NodeBalancers. Since a service (Linode) can be accessed from any interface (not just the NodeBalancer), firewalls should also be applied to the backend Linodes.
+
+![Screenshot of traffic going through firewall and NodeBalancer and traffic bypassing firewall and NodeBalancer](nb-firewall.jpg)
 
 ## Add and Configure Ports
 

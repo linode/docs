@@ -43,13 +43,23 @@ Once your application has been deployed on multiple Compute Instances, you are r
 
 1. Select a **Region** for this NodeBalancer. The NodeBalancer needs to be located in the same data center as your application's Compute Instances.
 
-1. If you are using a firewall, select the **Firewall** from the list. Only one Firewall can be selected. 
+1. If you are using a firewall, select a firewall from the **Assign Firewall** list. Only one Firewall can be selected, however you can attach the same Cloud Firewall to multiple NodeBalancers or other services (devices).
 
-    {{<note>}}
-    A NodeBalancer can only be attached to one active (enabled) Cloud Firewall at a time. You can attach the same Cloud Firewall to multiple NodeBalancers or other devices.
-    {{</note>}}
+    You can also create a new Firewall by clicking the **Create Firewall** button. This displays the *Create Firewall* drawer. Configure the required field.
 
-1. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional ports can be added using the **Add another Configuration** button.
+    | **Configuration** | **Description** |
+    | --------------- | --------------- |
+    | **Label** (Required)| The label is used as an identifier for this Cloud Firewall. |
+    | **Additional Linodes** (Optional)| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
+    | **NodeBalancers** (Optional) | The NodeBalancers on which to apply this Firewall. A list of all NodeBalancers on your account are visible. You can skip this configuration if the NodeBalancer is not listed or created yet.|
+
+    Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the the *Nodebalancers Create* form.
+
+    {{< note >}}
+    By default, a new Cloud Firewall accepts all inbound and outbound connections. Only inbound firewall rules apply to NodeBalancers. Custom rules can be added as needed in the Firewall application. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+    {{< /note >}}
+
+5. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional ports can be added using the **Add another Configuration** button.
 
     {{< note >}}
     The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) guide.
