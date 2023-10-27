@@ -3,7 +3,7 @@ description: "Learn how to deploy Odoo, a self-hosted business management softwa
 keywords: ['odoo','business','crm','ecommerce']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
-modified: 2022-03-08
+modified: 2023-10-27
 modified_by:
   name: Linode
 title: "Deploy Odoo through the Linode Marketplace"
@@ -44,7 +44,7 @@ authors: ["Linode"]
 
 ### Accessing the Odoo App
 
-1.  Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 1.  Within the Odoo setup page that appears, save the automatically generated admin password (also called the *master password*), enter *odoo* as the **Database Name**, and fill out the remaining details for your account.
 
