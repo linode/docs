@@ -50,36 +50,39 @@ From here, the following pages are available:
 1. A confirmation dialog appears. Click **Delete NodeBalancer** to proceed with removing the service from your account.
 
 {{<note>}}
-When you delete a NodeBalancer that has a firewall, the NodeBalancer is also removed from Cloud Firewall. The firewall that was assigned to the deleted NodeBalancer and the backend nodes are not deleted.
+When you delete a NodeBalancer that has a firewall, the NodeBalancer is also removed from the firewall in Cloud Firewall. The firewall is not deleted when you delete a NodeBalancer.
 {{</note>}}
 
-## Add, Change or Unassign the NodeBalancer Firewall
-After the NodeBalancer is created, you can add a Cloud Firewall, select a different firewall or unassign the current firewall using the following steps;
+## Add, Change or Remove NodeBalancer Firewalls
 
-### Unassign the NodeBalancers Firewall
+After the NodeBalancer is created, you can add a firewall, select a different firewall or remove the current firewall using the following steps;
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and select NodeBalancers from the left menu.
-
-1. Navigate to the **Settings** tab of the NodeBalancer that has the firewall you want to unassign. Scroll to the *Firewalls* section, and click **Unassign**.
-
-    ![Screenshot of the firewalls form](nodebalancer-firewall-unassign.png)
-
-1. A confirmation dialog appears. Click **Unassign Firewall** to proceed with removing the firewall from the NodeBalancer. The firewall is unassigned from the NodeBalancer  and the NodeBalancer is removed from the firewall in Cloud Firewall.
-
-### Add a Firewall to a NodeBalancer
+### Remove the Firewall from a NodeBalancer
 
 1. In [Cloud Manager](https://cloud.linode.com), select **Firewalls** from the left menu.
 
-1. Select the firewall you want to assign to the NodeBalancer. If the firewall doesn't exist yet, [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+1. Select the Firewall that you want to remove from the NodeBalancer.
+
+1. Navigate to the **NodeBalancers** tab, and click **Remove** to remove the firewall from a specific NodeBalancer.
+
+    ![Screenshot of the firewalls form](nodebalancer-firewall-unassign.png)
+
+1. A confirmation dialog appears. Click **Remove** to proceed with removing the firewall from the NodeBalancer. The firewall is unassigned from the NodeBalancer.
+
+### Add NodeBalancers to a Firewall
+
+1. In [Cloud Manager](https://cloud.linode.com), select **Firewalls** from the left menu.
+
+1. Select the firewall you want to assign to the NodeBalancer.
 
 1. Navigate to the **NodeBalancers** tab and click the **Add NodeBalancers to Firewall** button.
 
     ![Screenshot of add NodeBalancer form in Cloud Firewall](nodebalancers-add-firewall.png)
 
-1. In the *Add NodeBalancers to Firewall* form, select the NodeBalancer, and click **Add**. Once the NodeBalancer is added, the firewall starts to filter incoming requests based on the firewalls inbound rules.
+1. In the *Add NodeBalancers to Firewall* drawer, select one or more of the NodeBalancers, and click **Add**. Once a NodeBalancer is added, its firewall starts to filter incoming requests based on the firewalls inbound rules.
 
 ### Change the NodeBalancers Firewall
 
-1. Complete the steps in [Unassign the NodeBalancers Firewall](#unassign-the-nodebalancers-firewall).
+1. Complete the steps in [Remove the Firewall from a NodeBalancer](#remove-the-firewall-from-a-nodebalancer).
 
-2. Complete the steps in [Add a Firewall to a NodeBalancer](#add-a-firewall-to-a-nodebalancer).
+2. Complete the steps in [Add a Firewall to a NodeBalancer](#add-nodebalancers-to-a-firewall).
