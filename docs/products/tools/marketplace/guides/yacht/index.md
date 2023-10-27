@@ -3,7 +3,7 @@ description: "Yacht is a web interface for managing Docker containers, with an e
 keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
 tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
 published: 2021-02-23
-modified: 2022-12-16
+modified: 2023-10-27
 image: DeployYacht_marketplaceapps.png
 modified_by:
   name: Linode

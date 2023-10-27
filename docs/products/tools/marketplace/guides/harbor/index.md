@@ -3,7 +3,7 @@ description: "Deploy Harbor on a Linode Compute Instance. This provides you with
 keywords: ['harbor','container','container registry','docker']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
-modified: 2022-03-08
+modified: 2023-10-27
 modified_by:
   name: Linode
 title: "Deploy Harbor through the Linode Marketplace"
@@ -46,7 +46,7 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 
 ### Accessing the Harbor App
 
-1.  Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 1.  To locate your Harbor login credentials, view the Harbor credentials file through one of the methods below:
 
@@ -57,7 +57,7 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
         cat /root/.credentials
         ```
 
-1.  In the Harbor login screen that appears, enter `admin` as the username and use the *Harbor admin password:* found in your .credentials file.
+1.  In the Harbor login screen that appears, enter `admin` as the username and use the *Harbor admin password* found in your `.credentials` file.
 
     ![Harbor Login Page](harbor-login.png)
 
