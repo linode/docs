@@ -16,10 +16,6 @@ authors: ["Linode"]
 
 [Yacht](https://yacht.sh/) is a web interface for managing Docker containers, with an emphasis on templating to provide easy deployments. The ultimate goal of Yacht is to make Docker easy for anyone to use and manage with templates, template variables, and an intuitive UI.
 
-{{< note type="alert" >}}
-Keep in mind, Yacht is still in alpha and is not recommended for production use.
-{{< /note >}}
-
 ## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
@@ -32,7 +28,7 @@ Keep in mind, Yacht is still in alpha and is not recommended for production use.
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11, Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Yacht Options

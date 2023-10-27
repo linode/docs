@@ -29,18 +29,16 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS, Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Harbor Options
 
-- **Admin Password** *(required)*: The Harbor admin password.
-- **Database Password** *(required)*: The Harbor database password.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
-
 {{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 
@@ -48,9 +46,18 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 
 ### Accessing the Harbor App
 
-1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1.  Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
-1.  In the Harbor login screen that appears, enter `admin` as the username and use the *Admin password* you created in the beginning of your deployment.
+1.  To locate your Harbor login credentials, view the Harbor credentials file through one of the methods below:
+
+    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+
+        ```command
+        cat /root/.credentials
+        ```
+
+1.  In the Harbor login screen that appears, enter `admin` as the username and use the *Harbor admin password:* found in your .credentials file.
 
     ![Harbor Login Page](harbor-login.png)
 
