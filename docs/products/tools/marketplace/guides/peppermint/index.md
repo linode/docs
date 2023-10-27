@@ -3,18 +3,15 @@ description: "This guide shows how to install Peppermint, a ticket management sy
 keywords: ["ticket management", "marketplace"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-03-31
-modified: 2022-03-08
+modified: 2023-10-27
 modified_by:
   name: Linode
 title: "Deploy Peppermint through the Linode Marketplace"
-external_resources:
-- "[Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)"
-- "[Peppermint Documentation](https://docs.peppermint.sh/)"
 aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint-marketplace-app/']
 authors: ["Linode"]
 ---
 
-[Peppermint Ticket Management](https://peppermint.sh/) is a ticket management system that allows teams and solo users the ability create & track tickets, todo items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.
+[Peppermint Ticket Management](https://peppermint.sh/) is a ticket management system that allows teams and solo users the ability create & track tickets, to-do items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.
 
 ## Deploying a Marketplace App
 
@@ -43,16 +40,16 @@ authors: ["Linode"]
 
 ### Access your Peppermint App
 
-AOpen your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1. To access the Peppermint login screen, open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
-![Peppermint login screen](peppermint.png)
+    ![Peppermint login screen](peppermint.png)
 
-The default credentials to login to your Peppermint Ticket Management Panel are:
+    The default credentials to login to your Peppermint Ticket Management Panel are:
 
-    email: admin@admin.com
-    password: 1234
+       Email: admin@admin.com
+       Password: 1234
 
-Once you login to the Peppermint Ticket Management Panel, you need to update the email and password you used to log in. You can do so by clicking the settings gear logo in the top right corner.
+1. Once you login to the Peppermint Ticket Management Panel, update the email and password you used to log in. To do this, click the Settings gear logo in the top right corner.
 
 ![peppermint_settings.png](peppermint_settings.png)
 
