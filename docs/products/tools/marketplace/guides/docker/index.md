@@ -3,7 +3,7 @@ description: "This guide provides you with step-by-step instructions for deployi
 keywords: ['docker','marketplace', 'container']
 tags: ["container","cloud-manager","linode platform","docker","marketplace"]
 published: 2020-03-11
-modified: 2022-04-01
+modified: 2023-10-27
 image: Docker_oneclickapps.png
 title: "Deploy Docker through the Linode Marketplace"
 external_resources:
@@ -36,7 +36,7 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
-- **Email address for SOA Record:** This should be the email address of your server administrator f.
+- **Email address for SOA Record:** This should be the email address of your server administrator.
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 
