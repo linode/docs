@@ -14,7 +14,7 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-[Ansible](https://www.linode.com/docs/guides/applications/configuration-management/ansible/) is an important open source automation tool and platform used for configuration management, application deployment, task automation, and [orchestration](https://www.databricks.com/glossary/orchestration) of complex workflows. It figures prominently in DevOps and allows IT administrators and developers to automate repetitive tasks, and streamline the management and deployment of infrastructure, applications, and services.
+[Ansible](/docs/guides/applications/configuration-management/ansible/) is an important open source automation tool and platform used for configuration management, application deployment, task automation, and [orchestration](https://www.databricks.com/glossary/orchestration) of complex workflows. It figures prominently in DevOps and allows IT administrators and developers to automate repetitive tasks, and streamline the management and deployment of infrastructure, applications, and services.
 
 Ansible’s business and strategic features are:
 
@@ -28,13 +28,13 @@ The following sections cover the fundamental components and [concepts associated
 
 ### Target State
 
-At the highest level, Ansible is a [**declarative**](http://www.it-automation.com/2021/06/05/is-ansible-declarative-or-imperative.html) language which details target states for computing systems, and how those states are achieved. It then takes responsibility for achievement of the target states. This creates a specific kind of [teamwork](https://www.linkedin.com/pulse/delegating-goals-versus-tasks-karl-maier) between users and Ansible, where users take the lead in telling what they want, and Ansible works out the details of how it's done. This is different from older styles of [system administration](https://www.linode.com/docs/guides/linux-system-administration-basics/) and system administration tools.
+At the highest level, Ansible is a [**declarative**](http://www.it-automation.com/2021/06/05/is-ansible-declarative-or-imperative.html) language which details target states for computing systems, and how those states are achieved. It then takes responsibility for achievement of the target states. This creates a specific kind of [teamwork](https://www.linkedin.com/pulse/delegating-goals-versus-tasks-karl-maier) between users and Ansible, where users take the lead in telling what they want, and Ansible works out the details of how it's done. This is different from older styles of [system administration](/docs/guides/linux-system-administration-basics/) and system administration tools.
 
 An important aspect of target state is how it applies. Many practitioners have strong experience with Ansible's use in provisioning and deployment. They don't realize it applies in other automations. It's true that it is good at "spinning up" a new server, or updating an existing one. However, it's also handy for many even more frequent uses that help the health of your systems such as daily checks of certificate expirations, or hourly confirmations that file systems have at least 10% storage free. It takes just a couple of lines of Ansible to implement these and many other target states and verifications.
 
 ### Playbooks
 
-[Playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) written in [YAML](https://www.linode.com/docs/guides/yaml-reference/) define a sequence of steps, or "plays", to execute on a target system or group of systems. Playbooks express desired states for systems, how those states are achieved, and Ansible then takes responsibility for achieving those states. That dynamic is Ansible’s fundamental accomplishment.
+[Playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) written in [YAML](/docs/guides/yaml-reference/) define a sequence of steps, or "plays", to execute on a target system or group of systems. Playbooks express desired states for systems, how those states are achieved, and Ansible then takes responsibility for achieving those states. That dynamic is Ansible’s fundamental accomplishment.
 
 ### Modules
 
@@ -62,7 +62,7 @@ Ansible gathers information about target systems using modules called "[facts](h
 
 ### Templates
 
-[Templates](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html) are files structured in [Jinja2 syntax](https://www.linode.com/docs/guides/introduction-to-jinja-templates-for-salt/) with placeholders. Playbook execution dynamically populates the placeholders with variables. In this way, templates generate configuration files, scripts, and other Ansible artifacts.
+[Templates](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html) are files structured in [Jinja2 syntax](/docs/guides/introduction-to-jinja-templates-for-salt/) with placeholders. Playbook execution dynamically populates the placeholders with variables. In this way, templates generate configuration files, scripts, and other Ansible artifacts.
 
 ### Handlers
 
@@ -205,7 +205,7 @@ Decide on a review policy. No well-founded best practice applies universally in 
 
 ### Documentation
 
-Accurate, thorough documentation is critical for a project’s success and continued maintenance even though no end-users are involved. 
+Accurate, thorough documentation is critical for a project’s success and continued maintenance even though no end-users are involved.
 
 #### 7: Inline Comments
 
