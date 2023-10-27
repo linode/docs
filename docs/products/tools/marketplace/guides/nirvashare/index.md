@@ -3,7 +3,7 @@ description: "This guide shows you how to deploy NirvaShare, a simplified and se
 keywords: ['storage','file sharing', 'backups']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
-modified: 2022-03-08
+modified: 2023-10-27
 modified_by:
   name: Linode
 title: "Deploy NirvaShare through the Linode Marketplace"
@@ -42,16 +42,16 @@ NirvaShare is a simplified and secure enterprise file sharing solution built on 
 
 ## Getting Started after Deployment
 
-Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1. To access the NirvaShare login screen, open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
-Once you visit the NirvaShare URL you will be prompted with a Login page, you can enter `admin` as the *username* and `admin` as the *password*. 
+1. To login, enter `admin` as the *Username* and `admin` as the *Password*.
 
-![Nirvashare Login.](nirvashare-login.png)
+    ![Nirvashare Login.](nirvashare-login.png)
 
-From here, you will want to change the default admin password, you can do so clicking the icon at the top right of the dashboard and select *Change Password* option as shown in the image below:
+1. Once logged in, you will want to change the default admin password. You can do so by clicking the icon at the top right of the dashboard and selecting the *Change Password* option as shown in the image below:
 
-![Nirvashare Change Password.](nirvashare-changepassword.png)
+    ![Nirvashare Change Password.](nirvashare-changepassword.png)
 
-Now that you’ve accessed your dashboard, checkout [the official NirvaShare documentation](https://nirvashare.com/setup-guide/) to learn how to further configure your instance.
+Now that you’ve accessed your dashboard, see [the official NirvaShare documentation](https://nirvashare.com/setup-guide/) to learn how to further configure your instance.
 
 {{< content "marketplace-update-note-shortguide">}}
