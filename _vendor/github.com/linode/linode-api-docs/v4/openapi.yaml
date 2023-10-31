@@ -1,7 +1,10 @@
 openapi: 3.0.1
 info:
-  version: 4.166.0
+  version: 4.167.1
   title: Linode API
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
   description: |
     ## Introduction
     The Linode API provides the ability to programmatically manage the full
@@ -719,7 +722,7 @@ paths:
                   survey_link:
                     type: string
                     description: A link to Linode's exit survey.
-                example: {'survey_link': https://alinktothesurvey.com'}
+                example: {"survey_link": "https://alinktothesurvey.com"}
         '409':
           description: Could not charge the credit card on file
           content:
@@ -13319,6 +13322,10 @@ paths:
         * A Linode instance can have one active, assigned Firewall at a time.
         Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
 
+        * Firewalls apply to all of a Linode's non-`vlan` purpose Configuration Profile Interfaces.
+
+        * Assigned Linodes must not have any ongoing live migrations.
+
         * A `firewall_create` Event is generated when this endpoint returns successfully.
       operationId: createFirewalls
       x-linode-cli-action: create
@@ -13497,7 +13504,14 @@ paths:
       - Networking
       summary: Firewall Update
       description: |
-        Updates information for a Firewall. Some parts of a Firewall's configuration cannot
+        Updates information for a Firewall.
+
+        * Assigned Linodes must not have any ongoing live migrations.
+
+        * If a Firewall's status is changed with this endpoint, a corresponding `firewall_enable` or
+        `firewall_disable` Event will be generated.
+
+        Some parts of a Firewall's configuration cannot
         be manipulated by this endpoint:
 
         - A Firewall's Devices cannot be set with this endpoint. Instead, use the
@@ -13513,9 +13527,6 @@ paths:
         set to `deleted`. Instead, use the
         [Delete Firewall](/docs/api/networking/#firewall-delete)
         endpoint to delete a Firewall.
-
-        If a Firewall's status is changed with this endpoint, a corresponding `firewall_enable` or
-        `firewall_disable` Event will be generated.
       operationId: updateFirewall
       x-linode-cli-action: update
       security:
@@ -13537,7 +13548,7 @@ paths:
                   type: string
                   description: >
                    The status to be applied to this Firewall.
-                    
+
                     * When a Firewall is first created its status is `enabled`.
                     * Use the [Delete Firewall](/docs/api/networking/#firewall-delete) endpoint to delete a Firewall.
                   enum:
@@ -13586,7 +13597,9 @@ paths:
         Delete a Firewall resource by its ID. This will remove all of the Firewall's Rules
         from any Linode services that the Firewall was assigned to.
 
-        A `firewall_delete` Event is generated when this endpoint returns successfully.
+        * Assigned Linodes must not have any ongoing live migrations.
+
+        * A `firewall_delete` Event is generated when this endpoint returns successfully.
       responses:
         '200':
           description: Delete Successful.
@@ -13681,6 +13694,8 @@ paths:
 
         * A Linode instance can have one active, assigned Firewall at a time.
         Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
+
+        * Assigned Linodes must not have any ongoing live migrations.
 
         * A `firewall_device_add` Event is generated when the Firewall Device is added successfully.
       operationId: createFirewallDevice
@@ -13794,7 +13809,9 @@ paths:
         service. If any other Firewalls have been assigned to the Linode service, then those Rules
         will remain in effect.
 
-        A `firewall_device_remove` Event is generated when the Firewall Device is removed successfully.
+        * Assigned Linodes must not have any ongoing live migrations.
+
+        * A `firewall_device_remove` Event is generated when the Firewall Device is removed successfully.
       responses:
         '200':
           description: Delete Successful.
@@ -13869,7 +13886,9 @@ paths:
       description: |
         Updates the inbound and outbound Rules for a Firewall.
 
-        **Note:** This command replaces all of a Firewall's `inbound` and `outbound` rulesets with the values specified in your request.
+        * Assigned Linodes must not have any ongoing live migrations.
+
+        * **Note:** This command replaces all of a Firewall's `inbound` and `outbound` rulesets with the values specified in your request.
       operationId: updateFirewallRules
       x-linode-cli-action: rules-update
       security:
@@ -22687,10 +22706,12 @@ components:
           - cloning
           - restoring
           - stopped
+          - billing_suspension
           x-linode-cli-display: 6
           x-linode-cli-color:
               running: green
               offline: red
+              billing_suspension: red
               default_: yellow
         hypervisor:
           type: string
