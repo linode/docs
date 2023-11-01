@@ -2,8 +2,8 @@
 slug: compute-migrations
 title: "Compute Migrations on Akamai Cloud"
 description: 'This guide reviews the various types of compute migrations available on the Akamai Cloud platform.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['migrate','migration','host']
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
 published: 2023-10-31
@@ -12,7 +12,7 @@ modified_by:
 
 ---
 
-A migration occurs when a Compute Instance is moved from one physical host machine to another. This can happen within the same data center or across data centers.
+A migration occurs when a Compute Instance is moved from one physical host machine to another. This can happen within the same data center or across data centers. Migrations across data centers can be configured by customers in the Cloud Manager. All other types of migrations must be configured by a Linode or Akamai administrator.
 
 ## Types of Migrations
 
@@ -70,7 +70,7 @@ In order for a live migration to occur, a host compatible with the host your ins
 - Your instance is not configured to respect ACPI shutdowns:
     - This applies to warm migrations initiated by customers, including warm migrations taking place during the warm resize process.
     - This also applies if you are running a custom distribution (i.e. Windows) or unsupported disk image that is not configured for ACPI shutdowns.
-- If a Linode or Akamai Administrator cancels the warm migration.
+- If a Linode or Akamai administrator cancels the warm migration.
 - If the sources Linode stops responding, is shut down prior to the cross-host sync, or if the process is disturbed in any way.
 
 ### What should I do if my warm migration (or resize) fails?
