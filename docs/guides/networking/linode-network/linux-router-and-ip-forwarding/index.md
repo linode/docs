@@ -1,21 +1,21 @@
 ---
 slug: linux-router-and-ip-forwarding
-description: "Learn how to set up a Linux server as a router, including configuring port forwarding and iptables."
+description: "Learn how to set up a Linux server as a router, including configuring port forwarding and network routing."
 keywords: ["static", "ip address", "addresses"]
 tags: ["networking","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-30
 modified_by:
-  name: Linode
+  name: Nathaniel Stickman
 title: "Configure Linux as a Router (IP Forwarding)"
-authors: ["Linode"]
+authors: ["Linode", "Nathaniel Stickman"]
 ---
 
 A computer network is a collection of computer systems that can communicate with each other. To communicate with a computer that's on a *different* network, a system needs a way to connect to that other network. A *router* is a system that acts as a intermediary between multiple different networks. It receives traffic from one network that is ultimately destined for another. It's able to identify where a particular packet should be delivered and then forward that packet over the appropriate network interface.
 
 There are lots of options for off-the-shelf router solutions for both home and enterprise. In most cases, these solutions are preferred as they are relatively easy to configure, have lots of features, tend to have a user-friendly management interface, and may come with support options. Under the hood, these routers are stripped down computers running common operating systems, like Linux.
 
-Instead of using one of these pre-built solutions, you can create your own using any Linux server, like a Linode Compute Instance. Using routing software like iptables, you have total control over configuring a router and firewall to suit your individual needs. This guide covers how to configure a Linux system as a basic router, including enabling IP forwarding and configuring iptables.
+Instead of using one of these pre-built solutions, you can create your own using any Linux server, like a Linode Compute Instance. Using routing software like iptables, you have total control over configuring a router and firewall to suit your individual needs. This guide covers how to configure a Linux system as a basic router, including enabling IP forwarding and configuring network routing.
 
 ## Use Cases for a Cloud-based Router
 
@@ -29,12 +29,12 @@ Many workloads benefit from custom routing or port forwarding solutions, includi
 
 1. **Deploy *at least* 2 Compute Instances** (or other virtual machines) to the same data center. All systems should be connected to the same private network, like a [VLAN](/docs/products/networking/vlans/). One system should be designated as the router and should also be connected to the public internet or a different private network. See [Deploy Compute Instances](#deploy-compute-instances).
 1. **Enable IP forwarding** on the Compute Instance designated as the router. See [Enable IP Forwarding](#enable-ip-forwarding).
-1. **Configure the routing software** on that same instance (the router). This guide covers using iptables, but you can also use other software. See [Configure iptables](#configure-iptables).
+1. **Configure the routing software** on that same instance (the router). This guide covers using nftables, iptables, or Firewalld. See [Configure the Routing Software](#configure-the-routing-software).
 1. **Define a gateway** on each system *other than* the router. This gateway should point to the router's IP address on that network. See [Define the Gateway](#define-the-gateway).
 
 ## Deploy Compute Instances
 
-To get started, you can use the Linode platform to deploy multiple Compute Instances. These can mimic a basic application that is operating on a private VLAN with a single router. If you already have an application deployed and just wish to know how to configure ip forwarding or iptables, you can skip this section.
+To get started, you can use the Linode platform to deploy multiple Compute Instances. These can mimic a basic application that is operating on a private VLAN with a single router. If you already have an application deployed and just wish to know how to configure ip forwarding or the router software, you can skip this section.
 
 1. Deploy 2 or more Compute Instances and designate one as the router. Each of these should be deployed to the same region. On the deployment page, you can skip the VLAN section for now. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) to learn how to deploy Linode Compute Instances.
 
@@ -91,43 +91,209 @@ net.ipv6.conf.all.forwarding = 1
 
         sudo sysctl -p
 
-## Configure iptables
+## Configure the Routing Software
 
-The iptables utility can serve as both a firewall (through the default `filter` table) and as a router (such as when using the `nat` table). This section covers how to configure iptables to function as a basic router. If you prefer, you can use any other firewall or routing software, such as [nftables](https://wiki.nftables.org/wiki-nftables/index.php/Main_Page) or a commercial application.
+Linux network utilities like nftables, iptables, and Firewalld can each serve as both a firewall and a router. This section covers how to configure each of these tools to function as a basic router. You can, alternatively, opt for a commercial routing application.
 
-1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) (if you're using a Linode Compute Instance).
+1.  Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) (if you're using a Linode Compute Instance).
 
-1.  Review the existing iptables rules. If you are on a fresh installation of Linux and do not have any preconfigured rules, the output of the below command should by empty.
+1.  Review the existing network rules. On a fresh Linux installation, you may not have any preconfigured rules. But if you do, look for any rules that might interfere with your intended configuration. Consult a system administrator or the network utility documentation (linked below) to help determine.
 
-        iptables-save
+    {{< tabs >}}
+    {{< tab "nftables" >}}
 
-    If do receive output, look for any rules that might interfere with your intended configuration. If you are unsure, you may want to consult your system administrator or the [iptables](https://linux.die.net/man/8/iptables) documentation. If needed, you can flush your iptables rules and allow all traffic.
+    ```command
+    sudo nft list ruleset
+    ```
 
-        iptables -F
-        iptables -X
-        iptables -t nat -F
-        iptables -t nat -X
-        iptables -t mangle -F
-        iptables -t mangle -X
-        iptables -P INPUT ACCEPT
-        iptables -P OUTPUT ACCEPT
-        iptables -P FORWARD ACCEPT
+    You can refer to the [nftables](https://www.netfilter.org/projects/nftables/manpage.html) documentation for explanation of any extant rules. If necessary, flush the existing rules and configure nftables to allow all traffic.
 
-1.  Configure iptables to allow port forwarding. This is the default setting for many systems.
+    ```command
+    sudo nft flush ruleset
+    sudo nft add chain inet filter input '{type filter hook input priority 0; policy accept; }'
+sudo nft add chain inet filter forward '{type filter hook forward priority 0; policy accept; }'
+sudo nft add chain inet filter output '{type filter hook output priority 0; policy accept; }'
+    ```
 
-        iptables -A FORWARD -j ACCEPT
+    {{< /tab >}}
+    {{< tab "iptables" >}}
 
-1.  Next, configure NAT ([network address translation](https://en.wikipedia.org/wiki/Network_address_translation)) on iptables. This modifies the IP address details in network packets, allowing all systems on the private network to share the same public IP address of the router. Add the following iptables rule, replacing `10.0.2.0/24` with the subnet of your private VLAN.
+    ```command
+    sudo iptables -S
+    ```
 
-        iptables -t nat -s 10.0.2.0/24 -A POSTROUTING -j MASQUERADE
+    You can refer to the [iptables](https://linux.die.net/man/8/iptables) documentation for clarification on any extant rules. If needed, flush your existing rules and configure iptables to allow all traffic.
 
-    You can also forgo specifying any specific subnet and allow NAT over all traffic by using the command below.
+    ```command
+    sudo iptables -F
+    sudo iptables -X
+    sudo iptables -t nat -F
+    sudo iptables -t nat -X
+    sudo iptables -t mangle -F
+    sudo iptables -t mangle -X
+    sudo iptables -P INPUT ACCEPT
+    sudo iptables -P OUTPUT ACCEPT
+    sudo iptables -P FORWARD ACCEPT
+    ```
 
-        iptables -t nat -A POSTROUTING -j MASQUERADE
+    {{< /tab >}}
+    {{< tab "Firewalld" >}}
 
-1.  By default, iptables rules are ephemeral. To make these changes persistent, install the `iptables-persistent` package. When you do this, the rules saved within `/etc/iptables/rules.v4` (and `rules.v6` for IPv6) are loaded when the system boots up. You can continue making changes to iptables as normal. When you are ready to save, save the output of [iptables-save](https://linux.die.net/man/8/iptables-save) to the `/etc/iptables/rules.v4` (or `rules.v6`) file. For more information, see the relevant section with the [Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) guide.
+    ```command
+    sudo firewall-cmd --list-all-zones
+    ```
 
-        iptables-save | sudo tee /etc/iptables/rules.v4
+    You can refer to the [Firewall-cmd](https://firewalld.org/documentation/man-pages/firewall-cmd) documentation for more on any existing configuration you see. If you need to, return to Firewalld defaults and subsequently allow all traffic.
+
+    ```command
+    sudo rm -rf /etc/firewalld/zones/
+    sudo firewall-cmd --zone=public --set-target=ACCEPT --permanent
+    sudo firewall-cmd --complete-reload
+    ```
+
+    {{< /tab >}}
+    {{< /tabs >}}
+
+1.  Configure the utility to allow port forwarding. This is the default setting for many systems.
+
+    {{< tabs >}}
+    {{< tab "nftables" >}}
+
+    ```command
+    sudo nft add chain inet filter forward '{type filter hook forward priority 0; policy accept; }'
+    ```
+
+    {{< /tab >}}
+    {{< tab "iptables" >}}
+
+    ```command
+    sudo iptables -A FORWARD -j ACCEPT
+    ```
+
+    {{< /tab >}}
+    {{< tab "Firewalld" >}}
+
+    ```command
+    sudo firewall-cmd --zone=public --add-forward
+    ```
+
+    {{< /tab >}}
+    {{< /tabs >}}
+
+1.  Configure NAT ([network address translation](https://en.wikipedia.org/wiki/Network_address_translation)) within the utility. This modifies the IP address details in network packets, allowing all systems on the private network to share the same public IP address of the router. Replace `10.0.2.0/24` in the following command with the subnet of your private VLAN.
+
+    {{< tabs >}}
+    {{< tab "nftables" >}}
+
+    nftables does not include a `nat` table by default, so you should create one, along with `prerouting` and `postrouting` chains. While the masquerading rule only applies to the postrouting chain, the nftables configuration requires the complementary prerouting chain as well.
+
+    ```command
+    sudo nft add table inet nat
+    sudo nft add chain inet nat prerouting '{ type nat hook prerouting priority -100; }'
+    sudo nft add chain inet nat postrouting '{ type nat hook postrouting priority 100; }'
+    ```
+
+    From there, you can add the `masquerade` rule to apply to connections from the private network.
+
+    ```command
+    sudo nft add rule inet nat postrouting ip saddr 10.0.2.0/24 masquerade
+    ```
+
+    You can, alternatively, apply the rule without a specific subnet. In this case, the masquerade applies to any connection passed through the router.
+
+    ```command
+    sudo nft add rule inet nat postrouting masquerade
+    ```
+
+    {{< /tab >}}
+    {{< tab "iptables" >}}
+
+    ```command
+    sudo iptables -t nat -s 10.0.2.0/24 -A POSTROUTING -j MASQUERADE
+    ```
+
+    You can also forgo specifying a subnet and allow NAT over all traffic by using the command below.
+
+    ```command
+    sudo iptables -t nat -A POSTROUTING -j MASQUERADE
+    ```
+
+    {{< /tab >}}
+    {{< tab "Firewalld" >}}
+
+    ```command
+    sudo firewall-cmd --zone=public --add-rich-rule='rule family=ipv4 source address=10.0.2.0/24 masquerade'
+    ```
+
+    To masquerade and allow NAT over all traffic through the router, use the command below instead.
+
+    ```command
+    sudo firewall-cmd --zone=public --add-masquerade
+    ```
+
+    {{< /tab >}}
+    {{< /tabs >}}
+
+1.  Make the configurations persistent.
+
+    {{< tabs >}}
+    {{< tab "nftables" >}}
+
+    nftables rules apply immediately, but they only hold until the nftables service restarts. To persist an nftables setup across restarts, you need to define that setup in the nftables configuration file, located at `/etc/nftables.conf`.
+
+    The file needs to begin with two lines, the first executing the nftables command and the second flushing the current ruleset.
+
+    ```file {title="/etc/nftables.conf"}
+    #!/usr/sbin/nft -f
+
+    flush ruleset
+    ```
+
+    After this, you can paste your ruleset. To get the current ruleset, use the same list command as shown further above.
+
+    ```command
+    sudo nft list ruleset
+    ```
+
+    More conveniently, you can combine these steps into a set of commands to automatically recreate the configuration file from your current nftables rules. The first of these commands recreates the configuration file with the necessary preamble lines, and the second adds to the file your current configuration.
+
+    ```command
+    sudo echo -e '#!/usr/sbin/nft -f\n\nflush ruleset\n' > /etc/nftables.conf
+    sudo nft list ruleset >> /etc/nftables.conf
+    ```
+
+    {{< /tab >}}
+    {{< tab "iptables" >}}
+
+    By default, iptables rules are ephemeral. To make your configuration changes persistent, install the `iptables-persistent` package. When you do this, the rules saved within `/etc/iptables/rules.v4` (and `rules.v6` for IPv6) are loaded when the system boots up.
+
+    You can continue making changes to iptables as normal. When you are ready to save, save the output of [iptables-save](https://linux.die.net/man/8/iptables-save) to the `/etc/iptables/rules.v4` (or `rules.v6`) file. For more information, see the relevant section with the [Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) guide.
+
+    ```command
+    iptables-save | sudo tee /etc/iptables/rules.v4
+    ```
+
+    {{< /tab >}}
+    {{< tab "Firewalld" >}}
+
+    The Firewalld commands above are dynamic, meaning they take effect immediately but are not yet persistent. You can add the `--permanent` option to each command to make it persistent, but Firewalld also has a dedicated command to persist its current dynamic configuration.
+
+    ```command
+    sudo firewall-cmd --runtime-to-permanent
+    ```
+
+    {{< note >}}
+    Linux systems using SELinux may need to first set SELinux enforcement to `permissive` in order to convert runtime rules to persistent rules. You can do so with the command here.
+
+    ```command
+    sudo setenforce permissive
+    ```
+
+    When you have made the rules persistent, you can return to the previous SELinux setting with `setenforce 1`.
+    {{< /note >}}
+
+    {{< /tab >}}
+    {{< /tabs >}}
 
 ## Define the Gateway
 
