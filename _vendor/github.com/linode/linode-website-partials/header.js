@@ -179,8 +179,6 @@
     $img.src = data.src;
     $img.width = data.width;
     $img.height = data.height;
-    $img.loading = "lazy";
-    $img.fetchPriority = "low";
     if (data.alt) {
       $img.alt = data.alt;
     }

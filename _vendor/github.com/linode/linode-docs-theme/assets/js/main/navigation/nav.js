@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile, toggleBooleanClass } from '../helpers/helpers';
+import { isMobile, toggleBooleanClass } from '../helpers/index';
 import { isTopResultsPage } from '../search';
 import { newQuery, QueryHandler } from '../search/query';
 
