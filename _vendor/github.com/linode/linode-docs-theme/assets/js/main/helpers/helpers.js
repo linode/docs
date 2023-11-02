@@ -19,6 +19,21 @@ export function toggleBooleanClass(baseClass, el, truthy) {
 	}
 }
 
+export function toggleClass(openClass, el, open) {
+	if (open) {
+		el.classList.add(openClass);
+	} else {
+		el.classList.remove(openClass);
+	}
+}
+
+export function isObjectEmpty(object) {
+	for (key in object) {
+		return false;
+	}
+	return true;
+}
+
 // normalizeSpace replaces any whitespace character (spaces, tabs, newlines and Unicode space) with a space.
 // Multiple spaces are collapsed into one.
 export function normalizeSpace(text) {
@@ -31,6 +46,11 @@ export function sanitizeHTML(text) {
 	element.innerText = text;
 	return element.innerHTML;
 }
+
+export const capitalize = (s) => {
+	if (typeof s !== 'string') return '';
+	return s.charAt(0).toUpperCase() + s.slice(1);
+};
 
 export function toDateString(date) {
 	var year = date.getFullYear().toString().substr(-2);
@@ -48,12 +68,24 @@ export function toDateString(date) {
 }
 
 // https://gist.github.com/rmariuzzo/8761698
-function sprintf(format) {
+export function sprintf(format) {
 	var args = Array.prototype.slice.call(arguments, 1);
 	var i = 0;
 	return format.replace(/%s/g, function () {
 		return args[i++];
 	});
+}
+
+// Function borrowed from https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport/7557433#7557433
+export function isElementInViewport(el) {
+	var rect = el.getBoundingClientRect();
+
+	return (
+		rect.top >= 0 &&
+		rect.left >= 0 &&
+		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	);
 }
 
 // getScrollLeft returns the scrollLeft value needed to make the child element visible.
@@ -69,33 +101,20 @@ export function getScrollLeft(parent, child) {
 	return childRect.left - parentRect.left;
 }
 
-// scrollToActiveExplorerNode scrolls the explorer to the active node.
-export function scrollToActiveExplorerNode() {
-	let [explorer, offsetTop] = activeExplorerNodeOffsetTop();
-	if (offsetTop == -1) {
-		return;
-	}
-	explorer.scroll({ top: offsetTop - 20, behavior: 'smooth' });
-}
+// getOffsetTop returns the distance from container down to el.
+export function getOffsetTop(container, el) {
+	var distance = 0;
 
-function activeExplorerNodeOffsetTop() {
-	let target = document.querySelector('.is-active-page');
-	if (!target) {
-		// If there is no active page, look for the last open node.
-		let explorerNodes = document.querySelectorAll('.explorer-node-open:last-child');
-		if (explorerNodes.length > 0) {
-			target = explorerNodes[explorerNodes.length - 1];
+	if (el.offsetParent) {
+		while (true) {
+			distance += el.offsetTop;
+			el = el.offsetParent;
+			if (!el || el === container) {
+				break;
+			}
 		}
 	}
-
-	if (target) {
-		let explorer = document.getElementById('explorer');
-		if (explorer) {
-			return [explorer, target.offsetTop];
-		}
-	}
-
-	return [null, -1];
+	return distance < 0 ? 0 : distance;
 }
 
 export function setIsTranslating(el, timeout = 1000) {
@@ -147,7 +166,7 @@ export function getIntParamFromLocation(param) {
 	return 0;
 }
 
-function isIterable(obj) {
+export function isIterable(obj) {
 	return Symbol.iterator in Object(obj);
 }
 
@@ -159,7 +178,7 @@ export function isDesktop() {
 	return isScreenLargerThan(1279); // xl in Tailwind config.
 }
 
-function isScreenLargerThan(px) {
+export function isScreenLargerThan(px) {
 	return document.documentElement.clientWidth > px;
 }
 
@@ -172,6 +191,10 @@ export function isTouchDevice() {
 	}
 }
 
+export function isTopBarPinned() {
+	return document.body.classList.contains('is-topbar-pinned');
+}
+
 export function updatePaginationParamInLocation(pageKey, pageNum, firstPage = 1) {
 	let url = new URL(window.location);
 	url.hash = '';
@@ -181,6 +204,21 @@ export function updatePaginationParamInLocation(pageKey, pageNum, firstPage = 1)
 		url.searchParams.set(pageKey, pageNum);
 	}
 	window.history.replaceState({ turbo: {} }, '', url);
+}
+
+export function walk(el, callback) {
+	if (typeof ShadowRoot === 'function' && el instanceof ShadowRoot) {
+		Array.from(el.childNodes).forEach((el2) => walk(el2, callback));
+		return;
+	}
+	let skip = false;
+	callback(el, () => (skip = true));
+	if (skip) return;
+	let node = el.firstElementChild;
+	while (node) {
+		walk(node, callback, false);
+		node = node.nextElementSibling;
+	}
 }
 
 const month = 30 * 24 * 60 * 60 * 1000;

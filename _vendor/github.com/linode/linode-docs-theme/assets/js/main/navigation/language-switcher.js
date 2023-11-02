@@ -1,6 +1,6 @@
 'use strict';
 
-import { getCurrentLangFromLocation } from '../helpers/helpers';
+import { getCurrentLangFromLocation, setIsTranslating } from '../helpers';
 
 var debug = 0 ? console.log.bind(console, '[language-switcher]') : function () {};
 
@@ -17,10 +17,10 @@ export function newLanguageSwitcherController(weglot_api_key) {
 					Weglot.switchTo(lang);
 				});
 				initWeglot(weglot_api_key);
-			} else {
-				Weglot.switchTo(lang);
+				return;
 			}
 		}, 600);
+		Weglot.switchTo(lang);
 	};
 
 	// This needs to be a function to get the $persist binded.

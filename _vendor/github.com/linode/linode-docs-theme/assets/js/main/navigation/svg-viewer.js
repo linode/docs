@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile } from '../helpers/helpers';
+import { isMobile } from '../helpers';
 
 var debug = 0 ? console.log.bind(console, '[svg-viewer]') : function () {};
 
