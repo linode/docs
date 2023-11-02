@@ -1,6 +1,6 @@
 'use strict';
 
-import { isDesktop, isMobile } from '../helpers/index';
+import { isDesktop, isMobile } from '../helpers/helpers';
 
 var debug = 0 ? console.log.bind(console, '[toc]') : function () {};
 var devMode = false;

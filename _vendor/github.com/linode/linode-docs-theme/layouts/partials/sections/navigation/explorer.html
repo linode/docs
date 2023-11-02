@@ -1,18 +1,21 @@
 {{ partial "sections/navigation/explorer-icons.html" . }}
+{{ $pageInfo := dict
+  "href" .RelPermalink
+  "isPage" .IsPage
+  "isHome" .IsHome
+  "section" .Section
+  "hrefSection" $.CurrentSection.RelPermalink | jsonify
+}}
 <div
-  data-turbo-permanent
   id="explorer-component"
   class="explorer box-border"
-  x-data="lncSearchExplorer()"
+  x-data="lncSearchExplorerRoot({{ $pageInfo }})"
   @click.away="closeIfMobile()"
-  @turbo:before-visit.document="onTurbolinksBeforeVisit($event.detail);"
-  @turbo:before-render.document="onTurbolinksBeforeRender($event.detail)"
-  @turbo:render.document="onTurbolinksRender($event.detail);"
-  data-turbo-permanent>
+  @turbo:render.window="onTurboRender($event.detail)">
   <nav
     class="h-full block top-0 overflow-x-hidden"
-    x-show="isOpen()"
-    x-bind="transitions()">
+    x-bind="transitions()"
+    x-show="isOpen()">
     <div
       x-show="$store.search.query.isFiltered()"
       class="pl-5 md:pl-6 h-8 bg-black flex items-center text-xs font-semibold"
@@ -21,142 +24,380 @@
       <div class="bg-brand rounded-full h-1 w-1 mr-2"></div>
       <div class="text-white">Filtered by search term</div>
     </div>
-    <ul class="search-explorer-root bg-backgroundcolor" x-ref="explorer"></ul>
+    <ul class="search-explorer-root bg-backgroundcolor">
+      {{ template "explorer-static" . }}
+    </ul>
   </nav>
-  <template x-ref="templateLoopRoot">
-    <template x-if="open">
-      <template
-        x-for="node in data.rootNode.sections"
-        :key="node.key"></template>
-    </template>
+  <template x-ref="templateNodePages">
+    {{ template "explorer-static-loop-pages" . }}
   </template>
-  <template x-ref="templateLoopNested">
-    <template x-if="node.open">
-      <template x-for="node in node.children()" :key="node.key"></template>
-    </template>
-  </template>
-  <template x-ref="templateTree">
-    <li
-      class="explorer__node"
-      x-bind:class="{
-      'explorer__node--after-first': node.level > 1,
-      'pl-6': node.level === 2
-    }"
-      x-transition.200ms
-      x-show="!node.hidden"
-      :data-testid="`node-${ node.key }`"
-      :id="node.id()">
-      <div class="explorer__node__inner" :data-testid="`li-${ node.level }`">
-        <div
-          x-bind:class="{ 
-          'explorer__row--first pl-container bg-white border-b-gray text-gray-900' : (node.level===1), 
-          'explorer__row--after-first text-gray-700' : (node.level > 1),
-        }"
-          class="flex items-center justify-between pr-6">
-          <div class="flex content-end flex-auto">
-            <div
-              x-show="node.level === 1"
-              class="text-basicgray flex items-center">
-              <svg
-                x-bind:class="{
-                  'text-gray-300': node.isDisabled(),
-                  'text-brand': node.open }"
-                class="fill-current block w-5"
-                style="height: 16.87px;">
-                <use x-bind:href="node.icon"></use>
-              </svg>
-            </div>
-            <template x-if="!node.isPage()">
+  <template x-ref="templateNode">
+    <template x-for="node2 in getNodesSection()">
+      <li
+        class="explorer__node explorer__node--after-first"
+        :data-testid="`node-${ node.key }`"
+        x-show="node2.count > 0"
+        :class="{'pl-6': node2.level == 2}"
+        x-data="lncSearchExplorerNode(node2)">
+        <div class="explorer__node__inner" :data-testid="`li-${ node.level }`">
+          <div
+            class="flex items-center justify-between pr-6 explorer__row--after-first text-gray-700">
+            <div class="flex content-end flex-auto">
               <a
-                @click="node.onClick($event)"
-                :href="node.href"
-                x-bind:class="{
-                'text-brand': node.level === 1 && node.open,
-                'text-titlecolor': !node.isDisabled() && node.level === 1 && !node.open,
-                'pl-4': node.level === 1,
-                'py-2': node.level === 2,
-                'py-1-5': node.level >= 3,
-                'text-textcolor': (node.level > 1),
-                'text-brand': node.open,
-                'font-semibold': (node.level === 1 || ( node.level > 1 && node.open )),
-                'text-sm': (node.level === 2),
-                'text-xs': (node.level > 2),
-                'text-gray-300': node.isDisabled()
-                }"
-                class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto"
-                @click="node.toggleOpen()"
-                data-testid="node-link">
-                <span
-                  :class="{ 
-                'after-second': node.level > 2
-              }"
-                  class="bg-container h-full"></span>
-                <span x-html="node.title "></span>
-              </a>
-            </template>
-            <template x-if="node.isPage()">
-              {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
-              <a
-                :href="node.href"
-                x-bind:target="node.href.startsWith('http') ? '_blank' : ''"
-                @click="node.onClick($event);"
-                x-html="node.title"
+                @click="onClick($event);"
+                :href="node2.href"
+                data-testid="node-link"
+                class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto text-textcolor"
                 :class="{
-                'text-textcolor': !node.active,
-                'text-brand font-semibold is-active-page': node.active,
-              }"
-                class="py-1-5 page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none"></a>
-            </template>
-          </div>
-          <div class="flex items-center h-full">
-            <template x-if="!node.isPage()">
+                  'py-2': node.level == 2,
+                  'py-1-5': node.level >= 3,
+                  'text-textcolor': (node.level > 1),
+                  'text-brand': node.open,
+                  'font-semibold': (node.level === 1 || ( node.level > 1 && node.open )),
+                  'text-sm': (node.level === 2),
+                  'text-xs': (node.level > 2),
+                  'text-gray-300': (node.count === 0)
+                  }">
+                <span
+                  class="bg-container h-full"
+                  :class="{ 'after-second': node.level > 2 }"></span>
+                <span x-html="node.title"></span>
+              </a>
+            </div>
+            <div class="flex items-center h-full">
               <span
-                x-bind:class="{
-                'text-brand': !node.isDisabled() && $store.search.query.isFiltered(),
-                'text-gray-100': node.isDisabled(),
-                'text-basicgray': !node.isDisabled() && !$store.search.query.isFiltered() }"
-                x-html="node.count"
-                class="text-xs font-semibold pr-6"
-                data-testid="node-count"></span>
-            </template>
-            <template
-              x-if="!node.isPage() && (node.isDisabled() || node.isLeaf())">
+                class="text-xs font-semibold pr-6 text-basicgray"
+                :class="{  'text-brand': (node.count > 0) && $store.search.query.isFiltered(),
+                'text-gray-100': (node.count === 0),
+                'text-basicgray': (node.count > 0) && !$store.search.query.isFiltered() }"
+                data-testid="node-count"
+                x-text="node.count"></span>
               <div class="w-3"></div>
-            </template>
-            <template x-if="!node.isPage()">
-              <div class="z-10" x-show="!data.disabled && !node.isLeaf()">
+              <div class="z-10">
                 <button
                   type="button"
                   name="open"
-                  class="btn-icon h-full flex items-center justify-center"
-                  x-bind:aria-label="node.open ? 'close' : 'open'"
-                  x-bind:disabled="node.isDisabled()"
-                  x-bind:class="{ 'text-gray-200': node.isDisabled(), 'text-textcolor': !node.isDisabled() }"
-                  @click.stop="node.toggleOpen()"
-                  @mouseover.once.stop="node.loadPages()"
-                  :data-testid="`${ node.open ? 'close' : 'open' }-${ node.level }`">
-                  <svg class="w-4 h-3 titlecolor" x-show="!node.open">
-                    <use href="#icon--arrow-down"></use>
-                  </svg>
-                  <svg class="w-4 h-3 titlecolor" x-show="node.open">
-                    <use href="#icon--arrow-up"></use>
+                  @click="toggleOpen()"
+                  @hover="hydrateIfNeeded()"
+                  class="btn-icon h-full flex items-center justify-center text-textcolor"
+                  aria-label="node.open ? 'close' : 'open'"
+                  :data-testid="`${ node.open ? 'close' : 'open' }-${ node.level }`"
+                  :disabled="node.count === 0">
+                  <svg class="w-4 h-3 titlecolor">
+                    <use
+                      href="#icon--arrow-down"
+                      :href="node.open ? '#icon--arrow-up' : '#icon--arrow-down' "></use>
                   </svg>
                 </button>
               </div>
-            </template>
+            </div>
+          </div>
+          <ul
+            class="node-tree h-full explorer__node--after-first"
+            :class="{
+              'border-l-2 pl-3': node.level > 1
+            }"
+            x-show="node.open"
+            x-ref="node-tree"></ul>
+        </div>
+      </li>
+    </template>
+  </template>
+</div>
+{{ define "explorer-static" }}
+  {{ $configSections := site.Params.search_config2.sections }}
+  {{ $data := (partialCached "sections/search/create-cachewarmers-urls.html" . ).data }}
+  {{ $sectionfacets := index $data "sectionfacets" }}
+  {{ $sectionsmeta := (index $data "sectionsmetamap") }}
+  {{ $pageSectionsHref := "" }}
+  {{ $pageSectionsEntries := slice }}
+  {{ if eq .Section "api" }}
+    {{/* The API section is currently a little different. */}}
+    {{ $pageSectionsHref = .RelPermalink }}
+    {{ $pageSectionsEntries = split .RelPermalink "/" | after 2 }}
+  {{ else }}
+    {{ $pageSectionsHref = $.CurrentSection.RelPermalink }}
+    {{ $pageSectionsEntries = $.CurrentSection.SectionsEntries }}
+  {{ end }}
+
+  {{ $delim := " > " }}
+  {{ $prefixes := slice }}
+  {{ $prefix := "" }}
+  {{ range $pageSectionsEntries }}
+    {{ $prefix = printf "%s%s%s" $prefix . $delim }}
+    {{ $prefixes = $prefixes | append $prefix }}
+  {{ end }}
+  {{/* We don't want/need to render everything. */}}
+  {{ $facets := slice }}
+  {{ $otherFacets := slice }}
+  {{ range $i, $v := $sectionfacets -}}
+    {{ $open :=  strings.HasPrefix $pageSectionsHref .href }}
+    {{ $include := or $open (eq $v.level 1) }}
+    {{ if not $include }}
+      {{ range $prefixes }}
+        {{ $level := add (. | strings.Count $delim) 1 }}
+        {{ if and (eq $level $v.level)  (strings.HasPrefix $v.key .) }}
+          {{ $include = true }}
+          {{ break }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if $include }}
+      {{ $facets = $facets | append (merge . (dict "open" $open)) -}}
+    {{ end }}
+  {{ end -}}
+
+  {{ $facets = sort $facets "weight" }}
+
+  {{ $d := dict
+    "facets" $facets
+    "data" $data
+    "dot" $
+  }}
+
+  {{ range $d.facets }}
+
+    {{ if ne .level 1 -}}
+      {{ continue -}}
+    {{ end }}
+    {{ $d := dict
+      "data"  $d
+      "node" .
+    }}
+
+    {{ template "explorer-static-node-recursive" $d }}
+  {{ end }}
+{{ end }}
+
+{{ define "explorer-static-node-recursive" }}
+  {{ $classesm := dict
+    "explorer__node--after-first" (gt .node.level 1)
+    "pl-6" (eq .node.level 2)
+  }}
+  {{ $classes := partial "inline/get-classes" $classesm -}}
+  {{ $nodeJSON := (dict "open" .node.open "level" .node.level "key" .node.key "href" .node.href "count" .node.count) | jsonify -}}
+  <li
+    class="explorer__node {{ $classes }}"
+    data-testid="node-{{ .node.key }}"
+    x-data="lncSearchExplorerNode({{ $nodeJSON }})"
+    x-show="node.level == 1 || (node.count > 0)">
+    <div class="explorer__node__inner" data-testid="li-{{ .node.level }}">
+      {{ $classes := partial "inline/get-classes" (dict
+        "text-gray-900 bg-white explorer__row--first pl-container border-b-gray" (eq .node.level 1)
+        "explorer__row--after-first text-gray-700" (gt .node.level 1))
+      -}}
+      <div class="flex items-center justify-between pr-6 {{ $classes }}">
+        <div class="flex content-end flex-auto">
+          {{ if eq .node.level 1 }}
+            <div class="text-basicgray flex items-center">
+              {{ $classesm := dict
+                "text-gray-300" (eq .node.count 0)
+                "text-brand" (and (eq .node.level 1) .node.open)
+              -}}
+              {{ $classes := partial "inline/get-classes" $classesm }}
+              <svg
+                class="fill-current block w-5 {{ $classes }}"
+                :class="{
+                  'text-brand': node.open,
+                }"
+                style="height: 16.87px;">
+                <use href="{{ .node.icon }}"></use>
+              </svg>
+            </div>
+          {{ end }}
+          {{ $classesm := dict
+            "text-brand" (and (eq .node.level 1) .node.open)
+            "text-titlecolor" (and (eq .node.level 1) (not .node.open) (not (eq .node.count 0)))
+            "pl-4" (eq .node.level 1)
+            "py-2" (eq .node.level 2)
+            "py-1-5" (gt .node.level 2)
+            "text-textcolor" (gt .node.level 1)
+            "font-semibold" (or (eq .node.level 1) (and (gt .node.level 1) .node.open))
+            "text-sm" (eq .node.level 2)
+            "text-xs" (gt .node.level 2)
+            "text-gray-300" (eq .node.count 0)
+            "explorer-node-open"  (and (gt .node.level 1) .node.open)
+          }}
+          {{ $classes := partial "inline/get-classes" $classesm }}
+          <a
+            @click="onClick($event);"
+            :href="node.href"
+            data-testid="node-link"
+            class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto {{ $classes }}"
+            :class="{
+              'text-brand': (node.level === 1 && node.open),
+              'text-titlecolor': (node.level === 1 && !node.open && (node.count > 0)),
+              'font-semibold': (node.level === 1 || ( node.level > 1 && node.open )),
+              'text-gray-300': (node.count === 0)
+              }">
+            <span class="bg-container h-full"></span>
+            <span>{{ .node.title }}</span>
+          </a>
+        </div>
+        <div class="flex items-center h-full">
+          {{ $classes := partial "inline/get-classes" (dict
+            "text-gray-100" (eq .node.count 0)
+            "text-basicgray" (not (eq .node.count 0))
+            )
+          }}
+          {{ with .node.count }}
+            <span
+              class="text-xs font-semibold pr-6 {{ $classes }}"
+              :class="{  'text-brand': (node.count > 0) && $store.search.query.isFiltered(),
+              'text-gray-100': (node.count === 0),
+              'text-basicgray': (node.count > 0) && !$store.search.query.isFiltered() }"
+              data-testid="node-count"
+              x-text="node.count"
+              >{{ . }}</span
+            >
+          {{ end }}
+          <div class="w-3"></div>
+          <div class="z-10">
+            {{ $ariaLabel := cond .node.open "close" "open" }}
+            {{ $classes := partial "inline/get-classes" (dict
+              "text-gray-200" (eq .node.count 0)
+              "text-textcolor" (not (eq .node.count 0))
+              )
+            }}
+            <button
+              type="button"
+              name="open"
+              @click="toggleOpen()"
+              @hover="hydrateIfNeeded()"
+              class="btn-icon h-full flex items-center justify-center {{ $classes }}"
+              data-testid="{{ printf `%s-%d` $ariaLabel .node.level }}"
+              :data-testid="`${ node.open ? 'close' : 'open' }-${ node.level }`"
+              aria-label="{{ $ariaLabel }}"
+              aria-label="node.open ? 'close' : 'open'"
+              :disabled="node.count === 0"
+              {{ if (eq .node.count 0) }}
+                disabled
+              {{ end }}>
+              {{ $icon := cond .node.open "#icon--arrow-up" "#icon--arrow-down" }}
+              <svg class="w-4 h-3 titlecolor">
+                <use
+                  href="{{ $icon }}"
+                  :href="node.open ? '#icon--arrow-up' : '#icon--arrow-down' "></use>
+              </svg>
+            </button>
           </div>
         </div>
-        <ul
-          class="node-tree h-full"
-          x-transition.in.opacity
-          x-show="node.open"
-          x-bind:class="{
-          'py-2': node.level === 1,
-          'py-1': node.level > 1,
-          'border-l-2 pl-3': node.level > 1,
-        }"></ul>
       </div>
+
+      {{ $classesm := dict
+        "py-2" (eq .node.level 1)
+        "py-1" (gt .node.level 1)
+        "border-l-2 pl-3" (gt .node.level 1)
+      }}
+      {{ $classes := partial "inline/get-classes" $classesm }}
+
+      {{ if .node.open }}
+        <ul class="node-tree h-full {{ $classes }}" x-show="node.open">
+          <template x-if="state.pagesLoaded">
+            {{ template "explorer-static-loop-pages" . }}
+          </template>
+
+          {{ $pages := index $.data.data $.node.key }}
+          {{ if $pages }}
+            {{ $pages = sort $pages "linkTitle" }}
+          {{ end }}
+
+          {{ with $pages }}
+            {{ range $i, $p := . }}
+              {{ if $p.isBranch }}
+                {{ continue }}
+              {{ end }}
+
+              {{ if $p.hierarchy }}
+                {{/* This is the reference-section.
+                  All pages in a section shares the same href (the section),
+                  and the best match is selected while searching using Algolia's distinct keyword.
+                  This is the explorer and we needk link to the detail page.
+                */}}
+                {{ $p = index $p.hierarchy (sub (len $p.hierarchy) 1) }}
+              {{ end }}
+
+              {{ $target := "" }}
+              {{ if strings.HasPrefix $p.href "http" }}
+                {{ $target = "_blank" }}
+              {{ end }}
+              {{ $isActive := (eq $p.href $.data.dot.RelPermalink) }}
+              {{ $classes := partial "inline/get-classes"  (dict
+                "text-textcolor" (not $isActive)
+                "text-brand font-semibold is-active-page" $isActive
+                "pl-6" (eq $.node.level 1)
+                )
+              }}
+              <li x-show="showStaticLeafNodes()">
+                <a
+                  @click="onClickStaticLeafNode('{{ $p.href }}', '{{ $p.objectID }}');"
+                  href="{{ $p.href }}"
+                  target="{{ $target }}"
+                  :class="{
+                    'text-textcolor': !isActive('{{ $p.href }}'),
+                    'text-brand font-semibold is-active-page': isActive('{{ $p.href }}'),
+                  }"
+                  class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none {{ $classes }}
+                  ">
+                  {{ $p.linkTitle }}
+                </a>
+              </li>
+            {{ end }}
+          {{ end }}
+          {{ $facetsNextLevel := slice }}
+          {{ $nextLevel := add .node.level 1 }}
+          {{ range $.data.facets -}}
+            {{ if or  (not (eq .level $nextLevel)) (not (strings.HasPrefix .href  $.node.href)) -}}
+              {{ continue -}}
+            {{ end -}}
+            {{ $d := dict
+              "data" $.data
+              "node" .
+            }}
+            {{ $facetsNextLevel = $facetsNextLevel | append $d -}}
+          {{ end -}}
+          {{ range $facetsNextLevel -}}
+            {{ template "explorer-static-node-recursive" . }}
+          {{ end }}
+        </ul>
+      {{ else }}
+        {{/* Wrap it in a template to prevent flicker on load. */}}
+        <template x-if="true">
+          <ul
+            class="node-tree h-full {{ $classes }}"
+            x-show="node.open"
+            x-ref="node-tree"></ul>
+        </template>
+      {{ end }}
+    </div>
+  </li>
+{{ end }}
+
+{{ define "partials/inline/get-classes" }}
+  {{ $classes := slice }}
+  {{ range $k, $v := . }}
+    {{ if $v }}
+      {{ $classes = $classes | append  $k }}
+    {{ end }}
+  {{ end }}
+  {{ return (delimit $classes " ") }}
+{{ end }}
+
+{{ define "explorer-static-loop-pages" }}
+  <template x-for="p in state.pages">
+    <li>
+      <a
+        :href="p.href"
+        @click="onClick($event, p);"
+        :target="p.href.startsWith('http') ? '_blank' : ''"
+        x-html="p.title"
+        :class="{
+        'text-textcolor': !p.active,
+        'text-brand font-semibold is-active-page': p.active,
+        'pl-6': node.level == 1,
+      }"
+        class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none">
+      </a>
     </li>
   </template>
-  <template x-ref="searchNodeTemplate"></template>
-</div>
+{{ end }}
