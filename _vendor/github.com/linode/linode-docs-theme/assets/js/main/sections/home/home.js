@@ -6,7 +6,8 @@ import {
 	SearchGroupIdentifier,
 	RequestCallBackStatus,
 } from '../../search/request';
-import { isMobile, isTouchDevice, newSwiper } from '../../helpers/index';
+import { isMobile, isTouchDevice } from '../../helpers/helpers';
+import { newSwiper } from '../../helpers/swipe';
 
 var debug = 0 ? console.log.bind(console, '[home]') : function () {};
 

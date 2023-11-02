@@ -1,4 +1,4 @@
-import { getCookie } from '../helpers';
+import { getCookie } from '../helpers/helpers';
 
 var debug = 0 ? console.log.bind(console, '[trustarc]') : function () {};
 
@@ -23,7 +23,7 @@ export function initConsentManager(trustarcDomain, trustecm, callback) {
 		},
 	};
 
-	onConsent = function (e) {
+	const onConsent = function (e) {
 		if (typeof e.data != 'string') {
 			return;
 		}

@@ -1,6 +1,6 @@
 'use strict';
 
-import { getScrollLeft } from '../helpers/index';
+import { getScrollLeft } from '../helpers/helpers';
 
 var debug = 0 ? console.log.bind(console, '[tabs]') : function () {};
 

@@ -143,8 +143,9 @@
       {{/* Left side explorer menu. */}}
       <nav
         id="explorer"
-        class="sticky overflow-y-scroll z-0 top--navbar-row border-r-gray">
-        {{ partialCached "sections/navigation/explorer.html" . }}
+        class="sticky overflow-y-scroll z-0 top--navbar-row border-r-gray"
+        data-preserve-scroll>
+        {{ partial "sections/navigation/explorer.html" . }}
       </nav>
 
       {{/* Main content area. */}}

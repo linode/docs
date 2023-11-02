@@ -11,16 +11,18 @@ import {
 	newDropdownsController,
 	newTabsController,
 } from './components/index';
-import { isMobile, setIsTranslating, getCurrentLang, leackChecker } from './helpers/index';
+import { scrollToActiveExplorerNode, setIsTranslating, getCurrentLang } from './helpers/helpers';
+import { leackChecker } from './helpers/leak-checker';
 import {
 	addLangToLinks,
 	newBreadcrumbsController,
 	newLanguageSwitcherController,
 	newNavController,
 	newPromoCodesController,
-	newSearchExplorerController,
 	newToCController,
 	newPaginatorController,
+	newSearchExplorerRoot,
+	newSearchExplorerNode,
 } from './navigation/index';
 import { newNavStore } from './navigation/nav-store';
 // AlpineJS controllers and helpers.
@@ -42,6 +44,7 @@ const searchConfig = getSearchConfig(params);
 			return false;
 		});
 	}
+
 	__stopWatch('index.js.start');
 
 	// Register AlpineJS plugins.
@@ -77,7 +80,8 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncLanguageSwitcher', newLanguageSwitcherController(params.weglot_api_key));
 		Alpine.data('lncSearchFilters', () => newSearchFiltersController(searchConfig));
 		Alpine.data('lncSearchInput', newSearchInputController);
-		Alpine.data('lncSearchExplorer', () => newSearchExplorerController(searchConfig));
+		Alpine.data('lncSearchExplorerRoot', (pageInfo) => newSearchExplorerRoot(pageInfo));
+		Alpine.data('lncSearchExplorerNode', (node = {}) => newSearchExplorerNode(searchConfig, node));
 		Alpine.data('lncToc', newToCController);
 		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
 		Alpine.data('lncDropdowns', newDropdownsController);
@@ -143,9 +147,6 @@ const searchConfig = getSearchConfig(params);
 	};
 
 	document.addEventListener('turbo:load', function (event) {
-		// Hide JS-powered blocks on browsers with JavaScript disabled.
-		document.body.classList.remove('no-js');
-
 		// Update any static links to the current language.
 		let lang = getCurrentLang();
 		if (lang && lang !== 'en') {
@@ -188,4 +189,40 @@ const searchConfig = getSearchConfig(params);
 
 		pushGTag('docs_navigate');
 	});
+
+	// Preserve scroll position when navigating with Turbo on all elements with the data-preserve-scroll attribute.
+	if (!window.scrollPositions) {
+		window.scrollPositions = {};
+	}
+
+	function preserveScroll() {
+		document.querySelectorAll('[ data-preserve-scroll').forEach((element) => {
+			scrollPositions[element.id] = element.scrollTop;
+		});
+	}
+
+	function restoreScroll(event) {
+		const isFinalRender = event.type === 'turbo:render' && !document.documentElement.hasAttribute('data-turbo-preview');
+		document.querySelectorAll('[ data-preserve-scroll').forEach((element) => {
+			let id = element.id;
+			if (isFinalRender && id === 'explorer' && !window.explorerNodeClicked) {
+				scrollToActiveExplorerNode();
+			} else {
+				element.scrollTop = scrollPositions[id];
+			}
+		});
+
+		if (isFinalRender) {
+			window.explorerNodeClicked = false;
+		}
+
+		if (!event.detail || !event.detail.newBody) return;
+		event.detail.newBody.querySelectorAll('[ data-preserve-scroll').forEach((element) => {
+			element.scrollTop = scrollPositions[element.id];
+		});
+	}
+
+	window.addEventListener('turbo:before-cache', preserveScroll);
+	window.addEventListener('turbo:before-render', restoreScroll);
+	window.addEventListener('turbo:render', restoreScroll);
 })();
