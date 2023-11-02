@@ -91,7 +91,7 @@ Follow the steps to configure routes for the type of load balancer;
 #### Routes for TCP Load Balancers
 For TCP load balancers, a route consists of a service target and the percentage of incoming requests that should be  directed to that target. Add as many routes/service targets as you require but the percentages for all routes must total 100. You can create a new route or select existing routes.
 
-1. Select an exisiting route from the list and continue with Configuring Session Stickness. For a new route, click the **Add Route** button.
+1. Select an existing route from the list and continue with Configuring Session Stickiness. For a new route, click the **Add Route** button.
 
 1. Enter a **Route Name** for this route that uniquely identifies it from other routes. The **Route Name** can contain between 3? and 32? alphanumeric characters.
 
@@ -99,7 +99,7 @@ For TCP load balancers, a route consists of a service target and the percentage 
 
 1. Enter the percentage of traffic that you want routed to this service target in the **Percent** field.
 
-1. Add or select additonal routes.
+1. Add or select additional routes.
 
 #### Routes for HTTP and HTTPs Load Balancers
  Routes provide the set of traffic routing rules that the load balancer uses to select the target for the incoming request. Routes are configurable for load balancers using HTTP or HTTPS protocols.
