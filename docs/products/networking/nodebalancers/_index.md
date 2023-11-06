@@ -91,5 +91,5 @@ Cloud Firewall is available at no additional charge to customers.
 - **Cloud Firewall support:** When a Cloud Firewall is assigned to a NodeBalancer, the firewall only looks at incoming requests, this means that only inbound Cloud Firewall rules apply and outbound rules are not applicable.
 
     {{< note >}}
-    A service (Linode) can be accessed from any interface (not just the NodeBalancer). To filter traffic from other interfaces, backend Linodes require their own firewalls.
+    A service (Linode) can be accessed from other interfaces (not just the NodeBalancer). To filter traffic from other interfaces, backend Linodes require their own firewalls.
     {{< /note >}}
