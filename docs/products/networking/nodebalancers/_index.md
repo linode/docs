@@ -88,4 +88,8 @@ Cloud Firewall is available at no additional charge to customers.
 
     For applications that require a very high connection rate or otherwise need to overcome the above considerations present in **HTTPS** mode, consider operating in **TCP** mode and terminating TLS on the backend Linodes.
 
-- **Cloud Firewall support:** When a Cloud Firewall is assigned to a NodeBalancer, the firewall only looks at incoming requests, this means that only inbound Cloud Firewall rules apply and outbound rules are not applicable. 
+- **Cloud Firewall support:** When a Cloud Firewall is assigned to a NodeBalancer, the firewall only looks at incoming requests, this means that only inbound Cloud Firewall rules apply and outbound rules are not applicable.
+
+    {{< note >}}
+    A service (Linode) can be accessed from any interface (not just the NodeBalancer). To filter traffic from other interfaces, backend Linodes require their own firewalls.
+    {{< /note >}}
