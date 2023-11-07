@@ -48,8 +48,8 @@ To create a firewall using the NodeBalancer  application, in the *NodeBalancer C
 | **Configuration** | **Description** |
 | --------------- | --------------- |
 | **Label** (Required)| The label is used as an identifier for this Cloud Firewall. |
-| **Additional Linodes** (Optional)| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
-| **NodeBalancers** (Optional) | The NodeBalancers on which to apply this Firewall. A list of all NodeBalancers on your account are visible. You can skip this configuration if the NodeBalancer is not listed or created yet.|
+| **Additional Linodes** (Optional)| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can leave this blank if you do not yet wish to apply the Firewall to a Linode. |
+| **Additional NodeBalancers** (Optional) | The NodeBalancers on which to apply this Firewall. A list of all created NodeBalancers on your account are visible. You can leave this blank if you do not want to apply this Cloud Firewall to other NodeBalancers.|
 
 Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the the *Nodebalancers Create* form.
 
