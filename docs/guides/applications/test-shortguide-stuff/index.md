@@ -14,6 +14,14 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
+Paragraph text
+
 - Bullet 0
-{{< content "test-shortguide-1" >}}
-{{< content "test-shortguide-2" >}}
+- {{< content "test-shortguide-1" >}}
+- {{< content "test-shortguide-2" >}}
+
+Paragraph text
+
+- Bullet A
+{{< content "test-shortguide-b" >}}
+{{< content "test-shortguide-c" >}}
