@@ -1,6 +1,6 @@
 'use strict';
 
-import { getIntParamFromLocation, setDocumentMeta, updatePaginationParamInLocation } from '../../helpers/helpers';
+import { getIntParamFromLocation, setDocumentMeta, updatePaginationParamInLocation } from '../../helpers/index';
 import { newCreateHref } from '../../navigation/index';
 import {
 	newRequestCallback,

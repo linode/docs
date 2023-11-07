@@ -1,6 +1,6 @@
 'use strict';
 
-import { sanitizeHTML } from '../helpers/helpers';
+import { sanitizeHTML } from '../helpers';
 
 var debug = 0 ? console.log.bind(console, '[router]') : function () {};
 

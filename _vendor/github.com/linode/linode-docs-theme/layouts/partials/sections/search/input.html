@@ -32,8 +32,7 @@
     class="mr-4 hover:text-brand"
     :class="{ 'hidden': !$store.nav.searchResults.open && !$store.search.query.isFiltered() }"
     @click.stop="close()"
-    data-testid="input-close"
-    x-cloak>
+    data-testid="input-close">
     <svg class="h-5 w-5">
       <use href="#icon--times"></use>
     </svg>

@@ -1,5 +1,5 @@
 import { isTopResultsPage } from '.';
-import { normalizeSpace } from '../helpers/helpers';
+import { normalizeSpace } from '../helpers/index';
 
 export interface Query {
 	// Holds the current page number.
