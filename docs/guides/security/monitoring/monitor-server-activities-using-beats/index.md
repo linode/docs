@@ -13,7 +13,7 @@ external_resources:
 - '[Beats](https://www.elastic.co/beats/)'
 - '[Packetbeat](https://www.elastic.co/beats/packetbeat)'
 - '[Auditbeat](https://www.elastic.co/beats/auditbeat)'
-- '[Elasticsearch](https://www.linode.com/docs/guides/a-guide-to-elasticsearch-plugins/#elasticsearch)'
+- '[Elasticsearch](/docs/guides/a-guide-to-elasticsearch-plugins/#elasticsearch)'
 - '[Kibana Query Language (KQL)](https://www.elastic.co/guide/en/kibana/current/kuery-query.html)'
 - '[File Integrity Module](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-module-file_integrity.html)'
 ---
@@ -44,7 +44,7 @@ Beats is a product suite that allows you to perform the kind of monitoring neede
 
 The various Beats products have one thing in common. They collect data. Centralizing data makes it more accessible and easier to compare. When working with the various Beats products, you can combine products to obtain the information you need and ignore what you don’t. This information all ends up in [Elasticsearch](https://www.elastic.co/elasticsearch/). Adding [Logstash](https://www.elastic.co/logstash) to the picture allows you to preprocess the data from disparate sensors that use different data formats so that various kinds of statistical and machine-learning analysis are possible. The stored information appears on a [Kibana](https://www.elastic.co/kibana) dashboard when a graphic form of data interaction is desired.
 
-The new [Elasticsearch Relevance Engine (ESRE)](https://www.elastic.co/elasticsearch/elasticsearch-relevance-engine) makes it possible to look for data patterns when the target of the search isn’t known. For example, you may not actually know that there is a problem with the automation used to produce widgets in your factory, but using ESRE can help you locate patterns that indicate problems are occurring now or will occur in the future without remediation. The ability to predict future problems and fix them before they become an issue saves you time and money. This is where the benefit of working with a [Large Language Model (LLM)](https://www.elastic.co/what-is/large-language-models) comes into play. Natural Language Processing (NLP) asks the software questions so that you can monitor and interact with the system creatively without writing code yourself.
+The new [Elasticsearch Relevance Engine (ESRE)](https://www.elastic.co/elasticsearch/elasticsearch-relevance-engine) makes it possible to look for data patterns when the target of the search isn’t known. For example, you may not actually know that there is a problem with the automation used to produce widgets in your factory, but using ESRE can help you locate patterns that indicate problems are occurring now or occur in the future without remediation. The ability to predict future problems and fix them before they become an issue saves you time and money. This is where the benefit of working with a [Large Language Model (LLM)](https://www.elastic.co/what-is/large-language-models) comes into play. Natural Language Processing (NLP) asks the software questions so that you can monitor and interact with the system creatively without writing code yourself.
 
 Because of the flexibility that this combination of applications provides, it’s best to not see it being used in a specific way. However, the Beats products are currently used in these industries:
 
@@ -60,11 +60,11 @@ These industries use often cross-categories. For example, [John Deere](https://w
 
 ## Run Filebeat from the Command Line and Kibana
 
-To begin using the Beats products, create a simple setup and then experiment with it. Creating a Filebeat command line interface gives you an essential understanding of how the various Beats products work without investing a lot of time in configuration and setup. This section relies on a Linode 4 GB plan on an Ubuntu 22.04 LTS distribution, which is the smallest setup that works. The process works best with a [non-root user who has sudo access](https://www.linode.com/docs/guides/how-to-add-and-remove-sudo-access-in-ubuntu/). Before installing Filebeat, ensure you have logged in as a non-root user, and you install the following prerequisites:
+To begin using the Beats products, create a simple setup and then experiment with it. Creating a Filebeat command line interface gives you an essential understanding of how the various Beats products work without investing a lot of time in configuration and setup. This section relies on a Linode 4 GB plan on an Ubuntu 22.04 LTS distribution, which is the smallest setup that works. The process works best with a [non-root user who has sudo access](/docs/guides/how-to-add-and-remove-sudo-access-in-ubuntu/). Before installing Filebeat, ensure you have logged in as a non-root user, and you install the following prerequisites:
 
-- [OpenJDK](https://www.linode.com/docs/guides/how-to-install-openjdk-ubuntu-22-04/): Ensure you install Java 11, as newer versions may not be compatible.
-- [Nginx](https://www.linode.com/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/): Ensure you stop after completing the **Install NGINX** section.
-- [Elasticsearch](https://www.linode.com/docs/guides/a-guide-to-elasticsearch-plugins/#elasticsearch): There have been recent modifications to the standard installation procedure due to changes in the security setup for Ubuntu. Follow the updated command instead for step 1 for installing the signing key:
+- [OpenJDK](/docs/guides/how-to-install-openjdk-ubuntu-22-04/): Ensure you install Java 11, as newer versions may not be compatible.
+- [Nginx](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/): Ensure you stop after completing the **Install NGINX** section.
+- [Elasticsearch](/docs/guides/a-guide-to-elasticsearch-plugins/#elasticsearch): There have been recent modifications to the standard installation procedure due to changes in the security setup for Ubuntu. Follow the updated command instead for step 1 for installing the signing key:
 
     ```command
     curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch |sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
@@ -148,11 +148,13 @@ To begin using the Beats products, create a simple setup and then experiment wit
     sudo systemctl reload nginx
     ```
 
-1.  Test Kibana access in your browser. Enter the Kibana administrator name and password created in step 4. Figure 1 shows a typical example of the web page you see. The Kibana browser display shows the Kibana status, statistics, and plugin status:
+1.  Test Kibana access in your browser. Enter the Kibana administrator name and password created in step 4. The Figure 1 below shows a typical example of the web page you see. The Kibana browser display shows the Kibana status, statistics, and plugin status:
 
     ```command
     http://<IP Address of Your Linode>/status
     ```
+
+    ![Figure 1](Figure_1.png "Figure 1")
 
 ### Install Logstash
 
@@ -316,13 +318,13 @@ At this point, you can install, configure, and use Filebeat.
           "relation" : "gte"
         },
     ```
-
 ### View Filebeat in Kibana
 
 View the Filebeat data in Kibana by visiting the URL, `http://<IP Address of Your Linode>` to display the home page shown in Figure 2. Click the Expand icon and choose **Discover from the list** to show the Filebeat data that appears in Figure 3. The timeline at the top shows the number of file system hits and the time they occurred. You can filter the data in various ways using features like **Available Fields** on the left side of the page.
 
-<Insert Figure 2 Here.>
-<Insert Figure 3 Here.>
+![Figure 2](Figure_2.png "Figure 2")
+
+![Figure 3](Figure_3.png "Figure 3")
 
 ## Monitor Logs Using Filebeat
 
