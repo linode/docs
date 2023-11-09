@@ -6,7 +6,7 @@ keywords: ['migrate','migration','host']
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
-published: 2023-10-31
+published: 2023-11-09
 modified_by:
   name: Linode
 
@@ -73,13 +73,15 @@ In order for a live migration to occur, a host compatible with the host your ins
 - If a Linode or Akamai administrator cancels the warm migration.
 - If the sources Linode stops responding, is shut down prior to the cross-host sync, or if the process is disturbed in any way.
 
-### What should I do if my warm migration (or resize) fails?
+### What should I do if my warm migration fails?
 
 - If your warm migration fails to complete after early initiation via Cloud Manager, Support will be notified. Once notified, there are two options that Support will use at their discretion:
     - Configure a new warm migration and let it proceed as scheduled without early initiation.
-    - Configure a cold migration. You can then initiate the cold migration via the Cloud Manager or allow it to proceed as otherwise scheduled.
-- If a warm resize fails, you can either proceed with a cold resize or troubleshoot your instance's configuration to respect ACPI shutdowns.
-- If a warm migration or resize fails for any other reason, you may want to proceed with a cold option.
+    - Configure a cold migration. Once configured by Support, you can then initiate the cold migration via the Cloud Manager or allow it to proceed as otherwise scheduled.
+
+### What should I do if my warm resize fails?
+
+- If a warm resize fails, you can either proceed with a cold resize (recommended) or troubleshoot your instance's configuration to respect ACPI shutdowns.
 
 ### What if my cross data center migration fails?
 
