@@ -25,7 +25,7 @@ There are two main ways to scale an application to increase the performance and 
 
 ## Additional Features
 
-- **Firewall Security:** [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer and related backend nodes.
+- **Firewall Security:** [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer. When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer’s public IP, not the IPs of the backend nodes. This means you may also want to add individual backend nodes to a Cloud Firewall to protect any additional exposed IP addresses.
 
 - **Managed:** NodeBalancers take the infrastructure management out of load balancing. They are designed to be maintenance free after initial configuration.
 
