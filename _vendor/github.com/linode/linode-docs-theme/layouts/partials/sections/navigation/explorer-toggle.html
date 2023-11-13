@@ -34,16 +34,28 @@
       style="font-size: 15px; letter-spacing: 0.5px;">
       Explore docs
     </div>
-    <button
-      :aria-label="$store.nav.open.explorer  ? 'close': 'optn'"
-      type="button"
-      class="btn-icon hidden md:block"
-      data-testid="explorer-toggle">
-      <svg class="text-titlecolor w-6 h-5">
-        <use
-          :href="$store.nav.open.explorer ? '#icon--arrow-up' : '#icon--arrow-down'"
-          href="#icon--arrow-up"></use>
-      </svg>
-    </button>
+    <template x-if="!$store.nav.open.explorer">
+      <button
+        aria-label="open"
+        type="button"
+        class="btn-icon hidden md:block"
+        data-testid="explorer-open"
+        data-testid="open-explorer">
+        <svg class="text-titlecolor w-6 h-5">
+          <use href="#icon--arrow-down"></use>
+        </svg>
+      </button>
+    </template>
+    <template x-if="$store.nav.open.explorer">
+      <button
+        aria-label="close"
+        type="button"
+        class="btn-icon hidden md:block"
+        data-testid="explorer-close">
+        <svg class="text-titlecolor w-6 h-5">
+          <use href="#icon--arrow-up"></use>
+        </svg>
+      </button>
+    </template>
   </div>
 </div>

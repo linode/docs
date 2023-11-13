@@ -1,6 +1,5 @@
 import { newQuery, QueryHandler } from './query';
-import { getCurrentLang, toDateString } from '../helpers/helpers';
-import { LRUMap } from '../helpers/lru';
+import { getCurrentLang, LRUMap, toDateString } from '../helpers';
 import { newCreateHref, addLangToHref } from '../navigation/index';
 import {
 	newRequestCallback,
@@ -13,63 +12,17 @@ import {
 const debug = 0 ? console.log.bind(console, '[search-store]') : function () {};
 const debugFetch = 0 ? console.log.bind(console, '[search-fetch]') : function () {};
 
-const createSectionFacetsSorted = function (result) {
-	if (!result.facets) {
-		return [];
-	}
-	let nodes = [];
-
-	// Section facets are named section.lvln where n is 0 to 3.
-	for (let i = 0; ; i++) {
-		let key = `section.lvl${i}`;
-		let sectionFacet = result.facets[key];
-		if (!sectionFacet) {
-			break;
-		}
-
-		for (let k in sectionFacet) {
-			let parts = k.split(' > ');
-			let first = parts[0];
-			if (first.endsWith('-branches')) {
-				continue;
-			}
-			let last = parts[parts.length - 1];
-			let title = last.replace('-', ' ');
-			// First letter upper case.
-			title = title.charAt(0).toUpperCase() + title.slice(1);
-			let href = `/docs/${parts.join('/').toLowerCase()}/`;
-			let node = {
-				href: href,
-				key: k,
-				level: i + 1,
-				title: title,
-				count: sectionFacet[k],
-				open: false,
-			};
-			nodes.push(node);
-		}
-	}
-
-	// Sort by href.
-	nodes.sort((a, b) => {
-		return a.href < b.href ? -1 : 1;
-	});
-	return nodes;
+export const searchGroupIdentifiers = {
+	MAIN: 1,
+	AD_HOC: 2,
 };
 
 export function newSearchStore(searchConfig, params, Alpine) {
 	let cacheWarmerUrls = params.search_cachewarmer_urls;
 
-	let setResult = function (result, loaded = true) {
-		let facets = createSectionFacetsSorted(result);
-		this.sectionFacets = facets;
-		this.result = result;
-		this.loaded = loaded;
-	};
-
 	let results = {
-		blank: { loaded: false, set: setResult },
-		main: { loaded: false, set: setResult },
+		blank: { loaded: false },
+		main: { loaded: false },
 		explorerData: { loaded: false },
 		// Holds the last Algolia queryID.
 		lastQueryID: '',
@@ -152,7 +105,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 					return section.name === key.toLocaleLowerCase();
 				});
 
-				let m = this.metaResult.get(key);
+				m = this.metaResult.get(key);
 				if (!m && sectionConfigIdx !== -1) {
 					let index = searchConfig.sectionsSorted[sectionConfigIdx];
 					m = { title: index.title, linkTitle: index.title, excerpt: '' };
@@ -168,7 +121,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 				return m;
 			};
 
-			const searchEffectAdHoc = Alpine.effect(() => {
+			searchEffectAdHoc = Alpine.effect(() => {
 				debug('searchEffectAdHoc', this.searchGroupAdHoc.length);
 				searcher.searchFactories(this.searchGroupAdHoc, null);
 			});
@@ -197,7 +150,8 @@ export function newSearchStore(searchConfig, params, Alpine) {
 						return newRequestCallback(
 							createSectionRequest(query),
 							(result) => {
-								this.results.main.set(result);
+								this.results.main.result = result;
+								this.results.main.loaded = true;
 							},
 							{
 								query: query,
@@ -314,7 +268,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 							throw `invalid state: ${result.index}`;
 						}
 						debug('withBlank.blank.result:', result);
-						this.results.blank.set(result, false);
+						this.results.blank.result = result;
 						markLoaded();
 					},
 					{
@@ -633,7 +587,6 @@ class SearchBatcher {
 		if (fileCacheUrl) {
 			debug('fetch data from file cache:', fileCacheUrl);
 			const response = await fetch(fileCacheUrl, { credentials: 'same-origin' });
-
 			if (response.ok) {
 				let data = await response.json();
 				if (Array.isArray(data)) {

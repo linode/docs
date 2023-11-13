@@ -136,7 +136,6 @@
     {{- end -}}
     {{- $dict = $dict | merge (dict (printf "section.lvl%d" $i) $sectionPath) -}}
   {{- end -}}
-
   {{- if $shouldAdd -}}
     {{- $index = $index | append $dict -}}
   {{- end -}}
