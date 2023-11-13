@@ -85,7 +85,7 @@ Follow the steps below to create and configure a PostgreSQL database for Quay:
     sudo -u postgres psql
     ```
 
-	  If prompted, provide the password you supplied when securing PostgreSQL:
+    If prompted, provide the password you supplied when securing PostgreSQL:
 
     ```output
     postgres=#
