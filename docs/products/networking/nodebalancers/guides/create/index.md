@@ -41,7 +41,7 @@ Select the Cloud Firewall from the **Assign Firewall** pull down to use with the
 
 If the firewall doesn't exist yet, you can create the firewall using either the Firewall application, or the NodeBalancer application. Rules for the firewall, can only be added in the Firewall application.
 
-To create a firewall and add rules using the Firewall application, see [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+To create a firewall and add rules using the Firewall application, see [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
 
 To create a firewall using the NodeBalancer  application, in the *NodeBalancer Create* form click the **Create Firewall**. This displays the *Create Firewall* drawer. Configure the required field.
 

@@ -33,7 +33,7 @@ For advice on load balancing and high availability, review the following resourc
 
 ## Create the NodeBalancer
 
-If you are using a Cloud Firewall with this NodeBalancer, have the name of the firewall available. To see a listing of available firewalls, log in to the [Cloud Manager](https://cloud.linode.com) and select **Firewalls** from the navigation menu. If the firewall doesn't exist yet, [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+If you are using a Cloud Firewall with this NodeBalancer, have the name of the firewall available. To see a listing of available firewalls, log in to the [Cloud Manager](https://cloud.linode.com) and select **Firewalls** from the navigation menu. If the firewall doesn't exist yet, [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
 
 Once your application has been deployed on multiple Compute Instances, you are ready to create the NodeBalancer. Simple instructions have been provided below. For complete instructions, see the [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/) guide.
 

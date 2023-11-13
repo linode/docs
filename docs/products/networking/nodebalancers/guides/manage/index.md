@@ -73,10 +73,10 @@ You can also remove/unassign firewalls from a NodeBalancer using Cloud Firewalls
 
 ### Add a Firewall to an Existing NodeBalancer
 
-To add or create a Cloud firewall for an existing NodeBalancer, follow the instructions in [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+To add or create a Cloud firewall for an existing NodeBalancer, follow the instructions in [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
 
 ### Change the NodeBalancers Firewall
 
 1. Complete the steps in [Unassign the Firewall](#unassign-the-firewall).
 
-2. Follow the instructions in [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+2. Follow the instructions in [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
