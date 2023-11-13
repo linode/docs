@@ -335,6 +335,7 @@ cmusieve
 cnf
 codebase
 codec
+codefresh
 Codeone
 codepen
 colab
@@ -2111,6 +2112,7 @@ siri
 sitename
 Skitch
 sklearn
+skopeo
 slackpkg
 slackware
 slavedb
@@ -2135,6 +2137,7 @@ solaris
 solr
 somaxconn
 someuser
+sonatype
 sonicwall
 sophos
 spamassassin
