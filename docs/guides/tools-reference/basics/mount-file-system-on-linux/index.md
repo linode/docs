@@ -1,9 +1,10 @@
 ---
 slug: mount-file-system-on-linux
 description: "Do you need to learn how to mount a file system on Linux? Read our guide to learn Linux file system basics. ✓ Click here!"
-keywords: ['File Systems', 'Mount Remote File System', 'List Currently Mounted File Systems', 'Unmounting File System']
+keywords: ['file system', 'unmount']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-15
+modified: 2023-11-14
 modified_by:
   name: Linode
 title: "Mount a File System on Linux"
@@ -70,7 +71,6 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     nodev	autofs
     ```
 
-
 1.  You can also list the documented file systems using `man filesystems`.
 
     ```output
@@ -82,7 +82,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     When, as is customary, the proc filesystem is mounted on /proc, you can find in the file /proc/filesystems  which filesystems…
     ```
 
-    Later on in the man page there is a short summary of each file system. It includes notes about when each was added to, and possibly removed from, the Linux kernel. For example, the minix file system was superseded by ext. It in turn was superseded by ext2. ext3 adds journaling to ext2. ext4 is a set of upgrades to ext3 including substantial performance and reliability enhancements, plus large increases in volume, file, and directory size limits.
+    Later on in the man page, there is a short summary of each file system. It includes notes about when each was added to, and possibly removed from, the Linux kernel. For example, the minix file system was superseded by ext. It in turn was superseded by ext2. ext3 adds journaling to ext2. ext4 is a set of upgrades to ext3 including substantial performance and reliability enhancements, plus large increases in volume, file, and directory size limits.
 
 1.  Press <kbd>Q</kbd> to exit `man filesystems`.
 
@@ -286,7 +286,7 @@ If the USB drive uses the exFAT file system, you may need to install the FUSE [e
 1.  The example below assumes that the ISO file is in the `/root` directory and that you are logged in as root.
 
     ```command
-        mkdir /media/iso
+    mkdir /media/iso
     ```
 
 1.  You can mount ISO image files using the `loop` device, specified as an option to the `mount` command.
