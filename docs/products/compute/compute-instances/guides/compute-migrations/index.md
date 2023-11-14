@@ -4,9 +4,8 @@ title: "Compute Migrations on Akamai Cloud"
 description: 'This guide reviews the various types of compute migrations available on the Akamai Cloud platform.'
 keywords: ['migrate','migration','host']
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
-published: 2023-11-09
+published: 2023-11-14
 modified_by:
   name: Linode
 
@@ -20,9 +19,9 @@ There are three types of migrations that can occur: **cold**, **live**, or **war
 
 ### Cold Migrations
 
-During a cold migration, your Compute Instance is automatically shut down if it's not powered off already, moved to another physical host machine, and then returned to a previous state (booted or powered down) once it has fully migrated.
+During a cold migration, your Compute Instance is automatically shut down (if it's not powered off already), moved to another physical host machine, and then returned to its previous state (booted or powered down) once it has fully migrated.
 
-- **Advantages:** Can occur within the same data center or across data centers, generally the most available type of migration option
+- **Advantages:** Can occur within the same data center and across data centers, generally the most available type of migration option
 - **Disadvantages:** Requires the most downtime of all migration types
 
 ### Live Migrations
@@ -41,25 +40,29 @@ During a warm migration, your Compute Instance remains up and running while it i
 
 ## When Migrations Occur
 
-Compute Instances can be migrated between hosts within the same data center, as well as across data centers. Only certain types of migrations are available for certain use cases.
+Compute Instances can be migrated between hosts within the same data center and across data centers. Some of the reason for these migrations are detailed below. The type of migration that occurs (warm, live, or cold) depends on the situation as well as the host hardware on the origin and destination machine.
 
 **Within the same data center:**
+
 - Scheduled or emergency maintenance
 - By customer request via [Support ticket](/docs/products/platform/get-started/guides/support/) while troubleshooting performance issues
 - During the [resize process](/docs/products/compute/compute-instances/guides/resize/)
-- Can be achieved via any migration type (cold, live, and warm)
+
+Migrations within the same data center can be achieved via any migration type (cold, live, and warm).
 
 **Across data centers:**
+
 - Customer initiated for personal or business reasons (see our guide on [Initiating a Cross Data Center Migration](/docs/products/compute/compute-instances/guides/migrate-to-different-dc/))
 - By customer request via [Support ticket](/docs/products/platform/get-started/guides/support/)
 - When an old data center is retired. If this is the case, you will be notified ahead of any anticipated migrations or maintenance.
-- Can only be achieved using cold migrations
+
+Migrations across data centers can only be achieved using cold migrations.
 
 ## Troubleshooting Migrations and FAQ
 
 ### What if my cold migration fails?
 
-Should a cold migration fail for any reason, Support will be be notified and will configure a new cold migration.
+Should a cold migration fail for any reason, the Support team is notified and will configure a new cold migration.
 
 ### Why would a live migration not be available?
 
@@ -67,17 +70,17 @@ In order for a live migration to occur, a host compatible with the host your ins
 
 ### What could cause a warm migration to fail?
 
-- Your instance is not configured to respect ACPI shutdowns:
+-   Your instance is not configured to respect ACPI shutdowns:
     - This applies to warm migrations initiated by customers, including warm migrations taking place during the warm resize process.
     - This also applies if you are running a custom distribution (i.e. Windows) or unsupported disk image that is not configured for ACPI shutdowns.
-- If a Linode or Akamai administrator cancels the warm migration.
-- If the sources Linode stops responding, is shut down prior to the cross-host sync, or if the process is disturbed in any way.
+-   If a Linode or Akamai administrator cancels the warm migration.
+-   If the sources Linode stops responding, is shut down prior to the cross-host sync, or if the process is disturbed in any way.
 
 ### What should I do if my warm migration fails?
 
-- If your warm migration fails to complete after early initiation via Cloud Manager, Support will be notified. Once notified, there are two options that Support will use at their discretion:
-    - Configure a new warm migration and let it proceed as scheduled without early initiation.
-    - Configure a cold migration. Once configured by Support, you can then initiate the cold migration via the Cloud Manager or allow it to proceed as otherwise scheduled.
+-   If your warm migration fails to complete after an early initiation is triggered via the Cloud Manager, the Support team is notified. There are two options that are used at the discretion of the Support team.
+    - A new warm migration can be configured to be performed at a scheduled time.
+    - A cold migration can be configured. You can then initiate the cold migration via the Cloud Manager or allow it to proceed as otherwise scheduled.
 
 ### What should I do if my warm resize fails?
 
