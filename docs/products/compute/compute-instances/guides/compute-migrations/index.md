@@ -66,7 +66,7 @@ Should a cold migration fail for any reason, the Support team is notified and wi
 
 ### Why would a live migration not be available?
 
-In order for a live migration to occur, a host compatible with the host your instance currently resides on must be available and actively communicating with the current host. Not all host hardware is alike, and not all hosts are actively communicating with each other, so live migration availability will not always be a viable option.
+In order for a live migration to occur, a host compatible with the host your instance currently resides on must be available. Not all host hardware is alike or available to accept a live migration, so live migrations are not always a viable option.
 
 ### What could cause a warm migration to fail?
 
