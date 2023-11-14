@@ -197,9 +197,9 @@ Follow the steps below to create and configure a PostgreSQL database for Quay:
     ```
 
     ```output
-      oid  | extname | extowner | extnamespace | extrelocatable | extversion | extconfig | extcondition 
+      oid  | extname | extowner | extnamespace | extrelocatable | extversion | extconfig | extcondition
     -------+---------+----------+--------------+----------------+------------+-----------+--------------
-     16396 | pg_trgm |       10 |         2200 | t              | 1.5        |           | 
+     16396 | pg_trgm |       10 |         2200 | t              | 1.5        |           |
     (1 row)
     ```
 
