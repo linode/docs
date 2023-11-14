@@ -6,7 +6,7 @@ keywords: ["chmod", "commands", "reference", "file permissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
 published: 2010-07-01
-modified: 2021-04-16
+modified: 2023-11-14
 modified_by:
   name: Linode
 external_resources:
@@ -15,17 +15,16 @@ external_resources:
 aliases: ['/linux-tools/common-commands/chmod/','/tools-reference/modify-file-permissions-with-chmod/','/tools-reference/tools/modify-file-permissions-with-chmod/']
 bundles: ['debian-security', 'centos-security']
 tags: ["security","linux"]
+image: modify_file_permissions_with_chmod_smg.png
 ---
-
-![Modify File Permissions with chmod](modify_file_permissions_with_chmod_smg.png "Modify File Permissions with chmod")
 
 ## Modify File Permissions with chmod
 
-The `chmod` command allows users to change read and write permissions in Unix systems. This guide covers how to modify file and directory permissions with `chmod`.
+The `chmod` command allows users to change read and write permissions in Unix systems. This guide covers how to use `chmod` to view and modify these permission on files and directories.
 
-Unix-like systems, including the Linux distributions that run on the Akamai Connected Cloud, have an incredibly robust access control system. It allows systems administrators to effectively permit multiple users access to a single system, without giving every user access to every file. The `chmod` command is the simplest way to modify these file permissions.
+Unix-like systems, including the Linux distributions that run on the Akamai cloud computing platform, have an incredibly robust access control system. It allows systems administrators to effectively permit multiple users access to a single system, without giving every user access to every file. The `chmod` command is the simplest way to modify these file permissions.
 
-This guide provides an overview of file permissions and the `chmod` command, along with a number of practical examples and applications of `chmod`. If you find this guide helpful, please also consider reading our [basic administration practices guide](/docs/guides/linux-system-administration-basics/) and the [Linux users and groups guide](/docs/guides/linux-users-and-groups/).
+This guide provides an overview of file permissions and the `chmod` command, along with a number of practical examples and applications of `chmod`. If you find this guide helpful, also consider reading our [basic administration practices guide](/docs/guides/linux-system-administration-basics/) and the [Linux users and groups guide](/docs/guides/linux-users-and-groups/).
 
 ### Basics of Linux File Permissions
 
@@ -55,9 +54,9 @@ A way to understand the meaning of this column is to divide the bits into groups
 
 The first character represents the type of file. The remaining nine bits in groups of three represent the permissions for the user, group, and global respectively. Each stands for:
 
--   `r`: **R**ead
--   `w`: **W**rite
--   `x`: e**X**ecute
+- `r`: **R**ead
+- `w`: **W**rite
+- `x`: e**X**ecute
 
 {{< note >}}
 Access to files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/guides/linux-users-and-groups/#additional-file-permissions) that control other aspects of access to files.
@@ -265,9 +264,9 @@ chmod g-rwx,o-rwx .fetchmail
 
 While directory permissions within Linux are similar to file permissions, there are a few key differences regarding how these permissions affect user operations:
 
--   **Read** (`r`): User can list the items in a directory, such as when using the `ls` command.
--   **Write** (`w`): User can add, delete, or rename files in a directory, provided the user also has execute permissions.
--   **Execute** (`x`): User can navigate to the directory, such as when using the `cd` command.
+- **Read** (`r`): User can list the items in a directory, such as when using the `ls` command.
+- **Write** (`w`): User can add, delete, or rename files in a directory, provided the user also has execute permissions.
+- **Execute** (`x`): User can navigate to the directory, such as when using the `cd` command.
 
 To view permissions of all files and directories within the working directory, run the following command:
 
