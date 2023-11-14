@@ -1,24 +1,23 @@
 ---
-slug: how-to-grep-for-text-in-files
-title: How to Use Grep for Text in Files
+slug: how-to-use-grep
+title: How to Use the Grep Command to Find Information in Files
 description: "An extensive guide on how to grep for text in files in Unix based systems. Understand search, match, and advanced regex to grep for text in files."
 keywords: ["how to use grep", "grep usage", "grep tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
 published: 2010-06-30
-modified: 2021-02-02
+modified: 2023-11-14
 modified_by:
   name: Linode
 external_resources:
   - '[Grep | Regular-Expressions.info](https://www.regular-expressions.info/grep.html)'
   - '[Perl Regular Expressions](https://perldoc.perl.org/perlre.html)'
-aliases: ['/tools-reference/how-to-grep-for-text-in-files/','/tools-reference/search-and-filter-text-with-grep/','/tools-reference/tools/how-to-grep-for-text-in-files/','/linux-tools/common-commands/grep/']
+aliases: ['/tools-reference/how-to-grep-for-text-in-files/','/tools-reference/search-and-filter-text-with-grep/','/tools-reference/tools/how-to-grep-for-text-in-files/','/linux-tools/common-commands/grep/','/guides/how-to-grep-for-text-in-files/']
 tags: ["linux"]
+image: search_and_filter_text_with_grep_smg.png
 ---
 
-![Using Grep](search_and_filter_text_with_grep_smg.png "Search and filter text with Grep")
-
-Grep is a command-line utility that can search and filter text using a common regular expression syntax. It is so ubiquitous that the verb "to grep" has emerged as a synonym for "to search". The `grep` command is a useful tool for searching all occurrences of a search term in a selection of files. It can also come in handy for filtering a log file or stream, or as part of a script or chain of commands.
+Grep is a command-line utility that can search and filter text using a common regular expression syntax. It is so ubiquitous that the verb "to grep" has emerged as a synonym for "to search". The `grep` command is a useful tool for finding all occurrences of a search term in a selection of files or the output of another command. It can also come in handy when filtering a log file or stream and when used as part of a script or chain of commands.
 
 This tutorial provides an overview of how to use `grep`, a brief introduction to regular expression syntax, and practical examples.
 
@@ -36,7 +35,7 @@ grep "string" ~/example.txt
 
 The first argument to `grep` is a search pattern. The second (optional) argument is the name of a file to be searched. The above sequence searches for all occurrences of the word "string" in the `~/example.txt` file.
 
-You can use `grep` to search a single file or multiple files at the same time. If you want to search files in a directory, include the `-r` flag. It enables recursive searching through a directory tree, including subdirectories:
+You can use `grep` to search a single file or multiple files. If you want to search files in a directory, include the `-r` flag. It enables recursive searching through a directory tree, including subdirectories:
 
 ```command
 grep -r "string" ~/example/
@@ -45,14 +44,14 @@ grep -r "string" ~/example/
 When used on a specific file, `grep` only outputs the lines that contain the matching string. In recursive mode, `grep` outputs the full path to the file, followed by a colon, and the contents of the line that matches the pattern. By default, patterns in `grep` are basic regular expressions. If you need a more expressive regular expression syntax, `grep` is capable of accepting patterns in alternate formats with the following flags:
 
 | Flag | Usage |
-|--|--|
+| -- | -- |
 | `-E` | Use extended regular expression syntax. Equivalent to the deprecated `egrep` command. |
 | `-P` | Use Perl regular expression syntax. |
 
 Grep provides a number of powerful options to control its output:
 
 | Flag | Usage |
-|--|--|
+| -- | -- |
 | `-o` | Output only the matching segment of each line, rather than the full contents of each matched line. |
 | `-i` | Ignore case distinctions, so that characters only differing in case still match. |
 | `-n` | Print the line number of each matched line. |
@@ -62,7 +61,7 @@ Grep provides a number of powerful options to control its output:
 
 ### Piping Command Outputs to grep
 
-In addition to reading content from files, `grep` can read and filter text from standard input. The output of any command or stream can be piped to the `grep` command. `grep` then filters this output according to the match pattern specified and outputs only the matching lines. For example:
+In addition to reading content from files, `grep` can read and filter text from standard input. The output of any command or stream can be piped to the `grep` command. Then `grep` then filters this output according to the match pattern specified and outputs only the matching lines. For example:
 
 ```command
 ls --help | grep "dired"
@@ -175,10 +174,10 @@ ps ax | grep log
 ```
 
 ```output
-    576 ?        Ss     0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
-    583 ?        Ssl    0:00 /usr/sbin/rsyslogd -n -iNONE
-    592 ?        Ss     0:00 /lib/systemd/systemd-logind
-   4967 pts/0    S+     0:00 grep --color=auto log
+576 ?        Ss     0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+583 ?        Ssl    0:00 /usr/sbin/rsyslogd -n -iNONE
+592 ?        Ss     0:00 /lib/systemd/systemd-logind
+4967 pts/0    S+     0:00 grep --color=auto log
 ```
 
 Notice the last line of the output contains `grep log`, which is not relevant to the purpose of the search. You can exclude this line by using a pipe operator `|` and adding `grep -v grep` after it as follows:
@@ -188,9 +187,9 @@ ps ax | grep log| grep -v grep
 ```
 
 ```output
-    576 ?        Ss     0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
-    583 ?        Ssl    0:00 /usr/sbin/rsyslogd -n -iNONE
-    592 ?        Ss     0:00 /lib/systemd/systemd-logind
+576 ?        Ss     0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+583 ?        Ssl    0:00 /usr/sbin/rsyslogd -n -iNONE
+592 ?        Ss     0:00 /lib/systemd/systemd-logind
 ```
 
 While using `grep -v grep` not only excludes the `grep log` line, it also skips all other lines that contain "grep", which may not be ideal. Luckily, there are other ways to remove `grep` from your output.
@@ -202,9 +201,9 @@ ps ax | grep '[l]og'
 ```
 
 ```output
-    576 ?        Ss     0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
-    583 ?        Ssl    0:00 /usr/sbin/rsyslogd -n -iNONE
-    592 ?        Ss     0:00 /lib/systemd/systemd-logind
+576 ?        Ss     0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+583 ?        Ssl    0:00 /usr/sbin/rsyslogd -n -iNONE
+592 ?        Ss     0:00 /lib/systemd/systemd-logind
 ```
 
 Alternatively, you can use the `pgrep` command instead of `grep` to search your current processes:
