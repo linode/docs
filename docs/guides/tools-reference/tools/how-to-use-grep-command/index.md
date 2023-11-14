@@ -1,5 +1,5 @@
 ---
-slug: how-to-use-grep
+slug: how-to-use-grep-command
 title: How to Use the Grep Command to Find Information in Files
 description: "An extensive guide on how to grep for text in files in Unix based systems. Understand search, match, and advanced regex to grep for text in files."
 keywords: ["how to use grep", "grep usage", "grep tutorial"]
