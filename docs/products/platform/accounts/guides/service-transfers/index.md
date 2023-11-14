@@ -29,6 +29,7 @@ Only users with full account access can use Service Transfers. To adjust user pe
 
 {{< note type="warning">}}
 Each Compute Instance that you wish to transfer must have a unique label that is not used for any other instances on the receiving account. If the label is not unique, the transfer will fail. As an example, this commonly happens when the default label has been used. To ensure that the transfer is successful, verify that the label of the Compute Instance you are transferring is unique on the receiving account.
+Also, ensure that the Compute Instance is not configured to be in VLAN. 
 {{< /note >}}
 
 ## Sending Linode Services
