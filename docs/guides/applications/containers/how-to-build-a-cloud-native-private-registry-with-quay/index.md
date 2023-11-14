@@ -209,13 +209,13 @@ Follow the steps below to create and configure a PostgreSQL database for Quay:
     \q
     ```
 
-1.  Open the `pg_hba.conf` file, normally located in `/var/lib/pgsql/data/`, in a text editor with administrative privileges:
+1.  Open the `pg_hba.conf` file, normally located at `/var/lib/pgsql/data/`, in a text editor with administrative privileges:
 
     ```command
     sudo nano /var/lib/pgsql/data/pg_hba.conf
     ```
 
-    Modify the `pg_hba.conf` file to allow for remote connections by editing the `# IPv4 local connections:` line to appear like this:
+    Modify the `pg_hba.conf` file to allow for remote connections by editing the `# IPv4 local connections:` line to appear like the following:
 
     ```file {title="/var/lib/pgsql/data/pg_hba.conf" lang="aconf"}
     # IPv4 local connections:
@@ -230,7 +230,7 @@ Follow the steps below to create and configure a PostgreSQL database for Quay:
     sudo nano /var/lib/pgsql/data/postgresql.conf
     ```
 
-    Modify the `postgresql.conf` file to listen on all addresses by modifying the `listen_addresses` line like this:
+    Modify the `postgresql.conf` file to listen on all addresses by modifying the `listen_addresses` line like the following:
 
     ```file {title="/var/lib/pgsql/data/postgresql.conf" lang="aconf"}
     listen_addresses = '*'
@@ -246,7 +246,7 @@ Follow the steps below to create and configure a PostgreSQL database for Quay:
 
 ### Configuring Redis
 
-Perform these additional Redis configuration tasks for Quay:
+Perform the following additional Redis configuration tasks for Quay.
 
 1.  Create a Redis configuration file:
 
@@ -263,7 +263,7 @@ Perform these additional Redis configuration tasks for Quay:
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`:
 
-1.  Ensure the change takes hold:
+1.  Ensure the change take effect:
 
     ```command
     sudo systemctl restart redis
@@ -287,7 +287,7 @@ Perform these additional Redis configuration tasks for Quay:
 
 ### Generating the Quay Configuration
 
-It’s time to install a copy of Quay. This guide uses the Project Quay version discussed earlier.
+It’s time to install a copy of Quay. This guide uses the free and open source Project Quay version discussed earlier.
 
 1.  Obtain a copy of Quay:
 
@@ -369,9 +369,9 @@ It’s time to install a copy of Quay. This guide uses the Project Quay version 
 
 1.  Open a web browser and use the following address format to access Quay: `http://YOUR_IP_ADDRESS:8080/`.
 
-1.  Supply `quayconfig` as the username and the password you chose in step three as the password when requested.
+1.  When requested, supply `quayconfig` as the username along with the password you chose in step three.
 
-1.  You need to fill out seven fields across the **Server Configuration**, **Database**, and **Redis** sections.
+1.  You need to fill out seven fields across the **Server Configuration**, **Database**, and **Redis** sections:
 
     -   In the **Server Configuration** section, enter your Akamai Cloud Compute Instance's public IPv4 Address for the **Server Hostname** field:
 
@@ -395,7 +395,7 @@ It’s time to install a copy of Quay. This guide uses the Project Quay version 
 
 1.  Return to the terminal and kill the running Quay server by pressing the <kbd>CTRL</kbd>+<kbd>C</kbd> key combination.
 
-1.  Transfer the `quay-config.tar.gz` file to your user's home (`~/`) directory on your Akamai Cloud Compute Instance:
+1.  Transfer the `quay-config.tar.gz` file to your user's home (`~/`) directory on your Akamai Cloud Compute Instance.
 
 1.  Create storage and configuration directories, then copy the `quay-config.tar.gz` file to the configuration directory:
 
@@ -434,7 +434,7 @@ Starting Quay like this provides you with a continuously scrolling screen of upd
 
     ![The Project Quay new user empty repositories screen.](project-quay-new-user-empty-repositories-screen.png "The Project Quay new user empty repositories screen.")
 
-1.  Click **Creating a New Repository** to create your first repository. The next screen begins by asking you for a repository name, which must use a number or lowercase letter. Trying to use an uppercase letter causes Quay to complain.
+1.  Click **Creating a New Repository** to create your first repository. The next screen begins by asking you for a repository name, which must use a number or lowercase letter (uppercase letters may cause Quay to reject the name).
 
     ![The Project Quay create repositories screen.](project-quay-create-repositories-screen.png "The Project Quay create repositories screen.")
 
@@ -442,7 +442,7 @@ Starting Quay like this provides you with a continuously scrolling screen of upd
 
 1.  Filling the repository begins by issuing either a docker or a podman pull command to obtain the application container. After obtaining the code, you can add tags to it.
 
-1.  There is also a **Repository Settings** tab where you can configure the repository details. Part of the settings setup is to add or remove users who have specific repository rights: read, write, and admin. You can also configure events and notifications based on repository activity to keep everyone on the project informed about changes.
+1.  There is also a **Repository Settings** tab where you can configure the repository details. Part of these settings is to add or remove users and adjust specific repository rights: read, write, and admin. You can also configure events and notifications based on repository activity to keep everyone on the project informed about changes.
 
     ![The Project Quay repository settings screen.](project-quay-repository-settings-screen.png "The Project Quay repository settings screen.")
 
