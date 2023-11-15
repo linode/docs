@@ -13,21 +13,6 @@ external_resources:
 - '[LiveKit Docs](https://docs.livekit.io/realtime/)'
 ---
 
-
-
-    ``` output
-    API Key: API4oMqFj5s4gnY
-    API Secret: 3c5sDOXvxHWntVYPiVZnnW9FvgmJT0ScRdE5JK7ioRN
-
-    Here's a test token generated with your keys: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzU0NzM4OTAsImlzcyI6IkFQSTRvTXFGajVzNGduWSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJuYmYiOjE2OTk0NzM4OTAsInN1YiI6InRlc3QtdXNlciIsInZpZGVvIjp7InJvb20iOiJteS1maXJzdC1yb29tIiwicm9vbUpvaW4iOnRydWV9fQ.eHV4rJSGvBLbl961hpxhXbFKaeX7IOHnpe95Bb7hGPQ
-    ```
-
-    ```output
-    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk2Mzc0ODgsImlzcyI6IkFQSTRvTXFGajVzNGduWSIsIm5hbWUiOiJleGFtcGxlLXVzZXIiLCJuYmYiOjE2OTk1NTEwODgsInN1YiI6ImV4YW1wbGUtdXNlciIsInZpZGVvIjp7InJvb20iOiJleGFtcGxlLXJvb20iLCJyb29tSm9pbiI6dHJ1ZX19.imGQoehR162lKqTkxEgJLHS-sUAwf8-m5bkfMlXalAM
-    ```
-
-
-
 LiveKit is an open-source stack for streaming audio and video. With modern APIs, LiveKit can readily integrate into your applications, and a scalable design ensures the performance you need even as your audience grows.
 
 LiveKit also operates with a range of streaming sources, making it a good fit to bring an audience to your content. An open-source streaming tool like OBS Studio pairs excellently with LiveKit for a full open-source streaming solution.
