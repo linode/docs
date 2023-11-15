@@ -1,12 +1,11 @@
 ---
 slug: manage-users-with-cloud-init
-title: "Use Cloud-init to Manage Users on New Servers"
-description: 'Follow along with this guide to use cloud-init for managing users and user groups on new servers.'
-og_description: 'Follow along with this guide to use cloud-init for managing users and user groups on new servers.'
+title: "Use Cloud-Init to Manage Users on New Servers"
+description: "Follow along with this guide to use cloud-init for managing users and user groups on new servers."
 keywords: ['cloud-init','cloudinit','users','groups']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-09-19
+published: 2023-11-15
 modified_by:
   name: Nathaniel Stickman
 external_resources:
@@ -19,7 +18,7 @@ With Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadat
 
 This guide details how to start working with users as part of your cloud-init deployments. Read on for cloud-config scripts to provision users, add SSH keys, and disable remote root access.
 
-Before getting started, you should review our guide on how to [Use Cloud-init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow the present guide. When you are ready to deploy your cloud-config, the guide linked above shows how.
+Before getting started, you should review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow the present guide. When you are ready to deploy your cloud-config, the guide linked above shows how.
 
 ## Create User
 
@@ -38,7 +37,7 @@ users:
   - name: example-user
 ```
 
-The cloud-init process sets up the user with a range of defaults, like a home directory and user group. However, you typically want to take a bit more control of the user creation, especially if you intend to access the user over SSH. Further sections coverf features like [assigning groups](#manage-and-assign-groups) (including `sudo` access) and [adding SSH keys](#add-an-ssh-key-to-a-user) to users. In the example below, and the accompanying breakdown, are some additional useful options for managing new users.
+The cloud-init process sets up the user with a range of defaults, like a home directory and user group. However, you typically want to take a bit more control of the user creation, especially if you intend to access the user over SSH. Further sections cover features like [assigning groups](#manage-and-assign-groups) (including `sudo` access) and [adding SSH keys](#add-an-ssh-key-to-a-user) to users. In the example below, and the accompanying breakdown, are some additional useful options for managing new users.
 
 ```file {title="cloud-config.yaml" lang="yaml" hl_lines="4-7"}
 users:
@@ -161,16 +160,16 @@ runcmd:
 
 Once cloud-init has completed the server's initialization, verify that your user and group configurations have deployed as intended. For several of the components configured throughout this tutorial, the simplest verification is often just connecting to the given user via SSH.
 
-For instance, if your cloud-config created an `example-user` with an SSH key, you should be able to connect to the server as that user via SSH. Replace `192.0.2.0` below with the deployed servers' actual IP address.
+For instance, if your cloud-config created an `example-user` with an SSH key, you should be able to connect to the server as that user via SSH. Replace `192.0.2.17` below with the deployed servers' actual IP address.
 
 ```command
-ssh example-user@192.0.2.0
+ssh example-user@192.0.2.17
 ```
 
 If you disabled remote root access, you should be able to verify that similarly, attempting to access the server as the `root` user:
 
 ```command
-ssh root@192.0.2.0
+ssh root@192.0.2.17
 ```
 
 To verify in more detail, you can use the `getent` and `groups` commands once you have logged into the server. The former, used with the `passwd` option and the username, provides a summary of a user's details on the system.

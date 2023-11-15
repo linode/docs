@@ -1,12 +1,11 @@
 ---
 slug: write-files-with-cloud-init
-title: "Use Cloud-init to Write to a File"
+title: "Use Cloud-Init to Write to a File"
 description: "Find out how you can use cloud-init to automate writing and modifying files during your new servers' initialization."
-og_description: "Find out how you can use cloud-init to automate writing and modifying files during your new servers' initialization."
 keywords: ['cloud-init','cloudinit','write files','sed']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-09-27
+published: 2023-11-15
 modified_by:
   name: Nathaniel Stickman
 external_resources:
@@ -20,7 +19,7 @@ Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) s
 
 In this guide, learn how to use a cloud-config script to write files to your server during initialization. Automate the process of creating and editing files so that your software and system configurations are precisely as you need them from the start.
 
-Before getting started, review our guide on how to [Use Cloud-init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with this guide. When you are ready to deploy your cloud-config, the guide linked above details how.
+Before getting started, review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with this guide. When you are ready to deploy your cloud-config, the guide linked above details how.
 
 ## Write to a File
 
@@ -48,7 +47,7 @@ The example defines a set of file contents as well as details like ownership and
 
 -   `path` points to the location for the created file. Any existing file at the location is overwritten, and parent directories are created as necessary. This is the one required option for `write_files`.
 
--   `content` defines the content for the file. This can be a single line, or, as above, you can use appropriate Yaml formatting for multi-line file content. Leaving out the `content` option creates an empty file.
+-   `content` defines the content for the file. This can be a single line, or, as above, you can use appropriate YAML formatting for multi-line file content. Leaving out the `content` option creates an empty file.
 
 -   `owner` optionally lets you define a user and/or group to assign ownership of the file to. The default is `root:root`. To specify a user and/or group created within the cloud-config script, you should use the `defer: true` option, as described further below, to ensure the user/group is created before the file.
 
@@ -94,7 +93,7 @@ When you need to modify a file, cloud-init has a couple of approaches to use:
 
     Otherwise, `write_files` can only provide modifications by recreating the files. In that case, you would need to copy the whole configuration with your desired modifications into your cloud-config script.
 
--   The more approachable and maintainable solution is to use cloud-init's `runcmd` option to run `sed` commands on the server. `sed` provides text editing via shell commands, and `runcmd` lets you run shell commands from a cloud-init script. Learn more about using `runcmd` in our guide [Use Cloud-init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-shell-commands-with-cloud-init/) and more about `sed` in our guide [Manipulate Text from the Command Line with sed](/docs/guides/manipulate-text-from-the-command-line-with-sed/).
+-   The more approachable and maintainable solution is to use cloud-init's `runcmd` option to run `sed` commands on the server. `sed` provides text editing via shell commands, and `runcmd` lets you run shell commands from a cloud-init script. Learn more about using `runcmd` in our guide [Use Cloud-Init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-shell-commands-with-cloud-init/) and more about `sed` in our guide [Manipulate Text from the Command Line with sed](/docs/guides/manipulate-text-from-the-command-line-with-sed/).
 
     The `runcmd` option takes a list of shell commands. In the example that follows, two shell commands run to change the SSH service configuration, similar to the example above. However, `sed` lets you replace existing settings, rather than just appending a new setting.
 
@@ -108,7 +107,7 @@ When you need to modify a file, cloud-init has a couple of approaches to use:
 
 ## Verify File Contents
 
-Once your instacne is up and running, use the `cat` command to verify that files are written as expected. Using `cat` on a file's location, you should see the contents of the file as dictated in the cloud-config.
+Once your instance is up and running, use the `cat` command to verify that files are written as expected. Using `cat` on a file's location, you should see the contents of the file as dictated in the cloud-config.
 
 ```command
 cat /var/www/html/example.com/index.html

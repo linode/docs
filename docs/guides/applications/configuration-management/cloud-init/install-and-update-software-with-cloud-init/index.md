@@ -1,12 +1,11 @@
 ---
 slug: install-and-update-software-with-cloud-init
-title: "Use Cloud-init to Install and Update Software on New Servers"
-description: 'Learn how you can use cloud-init to upgrade and install software automatically when initializing new servers.'
-og_description: 'Learn how you can use cloud-init to upgrade and install software automatically when initializing new servers.'
+title: "Use Cloud-Init to Install and Update Software on New Servers"
+description: "Learn how you can use cloud-init to upgrade and install software automatically when initializing new servers."
 keywords: ['cloud-init','cloudinit','apt','yum']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-09-15
+published: 2023-11-15
 modified_by:
   name: Nathaniel Stickman
 external_resources:
@@ -18,7 +17,7 @@ external_resources:
 
 In this guide, learn how to manage packages on new servers using cloud-init. Whether you want to upgrade system packages, install packages during initialization, or manage your repositories, this tutorial shows you how.
 
-Before getting started, you should review our guide on how to [Use Cloud-init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with the present guide. When you are ready to deploy your cloud-config, the guide linked above shows you how.
+Before getting started, you should review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with the present guide. When you are ready to deploy your cloud-config, the guide linked above shows you how.
 
 ## Upgrade Packages
 

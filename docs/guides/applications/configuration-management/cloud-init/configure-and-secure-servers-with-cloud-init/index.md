@@ -1,15 +1,16 @@
 ---
 slug: configure-and-secure-servers-with-cloud-init
-title: "Use Cloud-init to Automatically Configure and Secure Your Servers"
-description: 'Learn how you can use cloud-init to automate the process of configuring and securing a new cloud instance.'
-og_description: 'Learn how you can use cloud-init to automate the process of configuring and securing a new cloud instance.'
+title: "Use Cloud-Init to Automatically Configure and Secure Your Servers"
+description: "Learn how you can use cloud-init to automate the process of configuring and securing a new cloud instance."
 keywords: ['cloud-init','cloudinit','metadata']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-09-11
+published: 2023-11-15
 modified_by:
   name: Nathaniel Stickman
 ---
+
+By using Akamai's Metadata service, you can automatically configure your new Compute Instances through cloud-init. This guide walks you through building a cloud-config file (for use with cloud-init) and deploying a Compute Instance using that configuration. It covers a series of recommended options for initializing and securing a Compute Instance. These configurations parallel the steps in our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Toward the end of the guide, you can see the [Complete Cloud-Config File](#complete-cloud-config-file) as well as steps for how to [Deploy an Instance with User Data](#deploy-an-instance-with-user-data).
 
 ## What is cloud-init?
 
@@ -35,9 +36,7 @@ To start, create an initial cloud-config file to design your desired server init
 #cloud-config
 ```
 
-From there, you need to fill out the cloud-config with specific options matching your needs for the server. The rest of this guide walks you through a series of recommended cloud-config options for initializing and securing a Compute Instance. These configurations parallel the steps in our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
-
-Toward the end of the guide, you can see the [Complete Cloud-Config File](#complete-cloud-config-file) as well as steps for how to [Deploy an Instance with User Data](#deploy-an-instance-with-user-data).
+From there, you need to fill out the cloud-config with specific options matching your needs for the server. Follow the steps within this guide to build your file or skip to end of the guide to see the [a completed Cloud-Config file](#complete-cloud-config-file).
 
 ## Update Your System
 
@@ -50,7 +49,7 @@ package_upgrade: true
 
 The section on how to [Install Any Additional Required Software](#install-any-additional-required-software) provides further resources for working with packages in cloud-config.
 
-## Configure Basic Server Details
+## Set the Hostname and Timezone
 
 Cloud-config has a range of options for setting up server details. This section applies two of those options, providing your server with recommended details by setting up the timezone and hostname.
 
@@ -93,7 +92,7 @@ users:
 
 However, the example is incomplete, since the user does not have a password or SSH key. You can create a password using the `passwd` option, but this is not recommended. Instead, you should set up an SSH key for the user, as shown in the next section.
 
-For more on creating and managing users with cloud-init, refer to our guide [Use Cloud-init to Manage Users on New Servers](/docs/guides/manage-users-with-cloud-init/). The guide includes more information on setting up user passwords, should you need to.
+For more on creating and managing users with cloud-init, refer to our guide [Use Cloud-Init to Manage Users on New Servers](/docs/guides/manage-users-with-cloud-init/). The guide includes more information on setting up user passwords, should you need to.
 
 ## Add an SSH Key to Your Limited User Account
 
@@ -118,9 +117,9 @@ users:
 
 To increase the security of SSH connections into your Compute Instance, you should generally disable password authentication and root logins via SSH. This way, access is restricted to limited users and connections authenticated by SSH key pairs.
 
-By default, the cloud-config `users` setup assumes `lock_passwd: true`, automatically disabling password authentication. You can learn more about user setup and managing such features in our guide [Use Cloud-init to Manage Users on New Servers](/docs/guides/manage-users-with-cloud-init/).
+By default, the cloud-config `users` setup assumes `lock_passwd: true`, automatically disabling password authentication. You can learn more about user setup and managing such features in our guide [Use Cloud-Init to Manage Users on New Servers](/docs/guides/manage-users-with-cloud-init/).
 
-To disable root logins, you need to modify the SSH configuration file. Cloud-config does not have a direct option for this, but you can use its versatile `runcmd` key to automate the necessary commands. Learn more about the `runcmd` option in our guide [Use Cloud-init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-commands-and-bash-scripts-with-cloud-init).
+To disable root logins, you need to modify the SSH configuration file. Cloud-config does not have a direct option for this, but you can use its versatile `runcmd` key to automate the necessary commands. Learn more about the `runcmd` option in our guide [Use Cloud-Init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-commands-and-bash-scripts-with-cloud-init).
 
 The example below removes any existing `PermitRootLogin` configuration and adds a new configuration disabling `PermitRootLogin`. The last command restarts the `sshd` service for the changes to take effect.
 
@@ -143,7 +142,7 @@ service sshd restart
 
 ## Install Any Additional Required Software
 
-With cloud-config's `packages` key, you can automate software installation and management as part of server initialization. For thorough coverage of cloud-init's package management features, and examples of how to use it, see our guide [Use Cloud-init to Install and Update Software on New Servers](/docs/guides/install-and-update-software-with-cloud-init/).
+With cloud-config's `packages` key, you can automate software installation and management as part of server initialization. For thorough coverage of cloud-init's package management features, and examples of how to use it, see our guide [Use Cloud-Init to Install and Update Software on New Servers](/docs/guides/install-and-update-software-with-cloud-init/).
 
 As a basic illustration, the snippet below shows how to install a set of software during instance initialization. The example installs software for a LEMP web stack (NGINX, MySQL, and PHP) a popular setup for web applications. You can learn more about LEMP stacks in our guide on how to [Install a LEMP Stack](/docs/guides/how-to-install-a-lemp-stack-on-ubuntu-22-04/).
 
@@ -153,6 +152,10 @@ packages:
   - nginx
   - php
 ```
+
+{{< note >}}
+Software packages have different names depending on the distribution you are using. Reference your distribution's package repository to identify the package names for the software you wish to install.
+{{</ note >}}
 
 ## Complete Cloud-Config File
 
