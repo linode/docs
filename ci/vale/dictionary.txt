@@ -757,6 +757,7 @@ gbps
 gcc
 gcloud
 gcm
+GDBs
 gdf
 geckodriver
 gem1
@@ -1907,8 +1908,7 @@ remediations
 remi
 remmina
 remotehost
-reparse
-replicants
+reparseGDBs
 replicaset
 replicationcontrollers
 replset
