@@ -564,7 +564,7 @@ You can use `grep` to filter the results of another command that sends output to
 
     ls /home/username/data | grep "1257"
 
-In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/guides/how-to-grep-for-text-in-files/).
+In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/guides/how-to-use-grep-command/).
 
 ### Search and Replace Across a Group of Files
 
