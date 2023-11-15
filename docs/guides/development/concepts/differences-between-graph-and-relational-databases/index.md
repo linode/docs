@@ -6,12 +6,9 @@ description: 'This overview guide introduces the reader to Graph databases. Its 
 keywords: ['graph database vs relational', 'graph database vs relational database performance', 'when to use graph database vs relational ']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jack Wallen"]
-published: 2023-10-07
+published: 2023-11-15
 modified_by:
   name: Linode
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 Nearly every business depends on data. Data powers websites, desktops and mobile apps, predicts trends, collects information about clients and customers and keeps tabs on products and people. However, not all databases are created equal. Some databases, such as SQLite, are best suited for embedded devices or small collections of information. Others, like MongoDB, are better suited for enterprises dealing with massive amounts of data.
@@ -22,7 +19,7 @@ Both relational and graph databases focus on relationships between data, but the
 
 ## What is a Graph Database?
 
-A graph database is a single-purpose, specialized data platform that creates and manipulates graphs. A graph consists of nodes (think of this as a container with data), edges (think of this as a line that connects one node to another), and properties (think of this as the details for both nodes and edges) that are used to store and represent data. These databases are great for analyzing interconnections and use-cases that involve highly complex relationships and dynamic schema.
+A graph database (abbreviated as *GDB*) is a single-purpose, specialized data platform that creates and manipulates graphs. A graph consists of nodes (think of this as a container with data), edges (think of this as a line that connects one node to another), and properties (think of this as the details for both nodes and edges) that are used to store and represent data. These databases are great for analyzing interconnections and use-cases that involve highly complex relationships and dynamic schema.
 
 The graph database is an ideal match for applications that must connect very complex relationships between data. This is because graph databases allow users to perform traversal queries that are based on connections and are used to find patterns, paths, communities, and various links between subjects and objects.
 
@@ -55,18 +52,18 @@ Think of a data model as what you might draw on a whiteboard. Instead of using a
 
 An RDF (Resource Description Framework) graph database is also known as a triple store because it stores data in the format of subject-predicate-object. RDF graph databases use a special index that stores information about nodes, edges, and the relationship between them in what's called a *triple*. Triples are also referred to as *assertions* and have three primary fields:
 
-- Subject - (nodes) a resource or node in the graph
-- Predicate - (edges) the relationship between subject and object
-- Object - (nodes) another node or literal value
+- **Subject**: (nodes) a resource or node in the graph
+- **Predicate**: (edges) the relationship between subject and object
+- **Object:** (nodes) another node or literal value
 
 Each of these fields is represented with a Unique Resource Identifier (URI). Following are the six examples of triples:
 
-- Olivia - worksfor - Linode
-- Olivia - marriedto - Nathan
-- Olivia - jobtitle - programmer
-- Nathan - worksfor - Google
-- Nathan - marriedto - Olivia
-- Nathan - jobtitle - UXDesigner
+- `Olivia - worksfor - Linode`
+- `Olivia - marriedto - Nathan`
+- `Olivia - jobtitle - programmer`
+- `Nathan - worksfor - Google`
+- `Nathan - marriedto - Olivia`
+- `Nathan - jobtitle - UXDesigner`
 
 Each triple is a row, so anyone programming for a graph database can know which rows to search. What makes the RDF graph database so powerful and fast is the ability to index combinations of triples. For example, if you're developing an app that has a feature that links spouses, you only need to focus on the predicate `:marriedTo`.
 
@@ -78,14 +75,14 @@ The next type of graph database is the Property Graph Database, which stores dat
 
 Property GDBs consist of the following components:
 
-- Node - also called a vertex, is the main data element used to construct a graph
-- Relationship - also called an edge, is a link between two nodes. Relationships have both a direction and a type
-- Label - defines a node category
-- Property - expands on the information stored in a node or relationship
+- **Node:** A node, also called a vertex, is the main data element used to construct a graph
+- **Relationship:** A relationship, also called an edge, is a link between two nodes. Relationships have both a direction and a type
+- **Label:** A label defines a node category
+- **Property:** A property expands on the information stored in a node or relationship
 
-In a labeled property graph, vertices are called nodes and include a uniquely identifiable ID and property values to characterize them. To visualize how Labels and Properties function within a graph database, see Figure 1 below:
+In a labeled property graph, vertices are called nodes and include a uniquely identifiable ID and property values to characterize them. To visualize how labels and properties function within a graph database, see the graphic below:
 
-![Figure 1](figure_1.png "Figure 1")
+![Visualization of the relationship between two GDB nodes](figure_1.png)
 
 The figure above illustrates the relationship between nodes (`:PERSON` and `:ASSET`) along with their respective properties (`Olivia`, `since 2000`, and `square footage 3000`).
 
@@ -98,16 +95,14 @@ For example, we might have a relational table that represents customer informati
 There are several key differences between graph and relational databases. One of the biggest is how data is stored. With relational databases, all data is contained within structured tables, each consisting of columns and rows.
 For example, a customer information table might look like:
 
-{{< table >}}
-|CustomerID | FirstName | LastName | Address |
+| CustomerID | FirstName | LastName | Address |
 | -- | -- | -- |-- |
-|C001 | Bob | Jones | 123 Skyview Way |
-| C002 | Mary | Jane | 456 Main St.|
-{{< /table >}}
+| C001 | Bob | Jones | 456 Main St |
+| C002 | Mary | Jane | 456 Main St |
 
-As for a graph database, data is unstructured, where nodes can be tagged with labels and hold any number of key-value pairs (aka properties). To visualize this concept, consider the simplified example depicted in Figure 2 below:
+As for a graph database, data is unstructured, where nodes can be tagged with labels and hold any number of key-value pairs (aka properties). To visualize this concept, consider the simplified example depicted in the image below:
 
-![Figure 2](figure_2.png "Figure 2")
+![Visualization of a simple relationship in a GDB](figure_2.png)
 
 The figure above illustrates the relationship between two nodes (`Bob` and `Mary`) and the edge (`loves`) that connect them.
 
@@ -129,10 +124,10 @@ Another reason why graph databases are so much faster is that they represent dat
 
 ## When to Use A Graph Database vs. A Relational Database: Use Cases
 
-There are three metrics to consider when you decide which type of database to use:
+There are a few metrics to consider when you decide which type of database to use:
 
 - If your data is better represented by many-to-many relationships (such as a class enrollment database that includes tables for Students, Enrollment, and Classes and the relationships between those tables are predefined and dependent on one another) you should use a relational database.
-If the relationships between data change often (such as with a recommendation engine where data is constantly changing) you should use a graph database.
+- If the relationships between data change often (such as with a recommendation engine where data is constantly changing) you should use a graph database.
 - If data has an unstructured relationship (such as fraud detection, where data must be highly connected and flexible) you should use a graph database.
 
 If you answer yes to the above, consider a graph database. If the answer is no, then a relational database might be best suited for your use case. It's all about the complexity of the relationships and how often those relationships change.
@@ -155,7 +150,7 @@ Here are five examples of graph databases:
 
 Here are five examples of popular relational databases:
 
-- [MySQL](https://www.mysql.com/) is the most popular open-source relational database on the market and is used to power platforms like WordPress, Joomla!, and Xoops. MySQL is supported on Linux, macOS, and Windows.
+- [MySQL](https://www.mysql.com/) is the most popular open-source relational database on the market and is used to power many applications, like WordPres. MySQL is supported on Linux, macOS, and Windows.
 
 - [MariaDB](https://mariadb.org/) is a fork of MySQL and is equally as popular. This open-source relational database places much higher importance on frequent releases and security. MariaDB can be installed on Linux, macOS, and Windows.
 
