@@ -4,7 +4,7 @@ description: 'Learn how to rescue and rebuild a Compute Instance by using the re
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
 published: 2012-05-31
-modified: 2023-08-08
+modified: 2023-09-07
 modified_by:
   name: Linode
 image: rescue-rebuild.jpg
@@ -44,7 +44,7 @@ While this guide outlines the recovery tools that Linode makes available to you,
 
 To access Rescue Mode, you need to [reboot your Compute Instance](#booting-into-rescue-mode) from the Cloud Manager and then connect through [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesystem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot the system, you can [install it](#installing-packages).
 
-The disks are mounted by default, so [mount](#mounting-disks) them in order to access the files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
+Disks are not mounted by default and need to be [mounted manually](#mounting-disks) before you can access your files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
 
 ### Boot into Rescue Mode
 

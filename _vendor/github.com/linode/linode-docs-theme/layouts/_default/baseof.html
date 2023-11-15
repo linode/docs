@@ -12,6 +12,19 @@
 {{/* Note that the TailwindCSS config is "scoped" by the ln-docs ID, so don't change it for no good reason. */}}
 <html id="ln-docs" lang="{{ site.Language.Lang }}">
   <head>
+    {{ if or site.IsServer (eq hugo.Environment "testing") }}
+      <script>
+        window.__timerStart = Date.now();
+        window.__stopWatch = function (what) {
+          var time = Date.now() - window.__timerStart;
+          console.log("[stopwatch] " + what + ": " + time + "ms");
+        };
+      </script>
+    {{ else }}
+      <script>
+        window.__stopWatch = function (what) {};
+      </script>
+    {{ end }}
     {{ partial "sections/head.html" . }}
     {{ block "head-meta-main" . }}
       {{/* The default static title and SEO meta markup. */}}
@@ -161,7 +174,7 @@
                       {{ block "content_main" . }}{{ .Content }}{{ end }}
                     </div>
                     <div
-                      class="hidden xl:block sticky top-20 hide-if-no-js flex-none xl:w-60 pl-8 pr-4 mt-6"
+                      class="hidden overflow-y-auto xl:block sticky top-20 hide-if-no-js flex-none xl:w-60 pl-8 pr-4 mt-6"
                       style="height: 80vh;">
                       {{ partial "sections/navigation/toc-main.html" . }}
                     </div>

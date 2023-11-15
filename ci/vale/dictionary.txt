@@ -23,6 +23,7 @@ adnanh
 adodb
 aes
 ag
+agentless
 ahci0
 Aho
 ahvz
@@ -111,6 +112,7 @@ autocompletion
 autoconfiguration
 autoconfigure
 autodiscover
+autodiscovery
 autohosting
 autoindex
 autojoin
@@ -378,6 +380,7 @@ covid
 cpanel
 cpanminus
 cpu
+cpus
 CPython
 cqlsh
 cqlshrc
@@ -1001,6 +1004,8 @@ inspec
 intel
 interconnectivity
 interdomain
+internets
+interoperate
 interoperation
 interruptible
 intra-application
@@ -1423,6 +1428,7 @@ msg
 msgid
 msgpack
 msmtp
+msps
 mtr
 mtu
 multiarch
@@ -1490,6 +1496,7 @@ neomake
 neovim
 netblocks
 netboot
+netbrain
 netcat
 Netcraft
 netconfig
@@ -1580,6 +1587,7 @@ nvm
 nvme
 oauth
 obfuscator
+observium
 octopress
 odoo
 offboarding
@@ -1630,6 +1638,7 @@ owncloud
 pacman
 paas
 packagist
+paessler
 pagent
 pagespeed
 palo
@@ -1832,6 +1841,7 @@ ramdisk
 randomart
 ransomwhere
 rasa
+raspbian
 rauth
 rbac
 rbenv
@@ -1934,6 +1944,7 @@ rkhunter
 rkt
 rmdir
 rmem
+rmms
 ro
 roadmunk
 Roblox
@@ -1952,6 +1963,7 @@ rpaf
 rpc
 rpcbind
 rpmforge
+rrdtool
 rrset
 rrsets
 rrsig
@@ -1996,6 +2008,7 @@ samy
 sandboxing
 sandcat
 sanitization
+São Paulo
 sar
 sasl
 sasl2
@@ -2504,6 +2517,7 @@ vmlinuz
 vms
 vmstat
 vmui
+vmware
 vnc
 VPLs
 vpns
@@ -2515,6 +2529,8 @@ vvv
 vz
 vznetaddbr
 walkthrough
+WAN
+WANs
 Wappalyzer
 Warcraft
 wasn
@@ -2579,6 +2595,8 @@ wireshark
 whitebox
 wkhtmltopdf
 wkhtmltox
+WLAN
+WLANs
 wll
 wlp6s0
 wordcloud
@@ -2589,6 +2607,7 @@ wordlists
 wordpress
 worker1
 worker2
+workgroup
 wp
 wpuser
 writability
@@ -2615,6 +2634,7 @@ xkcd
 xlsx
 xlsxwriter
 xmail
+xmatters
 xming
 xml
 xmpp
@@ -2676,4 +2696,5 @@ zpool
 zsh
 zshrc
 zxvf
+ZYpp
 Zypper

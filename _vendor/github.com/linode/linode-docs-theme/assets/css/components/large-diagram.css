@@ -1,0 +1,33 @@
+.large-diagram-svg-container .bullet-animate {
+  animation: ping-diagram 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+
+.large-diagram-svg-container.diagram-animate {
+  padding: 2rem;
+  background-color: #fff;
+  animation: pulse-diagram 1.4s ease alternate;
+  animation-iteration-count: 4;
+}
+
+.large-diagram-svg-container .bullet {
+  @apply cursor-default;
+}
+
+@keyframes pulse-diagram {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes ping-diagram {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: .01;
+  }
+}

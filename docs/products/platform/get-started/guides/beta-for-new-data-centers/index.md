@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-08-25
+modified: 2023-10-26
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -23,15 +23,17 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 
 | Data Center | Status | Region ID |
 | -- | -- | -- |
-| Amsterdam, Netherlands | *Limited beta* | `nl-ams` |
-| Chennai, India | *Limited beta* | `in-maa` |
+| Amsterdam, Netherlands | **Now available to all customers** | `nl-ams` |
+| Chennai, India | **Now available to all customers** | `in-maa` |
 | Chicago, IL, USA | **Now available to all customers** | `us-ord` |
-| Jakarta, India | *Limited beta* | `id-cgk` |
-| Milan, Italy | *Limited beta* | `it-mil` |
-| Osaka, Japan | *Limited beta* | `jp-osa` |
+| Jakarta, Indonesia | **Now available to all customers** | `id-cgk` |
+| Los Angeles, CA, USA | **Now available to all customers** | `us-lax` |
+| Miami, FL, USA | **Now available to all customers** | `us-mia` |
+| Milan, Italy | **Now available to all customers** | `it-mil` |
+| Osaka, Japan | **Now available to all customers** | `jp-osa` |
 | Paris, France | **Now available to all customers** | `fr-par` |
-| São Paulo, Brazil | *Limited beta* | `br-gru` |
-| Seattle, WA, USA | *Limited beta* | `us-sea` |
+| São Paulo, Brazil | **Now available to all customers** | `br-gru` |
+| Seattle, WA, USA | **Now available to all customers** | `us-sea` |
 | Stockholm, Sweden | **Now available to all customers** | `se-sto` |
 | Washington, DC, USA | **Now available to all customers** | `us-iad` |
 
@@ -55,14 +57,14 @@ Services utilized as part of the beta are free to users. Once the beta period en
 
 ## Product Availability
 
-Each data center in this beta is slated to have all of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
+Each data center in this beta is slated to have most of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
 
 ### Object Storage
 
 The new data centers feature enhanced Object Storage, which improves upon the consistency and reliability of the existing service and offers increased capacity (outlined below). Review the [Availability](/docs/products/storage/object-storage/#availability) and [Specifications](/docs/products/storage/object-storage/#specifications) section of the Object Storage documentation for more details.
 
-- **Max storage** (*per region, per account*): 5 TB (up to 1,000 TB by request)
-- **Max # of objects** (*per region, per account*): 50 million (up to 1 billion by request)
+- **Max storage** (*per region, per account*): 100 TB (up to 1,000 TB by request)
+- **Max # of objects** (*per region, per account*): 100 million (up to 1 billion by request)
 
 The following table includes the IDs and URLs of each new Object Storage cluster:
 
@@ -71,7 +73,9 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 | Amsterdam, Netherlands | `nl-ams-1` | `https://nl-ams-1.linodeobjects.com` |
 | Chennai, India | `in-maa-1` | `https://in-maa-1.linodeobjects.com` |
 | Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
-| Jakarta, India | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
+| Jakarta, Indonesia | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
+| Los Angeles, CA, USA | `us-lax-1` | `https://us-lax-1.linodeobjects.com` |
+| Miami, FL, USA | `us-mia-1` | `https://us-mia-1.linodeobjects.com` |
 | Milan, Italy | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
 | Osaka, Japan | `jp-osa-1	` | `https://jp-osa-1.linodeobjects.com` |
 | Paris, France | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
@@ -82,7 +86,9 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 
 ### Premium Plans
 
-A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU plan type for Compute Instances is available only in the new data centers. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis. The table below outlines the pricing and hardware specifications for Premium tier Dedicated CPU Instances:
+A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU Compute Instance plan is available only in the new data centers. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis.
+
+The table below outlines the default pricing and hardware specifications for Premium tier Dedicated CPU Instances. [Pricing](https://www.linode.com/pricing/) may vary by region:
 
 | <div class="w-40">Plan</div> | <div class="w-36">Price</div> | RAM (GB) | CPU Cores | Storage (GB) | Transfer (TB) | Network In/Out (Gbps)
 | --- |  --- | --- | --- | --- | --- | --- | --- |
@@ -99,7 +105,7 @@ A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) De
 The new Premium plans can also be deployed as worker nodes in Linode Kubernetes Engine (LKE) clusters. There is no additional cost for Premium plan LKE worker nodes beyond the price listed in the Premium pricing table above.
 
 {{< note isCollapsible=true title="Details of the Backup service for Premium Plans" >}}
-Optionally, you can also add on the [Backup](/docs/products/storage/backups/) service to a Premium instance. The price for this service is outlined below:
+Optionally, you can also add the [Backup](/docs/products/storage/backups/) service to a Premium instance. The default prices for this service are outlined below. [Pricing](https://www.linode.com/pricing/) may vary by region:
 
 | <div class="w-40">Plan</div> | Price for the Backup service |
 | --- | --- |
@@ -125,7 +131,9 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 | Amsterdam, Netherlands | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 22 |
 | Chennai, India | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 25 |
 | Chicago, IL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
-| Jakarta, India | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
+| Jakarta, Indonesia | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
+| Los Angeles, CA, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 30 |
+| Miami, FL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 28 |
 | Milan, Italy | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 27 |
 | Osaka, Japan | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 26 |
 | Paris, France | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 19 |
@@ -180,7 +188,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
 
 -   **Weblish/Glish Gateway:** `us-ord.webconsole.linode.com`
 
-#### Jakarta, India
+#### Jakarta, Indonesia
 
 -   **Lish SSH Gateway:** `lish-id-cgk.linode.com`
 
@@ -193,6 +201,34 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     {{< /note >}}
 
 -   **Weblish/Glish Gateway:** `id-cgk.webconsole.linode.com`
+
+#### Los Angeles, CA, USA
+
+-   **Lish SSH Gateway:** `lish-us-lax.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:TVyXe3i1iJF9rU+j/t57wpdRB2h56Kh2tnZsUra30kA lish-us-lax.linode.com
+    ECDSA 256 SHA256:Yh+jEgxiGIgETrC9uz4wUqnKvi7yPrlqgmpxsa65QDI lish-us-lax.linode.com
+    ED25519 256 SHA256:kFi+ignk5bxYxnk/F3Lehk0HoM98BuUzEGhlEzhHo9I lish-us-lax.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-lax.webconsole.linode.com`
+
+#### Miami, FL, USA
+
+-   **Lish SSH Gateway:** `lish-us-mia.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:kfwzGjXR+WV1JxvufbsZTv4qzVUI5Nkmh3Z3/XhpAT8 lish-us-mia.linode.com
+    ECDSA 256 SHA256:cZVK7bB8cwci3sXJJNIaBlX9Z3DlBj3hAL5J8Hc+vr0 lish-us-mia.linode.com
+    ED25519 256 SHA256:+sBLV01KzOiVJw4OJGmO71+NUm2cE7ndpj1aqW2tNLg lish-us-mia.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-mia.webconsole.linode.com`
 
 #### Milan, Italy
 

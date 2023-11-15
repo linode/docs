@@ -1,0 +1,64 @@
+{{ $diagramDescriptionID := .url.Query.Get "diagram-description-id" }}
+
+
+<div class="h-96" x-data="{ visible: false }" x-intersect.once="visible = true">
+  <template x-if="visible">
+    <div
+      x-data="lnvSVGViewer({diagramDescriptionID: '{{ $diagramDescriptionID }}' })"
+      class="cursor-move h-full overflow-hidden relative"
+      @click.once="activate()">
+      <div
+        class="large-diagram-buttons absolute right-10 bottom-10 z-20 flex flex-col">
+        <span class="isolate inline-flex rounded-md shadow-sm">
+          {{ template "render-svg-button" (dict "iconhref" "#icon--zoom-in" "onclick" "zoom(1)" "sronly" "Zoom in" "placement" "left" ) }}
+          {{ template "render-svg-button" (dict "iconhref" "#icon--zoom-out" "onclick" "zoom(-1)" "sronly" "Zoom out"  "placement" "right") }}
+        </span>
+        <span class="isolate inline-flex rounded-md shadow-sm mt-2">
+          {{ template "render-svg-button" (dict "iconhref" "#icon--arrow-left" "onclick" "pan('left')" "sronly" "Pan left" "placement" "left" ) }}
+          {{ template "render-svg-button" (dict "iconhref" "#icon--arrow-right" "onclick" "pan('right')" "sronly" "Pan right" "placement" "right" ) }}
+        </span>
+        <span class="isolate inline-flex rounded-md shadow-sm mt-2">
+          {{ template "render-svg-button" (dict "iconhref" "#icon--arrow-up" "onclick" "pan('up')" "sronly" "Pan up" "placement" "left" ) }}
+          {{ template "render-svg-button" (dict "iconhref" "#icon--arrow-down" "onclick" "pan('down')" "sronly" "Pan down" "placement" "right" ) }}
+        </span>
+      </div>
+      <div
+        class="tooltip fixed z-30 bg-gray-200 p-4 m-10 rounded-md flex w-96"
+        x-transition.opacity
+        :style="tooltip.style"
+        x-show="tooltip.show">
+        <div class="tooltip-badge mr-4 mt-2">
+          <span
+            x-text="tooltip.number"
+            class="inline-flex items-center justify-center w-10 h-10 border-2 border-solid border-white rounded-full text-xl font-semibold bg-blue-500 text-white"></span>
+        </div>
+        <div class="tooltip-inner text-black" x-html="tooltip.content"></div>
+      </div>
+      <div class="w-3/4 large-diagram-svg-container diagram-animate">
+        {{ .image.Content | safeHTML }}
+      </div>
+    </div>
+  </template>
+</div>
+{{ define "render-svg-button" }}
+  {{ $rstyles :="rounded-md" }}
+  {{ with .placement }}
+    {{ if eq . "left" }}
+      {{ $rstyles = "-ml-px rounded-l-md" }}
+    {{ end }}
+  {{ end }}
+  {{ if eq . "right" }}
+    {{ $rstyles = "rounded-r-md" }}
+  {{ end }}
+
+
+  <button
+    type="button"
+    @click.prevent="{{ .onclick }}"
+    class="{{ $rstyles }} relative inline-flex items-center bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
+    <span class="sr-only">{{ .sronly }}</span>
+    <svg class="fill-current h-5 w-5">
+      <use href="{{ .iconhref }}"></use>
+    </svg>
+  </button>
+{{ end }}

@@ -8,7 +8,7 @@ published: 2021-09-17
 modified_by:
   name: Linode
 title: "Kubernetes Security Best Practices Overview"
-title_meta: "Kubernetes Security Best Practices: A Beginner's Overview"
+title_meta: "Kubernetes Security Best Practices"
 authors: ["Jack Wallen"]
 ---
 

@@ -6,6 +6,8 @@ expiryDate: 2023-05-01
 authors: ["Linode"]
 ---
 
+{{< content "dbass-eos" >}}
+
 {{< content "managed-database-mongodb-private-notice-shortguide">}}
 
 To connect to a MongoDB Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.

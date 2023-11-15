@@ -62,9 +62,9 @@ Pixelfed requires a large number of supporting applications, including a full LA
 
 The following instructions explain how to install Pixelfed on Ubuntu 22.04, but are generally applicable for most Linux distributions.
 
-{{< caution >}}
+{{< note type="warning" >}}
 The Pixelfed application is still in Beta mode and users might run into defects. Therefore, sites requiring high availability should consider another option.
-{{< /caution >}}
+{{< /note >}}
 
 ### Install the LEMP Stack and Other Prerequisites
 

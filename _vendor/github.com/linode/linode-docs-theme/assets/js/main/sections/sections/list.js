@@ -1,12 +1,18 @@
 'use strict';
 
-import { setDocumentMeta } from '../../helpers/index';
+import { getIntParamFromLocation, setDocumentMeta, updatePaginationParamInLocation } from '../../helpers/index';
 import { newCreateHref } from '../../navigation/index';
-import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from 'js/main/search/request';
+import {
+	newRequestCallback,
+	newRequestCallbackFactoryTarget,
+	SearchGroupIdentifier,
+	RequestCallBackStatus,
+} from 'js/main/search/request';
 
 var debug = 0 ? console.log.bind(console, '[list]') : function () {};
 
 const searchName = 'search:data-categories-filtered';
+const pageKey = 'page';
 const designMode = false;
 
 export function newSectionsController(searchConfig, params) {
@@ -16,9 +22,10 @@ export function newSectionsController(searchConfig, params) {
 
 	const hrefFactory = newCreateHref(searchConfig);
 
-	const activateSearches = function (self) {
-		self.$store.search.updateLocationWithQuery();
-
+	const updateSearches = function (self, page) {
+		if (page < 1) {
+			page = 1;
+		}
 		let factory = {
 			status: function () {
 				return RequestCallBackStatus.Once;
@@ -29,7 +36,7 @@ export function newSectionsController(searchConfig, params) {
 				encodeURIComponent(query.lndq);
 
 				let request = {
-					page: 0,
+					page: page - 1, // paginator is 1 based, Algolia is 0 based.
 					indexName: searchConfig.indexName(searchConfig.sections_merged.index_by_pubdate),
 					facets: ['section.*'],
 					filters: filters,
@@ -37,18 +44,36 @@ export function newSectionsController(searchConfig, params) {
 					params: `query=${query.lndq}`,
 				};
 
-				return {
-					request: request,
-					callback: (result) => {
-						self.$store.search.withBlank(() => {
-							self.handleResult(result);
+				return newRequestCallback(request, (result) => {
+					self.$store.search.withBlank(() => {
+						self.handleResult(result);
+						self.$nextTick(() => {
+							self.$store.nav.scrollToNavBarIfPinned();
 						});
-					},
-				};
+					});
+				});
 			},
 		};
 
 		self.$store.search.addSearches(newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.Main));
+	};
+
+	const activateSearches = function (self) {
+		self.$store.search.updateLocationWithQuery();
+		let page = getIntParamFromLocation(pageKey);
+		if (page < 1) {
+			page = 1;
+		}
+		self.data.page = page;
+		self.$watch('data.page', (value, oldValue) => {
+			if (value === oldValue) {
+				return;
+			}
+			updatePaginationParamInLocation(pageKey, value, 1);
+			updateSearches(self, value);
+		});
+
+		updateSearches(self, self.data.page);
 	};
 
 	function sortObject(obj, less) {
@@ -121,7 +146,7 @@ export function newSectionsController(searchConfig, params) {
 			result: {
 				hits: [],
 			},
-			page: [],
+			page: 1, // For pagination.
 			meta: {
 				title: '',
 				excerpt: '',
@@ -320,6 +345,14 @@ export function newSectionsController(searchConfig, params) {
 
 		toggleShowGuides: function () {
 			this.uiState.listGuidesPerSection = !this.uiState.listGuidesPerSection;
+		},
+
+		incrPage: function (num) {
+			let page = this.data.page + num;
+			if (page < 1) {
+				page = 1;
+			}
+			this.data.page = page;
 		},
 	};
 }

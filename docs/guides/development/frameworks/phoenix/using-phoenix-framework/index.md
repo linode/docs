@@ -55,7 +55,7 @@ To get started with Phoenix, you need to install the framework's application gen
 
 The Phoenix framework uses the Elixir programming language. To run Phoenix, you need to have Elixir installed on your system. And, moreover, you need the Erlang VM that Elixir runs on.
 
-Elixir maintains packages within the default repositories for most major Linux distributions. Typically ou can install Elixir with a single command.
+Elixir maintains packages within the default repositories for most major Linux distributions. Typically you can install Elixir with a single command.
 
 Below are commands to install Elixir for a range of distributions. You can find more covered in Elixir's [official installation guide](https://elixir-lang.org/install.html#gnulinux).
 
