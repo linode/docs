@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Managed cloud-based load balancing service that provides high availability and horizontal scaling to any application."
-modified: 2022-08-24
+modified: 2023-11-14
 aliases: ['/platform/nodebalancer/','/nodebalancers/','/guides/platform/nodebalancer/']
 ---
 
