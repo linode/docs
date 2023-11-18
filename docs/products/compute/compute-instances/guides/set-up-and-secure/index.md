@@ -498,7 +498,7 @@ Lastly, edit the SSH configuration file to disallow root login and disable passw
         ```command
         sudo systemctl restart sshd
         ```
-
+        {{< note >}} If you are using Ubuntu 21.10 or later `sshd` uses socket-based activation, hence you need to run `systemctl enable --now ssh.service`.{{< /note >}}
     -   If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
 
         ```command
