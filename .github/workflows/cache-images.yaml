@@ -11,8 +11,15 @@ env:
   hugo_image_cache_name: hugo-generated-images
   hugo_image_cache_path: /home/runner/work/docs/docs/docs-repo/resources/_gen/images/
 
+permissions:
+  contents: read #  to fetch code (actions/checkout)
+
 jobs:
   cache-images:
+    permissions:
+      contents: read #  to fetch code (actions/checkout)
+      actions: write #  to delete action cache
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
