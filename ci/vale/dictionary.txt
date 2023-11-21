@@ -170,6 +170,7 @@ basename
 bashrc
 bc
 bdd
+bellovin
 benchmarked
 barchart
 berkshelf
@@ -291,6 +292,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+cheswick
 Chevereto
 chgrp
 chipset
@@ -700,6 +702,7 @@ filemask
 findtime
 finnix
 firefart
+firehose
 firewalld
 firewalled
 firewalling
@@ -1356,6 +1359,7 @@ metroid
 michael
 microblogging
 microblogs
+microsegmentation
 microservice
 microservices
 microsite
@@ -1529,6 +1533,7 @@ nfs
 nfsd
 nftables
 ng
+ngfws
 nginx
 ngular
 nginxdemos
@@ -2205,6 +2210,7 @@ sublanguage
 submenu
 subnet
 subnets
+subnetting
 subnetwork
 subprocess
 subprocesses
