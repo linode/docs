@@ -8,12 +8,9 @@ authors: ["David Robert Newman"]
 published: 2023-11-20
 modified_by:
   name: Linode
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-Moving to the cloud has many advantages, including flexibility, reduced management overhead, performance, and security. Cloud-based firewalls can offer finer-grained access control and more comprehensive threat mitigation than their traditional hardware-based counterparts.
+Moving to the cloud has many advantages, including flexibility, reduced management overhead, performance, and security. [Cloud-based firewalls](/docs/products/networking/cloud-firewall/) can offer finer-grained access control and more comprehensive threat mitigation than their traditional hardware-based counterparts.
 
 This guide outlines best practices for cloud-based firewall deployment. This includes network design review, creation of a security policy, firewall rule ordering, log analysis, and regular auditing.
 
@@ -57,17 +54,17 @@ Many cloud-based services use multi-tier network designs. Here, an Internet-faci
 
 A best practice is to use IP subnetting to segment each server tier and use firewall rules that enforce access policies between tiers. This is the opposite of the M&M model as it protects against unauthorized traffic at every tier, not just at the perimeter.
 
-## Block All Traffic By Default
+## Block All Traffic by Default
 
 "Live and let live" may be excellent advice in real life, but when it comes to information security the opposite is true. The general principle of building a firewall rule set is that everything is prohibited except that which is explicitly permitted.
 
 Many firewall implementations read rules from first to last. Your very first firewall rule needs to deny all traffic by default. After that, you can add rules that allow the specific users and applications your security policy allows. The initial default-deny rule drops everything else.
 
-## Allow Specific Traffic Only As Needed
+## Allow Specific Traffic Only as Needed
 
 The firewall rules you add after the default-deny policy need to forward only that traffic your security policy explicitly allows. This is known as the "principle of least privilege", where firewall rules implement the exact specifications from the security policy, and nothing more.
 
-For example, if DNS lookups go through a firewall, its rules must permit access for UDP port 53 traffic, but not TCP port 53, which is usually reserved for zone transfers. The least-privileged approach applies to servers or server groups as well as traffic types. The same rule that allows DNS lookups could also permit forwarding only to an authorized set of DNS servers, rather than to just any host.
+For example, if DNS lookups go through a firewall, its rules must permit access for UDP port 53 traffic, but not TCP port 53, which is usually reserved for zone transfers. The least-privileged approach applies to servers or server groups as well as traffic types. The same rule that allows DNS lookups could also permit forwarding only to an authorized set of DNS servers rather than to any host.
 
 The opposite of the principle of the least privilege is a very common error in firewall rule set design. This is the idea that "my network can do no wrong" and thus it’s okay to allow all outbound traffic.
 
@@ -79,9 +76,9 @@ This is where the principle of least privilege comes in. It’s important to def
 
 ## Run Frequent Audits
 
-An extension of the axiom "security is a process, not a product" is that all security policies and firewall rule sets change over time. Network administrators may poke holes through firewalls for web applications that require access on non-standard ports. Users may require access to work from home, something perhaps not contemplated in the original security policy. New classes of threats regularly appear.
+The axiom "security is a process, not a product" means that all security policies and firewall rule sets must change over time. Network administrators may poke holes through firewalls for web applications that require access on non-standard ports. Users may require access to work from home, something perhaps not contemplated in the original security policy. New classes of threats regularly appear.
 
-As a result, your organization’s security readiness weakens over time unless you regularly review the policies and rules put in place.
+As a result, your organization’s security readiness weakens over time unless you regularly review the policies and rules in place.
 
 Regular audits of security policies and firewall rule sets can help answer questions like:
 
@@ -111,10 +108,10 @@ While it’s best practice to keep all cloud-based hosts, containers, and applic
 
 An important corollary is that firewalls with UTM features must keep their antivirus and IDS/IPS signature libraries up to date. Security researchers uncover new attacks on a daily basis. Additionally, many attackers "fuzz" a given attack, slightly altering it in the hope of eluding a matching IDS/IPS signature. If your firewall provider offers an automatic update service, use it.
 
-This is one area where some cloud-based firewalls have a major advantage over their hardware-based counterparts. Many cloud firewalls operate on a firewall-as-a-service (FWasS) model. This means you don’t need to perform updates as your provider handles that for you.
+This is one area where some cloud-based firewalls have a major advantage over their hardware-based counterparts. Many cloud firewalls operate on a firewall-as-a-service (FWasS) model. You don’t need to perform updates because your provider handles that for you.
 
 If you do use a cloud-based version of a standalone firewall, be sure it’s hardened as well as updated. Disable unused services and accounts. Limit management access. Make regular backups of all configurations and databases. Securely send logs to a centralized security information and event management (SIEM) server that is itself hardened.
 
 ## Conclusion
 
-Cloud-based firewalls allow fine-grained control over all your platforms and applications. With the right combination of best practices you can ensure equal or better protection of your resources than a conventional hardware-based firewall provides. These include microsegmentation, logical rule ordering, monitoring, auditing, and updating.
+Cloud-based firewalls allow fine-grained control over all your platforms and applications. With the right combination of best practices, including microsegmentation, logical rule ordering, monitoring, auditing, and updating, you can ensure equal or better protection of your resources than a conventional hardware-based firewall provides.
