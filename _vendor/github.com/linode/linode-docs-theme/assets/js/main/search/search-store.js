@@ -155,7 +155,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 							},
 							{
 								query: query,
-							}
+							},
 						);
 					},
 				});
@@ -208,7 +208,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 								{
 									query: query,
 									fileCacheID: sectionKey,
-								}
+								},
 							);
 						},
 					};
@@ -241,12 +241,6 @@ export function newSearchStore(searchConfig, params, Alpine) {
 					{
 						indexName: searchConfig.indexName(searchConfig.meta_index),
 						params: 'query=&hitsPerPage=600',
-						// We load the Hugo data from the published JSON to save Algolia queries on
-						// load (for the breadcrumbs).
-						// This filter is just to save some bytes for when the Algolia data IS loaded,
-						// as the guides is the most populated section tree.
-						filters:
-							'NOT section:guides AND NOT section:api AND NOT section:products AND NOT section:content AND NOT section:development',
 					},
 					(result) => {
 						debug('withBlank.blank.metaResult:', result);
@@ -259,7 +253,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 					},
 					{
 						fileCacheID: 'sectionsmeta',
-					}
+					},
 				),
 				newRequestCallback(
 					createSectionRequest(null),
@@ -273,8 +267,8 @@ export function newSearchStore(searchConfig, params, Alpine) {
 					},
 					{
 						fileCacheID: 'explorer-blank',
-					}
-				)
+					},
+				),
 			);
 		},
 	};
