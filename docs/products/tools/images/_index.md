@@ -50,7 +50,7 @@ Recovery Images, which are generated automatically after a Compute Instance is d
 
 ## Technical Specifications
 
-- **Maximum image size:** A Custom Image can be up to **6 GB\*** in size.
+- **Maximum image size:** A Custom Image can be up to **6 GB\*** in size when uncompressed.
 
 - **Account limits:** Each account can store up to **25\*** Custom Images, offering **150 GB\*** of combined storage for all images on the account.
 
