@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-10-06
+modified: 2023-10-26
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -23,12 +23,12 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 
 | Data Center | Status | Region ID |
 | -- | -- | -- |
-| Amsterdam, Netherlands | *Limited beta* | `nl-ams` |
+| Amsterdam, Netherlands | **Now available to all customers** | `nl-ams` |
 | Chennai, India | **Now available to all customers** | `in-maa` |
 | Chicago, IL, USA | **Now available to all customers** | `us-ord` |
 | Jakarta, Indonesia | **Now available to all customers** | `id-cgk` |
-| Los Angeles, CA, USA | *Limited beta* | `us-lax` |
-| Miami, FL, USA | *Limited beta* | `us-mia` |
+| Los Angeles, CA, USA | **Now available to all customers** | `us-lax` |
+| Miami, FL, USA | **Now available to all customers** | `us-mia` |
 | Milan, Italy | **Now available to all customers** | `it-mil` |
 | Osaka, Japan | **Now available to all customers** | `jp-osa` |
 | Paris, France | **Now available to all customers** | `fr-par` |
@@ -63,8 +63,8 @@ Each data center in this beta is slated to have most of Akamai’s cloud computi
 
 The new data centers feature enhanced Object Storage, which improves upon the consistency and reliability of the existing service and offers increased capacity (outlined below). Review the [Availability](/docs/products/storage/object-storage/#availability) and [Specifications](/docs/products/storage/object-storage/#specifications) section of the Object Storage documentation for more details.
 
-- **Max storage** (*per region, per account*): 5 TB (up to 1,000 TB by request)
-- **Max # of objects** (*per region, per account*): 50 million (up to 1 billion by request)
+- **Max storage** (*per region, per account*): 100 TB (up to 1,000 TB by request)
+- **Max # of objects** (*per region, per account*): 100 million (up to 1 billion by request)
 
 The following table includes the IDs and URLs of each new Object Storage cluster:
 
@@ -86,7 +86,9 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 
 ### Premium Plans
 
-A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU plan type for Compute Instances is available only in the new data centers. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis. The table below outlines the pricing and hardware specifications for Premium tier Dedicated CPU Instances:
+A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU Compute Instance plan is available only in the new data centers. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis.
+
+The table below outlines the default pricing and hardware specifications for Premium tier Dedicated CPU Instances. [Pricing](https://www.linode.com/pricing/) may vary by region:
 
 | <div class="w-40">Plan</div> | <div class="w-36">Price</div> | RAM (GB) | CPU Cores | Storage (GB) | Transfer (TB) | Network In/Out (Gbps)
 | --- |  --- | --- | --- | --- | --- | --- | --- |
@@ -103,7 +105,7 @@ A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) De
 The new Premium plans can also be deployed as worker nodes in Linode Kubernetes Engine (LKE) clusters. There is no additional cost for Premium plan LKE worker nodes beyond the price listed in the Premium pricing table above.
 
 {{< note isCollapsible=true title="Details of the Backup service for Premium Plans" >}}
-Optionally, you can also add on the [Backup](/docs/products/storage/backups/) service to a Premium instance. The price for this service is outlined below:
+Optionally, you can also add the [Backup](/docs/products/storage/backups/) service to a Premium instance. The default prices for this service are outlined below. [Pricing](https://www.linode.com/pricing/) may vary by region:
 
 | <div class="w-40">Plan</div> | Price for the Backup service |
 | --- | --- |

@@ -3,7 +3,7 @@ description: "Yacht is a web interface for managing Docker containers, with an e
 keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
 tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
 published: 2021-02-23
-modified: 2022-12-16
+modified: 2023-10-27
 image: DeployYacht_marketplaceapps.png
 modified_by:
   name: Linode
@@ -15,10 +15,6 @@ authors: ["Linode"]
 ---
 
 [Yacht](https://yacht.sh/) is a web interface for managing Docker containers, with an emphasis on templating to provide easy deployments. The ultimate goal of Yacht is to make Docker easy for anyone to use and manage with templates, template variables, and an intuitive UI.
-
-{{< note type="alert" >}}
-Keep in mind, Yacht is still in alpha and is not recommended for production use.
-{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -32,7 +28,7 @@ Keep in mind, Yacht is still in alpha and is not recommended for production use.
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11, Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Yacht Options
