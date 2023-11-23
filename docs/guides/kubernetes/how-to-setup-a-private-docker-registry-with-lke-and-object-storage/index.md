@@ -349,7 +349,9 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
         - secretName: letsencrypt-secret-prod
           hosts:
           - registry.example.com
-    storage: s3
+    storage:
+    s3:
+      multipartcopythresholdsize: 5368709120
     secrets:
       htpasswd: |-
         example_user:$2y$05$8VhvzCVCB4txq8mNGh8eu.8GMyBEEeUInqQJHKJUD.KUwxastPG4m
