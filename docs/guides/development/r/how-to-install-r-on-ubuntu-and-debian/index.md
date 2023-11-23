@@ -27,6 +27,9 @@ Although R can be installed through the default Debian or Ubuntu repository, the
 ## Install R on Ubuntu 16.04 and Debian 9
 
 {{< content "install_r_ubuntu" >}}
+{{< note >}}
+To install R on the Ubuntu 20.04 and later or Debian 10 and later run `sudo apt update && install r-base`. 
+{{< /note >}}
 
 ## Download Packages from CRAN
 
@@ -123,8 +126,8 @@ The R interpreter lacks features such as a debugger which may be needed for larg
 
         sudo dpkg -i rstudio-xenial-1.1.414-amd64.deb
 
-    {{< note respectIndent=false >}}
-If there are missing dependencies, those can be installed with the following command:
+    {{< note >}}
+     If there are missing dependencies, those can be installed with the following command:
 
     sudo apt install -f
-{{< /note >}}
+   {{< /note >}}
