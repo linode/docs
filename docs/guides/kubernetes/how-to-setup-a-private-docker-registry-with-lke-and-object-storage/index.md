@@ -349,9 +349,7 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
         - secretName: letsencrypt-secret-prod
           hosts:
           - registry.example.com
-    storage:
-    s3:
-      multipartcopythresholdsize: 5368709120
+    storage: s3
     secrets:
       htpasswd: |-
         example_user:$2y$05$8VhvzCVCB4txq8mNGh8eu.8GMyBEEeUInqQJHKJUD.KUwxastPG4m
@@ -364,7 +362,14 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
       secure: true
       bucket: registry
     ```
-
+    {{< note >}}
+    To ensure that all the layers are uploaded when you push the image to your Docker registry, set the value of  the `multipartcopythresholdsize` in the docker-configs.yaml file as follows:
+    ```
+    storage:
+    s3:
+      multipartcopythresholdsize: 5368709120
+    ```
+    {{< /note >}}
     - The NGINX Ingress annotation `nginx.ingress.kubernetes.io/proxy-body-size: "0"` disables a [maximum allowed size client request body](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size) check and ensures that you won't receive a `413` error when pushing larger Docker images to your registry. The values for `nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"` and `nginx.ingress.kubernetes.io/proxy-send-timeout: "6000"` are sane values to begin with, but [may be adjusted as needed](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#custom-timeouts).
 
 1.  Deploy your Docker registry using the configurations you created in the previous step:
