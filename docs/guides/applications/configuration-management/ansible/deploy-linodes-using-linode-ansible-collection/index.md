@@ -121,7 +121,7 @@ Create an Ansible configuration file called `ansible.cfg` with a text editor of 
 
 {{< file "~/development/ansible.cfg">}}
 [defaults]
-VAULT_PASSWORD_FILE = ./vault-pass
+VAULT_PASSWORD_FILE = ./.vault-pass
 {{< /file >}}
 
 These lines specify the location of your password file.
