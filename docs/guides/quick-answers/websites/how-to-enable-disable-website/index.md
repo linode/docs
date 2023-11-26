@@ -17,7 +17,7 @@ authors: ["Jeff Novotny"]
 
 There may be times when you have to temporarily disable a website. For example, you might have to satisfy a legal requirement or make an emergency content change. Fortunately, you do not have to completely delete or radically reconfigure a website to disable it. This guide provides instructions on how to quickly disable and re-enable a website, based on the webserver and Linux distribution.
 
-The instructions for disabling and re-enabling a website depend on the webserver that is installed on your Akamai Connected Cloud. See the section that corresponds to sites enabled with NGINX or Apache. Throughout these instructions, replace the placeholder site name of `example.com` with your own domain name.
+The instructions for disabling and re-enabling a website depend on the webserver that is installed on your Linode instance. See the section that corresponds to sites-enabled with NGINX or Apache. Throughout these instructions, replace the placeholder site name of `example.com` with your own domain name.
 
 {{< note >}}
 Taking a site offline, even temporarily, can affect its *Search Engine Optimization* (SEO) ratings. If you only want to briefly disable a site for maintenance reasons, consider using a temporary redirect instead.
@@ -25,11 +25,11 @@ Taking a site offline, even temporarily, can affect its *Search Engine Optimizat
 
 ## Disable and Enable a Website on the NGINX Web Server
 
-By default, [*NGINX*](https://www.nginx.com/) installed on Ubuntu and Debian systems use the `sites-available` and `sites-enabled` directories or folders to control website access. This approach is often used even on other Linux systems. If the Akamai Connected Cloud is already using these two directories, follow the instructions in the [Use the Sites-Enabled Directory](#use-the-sites-enabled-directory) subsection. Otherwise, skip to the [Use the Virtual Host File on the NGINX Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-nginx-web-server) subsection.
+By default, [*NGINX*](https://www.nginx.com/) installed on Ubuntu and Debian systems uses the `sites-available` and `sites-enabled` directories or folders to control website access. This approach is often used even on other Linux systems. If the Linode instance is already using these two directories, follow the instructions in the [Use the Sites-Enabled Directory](#use-the-sites-enabled-directory) subsection. Otherwise, skip to the [Use the Virtual Host File on the NGINX Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-nginx-web-server) subsection.
 
 ### Use the Sites-Enabled Directory
 
-Ubuntu systems have a `/etc/nginx/sites-available` directory, which contains *virtual host* (vhost) files for each domain hosted on the Akamai Connected Cloud. For instance, the domain for `example.com` typically has a corresponding virtual host file named `/etc/nginx/sites-available/www.example.com.conf`. The filename might not include the `.conf` extension in all cases.
+Ubuntu systems have a `/etc/nginx/sites-available` directory, which contains *virtual host* (vhost) files for each domain hosted on the Linode instance. For instance, the domain for `example.com` typically has a corresponding virtual host file named `/etc/nginx/sites-available/www.example.com.conf`. The filename might not include the `.conf` extension in all cases.
 
 To enable a website, you must create a symbolic link inside the `/etc/nginx/sites-enabled` directory pointing to the actual vhost file in `/etc/nginx/sites-available`. The `nginx.conf` file reviews the contents of the `sites-enabled` directory and determines which virtual host files to include. These domains are made available to potential viewers. Adding a symbolic link leading to a virtual host file enables the associated site while removing the symbolic link disables it.
 
@@ -41,7 +41,7 @@ include /etc/nginx/sites-enabled/*;
 
 To disable and enable a website, follow these directions.
 
-1.  To find the name of the domain, list all of the sites hosted on the Akamai Cloud using the following command:
+1.  To find the name of the domain, list all of the sites hosted on the Linode instance using the following command:
 
     ```command
     ls /etc/nginx/sites-available
@@ -97,7 +97,7 @@ Some Linux systems do not use the `sites-available` and `sites-enabled` director
     sudo systemctl reload nginx
     ```
 
-1.  Enter the domain name in the browser. The site should no longer resolve.
+1.  Enter the domain name in the browser. The site should no longer be resolved.
 
 1.  To re-enable the site, rename the virtual host file back to its original name.
 
@@ -108,7 +108,7 @@ Some Linux systems do not use the `sites-available` and `sites-enabled` director
 1.  Reload NGINX and confirm the site is accessible again.
 
 {{< note >}}
-There could be cases where a website does not have a separate virtual host file. This might occur if it is the only site on the Akamai Connected Cloud, or if the system is using a non-standard configuration. In this case, comment out all the lines in the website's vhost entry, using the `#` symbol. See the [Use the Virtual Host File on the Apache Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-apache-web-server) section of this guide for more information.
+There could be cases where a website does not have a separate virtual host file. This might occur if it is the only site on the Linode instance, or if the system is using a non-standard configuration. In this case, comment out all the lines in the website's vhost entry, using the `#` symbol. See the [Use the Virtual Host File on the Apache Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-apache-web-server) section of this guide for more information.
 {{< /note >}}
 
 ## Disable and Enable a Website on the Apache Web Server
@@ -184,7 +184,7 @@ If the `a2dissite` and `a2ensite` tools are not installed, edit the virtual host
     sudo systemctl restart httpd.service
     ```
 
-1.  Try to access the domain using a web browser. The site should no longer resolve.
+1.  Try to access the domain using a web browser. The site should no longer be resolved.
 
 1.  To re-enable the site, open the `.conf` file and uncomment these lines. Remove the `#` symbols preceding each of the lines in the file.
 
@@ -203,4 +203,4 @@ If the `a2dissite` and `a2ensite` tools are not installed, edit the virtual host
     sudo systemctl restart httpd.service
     ```
 
-1. Use a web browser to ensure the site is now available.
+1.  Use a web browser to ensure the site is now available.
