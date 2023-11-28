@@ -271,13 +271,17 @@ Update your system by running `yum update`.
 
 ### Example IP Addresses
 
-Example IPs should use the documentation address blocks given in [IETF RFC 5737](https://tools.ietf.org/html/rfc5737). These are:
+When referencing IP address in the documentation, any real address should be obscured unless it is intended for the user to access that IP address. When possible, use the documentation address blocks given in [IETF RFC 5737](https://tools.ietf.org/html/rfc5737) and [IETF RFC 3849](https://datatracker.ietf.org/doc/html/rfc3849).
 
-- 192.0.2.0/24
-- 198.51.100.0/24
-- 203.0.113.0/24
+-   **IPv4:** 192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24
 
-In general, use these address blocks in order. Use the first block (`192.0.2.0/24`) for the first example IP address that is needed. If another IP address is needed, pull from the next block. If the example text is referencing the IP address of a Compute Instance, do not use 0 or 1 as the last segment of the IP address as they are not used for Compute Instances. For instance, `192.0.2.17` is acceptable but `192.0.2.0` and `192.0.2.1` are not.
+    *Examples:* 192.0.2.84, 192.0.2.142, 198.51.100.65, 198.51.100.231, 203.0.113.2, 203.0.113.97
+
+    In general, use these address blocks in order. Use the first block (`192.0.2.0/24`) for the first example IP address that is needed. If another IP address is needed, pull from the next block. If the example text is referencing the IPv4 address of a Compute Instance, do not use 0 or 1 as the last segment of the IP address as they are not used for Compute Instances. For instance, `192.0.2.17` is acceptable but `192.0.2.0` and `192.0.2.1` are not.
+
+-   **IPv6:** 2001:DB8::/32
+
+    *Examples:* 2001:db8:1:1:1:1:1:1, 2001:db8::f03c:485f:b84e:6534
 
 ### External Resources/More Information
 
