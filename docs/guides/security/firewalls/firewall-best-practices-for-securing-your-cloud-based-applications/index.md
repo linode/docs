@@ -1,11 +1,11 @@
 ---
 slug: firewall-best-practices-for-securing-your-cloud-based-applications
-title: "Firewall Best Practices for Securing Your Cloud Based Applications"
+title: "Firewall Best Practices for Securing Your Cloud-Based Applications"
 description: 'Explore the firewall best practices to secure cloud-based applications, from security policy and network design to rule sets, audits, logs, and updates.'
 keywords: ['cloud-based firewall','block malicious traffic','stop ddos attacks','unified threat manager','security tool','network security','application security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-11-20
+published: 2023-11-28
 modified_by:
   name: Linode
 ---
