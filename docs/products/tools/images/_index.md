@@ -6,7 +6,7 @@ keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/guides/linode-images/','/linode-images/','/platform/disk-images/linode-images/','/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/platform/disk-images/linode-images-new-manager/']
 published: 2020-06-02
-modified: 2022-07-12
+modified: 2023-11-29
 tab_group_main:
     is_root: true
     title: Overview
@@ -50,7 +50,7 @@ Recovery Images, which are generated automatically after a Compute Instance is d
 
 ## Technical Specifications
 
-- **Maximum image size:** A Custom Image can be up to **6 GB\*** in size when uncompressed.
+- **Maximum image size:** A Custom Image can be up to **6 GB\*** in size. When uploading a custom image, this is the maximum _uncompressed_ size.
 
 - **Account limits:** Each account can store up to **25\*** Custom Images, offering **150 GB\*** of combined storage for all images on the account.
 
