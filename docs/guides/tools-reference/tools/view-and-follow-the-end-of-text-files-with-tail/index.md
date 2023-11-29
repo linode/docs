@@ -83,6 +83,6 @@ Follow mode is very useful when troubleshooting issues because it allows you to 
 
 ### Filter with grep
 
-`tail` can be combined with [grep](/docs/guides/how-to-grep-for-text-in-files/) to filter the contents of a log file in real time. You can use this to track specific types of errors, such as 404 responses from an Apache web server:
+`tail` can be combined with [grep](/docs/guides/how-to-use-grep-command/) to filter the contents of a log file in real time. You can use this to track specific types of errors, such as 404 responses from an Apache web server:
 
     tail -F /var/log/apache2/access.log | grep "404"

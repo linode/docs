@@ -29,7 +29,7 @@ The `sort` command accepts input from a text file or standard output, sorts the 
 
     grep -i "retired" ~/roster.txt | sort
 
-This uses [grep](/docs/guides/how-to-grep-for-text-in-files/) to filter the `~/roster.txt` file for the string `retired`, regardless of case. These results are sent to `sort`, which reorders this output alphabetically.
+This uses [grep](/docs/guides/how-to-use-grep-command/) to filter the `~/roster.txt` file for the string `retired`, regardless of case. These results are sent to `sort`, which reorders this output alphabetically.
 
 In the default configuration, this `sort` prints the output on the terminal. To write this content to a file, redirect the output as in the following example:
 
