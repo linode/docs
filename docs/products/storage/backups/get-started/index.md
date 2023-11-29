@@ -37,7 +37,7 @@ These backups can be managed in the Cloud Manager under the **Backups** tab for 
 
 This page also provides a few other options, detailed below:
 
-- **Manual Snaphot:** Creates a new manual snapshot, overwriting any existing one. See [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/).
+- **Manual Snapshot:** Creates a new manual snapshot, overwriting any existing one. See [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/).
 
 - **Settings:** Allows you to schedule when automatic backups are generated. See [Schedule Backups](/docs/products/storage/backups/guides/schedule/).
 

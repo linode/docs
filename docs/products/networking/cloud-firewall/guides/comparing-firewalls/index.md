@@ -13,7 +13,7 @@ Linode's free Cloud Firewall service is a powerful firewall solution that operat
 - **Cost:** Free
 - **Interface:** Cloud Manager (graphic user interface), the Linode CLI (command-line interface), and the Linode API (application programming interface).
 - **Ease of use:** Relatively easy to configure using tools Linode customers may already be familiar with.
-- **Advanced configurability:** Supports many common firewall rules, but does not support all configuration options available on sofware-based solutions like nftables.
+- **Advanced configurability:** Supports many common firewall rules, but does not support all configuration options available on software-based solutions like nftables.
 - **Ideal use cases:**
     - Users wanting to conveniently configure firewalls using familiar Linode tooling.
     - Cascading rules over multiple servers simultaneously.

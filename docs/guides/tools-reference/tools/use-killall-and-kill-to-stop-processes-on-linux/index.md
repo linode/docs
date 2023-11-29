@@ -113,7 +113,7 @@ If you need to convert a signal name into a signal number, or a signal number in
 
 Use a utility like [htop](/docs/guides/linux-system-administration-basics/#monitor-processes-memory-and-cpu-usage-with-htop) or `top` to view a real time list of process and their consumption of system resources.
 
-Use the `ps` command to view processes that are currently running and their PIDs. The following example filters the list of all processes that are currently running for the string `emacs` using [grep](/docs/guides/how-to-grep-for-text-in-files/):
+Use the `ps` command to view processes that are currently running and their PIDs. The following example filters the list of all processes that are currently running for the string `emacs` using [grep](/docs/guides/how-to-use-grep-command/):
 
     $ ps aux | grep "emacs"
     username  3896  0.0  2.2  56600 44468 ?        Ss   Sep30   4:29 emacs
