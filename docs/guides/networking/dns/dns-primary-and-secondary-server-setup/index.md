@@ -21,7 +21,7 @@ Our guide [An Introduction to DNS on Linux](/docs/guides/introduction-to-dns-on-
 
 ## Before You Begin
 
-1.  Follow our Introduction to DNS on Linux(/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server (`ns1`).
+1.  Follow our [Introduction to DNS on Linux](/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server (`ns1`).
 
 1. Create two Compute instances for our secondary name servers. This guide requires two new Ubuntu 22.04 LTS instances (`ns2` and `ns3`) in addition to the primary name server (`ns1`).
 

@@ -639,6 +639,7 @@ examplesitename
 exampleuser
 exe
 executables
+execve
 exfiltrated
 exfiltrating
 exfiltration
@@ -1404,6 +1405,7 @@ mod_autoindex
 moddable
 modinfo
 modsecurity
+modularization
 Mojang
 moodle
 mongocryptd
@@ -1915,6 +1917,7 @@ remi
 remmina
 remotehost
 reparseGDBs
+replicants
 replicaset
 replicationcontrollers
 replset
@@ -2289,6 +2292,7 @@ teleporting
 tensorflow
 terrahelp
 terraria
+Terrastories
 tessian
 testdb
 testdeep
