@@ -1864,6 +1864,7 @@ readcaps
 reauthenticate
 reauthenticating
 readme
+READMEs
 readonly
 readwrite
 realtime
@@ -2239,6 +2240,7 @@ surbma
 suricata
 sury
 suse
+Sussman
 swappable
 swappiness
 svn
