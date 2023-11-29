@@ -1,11 +1,12 @@
 ---
 slug: front-line-best-practices-ansible
-title: "Top 12 Front-line Best Practices for Ansible Use"
+title: "Best Practices for Ansible"
+title_meta: "Top 12 Ansible Best Practices"
 description: 'Discover Ansible best practices and proven techniques for project organization, playbook content, documentation, testing, validation, and security.'
 keywords: ['ansible best practices','ansible documentation','ansible testing','ansible playbook']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Cameron Laird"]
-published: 2023-10-27
+published: 2023-11-28
 modified_by:
   name: Linode
 ---
@@ -18,9 +19,9 @@ Ansible figures prominently in DevOps. It allows Information Technology (IT) adm
 - [**Idempotency**](https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html#term-Idempotency): Gives safe and reliable results from unreliable components.
 - [**Portability**](https://www.ansible.com/blog/ansible-and-containers-why-and-how#:~:text=*%20Ansible%20playbooks%20are%20portable.&text=If%20you%20build%20a%20container%20with%20an%20Ansible%20playbook%2C%20you,choice%2C%20or%20on%20bare%20metal.): Operates consistently across different operating systems and into various flavors of cloud environments.
 
-Data centers effectively require Ansible, or one of its competitors. Businesses operating at the data center scale have requirements for reliability, economy, scalability, and flexibility. These are exactly the [advantages Ansible brings](https://www.neebal.com/blog/the-advantages-and-use-cases-of-ansible). It makes data center operations more cost-effective, predictable, resilient, and responsive.
+Data centers effectively require Ansible, or one of its competitors. Businesses operating at the data center scale have requirements for reliability, economy, scalability, and flexibility. These are exactly the advantages of Ansible. It makes data center operations more cost-effective, predictable, resilient, and responsive.
 
-## Ansible Fundmentals
+## Ansible Fundamentals
 
 The following is a list of key terms that cover the [fundamental components and concepts associated with Ansible](https://docs.ansible.com/ansible/latest/getting_started/basic_concepts.html):
 
@@ -103,7 +104,7 @@ Control verbosity of logging based on actual experience and measurements of the 
 
 Use Roles to modularize playbooks. Refer to [Ansible Galaxy](https://galaxy.ansible.com/ui/) for inspiration regarding useful definitions of Roles. Define your own choices in `requirements.yml`.
 
-Consider segmenting large and complex playbooks into multiple smaller ones, each with a focus on a specific component or functionality. The resulting bundle of playbooks is likely easier to manage than the original complete one. An alternative way to structure complex playbooks is with [tags](https://galaxy.ansible.com/ui/). Tags effectively disable or enable pieces of a playbook. For instance, it's sometimes benefifial to keep a playbook whole, while controlling distinct pieces within it.
+Consider segmenting large and complex playbooks into multiple smaller ones, each with a focus on a specific component or functionality. The resulting bundle of playbooks is likely easier to manage than the original complete one. An alternative way to structure complex playbooks is with [tags](https://galaxy.ansible.com/ui/). Tags effectively disable or enable pieces of a playbook. For instance, it's sometimes beneficial to keep a playbook whole, while controlling distinct pieces within it.
 
 Separate inventory, configuration, and variable information into environment-specific files.
 
@@ -127,7 +128,7 @@ Avoid shadowing [reserved keywords](https://docs.ansible.com/ansible/latest/refe
 
 Don't be afraid to make exceptions to these rules when appropriate. For example, abbreviate `gateway` down to `gw` if a particular team has a  well-understood, longstanding practice of doing so in other systems and languages beyond Ansible.
 
-Last but not leaast, always be consistent across playbooks and projects.
+Last but not least, always be consistent across playbooks and projects.
 
 ### Error Handling in Ansible
 
