@@ -15,7 +15,11 @@ published: 2022-09-08
 
 Figure 1 illustrates a media processing lifecycle that has two typical contributors.  The content creator produces some type of multimedia content, let’s assume a video in this case. Typically the original content is in a high quality format so that it can be archived in the highest quality possible so that it can be edited at any time or transformed into other outputs suitable for distribution.  Content distribution is the role in a workflow that takes the original high resolution format of the content and converts it into formats suitable for online distribution.  Let’s quickly break down some activities happening in this diagram as shown in numbered steps below.
 
-1. Prior to ingesting new content from a creator, a strategy is devised to understand what types of platforms, audiences, and devices the content will be distributed to. For example, over a decade ago, HTTP Live Streaming (HLS) was the ubiquitous format specified to support video playback on Apple devices.[^1]
+1. Prior to ingesting new content from a creator, a strategy is devised to understand what types of platforms, audiences, and devices the content will be distributed to. For example, over a decade ago, HTTP Live Streaming (HLS) was the ubiquitous format specified to support video playback on Apple devices.
+
+    {{< note >}}
+    While it is supported much more widely today beyond just Apple devices, there are always considerations for video distribution formats based on budgets, audiences, devices to be supported, geographic regions, etc.  It is the role of the content distribution team to understand what intake formats they are expecting from content creators (they typically standardize on acceptable formats), what destinations they will be publishing to, and what transcoded output formats they will need to support for those destinations as well as any ancillary content such as metadata and images.  Those concepts are encapsulated in transcoding system configurations called workflow specifications and transcode profiles and are defined prior to any content ingestion.  Argo Workflows is an example of a tool that supports DAG-based (Directed Acyclic Graph) Workflows which illustrate an example of how workflow specifications can be defined.  An open-source tool called PyTranscoder demonstrates how transcode profiles can be created for FFMPEG.
+    {{< /note >}}
 
 1. A content workflow is illustrated here and includes content creators sending content files into the media processing system.  A way to upload content into a Media Ingest Location (typically a file system, FTP/SFTP endpoint, cloud storage bucket, etc.)
 
@@ -41,9 +45,6 @@ Figure 1 illustrates a media processing lifecycle that has two typical contribut
 
 1. A system is set up to allow observability of the content workflows. Content distributors need to be able to handle errors, assess utilization, and make decisions based on the types of workloads their systems are processing.  A dashboard or tool to view and collect this information is key to keeping things running smoothly.
 {#figure-1-description .large-diagram}
-
-
-[^1]: While it is supported much more widely today beyond just Apple devices, there are always considerations for video distribution formats based on budgets, audiences, devices to be supported, geographic regions, etc.  It is the role of the content distribution team to understand what intake formats they are expecting from content creators (they typically standardize on acceptable formats), what destinations they will be publishing to, and what transcoded output formats they will need to support for those destinations as well as any ancillary content such as metadata and images.  Those concepts are encapsulated in transcoding system configurations called workflow specifications and transcode profiles and are defined prior to any content ingestion.  Argo Workflows is an example of a tool that supports DAG-based (Directed Acyclic Graph) Workflows which illustrate an example of how workflow specifications can be defined.  An open-source tool called PyTranscoder demonstrates how transcode profiles can be created for FFMPEG.
 
 ## Figure 2: Akamai Cloud Compute LKE with Argo Events and Argo Workflow
 
