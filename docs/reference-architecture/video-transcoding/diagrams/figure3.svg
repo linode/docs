@@ -33,9 +33,9 @@
   <defs
      id="defs2802">
     <style
-       id="style2561">.cls-1{fill:#a7cbd6;stroke:#0d90d4;}.cls-1,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9,.cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35,.cls-36,.cls-37,.cls-38,.cls-39,.cls-40,.cls-41,.cls-42{stroke-miterlimit:10;}.cls-1,.cls-9,.cls-10,.cls-11,.cls-13,.cls-25,.cls-36,.cls-41{stroke-width:2.0196px;}.cls-1,.cls-9,.cls-10,.cls-25,.cls-35,.cls-36,.cls-41{stroke-dasharray:0 12.1176;}.cls-1,.cls-25,.cls-41{opacity:.35;}.cls-2{fill:url(#linear-gradient-8);}.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-11,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-37,.cls-38,.cls-39,.cls-40{stroke:#fff;}.cls-2,.cls-3,.cls-4,.cls-19,.cls-20,.cls-21,.cls-22{stroke-width:2.7377px;}.cls-3{fill:url(#linear-gradient-9);}.cls-4{fill:url(#linear-gradient-7);}.cls-5{fill:url(#linear-gradient-57);}.cls-5,.cls-6,.cls-37,.cls-38{stroke-width:1.5172px;}.cls-6{fill:url(#linear-gradient-56);}.cls-43{filter:url(#luminosity-noclip-9);}.cls-44{filter:url(#luminosity-noclip-6);}.cls-45{filter:url(#luminosity-noclip-7);}.cls-46{filter:url(#luminosity-noclip-8);}.cls-47{filter:url(#luminosity-noclip-2);}.cls-48{filter:url(#luminosity-noclip-3);}.cls-49{filter:url(#luminosity-noclip-4);}.cls-50{filter:url(#luminosity-noclip-5);}.cls-51{filter:url(#luminosity-noclip);}.cls-52{fill:#f9b32d;}.cls-53{fill:#f6962f;}.cls-54{fill:#e8a83a;}.cls-55{fill:#ef754f;}.cls-56,.cls-57{fill:#fff;}.cls-58{fill:#fd8e3a;}.cls-59{fill:#e53d33;}.cls-60{fill:#bb2121;}.cls-61{fill:#319d4f;}.cls-62{fill:#d91f50;}.cls-63{fill:#10167a;}.cls-64{fill:#14a13b;}.cls-65{fill:#228ae5;}.cls-66{fill:#189bd7;}.cls-67{fill:#33bcea;}.cls-68{fill:#3838a3;}.cls-69{fill:#3a7aec;}.cls-70{fill:#3881a4;}.cls-71{fill:#393e44;}.cls-72{fill:#2dac75;}.cls-73{fill:#5145da;}.cls-7{fill:url(#linear-gradient-6);}.cls-7,.cls-8,.cls-23,.cls-24,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35{stroke-width:2.7px;}.cls-8{fill:url(#linear-gradient-2);}.cls-74{mask:url(#mask-9);}.cls-74,.cls-75,.cls-76,.cls-77,.cls-78,.cls-79,.cls-80,.cls-81,.cls-82,.cls-12,.cls-13,.cls-83,.cls-84,.cls-85,.cls-23,.cls-24,.cls-35,.cls-40,.cls-42{fill:none;}.cls-75{mask:url(#mask-8);}.cls-76{mask:url(#mask-2);}.cls-77{mask:url(#mask-3);}.cls-78{mask:url(#mask-6);}.cls-79{mask:url(#mask-7);}.cls-80{mask:url(#mask-4);}.cls-81{mask:url(#mask-5);}.cls-82{mask:url(#mask-1);}.cls-9{fill:url(#linear-gradient-14);}.cls-9,.cls-10,.cls-36{opacity:.75;stroke:#ff5224;}.cls-10{fill:url(#linear-gradient-12);}.cls-11{fill:url(#linear-gradient-31);fill-opacity:.3;}.cls-11,.cls-13{stroke-dasharray:0 3;}.cls-86{filter:url(#luminosity-noclip-10);}.cls-87{filter:url(#luminosity-noclip-12);}.cls-88{filter:url(#luminosity-noclip-11);}.cls-12{stroke-dasharray:0 5.4981;stroke-width:1.2251px;}.cls-12,.cls-24,.cls-35,.cls-41,.cls-42{stroke:#393e44;}.cls-14{fill:url(#linear-gradient-55);}.cls-14,.cls-15,.cls-16,.cls-17,.cls-40{stroke-width:3.4912px;}.cls-15{fill:url(#linear-gradient-40);}.cls-16{fill:url(#linear-gradient-41);}.cls-17{fill:url(#linear-gradient-47);}.cls-18{fill:url(#linear-gradient-61);stroke-width:2.3925px;}.cls-83{mask:url(#mask-10);}.cls-84{mask:url(#mask-11);}.cls-19{fill:url(#linear-gradient-62);}.cls-20{fill:url(#linear-gradient-63);}.cls-21{fill:url(#linear-gradient-13);}.cls-22{fill:url(#linear-gradient-10);}.cls-85{mask:url(#mask);}.cls-25{fill:url(#linear-gradient);stroke:#fd8e3a;}.cls-26{fill:url(#linear-gradient-15);}.cls-27{fill:url(#linear-gradient-33);}.cls-28{fill:url(#linear-gradient-32);}.cls-29{fill:url(#linear-gradient-37);}.cls-30{fill:url(#linear-gradient-36);}.cls-31{fill:url(#linear-gradient-39);}.cls-32{fill:url(#linear-gradient-35);}.cls-33{fill:url(#linear-gradient-34);}.cls-34{fill:url(#linear-gradient-38);}.cls-36{fill:url(#linear-gradient-11);}.cls-37{fill:url(#linear-gradient-5);}.cls-38{fill:url(#linear-gradient-4);}.cls-39{fill:url(#linear-gradient-3);stroke-width:.7556px;}.cls-57{fill-rule:evenodd;}.cls-89{fill:url(#linear-gradient-59);}.cls-90{fill:url(#linear-gradient-58);}.cls-91{fill:url(#linear-gradient-53);}.cls-92{fill:url(#linear-gradient-54);}.cls-93{fill:url(#linear-gradient-51);}.cls-94{fill:url(#linear-gradient-52);}.cls-95{fill:url(#linear-gradient-50);}.cls-96{fill:url(#linear-gradient-43);}.cls-97{fill:url(#linear-gradient-42);}.cls-98{fill:url(#linear-gradient-45);}.cls-99{fill:url(#linear-gradient-46);}.cls-100{fill:url(#linear-gradient-44);}.cls-101{fill:url(#linear-gradient-49);}.cls-102{fill:url(#linear-gradient-48);}.cls-103{fill:url(#linear-gradient-18);}.cls-104{fill:url(#linear-gradient-22);}.cls-105{fill:url(#linear-gradient-20);}.cls-106{fill:url(#linear-gradient-21);}.cls-107{fill:url(#linear-gradient-23);}.cls-108{fill:url(#linear-gradient-19);}.cls-109{fill:url(#linear-gradient-16);}.cls-110{fill:url(#linear-gradient-17);}.cls-111{fill:url(#linear-gradient-27);}.cls-112{fill:url(#linear-gradient-24);}.cls-113{fill:url(#linear-gradient-26);}.cls-114{fill:url(#linear-gradient-25);}.cls-115{fill:url(#linear-gradient-28);}.cls-116{fill:url(#linear-gradient-29);}.cls-117{fill:url(#linear-gradient-30);}.cls-41{fill:url(#linear-gradient-60);}.cls-42{stroke-width:1.8977px;}</style>
+       id="style2561">.cls-1{fill:#a7cbd6;stroke:#0d90d4;}.cls-1,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9,.cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35,.cls-36,.cls-37,.cls-38,.cls-39,.cls-40,.cls-41,.cls-42{stroke-miterlimit:10;}.cls-1,.cls-9,.cls-10,.cls-11,.cls-13,.cls-25,.cls-36,.cls-41{stroke-width:2.0196px;}.cls-1,.cls-9,.cls-10,.cls-25,.cls-35,.cls-36,.cls-41{stroke-dasharray:0 12.1176;}.cls-1,.cls-25,.cls-41{opacity:.35;}.cls-2{fill:url(#figure3-linear-gradient-8);}.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-11,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-37,.cls-38,.cls-39,.cls-40{stroke:#fff;}.cls-2,.cls-3,.cls-4,.cls-19,.cls-20,.cls-21,.cls-22{stroke-width:2.7377px;}.cls-3{fill:url(#figure3-linear-gradient-9);}.cls-4{fill:url(#figure3-linear-gradient-7);}.cls-5{fill:url(#figure3-linear-gradient-57);}.cls-5,.cls-6,.cls-37,.cls-38{stroke-width:1.5172px;}.cls-6{fill:url(#figure3-linear-gradient-56);}.cls-43{filter:url(#luminosity-noclip-9);}.cls-44{filter:url(#luminosity-noclip-6);}.cls-45{filter:url(#luminosity-noclip-7);}.cls-46{filter:url(#luminosity-noclip-8);}.cls-47{filter:url(#luminosity-noclip-2);}.cls-48{filter:url(#luminosity-noclip-3);}.cls-49{filter:url(#luminosity-noclip-4);}.cls-50{filter:url(#luminosity-noclip-5);}.cls-51{filter:url(#luminosity-noclip);}.cls-52{fill:#f9b32d;}.cls-53{fill:#f6962f;}.cls-54{fill:#e8a83a;}.cls-55{fill:#ef754f;}.cls-56,.cls-57{fill:#fff;}.cls-58{fill:#fd8e3a;}.cls-59{fill:#e53d33;}.cls-60{fill:#bb2121;}.cls-61{fill:#319d4f;}.cls-62{fill:#d91f50;}.cls-63{fill:#10167a;}.cls-64{fill:#14a13b;}.cls-65{fill:#228ae5;}.cls-66{fill:#189bd7;}.cls-67{fill:#33bcea;}.cls-68{fill:#3838a3;}.cls-69{fill:#3a7aec;}.cls-70{fill:#3881a4;}.cls-71{fill:#393e44;}.cls-72{fill:#2dac75;}.cls-73{fill:#5145da;}.cls-7{fill:url(#figure3-linear-gradient-6);}.cls-7,.cls-8,.cls-23,.cls-24,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35{stroke-width:2.7px;}.cls-8{fill:url(#figure3-linear-gradient-2);}.cls-74{mask:url(#mask-9);}.cls-74,.cls-75,.cls-76,.cls-77,.cls-78,.cls-79,.cls-80,.cls-81,.cls-82,.cls-12,.cls-13,.cls-83,.cls-84,.cls-85,.cls-23,.cls-24,.cls-35,.cls-40,.cls-42{fill:none;}.cls-75{mask:url(#mask-8);}.cls-76{mask:url(#mask-2);}.cls-77{mask:url(#mask-3);}.cls-78{mask:url(#mask-6);}.cls-79{mask:url(#mask-7);}.cls-80{mask:url(#mask-4);}.cls-81{mask:url(#mask-5);}.cls-82{mask:url(#mask-1);}.cls-9{fill:url(#figure3-linear-gradient-14);}.cls-9,.cls-10,.cls-36{opacity:.75;stroke:#ff5224;}.cls-10{fill:url(#figure3-linear-gradient-12);}.cls-11{fill:url(#figure3-linear-gradient-31);fill-opacity:.3;}.cls-11,.cls-13{stroke-dasharray:0 3;}.cls-86{filter:url(#luminosity-noclip-10);}.cls-87{filter:url(#luminosity-noclip-12);}.cls-88{filter:url(#luminosity-noclip-11);}.cls-12{stroke-dasharray:0 5.4981;stroke-width:1.2251px;}.cls-12,.cls-24,.cls-35,.cls-41,.cls-42{stroke:#393e44;}.cls-14{fill:url(#figure3-linear-gradient-55);}.cls-14,.cls-15,.cls-16,.cls-17,.cls-40{stroke-width:3.4912px;}.cls-15{fill:url(#figure3-linear-gradient-40);}.cls-16{fill:url(#figure3-linear-gradient-41);}.cls-17{fill:url(#figure3-linear-gradient-47);}.cls-18{fill:url(#figure3-linear-gradient-61);stroke-width:2.3925px;}.cls-83{mask:url(#mask-10);}.cls-84{mask:url(#mask-11);}.cls-19{fill:url(#figure3-linear-gradient-62);}.cls-20{fill:url(#figure3-linear-gradient-63);}.cls-21{fill:url(#figure3-linear-gradient-13);}.cls-22{fill:url(#figure3-linear-gradient-10);}.cls-85{mask:url(#mask);}.cls-25{fill:url(#figure3-linear-gradient);stroke:#fd8e3a;}.cls-26{fill:url(#figure3-linear-gradient-15);}.cls-27{fill:url(#figure3-linear-gradient-33);}.cls-28{fill:url(#figure3-linear-gradient-32);}.cls-29{fill:url(#figure3-linear-gradient-37);}.cls-30{fill:url(#figure3-linear-gradient-36);}.cls-31{fill:url(#figure3-linear-gradient-39);}.cls-32{fill:url(#figure3-linear-gradient-35);}.cls-33{fill:url(#figure3-linear-gradient-34);}.cls-34{fill:url(#figure3-linear-gradient-38);}.cls-36{fill:url(#figure3-linear-gradient-11);}.cls-37{fill:url(#figure3-linear-gradient-5);}.cls-38{fill:url(#figure3-linear-gradient-4);}.cls-39{fill:url(#figure3-linear-gradient-3);stroke-width:.7556px;}.cls-57{fill-rule:evenodd;}.cls-89{fill:url(#figure3-linear-gradient-59);}.cls-90{fill:url(#figure3-linear-gradient-58);}.cls-91{fill:url(#figure3-linear-gradient-53);}.cls-92{fill:url(#figure3-linear-gradient-54);}.cls-93{fill:url(#figure3-linear-gradient-51);}.cls-94{fill:url(#figure3-linear-gradient-52);}.cls-95{fill:url(#figure3-linear-gradient-50);}.cls-96{fill:url(#figure3-linear-gradient-43);}.cls-97{fill:url(#figure3-linear-gradient-42);}.cls-98{fill:url(#figure3-linear-gradient-45);}.cls-99{fill:url(#figure3-linear-gradient-46);}.cls-100{fill:url(#figure3-linear-gradient-44);}.cls-101{fill:url(#figure3-linear-gradient-49);}.cls-102{fill:url(#figure3-linear-gradient-48);}.cls-103{fill:url(#figure3-linear-gradient-18);}.cls-104{fill:url(#figure3-linear-gradient-22);}.cls-105{fill:url(#figure3-linear-gradient-20);}.cls-106{fill:url(#figure3-linear-gradient-21);}.cls-107{fill:url(#figure3-linear-gradient-23);}.cls-108{fill:url(#figure3-linear-gradient-19);}.cls-109{fill:url(#figure3-linear-gradient-16);}.cls-110{fill:url(#figure3-linear-gradient-17);}.cls-111{fill:url(#figure3-linear-gradient-27);}.cls-112{fill:url(#figure3-linear-gradient-24);}.cls-113{fill:url(#figure3-linear-gradient-26);}.cls-114{fill:url(#figure3-linear-gradient-25);}.cls-115{fill:url(#figure3-linear-gradient-28);}.cls-116{fill:url(#figure3-linear-gradient-29);}.cls-117{fill:url(#figure3-linear-gradient-30);}.cls-41{fill:url(#figure3-linear-gradient-60);}.cls-42{stroke-width:1.8977px;}</style>
     <linearGradient
-       id="linear-gradient"
+       id="figure3-linear-gradient"
        x1="1075.9991"
        y1="-86.0011"
        x2="3198.3987"
@@ -53,7 +53,7 @@
          id="stop2565" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-2"
+       id="figure3-linear-gradient-2"
        x1="2009.8025"
        y1="9.9502"
        x2="2193.3956"
@@ -73,7 +73,7 @@
          id="stop2572" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-3"
+       id="figure3-linear-gradient-3"
        x1="2421.3976"
        y1="131.3964"
        x2="2497.9187"
@@ -97,19 +97,19 @@
          id="stop2581" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-4"
+       id="figure3-linear-gradient-4"
        x1="2475.8791"
        y1="109.3199"
        x2="2507.2616"
        y2="109.3199"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-5"
+       id="figure3-linear-gradient-5"
        x1="2462.9569"
        y1="149.5301"
        x2="2520.1838"
        y2="149.5301"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <filter
        id="luminosity-noclip"
        x="1703.9966"
@@ -146,46 +146,46 @@
       </g>
     </mask>
     <linearGradient
-       id="linear-gradient-6"
+       id="figure3-linear-gradient-6"
        x1="1654.0612"
        y1="17.0767"
        x2="1851.9073"
        y2="214.9228"
-       xlink:href="#linear-gradient-2" />
+       xlink:href="#figure3-linear-gradient-2" />
     <linearGradient
-       id="linear-gradient-7"
+       id="figure3-linear-gradient-7"
        x1="6807.0508"
        y1="3989.7317"
        x2="7019.3597"
        y2="3989.7317"
        gradientTransform="translate(750.2308 -7343.9164) rotate(45)"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-8"
+       id="figure3-linear-gradient-8"
        x1="6553.8036"
        y1="4769.7137"
        x2="6807.8705"
        y2="4769.7137"
        gradientTransform="translate(750.2308 -7343.9164) rotate(45)"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-9"
+       id="figure3-linear-gradient-9"
        x1="6438.1526"
        y1="4654.0627"
        x2="6692.2195"
        y2="4654.0627"
        gradientTransform="translate(750.2308 -7343.9164) rotate(45)"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-10"
+       id="figure3-linear-gradient-10"
        x1="6820.4008"
        y1="4503.1164"
        x2="7074.4678"
        y2="4503.1164"
        gradientTransform="translate(750.2308 -7343.9164) rotate(45)"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-11"
+       id="figure3-linear-gradient-11"
        x1="2694.541"
        y1="1208.8737"
        x2="3429.3264"
@@ -203,25 +203,25 @@
          id="stop2603" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-12"
+       id="figure3-linear-gradient-12"
        x1="1694.5291"
        x2="2429.3145"
-       xlink:href="#linear-gradient-11" />
+       xlink:href="#figure3-linear-gradient-11" />
     <linearGradient
-       id="linear-gradient-13"
+       id="figure3-linear-gradient-13"
        x1="6704.7498"
        y1="4387.4654"
        x2="6958.8168"
        y2="4387.4654"
        gradientTransform="translate(750.2308 -7343.9164) rotate(45)"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-14"
+       id="figure3-linear-gradient-14"
        y1="655.6692"
        y2="655.6692"
-       xlink:href="#linear-gradient-11" />
+       xlink:href="#figure3-linear-gradient-11" />
     <linearGradient
-       id="linear-gradient-15"
+       id="figure3-linear-gradient-15"
        x1="7080.7612"
        y1="4168.0284"
        x2="7285.7264"
@@ -246,7 +246,7 @@
          id="stop2615" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-16"
+       id="figure3-linear-gradient-16"
        x1="3043.0487"
        y1="730.5411"
        x2="3159.6387"
@@ -270,97 +270,97 @@
          id="stop2624" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-17"
+       id="figure3-linear-gradient-17"
        y1="693.4043"
        y2="693.4043"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-18"
+       id="figure3-linear-gradient-18"
        y1="673.1589"
        y2="673.1589"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-19"
+       id="figure3-linear-gradient-19"
        y1="650.2248"
        y2="650.2248"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-20"
+       id="figure3-linear-gradient-20"
        x1="3044.5487"
        y1="612.5815"
        x2="3158.1386"
        y2="612.5815"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-21"
+       id="figure3-linear-gradient-21"
        x1="3222.6724"
        x2="3339.2624"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-22"
+       id="figure3-linear-gradient-22"
        x1="3222.6724"
        y1="693.4043"
        x2="3339.2624"
        y2="693.4043"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-23"
+       id="figure3-linear-gradient-23"
        x1="3222.6724"
        y1="673.1589"
        x2="3339.2624"
        y2="673.1589"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-24"
+       id="figure3-linear-gradient-24"
        x1="3222.6724"
        y1="650.2248"
        x2="3339.2624"
        y2="650.2248"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-25"
+       id="figure3-linear-gradient-25"
        x1="3224.1723"
        y1="612.5815"
        x2="3337.7623"
        y2="612.5815"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-26"
+       id="figure3-linear-gradient-26"
        x1="3021.8138"
        y1="1077.3669"
        x2="3102.0536"
        y2="1077.3669"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-27"
+       id="figure3-linear-gradient-27"
        x1="3021.8138"
        y1="1051.8085"
        x2="3102.0536"
        y2="1051.8085"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-28"
+       id="figure3-linear-gradient-28"
        x1="3021.8138"
        y1="1037.8752"
        x2="3102.0536"
        y2="1037.8752"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-29"
+       id="figure3-linear-gradient-29"
        x1="3021.8138"
        y1="1022.0915"
        x2="3102.0536"
        y2="1022.0915"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-30"
+       id="figure3-linear-gradient-30"
        x1="3022.8461"
        y1="996.1845"
        x2="3101.0214"
        y2="996.1845"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-31"
+       id="figure3-linear-gradient-31"
        x1="2707.3437"
        y1="1330.5561"
        x2="3412.7774"
@@ -377,7 +377,7 @@
          id="stop2643" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-32"
+       id="figure3-linear-gradient-32"
        x1="2953.2276"
        y1="1291.0564"
        x2="3052.012"
@@ -397,20 +397,20 @@
          id="stop2650" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-33"
+       id="figure3-linear-gradient-33"
        x1="3068.6854"
        x2="3167.4698"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-34"
+       id="figure3-linear-gradient-34"
        x1="3184.1432"
        x2="3282.9276"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-35"
+       id="figure3-linear-gradient-35"
        x1="3299.601"
        x2="3398.3854"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <filter
        id="luminosity-noclip-2"
        x="2730.148"
@@ -624,120 +624,120 @@
       </g>
     </mask>
     <linearGradient
-       id="linear-gradient-36"
+       id="figure3-linear-gradient-36"
        x1="2722.312"
        x2="2821.0964"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-37"
+       id="figure3-linear-gradient-37"
        x1="2837.7698"
        x2="2936.5542"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-38"
+       id="figure3-linear-gradient-38"
        x1="2722.312"
        y1="1435.5311"
        x2="3398.3854"
        y2="1435.5311"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-39"
+       id="figure3-linear-gradient-39"
        x1="1723.885"
        y1="1435.5311"
        x2="2399.9585"
        y2="1435.5311"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-40"
+       id="figure3-linear-gradient-40"
        x1="2200.211"
        y1="1290.0648"
        x2="2327.9442"
        y2="1290.0648"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-41"
+       id="figure3-linear-gradient-41"
        x1="1798.663"
        y1="1290.0648"
        x2="1926.3962"
        y2="1290.0648"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-42"
+       id="figure3-linear-gradient-42"
        x1="1814.01"
        y1="1161.7708"
        x2="1911.0492"
        y2="1161.7708"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-43"
+       id="figure3-linear-gradient-43"
        x1="1814.01"
        y1="1130.8615"
        x2="1911.0492"
        y2="1130.8615"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-44"
+       id="figure3-linear-gradient-44"
        x1="1814.01"
        y1="1114.011"
        x2="1911.0492"
        y2="1114.011"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-45"
+       id="figure3-linear-gradient-45"
        x1="1814.01"
        y1="1094.9227"
        x2="1911.0492"
        y2="1094.9227"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-46"
+       id="figure3-linear-gradient-46"
        x1="1815.2584"
        y1="1063.5918"
        x2="1909.8007"
        y2="1063.5918"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-47"
+       id="figure3-linear-gradient-47"
        x1="1991.5095"
        y1="1289.1759"
        x2="2119.2426"
        y2="1289.1759"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-48"
+       id="figure3-linear-gradient-48"
        x1="2006.8564"
        y1="1160.8819"
        x2="2103.8956"
        y2="1160.8819"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-49"
+       id="figure3-linear-gradient-49"
        x1="2006.8564"
        y1="1129.9726"
        x2="2103.8956"
        y2="1129.9726"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-50"
+       id="figure3-linear-gradient-50"
        x1="2006.8564"
        y1="1113.1221"
        x2="2103.8956"
        y2="1113.1221"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-51"
+       id="figure3-linear-gradient-51"
        x1="2006.8564"
        y1="1094.0338"
        x2="2103.8956"
        y2="1094.0338"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <linearGradient
-       id="linear-gradient-52"
+       id="figure3-linear-gradient-52"
        x1="2008.1049"
        y1="1062.7031"
        x2="2102.6471"
        y2="1062.7031"
-       xlink:href="#linear-gradient-16" />
+       xlink:href="#figure3-linear-gradient-16" />
     <filter
        id="luminosity-noclip-8"
        x="858.684"
@@ -774,40 +774,40 @@
       </g>
     </mask>
     <linearGradient
-       id="linear-gradient-53"
+       id="figure3-linear-gradient-53"
        x1="403.9053"
        y1="1389.4058"
        x2="480.4264"
        y2="1389.4058"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-54"
+       id="figure3-linear-gradient-54"
        x1="445.4647"
        y1="1391.8187"
        x2="502.6916"
        y2="1391.8187"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-55"
+       id="figure3-linear-gradient-55"
        x1="436.2091"
        y1="1046.6588"
        x2="623.5035"
        y2="1046.6588"
-       xlink:href="#linear-gradient-32" />
+       xlink:href="#figure3-linear-gradient-32" />
     <linearGradient
-       id="linear-gradient-56"
+       id="figure3-linear-gradient-56"
        x1="263.4658"
        y1="1043.7073"
        x2="294.8483"
        y2="1043.7073"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-57"
+       id="figure3-linear-gradient-57"
        x1="250.5436"
        y1="1083.9175"
        x2="307.7705"
        y2="1083.9175"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <filter
        id="luminosity-noclip-9"
        x="2921.7719"
@@ -844,23 +844,23 @@
       </g>
     </mask>
     <linearGradient
-       id="linear-gradient-58"
+       id="figure3-linear-gradient-58"
        x1="1127.9789"
        y1="1986.1684"
        x2="1204.5"
        y2="1986.1684"
        gradientTransform="matrix(1,0,0,1,0,0)"
-       xlink:href="#linear-gradient-15" />
+       xlink:href="#figure3-linear-gradient-15" />
     <linearGradient
-       id="linear-gradient-59"
+       id="figure3-linear-gradient-59"
        x1="1169.5383"
        y1="1988.5813"
        x2="1226.7652"
        y2="1988.5813"
        gradientTransform="matrix(1,0,0,1,0,0)"
-       xlink:href="#linear-gradient-15" />
+       xlink:href="#figure3-linear-gradient-15" />
     <linearGradient
-       id="linear-gradient-60"
+       id="figure3-linear-gradient-60"
        x1="1395.8203"
        y1="1962.9617"
        x2="2545.7726"
@@ -993,29 +993,29 @@
       </g>
     </mask>
     <linearGradient
-       id="linear-gradient-61"
+       id="figure3-linear-gradient-61"
        x1="7012.3665"
        y1="5541.5382"
        x2="7242.815"
        y2="5541.5382"
        gradientTransform="translate(750.2308 -7343.9164) rotate(45)"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-62"
+       id="figure3-linear-gradient-62"
        x1="5884.2218"
        y1="5825.3454"
        x2="6197.218"
        y2="5825.3454"
        gradientTransform="translate(750.2308 -7343.9164) rotate(45)"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
     <linearGradient
-       id="linear-gradient-63"
+       id="figure3-linear-gradient-63"
        x1="6546.5939"
        y1="4229.3095"
        x2="6800.6609"
        y2="4229.3095"
        gradientTransform="translate(750.2308 -7343.9164) rotate(45)"
-       xlink:href="#linear-gradient-3" />
+       xlink:href="#figure3-linear-gradient-3" />
   </defs>
   <rect
      class="cls-25"
