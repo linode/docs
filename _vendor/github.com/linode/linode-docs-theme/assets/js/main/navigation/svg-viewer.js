@@ -115,7 +115,7 @@ class SvgViewer {
 					this.dragState.lastX = e.clientX;
 					this.dragState.lastY = e.clientY;
 				},
-				{ passive: true }
+				{ passive: true },
 			);
 
 			document.addEventListener(
@@ -123,7 +123,7 @@ class SvgViewer {
 				(e) => {
 					this.pan(e.clientX, e.clientY);
 				},
-				{ passive: true }
+				{ passive: true },
 			);
 
 			document.addEventListener(
@@ -131,7 +131,7 @@ class SvgViewer {
 				(e) => {
 					this.dragState.dragging = false;
 				},
-				{ passive: true }
+				{ passive: true },
 			);
 		}
 	}
@@ -192,7 +192,7 @@ export function newSVGViewerController(opts) {
 							});
 							if (l1 > 0) {
 								// Find the nth li in the diagram description.
-								let diagramDescriptionList = diagramDescriptionEl.querySelectorAll('li');
+								let diagramDescriptionList = diagramDescriptionEl.children;
 								let diagramDescriptionListArray = Array.from(diagramDescriptionList);
 								let idx = l1 - 1;
 								if (idx >= 0 && idx < diagramDescriptionListArray.length) {
@@ -208,9 +208,9 @@ export function newSVGViewerController(opts) {
 										}
 									}
 									let clone = targetLi.cloneNode(true);
-									// Remove nested OLs.
-									let nestedLists = clone.querySelectorAll('ol');
-									nestedLists.forEach((nestedList) => {
+									// Remove nested OLs or notes.
+									let ignoredEls = clone.querySelectorAll('ol, .note');
+									ignoredEls.forEach((nestedList) => {
 										nestedList.parentNode.removeChild(nestedList);
 									});
 									// Add the targetLi content to the tooltip.
