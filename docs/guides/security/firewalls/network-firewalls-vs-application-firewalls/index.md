@@ -86,7 +86,7 @@ Application-layer inspection allows firewalls to block multiple classes of attac
 
 All these capabilities require significant processing power on the part of application firewalls, and point to one use case where they might not be appropriate. In organizations that use well-known hostnames and/or IP addresses for internal access, an application firewall may be overkill. Here, a network firewall may be sufficient to restrict access for internal users.
 
-In other cases, especially when rapidly evolving web applications are Internet-facing, application firewalls are the way to go. Read [Level Up Application Security with a Web Application Firewall](/blog/security/level-up-application-security-web-application-firewall/) to learn when to use a WAP and how to choose one.
+In other cases, especially when rapidly evolving web applications are Internet-facing, application firewalls are the way to go. Read [Level Up Application Security with a Web Application Firewall](https://www.linode.com/blog/security/level-up-application-security-web-application-firewall/) to learn when to use a WAP and how to choose one.
 
 ## Unified Threat Management (UTM)
 
