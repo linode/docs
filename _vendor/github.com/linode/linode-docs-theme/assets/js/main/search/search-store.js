@@ -92,7 +92,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 
 		init() {
 			this.results.blank.getSectionMeta = function (key) {
-				key = key.toLocaleLowerCase();
+				key = key.toLocaleLowerCase().replace(/&amp;/g, '&');
 				if (key.endsWith('-branches')) {
 					key = key.substring(0, key.indexOf('-branches'));
 				}
@@ -246,7 +246,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 						debug('withBlank.blank.metaResult:', result);
 						this.results.blank.metaResult = result.hits.reduce(function (m, hit) {
 							// The blog sections have mixed-case objectIDs, but we need this lookup to be case insensitive.
-							m.set(hit.objectID.toLowerCase(), hit);
+							m.set(hit.objectID.toLowerCase().replace(/&amp;/g, '&'), hit);
 							return m;
 						}, new Map());
 						markLoaded();
