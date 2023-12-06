@@ -3,7 +3,7 @@ title: "Upcoming Changes Related to Network Infrastructure Upgrades"
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 published: 2022-07-19
-modified: 2023-12-05
+modified: 2023-12-06
 modified_by:
   name: Linode
 aliases: ['/guides/network-infrastructure-upgrades/']
@@ -34,7 +34,7 @@ The following is a list of breaking changes and any action that may be required 
 
 ## Which Data Centers Have Been Upgraded?
 
-Review the table below to learn which data centers have been upgraded with the latest network enhancements. This table covers the regions that existed at the start of this initiative. If a region is not listed, it
+Review the table below to learn which data centers have been upgraded with the latest network enhancements. This table covers the regions that existed at the start of this initiative. If a region is not listed, it was launched after this initiative began and, as such, already has the relevant network upgrades.
 
 | Data center | Upgrade Status |
 | -- | -- |
