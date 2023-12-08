@@ -136,6 +136,43 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
   ```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
 
+
+#### Lists padding
+
+1.  Log in to a Compute Instance that has been deployed in a supported data center using a supported distribution image.
+
+1.  Generate your API token by running the command below:
+
+    ```command
+    curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token
+    ```
+
+    Instead of receiving the token as an output string, you can save it directly to the `$TOKEN` environmental variable:
+
+    ```command
+    export TOKEN=$(curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token)
+    ```
+
+1.  Query one of the following API endpoints to receive data from the API. If you did not save the API token to the `$TOKEN` variable, replace `$TOKEN` in the commands below with your token.
+
+    -   **/v1/instance**: Output information about your instance, including plan resources.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/instance
+        ```
+
+    -   **/v1/network**: Output information about your instance's IP addresses.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/network
+        ```
+
+    -   **/v1/user-data**: Output your user data.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/user-data | base64 --decode
+        ```
+
 ### Light
 
 ```command {class="light" title="Ubuntu 16.04"}
@@ -206,6 +243,7 @@ func IsTruthfulValue(val reflect.Value) (truth bool) {
 	return
 }
 ```
+
 
 
 ###  No Title
@@ -392,3 +430,45 @@ Cillum irure fugiat laborum nisi ut deserunt occaecat esse officia sint in et do
 | Content| Content| Content| Content| 
 | Content| Content| Content| Content| 
 
+
+### Wide Table with scroll
+
+{{< table >}}
+| Region | [Shared Compute](/docs/products/compute/compute-instances/plans/shared-cpu/) | [Dedicated Compute](/docs/products/compute/compute-instances/plans/dedicated-cpu/) | [GPUs](/docs/products/compute/compute-instances/plans/gpu/) | [Premium Compute](/docs/products/compute/compute-instances/plans/premium/) | [Kubernetes](/docs/products/compute/kubernetes/) | [Managed DB](/docs/products/databases/managed-databases/) | [Cloud Firewall](/docs/products/networking/cloud-firewall/) | [DDoS Protection](/docs/products/networking/ddos-protection/) | [NodeBalancers](/docs/products/networking/nodebalancers/) | [VLANs](/docs/products/networking/vlans/) | [Backups](/docs/products/storage/backups/) | [Block Storage](/docs/products/storage/block-storage/) | [Object Storage](/docs/products/storage/object-storage/) | [Images](/docs/products/tools/images/) |
+| --- | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
+| Atlanta        | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Chicago        | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Dallas         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Frankfurt      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Fremont        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Newark         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Paris          | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Singapore      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Sydney         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Tokyo          | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Toronto        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Washington, DC | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+{{< /table >}}
+
+### Wide Table with scroll, anchor first
+
+{{< table class="first-sticky" >}}
+| Region | [Shared Compute](/docs/products/compute/compute-instances/plans/shared-cpu/) | [Dedicated Compute](/docs/products/compute/compute-instances/plans/dedicated-cpu/) | [GPUs](/docs/products/compute/compute-instances/plans/gpu/) | [Premium Compute](/docs/products/compute/compute-instances/plans/premium/) | [Kubernetes](/docs/products/compute/kubernetes/) | [Managed DB](/docs/products/databases/managed-databases/) | [Cloud Firewall](/docs/products/networking/cloud-firewall/) | [DDoS Protection](/docs/products/networking/ddos-protection/) | [NodeBalancers](/docs/products/networking/nodebalancers/) | [VLANs](/docs/products/networking/vlans/) | [Backups](/docs/products/storage/backups/) | [Block Storage](/docs/products/storage/block-storage/) | [Object Storage](/docs/products/storage/object-storage/) | [Images](/docs/products/tools/images/) |
+| --- | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
+| Atlanta        | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Chicago        | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Dallas         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Frankfurt      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Fremont        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Newark         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Paris          | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Singapore      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Sydney         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Tokyo          | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Toronto        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Washington, DC | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+{{< /table >}}

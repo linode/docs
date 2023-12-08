@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting SSH on Compute Instances"
 description: "Troubleshooting steps for when you can't connect to your Compute Instance via SSH."
-keywords: ['linux','reboot','lish','ssh']
+keywords: ['linux','reboot','lish','ssh','troubleshoot']
 tags: ["ssh"]
 published: 2019-02-01
 modified: 2023-03-14

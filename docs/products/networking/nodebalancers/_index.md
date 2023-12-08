@@ -53,7 +53,7 @@ NodeBalancers are available across [all regions](https://www.linode.com/global-i
 
 ## Pricing
 
-Each NodeBalancer on an account costs $10/mo ($0.015/hr).
+Each NodeBalancer on an account starts at $10/mo ($0.015/hr). [Price](https://www.linode.com/pricing/) may vary by region.
 
 Cloud Firewall is available at no additional charge to customers.
 

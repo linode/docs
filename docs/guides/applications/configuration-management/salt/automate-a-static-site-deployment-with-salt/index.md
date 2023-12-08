@@ -125,7 +125,7 @@ master: 192.0.2.2
 {{</ file >}}
 
     {{< note respectIndent=false >}}
-Linode does not charge for traffic within a datacenter across private IP addresses. If your Salt master and minion are in the same datacenter, and both have a private IP addresses, you can use your Salt master's private IP address in this step to avoid incurring data traffic charges.
+Linode does not charge for traffic within a data center across private IP addresses. If your Salt master and minion are in the same data center, and both have a private IP addresses, you can use your Salt master's private IP address in this step to avoid incurring data traffic charges.
 {{< /note >}}
 
 1.  Restart Salt on the minion:

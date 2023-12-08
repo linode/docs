@@ -69,7 +69,7 @@ These steps show how to install the Oracle Java Development Kit (JDK) 18 on an U
 
 1.  If there are packages to upgrade, do so:
 
-    ```commandd
+    ```command
     sudo apt -y upgrade
     ```
 

@@ -174,12 +174,12 @@ CN                     = Cluster_Name_MasterCA
         keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
         keytool -importcert -keystore node2-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
 
-10.  Now, import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
+10. Now, import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
         keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra
         keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra
 
-11.  Create a Cassandra server truststore file. This essentially acts as a certificate authority, allowing all nodes whose client certificates were signed here to communicate.
+11. Create a Cassandra server truststore file. This essentially acts as a certificate authority, allowing all nodes whose client certificates were signed here to communicate.
 
         keytool -importcert -keystore cassandra-truststore.jks -alias truststore -file ca-cert.cert -noprompt -keypass [password] -storepass [password]
 

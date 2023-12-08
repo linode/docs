@@ -10,7 +10,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Block Storage is a scalable, high-speed, and fault tolerant storage service used to add additional storage to a Linode Compute Instance."
-modified: 2023-02-10
+modified: 2023-09-21
 aliases: ['/platform/block-storage/how-to-use-block-storage-with-your-linode/','/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/','/platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/','/platform/how-to-use-block-storage-with-your-linode/','/platform/block-storage/','/guides/platform/block-storage/','/guides/how-to-use-block-storage-with-your-linode/']
 ---
 
@@ -28,7 +28,7 @@ Block Storage Volumes are configured to be durable and fault tolerant using eras
 
 Block Storage is powered entirely by NVMe SSD storage devices (except within the Fremont data center). NVMe storage offers dramatically increased performance over standard SATA SSDs, HDDs, or hybrid storage solutions. Additionally, performance is automatically increased in 60 second bursts for even faster real-world speeds. See the table below for both sustained and burst performance limits on NVMe-only Block Storage:
 
-| | IOPS | Throughput |
+| Performance Metric | IOPS | Throughput |
 | -- | -- | -- |
 | **Sustained** | 8,000 | 350 MB/s |
 | **Burst** | 12,000 | 525 MB/s |
@@ -41,7 +41,7 @@ Block Storage is available across [all regions](https://www.linode.com/global-in
 
 ## Plans and Pricing
 
-Block Storage Volumes cost $0.10/GB per month ($0.00015/GB per hour) and can range from 10 GB to 10,000 GB in size.
+Block Storage Volumes start at $0.10/GB per month ($0.00015/GB per hour) and can range from 10GB to 10,000GB in size. [Pricing](https://www.linode.com/pricing/) for Block Storage may vary between data centers.
 
 ## Technical Specifications
 

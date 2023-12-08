@@ -23,3 +23,6 @@ This section contains pages used in tests. They get published, but are not liste
 | [Images](images/)  | Testing images.  |
 | [Typography Tests](typography/)  | Testing typography in the built-in shortcodes etc.  |
 | [Tabs Shortcode Tests](tabs-page-1/)  | Testing the tabs shortcode.  |
+| [Placeholder Shortcode Tests](placeholder/)  | Testing the placholder shortcode.  |
+
+
