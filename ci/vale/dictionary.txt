@@ -170,6 +170,7 @@ basename
 bashrc
 bc
 bdd
+bellovin
 benchmarked
 barchart
 berkshelf
@@ -291,6 +292,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+cheswick
 Chevereto
 chgrp
 chipset
@@ -637,6 +639,7 @@ examplesitename
 exampleuser
 exe
 executables
+execve
 exfiltrated
 exfiltrating
 exfiltration
@@ -700,6 +703,7 @@ filemask
 findtime
 finnix
 firefart
+firehose
 firewalld
 firewalled
 firewalling
@@ -1356,6 +1360,7 @@ metroid
 michael
 microblogging
 microblogs
+microsegmentation
 microservice
 microservices
 microsite
@@ -1400,6 +1405,7 @@ mod_autoindex
 moddable
 modinfo
 modsecurity
+modularization
 Mojang
 moodle
 mongocryptd
@@ -1529,6 +1535,7 @@ nfs
 nfsd
 nftables
 ng
+ngfws
 nginx
 ngular
 nginxdemos
@@ -1859,6 +1866,7 @@ readcaps
 reauthenticate
 reauthenticating
 readme
+READMEs
 readonly
 readwrite
 realtime
@@ -1909,6 +1917,7 @@ remi
 remmina
 remotehost
 reparseGDBs
+replicants
 replicaset
 replicationcontrollers
 replset
@@ -2205,6 +2214,7 @@ sublanguage
 submenu
 subnet
 subnets
+subnetting
 subnetwork
 subprocess
 subprocesses
@@ -2233,6 +2243,7 @@ surbma
 suricata
 sury
 suse
+Sussman
 swappable
 swappiness
 svn
@@ -2281,6 +2292,7 @@ teleporting
 tensorflow
 terrahelp
 terraria
+Terrastories
 tessian
 testdb
 testdeep

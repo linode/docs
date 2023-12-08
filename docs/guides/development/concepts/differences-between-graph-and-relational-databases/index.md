@@ -150,7 +150,7 @@ Here are five examples of graph databases:
 
 Here are five examples of popular relational databases:
 
-- [MySQL](https://www.mysql.com/) is the most popular open-source relational database on the market and is used to power many applications, like WordPres. MySQL is supported on Linux, macOS, and Windows.
+- [MySQL](https://www.mysql.com/) is the most popular open-source relational database on the market and is used to power many applications, like WordPress. MySQL is supported on Linux, macOS, and Windows.
 
 - [MariaDB](https://mariadb.org/) is a fork of MySQL and is equally as popular. This open-source relational database places much higher importance on frequent releases and security. MariaDB can be installed on Linux, macOS, and Windows.
 

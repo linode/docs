@@ -64,7 +64,7 @@ Linode's [Cloud Manager](https://cloud.linode.com/) is the primary gateway to ou
 
 - [Help & Support](https://cloud.linode.com/support): Search through our guides, find answers on the Community Site, or open a ticket to reach our 24/7 award-winning [Support Team](https://www.linode.com/support-experience/).
 
-For a full overview of the Cloud Manager and its core features, see the [Overview of the Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/) guide.
+For a full overview of the Cloud Manager and its core features, see the [Overview of the Cloud Manager](/docs/guides/an-overview-of-the-cloud-manager/) guide.
 
 ## Create Your First Compute Instance
 
