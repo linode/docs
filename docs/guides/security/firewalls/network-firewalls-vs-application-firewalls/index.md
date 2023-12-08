@@ -16,15 +16,11 @@ This guide describes the difference between firewalls that protect networks and 
 
 ## The Evolution of Firewalls
 
-Firewalls have matured over time from simple packet filters to sophisticated cloud-based multilayer, multifunction security services.
-
-The earliest firewalls were standalone devices that inspected each incoming packet and made forwarding decisions based on network or transport-layer criteria.
-
-Newer firewalls provide "statefulness", the capacity to track connections rather than individual packets. This prevents entire classes of attacks, such as those that inject out-of-sequence TCP datagrams into an existing connection.
+Firewalls have matured over time from simple packet filters to sophisticated cloud-based multilayer, multifunction security services. The earliest firewalls were standalone devices that inspected each incoming packet and made forwarding decisions based on network or transport-layer criteria. Newer firewalls provide "statefulness", the capacity to track connections rather than individual packets. This prevents entire classes of attacks, such as those that inject out-of-sequence TCP datagrams into an existing connection.
 
 Today, there are three new types of firewalls, with considerable overlap between them:
 
-- **Next-Generation Firewalls (NGFWs)** add some form of application-layer filtering and other security functions such as virtual private networking, antivirus and anti-malware controls, and intrusion detection/prevention systems.
+- **Next-Generation Firewalls (NGFWs)** add some form of application-layer filtering and other security functions such as virtual private networking, antivirus/anti-malware controls, and/or intrusion detection/prevention systems.
 
 - **Web Application Firewalls (WAFs)** offer very granular control over application behavior, especially for web-based applications. Many WAFs use deep-packet inspection (DPI) and other techniques to peer into user traffic.
 
@@ -36,7 +32,7 @@ Firewall applications may be software versions of commercial firewalls or open s
 
 ## Network Firewalls
 
-Some of the confusion between network and application-centric firewalls stems from misunderstanding the meaning of these terms. NGFW and WAF are marketing terms. The technical definition of a firewall, from [RFC 2647](https://www.rfc-editor.org/rfc/rfc2647#section-3.16), simply refers to "a device or group of devices that enforces an access policy between networks".
+Some of the confusion between network and application-centric firewalls stems from misunderstanding the meaning of these terms. NGFW and WAF are marketing terms. The technical definition of a firewall from [RFC 2647](https://www.rfc-editor.org/rfc/rfc2647#section-3.16) simply refers to "a device or group of devices that enforces an access policy between networks".
 
 There are two key differences between network and application firewalls: how they enforce an access policy, and where they enforce it.
 
@@ -44,7 +40,7 @@ A useful metaphor is that of a large office building, with network firewalls pla
 
 Network firewalls generally make access-control decisions using criteria at the network and/or transport layers, or Layers 3 and 4 of [the seven-layer OSI model](/docs/guides/introduction-to-osi-networking-model/).
 
-It’s a best practice to place network firewalls at or close to the perimeter of each data center in your cloud network. Think of these as gatekeepers, blocking malicious traffic before it enters your network.
+It’s best practice to place network firewalls at or close to the perimeter of each data center in your cloud network. Think of these as gatekeepers, blocking malicious traffic before it enters your network.
 
 Just as importantly, a firewall at the network edge also manages which traffic can leave. A common error in firewall configuration is to allow all outbound traffic from protected hosts. To protect against malware and rogue applications that "phone home", your firewalls should only allow the minimal amount of outbound traffic your security policy permits. See [Firewall Best Practices for Securing Your Cloud-based Applications](/docs/guides/firewall-best-practices-for-securing-your-cloud-based-applications/) for more information.
 
@@ -68,11 +64,11 @@ As the name suggests, application firewalls inspect traffic at Layer 7 of the OS
 
 Layer-7 visibility matters because web applications often represent the weakest link in the security chain. Verizon’s [2023 Data Breach Investigations Report](https://www.verizon.com/business/resources/reports/dbir/) found that web apps represent the most commonly compromised asset, accounting for more than 60% of all breaches. This is ahead of other assets like email servers, desktops and laptops, databases, and phones.
 
-The prevalence of web application vulnerabilities is as much cultural as technical. Engineering models like continuous integration/continuous development (CI/CD) and DevOps enable much faster deployment. However, this is often without collaboration between web application developers and IT or network engineering teams responsible for security. Application firewalls can help fill this void.
+The prevalence of web application vulnerabilities is as much cultural as technical. Engineering models like continuous integration/continuous delivery (CI/CD) and DevOps enable much faster deployment. However, this is often done without collaboration between web application developers and IT or network engineering teams responsible for security. Application firewalls can help fill this void.
 
 Although they’re often called web application firewalls (WAFs), Layer-7 firewalls can protect many types of applications, not just those running over HTTP. You can use these firewalls to protect SQL databases, email hosts, VoIP PBXs, messaging servers, and other applications that don’t necessarily use HTTP.
 
-For example, an application firewall may be able to block SQL injection attacks by identifying malformed database queries. Likewise, queries in inappropriate places such as login and password fields could also be caught.
+For example, an application firewall may be able to block SQL injection attacks by identifying malformed database queries. Queries in inappropriate places such as login and password fields may likewise be caught.
 
 Application-layer inspection allows firewalls to block multiple classes of attacks that network firewalls don’t see. Here are some examples:
 
@@ -82,9 +78,9 @@ Application-layer inspection allows firewalls to block multiple classes of attac
 
 - **Layer-7 DDoS Attacks**: Unlike lower-layer distributed denial-of-service attacks that tie up network resources such as TCP ports, an application-layer DDoS attack works by exhausting application-specific attributes such as login attempts. Because application-based firewalls can keep state on existing sessions and track the rate of new connection attempts, they can shut down DDoS attempts before they reach application servers.
 
-- **Cross-Site Scripting Attacks**: Similar to a SQL injection exploit, a cross-site scripting (XSS) attack is one where an attacker inputs malicious client-side code into web pages. Viewing the web page then triggers the malicious code, leading to disclosure of login credentials and other vulnerabilities. Although XSS attacks date to the late 1990s, they keep recurring regularly because many web applications inadequately screen input before processing. Application firewalls can help by identifying and blocking malicious code embedded in input fields.
+- **Cross-Site Scripting Attacks**: Similar to an SQL injection exploit, an attacker in a cross-site scripting (XSS) attack inputs malicious client-side code into web pages. Viewing the web page then triggers the malicious code, leading to disclosure of login credentials and other vulnerabilities. Although XSS attacks date to the late 1990s, they keep recurring regularly because many web applications inadequately screen input before processing. Application firewalls can help by identifying and blocking malicious code embedded in input fields.
 
-All these capabilities require significant processing power on the part of application firewalls, and point to one use case where they might not be appropriate. In organizations that use well-known hostnames and/or IP addresses for internal access, an application firewall may be overkill. Here, a network firewall may be sufficient to restrict access for internal users.
+All these capabilities require significant processing power on the part of application firewalls, and point to one use case where they might not be appropriate. An application firewall may be overkill in organizations that use well-known hostnames and/or IP addresses for internal access. Here, a network firewall may be sufficient to restrict access for internal users.
 
 In other cases, especially when rapidly evolving web applications are Internet-facing, application firewalls are the way to go. Read [Level Up Application Security with a Web Application Firewall](https://www.linode.com/blog/security/level-up-application-security-web-application-firewall/) to learn when to use a WAP and how to choose one.
 
@@ -96,4 +92,4 @@ Some UTM products also include anti-phishing modules, which is very important gi
 
 ## Conclusion
 
-The choice between network and application firewalls isn’t an either/or decision. Both are useful tools in developing an effective defense-in-depth strategy. A solid understanding of firewalls helps protect your network perimeter *and* your application servers to provide safer access to your cloud-based services.
+The choice between network and application firewalls isn’t an either/or decision. Both are useful tools in developing an effective defense-in-depth strategy. A solid understanding of firewalls helps protect your network perimeter and your application servers to provide safer access to your cloud-based services.
