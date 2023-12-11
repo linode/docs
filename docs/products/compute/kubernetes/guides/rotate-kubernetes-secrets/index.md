@@ -10,7 +10,7 @@ tags: ["Kubernetes", "Linode Kubernetes Engine", "LKE"]
 
 ## Kubernetes Secrets
 
-A Kubernetes secret is a special file within a cluster that stores sensitive authentication information like passwords, tokens, or keys. Anyone with root-level access to a cluster has access to the "secrets" for that cluster. It is a best practice to rotate secrets on a regular basis or otherwise as-needed (i.e. an employee leaves a company or roll, general security practices, etc.).
+A Kubernetes secret is a special file within a cluster that stores sensitive authentication information like passwords, tokens, or keys. Anyone with root-level access to a cluster has access to the "secrets" for that cluster. It is a best practice to rotate secrets on a regular basis or otherwise as-needed (i.e. an employee leaves a company or roll, general security practices, etc.). This guide reviews the steps required to rotate a secret file in a specific namespace using kubectl, as well as how to rotate your lke-admin-token via the Linode CLI.
 
 Note that the instructions in this guide only apply to the namespaces included in the examples; there may be additional secrets in additional namespaces you may want to delete or rotate.
 
@@ -28,7 +28,7 @@ You will need to have the kubectl command line tool installed and your local sys
 
 Once your local `$KUBECONFIG` environment variable is configured with your cluster's kubeconfig file, follow these steps to rotate a secrete within your cluster.
 
-1. List out the secrets in your cluster's kube-system namespace:
+1. List the secrets in your cluster's kube-system namespace:
 
     ```command
     kubectl -n kube-system get secrets
@@ -62,7 +62,7 @@ Once your local `$KUBECONFIG` environment variable is configured with your clust
     NAME                                TYPE                                  DATA   AGE
     sample1-token-rm2dx                 kubernetes.io/service-account-token   3      34s
     ```
-1. Your secret is now rotated.
+1. You've rotated your secret.
 
 {{< note title="Additional details for Kubernetes version 1.27 and later" >}}
 In Kubernetes version 1.27 and later, new secrets are not automatically created after the old one is deleted. In order for a new secret to populate, you must regenerate your cluster's kubeconfig file as described in [Rotate your lke-admin-token](#rotate-your-lke-admin-token) below. Note that the below steps should still be completed in order to also rotate your lke-admin-token.
