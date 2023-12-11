@@ -61,7 +61,7 @@ The *algorithm* controls how *new connections* are allocated across the backend 
 
 - **Least Connections**: Tracks each backend's connection count and allocates new connections to the one with the least connections.
 
-- **Source IP**: Modulates the client's IP to allocate them to the same backend on subsequent requests. This works so long as the set of backend doesn't change, however the **Session Stickiness** setting (below) does affect this behavior.
+- **Source IP**: Modulates the client's IP to allocate them to the same backend on subsequent requests. This works so long as the set of backend nodes doesn't change, however the **Session Stickiness** setting (below) does affect this behavior.
 
 ### Session Stickiness
 
