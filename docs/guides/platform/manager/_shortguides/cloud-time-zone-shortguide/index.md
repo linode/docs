@@ -5,7 +5,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified:
 modified_by:
   name:
-published: 2023-12-10
+published:
 title: How to set your timezone in the Cloud Manager
 keywords: ["cloud manager"]
 headless: true
