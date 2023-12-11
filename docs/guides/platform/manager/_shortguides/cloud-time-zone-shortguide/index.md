@@ -2,10 +2,10 @@
 slug: cloud-time-zone-shortguide
 description: 'Shortguide that shows you how to set the timezone in the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified:
+modified: 2020-07-22
 modified_by:
-  name:
-published: 2023-12-11
+  name: Heather Zoppetti
+published: 2020-07-22
 title: How to set your timezone in the Cloud Manager
 keywords: ["cloud manager"]
 headless: true
