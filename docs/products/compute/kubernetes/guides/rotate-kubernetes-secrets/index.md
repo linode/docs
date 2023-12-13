@@ -87,7 +87,7 @@ In order to expedite secret recreation after deletion and regain access to your 
     ```
     {{< /note >}}
 
-1. If you choose to downlowd your new kubeconfig via the Cloud Manager, you will need to reconfigure your kubeconfig by saving the file path to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the file path for your new kubeconfig file:
+1. If you choose to download your new kubeconfig via the Cloud Manager, you will need to reconfigure your kubeconfig by saving the file path to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the file path for your new kubeconfig file:
 
     ```command
     export KUBECONFIG={{< placeholder "~/Downloads/kubeconfig.yaml" >}}
