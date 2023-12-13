@@ -47,7 +47,7 @@ Once your local `$KUBECONFIG` environment variable is configured with your clust
     ```command
     kubectl -n kube-system delete secrets --field-selector="type=kubernetes.io/service-account-token"
     ```
-    You should receive a confirmation the secrets is deleted:
+    You should receive a confirmation the secrets have been deleted:
     ```output
     secret "ccm-user-token-5d5lk" deleted
     secret "cluster-autoscaler-user-token-sc6qr" deleted
@@ -87,7 +87,7 @@ In order to expedite secret recreation after deletion and regain access to your 
     ```
     {{< /note >}}
 
-1. If you downlowd your new kubeconfig via the Cloud Manager, you will need to reconfigure your kubeconfig by saving the file path to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the file path for your new kubeconfig file:
+1. If you choose to downlowd your new kubeconfig via the Cloud Manager, you will need to reconfigure your kubeconfig by saving the file path to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the file path for your new kubeconfig file:
 
     ```command
     export KUBECONFIG={{< placeholder "~/Downloads/kubeconfig.yaml" >}}
