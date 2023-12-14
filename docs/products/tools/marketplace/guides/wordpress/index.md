@@ -3,7 +3,7 @@ description: "WordPress is an industry standard CMS. Follow this guide to deploy
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 published: 2020-09-28
-modified: 2023-06-06
+modified: 2023-12-14
 modified_by:
   name: Linode
 title: "Deploy WordPress through the Linode Marketplace"
@@ -116,10 +116,10 @@ If you need to reset your admin user's password and you aren't receiving the pas
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Navigate to the directory of your WordPress installation:.
+1.  Navigate to the `public_html` directory of your WordPress installation:.
 
     ```command
-    cd /var/www/wordpress
+    cd /var/www/[domain]/public_html
     ```
 
 1.  Using the WP-CLI, update either the password or email address. You can also update other values as needed. See [WP-CLI wp user update command](https://developer.wordpress.org/cli/commands/user/update/).
