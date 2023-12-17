@@ -1,67 +1,66 @@
 ---
 slug: comparing-network-firewall-solutions
-title: "Comparing Linux-based Network Firewall Software"
-description: 'Learn compare the software options for configuring a firewall on your Linux system.'
-og_description: 'Learn compare the software options for configuring a firewall on your Linux system.'
-keywords: ['firewall','nftables','iptables','ufw','firewalld']
+title: "Comparing Linux-Based Network Firewall Software"
+description: 'Learn to compare the software options for configuring a firewall on your Linux system.'
+keywords: ['firewall', 'nftables', 'iptables', 'ufw', 'firewalld']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
 published: 2023-10-24
 modified_by:
-  name: Nathaniel Stickman
+  name: Linode
 ---
 
 Implementing a firewall is crucial for securing your Linux system. There are an array of popular software firewalls to choose from, and each offers unique features. So understanding how these tools compare can help you choose the best firewall for your needs.
 
 In this guide, learn more about each of the most common software firewall tools on Linux and how they compare. Throughout, follow links to our in-depth guides on each of these tools, and compare examples of each handles common firewall configurations.
 
-## An Overview of Netfilter (the Linux Kernel-space Firewall Module)
+## An Overview of Netfilter (The Linux Kernel-Space Firewall Module)
 
 [Netfilter](https://www.netfilter.org/) is a packet-filtering framework included in the Linux kernel (since 2.4.0). This framework provides kernel-level hooks that are used to implement packet filtering and network address and port translation (NAT and NPT). Ultimately, it is this framework that all firewall tools leverage for managing packets.
 
 Low-level tools like those covered below are the default interfaces for Netfilter. For that reason, these tools give you a lot of control, but they can also be difficult to learn and work with. Thus, you can also find high-level tools, like the ones further below, built on top of these low-level tools. Such high-level tools can further simplify firewall configuration.
 
-## Low-level User-space Firewall Utilities
+## Low-Level User-Space Firewall Utilities
 
-Linux utilizes dedicated packet classification tools for users to manage network/firewall rules. These tools — nftables and iptables — are built on Netfilter and provide low-level firewall configurations. They are especially helpful when you need fine-grained control of your network's package filtering.
+Linux utilizes dedicated packet classification tools for users to manage network/firewall rules. These tools — `nftables` and `iptables` — are built on Netfilter and provide low-level firewall configurations. They are especially helpful when you need fine-grained control of your network's package filtering.
 
 ### nftables
 
-[nftables](https://www.netfilter.org/projects/nftables/index.html) has become the default low-level packet classification tool, replacing iptables. Leveraging the Netfilter framework, nftables allows users to configure network rulesets that filter and route packets and ultimately define network traffic.
+[nftables](https://www.netfilter.org/projects/nftables/index.html) has become the default low-level packet classification tool, replacing `iptables`. Leveraging the Netfilter framework, `nftables` allows users to configure network rulesets that filter and route packets and ultimately define network traffic.
 
-nftables uses a *tables -> chains -> rules* structure for managing network rules. Tables organize sets of chains, and each chain consists of a list of rules, processed in order.
+`nftables` uses a *tables -> chains -> rules* structure for managing network rules. Tables organize sets of chains, and each chain consists of a list of rules, processed in order.
 
-Because nftables has superseded iptables, you should opt to use it when possible. The main exception is older Linux systems, many of which do not support nftables. Alternatively, you may prefer a high-level tool like those covered [below](#high-level-firewall-configuration-managers).
+Because `nftables` has superseded `iptables`, you should opt to use it when possible. The main exception is older Linux systems, many of which do not support `nftables`. Alternatively, you may prefer a high-level tool like those covered [below](#high-level-firewall-configuration-managers).
 
-You can learn more about nftables and its usage in our [Getting Started with nftables](/docs/guides/how-to-use-nftables/) guide.
+You can learn more about `nftables` and its usage in our [Getting Started with nftables](/docs/guides/how-to-use-nftables/) guide.
 
 ### iptables
 
-[iptables](https://www.netfilter.org/projects/iptables/index.html) traditionally filled the space now occupied by nftables. iptables is, like nftables, a low-level tool for packet classification, providing firewall and network traffic management through configuration of rulesets. iptables uses a similar *tables -> chains -> rules* hierarchical model as well.
+[iptables](https://www.netfilter.org/projects/iptables/index.html) traditionally filled the space now occupied by `nftables`. `iptables` is, like `nftables`, a low-level tool for packet classification, providing firewall and network traffic management through the configuration of rulesets. `iptables` uses a similar *tables -> chains -> rules* hierarchical model as well.
 
-Even though nftables has replaced iptables as the default, some systems, particularly ones using older Linux versions, only support iptables. So, unless you are looking for higher-level firewall configuration (see [High-level Firewall Configuration Managers](#high-level-firewall-configuration-managers) below), you need to use iptables in those cases.
+Even though `nftables` has replaced `iptables` as the default, some systems, particularly ones using older Linux versions, only support `iptables`. So, unless you are looking for higher-level firewall configuration (see [High-Level Firewall Configuration Managers](#high-Level-firewall-configuration-managers) section below), you need to use `iptables` in those cases.
 
-You can learn more about iptables and how to configure network rules with it in our guide [Controlling Network Traffics with iptables](/docs/guides/control-network-traffic-with-iptables/).
+You can learn more about `iptables` and how to configure network rules with them in our [Controlling Network Traffics with iptables](/docs/guides/control-network-traffic-with-iptables/) guide.
 
-## High-level Firewall Configuration Managers
+## High-Level Firewall Configuration Managers
 
-When you do not need fine-grained control of network traffic, low-level tools may prove overly cumbersome. High-level tools offer simpler solutions for implementing firewalls that may better fit your needs. By abstracting lower-level details, these tools can make it easier to managing network rules.
+When you do not need fine-grained control of network traffic, low-level tools may prove overly cumbersome. High-level tools offer simpler solutions for implementing firewalls that may better fit your needs. By abstracting lower-level details, these tools can make it easier to manage network rules.
 
 ### UFW
 
-[UFW](https://wiki.ubuntu.com/UncomplicatedFirewall) (short for UncomplicatedFirewall) offers firewall management in a user-friendly command-line interface. It comes by default on Ubuntu systems, and is typically the go-to choice on Debian and Arch Linux systems as well.
+[UFW](https://wiki.ubuntu.com/UncomplicatedFirewall) (short for UncomplicatedFirewall) offers firewall management in a user-friendly command-line interface. It comes by default on Ubuntu systems and is typically the go-to choice on Debian and Arch Linux systems as well.
 
 What especially sets UFW apart is the simplicity its commands bring to firewall configuration. Setting up your desired firewall rules and enabling the firewall follows an *uncomplictated* set of commands.
 
-See more on UFW and steps for getting started in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+See more on UFW and steps for getting started in our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
 
 ### Firewalld
 
-[Firewalld](https://firewalld.org/) provides an interface for configuring firewall rules both dynamically and persistently. The dynamic configuration feature allows Firewalld to set up rules that apply immediately, without having to restart the service or interrupt existing connections. Additionally, Firewalld's *zones* system provides convenience for categorizing and managing levels of trust.
+[Firewalld](https://firewalld.org/) provides an interface for configuring firewall rules both dynamically and persistently. The dynamic configuration feature allows firewalld to set up rules that apply immediately, without having to restart the service or interrupt existing connections. Additionally, firewalld's *zones* system provides convenience for categorizing and managing levels of trust.
 
 Firewalld supports most Linux distributions, and it is included by default on RHEL-related systems (e.g., CentOS, Fedora, AlmaLinux, Rocky Linux) and openSUSE.
 
-Take a look at our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide to find out more about using Firewalld.
+Take a look at our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide to find out more about using firewalld.
 
 ## Managed Cloud Firewall Service
 
@@ -71,11 +70,11 @@ That said, cloud firewalls often do not cover all of the features of software fi
 
 One solution — cloud or software firewall — is likely to better fit your needs than the other. But often you can get the best results by using both together. As an example: Use a cloud firewall to apply "absolute" network rules across multiple cloud instances and prevent unwanted traffic from ever reaching your servers. Then, use a software firewall to fine-tune your network filtering on each server.
 
-Learn more about cloud firewalls and how they compare to software firewalls in our guide [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/).
+Learn more about cloud firewalls and how they compare to software firewalls in our [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/) guide.
 
 ## Basic Usage Comparison
 
-To further compare the software firewall tools, what follows are a series of example network filtering rules. Each covers a common scenario and shows how each of the four tools above implements the necessary ruleset. These examples offer a sense of how the tools differ, and for even more you can refer to the guides linked above.
+To further compare the software firewall tools, what follows are a series of example network filtering rules. Each covers a common scenario and shows how each of the four tools above implements the necessary ruleset. These examples offer a sense of how the tools differ, and for even more, you can refer to the guides linked above.
 
 ### View Existing Configuration
 
@@ -150,7 +149,7 @@ sudo ufw status verbose
 ```
 
 {{< /tab >}}
-{{< tab "Firewalld" >}}
+{{< tab "firewalld" >}}
 
 To see firewall rules for a specific zone (`public` in this example):
 
@@ -250,7 +249,7 @@ sudo ufw default allow outgoing
 ```
 
 {{< /tab >}}
-{{< tab "Firewalld" >}}
+{{< tab "firewalld" >}}
 
 Firewalld blocks incoming traffic by default. But to ensure that policy is in place:
 
@@ -271,9 +270,9 @@ sudo firewall-cmd --policy outgoing-default --set-priority -100 --permanent
 {{< /tab >}}
 {{< /tabs >}}
 
-### Allow All Traffic from a Specific IP Address
+### Allow All Traffic From a Specific IP Address
 
-Tighter network security stipulates specifically which IP address have access to the system. Denying incoming traffic by default — as shown above — and adding exceptions as needed helps to ensure access only by known systems.
+Tighter network security stipulates specifically which IP address has access to the system. Denying incoming traffic by default — as shown above — and adding exceptions as needed helps to ensure access only by known systems.
 
 {{< tabs >}}
 {{< tab "nftables" >}}
@@ -316,7 +315,7 @@ sudo ufw allow from 2001:db8:e001:1b8c::2
 ```
 
 {{< /tab >}}
-{{< tab "Firewalld" >}}
+{{< tab "firewalld" >}}
 
 Use the `trusted` zone to allow traffic from a given source address. The operation is the same regardless of IPv4 or IPv6:
 
@@ -328,7 +327,7 @@ sudo firewall-cmd --zone=trusted --add-source=2001:db8:e001:1b8c::2
 {{< /tab >}}
 {{< /tabs >}}
 
-### Block All Traffic from a Specific IP Address
+### Block All Traffic From a Specific IP Address
 
 Each firewall management tool covered here offers an option for blocking traffic from a given IP. Recommended setups and some default policies in these tools may already block all incoming traffic that is not explicitly approved. However, being able to explicitly block a given IP address gives you much more control and may be particularly useful in certain setups.
 
@@ -373,9 +372,9 @@ sudo ufw deny from 2001:db8:e001:1b8c::2
 ```
 
 {{< /tab >}}
-{{< tab "Firewalld" >}}
+{{< tab "firewalld" >}}
 
-Use Firwalld's `drop` zone to block specific IP addresses. The same method holds whether IPv4 or IPv6:
+Use firwalld's `drop` zone to block specific IP addresses. The same method holds whether IPv4 or IPv6:
 
 ```command
 sudo firewall-cmd --zone=drop --add-source=192.0.2.0
@@ -385,9 +384,9 @@ sudo firewall-cmd --zone=drop --add-source=2001:db8:e001:1b8c::2
 {{< /tab >}}
 {{< /tabs >}}
 
-### Allow Incoming Traffic from a Specific Port
+### Allow Incoming Traffic From a Specific Port
 
-Allowing traffic on specific ports is common, especially for web servers. Opening ports allows access for SSH connections (port `22`) and for web application usage (ports `80` and `443`), among other use cases.
+Allowing traffic on specific ports is common, especially for web servers. Opening ports allow access for SSH connections (port `22`) and for web application usage (ports `80` and `443`), among other use cases.
 
 In addition, the firewall tools covered here can use port specifications alongside IP address specifications. Doing so can ensure even tighter security, relegating incoming traffic from specific addresses to specific ports.
 
@@ -439,7 +438,7 @@ sudo ufw allow from 192.0.2.0 proto tcp to any port 22
 ```
 
 {{< /tab >}}
-{{< tab "Firewalld" >}}
+{{< tab "firewalld" >}}
 
 To open port `22` for traffic:
 
