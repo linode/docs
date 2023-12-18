@@ -119,7 +119,7 @@ If you need to reset your admin user's password and you aren't receiving the pas
 1.  Navigate to the `public_html` directory of your WordPress installation:.
 
     ```command
-    cd /var/www/[domain]/public_html
+    cd /var/www/example.com/public_html
     ```
 
 1.  Using the WP-CLI, update either the password or email address. You can also update other values as needed. See [WP-CLI wp user update command](https://developer.wordpress.org/cli/commands/user/update/).
