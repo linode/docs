@@ -3,7 +3,7 @@ description: "Learn how to enable High Availability on Linode Kubernetes Engine.
 keywords: ['kubernetes', 'lke', 'high availability', 'ha']
 tags: ["networking","kubernetes","container","education"]
 published: 2021-11-04
-modified: 2023-09-21
+modified: 2023-12-18
 modified_by:
   name: Linode
 title: "High Availability (HA) Control Plane"
@@ -12,7 +12,7 @@ aliases: ['/guides/enable-lke-high-availability/', '/products/compute/kubernetes
 authors: ["Linode"]
 ---
 
-In Kubernetes, the control plane is the set of components that orchestrate the cluster and manage the worker nodes (Compute Instances) in that cluster and the pods (containers) within the worker nodes. The control plane components include the Kubernetes API server (`kube-api-server`), etcd, the Kubernetes scheduler (`kube-scheduler`), the cloud control manager (`cloud-control-manager`), and the Kubernetes controller manager (`kube-controller-manager`).
+In Kubernetes, the control plane is the set of components that orchestrate the cluster and manage the worker nodes (Compute Instances) in that cluster and the pods (containers) within the worker nodes. The control plane components include the Kubernetes API server (`kube-apiserver`), etcd, the Kubernetes scheduler (`kube-scheduler`), the cloud controller manager (`cloud-controller-manager`), and the Kubernetes controller manager (`kube-controller-manager`).
 
 Within the Linode Platform, this control plane is fully managed by LKE (the Linode Kubernetes Engine). By default, these components are not replicated. If any of them fail, it's possible that there may be issues with your cluster. Enabling **HA (High Availability) Control Plane** adds an additional layer of redundancy by replicating these control plane components. In doing so, this feature can ensure that the cluster experiences maximum uptime (99.99% guaranteed) and is recommended for all production applications running on LKE.
 
@@ -28,7 +28,7 @@ While upgrading to an HA cluster is always possible, **downgrading your cluster 
 
 When HA control plane is enabled on a cluster, the following control plane components are replicated:
 
-- **etcd** and **kube-api-server** increases from *one* to *three* replicas.
+- **etcd** and **kube-apiserver** increases from *one* to *three* replicas.
 - All other components, including the **Cloud Controller Manager**, **kube-scheduler**, and **kube-controller-manager**, increase from *one* to *two* replicas, with leader election put in place.
 
 When multiple replicas are created, they are always placed on separate infrastructure to better support uptime and redundancy. This configuration maintains a guaranteed 99.99% uptime for the control plane and worker nodes.

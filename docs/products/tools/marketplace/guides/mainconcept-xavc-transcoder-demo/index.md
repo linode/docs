@@ -1,6 +1,6 @@
 ---
-title: "Deploy MainConcept XAVC Transcoder through the Linode Marketplace"
-description: "Deploy MainConcept XAVC Transcoder, an enterprise ready tool to create Sony XAVC camera formats on a Linode Compute Instance."
+title: "Deploy MainConcept XAVC Transcoder Demo through the Linode Marketplace"
+description: "Deploy MainConcept XAVC Transcoder demo, an enterprise ready tool to create Sony XAVC camera formats on a Linode Compute Instance."
 keywords: ['transcoder','encoder','video','sony','xavc','xavc-intra','xavc long gop','xavc-s','rest api']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
