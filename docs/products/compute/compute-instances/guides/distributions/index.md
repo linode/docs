@@ -2,7 +2,7 @@
 description: "A list of all the Linux distributions provided on the Linode Platform and advice for how to select a distribution for your next project."
 keywords: ["distro", "distribution", "operating system", "Linux"]
 published: 2019-07-15
-modified: 2023-12-06
+modified: 2023-12-19
 modified_by:
   name: Linode
 title: "Choosing a Linux Distribution"
@@ -23,7 +23,7 @@ Below is a full list of distributions, along with the release versions that we o
 | Distribution | Releases | Description |
 |------|-------|-------|
 | [AlmaLinux](https://almalinux.org/) | **9**, 8 | A nearly binary compatible derivative of RHEL intended to provide a long-term stable replacement for CentOS. Made by the same team as [CloudLinux OS](https://www.cloudlinux.com/) |
-| [Alpine](https://alpinelinux.org/) | **3.18**, 3.17, 3.16, 3.15\*\* | **Recommended for advanced Linux users only.** Lightweight distribution popular with [Docker](https://www.docker.com/) and security minded users. |
+| [Alpine](https://alpinelinux.org/) | **3.19**, 3.18, 3.17, 3.16, 3.15\*\* | **Recommended for advanced Linux users only.** Lightweight distribution popular with [Docker](https://www.docker.com/) and security minded users. |
 | [Arch](https://www.archlinux.org/) | Rolling release\* | **Recommended for advanced Linux users only.** Powerful and detail oriented, empowers more advanced users to fine tune their configuration. |
 | [CentOS](https://www.centos.org) | **Stream 9**, Stream 8, 7 | Widely popular in professional and business settings while still being accessible to the average user. Versions 8 and earlier are binary equivalents of their corresponding RHEL (Red Hat Enterprise Linux) release. [CentOS Stream](https://www.redhat.com/en/topics/linux/what-is-centos-stream) has replaced CentOS and receives updates *just* ahead of the corresponding RHEL version. |
 | [Debian](https://www.debian.org/) | **12**, 11, 10 | A popular and stable distribution that's been actively maintained longer than most other distributions. |
