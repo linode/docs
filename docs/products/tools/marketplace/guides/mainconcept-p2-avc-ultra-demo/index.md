@@ -1,6 +1,6 @@
 ---
-title: "Deploy MainConcept P2 AVC-ULTRA Transcoder through the Linode Marketplace"
-description: "Deploy MainConcept P2 AVC-ULTRA Transcoder, an enterprise ready tool to create Panasonic AVC-ULTRA camera formats on a Linode Compute Instance."
+title: "Deploy MainConcept P2 AVC-ULTRA Transcoder Demo through the Linode Marketplace"
+description: "Deploy MainConcept P2 AVC-ULTRA Transcoder demo, an enterprise ready tool to create Panasonic AVC-ULTRA camera formats on a Linode Compute Instance."
 keywords: ['transcoder','encoder','video','panasonic','p2 avc-ultra','p2 avc-intra','p2 avc longg','avc-intra rp2027','rest api']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
