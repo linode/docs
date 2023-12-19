@@ -45,11 +45,11 @@ For a more comprehensive version history of SMB, review the [Server Message Bloc
 
 ### Linux SMB Support
 
-- **[SAMBA](https://www.samba.org/):** Unix support for the SMB protocol was initially provided by SAMBA. Since Microsoft initially did not release public specifications for their proprietary protocol, the developers of SAMBA had to reverse engineer it. Future versions of SAMBA were able to use the public specifications of later SMB protocols. SAMBA includes support for SMB3 (3.1.1) and is actively updated. SAMBA provides extensive support for all features of the SMB protocol and acts as a stand-alone file and print server. For more background information, see the [SAMBA Wikipedia entry](https://en.wikipedia.org/wiki/Samba_(software)).
+- **[Samba](https://www.samba.org/):** Unix support for the SMB protocol was initially provided by Samba. Since Microsoft initially did not release public specifications for their proprietary protocol, the developers of Samba had to reverse engineer it. Future versions of Samba were able to use the public specifications of later SMB protocols. Samba includes support for SMB3 (3.1.1) and is actively updated. Samba provides extensive support for all features of the SMB protocol and acts as a stand-alone file and print server. For more background information, see the [Samba Wikipedia entry](https://en.wikipedia.org/wiki/Samba_(software)).
 
-- **[LinuxCIFS utils](https://wiki.samba.org/index.php/LinuxCIFS_utils):** This in-kernel software acts as an SMB client and is the preferred method of mounting existing SMB shares on Linux. It was originally included as part of the SAMBA software, but is now available on its own. LinuxCIFS utils, available as the cifs_utils package in most Linux distributions, is used within this guide.
+- **[LinuxCIFS utils](https://wiki.samba.org/index.php/LinuxCIFS_utils):** This in-kernel software acts as an SMB client and is the preferred method of mounting existing SMB shares on Linux. It was originally included as part of the Samba software, but is now available on its own. LinuxCIFS utils, available as the cifs_utils package in most Linux distributions, is used within this guide.
 
-- **[ksmbd](https://github.com/namjaejeon/ksmbd):** Developed as an in-kernel SMB server in cooperation with the SAMBA project, ksmbd is designed to be a more performant fileserver. It doesn't implement all of SAMBA's extensive features (beyond file sharing).
+- **[ksmbd](https://github.com/namjaejeon/ksmbd):** Developed as an in-kernel SMB server in cooperation with the Samba project, ksmbd is designed to be a more performant fileserver. It doesn't implement all of Samba's extensive features (beyond file sharing).
 
 ## Before You Begin
 
@@ -114,7 +114,7 @@ The following sections detail how to mount an SMB share on Ubuntu, but the essen
     mount -t cifs //[server-ip]/[share-path] /[mount-point]
     ```
 
-    In the example below, the SMB server's IP is 192.0.2.17, the share's path is SharedFiles, and the mount point is /mnt/smb_share.
+    In the example below, the SMB server's IP is 192.0.2.17, the share's path is SharedFiles, and the mount point is `/mnt/smb_share`.
 
     ```command
     mount -t cifs //192.0.2.17/SharedFiles /mnt/smb_share

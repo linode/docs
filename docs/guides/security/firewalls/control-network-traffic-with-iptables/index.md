@@ -337,7 +337,7 @@ COMMIT
 {{< /file >}}
 
 
-**Optional:** If you plan to use [Linode Longview](/docs/guides/what-is-longview/) or [Linode's NodeBalancers](/docs/products/networking/nodebalancers/get-started/), add the respective rule after the section for allowing HTTP and HTTPS connections:
+**Optional:** If you plan to use [Linode Longview](/docs/products/tools/longview/get-started/) or [Linode's NodeBalancers](/docs/products/networking/nodebalancers/get-started/), add the respective rule after the section for allowing HTTP and HTTPS connections:
 
     # Allow incoming Longview connections from longview.linode.com
     -A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT

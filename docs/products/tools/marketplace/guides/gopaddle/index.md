@@ -27,7 +27,7 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 18.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** A minimum plan size of 8GB Shared CPU Linode is recommended for GoPaddle.
 
 ## Getting Started After Deployment

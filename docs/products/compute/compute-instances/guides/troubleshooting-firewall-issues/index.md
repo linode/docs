@@ -1,9 +1,9 @@
 ---
 title: Troubleshooting Firewall Issues on Compute Instances
 description: This guide presents troubleshooting strategies for Compute Instances that may be unresponsive due to issues caused by a firewall.
-keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall"]
+keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall","troubleshoot"]
 published: 2020-08-04
-modified: 2023-03-14
+modified: 2023-11-01
 modified_by:
   name: Linode
 bundles: ['troubleshooting']
@@ -38,24 +38,24 @@ Ensure that your Compute Instance is powered on and running.
 
 ## Is there a Cloud Firewall Assigned to my Compute Instance?
 
-If you are using Cloud Firewall, then it's important to verify which Cloud Firewall(s) your Compute Instance is assigned to and to check its Cloud Firewall rules.
+If you are using Cloud Firewalls, then it's important to verify which Cloud Firewall(s) your Compute Instance is assigned to and to check its Cloud Firewall rules. Likewise, if your Compute Instance is sitting behind a NodeBalancer, you may want to investigate whether or not that NodeBalancer is assigned to any Cloud Firewalls. Note that only inbound rules apply to NodeBalancers.
 
 1.  Log into [Cloud Manager](https://cloud.linode.com) and select **Firewalls** from the menu.
 
-1.  The Firewalls Listing page displays a list of all the Cloud Firewalls currently active on your account.
+1.  The Firewalls listing page displays a list of all the Cloud Firewalls currently active on your account.
 
-1.  Find the Compute Instance you are troubleshooting under the **Linodes** column to determine which Cloud Firewall(s) is assigned to it.
+1.  Find the Compute Instance or NodeBalancer you are troubleshooting under the **Services** column to determine which Cloud Firewall(s) is assigned to it.
 
-1.  Next, check the **Status** column to confirm that the Cloud Firewalls is **Enabled**.
+1.  Next, check the **Status** column to confirm that the Cloud Firewall is **Enabled**.
 
-    ![firewall-home](firewall-listing-non-cmr.png)
+    ![firewall-home](firewall-listing-non-cmr.jpg)
 
-1.  If the Cloud Firewall is enabled, check what rules are currently active by clicking on the label of the Cloud Firewall. This takes you to your Cloud Firewall's **Rules** page.
+1.  If the Cloud Firewall is enabled, check to see which rules are currently active by clicking on the label of the Cloud Firewall. This takes you to your Cloud Firewall's **Rules** page.
 
-1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your Compute Instance's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/get-started/#edit-cloud-firewall-rules) to allow connections for that port.
+1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your service's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/get-started/#edit-cloud-firewall-rules) to allow connections for that port.
 
     {{< note >}}
-    If the Cloud Firewall is assigned to more than one Compute Instance, modifying the Cloud Firewall rules affect all Compute Instances assigned to the Cloud Firewall.
+    If the Cloud Firewall is assigned to more than one Compute Instance or NodeBalancer, modifying the Cloud Firewall rules affect all services assigned to the Cloud Firewall.
     {{< /note >}}
 
     {{< note >}}

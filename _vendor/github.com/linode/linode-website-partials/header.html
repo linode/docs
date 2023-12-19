@@ -152,7 +152,7 @@
 
         <div class="o-layout__module c-identity">
           <a class="c-identity__link" href="https://www.linode.com" target="_self" itemprop="url">
-            <img width="113.84" height="50" alt="Akamai Logo" class="c-identity__image" src="https://assets.linode.com/akamai-logo.svg" itemprop="image" data-no-lazy="1">
+            <img width="113.84" height="50" alt="Akamai Logo" class="c-identity__image" src="https://assets.linode.com/akamai-logo.svg" itemprop="image" fetchpriority="high" data-no-lazy="1">
           </a>
         </div>
 
@@ -254,6 +254,9 @@
                     <a class="o-menu__link" href="https://www.linode.com/products/high-memory/"><span class="o-menu__title">High Memory</span></a>
                   </li>
                   <li class="o-menu__item">
+                    <a class="o-menu__link" href="https://www.linode.com/products/premium-cpu/"><span class="o-menu__title">Premium CPU</span></a>
+                  </li>
+                  <li class="o-menu__item">
                     <a class="o-menu__link" href="https://www.linode.com/products/gpu/"><span class="o-menu__title">GPU</span></a>
                   </li>
                   <li class="o-menu__item">
@@ -283,12 +286,6 @@
                 <ul class="o-menu__list o-menu__child --d2">
                   <li class="o-menu__item">
                     <a class="o-menu__link" href="https://www.linode.com/products/databases/"><span class="o-menu__title">Managed Databases</span></a>
-                  </li>
-                  <li class="o-menu__item">
-                    <a class="o-menu__link" href="https://www.linode.com/products/mysql/"><span class="o-menu__title">MySQL</span></a>
-                  </li>
-                  <li class="o-menu__item">
-                    <a class="o-menu__link" href="https://www.linode.com/products/postgresql/"><span class="o-menu__title">PostgreSQL</span></a>
                   </li>
                 </ul>
               </li>
@@ -450,7 +447,7 @@
                 <a class="o-menu__link" href="https://www.linode.com/estimator/"><span class="o-menu__title">Cloud Estimator</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://cloud-estimator.linode.com"><span class="o-menu__title">Cloud Pricing Calculator</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/cloud-computing-calculator/"><span class="o-menu__title">Cloud Computing Calculator</span></a>
               </li>
             </ul>
           </li>
@@ -467,9 +464,6 @@
                 <a class="o-menu__link" href="https://www.linode.com/developers/"><span class="o-menu__title">Developer Portal</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/lp/affiliate-program/"><span class="o-menu__title">Affiliate Program</span></a>
-              </li>
-              <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/green-light/"><span class="o-menu__title">Beta Program</span></a>
               </li>
               <li class="o-menu__item">
@@ -479,7 +473,7 @@
                 <a class="o-menu__link" href="https://www.linode.com/partners/"><span class="o-menu__title">Partner Program</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/linode-for-startups/"><span class="o-menu__title">Startup Program</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/startup-programs/"><span class="o-menu__title">Startup Programs</span></a>
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/blog/"><span class="o-menu__title">Blog</span></a>
@@ -565,7 +559,7 @@
     <div class="o-layout__module" id="submenu-mobile-search" data-group="mobile-search">
       <form role="search" method="get" action="https://www.linode.com" class="c-search">
         <label for="s">Search</label>
-        <input type="search" placeholder="Search Linode" name="s">
+        <input type="search" placeholder="Search Linode" name="s" id="s">
         <input type="submit" value="Search">
       </form>
     </div>
@@ -681,6 +675,9 @@
                 <a class="o-menu__link" href="https://www.linode.com/products/high-memory/"><span class="o-menu__title">High Memory</span></a>
               </li>
               <li class="o-menu__item">
+                <a class="o-menu__link" href="https://www.linode.com/products/premium-cpu/"><span class="o-menu__title">Premium CPU</span></a>
+              </li>
+              <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/products/gpu/"><span class="o-menu__title">GPU</span></a>
               </li>
               <li class="o-menu__item">
@@ -716,26 +713,6 @@
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/products/databases/"><span class="o-menu__title">Managed Databases</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/mysql/"><span class="o-menu__title">MySQL</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/postgresql/"><span class="o-menu__title">PostgreSQL</span></a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        <div class="o-layout__module">
-          <h6>Services</h6>
-          <nav class="o-menu">
-            <ul class="o-menu__list --d0">
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/managed/"><span class="o-menu__title">Managed</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/pro-services/"><span class="o-menu__title">Professional Services</span></a>
               </li>
             </ul>
           </nav>
@@ -853,6 +830,21 @@
             </ul>
           </nav>
         </div>
+
+        <div class="o-layout__module">
+          <h6>Services</h6>
+          <nav class="o-menu">
+            <ul class="o-menu__list --d0">
+              <li class="o-menu__item">
+                <a class="o-menu__link" href="https://www.linode.com/products/managed/"><span class="o-menu__title">Managed</span></a>
+              </li>
+              <li class="o-menu__item">
+                <a class="o-menu__link" href="https://www.linode.com/products/pro-services/"><span class="o-menu__title">Professional Services</span></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
       </div>
 
     </div>
@@ -929,7 +921,7 @@
                 <a class="o-menu__link" href="https://www.linode.com/estimator/"><span class="o-menu__title">Cloud Estimator</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/cloud-pricing-calculator/"><span class="o-menu__title">Cloud Pricing Calculator</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/cloud-computing-calculator/"><span class="o-menu__title">Cloud Computing Calculator</span></a>
               </li>
             </ul>
           </nav>
@@ -965,9 +957,6 @@
                 <a class="o-menu__link" href="https://www.linode.com/developers/"><span class="o-menu__title">Developer Portal</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/lp/affiliate-program/"><span class="o-menu__title">Affiliate Program</span></a>
-              </li>
-              <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/green-light/"><span class="o-menu__title">Beta Program</span></a>
               </li>
               <li class="o-menu__item">
@@ -977,7 +966,7 @@
                 <a class="o-menu__link" href="https://www.linode.com/partners/"><span class="o-menu__title">Partner Program</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/linode-for-startups/"><span class="o-menu__title">Startup Program</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/startup-programs/"><span class="o-menu__title">Startup Programs</span></a>
               </li>
             </ul>
           </nav>

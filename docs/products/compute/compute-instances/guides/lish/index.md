@@ -1,12 +1,12 @@
 ---
-description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
-keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
-modified: 2022-10-12
-modified_by:
-  name: Linode
-published: 2009-08-04
 title: "Access Your System Console Using Lish (Linode Shell)"
 title_meta: "Access Your System Console Using Lish"
+description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
+keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
+published: 2009-08-04
+modified: 2023-10-22
+modified_by:
+  name: Linode
 tags: ["linode platform","cloud manager"]
 image: using-the-linode-shell-lish.jpg
 aliases: ['/platform/manager/using-the-linode-shell-lish-classic-manager/','/platform/using-the-linode-shell-lish/','/networking/using-the-linode-shell-lish/','/using-lish-the-linode-shell/','/troubleshooting/using-lish-the-linode-shell/','/platform/manager/using-the-linode-shell-lish/','/guides/using-the-linode-shell-lish/','/guides/using-the-lish-console/','/guides/lish/']
@@ -19,23 +19,19 @@ The **Lish Console**, also called the *Linode Shell*, provides direct console ac
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Cloud Manager](https://cloud.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
-{{< note >}}
-Lish used to be accessible via a direct SSH connection to your Linode's host machine, but as of May 10, 2013, all users must connect to a Lish SSH gateway to access Lish. For more information, please see [this blog post](https://blog.linode.com/2013/04/30/lish-ssh-gateway/).
-{{< /note >}}
-
 ### Through the Cloud Manager (Weblish)
 
 You can connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from the Cloud Manager.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-1. Click on the **Linodes** link in the sidebar and select the desired Compute Instance.
+1.  Click on the **Linodes** link in the sidebar and select the desired Compute Instance.
 
-1. Click on the **Launch LISH Console** link in the top right-hand corner of the Cloud Manager.
+1.  Click on the **Launch LISH Console** link in the top right-hand corner of the Cloud Manager.
 
     ![Launch the Lish Console](launch-console-button.png)
 
-1. The Lish Web Console window appears, as shown below. From here, you can log in to your Compute Instance with any other username and password available on that system (such as `root`).
+1.  The Lish Web Console window appears, as shown below. From here, you can log in to your Compute Instance with any other username and password available on that system (such as `root`).
 
     ![An example of the Lish Web Console](weblish.png)
 
@@ -49,9 +45,9 @@ You can connect to Lish with the SSH client of your choice. For example, you can
 If you have [Third Party Authentication](/docs/products/platform/accounts/guides/third-party-authentication/) enabled on your account, you will not be able to log in to your Compute Instance through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
 {{< /note >}}
 
-1. Determine which Lish SSH gateway you wish to use. There's one in every data center. See [Lish Gateways](#lish-gateways) for a full list.
+1.  Determine which Lish SSH gateway you wish to use. There's one in every data center. See [Lish Gateways](#lish-gateways) for a full list.
 
-1. Open a terminal window and enter the following command, replacing `username` with your Cloud Manager username, and `location` with your preferred Lish SSH gateway.
+1.  Open a terminal window and enter the following command, replacing `username` with your Cloud Manager username, and `location` with your preferred Lish SSH gateway.
 
     ```command
     ssh username@location
@@ -67,7 +63,7 @@ If you have [Third Party Authentication](/docs/products/platform/accounts/guides
     Users who have been granted "Access" rights on a particular Compute Instance will have access to its Lish console via the gateway. Linodes that a user can't access in the Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).
     {{< /note >}}
 
-1. Verify that the Lish SSH gateway's fingerprint is valid by verifying the Terminal's output against the list of our [Lish Gateway Fingerprints](#lish-gateway-fingerprints). Once verified, enter *yes* to proceed.
+1.  Verify that the Lish SSH gateway's fingerprint is valid by verifying the Terminal's output against the list of our [Lish Gateway Fingerprints](#lish-gateways). Once verified, enter *yes* to proceed.
 
     ```output
     The authenticity of host 'lish-newark.linode.com (66.228.40.59)' can't be established.
@@ -110,20 +106,19 @@ After you log in, you'll have console access to your Compute Instance. You'll be
 
 If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/products/platform/accounts/guides/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/) guide for more information.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-1. Click on the profile icon in the top right hand corner of the Manager and select **LISH Console Settings**.
+1.  Click on the profile icon in the top right hand corner of the Manager and select **LISH Console Settings**.
 
-1. Copy your public SSH key into the **SSH Public Key** field, as shown below.
+1.  Copy your public SSH key into the **SSH Public Key** field, as shown below.
 
     ![Add your public ssh key](lish-add-public-key.png)
 
-1. Click the **Save** button. Your Lish key will be saved in the Cloud Manager.
+1.  Click the **Save** button. Your Lish key will be saved in the Cloud Manager.
 
 Now you can log in to any of the Lish gateway boxes without having to type your password.
 
 If you wish to disable Lish access for users without keys, use the **Authentication Mode** dropdown menu on the same page, and select **Allow key authentication only** then click **Save**.
-
 
 ## Lish Commands
 
@@ -175,31 +170,21 @@ ssh -t [manager-username]@lish-[location].linode.com [linode-name]
 
 You can also append Lish commands to the SSH command on your system prompt. For instance, to reboot your system, using your Cloud Manager username, location, and the host-id for your Compute Instance:
 
-    ssh -t [manager-username]@lish-[location].linode.com [linode-name] reboot
+```command
+ssh -t [manager-username]@lish-[location].linode.com [linode-name] reboot
+```
 
 Similarly, you can generate a view of the log using Lish:
 
-    ssh -t [manager-username]@lish-[location].linode.com [linode-name] logview
+```command
+ssh -t [manager-username]@lish-[location].linode.com [linode-name] logview
+```
 
 This command format works for all Lish functionality.
 
 ## Lish Gateways
 
-Each data center has its own gateway, which provides access to Lish, Weblish, and Glish. You can use any gateway to access your Compute Instances, but we recommend using one close to the data center it’s located within. The gateway boxes are available over IPv4 and IPv6.
-
-| Data center | Lish SSH | Weblish and Glish |
-| -- | -- | -- |
-| Atlanta (Georgia, USA) | `lish-atlanta.linode.com` | `atlanta.webconsole.linode.com` |
-| Dallas (Texas, USA) | `lish-dallas.linode.com` | `dallas.webconsole.linode.com` |
-| Frankfurt (Germany) | `lish-frankfurt.linode.com` | `frankfurt.webconsole.linode.com` |
-| Fremont (California, USA) | `lish-fremont.linode.com` | `fremont.webconsole.linode.com` |
-| London (United Kingdom) | `lish-london.linode.com` | `london.webconsole.linode.com` |
-| Mumbai (India) | `lish-mum1.linode.com` | `mum1.webconsole.linode.com` |
-| Newark (New Jersey, USA) |  `lish-newark.linode.com` | `newark.webconsole.linode.com` |
-| Singapore | `lish-singapore.linode.com` | `singapore.webconsole.linode.com` |
-| Sydney (Australia) | `lish-syd1.linode.com` | `syd1.webconsole.linode.com` |
-| Tokyo (Japan) | `lish-tokyo2.linode.com` <br>or `lish-shg1.linode.com` | `shg1.webconsole.linode.com` |
-| Toronto (Canada) | `lish-tor1.linode.com` | `tor1.webconsole.linode.com` |
+Each data center has its own gateways, which provides access to Lish, Weblish, and Glish. When connecting through Lish, you can use the corresponding gateway within any data center, though we recommend choosing the data center the instance is located within. These gateways are accessible over IPv4 and IPv6.
 
 {{< note >}}
 If you are having issues accessing Lish, Weblish, or Glish, you may be blocked by a local firewall. Make sure your firewall allows outbound connections to the following ports and the gateway you wish to access:
@@ -209,127 +194,338 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 - **Glish port:** 8080
 {{< /note >}}
 
-### Lish Gateway Fingerprints
+#### Amsterdam (Netherlands)
 
-The valid fingerprints for the Lish gateway boxes are as follows:
+-   **Lish SSH Gateway:** `lish-nl-ams.linode.com`
 
-#### Atlanta
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:/y+83+sA3JdDGkv/KLnIAIXqfgqWfgp5RZ+DCx1T4yU lish-nl-ams.linode.com
+    ECDSA 256 SHA256:iR/He+teo+c7jqr8LzaTikbTlMDdIkIERhJBXdIjO8w lish-nl-ams.linode.com
+    ED25519 256 SHA256:vxF9arB2lYBVP45ZA7t1JEE9w/vthPmzU3a2oOR8O7Y lish-nl-ams.linode.com
+    ```
+    {{< /note >}}
 
-These are the fingerprints for the Lish gateway in our Atlanta data center (lish-atlanta.linode.com):
+-   **Weblish/Glish Gateway:** `nl-ams.webconsole.linode.com`
 
-```command
-RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
-ECDSA SHA256:8emv5PuUgPB2GFejMYWl1f4x1yj3YqAQPAYIrBm43ZI
-Ed25519 SHA256:7k2c442k+zqbGaraZvmqXM3MA5lCcthaR2lbrB651lg
-Ed25519 MD5:b3:76:56:3a:d8:66:5e:0c:61:90:03:b7:0b:ca:58:25
-```
+#### Atlanta, GA (USA)
 
-#### Dallas
+-   **Lish SSH Gateway:** `lish-us-southeast.linode.com`
 
-These are the fingerprints for the Lish gateway in our Dallas data center (lish-dallas.linode.com):
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:OWzHHclIp4zt5sHt+QZ002HYgnxtec+skWPAgFNfx4w lish-us-southeast.linode.com
+    ECDSA 256 SHA256:qVMUsKTjxiSFvElIRMvjzKv4eRth37i2OBaaSODO6us lish-us-southeast.linode.com
+    ED25519 256 SHA256:ZpNQYxIc25e4vVfFgscSJm1/jGaUy3Gti4kuzB1aTuc lish-us-southeast.linode.com
+    ```
+    {{< /note >}}
 
-```command
-RSA 6d:3d:b5:d0:42:1c:49:45:a6:47:29:bd:88:4e:58:d4
-ECDSA SHA256:1fL1HTGas1APIpshCu1ZWys7LI97s8eTFN3+f8zEYXA
-Ed25519 SHA256:Ime9h7IAxAjBvMGR+G+EnbaLWpvXO+Z7TaGHzM9g5Sc
-Ed25519 MD5:23:c1:02:ba:40:77:f7:73:0b:d4:0f:3a:f1:8c:74:b6
-```
+-   **Weblish/Glish Gateway:** `us-southeast.webconsole.linode.com`
 
-#### Frankfurt
+#### Chennai (India)
 
-These are the fingerprints for the Lish gateway in our Frankfurt data center (lish-frankfurt.linode.com):
+-   **Lish SSH Gateway:** `lish-in-maa.linode.com`
 
-```command
-RSA 43:76:22:43:0e:01:cb:84:6a:80:b9:9b:90:34:c7:b1
-ECDSA SHA256:e1FxEXiZVi6n13tagd1ZAQEW/fsRqz29ez5IfWf9kxg
-Ed25519 SHA256:vG1rnoGe7XRRY0nauJREQk75OamxCwRRpeaTDB8LpgM
-Ed25519 MD5:9e:83:86:e2:f9:f7:f7:56:fc:bf:54:bb:75:7e:79:37
-```
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:kXCaKnn1nVlVEC5SCuez6FApcXr/2UUiaSANUy0rlLI lish-in-maa.linode.com
+    ECDSA 256 SHA256:Jj+pb1AkDdKs77o6ozgkOk83rg7auLSOQrnebE8n91o lish-in-maa.linode.com
+    ED25519 256 SHA256:v1KaIB0togivalP7OVvlrLpu/y80qsm5cj50qclTWc0 lish-in-maa.linode.com
+    ```
+    {{< /note >}}
 
-#### Fremont
+-   **Weblish/Glish Gateway:** `in-maa.webconsole.linode.com`
 
-These are the fingerprints for the Lish gateway in our Fremont data center (lish-fremont.linode.com):
+#### Chicago, IL (USA)
 
-```command
-RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
-ECDSA SHA256:fwuaKryHbvtKjFFviDocnMTNKWXUzfZSGPY8mgLgiNM
-Ed25519 SHA256:s3MVXFaTiL7Fb5oB0s9zMBk9VJsrkNxXXZfdeJG2enQ
-Ed25519 MD5:c8:eb:9d:e6:b0:60:b1:ca:9e:89:d1:e4:6a:3c:10:31
-```
+-   **Lish SSH Gateway:** `lish-us-ord.linode.com`
 
-#### London
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:rRwktOKfSApeffa+YOVxXXL70Ba1CpTYp/oFywEH2Pc lish-us-ord.linode.com
+    ECDSA 256 SHA256:SV9A/24Jdb++ns/+6Gx7WqZCyN4+0y4ICFsaqK3Rm8s lish-us-ord.linode.com
+    ED25519 256 SHA256:J+yN8rjhr9j27M4zLSF6OX9XmIoipWbPP/J1AGRlRYc lish-us-ord.linode.com
+    ```
+    {{< /note >}}
 
-These are the fingerprints for the Lish gateway in our London data center (lish-london.linode.com):
+-   **Weblish/Glish Gateway:** `us-ord.webconsole.linode.com`
 
-```command
-RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
-ECDSA SHA256:mE/plOHLl+NJ7LUdW7AaMEOnhskXZxav5Em/rD6VZ5g
-Ed25519 SHA256:HXHM8/wCx7NrGsnfGpaexiBfOLKN9g0hoaL9wRaSeWg
-Ed25519 MD5:c1:43:45:93:d6:96:4e:50:41:d2:d0:9f:81:e5:f8:9e
-```
+#### Dallas, TX (USA)
 
-#### Mumbai
+-   **Lish SSH Gateway:** `lish-us-central.linode.com`
 
-These are the fingerprints for the Lish gateway in our Mumbai data center (lish-mum1.linode.com):
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:y1H5qzNB3yjvmPX/e8HcYbTffQb9qANjtT7r5vqIZl8 lish-us-central.linode.com
+    ECDSA 256 SHA256:3FY9mXdhRJjaJ7eTDO8SUWoLxdJBshz5229Wwsg7/iQ lish-us-central.linode.com
+    ED25519 256 SHA256:bC/I0G2IrWlICtzsGYT84dzdft1weRd28SIUt+D31P8 lish-us-central.linode.com
+    ```
+    {{< /note >}}
 
-```command
-RSA 57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed
-ECDSA SHA256:uWVLSBPZ0E72VawrP4yWsW3YYHPM9b7A/seeEy7GG0c
-Ed25519 SHA256:5VkP3/dLsfrKic9p6y9QnFq4sKa92RBzxGJrsX5/dBQ
-Ed25519 MD5:e8:a7:f2:7c:5e:b3:ee:1d:bf:a3:37:68:d7:1d:b2:bf
-```
+-   **Weblish/Glish Gateway:** `us-central.webconsole.linode.com`
 
-#### Newark
+#### Frankfurt (Germany)
 
-These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):
+-   **Lish SSH Gateway:** `lish-eu-central.linode.com`
 
-```command
-RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
-ECDSA SHA256:57OGBNARJ1fhI+zrE3eTEeQWXVVDHRU8QHcP+BsWmN8
-Ed25519 SHA256:tyelNHfgaPGbN2cppfJVr/db3/pHnItR9maW+ocAS18
-Ed25519 MD5:c1:f7:57:1a:09:ca:46:f8:5d:d3:d4:8a:34:6f:77:ae
-```
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:4Xkz0V7ZQd277GpfnHzvdshuH3gjsv9+UXlgO0/gNhA lish-eu-central.linode.com
+    ECDSA 256 SHA256:W3V3zB1vYWlpoRaBy97RZk6GP+DZrFLsm1vAE27eCXQ lish-eu-central.linode.com
+    ED25519 256 SHA256:/105/zGMByknAKw5Hm7554oZ25wwN0+3owhJTZWOvNc lish-eu-central.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `eu-central.webconsole.linode.com`
+
+#### Fremont, CA (USA)
+
+-   **Lish SSH Gateway:** `lish-us-west.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:s4ACk4T42uMnOpMWybsZFSVn9PCd/0Q/LEqs0pWKVj4 lish-us-west.linode.com
+    ECDSA 256 SHA256:2CnS4CkZsymw6PuT5bE8hLfVTMwkMPr8D9lYbUOgE7E lish-us-west.linode.com
+    ED25519 256 SHA256:whGbGnOqEIv9HrvvEgXO6PdNnCDEr7OwL0pHzrTDBYo lish-us-west.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:**`us-west.webconsole.linode.com`
+
+#### Jakarta (Indonesia)
+
+-   **Lish SSH Gateway:** `lish-id-cgk.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:n+f2JBMBYvvJUw11nYafKrX1nU3gdohnWfj9qdTXU+I lish-id-cgk.linode.com
+    ECDSA 256 SHA256:CwM8d4D9yU0Mw/Odu4bxs6OWpfzJHSrSUUgtkZNRvsk lish-id-cgk.linode.com
+    ED25519 256 SHA256:RvdTsLHAWcjmXU2h5JD821Xk4x40FcHLzpX2/ppMLh0 lish-id-cgk.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `id-cgk.webconsole.linode.com`
+
+#### Los Angeles, CA (USA)
+
+-   **Lish SSH Gateway:** `lish-us-lax.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:TVyXe3i1iJF9rU+j/t57wpdRB2h56Kh2tnZsUra30kA lish-us-lax.linode.com
+    ECDSA 256 SHA256:Yh+jEgxiGIgETrC9uz4wUqnKvi7yPrlqgmpxsa65QDI lish-us-lax.linode.com
+    ED25519 256 SHA256:kFi+ignk5bxYxnk/F3Lehk0HoM98BuUzEGhlEzhHo9I lish-us-lax.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-lax.webconsole.linode.com`
+
+#### London (UK)
+
+-   **Lish SSH Gateway:** `lish-eu-west.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:8EgXMpjYma0BpjghpUcFwlJCMv1cZROKv1CE35QElnI lish-eu-west.linode.com
+    ECDSA 256 SHA256:CfmDU3U4/F0z34iosz9uWrsmeuy2L/8W+otq44Avonw lish-eu-west.linode.com
+    ED25519 256 SHA256:K6Hh7inkt5vJYrPKz3sB3yLd/+rtyrmyV7vYSCQ+8mU lish-eu-west.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `eu-west.webconsole.linode.com`
+
+#### Miami, FL, USA
+
+-   **Lish SSH Gateway:** `lish-us-mia.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:kfwzGjXR+WV1JxvufbsZTv4qzVUI5Nkmh3Z3/XhpAT8 lish-us-mia.linode.com
+    ECDSA 256 SHA256:cZVK7bB8cwci3sXJJNIaBlX9Z3DlBj3hAL5J8Hc+vr0 lish-us-mia.linode.com
+    ED25519 256 SHA256:+sBLV01KzOiVJw4OJGmO71+NUm2cE7ndpj1aqW2tNLg lish-us-mia.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-mia.webconsole.linode.com`
+
+#### Milan (Italy)
+
+-   **Lish SSH Gateway:** `lish-it-mil.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:toVfir7U8Ixg0wELAx0qCC91ld+HIxmTwggUP/+itkU lish-it-mil.linode.com
+    ECDSA 256 SHA256:XQDX+diXFBAT8OjpN+zwZN5sukTAQwtqe+i89Kh6gXQ lish-it-mil.linode.com
+    ED25519 256 SHA256:Uxw1KbWQVz5QYHHfUzFJcZM+HLbdu6vJ/R3ksEv2k3M lish-it-mil.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `it-mil.webconsole.linode.com`
+
+#### Mumbai (India)
+
+-   **Lish SSH Gateway:** `lish-ap-west.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:cZv3NjjPKvjKuG4/ETTs8dQEn/sk/ryXJMn/wAqRSdk lish-ap-west.linode.com
+    ECDSA 256 SHA256:PUjmIqCe7ViewBrmronVU1Ss/yU63Zgp0yFe4PCZSQk lish-ap-west.linode.com
+    ED25519 256 SHA256:s5LimAwVgNrnDOVWhLhv8RyBo3jk6OjiSCxPUQSefQ8 lish-ap-west.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `ap-west.webconsole.linode.com`
+
+#### Newark, NJ (USA)
+
+-   **Lish SSH Gateway:** `lish-us-east.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:u7ayBzPWsFmc2/sLrP8zYh0pFGFvo2m/H13Gmw7tZlA lish-us-east.linode.com
+    ECDSA 256 SHA256:Q7TDu+Qa3OpO6TUlgtG8ROa0MfRP5uagjSfavqT4oqs lish-us-east.linode.com
+    ED25519 256 SHA256:uUaOWG4KM2k+ZLCgtVFEi90TiNbNElXEP/orB57+8WI lish-us-east.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-east.webconsole.linode.com`
+
+#### Osaka (Japan)
+
+-   **Lish SSH Gateway:** `lish-jp-osa.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:VXDxZ8+0b1Q54Bzvt7a6A4bvvKAI5OHxBYxwIC4OsDQ lish-jp-osa.linode.com
+    ECDSA 256 SHA256:qM6cfmK2/Vrho1exDZ9qe4cLWVdp5U0dv5MJ22K+lwE lish-jp-osa.linode.com
+    ED25519 256 SHA256:1CJ7P/i5XUP6XWizukQ7XIEiQ5rlIM+06N6qF2WfDMc lish-jp-osa.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `jp-osa.webconsole.linode.com`
+
+#### Paris (France)
+
+-   **Lish SSH Gateway:** `lish-fr-par.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:qTliFB86axo9n07H0hUP/z5nm7Fbkzlf8eKnmtXBhZU lish-fr-par.linode.com
+    ECDSA 256 SHA256:NU4UctBefhWIR3mpCrh+r2p5lNmtwFFoeelZspjMNYM lish-fr-par.linode.com
+    ED25519 256 SHA256:GYNvVuHJqGIdCiU6yTPbkJmMgj+ZYBGRVGDqnrtJoQc lish-fr-par.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `fr-par.webconsole.linode.com`
+
+#### São Paulo (Brazil)
+
+-   **Lish SSH Gateway:** `lish-br-gru.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:lmtONyLfe0tiLEdNrbEUd8j10A/o/Ss1HaUYJDgc8ks lish-br-gru.linode.com
+    ECDSA 256 SHA256:ftl4kIcxzeGUsT9FPQ49GF7afel1yrOQgclJN7/8kuk lish-br-gru.linode.com
+    ED25519 256 SHA256:EKqBawVESQnL4oQOMskpBAtrEiOlE+qD9M6WLiFbCyU lish-br-gru.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `br-gru.webconsole.linode.com`
+
+#### Seattle, WA (USA)
+
+-   **Lish SSH Gateway:** `lish-us-sea.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:XqkskcFrRzZbMU/XeR1diiNM6zCsWs2wL4pmTvBLNII lish-us-sea.linode.com
+    ECDSA 256 SHA256:FEqVGwuv/BgbLtNkcfFg7Lgm0R6KQVUnPY+wIoimrrA lish-us-sea.linode.com
+    ED25519 256 SHA256:6R7iWvSe7OQSDcVmhwrH/EJiE51+ntiub3CPXfzupDA lish-us-sea.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-sea.webconsole.linode.com`
 
 #### Singapore
 
-These are the fingerprints for the Lish gateway in our Singapore data center (lish-singapore.linode.com):
+-   **Lish SSH Gateway:** `lish-ap-south.linode.com`
 
-```command
-RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
-ECDSA SHA256:rFYWuld4hWMbTzX+xZMuQ3kxiJ6t8A+FNQ5k889mKEA
-Ed25519 SHA256:q1G1pBrLuhsUAnZ04SOYoxVthKYyLz+wA0hBAUVkKtE
-Ed25519 MD5:4c:d1:55:68:a1:90:6c:15:9b:af:c1:f7:27:31:68:29
-```
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:ed7vvOh2m4DtwwUruYiyDQLegcjh3AAeLZ/C9HYWjS0 lish-ap-south.linode.com
+    ECDSA 256 SHA256:dVVAqiJMdolMgD81T1ELjPPM2P3EZ9b9li8dj8UssTw lish-ap-south.linode.com
+    ED25519 256 SHA256:+gcOBQjBvMDrGuxKQdmV+fs7+sWqQ9e4khIFYlPvooM lish-ap-south.linode.com
+    ```
+    {{< /note >}}
 
-#### Sydney
+-   **Weblish/Glish Gateway:** `ap-south.webconsole.linode.com`
 
-These are the fingerprints for the Lish gateway in our Sydney data center (lish-syd1.linode.com):
+#### Stockholm (Sweden)
 
-```command
-RSA 31:89:80:92:aa:c0:2f:12:f6:2d:20:3a:27:88:ea:ba
-ECDSA SHA256:whZwcrXeixljj6ZrrRYzLc6UguvkNqKmtXz+JrMSI9w
-Ed25519 SHA256:0lOHVxRAMMOY3HDFIE4nMz11W4y+9OYqdtFqhi8NkWs
-Ed25519 MD5:ef:2d:cc:c7:aa:10:6f:cd:de:8f:c1:5d:8b:68:56:2b
-```
+-   **Lish SSH Gateway:** `lish-se-sto.linode.com`
 
-#### Tokyo 2
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:oC6WZwUMm+S/myz7aEBP6YsAUXss7csmWzJRlwDfpyw lish-se-sto.linode.com
+    ECDSA 256 SHA256:lr6m6BKQBqFW/iw/WDq2QQqh5kUlMjidawEEKv9lNRg lish-se-sto.linode.com
+    ED25519 256 SHA256:phubC9JMR6DNal0BIvu2ESvmDfs2rSquBrhKdr0IbmU lish-se-sto.linode.com
+    ```
+    {{< /note >}}
 
-These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-tokyo2.linode.com):
+-   **Weblish/Glish Gateway:** `se-sto.webconsole.linode.com`
 
-```command
-RSA 2c:60:9a:ce:cf:4b:8d:4e:8f:09:ae:e0:c2:b0:fb:b7
-ECDSA SHA256:0sRmstQ+6lfa4KwnAIQvuZMunq8KKNmu/n4KeAcAXmg
-Ed25519 SHA256:SWEV04SJt+DDG4ov2AfDYdZRavcg4GHufNP60QRkZzk
-Ed25519 MD5:99:7c:4e:b3:2d:c9:79:53:a9:60:b0:40:b2:73:52:73
-```
+#### Sydney (Australia)
 
-#### Toronto
+-   **Lish SSH Gateway:** `lish-ap-southeast.linode.com`
 
-These are the fingerprints for the Lish gateway in our Toronto data center (lish-tor1.linode.com):
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:rbamZevowgslIHGX34frmWv/Qvt863skVo5q2gKFCFs lish-ap-southeast.linode.com
+    ECDSA 256 SHA256:FmtrulPNisf4KVfOEtxiC0jLQfLW6iNdM2bZ5AWWFyM lish-ap-southeast.linode.com
+    ED25519 256 SHA256:dRp40pJoimqpzoRM9yCY8OIzDxESMIkLWYCes0nFRdQ lish-ap-southeast.linode.com
+    ```
+    {{< /note >}}
 
-```command
-RSA 4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
-ECDSA SHA256:iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
-Ed25519 SHA256:TSbQmRFaaWEHKEwgwvqQFKMfHKduPftou9/ue9K/Z2c
-Ed25519 MD5:84:02:57:5e:b7:90:e3:78:3c:57:91:1a:e0:b4:e1:d4
-```
+-   **Weblish/Glish Gateway:** `ap-southeast.webconsole.linode.com`
+
+#### Tokyo (Japan)
+
+-   **Lish SSH Gateway:** `lish-ap-northeast.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:Ral4+nR7A3jnhOqcebKTZQ+uDCIJ2rHQLnDUizDwIHY lish-ap-northeast.linode.com
+    ECDSA 256 SHA256:mxhd/vUfH9+8CDfOVmpfAbGDXdt1o35QKwAxO20GAqw lish-ap-northeast.linode.com
+    ED25519 256 SHA256:CDH9IcgWQ2iwx27ZotyvNbWl5os+QbeRZ/SLagLBckQ lish-ap-northeast.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `ap-northeast.webconsole.linode.com`
+
+#### Toronto (Canada)
+
+-   **Lish SSH Gateway:** `lish-ca-central.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:FetyiRe7La3cAdpHz17sfKgQHaXEQPWcIq8A0sI11go lish-ca-central.linode.com
+    ECDSA 256 SHA256:YhHGT3h4elvJjLTRBcjwNU+DK3TkvrQBrTtaiut5bIw lish-ca-central.linode.com
+    ED25519 256 SHA256:hf6BTXkLy8dnGBD1z2IiMwD+J+o9xc/nkhxmOX69hWM lish-ca-central.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `ca-central.webconsole.linode.com`
+
+#### Washington, DC (USA)
+
+-   **Lish SSH Gateway:** `lish-us-iad.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:mzFtMaMVX6CsLXsYWn6c8BXnXk0XHfoOXGExDUEH2OI lish-us-iad.linode.com
+    ECDSA 256 SHA256:of9osuoFwh7g5ZiO0G3ZGYi/8JcCw3BA/ZdkpaKQlT0 lish-us-iad.linode.com
+    ED25519 256 SHA256:oFoUJn/xXV/+b7EJIcIt6G6hV5jXzjM/pOsoceDDOaA lish-us-iad.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-iad.webconsole.linode.com`

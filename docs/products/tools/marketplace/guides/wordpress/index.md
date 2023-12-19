@@ -32,7 +32,7 @@ authors: ["Linode"]
 
 ### WordPress Options
 
-- **Webserver Stack** *(required)*: Chose which webserver to use for the WordPress deployment, Apache2 or NGINX.
+- **Webserver Stack** *(required)*: Choose which webserver to use for the WordPress deployment, Apache2 or NGINX.
 - **Email address** *(required)*: Enter the email address you wish to use when configuring the WordPress admin user, generating SSL certificates, and optionally creating DNS records for a custom domain.
 - **WordPress Admin Username** *(required)*: Username for your WordPress admin user account. Defaults to `admin` if no username is entered.
 - **WordPress Database Username** *(required)*: MySQL username for the WordPress database user. Defaults to `wordpress` if no username is entered.
@@ -60,7 +60,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-1.  Once logged in, access the credentials file by runing the following command:
+1.  Once logged in, access the credentials file by running the following command:
 
     ```command
     cat /root/.linode_credentials.txt

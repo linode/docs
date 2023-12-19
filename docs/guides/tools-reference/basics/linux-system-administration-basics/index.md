@@ -20,7 +20,7 @@ This guide presents a collection of common issues and useful tips for Linux syst
 ## What is Linux Administration?
 Linux administration is about setting up disaster recovery, managing new system builds, creating a backup to restore data, Linux hardware management, managing storage,  handling file systems, and managing the security of Linux systems. A big part of Linux administration is ensuring that Linux powered systems are stable and secure.
 
-## What Should a Linux Administrator Should Know?
+## What Should a Linux Administrator Know?
 
 Typically Linux system administrators are expected to handle Linux file systems, manage the root user, have a working knowledge of bash commands, and an ability to manage users.
 
@@ -564,7 +564,7 @@ You can use `grep` to filter the results of another command that sends output to
 
     ls /home/username/data | grep "1257"
 
-In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/guides/how-to-grep-for-text-in-files/).
+In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/guides/how-to-use-grep-command/).
 
 ### Search and Replace Across a Group of Files
 

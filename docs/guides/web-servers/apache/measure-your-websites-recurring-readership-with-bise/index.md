@@ -275,7 +275,7 @@ If you're happy with the behavior of the default rows, you can certainly continu
 There are four kinds of rows you can define, each of which examines a different part of your access logs. These correspond to the values for the `test_type` parameter: [path](#test-type-path), [path_regex](#test-type-path-regex), [referer_regex](#test-type-referer-regex), and [agent_regex](#test-type-agent-regex).
 
 {{< note respectIndent=false >}}
-Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/guides/how-to-grep-for-text-in-files/#regular-expression-overview) before defining your own row definitions with any of these types.
+Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/guides/how-to-use-grep-command/#regular-expression-overview) before defining your own row definitions with any of these types.
 
 Note also that Bise ignores whitespace in regular expressions, allowing you to write more complex regexes with inline comments, as one of the examples below will illustrate.
 {{< /note >}}

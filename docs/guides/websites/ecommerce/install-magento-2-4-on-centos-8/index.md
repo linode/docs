@@ -109,7 +109,6 @@ Magento can run on iOS 12 or later on the following platforms:
 We recommend you make a check point backup before installing and configuring the ancillary software components. Take another checkpoint before installing Magento.
 {{< /note >}}
 
-
 ## Install and Configure Prerequisite Components
 
 Several other software components must be present and properly configured before Magento can be installed. The components are:
@@ -120,12 +119,11 @@ Several other software components must be present and properly configured before
 
 Follow the instructions in the [How to Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide to install Apache, SQL, and PHP.
 
-{{< disclosure-note "Install PHP 7.4">}}
-        1. Enable the repositories by using: ```sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y```
-        2. List the available PHP version using: ``` sudo dnf module list php```
-        3. Enable the latest version of PHP using: ```sudo dnf module enable php:remi-7.4```
-{{< /disclosure-note >}}
-
+{{< note type="secondary" title="Install PHP 7.4" isCollapsible=true >}}
+1. Enable the repositories by using: ```sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y```
+2. List the available PHP version using: ``` sudo dnf module list php```
+3. Enable the latest version of PHP using: ```sudo dnf module enable php:remi-7.4```
+{{< /note >}}
 
 ### Web Server
 

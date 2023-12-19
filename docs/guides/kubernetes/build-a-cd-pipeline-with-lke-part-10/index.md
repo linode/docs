@@ -2,10 +2,10 @@
 slug: build-a-cd-pipeline-with-lke-part-10
 description: 'In part ten on our series on Kubernetes, you will learn how to collect metrics on the resources used in your Kubernetes cluster by installing metrics-server.'
 title: "Building a CD Pipeline Using LKE (Part 10): Installing metrics-server"
-keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
-modified: 2022-12-14
+modified: 2023-08-18
 modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
@@ -15,7 +15,13 @@ authors: ["Linode"]
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server](cd-presentation-header-10-installing-metrics-server.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server")
 
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
+
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server (Slide #152)](https://2021-03-lke.container.training/#152)
+
+{{< note >}}
+Linode has updated various Helm commands in this guide since the above slide deck's original publication. Commands may differ between those in this guide and the slide deck.
+{{< /note >}}
 
 ## Installing metrics-server
 
@@ -76,13 +82,19 @@ Now that there is an application running on our Kubernetes cluster, the next ste
 (derived from the official installation instructions)
 - We're going to use Helm one more time:
 
-      helm upgrade --install metrics-server bitnami/metrics-server \
+      helm upgrade --install metrics-server metrics-server/metrics-server \
         --create-namespace --namespace metrics-server \
         --set apiService.create=true \
-        --set extraArgs.kubelet-insecure-tls=true \
-        --set extraArgs.kubelet-preferred-address-types=InternalIP
+        --set "args={--kubelet-insecure-tls=true,--kubelet-preferred-address-types=InternalIP}"
 
 - What are these options for?
+
+{{< note >}}
+Per the instructions provided by [ArtifactHub](https://artifacthub.io/packages/helm/metrics-server/metrics-server), you may need to add the `metrics-server` repository to Helm prior to installation:
+```command
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+```
+{{< /note >}}
 
 ### Installation options
 
@@ -92,13 +104,13 @@ Now that there is an application running on our Kubernetes cluster, the next ste
 
     (create an entry that will show up in `kubectl get apiservices`)
 
-- `extraArgs.kubelet-insecure-tls=true`
+- `kubelet-insecure-tls=true`
 
     when connecting to nodes to collect their metrics, don't check kubelet TLS certs
 
     (because most kubelet certs include the node name, but not its IP address)
 
-- `extraArgs.kubelet-preferred-address-types=InternalIP`
+- `kubelet-preferred-address-types=InternalIP`
 
     when connecting to nodes, use their internal IP address instead of node name
 

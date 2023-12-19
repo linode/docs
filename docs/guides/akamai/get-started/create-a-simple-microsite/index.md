@@ -59,7 +59,7 @@ To avoid an unexpected bill make sure to delete this Linode Compute Instance onc
 
 1.  Log in to the [Linode Cloud Manager](https://login.linode.com/login) and select the **Marketplace** link from the left navigation menu. This displays the Linode Create page with the Marketplace tab pre-selected.
 
-    You can read [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/) to learn more about features and services available in Linode’s Cloud Manager.
+    You can read [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-cloud-manager/) to learn more about features and services available in Linode’s Cloud Manager.
 
 1.  Use the **Select an App** field to search for the Node.js Marketplace App and select it.
 

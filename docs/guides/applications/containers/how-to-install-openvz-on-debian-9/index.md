@@ -260,7 +260,7 @@ submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-a
 
 6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
-     ![Linode Manager - Select Kernel](openvz_one.png)
+     ![Linode Manager - Select Kernel](openvz-one.png)
 
 7. Reboot your server and issue the command below to verify the OpenVZ kernel was loaded:
 
