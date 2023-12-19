@@ -23,7 +23,8 @@
       <a href="{{ $specr.RelPermalink }}">spec.yaml</a>.
       {{ .Content }}
     {{ end }}
-    {{ range $k, $v :=  $api.Paths }}
+    {{ $paths := partial "openapi3/to-map" $api.Paths }}
+    {{ range $k, $v :=  $paths }}
       {{ $parts := split $k "/" }}
       {{ $root := (index $parts 1) }}
       {{ $ops := slice (dict "o" $v.Connect "m" "Connect") (dict "o" $v.Delete "m" "Delete")  (dict "o" $v.Get "m" "Get") }}

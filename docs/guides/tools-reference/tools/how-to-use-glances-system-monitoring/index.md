@@ -161,12 +161,12 @@ Before running Glances as a server, you need to open the appropriate port on the
 
 - On **Debian** and **Ubuntu**, make sure you have UFW installed and enabled, which you can learn about in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Then, you can use the command below to open the port for Glances:
 
-        sudo ufw allow 61208
+        sudo ufw allow 61209
         sudo ufw reload
 
 - On **AlmaLinux**, **CentOS**, and **Fedora**, use the command below to open the port with FirewallD. You can read the [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) guide for more on this firewall tool:
 
-        sudo firewall-cmd --zone=public --add-port=61208/tcp --permanent
+        sudo firewall-cmd --zone=public --add-port=61209/tcp --permanent
         sudo firewall-cmd --reload
 
 To start a Glances server for command-line access, follow these steps:

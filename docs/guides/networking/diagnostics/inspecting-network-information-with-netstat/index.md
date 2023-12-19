@@ -216,7 +216,7 @@ udp6       0      0 [::]:ntp                [::]:*
 {{< /output >}}
 
 {{< note respectIndent=false >}}
-If you want to display IPv4 connections that are in both listening and non-listening state, add the `-a` command line option:
+If you want to display IPv6 connections that are in both listening and non-listening state, add the `-a` command line option:
 
     netstat -6a
 {{< /note >}}

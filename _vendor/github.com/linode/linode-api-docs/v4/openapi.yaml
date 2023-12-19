@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.167.3
+  version: 4.168.0
   title: Linode API
   license:
     name: Apache 2.0
@@ -8016,7 +8016,7 @@ paths:
     parameters:
     - name: linodeId
       in: path
-      description: ID of the Linode to look up.
+      description: ID of the Linode to access.
       required: true
       schema:
         type: integer
@@ -8030,7 +8030,7 @@ paths:
       - Linode Instances
       summary: Firewalls List
       description: >
-        View Firewall information for Firewalls associated with this Linode.
+        View Firewall information for Firewalls assigned to this Linode.
       operationId: getLinodeFirewalls
       x-linode-cli-action: firewalls-list
       security:
@@ -8039,7 +8039,7 @@ paths:
         - linodes:read_only
       responses:
         '200':
-          description: Returns a paginated list of Firewalls associated with this Linode.
+          description: Returns a paginated list of Firewalls assigned to this Linode.
           content:
             application/json:
               schema:
@@ -13318,11 +13318,11 @@ paths:
         * Use the `rules` property to create inbound and outbound access rules.
 
         * Use the `devices` property to assign the Firewall to a service and apply its Rules to the device. Requires `read_write` [User's Grants](/docs/api/account/#users-grants-view) to the device.
-        Currently, Firewalls can only be assigned to Linode instances.
+        Currently, Firewalls can be assigned to Linode compute instances and NodeBalancers.
 
-        * A Firewall can be assigned to multiple Linode instances at a time.
+        * A Firewall can be assigned to multiple services at a time.
 
-        * A Linode instance can have one active, assigned Firewall at a time.
+        * A service can have one active, assigned Firewall at a time.
         Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
 
         * Firewalls apply to all of a Linode's non-`vlan` purpose Configuration Profile Interfaces.
@@ -13337,7 +13337,7 @@ paths:
       - oauth:
         - firewall:read_write
       requestBody:
-        description: Creates a Firewall object that can be applied to a Linode service to filter the service's network traffic.
+        description: Creates a Firewall object that can be applied to a service to filter the service's network traffic.
         content:
           application/json:
             schema:
@@ -13352,7 +13352,9 @@ paths:
                   description: |
                     Devices to create for this Firewall.
                     When a Device is created, the Firewall is assigned to its associated service.
-                    Currently, Devices can only be created for Linode instances.
+                    Currently, Devices can be created for Linode compute instances and NodeBalancers.
+
+                    Additional devices can be assigned after Firewall creation by using the [Firewall Device Create](#firewall-device-create) command.
                   properties:
                     linodes:
                       description: >
@@ -13363,6 +13365,17 @@ paths:
                       example:
                         - 123
                         - 456
+                    nodebalancers:
+                      description: |
+                        An array containing a NodeBalancer ID. A Firewall Device is created for the ID.
+
+                        * Only one NodeBalancer can be assigned to a Firewall at a time.
+                        * Firewalls only apply to inbound TCP traffic to NodeBalancers.
+                      type: array
+                      items:
+                        type: integer
+                      example:
+                        - 321
                 rules:
                   required:
                   - inbound_policy
@@ -13436,8 +13449,12 @@ paths:
                 },
                 "devices": {
                   "linodes": [
-                    123
-                    ]
+                    123,
+                    456
+                    ],
+                  "nodebalancers": [
+                    321
+                  ]
                 },
                 "tags": [
                   "example tag",
@@ -13520,7 +13537,7 @@ paths:
         - A Firewall's Devices cannot be set with this endpoint. Instead, use the
         [Create Firewall Device](/docs/api/networking/#firewall-device-create)
         and [Delete Firewall Device](/docs/api/networking/#firewall-device-delete)
-        endpoints to assign and remove this Firewall from Linode services.
+        endpoints to assign and remove this Firewall from services.
 
         - A Firewall's Rules cannot be changed with this endpoint. Instead, use the
         [Update Firewall Rules](/docs/api/networking/#firewall-rules-update)
@@ -13597,8 +13614,8 @@ paths:
       - oauth:
         - firewall:read_write
       description: |
-        Delete a Firewall resource by its ID. This will remove all of the Firewall's Rules
-        from any Linode services that the Firewall was assigned to.
+        Delete a Firewall resource by its ID. This removes all of the Firewall's Rules
+        from any services that the Firewall was assigned to.
 
         * Assigned Linodes must not have any ongoing live migrations.
 
@@ -13643,9 +13660,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       summary: Firewall Devices List
       description: |
-        Returns a paginated list of a Firewall's Devices. A Firewall Device assigns a
-        Firewall to a Linode service (referred to as the Device's `entity`). Currently,
-        only Devices with an entity of type `linode` are accepted.
+        Returns a paginated list of a Firewall's Devices. A Firewall Device assigns a Firewall to a service (referred to as the Device's `entity`).
       operationId: getFirewallDevices
       x-linode-cli-action: devices-list
       security:
@@ -13664,6 +13679,29 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/FirewallDevices'
+                    example:
+                    - {
+                        "created": "2018-01-01T00:01:01",
+                        "entity": {
+                          "id": 123,
+                          "label": "my-linode",
+                          "type": "linode",
+                          "url": "/v4/linode/instances/123"
+                        },
+                        "id": 456,
+                        "updated": "2018-01-02T00:01:01"
+                      }
+                    - {
+                        "created": "2018-01-01T00:01:01",
+                        "entity": {
+                          "id": 321,
+                          "label": "my-nodebalancer",
+                          "type": "nodebalancer",
+                          "url": "/v4/nodebalancers/123"
+                        },
+                        "id": 654,
+                        "updated": "2018-01-02T00:01:01"
+                      }
                   page:
                     $ref: '#/components/schemas/PaginationEnvelope/properties/page'
                   pages:
@@ -13691,11 +13729,13 @@ paths:
         Creates a Firewall Device, which assigns a Firewall to a service (referred to
         as the Device's `entity`) and applies the Firewall's Rules to the device.
 
-        * Currently, only Devices with an entity of type `linode` are accepted.
+        * Currently, Devices with `linode` and `nodebalancer` entity types are accepted.
 
-        * A Firewall can be assigned to multiple Linode instances at a time.
+        * Firewalls only apply to inbound TCP traffic to NodeBalancers.
 
-        * A Linode instance can have one active, assigned Firewall at a time.
+        * A Firewall can be assigned to multiple services at a time.
+
+        * A service can have one active, assigned Firewall at a time.
         Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
 
         * Assigned Linodes must not have any ongoing live migrations.
@@ -13767,8 +13807,7 @@ paths:
       summary: Firewall Device View
       description: |
         Returns information for a Firewall Device, which assigns a Firewall
-        to a Linode service (referred to as the Device's `entity`). Currently,
-        only Devices with an entity of type `linode` are accepted.
+        to a service (referred to as the Device's `entity`).
       operationId: getFirewallDevice
       x-linode-cli-action: device-view
       security:
@@ -13807,10 +13846,10 @@ paths:
       - oauth:
         - firewall:read_write
       description: |
-        Removes a Firewall Device, which removes a Firewall from the Linode service it was
-        assigned to by the Device. This will remove all of the Firewall's Rules from the Linode
-        service. If any other Firewalls have been assigned to the Linode service, then those Rules
-        will remain in effect.
+        Removes a Firewall Device, which removes a Firewall from the service it was
+        assigned to by the Device. This removes all of the Firewall's Rules from the
+        service. If any other Firewalls have been assigned to the service, then those Rules
+        remain in effect.
 
         * Assigned Linodes must not have any ongoing live migrations.
 
@@ -14135,6 +14174,13 @@ paths:
                   $ref: '#/components/schemas/NodeBalancer/properties/label'
                 client_conn_throttle:
                   $ref: '#/components/schemas/NodeBalancer/properties/client_conn_throttle'
+                firewall_id:
+                  type: integer
+                  description: |
+                    The ID of the Firewall to assign to the NodeBalancer.
+
+                    * Only one NodeBalancer can be assigned to a Firewall at a time.
+                    * Firewalls only apply to inbound TCP traffic to NodeBalancers.
                 tags:
                   description: |
                     An array of Tags applied to this object. Tags are for organizational purposes only.
@@ -15069,6 +15115,52 @@ paths:
         source: >
           linode-cli nodebalancers node-delete \
             12345 4567 54321
+  /nodebalancers/{nodeBalancerId}/firewalls:
+    x-linode-cli-command: nodebalancers
+    parameters:
+    - name: nodeBalancerId
+      in: path
+      description: The ID of the NodeBalancer to access.
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: getNodeBalancerFirewalls
+      x-linode-grant: read_only
+      tags:
+      - NodeBalancers
+      summary: Firewalls List
+      description: >
+          View information for Firewalls assigned to this NodeBalancer.
+      x-linode-cli-action: firewalls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - nodebalancers:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of Firewalls assigned to this NodeBalancer.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Firewall'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/nodebalancers/$nodeBalancerId/firewalls \
+            -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli nodebalancers firewalls $nodeBalancerId
   /nodebalancers/{nodeBalancerId}/stats:
     x-linode-cli-command: nodebalancers
     parameters:
@@ -21336,9 +21428,9 @@ components:
     Firewall:
       type: object
       description: >
-        A resource that controls incoming and outgoing network traffic to a Linode service. Only one Firewall can be attached to a Linode at any given time.
+        A resource that controls incoming and outgoing network traffic to a compute service. Only one enabled Firewall can be attached to a particular service at any given time.
         [Create a Firewall Device](/docs/api/networking/#firewall-create)
-        to assign a Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode instances.
+        to assign a Firewall to a service. Currently, Firewalls can assigned to Linode compute instances and NodeBalancers.
       properties:
         id:
           x-linode-filterable: true
@@ -21531,8 +21623,8 @@ components:
     FirewallDevices:
       type: object
       description: >
-        Associates a Firewall with a Linode service. A Firewall can be assigned
-        to a single Linode service at a time. Additional disabled Firewalls can be
+        Associates a Firewall with a Linode or NodeBalancer service. A Firewall can be assigned
+        to a single entity at a time. Additional disabled Firewalls can be
         assigned to a service, but they cannot be enabled if another active Firewall
         is already assigned to the same service.
       properties:
@@ -21565,7 +21657,7 @@ components:
           type: object
           readOnly: true
           description: >
-            The Linode service that this Firewall has been applied to.
+            The compute service that this Firewall has been applied to.
           properties:
             id:
               description: The entity's ID
@@ -21576,6 +21668,7 @@ components:
               type: string
               enum:
               - linode
+              - nodebalancer
               example: linode
             label:
               description: The entity's label.
@@ -21584,7 +21677,7 @@ components:
               example: my-linode
             url:
               description: >
-                The URL you can use to access this entity.
+                The API URL path you can use to access this entity.
               type: string
               format: url
               readOnly: true

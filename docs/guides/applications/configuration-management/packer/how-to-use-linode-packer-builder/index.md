@@ -24,7 +24,7 @@ Packer *templates* store the configuration parameters used for building an image
 
 In Packer's ecosystem, [builders](https://www.packer.io/docs/builders) are responsible for building a system and generating an image from that system. Packer has multiple different types of builders, with each one being used to create images for a specific platform.
 
-The [Linode builder](https://www.packer.io/docs/builders/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](/docs/products/tools/images/) on your account that can be used for rapidly deploying new Linodes.
+The [Linode builder](https://developer.hashicorp.com/packer/integrations/linode/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](/docs/products/tools/images/) on your account that can be used for rapidly deploying new Linodes.
 
 ## Before You Begin
 
@@ -127,7 +127,7 @@ The starting line of each `source` block will contain the builder plugin to be u
 
 #### Parameters for the Linode Builder
 
-This example uses the Linode Packer builder as a source. Each of the parameters within the `source` block are outlined on the [Linode Builder](https://www.packer.io/docs/builders/linode) page within Packer's documentation.
+This example uses the Linode Packer builder as a source. Each of the parameters within the `source` block are outlined on the [Linode Builder](https://developer.hashicorp.com/packer/integrations/linode/linode) page within Packer's documentation.
 
 - `image`: The ID of the "starter" image to use. This can be one of the official Linode images or any private custom images on your account. In this example, we'll use `linode/debian10` to specify the official Linode Debian 10 image. You can view all the images available to you by running the following curl command:
 

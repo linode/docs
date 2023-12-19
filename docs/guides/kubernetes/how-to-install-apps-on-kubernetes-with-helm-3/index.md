@@ -202,7 +202,7 @@ The [`helm install` command](https://helm.sh/docs/intro/using_helm/#helm-install
     mariadb.mariadbRootPassword: "secretpassword"
     ```
 
-    Replace the value for `ghostHost` with a domain or subdomain that you own and would like to assign to the app; the value for `ghostEmail` with your email; the values for `ghostUsername` and `ghostPassword` with the credentials you wish to use for logging into your site; and the value for `mariabd.mariadbRootPassword` for the password you wish to use for logging into the database.
+    Replace the value for `ghostHost` with a domain or subdomain that you own and would like to assign to the app; the value for `ghostEmail` with your email; the values for `ghostUsername` and `ghostPassword` with the credentials you wish to use for logging into your site; and the value for `mariadb.mariadbRootPassword` for the password you wish to use for logging into the database.
 
     {{< note >}}
     If you don't own a domain name and won't continue to use the Ghost website after finishing this guide, you can make up a domain for this configuration file.

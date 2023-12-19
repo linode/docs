@@ -49,7 +49,7 @@ Once your MainConcept Live Encoder Marketplace App is deployed, you can log into
     203-0-113-1.ip.linodeusercontent.com
     ```
 
-    See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-rdns) guide for information on viewing and configuring your rDNS.
+    See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing and configuring your rDNS.
 
 2. Once the login prompt loads, enter `admin` as the *Username* and `admin` as the *Password*.
 

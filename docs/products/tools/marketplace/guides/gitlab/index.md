@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Deploy Gitlab through the Linode Marketplace"
 external_resources:
-- '[GitLab Adminstrator Documentation](https://docs.gitlab.com/ee/administration/)'
+- '[GitLab Administrator Documentation](https://docs.gitlab.com/ee/administration/)'
 aliases: ['/platform/one-click/deploy-gitlab-with-one-click-apps/','/guides/deploy-gitlab-with-one-click-apps/', '/platform/marketplace/deploy-gitlab-with-marketplace-apps/', '/guides/deploy-gitlab-with-marketplace-apps/','/guides/gitlab-marketplace-app/']
 authors: ["Linode"]
 ---
