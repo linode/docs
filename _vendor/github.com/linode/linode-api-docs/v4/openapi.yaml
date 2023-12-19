@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.168.0
+  version: 4.169.0
   title: Linode API
   license:
     name: Apache 2.0
@@ -538,6 +538,91 @@ paths:
             --state PA \
             --tax_id ATU99999999 \
             --zip 19102
+  /account/availability:
+    x-linode-cli-command: availability
+    get:
+      tags:
+      - account
+      summary: Account Availability
+      description: |
+        Returns service unavailability for all available regions.
+
+        Only authorized Users can access this endpoint.
+
+        *This endpoint is currently in **Beta**, and should not be used for production workloads.*
+      operationId: getAvailability
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      x-linode-cli-action: getAvailability
+      x-linode-grant: read_only
+      responses:
+        '200':
+          description: |
+            Returns a paginated list of regions and their unavailable resources.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AccountAvailability'
+                - $ref: '#/components/schemas/PaginationEnvelope'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/availability \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli account availability getAvailability
+  /account/availability/{id}:
+    x-linode-cli-command: availability
+    parameters:
+      - name: id
+        in: path
+        description: The id of the data center.
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+      - account
+      summary: Region Service Availability
+      description: |
+        Returns a single region's service availability.
+
+        Only authorized Users can access this.
+      operationId: getAccountAvailability
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      x-linode-cli-action: getAccountAvailability
+      x-linode-grant: read_only
+      responses:
+        '200':
+          description: Returns an object with a region and the region's unavailable resources.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountAvailability'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/availability/us-east \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli account availability getAccountAvailability us-east
   /account/betas:
     x-linode-cli-command: betas
     get:
@@ -5973,6 +6058,10 @@ paths:
                   type: string
                   description: >
                     A detailed description of this Image.
+                cloud_init:
+                  type: boolean
+                  description: Whether this Image supports cloud-init.
+                  example: true
       responses:
         '200':
           description: New private Image created successfully.
@@ -6064,6 +6153,10 @@ paths:
                   type: string
                   description: Description for the uploaded Image.
                   example: This is an example image in the docs.
+                cloud_init:
+                  type: boolean
+                  description: Whether the uploaded Image supports cloud-init.
+                  example: true
       responses:
         '200':
           description: Image Upload object including the upload URL and Image object.
@@ -17943,11 +18036,13 @@ paths:
       x-linode-cli-action: view-avail
       responses:
         '200':
-          description: A single Region object.
+          description: The availability data for a single Region.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RegionAvailability'
+                type: array
+                items:
+                  $ref: '#/components/schemas/RegionAvailability'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -19468,6 +19563,24 @@ components:
             - May only consist of letters, numbers, spaces, and hyphens.
             - Must not contain more than 9 letter or number characters.
           example: 19102-1234
+    AccountAvailability:
+      type: object
+      description: Account Service Availability object
+      properties:
+        region:
+          type: string
+          readOnly: true
+          description: >
+            Displays the data center represented by a slug.
+          example: us-east
+          x-linode-cli-display: 1
+        unavailable:
+          type: list
+          readOnly: true
+          description: >
+            A list of strings of unavailable services.
+          example: ["Linodes", "Block Storage"]
+          x-linode-cli-display: 2
     AccountSettings:
       type: object
       description: Account Settings object
@@ -20102,6 +20215,16 @@ components:
           description: The Managed Database engine version.
           x-linode-filterable: true
           x-linode-cli-display: 3
+        total_disk_size_gb:
+          type: integer
+          example: 15
+          description: The total disk size of the database in GB.
+          x-linode-cli-display: 4
+        used_disk_size_gb:
+          type: integer
+          example: 2
+          description: The used space of the database in GB.
+          x-linode-cli-display: 5
     DatabaseMySQL:
       type: object
       description: Managed MySQL Databases object.
@@ -20120,14 +20243,14 @@ components:
           description: The Managed Database engine type.
           example: mysql
           x-linode-filterable: true
-          x-linode-cli-display: 6
+          x-linode-cli-display: 8
           readOnly: true
         version:
           type: string
           description: The Managed Database engine version.
           example: "8.0.26"
           x-linode-filterable: true
-          x-linode-cli-display: 7
+          x-linode-cli-display: 9
           readOnly: true
         region:
           $ref: '#/components/schemas/Database/properties/region'
@@ -20149,7 +20272,7 @@ components:
           $ref: '#/components/schemas/Database/properties/allow_list'
         cluster_size:
           $ref: '#/components/schemas/Database/properties/cluster_size'
-          x-linode-cli-display: 5
+          x-linode-cli-display: 7
         hosts:
           $ref: '#/components/schemas/Database/properties/hosts'
         ssl_connection:
@@ -20187,6 +20310,16 @@ components:
           $ref: '#/components/schemas/Database/properties/updated'
         updates:
           $ref: '#/components/schemas/Database/properties/updates'
+        total_disk_size_gb:
+          type: integer
+          example: 15
+          description: The total disk size of the database in GB.
+          x-linode-cli-display: 5
+        used_disk_size_gb:
+          type: integer
+          example: 2
+          description: The used space of the database in GB.
+          x-linode-cli-display: 6
     DatabaseMySQLRequest:
       type: object
       description: Managed MySQL Database request object.
@@ -20333,6 +20466,16 @@ components:
           $ref: '#/components/schemas/Database/properties/updated'
         updates:
           $ref: '#/components/schemas/Database/properties/updates'
+        total_disk_size_gb:
+          type: integer
+          example: 15
+          description: The total disk size of the database in GB.
+          x-linode-cli-display: 8
+        used_disk_size_gb:
+          type: integer
+          example: 2
+          description: The used space of the database in GB.
+          x-linode-cli-display: 9
     DatabasePostgreSQLRequest:
       type: object
       description: Managed PostgreSQL Database request object.
