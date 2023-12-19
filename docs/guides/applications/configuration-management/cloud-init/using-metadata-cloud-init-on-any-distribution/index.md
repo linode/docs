@@ -1,32 +1,32 @@
 ---
 slug: using-metadata-cloud-init-on-any-distribution
-title: "Use Akamai's Metadata Service with Cloud-init on Any Distribution"
+title: "Use Akamai's Metadata Service with Cloud-Init on Any Distribution"
 description: 'Take advantage of the Akamai Metadata service regardless of your distribution. Follow along to install cloud-init and create a template for deploying future instances with custom user data.'
 keywords: ['cloud init','metadata','centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-11-30
+published: 2023-12-19
 modified_by:
   name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation](https://cloudinit.readthedocs.io/en/latest/)'
 ---
 
-Akamai's [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) gives you the ability to deploy new Compute Instances using cloud-init user data to automate configuration. Script your configuration needs in cloud-config user data, and all the necessary steps get applied as your instance deploys.
+Akamai's [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) gives you the ability to automate system configuration when deploying Compute Instances. This is primarily accomplished by adding user data in the form of cloud-config scripts. These scripts are processed by the cloud-init software running within the system of the newly deployed instance. To learn more about adding user data and user data formats, review [Add User Data When Deploying a Compute Instance](/docs/products/compute/compute-instances/guides/metadata/#add-user-data).
 
-While the line of distributions with Metadata support out of the box continues to expand, you can already set up most distributions for cloud-init. This guide walks you through how to install cloud-init to create a Metadata-ready image. Then you can use that image to deploy new instances with whatever cloud-init user data you need.
+Cloud-init has supported Akamai's Metadata service since [version 23.3.1](https://github.com/canonical/cloud-init/releases/tag/23.3) (released in August 2023). While this version of cloud-init has been included in several of the distribution images offered by Akamai, most distributions do not have cloud-init installed by default. Furthermore, the version of cloud-init provided in most distributions' package repositories is older and incompatible with the Metadata service.
 
-## Before You Begin
+This guide walks you through how to install a new version of cloud-init on distributions that are currently not officially supported by the Metadata service. By doing so, you can create Metadata-ready distribution images so that you can start reusing your existing cloud-init scripts on Akamai's platform.
 
-**Create a fresh Compute Instance** running the distribution of your choice. This instance forms the basis for a cloud-init deployment template. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. The instructions in this guide cover Debian, Ubuntu, and RHEL-based systems (CentOS, Fedora, AlmaLinux, Rocky Linux, etc.). The steps have not been verified with other distributions but may be adaptable with some modifications.
+## Deploy a Compute Instance
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
+The first step is to create a fresh Compute Instance running the distribution of your choice. If the selected distribution is already marked as cloud-init compatible, you do not need to follow the steps in this guide. If the distribution is not cloud-init compatible, continue with this guide to create a cloud-init compatible image for this distribution. For details on Metadata/cloud-init compatibility, review [Overview of the Metadata Service > Availability](/docs/products/compute/compute-instances/guides/metadata/#availability).
+
+This instance forms the basis for a cloud-init deployment template. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. The instructions in this guide cover Debian, Ubuntu, and RHEL-based systems (CentOS, Fedora, AlmaLinux, Rocky Linux, etc.). The steps have not been verified with other distributions but may be adaptable with some modifications.
 
 ## Install Cloud-Init
 
-Akamai's Metadata service requires that an instance have cloud-init version 23.3.1 or newer. While cloud-init can be installed from many distributions' package managers, typically those versions are too dated to work. The steps below show you how to install cloud-init from the source.
+Akamai's Metadata service requires that an instance have cloud-init version 23.3.1 or newer. While cloud-init can be installed through package managers on most distributions, typically those versions are older and do not support Akamai's Metadata service. The steps below show you how to install cloud-init from the source.
 
 1.  Install Git and Pip for Python 3.
 
@@ -121,7 +121,7 @@ A few configuration steps are necessary to prepare the cloud-init installation f
     ...
     ```
 
-1.  Shut down the instance, either from the command line with the command below or from within the Akamai Cloud Manager.
+1.  Shut down the instance, either from the command line with the command below or from within the Cloud Manager.
 
     ```command
     shutdown
@@ -132,7 +132,7 @@ Creating an image from the instance setup above allows you to deploy new instanc
 
 What follows is a summary of steps you can use to create a base image from the instance on which you installed cloud-init.
 
-1.  Navigate to the **Images** section of the Akamai Cloud Manager.
+1.  Navigate to the **Images** section of the Cloud Manager.
 
 1.  Select **Create Image**.
 
@@ -144,7 +144,7 @@ What follows is a summary of steps you can use to create a base image from the i
     - Give the image a label
     - Choose the option to **Create Image**
 
-    ![Creating an image from a base instance with cloud-init](manager-create-image.png)
+    ![Creating an image from a base instance with cloud-init](create-image-cloud-init.png)
 
 1.  Wait for the creation process to complete. You can see its progress from the **Images** section of the Cloud Manager.
 
@@ -158,53 +158,49 @@ The steps that follow walk you through a simple new deployment from a base cloud
 Newly deployed Compute Instances do not have network access during boot. This prevents cloud-init from properly running. The last several steps below address this, restarting the cloud-init process after the initial boot.
 {{< /note >}}
 
-1.  Navigate to the **Images** section of the Akamai Cloud Manager.
+1.  Navigate to the **Create Linode** section of the Cloud Manager and select the **Images** tab.
 
-1.  Locate the image with cloud-init installed, and use the **...** button to display options for the image.
+1.  In the Images dropdown menu, select the image that you just created.
 
-1.  Select the **Deploy to New Linode** option.
+    ![Screenshot of deploying an instance from a custom image](create-instance-new-image.png)
 
-    ![Deploying a new instance from an image](manager-deploy-image.png)
+1.  Select a region in which the Metadata service is available. These are listed in the Metadata [reference documentation](/docs/products/compute/compute-instances/guides/metadata/#availability).
 
-1.  On the resulting form:
+1.  Select your desired instance plan, enter a label for the new instance, and create credentials for the root user.
 
-    -   Select a region in which the Metadata service is available. These are listed in the Metadata [reference documentation](/docs/products/compute/compute-instances/guides/metadata/#availability).
+1.  Expand the **Add User Data** section, and input your desired user data. What follows is a basic example useful for many new instances.
 
-    -   Select your desired Linode Plan, enter a label for the new instance, and create credentials for the root user.
+    ```file
+    #cloud-config
 
-    -   Expand the **Add User Data** section, and input your desired user data. What follows is a basic example useful for many new instances.
+    # Configure a limited user
+    users:
+      - default
+      - name: example-user
+        groups:
+          - sudo
+        sudo:
+          - ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        ssh_authorized_keys:
+          - "SSH_PUBLIC_KEY"
 
-        ```file
-        #cloud-config
+    # Perform system updates
+    package_update: true
+    package_upgrade: true
 
-        # Configure a limited user
-        users:
-          - default
-          - name: example-user
-            groups:
-              - sudo
-            sudo:
-              - ALL=(ALL) NOPASSWD:ALL
-            shell: /bin/bash
-            ssh_authorized_keys:
-              - "SSH_PUBLIC_KEY"
+    # Configure server details
+    timezone: 'US/Central'
+    hostname: examplehost
 
-        # Perform system updates
-        package_update: true
-        package_upgrade: true
+    # Harden SSH access
+    runcmd:
+      - sed -i '/PermitRootLogin/d' /etc/ssh/sshd_config
+      - echo "PermitRootLogin no" >> /etc/ssh/sshd_config
+      - systemctl restart sshd
+    ```
 
-        # Configure server details
-        timezone: 'US/Central'
-        hostname: examplehost
-
-        # Harden SSH access
-        runcmd:
-          - sed -i '/PermitRootLogin/d' /etc/ssh/sshd_config
-          - echo "PermitRootLogin no" >> /etc/ssh/sshd_config
-          - systemctl restart sshd
-        ```
-
-1.  Start the deployment by selecting **Create Linode**, and wait for the new instance to be deployed. You can follow its progress from the **Linodes** section of the Akamai Cloud Manager.
+1.  Start the deployment by selecting **Create Linode**, and wait for the new instance to be deployed. You can follow its progress from the **Linodes** section of the Cloud Manager.
 
 1.  Access the instance as the root user through the Lish console. Learn how in our [Access Your System Console Using Lish (Linode Shell)](/docs/products/compute/compute-instances/guides/lish/) guide.
 
