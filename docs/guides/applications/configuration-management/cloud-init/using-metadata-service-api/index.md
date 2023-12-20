@@ -1,0 +1,216 @@
+---
+slug: using-metadata-service-api
+title: "How to Use the Metadata Service API"
+description: 'This guide provides a reference for using the Metadata service API directly.'
+og_description: 'This guide provides a reference for using the Metadata service API directly.'
+keywords: ['cloud-init','api','metadata']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
+published: 2023-12-20
+modified_by:
+  name: Nathaniel Stickman
+---
+
+Akamai's [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) offers an API for use in automated deployment configurations. Compatible versions of cloud-init can leverage the Metadata service to automatically configure new Compute Instances at deployment. However, the Metadata service's API can also be accessed directly. Doing so gets you access to instance and user data for your needs.
+
+In this reference guide, learn more about the available API endpoints for the Metadata service and how you can use them. Follow along to find out how you can access the API from your Compute Instance and what you can expect from each endpoint.
+
+## API Endpoints
+
+To access the Metadata API, you need to be on a Compute Instance. So if you have not done so already, follow along with our guide on [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) before going forward.
+
+Once you have an instance, the Metadata API is accessible via link-local addresses. Specifically, these addresses are:
+
+- IPv4: `169.254.169.254`
+- IPv6: `fd00:a9fe:a9fe::1`
+
+Each Metadata API endpoint gives you instance data or user data. *Instance data* includes information related to the deployment and the instance itself. *User data* consists of a specific field submitted when deploying the instance.
+
+{{< note >}}
+Only select regions support submission of user data. Additionally, user data can only be added to select distributions by default. To learn more about Metadata and cloud-init support, see For details on Metadata/cloud-init compatibility, review [Overview of the Metadata Service > Availability](/docs/products/compute/compute-instances/guides/metadata/#availability).
+
+User data support can be extended to additional distributions by setting up an appropriate cloud-init version and configuration. Follow our guide on how to [Use Akamai's Metadata Service with Cloud-Init on Any Distribution](/docs/guides/using-metadata-cloud-init-on-any-distribution/) for instructions.
+{{< /note >}}
+
+The sections that follow list each endpoint, explain their usage, and provide examples of the expected output. Using the `Accept` header, output can generally be in either the `text/plain` format — which is the default — or the `applciation/json` format.
+
+To demonstrate, the guide provides example output in the plain-text format and shows the response structure in JSON format where applicable.
+
+### Authentication Tokens (/v1/token)
+
+Any use of the Metadata API starts with the `token` endpoint. Use this endpoint to authenticate a new session and get a Metadata token for accessing subsequent Metadata endpoints from your instance.
+
+Requests to this endpoint use the `PUT` method — where all other Metadata endpoints use `GET` — and provide a `Metadata-Token-Expiry-Seconds` header indicating the token's expiry time in seconds.
+
+```command
+curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token
+```
+
+```output
+e80eb80986f17fcd3df8fcb6ea944774cae47b26ed6d68df63a15b294b7a6e3f
+```
+
+When using the JSON format, the endpoint's response is an array containing the token string.
+
+```output
+[ "token" ]
+```
+
+From here on, the guide assumes you have already acquired a Metadata token. And for convenience, subsequent examples use `$TOKEN` in place of the actual token string. You can do the same by storing the token in an [environment variable](/docs/guides/how-to-set-linux-environment-variables/), as shown here:
+
+```command
+export TOKEN=$(curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token)
+```
+
+### Instance Data (/v1/instance)
+
+To get information about the Compute Instance itself, you can use the `instance` endpoint. The output includes information on the identity of the instance, its specifications, and its backup scheduling.
+
+```command
+curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/instance
+```
+
+```output
+backups.enabled: false
+host_uuid: 123abc456def789ghi
+id: 532754976
+label: example-linode-instance
+region: us-iad
+specs.disk: 51200
+specs.gpus: 0
+specs.memory: 2048
+specs.transfer: 2000
+specs.vcpus: 1
+type: g6-standard-1
+```
+
+The endpoint's response is structured as shown below using the JSON format. The overall object gives identifying information about the instance, like ID, label, and tags. A nested `specs` object details the instance specifications, while a nested `backups` object gives the status of backups for the instance.
+
+```output
+{
+  “id”: int,
+  “host_uuid”: str,
+  “label”: str,
+  “region”: str,
+  “type”: str,
+  “tags”: array of str,
+  “specs”: {
+    “vcpus”: int,
+    “memory”: int,
+    “disk”: int,
+    “transfer”: int,
+    “gpus”: int
+  },
+  “backups”: {
+    “enabled”: bool,
+    “status”: str[pending/running/complete] or null
+  }
+}
+```
+
+### Network Data (/v1/network)
+
+Using the `network` endpoint, you can retrieve information about how the instance's networking is configured. Refer to this endpoint when you need to know the instance's IP addresses, configured network interfaces, and those interfaces' IPAM addresses.
+
+```command
+curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/network
+```
+
+```output
+ipv4.public: 192.0.2.0/24
+ipv6.link_local: fe80::db8:1b3d:e5g7::/64
+ipv6.slaac: 2600:3c05::db8:1b3d:e5g7::/64
+```
+
+The endpoint's response follows the JSON structuring shown below. The `interfaces` array shows what interfaces, if any, the instance has; a default "eth0 - Public Internet" interface alone does not result in any output here. The `ipv4` and `ipv6` objects list the various addresses configured for the instance.
+
+```output
+{
+  “interfaces”: [
+    {
+      “purpose”: str[public/vlan],
+      “label”: str,
+      ipam_address”: str[optional]
+    },
+  ],
+  “ipv4”: {
+    “public”: array of str,
+    “private”: array of str,
+    “elastic”: array of str
+  },
+  “ipv6”: {
+    “ranges”: array of str,
+    “link-local”: array of str
+    “elastic-ranges”: array of str
+  }
+}
+
+```
+
+### SSH Keys (/v1/ssh-keys)
+
+With the `ssh-keys` endpoint, you can acquire a list of all SSH keys, and associated users, configured for the instance. The output gives each user, by username, with an array of associated keys.
+
+```command
+curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/ssh-keys
+```
+
+```output
+users.example-user: EXAMPLE_SSH_PUBLIC_KEY
+users.root: ROOT_SSH_PUBLIC_KEY
+```
+
+The endpoint's output uses the structure shown below for JSON requests. A `root` array lists keys for the root user, and each other user gets their own array of keys using the username as a label.
+
+```output
+{
+  “users”: {
+    “root”: array of str,
+    “username”: array of str
+  }
+}
+```
+
+### User Data (/v1/user-data)
+
+The `user-data` endpoint returns the user data submitted during the instance's deployment. Typically, this user data consists of a cloud-config script — to be consumed by cloud-init for automating deployment particulars. However, when accessing the Metadata service directly, you may use the user data otherwise.
+
+Submitted user data is required to be encoded using `base64`. Thus, you need to decode the returned string to see the expected user data.
+
+```command
+curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/user-data | base64 --decode
+```
+
+The output from this endpoint is simply the user data contents. There is no further formatting. For this reason, the endpoint only accepts the `text/plain` format, not `application/json`, format.
+
+Here is an example of cloud-config user data for a basic instance, as given in our [Use Akamai's Metadata Service with Cloud-Init on Any Distribution](/docs/guides/using-metadata-cloud-init-on-any-distribution/#deploy-an-instance-with-user-data) guide. Again, however, the specific content varies depending on the user data submitted when initializing the instance.
+
+```output
+#cloud-config
+
+# Configure a limited user
+users:
+  - default
+  - name: example-user
+    groups:
+      - sudo
+    sudo:
+      - ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - "SSH_PUBLIC_KEY"
+
+# Perform system updates
+package_update: true
+package_upgrade: true
+
+# Configure server details
+timezone: 'US/Central'
+hostname: examplehost
+
+# Harden SSH access
+runcmd:
+  - sed -i '/PermitRootLogin/d' /etc/ssh/sshd_config
+  - echo "PermitRootLogin no" >> /etc/ssh/sshd_config
+  - systemctl restart sshd
+```
