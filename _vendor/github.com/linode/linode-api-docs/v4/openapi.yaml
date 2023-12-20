@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.169.0
+  version: 4.169.1
   title: Linode API
   license:
     name: Apache 2.0
@@ -539,7 +539,7 @@ paths:
             --tax_id ATU99999999 \
             --zip 19102
   /account/availability:
-    x-linode-cli-command: availability
+    x-linode-cli-command: account
     get:
       tags:
       - account
@@ -551,11 +551,13 @@ paths:
 
         *This endpoint is currently in **Beta**, and should not be used for production workloads.*
       operationId: getAvailability
+      servers:
+      - url: https://api.linode.com/v4beta
       security:
       - personalAccessToken: []
       - oauth:
         - account:read_only
-      x-linode-cli-action: getAvailability
+      x-linode-cli-action: get-availability
       x-linode-grant: read_only
       responses:
         '200':
@@ -581,9 +583,9 @@ paths:
               -H "Authorization: Bearer $TOKEN"
       - lang: CLI
         source: >
-          linode-cli account availability getAvailability
+          linode-cli account get-availability
   /account/availability/{id}:
-    x-linode-cli-command: availability
+    x-linode-cli-command: account
     parameters:
       - name: id
         in: path
@@ -600,11 +602,13 @@ paths:
 
         Only authorized Users can access this.
       operationId: getAccountAvailability
+      servers:
+      - url: https://api.linode.com/v4beta
       security:
       - personalAccessToken: []
       - oauth:
         - account:read_only
-      x-linode-cli-action: getAccountAvailability
+      x-linode-cli-action: get-account-availability
       x-linode-grant: read_only
       responses:
         '200':
@@ -622,7 +626,7 @@ paths:
               -H "Authorization: Bearer $TOKEN"
       - lang: CLI
         source: >
-          linode-cli account availability getAccountAvailability us-east
+          linode-cli account get-account-availability us-east
   /account/betas:
     x-linode-cli-command: betas
     get:
