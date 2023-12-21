@@ -9,9 +9,9 @@ tab_group_main:
 published: 2023-12-19
 ---
 
-The diagrams featured here provide different perspectives on the general architecture of a video transcoding workflow:
+The diagrams featured here provide different perspectives on the architecture of a video transcoding workflow:
 
-- [Figure 1](#figure-1-high-level-typical-media-ingest-workflow) describes the high-level components of a video transcoding architecture without referring to particular technologies that may be used, with some exceptions.
+- [Figure 1](#figure-1-high-level-typical-media-ingest-workflow) describes the high-level components of a general video transcoding architecture without referring to particular technologies that may be used (with some exceptions).
 
 - [Figure 2](#figure-2-akamai-cloud-compute-lke-with-argo-events-and-argo-workflow) presents the same components of figure 1, but with an overlay of how those components can be powered by Akamai Connected Cloud, Linode Kubernetes Engine (LKE), and [Argo](https://argoproj.github.io/).
 
@@ -20,6 +20,10 @@ The diagrams featured here provide different perspectives on the general archite
 ## Figure 1: High Level Typical Media Ingest Workflow
 
 ![Figure 1](figure1.svg?diagram-description-id=figure-1-description)
+
+{{< note type="secondary" noTitle=true >}}
+*Click to interact, scroll to zoom, click-and-hold to pan*
+{{< /note >}}
 
 **Figure 1** illustrates a media processing lifecycle that has two typical contributors: *content creators* and *content distributors*.
 
@@ -36,14 +40,14 @@ The steps in figure 1 are described as follows:
     - What output formats are needed for those destinations. This includes ancillary content such as metadata and images.
 
     {{< note >}}
-    For example, over a decade ago, HTTP Live Streaming (HLS) was the ubiquitous format specified to support video playback on Apple devices. While HLS is supported much more widely today beyond just Apple devices, there are still always considerations for video distribution formats. These considerations may be based on budgets, audiences, devices to be supported, geographic regions, etc.
+    For example, [HTTP Live Streaming (HLS)](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) was the original format specified to support video playback on Apple devices. While HLS is supported much more widely today beyond just Apple devices, there are still always considerations for video distribution formats. These considerations may be based on budgets, audiences, devices to be supported, geographic regions, and so on.
 
-    Those concepts are encapsulated in transcoding system configurations. These configurations are called *workflow specifications* and *transcode profiles*, and they are defined prior to any content ingestion. [Argo Workflows](https://argoproj.github.io/workflows/) is an example of a tool that supports DAG-based (Directed Acyclic Graph) workflows, and it can be used to define workflow specifications. An open-source tool called [PyTranscoder](https://pytranscoder.readthedocs.io/en/latest/) can be used to create transcode profiles for [FFMPEG](https://ffmpeg.org/).
+    Those concepts are encapsulated in transcoding system configurations. These configurations are called *workflow specifications* and *transcode profiles*, and they are defined prior to any content ingestion. [Argo Workflows](https://argoproj.github.io/workflows/) is an example of a tool that supports DAG-based (Directed Acyclic Graph) workflows, and it can be used to define workflow specifications. An open-source tool called [PyTranscoder](https://pytranscoder.readthedocs.io/en/latest/) can be used to create transcode profiles for [FFmpeg](https://ffmpeg.org/).
     {{< /note >}}
 
 1. Content creators send content files into the media processing system. A way to upload content into a Media Ingest Location is provided to the content creator. This is typically a file system, FTP/SFTP endpoint, or cloud storage bucket.
 
-1. When new files are added, a Media Ingest Event kicks off the workflow lifecycle. For example, there may be an application process watching for new files, which triggers the workflow. Or, the workflow may be started when a webhook notification is received from the Media Ingest Location.
+1. When new files are added, a Media Ingest Event starts the workflow lifecycle. For example, there may be an application process that watches for new files and triggers the workflow. Or, the workflow may be started when a webhook notification is received from the Media Ingest Location.
 
 1. Because transcoding is very CPU intensive, and because parallel processing is dependent on available computing resources, it is typical for a media processing workflow to queue up workloads in a Media Ingest Queue. This queue is consumed as processing slots become available.
 
@@ -64,17 +68,25 @@ The steps in figure 1 are described as follows:
 1. After being prepared in the proper distribution formats, most content is delivered to end consumers through a Content Delivery Network (CDN). The CDN caches content in the geographic regions it is served to, which reduces latency and increases reliability of playback.
 {#figure-1-description .large-diagram}
 
-A system is set up to allow observability of the content workflows. Content distributors need to be able to handle errors, assess utilization, and make decisions based on the types of workloads their systems are processing. A dashboard or tool to view and collect this information is key to keeping things running smoothly.
+A system is set up to allow observability of the content workflows. Content distributors need to be able to handle errors, assess utilization, and make decisions based on the types of workloads their systems are processing. A dashboard or tool to view and collect this information helps diagnose these situations.
 
 ## Figure 2: Akamai Cloud Compute LKE with Argo Events and Argo Workflow
 
 ![Figure 2](figure2.svg)
+
+{{< note type="secondary" noTitle=true >}}
+*Click to interact, scroll to zoom, click-and-hold to pan*
+{{< /note >}}
 
 **Figure 2** provides an overview of the tools and technologies overlaid onto the VOD workflow use case. This overview illustrates how the Akamai Connected Cloud and Linode Kubernetes Engine (LKE) are combined with an event-driven and highly scalable workflow management tool called [Argo](https://argoproj.github.io/). Argo is an open source Kubernetes-native workflow engine supporting DAG and step-based workflows, and it is a member of the Cloud Native Computing Foundation (CNCF). This combination of technologies allows for a flexible, portable, and cost-effective media processing solution.
 
 ## Figure 3: End-to-End VOD Workflow with HLS Video Output
 
 ![Figure 3](figure3.svg?diagram-description-id=figure-3-description)
+
+{{< note type="secondary" noTitle=true >}}
+*Click to interact, scroll to zoom, click-and-hold to pan*
+{{< /note >}}
 
 **Figure 3** represents a built-out, detailed reference architecture implementation. It includes:
 
@@ -96,7 +108,7 @@ Some key features of figure 3 are described as follows:
 
 1. [Argo Event Sources](https://argoproj.github.io/argo-events/concepts/event_source/) includes 20+ origination mechanisms that can be setup to generate event messages that are written to [Argo Event Bus](https://argoproj.github.io/argo-events/concepts/eventbus/). In this reference architecture we have enabled a [Webhook Event Source](https://argoproj.github.io/argo-events/eventsources/setup/webhook/) that a user or system can send HTTP requests. The the filename they are ingesting is included in this request.
 
-1. [Argo Sensors](https://argoproj.github.io/argo-events/concepts/sensor/) are configurations that map well-defined Event Sources to a specific [Argo Trigger](https://argoproj.github.io/argo-events/concepts/trigger/). A Trigger defines the target process to invoke. In the reference architecture, the Trigger is an [Argo Workflow](https://argoproj.github.io/argo-workflows/) that converts the source file to an HLS adaptive bitrate output.
+1. [Argo Sensors](https://argoproj.github.io/argo-events/concepts/sensor/) are configurations that map well-defined Event Sources to a specific [Argo Trigger](https://argoproj.github.io/argo-events/concepts/trigger/). A Trigger defines the target process to invoke. In the reference architecture, the Trigger is an [Argo Workflow](https://argoproj.github.io/argo-workflows/) that converts the source file to an [HTTP Live Streaming (HLS)](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) adaptive bitrate output.
 
 1.  Argo Workflows enable well-defined sequences of tasks that are described by [Argo Templates](https://argoproj.github.io/argo-workflows/workflow-templates/). Workflows use YAML definitions to describe actions that should occur on artifacts, including file transfers, container commands, web requests, and data manipulation. Argo workflow orchestration manages dynamic pod scheduling in Kubernetes based on the steps and processes defined in the Workflow definition, which live for the lifecycle of the workflow.
 
