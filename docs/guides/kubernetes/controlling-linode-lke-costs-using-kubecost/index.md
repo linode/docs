@@ -129,7 +129,7 @@ Any worthwhile plan includes some level of alerting so that an errant condition 
 
 ## Installing and Configuring Kubecost
 
-To begin the installation, use [Linode Kubernetes Engine - Get Started](https://www.linode.com/docs/products/compute/kubernetes/get-started/) to create an LKE setup to work with Kubecost. The example relies on a Linode 4 GB Plan for the server instance and also a Linode 4 GB Plan for the Cluster. Add the `export KUBECONFIG=<.yaml File Location>` entry to your `.bashrc` file to ensure kubectl can locate the clusters each time you sign into your server instance.
+To begin the installation, use [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/) to create an LKE setup to work with Kubecost. The example relies on a Linode 4 GB Plan for the server instance and also a Linode 4 GB Plan for the Cluster. Add the `export KUBECONFIG=<.yaml File Location>` entry to your `.bashrc` file to ensure `kubectl` can locate the clusters each time you sign into your server instance.
 
 Install Helm: [How to Install Helm on Ubuntu, Mac and Windows](https://phoenixnap.com/kb/install-helm)
 
