@@ -9,8 +9,13 @@ published: 2023-12-23
 modified_by:
   name: Linode
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Kubernetes](https://kubernetes.io/)'
+- '[Kubecost](https://www.kubecost.com/)'
+- '[OpenCost](https://www.opencost.io/)'
+- '[OpenCost API](https://www.opencost.io/docs/integrations/api-examples)'
+- '[Loft Labs](https://loft.sh/)'
+- '[Cast.ai](https://cast.ai/)'
+- '[FinOps resource](https://www.finops.org/resources/)'
 ---
 
 To ensure return on investment (ROI), you have to know what something costs. Most organizations calculate the costs for their [Kubernetes](https://kubernetes.io/) containers manually, but manual calculations, when many containers need to be counted, become time-consuming and error-prone. Calculations are more complex when the containers are located across the cloud because it’s possible to miss some of the containers during the calculation. Also, manual calculations don’t lend themselves well to various forms of analysis to determine where and when it’s possible to produce cost savings without losing functionality. [Kubecost](https://www.kubecost.com/) provides an automated method for calculating Kubernetes container costs in various ways and then performs analysis on those costs to determine how to save money without losing the benefits sought from Kubernetes in the first place.
@@ -67,7 +72,7 @@ You may find that a Kubecost alternative meets needs like automatic scaling and 
 
 #### OpenCost
 
-[OpenCost](https://www.opencost.io/) uses the Kubecost engine as a starting point. The two products have different focuses, making OpenCost a solution for particular needs. OpenCost monitors in-cluster and some external Kubernetes costs in real time, although it isn’t as feature-rich as Kubecost. It also isn’t as mature as Kubecost because it’s at the[ Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) sandbox project maturity level. Both products provide continuous Kubernetes monitoring, with OpenCost focusing on in-cluster CPU, RAM, load balancers, storage, and persistent volumes.
+[OpenCost](https://www.opencost.io/) uses the Kubecost engine as a starting point. The two products have different focuses, making OpenCost a solution for particular needs. OpenCost monitors in-cluster and some external Kubernetes costs in real time, although it isn’t as feature-rich as Kubecost. It also isn’t as mature as Kubecost because it’s at the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) sandbox project maturity level. Both products provide continuous Kubernetes monitoring, with OpenCost focusing on in-cluster CPU, RAM, load balancers, storage, and persistent volumes.
 
 Unlike Kubecost, OpenCost is always free, whereas there are freemium and paid versions of Kubecost with differing levels of functionality. OpenCost is also fully open-source (Apache 2.0 license) and vendor-agnostic. A task that OpenCost performs exceptionally well is writing custom Prometheus queries to gain cost insights. In addition, OpenCost provides a command line interface (CLI) that accesses cost allocation metrics in Kubernetes through the [OpenCost API](https://www.opencost.io/docs/integrations/api-examples). This level of access makes it possible to perform quick queries and automate some tasks that might require additional time to perform using Kubecost.
 
@@ -152,7 +157,7 @@ This product requires that you sign into the [Kubecost registration page](https:
 
 ## Testing the Kubecost Setup
 
-Enabling port forwarding means that Kubecost is available on the server at port ``9090``. However, to work with Kubecost, you must have access to a browser, which means making Kubecost accessible on your local system. Open a terminal window and use Secure Shell to create a connection between your system and the server instance.
+Enabling port forwarding means that Kubecost is available on the server at port `9090`. However, to work with Kubecost, you must have access to a browser, which means making Kubecost accessible on your local system. Open a terminal window and use Secure Shell to create a connection between your system and the server instance.
 
 1.  Open the SSH tunnel to the localhost through your normal connection to the server instance:
 
