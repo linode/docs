@@ -186,21 +186,23 @@ When the user returns to your app from the Linode login page, they will be direc
 
 {{< note >}}
 Below is a list of available scopes:
-
-- OAuthScopes.Linodes
-- OAuthScopes.Domains
+- OAuthScopes.Linodes 
+- OAuthScopes.Domains 
 - OAuthScopes.StackScripts
-- OAuthScopes.Users
-- OAuthScopes.NodeBalancers
-- OAuthScopes.Tokens
-- OAuthScopes.IPs
-- OAuthScopes.Tickets
-- OAuthScopes.Clients
 - OAuthScopes.Account
-- OAuthScopes.Events
-- OAuthScopes.Volumes
+- OAuthScopes.NodeBalancers
+- OAuthScopes.Databases
+- OAuthScopes.IPs*
+- OAuthScopes.Firewall
+- OAuthScopes.LKE
+- OAuthScopes.Events 
+- OAuthScopes.Volumes 
+- OAuthScopes.LongView
+- OAuthScopes.ObjectStorage
+- OAuthScopes.Images
 
-Each scope is broken into five permissions: `view`, `create`, `modify`, `delete`, and `all`. The `all` permission encompasses the other four permissions.
+
+Each scope is broken into five permissions: `ready_only`, and `read_write`. For more information about the scopes and permissions see, [OAuth reference](/docs/api/#oauth-reference) documentation.
 {{< /note >}}
 
 ### Manage the OAuth 2 Callback URL
