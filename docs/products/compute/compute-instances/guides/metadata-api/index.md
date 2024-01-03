@@ -1,11 +1,9 @@
 ---
-slug: using-metadata-service-api
 title: "How to Use the Metadata Service API"
 description: 'This guide provides a reference for using the Metadata service API directly.'
 keywords: ['cloud-init','api','metadata']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-12-20
+published: 2024-01-03
 modified_by:
   name: Nathaniel Stickman
 ---
@@ -26,9 +24,7 @@ Once you have an instance deployed, the Metadata API is accessible via link-loca
 Each Metadata API endpoint provides instance data or user data. *Instance data* includes information related to the deployment and the instance itself, while *User data* consists of a specific field submitted when deploying the instance.
 
 {{< note >}}
-Only select regions support submission of user data. Additionally, user data can only be added to select distributions by default. To learn more about Metadata and cloud-init support, review the Availability section of our [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/#availability) guide.
-
-User data support can be extended to additional distributions by setting up an appropriate cloud-init version and configuration. Follow our guide on how to [Use Akamai's Metadata Service with Cloud-Init on Any Distribution](/docs/guides/using-metadata-cloud-init-on-any-distribution/) for instructions.
+Only select regions support submission of user data. Additionally, a limited number of distributions are officially supported by Akamai's Metadata service and cloud-init. To learn more about Metadata and cloud-init support, review the Availability section of our [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/#availability) guide.
 {{< /note >}}
 
 The sections that follow list each endpoint, explain their usage, and provide examples of the expected output. Using the `Accept` header, output can generally be in either the default `text/plain` format or the `applciation/json` format.
@@ -186,7 +182,7 @@ A `root` array lists keys for the root user. Other users each have their own arr
 
 ### User Data (/v1/user-data)
 
-The `user-data` endpoint returns the user data submitted during the instance's deployment. Typically, this user data consists of a cloud-config script to be used by cloud-init for automating deployment. However, when accessing the Metadata service directly, you may utilize the user data for other purposes.
+The `user-data` endpoint returns the user data submitted during the instance's deployment. Typically, this user data consists of a cloud-config script to be used by cloud-init for automating deployment. However, when accessing the Metadata service directly, you may utilize the user data for other purposes. If no user data was submitted, nothing will be returned.
 
 Submitted user data is required to be encoded using `base64`, so you need to decode the returned string to view the expected user data:
 
@@ -196,7 +192,7 @@ curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/user-data | base64 --
 
 The output from this endpoint is simply the user data contents. There is no further formatting. For this reason, the endpoint only accepts the `text/plain` format, not `application/json`, format.
 
-Below is example cloud-config user data for a basic instance, as described in [Use Akamai's Metadata Service with Cloud-Init on Any Distribution](/docs/guides/using-metadata-cloud-init-on-any-distribution/#deploy-an-instance-with-user-data). However, this is just an example, and the specific content varies depending on the user data submitted when initializing the instance.
+Below is example cloud-config user data for a basic instance. This is just an example and the specific content varies depending on the user data submitted when initializing the instance.
 
 ```output
 #cloud-config
