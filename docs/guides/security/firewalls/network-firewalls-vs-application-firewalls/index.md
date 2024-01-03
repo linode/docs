@@ -5,7 +5,7 @@ description: 'Learn the differences between network and WAF firewalls that devel
 keywords: ['cloud-based firewall','web application firewall','network firewall','block malicious traffic','stop ddos attacks','unified threat manager','security tool','network security','application security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-12-05
+published: 2024-01-03
 modified_by:
   name: Linode
 ---
