@@ -5,52 +5,52 @@ description: 'Learn to compare the software options for configuring a firewall o
 keywords: ['firewall', 'nftables', 'iptables', 'ufw', 'firewalld']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-10-24
+published: 2024-01-03
 modified_by:
   name: Linode
 ---
 
 Implementing a firewall is crucial for securing your Linux system. There are an array of popular software firewalls to choose from, and each offers unique features. So understanding how these tools compare can help you choose the best firewall for your needs.
 
-In this guide, learn more about each of the most common software firewall tools on Linux and how they compare. Throughout, follow links to our in-depth guides on each of these tools, and compare examples of each handles common firewall configurations.
+In this guide, learn more about each of the most common software firewall tools on Linux and how they compare. When available, follow links to our in-depth guides on each of these tools and compare examples of how each handles common firewall configurations.
 
 ## An Overview of Netfilter (The Linux Kernel-Space Firewall Module)
 
 [Netfilter](https://www.netfilter.org/) is a packet-filtering framework included in the Linux kernel (since 2.4.0). This framework provides kernel-level hooks that are used to implement packet filtering and network address and port translation (NAT and NPT). Ultimately, it is this framework that all firewall tools leverage for managing packets.
 
-Low-level tools like those covered below are the default interfaces for Netfilter. For that reason, these tools give you a lot of control, but they can also be difficult to learn and work with. Thus, you can also find high-level tools, like the ones further below, built on top of these low-level tools. Such high-level tools can further simplify firewall configuration.
+Low-level tools, like nftables and iptables, are the default interfaces for Netfilter. These tools provide a lot of control over firewall rules but they can also be difficult to learn and work with. You can also find high-level tools, like UFW and firewalld, built on top of these low-level tools. Such high-level tools can further simplify firewall configuration.
 
 ## Low-Level User-Space Firewall Utilities
 
-Linux utilizes dedicated packet classification tools for users to manage network/firewall rules. These tools — `nftables` and `iptables` — are built on Netfilter and provide low-level firewall configurations. They are especially helpful when you need fine-grained control of your network's package filtering.
+Linux utilizes dedicated packet classification tools for users to manage network/firewall rules. These tools — nftables and iptables — are built on Netfilter and provide low-level firewall configurations. They are especially helpful when you need fine-grained control of your network's package filtering.
 
 ### nftables
 
-[nftables](https://www.netfilter.org/projects/nftables/index.html) has become the default low-level packet classification tool, replacing `iptables`. Leveraging the Netfilter framework, `nftables` allows users to configure network rulesets that filter and route packets and ultimately define network traffic.
+[nftables](https://www.netfilter.org/projects/nftables/index.html) has become the default low-level packet classification tool, replacing iptables. Leveraging the Netfilter framework, nftables allows users to configure network rulesets that filter and route packets and ultimately define network traffic.
 
-`nftables` uses a *tables -> chains -> rules* structure for managing network rules. Tables organize sets of chains, and each chain consists of a list of rules, processed in order.
+nftables uses a *tables -> chains -> rules* structure for managing network rules. Tables organize sets of chains, and each chain consists of a list of rules, processed in order.
 
-Because `nftables` has superseded `iptables`, you should opt to use it when possible. The main exception is older Linux systems, many of which do not support `nftables`. Alternatively, you may prefer a high-level tool like those covered [below](#high-level-firewall-configuration-managers).
+Because nftables has superseded iptables, you should opt to use it when possible. The main exception is older Linux systems, many of which do not support nftables. Alternatively, you may prefer a high-level tool like those covered [below](#high-level-firewall-configuration-managers).
 
-You can learn more about `nftables` and its usage in our [Getting Started with nftables](/docs/guides/how-to-use-nftables/) guide.
+You can learn more about nftables and its usage in our [Getting Started with nftables](/docs/guides/how-to-use-nftables/) guide.
 
 ### iptables
 
-[iptables](https://www.netfilter.org/projects/iptables/index.html) traditionally filled the space now occupied by `nftables`. `iptables` is, like `nftables`, a low-level tool for packet classification, providing firewall and network traffic management through the configuration of rulesets. `iptables` uses a similar *tables -> chains -> rules* hierarchical model as well.
+[iptables](https://www.netfilter.org/projects/iptables/index.html) traditionally filled the space now occupied by nftables. iptables is, like nftables, a low-level tool for packet classification, providing firewall and network traffic management through the configuration of rulesets. iptables uses a similar *tables -> chains -> rules* hierarchical model as well.
 
-Even though `nftables` has replaced `iptables` as the default, some systems, particularly ones using older Linux versions, only support `iptables`. So, unless you are looking for higher-level firewall configuration (see [High-Level Firewall Configuration Managers](#high-Level-firewall-configuration-managers) section below), you need to use `iptables` in those cases.
+Even though nftables has replaced iptables as the default, some systems, particularly ones using older Linux versions, only support iptables. Unless you are looking for higher-level firewall configuration (see [High-Level Firewall Configuration Managers](#high-Level-firewall-configuration-managers) section below), you need to use iptables in those cases.
 
-You can learn more about `iptables` and how to configure network rules with them in our [Controlling Network Traffics with iptables](/docs/guides/control-network-traffic-with-iptables/) guide.
+You can learn more about iptables and how to configure network rules with them in our [Controlling Network Traffics with iptables](/docs/guides/control-network-traffic-with-iptables/) guide.
 
 ## High-Level Firewall Configuration Managers
 
-When you do not need fine-grained control of network traffic, low-level tools may prove overly cumbersome. High-level tools offer simpler solutions for implementing firewalls that may better fit your needs. By abstracting lower-level details, these tools can make it easier to manage network rules.
+To some users, low-level tools may prove overly cumbersome. High-level tools offer simpler solutions for implementing firewalls that may better fit your needs. By abstracting lower-level details, these tools can make it easier to manage network rules.
 
 ### UFW
 
 [UFW](https://wiki.ubuntu.com/UncomplicatedFirewall) (short for UncomplicatedFirewall) offers firewall management in a user-friendly command-line interface. It comes by default on Ubuntu systems and is typically the go-to choice on Debian and Arch Linux systems as well.
 
-What especially sets UFW apart is the simplicity its commands bring to firewall configuration. Setting up your desired firewall rules and enabling the firewall follows an *uncomplictated* set of commands.
+What especially sets UFW apart is the simplicity its commands bring to firewall configuration. Setting up your desired firewall rules and enabling the firewall follows an *uncomplicated* set of commands.
 
 See more on UFW and steps for getting started in our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
 
@@ -64,11 +64,11 @@ Take a look at our [Configure a Firewall with Firewalld](/docs/guides/introducti
 
 ## Managed Cloud Firewall Service
 
-Cloud firewalls, like [Linode's](/docs/products/networking/cloud-firewall/), offer a different approach to cloud security, and some advantages over local software firewalls. For instance, Linode's Cloud Firewall can configure and manage firewall rules across multiple cloud instances.
+Cloud firewall services, like Akamai's [Cloud Firewall](/docs/products/networking/cloud-firewall/), offer a different approach to cloud security and have some advantages over local software firewalls. For instance, Akamai's Cloud Firewall can configure and manage firewall rules across multiple cloud instances.
 
 That said, cloud firewalls often do not cover all of the features of software firewalls. Typically, a software firewall can offer more configuration options and advanced control of network traffic.
 
-One solution — cloud or software firewall — is likely to better fit your needs than the other. But often you can get the best results by using both together. As an example: Use a cloud firewall to apply "absolute" network rules across multiple cloud instances and prevent unwanted traffic from ever reaching your servers. Then, use a software firewall to fine-tune your network filtering on each server.
+One solution — cloud or software firewall — is likely to better fit your needs than the other. But often you can get the best results by using both together. As an example, you can use a cloud firewall to apply "absolute" network rules across multiple cloud instances and prevent unwanted traffic from ever reaching your servers. Then, use a software firewall to fine-tune your network filtering on each server.
 
 Learn more about cloud firewalls and how they compare to software firewalls in our [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/) guide.
 
