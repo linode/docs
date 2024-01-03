@@ -109,8 +109,6 @@ The following features and services can be configured during the Compute Instanc
 
 User data can be provided to the Metadata service, which is then consumed by cloud-init when your Compute Instance boots up for the first time. For information on the Metadata service, user data formats, and our cloud-init integration, review [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/).
 
-{{< content "metadata-availability-notice" >}}
-
 ## Deploy the Instance
 
 ![Summary section in Cloud Manager](create-instance-summary.jpg)
