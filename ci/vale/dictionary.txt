@@ -2531,6 +2531,7 @@ vmstat
 vmui
 vmware
 vnc
+vpcs
 VPLs
 vpns
 vset
