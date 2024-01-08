@@ -649,7 +649,15 @@ To remain consistent across all of our guides, nested content should be indented
 
 ### Note Shortcode
 
-The **note** shortcode is used to display a note to the reader.
+The **note** shortcode is used to display a note to the reader. Notes can be used to share relevant information that does not fit with the primary content. Example use cases include alternative methodologies, non-critical information, alerts, developer recommendations, and more. **Content included in a note must not be required for the reader to successfully understand or complete a task**.
+
+When creating a new note, there are multiple [parameters](#parameters) to consider:
+- Note type
+- Note title
+- Collapsibility
+- Indentation
+
+Below is the **default** (primary) note shortcode with default parameters:
 
 ```file
 {{</* note */>}}
@@ -661,15 +669,24 @@ This is an example note.
 This is an example note.
 {{< /note >}}
 
+**Best practices:**
+- Consider note length. The shorter the better; notes can lose their impact if they become too long.
+- Keep things relevant. If the information interrupts the flow or points the reader down an unrelated path, consider whether or not the note belongs at all.
+
+**Practices to avoid:**
+- Consecutive notes that result in stacking notes on top of one another.
+- Too many notes. If there are notes in too many sections of a document, consider their impact and if the information is better served as part of the primary content.
+- Avoid temporary content. If the information needs to be removed at a later date, look to include the information within different context or remove the note entirely to avoid future documentation maintenance.
+
 #### Parameters
 
-The shortcode accepts the following parameters:
+The note shortcode accepts the following parameters:
 
 | Parameter | Values | Description |
 | -- | -- | -- |
 | `type` | | Identifies the note as one of 4 types: |
-|  | `"secondary"` | A muted note. |
 |  | `"primary"` | (*DEFAULT*) A note or tip related to the surrounding content. This is the default type if no type is specified. |
+|  | `"secondary"` | A muted note. |
 |  | `"warning"` | A note to take certain precautions. |
 |  | `"alert"` | An important note that should not be skipped over. |
 | `title` | String | Sets the title of the note. |
@@ -679,19 +696,11 @@ The shortcode accepts the following parameters:
 
 #### Note Types
 
-There are four unique types of notes:
-
--   **Secondary** (`type="secondary"`, title defaults to "Note")
-
-    {{< note type="secondary" >}}
-    This is an example of a secondary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
-
-    ```command
-    sudo apt update
-    ```
-    {{< /note >}}
+There are four unique types of notes: **Primary**, **Secondary**, **Warning**, and **Alert**. Each type has specific use cases and varying levels of urgency that should determine the type of note you choose to make.
 
 -   **Primary** (type is unset or `type="primary"`, title defaults to "Note")
+    - **Color:** Green
+    - **Use cases:** Additional related information that does not fit with the rest of the document. Can include alternative suggestions or solutions, developer tips, or general best practices that are not critical to the success of the task at hand.
 
     {{< note >}}
     This is an example of a primary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -701,7 +710,21 @@ There are four unique types of notes:
     ```
     {{< /note >}}
 
+-   **Secondary** (`type="secondary"`, title defaults to "Note")
+    - **Color:** Grey
+    - **Use cases:** Most often used for [collapsible content](#collapsible). This includes non-critical information, commands, code, or output that takes up too much room and does not require visibility for the success of an action.
+
+    {{< note type="secondary" >}}
+    This is an example of a secondary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
+
+    ```command
+    sudo apt update
+    ```
+    {{< /note >}}
+
 -   **Warning** (`type="warning"`, title defaults to "Warning")
+    - **Color:** Orange
+    - **Use cases:** Notices that warn the reader to proceed with caution. Not as urgent as alert notes.
 
     {{< note type="warning" >}}
     This is an example of a warning note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -712,6 +735,8 @@ There are four unique types of notes:
     {{< /note >}}
 
 -   **Alert** (`type="alert"`, title defaults to "Important")
+    - **Color:** Red
+    - **Use cases:** The most urgent of all note types. **Alert** notes should be used to notify of potential *destructive* actions such as situations resulting in data loss or where there is no undoing what has been done.
 
     {{< note type="alert" >}}
     This is an example of an alert note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -721,21 +746,28 @@ There are four unique types of notes:
     ```
     {{< /note >}}
 
-#### Custom Title
 
-Each note can also have a custom title, which is set using the `title` parameter.
+
+#### Titles
+
+Each note can also have a custom title, which is set using the `title` parameter. Titles can specify or summarize the purpose of the note, as well as help define the authority and urgency of the note in the form of tips, best practices, or calls to attention. **Default titles may also be used, but custom titles are preferred for their additional context.**
+- Example summary titles: "Use a strong password", "The token is valid for 24 hours", "A valid payment method is required"
+- Example tip or best practice titles: "Developer Tip", "Common Practice"
+- Example calls to attention: "Before moving forward", "This may result in data loss"
+
+**Title casing:**
+- If using a single word or phrase, use title casing.
+- If using a sentence as your title, use sentence casing.
 
 ```file {lang="text"}
-{{</* note title="Custom title" */>}}
-This is an example note with a custom title.
+{{</* note title="Custom titles can be helpful" */>}}
+This is an example note with a helfpful custom title.
 {{</* /note */>}}
 ```
 
-{{< note title="Custom title" >}}
-This is an example note with a custom title.
+{{< note title="Custom titles can be helpful" >}}
+This is an example note with a helpful custom title.
 {{< /note >}}
-
-#### No Title
 
 Additionally, you can specify that the note should have no title by using `noTitle=true`. This causes the default title to not display.
 
@@ -751,15 +783,15 @@ This is an example note with no title.
 
 #### Collapsible
 
-Additionally, a note can also be collapsible by setting `isCollapsible=true` (defaults to false). This hides the body of the note and displays a collapse/expand icon.
+Nots can also be made collapsible by setting `isCollapsible=true` (defaults to false). This hides the body of the note and displays a collapse/expand icon. **Secondary notes** are often used for collapsible notes.
 
 ```file {lang="text"}
-{{</* note title="This is a collapsible note with a custom title" isCollapsible=true */>}}
+{{</* note type="secondary" title="This is a collapsible secondary note with a custom title" isCollapsible=true */>}}
 This content is hidden until the user expands the note.
 {{</* /note */>}}
 ```
 
-{{< note title="This is a collapsible note with a custom title" isCollapsible=true >}}
+{{< note type="secondary" title="This is a collapsible secondary note with a custom title" isCollapsible=true >}}
 This content is hidden until the user expands the note.
 {{< /note >}}
 
