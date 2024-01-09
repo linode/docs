@@ -1,12 +1,12 @@
 ---
 title: Get Started
 title_meta: "Getting Started with VPC"
-description: ""
+description: "A holistic view on determining your application's cloud networking infrastructure, creating a VPC, and assigning your instances to a VPC."
 keywords: ['networking','vpc','private network']
 tags: ["security", "networking", "linode platform"]
 tab_group_main:
     weight: 20
-published: 2023-10-24
+published: 2024-01-09
 ---
 
 ## Determine Your Application's Networking Architecture

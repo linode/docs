@@ -1,8 +1,8 @@
 ---
 title: "Assign (and Remove) Services"
 title_meta: "Assign (and Remove) Services on a VPC"
-description: ""
-published: 2023-10-24
+description: "Learn how to add (and remove) Compute Instances to a VPC."
+published: 2024-01-09
 authors: ["Linode"]
 ---
 

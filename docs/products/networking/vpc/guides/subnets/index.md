@@ -1,8 +1,8 @@
 ---
 title: "Manage Subnets"
 title_meta: "Manage Subnets on a VPC"
-description: ""
-published: 2023-10-24
+description: "Instructions on managing your VPC subnets, including assigning Compute Instances to a subnet."
+published: 2024-01-09
 authors: ["Linode"]
 ---
 

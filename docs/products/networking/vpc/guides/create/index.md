@@ -3,7 +3,7 @@ title: "Create a VPC"
 title_meta: "Create a VPC on the Linode Platform"
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
-published: 2023-10-24
+published: 2024-01-09
 authors: ["Linode"]
 ---
 
