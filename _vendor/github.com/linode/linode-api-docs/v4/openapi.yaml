@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.169.1
+  version: 4.170.0
   title: Linode API
   license:
     name: Apache 2.0
@@ -146,7 +146,7 @@ info:
     |-----------------------|--------|
     | **Authorization URL** | `https://login.linode.com/oauth/authorize` |
     | **Token URL** | `https://login.linode.com/oauth/token` |
-    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`databases:read_only` - Allows access to GET Managed Databases on your Account.</li><li>`databases:read_write` - Allows access to all endpoints related to your Managed Databases.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
+    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`databases:read_only` - Allows access to GET Managed Databases on your Account.</li><li>`databases:read_write` - Allows access to all endpoints related to your Managed Databases.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li><li>`vpc:read_write` - Allows access to all endpoints related to VPC and Subnet creation, updating, and deletion.</li></ul><br/>|
 
     ## Requests
 
@@ -3294,7 +3294,8 @@ paths:
                       "add_volumes": true,
                       "add_firewalls": true,
                       "account_access": "read_only",
-                      "cancel_account": false
+                      "cancel_account": false,
+                      "add_vpcs": true
                     },
                     "domain": [
                       {
@@ -3352,6 +3353,12 @@ paths:
                       {
                         "id": 123,
                         "permissions": "read_only"
+                      }
+                    ],
+                    "vpc": [
+                      {
+                        "id": 123,
+                        "permissions": "read_write"
                       }
                     ]
                 }' \
@@ -6567,6 +6574,17 @@ paths:
                     "purpose": "vlan",
                     "label": "vlan-1",
                     "ipam_address": "10.0.0.1/24"
+                  },
+                  {
+                    "purpose": "vpc",
+                    "primary": false,
+                    "label": "",
+                    "ipam_address": "",
+                    "subnet_id": 101,
+                    "ipv4": {
+                      "vpc": "10.0.1.2",
+                      "nat_1_1": "203.0.113.2"
+                    }
                   }
                 ],
                 "authorized_keys": [
@@ -6583,7 +6601,8 @@ paths:
                 "group": "Linode-Group",
                 "metadata": {
                   "user_data": "I2Nsb3VkLWNvbmZpZw=="
-                }
+                },
+                "firewall_id": 9000
               }' \
               https://api.linode.com/v4/linode/instances
       - lang: CLI
@@ -6599,7 +6618,8 @@ paths:
             --authorized_keys "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer" \
             --authorized_users "myUser" \
             --authorized_users "secondaryUser" \
-            --metadata.user_data "I2Nsb3VkLWNvbmZpZw=="
+            --metadata.user_data "I2Nsb3VkLWNvbmZpZw==" \
+            --firewall_id 9000
   /linode/instances/{linodeId}:
     parameters:
     - name: linodeId
@@ -7199,6 +7219,8 @@ paths:
         Linodes utilizing Metadata (`"has_user_data": true`) must be cloned to a new Linode with `metadata.user_data` included with the clone request.
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. If a VLAN is attached to your Linode and you attempt clone it to a non-NGN data center, the cloning will not initiate. If a Linode cannot be cloned because of an incompatibility, you will be prompted to select a different data center or contact support.
+
+        **VPC BETA:** If the Linode you are cloning has a `vpc` purpose Interface on its active Configuration Profile that includes a 1:1 NAT, the resulting clone is configured with an `any` 1:1 NAT.
       tags:
       - Linode Instances
       operationId: cloneLinodeInstance
@@ -7224,7 +7246,7 @@ paths:
                     This is the Region where the Linode will be deployed.
 
                     To view all available Regions you can deploy to see
-                    [/regions](/docs/api/regions/#regions-list).
+                    [GET /regions](/docs/api/regions/#regions-list).
 
                     * Region can only be provided and is required when cloning to a new Linode.
                   example: us-east
@@ -7507,18 +7529,8 @@ paths:
             --devices.sdb.disk_id 123457
   /linode/instances/{linodeId}/configs/{configId}:
     parameters:
-    - name: linodeId
-      in: path
-      description: The ID of the Linode whose Configuration profile to look up.
-      required: true
-      schema:
-        type: integer
-    - name: configId
-      in: path
-      description: The ID of the Configuration profile to look up.
-      required: true
-      schema:
-        type: integer
+    - $ref: '#/components/parameters/linodeId'
+    - $ref: '#/components/parameters/configId'
     x-linode-cli-command: linodes
     get:
       tags:
@@ -7670,6 +7682,344 @@ paths:
       - lang: CLI
         source: >
           linode-cli linodes config-delete 123 23456
+  /linode/instances/{linodeId}/configs/{configId}/interfaces:
+    x-linode-cli-command: linodes
+    parameters:
+    - $ref: '#/components/parameters/linodeId'
+    - $ref: '#/components/parameters/configId'
+    get:
+      tags:
+      - Linode Instances
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4beta
+      summary: Configuration Profile Interfaces List
+      description: |
+        **VPC BETA ONLY**
+
+        Returns an ordered array of all Interfaces associated with this Configuration Profile.
+        * The User accessing this command must have at least `read_only` grants to the Linode.
+      operationId: getLinodeConfigInterfaces
+      x-linode-cli-action:
+      - config-interfaces-list
+      - config-interfaces-ls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: An ordered array of Interface objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinodeConfigInterfaces'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/linode/instances/$linodeId/configs/$configId/interfaces \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli linodes config-interfaces-list $linodeId $configId
+    post:
+      x-linode-grant: read_write
+      summary: Configuration Profile Interface Add
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Creates and appends a single Interface to the end of the `interfaces` array for an existing Configuration Profile.
+        * The User accessing this command must have `read_write` grants to the Linode.
+        * A successful request triggers a `linode_config_update` event.
+        * If the new Interface is added with `"primary": true`, then any existing primary Interface is changed to `"primary": false`.
+
+        Reboot the Linode with this Configuration Profile to activate an Interface that was added with this command.
+      tags:
+      - Linode Instances
+      operationId: addLinodeConfigInterface
+      x-linode-cli-action: config-interface-add
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      requestBody:
+        description: The Interface to add to the Configuration Profile.
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - required:
+                - purpose
+              - $ref: '#/components/schemas/LinodeConfigInterface'
+      responses:
+        '200':
+          description: Interface successfully added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinodeConfigInterface'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4beta/linode/instances/$linodeId/configs/$configId \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -X POST -d '{
+              "purpose": "vpc",
+              "primary": false,
+              "label": "",
+              "ipam_address": "",
+              "subnet_id": 101,
+              "ipv4": {
+                "vpc": "10.0.1.2",
+                "nat_1_1": "203.0.113.2"
+              }
+            }'
+      - lang: CLI
+        source: >
+          linode-cli linodes config-interface-add $linodeId $configId \
+            --purpose vpc \
+            --primary false \
+            --subnet_id 101 \
+            --ipv4.vpc "10.0.1.2" \
+            --ipv4.nat_1_1 "203.0.113.2"
+  /linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId}:
+    x-linode-cli-command: linodes
+    parameters:
+    - $ref: '#/components/parameters/linodeId'
+    - $ref: '#/components/parameters/configId'
+    - name: interfaceId
+      in: path
+      description: The `id` of the Linode Configuration Profile Interface.
+      required: true
+      schema:
+        type: integer
+    delete:
+      summary: Configuration Profile Interface Delete
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Deletes an Interface from the Configuration Profile.
+
+        * The User accessing this command must have `read_write` grants to the Linode.
+        * A successful request triggers a `linode_config_update` event.
+        * Active Interfaces cannot be deleted. The associated Linode must first be shut down (or restarted using another Configuration Profile) before such Interfaces can be deleted from a Configuration Profile.
+      x-linode-grant: read_write
+      tags:
+      - Linode Instances
+      operationId: deleteLinodeConfigInterface
+      x-linode-cli-action: config-interface-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      responses:
+        '200':
+          description: Interface successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4beta/linode/instances/$linodeId/configs/$configId/interfaces/$interfaceId
+      - lang: CLI
+        source: >
+          linode-cli linodes config-delete $linodeId $configId $interfaceId
+    get:
+      tags:
+      - Linode Instances
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4beta
+      summary: Configuration Profile Interface View
+      description: |
+        **VPC BETA ONLY**
+
+        Returns a single Configuration Profile Interface.
+        * The User accessing this command must have at least `read_only` grants to the Linode.
+      operationId: getLinodeConfigInterface
+      x-linode-cli-action:
+      - config-interface-view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: An Interface object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinodeConfigInterface'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/linode/instances/$linodeId/configs/$configId/interfaces/$interfaceId \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli linodes config-interface-view $linodeId $configId $interfaceId
+    put:
+      x-linode-grant: read_write
+      summary: Configuration Profile Interface Update
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Updates a `vpc` or `public` purpose Interface for this Configuration Profile.
+        * The User accessing this command must have `read_write` grants to the Linode.
+        * A successful request triggers a `linode_config_update` event.
+        * The Interface `purpose` cannot be updated with this command.
+        * VPC Subnets cannot be updated on an Interface. A new `vpc` purpose Interface must be created to assign a different Subnet to a Configuration Profile.
+        * Only `primary` can be updated for `public` purpose Interfaces.
+        * This command not currently allowed for `vlan` purpose Interfaces.
+      tags:
+      - Linode Instances
+      operationId: updateLinodeConfigInterface
+      x-linode-cli-action: config-interface-update
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      requestBody:
+        description: The updated Interface.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Linode Configuration Interface Update request object.
+              properties:
+                primary:
+                  $ref: '#/components/schemas/LinodeConfigInterface/properties/primary'
+                ipv4:
+                  $ref: '#/components/schemas/LinodeConfigInterface/properties/ipv4'
+                # ipv6:
+                #   $ref: '#/components/schemas/LinodeConfigInterface/properties/ipv6'
+                # ip_ranges:
+                #   $ref: '#/components/schemas/LinodeConfigInterface/properties/ip_ranges'
+      responses:
+        '200':
+          description: Interface successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinodeConfigInterface'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4beta/linode/instances/$linodeId/configs/$configId/interfaces/$interfaceId \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -X PUT -d '{
+              "primary": true,
+              "ipv4": {
+                "vpc": "10.0.1.2",
+                "nat_1_1": "203.0.113.2"
+              }
+            }'
+      - lang: CLI
+        source: >
+          linode-cli linodes config-interface-update $linodeId $configId $interfaceId \
+            --primary true \
+            --ipv4.vpc "10.0.1.2" \
+            --ipv4.nat_1_1 "203.0.113.2"
+  /linode/instances/{linodeId}/configs/{configId}/interfaces/order:
+    x-linode-cli-command: linodes
+    parameters:
+    - $ref: '#/components/parameters/linodeId'
+    - $ref: '#/components/parameters/configId'
+    post:
+      x-linode-grant: read_write
+      summary: Configuration Profile Interfaces Order
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Reorders the existing Interfaces of a Configuration Profile.
+        * The User accessing this command must have `read_write` grants to the Linode.
+      tags:
+      - Linode Instances
+      operationId: orderLinodeConfigInterfaces
+      x-linode-cli-action: config-interfaces-order
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      requestBody:
+        description: The desired Interface order for the Configuration Profile.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Linode Configuration Interfaces Order request object.
+              required:
+              - ids
+              properties:
+                ids:
+                  type: array
+                  description: |
+                    An ordered array of existing Configuration Profile Interface `id`s.
+
+                    * All current Interface `id`s must be present in the array.
+                    * If the Configuration Profile contains Interfaces and is active on the Linode, the Linode must first be shut down prior to running this command.
+                    * Reordering takes effect after rebooting the Linode with this Configuration Profile.
+
+                    The position in the array determines which of the Linode's network Interfaces is configured:
+
+                    * First [0]:  eth0
+                    * Second [1]: eth1
+                    * Third [2]:  eth2
+                  items:
+                    $ref: '#/components/schemas/LinodeConfigInterface/properties/id'
+      responses:
+        '200':
+          description: Interfaces successfully reordered.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4beta/linode/instances/$linodeId/configs/$configId/interfaces/order \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -X POST -d '{
+              "ids": [
+                101,
+                102,
+                103
+              ]
+            }'
+      - lang: CLI
+        source: >
+          linode-cli linodes config-interfaces-order $linodeId $configId \
+            --ids 101 --ids 102 --ids 103
   /linode/instances/{linodeId}/disks:
     parameters:
     - name: linodeId
@@ -8432,7 +8782,7 @@ paths:
       - Linode Instances
       summary: IPv4 Address Delete
       description: >
-        Deletes a public or private IPv4 address associated with this Linode. This will fail if it is the Linode's last remaining public IPv4 address.
+        Deletes a public or private IPv4 address associated with this Linode. This will fail if it is the Linode's last remaining public IPv4 address, or if the address has a 1:1 NAT with an active VPC Subnet address.
       operationId: removeLinodeIP
       x-linode-cli-action: ip-delete
       security:
@@ -8567,6 +8917,8 @@ paths:
         you will be prompted to select a different data center or contact support.
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. If a VLAN is attached to your Linode and you attempt to migrate it to a non-NGN data center, the migration will not initiate. If a Linode cannot be migrated because of an incompatibility, you will be prompted to select a different data center or contact support.
+
+        **VPC BETA:** Cross DC migrations are not allowed for Linodes that have a `vpc` purpose Configuration Profile Interface. Host migrations within the same DC are permitted.
       tags:
        - Linode Instances
       operationId: migrateLinodeInstance
@@ -12845,6 +13197,9 @@ paths:
         **Note**: Removing an IP address that has been set as a Managed Linode's `ssh.ip` causes the Managed Linode's SSH access settings to reset to their default values. To view and configure Managed Linode SSH settings, use the following commands:
         * **Linode's Managed Settings View** ([GET /managed/linode-settings/{linodeId}](/docs/api/managed/#linodes-managed-settings-view))
         * **Linode's Managed Settings Update** ([PUT /managed/linode-settings/{linodeId}](/docs/api/managed/#linodes-managed-settings-update))
+
+        **VPC BETA ONLY**
+        * Addresses with an active 1:1 NAT to a VPC Interface address cannot be assigned to other Linodes.
       operationId: assignIPs
       x-linode-cli-action: ip-assign
       security:
@@ -12911,6 +13266,8 @@ paths:
         IP sharing allows IP address reassignment (also referred to as IP failover) from one Linode to another if the primary Linode becomes unresponsive. This means that requests to the primary Linode's IP address can be automatically rerouted to secondary Linodes at the configured shared IP addresses.
 
         IP failover requires configuration of a failover service (such as [Keepalived](/docs/guides/ip-failover-keepalived)) within the internal system of the primary Linode.
+
+        **VPC BETA:** A public IPv4 address cannot be shared if it is configured for a 1:1 NAT on a `vpc` purpose Configuration Profile Interface.
       operationId: shareIPs
       x-linode-cli-action: ip-share
       security:
@@ -13419,7 +13776,10 @@ paths:
 
         * A Firewall can be assigned to multiple services at a time.
 
+        * A Firewall can be assigned during Linode creation by utilizing the `firewall_id` [Linode Create Request](/docs/api/linode-instances/#linode-create__request-body-schema) property.
+
         * A service can have one active, assigned Firewall at a time.
+        
         Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
 
         * Firewalls apply to all of a Linode's non-`vlan` purpose Configuration Profile Interfaces.
@@ -14140,8 +14500,8 @@ paths:
 
         There are several ways to detach a VLAN from a Linode:
 
-        - [Update](/docs/api/linode-instances/#configuration-profile-update) the active Configuration Profile to remove the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode.
-        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode into the new Configuration Profile.
+        - [Update](/docs/api/linode-instances/#configuration-profile-update) the active Configuration Profile to remove the VLAN Interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode.
+        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN Interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode into the new Configuration Profile.
         - [Delete](/docs/api/linode-instances/#linode-delete) the Linode.
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
@@ -19246,6 +19606,506 @@ paths:
         source: >
           linode-cli volumes resize 12345 \
             --size 30
+  /vpcs:
+    x-linode-cli-command: vpcs
+    get:
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - VPCs
+      summary: VPCs List
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Display all VPCs belonging to your Account.
+      operationId: getVPCs
+      x-linode-cli-action:
+      - list
+      - ls
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: A paginated list of VPC objects.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/VPC'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4beta/vpcs \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli vpcs list
+    post:
+      x-linode-grant: add_vpcs
+      tags:
+      - VPCs
+      summary: VPC Create
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Create a new VPC and optionally associated VPC Subnets.
+        * Users must have the `add_vpc` grant to access this command.
+        * A successful request triggers a `vpc_create` event and `subnet_create` events for any created VPC Subnets.
+
+        Once a VPC is created, it can be attached to a Linode by assigning a VPC Subnet to one of the Linode's Configuration Profile Interfaces. This step can be accomplished with the following commands:
+        * Linode Create ([POST /linode/instances](/docs/api/linode-instances/#linode-create))
+        * Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create))
+        * Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update))
+        * Configuration Profile Interface Add ([POST /linode/instances/{linodeId}/configs/{configId}/interfaces](/docs/api/linode-instances/#configuration-profile-interface-add))
+      operationId: createVPC
+      x-linode-cli-action: create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      requestBody:
+        description: |
+          VPC Create request object.
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - required:
+                - label
+                - region
+              - properties:
+                  subnets:
+                    required:
+                    - ipv4
+                    - label
+              - $ref: '#/components/schemas/VPC'
+      responses:
+        '200':
+          description: The new VPC.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPC'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X POST -d '{
+                "description": "A description of my VPC.",
+                "label": "cool-vpc",
+                "region": "us-east",
+                "subnets": [
+                  {
+                    "label": "cool-vpc-subnet",
+                    "ipv4": "10.0.1.0/24"
+                  }
+                ]
+              }'
+        - lang: CLI
+          source: >
+            linode-cli vpcs create \
+              --description "A description of my VPC." \
+              --label cool-vpc \
+              --region us-east \
+              --subnets.label cool-vpc-subnet \
+              --subnets.ipv4 10.0.1.0/24
+  /vpcs/{vpcId}:
+    x-linode-cli-command: vpcs
+    parameters:
+    - $ref: '#/components/parameters/vpcId'
+    delete:
+      x-linode-grant: read_write
+      summary: VPC Delete
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Delete a single VPC and all of its Subnets.
+        * The User accessing this command must have `read_write` grants to the VPC.
+        * A successful request triggers a `vpc_delete` event and `subnet_delete` events for each deleted VPC Subnet.
+        * All of the VPC's Subnets must be eligible for deletion. Accordingly, all Configuration Profile Interfaces that each Subnet is assigned to must first be deleted. If those Interfaces are active, the associated Linodes must first be shut down before they can be removed. If any Subnet cannot be deleted, then neither the VPC nor any of its Subnets are deleted.
+      tags:
+      - VPCs
+      operationId: deleteVPC
+      x-linode-cli-action: delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      responses:
+        '200':
+          description: Delete request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs/$vpcId \
+              -H "Authorization: Bearer $TOKEN" \
+              -X DELETE
+        - lang: CLI
+          source: >
+            linode-cli vpcs delete $vpcId
+    get:
+      summary: VPC View
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Get information about a single VPC.
+      tags:
+      - VPCs
+      operationId: getVPC
+      x-linode-cli-action: view
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: A VPC object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPC'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs/$vpcId \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli vpcs view $vpcId
+    put:
+      x-linode-grant: read_write
+      tags:
+      - VPCs
+      summary: VPC Update
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Update a VPC.
+        * The User accessing this command must have `read_write` grants to the VPC.
+        * A successful request triggers a `vpc_update` event.
+
+        To update a VPC's Subnet, use the [VPC Subnet Update](#vpc-subnet-update) command.
+      operationId: updateVPC
+      x-linode-cli-action: update
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      requestBody:
+        description: |
+          VPC Update request object.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: A VPC Update request object.
+              properties:
+                description:
+                  $ref: '#/components/schemas/VPC/properties/description'
+                label:
+                  $ref: '#/components/schemas/VPC/properties/label'
+      responses:
+        '200':
+          description: The updated VPC.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPC'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs/$vpcId \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X PUT -d '{
+                "description": "A description of my VPC.",
+                "label": "cool-vpc"
+              }'
+        - lang: CLI
+          source: >
+            linode-cli vpcs update $vpcId \
+              --description "A description of my VPC."
+              --label cool-vpc
+  /vpcs/{vpcId}/subnets:
+    x-linode-cli-command: vpcs
+    parameters:
+    - $ref: '#/components/parameters/vpcId'
+    get:
+      tags:
+      - VPCs
+      summary: VPC Subnets List
+      servers:
+      - url: https://api.linode.com/v4beta
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        **VPC BETA ONLY**
+
+        Get information about all VPC Subnets associated with a VPC.
+      operationId: getVPCSubnets
+      x-linode-cli-action:
+      - subnets-list
+      - subnets-ls
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: A paginated list of VPC Subnet objects.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/VPCSubnet'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs/$vpcId/subnets \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnets-list $vpcId
+    post:
+      x-linode-grant: read_write
+      tags:
+      - VPCs
+      summary: VPC Subnet Create
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Create a VPC Subnet.
+        * The User accessing this command must have `read_write` grants to the VPC.
+        * A successful request triggers a `subnet_create` event.
+
+        Once a VPC Subnet is created, it can be attached to a Linode by assigning the Subnet to one of the Linode's Configuration Profile Interfaces. This step can be accomplished with the following commands:
+        * Linode Create ([POST /linode/instances](/docs/api/linode-instances/#linode-create))
+        * Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create))
+        * Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update))
+        * Configuration Profile Interface Add ([POST /linode/instances/{linodeId}/configs/{configId}/interfaces](/docs/api/linode-instances/#configuration-profile-interface-add))
+      operationId: createVPCSubnet
+      x-linode-cli-action: subnet-create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      requestBody:
+        description: |
+          VPC Subnet Create request object.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: VPC Subnet Create request object
+              required:
+              - ipv4
+              - label
+              properties:
+                label:
+                  $ref: '#/components/schemas/VPCSubnet/properties/label'
+                ipv4:
+                  $ref: '#/components/schemas/VPCSubnet/properties/ipv4'
+                # ipv6:
+                #   $ref: '#/components/schemas/VPCSubnet/properties/ipv6'
+      responses:
+        '200':
+          description: The new VPC Subnet.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPCSubnet'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs/$vpcId/subnets \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X POST -d '{
+                "label": "cool-vpc-subnet",
+                "ipv4": "10.0.1.0/24",
+              }'
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnet-create $vpcId \
+              --label cool-vpc-subnet \
+              --ipv4 10.0.1.0/24
+  /vpcs/{vpcId}/subnets/{vpcSubnetId}:
+    x-linode-cli-command: vpcs
+    parameters:
+    - $ref: '#/components/parameters/vpcId'
+    - $ref: '#/components/parameters/vpcSubnetId'
+    delete:
+      x-linode-grant: read_write
+      summary: VPC Subnet Delete
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Delete a single VPC Subnet.
+
+        The User accessing this command must have `read_write` grants to the VPC.
+
+        A successful request triggers a `subnet_delete` event.
+
+        * All Configuration Profile Interfaces that this Subnet is assigned to must first be deleted. If those Interfaces are active, the associated Linode must first be shut down before they can be removed.
+      tags:
+      - VPCs
+      operationId: deleteVPCSubnet
+      x-linode-cli-action: subnet-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      responses:
+        '200':
+          description: Delete request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs/$vpcId/subnets/$vpcSubnetId \
+              -H "Authorization: Bearer $TOKEN" \
+              -X DELETE
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnet-delete $vpcId $vpcSubnetId
+    get:
+      summary: VPC Subnet View
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Get information about a single VPC Subnet.
+      tags:
+      - VPCs
+      operationId: getVPCSubnet
+      x-linode-cli-action: subnet-view
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: A VPC Subnet object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPCSubnet'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs/$vpcId/subnets/$vpcSubnetId \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnet-view $vpcId #vpcSubnetId
+    put:
+      x-linode-grant: read_write
+      tags:
+      - VPCs
+      summary: VPC Subnet Update
+      servers:
+      - url: https://api.linode.com/v4beta
+      description: |
+        **VPC BETA ONLY**
+
+        Update a VPC Subnet.
+        * The User accessing this command must have `read_write` grants to the VPC.
+        * A successful request triggers a `subnet_update` event.
+      operationId: updateVPCSubnet
+      x-linode-cli-action: subnet-update
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      requestBody:
+        description: |
+          VPC Update request object.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: A VPC Subnet Update request object.
+              properties:
+                label:
+                  $ref: '#/components/schemas/VPCSubnet/properties/label'
+      responses:
+        '200':
+          description: The updated VPC Subnet.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPCSubnet'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4beta/vpcs/$vpcId/subnets/$vpcSubnetId \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X PUT -d '{
+                "label": "cool-vpc-subnet"
+              }'
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnet-update $vpcId \
+              --label cool-vpc-subnet
 components:
   securitySchemes:
     personalAccessToken:
@@ -19284,6 +20144,7 @@ components:
             'stackscripts:read_write': Allows access to all endpoints related to your StackScripts.
             'volumes:read_only': Allows access to GET your Volumes.
             'volumes:read_write': Allows access to all endpoints related to your Volumes.
+            'vpc:read_write': Allows access to all endpoints related to VPC and Subnet creation, updating, and deletion.
   responses:
     AcceptedResponse:
       description: |
@@ -19332,6 +20193,20 @@ components:
       required: true
       schema:
         type: string
+    configId:
+      name: configId
+      in: path
+      description: The `id` of the Configuration Profile.
+      required: true
+      schema:
+        type: integer
+    linodeId:
+      name: linodeId
+      in: path
+      description: The `id` of the Linode.
+      required: true
+      schema:
+        type: integer
     pageOffset:
       name: page
       in: query
@@ -19350,6 +20225,20 @@ components:
         minimum: 25
         maximum: 500
         default: 100
+    vpcId:
+      name: vpcId
+      in: path
+      schema:
+        type: integer
+      required: true
+      description: The `id` of the VPC.
+    vpcSubnetId:
+      name: vpcSubnetId
+      in: path
+      schema:
+        type: integer
+      required: true
+      description: The `id` of the VPC Subnet.
   links:
     bootLinode:
       operationId: bootLinodeInstance
@@ -21923,7 +22812,11 @@ components:
               example: true
             add_databases:
               type: boolean
-              description: if true, this User may add Managed Databases.
+              description: If true, this User may add Managed Databases.
+              example: true
+            add_vpcs:
+              type: boolean
+              description: If true, this User may add VPCs.
               example: true
         linode:
           type: array
@@ -21973,6 +22866,12 @@ components:
             $ref: '#/components/schemas/Grant'
           description: >
             The grants this User has for each Block Storage Volume that is owned by this Account.
+        vpc:
+          type: array
+          items:
+            $ref: '#/components/schemas/Grant'
+          description: >
+            The grants this User has for each VPC that is owned by this Account.
     Image:
       type: object
       description: Image object
@@ -22329,6 +23228,38 @@ components:
           example: us-east
           readOnly: true
           x-linode-cli-display: 5
+        vpc_nat_1_1:
+          type: object
+          description: |
+            **VPC BETA ONLY**
+
+            IPv4 address configured as a 1:1 NAT for this Interface. If no address is configured as a 1:1 NAT, `null` is returned.
+
+            Only allowed for `vpc` type Interfaces.
+          properties:
+            vpc_id:
+              type: integer
+              readOnly: true
+              nullable: true
+              description: |
+                **VPC BETA ONLY**
+
+                The `id` of the VPC configured for this Interface.
+              example: 111
+            subnet_id:
+              type: integer
+              nullable: true
+              description: |
+                **VPC BETA ONLY**
+
+                The `id` of the VPC Subnet for this Interface.
+              example: 101
+            address:
+              type: string
+              format: ipv4|ipv6/prefix_length
+              description: |
+                The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+              example: 192.0.2.1
     IPAddressesAssignRequest:
       type: object
       description: Request object for IP Addresses Assign (POST /networking/ips/assign).
@@ -23312,7 +24243,7 @@ components:
         id:
           readOnly: true
           type: integer
-          description: The unique ID representing this interface.
+          description: The unique ID representing this Interface.
           example: 101
           x-linode-cli-display: 1
         label:
@@ -23323,18 +24254,23 @@ components:
           x-linode-filterable: true
           nullable: true
           description: |
-            The name of this interface.
+            The name of this Interface.
 
-            For `vlan` purpose interfaces:
+            For `vlan` purpose Interfaces:
             * Required.
-            * Must be unique among the Linode's interfaces (a Linode cannot be attached to the same VLAN multiple times).
+            * Must be unique among the Linode's Interfaces (a Linode cannot be attached to the same VLAN multiple times).
             * May only consist of ASCII letters, numbers, and dashes (`-`).
+            * If the VLAN label is new, a VLAN is created. Up to 10 VLANs can be created in each data center region. To view your active VLANs, use the [VLANs List](/docs/api/networking/#vlans-list) endpoint.
 
-            For `public` purpose interfaces:
+            For `public` purpose Interfaces:
             * In requests, must be an empty string (`""`) or `null` if included.
             * In responses, always returns `null`.
 
-            If the VLAN label is new, a VLAN is created. Up to 10 VLANs can be created in each data center region. To view your active VLANs, use the [VLANs List](/docs/api/networking/#vlans-list) endpoint.
+            **VPC BETA ONLY**
+
+            For `vpc` purpose Interfaces:
+            * In requests, must be an empty string (`""`) or `null` if included.
+            * In responses, always returns `null`.
           example: example-interface
           x-linode-cli-display: 2
         ipam_address:
@@ -23344,34 +24280,181 @@ components:
           description: |
             This Network Interface's private IP address in Classless Inter-Domain Routing (CIDR) notation.
 
-            For `vlan` purpose interfaces:
-            * Must be unique among the Linode's interfaces to avoid conflicting addresses.
+            For `vlan` purpose Interfaces:
+            * Must be unique among the Linode's Interfaces to avoid conflicting addresses.
             * Should be unique among devices attached to the VLAN to avoid conflict.
+            * The Linode is configured to use this address for the associated Interface upon reboot if Network Helper is enabled. If Network Helper is disabled, the address can be enabled with [manual static IP configuration](/docs/guides/manual-network-configuration/).
 
-            For `public` purpose interfaces:
+            For `public` purpose Interfaces:
             * In requests, must be an empty string (`""`) or `null` if included.
             * In responses, always returns `null`.
 
-            The Linode is configured to use this address for the associated interface upon reboot if Network Helper is enabled. If Network Helper is disabled, the address can be enabled with [manual static IP configuration](/docs/guides/manual-network-configuration/).
+            **VPC BETA ONLY**
+
+            For `vpc` purpose Interfaces:
+            * In requests, must be an empty string (`""`) or `null` if included.
+            * In responses, always returns `null`.
           example: '10.0.0.1/24'
+          x-linode-cli-display: 4
         purpose:
           type: string
           enum:
             - public
             - vlan
+            - vpc
           description: |
-            The type of interface.
+            The type of Interface.
 
             * `public`
-              * Only one `public` interface per Linode can be defined.
-              * The Linode's default public IPv4 address is assigned to the `public` interface.
-              * A Linode must have a public interface in the first/eth0 position to be reachable via the public internet upon boot without additional system configuration. If no `public` interface is configured, the Linode is not directly reachable via the public internet. In this case, access can only be established via [LISH](/docs/products/compute/compute-instances/guides/lish/) or other Linodes connected to the same VLAN.
+              * Only one `public` Interface per Linode can be defined.
+              * The Linode's default public IPv4 address is assigned to the `public` Interface.
+              * A Linode must have a public Interface in the first/eth0 position to be reachable via the public internet upon boot without additional system configuration. If no `public` Interface is configured, the Linode is not directly reachable via the public internet. In this case, access can only be established via [LISH](/docs/products/compute/compute-instances/guides/lish/) or other Linodes connected to the same VLAN or VPC.
 
             * `vlan`
-              * Configuring a `vlan` purpose interface attaches this Linode to the VLAN with the specified `label`.
+              * Configuring a `vlan` purpose Interface attaches this Linode to the VLAN with the specified `label`.
               * The Linode is configured to use the specified `ipam_address`, if any.
+
+            **VPC BETA ONLY**
+
+            * `vpc`
+              * Configuring a `vpc` purpose Interface attaches this Linode to the existing VPC Subnet with the specified `subnet_id`.
+              * When the Interface is activated, the Linode is configured to use an IP address from the range in the assigned VPC Subnet. See `ipv4.vpc` for more information.
           example: vlan
           x-linode-cli-display: 3
+        active:
+          type: boolean
+          description: |
+            **VPC BETA ONLY**
+
+            Returns `true` if the Interface is in use, meaning that Compute Instance has been booted using the Configuration Profile to which the Interface belongs. Otherwise returns `false`.
+          example: true
+        primary:
+          type: boolean
+          description: |
+            **VPC BETA ONLY**
+
+            The primary Interface is configured as the default route to the Linode.
+
+            Each Configuration Profile can have up to one `"primary": true` Interface at a time.
+
+            Must be `false` for `vlan` type Interfaces.
+
+            If no Interface is configured as the primary, the first non-`vlan` type Interface in the `interfaces` array is automatically treated as the primary Interface.
+          example: true
+        vpc_id:
+          type: integer
+          readOnly: true
+          nullable: true
+          description: |
+            **VPC BETA ONLY**
+
+            The `id` of the VPC configured for this Interface.
+            * `null` for non-`vpc` type Interfaces.
+          example: 111
+        subnet_id:
+          type: integer
+          nullable: true
+          description: |
+            **VPC BETA ONLY**
+
+            The `id` of the VPC Subnet for this Interface.
+
+            In requests, this value is used to assign a Linode to a VPC Subnet.
+            * Required for `vpc` type Interfaces.
+            * `null` for non-`vpc` type Interfaces.
+            * Once a VPC Subnet is assigned to an Interface, it cannot be updated.
+            * The Linode must be rebooted with the Interface's Configuration Profile to complete assignment to a VPC Subnet.
+          example: 101
+        ipv4:
+          type: object
+          description: |
+            **VPC BETA ONLY**
+
+            IPv4 addresses configured for this Interface.
+
+            Only allowed for `vpc` type Interfaces.
+          properties:
+            vpc:
+              type: string
+              format: ip
+              nullable: true
+              description: |
+                **VPC BETA ONLY**
+
+                The VPC Subnet IPv4 address for this Interface.
+
+                * Only allowed for `vpc` type Interfaces.
+                * Returns an empty string (`""`) for non-`vpc` type Interfaces.
+
+                For requests:
+                * Must not already be actively assigned as an address or within a range to any Linodes.
+                * Must not be the first two or last two addresses in the Subnet IPv4 Range.
+                * If omitted, a valid address within the Subnet IPv4 range is automatically assigned.
+              example: '10.0.0.2'
+            nat_1_1:
+              type: string
+              format: ip
+              nullable: true
+              description: |
+                **VPC BETA ONLY**
+
+                The 1:1 NAT IPv4 address, used to associate a public IPv4 address with the VPC Subnet IPv4 address assigned to this Interface.
+
+                * Only allowed for `vpc` type Interfaces.
+                * Returns an empty string (`""`) for non-`vpc` type Interfaces.
+
+                For requests:
+                * Setting this value to `any` enables the Linode's assigned public IPv4 address on this Interface and establishes a 1:1 NAT between the public IPv4 and VPC Subnet IPv4 addresses.
+                * Setting the value to a specific public IPv4 address that is assigned to the Linode enables a 1:1 NAT between that address and the VPC Subnet IPv4 address.
+                * The public IPv4 address must not be shared with another Linode.
+                * If ommitted, `null`, or an empty string (`""`), no 1:1 NAT is established.
+              example: '203.0.113.2'
+        # ipv6:
+        #   type: object
+        #   description: |
+        #     **VPC BETA ONLY**
+
+        #     IPv6 addresses configured for this Interface.
+        #   properties:
+        #     vpc:
+        #       type: string
+        #       format: ip
+        #       description: |
+        #         **VPC BETA ONLY**
+
+        #         The VPC IPv6 address assigned to this Interface.
+
+        #         * Only allowed for `vpc` type Interfaces.
+        #         * Returns an empty string (`""`) for non-`vpc` type Interfaces.
+
+        #         For requests:
+        #         * The VPC Subnet must have an IPv6 range.
+        #         * Must not already be actively assigned as an address or within a range.
+        #         * Must not be the first two or last two addresses in the Subnet IPv6 Range.
+        #         * If omitted, a valid address within the Subnet IPv6 range is automatically assigned.
+        #       example: 'fd04:495a:691c:971c::2'
+        # ip_ranges:
+        #   type: array
+        #   nullable: true
+        #   description: |
+        #     **VPC BETA ONLY**
+
+        #     An array of IPv4 CIDR VPC Subnet ranges that are routed to this Interface. **IPv6 ranges are also available to select participants in the Beta program.**
+
+        #     * Array items are only allowed for `vpc` type Interfaces.
+        #     * This must be empty for non-`vpc` type Interfaces.
+
+        #     For requests:
+        #     * Addresses in submitted ranges must not already be actively assigned.
+        #     * Submitting values replaces any existing values.
+        #     * Submitting an empty array removes any existing values.
+        #     * Omitting this property results in no change to existing values.
+        #   items:
+        #     type: string
+        #     format: ip
+        #   example:
+        #   - 10.0.0.64/26
+        #   - fd04:495a:691c:971c::1:0/112
     LinodeConfigInterfaces:
       type: array
       items:
@@ -23384,17 +24467,17 @@ components:
       description: |
         An array of Network Interfaces to add to this Linode's Configuration Profile.
 
-        At least one and up to three interface objects can be entered in this array. The position in the array determines which of the Linode's network interfaces is configured:
+        At least one and up to three Interface objects can exist in this array. The position in the array determines which of the Linode's network Interfaces is configured:
 
         - First [0]:  eth0
         - Second [1]: eth1
         - Third [2]:  eth2
 
-        When updating a Linode's interfaces, *each interface must be redefined*. An empty interfaces array results in a default public interface configuration only.
+        When updating a Linode's Interfaces, *each Interface must be redefined*. An empty `interfaces` array results in a default `public` type Interface configuration only.
 
-        If no public interface is configured, public IP addresses are still assigned to the Linode but will not be usable without manual configuration.
+        If no public Interface is configured, public IP addresses are still assigned to the Linode but will not be usable without manual configuration.
 
-        **Note:** Changes to Linode interface configurations can be enabled by rebooting the Linode.
+        **Note:** Changes to Linode Interface configurations can be enabled by rebooting the Linode.
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
@@ -23402,9 +24485,45 @@ components:
 
         **Note:** See the [VLANs Overview](/docs/products/networking/vlans/#technical-specifications) guide to view additional specifications and limitations.
       example:
-      - {"id": 101, "purpose": "public", "ipam_address": null, "label": null}
-      - {"id": 102, "purpose": "vlan", "ipam_address": "10.0.0.1/24", "label": "vlan-1"}
-      - {"id": 103, "purpose": "vlan", "ipam_address": "10.0.0.2/24", "label": "vlan-2"}
+      - {
+          "id": 101,
+          "purpose": "public",
+          "ipam_address": null,
+          "label": null,
+          "primary": false,
+          "vpc_id": null,
+          "subnet_id": null,
+          "ipv4": {
+            "vpc": "",
+            "nat_1_1": ""
+          }
+        }
+      - {
+          "id": 102,
+          "purpose": "vlan",
+          "ipam_address": "10.0.0.1/24",
+          "label": "vlan-1",
+          "primary": false,
+          "vpc_id": null,
+          "subnet_id": null,
+          "ipv4": {
+            "vpc": "",
+            "nat_1_1": ""
+          }
+        }
+      - {
+          "id": 103,
+          "purpose": "vpc",
+          "ipam_address": null,
+          "label": null,
+          "primary": true,
+          "vpc_id": 111,
+          "subnet_id": 101,
+          "ipv4": {
+            "vpc": "10.0.1.2",
+            "nat_1_1": "203.0.113.2"
+          }
+        }
     LinodeRequest:
       type: object
       description: Common properties for creating and rebuilding Linodes.
@@ -26478,10 +27597,9 @@ components:
           minLength: 1
           maxLength: 65000
           example: >
-            I'm having trouble setting the root password on my Linode.
+            I am having trouble setting the root password on my Linode.
             I tried following the instructions but something is not
-            working and I'm not sure what I'm doing wrong. Can you please
-            help me figure out how I can reset it?
+            working. Can you please help me figure out how I can reset it?
           x-linode-cli-display: 5
         entity:
           type: object
@@ -26711,6 +27829,11 @@ components:
             The label of the VLAN this ticket is regarding, if relevant. To view your VLANs, use the VLANs List ([GET /networking/vlans](/docs/api/networking/#vlans-list)) endpoint.
 
             Requires a specified `region` to identify the VLAN.
+          example: null
+        vpc_id:
+          type: integer
+          description: >
+            The ID of the VPC this ticket is regarding, if relevant.
           example: null
         region:
           type: string
@@ -27314,6 +28437,156 @@ components:
           description: The storage type of this Volume.
           example: nvme
           readOnly: true
+    VPC:
+      type: object
+      description: An object describing a VPC belonging to the Account.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          x-linode-filterable: true
+          description: The unique ID of the VPC.
+          example: 123
+          x-linode-cli-display: 1
+        label:
+          type: string
+          minLength: 1
+          maxLength: 64
+          x-linode-filterable: true
+          description: |
+            The VPC's label, for display purposes only.
+
+            * Must be unique among the Account's VPCs.
+            * Must contain only ASCII letters, numbers, and hyphens (`-`).
+          example: cool-vpc
+          x-linode-cli-display: 2
+        description:
+          type: string
+          maxLength: 255
+          default: ""
+          description: A written description to help distinguish the VPC.
+          example: "A description of my VPC."
+          x-linode-cli-display: 3
+        region:
+          type: string
+          x-linode-filterable: true
+          description: The Region for the VPC.
+          example: us-east
+          x-linode-cli-display: 4
+        subnets:
+          type: array
+          description: A list of subnets associated with the VPC.
+          items:
+            $ref: '#/components/schemas/VPCSubnet'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          x-linode-filterable: true
+          description: The date-time of VPC creation.
+          example: '2023-07-11T00:00:00'
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          x-linode-filterable: true
+          description: The date-time of the most recent VPC update.
+          example: '2023-09-11T00:00:00'
+    VPCSubnet:
+      type: object
+      description: An object describing a VPC Subnet.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          x-linode-filterable: true
+          description: The unique ID of the VPC Subnet.
+          example: 456
+          x-linode-cli-display: 1
+        label:
+          type: string
+          minLength: 1
+          maxLength: 64
+          x-linode-filterable: true
+          description: |
+            The VPC Subnet's label, for display purposes only.
+
+            * Must be unique among the VPC's Subnets.
+            * Must contain only ASCII letters, numbers, and hyphens (`-`).
+          example: cool-vpc-subnet
+          x-linode-cli-display: 2
+        ipv4:
+          type: string
+          format: ip
+        #  nullable: true
+          description: |
+            IPv4 range in CIDR canonical form.
+
+            * The range must belong to a private address space as defined in [RFC1918](https://datatracker.ietf.org/doc/html/rfc1918).
+            * Allowed prefix lengths: 1-29.
+            * The range must not overlap with 192.168.128.0/17.
+            * The range must not overlap with other Subnets on the same VPC.
+          example: 10.0.1.0/24
+          x-linode-cli-display: 3
+        # ipv6:
+        #   type: string
+        #   format: ip
+        #   nullable: true
+        #   description: |
+        #     IPv6 range in CIDR canonical form.
+
+        #     * A VPC Subnet requires either `ipv4`, `ipv6`, or both.
+        #     * In requests, only the prefix length is allowed, for example: `/64`. The address range is then automatically assigned.
+        #     * Allowed prefix lengths: 64-125.
+        #     * The range must not overlap with other Subnets on the same VPC.
+        #   example: fd04:495a:691c:971c:0000:0000:0000:0000/64
+        #   x-linode-cli-display: 4
+        linodes:
+          type: array
+          description: |
+            An array of Linode IDs assigned to the VPC Subnet.
+
+            A Linode is assigned to a VPC Subnet if it has a Configuration Profile with a `vpc` purpose interface with the subnet's `subnet_id`. Even if the Configuration Profile is not active, meaning the Linode does not have access to the Subnet, the Linode still appears in this array.
+          readOnly: true
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: ID of a Linode assigned to the VPC Subnet.
+                example: 111
+              interfaces:
+                type: array
+                description: An array of Interfaces assigned to the Linode.
+                items:
+                  type: object
+                  properties:
+                    active:
+                      type: boolean
+                      description: |
+                        Returns `true` if the Interface is in use, meaning that the Linode was powered on using the Configuration Profile to which the Interface belongs. Otherwise returns `false`.
+                      example: true
+                    id:
+                      type: integer
+                      description: ID of the interface
+                      example: 421
+          x-linode-cli-display: 5
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          x-linode-filterable: true
+          description: The date-time of VPC Subnet creation.
+          example: '2023-07-11T00:00:00'
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          x-linode-filterable: true
+          description: The date-time of the most recent VPC Subnet update.
+          example: '2023-09-11T00:00:00'
     WarningObject:
       type: object
       description: >
@@ -27368,3 +28641,5 @@ tags:
     description: Tags allow you to organize and group your various Linode services. Use the Tags endpoints to create, assign, and delete your account tags.
   - name: Volumes
     description: Volumes is Linode's block storage service. Use the Volumes endpoints to create, attach, and manage your account Volumes.
+  - name: VPCs
+    description: Use the VPCs endpoints to view, create, and manage Virtual Private Cloud (VPC) and VPC Subnet resources.
