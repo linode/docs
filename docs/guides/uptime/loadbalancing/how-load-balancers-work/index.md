@@ -30,11 +30,11 @@ Load balancing can help boost performance and availability, while also providing
 
 ### Scalability
 
-Especially in a cloud setting, load balancing ensures that server capacity keeps up with client demand. Occasional flash-mob events may require temporary additions in server capacity. Meanwhile, longer-term traffic growth requires steady additions to your pool of cloud servers. Either way, load balancers distribute client requests so that capacity always meets demand.
+Load balancing ensures that server capacity keeps up with client demand, especially in a cloud setting. Occasional flash-mob events may require temporary additions in server capacity. Meanwhile, longer-term traffic growth requires steady additions to your pool of cloud servers. Either way, load balancers distribute client requests so that capacity always meets demand.
 
 ### High Availability
 
-Planned or not, server and network outages are a fact of life. Load balancing helps by rerouting traffic around offline resources. For example, you could take specific servers offline for software upgrades while a load balancer continues to send requests to remaining online servers. In a global load balancing scenario, you could route traffic away from specific data centers in case of network outages.
+Planned or not, server and network outages are a fact of life. Load balancing helps by rerouting traffic around offline resources. For example, you could take specific servers offline for software upgrades, while a load balancer continues to send requests to remaining online servers. In a global load balancing scenario, you could route traffic away from specific data centers in case of network outages.
 
 Availability can be a double-edged sword, however. One potential drawback of load balancers is that they can represent a single point of failure. For this reason, it’s common to deploy load balancers with high availability (HA) support. In mission-critical cases, a global server load balancer might send requests to a standby data center when active data centers are unreachable.
 
@@ -50,7 +50,7 @@ Many load balancers, including Akamai’s NodeBalancer, perform health checks to
 
 Load balancers are so-called "middleboxes", acting as reverse proxies between clients and servers. For example, you might configure DNS so that `www.example.com` points to the load balancer’s client-facing IP address/es.
 
-Clients requesting this site’s web page would send HTTP/HTTPS GET requests to the load balancer's client-facing network interfaces. Acting as a reverse proxy, the load balancer then distributes requests across back-end servers or server groups. The diagram below shows a simple example where a load balancer distributes client requests across web servers. The diagram also shows another tier of database servers behind the web servers. This a common design choice where it’s important to maintain consistent content across multiple servers.
+Clients requesting this site’s web page would send HTTP/HTTPS GET requests to the load balancer's client-facing network interfaces. Acting as a reverse proxy, the load balancer then distributes requests across back-end servers or server groups. The diagram below shows a simple example where a load balancer distributes client requests across web servers. The diagram also shows another tier of database servers behind the web servers. This is a common design choice whenever it’s important to maintain consistent content across multiple servers.
 
 ![Simple Load Balancing Scenario](simple-load-balancing-scenario.png "Simple Load Balancing Scenario")
 
@@ -62,7 +62,7 @@ Static algorithms always make the same decisions based on the same inputs. Dynam
 
 #### Round Robin
 
-A round robin algorithm rotates among all available servers when parceling out client requests. For example, Request 1 goes to Server 1, Request 2 goes to Server 2, and so on, up to Server N. At that point, the algorithm sends the next request to Server 1.
+A round robin algorithm rotates among all available servers when parceling out client requests. For example, Request 1 goes to Server 1, Request 2 goes to Server 2, and so on up to Server N. At that point, the algorithm sends the next request to Server 1.
 
 - **Pros**: Easiest algorithm to [implement and manage](/docs/guides/setting-up-round-robin-dns/). A good choice when client requests and responses are highly self-similar. Each request resembles every other in terms of size and response time. Also good when processing capacity is equal across all servers.
 
@@ -102,10 +102,10 @@ HTTP/HTTPS load balancers may compute a hash of a URL and then cache the hashed 
 
 - **Pros**: Logical choice given the predominance of Web traffic on the Internet. Allows parsing of HTTP headers to send different requests to different sets of servers.
 
-- **Cons**: Not appropriate for email, most types of instant messaging, and other applications or services that do not run over HTTP. May require decryption and re-encryption of traffic secured with Transport Layer Security (TLS), which now represent the vast majority of web requests, before it can read HTTP requests. TLS decryption/encryption requires additional processing capability.
+- **Cons**: Not appropriate for email, most types of instant messaging, and other applications or services that do not run over HTTP. May require decryption and re-encryption of traffic secured with Transport Layer Security (TLS, which now represents the vast majority of web requests) before it can read HTTP requests. TLS decryption/encryption requires additional processing capability.
 
 {{< note >}}
-For more information on TCP and HTTP/HTTPS load balancers, see our guide [Application (HTTP) vs Network (TCP) Load Balancers](/docs/guides/application-http-vs-network-tcp-load-balancers/).
+For more information on TCP and HTTP/HTTPS load balancers, see our [Application (HTTP) vs Network (TCP) Load Balancers](/docs/guides/application-http-vs-network-tcp-load-balancers/) guide.
 {{< /note >}}
 
 ### Dynamic Load Balancing Algorithms
@@ -146,4 +146,4 @@ Akamai and other cloud providers have the ability to [virtualize the load balanc
 
 ## Conclusion
 
-Load balancing provides virtually unlimited scalability, no matter how much traffic grows over time. The technology also maximizes availability, either within a single data center or globally across data centers. The key to performance optimization is understanding which type of load balancing and which algorithm/s make the most sense for your applications and services. Load balancing can nearly eliminate server bottlenecks and downtime, while also speeding traffic to your clients.
+Load balancing provides virtually unlimited scalability, no matter how much traffic grows over time. The technology also maximizes availability, either within a single data center or globally across data centers. The key to performance optimization is understanding which type of load balancing and what algorithm/s make the most sense for your applications and services. When properly implemented, load balancing can nearly eliminate server bottlenecks and downtime, while also speeding traffic to your clients.
