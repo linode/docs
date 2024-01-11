@@ -651,13 +651,7 @@ To remain consistent across all of our guides, nested content should be indented
 
 The **note** shortcode is used to display a note to the reader. Notes can be used to share relevant information that does not fit with the primary content. Example use cases include alternative methodologies, non-critical information, alerts, developer recommendations, and more. **Content included in a note must not be required for the reader to successfully understand or complete a task**.
 
-When creating a new note, there are multiple [parameters](#parameters) to consider:
-- Note type
-- Note title
-- Collapsibility
-- Indentation
-
-Below is the **default** (primary) note shortcode with default parameters:
+Below is the **default** (primary) note shortcode with default [parameters](#parameters):
 
 ```file
 {{</* note */>}}
@@ -680,73 +674,47 @@ This is an example note.
 
 #### Parameters
 
-The note shortcode accepts the following parameters:
+When creating a new note, there are multiple parameters to consider: **note type**, **title**, **collapsibility**, and **indentation**. While not all parameters are always necessary, all should be taken into account during the note creation process.
 
 | Parameter | Values | Description |
 | -- | -- | -- |
-| `type` | | Identifies the note as one of 4 types: |
-|  | `"primary"` | (*DEFAULT*) A note or tip related to the surrounding content. This is the default type if no type is specified. |
-|  | `"secondary"` | A muted note. |
-|  | `"warning"` | A note to take certain precautions. |
-|  | `"alert"` | An important note that should not be skipped over. |
-| `title` | String | Sets the title of the note. |
+| `type` | `"primary"`, `"secondary"`, `"warning"`, `"alert"` | Identifies the note as one of 4 types: primary, secondary, warning, or alert. See: [Note Types](#note-types) |
+| `title` | String | Sets the title of the note. See: [Titles](#titles) for titling guidelines. |
 | `noTitle` | boolean | Does not apply a default title to the note. Defaults to false. |
-| `isCollapsible` | boolean | Sets the note as collapsible. The note must have a title defined. Defaults to false. |
-| `respectIndent` | boolean | This is only used for older note shortcodes (`{{</* note */>}}`) that have been converted to the newer shortcode. By default, content between the shortcode tags is rendered using `.InnerDeindent`, which allows the shortcode to respect the indentation of any parent elements (such as lists). When set to `false`, `.Inner` is used instead, which does not de-indent the content and does not respect the indentation of parent elements. Defaults to true. |
+| `isCollapsible` | boolean | Sets the note as collapsible. The note must have a title defined. Defaults to false. See: [Collapsible](#collapsible) |
+| `respectIndent` | boolean | Only used for older note shortcodes (`{{</* note */>}}`) that have been converted to the newer shortcode. See: [Indentation](#indentation) |
 
 #### Note Types
 
-There are four unique types of notes: **Primary**, **Secondary**, **Warning**, and **Alert**. Each type has specific use cases and varying levels of urgency that should determine the type of note you choose to make.
+There are four unique types of notes: **primary**, **secondary**, **warning**, and **alert**. Each type has specific use cases and varying levels of urgency that should determine the type of note you choose to make.
 
--   **Primary** (type is unset or `type="primary"`, title defaults to "Note")
-    - **Color:** Green
-    - **Use cases:** Additional related information that does not fit with the rest of the document. Can include alternative suggestions or solutions, developer tips, or general best practices that are not critical to the success of the task at hand.
+-   **Primary** (type is unset or `type="primary"`, title defaults to "Note"): Used for additional related information that does not fit with the rest of the document. Can include alternative suggestions or solutions, developer tips, or general best practices that are not critical to the success of the task at hand.
 
-    {{< note >}}
-    This is an example of a primary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
+    {{< note title="Best Practice: Use Passsword Generators" >}}
+    When creating root, user, or other passwords, you can increase security by using a password generator such as [1Password](https://www.1password.com) to create and save complex, encrypted passwords.
+    {{< /note >}}
 
+-   **Secondary** (`type="secondary"`, title defaults to "Note"): Most commonly used in tandem with the [collapsible parameter](#collapsible). **Secondary** notes can include non-critical information, commands, code, or output that may take up too much room or does not require visibility for the success of an action.
+
+    {{< note type="secondary" title="Amsterdam Data Center: Lish SSH Gateway Fingerprints" isCollapsible=true >}}
     ```command
-    sudo apt update
+    RSA 3072 SHA256:/y+83+sA3JdDGkv/KLnIAIXqfgqWfgp5RZ+DCx1T4yU lish-nl-ams.linode.com
+    ECDSA 256 SHA256:iR/He+teo+c7jqr8LzaTikbTlMDdIkIERhJBXdIjO8w lish-nl-ams.linode.com
+    ED25519 256 SHA256:vxF9arB2lYBVP45ZA7t1JEE9w/vthPmzU3a2oOR8O7Y lish-nl-ams.linode.com
     ```
     {{< /note >}}
 
--   **Secondary** (`type="secondary"`, title defaults to "Note")
-    - **Color:** Grey
-    - **Use cases:** Most often used for [collapsible content](#collapsible). This includes non-critical information, commands, code, or output that takes up too much room and does not require visibility for the success of an action.
+-   **Warning** (`type="warning"`, title defaults to "Warning"): Notices that warn the reader to proceed with caution, including notices for beta programs, warnings of limited resource availability, etc. Not as urgent as alert notes.
 
-    {{< note type="secondary" >}}
-    This is an example of a secondary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
-
-    ```command
-    sudo apt update
-    ```
+    {{< note type="warning" title="VPC Beta Notice" >}}
+    VPCs are now publicly available in beta, providing customers with another method of isolating network traffic between Compute Instances (in addition to the [VLANs](/docs/products/networking/vlans/) feature). Not all data centers are currently supported. For more information, review the [Availability](/docs/products/networking/vpc/#availability) section.
     {{< /note >}}
 
--   **Warning** (`type="warning"`, title defaults to "Warning")
-    - **Color:** Orange
-    - **Use cases:** Notices that warn the reader to proceed with caution. Not as urgent as alert notes.
+-   **Alert** (`type="alert"`, title defaults to "Important"): The most urgent of all note types. **Alert** notes should be used to notify of potential *destructive* actions such as situations resulting in data loss or where there is no undoing what has been done. Anything critical to the success of a task should still be included in the primary content and not solely live in the note.
 
-    {{< note type="warning" >}}
-    This is an example of a warning note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
-
-    ```command
-    sudo apt update
-    ```
+    {{< note type="alert" title="Have backups in place" >}}
+    Enabling log rotation removes old logs and replaces them with new ones. You should back up your data in case you need to revert to an old version and recover old logs.
     {{< /note >}}
-
--   **Alert** (`type="alert"`, title defaults to "Important")
-    - **Color:** Red
-    - **Use cases:** The most urgent of all note types. **Alert** notes should be used to notify of potential *destructive* actions such as situations resulting in data loss or where there is no undoing what has been done.
-
-    {{< note type="alert" >}}
-    This is an example of an alert note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
-
-    ```command
-    sudo apt update
-    ```
-    {{< /note >}}
-
-
 
 #### Titles
 
@@ -798,6 +766,8 @@ This content is hidden until the user expands the note.
 #### Indentation
 
 Content within the opening and closing note shortcode tags must respect the expected indentation of any parent elements, such as list items. Since content within a list is indented (using 4 spaces), the content of a note shortcode must be indented by the same number of spaces.
+
+By default, content between the shortcode tags is rendered using `.InnerDeindent`, which allows the shortcode to respect the indentation of any parent elements (such as lists). When set to `false`, `.Inner` is used instead, which does not de-indent the content and does not respect the indentation of parent elements. Defaults to true.
 
 ```file
 -   First list item.
