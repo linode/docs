@@ -22,7 +22,7 @@ This guide walks you through how to install a new version of cloud-init on distr
 
 The first step is to create a fresh Compute Instance running the distribution of your choice. If the selected distribution is already marked as cloud-init compatible, you do not need to follow the steps in this guide. If the distribution is not cloud-init compatible, continue with this guide to create a cloud-init compatible image for this distribution. For details on Metadata/cloud-init compatibility, review [Overview of the Metadata Service > Availability](/docs/products/compute/compute-instances/guides/metadata/#availability).
 
-This instance forms the basis for a cloud-init deployment template. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. The instructions in this guide cover Debian, Ubuntu, and RHEL-based systems (CentOS, Fedora, AlmaLinux, Rocky Linux, etc.). The steps have not been verified with other distributions but may be adaptable with some modifications.
+This instance forms the basis for a cloud-init deployment template. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. The instructions in this guide cover Debian, Ubuntu, and RHEL-based systems (CentOS, Fedora, AlmaLinux, Rocky Linux, etc.). The steps have not been verified with other distributions but may be adaptable with some modifications.
 
 ## Install Cloud-Init
 
@@ -152,7 +152,7 @@ What follows is a summary of steps you can use to create a base image from the i
 
 With a base cloud-init image ready, you can deploy a new instance of the Metadata service and cloud-init user data whenever you need. Refer to our guide on how to [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) for image deployment. Refer to our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/) for more on adding user data to new instances.
 
-The steps that follow walk you through a simple new deployment from a base cloud-init image. This includes a simple cloud-init user data script modeled on our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+The steps that follow walk you through a simple new deployment from a base cloud-init image. This includes a simple cloud-init user data script modeled on our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 {{< note >}}
 Newly deployed Compute Instances do not have network access during boot. This prevents cloud-init from properly running. The last several steps below address this, restarting the cloud-init process after the initial boot.
