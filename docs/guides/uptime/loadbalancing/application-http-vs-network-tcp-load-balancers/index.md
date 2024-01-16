@@ -5,34 +5,32 @@ description: 'Explore the differences between application-layer (HTTP) and trans
 keywords: ['load balancing protocols','http load balancing','tcp load balancing','application-layer load balancing','transport-layer load balancing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
-published: 2024-01-08
+published: 2024-01-16
 modified_by:
   name: Linode
 ---
 
-Load balancing is the process of distributing client requests across multiple servers. Originally, load balancers were dedicated hardware appliances connected to physical servers in data centers. Today, software products such as [Akamai NodeBalancers](/docs/products/networking/nodebalancers/guides/load-balancing/) perform the same role with cloud-based servers.
+Load balancing is the process of distributing client requests across multiple servers. Originally, load balancers were dedicated hardware appliances connected to physical servers in data centers. Today, software products such as [Akamai NodeBalancers](/docs/products/networking/nodebalancers/) perform the same role with cloud-based servers.
 
-Whether hardware or software, the concept is the same. Load balancers act as a reverse proxy for client requests, parceling out requests across servers to avoid resource exhaustion. Load balancers take many forms and offer [many features](link when available to new fundamentals guide). However, they all route client requests to back-end servers using either application-layer (HTTP/S) or transport-layer (TCP) criteria. This means that all servers are used equally, ensuring the best performance, availability, scalability, and security. With Akamai NodeBalancers, it’s simple to take advantage of the features available at either layer.
+Whether hardware or software, the concept is the same. Load balancers act as a reverse proxy for client requests, parceling out requests across servers to avoid resource exhaustion. Load balancers take many forms and offer [many features](/docs/guides/load-balancing-fundamentals/). However, they all route client requests to back-end servers using either application-layer (HTTP/S) or transport-layer (TCP) criteria. Distributing the load in this way can help ensure the best performance, availability, scalability, and security. With Akamai NodeBalancers, it’s simple to take advantage of the features available at either layer.
 
-Transmission Control Protocol (TCP) resides at the transport layer (L4) in the [seven-layer OSI model](/docs/guides/introduction-to-osi-networking-model/). Meanwhile, Hypertext Transport Protocol (HTTP) and secure HTTP (HTTPS) reside at the higher application layer (L7). Both layers have their place when it comes to load balancing.
+Transmission Control Protocol (TCP) resides at the transport layer (L4) in the [seven-layer OSI model](/docs/guides/introduction-to-osi-networking-model/). Meanwhile, Hypertext Transport Protocol (HTTP) and secure HTTP (HTTPS) reside at the higher application layer (L7). Both TCP and HTTP have their place when it comes to load balancing.
 
-If your application is a website or uses a Web front end, it’s almost always preferable to use HTTP/S load balancing. It provides most of the advantages of TCP load balancing, plus additional shaping and monitoring tools that make use of application-layer data in HTTP headers.
+If your application is a website or uses a web-accessible front end, it can be preferable to use application-layer (HTTP) load balancing. Using an HTTP load balancer allows you to view the contents of a client's HTTP request *before* you determine which back-end machine it is routed to. This enables you to make use of application-layer data in HTTP headers. Depending on the features of the load balancer, it may be able to read these headers to dynamically route the traffic (such as routing requests for `example.com/app` to a different set of back-ends than `example.com/blog`).
 
-Of course, not all Internet traffic is Web traffic. There are many applications such as email, instant messaging, and SQL databases, that run over TCP but not HTTP. For these, TCP load balancing is the right choice.
+There are many applications that do not use HTTP traffic, such as email, instant messaging, and SQL databases. For these, TCP load balancing is the right choice. In addition to working with a wider range of applications, it also typically has faster performance as it is not terminating HTTP requests and analyzing those requests.
 
 In this guide, learn what benefits each protocol offers, and which makes the most sense for common use cases.
 
 ## HTTP (Application/L7) Load Balancing Overview
 
-With HTTP/S load balancing, the [NodeBalancer](/docs/products/networking/nodebalancers/guides/configure/) examines each packet's application layer HTTP headers to decide how to route client requests to back-end servers.
-
-Besides improving application performance, availability, and horizontal scalability for Web applications, HTTP load balancing also affords web-specific benefits not available from TCP load balancing.
+With HTTP/S load balancing, the [NodeBalancer](/docs/products/networking/nodebalancers/guides/configure/) examines each packet's application layer HTTP headers to decide how to route client requests to back-end servers. Besides improving application performance, availability, and horizontal scalability for Web applications, HTTP load balancing also affords web-specific benefits not available from TCP load balancing.
 
 ### HTTP Load Balancer Benefits
 
 HTTP load balancing works with unencrypted Web traffic, but also in HTTPS mode using Transport Layer Security (TLS). With TLS, the load balancer hosts the certificate and private key for a given web site. It then decrypts client requests and passes them along to back-end servers.
 
-Some load balancers such as [HAProxy](Link to HAProxy/HTTP guide when able) can even make URL-based routing decisions. This can be helpful if your cloud infrastructure is set up for some servers to handle video or image requests, while others return text objects.
+Some load balancers such as HAProxy can even make URL-based routing decisions. This can be helpful if your cloud infrastructure is set up for some servers to handle video or image requests, while others return text objects.
 
 ### HTTP Load Balancer Use Cases
 

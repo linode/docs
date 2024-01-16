@@ -102,6 +102,10 @@ HTTP/HTTPS load balancers may compute a hash of a URL and then cache the hashed 
 
 - **Cons**: Not appropriate for email, most types of instant messaging, and other applications or services that do not run over HTTP. May require decryption and re-encryption of traffic secured with Transport Layer Security (TLS, which now represents the vast majority of web requests) before it can read HTTP requests. TLS decryption/encryption requires additional processing capability.
 
+{{< note >}}
+For more information on TCP and HTTP/HTTPS load balancers, see our [Application (HTTP) vs Network (TCP) Load Balancers](/docs/guides/application-http-vs-network-tcp-load-balancers/) guide.
+{{< /note >}}
+
 ### Dynamic Load Balancing Algorithms
 
 Dynamic algorithms have different outcomes depending on current server and network conditions. These require continual server monitoring, often called "health checks", to ensure optimal response time.
