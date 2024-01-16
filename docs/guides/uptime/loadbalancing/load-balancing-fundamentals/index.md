@@ -1,24 +1,22 @@
 ---
-slug: how-load-balancers-work
+slug: load-balancing-fundamentals
 title: "Load Balancing Fundamentals: How Load Balancers Work"
 description: 'Discover the basics, advantages, and drawbacks of both static and dynamic load balancing algorithms to enhance your understanding of these essential tools.'
 keywords: ['load balancers','load balancing algorithms','types of load balancers','pros and cons of load balancing','round robin algorithm','least connections algorithm','weighted round robin','dynamic server weighting']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Newman"]
-published: 2024-01-10
+published: 2024-01-16
 modified_by:
   name: Linode
 ---
 
-When dealing with an overloaded server, you have two choices: go faster or get help.
-
-Upgrades boost performance, but only up to a certain point. After all, any one server’s resources are always finite. On the other hand, distributing workloads across multiple servers scale resources almost infinitely, while also increasing availability.
+When dealing with an overloaded server, you have a few choices: go bigger or share the load. Going bigger, meaning increasing the server's resources, allows you to boost performance --- but only up to a certain point. After all, any one server’s resources are always finite. On the other hand, distributing workloads across multiple servers scale resources almost infinitely, while also increasing availability.
 
 The basic premise of load balancing is "sharing the work". This guide explores what load balancing is and how it can benefit your workloads. It also covers the approaches and algorithms available to best suit your needs.
 
 ## What Is Load Balancing?
 
-Load balancing is the process of distributing client requests among multiple servers. Originally, [load balancers](/docs/products/networking/nodebalancers/guides/load-balancing/) were dedicated hardware appliances that sat in front of physical servers in data centers. Today, software products such as [Akamai NodeBalancers](/docs/products/networking/nodebalancers/guides/configure/) perform the same role with cloud-based servers.
+Load balancing is the process of distributing client requests among multiple servers. Originally, load balancers were dedicated hardware appliances that sat in front of physical servers in data centers. Today, software products such as [Akamai NodeBalancers](/docs/products/networking/nodebalancers/guides/configure/) perform the same role with cloud-based servers.
 
 Whether hardware or software, the concept is the same. Load balancers act as a reverse proxy for client requests, parceling out requests across servers to avoid resource exhaustion.
 
@@ -34,9 +32,9 @@ Load balancing ensures that server capacity keeps up with client demand, especia
 
 ### High Availability
 
-Planned or not, server and network outages are a fact of life. Load balancing helps by rerouting traffic around offline resources. For example, you could take specific servers offline for software upgrades, while a load balancer continues to send requests to remaining online servers. In a global load balancing scenario, you could route traffic away from specific data centers in case of network outages.
+Planned or not, server and network outages are a fact of life. Load balancing helps by rerouting traffic around offline resources. For example, you could take specific backend servers offline for software upgrades, while a load balancer continues to send requests to remaining online backend servers. In a global load balancing scenario, you could route traffic away from specific data centers in case of network outages.
 
-Availability can be a double-edged sword, however. One potential drawback of load balancers is that they can represent a single point of failure. For this reason, it’s common to deploy load balancers with high availability (HA) support. In mission-critical cases, a global server load balancer might send requests to a standby data center when active data centers are unreachable.
+Looking beyond the backend machines powering the application, it's also important that the load balancer is not a single point of failure. For this reason, it’s common to deploy a load balancer with high availability (HA) support. This means that your load balancer has built-in redundancy and is replicated on at least two machines. In case the primary machine goes down, traffic is automatically routed to another machine with the same load balancer configuration. In mission-critical cases, a global server load balancer might send requests to a standby data center when active data centers are unreachable.
 
 ### Traffic Management
 
@@ -44,15 +42,15 @@ Because load balancers are the first system to see client traffic, they also ins
 
 ### System Monitoring
 
-Many load balancers, including Akamai’s NodeBalancer, perform health checks to determine which servers provide the fastest response times and/or handle the lowest number of concurrent connections. In the short term, sudden changes in resource usage may alert you to server problems. Collecting this data over time helps with capacity planning.
+Many load balancers, including Akamai’s NodeBalancer, perform health checks to determine which servers are functioning properly and how many concurrent connections are on each server. In addition, you may want to implement a robust system performance monitoring solution that integrates with your load balancer. A system experiencing performance issues may degrade the experience of your end-user and indicate underlying server problems. Being able to take that server out of rotation before it stops successfully processing client requests can improve your application's overall performance and allow you to more quickly address the issue.
 
 ## Routing Traffic to Back-End Servers
 
 Load balancers are so-called "middleboxes", acting as reverse proxies between clients and servers. For example, you might configure DNS so that `www.example.com` points to the load balancer’s client-facing IP address/es.
 
-Clients requesting this site’s web page would send HTTP/HTTPS GET requests to the load balancer's client-facing network interfaces. Acting as a reverse proxy, the load balancer then distributes requests across back-end servers or server groups. The diagram below shows a simple example where a load balancer distributes client requests across web servers. The diagram also shows another tier of database servers behind the web servers. This is a common design choice whenever it’s important to maintain consistent content across multiple servers.
+Clients requesting this site’s web page would send HTTP/HTTPS GET requests to the load balancer. Acting as a reverse proxy, the load balancer then distributes requests across back-end servers or server groups. The diagram below shows a simple example where a load balancer distributes client requests across web servers. The diagram also shows another tier of database servers behind the web servers. This is a common design choice whenever it’s important to maintain consistent content across multiple servers.
 
-![Simple Load Balancing Scenario](simple-load-balancing-scenario.png "Simple Load Balancing Scenario")
+![Simple Load Balancing Scenario](simple-load-balancing-scenario.png)
 
 When a client request arrives at the load balancer, it has to decide how best to distribute requests across servers. Although there are many choices in load balancing algorithms, they all fall into two categories: *static* or *dynamic*.
 
@@ -103,10 +101,6 @@ HTTP/HTTPS load balancers may compute a hash of a URL and then cache the hashed 
 - **Pros**: Logical choice given the predominance of Web traffic on the Internet. Allows parsing of HTTP headers to send different requests to different sets of servers.
 
 - **Cons**: Not appropriate for email, most types of instant messaging, and other applications or services that do not run over HTTP. May require decryption and re-encryption of traffic secured with Transport Layer Security (TLS, which now represents the vast majority of web requests) before it can read HTTP requests. TLS decryption/encryption requires additional processing capability.
-
-{{< note >}}
-For more information on TCP and HTTP/HTTPS load balancers, see our [Application (HTTP) vs Network (TCP) Load Balancers](/docs/guides/application-http-vs-network-tcp-load-balancers/) guide.
-{{< /note >}}
 
 ### Dynamic Load Balancing Algorithms
 
