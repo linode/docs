@@ -14,7 +14,7 @@ In this reference guide, learn more about the available API endpoints for the Me
 
 ## API Endpoints
 
-To access the Metadata API, you need to be on a Compute Instance. If you have not done so already, follow along with our guide on [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) before moving forward.
+To access the Metadata API, you need to be on a Compute Instance. If you have not done so already, follow along with our guide on [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) before moving forward.
 
 Once you have an instance deployed, the Metadata API is accessible via link-local addresses, specifically:
 
