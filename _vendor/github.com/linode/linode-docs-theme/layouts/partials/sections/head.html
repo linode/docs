@@ -4,7 +4,7 @@
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0,maximum-scale=5.0" />
-{{ if or site.Params.TestEnv (.Param "noindex") }}
+{{ if or (not hugo.IsProduction) (.Param "noindex") }}
   <meta name="robots" content="noindex" />
 {{ end }}
 
@@ -25,12 +25,13 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://assets.linode.com/icons/favicon-16x16.png">
 <link rel="shortcut icon" href="https://assets.linode.com/icons/favicon.ico">
 
+
 {{/* Adobe Analytics.
   This is configured for the environments production, development (Netlify and local) and staging.
 */}}<script
   src="{{ site.Params.adobe_launch_script }}"
   async></script>
-{{ if (not site.IsServer) }}
+{{ if (ne hugo.Environment "development") }}
   <!-- Google Tag Manager -->  <script>
     (function (w, d, s, l, i) {
     w[l] = w[l] || []; w[l].push({

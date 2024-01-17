@@ -6,6 +6,8 @@ modified: 2022-08-09
 authors: ["Linode"]
 ---
 
+{{< content "dbass-eos" >}}
+
 This guide walks you through creating a Linode Managed Database through the Cloud Manager.
 
 1. [Open the Create Database Cluster Form in the Cloud Manager](#open-the-create-database-cluster-form-in-the-cloud-manager)

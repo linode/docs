@@ -9,7 +9,7 @@ tab_group_main:
 keywords: ["billing", "payments"]
 aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/,'/guides/understanding-billing-and-payments/','/guides/platform/billing-and-support/']
 published: 2019-10-25
-modified: 2023-04-25
+modified: 2023-09-20
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -33,19 +33,19 @@ If your services stay the same month over month, your bill remains predictable. 
 
 ### Example Billing Scenarios
 
-Here are a few examples of common billing scenarios you might encounter. For these examples, we will assume the month is 30 days (720 hours). We will also be using a 4GB Linode Compute Instance, which has an hourly rate of $0.03/hour and a monthly rate/cap of $20.
+Here are a few examples of common billing scenarios you might encounter. For these examples, we will assume the month is 30 days (720 hours). We will also be using a *4GB Dedicated CPU Compute Instance*, which has an hourly rate of $0.054/hour and a monthly rate/cap of $36.
 
 #### A Service is Present on an Account for the *Entire* Month
 
-You create a 4GB Compute Instance prior to the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $21.60. Since this exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
+You create the Compute Instance prior to the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $38.88. Since this exceeds the monthly cap for this service, you are instead charged the predictable $36 monthly rate.
 
 #### A Service is Present on an Account for *Almost* the Entire Month
 
-You create a 4GB Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was used for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $20.52. Since this still exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
+You create the Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was used for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $36.94. Since this still exceeds the monthly cap for this service, you are instead charged the predictable $36 monthly rate.
 
 #### A Service is Present on an Account for *Just Some* of the Month
 
-You created a 4GB Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was used for 120 hours. Calculating the service fees at the hourly rate, the total is $3.60. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $3.60 for your usage.
+You created the Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was used for 120 hours. Calculating the service fees at the hourly rate, the total is $6.48. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $6.48 for your usage.
 
 #### A Service is Resized During the Billing Cycle
 
@@ -62,6 +62,12 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 ### Will I Be Billed For Powered Off or Unused Services?
 
 **Charges will accrue for any service present on an account, even if it is powered off or otherwise not actively being used.**  This includes Linode Compute Instances that have been powered off as the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/products/platform/billing/guides/stop-billing/) from your account.
+
+### Data Center-Specific Pricing
+
+In general, Linode plans and services are billed at the same, flat rate across data centers. However, services and network transfer in some newer data centers may be billed at separate rates due to higher region-based infrastructure costs.
+
+For more information about pricing in these regions, refer to our [Pricing](https://www.linode.com/pricing/) page.
 
 ## Payments
 

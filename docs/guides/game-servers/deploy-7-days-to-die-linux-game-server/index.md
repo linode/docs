@@ -34,7 +34,7 @@ The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) is a command-l
 
         sudo dpkg --add-architecture i386
         sudo apt update
-        sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 steamcmd telnet expect
+        sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux netcat-traditional lib32gcc-s1 lib32stdc++6 steamcmd telnet expect
 
     A prompt appears with the Steam EULA. To proceed, use your keyboard's **down arrow** key to read through the agreement. Then, use the **tab** key to select **<ok>**.
 

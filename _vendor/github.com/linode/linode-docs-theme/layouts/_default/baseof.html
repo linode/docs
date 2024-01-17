@@ -1,3 +1,5 @@
+{{/* Signal to layout files that the execution starts. */}}
+{{ block "_baseof_start" . }}{{ end }}
 {{ $showToc := false }}
 {{ if not .Params.notoc }}
   {{ $showToc = .Params.toc }}
@@ -10,6 +12,19 @@
 {{/* Note that the TailwindCSS config is "scoped" by the ln-docs ID, so don't change it for no good reason. */}}
 <html id="ln-docs" lang="{{ site.Language.Lang }}">
   <head>
+    {{ if or site.IsServer (eq hugo.Environment "testing") }}
+      <script>
+        window.__timerStart = Date.now();
+        window.__stopWatch = function (what) {
+          var time = Date.now() - window.__timerStart;
+          console.log("[stopwatch] " + what + ": " + time + "ms");
+        };
+      </script>
+    {{ else }}
+      <script>
+        window.__stopWatch = function (what) {};
+      </script>
+    {{ end }}
     {{ partial "sections/head.html" . }}
     {{ block "head-meta-main" . }}
       {{/* The default static title and SEO meta markup. */}}
@@ -133,8 +148,7 @@
       </nav>
 
       {{/* Main content area. */}}
-      <main
-        class="main bg-white h-full min-h-screen overflow-hidden hide-on-lang-nav">
+      <main class="main bg-white h-full min-h-screen hide-on-lang-nav">
         <div class="main__inner">
           {{ if site.Params.enable_leak_checker }}
             {{ partial "helpers/leak-checker.html" }}
@@ -142,18 +156,48 @@
           <section class="w-full">
             {{ partial "sections/search/panel.html" . }}
           </section>
-          <section id="main__content" class="main__content container mb-20">
-            <div class="w-full h-full">
-              {{ if not .IsHome }}
-                <div class="mt-4 md:mt-6 main__breadcrumbs">
-                  {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
-                </div>
-              {{ end }}
-              <div class="{{ if not .IsHome }}mt-6{{ end }}">
-                {{ block "main" . }}{{ end }}
+          {{ $mainLayout := .Store.Get "_baseof_main_layout" | default "default" }}
+          {{ if eq $mainLayout "content_toc" }}
+            <section
+              id="main__content"
+              class="main__content mb-20 container mx-auto max-w-content xl:max-w-6xl">
+              <div class="mt-4 md:mt-6 main__breadcrumbs">
+                {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
               </div>
-            </div>
-          </section>
+              <div class="flex mt-6">
+                <div class="w-full">
+                  <div class="w-full xl:w-3/4 content max-w-content">
+                    {{ block "content_header" . }}{{ end }}
+                  </div>
+                  <div class="flex w-full">
+                    <div x-ignore class="content max-w-content w-full xl:w-3/4">
+                      {{ block "content_main" . }}{{ .Content }}{{ end }}
+                    </div>
+                    <div
+                      class="hidden overflow-y-auto xl:block sticky top-20 hide-if-no-js flex-none xl:w-60 pl-8 pr-4 mt-6"
+                      style="height: 80vh;">
+                      {{ partial "sections/navigation/toc-main.html" . }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          {{ else }}
+            {{ block "main-section" . }}
+              <section id="main__content" class="main__content container mb-20">
+                <div class="w-full h-full">
+                  {{ if not .IsHome }}
+                    <div class="mt-4 md:mt-6 main__breadcrumbs">
+                      {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
+                    </div>
+                  {{ end }}
+                  <div class="{{ if not .IsHome }}mt-6{{ end }}">
+                    {{ block "main" . }}{{ end }}
+                  </div>
+                </div>
+              </section>
+            {{ end }}
+          {{ end }}
         </div>
       </main>
 

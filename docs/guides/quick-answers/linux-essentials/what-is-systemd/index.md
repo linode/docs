@@ -49,8 +49,7 @@ systemd introduces the concept of *systemd units* and there are several types, s
 
 Expand the note below for a comprehensive list of all available systemd unit types.
 
-{{< disclosure-note "systemd Unit Types">}}
-
+{{< note type="secondary" title="systemd Unit Types" isCollapsible=true >}}
 | Unit Type | File Extension | Description |
 | --------- | -------------- | ----------- |
 | Service unit | `.service` | A system service. |
@@ -65,8 +64,7 @@ Expand the note below for a comprehensive list of all available systemd unit typ
 | Socket unit |	`.socket` | An inter-process communication socket. |
 | Swap unit | `.swap` |	A swap device or a swap file. |
 | Timer unit | `.timer` | A systemd timer. |
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 For most distributions using systemd, unit files are stored in the following directories:
 

@@ -2,7 +2,7 @@
 description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
 keywords: ['object','storage','bucket']
 published: 2020-01-22
-modified: 2022-02-24
+modified: 2023-10-22
 modified_by:
   name: Linode
 image: AccessingObjectswithLinodeObjectStorage.png
@@ -32,11 +32,24 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 **Cluster URL:** `https://[cluster-id].linodeobjects.com/`, replacing *[cluster-id]* with the id of your data center. The cluster URLs for each of the available data centers are listed below:
 
 | Data Center | Cluster ID | Cluster URL |
-| --| -- | -- |
-| Atlanta, GA, USA | us-southeast-1 | https://us-southeast-1.linodeobjects.com |
-| Frankfurt, Germany | eu-central-1 | https://eu-central-1.linodeobjects.com |
-| Newark, NJ, USA | us-east-1 | https://us-east-1.linodeobjects.com |
-| Singapore | ap-south-1 | https://ap-south-1.linodeobjects.com |
+| -- | -- | -- |
+| Amsterdam (Netherlands) | `nl-ams-1` | `https://nl-ams-1.linodeobjects.com` |
+| Atlanta, GA (USA) | `us-southeast-1` | `https://us-southeast-1.linodeobjects.com` |
+| Chennai (India) | `in-maa-1` | `https://in-maa-1.linodeobjects.com` |
+| Chicago, IL (USA) | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
+| Frankfurt (Germany) | `eu-central-1` | `https://eu-central-1.linodeobjects.com` |
+| Jakarta (Indonesia) | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
+| Los Angeles, CA (USA) | `us-lax-1` | `https://us-lax-1.linodeobjects.com` |
+| Miami, FL (USA) | `us-mia-1` | `https://us-mia-1.linodeobjects.com` |
+| Milan (Italy) | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
+| Newark, NJ (USA) | `us-east-1` | `https://us-east-1.linodeobjects.com` |
+| Osaka (Japan) | `jp-osa-1	` | `https://jp-osa-1.linodeobjects.com` |
+| Paris (France) | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
+| São Paulo (Brazil) | `br-gru-1` | `https://br-gru-1.linodeobjects.com` |
+| Seattle, WA (USA) | `us-sea-1` | `https://us-sea-1.linodeobjects.com` |
+| Singapore | `ap-south-1` | `https://ap-south-1.linodeobjects.com` |
+| Stockholm (Sweden) | `se-sto-1` | `https://se-sto-1.linodeobjects.com` |
+| Washington, DC (USA) | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
 ## Bucket URL
 

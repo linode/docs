@@ -106,7 +106,7 @@ Then, search for "cats" in the existing list of files containing the word "dogs"
 
 The output displays a list of files that contain both.
 
-To learn more about grep and its command-line options, see our [How to Grep for Text in Files](/docs/guides/how-to-grep-for-text-in-files/) guide. The guide also shows you other useful operations, like [piping command outputs to grep](/docs/guides/how-to-grep-for-text-in-files/#piping-command-outputs-to-grep) and how to [recursively search through a directory tree](/docs/guides/how-to-grep-for-text-in-files/#the-grep-command).
+To learn more about grep and its command-line options, see our [How to Grep for Text in Files](/docs/guides/how-to-use-grep-command/) guide. The guide also shows you other useful operations, like [piping command outputs to grep](/docs/guides/how-to-use-grep-command/#piping-command-outputs-to-grep) and how to [recursively search through a directory tree](/docs/guides/how-to-use-grep-command/#the-grep-command).
 
 ## Sed Command
 

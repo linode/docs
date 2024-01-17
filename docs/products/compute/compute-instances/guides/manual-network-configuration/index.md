@@ -1,7 +1,7 @@
 ---
 description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
 keywords: ["static", "ip address", "addresses"]
-published: 2022-07-19
+published: 2023-09-05
 modified_by:
   name: Linode
 title: "Manual Network Configuration on a Compute Instance"
@@ -30,19 +30,19 @@ The following table contains a list of each Linux distribution offered by Linode
 
 | Distribution | Network Manager |
 | -- | -- |
-| AlmaLinux 8 and 9 | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
+| AlmaLinux 8 and above | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
 | Alpine | [ifupdown-ng](/docs/products/compute/compute-instances/guides/ifupdown/) |
 | Arch | [systemd-networkd](/docs/products/compute/compute-instances/guides/systemd-networkd/) |
 | CentOS 7 and 8 | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
-| CentOS Stream 8 and 9 | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
-| Debian 9-11 | [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) |
-| Fedora 34-36 | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
+| CentOS Stream 8 and above | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
+| Debian 9 and above | [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) |
+| Fedora | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
 | Gentoo | netifrc |
-| Rocky Linux 8 and 9 | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
+| Rocky Linux 8 and above | [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/) |
 | Slackware | netconfig |
 | openSUSE Leap | wicked |
 | Ubuntu 16.04 | [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) |
-| Ubuntu 18.04 - 22.04 | [systemd-networkd](/docs/products/compute/compute-instances/guides/systemd-networkd/) and Netplan |
+| Ubuntu 18.04 and above | [systemd-networkd](/docs/products/compute/compute-instances/guides/systemd-networkd/) and [Netplan](/docs/products/compute/compute-instances/guides/netplan/) |
 
 To manually configure networking, follow the associated guide and/or the official manual for the networking software and Linux distribution you are using.
 

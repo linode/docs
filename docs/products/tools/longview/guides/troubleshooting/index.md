@@ -134,7 +134,7 @@ If you use iptables, you should also make sure to persist any of your firewall r
 
 The API key given in the Linode Cloud Manager should match that on your system in `/etc/linode/longview.key`.
 
-1. In the Linode Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](/docs/guides/what-is-longview/#access-your-longview-client-s-detailed-view).
+1. In the Linode Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](/docs/products/tools/longview/get-started/#access-your-longview-client-s-detailed-view).
 
 1.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in the Linode Cloud Manager:
 
@@ -174,13 +174,13 @@ This is caused by both Linodes posting data using the same Longview key. To reso
     sudo rm -rf /opt/linode/longview
     ```
 
-1. Add a new [Linode Longview Client instance](/docs/guides/what-is-longview/#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
+1. Add a new [Linode Longview Client instance](/docs/products/tools/longview/get-started/#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
 
     {{< note >}}
     The GUID provided in the Longview Client's installation URL is not the same as the Longview API key.
     {{< /note >}}
 
-1. [Install the Longview Agent](/docs/guides/what-is-longview/#install-the-longview-agent) on the cloned Linode.
+1. [Install the Longview Agent](/docs/products/tools/longview/get-started/#install-the-longview-agent) on the cloned Linode.
 
 ## Contact Support
 

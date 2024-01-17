@@ -27,12 +27,23 @@ import { newNavStore } from './navigation/nav-store';
 import { newSearchFiltersController, newSearchInputController, newSearchStore, getSearchConfig } from './search/index';
 import { newHomeController } from './sections/home/home';
 import { newSectionsController } from './sections/sections/index';
+import { newSVGViewerController } from './navigation/svg-viewer';
 
 // Set up the search configuration (as defined in config.toml).
 const searchConfig = getSearchConfig(params);
 
 // Set up and start Alpine.
 (function () {
+	// For integration tests.
+	if (window.Cypress) {
+		window.truste = {};
+		window.addEventListener('unhandledrejection', function (e) {
+			console.error(e);
+			return false;
+		});
+	}
+	__stopWatch('index.js.start');
+
 	// Register AlpineJS plugins.
 	{
 		Alpine.plugin(intersect);
@@ -75,6 +86,7 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncPaginator', newPaginatorController);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 		Alpine.data('lncFetch', fetchController);
+		Alpine.data('lnvSVGViewer', newSVGViewerController);
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {
@@ -90,14 +102,8 @@ const searchConfig = getSearchConfig(params);
 
 	// Set up AlpineJS stores.
 	{
-		Alpine.store('search', newSearchStore(searchConfig, Alpine));
+		Alpine.store('search', newSearchStore(searchConfig, params, Alpine));
 		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params, Alpine));
-	}
-
-	if (!isMobile()) {
-		// We always need the blank resul set in desktop, so load that early.
-		let store = Alpine.store('search');
-		store.withBlank();
 	}
 
 	// Start Alpine.
@@ -109,6 +115,9 @@ const searchConfig = getSearchConfig(params);
 
 // Set up global event listeners etc.
 (function () {
+	if (!window.__stopWatch) {
+		window.__stopWatch = function (name) {};
+	}
 	// Set up a global function to send events to Google Analytics.
 	window.gtag = function (event) {
 		this.dataLayer = this.dataLayer || [];
@@ -179,12 +188,4 @@ const searchConfig = getSearchConfig(params);
 
 		pushGTag('docs_navigate');
 	});
-
-	// For integration tests. Cypress doesn't catch these (smells like a bug).
-	if (window.Cypress) {
-		window.addEventListener('unhandledrejection', function (e) {
-			console.error(e);
-			return false;
-		});
-	}
 })();

@@ -79,4 +79,4 @@ Email Address []:admin@example.com
 
         chmod 400 /root/certs/MyKey.key
 
-4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) **This is an important step. Do not skip it!**
+4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) **This is an important step. Do not skip it!**
