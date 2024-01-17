@@ -5,7 +5,7 @@ og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
 keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
 tags: ["linode platform","cloud manager","networking"]
 published: 2016-08-23
-modified: 2023-04-27
+modified: 2023-09-21
 modified_by:
   name: Linode
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
@@ -24,7 +24,7 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
     ![Summary section with the IP addresses highlighted](compute-ip-addresses-quick.png)
 
-1.  To view all of your IP address for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
+1.  To view all IP addresses for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
 
     ![The IP Addresses table on the Network tab](compute-ip-addresses-full.png)
 
@@ -81,7 +81,7 @@ Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
 
 {{< note >}}
-Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
+Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead. Note that pricing for additional public IPv4 addresses may vary by region.
 {{< /note >}}
 
 ## Configuring rDNS
@@ -168,7 +168,7 @@ To learn how to enable IP Sharing within the Cloud Manager, review the following
 
 1. Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. Make sure the IP address you wish to share has been added to one of those instances. If not, add it now. See [Adding an IP Address](#adding-an-ip-address).
 
-1.  Of those two Compute Instance, select the one that does not yet have the Shared IP addresses assigned to it. Then, navigate to the **Network** tab.
+1.  Of those two Compute Instances, select the one that does not yet have the Shared IP addresses assigned to it. Then, navigate to the **Network** tab.
 1.  Click the **IP Sharing** button under the *IP Addresses* section.
 
     ![Configuring IP sharing](ip-sharing-button.png)

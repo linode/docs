@@ -14,7 +14,7 @@ aliases: ['/products/database/']
 modified: 2023-05-02
 ---
 
-{{< content "managed-databases-beta-notice-shortguide" >}}
+{{< content "dbass-eos" >}}
 
 Linode's Managed Databases combine performance, reliability, and high availability into a fully managed database solution. Databases are used by most organizations to store their business and operational data, including customer information, financial details, application content, ecommerce transactions, and much more. Managing the database infrastructure to store and safeguard this data can put additional stress on the resources you have available. **Managed Databases** take care of managing this critical infrastructure for you, providing you with an easy to use DBaaS (database-as-a-service) solution built on top of Linode's trusted and reliable platform.
 

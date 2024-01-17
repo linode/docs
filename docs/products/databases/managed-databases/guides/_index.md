@@ -8,6 +8,8 @@ published: 2022-06-06
 modified: 2023-05-02
 ---
 
+{{< content "dbass-eos" >}}
+
 ## Basics
 
 - [Create a Managed Database](/docs/products/databases/managed-databases/guides/create-database/)

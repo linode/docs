@@ -4,7 +4,7 @@ description: 'Learn how to rescue and rebuild a Compute Instance by using the re
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
 published: 2012-05-31
-modified: 2023-03-14
+modified: 2023-09-07
 modified_by:
   name: Linode
 image: rescue-rebuild.jpg
@@ -44,7 +44,7 @@ While this guide outlines the recovery tools that Linode makes available to you,
 
 To access Rescue Mode, you need to [reboot your Compute Instance](#booting-into-rescue-mode) from the Cloud Manager and then connect through [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesystem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot the system, you can [install it](#installing-packages).
 
-The disks are mounted by default, so [mount](#mounting-disks) them in order to access the files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
+Disks are not mounted by default and need to be [mounted manually](#mounting-disks) before you can access your files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
 
 ### Boot into Rescue Mode
 
@@ -72,14 +72,16 @@ To boot a Compute Instance into Rescue Mode, follow the instructions below.
 
     ![Cloud Manager Rescue form - Add Disk highlighted](cloud-manager-rescue-form-add-disk-highlighted.png)
 
-    {{< note >}}
     You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to the Finnix recovery distribution.
 
-    For best results, you should review the names that your Compute Instance's disks are using in your [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
+    As a best practice, review the names that your Compute Instance's disks are using in your [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
 
-    Matching these names will be especially important if you need to [change root](#change-root) within Rescue Mode. The chroot will be able to read your Compute Instance's `/etc/fstab` file, which defines where and how your instance mounts its disks when booting up, to automatically apply the correct mount options and mount directories to your disks.
+    Matching these names is especially important if you need to [change root](#change-root) within Rescue Mode. The chroot will be able to read your Compute Instance's `/etc/fstab` file, which defines where and how your instance mounts its disks when booting up, to automatically apply the correct mount options and mount directories to your disks.
 
     A mismatch in the names of your disks between your Compute Instance's configuration profile and your Rescue Mode environment may cause the chroot to mount these disks in the wrong location or with the wrong mount options. As a result, it is important to ensure that these names match.
+
+    {{< note noTitle=true type="warning" >}}
+    Disks are *not* mounted by default in Rescue Mode and will need to be mounted manually. See [Mounting Disks](#mounting-disks) for instructions on mounting individual disks.
     {{< /note >}}
 
 1.  Click the **Reboot into Rescue Mode** button. The Compute Instance reboots into Rescue Mode, and the progress percentage appears. When the instance appears as **Running** again, proceed to [Connecting to a Compute Instance Running in Rescue Mode](#connecting-to-a-compute-instance-running-in-rescue-mode).
@@ -344,7 +346,7 @@ Linode recommends that you follow the instructions in [Recovering from a System 
 
 ### Restoring from a Backup
 
-If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restoring from a Backup](/docs/products/storage/backups/#restore-from-a-backup) section (specifically, the [Restore to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-linode/) section) of the [The Backup Service](/docs/products/storage/backups/) guide for instructions.
+If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restoring from a Backup](/docs/products/storage/backups/#restore-from-a-backup) section (specifically, the [Restore to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) section) of the [The Backup Service](/docs/products/storage/backups/) guide for instructions.
 
 If you created backups with an application other than Linode's Backup Service, review the application's instructions to restore a backup to the Compute Instance.
 
@@ -381,6 +383,8 @@ To use the Rebuild feature:
     ![Cloud Manager Linodes page - rebuild option highlighted](cloud-manager-linodes-rebuild.png)
 
 1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
+
+    {{< content "password-requirements-shortguide" >}}
 
 1.  Click on **Rebuild** button after completing the form:
 

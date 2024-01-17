@@ -1,7 +1,7 @@
 ---
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
-modified: 2023-04-19
+modified: 2023-11-27
 modified_by:
   name: Linode
 published: 2019-04-09
@@ -51,20 +51,24 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Malaysia | 6% | [SST](https://mysst.customs.gov.my/AboutBackground) | December 15th, 2022 |
 | Malta | 18% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Netherlands | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
+| New Zealand | 15% | [GST](https://www.ird.govt.nz/gst) | October 1st, 2023 |
 | Norway | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | May 1st, 2022 |
 | Poland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Portugal | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Romania | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Russian Federation | 20% | [VAT](https://www.nalog.gov.ru/rn77/TAXATION/TAXES/NDS/) | December 15th, 2022 |
-| Singapore | 7% | [GST](https://www.iras.gov.sg/irashome/GST/GST-registered-businesses/Learning-the-basics/How-to-implement-GST/Current-GST-Rates/) | September 1st, 2020 |
+| Singapore | 8% | [GST](https://www.iras.gov.sg/irashome/GST/GST-registered-businesses/Learning-the-basics/How-to-implement-GST/Current-GST-Rates/) | September 1st, 2020 |
 | Slovakia | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Slovenia | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Spain | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Sweden | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Switzerland | 7.7% | [VAT](https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-rates-switzerland.html) | December 15th, 2022 |
+| Thailand\* | 7% | [VAT](https://www.rd.go.th/english/6043.html) | September 1st, 2023 |
 | United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | December 15th, 2022 |
 | United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1st, 2019 |
 | [United States](#united-states) (see below) | | | |
+
+\**The tax rate for Thailand increases to 10% (from 7%) on October 1st, 2023.*
 
 ### Canada
 
@@ -116,9 +120,11 @@ The following table lists each U.S. state and district that requires us to colle
 
 ## Preventing Tax Collection
 
-For most customers, including those using Linode for most business and personal reasons, it's preferable to have Linode automatically calculate any required taxes and add them to each invoice. That said, some registered businesses or organizations may wish to prevent taxes from being added to their Linode invoices. This includes business that are tax exempt or businesses that are liable to pay taxes directly to their government's tax agency due to a special tax status or program (like RCM - Reverse Charge Mechanism).
+Many customers using Linode for business or personal reasons may prefer to have Linode automatically calculate any required taxes and add them to each invoice. That said, some registered businesses or organizations may wish to prevent taxes from being added to their Linode invoices. This includes businesses that are tax exempt or businesses that are liable to pay taxes directly to their government's tax agency due to a special tax status or program (like RCM - Reverse Charge Mechanism).
 
-In most cases, tax collection can be prevented by [adding a tax ID](#adding-a-tax-id) to your Linode account. Users within the **United States** and **Canada** will need to submit both their tax ID and a state tax exemption or reseller's certificate in a [Support Ticket](https://www.linode.com/support/) before becoming exempt. Registered Canadian businesses may become exempt from *PST* sales tax but will always be billed for GST, HST, and QST sales tax.
+For eligible tax-exempt users in most countries, you can add your VAT or GST tax ID to your Linode account to have taxes removed from your invoices. See [Adding a Tax ID](#adding-a-tax-id) below for instructions on how to add your tax ID to your account.
+
+For users within the **United States** and **Canada**, you need to submit both your tax ID and state tax exemption or reseller's certificate via [Support Ticket](https://www.linode.com/support/) rather than adding your tax ID to your Linode account. This must happen before you are eligible to become exempt. Once approved, your tax ID will be added to your account by our team. Note that registered Canadian businesses may become exempt from PST sales tax but will always be billed for GST, HST, and QST sales tax.
 
 {{< note type="alert" >}}
 If you are located in one of the countries that require taxes on our services, you are still liable for those taxes. Adding your tax ID does not exempt you from your liability to pay any taxes that have been mandated by your country for our services. Instead, this allows you to settle your taxes directly with your government's tax agency.
@@ -172,6 +178,7 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | EU VAT | EU372008859 | EU372048842 |
 | India GST | 9919JEY29001OST | 9922CHE29001OSR |
 | Japan JCT | 00140 | 00143 |
+| Japan QI | N/A | T4700150118765 |
 | Kenya VAT | N/A | P052208918D |
 | Manitoba RST | 138835-4 | 141763-3 |
 | Malaysia SST | N/A | 22000048 |
@@ -181,6 +188,6 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | Saskatchewan PST | 759622 | 7648249 |
 | Singapore GST | M90373465T | M90374823J |
 | Switzerland VAT | N/A | CHE-115.356.067 MWST |
-| United Kingdom VAT | GB383720095 | *Pending* |
+| United Kingdom VAT | GB383720095 | 434006338 |
 | United Arab Emirates | N/A | 104038424800003 |
 | United States EIN | 20-2647179 | 04-3432319 |

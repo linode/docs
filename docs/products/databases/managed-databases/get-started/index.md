@@ -7,7 +7,7 @@ tab_group_main:
 modified: 2022-06-06
 ---
 
-{{< content "managed-databases-beta-notice-shortguide" >}}
+{{< content "dbass-eos" >}}
 
 Linode's Managed Database service is a convenient and reliable way to host your database workloads in the cloud. Quickly get up and running by following the instructions within this guide.
 

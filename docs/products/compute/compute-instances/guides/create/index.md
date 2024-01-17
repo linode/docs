@@ -2,7 +2,7 @@
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2022-02-25
+modified: 2023-09-20
 modified_by:
   name: Linode
 title: "Create a Compute Instance"
@@ -20,6 +20,7 @@ This guide walks you through creating a Compute Instance (also frequently called
 1. [Set the Label and Add Tags](#set-the-label-and-add-tags)
 1. [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
 1. [Configure Additional Options](#configure-additional-options)
+1. [Add User Data](#add-user-data)
 1. [Deploy the Instance](#deploy-the-instance)
 1. [Getting Started After Deployment](#getting-started-after-deployment)
 
@@ -27,11 +28,11 @@ This guide walks you through creating a Compute Instance (also frequently called
 
 Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *Linode*. This opens the **Create Linode** form.
 
-![Open Create form in the Cloud Manager](create-instance-create.png)
+![Open Create form in the Cloud Manager](create-instance-create.jpg)
 
 ## Choose a Distribution, App, or Image
 
-![Distribution selection in Cloud Manager](create-instance-distribution.png)
+![Distribution selection in Cloud Manager](create-instance-distribution.jpg)
 
 One of the first steps to deploy a Compute Instance is to decide *what* you actually wish to deploy. You're able to select a Linux distribution for a barebones install, a Marketplace App with your desired software, and a few other options.
 
@@ -43,7 +44,7 @@ One of the first steps to deploy a Compute Instance is to decide *what* you actu
 
 - **Images:** Select from any Custom Image or Recovery Image stored on your account. *Recovery Images* are generated after a Compute Instance has been deleted and *Custom Images* can be created based on existing instances or image files. See [Images - Get Started](/docs/products/tools/images/get-started/).
 
-- **Backups:** If you have the Backups service enabled on an existing Compute Instance, you can select any available backup snapshot to deploy from. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-linode/).
+- **Backups:** If you have the Backups service enabled on an existing Compute Instance, you can select any available backup snapshot to deploy from. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-instance/).
 
 - **Clone Linode:** Creates a new Compute Instance from the disks and configuration on an existing instance. See [Cloning a Linode](/docs/products/compute/compute-instances/guides/clone-instance/).
 
@@ -51,9 +52,11 @@ This guide assumes you are creating a Compute Instance from a **Distribution**. 
 
 ## Select a Region
 
-![Region selection in Cloud Manager](create-instance-region.png)
+![Region selection in Cloud Manager](create-instance-region.jpg)
 
-Next, you must select the **region** that the Compute Instance will reside. Regions correspond with individual data centers, each located in a different geographical area. You should likely select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality. If you wish to make use of a particular Linode product or service, you may also wish to verify that the product is available within your desired data center.
+Next, you must select the **region** where the Compute Instance will reside. Regions correspond with individual data centers, each located in a different geographical area. You should likely select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality. If you wish to make use of a particular Linode product or service, you may also wish to verify that the product is available within your desired data center.
+
+You need to select a region before selecting your plan type. [Pricing](https://www.linode.com/pricing/) may vary between data centers.
 
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
@@ -61,9 +64,12 @@ Next, you must select the **region** that the Compute Instance will reside. Regi
 
 ## Choose an Instance Type and Plan
 
-![Plan selection in Cloud Manager](create-instance-plan.png)
+![Plan selection in Cloud Manager](create-instance-choose-a-plan.jpg)
 
-Linode offers a few different instance types and plan sizes, each with a preset amount of hardware resources (such as vCPU cores, memory, and storage space). The table below displays a list of instance types along with their plan sizes and use cases. Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice on selecting the best plan for your needs, application’s requirements, and pricing considerations.
+Linode offers a few different instance types and plan sizes, each with a preset amount of hardware resources (such as vCPU cores, memory, and storage space). The table below displays a list of instance types along with their plan sizes and use cases.
+
+Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice on selecting the best plan for your needs, application’s requirements, and pricing considerations. Note that [pricing and plan](https://www.linode.com/pricing/) options may vary between data centers.
+
 
 {{< note >}}
 You can resize to a different plan size or instance type at any time. This means your aren't locked in to whichever plan you select here. See [Resizing a Compute Instance](/docs/products/compute/compute-instances/guides/resize/) for instructions.
@@ -83,9 +89,11 @@ You can resize to a different plan size or instance type at any time. This means
 
 ![Enter root password in Cloud Manager](create-instance-password.png)
 
-- **Root Password:** The password used to log in to the system as the root user. The root user is the main account and has access to the entire system, including files and commands. This password should be extremely strong to prevent attackers from gaining access to your system. By default, the root user can log in over Lish and SSH using this password, though we do recommend disabling this within the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+-   **Root Password:** The password used to log in to the system as the root user. The root user is the main account and has access to the entire system, including files and commands. This password should be extremely strong to prevent attackers from gaining access to your system. By default, the root user can log in over Lish and SSH using this password, though we do recommend disabling this within the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-- **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
+    {{< content "password-requirements-shortguide" >}}
+
+-   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
 
 ## Configure Additional Options
 
@@ -97,9 +105,13 @@ The following features and services can be configured during the Compute Instanc
 
 - **Add a private IP:** A private IP gives you access to the data center's private network. This enables you to communicate over a non-public channel with other Compute Instances in the same region. Private IPs are needed to configure this instance as a NodeBalancer backend.
 
+## Add User Data
+
+User data can be provided to the Metadata service, which is then consumed by cloud-init when your Compute Instance boots up for the first time. For information on the Metadata service, user data formats, and our cloud-init integration, review [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/).
+
 ## Deploy the Instance
 
-![Summary section in Cloud Manager](create-instance-summary.png)
+![Summary section in Cloud Manager](create-instance-summary.jpg)
 
 Confirm the details for this Compute Instance within the *Linode Summary* section. Once you are satisfied, click **Create Linode** to start the deployment process. This process can take anywhere from 3 minutes for Distribution Images to up to 30 minutes for some Marketplace Apps. After the creation process has started, you are automatically redirected to the detail page for this instance. From here, you can follow the status as the instance is deployed as well as see information about the new instance, such as the IP addresses.
 

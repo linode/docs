@@ -5,6 +5,7 @@ keywords: ["minecraft", "spigot"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
+deprecated: true
 published: 2015-04-21
 modified: 2019-02-01
 modified_by:
@@ -160,7 +161,7 @@ Customize the server by editing values in `/home/minecraft/server/server.propert
 
         pvp=true
 
--	**Other**: See the [Minecraft](http://minecraft.gamepedia.com/Server.properties) wiki for more details.
+-	**Other**: See the [Minecraft](http://minecraft.wiki/w/Server.properties) wiki for more details.
 
 ### Plugins
 

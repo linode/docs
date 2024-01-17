@@ -243,7 +243,7 @@ Linkerd comes with two dashboards, a Linkerd dashboard and the [Grafana](https:/
 1.  Start and view the Linkerd standalone dashboard that runs in the browser.
 
     ```command
-    linkerd dasboard &
+    linkerd dashboard &
     ```
 
     ```output

@@ -1,6 +1,11 @@
 'use strict';
 
-import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from '../../search/request';
+import {
+	newRequestCallback,
+	newRequestCallbackFactoryTarget,
+	SearchGroupIdentifier,
+	RequestCallBackStatus,
+} from '../../search/request';
 import { isMobile, isTouchDevice, newSwiper } from '../../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[home]') : function () {};
@@ -230,12 +235,9 @@ export function newHomeController(searchConfig, staticData) {
 							return RequestCallBackStatus.Once;
 						},
 						create: () => {
-							return {
-								request: requestFromSection(name),
-								callback: (result) => {
-									this.data.sectionTiles[name].setItems(result.hits);
-								},
-							};
+							return newRequestCallback(requestFromSection(name), (result) => {
+								this.data.sectionTiles[name].setItems(result.hits);
+							});
 						},
 					};
 

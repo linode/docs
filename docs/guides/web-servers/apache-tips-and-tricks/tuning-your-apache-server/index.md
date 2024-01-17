@@ -28,7 +28,7 @@ Your Apache configuration settings have a major effect on your Linode's performa
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/guides/top-htop-iotop/) and the load-testing program [Siege](/docs/guides/load-testing-with-siege/). Linode's own [Longview](/docs/guides/what-is-longview/) service can also help with server monitoring. A good place to start is to familiarize yourself with the RAM and CPU usage of your server.
+There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/guides/top-htop-iotop/) and the load-testing program [Siege](/docs/guides/load-testing-with-siege/). Linode's own [Longview](/docs/products/tools/longview/get-started/) service can also help with server monitoring. A good place to start is to familiarize yourself with the RAM and CPU usage of your server.
 
 Discover usage statistics with the following variations of the `ps` command. The `ps` command is used to generate a report of the running processes on your Linode:
 
@@ -98,7 +98,7 @@ The Apache2Buddy script, similar to [MySQLTuner](/docs/guides/how-to-optimize-my
 
 Apache version 2.4 offers three Multi Processing Modules (MPM) for managing your settings. Each module creates child processes, but differs in how they handle threads.
 
-{{< disclosure-note "Back up your Apache configuration file">}}
+{{< note type="warning" >}}
 Before making any changes to your Apache configuration, be sure to back up the configuration file:
 
  - On Debian/Ubuntu:
@@ -108,7 +108,7 @@ Before making any changes to your Apache configuration, be sure to back up the c
 - On CentOS/Fedora:
 
         cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ### Prefork
 The prefork module creates a number of child processes at launch, each child handles only one thread. Since these processes deal solely with one thread at a time, request speed can suffer should there be too many concurrent requests. When this occurs, some requests essentially have to wait in line to be acted upon. To handle this, you can increase the number of child processes that are spawned, however, this increases the amount of RAM being used. Prefork is the safest module, and should be used when using non-thread-safe libraries.

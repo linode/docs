@@ -5,6 +5,8 @@ published: 2022-06-17
 authors: ["Linode"]
 ---
 
+{{< content "dbass-eos" >}}
+
 This guide covers how to migrate an existing PostgreSQL database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
 
 - **Source database:** The original database running on a software, system, or machine that you wish to decommission. This could be PostgreSQL running within your own Linux server, a development database on your local machine, or even a cloud database.
@@ -24,7 +26,9 @@ Exporting the data from the original database is facilitated through the [pg_dum
 
 1.  **Export the database roles.** Replace *[user]* with the username for your source database. The default username for many PostgreSQL installations is `postgres`.
 
-        pg_dumpall --roles-only --username=[user] --file=roles.backup
+    ```command
+    pg_dumpall --roles-only --username=[user] --file=roles.backup
+    ```
 
     If you are connecting to a remote database, add `--host [host]` and `--port [port]` to the command above, replacing *[host]* with the host url of your remote database and *[port]* with the port number.
 
@@ -34,7 +38,9 @@ Exporting the data from the original database is facilitated through the [pg_dum
 
 1.  **Export each database you wish to backup.** Replace *[database-name]* with the name of your database and *[user]* with the username for your source database. The other options in this command are used to ensure maximum compatibility with Linode's PostgreSQL Managed Databases.
 
-        pg_dump -Fd --quote-all-identifiers --verbose --lock-wait-timeout=480000 --no-unlogged-table-data --serializable-deferrable --jobs=1 --dbname [database-name] --username [user] --file database.backup
+    ```command
+    pg_dump -Fd --quote-all-identifiers --verbose --lock-wait-timeout=480000 --no-unlogged-table-data --serializable-deferrable --jobs=1 --dbname [database-name] --username [user] --file database.backup
+    ```
 
     Again, add `--host [host]` and `--port [port]` to the command above if you are connecting to a remote database. You can run this command for each database you wish to export, though you may want to edit the `--file` option with a custom filename.
 
@@ -44,14 +50,18 @@ Once you've successfully backed up the source database, you can import your data
 
 1.  **Import your database roles to your Managed Database** using the psql command below. Replace *[host]*, and *[username]* with the corresponding values for your Managed Database. See [Connection Details](/docs/products/databases/managed-databases/guides/postgresql-connect/#view-connection-details).
 
-        psql --host=[host] --username=[username] --dbname=postgres --file=roles.backup
+    ```command
+    psql --host=[host] --username=[username] --dbname=postgres --file=roles.backup
+    ```
 
     This assumes your database roles backup file is called *roles.backup* and is located in your current directory (as per previous steps in this guide). If you used a different filename or path for your backup, replace *roles.backup* as needed in the above command.
 
 1.  **Create your database**, making sure that your preferred database name doesn't already exist. If it does, you can drop the database before creating it. In the commands below, replace *[database-name]* with the name of your database and *[host]* and *[username]* with the corresponding [Connection Details](/docs/products/databases/managed-databases/guides/postgresql-connect/#view-connection-details) for your Managed Database.
 
-        psql --host=[host] --username=[username] --dbname=postgres --command='DROP DATABASE IF EXISTS [database-name];'
-        psql --host=[host] --username=[username] --dbname=postgres --command='CREATE DATABASE [database-name];'
+    ```command
+    psql --host=[host] --username=[username] --dbname=postgres --command='DROP DATABASE IF EXISTS [database-name];'
+    psql --host=[host] --username=[username] --dbname=postgres --command='CREATE DATABASE [database-name];'
+    ```
 
     {{< note type="alert" >}}
     Using `DROP DATABASE` command results in the deletion of any data stored on that database. If you are replacing an existing database and would like to avoid data loss, make sure you have a backup containing any data you would like to retain prior to running the command.
@@ -59,6 +69,8 @@ Once you've successfully backed up the source database, you can import your data
 
 1.  **Import your database file** to your newly created database.
 
-        pg_restore --host=[host] --username=[user] --verbose --no-tablespaces --dbname=[database-name] database.backup
+    ```command
+    pg_restore --host=[host] --username=[user] --verbose --no-tablespaces --dbname=[database-name] database.backup
+    ```
 
     This assumes your database backup file is called *database.backup* and located in your current directory (as per previous steps in this guide). If you used a different filename or path for your backup, replace *database.backup* as needed in the above command.
