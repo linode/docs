@@ -34,7 +34,7 @@ This version of the P2 AVC-ULTRA Transcoder is a free version that demonstrates 
 
 - **API Port** : Sets the port for the HTTP REST API endpoint. Defaults to port 8080.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
 ## Getting Started after Deployment
