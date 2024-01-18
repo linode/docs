@@ -25,14 +25,15 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Joplin Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+- **Password for the postgres database** *(required)*: Enter the password you wish to use for the `joplin` database user.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 

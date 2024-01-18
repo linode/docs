@@ -34,7 +34,7 @@ authors: ["Linode"]
 
 ### NextCloud Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
