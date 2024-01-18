@@ -37,7 +37,7 @@ SimpleX Chat is a private messaging platform that uses temporary anonymous ident
 
 ### Linode Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{< content "marketplace-limited-user-fields-shortguide">}}
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
 ## Getting Started after Deployment

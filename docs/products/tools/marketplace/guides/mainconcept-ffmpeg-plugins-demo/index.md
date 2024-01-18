@@ -43,7 +43,7 @@ The versions of MainConcept Plugins for FFmpeg included in this deployment are f
 
 ### MainConcept Plugins for FFmpeg Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{< content "marketplace-limited-user-fields-shortguide">}}
 
 ## Getting Started after Deployment
 

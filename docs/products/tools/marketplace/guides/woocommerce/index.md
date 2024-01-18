@@ -29,7 +29,7 @@ external_resources:
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Debian 10
 - **Recommended minimum plan:** All plan types and sizes can be used, though a minimum of a 4GB Dedicated CPU Compute Instance is recommended for production websites.
 
 ### WooCommerce Options
@@ -42,10 +42,10 @@ external_resources:
 - **Website Title:** Enter a title for your WordPress site.
 
     {{< note >}}
-    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/root/.credentials` when the WordPress deployment completes.
+    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the WordPress deployment completes.
     {{< /note >}}
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Would you like to be able to send password reset emails for WordPress?** Creates the required DNS records and configures the server so you can send emails from WordPress, such as for resetting a password.
@@ -67,7 +67,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 1.  Once logged in, access the credentials file by runing the following command:
 
     ```command
-    cat /root/.credentials
+    cat /root/.linode_credentials.txt
     ```
 
 1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.

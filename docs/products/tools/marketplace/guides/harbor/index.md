@@ -36,7 +36,7 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
