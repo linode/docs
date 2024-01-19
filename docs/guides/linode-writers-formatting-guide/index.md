@@ -5,7 +5,7 @@ keywords: ["style guide", "format", "formatting", "how to write", "write for us"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2023-11-28
+modified: 2024-01-19
 modified_by:
   name: Linode
 title: Linode Writer's Formatting Guide
@@ -686,7 +686,7 @@ When creating a new note, there are multiple parameters to consider: **note type
 
 #### Note Types
 
-There are four unique types of notes: **primary**, **secondary**, **warning**, and **alert**. Each type has specific use cases and varying levels of urgency that should determine the type of note you choose to make.
+There are four unique types of notes: **primary**, **secondary**, **warning**, and **alert**. Each type has specific use cases and varying levels of urgency that should determine the type of note you choose to make. Below are examples of each note type and their use cases:
 
 -   **Primary** (type is unset or `type="primary"`, title defaults to "Note"): Used for additional related information that does not fit with the rest of the document. Can include alternative suggestions or solutions, developer tips, or general best practices that are not critical to the success of the task at hand.
 
@@ -724,8 +724,8 @@ Each note can also have a custom title, which is set using the `title` parameter
 - Example calls to attention: "Before moving forward", "This may result in data loss"
 
 **Title casing:**
-- If using a single word or phrase, use title casing.
-- If using a sentence as your title, use sentence casing.
+- If using a single word or phrase, use title casing. *Preferred.*
+- If using a sentence as your title, use sentence casing. Otherwise, use title casing.
 
 ```file {lang="text"}
 {{</* note title="Custom titles can be helpful" */>}}
@@ -751,7 +751,7 @@ This is an example note with no title.
 
 #### Collapsible
 
-Nots can also be made collapsible by setting `isCollapsible=true` (defaults to false). This hides the body of the note and displays a collapse/expand icon. **Secondary notes** are often used for collapsible notes.
+Notes can also be made collapsible by setting `isCollapsible=true` (defaults to false). This hides the body of the note and displays a collapse/expand icon. **Secondary notes** are often used for collapsible notes.
 
 ```file {lang="text"}
 {{</* note type="secondary" title="This is a collapsible secondary note with a custom title" isCollapsible=true */>}}
