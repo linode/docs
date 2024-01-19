@@ -21,7 +21,7 @@ At this time, the size of Volumes are only able to be increased (not decreased),
 
 1.  Enter the new Volume size. The minimum size is the current size of the Volume and maximum is 10,240 GB. Then click **Submit**.
 
-1.  Click **Resize Volume** to start the resize. Once clicked, the **Resizing Instructions** panel appears with the instructions and commands needed to resize the Volume's filesystem. Either save these commands or leave this panel open. The notification bell in the top right of the page will notify you when the resizing is complete.
+1.  Click **Resize Volume** to start the resize. Once clicked, a banner stating **Volume scheduled to be resized** is shown. The notification bell in the top right of the page will notify you when the resizing is complete.
 
 1.  After the Volume is resized, power back on your Compute Instance.
 
