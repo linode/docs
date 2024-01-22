@@ -19,7 +19,7 @@ This tutorial walks through installing YunoHost on a base Debian server and outl
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance running Debian 11 or higher. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance running Debian 11 or higher. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1. Optionally, create a domain name and configure it with the Linode DNS Manager. See our [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) guide for instructions on adding a domain to Linode and using the Linode name servers with the domain registrar.
 
@@ -89,7 +89,7 @@ YunoHost can be installed on a compute instance running stock Debian 11 (or high
         - https://192.0.2.0/ (global IP, if you're on a VPS)
 
     If this is your first time with YunoHost, it is strongly recommended to take
-    time to read the administator documentation and in particular the sections
+    time to read the administrator documentation and in particular the sections
     'Finalizing your setup' and 'Getting to know YunoHost'. It is available at
     the following URL : https://yunohost.org/admindoc
     ===========================================================================
@@ -179,7 +179,7 @@ The YunoHost instance starts with a self-signed certificate. However, most moder
 1.  Select **Install Let's Encrypt certificate**, then select **OK** to the prompt to start the installation process.
 
     {{< note >}}
-Several warnings may appear, which render the **Install Let's Encrypt certificate** button inoperable. If so, change the **Ingore diagnosis checks** toggle from **No** to **Yes**, which re-enables the **Install Let's Encrypt certificate** button.
+Several warnings may appear, which render the **Install Let's Encrypt certificate** button inoperable. If so, change the **Ignore diagnosis checks** toggle from **No** to **Yes**, which re-enables the **Install Let's Encrypt certificate** button.
     {{< /note >}}
 
 Once the process completes, a confirmation of the successful installation appears:

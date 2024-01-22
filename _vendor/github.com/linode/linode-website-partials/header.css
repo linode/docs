@@ -341,8 +341,8 @@ body.om-position-floating-top {
   display: none;
 }
 @media (max-width: 47.99em) {
-  .c-site-header__banner {
-    text-decoration: underline;
+  .c-site-header__banner .c-notification__link {
+    text-decoration-line: underline;
   }
   .c-site-header__banner .c-notification__message > span,
   .c-site-header__banner .c-notification__message > u {
@@ -577,12 +577,12 @@ body.om-position-floating-top {
   float: left;
   height: 48px;
   margin-right: 16px;
-  overflow: hidden;
+  overflow: clip;
   width: 48px;
 }
 .c-submenu .o-menu__title .body {
   display: block;
-  overflow: hidden;
+  overflow: clip;
 }
 .c-submenu .o-menu__title .description {
   display: block;
@@ -594,7 +594,7 @@ body.om-position-floating-top {
   color: var(--c-featured-color, #32363b);
   display: flex;
   max-width: 565px;
-  overflow: hidden;
+  overflow: clip;
   padding: 16px 24px 24px;
   position: relative;
 }
@@ -929,7 +929,7 @@ body.om-position-floating-top {
   text-transform: uppercase;
 }
 .c-site-header__topbar .c-notification__message {
-  overflow: hidden;
+  overflow: clip;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -954,7 +954,7 @@ body.om-position-floating-top {
   white-space: nowrap;
 }
 .c-site-header__topbar .o-menu__item--search .o-menu__link {
-  overflow: hidden;
+  overflow: clip;
   white-space: nowrap;
   width: 16px;
 }
@@ -984,7 +984,7 @@ body.om-position-floating-top {
 }
 .c-site-header__topbar .c-weglot-nav #weglot_here,
 .c-site-header__topbar .c-weglot-nav .country-selector {
-  min-width: 68.83px;
+  min-width: 81px;
 }
 .c-site-header__topbar .c-weglot-nav .wgcurrent {
   margin: 0 12px;

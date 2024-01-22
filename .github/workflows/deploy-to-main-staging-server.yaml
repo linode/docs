@@ -157,6 +157,58 @@ jobs:
         sudo apt install -y tree
         tree -L 1 public
 
+      # When Hugo builds, it renders search index data to a collection of
+      # data files under public/. This step uploads that data to the
+      # Algolia search backend
+    - name: Update Algolia (sandbox)
+      working-directory: ./linode-docs-theme-repo
+      env:
+        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
+        ALGOLIA_INDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+      run: |
+        cd scripts/linode_algolia_admin/
+
+        # The testing-docs-prefix-update sequence does the following:
+        # - Downloads data from the starter_ prefixed linode-wp,
+        #   linode-community, and linode-documentation-sections indices to the
+        #   GitHub Action workspace
+        # - Pushes the rendered index JSON files under the public/ folder
+        #   in the docs repo from Hugo to Algolia. These are:
+        #   - public/index.json
+        #   - public/api/index.json
+        #   - public/data/sections/index.json
+        # - Merge the data from the separate indices and push it into the
+        #   PREFIX_linode-merged index in Algolia
+        # - Update the settings and synonyms for the PREFIX_linode-merged index
+        #   in Algolia
+        # - Delete the PREFIX_linode-documentation and
+        #   PREFIX_linode-documentation-api indices in Algolia to save space
+        go run main.go sequence -source-dir ../../../docs-repo/public testing-docs-prefix-update $ALGOLIA_INDEX_PREFIX
+
+      # Why build Hugo twice? In order to render the Explore Docs nav menu,
+      # Hugo downloads data from the Algolia search backend. However, the
+      # first time we build Hugo in this workflow, that data isn't up-to-date
+      # with new content we may be publishing. So, we build Hugo a second time
+      # after we have performed the previous Update Algolia step.
+      # In summary:
+      # - Build Hugo the first time in order to render the JSON search index
+      #   data files
+      # - Update Algolia with those data files
+      # - Build Hugo again so that the navigation UI can be rendered with that
+      #   updated info from Algolia
+      # It's a little redundant, but solves the chicken-or-egg problem
+    - name: Build Hugo (second time)
+      env:
+        HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
+        HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+        HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
+      working-directory: ./docs-repo
+      run: |
+        hugo config
+        hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
+
     - name: Set up SSH agent (docs webserver key)
       uses: webfactory/ssh-agent@v0.7.0
       with:
@@ -191,29 +243,3 @@ jobs:
           ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_RSYNC_DESTINATION }}:${{ secrets.DOCS_WEBSITE_RSYNC_DIR }}
 
         rm rsync_known_hosts
-
-    - name: Update Algolia (sandbox)
-      working-directory: ./linode-docs-theme-repo
-      env:
-        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
-        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
-        ALGOLIA_INDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
-      run: |
-        cd scripts/linode_algolia_admin/
-
-        # The testing-docs-prefix-update sequence does the following:
-        # - Downloads data from the starter_ prefixed linode-wp,
-        #   linode-community, and linode-documentation-sections indices to the
-        #   GitHub Action workspace
-        # - Pushes the rendered index JSON files under the public/ folder
-        #   in the docs repo from Hugo to Algolia. These are:
-        #   - public/index.json
-        #   - public/api/index.json
-        #   - public/data/sections/index.json
-        # - Merge the data from the separate indices and push it into the
-        #   PREFIX_linode-merged index in Algolia
-        # - Update the settings and synonyms for the PREFIX_linode-merged index
-        #   in Algolia
-        # - Delete the PREFIX_linode-documentation and
-        #   PREFIX_linode-documentation-api indices in Algolia to save space
-        go run main.go sequence -source-dir ../../../docs-repo/public testing-docs-prefix-update $ALGOLIA_INDEX_PREFIX

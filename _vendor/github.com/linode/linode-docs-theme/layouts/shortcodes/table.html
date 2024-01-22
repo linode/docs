@@ -1,3 +1,4 @@
-<div class="overflow-table">
-    {{ .Inner | .Page.RenderString }}
+{{ $class := .Get "class" }}
+<div class="overflow-table {{ $class }}">
+  {{ .Inner | .Page.RenderString }}
 </div>

@@ -154,11 +154,11 @@ There are many benefits to using a static site generator. Here is a list of a fe
 - Use Git to version control your static website's content.
 {{</ file >}}
 
-    {{< disclosure-note "About front matter" >}}
-[*Front matter*](https://gohugo.io/content-management/front-matter/) is a collection of metadata about your content, and it is embedded at the top of your file within opening and closing `---` delimiters.
+    {{< note type="secondary" title="About front matter" isCollapsible=true >}}
+    [*Front matter*](https://gohugo.io/content-management/front-matter/) is a collection of metadata about your content, and it is embedded at the top of your file within opening and closing `---` delimiters.
 
-Front matter is a powerful Hugo feature that provides a mechanism for passing data that is attached to a specific piece of content to Hugo's rendering engine. Hugo accepts front matter in TOML, YAML, and JSON formats. In the example snippet, there is YAML front matter for the title, date, and draft state of the Markdown file. These variables are referenced and displayed by your Hugo theme.
-{{< /disclosure-note >}}
+    Front matter is a powerful Hugo feature that provides a mechanism for passing data that is attached to a specific piece of content to Hugo's rendering engine. Hugo accepts front matter in TOML, YAML, and JSON formats. In the example snippet, there is YAML front matter for the title, date, and draft state of the Markdown file. These variables are referenced and displayed by your Hugo theme.
+    {{< /note >}}
 
 1.  Once you have added your content, you can preview your changes by building and serving the site using Hugo's built-in webserver:
 
@@ -206,23 +206,23 @@ Press Ctrl+C to stop
   404.html    categories  dist        images      index.html  index.xml   posts       sitemap.xml tags
   {{</ output >}}
 
-    {{< disclosure-note "Track your Static Site Files with Git">}}
-It's not necessary to version control your site files in order to host them on Object Storage, but we still recommended that you do so:
+    {{< note type="secondary" title="Track your Static Site Files with Git" isCollapsible=true >}}
+    It's not necessary to version control your site files in order to host them on Object Storage, but we still recommended that you do so:
 
-1.  Display the state of your current working directory (root of your Hugo site):
+    1.  Display the state of your current working directory (root of your Hugo site):
 
-        git status
+            git status
 
-2.  Stage all your files to be committed:
+    2.  Stage all your files to be committed:
 
-        git add -A
+            git add -A
 
-3.  Commit all your changes and add a meaningful commit message:
+    3.  Commit all your changes and add a meaningful commit message:
 
-        git commit -m 'Add my first post.'
+            git commit -m 'Add my first post.'
 
-Once you have used Git to track your local Hugo site files, you can easily push them to a remote Git repository, like [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). Storing your static site files on a remote Git repository opens up many possibilities for collaboration and automating your static site's deployment to Linode Object Storage. To learn more about Git, see the [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
-{{</ disclosure-note >}}
+    Once you have used Git to track your local Hugo site files, you can easily push them to a remote Git repository, like [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). Storing your static site files on a remote Git repository opens up many possibilities for collaboration and automating your static site's deployment to Linode Object Storage. To learn more about Git, see the [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
+    {{< /note >}}
 
 ## Upload your Static Site to Linode Object Storage
 

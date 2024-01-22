@@ -9,9 +9,12 @@
 {{ $link  := "" }}
 {{ if $p.authors }}
   {{/* author taxonomy set, use that. */}}
-  {{/* we currently only use the first one, but there may be more roles applied later (editors etc.). */}}
-  {{ with (index ($.GetTerms "authors") 0 ) }}
-    {{ $link = printf `<a href="%s">%s</a>` .RelPermalink  .Title }}
+  {{ $links := slice }}
+  {{ range  ($.GetTerms "authors") }}
+    {{ $links = $links | append (printf `<a href="%s">%s</a>` .RelPermalink  .Title) }}
+  {{ end }}
+  {{ if $links }}
+    {{ $link = (delimit $links ", ") }}
   {{ end }}
 {{ end }}
 {{ if not $link }}

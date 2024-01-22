@@ -30,7 +30,7 @@ authors: ["Linode"]
 
 - **JSON Web Token Validation**: Enables the JSON Web Token validation. This value set to true by default
 - **JSON Web Token Secret Key**: Defines the secret key to validate the JSON Web Token in the request to the ONLYOFFICE Docs. The default is a random value.
-- **ONLYOFFICE Docs Version**: Specifies the ONLYOFFICE Docs version. Check available versions on hub.docker onlyoffice/documentserver. Keep empty to install the latest.
+- **ONLYOFFICE Docs Version**: Specifies the ONLYOFFICE Docs version. Check available versions on Docker Hub [onlyoffice/documentserver](https://hub.docker.com/r/onlyoffice/documentserver/). Keep empty to install the latest.
 - **SSL Certificates**: If set to 'true', TLS/SSL certificates are generated automatically.
 - **Domain**: The Domain name for which TLS/SSL certificates are generated. If no value is entered, the Compute Instance's default rDNS value is used.
 - **Sub Domain**: The sub domain for which TLS/SSL certificates are generated. Optional.

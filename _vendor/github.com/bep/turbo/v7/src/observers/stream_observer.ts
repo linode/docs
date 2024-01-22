@@ -1,3 +1,4 @@
+import { TurboBeforeFetchResponseEvent } from "../http/fetch_request"
 import { FetchResponse } from "../http/fetch_response"
 import { StreamMessage } from "../core/streams/stream_message"
 import { StreamSource } from "../core/types"
@@ -8,7 +9,7 @@ export interface StreamObserverDelegate {
 
 export class StreamObserver {
   readonly delegate: StreamObserverDelegate
-  readonly sources: Set<StreamSource> = new Set
+  readonly sources: Set<StreamSource> = new Set()
   private started = false
 
   constructor(delegate: StreamObserverDelegate) {
@@ -47,7 +48,7 @@ export class StreamObserver {
     return this.sources.has(source)
   }
 
-  inspectFetchResponse = <EventListener>((event: CustomEvent) => {
+  inspectFetchResponse = <EventListener>((event: TurboBeforeFetchResponseEvent) => {
     const response = fetchResponseFromEvent(event)
     if (response && fetchResponseIsStream(response)) {
       event.preventDefault()
@@ -69,11 +70,11 @@ export class StreamObserver {
   }
 
   receiveMessageHTML(html: string) {
-    this.delegate.receivedMessageFromStream(new StreamMessage(html))
+    this.delegate.receivedMessageFromStream(StreamMessage.wrap(html))
   }
 }
 
-function fetchResponseFromEvent(event: CustomEvent) {
+function fetchResponseFromEvent(event: TurboBeforeFetchResponseEvent) {
   const fetchResponse = event.detail?.fetchResponse
   if (fetchResponse instanceof FetchResponse) {
     return fetchResponse

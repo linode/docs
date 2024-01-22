@@ -55,7 +55,7 @@ There are several third-party mail services available:
 - [Postmark](https://postmarkapp.com/why?utm_source=linode&utm_medium=referral&utm_campaign=awareness)
 - [Fastmail](https://www.fastmail.com)
 - [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
-- [Mirosoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
+- [Microsoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
 If you decide to use an outside mail service, you will still need to set up [DNS](/docs/products/networking/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 

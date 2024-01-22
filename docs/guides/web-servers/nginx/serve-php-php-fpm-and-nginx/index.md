@@ -128,14 +128,15 @@ server {
     This only applicable if you allow users to upload or submit files to your site. Change the name of the directory from `uploads` to whatever suits your need.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
-  location ~* \.php$ {
-    if ($uri !~ "^/uploads/") {
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        }
-    include         fastcgi_params;
-    fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
-    fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
-  }
+  location ~ ^ /uploads/  {
+    try_files $uri =404;
+    }
+    location ~* \.php$ {
+    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+    }
 {{< /file >}}
 
 3.  Reload NGINX:

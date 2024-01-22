@@ -85,7 +85,7 @@ Before you configure Rclone, [create a new Linode bucket](/docs/products/storage
 
     ```output
     / Ceph Object Storage
-   \ (Ceph)
+       \ (Ceph)
     ```
 
 1.  You are then asked how you'd like to provide your AWS credentials. For this, select the option that corresponds to **false** to manually enter your access key and secret.

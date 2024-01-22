@@ -144,9 +144,9 @@ In this section, learn to deploy TOBS for individual/local access with `kubectl`
 
     | Resource     | Service Name                      | Port |
     | ------------ | ----------------------------------| ---- |
-    | Prometheus   | lke-monitor-kube-prometheus-prometheus   | 9090 |
-    | Alertmanager | lke-monitor-kube-prometheus-alertmanager | 9093 |
-    | Grafana      | lke-monitor-grafana               | 80   |
+    | Prometheus   | `lke-monitor-kube-prometheus-prometheus`   | 9090 |
+    | Alertmanager | `lke-monitor-kube-prometheus-alertmanager` | 9093 |
+    | Grafana      | `lke-monitor-grafana`               | 80   |
 
 1. Use `kubectl` [port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) to open a connection to a service, then access the service's interface by entering the corresponding address in your web browser:
 

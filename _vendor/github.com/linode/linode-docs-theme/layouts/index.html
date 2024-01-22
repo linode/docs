@@ -59,12 +59,12 @@
     {{ template "home/hero" $ }}
 
     {{/* The top level products carousel */}}
-    <section class="mb-8">
+    <section class="mb-8" style="min-height: 211px;">
       {{ template "home/products/carousel" (dict "section" "products" "title" "Product Guides") }}
     </section>
 
     {{/* Developer tiles. */}}
-    <section class="mb-10">
+    <section class="mb-10" style="min-height: 211px;">
       {{ template "home/developers/carousel" (dict "section" "developers" "title" "Developers") }}
     </section>
 
