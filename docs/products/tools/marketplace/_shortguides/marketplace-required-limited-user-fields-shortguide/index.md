@@ -14,5 +14,5 @@ You can fill out the following fields to automatically create a limited sudo use
 - **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in, and you can also log in as root through [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 {{< note type="warning" title="Locating Your Sudo Password As Root">}}
-    If you disable root access for your deployment and do not enter a valid SSH public key, you will need to login as the root user via the [Lish console](/docs/products/compute/compute-instances/guides/lish/) and locate the credentials file found at `/root/.credentials` to obtain the limited sudo user password.
+If you disable root access for your deployment and do not enter a valid SSH public key, you will need to login as the root user via the [Lish console](/docs/products/compute/compute-instances/guides/lish/) and locate the credentials file found at `/root/.credentials` to obtain the limited sudo user password.
 {{< /note >}}
