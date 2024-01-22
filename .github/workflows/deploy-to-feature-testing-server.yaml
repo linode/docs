@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'feature/testing-linodedocs'
+      - 'cicd-sftp-update'
 
 # This workflow builds the site with Hugo, uploads it to a testing web
 # server, and updates the sandbox Algolia app to reflect the content in the
