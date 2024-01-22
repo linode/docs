@@ -5,7 +5,7 @@ keywords: ["style guide", "format", "formatting", "how to write", "write for us"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2024-01-19
+modified: 2024-01-22
 modified_by:
   name: Linode
 title: Linode Writer's Formatting Guide
@@ -664,17 +664,22 @@ This is an example note.
 {{< /note >}}
 
 **Best practices:**
-- Consider note length. The shorter the better; notes can lose their impact if they become too long.
-- Keep things relevant. If the information interrupts the flow or points the reader down an unrelated path, consider whether or not the note belongs at all.
+- **Be concise.** The shorter the better. Notes can lose their impact when they become too long.
+- **Keep things relevant.** The note should pertain directly to the surrounding paragraph, step, or list item. If the note is an unnecessary interruption to the reader, consider removing the note, moving it to a different section, or placing its contents directly in the surrounding content.
+- **Use notes sparingly.** Notes draw attention away from the surrounding content. Too many notes can distract the reader, result in important information getting lost, and are often unnecessary. Consider the impact too many notes or multiple consecutive notes may have to the reader. Often, some information can be omitted and some information is better suited to be included as part of the surrounding text.
+- **Use descriptive titles.** Customize the title of each note so that the reader can quickly assess if the note is relevant to them.
+- **Can be used for short-lived (nonpermanent) content** *(with some caution)*: In many cases, short-lived content is better suited to notes than being hidden within paragraphs or list items. When adding temporary content to a note, always include the date when the content will be out-of-date (if available) as well as information the reader may need to know after that date. An example of this is beta notices. When a new product comes out, the documentation should mention that the product is available as a beta (and, as such, may not be feature complete or production ready). While a note at the top of the related product pages may be warranted, a note within all of our other guides that reference the product is likely not necessary and may create more complications when we need to remove this information.
 
-**Practices to avoid:**
-- Consecutive notes that result in stacking notes on top of one another.
-- Too many notes. If there are notes in too many sections of a document, consider their impact and if the information is better served as part of the primary content.
-- Avoid temporary content. If the information needs to be removed at a later date, look to include the information within different context or remove the note entirely to avoid future documentation maintenance.
+**What to avoid:**
+- Lengthy notes.
+- Notes not relevant to the surrounding content.
+- Too many notes relative to surrounding content.
+- Stacking notes (multiple consecutive notes).
+- Generic or non-descriptive titles.
 
 #### Parameters
 
-When creating a new note, there are multiple parameters to consider: **note type**, **title**, **collapsibility**, and **indentation**. While not all parameters are always necessary, all should be taken into account during the note creation process.
+When creating a new note, there are multiple parameters to consider pertaining to the type of note, its title, and if it can be expanded/collapsed. While not all parameters are always necessary, all should be taken into account during the note creation process.
 
 | Parameter | Values | Description |
 | -- | -- | -- |
@@ -712,8 +717,8 @@ There are four unique types of notes: **primary**, **secondary**, **warning**, a
 
 -   **Alert** (`type="alert"`, title defaults to "Important"): The most urgent of all note types. **Alert** notes should be used to notify of potential *destructive* actions such as situations resulting in data loss or where there is no undoing what has been done. Anything critical to the success of a task should still be included in the primary content and not solely live in the note.
 
-    {{< note type="alert" title="Have backups in place" >}}
-    Enabling log rotation removes old logs and replaces them with new ones. You should back up your data in case you need to revert to an old version and recover old logs.
+    {{< note type="alert" title="Back up files to prevent data loss" >}}
+    Formatting a Block Storage Volume will delete all data stored on that Volume. To prevent data loss, verify that any files you wish to retain have been successfully backed up to another storage device.
     {{< /note >}}
 
 #### Titles
