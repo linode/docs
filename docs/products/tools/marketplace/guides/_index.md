@@ -26,7 +26,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Ant Media Server Enterprise Edition](/docs/products/tools/marketplace/guides/antmediaenterpriseserver/)
 - [Apache Airflow](/docs/products/tools/marketplace/guides/apache-airflow/)
 - [Appwrite](/docs/products/tools/marketplace/guides/appwrite/)
-- [ARK Survival Evolved](/docs/products/tools/marketplace/guides/ark-survival-evolved/)
 - [AzuraCast](/docs/products/tools/marketplace/guides/azuracast/)
 - [BeEF](/docs/products/tools/marketplace/guides/beef/)
 - [Budibase](/docs/products/tools/marketplace/guides/budibase/)
