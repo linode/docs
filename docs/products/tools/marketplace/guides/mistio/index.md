@@ -18,7 +18,7 @@ deprecated: true
 
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Mist.io is no longer a deployable app in the App Marketplace, and this guide is for referential purposes only.
+Mist.io has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
 {{< /note >}}
 
 [Mist.io](https://mist.io/) is an open source, multi-cloud management platform. Mist supports all popular infrastructure technologies including public clouds, private clouds, hypervisors, containers, and bare metal servers. It provides a unified interface for performing common management tasks like provisioning, orchestration, monitoring, automation, and cost analysis. It also comes with a RESTful API so you can easily integrate it in your existing workflows.

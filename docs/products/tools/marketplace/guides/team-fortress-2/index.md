@@ -16,7 +16,7 @@ deprecated: true
 
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Team Fortress 2 is no longer a deployable app in the App Marketplace, and this guide is for referential purposes only. For information on how to deploy and set up Team Fortress 2 manually on a Compute Instance, see our [Team Fortress 2 on Debian and Ubuntu](/docs/guides/team-fortress2-on-debian-and-ubuntu/) guide.
+Team Fortress 2 has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up Team Fortress 2 manually on a Compute Instance, see our [Team Fortress 2 on Debian and Ubuntu](/docs/guides/team-fortress2-on-debian-and-ubuntu/) guide.
 {{< /note >}}
 
 Team Fortress 2 (TF2) is a team-based multiplayer first-person shooter game. In TF2, you and your team choose from 9 unique classes and play against an enemy team in a variety of game modes. These modes include capture the flag, king of the hill, and even a battle pitting your team against a robotic horde.

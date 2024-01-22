@@ -18,7 +18,7 @@ deprecated: true
 
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-MagicSpam is no longer a deployable app in the App Marketplace, and this guide is for referential purposes only. For information on how to configure MagicSpam, see our [Using MagicSpam to Secure your Email Server](/docs/guides/using-magicspam-email-authentication) guide.
+MagicSpam has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to configure MagicSpam, see our [Using MagicSpam to Secure your Email Server](/docs/guides/using-magicspam-email-authentication) guide.
 {{< /note >}}
 
 [MagicSpam](https://magicspam.com/) is a powerful anti-spam and email security solution for Linux systems. It integrates directly with popular control panels, such as cPanel and Plesk. It's primary function is to stop inbound spam from entering your server right at the SMTP layer, which lowers bandwidth and overhead. It also secure mailboxes on your server from being compromised and used to send outbound spam.

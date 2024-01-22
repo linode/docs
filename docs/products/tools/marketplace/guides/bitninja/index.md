@@ -18,8 +18,9 @@ deprecated: true
 
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-BitNinja is no longer a deployable app in the App Marketplace, and this guide is for referential purposes only.
+BitNinja has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
 {{< /note >}}
+
 
 [BitNinja](https://bitninja.com/) is a general purpose security-as-a-service server defense tool powered by a social defense system and many active defense modules. Its main purpose is to protect your server against hackers, botnets, attackers, and malicious activities, all with less effort and maintenance on your part. All BitNinja servers form a huge honey farm to collect and analyze attacks from different botnets and then use this knowledge to intelligently adapt to new threats.
 

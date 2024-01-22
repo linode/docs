@@ -18,7 +18,7 @@ deprecated: true
 
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-ARK: Survival Evolved is no longer a deployable app in the App Marketplace, and this guide is for referential purposes only. For information on how to deploy and set up ARK: Survival Evolved manually on a Compute Instance, see our [Creating a Dedicated ARK Server on Ubuntu](/docs/guides/create-an-ark-server-on-ubuntu) guide.
+ARK: Survival Evolved has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up ARK: Survival Evolved manually on a Compute Instance, see our [Creating a Dedicated ARK Server on Ubuntu](/docs/guides/create-an-ark-server-on-ubuntu) guide.
 {{< /note >}}
 
 [ARK: Survival Evolved](http://playark.com/ark-survival-evolved/) is a multiplayer action-survival game released in 2017. The game places you on a series of fictional islands inhabited by dinosaurs and other prehistoric animals. In ARK, the main objective is to survive. ARK is an ongoing battle where animals and other players have the ability to destroy you. To survive, you must build structures, farm resources, breed dinosaurs, and even set up trading hubs with neighboring tribes.
