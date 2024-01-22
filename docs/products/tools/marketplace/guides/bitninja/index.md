@@ -3,7 +3,7 @@ description: "Deploy BitNinja on a Linode Compute Instance. This provides you wi
 keywords: ['spam','security','waf']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
-modified: 2022-05-17
+modified: 2024-01-22
 modified_by:
   name: Linode
 title: "Deploy BitNinja through the Linode Marketplace"
@@ -11,7 +11,15 @@ external_resources:
 - '[BitNinja](https://bitninja.com/)'
 aliases: ['/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']
 authors: ["Linode"]
+_build:
+  list: false
+noindex: true
+deprecated: true
+
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+BitNinja is no longer a deployable app in the App Marketplace, and this guide is for referential purposes only.
+{{< /note >}}
 
 [BitNinja](https://bitninja.com/) is a general purpose security-as-a-service server defense tool powered by a social defense system and many active defense modules. Its main purpose is to protect your server against hackers, botnets, attackers, and malicious activities, all with less effort and maintenance on your part. All BitNinja servers form a huge honey farm to collect and analyze attacks from different botnets and then use this knowledge to intelligently adapt to new threats.
 

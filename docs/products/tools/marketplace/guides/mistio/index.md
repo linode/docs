@@ -3,7 +3,7 @@ description: "This guide shows how you can deploy Mist.io, an open-source, multi
 keywords: [ 'mist.io', 'marketplace', 'server']
 tags: ["cloud-manager", "linode platform", "marketplace"]
 published: 2020-03-18
-modified: 2022-03-08
+modified: 2024-01-22
 modified_by:
   name: Linode
 title: "Deploy Mist.io through the Linode Marketplace"
@@ -11,7 +11,15 @@ external_resources:
 - '[Mist.io Official](https://mist.io/)'
 aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platform/one-click/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-marketplace-apps/','/guides/mistio-marketplace-app/']
 authors: ["Linode"]
+_build:
+  list: false
+noindex: true
+deprecated: true
+
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Mist.io is no longer a deployable app in the App Marketplace, and this guide is for referential purposes only.
+{{< /note >}}
 
 [Mist.io](https://mist.io/) is an open source, multi-cloud management platform. Mist supports all popular infrastructure technologies including public clouds, private clouds, hypervisors, containers, and bare metal servers. It provides a unified interface for performing common management tasks like provisioning, orchestration, monitoring, automation, and cost analysis. It also comes with a RESTful API so you can easily integrate it in your existing workflows.
 
