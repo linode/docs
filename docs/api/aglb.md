@@ -1,7 +1,7 @@
 ---
-slug: api
-title: "Api"
-date: 2023-12-21T08:11:56-05:00
+slug: aglb
+title: "Global Load Balancer"
+date: 2024-01-23T15:23:33-05:00
 draft: true
 ---
 
