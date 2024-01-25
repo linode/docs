@@ -9,8 +9,6 @@ modified_by:
 authors: ["Linode"]
 ---
 
-{{< content "metadata-availability-notice" >}}
-
 When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide) and [StackScripts](/docs/products/tools/stackscripts/).
 
 ## Overview
@@ -165,7 +163,7 @@ Now, when you wish to deploy a new Compute Instance, you can select your custom 
 
 ## Access the Metadata Service API
 
-In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (`169.254.169.254` and `fd00:a9fe:a9fe::1`) and returns only instance data and user data for that Compute Instance.
+In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (`169.254.169.254` and `fd00:a9fe:a9fe::1`) and returns only instance data and user data for that Compute Instance. For more details on using the API, review the [How to Use the Metadata Service API](/docs/products/compute/compute-instances/guides/metadata-api/) guide.
 
 1.  Log in to a Compute Instance that has been deployed in a supported data center using a supported distribution image.
 
