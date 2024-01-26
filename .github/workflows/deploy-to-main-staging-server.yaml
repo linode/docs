@@ -54,242 +54,12 @@ jobs:
       name: deploy_to_main_staging_server
 
     steps:
-    - name: 1. Set up Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: ${{ vars.HUGO_VERSION }}
-
-    - name: 2. Checkout docs repo
-      uses: actions/checkout@v3
-      with:
-        path: 'docs-repo'
-
-      # Debugging step so we can check if the right version
-      # of the docs repo is checked out
-    - name: (Debugging info) Print current docs repo branch/ref/commit
-      working-directory: ./docs-repo
-      run: |
-        git status
-        git log -1
-
-    - name: 3. Set up SSH agent (linode-docs-theme repo deploy key)
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
-        ssh-private-key: ${{ secrets.LINODE_DOCS_THEME_DEPLOY_KEY_FOR_DOCS_DEPLOY_GHA }}
-
-    - name: 4. Clone docs theme repo
-      run: |
-        git clone git@github.com:$GITHUB_REPOSITORY_OWNER/linode-docs-theme linode-docs-theme-repo
-
-    - name: 5. Get linode-docs-theme commit hash from docs go.mod
-      id: get-theme-version
-      working-directory: ./docs-repo
-      run: |
-        # `hugo mod graph` prints output that looks like:
-        # project github.com/linode/linode-docs-theme@v0.0.0-20230706164309-cc2dbdeb7143+vendor
-        # In this example, cc2dbdeb7143 is the relevant commit hash for the
-        # linode-docs-theme repo. The following commands grab the commit hash
-        # from the `hugo mod graph` string
-
-        LINODE_DOCS_THEME_VERSION=$(hugo mod graph | grep linode-docs-theme | cut -d '+' -f 1 | grep -o '[^-]*$')
-        echo "VERSION=$LINODE_DOCS_THEME_VERSION" >> $GITHUB_OUTPUT
-
-    - name: 6. Check out linode-docs-theme commit hash from docs go.mod
-      working-directory: ./linode-docs-theme-repo
-      run: |
-        git checkout ${{ steps.get-theme-version.outputs.VERSION }}
-
-      # Debugging step so we can check if the right version
-      # of the Algolia admin tool is checked out
-    - name: (Debugging info) Print Linode Algolia admin tool version
-      working-directory: ./linode-docs-theme-repo
-      run: |
-        cd scripts/linode_algolia_admin/
-        go run main.go version
-
-      # Debugging step that lists the Hugo-generated images
-      # directory *before* the imache cache restore step
-    - name: (Debugging info) List contents of images dir
-      continue-on-error: true
-      run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
-
-    - name: 7. Restore Hugo generated images cache
-      uses: ylemkimon/cache-restore@v2
-      with:
-        path: ${{ vars.HUGO_IMAGE_CACHE_PATH }}
-        key: ${{ vars.HUGO_IMAGE_CACHE_NAME }}
-        restore-keys: ${{ vars.HUGO_IMAGE_CACHE_NAME }}
-
-      # Debugging step that lists the Hugo-generated images
-      # directory *after* the imache cache restore step,
-      # to make sure that the restore happened successfully
-    - name: (Debugging info) List contents of images dir
-      continue-on-error: true
-      run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
-
-    - name: 8. Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 14
-
-    - name: 9. Install dependencies (Node)
-      working-directory: ./docs-repo
-      run: npm ci
-
-    - name: 10. Build Hugo
-      env:
-        HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
-        HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
-        HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
-        HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
-        HUGO_IGNOREERRORS: algolia-cachewarmer
-      working-directory: ./docs-repo
-      run: |
-        hugo config
-        hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
-
-      # Debugging step that lists the Hugo-rendered files
-      # to make sure the site was built
-    - name: (Debugging info) List rendered files
-      working-directory: ./docs-repo
-      run: |
-        sudo apt install -y tree
-        tree -L 1 public
-
-      # When Hugo builds, it renders search index data to a collection of
-      # data files under public/. This step uploads that data to the
-      # Algolia search backend
-    - name: 11. Update Algolia (sandbox)
-      working-directory: ./linode-docs-theme-repo
-      env:
-        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
-        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
-        ALGOLIA_INDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
-      run: |
-        cd scripts/linode_algolia_admin/
-
-        # The testing-docs-prefix-update sequence does the following:
-        # - Downloads data from the starter_ prefixed linode-wp,
-        #   linode-community, and linode-documentation-sections indices to the
-        #   GitHub Action workspace
-        # - Pushes the rendered index JSON files under the public/ folder
-        #   in the docs repo from Hugo to Algolia. These are:
-        #   - public/index.json
-        #   - public/api/index.json
-        #   - public/data/sections/index.json
-        # - Merge the data from the separate indices and push it into the
-        #   PREFIX_linode-merged index in Algolia
-        # - Update the settings and synonyms for the PREFIX_linode-merged index
-        #   in Algolia
-        # - Delete the PREFIX_linode-documentation and
-        #   PREFIX_linode-documentation-api indices in Algolia to save space
-        go run main.go sequence -source-dir ../../../docs-repo/public testing-docs-prefix-update $ALGOLIA_INDEX_PREFIX
-
-      # Why build Hugo twice? In order to render the Explore Docs nav menu,
-      # Hugo downloads data from the Algolia search backend. However, the
-      # first time we build Hugo in this workflow, that data isn't up-to-date
-      # with new content we may be publishing. So, we build Hugo a second time
-      # after we have performed the previous Update Algolia step.
-      # In summary:
-      # - Build Hugo the first time in order to render the JSON search index
-      #   data files
-      # - Update Algolia with those data files
-      # - Build Hugo again so that the navigation UI can be rendered with that
-      #   updated info from Algolia
-      # It's a little redundant, but solves the chicken-or-egg problem
-    - name: 12. Build Hugo (second time)
-      env:
-        HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
-        HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
-        HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
-        HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
-      working-directory: ./docs-repo
-      run: |
-        hugo config
-        hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
-
-      # The gitcommithash.txt file is used in the last workflow step to verify that the deployment was successful
-    - name: 13. Add gitcommithash.txt to rendered public/ folder
-      working-directory: ./docs-repo
-      run: |
-        echo $GITHUB_SHA > public/gitcommithash.txt
-
-    - name: 14. Set up SSH agent (docs webserver key)
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
-        ssh-private-key: ${{ secrets.DOCS_WEBSITE_SFTP_PRIVATE_KEY }}
-
-      # Make a tarball of the site, because it will upload much, much quicker
-      # than the uncompressed rendered site. The commit for this workflow run
-      # is encoded in the name of the tarball.
-    - name: 15. Create tarball of docs website
-      run: |
-        tar --owner=${{ secrets.DOCS_WEBSITE_USER }} --group=${{ secrets.DOCS_WEBSITE_USER }} -czf docs-$GITHUB_SHA.tar.gz -C docs-repo/public/ .
-
-      # Upload the tarball to the website document root. Before the upload, the
-      # document root looks like this:
-      # {{ document_root }}/
-      #               docs -> docs-PREVIOUS_GITHUB_SHA
-      #               docs-PREVIOUS_GITHUB_SHA/
-      #
-      # Where PREVIOUS_GITHUB_SHA is the commit for the last time the deploy
-      # workflow ran, and the docs-PREVIOUS_GITHUB_SHA/ folder contains the
-      # rendered site from that last workflow run. `docs` is a symlink to that
-      # folder.
-      #
-      # After the upload, it looks like:
-      # {{ document_root }}/
-      #               docs -> docs-PREVIOUS_GITHUB_SHA
-      #               docs-PREVIOUS_GITHUB_SHA/
-      #               docs-CURRENT_GITHUB_SHA.tar.gz
-      #
-      # Note that the tarball is temporarily uploaded to
-      # {{ document_root }}/new-tarball-uploads/, and then moved into
-      # {{ document_root }}/. If it was uploaded directly to {{ document_root }}/, then
-      # the unzip script (see next workflow step for description) could try
-      # to unzip a half-uploaded tarball.
-    - name: 16. SFTP upload website tarball to webserver
-      run: |
-        echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT }}" > sftp_known_hosts
-
-        sftp -o "UserKnownHostsFile=sftp_known_hosts" ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} <<EOF
-        lpwd
-        lls -al
-
-        cd docs
-        ls -al
-        cd new-tarball-uploads
-
-        put docs-$GITHUB_SHA.tar.gz
-        cd ..
-        rename new-tarball-uploads/docs-$GITHUB_SHA.tar.gz docs-$GITHUB_SHA.tar.gz
-        exit
-        EOF
-
-        rm sftp_known_hosts
-
-      # The server has a script that unzips any tarballs it finds
-      # in the website document root. There is a systemd service installed
-      # that runs the script roughly every 30 seconds. This workflow step
-      # waits for the server to run this script. To check if the tarball has
-      # been unzipped, we curl the /docs-CURRENT_GITHUB_SHA/ path on the server.
-      # If it hasn't been unzipped yet, this path won't exist, and the response
-      # will be a 404. If it has been unzipped, the path will exist, and the
-      # response will be a 200.
-
-      # The unzipped tarball is deleted by the script on the server.
-      #
-      # After the script has run, the document root looks like:
-      # {{ document_root }}/
-      #               docs -> docs-PREVIOUS_GITHUB_SHA
-      #               docs-PREVIOUS_GITHUB_SHA/
-      #               docs-CURRENT_GITHUB_SHA/
     - name: 17. Wait for server to unzip tarball
       shell: bash
       run: |
         set +e
 
-        CHECK_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs-$GITHUB_SHA/"
+        CHECK_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs-897c1b0dae8916fbf2dbf570c8490f36691d4ce6/"
         echo "Waiting for server to unzip uploaded docs site tarball:"
         echo "- Every one second, checking $CHECK_URL for an HTTP 200 OK response"
         echo "- Waiting up to ${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }} seconds..."
@@ -309,73 +79,330 @@ jobs:
         echo "This is often because there is not enough space on server. An administrator should review the available disk space on the server."
         exit 1
 
-    - name: 18. Get commit hash of previous deploy
-      id: get-previous-deploy-commit
-      shell: bash
-      run: |
-        set +e
 
-        GIT_COMMIT_HASH_URL=${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs/gitcommithash.txt
 
-        curl -ILs $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
-        if [ 0 -eq $? ]; then
-          GIT_COMMIT_HASH=$(curl -s $GIT_COMMIT_HASH_URL)
-          echo "Hash is $GIT_COMMIT_HASH"
-          echo "HASH=$GIT_COMMIT_HASH" >> $GITHUB_OUTPUT
-        else
-          echo "No gitcommithash.txt exists; this is probably because the webserver is currently displaying the initial setup instructions."
-        fi
+    # - name: 1. Set up Hugo
+    #   uses: peaceiris/actions-hugo@v2
+    #   with:
+    #     hugo-version: ${{ vars.HUGO_VERSION }}
 
-      # Update the `docs` symlink in the website document root to point to the
-      # new folder created for the unzipped tarball.
-      #
-      # The website document root will look like this after the symlink is
-      # updated:
-      # {{ document_root }}/
-      #               docs -> docs-CURRENT_GITHUB_SHA
-      #               docs-CURRENT_GITHUB_SHA/
-      #               docs-PREVIOUS_GITHUB_SHA
-      #
-      # Note: a garbage collection script is periodically run on the server
-      # to remove the previous docs deployment folders
-    - name: 19. SFTP symlink docs folder on webserver
-      run: |
-        echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT }}" > sftp_known_hosts
+    # - name: 2. Checkout docs repo
+    #   uses: actions/checkout@v3
+    #   with:
+    #     path: 'docs-repo'
 
-        sftp -o "UserKnownHostsFile=sftp_known_hosts" ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} <<EOF
-        lpwd
-        lls -al
+    #   # Debugging step so we can check if the right version
+    #   # of the docs repo is checked out
+    # - name: (Debugging info) Print current docs repo branch/ref/commit
+    #   working-directory: ./docs-repo
+    #   run: |
+    #     git status
+    #     git log -1
 
-        cd docs
-        ls -al
+    # - name: 3. Set up SSH agent (linode-docs-theme repo deploy key)
+    #   uses: webfactory/ssh-agent@v0.7.0
+    #   with:
+    #     ssh-private-key: ${{ secrets.LINODE_DOCS_THEME_DEPLOY_KEY_FOR_DOCS_DEPLOY_GHA }}
 
-        ln -s docs-$GITHUB_SHA new_docs
-        rename new_docs docs
-        ls -al
-        exit
-        EOF
+    # - name: 4. Clone docs theme repo
+    #   run: |
+    #     git clone git@github.com:$GITHUB_REPOSITORY_OWNER/linode-docs-theme linode-docs-theme-repo
 
-        rm sftp_known_hosts
+    # - name: 5. Get linode-docs-theme commit hash from docs go.mod
+    #   id: get-theme-version
+    #   working-directory: ./docs-repo
+    #   run: |
+    #     # `hugo mod graph` prints output that looks like:
+    #     # project github.com/linode/linode-docs-theme@v0.0.0-20230706164309-cc2dbdeb7143+vendor
+    #     # In this example, cc2dbdeb7143 is the relevant commit hash for the
+    #     # linode-docs-theme repo. The following commands grab the commit hash
+    #     # from the `hugo mod graph` string
 
-    - name: 20. Verify commit hash of deployment
-      shell: bash
-      run: |
-        set +e
+    #     LINODE_DOCS_THEME_VERSION=$(hugo mod graph | grep linode-docs-theme | cut -d '+' -f 1 | grep -o '[^-]*$')
+    #     echo "VERSION=$LINODE_DOCS_THEME_VERSION" >> $GITHUB_OUTPUT
 
-        GIT_COMMIT_HASH_URL=${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs/gitcommithash.txt
+    # - name: 6. Check out linode-docs-theme commit hash from docs go.mod
+    #   working-directory: ./linode-docs-theme-repo
+    #   run: |
+    #     git checkout ${{ steps.get-theme-version.outputs.VERSION }}
 
-        curl -ILs $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
-        if [ 0 -eq $? ]; then
-          CURRENT_GIT_COMMIT_HASH=$(curl -s $GIT_COMMIT_HASH_URL)
-          echo "Hash reported by server is $CURRENT_GIT_COMMIT_HASH"
-          if [ $CURRENT_GIT_COMMIT_HASH == $GITHUB_SHA ]; then
-            exit 0
-          else
-            echo "Commit hash of workflow run is $GITHUB_SHA, but commit hash reported by server is $CURRENT_GIT_COMMIT_HASH.  Deployment to server has failed. Please inspect workflow logs and server logs."
-            exit 1
-          fi
+    #   # Debugging step so we can check if the right version
+    #   # of the Algolia admin tool is checked out
+    # - name: (Debugging info) Print Linode Algolia admin tool version
+    #   working-directory: ./linode-docs-theme-repo
+    #   run: |
+    #     cd scripts/linode_algolia_admin/
+    #     go run main.go version
 
-        else
-          echo "No gitcommithash.txt exists on server after deployment. Deployment to server has failed. Please inspect workflow logs and server logs."
-          exit 1
-        fi
+    #   # Debugging step that lists the Hugo-generated images
+    #   # directory *before* the imache cache restore step
+    # - name: (Debugging info) List contents of images dir
+    #   continue-on-error: true
+    #   run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+
+    # - name: 7. Restore Hugo generated images cache
+    #   uses: ylemkimon/cache-restore@v2
+    #   with:
+    #     path: ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+    #     key: ${{ vars.HUGO_IMAGE_CACHE_NAME }}
+    #     restore-keys: ${{ vars.HUGO_IMAGE_CACHE_NAME }}
+
+    #   # Debugging step that lists the Hugo-generated images
+    #   # directory *after* the imache cache restore step,
+    #   # to make sure that the restore happened successfully
+    # - name: (Debugging info) List contents of images dir
+    #   continue-on-error: true
+    #   run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+
+    # - name: 8. Install Node.js
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: 14
+
+    # - name: 9. Install dependencies (Node)
+    #   working-directory: ./docs-repo
+    #   run: npm ci
+
+    # - name: 10. Build Hugo
+    #   env:
+    #     HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
+    #     HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
+    #     HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+    #     HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
+    #     HUGO_IGNOREERRORS: algolia-cachewarmer
+    #   working-directory: ./docs-repo
+    #   run: |
+    #     hugo config
+    #     hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
+
+    #   # Debugging step that lists the Hugo-rendered files
+    #   # to make sure the site was built
+    # - name: (Debugging info) List rendered files
+    #   working-directory: ./docs-repo
+    #   run: |
+    #     sudo apt install -y tree
+    #     tree -L 1 public
+
+    #   # When Hugo builds, it renders search index data to a collection of
+    #   # data files under public/. This step uploads that data to the
+    #   # Algolia search backend
+    # - name: 11. Update Algolia (sandbox)
+    #   working-directory: ./linode-docs-theme-repo
+    #   env:
+    #     ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+    #     ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
+    #     ALGOLIA_INDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+    #   run: |
+    #     cd scripts/linode_algolia_admin/
+
+    #     # The testing-docs-prefix-update sequence does the following:
+    #     # - Downloads data from the starter_ prefixed linode-wp,
+    #     #   linode-community, and linode-documentation-sections indices to the
+    #     #   GitHub Action workspace
+    #     # - Pushes the rendered index JSON files under the public/ folder
+    #     #   in the docs repo from Hugo to Algolia. These are:
+    #     #   - public/index.json
+    #     #   - public/api/index.json
+    #     #   - public/data/sections/index.json
+    #     # - Merge the data from the separate indices and push it into the
+    #     #   PREFIX_linode-merged index in Algolia
+    #     # - Update the settings and synonyms for the PREFIX_linode-merged index
+    #     #   in Algolia
+    #     # - Delete the PREFIX_linode-documentation and
+    #     #   PREFIX_linode-documentation-api indices in Algolia to save space
+    #     go run main.go sequence -source-dir ../../../docs-repo/public testing-docs-prefix-update $ALGOLIA_INDEX_PREFIX
+
+    #   # Why build Hugo twice? In order to render the Explore Docs nav menu,
+    #   # Hugo downloads data from the Algolia search backend. However, the
+    #   # first time we build Hugo in this workflow, that data isn't up-to-date
+    #   # with new content we may be publishing. So, we build Hugo a second time
+    #   # after we have performed the previous Update Algolia step.
+    #   # In summary:
+    #   # - Build Hugo the first time in order to render the JSON search index
+    #   #   data files
+    #   # - Update Algolia with those data files
+    #   # - Build Hugo again so that the navigation UI can be rendered with that
+    #   #   updated info from Algolia
+    #   # It's a little redundant, but solves the chicken-or-egg problem
+    # - name: 12. Build Hugo (second time)
+    #   env:
+    #     HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
+    #     HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
+    #     HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+    #     HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
+    #   working-directory: ./docs-repo
+    #   run: |
+    #     hugo config
+    #     hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
+
+    #   # The gitcommithash.txt file is used in the last workflow step to verify that the deployment was successful
+    # - name: 13. Add gitcommithash.txt to rendered public/ folder
+    #   working-directory: ./docs-repo
+    #   run: |
+    #     echo $GITHUB_SHA > public/gitcommithash.txt
+
+    # - name: 14. Set up SSH agent (docs webserver key)
+    #   uses: webfactory/ssh-agent@v0.7.0
+    #   with:
+    #     ssh-private-key: ${{ secrets.DOCS_WEBSITE_SFTP_PRIVATE_KEY }}
+
+    #   # Make a tarball of the site, because it will upload much, much quicker
+    #   # than the uncompressed rendered site. The commit for this workflow run
+    #   # is encoded in the name of the tarball.
+    # - name: 15. Create tarball of docs website
+    #   run: |
+    #     tar --owner=${{ secrets.DOCS_WEBSITE_USER }} --group=${{ secrets.DOCS_WEBSITE_USER }} -czf docs-$GITHUB_SHA.tar.gz -C docs-repo/public/ .
+
+    #   # Upload the tarball to the website document root. Before the upload, the
+    #   # document root looks like this:
+    #   # {{ document_root }}/
+    #   #               docs -> docs-PREVIOUS_GITHUB_SHA
+    #   #               docs-PREVIOUS_GITHUB_SHA/
+    #   #
+    #   # Where PREVIOUS_GITHUB_SHA is the commit for the last time the deploy
+    #   # workflow ran, and the docs-PREVIOUS_GITHUB_SHA/ folder contains the
+    #   # rendered site from that last workflow run. `docs` is a symlink to that
+    #   # folder.
+    #   #
+    #   # After the upload, it looks like:
+    #   # {{ document_root }}/
+    #   #               docs -> docs-PREVIOUS_GITHUB_SHA
+    #   #               docs-PREVIOUS_GITHUB_SHA/
+    #   #               docs-CURRENT_GITHUB_SHA.tar.gz
+    #   #
+    #   # Note that the tarball is temporarily uploaded to
+    #   # {{ document_root }}/new-tarball-uploads/, and then moved into
+    #   # {{ document_root }}/. If it was uploaded directly to {{ document_root }}/, then
+    #   # the unzip script (see next workflow step for description) could try
+    #   # to unzip a half-uploaded tarball.
+    # - name: 16. SFTP upload website tarball to webserver
+    #   run: |
+    #     echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT }}" > sftp_known_hosts
+
+    #     sftp -o "UserKnownHostsFile=sftp_known_hosts" ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} <<EOF
+    #     lpwd
+    #     lls -al
+
+    #     cd docs
+    #     ls -al
+    #     cd new-tarball-uploads
+
+    #     put docs-$GITHUB_SHA.tar.gz
+    #     cd ..
+    #     rename new-tarball-uploads/docs-$GITHUB_SHA.tar.gz docs-$GITHUB_SHA.tar.gz
+    #     exit
+    #     EOF
+
+    #     rm sftp_known_hosts
+
+    #   # The server has a script that unzips any tarballs it finds
+    #   # in the website document root. There is a systemd service installed
+    #   # that runs the script roughly every 30 seconds. This workflow step
+    #   # waits for the server to run this script. To check if the tarball has
+    #   # been unzipped, we curl the /docs-CURRENT_GITHUB_SHA/ path on the server.
+    #   # If it hasn't been unzipped yet, this path won't exist, and the response
+    #   # will be a 404. If it has been unzipped, the path will exist, and the
+    #   # response will be a 200.
+
+    #   # The unzipped tarball is deleted by the script on the server.
+    #   #
+    #   # After the script has run, the document root looks like:
+    #   # {{ document_root }}/
+    #   #               docs -> docs-PREVIOUS_GITHUB_SHA
+    #   #               docs-PREVIOUS_GITHUB_SHA/
+    #   #               docs-CURRENT_GITHUB_SHA/
+    # - name: 17. Wait for server to unzip tarball
+    #   shell: bash
+    #   run: |
+    #     set +e
+
+    #     CHECK_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs-$GITHUB_SHA/"
+    #     echo "Waiting for server to unzip uploaded docs site tarball:"
+    #     echo "- Every one second, checking $CHECK_URL for an HTTP 200 OK response"
+    #     echo "- Waiting up to ${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }} seconds..."
+
+    #     # Wait for server to unzip the tarball of the docs site
+    #     for i in {1..${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }}}
+    #     do
+    #       curl -ILs $CHECK_URL | grep 'HTTP' | grep '200 OK'
+    #       if [ 0 -eq $? ]; then
+    #         exit 0
+    #       fi
+
+    #       sleep 1
+    #     done
+
+    #     echo "Server did not unzip docs tarball before ${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }} seconds"
+    #     echo "This is often because there is not enough space on server. An administrator should review the available disk space on the server."
+    #     exit 1
+
+    # - name: 18. Get commit hash of previous deploy
+    #   id: get-previous-deploy-commit
+    #   shell: bash
+    #   run: |
+    #     set +e
+
+    #     GIT_COMMIT_HASH_URL=${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs/gitcommithash.txt
+
+    #     curl -ILs $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
+    #     if [ 0 -eq $? ]; then
+    #       GIT_COMMIT_HASH=$(curl -s $GIT_COMMIT_HASH_URL)
+    #       echo "Hash is $GIT_COMMIT_HASH"
+    #       echo "HASH=$GIT_COMMIT_HASH" >> $GITHUB_OUTPUT
+    #     else
+    #       echo "No gitcommithash.txt exists; this is probably because the webserver is currently displaying the initial setup instructions."
+    #     fi
+
+    #   # Update the `docs` symlink in the website document root to point to the
+    #   # new folder created for the unzipped tarball.
+    #   #
+    #   # The website document root will look like this after the symlink is
+    #   # updated:
+    #   # {{ document_root }}/
+    #   #               docs -> docs-CURRENT_GITHUB_SHA
+    #   #               docs-CURRENT_GITHUB_SHA/
+    #   #               docs-PREVIOUS_GITHUB_SHA
+    #   #
+    #   # Note: a garbage collection script is periodically run on the server
+    #   # to remove the previous docs deployment folders
+    # - name: 19. SFTP symlink docs folder on webserver
+    #   run: |
+    #     echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT }}" > sftp_known_hosts
+
+    #     sftp -o "UserKnownHostsFile=sftp_known_hosts" ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} <<EOF
+    #     lpwd
+    #     lls -al
+
+    #     cd docs
+    #     ls -al
+
+    #     ln -s docs-$GITHUB_SHA new_docs
+    #     rename new_docs docs
+    #     ls -al
+    #     exit
+    #     EOF
+
+    #     rm sftp_known_hosts
+
+    # - name: 20. Verify commit hash of deployment
+    #   shell: bash
+    #   run: |
+    #     set +e
+
+    #     GIT_COMMIT_HASH_URL=${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs/gitcommithash.txt
+
+    #     curl -ILs $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
+    #     if [ 0 -eq $? ]; then
+    #       CURRENT_GIT_COMMIT_HASH=$(curl -s $GIT_COMMIT_HASH_URL)
+    #       echo "Hash reported by server is $CURRENT_GIT_COMMIT_HASH"
+    #       if [ $CURRENT_GIT_COMMIT_HASH == $GITHUB_SHA ]; then
+    #         exit 0
+    #       else
+    #         echo "Commit hash of workflow run is $GITHUB_SHA, but commit hash reported by server is $CURRENT_GIT_COMMIT_HASH.  Deployment to server has failed. Please inspect workflow logs and server logs."
+    #         exit 1
+    #       fi
+
+    #     else
+    #       echo "No gitcommithash.txt exists on server after deployment. Deployment to server has failed. Please inspect workflow logs and server logs."
+    #       exit 1
+    #     fi
