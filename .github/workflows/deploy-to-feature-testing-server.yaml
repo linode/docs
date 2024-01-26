@@ -54,8 +54,6 @@ jobs:
       name: deploy_to_feature_testing_server
 
     steps:
-
-    steps:
     - name: 17. Wait for server to unzip tarball
       shell: bash
       run: |
