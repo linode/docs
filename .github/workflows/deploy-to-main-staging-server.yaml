@@ -59,8 +59,6 @@ jobs:
       run: |
         set +e
 
-        curl -sv https://curl.se/ca/cacert.pem > cacert.pem
-
         CHECK_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs-897c1b0dae8916fbf2dbf570c8490f36691d4ce6/"
         echo "Waiting for server to unzip uploaded docs site tarball:"
         echo "- Every one second, checking $CHECK_URL for an HTTP 200 OK response"
@@ -69,7 +67,7 @@ jobs:
         # Wait for server to unzip the tarball of the docs site
         for i in {1..${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }}}
         do
-          curl --cacert cacert.pem -ILvs $CHECK_URL | grep 'HTTP' | grep '200 OK'
+          curl -k -ILvs $CHECK_URL | grep 'HTTP' | grep '200 OK'
           if [ 0 -eq $? ]; then
             exit 0
           fi
