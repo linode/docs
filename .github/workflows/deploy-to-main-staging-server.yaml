@@ -67,7 +67,7 @@ jobs:
         # Wait for server to unzip the tarball of the docs site
         for i in {1..${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }}}
         do
-          curl -k -ILs $CHECK_URL | grep 'HTTP' | grep '200 OK'
+          curl -k -IL $CHECK_URL | grep 'HTTP' | grep '200 OK'
           if [ 0 -eq $? ]; then
             exit 0
           fi
