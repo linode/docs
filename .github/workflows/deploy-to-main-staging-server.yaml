@@ -59,7 +59,7 @@ jobs:
       run: |
         set +e
 
-        CHECK_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs-897c1b0dae8916fbf2dbf570c8490f36691d4ce6/"
+        CHECK_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs-setup/"
         echo "Waiting for server to unzip uploaded docs site tarball:"
         echo "- Every one second, checking $CHECK_URL for an HTTP 200 OK response"
         echo "- Waiting up to ${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }} seconds..."
