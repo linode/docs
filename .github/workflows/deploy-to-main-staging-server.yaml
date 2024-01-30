@@ -57,21 +57,17 @@ jobs:
     - name: 19. Verify commit hash of deployment
       shell: bash
       env:
-        CACERT: ${{ secrets.DOCS_WEBSITE_NO_CDN_CA_CERT }}
-        CACERTVAR: ${{ vars.DOCS_WEBSITE_NO_CDN_CA_CERT }}
+        CACERT_BASE64: ${{ secrets.DOCS_WEBSITE_NO_CDN_CA_CERT_BASE64 }}
       run: |
         set +e
 
-        echo $CACERT > cacert.pem
-        echo $CACERTVAR > cacertvar.pem
-
-        cat cacertvar.pem
+        echo -n $CACERT_BASE64 | base64 --decode > cacert.pem
 
         GIT_COMMIT_HASH_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs/gitcommithash.txt"
 
-        curl --cacert $(pwd)/cacert.pem -ILv $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
+        curl --cacert cacert.pem -ILs $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
         if [ 0 -eq $? ]; then
-          CURRENT_GIT_COMMIT_HASH=$(curl --cacert $(pwd)/cacert.pem -v $GIT_COMMIT_HASH_URL)
+          CURRENT_GIT_COMMIT_HASH=$(curl --cacert cacert.pem -s $GIT_COMMIT_HASH_URL)
           echo "Hash reported by server is $CURRENT_GIT_COMMIT_HASH"
           if [ $CURRENT_GIT_COMMIT_HASH == $GITHUB_SHA ]; then
             exit 0
