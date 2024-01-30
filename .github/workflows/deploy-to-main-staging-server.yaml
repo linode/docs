@@ -58,10 +58,14 @@ jobs:
       shell: bash
       env:
         CACERT: ${{ secrets.DOCS_WEBSITE_NO_CDN_CA_CERT }}
+        CACERTVAR: ${{ vars.DOCS_WEBSITE_NO_CDN_CA_CERT }}
       run: |
         set +e
 
         echo $CACERT > cacert.pem
+        echo $CACERTVAR > cacertvar.pem
+
+        cat cacertvar.pem
 
         GIT_COMMIT_HASH_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs/gitcommithash.txt"
 
