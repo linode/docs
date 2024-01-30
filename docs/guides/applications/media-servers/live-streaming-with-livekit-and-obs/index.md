@@ -1,7 +1,7 @@
 ---
 slug: live-streaming-with-livekit-and-obs
-title: "Live Streaming With Livekit and OBS"
-description: 'Learn how to set up a LiveKit server for live streaming from OBS Studio in this tutorial.'
+title: "Live Streaming With LiveKit and OBS Studio"
+description: 'Learn how to set up a LiveKit server for live streaming from OBS Studio.'
 keywords: ['streaming','obs','webrtc']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
@@ -14,7 +14,7 @@ external_resources:
 
 [LiveKit](https://livekit.io/) is a scalable, open source WebRTC stack for streaming audio and video. LiveKit uses APIs accessible through server-side and front-end SDKs, supports multi-user functionality, and works with a range of streaming sources, including open source tools like [OBS Studio](https://obsproject.com/).
 
-This guide shows you how to use Docker Compose to install LiveKit on a Compute Instance, how to get started with a basic configuration, and includes the steps for installing OBS Studio locally and setting up an OBS stream with LiveKit.
+This guide shows you how to use Docker Compose to install LiveKit on a Compute Instance, get started with a basic configuration, install OBS Studio locally, and set up an OBS stream with LiveKit.
 
 ## Before You Begin
 
