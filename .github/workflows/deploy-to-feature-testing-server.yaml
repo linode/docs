@@ -65,9 +65,9 @@ jobs:
 
         GIT_COMMIT_HASH_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs/gitcommithash.txt"
 
-        curl --cacert cacert.pem -ILs $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
+        curl --cacert cacert.pem -ILv $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
         if [ 0 -eq $? ]; then
-          CURRENT_GIT_COMMIT_HASH=$(curl --cacert cacert.pem -s $GIT_COMMIT_HASH_URL)
+          CURRENT_GIT_COMMIT_HASH=$(curl --cacert cacert.pem -v $GIT_COMMIT_HASH_URL)
           echo "Hash reported by server is $CURRENT_GIT_COMMIT_HASH"
           if [ $CURRENT_GIT_COMMIT_HASH == $GITHUB_SHA ]; then
             exit 0
@@ -80,6 +80,8 @@ jobs:
           echo "No gitcommithash.txt exists on server after deployment. Deployment to server has failed. Please inspect workflow logs and server logs."
           exit 1
         fi
+
+        rm cacert.pem
 
     # - name: 1. Set up Hugo
     #   uses: peaceiris/actions-hugo@v2
