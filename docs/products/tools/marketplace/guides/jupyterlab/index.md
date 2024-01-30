@@ -1,0 +1,64 @@
+---
+description: "Deploy JupyterLab on a Linode Compute Instance. Jupyter is a web-based interactive development environment for notebooks, code, and data."
+keywords: ['productivity','notebook','data science']
+tags: ["marketplace", "linode platform", "cloud manager"]
+published: 2024-01-30
+modified_by:
+  name: Linode
+title: "Deploy JupyterLab through the Linode Marketplace"
+external_resources:
+- '[Project Jupyter](https://jupyter.org/)'
+authors: ["Linode"]
+---
+
+[JupyterLab](https://jupyter.org/) stands as the cutting-edge web-based interactive development environment, catering to notebooks, code, and data. With a flexible interface, users can effortlessly configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning. 
+
+## Deploying a Marketplace App
+
+{{< content "deploy-marketplace-apps-shortguide">}}
+
+{{< content "marketplace-verify-standard-shortguide">}}
+
+{{< note >}}
+**Estimated deployment time:** JupyterLab should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
+{{< /note >}}
+
+## Configuration Options
+
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Recommended plan:** All plan types and sizes can be used.
+
+### JupyterLab Options
+
+- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+
+{{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
+### Getting Started after Deployment
+
+## Accessing the Jupyter Server
+
+Launch your web browser and navigate to the custom domain you set during deployment or the rDNS domain associated with your Compute Instance (e.g., 192-0-2-1.ip.linodeusercontent.com). This will direct you to the Jupyter Server login page, where you'll need to enter a token or password. For guidance on locating your Linode's IP addresses and rDNS information, consult the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide.
+
+## Obtaining the Jupyter Token
+
+By default, Jupyter issues a token for authentication. The Jupyter access token was automatically generated during the initial install process and is stored in the `/root/.credentials` file. To view the default token, log in to your Compute Instance either through the [LISH Console](https://www.linode.com/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, and check the contents of the file:
+
+```bash
+cat /root/.credentials
+```
+
+Copy and paste this token into the **Password or token:** field on the Jupyter login page. If you prefer password authentication, use the token to set a password in the **Setup a Password** section on the login page. Once this is done, you can employ both the token and the password for accessing JupyterLab.
+
+### More Information
+
+You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
+
+- [Project Jupyter](https://jupyter.org/)
+- [JupyterLab Documentation](https://jupyterlab.readthedocs.io/en/latest/)
+
+{{< content "marketplace-update-note-shortguide">}}
