@@ -1680,6 +1680,7 @@ passwdfile
 passwordless
 patroni
 pathnames
+Paulo
 paypal
 PBCs
 pbr
@@ -2478,6 +2479,7 @@ ust
 utils
 UTunnel
 uuid
+uuids
 uwls
 uwsgi
 v1
