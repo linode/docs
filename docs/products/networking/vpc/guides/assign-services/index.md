@@ -17,7 +17,7 @@ There are three main ways to assign a Compute Instance to a VPC:
 
 - VPCs, along with VLANs and the public internet, are configured as network interfaces within a Compute Instance's configuration profile. These network interfaces are configured automatically when creating a Compute Instance with a VPC or when interacting with the VPC directly to assign and remove existing Compute Instances. You can also edit the Configuration Profile directly to manually configure these network interfaces to suit specific use cases. Manually editing a Configuration Profile on a Compute Instance is typically the preferred way to assign a VPC to an existing instance.
 
-- VPC resources requiring public internet access should be configured as a 1:1 NAT or should use a manually deployed NAT gateway. We do not recommend configuring a separate network interface with public internet access (in addition to the VPC interface).
+- VPC resources requiring public internet access should be configured as a 1:1 NAT or should use a manually deployed NAT gateway. It is not recommended to configure a separate network interface with public internet access (in addition to the VPC interface).
 
 - Compute Instances can only be assigned to a single subnet of a single VPC, though they can communicate with other instances on any subnet within the same VPC. Multiple VPC interfaces on an instance are not allowed.
 
@@ -25,7 +25,7 @@ There are three main ways to assign a Compute Instance to a VPC:
 
 ## Configuration Options
 
-When assigning both new and existing Compute Instance to a VPC, the following settings can be configured.
+When assigning both new and existing Compute Instances to a VPC, the following settings can be configured:
 
 -   **VPC:** Multiple VPCs can be configured in a data center, but each Compute Instance can only be assigned to a single VPC.
 
@@ -33,7 +33,7 @@ When assigning both new and existing Compute Instance to a VPC, the following se
 
 -   **VPC IPv4 address:** This is the IPv4 address of the Compute Instance within the private network of the subnet. It must be within the CIDR range defined in the subnet. The address can be automatically generated or manually entered.
 
-    When manually entering the IP address, do not use the first two or last two IP address within the subnet's defined IPv4 range. These are non-host IP addresses and are set aside for routing and other features.
+    When manually entering the IP address, do not use the first two or last two IP addresses within the subnet's defined IPv4 range. These are non-host IP addresses and are set aside for routing and other features.
 
 -   **Public internet connectivity:** By default, Compute Instances with a VPC cannot communicate over the public internet. To facilitate internet access, enable the *Assign a public IPv4 address for this Linode* option, which configures a 1:1 NAT on the VPC interface. This enables routing internet traffic over your Compute Instance's public IP addresses.
 

@@ -24,7 +24,7 @@ Networking packets sent over a VPC are walled off from the public internet --- a
 
 ## Segment Traffic Into Separate Subnets
 
-Instead of assigning a single IPv4 range for the entire VPC, Akamai's VPC design allows users to configure multiple RFC1918 ranges through the use of subnets. This has the benefit of segmenting services into distinct networks and can be useful when migrating or combining existing networking environments so that there are no changes to routing or static IPs. These subnets can isolate various functionality of an application (such as separating public frontend service from private backend services) or separate out a production environment from staging or development.
+Instead of assigning a single IPv4 range for the entire VPC, Akamai's VPC design allows users to configure multiple RFC1918 ranges through the use of subnets. This has the benefit of segmenting services into distinct networks and can be useful when migrating or combining existing networking environments so that there are no changes to routing or static IPs. These subnets can isolate various functionality of an application (such as separating public frontend services from private backend services) or separate out a production environment from staging or development.
 
 Routing between subnets on a VPC is configured automatically. By default, all Compute Instances on a VPC can communicate with any other instance on that VPC, regardless of which subnet the other instance is assigned to use.
 
@@ -34,7 +34,7 @@ If a Compute Instance is assigned to a Cloud Firewall, firewall rules that limit
 
 ## Availability
 
-VPCs are available in Amsterdam (Netherlands), Chennai (India), Chicago IL (USA), Jakarta (Indonesia), Los Angeles CA (USA), Miami FL (USA), Milan (Italy), Paris (France), Osaka (Japan), São Paulo (Brazil), Seattle WA (USA), Stockholm (Sweden), and Washington DC (USA).
+VPCs are available in: Amsterdam (Netherlands), Chennai (India), Chicago IL (USA), Jakarta (Indonesia), Los Angeles CA (USA), Miami FL (USA), Milan (Italy), Paris (France), Osaka (Japan), São Paulo (Brazil), Seattle WA (USA), Stockholm (Sweden), and Washington DC (USA).
 
 ## Pricing
 
@@ -76,6 +76,6 @@ Both [VLANs](/docs/products/networking/vlans/) and [Private IP addresses](/docs/
 
 - To facilitate routing between different subnets on the same VPC, the VPC must be assigned to the `eth0` network interface on a Compute Instance (the default for new instances created with a VPC).
 
-- Network traffic across a private VPC network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/). The network transfer allowance for Compute Instances configured on VPCs still count towards the _global network transfer pool_ on your account.
+- Network traffic across a private VPC network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/). The network transfer allowance for Compute Instances configured on VPCs still counts towards the _global network transfer pool_ on your account.
 
 - Using the [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) over a VPC is not yet supported.

@@ -19,7 +19,7 @@ A VPC contains one or more _subnets_, which are networks within the VPC whose se
 
 - Up to 10 subnets can be created on a VPC.
 - A subnet is located within a single data center.
-- Each subnet can have at most one IPv4 CIDR block. Review [Valid IPv4 Ranges](#valid-ipv4-ranges)
+- Each subnet can have at most one IPv4 CIDR block. Review [Valid IPv4 Ranges](#valid-ipv4-ranges).
 - Each service assigned to a subnet must have a unique IPv4 address in the defined range.
 
 ## Valid IPv4 Ranges for a Subnet {#valid-ipv4-ranges}
@@ -34,7 +34,7 @@ When defining an IPv4 range for a subnet, use a CIDR block within the [RFC1918](
 
 1.  View the [VPCs](https://cloud.linode.com/vpcs) page in the Cloud Manager. See [View VPCs](/docs/products/networking/vpc/guides/manage-vpcs/#view-vpcs).
 
-1.  Locate the VPC you wish to inspect and click its name. This displays the details page for that VPC.
+1.  Locate and click the name of the VPC you wish to inspect. This displays the details page for that VPC.
 
 1.  Review the **Subnets** section to view all of the subnets on the VPC.
 
@@ -72,7 +72,7 @@ Review the [Assign a Compute Instance to a VPC](/docs/products/networking/vpc/gu
 
 ## Remove a Service from a Subnet
 
-It's possible to remove a Compute Instance from a subnet, though the instance needs to be powered off. Follow the instructions below to power off and remove a Compute Instance.
+It is possible to remove a Compute Instance from a subnet, though the instance needs to be powered off to do so. Follow the instructions below to power off and remove a Compute Instance.
 
 1.  Navigate to the **Subnets** section of a VPC. See [View Subnets](/docs/products/networking/vpc/guides/subnets/#view-subnets).
 

@@ -12,7 +12,7 @@ aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/
 authors: ["Linode"]
 ---
 
-Each Linode Compute Instance is equipped with several IP addresses, which may enable it to be accessible over the public Internet and to other Linode services or accessible just to other Compute Instances within a VPC. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
+Each Linode Compute Instance is equipped with several IP addresses, which may enable it to be accessible over the public Internet and other Linode services or accessible just to other Compute Instances within a VPC. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
 
 ## Viewing IP Addresses
 
@@ -34,9 +34,9 @@ Each Linode Compute Instance is equipped with several IP addresses, which may en
 
 ### IPv4
 
-- **Public IPv4 Address:** Most Compute Instances (those created without a VPC) have a single public IPv4 address, which enables your applications to be accessible over the Internet. Additional addresses can be provided with technical justification. If a VPC interface is configured when a Compute Instance is created, that instance typically does not have a public IPv4 address _unless_ the _Assign a public IPv4 address_ option was selected.
+- **Public IPv4 Address:** Most Compute Instances (those created without a VPC) have a single public IPv4 address, which enables your applications to be accessible over the Internet. Additional addresses can be provided with technical justification. If a VPC interface is configured when a Compute Instance is created, that instance typically does not have a public IPv4 address _unless_ the _Assign a public IPv4 address_ option is selected.
 
-- **VPC IPv4 Address:** If an instance is assigned to a VPC, that instance is assigned an IPv4 address from the CIDR range configured on the subnet. This IP address can be automatically generated or manually provided. Optionally, if the _Assign a public IPv4 address_ option was selected, the instance is assigned public IPv4 address as well.
+- **VPC IPv4 Address:** If an instance is assigned to a VPC, that instance is assigned an IPv4 address from the CIDR range configured on the subnet. This IP address can be automatically generated or manually provided. Optionally, if the _Assign a public IPv4 address_ option is selected during creation, the instance is assigned public IPv4 address as well.
 
 - **VLAN IPv4 Address:** When a Compute Instance is configured with a VLAN, you assign it a IPv4 address to use within the VLAN. It is also automatically assigned a public IPv4 address.
 
