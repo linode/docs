@@ -1439,8 +1439,10 @@ msgid
 msgpack
 msmtp
 msps
+MTAs
 mtr
 mtu
+MUAs
 multiarch
 multibyte
 multicast
