@@ -1439,8 +1439,10 @@ msgid
 msgpack
 msmtp
 msps
+MTAs
 mtr
 mtu
+MUAs
 multiarch
 multibyte
 multicast
@@ -1680,6 +1682,7 @@ passwdfile
 passwordless
 patroni
 pathnames
+Paulo
 paypal
 PBCs
 pbr
@@ -2478,6 +2481,7 @@ ust
 utils
 UTunnel
 uuid
+uuids
 uwls
 uwsgi
 v1
