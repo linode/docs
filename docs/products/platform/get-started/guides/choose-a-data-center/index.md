@@ -26,32 +26,32 @@ This page is a quick guide for choosing and speed testing a data center (DC). St
 An important consideration when choosing a data center is the availability of specific features and services, as well as regional support. Below is table displaying a matrix of which services Linode offers in each particular region.
 
 {{< table class="first-sticky" >}}
-| Region | [Dedicated Compute](/docs/products/compute/compute-instances/plans/dedicated-cpu/) | [Shared Compute](/docs/products/compute/compute-instances/plans/shared-cpu/) | [GPUs](/docs/products/compute/compute-instances/plans/gpu/) | [Premium Compute](/docs/products/compute/compute-instances/plans/premium/) | [Kubernetes](/docs/products/compute/kubernetes/) | [Managed DB](/docs/products/databases/managed-databases/) | [Cloud Firewall](/docs/products/networking/cloud-firewall/) | [DDoS Protection](/docs/products/networking/ddos-protection/) | [NodeBalancers](/docs/products/networking/nodebalancers/) | [VLANs](/docs/products/networking/vlans/) | [Backups](/docs/products/storage/backups/) | [Block Storage](/docs/products/storage/block-storage/) | [Object Storage](/docs/products/storage/object-storage/) | [Images](/docs/products/tools/images/) |
-| --- | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
-| Amsterdam      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Atlanta        | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| Chennai        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Chicago        | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Dallas         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
-| Frankfurt      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| Fremont        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
-| Jakarta        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Los Angeles    | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
-| Miami          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Milan          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
-| Newark         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| Osaka          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Paris          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| São Paulo      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Seattle        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Singapore      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| Stockholm      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Sydney         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
-| Tokyo          | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
-| Toronto        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
-| Washington, DC | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Region | [Dedicated Compute](/docs/products/compute/compute-instances/plans/dedicated-cpu/) | [Shared Compute](/docs/products/compute/compute-instances/plans/shared-cpu/) | [GPUs](/docs/products/compute/compute-instances/plans/gpu/) | [Premium Compute](/docs/products/compute/compute-instances/plans/premium/) | [Kubernetes](/docs/products/compute/kubernetes/) | [Managed DB](/docs/products/databases/managed-databases/) | [Cloud Firewall](/docs/products/networking/cloud-firewall/) | [DDoS Protection](/docs/products/networking/ddos-protection/) | [NodeBalancers](/docs/products/networking/nodebalancers/) | [VLANs](/docs/products/networking/vlans/) | [VPCs](/docs/products/networking/vpc/) | [Backups](/docs/products/storage/backups/) | [Block Storage](/docs/products/storage/block-storage/) | [Object Storage](/docs/products/storage/object-storage/) | [Images](/docs/products/tools/images/) |
+| --- | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
+| Amsterdam      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Atlanta        | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
+| Chennai        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Chicago        | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Dallas         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Frankfurt      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
+| Fremont        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   |   | ✔ | ✔ |   | ✔ |
+| Jakarta        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Los Angeles    | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Miami          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Milan          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Newark         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
+| Osaka          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Paris          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| São Paulo      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Seattle        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Singapore      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
+| Stockholm      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Sydney         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Tokyo          | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Toronto        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Washington, DC | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 {{< /table >}}
 
 †Denotes higher capacity Object Storage availability.
