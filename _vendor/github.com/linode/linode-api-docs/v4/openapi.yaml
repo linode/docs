@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.170.0
+  version: 4.170.2
   title: Linode API
   license:
     name: Apache 2.0
@@ -8960,6 +8960,21 @@ paths:
                     will not be performed.
                   example: false
                   default: false
+                type:
+                  type: string
+                  enum:
+                  - warm
+                  - cold
+                  description: |
+                    Type of migration used in moving to a new host or Linode type.
+
+                    `warm`: the Linode will not power down until the migration is complete.
+                    Warm migrations are not available for DC migrations.
+
+                    `cold`: the Linode will be powered down and migrated. When the migration
+                    is complete, the Linode will be powered on.
+                  example: warm
+                  default: cold
       responses:
         '200':
           description: Scheduled migration started
@@ -9451,6 +9466,21 @@ paths:
                     data must fit within the smaller disk size.
                   example: true
                   default: true
+                migration_type:
+                  type: string
+                  enum:
+                  - warm
+                  - cold
+                  description: |
+                    Type of migration used in moving to a new host or Linode type.
+
+                    `warm`: the Linode will not power down until the migration is complete.
+                    Warm migrations are not available for DC migrations.
+
+                    `cold`: the Linode will be powered down and migrated. When the migration
+                    is complete, the Linode will be powered on.
+                  example: warm
+                  default: cold
       responses:
         '200':
           description: Resize started.
@@ -13779,7 +13809,7 @@ paths:
         * A Firewall can be assigned during Linode creation by utilizing the `firewall_id` [Linode Create Request](/docs/api/linode-instances/#linode-create__request-body-schema) property.
 
         * A service can have one active, assigned Firewall at a time.
-        
+
         Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
 
         * Firewalls apply to all of a Linode's non-`vlan` purpose Configuration Profile Interfaces.

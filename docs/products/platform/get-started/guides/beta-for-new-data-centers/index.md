@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-10-26
+modified: 2024-01-10
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -28,6 +28,7 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 | Chicago, IL, USA | **Now available to all customers** | `us-ord` |
 | Jakarta, Indonesia | **Now available to all customers** | `id-cgk` |
 | Los Angeles, CA, USA | **Now available to all customers** | `us-lax` |
+| Madrid, Spain | *Limited beta* | `es-mad` |
 | Miami, FL, USA | **Now available to all customers** | `us-mia` |
 | Milan, Italy | **Now available to all customers** | `it-mil` |
 | Osaka, Japan | **Now available to all customers** | `jp-osa` |
@@ -75,6 +76,7 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 | Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
 | Jakarta, Indonesia | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
 | Los Angeles, CA, USA | `us-lax-1` | `https://us-lax-1.linodeobjects.com` |
+| Madrid, Spain | `es-mad-1` | `https://es-mad-1.linodeobjects.com` |
 | Miami, FL, USA | `us-mia-1` | `https://us-mia-1.linodeobjects.com` |
 | Milan, Italy | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
 | Osaka, Japan | `jp-osa-1	` | `https://jp-osa-1.linodeobjects.com` |
@@ -133,6 +135,7 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 | Chicago, IL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
 | Jakarta, Indonesia | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
 | Los Angeles, CA, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 30 |
+| Madrid, Spain | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 24 |
 | Miami, FL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 28 |
 | Milan, Italy | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 27 |
 | Osaka, Japan | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 26 |
@@ -215,6 +218,20 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     {{< /note >}}
 
 -   **Weblish/Glish Gateway:** `us-lax.webconsole.linode.com`
+
+#### Madrid, Spain
+
+-   **Lish SSH Gateway:** `lish-es-mad.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:sIYL6fvcNZVz3pXa6fp6YNS4ITfcCTu918pH0dxmaL0 lish-es-mad.linode.com
+    ECDSA 256 SHA256:eSqy+KAkPlzqRxYnPzGKJXuVd6D5APZsM/qWAWVk5xs lish-es-mad.linode.com
+    ED25519 256 SHA256:Sm20p3dsXSoqdRF8RwehfHn2sJszSuP/Z454glxohbc lish-es-mad.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `es-mad.webconsole.linode.com`
 
 #### Miami, FL, USA
 
