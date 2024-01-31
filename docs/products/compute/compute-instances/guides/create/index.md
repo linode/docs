@@ -2,7 +2,7 @@
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2023-09-20
+modified: 2024-01-30
 modified_by:
   name: Linode
 title: "Create a Compute Instance"
@@ -19,6 +19,9 @@ This guide walks you through creating a Compute Instance (also frequently called
 1. [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
 1. [Set the Label and Add Tags](#set-the-label-and-add-tags)
 1. [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
+1. [Assign to a VPC](#assign-to-a-vpc)
+1. [Assign to a Cloud Firewall](#assign-to-a-cloud-firewall)
+1. [Assign to a VLAN](#assign-to-a-vlan)
 1. [Configure Additional Options](#configure-additional-options)
 1. [Add User Data](#add-user-data)
 1. [Deploy the Instance](#deploy-the-instance)
@@ -95,15 +98,51 @@ You can resize to a different plan size or instance type at any time. This means
 
 -   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
 
+## Assign to a VPC (Optional) {#assign-to-a-vpc}
+
+![Screenshot of the VPC assignment section](create-instance-vpc.jpg)
+
+Consider using a [VPC](/docs/products/networking/vpc/) (Virtual Private Network) to isolate your new Compute Instance from other systems on the Akamai cloud computing platform and the internet. This adds an additional layer of privacy and can be used alongside Cloud Firewalls. If you are not sure you need a VPC, you can skip this step. You can add this new Compute Instance to a VPC at any time in the future by following the steps within the [Assign (and Remove) Services to a VPC](/docs/products/networking/vpc/guides/assign-services/) guide.
+
+- **Select VPC:** To assign this instance to a VPC, select the VPC from the **Assign VPC** dropdown menu. If you do not yet have a VPC in the selected data center, click the **Create a VPC** button and follow the instructions on the [Create a VPC](/docs/products/networking/vpc/guides/create/) guide.
+
+- **Select Subnet:** An instance can be assigned to a single subnet, which allows you to further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
+
+- **Auto-Assign IPv4 address:** By default, an IPv4 address will be automatically generated for the instance on the subnet’s defined CIDR range. If you want to manually assign an IP address, uncheck the **Auto-assign a VPC IPv4 address for this Linode** option and enter your custom IPv4 address. This address must still be within the subnet’s IP range.
+
+- **Public IPv4 address:** If you wish to enable public internet access on this new instance, check the **Assign a public IPv4 address for this Linode** option. By default, this is unchecked and you will not be able to access the internet from this instance.
+
+For additional information and considerations, review the [Assign (and Remove) Services](/docs/products/networking/vpc/guides/assign-services/) guide.
+
+## Assign to a Cloud Firewall (Optional) {#assign-to-a-cloud-firewall}
+
+![Screenshot of the Assign Cloud Firewall section](create-instance-cloud-firewall.jpg)
+
+To protect your new Compute Instance from unwanted traffic, consider using a [Cloud Firewall](/docs/products/networking/cloud-firewall/). This allows you to cascade firewall rules across multiple services and manage those rules within the Cloud Manager, Linode CLI, and Linode API.
+
+To assign your instance to a Cloud Firewall, select the firewall from the **Assign Firewall** dropdown menu. If you do not have a firewall or wish to create a new one, click the **Create Firewall** link and follow the instructions within the [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) guide. You can always skip this step and assign a firewall at a later time by following the instructions in the [Apply Firewall Rules to a Service](/docs/products/networking/cloud-firewall/guides/apply-to-service/) guide.
+
+## Assign to a VLAN (Optional) {#assign-to-a-vlan}
+
+![Screenshot of the VLAN assignment section](create-instance-vlan.jpg)
+
+Add this Compute Instance to a secure private network. VLANs are available at no additional cost, though not all data centers currently support this feature. See [VLANs](/docs/products/networking/vlans/) to learn more.
+
+{{< note type="warning" title="Consider using a VPC instead of a VLAN" isCollapsible=true >}}
+In most cases, it's recommended to use a VPC over a VLAN. VPCs operate on a higher network layer and come with more IP addressing and IP routing functionality. Additionally, you can further segment out network traffic through subnets, each of which has its own CIDR range. Review [these differences](/docs/products/networking/vpc/#difference-between-private-network-options-vpcs-vlans-and-private-ips) to learn more.
+{{< /note >}}
+
 ## Configure Additional Options
 
 The following features and services can be configured during the Compute Instance's creation or at any point after.
 
-- **Attach a VLAN:** Add this Compute Instance to a secure private network. VLANs are available at no additional cost, though not all data centers currently support this feature. See [VLANs](/docs/products/networking/vlans/) to learn more.
-
 - **Add the Backups service:** Safeguard your data with Linode’s Backups service, enabling automatic backups of the disks on your Compute Instances. Up to four backups are stored as part of this service, including automated daily, weekly, and biweekly backups in addition to a manual backup snapshot. See [Backups](/docs/products/storage/backups/) to learn more and view pricing.
 
-- **Add a private IP:** A private IP gives you access to the data center's private network. This enables you to communicate over a non-public channel with other Compute Instances in the same region. Private IPs are needed to configure this instance as a NodeBalancer backend.
+- **Add a private IP:** A private IP gives you access to the data center's private network. This enables you to communicate with other Compute Instances in the same region without using a public IPv4 address. Private IPs are needed to configure this instance as a NodeBalancer backend. The private IP feature requires a _Public Internet_ network interface. As such, Compute Instances configured with VPCs _and_ a private IP address are configured with the _VPC_ network interface on `eth0` and the _Public Internet_ interface on `eth1`.
+
+    {{< note type="warning" title="Consider using a VPC instead of the private IP address feature" isCollapsible=true >}}
+    Private IP addresses are accessible by any other instance in the same data center, provided that instance also has a private IP. To further isolate your instance, consider using a VPC instead. Review [these differences](/docs/products/networking/vpc/#difference-between-private-network-options-vpcs-vlans-and-private-ips) to learn more.
+    {{< /note >}}
 
 ## Add User Data
 
