@@ -567,13 +567,16 @@ module.exports = {
 			   Tablet: 768px … 991px
 			   Desktop: 992px … :infinity:
 			*/
-			xl: px(maxWidthXl),
-			lg: px(maxWidthLg), // Desktop
-			md: px(maxWidthMd),
-			sm: px(maxWidthSm),
-			small: { max: '991px' }, // Common term for mobile, tablets etc. They are small.
-			tablet: { min: '768px', max: '991px' },
+			/*
+			Order these from smallest first. 
+			*/
 			mobile: { max: '767px' },
+			tablet: { min: '768px', max: '991px' },
+			small: { max: '991px' }, // Common term for mobile, tablets etc. They are small.
+			sm: px(maxWidthSm),
+			md: px(maxWidthMd),
+			lg: px(maxWidthLg), // Desktop
+			xl: px(maxWidthXl),
 		},
 		fontSize: {
 			xxs: '0.65625rem',
