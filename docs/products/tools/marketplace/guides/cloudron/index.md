@@ -34,6 +34,8 @@ Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www
 - **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
+
 ## Getting Started after Deployment
 
 The Cloudron application is served on the Linode, however it still requires a few additional steps to fully complete the installation process.

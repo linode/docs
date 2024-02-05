@@ -31,6 +31,8 @@ authors: ["Linode"]
 - **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used with CyberPanel.
 
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your CyberPanel App

@@ -44,7 +44,7 @@ The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akam
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 
