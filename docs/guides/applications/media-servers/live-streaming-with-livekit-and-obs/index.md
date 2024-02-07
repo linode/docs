@@ -5,7 +5,8 @@ description: 'Learn how to set up a LiveKit server for live streaming from OBS S
 keywords: ['streaming','obs','webrtc']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-11-15
+published: 2024-01-31
+modified: 2024-02-05
 modified_by:
   name: Nathaniel Stickman
 external_resources:
@@ -241,7 +242,9 @@ In a production environment, you may likely leverage [LiveKit's API](https://doc
         --valid-for 24h
     ```
 
-Further on, you will use the LiveKit CLI to create Ingress credentials for streaming from OBS Studio. The [LiveKit CLI documentation](https://github.com/livekit/livekit-cli) provides more information on this and additional uses for the CLI, such as load testing with simulated streams and subscribers.
+Further on, you will use the LiveKit CLI to create Ingress credentials for streaming from OBS Studio. LiveKit's documentation provides more information on this and additional uses for the CLI, such as load testing with simulated streams and subscribers:
+- [LiveKit CLI](https://github.com/livekit/livekit-cli)
+- [LiveKit Benchmarking](https://docs.livekit.io/realtime/self-hosting/benchmark/)
 
 ### Initial Test
 
