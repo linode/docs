@@ -53,12 +53,27 @@ jobs:
       url: ${{ vars.DOCS_WEBSITE_URL }}
 
     steps:
-    - name: 14. Set up SSH agent (docs webserver key)
+    - name: Test curl
+      shell: bash
+      run: |
+        set +e
+
+        test_curl() {
+        echo "Curling server $1"
+
+        CHECK_URL="$2/docs/"
+        curl -ILs $CHECK_URL
+        }
+
+        test_curl "1" "${{ secrets.DOCS_WEBSITE_URL_NO_CDN_1 }}"
+        test_curl "2" "${{ secrets.DOCS_WEBSITE_URL_NO_CDN_2 }}"
+
+    - name: Set up SSH agent (docs webserver key)
       uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: ${{ secrets.DOCS_WEBSITE_SFTP_PRIVATE_KEY }}
 
-    - name: 16. SFTP test
+    - name: SFTP test
       run: |
         echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION_1 }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT_1 }}" > sftp_known_hosts
         echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION_2 }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT_2 }}" >> sftp_known_hosts
