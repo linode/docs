@@ -53,18 +53,18 @@ jobs:
       url: ${{ vars.DOCS_WEBSITE_URL }}
 
     steps:
-    - name: Test curl
-      shell: bash
-      run: |
-        test_curl() {
-        echo "Curling server $1"
+    # - name: Test curl
+    #   shell: bash
+    #   run: |
+    #     test_curl() {
+    #     echo "Curling server $1"
 
-        CHECK_URL="$2/docs/"
-        curl -ILv $CHECK_URL
-        }
+    #     CHECK_URL="$2/docs/"
+    #     curl -ILv $CHECK_URL
+    #     }
 
-        test_curl "1" "${{ secrets.DOCS_WEBSITE_URL_NO_CDN_1 }}"
-        test_curl "2" "${{ secrets.DOCS_WEBSITE_URL_NO_CDN_2 }}"
+    #     test_curl "1" "${{ secrets.DOCS_WEBSITE_URL_NO_CDN_1 }}"
+    #     test_curl "2" "${{ secrets.DOCS_WEBSITE_URL_NO_CDN_2 }}"
 
     - name: Set up SSH agent (docs webserver key)
       uses: webfactory/ssh-agent@v0.7.0
@@ -81,7 +81,7 @@ jobs:
         echo ""
         echo "Uploading tarball to server $1"
 
-        sftp -o "UserKnownHostsFile=sftp_known_hosts" ${{ secrets.DOCS_WEBSITE_USER }}@$2 <<EOF
+        sftp -vo "UserKnownHostsFile=sftp_known_hosts" ${{ secrets.DOCS_WEBSITE_USER }}@$2 <<EOF
         lpwd
         lls -al
 
