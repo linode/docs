@@ -3,10 +3,9 @@ name: Deploy to production
 on:
   release:
     types: [published]
-
-env:
-  hugo_image_cache_name: hugo-generated-images
-  hugo_image_cache_path: /home/runner/work/docs/docs/docs-repo/resources/_gen/images/
+  push:
+    branches:
+      - 'cicd-sftp-update'
 
 # This workflow builds the site with Hugo, syncs it over to the production web
 # servers, and updates the production Algolia app to reflect the content in the
@@ -54,32 +53,11 @@ jobs:
       url: ${{ vars.DOCS_WEBSITE_URL }}
 
     steps:
-    - name: 15. Create tarball of docs website
-      run: |
-        tar --owner=${{ secrets.DOCS_WEBSITE_USER }} --group=${{ secrets.DOCS_WEBSITE_USER }} -czf docs-$GITHUB_SHA.tar.gz -C docs-repo/public/ .
+    - name: 14. Set up SSH agent (docs webserver key)
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.DOCS_WEBSITE_SFTP_PRIVATE_KEY }}
 
-      # Upload the tarball to the website document root. Before the upload, the
-      # document root looks like this:
-      # {{ document_root }}/
-      #               docs -> docs-PREVIOUS_GITHUB_SHA
-      #               docs-PREVIOUS_GITHUB_SHA/
-      #
-      # Where PREVIOUS_GITHUB_SHA is the commit for the last time the deploy
-      # workflow ran, and the docs-PREVIOUS_GITHUB_SHA/ folder contains the
-      # rendered site from that last workflow run. `docs` is a symlink to that
-      # folder.
-      #
-      # After the upload, it looks like:
-      # {{ document_root }}/
-      #               docs -> docs-PREVIOUS_GITHUB_SHA
-      #               docs-PREVIOUS_GITHUB_SHA/
-      #               docs-CURRENT_GITHUB_SHA.tar.gz
-      #
-      # Note that the tarball is temporarily uploaded to
-      # {{ document_root }}/new-tarball-uploads/, and then moved into
-      # {{ document_root }}/. If it was uploaded directly to {{ document_root }}/, then
-      # the unzip script (see next workflow step for description) could try
-      # to unzip a half-uploaded tarball.
     - name: 16. SFTP test
       run: |
         echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION_1 }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT_1 }}" > sftp_known_hosts
