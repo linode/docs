@@ -55,12 +55,18 @@ jobs:
     steps:
     - name: Test curl
       shell: bash
+      env:
+        CACERT_BASE64: ${{ secrets.DOCS_WEBSITE_NO_CDN_CA_CERT_BASE64 }}
       run: |
+        set +e
+
+        echo -n $CACERT_BASE64 | base64 --decode > cacert.pem
+
         test_curl() {
         echo "Curling server $1"
 
         CHECK_URL="$2/docs/"
-        curl -ILv $CHECK_URL
+        curl --cacert cacert.pem -ILv $CHECK_URL
         }
 
         test_curl "1" "${{ secrets.DOCS_WEBSITE_URL_NO_CDN_1 }}"
