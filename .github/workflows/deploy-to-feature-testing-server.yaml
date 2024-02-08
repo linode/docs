@@ -369,8 +369,8 @@ jobs:
             echo "Commit hash of workflow run is $GITHUB_SHA, but commit hash reported by server is $CURRENT_GIT_COMMIT_HASH.  Deployment to server has failed. Please inspect workflow logs and server logs."
             exit 1
           fi
-
         else
+          rm cacert.pem
           echo "No gitcommithash.txt exists on server after deployment. Deployment to server has failed. Please inspect workflow logs and server logs."
           exit 1
         fi
