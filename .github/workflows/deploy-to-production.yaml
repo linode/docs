@@ -355,7 +355,8 @@ jobs:
         # Wait for server to unzip the tarball of the docs site
         for i in {1..${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }}}
         do
-          curl --cacert cacert.pem -ILs $CHECK_URL | grep 'HTTP' | grep '200 OK'
+          echo "Checking server $1..."
+          curl --cacert cacert.pem -ILv $CHECK_URL | grep 'HTTP' | grep '200 OK'
           if [ 0 -eq $? ]; then
             rm cacert.pem
             echo 0
