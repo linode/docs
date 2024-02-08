@@ -56,13 +56,11 @@ jobs:
     - name: Test curl
       shell: bash
       run: |
-        set +e
-
         test_curl() {
         echo "Curling server $1"
 
         CHECK_URL="$2/docs/"
-        curl -ILs $CHECK_URL
+        curl -ILv $CHECK_URL
         }
 
         test_curl "1" "${{ secrets.DOCS_WEBSITE_URL_NO_CDN_1 }}"
