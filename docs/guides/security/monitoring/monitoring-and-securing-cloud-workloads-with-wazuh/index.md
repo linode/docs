@@ -5,7 +5,7 @@ description: 'This guide explores how to utilize Wazuh for threat detection on m
 keywords: ['Wazuh', 'Wazuh Indexer', 'Wazuh Server', 'Install and Configure Wazuh', 'Provide Endpoint Security with Wazuh', 'How to Use Wazuh Threat Detection']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
-published: 2023-08-20
+published: 2024-02-08
 modified_by:
   name: Linode
 external_resources:
@@ -17,100 +17,159 @@ external_resources:
 - '[VirusTotal API](https://documentation.wazuh.com/current/proof-of-concept-guide/detect-remove-malware-virustotal.html#detecting-and-removing-malware-using-virustotal-integration)'
 ---
 
-Wazuh is an open-source security platform that offers unified extended detection and response (XDR) and security information and event management (SIEM) protection for endpoints and cloud workloads. It’s a convenient way to secure your Linode cloud processes, containers, and Kubernetes pods, as well as your client computers and devices.
+Wazuh is an open-source security platform that offers **unified extended detection and response (XDR)** and **security information and event management (SIEM)** protection for endpoints and cloud workloads.
 
-## What is Wazuh?
+Wazuh is an efficient way to secure your cloud computing processes, containers, and Kubernetes pods, as well as your client computers and devices. Wazuh can also help you meet government requirements such as PCI DSS, HIPAA, and GDPR, and configuration standards such as CIS hardening guides.
 
-Wazuh is a security platform for monitoring and responding to threats across endpoints, cloud workloads, and servers.
+## How Does Wazuh Work?
+
+Wazuh performs log data analysis, intrusion and malware detection, file integrity monitoring, configuration assessment, vulnerability detection, and supports regulatory compliance.
+
+As displayed below, The Wazuh platform consists of: agents that monitor endpoints, servers that analyze the logs emitted by agents, indexers, and a dashboard. Wazuh users primarily interact with the dashboard.
 
 ![Wazuh system diagram](wazuh-system-diagram.jpg "Wazuh system diagram")
 
-As you can see from the diagram above, Wazuh consists of agents that monitor endpoints, servers that analyze the logs emitted by agents, indexers, and a dashboard. Wazuh users primarily interact with the dashboard.
+## Wazuh Components
 
+### The Wazuh Indexer
 
-## Various Wazuh Features
-
-Wazuh performs log data analysis, intrusion and malware detection, file integrity monitoring, configuration assessment, vulnerability detection, and support for regulatory compliance. In addition, Wazuh helps you meet government requirements such as PCI DSS, HIPAA, and GDPR, and configuration standards such as CIS hardening guides.
-
-### Wazuh Indexer
-
-The Wazuh indexer is a scalable full-text search and analytics engine. It indexes and stores alerts that the Wazuh server generates, and provides near real-time data search and analytics capabilities. You can configure the Wazuh indexer as a single-node or multi-node cluster. It stores data as JSON documents, and its database is sharded.
+The **Wazuh indexer** is a scalable full-text search and analytics engine. It indexes and stores alerts that the Wazuh server generates, and provides near real-time data search and analytics capabilities. You can configure the Wazuh indexer as a single-node or multi-node cluster. It stores data as JSON documents, and its database is sharded.
 
 Wazuh uses four different indices to store different event types: alerts, archives, monitoring, and statistics. You can interact with the Wazuh indexer cluster using the Wazuh indexer REST API.
 
-### Wazuh Server
+### The Wazuh Server
 
-The Wazuh server component analyzes the data received from the agents, triggering alerts when threats or anomalies are detected. You can also use it to manage the agent's configuration remotely and monitor their status.
+The **Wazuh server** is a central component that analyzes the data received from the agents, triggering alerts when threats or anomalies are detected. You can also use it to manage and monitor agent configurations remotely.
 
 The Wazuh server uses threat intelligence sources to improve its detection capabilities. It also enriches alert data by using the MITRE ATT&CK framework and regulatory compliance requirements such as PCI DSS, GDPR, HIPAA, CIS, and NIST 800-53, providing helpful context for security analytics. Additionally, the Wazuh server can be integrated with external software, including ticketing systems and instant messaging platforms.
 
 
-### Wazuh Dashboard
+### The Wazuh Dashboard
 
-The Wazuh dashboard (as shown in the screenshot below) offers a web-based interface designed for mining, analyzing, and visualizing security events, alert data, and platform management and monitoring. It encompasses functionalities for role-based access control (RBAC) and single sign-on (SSO).
+The **Wazuh dashboard** provides a web-based interface designed for mining, analyzing, and visualizing data related to: security events, alert data, platform management, and platform monitoring. It encompasses functionalities for role-based access control (RBAC) and single sign-on (SSO).
 
-Wazuh also features dashboards for exploring the MITRE ATT&CK framework and associated alerts, fostering enhanced situational awareness and threat analysis.
+Wazuh features dashboards for exploring the MITRE ATT&CK framework and associated alerts, fostering enhanced situational awareness and threat analysis.
 
 ![Wazuh dashboard](wazuh-dashboard.png "Wazuh dashboard")
 
 ## How to Install and Configure Wazuh
 
-There are a number of ways to install Wazuh, depending on where you want it to run, what other services you want to use with Wazuh, and the amount of traffic you need to handle. The simplest option for [deploying Wazuh in a Linode is to use the Marketplace installer](/docs/products/tools/marketplace/guides/wazuh/). This takes about 15 minutes and requires minimal information from you. You can also [download and run the Wazuh installation assistant](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh), which creates a Wazuh deployment on a single server that is good for monitoring up to 100 endpoints. The table below shows the recommended instance sizes to support various numbers of agents.
+There are a number of ways to install Wazuh, depending on where you want it to run, what other services you want to use with Wazuh, and the amount of traffic you need to handle:
 
-| Agents       | CPU     | RAM    | Storage (90 days) |
-| ------------ |---------|--------| ----------------- |
-| 1–25         | 4 vCPU  | 8 GiB  |             50 GB |
-| 25–50        | 8 vCPU  | 8 GiB  |            100 GB |
-| 50–100       | 8 vCPU  | 8 GiB  |            200 GB |
+- Use [our Wazuh Marketplace app](/docs/products/tools/marketplace/guides/wazuh/) deployment. This is the fastest deployment option (fully deploys in about 15 minutes) and requires minimal configuration information.
 
+- For a customizable deployment, you can deploy Wazuh manually across multiple nodes (see [Install Wazuh Manually](#install-wazuh-manually)).
+
+- For development environments, you can deploy via [Docker images](https://documentation.wazuh.com/current/deployment-options/docker/index.html#deployment-on-docker).
+
+- For a scalable deployment, you have the option of installing Wazuh on [Kubernetes](https://documentation.wazuh.com/current/deployment-options/deploying-with-kubernetes/index.html#deployment-on-kubernetes').
+
+- An all-in-one deployment using [the Wazuh installation assistant](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh). This creates a Wazuh deployment on a single server that can monitor up to 100 endpoints.
+
+  The table below shows the recommended instance specifications for supporting various numbers of agents:
+
+  | Agents       | CPU     | RAM    | Storage (90 days) |
+  | ------------ |---------|--------| ----------------- |
+  | 1–25         | 4 vCPU  | 8 GiB  |             50 GB |
+  | 25–50        | 8 vCPU  | 8 GiB  |            100 GB |
+  | 50–100       | 8 vCPU  | 8 GiB  |            200 GB |
 
 ### Install Wazuh Manually
 
-For a more robust installation of Wazuh, you can install it manually, creating as many nodes as needed for each service. Start by installing the Wazuh Indexer, followed by the Wazuh Server, then the Wazuh Dashboard, and finally by installing agents on any servers, computers, or devices you need to monitor or protect. While you can install all Wazuh services step by step, for this exercise, you can use the Wazuh installation assistant for each component.
+For a flexible installation of Wazuh, you can install both the **Wazuh indexer** and **Wazuh server** components manually on a single node or across multiple nodes for a cluster deployment. The **Wazuh dashboard** can be installed on one of your nodes running the Wazuh indexer or on a separate node.
 
-Before you can start the installations, ensure you create Linodes to serve as the nodes and record their respective IP addresses. Once that's done, proceed by downloading the Wazuh installation assistant and the configuration file to your local machine using the following commands:
+During manual installation, components should be installed in the following order:
 
-```command
-curl -sO https://packages.wazuh.com/4.4/wazuh-install.sh
-curl -sO https://packages.wazuh.com/4.4/config.yml
-```
+- The Wazuh indexer
+- The Wazuh server
+- The Wazuh dashboard
 
-Edit the configuration file and replace the placeholders for node names and corresponding IP addresses. After making these adjustments, execute the assistant with the `--generate-config-files` option to generate the Wazuh cluster key, certificates, and passwords necessary for installation:
+Once all the components are installed, you can install individual **Wazuh agents** on the servers, computers, or other devices you wish to monitor or protect.
 
-```command
-bash wazuh-install.sh --generate-config-files
-```
+{{< note title="The Wazuh Installation Assistant" >}}
+While all services can be installed using step-by-step instructions, this guide uses Wazuh's installation assistant to install each component.
+{{< /note >}}
 
-You can find the generated files located in the `./wazuh-install-files.tar` archive.
+Follow the steps below to install Wazuh manually:
 
-Copy the `wazuh-install-files.tar` archive to all the nodes and servers of the distributed deployment, including the Wazuh server, the Wazuh indexer, and the Wazuh dashboard nodes using the `scp` utility. Proceed to download the installation assistant to the nodes you designated to be the [Wazuh Indexer](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/installation-assistant.html#wazuh-indexer-nodes-installation). Execute the assistant with the `--wazuh-indexer` flag on these nodes. On one of these nodes, rerun the installation script, this time adding the `--start-cluster` flag.
+1. Prior to installing each component, create any Compute Instances you wish to serve as individual nodes and save their IP addresses. See Wazuh's documentation for hardware recommendations for nodes running the [Wazuh indexer](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/index.html#hardware-recommendations) and nodes running the [Wazuh server](https://documentation.wazuh.com/current/installation-guide/wazuh-server/index.html#hardware-requirements).
 
-Repeat the same process again for the [Wazuh Server](https://documentation.wazuh.com/current/installation-guide/wazuh-server/installation-assistant.html#installing-the-wazuh-server-using-the-assistant) and [Wazuh Dashboard](https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/installation-assistant.html#installing-the-wazuh-dashboard-using-the-assistant) nodes. Finally, you can install the [Wazuh Agents](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html#wazuh-agent) on the endpoints you wish to protect. If you have a substantial number of endpoints, consider utilizing an automation tool such as Puppet, Chef, SCCM, or Ansible for agent deployment.
+1. Once all of your nodes have been created, proceed by downloading the Wazuh installation assistant and the configuration file to your local machine using the following cURL commands:
 
+    ```command
+    curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+    curl -sO https://packages.wazuh.com/4.7/config.yml
+    ```
 
-### Install Wazuh with Docker or Kubernetes
+1. Using a text editor, edit the `config.yml` file and replace the placeholders with names of your nodes along with their corresponding IP addresses. This must be done for each Wazuh indexer, Wazuh server, and Wazuh dashboard nodes:
 
-As an alternative to installing Wazuh directly on servers or instances, you can install it via [Docker](https://documentation.wazuh.com/current/deployment-options/docker/index.html#deployment-on-docker) or [Kubernetes](https://documentation.wazuh.com/current/deployment-options/deploying-with-kubernetes/index.html#deployment-on-kubernetes'). Using Docker makes the most sense for development installations; Kubernetes, specifically [Akamai Cloud Manager](https://cloud.linode.com/kubernetes/clusters), makes more sense for production installations that you expect to scale up and down over time.
+    ```file
+    nodes:
+      # Wazuh indexer nodes
+      indexer:
+        - name: node-1
+          ip: "<indexer-node-ip>"
+        #- name: node-2
+        #  ip: "<indexer-node-ip>"
+        #- name: node-3
+        #  ip: "<indexer-node-ip>"
 
+      # Wazuh server nodes
+      # If there is more than one Wazuh server
+      # node, each one must have a node_type
+      server:
+        - name: wazuh-1
+          ip: "<wazuh-manager-ip>"
+        #  node_type: master
+        #- name: wazuh-2
+        #  ip: "<wazuh-manager-ip>"
+        #  node_type: worker
+        #- name: wazuh-3
+        #  ip: "<wazuh-manager-ip>"
+        #  node_type: worker
 
-## How to Provide Endpoint Security With Wazuh
+      # Wazuh dashboard nodes
+      dashboard:
+        - name: dashboard
+          ip: "<dashboard-node-ip>"
+    ```
 
-In addition to installing Wazuh agents on the endpoints you need to secure, you need to add a few configurations. For example, on an Ubuntu server that runs an Apache web server, you need to [add a few lines](https://documentation.wazuh.com/current/proof-of-concept-guide/block-malicious-actor-ip-reputation.html#ubuntu-endpoint) to `/var/ossec/etc/ossec.conf` to monitor the Apache access logs. To protect the files in the `/root` directory of an Ubuntu server, add the following line to `/var/ossec/etc/ossec.conf` in the `<syscheck>` block:
+1. After editing your config file, execute the assistant with the `--generate-config-files` option to generate the Wazuh cluster key, certificates, and passwords necessary for installation:
 
-```command
-<directories check_all="yes" report_changes="yes" realtime="yes">/root</directories>
-```
+    ```command
+    bash wazuh-install.sh --generate-config-files
+    ```
 
-There is an additional configuration to perform to monitor Docker events and unauthorized processes. Any time you change the configuration on a server, restart the Wazuh agent on that server.
+    You can find the generated files in the `./wazuh-install-files.tar` archive.
 
+1. Copy your `wazuh-install-files.tar` archive to all nodes in your deployment, including the Wazuh server, the Wazuh indexer, and the Wazuh dashboard nodes using the `scp` utility.
 
-## How to Use Wazuh Threat Detection
+1. Proceed to download the installation assistant on the node or nodes you designated for the [Wazuh indexer](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/installation-assistant.html):
 
-Attacks on monitored endpoints show up in the Wazuh dashboard. The [proof-of-concept guide](https://documentation.wazuh.com/current/proof-of-concept-guide/index.html#proof-of-concept-guide) lists the event numbers to look for for specific threats.
+    ```command
+    curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+    ```
 
-You can expand Wazuh’s purview by installing additional threat detection software and integrating that with Wazuh. Examples include [Suricata](https://documentation.wazuh.com/current/proof-of-concept-guide/integrate-network-ids-suricata.html#network-ids-integration) network-based intrusion detection, the [VirusTotal API](https://documentation.wazuh.com/current/proof-of-concept-guide/detect-remove-malware-virustotal.html#detecting-and-removing-malware-using-virustotal-integration) to scan files for infection, and [Yara](https://documentation.wazuh.com/current/proof-of-concept-guide/detect-malware-yara-integration.html#detecting-malware-using-yara-integration) to detect malware. Wazuh has its own [Vulnerability Detector module](https://documentation.wazuh.com/current/proof-of-concept-guide/poc-vulnerability-detection.html#vulnerability-detection) which you can enable in the `/var/ossec/etc/ossec.conf` file.
+1. Execute the installation assistant with the `--wazuh-indexer` flag on each node. When specifying a name for the node (i.e. {{< placeholder "node-1" >}}), make sure it matches the name you used in your `config.yml` file in step 3:
 
+    ```command
+    bash wazuh-install.sh --wazuh-indexer {{< placeholder "node-1" >}}
+    ```
 
-## Conclusion
+1. On one of the nodes, rerun the installation script, this time adding the `--start-cluster` flag. This initiates the cluster:
 
-Wazuh can help you secure your endpoints and detect threats. Wazuh provides unified XDR and SIEM capabilities, and you can easily install the Wazuh server components on Linodes.
+    ```command
+    bash wazuh-install.sh --start-cluster
+    ```
+
+Repeat steps 6 and 7 for the [Wazuh server](https://documentation.wazuh.com/current/installation-guide/wazuh-server/installation-assistant.html#installing-the-wazuh-server-using-the-assistant) and [Wazuh dashboard](https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/installation-assistant.html#installing-the-wazuh-dashboard-using-the-assistant) nodes, replacing the `--wazuh-indexer` flag with the `--wazuh-server` and `--wazuh-dashboard` flags, respectively. Remember that the Wazuh dashboard only needs to be installed on a single node.
+
+To access the Wazuh interface in your browser, navigate to `https://{{< placeholder "WAZUH_DASHBOARD_IP" >}}`, replacing {{< placeholder "WAZUH_DASHBOARD_IP" >}} with the IP of the node where you installed the Wazuh dashboard. Use the login credentials that were generated as output during the dashboard installation.
+
+Once complete, install the [Wazuh agents](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html#wazuh-agent) on the endpoints you wish to monitor and protect. If you have a substantial number of endpoints, consider utilizing an automation tool such as Puppet, Chef, SCCM, or Ansible for agent deployment.
+
+## Individual Use Cases
+
+There are many different Wazuh use cases that require specific configurations, including blocking known malicious actors, detecting brute-force attacks, and more. See Wazuh's documentation on use cases and their configurations:
+
+- [Wazuh Proof of Concept Guide](https://documentation.wazuh.com/current/proof-of-concept-guide/index.html)
