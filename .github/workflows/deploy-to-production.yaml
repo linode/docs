@@ -152,6 +152,54 @@ jobs:
         sudo apt install -y tree
         tree -L 1 public
 
+      # When Hugo builds, it renders search index data to a collection of
+      # data files under public/. This step uploads that data to the
+      # Algolia search backend
+    - name: Update Algolia
+      working-directory: ./linode-docs-theme-repo
+      env:
+        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
+      run: |
+        cd scripts/linode_algolia_admin/
+
+        # Hugo renders the site to the `public` directory within the docs repo.
+        # This includes three files with Algolia index data:
+        # - public/index.json
+        # - public/api/index.json
+        # - public/data/sections/index.json
+        # The pushdocs command uploads this data to Algolia
+        go run main.go pushdocs -source-dir ../../../docs-repo/public
+
+        # The settings (e.g. ranking configuration) and synonyms for the
+        # linode-merged index are stored in version control, and the
+        # following command pushes those settings/synonyms to the Algolia app
+        go run main.go -indices linode-merged push -replace settings,synonyms
+
+        # The refresh-merge-and-push sequence assumes that the linode-wp and linode-community indices already exist in the Algolia app
+        go run main.go sequence refresh-merge-and-push
+
+      # Why build Hugo twice? In order to render the Explore Docs nav menu,
+      # Hugo downloads data from the Algolia search backend. However, the
+      # first time we build Hugo in this workflow, that data isn't up-to-date
+      # with new content we may be publishing. So, we build Hugo a second time
+      # after we have performed the previous Update Algolia step.
+      # In summary:
+      # - Build Hugo the first time in order to render the JSON search index
+      #   data files
+      # - Update Algolia with those data files
+      # - Build Hugo again so that the navigation UI can be rendered with that
+      #   updated info from Algolia
+      # It's a little redundant, but solves the chicken-or-egg problem
+    - name: Build Hugo (second time)
+      env:
+        HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
+      working-directory: ./docs-repo
+      run: |
+        hugo config
+        hugo -b "${{ vars.DOCS_WEBSITE_URL }}" --gc --minify -d public
+
     - name: Set up SSH agent (docs webserver key)
       uses: webfactory/ssh-agent@v0.7.0
       with:
@@ -192,27 +240,3 @@ jobs:
         rsync_to_destination "${{ secrets.DOCS_WEBSITE_RSYNC_DESTINATION_2 }}"
 
         rm rsync_known_hosts
-
-    - name: Update Algolia
-      working-directory: ./linode-docs-theme-repo
-      env:
-        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
-        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
-      run: |
-        cd scripts/linode_algolia_admin/
-
-        # Hugo renders the site to the `public` directory within the docs repo.
-        # This includes three files with Algolia index data:
-        # - public/index.json
-        # - public/api/index.json
-        # - public/data/sections/index.json
-        # The pushdocs command uploads this data to Algolia
-        go run main.go pushdocs -source-dir ../../../docs-repo/public
-
-        # The settings (e.g. ranking configuration) and synonyms for the
-        # linode-merged index are stored in version control, and the
-        # following command pushes those settings/synonyms to the Algolia app
-        go run main.go -indices linode-merged push -replace settings,synonyms
-
-        # The refresh-merge-and-push sequence assumes that the linode-wp and linode-community indices already exist in the Algolia app
-        go run main.go sequence refresh-merge-and-push

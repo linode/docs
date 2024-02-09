@@ -1,14 +1,14 @@
 ---
 slug: linode-writers-formatting-guide
+title: Linode Writer's Formatting Guide
 description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2023-05-02
+modified: 2024-01-31
 modified_by:
   name: Linode
-title: Linode Writer's Formatting Guide
 show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/docs/guides/a-beginners-guide-to-github/)'
@@ -18,7 +18,7 @@ _build:
 authors: ["Linode"]
 ---
 
-![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")
+![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png)
 
 ## Write Guides for Linode
 
@@ -34,7 +34,7 @@ Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wik
 
 Markdown files for guides are stored under the `docs/guides/` content directory. This content directory is then further subdivided into categories for different technical topics. New guides should be placed with a category that they most closely align with. For example, if you are writing a new guide on the Apache web server, it would be placed under `docs/guides/web-servers/apache/`.
 
-A new subdirectory is created for each guide. This subdirectory should contain a file called `index.md`, which will be where the guide's markdown is written to. For example, if your guide's title is `My Apache Guide`, then you would create its Markdown file at `docs/guides/web-servers/apache/my-apache-guide/index.md`.
+A new subdirectory is created for each guide. This subdirectory should contain a file called `index.md`, which will be where the guide's Markdown is written to. For example, if your guide's title is `My Apache Guide`, then you would create its Markdown file at `docs/guides/web-servers/apache/my-apache-guide/index.md`.
 
 A [Hugo archetype](https://gohugo.io/content-management/archetypes/) is available to create new Markdown files. For example, if you wanted to create the `My Apache Guide` example guide, you could run this command from inside your cloned docs repository:
 
@@ -52,15 +52,14 @@ If you use the Hugo archetype command described in the previous section, the cre
 
 ```file {title="Author Submission" lang="yaml"}
 ---
-slug: url-slug-for-your-guide
-title: "Title of Your Guide (appears in H1)"
-title_meta: "Title of Your Guide (appears in meta title tag)"
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+slug: {{ path.Base .File.Dir }}
+title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
+description: "Two to three sentences describing your guide."
+og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
-published: 2023-03-07
+published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
 external_resources:
@@ -271,11 +270,17 @@ Update your system by running `yum update`.
 
 ### Example IP Addresses
 
-Example IPs should use the documentation address blocks given in [IETF RFC 5737](https://tools.ietf.org/html/rfc5737). These are:
+When referencing IP address in the documentation, any real address should be obscured unless it is intended for the user to access that IP address. When possible, use the documentation address blocks given in [IETF RFC 5737](https://tools.ietf.org/html/rfc5737) and [IETF RFC 3849](https://datatracker.ietf.org/doc/html/rfc3849).
 
-- 192.0.2.0/24
-- 198.51.100.0/24
-- 203.0.113.0/24
+-   **IPv4:** 192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24
+
+    *Examples:* 192.0.2.84, 192.0.2.142, 198.51.100.65, 198.51.100.231, 203.0.113.2, 203.0.113.97
+
+    In general, use these address blocks in order. Use the first block (`192.0.2.0/24`) for the first example IP address that is needed. If another IP address is needed, pull from the next block. If the example text is referencing the IPv4 address of a Compute Instance, do not use 0 or 1 as the last segment of the IP address as they are not used for Compute Instances. For instance, `192.0.2.17` is acceptable but `192.0.2.0` and `192.0.2.1` are not.
+
+-   **IPv6:** 2001:DB8::/32
+
+    *Examples:* 2001:db8:1:1:1:1:1:1, 2001:db8::f03c:485f:b84e:6534
 
 ### External Resources/More Information
 
@@ -505,12 +510,53 @@ Headings should be written in title case and can be up to 3 levels deep.
 
 ### Images
 
-Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide, include both the original and one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (\_).
+Images can add value to the surrounding text by providing context or additional meaning. In most cases, images within documentation take the form of screenshots or diagrams, though occasionally other types of images may be necessary.
 
-When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken with mobile devices.
+-   **Image format:** All images should a PNG (*.png*) or a JPEG (*.jpg* or *.jpeg*).
 
-- **Up to 650 px wide:** `![Description of the image](filename.png "Description of the image.")`
-- **Over 650 px wide:** `[![Description of the image](filename_small.png "Description of the image.")](filename.png)`
+-   **Image size:** Images are displayed in their original size, up to the maximum width of the content area. If an image's width is larger than the width of the content area, the image is scaled down to fit within the content area and a user can click on the image to view it in a modal.
+
+To add an image to a guide, first move it the same directory as the guide or shortguide. Then, enter the following Markdown syntax at the location you wish the image to appear:
+
+```file {lang="md"}
+![Alt text](filename.png "Title text")
+```
+
+- **Alt text:** This should be a description of the image and is rendered within the image's `alt` tag. It is used for screen readers and other accessibility features.
+- **Filename:** The name of the file. Filenames cannot contain spaces and should use hyphens (-) and underscores (\_) instead.
+- **Title text:** This is the text that appears as a tooltip when a user hovers over the image. If no title is entered, the alt text is used in the `title` tag. In most cases, a specific title tag is not needed.
+
+#### Image Recommendations
+
+- **Image sizing:** The height of our images, especially screenshots, should be as minimal as possible. This is to avoid screenshots taking up a lot of vertical space within our documentation, which often results in visually breaking up content that otherwise should appear together. Our Cloud Manager favors vertically stacked fields and options, which can make it difficult to minimize the height of our screenshots. Use your best judgement when determining what part of the UI is needed to convey the required information.
+
+- **Favor light mode over dark mode:** When an application (such as the Cloud Manager) has different themes or appearances, favor the default theme. If the theme automatically adjusts to your system's light or dark mode setting, verify that your system is using light mode or adjust the application setting to light mode.
+
+- **Image composition:** Avoid including too much detail or information within an image. Many images are used to either show a result of an action (like displaying a web page) or are used to supplement instructions asking the reader to perform an action (like click a button). Images that show too much may confuse the reader or otherwise call attention to details that aren't important to the task at hand. In practice, this means not taking a screenshot of the entire application or browser window and instead focusing only on the UI elements related to the instructions or text.
+
+- **Remove personal information:** Ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with example text, such as **example_user** or an IP address from the **192.0.2.0/24** range. This aligns with a previous recommendation of only providing necessary detail and it keeps the writer's personal information from being shown to readers. This may involve using the browser's built-in development tools to manually replace values or delete information.
+
+#### Example Wide Image
+
+Since this image is larger than the width of the content, the image is scaled to fit. When the image is clicked, a modal appears that displays the image at a larger size.
+
+This example image might be used to supplement instructions asking the reader to select a Compute Instance. Instead of taking a screenshot of the entire page in the Cloud Manager, the area has been cropped to just include relevant information. In addition, a red outline has been used to highlight the UI element that corresponds with the action the reader should perform.
+
+```file {lang="md"}
+![Screenshot of Cloud Manager Compute Instance page with a single instance selected](compute_instance_list-select_instance.png "Select a Compute Instance from the list")
+```
+
+![Screenshot of Cloud Manager Compute Instance page with a single instance selected](compute_instance_list-select_instance.png "Select a Compute Instance from the list")
+
+#### Example Narrow Image
+
+Smaller images should be displayed using their true pixel size. When taking screenshots within some software on some operating systems, the pixel size is increased (likely to account for the operating system's scaling). For instance, taking a screenshot with the Skitch tool on macOS doubles the pixel count. In these cases, use another image editing tool (like macOS's built in preview) to scale down the image to match the intended pixel width.
+
+```file {lang="md"}
+![Screenshot of the Create Firewall panel in the Cloud Manager](cloud_firewalls-create_panel.png)
+```
+
+![Screenshot of the Create Firewall panel in the Cloud Manager](cloud_firewalls-create_panel.png)
 
 ### Key Combinations
 
@@ -602,7 +648,9 @@ To remain consistent across all of our guides, nested content should be indented
 
 ### Note Shortcode
 
-The **note** shortcode is used to display a note to the reader.
+The **note** shortcode is used to display a note to the reader. Notes can be used to share relevant information that does not fit with the primary content. Example use cases include alternative methodologies, non-critical information, alerts, developer recommendations, and more. **Content included in a note must not be required for the reader to successfully understand or complete a task**.
+
+Below is the **default** (primary) note shortcode with default [parameters](#parameters):
 
 ```file
 {{</* note */>}}
@@ -614,81 +662,84 @@ This is an example note.
 This is an example note.
 {{< /note >}}
 
+**Best practices:**
+- **Be concise.** The shorter the better. Notes can lose their impact when they become too long.
+- **Keep things relevant.** The note should pertain directly to the surrounding paragraph, step, or list item. If the note is an unnecessary interruption to the reader, consider removing the note, moving it to a different section, or placing its contents directly in the surrounding content.
+- **Use notes sparingly.** Notes draw attention away from the surrounding content. Too many notes can distract the reader, result in important information getting lost, and are often unnecessary. Consider the impact too many notes or multiple consecutive notes may have to the reader. Often, some information can be omitted and some information is better suited to be included as part of the surrounding text.
+- **Use descriptive titles.** Customize the title of each note so that the reader can quickly assess if the note is relevant to them.
+- **Can be used for short-lived (nonpermanent) content** *(with some caution)*: In many cases, short-lived content is better suited to notes than being hidden within paragraphs or list items. When adding temporary content to a note, always include the date when the content will be out-of-date (if available) as well as information the reader may need to know after that date. An example of this is beta notices. When a new product comes out, the documentation should mention that the product is available as a beta (and, as such, may not be feature complete or production ready). While a note at the top of the related product pages may be warranted, a note within all of our other guides that reference the product is likely not necessary and may create more complications when we need to remove this information.
+
+**What to avoid:**
+- Lengthy notes.
+- Notes not relevant to the surrounding content.
+- Too many notes relative to surrounding content.
+- Stacking notes (multiple consecutive notes).
+- Generic or non-descriptive titles.
+
 #### Parameters
 
-The shortcode accepts the following parameters:
+When creating a new note, there are multiple parameters to consider pertaining to the type of note, its title, and if it can be expanded/collapsed. While not all parameters are always necessary, all should be taken into account during the note creation process.
 
 | Parameter | Values | Description |
 | -- | -- | -- |
-| `type` | | Identifies the note as one of 4 types: |
-|  | `"secondary"` | A muted note. |
-|  | `"primary"` | (*DEFAULT*) A note or tip related to the surrounding content. This is the default type if no type is specified. |
-|  | `"warning"` | A note to take certain precautions. |
-|  | `"alert"` | An important note that should not be skipped over. |
-| `title` | String | Sets the title of the note. |
+| `type` | `"primary"`, `"secondary"`, `"warning"`, `"alert"` | Identifies the note as one of 4 types: primary, secondary, warning, or alert. See: [Note Types](#note-types) |
+| `title` | String | Sets the title of the note. See: [Titles](#titles) for titling guidelines. |
 | `noTitle` | boolean | Does not apply a default title to the note. Defaults to false. |
-| `isCollapsible` | boolean | Sets the note as collapsible. The note must have a title defined. Defaults to false. |
-| `respectIndent` | boolean | This is only used for older note shortcodes (`{{</* note */>}}`) that have been converted to the newer shortcode. By default, content between the shortcode tags is rendered using `.InnerDeindent`, which allows the shortcode to respect the indentation of any parent elements (such as lists). When set to `false`, `.Inner` is used instead, which does not de-indent the content and does not respect the indentation of parent elements. Defaults to true. |
+| `isCollapsible` | boolean | Sets the note as collapsible. The note must have a title defined. Defaults to false. See: [Collapsible](#collapsible) |
+| `respectIndent` | boolean | Only used for older note shortcodes (`{{</* note */>}}`) that have been converted to the newer shortcode. See: [Indentation](#indentation) |
 
 #### Note Types
 
-There are four unique types of notes:
+There are four unique types of notes: **primary**, **secondary**, **warning**, and **alert**. Each type has specific use cases and varying levels of urgency that should determine the type of note you choose to make. Below are examples of each note type and their use cases:
 
--   **Secondary** (`type="secondary"`, title defaults to "Note")
+-   **Primary** (type is unset or `type="primary"`, title defaults to "Note"): Used for additional related information that does not fit with the rest of the document. Can include alternative suggestions or solutions, developer tips, or general best practices that are not critical to the success of the task at hand.
 
-    {{< note type="secondary" >}}
-    This is an example of a secondary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
+    {{< note title="Best Practice: Use Passsword Generators" >}}
+    When creating root, user, or other passwords, you can increase security by using a password generator such as [1Password](https://www.1password.com) to create and save complex, encrypted passwords.
+    {{< /note >}}
 
+-   **Secondary** (`type="secondary"`, title defaults to "Note"): Most commonly used in tandem with the [collapsible parameter](#collapsible). **Secondary** notes can include non-critical information, commands, code, or output that may take up too much room or does not require visibility for the success of an action.
+
+    {{< note type="secondary" title="Amsterdam Data Center: Lish SSH Gateway Fingerprints" isCollapsible=true >}}
     ```command
-    sudo apt update
+    RSA 3072 SHA256:/y+83+sA3JdDGkv/KLnIAIXqfgqWfgp5RZ+DCx1T4yU lish-nl-ams.linode.com
+    ECDSA 256 SHA256:iR/He+teo+c7jqr8LzaTikbTlMDdIkIERhJBXdIjO8w lish-nl-ams.linode.com
+    ED25519 256 SHA256:vxF9arB2lYBVP45ZA7t1JEE9w/vthPmzU3a2oOR8O7Y lish-nl-ams.linode.com
     ```
     {{< /note >}}
 
--   **Primary** (type is unset or `type="primary"`, title defaults to "Note")
+-   **Warning** (`type="warning"`, title defaults to "Warning"): Notices that warn the reader to proceed with caution, including notices for beta programs, warnings of limited resource availability, etc. Not as urgent as alert notes.
 
-    {{< note >}}
-    This is an example of a primary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
-
-    ```command
-    sudo apt update
-    ```
+    {{< note type="warning" title="VPC Beta Notice" >}}
+    VPCs are now publicly available in beta, providing customers with another method of isolating network traffic between Compute Instances (in addition to the [VLANs](/docs/products/networking/vlans/) feature). Not all data centers are currently supported. For more information, review the [Availability](/docs/products/networking/vpc/#availability) section.
     {{< /note >}}
 
--   **Warning** (`type="warning"`, title defaults to "Warning")
+-   **Alert** (`type="alert"`, title defaults to "Important"): The most urgent of all note types. **Alert** notes should be used to notify of potential *destructive* actions such as situations resulting in data loss or where there is no undoing what has been done. Anything critical to the success of a task should still be included in the primary content and not solely live in the note.
 
-    {{< note type="warning" >}}
-    This is an example of a warning note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
-
-    ```command
-    sudo apt update
-    ```
+    {{< note type="alert" title="Back up files to prevent data loss" >}}
+    Formatting a Block Storage Volume will delete all data stored on that Volume. To prevent data loss, verify that any files you wish to retain have been successfully backed up to another storage device.
     {{< /note >}}
 
--   **Alert** (`type="alert"`, title defaults to "Important")
+#### Titles
 
-    {{< note type="alert" >}}
-    This is an example of an alert note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
+Each note can also have a custom title, which is set using the `title` parameter. Titles can specify or summarize the purpose of the note, as well as help define the authority and urgency of the note in the form of tips, best practices, or calls to attention. **Default titles may also be used, but custom titles are preferred for their additional context.**
+- Example summary titles: "Use a strong password", "The token is valid for 24 hours", "A valid payment method is required"
+- Example tip or best practice titles: "Developer Tip", "Common Practice"
+- Example calls to attention: "Before moving forward", "This may result in data loss"
 
-    ```command
-    sudo apt update
-    ```
-    {{< /note >}}
-
-#### Custom Title
-
-Each note can also have a custom title, which is set using the `title` parameter.
+**Title casing:**
+- If using a single word or phrase, use title casing. *Preferred.*
+- If using a sentence as your title, use sentence casing. Otherwise, use title casing.
 
 ```file {lang="text"}
-{{</* note title="Custom title" */>}}
-This is an example note with a custom title.
+{{</* note title="Custom titles can be helpful" */>}}
+This is an example note with a helfpful custom title.
 {{</* /note */>}}
 ```
 
-{{< note title="Custom title" >}}
-This is an example note with a custom title.
+{{< note title="Custom titles can be helpful" >}}
+This is an example note with a helpful custom title.
 {{< /note >}}
-
-#### No Title
 
 Additionally, you can specify that the note should have no title by using `noTitle=true`. This causes the default title to not display.
 
@@ -704,21 +755,23 @@ This is an example note with no title.
 
 #### Collapsible
 
-Additionally, a note can also be collapsible by setting `isCollapsible=true` (defaults to false). This hides the body of the note and displays a collapse/expand icon.
+Notes can also be made collapsible by setting `isCollapsible=true` (defaults to false). This hides the body of the note and displays a collapse/expand icon. **Secondary notes** are often used for collapsible notes.
 
 ```file {lang="text"}
-{{</* note title="This is a collapsible note with a custom title" isCollapsible=true */>}}
+{{</* note type="secondary" title="This is a collapsible secondary note with a custom title" isCollapsible=true */>}}
 This content is hidden until the user expands the note.
 {{</* /note */>}}
 ```
 
-{{< note title="This is a collapsible note with a custom title" isCollapsible=true >}}
+{{< note type="secondary" title="This is a collapsible secondary note with a custom title" isCollapsible=true >}}
 This content is hidden until the user expands the note.
 {{< /note >}}
 
 #### Indentation
 
 Content within the opening and closing note shortcode tags must respect the expected indentation of any parent elements, such as list items. Since content within a list is indented (using 4 spaces), the content of a note shortcode must be indented by the same number of spaces.
+
+By default, content between the shortcode tags is rendered using `.InnerDeindent`, which allows the shortcode to respect the indentation of any parent elements (such as lists). When set to `false`, `.Inner` is used instead, which does not de-indent the content and does not respect the indentation of parent elements. Defaults to true.
 
 ```file
 -   First list item.
@@ -748,33 +801,126 @@ This content appears within the first list item but does not respect its indenta
 | -- | -- |
 | Use words (one, two, three, etc.)  | Use numerical digits (11, 22, 33). |
 
+### Placeholders
+
+The placeholder shortcode applies special formatting to highlight the user-replaceable portion of a command or file. It can also be used within a paragraph as a way to reference what the user should replace.
+
+- **Syntax:** `{{</* placeholder "VARIABLE_NAME" */>}}`</br>
+- **Output:** {{< placeholder "VARIABLE_NAME" >}}
+
+When creating a placeholder, you can either use a descriptive variable name (as shown above) or example text.
+
+- **Placeholder example text:** A generic example that represents the expected user input. For instance, example IP addresses (`192.0.2.17`) and example domain names (`example.com`). This should be in the same case as the surrounding text, using whatever formatting is appropriate for the example text. For IP addresses, review the [Example IP Addresses](#example-ip-addresses) section.
+- **Placeholder variable:** A short descriptive variable name. This should be formatted in uppercase with an underscore (`_`) used instead of spaces. For instance, `REGION_ID` and `FILE_NAME`.
+
+The following example demonstrates a common use case for the placeholder shortcode.
+
+-   **Markdown syntax:**
+
+    ````
+    Within the default NGINX configuration file, replace {{</* placeholder "example.com" */>}} with your website's domain.
+
+    ```file {title="/etc/nginx/sites-available/default"}
+    server {
+        listen  80;
+        listen [::]:80;
+        server_name {{</* placeholder "example.com" */>}};
+    }
+    ```
+    ````
+
+-   **Output:**
+
+    Within the default NGINX configuration file, replace {{< placeholder "example.com" >}} with your website's domain.
+
+    ```file {title="/etc/nginx/sites-available/default"}
+    server {
+        listen  80;
+        listen [::]:80;
+        server_name {{< placeholder "example.com" >}};
+    }
+    ```
+
 ### Sentence Spacing
 
 Use single spaces between sentences; do not double-space.
 
 ### Tables
 
+You can create tables using standard Markdown syntax. Additionally, you can embed a Markdown table within the [table shortcode](#table-shortcode) for additional functionality.
+
 ```file {lang="md"}
-| Column Header 1 | Column Header 2|
+| Column Header 1 | Column Header 2 |
 | -- | -- |
 | **Example** | This is an example of text in the second column. |
 ```
 
-| Column Header 1 | Column Header 2|
+| Column Header 1 | Column Header 2 |
 | -- | -- |
 | **Example** | This is an example of text in the second column. |
 
-#### Table Alignment
+#### Column Text Alignment
+
+To align text within a table, modify the second row. This row separates the header from the body of the table and can be used for additional metadata, like text alignment.
+
+- Left aligned: Default behavior (if there is a need to be explicit, use `| :-- |`)
+- Center aligned: `| :--: |`
+- Right aligned: `| --: |`
+
 
 ```file {lang="md"}
 | Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
-| -- |:--:| --:|
+| -- | :--: | --: |
 | Example | Example | Example |
 ```
 
 | Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
-| -- | :--: | --:|
+| -- | :--: | --: |
 | Example | Example | Example |
+
+#### Table Shortcode
+
+The table shortcode can be used to add additional functionality to Markdown tables. By default, it adds a scrollbar when the table width is larger than the content area. This means that it can accommodate wide tables with lots of columns. It also adds alternating row background colors so that tables are easier to parse.
+
+```file {lang="md"}
+{{</* table */>}}
+| Column Header | Column Header | Column Header |
+| -- | -- | -- |
+| **Row 1** | Example | Example |
+| **Row 2** | Example | Example |
+| **Row 3** | Example | Example |
+{{</* /table */>}}
+```
+
+{{< table >}}
+| Column Header | Column Header | Column Header |
+| -- | -- | -- |
+| **Row 1** | Example | Example |
+| **Row 2** | Example | Example |
+| **Row 3** | Example | Example |
+{{< /table >}}
+
+#### Fixed First Column
+
+If you are creating a wide table and need the first column to be fixed when scrolling, use the **"first-sticky"** class.
+
+```file {lang="text"}
+{{</* table class="first-sticky" */>}}
+| Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| **Row1**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row2**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row3**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+{{</* /table */>}}
+```
+
+{{< table class="first-sticky" >}}
+| Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| **Row1**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row2**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row3**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+{{< /table >}}
 
 ### Tabs
 

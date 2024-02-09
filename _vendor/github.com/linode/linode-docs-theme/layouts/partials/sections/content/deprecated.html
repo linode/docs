@@ -1,14 +1,12 @@
 <blockquote
-  class="callout mt-8"
+  class="callout mt-6"
   style="background-color: #ffeedf; border-color: #ffd4ac;">
   <strong class="callout-title"> Deprecated </strong>
   <div class="mt-1">
-    <p>This guide has been deprecated and is no longer being maintained.</p>
+    <p>This guide has been deprecated and is no longer being maintained.
     {{ with .Params.deprecated_link }}
-      <p>
-        Please refer to the
-        <a href="{{ . | relURL }}"> updated version of this guide.</a>
-      </p>
+        Please refer to the <a href="{{ . | relURL }}"> updated version of this guide.</a>
     {{ end }}
+    </p>
   </div>
 </blockquote>

@@ -29,7 +29,7 @@ Linode's IP failover feature using keepalived is compatible with various IP addr
 
 - **IPv6 addresses:** IP failover with IPv6 addresses is not currently supported.
 
-- **VLAN IP addressses:** Can be configured in a supported data center using keepalived. See [VLANs > Availability](/docs/products/networking/vlans/#availability) for a list of data centers.
+- **VLAN IP addresses:** Can be configured in a supported data center using keepalived. See [VLANs > Availability](/docs/products/networking/vlans/#availability) for a list of data centers.
 
 ## Configuring IP Sharing
 

@@ -18,9 +18,9 @@ The `netstat` command line utility shows information about the network status of
 
 `netstat` is an older utility, and some components of its functionality have been superseded by newer tools, like the [`ss` command](/docs/guides/ss/). A primary benefit of using `netstat` is that it is frequently pre-installed on Linux systems, while other tools might not be. As well, many (but not all) of the command line options for `netstat` can be run without root privileges, so it can still be useful on a system where you do not have root or `sudo` privileges.
 
-{{< disclosure-note "Assumptions" >}}
+{{< note >}}
 This guide assumes some basic knowledge of networking in Linux, including network interfaces, routing tables, and network connections and sockets.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ## In This Guide
 
@@ -216,7 +216,7 @@ udp6       0      0 [::]:ntp                [::]:*
 {{< /output >}}
 
 {{< note respectIndent=false >}}
-If you want to display IPv4 connections that are in both listening and non-listening state, add the `-a` command line option:
+If you want to display IPv6 connections that are in both listening and non-listening state, add the `-a` command line option:
 
     netstat -6a
 {{< /note >}}

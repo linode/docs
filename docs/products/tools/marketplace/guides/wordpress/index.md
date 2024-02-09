@@ -3,7 +3,7 @@ description: "WordPress is an industry standard CMS. Follow this guide to deploy
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 published: 2020-09-28
-modified: 2023-06-06
+modified: 2023-12-14
 modified_by:
   name: Linode
 title: "Deploy WordPress through the Linode Marketplace"
@@ -32,7 +32,7 @@ authors: ["Linode"]
 
 ### WordPress Options
 
-- **Webserver Stack** *(required)*: Chose which webserver to use for the WordPress deployment, Apache2 or NGINX.
+- **Webserver Stack** *(required)*: Choose which webserver to use for the WordPress deployment, Apache2 or NGINX.
 - **Email address** *(required)*: Enter the email address you wish to use when configuring the WordPress admin user, generating SSL certificates, and optionally creating DNS records for a custom domain.
 - **WordPress Admin Username** *(required)*: Username for your WordPress admin user account. Defaults to `admin` if no username is entered.
 - **WordPress Database Username** *(required)*: MySQL username for the WordPress database user. Defaults to `wordpress` if no username is entered.
@@ -43,7 +43,7 @@ authors: ["Linode"]
     The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the WordPress deployment completes.
     {{< /note >}}
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
@@ -63,7 +63,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 1.  Once logged in, access the credentials file by running the following command:
 
     ```command
-    cat /root/.linode_credentials.txt
+    cat /root/.credentials
     ```
 
 1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.
@@ -116,10 +116,10 @@ If you need to reset your admin user's password and you aren't receiving the pas
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Navigate to the directory of your WordPress installation:.
+1.  Navigate to the `public_html` directory of your WordPress installation:.
 
     ```command
-    cd /var/www/wordpress
+    cd /var/www/example.com/public_html
     ```
 
 1.  Using the WP-CLI, update either the password or email address. You can also update other values as needed. See [WP-CLI wp user update command](https://developer.wordpress.org/cli/commands/user/update/).

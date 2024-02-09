@@ -158,7 +158,7 @@ If the torch library cannot be found, python returns an error message indicating
 
     {{< output >}}
 
->>>print (torch.cuda.is_available)
+>>>print (torch.cuda.is_available())
 true
     {{</ output >}}
 
@@ -171,7 +171,7 @@ true
 
     {{< output >}}
 
->>>print (torch.cuda.device_count)
+>>>print (torch.cuda.device_count())
 >>>2
     {{</ output >}}
 

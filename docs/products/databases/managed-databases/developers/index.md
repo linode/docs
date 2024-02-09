@@ -6,6 +6,8 @@ tab_group_main:
     weight: 50
 ---
 
+{{< content "dbass-eos" >}}
+
 ## Linode API
 
 Linode’s API v4 provides the ability to programmatically manage the full range of Linode products and services.
