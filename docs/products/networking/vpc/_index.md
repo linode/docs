@@ -8,8 +8,9 @@ tab_group_main:
     title: Overview
     weight: 10
 published: 2024-01-29
+modified: 2024-02-07
 cascade:
-    product_description: "A virtual private enables private communication between Compute Instances, isolating your network traffic from other customers and the internet."
+    product_description: "A virtual private cloud enables private communication between Compute Instances, isolating your network traffic from other customers and the internet."
 ---
 
 {{< note title="VPC Availability" >}}

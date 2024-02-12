@@ -29,7 +29,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   margin-bottom: 0;
 }
 
-.content a {
+.content a:not(.a--block) {
   @apply text-brand hover:text-green-400;
 }
 

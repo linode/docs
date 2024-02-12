@@ -196,7 +196,7 @@
 }
 .c-weglot-nav ul {
   background: white;
-  border: 1px solid #ebeef0;
+  border: 1px solid #ededf4;
   display: none;
   left: auto;
   list-style: none;
@@ -277,7 +277,7 @@ body.om-position-floating-top {
   border: 0;
   color: #ffffff;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.125rem;
   height: 18px;
   padding: 0;
   width: 18px;
@@ -295,7 +295,7 @@ body.om-position-floating-top {
 .c-site-header {
   color: #32363b;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
@@ -320,7 +320,7 @@ body.om-position-floating-top {
 .c-site-header__banner {
   background-color: #009bde;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1;
   position: relative;
   text-align: center;
@@ -354,7 +354,7 @@ body.om-position-floating-top {
   background-color: #ffffff;
   border-bottom: 1px solid #ededf4;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   letter-spacing: 0;
   line-height: 1.25;
   overflow: visible;
@@ -409,7 +409,7 @@ body.om-position-floating-top {
 .c-site-header__primary .o-menu__item--button .o-menu__link {
   border-width: 0px;
   display: inline-block;
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 1.538461538;
   padding-inline: 20px;
 }
@@ -472,7 +472,7 @@ body.om-position-floating-top {
 }
 .c-site-header__primary .c-weglot-nav {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   letter-spacing: 0;
   line-height: 1.25;
   margin-left: 0;
@@ -554,7 +554,7 @@ body.om-position-floating-top {
 .c-submenu h6 {
   color: #999b9d;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0;
   letter-spacing: 2px;
   line-height: 1.3333333333;
@@ -627,13 +627,13 @@ body.om-position-floating-top {
 }
 .c-submenu .c-featured__headline {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 32px;
+  font-size: 2rem;
   line-height: 1.125;
   margin-bottom: 8px;
 }
 .c-submenu .c-featured__excerpt {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   letter-spacing: 0;
   line-height: 1.4285714286;
   margin-bottom: 16px;
@@ -645,7 +645,7 @@ body.om-position-floating-top {
   color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.538461538;
   padding: 10px 20px;
@@ -718,7 +718,7 @@ body.om-position-floating-top {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' data-prefix='far' data-icon='angle-down' role='img' viewBox='0 0 320 512' class='svg-inline--fa fa-angle-down fa-w-10 fa-7x'%3E%3Cpath fill='rgba(2,177,89)' d='M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z' class=''%3E%3C/path%3E%3C/svg%3E");
 }
 .c-submenu--mobile :where(#submenu-mobile-primary .--d0) {
-  font-size: 22px;
+  font-size: 1.375rem;
   height: -moz-min-content;
   height: min-content;
   padding-block: 6px;
@@ -734,7 +734,7 @@ body.om-position-floating-top {
   margin-bottom: -6px;
 }
 .c-submenu--mobile :where(#submenu-mobile-primary .--d1) {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 .c-submenu--mobile :where(#submenu-mobile-primary .--d1 > .o-menu__item) > .o-menu__link {
   padding-inline: 20px;
@@ -747,13 +747,13 @@ body.om-position-floating-top {
   font-weight: 400;
 }
 .c-submenu--mobile :where(#submenu-mobile-primary .--d2) {
-  font-size: 16px;
+  font-size: 1rem;
 }
 .c-submenu--mobile :where(#submenu-mobile-primary .--d2 > .o-menu__item) > .o-menu__link {
   padding-inline: 20px;
 }
 .c-submenu--mobile :where(#submenu-mobile-quicklinks) {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 .c-submenu--mobile :where(#submenu-mobile-quicklinks).o-layout__module {
   border-top: 1px solid #ededf4;
@@ -868,7 +868,7 @@ body.om-position-floating-top {
 .c-site-header__topbar {
   background-color: #ffffff;
   border-bottom: 1px solid #ededf4;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.2307692308;
   padding-bottom: 0;
@@ -934,7 +934,7 @@ body.om-position-floating-top {
   white-space: nowrap;
 }
 .c-site-header__topbar .c-utility-nav {
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 1.2307692308;
 }
 .c-site-header__topbar .o-menu__list {
