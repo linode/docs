@@ -1,12 +1,11 @@
 ---
 slug: what-are-pop-and-imap
-title: "What are POP and IMAP & How Do You Use Them?"
-title_meta: "Quick Guide to POP and IMAP: Post Office Protocol and Internet Message Access Protocol"
-description: 'What are POP and IMAP and how do they work? Post Office Protocol and Internet Message Access Protocol are technologies behind incoming email server communication. ✓ Learn how to use handy POP and IMAP commands here!'
+title: "Quick Guide to POP and IMAP: Protocols for Accessing Email"
+description: 'What are POP and IMAP and how do they work? They both are technologies behind incoming email server communication. ✓ Learn how to use handy POP and IMAP commands here!'
 keywords: ['what are pop and imap','mail transfers','pop imap tcp or udp','pop addressing','how does pop work','How does imap work','what are pop and imap used for','pop and imap protocol examples','what do pop and imap do']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-06-05
+published: 2024-02-12
 modified_by:
   name: Linode
 ---
@@ -21,11 +20,9 @@ POP and IMAP are both message *retrieval* protocols that access and present emai
 
 Message retrieval is just one of several functions in a complete email system. Neither POP nor IMAP send email messages. Before delving into each protocol, it’s best to review client and server architecture to see where POP and IMAP fit in.
 
-Mail clients such as [Mozilla Thunderbird](https://www.thunderbird.net/en-US/), [Evolution](https://wiki.gnome.org/Apps/Evolution), or [Microsoft Outlook](https://www.microsoft.com/en-us/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook) are known as message user agents (MUAs). Their function is to compose and read email (Outlook runs proprietary protocols internally, but uses connectors to communicate with standards-based servers).
+Mail clients such as [Mozilla Thunderbird](https://www.thunderbird.net/en-US/), [Evolution](https://wiki.gnome.org/Apps/Evolution), or [Microsoft Outlook](https://www.microsoft.com/en-us/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook) are known as message user agents (MUAs). Their function is to compose and read email (Outlook runs proprietary protocols internally, but uses connectors to communicate with standards-based servers). To send messages, MUAs connect to mail servers using either the [Simple Mail Transfer Protocol (SMTP)](https://www.rfc-editor.org/rfc/rfc5321) or the [message submission protocol](https://datatracker.ietf.org/doc/html/rfc6409). For more information on SMTP, read our guide [Quick Guide to SMTP](/docs/guides/what-is-smtp/).
 
-To send messages, MUAs connect to mail servers using either the [Simple Mail Transfer Protocol (SMTP)](https://www.rfc-editor.org/rfc/rfc5321) or the [message submission protocol](https://datatracker.ietf.org/doc/html/rfc6409). For more information on SMTP, read our guide What Is SMTP?(/docs/guides/email/email-services/what-is-smtp). In TCP/IP email architecture, the server is called a mail transfer agent (MTA).
-
-Once a message reaches an MTA, it uses SMTP to relay the message to one or more other servers. It’s fair to say that SMTP does the heavy lifting for mail forwarding on the Internet. Meanwhile, POP or IMAP only get involved on the receiving side.
+In TCP/IP email architecture, the server is called a mail transfer agent (MTA). Once a message reaches an MTA, it uses SMTP to relay the message to one or more other servers. It’s fair to say that SMTP does the heavy lifting for mail forwarding on the Internet. Meanwhile, POP or IMAP only get involved on the receiving side.
 
 An MUA (client) can use IMAP to display and manipulate messages that remain on a mail server. Because messages stay on the server, any changes (e.g. marking a message as read or deleting it) are reflected across all MUAs running on all client devices. With IMAP, the message store on the server is the "one source of truth".
 
