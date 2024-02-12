@@ -19,7 +19,7 @@ export function newToCController(
 		level2Only: false,
 		setProgress: true,
 		desktopOnly: false,
-	}
+	},
 ) {
 	return {
 		activeHeading: {

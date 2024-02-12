@@ -43,7 +43,7 @@ authors: ["Linode"]
     The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the WordPress deployment completes.
     {{< /note >}}
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
@@ -63,7 +63,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 1.  Once logged in, access the credentials file by running the following command:
 
     ```command
-    cat /root/.linode_credentials.txt
+    cat /root/.credentials
     ```
 
 1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.
