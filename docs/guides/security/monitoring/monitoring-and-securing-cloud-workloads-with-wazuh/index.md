@@ -19,7 +19,7 @@ external_resources:
 
 Wazuh is an open-source security platform that offers **unified extended detection and response (XDR)** and **security information and event management (SIEM)** protection for endpoints and cloud workloads.
 
-Wazuh is an efficient way to secure your cloud computing processes, containers, and Kubernetes pods, as well as your client computers and devices. Wazuh can also help you meet government requirements such as PCI DSS, HIPAA, and GDPR, and configuration standards such as CIS hardening guides.
+Wazuh is an efficient way to secure your cloud computing processes, containers, and Kubernetes pods, as well as your client computers and devices. Wazuh can also help you meet government requirements such as PCI DSS, HIPAA, and GDPR, as well as configuration standards such as CIS hardening guides.
 
 ## How Does Wazuh Work?
 
@@ -56,7 +56,7 @@ Wazuh features dashboards for exploring the MITRE ATT&CK framework and associate
 
 There are a number of ways to install Wazuh, depending on where you want it to run, what other services you want to use with Wazuh, and the amount of traffic you need to handle:
 
-- Use [our Wazuh Marketplace app](/docs/products/tools/marketplace/guides/wazuh/) deployment. This is the fastest deployment option (fully deploys in about 15 minutes) and requires minimal configuration information.
+- Use [our Wazuh Marketplace app](/docs/products/tools/marketplace/guides/wazuh/) for a fast deployment. This option fully deploys in about 15 minutes and requires minimal configuration information.
 
 - For a customizable deployment, you can deploy Wazuh manually across multiple nodes (see [Install Wazuh Manually](#install-wazuh-manually)).
 
@@ -64,7 +64,7 @@ There are a number of ways to install Wazuh, depending on where you want it to r
 
 - For a scalable deployment, you have the option of installing Wazuh on [Kubernetes](https://documentation.wazuh.com/current/deployment-options/deploying-with-kubernetes/index.html#deployment-on-kubernetes').
 
-- An all-in-one deployment using [the Wazuh installation assistant](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh). This creates a Wazuh deployment on a single server that can monitor up to 100 endpoints.
+- You can create an all-in-one deployment using [the Wazuh installation assistant](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh). This creates a Wazuh deployment on a single server that can monitor up to 100 endpoints.
 
   The table below shows the recommended instance specifications for supporting various numbers of agents:
 
@@ -90,11 +90,13 @@ Once all the components are installed, you can install individual **Wazuh agents
 While all services can be installed using step-by-step instructions, this guide uses Wazuh's installation assistant to install each component.
 {{< /note >}}
 
-Follow the steps below to install Wazuh manually:
+Follow the steps below to install Wazuh manually starting with the Wazuh indexer:
 
 1. Prior to installing each component, create any Compute Instances you wish to serve as individual nodes and save their IP addresses. See Wazuh's documentation for hardware recommendations for nodes running the [Wazuh indexer](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/index.html#hardware-recommendations) and nodes running the [Wazuh server](https://documentation.wazuh.com/current/installation-guide/wazuh-server/index.html#hardware-requirements).
 
-1. Once all of your nodes have been created, proceed by downloading the Wazuh installation assistant and the configuration file to your local machine using the following cURL commands:
+    Wazuh recommends the following distributions for installation: Red Hat Enterprise Linux 7, 8, 9; CentOS 7, 8; Amazon Linux 2; Ubuntu 16.04, 18.04, 20.04, 22.04
+
+1. Once all of your nodes have been created, proceed by downloading the Wazuh installation assistant and the configuration file to a machine running one of the above operating systems. Note that installation requires root user access:
 
     ```command
     curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
@@ -134,7 +136,11 @@ Follow the steps below to install Wazuh manually:
           ip: "<dashboard-node-ip>"
     ```
 
-1. After editing your config file, execute the assistant with the `--generate-config-files` option to generate the Wazuh cluster key, certificates, and passwords necessary for installation:
+    {{< note title="Tip: Node Names" >}}
+    When specifying the names of your nodes, it can be helpful to use the same names as your corresponding Compute Instances.
+    {{< /note >}}
+
+1. After editing your config file, execute the assistant with the `--generate-config-files` option to generate the Wazuh cluster key, certificates, and passwords necessary for installation. When running the installation script, you may need to use the `-i` option to ignore hardware system checks if you are using a distribution not recommended by Wazuh:
 
     ```command
     bash wazuh-install.sh --generate-config-files
@@ -142,9 +148,13 @@ Follow the steps below to install Wazuh manually:
 
     You can find the generated files in the `./wazuh-install-files.tar` archive.
 
-1. Copy your `wazuh-install-files.tar` archive to all nodes in your deployment, including the Wazuh server, the Wazuh indexer, and the Wazuh dashboard nodes using the `scp` utility.
+1. Copy your `wazuh-install-files.tar` archive to all nodes in your deployment, including the Wazuh server, the Wazuh indexer, and the Wazuh dashboard nodes using the `scp` utility. Replace {{< placeholder "IP_ADDRESS" >}} with the IP of the node to which you are copying your `.tar` file:
 
-1. Proceed to download the installation assistant on the node or nodes you designated for the [Wazuh indexer](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/installation-assistant.html):
+    ```command
+    scp wazuh-install-files.tar root@{{< placeholder "IP_ADDRESS" >}}:root
+    ```
+
+1. If you haven't done so already, proceed to download the installation assistant on the node or nodes you designated for the [Wazuh indexer](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/installation-assistant.html):
 
     ```command
     curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
@@ -162,7 +172,7 @@ Follow the steps below to install Wazuh manually:
     bash wazuh-install.sh --start-cluster
     ```
 
-Repeat steps 6 and 7 for the [Wazuh server](https://documentation.wazuh.com/current/installation-guide/wazuh-server/installation-assistant.html#installing-the-wazuh-server-using-the-assistant) and [Wazuh dashboard](https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/installation-assistant.html#installing-the-wazuh-dashboard-using-the-assistant) nodes, replacing the `--wazuh-indexer` flag with the `--wazuh-server` and `--wazuh-dashboard` flags, respectively. Remember that the Wazuh dashboard only needs to be installed on a single node.
+Repeat steps 6 and 7 for the [Wazuh server](https://documentation.wazuh.com/current/installation-guide/wazuh-server/installation-assistant.html#installing-the-wazuh-server-using-the-assistant) and [Wazuh dashboard](https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/installation-assistant.html#installing-the-wazuh-dashboard-using-the-assistant) nodes, replacing the `--wazuh-indexer` flag with the `--wazuh-server` and `--wazuh-dashboard` flags and their respective node names. Remember that the Wazuh dashboard only needs to be installed on a single node.
 
 To access the Wazuh interface in your browser, navigate to `https://{{< placeholder "WAZUH_DASHBOARD_IP" >}}`, replacing {{< placeholder "WAZUH_DASHBOARD_IP" >}} with the IP of the node where you installed the Wazuh dashboard. Use the login credentials that were generated as output during the dashboard installation.
 
