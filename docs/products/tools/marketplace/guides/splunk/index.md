@@ -15,7 +15,7 @@ authors: ["Linode"]
 
 Splunk is a powerful log analyzer that can be used to obtain insight into your infrastructure. Splunk collects, monitors, analyzes, and visualizes data from database applications, web servers, cloud networks, and a variety of other sources.
 
-The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akamai SIEM integration](https://techdocs.akamai.com/siem-integration/docs/akamai-siem-integration-for-splunk-and-cef-syslog) on deployment. Please see [create authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials) for details on generating valid tokens. These deployment variables are optional.
+The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akamai SIEM integration](https://techdocs.akamai.com/siem-integration/docs/akamai-siem-integration-for-splunk-and-cef-syslog) on deployment. For details on generating valid tokens, see [create authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials). 
 
 ## Deploying a Marketplace App
 

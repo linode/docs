@@ -58,13 +58,13 @@ By default, this NATS deployment creates 2 users, one named "example" and anothe
 ```
 cat /root/.credentials
 ```
-This file will contain the 2 credentials needed for those users.
+This file will contain the two credentials needed for those users.
 
-For more reference, you can access [NATS Authorization](https://docs.nats.io/running-a-nats-service/configuration/securing_nats/authorization) docs.
+For details, see [NATS Authorization](https://docs.nats.io/running-a-nats-service/configuration/securing_nats/authorization).
 
 ### More Information
 
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
+For more information, refer to these resources. Note that we can't confirm the authenticity of externally hosted materials.
 
 - [Support](https://natsio.slack.com/)
 

@@ -11,7 +11,7 @@ external_resources:
 authors: ["Linode"]
 ---
 
-[JupyterLab](https://jupyter.org/) stands as the cutting-edge web-based interactive development environment, catering to notebooks, code, and data. With a flexible interface, users can effortlessly configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning. 
+[JupyterLab](https://jupyter.org/) stands as the cutting-edge web-based interactive development environment, catering to notebooks, code, and data. With a flexible interface, users can easily configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning. 
 
 ## Deploying a Marketplace App
 
@@ -42,7 +42,7 @@ authors: ["Linode"]
 
 ## Accessing the Jupyter Server
 
-Launch your web browser and navigate to the custom domain you set during deployment or the rDNS domain associated with your Compute Instance (e.g., 192-0-2-1.ip.linodeusercontent.com). This will direct you to the Jupyter Server login page, where you'll need to enter a token or password. For guidance on locating your Linode's IP addresses and rDNS information, consult the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide.
+Launch your web browser and navigate to the custom domain you set during deployment or the reverse DNS (rDNS) domain associated with your Compute Instance (e.g., 192-0-2-1.ip.linodeusercontent.com). This will direct you to the Jupyter Server login page, where you'll need to enter a token or password. For guidance on locating your Linode's IP addresses and rDNS information, consult the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide.
 
 ## Obtaining the Jupyter Token
 

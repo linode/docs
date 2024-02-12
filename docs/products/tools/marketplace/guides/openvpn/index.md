@@ -41,7 +41,7 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 The admin password for the OpenVPN application is no longer manually entered when creating the Compute Instance. Instead, this password is now automatically generated. See [Obtaining the Admin Password](#obtaining-the-admin-password) for instructions on viewing the admin password after deployment.
 {{< /note >}}
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for Let's Encrypt SSL Certificate (required):** Start of Authority address for free Let's Encrypt SSL. 
@@ -76,7 +76,7 @@ OpenVPN Username: openvpn
 OpenVPN Password: 9oxKqQT098DV
 ```
 
-You can also obtain your OpenVPN password by running the following command:
+To obtain your OpenVPN password, run this command:
 
     cat /usr/local/openvpn_as/init.log | grep 'To login'
 
