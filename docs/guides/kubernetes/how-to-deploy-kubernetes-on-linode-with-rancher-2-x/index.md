@@ -111,7 +111,7 @@ After you have your Linode up and running with Docker, you can then install and 
     If you are interested in setting up an SSL certificate with Rancher, you may consider also creating an NGINX container with an SSL certificate that proxies traffic to the Rancher container.
     {{< /note >}}
 
-1.  You should see a welcome screen from Rancher. The instructions to find the randamly generated password appear. The default user name is `admin`.
+1.  You should see a welcome screen from Rancher. The instructions to find the randomly generated password appear. The default user name is `admin`.
 1.  The system then prompts you to set a password.
 1.  The `Server URL` section should already show your Rancher server's IP address. Click **Continue**.
 1.  The default home page for your Rancher application appears. This page normally displays a list of all of your Kubernetes clusters. Since you have not created a cluster yet, no clusters are listed.
@@ -387,7 +387,7 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 
 1.  In the **Workloads** section the MariaDB and WordPress deployments for your app are displayed.
 
-1.  The **Deployments** section displays the **Endpoints** or thte address of the NodeBalancer that was created for your app.
+1.  The **Deployments** section displays the **Endpoints** or the address of the NodeBalancer that was created for your app.
 
     ![Rancher app detail view - NodeBalancer HTTP endpoint highlighted](wordpress-app-http-nodebalancer-endpoint-highlighted.png "Rancher app detail view - NodeBalancer HTTP endpoint highlighted")
 

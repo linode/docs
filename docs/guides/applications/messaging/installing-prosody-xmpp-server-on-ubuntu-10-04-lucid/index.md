@@ -67,7 +67,7 @@ To allow Prosody to provide XMPP/jabber services for more than one domain, inser
 
 {{< file "/etc/prosody/prosody.cfg.lua" lua >}}
 VirtualHost "example.com"
-VirtaulHost "example.com"
+VirtualHost "example.com"
 VirtualHost "staff.example.com"
 
 {{< /file >}}

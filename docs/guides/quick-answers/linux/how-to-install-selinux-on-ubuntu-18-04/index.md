@@ -272,7 +272,7 @@ To disable all SELinux policies on Ubuntu temporarily, run the following command
 
 If you wish to permanently disable SELinux even when the system reboots, make changes to the `/etc/selinux/config` file and set SELINUX to disabled. Change the SELinux line as shown below:
 
-    SELINX=disbaled
+    SELINX=disabled
 
 And, now if you restart the system, SELinux and its policies won’t be in place anymore.
 
