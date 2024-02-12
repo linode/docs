@@ -112,6 +112,8 @@ Consider using a [VPC](/docs/products/networking/vpc/) (Virtual Private Network)
 
 - **Public IPv4 address:** If you wish to enable public internet access on this new instance, check the **Assign a public IPv4 address for this Linode** option. By default, this is unchecked and you will not be able to access the internet from this instance.
 
+-   **Additional IPv4 ranges:** You can assign additional IPv4 ranges that can be used to reach this Compute Instance and/or the services running on it. For example, you may wish to assign additional IPv4 ranges to directly expose Docker containers to the VPC.
+
 For additional information and considerations, review the [Assign (and Remove) Services](/docs/products/networking/vpc/guides/assign-services/) guide.
 
 ## Assign to a Cloud Firewall (Optional) {#assign-to-a-cloud-firewall}
