@@ -1,14 +1,14 @@
 ---
 slug: linode-writers-formatting-guide
+title: Linode Writer's Formatting Guide
 description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2024-01-22
+modified: 2024-01-31
 modified_by:
   name: Linode
-title: Linode Writer's Formatting Guide
 show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/docs/guides/a-beginners-guide-to-github/)'
@@ -18,7 +18,7 @@ _build:
 authors: ["Linode"]
 ---
 
-![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")
+![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png)
 
 ## Write Guides for Linode
 
@@ -52,15 +52,14 @@ If you use the Hugo archetype command described in the previous section, the cre
 
 ```file {title="Author Submission" lang="yaml"}
 ---
-slug: url-slug-for-your-guide
-title: "Title of Your Guide (appears in H1)"
-title_meta: "Title of Your Guide (appears in meta title tag)"
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+slug: {{ path.Base .File.Dir }}
+title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
+description: "Two to three sentences describing your guide."
+og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
-published: 2023-03-07
+published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
 external_resources:
