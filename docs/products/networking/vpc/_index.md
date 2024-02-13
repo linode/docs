@@ -7,8 +7,8 @@ tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-published: 2024-01-29
-modified: 2024-02-07
+published: 2024-02-06
+modified: 2024-02-12
 cascade:
     product_description: "A virtual private cloud enables private communication between Compute Instances, isolating your network traffic from other customers and the internet."
 ---
@@ -75,7 +75,7 @@ Both [VLANs](/docs/products/networking/vlans/) and [Private IP addresses](/docs/
 
 - VPC IP addresses cannot use [IP Sharing](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) or [IP Transfer](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#transferring-ip-addresses) features.
 
-- To facilitate routing between different subnets on the same VPC, the VPC must be assigned to the `eth0` network interface on a Compute Instance (the default for new instances created with a VPC).
+- To facilitate routing between different subnets on the same VPC, configure the VPC network interface as the primary interface.
 
 - Network traffic across a private VPC network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/). The network transfer allowance for Compute Instances configured on VPCs still counts towards the _global network transfer pool_ on your account.
 
