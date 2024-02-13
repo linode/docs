@@ -2424,6 +2424,7 @@ uncommented
 uncommenting
 uncompress
 uncordoned
+undelete
 unencrypted
 unexported
 unformatted
