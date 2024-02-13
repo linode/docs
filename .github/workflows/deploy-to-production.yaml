@@ -153,9 +153,9 @@ jobs:
         sudo apt install -y tree
         tree -L 1 public
 
-      When Hugo builds, it renders search index data to a collection of
-      data files under public/. This step uploads that data to the
-      Algolia search backend
+      # When Hugo builds, it renders search index data to a collection of
+      # data files under public/. This step uploads that data to the
+      # Algolia search backend
     - name: 11. Update Algolia
       working-directory: ./linode-docs-theme-repo
       env:
