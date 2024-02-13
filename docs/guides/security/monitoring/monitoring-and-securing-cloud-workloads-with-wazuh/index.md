@@ -5,7 +5,7 @@ description: 'This guide explores how to utilize Wazuh for threat detection on m
 keywords: ['Wazuh', 'Wazuh Indexer', 'Wazuh Server', 'Install and Configure Wazuh', 'Provide Endpoint Security with Wazuh', 'How to Use Wazuh Threat Detection']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
-published: 2024-02-08
+published: 2024-02-13
 modified_by:
   name: Linode
 external_resources:
@@ -58,27 +58,26 @@ There are a number of ways to install Wazuh, depending on where you want it to r
 
 - Use [our Wazuh Marketplace app](/docs/products/tools/marketplace/guides/wazuh/) for a fast deployment. This option fully deploys in about 15 minutes and requires minimal configuration information.
 
-- For a customizable deployment, you can deploy Wazuh manually across multiple nodes (see [Install Wazuh Manually](#install-wazuh-manually)).
+- Using [Wazuh's Quickstart instructions](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh) along with their installation assistant, you can create an all-in-one, single node deployment. This deploys Wazuh on a single server that can monitor up to 100 endpoints.
+
+  Below are the [Akamai plan types](https://www.linode.com/pricing/) and minimum hardware recommendations for handling various numbers of monitoring agents:
+
+  | Agents       | Akamai Plan Type |
+  | ------------ |------------------|
+  | 1–25         | Shared, Dedicated, or Premium 8 GB with 4 CPUs |
+  | 25–100       | Shared, Dedicated, or Premium 16 GB with 6-8 CPUs |
+
+- For a customizable deployment, you can deploy Wazuh manually across multiple nodes (see [Multi-Node Wazuh Installation](#multi-node-wazuh-installation) below).
 
 - For development environments, you can deploy via [Docker images](https://documentation.wazuh.com/current/deployment-options/docker/index.html#deployment-on-docker).
 
 - For a scalable deployment, you have the option of installing Wazuh on [Kubernetes](https://documentation.wazuh.com/current/deployment-options/deploying-with-kubernetes/index.html#deployment-on-kubernetes').
 
-- You can create an all-in-one deployment using [the Wazuh installation assistant](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh). This creates a Wazuh deployment on a single server that can monitor up to 100 endpoints.
-
-  The table below shows the recommended instance specifications for supporting various numbers of agents:
-
-  | Agents       | CPU     | RAM    | Storage (90 days) |
-  | ------------ |---------|--------| ----------------- |
-  | 1–25         | 4 vCPU  | 8 GiB  |             50 GB |
-  | 25–50        | 8 vCPU  | 8 GiB  |            100 GB |
-  | 50–100       | 8 vCPU  | 8 GiB  |            200 GB |
-
-### Install Wazuh Manually
+### Multi-Node Wazuh Installation
 
 For a flexible installation of Wazuh, you can install both the **Wazuh indexer** and **Wazuh server** components manually on a single node or across multiple nodes for a cluster deployment. The **Wazuh dashboard** can be installed on one of your nodes running the Wazuh indexer or on a separate node.
 
-During manual installation, components should be installed in the following order:
+During manual installation, components should be installed in the following order on one or more nodes:
 
 - The Wazuh indexer
 - The Wazuh server
@@ -178,8 +177,8 @@ To access the Wazuh interface in your browser, navigate to `https://{{< placehol
 
 Once complete, install the [Wazuh agents](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html#wazuh-agent) on the endpoints you wish to monitor and protect. If you have a substantial number of endpoints, consider utilizing an automation tool such as Puppet, Chef, SCCM, or Ansible for agent deployment.
 
-## Individual Use Cases
+## Use Case Configuration
 
-There are many different Wazuh use cases that require specific configurations, including blocking known malicious actors, detecting brute-force attacks, and more. See Wazuh's documentation on use cases and their configurations:
+There are many different Wazuh use cases that require specific configurations, including blocking known malicious actors, detecting brute-force attacks, and more. See Wazuh's documentation on use cases, endpoint security options, and their respective configurations:
 
 - [Wazuh Proof of Concept Guide](https://documentation.wazuh.com/current/proof-of-concept-guide/index.html)
