@@ -1,7 +1,8 @@
 ---
 title: "Assign a Compute Instance to a VPC"
 description: "Learn how to add Compute Instances to subnets on Akamai's VPC solution."
-published: 2024-02-13
+published: 2024-01-30
+modified: 2024-02-13
 authors: ["Linode"]
 ---
 
