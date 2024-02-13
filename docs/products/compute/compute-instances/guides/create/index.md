@@ -2,7 +2,7 @@
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2024-01-30
+modified: 2024-02-13
 modified_by:
   name: Linode
 title: "Create a Compute Instance"
