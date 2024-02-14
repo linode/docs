@@ -318,6 +318,86 @@ export function newSearchStore(searchConfig, params, Alpine) {
 	return store;
 }
 
+export function normalizeAlgoliaResult(result, lang = '') {
+	let index = result.index;
+	let queryID = result.queryID ? result.queryID : '';
+
+	result.hits.forEach((hit, idx) => {
+		// For event tracking
+		hit.__index = index;
+		hit.__queryID = queryID;
+		if (hit.__queryID) {
+			// Only send position if we have a queryID.
+			hit.__position = idx + 1 + result.page * result.hitsPerPage;
+		}
+
+		hit.sectionTitle = hit.section;
+		if (hit.section) {
+			hit.section = hit.section.toLowerCase();
+		}
+
+		hit.rootSectionTitle = hit['section.lvl0'];
+		if (hit.rootSectionTitle) {
+			if (hit.rootSectionTitle.endsWith('-branches')) {
+				hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+			}
+			hit.rootSectionTitle = hit.rootSectionTitle.replace('-', ' ');
+		}
+
+		hit.titleHighlighted =
+			hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : hit.title;
+
+		hit.excerptHighlighted =
+			hit._highlightResult && hit._highlightResult.excerpt ? hit._highlightResult.excerpt.value : hit.excerpt;
+
+		hit.linkTitle = hit.linkTitle || hit.title;
+		hit.mainTitle = hit.title || hit.linkTitle;
+
+		if (hit.hierarchy && hit.hierarchy.length) {
+			// This is the reference-section, pick the main title from
+			// the top level.
+			let first = hit.hierarchy[0];
+			hit.mainTitle = first.title || first.linkTitle;
+		}
+
+		if (hit.href) {
+			hit.isExternalLink = hit.href.startsWith('http');
+		}
+
+		if (lang && lang !== 'en' && hit.href) {
+			hit.href = addLangToHref(hit.href, lang);
+		}
+
+		hit.firstPublishedDateString = '';
+		if (hit.firstPublishedTime) {
+			hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
+		}
+
+		hit.excerptTruncated = function (maxLen = 300) {
+			let excerpt = this.excerpt || this.description;
+			if (!excerpt) {
+				return '';
+			}
+			if (excerpt.length <= maxLen) {
+				return excerpt;
+			}
+			return `${excerpt.substring(0, maxLen)} …`;
+		};
+
+		if (!hit.thumbnailUrl) {
+			hit.thumbnailUrl = '/docs/media/images/Linode-Default-416x234.jpg';
+		}
+
+		hit.tagsValues = function () {
+			if (!this.tags) {
+				return [];
+			}
+
+			return Object.values(this.tags);
+		};
+	});
+}
+
 // Normalization of search results.
 const normalizeResult = function (self, result) {
 	let hitsStart = 0;
@@ -409,83 +489,8 @@ const normalizeResult = function (self, result) {
 	};
 
 	let lang = getCurrentLang();
-	let index = result.index;
-	let queryID = result.queryID ? result.queryID : '';
 
-	result.hits.forEach((hit, idx) => {
-		// For event tracking
-		hit.__index = index;
-		hit.__queryID = queryID;
-		if (hit.__queryID) {
-			// Only send position if we have a queryID.
-			hit.__position = idx + 1 + result.page * result.hitsPerPage;
-		}
-
-		hit.sectionTitle = hit.section;
-		if (hit.section) {
-			hit.section = hit.section.toLowerCase();
-		}
-
-		hit.rootSectionTitle = hit['section.lvl0'];
-		if (hit.rootSectionTitle) {
-			if (hit.rootSectionTitle.endsWith('-branches')) {
-				hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
-			}
-			hit.rootSectionTitle = hit.rootSectionTitle.replace('-', ' ');
-		}
-
-		hit.titleHighlighted =
-			hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : hit.title;
-
-		hit.excerptHighlighted =
-			hit._highlightResult && hit._highlightResult.excerpt ? hit._highlightResult.excerpt.value : hit.excerpt;
-
-		hit.linkTitle = hit.linkTitle || hit.title;
-		hit.mainTitle = hit.title || hit.linkTitle;
-
-		if (hit.hierarchy && hit.hierarchy.length) {
-			// This is the reference-section, pick the main title from
-			// the top level.
-			let first = hit.hierarchy[0];
-			hit.mainTitle = first.title || first.linkTitle;
-		}
-
-		if (hit.href) {
-			hit.isExternalLink = hit.href.startsWith('http');
-		}
-
-		if (lang && lang !== 'en' && hit.href) {
-			hit.href = addLangToHref(hit.href, lang);
-		}
-
-		hit.firstPublishedDateString = '';
-		if (hit.firstPublishedTime) {
-			hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
-		}
-
-		hit.excerptTruncated = function (maxLen = 300) {
-			let excerpt = this.excerpt || this.description;
-			if (!excerpt) {
-				return '';
-			}
-			if (excerpt.length <= maxLen) {
-				return excerpt;
-			}
-			return `${excerpt.substring(0, maxLen)} …`;
-		};
-
-		if (!hit.thumbnailUrl) {
-			hit.thumbnailUrl = '/docs/media/images/Linode-Default-416x234.jpg';
-		}
-
-		hit.tagsValues = function () {
-			if (!this.tags) {
-				return [];
-			}
-
-			return Object.values(this.tags);
-		};
-	});
+	normalizeAlgoliaResult(result, lang);
 };
 
 class SearchBatcher {

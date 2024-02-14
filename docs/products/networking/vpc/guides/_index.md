@@ -11,8 +11,10 @@ published: 2024-01-09
 
 - [Getting Started with VPCs](/docs/products/networking/vpc/get-started/): An introduction to VPCs, including how to create and administer them within the Cloud Manager.
 
-- [Create a VPC](/docs/products/networking/vpc/guides/create/): Learn how to create a VPC using the Cloud Manager and Linode API.
+- [Create a VPC](/docs/products/networking/vpc/guides/create/): Outlines how to create a VPC using the Cloud Manager, Linode CLI, and Linode API.
+
+- [Manage VPCs](/docs/products/networking/vpc/guides/manage-vpcs/): Instructions on viewing, editing, and deleting VPCs.
 
 - [Manage Subnets](/docs/products/networking/vpc/guides/subnets/): Information about VPC subnets and instructions on creating, editing, and deleting them.
 
-- [Assign (and Remove) Services](/docs/products/networking/vpc/guides/assign-services/): Learn how to add an remove existing Compute Instances to/from a VPC.
+- [Assign a Compute Instance to a VPC](/docs/products/networking/vpc/guides/assign-services/): Learn how to add Compute Instances to a VPC.
