@@ -2,7 +2,7 @@
 title: "Assign a Compute Instance to a VPC"
 description: "Learn how to add Compute Instances to subnets on Akamai's VPC solution."
 published: 2024-01-30
-modified: 2024-02-13
+modified: 2024-02-14
 authors: ["Linode"]
 ---
 
@@ -18,7 +18,7 @@ There are three main ways to assign a Compute Instance to a VPC:
 
 - VPCs, along with VLANs and the public internet, are configured as network interfaces within a Compute Instance's configuration profile. These network interfaces are configured automatically when creating a Compute Instance with a VPC or when interacting with the VPC directly to assign and remove existing Compute Instances. You can also edit the Configuration Profile directly to manually configure these network interfaces to suit specific use cases. Manually editing a Configuration Profile on a Compute Instance is typically the preferred way to assign a VPC to an existing instance.
 
-- VPC resources requiring public internet access should be configured as a 1:1 NAT or should use a manually deployed NAT gateway. It is not recommended to configure a separate network interface with public internet access (in addition to the VPC interface).
+- VPC resources requiring public internet access should be configured as a 1:1 NAT or use a [forward proxy](/docs/guides/forward-proxy-for-vpc/). It is not recommended to configure a separate network interface with public internet access (in addition to the VPC interface).
 
 - Compute Instances can only be assigned to a single subnet of a single VPC, though they can communicate with other instances on any subnet within the same VPC. Multiple VPC interfaces on an instance are not allowed.
 
