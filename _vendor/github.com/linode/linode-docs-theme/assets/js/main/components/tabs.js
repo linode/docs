@@ -1,6 +1,6 @@
 'use strict';
 
-import { getScrollLeft, withBoundingClientRect } from '../helpers/index';
+import { getScrollLeft } from '../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[tabs]') : function () {};
 
@@ -26,7 +26,7 @@ export function newTabsController() {
 			// Loop over the ids and set the active tab to either the first one or the one that is set to active in the global store.
 			let activeSet = false;
 			this.tabs.ids.forEach((id, index) => {
-				if (this.$store.nav.tabs.active[id]) {
+				if (tabsState.active[id]) {
 					newActive = index;
 					activeSet = true;
 				}
@@ -37,42 +37,42 @@ export function newTabsController() {
 				tabsState.active[this.tabs.ids[0]] = true;
 			}
 
-			if (oldActive === newActive) {
-				return;
-			}
-
 			this.tabs.active = newActive;
+
+			this.tabs.ids.forEach((id, index) => {
+				let isActive = index === newActive;
+				let tabContentEl = this.$refs['tabs-content-' + index];
+				if (isActive) {
+					let tabEl = this.$refs['tab-' + index];
+					// This is a workaround for Safari that seems to get confused
+					// when we set scrollLeft on a scrolled element.
+					tabsNavEl.style.overflowX = 'hidden';
+					let scrollLeft = getScrollLeft(tabsNavEl, tabEl);
+					if (scrollLeft) {
+						tabsNavEl.scrollLeft = scrollLeft;
+					}
+					tabsNavEl.style.overflowX = 'auto';
+				}
+				tabContentEl.style.display = isActive ? '' : 'none';
+			});
 
 			if (init) {
 				return;
 			}
 
-			let activeTabEl = this.$refs['tab-' + newActive];
-			if (activeTabEl) {
-				// This is a workardound for Safari that seems to get confused
-				// when we set scrollLeft on a scrolled element.
-				tabsNavEl.style.overflowX = 'hidden';
-				let scrollLeft = getScrollLeft(tabsNavEl, activeTabEl);
-				if (scrollLeft) {
-					tabsNavEl.scrollLeft = scrollLeft;
-				}
-				tabsNavEl.style.overflowX = 'auto';
-			}
-
-			// We only need to adjust the currently clicked component.
-			if (this.ordinal != tabsState.ordinal) {
+			// We only need to adjust the currently clicked component,
+			// and not the top one.
+			if (this.ordinal == 0 || this.ordinal != tabsState.ordinal) {
 				return;
 			}
 
-			withBoundingClientRect(tabsEl, (bounds) => {
-				let topPosAfter = bounds.top;
-				// Restore offset of the clicked tab if it has changed.
-				let diff = topPosAfter - this.topPos;
+			let topPosAfter = tabsEl.getBoundingClientRect().top;
+			// Restore offset of the clicked tab if it has changed.
+			let diff = topPosAfter - this.topPos;
 
-				if (diff) {
-					window.scrollBy(0, diff);
-				}
-			});
+			if (diff) {
+				window.scrollBy(0, diff);
+			}
 		},
 		initTabs(ordinal) {
 			this.ordinal = ordinal;

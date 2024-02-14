@@ -56,7 +56,7 @@ After Zabbix has finished installing, you must first obtain the login credential
     Zabbix frontend credentials:
     Username: Admin
     Password: abcdef0123456789
-    To learn about available professional services, including technical suppport and training, please visit https://www.zabbix.com/services
+    To learn about available professional services, including technical support and training, please visit https://www.zabbix.com/services
     Official Zabbix documentation available at https://www.zabbix.com/documentation/current/
     Note! Do not forget to change timezone PHP variable in /etc/php.d/99-zabbix.ini file.
     ********************************************************************************

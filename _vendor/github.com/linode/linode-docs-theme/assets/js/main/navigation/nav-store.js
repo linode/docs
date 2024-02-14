@@ -1,6 +1,7 @@
 import { isMobile } from '../helpers';
 import { getScrollPosNavbar } from './nav';
 import { AnalyticsEventsCollector } from './nav-analytics';
+import { RecommendationsFetcher } from './recommendations';
 import { initConsentManager } from '../components/index';
 
 export function newNavStore(searchConfig, searchStore, params, Alpine) {
@@ -45,6 +46,8 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 			functional: false,
 			performance: false,
 		},
+
+		recommendations: new RecommendationsFetcher(searchConfig),
 
 		init() {
 			const tabsKey = 'tabs';
@@ -144,6 +147,15 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 			// Store the old so we can go back.
 			this.history.push(window.location.pathname);
 			history.pushState({}, '', href);
+		},
+
+		pushTopResults(queryString) {
+			// Add a noindex meta tag to the page so it doesn't get indexed.
+			let meta = document.createElement('meta');
+			meta.name = 'robots';
+			meta.content = 'noindex';
+			document.head.appendChild(meta);
+			this.pushState('/docs/topresults/' + queryString);
 		},
 
 		scrollToNavBarIfPinned() {

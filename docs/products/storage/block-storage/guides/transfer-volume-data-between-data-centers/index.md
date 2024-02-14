@@ -5,7 +5,7 @@ modified: 2022-08-24
 authors: ["Linode"]
 ---
 
-Block Storage Volumes cannot be directly migrated to a different data center. These steps will outline how to transfer a Volume's data to a different data center via the [SCP](/docs/guides/download-files-from-your-linode/#download-specific-files-or-directories-over-ssh) tool.
+Block Storage Volumes cannot be directly migrated to a different data center. These steps will outline how to transfer a Volume's data to a different data center via the [SCP](/docs/guides/download-files-from-a-compute-instance/#download-specific-files-or-directories-over-ssh) tool.
 
 {{< note >}}
 Consult our [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide for information on charges related to outbound traffic when transferring data over the public internet.
@@ -17,7 +17,7 @@ Consult our [Network Transfer Usage and Costs](/docs/products/platform/get-start
 
 1. Log in to your new receiving Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  [Use the Secure Copy Protocol (SCP)](/docs/guides/download-files-from-your-linode/#download-specific-files-or-directories-over-ssh) to download your Volume's data to the receiving Compute Instance.
+1.  [Use the Secure Copy Protocol (SCP)](/docs/guides/download-files-from-a-compute-instance/#download-specific-files-or-directories-over-ssh) to download your Volume's data to the receiving Compute Instance.
 
         scp [source-user]@[source-ip]:[source-path] [destination-path]
 

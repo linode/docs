@@ -2,7 +2,7 @@
 slug: build-a-cd-pipeline-with-lke-part-3
 description: "In part three of our series on Kubernetes, you will learn about Managed clusters, as well as how to set them up using the Linode Kubernetes Engine (LKE)."
 title: "Building a CD Pipeline Using LKE (Part 3): Deploying the LKE Cluster"
-keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
 modified: 2022-12-14

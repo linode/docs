@@ -4,18 +4,57 @@ description: 'This article gives you information to help you determine which dat
 keywords: ["data center", "datacenter", "dc", "speed"]
 tags: ["linode platform"]
 published: 2018-10-31
-modified: 2023-03-14
+modified: 2024-01-03
 modified_by:
   name: Linode
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
 authors: ["Linode"]
 ---
 
+{{< note >}}
+Our **Chennai** and **Mumbai** core sites are optimized for the India market. For workloads that currently serve or intend to serve the wider Asia-Pacific region and for communication with Akamai core sites outside of India, we recommend deploying resources in our Singapore or Sydney data centers.
+{{< /note >}}
+
 Deploying your Compute Instance to a geographically advantageous data center can make a big difference in connection speeds to your server. Ideally, your site or application should be served from multiple points around the world, with requests sent to the appropriate region based on client geolocation. On a smaller scale, deploying a Compute Instance in the data center nearest to you will make it easier to work with than one in a different region or continent.
 
-There are many things can affect network congestion, connection speeds, and throughput, so you should never interpret one reading as the sole data point. Always perform tests in multiples of three or five for an average, and on both weekend and weekdays for the most accurate information.
+There are many things that can affect network congestion, connection speeds, and throughput, so you should never interpret one reading as the sole data point. Always perform tests in multiples of three or five for an average, and on both weekend and weekdays for the most accurate information.
 
 This page is a quick guide for choosing and speed testing a data center (DC). Start by creating a Compute Instance in the data center in or near your region, or several instances in multiple regions if you're close to more than one DC. From there, use Linode's [Facilities Speedtest](https://www.linode.com/speedtest) page for test domains to ping and files to download.
+
+## Product Availability
+
+An important consideration when choosing a data center is the availability of specific features and services, as well as regional support. Below is table displaying a matrix of which services Linode offers in each particular region.
+
+{{< table class="first-sticky" >}}
+| Region | [Dedicated Compute](/docs/products/compute/compute-instances/plans/dedicated-cpu/) | [Shared Compute](/docs/products/compute/compute-instances/plans/shared-cpu/) | [GPUs](/docs/products/compute/compute-instances/plans/gpu/) | [Premium Compute](/docs/products/compute/compute-instances/plans/premium/) | [Kubernetes](/docs/products/compute/kubernetes/) | [Managed DB](/docs/products/databases/managed-databases/) | [Cloud Firewall](/docs/products/networking/cloud-firewall/) | [DDoS Protection](/docs/products/networking/ddos-protection/) | [NodeBalancers](/docs/products/networking/nodebalancers/) | [VLANs](/docs/products/networking/vlans/) | [VPCs](/docs/products/networking/vpc/) | [Backups](/docs/products/storage/backups/) | [Block Storage](/docs/products/storage/block-storage/) | [Object Storage](/docs/products/storage/object-storage/) | [Images](/docs/products/tools/images/) |
+| --- | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
+| Amsterdam      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Atlanta        | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
+| Chennai        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Chicago        | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Dallas         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Frankfurt      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
+| Fremont        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   |   | ✔ | ✔ |   | ✔ |
+| Jakarta        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Los Angeles    | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Miami          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Milan          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Newark         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
+| Osaka          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Paris          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| São Paulo      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Seattle        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Singapore      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
+| Stockholm      | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Sydney         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Tokyo          | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Toronto        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Washington, DC | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+{{< /table >}}
+
+†Denotes higher capacity Object Storage availability.
 
 ## Network Latency
 
@@ -75,3 +114,12 @@ Below you can see that each time `cURL` is run, a different average download spe
                                  Dload  Upload   Total   Spent    Left  Speed
 100  100M  100  100M    0     0  9189k      0  0:00:11  0:00:11 --:--:-- 10.0M
 ```
+
+## Pricing
+
+Price may also be a factor when selecting your region. In general, Linode plans and services are billed at the same, flat rate across data centers. However, due to higher infrastructure costs in various global markets, pricing for some services varies from data center to data center. Regions with data center-specific pricing include:
+
+- Jakarta, Indonesia
+- São Paulo, Brazil
+
+See our [Pricing](https://www.linode.com/pricing/) page for a complete list of plans and pricing.

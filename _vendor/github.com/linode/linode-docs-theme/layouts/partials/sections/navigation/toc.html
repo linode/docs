@@ -2,9 +2,9 @@
 <div
   id="toc-component"
   class="bg-white z-10 w-full h-full border-l-gray--md"
-  x-data="lncToc()"
-  x-init="initToC({{ $level2Only }})"
-  @scroll.window.debounce.10ms="onScroll()"
+  x-data="lncToc({ level2Only: {{ $level2Only }}})"
+  x-init="initToC()"
+  @scroll.window="onScroll()"
   @hashchange.window="onHashchange();">
   <div
     x-show="enabled"
@@ -12,7 +12,7 @@
     @click.away="closeIfMobile()"
     data-testid="toc">
     <div class="flex flex-col">
-      <ul @click="toggleOpen()">
+      <ul @click.stop="toggleOpen()" data-testid="toc-toggle">
         <li class="cursor-pointer navbar__row bg-white">
           <div class="hide-if-topbar-is-pinned md:hidden h-full pr-container">
             <div class="flex items-center h-full justify-end md:hidden">
@@ -35,7 +35,7 @@
               <template x-if="!showHeading || activeHeading.title === ''">
                 <div
                   class="font-semibold text-titlecolor uppercase text-xs md:text-sm tracking-wide md:tracking-widest">
-                  Contents
+                  On this page
                 </div>
               </template>
               <template x-if="showHeading && activeHeading.title !== ''">
@@ -84,7 +84,7 @@
       x-transition:enter-end="opacity-100 transform mobile:translate-x-0 sm:translate-y-0">
       <div
         class="flex justify-between items-center md:hidden px-container mt-4 mb-2">
-        <h3 class="letter-spacing: 0.07px;">CONTENTS</h3>
+        <h3 class="letter-spacing: 0.07px;">On this page</h3>
         <button
           type="button"
           class="btn-icon"
@@ -95,7 +95,9 @@
           </svg>
         </button>
       </div>
-      <div class="toc__inner"></div>
+      <div class="toc__inner">
+        <ol id="toc-ol" x-ref="ol"></ol>
+      </div>
     </nav>
   </div>
   <template x-ref="headerCloseButton">

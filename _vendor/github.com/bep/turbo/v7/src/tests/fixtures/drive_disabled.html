@@ -10,11 +10,7 @@
         if (event.target.id == "requestSubmit") {
           event.preventDefault()
           const form = event.target.closest('form')
-          if(typeof form.requestSubmit === "function"){
-            form.requestSubmit()
-          } else {
-            form.submit()
-          }
+          form.requestSubmit()
         }
       })
     </script>
@@ -38,5 +34,17 @@
       <input type="hidden" name="greeting" value="Hello from a redirect">
       <a href="#" id="requestSubmit">Drive enabled submit via JS</a>
     </form>
+
+    <turbo-frame id="frame">
+      <h2>Hello from a frame</h2>
+
+      <a href="/src/tests/fixtures/drive_disabled.html">Navigate #frame</a>
+      <form action="/src/tests/fixtures/drive_disabled.html">
+        <button>Navigate #frame</button>
+      </form>
+      <custom-link-element link="/src/tests/fixtures/frames/frame.html">
+        <span id="frame-navigation-with-slot">Link in slot</span>
+      </custom-link-element>
+    </turbo-frame>
   </body>
 </html>

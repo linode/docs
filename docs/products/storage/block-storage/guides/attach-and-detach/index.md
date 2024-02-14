@@ -1,6 +1,6 @@
 ---
 title: "Attach and Detach a Volume"
-description: "Learn how to attach and detach exsting Volumes to or from Compute Instances."
+description: "Learn how to attach and detach existing Volumes to or from Compute Instances."
 aliases: ['/products/storage/block-storage/guides/attach-volume/','/products/storage/block-storage/guides/detach-volume/']
 modified: 2022-08-24
 authors: ["Linode"]

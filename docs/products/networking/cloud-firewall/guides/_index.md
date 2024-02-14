@@ -14,7 +14,7 @@ tab_group_main:
 
 - [Manage Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/): Define rules to accept or drop traffic.
 
-- [Apply a Cloud Firewall to a Compute Instance](/docs/products/networking/cloud-firewall/guides/apply-to-compute-instances/): Add (and remove) Compute Instances to your Cloud Firewalls.
+- [Apply a Cloud Firewall to a Compute Instance](/docs/products/networking/cloud-firewall/guides/apply-to-service/): Add (and remove) Compute Instances to your Cloud Firewalls.
 
 - [Enable or Disable a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/update-status/): Configure the status of a Cloud Firewall.
 

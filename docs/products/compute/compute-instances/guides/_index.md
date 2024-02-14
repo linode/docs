@@ -5,7 +5,7 @@ description: "A collection of guides to help you start deploying Compute Instanc
 tab_group_main:
     weight: 30
 aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-cpu/guides/','/products/compute/gpu/guides/','/products/compute/dedicated-cpu/guides/','/products/compute/high-memory/guides/']
-modified: 2023-04-11
+modified: 2024-01-03
 ---
 
 ## Basics
@@ -48,6 +48,12 @@ modified: 2023-04-11
 - [Manual Network Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/)
 - [Configure Failover](/docs/products/compute/compute-instances/guides/failover/)
 - [An Overview of IPv6 on Linode](/docs/products/compute/compute-instances/guides/ipv6/)
+
+## Metadata (Automated System Configuration with Cloud-Init)
+
+- [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/)
+- [Cloud-Config Usage and Examples](/docs/products/compute/compute-instances/guides/metadata-cloud-config/)
+- [How to Use the Metadata Service API](/docs/products/compute/compute-instances/guides/metadata-api/)
 
 ## Recovery and Troubleshooting
 
