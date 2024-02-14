@@ -3,7 +3,7 @@ title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
-modified: 2023-10-22
+modified: 2024-02-14
 modified_by:
   name: Linode
 aliases: ['/guides/ip-failover/']
@@ -39,6 +39,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Jakarta (Indonesia) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
 | Los Angeles, CA (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 30 |
 | London (United Kingdom) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 7 |
+| Madrid (Spain) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 24 |
 | Miami, FL (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 28 |
 | Milan (Italy) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 27 |
 | Mumbai (India) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 14 |
@@ -82,11 +83,14 @@ If your data center supports the legacy method (ARP), use the [Configuring IP Fa
 
 To configure failover, complete each section in the order shown:
 
-1.  [Create and Share the Shared IP Address](#create-and-share-the-shared-ip-address)
-1.  For *each* Compute Instance:
-    - [Add the Shared IP to the Networking Configuration](#add-the-shared-ip-to-the-networking-configuration)
-    - [Install and Configure Lelastic](#install-and-configure-lelastic)
-1.  [Test Failover](#test-failover)
+- [Why Should I Implement Failover?](#why-should-i-implement-failover)
+- [IP Sharing Availability](#ip-sharing-availability)
+- [IP Address Failover Methods](#ip-address-failover-methods)
+- [Configure Failover](#configure-failover)
+  - [Create and Share the Shared IP Address](#create-and-share-the-shared-ip-address)
+  - [Add the Shared IP to the Networking Configuration](#add-the-shared-ip-to-the-networking-configuration)
+  - [Install and Configure Lelastic](#install-and-configure-lelastic)
+- [Test Failover](#test-failover)
 
 ### Create and Share the Shared IP Address
 
