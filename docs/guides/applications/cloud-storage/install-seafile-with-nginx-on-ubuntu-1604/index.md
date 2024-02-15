@@ -4,7 +4,7 @@ description: 'This guide shows how to install Seafile, a free and open-source cr
 keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sharing"]
 tags: ["ubuntu", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-21
+modified: 2023-02-15
 modified_by:
   name: Linode
 published: 2017-05-23
