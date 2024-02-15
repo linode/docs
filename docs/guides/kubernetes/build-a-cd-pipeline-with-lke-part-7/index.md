@@ -2,7 +2,7 @@
 slug: build-a-cd-pipeline-with-lke-part-7
 description: "In part seven of our series on Kubernetes, you will learn what Helm is, how you can use it, and the differences between Helm version 2 and Helm version 3."
 title: "Building a CD Pipeline Using LKE (Part 7): Managing Stacks with Helm"
-keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
 modified: 2022-12-14

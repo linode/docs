@@ -11,7 +11,7 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2023-10-16
+modified: 2024-01-03
 aliases: ['/guides/platform/vlan/']
 ---
 
@@ -37,31 +37,7 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 
 ## Availability
 
-| Data center | Status |
-| -- | -- |
-| **Amsterdam (Netherlands)** | **Available** |
-| **Atlanta (Georgia, USA)** | **Available** |
-| **Chennai (India)** | **Available** |
-| **Chicago (Illinois, USA)** | **Available** |
-| Dallas (Texas, USA) | Not yet available |
-| **Frankfurt (Germany)** | **Available** |
-| Fremont (California, USA) | Not yet available |
-| **Jakarta (Indonesia)** | **Available** |
-| **London (United Kingdom)** | **Available** |
-| **Miami (Florida, USA)** | **Available** |
-| **Milan (Italy)** | **Available** |
-| **Mumbai (India)** | **Available** |
-| **Newark (New Jersey, USA)** | **Available** |
-| **Osaka (Japan)** | **Available** |
-| **Paris (France)** | **Available** |
-| **São Paulo (Brazil)** | **Available** |
-| **Seattle (Washington, USA)** | **Available** |
-| **Singapore** | **Available** |
-| **Stockholm (Sweden)** | **Available** |
-| **Sydney (Australia)** | **Available** |
-| Tokyo (Japan) | Not yet available |
-| **Toronto (Canada)** | **Available** |
-| **Washington, DC (USA)** | **Available** |
+VLANs are available in all data centers except Fremont (California, USA).
 
 ## Pricing
 
