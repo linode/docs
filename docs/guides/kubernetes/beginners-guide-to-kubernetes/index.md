@@ -11,7 +11,7 @@ title: "A Beginner's Guide to Kubernetes (Series)"
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes/','/applications/containers/beginners-guide-to-kubernetes/','/kubernetes/beginners-guide-to-kubernetes/']
 concentrations: ["Kubernetes", "container"]
 external_resources:
-- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
+- '[Kubernetes API Reference Documentation](https://kubernetes.io/docs/reference/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 authors: ["Linode"]
 ---
