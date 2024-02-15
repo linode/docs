@@ -36,7 +36,7 @@ The version of MainConcept Live Encoder in this deployment is a free demo. It ad
 
 - **Email address for SSL Generation (Required):** This is the contact email address used for communication regarding the SSL certificate created during deployment. This should be the email address of your web server administrator.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
 ## Getting Started after Deployment

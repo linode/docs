@@ -6,12 +6,11 @@ keywords: ["ark survival evolved", "ubuntu", "server"]
 tags: ["ubuntu","game servers"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
- - '[Deploying an ARK Survival Evolved Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/ark-survival-evolved/)'
  - '[The Official Ark Website](http://www.playark.com/)'
  - '[Dedicated Server Setup on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Dedicated_server_setup)'
  - '[Console commands on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Console_commands)'
  - '[Studio Wilpost on Epic Games and Steam crossplay](https://survivetheark.com/index.php?/forums/topic/539019-community-crunch-225-crystal-isles-anniversary-event-epic-games-store-and-more/)'
-modified: 2021-10-18
+modified: 2024-01-22
 modified_by:
   name: Linode
 published: 2016-12-28
@@ -24,11 +23,11 @@ authors: ["Nick Brewer"]
 
 This guide demonstrates how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode Compute Instance running a modern Ubuntu distribution.
 
-{{< note respectIndent=false >}}
-Consider using the Linode Marketplace to quickly and automatically deploy an Ark server on our platform. See [Deploying an ARK Survival Evolved Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/ark-survival-evolved/) for instructions.
-{{< /note >}}
-
 **Supported distributions:** Ubuntu 20.04 and 18.04. Recent non-LTS releases like Ubuntu 21.10, 21.04, and 20.10 should also be supported. Ubuntu 16.04 should still be supported, though that LTS release is no longer receiving free security patches or software updates.
+
+{{< note respectIndent=false title="You will need a PC client for Steam and Epic cross-play" >}}
+There is no cross-play between different platforms (Linux and Xbox, for example). For a PC-based server such as this, you will need the PC client from Steam or Epic Games (see more below about Steam and Epic cross-play).
+{{< /note >}}
 
 ![Create an ARK: Survival Evolved Server on Ubuntu](ark-survival-evolved.png)
 
@@ -39,10 +38,6 @@ Consider using the Linode Marketplace to quickly and automatically deploy an Ark
 1.  Ark will be installed through the Steam *command-line interface* (CLI). See our guide [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/) if you haven't installed Steam already.
 
 1.  To connect to your Ubuntu Ark server, you must have a copy of the [Ark: Survival Evolved](http://www.playark.com/) game client running on a local machine.
-
-{{< note respectIndent=false >}}
-There is no cross-play between different platforms (Linux and Xbox, for example). For a PC-based server such as this, you will need the PC client from Steam or Epic Games (see more below about Steam and Epic cross-play).
-{{< /note >}}
 
 {{< note respectIndent=false >}}
 The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
