@@ -171,16 +171,6 @@ e3c534a (HEAD -> master) Added text to first file.
 0b24777 Initialized repo.
 ```
 
-The difference is that, if you run the `--soft` option with the command, you can still find the changes to the file in the working directory. For this example, that is the `example-file-2.txt` file:
-
-```command
-cat example-file-2.txt
-```
-
-```output
-Some example text for the second file.
-```
-
 ### Differences Between Reset and Revert
 
 The main difference between the `git reset` and `git revert` commands is the commit history.
