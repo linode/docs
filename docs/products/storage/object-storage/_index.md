@@ -45,7 +45,7 @@ Object Storage is available within the following data centers. For a full list o
 | Frankfurt (Germany) | `eu-central-1` |
 | Jakarta (Indonesia)\* | `id-cgk-1` |
 | Los Angeles, CA (USA)\* | `us-lax-1` |
-| Madrid (Spain) | `es-mad-1` |
+| Madrid (Spain)\* | `es-mad-1` |
 | Miami, FL (USA)\* | `us-mia-1` |
 | Milan (Italy)\* | `it-mil-1` |
 | Newark, NJ (USA) | `us-east-1` |
