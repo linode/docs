@@ -1,6 +1,7 @@
 import { isMobile } from '../helpers';
 import { getScrollPosNavbar } from './nav';
 import { AnalyticsEventsCollector } from './nav-analytics';
+import { RecommendationsFetcher } from './recommendations';
 import { initConsentManager } from '../components/index';
 
 export function newNavStore(searchConfig, searchStore, params, Alpine) {
@@ -45,6 +46,8 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 			functional: false,
 			performance: false,
 		},
+
+		recommendations: new RecommendationsFetcher(searchConfig),
 
 		init() {
 			const tabsKey = 'tabs';

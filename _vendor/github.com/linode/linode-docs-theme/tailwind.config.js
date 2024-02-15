@@ -353,20 +353,20 @@ module.exports = {
 							marginBottom: '1rem',
 						},
 						h2: {
-							fontSize: '1.5em',
+							fontSize: '1.75em',
 							lineHeight: '1.25',
 							letterSpacing: '-0.38px',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h3: {
-							fontSize: '1.25em',
+							fontSize: '1.5em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h4: {
-							fontSize: '1em',
+							fontSize: '1.25em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
@@ -466,20 +466,20 @@ module.exports = {
 							marginBottom: '1rem',
 						},
 						h2: {
-							fontSize: '1.5em',
+							fontSize: '1.75em',
 							lineHeight: '1.25',
 							letterSpacing: '-0.5px',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h3: {
-							fontSize: '1.25em',
+							fontSize: '1.5em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h4: {
-							fontSize: '1em',
+							fontSize: '1.25em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
@@ -567,13 +567,16 @@ module.exports = {
 			   Tablet: 768px … 991px
 			   Desktop: 992px … :infinity:
 			*/
-			xl: px(maxWidthXl),
-			lg: px(maxWidthLg), // Desktop
-			md: px(maxWidthMd),
-			sm: px(maxWidthSm),
-			small: { max: '991px' }, // Common term for mobile, tablets etc. They are small.
-			tablet: { min: '768px', max: '991px' },
+			/*
+			Order these from smallest first. 
+			*/
 			mobile: { max: '767px' },
+			tablet: { min: '768px', max: '991px' },
+			small: { max: '991px' }, // Common term for mobile, tablets etc. They are small.
+			sm: px(maxWidthSm),
+			md: px(maxWidthMd),
+			lg: px(maxWidthLg), // Desktop
+			xl: px(maxWidthXl),
 		},
 		fontSize: {
 			xxs: '0.65625rem',

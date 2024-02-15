@@ -4,7 +4,7 @@ title_meta: "Access Your System Console Using Lish"
 description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 published: 2009-08-04
-modified: 2023-09-21
+modified: 2023-10-22
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -194,6 +194,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 - **Glish port:** 8080
 {{< /note >}}
 
+#### Amsterdam (Netherlands)
+
+-   **Lish SSH Gateway:** `lish-nl-ams.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:/y+83+sA3JdDGkv/KLnIAIXqfgqWfgp5RZ+DCx1T4yU lish-nl-ams.linode.com
+    ECDSA 256 SHA256:iR/He+teo+c7jqr8LzaTikbTlMDdIkIERhJBXdIjO8w lish-nl-ams.linode.com
+    ED25519 256 SHA256:vxF9arB2lYBVP45ZA7t1JEE9w/vthPmzU3a2oOR8O7Y lish-nl-ams.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `nl-ams.webconsole.linode.com`
+
 #### Atlanta, GA (USA)
 
 -   **Lish SSH Gateway:** `lish-us-southeast.linode.com`
@@ -207,6 +221,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish/Glish Gateway:** `us-southeast.webconsole.linode.com`
+
+#### Chennai (India)
+
+-   **Lish SSH Gateway:** `lish-in-maa.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:kXCaKnn1nVlVEC5SCuez6FApcXr/2UUiaSANUy0rlLI lish-in-maa.linode.com
+    ECDSA 256 SHA256:Jj+pb1AkDdKs77o6ozgkOk83rg7auLSOQrnebE8n91o lish-in-maa.linode.com
+    ED25519 256 SHA256:v1KaIB0togivalP7OVvlrLpu/y80qsm5cj50qclTWc0 lish-in-maa.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `in-maa.webconsole.linode.com`
 
 #### Chicago, IL (USA)
 
@@ -264,6 +292,34 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 
 -   **Weblish/Glish Gateway:**`us-west.webconsole.linode.com`
 
+#### Jakarta (Indonesia)
+
+-   **Lish SSH Gateway:** `lish-id-cgk.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:n+f2JBMBYvvJUw11nYafKrX1nU3gdohnWfj9qdTXU+I lish-id-cgk.linode.com
+    ECDSA 256 SHA256:CwM8d4D9yU0Mw/Odu4bxs6OWpfzJHSrSUUgtkZNRvsk lish-id-cgk.linode.com
+    ED25519 256 SHA256:RvdTsLHAWcjmXU2h5JD821Xk4x40FcHLzpX2/ppMLh0 lish-id-cgk.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `id-cgk.webconsole.linode.com`
+
+#### Los Angeles, CA (USA)
+
+-   **Lish SSH Gateway:** `lish-us-lax.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:TVyXe3i1iJF9rU+j/t57wpdRB2h56Kh2tnZsUra30kA lish-us-lax.linode.com
+    ECDSA 256 SHA256:Yh+jEgxiGIgETrC9uz4wUqnKvi7yPrlqgmpxsa65QDI lish-us-lax.linode.com
+    ED25519 256 SHA256:kFi+ignk5bxYxnk/F3Lehk0HoM98BuUzEGhlEzhHo9I lish-us-lax.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-lax.webconsole.linode.com`
+
 #### London (UK)
 
 -   **Lish SSH Gateway:** `lish-eu-west.linode.com`
@@ -277,6 +333,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish/Glish Gateway:** `eu-west.webconsole.linode.com`
+
+#### Miami, FL, USA
+
+-   **Lish SSH Gateway:** `lish-us-mia.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:kfwzGjXR+WV1JxvufbsZTv4qzVUI5Nkmh3Z3/XhpAT8 lish-us-mia.linode.com
+    ECDSA 256 SHA256:cZVK7bB8cwci3sXJJNIaBlX9Z3DlBj3hAL5J8Hc+vr0 lish-us-mia.linode.com
+    ED25519 256 SHA256:+sBLV01KzOiVJw4OJGmO71+NUm2cE7ndpj1aqW2tNLg lish-us-mia.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-mia.webconsole.linode.com`
 
 #### Milan (Italy)
 
@@ -347,6 +417,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish/Glish Gateway:** `fr-par.webconsole.linode.com`
+
+#### São Paulo (Brazil)
+
+-   **Lish SSH Gateway:** `lish-br-gru.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:lmtONyLfe0tiLEdNrbEUd8j10A/o/Ss1HaUYJDgc8ks lish-br-gru.linode.com
+    ECDSA 256 SHA256:ftl4kIcxzeGUsT9FPQ49GF7afel1yrOQgclJN7/8kuk lish-br-gru.linode.com
+    ED25519 256 SHA256:EKqBawVESQnL4oQOMskpBAtrEiOlE+qD9M6WLiFbCyU lish-br-gru.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `br-gru.webconsole.linode.com`
 
 #### Seattle, WA (USA)
 

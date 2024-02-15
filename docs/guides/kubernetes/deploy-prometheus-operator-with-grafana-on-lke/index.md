@@ -210,11 +210,11 @@ In this section, you will create a Helm chart values file and use it to deploy P
 
     From the above output, the resource services you will access have the corresponding ports:
 
-    | Resource     | Service Name                         | Port |
-    | ------------ | -------------------------------------| ---- |
-    | Prometheus   | lke&#8209;monitor&#8209;prometheus   | 9090 |
-    | Alertmanager | lke&#8209;monitor&#8209;alertmanager | 9093 |
-    | Grafana      | lke&#8209;monitor&#8209;grafana      | 80   |
+    | Resource     | Service Name               | Port |
+    | ------------ | ---------------------------| ---- |
+    | Prometheus   | `lke-monitor-prometheus`   | 9090 |
+    | Alertmanager | `lke-monitor-alertmanager` | 9093 |
+    | Grafana      | `lke-monitor-grafana`      | 80   |
 
 1.  Use `kubectl` [port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) to open a connection to a service, then access the service's interface by entering the corresponding address in your web browser:
 
@@ -222,7 +222,7 @@ In this section, you will create a Helm chart values file and use it to deploy P
     Press <kbd>Ctrl</kbd> + <kbd>C</kbd> on your keyboard to terminate a port-forward process after entering any of the following commands.
     {{< /note >}}
 
-    - To provide access to the **Prometheus** interface at the address `127.0.0.1:9090` in your web browser, enter:
+    -   To provide access to the **Prometheus** interface at the address `127.0.0.1:9090` in your web browser, enter:
 
         ```command
         kubectl -n monitoring \
@@ -231,7 +231,7 @@ In this section, you will create a Helm chart values file and use it to deploy P
         9090
         ```
 
-    - To provide access to the **Alertmanager** interface at the address `127.0.0.1:9093` in your web browser, enter:
+    -   To provide access to the **Alertmanager** interface at the address `127.0.0.1:9093` in your web browser, enter:
 
         ```command
         kubectl -n monitoring \
@@ -240,7 +240,7 @@ In this section, you will create a Helm chart values file and use it to deploy P
         9093
         ```
 
-    - To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
+    -   To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
 
         ```command
         kubectl -n monitoring \

@@ -47,7 +47,7 @@ In short, Astro concerns itself less with developing web applications. Instead, 
 
 ## How to Build a Website with Astro
 
-The best way to learn about Astro is to start using it. This tutorial walks you through the proces of setting up a default Astro project and through creating your own Astro website.
+The best way to learn about Astro is to start using it. This tutorial walks you through the process of setting up a default Astro project and through creating your own Astro website.
 
 ### Install the Prerequisites
 
@@ -137,7 +137,7 @@ Each of these building blocks is covered in more detail further below.
 
 #### File-based Routing
 
-Astro uses a file-based approach to routing instead of the configuration-based approach of many other frameworks. The advantage of this approach is based on moving away from from configuration, allowing more focus on the delivery of the content itself.
+Astro uses a file-based approach to routing instead of the configuration-based approach of many other frameworks. The advantage of this approach is based on moving away from configuration, allowing more focus on the delivery of the content itself.
 
 Routes are defined by directories and content files stored in the `src/pages` directory within your project. There are three rules to Astro's routing:
 

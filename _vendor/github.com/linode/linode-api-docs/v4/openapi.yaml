@@ -1,8 +1,10 @@
 openapi: 3.0.1
 info:
-  version: 4.163.0
-
+  version: 4.171.0
   title: Linode API
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
   description: |
     ## Introduction
     The Linode API provides the ability to programmatically manage the full
@@ -82,7 +84,7 @@ info:
     | 1.  The user visits the application's website and is directed to login with Linode. | 1.  The user visits the application's website and is directed to login with Linode. |
     | 2.  Your application then redirects the user to Linode's [login server](https://login.linode.com) with the client application's `client_id` and requested OAuth `scope`, which should appear in the URL of the login page. | 2.  Your application then redirects the user to Linode's [login server](https://login.linode.com) with the client application's `client_id` and requested OAuth `scope`, which should appear in the URL of the login page. |
     | 3.  The user logs into the login server with their username and password. | 3.  The user logs into the login server with their username and password. |
-    | 4.  The login server redirects the user to the specificed redirect URL with a temporary authorization `code` (exchange code) in the URL. | 4.  The login server redirects the user back to your application with an OAuth `access_token` embedded in the redirect URL's hash. This is temporary and expires in two hours. No `refresh_token` is issued. Therefore, once the `access_token` expires, a new one will need to be issued by having the user log in again. |
+    | 4.  The login server redirects the user to the specified redirect URL with a temporary authorization `code` (exchange code) in the URL. | 4.  The login server redirects the user back to your application with an OAuth `access_token` embedded in the redirect URL's hash. This is temporary and expires in two hours. No `refresh_token` is issued. Therefore, once the `access_token` expires, a new one will need to be issued by having the user log in again. |
     | 5.  The application issues a POST request (*see additional details below*) to the login server with the exchange code, `client_id`, and the client application's `client_secret`. | |
     | 6.  The login server responds to the client application with a new OAuth `access_token` and `refresh_token`. The `access_token` is set to expire in two hours. | |
     | 7.  The `refresh_token` can be used by contacting the login server with the `client_id`, `client_secret`, `grant_type`, and `refresh_token` to get a new OAuth `access_token` and `refresh_token`. The new `access_token` is good for another two hours, and the new `refresh_token` can be used to extend the session again by this same method (*see additional details below*). | |
@@ -144,7 +146,7 @@ info:
     |-----------------------|--------|
     | **Authorization URL** | `https://login.linode.com/oauth/authorize` |
     | **Token URL** | `https://login.linode.com/oauth/token` |
-    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`databases:read_only` - Allows access to GET Managed Databases on your Account.</li><li>`databases:read_write` - Allows access to all endpoints related to your Managed Databases.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
+    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`databases:read_only` - Allows access to GET Managed Databases on your Account.</li><li>`databases:read_write` - Allows access to all endpoints related to your Managed Databases.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li><li>`vpc:read_write` - Allows access to all endpoints related to VPC and Subnet creation, updating, and deletion.</li></ul><br/>|
 
     ## Requests
 
@@ -222,7 +224,7 @@ info:
     your request. If this occurs, please
     [open a Support Ticket](/docs/api/support/#support-ticket-open)
     and let us know. Though errors are logged and we work quickly to resolve issues,
-    opening a ticket and providing us with reproducable steps and data is always helpful.
+    opening a ticket and providing us with reproducible steps and data is always helpful.
 
     The `errors` field is an array of the things that went wrong with your request.
     We will try to include as many of the problems in the response as possible,
@@ -370,7 +372,7 @@ info:
 
     ### Linode APIv4 Rate Limits
 
-    With the Linode API, you can generally make up to 1,600 general API requests every two minutes. Additionally, all endpoints have a rate limit of 800 requests per minute unless otherwise specified below.
+    With the Linode API, you can generally make up to 800 general API requests every two minutes. Additionally, all commands have a rate limit of 400 requests per minute, and all GET commands that return paginated data collections have a rate limit of 200 requests per minute, unless otherwise specified below.
 
     **Note:** There may be rate limiting applied at other levels outside of the API, for example, at the load balancer.
 
@@ -382,7 +384,11 @@ info:
 
     * [Volume Create](/docs/api/volumes/#volume-create)
 
-    `/stats` endpoints have their own dedicated rate limits of 100 requests per minute. These endpoints are:
+    Listing Images has a dedicated rate limit of 20 requests per minute. That endpoint is:
+
+    * [Images List](/docs/api/images/#images-list)
+
+    `/stats` endpoints have their own dedicated rate limits of 50 requests per minute. These endpoints are:
 
     * [View Linode Statistics](/docs/api/linode-instances/#linode-statistics-view)
     * [View Linode Statistics (year/month)](/docs/api/linode-instances/#statistics-yearmonth-view)
@@ -532,6 +538,236 @@ paths:
             --state PA \
             --tax_id ATU99999999 \
             --zip 19102
+  /account/availability:
+    x-linode-cli-command: account
+    get:
+      tags:
+      - account
+      summary: Account Availability
+      description: |
+        Returns service unavailability for all available regions.
+
+        Only authorized Users can access this endpoint.
+
+        *This endpoint is currently in **Beta**, and should not be used for production workloads.*
+      operationId: getAvailability
+      servers:
+      - url: https://api.linode.com/v4beta
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      x-linode-cli-action: get-availability
+      x-linode-grant: read_only
+      responses:
+        '200':
+          description: |
+            Returns a paginated list of regions and their unavailable resources.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AccountAvailability'
+                - $ref: '#/components/schemas/PaginationEnvelope'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/availability \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli account get-availability
+  /account/availability/{id}:
+    x-linode-cli-command: account
+    parameters:
+      - name: id
+        in: path
+        description: The id of the data center.
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+      - account
+      summary: Region Service Availability
+      description: |
+        Returns a single region's service availability.
+
+        Only authorized Users can access this.
+      operationId: getAccountAvailability
+      servers:
+      - url: https://api.linode.com/v4beta
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      x-linode-cli-action: get-account-availability
+      x-linode-grant: read_only
+      responses:
+        '200':
+          description: Returns an object with a region and the region's unavailable resources.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountAvailability'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/availability/us-east \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli account get-account-availability us-east
+  /account/betas:
+    x-linode-cli-command: betas
+    get:
+      tags:
+      - Beta Programs
+      summary: Enrolled Beta Programs List
+      operationId: getEnrolledBetaPrograms
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      x-linode-cli-action: enrolled
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all enrolled Beta Programs for your Account. Includes inactive as well as active Beta Programs.
+
+        Only unrestricted Users can access this command.
+      responses:
+        '200':
+          description: Returns a paginated list of all enrolled Beta Program objects for the Account.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/BetaProgramEnrolled'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/betas \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli betas enrolled
+    post:
+      tags:
+      - Beta Programs
+      summary: Beta Program Enroll
+      operationId: enrollBetaProgram
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      x-linode-cli-action: enroll
+      x-linode-grant: unrestricted only
+      description: |
+        Enroll your Account in an active Beta Program.
+
+        Only unrestricted Users can access this command.
+
+        To view active Beta Programs, use the Beta Programs List command.
+
+        Active Beta Programs may have a limited number of enrollments. If a Beta Program has reached is maximum number of enrollments, an error is returned even though the request is successful.
+
+        Beta Programs with `"greenlight_only": true` can only be enrolled by Accounts that participate in the [Greenlight](https://www.linode.com/green-light/) program.
+      requestBody:
+        description: Updated information for the Managed MySQL Database.
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - id
+              type: object
+              description: The Beta Program ID to enroll in for your Account.
+              properties:
+                id:
+                  $ref: '#/components/schemas/BetaProgram/properties/id'
+      responses:
+        '200':
+          description: Enrollment request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/betas \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X POST -d '{
+                  "id": "example_open"
+              }'
+      - lang: CLI
+        source: >
+          linode-cli betas enroll --id example_open
+  /account/betas/{betaId}:
+    x-linode-cli-command: betas
+    parameters:
+    - $ref: '#/components/parameters/betaId'
+    get:
+      tags:
+      - Beta Programs
+      summary: Enrolled Beta Program View
+      operationId: getEnrolledBetaProgram
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      x-linode-cli-action: enrolled-view
+      x-linode-grant: unrestricted only
+      description: |
+        Display an enrolled Beta Program for your Account. The Beta Program may be inactive.
+
+        Only unrestricted Users can access this command.
+      responses:
+        '200':
+          description: Returns an enrolled Beta Program object for the Account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaProgramEnrolled'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/account/betas/$betaId \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli betas enrolled-view $betaId
   /account/cancel:
     x-linode-cli-command: account
     post:
@@ -575,7 +811,7 @@ paths:
                   survey_link:
                     type: string
                     description: A link to Linode's exit survey.
-                example: {'survey_link': https://alinktothesurvey.com'}
+                example: {"survey_link": "https://alinktothesurvey.com"}
         '409':
           description: Could not charge the credit card on file
           content:
@@ -2643,7 +2879,7 @@ paths:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $TOKEN" \
                 -X PUT -d '{
-                    "network_helper": true,
+                    "network_helper": true
                 }' \
                 https://api.linode.com/v4/account/settings
         - lang: CLI
@@ -2707,6 +2943,8 @@ paths:
           description: Returns a single Transfer object.
           content:
             application/json:
+              x-linode-cli-subtables:
+              - region_transfers
               schema:
                 $ref: '#/components/schemas/Transfer'
         default:
@@ -3047,7 +3285,7 @@ paths:
                     "global": {
                       "add_linodes": true,
                       "add_nodebalancers": false,
-                      "add_databases": true;
+                      "add_databases": true,
                       "add_domains": true,
                       "add_longview": false,
                       "add_stackscripts": true,
@@ -3056,7 +3294,8 @@ paths:
                       "add_volumes": true,
                       "add_firewalls": true,
                       "account_access": "read_only",
-                      "cancel_account": false
+                      "cancel_account": false,
+                      "add_vpcs": true
                     },
                     "domain": [
                       {
@@ -3082,7 +3321,7 @@ paths:
                       {
                         "id": 345,
                         "permissions": "read_only"
-                      },
+                      }
                     ],
                     "longview": [
                       {
@@ -3115,9 +3354,99 @@ paths:
                         "id": 123,
                         "permissions": "read_only"
                       }
+                    ],
+                    "vpc": [
+                      {
+                        "id": 123,
+                        "permissions": "read_write"
+                      }
                     ]
                 }' \
                 https://api.linode.com/v4/account/users/example_user/grants
+  /betas:
+    x-linode-cli-command: betas
+    get:
+      tags:
+      - Beta Programs
+      summary: Beta Programs List
+      operationId: getBetaPrograms
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      x-linode-cli-action:
+      - list
+      - ls
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all active Beta Programs.
+
+        Only unrestricted Users can access this command.
+      responses:
+        '200':
+          description: Returns a paginated list of all available Beta Program objects.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/BetaProgram'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/betas \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli betas list
+  /betas/{betaId}:
+    x-linode-cli-command: betas
+    parameters:
+    - $ref: '#/components/parameters/betaId'
+    get:
+      tags:
+      - Beta Programs
+      summary: Beta Program View
+      operationId: getBetaProgram
+      servers:
+      - url: https://api.linode.com/v4
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      x-linode-cli-action: view
+      x-linode-grant: unrestricted only
+      description: |
+        Display information about a Beta Program. This command can be used to access inactive as well as active Beta Programs.
+
+        Only unrestricted Users can access this command.
+      responses:
+        '200':
+          description: Returns a paginated list of all available Beta Program objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaProgram'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/betas/$betaId \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli beta view $betaId
   /databases/engines:
     x-linode-cli-command: databases
     get:
@@ -3133,6 +3462,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all available Managed Database engine types and versions. Engine IDs are used when creating new Managed Databases.
       responses:
         '200':
@@ -3179,6 +3510,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single Managed Database engine type and version.
       responses:
         '200':
@@ -3214,6 +3547,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all Managed Databases that are accessible by your User, regardless of engine type.
 
         For more detailed information on a particular Database instance, make a request to its `instance_uri`.
@@ -3261,6 +3596,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all accessible Managed MySQL Databases.
       security:
       - personalAccessToken: []
@@ -3301,6 +3638,8 @@ paths:
       x-linode-cli-action: mysql-create
       x-linode-grant: add_databases
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Provision a Managed MySQL Database.
 
         Restricted Users must have the `add_databases` grant to use this command.
@@ -3401,6 +3740,8 @@ paths:
       x-linode-cli-action: mysql-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single, accessible Managed MySQL Database.
       security:
       - personalAccessToken: []
@@ -3434,6 +3775,8 @@ paths:
       x-linode-cli-action: mysql-delete
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Remove a Managed MySQL Database from your Account.
 
         Requires `read_write` access to the Database.
@@ -3474,6 +3817,8 @@ paths:
       x-linode-cli-action: mysql-update
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Update a Managed MySQL Database.
 
         Requires `read_write` access to the Database.
@@ -3539,7 +3884,7 @@ paths:
                     "duration": 3,
                     "hour_of_day": 12,
                     "day_of_week": 4,
-                    "week_of_month": 3,
+                    "week_of_month": 3
                   }
               }' \
               https://api.linode.com/v4/databases/mysql/instances/123
@@ -3577,6 +3922,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all backups for an accessible Managed MySQL Database.
 
         The Database must not be provisioning to perform this command.
@@ -3623,6 +3970,8 @@ paths:
       x-linode-cli-action: mysql-backup-snapshot
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Creates a snapshot backup of a Managed MySQL Database.
 
         Requires `read_write` access to the Database.
@@ -3692,6 +4041,8 @@ paths:
       x-linode-cli-action: mysql-backup-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single backup for an accessible Managed MySQL Database.
 
         The Database must not be provisioning to perform this command.
@@ -3726,6 +4077,8 @@ paths:
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-backup-delete
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Delete a single backup for an accessible Managed MySQL Database.
 
         Requires `read_write` access to the Database.
@@ -3779,6 +4132,8 @@ paths:
       x-linode-cli-action: mysql-backup-restore
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Restore a backup to a Managed MySQL Database on your Account.
 
         Requires `read_write` access to the Database.
@@ -3829,6 +4184,8 @@ paths:
       x-linode-cli-action: mysql-creds-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the root username and password for an accessible Managed MySQL Database.
 
         The Database must have an `active` status to perform this command.
@@ -3873,6 +4230,8 @@ paths:
       x-linode-cli-action: mysql-creds-reset
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Reset the root password for a Managed MySQL Database.
 
         Requires `read_write` access to the Database.
@@ -3923,6 +4282,8 @@ paths:
       x-linode-cli-action: mysql-ssl-cert
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the SSL CA certificate for an accessible Managed MySQL Database.
 
         The Database must have an `active` status to perform this command.
@@ -3967,6 +4328,8 @@ paths:
       x-linode-cli-action: mysql-patch
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Apply security patches and updates to the underlying operating system of the Managed MySQL Database. This function runs during regular maintenance windows, which are configurable with the **Managed MySQL Database Update** ([PUT /databases/mysql/instances/{instanceId}](/docs/api/databases/#managed-mysql-database-update)) command.
 
         Requires `read_write` access to the Database.
@@ -4015,6 +4378,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all accessible Managed PostgreSQL Databases.
       security:
       - personalAccessToken: []
@@ -4055,6 +4420,8 @@ paths:
       x-linode-cli-action: postgresql-create
       x-linode-grant: add_databases
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Provision a Managed PostgreSQL Database.
 
         Restricted Users must have the `add_databases` grant to use this command.
@@ -4157,6 +4524,8 @@ paths:
       x-linode-cli-action: postgresql-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single, accessible Managed PostgreSQL Database.
       security:
       - personalAccessToken: []
@@ -4190,6 +4559,8 @@ paths:
       x-linode-cli-action: postgresql-delete
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Remove a Managed PostgreSQL Database from your Account.
 
         Requires `read_write` access to the Database.
@@ -4230,6 +4601,8 @@ paths:
       x-linode-cli-action: postgresql-update
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Update a Managed PostgreSQL Database.
 
         Requires `read_write` access to the Database.
@@ -4295,7 +4668,7 @@ paths:
                     "duration": 3,
                     "hour_of_day": 12,
                     "day_of_week": 4,
-                    "week_of_month": 3,
+                    "week_of_month": 3
                   }
               }' \
               https://api.linode.com/v4/databases/postgresql/instances/123
@@ -4333,6 +4706,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all backups for an accessible Managed PostgreSQL Database.
 
         The Database must not be provisioning to perform this command.
@@ -4379,6 +4754,8 @@ paths:
       x-linode-cli-action: postgresql-backup-snapshot
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Creates a snapshot backup of a Managed PostgreSQL Database.
 
         Requires `read_write` access to the Database.
@@ -4448,6 +4825,8 @@ paths:
       x-linode-cli-action: postgresql-backup-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display information for a single backup for an accessible Managed PostgreSQL Database.
 
         The Database must not be provisioning to perform this command.
@@ -4482,6 +4861,8 @@ paths:
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: postgresql-backup-delete
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Delete a single backup for an accessible Managed PostgreSQL Database.
 
         Requires `read_write` access to the Database.
@@ -4535,6 +4916,8 @@ paths:
       x-linode-cli-action: postgresql-backup-restore
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Restore a backup to a Managed PostgreSQL Database on your Account.
 
         Requires `read_write` access to the Database.
@@ -4585,6 +4968,8 @@ paths:
       x-linode-cli-action: postgresql-creds-view
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the root username and password for an accessible Managed PostgreSQL Database.
 
         The Database must have an `active` status to perform this command.
@@ -4629,6 +5014,8 @@ paths:
       x-linode-cli-action: postgresql-creds-reset
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Reset the root password for a Managed PostgreSQL Database.
 
         Requires `read_write` access to the Database.
@@ -4679,6 +5066,8 @@ paths:
       x-linode-cli-action: postgresql-ssl-cert
       x-linode-grant: read_only
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the SSL CA certificate for an accessible Managed PostgreSQL Database.
 
         The Database must have an `active` status to perform this command.
@@ -4723,6 +5112,8 @@ paths:
       x-linode-cli-action: postgresql-patch
       x-linode-grant: read_write
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Apply security patches and updates to the underlying operating system of the Managed PostgreSQL Database. This function runs during regular maintenance windows, which are configurable with the **Managed PostgreSQL Database Update** ([PUT /databases/postgresql/instances/{instanceId}](/docs/api/databases/#managed-postgresql-database-update)) command.
 
         Requires `read_write` access to the Database.
@@ -4770,9 +5161,11 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display all Managed Database node types. The type and number of nodes determine the resources and price of a Managed Database instance.
 
-        Each Managed Database can have one node type. In the case of a high availabilty Database, all nodes are provisioned according to the chosen type.
+        Each Managed Database can have one node type. In the case of a high availability Database, all nodes are provisioned according to the chosen type.
       responses:
         '200':
           description: Returns a paginated list of all Managed Database types.
@@ -4840,6 +5233,8 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
+        **This command is currently only available for customers who already have an active Managed Database.**
+
         Display the details of a single Managed Database type. The type and number of nodes determine the resources and price of a Managed Database instance.
       responses:
         '200':
@@ -5674,6 +6069,10 @@ paths:
                   type: string
                   description: >
                     A detailed description of this Image.
+                cloud_init:
+                  type: boolean
+                  description: Whether this Image supports cloud-init.
+                  example: true
       responses:
         '200':
           description: New private Image created successfully.
@@ -5765,6 +6164,10 @@ paths:
                   type: string
                   description: Description for the uploaded Image.
                   example: This is an example image in the docs.
+                cloud_init:
+                  type: boolean
+                  description: Whether the uploaded Image supports cloud-init.
+                  example: true
       responses:
         '200':
           description: Image Upload object including the upload URL and Image object.
@@ -6133,6 +6536,9 @@ paths:
                       example: true
                     interfaces:
                       $ref: '#/components/schemas/LinodeConfigInterfaces'
+                    firewall_id:
+                      type: integer
+                      description: The `id` of the Firewall to attach this Linode to upon creation.
       responses:
         '200':
           description: >
@@ -6168,6 +6574,17 @@ paths:
                     "purpose": "vlan",
                     "label": "vlan-1",
                     "ipam_address": "10.0.0.1/24"
+                  },
+                  {
+                    "purpose": "vpc",
+                    "primary": false,
+                    "label": "",
+                    "ipam_address": "",
+                    "subnet_id": 101,
+                    "ipv4": {
+                      "vpc": "10.0.1.2",
+                      "nat_1_1": "203.0.113.2"
+                    }
                   }
                 ],
                 "authorized_keys": [
@@ -6184,7 +6601,8 @@ paths:
                 "group": "Linode-Group",
                 "metadata": {
                   "user_data": "I2Nsb3VkLWNvbmZpZw=="
-                }
+                },
+                "firewall_id": 9000
               }' \
               https://api.linode.com/v4/linode/instances
       - lang: CLI
@@ -6200,7 +6618,8 @@ paths:
             --authorized_keys "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer" \
             --authorized_users "myUser" \
             --authorized_users "secondaryUser" \
-            --metadata.user_data "I2Nsb3VkLWNvbmZpZw=="
+            --metadata.user_data "I2Nsb3VkLWNvbmZpZw==" \
+            --firewall_id 9000
   /linode/instances/{linodeId}:
     parameters:
     - name: linodeId
@@ -6798,6 +7217,16 @@ paths:
         Any [tags](/docs/api/tags/#tags-list) existing on the source Linode will be cloned to the target Linode.
 
         Linodes utilizing Metadata (`"has_user_data": true`) must be cloned to a new Linode with `metadata.user_data` included with the clone request.
+
+        `vpc` details
+
+        - If the Linode you are cloning has a `vpc` purpose Interface on its active Configuration Profile that includes a 1:1 NAT, the resulting clone is configured with an `any` 1:1 NAT.
+        - See the [VPC documentation](/docs/products/networking/vpc/#technical-specifications) guide for its specifications and limitations.
+
+        `vlan` details
+
+        - Only Next Generation Network (NGN) data centers support VLANs. If a VLAN is attached to your Linode and you attempt clone it to a non-NGN data center, the cloning will not initiate. If a Linode cannot be cloned because of an incompatibility, you will be prompted to select a different data center or contact support.
+        - See the [VLANs Overview](/docs/products/networking/vlans/#technical-specifications) guide to view additional specifications and limitations.
       tags:
       - Linode Instances
       operationId: cloneLinodeInstance
@@ -6823,7 +7252,7 @@ paths:
                     This is the Region where the Linode will be deployed.
 
                     To view all available Regions you can deploy to see
-                    [/regions](/docs/api/regions/#regions-list).
+                    [GET /regions](/docs/api/regions/#regions-list).
 
                     * Region can only be provided and is required when cloning to a new Linode.
                   example: us-east
@@ -7106,18 +7535,8 @@ paths:
             --devices.sdb.disk_id 123457
   /linode/instances/{linodeId}/configs/{configId}:
     parameters:
-    - name: linodeId
-      in: path
-      description: The ID of the Linode whose Configuration profile to look up.
-      required: true
-      schema:
-        type: integer
-    - name: configId
-      in: path
-      description: The ID of the Configuration profile to look up.
-      required: true
-      schema:
-        type: integer
+    - $ref: '#/components/parameters/linodeId'
+    - $ref: '#/components/parameters/configId'
     x-linode-cli-command: linodes
     get:
       tags:
@@ -7269,6 +7688,332 @@ paths:
       - lang: CLI
         source: >
           linode-cli linodes config-delete 123 23456
+  /linode/instances/{linodeId}/configs/{configId}/interfaces:
+    x-linode-cli-command: linodes
+    parameters:
+    - $ref: '#/components/parameters/linodeId'
+    - $ref: '#/components/parameters/configId'
+    get:
+      tags:
+      - Linode Instances
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Configuration Profile Interfaces List
+      description: |
+        Returns an ordered array of all Interfaces associated with this Configuration Profile.
+        * The User accessing this command must have at least `read_only` grants to the Linode.
+      operationId: getLinodeConfigInterfaces
+      x-linode-cli-action:
+      - config-interfaces-list
+      - config-interfaces-ls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: An ordered array of Interface objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinodeConfigInterfaces'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/linode/instances/$linodeId/configs/$configId/interfaces \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli linodes config-interfaces-list $linodeId $configId
+    post:
+      x-linode-grant: read_write
+      summary: Configuration Profile Interface Add
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Creates and appends a single Interface to the end of the `interfaces` array for an existing Configuration Profile.
+        * The User accessing this command must have `read_write` grants to the Linode.
+        * A successful request triggers a `linode_config_update` event.
+        * If the new Interface is added with `"primary": true`, then any existing primary Interface is changed to `"primary": false`.
+
+        Reboot the Linode with this Configuration Profile to activate an Interface that was added with this command.
+      tags:
+      - Linode Instances
+      operationId: addLinodeConfigInterface
+      x-linode-cli-action: config-interface-add
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      requestBody:
+        description: The Interface to add to the Configuration Profile.
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - required:
+                - purpose
+              - $ref: '#/components/schemas/LinodeConfigInterface'
+      responses:
+        '200':
+          description: Interface successfully added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinodeConfigInterface'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/linode/instances/$linodeId/configs/$configId/interfaces \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -X POST -d '{
+              "purpose": "vpc",
+              "primary": false,
+              "label": "",
+              "ipam_address": "",
+              "subnet_id": 101,
+              "ipv4": {
+                "vpc": "10.0.1.2",
+                "nat_1_1": "203.0.113.2"
+              }
+            }'
+      - lang: CLI
+        source: >
+          linode-cli linodes config-interface-add $linodeId $configId \
+            --purpose vpc \
+            --primary false \
+            --subnet_id 101 \
+            --ipv4.vpc "10.0.1.2" \
+            --ipv4.nat_1_1 "203.0.113.2"
+  /linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId}:
+    x-linode-cli-command: linodes
+    parameters:
+    - $ref: '#/components/parameters/linodeId'
+    - $ref: '#/components/parameters/configId'
+    - name: interfaceId
+      in: path
+      description: The `id` of the Linode Configuration Profile Interface.
+      required: true
+      schema:
+        type: integer
+    delete:
+      summary: Configuration Profile Interface Delete
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Deletes an Interface from the Configuration Profile.
+
+        * The User accessing this command must have `read_write` grants to the Linode.
+        * A successful request triggers a `linode_config_update` event.
+        * Active Interfaces cannot be deleted. The associated Linode must first be shut down (or restarted using another Configuration Profile) before such Interfaces can be deleted from a Configuration Profile.
+      x-linode-grant: read_write
+      tags:
+      - Linode Instances
+      operationId: deleteLinodeConfigInterface
+      x-linode-cli-action: config-interface-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      responses:
+        '200':
+          description: Interface successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4/linode/instances/$linodeId/configs/$configId/interfaces/$interfaceId
+      - lang: CLI
+        source: >
+          linode-cli linodes config-delete $linodeId $configId $interfaceId
+    get:
+      tags:
+      - Linode Instances
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Configuration Profile Interface View
+      description: |
+        Returns a single Configuration Profile Interface.
+        * The User accessing this command must have at least `read_only` grants to the Linode.
+      operationId: getLinodeConfigInterface
+      x-linode-cli-action:
+      - config-interface-view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: An Interface object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinodeConfigInterface'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/linode/instances/$linodeId/configs/$configId/interfaces/$interfaceId \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli linodes config-interface-view $linodeId $configId $interfaceId
+    put:
+      x-linode-grant: read_write
+      summary: Configuration Profile Interface Update
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Updates a `vpc` or `public` purpose Interface for this Configuration Profile.
+        * The User accessing this command must have `read_write` grants to the Linode.
+        * A successful request triggers a `linode_config_update` event.
+        * The Interface `purpose` cannot be updated with this command.
+        * VPC Subnets cannot be updated on an Interface. A new `vpc` purpose Interface must be created to assign a different Subnet to a Configuration Profile.
+        * Only `primary` can be updated for `public` purpose Interfaces.
+        * This command not currently allowed for `vlan` purpose Interfaces.
+      tags:
+      - Linode Instances
+      operationId: updateLinodeConfigInterface
+      x-linode-cli-action: config-interface-update
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      requestBody:
+        description: The updated Interface.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Linode Configuration Interface Update request object.
+              properties:
+                primary:
+                  $ref: '#/components/schemas/LinodeConfigInterface/properties/primary'
+                ipv4:
+                  $ref: '#/components/schemas/LinodeConfigInterface/properties/ipv4'
+                ip_ranges:
+                  $ref: '#/components/schemas/LinodeConfigInterface/properties/ip_ranges'
+                # ipv6:
+                #   $ref: '#/components/schemas/LinodeConfigInterface/properties/ipv6'
+      responses:
+        '200':
+          description: Interface successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinodeConfigInterface'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/linode/instances/$linodeId/configs/$configId/interfaces/$interfaceId \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -X PUT -d '{
+              "primary": true,
+              "ipv4": {
+                "vpc": "10.0.1.2",
+                "nat_1_1": "203.0.113.2"
+              }
+            }'
+      - lang: CLI
+        source: >
+          linode-cli linodes config-interface-update $linodeId $configId $interfaceId \
+            --primary true \
+            --ipv4.vpc "10.0.1.2" \
+            --ipv4.nat_1_1 "203.0.113.2"
+  /linode/instances/{linodeId}/configs/{configId}/interfaces/order:
+    x-linode-cli-command: linodes
+    parameters:
+    - $ref: '#/components/parameters/linodeId'
+    - $ref: '#/components/parameters/configId'
+    post:
+      x-linode-grant: read_write
+      summary: Configuration Profile Interfaces Order
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Reorders the existing Interfaces of a Configuration Profile.
+        * The User accessing this command must have `read_write` grants to the Linode.
+      tags:
+      - Linode Instances
+      operationId: orderLinodeConfigInterfaces
+      x-linode-cli-action: config-interfaces-order
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      requestBody:
+        description: The desired Interface order for the Configuration Profile.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Linode Configuration Interfaces Order request object.
+              required:
+              - ids
+              properties:
+                ids:
+                  type: array
+                  description: |
+                    An ordered array of existing Configuration Profile Interface `id`s.
+
+                    * All current Interface `id`s must be present in the array.
+                    * If the Configuration Profile contains Interfaces and is active on the Linode, the Linode must first be shut down prior to running this command.
+                    * Reordering takes effect after rebooting the Linode with this Configuration Profile.
+
+                    The position in the array determines which of the Linode's network Interfaces is configured:
+
+                    * First [0]:  eth0
+                    * Second [1]: eth1
+                    * Third [2]:  eth2
+                  items:
+                    $ref: '#/components/schemas/LinodeConfigInterface/properties/id'
+      responses:
+        '200':
+          description: Interfaces successfully reordered.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/linode/instances/$linodeId/configs/$configId/interfaces/order \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -X POST -d '{
+              "ids": [
+                101,
+                102,
+                103
+              ]
+            }'
+      - lang: CLI
+        source: >
+          linode-cli linodes config-interfaces-order $linodeId $configId \
+            --ids 101 --ids 102 --ids 103
   /linode/instances/{linodeId}/disks:
     parameters:
     - name: linodeId
@@ -7712,7 +8457,7 @@ paths:
     parameters:
     - name: linodeId
       in: path
-      description: ID of the Linode to look up.
+      description: ID of the Linode to access.
       required: true
       schema:
         type: integer
@@ -7726,7 +8471,7 @@ paths:
       - Linode Instances
       summary: Firewalls List
       description: >
-        View Firewall information for Firewalls associated with this Linode.
+        View Firewall information for Firewalls assigned to this Linode.
       operationId: getLinodeFirewalls
       x-linode-cli-action: firewalls-list
       security:
@@ -7735,7 +8480,7 @@ paths:
         - linodes:read_only
       responses:
         '200':
-          description: Returns a paginated list of Firewalls associated with this Linode.
+          description: Returns a paginated list of Firewalls assigned to this Linode.
           content:
             application/json:
               schema:
@@ -8031,7 +8776,7 @@ paths:
       - Linode Instances
       summary: IPv4 Address Delete
       description: >
-        Deletes a public or private IPv4 address associated with this Linode. This will fail if it is the Linode's last remaining public IPv4 address.
+        Deletes a public or private IPv4 address associated with this Linode. This will fail if it is the Linode's last remaining public IPv4 address, or if the address has a 1:1 NAT with an active VPC Subnet address.
       operationId: removeLinodeIP
       x-linode-cli-action: ip-delete
       security:
@@ -8146,26 +8891,30 @@ paths:
     post:
       x-linode-grant: read_write
       summary: DC Migration/Pending Host Migration Initiate
-      description: >
+      description: |
         Initiate a pending host migration that has been scheduled by Linode or
         initiate a cross data center (DC) migration.  A list of pending migrations,
         if any, can be accessed from [GET /account/notifications](/docs/api/account/#notifications-list).
         When the migration begins, your Linode will be shutdown if not already off.
         If the migration initiated the shutdown, it will reboot the Linode when completed.
 
-
-        To initiate a cross DC migration, you must pass a `region` parameter to the
-        request body specifying the target data center region.
-        You can view a list of all available regions and their feature capabilities
-        from [GET /regions](/docs/api/regions/#regions-list). If your Linode has a DC migration already queued
-        or you have initiated a previously scheduled migration, you will not be able to initiate
+        To initiate a cross DC migration, you must pass a `region` parameter to the request body specifying the target data center region. You can view a list of all available regions and their feature capabilities
+        from [GET /regions](/docs/api/regions/#regions-list). See our [Pricing Page](https://www.linode.com/pricing/) for Region-specific pricing, which applies after migration is complete. If your Linode has a DC migration already queued or you have initiated a previously scheduled migration, you will not be able to initiate
         a DC migration until it has completed.
 
+        `vpc` details
 
-        **Note:** Next Generation Network (NGN) data centers do not support IPv6 `/116` pools or IP Failover.
+        - Cross DC migrations are not allowed for Linodes that have a `vpc` purpose Configuration Profile Interface. Host migrations within the same DC are permitted.
+        - See the [VPC documentation](/docs/products/networking/vpc/#technical-specifications) guide for its specifications and limitations.
+
+        `vlan` details
+
+        - Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions. If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center, the migration or cloning will not initiate. If a Linode cannot be migrated or cloned because of an incompatibility, you will be prompted to select a different data center or contact support.
+        - Next Generation Network (NGN) data centers do not support IPv6 `/116` pools or IP Failover.
         If you have these features enabled on your Linode and attempt to migrate to an NGN data center,
         the migration will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
+        - See the [VLANs Overview](/docs/products/networking/vlans/#technical-specifications) guide to view additional specifications and limitations.
       tags:
        - Linode Instances
       operationId: migrateLinodeInstance
@@ -8207,6 +8956,21 @@ paths:
                     will not be performed.
                   example: false
                   default: false
+                type:
+                  type: string
+                  enum:
+                  - warm
+                  - cold
+                  description: |
+                    Type of migration used in moving to a new host or Linode type.
+
+                    `warm`: the Linode will not power down until the migration is complete.
+                    Warm migrations are not available for DC migrations.
+
+                    `cold`: the Linode will be powered down and migrated. When the migration
+                    is complete, the Linode will be powered on.
+                  example: warm
+                  default: cold
       responses:
         '200':
           description: Scheduled migration started
@@ -8551,7 +9315,7 @@ paths:
                 "stackscript_id": 10079,
                 "stackscript_data": {
                   "gh_username": "linode"
-                }
+                },
                 "type": "g6-standard-2",
                 "metadata": {
                   "user_data": "I2Nsb3VkLWNvbmZpZw=="
@@ -8698,6 +9462,21 @@ paths:
                     data must fit within the smaller disk size.
                   example: true
                   default: true
+                migration_type:
+                  type: string
+                  enum:
+                  - warm
+                  - cold
+                  description: |
+                    Type of migration used in moving to a new host or Linode type.
+
+                    `warm`: the Linode will not power down until the migration is complete.
+                    Warm migrations are not available for DC migrations.
+
+                    `cold`: the Linode will be powered down and migrated. When the migration
+                    is complete, the Linode will be powered on.
+                  example: warm
+                  default: cold
       responses:
         '200':
           description: Resize started.
@@ -9350,6 +10129,8 @@ paths:
           description: A single Linode Type.
           content:
             application/json:
+              x-linode-cli-subtables:
+              - region_prices
               schema:
                 $ref: '#/components/schemas/LinodeType'
         default:
@@ -9479,7 +10260,7 @@ paths:
                 -X POST -d '{
                   "label": "cluster12345",
                   "region": "us-central",
-                  "k8s_version": "1.25",
+                  "k8s_version": "1.27",
                   "tags": ["ecomm", "blogs"],
                   "control_plane": {
                       "high_availability": true
@@ -9506,7 +10287,7 @@ paths:
           linode-cli lke cluster-create \
             --label cluster12345 \
             --region us-central \
-            --k8s_version 1.25 \
+            --k8s_version 1.27 \
             --control_plane.high_availability true \
             --node_pools.type g6-standard-4 --node_pools.count 6 \
             --node_pools.type g6-standard-8 --node_pools.count 3 \
@@ -9653,12 +10434,12 @@ paths:
           curl -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $TOKEN" \
                 -X PUT -d '{
-                  "label": "lkecluster54321"
-                  "tags" : ["ecomm", "blog", "prod", "monitoring"]
+                  "label": "lkecluster54321",
+                  "tags" : ["ecomm", "blog", "prod", "monitoring"],
                   "control_plane": {
                       "high_availability": true
                     },
-                  "k8s_version": "1.17"
+                  "k8s_version": "1.27"
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345
       - lang: CLI
@@ -9666,7 +10447,7 @@ paths:
           linode-cli lke cluster-update 12345 \
             --label lkecluster54321 \
             --control_plane.high_availability true \
-            --k8s_version 1.25 \
+            --k8s_version 1.27 \
             --tags ecomm \
             --tags blog \
             --tags prod \
@@ -10453,7 +11234,7 @@ paths:
           curl -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $TOKEN" \
                 -X POST -d '{
-                  "kubeconfig": true;
+                  "kubeconfig": true,
                   "servicetoken": true
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345/regenerate
@@ -10587,10 +11368,10 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-                https://api.linode.com/v4/lke/versions/1.25
+                https://api.linode.com/v4/lke/versions/1.27
       - lang: CLI
         source: >
-          linode-cli lke version-view 1.25
+          linode-cli lke version-view 1.27
   /longview/clients:
     x-linode-cli-command: longview
     get:
@@ -12442,6 +13223,8 @@ paths:
         **Note**: Removing an IP address that has been set as a Managed Linode's `ssh.ip` causes the Managed Linode's SSH access settings to reset to their default values. To view and configure Managed Linode SSH settings, use the following commands:
         * **Linode's Managed Settings View** ([GET /managed/linode-settings/{linodeId}](/docs/api/managed/#linodes-managed-settings-view))
         * **Linode's Managed Settings Update** ([PUT /managed/linode-settings/{linodeId}](/docs/api/managed/#linodes-managed-settings-update))
+
+        **Note:** Addresses with an active 1:1 NAT to a VPC Interface address cannot be assigned to other Linodes.
       operationId: assignIPs
       x-linode-cli-action: ip-assign
       security:
@@ -12497,7 +13280,7 @@ paths:
     x-linode-cli-command: networking
     post:
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       x-linode-grant: read_write
       tags:
       - Networking
@@ -12508,6 +13291,8 @@ paths:
         IP sharing allows IP address reassignment (also referred to as IP failover) from one Linode to another if the primary Linode becomes unresponsive. This means that requests to the primary Linode's IP address can be automatically rerouted to secondary Linodes at the configured shared IP addresses.
 
         IP failover requires configuration of a failover service (such as [Keepalived](/docs/guides/ip-failover-keepalived)) within the internal system of the primary Linode.
+
+        **Note:** A public IPv4 address cannot be shared if it is configured for a 1:1 NAT on a `vpc` purpose Configuration Profile Interface.
       operationId: shareIPs
       x-linode-cli-action: ip-share
       security:
@@ -13012,12 +13797,19 @@ paths:
         * Use the `rules` property to create inbound and outbound access rules.
 
         * Use the `devices` property to assign the Firewall to a service and apply its Rules to the device. Requires `read_write` [User's Grants](/docs/api/account/#users-grants-view) to the device.
-        Currently, Firewalls can only be assigned to Linode instances.
+        Currently, Firewalls can be assigned to Linode compute instances and NodeBalancers.
 
-        * A Firewall can be assigned to multiple Linode instances at a time.
+        * A Firewall can be assigned to multiple services at a time.
 
-        * A Linode instance can have one active, assigned Firewall at a time.
+        * A Firewall can be assigned during Linode creation by utilizing the `firewall_id` [Linode Create Request](/docs/api/linode-instances/#linode-create__request-body-schema) property.
+
+        * A service can have one active, assigned Firewall at a time.
+
         Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
+
+        * Firewalls apply to all of a Linode's non-`vlan` purpose Configuration Profile Interfaces.
+
+        * Assigned Linodes must not have any ongoing live migrations.
 
         * A `firewall_create` Event is generated when this endpoint returns successfully.
       operationId: createFirewalls
@@ -13027,7 +13819,7 @@ paths:
       - oauth:
         - firewall:read_write
       requestBody:
-        description: Creates a Firewall object that can be applied to a Linode service to filter the service's network traffic.
+        description: Creates a Firewall object that can be applied to a service to filter the service's network traffic.
         content:
           application/json:
             schema:
@@ -13042,7 +13834,9 @@ paths:
                   description: |
                     Devices to create for this Firewall.
                     When a Device is created, the Firewall is assigned to its associated service.
-                    Currently, Devices can only be created for Linode instances.
+                    Currently, Devices can be created for Linode compute instances and NodeBalancers.
+
+                    Additional devices can be assigned after Firewall creation by using the [Firewall Device Create](#firewall-device-create) command.
                   properties:
                     linodes:
                       description: >
@@ -13053,6 +13847,17 @@ paths:
                       example:
                         - 123
                         - 456
+                    nodebalancers:
+                      description: |
+                        An array containing a NodeBalancer ID. A Firewall Device is created for the ID.
+
+                        * Only one NodeBalancer can be assigned to a Firewall at a time.
+                        * Firewalls only apply to inbound TCP traffic to NodeBalancers.
+                      type: array
+                      items:
+                        type: integer
+                      example:
+                        - 321
                 rules:
                   required:
                   - inbound_policy
@@ -13126,8 +13931,12 @@ paths:
                 },
                 "devices": {
                   "linodes": [
-                    123
-                    ]
+                    123,
+                    456
+                    ],
+                  "nodebalancers": [
+                    321
+                  ]
                 },
                 "tags": [
                   "example tag",
@@ -13197,13 +14006,20 @@ paths:
       - Networking
       summary: Firewall Update
       description: |
-        Updates information for a Firewall. Some parts of a Firewall's configuration cannot
+        Updates information for a Firewall.
+
+        * Assigned Linodes must not have any ongoing live migrations.
+
+        * If a Firewall's status is changed with this endpoint, a corresponding `firewall_enable` or
+        `firewall_disable` Event will be generated.
+
+        Some parts of a Firewall's configuration cannot
         be manipulated by this endpoint:
 
         - A Firewall's Devices cannot be set with this endpoint. Instead, use the
         [Create Firewall Device](/docs/api/networking/#firewall-device-create)
         and [Delete Firewall Device](/docs/api/networking/#firewall-device-delete)
-        endpoints to assign and remove this Firewall from Linode services.
+        endpoints to assign and remove this Firewall from services.
 
         - A Firewall's Rules cannot be changed with this endpoint. Instead, use the
         [Update Firewall Rules](/docs/api/networking/#firewall-rules-update)
@@ -13213,9 +14029,6 @@ paths:
         set to `deleted`. Instead, use the
         [Delete Firewall](/docs/api/networking/#firewall-delete)
         endpoint to delete a Firewall.
-
-        If a Firewall's status is changed with this endpoint, a corresponding `firewall_enable` or
-        `firewall_disable` Event will be generated.
       operationId: updateFirewall
       x-linode-cli-action: update
       security:
@@ -13237,7 +14050,7 @@ paths:
                   type: string
                   description: >
                    The status to be applied to this Firewall.
-                    
+
                     * When a Firewall is first created its status is `enabled`.
                     * Use the [Delete Firewall](/docs/api/networking/#firewall-delete) endpoint to delete a Firewall.
                   enum:
@@ -13283,10 +14096,12 @@ paths:
       - oauth:
         - firewall:read_write
       description: |
-        Delete a Firewall resource by its ID. This will remove all of the Firewall's Rules
-        from any Linode services that the Firewall was assigned to.
+        Delete a Firewall resource by its ID. This removes all of the Firewall's Rules
+        from any services that the Firewall was assigned to.
 
-        A `firewall_delete` Event is generated when this endpoint returns successfully.
+        * Assigned Linodes must not have any ongoing live migrations.
+
+        * A `firewall_delete` Event is generated when this endpoint returns successfully.
       responses:
         '200':
           description: Delete Successful.
@@ -13327,9 +14142,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       summary: Firewall Devices List
       description: |
-        Returns a paginated list of a Firewall's Devices. A Firewall Device assigns a
-        Firewall to a Linode service (referred to as the Device's `entity`). Currently,
-        only Devices with an entity of type `linode` are accepted.
+        Returns a paginated list of a Firewall's Devices. A Firewall Device assigns a Firewall to a service (referred to as the Device's `entity`).
       operationId: getFirewallDevices
       x-linode-cli-action: devices-list
       security:
@@ -13348,6 +14161,29 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/FirewallDevices'
+                    example:
+                    - {
+                        "created": "2018-01-01T00:01:01",
+                        "entity": {
+                          "id": 123,
+                          "label": "my-linode",
+                          "type": "linode",
+                          "url": "/v4/linode/instances/123"
+                        },
+                        "id": 456,
+                        "updated": "2018-01-02T00:01:01"
+                      }
+                    - {
+                        "created": "2018-01-01T00:01:01",
+                        "entity": {
+                          "id": 321,
+                          "label": "my-nodebalancer",
+                          "type": "nodebalancer",
+                          "url": "/v4/nodebalancers/123"
+                        },
+                        "id": 654,
+                        "updated": "2018-01-02T00:01:01"
+                      }
                   page:
                     $ref: '#/components/schemas/PaginationEnvelope/properties/page'
                   pages:
@@ -13375,12 +14211,16 @@ paths:
         Creates a Firewall Device, which assigns a Firewall to a service (referred to
         as the Device's `entity`) and applies the Firewall's Rules to the device.
 
-        * Currently, only Devices with an entity of type `linode` are accepted.
+        * Currently, Devices with `linode` and `nodebalancer` entity types are accepted.
 
-        * A Firewall can be assigned to multiple Linode instances at a time.
+        * Firewalls only apply to inbound TCP traffic to NodeBalancers.
 
-        * A Linode instance can have one active, assigned Firewall at a time.
+        * A Firewall can be assigned to multiple services at a time.
+
+        * A service can have one active, assigned Firewall at a time.
         Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
+
+        * Assigned Linodes must not have any ongoing live migrations.
 
         * A `firewall_device_add` Event is generated when the Firewall Device is added successfully.
       operationId: createFirewallDevice
@@ -13449,8 +14289,7 @@ paths:
       summary: Firewall Device View
       description: |
         Returns information for a Firewall Device, which assigns a Firewall
-        to a Linode service (referred to as the Device's `entity`). Currently,
-        only Devices with an entity of type `linode` are accepted.
+        to a service (referred to as the Device's `entity`).
       operationId: getFirewallDevice
       x-linode-cli-action: device-view
       security:
@@ -13489,12 +14328,14 @@ paths:
       - oauth:
         - firewall:read_write
       description: |
-        Removes a Firewall Device, which removes a Firewall from the Linode service it was
-        assigned to by the Device. This will remove all of the Firewall's Rules from the Linode
-        service. If any other Firewalls have been assigned to the Linode service, then those Rules
-        will remain in effect.
+        Removes a Firewall Device, which removes a Firewall from the service it was
+        assigned to by the Device. This removes all of the Firewall's Rules from the
+        service. If any other Firewalls have been assigned to the service, then those Rules
+        remain in effect.
 
-        A `firewall_device_remove` Event is generated when the Firewall Device is removed successfully.
+        * Assigned Linodes must not have any ongoing live migrations.
+
+        * A `firewall_device_remove` Event is generated when the Firewall Device is removed successfully.
       responses:
         '200':
           description: Delete Successful.
@@ -13569,7 +14410,9 @@ paths:
       description: |
         Updates the inbound and outbound Rules for a Firewall.
 
-        **Note:** This command replaces all of a Firewall's `inbound` and `outbound` rulesets with the values specified in your request.
+        * Assigned Linodes must not have any ongoing live migrations.
+
+        * **Note:** This command replaces all of a Firewall's `inbound` and `outbound` rulesets with the values specified in your request.
       operationId: updateFirewallRules
       x-linode-cli-action: rules-update
       security:
@@ -13662,7 +14505,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
@@ -13682,14 +14525,11 @@ paths:
 
         There are several ways to detach a VLAN from a Linode:
 
-        - [Update](/docs/api/linode-instances/#configuration-profile-update) the active Configuration Profile to remove the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode.
-        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode into the new Configuration Profile.
+        - [Update](/docs/api/linode-instances/#configuration-profile-update) the active Configuration Profile to remove the VLAN Interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode.
+        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN Interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode into the new Configuration Profile.
         - [Delete](/docs/api/linode-instances/#linode-delete) the Linode.
 
-        **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
-        If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
-        the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
-        you will be prompted to select a different data center or contact support.
+        **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions. If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center, the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility, you will be prompted to select a different data center or contact support.
 
         **Note:** See the [VLANs Overview](/docs/products/networking/vlans/#technical-specifications) to view additional specifications and limitations.
       operationId: getVLANs
@@ -13724,7 +14564,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/vlans/
+              https://api.linode.com/v4/networking/vlans/
       - lang: CLI
         source: >
           linode-cli vlans list
@@ -13813,6 +14653,13 @@ paths:
                   $ref: '#/components/schemas/NodeBalancer/properties/label'
                 client_conn_throttle:
                   $ref: '#/components/schemas/NodeBalancer/properties/client_conn_throttle'
+                firewall_id:
+                  type: integer
+                  description: |
+                    The ID of the Firewall to assign to the NodeBalancer.
+
+                    * Only one NodeBalancer can be assigned to a Firewall at a time.
+                    * Firewalls only apply to inbound TCP traffic to NodeBalancers.
                 tags:
                   description: |
                     An array of Tags applied to this object. Tags are for organizational purposes only.
@@ -14747,6 +15594,52 @@ paths:
         source: >
           linode-cli nodebalancers node-delete \
             12345 4567 54321
+  /nodebalancers/{nodeBalancerId}/firewalls:
+    x-linode-cli-command: nodebalancers
+    parameters:
+    - name: nodeBalancerId
+      in: path
+      description: The ID of the NodeBalancer to access.
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: getNodeBalancerFirewalls
+      x-linode-grant: read_only
+      tags:
+      - NodeBalancers
+      summary: Firewalls List
+      description: >
+          View information for Firewalls assigned to this NodeBalancer.
+      x-linode-cli-action: firewalls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - nodebalancers:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of Firewalls assigned to this NodeBalancer.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Firewall'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/nodebalancers/$nodeBalancerId/firewalls \
+            -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli nodebalancers firewalls $nodeBalancerId
   /nodebalancers/{nodeBalancerId}/stats:
     x-linode-cli-command: nodebalancers
     parameters:
@@ -15659,12 +16552,10 @@ paths:
       description: |
         Provisions a new Object Storage Key on your account.
 
-        Accounts with negative balances cannot access this command.
-
+        * Accounts with negative balances cannot access this command.
+        * A successful request triggers an `obj_access_key_create` event.
         * To create a Limited Access Key with specific permissions, send a `bucket_access` array.
-
         * To create a Limited Access Key without access to any buckets, send an empty `bucket_access` array.
-
         * To create an Access Key with unlimited access to all clusters and all buckets, omit the `bucket_access` array.
       tags:
       - Object Storage
@@ -15763,6 +16654,8 @@ paths:
       summary: Object Storage Key Update
       description: |
         Updates an Object Storage Key on your account.
+
+        * A successful request triggers an `obj_access_key_update` event.
       security:
       - personalAccessToken: []
       - oauth:
@@ -15810,7 +16703,9 @@ paths:
       - url: https://api.linode.com/v4
       summary: Object Storage Key Revoke
       description: |
-        Revokes an Object Storage Key.  This keypair will no longer be usable by third-party clients.
+        Revokes an Object Storage Key. This keypair will no longer be usable by third-party clients.
+
+        * A successful request triggers an `obj_access_key_delete` event.
       security:
       - personalAccessToken: []
       - oauth:
@@ -17527,11 +18422,13 @@ paths:
       x-linode-cli-action: view-avail
       responses:
         '200':
-          description: A single Region object.
+          description: The availability data for a single Region.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RegionAvailability'
+                type: array
+                items:
+                  $ref: '#/components/schemas/RegionAvailability'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -18081,13 +18978,14 @@ paths:
               --linodes 456 \
               --volumes 9082 \
               --volumes 10003
-  /tags/{label}:
+  /tags/{tagLabel}:
     x-linode-cli-command: tags
     parameters:
-    - name: label
+    - name: tagLabel
       in: path
       schema:
         type: string
+        description: The `label` of the Tag to access.
       required: true
     get:
       summary: Tagged Objects List
@@ -18149,7 +19047,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              "https://api.linode.com/v4/tags/example tag"
+              https://api.linode.com/v4/tags/$tagLabel
     delete:
       summary: Tag Delete
       description: >
@@ -18730,6 +19628,484 @@ paths:
         source: >
           linode-cli volumes resize 12345 \
             --size 30
+  /vpcs:
+    x-linode-cli-command: vpcs
+    get:
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - VPCs
+      summary: VPCs List
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Display all VPCs on your account.
+      operationId: getVPCs
+      x-linode-cli-action:
+      - list
+      - ls
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: A paginated list of VPC objects.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/VPC'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/vpcs \
+              -H "Authorization: Bearer $TOKEN"
+      - lang: CLI
+        source: >
+          linode-cli vpcs list
+    post:
+      x-linode-grant: add_vpcs
+      tags:
+      - VPCs
+      summary: VPC Create
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Create a new VPC and optionally associated VPC Subnets.
+        * Users must have the `add_vpc` grant to access this command.
+        * A successful request triggers a `vpc_create` event and `subnet_create` events for any created VPC Subnets.
+
+        Once a VPC is created, it can be attached to a Linode by assigning a VPC Subnet to one of the Linode's Configuration Profile Interfaces. This step can be accomplished with the following commands:
+        * Linode Create ([POST /linode/instances](/docs/api/linode-instances/#linode-create))
+        * Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create))
+        * Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update))
+        * Configuration Profile Interface Add ([POST /linode/instances/{linodeId}/configs/{configId}/interfaces](/docs/api/linode-instances/#configuration-profile-interface-add))
+      operationId: createVPC
+      x-linode-cli-action: create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      requestBody:
+        description: |
+          VPC Create request object.
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - required:
+                - label
+                - region
+              - properties:
+                  subnets:
+                    required:
+                    - ipv4
+                    - label
+              - $ref: '#/components/schemas/VPC'
+      responses:
+        '200':
+          description: The new VPC.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPC'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X POST -d '{
+                "description": "A description of my VPC.",
+                "label": "cool-vpc",
+                "region": "us-east",
+                "subnets": [
+                  {
+                    "label": "cool-vpc-subnet",
+                    "ipv4": "10.0.1.0/24"
+                  }
+                ]
+              }'
+        - lang: CLI
+          source: >
+            linode-cli vpcs create \
+              --description "A description of my VPC." \
+              --label cool-vpc \
+              --region us-east \
+              --subnets.label cool-vpc-subnet \
+              --subnets.ipv4 10.0.1.0/24
+  /vpcs/{vpcId}:
+    x-linode-cli-command: vpcs
+    parameters:
+    - $ref: '#/components/parameters/vpcId'
+    delete:
+      x-linode-grant: read_write
+      summary: VPC Delete
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Delete a single VPC and all of its Subnets.
+        * The User accessing this command must have `read_write` grants to the VPC.
+        * A successful request triggers a `vpc_delete` event and `subnet_delete` events for each deleted VPC Subnet.
+        * All of the VPC's Subnets must be eligible for deletion. Accordingly, all Configuration Profile Interfaces that each Subnet is assigned to must first be deleted. If those Interfaces are active, the associated Linodes must first be shut down before they can be removed. If any Subnet cannot be deleted, then neither the VPC nor any of its Subnets are deleted.
+      tags:
+      - VPCs
+      operationId: deleteVPC
+      x-linode-cli-action: delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      responses:
+        '200':
+          description: Delete request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs/$vpcId \
+              -H "Authorization: Bearer $TOKEN" \
+              -X DELETE
+        - lang: CLI
+          source: >
+            linode-cli vpcs delete $vpcId
+    get:
+      summary: VPC View
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Get information about a single VPC.
+      tags:
+      - VPCs
+      operationId: getVPC
+      x-linode-cli-action: view
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: A VPC object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPC'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs/$vpcId \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli vpcs view $vpcId
+    put:
+      x-linode-grant: read_write
+      tags:
+      - VPCs
+      summary: VPC Update
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Update an existing VPC.
+        * The User accessing this command must have `read_write` grants to the VPC.
+        * A successful request triggers a `vpc_update` event.
+
+        To update a VPC's Subnet, use the [VPC Subnet Update](#vpc-subnet-update) command.
+      operationId: updateVPC
+      x-linode-cli-action: update
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      requestBody:
+        description: |
+          VPC Update request object.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: A VPC Update request object.
+              properties:
+                description:
+                  $ref: '#/components/schemas/VPC/properties/description'
+                label:
+                  $ref: '#/components/schemas/VPC/properties/label'
+      responses:
+        '200':
+          description: The updated VPC.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPC'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs/$vpcId \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X PUT -d '{
+                "description": "A description of my VPC.",
+                "label": "cool-vpc"
+              }'
+        - lang: CLI
+          source: >
+            linode-cli vpcs update $vpcId \
+              --description "A description of my VPC."
+              --label cool-vpc
+  /vpcs/{vpcId}/subnets:
+    x-linode-cli-command: vpcs
+    parameters:
+    - $ref: '#/components/parameters/vpcId'
+    get:
+      tags:
+      - VPCs
+      summary: VPC Subnets List
+      servers:
+      - url: https://api.linode.com/v4
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Get information about all VPC Subnets associated with a VPC.
+      operationId: getVPCSubnets
+      x-linode-cli-action:
+      - subnets-list
+      - subnets-ls
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: A paginated list of VPC Subnet objects.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/VPCSubnet'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs/$vpcId/subnets \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnets-list $vpcId
+    post:
+      x-linode-grant: read_write
+      tags:
+      - VPCs
+      summary: VPC Subnet Create
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Create a VPC Subnet.
+        * The User accessing this command must have `read_write` grants to the VPC.
+        * A successful request triggers a `subnet_create` event.
+
+        Once a VPC Subnet is created, it can be attached to a Linode by assigning the Subnet to one of the Linode's Configuration Profile Interfaces. This step can be accomplished with the following commands:
+        * Linode Create ([POST /linode/instances](/docs/api/linode-instances/#linode-create))
+        * Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create))
+        * Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update))
+        * Configuration Profile Interface Add ([POST /linode/instances/{linodeId}/configs/{configId}/interfaces](/docs/api/linode-instances/#configuration-profile-interface-add))
+      operationId: createVPCSubnet
+      x-linode-cli-action: subnet-create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      requestBody:
+        description: |
+          VPC Subnet Create request object.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: VPC Subnet Create request object
+              required:
+              - ipv4
+              - label
+              properties:
+                label:
+                  $ref: '#/components/schemas/VPCSubnet/properties/label'
+                ipv4:
+                  $ref: '#/components/schemas/VPCSubnet/properties/ipv4'
+                # ipv6:
+                #   $ref: '#/components/schemas/VPCSubnet/properties/ipv6'
+      responses:
+        '200':
+          description: The new VPC Subnet.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPCSubnet'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs/$vpcId/subnets \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X POST -d '{
+                "label": "cool-vpc-subnet",
+                "ipv4": "10.0.1.0/24",
+              }'
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnet-create $vpcId \
+              --label cool-vpc-subnet \
+              --ipv4 10.0.1.0/24
+  /vpcs/{vpcId}/subnets/{vpcSubnetId}:
+    x-linode-cli-command: vpcs
+    parameters:
+    - $ref: '#/components/parameters/vpcId'
+    - $ref: '#/components/parameters/vpcSubnetId'
+    delete:
+      x-linode-grant: read_write
+      summary: VPC Subnet Delete
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Delete a single VPC Subnet.
+
+        The user accessing this command must have `read_write` grants to the VPC. A successful request triggers a `subnet_delete` event.
+
+        **Note:** You need to delete all the Configuration Profile Interfaces that this Subnet is assigned to before you can delete it. If those Interfaces are active, the associated Linode needs to be shut down before they can be removed.
+      tags:
+      - VPCs
+      operationId: deleteVPCSubnet
+      x-linode-cli-action: subnet-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      responses:
+        '200':
+          description: Delete request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs/$vpcId/subnets/$vpcSubnetId \
+              -H "Authorization: Bearer $TOKEN" \
+              -X DELETE
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnet-delete $vpcId $vpcSubnetId
+    get:
+      summary: VPC Subnet View
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Get information about a single VPC Subnet.
+      tags:
+      - VPCs
+      operationId: getVPCSubnet
+      x-linode-cli-action: subnet-view
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: A VPC Subnet object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPCSubnet'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs/$vpcId/subnets/$vpcSubnetId \
+              -H "Authorization: Bearer $TOKEN"
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnet-view $vpcId #vpcSubnetId
+    put:
+      x-linode-grant: read_write
+      tags:
+      - VPCs
+      summary: VPC Subnet Update
+      servers:
+      - url: https://api.linode.com/v4
+      description: |
+        Update a VPC Subnet.
+        * The User accessing this command must have `read_write` grants to the VPC.
+        * A successful request triggers a `subnet_update` event.
+      operationId: updateVPCSubnet
+      x-linode-cli-action: subnet-update
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - vpc:read_write
+      requestBody:
+        description: |
+          VPC Update request object.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: A VPC Subnet Update request object.
+              properties:
+                label:
+                  $ref: '#/components/schemas/VPCSubnet/properties/label'
+      responses:
+        '200':
+          description: The updated VPC Subnet.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPCSubnet'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl https://api.linode.com/v4/vpcs/$vpcId/subnets/$vpcSubnetId \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X PUT -d '{
+                "label": "cool-vpc-subnet"
+              }'
+        - lang: CLI
+          source: >
+            linode-cli vpcs subnet-update $vpcId \
+              --label cool-vpc-subnet
 components:
   securitySchemes:
     personalAccessToken:
@@ -18768,6 +20144,7 @@ components:
             'stackscripts:read_write': Allows access to all endpoints related to your StackScripts.
             'volumes:read_only': Allows access to GET your Volumes.
             'volumes:read_write': Allows access to all endpoints related to your Volumes.
+            'vpc:read_write': Allows access to all endpoints related to VPC and Subnet creation, updating, and deletion.
   responses:
     AcceptedResponse:
       description: |
@@ -18809,6 +20186,27 @@ components:
                 items:
                   $ref: '#/components/schemas/ErrorObject'
   parameters:
+    betaId:
+      name: betaId
+      in: path
+      description: The ID of the Beta Program.
+      required: true
+      schema:
+        type: string
+    configId:
+      name: configId
+      in: path
+      description: The `id` of the Configuration Profile.
+      required: true
+      schema:
+        type: integer
+    linodeId:
+      name: linodeId
+      in: path
+      description: The `id` of the Linode.
+      required: true
+      schema:
+        type: integer
     pageOffset:
       name: page
       in: query
@@ -18827,6 +20225,20 @@ components:
         minimum: 25
         maximum: 500
         default: 100
+    vpcId:
+      name: vpcId
+      in: path
+      schema:
+        type: integer
+      required: true
+      description: The `id` of the VPC.
+    vpcSubnetId:
+      name: vpcSubnetId
+      in: path
+      schema:
+        type: integer
+      required: true
+      description: The `id` of the VPC Subnet.
   links:
     bootLinode:
       operationId: bootLinodeInstance
@@ -19041,9 +20453,31 @@ components:
           description: |
             The zip code of this Account's billing address. The following restrictions apply:
 
-            - May only consist of letters, numbers, spaces, and hyphens.
+            - Can only contain ASCII letters, numbers, and hyphens (`-`).
             - Must not contain more than 9 letter or number characters.
           example: 19102-1234
+    AccountAvailability:
+      type: object
+      description: Account Service Availability object
+      properties:
+        region:
+          type: string
+          readOnly: true
+          description: >
+            Displays the data center represented by a slug.
+          example: us-east
+          x-linode-cli-display: 1
+        unavailable:
+          type: array
+          readOnly: true
+          description: >
+            A list of strings of unavailable services.
+          example:
+          - "Linodes"
+          - "Block Storage"
+          items:
+            type: string
+          x-linode-cli-display: 2
     AccountSettings:
       type: object
       description: Account Settings object
@@ -19180,8 +20614,7 @@ components:
           - snapshot
           readOnly: true
           description: >
-            This indicates whether the Backup is an automatic Backup or
-            manual snapshot taken by the User at a specific point in time.
+            This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
           example: snapshot
           x-linode-cli-display: 3
         status:
@@ -19261,6 +20694,90 @@ components:
           readOnly: true
           description: >
             A list of the disks that are part of the Backup.
+    BetaProgram:
+      type: object
+      description: An object representing Beta Program information.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the Beta Program.
+          example: example_open
+          x-linode-cli-display: 1
+        label:
+          type: string
+          readOnly: true
+          x-linode-filterable: true
+          description: The name of the Beta Program.
+          example: Example Open Beta
+          x-linode-cli-display: 2
+        description:
+          type: string
+          readOnly: true
+          nullable: true
+          description: Additional details regarding the Beta Program.
+          example: "This is an open public beta for an example feature."
+          x-linode-cli-display: 3
+        greenlight_only:
+          type: boolean
+          readOnly: true
+          x-linode-filterable: true
+          description: Whether the Beta Program requires [Green Light](https://www.linode.com/green-light/) participation for enrollment.
+          example: true
+          x-linode-cli-display: 4
+        started:
+          type: string
+          format: date-time
+          readOnly: true
+          x-linode-filterable: true
+          description: The start date-time of the Beta Program.
+          example: '2023-07-11T00:00:00'
+          x-linode-cli-display: 5
+        ended:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          x-linode-filterable: true
+          description: |
+            The date-time that the Beta Program ended.
+
+            `null` indicates that the Beta Program is ongoing.
+          example: null
+          x-linode-cli-display: 6
+        more_info:
+          type: string
+          readOnly: true
+          nullable: true
+          description: Additional source of information for the Beta Program.
+          example: https://www.linode.com/green-light/
+          x-linode-cli-display: 7
+    BetaProgramEnrolled:
+      type: object
+      description: An object representing an enrolled Beta Program for the Account.
+      properties:
+        id:
+          $ref: '#/components/schemas/BetaProgram/properties/id'
+          x-linode-cli-display: 1
+        label:
+          $ref: '#/components/schemas/BetaProgram/properties/label'
+          x-linode-cli-display: 2
+        description:
+          $ref: '#/components/schemas/BetaProgram/properties/description'
+          x-linode-cli-display: 3
+        started:
+          $ref: '#/components/schemas/BetaProgram/properties/started'
+          x-linode-cli-display: 4
+        ended:
+          $ref: '#/components/schemas/BetaProgram/properties/ended'
+          x-linode-cli-display: 5
+        enrolled:
+          type: string
+          format: date-time
+          readOnly: true
+          x-linode-filterable: true
+          description: The date-time of Account enrollment to the Beta Program.
+          example: '2023-09-11T00:00:00'
+          x-linode-cli-display: 6
     CreditCard:
       type: object
       description: |
@@ -19274,7 +20791,7 @@ components:
       properties:
         card_number:
           type: string
-          description: Your credit card number. No spaces or dashes allowed.
+          description: Your credit card number. No spaces or hyphens (`-`) allowed.
           minLength: 14
           maxLength: 24
           format: digits
@@ -19526,7 +21043,7 @@ components:
           x-linode-cli-display: 2
         created:
           type: string
-          format: datetime
+          format: date-time
           example: '2022-01-01T00:01:01'
           description: A time value given in a combined date and time format that represents when the database backup was created.
           x-linode-filterable: true
@@ -19544,7 +21061,7 @@ components:
           description: |
             The label for the Database snapshot backup.
 
-            * Must include only ASCII letters, numbers, or underscores.
+            * Can only contain ASCII letters, numbers, and underscores (`_`).
             * Must be unique among other backup labels for this Database.
           example: db-snapshot
         target:
@@ -19594,6 +21111,16 @@ components:
           description: The Managed Database engine version.
           x-linode-filterable: true
           x-linode-cli-display: 3
+        total_disk_size_gb:
+          type: integer
+          example: 15
+          description: The total disk size of the database in GB.
+          x-linode-cli-display: 4
+        used_disk_size_gb:
+          type: integer
+          example: 2
+          description: The used space of the database in GB.
+          x-linode-cli-display: 5
     DatabaseMySQL:
       type: object
       description: Managed MySQL Databases object.
@@ -19612,14 +21139,14 @@ components:
           description: The Managed Database engine type.
           example: mysql
           x-linode-filterable: true
-          x-linode-cli-display: 6
+          x-linode-cli-display: 8
           readOnly: true
         version:
           type: string
           description: The Managed Database engine version.
           example: "8.0.26"
           x-linode-filterable: true
-          x-linode-cli-display: 7
+          x-linode-cli-display: 9
           readOnly: true
         region:
           $ref: '#/components/schemas/Database/properties/region'
@@ -19641,7 +21168,7 @@ components:
           $ref: '#/components/schemas/Database/properties/allow_list'
         cluster_size:
           $ref: '#/components/schemas/Database/properties/cluster_size'
-          x-linode-cli-display: 5
+          x-linode-cli-display: 7
         hosts:
           $ref: '#/components/schemas/Database/properties/hosts'
         ssl_connection:
@@ -19679,6 +21206,16 @@ components:
           $ref: '#/components/schemas/Database/properties/updated'
         updates:
           $ref: '#/components/schemas/Database/properties/updates'
+        total_disk_size_gb:
+          type: integer
+          example: 15
+          description: The total disk size of the database in GB.
+          x-linode-cli-display: 5
+        used_disk_size_gb:
+          type: integer
+          example: 2
+          description: The used space of the database in GB.
+          x-linode-cli-display: 6
     DatabaseMySQLRequest:
       type: object
       description: Managed MySQL Database request object.
@@ -19825,6 +21362,16 @@ components:
           $ref: '#/components/schemas/Database/properties/updated'
         updates:
           $ref: '#/components/schemas/Database/properties/updates'
+        total_disk_size_gb:
+          type: integer
+          example: 15
+          description: The total disk size of the database in GB.
+          x-linode-cli-display: 8
+        used_disk_size_gb:
+          type: integer
+          example: 2
+          description: The used space of the database in GB.
+          x-linode-cli-display: 9
     DatabasePostgreSQLRequest:
       type: object
       description: Managed PostgreSQL Database request object.
@@ -20339,7 +21886,10 @@ components:
             `NS`: The subdomain, if any, to use with the Domain of the Record. Wildcard NS records (`*`) are not supported.
 
             `MX`: The mail subdomain. For example, `sub` for the address `user@sub.example.com` under the `example.com`
-            Domain. Must be an empty string (`""`) for a Null MX Record.
+            Domain.
+            * The left-most subdomain component may be an asterix (`*`) to designate a wildcard subdomain.
+            * Other subdomain components must only contain letters, digits, and hyphens, start with a letter, end with a letter or digit, and contain less than 64 characters.
+            * Must be an empty string (`""`) for a Null MX Record.
 
             `CNAME`: The hostname. Must be unique. Required.
 
@@ -20366,10 +21916,11 @@ components:
 
             `NS`: The name server. Must be a valid domain. Required.
 
-            `MX`: The mail server. Must be a valid domain unless creating a Null MX Record. To create a
-            [Null MX Record](https://datatracker.ietf.org/doc/html/rfc7505), first
-            [remove](/docs/api/domains/#domain-record-delete) any additional MX records, create an MX record with empty strings
-            (`""`) for the `target` and `name`. If a Domain has a Null MX record, new MX records cannot be created. Required.
+            `MX`: The mail server. Must be a valid domain unless creating a Null MX Record. Required.
+            * Must have less than 254 total characters.
+            * The left-most domain component may be an asterix (`*`) to designate a wildcard domain.
+            * Other domain components must only contain letters, digits, and hyphens, start with a letter, end with a letter or digit, and contain less than 64 characters.
+            * To create a [Null MX Record](https://datatracker.ietf.org/doc/html/rfc7505), first [remove](/docs/api/domains/#domain-record-delete) any additional MX records, then create an MX record with empty strings (`""`) for the `target` and `name`. If a Domain has a Null MX record, new MX records cannot be created.
 
             `CNAME`: The alias. Must be a valid domain. Required.
 
@@ -20683,6 +22234,9 @@ components:
           - oauth_client_delete
           - oauth_client_secret_reset
           - oauth_client_update
+          - obj_access_key_create
+          - obj_access_key_delete
+          - obj_access_key_update
           - password_reset
           - payment_method_add
           - payment_submitted
@@ -20913,9 +22467,9 @@ components:
     Firewall:
       type: object
       description: >
-        A resource that controls incoming and outgoing network traffic to a Linode service. Only one Firewall can be attached to a Linode at any given time.
+        A resource that controls incoming and outgoing network traffic to a compute service. Only one enabled Firewall can be attached to a particular service at any given time.
         [Create a Firewall Device](/docs/api/networking/#firewall-create)
-        to assign a Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode instances.
+        to assign a Firewall to a service. Currently, Firewalls can assigned to Linode compute instances and NodeBalancers.
       properties:
         id:
           x-linode-filterable: true
@@ -20934,8 +22488,8 @@ components:
             Firewall labels have the following constraints:
 
               * Must begin and end with an alphanumeric character.
-              * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
-              * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
+              * May only consist of alphanumeric characters, hyphens (`-`), underscores (`_`) or periods (`.`).
+              * Cannot have two hyphens (`--`), underscores (`__`) or periods (`..`) in a row.
               * Must be between 3 and 32 characters.
               * Must be unique.
           example: firewall123
@@ -21108,8 +22662,8 @@ components:
     FirewallDevices:
       type: object
       description: >
-        Associates a Firewall with a Linode service. A Firewall can be assigned
-        to a single Linode service at a time. Additional disabled Firewalls can be
+        Associates a Firewall with a Linode or NodeBalancer service. A Firewall can be assigned
+        to a single entity at a time. Additional disabled Firewalls can be
         assigned to a service, but they cannot be enabled if another active Firewall
         is already assigned to the same service.
       properties:
@@ -21142,7 +22696,7 @@ components:
           type: object
           readOnly: true
           description: >
-            The Linode service that this Firewall has been applied to.
+            The compute service that this Firewall has been applied to.
           properties:
             id:
               description: The entity's ID
@@ -21153,6 +22707,7 @@ components:
               type: string
               enum:
               - linode
+              - nodebalancer
               example: linode
             label:
               description: The entity's label.
@@ -21161,7 +22716,7 @@ components:
               example: my-linode
             url:
               description: >
-                The URL you can use to access this entity.
+                The API URL path you can use to access this entity.
               type: string
               format: url
               readOnly: true
@@ -21260,7 +22815,11 @@ components:
               example: true
             add_databases:
               type: boolean
-              description: if true, this User may add Managed Databases.
+              description: If true, this User may add Managed Databases.
+              example: true
+            add_vpcs:
+              type: boolean
+              description: If true, this User may add VPCs.
               example: true
         linode:
           type: array
@@ -21310,6 +22869,12 @@ components:
             $ref: '#/components/schemas/Grant'
           description: >
             The grants this User has for each Block Storage Volume that is owned by this Account.
+        vpc:
+          type: array
+          items:
+            $ref: '#/components/schemas/Grant'
+          description: >
+            The grants this User has for each VPC that is owned by this Account.
     Image:
       type: object
       description: Image object
@@ -21504,6 +23069,18 @@ components:
           description: The amount of the Invoice after taxes in US Dollars.
           example: 132.50
           x-linode-cli-display: 6
+        billing_source:
+          type: string
+          enum:
+          - akamai
+          - linode
+          readOnly: true
+          description: |
+            `akamai`: This Invoice was generated according to the terms of an agreement between the customer and Akamai.
+
+            `linode`: This Invoice was generated according to the default terms, prices, and discounts.
+          example: linode
+          x-linode-cli-display: 3.5
     InvoiceItem:
       type: object
       description: An InvoiceItem object.
@@ -21564,6 +23141,16 @@ components:
           readOnly: true
           description: The monthly service fee in US Dollars for this Item.
           example: 5.05
+        region:
+          type: string
+          readOnly: true
+          nullable: true
+          description: |
+            The ID of the applicable Region associated with this Invoice Item.
+
+            `null` if there is no applicable Region.
+          example: us-west
+          x-linode-cli-display: 7
     IPAddress:
       type: object
       description: >
@@ -21644,6 +23231,32 @@ components:
           example: us-east
           readOnly: true
           x-linode-cli-display: 5
+        vpc_nat_1_1:
+          type: object
+          description: |
+            IPv4 address configured as a 1:1 NAT for this Interface. If no address is configured as a 1:1 NAT, `null` is returned.
+
+            **Note:** Only allowed for `vpc` type Interfaces.
+          properties:
+            vpc_id:
+              type: integer
+              readOnly: true
+              nullable: false
+              description: |
+                The `id` of the VPC configured for this Interface.
+              example: 111
+            subnet_id:
+              type: integer
+              nullable: false
+              description: |
+                The `id` of the VPC Subnet for this Interface.
+              example: 101
+            address:
+              type: string
+              format: ipv4
+              description: |
+                The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+              example: 192.0.2.1
     IPAddressesAssignRequest:
       type: object
       description: Request object for IP Addresses Assign (POST /networking/ips/assign).
@@ -21780,6 +23393,32 @@ components:
                     readOnly: true
                     x-linode-filterable: true
                     x-linode-cli-display: 5
+                  vpc_nat_1_1:
+                    type: object
+                    description: |
+                      IPv4 address configured as a 1:1 NAT for this Interface. If no address is configured as a 1:1 NAT, `null` is returned.
+
+                      **Note:** Only allowed for `vpc` type Interfaces.
+                    properties:
+                      vpc_id:
+                        type: integer
+                        readOnly: true
+                        nullable: false
+                        description: |
+                          The `id` of the VPC configured for this Interface.
+                        example: 111
+                      subnet_id:
+                        type: integer
+                        nullable: false
+                        description: |
+                          The `id` of the VPC Subnet for this Interface.
+                        example: 101
+                      address:
+                        type: string
+                        format: ipv4
+                        description: |
+                          The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+              example: 192.0.2.1
     IPAddressesShareRequest:
       type: object
       description: A request object IP Addresses Share (POST /networking/ips/share)
@@ -22183,8 +23822,8 @@ components:
             Linode labels have the following constraints:
 
               * Must begin and end with an alphanumeric character.
-              * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
-              * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
+              * May only consist of alphanumeric characters, hyphens (`-`), underscores (`_`) or periods (`.`).
+              * Cannot have two hyphens (`--`), underscores (`__`) or periods (`..`) in a row.
           example: linode123
           minLength: 3
           maxLength: 64
@@ -22264,10 +23903,12 @@ components:
           - cloning
           - restoring
           - stopped
+          - billing_suspension
           x-linode-cli-display: 6
           x-linode-cli-color:
               running: green
               offline: red
+              billing_suspension: red
               default_: yellow
         hypervisor:
           type: string
@@ -22622,27 +24263,37 @@ components:
       description: >
         The Network Interface to apply to this Linode's configuration profile.
       properties:
+        id:
+          readOnly: true
+          type: integer
+          description: The unique ID representing this Interface.
+          example: 101
+          x-linode-cli-display: 1
         label:
           type: string
           minLength: 1
           maxLength: 64
-          pattern: '/[a-z0-9-]+/'
+          pattern: '[a-zA-Z0-9-]+'
           x-linode-filterable: true
           nullable: true
           description: |
-            The name of this interface.
+            The name of this Interface.
 
-            For `vlan` purpose interfaces:
+            For `vlan` purpose Interfaces:
             * Required.
-            * Must be unique among the Linode's interfaces (a Linode cannot be attached to the same VLAN multiple times).
-            * May only consist of ASCII letters, numbers, and dashes (`-`).
+            * Must be unique among the Linode's Interfaces (a Linode cannot be attached to the same VLAN multiple times).
+            * Can only contain ASCII letters, numbers, and hyphens (`-`). You can't use two consecutive hyphens (`--`).
+            * If the VLAN label is new, a VLAN is created. Up to 10 VLANs can be created in each data center region. To view your active VLANs, use the [VLANs List](/docs/api/networking/#vlans-list) endpoint.
 
-            For `public` purpose interfaces:
+            For `public` purpose Interfaces:
             * In requests, must be an empty string (`""`) or `null` if included.
             * In responses, always returns `null`.
 
-            If the VLAN label is new, a VLAN is created. Up to 10 VLANs can be created in each data center region. To view your active VLANs, use the [VLANs List](/docs/api/networking/#vlans-list) endpoint.
+            For `vpc` purpose Interfaces:
+            * In requests, must be an empty string (`""`) or `null` if included.
+            * In responses, always returns `null`.
           example: example-interface
+          x-linode-cli-display: 2
         ipam_address:
           type: string
           format: ip/netmask
@@ -22650,60 +24301,226 @@ components:
           description: |
             This Network Interface's private IP address in Classless Inter-Domain Routing (CIDR) notation.
 
-            For `vlan` purpose interfaces:
-            * Must be unique among the Linode's interfaces to avoid conflicting addresses.
+            For `vlan` purpose Interfaces:
+            * Must be unique among the Linode's Interfaces to avoid conflicting addresses.
             * Should be unique among devices attached to the VLAN to avoid conflict.
+            * The Linode is configured to use this address for the associated Interface upon reboot if Network Helper is enabled. If Network Helper is disabled, the address can be enabled with [manual static IP configuration](/docs/guides/manual-network-configuration/).
 
-            For `public` purpose interfaces:
+            For `public` purpose Interfaces:
             * In requests, must be an empty string (`""`) or `null` if included.
             * In responses, always returns `null`.
 
-            The Linode is configured to use this address for the associated interface upon reboot if Network Helper is enabled. If Network Helper is disabled, the address can be enabled with [manual static IP configuration](/docs/guides/manual-network-configuration/).
+            For `vpc` purpose Interfaces:
+            * In requests, must be an empty string (`""`) or `null` if included.
+            * In responses, always returns `null`.
           example: '10.0.0.1/24'
+          x-linode-cli-display: 4
         purpose:
           type: string
           enum:
             - public
             - vlan
+            - vpc
           description: |
-            The type of interface.
+            The type of Interface.
 
             * `public`
-              * Only one `public` interface per Linode can be defined.
-              * The Linode's default public IPv4 address is assigned to the `public` interface.
-              * A Linode must have a public interface in the first/eth0 position to be reachable via the public internet upon boot without additional system configuration. If no `public` interface is configured, the Linode is not directly reachable via the public internet. In this case, access can only be established via [LISH](/docs/products/compute/compute-instances/guides/lish/) or other Linodes connected to the same VLAN.
+              * Only one `public` Interface per Linode can be defined.
+              * The Linode's default public IPv4 address is assigned to the `public` Interface.
+              * A Linode must have a public Interface in the first/eth0 position to be reachable via the public internet upon boot without additional system configuration. If no `public` Interface is configured, the Linode is not directly reachable via the public internet. In this case, access can only be established via [LISH](/docs/products/compute/compute-instances/guides/lish/) or other Linodes connected to the same VLAN or VPC.
 
             * `vlan`
-              * Configuring a `vlan` purpose interface attaches this Linode to the VLAN with the specified `label`.
+              * Configuring a `vlan` purpose Interface attaches this Linode to the VLAN with the specified `label`.
               * The Linode is configured to use the specified `ipam_address`, if any.
+
+            * `vpc`
+              * Configuring a `vpc` purpose Interface attaches this Linode to the existing VPC Subnet with the specified `subnet_id`.
+              * When the Interface is activated, the Linode is configured to use an IP address from the range in the assigned VPC Subnet. See `ipv4.vpc` for more information.
           example: vlan
+          x-linode-cli-display: 3
+        active:
+          type: boolean
+          description: |
+            Returns `true` if the Interface is in use, meaning that Compute Instance has been booted using the Configuration Profile to which the Interface belongs. Otherwise returns `false`.
+          example: true
+        primary:
+          type: boolean
+          description: |
+            The primary Interface is configured as the default route to the Linode.
+
+            Each Configuration Profile can have up to one `"primary": true` Interface at a time.
+
+            Must be `false` for `vlan` type Interfaces.
+
+            If no Interface is configured as the primary, the first non-`vlan` type Interface in the `interfaces` array is automatically treated as the primary Interface.
+          example: true
+        vpc_id:
+          type: integer
+          readOnly: true
+          nullable: true
+          description: |
+            The `id` of the VPC configured for this Interface. Returns `null` for non-`vpc` type Interfaces.
+          example: 111
+        subnet_id:
+          type: integer
+          nullable: true
+          description: |
+            The `id` of the VPC Subnet for this Interface.
+
+            In requests, this value is used to assign a Linode to a VPC Subnet.
+            * Required for `vpc` type Interfaces.
+            * Returns `null` for non-`vpc` type Interfaces.
+            * Once a VPC Subnet is assigned to an Interface, it cannot be updated.
+            * The Linode must be rebooted with the Interface's Configuration Profile to complete assignment to a VPC Subnet.
+          example: 101
+        ipv4:
+          type: object
+          description: |
+            IPv4 addresses configured for this Interface. Only allowed for `vpc` type Interfaces. Returns `null` if no `vpc` Interface is assigned.
+          properties:
+            vpc:
+              type: string
+              format: ip
+              nullable: true
+              description: |
+                The VPC Subnet IPv4 address for this Interface.
+
+                * Only allowed for `vpc` type Interfaces.
+                * Returns an empty string (`""`) for non-`vpc` type Interfaces.
+
+                For requests:
+                * Must not already be actively assigned as an address or within a range to any Linodes.
+                * Must not be the first two or last two addresses in the Subnet IPv4 Range.
+                * If omitted, a valid address within the Subnet IPv4 range is automatically assigned.
+              example: '10.0.0.2'
+            nat_1_1:
+              type: string
+              format: ip
+              nullable: true
+              description: |
+                The 1:1 NAT IPv4 address, used to associate a public IPv4 address with the VPC Subnet IPv4 address assigned to this Interface.
+
+                * Only allowed for `vpc` type Interfaces.
+                * Returns `null` if no 1:1 NAT is set for a `vpc` type Interface.
+                * Returns an empty string (`""`) for non-`vpc` type Interfaces.
+
+                For requests:
+                * Setting this value to `any` enables the Linode's assigned public IPv4 address on this Interface and establishes a 1:1 NAT between the public IPv4 and VPC Subnet IPv4 addresses.
+                * Setting the value to a specific public IPv4 address that is assigned to the Linode enables a 1:1 NAT between that address and the VPC Subnet IPv4 address.
+                * The public IPv4 address can't be shared with another Linode.
+                * If omitted, set to `null`, or set to an empty string (`""`), no 1:1 NAT is established.
+              example: '203.0.113.2'
+        # ipv6:
+        #   type: object
+        #   description: |
+        #     **VPC BETA ONLY**
+        #
+        #     IPv6 addresses configured for this Interface.
+        #   properties:
+        #     vpc:
+        #       type: string
+        #       format: ip
+        #       description: |
+        #         **VPC BETA ONLY**
+        #
+        #         The VPC IPv6 address assigned to this Interface.
+        #
+        #         * Only allowed for `vpc` type Interfaces.
+        #         * Returns an empty string (`""`) for non-`vpc` type Interfaces.
+        #
+        #         For requests:
+        #         * The VPC Subnet must have an IPv6 range.
+        #         * Must not already be actively assigned as an address or within a range.
+        #         * Must not be the first two or last two addresses in the Subnet IPv6 Range.
+        #         * If omitted, a valid address within the Subnet IPv6 range is automatically assigned.
+        #       example: 'fd04:495a:691c:971c::2'
+        ip_ranges:
+          type: array
+          nullable: true
+          description: |
+            An array of IPv4 CIDR VPC Subnet ranges that are routed to this Interface. **IPv6 ranges are also available to select participants in the Beta program.**
+
+            * Array items are only allowed for `vpc` type Interfaces.
+            * This must be empty for non-`vpc` type Interfaces.
+
+            For requests:
+            * Addresses in submitted ranges must not already be actively assigned.
+            * Submitting values replaces any existing values.
+            * Submitting an empty array removes any existing values.
+            * Omitting this property results in no change to existing values.
+          items:
+            type: string
+            format: ip
+          example:
+          - 10.0.0.64/26
+          - fd04:495a:691c:971c::1:0/112
     LinodeConfigInterfaces:
       type: array
       items:
         $ref: '#/components/schemas/LinodeConfigInterface'
+      minItems: 1
+      maxItems: 3
+      uniqueItems: true
       required:
       - purpose
       description: |
-        An array of Network Interfaces to add to this Linode's Configuration Profile.
-
-        Up to three interface objects can be entered in this array. The position in the array determines the interface to which the settings apply:
+        An array of Network Interfaces to add to this Linode's Configuration Profile. At least one and up to three Interface objects can exist in this array. The position in the array determines which of the Linode's network Interfaces is configured:
 
         - First [0]:  eth0
         - Second [1]: eth1
         - Third [2]:  eth2
 
-        When updating a Linode's interfaces, *each interface must be redefined*. An empty interfaces array results in a default public interface configuration only.
+        When updating a Linode's Interfaces, *each Interface must be redefined*. An empty `interfaces` array results in a default `public` type Interface configuration only.
 
-        If no public interface is configured, public IP addresses are still assigned to the Linode but will not be usable without manual configuration.
+        If no public Interface is configured, public IP addresses are still assigned to the Linode but will not be usable without manual configuration.
 
-        **Note:** Changes to Linode interface configurations can be enabled by rebooting the Linode.
+        **Note:** Changes to Linode Interface configurations can be enabled by rebooting the Linode.
 
-        **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
-        If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
-        the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
-        you will be prompted to select a different data center or contact support.
+        `vpc` details
 
-        **Note:** See the [VLANs Overview](/docs/products/networking/vlans/#technical-specifications) guide to view additional specifications and limitations.
+        See the [VPC documentation](/docs/products/networking/vpc/#technical-specifications) guide for its specifications and limitations.
+
+        `vlan` details
+
+        - Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions. If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center, the migration or cloning will not initiate. If a Linode cannot be migrated or cloned because of an incompatibility, you will be prompted to select a different data center or contact support.
+        - See the [VLANs Overview](/docs/products/networking/vlans/#technical-specifications) guide to view additional specifications and limitations.
+      example:
+      - {
+          "id": 101,
+          "purpose": "public",
+          "ipam_address": null,
+          "label": null,
+          "primary": false,
+          "vpc_id": null,
+          "subnet_id": null,
+          "ipv4": null
+        }
+      - {
+          "id": 102,
+          "purpose": "vlan",
+          "ipam_address": "10.0.0.1/24",
+          "label": "vlan-1",
+          "primary": false,
+          "vpc_id": null,
+          "subnet_id": null,
+          "ipv4": {
+            "vpc": "10.0.0.2",
+            "nat_1_1": null
+          }
+        }
+      - {
+          "id": 103,
+          "purpose": "vpc",
+          "ipam_address": null,
+          "label": null,
+          "primary": true,
+          "vpc_id": 111,
+          "subnet_id": 101,
+          "ipv4": {
+            "vpc": "10.0.1.2",
+            "nat_1_1": "203.0.113.2"
+          }
+        }
     LinodeRequest:
       type: object
       description: Common properties for creating and rebuilding Linodes.
@@ -22941,8 +24758,10 @@ components:
         price:
           type: object
           readOnly: true
-          description: >
-            Cost in US dollars, broken down into hourly and monthly charges.
+          description: |
+            The default cost of provisioning this Linode Type. Prices are in US dollars, broken down into hourly and monthly charges.
+
+            Certain Regions have different prices from the default. For Region-specific prices, see `region_prices`.
           properties:
             hourly:
               type: number
@@ -22954,6 +24773,23 @@ components:
               description: Cost (in US dollars) per month.
               example: 20
               x-linode-cli-display: 10
+        region_prices:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The Region ID for these prices.
+                example: us-east
+              hourly:
+                type: number
+                description: Cost (in US dollars) per hour for this Region.
+                example: 0.036
+              monthly:
+                type: number
+                description: Cost (in US dollars) per month for this Region.
+                example: 24
         addons:
           type: object
           readOnly: true
@@ -22969,7 +24805,10 @@ components:
               properties:
                 price:
                   type: object
-                  description: Cost of enabling Backups for this Linode Type.
+                  description: |
+                    The default cost of enabling Backups for this Linode Type. Prices are in US dollars, broken down into hourly and monthly charges.
+
+                    Certain Regions have different prices from the default. For Region-specific prices, see `region_prices`.
                   properties:
                     hourly:
                       type: number
@@ -22981,6 +24820,23 @@ components:
                       description: >
                         The cost (in US dollars) per month to add Backups service.
                       example: 5
+                region_prices:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The Region ID for these prices.
+                        example: us-east
+                      hourly:
+                        type: number
+                        description: Cost (in US dollars) per hour to add Backups service in this Region.
+                        example: 0.0096
+                      monthly:
+                        type: number
+                        description: Cost (in US dollars) per month to add Backups service in this Region.
+                        example: 6
         network_out:
           x-linode-filterable: true
           type: integer
@@ -23029,7 +24885,7 @@ components:
           description: >
             The number of GPUs this Linode Type offers.
           example: 0
-          x-linode-cli-display: 11
+          x-linode-cli-display: 6.5
     LKECluster:
       type: object
       description: A Kubernetes cluster.
@@ -23088,7 +24944,7 @@ components:
             and the latest supported patch version will be deployed.
           x-linode-filterable: true
           x-linode-cli-display: 4
-          example: "1.25"
+          example: "1.27"
         control_plane:
           type: object
           description: >
@@ -23290,7 +25146,7 @@ components:
             A Kubernetes version number available for deployment
             to a Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version.
-          example: "1.25"
+          example: "1.27"
     LongviewClient:
       type: object
       description: >
@@ -25738,10 +27594,9 @@ components:
           minLength: 1
           maxLength: 65000
           example: >
-            I'm having trouble setting the root password on my Linode.
+            I am having trouble setting the root password on my Linode.
             I tried following the instructions but something is not
-            working and I'm not sure what I'm doing wrong. Can you please
-            help me figure out how I can reset it?
+            working. Can you please help me figure out how I can reset it?
           x-linode-cli-display: 5
         entity:
           type: object
@@ -25972,6 +27827,11 @@ components:
 
             Requires a specified `region` to identify the VLAN.
           example: null
+        vpc_id:
+          type: integer
+          description: >
+            The ID of the VPC this ticket is regarding, if relevant.
+          example: null
         region:
           type: string
           description: |
@@ -25981,14 +27841,15 @@ components:
           example: null
     Transfer:
       type: object
-      description: >
-        An object representing your network utilization for the current month,
-        in Gigabytes.
+      description: |
+        An object representing your network utilization for the current month, in Gigabytes.
+
+        Certain Regions have separate utilization quotas and rates. For Region-specific network utilization data, see `region_transfers`.
       properties:
         billable:
           type: integer
           readOnly: true
-          description: >
+          description: |
             The amount of your transfer pool that is billable this billing cycle.
           example: 0
           x-linode-cli-display: 3
@@ -26006,6 +27867,33 @@ components:
             The amount of network usage you have used this billing cycle.
           example: 2
           x-linode-cli-display: 2
+        region_transfers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The Region ID for this network utilization data.
+                example: us-east
+              billable:
+                type: integer
+                readOnly: true
+                description: |
+                  The amount of your transfer pool that is billable this billing cycle for this Region.
+                example: 0
+              quota:
+                type: integer
+                readOnly: true
+                description: >
+                  The amount of network usage allowed this billing cycle for this Region.
+                example: 5010
+              used:
+                type: integer
+                readOnly: true
+                description: >
+                  The amount of network usage you have used this billing cycle for this Region.
+                example: 1
     Tag:
       type: object
       description: >
@@ -26546,6 +28434,156 @@ components:
           description: The storage type of this Volume.
           example: nvme
           readOnly: true
+    VPC:
+      type: object
+      description: An object describing a VPC belonging to the Account.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          x-linode-filterable: true
+          description: The unique ID of the VPC.
+          example: 123
+          x-linode-cli-display: 1
+        label:
+          type: string
+          minLength: 1
+          maxLength: 64
+          x-linode-filterable: true
+          description: |
+            The VPC's label, for display purposes only.
+
+            * Needs to be unique among the Account's VPCs.
+            * Can only contain ASCII letters, numbers, and hyphens (`-`). You can't use two consecutive hyphens (`--`).
+          example: cool-vpc
+          x-linode-cli-display: 2
+        description:
+          type: string
+          maxLength: 255
+          default: ""
+          description: A written description to help distinguish the VPC.
+          example: "A description of my VPC."
+          x-linode-cli-display: 3
+        region:
+          type: string
+          x-linode-filterable: true
+          description: The Region for the VPC.
+          example: us-east
+          x-linode-cli-display: 4
+        subnets:
+          type: array
+          description: A list of subnets associated with the VPC.
+          items:
+            $ref: '#/components/schemas/VPCSubnet'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          x-linode-filterable: true
+          description: The date-time of VPC creation.
+          example: '2023-07-11T00:00:00'
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          x-linode-filterable: true
+          description: The date-time of the most recent VPC update.
+          example: '2023-09-11T00:00:00'
+    VPCSubnet:
+      type: object
+      description: An object describing a VPC Subnet.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          x-linode-filterable: true
+          description: The unique ID of the VPC Subnet.
+          example: 456
+          x-linode-cli-display: 1
+        label:
+          type: string
+          minLength: 1
+          maxLength: 64
+          x-linode-filterable: true
+          description: |
+            The VPC Subnet's label, for display purposes only.
+
+            * Must be unique among the VPC's Subnets.
+            * Can only contain ASCII letters, numbers, and hyphens (`-`). You can't use two consecutive hyphens (`--`).
+          example: cool-vpc-subnet
+          x-linode-cli-display: 2
+        ipv4:
+          type: string
+          format: ip
+        #  nullable: true
+          description: |
+            IPv4 range in CIDR canonical form.
+
+            * The range must belong to a private address space as defined in [RFC1918](https://datatracker.ietf.org/doc/html/rfc1918).
+            * Allowed prefix lengths: 1-29.
+            * The range must not overlap with 192.168.128.0/17.
+            * The range must not overlap with other Subnets on the same VPC.
+          example: 10.0.1.0/24
+          x-linode-cli-display: 3
+        # ipv6:
+        #   type: string
+        #   format: ip
+        #   nullable: true
+        #   description: |
+        #     IPv6 range in CIDR canonical form.
+
+        #     * A VPC Subnet requires either `ipv4`, `ipv6`, or both.
+        #     * In requests, only the prefix length is allowed, for example: `/64`. The address range is then automatically assigned.
+        #     * Allowed prefix lengths: 64-125.
+        #     * The range must not overlap with other Subnets on the same VPC.
+        #   example: fd04:495a:691c:971c:0000:0000:0000:0000/64
+        #   x-linode-cli-display: 4
+        linodes:
+          type: array
+          description: |
+            An array of Linode IDs assigned to the VPC Subnet.
+
+            A Linode is assigned to a VPC Subnet if it has a Configuration Profile with a `vpc` purpose interface with the subnet's `subnet_id`. Even if the Configuration Profile is not active, meaning the Linode does not have access to the Subnet, the Linode still appears in this array.
+          readOnly: true
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: ID of a Linode assigned to the VPC Subnet.
+                example: 111
+              interfaces:
+                type: array
+                description: An array of Interfaces assigned to the Linode.
+                items:
+                  type: object
+                  properties:
+                    active:
+                      type: boolean
+                      description: |
+                        Returns `true` if the Interface is in use, meaning that the Linode was powered on using the Configuration Profile to which the Interface belongs. Otherwise returns `false`.
+                      example: true
+                    id:
+                      type: integer
+                      description: ID of the interface
+                      example: 421
+          x-linode-cli-display: 5
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          x-linode-filterable: true
+          description: The date-time of VPC Subnet creation.
+          example: '2023-07-11T00:00:00'
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          x-linode-filterable: true
+          description: The date-time of the most recent VPC Subnet update.
+          example: '2023-09-11T00:00:00'
     WarningObject:
       type: object
       description: >
@@ -26564,6 +28602,8 @@ components:
 tags:
   - name: Account
     description: Use the Account endpoints to manage user settings, billing, and payments. You can also initiate and maintain OAuth client application authentication, enable the Linode Managed service, and create new users on your account.
+  - name: Beta Programs
+    description: Use the Beta Programs endpoint to view information to view information about available beta programs. To sign up for eligible beta programs, use the [Beta Program Join]() Account command.
   - name: Databases
     description: Managed Databases is Linode's fully-managed, high-performance database service. Use the Managed Databases endpoints to create and manage database clusters.
   - name: Domains
@@ -26598,3 +28638,5 @@ tags:
     description: Tags allow you to organize and group your various Linode services. Use the Tags endpoints to create, assign, and delete your account tags.
   - name: Volumes
     description: Volumes is Linode's block storage service. Use the Volumes endpoints to create, attach, and manage your account Volumes.
+  - name: VPCs
+    description: Use the VPCs endpoints to view, create, and manage Virtual Private Cloud (VPC) and VPC Subnet resources.

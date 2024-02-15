@@ -83,7 +83,7 @@ The first command returns a list of all files in the entire file system that end
 
 ## Use `grep` to Find a File in Linux Based on Content
 
-The `find` command can only filter the directory hierarchy based on a file's name and metadata. If you need to search based on the file's content, use a tool like [`grep`](/docs/guides/how-to-grep-for-text-in-files/). Consider the following example:
+The `find` command can only filter the directory hierarchy based on a file's name and metadata. If you need to search based on the file's content, use a tool like [`grep`](/docs/guides/how-to-use-grep-command/). Consider the following example:
 
     find . -type f -exec grep "example" '{}' \; -print
 
