@@ -239,6 +239,8 @@ github.com/linode/linode-docs-theme v0.0.0-20240205142344-c644f7582cd2 h1:bc59XX
 github.com/linode/linode-docs-theme v0.0.0-20240205142344-c644f7582cd2/go.mod h1:lwgv6nLiumzZSQjePbJfXEkbPitKxwgSkSaRnw7j6qk=
 github.com/linode/linode-docs-theme v0.0.0-20240205205531-624134aa9cbe h1:kdDUp6Rj84tbwZeeUBZVYEAUUvwpMWRtx7yS1Zh+FJo=
 github.com/linode/linode-docs-theme v0.0.0-20240205205531-624134aa9cbe/go.mod h1:pLFUnAD7hJW1C2wheL3HqtWIN6Xy0kywHHf33YyfUTI=
+github.com/linode/linode-docs-theme v0.0.0-20240220192940-74515c307486 h1:F/AAEvsAzdEbRF+BqKxSVnls7Euco+F3TfiEPV40MM0=
+github.com/linode/linode-docs-theme v0.0.0-20240220192940-74515c307486/go.mod h1:pLFUnAD7hJW1C2wheL3HqtWIN6Xy0kywHHf33YyfUTI=
 github.com/linode/linode-website-partials v0.0.0-20221205205120-b6ea1aaa59fb/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20221222200538-99862e429110/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20230201145731-a8703d0a954a/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=

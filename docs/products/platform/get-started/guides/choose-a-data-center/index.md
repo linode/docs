@@ -4,7 +4,7 @@ description: 'This article gives you information to help you determine which dat
 keywords: ["data center", "datacenter", "dc", "speed"]
 tags: ["linode platform"]
 published: 2018-10-31
-modified: 2024-01-03
+modified: 2024-02-14
 modified_by:
   name: Linode
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
@@ -38,6 +38,7 @@ An important consideration when choosing a data center is the availability of sp
 | Jakarta        | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | Los Angeles    | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Madrid         | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | Miami          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | Milan          | ✔ | ✔ |   | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |

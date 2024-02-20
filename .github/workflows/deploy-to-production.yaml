@@ -18,7 +18,8 @@ on:
 #
 # This workflow runs `hugo` to build the site inside the `docs-repo` folder.
 # The site is rendered into the `docs-repo/public/` directory. The workflow
-# rsyncs this folder is over to the destination web server.
+# uses SFTP to upload a tarball of this folder over to the destination web
+# servers.
 #
 # We check out the linode-docs-theme repo because it contains a
 # `linode_algolia_admin` tool that we use to update the Algolia search indices.

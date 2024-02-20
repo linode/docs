@@ -3,7 +3,7 @@ description: "Cloudron is a platform that makes it easy to install, manage and s
 keywords: ['cloudron','web apps','platform','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-12-15
-modified: 2022-05-17
+modified: 2023-01-30
 modified_by:
   name: Linode
 title: "Deploy Cloudron through the Linode Marketplace"
@@ -31,8 +31,10 @@ Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
+
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 ## Getting Started after Deployment
 
