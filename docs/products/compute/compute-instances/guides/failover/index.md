@@ -3,7 +3,7 @@ title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
-modified: 2024-02-14
+modified: 2024-02-20
 modified_by:
   name: Linode
 aliases: ['/guides/ip-failover/']
@@ -83,14 +83,11 @@ If your data center supports the legacy method (ARP), use the [Configuring IP Fa
 
 To configure failover, complete each section in the order shown:
 
-- [Why Should I Implement Failover?](#why-should-i-implement-failover)
-- [IP Sharing Availability](#ip-sharing-availability)
-- [IP Address Failover Methods](#ip-address-failover-methods)
-- [Configure Failover](#configure-failover)
-  - [Create and Share the Shared IP Address](#create-and-share-the-shared-ip-address)
-  - [Add the Shared IP to the Networking Configuration](#add-the-shared-ip-to-the-networking-configuration)
-  - [Install and Configure Lelastic](#install-and-configure-lelastic)
-- [Test Failover](#test-failover)
+1.  [Create and Share the Shared IP Address](#create-and-share-the-shared-ip-address)
+1.  For *each* Compute Instance:
+    - [Add the Shared IP to the Networking Configuration](#add-the-shared-ip-to-the-networking-configuration)
+    - [Install and Configure Lelastic](#install-and-configure-lelastic)
+1.  [Test Failover](#test-failover)
 
 ### Create and Share the Shared IP Address
 

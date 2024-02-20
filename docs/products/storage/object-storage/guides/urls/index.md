@@ -2,7 +2,7 @@
 description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
 keywords: ['object','storage','bucket']
 published: 2020-01-22
-modified: 2024-02-14
+modified: 2024-02-20
 modified_by:
   name: Linode
 image: AccessingObjectswithLinodeObjectStorage.png
@@ -18,14 +18,12 @@ You're also able to make these files accessible to anyone through their URLs by 
 
 Here are the types of URLs you can use to access buckets and files:
 
-- [Cluster URL (S3 Endpoint)](#cluster-url-s3-endpoint)
+- [Cluster URL](#cluster-url-s3-endpoint)
 - [Bucket URL](#bucket-url)
-  - [View a Bucket's URL through the Cloud Manager](#view-a-buckets-url-through-the-cloud-manager)
-- [File URLs](#file-urls)
-  - [View a File's URL through the Cloud Manager](#view-a-files-url-through-the-cloud-manager)
-- [Signed URLs](#signed-urls)
-- [Website URLs](#website-urls)
-- [Custom URLs](#custom-urls)
+- [File URL](#file-urls)
+- [Signed URL](#signed-urls)
+- [Website URL](#website-urls)
+- [Custom URL](#custom-urls)
 
 ## Cluster URL (S3 Endpoint)
 
