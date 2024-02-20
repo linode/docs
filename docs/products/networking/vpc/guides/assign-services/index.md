@@ -2,6 +2,7 @@
 title: "Assign a Compute Instance to a VPC"
 description: "Learn how to add Compute Instances to subnets on Akamai's VPC solution."
 published: 2024-01-30
+modified: 2024-02-14
 authors: ["Linode"]
 ---
 
@@ -17,7 +18,7 @@ There are three main ways to assign a Compute Instance to a VPC:
 
 - VPCs, along with VLANs and the public internet, are configured as network interfaces within a Compute Instance's configuration profile. These network interfaces are configured automatically when creating a Compute Instance with a VPC or when interacting with the VPC directly to assign and remove existing Compute Instances. You can also edit the Configuration Profile directly to manually configure these network interfaces to suit specific use cases. Manually editing a Configuration Profile on a Compute Instance is typically the preferred way to assign a VPC to an existing instance.
 
-- VPC resources requiring public internet access should be configured as a 1:1 NAT or should use a manually deployed NAT gateway. It is not recommended to configure a separate network interface with public internet access (in addition to the VPC interface).
+- VPC resources requiring public internet access should be configured as a 1:1 NAT or use a [forward proxy](/docs/guides/forward-proxy-for-vpc/). It is not recommended to configure a separate network interface with public internet access (in addition to the VPC interface).
 
 - Compute Instances can only be assigned to a single subnet of a single VPC, though they can communicate with other instances on any subnet within the same VPC. Multiple VPC interfaces on an instance are not allowed.
 
@@ -36,6 +37,8 @@ When assigning both new and existing Compute Instances to a VPC, the following s
     When manually entering the IP address, do not use the first two or last two IP addresses within the subnet's defined IPv4 range. These are non-host IP addresses and are set aside for routing and other features.
 
 -   **Public internet connectivity:** By default, Compute Instances with a VPC cannot communicate over the public internet. To facilitate internet access, enable the *Assign a public IPv4 address for this Linode* option, which configures a 1:1 NAT on the VPC interface. This enables routing internet traffic over your Compute Instance's public IP addresses.
+
+-   **Additional IPv4 ranges:** You can assign additional IPv4 ranges that can be used to reach this Compute Instance and/or the services running on it. For example, you may wish to assign additional IPv4 ranges to directly expose Docker containers to the VPC.
 
 These settings are referenced in the workflows below.
 
@@ -61,7 +64,7 @@ VPCs have their own Cloud Manager workflows and API endpoints that allow you to 
 
 1.  Click the **Assign Linode** button to add the instance to the subnet.
 
-1.  You can review the list of all instances assigned to that subnet. Once you have added all instances you wish to assign, click the **Done** button.
+1.  You can review and change the list of all instances assigned to that subnet. You can also assign additional IPv4 ranges. Once you are satisfied with your changes, click the **Done** button.
 
 1.  Restart each added Compute Instance to automatically configure the VPC interface on the system.
 
@@ -90,6 +93,8 @@ If you wish for an instance to be configured on a VPC, the _VPC_ option needs to
     - **Auto-Assign IPv4 address:** By default, an IPv4 address will be automatically generated for the instance on the subnet’s defined CIDR range. If you want to manually assign an IP address, uncheck the **Auto-assign a VPC IPv4 address for this Linode** option and enter your custom IPv4 address. This address must still be within the subnet’s IP range.
 
     - **Public IPv4 address:** If you wish to enable public internet access on this new instance, check the **Assign a public IPv4 address for this Linode** option. By default, this is unchecked and you will not be able to access the internet from this instance.
+
+    -   **Additional IPv4 ranges:** You can assign additional IPv4 ranges that can be used to reach this Compute Instance and/or the services running on it. For example, you may wish to assign additional IPv4 ranges to directly expose Docker containers to the VPC.
 
     ![Screenshot of a VPC network interface in the Configuration Profile of a Compute Instance](vpc-network-interface.jpg)
 

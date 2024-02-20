@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - 'main'
-      - 'cicd-sftp-update'
 
 # This workflow builds the site with Hugo, uploads it to a staging web
 # server, and updates the sandbox Algolia app to reflect the content in the
@@ -23,7 +22,8 @@ on:
 #
 # This workflow runs `hugo` to build the site inside the `docs-repo` folder.
 # The site is rendered into the `docs-repo/public/` directory. The workflow
-# rsyncs this folder is over to the destination web server.
+# uses SFTP to upload a tarball of this folder over to the destination web
+# server.
 #
 # We check out the linode-docs-theme repo because it contains a
 # `linode_algolia_admin` tool that we use to update the Algolia search indices.
@@ -370,8 +370,8 @@ jobs:
             echo "Commit hash of workflow run is $GITHUB_SHA, but commit hash reported by server is $CURRENT_GIT_COMMIT_HASH.  Deployment to server has failed. Please inspect workflow logs and server logs."
             exit 1
           fi
-
         else
+          rm cacert.pem
           echo "No gitcommithash.txt exists on server after deployment. Deployment to server has failed. Please inspect workflow logs and server logs."
           exit 1
         fi
