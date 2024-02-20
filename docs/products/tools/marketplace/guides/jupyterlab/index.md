@@ -1,17 +1,17 @@
 ---
+title: "Deploy JupyterLab through the Linode Marketplace"
 description: "Deploy JupyterLab on a Linode Compute Instance. Jupyter is a web-based interactive development environment for notebooks, code, and data."
-keywords: ['productivity','notebook','data science']
-tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2024-01-30
+published: 2024-02-20
 modified_by:
   name: Linode
-title: "Deploy JupyterLab through the Linode Marketplace"
+keywords: ['productivity','notebook','data science']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Project Jupyter](https://jupyter.org/)'
 authors: ["Linode"]
 ---
 
-[JupyterLab](https://jupyter.org/) stands as the cutting-edge web-based interactive development environment, catering to notebooks, code, and data. With a flexible interface, users can easily configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning. 
+[JupyterLab](https://jupyter.org/) stands as the cutting-edge web-based interactive development environment, catering to notebooks, code, and data. With a flexible interface, users can easily configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning.
 
 ## Deploying a Marketplace App
 
@@ -46,9 +46,9 @@ Launch your web browser and navigate to the custom domain you set during deploym
 
 ## Obtaining the Jupyter Token
 
-By default, Jupyter issues a token for authentication. The Jupyter access token was automatically generated during the initial install process and is stored in the `/root/.credentials` file. To view the default token, log in to your Compute Instance either through the [LISH Console](https://www.linode.com/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, and check the contents of the file:
+By default, Jupyter issues a token for authentication. The Jupyter access token was automatically generated during the initial install process and is stored in the `/root/.credentials` file. To view the default token, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, and check the contents of the file:
 
-```bash
+```command
 cat /root/.credentials
 ```
 

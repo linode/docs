@@ -1,12 +1,11 @@
 ---
+title: "Deploy NATS through the Linode Marketplace"
 description: "Deploy NATS on a Linode Compute Instance. NATS is a connective technology responsible for addressing, discovery and exchanging of messages that drive the common patterns in distributed systems; asking and answering questions, aka services/microservices, and making and processing statements, or stream processing."
-
-keywords: ['cloud native','microservices','distributed systems', 'PubSub']
-tags: ["marketplace", "linode platform", "cloud manager"]
-published: 
+published: 2024-02-20
 modified_by:
   name: Linode
-title: "Deploy NATS through the Linode Marketplace"
+keywords: ['cloud native','microservices','distributed systems', 'PubSub']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[NATS](https://nats.io/)'
 authors: ["Linode"]
@@ -50,12 +49,13 @@ authors: ["Linode"]
 
 To monitor the NATS messaging system, nats-server provides a lightweight HTTP server on a dedicated monitoring port. The monitoring server provides several endpoints, providing statistics and other information.
 
-Open your web browser and go to the custom domain you specified during deployment or the rDNS domain of your Compute Instance (e.g., `192-0-2-1.ip.linodeusercontent.com`). This will take you to the NATS monitoring page. Refer to the [Monitoring NATS](https://docs.nats.io/running-a-nats-service/nats_admin/monitoring) guide for details on the different endpoints, statistics and other info you have access to. 
+Open your web browser and go to the custom domain you specified during deployment or the rDNS domain of your Compute Instance (e.g., `192-0-2-1.ip.linodeusercontent.com`). This will take you to the NATS monitoring page. Refer to the [Monitoring NATS](https://docs.nats.io/running-a-nats-service/nats_admin/monitoring) guide for details on the different endpoints, statistics and other info you have access to.
 
 ## Obtaining the NATS users passwords.
 
-By default, this NATS deployment creates 2 users, one named "example" and another system user named "system". The passwords for these users are generated during the initial install process. To obtain these password, log in to your Compute Instance either through the [LISH Console](https://www.linode.com/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, then just read the /root/.credentials file, ie: 
-```
+By default, this NATS deployment creates 2 users, one named "example" and another system user named "system". The passwords for these users are generated during the initial install process. To obtain these password, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, then just read the /root/.credentials file, ie:
+
+```command
 cat /root/.credentials
 ```
 This file will contain the two credentials needed for those users.
