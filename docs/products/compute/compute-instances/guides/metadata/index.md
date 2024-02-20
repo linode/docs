@@ -3,7 +3,7 @@ title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
-modified: 2023-10-22
+modified: 2024-02-14
 modified_by:
   name: Linode
 authors: ["Linode"]
@@ -32,7 +32,7 @@ Similar to Metadata, Linode's [StackScripts](/docs/products/tools/stackscripts/)
 
 Akamai's Metadata service is available in select data centers. Additionally, user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
 
--   **Data centers:** Amsterdam (Netherlands), Chennai (India), Chicago (USA), Jakarta (Indonesia), Los Angeles (USA), Miami (USA), Milan (Italy), Osaka (Japan), Paris (France), São Paulo (Brazil), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
+-   **Data centers:** Amsterdam (Netherlands), Chennai (India), Chicago (USA), Jakarta (Indonesia), Los Angeles (USA), Madrid (Spain), Miami (USA), Milan (Italy), Osaka (Japan), Paris (France), São Paulo (Brazil), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
 
 -   **Distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS, Debian 11
 
