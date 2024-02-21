@@ -273,7 +273,7 @@ This section takes you through the process of creating a new guide, using the to
 
     Any images that you include in the guide should be added inside the same directory as the new `index.md` file. Images should be linked to using their filename as the relative URL: `![Image Title](image.png)`. See the [Images](https://www.linode.com/docs/guides/linode-writers-formatting-guide/#images) section of the writer's formatting guide.
 
-1.  Stage your changes to your local branch. As a best practice, use a command like `git status` to verify your working out of the correct branch and view a list of files that have been change. If the output shows only the files that you've explicitly edited, you can stage them all at once using `git add .` Otherwise, add each one individually by referencing the file path in that command.
+1.  Stage your changes to your local branch. As a best practice, use a command like `git status` to verify you're working out of the correct branch and view a list of files that have been change. If the output shows only the files that you've explicitly edited, you can stage them all at once using `git add .` Otherwise, add each one individually by referencing the file path in that command.
 
         git add docs/guides/web-servers/nginx/how-to-install-nginx-on-debian/
 
