@@ -261,7 +261,7 @@ When creating your script, use a different shell session than the one running yo
 An alternative option for creating locustfiles is using a tool like [har2locust](https://github.com/SvenskaSpel/har2locust). har2locust works by converting browser recordings (`.har` files) to locustfiles using browser developer tools along with a [jinja2 template](https://github.com/SvenskaSpel/har2locust/tree/main/har2locust/locust.jinja2) to define output.
 {{< /note >}}
 
-1.  While logged in to your instance (in a shell session **not** running your Flask virtual environment (`venv`)), create an `example-locust-testing/` directory in the current user's home directory, and then navigate into the new directory. This directory will store your `locustfile.py` script.
+1.  While logged into your instance (in a shell session **not** running your Flask virtual environment (`venv`)), create an `example-locust-testing/` directory in the current user's home directory, and then navigate into the new directory. This directory will store your `locustfile.py` script.
 
     ```command
     mkdir ~/example-locust-testing/
