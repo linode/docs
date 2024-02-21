@@ -5,7 +5,7 @@ description: "Locust is an open-source tool for running distributed load tests b
 keywords: ['locust load testing tutorial', 'locust example', 'locust download']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
-published: 2024-02-14
+published: 2024-02-21
 modified_by:
   name: Nathaniel Stickman
 external_resources:
@@ -24,24 +24,24 @@ Typically, a load test lets you model user behavior and run that behavior agains
 
 ## Installation Methods
 
-The method you choose to install Locust depends on your load testing needs. Options include:
+There are a few methods available for installing Locust. These are outlined below. The method you choose depends on your load testing needs.
 
-- Single instance installation
+- Single instance installation (covered in this guide)
 - [Distributed deployment](https://docs.locust.io/en/stable/running-distributed.html) across multiple instances
 - Using Locust's [Docker image](https://docs.locust.io/en/stable/running-in-docker.html)
 - Provisioning Locust using [Terraform](https://docs.locust.io/en/stable/running-cloud-integration.html)
 
-The installation method covered in this guide for a single Compute Instance. See [Locust's official documentation](https://docs.locust.io/en/stable/index.html) for more installation details and configuration options.
+The installation method covered in this guide is for a single Compute Instance. See [Locust's official documentation](https://docs.locust.io/en/stable/index.html) for more installation details and configuration options.
 
 ### Hardware Requirements
 
-The amount of requests Locust can run depend on the hardware itself. As a general rule, Locust recommends [**one Locust process per CPU core**](https://docs.locust.io/en/stable/running-distributed.html#running-distributed). See our [Pricing page](https://www.linode.com/pricing/) for available plan options and specifications.
+The amount of requests Locust can run depends on the hardware itself. As a general rule, Locust recommends [**one Locust process per CPU core**](https://docs.locust.io/en/stable/running-distributed.html#running-distributed). See our [Pricing page](https://www.linode.com/pricing/) for available plan options and specifications.
 
-Locust also includes multiple HTTP clients for managing throughput while testing. By default, Locust uses the [python-requests](http://www.python-requests.org/) client, but it also comes with FastHttpUser (which uses the [geventhttpclient](https://github.com/gwik/geventhttpclient/) client) for increasing throughput while using less CPU. See Locust's documentation on using FastHttpUser here: [Increase performance with a faster HTTP client](https://docs.locust.io/en/stable/increase-performance.html#increase-performance-with-a-faster-http-client).
+Locust also includes multiple HTTP clients for managing throughput while testing. By default, Locust uses the [python-requests](http://www.python-requests.org/) client, but it also comes with FastHttpUser (which uses the [geventhttpclient](https://github.com/gwik/geventhttpclient/) client) for increasing throughput while using less CPU resources. See Locust's documentation on using FastHttpUser: [Increase performance with a faster HTTP client](https://docs.locust.io/en/stable/increase-performance.html#increase-performance-with-a-faster-http-client).
 
 ## How to Install Locust on a Compute Instance
 
-Since Locust is built around Python technologies, its installation requires Python to be installed on your system first. If you already have Python and pip installed, skip step 2 below.
+Since Locust is built around Python, its installation requires Python to be installed on your system first. If you already have Python and pip installed, skip step 2 below.
 
 1.  Install any available system and repository updates:
 
@@ -72,7 +72,7 @@ Since Locust is built around Python technologies, its installation requires Pyth
     pip3 install locust
     ```
 
-1.  Exit and reopen your terminal session. Locust should be ready and available to start using. You can verify the successful installation using the `locust` command with the `-V` flag to check the installed Locust version.
+1.  Exit and reopen your terminal session. Locust should be ready and available to use. You can verify the successful installation using the `locust` command with the `-V` flag to check the installed Locust version.
 
     ```command
     locust -V
@@ -104,7 +104,7 @@ Since Locust is built around Python technologies, its installation requires Pyth
 
 ## Load Testing with Locust
 
-In order to start load-testing your applications with Locust, you need to build a Python script defining a Locust test plan. This is called a [*locustfile*](https://docs.locust.io/en/stable/writing-a-locustfile.html).
+To start load testing your applications with Locust, you need to build a Python script defining a Locust test plan. This is called a [*locustfile*](https://docs.locust.io/en/stable/writing-a-locustfile.html).
 
 Follow the instructions below to run a basic load test against an example application using an example locustfile.
 
@@ -210,7 +210,7 @@ This guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask
     pip install python-dotenv
     ```
 
-1.  Using a text editor, create a `.flaskenv` file in the project's base directory, and paste the file contents shown below into the file. This stores the environment variables needed to run the Flask app that identify the initial application file and its current environment.
+1.  Using a text editor, create a `.flaskenv` file in the project's base directory and paste the file contents shown below into the file. This stores the environment variables needed to run the Flask app that identify the initial application file and its current environment.
 
     ```file {title=".flaskenv" lang="sh"}
     FLASK_APP=flask_app/__init__.py
@@ -223,7 +223,7 @@ This guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask
     flask run --host 0.0.0.0
     ```
 
-    You should see output similar to the following, with `192.0.2.0` replaced by your instance's IP address.
+    You should see output similar to the following, with `192.0.2.17` replaced by your instance's IP address.
 
     ```output
      * Serving Flask app 'flask_app/__init__.py'
@@ -231,7 +231,7 @@ This guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask
     WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
      * Running on all addresses (0.0.0.0)
      * Running on http://127.0.0.1:5000
-     * Running on http://192.0.2.0:5000
+     * Running on http://192.0.2.17:5000
     Press CTRL+C to quit
     ```
 
@@ -239,9 +239,9 @@ This guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask
 
 The steps below show you how to navigate to your example application's web interface and add example blog content. This helps provide context while familiarizing yourself with the Locust test plan defined later on.
 
-1.  In your browser, access the web page for your example application by navigating to port `5000` on your server's public IP address using the URL output by Flask above (`http://{{< placeholder "192.0.2.0" >}}:5000`). Replace {{< placeholder "192.0.2.0" >}} with your instance's IP address.
+1.  In your browser, access the web page for your example application by navigating to the URL in the output above: `http://{{< placeholder "192.0.2.17" >}}:5000`. Replace {{< placeholder "192.0.2.17" >}} with your instance's IP address.
 
-1.  Select **/register** from the top menu, and create a new user. Once you create your user, you will be automatically logged in. Save your credetials for logging in later.
+1.  Select **/register** from the top menu, and create a new user. Once you create your user, you will automatically be logged in. Save these credentials.
 
 1.  Use the **/new post** option from the top menu to create a new blog post for the example site:
 
@@ -258,10 +258,10 @@ With an application in place, follow the steps below to create a basic locustfil
 When creating your script, use a different shell session than the one running your Flask virtual environment.
 
 {{< note title="Using har2locust for locustfiles" >}}
-An alternative option for creating locustfiles is using a tool like [har2locust](https://github.com/SvenskaSpel/har2locust). har2locust works by converting browser recordings — `.har` files — to locustfiles using browser developer tools along with a [jinja2 template](https://github.com/SvenskaSpel/har2locust/tree/main/har2locust/locust.jinja2) to define output.
+An alternative option for creating locustfiles is using a tool like [har2locust](https://github.com/SvenskaSpel/har2locust). har2locust works by converting browser recordings (`.har` files) to locustfiles using browser developer tools along with a [jinja2 template](https://github.com/SvenskaSpel/har2locust/tree/main/har2locust/locust.jinja2) to define output.
 {{< /note >}}
 
-1.  While logged into your instance (in a shell session **not** running your Flask virtual environment (`venv`)), create an `example-locust-testing/` directory in the current user's home directory, and then navigate into the new directory. This directory will store your `locustfile.py` script.
+1.  While logged in to your instance (in a shell session **not** running your Flask virtual environment (`venv`)), create an `example-locust-testing/` directory in the current user's home directory, and then navigate into the new directory. This directory will store your `locustfile.py` script.
 
     ```command
     mkdir ~/example-locust-testing/
@@ -292,7 +292,7 @@ An alternative option for creating locustfiles is using a tool like [har2locust]
 
     When you run your Locust test, Locust creates an instance of this class for each user in the test run. Each instance gets its own thread and executes each of the class's defined **tasks** (below) in turn.
 
-1.  Within the user class, you can define your the amount of time between each simulated user's tasks using Locust's included `wait_time` method. When defining `wait_time`, make sure it is indented underneath the `class` (see step 8 for reference):
+1.  Within the user class, you can define the amount of time between each simulated user's tasks using Locust's included `wait_time` method. When defining `wait_time`, make sure it is indented underneath the `class` (see step 8 for reference):
 
     ```file {title="locustfile.py" lang="py"}
     wait_time = constant(2)
@@ -302,15 +302,15 @@ An alternative option for creating locustfiles is using a tool like [har2locust]
 
     You have five options when defining the `wait_time`:
 
-    - Leave it undefined by omitting the line entirely: A new task starts immediately after the previous task has been executed.
+    - Leave it undefined by omitting the line entirely. A new task starts immediately after the previous task has been executed.
 
-    - Use the `constant` method: A new task starts only after a given number of seconds have passed after the previous task execution. Example: `wait_time = constant(5)`
+    - Use the `constant` method. A new task starts only after a given number of seconds have passed after the previous task execution. Example: `wait_time = constant(5)`.
 
-    - Use the `between` method: A new task starts only after a random number of seconds between given values have passed from the previous task's execution. Example: `wait_time = between(1, 5)`
+    - Use the `between` method. A new task starts only after a random number of seconds between given values have passed from the previous task's execution. Example: `wait_time = between(1, 5)`.
 
-    - Use the `constant_pacing` method: A new task starts after at least a given number of seconds have passed from the execution of the previous task. Example: `wait_time = constant_pacing(5)`
+    - Use the `constant_pacing` method. A new task starts after at least a given number of seconds have passed from the execution of the previous task. Example: `wait_time = constant_pacing(5)`.
 
-    - Use the `constant_throughput` method: Each task execution waits to fall within a given maximum number of task executions per second. Example: `wait_time = constant_throughput(0.2)`
+    - Use the `constant_throughput` method. Each task execution waits to fall within a given maximum number of task executions per second. Example: `wait_time = constant_throughput(0.2)`.
 
 1.  Also within the user class, each **task** is defined by a method denoted with `@task`. The method below gives the simulated user the task of visiting the website's homepage, giving a baseline. Task lines should live within the `class` and indented.
 
@@ -320,7 +320,7 @@ An alternative option for creating locustfiles is using a tool like [har2locust]
         self.client.get("/")
     ```
 
-1.  The next task method utilizes the two other packages the script imported — `random` and `PyQuery`. Using PyQuery to parse links allows the script to be useful as the application expands, regardless of the number of posts:
+1.  The next task method utilizes the two other packages the script imported: `random` and `PyQuery`. Using PyQuery to parse links allows the script to be useful as the application expands, regardless of the number of posts:
 
     ```file {title="locustfile.py" lang="py"}
     @task
@@ -342,7 +342,7 @@ An alternative option for creating locustfiles is using a tool like [har2locust]
 
     - Makes a random choice between the list of posts and navigates to the post URL contained in the post's heading link
 
-1.  Check to make sure your locustfile looks like the one below, and save your changes. This file is used in the next section to load test your example application.
+1.  Check to make sure your locustfile looks like the one below. Then, save your changes. This file is used in the next section to load test your example application.
 
     ```file {title="locustfile.py" lang="py"}
     from locust import HttpUser, task, constant
@@ -385,34 +385,34 @@ Follow the steps below to start up and access the Locust web UI to run your load
 
 #### Running Your Test From the Web UI
 
-In the steps below, replace {{< placeholder "192.0.2.0" >}} with your instance's IP address.
+In the steps below, replace {{< placeholder "192.0.2.17" >}} with your instance's IP address.
 
-1. Start Locust using the `locust` command. Make sure you are in the directory with your `locustfile.py` file:
+1.  Start Locust using the `locust` command. Make sure you are in the directory with your `locustfile.py` file:
 
     ```command
     locust
     ```
 
-1. In a browser, navigate to Locust's default port (`8089`) on your server's public address. This brings you to the Locust web UI: `http://{{< placeholder "192.0.2.0" >}}:8089`
+1.  In a browser, navigate to Locust's default port (`8089`) on your server's public address. This brings you to the Locust web UI: `http://{{< placeholder "192.0.2.17" >}}:8089`
 
     ![Main page for running a Locust load test](locust-main.jpg)
 
-1. Complete the fields, providing a number of simultaneous simulated users (**Number of users**) to be created for the test along with the number of seconds to space out the creation of the users (**Ramp Up**).
+1.  Complete the fields, providing a number of simultaneous simulated users (**Number of users**) to be created for the test along with the number of seconds to space out the creation of the users (**Ramp Up**).
 
-    In the **Host** field, provide the base URL for your example application: `http://{{< placeholder "192.0.2.0" >}}:5000`
+    In the **Host** field, provide the base URL for your example application: `http://{{< placeholder "192.0.2.17" >}}:5000`
 
-1. Click the **Start Swarm** button to begin the load test. Locust takes you to a monitoring interface, where you can see the test results in real time.
+1.  Click the **Start Swarm** button to begin the load test. Locust takes you to a monitoring interface, where you can see the test results in real-time.
 
     ![Main reporting page within the Locust UI](locust-reporting.jpg)
 
-1. Stop the test using the **Stop** button when you are satisfied. Navigate the web UI to get more details on the test results and to download report data.
+1.  Stop the test using the **Stop** button when you are satisfied. Navigate the web UI to get more details on the test results and to download report data.
 
 #### Running Your Test From the Command Line
 
 In order to run load tests from the command line, use the `locust` command with the `--headless` option to disable the web UI. Specify the `--users` and `--spawn-rate` values as you did with the **Number of users** and **Ramp Up** fields in the web UI:
 
 ```command
-locust --headless --users 10 --spawn-rate 1 --host http://{{< placeholder "192.0.2.0" >}}:5000
+locust --headless --users 10 --spawn-rate 1 --host http://{{< placeholder "192.0.2.17" >}}:5000
 ```
 
 Locust outputs the results directly to the terminal, displaying an updated table every few task executions. You can stop the test with the <kbd>Ctrl</kbd> + <kbd>C</kbd> key combination.
@@ -428,4 +428,4 @@ GET      /post/3            16     0(0.00%) |      5       3      10      4 |   
          Aggregated        171     0(0.00%) |      6       3      18      6 |    6.90        0.00
 ```
 
-Use the `locust --help` command to view available command line-based options for running your load tests, including options for exporting your results.
+Use the `locust --help` command to view the available command-line options for running your load tests, including options for exporting your results.
