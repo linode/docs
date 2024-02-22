@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.171.0
+  version: 4.173.0
   title: Linode API
   license:
     name: Apache 2.0
@@ -3859,6 +3859,19 @@ paths:
                   $ref: '#/components/schemas/DatabaseMySQLRequest/properties/allow_list'
                 updates:
                   $ref: '#/components/schemas/DatabaseMySQL/properties/updates'
+                type:
+                  type: string
+                  description: |
+                    Request re-sizing of your cluster to a Linode Type with more disk space. For example, you could request a Linode Type that uses a higher plan.
+
+                    * Needs to be a Linode Type with more disk space than your current Linode.
+
+                    * Resizing to a larger Linode Type can accrue additional cost. Review the `price` output in the [Types List](/docs/api/linode-types/#types-list) operation for more information.
+
+                    * You can't update the `allow_list` and set a new `type` in the same request.
+
+                    * Any active updates to your cluster need to complete before you can request a resize. The reverse is also true: An active resizing needs to complete before you can perform any other update.
+                  example: g6-standard-1
       responses:
         '200':
           description: Managed Database updated successfully.
@@ -3879,7 +3892,8 @@ paths:
                     "203.0.113.1",
                     "192.0.1.0/24"
                   ],
-                  "updates" = {
+                  "type": "g6-standard-1",
+                  "updates": {
                     "frequency": "monthly",
                     "duration": 3,
                     "hour_of_day": 12,
@@ -3894,6 +3908,7 @@ paths:
             --label example-db \
             --allow_list 203.0.113.1 \
             --allow_list 192.0.1.0/24 \
+            --type g6-standard-1 \
             --updates.frequency monthly \
             --updates.duration 3 \
             --updates.hour_of_day 12 \
@@ -4643,6 +4658,19 @@ paths:
                   $ref: '#/components/schemas/DatabasePostgreSQLRequest/properties/allow_list'
                 updates:
                   $ref: '#/components/schemas/DatabasePostgreSQL/properties/updates'
+                type:
+                  type: string
+                  description: |
+                    Request re-sizing of your cluster to a Linode Type with more disk space. For example, you could request a Linode Type that uses a higher plan.
+
+                    * Needs to be a Linode Type with more disk space than your current Linode.
+
+                    * Resizing to a larger Linode Type can accrue additional cost. Review the `price` output in the [Types List](/docs/api/linode-types/#types-list) operation for more information.
+
+                    * You can't update the `allow_list` and set a new `type` in the same request.
+
+                    * Any active updates to your cluster need to complete before you can request a resize. The reverse is also true: An active resizing needs to complete before you can perform any other update.
+                  example: g6-standard-1
       responses:
         '200':
           description: Managed Database updated successfully.
@@ -4663,7 +4691,8 @@ paths:
                     "203.0.113.1",
                     "192.0.1.0/24"
                   ],
-                  "updates" = {
+                  "type": "g6-standard-1",
+                  "updates": {
                     "frequency": "monthly",
                     "duration": 3,
                     "hour_of_day": 12,
@@ -4678,6 +4707,7 @@ paths:
             --label example-db \
             --allow_list 203.0.113.1 \
             --allow_list 192.0.1.0/24 \
+            --type g6-standard-1 \
             --updates.frequency monthly \
             --updates.duration 3 \
             --updates.hour_of_day 12 \
@@ -8602,7 +8632,7 @@ paths:
               https://api.linode.com/v4/linode/instances/123/ips
       - lang: CLI
         source: >
-          linode-cli linodes 123 ips-list
+          linode-cli linodes ips-list 123
     post:
       x-linode-grant: read_write
       tags:
@@ -14622,7 +14652,7 @@ paths:
       - NodeBalancers
       summary: NodeBalancer Create
       description: |
-        Creates a NodeBalancer in the requested Region.
+        Creates a NodeBalancer in the requested Region. Only available in [Regions](/docs/api/regions/#regions-list) with "NodeBalancers" in their `capabilities`.
 
         NodeBalancers require a port Config with at least one backend Node to start serving requests.
 
@@ -22246,6 +22276,9 @@ components:
           - stackscript_update
           - stackscript_publicize
           - stackscript_revise
+          - subnet_create
+          - subnet_delete
+          - subnet_update
           - tag_create
           - tag_delete
           - tfa_disabled
@@ -22271,6 +22304,9 @@ components:
           - volume_update
           - volume_detach
           - volume_resize
+          - vpc_create
+          - vpc_delete
+          - vpc_update
           readOnly: true
           description: >
             The action that caused this Event. New actions may be added in the future.
@@ -22629,7 +22665,7 @@ components:
               - 198.51.100.2/32
             ipv6:
               description: |
-                A list of IPv6 addresses or networks. Addresses must be in IP/mask format. Must not be an empty list.
+                A list of IPv6 addresses or networks. Addresses must be in IP/mask format and must not include zone_id notation as described in [RFC 4007](https://www.rfc-editor.org/rfc/rfc4007). Must not be an empty list.
 
                 If "::/0" is included in this list, all IPv6 addresses are affected by this rule.
               type: array
@@ -28536,6 +28572,7 @@ components:
         #     * A VPC Subnet requires either `ipv4`, `ipv6`, or both.
         #     * In requests, only the prefix length is allowed, for example: `/64`. The address range is then automatically assigned.
         #     * Allowed prefix lengths: 64-125.
+        #     * Must not include zone_id notation as described in [RFC 4007](https://www.rfc-editor.org/rfc/rfc4007)
         #     * The range must not overlap with other Subnets on the same VPC.
         #   example: fd04:495a:691c:971c:0000:0000:0000:0000/64
         #   x-linode-cli-display: 4
