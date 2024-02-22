@@ -128,7 +128,7 @@ This guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask
     pip3 install virtualenv
     ```
 
-1.  Open the application's port (`5000`) within your system's firewall rules so that you can treat the application as remote.
+1.  Open the application's port (`5000`) within your system's firewall rules so that you can access the example Flask application.
 
     {{< tabs >}}
     {{< tab "Debian, Ubuntu" >}}
