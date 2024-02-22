@@ -4,10 +4,10 @@ title: "How to Load Test Your Applications with Locust"
 description: "Locust is an open-source tool for running distributed load tests based on plain Python scripts, making an exceptional solution, especially for CI/CD integration. Find out more and how to get started with Locus in this tutorial."
 keywords: ['locust load testing tutorial', 'locust example', 'locust download']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2024-02-21
+authors: ['Nathaniel Stickman', 'John Dutton']
+published: 2024-02-22
 modified_by:
-  name: Nathaniel Stickman
+  name: Akamai
 external_resources:
 - '[Locust Documentation](https://docs.locust.io/en/stable/index.html)'
 ---
@@ -114,7 +114,11 @@ A web application is required to run a load test using the example in this guide
 
 If you'd rather use a preinstalled Flask application, you can deploy our [Flask Marketplace app](/docs/products/tools/marketplace/guides/flask/). Note that the Flask Marketplace app does not include Locust and would require Locust installation after deployment.
 
-#### Installing and Starting the Example
+{{< note title="Using Your Own Application" >}}
+Should you prefer to use your own web application, you can skip the steps for **Installing and Starting the Example Application** and move ahead to [Creating a Test Script](#creating-a-test-script). When asked to provide **host** information when running your load test, replace the URLs for the example Flask application with your own.
+{{< /note >}}
+
+#### Installing and Starting the Example Application
 
 This guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask-on-Linode) web application developed for our [Deploying a Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide. Note that running Ubuntu is not required to complete the steps below.
 
@@ -286,7 +290,7 @@ An alternative option for creating locustfiles is using a tool like [har2locust]
 
 1.  The main part of most Locust test scripts is the user class. This is a Python class that extends on the `HttpUser` class imported above. Paste this line below the initial steps above.
 
-    ```file {title="locustfile.py" lang="py"}
+    ```file {title="locustfile.py" lang="py" linenostart="5" }
     class ExampleFlaskAppUser(HttpUser):
     ```
 
@@ -294,8 +298,8 @@ An alternative option for creating locustfiles is using a tool like [har2locust]
 
 1.  Within the user class, you can define the amount of time between each simulated user's tasks using Locust's included `wait_time` method. When defining `wait_time`, make sure it is indented underneath the `class` (see step 8 for reference):
 
-    ```file {title="locustfile.py" lang="py"}
-    wait_time = constant(2)
+    ```file {title="locustfile.py" lang="py" linenostart="6" }
+        wait_time = constant(2)
     ```
 
     This example uses the `constant` wait time with a value of 2 seconds. Notice that this method was imported earlier (step 3). If you choose a different `wait_time` option, replace `constant` in step 3 to match the method you choose here.
@@ -314,24 +318,24 @@ An alternative option for creating locustfiles is using a tool like [har2locust]
 
 1.  Also within the user class, each **task** is defined by a method denoted with `@task`. The method below gives the simulated user the task of visiting the website's homepage, giving a baseline. Task lines should live within the `class` and indented.
 
-    ```file {title="locustfile.py" lang="py"}
-    @task
-    def homepage(self):
-        self.client.get("/")
+    ```file {title="locustfile.py" lang="py" linenostart="8" }
+        @task
+        def homepage(self):
+            self.client.get("/")
     ```
 
 1.  The next task method utilizes the two other packages the script imported: `random` and `PyQuery`. Using PyQuery to parse links allows the script to be useful as the application expands, regardless of the number of posts:
 
-    ```file {title="locustfile.py" lang="py"}
-    @task
-    def article_check(self):
-        res = self.client.get("/")
-        page_content = pq(res.content)
+    ```file {title="locustfile.py" lang="py" linenostart="12" }
+        @task
+        def article_check(self):
+            res = self.client.get("/")
+            page_content = pq(res.content)
 
-        post_headings = page_content("a.article-title")
+            post_headings = page_content("a.article-title")
 
-        chosen_post = random.choice(post_headings)
-        self.client.get(chosen_post.attrib["href"])
+            chosen_post = random.choice(post_headings)
+            self.client.get(chosen_post.attrib["href"])
     ```
 
     The options within the task above perform the following actions:
@@ -369,9 +373,9 @@ An alternative option for creating locustfiles is using a tool like [har2locust]
 
 1.  Once your locustfile has been saved, install the Python package for PyQuery. This package is needed in order for your script to run:
 
-```command
-pip3 install pyquery
-```
+    ```command
+    pip3 install pyquery
+    ```
 
 ### Running the Tests
 
@@ -399,7 +403,7 @@ In the steps below, replace {{< placeholder "192.0.2.17" >}} with your instance'
 
 1.  Complete the fields, providing a number of simultaneous simulated users (**Number of users**) to be created for the test along with the number of seconds to space out the creation of the users (**Ramp Up**).
 
-    In the **Host** field, provide the base URL for your example application: `http://{{< placeholder "192.0.2.17" >}}:5000`
+    In the **Host** field, provide the base URL for your example application (`http://{{< placeholder "192.0.2.17" >}}:5000`). If you are using your own web application, substitute your URL here.
 
 1.  Click the **Start Swarm** button to begin the load test. Locust takes you to a monitoring interface, where you can see the test results in real-time.
 
