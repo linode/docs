@@ -54,6 +54,12 @@ cat /root/.credentials
 
 Copy and paste this token into the **Password or token:** field on the Jupyter login page. If you prefer password authentication, use the token to set a password in the **Setup a Password** section on the login page. Once this is done, you can employ both the token and the password for accessing JupyterLab.
 
+  ![Screenshot of Juypter login form](jupyter_login.jpg) 
+
+Once you have used the token, you will be able to access the JupyterLab base page.
+
+  ![Screenshot of Jupyter base page](jupyter_base_page.jpg)
+
 ### More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
