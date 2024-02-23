@@ -1,0 +1,85 @@
+{{ $v := dict }}
+
+{{ $searchConfig := site.Params.search_config2 }}
+{{ $prefix := $searchConfig.index_prefix | strings.TrimSuffix "_" }}
+{{ $queries := resources.Match "json/search_cachewarmer_queries/*.json" }}
+{{ $requestsSlice := slice }}
+{{ range $queries }}
+  {{ $q := . | transform.Unmarshal }}
+  {{ if $prefix }}
+    {{ $indexName := printf "%s_%s" $prefix $q.indexName }}
+    {{ $q = merge $q (dict "indexName" $indexName) }}
+  {{ end }}
+  {{ $requestsSlice = $requestsSlice | append $q }}
+{{ end }}
+{{ $requests := dict "requests" $requestsSlice }}
+
+{{ $url := printf "https://%s-dsn.algolia.net/1/indexes/*/queries" $searchConfig.app_id }}
+{{ $headers := dict
+  "Content-Type" "application/json"
+  "X-Algolia-Application-Id" $searchConfig.app_id
+  "X-Algolia-API-Key" $searchConfig.api_key
+}}
+
+{{/* Effectively invalidate the cache by using a different key every second. */}}
+{{ $key := (div now.UnixMilli 1000) }}
+
+{{ $res := resources.GetRemote $url  (dict
+  "method" "post"
+  "headers" $headers
+  "body" (jsonify $requests)
+  "key" $key
+  )
+}}
+
+{{ with $res }}
+  {{ with .Err }}
+    {{ erroridf "algolia-cachewarmer" "Failed to warm Algolia cache: %s" . }}
+  {{ else }}
+    {{/* Create one JSON file per Algolia result. */}}
+    {{ $data := .Content | transform.Unmarshal }}
+
+    {{ range $i, $e := $queries }}
+      {{ $name := path.Base $e.Name | strings.TrimSuffix ".json" }}
+
+      {{ $targetPath := printf "cachewarmers/global/%s.json" $name }}
+      {{ $res := index $data.results $i }}
+      {{ $targetResource := resources.FromString $targetPath (jsonify $res) }}
+      {{ if (ne hugo.Environment "development") }}
+        {{ $targetResource = $targetResource | minify | fingerprint }}
+      {{ end }}
+      {{ $v = merge $v (dict $name $targetResource.RelPermalink) }}
+    {{ end }}
+  {{ end }}
+{{ else }}
+  {{ $help := "" }}
+  {{ if and (not $res) (strings.Contains $url "testing") }}
+    {{ $help = "\n\nNote that for new Algolia test prefixes, the environment needs to be created (linalgadm sequence testing-docs-prefix-update PREFIX) before running Hugo.\n\nYou can skip this error by adding algolia-cachewarme to the ignoreErrors config slice, or in the environemtn, e.g: 'HUGO_IGNOREERRORS=algolia-cachewarmer hugo'.\n\n" }}
+  {{ end }}
+  {{ erroridf "algolia-cachewarmer" "Got %v result from Algolia using url %q and requests\n%s%s" $res $url ($requests | jsonify)  $help }}
+{{ end }}
+
+{{ $searchData := partial "sections/search/get-search-data.html" . -}}
+{{ $searchData = sort $searchData "section" }}
+{{ $currentSection := "" }}
+{{ $currentSectionData := slice }}
+{{ $counter := 0 }}
+{{ range $i, $e := $searchData }}
+  {{ $section := replace $e.section "-branches" "" }}
+  {{ if ne $currentSection $section }}
+    {{ if gt $i 0 }}
+      {{ $name := replace $currentSection " > " "_" }}
+      {{ $targetPath := printf "cachewarmers/sections/%s.json" $name }}
+      {{ $targetResource := resources.FromString $targetPath (jsonify $currentSectionData) }}
+      {{ if (ne hugo.Environment "development") }}
+        {{ $targetResource = $targetResource | minify | fingerprint }}
+      {{ end }}
+      {{ $v = merge $v (dict $currentSection $targetResource.RelPermalink) }}
+    {{ end }}
+    {{ $currentSection = $section }}
+    {{ $currentSectionData = slice }}
+  {{ end }}
+  {{ $currentSectionData = $currentSectionData | append . }}
+{{ end }}
+
+{{ return $v }}

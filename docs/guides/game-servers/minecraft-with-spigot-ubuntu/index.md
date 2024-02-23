@@ -161,7 +161,7 @@ Customize the server by editing values in `/home/minecraft/server/server.propert
 
         pvp=true
 
--	**Other**: See the [Minecraft](http://minecraft.gamepedia.com/Server.properties) wiki for more details.
+-	**Other**: See the [Minecraft](http://minecraft.wiki/w/Server.properties) wiki for more details.
 
 ### Plugins
 

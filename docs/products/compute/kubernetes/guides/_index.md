@@ -28,6 +28,8 @@ modified: 2023-02-09
 
 - [Deploy and Manage a Kubernetes Cluster with the Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/)
 
+- [Deploy an LKE Cluster Using Pulumi](/docs/products/compute/kubernetes/guides/deploy-cluster-using-pulumi/)
+
 - [Deploy an LKE Cluster Using Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/)
 
 - [Reset Kubeconfig](/docs/products/compute/kubernetes/guides/reset-kubeconfig/)

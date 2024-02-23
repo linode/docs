@@ -64,7 +64,7 @@ The `dir` command alone lists visible files in the current directory. Each optio
 | `/p`         | Pause display after 24 lines (for long listings)                                                                            |
 | `/w`         | Display in two columns (for long listings)                                                                                  |
 | `/d`         | Adds sorting by columns in wide format of `/w`                                                                              |
-| `/a`         | (By attribute): `:h` (hidden), `:n` (name), `:d` (date), `:s` (size), `:G` (Group directories first), `:e` (extension sorted by alpha), `:s` (system), `:a` (archive bit set), `:i` (not content indexed files), `:l` (reparse points)                                    |
+| `/a`         | (By attribute): `:h` (hidden), `:n` (name), `:d` (date), `:s` (size), `:G` (Group directories first), `:e` (extension sorted by alpha), `:s` (system), `:a` (archive bit set), `:i` (not content indexed files), `:l` (re-parse points)                                    |
 | `/o`         | (In sort order): `:e` (extension sorted by alpha), `:s` (system), `:a` (archive bit set), `:i` (not content indexed files), `:l` (smallest first). The "-" character reverses sort. Arguments can be added together in desired sort order with no spaces.                |
 | `/t`         | (Time field order): `:c` (created), `:a` (last accessed), `:w` (last written)                                               |
 | `/x`         | The 8.3 equivalent of long filenames                                                                                        |

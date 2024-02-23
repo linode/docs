@@ -38,7 +38,7 @@ Hybrid cloud computing is more complicated than multicloud for two reasons:
 - You must include a private cloud option.
 - You must be able to seamlessly combine both private and public options.
 
-For example, you have a service that you run on-premise. It's a containerized application, run via a private cloud, and your container database is served up via your in-house datacenter. That application runs well during non-peak periods. But during peak demand, your private cloud isn't capable of scaling to meet the higher demand.
+For example, you have a service that you run on-premise. It's a containerized application, run via a private cloud, and your container database is served up via your in-house data center. That application runs well during non-peak periods. But during peak demand, your private cloud isn't capable of scaling to meet the higher demand.
 
 To make that work, you employ frameworks and services that automatically shift the load from your in-house private cloud to your public cloud to handle the added demand. Once peak times end, the load shifts back to your private cloud.
 

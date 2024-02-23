@@ -8,6 +8,10 @@ published: 2022-03-18
 modified: 2023-07-27
 modified_by:
   name: Linode
+external_resources:
+   - '[Rclone mount command Documentation](https://rclone.org/commands/rclone_mount/)'
+   - '[Rclone copy command Documentation](https://rclone.org/commands/rclone_copy/)'
+   - '[Rclone sync command Documentation](https://rclone.org/commands/rclone_sync/)'
 title: "Use Rclone to Sync Files to Linode Object Storage"
 title_meta: "How to Use Rclone to Sync Files to Linode Object Storage"
 authors: ["Jack Wallen"]
@@ -73,21 +77,21 @@ Before you configure Rclone, [create a new Linode bucket](/docs/products/storage
 1.  When prompted for the type of storage, select the option that corresponds with **S3** (*"AWS S3 Compliant Storage Providers including..."*).
 
     ```output
-    5 / Amazon S3 Compliant Storage Providers including AWS, Alibaba, ArvanCloud, Ceph, China Mobile, Cloudflare, GCS, DigitalOcean, Dreamhost, Huawei OBS, IBM COS, IDrive e2, IONOS Cloud, Liara, Lyve Cloud, Minio, Netease, Petabox, RackCorp, Scaleway, SeaweedFS, StackPath, Storj, Tencent COS, Qiniu and Wasabi
+    / Amazon S3 Compliant Storage Providers including AWS, Alibaba, ArvanCloud, Ceph, China Mobile, Cloudflare, GCS, DigitalOcean, Dreamhost, Huawei OBS, IBM COS, IDrive e2, IONOS Cloud, Liara, Lyve Cloud, Minio, Netease, Petabox, RackCorp, Scaleway, SeaweedFS, StackPath, Storj, Tencent COS, Qiniu and Wasabi
       \ (s3)
     ```
 
-1.  Then, select **Other** (*"Any other S3 compatible provider"*) when choosing your provider.
+1.  Then, select the option that corresponds to **Ceph** when choosing your provider.
 
     ```output
-    27 / Any other S3 compatible provider
-       \ (Other)
+    / Ceph Object Storage
+       \ (Ceph)
     ```
 
-1.  You are then asked how you'd like to provide your AWS credentials. For this, select **false** to manually enter your access key and secret.
+1.  You are then asked how you'd like to provide your AWS credentials. For this, select the option that corresponds to **false** to manually enter your access key and secret.
 
     ```output
-    1 / Enter AWS credentials in the next step.
+    / Enter AWS credentials in the next step.
       \ (false)
     ```
 
@@ -137,10 +141,10 @@ Check out your `test` bucket and you now see the `testing.txt` file added.
 
 ## Rclone Mount
 
-You can also mount a local directory to a Linode Object Storage bucket. The one caveat to this is that the local directory must be empty. You should also know that the `rclone mount` command does take a long time to complete. It's a known issue that writes to `rclone mount` are extremely slow. Because of this, your best bet is to use the `rclone sync` command instead. However, if you still want to mount a directory, the command is straightforward. To mount the local directory, `/home/example-user/LINODE` to a bucket named `DATA` on the Linode remote, use the following command:
+You can also mount a local directory to a Linode Object Storage bucket. The one caveat to this is that the local directory must be empty. You should also know that the `rclone mount` command does take a long time to complete. You can run mount in either foreground or background or daemon mode. Mount runs in foreground mode by default. Use the `--daemon` flag to force background mode. To mount the local directory, `/home/example-user/LINODE` to a bucket named `DATA` on the Linode remote, use the following command:
 
 ```command
-rclone mount Linode:DATA /home/example-user/LINODE
+rclone mount Linode:DATA /home/example-user/LINODE --daemon
 ```
 
 Once the directory is mounted, dump all of the necessary files into the local source and they are synced with the remote destination.

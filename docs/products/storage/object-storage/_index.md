@@ -9,11 +9,9 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-07-05
+modified: 2024-02-14
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
-
-{{< content "new-data-center-notice" >}}
 
 Linode's Object Storage is a globally-available, S3-compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage, such as a traditional filesystem on a physical/virtual disk and [Block Storage Volumes](/docs/products/storage/block-storage/). Under Object Storage, files (also called *objects*) are stored in flat data structures (referred to as *buckets*) alongside their own rich metadata.
 
@@ -35,51 +33,92 @@ Using Object Storage to host your static site files means you do not have to wor
 
 ## Availability
 
-Object Storage is available within the following data centers. The table below also lists several key specifications, including the maximum amount of storage and the maximum number of objects, as these vary by region. For a full list of specifications, see the [Specifications](#specifications) section.
+Object Storage is available within the following data centers. For a full list of specifications for each region, review the [Technical Specifications](#specifications).
 
-| Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> | Cluster ID |
-| -- | -- | -- | -- |
-| Atlanta, GA (USA) | 5 TB | 50 million | `us-southeast-1` |
-| Chicago, IL (USA) | 1,000 TB (1 PB) | 1 billion | `us-ord-1` |
-| Frankfurt (Germany) | 5 TB | 50 million | `eu-central-1` |
-| Newark, NJ (USA) | 5 TB | 50 million | `us-east-1` |
-| Paris (France) | 1,000 TB (1 PB) | 1 billion | `fr-par-1` |
-| Singapore | 5 TB | 50 million | `ap-south-1` |
-| Washington, DC (USA) | 1,000 TB (1 PB) | 1 billion | `us-iad-1` |
+{{< table >}}
+| Data Center | Cluster ID |
+| -- | -- |
+| Amsterdam (Netherlands)\* | `nl-ams-1` |
+| Atlanta, GA (USA) | `us-southeast-1` |
+| Chennai (India)\* | `in-maa-1` |
+| Chicago, IL (USA)\* | `us-ord-1` |
+| Frankfurt (Germany) | `eu-central-1` |
+| Jakarta (Indonesia)\* | `id-cgk-1` |
+| Los Angeles, CA (USA)\* | `us-lax-1` |
+| Madrid (Spain)\* | `es-mad-1` |
+| Miami, FL (USA)\* | `us-mia-1` |
+| Milan (Italy)\* | `it-mil-1` |
+| Newark, NJ (USA) | `us-east-1` |
+| Osaka (Japan)\* | `jp-osa-1` |
+| Paris (France)\* | `fr-par-1` |
+| São Paulo (Brazil)\* | `br-gru-1` |
+| Seattle, WA (USA)\* | `us-sea-1` |
+| Singapore | `ap-south-1` |
+| Stockholm (Sweden)\* | `se-sto-1` |
+| Washington, DC (USA)\* | `us-iad-1` |
+{{< /table >}}
 
-Object Storage deployments in each data center are assigned a cluster ID. These are used when [formatting URLs](/docs/products/storage/object-storage/guides/urls/) and integrating Object Storage with tools such as the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd), and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck).
+\**Higher capacity regions. These data centers offer increased capacity and are ideal for large enterprise workloads.*
+
+Object Storage deployments in each data center are assigned a cluster ID. These are used when [formatting URLs](/docs/products/storage/object-storage/guides/urls/) and integrating Object Storage with tools such as the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd/), and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck/).
 
 ## Pricing
 
-Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabytes of storage. This flat rate is prorated, so if you use Object Storage for a fraction of the month you are charged a fraction of the cost. For example, if you have Object Storage enabled for half of the month and use up to 250 gigabytes of storage you are billed $2.50 at the end of the month. Each additional gigabyte of storage over the first 250 gigabytes costs $0.02, and this usage is also prorated based on usage time.
+Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabytes of storage. This flat rate is prorated, so if you use Object Storage for a fraction of the month you are charged a fraction of the cost. For example, if you have Object Storage enabled for half of the month and use up to 250 gigabytes of storage you are billed $2.50 at the end of the month. The default cost of storage per gigabyte over the first 250 gigabytes is $0.02, and this usage is also prorated based on usage time.
+
+Storage and network transfer overages for Object Storage vary by data center due to regional infrastructure costs. The below table includes overage costs for different data centers where Object Storage is available:
+
+{{< table >}}
+| Data Center | Storage overage per GB above 250 GB | Network Transfer overage cost |
+| :-- | -- | -- |
+| All data centers (except those listed below) | $0.02/GB | $0.005/GB |
+| Jakarta, Indonesia | $0.024/GB | $0.015/GB |
+| São Paulo, Brazil | $0.028/GB | $0.007/GB |
+{{< /table >}}
 
 {{< content "object-storage-cancellation-shortguide" >}}
 
 ## Technical Specifications and Considerations {#specifications}
 
-The table below shows Object Storage specifications, including those for the existing clusters as well as the latest upgraded clusters currently available in new data centers. Most of the specifications apply **per region, per account**, unless otherwise specified.
+The table below outlines default Object Storage limits. Limits apply **per region, per account**, unless otherwise specified.
 
+{{< table >}}
 | Resource | Limit |
-| -- | -- | -- |
-| Minimum storage | 250 GB |
-| Maximum storage | *varies by region (see [Availability](#availability))* |
-| Maximum number of objects | *varies by region (see [Availability](#availability))* |
+| -- | -- |
+| Maximum storage | 100 TB (Up to 1,000 TB by request)* |
+| Maximum number of objects | 100 million (Up to 1 billion by request)* |
 | Maximum number of buckets | 1,000 buckets |
 | Maximum file upload size | 5 GB (5 TB with multipart uploads) |
 | Rate limit (per bucket) | 750 requests per second |
+{{< /table >}}
 
-To increase these limits beyond their default values, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements. The capacity of the region is considered when processing a limit increase request, among other factors.
+*Limit varies by region. Data centers with exceptions to the default bucket limits are listed in the table below:
+
+{{< table >}}
+| Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> |
+| -- | -- | -- |
+| Atlanta, GA (USA) | 5 TB | 50 million |
+| Frankfurt (Germany) | 5 TB | 50 million |
+| Newark, NJ (USA) | 5 TB | 50 million |
+| Singapore | 5 TB | 50 million |
+{{< /table >}}
+
+If your workloads require additional storage or need to accommodate more objects, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements. Among other factors, the total capacity of the region is considered when processing a limit increase request. For larger enterprise workloads, consider using one of the data centers designated as *higher capacity* (see [Availability](#availability)).
 
 ### Network Transfer
 
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
 - Metered outbound network transfer, including traffic to other Linode services within the same data center (over both public IPv4 and IPv6 addresses)
-- Includes 1 TB (prorated) of transfer allowance per month
+- When enabling Object Storage on your account, 1 TB (prorated) of transfer allowance per month is added to your **global network transfer pool**
 
 See the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide for additional details, including costs for network transfer overages.
 
+{{< note >}}
+If creating a bucket in our **Jakarta** or **São Paulo** data centers, note that no additional transfer is added to their region-specific transfer pools.
+{{< /note >}}
+
 ### Additional Limits and Specifications
 
-- **Upload file size limit:** 5 GB. The maximum upload size of a single object is *5 GB*, though this can easily be overcome by using multi-part uploads. Both [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) and [cyberduck](/docs/products/storage/object-storage/guides/cyberduck/) will do this for you automatically if a file exceeds this limit as part of the uploading process.
+- **Upload file size limit:** 5 GB. The maximum upload size of a single object is *5 GB*, though this can easily be overcome by using multi-part uploads. Both [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/) and [cyberduck](/docs/products/storage/object-storage/guides/cyberduck/) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 - **Restricted characters:** Objects uploaded to object storage cannot contain the following special characters when using Cloud Manager or the Linode CLI: `" ' < > & + =`.

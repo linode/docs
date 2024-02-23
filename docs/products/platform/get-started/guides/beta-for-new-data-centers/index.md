@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-07-27
+modified: 2024-02-14
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -23,11 +23,19 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 
 | Data Center | Status | Region ID |
 | -- | -- | -- |
-| Chennai, India | *Limited beta* | `in-maa` |
+| Amsterdam, Netherlands | **Now available to all customers** | `nl-ams` |
+| Chennai, India | **Now available to all customers** | `in-maa` |
 | Chicago, IL, USA | **Now available to all customers** | `us-ord` |
+| Jakarta, Indonesia | **Now available to all customers** | `id-cgk` |
+| Los Angeles, CA, USA | **Now available to all customers** | `us-lax` |
+| Madrid, Spain | **Now available to all customers** | `es-mad` |
+| Miami, FL, USA | **Now available to all customers** | `us-mia` |
+| Milan, Italy | **Now available to all customers** | `it-mil` |
+| Osaka, Japan | **Now available to all customers** | `jp-osa` |
 | Paris, France | **Now available to all customers** | `fr-par` |
-| Seattle, WA, USA | Not yet available | - |
-| Stockholm, Sweden | *Limited beta* | `se-sto` |
+| São Paulo, Brazil | **Now available to all customers** | `br-gru` |
+| Seattle, WA, USA | **Now available to all customers** | `us-sea` |
+| Stockholm, Sweden | **Now available to all customers** | `se-sto` |
 | Washington, DC, USA | **Now available to all customers** | `us-iad` |
 
 ## Deploy Services in a Beta Data Center
@@ -46,36 +54,43 @@ You must enrolled in the beta to select one of the beta data centers when deploy
 
 ## Pricing
 
-{{< note >}}
-Starting July 1st 2023, services deployed in Chicago, Paris, and Washington, DC will no longer be free for beta participants. Charges will start to accrue for any new or existing services on your account. If you do not wish to be charged for a particular service, be sure to delete it prior to this date.
-{{< /note >}}
-
 Services utilized as part of the beta are free to users. Once the beta period ends for a particular data center, you will start accruing charges for any services that are still deployed to that region. You will receive an email notifying you of the billing start date as we transition each data center to general availability.
 
 ## Product Availability
 
-Each data center in this beta is slated to have all of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
+Each data center in this beta is slated to have most of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
 
 ### Object Storage
 
 The new data centers feature enhanced Object Storage, which improves upon the consistency and reliability of the existing service and offers increased capacity (outlined below). Review the [Availability](/docs/products/storage/object-storage/#availability) and [Specifications](/docs/products/storage/object-storage/#specifications) section of the Object Storage documentation for more details.
 
-- **Max storage** (*per region, per account*): 1 PB (up from 5 TB)
-- **Max # of objects** (*per region, per account*): 1 billion (up from 50 million)
+- **Max storage** (*per region, per account*): 100 TB (up to 1,000 TB by request)
+- **Max # of objects** (*per region, per account*): 100 million (up to 1 billion by request)
 
 The following table includes the IDs and URLs of each new Object Storage cluster:
 
 | Data Center | Cluster ID | Cluster URL |
 | --| -- | -- |
-| Chennai, India | `us-maa-1` | `https://us-maa-1.linodeobjects.com` |
+| Amsterdam, Netherlands | `nl-ams-1` | `https://nl-ams-1.linodeobjects.com` |
+| Chennai, India | `in-maa-1` | `https://in-maa-1.linodeobjects.com` |
 | Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
+| Jakarta, Indonesia | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
+| Los Angeles, CA, USA | `us-lax-1` | `https://us-lax-1.linodeobjects.com` |
+| Madrid, Spain | `es-mad-1` | `https://es-mad-1.linodeobjects.com` |
+| Miami, FL, USA | `us-mia-1` | `https://us-mia-1.linodeobjects.com` |
+| Milan, Italy | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
+| Osaka, Japan | `jp-osa-1	` | `https://jp-osa-1.linodeobjects.com` |
 | Paris, France | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
+| São Paulo, Brazil | `br-gru-1` | `https://br-gru-1.linodeobjects.com` |
+| Seattle, WA, USA | `us-sea-1` | `https://us-sea-1.linodeobjects.com` |
 | Stockholm, Sweden | `se-sto-1` | `https://se-sto-1.linodeobjects.com	` |
 | Washington, DC, USA | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
 ### Premium Plans
 
-A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU plan type for Compute Instances is available only in the new data centers. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis. The table below outlines the pricing and hardware specifications for Premium tier Dedicated CPU Instances:
+A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU Compute Instance plan is available only in the new data centers. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis.
+
+The table below outlines the default pricing and hardware specifications for Premium tier Dedicated CPU Instances. [Pricing](https://www.linode.com/pricing/) may vary by region:
 
 | <div class="w-40">Plan</div> | <div class="w-36">Price</div> | RAM (GB) | CPU Cores | Storage (GB) | Transfer (TB) | Network In/Out (Gbps)
 | --- |  --- | --- | --- | --- | --- | --- | --- |
@@ -92,7 +107,7 @@ A new [Premium tier](/docs/products/compute/compute-instances/plans/premium/) De
 The new Premium plans can also be deployed as worker nodes in Linode Kubernetes Engine (LKE) clusters. There is no additional cost for Premium plan LKE worker nodes beyond the price listed in the Premium pricing table above.
 
 {{< note isCollapsible=true title="Details of the Backup service for Premium Plans" >}}
-Optionally, you can also add on the [Backup](/docs/products/storage/backups/) service to a Premium instance. The price for this service is outlined below:
+Optionally, you can also add the [Backup](/docs/products/storage/backups/) service to a Premium instance. The default prices for this service are outlined below. [Pricing](https://www.linode.com/pricing/) may vary by region:
 
 | <div class="w-40">Plan</div> | Price for the Backup service |
 | --- | --- |
@@ -115,9 +130,18 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 
 | Data Center | IP Sharing Support | Failover Method | Software | ID |
 | --- | --- | --- | --- | --- |
+| Amsterdam, Netherlands | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 22 |
 | Chennai, India | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 25 |
 | Chicago, IL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
+| Jakarta, Indonesia | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
+| Los Angeles, CA, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 30 |
+| Madrid, Spain | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 24 |
+| Miami, FL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 28 |
+| Milan, Italy | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 27 |
+| Osaka, Japan | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 26 |
 | Paris, France | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 19 |
+| São Paulo, Brazil | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 21 |
+| Seattle, WA, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 20 |
 | Stockholm, Sweden | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 23 |
 | Washington, DC, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
 
@@ -125,20 +149,33 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 
 Lish and Glish provide direct access to your Compute Instances, bypassing the need for SSH or a VNC. For more information on Lish, consult our guide on how to [Access Your System Console Using Lish](/docs/products/compute/compute-instances/guides/lish/).
 
+#### Amsterdam, Netherlands
+
+-   **Lish SSH Gateway:** `lish-nl-ams.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:/y+83+sA3JdDGkv/KLnIAIXqfgqWfgp5RZ+DCx1T4yU lish-nl-ams.linode.com
+    ECDSA 256 SHA256:iR/He+teo+c7jqr8LzaTikbTlMDdIkIERhJBXdIjO8w lish-nl-ams.linode.com
+    ED25519 256 SHA256:vxF9arB2lYBVP45ZA7t1JEE9w/vthPmzU3a2oOR8O7Y lish-nl-ams.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `nl-ams.webconsole.linode.com`
+
 #### Chennai, India
 
 -   **Lish SSH Gateway:** `lish-in-maa.linode.com`
 
     {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
     ```command
-    3072 SHA256:kXCaKnn1nVlVEC5SCuez6FApcXr/2UUiaSANUy0rlLI lish-in-maa.linode.com (RSA)
-    256 SHA256:Jj+pb1AkDdKs77o6ozgkOk83rg7auLSOQrnebE8n91o lish-in-maa.linode.com (ECDSA)
-    256 SHA256:v1KaIB0togivalP7OVvlrLpu/y80qsm5cj50qclTWc0 lish-in-maa.linode.com (ED25519)
+    RSA 3072 SHA256:kXCaKnn1nVlVEC5SCuez6FApcXr/2UUiaSANUy0rlLI lish-in-maa.linode.com
+    ECDSA 256 SHA256:Jj+pb1AkDdKs77o6ozgkOk83rg7auLSOQrnebE8n91o lish-in-maa.linode.com
+    ED25519 256 SHA256:v1KaIB0togivalP7OVvlrLpu/y80qsm5cj50qclTWc0 lish-in-maa.linode.com
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `in-maa.webconsole.linode.com`
--   **Glish Gateway:** `maa1.glish.linode.com`
+-   **Weblish/Glish Gateway:** `in-maa.webconsole.linode.com`
 
 #### Chicago, IL, USA
 
@@ -152,8 +189,91 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-ord.webconsole.linode.com`
--   **Glish Gateway:** `ord2.glish.linode.com`
+-   **Weblish/Glish Gateway:** `us-ord.webconsole.linode.com`
+
+#### Jakarta, Indonesia
+
+-   **Lish SSH Gateway:** `lish-id-cgk.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:n+f2JBMBYvvJUw11nYafKrX1nU3gdohnWfj9qdTXU+I lish-id-cgk.linode.com
+    ECDSA 256 SHA256:CwM8d4D9yU0Mw/Odu4bxs6OWpfzJHSrSUUgtkZNRvsk lish-id-cgk.linode.com
+    ED25519 256 SHA256:RvdTsLHAWcjmXU2h5JD821Xk4x40FcHLzpX2/ppMLh0 lish-id-cgk.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `id-cgk.webconsole.linode.com`
+
+#### Los Angeles, CA, USA
+
+-   **Lish SSH Gateway:** `lish-us-lax.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:TVyXe3i1iJF9rU+j/t57wpdRB2h56Kh2tnZsUra30kA lish-us-lax.linode.com
+    ECDSA 256 SHA256:Yh+jEgxiGIgETrC9uz4wUqnKvi7yPrlqgmpxsa65QDI lish-us-lax.linode.com
+    ED25519 256 SHA256:kFi+ignk5bxYxnk/F3Lehk0HoM98BuUzEGhlEzhHo9I lish-us-lax.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-lax.webconsole.linode.com`
+
+#### Madrid, Spain
+
+-   **Lish SSH Gateway:** `lish-es-mad.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:sIYL6fvcNZVz3pXa6fp6YNS4ITfcCTu918pH0dxmaL0 lish-es-mad.linode.com
+    ECDSA 256 SHA256:eSqy+KAkPlzqRxYnPzGKJXuVd6D5APZsM/qWAWVk5xs lish-es-mad.linode.com
+    ED25519 256 SHA256:Sm20p3dsXSoqdRF8RwehfHn2sJszSuP/Z454glxohbc lish-es-mad.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `es-mad.webconsole.linode.com`
+
+#### Miami, FL, USA
+
+-   **Lish SSH Gateway:** `lish-us-mia.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:kfwzGjXR+WV1JxvufbsZTv4qzVUI5Nkmh3Z3/XhpAT8 lish-us-mia.linode.com
+    ECDSA 256 SHA256:cZVK7bB8cwci3sXJJNIaBlX9Z3DlBj3hAL5J8Hc+vr0 lish-us-mia.linode.com
+    ED25519 256 SHA256:+sBLV01KzOiVJw4OJGmO71+NUm2cE7ndpj1aqW2tNLg lish-us-mia.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-mia.webconsole.linode.com`
+
+#### Milan, Italy
+
+-   **Lish SSH Gateway:** `lish-it-mil.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:toVfir7U8Ixg0wELAx0qCC91ld+HIxmTwggUP/+itkU lish-it-mil.linode.com
+    ECDSA 256 SHA256:XQDX+diXFBAT8OjpN+zwZN5sukTAQwtqe+i89Kh6gXQ lish-it-mil.linode.com
+    ED25519 256 SHA256:Uxw1KbWQVz5QYHHfUzFJcZM+HLbdu6vJ/R3ksEv2k3M lish-it-mil.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `it-mil.webconsole.linode.com`
+
+#### Osaka, Japan
+
+-   **Lish SSH Gateway:** `lish-jp-osa.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:VXDxZ8+0b1Q54Bzvt7a6A4bvvKAI5OHxBYxwIC4OsDQ lish-jp-osa.linode.com
+    ECDSA 256 SHA256:qM6cfmK2/Vrho1exDZ9qe4cLWVdp5U0dv5MJ22K+lwE lish-jp-osa.linode.com
+    ED25519 256 SHA256:1CJ7P/i5XUP6XWizukQ7XIEiQ5rlIM+06N6qF2WfDMc lish-jp-osa.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `jp-osa.webconsole.linode.com`
 
 #### Paris, France
 
@@ -167,8 +287,35 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `fr-par.webconsole.linode.com`
--   **Glish Gateway:** `par3.glish.linode.com`
+-   **Weblish/Glish Gateway:** `fr-par.webconsole.linode.com`
+
+#### São Paulo, Brazil
+
+-   **Lish SSH Gateway:** `lish-br-gru.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:lmtONyLfe0tiLEdNrbEUd8j10A/o/Ss1HaUYJDgc8ks lish-br-gru.linode.com
+    ECDSA 256 SHA256:ftl4kIcxzeGUsT9FPQ49GF7afel1yrOQgclJN7/8kuk lish-br-gru.linode.com
+    ED25519 256 SHA256:EKqBawVESQnL4oQOMskpBAtrEiOlE+qD9M6WLiFbCyU lish-br-gru.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `br-gru.webconsole.linode.com`
+
+#### Seattle, WA, USA
+
+-   **Lish SSH Gateway:** `lish-us-sea.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:XqkskcFrRzZbMU/XeR1diiNM6zCsWs2wL4pmTvBLNII lish-us-sea.linode.com
+    ECDSA 256 SHA256:FEqVGwuv/BgbLtNkcfFg7Lgm0R6KQVUnPY+wIoimrrA lish-us-sea.linode.com
+    ED25519 256 SHA256:6R7iWvSe7OQSDcVmhwrH/EJiE51+ntiub3CPXfzupDA lish-us-sea.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `us-sea.webconsole.linode.com`
 
 #### Stockholm, Sweden
 
@@ -176,14 +323,13 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
 
     {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
     ```command
-    3072 SHA256:oC6WZwUMm+S/myz7aEBP6YsAUXss7csmWzJRlwDfpyw lish-se-sto.linode.com (RSA)
-    256 SHA256:lr6m6BKQBqFW/iw/WDq2QQqh5kUlMjidawEEKv9lNRg lish-se-sto.linode.com (ECDSA)
-    256 SHA256:phubC9JMR6DNal0BIvu2ESvmDfs2rSquBrhKdr0IbmU lish-se-sto.linode.com (ED25519)
+    RSA 3072 SHA256:oC6WZwUMm+S/myz7aEBP6YsAUXss7csmWzJRlwDfpyw lish-se-sto.linode.com
+    ECDSA 256 SHA256:lr6m6BKQBqFW/iw/WDq2QQqh5kUlMjidawEEKv9lNRg lish-se-sto.linode.com
+    ED25519 256 SHA256:phubC9JMR6DNal0BIvu2ESvmDfs2rSquBrhKdr0IbmU lish-se-sto.linode.com
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `se-sto.webconsole.linode.com`
--   **Glish Gateway:** `sto2.glish.linode.com`
+-   **Weblish/Glish Gateway:** `se-sto.webconsole.linode.com`
 
 #### Washington, DC, USA
 
@@ -197,5 +343,4 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-iad.webconsole.linode.com`
--   **Glish Gateway:** `iad3.glish.linode.com`
+-   **Weblish/Glish Gateway:** `us-iad.webconsole.linode.com`

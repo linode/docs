@@ -6,7 +6,10 @@ tab_group_main:
     weight: 20
 published: 2022-11-30
 tags: ["managed hosting"]
+modified: 2023-09-18
 ---
+
+{{< content "metadata-stackscripts-notice" >}}
 
 StackScripts allow you to reproduce specific software configurations when deploying Compute Instances, with more user control than static system images. This guide covers how to get started with StackScripts, including writing your custom script, creating the StackScript, and deploying a Compute Instance.
 

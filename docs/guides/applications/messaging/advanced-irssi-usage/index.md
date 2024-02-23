@@ -1,6 +1,6 @@
 ---
 slug: advanced-irssi-usage
-description: "Irssi is a popular IRC client featuring a flexible plugin architecture and embedded Perl interpeter. Here's how to use it."
+description: "Irssi is a popular IRC client featuring a flexible plugin architecture and embedded Perl interpreter. Here's how to use it."
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 tags: ["perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

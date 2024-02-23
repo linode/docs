@@ -92,11 +92,11 @@ If you use another DNS manager but would like to start using the Linode DNS Mana
 
 For this tutorial, the Harbor server is run on a compute instance. Follow these instructions to create the instance:
 
-1. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to create the instance. Instructions for installing Harbor on Debian, Ubuntu, CentOS, and Fedora are included in this guide.
+1. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create the instance. Instructions for installing Harbor on Debian, Ubuntu, CentOS, and Fedora are included in this guide.
 
     Images stored with the registry are kept in the compute instance's included [persistent storage](/docs/products/compute/compute-instances/guides/disks-and-storage/#understanding-storage). Different instance plans have different amounts of included storage. You should pick a plan whose storage can accommodate the total size of the images you want to store. Review the [pricing page](/pricing/) to determine which plan has enough storage for you. If you intend to use this server for testing and learning, a plan with minimal specs is adequate.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system,create a limited user account, and harden SSH access. You may also wish to set the timezone and configure your hostname.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system,create a limited user account, and harden SSH access. You may also wish to set the timezone and configure your hostname.
 
 ### Install Docker and Docker Compose
 
