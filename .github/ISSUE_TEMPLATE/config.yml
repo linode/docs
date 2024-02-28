@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Akamai/Linode Customer Support
+    url: https://www.linode.com/docs/products/platform/get-started/guides/support/#contact-customer-support/
+    about: For issues with an Akamai/Linode account or resources
+  - name: Community Questions Forums
+    url: https://www.linode.com/community/questions/
+    about: For other cloud computing discussions not related to specific Linode documentation
