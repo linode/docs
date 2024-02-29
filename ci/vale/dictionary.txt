@@ -447,6 +447,7 @@ datadir
 datadog
 dataflow
 datagram
+datagrams
 dataplane
 dataplanes
 datalog
@@ -492,6 +493,7 @@ deprovisioning
 deque
 descolada
 descr
+deserialization
 deserialize
 despawn
 dest
@@ -1368,6 +1370,7 @@ microsystems
 microweb
 Microweber
 middlebox
+middleboxes
 middleware
 mimikatz
 minecraft
@@ -1436,8 +1439,10 @@ msgid
 msgpack
 msmtp
 msps
+MTAs
 mtr
 mtu
+MUAs
 multiarch
 multibyte
 multicast
@@ -1677,9 +1682,11 @@ passwdfile
 passwordless
 patroni
 pathnames
+Paulo
 paypal
 PBCs
 pbr
+pbxs
 PDFs
 pem
 pentest
@@ -2181,6 +2188,7 @@ stalkyard
 stallman
 starkiller
 starttls
+statefulness
 statista
 statsd
 statusbar
@@ -2416,6 +2424,7 @@ uncommented
 uncommenting
 uncompress
 uncordoned
+undelete
 unencrypted
 unexported
 unformatted
@@ -2473,6 +2482,7 @@ ust
 utils
 UTunnel
 uuid
+uuids
 uwls
 uwsgi
 v1
@@ -2531,6 +2541,7 @@ vmstat
 vmui
 vmware
 vnc
+VPCs
 VPLs
 vpns
 vset
@@ -2540,6 +2551,7 @@ vuejs
 vvv
 vz
 vznetaddbr
+wafs
 walkthrough
 WAN
 WANs

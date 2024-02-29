@@ -5,7 +5,7 @@ description: "A collection of guides to help you learn how to deploy each Market
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
-modified: 2023-06-26
+modified: 2024-01-22
 ---
 
 ## Basics
@@ -26,10 +26,8 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Ant Media Server Enterprise Edition](/docs/products/tools/marketplace/guides/antmediaenterpriseserver/)
 - [Apache Airflow](/docs/products/tools/marketplace/guides/apache-airflow/)
 - [Appwrite](/docs/products/tools/marketplace/guides/appwrite/)
-- [ARK Survival Evolved](/docs/products/tools/marketplace/guides/ark-survival-evolved/)
 - [AzuraCast](/docs/products/tools/marketplace/guides/azuracast/)
 - [BeEF](/docs/products/tools/marketplace/guides/beef/)
-- [BitNinja](/docs/products/tools/marketplace/guides/bitninja/)
 - [Budibase](/docs/products/tools/marketplace/guides/budibase/)
 - [Chevereto](/docs/products/tools/marketplace/guides/chevereto/)
 - [Cloudron](/docs/products/tools/marketplace/guides/cloudron/)
@@ -62,21 +60,21 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Jitsi](/docs/products/tools/marketplace/guides/jitsi/)
 - [Joomla](/docs/products/tools/marketplace/guides/joomla/)
 - [Joplin](/docs/products/tools/marketplace/guides/joplin/)
+- [JupyterLab](/docs/products/tools/marketplace/guides/jupyterlab/)
 - [Kali Linux](/docs/products/tools/marketplace/guides/kali-linux/)
 - [Kepler](/docs/products/tools/marketplace/guides/kepler/)
 - [LAMP Stack](/docs/products/tools/marketplace/guides/lamp-stack/)
 - [LEMP Stack](/docs/products/tools/marketplace/guides/lemp-stack/)
 - [LiteSpeed cPanel](/docs/products/tools/marketplace/guides/litespeed-cpanel/)
 - [LiveSwitch](/docs/products/tools/marketplace/guides/liveswitch/)
-- [MagicSpam](/docs/products/tools/marketplace/guides/magicspam/)
 - [Mastodon](/docs/products/tools/marketplace/guides/mastodon/)
 - [MEAN Stack](/docs/products/tools/marketplace/guides/mean-stack/)
 - [MERN Stack](/docs/products/tools/marketplace/guides/mern-stack/)
 - [Microweber](/docs/products/tools/marketplace/guides/microweber)
 - [Minecraft ](/docs/products/tools/marketplace/guides/minecraft/)
-- [Mist.io](/docs/products/tools/marketplace/guides/mistio/)
 - [Moodle](/docs/products/tools/marketplace/guides/moodle/)
 - [MySQL/MariaDB](/docs/products/tools/marketplace/guides/mysql/)
+- [NATS Single Node](/docs/products/tools/marketplace/guides/nats-single-node/)
 - [Nextcloud](/docs/products/tools/marketplace/guides/nextcloud/)
 - [NirvaShare](/docs/products/tools/marketplace/guides/nirvashare/)
 - [Node.js](/docs/products/tools/marketplace/guides/nodejs/)
@@ -91,7 +89,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Owncloud Server](/docs/products/tools/marketplace/guides/owncloud/)
 - [Passky](/docs/products/tools/marketplace/guides/passky/)
 - [Peppermint](/docs/products/tools/marketplace/guides/peppermint/)
-- [Percona Monitoring and Management (PMM)](/docs/products/tools/marketplace/guides/percona-monitoring-management/)
 - [phpMyAdmin](/docs/products/tools/marketplace/guides/phpmyadmin/)
 - [Pi-hole](/docs/products/tools/marketplace/guides/pihole/)
 - [Plesk](/docs/products/tools/marketplace/guides/plesk/)
@@ -109,14 +106,12 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Ruby on Rails](/docs/products/tools/marketplace/guides/ruby-on-rails/)
 - [Rust](/docs/products/tools/marketplace/guides/rust/)
 - [Saltcorn](/docs/products/tools/marketplace/guides/saltcorn/)
-- [Seatable](/docs/products/tools/marketplace/guides/seatable/)
+- [SeaTable](/docs/products/tools/marketplace/guides/seatable/)
 - [Secure Your Server](/docs/products/tools/marketplace/guides/secure-your-server/)
 - [ServerWand](/docs/products/tools/marketplace/guides/serverwand/)
 - [Shadowsocks](/docs/products/tools/marketplace/guides/shadowsocks/)
 - [Splunk](/docs/products/tools/marketplace/guides/splunk/)
 - [Superinsight](/docs/products/tools/marketplace/guides/superinsight/)
-- [Team Fortress 2](/docs/products/tools/marketplace/guides/team-fortress-2/)
-- [Terraria](/docs/products/tools/marketplace/guides/terraria/)
 - [Uptime Kuma](/docs/products/tools/marketplace/guides/uptime-kuma/)
 - [UTunnel VPN](/docs/products/tools/marketplace/guides/utunnel/)
 - [Valheim](/docs/products/tools/marketplace/guides/valheim/)

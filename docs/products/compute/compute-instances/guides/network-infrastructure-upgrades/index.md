@@ -3,7 +3,7 @@ title: "Upcoming Changes Related to Network Infrastructure Upgrades"
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 published: 2022-07-19
-modified: 2023-12-06
+modified: 2024-01-03
 modified_by:
   name: Linode
 aliases: ['/guides/network-infrastructure-upgrades/']
@@ -38,7 +38,7 @@ Review the table below to learn which data centers have been upgraded with the l
 
 | Data center | Upgrade Status |
 | -- | -- |
-| Atlanta (Georgia, USA) | *Undergoing network upgrades* |
+| **Atlanta (Georgia, USA)** | **Complete** |
 | **Dallas (Texas, USA)** | **Complete** |
 | **Frankfurt (Germany)** | **Complete** |
 | Fremont (California, USA) | *Undergoing network upgrades* |
@@ -47,8 +47,8 @@ Review the table below to learn which data centers have been upgraded with the l
 | **Newark (New Jersey, USA)** | **Complete** |
 | **Singapore** | **Complete** |
 | **Sydney (Australia)** | **Complete** |
-| Tokyo (Japan) | *Undergoing network upgrades* |
-| Toronto (Canada) | *Undergoing network upgrades* |
+| **Tokyo (Japan)** | **Complete** |
+| **Toronto (Canada)** | **Complete** |
 
 A status of **complete** indicates that all new Compute Instances (and *most* existing instances) are located on fully upgraded hardware. Compute Instances using legacy features, such as ARP-based failover and /116 ranges, may still be located on hardware that hasn't yet been upgraded. These customers have been notified and a migration timeline has been shared.
 

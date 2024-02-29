@@ -9,8 +9,6 @@ modified_by:
 authors: ["Linode"]
 ---
 
-{{< content "metadata-availability-notice" >}}
-
 [Cloud-config](https://cloudinit.readthedocs.io/en/latest/explanation/format.html#cloud-config-data) files are supported by our [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service and are used by cloud-init to automate server configuration. This guide covers creating cloud-config files, common modules, and examples to help get you started.
 
 ## Syntax
