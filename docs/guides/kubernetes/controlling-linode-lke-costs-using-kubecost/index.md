@@ -5,7 +5,7 @@ description: 'Discover how to optimize Linode LKE costs with Kubecost, a powerfu
 keywords: ['Kubernetes costs', 'Kubernetes monitoring', 'Configuring Kubecost']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['John Mueller', 'John Dutton']
-published: 2024-03-01
+published: 2024-03-04
 modified_by:
   name: Linode
 external_resources:
@@ -51,7 +51,7 @@ To keep costs within predicted ranges, Kubecost makes dynamic optimization recom
 
 ### Alerts and Governance
 
-Kubecost provides alerts and governance features that detect cost overruns before they become a problem. These alerts include emails detailing budget overruns and anomalous spending patterns, as well as reports that track trends and efficiency across all or a set of namespaces.
+Kubecost provides alerts and governance features that detect cost overruns before they become a problem, including emails detailing anomalous spending patterns, as well as reports that track trends and efficiency across namespaces.
 
 ## Kubernetes Monitoring vs. Cost Control
 
@@ -93,7 +93,7 @@ The following components must be in place prior to installing Kubecost:
 
 -   An active Kubernetes cluster running Kubernetes version 1.20 or higher. To deploy a cluster using Linode Kubernetes Engine (LKE), see [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/). The example below uses a 4 GB plan for each cluster node.
 -   `kubectl` installed and configured to communicate with your cluster from your local system.
--   Your cluster's kubeconfig file downloaded and saved to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the path to, and name of, your cluster's kubeconfig .yaml file:
+-   Your cluster's [kubeconfig file](/docs/products/compute/kubernetes/get-started/#access-and-download-your-kubeconfig) downloaded and saved to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the path to, and name of, your cluster's kubeconfig .yaml file:
     ```command
     export KUBECONFIG={{< placeholder "~/Downloads/kubeconfig.yaml" >}}
     ```
@@ -138,15 +138,21 @@ See [Kubecost's documentation](https://docs.kubecost.com/) for more information 
 
 There are multiple options for cost monitoring solutions, and you may find that a Kubecost alternative better meets a specific need like automatic pod or node scaling. Different products offer specialized functionality that you may find essential for your particular application.
 
-**OpenCost**: [OpenCost](https://www.opencost.io/) is an open source, vendor-agnostic tool that measures and allocates cloud infrastructure. While not as feature-rich as Kubecost overall, OpenCost uses the Kubecost engine as a starting point and focuses on specific functions. Both products provide continuous Kubernetes monitoring, with OpenCost focusing on in-cluster CPU, RAM, load balancers, storage, and persistent volumes. One example of a task OpenCost performs well is writing custom Prometheus queries to gain cost insights.
+### OpenCost
+
+[OpenCost](https://www.opencost.io/) is an open source, vendor-agnostic tool that measures and allocates cloud infrastructure. While not as feature-rich as Kubecost overall, OpenCost uses the Kubecost engine as a starting point and focuses on specific functions. Both products provide continuous Kubernetes monitoring, with OpenCost focusing on in-cluster CPU, RAM, load balancers, storage, and persistent volumes. One example of a task OpenCost performs well is writing custom Prometheus queries to gain cost insights.
 
 OpenCost is free, whereas Kubecost offers freemium and paid versions with differing levels of functionality. OpenCost provides a command line interface (CLI) that access cost allocation metrics in Kubernetes through the [OpenCost API](https://www.opencost.io/docs/integrations/api-examples). This level of access makes it possible to perform quick queries and automate some tasks that might require additional time to perform using Kubecost. As of the writing of this guide, OpenCost is at the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) sandbox project maturity level.
 
-**Loft**: [Loft](https://loft.sh/) is a control platform that operates on top of existing Kubernetes clusters. That being the case, Loft works with individual clusters, rather than residing outside clusters and relying on a separate engine to gain a bigger picture of the environment. Loft has relatively simple setup and configuration processes, though it doesn't have the level of overview provided by Kubecost or OpenCost.
+### Loft
+
+[Loft](https://loft.sh/) is a control platform that operates on top of existing Kubernetes clusters. Loft works with individual clusters rather than residing outside clusters or relying on a separate engine. Loft has relatively simple setup and configuration processes, though it doesn't have the level of overview provided by Kubecost or OpenCost.
 
 Two areas of note for Loft are the sleep mode feature and accounting functionality. With sleep mode, Loft automatically puts idle namespaces to sleep based on user-provided critera, rather than only informing you of a cost problem. It also has the ability to delete namespances when they become old and unused. Accounting in Loft allows you to set quotas for each user, account, and team. Loft also offers enterprise-grade, multi-tenant access control, security, and fully automated tenant isolation, among other features.
 
-**CAST AI**: [CAST AI](https://cast.ai/) is another Kubernetes cost optimization platform similar to Kubecost. Both products have similar feature sets but manage information differently. Below are some common features between the two tools:
+### CAST AI
+
+[CAST AI](https://cast.ai/) is another Kubernetes cost optimization platform similar to Kubecost. Both products have similar feature sets but manage information differently. Below are some common features between the two tools:
 
 -   Cost allocation based on Kubernetes concepts such as namespace, deployment, service, and workload
 -   Cost data organization at the microservice level
