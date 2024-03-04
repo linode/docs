@@ -2,6 +2,7 @@
 title: "Deploy JupyterLab through the Linode Marketplace"
 description: "Deploy JupyterLab on a Linode Compute Instance. Jupyter is a web-based interactive development environment for notebooks, code, and data."
 published: 2024-02-20
+modified: 2024-03-04
 modified_by:
   name: Linode
 keywords: ['productivity','notebook','data science']
@@ -54,11 +55,11 @@ cat /root/.credentials
 
 Copy and paste this token into the **Password or token:** field on the Jupyter login page. If you prefer password authentication, use the token to set a password in the **Setup a Password** section on the login page. Once this is done, you can employ both the token and the password for accessing JupyterLab.
 
-  ![Screenshot of Juypter login form](jupyter_login.jpg) 
+![Screenshot of the Jupyter login form](jupyter_login.jpg)
 
 Once you have used the token, you will be able to access the JupyterLab base page.
 
-  ![Screenshot of Jupyter base page](jupyter_base_page.jpg)
+![Screenshot of the Jupyter base page](jupyter_base_page.jpg)
 
 ### More Information
 
