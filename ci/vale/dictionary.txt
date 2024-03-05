@@ -786,6 +786,7 @@ getpwent
 getters
 getty
 getuid
+geventhttpclient
 gfx
 gfxmode
 gianlucaborello
@@ -1251,6 +1252,8 @@ localdomain
 localhost
 localuser
 lockdown
+locustfile
+locustfiles
 lodash
 logallrefupdates
 logdir
