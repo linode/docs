@@ -1,11 +1,11 @@
 ---
 slug: install-rocket-chat-helpdesk
 title: "Install and Configure Rocket.Chat as a Chat and Helpdesk Tool"
-description: "Learn how to deploy open source Rocket.Chat on the Akamai Connected Cloud and use it as a business collaboration tool and customer service platform."
+description: "Learn how to deploy open-source Rocket.Chat on Akamai Cloud Computing, and use it as a business collaboration tool and customer service platform."
 keywords: ['open source helpdesk','self-hosted business communication platform','slack competitor']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman', 'John Dutton']
-published: 2024-02-27
+published: 2024-03-05
 modified_by:
   name: Nathaniel Stickman
 external_resources:
@@ -14,7 +14,7 @@ external_resources:
 
 ## What Is Rocket.Chat?
 
-[Rocket.Chat](https://www.rocket.chat/) is a secure, customizable open source communications platform with enterprise-grade features that make it a viable solution for help desk and support operations. In addition to managing conversations across your organization, Rocket.Chat also supports federation, allowing you to communicate with other companies and a wider customer base.
+[Rocket.Chat](https://www.rocket.chat/) is a secure, customizable, open-source communications platform with enterprise-grade features that make it a viable solution for help desk and support operations. In addition to managing conversations across your organization, Rocket.Chat also supports federation, allowing you to communicate with other companies and a wider customer base.
 
 This guide compares Rocket.Chat to other SaaS applications, provides steps for multiple deployment and setup options, and reviews how to get started after deployment.
 
@@ -30,9 +30,9 @@ Below are some example features offered by Rocket.Chat:
 
 -   Rocket.Chat's Omnichannel feature expands the reach of your collaboration beyond the platform itself. Features of Omnichannel include a live chat pop-up on your website and integration with third-party messaging services like SMS, email, and WhatsApp, allowing you to engage with external clients.
 
--   Rocket.Chat's Omnichannel support opens up the platform as an effective help desk, offering comparisons to services like Zendesk and Freshdesk. Using live chat integration and cross-channel messaging, you can integrate external customer support into the same platform as internal collaboration.
+-   Rocket.Chat's Omnichannel support makes it an effective help desk, offering comparisons to services like Zendesk and Freshdesk. Live chat and cross-channel messaging give you the ability to integrate external customer support into an internal collaboration platform.
 
--   Rocket.Chat is open source, making the code accessible and customizable. Open source software gets the additional benefits of community support and ongoing development.
+-   Rocket.Chat is open-source, making the code accessible and customizable. Its wide adoption and popularity as a platform means it benefits from open-source community support and ongoing development.
 
 ## Choosing Between Rocket.Chat Plans
 
@@ -76,7 +76,8 @@ Manually deploying Rocket.Chat to a Compute Instance uses the [snap](https://sna
 1.  Snap comes preinstalled on most Ubuntu 18.04 systems and above. If you are using a different distribution, you may need to install snap on your system first. See the [official snap documentation](https://snapcraft.io/docs/installing-snapd) for a list of additional supported distributions and installation instructions.
 
     Run the command below to check the snap version on your system:
-    ```
+
+    ```command
     snap --version
     ```
 
@@ -325,7 +326,7 @@ There are multiple options for accessing the Rocket.Chat instance from the Kuber
     kubectl port-forward --namespace default $(kubectl get pods --namespace default -l "app.kubernetes.io/name=rocketchat,app.kubernetes.io/instance=rocketchat" -o jsonpath='{ .items[0].metadata.name }') 8888:3000
     ```
 
-    One the command above has been run, the Rocket.Chat instance is accessible on `localhost:8888` after which you can set up a reverse proxy (as shown above). However, the next option is preferable for production usage.
+    Once the command above runs, the Rocket.Chat instance is accessible on `localhost:8888` after which you can set up a reverse proxy (as shown above). However, the next option is preferable for production usage.
 
 -   **Ingress Deployment**: NGINX Ingress can be deployed to a Kubernetes cluster to provide routing. Using this method, it can act as a kind of reverse proxy on the Kubernetes cluster.
 
@@ -365,7 +366,7 @@ From there, navigate to the **Workspace** option, and select **Settings** from t
 
 ### Accessing Rocket.Chat via Mobile App
 
-Rocket.Chat has an official mobile application for both iOS and Android devices. With the workspace address and provisioned user account, users can sign in and converse via the mobile app.
+Rocket.Chat has an official mobile application for both iOS and Android devices. With the workspace address and provisioned user account, users can sign in and communicate via the mobile app.
 
 1.  On the mobile device, download the Rocket.Chat application via the Apple App Store or Google Play Store.
 
@@ -403,7 +404,7 @@ See Rocket.Chat's [Users documentation](https://docs.rocket.chat/use-rocket.chat
 
 ## Enable Omnichannel for Customer Service and Help Desk Functionality
 
-Rocket.Chat's Omnichannel feature opens up communication capabilities for outside visitors, allowing you to use the platform for customer support and help desk purposes. With Omnichannel, you can connect your workspace to your other media and communication platforms, including website live chat, WhatsApp, SMS, and more.
+Rocket.Chat's Omnichannel feature lets you communicate with outside visitors, allowing you to use the platform for customer support and help desk purposes. With Omnichannel, you can connect your workspace to your other media and communication platforms, including website live chat, WhatsApp, SMS, and more.
 
 ### Enabling Omnichannel
 
