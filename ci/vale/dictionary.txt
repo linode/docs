@@ -736,6 +736,7 @@ Freemarker
 freenom
 fremont
 freshclam
+freshdesk
 friendica
 friendster
 frontend
@@ -785,6 +786,7 @@ getpwent
 getters
 getty
 getuid
+geventhttpclient
 gfx
 gfxmode
 gianlucaborello
@@ -1250,6 +1252,8 @@ localdomain
 localhost
 localuser
 lockdown
+locustfile
+locustfiles
 lodash
 logallrefupdates
 logdir
@@ -1611,6 +1615,7 @@ OKConfig
 okta
 oldstable
 oldfashioned
+omnichannel
 onboarding
 oneof
 ons
@@ -2141,6 +2146,7 @@ smtpd
 smush
 smux
 snakeoil
+snapcraft
 snapd
 snipcart
 snmp
@@ -2701,6 +2707,7 @@ zabbix
 zapier
 zcat
 zend
+zendesk
 zgrep
 zhao
 zigbee
