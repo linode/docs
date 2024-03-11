@@ -25,11 +25,14 @@ You can easily change between instance types and plans on an existing Compute In
 
 These are the instance types offered by Linode:
 
-- [Shared CPU instances](#shared-cpu-instances)
-- [Dedicated CPU instances](#dedicated-cpu-instances)
-- [Premium instances](#premium-instances)
-- [High Memory instances](#high-memory-instances)
-- [GPU instances](#gpu-instances)
+- [Instance Types](#instance-types)
+  - [Shared CPU Instances](#shared-cpu-instances)
+  - [Dedicated CPU Instances](#dedicated-cpu-instances)
+  - [Premium Instances](#premium-instances)
+  - [High Memory Instances](#high-memory-instances)
+  - [GPU Instances](#gpu-instances)
+- [Compute Resources](#compute-resources)
+- [Pricing](#pricing)
 
 They each have unique characteristics and their resources are optimized for different types of workloads. Learn about each of these instance types below, along with the resources provided and their suggested use cases.
 
@@ -54,8 +57,9 @@ Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.co
 
 ### Dedicated CPU Instances
 
-**4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
-Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.
+**4 GB - 512 GB\* Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
+Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.<br>
+\*512 GB plans are in limited availability.
 
 [Dedicated CPU Instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
 
@@ -74,8 +78,9 @@ Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.
 
 ### Premium Instances
 
-**4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
+**4 GB - 512 GB\* Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
 Starting at $43/mo ($0.06/hr). See [Premium Pricing](https://www.linode.com/pricing/#premium) for a full list of plans, resources, and pricing.
+<br>\*512 GB plans are in limited availability.<br>
 
 [Premium Instances](/docs/products/compute/compute-instances/plans/premium/) build off our Dedicated CPU instances and guarantee a minimum hardware class utilizing the latest available [AMD EPYC™](https://www.linode.com/amd/) CPUs. This provides consistent performance to your workloads and is suitable for running mission-critical applications. Premium instances are available in select data centers (see [Premium Instance Availability](/docs/products/compute/compute-instances/plans/premium/#availability)).
 
@@ -108,7 +113,8 @@ Starting at $60/mo ($0.09/hour). See [High Memory Pricing](https://www.linode.co
 ### GPU Instances
 
 **32 GB - 128 GB Memory, 8 - 24 Dedicated vCPUs, 640 GB - 2560 GB Storage**<br>
-Starting at $1000/mo ($1.50/hour). See [GPU Pricing](https://www.linode.com/pricing/#compute-gpu) for a full list of plans, resources, and pricing.
+Starting at $1000/mo ($1.50/hour). See [GPU Pricing](https://www.linode.com/pricing/#compute-gpu) for a full list of plans, resources, and pricing.<br>
+GPU plans are in limited availability.
 
 [GPU Instances](/docs/products/compute/compute-instances/plans/gpu/) are the only instance type equipped with [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) (up to 4) for on demand execution of complex processing workloads. These GPUs have CUDA cores, Tensor cores, and RT (Ray Tracing) cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
 

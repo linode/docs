@@ -47,18 +47,25 @@ Dedicated CPU instances are available across [all regions](https://www.linode.co
 | Resource | Available Plans |
 | -- | -- |
 | vCPU cores | 2-64 cores |
-| Memory | 4 GB - 512 GB |
+| Memory | 4 GB - 512 GB\* |
 | Storage | 80 GB - 7200 GB |
 | Outbound Network Transfer | 4 TB - 12 TB |
 | Outbound Network Bandwidth | 4 Gbps - 12 Gbps |
 
+\*512 GB plans are in limited availability.<br><br>
 Pricing starts at $36/month for a Dedicated CPU Compute Instance with 2 vCPU cores, 4GB of memory, and 80 GB of SSD storage. Pricing may vary by region. Review the [Pricing page](https://www.linode.com/pricing/#compute-dedicated) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.
 
 ## Dedicated CPU Use Cases
 
 While a shared plan is usually a good fit for most use cases, a Dedicated CPU Linode may be recommended for a number of workloads related to high and constant CPU processing. Such examples include:
 
-  - [CI/CD Toolchains and Build Servers](#ci-cd-toolchains-and-build-servers)
+- [Dedicated Competition-Free Resources](#dedicated-competition-free-resources)
+- [Upgrading from a Shared CPU Instance](#upgrading-from-a-shared-cpu-instance)
+- [Recommended Workloads](#recommended-workloads)
+- [Availability](#availability)
+- [Plans and Pricing](#plans-and-pricing)
+- [Dedicated CPU Use Cases](#dedicated-cpu-use-cases)
+  - [CI/CD Toolchains and Build Servers](#cicd-toolchains-and-build-servers)
   - [Game Servers](#game-servers)
   - [Audio and Video Transcoding](#audio-and-video-transcoding)
   - [Big Data and Data Analysis](#big-data-and-data-analysis)

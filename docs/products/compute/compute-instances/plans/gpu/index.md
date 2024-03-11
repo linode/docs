@@ -11,6 +11,8 @@ Scientists, artists, and engineers need access to significant parallel computati
 
 **GPU plans are ideal for highly specialized workloads that would benefit from dedicated NVIDIA GPUs, including machine learning, AI, and data/graphics processing.**
 
+GPU plans are in limited availability.
+
 ## On-demand
 
 Between purchasing, installing, and maintaining GPUs, the cost of ownership is often high. GPU Compute Instances allow you to leverage the power of GPUs while benefiting from the main value proposition of cloud: turning a CapEx into an OpEx.

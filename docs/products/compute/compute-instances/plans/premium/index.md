@@ -69,9 +69,10 @@ Premium Compute Instances are currently available in select data centers.
 | Resource | Available Plans |
 | -- | -- |
 | vCPU cores | 2-64 cores |
-| Memory | 4 GB - 512 GB |
+| Memory | 4 GB - 512 GB\* |
 | Storage | 80 GB - 7,200 GB |
 | Outbound Network Transfer | 4 TB - 12 TB |
 | Outbound Network Bandwidth | 4 Gbps - 12 Gbps |
 
+\*512 GB plans are in limited availability.<br><br>
 Pricing starts at $43/month for a Premium CPU Compute Instance with 2 vCPU cores, 4GB of memory, and 80 GB of SSD storage. Pricing may vary by region. Review the [Pricing page](https://www.linode.com/pricing/) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.
