@@ -42,6 +42,8 @@ modified: 2023-02-09
 
 - [Drain Node Pools with kubectl](/docs/products/compute/kubernetes/guides/drain-node-pools/)
 
+- [Create a Custom CoreDNS Configuration](/docs/products/compute/kubernetes/guides/coredns-custom-config/)
+
 ## Going Further
 
 ### Kubernetes Basics
