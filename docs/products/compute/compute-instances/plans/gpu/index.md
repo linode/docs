@@ -3,7 +3,7 @@ title: "GPU Compute Instances"
 linkTitle: "GPU"
 description: "Virtual machines equipped with NVIDIA Quadro GPUs that are ideal for complex processing and GPU-optimized workloads."
 published: 2023-01-18
-modified: 2023-09-21
+modified: 2024-03-11
 aliases: ['/products/compute/gpu/','/platform/linode-gpu/why-linode-gpu/','/guides/why-linode-gpu/','/products/compute/gpu/guides/use-cases/']
 ---
 

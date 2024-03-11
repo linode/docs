@@ -5,7 +5,7 @@ linkTitle: "Choosing a Plan"
 description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
 keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 published: 2019-02-04
-modified: 2023-07-06
+modified: 2024-03-11
 modified_by:
     name: Linode
 tags: ["linode platform"]
