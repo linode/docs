@@ -64,7 +64,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-1.  Once logged in, access the credentials file by runing the following command:
+1.  Once logged in, access the credentials file by running the following command:
 
     ```command
     cat /home/$USERNAME/credentials
