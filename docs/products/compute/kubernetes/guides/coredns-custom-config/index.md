@@ -41,7 +41,7 @@ This guide assumes you have a working [Linode Kubernetes Engine (LKE)](https://w
 You can view your cluster's default CoreDNS configuration by using the following command:
 
 ```command
-kubectl get configmap -n kube-system coredns -o yaml
+kubectl get configmap -n kube-system coredns-base -o yaml
 ```
 
 The output will resemble the following:
@@ -74,7 +74,7 @@ data:
     import custom/*.server
 kind: ConfigMap
 metadata:
-  name: coredns
+  name: coredns-base
   namespace: kube-system
   [...]
 ```
@@ -82,7 +82,7 @@ metadata:
 The default CoreDNS configuration is located under the `Corefile` field in the above ConfigMap.
 
 {{< note type="warning" >}}
-Do not modify the `kube-system/coredns` ConfigMap that comes with your LKE cluster. It may be restored to its original state at any time and without notice.
+Do not modify the `kube-system/coredns-base` ConfigMap that comes with your LKE cluster. It may be restored to its original state at any time and without notice.
 {{< /note >}}
 
 ## Custom CoreDNS Configuration
