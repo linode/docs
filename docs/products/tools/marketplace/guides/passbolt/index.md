@@ -26,7 +26,7 @@ modified_by:
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for Passbolt.
+- **Suggested plan:** For best results, 4GB Dedicated CPU or Shared Compute instance for Passbolt.
 
 ### Passbolt Options
 
@@ -60,7 +60,7 @@ Once the passphrase is set you will be able to view the Passbolt main screen.
 
     ![Screenshot of Passbolt main screen](passbolt_mainscreen.jpg)
 
-Please visit [Passbolt Installation Documentation](https://help.passbolt.com/hosting/install/ce/ubuntu/ubuntu.html) for information on how to configure Passbolt.
+For more information, visit [Passbolt Installation Documentation](https://help.passbolt.com/hosting/install/ce/ubuntu/ubuntu.html) for details on how to configure Passbolt.
 
 ### Email Configuration
 
@@ -77,7 +77,7 @@ Postfix is installed as part of the Marketplace App, allowing you to send a test
 {{< note >}}
 To make the most out of Passbolt you need a working email setup for email notifications (e.g. - account registration, password recovery and other critical notifications). For more information on setting this up, see the [Configure Email Providers](https://help.passbolt.com/configure/email/setup) page on Passbolt's website.
 
-Regardless of how you configure your mail server, it is strongly recommended that you follow the best practices to ensure mail deliverability. Please see the [Running a Mail Server](https://www.linode.com/docs/guides/running-a-mail-server/) guide for more information.
+Regardless of how you configure your mail server, we suggest that you follow the best practices to ensure mail deliverability. For more information, see the [Running a Mail Server](https://www.linode.com/docs/guides/running-a-mail-server/) guide.
 {{< /note >}}
 
 ### Account Recovery
