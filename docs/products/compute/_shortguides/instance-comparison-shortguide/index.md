@@ -13,5 +13,6 @@ show_on_rss_feed: false
 | [**High Memory**](/docs/products/compute/compute-instances/plans/high-memory/) | Dedicated | **24 GB - 300 GB Memory, 2 - 16 vCPUs, 20 GB - 340 GB Storage**<br>[Starting at $60/mo ($0.09/hour)](https://www.linode.com/pricing/#compute-high-memory)<br><br>Optimized for memory-intensive applications and equipped with Dedicated CPUs, which provide competition free guaranteed CPU resources.<br><br>*Best for in-memory databases, in-memory caching systems, big data processing, and any production application that requires a large amount of memory while keeping costs down.* |
 | [**GPU**](/docs/products/compute/compute-instances/plans/gpu/)<br>(limited availability) | Dedicated | **1 - 4 NVIDIA Quadro RTX cards, 24 - 96 GB Video Memory, 32 GB - 128 GB Memory, 8 - 24 vCPUs, 640 GB - 2560 GB Storage**<br>[Starting at $1000/mo ($1.50/hour)](https://www.linode.com/pricing/#compute-gpu)<br><br>The only instance type that's equipped with NVIDIA Quadro RTX 6000 GPUs (up to 4) for on demand execution of complex processing workloads. <br><br>*Best for applications that require massive amounts of parallel processing power, including machine learning, AI, graphics processing, and big data analysis.* |
 
-\*512 GB Dedicated CPU and Premium plans are in limited availability.<br><br>
+\*512 GB Dedicated CPU and Premium plans are in limited availability.
+
 See [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) for a full comparison.
