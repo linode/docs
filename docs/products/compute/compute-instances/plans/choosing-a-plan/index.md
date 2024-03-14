@@ -115,7 +115,7 @@ Starting at $60/mo ($0.09/hour). See [High Memory Pricing](https://www.linode.co
 All GPU plans are in limited availability.
 
 **32 GB - 128 GB Memory, 8 - 24 Dedicated vCPUs, 640 GB - 2560 GB Storage**<br>
-Starting at $1000/mo ($1.50/hour). See [GPU Pricing](https://www.linode.com/pricing/#compute-gpu) for a full list of plans, resources, and pricing. 
+Starting at $1000/mo ($1.50/hour). See [GPU Pricing](https://www.linode.com/pricing/#compute-gpu) for a full list of plans, resources, and pricing.
 
 [GPU Instances](/docs/products/compute/compute-instances/plans/gpu/) are the only instance type equipped with [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) (up to 4) for on demand execution of complex processing workloads. These GPUs have CUDA cores, Tensor cores, and RT (Ray Tracing) cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
 
