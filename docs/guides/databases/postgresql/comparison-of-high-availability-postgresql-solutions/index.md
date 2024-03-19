@@ -5,7 +5,7 @@ description: 'This guide describes the high availability and resiliency options 
 keywords: ['PostgreSQL high availability','high availability comparison PostgreSQL','PostgreSQL patroni','PostgreSQL repmgr','PostgreSQL paf']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
-published: 2023-10-02
+published: 2024-03-19
 modified_by:
   name: Linode
 external_resources:
@@ -34,11 +34,11 @@ Adding redundancy to a database in the form of a *high availability* (HA) archit
 The term *cluster* has different meanings in different products. It does not always mean a redundant set of databases. Sometimes it only refers to a group of databases in the same network or at the same location. "Cluster" also has a variety of meanings in PostgreSQL, but it does not refer to redundant databases. This is discussed more thoroughly in the following section.
 {{< /note >}}
 
-Organizations typically define a *Maximum Tolerable Downtime* (MTD) for each resource, including websites and databases. MTD indicates the amount of unavailability the business can tolerate. For websites and key databases, an uptime metric of about 99.9 to 99.95% satisfies prevailing industry standards. This amounts to between five to ten hours of downtime a year. The tolerable downtime for a database can be higher or lower depending on its importance. Critical databases might have an even lower downtime tolerance. An internal human resources database probably has a less stringent requirement. However, a high-availability solution likely has a role to play in both cases.
+Organizations typically define a *Maximum Tolerable Downtime* (MTD) for each resource, including websites and databases. MTD indicates the amount of unavailability the business can tolerate. For websites and key databases, an uptime metric of about 99.9 to 99.95% satisfies prevailing industry standards. This amounts to between five to ten hours of downtime a year. The tolerable downtime for a database can be higher or lower depending on its importance. Critical databases might have an extremely low downtime tolerance. An internal human resources database likely has less stringent requirements. However, a high-availability solution has a role to play in both cases.
 
-Most high-availability architectures, including the solutions for PostgreSQL redundancy, incur additional costs for an organization. These include deploying more servers and configuring and managing a more complex network. For some smaller organizations, these costs might not make sense. Even within larger organizations, not all systems have to be protected. For instance, test or staging environments for a tech company might not require high-availability infrastructure.
+Most high-availability architectures, including the solutions for PostgreSQL redundancy, incur additional costs for an organization. These costs include deploying more servers and configuring and managing a more complex network. For some smaller organizations, the additional cost might not make sense. Even within larger organizations, not all systems need high availability infrastructure, such as for test or staging environments.
 
-## What are the Components of a High Availability Design?
+## High Availability Concepts for PostgreSQL
 
 PostgreSQL is a powerful, flexible, and reliable relational database system. However, it does not automatically implement high availability. This means it remains vulnerable to network outages or server failures. Users must take additional steps to enable resiliency and ensure their databases are consistently operational.
 
@@ -69,17 +69,22 @@ Most solutions implement some additional optional features. They are usually abl
 
 The PostgreSQL site contains a general discussion of high availability along with a list of configurable settings. Consult the [PostgreSQL high availability documentation](https://www.postgresql.org/docs/current/high-availability.html) for more information.
 
-### Some Important High Availability Concepts
+### PostgreSQL High Availability Components
 
 A complete high-availability architecture involves a number of components and processes working together to replicate data. Any organization implementing a high-availability solution should define target metrics for database uptime, switchover recovery time, and acceptable data loss.
 
 Some of the most important concepts involving database high availability are as follows:
 
 - **Data Replication**: Data replication generates multiple copies of the original database data. It logs any database additions and updates and transmits them to all nodes in the HA Cluster. These changes can be database data transactions or alterations to the database schema or table structure. Replication can be either synchronous or asynchronous.
+
 - **High Availability Cluster (HA Cluster)**: A HA Cluster is a collection of nodes that each have a copy of the same underlying data. Having multiple copies of the dataset is essential for data redundancy. Any one of the database servers can respond to queries, and any node can potentially become the master node. From the user's point of view, the HA Cluster appears as a single database. In most cases, users do not know which node responded to their query.
+
 - **Primary Node**: This is the master node for the HA cluster. It is the recipient of all database changes, including writes and schema updates. Therefore, it always has the most current data set. It replicates these changes to the other instances in the HA cluster, sending them the transactions in either list or stream format. Primary nodes can also handle read requests, but these are typically distributed between the different nodes for load-balancing purposes. The primary node is elected through a *primary election*.
+
 - **Replica Node**: Also known as a *secondary node*, a replica receives updates from the primary node. During regular operation, these nodes can handle read requests. However, depending on the HA architecture, the data in the replica data set might not be completely up to date. Each HA cluster can contain multiple replica nodes for added redundancy and load balancing.
+
 - **Failover**: In the event of a primary node failure, a failover event occurs. One of the secondary nodes becomes the primary node and supervises database updates. Administrators can initiate a manual failover for database maintenance purposes. This scheduled activity is sometimes known as a *manual switchover*. A switch back to the original master is known as a *fallback*.
+
 - **Write-ahead log (WAL)**: This log stores a record of all changes to the database. A unique sequence number identifies each WAL record. In PostgreSQL, the WAL is stored in a *segment file*. A segment file typically contains a large number of records.
 
 ### Methods for Implementing Database Replication
@@ -91,14 +96,15 @@ There are two main forms of data replication and two methods of implementing it.
 
 The following algorithms are used to implement replication:
 
-- **File-based log shipping**: In this replication method, the primary asynchronously transmits segment files containing the WAL logs to the replicas. This method cannot be used synchronously because the WAL files build up over a large number of transactions. The primary node continually records all transactions, but the replicas only process the changes after they receive a copy of the file. This is a good approach for latency-sensitive but loss-tolerant applications.
-- **Streaming replication**: A streaming-based replication algorithm immediately transmits each update to the replicas. The primary does not have to wait for transactions to build up in the WAL before transmitting the updates. This results in more timely updates on the replicas. Streaming can be either asynchronous, which is the default setting, or synchronous. In both cases, the updates are immediately sent over to the replicas. However, in synchronous streaming, the primary waits for a response from the replicas before confirming the commit. Users can enable synchronous streaming on PostgreSQL through the `sychronous_commit` configuration option.
+- **File-based log shipping**: In this replication method, the primary node asynchronously transmits segment files containing the WAL logs to the replicas. This method cannot be used synchronously because the WAL files build up over a large number of transactions. The primary node continually records all transactions, but the replicas only process the changes after they receive a copy of the file. This is a good approach for latency-sensitive loss-tolerant applications.
+
+- **Streaming replication**: A streaming-based replication algorithm immediately transmits each update to the replicas. The primary node does not have to wait for transactions to build up in the WAL before transmitting the updates. This results in more timely updates on the replicas. Streaming can be either asynchronous, which is the default setting, or synchronous. In both cases, the updates are immediately sent over to the replicas. However, in synchronous streaming, the primary waits for a response from the replicas before confirming the commit. Users can enable synchronous streaming on PostgreSQL through the `sychronous_commit` configuration option.
 
 Another relevant set of concepts relates to how the HA cluster handles a split-brain condition. This occurs when multiple segments of the HA cluster are active but are not able to communicate with each other. In some circumstances, more than one node might attempt to become the primary. To handle this situation, the replication manager structures the rules for a primary election or adds a *quorum*. This problem can also be eliminated through the use of an external monitor.
 
 ## Deploying a PostgreSQL HA Cluster on Akamai Cloud Computing
 
-There are two main methods of deploying a PostgreSQL high-availability cluster on Akamai servers. There is the traditional manual configuration method and the [Akamai Marketplace](/docs/products/tools/marketplace/guides/postgresql-cluster/) solution.
+There are two main methods of deploying a PostgreSQL high-availability cluster on Akamai. There is the traditional manual configuration method and the [Akamai Marketplace](/docs/products/tools/marketplace/guides/postgresql-cluster/) solution.
 
 For a concise discussion and comparison of the three main alternatives, see the Akamai blog about PostgreSQL's high availability.
 
@@ -110,7 +116,7 @@ The Akamai Marketplace solution uses the [*repmgr*](https://www.repmgr.org/) rep
 
 This solution has some limitations. It is not possible to choose the size of the HA cluster or manually edit any application variables. It is a viable option for a smaller organization with less technical expertise. However, it might not meet the specific requirements of a more complicated network.
 
-It is also possible to configure redundancy using the [IP failover](/docs/products/compute/compute-instances/guides/failover/) option. This feature allows multiple computing instances to share an IP address. If the primary system becomes inaccessible, the secondary server can take over. This enables some level of redundancy, although it is more limited than a full high-availability solution. Adding this enhancement involves downloading the [Lelastic](https://github.com/linode/lelastic) application and adding configuration using the Akamai cloud manager.
+It is also possible to configure redundancy using the [IP failover](/docs/products/compute/compute-instances/guides/failover/) option. This feature allows multiple computing instances to share an IP address. If the primary system becomes inaccessible, the secondary server can take over. This enables some level of redundancy, although it is more limited than a full high-availability solution. Adding this enhancement involves configuring the [Lelastic](https://github.com/linode/lelastic) utility on your instances.
 
 ### Manual Deployment Using a Replication Manager
 
@@ -130,7 +136,7 @@ Patroni configures a set of nodes into an HA cluster and configures streaming re
 
 Patroni can be installed on Linux nodes using `pip`. Mandatory configuration settings can be configured globally, locally using a YAML file, or through environment variables. The global settings are dynamic and are applied asynchronously to all nodes in the HA cluster. However, local configuration always takes precedence over any global settings. Patroni supports a REST API, which is useful for monitoring and automation purposes. This API is used to determine the status and role of each node in the HA cluster.
 
-Here are some of the main advantages of Patroni.
+**Advantages:**
 
 - It is a mature open-source product.
 - It performs very well in standard high-availability test scenarios. It is able to handle more failure scenarios than the alternatives.
@@ -144,7 +150,7 @@ Here are some of the main advantages of Patroni.
 - Patroni works well with Kubernetes as part of an automated pipeline.
 - Storing the leader key in the DCS enforces consensus about the primary node and avoids multiple masters.
 
-Patroni has only a few drawbacks:
+**Drawbacks:**
 
 - It is unable to detect a misconfigured replica node.
 - It requires manual intervention in a few cases, such as when the Patroni process itself fails.
@@ -162,7 +168,7 @@ Repmgr can be installed using the `apt` package. It includes a command line tool
 
 The other repmgr component is a daemon to actively monitor the servers and performs a switch when necessary. The daemon is also in charge of sending notifications and alerts. It is able to detect failures of a primary or standby node. If the primary fails, repmgr attempts to reconnect to it. If this fails, it performs a failover and promotes one of the standby servers. It fences off a failed primary in case it unexpectedly comes online again. Repmgr uses a *witness server* to cast a deciding vote for the primary server election in certain situations after a switchover.
 
-Some of the advantages of repmgr are as follows:
+**Advantages:**
 
 - It is a free open-source suite.
 - It provides full administrative control over the HA cluster. Users can promote a standby to become the primary node, perform a manual switchover, and use the dry run option.
@@ -173,7 +179,7 @@ Some of the advantages of repmgr are as follows:
 - It does not require additional ports for communication.
 - It is robust and features good performance.
 
-There are a few downsides to repmgr:
+**Drawbacks:**
 
 - It cannot fully manage all resources and might require manual intervention to restart a failed node after some failures.
 - It cannot detect misconfigured nodes and can sometimes believe a misconfigured node is an available standby node.
@@ -182,13 +188,13 @@ There are a few downsides to repmgr:
 
 For more information on repmgr, see the [repmgr documentation](https://www.repmgr.org/docs/current/getting-started.html).
 
-### Pg_auto_failover (PAF)
+### pg_auto_failover (PAF)
 
 The [PAF](https://pg-auto-failover.readthedocs.io/en/main/) project is a PostgreSQL extension for monitoring and managing high availability. Unlike the other HA cluster managers, it requires at least three nodes to work properly. The network requires a primary node, at least one secondary node, and a monitor node. The monitoring node verifies the condition of each node using regular health checks. It manages any switchover events using a finite state machine. PAF refers to the combination of the three nodes as a *formation*. The primary and secondary nodes are responsible for advertising any status changes to the monitor.
 
 PAF leverages PostgreSQL functionality, implementing a *keeper agent* process on each node. It uses the Pacemaker resource manager to monitor the system resources and database health. However, users must initialize and configure all nodes in the formation before using PAF. They must also provide a recovery template file for each node. The multi-standby solution supports a more granular configuration, including a replication quorum and a candidate priority for each node. PAF mandates synchronous replication to eliminate the possibility of data loss in the event of a switchover. If the monitor server becomes inactive, replication can still occur, but the replication process changes to asynchronous mode.
 
-Some of the advantages of pg_auto_failover include the following:
+**Advantages:**
 
 - It accounts for latency in determining node status. Secondary nodes with significant lag cannot be considered as potential primaries. This helps prevent data loss.
 - It uses synchronous streaming to guarantee a lossless switchover.
@@ -203,7 +209,7 @@ Some of the advantages of pg_auto_failover include the following:
 - It does not require manual intervention in most failure scenarios. PAF can automatically restart a failed or stopped PostgreSQL process.
 - It allows users to manage service dependencies.
 
-PAF is a very reliable application, but it also has a few drawbacks.
+**Drawbacks:**
 
 - The monitor node is a single point of failure. If it fails, an automatic failover can no longer occur.
 - It requires a monitor node. This increases the cost and complexity of the solution.
