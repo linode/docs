@@ -47,10 +47,10 @@ Launch your web browser and navigate to the custom domain you set during deploym
 
 ## Obtaining the Jupyter Token
 
-By default, Jupyter issues a token for authentication. The Jupyter access token was automatically generated during the initial install process and is stored in the `/root/.credentials` file. To view the default token, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, and check the contents of the file:
+By default, Jupyter issues a token for authentication. The Jupyter access token was automatically generated during the initial install process and is stored in the `/home/$USERNAME/.credentials` file. To view the default token, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, and check the contents of the file:
 
 ```command
-cat /root/.credentials
+cat /home/$USERNAME/.credentials
 ```
 
 Copy and paste this token into the **Password or token:** field on the Jupyter login page. If you prefer password authentication, use the token to set a password in the **Setup a Password** section on the login page. Once this is done, you can employ both the token and the password for accessing JupyterLab.

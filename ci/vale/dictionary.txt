@@ -1707,6 +1707,7 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pg_auto_failover
 pg_dump
 pg_dumpall
 pg_restore
@@ -1933,6 +1934,7 @@ replicants
 replicaset
 replicationcontrollers
 replset
+repmgr
 repo
 repos
 reputational
