@@ -36,7 +36,7 @@ The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysq
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
     {{< note >}}
-    The password for the MySQL root user is automatically generated and provided in the file `/root/.credentials` when the LEMP deployment completes.
+    The password for the MySQL root user is automatically generated and provided in the file `/home/$USERNAME/.credentials` when the LEMP deployment completes.
     {{< /note >}}
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}
