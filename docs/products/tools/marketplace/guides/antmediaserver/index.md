@@ -38,23 +38,39 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, c
 {{< content "marketplace-verify-standard-shortguide">}}
 
 {{< note >}}
-**Estimated deployment time:** Ant Media Server should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** Ant Media Server should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
-### Configuration Options
+## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** 8GB Dedicated CPU Instance or higher
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Recommended plan:** 16GB Dedicated CPU Instance
 
-## Getting Started after Deployment
+### Ant Media Server Options
 
-### Access your Ant Media Server App
+- **SOA email address:** Enter the email address that should be used for the SSL generation.
 
-1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
-1.  The **Create First Account** screen appears. Complete this form and click **Create Account**.
+{{< content "marketplace-custom-domain-fields-shortguide">}}
 
-    ![antmediaserver.png 'Ant Media Server account creation page.'](antmediaserver.png)
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
+### Access the Ant Media Server Dashboard
+
+1. Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+
+1. After your account has been created, the login page appears. Enter the username and password that you just created. The username and password can be obtained in the `/home/$USERNAME/.credentials` file.
+
+1. Once logged in, the Ant Media Server Dashboard appears. From here, you can manage your entire application.
+
+    ![Screenshot of the Dashboard page](ant-media-server-dashboard.png)
+
+1. To start using the Enterprise Edition of Ant Media Server, you need to obtain a license. Visit the [Self-Hosted Solutions](https://antmedia.io/#selfhosted) page on Ant Media's website to order a license.
+
+1. Once the license key is obtained, navigate to the Settings tab within the Ant Media Dashboard, enter the License Key, and click save.
+
+    ![Screenshot of the Settings Page](ant-media-server-settings.png)
 
 For more on Ant Media Server, check out the following resources:
 
