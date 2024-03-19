@@ -29,16 +29,17 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Django Options
 
 - **Django user** *(required)*: The username for your Django application.
-- **Django password** *(required)*: Enter a *strong* password for your Django user.
-- **Django user email** *(required)*: The email address you wish to use for your Django user.
+- **Django user email** *(required)*: The email address you wish to use for your Django user and to generate the SSL certificates.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 
@@ -47,24 +48,12 @@ authors: ["Linode"]
 ### Access Django
 
 {{< note >}}
-The Django Marketplace App will assign `DjangoApp` as the [Django project name](https://docs.djangoproject.com/en/3.0/intro/tutorial01/#creating-a-project).
+The Django Marketplace App will assign `DjangoApp` as the [Django project name](https://docs.djangoproject.com/en/5.0/intro/tutorial01/#creating-a-project).
 {{< /note >}}
 
-After Django has finished installing, you will be able to access your Django site at your Linode's IPv4 address, for instance: `http://yourlinodeip:8000`.
+1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-1.  To find your Linode's IPv4 address. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
-
-1. Find the Linode you just created when deploying your app and select it.
-
-1. Navigate to the **Networking** tab.
-
-1. The IP address will be displayed under the **Address** column in the **IPv4** table.
-
-1. Copy and paste the IPv4 address into a browser window followed by `:8000`. You should see the Django test page appear.
-
-    ![Django Test Page](django-test-page.png "Django Test Page")
-
-1.  Once you have verified that you can access your Django site via the browser, you can log in using the admin credentials you created when deploying your app. Update the address in the browser to: `http://yourlinodeip:8000/admin`.
+1.  Once you have verified that you can access your Django site via the browser, you can log in using the admin credentials generated during the deployment. The credentials can be found in `/home/$USERNAME/.credentials`. Update the address in the browser to: `https://[domain]/admin`.
 
     ![Login to your Django site.](django-admin-login.png "Login to your Django site")
 

@@ -39,10 +39,12 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher
 
 ### Mastodon Options
+
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 - **Domain** (*required*): The domain name you wish to use for the mastodon server, such as *example.com*.
 - **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/).
