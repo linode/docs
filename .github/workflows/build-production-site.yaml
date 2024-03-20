@@ -1,21 +1,21 @@
-name: Deploy to feature testing server
+name: Build production site
 
 on:
+  release:
+    types: [published]
   push:
     branches:
-      - 'feature/testing-linodedocs'
       - 'cicd-obj-update'
+
 
 # This workflow builds the site with Hugo, compresses it, uploads it to an
 # object storage bucket, and updates the sandbox Algolia app to reflect the
-# content in the testing version of the site. Another non-github.com delivery
-# system is responsible for deploying the compressed site to a testing
+# content in the production version of the site. Another non-github.com delivery
+# system is responsible for deploying the compressed site to a production
 # webserver.
 #
-# This workflow is triggered whenever the `feature/testing-linodedocs` branch
-# is updated. We use this testing workflow to test new website features,
-# especially docs theme updates that might have unexpected interactions with
-# the CDN.
+# This workflow is triggered whenever a release tag matching the `vX.Y.Z`
+# format is created on the docs repo.
 #
 # The working directory for this GitHub Action is under:
 # /home/runner/work/docs/docs/
@@ -28,7 +28,7 @@ on:
 # This workflow runs `hugo` to build the site inside the `docs-repo` folder.
 # The site is rendered into the `docs-repo/public/` directory. The workflow
 # uses SFTP to upload a tarball of this folder over to the destination web
-# server.
+# servers.
 #
 # We check out the linode-docs-theme repo because it contains a
 # `linode_algolia_admin` tool that we use to update the Algolia search indices.
@@ -51,12 +51,13 @@ on:
 #         └── linode_algolia_admin
 
 jobs:
-  deploy-to-feature-testing-server:
+  deploy-to-production:
     if: github.repository_owner == 'linode'
     runs-on: ubuntu-latest
 
     environment:
-      name: deploy_to_feature_testing_server
+      name: deploy_to_production
+      url: ${{ vars.DOCS_WEBSITE_URL }}
 
     steps:
     - name: 1. Set up Hugo
@@ -68,6 +69,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         path: 'docs-repo'
+        # ref: 'main'
 
       # Debugging step so we can check if the right version
       # of the docs repo is checked out
@@ -145,13 +147,10 @@ jobs:
       env:
         HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
         HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
-        HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
-        HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
-        HUGO_IGNOREERRORS: algolia-cachewarmer
       working-directory: ./docs-repo
       run: |
         hugo config
-        hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
+        hugo -b "${{ vars.DOCS_WEBSITE_URL }}" --gc --minify -d public
 
       # Debugging step that lists the Hugo-rendered files
       # to make sure the site was built
@@ -164,31 +163,29 @@ jobs:
       # When Hugo builds, it renders search index data to a collection of
       # data files under public/. This step uploads that data to the
       # Algolia search backend
-    - name: 11. Update Algolia (sandbox)
+    - name: 11. Update Algolia
       working-directory: ./linode-docs-theme-repo
       env:
         ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
         ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
-        ALGOLIA_INDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
       run: |
         cd scripts/linode_algolia_admin/
 
-        # The testing-docs-prefix-update sequence does the following:
-        # - Downloads data from the starter_ prefixed linode-wp,
-        #   linode-community, and linode-documentation-sections indices to the
-        #   GitHub Action workspace
-        # - Pushes the rendered index JSON files under the public/ folder
-        #   in the docs repo from Hugo to Algolia. These are:
-        #   - public/index.json
-        #   - public/api/index.json
-        #   - public/data/sections/index.json
-        # - Merge the data from the separate indices and push it into the
-        #   PREFIX_linode-merged index in Algolia
-        # - Update the settings and synonyms for the PREFIX_linode-merged index
-        #   in Algolia
-        # - Delete the PREFIX_linode-documentation and
-        #   PREFIX_linode-documentation-api indices in Algolia to save space
-        go run main.go sequence -source-dir ../../../docs-repo/public testing-docs-prefix-update $ALGOLIA_INDEX_PREFIX
+        # Hugo renders the site to the `public` directory within the docs repo.
+        # This includes three files with Algolia index data:
+        # - public/index.json
+        # - public/api/index.json
+        # - public/data/sections/index.json
+        # The pushdocs command uploads this data to Algolia
+        go run main.go pushdocs -source-dir ../../../docs-repo/public
+
+        # The settings (e.g. ranking configuration) and synonyms for the
+        # linode-merged index are stored in version control, and the
+        # following command pushes those settings/synonyms to the Algolia app
+        go run main.go -indices linode-merged push -replace settings,synonyms
+
+        # The refresh-merge-and-push sequence assumes that the linode-wp and linode-community indices already exist in the Algolia app
+        go run main.go sequence refresh-merge-and-push
 
       # Why build Hugo twice? In order to render the Explore Docs nav menu,
       # Hugo downloads data from the Algolia search backend. However, the
@@ -206,12 +203,10 @@ jobs:
       env:
         HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
         HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
-        HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
-        HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
       working-directory: ./docs-repo
       run: |
         hugo config
-        hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
+        hugo -b "${{ vars.DOCS_WEBSITE_URL }}" --gc --minify -d public
 
       # The gitcommithash.txt file is used in the last workflow step to verify that the deployment was successful
     - name: 13. Add gitcommithash.txt to rendered public/ folder
@@ -235,10 +230,10 @@ jobs:
         secret_key: ${{ secrets.OBJ_SECRET_KEY }}
 
       # Upload the tarball to an object storage bucket. Another non-github.com
-      # delivery system is used to deploy this tarball to the testing webserver
+      # delivery system is used to deploy this tarball to the prod webserver
     - name: 16. Upload website tarball to object storage
       run: |
         echo "$(date +%s)" > build-date.txt # Print current Unix timestamp to a text file
 
-        s3cmd put docs-$GITHUB_SHA.tar.gz s3://${{ secrets.OBJ_BUCKET_NAME }}/testing/docs-$GITHUB_SHA/
-        s3cmd put build-date.txt s3://${{ secrets.OBJ_BUCKET_NAME }}/testing/docs-$GITHUB_SHA/
+        s3cmd put docs-$GITHUB_SHA.tar.gz s3://${{ secrets.OBJ_BUCKET_NAME }}/prod/docs-$GITHUB_SHA/
+        s3cmd put build-date.txt s3://${{ secrets.OBJ_BUCKET_NAME }}/prod/docs-$GITHUB_SHA/
