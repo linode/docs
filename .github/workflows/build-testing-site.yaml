@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - 'feature/testing-linodedocs'
-      - 'cicd-obj-update'
 
 # This workflow builds the site with Hugo, compresses it, uploads it to an
 # object storage bucket, and updates the sandbox Algolia app to reflect the

@@ -3,10 +3,6 @@ name: Build production site
 on:
   release:
     types: [published]
-  push:
-    branches:
-      - 'cicd-obj-update'
-
 
 # This workflow builds the site with Hugo, compresses it, uploads it to an
 # object storage bucket, and updates the sandbox Algolia app to reflect the
