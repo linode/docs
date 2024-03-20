@@ -1,16 +1,20 @@
-name: Deploy to feature testing server
+name: Build testing site
 
 on:
   push:
     branches:
       - 'feature/testing-linodedocs'
 
-# This workflow builds the site with Hugo, uploads it to a testing web
-# server, and updates the sandbox Algolia app to reflect the content in the
-# testing version of the site. This happens whenever the
-# `feature/testing-linodedocs` branch is updated. We use this testing workflow
-# to test new website features, especially docs theme updates that might have
-# unexpected interactions with the CDN.
+# This workflow builds the site with Hugo, compresses it, uploads it to an
+# object storage bucket, and updates the sandbox Algolia app to reflect the
+# content in the testing version of the site. Another non-github.com delivery
+# system is responsible for deploying the compressed site to a testing
+# webserver.
+#
+# This workflow is triggered whenever the `feature/testing-linodedocs` branch
+# is updated. We use this testing workflow to test new website features,
+# especially docs theme updates that might have unexpected interactions with
+# the CDN.
 #
 # The working directory for this GitHub Action is under:
 # /home/runner/work/docs/docs/
@@ -46,12 +50,12 @@ on:
 #         └── linode_algolia_admin
 
 jobs:
-  deploy-to-feature-testing-server:
+  build-testing-site:
     if: github.repository_owner == 'linode'
     runs-on: ubuntu-latest
 
     environment:
-      name: deploy_to_feature_testing_server
+      name: build_testing_site
 
     steps:
     - name: 1. Set up Hugo
@@ -208,170 +212,33 @@ jobs:
         hugo config
         hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
 
-      # The gitcommithash.txt file is used in the last workflow step to verify that the deployment was successful
+      # The gitcommithash.txt file is used when the site is deployed to the
+      # webserver to verify that the deployment was successful.
     - name: 13. Add gitcommithash.txt to rendered public/ folder
       working-directory: ./docs-repo
       run: |
         echo $GITHUB_SHA > public/gitcommithash.txt
 
-    - name: 14. Set up SSH agent (docs webserver key)
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
-        ssh-private-key: ${{ secrets.DOCS_WEBSITE_SFTP_PRIVATE_KEY }}
-
       # Make a tarball of the site, because it will upload much, much quicker
       # than the uncompressed rendered site. The commit for this workflow run
       # is encoded in the name of the tarball.
-    - name: 15. Create tarball of docs website
+    - name: 14. Create tarball of docs website
       run: |
         tar --owner=${{ secrets.DOCS_WEBSITE_USER }} --group=${{ secrets.DOCS_WEBSITE_USER }} -czf docs-$GITHUB_SHA.tar.gz -C docs-repo/public/ .
 
-      # Upload the tarball to the website document root. Before the upload, the
-      # document root looks like this:
-      # {{ document_root }}/
-      #               docs -> docs-PREVIOUS_GITHUB_SHA
-      #               docs-PREVIOUS_GITHUB_SHA/
-      #
-      # Where PREVIOUS_GITHUB_SHA is the commit for the last time the deploy
-      # workflow ran, and the docs-PREVIOUS_GITHUB_SHA/ folder contains the
-      # rendered site from that last workflow run. `docs` is a symlink to that
-      # folder.
-      #
-      # After the upload, it looks like:
-      # {{ document_root }}/
-      #               docs -> docs-PREVIOUS_GITHUB_SHA
-      #               docs-PREVIOUS_GITHUB_SHA/
-      #               docs-CURRENT_GITHUB_SHA.tar.gz
-      #
-      # Note that the tarball is temporarily uploaded to
-      # {{ document_root }}/new-tarball-uploads/, and then moved into
-      # {{ document_root }}/. If it was uploaded directly to {{ document_root }}/, then
-      # the unzip script (see next workflow step for description) could try
-      # to unzip a half-uploaded tarball.
-    - name: 16. SFTP upload website tarball to webserver
+    - name: 15. Set up S3cmd CLI tool
+      uses: s3-actions/s3cmd@v1.5.0
+      with:
+        provider: linode
+        region: ${{ secrets.OBJ_REGION }}
+        access_key: ${{ secrets.OBJ_ACCESS_KEY }}
+        secret_key: ${{ secrets.OBJ_SECRET_KEY }}
+
+      # Upload the tarball to an object storage bucket. Another non-github.com
+      # delivery system is used to deploy this tarball to the testing webserver
+    - name: 16. Upload website tarball to object storage
       run: |
-        echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT }}" > sftp_known_hosts
+        echo "$(date +%s)" > build-date.txt # Print current Unix timestamp to a text file
 
-        sftp -o "UserKnownHostsFile=sftp_known_hosts" ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} <<EOF
-        lpwd
-        lls -al
-
-        cd docs
-        ls -al
-        cd new-tarball-uploads
-
-        put docs-$GITHUB_SHA.tar.gz
-        cd ..
-        rename new-tarball-uploads/docs-$GITHUB_SHA.tar.gz docs-$GITHUB_SHA.tar.gz
-        exit
-        EOF
-
-        rm sftp_known_hosts
-
-      # The server has a script that unzips any tarballs it finds
-      # in the website document root. There is a systemd service installed
-      # that runs the script roughly every 30 seconds. This workflow step
-      # waits for the server to run this script. To check if the tarball has
-      # been unzipped, we curl the /docs-CURRENT_GITHUB_SHA/ path on the server.
-      # If it hasn't been unzipped yet, this path won't exist, and the response
-      # will be a 404. If it has been unzipped, the path will exist, and the
-      # response will be a 200.
-
-      # The unzipped tarball is deleted by the script on the server.
-      #
-      # After the script has run, the document root looks like:
-      # {{ document_root }}/
-      #               docs -> docs-PREVIOUS_GITHUB_SHA
-      #               docs-PREVIOUS_GITHUB_SHA/
-      #               docs-CURRENT_GITHUB_SHA/
-    - name: 17. Wait for server to unzip tarball
-      shell: bash
-      env:
-        CACERT_BASE64: ${{ secrets.DOCS_WEBSITE_NO_CDN_CA_CERT_BASE64 }}
-      run: |
-        set +e
-
-        echo -n $CACERT_BASE64 | base64 --decode > cacert.pem
-
-        CHECK_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs-$GITHUB_SHA/"
-        echo "Waiting for server to unzip uploaded docs site tarball:"
-        echo "- Every one second, checking $CHECK_URL for an HTTP 200 OK response"
-        echo "- Waiting up to ${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }} seconds..."
-
-        # Wait for server to unzip the tarball of the docs site
-        for i in {1..${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }}}
-        do
-          curl --cacert cacert.pem -ILs $CHECK_URL | grep 'HTTP' | grep '200 OK'
-          if [ 0 -eq $? ]; then
-            rm cacert.pem
-            exit 0
-          fi
-
-          sleep 1
-        done
-
-        echo "Server did not unzip docs tarball before ${{ vars.DOCS_WEBSERVER_UNZIP_TIMEOUT }} seconds"
-        echo "This is often because there is not enough space on server. An administrator should review the available disk space on the server."
-        rm cacert.pem
-        exit 1
-
-      # Update the `docs` symlink in the website document root to point to the
-      # new folder created for the unzipped tarball.
-      #
-      # The website document root will look like this after the symlink is
-      # updated:
-      # {{ document_root }}/
-      #               docs -> docs-CURRENT_GITHUB_SHA
-      #               docs-CURRENT_GITHUB_SHA/
-      #               docs-PREVIOUS_GITHUB_SHA
-      #
-      # Note: a garbage collection script is periodically run on the server
-      # to remove the previous docs deployment folders
-    - name: 18. SFTP symlink docs folder on webserver
-      run: |
-        echo "${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} ${{ secrets.DOCS_WEBSITE_SFTP_HOST_VERIFICATION_FINGERPRINT }}" > sftp_known_hosts
-
-        sftp -o "UserKnownHostsFile=sftp_known_hosts" ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_SFTP_DESTINATION }} <<EOF
-        lpwd
-        lls -al
-
-        cd docs
-        ls -al
-
-        ln -s docs-$GITHUB_SHA new_docs
-        rename new_docs docs
-        ls -al
-        exit
-        EOF
-
-        rm sftp_known_hosts
-
-    - name: 19. Verify commit hash of deployment
-      shell: bash
-      env:
-        CACERT_BASE64: ${{ secrets.DOCS_WEBSITE_NO_CDN_CA_CERT_BASE64 }}
-      run: |
-        set +e
-
-        echo -n $CACERT_BASE64 | base64 --decode > cacert.pem
-
-        GIT_COMMIT_HASH_URL="${{ secrets.DOCS_WEBSITE_URL_NO_CDN }}/docs/gitcommithash.txt"
-
-        curl --cacert cacert.pem -ILs $GIT_COMMIT_HASH_URL | grep 'HTTP' | grep '200 OK'
-        if [ 0 -eq $? ]; then
-          CURRENT_GIT_COMMIT_HASH=$(curl --cacert cacert.pem -s $GIT_COMMIT_HASH_URL)
-          rm cacert.pem
-
-          echo "Hash reported by server is $CURRENT_GIT_COMMIT_HASH"
-          echo "Hash for current deployment is $GITHUB_SHA"
-          if [ $CURRENT_GIT_COMMIT_HASH == $GITHUB_SHA ]; then
-            exit 0
-          else
-            echo "Commit hash of workflow run is $GITHUB_SHA, but commit hash reported by server is $CURRENT_GIT_COMMIT_HASH.  Deployment to server has failed. Please inspect workflow logs and server logs."
-            exit 1
-          fi
-        else
-          rm cacert.pem
-          echo "No gitcommithash.txt exists on server after deployment. Deployment to server has failed. Please inspect workflow logs and server logs."
-          exit 1
-        fi
+        s3cmd put docs-$GITHUB_SHA.tar.gz s3://${{ secrets.OBJ_BUCKET_NAME }}/testing/docs-$GITHUB_SHA/
+        s3cmd put build-date.txt s3://${{ secrets.OBJ_BUCKET_NAME }}/testing/docs-$GITHUB_SHA/
