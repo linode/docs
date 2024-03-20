@@ -51,12 +51,12 @@ on:
 #         └── linode_algolia_admin
 
 jobs:
-  deploy-to-production:
+  build-production-site:
     if: github.repository_owner == 'linode'
     runs-on: ubuntu-latest
 
     environment:
-      name: deploy_to_production
+      name: build_production_site
       url: ${{ vars.DOCS_WEBSITE_URL }}
 
     steps:
@@ -208,7 +208,8 @@ jobs:
         hugo config
         hugo -b "${{ vars.DOCS_WEBSITE_URL }}" --gc --minify -d public
 
-      # The gitcommithash.txt file is used in the last workflow step to verify that the deployment was successful
+      # The gitcommithash.txt file is used when the site is deployed to the
+      # webserver to verify that the deployment was successful.
     - name: 13. Add gitcommithash.txt to rendered public/ folder
       working-directory: ./docs-repo
       run: |
