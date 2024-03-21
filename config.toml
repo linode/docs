@@ -24,7 +24,7 @@ tags = "tags"
 authors = "authors"
 
 [frontmatter]
-lastmod = [":git", "lastmod", "date", "publishDate"]
+lastmod = ["updated", ":git", "lastmod", "date", "publishDate"]
 publishDate = ["published", "publishDate", "date"]
 
 [params]
