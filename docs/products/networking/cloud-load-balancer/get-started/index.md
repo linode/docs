@@ -31,8 +31,6 @@ Once your application has been deployed on at least two service targets, you are
 
 ![This diagram shows the main components that are configured when creating a Cloud Load Balancer.](aclb-2.jpg)
 
-**Configure Entry Point and Add Routes:** Configure the entry point protocol (TCP, HTTPS, or HTTP) and the port load balancer uses to listen on. Add routes for forwarding requests to service target endpoints.
-
 ### Label the Load Balancer and Select Regions
 1. Log in to the [Cloud Manager](https://cloud.linode.com), select Cloud Load Balancers from the left menu, and click the **Create Load Balancer** button. This displays the *Cloud Load Balancers Create* form.
 
@@ -47,7 +45,7 @@ Once your application has been deployed on at least two service targets, you are
 1. Select the **Regions** where this load balancer processes requests. If your client traffic and targets are limited to a particular geography, select that region. You can also select multiple regions or `All` for global coverage. The number of regions selected, is one of the factors that determines the [Pricing](/docs/products/networking/cloud-load-balancer/#pricing) for this Load Balancer.
 
     {{< note >}}
-    Five regions are automatically provisioned for Beta.
+    Select regions are automatically provisioned for Beta.
     {{< /note >}}
 
 1. Click the **Create Load Balancer** button.
@@ -76,7 +74,7 @@ Private Key|Paste the PEM-formatted contents of your private key. Your private k
 |Label          |  Certificate name.|
 |Server Certificate| Paste the PEM-formatted contents of your TLS certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. The certificate must be signed using the RSA algorithm, which is the default in most cases.||
 
-4. After entering each certificate, click **Upload Certificate** . 
+4. After entering each certificate, click **Upload Certificate**.
 
     An ID is assigned to each certificate you add.
 
@@ -131,7 +129,7 @@ You can reuse routes accross multiple load balancer ports.
 1. Select the **Protocol**.
 
     {{< note >}}
-    The route protocol must match the health check protocol that you selected while creating the service target.
+    The route protocol must match the service targets protocol.
     {{< /note >}}
 
 1. Click **Create Route**.
@@ -159,7 +157,7 @@ For TCP load balancers, rules include allocating the percentage of request that 
 
 1. When you have added all of the service targets for this route rule, click **Add Rule**.
 
-1. Create additional rules if rquired. Once all rules are added, go to [Configurations - Entry Point Protocol and Port](/docs/products/networking/cloud-load-balancer/get-started/#configurations---entry-point-protocol-and-port).
+1. Create additional rules if rquired. Once all rules are added, go to [Configurations - Entry Point Protocol and Port](/docs/products/networking/cloud-load-balancer/get-started/#create-configurations---entry-point-protocol-and-port).
 
 #### Rules - HTTP and HTTPs Load Balancers
  For HTTP and HTTPS load balancers, in addition to setting the percentage of incoming requests to each target, other match conditions such as `Hostname`, `Path Prefix`, `Query String`, `HTTP Header`, `HTTP Method` and `Path Regex` can be added to the route rules.  HTTP and HTTPS load balancers also support session stickiness.
@@ -196,7 +194,7 @@ Add a service target to use if no rules match. Without a default target, non-mat
 Session stickiness controls how subsequent requests from the same user are routed. When enabled, subsequent requests by the same user to the same load balancer are sent to the same service target for the duration of the cookie, and as long as the target remains healthy. If the target is unhealthy, a different target is selected. When session stickiness is disabled, no session information is saved, and requests are routed in accordance with the algorithm and rules. Cloud Load Balancer supports session stickiness using load balancer generated cookies, or cookies from the origin.
 
 If you are not using session stickiness, click **Add Rule**, to add this rule to the route.
-Create or select additional rules. Once all rules are added, go to [Configurations - Entry Point Protocol and Port](/docs/products/networking/cloud-load-balancer/get-started/#configurations---entry-point-protocol-and-port).
+Create or select additional rules. Once all rules are added, go to [Configurations - Entry Point Protocol and Port](/docs/products/networking/cloud-load-balancer/get-started/#create-configurations---entry-point-protocol-and-port).
 
 If you are using ssession stickiness, complete the following steps.
 
@@ -212,7 +210,8 @@ If you are using ssession stickiness, complete the following steps.
 
 1. Click **Add Rule**. Create additional rules if required. Once all rules are added, continue with the next section.
 
-### Configurations - Entry Point Protocol and Port
+### Create Configurations - Entry Point Protocol and Port
+
 Configurations define the port the load balancer listens on and the protocol used for routing requests to the service targets.
 
 A Cloud Load Balancer can have muliple configurations. Each configuration allows the load balancer to accept traffic on a new port. For example, if you wanted to accept standard HTTP traffic, you could create a configuration listening on port 80.
@@ -220,17 +219,50 @@ A Cloud Load Balancer can have muliple configurations. Each configuration allows
 Configurations use routes to direct requests to service targets.
 The route protocol and the configuration protocol must match, or the operation will be rejected. If the protocol is HTTPs, a TLS Termination certificate is required.
 
+1. Select the **Configurations** tab.
+
+1. Click **Add Another Configuration**.
+
 1. In the **Configuration** and **Details** area, select the **Protocol**. The protocol can be set to either TCP, HTTP, or HTTPS. See [Guides - Available Protocols](/docs/products/networking/cloud-load-balancer/guides/protocols/).
 
-2. Enter the **Port** number Cloud Load Balancer listens on. For TCP, this can be any port from 1 through 1023, though it should be set to whichever port the client software connects to. For instance, web browsers use port 80 for HTTP traffic and port 443 for HTTPS traffic, though a client can change the port by specifying it as part of the URL.
+1. Enter the **Port** number Cloud Load Balancer listens on. The port can have a value from 1 - 65535, though it should be set to whichever port the client software connects to. For instance, web browsers use port 80 for HTTP traffic and port 443 for HTTPS traffic, though a client can change the port by specifying it as part of the URL.
 
-1. Enter a unique name for this entry point in the **Configuration Label** field. If a label is not entered, a default value based on the selected protocol, or port number is used.
+1. Enter a unique name for this entry point in the **Configuration Label** field.
 
-{{< note >}}
-If the protocol used by this Load Balancer is TCP or HTTP, TLS termination certificates are not required. If the Load Balancer protocol is HTTPS, you will be directed to add certificates after the load balancer is created.
-{{< /note >}}
+1. If the Load Balancer protocol is HTTPS, click **Add Certificate**.
 
-4. If TLS certificates for this load balancer have been uploaded already, click **Apply Certificates**. In the *Apply Certificates* drawer, enter the host header for HTTPS that the load balancer responds to and select the certificate. Click **Save** to apply the TLS termination certificate.
+    {{< note >}}
+    If the protocol used by this Load Balancer is TCP or HTTP, a TLS termination certificate is not applicable and you can go to the next step.
+    {{< /note >}}
+
+    -  Select **Add Exisitng Certificates** if the TLS certificate for this load balancer has been uploaded already.
+
+        - Select the certificate from the **Certificate** pull down.
+        - Enter the request host header sent by the client in the **Server Name Indication (SNI) Hostname** field. This host header tells the load balancer which certificate to use when responding back to the client.
+        - Click **Add** to apply the TLS termination certificate.
+
+    - Select **Create New Certificate** if the TLS certificate for this load balancer hasn't been uploaded yet.
+
+        - In the **Certificate Label** field, enter a unique name for the certificate.
+        - In the **Certificate** field, paste the PEM-formatted contents of your TLS certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. The certificate must be signed using the RSA algorithm, which is the default in most cases.
+        - In the **Private Key** field, paste the PEM-formatted contents of your private key. Your private key must not have a passphrase.
+        - Enter the request host header sent by the client in the **Server Name Indication (SNI) Hostname** field. This host header tells the load balancer which certificate to use when responding back to the client.
+        - Click **Create And Add** to apply the TLS termination certificate.
+
+    7. Click **Add Route**.
+
+        - Select **Add Exisitng Route** if the route has already been added.
+
+            - Select the route from the **Route** pull down.
+            - Click **Add Route**.
+
+        - Select **Create New TCP/HTTP Route** if the route.
+
+        - In the **Certificate Label** field, enter a unique name for the certificate.
+        - In the **Certificate** field, paste the PEM-formatted contents of your TLS certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. The certificate must be signed using the RSA algorithm, which is the default in most cases.
+        - In the **Private Key** field, paste the PEM-formatted contents of your private key. Your private key must not have a passphrase.
+        - Enter the request host header sent by the client in the **Server Name Indication (SNI) Hostname** field. This host header tells the load balancer which certificate to use when responding back to the client.
+        - Click **Create And Add** to add the route label. Rule will need to be added to the route. See
 
 ## Update the DNS
 
