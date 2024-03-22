@@ -35,7 +35,7 @@ authors: ["Linode"]
 - **BeEF Password** *(required)*: Enter a *strong* password to use for the BeEF admin user.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
@@ -51,19 +51,17 @@ authors: ["Linode"]
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
         ```command
-        cat /root/beef.info
+        cat /home/$USERNAME/.credentials
         ```
-
 1. The completion message contains the *Endpoint* URL, as shown in the example below.
 
     ```output
-    ##############################
-    # BEEF INSTALLATION COMPLETE #
-    ##############################
-    Endpoint: https://192-0-2-1.ip.linodeusercontent.com:3000/ui/panel
-    Credentials can be found here:
-    /home/beef/config.yaml
-    Happy hunting!
+    *********************************************************
+    Akamai Connected Cloud Beef Marketplace App
+    App URL: https://192-0-2-1.ip.linodeusercontent.com:3000/ui/panel
+    Credentials File: /home/$USERNAME/.credentials
+    Documentation: https://www.linode.com/marketplace/apps/linode/beef/
+    *********************************************************
     ```
 
 1. Navigate to this URL in a web browser to display the login prompt.
