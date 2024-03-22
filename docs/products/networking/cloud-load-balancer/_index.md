@@ -15,13 +15,13 @@ aliases: ['/platform/cloud-load-balancer/','/loadbalancers/','/guides/platform/c
 
 **Akamai Cloud Load Balancer** offers global, configurable, scalable, distributed compute traffic management across physical, virtual, and cloud-hosted applications. It can automatically detect load conditions and levels and route traffic to the optimal target while maintaining custom routing policies and consistent visitor session behavior.
 
-## Cloud Load Balancer Workflow
+## How Cloud Load Balancer Works
 
 Here's how Cloud Load Balancer works:
 
 - The load balancer recieves incoming requests on ports that you configure.
 
-- Routes and algorithms define how the load balancer should distribute requests across service targets.
+- Configurations, routes and algorithms define how the load balancer should distribute requests across service targets endpoints.
 
 - Health checks detect if a target is down and routes traffic to an available target or a failover target.
 
