@@ -30,9 +30,11 @@ Before continuing, it's recommended to power off the instance you would like to 
 
     ![Screenshot of the Clone Linode tab.](clone-instance-tab.png)
 
-1. Under **Select Linode to Clone From**, click on the Linode you wish to clone.
+1. Under **Select Linode to Clone From**, search for and select the Linode you wish to clone. If the selected Linode is running, Power Off appears to the right.
 
     ![Screenshot showing the Compute Instance selection area of the Clone Linode workflow.](clone-select-instance.png)
+
+1. To help prevent data corruption during cloning, click Power Off.
 
 1. Complete the remainder of the form. Enter a label and select the region, the plan, and other options for the new Compute Instance.
 
@@ -56,7 +58,7 @@ This process allows you to select specific disks or configuration profiles and d
 
 1. Locate the Compute Instance you wish to clone and click its corresponding label, which displays the instance's detail page.
 
-1. To prevent data corruption, click the **Power off** link on the top right.
+1. To help prevent data corruption, click the **Power Off** link in the top right.
 
 1. **To clone a disk:** Navigate to the **Storage** tab, locate the disk you wish to clone within the **Disks** table, click the **more options ellipsis** dropdown menu, and select **Clone**.
 
