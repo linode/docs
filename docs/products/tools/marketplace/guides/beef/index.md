@@ -28,6 +28,7 @@ authors: ["Linode"]
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
+- sdksdajkadsfkfsd
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### BeEF Options
