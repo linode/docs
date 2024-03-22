@@ -27,6 +27,8 @@ jobs:
 
   vale:
     runs-on: ubuntu-latest
+    permissions:
+        pull-requests: read
     steps:
     - name: Checkout docs repo
       uses: actions/checkout@v3
