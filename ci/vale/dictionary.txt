@@ -1676,6 +1676,7 @@ parentheticals
 parsedate
 partitionless
 partyline
+Passbolt
 passcode
 passdb
 passlib
