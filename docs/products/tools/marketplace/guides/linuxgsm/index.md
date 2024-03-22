@@ -2,7 +2,8 @@
 description: "Deploy LinuxGSM on a Linode Compute Instance. LinuxGSM is a command line utility for managing multiplayer game servers."
 keywords: ['game servers','multiplayer','game']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2024-01-12
+published: 2024-03-19
+modified: 2024-03-22
 modified_by:
   name: Linode
 title: "Deploy LinuxGSM through the Linode Marketplace"
@@ -11,7 +12,7 @@ external_resources:
 authors: ["Linode"]
 ---
 
-[LinuxGSM](https://linuxgsm.com/) 
+[LinuxGSM](https://linuxgsm.com/) is a command-line tool for managing game servers.
 
 ## Deploying a Marketplace App
 
@@ -31,7 +32,7 @@ authors: ["Linode"]
 ### LinuxGSM Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
-- **Game Server Name**: Enter the code for the server you want to install. See the [LinuxGSM Server List](https://github.com/GameServerManagers/LinuxGSM/blob/master/lgsm/data/serverlist.csv). 
+- **Game Server Name**: Enter the code for the server you want to install. See the [LinuxGSM Server List](https://github.com/GameServerManagers/LinuxGSM/blob/master/lgsm/data/serverlist.csv).
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}
 
@@ -43,21 +44,26 @@ authors: ["Linode"]
 
 ### Obtaining the Admin Password
 
-The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish), or with SSH if you provided an [Account Key](/docs/products/platform/accounts/guides/manage-ssh-keys/). The credentials are available in the file `/home/$USERNAME/.credentials`
-```
+The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish), or with SSH if you provided an [Account Key](/docs/products/platform/accounts/guides/manage-ssh-keys/). The credentials are available in the file `/home/$USERNAME/.credentials`:
+
+```command
 cat /home/$USERNAME/.credentials
+```
+
+```output
 Sudo Username: $USERNAME
 Sudo Password: 0oVSsWmkbGesmtuTlOEgFl7t
 LinuxGSM User: linuxgsm
 LinuxGSM User Password: nc023n30cal-3kd
 ```
-`linuxgsm` is a member of the sudo group.
 
-To complete the server installation process run `su linuxgsm && chdir /home/linuxgsm` followed by `./$GAMEERVERNAME install`
+The LinuxGSM user is a member of the sudo group.
+
+To complete the server installation process run `su linuxgsm && chdir /home/linuxgsm` followed by `./$GAMEERVERNAME install`.
 
 ### More Information
 
-Additonal information is available from LinuxGSM.
+Additional information is available from LinuxGSM.
 
 - [LinuxGSM](https://linuxgsm.com/)
 - [LinuxGSM Documentation](https://docs.linuxgsm.com/)
