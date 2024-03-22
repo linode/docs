@@ -1,14 +1,14 @@
 ---
-slug: Deploy Passbolt Through The Linode Marketplace
 title: "Deploy Passbolt Through The Linode Marketplace"
-description: 'Deploy Passbolt password manager through the Linode Marketplace.'
-og_description: 'Deploy Passbolt password manager through the Linode Marketplace.'
+description: "Learn how to deploy Passbolt, an open-source password manager, on the Akamai cloud computing platform."
 keywords: ['passbolt','password manager','security','authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
-published: 2024-02-05
+published: 2024-03-19
+modified: 2024-03-22
 modified_by:
   name: Linode
+aliases: ['/products/tools/marketplace/guides/deploy-passbolt-through-the-linode-marketplace/']
 ---
 
 [Passbolt Password Manager](https://github.com/passbolt/passbolt_api) is an open-source password manager designed for teams and businesses. It allows users to securely store, share and manage passwords.
@@ -34,8 +34,9 @@ modified_by:
 
 ## Getting Started after Deployment
 
-To start registration follow the link provided in `/etc/motd` to visit the DNS you choose during deployment. 
-```
+To start registration follow the link provided in `/etc/motd` to visit the DNS you choose during deployment.
+
+```output
 cat /etc/motd
 *********************************************************
 Akamai Connected Cloud passbolt Marketplace App
@@ -49,22 +50,22 @@ Documentation: https://www.linode.com/marketplace/apps/linode/passbolt/
 To delete this message of the day: rm /etc/motd
 ```
 
-
 Be sure to download the `passbolt-recovery-kit.txt` file and store it in a safe place. This PGP Private Key Block  (and the passphrase you set here) will be required if you ever need to go through account recovery.
 
-You will need to create a passphrase to access Passbolt 
+You will need to create a passphrase to access Passbolt.
 
-    ![Screenshot of Passbolt passphrase](passphrase_screen.jpg)
+![Screenshot of Passbolt passphrase](passphrase_screen.jpg)
 
-Once the passphrase is set you will be able to view the Passbolt main screen. 
+Once the passphrase is set you will be able to view the Passbolt main screen.
 
-    ![Screenshot of Passbolt main screen](passbolt_mainscreen.jpg)
+![Screenshot of Passbolt main screen](passbolt_mainscreen.jpg)
 
 For more information, visit [Passbolt Installation Documentation](https://help.passbolt.com/hosting/install/ce/ubuntu/ubuntu.html) for details on how to configure Passbolt.
 
 ### Email Configuration
 
 Postfix is installed as part of the Marketplace App, allowing you to send a test email. Unless you've manually configured your own SMTP provider, to send a test email through the SMTP screen (https://<example.com>/app/administration/smtp-settings), use the following (replace `example.com` with your FQDN):
+
 * **Email provider**: Other
 * **Authentication method**: None
 * **SMTP host**: localhost
