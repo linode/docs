@@ -28,7 +28,7 @@ authors: ["Linode"]
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Recommended plan:** All plan types and sizes can be used.
+- **Recommended plan:** For best results, 4GB Dedicated CPU or Shared Compute instance for BeEF
 
 ### BeEF Options
 
@@ -51,19 +51,20 @@ authors: ["Linode"]
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
         ```command
-        cat /root/beef.info
+        cat /home/$USERNAME/.credentials
         ```
 
 1. The completion message contains the *Endpoint* URL, as shown in the example below.
 
     ```output
-    ##############################
-    # BEEF INSTALLATION COMPLETE #
-    ##############################
-    Endpoint: https://192-0-2-1.ip.linodeusercontent.com:3000/ui/panel
-    Credentials can be found here:
-    /home/beef/config.yaml
-    Happy hunting!
+    *********************************************************
+    Akamai Connected Cloud Beef Marketplace App
+    App URL: https://192-0-2-1.ip.linodeusercontent.com:3000/ui/panel
+    Credentials File: /home/$USERNAME/.credentials
+    Documentation: https://www.linode.com/marketplace/apps/linode/beef/
+    *********************************************************
+    To delete this message of the day: rm /etc/motd
+
     ```
 
 1. Navigate to this URL in a web browser to display the login prompt.
