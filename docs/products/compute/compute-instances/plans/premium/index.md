@@ -1,9 +1,9 @@
 ---
 title: "Premium Compute Instances"
 linkTitle: "Premium"
-description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-peformance for your workloads."
+description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-performance for your workloads."
 published: 2023-07-06
-modified: 2023-10-22
+modified: 2024-02-14
 ---
 
 Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-peformance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
@@ -48,6 +48,7 @@ Premium Compute Instances are currently available in select data centers.
 | **Jakarta (Indonesia)** | **Available** |
 | **Los Angeles (California, USA)** | **Available** |
 | London (United Kingdom) | *Not available* |
+| **Madrid (Spain)** | **Available** |
 | **Miami (Florida, USA)** | **Available** |
 | **Milan (Italy)** | **Available** |
 | Mumbai (India) | *Not available* |

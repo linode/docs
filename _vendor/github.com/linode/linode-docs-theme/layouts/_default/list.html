@@ -225,8 +225,10 @@
           <div>
             <div class="space-y-8">
               <template x-for="(item, i) in data.result.hits">
-                <div
-                  class="bg-white rounded-md md:flex md:items-center"
+                <a
+                  class="a--block bg-white block rounded-md md:flex md:items-center"
+                  :target="item.isExternalLink ? '_blank' : ''"
+                  :href="item.href"
                   :class="{ 'shadow-sm': i === 0 }">
                   <div class="h-full bg-gray-200">
                     <div
@@ -240,20 +242,16 @@
                     </div>
                   </div>
                   <div class="px-6 md:pl-10 py-4">
-                    <a
-                      class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400"
-                      :target="item.isExternalLink ? '_blank' : ''"
-                      :href="item.href">
-                      <h3
-                        class="mb-2 text-2xl "
-                        x-html="item.linkTitle"
-                        data-testid="tile-title"></h3>
-                    </a>
+                    <h3
+                      class="text-2xl tracking-tight cursor-pointer mb-6 text-titlecolor hover:text-gray-400"
+                      x-html="item.linkTitle"
+                      data-testid="tile-title"></h3>
+
                     <p
                       class="text-darkgray leading-6 text-sm md:text-base"
                       x-html="item.excerptTruncated(160)"></p>
                   </div>
-                </div>
+                </a>
               </template>
             </div>
             {{ template "section-list-pagination" (dict "result" "data.result" "page" "data.page" "class" "mt-10") }}

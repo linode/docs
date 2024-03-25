@@ -135,7 +135,7 @@ See [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/s
 
 1. Open the **Connections** menu, and select **Tunnels** from under the **SSH** section.
 
-1. Enter "5901" as the **Source port** and "userA@192.0.2.0" as the **Destination**. Beneath **Desination**, select **Local** and **Auto**.
+1. Enter "5901" as the **Source port** and "userA@192.0.2.0" as the **Destination**. Beneath **Destination**, select **Local** and **Auto**.
 
 1. Click **Add**, and the SSH tunnel begins running.
 
