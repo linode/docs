@@ -403,6 +403,7 @@ Crossplane
 crosstab
 crowdsourced
 crowdsourcing
+CRDs
 crt
 crypters
 crypto

@@ -1,0 +1,251 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: tikvclusters.tikv.org
+spec:
+  group: tikv.org
+  scope: Namespaced
+  names:
+    plural: tikvclusters
+    singular: tikvcluster
+    kind: TikvCluster
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              version:
+                type: string
+              pd:
+                type: object
+                properties:
+                  baseImage:
+                    type: string
+                  replicas:
+                    type: number
+                  storageClassName:
+                    type: string
+                    nullable: true
+                  requests:
+                    type: object
+                    properties:
+                      storage:
+                        type: string
+                  config:
+                    type: object
+              tikv:
+                type: object
+                properties:
+                  baseImage:
+                    type: string
+                  replicas:
+                    type: number
+                  storageClassName:
+                    type: string
+                    nullable: true
+                  requests:
+                    type: object
+                    properties:
+                      storage:
+                        type: string
+                  config:
+                    type: object
+          status:
+            type: object
+            properties:
+              pd:
+                type: object
+                properties:
+                  synced:
+                    type: boolean
+                  phase:
+                    type: string
+                  statefulSet:
+                    type: object
+                  members:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        id:
+                          type: string
+                        clientURL:
+                          type: string
+                        health:
+                          type: boolean
+                        lastTransitionTime:
+                          type: string
+                          format: datetime
+                  leader:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      id:
+                        type: string
+                      clientURL:
+                        type: string
+                      health:
+                        type: boolean
+                      lastTransitionTime:
+                        type: string
+                        format: datetime
+                  failureMembers:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        podName:
+                          type: string
+                        memberID:
+                          type: string
+                        pvcUID:
+                          type: string
+                        memberDeleted:
+                          type: boolean
+                        createdAt:
+                          type: string
+                          format: datetime
+                  unjoinedMembers:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        podName:
+                          type: string
+                        pvcUID:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: datetime
+                  image:
+                    type: string
+              tikv:
+                type: object
+                properties:
+                  synced:
+                    type: boolean
+                  phase:
+                    type: string
+                  statefulSet:
+                    type: object
+                  stores:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        podName:
+                          type: string
+                        ip:
+                          type: string
+                        leaderCount:
+                          type: integer
+                          format: int32
+                        state:
+                          type: string
+                        lastHeartbeatTime:
+                          type: string
+                          format: datetime
+                        lastTransitionTime:
+                          type: string
+                          format: datetime
+                  tombstoneStores:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        podName:
+                          type: string
+                        ip:
+                          type: string
+                        leaderCount:
+                          type: integer
+                          format: int32
+                        state:
+                          type: string
+                        lastHeartbeatTime:
+                          type: string
+                          format: datetime
+                        lastTransitionTime:
+                          type: string
+                          format: datetime
+                  failureStores:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        podName:
+                          type: string
+                        storeID:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: datetime
+                  image:
+                    type: string
+              conditions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    status:
+                      type: string
+                    lastUpdateTime:
+                      type: string
+                      format: datetime
+                    lastTransitionTime:
+                      type: string
+                      format: datetime
+                    reason:
+                      type: string
+                    message:
+                      type: string
+    additionalPrinterColumns:
+    - jsonPath: .status.conditions[?(@.type=="Ready")].status
+      name: Ready
+      type: string
+    - jsonPath: .status.pd.image
+      description: The image for PD cluster
+      name: PD
+      type: string
+    - jsonPath: .spec.pd.replicas
+      description: The desired replicas number of PD cluster
+      name: PD Desire
+      type: integer
+    - jsonPath: .status.pd.statefulSet.readyReplicas
+      description: The current replicas number of PD cluster
+      name: Current
+      type: integer
+    - jsonPath: .status.tikv.image
+      description: The image for TiKV cluster
+      name: TiKV
+      type: string
+    - jsonPath: .spec.tikv.replicas
+      description: The desired replicas number of TiKV cluster
+      name: TiKV Desire
+      type: integer
+    - jsonPath: .status.tikv.statefulSet.readyReplicas
+      description: The current replicas number of TiKV cluster
+      name: Current
+      type: integer
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    - jsonPath: .status.conditions[?(@.type=="Ready")].message
+      name: Status
+      priority: 1
+      type: string
