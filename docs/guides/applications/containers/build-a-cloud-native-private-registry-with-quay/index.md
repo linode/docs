@@ -1,11 +1,11 @@
 ---
-slug: how-to-build-a-cloud-native-private-registry-with-quay
+slug: build-a-cloud-native-private-registry-with-quay
 title: "How to Build a Cloud Native Private Registry With Quay"
 description: 'Learn how to create your own cloud-native private registry using Quay. This guide covers everything from setup to deployment on a CentOS Stream instance.'
 keywords: ['build cloud-native container registry with quay','red hat quay','centos stream','private container registry','cloud-native registry','secure private registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
-published: 2023-11-01
+published: 2024-03-24
 modified_by:
   name: Linode
 ---
@@ -26,6 +26,7 @@ Quay provides a wealth of features, broken down into the following categories:
     -   Continuously scans image content and provides reports on potential vulnerability issues.
     -   Uses existing authentication providers that rely on Lightweight Directory Access Protocol (LDAP) or OpenID Connect (OIDC).
     -   Logs and audits every security-related event in the system using long-term log storage.
+
 -   **Flexibility**:
     -   Uses fine-grain access rules which allow you to isolate different user groups or enable collaboration between groups as needed.
     -   Allows a project to start small and scale to a much larger size without major project changes.
@@ -33,6 +34,7 @@ Quay provides a wealth of features, broken down into the following categories:
     -   Provides a transparent cache of images stored in other container registries.
     -   Works with both cloud and offline environments, or a combination of the two.
     -   Incorporates support for a range of object storage services and third-party database systems.
+
 -   **Developer Productivity**:
     -   Reduces the amount of work needed to build and deploy new containers.
     -   Makes it easier to manage storage growth through quota management.
