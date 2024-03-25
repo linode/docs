@@ -1,12 +1,11 @@
 ---
 slug: monitor-server-activities-using-beats
 title: "How to Monitor Your Server Activities Using Beats"
-title_meta: "Monitor Server Activities Using Beats"
 description: 'This guide introduces Elastic Beats (Filebeat, Metricbeat, Packetbeat, Auditbeat) and their use cases, helping you understand, configure, and monitor system metrics and logs efficiently.'
 keywords: ['Beats', 'Filebeat', 'Metricbeat', 'Server log monitoring', 'Viewing system metrics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
-published: 2023-11-04
+published: 2024-03-25
 modified_by:
   name: Linode
 external_resources:
@@ -18,7 +17,7 @@ external_resources:
 - '[File Integrity Module](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-module-file_integrity.html)'
 ---
 
-Monitoring your server requires that you look at more than just resource usage or user access. Various kinds of access, future use, environmental conditions, and other factors affect the server as well and are part of managing the server to maintain reliability, security, and scalability. [Beats](https://www.elastic.co/beats/) provides various kinds and levels of monitoring that help you determine how best to manage your servers. Even though Beats mainly monitors servers, you can use it for much more as this guide illustrates.
+Monitoring your server requires that you look at more than just resource usage or user access. Various kinds of access, future use, environmental conditions, and other factors affect the server as well and are part of managing the server to maintain reliability, security, and scalability. [Beats](https://www.elastic.co/beats/) provides various kinds and levels of monitoring that help you determine how best to manage your servers.
 
 ## What is Beats?
 
@@ -26,7 +25,7 @@ Beats is a product suite that allows you to perform the kind of monitoring neede
 
 ### Filebeat
 
-[Filebeat](https://www.elastic.co/beats/filebeat) isn’t about files, it’s about logs. You use it to perform server log monitoring. The idea is to create a centralized location to manage the logs on your server no matter where those logs are, or which application, or device generates them. These log sources can include security devices, cloud-based applications, containers, hosts, or [Operational Technology (OT)](https://www.cisco.com/c/en/us/solutions/internet-of-things/what-is-ot-vs-it.html). When working with Filebeat understand that it focuses on common log formats and you need to ensure there is a [module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html) available to handle your particular needs. This means that your traditional industrial application that produces custom logs designed to your specifications may not be recognized. On the other hand, Filebeat does work well with Kubernetes and Docker, and may also recognize other containers. When working with a container, you obtain full metadata about the container and its contents, so this is an optimal strategy when you’re working with newer applications or those in development.
+[Filebeat](https://www.elastic.co/beats/filebeat) isn’t about files, it’s about logs. You use it to perform server log monitoring. The idea is to create a centralized location to manage the logs on your server no matter where those logs are, or which application, or device generates them. These log sources can include security devices, cloud-based applications, containers, hosts, or [Operational Technology (OT)](https://www.cisco.com/c/en/us/solutions/internet-of-things/what-is-ot-vs-it.html). When working with Filebeat understand that it focuses on common log formats and you need to ensure there is a [module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html) available to handle your particular needs. This means that your traditional industrial application that produces custom logs designed to your specifications may not be recognized. On the other hand, Filebeat works well with Kubernetes and Docker, and may also recognize other containers. When working with a container, you obtain full metadata about the container and its contents, so this is an optimal strategy when you’re working with newer applications or those in development.
 
 ### Metricbeat
 
@@ -38,7 +37,7 @@ Beats is a product suite that allows you to perform the kind of monitoring neede
 
 ### Auditbeat
 
-[Auditbeat](https://www.elastic.co/beats/auditbeat) is a Linux-specific replacement for [auditd](https://sematext.com/glossary/auditd/). It’s an easier-to-use product than auditd that monitors user activity and processes, analyzes event data, and provides analysis capabilities. You can use existing audit rules so that you don’t have to start from scratch. In addition, some Linux kernels allow side-by-side use of Auditbeat and auditd.
+[Auditbeat](https://www.elastic.co/beats/auditbeat) is a Linux-specific replacement for [auditd](https://sematext.com/glossary/auditd/) that's easier to use. It monitors user activity and processes, analyzes event data, and provides analysis capabilities. You can use existing audit rules so that you don’t have to start from scratch. In addition, some Linux kernels allow side-by-side use of Auditbeat and auditd.
 
 ## An Overview of Beats Use Cases
 
@@ -62,9 +61,11 @@ These industries use often cross-categories. For example, [John Deere](https://w
 
 To begin using the Beats products, create a simple setup and then experiment with it. Creating a Filebeat command line interface gives you an essential understanding of how the various Beats products work without investing a lot of time in configuration and setup. This section relies on a Linode 4 GB plan on an Ubuntu 22.04 LTS distribution, which is the smallest setup that works. The process works best with a [non-root user who has sudo access](/docs/guides/how-to-add-and-remove-sudo-access-in-ubuntu/). Before installing Filebeat, ensure you have logged in as a non-root user, and you install the following prerequisites:
 
-- [OpenJDK](/docs/guides/how-to-install-openjdk-ubuntu-22-04/): Ensure you install Java 11, as newer versions may not be compatible.
-- [Nginx](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/): Ensure you stop after completing the **Install NGINX** section.
-- [Elasticsearch](/docs/guides/a-guide-to-elasticsearch-plugins/#elasticsearch): There have been recent modifications to the standard installation procedure due to changes in the security setup for Ubuntu. Follow the updated command instead for step 1 for installing the signing key:
+-   [OpenJDK](/docs/guides/how-to-install-openjdk-ubuntu-22-04/): Ensure you install Java 11, as newer versions may not be compatible.
+
+-   [Nginx](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/): Ensure you stop after completing the **Install NGINX** section.
+
+-   [Elasticsearch](/docs/guides/a-guide-to-elasticsearch-plugins/#elasticsearch): There have been recent modifications to the standard installation procedure due to changes in the security setup for Ubuntu. Follow the updated command instead for step 1 for installing the signing key:
 
     ```command
     curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch |sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
@@ -78,43 +79,43 @@ To begin using the Beats products, create a simple setup and then experiment wit
 
 ### Install Kibana
 
-1.  Install a copy of [Kibana](https://www.elastic.co/kibana) to make working with Filebeat easier:
+1.  Install [Kibana](https://www.elastic.co/kibana) through your distribution's package manager.
 
     ```command
     sudo apt install kibana -y
     ```
 
-1.  Enable the Kibana service:
+1.  Enable the Kibana service.
 
     ```command
     sudo systemctl enable kibana
     ```
 
-1.  Start the Kibana service:
+1.  Start the Kibana service.
 
     ```command
     sudo systemctl start kibana
     ```
 
-1.  Create an administrative user (the example uses `kibanaadmin`) and password using the [apr1 algorithm of OpenSSL](https://www.openssl.org/docs/manmaster/man1/openssl-passwd.html) (Apache variant of the BSD algorithm) and append it to `htpasswd.users`:
+1.  Create an administrative user (the example uses `kibanaadmin`) and password using the [apr1 algorithm of OpenSSL](https://www.openssl.org/docs/manmaster/man1/openssl-passwd.html) (Apache variant of the BSD algorithm) and append it to `htpasswd.users`.
 
     ```command
     echo "kibanaadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
     ```
 
-1.  Open the Nginx server block file as part of creating a reverse proxy:
+1.  Create an NGINX configuration file.
 
     ```command
-    sudo nano /etc/nginx/sites-available/<IP Address of Your Linode>
+    sudo nano /etc/nginx/sites-available/demoapp
     ```
 
-1.  Write the Nginx server block file and save it to disk:
+1.  Write the Nginx server block file and save it to disk. In the example below, replace {{< placeholder "192.0.2.45" >}} with the IP address of your Compute Instance.
 
     ```file
     server {
       listen 80;
 
-      server_name <IP Address of Your Linode>;
+      server_name {{< placeholder "192.0.2.45" >}};
 
       auth_basic "Restricted Access";
       auth_basic_user_file /etc/nginx/htpasswd.users;
@@ -130,13 +131,13 @@ To begin using the Beats products, create a simple setup and then experiment wit
     }
     ```
 
-1.  Create a symbolic link from the sites-available directory to the sites-enabled directory to make the new server active:
+1.  Create a symbolic link from the sites-available directory to the sites-enabled directory to make the new server active.
 
     ```command
-    sudo ln -s /etc/nginx/sites-available/<IP Address of Your Linode> /etc/nginx/sites-enabled/<IP Address of Your Linode>
+    sudo ln -s /etc/nginx/sites-available/demoapp /etc/nginx/sites-enabled/demoapp
     ```
 
-1.  Check the configuration for errors. If the configuration has errors, go back to step 5 to reopen the file and correct the errors:
+1.  Check the configuration for errors. If the configuration has errors, go back to step 5 to reopen the file and correct the errors.
 
     ```command
     sudo nginx -t
@@ -148,19 +149,21 @@ To begin using the Beats products, create a simple setup and then experiment wit
     sudo systemctl reload nginx
     ```
 
-1.  Test Kibana access in your browser. Enter the Kibana administrator name and password created in step 4. The Figure 1 below shows a typical example of the web page you see. The Kibana browser display shows the Kibana status, statistics, and plugin status:
+1.  Open Kibana in your browser by navigating to the following URL, replacing {{< placeholder "192.0.2.45" >}} with the IP address of your Compute Instance.
 
     ```command
-    http://<IP Address of Your Linode>/status
+    http://{{< placeholder "192.0.2.45" >}}/status
     ```
 
-    ![Figure 1](Figure_1.png "Figure 1")
+1.  Enter the Kibana administrator name and password created in step 4. The screenshot below shows a typical example of the Kibana dashboard that displays the Kibana status, statistics, and plugin status.
+
+    ![Screenshot of the Kibana dashboard](Figure_1.png)
 
 ### Install Logstash
 
 Install and configure Logstash to enable working with Filebeat.
 
-1.  Install Logstash using the following command:
+1.  Install Logstash using the following command.
 
     ```command
     sudo apt install logstash
@@ -172,7 +175,7 @@ Install and configure Logstash to enable working with Filebeat.
     sudo nano /etc/logstash/conf.d/02-beats-input.conf
     ```
 
-1.  Add the Beats access port information and save the file:
+1.  Add the Beats access port information and save the file.
 
     ```file {title="/etc/logstash/conf.d/02-beats-input.conf"}
     input {
@@ -180,7 +183,6 @@ Install and configure Logstash to enable working with Filebeat.
         port => 5044
       }
     }
-
     ```
 
 1.  Open a configuration file that allows Filebeat to store information in ElasticSearch, which is currently running at `localhost:9200`. Use this same configuration file to enable other Beats package access.
@@ -204,7 +206,7 @@ Install and configure Logstash to enable working with Filebeat.
     }
     ```
 
-1.  Test the Logstash Configuration. If there are configuration errors, go back to step 3 to open the configuration file and fix them. The testing process may take a while to complete but should result in a `Config Validation Result: OK. Exiting Logstash` message at the end.
+1.  Test the Logstash configuration. If there are configuration errors, go back to step 3 to open the configuration file and fix them. The testing process may take a while to complete but should result in a `Config Validation Result: OK. Exiting Logstash` message at the end.
 
     ```command
     sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
@@ -240,7 +242,7 @@ At this point, you can install, configure, and use Filebeat.
 
 1.  Disable direct Elasticsearch interaction by commenting out these lines as shown below:
 
-    ```command
+    ```file {title="/etc/filebeat/filebeat.yml"}
     # ---------------------------- Elasticsearch Output ----------------------------
     #output.elasticsearch:
       # Array of hosts to connect to.
@@ -249,7 +251,7 @@ At this point, you can install, configure, and use Filebeat.
 
 1.  Connect to Logstash by uncommenting these lines as shown below:
 
-    ```command
+    ```file {title="/etc/filebeat/filebeat.yml"}
     # ------------------------------ Logstash Output -------------------------------
     output.logstash:
       # The Logstash hosts
@@ -264,7 +266,7 @@ At this point, you can install, configure, and use Filebeat.
     sudo filebeat modules enable system
     ```
 
-1.  Configure Filebeat to ingest data:
+1.  Configure Filebeat to ingest data.
 
     ```command
     sudo filebeat setup --pipelines --modules system
@@ -318,25 +320,28 @@ At this point, you can install, configure, and use Filebeat.
           "relation" : "gte"
         },
     ```
+
 ### View Filebeat in Kibana
 
-View the Filebeat data in Kibana by visiting the URL, `http://<IP Address of Your Linode>` to display the home page shown in Figure 2. Click the Expand icon and choose **Discover from the list** to show the Filebeat data that appears in Figure 3. The timeline at the top shows the number of file system hits and the time they occurred. You can filter the data in various ways using features like **Available Fields** on the left side of the page.
+1.  View the Filebeat data in Kibana by navigating to your Compute Instance's IP address in your web browser (`http://{{< placeholder "192.0.2.45" >}}`) to display the home page shown below.
 
-![Figure 2](Figure_2.png "Figure 2")
+    ![Screenshot of the Kibana home page](Figure_2.png)
 
-![Figure 3](Figure_3.png "Figure 3")
+1.  Click the Expand icon and choose **Discover from the list** to show the Filebeat data that appears below. The timeline at the top shows the number of file system hits and the time they occurred. You can filter the data in various ways using features like **Available Fields** on the left side of the page.
+
+    ![Screenshot of Filebeat data in Kibana](Figure_3.png)
 
 ## Monitor Logs Using Filebeat
 
-Filebeat helps maintain control over server reliability, security, and performance through log monitoring. The files are ingested by Filebeat and the data output in a consistent format as shown in Figure 3.
+Filebeat helps maintain control over server reliability, security, and performance through log monitoring. The files are ingested by Filebeat and the data is outputted in a consistent format.
 
 ### Relying on Automatic System Log Detection
 
-Filebeat automatically detects and configures common logs for you as shown in Figure 3. It’s also possible to configure Filebeat to look in specific places for log inputs by adding entries to the [filebeat.inputs section](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-filebeat-options.html) of the `/etc/filebeat/filebeat.yml` file. The paths subsection contains a list of places to look for log files of a specific type. The only configured log input for `Localhost` is of the `filestream` type in `/var/log/*.log`. You can monitor network traffic using the [TCP](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-tcp.html) and [UDP](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-udp.html) types.
+Filebeat automatically detects and configures common logs. It’s also possible to configure Filebeat to look in specific places for log inputs by adding entries to the [filebeat.inputs section](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-filebeat-options.html) of the `/etc/filebeat/filebeat.yml` file. The paths subsection contains a list of places to look for log files of a specific type. The only configured log input for `Localhost` is of the `filestream` type in `/var/log/*.log`. You can monitor network traffic using the [TCP](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-tcp.html) and [UDP](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-udp.html) types.
 
 ### Searching for Specific Data
 
-Something that is immediately apparent is that the Kibana dashboard displays too much information even with a minimal Filebeat configuration. You have three methods of reducing the data to a manageable level:
+The Kibana dashboard displays quite a bit information even with a minimal Filebeat configuration. You have three methods of reducing the data to a more concise, manageable level:
 
 - **Search**: Display only the information you actually want at the moment using [Kibana Query Language (KQL)](https://www.elastic.co/guide/en/kibana/current/kuery-query.html).
 - **Time Window**: Choose a display interval that displays enough information, but compresses it so there aren’t as many entries.
