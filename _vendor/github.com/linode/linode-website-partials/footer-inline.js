@@ -84,31 +84,46 @@
     "days": 1,
     "regex": /^[0-9]*$/
   });
-  function updatePromoCodes(promo, should_override) {
-    if (typeof promo !== "string" || promo.match(/[^a-zA-Z0-9_\-]/))
-      return;
-    let $links = Array.from(document.querySelectorAll('a[href*="login.linode.com"]'));
-    $links = $links.filter(($link) => {
-      let link_url = new URL($link.href);
-      if (!link_url.pathname.match(/\/signup/))
-        return false;
-      if (link_url.searchParams.has("promo")) {
-        if (!should_override)
-          return false;
-        if (!$link.hasAttribute("data-promo-override"))
-          return false;
-      }
-      return true;
-    });
+  function updateLinkPromoCodes(promo, should_override) {
+    let $links = Array.from(document.querySelectorAll(`a[href*="login.linode.com"][href*="/signup"]`));
     $links.forEach(($link) => {
       let link_url = new URL($link.href);
+      if (link_url.searchParams.has("promo")) {
+        if (!$link.hasAttribute("data-promo-override"))
+          return;
+        if (!should_override)
+          return;
+        link_url.searchParams.delete("promo");
+      }
       if (promo) {
         link_url.searchParams.set("promo", promo);
-      } else {
-        link_url.searchParams.delete("promo");
       }
       $link.href = link_url.toString();
     });
+  }
+  function updateFormPromoCodes(promo, should_override) {
+    let $forms = Array.from(document.querySelectorAll(`form[action*="login.linode.com/signup"]`));
+    $forms.forEach(($form) => {
+      let form_url = new URL($form.action), $promo_field = $form.querySelector('input[name="promo"]');
+      if ($promo_field) {
+        if (!$promo_field.hasAttribute("data-promo-override"))
+          return;
+        if (!should_override)
+          return;
+        $promo_field.remove();
+      }
+      if (promo) {
+        let $new_promo_field = document.createElement("input");
+        $new_promo_field.setAttribute("type", "hidden");
+        $new_promo_field.setAttribute("name", "promo");
+        $new_promo_field.setAttribute("value", promo);
+        $form.appendChild($new_promo_field);
+      }
+    });
+  }
+  function updatePromoCodes(promo, should_override) {
+    updateLinkPromoCodes(promo, should_override);
+    updateFormPromoCodes(promo, should_override);
   }
   var cookies2 = Object.fromEntries(document.cookie.split(/\s*;\s*/).map((c) => c.split(/\s*=\s*/)));
   var localPromoCode = localStorage.getItem("promoCode");

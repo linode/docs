@@ -4,7 +4,7 @@ description: Shows how to create an account with access restrictions for develop
 keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
 tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
 published: 2018-07-26
-modified: 2023-03-14
+modified: 2024-03-11
 modified_by:
   name: Linode
 aliases: ['/platform/create-limited-developer-account/','/guides/create-limited-developer-account/']
@@ -19,7 +19,7 @@ When you hire someone to work on your Linode, there are a variety of ways to gra
 
 This guide explains and answers some of the most frequently asked questions about account access. The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 
-For security and privacy, [Linode Support](/docs/products/platform/get-started/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](https://www.linode.com/products/pro-services/) team that can be hired to help with projects.
+For security and privacy, [Linode Support](/docs/products/platform/get-started/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house Professional Services team that can be hired to help with projects. You can reach out to that team through the [Contact Sales](https://www.linode.com/company/contact/) form.
 
 {{< note >}}
 The following sections include commands that show how to manipulate credentials on your Compute Instances, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.

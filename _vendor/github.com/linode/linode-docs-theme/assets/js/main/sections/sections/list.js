@@ -332,6 +332,12 @@ export function newSectionsController(searchConfig, params) {
 					s.thumbnailInline = m.thumbnailInline || m.thumbnailinline;
 				}
 
+				if (s.linkTitle === '') {
+					// Missing metadata, create a title from the last part of the key.
+					let last = key.split(' > ').pop();
+					s.linkTitle = last.charAt(0).toUpperCase() + last.slice(1);
+				}
+
 				return s;
 			};
 
