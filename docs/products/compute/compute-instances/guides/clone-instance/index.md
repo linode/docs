@@ -30,11 +30,13 @@ Before continuing, it's recommended to power off the instance you would like to 
 
     ![Screenshot of the Clone Linode tab.](clone-instance-tab.png)
 
-1. Under **Select Linode to Clone From**, search for and select the Linode you wish to clone. If the selected Linode is running, Power Off appears to the right.
+1. Under **Select Linode to Clone From**, search for and select the instance you wish to clone. If the selected instance is running, **Power Off** appears to the right.
 
-    ![Screenshot showing the Compute Instance selection area of the Clone Linode workflow.](clone-select-instance.png)
-
-1. To help prevent data corruption during cloning, click Power Off.
+1. To help prevent data corruption during cloning, click **Power Off**.
+   
+    {{< note >}}
+    If you're using a mobile device, available instances appear as cards without the Power Off option. To power off an instance from a mobile device, go to the instance's details page.
+    {{< /note >}}
 
 1. Complete the remainder of the form. Enter a label and select the region, the plan, and other options for the new Compute Instance.
 
