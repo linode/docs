@@ -11,7 +11,7 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2024-01-03
+modified: 2024-04-03
 aliases: ['/guides/platform/vlan/']
 ---
 
@@ -34,10 +34,6 @@ Private network transfer is free. Any communication between Compute Instances ov
 ### Part of a Flexible Custom VPC Solution
 
 Since VLANs operate on layer 2 of the OSI networking stack, you can use is as part of a custom VPC solution, which typically operates on layer 3. VLAN users can implement their own firewall policies, routing, and security systems to build out their VPC.
-
-## Availability
-
-VLANs are available in all data centers except Fremont (California, USA).
 
 ## Pricing
 
