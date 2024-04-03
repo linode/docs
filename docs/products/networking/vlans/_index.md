@@ -35,6 +35,11 @@ Private network transfer is free. Any communication between Compute Instances ov
 
 Since VLANs operate on layer 2 of the OSI networking stack, you can use is as part of a custom VPC solution, which typically operates on layer 3. VLAN users can implement their own firewall policies, routing, and security systems to build out their VPC.
 
+## Availability
+
+VLANs are available in all data centers.
+
+
 ## Pricing
 
 VLANs are free to use. Communication across your private network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/).
