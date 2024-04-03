@@ -2,6 +2,7 @@
 title: "Help & Support"
 description: "Information about Linode support, including the scope of support and how to get help."
 published: 2023-03-14
+modified: 2024-03-11
 modified_by:
   name: Linode
 keywords: ["support", "tech support", "tickets", "help desk"]
@@ -46,7 +47,7 @@ Whenever you need assistance with software that's installed on your Compute Inst
 
 ### Infrastructure Deployment and Configuration.
 
-For guidance on your architecture, migrations, and software deployments, consider working with our Professional Services team. To get started, [contact us](https://www.linode.com/products/pro-services/#speakwithus) or [request a free quote](https://proservices.typeform.com/to/xJiIEy).
+For guidance on your architecture, migrations, and software deployments, consider working with our Professional Services team. You can reach out to that team through the [Contact Sales](https://www.linode.com/company/contact/) form.
 
 If you're looking for a partner to help guide your transition to the Cloud or help build your platform, our [Partner Directory](https://partner-directory.linode.com/s/) offers a list of trusted partners.
 

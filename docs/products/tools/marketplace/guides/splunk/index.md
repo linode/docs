@@ -52,10 +52,17 @@ The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akam
 
 ### Obtaining the Admin Password
 
+<<<<<<< HEAD
 The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish). The credentials are available in the file `/root/.credentials`
 ```
 cat /root/.credentials
 sudo username: $SUDO_USER
+=======
+The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish). The credentials are available in the file `/home/$USERNAME/.credentials`
+```
+cat /home/$USERNAME/.credentials
+sudo username: $USERNAME
+>>>>>>> 4a3fddb8e832380c9b9fe979baf6799eb3ff7b4b
 sudo password: 0oVSsWmkbGesmtuTlOEgFl7t
 splunk user: $SPLUNK_USER
 splunk admin password: fRLdHksJoMPrjLtRCogEPVLYOML1zQtQ0kIsL7IWvo49
@@ -65,7 +72,11 @@ splunk admin password: fRLdHksJoMPrjLtRCogEPVLYOML1zQtQ0kIsL7IWvo49
 
 Open a browser and navigate to `https://192-0-2-1.ip.linodeusercontent.com:8000`, where `192-0-2-1` represents the IPv4 address of your new Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
 
+<<<<<<< HEAD
 You will be presented a login field where you can enter the credentials you previously specified in the *Splunk Username* and the generated *Splunk Password* in `/root/.credentials`
+=======
+You will be presented a login field where you can enter the credentials you previously specified in the *Splunk Username* and the generated *Splunk Password* in `/home/$USERNAME/.credentials`.
+>>>>>>> 4a3fddb8e832380c9b9fe979baf6799eb3ff7b4b
 
 Now that you’ve accessed your dashboard, checkout [the official Splunk documentation](https://docs.splunk.com/Documentation/Splunk) to learn how to further configure your instance.
 

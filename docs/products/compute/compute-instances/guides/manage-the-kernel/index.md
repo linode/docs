@@ -3,7 +3,7 @@ description: "Information on finding your Compute Instance's kernel version (and
 keywords: ["kernel", "grub"]
 tags: ["linode platform","cloud manager"]
 published: 2021-08-13
-modified: 2023-01-18
+modified: 2024-02-22
 modified_by:
   name: Linode
 title: "Manage the Kernel on a Compute Instance"
@@ -90,13 +90,13 @@ Follow these steps if the Compute Instance is using an upstream kernel (the defa
     -   **Ubuntu**
 
         ```command
-        sudo apt-get update && sudo apt-get upgrade linux-generic
+        sudo apt update && sudo apt install linux-generic
         ```
 
     -   **Debian**
 
         ```command
-        sudo apt-get update && sudo apt-get upgrade linux-base
+        sudo apt update && sudo apt install linux-base
         ```
 
     -   **CentOS Stream, CentOS 8, AlmaLinux 8, Rocky Linux 8, and Fedora**

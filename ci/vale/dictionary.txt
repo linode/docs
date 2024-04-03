@@ -97,6 +97,8 @@ async
 asynchrony
 atera
 atlanta
+Auditbeat
+auditd
 authdaemonrc
 authg
 authlib
@@ -736,6 +738,7 @@ Freemarker
 freenom
 fremont
 freshclam
+freshdesk
 friendica
 friendster
 frontend
@@ -785,6 +788,7 @@ getpwent
 getters
 getty
 getuid
+geventhttpclient
 gfx
 gfxmode
 gianlucaborello
@@ -1250,6 +1254,8 @@ localdomain
 localhost
 localuser
 lockdown
+locustfile
+locustfiles
 lodash
 logallrefupdates
 logdir
@@ -1358,6 +1364,8 @@ metasploit
 meterpreter
 metorik
 metricbeat
+metricset
+metricsets
 metroid
 michael
 microblogging
@@ -1611,6 +1619,7 @@ OKConfig
 okta
 oldstable
 oldfashioned
+omnichannel
 onboarding
 oneof
 ons
@@ -1651,6 +1660,7 @@ owncloud
 pacman
 paas
 packagist
+Packetbeat
 paessler
 pagent
 pagespeed
@@ -1671,6 +1681,7 @@ parentheticals
 parsedate
 partitionless
 partyline
+Passbolt
 passcode
 passdb
 passlib
@@ -1702,6 +1713,7 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pg_auto_failover
 pg_dump
 pg_dumpall
 pg_restore
@@ -1777,6 +1789,7 @@ prepend
 prepended
 prepending
 prepends
+preprocess
 preprocessing
 preprocessors
 prerotate
@@ -1928,6 +1941,7 @@ replicants
 replicaset
 replicationcontrollers
 replset
+repmgr
 repo
 repos
 reputational
@@ -2141,6 +2155,7 @@ smtpd
 smush
 smux
 snakeoil
+snapcraft
 snapd
 snipcart
 snmp
@@ -2701,6 +2716,7 @@ zabbix
 zapier
 zcat
 zend
+zendesk
 zgrep
 zhao
 zigbee

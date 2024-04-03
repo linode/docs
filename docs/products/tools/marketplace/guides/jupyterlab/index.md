@@ -2,6 +2,10 @@
 title: "Deploy JupyterLab through the Linode Marketplace"
 description: "Deploy JupyterLab on a Linode Compute Instance. Jupyter is a web-based interactive development environment for notebooks, code, and data."
 published: 2024-02-20
+<<<<<<< HEAD
+=======
+modified: 2024-03-04
+>>>>>>> 4a3fddb8e832380c9b9fe979baf6799eb3ff7b4b
 modified_by:
   name: Linode
 keywords: ['productivity','notebook','data science']
@@ -46,14 +50,30 @@ Launch your web browser and navigate to the custom domain you set during deploym
 
 ## Obtaining the Jupyter Token
 
+<<<<<<< HEAD
 By default, Jupyter issues a token for authentication. The Jupyter access token was automatically generated during the initial install process and is stored in the `/root/.credentials` file. To view the default token, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, and check the contents of the file:
 
 ```command
 cat /root/.credentials
+=======
+By default, Jupyter issues a token for authentication. The Jupyter access token was automatically generated during the initial install process and is stored in the `/home/$USERNAME/.credentials` file. To view the default token, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, and check the contents of the file:
+
+```command
+cat /home/$USERNAME/.credentials
+>>>>>>> 4a3fddb8e832380c9b9fe979baf6799eb3ff7b4b
 ```
 
 Copy and paste this token into the **Password or token:** field on the Jupyter login page. If you prefer password authentication, use the token to set a password in the **Setup a Password** section on the login page. Once this is done, you can employ both the token and the password for accessing JupyterLab.
 
+<<<<<<< HEAD
+=======
+![Screenshot of the Jupyter login form](jupyter_login.jpg)
+
+Once you have used the token, you will be able to access the JupyterLab base page.
+
+![Screenshot of the Jupyter base page](jupyter_base_page.jpg)
+
+>>>>>>> 4a3fddb8e832380c9b9fe979baf6799eb3ff7b4b
 ### More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
