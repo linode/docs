@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Linux vs. Windows: What’s the Difference?"
 title_meta: "What is the Difference Between Linux and Windows?"
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 Users, system administrators, developers, and system architects debate the question of whether Windows or Linux is better for any given purpose. The answers are well-reasoned, full of prejudice, and usually arrive from practical experience. This guide covers the differences between Linux and Windows operating systems and servers. It primarily focuses on the areas of differences between desktops, licensing models, web service technology, developer support, and more.

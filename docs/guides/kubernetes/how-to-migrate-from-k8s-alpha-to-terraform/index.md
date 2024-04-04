@@ -17,7 +17,7 @@ external_resources:
 - '[Beginners Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)'
 - '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 aliases: ['/kubernetes/how-to-migrate-from-k8s-alpha-to-terraform/']
-authors: ["Linode"]
+contributors: ["Linode"]
 _build:
   list: false
 ---

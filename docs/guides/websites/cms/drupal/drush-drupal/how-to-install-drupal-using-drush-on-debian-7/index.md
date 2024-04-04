@@ -14,7 +14,7 @@ deprecated: true
 deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/'
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Drush is a command line tool for creating, maintaining, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. Drush rhymes with rush or crush. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.

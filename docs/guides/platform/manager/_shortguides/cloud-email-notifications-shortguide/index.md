@@ -12,7 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-email-notifications-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Email event notifications alert you when new events such as booting, shutting down, or updates to a Linode occur on your account. You can enable or disable email event notifications using the Cloud Manager.

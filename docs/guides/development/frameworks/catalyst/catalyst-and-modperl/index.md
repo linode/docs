@@ -11,7 +11,7 @@ modified_by:
 published: 2010-01-29
 title: 'Catalyst and mod_perl'
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The Catalyst web framework is a contemporary Perl-based MVC, or Model View Controller. Like similar projects such as [Django](/docs/frameworks/), [Ruby On Rails](/docs/development/ror/), and [Seaside](/docs/guides/deploy-smalltalk-applications-with-seaside/), Catalyst promotes efficient and rapid development, clear application logic, and web centric development paradigms. If you are used to developing applications with Perl and would like to develop modern web applications, you may consider using the Catalyst framework.

@@ -13,7 +13,7 @@ concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Calico Documentation](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/)'
-authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
 ---
 
 ![Manage a Docker Cluster with Kubernetes](docker-cluster-kubernetes.jpg)

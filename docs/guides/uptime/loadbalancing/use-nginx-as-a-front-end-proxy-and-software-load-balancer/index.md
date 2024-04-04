@@ -15,7 +15,7 @@ external_resources:
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
  - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 dedicated_cpu_link: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The NGINX web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because NGINX uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.

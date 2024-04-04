@@ -8,7 +8,7 @@ modified: 2023-03-14
 modified_by:
   name: Linode
 aliases: ['/platform/automating-server-builds/','/guides/automating-server-builds/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Why You Should Automate Server Builds

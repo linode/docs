@@ -11,7 +11,7 @@ title_meta: "Accessing the Document Object Model with JavaScript"
 external_resources:
 - '[MDN Web Docs: Introduction to the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)'
 - '[MDN Web Docs: Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The Document Object Model (DOM) is a language-agnostic interface that provides access to an HTML document's structure and content. JavaScript is often the language used to access the DOM in order to generate dynamic and interactive web pages.

@@ -19,7 +19,7 @@ external_resources:
  - '[Apache Documentation](http://httpd.apache.org/docs/2.2/sections.html)'
  - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
 tags: ["web server","apache"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -8,5 +8,5 @@ modified_by:
   name: Linode
 published: 2011-11-03
 title: Kloxo
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

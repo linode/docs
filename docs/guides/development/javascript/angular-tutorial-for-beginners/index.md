@@ -13,7 +13,7 @@ external_resources:
 - '[Angular](https://angular.io/)'
 - '[TypeScript](https://www.typescriptlang.org/)'
 - '[Angular docs](https://angular.io/docs)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Angular is a powerful open-source platform and framework for creating dynamic single-page applications. Written in TypeScript, Angular was built for modular web application clients, and helps to make application design clearer, and cleaner. In this guide, you can find instructions for installing Angular, setting up your first Angular application, and learning about its core concepts.

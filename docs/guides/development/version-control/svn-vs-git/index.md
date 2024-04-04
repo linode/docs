@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "SVN vs Git: Which Version Control System Should You Use?"
 title_meta: "Git vs SVN: Pros and Cons of Each Version Control System"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 Version Control Systems (VCS), like Git and SVN, track and manage code changes and provide an efficient way to collaborate on software development projects. A VCS is especially useful as a software development project grows in size and complexity, but even the simplest projects can benefit from tracking code changes with a VCS.
 

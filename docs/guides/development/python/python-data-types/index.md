@@ -13,7 +13,7 @@ external_resources:
 - '[Real Python: Basic Data Types in Python](https://realpython.com/python-data-types/)'
 - '[Programiz: Python Data Types](https://www.programiz.com/python-programming/variables-datatypes)'
 - '[GeeksforGeeks: Python Data Types](https://www.geeksforgeeks.org/python-data-types/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Knowing about Python's data types helps to make your Python programs more effective, and helps you to avoid errors. This guide covers the most useful Python data types, providing knowledge of their fundamentals and giving a cheat sheet that you can refer to.

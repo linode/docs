@@ -17,7 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-ubuntu/']
-authors: ["Sunit Nandi"]
+contributors: ["Sunit Nandi"]
 ---
 
 [WireGuard](https://www.wireguard.com)&#174; is a simple, fast, and secure VPN that utilizes state-of-the-art cryptography. With a small source code footprint, it aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol.

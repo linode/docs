@@ -11,7 +11,7 @@ modified_by:
 title: 'Install Node.js from NodeSource on Debian or Ubuntu'
 headless: true
 aliases: ['/development/nodejs/install-nodejs-nodesource/']
-authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 ---
 
 1.  Use `curl` to download the setup script provided by NodeSource. Replace the Node version in the `curl` command with the [version you would like to install](https://github.com/nodesource/distributions/tree/master/deb):

@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "An Overview of Popular Linux Games and Configuration Tips"
 title_meta: "Popular Linux Games and Configuration Tips"
-authors: ["Sandro Villinger"]
+contributors: ["Sandro Villinger"]
 ---
 
 Once a niche industry, gaming under Linux is now a growing market for publishers and gamers alike. In this guide, you learn about popular Linux games and helpful configurations for common issues when setting them up.

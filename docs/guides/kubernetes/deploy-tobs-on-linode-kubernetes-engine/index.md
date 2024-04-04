@@ -18,7 +18,7 @@ external_resources:
 - '[Grafana Tutorials](https://grafana.com/tutorials/)'
 - '[TimescaleDB Documentation](https://docs.timescale.com/)'
 aliases: ['/kubernetes/deploy-tobs-on-linode-kubernetes-engine/']
-authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
 ---
 
 [TOBS](https://github.com/timescale/tobs), short for The Observability Stack, is a pre-packaged distribution of monitoring tools and dashboard interfaces. It can be installed on any existing Kubernetes cluster. It includes many of the most popular open-source observability tools such as Prometheus, Grafana, Promlens, TimescaleDB, and others. Together, these provide a maintainable solution to analyze the traffic on the server and identify any potential problems with a deployment. This guide covers deploying TOBS on [LKE](https://www.linode.com/products/kubernetes/) (Linode Kubernetes Engine) using [Helm](https://helm.sh/) and the [kubectl port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) command for local access to your monitoring interfaces.

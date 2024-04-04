@@ -24,7 +24,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Apache and mod_wsgi on Ubuntu](Apache_and_mod_wsgi_on_Ubuntu_1404_Trusty_Tahr_smg.png)

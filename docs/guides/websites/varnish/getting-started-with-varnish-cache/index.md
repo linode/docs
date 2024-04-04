@@ -11,7 +11,7 @@ published: 2014-02-05
 title: Getting Started with Varnish Cache
 external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
-authors: ["Kevin Cupp"]
+contributors: ["Kevin Cupp"]
 ---
 ![Getting Started with Varnish Cache](getting-started-with-varnish-cache.png "Getting Started with Varnish Cache")
 

@@ -14,7 +14,7 @@ external_resources:
 - '[Open Stack](https://www.openstack.org/)'
 - '[Apache CloudStack](https://cloudstack.apache.org/)'
 - '[Docker](https://www.docker.com/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

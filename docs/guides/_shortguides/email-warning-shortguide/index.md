@@ -11,7 +11,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/email-warning-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< note type="warning" title="Email restrictions on the Linode Platform" >}}

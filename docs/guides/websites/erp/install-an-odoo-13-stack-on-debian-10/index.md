@@ -23,7 +23,7 @@ relations:
         key: install-an-odoo-13-stack
         keywords:
             - distribution: Debian 10
-authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
 ---
 
 ## What is Odoo?

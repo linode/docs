@@ -15,7 +15,7 @@ relations:
         keywords:
             - distribution: Debian/Ubuntu
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/']
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![Custom Compiled Kernel on Debian & Ubuntu](custom-compiled-kernel-on-debian-and-ubuntu.png "Custom Compiled Kernel on Debian & Ubuntu")

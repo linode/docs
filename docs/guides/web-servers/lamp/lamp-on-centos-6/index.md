@@ -21,7 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 6
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![LAMP on CentOS 6](lamp-centos-6.png)

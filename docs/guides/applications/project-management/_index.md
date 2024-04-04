@@ -6,7 +6,7 @@ aliases: ['/web-applications/project-management/','/applications/project-managem
 published: 2009-11-20
 title: Project Management
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

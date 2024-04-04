@@ -17,7 +17,7 @@ relations:
             - distribution: Ubuntu 18.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-18-04/']
 image: upgrade-ubuntu-18-title.jpg
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Ubuntu 18.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2023. This guide shows how to upgrade your Linode from Ubuntu 16.04 (Xenial Xerus) or Ubuntu 17.10 (Artful Aardvark) to Ubuntu 18.04 (Bionic Beaver).

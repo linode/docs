@@ -10,7 +10,7 @@ modified_by:
     name: Linode
 title: 'How to Install farmOS - a Farm Recordkeeping Application'
 aliases: ['/applications/project-management/install-farmos/']
-authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
 ---
 
 ![Farm_OS Banner](FarmOS.png)

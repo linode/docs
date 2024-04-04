@@ -31,7 +31,7 @@ external_resources:
 - '[Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)'
 - '[CentOS](https://www.centos.org/)'
 - '[wg-quick](https://manpages.debian.org/unstable/wireguard-tools/wg-quick.8.en.html)'
-authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
 ---
 
 ## What is WireGuard?

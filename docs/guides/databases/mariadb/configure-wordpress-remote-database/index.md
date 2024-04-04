@@ -14,7 +14,7 @@ external_resources:
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 tags: ["wordpress","mariadb","database"]
 aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
-authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
 ---
 
 ![Configure WordPress to use a Remote Database](Configure_WordPress_to_use_a_Remote_Database_smg.jpg)

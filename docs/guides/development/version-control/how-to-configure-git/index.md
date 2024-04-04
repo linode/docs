@@ -16,7 +16,7 @@ external_resources:
 audiences: ["foundational"]
 tags: ["version control system"]
 aliases: ['/development/version-control/how-to-configure-git/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Git Started Today](git_getting_started.png)

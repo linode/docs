@@ -15,7 +15,7 @@ external_resources:
  - '[MySQLTuner](https://github.com/major/MySQLTuner-perl)'
 dedicated_cpu_link: true
 tags: ["database","mysql"]
-authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
 ---
 
 Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/guides/tuning-your-apache-server/) to handle larger loads, it is beneficial to tune MySQL to additional connections.

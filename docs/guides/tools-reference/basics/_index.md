@@ -6,6 +6,6 @@ published: 2020-08-31
 title: Linux Basics
 show_in_lists: true
 aliases: ['/tools-reference/basics/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

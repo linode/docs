@@ -9,7 +9,7 @@ image: AccessingObjectswithLinodeObjectStorage.png
 title: "Access Buckets and Files through URLs"
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/','/guides/how-to-access-objects-with-linode-object-storage/','/products/storage/object-storage/guides/access-objects/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Linode's Object Storage service gives each bucket and file a unique URL. This URL is managed through the shared domain *\*.linodeobjects.com* and your files are encrypted through the use of HTTPS. By default, files are only visible by you (the owner) through the Cloud Manager or through other tools and applications using an access key with permissions to read (or read/write) the bucket.

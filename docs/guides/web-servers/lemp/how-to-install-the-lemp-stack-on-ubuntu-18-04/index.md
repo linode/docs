@@ -17,7 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/','/web-servers/lemp/how-to-install-the-lemp-stack-on-ubuntu-18-04/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->

@@ -12,7 +12,7 @@ external_resources:
 - '[TutorialsPoint.com: Difference between Python and Lua](https://www.tutorialspoint.com/difference-between-python-and-lua)'
 - '[GeeksForGeeks.org: Difference between Python and Lua](https://www.geeksforgeeks.org/difference-between-python-and-lua-programming-language/)'
 - '[StackShare.io: Lua vs Python](https://stackshare.io/stackups/lua-vs-python)'
-authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
 ---
 
 Lua and Python are often mentioned as good choices for embedded scripting languages. Both are interpreted, dynamically typed programming languages implemented in C. Both support procedural, object-oriented, and functional programming. Both are easy to learn compared to compiled, strongly typed, non-garbage-collected languages. This guide explores each language and the differences between them, so you can choose which is a better fit for your applications.

@@ -16,7 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

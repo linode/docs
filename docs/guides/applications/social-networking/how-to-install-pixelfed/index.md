@@ -16,7 +16,7 @@ external_resources:
 - '[Pixelfed Installation Details](https://docs.pixelfed.org/running-pixelfed/installation)'
 - '[A summary of Pixelfed features](https://pixelfed.org/features)'
 - '[Certbot](https://certbot.eff.org/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [Pixelfed](https://pixelfed.org/) is a decentralized federated application that allows users to share photos, art, and videos. This guide explains how to install and configure Pixelfed and provides details about all prerequisites.

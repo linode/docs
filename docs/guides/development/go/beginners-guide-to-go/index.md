@@ -15,7 +15,7 @@ external_resources:
 - '[Effective Go](https://golang.org/doc/effective_go.html)'
 - '[A Tour of Go](https://tour.golang.org/welcome/1)'
 aliases: ['/development/go/beginners-guide-to-go/']
-authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

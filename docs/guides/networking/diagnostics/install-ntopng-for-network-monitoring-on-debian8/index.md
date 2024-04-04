@@ -10,7 +10,7 @@ modified: 2018-04-16
 modified_by:
   name: Linode
 title: 'Monitor Your Network with ntopng'
-authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
 ---
 
 ![Monitor Your Network with ntopng](monitor-your-network-with-ntopng.jpg "Monitor Your Network with ntopng")

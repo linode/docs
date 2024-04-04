@@ -10,7 +10,7 @@ modified_by:
 published: 2011-04-29
 title: Set Up an IPv6 Tunnel on Your Linode
 tags: ["networking","linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Set up an IPv6 Tunnel on Your Linode](Set_Up_an_IPv6_Tunnel_on_Your_Linode_smg.jpg)

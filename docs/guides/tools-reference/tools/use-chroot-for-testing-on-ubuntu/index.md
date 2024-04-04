@@ -12,7 +12,7 @@ title_meta: "How to Use chroot for Testing on Ubuntu"
 external_resources:
 - '[Ubuntu Man Pages: schroot](https://manpages.ubuntu.com/manpages/focal/man1/schroot.1.html)'
 - '[Debian Wiki: schroot](https://wiki.debian.org/Schroot)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The Linux `chroot` command enables you to run applications or shells within a separate, secure environment. Because a `chroot` environment is walled off from the rest of your system, it can be an ideal space for testing. This guide discusses the primary use cases for chroot and shows you how to create your own chroot environment.

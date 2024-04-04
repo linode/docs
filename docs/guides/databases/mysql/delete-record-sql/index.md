@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title_meta: "Using the Delete Command in SQL"
 title: "Developer’s Guide to the Delete Query in SQL"
-authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
 ---
 
 The `DELETE` statement allows you to remove a row or rows from a database table using Structured Query Language (SQL). This guide explains the `DELETE` statement, ways to use it, and what can make a `DELETE` statement fail.

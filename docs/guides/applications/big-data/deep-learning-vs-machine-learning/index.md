@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Deep Learning vs. Machine Learning: What’s the Difference?"
 title_meta: "Differences Between Machine Learning and Deep Learning"
-authors: ["Pam Baker"]
+contributors: ["Pam Baker"]
 ---
 
 Deep Learning (DL) is a subset of Machine Learning (ML), and both are subsets of Artificial Intelligence (AI). Many people refer to deep learning and machine learning as AI simply because few people understand the distinctions in the various subsets and types. Think of AI as the machine equivalent to the human brain, and DL and ML as different parts of that brain with deep learning being embedded within machine learning.

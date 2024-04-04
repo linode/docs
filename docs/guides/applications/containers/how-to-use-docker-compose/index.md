@@ -10,7 +10,7 @@ modified_by:
 published: 2018-01-02
 title: How to Use Docker Compose
 aliases: ['/applications/containers/how-to-use-docker-compose/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![How to Use Docker Compose](how-to-use-docker-compose-title.jpg "How to Use Docker Compose title graphic")

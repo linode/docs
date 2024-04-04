@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2014-02-27
 title: How to Mount NFS Shares on Debian 9
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![How to Mount NFS Shares on Debian 9](mount-nfs-shares-deb-9-title.jpg "How to Mount NFS Shares on Debian 9")

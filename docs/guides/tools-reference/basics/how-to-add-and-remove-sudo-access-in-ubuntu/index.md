@@ -12,7 +12,7 @@ title: "Add and Remove sudo Access in Ubuntu"
 external_resources:
 - '[sudo home](https://www.sudo.ws/)'
 - '[sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 `sudo` ("su 'do'" or "substitute user 'do'") allows a system administrator to delegate permissions to specific users on the machine. There are multiple ways to do so. Ubuntu 20.10 is used in this guide as an example, but this should apply to almost any Linux distribution.

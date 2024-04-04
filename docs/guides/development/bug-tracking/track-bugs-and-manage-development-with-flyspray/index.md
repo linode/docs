@@ -11,7 +11,7 @@ modified_by:
 published: 2010-05-03
 title: Track Bugs and Manage Development with Flyspray
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Flyspray is an advanced bug tracking system that allows software development teams, open source software projects, and other teams to manage development progress, issue reports, feature development, and other project tasks. Written against the popular LAMP stack, and including support for email and Jabber (XMPP) notifications, Flyspray is an ideal solution for teams that want an easy to use and manage issue tracking system with advanced features.

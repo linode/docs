@@ -7,7 +7,7 @@ published: 2021-06-12
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install and Use zoxide on Linux"
-authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
 external_resources:
 - '[GitHub: ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)'
 - '[GitHub: junegunn/fzf](https://github.com/junegunn/fzf)'

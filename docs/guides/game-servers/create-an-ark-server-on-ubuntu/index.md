@@ -18,7 +18,7 @@ title: "Creating a Dedicated ARK Server on Ubuntu"
 title_meta: "How to Create a Dedicated ARK Server on Ubuntu"
 aliases: ['/applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/','/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/', '/guides/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
 dedicated_cpu_link: true
-authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
 ---
 
 This guide demonstrates how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode Compute Instance running a modern Ubuntu distribution.

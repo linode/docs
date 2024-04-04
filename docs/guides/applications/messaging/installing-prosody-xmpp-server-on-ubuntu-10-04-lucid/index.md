@@ -16,7 +16,7 @@ relations:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

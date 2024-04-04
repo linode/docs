@@ -16,7 +16,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.

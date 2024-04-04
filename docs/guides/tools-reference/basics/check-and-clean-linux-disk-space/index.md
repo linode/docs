@@ -10,7 +10,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Check and Clean a Linux System's Disk Space"
 title_meta: "How to Check and Clean a Linux System's Disk Space"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Linux provides several built-in commands for analyzing and cleaning up your system's disk space. This guide shows you how to use those commands to get a closer look at your disk usage and start freeing up space.

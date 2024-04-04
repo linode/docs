@@ -16,7 +16,7 @@ relations:
         key: using-piwik-analytics
         keywords:
             - distribution: Fedora 13
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 

@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Install Riot on Debian 10"
 title_meta: "How to Install Riot on Debian 10"
-authors: ["Dan Nielsen"]
+contributors: ["Dan Nielsen"]
 ---
 
 **Riot** is an open source complete communication service. You can use Riot to chat, exchange files, make voice or video calls, and add bots; all while keeping control of your data. Riot is a [Matrix](https://matrix.org/clients/) web client.

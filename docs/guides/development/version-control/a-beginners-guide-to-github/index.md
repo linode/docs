@@ -10,7 +10,7 @@ title: "Getting Started with GitHub"
 title_meta: "A Beginner's Guide to GitHub"
 aliases: ['/development/version-control/a-beginners-guide-to-github/','/github-guide/']
 tags: ["version control system"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![GitHub Beginner's Guide](github-beginners-guide.png "GitHub Beginner's Guide")

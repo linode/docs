@@ -20,7 +20,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your CentOS 5 Linode.

@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Install Apache Subversion on Ubuntu 20.04"
 title_meta: "How to Install Apache Subversion on Ubuntu 20.04"
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 Apache Subversion is an open source version control system released in 2000 and available under the [Apache2 License](https://www.gnu.org/licenses/license-list.html#apache2). Designed as a feature enhancement of the *Concurrent Versions System(CVS)*, Apache Subversion was authored and maintained by Collabnet. In 2009, Subversion became an Apache Incubator Project, finally becoming a top-level project in 2010. In this guide you learn how to install Apache’s Subversion on an Ubuntu 20.04 server.
 

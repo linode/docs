@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-basic-connection-issues/','/guides/troubleshooting-basic-connection-issues/','/troubleshooting/disaster-recovery-guide/','/guides/disaster-recovery-guide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for Compute Instances that are unresponsive to any network access. One reason that an instance may be unresponsive is if you recently performed a distribution upgrade or other broad software updates to your system, as those changes can lead to unexpected problems for your core system components.

@@ -14,7 +14,7 @@ title: Multiple Web Servers with ProxyPass on CentOS 5
 external_resources:
  - '[Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
  - '[Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 In some cases, administrators find that while Apache meets most of their general-purpose web-serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.

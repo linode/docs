@@ -10,7 +10,7 @@ title: "Remove Untracked Files in Git"
 external_resources:
 - '[Git clean documentation](https://git-scm.com/docs/git-clean)'
 - '[Git ignore documentation](https://git-scm.com/docs/gitignore)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 During the development process, programmers and other Git users often wind up with many old and unwanted files. These might include prototypes, test data, and computer-generated files. Although these files do not necessarily cause problems, deleting them increases efficiency and improves organization. The `git clean` command is the fastest, safest, and easiest way to delete these files. This guide explains how to use Git to remove untracked files and provides many examples demonstrating how to use `git clean`.

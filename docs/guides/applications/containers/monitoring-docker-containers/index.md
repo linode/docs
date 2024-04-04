@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Monitoring Docker Containers: Benefits, Best Practices, and Must-Have Tools"
 title_meta: "Docker Container Monitoring Benefits and Tools"
-authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
 ---
 
 Eight years ago containers were a known technology, but with little public adoption. Then, Solomon Hykes created Docker, a container technology, making containers much easier to use. Today, containers rule the IT world. Gartner predicts 70% of [organizations will run containerized applications](https://www.gartner.com/document/3955920?ref=solrAll&refval=277254196) by 2023.

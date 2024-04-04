@@ -12,7 +12,7 @@ external_resources:
 - '[NetApp BlueXP: Kubernetes vs. Nomad - Understanding the Tradeoffs](https://bluexp.netapp.com/blog/cvo-blg-kubernetes-vs-nomad-understanding-the-tradeoffs)'
 - '[Imaginary Cloud: Nomad vs. Kubernetes: Container Orchestration Tools Compared](https://www.imaginarycloud.com/blog/nomad-vs-kubernetes/)'
 - '[Qovery: Kubernetes vs Nomad: What to Choose in 2022?](https://www.qovery.com/blog/kubernetes-vs-nomad-what-to-choose-in-2022)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Kubernetes, through efficient container orchestration, has helped define how people think about managing application clusters. As a result, Kubernetes is now a widely adopted tool, with plenty of community support.

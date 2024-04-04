@@ -24,7 +24,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/development/java/how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04/']
-authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
 ---
 
 ![How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04](deploy-spring-boot-nginx-reverse-proxy.jpg "How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04")

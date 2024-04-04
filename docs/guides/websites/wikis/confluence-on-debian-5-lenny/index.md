@@ -16,7 +16,7 @@ relations:
         key: using-confluence
         keywords:
            - distribution: Debian 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your Debian 5 (Lenny) Linode. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluence; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.

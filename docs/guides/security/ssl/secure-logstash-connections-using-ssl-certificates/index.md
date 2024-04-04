@@ -13,7 +13,7 @@ title: "Secure Logstash Connections Using SSL Certificates"
 external_resources:
  - '[Logstash Home Page](https://www.elastic.co/logstash)'
  - '[Filebeat Overview](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)'
-authors: ["Dan Nielsen"]
+contributors: ["Dan Nielsen"]
 ---
 
 ## Before You Begin

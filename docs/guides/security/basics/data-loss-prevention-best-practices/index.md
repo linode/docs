@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Data Loss Prevention Best Practices: An In-Depth Guide"
 title_meta: "Data Loss Prevention Best Practices (with Examples)"
-authors: ["Andy Patrizio"]
+contributors: ["Andy Patrizio"]
 ---
 
 An organization's data is everything because it gives market and customer insight. Data tells you where the market is going, where your customers are going, and where your company is going.

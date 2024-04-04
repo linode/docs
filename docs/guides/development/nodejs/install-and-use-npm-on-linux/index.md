@@ -11,7 +11,7 @@ title: "Install and Use the Node Package Manager (NPM) on Linux"
 external_resources:
 - '[NPM Docs](https://docs.npmjs.com/)'
 - '[NPM dependencies](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The [Node Package Manager (NPM)](https://www.npmjs.com/) is the most widely-used package manager for JavaScript projects and includes Node.js by default. This guide walks you through installing NPM and getting started using it on your Linux system.

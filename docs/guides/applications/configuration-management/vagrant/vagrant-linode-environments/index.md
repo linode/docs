@@ -14,7 +14,7 @@ external_resources:
  - '[vagrant-linode Plugin](https://github.com/displague/vagrant-linode)'
 deprecated: true
 aliases: ['/applications/configuration-management/vagrant/vagrant-linode-environments/','/applications/configuration-management/vagrant-linode-environments/']
-authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
 ---
 
 {{< note >}}

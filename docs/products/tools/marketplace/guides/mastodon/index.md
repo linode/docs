@@ -11,7 +11,7 @@ external_resources:
   - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
   - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'
 aliases: ['/guides/mastodon-marketplace-app/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Mastodon](https://docs.joinmastodon.org/) is an open-source and decentralized micro-blogging platform used to create a social network based on open web standards and principles. Like Twitter, it lets users follow other users and post text, photos, and video content. Unlike Twitter, Mastodon is decentralized, meaning that its content is not maintained by a central authority.

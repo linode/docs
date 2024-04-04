@@ -4,7 +4,7 @@ description: 'Canvas is a learning management system that you can use to create 
 keywords: ['Install canvas lms', 'canvas lms', 'install canvas ubuntu 22.04', 'self-host canvas lms']
 tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 published: 2023-04-25
 modified_by:
   name: Linode

@@ -6,7 +6,7 @@ description: 'Learn how to install the .NET 6 SDK or runtime on Ubuntu and under
 keywords: ['dotnet on Ubuntu 22.04', 'dotnet runtime', 'install dotnet', 'enable dotnet ubuntu 22.04', 'install dotnet server ubuntu']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
+contributors: ["Linode"]
 published: 2023-06-13
 modified_by:
   name: Linode

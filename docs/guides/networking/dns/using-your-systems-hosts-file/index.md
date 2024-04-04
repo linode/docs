@@ -10,7 +10,7 @@ modified_by:
 published: 2017-09-14
 title: Using Your System's hosts File
 aliases: ['/networking/dns/using-your-systems-hosts-file/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Using Your System's Hosts File](using-your-systems-hosts-files.jpg)

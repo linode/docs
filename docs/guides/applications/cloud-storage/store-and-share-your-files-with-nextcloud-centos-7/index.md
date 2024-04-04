@@ -14,7 +14,7 @@ external_resources:
   - '[nginx Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html)'
   - '[Enabling SSL](https://docs.nextcloud.com/server/12/admin_manual/installation/source_installation.html#enabling-ssl)'
 aliases: ['/applications/cloud-storage/store-and-share-your-files-with-nextcloud-centos-7/']
-authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
 relations:
     platform:
         key: install-nextcloud

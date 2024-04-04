@@ -9,7 +9,7 @@ modified_by:
 title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false
-authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
 ---
 
 1. Download the latest version of Restic from [the Github Releases page](https://github.com/restic/restic/releases) (version 0.15.2 at the time of writing):

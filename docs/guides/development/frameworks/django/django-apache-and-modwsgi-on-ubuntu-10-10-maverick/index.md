@@ -16,7 +16,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Django is a web development framework for the Python programing language. It was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.

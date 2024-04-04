@@ -10,7 +10,7 @@ modified_by:
 published: 2014-05-30
 title: "Configure Postfix to Send Email Using External SMTP Servers"
 aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-smtp-debian7/']
-authors: ["Santiago Ti"]
+contributors: ["Santiago Ti"]
 ---
 {{< note respectIndent=false >}}
 This guide was originally written for Debian 7. It has since been tested to work with Debian 9.

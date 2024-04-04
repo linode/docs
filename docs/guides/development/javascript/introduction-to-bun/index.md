@@ -11,7 +11,7 @@ external_resources:
 - '[LogRocker: Bun - The JavaScript Runtime Taking on Node.js and Deno](https://blog.logrocket.com/bun-javascript-runtime-taking-node-js-deno/)'
 - '[The New Stack: Meet Bun - A JavaScript Runtime for the Whole Dev Lifecycle](https://thenewstack.io/meet-bun-a-javascript-runtime-for-the-whole-dev-lifecycle/)'
 - "[high0verEngineering: Let's Bun! - A New JavaScript Runtime](https://jenil777007.hashnode.dev/lets-bun)"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 tags: ["digital agencies"]
 ---
 

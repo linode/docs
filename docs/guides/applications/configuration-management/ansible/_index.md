@@ -6,5 +6,5 @@ published: 2020-07-15
 title: Ansible
 show_in_lists: true
 aliases: ['/applications/configuration-management/ansible/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

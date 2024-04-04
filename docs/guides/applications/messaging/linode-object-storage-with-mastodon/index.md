@@ -8,11 +8,11 @@ published: 2022-12-24
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use Linode Object Storage with Mastodon"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 external_resources:
 - '[Thomas Leister: Mastodon - Adding S3 Based Cloud Storage to Your Instance](https://thomas-leister.de/en/mastodon-s3-media-storage/)'
 - '[Mastodon: Proxying Object Storage through NGINX](https://docs.joinmastodon.org/admin/optional/object-storage-proxy/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Mastodon is a decentralized microblogging platform that participates in the Fediverse network. But if you have a Mastodon instance or are planning to deploy one, you may be concerned with its media storage demands and efficiency.

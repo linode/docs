@@ -11,7 +11,7 @@ published: 2009-09-30
 title: Standalone MySQL Server
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/standalone-mysql-server/']
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 In some kinds of deployments, particularly where rich dynamic applications rely on a large database, separating the database server from the application server can permit your application to scale and accommodate a much larger user base. Designating a separate server to be used solely by MySQL will allow the application's web server to serve content more efficiently, while the database server will be able to respond more quickly.

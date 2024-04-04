@@ -14,7 +14,7 @@ external_resources:
 - '[Apache .htaccess Documentation](https://httpd.apache.org/docs/current/howto/htaccess.html)'
 tags: ["web server","apache"]
 aliases: ['/web-servers/apache/how-to-set-up-htaccess-on-apache/']
-authors: ["Christopher Piccini"]
+contributors: ["Christopher Piccini"]
 ---
 
 ![How to Set Up the htaccess File on Apache](how-to-set-up-the-htaccess-file-on-apache-smg.jpg)

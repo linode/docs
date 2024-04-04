@@ -21,7 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Lamp on Ubuntu 14.04](lamp-on-ubuntu-1404-title-graphic.jpg "Lamp on Ubuntu 14.04")

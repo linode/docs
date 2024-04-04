@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "SQL Database Security: User Management"
 title_meta: "SQL Security and User Management"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 User management and permissions are essential to SQL database security. Typically, SQL database security schemes consist of one or more users, their authentication, and permissions. The database engine validates a user's permissions when they attempt to perform an operation against a SQL object —for example, a table, an index, a stored procedure, etc. The basic premise behind the assignment of SQL roles and permissions is to provide users of the database access to only what is necessary to perform their job. In this guide, you learn how to create and assign roles and permissions to users of relational database systems.

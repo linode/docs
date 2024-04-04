@@ -16,7 +16,7 @@ external_resources:
  - '[About Knife](https://docs.chef.io/knife.html)'
  - '[About Nodes](https://docs.chef.io/nodes.html)'
 tags: ["automation"]
-authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
 ---
 
 Chef cookbooks describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. In this guide you will learn how to create a cookbook that configures A LAMP stack on a Linode.

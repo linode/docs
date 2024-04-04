@@ -16,7 +16,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Apache Tomcat is a free and open source software implementation for JavaServlets. It provides support for Java Server Pages (JSP), which power many popular web-based applications. You may choose to run Tomcat with either Sun's Java implementation or the OpenJDK implementation of Java, and this document provides instructions for using either option.

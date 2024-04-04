@@ -17,7 +17,7 @@ relations:
             - distribution: Debian 7
 aliases: ['/applications/cloud-storage/owncloud-debian-7/','/guides/owncloud-debian-7/']
 deprecated: true
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ownCloud is an open source platform that allows easy access to files from multiple locations and platforms. It's compatible with most major operating systems and mobile devices. With ownCloud you can store files on your Linode and then access them wherever you go.

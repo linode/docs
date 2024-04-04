@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Verifying the Authenticity of a Remote Server through Its SSH Key Fingerprint"
 title_meta: "Verifying the Authenticity of Remote Host (SSH Key Fingerprint)"
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Warning: The Authenticity of Host Can't Be Established

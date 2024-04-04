@@ -17,7 +17,7 @@ external_resources:
 - '[Installing Plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins)'
 aliases: ['/websites/cms/wordpress/how-to-secure-wordpress/']
 image: SecureWordpress.png
-authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
 ---
 
 WordPress is a popular content management and website creation software system used by millions of users today. It's easy to use and offers thousands of plugins making it simple for non-developers to create beautiful websites without having to write a single line of code. This guide helps you keep your WordPress site secure with suggestions like installing SSL certificates, installing a firewall, enabling two-factor authentication, and more.

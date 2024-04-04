@@ -16,7 +16,7 @@ relations:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -10,7 +10,7 @@ modified_by:
 title: "Introduction to SQL Joins"
 title_meta: "SQL Joins"
 
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 Traditionally, you pull data from two or more tables using a `WHERE` clause in a query. But in a relational database system (RDBMS), this can be achieved using a single `SELECT` query. This is the true power of relational database systems. In this guide, you learn about SQL Joins, a powerful way to compare and select rows and tables.

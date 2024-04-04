@@ -15,7 +15,7 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: Debian 10
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 ## What is ownCloud?

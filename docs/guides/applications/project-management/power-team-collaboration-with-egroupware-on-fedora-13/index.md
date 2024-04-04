@@ -16,7 +16,7 @@ relations:
         key: collaborate-with-egroupware
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

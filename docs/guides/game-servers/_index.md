@@ -9,5 +9,5 @@ show_on_frontpage: true
 title_short: "Game Servers"
 weight: 120
 icon: "gamepad"
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

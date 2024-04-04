@@ -10,7 +10,7 @@ modified_by:
 title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
 title_meta: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
 aliases: ['/websites/static-sites/install-gatsbyjs/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI](create-a-ci-cd-pipeline.png "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI")

@@ -15,7 +15,7 @@ external_resources:
 - '[Ubuntu 22.04 release notes](https://discourse.ubuntu.com/t/jammy-jellyfish-release-notes/24668)'
 - '[Ubuntu Long Term Support Schedule](https://ubuntu.com/about/release-cycle)'
 - '[New features in Ubuntu 22.04](https://ubuntu.com/blog/ubuntu-22-04-lts-whats-new-linux-desktop)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 aliases: ['/upgrading/upgrade-to-ubuntu-12.04-precise/']
 ---
 

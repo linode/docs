@@ -10,7 +10,7 @@ modified_by:
 published: 2018-07-31
 title: How to Migrate a LAMP Website to Linode
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']
-authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
 ---
 
 This guide describes how to migrate a website running in a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#what-is-a-lamp-stack) environment on another host to a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.

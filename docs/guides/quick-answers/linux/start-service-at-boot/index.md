@@ -14,7 +14,7 @@ external_resources:
   - '[systemd Documentation](https://www.freedesktop.org/wiki/Software/systemd/)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/start-service-at-boot/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is systemd?

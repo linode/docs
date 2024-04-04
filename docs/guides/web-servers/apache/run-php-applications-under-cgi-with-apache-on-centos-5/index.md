@@ -16,7 +16,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

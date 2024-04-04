@@ -20,7 +20,7 @@ relations:
         key: python-virtual-env
         keywords:
             - distribution: Ubuntu 16.10
-authors: ["Christopher Piccini"]
+contributors: ["Christopher Piccini"]
 ---
 
 ![Create a Python Virtual Environment on Ubuntu 16.10](python-ve-u16-title.jpg "Create a Python Virtual Environment on Ubuntu 16.10")

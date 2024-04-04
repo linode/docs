@@ -16,7 +16,7 @@ external_resources:
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
 tags: ["web server","php","mysql","apache","lamp"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-12/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: cert-manager](cd-presentation-header-12-cert-manager.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: cert-manager")

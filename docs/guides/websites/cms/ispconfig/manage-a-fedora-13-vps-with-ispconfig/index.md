@@ -16,7 +16,7 @@ relations:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Fedora 13
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

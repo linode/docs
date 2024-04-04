@@ -4,7 +4,7 @@ title: "Monitoring and Securing Cloud Workloads With Wazuh"
 description: 'This guide explores how to utilize Wazuh for threat detection on monitored endpoints, including custom configurations and integration with additional security tools.'
 keywords: ['Wazuh', 'Wazuh Indexer', 'Wazuh Server', 'Install and Configure Wazuh', 'Provide Endpoint Security with Wazuh', 'How to Use Wazuh Threat Detection']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
 published: 2024-02-13
 modified_by:
   name: Linode

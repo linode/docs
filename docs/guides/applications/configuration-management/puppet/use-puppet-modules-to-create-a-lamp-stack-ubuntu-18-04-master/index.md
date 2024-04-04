@@ -15,7 +15,7 @@ relations:
         key: install-puppet-lamp-master
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Use Puppet Modules to Create a LAMP Stack](Use_Puppet_Modules_to_Create_a_LAMP_Stack_smg.jpg)

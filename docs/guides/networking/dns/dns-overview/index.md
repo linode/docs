@@ -11,7 +11,7 @@ published: 2009-07-29
 title: "Overview of DNS and DNS Records"
 tags: ["dns","networking"]
 image: dns-records-an-introduction.png
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The [Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System) (DNS) is the Internet's address book. DNS directs web traffic to your Linode and email to your inbox by mapping memorable domain names like `example.com` to IP addresses like `192.0.2.8` or `0123:4567:89ab:cdef:0123:4567:89ab:cdef`. This guide introduces basic DNS concepts and the different types of DNS records.

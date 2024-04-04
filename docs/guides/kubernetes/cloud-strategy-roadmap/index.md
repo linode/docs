@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Develop a Cloud Implementation Strategy Roadmap"
 title_meta: "How to Develop a Cloud Implementation Strategy Roadmap"
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 A few years ago the cloud was an idea; one that most pundits and businesses scoffed at. The cloud is now something consumers and businesses fully embrace. Businesses recognize that the cloud is a crucial component for a positive growth trajectory. From data storage, app deployment, and virtual machine management, the cloud is now the data center for the new world order.

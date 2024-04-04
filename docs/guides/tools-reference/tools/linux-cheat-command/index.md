@@ -8,7 +8,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Install and Use the cheat Command on Linux"
 title_meta: "How to Install and Use the cheat Command on Linux"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 `cheat` is a command-line tool that lets you view, create, and manage cheat sheets. This tool is ideal for Linux system administrators because you can access your cheat sheets directly from the command line. This minimizes your need to hunt down a refresher for a command you haven't used in while. You can find what you need without leaving your terminal.

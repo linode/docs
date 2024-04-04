@@ -18,7 +18,7 @@ relations:
         key: launch-counterstrike-server
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 18.04](launch-a-counter-strike-global-offensive-1804.png "Launch a Counter Strike: Global Offensive server on Ubuntu 18.04")

@@ -11,7 +11,7 @@ modified_by:
 image: UseSaltStatestoCreateLAMPStackandFail2banAcrossSaltminions.png
 published: 2015-07-02
 title: Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Salt States can install and define a server setup on other servers. This tutorial demonstrates the use of Salt States to create a LAMP stack across all Salt Minions.

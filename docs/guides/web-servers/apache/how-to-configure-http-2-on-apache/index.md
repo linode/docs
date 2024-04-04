@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Configure HTTP/2 on Apache"
 title_meta: "How to Configure HTTP/2 on Apache"
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) is an update to the original [*Hypertext Transfer Protocol*](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (HTTP) specification offering improvements in efficiency and latency. The new version, which adds several useful features, is compatible with browsers that only support HTTP/1. HTTP/2 has many advantages and no significant drawbacks, so upgrading to the new version is recommended. This guide explains how to configure and use HTTP/2 on an Apache server and how to test it is working.

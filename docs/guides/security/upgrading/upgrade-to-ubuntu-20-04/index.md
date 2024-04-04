@@ -15,7 +15,7 @@ relations:
         keywords:
             - distribution: Ubuntu 20.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-20-04/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Ubuntu 20.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2025. Use this guide to upgrade your Linode from Ubuntu 18.04 (Bionic Beaver) or Ubuntu 19.10 (Eoan Ermine) to Ubuntu 20.04 (Focal Fossa).

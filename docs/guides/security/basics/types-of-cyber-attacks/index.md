@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Eight Common Types of Cyber Attacks and How to Prevent Them"
 title_meta: "What are the Most Common Cyber Attacks?"
-authors: ["Andy Patrizio"]
+contributors: ["Andy Patrizio"]
 ---
 
 As long as there have been personal computers, there have been cyber attacks, even in the pre-Internet days of the 1980s. Malware started out simple; they damaged your data, apps, or floppy disks. Malware authors did it for no other reason than to be mean.

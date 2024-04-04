@@ -4,7 +4,7 @@ title: "Setting Up Static Code Analysis with SonarQube"
 description: "SonarQube provides static codes analysis, catching and reporting code issues, and with a range of integration options for your project and CI/CD pipeline. Learn in this guide how to set up a SonarQube server and start using it for your projects."
 keywords: ['sonarqube tutorial','what is sonarqube','how to run sonarqube analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
 published: 2023-04-08
 modified_by:
   name: Nathaniel Stickman

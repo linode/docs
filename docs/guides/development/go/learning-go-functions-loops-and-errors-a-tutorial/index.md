@@ -13,7 +13,7 @@ external_resources:
   - '[Effective Go](https://golang.org/doc/effective_go.html)'
   - '[A Tour of Go](https://tour.golang.org/welcome/1)'
 aliases: ['/development/go/learning-go-functions-loops-and-errors-a-tutorial/']
-authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
 ---
 
 After you've learned the syntax of a simple "Hello World" script in Go, you'll likely want to start making more complicated programs. This guide will introduce language constructs that help with structuring your programs, including:

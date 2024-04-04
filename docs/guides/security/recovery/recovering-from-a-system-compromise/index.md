@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2009-08-26
 title: Recovering from a System Compromise
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")

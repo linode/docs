@@ -20,7 +20,7 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open-source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.

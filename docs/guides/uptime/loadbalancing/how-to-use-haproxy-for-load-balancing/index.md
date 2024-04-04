@@ -14,7 +14,7 @@ external_resources:
 - '[HAProxy Documentation](http://www.haproxy.org/#docs)'
 dedicated_cpu_link: true
 aliases: ['/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/']
-authors: ["Robert Hussey"]
+contributors: ["Robert Hussey"]
 ---
 
 

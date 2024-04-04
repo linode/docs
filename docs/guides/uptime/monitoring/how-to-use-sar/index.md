@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Using the System Activity Reporter (sar)"
 title_meta: "How to Use the System Activity Reporter (sar)"
-authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
 ---
 
 The System Activity Reporter ([Sar](https://linux.die.net/man/1/sar)) is a utility program for analyzing Linux system performance. Sar is a do-it-all monitoring tool that is part of the [Sysstat system resource utilities package](https://github.com/sysstat/sysstat). Linux administrators should learn sar for its wide range of utility features. It measures CPU activity; memory/paging; interrupts; device load; network; process and thread allocation; and swap space utilization. Data is gathered in the `/proc` filesystem. By default, sar collects data once for every 10-minute mark of each hour. This guide shows you how to install and configure sar on your Debian or Ubuntu Linux system. You also learn several useful commands to get you started collecting data about your Linux system's activity.

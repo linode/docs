@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 title: "Getting Started with Load Balancing on an LKE Cluster"
 title_meta: "How to Get Started with Load Balancing on an LKE Cluster"
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The Linode Kubernetes Engine (LKE) is Linode's managed Kubernetes service. When you deploy an LKE cluster, you receive a Kubernetes Master which runs your cluster's control plane components, at no additional cost. The control plane includes [Linode's Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/), which provides a way for your cluster to access additional Linode services. Linode's CCM provides access to Linode's load balancing service, [Linode NodeBalancers](/docs/products/networking/nodebalancers/).

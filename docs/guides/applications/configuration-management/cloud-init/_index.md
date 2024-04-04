@@ -5,5 +5,5 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-11-15
 title: Cloud-Init
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

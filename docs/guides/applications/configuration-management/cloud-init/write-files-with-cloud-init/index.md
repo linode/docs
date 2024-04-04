@@ -4,7 +4,7 @@ title: "Use Cloud-Init to Write to a File"
 description: "Find out how you can use cloud-init to automate writing and modifying files during your new servers' initialization."
 keywords: ['cloud-init','cloudinit','write files','sed']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2023-11-15
 modified_by:
   name: Nathaniel Stickman

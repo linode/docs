@@ -6,7 +6,7 @@ modified: 2024-01-10
 modified_by:
   name: Linode
 tags: ["linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 _build:
   list: false
 noindex: true

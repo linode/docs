@@ -13,7 +13,7 @@ title: 'Install Icinga 2 Monitoring on Debian 9'
 external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 aliases: ['/uptime/monitoring/install-icinga2-monitoring-on-debian-9/']
-authors: ["Matt Vass"]
+contributors: ["Matt Vass"]
 ---
 
 ![Install Icinga 2 Monitoring on Debian 9](Icinga2.jpg "Install Icinga 2 Monitoring on Debian 9")

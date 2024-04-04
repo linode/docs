@@ -13,7 +13,7 @@ external_resources:
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/deploy-mysql-workbench-for-database-administration/']
-authors: ["Scott Sumner"]
+contributors: ["Scott Sumner"]
 ---
 
 

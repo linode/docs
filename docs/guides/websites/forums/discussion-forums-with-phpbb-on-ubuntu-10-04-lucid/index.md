@@ -16,7 +16,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 10.04
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 

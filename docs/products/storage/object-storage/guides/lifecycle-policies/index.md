@@ -8,7 +8,7 @@ modified_by:
 title: "Lifecycle Policies"
 aliases: ['/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/','/platform/object-storage/lifecycle-policies/','/guides/lifecycle-policies/','/guides/how-to-manage-objects-with-lifecycle-policies/']
 tags: ["linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 While deleting a few objects in an Object Storage bucket might not take that long, when the objects number in the thousands or even millions the time required to complete the delete operations can easily become unmanageable. When deleting a substantial amount of objects, it's best to use *lifecycle policies*. These policies can be represented in XML; here's an (incomplete) snippet of an action that will delete objects after 1 day:

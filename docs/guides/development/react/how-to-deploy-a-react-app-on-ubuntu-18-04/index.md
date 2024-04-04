@@ -23,7 +23,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/react/how-to-deploy-a-react-app-on-ubuntu-18-04/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 ## What is React?
 

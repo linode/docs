@@ -10,7 +10,7 @@ modified_by:
 published: 2019-08-07
 title: How to Install Jellyfin on Linux
 aliases: ['/applications/media-servers/how-to-install-jellyfin/']
-authors: ["Gardiner Bryant"]
+contributors: ["Gardiner Bryant"]
 ---
 Jellyfin is an open source media library management and streaming platform, similar to [Plex](https://www.plex.tv/). This document guides you through the process of installing and configuring **Jellyfin** on your Linode running Ubuntu 18.04.
 

@@ -11,7 +11,7 @@ published: 2018-09-05
 title: How to Use the Less Command
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-less/']
-authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
 ---
 
 ## What is Less?

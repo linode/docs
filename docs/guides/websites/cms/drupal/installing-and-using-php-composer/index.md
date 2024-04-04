@@ -13,7 +13,7 @@ external_resources:
 - '[Composer](https://getcomposer.org/)'
 - '[Packagist](https://packagist.org/)'
 - '[Composer Documentation](https://getcomposer.org/doc/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [*PHP*](https://www.php.net/) is one of the most popular programming languages for web and internet-based applications. Due to the increasing complexity of these applications, third-party PHP packages have become increasingly popular. However, it can become difficult to manage the minimum version and dependencies for each package. [*Composer*](https://getcomposer.org/), which is a free open source package and dependency manager for PHP, can help oversee this situation. This guide explains how to install and update Composer and how to use it to install and update packages.

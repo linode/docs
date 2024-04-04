@@ -12,7 +12,7 @@ external_resources:
 - '[Supabase: Quickstart - Next.js](https://supabase.com/docs/guides/with-nextjs)'
 - '[freeCodeCamp: Full Stack Development with Next.js and Supabase – The Complete Guide](https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/)'
 - '[LogRocket: Build a Full-stack App with Next.js and Supabase](https://blog.logrocket.com/build-full-stack-app-next-js-supabase/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Supabase offers an open source database solution complete with a REST API for accessing data. This makes Supabase more than just an outstanding database. It can function as a complete backend for many applications. Supabase abstracts API development and gives your application's frontend access to the data it needs.

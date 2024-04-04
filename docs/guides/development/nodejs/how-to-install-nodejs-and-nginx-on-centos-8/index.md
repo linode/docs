@@ -26,7 +26,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-centos-8/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Node.js is an open-source JavaScript runtime environment that can serve dynamic and responsive content and is often used to create and serve web applications. When serving Node.js applications, NGINX is commonly used to create a reverse proxy that points at a running Node.js server. In this guide, you will install and configure NGINX on a CentOS 8 Linode. NGINX will handle requests to static files, like `index.html` and also, create a reverse proxy to a Node.js server. You will then create a test JavaScript file in order to test your running Node.js server.

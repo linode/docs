@@ -6,7 +6,7 @@ modified_by:
 title: "CNAME Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## CNAME Overview

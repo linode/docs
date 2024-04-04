@@ -3,7 +3,7 @@ title: Configure SSH Access for Managed Services
 linkTitle: Configure SSH Access
 description: "Learn how to configure SSH so that our team can access your system when troubleshooting."
 published: 2023-04-11
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 To troubleshoot an issue with a failed monitor check, the Support Team needs access to your system. This access can be provided by using the unique public key generated for your account. You can upload this key to any system user and then configure the SSH access settings for each Compute Instance so that our team is aware of how they should log in. To start using your public key, follow the steps below *for each Compute Instance* on your account.

@@ -6,7 +6,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-06-26
 modified_by:
   name: Linode
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Appwrite](https://appwrite.io/) is an open-source, self-hosted backend server that provides developers with a set of tools and services to build and manage web and mobile applications. It offers various features to simplify the development process, including user authentication, database management, file storage, and more.

@@ -6,7 +6,7 @@ published: 2023-05-24
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide provides an overview of the data and graphs available to you after successfully installing Longview on a Compute Instance or other Linux system.

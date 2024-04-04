@@ -2,7 +2,7 @@
 title: "Resize a Volume"
 description: "Learn how to resize an existing Block Storage Volume on the Linode Platform"
 modified: 2024-02-05
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 At any time after the Block Storage Volume has been created, it can be increased to a larger size.

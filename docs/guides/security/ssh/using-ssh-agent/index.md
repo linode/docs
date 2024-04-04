@@ -12,7 +12,7 @@ external_resources:
 - '[die.net: ssh-agent(1)](https://linux.die.net/man/1/ssh-agent)'
 - '[SSH: ssh-agent](https://www.ssh.com/academy/ssh/agent)'
 - '[Smallstep: SSH Agent Explained](https://smallstep.com/blog/ssh-agent-explained/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 ssh-agent manages private keys for SSH connections, facilitating smoother SSH experiences and allowing you to use SSH sessions across programs. This guide aims to give you a full walkthrough of ssh-agent. The tutorial herein explains what ssh-agent is capable of and shows you how to use it.

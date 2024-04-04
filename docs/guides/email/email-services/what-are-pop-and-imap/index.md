@@ -4,7 +4,7 @@ title: "Quick Guide to POP and IMAP: Protocols for Accessing Email"
 description: 'What are POP and IMAP and how do they work? They both are technologies behind incoming email server communication. ✓ Learn how to use handy POP and IMAP commands here!'
 keywords: ['what are pop and imap','mail transfers','pop imap tcp or udp','pop addressing','how does pop work','How does imap work','what are pop and imap used for','pop and imap protocol examples','what do pop and imap do']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
 published: 2024-02-12
 modified_by:
   name: Linode

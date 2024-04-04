@@ -10,7 +10,7 @@ modified_by:
 published: 2015-04-30
 title: Manage OpenVPN with OpenVPN Access Server
 tags: ["networking","security","vpn"]
-authors: ["James Stewart"]
+contributors: ["James Stewart"]
 ---
 
 ![Manage OpenVPN with OpenVPN Access Server](Install_OpenVPN_Access_Server_v2_smg.png "Manage OpenVPN with OpenVPN Access Server title graphic")

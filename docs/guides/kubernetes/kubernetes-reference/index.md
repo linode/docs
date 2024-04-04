@@ -14,7 +14,7 @@ external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['/kubernetes/kubernetes-reference/','/applications/containers/kubernetes-reference/','/applications/containers/kubernetes/kubernetes-reference/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Introduction

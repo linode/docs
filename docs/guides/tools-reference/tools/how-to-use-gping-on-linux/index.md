@@ -9,7 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Install and Use gping on Linux"
 title_meta: "How to Install and Use gping on Linux"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The gping tool takes the functionality of the ping tool and displays its data on a graph. With gping you can track the response time for hosts, and compare the data side by side. This guide shows you how to install gping and get started using it on your Linux system.

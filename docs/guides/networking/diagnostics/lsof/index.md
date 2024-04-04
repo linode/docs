@@ -13,7 +13,7 @@ external_resources:
   - '[lsof on Wikipedia](https://en.wikipedia.org/wiki/Lsof)'
   - '[lsof Manual Page on die.net](https://linux.die.net/man/8/lsof)'
 aliases: ['/networking/diagnostics/lsof/']
-authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

@@ -10,7 +10,7 @@ modified_by:
 title: 'Introduction to Bash Shell Scripting'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
-authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

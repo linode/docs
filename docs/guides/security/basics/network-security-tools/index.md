@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Network Security Tools and How They Help You"
 title_meta: "Network Security Software Tools and Devices"
-authors: ["David Strom"]
+contributors: ["David Strom"]
 ---
 
 Security starts with having a well-protected network. This means keeping intruders out, and continuously scanning for potential breaches and flagging attempted compromises. Sadly, there is no single product that will protect everything, but the good news is that over the years a number of specialized tools have been developed to help you protect your enterprise network. Your burden is to ensure that there are no gaps in between these various tools, and that you have covered all the important bases to keep your network secure and protect yourself against potential harm from cyber criminals. New security threats happen daily as attackers target your business, make use of inexpensive services designed to uncover weaknesses across your network or in the many online services that you use to run your business.

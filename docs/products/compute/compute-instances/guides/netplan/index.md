@@ -4,7 +4,7 @@ title: "Network Configuration Using Netplan"
 description: "Learn how to manually configure your Compute Instance’s networking using the netplan utility on Ubuntu 18.04 and newer."
 keywords: ['netplan','network configuration','ip address']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode","Nathaniel Stickman"]
+contributors: ["Linode","Nathaniel Stickman"]
 published: 2023-09-12
 modified_by:
   name: Linode

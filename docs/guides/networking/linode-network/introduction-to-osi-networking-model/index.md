@@ -19,7 +19,7 @@ external_resources:
 - '[Ubuntu tcpdump man page](https://manpages.ubuntu.com/manpages/jammy/man8/tcpdump.8.html)'
 - '[Wikipedia List of IEEE 802 family of standards](https://en.wikipedia.org/wiki/IEEE_802)'
 - '[FileZilla](https://filezilla-project.org/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Computer networking is a complicated subject, with many interconnected layers and interactions. To help developers and engineers understand how the various networking components work together, several conceptual models have been developed. The [*Open Systems Interconnection*](https://en.wikipedia.org/wiki/OSI_model) (OSI) Model is a popular model that divides the networking stack into seven layers. This guide explains the OSI Model and describes each layer. It also lists the tools available for each layer and contrasts the OSI Model with the competing [*Internet Protocol suite*](https://en.wikipedia.org/wiki/Internet_protocol_suite).

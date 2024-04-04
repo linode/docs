@@ -14,7 +14,7 @@ external_resources:
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/','/guides/how-to-back-up-your-postgresql-database/']
 image: back-up-postgresql-database-title.jpg
-authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 ---
 
 If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, automating backups with a cron task, you can restore your system when your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage. Learn how to backup your PostgreSQL database in Linux, in this guide.

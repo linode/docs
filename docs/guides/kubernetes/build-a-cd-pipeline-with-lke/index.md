@@ -11,7 +11,7 @@ modified_by:
 image: cd-presentation-header.png
 tags: ["kubernetes", "lke", "media"]
 aliases: ['/guides/lke-continuous-deployment-series/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine](cd-presentation-header.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine")

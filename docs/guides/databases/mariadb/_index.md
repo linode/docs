@@ -6,6 +6,6 @@ published: 2014-06-12
 title: MariaDB
 show_in_lists: true
 aliases: ['/databases/mariadb/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

@@ -14,7 +14,7 @@ external_resources:
 - '[Python queue documentation](https://docs.python.org/3/library/queue.html)'
 - '[Python PriorityQueue documentation](https://docs.python.org/3/library/queue.html?highlight=priorityqueue#queue.PriorityQueue)'
 - '[Python heapq documentation](https://docs.python.org/3/library/heapq.html#priority-queue-implementation-notes)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 In Python, queues are frequently used to process items using a *first in first out* (FIFO) strategy. However, it is often necessary to account for the priority of each item when determining processing order. A queue that retrieves and removes items based on their priority as well as their arrival time is called a [*priority queue*](https://en.wikipedia.org/wiki/Priority_queue). Prioritization can be complicated, but fortunately Python priority queues can be easily and efficiently implemented using a built-in module. This guide introduces the Python priority queue and explains how to implement it in Python 3.

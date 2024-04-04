@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Install and Use the Subversion CLI Client"
 title_meta: "How to Install and Use the Subversion CLI Client"
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 Subversion (SVN) is a *centralized version control system* (VCS) that can be used to collaborate on the development of software projects. A centralized version control system uses a single remote instance of a project to stores its versioned data. This instance can also be referred to as a *repository*.

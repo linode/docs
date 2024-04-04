@@ -8,7 +8,7 @@ title: "Create a Domain"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-domains/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide walks you through how to create a domain through the Cloud Manager. Adding a domain only takes a few steps. Here's an outline on how to create a domain using Cloud Manager.

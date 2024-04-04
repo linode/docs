@@ -14,7 +14,7 @@ external_resources:
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
     - '[Configuring Java Arguments](https://puppet.com/docs/pe/2019.0/config_java_args.html)'
 aliases: ['/applications/configuration-management/puppet/getting-started-with-puppet-6-1-basic-installation-and-setup/','/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Puppet](https://puppet.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.

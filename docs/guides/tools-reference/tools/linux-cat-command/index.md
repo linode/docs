@@ -11,7 +11,7 @@ external_resources:
 - '[phoenixNAP: How to Use Linux Cat Command (with Examples)](https://phoenixnap.com/kb/linux-cat-command)'
 - '[Tecmint: 13 Basic Cat Command Examples in Linux](https://www.tecmint.com/13-basic-cat-command-examples-in-linux/)'
 - '[GeeksforGeeks: Cat Command in Linux with Examples](https://www.geeksforgeeks.org/cat-command-in-linux-with-examples/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 You may sometimes find yourself wanting to quickly view text files from the command line. The most frequently used tool for doing so is the *cat* command. Short for "con*cat*enate," the command shows the contents of text files as output to the command line.

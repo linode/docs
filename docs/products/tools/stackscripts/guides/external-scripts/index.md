@@ -4,7 +4,7 @@ description: "Learn how to download an external script and use it within a Stack
 aliases: ['/products/tools/stackscripts/guides/stackscripts-create-linode/']
 published: 2020-04-22
 modified: 2022-11-30
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## External Deployment Script

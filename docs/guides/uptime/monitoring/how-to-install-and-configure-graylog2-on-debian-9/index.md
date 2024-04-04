@@ -15,7 +15,7 @@ external_resources:
 - '[Elasticsearch](https://www.elastic.co/guide/index.html)'
 dedicated_cpu_link: true
 aliases: ['/uptime/monitoring/how-to-install-and-configure-graylog2-on-debian-9/']
-authors: ["Hitesh Jethva"]
+contributors: ["Hitesh Jethva"]
 ---
 
 ## What is Graylog?

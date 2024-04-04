@@ -14,7 +14,7 @@ external_resources:
 - '[Netsparker SQL Injection Cheat Sheet](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet)'
 - '[OWASP Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)'
 - '[OWASP Security Code Review guide](https://owasp.org/www-project-code-review-guide/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Security is an important issue for all web applications and databases, especially those using the *Structured Query Language* (SQL). Although criminals most frequently focus on high-value targets, even small online applications can be victimized. When important information is stolen or an application is compromised, the financial, logistical, and reputation costs can be severe. Criminals and hackers frequently use a technique named *SQL Injection* (SQLi) to gain unauthorized entry to a remote database. This guide describes a SQL injection attack and explains how it is used. It also discusses how to detect SQLi vulnerabilities and how to defend against them.

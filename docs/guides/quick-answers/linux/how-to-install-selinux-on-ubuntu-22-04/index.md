@@ -14,7 +14,7 @@ relations:
     key: how-to-install-selinux
     keywords:
       - distribution: Ubuntu 22.04
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 According to [the official Security Enhanced Linux project page](http://www.selinuxproject.org/page/Main_Page), SELinux is a security enhancement to Linux. Linux-based security-sensitive projects largely standardize on it. Ubuntu 22.04 is compatible with SELinux and these instructions make it available on your Ubuntu 22.04 host. The steps in this guide appear as command line instructions. Both physical and virtual machines can be configured for SELinux, but it is not possible to enable SELinux in a Docker container without additional steps not covered here.

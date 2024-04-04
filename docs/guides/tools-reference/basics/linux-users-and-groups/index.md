@@ -14,7 +14,7 @@ title: Linux Users and Groups
 external_resources:
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide provides you with an explanation of what permissions are, how they work, and how to manage them. A number of examples are provided to illustrate how to set and change permissions for both users and groups.

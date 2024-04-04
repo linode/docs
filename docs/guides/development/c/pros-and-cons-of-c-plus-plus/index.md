@@ -14,7 +14,7 @@ external_resources:
 - '[TechVidvan: Advantages and Disadvantages of C++](https://techvidvan.com/tutorials/cpp-pros-and-cons/)'
 - '[GeeksforGeeks: Advantages and Disadvantages of C++](https://www.geeksforgeeks.org/advantages-and-disadvantages-of-c/)'
 - '[TekSlate: Advantages and Disadvantages of C++ language](https://tekslate.com/c-explain-advantages-disadvantages)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 C++ stands as one of the oldest and most pervasive programming languages around. And with good reason. Its low-level control and high speed make it the top player for systems programming and other areas that demand tight efficiency.

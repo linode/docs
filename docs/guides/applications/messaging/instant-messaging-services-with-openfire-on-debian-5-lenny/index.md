@@ -16,7 +16,7 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

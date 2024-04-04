@@ -11,7 +11,7 @@ title: "Check Disk Usage on Linux with the dust Command"
 title_meta: "Installing and Using dust on Linux"
 external_resources:
 - '[Dust page on GitHub](https://github.com/bootandy/dust)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Hard drive space on a system can fill up quickly, especially when new software is installed. System administrators frequently have to review disk space utilization and see what files or directories are using up the most storage. This can be accomplished using the Linux `du` command, but many users find it cumbersome and awkward to use. The open-source [*dust*](https://github.com/bootandy/dust) program offers a new way of looking at disk space usage more intuitively and straightforwardly. This guide explains how to install and use the dust utility on Linux and how it functions as a du replacement.

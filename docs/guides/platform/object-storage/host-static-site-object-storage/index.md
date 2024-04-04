@@ -15,7 +15,7 @@ external_resources:
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/host-static-site-object-storage/']
 image: host-a-static-site-using-linode-object-storage.png
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Why Host a Static Site on Object Storage?

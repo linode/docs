@@ -14,7 +14,7 @@ external_resources:
 - '[Apache HTTP Server](https://httpd.apache.org/)'
 - '[NGINX](https://nginx.org/)'
 
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The [*Apache HTTP Server*](https://httpd.apache.org/) (usually called "Apache") and [*NGINX*](https://nginx.org/) (pronounced "engine-X") are the two most popular open-source web servers. So much so that it can often be unclear which one is the best to use. However, once you realize what sets each apart, you can easily make the best choice for your needs.

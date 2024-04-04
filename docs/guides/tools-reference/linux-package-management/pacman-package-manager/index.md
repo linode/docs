@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 title: "Using Pacman to Manage Packages in Arch"
 title_meta: "How to Manage Packages in Arch Using Pacman"
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Arch Linux uses binary packages in a `.tar.xz` format, and also provides a "ports" build system that facilitates building packages. Arch Linux runs on a *rolling release* schedule, which means packages are added to the main repository when they (and their dependencies) are ready for production. This means that there aren't release versions of Arch, as all systems, once upgraded, are equivalent. Therefore, administrators of Arch Linux must consider the output of `pacman` carefully before agreeing to upgrade or update any packages.

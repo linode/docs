@@ -13,7 +13,7 @@ title: Install cPanel on CentOS
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 image: Install_cPanel_smg.jpg
 ---
 

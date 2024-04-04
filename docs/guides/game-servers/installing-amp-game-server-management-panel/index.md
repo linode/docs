@@ -13,7 +13,7 @@ external_resources:
  - '[CubeCoders Homepage](https://cubecoders.com/)'
  - '[AMP Wiki](https://github.com/CubeCoders/AMP/wiki)'
 dedicated_cpu_link: true
-authors: ["Ryan Syracuse"]
+contributors: ["Ryan Syracuse"]
 ---
 
 [AMP](https://cubecoders.com/AMP) or **Application Management Panel** is a game server management panel. It provides a graphical overlay to simplify the deployment of game servers, and serves as the next iteration of the popular Minecraft server control panel [McMyAdmin](https://www.mcmyadmin.com/). AMP provides support for third party mods, heavy focus on security, and a sleek web interface for managing your server. This guide covers the installation and configuration of a new AMP server on most Linux distributions.

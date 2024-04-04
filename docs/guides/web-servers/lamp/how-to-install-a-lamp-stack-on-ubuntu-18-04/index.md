@@ -20,7 +20,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is a LAMP Stack?

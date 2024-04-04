@@ -11,7 +11,7 @@ published: 2021-03-26
 title: cPanel Security
 aliases: ['security/basics/securing-cpanel/']
 image: cPanelSecurity.png
-authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
 ---
 
 ## What is cPanel?

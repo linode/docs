@@ -16,7 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-14-04-lts/']
-authors: ["Dave Russell"]
+contributors: ["Dave Russell"]
 ---
 
 ![How to Upgrade to Ubuntu 14.04 LTS](How_to_Upgrade_to_Ubuntu_1404_LTS_smg.jpg)

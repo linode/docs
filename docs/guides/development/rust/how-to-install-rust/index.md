@@ -12,7 +12,7 @@ title: "Installing and Using Rust"
 title_meta: "How to Install and Use Rust"
 external_resources:
 - '[Rust Programming Language](https://www.rust-lang.org/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 This guide explains how to install [*Rust*](https://www.rust-lang.org/), a popular programming language designed to maximize performance and safety. It also discusses how to create, compile, and run a simple Rust project. Rust is somewhat similar to C++, although it is able to guarantee memory and thread safety. Rust was originally developed for use at Mozilla Research, but it has recently gained in popularity throughout the software industry. For many years now, Rust has been rated one of the top programming languages in industry surveys.

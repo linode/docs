@@ -16,7 +16,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: Ubuntu 20.04
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 aliases: ['/web-servers/nginx/installation/ubuntu-10.04-lucid/','/web-servers/nginx/installation/ubuntu-12.04-precise-pangolin/']
 ---
 

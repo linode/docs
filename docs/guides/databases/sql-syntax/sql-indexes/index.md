@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "An Introduction to SQL Indexes"
 title_meta: "How to Use SQL Indexes"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 In relational database systems, a *database index* is an extremely powerful tool for data retrieval. In this guide, you learn about unique indexes, primary keys, and composite primary keys.

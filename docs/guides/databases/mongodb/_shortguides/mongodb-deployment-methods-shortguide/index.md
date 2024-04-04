@@ -10,7 +10,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/mongodb-deployment-methods-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 To perform the steps in the guide, you need to have a running MongoDB database as well as the [MongoDB Shell](/docs/guides/mongodb-community-shell-installation/) installed (either locally or on your remote instance). To deploy MongoDB, follow the instructions on [MongoDB's documentation site](https://www.mongodb.com/docs/manual/administration/install-on-linux/) or use one of the following Linode guides:

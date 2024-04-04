@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-ssh/','/guides/troubleshooting-ssh/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for when you can't connect to your Compute Instance via SSH. If you currently cannot [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/) guide. If you restore basic networking to your Compute Instance but still can't access SSH, return to this guide.

@@ -14,7 +14,7 @@ relations:
         key: what-is-longview
         keywords:
             - distribution: MySQL
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

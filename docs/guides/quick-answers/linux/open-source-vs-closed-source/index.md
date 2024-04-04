@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Open Source vs. Closed Source: What’s the Difference?"
 title_meta: "What is the Difference Between Open Source and Closed Source?"
-authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
 ---
 
 ## What is Open Source?

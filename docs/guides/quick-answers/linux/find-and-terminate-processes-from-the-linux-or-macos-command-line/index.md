@@ -11,7 +11,7 @@ title: "Find and Terminate Processes from the Linux or Mac OS Command Line"
 title_meta: "Terminate Processes from the Mac or Linux Command Line"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/find-and-terminate-processes-from-the-linux-or-macos-command-line/']
-authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
 ---
 
 This Quick Answer explores some ways to locate and terminate a process from the command line. While there are graphical utilities such as Activity Monitor on Mac OS or Task Manager on Windows, such programs compromise control over processes in exchange for convenience. The command line offers many options for closing a process.

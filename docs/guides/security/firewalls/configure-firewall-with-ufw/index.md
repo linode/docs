@@ -11,7 +11,7 @@ published: 2015-11-17
 title: How to Configure a Firewall with UFW
 tags: ["networking","security"]
 aliases: ['/security/firewalls/configure-firewall-with-ufw/']
-authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
 ---
 
 ## What is UFW?

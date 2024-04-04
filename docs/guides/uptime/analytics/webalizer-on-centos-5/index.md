@@ -18,7 +18,7 @@ relations:
         key: using-webalizer-analytics
         keywords:
             - distribution: CentOS 5
-authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
 ---
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.

@@ -6,6 +6,6 @@ published: 2020-09-01
 title: Apache Solr
 show_in_lists: true
 aliases: ['/websites/cms/solr/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

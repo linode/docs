@@ -23,7 +23,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 5 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.

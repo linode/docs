@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Troubleshooting DNS Issues"
 bundles: ['troubleshooting']
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 The most common DNS error is a simple typo, whether it’s from the client or the server. Typos and other incorrect DNS data cause many problems. Even when data is correct, DNS can still be a difficult protocol to troubleshoot.

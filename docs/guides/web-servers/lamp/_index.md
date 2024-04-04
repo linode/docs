@@ -6,7 +6,7 @@ aliases: ['/websites/lamp/','/web-servers/lamp/','/lamp-guides/']
 published: 2009-07-16
 title: LAMP Guides
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

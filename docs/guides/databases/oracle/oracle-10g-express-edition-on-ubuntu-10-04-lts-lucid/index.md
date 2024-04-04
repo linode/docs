@@ -16,7 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Ubuntu 10.04 LTS (Lucid) Linode.

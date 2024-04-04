@@ -6,6 +6,6 @@ published: 2020-08-31
 title: System Recovery
 show_in_lists: true
 aliases: ['/security/recovery/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

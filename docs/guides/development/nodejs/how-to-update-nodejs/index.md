@@ -11,7 +11,7 @@ title: "Update Node.js on Linux, macOS, and Windows"
 title_meta: "How to Update Node.js on Linux, macOS, and Windows"
 external_resources:
 - '[The Node.js homepage](https://nodejs.org/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Node.js is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses the V8 JavaScript engine and is very popular. It is regularly updated for security and improvements, and should be kept updated on your systems.

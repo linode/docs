@@ -25,7 +25,7 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
-authors: ["Jonathan Frederickson"]
+contributors: ["Jonathan Frederickson"]
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 7 (Wheezy). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.

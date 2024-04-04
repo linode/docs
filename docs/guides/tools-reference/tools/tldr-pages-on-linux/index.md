@@ -9,7 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Use tldr pages on Linux"
 title_meta: "How to Use tldr pages on Linux"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The [tldr pages project](https://tldr.sh/) seeks to improve and simplify the well-known man pages. tldr pages provide information on a wide range of Linux commands and include several options to interact with the information. Compared to man pages, each tldr page aims to be more intuitive and readable. When learning new Linux commands, tldr pages are an excellent resource.

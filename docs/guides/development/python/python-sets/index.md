@@ -9,7 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 title_meta: "Introduction to Python Sets and Python Set Operations"
 title: "Getting Started with Python Sets and Python Set Operations"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 external_resources:
 - '[Python Documentation: Built-in Types — Set Types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset)'
 - '[W3 Schools: Python Sets](https://www.w3schools.com/python/python_sets.asp)'

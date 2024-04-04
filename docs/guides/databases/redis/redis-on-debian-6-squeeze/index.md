@@ -16,7 +16,7 @@ relations:
         keywords:
             - distribution: Debian 6
 tags: ["debian","database","nosql"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Redis is a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.

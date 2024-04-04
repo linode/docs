@@ -23,7 +23,7 @@ relations:
             - distribution: Ubuntu 18.04
 tags: ["ubuntu","database","nosql"]
 aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-ubuntu-18-04/','/databases/cassandra/deploy-scalable-cassandra/','/guides/deploy-scalable-cassandra/','/databases/deploy-scalable-cassandra/','/databases/cassandra/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/','/guides/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running Ubuntu 18.04. This tutorial will cover basic configuration options, as well as harden database security.

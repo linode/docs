@@ -9,7 +9,7 @@ tags: ["networking","linode platform"]
 external_resources:
   - '[NetworkManager documentation](https://networkmanager.dev/docs/api/latest/NetworkManager.conf.html)'
 aliases: ['/guides/networkmanager/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [NetworkManager](https://networkmanager.dev/) is a very popular network configuration utility and is used by default on Fedora, CentOS Stream, CentOS, AlmaLinux 8, and Rocky Linux 8. It can also be easily installed on Arch, Ubuntu, and other distributions.

@@ -8,7 +8,7 @@ modified_by:
 description: "Learn how Terraform and Helm can be used to manage your Kubernetes clusters, including the benefits (and downsides) of each and when to use each tool."
 keywords: ['terraform vs helm', 'helm charts vs terraform', 'kubernetes helm vs terraform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Containerization, for all its efficiencies, often brings additional overhead --- especially when it comes to Kubernetes. Keeping up with infrastructure needs can be a major effort as your application grows.

@@ -18,7 +18,7 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: CentOS 8
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?

@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "SQL Transactions: An Introduction"
 title_meta: "A Primer on SQL Transactions"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 ## What are SQL Transactions?

@@ -12,7 +12,7 @@ title: "Use Paramiko and Python to SSH into a Server"
 title_meta: "How to Use Paramiko and Python to SSH into a Server"
 external_resources:
 - '[Paramiko GitHub](https://github.com/paramiko/paramiko)'
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 When your Python program needs to run an external password-dependent program, or access a remote server, use [*Paramiko*](https://github.com/paramiko/paramiko). Paramiko is a Python module that implements the [SSHv2](https://datatracker.ietf.org/doc/html/rfc4253) protocol. Paramiko is not part of Python’s standard library, although it’s widely used. This guide shows you how to use Paramiko in your Python scripts to authenticate to a server using a password and SSH keys.

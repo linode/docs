@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
 title_meta: "Use Twilio to Monitor Your Linode's Network Transfer Pool"
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.

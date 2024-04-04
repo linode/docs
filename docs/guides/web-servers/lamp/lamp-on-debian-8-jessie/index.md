@@ -20,7 +20,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 8
-authors: ["Elle K."]
+contributors: ["Elle K."]
 ---
 
 Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide shows you how to install a LAMP stack on Debian 8 (Jessie).

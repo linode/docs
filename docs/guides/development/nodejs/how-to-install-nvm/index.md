@@ -12,7 +12,7 @@ published: 2020-04-24
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/nodejs/how-to-install-nvm/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 1.  Install the [Node Version Manager](https://github.com/nvm-sh/nvm) (NVM) for Node.js. This program helps you manage different Node.js versions on a single system.

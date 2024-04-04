@@ -12,7 +12,7 @@ modified_by:
   name: Nick Brewer
 published: 2012-05-24
 title: Migrating a Server to Your Linode
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< note respectIndent=false >}}

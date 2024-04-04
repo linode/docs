@@ -11,7 +11,7 @@ title: "Install and Use the Linux bat Command"
 title_meta: "How to Install and Use the Linux bat Command"
 external_resources:
 - '[GitHub: sharpdp/bat](https://github.com/sharkdp/bat)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The `bat` command is a clone of the ubiquitous `cat` command. It modernizes `cat` with a more readable design and features like syntax highlighting and a Git integration. This guide details how `bat` compares with its predecessor and shows you how to install and start using it on your Linux system.

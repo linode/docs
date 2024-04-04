@@ -17,7 +17,7 @@ external_resources:
 - '[8 Docker Security Rules to Live By](https://www.infoworld.com/article/3154711/security/8-docker-security-rules-to-live-by.html)'
 - '[Your Software is Safer in Docker Containers](https://blog.docker.com/2016/08/software-security-docker-containers/)'
 aliases: ['/applications/containers/when-and-why-to-use-docker/']
-authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 ---
 
 ![When and Why to Use Docker](when-why-docker.jpg "When and Why to Use Docker")

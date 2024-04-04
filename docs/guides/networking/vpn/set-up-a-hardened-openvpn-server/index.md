@@ -12,7 +12,7 @@ published: 2015-12-09
 title: 'Set up a Hardened OpenVPN Server on Debian 9'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [OpenVPN](https://openvpn.net/) is a tool for creating network tunnels between groups of computers that are not on the same local network. This is useful to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN encrypts all VPN traffic providing a secure connection between machines.

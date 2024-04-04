@@ -8,7 +8,7 @@ modified: 2023-08-15
 modified_by:
   name: Linode
 title: "Security Controls for User Accounts"
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 To protect your Linode user account against unauthorized access, there are several security controls you can implement. This guide covers several of these controls, including 2FA, security questions, and phone verification.

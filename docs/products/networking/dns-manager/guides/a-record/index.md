@@ -6,7 +6,7 @@ modified_by:
 title: "A and AAAA Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## A and AAAA Overview

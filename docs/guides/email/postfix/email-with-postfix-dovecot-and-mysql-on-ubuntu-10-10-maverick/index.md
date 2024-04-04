@@ -16,7 +16,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
 ---
 
 

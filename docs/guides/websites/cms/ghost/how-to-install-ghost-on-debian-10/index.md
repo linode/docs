@@ -22,7 +22,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/ghost/how-to-install-ghost-on-debian-10/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog. Ghost is a robust content management system (CMS) with a Markdown editor, an easy-to-use user interface, and beautiful themes. It is easy to install and update with [Ghost-CLI](https://github.com/TryGhost/Ghost-CLI).

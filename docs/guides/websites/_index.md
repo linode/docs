@@ -9,5 +9,5 @@ show_on_frontpage: true
 title_short: "Websites"
 weight: 40
 icon: "laptop"
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

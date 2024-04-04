@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Troubleshooting Virtual Network Connections"
 title_meta: "How to Troubleshoot Virtual Network Connections"
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 Troubleshooting Virtual Network Connections (VNC) is a progression of tasks from checking network connections, VNC version compatibility, option tweaks interoperability, and encryption matches.

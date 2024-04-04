@@ -6,6 +6,6 @@ published: 2020-08-31
 title: Tips and Tricks
 show_in_lists: true
 aliases: ['/development/tips-and-tricks/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

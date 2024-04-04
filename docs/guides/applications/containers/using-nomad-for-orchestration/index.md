@@ -11,7 +11,7 @@ external_resources:
 - '[HashiCorp Developer: Nomad Tutorials - Get Started](https://developer.hashicorp.com/nomad/tutorials/get-started)'
 - '[Kevin Wang: My First Nomad Cluster](https://thekevinwang.com/2022/11/20/nomad-cluster/)'
 - '[Pavel Sklenar: Creating Two Node Nomad Cluster](https://blog.pavelsklenar.com/two-node-nomad-cluster/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [Nomad](https://www.nomadproject.io/) is an open source workload orchestration and scheduling system that offers a simplified and flexible alternative to Kubernetes. Nomad can deploy and manage both containerized and non-containerized applications across efficient, highly scalable clusters. Nomad is part of the HashiCorp ecosystem, giving it built-in integration with tools like Consul, Terraform, and Vault. Learn more about Nomad and how it compares to Kubernetes in our guide [Kubernetes vs Nomad: Which Is Better?](/docs/guides/kubernetes-vs-nomad/).

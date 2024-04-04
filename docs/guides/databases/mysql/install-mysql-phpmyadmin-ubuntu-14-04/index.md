@@ -19,7 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 tags: ["ubuntu","php","database","mysql"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Install MySQL phpMyAdmin on Ubuntu 14.04](how-to-install-mysql-phpmyadmin-on-ubuntu-1404.png "Install MySQL phpMyAdmin on Ubuntu 14.04")

@@ -18,7 +18,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 8
-authors: ["Paulo Telles"]
+contributors: ["Paulo Telles"]
 ---
 
 ![Install Nagios 4 on Ubuntu and Debian 8](Install_Nagios_4_smg.jpg)

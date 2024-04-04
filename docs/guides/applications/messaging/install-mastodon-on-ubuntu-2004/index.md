@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 title: "Install a Mastodon Server on Ubuntu 20.04"
 title_meta: "How to Install a Mastodon Server on Ubuntu 20.04"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -28,7 +28,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Ubuntu 20.04
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}

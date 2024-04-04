@@ -6,7 +6,7 @@ modified_by:
 title: "NS Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## NS Overview

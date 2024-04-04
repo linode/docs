@@ -21,7 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 20.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is a LAMP Stack?

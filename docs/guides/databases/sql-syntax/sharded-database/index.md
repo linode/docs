@@ -10,7 +10,7 @@ title: "Database Sharding: Concepts, Examples, and Strategies"
 external_resources:
 - '[Wikipedia page on database sharding](https://en.wikipedia.org/wiki/Shard_(database_architecture))'
 - '[MongoDB explanation of database sharding](https://www.mongodb.com/features/database-sharding-explained)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

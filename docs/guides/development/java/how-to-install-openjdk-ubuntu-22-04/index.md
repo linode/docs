@@ -14,7 +14,7 @@ external_resources:
 - '[OpenJDK Development Guide](https://openjdk.java.net/guide/)'
 - '[Java development site](https://dev.java/)'
 - '[OpenJDK GA Release Archive](https://jdk.java.net/archive/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [OpenJDK](https://openjdk.java.net/) is a free, open-source, production-ready implementation of Java based on Oracle's commercial version of Java. This guide explains how to download and install OpenJDK on Ubuntu 22.04. It also demonstrates how to configure OpenJDK and write a short test script to validate the installation.

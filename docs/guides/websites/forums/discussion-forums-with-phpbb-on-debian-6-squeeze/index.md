@@ -16,7 +16,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Debian 6
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.

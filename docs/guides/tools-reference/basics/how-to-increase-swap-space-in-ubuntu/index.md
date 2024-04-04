@@ -14,7 +14,7 @@ external_resources:
 - '[Linux man page for the dd command](https://pubs.opengroup.org/onlinepubs/7908799/xcu/dd.html)'
 - '[Ubuntu man page for the swapon command](https://manpages.ubuntu.com/manpages/focal/man8/swapon.8.html)'
 - '[Ubuntu man page for the mkswap command](http://manpages.ubuntu.com/manpages/focal/man8/mkswap.8.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Systems trying to run large, memory-intensive applications with limited RAM can run into serious issues. Operations might become very slow, and the application can sometimes freeze completely or crash with out-of-memory errors. One workaround for this issue is to create extra swap space on the hard drive. The application can use this extra memory supply when RAM is running low. This guide explains the concept of swap space, and demonstrates how to increase swap space on Ubuntu.

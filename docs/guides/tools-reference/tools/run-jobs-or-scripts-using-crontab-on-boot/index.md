@@ -12,7 +12,7 @@ title_meta: "How to Run Jobs or Scripts Using Crontab on Boot"
 external_resources:
 - '[Wikipedia Cron Page](https://en.wikipedia.org/wiki/Cron)'
 - '[Crontab Man Page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 The cron utility is a job-scheduling tool found on all Linux and Unix operating systems, as well as macOS. Although cron is typically used to schedule jobs at fixed times, dates, and intervals, it can also launch jobs at system boot time. This guide explains how to use the cron utility and the crontab file to run a job or script when the system boots.

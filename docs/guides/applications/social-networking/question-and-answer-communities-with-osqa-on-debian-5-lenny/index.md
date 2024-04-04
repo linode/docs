@@ -11,7 +11,7 @@ modified_by:
 published: 2010-05-10
 title: 'Question and Answer Communities with OSQA on Debian 5 (Lenny)'
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 OSQA, the Open Source Question and Answer platform, is a tool for structured community engagement centered around knowledge exchange. OSQA provides tools for groups of people to ask questions, get answers, and control the quality of the information exchanged within the system. OSQA models itself after the engine that powers sites like Stack Overflow and Server Fault. Thus, OSQA is not simply a tool for organizing user generated content, but also a tool for building vibrant and valuable forums that can serve as the informational backbone of entire communities.

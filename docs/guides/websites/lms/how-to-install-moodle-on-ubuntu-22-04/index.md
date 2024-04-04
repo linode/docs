@@ -22,7 +22,7 @@ relations:
         key: how-to-install-moodle
         keywords:
             - distribution: Ubuntu 22.04 LTS
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 With an increasing trend towards online learning, learning management software is in high demand. [Moodle](https://moodle.org/) is a free and open source Learning Management System (LMS) that is easy for both teachers and students to use. It allows administrators to create a powerful website for education and training courses. This guide explains how to download and install Moodle on Ubuntu 22.04. It also demonstrates how to configure and administer Moodle using the Moodle Dashboard.

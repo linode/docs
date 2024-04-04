@@ -9,7 +9,7 @@ modified_by:
 bundles: ['troubleshooting']
 image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/','/guides/troubleshooting-firewalls/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for Compute Instances that may be unresponsive due to issues caused by a firewall. This could be a [Cloud Firewall](/docs/products/networking/cloud-firewall/get-started/), which is applied on the network level or a software firewall, like UFW (Uncomplicated Firewall), that is configured on your Compute Instance's operating system.

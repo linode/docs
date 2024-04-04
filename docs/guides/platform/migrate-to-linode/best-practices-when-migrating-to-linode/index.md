@@ -10,7 +10,7 @@ published: 2018-07-31
 title: Best Practices when Migrating to Linode
 tags: ["linode platform"]
 aliases: ['/platform/migrate-to-linode/best-practices-when-migrating-to-linode/']
-authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
 ---
 
 This guide describes the recommended strategy for migrating your services from another host to Linode. The specific steps you need to carry out vary depending on the software you use. However, the high-level outline is generally the same regardless of the nature of your service. The [Migrate to Linode](/docs/guides/platform/migrate-to-linode/) section offers other guides which describe migrating particular services in more detail.

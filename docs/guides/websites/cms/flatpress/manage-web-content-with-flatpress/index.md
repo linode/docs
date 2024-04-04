@@ -11,7 +11,7 @@ modified_by:
 published: 2010-05-03
 title: Manage Web Content with FlatPress
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 FlatPress is a web application for managing and publishing blogs. Modeled on other popular content management systems for blogging, FlatPress uses a file-based system for storing content and does not require any kind of database system. FlatPress provides advanced features, and depending on the specific needs of your project, FlatPress may support higher load. Additionally, FlatPress provides a fully featured template engine and plugin framework for user-generated plug-ins.

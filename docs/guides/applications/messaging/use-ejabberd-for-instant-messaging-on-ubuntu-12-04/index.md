@@ -20,7 +20,7 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics because of the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads. Ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.

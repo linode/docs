@@ -12,7 +12,7 @@ title_meta: "How to Deploy a Packer Image with Terraform"
 external_resources:
 - '[Terraform - HashiCorp Learn: Provision Infrastructure with Packer](https://learn.hashicorp.com/tutorials/terraform/packer)'
 - '[Packer - Use Cases: Integrate with Terraform](https://www.packer.io/use-cases/integrate-with-terraform)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
 

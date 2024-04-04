@@ -12,7 +12,7 @@ published: 2015-10-12
 modified: 2023-06-27
 modified_by:
   name: Linode
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is Fail2Ban

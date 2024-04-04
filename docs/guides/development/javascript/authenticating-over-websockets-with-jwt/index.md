@@ -14,7 +14,7 @@ external_resources:
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
 - '[Express.js Documentation Page](https://expressjs.com/)'
 
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 WebSockets allow you to add real-time communications to your web application. It is the technology frequently behind instant messaging, collaboration, and multiplayer gaming over the web. Any time you want to facilitate real-time communication between clients and servers, the WebSockets API is one of your best options.

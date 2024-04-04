@@ -14,7 +14,7 @@ title: Use vmstat to Monitor System Performance
 external_resources:
  - '[Linux Ate My Ram](http://www.linuxatemyram.com/)'
  - '[Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)'
-authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
 ---
 
 ![Use vmstat to Monitor System Performance](use-vmstat-to-monitor-system-performance.jpg "Use vmstat to Monitor System Performance")

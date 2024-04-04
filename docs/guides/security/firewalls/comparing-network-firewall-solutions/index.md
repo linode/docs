@@ -4,7 +4,7 @@ title: "Comparing Linux-Based Network Firewall Software"
 description: 'Learn to compare the software options for configuring a firewall on your Linux system.'
 keywords: ['firewall', 'nftables', 'iptables', 'ufw', 'firewalld']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2024-01-03
 modified_by:
   name: Linode

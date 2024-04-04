@@ -16,7 +16,7 @@ relations:
         key: install-twiki
         keywords:
            - distribution: Ubuntu 10.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

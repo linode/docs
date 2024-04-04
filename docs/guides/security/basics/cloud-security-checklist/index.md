@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "An Essential Cloud Security Checklist (Plus Best Practices)"
 title_meta: "Cloud Security Best Practices Checklist"
-authors: ["Andy Patrizio"]
+contributors: ["Andy Patrizio"]
 ---
 
 Cloud security is complex. Some people have admirable recall, but things are bound to be forgotten. A best practices security checklist for cloud security serves as a reminder of every important step and task. Cloud security requirements can cover hardware, software, configurations, physical location of data, and regulatory compliance.

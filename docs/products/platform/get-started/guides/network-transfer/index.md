@@ -8,7 +8,7 @@ modified_by:
 title: "Network Transfer Usage and Costs"
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/','/guides/network-transfer/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Overview

@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2013-07-22
 title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Troubleshooting Problems with Postfix, Dovecot, and MySQL](troubleshooting-problems-with-postfix-dovecot-and-mysql.jpg "Troubleshooting Problems with Postfix, Dovecot, and MySQL")

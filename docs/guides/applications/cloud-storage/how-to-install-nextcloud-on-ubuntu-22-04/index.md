@@ -27,7 +27,7 @@ relations:
         key: install-nextcloud
         keywords:
            - distribution: Ubuntu 22.04
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [Nextcloud](https://nextcloud.com/) is a free and open source application for storing and sharing files. It allows approved users to access documents and pictures online from a central location. Nextcloud is considered a strong alternative to Dropbox and Google Drive. This guide explains how to download, install, and configure Nextcloud on Ubuntu 22.04 LTS. It also explains how to configure an Ubuntu LAMP stack to support Nextcloud.

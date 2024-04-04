@@ -12,7 +12,7 @@ title_meta: "How to Install and Use bottom on Linux"
 external_resources:
 - '[bottom](https://clementtsang.github.io/bottom/0.6.3/)'
 - '[GitHub: ClementTsang/bottom](https://github.com/ClementTsang/bottom)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Bottom is a terminal-based graphical dashboard for system monitoring. It comes with a range of customization options and display features that set it apart from other system monitoring dashboards.

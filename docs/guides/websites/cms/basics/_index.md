@@ -6,6 +6,6 @@ published: 2020-09-01
 title: CMS Basics
 show_in_lists: true
 aliases: ['/websites/cms/basics/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

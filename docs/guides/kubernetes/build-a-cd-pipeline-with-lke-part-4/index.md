@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-4/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Kubernetes Review](cd-presentation-header-04-quick-kubernetes-review.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Kubernetes Review")

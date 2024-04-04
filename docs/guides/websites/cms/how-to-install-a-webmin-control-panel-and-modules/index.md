@@ -16,7 +16,7 @@ external_resources:
  - '[Webmin Documentation](http://www.webmin.com/docs.html)'
  - '[Webmin Modules](http://www.webmin.com/standard.html)'
  - '[Webmin FAQ](http://www.webmin.com/faq.html)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![How to Install a Webmin Control Panel and Modules on Ubuntu](Webmin_Control_Panel_smg.jpg)

@@ -11,7 +11,7 @@ title_meta: "A Software Engineer's Guide to Advanced Bash Scripting: Part 1"
 external_resources:
 - '[Bash cheat sheet](https://scilifelab.github.io/courses/ngsintro/1902/files/Bash_cheat_sheet_level2.pdf)'
 - '[GNU Bash](https://www.gnu.org/software/bash/)'
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 This guide expands extends the [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/) guide and our [Intermediate Guide to Bash Shell Scripting](/docs/guides/an-intermediate-guide-to-bash-scripting/) guide by demonstrating the use of Bash functions, list constructs, arrays, aliases, and regular expressions.

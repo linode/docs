@@ -15,7 +15,7 @@ external_resources:
 - '[Wikipedia IPv4 Packet Description Page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
 - '[RFC 2460 for IPv6](https://datatracker.ietf.org/doc/html/rfc2460)'
 - '[Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

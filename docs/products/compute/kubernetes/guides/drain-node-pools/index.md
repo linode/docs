@@ -10,7 +10,7 @@ title_meta: How to Drain a Node Pool in Linode Kubernetes Engine
 external_resources:
   - "[Kubernetes Documentation](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)"
 aliases: ['/guides/how-to-drain-a-node-pool-in-linode-kubernetes-engine/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Draining a Node

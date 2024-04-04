@@ -18,7 +18,7 @@ external_resources:
  - '[Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)'
  - '[Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)'
  - '[Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.

@@ -16,7 +16,7 @@ relations:
         key: custom-compiled-kernel-pvgrub
         keywords:
             - distribution: Debian/Ubuntu
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

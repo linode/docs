@@ -10,7 +10,7 @@ title: "The Sixteen Most Popular Web Development Frameworks for Developers"
 external_resources:
 - '[Web 2.0](https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html)'
 - '[Rich internet application frameworks](https://www.computerworld.com/article/2551058/rich-internet-applications.html)'
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 Internet use is through *web applications*, and nearly all web applications are built with the aid of web frameworks. Programmers, testers, product managers, and everyone else involved in the research, and development of practical Internet applications need to understand the web framework marketplace.

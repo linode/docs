@@ -11,7 +11,7 @@ title_meta: "How to Revert the Last Commit in Git"
 external_resources:
 - '[freeCodeCamp: Git Revert Commit – How to Undo the Last Commit](https://www.freecodecamp.org/news/git-revert-commit-how-to-undo-the-last-commit/)'
 - '[TechTarget: How to Revert a Git Commit](https://www.theserverside.com/tutorial/How-to-git-revert-a-commit-A-simple-undo-changes-example)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Git is a widely used Version Control System (VCS) known for its versatility. Git utilizes local clones of central repositories to bring more effective collaboration. It also keeps track of all the committed changes along the way, so things are readily recoverable.

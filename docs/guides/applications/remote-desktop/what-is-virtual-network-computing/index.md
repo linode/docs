@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "An Overview of VNC (Virtual Network Computing)"
 tags: ['linux']
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 ## Cross-Platform Remote Graphical Access: the VNC Viewer and VNC Server

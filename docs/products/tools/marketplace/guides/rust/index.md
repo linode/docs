@@ -10,7 +10,7 @@ external_resources:
 - '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-rust-with-marketplace-apps/', '/platform/one-click/deploying-rust-with-one-click-apps/','/guides/deploying-rust-with-one-click-apps/', '/guides/deploying-rust-with-marketplace-apps/','/guides/rust-marketplace-app/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Rust](https://rust.facepunch.com/) is a multiplayer game where you play as a survivor that must work with or against other players to ensure your own survival. Players are able to steal, lie, cheat, or trick each other. You can build a shelter, hunt animals for food, craft weapons, craft armor, and much more.

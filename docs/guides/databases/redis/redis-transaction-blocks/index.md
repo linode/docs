@@ -12,7 +12,7 @@ title_meta: "How to Use Redis Transaction Blocks"
 external_resources:
 - '[Redis: Transactions](https://redis.io/topics/transactions)'
 - '[Redis: Using Pipelining to Speedup Redis Queries](https://redis.io/topics/pipelining)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source, in-memory database used for caching, messaging, and other storage tasks that benefit from fast execution and low latency. The Redis database supports a high degree of control over parallel executions that allow you to fine-tune its performance.

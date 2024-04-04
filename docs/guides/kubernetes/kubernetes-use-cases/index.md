@@ -9,7 +9,7 @@ modified_by:
 title: "Advantages of Using Kubernetes"
 aliases: ['/applications/containers/kubernetes/kubernetes-use-cases/','/kubernetes/kubernetes-use-cases/']
 tags: ["kubernetes"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is Kubernetes

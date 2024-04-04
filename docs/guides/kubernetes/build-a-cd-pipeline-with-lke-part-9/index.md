@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-9/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing Traefik](cd-presentation-header-09-installing-traefik.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing Traefik")

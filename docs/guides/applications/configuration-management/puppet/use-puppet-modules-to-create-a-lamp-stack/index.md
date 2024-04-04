@@ -17,7 +17,7 @@ relations:
         key: install-puppet-lamp-master
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
 ---
 
 ![Use Puppet Modules to Create a LAMP Stack](Use_Puppet_Modules_to_Create_a_LAMP_Stack_smg.jpg)

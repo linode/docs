@@ -9,7 +9,7 @@ modified_by:
 title: "Use Cases for Object Storage"
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/object-storage-use-cases/','/guides/object-storage-use-cases/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is Object Storage?

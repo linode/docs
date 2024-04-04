@@ -22,7 +22,7 @@ relations:
         key: asterisk-freepbx-telephone
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 Asterisk is an open-source telephone solution that runs over the Internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a landline telephone can.

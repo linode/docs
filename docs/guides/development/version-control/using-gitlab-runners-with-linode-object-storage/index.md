@@ -6,7 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-22
 modified_by:
   name: Linode
-authors: [Nathaniel Stickman]
+contributors: [Nathaniel Stickman]
 title: "How to Use a GitLab Runner with Machine Driver and Object Storage"
 external_resources:
 - '[GitLab Docs: GitLab Runner](https://docs.gitlab.com/runner/)'

@@ -12,7 +12,7 @@ title_meta: "How to Install and Use ripgrep"
 external_resources:
 - '[Ripgrep GitHub site](https://github.com/BurntSushi/ripgrep)'
 - '[ripgrep blog](https://blog.burntsushi.net/ripgrep/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 The [*ripgrep* utility](https://github.com/BurntSushi/ripgrep) is a useful alternative to the traditional [`grep` command](/docs/guides/differences-between-grep-sed-awk/) on Linux. Both ripgrep and grep are used to search files for specific patterns of text. However, ripgrep is much faster and uses intelligent defaults which are optimal for most users. This guide provides some background on ripgrep, including a comparison with other search tools. It also explains how to install and use ripgrep, and provides some examples of typical searches.

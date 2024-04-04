@@ -15,7 +15,7 @@ external_resources:
  - '[Apache Redirect Guide](https://httpd.apache.org/docs/current/mod/mod_alias.html#redirect)'
  - '[Rewrite URLs with mod_rewrite and Apache](/docs/guides/rewrite-urls-with-modrewrite-and-apache/)'
 tags: ["web server","apache"]
-authors: ["Linode"]
+contributors: ["Linode"]
 image: redirect-urls-with-the-apache-web-server.png
 ---
 

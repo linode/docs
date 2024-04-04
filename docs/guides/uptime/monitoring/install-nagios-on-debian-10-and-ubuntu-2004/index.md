@@ -18,7 +18,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 10 & Ubuntu 20.04
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Monitoring tools play an important part in effectively operating production servers. They can help you keep tabs on a server's status and quickly catch any issues that might arise. [Nagios](https://www.nagios.com/products/nagios-core/) is a popular solution, providing monitoring and alerts for your server and the applications and services running on it. The wide array of plugins available for Nagios make it adaptable to your needs.

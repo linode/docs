@@ -14,7 +14,7 @@ external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
 dedicated_cpu_link: true
 aliases: ['/applications/voip/install-and-configure-mumble-on-debian/']
-authors: ["Mark Weiman"]
+contributors: ["Mark Weiman"]
 ---
 
 

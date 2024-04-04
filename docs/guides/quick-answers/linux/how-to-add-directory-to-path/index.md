@@ -13,7 +13,7 @@ external_resources:
 - '[Linuxize: How to Add a Directory to PATH in Linux](https://linuxize.com/post/how-to-add-directory-to-path-in-linux/)'
 - "[It's FOSS: How to Add a Directory to PATH in Linux](https://itsfoss.com/add-directory-to-path-linux/)"
 - '[How-to Geek: How to Add a Directory to Your $PATH in Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Have you ever wondered how certain executables on Linux can be accessed as simple commands from the command line? Have you wanted to be able to run a program on Linux without having to provide the entire path?

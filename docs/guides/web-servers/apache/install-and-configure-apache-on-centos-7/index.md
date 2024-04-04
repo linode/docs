@@ -18,7 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 7
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![How to Install and Configure Apache Web Server on CentOS 7](How_to_Install_Apache_on_CentOS_7_smg.jpg)

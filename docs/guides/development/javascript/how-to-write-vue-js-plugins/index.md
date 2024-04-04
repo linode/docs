@@ -10,7 +10,7 @@ title: "Write Your Own Vue.js Plugin"
 external_resources:
 - '[VueJS](https://vuejs.org/)'
 tags: ["web applications"]
-authors: ["John Au-Yeung"]
+contributors: ["John Au-Yeung"]
 ---
 
 ## What is a Vue.js Plugin?

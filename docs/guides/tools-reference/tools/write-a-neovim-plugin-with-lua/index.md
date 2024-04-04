@@ -14,7 +14,7 @@ external_resources:
 - '[Nvim Documentation: Lua](https://neovim.io/doc/user/lua.html)'
 - '[GitHub: jacobsimpson/nvim-example-lua-plugin](https://github.com/jacobsimpson/nvim-example-lua-plugin)'
 aliases: ['/guides/writing-a-neovim-plugin-with-lua/']
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Neovim is an open source fork of the ubiquitous Vim text editor. It supports the [Lua programming language](https://www.lua.org/) which opens up vast possibilities for configuration, scripting, and plugin development. The Neovim community has created numerous plugins pushing the boundaries of the text editor's capabilities.

@@ -12,7 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-api-keys-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 API Tokens (personal access tokens) are used in token-based authentication to provide users or programming scripts with different levels of access to your Linode account's resources and services via the [Linode API v4](/docs/api). You can create and manage your API tokens using the Cloud Manager.

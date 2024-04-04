@@ -12,7 +12,7 @@ title: "Getting Started with NGINX (Part 2): Advanced Configuration"
 title_meta: "Getting Started with NGINX: Advanced Configuration"
 tags: ["web server","nginx"]
 image: Getting-Started-with-NGINX-Part-2-smg.jpg
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Getting Started with NGINX - Part 2](Getting-Started-with-NGINX-Part-2-smg.jpg)

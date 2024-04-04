@@ -4,7 +4,7 @@ title: "Backing Up a Compute Instance to Object Storage"
 description: "Linode Object Storage is an efficient solution to store backups of Compute Instances. Learn how to create backups and store them in object storage buckets."
 keywords: ['how to backup object storage','linux backup','snapshot object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2023-09-08
 modified_by:
   name: Linode

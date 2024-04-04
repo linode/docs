@@ -15,7 +15,7 @@ external_resources:
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MariaDB (a drop-in replacement for MySQL) on CentOS 7. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.

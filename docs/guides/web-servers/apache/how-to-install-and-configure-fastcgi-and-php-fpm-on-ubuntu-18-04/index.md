@@ -16,7 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/web-servers/apache/how-to-install-and-configure-fastcgi-and-php-fpm-on-ubuntu-18-04/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 `mod_fcgid` is an [Apache module](https://httpd.apache.org/mod_fcgid/) that uses the [FastCGI](https://en.wikipedia.org/wiki/FastCGI) protocol to provide an interface between Apache and Common Gateway Interface (CGI) programs. CGI helps a web server handle dynamic content generation and processing for scripting languages like PHP. This dynamic functionality is commonly used when running content management systems like WordPress on a LAMP stack.

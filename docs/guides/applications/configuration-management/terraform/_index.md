@@ -6,6 +6,6 @@ published: 2020-03-03
 title: Terraform
 show_in_lists: true
 aliases: ['/applications/configuration-management/terraform/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

@@ -7,7 +7,7 @@ tab_group_main:
 keywords: ["managed", "managed services", "linode managed"]
 aliases: ['/products/services/managed/guides/sign-up/','/linode-managed/','/uptime/linode-managed/','/platform/linode-managed-classic-manager/','/platform/linode-managed/','/guides/linode-managed/']
 published: 2023-04-11
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service coupled with Longview Pro, the Backup service, cPanel, additional dashboard metrics, and free site migrations. This robust, multi-homed monitoring system sends out monitoring checks to ensure that your monitored services remain online and available at all times. Managed Services can monitor any service or software stack reachable over TCP or HTTP.

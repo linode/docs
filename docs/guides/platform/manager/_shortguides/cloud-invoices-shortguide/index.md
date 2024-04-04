@@ -12,7 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-invoices-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 You can download a printable PDF of your billing invoice from your list of invoices or from within an individual invoice.

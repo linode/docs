@@ -16,7 +16,7 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Ubuntu 9.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a frontend server to manage clusters of web servers.

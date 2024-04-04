@@ -14,7 +14,7 @@ title_meta: "Node.js SQLite3: A Beginner's Guide to Installation & Usage"
 external_resources:
 - '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
 - '[Marvel Cinematic Universe](https://www.marvel.com/movies)'
-authors: ["James Turner"]
+contributors: ["James Turner"]
 ---
 
 ## Getting Started with Node.js and SQLite

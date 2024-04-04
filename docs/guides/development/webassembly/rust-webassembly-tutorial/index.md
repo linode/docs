@@ -12,7 +12,7 @@ title_meta: A Rust and WebAssembly Tutorial
 external_resources:
 - '[WebAssembly](https://webassembly.org/)'
 - '[Rust and WebAssembly](https://rustwasm.github.io/docs/book)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [WebAssembly](https://webassembly.org/) — sometimes shortened to Wasm — is a safe, low-level, portable code format. It results in compact binaries that can be run in web browsers with near-native efficiency. It allows languages like C/C++ and Rust to be compiled to run on the web and to do so alongside JavaScript.

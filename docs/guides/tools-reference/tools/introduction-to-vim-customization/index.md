@@ -16,7 +16,7 @@ external_resources:
  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/introduction-to-vim-customization/']
-authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
 ---
 
 ![Introduction to Vim Customization](Vim_Customization.jpg)

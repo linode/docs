@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "How Cloud Containers Work And Their Benefits"
 title_meta: "Introduction to Containers in Cloud Computing"
-authors: ["Andy Patrizio"]
+contributors: ["Andy Patrizio"]
 ---
 
 Tech trends come and go but cloud containers are one tech that’s here to stay. Their origins can be traced back to 1982 Unix, but containers didn't gain wide acceptance until the last decade as the next logical step from virtualization. Today they are a popular means of application modernization and deployment.

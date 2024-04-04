@@ -16,7 +16,7 @@ external_resources:
  - '[The Official ClamAV Site](http://www.clamav.net/)'
  - '[Ubuntu Community Documentation](https://help.ubuntu.com/community/PostfixAmavisNew)'
  - '[Whitelisting and Blacklisting in Amavis](http://www.akadia.com/services/postfix_amavisd.html#Globally%20Sender%20Whitelists%20and%20Blacklists)'
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 If you're running a mail server, it's a good idea to have spam and virus filtering. Spam can flood your users' inboxes, and those running insecure local PCs are susceptible to virus infection. Protecting your email server protects your clients and you. This guide goes through the installation and configuration of virus and spam filtering, using Amavis-new, ClamAV, and SpamAssassin.

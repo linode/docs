@@ -21,7 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

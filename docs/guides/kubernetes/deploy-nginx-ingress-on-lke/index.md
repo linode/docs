@@ -14,7 +14,7 @@ image: nginx-ingress.png
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/','/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 In Kubernetes, an **Ingress** is an API object that manages the routing of external requests to one of the many possible internal services in a Kubernetes cluster. In the majority of cases, the Ingress will rely on an external Load Balancer to accept initial traffic before being routed.

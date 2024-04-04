@@ -19,7 +19,7 @@ external_resources:
 - '[First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
 - '[WordPress Support: WordPress Widgets](https://wordpress.org/support/article/wordpress-widgets/)'
 
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 WordPress is an open-source content management system (CMS). WordPress remains perhaps the most popular CMS for blogging, which was its original use case. Its effectiveness as a CMS has also made it useful for an array of websites where strong content management is crucial. WordPress also boasts an extensive library of themes, plug-ins, and widgets to meet your website's needs and make it your own. In this guide, you learn how to install WordPress on your AlmaLinux 8 server.

@@ -13,7 +13,7 @@ external_resources:
   - '[Linux System Administration Basics](/docs/guides/linux-system-administration-basics/)'
   - '[Linode API Documentation](/docs/api/)'
 aliases: ['/quick-answers/linux-essentials/introduction-to-linux-administration/']
-authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 ---
 
 Linode offers a flexible and customizable cloud platform for your applications. This has advantages in terms of cost and control, but also means that many services which are included in shared hosting need to be manually deployed and configured for your needs. If you are new to self-hosting, you may not know everything that needs to be done. This guide introduces the concepts and tools that you will need to be familiar with when hosting your own applications on a Linode.

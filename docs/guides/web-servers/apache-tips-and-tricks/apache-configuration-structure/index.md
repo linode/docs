@@ -14,7 +14,7 @@ external_resources:
  - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
  - '[Troubleshooting Apache](/docs/guides/troubleshooting-common-apache-issues/)'
 tags: ["web server","apache"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/web-servers/lamp/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage within each site.

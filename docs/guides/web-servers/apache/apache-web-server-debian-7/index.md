@@ -20,7 +20,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Debian 7
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Apache Web Server on Debian](Apache_Web_Server_on_Debian_7_Wheezy_smg.jpg)

@@ -12,7 +12,7 @@ title_meta: "How to Use Redis for Client-Side Caching"
 external_resources:
 - '[Redis: Redis server-assisted client side caching](https://redis.io/topics/client-side-caching)'
 - '[MDN Web Docs: Client-side Storage](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
 

@@ -15,7 +15,7 @@ external_resources:
 - '[Salt Beacon Modules](https://docs.saltproject.io/en/latest/ref/beacons/all/index.html)'
 - '[Salt Reactors Documentation](https://docs.saltproject.io/en/latest/topics/reactor/)'
 aliases: ['/applications/configuration-management/monitoring-salt-minions-with-beacons/','/applications/configuration-management/salt/monitoring-salt-minions-with-beacons/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Every action performed by Salt, such as applying a highstate or restarting a minion, generates an event. *Beacons* emit events for non-salt processes, such as system state changes or file changes. This guide will use Salt beacons to notify the Salt master of changes to minions, and Salt *reactors* to react to those changes.

@@ -15,7 +15,7 @@ external_resources:
 - '[Markdown guide](https://www.markdownguide.org/)'
 - '[HTML Standard](https://html.spec.whatwg.org/)'
 - '[Python Input/Output documentation](https://docs.python.org/3/tutorial/inputoutput.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 The [*Markdown*](https://en.wikipedia.org/wiki/Markdown) markup language is a good choice for text formatting. Unfortunately, the Markdown syntax does not align with HTML conventions. Without further modification, Markdown can only be shared as plain text. The [*Python-Markdown*](https://python-markdown.github.io/index.html) library is an open source Python module that converts Markdown text into standards-compliant HTML markup. This guide explains how to install and use the Python-Markdown module and provides some background information about it.

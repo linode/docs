@@ -6,6 +6,6 @@ published: 2020-08-31
 title: Web.py
 show_in_lists: true
 aliases: ['/development/frameworks/webpy/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

@@ -7,7 +7,7 @@ published: 2023-06-12
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install and Use fzf on Linux"
-authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
 external_resources:
 - '[GitHub: junegunn/fzf](https://github.com/junegunn/fzf)'
 - '[GitHub: junegunn/fzf — Advanced fzf Examples](https://github.com/junegunn/fzf/blob/master/ADVANCED.md)'

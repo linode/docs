@@ -14,7 +14,7 @@ title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
 title_meta: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
 dedicated_cpu_link: true
 image: spigot-minecraft-ubuntu-title.jpg
-authors: ["Sam Mauldin"]
+contributors: ["Sam Mauldin"]
 ---
 
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.

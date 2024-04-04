@@ -4,7 +4,7 @@ title: "Use Cloud-Init to Manage Users on New Servers"
 description: "Follow along with this guide to use cloud-init for managing users and user groups on new servers."
 keywords: ['cloud-init','cloudinit','users','groups']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2023-11-15
 modified_by:
   name: Nathaniel Stickman

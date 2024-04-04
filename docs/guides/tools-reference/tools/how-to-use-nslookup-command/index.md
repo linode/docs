@@ -13,7 +13,7 @@ external_resources:
 - '[Wikipedia nslookup page](https://en.wikipedia.org/wiki/Nslookup)'
 - '[Wikipedia Domain Name System page](https://en.wikipedia.org/wiki/Domain_Name_System)'
 - '[Microsoft nslookup documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 The `nslookup` command is a useful tool for investigating domain name propagation issues. It allows users to obtain information regarding domain names and IP addresses from the *Domain Name System* (DNS) infrastructure. This guide introduces and explains how to use the `nslookup` command, and provides several examples.

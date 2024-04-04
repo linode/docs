@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "What Is FTP and How Does It Work?"
 title_meta: "Quick Guide to FTP: File Transfer Protocol"
-authors: ["David Strom"]
+contributors: ["David Strom"]
 ---
 
 File Transfer Protocol (FTP) is one of the utility players of internet protocols, serving a variety of useful functions. It pre-dates the internet by a few years, and continues to play an important role in moving files from one computer to another. The protocol was first published as [RFC 114](https://datatracker.ietf.org/doc/html/rfc114) in April 1971 by MIT graduate student Abhay Bhushan. It was proposed as a way to move files across the early ARPANET. Later that year it was updated by other RFCs, along with numerous extensions and enhancements since. This is a great illustration of the power of the open standards process. FTP’s most recent update is [RFC 5797](https://www.rfc-editor.org/rfc/rfc5797.html). One of these key enhancements was written by internet luminary Jon Postel. This goes to show how the protocol plays an important role in developing other core internet technologies.

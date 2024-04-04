@@ -6,7 +6,7 @@ aliases: ['/websites/ecommerce/','/web-applications/e-commerce/']
 published: 2010-03-01
 title: 'e-Commerce'
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

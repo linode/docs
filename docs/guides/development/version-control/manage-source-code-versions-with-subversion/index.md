@@ -14,7 +14,7 @@ external_resources:
  - '[Subversion Project Homepage](http://subversion.tigris.org/)'
  - '[The Subversion Book from O''Reilly](http://svnbook.red-bean.com/)'
 tags: ["version control system"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Subversion (SVN) is a centralized [version control system](https://en.wikipedia.org/wiki/Version_control). Used by software developers to track changes during the production and maintenance of a project. SVN is a familiar and standard component in many development tool chains. Subversion was developed as a replacement for the Concurrent Versions System (CVS). SVN attempts to fix many of the major problems with CVS without requiring any paradigm shifts in the way software is developed:

@@ -6,6 +6,6 @@ published: 2020-08-31
 title: Security Basics
 show_in_lists: true
 aliases: ['/security/basics/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

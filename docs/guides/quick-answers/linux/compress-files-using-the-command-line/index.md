@@ -12,7 +12,7 @@ title: "Archive, Compress, and Extract Files in Linux Using the Command Line"
 title_meta: "How to Archive, Extract & Compress Files in Linux"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/compress-files-using-the-command-line/']
-authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
 ---
 
 `tar` and `gzip` provide a standard interface to create archives and to compress files in Linux. These utilities take a large number of files, save them together in an archive, and compresses the archive to save space. `tar` does not compress files by itself. Used in conjunction with `gzip`, an archived file can be compressed to reduce disk space. The resulting archived file has the file extension, `tar.gz` and is sometimes called a "tarball".

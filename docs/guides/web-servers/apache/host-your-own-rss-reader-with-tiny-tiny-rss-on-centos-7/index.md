@@ -12,7 +12,7 @@ modified_by:
 title: 'Host Your Own RSS Reader with Tiny Tiny RSS on CentOS 7'
 external_resources:
  - '[Tiny Tiny RSS Installation Notes](https://tt-rss.org/gitlab/fox/tt-rss/wikis/InstallationNotes)'
-authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
 ---
 
 

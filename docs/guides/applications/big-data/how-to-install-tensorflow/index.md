@@ -19,7 +19,7 @@ external_resources:
 - '[Tools](https://www.tensorflow.org/resources/tools)'
 - '[TensorFlow community](https://www.tensorflow.org/community)'
 
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [*TensorFlow*](https://www.tensorflow.org/) is an open-source software library used for machine learning and to train *[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)*. Google developed TensorFlow for both research and production use, but it is now released under the Apache license. It is available for many operating systems, including the most common Linux distributions. For learning purposes, it is best to install TensorFlow in a Python virtual environment. TensorFlow is considered a good choice for those who are new to machine learning.

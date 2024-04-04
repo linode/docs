@@ -9,5 +9,5 @@ show_on_frontpage: true
 title_short: "Akamai"
 weight: 130
 icon: "akamai"
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

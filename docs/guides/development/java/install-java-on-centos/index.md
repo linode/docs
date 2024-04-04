@@ -19,7 +19,7 @@ relations:
         key: install-java
         keywords:
             - distribution: CentOS 7
-authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
 ---
 
 ![Install Java on CentOS 7](install-java-on-centos-7-title-graphic.jpg "Install Java on CentOS 7")

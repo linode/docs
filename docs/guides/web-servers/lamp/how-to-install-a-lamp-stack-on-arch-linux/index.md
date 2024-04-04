@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["web server","php","mysql","apache","lamp"]
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack an Arch Linux server.

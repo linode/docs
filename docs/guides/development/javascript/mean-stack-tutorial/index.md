@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Create a MEAN Stack Application"
 title_meta: "MEAN Stack Tutorial: Create an Example Application"
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 In web development, the term *full stack* refers to all the programmed parts of a web application. This includes the front end, which is seen by end-users, and the back end, where data is stored. The *MEAN* stack is one particular combination of technologies that covers the front end and the back end of an application. MEAN is widely regarded as particularly capable for large-scale, complex applications. This tutorial shows you how to build a basic application using the MEAN stack.

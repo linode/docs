@@ -16,7 +16,7 @@ external_resources:
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy/']
 image: postgresql-cluster-patroni.jpg
-authors: ["Kulshekhar Kabra"]
+contributors: ["Kulshekhar Kabra"]
 ---
 
 ![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](postgresql-cluster-patroni.jpg)

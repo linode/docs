@@ -16,7 +16,7 @@ relations:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

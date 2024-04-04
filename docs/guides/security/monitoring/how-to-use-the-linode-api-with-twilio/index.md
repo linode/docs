@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Using the Linode API with Twilio"
 title_meta: "How to Use the Linode API with Twilio"
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 [Twilio](https://www.twilio.com/) links internet and telecom networks, creating connections using text messages, emails, phone calls, video, and intelligent chatbots. When you first explore the service, it may appear customer service-oriented, especially for marketing purposes. However, Twilio also has value to anyone who needs [operations support](https://www.twilio.com/solutions/operations), including network administrators.

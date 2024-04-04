@@ -16,7 +16,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

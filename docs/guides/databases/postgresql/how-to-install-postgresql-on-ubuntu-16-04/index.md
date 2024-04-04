@@ -18,7 +18,7 @@ relations:
         key: install-postrgesql-database
         keywords:
             - distribution: Ubuntu 16.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![How to Install PostgreSQL on Ubuntu 16.04](how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")

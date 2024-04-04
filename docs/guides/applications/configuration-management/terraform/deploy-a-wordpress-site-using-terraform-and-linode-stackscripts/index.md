@@ -14,7 +14,7 @@ external_resources:
 - '[Terraform Input Variables](https://www.terraform.io/intro/getting-started/variables.html)'
 aliases: ['/applications/configuration-management/terraform/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/','/applications/configuration-management/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/']
 image: deploy-wordpress-using-terraform-linode-stackscripts.png
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Linode's Terraform provider supports [StackScripts](/docs/products/tools/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux distribution images or on any of your [saved custom images](/docs/products/tools/images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.

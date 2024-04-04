@@ -16,7 +16,7 @@ external_resources:
     - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
     - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 tags: ["ubuntu","database","mysql"]
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 12.04 LTS (Precise Pangolin).

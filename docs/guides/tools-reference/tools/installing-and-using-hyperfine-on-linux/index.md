@@ -9,7 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Install and Use hyperfine on Linux"
 title_meta: "How to Install and Use hyperfine on Linux"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 hyperfine is a Linux tool used to benchmark command-line commands. It includes features to test the performance of individual commands, side by side. hyperfine stands out from similar tools by giving you fine-tuned control over the benchmarking process and advanced features for more effective testing.

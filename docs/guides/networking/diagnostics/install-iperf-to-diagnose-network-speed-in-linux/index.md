@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2015-01-12
 title: Network Throughput Testing with iPerf
-authors: ["Dave R."]
+contributors: ["Dave R."]
 ---
 
 ![Install iPerf to Diagnose Network Speed in Linux](diagnosing-network-speed-with-iperf.png "Install iPerf to Diagnose Network Speed in Linux")

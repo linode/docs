@@ -11,7 +11,7 @@ title_meta: "Manipulating the DOM with JavaScript"
 external_resources:
 - '[MDN Web Docs: Manipulating Documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)'
 - '[MDN Web Docs: Document](https://developer.mozilla.org/en-US/docs/Web/API/Document)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The Document Object Model (DOM) is a programming interface for HTML web pages. Scripting languages, like JavaScript, can access and manipulate the DOM to alter the display of a web page. In this guide, you learn about the methods and properties you can use to modify the DOM by adding and removing element nodes. You also learn how to use specialized properties to assign and update a DOM element's CSS styles.

@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< youtube Vb1JsfZlFLE >}}

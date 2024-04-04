@@ -16,7 +16,7 @@ external_resources:
 - '[AlmaLinux Wiki](https://wiki.almalinux.org/#about)'
 - '[AlmaLinux Forum](https://almalinux.discourse.group/)'
 - '[AlmaLinux GitHub Page](https://github.com/AlmaLinux)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [*AlmaLinux OS*](https://almalinux.org/) is a stable open-source Linux distribution that provides a new alternative to CentOS. As a downstream fork of the *Red Hat Enterprise Linux* (RHEL) codebase, AlmaLinux guarantees ongoing free availability. CloudLinux experts originally built and designed AlmaLinux, but it is now a community-led project. AlmaLinux supports the same software applications that CentOS does, including the [*Apache web server*](https://www.apache.org/). This guide explains how to install, configure, and use Apache on AlmaLinux.

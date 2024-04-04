@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "What is Cloud-Native Computing?"
 tags: ["container", "kubernetes"]
-authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
 ---
 
 Cloud-native computing is an application development and delivery paradigm. It encompasses several technologies and architectural patterns, including open-source Linux containers, Kubernetes, and microservices. Cloud-native computing emphasizes scalability, automation, efficiency, and simplicity in all domains of the application development and deployment life-cycle —including team organization. With this approach, IT professionals create applications that can be deployed on-demand to the cloud, quickly and easily; saving on your computing resource costs.

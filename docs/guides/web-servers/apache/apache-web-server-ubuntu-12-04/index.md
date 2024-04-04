@@ -19,7 +19,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for running web servers.  This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.

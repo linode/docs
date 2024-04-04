@@ -11,7 +11,7 @@ modified_by:
 title: 'Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
 aliases: ['/applications/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/','/applications/game-servers/just-cause-2-multiplayer-on-ubuntu/','/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/']
 dedicated_cpu_link: true
-authors: ["Andrew Gottschling"]
+contributors: ["Andrew Gottschling"]
 ---
 
 

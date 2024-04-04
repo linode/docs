@@ -6,7 +6,7 @@ aliases: ['/applications/media-servers/','/communications/media-servers/']
 published: 2012-06-07
 title: Media Servers
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

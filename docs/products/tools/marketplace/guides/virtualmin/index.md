@@ -12,7 +12,7 @@ external_resources:
 - '[Virtualmin Documentation](https://www.virtualmin.com/documentation)'
 - '[Virtualmin Support](https://www.virtualmin.com/support)'
 aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/deploy-virtualmin-with-one-click-apps/','/guides/virtualmin-marketplace-app/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Virtualmin](https://www.virtualmin.com) is an open source control panel for web hosting management. It offers an easy to use graphical interface for managing websites, email, and databases. It's built on top of and integrated with the popular Webmin.

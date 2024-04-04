@@ -12,7 +12,7 @@ external_resources:
 - '[Procs GitHub page](https://github.com/dalance/procs)'
 - '[Procs releases](https://github.com/dalance/procs/releases/tag/v0.11.10)'
 - '[Sample procs config files](https://github.com/dalance/procs/tree/master/config)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 The [*procs*](https://github.com/dalance/procs) utility is a useful and informative alternative to the original Linux [*`ps` (process status) command*](/docs/guides/use-the-ps-aux-command-in-linux/). Like ps, procs displays information about the active processes running on the system, including their CPU and memory usage. However, procs enhances its output with additional columns, an intuitive color scheme, and other helpful features. This guide provides some background on procs, and explains how to install and use it.

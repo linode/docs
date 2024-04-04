@@ -16,7 +16,7 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: PuTTY
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.

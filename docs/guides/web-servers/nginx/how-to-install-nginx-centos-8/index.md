@@ -19,7 +19,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/nginx/how-to-install-nginx-centos-8/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is NGINX?

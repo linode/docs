@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: Gentoo
 tags: ["web server","php","mysql","apache","lamp"]
-authors: ["James Stewart"]
+contributors: ["James Stewart"]
 ---
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Gentoo Linux system.

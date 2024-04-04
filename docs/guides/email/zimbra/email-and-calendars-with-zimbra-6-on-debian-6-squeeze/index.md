@@ -16,7 +16,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get Zimbra Collaboration Suite - Open Source Edition installed on your Debian 6 (Squeeze) Linode.

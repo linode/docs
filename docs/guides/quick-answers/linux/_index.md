@@ -5,6 +5,6 @@ published: 2017-05-08
 title: Linux
 show_in_lists: true
 aliases: ['/quick-answers/linux/']
-authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
 ---
 

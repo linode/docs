@@ -14,7 +14,7 @@ external_resources:
 - '[The MERN stack: A complete tutorial](https://blog.logrocket.com/mern-stack-tutorial/)'
 - '[Learn the MERN Stack - Full Tutorial for Beginners (MongoDB, Express, React, Node.js) in 12Hrs (2021)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
 - '[Learn the MERN Stack - Full Tutorial (MongoDB, Express, React, Node.js)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 Of all the possible technical bases for a modern web site, ["MERN holds the leading position when it comes to popularity."](https://www.gkmit.co/blog/web-app-development/mean-vs-mern-stack-who-will-win-the-war-in-2021) This introduction makes you familiar with the essential tools used for a plurality of all web sites worldwide.

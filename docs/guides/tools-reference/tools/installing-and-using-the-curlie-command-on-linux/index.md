@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Install and Use the curlie Command on Linux"
 title_meta: "How to Install and Use the curlie Command on Linux"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [Curlie](https://github.com/rs/curlie) is a frontend to the ubiquitous command-line HTTP client cURL. With curlie, you get all of the features and versatility of cURL with a modern and user-friendly interface similar to the HTTP client, [HTTPie](/docs/guides/installing-and-using-httpie-on-linux/). In this guide, you learn about the benefits of curlie and how to install and start using it on a Linux system.

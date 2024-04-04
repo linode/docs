@@ -17,7 +17,7 @@ relations:
         keywords:
             - distribution: CoreOS
 aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
-authors: ["Michael Zuo"]
+contributors: ["Michael Zuo"]
 ---
 
 {{< note respectIndent=false >}}

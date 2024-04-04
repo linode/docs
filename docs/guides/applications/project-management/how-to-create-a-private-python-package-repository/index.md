@@ -14,7 +14,7 @@ external_resources:
  - '[pypiserver Documentation](https://pypiserver.readthedocs.io/en/latest/)'
  - '[Apache Documentation](https://httpd.apache.org/docs/2.4/)'
 aliases: ['/applications/project-management/how-to-create-a-private-python-package-repository/']
-authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
 ---
 
 ![How to Create a Private Python Package Repository](Private_Python_Pack_Repo.jpg "How to Create a Private Python Package Repository")

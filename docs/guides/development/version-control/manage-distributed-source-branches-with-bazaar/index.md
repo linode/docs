@@ -14,7 +14,7 @@ external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'
  - '[Official Bazaar User Documentation](http://doc.bazaar.canonical.com/latest/en/user-guide/)'
 tags: ["version control system"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Bazaar is a distributed version control system similar to [git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Bazaar allows developers to track the progress of source code and collaborate on a single object of work without depending on a centralized server to coordinate their activity. Unlike git, Bazaar's interface will be familiar to users of a centralized version control system like [Subversion](/docs/guides/manage-source-code-versions-with-subversion/).

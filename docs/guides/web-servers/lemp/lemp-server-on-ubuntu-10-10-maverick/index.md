@@ -16,7 +16,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

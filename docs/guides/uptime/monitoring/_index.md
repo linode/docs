@@ -6,7 +6,7 @@ aliases: ['/server-monitoring/','/uptime/monitoring/']
 published: 2009-07-16
 title: Server Monitoring
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

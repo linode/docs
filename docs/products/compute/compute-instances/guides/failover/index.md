@@ -7,7 +7,7 @@ modified: 2023-10-22
 modified_by:
   name: Linode
 aliases: ['/guides/ip-failover/']
-authors: ["Linode"]
+contributors: ["Linode"]
 tags: ["media"]
 ---
 

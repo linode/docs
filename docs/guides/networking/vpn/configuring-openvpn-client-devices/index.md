@@ -15,7 +15,7 @@ external_resources:
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/configuring-openvpn-client-devices/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it's recommended that you first complete Parts [One](/docs/guides/set-up-a-hardened-openvpn-server/) and [Two](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/), this guide stands on its own as a general tutorial for configuring OpenVPN clients on various operating systems.

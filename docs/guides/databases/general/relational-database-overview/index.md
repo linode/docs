@@ -8,7 +8,7 @@ published: 2022-06-06
 modified_by:
   name: Linode
 title: "Introduction to Relational Databases and RDBMSs"
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Many programs need to save or store data for later use and read data that is recorded. Although there are many ways to do this, the most common approach is to use a *Relational Database Management System* (RDBMS). [MySQL](https://www.mysql.com/), [PostgreSQL](https://www.postgresql.org/), and [SQLite](https://www.sqlite.org/index.html) are a few industry-standard open-source RDBMSs that have been widely adopted by software development projects. This guide provides an overview of relational databases and RDBMS concepts.

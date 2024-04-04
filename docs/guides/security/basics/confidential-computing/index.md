@@ -8,7 +8,7 @@ published: 2021-12-23
 modified_by:
   name: Linode
 title: "Confidential Computing: A Collaborative Security Model for Data in Use"
-authors: ["Pam Baker"]
+contributors: ["Pam Baker"]
 ---
 
 Cloud providers, hardware vendors, and software developers have teamed up to tackle data-in-use security issues. The result is a security model called *confidential computing*.

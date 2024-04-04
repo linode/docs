@@ -15,7 +15,7 @@ external_resources:
  - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
 dedicated_cpu_link: true
 tags: ["web server","apache"]
-authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
 ---
 
 ![Tuning Your Apache Server](tuning-your-apache-server.png "Tuning Your Apache Server")

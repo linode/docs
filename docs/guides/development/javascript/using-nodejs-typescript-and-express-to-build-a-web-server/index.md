@@ -13,7 +13,7 @@ external_resources:
 - '[npm documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json)'
 - '[Express documentation](https://expressjs.com/en/guide/routing.html)'
 - "[TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig)"
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 [TypeScript](https://www.typescriptlang.org/) is a [strongly typed programming language](https://en.wikipedia.org/wiki/Strong_and_weak_typing) that is built on top of JavaScript. JavaScript is increasingly used in complex web applications with large codebases. Since you can use TypeScript anywhere that JavaScript is supported, you can replace JavaScript for TypeScript to reap the benefits of a strongly typed language. TypeScript enables developers to build applications quickly and with less errors. Some benefits of TypeScript are:

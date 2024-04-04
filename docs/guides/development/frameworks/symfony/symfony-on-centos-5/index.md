@@ -11,7 +11,7 @@ modified_by:
 published: 2010-06-08
 title: Symfony on CentOS 5
 deprecated: true
-authors: ["Ozan Yerli"]
+contributors: ["Ozan Yerli"]
 ---
 
 Symfony is a PHP web application framework, providing the classes and tools required to build and enhance both simple and complex applications. Featuring easy AJAX integration, an admin interface generator, and more, Symfony has become a very popular choice for web application development.

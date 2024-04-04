@@ -6,6 +6,6 @@ published: 2020-08-31
 title: Monitoring
 show_in_lists: true
 aliases: ['/security/monitoring/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

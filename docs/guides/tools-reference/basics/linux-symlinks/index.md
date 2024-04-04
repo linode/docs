@@ -5,7 +5,7 @@ title_meta: "The Ultimate Guide to Creating Linux Symlinks"
 description: 'Linux symlinks are used for managing and collating files. Learn the basics of Linux symlinks.'
 keywords: ['linux symlinks','symbolic link linux','soft link in linux','linux symbolic link','ln command','linux ln','linux create symbolic link','ln linux','linux ln command','create symbolic link linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Stephen Satchell"]
+contributors: ["Stephen Satchell"]
 published: 2023-04-18
 modified_by:
   name: Linode

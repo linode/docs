@@ -23,7 +23,7 @@ relations:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu/Debian
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 Minecraft is one of the most popular games in the world. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.

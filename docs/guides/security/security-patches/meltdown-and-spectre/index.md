@@ -16,7 +16,7 @@ external_resources:
   - '[Reboot Survival Guide](/docs/guides/reboot-survival-guide/)'
   - '[Linode Blog: CPU Vulnerabilities: Meltdown & Spectre](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/)'
 tags: ["security"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Summary

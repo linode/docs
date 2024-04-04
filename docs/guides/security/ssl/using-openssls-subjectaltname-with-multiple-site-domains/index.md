@@ -12,7 +12,7 @@ published: 2009-11-16
 title: Using OpenSSL's subjectAltName with Multiple Site Domains
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![OpenSSL_SubjectAltName](OpenSSL_subjectAltName.jpg)

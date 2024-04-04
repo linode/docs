@@ -16,7 +16,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: CentOS 6
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 installation guide](/docs/guides/apache-web-server-on-centos-6/). These steps should be performed via an SSH session to your Linode as the root user.

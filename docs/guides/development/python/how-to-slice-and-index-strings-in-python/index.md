@@ -11,7 +11,7 @@ title: "Slicing and Indexing Strings in Python"
 title_meta: "How to Slice and Index Strings in Python"
 external_resources:
 - '[Python string documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [Python](https://www.python.org/) has become one of the world's most popular programming languages due to its intuitive and straightforward nature. Among its attractive features is a powerful library for parsing and processing string objects. Python provides tools for indexing strings and creating substrings from larger strings, which is known as *slicing*. This tutorial discusses how to use Python string indexing and how to slice a string in Python.

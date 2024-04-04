@@ -17,7 +17,7 @@ external_resources:
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'
 audiences: ["intermediate"]
 dedicated_cpu_link: true
-authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
 ---
 
 [Jenkins](https://jenkins.io) is an open-source automation server that allows you to build pipelines to automate the process of building, testing, and deploying applications. In this guide, you will implement a basic workflow to speed up your Continuous Integration and Continuous Delivery (CI/CD) process.

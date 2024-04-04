@@ -12,7 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["kubernetes"]
 aliases: ['/kubernetes/lke-network-firewall-information-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 In an LKE cluster, some entities and services are only accessible from within that cluster while others are publicly accessible (reachable from the internet).

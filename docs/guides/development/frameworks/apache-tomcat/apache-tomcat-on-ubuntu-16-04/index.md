@@ -24,7 +24,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 16.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

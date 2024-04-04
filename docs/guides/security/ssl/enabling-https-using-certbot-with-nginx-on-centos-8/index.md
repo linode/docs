@@ -14,7 +14,7 @@ relations:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: CentOS/RHEL 8
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the NGINX web server on CentOS 8, AlmaLinux 8, and Rocky Linux 8. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on NGINX (or other web servers).

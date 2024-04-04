@@ -14,7 +14,7 @@ external_resources:
 - '[curl documentation](https://curl.se/docs/)'
 - '[curl GitHub page](https://github.com/curl/curl)'
 - '[GitHub REST API](https://docs.github.com/en/rest)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 In web programming, developers often have to interact with online databases. Many of these services provide a [*Representational State Transfer* (REST) API](https://en.wikipedia.org/wiki/Representational_state_transfer) that allows authorized users to read and write data. Fortunately, the [cURL](https://curl.se) application allows users to easily access REST APIs from the command line. This guide discusses how to use cURL to interrogate RESTful APIs. It also explains how `curl`, the command-line utility, uses RESTful verbs, and how to inspect headers and add authorization to requests.

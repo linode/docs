@@ -19,7 +19,7 @@ relations:
         key: install-vnc
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![Using VNC to Operate a Desktop on Ubuntu 12.04](using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg "Using VNC to Operate a Desktop on Ubuntu 12.04")

@@ -4,7 +4,7 @@ title_meta: "Create a VPC on the Linode Platform"
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2024-01-09
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide walks you through creating a VPC through the Cloud Manager, Linode CLI, and Linode API.

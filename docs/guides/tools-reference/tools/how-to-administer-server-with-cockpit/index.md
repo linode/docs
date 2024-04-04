@@ -20,7 +20,7 @@ relations:
     platform:
         keywords:
            - distribution: Ubuntu 22.04 LTS
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 It can be frustrating to manage a Linux server solely from the terminal, so users are always searching for an easier and more intuitive option. One of the more promising applications in this area is [Cockpit](https://cockpit-project.org/). Cockpit allows users to monitor and configure a server through a graphical user interface. This guide explains how to use Cockpit on Linux for server management and provides some background about the application.

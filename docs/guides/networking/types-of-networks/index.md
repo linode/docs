@@ -4,7 +4,7 @@ title: "Different Types of Computer Networks, Explained"
 description: "What are the different types of networks and what do they do? This guide discusses the main types of computer networks and what they’re used for."
 keywords: ['types of networks', 'networking type', 'network connection types', 'what type of network is the internet', 'type of computer networks']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
 published: 2023-09-26
 modified_by:
   name: Linode

@@ -21,7 +21,7 @@ external_resources:
 - '[Collabora instructions for other Linux packages](https://www.collaboraoffice.com/code/linux-packages/)'
 - '[Collabora SDK documentation](https://sdk.collaboraonline.com/contents.html)'
 - '[Certbot](https://certbot.eff.org/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [Collabora](https://www.collaboraoffice.com/) is a fully-featured open-source alternative to popular office suites such as Microsoft Office. The [*Collabora Online Development Edition*](https://www.collaboraoffice.com/code/) (CODE) edition is the online development version of Collabora. It is typically integrated into the front end of a file storage application such as [Nextcloud](https://nextcloud.com/). This guide explains how to download, install, and configure the CODE edition of Collabora. It also demonstrates how to connect Collabora and Nextcloud, both running on the same Linode, using the Nextcloud Hub.

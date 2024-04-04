@@ -11,7 +11,7 @@ modified_by:
 published: 2017-02-06
 title: Install OpenVAS 8 on Ubuntu 16.04
 deprecated: true
-authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
 ---
 
 OpenVAS, the Open Vulnerability Assessment System, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities. This guide will show you how to install OpenVAS 8 on Ubuntu 16.04.

@@ -12,7 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-marketplace-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The **Marketplace** section of Cloud Manager gives you access to apps that make it easy to deploy and configure Marketplace Apps on a Linode. Some popular Marketplace Apps are [WordPress](/docs/products/tools/marketplace/guides/wordpress/), [Minecraft](/docs/products/tools/marketplace/guides/minecraft/), and [GitLab](/docs/products/tools/marketplace/guides/gitlab/). We are actively adding new and useful Marketplace apps. When a Marketplace App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide.

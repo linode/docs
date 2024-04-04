@@ -15,7 +15,7 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Chrome
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 SSH (*secure shell*) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server. This is a common task when administering a website, hosting environment, or even a Raspberry Pi or Arduino system.

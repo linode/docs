@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "The Ultimate Web Servers List: 11 Popular Web Servers To Use Today"
 title_meta: "Web Server Software List and Servers Comparison"
-authors: ["Wayne Rash"]
+contributors: ["Wayne Rash"]
 ---
 
 This is the web server list you’ve been looking for – the guide discusses the most popular web servers and their advantages.

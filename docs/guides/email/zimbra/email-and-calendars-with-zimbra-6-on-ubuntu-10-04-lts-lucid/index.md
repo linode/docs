@@ -16,7 +16,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your Ubuntu 10.04 LTS (Lucid) Linode.

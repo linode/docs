@@ -13,7 +13,7 @@ external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/','/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/']
 tags: ["kubernetes"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png)

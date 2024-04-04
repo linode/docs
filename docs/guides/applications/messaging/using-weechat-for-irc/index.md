@@ -13,7 +13,7 @@ external_resources:
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
  - '[Screen for Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
 aliases: ['/applications/messaging/using-weechat-for-irc/']
-authors: ["Samuel Damashek"]
+contributors: ["Samuel Damashek"]
 ---
 
 

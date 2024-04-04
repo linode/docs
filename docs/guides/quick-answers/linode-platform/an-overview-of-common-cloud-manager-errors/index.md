@@ -11,7 +11,7 @@ image: L_UnderstandCommonClManErrors.png
 title: "Understanding Common Cloud Manager Errors"
 title_meta: "An Overview of Common Cloud Manager Errors"
 tags: ["linode platform","cloud manager"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Have you ever encountered an error message while navigating the cloud Manager and wanted more information as to what may have triggered the error and what your best next steps may be? In this guide we'll go over some common error messages in a higher level of detail than are traditionally provided, and discuss your best path forward.

@@ -10,7 +10,7 @@ modified_by:
 published: 2018-01-09
 title: 'Create a Self-Signed TLS Certificate'
 tags: ["security","ssl"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Create a Self-Signed Certificate title graphic](create-a-self-signed-tls-certificate-title-graphic.jpg "Create a Self-Signed Certificate title graphic")

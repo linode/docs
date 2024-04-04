@@ -8,7 +8,7 @@ title_short: "Email"
 weight: 80
 icon: "envelope"
 aliases: ['/email/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-1/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Get Ready](cd-presentation-header-01-get-ready.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Get Ready")

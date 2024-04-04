@@ -4,7 +4,7 @@ title: "Compute Migrations on Akamai Cloud"
 description: 'This guide reviews the various types of compute migrations available on the Akamai Cloud platform.'
 keywords: ['migrate','migration','host']
 tags: ["linode platform","cloud manager"]
-authors: ["Linode"]
+contributors: ["Linode"]
 published: 2023-11-14
 modified_by:
   name: Linode

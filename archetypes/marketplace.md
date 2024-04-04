@@ -5,7 +5,7 @@ og_description: "Two to three sentences describing your guide when shared on soc
 keywords: ['list','of','keywords','and key phrases']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
+contributors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode

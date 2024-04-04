@@ -10,7 +10,7 @@ published: 2018-03-02
 title: Mitigating memcached Amplification Attacks
 tags: ["security"]
 aliases: ['/security/mitigations/mitigating-memcached-amplification-attacks/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is Memcrashed?

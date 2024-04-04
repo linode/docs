@@ -20,7 +20,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 tags: ["nosql","database","centos"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Deploy Redis on CentOS 7](install-configure-redis-centos.png "Deploy Redis on CentOS 7")

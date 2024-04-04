@@ -16,7 +16,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Debian 5
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 

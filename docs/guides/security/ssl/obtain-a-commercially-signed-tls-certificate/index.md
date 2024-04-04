@@ -10,7 +10,7 @@ modified_by:
 published: 2017-12-20
 title: 'Obtain a Commercially Signed TLS Certificate'
 tags: ["security","ssl"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Obtain a Commercially Signed TLS Certificate](Obtain-a-Commercially-Signed-TLS-Certificate-smg.jpg)

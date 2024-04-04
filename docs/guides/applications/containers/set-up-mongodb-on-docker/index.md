@@ -11,7 +11,7 @@ title: "Set Up MongoDB on Docker"
 title_meta: "How to Set Up MongoDB on Docker"
 external_resources:
 - '[MongoDB on Docker Hub](https://hub.docker.com/_/mongo/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 MongoDB is an open-source NoSQL database utilizing JSON-like documents and schemata that support rapid iterative development. Its scale-out architecture is popular with application developers who use agile methodologies to move quickly. As it's popular within the agile community, using MongoDB with Docker is an excellent approach for a *continuous integration and development* (CI/CD) workflow.
 

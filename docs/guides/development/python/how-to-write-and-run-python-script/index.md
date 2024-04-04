@@ -16,7 +16,7 @@ external_resources:
 - '[Python data structure documentation](https://docs.python.org/3/tutorial/datastructures.html)'
 - '[Python top-level code environment documentation](https://docs.python.org/3/library/__main__.html)'
 - '[Python module documenation](https://docs.python.org/3/tutorial/modules.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [Python](https://www.python.org/) is one of the most popular programming languages due to its ease of use and a large selection of built-in features. This guide describes the basic concepts behind Python, including how to install and use Python modules. It also explains how to write and run a Python script.

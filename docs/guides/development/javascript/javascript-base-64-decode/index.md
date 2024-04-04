@@ -13,7 +13,7 @@ external_resources:
 - '[RFC 4648 for Base64](https://datatracker.ietf.org/doc/html/rfc4648)'
 - '[Mozilla btoa documentation](https://developer.mozilla.org/en-US/docs/Web/API/btoa)'
 - '[Mozilla atob documentation](https://developer.mozilla.org/en-US/docs/Web/API/atob)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 It is often necessary to embed a binary or other non-ASCII file inside an email or a web page. However, for a variety of reasons, it is not always safe to include the file in its original state. One possible solution is to first convert the binary data to Base64 text before including it. This guide provides an introduction to Base64 encoding and explains how to use the JavaScript Base64 functions to encode and decode data.

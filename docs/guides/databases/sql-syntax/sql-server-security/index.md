@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Part 1: SQL Server Security Best Practices"
 title_meta: SQL Server Security Best Practices
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 SQL Server security is perhaps one of the most overlooked facets of database server maintenance. Without taking the necessary precautions, an instance of SQL Server can be ripe for abuse and failure.

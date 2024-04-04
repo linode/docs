@@ -17,7 +17,7 @@ audiences: ["intermediate"]
 concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["javascript"]
 aliases: ['/development/nodejs/use-nightmarejs-to-automate-headless-browsing/']
-authors: ["Nashruddin Amin"]
+contributors: ["Nashruddin Amin"]
 ---
 
 ![Use Nightmare.js to Automate Headless Browsing](nightmarejs-automate-headless-browsing-title.jpg "Use Nightmare.js to Automate Headless Browsing")

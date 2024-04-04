@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2010-04-19
 title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

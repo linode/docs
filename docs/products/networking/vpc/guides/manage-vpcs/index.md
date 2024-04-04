@@ -2,7 +2,7 @@
 title: "Manage VPCs"
 description: "Instructions on viewing, editing, and deleting VPCs on Akamai's cloud computing platform"
 published: 2024-01-30
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## View VPCs

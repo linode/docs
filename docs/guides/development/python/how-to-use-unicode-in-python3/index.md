@@ -18,7 +18,7 @@ external_resources:
 - '[RFC 3629](https://datatracker.ietf.org/doc/html/rfc3629)'
 - '[An explanation of the Unicode standard](https://jkorpela.fi/unicode/guide.html)'
 - '[Python background on lexical analysis](https://docs.python.org/3/reference/lexical_analysis.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Most of the time, using [*Unicode*](https://home.unicode.org/) characters in Python does not require extra effort. However, sometimes encoding and decoding do not work properly, which results in errors. To resolve these issues, this guide helps you understand how Python encodes and decodes Unicode. Fortunately, the Python library includes some powerful and useful utilities and built-in functions to manage these tasks. This guide introduces Unicode and the [*UTF-8*](https://en.wikipedia.org/wiki/UTF-8) character encoding and explains how Python handles Unicode. It also discusses some common Python Unicode errors and demonstrates how to resolve them.

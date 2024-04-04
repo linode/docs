@@ -23,7 +23,7 @@ relations:
             - distribution: Debian 9
 tags: ["debian","database","nosql"]
 aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-debian-9/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running Debian 9. This tutorial will cover basic configuration options, as well as harden database security.

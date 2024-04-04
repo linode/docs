@@ -16,7 +16,7 @@ external_resources:
 - '[XHGUI](https://github.com/perftools/xhgui)'
 - '[How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)'
 aliases: ['/websites/cms/how-to-speed-up-a-wordpress-website/','/websites/cms/wordpress/how-to-speed-up-a-wordpress-website/']
-authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
 ---
 
 ## Goals For This Guide

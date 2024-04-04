@@ -10,7 +10,7 @@ modified_by:
 published: 2013-10-18
 title: Migrate from Shared Hosting to Linode
 tags: ["linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Migrate from Shared Hosting to Linode](migrate-from-shared-hosting-to-linode.png "Migrate from Shared Hosting to Linode")

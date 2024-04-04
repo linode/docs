@@ -15,7 +15,7 @@ external_resources:
     - '[Boonex Home Page](http://www.boonex.com)'
     - '[Boonex Plug-in Market](http://www.boonex.com/market)'
     - '[Boonex Forums](http://www.boonex.com/forums/)'
-authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
 ---
 
 [Dolphin](http://www.boonex.com/dolphin) is an open-source software package for building social networks, dating sites and niche communities. Dolphin's features include video chat, video messenger, iPhone app, Android App, Adobe AIR desktop app, groups, events, blogs, files, media sharing, a store, and more. Dolphin also allows developers to create plugins to add additional functionality or features. You can use the [Dolphin Market](http://www.boonex.com/market) to find extensions, design templates, mods, plugins, language packs and third party software integrations.

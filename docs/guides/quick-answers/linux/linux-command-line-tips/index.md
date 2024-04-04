@@ -10,7 +10,7 @@ modified_by:
   name: Edward Angert
 title: 'Linux Command Line Tips'
 tags: ["linux"]
-authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
 ---
 
 These are just a few of the many commands and tricks available in the Linux terminal. Visit our guide for a deeper [introduction to Linux concepts](/docs/guides/introduction-to-linux-concepts/).

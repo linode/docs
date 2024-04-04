@@ -2,7 +2,7 @@
 title: "Deploy an Image to an Existing Compute Instance"
 description: "Learn how to deploy an Image to an existing Linode Compute Instance by rebuilding it or adding a new disk."
 aliases: ['/guides/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 While it's typically more common to [deploy an Image to a *new* Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/), you are also able to deploy an Image to an *existing* Instance. You may wish to do this if you want to maintain consistent billing or if you wish to add the Image alongside the existing data.

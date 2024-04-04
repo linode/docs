@@ -27,7 +27,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Debian 9
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Ruby on Rails with nginx on Debian](ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")

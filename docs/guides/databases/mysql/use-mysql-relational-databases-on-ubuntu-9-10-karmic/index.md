@@ -16,7 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","mysql"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

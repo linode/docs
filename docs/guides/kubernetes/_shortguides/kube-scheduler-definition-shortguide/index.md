@@ -10,7 +10,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/kube-scheduler-definition-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ### kube-scheduler

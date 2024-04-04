@@ -8,5 +8,5 @@ modified_by:
     name: Linode
 published: 2011-11-02
 title: DirectAdmin
-authors: ["Jed Smith"]
+contributors: ["Jed Smith"]
 ---

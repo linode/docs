@@ -6,6 +6,6 @@ published: 2020-08-31
 title: Catalyst
 show_in_lists: true
 aliases: ['/development/frameworks/catalyst/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

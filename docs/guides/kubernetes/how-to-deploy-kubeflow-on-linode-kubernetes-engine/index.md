@@ -15,7 +15,7 @@ external_resources:
 - '[Kubeflow Jupyter notebooks](https://www.kubeflow.org/docs/notebooks/)'
 - '[Kubeflow pipelines](https://www.kubeflow.org/docs/pipelines/)'
 aliases: ['/kubernetes/how-to-deploy-kubeflow-on-linode-kubernetes-engine/']
-authors: ["Daniele Polencic"]
+contributors: ["Daniele Polencic"]
 ---
 
 ## What is Kubeflow?

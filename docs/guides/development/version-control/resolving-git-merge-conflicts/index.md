@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Resolve Merge Conflicts in Git"
 title_meta: "How to Resolve Merge Conflicts in Git"
-authors: ["Stephen Savitzky"]
+contributors: ["Stephen Savitzky"]
 ---
 
 ## What Causes Merge Conflicts?

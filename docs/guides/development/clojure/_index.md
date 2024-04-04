@@ -6,6 +6,6 @@ published: 2020-08-31
 title: Clojure
 show_in_lists: true
 aliases: ['/development/clojure/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

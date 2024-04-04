@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Application Security Testing: Fundamentals and Best Practices"
 title_meta: "Application Security Testing Tools"
-authors: ["David Newman"]
+contributors: ["David Newman"]
 ---
 
 Application security testing tools help you build applications that are less vulnerable to attacks by automating security testing, and by verifying your applications are secured against known vulnerabilities.

@@ -26,7 +26,7 @@ relations:
         key: install-nodejs-nginx
         keywords:
             - distribution: Debian 8
-authors: ["Joe D."]
+contributors: ["Joe D."]
 ---
 
 ![Install Node.js and NGINX on Debian](How_to_Install_Nodejs_and_Nginx_on_Debian_smg.jpg)

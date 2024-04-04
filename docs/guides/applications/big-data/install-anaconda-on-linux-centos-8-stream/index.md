@@ -14,7 +14,7 @@ relations:
     key: how-to-install-anaconda
     keywords:
       - distribution: CentOS 8 Stream
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 [Anaconda](http://anaconda.com) is a distribution of the Python and R programming languages. It is a curated bundle of specific language interpreters and add-ons. Anaconda's user base is primarily from the scientific computing, data analytics, and machine learning communities.
 

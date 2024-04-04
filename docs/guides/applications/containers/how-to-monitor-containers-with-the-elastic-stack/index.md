@@ -15,7 +15,7 @@ external_resources:
 - '[Elastic Container Monitoring](https://www.elastic.co/docker-kubernetes-container-monitoring)'
 - '[Docker Command-Line Reference](https://docs.docker.com/reference/)'
 aliases: ['/applications/containers/how-to-monitor-containers-with-the-elastic-stack/']
-authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
 ---
 
 ![Container Instrumentation with the Elastic Stack](container-instrumentation-with-the-elastic-stack.png "Container Instrumentation with the Elastic Stack")

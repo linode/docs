@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Kubernetes Security Best Practices Overview"
 title_meta: "Kubernetes Security Best Practices"
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 If you are [deploying your first Kubernetes cluster](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/), it's important to consider the security best practices that are available to keep your workload safe. Kubernetes provides several out-of-the-box features to help secure your cluster. This guide provides an overview of three Kubernetes features to you can use to secure different components of a cluster. The three areas covered are Role-Based Access Control (RBAC), Secrets, and Network Policies.

@@ -10,7 +10,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/kubernetes-definition-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ### Kubernetes

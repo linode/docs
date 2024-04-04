@@ -22,7 +22,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/squid/squid-http-proxy-debian-10/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application, on Debian 10. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:

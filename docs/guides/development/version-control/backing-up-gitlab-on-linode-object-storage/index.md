@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 published: 2021-10-27
 title: 'Backing up Gitlab on Linode Object Storage'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## In This Guide

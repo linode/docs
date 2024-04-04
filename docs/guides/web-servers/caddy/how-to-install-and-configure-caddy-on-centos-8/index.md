@@ -15,7 +15,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-centos-8/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Caddy](https://caddyserver.com/) is a fast, open-source, and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).

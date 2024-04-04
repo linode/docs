@@ -12,7 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-volumes-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The **Volumes** section of Cloud Manager gives you access to Linode's [Block Storage](https://www.linode.com/products/block-storage/) service. To learn how to create and manage Block Storage volumes using Cloud Manager, see our [Block Storage Overview](/docs/products/storage/block-storage/) guide.

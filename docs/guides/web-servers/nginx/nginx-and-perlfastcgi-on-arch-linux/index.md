@@ -16,7 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Arch Linux
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

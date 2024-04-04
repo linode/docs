@@ -10,7 +10,7 @@ title: "How to Implement a Cloud-based Document Management System"
 tab_group_main:
   title: Guides
   weight: 20
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 When you want to host your own document management system, it's important to have a solution that can handle your throughput and storage needs. An efficient architecture for a cloud-based document management system can provide both the scalability and high-availability you need.

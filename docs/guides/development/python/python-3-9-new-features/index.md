@@ -12,7 +12,7 @@ title_meta: "Python 3.9: An Overview of New Features"
 external_resources:
 - '[Python release 3.9.5 Changelog](https://www.python.org/)'
 - '[Flask](https://flask.palletsprojects.com/en/1.0.x/)'
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 ## Python 3.9: New Features

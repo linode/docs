@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "GitOps: An Overview of Its Principles and Workflow"
 title_meta: "An Overview of GitOps Principles and Workflow"
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 tags: ["saas"]
 ---
 

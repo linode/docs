@@ -10,7 +10,7 @@ modified_by:
 published: 2014-01-16
 title: Previewing Websites Without DNS
 tags: ["dns","networking"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Previewing Websites without DNS](Previewing_Websites_Without_DNS_smg.jpg)

@@ -16,7 +16,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

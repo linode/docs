@@ -16,7 +16,7 @@ external_resources:
 - '[Linking Containers](https://rominirani.com/docker-tutorial-series-part-8-linking-containers-69a4e5bf50fb)'
 - '[Connecting Containers](https://deis.com/blog/2016/connecting-docker-containers-1/)'
 aliases: ['/applications/containers/docker-container-communication/']
-authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 ---
 
 ![Connect Docker Containers](connect-docker-containers.jpg)

@@ -3,7 +3,7 @@ title: "Connect to a MySQL Managed Database"
 description: "Learn how to connect to a MySQL Managed Database through the command line or MySQL Workbench."
 published: 2022-02-23
 modified: 2022-07-22
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

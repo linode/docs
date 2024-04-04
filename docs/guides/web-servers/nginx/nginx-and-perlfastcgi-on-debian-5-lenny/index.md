@@ -16,7 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

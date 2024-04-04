@@ -15,7 +15,7 @@ external_resources:
  - '[Apache Rewrite Guide](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)'
  - '[Redirect URLs with the Apache Web Server](/docs/guides/redirect-urls-with-the-apache-web-server/)'
 tags: ["web server","apache"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 In this guide, you'll learn how to rewrite URLs with mod_rewrite and Apache. Rewriting a URL is a server-side operation that allows you to serve content from a file system location that doesn't correspond exactly with the client's request. This can be useful for improving URL readability by search engines and users, or updating locations of resources when your site architecture changes.

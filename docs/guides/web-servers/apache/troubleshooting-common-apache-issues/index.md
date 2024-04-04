@@ -14,7 +14,7 @@ image: troubleshooting-common-apache-issues.jpg
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This article provides troubleshooting guidelines for the [Apache web server](/docs/web-servers/apache/). Apache is a highly customizable tool for serving HTTP traffic. Because it allows for so many different configurations and settings in so many different places, sometimes Apache configuration can befuddle even advanced users.

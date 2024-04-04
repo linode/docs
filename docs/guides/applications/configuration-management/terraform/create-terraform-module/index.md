@@ -16,7 +16,7 @@ external_resources:
 - '[Terraform - Creating Modules](https://www.terraform.io/docs/modules/create.html)'
 - '[Terraform - Module Sources](https://www.terraform.io/docs/modules/sources.html)'
 aliases: ['/applications/configuration-management/create-terraform-module/','/applications/configuration-management/terraform/create-terraform-module/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Terraform is a popular orchestration tool by [HashiCorp](https://www.hashicorp.com/). It's used to build, maintain, and version infrastructure safely. Terraform modules allow you to better organize your configuration code and make the code reusable.

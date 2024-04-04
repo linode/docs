@@ -11,7 +11,7 @@ title: "Use Popeye to Check for Kubernetes Configuration Issues"
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Kubernetes Changelog](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Popeye is an open-source read-only tool used from wherever a user has `kubectl` installed, using Kubernetes contexts defined in a `kubeconfig` file. It automatically scans live Kubernetes clusters, and provides an administrator with insight into issues that could arise from deployed resources and configurations. Once installed, Popeye will perform a comprehensive scan of your current configuration based on your active kubeconfig whenever entering the following command:

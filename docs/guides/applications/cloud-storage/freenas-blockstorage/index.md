@@ -12,7 +12,7 @@ external_resources:
  - '[FreeNAS Volume Manager Manual](http://doc.freenas.org/11/storage.html)'
  - '[Available FreeNAS Plugins](http://doc.freenas.org/11/plugins.html#available-plugins)'
 aliases: ['/applications/cloud-storage/freenas-blockstorage/']
-authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
 ---
 
 Network-attached storage (NAS) allows multiple client devices to access the connected storage media as though it's stored locally to the device. FreeNAS is FreeBSD-based NAS software, configurable via a browser interface.

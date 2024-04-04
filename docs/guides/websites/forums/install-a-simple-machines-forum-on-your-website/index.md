@@ -16,7 +16,7 @@ external_resources:
  - '[Modifications, Styles, and Upgrades](http://custom.simplemachines.org/)'
  - '[Functions Database](http://support.simplemachines.org/function_db/)'
  - '[SMF Community Forum](http://www.simplemachines.org/community/index.php)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Simple Machines Forum (SMF) is a popular forum solution for small- to large-sized communities that offers a variety of features. With its modular design and flexibility, users can create their own plugins to modify the behavior of SMF in any way they wish.

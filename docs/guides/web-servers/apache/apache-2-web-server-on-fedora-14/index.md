@@ -16,7 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -8,7 +8,7 @@ modified_by:
 title: "Deploy a Team Fortress 2 Server through the Linode Marketplace"
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/', '/platform/one-click/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-marketplace-apps/','/guides/team-fortress-2-marketplace-app/']
-authors: ["Linode"]
+contributors: ["Linode"]
 _build:
   list: false
 noindex: true

@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Create a LEMP Stack Application"
 title_meta: "How to Create a LEMP Stack on Linux"
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 [LEMP stack](/docs/guides/web-servers/lemp/) refers to a development framework for Web and mobile applications based on four open source components:

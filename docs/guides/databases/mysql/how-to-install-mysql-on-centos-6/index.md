@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: CentOS 6
 tags: ["database","mysql","centos"]
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![How to Install MySQL on CentOS 6](How_to_Install_MySQL_on_CentOS_6_smg.jpg)

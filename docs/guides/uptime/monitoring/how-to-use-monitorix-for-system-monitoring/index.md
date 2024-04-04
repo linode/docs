@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Using Monitorix for System Monitoring"
 title_meta: "How to Use Monitorix for System Monitoring"
-authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
 ---
 
 [Monitorix](https://www.monitorix.org/) is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This Linux system monitoring tool is composed of two programs. The first, monitorix, is a system data logging daemon written in [Perl](/docs/guides/development/perl/). The second, its web interface, uses the CGI script, `monitorix.cgi`.

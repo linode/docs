@@ -12,7 +12,7 @@ external_resources:
 - '[Wikipedia Cron Page](https://en.wikipedia.org/wiki/Cron)'
 - '[Crontab Man Page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html)'
 - '[Ubuntu cron documentation](https://help.ubuntu.com/community/CronHowto)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 All Linux distributions are equipped with the `cron` utility, which allows users to schedule jobs to run at certain fixed times. Cron jobs can be scheduled at the user or root level, or by software applications. This guide explains how to view cron jobs on Linux and how to list cron jobs by user or schedule.

@@ -14,7 +14,7 @@ external_resources:
    - '[Rclone sync command Documentation](https://rclone.org/commands/rclone_sync/)'
 title: "Use Rclone to Sync Files to Linode Object Storage"
 title_meta: "How to Use Rclone to Sync Files to Linode Object Storage"
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 ## What is Rclone?

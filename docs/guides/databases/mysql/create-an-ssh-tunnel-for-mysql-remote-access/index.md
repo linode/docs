@@ -15,7 +15,7 @@ external_resources:
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[autossh](http://www.harding.motd.ca/autossh/)'
 tags: ["ssh","database","mysql"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide will show you how to make a secure connection to your remote MySQL or MariaDB server from your local computer, using an *SSH tunnel*. This is useful if you want to use administration tools on your local computer to do work on your server.

@@ -4,7 +4,7 @@ title: "Use Cloud-Init to Automatically Configure and Secure Your Servers"
 description: "Learn how you can use cloud-init to automate the process of configuring and securing a new cloud instance."
 keywords: ['cloud-init','cloudinit','metadata']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2023-11-15
 modified_by:
   name: Nathaniel Stickman

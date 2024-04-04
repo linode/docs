@@ -19,7 +19,7 @@ relations:
         keywords:
             - distribution: CentOS 5
 tags: ["centos","database","nosql"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 CouchDB is a non-relational document based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language and uses an HTTP interface and JSON as a data format for easy integration in application development.

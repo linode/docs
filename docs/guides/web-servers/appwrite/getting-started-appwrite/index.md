@@ -11,7 +11,7 @@ title: "Getting Started with Appwrite as a Backend Server"
 external_resources:
 - '[Appwrite Docs: Installation](https://appwrite.io/docs/installation)'
 - '[Appwrite Docs: Getting Started for Web](https://appwrite.io/docs/getting-started-for-web)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Appwrite is an open source platform for quickly developing RESTful backend services. It is an ideal solution for reducing the time you spend developing repetitive APIs, and instead setting your focus on the frontend. Appwrite seamlessly runs alongside your other backend services, making it an adaptable solution that fits into an existing application or platform.

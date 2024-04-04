@@ -13,7 +13,7 @@ title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
 title_meta: Anti-Virus Protection with ClamAV and rkhunter
 image: AntiVirus_Rootkitprotec_ClamAV_rkkunter.png
 aliases: ['/security/basics/anti-virus-and-rootkit-protection-with-clamav-and-rkhunter/']
-authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
 ---
 
 ## Anti-virus and Rootkit Detection

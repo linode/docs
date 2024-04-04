@@ -12,7 +12,7 @@ external_resources:
 - '[Python String documentation](https://docs.python.org/3/library/string.html)'
 - '[Standard Python types](https://docs.python.org/3/library/stdtypes.html)'
 - '[Advanced Python types](https://docs.python.org/3/library/datatypes.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Python is a dynamically typed language, so programmers might not always consider the type of each variable they create. However, the type of a variable is often important, and it might be necessary to convert it to another data type. This guide explains how typecasting works and illustrates how to convert data types in Python. It covers several common examples, such as how to convert an integer to a string.

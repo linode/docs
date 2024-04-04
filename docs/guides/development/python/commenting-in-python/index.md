@@ -13,7 +13,7 @@ title_meta: "How to Comment in Python"
 external_resources:
 - '[Python Software Foundation](https://www.python.org/)'
 - '[Python Programming at Wikibooks](https://en.wikibooks.org/wiki/Python_Programming)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Python was developed in the late 1980s, released in 1991, and is an interpreted, high-level and general-purpose programming language that emphasizes code readability. Python 3, released in 2008, is the current version.

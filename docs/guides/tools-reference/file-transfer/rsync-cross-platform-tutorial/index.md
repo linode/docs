@@ -11,7 +11,7 @@ title: "Rsync Cross Platform Tutorial"
 title_meta: "Using the Rsync Cross Platform Command-Line Utility"
 external_resources:
 - '[Rsync options from Linux Man page](https://linux.die.net/man/1/rsync)'
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 This guide covers the remote sync `rsync` tool on Linux and other *nix* platforms. The `rsync` tool is a highly flexible command-line utility that manages file movement, in and among hosts. It is implemented on most supported systems with predictable results and very few inter-version problems between hosts.

@@ -9,7 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Install and Use Silver Searcher on Linux"
 title_meta: "How to Install and Use Silver Searcher on Linux"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The Silver Searcher is a command-line tool for searching code. It is similar to the well-known `ack` command, but improves on performance and adds support for `.*ignore` files. In this guide, you learn more about Silver Searcher and how to install and get started using it on your Linux system.

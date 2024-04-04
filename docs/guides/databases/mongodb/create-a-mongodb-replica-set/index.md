@@ -14,7 +14,7 @@ external_resources:
  - '[Geographically Distributed Replica Sets](https://docs.mongodb.com/manual/tutorial/deploy-geographically-distributed-replica-set/)'
 tags: ["ubuntu","database","nosql","centos"]
 aliases: ['/databases/mongodb/create-a-mongodb-replica-set/','/databases/mongodb/creating-a-mongodb-replication-set-on-centos-7/','/guides/creating-a-mongodb-replication-set-on-centos-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-16-04/','/guides/creating-a-mongodb-replication-set-on-ubuntu-16-04/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 In this guide, you'll learn how to create a MongoDB *replica set*. A replica set is a cluster of MongoDB database servers that implements master-slave (primary-secondary) replication. Replica sets also fail over automatically, so if one of the members becomes unavailable, a new primary host is elected and your data is still accessible. When combined with sharded database clusters, replica sets allow you to create scalable, highly available database systems for use with growing datasets.

@@ -22,7 +22,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/ci/use-buildbot-for-software-testing-on-ubuntu/']
-authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
 ---
 
 [Buildbot](https://buildbot.net/) is an open source system for testing software projects. In this guide, you will set up a Linode as a Buildbot server to use as a continuous integration platform to test code. Similarly to hosted solutions like Travis CI, Buildbot is an automated testing platform that can watch for code changes, test a project's code, and send notifications regarding build failures.

@@ -11,7 +11,7 @@ modified_by:
 published: 2011-10-31
 title: Install Kloxo on CentOS 5
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Kloxo is a web-based control panel that is a free alternative to options such as cPanel and Plesk. At this time, Kloxo only supports 32 bit systems. If you would like to use Kloxo on a 64 bit system, you can follow the documentation [listed on their GitHub page](https://github.com/lxcenter/kloxo).

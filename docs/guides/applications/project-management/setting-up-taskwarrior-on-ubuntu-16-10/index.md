@@ -16,7 +16,7 @@ external_resources:
  - '[Taskwarrior Official Repository](https://github.com/taskwarrior)'
  - '[GTD with Taskwarrior, Blog](https://cs-syd.eu/posts/2015-06-14-gtd-with-taskwarrior-part-1-intro.html)'
  - '[Timewarrior](https://taskwarrior.org/docs/timewarrior/what.html)'
-authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
 ---
 
 

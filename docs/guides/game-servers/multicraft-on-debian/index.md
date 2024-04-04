@@ -20,7 +20,7 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Debian
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.

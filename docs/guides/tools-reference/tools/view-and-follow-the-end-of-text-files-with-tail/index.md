@@ -10,7 +10,7 @@ modified_by:
 published: 2010-11-29
 title: View and Follow the End of Text Files with tail
 tags: ["linux"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![View and Follow the End of Text Files with tail](view_and_follow_the_end_of_text_files_with_tail_smg.png)

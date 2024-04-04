@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "An Overview of Deep Learning Frameworks"
 title_meta: "Deep Learning Frameworks Overview"
-authors: ["Andy Patrizio"]
+contributors: ["Andy Patrizio"]
 tags: ["saas"]
 ---
 

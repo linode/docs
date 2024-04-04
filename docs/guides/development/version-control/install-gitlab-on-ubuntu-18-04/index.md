@@ -19,7 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/version-control/install-gitlab-on-ubuntu-18-04/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 GitLab is a complete solution for all aspects of your software development life-cycle. At its core, GitLab serves as your centralized Git repository. It also features built-in tools that represent every task in your development workflow, from planning to testing to releasing. You can host your own GitLab instance on a Linode, instead of using third-party hosting. Self-hosting your software development with GitLab offers total control of your codebase while providing an easy to use interface for team members. GitLab is the most popular self-hosted Git repository, so you'll benefit from a robust set of integrated tools and an active community.

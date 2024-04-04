@@ -3,7 +3,7 @@ slug: using-openresty
 description: "OpenResty extends on NGINX with Lua scripting and a collection of modules to make it easier to scale your web applications. Learn how to set up your own OpenResty server and take advantage of these features in this guide."
 keywords: ['what is openresty', 'openresty example', 'openresty vs nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
 published: 2023-04-25
 modified_by:
   name: Nathaniel Stickman

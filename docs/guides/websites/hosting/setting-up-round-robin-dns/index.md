@@ -10,7 +10,7 @@ modified_by:
 published: 2012-03-13
 title: Setting up Round-Robin DNS
 aliases: ['/websites/hosting/setting-up-round-robin-dns/','/websites/setting-up-round-robin-dns/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is Round-Robin DNS

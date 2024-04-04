@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Introduction to SQL Data Types"
 title_meta: "SQL Data Types"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 Choosing the proper data type for a table column is an important decision. It reduces the need for data type conversions, enhances the performance of database queries, and minimizes storage requirements.

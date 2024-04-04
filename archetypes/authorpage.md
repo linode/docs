@@ -10,7 +10,7 @@ Use this archetype to add biographical information to an author's profile page i
 
     hugo new -k authorpage authors/firstname-lastname/_index.md
 
-Guides are associated to an author's profile page by setting the `authors` frontmatter in a guide's frontmatter. If an author's name is `FirstName LastName`, then the markdown file for their author page should be located at `docs/authors/firstname-lastname/_index.md`, and the `authors` frontmatter on the guide should be set to `authors: ["FirstName LastName"]`.
+Guides are associated to an author's profile page by setting the `authors` frontmatter in a guide's frontmatter. If an author's name is `FirstName LastName`, then the markdown file for their author page should be located at `docs/authors/firstname-lastname/_index.md`, and the `authors` frontmatter on the guide should be set to `contributors: ["FirstName LastName"]`.
 
 The link frontmatter should be a link to the author's website (or GitHub profile or something else if they prefer). The link and email frontmatter are optional.
 -->

@@ -6,6 +6,6 @@ published: 2020-07-15
 title: Vault
 show_in_lists: true
 aliases: ['/applications/configuration-management/vault/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

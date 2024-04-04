@@ -22,7 +22,7 @@ relations:
         keywords:
             - distribution: CentOS 6.4
 tags: ["nosql","database","centos"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.

@@ -11,7 +11,7 @@ modified_by:
 published: 2009-08-06
 title: 'Configure a Firewall with Arno Iptables in Debian 5'
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Firewall software is designed to limit access to network resources running on your Linode to authorized parties. Some services, such as a public web server, may be accessible to anyone. Others might be more restricted, such as an SSH daemon for remote system administration.

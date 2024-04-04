@@ -12,7 +12,7 @@ title_meta: "How to Configure Nextcloud to use Object Storage"
 external_resources:
 - '[Nextcloud Configuring External Storage Documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#)'
 aliases: ['/platform/object-storage/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 {{< youtube QWaCg4q4a0A >}}
 

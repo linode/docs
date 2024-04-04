@@ -19,7 +19,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![How to Install and Configure Apache Web Server on Ubuntu 14.04 LTS](Apache_Web_Server_on_Ubuntu_1404_LTS_smg.jpg)

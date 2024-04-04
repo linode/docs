@@ -20,7 +20,7 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Ubuntu
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide provides information to install Multicraft on a Linode running Ubuntu 20.04 LTS.

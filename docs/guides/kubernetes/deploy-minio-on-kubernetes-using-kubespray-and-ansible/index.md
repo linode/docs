@@ -14,7 +14,7 @@ external_resources:
 - '[Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)'
 - '[Minio](https://www.minio.io/)'
 - '[Kubespray](https://github.com/kubernetes-incubator/kubespray)'
-authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
 ---
 
 ![Minio_Banner](Deploy_Minio.jpg)

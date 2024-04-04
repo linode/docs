@@ -6,7 +6,7 @@ aliases: ['/tools-reference/file-transfer/','/networking/file-transfer/']
 published: 2009-07-16
 title: File Transfer
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -13,7 +13,7 @@ external_resources:
 - '[Red Hat Developer: Podman Basics: Resources for Beginners and Experts](https://developers.redhat.com/articles/2022/05/02/podman-basics-resources-beginners-and-experts#)'
 - '[Red Hat Developer: Podman and Buildah for Docker Users](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users#)'
 - '[phoenixNAP: Install Podman on Ubuntu](https://phoenixnap.com/kb/install-podman-on-ubuntu)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
 

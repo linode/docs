@@ -2,7 +2,7 @@
 title: Deploy an Image to a New Compute Instance
 description: "Learn how to create a new Compute Instance from a Custom or Recovery Image"
 modified: 2022-07-12
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 1. Log in to the Cloud Manager and navigate to the **Images** page.

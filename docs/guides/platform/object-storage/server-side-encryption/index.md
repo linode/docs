@@ -13,7 +13,7 @@ modified_by:
 title: "Using Server-Side Encryption with Linode Object Storage"
 title_meta: "How to Use Server-Side Encryption with Linode Object Storage"
 aliases: ['/platform/object-storage/server-side-encryption/']
-authors: ["Ben Bigger"]
+contributors: ["Ben Bigger"]
 ---
 
 Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.

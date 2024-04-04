@@ -13,7 +13,7 @@ external_resources:
  - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'
  - '[NGINX Documentation](https://nginx.org/en/docs/)'
 aliases: ['/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/']
-authors: ["Frederick Jost Zweig"]
+contributors: ["Frederick Jost Zweig"]
 ---
 
 ![Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8](varnish-nginx-wordpress-ssl-http-debian.png "Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8")

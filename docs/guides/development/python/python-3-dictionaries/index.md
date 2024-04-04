@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Use Dictionaries in Python 3"
 title_meta: "How to Use Dictionaries in Python 3"
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 A dictionary in Python is much like the dictionary you find online or the paper version you find on a shelf. It consists of a series of key-value pairs. A Python dictionary's keys are used to retrieve a dictionary entry along with its value. The act of assigning a key to a value is called *mapping*, so a Python dictionary is a *mapped data type*. This guide introduces you to the Python 3 dictionary data type and shows you how to use dictionaries in your Python code.

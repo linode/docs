@@ -11,7 +11,7 @@ title: "Use Sorted Sets in Redis Databases"
 title_meta: "How to Use Sorted Sets in Redis Databases"
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Redis, the open-source, in-memory database, is a popular option for its quick, low-latency storage. Redis's *Sorted Set* data type captures the advantages of both Lists and Sets, giving you a useful tool for ordered collections of unique values. This tutorial dives into what Sorted Sets are and introduces you to commands you can use to manage them.

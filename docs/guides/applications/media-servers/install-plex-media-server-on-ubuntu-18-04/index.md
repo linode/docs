@@ -19,7 +19,7 @@ relations:
         key: how-to-install-plex
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from anywhere. This guide shows you how to set up the **Plex Media Server** on your Linode running Ubuntu 18.04 LTS, as well as how to connect to your media server from a [Plex client application](https://www.plex.tv/apps-devices/. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.

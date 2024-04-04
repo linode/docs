@@ -15,7 +15,7 @@ external_resources:
 - '[GMod Forums](http://facepunch.com/forum.php)'
 - '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
 dedicated_cpu_link: true
-authors: ["Julian Meyer"]
+contributors: ["Julian Meyer"]
 ---
 
 

@@ -4,7 +4,7 @@ description: "Learn how to use ACLs to set permissions and access controls withi
 aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/', '/guides/how-to-use-object-storage-acls-and-bucket-policies/']
 published: 2019-12-16
 modified: 2022-03-11
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Access Control Lists (ACLs) are a method of defining access to Object Storage resources. You can apply ACLs to both buckets and objects, giving users access and controlling their permission level. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few other more granular settings are also available; the [Cloud Manager](#granular-permissions-for-cloud-manager) and [s3cmd](#granular-permissions-for-s3cmd) sections provide information on these respective settings.

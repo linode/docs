@@ -16,7 +16,7 @@ external_resources:
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'
   - '[WSGI/Python Quickstart Guide](https://uwsgi-docs.readthedocs.org/en/latest/WSGIquickstart.html)'
   - '[nginx Configuration](/docs/guides/how-to-configure-nginx/)'
-authors: ["Sergey Pariev"]
+contributors: ["Sergey Pariev"]
 ---
 
 [Django](https://www.djangoproject.com/) is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using [uWSGI](https://uwsgi-docs.readthedocs.org/) and [nginx](https://www.nginx.com/) on Ubuntu 14.04.

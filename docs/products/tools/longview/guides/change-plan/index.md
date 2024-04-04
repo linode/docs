@@ -6,7 +6,7 @@ published: 2023-05-24
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< note >}}

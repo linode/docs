@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Using the Git Rebase Command"
 title_meta: "How to Use the Git Rebase Command"
-authors: ["Stephen Savitzky"]
+contributors: ["Stephen Savitzky"]
 ---
 
 ## What Does Git Rebase Do?

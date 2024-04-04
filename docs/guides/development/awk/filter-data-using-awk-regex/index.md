@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Filter Data using AWK RegEx"
 title_meta: "How to Filter Data using AWK RegEx"
-authors: ["Andy Lester"]
+contributors: ["Andy Lester"]
 ---
 
 AWK, named after the developers Aho, Weinberger, and Kernighan, is ideal for finding data in text files. Among its other virtues, the [AWK Programming Language](/docs/guides/introduction-to-awk/) is optimized to make this task as easy as possible.

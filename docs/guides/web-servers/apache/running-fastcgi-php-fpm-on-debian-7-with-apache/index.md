@@ -19,7 +19,7 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
-authors: ["Jesin A"]
+contributors: ["Jesin A"]
 ---
 
 ![Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache](running-mod-fastcgi-and-php-fpm-debian-7-apache.png)

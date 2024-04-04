@@ -10,7 +10,7 @@ modified_by:
 published: 2010-10-25
 title: Download Resources from the Command Line with wget
 tags: ["linux"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Banner_image](Download_Resources_from_the_Command_Line_with_wget_smg.jpg)

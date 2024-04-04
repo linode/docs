@@ -10,7 +10,7 @@ title: DHCP IP Address Reference
 keywords: [dhcp", "cloud firewall", "firewall", "networking"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/dhcp-ip-address-reference/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 In some cases, such as when configuring a firewall, you may need to know the IP addresses that Linode uses for our DHCP servers. Below is a list of all DHCP IP addresses categorized by their data center, to assist in any configuration you may need.

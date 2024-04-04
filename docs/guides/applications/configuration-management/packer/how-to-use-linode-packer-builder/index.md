@@ -11,7 +11,7 @@ modified_by:
 title: "Using the Linode Packer Builder to Create Custom Images"
 title_meta: "How to Use the Linode Packer Builder"
 aliases: ['/applications/configuration-management/how-to-use-linode-packer-builder/','/applications/configuration-management/packer/how-to-use-linode-packer-builder/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Introduction to Packer

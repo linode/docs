@@ -11,7 +11,7 @@ modified_by:
 published: 2010-08-13
 title: 'Social Networking with phpFox on Debian 5 (Lenny)'
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 phpFox is a proprietary social networking platform that allows groups to create and maintain communities of people with common interests. It contains a variety of features that are common on many popular social networking sites such as [Facebook](http://www.facebook.com) or [MySpace](http://www.myspace.com) including friend lists, activity feeds, instant messaging, and user groups. In addition to providing a robust networking platform, phpFox also allows developers to create "plug-ins" that are custom tailored to their community.

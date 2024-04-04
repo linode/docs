@@ -3,7 +3,7 @@ title: "Automatic Updates and Maintenance Windows"
 description: "Managed databases are automatically updated on a weekly or monthly basis. Learn how to manage these maintenance windows in the Cloud Manager"
 date: 2022-04-15
 modified: 2023-02-10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

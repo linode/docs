@@ -15,7 +15,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-16-04/']
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![Upgrade to Ubuntu 16.04](How_to_Upgrade_to_Ubuntu_smg.jpg)

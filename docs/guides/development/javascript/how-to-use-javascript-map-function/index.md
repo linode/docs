@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title_meta: "How to Use the JavaScript Map() Function to Transform Arrays"
 title: "Using the JavaScript map() Function: A Comprehensive Guide for Beginners"
-authors: ['Jeff Novotny']
+contributors: ['Jeff Novotny']
 external_resources:
 - '[Mozilla Developers documentation for Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)'
 ---

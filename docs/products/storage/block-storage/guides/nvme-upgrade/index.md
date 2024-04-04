@@ -2,7 +2,7 @@
 title: "NVMe Block Storage Upgrade"
 description: "Information about the new NVMe Block Storage product and how to upgrade a Volume."
 modified: 2023-07-05
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is NVMe-backed Block Storage?

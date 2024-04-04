@@ -16,7 +16,7 @@ relations:
         keywords:
             - distribution: Gentoo
 tags: ["monitoring"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -4,7 +4,7 @@ title: "How to Use Crossplane"
 description: "Crossplane extends Kubernetes as a universal control plane. Learn more about what Crossplane has to offer and how you can start with it in this tutorial."
 keywords: ['crossplane kubernetes','crossplane examples','crossplane vs terraform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
 published: 2023-06-12
 modified_by:
   name: Nathaniel Stickman

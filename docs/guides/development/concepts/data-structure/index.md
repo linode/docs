@@ -13,7 +13,7 @@ external_resources:
 - '[Wikipedia page on data structures](https://en.wikipedia.org/wiki/Data_structure)'
 - '[Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)'
 
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Data structures are used to create efficient, clear, and organized programs. Among the best known [data structures](https://en.wikipedia.org/wiki/Data_structure) are lists and arrays. This guide introduces and defines data structures and explains why they are important. It also highlights the most important data structures and clarifies when and how each one can be used.

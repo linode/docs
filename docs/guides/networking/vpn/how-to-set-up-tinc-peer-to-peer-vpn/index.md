@@ -10,7 +10,7 @@ modified: 2017-09-20
 modified_by:
   name: Linode
 title: 'How to Set up tinc, a Peer-to-Peer VPN'
-authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
 ---
 
 

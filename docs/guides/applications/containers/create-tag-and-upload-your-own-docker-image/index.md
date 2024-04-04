@@ -14,7 +14,7 @@ external_resources:
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/create-tag-and-upload-your-own-docker-image/']
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 Docker makes it easy to develop and deploy custom and consistent environments that include specific applications and dependencies. Docker calls these compilations Images. Docker images can be hosted and retrieved from private locations or from the official repository, [Docker Hub](https://hub.docker.com/).

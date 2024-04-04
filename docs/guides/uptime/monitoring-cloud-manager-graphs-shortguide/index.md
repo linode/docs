@@ -11,7 +11,7 @@ keywords: ["monitoring"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/uptime/monitoring-cloud-manager-graphs-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 If you're new to performance monitoring, you can get started by logging in to the Linode Cloud Manager. There are four simple graphs available on the Dashboard and in the Graphs section:

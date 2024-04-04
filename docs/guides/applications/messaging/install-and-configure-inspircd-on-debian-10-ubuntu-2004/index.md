@@ -12,7 +12,7 @@ external_resources:
 - '[InspIRCd configuration options](https://docs.inspircd.org/3/configuration/)'
 - '[IRC help website](https://www.irchelp.org/)'
 - '[IRC networks and server lists](https://www.irchelp.org/networks/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Internet Relay Chat (IRC) is a real-time, text-based communication protocol with a long history of use for group chats and discussion forums. IRC networks — which can be made up of several independent servers — may each have numerous channels, with each channel functioning as a space for group chat.

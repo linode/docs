@@ -17,7 +17,7 @@ relations:
         key: securing-web-servers-with-modsecurity
         keywords:
             - web server: Apache 2
-authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
 ---
 
 ## What is ModSecurity?

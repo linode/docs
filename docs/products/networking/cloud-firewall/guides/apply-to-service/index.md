@@ -2,7 +2,7 @@
 title: "Apply Firewall Rules to a Service"
 description: "Learn how to add and remove services from Cloud Firewalls."
 aliases: ['/products/networking/cloud-firewall/guides/assign-firewall/', '/products/networking/cloud-firewall/guides/apply-to-compute-instances/']
-authors: ["Linode"]
+contributors: ["Linode"]
 modified: 2023-11-01
 ---
 

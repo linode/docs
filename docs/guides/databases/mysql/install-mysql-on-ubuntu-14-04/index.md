@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 tags: ["ubuntu","database","mysql"]
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![Install MySQL on Ubuntu 14.04](install-mysql-on-ubuntu-1404.png "Install MySQL on Ubuntu 14.04")

@@ -13,7 +13,7 @@ modified: 2023-08-10
 title: "Use SSH Public Key Authentication on Linux, macOS, and Windows"
 title_meta: "How to Use SSH Public Key Authentication"
 image: use_public_key_authentication_with_ssh.png
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Public key authentication](https://en.wikipedia.org/wiki/Key_authentication#Authentication_using_Public_Key_Cryptography) with SSH (Secure Shell) is a method in which you generate and store on your computer a pair of cryptographic keys and then configure your server to recognize and accept your keys. Password authentication is the default method most SSH clients use to authenticate with remote servers, but it suffers from potential security vulnerabilities like brute-force login attempts. Using key-based authentication offers a range of benefits, including:

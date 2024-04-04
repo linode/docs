@@ -21,7 +21,7 @@ external_resources:
 - '[Chef Supermarket](https://supermarket.chef.io/)'
 - '[Chef Supermarket documentation](https://docs.chef.io/workstation/knife_supermarket/)'
 - '[Chef bootstrap documentation](https://docs.chef.io/install_bootstrap/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

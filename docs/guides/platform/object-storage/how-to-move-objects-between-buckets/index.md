@@ -14,7 +14,7 @@ external_resources:
 - '[Cyberduck duck documentation](https://trac.cyberduck.io/wiki/help/en/howto/cli)'
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-move-objects-between-buckets/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

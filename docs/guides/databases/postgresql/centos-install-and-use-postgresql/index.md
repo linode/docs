@@ -29,7 +29,7 @@ relations:
         key: use-postrgesql-database
         keywords:
             - distribution: CentOS 8
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 This guide demonstrates how to install and use [*PostgreSQL*](https://www.postgresql.org/), a popular open-source *object-relational database management system* (RDBMS). PostgreSQL enhances the original *Structured Query Language* (SQL) specification with many new features but still emphasizes compliance. PostgreSQL transactions are atomic, consistent, isolated, and durable which means the application is *ACID-compliant*. PostgreSQL ranks as one of the most widely-used database systems and is available for CentOS 8 and most other operating systems.

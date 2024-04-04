@@ -15,7 +15,7 @@ external_resources:
  - '[npm](https://www.npmjs.com/)'
 audiences: ["beginner"]
 languages: ["javascript"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Node.js](https://nodejs.org/) is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses [V8](https://v8.dev/), Google's JavaScript engine, which is also found in Chromium and Chrome. Depending on the use case, Node.js can supplement or replace traditional web servers and tools such as Apache, nginx, or PHP.

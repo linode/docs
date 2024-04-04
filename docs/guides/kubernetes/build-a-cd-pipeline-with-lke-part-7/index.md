@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-7/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Managing Stacks with Helm](cd-presentation-header-07-managing-stacks-with-helm.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Managing Stacks with Helm")

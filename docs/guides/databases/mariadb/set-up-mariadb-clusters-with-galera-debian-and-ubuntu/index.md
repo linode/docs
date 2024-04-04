@@ -12,7 +12,7 @@ title: Set Up MariaDB Clusters with Galera Debian and Ubuntu
 external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
 tags: ["ubuntu","debian","mariadb","database"]
-authors: ["James Stewart"]
+contributors: ["James Stewart"]
 tags: ["ecommerce"]
 ---
 

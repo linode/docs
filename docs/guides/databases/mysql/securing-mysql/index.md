@@ -12,7 +12,7 @@ modified_by:
   name: linode
 published: 2021-03-26
 image: SecureMySQLserver.png
-authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
 tags: ["saas"]
 ---
 

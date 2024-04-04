@@ -16,7 +16,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

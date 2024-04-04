@@ -10,7 +10,7 @@ modified_by:
 title: "Red Team Adversary Emulation with Caldera"
 external_resources:
 - '[Official Caldera documentation](https://caldera.readthedocs.io/en/latest/index.html)'
-authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

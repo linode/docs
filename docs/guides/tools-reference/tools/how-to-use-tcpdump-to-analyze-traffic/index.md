@@ -14,7 +14,7 @@ external_resources:
 - "[Julia Evans: Let's Learn tcpdump](https://jvns.ca/tcpdump-zine.pdf)"
 - '[Geekflare: How to Capture and Analyze Network Traffic with tcpdump?](https://geekflare.com/tcpdump-examples/)'
 - '[Linux Hint: A Guide to Network Traffic Analysis Utility: TCPDUMP](https://linuxhint.com/tcpdump-beginner-guide/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The *tcpdump* tool provides a powerful command line option for network sniffing. With *tcpdump*, you can effectively capture and analyze network traffic, whether to diagnose network issues or to test network security.

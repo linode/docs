@@ -13,7 +13,7 @@ external_resources:
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/monitoring-servers-with-monit/']
-authors: ["Bill Bardon"]
+contributors: ["Bill Bardon"]
 ---
 
 

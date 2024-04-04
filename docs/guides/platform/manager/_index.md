@@ -6,7 +6,7 @@ aliases: ['/platform/manager/','/manager/']
 published: 2018-07-16
 title: Linode Manager
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

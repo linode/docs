@@ -12,7 +12,7 @@ external_resources:
 - '[Wikipedia article on SOLID Principles](https://en.wikipedia.org/wiki/SOLID)'
 - '[Robert Martin article on OOD Principles](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)'
 - '[Wikipedia page on Inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming))'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Most new software applications are developed using *Object-oriented Programming* (OOP) techniques. This paradigm is very powerful, but can also be confusing, and can lead to complex code that is difficult to debug, change, or extend. To simplify and strengthen the development process, developers can apply the [*SOLID Principles of Programming*](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod). This guide describes the SOLID principles and why programmers should use them and explains each principle in detail using examples.

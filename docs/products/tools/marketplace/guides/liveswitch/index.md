@@ -7,7 +7,7 @@ modified: 2023-04-18
 title: "Deploy LiveSwitch through the Linode Marketplace"
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
-authors: ["Holden Morris"]
+contributors: ["Holden Morris"]
 ---
 
 [LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted WebRTC live video streaming platform. It provides high quality and reliable streaming for both audio and video media. Here's more from the publisher:

@@ -14,7 +14,7 @@ external_resources:
 - '[Play official site](https://www.playframework.com/)'
 - '[Play framework example projects](https://developer.lightbend.com/start/?group=play)'
 
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [Play](https://www.playframework.com/) is a lightweight framework for Java and Scala web applications. Play's conciseness makes it easy to develop modern and efficient web applications.

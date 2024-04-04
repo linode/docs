@@ -10,7 +10,7 @@ title: "How to Install Node.js on Ubuntu 22.04"
 title_meta: "Installing Node.js on Ubuntu 22.04"
 external_resources:
 - '[Installati.one: How To Install node-security on Ubuntu 22.04](https://installati.one/ubuntu/22.04/node-security/)'
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 Developers use [Node.js](https://nodejs.org/) to perform [many tasks](https://nodejs.org/en/about/). It's used to install other applications, run server-side code, and execute JavaScript for user environments such as web applications. This guide shows you how to install Node.js on Ubuntu 22.04.

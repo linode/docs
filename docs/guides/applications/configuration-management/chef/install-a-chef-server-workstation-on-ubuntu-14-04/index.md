@@ -19,7 +19,7 @@ relations:
         key: install-chef-workstation
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
 ---
 
 Chef is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.

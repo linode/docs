@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "What is Static Code Analysis?"
 tags: ["automation"]
-authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
 ---
 
 *Static code analysis*, also called *static program analysis*, looks at an application’s source code and issues warnings about potential bugs. This is different from -- and complementary to -- [dynamic analysis](https://en.wikipedia.org/wiki/Dynamic_program_analysis), which examines the behavior of a program while it is running. Static code analysis can sometimes find bugs that are overlooked in human code reviews and aren’t caught by a compiler’s grammar and error checking.

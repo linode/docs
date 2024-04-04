@@ -13,7 +13,7 @@ external_resources:
 - '[Gatsby: Tutorial - Learn how Gatsby Works](https://www.gatsbyjs.com/docs/tutorial/)'
 - '[Ibaslogic: Gatsby Tutorial from Scratch: The Definitive Guide](https://ibaslogic.com/gatsby-tutorial-from-scratch-for-beginners/)'
 - '[LogRocket: Gatsby - The Ultimate Guide with Examples](https://blog.logrocket.com/gatsby-ultimate-guide-examples/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Gatsby is a static-site generator built on React. It has all the performance benefits of static sites, backed by the feature-rich React library. Gatsby additionally supports an array of plugins and templates to further help you develop static sites.

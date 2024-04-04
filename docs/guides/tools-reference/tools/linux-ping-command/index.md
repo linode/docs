@@ -13,7 +13,7 @@ external_resources:
 - '[phoenixNAP: Linux Ping Command Tutorial with Examples](https://phoenixnap.com/kb/linux-ping-command-examples)'
 - '[Linuxize: Linux Ping Command Tutorial with Examples](https://linuxize.com/post/linux-ping-command/)'
 - '[GeeksforGeeks: PING Command in Linux with Examples](https://www.geeksforgeeks.org/ping-command-in-linux-with-examples/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 One of the most commonly-used commands on Linux is the *ping* command, used most often to test network connections and troubleshoot connectivity issues. It comes by default on most Linux distributions, making it accessible.

@@ -9,6 +9,6 @@ title_short: "Databases"
 weight: 90
 icon: "database"
 aliases: ['/databases/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

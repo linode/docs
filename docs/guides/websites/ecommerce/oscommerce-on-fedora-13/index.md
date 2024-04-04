@@ -15,7 +15,7 @@ relations:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Fedora 13
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 

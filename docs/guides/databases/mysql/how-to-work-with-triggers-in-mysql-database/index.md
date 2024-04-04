@@ -13,7 +13,7 @@ external_resources:
 - '[MySQL Trigger Syntax and Examples](https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/how-to-work-with-triggers-in-mysql-database/']
-authors: ["Francis Ndungu"]
+contributors: ["Francis Ndungu"]
 ---
 
 A *trigger* is a pre-defined SQL command that is automatically executed when specific actions occur in the database. It can be fired either before or after an `INSERT`, `UPDATE`, or `DELETE` event.

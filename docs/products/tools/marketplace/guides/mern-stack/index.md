@@ -13,7 +13,7 @@ external_resources:
 - '[React Getting Started](https://reactjs.org/docs/getting-started.html)'
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
 aliases: ['/platform/marketplace/deploy-mern-with-marketplace-apps/', '/platform/one-click/deploy-mern-with-one-click-apps/', '/guides/deploy-mern-with-one-click-apps/','/guides/deploy-mern-with-marketplace-apps/','/guides/mern-stack-marketplace-app/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 A MERN (MongoDB, Express, React, Node.js) stack is a free and open-source web software bundle used to build modern web applications:

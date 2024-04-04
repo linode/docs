@@ -12,7 +12,7 @@ title: "Installing CouchDB 2.0 on Ubuntu 20.04"
 title_meta: "How to Install CouchDB 2.0 on Ubuntu 20.04"
 external_resources:
 - '[Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.html)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 *CouchDB* is a non-relational, or "NoSQL" database designed with scalability and a more trouble-free experience in mind. CouchDB is programmed in Erlang, which boasts a highly scalable concurrency model and fault tolerance. CouchDB capitalizes on both of these features to ensure production databases run with fewer interruptions, regardless of changes in request volumes and inevitable performance potholes.

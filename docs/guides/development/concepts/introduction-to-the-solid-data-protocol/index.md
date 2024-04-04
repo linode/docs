@@ -12,7 +12,7 @@ title_meta: "Introduction to the Solid Data Protocol"
 external_resources:
 - '[Solid Getting Started Developer Guide](https://solidproject.org/developers/tutorials/getting-started)'
 - '[Solid GitHub page](https://github.com/solid/solid-tutorial-intro)'
-authors: ["Andy Patrizio"]
+contributors: ["Andy Patrizio"]
 ---
 ## The Origins of the Solid Protocol
 

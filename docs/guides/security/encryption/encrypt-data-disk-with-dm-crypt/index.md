@@ -11,7 +11,7 @@ modified_by:
 title: 'How to Encrypt Your Data with dm-crypt'
 aliases: ['/security/encrypt-data-disk-with-dm-crypt/','/security/encryption/encrypt-data-disk-with-dm-crypt/']
 image: How_to_Encrypt_Your_Data_with_dm-crypt_smg.png
-authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
 ---
 
 dm-crypt is a transparent disk encryption subsystem. In this guide you will learn how to encrypt disks, partition, swap and even use files as encrypted, and portable containers for your sensitive data.

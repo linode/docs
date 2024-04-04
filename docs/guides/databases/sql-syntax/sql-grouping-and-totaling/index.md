@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Introduction to SQL Grouping and Totaling"
 title_meta: "SQL Grouping and Totaling"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 One of the most powerful aspects of SQL is the ability to perform data aggregation. Two of the most powerful SQL data aggregation tools are *grouping* and *totaling*. In this guide, you learn SQL data aggregation using grouping and totaling.

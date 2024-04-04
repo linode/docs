@@ -17,7 +17,7 @@ external_resources:
  - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
 tags: ["networking","security"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 **iptables** is an application that allows users to configure specific rules that will be enforced by the kernel's `netfilter` framework. It acts as a packet filter and firewall that examines and directs traffic based on port, protocol and other criteria. This guide will focus on the configuration and application of iptables rulesets and will provide examples of ways they are commonly used.

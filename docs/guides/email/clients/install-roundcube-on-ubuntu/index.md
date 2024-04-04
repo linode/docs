@@ -12,7 +12,7 @@ modified_by:
 title: 'Install Roundcube on Ubuntu 16.04'
 external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
-authors: ["Sean Webber"]
+contributors: ["Sean Webber"]
 ---
 
 ![Install Roundcube on Ubuntu 16.04 LTS](Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")

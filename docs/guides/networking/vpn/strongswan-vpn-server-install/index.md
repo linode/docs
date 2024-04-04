@@ -11,7 +11,7 @@ title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
 title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
 external_resources:
 - '[Introduction to StrongSwan](https://wiki.strongswan.org/projects/strongswan/wiki/IntroductionTostrongSwan)'
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 StrongSwan is an open-source tool that operates as a keying daemon and uses the [Internet Key Exchange protocols](https://en.wikipedia.org/wiki/Internet_Key_Exchange) (IKEv1 and IKEv2) to secure connections between two hosts. In this way, you can use StrongSwan to establish a Virtual Private Network (VPN). VPN connections from a client to the StrongSwan server are encrypted and provide a secure gateway to other resources available on the server and its network. This guide shows you how to install and configure a StrongSwan gateway VPN server on Ubuntu 20.04. You also learn how to set up and connect to a StrongSwan server from an Ubuntu, Windows, and macOS client.

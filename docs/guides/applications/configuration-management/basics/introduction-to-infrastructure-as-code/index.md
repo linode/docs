@@ -11,7 +11,7 @@ title: "An Introduction to Infrastructure as Code"
 title_meta: "Introducing Infrastructure as Code"
 external_resources:
 - '[Infrastructure as Code on Wikipedia](https://en.wikipedia.org/wiki/Infrastructure_as_code)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 *Infrastructure as Code* (IaC) is a technique for deploying and managing infrastructure using software, configuration files, and automated tools. This strategy can be used for devices such as web servers, routers, databases, load balancers, and personal computers, as well as on cloud services. It differs from traditional infrastructure management, which relies upon manual or interactive configuration, one device at a time. IaC encompasses a high-level approach to infrastructure, and does not refer to a specific technique, tool, or protocol. This guide discusses the history, concepts, and rationale behind IaC. It also explores the main implementation decisions and the available software tools.

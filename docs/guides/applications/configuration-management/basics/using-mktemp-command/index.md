@@ -11,7 +11,7 @@ title: "Using mktemp Command to Create Temporary Files and Directories"
 title_meta: "How to Use the mktemp Command to Create Temporary Files and Directories"
 external_resources:
 - '[Setting and Using Linux Environment Variables](/docs/guides/how-to-set-linux-environment-variables/)'
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 The `mktemp` command is used in Linux and BSD derivative operating systems to create temporary files or directories. The temporary filename and directories can be named using a user-defined "template". This utility is installed by default on major Linux distributions.

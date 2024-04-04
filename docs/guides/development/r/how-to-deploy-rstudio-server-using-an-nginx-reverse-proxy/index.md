@@ -13,7 +13,7 @@ audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
 aliases: ['/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/']
-authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
 ---
 
 ![How to Deploy Rstudio using an NGINX reverse proxy](How_to_Deploy_RStudio_Server_Using_an_NGINX_Reverse_Proxy_smg.jpg)

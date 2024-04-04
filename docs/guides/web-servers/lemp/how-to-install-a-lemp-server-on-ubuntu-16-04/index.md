@@ -15,7 +15,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 16.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![LEMP Server on Ubuntu 16.04](lemp-server-on-ubuntu-1604.png "LEMP Server on Ubuntu 16.04")

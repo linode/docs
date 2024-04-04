@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "​​How to Use the lsmod and modinfo Commands in Linux"
 title_meta: "Using The lsmod and modinfo Commands in Linux"
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 The Linux kernel is modular in nature, which means it's possible to add and remove modules as needed. This makes for a lightweight, secure, and lightweight kernel. Its flexibility enables you to add and remove the features you need to make an operating system fit your use case and preferences.

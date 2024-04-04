@@ -8,11 +8,11 @@ modified: 2012-11-29
 modified_by:
   name: Sam Foo
 title: "How to Install Docker Compose"
-authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 published: 2018-01-08
 headless: true
 aliases: ['/applications/containers/install-docker-compose/']
-authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 ---
 
 <!--- Installation instructions for Docker Compose -->

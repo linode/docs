@@ -10,7 +10,7 @@ modified_by:
 published: 2010-05-03
 title: Discussion Forums with Vanilla Forums
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Vanilla is a lightweight and flexible web-based discussion forum engine. Written against the popular LAMP stack, Vanilla combines simplicity and ease of use with a rich and customizable feature set.

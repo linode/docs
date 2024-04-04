@@ -6,6 +6,6 @@ published: 2020-07-15
 title: Laravel Forge
 show_in_lists: true
 aliases: ['/applications/configuration-management/laravel-forge/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

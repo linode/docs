@@ -7,6 +7,6 @@ published: 2020-07-15
 title: Vagrant
 show_in_lists: true
 aliases: ['/applications/configuration-management/vagrant/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

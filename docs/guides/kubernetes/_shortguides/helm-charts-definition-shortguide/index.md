@@ -10,7 +10,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/helm-charts-definition-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ### Helm Charts

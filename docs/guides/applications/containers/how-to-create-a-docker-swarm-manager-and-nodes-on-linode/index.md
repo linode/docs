@@ -14,7 +14,7 @@ external_resources:
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/']
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 ![How to Create a Docker Swarm Manager and Nodes on Linode](create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")

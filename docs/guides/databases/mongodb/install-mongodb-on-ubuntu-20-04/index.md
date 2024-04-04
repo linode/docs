@@ -20,7 +20,7 @@ relations:
         key: how-to-install-mongodb
         keywords:
            - distribution: Ubuntu 20.04
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a *NoSQL* database that provides an alternative to *Relational DataBase Management System* (RDBMS) applications such as MySQL and MariaDB. This guide introduces MongoDB and explains how to install the latest release on Ubuntu 20.04.

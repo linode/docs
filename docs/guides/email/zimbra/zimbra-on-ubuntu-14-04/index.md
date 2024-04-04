@@ -18,7 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
-authors: ["Bill Bardon"]
+contributors: ["Bill Bardon"]
 ---
 
 ![Install Zimbra on Ubuntu](Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)

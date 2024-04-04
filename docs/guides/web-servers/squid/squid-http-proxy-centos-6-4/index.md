@@ -18,7 +18,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: CentOS 6
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![HTTP Proxy Using Squid on CentOS](Creating_an_HTTP_Proxy_Using_Squid_on_CentOS_64_smg.jpg)

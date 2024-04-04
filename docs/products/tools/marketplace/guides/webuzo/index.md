@@ -11,7 +11,7 @@ external_resources:
 - '[Webuzo Documentation](http://www.webuzo.com/docs)'
 - '[Softaculous Support](https://softaculous.deskuss.com)'
 aliases: ['/platform/marketplace/how-to-deploy-webuzo-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webuzo-with-one-click-apps/','/guides/how-to-deploy-webuzo-with-one-click-apps/','/guides/deploy-webuzo-with-marketplace-apps/','/guides/webuzo-marketplace-app/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control panel that allows you to deploy a growing number of applications and scripts on your server with a single click.

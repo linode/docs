@@ -16,7 +16,7 @@ relations:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Debian 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

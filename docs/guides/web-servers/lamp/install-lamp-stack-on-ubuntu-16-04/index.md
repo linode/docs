@@ -22,7 +22,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 16.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps.

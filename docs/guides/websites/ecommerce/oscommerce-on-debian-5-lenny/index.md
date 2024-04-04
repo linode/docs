@@ -15,7 +15,7 @@ relations:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Debian 5
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.

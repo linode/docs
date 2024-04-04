@@ -8,7 +8,7 @@ modified: 2024-01-03
 modified_by:
   name: Linode
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< note >}}

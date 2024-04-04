@@ -19,7 +19,7 @@ tags: ["debian","mariadb","database"]
 _build:
   list: false
 noindex: true
-authors: ["Nashruddin Amin"]
+contributors: ["Nashruddin Amin"]
 ---
 
 ![How to Set Up MariaDB on Debian 9](how-to-set-up-mariadb-on-debian-smg.jpg)

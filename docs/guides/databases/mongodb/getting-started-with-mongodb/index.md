@@ -12,7 +12,7 @@ external_resources:
 - '[MongoDB: Getting Started](https://www.mongodb.com/docs/manual/tutorial/getting-started/)'
 - '[freeCodeCamp: How to Get Started with MongoDB in 10 Minutes](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/)'
 - '[GeeksforGeeks: MongoDB — Getting Started](https://www.geeksforgeeks.org/mongodb-getting-started/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
 

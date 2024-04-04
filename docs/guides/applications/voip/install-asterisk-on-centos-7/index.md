@@ -16,7 +16,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/applications/voip/install-asterisk-on-centos-7/']
-authors: ["Nick Rahl"]
+contributors: ["Nick Rahl"]
 ---
 
 

@@ -19,7 +19,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["ubuntu","php","database","mysql"]
-authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
 ---
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.

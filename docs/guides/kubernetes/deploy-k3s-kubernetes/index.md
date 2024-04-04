@@ -13,7 +13,7 @@ external_resources:
   - '[Rancher Official Docs](https://rancher.com/docs/k3s/latest/en/)'
   - '[Kubernetes Official Docs] (https://kubernetes.io/docs/)'
 aliases: ['/kubernetes/how-to-deploy-k3s-on-linode/','/guides/how-to-deploy-k3s-on-linode/']
-authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
 ---
 
 [K3s](https://k3s.io/) is a lightweight, easy-to-install Kubernetes distribution. Built for the edge, K3s includes an embedded SQLite database as the default datastore and supports external datastore such as PostgreSQL, MySQL, and etcd. K3s includes a command line cluster controller, a local storage provider, a service load balancer, a Helm controller, and the Traefik ingress controller. It also automates and manages complex cluster operations such as distributing certificates. With K3s, you can run a highly available, certified Kubernetes distribution designed for production workloads on resource-light machines like [1GB Linodes](https://www.linode.com/pricing) (Nanodes).

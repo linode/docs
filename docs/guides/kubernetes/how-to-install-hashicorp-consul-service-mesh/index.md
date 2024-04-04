@@ -12,7 +12,7 @@ external_resources:
 - '[Hashicorp Consul Overview](https://www.consul.io/)'
 - '[Consul and Kubernetes Deployment Guide](https://learn.hashicorp.com/tutorials/consul/kubernetes-deployment-guide?in=consul/kubernetes)'
 - '[Helm Chart Configuration](https://www.consul.io/docs/k8s/helm)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [Consul](https://www.consul.io/) is a service mesh offered by HashiCorp, with robust service discovery and diagnostic features for managing your application's services. You can learn more about service meshes in our guide [What Is a Service Mesh?](/docs/guides/what-is-a-service-mesh/). Consul offers a balanced approach between flexibility and usability that makes it a compelling option for managing your service-oriented applications.

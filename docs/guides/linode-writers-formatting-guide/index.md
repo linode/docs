@@ -15,7 +15,7 @@ external_resources:
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png)
@@ -58,7 +58,7 @@ description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
+contributors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
@@ -319,7 +319,7 @@ title: "Install Python with Miniconda"
 description: 'A shortguide that shows how to install Python via Miniconda.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Author's FirstName LastName`"]
+contributors: ["Author's FirstName LastName`"]
 published: 2023-03-07
 modified: 2023-03-07
 modified_by:
@@ -1030,7 +1030,7 @@ The second step is optional. If you do not follow this step, a profile page is s
 1.  On the guides you have written, update the `authors` frontmatter to reference your name. This should be formatted like:
 
     ```file
-    authors: ["FirstName LastName"]
+    contributors: ["FirstName LastName"]
     ```
 
 1.  (Optional) Create a new directory and Markdown file for your author page under the `docs/authors` directory in the docs repository. The new directory should named after you, with uppercase letters replaced by lower case, and spaces replaced by a dash. For example, an author with the name `Nathan Smith` would have a new profile page created at `docs/authors/nathan-smith/_index.md`.

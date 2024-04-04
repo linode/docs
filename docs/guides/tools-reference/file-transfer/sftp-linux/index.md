@@ -12,7 +12,7 @@ title_meta: "How to Transfer Files with SFTP"
 external_resources:
 - '[Wikipedia SFTP Page](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)'
 - '[IETF Draft for SSH File Transfer Protocol](https://datatracker.ietf.org/doc/html/draft-ietf-secsh-filexfer-13)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 *SSH File Transfer Protocol* (SFTP) provides a mechanism for transferring, accessing, and managing files more securely compared to earlier protocols. It is a free and open-source utility that is available on all Linux systems. SFTP extends version 2.0 of the *Secure Shell* (SSH) protocol to provide greater security. This guide provides some background information about SFTP and explains how to use it to transfer files.

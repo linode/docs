@@ -5,7 +5,7 @@ title_meta: "How to Choose the Best System Monitoring System"
 description: 'A wide variety of system monitoring software is available. This guide showcases the top free & open source, paid commercial, and service-based options.'
 keywords: ['monitoring software','system monitoring software','best system monitoring software','system monitoring tools','systems monitoring','it monitoring tools','it monitoring software','best monitoring software','system performance monitoring','software installation monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
 published: 2023-09-26
 modified_by:
   name: Linode

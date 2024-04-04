@@ -12,7 +12,7 @@ title_meta: "An Introduction to OAuth2 Authentication"
 external_resources:
 - '[OAuth2 website](https://oauth.net/2/)'
 - '[OAuth2 libraries](https://oauth.net/code/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [*OAuth 2.0*](https://oauth.net/2/) is an authorization protocol that helps application users securely share access to their accounts. For example, with the help of OAuth 2.0, a social media app user can securely share their email contacts with the app. Providing account details directly to the application is highly problematic from the perspective of web security and privacy. OAuth2 allows users to grant limited access to their accounts with third-party applications without sharing any passwords. This guide discusses how OAuth2 works and compares it to other authorization frameworks.

@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2010-07-17
 title: 'Run a Custom Compiled Kernel with PV-GRUB'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

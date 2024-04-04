@@ -16,7 +16,7 @@ external_resources:
 - '[Linkerd Frequently Asked Questions](https://linkerd.io/2/faq/)'
 - '[Linkerd Slack](https://slack.linkerd.io/#_ga=2.178870372.1577931415.1588870876-1893863222.1588769574)'
 aliases: ['/kubernetes/how-to-deploy-linkerd-with-linode-kubernetes-engine/']
-authors: ["Heather Zoppetti"]
+contributors: ["Heather Zoppetti"]
 ---
 
 [Linkerd 2](https://linkerd.io) is an ultra lightweight service mesh that monitors, reports, and encrypts connections between Kubernetes services without disturbing the existing applications. It does this by employing proxy sidecars along each instance.

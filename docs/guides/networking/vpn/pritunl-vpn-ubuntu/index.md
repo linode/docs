@@ -11,7 +11,7 @@ modified_by:
     name: Linode
 title: 'Pritunl VPN Server and Management Panel on Ubuntu 14.04'
 aliases: ['/networking/vpn/pritunl-vpn-ubuntu/']
-authors: ["Andrew Gottschling"]
+contributors: ["Andrew Gottschling"]
 ---
 
 ![Pritunl VPN Server and Management Panel on Ubuntu](Pritunl_VPN_Server_and_Management_Panel_on_Ubuntu_1404_smg.jpg)

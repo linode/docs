@@ -1,7 +1,7 @@
 ---
 title: Cancel Object Storage
 description: "How to cancel the Linode Object Storage service."
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The following steps outline how to cancel the Object Storage service from the Cloud Manager.

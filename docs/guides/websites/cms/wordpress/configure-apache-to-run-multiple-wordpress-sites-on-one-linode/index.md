@@ -15,7 +15,7 @@ external_resources:
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 - '[Apache virtual host documentation](http://httpd.apache.org/docs/current/vhosts/)'
-authors: ["Jonathan Tsai"]
+contributors: ["Jonathan Tsai"]
 ---
 
 

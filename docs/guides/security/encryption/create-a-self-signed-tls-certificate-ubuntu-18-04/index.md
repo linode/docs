@@ -18,7 +18,7 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?

@@ -22,7 +22,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 7
-authors: ["Joel Kruger"]
+contributors: ["Joel Kruger"]
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP (LAMP). This guide shows you how to install a LAMP stack on a CentOS 7 Linode.

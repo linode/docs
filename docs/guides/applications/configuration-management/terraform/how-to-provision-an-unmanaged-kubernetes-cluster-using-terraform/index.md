@@ -15,7 +15,7 @@ external_resources:
 - '[Kubernetes Terraform installer for Linode Instances](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)'
 aliases: ['/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/']
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Terraform](https://www.terraform.io/), the orchestration tool by [HashiCorp](https://www.hashicorp.com/), can be used to deploy a Kubernetes cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes(K8s) cluster running on Ubuntu, and simplifies many of the steps involved in deploying a Kubernetes cluster with [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/). After creating master and worker nodes, the module connects over SSH to these instances and installs kubeadm, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to the `/opt/bin` directory. It also initializes kubeadm, joins the worker nodes to the master, and configures kubectl to control the cluster. Calico is installed for the container networking interface of the cluster. A kubectl config file is installed to the local environment which connects to the API server of the cluster.

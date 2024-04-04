@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-6/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: DNS, Ingress, and Metrics](cd-presentation-header-06-dns-ingress-metrics.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: DNS, Ingress, and Metrics")

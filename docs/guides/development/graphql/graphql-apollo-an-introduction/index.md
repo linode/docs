@@ -13,7 +13,7 @@ external_resources:
 - '[GraphQL](https://graphql.org/)'
 - '[Apollo](https://www.apollographql.com/)'
 - '[Apollo GraphQL documentation](https://www.apollographql.com/docs/)'
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 GraphQL is a server-side runtime and query language for APIs. Known for its speed, GraphQL is ideal for limited-bandwidth edge devices, and applications that benefit from GraphQL's bandwidth-saving query format. Compared to representational state transfer (REST), GraphQL lets you retrieve all the data you need in a single query. GraphQL began as an internal project at Facebook in 2012. After a public release in 2015, the [GraphQL Foundation](https://graphql.org/foundation/) was created in 2018 to provide a permanent home for GraphQL.

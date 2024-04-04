@@ -17,7 +17,7 @@ relations:
         keywords:
            - distribution: Ubuntu 20.04
 tags: ["ubuntu", "postgresql"]
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 This guide provides an introduction to [*PostgreSQL*](https://www.postgresql.org/), an open source *object-relational database management system* (ORDBMS). PostgreSQL builds upon the original *Structured Query Language* (SQL) specification with many new features, emphasizing compliance. PostgreSQL transactions are atomic, consistent, isolated, and durable (ACID)compliant. PostgreSQL is one of the most popular database systems, and is available for most operating systems, including Ubuntu 20.04.

@@ -22,7 +22,7 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
-authors: ["Si-Qi Liu"]
+contributors: ["Si-Qi Liu"]
 ---
 
 

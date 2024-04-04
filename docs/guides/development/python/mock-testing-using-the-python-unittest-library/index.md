@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "An Introduction to Mock Testing Using the Python Unittest Library"
 title_meta: "Mock Testing Using the Python Unittest Library"
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 The Python unittest library helps you test your application code for errors in an automated way. It’s one of the testing methods discussed in our guide, [An Overview of Python Testing Frameworks for Unit Testing](/docs/guides/python-testing-frameworks-for-software-unit-testing/#unittest-python-testing-framework-example). Mock testing is especially useful while your code is yet to be completed and your development is progressing. It performs continuous testing during development and provides good insights into how an application might ultimately function. This guide shows you how to use the Python unittest library to create mock objects to test your code.

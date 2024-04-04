@@ -14,7 +14,7 @@ relations:
         key: what-is-longview
         keywords:
             - distribution: NGINX
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 In addition to capturing general system metrics, Longview can also be used to capture metrics for NGINX. The NGINX tab appears in the Cloud Manager when Longview detects that you have NGINX installed on your system. It can help you keep track of NGINX workers, requests, system resource consumption, and other information.

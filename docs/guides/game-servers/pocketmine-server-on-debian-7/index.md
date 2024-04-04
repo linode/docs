@@ -14,7 +14,7 @@ published: 2015-04-02
 title: 'PocketMine Server on Debian 7'
 aliases: ['/game-servers/pocketmine-server-on-debian-7/','/applications/game-servers/pocketmine-server-on-debian-7/']
 dedicated_cpu_link: true
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 PocketMine is a third party server for the MineCraft - Pocket Edition game for [Android](https://play.google.com/store/apps/details?id=com.mojang.minecraftpe) and [iOS](https://itunes.apple.com/us/app/minecraft-pocket-edition/id479516143?mt=8). It features plugin support, allowing you to customize your gameplay with others. This guide details installing PocketMine on a Linode running Debian 7.

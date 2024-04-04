@@ -16,7 +16,7 @@ relations:
         key: sinatra-nginx
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

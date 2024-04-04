@@ -12,7 +12,7 @@ title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
 aliases: ['/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/','/applications/configuration-management/laravel-forge/use-laravel-forge-to-automate-web-server-creation-on-a-linode/']
-authors: ["Onwuka Gideon"]
+contributors: ["Onwuka Gideon"]
 ---
 
 ![Laravel Forge Banner](Laravel_Forge.jpg)

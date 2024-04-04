@@ -18,7 +18,7 @@ external_resources:
 - '[Botrix](http://www.famaf.unc.edu.ar/~godin/botrix)'
 dedicated_cpu_link: true
 aliases: ['/game-servers/install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu/']
-authors: ["Davide Beatrici"]
+contributors: ["Davide Beatrici"]
 ---
 
 ![Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu](HL2DM.jpg "Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu")

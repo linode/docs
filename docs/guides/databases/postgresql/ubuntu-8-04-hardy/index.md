@@ -17,7 +17,7 @@ relations:
             - distribution: Ubuntu 8.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-8-04-hardy/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

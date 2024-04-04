@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "What Is a DNS Server?"
 title_meta: "How DNS Works: Step-by-Step Explanation"
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 Without DNS, the internet cannot function. The effects of downed DNS servers around the world lead to outages such that business cannot happen. Websites are unreachable, apps don't work, and data cannot be sent or received.

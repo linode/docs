@@ -9,7 +9,7 @@ modified_by:
 title: "Installing Countly Community Edition on Ubuntu 20.04"
 external_resources:
 - '[Countly: Community Edition](https://count.ly/community-edition)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 tags: ["digital agencies"]
 ---
 

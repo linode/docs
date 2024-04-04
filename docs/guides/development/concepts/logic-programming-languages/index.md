@@ -14,7 +14,7 @@ external_resources:
 - '[Prolog Wikipedia page](https://en.wikipedia.org/wiki/Prolog)'
 - '[Logic Programming Wikipedia page](https://en.wikipedia.org/wiki/Logic_programming)'
 - '[GNU Prolog page](http://www.gprolog.org/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Most computer programming languages fall into one of several *programming paradigms*. A paradigm classifies a language based on its features and how its programs are constructed and used. Logic programming is a paradigm that uses a system of facts and rules. It is commonly used in the artificial intelligence and machine learning domains. This guide explains the logic programming paradigm and compares it to other programming models. It also explains its benefits and use cases, and introduces the most important logic programming languages.

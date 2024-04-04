@@ -12,7 +12,7 @@ published: 2017-09-28
 title: 'Set Up a Zipkin Server'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
-authors: ["Luis Cortés"]
+contributors: ["Luis Cortés"]
 ---
 
 ![Set up a Zipkin Server](zipkin_banner.png)

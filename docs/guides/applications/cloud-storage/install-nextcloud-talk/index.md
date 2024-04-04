@@ -13,7 +13,7 @@ title: 'Introduction to Nextcloud Talk'
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 aliases: ['/applications/cloud-storage/install-nextcloud-talk/']
-authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
 ---
 
 ## What is Nextcloud 14?

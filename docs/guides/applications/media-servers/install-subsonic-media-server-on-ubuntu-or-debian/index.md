@@ -14,7 +14,7 @@ title_meta: "How to Install Subsonic Media Server on Ubuntu or Debian"
 external_resources:
   - '[Subsonic official site](http://www.subsonic.org)'
 dedicated_cpu_link: true
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode](Install_Subsonic_Media_Server_on_Ubuntu_or_Debian_smg.png "Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode")

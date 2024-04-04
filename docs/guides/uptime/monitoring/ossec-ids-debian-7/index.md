@@ -12,7 +12,7 @@ published: 2015-02-05
 title: Install and Configure OSSEC on Debian 7
 external_resources:
  - '[OSSEC](https://ossec.github.io/)'
-authors: ["Sunday Ogwu-Chinuwa"]
+contributors: ["Sunday Ogwu-Chinuwa"]
 ---
 
 ![Install and Configure OSSEC on Debian 7](Install-and-Configure-OSSEC-on-Debian-7-smg.jpg)

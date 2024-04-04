@@ -17,7 +17,7 @@ relations:
         key: install-vnc
         keywords:
             - distribution: CentOS 8
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 *Virtual Network Computing* (VNC) allows you to connect to and control a remote desktop environment. It is common to use VNC to operate your server with a full desktop experience. This guide walks you through the steps to install, configure, and use VNC on CentOS 8.

@@ -11,7 +11,7 @@ title: "Installing Apache Guacamole through Docker"
 title_meta: "How to Install Apache Guacamole through Docker"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Before You Begin

@@ -4,7 +4,7 @@ title: "How to Secure DNS with DNSSEC"
 description: "An explanation of DNSSEC, why it's important, and how to implement it."
 keywords: ['dns','security','dnssec','domain name','poison','cache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
 published: 2023-06-09
 modified_by:
   name: Linode

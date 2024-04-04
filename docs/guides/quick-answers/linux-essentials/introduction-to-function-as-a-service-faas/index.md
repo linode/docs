@@ -8,7 +8,7 @@ image: IntroFunctionAsAService.png
 modified_by:
   name: Linode
 title: "An Introduction to FaaS (Function as a Service)"
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 Developers are used to breaking business logic into standalone functions that an application can call when necessary. Functions as a Service (FaaS) takes advantage of cloud architectures, spinning up functions (and their system resources) only when needed. Using FaaS has several advantages, not the least of which is affordability, but it can also create more complexity.

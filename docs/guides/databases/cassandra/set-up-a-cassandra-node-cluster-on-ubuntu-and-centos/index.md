@@ -15,7 +15,7 @@ external_resources:
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 tags: ["ubuntu","centos","database","nosql"]
 image: cass.png
-authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
 ---
 
 ## What is Apache Cassandra

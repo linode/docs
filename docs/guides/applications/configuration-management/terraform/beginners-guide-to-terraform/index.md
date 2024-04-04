@@ -12,7 +12,7 @@ title: "A Beginner's Guide to Terraform"
 external_resources:
 - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 aliases: ['/applications/configuration-management/terraform/beginners-guide-to-terraform/','/applications/configuration-management/beginners-guide-to-terraform/']
-authors: ["Linode"]
+contributors: ["Linode"]
 tags: ["saas"]
 ---
 

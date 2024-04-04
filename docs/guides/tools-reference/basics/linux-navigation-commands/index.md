@@ -8,7 +8,7 @@ published: 2021-10-08
 modified_by:
   name: Linode
 title: "Navigate the Linux Terminal and File System"
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 For users more familiar with a graphical user interface (GUI), the Linux command line interface can initially appear daunting. It is not always apparent how to perform common file and directory operations. Fortunately, Linux commands are very powerful and flexible, and with some practice, you can accomplish any file management operation you want. This guide explains how to navigate the Linux file structure and how to perform common management operations on files and directories.

@@ -12,7 +12,7 @@ modified_by:
 title: "Best Practices for Configuring WordPress"
 external_resources:
 - '[WordPress Support: First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 WordPress is one of the most popular Content Management Systems (CMSs) around. It is open source and is an outstanding tool for creating your own blog or any content-centered website. This guide walks you through several ways that you can fine-tune your WordPress configuration beyond the basic installation. The steps in this guide should work for most Linux distributions.

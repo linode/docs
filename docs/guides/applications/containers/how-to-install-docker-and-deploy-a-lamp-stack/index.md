@@ -16,7 +16,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
-authors: ["Joe D."]
+contributors: ["Joe D."]
 ---
 
 Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other.

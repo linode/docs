@@ -10,7 +10,7 @@ modified_by:
 published: 2010-11-29
 title: Use killall and kill Commands to Stop Processes on Linux
 tags: ["linux"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 `killall` is a tool for terminating running processes on your system based on name. In contrast, `kill` terminates processes based on Process ID number (PID). `kill` and `killall` can also send specific system signals to processes.

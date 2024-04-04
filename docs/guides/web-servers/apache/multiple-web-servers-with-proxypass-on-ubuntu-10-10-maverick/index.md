@@ -16,7 +16,7 @@ relations:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

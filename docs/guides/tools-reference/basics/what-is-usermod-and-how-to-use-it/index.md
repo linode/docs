@@ -12,7 +12,7 @@ title: "An Overview of the usermod Command and How It's Used"
 title_meta: "What is usermod, and How do I Use It?"
 external_resources:
 - '[usermod - Ubuntu Manpage](https://manpages.ubuntu.com/manpages/xenial/en/man8/usermod.8.html)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 ## What is usermod?
 

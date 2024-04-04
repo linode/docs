@@ -6,7 +6,7 @@ modified_by:
 title: "SRV Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## SRV Record Overview

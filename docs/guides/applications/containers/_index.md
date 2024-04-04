@@ -6,7 +6,7 @@ aliases: ['/applications/containers/','/containers/']
 published: 2014-01-28
 title: Containers
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

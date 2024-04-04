@@ -21,7 +21,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.

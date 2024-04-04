@@ -19,7 +19,7 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

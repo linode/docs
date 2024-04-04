@@ -16,7 +16,7 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Arch Linux
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -7,7 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 Databases power nearly every digital platform on the planet: From websites, to blogs, to social media, to streaming services. Most end-users know databases such as MySQL as a tool to store data. That's a pretty accurate, although fundamental, description of what a database is. However, they are much more than that.

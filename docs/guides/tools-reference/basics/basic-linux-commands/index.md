@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Basic Linux Commands: A Beginner’s Guide "
 title_meta: "A List of the Most Common Linux Commands"
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 Both beginners and advanced users of Linux can benefit from a Linux command cheat sheet. If you need to use a command that isn't part of your daily toolchain, or if you are coming from a non-Linux based operating system, a Linux command reference is what you need. These commands work on most Linux distributions released since 2012.

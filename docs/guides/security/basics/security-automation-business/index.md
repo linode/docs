@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Security Automation for Today’s Modern Business"
 tags: ["security"]
-authors: ["David Strom"]
+contributors: ["David Strom"]
 ---
 
 As developers [release their code more quickly](https://about.gitlab.com/developer-survey/), security threats have become more complex, more difficult to find, and more potent in their potential damage to your networks, your data, and your corporate reputation. Balancing these two megatrends isn’t easy. While developers are making an effort to improve the security of their code earlier in the software life cycle, what one blogger on Twilio [has called “shifting left](https://www.twilio.com/blog/changing-security-tool-requirements-in-the-new-devsecops-world),” there is still plenty of room for improvement.

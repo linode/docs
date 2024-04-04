@@ -14,7 +14,7 @@ external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 tags: ["security","ssl"]
 aliases: ['/security/ssl/install-lets-encrypt-to-create-ssl-certificates/']
-authors: ["Sean Webber"]
+contributors: ["Sean Webber"]
 ---
 
 ![Let's Encrypt](Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)

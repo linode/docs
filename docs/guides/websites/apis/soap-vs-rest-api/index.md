@@ -14,7 +14,7 @@ external_resources:
 - '[WSDL page on Wikipedia](https://en.wikipedia.org/wiki/Web_Services_Description_Language)'
 - '[W3C Specification](https://www.w3.org/TR/soap12/)'
 - '[GitHub REST API](https://docs.github.com/en/rest)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 In web applications, information has to be frequently transferred between a client and an application server. To enforce standards, avoid confusion, and minimize duplication, these interactions typically follow a couple of widely-accepted, standardized approaches. The two most common methods are the *Representational State Transfer* (REST) architecture and *Simple Object Access Protocol* (SOAP). This guide compares REST vs SOAP, providing an overview of each technology and describing its advantages.

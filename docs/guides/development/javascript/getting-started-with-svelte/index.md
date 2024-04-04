@@ -3,7 +3,7 @@ slug: getting-started-with-svelte
 description: "The Svelte framework handles frontend development by shifting work to the build step, giving you small and fast application bundles without a virtual DOM. Learn all about Svelte, what sets it apart, and how to start using it in this guide."
 keywords: ['svelte guide', 'svelte javascript', 'svelte vs react']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
 published: 2022-05-02
 modified_by:
   name: Nathaniel Stickman

@@ -18,7 +18,7 @@ relations:
         keywords:
             - distribution: Alpine
 aliases: ['/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/']
-authors: ["Andrew Leap"]
+contributors: ["Andrew Leap"]
 ---
 
 ![Install Alpine Linux on your Linode](Install_Alpine_Linux_on_your_Linode_smg.png "Install Alpine Linux on your Linode")

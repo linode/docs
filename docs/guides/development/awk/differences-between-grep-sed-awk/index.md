@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Learn to Process Text in Linux using Grep, sed, and AWK"
 title_meta: "Text Processing in Linux: Understanding Grep, sed, and AWK"
-authors: ["Andy Lester"]
+contributors: ["Andy Lester"]
 ---
 
 ## The Differences Between Grep, sed, and AWK

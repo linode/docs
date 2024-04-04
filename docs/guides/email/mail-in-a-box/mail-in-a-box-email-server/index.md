@@ -14,7 +14,7 @@ external_resources:
 - '[Mail-in-a-Box Forums](https://discourse.mailinabox.email/)'
 aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/','/email/mail-in-a-box/how-to-create-an-email-server-with-mail-in-a-box/','/guides/how-to-create-an-email-server-with-mail-in-a-box/']
 image: Mail_in_a_box.jpg
-authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
 ---
 
 When deciding on an email solution, there are a few options to consider. You can utilize an external email service provider, use a transactional or marketing email service, or host your own email server on a Linode Compute Instance. If you wish to host your own email server but want to reduce the complexity of configuring individual components yourself, you can utilize a pre-built solution like [Mail-in-a-Box](https://mailinabox.email/). Mail-in-a-Box is a preconfigured self-hosted email server that includes the following software:

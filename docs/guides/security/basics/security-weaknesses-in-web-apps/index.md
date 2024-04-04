@@ -10,7 +10,7 @@ modified_by:
 title: "Common Security Weaknesses in Web Applications (XSS and SQL Injections)"
 title_meta: "Common Security Weaknesses in Web Applications"
 aliases: ['/guides/understanding-total-app-security/']
-authors: ["David Strom"]
+contributors: ["David Strom"]
 ---
 
 The [Why Security Automation is Needed for Today’s Modern Business](/docs/guides/security-automation-business) guide discusses the need for automating application security. Many developers are [moving “left” towards the earliest possible moment](https://tldrsec.com/blog/score-bot-shift-left-at-scale/) in the application development life cycle to ensure the most secure code. This guide discusses ways to approach coding your app more critically. It also outlines some of the more common security weaknesses and coding errors that could lead to subsequent problems.

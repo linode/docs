@@ -17,7 +17,7 @@ relations:
         key: how-to-install-magento
         keywords:
            - distribution: CentOS 8
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 This guide explains how to install [*Magento*](https://magento.com/) on CentOS 8. Magento is a popular Open source e-commerce platform from Adobe. Magento uses *PHP*, *Elasticsearch*, and either a *MySQL* or *MariaDB* database system, along with a web server such as *Apache*. This guide focuses on how to install the free *Magento Open Source Edition*. Magento also offers *Magento Commerce* (with more extensive out of the box features and unlimited scaling), and the paid *Magento Commerce (On-Premises)* version with even more features and support.

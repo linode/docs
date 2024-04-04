@@ -24,7 +24,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: CentOS 8
-authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

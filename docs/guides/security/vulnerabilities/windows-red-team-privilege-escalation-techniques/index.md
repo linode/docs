@@ -8,7 +8,7 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Windows Red Team Privilege Escalation Techniques"
-authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

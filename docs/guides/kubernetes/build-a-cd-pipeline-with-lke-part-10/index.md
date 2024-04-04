@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-10/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server](cd-presentation-header-10-installing-metrics-server.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server")

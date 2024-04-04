@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Getting Started with TypeScript Functions"
 title_meta: "TypeScript Functions: Getting Started"
-authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
 ---
 
 ## Declaring Functions

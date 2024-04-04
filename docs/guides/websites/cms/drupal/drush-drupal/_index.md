@@ -9,5 +9,5 @@ modified_by:
 published: 2014-11-21
 show_in_lists: true
 title: Drush
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

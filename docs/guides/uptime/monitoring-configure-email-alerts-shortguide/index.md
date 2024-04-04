@@ -11,7 +11,7 @@ keywords: ["monitoring"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/uptime/monitoring-configure-email-alerts-shortguide/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The Cloud Manager allow you to configure *email alerts* that automatically notify you through email if certain performance thresholds are reached, including:

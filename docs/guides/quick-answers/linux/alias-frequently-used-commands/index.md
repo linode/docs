@@ -12,7 +12,7 @@ external_resources:
 - '[alias on man7.org](http://man7.org/linux/man-pages/man1/alias.1p.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/alias-frequently-used-commands/']
-authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
 ---
 
 ## What is an Alias?

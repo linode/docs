@@ -14,7 +14,7 @@ external_resources:
 - '[nftables](https://netfilter.org/projects/nftables/)'
 - '[nftables Address Families](https://wiki.nftables.org/wiki-nftables/index.php/Nftables_families)'
 - '[Configuring Chains in nftables](https://wiki.nftables.org/wiki-nftables/index.php/Configuring_chains)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [*nftables*](https://netfilter.org/projects/nftables/) replaces the successful [iptables](/docs/guides/what-is-iptables/) and its related frameworks built on Netfilter. With nftables come improvements to performance and usability, but also significant changes to syntax and usage. Use this guide to get started learning about what nftables is and how it differs from iptables. Follow along with this guide's example to implement your own rules in nftables and get a hands-on idea of what it can do.

@@ -10,7 +10,7 @@ modified_by:
 published: 2022-10-13
 title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This use case combines Linode's and Akamai's capabilities to create a complete end-to-end solution for a simple microsite. To build this application we'll use Linode origin servers and an Akamai delivery product.

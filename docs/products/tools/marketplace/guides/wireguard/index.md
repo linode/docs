@@ -13,7 +13,7 @@ external_resources:
 - '[WireGuard Conceptual Overview](https://www.wireguard.com/#conceptual-overview)'
 - '[WireGuard man page](https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html)'
 aliases: ['/platform/marketplace/deploy-wireguard-with-marketplace-apps/', '/platform/one-click/deploy-wireguard-with-one-click-apps/','/guides/deploy-wireguard-with-one-click-apps/','/guides/deploy-wireguard-with-marketplace-apps/','/guides/wireguard-marketplace-app/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 <!-- {{< youtube Q1I6-clkQmQ >}} -->
 

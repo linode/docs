@@ -16,7 +16,7 @@ relations:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Debian 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

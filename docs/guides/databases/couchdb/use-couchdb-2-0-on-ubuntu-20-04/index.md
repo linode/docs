@@ -13,7 +13,7 @@ external_resources:
 - '[API guide](https://docs.couchdb.org/en/latest/api/index.html)'
 - '[documentation for the _find API](https://docs.couchdb.org/en/latest/api/database/find.html)'
 - '[Apache CouchDB Documentation](https://docs.couchdb.org/en/stable/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 *CouchDB*, a non-relational or "NoSQL" database, uses HTTP APIs and JSON documents, making its concepts more intuitive to those familiar with web technologies. These also make CouchDB simple to integrate with web and mobile applications.

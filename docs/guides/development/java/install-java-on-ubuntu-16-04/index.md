@@ -22,7 +22,7 @@ relations:
         key: install-java
         keywords:
             - distribution: Ubuntu 16.04
-authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
 ---
 
 ![Java](Install_Oracle_Java.jpg)

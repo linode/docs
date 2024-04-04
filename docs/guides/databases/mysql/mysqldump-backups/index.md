@@ -14,7 +14,7 @@ external_resources:
  - '[MySQL documentation: Database Backup Methods](https://dev.mysql.com/doc/refman/8.0/en/backup-methods.html)'
 tags: ["mariadb","database","mysql"]
 image: mysqldump-backup-title.jpg
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [MySQL](http://www.mysql.com/) (and [MariaDB](https://mariadb.com/)) include the [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` creates a *logical backup* and generates the SQL statements needed to reproduce the original database structure and data.

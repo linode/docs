@@ -10,7 +10,7 @@ modified_by:
 title: Protecting Your Linode with TCP Wrappers
 tags: ["networking","security"]
 aliases: ['/security/firewalls/protecting-your-linode-using-tcp-wrappers/']
-authors: ["Francis McNamee"]
+contributors: ["Francis McNamee"]
 ---
 
 

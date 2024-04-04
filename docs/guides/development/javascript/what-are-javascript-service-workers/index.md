@@ -15,7 +15,7 @@ external_resources:
 - '[Web Push](https://serviceworke.rs/web-push.html)'
 - '[Specifications and Examples](https://github.com/WICG/background-sync)'
 - '[Cache and Update](https://serviceworke.rs/strategy-cache-and-update.html)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Service workers are JavaScript workers that sit between a website or web page and a network. JavaScript service workers give you immense control in developing offline experiences for your web applications, as well as features like push notifications and background sync. This guide introduces the key concepts behind service workers and how they can be used. Then, it provides the steps for setting up your own service worker.

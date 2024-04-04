@@ -7,7 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-07-11
 modified_by:
   name: Linode
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Most applications use databases to store and organize the information they handle. When building a custom application or deploying an existing application, deciding what database software to use is often one of the most important decisions. This guide outlines some of the most popular database software and includes advice on both selecting the database and hosting it on Akamai.

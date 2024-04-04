@@ -10,7 +10,7 @@ modified_by:
 published: 2015-04-03
 title: 'Turbocharge Your WordPress Search Using Solr'
 aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/websites/cms/turbocharge-wordpress-search-with-solr/']
-authors: ["Karthik Shiraly"]
+contributors: ["Karthik Shiraly"]
 ---
 
 

@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2016-11-02
 title: How to Use LUKS for Full Disk Encryption on Linux
-authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
 ---
 
 ![How to Use LUKS for Full Disk Encryption on Linux](how-to-use-luks-for-full-disk-encryption-linux.jpg "How to Use LUKS for Full Disk Encryption on Linux")

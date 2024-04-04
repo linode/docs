@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Kotlin vs. Java: Key Differences"
 title_meta: "Kotlin vs. Java: Understanding their Differences"
-authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
 ---
 
 ## What is Kotlin?

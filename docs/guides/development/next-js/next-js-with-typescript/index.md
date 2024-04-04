@@ -11,7 +11,7 @@ title_meta: "How to Build a Next.js App with Typescript"
 external_resources:
 - '[Next.js: TypeScript](https://nextjs.org/docs/basic-features/typescript)'
 - '[LogRocket: Using Next.js with TypeScript](https://blog.logrocket.com/using-next-js-with-typescript/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 With Next.js, your React applications start with a rich structure and set of features. Built-in routing, server-side rendering, and among numerous other features, Next.js is a powerful framework built upon React to create production-ready applications.

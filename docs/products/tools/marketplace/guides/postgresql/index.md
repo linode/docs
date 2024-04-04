@@ -11,7 +11,7 @@ external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 aliases: ['/platform/marketplace/deploy-postresql-with-marketplace-apps/', '/platform/one-click/deploy-postresql-with-one-click-apps/', '/guides/deploy-postresql-with-one-click-apps/','/guides/deploy-postresql-with-marketplace-apps/','/guides/postgresql-marketplace-app/']
-authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
 ---
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.

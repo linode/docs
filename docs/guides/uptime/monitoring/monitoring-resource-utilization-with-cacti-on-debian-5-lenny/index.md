@@ -16,7 +16,7 @@ relations:
         key: install-cacti-monitoring
         keywords:
             - distribution: Debian 5
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/guides/monitoring-servers-with-munin-on-debian-6-squeeze/) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.

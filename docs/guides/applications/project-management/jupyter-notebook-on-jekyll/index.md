@@ -14,7 +14,7 @@ external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
  - '[MathJax](https://www.mathjax.org/)'
  - '[Jupyter Notebook](https://jupyter.org/)'
-authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
 ---
 
 ![Jupyter and Jekyll](jupyter_jekyll.jpg "Jupyter and Jekyll")

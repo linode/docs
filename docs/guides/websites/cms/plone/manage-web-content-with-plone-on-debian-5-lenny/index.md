@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2010-01-29
 title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers. Zope provides a vibrant architecture for building complex and usable tools in a Python and web-centric manner. Plone and Zope may strike systems administrators as unique in comparison to other content management systems because they generate content by modifying the behavior of the Zope application server while incoming requests are proxied through a front end server like [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx).

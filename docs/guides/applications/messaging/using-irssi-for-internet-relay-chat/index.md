@@ -18,7 +18,7 @@ external_resources:
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
  - '[Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/)'
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![Using Irssi for Internet Relay Chat](Using-Irssi-for-Internet-Relay-Chat-smg.jpg)

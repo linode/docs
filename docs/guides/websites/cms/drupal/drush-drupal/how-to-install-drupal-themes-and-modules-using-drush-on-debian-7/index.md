@@ -14,7 +14,7 @@ deprecated: true
 deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/'
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and a manual backup system, covering some basic administration tasks for Drupal websites.

@@ -6,6 +6,6 @@ published: 2020-09-01
 title: Movable Type
 show_in_lists: true
 aliases: ['/websites/cms/movable-type/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

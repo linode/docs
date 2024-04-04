@@ -15,7 +15,7 @@ external_resources:
 - '[Ansible Galaxy](https://galaxy.ansible.com/linode/cloud)'
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 tags: ["automation", "saas", "gaming"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Ansible is a popular open-source Infrastructure as Code (IaC) tool that can be used to complete common IT tasks like cloud provisioning and configuration management across a wide array of infrastructure components. Commonly seen as a solution to multi-cloud configurations, automation, and continuous delivery issues, Ansible is considered by many to be an industry standard in the modern cloud landscape.

@@ -19,7 +19,7 @@ external_resources:
  - '[Apache Control Interface](http://httpd.apache.org/docs/2.2/programs/apachectl.html)'
  - '[HTTP Command](http://httpd.apache.org/docs/2.2/programs/httpd.html)'
 tags: ["web server","apache"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Apache Configuration Basics](Apache_Configuration_Basics_smg.png)

@@ -15,7 +15,7 @@ external_resources:
 - '[Handlebars language guide](https://handlebarsjs.com/guide/)'
 - '[Rusts learning page](https://www.rust-lang.org/learn)'
 
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Rust is a functional programming language noted for its high performance and capabilities in systems programming. However, with the *Rocket framework*, you can also use Rust for building full-functioning — and efficient — web applications.

@@ -14,7 +14,7 @@ external_resources:
 - '[Docker Compose](https://docs.docker.com/compose/)'
 - '[Quickstart-Compose and WordPress](https://docs.docker.com/compose/wordpress/)'
 
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 YAML anchors, aliases, overrides, and extensions help reduce the repetition of data in your YAML files. These features of YAML are discussed in this guide to take you beyond the basics covered in the [A YAML Syntax Reference](/docs/guides/yaml-reference/) guide.

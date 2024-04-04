@@ -20,7 +20,7 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Debian 9
-authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
 ---
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.

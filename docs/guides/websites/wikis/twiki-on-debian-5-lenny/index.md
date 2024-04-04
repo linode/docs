@@ -16,7 +16,7 @@ relations:
         key: install-twiki
         keywords:
            - distribution: Debian 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

@@ -16,7 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

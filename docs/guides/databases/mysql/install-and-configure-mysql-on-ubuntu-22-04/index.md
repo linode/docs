@@ -13,7 +13,7 @@ external_resources:
 - '[MySQL vs MariaDB](https://blog.devart.com/mysql-vs-mariadb.html)'
 - '[MariaDB vs MySQL compatibility](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
 - '[Introduction to Uncomplicated Firewall](https://www.linux.com/training-tutorials/introduction-uncomplicated-firewall-ufw/)'
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 ## How to Install and Configure MySQL on Ubuntu 22.04

@@ -11,7 +11,7 @@ title: "Install VSFTPD on Ubuntu 20.04"
 title_meta: "VSFTPD on Ubuntu 20.04: Installation and Configuration"
 external_resources:
 - '[VSFTPD.CONF man page](http://vsftpd.beasts.org/vsftpd_conf.html)'
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 ## What is VSFTPD?

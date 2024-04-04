@@ -16,7 +16,7 @@ relations:
         key: cherokee-php-fastcgi
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

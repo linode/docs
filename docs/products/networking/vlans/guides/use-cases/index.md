@@ -8,7 +8,7 @@ modified_by:
 tags: ["security", "networking", "linode platform"]
 title: "Common Use Cases for Linode's VLAN Service"
 aliases: ['/guides/common-linode-vlan-use-cases/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## Use Cases

@@ -12,7 +12,7 @@ title_meta: "Using If Statements and Chained Conditionals in Python 3"
 external_resources:
 - '[Python control flow documentation](https://docs.python.org/3/tutorial/controlflow.html)'
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [Python](https://www.python.org/) programs must be able to run different branches of code in different situations. This is usually accomplished through the use of *conditional statements*, which determine the *control flow* through a program. Python's `if` statement is used to decide whether or not some code should run. This guide explains the `if` statement and other Python conditionals and demonstrates how to use them.

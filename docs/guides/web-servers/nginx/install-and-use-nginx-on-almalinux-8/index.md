@@ -17,7 +17,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: AlmaLinux 8
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was created to be a high-performing and scalable alternative to other popular web servers, like Apache. Its event-driven architecture continues to set it apart as one of the fastest and lightest web servers available. This guide shows you how to install NGINX on your AlmaLinux 8 server and how to get started using it.

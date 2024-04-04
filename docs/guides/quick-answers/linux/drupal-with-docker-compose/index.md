@@ -13,7 +13,7 @@ external_resources:
   - '[Official Drupal Image on Docker Hub](https://hub.docker.com/_/drupal/)'
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
 aliases: ['/quick-answers/linux/drupal-with-docker-compose/']
-authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
 ---
 
 ## What Are Docker and Docker Compose?

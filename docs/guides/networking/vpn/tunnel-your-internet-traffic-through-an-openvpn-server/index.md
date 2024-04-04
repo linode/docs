@@ -12,7 +12,7 @@ title: 'Tunnel Your Internet Traffic Through an OpenVPN Server'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 aliases: ['/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 This guide will show you how to configure an OpenVPN server to forward incoming traffic to the internet, then route the responses back to the client.

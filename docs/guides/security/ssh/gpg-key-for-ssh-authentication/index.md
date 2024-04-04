@@ -13,7 +13,7 @@ modified: 2016-10-03
 modified_by:
   name: Alex Fornuto
 published: 2016-10-03
-authors: ["Huw Evans"]
+contributors: ["Huw Evans"]
 ---
 
 ![GPG key for SSH Authentication](How_to_use_a_GPG_key_smg.jpg)

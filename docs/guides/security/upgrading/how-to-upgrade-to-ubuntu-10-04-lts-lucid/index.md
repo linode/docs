@@ -16,7 +16,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

@@ -9,7 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "List Tables in MySQL and MariaDB"
 title_meta: "How to List Tables in MySQL and MariaDB"
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 This guide provides the commands you can use to list tables in MySQL and MariaDB. It also includes instructions on how to list tables using MySQL Workbench.

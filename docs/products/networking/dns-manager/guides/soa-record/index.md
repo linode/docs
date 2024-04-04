@@ -6,7 +6,7 @@ modified_by:
 title: "SOA Record"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## SOA Overview

@@ -16,7 +16,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

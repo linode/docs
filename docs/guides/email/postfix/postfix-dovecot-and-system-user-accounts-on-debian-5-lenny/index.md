@@ -16,7 +16,7 @@ relations:
         key: postfix-dovecot-user-accounts
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

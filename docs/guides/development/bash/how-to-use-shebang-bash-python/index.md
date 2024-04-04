@@ -10,7 +10,7 @@ title: "Use the Shebang in Bash and Python"
 title_meta: "How to Use the Shebang in Bash and Python"
 external_resources:
 - '[Wikipedia Shebang page](https://en.wikipedia.org/wiki/Shebang_(Unix))'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 A [*Shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) directive, which always begins with the sequence `#!`, can sometimes be found on the first line of a Bash or Python script. In a Linux environment, the Shebang functions as an interpreter directive. This guide explains what a Shebang is and what advantages it provides. It also describes how to use a Shebang inside a Bash or Python script.

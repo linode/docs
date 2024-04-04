@@ -16,7 +16,7 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Debian 6 (Squeeze) Linode.

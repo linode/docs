@@ -21,7 +21,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: CentOS 6
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.

@@ -21,7 +21,7 @@ external_resources:
 - '[NumPy](https://numpy.org/)'
 - '[SciPy](https://scipy.org/)'
 - '[Python licensing site](https://docs.python.org/3/license.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [Python](https://www.python.org/) is currently one of the world's most popular programming languages. It achieved this position due to its powerful features, flexibility, and ease of use. This guide explains the pros and cons of Python and compares it to other languages. It also discusses the situations where Python is one of the best alternatives.

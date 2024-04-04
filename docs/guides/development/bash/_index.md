@@ -6,5 +6,5 @@ title: Bash
 published: 2019-10-09
 show_in_lists: true
 aliases: ['/development/bash/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

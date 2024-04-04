@@ -7,7 +7,7 @@ image: L_ChangeYourEmail.png
 title: Change Your Email Address
 title_meta: Change Your Email Address on a Linode Account
 aliases: ['/quick-answers/linode-platform/how-to-change-your-email/','/guides/how-to-change-your-email/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It's especially important to keep your email address current.

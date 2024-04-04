@@ -16,7 +16,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/how-to-install-drupal-with-docker-compose-ubuntu-18-04/','/websites/cms/drupal/docker-drupal/how-to-install-drupal-with-docker-compose-ubuntu-18-04/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What Are Docker and Docker Compose?

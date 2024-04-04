@@ -14,7 +14,7 @@ external_resources:
  - '[GNU tar](http://www.gnu.org/software/tar/)'
  - '[GNU gzip](http://www.gzip.org/)'
 tags: ["linux"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 `tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux systems. Together, these utilities take a large number of files, save them together in an archive (i.e. as a single file), and compress the archive to save space. However, tar and gzip provide a multitude of features and options that can lead to hard-to-read commands and make even the simplest operations confusing.

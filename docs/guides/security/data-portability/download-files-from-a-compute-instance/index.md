@@ -10,7 +10,7 @@ published: 2018-09-25
 title: Download Files from Your Compute Instance
 tags: ["security"]
 aliases: ['/security/data-portability/download-files-from-your-linode/','/guides/download-files-from-your-linode/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Periodically, you may wish to download files from a Compute Instance to retain as a local backup or work on them locally. This guide covers the techniques and tools you can use to download your remote files to your local machine.

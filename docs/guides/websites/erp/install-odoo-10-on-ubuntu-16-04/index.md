@@ -13,7 +13,7 @@ aliases: ['/websites/cms/install-odoo-10-on-ubuntu-16-04/','/websites/erp/instal
 external_resources:
  - '[Odoo User Documentation](https://www.odoo.com/documentation/user/10.0/)'
  - '[Odoo Developer Documentation](https://www.odoo.com/documentation/10.0)'
-authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
 ---
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including customer relationship management (CRM), sales pipeline, project management, manufacturing, invoicing, accounting, eCommerce, and inventory tools, just to name a few. There are thirty-four main applications created by the Odoo team and more than 5,500 developed by community members, covering a wide range of business needs.

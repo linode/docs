@@ -26,7 +26,7 @@ external_resources:
 - '[VideoLAN support page](https://www.videolan.org/support/)'
 - '[list of all of its ingest points](https://stream.twitch.tv/ingests/)'
 - '[NGINX GitHub page](https://github.com/arut/nginx-rtmp-module)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Live streaming has become an important way for creators, gamers, instructors, and media personalities to reach new audiences. Many live streamers are using sites such as Twitch and Facebook Live to stream. However, a *Real-Time Messaging Protocol* (RTMP) Streaming Server is another popular way to distribute live streams. RTMP allows you to send your stream to a central server, which can store it or retransmit it for audience playback.

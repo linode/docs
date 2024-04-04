@@ -6,6 +6,6 @@ aliases: ['/websites/lighttpd/','/web-servers/lighttpd/']
 published: 2009-07-16
 title: Hosting Websites with Lighttpd
 show_in_lists: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

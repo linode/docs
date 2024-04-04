@@ -17,7 +17,7 @@ external_resources:
 - '[NGINX Website](https://www.nginx.com/)'
 - '[NGINX Docs page](https://docs.nginx.com/)'
 - '[RHEL documentation to enable IPv6](https://access.redhat.com/solutions/347693)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 The [Internet Protocol version 6 (IPv6)](https://www.rfc-editor.org/rfc/rfc8200) provides some performance advantages over IPv4 as well as additional features. On both the Apache and NGINX web servers, IPv6 is enabled by default. However, many users do not take full advantage of all IPv6 capabilities. This guide explains how to configure and use IPv6 on both the Apache and NGINX web server. It also introduces some useful IPv6 tools.

@@ -12,7 +12,7 @@ published: 2014-02-05
 title: Pflogsumm for Postfix Monitoring on CentOS 6
 external_resources:
  - '[Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html)'
-authors: ["Robert Accettura"]
+contributors: ["Robert Accettura"]
 ---
 
 ![banner_image](Pflogsumm_or_Postfix_Monitoring_on_CentOS_smg.jpg)

@@ -12,7 +12,7 @@ external_resources:
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
 - '[Removing snapshots according to a policy](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy)'
-authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
 ---
 
 ## Introduction

@@ -7,7 +7,7 @@ modified_by:
   name: Linode
 keywords: ['docker run command', 'dockerized application', 'docker containerize command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [Dockerized](https://github.com/datastack-net/dockerized) is a utility that runs common commands, interpreters, and other applications within a Docker container. This saves you from manually installing each command (and its dependencies) to your local system. Using Dockerized allows you to try out a new tool, leverage a tool for a one-off task, or ensure your team is using the same version of a tool.

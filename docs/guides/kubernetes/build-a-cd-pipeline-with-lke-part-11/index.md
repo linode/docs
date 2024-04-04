@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-11/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Prometheus and Grafana](cd-presentation-header-11-prometheus-and-grafana.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Prometheus and Grafana")

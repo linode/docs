@@ -16,7 +16,7 @@ relations:
             - distribution: Debian/Ubuntu
 tags: ["database"]
 aliases: ['/databases/elasticsearch/install_elasticsearch_debian_ubuntu/']
-authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 ---
 
 1.  Install the official Elastic APT package signing key:

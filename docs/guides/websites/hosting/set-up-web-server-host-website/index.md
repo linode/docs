@@ -11,7 +11,7 @@ published: 2012-03-13
 title: "Set up a Web Server and Host a Website on Linode"
 aliases: ['/websites/hosting/set-up-web-server-host-website/','/websites/set-up-web-server-host-website/']
 image: Hosting-a-Website-smg.jpg
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Hosting a Website](Hosting-a-Website-smg.jpg "Hosting a Website")

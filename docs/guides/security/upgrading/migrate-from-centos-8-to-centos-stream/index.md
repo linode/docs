@@ -14,7 +14,7 @@ external_resources:
 - '[CentOS Stream Main Page](https://www.centos.org/centos-stream/)'
 - '[The CentOS Documentation Page](https://docs.centos.org/en-US/docs/)'
 - '[CentOS Project Contribution Page](https://wiki.centos.org/Contribute)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [*CentOS Stream*](https://www.centos.org/centos-stream/) is a free, open-source Linux distribution that replaces CentOS version 8. CentOS Stream serves a different purpose than previous CentOS releases because it is now a development build for *Red Hat Enterprise Linux* (RHEL). It allows developers early access to new features and gives them a chance to influence the CentOS software development process. This guide describes CentOS Stream, its benefits and drawbacks, and explains how to migrate from CentOS 8 to CentOS Stream.

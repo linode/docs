@@ -10,12 +10,12 @@ title: 'Learn the AWK Programming Language'
 external_resources:
   - '[GNU awk](https://www.gnu.org/software/gawk/)'
 aliases: ['/development/awk/introduction-to-awk/','/development/introduction-to-awk/']
-authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## What is AWK?
 
-AWK is a [*Turing-complete*](https://en.wikipedia.org/wiki/Turing_completeness) *pattern matching* programming language. The name AWK is derived from the family names of its three authors: [Alfred Aho](https://en.wikipedia.org/wiki/Alfred_Aho), [Peter Weinberger](https://en.wikipedia.org/wiki/Peter_J._Weinberger) and [Brian Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan). AWK is often associated with [sed](https://www.gnu.org/software/sed/manual/sed.html), which is a UNIX command line tool. However, sed is more appropriate for one line UNIX shell commands and is typically used only for text processing.
+AWK is a [*Turing-complete*](https://en.wikipedia.org/wiki/Turing_completeness) *pattern matching* programming language. The name AWK is derived from the family names of its three contributors: [Alfred Aho](https://en.wikipedia.org/wiki/Alfred_Aho), [Peter Weinberger](https://en.wikipedia.org/wiki/Peter_J._Weinberger) and [Brian Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan). AWK is often associated with [sed](https://www.gnu.org/software/sed/manual/sed.html), which is a UNIX command line tool. However, sed is more appropriate for one line UNIX shell commands and is typically used only for text processing.
 
 AWK is great for data reporting, analysis, and extraction and supports arrays, associative arrays, functions, variables, loops, and regular expressions. Current Linux systems use [improved versions](https://en.wikipedia.org/wiki/AWK#Versions_and_implementations) of the original AWK utility. The main enhancement to these AWK variants is support for a larger set of built-in functions and variables. The most widely used variants of AWK are: [Gawk](https://www.gnu.org/software/gawk/), [Mawk](https://invisible-island.net/mawk/), and [Nawk](https://linux.die.net/man/1/nawk).
 

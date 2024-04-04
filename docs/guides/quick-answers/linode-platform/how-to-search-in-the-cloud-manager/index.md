@@ -11,7 +11,7 @@ title: "Searching in the Cloud Manager"
 title_meta: "How to Search in the Cloud Manager"
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The Linode Cloud Manager includes a search tool at the top of the dashboard which can be used to search for a large number of active services on your account, including Linodes, Volumes, NodeBalancers, Domains, Tags, and more.

@@ -14,7 +14,7 @@ external_resources:
  - '[nano help](https://www.nano-editor.org/dist/v2.8/nano.html)'
  - '[Emacs, nano, or Vim: Choose your Terminal-Based Test Editor Wisely](https://medium.com/linode-cube/emacs-nano-or-vim-choose-your-terminal-based-text-editor-wisely-8f3826c92a68)'
 tags: ["linux"]
-authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
 ---
 
 GNU nano, or more commonly, nano is the basic, built-in editor for most Linux distributions. In this QuickAnswer, we'll cover some of the essentials to help you get started.

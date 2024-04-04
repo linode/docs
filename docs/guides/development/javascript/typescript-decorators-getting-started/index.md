@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 title: "Getting Started with TypeScript Decorators"
 title_meta: "TypeScript Decorators: Getting Started"
-authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
 ---
 
 [Decorators in TypeScript](https://www.typescriptlang.org/docs/handbook/decorators.html) provide a way to add both annotations and a meta-programming syntax for class declarations and members. They can annotate or modify classes or class members. Decorators can be chained or composed; that is, multiple decorators can be applied to a single declaration.

@@ -13,7 +13,7 @@ external_resources:
 - '[Pulumi API reference](https://www.pulumi.com/docs/languages-sdks/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
 aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is Pulumi?

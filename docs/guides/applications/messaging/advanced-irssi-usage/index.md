@@ -17,7 +17,7 @@ external_resources:
  - '[The Open and Free Technology Community](https://www.oftc.net/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Irssi is a popular IRC client with a flexible plugin architecture and an embedded Perl interpreter. It can be customized to greatly improve the off-the-shelf experience. This guide will demonstrate some of the most useful features, plugins, and customizations to help you get the most out of Irssi.

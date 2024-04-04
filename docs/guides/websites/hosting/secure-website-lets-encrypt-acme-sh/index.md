@@ -13,7 +13,7 @@ external_resources:
 - '[acme.sh](https://acme.sh/)'
 - '[Use Linode domain API (acme.sh wiki)](https://github.com/acmesh-official/acme.sh/wiki/dnsapi#14-use-linode-domain-api)'
 - '[Let''s Encrypt](https://letsencrypt.org/)'
-authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
 ---
 [*acme.sh*](https://acme.sh/) is a client application for ACME-compatible services, like those used by [Let's Encrypt](https://letsencrypt.org/). It is an alternative to the popular [Certbot](/docs/guides/quick-answers/websites/) application with two big benefits:
 

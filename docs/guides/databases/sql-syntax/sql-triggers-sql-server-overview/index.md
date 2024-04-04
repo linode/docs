@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 title_meta: An Introduction to SQL Triggers in SQL Server
 title: "SQL Triggers in SQL Server: An Overview"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 ## What are Triggers?

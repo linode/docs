@@ -6,7 +6,7 @@ published: 2023-01-23
 title: "Deploy Haltdos Community WAF through the Linode Marketplace"
 external_resources:
 - '[Haltdos Community WAF](https://docs.haltdos.com/community)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Haltdos](https://www.haltdos.com/) Community Edition is a free user-friendly web application. It provides protection from OWASP 10 threats, XSS, SQL, and other web-based threats.

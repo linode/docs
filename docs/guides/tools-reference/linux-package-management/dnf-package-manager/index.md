@@ -15,7 +15,7 @@ external_resources:
 - '[Fedora Wiki: DNF](https://fedoraproject.org/wiki/DNF)'
 - '[DNF Automatic](https://dnf.readthedocs.io/en/latest/automatic.html)'
 - '[DNF Command Reference](https://dnf.readthedocs.io/en/latest/command_ref.html)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 *Dandified YUM*, or simply **DNF**, is the successor to the popular *Yellowdog Updater, Modified* package manager, more commonly known as **YUM**. Both DNF and YUM provide a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API.

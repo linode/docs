@@ -13,7 +13,7 @@ external_resources:
 - '[ack!: Documentation](https://beyondgrep.com/documentation/)'
 - '[DigitalOcean: How To Install and Use Ack, a Grep Replacement for Developers, on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-ack-a-grep-replacement-for-developers-on-ubuntu-14-04)'
 - '[Linux Shell Tips: How to Install and Use Ack Command in Linux with Examples](https://www.linuxshelltips.com/ack-command-in-linux/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 The Linux search tool *grep* has plenty to offer, but, if you are working with source code, there is a more efficient alternative. That alternative is *ack*, a faster tool dedicated specifically to searching source code.

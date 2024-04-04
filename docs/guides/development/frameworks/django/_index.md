@@ -6,6 +6,6 @@ published: 2020-08-31
 title: Django
 show_in_lists: true
 aliases: ['/development/frameworks/django/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 

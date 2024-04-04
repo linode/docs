@@ -6,5 +6,5 @@ published: 2021-05-28
 title: Learning Management Systems
 show_in_lists: true
 aliases: ['/websites/lms/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

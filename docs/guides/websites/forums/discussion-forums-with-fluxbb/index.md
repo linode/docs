@@ -10,7 +10,7 @@ modified_by:
 published: 2010-05-03
 title: Discussion Forums with FluxBB
 deprecated: true
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 FluxBB is a web application that powers discussion forums. It strives to be faster and more lightweight than other contenders in this space, and its developers strive for maximum stability and security. Thus, FluxBB is a viable option for those who need a web based discussion forum and require simplicity and stability without an expansive feature set.

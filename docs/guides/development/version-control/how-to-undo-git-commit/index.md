@@ -10,7 +10,7 @@ title: "Undo a Git Commit"
 title_meta: "Undo a Git Commit: A Step-by-Step Guide"
 external_resources:
 - '[Git documentation](https://git-scm.com/doc)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 [Git is one of the most common and versatile *version control systems* (VCS)](/docs/guides/svn-vs-git/#what-is-the-git-version-control-system), but it is not always simple and easy to use. You can run into trouble when you commit an undesirable change to a repository. There are several different strategies you can follow to restore your repository. This guide discusses how to undo a git commit and explains the advantages and any drawbacks to each approach.

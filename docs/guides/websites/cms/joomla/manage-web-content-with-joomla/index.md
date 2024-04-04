@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2010-01-22
 title: 'Manage Web Content with Joomla!'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](/docs/guides/managing-web-content-with-drupal-7/) and [WordPress](/docs/guides/how-to-install-and-configure-wordpress/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](/docs/development/ror/) and [Django](/docs/development/frameworks/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.

@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2017-06-08
 title: Use CoreOS Container Linux on Linode
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 CoreOS Container Linux is a container-focused distribution, designed for clustered deployments, that provides automation, security, and scalability for applications. The operating system is heavily streamlined and considered minimal compared to traditional distributions, like Debian or Ubuntu. Rather than being part of the host operating system, CoreOS's runtime or development environment takes place inside a Linux container.

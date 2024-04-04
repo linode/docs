@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Pros and Cons of Configuring a Load Balancer for Sticky Sessions"
 title_meta: "Pros and Cons of Using Sticky Sessions on a Load Balancer"
-authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
 ---
 
 ## What is Load Balancing and Why is it Necessary?

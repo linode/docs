@@ -15,7 +15,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-on-arch/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

@@ -13,7 +13,7 @@ external_resources:
 - '[Redis: SCAN](https://redis.io/commands/scan/)'
 - '[Linux Hint: How to Use Redis Scan](https://linuxhint.com/redis-scan/)'
 - '[ObjectRocket: SCAN Redis Command Examples](https://kb.objectrocket.com/redis/scan-redis-command-examples-509)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Redis is a NoSQL database, exceptional for storing data structures in memory. Between that and its low-latency performance, Redis has become a go-to tool for web applications needing efficient caching and messaging storage.

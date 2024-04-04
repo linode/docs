@@ -11,7 +11,7 @@ title_meta: "Angular Animations: Get Started"
 external_resources:
 - '[Introduction to Angular Animations](https://angular.io/guide/animations)'
 - '[Angular Components Overview](https://angular.io/guide/component-overview)'
-authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 ---
 
 Web animations add dynamic graphics and effects to a web page. Movement on a web page communicates information to users and adds visual interest. Animation on a web page is typically achieved by changing the state of an HTML element over time. For example, an HTML element's color or position can change as a result of user interaction on a web page. Most popular web frameworks offer animation support that simplifies animating elements on your web pages or applications. This guide shows you how to get started creating animations using the Angular web framework.

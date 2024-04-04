@@ -8,7 +8,7 @@ published: 2021-10-08
 modified_by:
   name: Linode
 title: "Get Started with TypeScript Modules"
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 TypeScript supports modules and namespaces that can be used to organize your codebase. Modules are currently the favored method for organizing your code when working with TypeScript. This guide shows you how to create TypeScript modules and provides a comparison between modules and namespaces.

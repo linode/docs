@@ -13,7 +13,7 @@ title_meta: "How to Write to a File From the Shell"
 external_resources:
 - '[Here Documents](https://tldp.org/LDP/abs/html/here-docs.html)'
 - '[Sed](https://www.gnu.org/software/sed/manual/sed.html)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 When working from the command line, it can be convenient to write to files without the need to open a text editor like [Nano](/docs/guides/use-nano-to-edit-files-in-linux/), or Vim. There are some handy Linux operators and commands to make writing to files simple to accomplish. This guide shows you how to use key operators and commands to write to files from the shell. These commands work with [Bash](/docs/guides/intro-bash-shell-scripting/#bash-basics), [Zsh](https://www.zsh.org/) shells, and several other Unix shells.

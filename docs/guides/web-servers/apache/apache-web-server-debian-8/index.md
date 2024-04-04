@@ -18,7 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Debian 8
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![How to Install and Configure Apache Web Server on Debian 8](Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)

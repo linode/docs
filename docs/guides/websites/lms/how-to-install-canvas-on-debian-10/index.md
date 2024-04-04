@@ -27,7 +27,7 @@ relations:
         key: how-to-install-canvas
         keywords:
             - distribution: Debian 10
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a popular Learning Management System (LMS) noteworthy for its modern design and ease of use. A Canvas website gives you a comprehensive portal for education and training courses. It can manage both in-person and online courses, as well as hybrid courses that mix the two. Moreover, Canvas is [open source](https://github.com/instructure/canvas-lms). You can freely download and install an instance on your server.

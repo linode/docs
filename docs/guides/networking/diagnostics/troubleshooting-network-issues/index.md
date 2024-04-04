@@ -7,7 +7,7 @@ published: 2022-09-09
 modified_by:
   name: Linode
 title: "Troubleshooting Network Issues - IPv4 and IPv6"
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 ---
 
 A successful internet circuit from host-to-host usually involves many components: from an application in one host, to an application in the desired target host. This tutorial covers troubleshooting connectivity between apps, and their hosts, whether over IPv4, IPv6, or an IPv6 tunnel over IPv4.

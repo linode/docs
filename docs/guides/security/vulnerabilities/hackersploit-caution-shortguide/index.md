@@ -9,7 +9,7 @@ modified_by:
 title: "HackerSploit Red Team Series Caution Note"
 headless: true
 show_on_rss_feed: false
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 {{< note type="alert" respectIndent=false >}}

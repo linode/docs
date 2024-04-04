@@ -12,7 +12,7 @@ modified_by:
 published: 2016-05-11
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 tags: ["drupal","cms"]
-authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.

@@ -13,7 +13,7 @@ external_resources:
  - '[SaltStack Documentation](https://docs.saltproject.io/)'
 aliases: ['/applications/configuration-management/beginners-guide-to-salt/','/applications/configuration-management/salt/beginners-guide-to-salt/']
 tags: ["automation","salt"]
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 [Salt](https://www.saltproject.io) (also referred to as *SaltStack*) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt *master* server manages one or more Salt *minion* servers. Two of Salt's primary jobs are:

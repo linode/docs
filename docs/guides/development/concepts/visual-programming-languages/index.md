@@ -12,7 +12,7 @@ external_resources:
 - '[GeeksForGeeks.org: Introduction to Visual Programming Language](https://www.geeksforgeeks.org/introduction-to-visual-programming-language/)'
 - '[PostScapes.com: Visual Programming Guide](https://www.postscapes.com/iot-visual-programming-tools/)'
 - '[OutSystems.com: What Is Visual Programming?](https://www.outsystems.com/glossary/what-is-visual-programming/)'
-authors: ["John Mueller"]
+contributors: ["John Mueller"]
 ---
 
 Most programming languages today are text-based, which means you type code that tells the computer what you want done. There are many paradigms for such code, with procedural, object-oriented, imperative, functional, and declarative being the most common. These paradigms all have one thing in common: the coder must think in an abstract way to turn human concepts into something the computer understands.

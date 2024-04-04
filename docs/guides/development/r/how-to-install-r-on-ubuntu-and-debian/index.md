@@ -13,7 +13,7 @@ audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
 aliases: ['/development/r/how-to-install-r-on-ubuntu-and-debian/']
-authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
 ---
 
 ![How to install R on Ubuntu and Debian](install-r-ubuntu-debian-title.jpg "How to install R on Ubuntu and Debian title graphic")

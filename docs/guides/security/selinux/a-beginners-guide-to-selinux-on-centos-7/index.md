@@ -20,7 +20,7 @@ relations:
         key: get-started-selinux
         keywords:
             - distribution: CentOS 7
-authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
 ---
 
 ![Getting Started with SELinux](selinux_centos.jpg)

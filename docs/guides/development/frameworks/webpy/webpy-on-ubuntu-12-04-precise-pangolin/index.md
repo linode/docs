@@ -16,7 +16,7 @@ relations:
         key: webpy
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit", web.py is a powerful option for developing systems for the web.

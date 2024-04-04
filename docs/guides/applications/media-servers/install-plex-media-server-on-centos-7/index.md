@@ -18,7 +18,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/applications/media-servers/install-plex-media-server-on-centos-7/']
-authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. Basic Plex features are [free](https://support.plex.tv/articles/202526943-plex-free-vs-paid/), while the paid Plex Pass adds additional features.

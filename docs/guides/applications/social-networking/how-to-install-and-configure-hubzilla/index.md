@@ -14,7 +14,7 @@ external_resources:
 - '[Hubzilla documentation](https://hubzilla.org/help/en/about/about)'
 - '[Hubzilla code base](https://framagit.org/hubzilla/core)'
 - '[Hubzilla user guide](https://hubzilla.org/help/en/member/member_guide#Overview)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Recent developments have led to a renewed interest in federated web applications. Much of the interest centers around the Twitter alternative *Mastodon*. However, there are many other federated applications worthy of attention. For example, the federated [*Hubzilla*](https://hubzilla.org//page/hubzilla/hubzilla-project) application allows users to create interconnected websites and channels. This guide provides an introduction to the Hubzilla application and explains how to install and configure it.

@@ -10,7 +10,7 @@ title: "Configure rDNS (Reverse DNS) on a Compute Instance"
 title_meta: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
 image: configure-your-linode-reverse-dns.jpg
 aliases: ['/networking/configure-your-linode-for-reverse-dns/','/networking/dns/setting-reverse-dns/','/networking/dns/configure-your-linode-for-reverse-dns/','/networking/setting-up-reverse-dns-lookup/','/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/','/guides/configure-your-linode-for-reverse-dns/','/guides/configure-rdns/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The ability to point a domain name to an IP address is referred to as *forward* DNS resolution. *Reverse* DNS (rDNS) lookup is the inverse process, where an IP address resolves to a domain name. Reverse DNS uses a *pointer record* (*PTR*) to match an IP address with a domain or subdomain. PTR records are generally set with a hosting provider. As such, rDNS can be set directly on Linode. Official Internet documents state that "every Internet-reachable host should have a name," and that the name should match a reverse pointer record (see [RFC 1033](http://tools.ietf.org/html/rfc1033) and [RFC 1912](http://tools.ietf.org/html/rfc1912)).

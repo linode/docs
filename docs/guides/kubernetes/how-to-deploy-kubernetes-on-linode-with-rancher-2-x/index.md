@@ -15,7 +15,7 @@ external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
   - '[Linode CCM](https://github.com/linode/linode-cloud-controller-manager)'
   - '[Linode CSI](https://github.com/linode/linode-blockstorage-csi-driver)'
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Rancher title graphic.](rancher_title_graphic.png)

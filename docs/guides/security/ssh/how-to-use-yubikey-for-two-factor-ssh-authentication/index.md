@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
-authors: ["Huw Evans"]
+contributors: ["Huw Evans"]
 ---
 
 ![banner_image](How_to_use_a_YubiKey_for_Two_Factor_Secure_Shell_Authentication_smg.jpg)

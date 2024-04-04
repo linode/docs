@@ -12,7 +12,7 @@ external_resources:
 - '[MongoDB](https://www.mongodb.com/)'
 - '[Crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)'
 - '[Nano](https://www.nano-editor.org/docs.php)'
-authors: ["Linode"]
+contributors: ["Linode"]
 tags: ["saas"]
 ---
 

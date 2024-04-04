@@ -14,7 +14,7 @@ external_resources:
 - '[Next.js: Introduction](https://nextjs.org/learn/foundations/about-nextjs)'
 - '[Next.js: Create a Next.js App](https://nextjs.org/learn/basics/create-nextjs-app)'
 - '[freeCodeCamp: Get Started with Next.js – The React Library your Project Needs](https://www.freecodecamp.org/news/nextjs-tutorial/)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 Next.js is a framework built on top of React, extending React with a range of features for modern web development. Next gives your React applications ready access to features like routing and server-side rendering. At the same time, Next.js brings optimizations and base structures to enhance the experience both for developers and end users.

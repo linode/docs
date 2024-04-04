@@ -11,7 +11,7 @@ title: What is Cloud Computing?
 title_meta: "What is Cloud Computing & Why Should You Use It?"
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-cloud-computing/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 Cloud computing provides access to powerful, scalable, and versatile computer resources over the internet for a variety of purposes. Common uses are hosting websites, streaming media, providing email services, and data storage and analysis. Because cloud computing infrastructure is shared, computing power is available for a much lower cost than owning and maintaining these systems independently.

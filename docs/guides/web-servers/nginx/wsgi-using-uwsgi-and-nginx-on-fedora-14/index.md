@@ -16,7 +16,7 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 

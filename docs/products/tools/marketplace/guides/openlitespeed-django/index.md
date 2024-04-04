@@ -10,7 +10,7 @@ title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
 external_resources:
 - '[OpenLiteSpeed Django](https://docs.litespeedtech.com/cloud/images/django/)'
 aliases: ['/guides/deploying-openlitespeed-django-marketplace-app/','/guides/openlitespeed-django-marketplace-app/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 The OpenLiteSpeed Django app automatically installs Linux, the performance web server OpenLiteSpeed, Python LSAPI, and CertBot. OpenLiteSpeed Django features HTTP/3 support and easy setup for SSL and RewriteRules. It’s flexible enough to host multiple Django apps and supports many other apps including Node.js, Ruby, and CMS software like WordPress.

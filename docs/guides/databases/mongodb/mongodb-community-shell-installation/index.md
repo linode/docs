@@ -8,7 +8,7 @@ published: 2021-12-10
 modified_by:
   name: Linode
 title: "Install and Use the MongoDB Community Shell"
-authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
 tags: ["saas"]
 ---
 

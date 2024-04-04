@@ -19,7 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","php","database","mysql"]
-authors: ["James Stewart"]
+contributors: ["James Stewart"]
 ---
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.

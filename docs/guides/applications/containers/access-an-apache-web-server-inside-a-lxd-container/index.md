@@ -15,7 +15,7 @@ external_resources:
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
   - '[Try LXD Online](https://linuxcontainers.org/lxd/try-it/)'
 aliases: ['/applications/containers/access-an-apache-web-server-inside-a-lxd-container/']
-authors: ["Simos Xenitellis"]
+contributors: ["Simos Xenitellis"]
 ---
 
 ![Access an Apache Web Server Inside a LXD Container](apache-lxd-banner-image.jpg)

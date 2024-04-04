@@ -12,7 +12,7 @@ title_meta: "How to Install and Import Modules in Python 3"
 external_resources:
 - '[Python Documentation on Modules](https://docs.python.org/3/tutorial/modules.html)'
 - '[List of Python Built-in Modules](https://docs.python.org/3/py-modindex.html)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Except for very short and simple programs, most [Python](https://www.python.org/) applications contain code from many files, directories, and packages. Related functions and attributes are often grouped together as part of a Python *module*. A programmer can *import* this module and use its functions and variables in their application. This guide provides an introduction to Python modules and explains how to install and import modules in Python.

@@ -14,7 +14,7 @@ external_resources:
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
  - '[Google Analytics for Websites](/docs/guides/google-analytics-for-websites/)'
 aliases: ['/uptime/analytics/google-analytics-on-wordpress/']
-authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
 ---
 
 Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.

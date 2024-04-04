@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/python/create-a-python-virtualenv-on-centos-8/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What is a Python Virtual Environment?

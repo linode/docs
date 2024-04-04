@@ -11,7 +11,7 @@ title_meta: "The Difference Between TCP and UDP Explained | Linode"
 external_resources:
 - '[IETF TCP RFC 793](https://datatracker.ietf.org/doc/html/rfc793)'
 - '[IETF UDP RFC 768](https://datatracker.ietf.org/doc/html/rfc768)'
-authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
 ---
 
 Many users might not understand the network protocols they are using, but networking is a critical topic for application programmers and architects. In particular, the choice between the *Transmission Control Protocol* (TCP) or the *User Datagram Protocol* (UDP) can drastically alter how an application behaves. This guide introduces both transport protocols and explains the difference between TCP and UDP. It also discusses the advantages of both protocols and when they should be used.

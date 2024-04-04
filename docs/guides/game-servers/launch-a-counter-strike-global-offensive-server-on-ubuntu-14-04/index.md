@@ -19,7 +19,7 @@ relations:
         key: launch-counterstrike-server
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Sam Mauldin"]
+contributors: ["Sam Mauldin"]
 ---
 
 

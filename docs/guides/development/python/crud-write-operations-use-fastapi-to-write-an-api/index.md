@@ -9,7 +9,7 @@ modified_by:
 title: "CRUD Write Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Write Operations: Using FastAPI to Write an API"
 tags: ["python", "django"]
-authors: ["Chelsea Troy"]
+contributors: ["Chelsea Troy"]
 ---
 
 FastAPI is a high-performance Python *micro-framework* designed to help developers build APIs quickly. Out-of-the-box, it generates interactive API documentation powered by the [Swagger UI](https://github.com/swagger-api/swagger-ui). This Python framework is minimal by default, but can be configured, and extended to fit your API's use case.

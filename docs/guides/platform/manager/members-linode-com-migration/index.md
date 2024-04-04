@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 title: "Migrating Away from members.linode.com and nodebalancer.linode.com"
 title_meta: "members.linode.com and nodebalancer.linode.com Migration"
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ## What are members.linode.com and nodebalancer.linode.com?

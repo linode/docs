@@ -23,7 +23,7 @@ title_meta: "How to Deploy the Elastic Stack on Kubernetes"
 external_resources:
   - "[Elastic Documentation](https://www.elastic.co/guide/index.html)"
 aliases: ['/kubernetes/how-to-deploy-the-elastic-stack-on-kubernetes/','/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/']
-authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
 ---
 
 ## What is the Elastic Stack?

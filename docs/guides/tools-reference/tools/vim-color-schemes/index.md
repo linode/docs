@@ -13,7 +13,7 @@ external_resources:
 - '[Linux Hint: Vim Color Schemes](https://linuxhint.com/vim_color_schemes/)'
 - '[Opensource.com: How to Change Colors and Themes in Vim](https://opensource.com/article/19/12/colors-themes-vim)'
 - '[GitHub: rafi/awesome-vim-colorschemes](https://github.com/rafi/awesome-vim-colorschemes)'
-authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 ---
 
 [Vim](https://www.vim.org/) reigns as one of the most widely used command line text editors. It offers a high degree of customization, runs on a wide range of operating systems, and comes pre-installed on many Unix-based systems.

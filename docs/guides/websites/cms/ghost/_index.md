@@ -6,5 +6,5 @@ published: 2020-02-10
 show_in_lists: true
 title: Ghost
 aliases: ['/websites/cms/ghost/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---

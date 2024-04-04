@@ -18,7 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/web-servers/nginx/how-to-install-nginx-ubuntu-18-04/','/web-servers/nginx/install-nginx-ubuntu/']
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 ![Install NGINX on Ubuntu 18](install-nginx-ubuntu-smg.jpg)

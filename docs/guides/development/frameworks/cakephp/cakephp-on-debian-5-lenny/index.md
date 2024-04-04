@@ -16,7 +16,7 @@ relations:
         key:  cake-php
         keywords:
             - distribution: Debian 5
-authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
 ---
 
 CakePHP is a framework used to develop PHP applications quickly. Many people choose CakePHP because of the simple deployment process and extensive documentation available on the CakePHP website.

@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-12-04/']
-authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
 ---
 
 ![Creating an HTTP Proxy Using Squid on Ubuntu 12.04](creating-an-http-proxy-with-squid-on-ubuntu-1204-title-graphic.jpg "Creating an HTTP Proxy Using Squid on Ubuntu 12.04")

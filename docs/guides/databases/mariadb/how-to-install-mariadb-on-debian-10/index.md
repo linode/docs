@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: Debian 10
 tags: ["debian","mariadb","database"]
-authors: ["Ryan Syracuse"]
+contributors: ["Ryan Syracuse"]
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.

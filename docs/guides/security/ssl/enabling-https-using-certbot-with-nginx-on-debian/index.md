@@ -14,7 +14,7 @@ relations:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: Debian
-authors: ["Linode"]
+contributors: ["Linode"]
 ---
 
 
