@@ -118,6 +118,13 @@ See the [Network Transfer Usage and Costs](/docs/products/platform/get-started/g
 If creating a bucket in our **Jakarta** or **São Paulo** data centers, note that no additional transfer is added to their region-specific transfer pools.
 {{< /note >}}
 
+### Optimizing Applications to Avoid Rate Limiting
+The rate limit for the number of Requests Per Second (RPS) applies to a bucket and is evaluated against each bucket once per second.  If the duration of any request is greater than one second, any open requests will count against the rate limit in the next one second window.
+
+For example, assume there are 750 requests for a single bucket with a duration of two seconds each.  All of the requests that do not complete within the first second will count against the rate limit in the next second. With a rate limit of 750 requests per second for the bucket, no additional requests can be processed within the two second window until the first 750 requests complete. Any requests that are rate limited will receive a 503 response.
+
+To help avoid rate limiting you can structure your data across multiple buckets, each of which will have its own rate limit.
+
 ### Additional Limits and Specifications
 
 - **Upload file size limit:** 5 GB. The maximum upload size of a single object is *5 GB*, though this can easily be overcome by using multi-part uploads. Both [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/) and [cyberduck](/docs/products/storage/object-storage/guides/cyberduck/) will do this for you automatically if a file exceeds this limit as part of the uploading process.
