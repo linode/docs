@@ -1,5 +1,5 @@
 ---
-title: Grafana Object Storage
+title: Grafana Loki
 description: "Grafana."
 authors: ["Linode"]
 ---
