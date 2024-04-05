@@ -1,5 +1,5 @@
 ---
-title: Get Started
+title: Get Started (Beta)
 title_meta: "Getting Started with Cloud Load Balancer"
 description: "Learn how to quickly start using a Cloud Load Balancer, including advice on architecting your application and configuring the Load Balancer"
 tab_group_main:
