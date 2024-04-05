@@ -45,7 +45,7 @@ Guides for using Object Storage with various clients and command-line tools:
 - [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/): One of the most common command-line tools for interacting with S3-compatible object storage solutions, including Linode Object Storage.
 - [s4cmd](/docs/products/storage/object-storage/guides/s4cmd/): A faster alternative to the s3cmd command-line tool.
 - [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck/): A cross-platform graphical interface for interacting with various cloud storage services.
-- [Grafana-loki](/docs/products/storage/object-storage/guides/grafana/): Monitoring service.
+- [Grafana-loki](/docs/products/storage/object-storage/guides/grafana-loki/): Monitoring service.
 
 ## AWS Tooling
 
