@@ -2,6 +2,7 @@
 title: "Resize A Database Cluster"
 description: "Learn how to resize your database cluster."
 authors: ["Linode"]
+published: 2024-04-09
 ---
 
 {{< content "dbass-eos" >}}
@@ -19,10 +20,10 @@ This operation causes downtime for the resized node clusters.
 
 1. Navigate to the **Resize** tab.
 
-1. In the *Choose a plan* section, select a new, upscaled, plan for your database. 
+1. In the *Choose a plan* section, select a new plan for your database cluster. 
 
     ![Screenshot of Choose a plan section](upscale-plan.png)
 
 1. In the *Summary* section, verify the changes. Click **Resize Database Cluster**.
 
-1. Click **Resize Cluster** to confirm. The cluster will be upscaled within two hours.
+1. Follow the on-screen instructions and click **Resize Cluster** to confirm. The cluster will be upscaled within two hours.
