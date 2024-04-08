@@ -119,9 +119,9 @@ If creating a bucket in our **Jakarta** or **São Paulo** data centers, note tha
 {{< /note >}}
 
 ### Optimizing Applications to Avoid Rate Limiting
-The rate limit for the number of Requests Per Second (RPS) applies to a bucket and is evaluated against each bucket once per second.  If the duration of any request is greater than one second, any open requests will count against the rate limit in the next one second window.
+The rate limit for the number of Requests Per Second (RPS) applies to a bucket and is evaluated against each bucket once per second. If the duration of any request is greater than one second, any open requests will count against the rate limit in the next one second window.
 
-For example, assume there are 750 requests for a single bucket with a duration of two seconds each.  All of the requests that do not complete within the first second will count against the rate limit in the next second. With a rate limit of 750 requests per second for the bucket, no additional requests can be processed within the two second window until the first 750 requests complete. Any requests that are rate limited will receive a 503 response.
+For example, assume there are 750 requests for a single bucket with a duration of two seconds each. All of the requests that do not complete within the first second will count against the rate limit in the next second. With a rate limit of 750 requests per second for the bucket, no additional requests can be processed within the two second window until the first 750 requests complete. Any requests that are rate limited will receive a 503 response.
 
 To help avoid rate limiting you can structure your data across multiple buckets, each of which will have its own rate limit.
 
