@@ -5,7 +5,7 @@ tags: ["linode platform","cloud manager"]
 modified_by:
   name: Linode
 published: 2019-03-18
-modified: 2023-01-18
+modified: 2024-04-11
 title: "Cloning a Compute Instance"
 title_meta: "How to Clone a Compute Instance"
 aliases: ['/migrate-to-linode/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode-classic-manager/','/guides/clone-your-linode/']
