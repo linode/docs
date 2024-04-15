@@ -57,7 +57,7 @@ Block Storage Volumes start at $0.10/GB per month ($0.00015/GB per hour) and can
 
 - A combined total of 8 storage devices can be attached to a Compute Instance at the same time, including local disks and Block Storage Volumes. For example, if your Compute Instance has two main disks, root and swap, you can attach no more than 6 additional volumes to this Compute Instance.
 
-- The maximum combined size of all Volumes on an account is 100 TB. If you plan on exceeding this amount, contact [Support](https://www.linode.com/support/) to request an increase.
+- The maximum combined size of all Volumes on an account defaults to a limit of 100TiB of block capacity per account per region. If you plan on exceeding this amount, contact [Support](https://www.linode.com/support/) to request an increase.
 
 - You can attach Block Storage volumes to a Compute Instance in Full Virtualization mode only after you Power Off the Compute Instance. For further steps, see [Attach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/).
 
