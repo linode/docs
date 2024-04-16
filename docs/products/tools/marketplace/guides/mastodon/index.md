@@ -4,7 +4,7 @@ description: "Learn how to deploy Mastodon, a decentralized social network and m
 keywords: ['social', 'messaging', 'mastodon']
 tags: ["linode platform","mastodon","marketplace","cloud-manager",]
 published: 2022-12-12
-modified: 2023-09-11
+modified: 2024-04-16
 modified_by:
   name: Linode
 external_resources:
