@@ -3,7 +3,7 @@ description: "Deploy BeEF on a Linode Compute Instance. This provides you with a
 keywords: ['security','vulnerability','penetration testing']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
-modified: 2022-03-08
+modified: 2024-04-16
 modified_by:
   name: Linode
 title: "Deploy BeEF through the Linode Marketplace"
