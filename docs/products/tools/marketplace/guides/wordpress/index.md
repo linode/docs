@@ -3,7 +3,7 @@ description: "WordPress is an industry standard CMS. Follow this guide to deploy
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 published: 2020-09-28
-modified: 2023-12-14
+modified: 2024-04-16
 modified_by:
   name: Linode
 title: "Deploy WordPress through the Linode Marketplace"
