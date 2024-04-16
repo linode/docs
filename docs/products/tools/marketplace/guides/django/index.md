@@ -3,7 +3,7 @@ description: "Learn how to deploy Django, a web framework that provides much of 
 keywords: ['django','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","cms","django","marketplace","digital agencies"]
 published: 2020-03-11
-modified: 2022-03-08
+modified: 2024-04-16
 image: Django_oneclickapps.png
 modified_by:
   name: Linode
