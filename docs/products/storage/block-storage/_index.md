@@ -10,7 +10,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Block Storage is a scalable, high-speed, and fault tolerant storage service used to add additional storage to a Linode Compute Instance."
-modified: 2024-01-03
+modified: 2024-04-15
 aliases: ['/platform/block-storage/how-to-use-block-storage-with-your-linode/','/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/','/platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/','/platform/how-to-use-block-storage-with-your-linode/','/platform/block-storage/','/guides/platform/block-storage/','/guides/how-to-use-block-storage-with-your-linode/']
 ---
 
@@ -57,7 +57,7 @@ Block Storage Volumes start at $0.10/GB per month ($0.00015/GB per hour) and can
 
 - A combined total of 8 storage devices can be attached to a Compute Instance at the same time, including local disks and Block Storage Volumes. For example, if your Compute Instance has two main disks, root and swap, you can attach no more than 6 additional volumes to this Compute Instance.
 
-- The maximum combined size of all Volumes on an account is 100 TB. If you plan on exceeding this amount, contact [Support](https://www.linode.com/support/) to request an increase.
+- The default maximum combined size of all Volumes within an account for each region is 100 TiB. If you plan on exceeding this amount, contact [Support](https://www.linode.com/support/) to request an increase.
 
 - You can attach Block Storage volumes to a Compute Instance in Full Virtualization mode only after you Power Off the Compute Instance. For further steps, see [Attach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/).
 
