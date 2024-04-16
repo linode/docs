@@ -3,21 +3,21 @@ description: "Learn how to install and configure the Ant Media Server Enterprise
 keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-03-29
-modified: 2022-05-17
+modified: 2024-04-16
 modified_by:
   name: Linode
 title: "Deploy Ant Media Server Enterprise Edition through the Linode Marketplace"
 external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'
-aliases: ['/products/tools/marketplace/guides/antmediaenterpriseedition/']
+aliases: ['/products/tools/marketplace/guides/antmediaenterpriseedition/','/guides/deploy-antmediaserver-with-marketplace-apps/','/guides/antmediaserver-marketplace-app/','/products/tools/marketplace/guides/antmediaserver/']
 authors: ["Linode"]
 ---
 
 [Ant Media Server](https://antmedia.io/) is an [open source](https://github.com/ant-media/Ant-Media-Server) video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Marketplace App installs the Enterprise Edition, which is equipped with more features and enhanced performance. See this [Comparison Chart](https://github.com/ant-media/Ant-Media-Server/wiki#community-edition--enterprise-edition) for details.
 
 {{< note >}}
-The Enterprise Edition of Ant Media Server requires a valid license to use the software beyond the initial 14 day [free trial](https://antmedia.io/free-trial/) period. To purchase a license, visit [Ant Media's website](https://antmedia.io/#selfhosted) and select a plan that fits your needs. Licenses are not available directly through Linode. Alternatively, you can deploy the free [Ant Media Server Community Edition Marketplace App](/docs/products/tools/marketplace/guides/antmediaserver/).
+The Enterprise Edition of Ant Media Server requires a valid license to use the software beyond the initial 14 day [free trial](https://antmedia.io/free-trial/) period. To purchase a license, visit [Ant Media's website](https://antmedia.io/#selfhosted) and select a plan that fits your needs. Licenses are not available directly through Linode.
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -32,20 +32,26 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** 16GB Dedicated CPU Instance
+
+### Ant Media Server Options
+
+- **SOA email address:** Enter the email address that should be used for the SSL generation.
+
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
 ### Access the Ant Media Server Dashboard
 
-1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
+1. Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-1.  The **Create First Account** screen appears. Fill out your full name and enter your desired username and password. Then click **Create Account**.
-
-    ![Screenshot of the Create First Account page](ant-media-server-create-account.png)
-
-1. After your account has been created, the login page appears. Enter the username and password that you just created.
+1. After your account has been created, the login page appears. Enter the username and password that you just created. The username and password can be obtained in the `/home/$USERNAME/.credentials` file.
 
 1. Once logged in, the Ant Media Server Dashboard appears. From here, you can manage your entire application.
 

@@ -32,10 +32,9 @@ authors: ["Linode"]
 
 ### BeEF Options
 
-- **BeEF Password** *(required)*: Enter a *strong* password to use for the BeEF admin user.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
@@ -54,24 +53,11 @@ authors: ["Linode"]
         cat /home/$USERNAME/.credentials
         ```
 
-1. The completion message contains the *Endpoint* URL, as shown in the example below.
-
-    ```output
-    *********************************************************
-    Akamai Connected Cloud Beef Marketplace App
-    App URL: https://192-0-2-1.ip.linodeusercontent.com:3000/ui/panel
-    Credentials File: /home/$USERNAME/.credentials
-    Documentation: https://www.linode.com/marketplace/apps/linode/beef/
-    *********************************************************
-    To delete this message of the day: rm /etc/motd
-
-    ```
-
-1. Navigate to this URL in a web browser to display the login prompt.
+1. Open your web browser and navigate to `https://[domain]:3000/ui/panel`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the BeEF login prompt](beef-login-prompt.png)
 
-1. Enter `beef` as the username and use the password you entered into the *BeEF Password* field when you created the Instance.
+1. Enter `beef` as the username and use the password in the /home/$USERNAME/.credentials file.
 
     {{< note >}}
     If you forget this password, run the following command when logged in through Lish or SSH:
