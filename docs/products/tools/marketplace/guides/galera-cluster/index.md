@@ -2,6 +2,7 @@
 title: "Deploy a Galera Cluster through the Linode Marketplace"
 description: "This guide shows how to deploy a MySQL/MariaDB Galera Cluster through the Linode Marketplace."
 published: 2023-03-20
+modified: 2024-04-04
 modified_by:
   name: Linode
 keywords: ['database','mysql','rdbms','relational database','mariadb']
