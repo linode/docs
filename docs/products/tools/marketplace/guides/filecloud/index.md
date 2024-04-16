@@ -3,7 +3,7 @@ description: "This guide provides you with step-by-step instructions for deployi
 keywords: [ 'filecloud','marketplace', 'server']
 tags: ["cloud-manager","linode platform", "marketplace"]
 published: 2020-03-18
-modified: 2022-06-03
+modified: 2024-04-16
 modified_by:
   name: Linode
 title: "Deploy FileCloud through the Linode Marketplace"
