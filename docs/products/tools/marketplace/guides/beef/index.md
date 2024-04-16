@@ -56,7 +56,7 @@ authors: ["Linode"]
 
     ![Screenshot of the BeEF login prompt](beef-login-prompt.png)
 
-1. Enter `beef` as the username and use the password in the /home/$USERNAME/.credentials file
+1. Enter `beef` as the username and use the password in the /home/$USERNAME/.credentials file.
 
     {{< note >}}
     If you forget this password, run the following command when logged in through Lish or SSH:

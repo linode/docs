@@ -45,6 +45,8 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 
+## Getting Started after Deployment
+
 ### Access the Ant Media Server Dashboard
 
 1. Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
