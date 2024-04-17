@@ -3,7 +3,7 @@ description: "Zabbix is an enterprise-class, open source, distributed monitoring
 keywords: ['monitoring','networking','incident response']
 tags: ["marketplace", "networking", "linode platform", "cloud manager", "monitoring"]
 published: 2021-02-23
-modified: 2024-04-16
+modified: 2024-04-17
 image: DeployZabbix_marketplaceapps.png
 modified_by:
   name: Linode
@@ -41,17 +41,15 @@ authors: ["Linode"]
 
 {{< content "marketplace-custom-domains-field-shortguide">}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
-
 - **Zabbix Server Name:** Local hostname for Zabbix server. Defaults to `zabbix-server`
 
 ## Getting Started after Deployment
 
 ### Access your Zabbix App
 
-After Zabbix has finished installing, you must first obtain the login credentials for Zabbix. You can then use these credentials to log in to your Zabbix App via a web browser.
+After Zabbix has finished installing, you must first obtain the login credentials. You can then use these credentials to log in to your Zabbix App via a web browser.
 
-1.  From your terminal, log into your new Compute Instance as the `root` user, or the `sudo` user created with the OCA. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
+1.  From your terminal, log into your new Compute Instance as the `root` user, or the `sudo` user created during deployment. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
     ```command
     ssh root@192.0.2.1
