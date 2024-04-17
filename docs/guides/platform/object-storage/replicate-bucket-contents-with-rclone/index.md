@@ -74,30 +74,16 @@ When deploying your Compute Instance, you must select a supported image for the 
     ```file
     #!/bin/bash
 
-    # The region ID of your source bucket
-    # Choose one of the following: nl-ams-1,us-southeast-1,in-maa-1,us-ord-1,eu-central-1,id-cgk-1,us-lax-1,es-mad-1,us-mia-1,it-mil-1,us-east-1,jp-osa-1,fr-par-1,br-gru-1,us-sea-1,ap-south-1,se-sto-1,us-iad-1
+    # SOURCE BUCKET
     SRC_REGION=""
-
-    # The label for your source bucket
     SRC_BUCKET=""
-
-    # The access key for your source bucket
     SRC_ACCESSKEY=""
-
-    # The secret key for your source bucket
     SRC_SECRETKEY_PASSWORD=""
 
-    # The region ID of your destination bucket
-    # Choose one of the following: nl-ams-1,us-southeast-1,in-maa-1,us-ord-1,eu-central-1,id-cgk-1,us-lax-1,es-mad-1,us-mia-1,it-mil-1,us-east-1,jp-osa-1,fr-par-1,br-gru-1,us-sea-1,ap-south-1,se-sto-1,us-iad-1
+    # DESTINATION BUCKET
     DEST_REGION=""
-
-    # The label for your destination bucket
     DEST_BUCKET=""
-
-    # The access key for your destination bucket
     DEST_ACCESSKEY=""
-
-    # The secret key for your destination bucket
     DEST_SECRETKEY_PASSWORD=""
 
     # Install system updates and install rclone
@@ -106,11 +92,9 @@ When deploying your Compute Instance, you must select a supported image for the 
     echo "Rclone installation completed."
 
     # Rclone configuration file
-    CONFIG_FILE="$HOME/.config/rclone/rclone.conf"
+    CONFIG_DIR="/root/.config/rclone/"
+    CONFIG_FILE="$CONFIG_DIR/rclone.conf"
 
-    # Rclone Directory creation
-    # This should be manually configured as it may be under /root directory
-    CONFIG_DIR=$(dirname "$CONFIG_FILE")
     mkdir -p "$CONFIG_DIR"
 
     # Rclone configuration context
@@ -143,6 +127,7 @@ When deploying your Compute Instance, you must select a supported image for the 
 
     #Run the first rclone sync command
     RCLONE_SYNC_COMMAND="rclone sync -vv src_region:$SRC_BUCKET dest_region:$DEST_BUCKET --log-file=$CONFIG_DIR/rclone.log"
+    $RCLONE_SYNC_COMMAND
     ```
 
 1.  Once the script contents are entered into the **User Data** field, define the following values with their corresponding information in lines 3-27. This can be done by typing in the required information between the quotation marks after each variable.
