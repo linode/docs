@@ -5,7 +5,7 @@ description: 'This Quick Answer guide explains how to use Git to create a reposi
 authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 published: 2017-06-19
-modified: 2017-07-17 Guarisma
+modified: 2017-07-17
 aliases: ['/quick-answers/linux/how-to-use-git/','/quick-answers/how-to-use-git/']
 keywords: ["Linux", "how to use Git", "github", "create git repo"]
 tags: ["version control system","linux"]

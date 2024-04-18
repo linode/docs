@@ -5,7 +5,7 @@ description: 'This guide shows how to install the OpenJDK 8 runtime environment 
 authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 published: 2017-06-01
-modified: 2017-06-01 Guarisma
+modified: 2017-06-01
 keywords: ["CentOS", "install Java", "CENTOS", "Java JRE", "Java JDK"]
 tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
