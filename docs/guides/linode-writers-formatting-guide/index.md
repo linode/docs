@@ -5,7 +5,7 @@ description: 'This guide provides formatting and style guidelines for documentat
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-01-15
-modified: 2024-01-31
+modified: 2024-04-18
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
@@ -55,10 +55,11 @@ slug: {{ path.Base .File.Dir }}
 title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
-keywords: ['list','of','keywords','and key phrases']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
 contributors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
+keywords: ['list','of','keywords','and key phrases']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
