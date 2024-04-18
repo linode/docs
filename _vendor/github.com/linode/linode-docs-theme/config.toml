@@ -116,13 +116,6 @@ seo_title_template = "Cloud Computing Resources | Linode"
 seo_title_template_category = "Cloud Computing {category} | Linode"
 explorer_icon = "#icon-explorer--resources"
 
-[params.search_config2.sections.community]
-name = "community"
-filters = "objectType:question"
-weight = 70
-title = "Q&A"
-explorer_icon = "#icon-explorer--qa"
-
 [module]
 [[module.mounts]]
 source = "content"

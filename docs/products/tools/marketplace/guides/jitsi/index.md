@@ -3,7 +3,7 @@ description: "Jitsi is an open source suite that helps you host your own virtual
 keywords: ['jitsi','marketplace', 'server']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "ssl", "education"]
 published: 2020-09-28
-modified: 2022-03-08
+modified: 2024-03-13
 image: Deploy_Jitsi_oneclickapps.png
 modified_by:
   name: Linode
@@ -31,14 +31,14 @@ contributors: ["Linode"]
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS
-- **Recommended minimum plan:** All plan types and sizes can be used, though we recommend a 8GB Dedicated CPU or Shared Compute Instance for hosting large meetings or multiple simultaneous meetings.
+- **Suggested minimum plan:** All plan types and sizes can be used. For best results, use a 8GB Dedicated CPU or Shared Compute Instance when hosting large meetings or multiple simultaneous meetings.
 
 ### Jitsi Options
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Admin Email for the Jitsi server**
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 

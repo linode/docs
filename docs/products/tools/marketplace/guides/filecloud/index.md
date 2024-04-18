@@ -3,7 +3,7 @@ description: "This guide provides you with step-by-step instructions for deployi
 keywords: [ 'filecloud','marketplace', 'server']
 tags: ["cloud-manager","linode platform", "marketplace"]
 published: 2020-03-18
-modified: 2022-06-03
+modified: 2024-04-16
 modified_by:
   name: Linode
 title: "Deploy FileCloud through the Linode Marketplace"
@@ -27,44 +27,27 @@ contributors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used. The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.
 
 ### FileCloud Options
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
-- **SOA email address:** Enter the email address that should be used for the domain's SOA DNS record.
+- **SOA email address:** Enter the email address that should be used for the SSL generation.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 
+
 ## Getting Started after Deployment
 
-Once the FileCloud server is up and running, a few additional steps must be completed before you can begin using your application.
+1.  Open your web browser and navigate to `https://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-### Creating Secure Login Credentials
-
-A new administrator password must be created to secure the server:
-
-1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
-
-1.  In the login fields that appear, enter the default credentials:
-
-    - **Username:** admin
-    - **Password:** password
+1.  In the login fields that appear,the default username is *admin*, and the password can be found in the credentials file located in /home/$USERNAME/.credentials.
 
     ![Admin Login Page](filecloud-login.png)
-
-1.  A number of messages and warnings appear. For now, dismiss them to clear your screen.
-
-1.  Navigate to the **Settings** sidebar option, followed by the **Admin** tab. Click on the **Reset Admin Password** to reset your Admin Password to something more secure.
-
-    ![FileCloud Admin Page](filecloud-reset-password.png)
-
-1.  Follow the prompts and select the **Reset Password** button to complete the password reset.
-
-1.  If the password reset was successful, you are logged out and redirected to the administrator login page. Enter the administrator username and your new password to proceed.
 
 ### Obtain a new License Key
 

@@ -285,7 +285,9 @@ export function newSearchStore(searchConfig, params, Alpine) {
 
 		let hitsPerPage = 0;
 		let q = '';
-		let filters = sectionConfig.filters || '';
+		// TODO(bep) we have removed the QA section from explorer/search, but the
+		// data is still there. The docType filter below can be remove when we have completed the migration.
+		let filters = sectionConfig.filters || 'NOT docType:community';
 		let facetFilters = [];
 		let attributesToHighlight = [];
 		let analyticsTags = [];
@@ -424,6 +426,11 @@ const normalizeResult = function (self, result) {
 			if (k === 'docType' || k.startsWith('section.')) {
 				let obj = {};
 				Object.entries(v).forEach(([kk, vv]) => {
+					// TODO(bep) we have removed the QA section from explorer/search, but the
+					// data is still there. The docType filter below can be remove when we have completed the migration.
+					if (k == 'docType' && kk == 'community') {
+						return;
+					}
 					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());
 					obj[kk] = { count: vv, meta: m };
 				});

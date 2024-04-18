@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.171.0
+  version: 4.174.0
   title: Linode API
   license:
     name: Apache 2.0
@@ -3859,6 +3859,19 @@ paths:
                   $ref: '#/components/schemas/DatabaseMySQLRequest/properties/allow_list'
                 updates:
                   $ref: '#/components/schemas/DatabaseMySQL/properties/updates'
+                type:
+                  type: string
+                  description: |
+                    Request re-sizing of your cluster to a Linode Type with more disk space. For example, you could request a Linode Type that uses a higher plan.
+
+                    * Needs to be a Linode Type with more disk space than your current Linode.
+
+                    * Resizing to a larger Linode Type can accrue additional cost. Review the `price` output in the [Types List](/docs/api/linode-types/#types-list) operation for more information.
+
+                    * You can't update the `allow_list` and set a new `type` in the same request.
+
+                    * Any active updates to your cluster need to complete before you can request a resize. The reverse is also true: An active resizing needs to complete before you can perform any other update.
+                  example: g6-standard-1
       responses:
         '200':
           description: Managed Database updated successfully.
@@ -3879,7 +3892,8 @@ paths:
                     "203.0.113.1",
                     "192.0.1.0/24"
                   ],
-                  "updates" = {
+                  "type": "g6-standard-1",
+                  "updates": {
                     "frequency": "monthly",
                     "duration": 3,
                     "hour_of_day": 12,
@@ -3894,6 +3908,7 @@ paths:
             --label example-db \
             --allow_list 203.0.113.1 \
             --allow_list 192.0.1.0/24 \
+            --type g6-standard-1 \
             --updates.frequency monthly \
             --updates.duration 3 \
             --updates.hour_of_day 12 \
@@ -4643,6 +4658,19 @@ paths:
                   $ref: '#/components/schemas/DatabasePostgreSQLRequest/properties/allow_list'
                 updates:
                   $ref: '#/components/schemas/DatabasePostgreSQL/properties/updates'
+                type:
+                  type: string
+                  description: |
+                    Request re-sizing of your cluster to a Linode Type with more disk space. For example, you could request a Linode Type that uses a higher plan.
+
+                    * Needs to be a Linode Type with more disk space than your current Linode.
+
+                    * Resizing to a larger Linode Type can accrue additional cost. Review the `price` output in the [Types List](/docs/api/linode-types/#types-list) operation for more information.
+
+                    * You can't update the `allow_list` and set a new `type` in the same request.
+
+                    * Any active updates to your cluster need to complete before you can request a resize. The reverse is also true: An active resizing needs to complete before you can perform any other update.
+                  example: g6-standard-1
       responses:
         '200':
           description: Managed Database updated successfully.
@@ -4663,7 +4691,8 @@ paths:
                     "203.0.113.1",
                     "192.0.1.0/24"
                   ],
-                  "updates" = {
+                  "type": "g6-standard-1",
+                  "updates": {
                     "frequency": "monthly",
                     "duration": 3,
                     "hour_of_day": 12,
@@ -4678,6 +4707,7 @@ paths:
             --label example-db \
             --allow_list 203.0.113.1 \
             --allow_list 192.0.1.0/24 \
+            --type g6-standard-1 \
             --updates.frequency monthly \
             --updates.duration 3 \
             --updates.hour_of_day 12 \
@@ -6583,7 +6613,7 @@ paths:
                     "subnet_id": 101,
                     "ipv4": {
                       "vpc": "10.0.1.2",
-                      "nat_1_1": "203.0.113.2"
+                      "nat_1_1": "add"
                     }
                   }
                 ],
@@ -8218,7 +8248,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Disk'
+              properties:
+                label:
+                  $ref: '#/components/schemas/Disk/properties/label'
       responses:
         '200':
           description: The updated Disk.
@@ -8520,8 +8552,10 @@ paths:
       tags:
       - Linode Instances
       summary: Networking Information List
-      description: >
+      description: |
         Returns networking information for a single Linode.
+
+        **Note:** If the target Linode has several configuration profiles that include a Virtual Private Cloud (VPC) interface, address information for all of VPCs will be listed in the response.
       operationId: getLinodeIPs
       x-linode-cli-action: ips-list
       security:
@@ -8563,13 +8597,13 @@ paths:
                         description: >
                           A list of private IP Address objects belonging to this Linode.
                         readOnly: true
-                      shared:
+                      vpc:
                         type: array
                         readOnly: true
                         items:
-                          $ref: '#/components/schemas/IPAddress'
+                          $ref: '#/components/schemas/IPAddressesVPCListResponse'
                         description: >
-                          A list of shared IP Address objects assigned to this Linode.
+                          A list of Virtual Private Cloud (VPC)-specific addresses or ranges for the Linode.
                       reserved:
                         type: array
                         readOnly: true
@@ -8577,6 +8611,13 @@ paths:
                           $ref: '#/components/schemas/IPAddress'
                         description: >
                           A list of reserved IP Address objects belonging to this Linode.
+                      shared:
+                        type: array
+                        readOnly: true
+                        items:
+                          $ref: '#/components/schemas/IPAddress'
+                        description: >
+                          A list of shared IP Address objects assigned to this Linode.
                   ipv6:
                     type: object
                     description: >
@@ -8602,7 +8643,7 @@ paths:
               https://api.linode.com/v4/linode/instances/123/ips
       - lang: CLI
         source: >
-          linode-cli linodes 123 ips-list
+          linode-cli linodes ips-list 123
     post:
       x-linode-grant: read_write
       tags:
@@ -14622,7 +14663,7 @@ paths:
       - NodeBalancers
       summary: NodeBalancer Create
       description: |
-        Creates a NodeBalancer in the requested Region.
+        Creates a NodeBalancer in the requested Region. Only available in [Regions](/docs/api/regions/#regions-list) with "NodeBalancers" in their `capabilities`.
 
         NodeBalancers require a port Config with at least one backend Node to start serving requests.
 
@@ -19872,6 +19913,85 @@ paths:
             linode-cli vpcs update $vpcId \
               --description "A description of my VPC."
               --label cool-vpc
+  /vpcs/ips:
+    get:
+      x-linode-grant: read_only
+      tags:
+      - VPCs
+      summary: VPC IP Addresses List
+      servers:
+      - url: https://api.linode.com/v4
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Returns a paginated list of all VPC IP addresses and address ranges on your account.
+
+        **Note**: If a Linode has several configuration profiles that include a VPC interface, address information for all of them is listed in the response. Since VPCs can use the same address space, you may see duplicate IP addresses.
+      operationId: getAllVPCIPs
+      x-linode-cli-action:
+      - ip-list
+      - ip-ls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_only
+      responses:
+        '200':
+          description: A paginated list of VPC interface IP addresses.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAddressesVPCListResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/networking/vpcs/ips
+      - lang: CLI
+        source: >
+          linode-cli vpcs ip list
+  /vpcs/{vpcId}/ips:
+    parameters:
+    - $ref: '#/components/parameters/vpcId'
+    get:
+      tags:
+      - VPCs
+      summary: VPC IP Addresses View
+      servers:
+      - url: https://api.linode.com/v4
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Returns a paginated list of IP addresses for a single VPC.
+      operationId: getVPCIPs
+      x-linode-cli-action:
+        - ip-list
+        - ip-ls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_only
+      responses:
+        '200':
+          description: The IP addresses for the requested VPC.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAddressesVPCListResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/vpcs/123/ips
+      - lang: CLI
+        source: >
+          linode-cli vpcs ip-list 123
   /vpcs/{vpcId}/subnets:
     x-linode-cli-command: vpcs
     parameters:
@@ -21770,7 +21890,7 @@ components:
             The interval, in seconds, at which a failed refresh should be retried.
 
             * Valid values are
-            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+            0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
             * Any other value is rounded up to the nearest valid value.
 
@@ -21802,7 +21922,7 @@ components:
             authoritative.
 
             * Valid values are
-            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+            0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
             * Any other value is rounded up to the nearest valid value.
 
@@ -21815,7 +21935,7 @@ components:
             The amount of time in seconds before this Domain should be refreshed.
 
             * Valid values are
-            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+            0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
             * Any other value is rounded up to the nearest valid value.
 
@@ -21829,7 +21949,7 @@ components:
             records may be cached by resolvers or other domain servers.
 
             * Valid values are
-            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+            0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
             * Any other value is rounded up to the nearest valid value.
 
@@ -22246,6 +22366,9 @@ components:
           - stackscript_update
           - stackscript_publicize
           - stackscript_revise
+          - subnet_create
+          - subnet_delete
+          - subnet_update
           - tag_create
           - tag_delete
           - tfa_disabled
@@ -22271,6 +22394,9 @@ components:
           - volume_update
           - volume_detach
           - volume_resize
+          - vpc_create
+          - vpc_delete
+          - vpc_update
           readOnly: true
           description: >
             The action that caused this Event. New actions may be added in the future.
@@ -22629,7 +22755,7 @@ components:
               - 198.51.100.2/32
             ipv6:
               description: |
-                A list of IPv6 addresses or networks. Addresses must be in IP/mask format. Must not be an empty list.
+                A list of IPv6 addresses or networks. Addresses must be in IP/mask format and must not include zone_id notation as described in [RFC 4007](https://www.rfc-editor.org/rfc/rfc4007). Must not be an empty list.
 
                 If "::/0" is included in this list, all IPv6 addresses are affected by this rule.
               type: array
@@ -22964,21 +23090,23 @@ components:
           format: date-time
           nullable: true
           description: >
-            Only Images created automatically from a deleted Linode (type=automatic) will expire.
+            Only Images created automatically from a deleted Linode (type=automatic) will expire. `null` for private Images.
           example: null
           readOnly: true
         eol:
           type: string
           format: date-time
+          nullable: true
           description: >
-            The date of the public Image's planned end of life. `None` for private Images.
+            The date of the public Image's planned end of life. `null` for private Images.
           example: '2026-07-01T04:00:00'
           readOnly: true
         vendor:
           x-linode-filterable: true
           type: string
+          nullable: true
           description: >
-            The upstream distribution vendor. `None` for private Images.
+            The upstream distribution vendor. `null` for private Images.
           example: Debian
           readOnly: true
           x-linode-cli-display: 3
@@ -23418,7 +23546,6 @@ components:
                         format: ipv4
                         description: |
                           The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-              example: 192.0.2.1
     IPAddressesShareRequest:
       type: object
       description: A request object IP Addresses Share (POST /networking/ips/share)
@@ -23445,6 +23572,113 @@ components:
             * Can include both private and public IPv4 addresses.
             * You must have access to all of these addresses and they must be in the same Region as the primary Linode.
             * Enter an empty array to remove all shared IP addresses.
+    IPAddressesVPCListResponse:
+      description: The response data for the VPC IP Addresses List and View operations.
+      allOf:
+        - $ref: '#/components/schemas/PaginationEnvelope'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                description: >
+                  A VPC IP address that exists in Linode's system, specific to the response for the VPC IP Addresses List command. Returned as an empty set for Linodes that are not part of a VPC.
+                properties:
+                  active:
+                    type: boolean
+                    description: >
+                      Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
+                    example: true
+                    readOnly: true
+                    x-linode-filterable: true
+                  address:
+                    type: string
+                    format: ip
+                    description: >
+                      An IPv4 address configured for this VPC interface. Displayed as `null` if an `address_range`.
+                    example: 192.0.2.141
+                    nullable: true
+                    readOnly: true
+                    x-linode-cli-display: 1
+                  address_range:
+                    type: string
+                    description: >
+                      A range of IPv4 addresses configured for this VPC interface. Displayed as `null` if a single `address`.
+                    nullable: true
+                    readOnly: true
+                  config_id:
+                    type: integer
+                    description: >
+                      The globally general entity identifier for the Linode configuration profile where the VPC is included.
+                    example: 4567
+                    readOnly: true
+                    x-linode-filterable: true
+                  gateway:
+                    type: string
+                    format: ip
+                    description: >
+                      The default gateway for the VPC subnet that the IP or IP range belongs to.
+                    example: 192.0.2.1
+                    nullable: true
+                    readOnly: true
+                  interface_id:
+                    type: integer
+                    description: >
+                      The globally general API entity identifier for the Linode interface.
+                    example: 2435
+                    readOnly: true
+                  linode_id:
+                    type: integer
+                    description: >
+                      The identifier for the Linode the VPC interface currently belongs to.
+                    example: 123
+                    readOnly: true
+                    x-linode-cli-display: 6
+                    x-linode-filterable: true
+                  nat_1_1:
+                    type: string
+                    format: ip
+                    description: >
+                      The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn't used.
+                    example: null
+                    nullable: true
+                    readOnly: true
+                  prefix:
+                    type: integer
+                    description: >
+                      The number of bits set in the `subnet_mask`.
+                    example: 24
+                    nullable: true
+                    readOnly: true
+                  region:
+                    type: string
+                    description: >
+                      The region of the VPC.
+                    example: us-east
+                    readOnly: true
+                    x-linode-filterable: true
+                    x-linode-cli-display: 5
+                  subnet_id:
+                    type: integer
+                    nullable: false
+                    description: |
+                      The `id` of the VPC Subnet for this interface.
+                    example: 101
+                  subnet_mask:
+                    type: string
+                    format: ip
+                    description: >
+                       The mask that separates host bits from network bits for the `address` or `address_range`.
+                    example: 255.255.255.0
+                    readOnly: true
+                  vpc_id:
+                    type: integer
+                    description: >
+                      The unique globally general API entity identifier for the VPC.
+                    example: 7654
+                    readOnly: true
+                    x-linode-filterable: true
     IPAddressPrivate:
       type: object
       description: >
@@ -23515,7 +23749,7 @@ components:
     IPAddressV6LinkLocal:
       type: object
       description: >
-        A link-local IPv6 address that exists in Linode's system,.
+        A link-local IPv6 address that exists in Linode's system.
       properties:
         address:
           type: string
@@ -24409,6 +24643,8 @@ components:
                 * Setting the value to a specific public IPv4 address that is assigned to the Linode enables a 1:1 NAT between that address and the VPC Subnet IPv4 address.
                 * The public IPv4 address can't be shared with another Linode.
                 * If omitted, set to `null`, or set to an empty string (`""`), no 1:1 NAT is established.
+
+                **Note**: When creating a new compute-instance, you can't set this to a specific IPv4 address. When a new compute instance is created, the network establishes a public IPv4 address for it. Since this address doesn't exist yet, you can't include a custom IPv4 address to change it. Once your compute instances is created, you can [update your configuration profile interface](https://www.linode.com/docs/api/linode-instances/#configuration-profile-interface-update) to change the `nat_1_1` address.
               example: '203.0.113.2'
         # ipv6:
         #   type: object
@@ -24438,7 +24674,7 @@ components:
           type: array
           nullable: true
           description: |
-            An array of IPv4 CIDR VPC Subnet ranges that are routed to this Interface. **IPv6 ranges are also available to select participants in the Beta program.**
+            An array of IPv4 CIDR VPC Subnet ranges that are routed to this Interface.
 
             * Array items are only allowed for `vpc` type Interfaces.
             * This must be empty for non-`vpc` type Interfaces.
@@ -28536,6 +28772,7 @@ components:
         #     * A VPC Subnet requires either `ipv4`, `ipv6`, or both.
         #     * In requests, only the prefix length is allowed, for example: `/64`. The address range is then automatically assigned.
         #     * Allowed prefix lengths: 64-125.
+        #     * Must not include zone_id notation as described in [RFC 4007](https://www.rfc-editor.org/rfc/rfc4007)
         #     * The range must not overlap with other Subnets on the same VPC.
         #   example: fd04:495a:691c:971c:0000:0000:0000:0000/64
         #   x-linode-cli-display: 4

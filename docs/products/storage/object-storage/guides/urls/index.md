@@ -2,7 +2,7 @@
 description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
 keywords: ['object','storage','bucket']
 published: 2020-01-22
-modified: 2023-10-22
+modified: 2024-02-20
 modified_by:
   name: Linode
 image: AccessingObjectswithLinodeObjectStorage.png
@@ -40,6 +40,7 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 | Frankfurt (Germany) | `eu-central-1` | `https://eu-central-1.linodeobjects.com` |
 | Jakarta (Indonesia) | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
 | Los Angeles, CA (USA) | `us-lax-1` | `https://us-lax-1.linodeobjects.com` |
+| Madrid (Spain) | `es-mad-1` | `https://es-mad-1.linodeobjects.com` |
 | Miami, FL (USA) | `us-mia-1` | `https://us-mia-1.linodeobjects.com` |
 | Milan (Italy) | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
 | Newark, NJ (USA) | `us-east-1` | `https://us-east-1.linodeobjects.com` |

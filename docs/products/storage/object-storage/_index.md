@@ -7,9 +7,9 @@ tab_group_main:
     title: Overview
     weight: 10
 cascade:
-    date: 2020-06-02
+    date: 2024-04-07
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-10-25
+modified: 2024-04-07
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -45,6 +45,7 @@ Object Storage is available within the following data centers. For a full list o
 | Frankfurt (Germany) | `eu-central-1` |
 | Jakarta (Indonesia)\* | `id-cgk-1` |
 | Los Angeles, CA (USA)\* | `us-lax-1` |
+| Madrid (Spain)\* | `es-mad-1` |
 | Miami, FL (USA)\* | `us-mia-1` |
 | Milan (Italy)\* | `it-mil-1` |
 | Newark, NJ (USA) | `us-east-1` |
@@ -116,6 +117,13 @@ See the [Network Transfer Usage and Costs](/docs/products/platform/get-started/g
 {{< note >}}
 If creating a bucket in our **Jakarta** or **São Paulo** data centers, note that no additional transfer is added to their region-specific transfer pools.
 {{< /note >}}
+
+### Optimizing Applications to Avoid Rate Limiting
+The rate limit for the number of Requests Per Second (RPS) applies to a bucket and is evaluated against each bucket once per second. If the duration of any request is greater than one second, any open requests will count against the rate limit in the next one second window.
+
+For example, assume there are 750 requests for a single bucket with a duration of two seconds each. All of the requests that do not complete within the first second will count against the rate limit in the next second. With a rate limit of 750 requests per second for the bucket, no additional requests can be processed within the two second window until the first 750 requests complete. Any requests that are rate limited will receive a 503 response.
+
+To help avoid rate limiting you can structure your data across multiple buckets, each of which will have its own rate limit.
 
 ### Additional Limits and Specifications
 

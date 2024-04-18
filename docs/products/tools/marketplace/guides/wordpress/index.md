@@ -63,7 +63,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 1.  Once logged in, access the credentials file by running the following command:
 
     ```command
-    cat /root/.credentials
+    cat /home/$USERNAME/.credentials
     ```
 
 1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.

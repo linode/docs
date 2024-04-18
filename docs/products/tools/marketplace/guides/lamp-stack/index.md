@@ -35,7 +35,7 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
     {{< note >}}
-    The password for the MySQL root user is automatically generated and provided in the file `/root/.credentials` when the LAMP deployment completes.
+    The password for the MySQL root user is automatically generated and provided in the file `/home/$USERNAME/.credentials` when the LAMP deployment completes.
     {{< /note >}}
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}

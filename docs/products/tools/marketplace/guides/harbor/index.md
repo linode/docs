@@ -54,7 +54,7 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
         ```command
-        cat /root/.credentials
+        cat /home/$USERNAME/.credentials
         ```
 
 1.  In the Harbor login screen that appears, enter `admin` as the username and use the *Harbor admin password* found in your `.credentials` file.

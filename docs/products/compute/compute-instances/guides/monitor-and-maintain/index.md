@@ -4,7 +4,7 @@ description: "This guide introduces concepts and tools for monitoring and mainta
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
 tags: ["cloud manager","monitoring","linode platform"]
 published: 2012-08-22
-modified: 2023-03-14
+modified: 2024-03-11
 modified_by:
   name: Linode
 image: monitor-and-maintain-your-server.png
@@ -58,7 +58,7 @@ To turn Lassie on and off, see the [Recover from Unexpected Shutdowns with Lassi
 
 ## Linode Managed
 
-[Linode Managed](https://www.linode.com/managed) is our monitoring service that offers 24x7 incident response, dashboard metrics for your Linodes, free cPanel, and an automatic backup service. With a three-month Linode Managed commitment, you also get two complimentary standard site migrations performed by our [Professional Services Team](https://www.linode.com/professional-services). If you are running more than one Compute Instance, not all are required to be managed. You can establish separate accounts (e.g., production and development) and monitor only the most critical services running on designated instance(s). Existing customers can sign up for Linode Managed by [contacting support](https://cloud.linode.com/support/tickets).
+[Linode Managed](https://www.linode.com/managed) is our monitoring service that offers 24x7 incident response, dashboard metrics for your Linodes, free cPanel, and an automatic backup service. If you are running more than one Compute Instance, not all are required to be managed. You can establish separate accounts (e.g., production and development) and monitor only the most critical services running on designated instance(s). Existing customers can sign up for Linode Managed by [contacting support](https://cloud.linode.com/support/tickets).
 
 ## Manage Logs
 

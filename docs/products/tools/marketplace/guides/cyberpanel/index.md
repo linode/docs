@@ -3,7 +3,7 @@ description: "CyberPanel is a next-generation control panel, which provides a fr
 keywords: ['cyberpanel','marketplace','server']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-02-23
-modified: 2023-02-02
+modified: 2024-01-30
 image: DeployCyberPanel_marketplaceapps.png
 modified_by:
   name: Linode
@@ -28,8 +28,10 @@ contributors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used with CyberPanel.
+
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 ## Getting Started after Deployment
 
