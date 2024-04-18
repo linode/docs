@@ -1,18 +1,18 @@
 ---
 slug: install-odoo-10-on-ubuntu-16-04
+title: 'Install Odoo 10 on Ubuntu 16.04'
 description: 'This guide shows you how to install and configure Odoo, an open-source suite of over 4,500 business utilities which you can individually install, on Ubuntu 16.04.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2017-04-04
+modified: 2018-01-02
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 10", "Ubuntu 16.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-04-04
-modified: 2018-01-02
-title: 'Install Odoo 10 on Ubuntu 16.04'
 aliases: ['/websites/cms/install-odoo-10-on-ubuntu-16-04/','/websites/erp/install-odoo-10-on-ubuntu-16-04/']
 external_resources:
  - '[Odoo User Documentation](https://www.odoo.com/documentation/user/10.0/)'
  - '[Odoo Developer Documentation](https://www.odoo.com/documentation/10.0)'
-authors: ["Damaso Sanoja"]
-contributors: ["Damaso Sanoja"]
 ---
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including customer relationship management (CRM), sales pipeline, project management, manufacturing, invoicing, accounting, eCommerce, and inventory tools, just to name a few. There are thirty-four main applications created by the Odoo team and more than 5,500 developed by community members, covering a wide range of business needs.

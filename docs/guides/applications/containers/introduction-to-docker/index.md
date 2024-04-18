@@ -1,18 +1,18 @@
 ---
 slug: introduction-to-docker
+title: 'An Introduction to Docker'
 description: 'An introduction to using Docker, containers, and dockerfiles on your Linode.'
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2017-06-28
 keywords: ["docker", "container", "dockerfile"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-06-28
-title: 'An Introduction to Docker'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/introduction-to-docker/']
-authors: ["Jack Wallen"]
-contributors: ["Jack Wallen"]
 ---
 
 ![An introduction to Docker](docker-introduction.png "An introduction to Docker")

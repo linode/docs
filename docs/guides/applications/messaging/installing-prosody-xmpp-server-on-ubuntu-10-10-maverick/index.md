@@ -1,21 +1,21 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Install Prosody XMPP Server on Ubuntu 10.10'
 description: 'This guide will show you how to install, configure, and setup a basic configuration of Prosody, a lightweight XMPP server on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-23
+modified: 2012-10-03
+deprecated: true
 keywords: ["prosody", "prosody ubuntu lucid", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-10-10-maverick/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-10-maverick/']
-modified: 2012-10-03
-published: 2011-02-23
-title: 'Install Prosody XMPP Server on Ubuntu 10.10'
 relations:
     platform:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

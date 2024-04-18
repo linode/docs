@@ -1,16 +1,16 @@
 ---
 slug: twiki
-deprecated: true
+title: TWiki
 description: 'Installation, configuration and usage guides for the Ikiwiki wiki system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-31
+modified: 2013-10-04
+deprecated: true
 keywords: ["twiki", "wiki", "perl", "markdown"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/','/websites/wikis/twiki/']
-modified: 2013-10-04
-published: 2010-03-31
-title: TWiki
 tags: ["wiki"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

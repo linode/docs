@@ -1,11 +1,11 @@
 ---
+title: "Deploy Ruby on Rails through the Linode Marketplace"
 description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Marketplace."
-keywords: ['ruby on rails','marketplace', 'marketplace apps']
-tags: ["ruby","linode platform","marketplace","cloud-manager"]
 published: 2020-03-11
 modified: 2022-03-08
+keywords: ['ruby on rails','marketplace', 'marketplace apps']
+tags: ["ruby","linode platform","marketplace","cloud-manager"]
 image: RubyonRails_oneclickapps.png
-title: "Deploy Ruby on Rails through the Linode Marketplace"
 external_resources:
  - '[Ruby on Rails Documentation](https://guides.rubyonrails.org/)'
  - '[Securing Rails Applications](https://guides.rubyonrails.org/security.html)'

@@ -1,21 +1,21 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Use CouchDB for Document Based Data Storage on Ubuntu 10.04 (Lucid)'
 description: 'An introduction and getting started guide for CouchDB on Ubuntu 10.04 (Lucid) systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-09-24
+deprecated: true
 keywords: ["couchdb", "nosql", "json", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/ubuntu-10-04-lucid/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-10-04-lucid/']
-modified: 2013-09-24
-published: 2010-05-03
-title: 'Use CouchDB for Document Based Data Storage on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: couchdb-document-data-storage
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

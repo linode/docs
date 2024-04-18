@@ -1,16 +1,16 @@
 ---
 slug: finding-files-with-fd-command
+title: "Find Files With the fd Command"
+title_meta: "How to Find Files With the fd Command"
 description: 'This guide shows you how to install and use the fd tool on a Linux system. fd is a user-friendly alternative to the find command.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-11-05
 keywords: ['fd linux command','find command linux','alternative to find','linux fd']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-05
-title: "Find Files With the fd Command"
-title_meta: "How to Find Files With the fd Command"
 external_resources:
 - '[fd GitHub page](https://github.com/sharkdp/fd)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Linux users typically rely upon the built-in [`find` command](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/find.html) to locate files and directories on their system. It provides a large number of powerful and useful options, but its default behavior often fails to provide intuitive results. The free open-source [*fd*](https://github.com/sharkdp/fd) utility provides a user-friendly alternative to the `find` command. It is more efficient and easier to use, with default behavior that is better suited for the majority of searches. This guide compares the `find` and `fd` commands and explains how to use and install the `fd` command on Linux systems.

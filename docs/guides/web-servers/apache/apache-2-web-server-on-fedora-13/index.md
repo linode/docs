@@ -1,21 +1,21 @@
 ---
 slug: apache-2-web-server-on-fedora-13
-deprecated: true
+title: Apache 2 Web Server on Fedora 13
 description: 'Instructions for getting started with the Apache web server on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-28
+modified: 2011-04-29
+deprecated: true
 keywords: ["apache fedora 13", "fedora web server", "linux web server"]
 tags: ["web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-fedora-13/','/web-servers/apache/apache-2-web-server-on-fedora-13/','/web-servers/apache/installation/fedora-13/']
-modified: 2011-04-29
-published: 2010-05-28
-title: Apache 2 Web Server on Fedora 13
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

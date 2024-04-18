@@ -1,17 +1,17 @@
 ---
 slug: kubernetes-vs-nomad
+title: "Kubernetes vs Nomad"
 description: "Kubernetes offers a powerful and popular solution for container orchestration. But HashiCorp's Nomad has also gained its own prominence as a simpler and more flexible option for workload orchestration. So what is the best orchestration tool? Find out more about both Nomad and Kubernetes and how they compare in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-01-24
 keywords: ['kubernetes vs nomad','nomad and kubernetes','nomad hashicorp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-24
-title: "Kubernetes vs Nomad"
 external_resources:
 - '[HashiCorp Developer: Nomad vs. Kubernetes](https://developer.hashicorp.com/nomad/docs/nomad-vs-kubernetes)'
 - '[NetApp BlueXP: Kubernetes vs. Nomad - Understanding the Tradeoffs](https://bluexp.netapp.com/blog/cvo-blg-kubernetes-vs-nomad-understanding-the-tradeoffs)'
 - '[Imaginary Cloud: Nomad vs. Kubernetes: Container Orchestration Tools Compared](https://www.imaginarycloud.com/blog/nomad-vs-kubernetes/)'
 - '[Qovery: Kubernetes vs Nomad: What to Choose in 2022?](https://www.qovery.com/blog/kubernetes-vs-nomad-what-to-choose-in-2022)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Kubernetes, through efficient container orchestration, has helped define how people think about managing application clusters. As a result, Kubernetes is now a widely adopted tool, with plenty of community support.

@@ -1,12 +1,14 @@
 ---
 slug: ssl-apache2-centos
+title: 'SSL Certificates with Apache on CentOS 7'
 description: 'This guide provides you with step-by-step instructions on how to enable SSL to secure websites served through the Apache web server on Fedora or CentOS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-11-19
+modified: 2016-08-17
 keywords: ["apache SSL", "ssl on centos", "ssl on fedora", "ssl", "contos", "fedora", "apache", "httpd"]
 tags: ["fedora","lamp","centos","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-08-17
-published: 2014-11-19
-title: 'SSL Certificates with Apache on CentOS 7'
 external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)'
  - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
@@ -16,8 +18,6 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/security/ssl/ssl-apache2-centos/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![SSL Certificates with Apache on CentOS](SSL_Certificates_with_Apache_on_CentOS_7_smg.jpg)

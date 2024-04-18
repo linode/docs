@@ -1,16 +1,16 @@
 ---
 slug: load-testing-with-siege
+title: Load Testing Web Servers with Siege
 description: 'Load testing your web server with regression testing and benchmarking utility Siege'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-02-18
 keywords: ["siege", "load testing", "benchmarking"]
 tags: ["linux","http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-02-18
-title: Load Testing Web Servers with Siege
 external_resources:
  - '[Siege Home](http://www.joedog.org/siege-home)'
 aliases: ['/tools-reference/tools/load-testing-with-siege/']
-authors: ["Elle Krout"]
-contributors: ["Elle Krout"]
 ---
 
 Siege is an HTTP load testing and benchmarking utility that can be used to measure the performance of a web server when under duress. It evaluates the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. Siege offers three modes of operation: Regression, internet simulation, and brute force.

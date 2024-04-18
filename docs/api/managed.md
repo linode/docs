@@ -1,5 +1,5 @@
 ---
-title: Managed
 slug: managed
+title: Managed
 ---
 

@@ -1,20 +1,20 @@
 ---
 slug: big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm
+title: "Streaming Data Processing with Apache Storm"
 description: "Deploy Storm cluster on Linode cloud for real-time analytics on streaming datasets."
+authors: ["Karthik Shiraly"]
+contributors: ["Karthik Shiraly"]
+published: 2016-10-25
+modified: 2019-01-31
 keywords: ["storm", "analytics", "big data", "zookeeper"]
 tags: ["analytics"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-published: 2016-10-25
-modified: 2019-01-31
-title: "Streaming Data Processing with Apache Storm"
 external_resources:
 - '[Apache Storm project website](http://storm.apache.org/)'
 - '[Apache Storm documentation](https://storm.apache.org/releases/current/index.html)'
 - '[Storm - Distributed and Fault-Tolerant Real-time Computation](http://www.infoq.com/presentations/Storm-Introduction)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm/']
-authors: ["Karthik Shiraly"]
-contributors: ["Karthik Shiraly"]
 ---
 
 [Apache Storm](http://storm.apache.org/) is a big data technology that enables software, data, and infrastructure engineers to process high velocity, high volume data in real time and extract useful information. Any project that involves processing high velocity data streams in real time can benefit from it.

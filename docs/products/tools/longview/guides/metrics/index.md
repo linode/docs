@@ -1,8 +1,8 @@
 ---
 title: "Understanding Longview Metrics"
 description: "An overview of metrics collected by Longview, including how to view the metrics and understand the data."
-keywords: ["system monitoring", "longview", "metrics"]
 published: 2023-05-24
+keywords: ["system monitoring", "longview", "metrics"]
 tags: ["linode platform","cloud manager","statistics","monitoring"]
 ---
 

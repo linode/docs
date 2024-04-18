@@ -1,18 +1,18 @@
 ---
 slug: how-to-use-ack-command
+title: "How to Use the ack Command on Linux"
+title_meta: "Using the ack Command on Linux"
 description: "The ack command provides a powerful alternative to grep. The ack command has the benefit of being specifically designed for working with source code repositories, making it a more well-suited tool for developers. In this tutorial, learn everything you need to get started using it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-20
 keywords: ['ack command line', 'ack command in linux', 'ack command examples']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-20
-title: "How to Use the ack Command on Linux"
-title_meta: "Using the ack Command on Linux"
 external_resources:
 - '[ack!: Documentation](https://beyondgrep.com/documentation/)'
 - '[DigitalOcean: How To Install and Use Ack, a Grep Replacement for Developers, on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-ack-a-grep-replacement-for-developers-on-ubuntu-14-04)'
 - '[Linux Shell Tips: How to Install and Use Ack Command in Linux with Examples](https://www.linuxshelltips.com/ack-command-in-linux/)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 The Linux search tool *grep* has plenty to offer, but, if you are working with source code, there is a more efficient alternative. That alternative is *ack*, a faster tool dedicated specifically to searching source code.

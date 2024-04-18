@@ -1,11 +1,11 @@
 ---
-description: "This guide provides you with step-by-step instructions for making additional copies of your Compute Instance."
-keywords: ["clone", " cloning", "cloud manager"]
-tags: ["linode platform","cloud manager"]
-published: 2019-03-18
-modified: 2024-04-11
 title: "Cloning a Compute Instance"
 title_meta: "How to Clone a Compute Instance"
+description: "This guide provides you with step-by-step instructions for making additional copies of your Compute Instance."
+published: 2019-03-18
+modified: 2024-04-11
+keywords: ["clone", " cloning", "cloud manager"]
+tags: ["linode platform","cloud manager"]
 aliases: ['/migrate-to-linode/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode-classic-manager/','/guides/clone-your-linode/']
 ---
 

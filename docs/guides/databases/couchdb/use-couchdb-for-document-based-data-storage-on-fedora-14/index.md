@@ -1,21 +1,21 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-fedora-14
-deprecated: true
+title: Use CouchDB for Document Based Data Storage on Fedora 14
 description: 'An introduction and getting started guide for CouchDB on Fedora 14 systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-06
+modified: 2013-09-24
+deprecated: true
 keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-fedora-14/','/databases/couchdb/fedora-14/']
-modified: 2013-09-24
-published: 2010-12-06
-title: Use CouchDB for Document Based Data Storage on Fedora 14
 relations:
     platform:
         key: couchdb-document-data-storage
         keywords:
             - distribution: Fedora 14
 tags: ["fedora","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

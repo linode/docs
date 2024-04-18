@@ -1,21 +1,21 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty
-deprecated: true
+title: 'Websites with the Cherokee Web Server on Ubuntu 9.04 (Jaunty)'
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.04 (Jaunty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-14
+modified: 2011-04-29
+deprecated: true
 keywords: ["cherokee", "web sever", "cherokee on ubuntu", "ubuntu jaunty"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/','/web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/']
-modified: 2011-04-29
-published: 2009-09-14
-title: 'Websites with the Cherokee Web Server on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

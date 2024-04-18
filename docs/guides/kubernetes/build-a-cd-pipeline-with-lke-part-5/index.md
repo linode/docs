@@ -1,15 +1,15 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-5
-description: "In part five of our series on Kubernetes, you will learn how to privately access internal services within your cluster using kubectl proxy and kubectl port-forward."
 title: "Building a CD Pipeline Using LKE (Part 5): Accessing Internal Services"
-keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-06
-modified: 2022-12-14
-tags: ["kubernetes", "lke"]
-aliases: ['/guides/lke-continuous-deployment-part-5/']
+description: "In part five of our series on Kubernetes, you will learn how to privately access internal services within your cluster using kubectl proxy and kubectl port-forward."
 authors: ["Linode"]
 contributors: ["Linode"]
+published: 2021-05-06
+modified: 2022-12-14
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["kubernetes", "lke"]
+aliases: ['/guides/lke-continuous-deployment-part-5/']
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Accessing Internal Services](cd-presentation-header-05-accessing-internal-services.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Accessing Internal Services")

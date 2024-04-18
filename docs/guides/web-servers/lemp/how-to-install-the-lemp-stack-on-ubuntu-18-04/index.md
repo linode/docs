@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-the-lemp-stack-on-ubuntu-18-04
+title: 'Installing the LEMP Stack on Ubuntu 18.04'
+title_meta: 'How to Install the LEMP Stack on Ubuntu 18.04'
 description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-04
+modified: 2020-03-18
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-18
-published: 2018-06-04
-title: 'Installing the LEMP Stack on Ubuntu 18.04'
-title_meta: 'How to Install the LEMP Stack on Ubuntu 18.04'
 image: How-to-Install-LEMP-Stack-on-Ubuntu-1804_1200x631.png
 relations:
     platform:
@@ -15,8 +17,6 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/','/web-servers/lemp/how-to-install-the-lemp-stack-on-ubuntu-18-04/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->

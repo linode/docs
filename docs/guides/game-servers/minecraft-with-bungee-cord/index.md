@@ -1,6 +1,12 @@
 ---
 slug: minecraft-with-bungee-cord
+title: 'Setting up BungeeCord to Link Spigot Servers'
+title_meta: 'How to Set Up BungeeCord to Link Spigot Servers'
 description: 'Learn how to set up BungeeCord to Link Spigot servers and setup IP routing with some basic troubleshooting'
+authors: ["Thomas Wemyss"]
+contributors: ["Thomas Wemyss"]
+published: 2015-09-09
+modified: 2021-06-11
 keywords: ["minecraft", "spigot", "bungeecord", "link", "bukkit", "25565", "minecraft servers", "linking minecraft servers", "how to set up bungeecord"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -9,14 +15,8 @@ external_resources:
  - '[Minecraft Wiki](http://minecraft.wiki/w/Minecraft_Wiki)'
  - '[Official BungeeCord Site](https://www.spigotmc.org/wiki/bungeecord/)'
  - '[BungeeCord and Spigot Forums](https://www.spigotmc.org/)'
-published: 2015-09-09
-modified: 2021-06-11
-title: 'Setting up BungeeCord to Link Spigot Servers'
-title_meta: 'How to Set Up BungeeCord to Link Spigot Servers'
 aliases: ['/applications/game-servers/minecraft-with-bungee-cord/','/game-servers/minecraft-with-bungee-cord/']
 dedicated_cpu_link: true
-authors: ["Thomas Wemyss"]
-contributors: ["Thomas Wemyss"]
 ---
 
 After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/guides/minecraft-with-spigot-ubuntu/), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows simple and easy switching between the Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than a single Minecraft server instance.

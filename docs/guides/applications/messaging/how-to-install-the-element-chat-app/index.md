@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-the-element-chat-app
+title: "Installing and Configuring the Element Chat Application"
+title_meta: "How to Install and Configure the Element Chat App"
 description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-04-07
 keywords: ['Element','Matrix-Synapse','installation','chat','messaging']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-07
 image: ElementChat.jpg
-title: "Installing and Configuring the Element Chat Application"
-title_meta: "How to Install and Configure the Element Chat App"
 external_resources:
 - '[Element](https://element.io/)'
 - '[Matrix](https://matrix.org/)'
@@ -23,8 +25,6 @@ external_resources:
 - '[Elements advanced configuration options](https://github.com/vector-im/element-web/blob/develop/docs/config.md)'
 - '[GitHub page](https://github.com/matrix-org/synapse)'
 
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [*Element*](https://element.io/) is a free open source chat and messaging client that is an alternative to Discord and Slack. It implements communication protocols from the [*Matrix*](https://matrix.org/) application layer using *end-to-end encryption* (E2EE). Formerly known as Riot and before that as Vector, Element is available as either a web application or a desktop/mobile app. This guide explains how to download and install both Element and the Matrix-Synapse communication layer. It also describes how to set up encryption and use these applications with the NGINX web server.

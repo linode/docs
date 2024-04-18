@@ -1,15 +1,15 @@
 ---
 slug: linux-system-administration-basics
+title: "Linux System Administration Basics"
 description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-13
+modified: 2021-05-14
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-system-administration-basics/','/using-linux/administration-basics/','/tools-reference/linux-system-administration-basics/']
-modified: 2021-05-14
-published: 2009-12-13
-title: "Linux System Administration Basics"
 tags: ["linux"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.

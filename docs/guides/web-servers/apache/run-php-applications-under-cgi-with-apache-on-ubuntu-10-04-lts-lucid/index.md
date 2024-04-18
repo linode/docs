@@ -1,21 +1,21 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Run PHP Applications under CGI with Apache on Ubuntu 10.04 LTS (Lucid)'
 description: 'Methods for enabling dynamic content run as individual users with PHP on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-04
+deprecated: true
 keywords: ["php cgi", "php ubuntu 10.04", "php ubuntu lucid", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/ubuntu-10-04-lucid/','/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-04-lts-lucid/','/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-04-lts-lucid/']
-modified: 2013-10-04
-published: 2010-05-03
-title: 'Run PHP Applications under CGI with Apache on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: php-cgi-apache
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,19 +1,19 @@
 ---
 slug: logic-programming-languages
-description: 'What is logic programming and what are its benefits? Get those answers plus find examples of logic programming languages and their features. ✓ Learn more!'
-keywords: ['logic programming languages', 'logical programs', 'logic programming examples', 'logic programming paradigm']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-04
 title: "A Guide to Understanding Logic Programming"
 title_meta: "Logic Programming Languages: Use Cases, Examples, and Features"
+description: 'What is logic programming and what are its benefits? Get those answers plus find examples of logic programming languages and their features. ✓ Learn more!'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-04-04
+keywords: ['logic programming languages', 'logical programs', 'logic programming examples', 'logic programming paradigm']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Prolog Standard](https://www.iso.org/standard/21413.html)'
 - '[Prolog Tutorial](https://www.tutorialspoint.com/prolog/prolog_introduction.htm)'
 - '[Prolog Wikipedia page](https://en.wikipedia.org/wiki/Prolog)'
 - '[Logic Programming Wikipedia page](https://en.wikipedia.org/wiki/Logic_programming)'
 - '[GNU Prolog page](http://www.gprolog.org/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Most computer programming languages fall into one of several *programming paradigms*. A paradigm classifies a language based on its features and how its programs are constructed and used. Logic programming is a paradigm that uses a system of facts and rules. It is commonly used in the artificial intelligence and machine learning domains. This guide explains the logic programming paradigm and compares it to other programming models. It also explains its benefits and use cases, and introduces the most important logic programming languages.

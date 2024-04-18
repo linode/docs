@@ -1,10 +1,10 @@
 ---
 title: "TLS/SSL Termination on NodeBalancers"
 description: 'This guide provides you with step-by step instructions on how to force all connections to your NodeBalancer to use the secure and encrypted SSL protocol.'
-keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
-tags: ["linode platform","security","networking","ssl"]
 published: 2015-09-01
 modified: 2023-04-18
+keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
+tags: ["linode platform","security","networking","ssl"]
 aliases: ['/platform/nodebalancer/nodebalancer-ssl-configuration/','/guides/nodebalancer-ssl-configuration/']
 image: nodebalancer-ssl-configuration.png
 ---

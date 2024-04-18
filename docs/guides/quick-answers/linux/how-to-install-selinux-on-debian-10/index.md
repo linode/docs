@@ -1,22 +1,22 @@
 ---
 slug: how-to-install-selinux-on-debian-10
+title: "Install SELinux on Debian 10"
+title_meta: "How to Install SELinux on Debian 10"
 description: "Learn how to install SELinux and use it to protect the security of your Debian 10 system"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-17
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/how-to-install-selinux-on-debian-10/']
 bundles: ['debian-security']
 tags: ["debian","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-17
 image: InstallSELinux_Deb10.png
-title: "Install SELinux on Debian 10"
-title_meta: "How to Install SELinux on Debian 10"
 relations:
     platform:
         key: how-to-install-selinux
         keywords:
             - distribution: Debian 10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://en.wikipedia.org/wiki/Security-Enhanced_Linux), named [AppArmor](https://wiki.ubuntu.com/AppArmor). Both SELinux and AppArmor provide a set of tools to isolate applications from each other to protect the host system from being compromised. AppArmor offers Ubuntu users mandatory access control options, without the perceived difficulty or learning curve that SELinux may have. However, if you are switching to Debian 10, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.

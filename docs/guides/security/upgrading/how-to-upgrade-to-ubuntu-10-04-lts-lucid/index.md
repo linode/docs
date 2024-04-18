@@ -1,21 +1,21 @@
 ---
 slug: how-to-upgrade-to-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'How to Upgrade to Ubuntu 10.04 LTS (Lucid)'
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-29
+modified: 2020-12-01
+deprecated: true
 keywords: ["ubuntu upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid/','/upgrading/upgrade-to-ubuntu-10-04-lucid/']
-modified: 2020-12-01
-published: 2010-04-29
-title: 'How to Upgrade to Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

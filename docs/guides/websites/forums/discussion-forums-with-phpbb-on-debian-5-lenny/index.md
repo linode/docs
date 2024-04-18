@@ -1,21 +1,21 @@
 ---
 slug: discussion-forums-with-phpbb-on-debian-5-lenny
-deprecated: true
+title: 'Discussion Forums with phpBB on Debian 5 (Lenny)'
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Debian 5 (Lenny).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2009-09-30
+modified: 2012-10-08
+deprecated: true
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-phpbb-on-debian-5-lenny/','/web-applications/bulletin-boards/phpbb/debian-5-lenny/']
-modified: 2012-10-08
-published: 2009-09-30
-title: 'Discussion Forums with phpBB on Debian 5 (Lenny)'
 relations:
     platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Debian 5
-authors: ["Stan Schwertly"]
-contributors: ["Stan Schwertly"]
 ---
 
 

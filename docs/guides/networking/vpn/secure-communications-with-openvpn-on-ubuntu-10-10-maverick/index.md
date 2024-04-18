@@ -1,21 +1,21 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Secure Communications with OpenVPN on Ubuntu 10.10'
 description: 'Use OpenVPN to securely connect separate networks on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-29
+modified: 2012-10-08
+deprecated: true
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu maverick", "ubuntu 10.10"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-10-maverick/','/networking/openvpn/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2010-11-29
-title: 'Secure Communications with OpenVPN on Ubuntu 10.10'
 relations:
     platform:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

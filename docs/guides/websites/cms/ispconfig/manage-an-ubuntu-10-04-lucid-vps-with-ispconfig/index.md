@@ -1,21 +1,21 @@
 ---
 slug: manage-an-ubuntu-10-04-lucid-vps-with-ispconfig
-deprecated: true
+title: 'Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig'
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.04 (Lucid) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-19
+modified: 2011-04-29
+deprecated: true
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/ispconfig/manage-an-ubuntu-10-04-lucid-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/ubuntu-10-04-lucid/','/websites/cms/manage-an-ubuntu-10-04-lucid-vps-with-ispconfig/']
-modified: 2011-04-29
-published: 2010-05-19
-title: 'Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig'
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.

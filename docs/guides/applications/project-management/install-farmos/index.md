@@ -1,15 +1,15 @@
 ---
 slug: install-farmos
-keywords: ["farmos", "Drupal", "LAMP"]
-tags: ["drupal", "lamp", "cms"]
-description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, farmOS.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-09
-modified: 2021-06-22
 title: 'How to Install farmOS - a Farm Recordkeeping Application'
-aliases: ['/applications/project-management/install-farmos/']
+description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, farmOS.'
 authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
+published: 2017-09-09
+modified: 2021-06-22
+keywords: ["farmos", "Drupal", "LAMP"]
+tags: ["drupal", "lamp", "cms"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/applications/project-management/install-farmos/']
 ---
 
 ![Farm_OS Banner](FarmOS.png)

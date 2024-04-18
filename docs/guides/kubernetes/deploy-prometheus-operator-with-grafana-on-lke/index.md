@@ -1,22 +1,22 @@
 ---
 slug: deploy-prometheus-operator-with-grafana-on-lke
+title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
+title_meta: "How to Deploy Prometheus Operator and Grafana on LKE"
 description: 'Learn how to quickly deploy Prometheus Operator monitoring stack including Grafana on Linode Kubernetes Engine.'
+authors: ["Ben Bigger"]
+contributors: ["Ben Bigger"]
+published: 2020-07-29
 og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy Prometheus Operator monitoring stack including Grafana on Linode Kubernetes Engine.'
 keywords: ['kubernetes', 'lke', 'prometheus', 'grafana']
 tags: ["monitoring","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-29
 image: DeployPromOp_Graf_LKE.png
-title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
-title_meta: "How to Deploy Prometheus Operator and Grafana on LKE"
 external_resources:
 - '[Prometheus Operator Helm Chart on Github](https://github.com/helm/charts/tree/master/stable/prometheus-operator): Useful for reviewing configuration parameters and troubleshooting.'
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'
 - '[Alertmanager Documentation](https://prometheus.io/docs/alerting/latest/alertmanager/)'
 - '[Grafana Tutorials](https://grafana.com/tutorials/)'
 aliases: ['/kubernetes/deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine/','/guides/deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine/']
-authors: ["Ben Bigger"]
-contributors: ["Ben Bigger"]
 ---
 
 In this guide, you will deploy the [Prometheus Operator](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) to your Linode Kubernetes Engine (LKE) cluster using [Helm](https://helm.sh/), either as:

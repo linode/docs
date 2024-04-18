@@ -1,18 +1,18 @@
 ---
 slug: install-cpanel-on-centos
+title: Install cPanel on CentOS
 description: 'This guide shows how to install cPanel, a leading server control panel that enables you to manage server services and install applications, on a Linode running CentOS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-09-07
+modified: 2023-07-25
 keywords: ["cpanel", "Linode control panel", "install cpanel", "cpanel centos"]
 tags: ["centos","cms","cpanel","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/cpanel/centos-6/','/websites/cms/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos-5/','/websites/cms/cpanel/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos/','/websites/cms/cpanel-on-centos-6-5/']
-modified: 2023-07-25
-published: 2016-09-07
-title: Install cPanel on CentOS
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'
-authors: ["Linode"]
-contributors: ["Linode"]
 image: Install_cPanel_smg.jpg
 ---
 

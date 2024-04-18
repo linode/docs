@@ -1,18 +1,18 @@
 ---
 slug: getting-started-ember
+title: "How to Build a Website with the Ember Framework"
+title_meta: "Building a Website with the Ember Framework"
 description: "Ember offers a full framework for constructing modern web applications. Using an MVC structure, Ember comes with everyting you need, from templates and routing through components and services. Follow this tutorial to learn more about Ember and see how you can start making your own applications with it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-04-03
 keywords: ['javascript ember tutorial', 'ember js examples', 'create ember project']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-03
-title: "How to Build a Website with the Ember Framework"
-title_meta: "Building a Website with the Ember Framework"
 external_resources:
 - '[Ember Guides: Introduction](https://guides.emberjs.com/release/tutorial/part-1/)'
 - '[MDN Web Docs: Getting Started with Ember](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Ember_getting_started)'
 - '[Tutorials Point: EmberJS Tutorial](https://www.tutorialspoint.com/emberjs/index.htm)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Ember is a JavaScript framework for making the process of developing modern web applications better for developers and users. Ember's component and service-based framework give powerful tools for making consistent and efficient applications.

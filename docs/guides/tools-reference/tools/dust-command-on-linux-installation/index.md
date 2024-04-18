@@ -1,16 +1,16 @@
 ---
 slug: dust-command-on-linux-installation
+title: "Check Disk Usage on Linux with the dust Command"
+title_meta: "Installing and Using dust on Linux"
 description: 'Dust is a replacement for the Linux du command. In this guide, you learn how to use dust to view your Linux system''s disk usage.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-11-12
 keywords: ['Dust linux', 'linux check disk space','Check disk usage Linux','Du replacement']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-12
-title: "Check Disk Usage on Linux with the dust Command"
-title_meta: "Installing and Using dust on Linux"
 external_resources:
 - '[Dust page on GitHub](https://github.com/bootandy/dust)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Hard drive space on a system can fill up quickly, especially when new software is installed. System administrators frequently have to review disk space utilization and see what files or directories are using up the most storage. This can be accomplished using the Linux `du` command, but many users find it cumbersome and awkward to use. The open-source [*dust*](https://github.com/bootandy/dust) program offers a new way of looking at disk space usage more intuitively and straightforwardly. This guide explains how to install and use the dust utility on Linux and how it functions as a du replacement.

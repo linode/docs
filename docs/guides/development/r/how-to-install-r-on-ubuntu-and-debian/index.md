@@ -1,18 +1,18 @@
 ---
 slug: how-to-install-r-on-ubuntu-and-debian
+title: 'How to install R on Ubuntu and Debian'
 description: 'R is a programming language commonly used for statistical analysis and data visualization. Learn how to install the base R package on your Linode.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-01-29
+modified: 2023-11-29
 keywords: ['R', 'statistics', 'R Foundation', 'data visualization']
 tags: ["statistics", "ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2023-11-29
-published: 2018-01-29
-title: 'How to install R on Ubuntu and Debian'
 audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
 aliases: ['/development/r/how-to-install-r-on-ubuntu-and-debian/']
-authors: ["Sam Foo"]
-contributors: ["Sam Foo"]
 ---
 
 ![How to install R on Ubuntu and Debian](install-r-ubuntu-debian-title.jpg "How to install R on Ubuntu and Debian title graphic")

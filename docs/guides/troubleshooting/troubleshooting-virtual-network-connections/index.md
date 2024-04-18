@@ -1,14 +1,14 @@
 ---
 slug: troubleshooting-virtual-network-connections
+title: "Troubleshooting Virtual Network Connections"
+title_meta: "How to Troubleshoot Virtual Network Connections"
 description: 'It is important to monitor all the network connections that are critical to your business. In this guide, you learn how to troubleshoot Virtual Network Connections for different operating systems.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2023-03-20
 keywords: ['troubleshoot vnc', 'troubleshoot linx', 'troubleshoot macOS', 'vnc encryption support']
 tags: ['vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-20
-title: "Troubleshooting Virtual Network Connections"
-title_meta: "How to Troubleshoot Virtual Network Connections"
-authors: ["Tom Henderson"]
-contributors: ["Tom Henderson"]
 ---
 
 Troubleshooting Virtual Network Connections (VNC) is a progression of tasks from checking network connections, VNC version compatibility, option tweaks interoperability, and encryption matches.

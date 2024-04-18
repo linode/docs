@@ -1,21 +1,21 @@
 ---
 slug: apache-2-web-server-on-fedora-14
-deprecated: true
+title: Apache 2 Web Server on Fedora 14
 description: 'Instructions for getting started with the Apache web server on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-07
+modified: 2013-10-04
+deprecated: true
 keywords: ["apache fedora 14", "fedora web server", "linux web server"]
 tags: ["web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-fedora-14/','/web-servers/apache/installation/fedora-14/','/web-servers/apache/apache-2-web-server-on-fedora-14/']
-modified: 2013-10-04
-published: 2010-12-07
-title: Apache 2 Web Server on Fedora 14
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

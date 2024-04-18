@@ -1,16 +1,16 @@
 ---
 slug: install-and-use-the-yarn-package-manager
+title: "Install and Use the Yarn Package Manager"
+title_meta: "How to Install and Use the Yarn Package Manager"
 description: 'This guide will show you how to install and use the Yarn package manager, a great alternative to NPM which you can use to manage your Javascript projects.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-09-03
 keywords: ['yarn package manager','yarn install','yarn vs npm']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-03
-title: "Install and Use the Yarn Package Manager"
-title_meta: "How to Install and Use the Yarn Package Manager"
 external_resources:
 - '[Yarn Classic Documentation](https://classic.yarnpkg.com/en/docs)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Yarn is a Node.js package manager used to handle JavaScript project dependencies. It was originally developed to be a more performant alternative to the Node Package Manager (NPM). This guide discusses the differences between Yarn and NPM and shows you how to get started using it.

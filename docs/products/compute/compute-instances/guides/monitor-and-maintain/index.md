@@ -1,10 +1,10 @@
 ---
 title: "Monitor and Maintain a Compute Instance"
 description: "This guide introduces concepts and tools for monitoring and maintaining your server."
-keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
-tags: ["cloud manager","monitoring","linode platform"]
 published: 2012-08-22
 modified: 2024-03-11
+keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
+tags: ["cloud manager","monitoring","linode platform"]
 image: monitor-and-maintain-your-server.png
 aliases: ['/uptime/monitoring/monitoring-and-maintaining-your-server/','/uptime/monitoring-and-maintaining-your-server-classic-manager/','/uptime/monitoring-and-maintaining-your-server-new-manager/','/uptime/monitoring-and-maintaining-your-server/','/monitoring-and-maintaining/','/guides/monitoring-and-maintaining-your-server/','/guides/monitor-and-maintain-compute-instance/']
 ---

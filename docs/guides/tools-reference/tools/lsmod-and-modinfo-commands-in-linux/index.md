@@ -1,14 +1,14 @@
 ---
 slug: lsmod-and-modinfo-commands-in-linux
+title: "​​How to Use the lsmod and modinfo Commands in Linux"
+title_meta: "Using The lsmod and modinfo Commands in Linux"
 description: 'Learn how to use the lsmod and modinfo command on your Linux system. These commands provide information on the Linux kernel modules installed on your desktop or server.'
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2022-01-07
 keywords: ['kernel module','lsmod','modinfo']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-07
-title: "​​How to Use the lsmod and modinfo Commands in Linux"
-title_meta: "Using The lsmod and modinfo Commands in Linux"
-authors: ["Jack Wallen"]
-contributors: ["Jack Wallen"]
 ---
 
 The Linux kernel is modular in nature, which means it's possible to add and remove modules as needed. This makes for a lightweight, secure, and lightweight kernel. Its flexibility enables you to add and remove the features you need to make an operating system fit your use case and preferences.

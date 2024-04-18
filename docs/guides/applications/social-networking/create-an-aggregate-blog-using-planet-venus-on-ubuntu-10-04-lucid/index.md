@@ -1,14 +1,16 @@
 ---
 slug: create-an-aggregate-blog-using-planet-venus-on-ubuntu-10-04-lucid
-deprecated: true
+title: "Aggregate Content Using Planet Venus on Ubuntu 10.04"
 description: 'This guide will show you how to use The Planet feed aggregator to provide overviews of a community by collecting community feeds on Ubuntu 10.04 "Lucid".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-10
+modified: 2013-10-04
+deprecated: true
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/ubuntu-10-04-lucid/','/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-10-04-lucid/']
-modified: 2013-10-04
-published: 2010-08-10
-title: "Aggregate Content Using Planet Venus on Ubuntu 10.04"
 external_resources:
     - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
     - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
@@ -17,8 +19,6 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

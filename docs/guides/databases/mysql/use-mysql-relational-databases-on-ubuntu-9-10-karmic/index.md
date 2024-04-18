@@ -1,21 +1,21 @@
 ---
 slug: use-mysql-relational-databases-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Use MySQL Relational Databases on Ubuntu 9.10 (Karmic)'
 description: 'Getting started with MySQL for web and server applications on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-29
+modified: 2012-10-08
+deprecated: true
 keywords: ["mysql on linux", "mysql ubuntu", "mysql karmic", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-ubuntu-9-10-karmic/','/databases/mysql/ubuntu-9-10-karmic/']
-modified: 2012-10-08
-published: 2009-10-29
-title: 'Use MySQL Relational Databases on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","mysql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

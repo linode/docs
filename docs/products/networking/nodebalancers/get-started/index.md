@@ -2,12 +2,12 @@
 title: Get Started
 title_meta: "Getting Started with NodeBalancers"
 description: "Learn how to quickly start using a NodeBalancer, including advice on architecting your application and configuring the NodeBalancer"
+published: 2022-10-07
 tab_group_main:
     weight: 30
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers/','/linode-platform/nodebalancer-howto/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/', '/guides/nodebalancer/getting-started-with-nodebalancers/','/guides/getting-started-with-nodebalancers/']
-published: 2022-10-07
 ---
 
 Nearly every production application can benefit from a load balancing solution like Linode's NodeBalancers. This guide covers how to get started with NodeBalancers, including how to architect your application, configure the NodeBalancer, and update the DNS.

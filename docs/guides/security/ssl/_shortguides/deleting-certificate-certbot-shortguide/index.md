@@ -1,4 +1,10 @@
 ---
+slug: deleting-certificate-certbot-shortguide
+title: "Shortguide"
+description: "Shortguide"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 # Shortguide: Deleting a Certificate through Certbot
 
 headless: true
@@ -6,14 +12,8 @@ show_on_rss_feed: false
 
 # Ignore the below front matter. It is included to comply with existing tests.
 
-slug: deleting-certificate-certbot-shortguide
-title: "Shortguide"
-description: "Shortguide"
 keywords: ["shortguide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

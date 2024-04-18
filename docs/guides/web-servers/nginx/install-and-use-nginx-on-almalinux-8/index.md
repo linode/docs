@@ -1,12 +1,14 @@
 ---
 slug: install-and-use-nginx-on-almalinux-8
+title: "Installing and Using NGINX on AlmaLinux 8"
+title_meta: "How to Install and Use NGINX on AlmaLinux 8"
 description: "Learn the basics of installing and configuring NGINX on your AlmaLinux 8 server in this quick guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-11
 keywords: ['nginx','web server','reverse proxy','load balancing','install nginx on almalinux 8','alma linux']
 tags: ['nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-11
-title: "Installing and Using NGINX on AlmaLinux 8"
-title_meta: "How to Install and Use NGINX on AlmaLinux 8"
 external_resources:
 - '[NGINX Documentation](https://nginx.org/en/docs/)'
 - '[NGINX](https://nginx.org/)'
@@ -15,8 +17,6 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: AlmaLinux 8
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 [NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was created to be a high-performing and scalable alternative to other popular web servers, like Apache. Its event-driven architecture continues to set it apart as one of the fastest and lightest web servers available. This guide shows you how to install NGINX on your AlmaLinux 8 server and how to get started using it.

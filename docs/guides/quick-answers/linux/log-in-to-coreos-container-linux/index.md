@@ -1,14 +1,14 @@
 ---
 slug: log-in-to-coreos-container-linux
+title: Log in to CoreOS Container Linux
 description: 'This quick answer guide will show you how to log in to CoreOS Container Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-05-08
 keywords: ["coreos", "container linux", "login", "core"]
 tags: ["container","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/linux/log-in-to-coreos-container-linux/','/quick-answers/log-in-to-coreos-container-linux/']
-published: 2017-05-08
-title: Log in to CoreOS Container Linux
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The `root` user is not active by default in Container Linux, so root login is not available. Instead, log in as the `core` user.

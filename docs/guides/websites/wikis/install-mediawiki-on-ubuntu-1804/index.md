@@ -1,12 +1,14 @@
 ---
 slug: install-mediawiki-on-ubuntu-1804
+title: Install MediaWiki on Ubuntu 18.04
 description: 'This guide will show you how to get started with the popular MediaWiki engine for powering wiki websites of all types and sizes on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-08-28
 keywords: ["mediawiki", "wiki", "web-applications"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/mediawiki-engine/','/websites/wikis/install-mediawiki-on-ubuntu-1804/','/web-applications/wikis/mediawiki/']
-published: 2019-08-28
-title: Install MediaWiki on Ubuntu 18.04
 external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'
  - '[What is Media Wiki](https://www.mediawiki.org/wiki/Manual:What_is_MediaWiki%3F)'
@@ -16,8 +18,6 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: Ubuntu 18.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

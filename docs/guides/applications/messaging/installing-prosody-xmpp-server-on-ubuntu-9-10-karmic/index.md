@@ -1,21 +1,21 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Installing Prosody XMPP Server on Ubuntu 9.10 (Karmic)'
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-09
+modified: 2011-04-29
+deprecated: true
 keywords: ["prosody", "prosody ubuntu karmic", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-9-10-karmic/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-published: 2009-11-09
-title: 'Installing Prosody XMPP Server on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

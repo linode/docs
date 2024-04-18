@@ -1,13 +1,15 @@
 ---
 slug: install-mastodon-server-on-centos-stream
+title: "Install a Mastodon Server on CentOS Stream 8"
+title_meta: "How to Install a Mastodon Server on CentOS Stream 8"
 description: "In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','centos stream']
 tags: ['centos', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
 image: MASTODON1.jpg
-title: "Install a Mastodon Server on CentOS Stream 8"
-title_meta: "How to Install a Mastodon Server on CentOS Stream 8"
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -24,8 +26,6 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: CentOS Stream 8
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}

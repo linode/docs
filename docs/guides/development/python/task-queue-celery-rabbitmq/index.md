@@ -1,10 +1,12 @@
 ---
 slug: task-queue-celery-rabbitmq
+title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
 description: 'This guide provides you with instructions for configuring a task queue using Celery, a Python Task-Queue management app and RabbitMQ, an open-source messaging broker.'
+authors: ["Florent Houbart"]
+contributors: ["Florent Houbart"]
+published: 2017-11-30
 keywords: ["celery", "Python", "tasks", "asynchronous", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-30
-title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
 external_resources:
 - '[Celery Project page](http://www.celeryproject.org/)'
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
@@ -13,8 +15,6 @@ concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/task-queue-celery-rabbitmq/']
-authors: ["Florent Houbart"]
-contributors: ["Florent Houbart"]
 ---
 
 ![How to Set Up a Task Queue with Celery and RabbitMQ](how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)

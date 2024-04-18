@@ -1,17 +1,17 @@
 ---
 slug: building-a-website-with-astro
-description: "Astro is a web development framework centered on content. With Astro you get a framework that adapts to the tools you use, and all of Astro's design favors putting your content out there. Learn about how Astro accomplishes this and how you can get started building your Astro website with this tutorial."
-keywords: ['astro website builder','astro web','astro framework']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-10
 title: "How to Build a Website with Astro"
 title_meta: "Building a Website wtih Astro"
+description: "Astro is a web development framework centered on content. With Astro you get a framework that adapts to the tools you use, and all of Astro's design favors putting your content out there. Learn about how Astro accomplishes this and how you can get started building your Astro website with this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-04-10
+keywords: ['astro website builder','astro web','astro framework']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Astro Docs: Getting Started](https://docs.astro.build/en/getting-started/)'
 - '[LogRocket: Using Astro and Netlify to Build and Deploy a Web App](https://blog.logrocket.com/astro-netlify-build-deploy-web-app/)'
 - '[CSS-Tricks: A Look at Building with Astro ](https://css-tricks.com/a-look-at-building-with-astro/)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Astro provides a framework for content-centered website development. Astro's framework is flexible, allowing you use your preferred UI framework and your preferred content format, whether that is HTML, Markdown, or a CMS.

@@ -1,21 +1,21 @@
 ---
 slug: websites-with-nginx-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Websites with nginx on Ubuntu 10.10 (Maverick)'
 description: 'A basic guide to installing nginx from source on Ubuntu 10.10 (Maverick)'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-15
+modified: 2012-10-08
+deprecated: true
 keywords: ["nginx", "nginx ubuntu 10.10", "http", "web servers", "ubuntu", "ubuntu maverick"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/','/web-servers/nginx/installation/ubuntu-10-10-maverick/','/web-servers/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2011-02-15
-title: 'Websites with nginx on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

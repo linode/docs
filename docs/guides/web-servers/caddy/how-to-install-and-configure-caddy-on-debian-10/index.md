@@ -1,12 +1,14 @@
 ---
 slug: how-to-install-and-configure-caddy-on-debian-10
+title: "Installing and Configuring the Caddy Web Server on Debian 10"
+title_meta: "How to Install the Caddy Web Server on Debian 10"
 description: "In this guide, you will install the Caddy web server on Debian 10. You will also configure Caddy to serve your site's domain over HTTPS."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-05
 keywords: ['web server','caddy','https','Caddyfile']
 tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-05
-title: "Installing and Configuring the Caddy Web Server on Debian 10"
-title_meta: "How to Install the Caddy Web Server on Debian 10"
 image: CaddyWebServ_Deb10.png
 relations:
     platform:
@@ -14,8 +16,6 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-debian-10/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [Caddy](https://caddyserver.com/) is a fast, open-source, and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).

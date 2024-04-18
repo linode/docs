@@ -1,13 +1,15 @@
 ---
 slug: create-a-self-signed-tls-certificate-ubuntu-18-04
+title: 'How to Create a Self-Signed TLS Certificate on Ubuntu 18.04'
+title_meta: 'Creating a Self-Signed TLS Certificate on Ubuntu 18.04'
 description: 'This guide will show you how to create and install a self-signed TLS certificate by using the OpenSSL utility from the command line running on Ubuntu 18.04'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-03-26
 keywords: ["ubuntu tls certificate", "ubuntu ssl certificate", "ubuntu self certified"]
 tags: ["ubuntu", "security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-ubuntu-18-04/']
-published: 2021-03-26
-title: 'How to Create a Self-Signed TLS Certificate on Ubuntu 18.04'
-title_meta: 'Creating a Self-Signed TLS Certificate on Ubuntu 18.04'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:
@@ -15,8 +17,6 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?

@@ -1,10 +1,10 @@
 ---
+title: "Deploy Akaunting through the Linode Marketplace"
 description: "Deploy Akaunting on a Linode Compute Instance. This provides you a free, open source accounting software designed for small businesses and freelancers."
-keywords: ['akaunting','accounting','productivity']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-01-25
 modified: 2022-03-08
-title: "Deploy Akaunting through the Linode Marketplace"
+keywords: ['akaunting','accounting','productivity']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Akaunting](https://akaunting.com)'
 aliases: ['/guides/deploying-akaunting-marketplace-app/','/guides/akaunting-marketplace-app/']

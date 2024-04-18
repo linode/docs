@@ -1,18 +1,18 @@
 ---
 slug: lsof
+title: 'How to List Open Files with lsof'
 description: 'An introduction to lsof.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-07-16
+modified: 2020-12-03
 keywords: ["UNIX", "lsof", "TCP/IP", "network", "utility"]
 tags: ["networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-16
-modified: 2020-12-03
-title: 'How to List Open Files with lsof'
 external_resources:
   - '[lsof on Wikipedia](https://en.wikipedia.org/wiki/Lsof)'
   - '[lsof Manual Page on die.net](https://linux.die.net/man/8/lsof)'
 aliases: ['/networking/diagnostics/lsof/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

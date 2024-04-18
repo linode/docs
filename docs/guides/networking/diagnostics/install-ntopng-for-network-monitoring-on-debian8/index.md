@@ -1,15 +1,15 @@
 ---
 slug: install-ntopng-for-network-monitoring-on-debian8
+title: 'Monitor Your Network with ntopng'
 description: 'This Linode tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows.'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2018-05-10
+modified: 2018-04-16
 keywords: ["ntopng", "network monitor", "diagnostics"]
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-05-10
 aliases: ['/networking/diagnostics/deploy-ntopng-on-debian-8/','/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/']
-modified: 2018-04-16
-title: 'Monitor Your Network with ntopng'
-authors: ["Andrew Lescher"]
-contributors: ["Andrew Lescher"]
 ---
 
 ![Monitor Your Network with ntopng](monitor-your-network-with-ntopng.jpg "Monitor Your Network with ntopng")

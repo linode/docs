@@ -1,20 +1,20 @@
 ---
 slug: custom-compiled-kernel-centos-7
+title: 'Custom Compiled Kernel on CentOS 7'
 description: 'Instructions for compiling and configuring a custom kernel on your CentOS 7 Linode'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2016-08-02
+modified: 2017-08-01
 keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-08-01
-published: 2016-08-02
-title: 'Custom Compiled Kernel on CentOS 7'
 relations:
     platform:
         key: custom-compiled-kernel
         keywords:
             - distribution: CentOS 7
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/']
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 ![Custom Compiled Kernel on CentOS](custom-compiled-kernel-on-centos-7.png "Custom compiled kernel on CentOS")

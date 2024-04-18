@@ -1,18 +1,18 @@
 ---
 slug: how-to-setup-and-use-a-vault-server
-description: 'This guide will show you how to install Vault, a open source, centralized secrets management system which provides a secure and reliable way to manage secrets.'
-keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-26
 title: "Setting Up and Using a Vault Server"
 title_meta: "How to Set Up and Use a Vault Server"
+description: 'This guide will show you how to install Vault, a open source, centralized secrets management system which provides a secure and reliable way to manage secrets.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
+keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/secrets-management/how-to-set-up-and-use-a-vault-server/']
 tags: ["ubuntu", "security"]
 image: SetUpVaultserver.png
 external_resources:
   - '[Vault Documentation](https://www.vaultproject.io/docs)'
-authors: ["Hackersploit"]
-contributors: ["Hackersploit"]
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.

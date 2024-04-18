@@ -1,14 +1,14 @@
 ---
 slug: what-is-cloud-native-computing
-description: 'Cloud-native computing helps teams and organization develop applications that are dynamic and scaleable on public, private, and hybrid clouds.'
-keywords: ['cloud native computing']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-06-23
-image: CloudNativeComputing.png
 title: "What is Cloud-Native Computing?"
-tags: ["container", "kubernetes"]
+description: 'Cloud-native computing helps teams and organization develop applications that are dynamic and scaleable on public, private, and hybrid clouds.'
 authors: ["Steven J. Vaughan-Nichols"]
 contributors: ["Steven J. Vaughan-Nichols"]
+published: 2023-06-23
+keywords: ['cloud native computing']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: CloudNativeComputing.png
+tags: ["container", "kubernetes"]
 ---
 
 Cloud-native computing is an application development and delivery paradigm. It encompasses several technologies and architectural patterns, including open-source Linux containers, Kubernetes, and microservices. Cloud-native computing emphasizes scalability, automation, efficiency, and simplicity in all domains of the application development and deployment life-cycle —including team organization. With this approach, IT professionals create applications that can be deployed on-demand to the cloud, quickly and easily; saving on your computing resource costs.

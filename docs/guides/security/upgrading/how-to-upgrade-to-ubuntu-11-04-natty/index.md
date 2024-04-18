@@ -1,21 +1,21 @@
 ---
 slug: how-to-upgrade-to-ubuntu-11-04-natty
-deprecated: true
+title: 'How to Upgrade to Ubuntu 11.04 (Natty)'
 description: 'How to upgrade from Ubuntu 10.10 (Maverick) to Ubuntu 11.04 (Natty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-28
+modified: 2013-05-10
+deprecated: true
 keywords: ["ubuntu 11.04 upgrade", "ubuntu natty upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-11-04-natty/','/upgrading/upgrade-to-ubuntu-11-04-natty/']
-modified: 2013-05-10
-published: 2011-04-28
-title: 'How to Upgrade to Ubuntu 11.04 (Natty)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 11.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

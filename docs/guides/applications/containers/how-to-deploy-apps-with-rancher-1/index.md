@@ -1,19 +1,19 @@
 ---
 slug: how-to-deploy-apps-with-rancher-1
+title: 'How to Deploy Apps with Rancher'
 description: 'This guide shows how to use the open source Rancher platform to deploy applications and containers to remote hosts.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-11-29
+modified: 2018-01-16
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["container","docker","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
-modified: 2018-01-16
-title: 'How to Deploy Apps with Rancher'
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
 deprecated: true
 deprecated_link: applications/containers/how-to-deploy-apps-with-rancher/
 aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-1/']
-authors: ["Angel Guarisma"]
-contributors: ["Angel Guarisma"]
 ---
 
 ## What is Rancher?

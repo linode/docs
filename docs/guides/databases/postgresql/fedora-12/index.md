@@ -1,12 +1,14 @@
 ---
 slug: fedora-12
-deprecated: true
+title: Use PostgreSQL Relational Databases on Fedora 12
 description: 'Using the PostgreSQL relational database server with Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-13
+modified: 2011-04-29
+deprecated: true
 keywords: ["postgresql fedora 12", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-04-29
-published: 2009-09-13
-title: Use PostgreSQL Relational Databases on Fedora 12
 relations:
     platform:
         key: use-postrgesql-database
@@ -14,8 +16,6 @@ relations:
             - distribution: Fedora 12
 tags: ["database","postgresql","fedora"]
 aliases: ['/databases/postgresql/fedora-12/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

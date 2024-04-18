@@ -2,12 +2,12 @@
 slug: live-streaming-with-livekit-and-obs
 title: "Live Streaming With LiveKit and OBS Studio"
 description: 'Learn how to set up a LiveKit server for live streaming from OBS Studio.'
-keywords: ['streaming','obs','webrtc']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2024-01-31
 modified: 2024-02-05
+keywords: ['streaming','obs','webrtc']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[LiveKit Docs](https://docs.livekit.io/realtime/)'
 ---

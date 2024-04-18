@@ -1,14 +1,14 @@
 ---
 slug: create-a-simple-microsite
+title: Create a Simple Microsite
 description: 'Combine the capabilities of the Akamai and Linode platforms to create a complete end-to-end solution for a simple microsite.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-10-13
 keywords: ["microsite", "cdn", "high availability"]
 tags: ["linode platform","akamai platform","web server","cdn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-13
-title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This use case combines Linode's and Akamai's capabilities to create a complete end-to-end solution for a simple microsite. To build this application we'll use Linode origin servers and an Akamai delivery product.

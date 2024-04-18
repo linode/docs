@@ -1,18 +1,18 @@
 ---
 slug: python-data-types
+title: "The Basics of Python Data Types"
 description: "Python may not be a statically-typed programming language, but data types still play an important role. Knowing what Python data types are and how to use them can make your programs more effective and efficient overall. Learn the basics of Python data types and their operations in this guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-04-04
 keywords: ['python data types', 'python data types check', 'python data types cheat sheet']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-04
-title: "The Basics of Python Data Types"
 external_resources:
 - '[Python Documentation: Built-in Types](https://docs.python.org/3/library/stdtypes.html)'
 - '[Real Python: Basic Data Types in Python](https://realpython.com/python-data-types/)'
 - '[Programiz: Python Data Types](https://www.programiz.com/python-programming/variables-datatypes)'
 - '[GeeksforGeeks: Python Data Types](https://www.geeksforgeeks.org/python-data-types/)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Knowing about Python's data types helps to make your Python programs more effective, and helps you to avoid errors. This guide covers the most useful Python data types, providing knowledge of their fundamentals and giving a cheat sheet that you can refer to.

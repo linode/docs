@@ -1,21 +1,21 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 9.10 operating system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-22
+modified: 2011-04-29
+deprecated: true
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/','/frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-published: 2010-02-22
-title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

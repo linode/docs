@@ -1,12 +1,14 @@
 ---
 slug: installing-and-using-docker-on-centos-and-fedora
+title: "Installing and Using Docker on CentOS and Fedora"
+title_meta: "How to Install and Use Docker on CentOS and Fedora"
 description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-06-16
 keywords: ['docker','docker engine','containers']
 tags: ["docker","containers","centos","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-16
-title: "Installing and Using Docker on CentOS and Fedora"
-title_meta: "How to Install and Use Docker on CentOS and Fedora"
 external_resources:
 - '[Website for Docker](https://www.docker.com/)'
 - '[Documentation for Docker](https://docs.docker.com/)'
@@ -16,8 +18,6 @@ relations:
         key: installing-and-using-docker
         keywords:
             - distribution: CentOS and Fedora
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.

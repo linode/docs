@@ -1,17 +1,17 @@
 ---
 slug: how-to-create-website-using-laravel
+title: "Build a Website Using the Laravel Framework"
+title_meta: "How to Create a Website Using Laravel"
 description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
-title: "Build a Website Using the Laravel Framework"
-title_meta: "How to Create a Website Using Laravel"
 external_resources:
 - '[Laravel](https://laravel.com/)'
 - '[Laravels documentation](https://laravel.com/docs/)]'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 [Laravel](https://laravel.com/) is a PHP web application framework boasting an elegant and expressive syntax. With Laravel, you can easily spin up a new website while also having the features and scalability to handle advanced and large-scale applications.

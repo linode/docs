@@ -1,14 +1,16 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-centos-5
-deprecated: true
+title: Instant Messaging Services with ejabberd on CentOS 5
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-08
+modified: 2011-08-22
+deprecated: true
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/ejabberd/centos-5/','/applications/messaging/instant-messaging-services-with-ejabberd-on-centos-5/']
-modified: 2011-08-22
-published: 2009-12-08
-title: Instant Messaging Services with ejabberd on CentOS 5
 external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -18,8 +20,6 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Ejabberd, the "Erlang Jabber Daemon," is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some, mostly due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.

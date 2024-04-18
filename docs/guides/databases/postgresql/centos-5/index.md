@@ -1,12 +1,14 @@
 ---
 slug: centos-5
-deprecated: true
+title: Use PostgreSQL Relational Databases on CentOS 5
 description: 'This guide provides you with step-by-step instructions for installing and configuring the PostgreSQL relational database server, on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-13
+modified: 2013-09-24
+deprecated: true
 keywords: ["postgresql", "postgresql database", "postgresql on centos", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2013-09-24
-published: 2009-09-13
-title: Use PostgreSQL Relational Databases on CentOS 5
 relations:
     platform:
         key: use-postrgesql-database
@@ -14,8 +16,6 @@ relations:
             - distribution: CentOS 5
 tags: ["database","postgresql","centos"]
 aliases: ['/databases/postgresql/centos-5/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on CentOS 5. We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.

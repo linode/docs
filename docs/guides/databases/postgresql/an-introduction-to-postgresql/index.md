@@ -1,16 +1,16 @@
 ---
 slug: an-introduction-to-postgresql
+title: "What is PostgreSQL?"
+title_meta: "An Introduction to PostgreSQL"
 description: 'This guide introduces the PostgreSQL database, outlining how it is different from other SQL databases like MySQL, and describes its benefits along with possible use cases.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-01-07
 keywords: ['postgresql vs mysql','what is postgresql?','difference between mysql and postgresql','postgres use cases']
 tags: ['postgresql', 'mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-07
-title: "What is PostgreSQL?"
-title_meta: "An Introduction to PostgreSQL"
 external_resources:
 - '[PostgreSQL website](https://www.postgresql.org/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

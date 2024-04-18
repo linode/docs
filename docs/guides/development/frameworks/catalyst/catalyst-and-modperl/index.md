@@ -1,16 +1,16 @@
 ---
 slug: catalyst-and-modperl
+title: 'Catalyst and mod_perl'
 description: 'This guide provides you with step-by-step instructions for installing the Catalyst framework from a CPAN repository so you can build dynamic websites and applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-29
+modified: 2013-09-27
 keywords: ["Catalyst", "dynamic content", "web applications"]
 tags: ["web applications","apache","perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/catalyst-and-modperl/','/websites/frameworks/catalyst-and-modperl/','/development/frameworks/catalyst/catalyst-and-modperl/','/frameworks/catalyst/']
-modified: 2013-09-27
-published: 2010-01-29
-title: 'Catalyst and mod_perl'
 deprecated: true
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The Catalyst web framework is a contemporary Perl-based MVC, or Model View Controller. Like similar projects such as [Django](/docs/frameworks/), [Ruby On Rails](/docs/development/ror/), and [Seaside](/docs/guides/deploy-smalltalk-applications-with-seaside/), Catalyst promotes efficient and rapid development, clear application logic, and web centric development paradigms. If you are used to developing applications with Perl and would like to develop modern web applications, you may consider using the Catalyst framework.

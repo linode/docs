@@ -1,10 +1,10 @@
 ---
+title: "Deploy Wazuh through the Linode Marketplace"
 description: "Deploy Wazuh on a Linode Compute Instance. This provides you with an open source a security monitoring solution."
-keywords: ['security','vulnerability','monitoring']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2023-09-11
-title: "Deploy Wazuh through the Linode Marketplace"
+keywords: ['security','vulnerability','monitoring']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Wazuh](https://wazuh.com/)'
 aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-app/']

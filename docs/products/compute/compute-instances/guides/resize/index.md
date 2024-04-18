@@ -1,11 +1,11 @@
 ---
-description: "A walkthrough on upgrading or downgrading a Compute Instance's plan, including switching to a different plan type."
-keywords: ["upgrading", "resizing", "disk space"]
-tags: ["linode platform","cloud manager"]
-modified: 2023-10-31
-published: 2017-02-14
 title: "Change Plans (Resize)"
 title_meta: "How to Resize a Compute Instance"
+description: "A walkthrough on upgrading or downgrading a Compute Instance's plan, including switching to a different plan type."
+published: 2017-02-14
+modified: 2023-10-31
+keywords: ["upgrading", "resizing", "disk space"]
+tags: ["linode platform","cloud manager"]
 image: resizing_a_linode.png
 aliases: ['/platform/disk-images/resizing-a-linode-classic-manager/','/resizing/','/platform/disk-images/resizing-a-linode/','/migrate-to-linode/disk-images/resizing-a-linode/','/guides/resizing-a-linode/']
 ---

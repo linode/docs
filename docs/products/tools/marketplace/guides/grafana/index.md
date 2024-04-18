@@ -1,10 +1,10 @@
 ---
+title: "Deploy Grafana through the Linode Marketplace"
 description: "Learn how to deploy Grafana, an open source analytics and monitoring solution with a focus on metric visualization, through the Linode Marketplace."
-keywords: ['grafana','monitoring','dashboard','marketplace']
-tags: ["linode platform","monitoring","marketplace","cloud-manager"]
 published: 2020-03-11
 modified: 2022-03-08
-title: "Deploy Grafana through the Linode Marketplace"
+keywords: ['grafana','monitoring','dashboard','marketplace']
+tags: ["linode platform","monitoring","marketplace","cloud-manager"]
 image: feature.png
 external_resources:
 - '[Create Grafana API tokens and dashboards for an organization](https://grafana.com/docs/grafana/latest/tutorials/api_org_token_howto/)'

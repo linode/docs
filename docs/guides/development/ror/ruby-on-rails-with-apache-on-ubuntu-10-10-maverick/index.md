@@ -1,13 +1,15 @@
 ---
 slug: ruby-on-rails-with-apache-on-ubuntu-10-10-maverick
+title: 'Ruby on Rails with Apache on Ubuntu 10.10 (Maverick)'
 description: 'Using the Apache web server with Ubuntu 10.10 to serve Ruby on Rails applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2012-10-08
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-apache-on-ubuntu-10-10-maverick/','/frameworks/ruby-on-rails-apache/ubuntu-10-10-maverick/','/development/ror/ruby-on-rails-with-apache-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2011-02-17
-title: 'Ruby on Rails with Apache on Ubuntu 10.10 (Maverick)'
 deprecated: true
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
@@ -19,8 +21,6 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.

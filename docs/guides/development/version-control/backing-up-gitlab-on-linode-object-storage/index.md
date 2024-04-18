@@ -1,13 +1,13 @@
 ---
 slug: backing-up-gitlab-on-linode-object-storage
+title: 'Backing up Gitlab on Linode Object Storage'
 description: "Use gitlab tooling and Linode Object Storage to seemlessly back up your Gitlab installation in a compressed image with a single command."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-10-27
 keywords: ["git", "object-storage", "gitlab"]
 tags: ["version control system","email","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-27
-title: 'Backing up Gitlab on Linode Object Storage'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## In This Guide

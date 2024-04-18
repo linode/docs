@@ -1,12 +1,14 @@
 ---
 slug: fedora-13
-deprecated: true
+title: Use PostgreSQL Relational Databases on Fedora 13
 description: 'Using the PostgreSQL relational database server with Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-28
+modified: 2011-04-29
+deprecated: true
 keywords: ["postgresql fedora 13", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-04-29
-published: 2010-05-28
-title: Use PostgreSQL Relational Databases on Fedora 13
 relations:
     platform:
         key: use-postrgesql-database
@@ -14,8 +16,6 @@ relations:
             - distribution: Fedora 13
 tags: ["database","postgresql","fedora"]
 aliases: ['/databases/postgresql/fedora-13/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

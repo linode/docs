@@ -1,15 +1,15 @@
 ---
 slug: running-ansible-playbooks
-description: 'An introduction to configuration management with the Ansible IT automation platform including installation, configuration and playbook set up.'
-keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-06-01
-modified: 2015-09-21
 title: Automate Server Configuration with Ansible Playbooks
-aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/','/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/']
-tags: ["automation"]
+description: 'An introduction to configuration management with the Ansible IT automation platform including installation, configuration and playbook set up.'
 authors: ["Joshua Lyman"]
 contributors: ["Joshua Lyman"]
+published: 2015-06-01
+modified: 2015-09-21
+keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/','/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/']
+tags: ["automation"]
 ---
 
 **Playbooks** define a set of tasks to be executed by Ansible on a group of managed nodes. While you can use Ansible to execute one-off tasks via the command line, Playbooks can be reused, shared across teams, version controlled, and support complex deployment and rollout requirements. You can use features such as handlers, variables, templates, error handling, and control logic within your Playbooks to intelligently automate your IT processes across a fleet of hosts.

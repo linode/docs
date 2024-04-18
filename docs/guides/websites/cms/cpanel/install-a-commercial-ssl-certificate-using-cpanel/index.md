@@ -1,19 +1,19 @@
 ---
 slug: install-a-commercial-ssl-certificate-using-cpanel
+title: Install a Commercial SSL Certificate Using cPanel
 description: 'Generate a CSR and install a commercial SSL certificate through the cPanel interface.'
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2011-09-27
+modified: 2017-04-28
 keywords: ["ssl", "ip"]
 tags: ["centos","cpanel","ssl","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/install-a-commercial-ssl-certificate-using-cpanel/','/websites/cms/cpanel/install-a-commercial-ssl-certificate-using-cpanel/','/web-applications/control-panels/cpanel/ssl-on-cpanel/']
-modified: 2017-04-28
-published: 2011-09-27
-title: Install a Commercial SSL Certificate Using cPanel
 external_resources:
  - '[cPanel Home Page](https://cpanel.com)'
  - '[cPanel Support](https://cpanel.com/support)'
  - '[cPanel Documentation](https://documentation.cpanel.net)'
-authors: ["Chris Ciufo"]
-contributors: ["Chris Ciufo"]
 ---
 
 [cPanel](https://cpanel.com/) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will show you how to install SSL certificates on your Linode using cPanel, through the cPanel interface. This guide was made on a cPanel server using the default *paper_lantern* theme.

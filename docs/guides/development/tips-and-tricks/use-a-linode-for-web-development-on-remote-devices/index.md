@@ -1,21 +1,21 @@
 ---
 slug: use-a-linode-for-web-development-on-remote-devices
+title: "Use a Linode for Web Development on Remote Devices"
 description: "This guide shows how to set up a remote development environment on your Linode. You can then connect to it from a remote device such as a tablet or laptop."
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2017-12-14
+modified: 2021-12-30
 og_description: "This guide will show you how to create a remote development environment on your Linode."
 keywords: ["docker","container","portainer","linode","remote", "devices"]
 tags: ["docker", "container", "nginx", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-14
-modified: 2021-12-30
-title: "Use a Linode for Web Development on Remote Devices"
 image: Linode_WebDev.jpg
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Portainer](https://portainer.io/)'
 audiences: ["beginner"]
 aliases: ['/development/tips-and-tricks/use-a-linode-for-web-development-on-remote-devices/','/development/use-a-linode-for-web-development-on-remote-devices/']
-authors: ["Damaso Sanoja"]
-contributors: ["Damaso Sanoja"]
 ---
 
 ![Use a Linode for Web Development on Remote Devices](Linode_WebDev.jpg "WebDev_Title Graphic")

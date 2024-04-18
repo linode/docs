@@ -1,13 +1,13 @@
 ---
 slug: types-of-api
-description: "What are the different types of APIs and when should you use them? This guide discusses types of API and their different protocols."
-keywords: ['types of apis','api formats','api types']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-08
 title: "What are the Four Types of API Formats?"
 title_meta: "A Guide to API Formats: The Different Types of APIs"
+description: "What are the different types of APIs and when should you use them? This guide discusses types of API and their different protocols."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
+published: 2022-04-08
+keywords: ['types of apis','api formats','api types']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 APIs are what keep software connected. Whether you are looking to link your application to others or you want to have smooth communication between services, APIs help bring multiple pieces of an application together.

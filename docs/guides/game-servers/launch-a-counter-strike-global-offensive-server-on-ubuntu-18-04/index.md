@@ -1,12 +1,14 @@
 ---
 slug: launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04
+title: "Running a Counter Strike Global Offensive Server on Ubuntu 18.04"
+title_meta: "How to Run CS:GO Server on Ubuntu 18.04"
 description: "This Counter Strike: Global Offensive (CS:GO) server guide explains how to install SteamCMD, download the dedicated server, and launch the game server."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-01-07
 keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go", "csgo server", "csgo server hosting", "steam servers", "game servers", "games", "ubuntu", "ubuntu 14.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-01-07
-title: "Running a Counter Strike Global Offensive Server on Ubuntu 18.04"
-title_meta: "How to Run CS:GO Server on Ubuntu 18.04"
 aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/','/applications/game-servers/csgo-server-debian-ubuntu/']
 external_resources:
   - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
@@ -16,8 +18,6 @@ relations:
         key: launch-counterstrike-server
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 18.04](launch-a-counter-strike-global-offensive-1804.png "Launch a Counter Strike: Global Offensive server on Ubuntu 18.04")

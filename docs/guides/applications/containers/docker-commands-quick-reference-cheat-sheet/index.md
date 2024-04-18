@@ -1,17 +1,17 @@
 ---
 slug: docker-commands-quick-reference-cheat-sheet
+title: Docker Commands Quick Reference Cheat Sheet
 description: 'A quick reference cheat sheet on Docker commands for installation, containers, images and more.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-03-30
+modified: 2018-12-18
 keywords: ["docker", "quick reference", "cheat sheet", "commands"]
 aliases: ['/applications/containers/docker-commands-quick-reference-cheat-sheet/','/applications/containers/docker-quick-reference-cheat-sheet/']
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-18
-published: 2015-03-30
-title: Docker Commands Quick Reference Cheat Sheet
 external_resources:
   - '[Docker Cheat Sheet (Github)](https://github.com/wsargent/docker-cheat-sheet)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Docker Commands Quick Reference Cheat Sheet](Docker_Commands_Quick_Reference_Cheat_Sheet_smg.png "Docker Commands Quick Reference Cheat Sheet")

@@ -1,9 +1,9 @@
 ---
 title: Configure Firewall Rules to Allow Access from Linode Infrastructure (for Managed Services Customers)
 title_meta: Configure Firewall Rules to Allow Access from Linode Infrastructure
-linkTitle: Configure Firewall Rules
 description: "Learn how to configure your firewall rules so that the Managed Service's team of experts are able to access your Compute Instances and troubleshoot issues."
 published: 2023-04-11
+linkTitle: Configure Firewall Rules
 ---
 
 As a Managed Services customer, you may need to add or modify your firewall rules to allow access from our infrastructure. When done alongside [configuring SSH access for Managed Services](/docs/products/services/managed/guides/ssh-access/), this enables the Support team to log in to your system and troubleshoot issues. It also enables our infrastructure to perform the checks configured on your monitors. The exact procedure varies based on the firewall software in use. See the following guides for help configuring firewalls:

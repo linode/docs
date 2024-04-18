@@ -1,14 +1,14 @@
 ---
 slug: installing-and-using-the-curlie-command-on-linux
+title: "Install and Use the curlie Command on Linux"
+title_meta: "How to Install and Use the curlie Command on Linux"
 description: "Learn how to install and use curlie, a frontend to curl that provides the modernity and user-friendliness of HTTPie."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-09-24
 keywords: ['linux curlie','httpie curlie','curl vs curlie']
 tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-24
-title: "Install and Use the curlie Command on Linux"
-title_meta: "How to Install and Use the curlie Command on Linux"
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 [Curlie](https://github.com/rs/curlie) is a frontend to the ubiquitous command-line HTTP client cURL. With curlie, you get all of the features and versatility of cURL with a modern and user-friendly interface similar to the HTTP client, [HTTPie](/docs/guides/installing-and-using-httpie-on-linux/). In this guide, you learn about the benefits of curlie and how to install and start using it on a Linux system.

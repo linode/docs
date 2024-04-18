@@ -3,11 +3,11 @@ slug: ls-command-in-linux
 title: "9 Ways to Use the Ls Command in Linux"
 title_meta: "Ls Command in Linux: Listing Files & Directories"
 description: 'The Ls command in Linux is useful for listing files and directories, as well as displaying detailed info. ✓ Read our guide to learn how to use the Ls command!'
-keywords: ['ls command in linux','ls command','linux ls','linux ls command','what is ls','cmd ls','ls bash','ls output','linux ll command','linux ll']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2023-04-11
+keywords: ['ls command in linux','ls command','linux ls','linux ls command','what is ls','cmd ls','ls bash','ls output','linux ll command','linux ll']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[freeCodeCamp: The Linux LS Command – How to List Files in a Directory + Option Flags](https://www.freecodecamp.org/news/the-linux-ls-command-how-to-list-files-in-a-directory-with-options/)'
 - '[TechMint: 15 Basic ‘ls’ Command Examples in Linux](https://www.tecmint.com/15-basic-ls-command-examples-in-linux/)'

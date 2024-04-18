@@ -1,13 +1,15 @@
 ---
 slug: install-gogs-on-debian
+title: 'Install Gogs on Debian 9 with nginx and PostgreSQL'
 description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
+authors: ["Nashruddin Amin"]
+contributors: ["Nashruddin Amin"]
+published: 2015-10-09
+modified: 2017-11-09
 keywords: ["gogs", "git", "golang", "nginx", " postgresql"]
 tags: ["debian","version control system","nginx","postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-10-09
 aliases: ['/development/version-control/install-gogs-on-debian-8-jessie/','/applications/development/install-gogs-on-debian-8-jessie/','/development/version-control/install-gogs-on-debian/','/applications/development/install-gogs-on-debian-jessie/']
-modified: 2017-11-09
-title: 'Install Gogs on Debian 9 with nginx and PostgreSQL'
 external_resources:
     - '[Gogs official site](http://gogs.io)'
     - '[Gogs documentation](http://gogs.io/docs)'
@@ -18,8 +20,6 @@ relations:
         key: install-gogs
         keywords:
             - distribution: Debian 9
-authors: ["Nashruddin Amin"]
-contributors: ["Nashruddin Amin"]
 ---
 
 

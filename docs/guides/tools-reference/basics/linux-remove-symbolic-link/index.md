@@ -3,11 +3,11 @@ slug: linux-remove-symbolic-link
 title: "Remove Symbolic Links"
 title_meta: "How to Remove a Symbolic Link in Linux"
 description: 'In Linux, remove symbolic link commands include rm, unlink, and find. Learn how to remove symbolic links with each of the three commands.'
-keywords: ['linux remove symbolic link','remove symlink','remove symbolic link','remove symlink linux','linux remove symlink','how to remove symbolic link','unlink in linux','how to remove a symbolic link','unlink linux','delete symbolic link']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Stephen Satchell"]
 contributors: ["Stephen Satchell"]
 published: 2023-04-18
+keywords: ['linux remove symbolic link','remove symlink','remove symbolic link','remove symlink linux','linux remove symlink','how to remove symbolic link','unlink in linux','how to remove a symbolic link','unlink linux','delete symbolic link']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[LinuxHint: How Do I Remove a Symbolic Link in Linux?](https://linuxhint.com/remove-symbolic-link-linux/)'
 - '[nixCraft: How To: Linux Delete Symbolic Link Softlink](https://www.cyberciti.biz/faq/linux-remove-delete-symbolic-softlink-command/)'

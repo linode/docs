@@ -1,21 +1,21 @@
 ---
 slug: email-and-calendars-with-zimbra-6-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Email and Calendars with Zimbra 6 on Ubuntu 10.04 LTS (Lucid)'
 description: 'Getting started with the open source edition of Zimbra groupware on your Ubuntu 10.04 (Lucid) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2011-05-17
+deprecated: true
 keywords: ["zimbra ubuntu 10.04", "zimbra lucid", "zimbra on ubuntu", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-ubuntu-10-04-lucid/','/email/zimbra/email-and-calendars-with-zimbra-6-on-ubuntu-10-04-lts-lucid/']
-modified: 2011-05-17
-published: 2010-05-03
-title: 'Email and Calendars with Zimbra 6 on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: zimbra-groupware
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your Ubuntu 10.04 LTS (Lucid) Linode.

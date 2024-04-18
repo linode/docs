@@ -1,21 +1,21 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-arch-linux
-deprecated: true
+title: WSGI using uWSGI and nginx on Arch Linux
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Arch Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-28
+modified: 2013-10-07
+deprecated: true
 keywords: ["uwsgi", "wsgi", "nginx", "python", "arch linux"]
 tags: ["web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-arch-linux/','/web-servers/nginx/python-uwsgi/arch-linux/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-arch-linux/']
-modified: 2013-10-07
-published: 2010-12-28
-title: WSGI using uWSGI and nginx on Arch Linux
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Arch Linux
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

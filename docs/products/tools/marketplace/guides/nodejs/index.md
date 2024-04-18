@@ -1,10 +1,10 @@
 ---
+title: "Deploy Node.js through the Linode Marketplace"
 description: "Deploy Node.js on a Linode Compute Instance. This provides a JavaScript runtime to use with web applications."
-keywords: ['nodejs','development','javascript']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2022-03-08
-title: "Deploy Node.js through the Linode Marketplace"
+keywords: ['nodejs','development','javascript']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/nodejs-marketplace-app/']
 ---
 

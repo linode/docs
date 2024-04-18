@@ -1,10 +1,10 @@
 ---
+title: "Deploy cPanel through the Linode Marketplace"
 description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Marketplace Apps."
-keywords: ['cpanel','whm','hosting','manager']
-tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 published: 2020-03-13
 modified: 2022-05-31
-title: "Deploy cPanel through the Linode Marketplace"
+keywords: ['cpanel','whm','hosting','manager']
+tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']

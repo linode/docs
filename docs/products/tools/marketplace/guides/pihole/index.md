@@ -1,10 +1,10 @@
 ---
+title: "Deploy Pi-hole through the Linode Marketplace"
 description: "Deploy Pi-hole on a Linode Compute Instance. This app protects your devices from unwanted content, without needing to  install any client-side software."
-keywords: ['pi-hole','adblocker','dns','sinkhole']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2022-03-08
-title: "Deploy Pi-hole through the Linode Marketplace"
+keywords: ['pi-hole','adblocker','dns','sinkhole']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Pi-hole](https://pi-hole.net/)'
 aliases: ['/guides/deploying-pihole-marketplace-app/','/guides/pihole-marketplace-app/']

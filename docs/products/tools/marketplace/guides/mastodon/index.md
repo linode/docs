@@ -1,10 +1,10 @@
 ---
 title: "Deploy Mastodon through the Linode Marketplace"
 description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Marketplace."
-keywords: ['social', 'messaging', 'mastodon']
-tags: ["linode platform","mastodon","marketplace","cloud-manager",]
 published: 2022-12-12
 modified: 2024-04-16
+keywords: ['social', 'messaging', 'mastodon']
+tags: ["linode platform","mastodon","marketplace","cloud-manager",]
 external_resources:
   - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
   - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'

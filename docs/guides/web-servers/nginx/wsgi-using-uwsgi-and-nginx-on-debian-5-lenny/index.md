@@ -1,21 +1,21 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-debian-5-lenny
-deprecated: true
+title: 'WSGI using uWSGI and nginx on Debian 5 (Lenny)'
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Debian 5 "Lenny".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-08
+modified: 2012-10-08
+deprecated: true
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-debian-5-lenny/','/web-servers/nginx/python-uwsgi/debian-5-lenny/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-debian-5-lenny/']
-modified: 2012-10-08
-published: 2010-11-08
-title: 'WSGI using uWSGI and nginx on Debian 5 (Lenny)'
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

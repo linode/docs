@@ -1,16 +1,16 @@
 ---
 slug: cloud-management-and-billing-shortguide
-description: 'Shortguide that shows you how to access account management and billing in the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-22
 title: Access Account Management and Billing in the Cloud Manager
+description: 'Shortguide that shows you how to access account management and billing in the Cloud Manager.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-22
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-management-and-billing-shortguide/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The **Account** section of Cloud Manager allows you to manage your account's billing information and users, and to configure various account-wide settings.

@@ -1,13 +1,13 @@
 ---
 slug: advanced-troubleshooting-dns-problems
-description: 'Sometimes DNS problems require advanced troubleshooting techniques. This guide covers helpful command line tools like dig, nslookup, and ping, along with hosts files and A records. ✓ Click here!'
-keywords: ['troubleshooting','dns','dns troubleshooting']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-20
 title: "Troubleshooting DNS Issues"
-bundles: ['troubleshooting']
+description: 'Sometimes DNS problems require advanced troubleshooting techniques. This guide covers helpful command line tools like dig, nslookup, and ping, along with hosts files and A records. ✓ Click here!'
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
+published: 2022-09-20
+keywords: ['troubleshooting','dns','dns troubleshooting']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+bundles: ['troubleshooting']
 ---
 
 The most common DNS error is a simple typo, whether it’s from the client or the server. Typos and other incorrect DNS data cause many problems. Even when data is correct, DNS can still be a difficult protocol to troubleshoot.

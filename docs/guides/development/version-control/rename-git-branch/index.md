@@ -3,11 +3,11 @@ slug: rename-git-branch
 title: "How to Rename a Git Branch"
 title_meta: "How to Rename a Branch in Git & Why You Should"
 description: 'Need to know how to rename a Git branch? This guide explains what a Git branch is, when you should rename, and how to rename a branch in Git. ✓ Click here!'
-keywords: ['rename git branch','git rename branch','rename branch git','git rename local branch','git change branch name','git branch rename','git rename remote branch','rename branch','how to rename a branch in git','change branch name git']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2023-04-25
+keywords: ['rename git branch','git rename branch','rename branch git','git rename local branch','git change branch name','git branch rename','git rename remote branch','rename branch','how to rename a branch in git','change branch name git']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Career Karma: How to Rename a Git Branch](https://careerkarma.com/blog/git-rename-branch/
 )'

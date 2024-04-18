@@ -1,16 +1,16 @@
 ---
 slug: using-cobra
+title: 'Using Cobra and Go to Create Command Line Utilities'
 description: 'Cobra is a popular Go package that lets you develop command line utilities with commands, subcommands, and more. This guide shows how to use the app.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2017-11-29
 keywords: ["go", "golang", "cobra", "programming", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
-title: 'Using Cobra and Go to Create Command Line Utilities'
 external_resources:
   - '[Go](https://www.golang.com)'
   - '[Cobra](https://github.com/spf13/cobra)'
 aliases: ['/development/go/using-cobra/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Before You Begin

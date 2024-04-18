@@ -1,21 +1,21 @@
 ---
 slug: redis-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Redis on Ubuntu 10.04 (Lucid)'
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 10.04 "Lucid".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-28
+modified: 2013-09-24
+deprecated: true
 keywords: ["redis ubuntu 10.04", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/ubuntu-10-04-lucid/','/databases/redis/redis-on-ubuntu-10-04-lucid/']
-modified: 2013-09-24
-published: 2010-07-28
-title: 'Redis on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,16 +1,16 @@
 ---
 slug: running-a-mail-server
+title: "Running a Mail Server"
 description: "Take control of your email with your own mail server. Learn how to install and configure it on your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-06-05
+modified: 2022-12-23
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
-published: 2013-06-05
-modified: 2022-12-23
-title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.

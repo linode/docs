@@ -1,16 +1,16 @@
 ---
 slug: how-to-secure-phpmyadmin
+title: Securing phpMyAdmin
+title_meta: How to Secure phpMyAdmin
 description: 'This guide shows how to secure phpMyAdmin. Learn how to change aliases, set up password authentication, restrict access to specific IP addresses, and more.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["apache security", "apache best practices security", "secure phpMyAdmin config", "phpMyAdmin security"]
 tags: ["security","web server","apache", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-26
-title: Securing phpMyAdmin
-title_meta: How to Secure phpMyAdmin
 aliases: ['/security/basics/how-to-secure-phpmyadmin/']
 image: Securing_phpMyAdmin.png
-authors: ["Hackersploit"]
-contributors: ["Hackersploit"]
 ---
 
 ## What is phpMyAdmin?

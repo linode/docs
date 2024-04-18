@@ -1,12 +1,14 @@
 ---
 slug: yesod-nginx-mysql-on-debian-7-wheezy
+title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 description: 'Installing the web framework Yesod with the server Nginx and MySQL on Debian 7'
+authors: ["Si-Qi Liu"]
+contributors: ["Si-Qi Liu"]
+published: 2014-09-25
 keywords: ["yesod", "nginx", "mysql", "debian 7"]
 tags: ["web applications","nginx","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod/yesod-nginx-mysql-on-debian-7-wheezy/']
-published: 2014-09-25
-title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 external_resources:
  - '[Haskell Platform](http://www.haskell.org/platform/)'
  - '[Haskell Wiki for *cabal-install*](http://www.haskell.org/haskellwiki/Cabal-Install)'
@@ -19,8 +21,6 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
-authors: ["Si-Qi Liu"]
-contributors: ["Si-Qi Liu"]
 ---
 
 

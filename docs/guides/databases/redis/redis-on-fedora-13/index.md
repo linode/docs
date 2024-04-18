@@ -1,21 +1,21 @@
 ---
 slug: redis-on-fedora-13
-deprecated: true
+title: Redis on Fedora 13
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-05
+modified: 2011-04-29
+deprecated: true
 keywords: ["redis fedora 13", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-fedora-13/','/databases/redis/fedora-13/']
-modified: 2011-04-29
-published: 2010-08-05
-title: Redis on Fedora 13
 relations:
     platform:
         key: how-to-install-redis
         keywords:
             - distribution: Fedora 13
 tags: ["nosql","database","fedora"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

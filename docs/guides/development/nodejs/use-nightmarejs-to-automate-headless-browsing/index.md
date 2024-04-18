@@ -1,12 +1,14 @@
 ---
 slug: use-nightmarejs-to-automate-headless-browsing
+title: 'Use Nightmare.js to Automate Headless Browsing'
 description: 'Automate browsing tasks with Nightmare.js, a high-level browser automation library.'
+authors: ["Nashruddin Amin"]
+contributors: ["Nashruddin Amin"]
+published: 2017-10-09
 og_description: 'Nightmare.js is an automated, headless browsing tool that can be configured to self-navigate websites, automate data scraping, and quicken QA.'
 keywords: ["nightmare.js", " node.js", " headless browser", " automation"]
 tags: ["automation", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-10-09
-title: 'Use Nightmare.js to Automate Headless Browsing'
 external_resources:
   - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'
   - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
@@ -14,8 +16,6 @@ audiences: ["intermediate"]
 concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["javascript"]
 aliases: ['/development/nodejs/use-nightmarejs-to-automate-headless-browsing/']
-authors: ["Nashruddin Amin"]
-contributors: ["Nashruddin Amin"]
 ---
 
 ![Use Nightmare.js to Automate Headless Browsing](nightmarejs-automate-headless-browsing-title.jpg "Use Nightmare.js to Automate Headless Browsing")

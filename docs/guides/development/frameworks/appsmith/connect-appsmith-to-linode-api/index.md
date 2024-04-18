@@ -1,15 +1,15 @@
 ---
 slug: connect-appsmith-to-linode-api
+title: "Connecting Appsmith to the Linode API"
 description: "Appsmith’s platform makes developing internal applications and dashboards quicker and more convenient. A great way to start using Appsmith and to see what it can do is by making your own cloud manager with it. This tutorial shows you how to do that, connecting your self-hosted Appsmith instance with the Linode API."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-06-29
 keywords: ['appsmith api','appsmith tutorial','appsmith dashboard']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-29
-title: "Connecting Appsmith to the Linode API"
 external_resources:
 - '[Appsmith: Connecting to REST APIs](https://docs.appsmith.com/core-concepts/connecting-to-data-sources/authentication)'
 - '[Appsmith: Tutorials](https://docs.appsmith.com/tutorials)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 [Appsmith](https://www.appsmith.com/) is a platform for building applications in a low-code, visual interface. It is an open source tool ideal for quickly developing internal applications with a combination of drag-and-drop UI widgets and JavaScript code.

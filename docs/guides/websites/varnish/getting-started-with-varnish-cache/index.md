@@ -1,16 +1,16 @@
 ---
 slug: getting-started-with-varnish-cache
+title: Getting Started with Varnish Cache
 description: Use Varnish Cache to increase your site's speed and optimize server resources
+authors: ["Kevin Cupp"]
+contributors: ["Kevin Cupp"]
+published: 2014-02-05
+modified: 2017-02-24
 keywords: ["Varnish", "Ubuntu", "Debian", "Cache", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/varnish/getting-started-with-varnish-cache/','/web-servers/varnish/']
-modified: 2017-02-24
-published: 2014-02-05
-title: Getting Started with Varnish Cache
 external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
-authors: ["Kevin Cupp"]
-contributors: ["Kevin Cupp"]
 ---
 ![Getting Started with Varnish Cache](getting-started-with-varnish-cache.png "Getting Started with Varnish Cache")
 

@@ -1,13 +1,13 @@
 ---
 slug: types-of-cyber-attacks
-description: 'What are the most common types of cyber attacks? This guide explains what they are, how they happen, and how to prevent them.'
-keywords: ['network attacks','types of cyber security attacks','system attack','cyber attack types']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-17
 title: "Eight Common Types of Cyber Attacks and How to Prevent Them"
 title_meta: "What are the Most Common Cyber Attacks?"
+description: 'What are the most common types of cyber attacks? This guide explains what they are, how they happen, and how to prevent them.'
 authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
+published: 2021-12-17
+keywords: ['network attacks','types of cyber security attacks','system attack','cyber attack types']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 As long as there have been personal computers, there have been cyber attacks, even in the pre-Internet days of the 1980s. Malware started out simple; they damaged your data, apps, or floppy disks. Malware authors did it for no other reason than to be mean.

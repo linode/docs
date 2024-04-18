@@ -1,19 +1,19 @@
 ---
 slug: how-to-monitor-containers-with-the-elastic-stack
+title: Container Instrumentation with the Elastic Stack
 description: 'This guide will show you how to configure Filebeat and Metricbeat to montior Docker container logs & metrics for visualization with Elastic Stack in Kibana.'
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2019-02-10
 keywords: ["elastic", "filebeat", "metricbeat", "elasticsearch", "kibana", "docker", "container", "nginx"]
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-02-10
-title: Container Instrumentation with the Elastic Stack
 external_resources:
 - '[Filebeat Modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html)'
 - '[Metricbeat Modules](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html)'
 - '[Elastic Container Monitoring](https://www.elastic.co/docker-kubernetes-container-monitoring)'
 - '[Docker Command-Line Reference](https://docs.docker.com/reference/)'
 aliases: ['/applications/containers/how-to-monitor-containers-with-the-elastic-stack/']
-authors: ["Tyler Langlois"]
-contributors: ["Tyler Langlois"]
 ---
 
 ![Container Instrumentation with the Elastic Stack](container-instrumentation-with-the-elastic-stack.png "Container Instrumentation with the Elastic Stack")

@@ -1,15 +1,15 @@
 ---
 slug: introduction-to-awk
+title: 'Learn the AWK Programming Language'
 description: 'This guide provides you with an introduction to the Turing-complete pattern matching programming language, AWK, which is great for data reporting and more.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-07-30
 keywords: ["UNIX", "shell", "AWK"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-30
-title: 'Learn the AWK Programming Language'
 external_resources:
   - '[GNU awk](https://www.gnu.org/software/gawk/)'
 aliases: ['/development/awk/introduction-to-awk/','/development/introduction-to-awk/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## What is AWK?

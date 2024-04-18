@@ -1,9 +1,9 @@
 ---
 title: Troubleshooting Firewall Issues on Compute Instances
 description: This guide presents troubleshooting strategies for Compute Instances that may be unresponsive due to issues caused by a firewall.
-keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall","troubleshoot"]
 published: 2020-08-04
 modified: 2023-11-01
+keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall","troubleshoot"]
 bundles: ['troubleshooting']
 image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/','/guides/troubleshooting-firewalls/']

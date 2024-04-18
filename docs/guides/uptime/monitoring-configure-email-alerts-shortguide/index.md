@@ -1,16 +1,16 @@
 ---
 slug: monitoring-configure-email-alerts-shortguide
-description: 'Shortguide that describes how to configure monitoring email alerts in Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-08-08
-published: 2020-07-21
 title: Configuring Linode Cloud Manager Email Alerts
+description: 'Shortguide that describes how to configure monitoring email alerts in Cloud Manager.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-21
+modified: 2020-08-08
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["monitoring"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/uptime/monitoring-configure-email-alerts-shortguide/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The Cloud Manager allow you to configure *email alerts* that automatically notify you through email if certain performance thresholds are reached, including:

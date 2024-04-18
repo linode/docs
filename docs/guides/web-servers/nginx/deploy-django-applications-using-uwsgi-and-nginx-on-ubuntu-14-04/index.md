@@ -1,11 +1,13 @@
 ---
 slug: deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04
+title: "Deploy Django Apps with uWSGI and Nginx on Ubuntu 14.04"
 description: 'This guide provides you with step-by-step instructions for deploying applications written in Django by using the uWSGI and Nginx web server on Ubuntu 14.04.'
+authors: ["Sergey Pariev"]
+contributors: ["Sergey Pariev"]
+published: 2015-11-25
 keywords: ["django", "uwsgi", "nginx", "python"]
 tags: ["web server","ubuntu","python","nginx","django"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-11-25
-title: "Deploy Django Apps with uWSGI and Nginx on Ubuntu 14.04"
 deprecated: True
 aliases: ['/web-servers/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/']
 external_resources:
@@ -13,8 +15,6 @@ external_resources:
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'
   - '[WSGI/Python Quickstart Guide](https://uwsgi-docs.readthedocs.org/en/latest/WSGIquickstart.html)'
   - '[nginx Configuration](/docs/guides/how-to-configure-nginx/)'
-authors: ["Sergey Pariev"]
-contributors: ["Sergey Pariev"]
 ---
 
 [Django](https://www.djangoproject.com/) is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using [uWSGI](https://uwsgi-docs.readthedocs.org/) and [nginx](https://www.nginx.com/) on Ubuntu 14.04.

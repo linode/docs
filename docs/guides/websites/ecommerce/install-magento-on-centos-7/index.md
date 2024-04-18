@@ -1,11 +1,13 @@
 ---
 slug: install-magento-on-centos-7
+title: Install Magento on CentOS 7
 description: 'Install Magento Community Edition on CentOS 7 to manage your e-commerce site.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-12-28
 keywords: ["magento", "centos", "e-commerce", "magento centos"]
 tags: ["centos", "lamp", "cms", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-12-28
-title: Install Magento on CentOS 7
 external_resources:
  - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
  - '[Magento Resources Library](https://magento.com/resources)'
@@ -15,8 +17,6 @@ relations:
         keywords:
            - distribution: CentOS 7
 aliases: ['/websites/ecommerce/install-magento-on-centos-7/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 In this guide you'll learn how to install Magento on CentOS 7. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.

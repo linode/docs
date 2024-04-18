@@ -1,17 +1,17 @@
 ---
 slug: create-react-app-with-appwrite
-description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
-keywords: ['appwrite react','appwrite tutorial','appwrite docker']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-13
 title: "Create a React App with Appwrite"
 title_meta: "How to Create a React App with Appwrite"
+description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-07-13
+keywords: ['appwrite react','appwrite tutorial','appwrite docker']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Appwrite Docs: Getting Started for Web](https://appwrite.io/docs/getting-started-for-web)'
 - '[Github: Appwrite - Demos and Tutorials for Getting Started with Appwrite + React JS](https://github.com/appwrite/demos-for-react)'
 - '[Drishti Peshwani: Building a Web App with ReactJS and Appwrite](https://dev.to/drishtipeshwani/building-a-web-app-with-reactjs-and-appwrite-4cno)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 tags: ["ecommerce"]
 ---
 

@@ -1,20 +1,20 @@
 ---
 slug: how-to-understand-ip-addresses
+title: "Understand and Use IP Addresses"
+title_meta: "How to Understand and Use IP Addresses"
 description: "This guide will help you understand the Internet Protocol (IP) which underpins the entire Internet, as well as IP addresses, and how to describe and use them."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-07-30
+modified: 2022-09-23
 keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
 tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-30
-modified: 2022-09-23
-title: "Understand and Use IP Addresses"
-title_meta: "How to Understand and Use IP Addresses"
 external_resources:
 - '[RFC 791 for IP](https://datatracker.ietf.org/doc/html/rfc791)'
 - '[Wikipedia IPv4 Packet Description Page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
 - '[RFC 2460 for IPv6](https://datatracker.ietf.org/doc/html/rfc2460)'
 - '[Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

@@ -1,17 +1,17 @@
 ---
 slug: how-to-install-midnight-commander
+title: 'How to Use Midnight Commander, a Visual File Manager'
 description: 'This guide shows how to install and use Midnight Commander, a text user-interface file manager.'
-keywords: ["midnight commander", "file manager", "text user interface", "TUI"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
 published: 2017-09-11
 modified: 2017-09-12
-title: 'How to Use Midnight Commander, a Visual File Manager'
+keywords: ["midnight commander", "file manager", "text user interface", "TUI"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Midnight Commander](https://midnight-commander.org/)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/how-to-install-midnight-commander/']
-authors: ["Alexandru Andrei"]
-contributors: ["Alexandru Andrei"]
 ---
 
 ![Midnight Commander](midnight_commander.jpg)

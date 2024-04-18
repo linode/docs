@@ -1,18 +1,18 @@
 ---
 slug: using-nodejs-typescript-and-express-to-build-a-web-server
+title: "Use Node.js, TypeScript, and Express to Build a Web Server"
 description: 'This guide shows you how to configure a Node.js, TypeScript, and Express dev environment, after which you will learn how to build a web server using Typescript.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-09-10
 og_description:  'This guide shows you how to configure a Node.js, TypeScript, and Express dev environment, after which you will learn how to build a web server using Typescript.'
 keywords: ['nodejs typescript','node express server','tsconfig json']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-10
-title: "Use Node.js, TypeScript, and Express to Build a Web Server"
 external_resources:
 - '[npm documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json)'
 - '[Express documentation](https://expressjs.com/en/guide/routing.html)'
 - "[TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig)"
-authors: ["John Mueller"]
-contributors: ["John Mueller"]
 ---
 
 [TypeScript](https://www.typescriptlang.org/) is a [strongly typed programming language](https://en.wikipedia.org/wiki/Strong_and_weak_typing) that is built on top of JavaScript. JavaScript is increasingly used in complex web applications with large codebases. Since you can use TypeScript anywhere that JavaScript is supported, you can replace JavaScript for TypeScript to reap the benefits of a strongly typed language. TypeScript enables developers to build applications quickly and with less errors. Some benefits of TypeScript are:

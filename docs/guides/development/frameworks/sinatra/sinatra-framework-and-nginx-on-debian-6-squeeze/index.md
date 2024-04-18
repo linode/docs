@@ -1,21 +1,21 @@
 ---
 slug: sinatra-framework-and-nginx-on-debian-6-squeeze
-deprecated: true
+title: 'Sinatra Framework and nginx on Debian 6 (Squeeze)'
 description: 'This guide will show you how to deploy simple web applications with the free and open source Sinatra web development framework on Debian 6 "Squeeze".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2013-09-27
+deprecated: true
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','/development/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','/development/frameworks/sinatra/sinatra-framework-and-nginx-on-debian-6-squeeze/','/frameworks/sinatra/debian-6-squeeze/']
-modified: 2013-09-27
-published: 2011-02-17
-title: 'Sinatra Framework and nginx on Debian 6 (Squeeze)'
 relations:
     platform:
         key: sinatra-nginx
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

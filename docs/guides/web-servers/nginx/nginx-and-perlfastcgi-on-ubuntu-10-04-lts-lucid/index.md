@@ -1,21 +1,21 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Nginx and Perl-FastCGI on Ubuntu 10.04 LTS (Lucid)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-07
+deprecated: true
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 10.04", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid/']
-modified: 2013-10-07
-published: 2010-05-03
-title: 'Nginx and Perl-FastCGI on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

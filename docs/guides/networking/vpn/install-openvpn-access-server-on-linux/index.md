@@ -1,15 +1,15 @@
 ---
 slug: install-openvpn-access-server-on-linux
+title: Manage OpenVPN with OpenVPN Access Server
 description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2015-04-30
+modified: 2019-08-12
 keywords: ["openvpn", "vpn"]
 aliases: ['/networking/vpn/install-openvpn-access-server-on-linux/','/networking/vpn/openvpn-access-server/','/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-08-12
-published: 2015-04-30
-title: Manage OpenVPN with OpenVPN Access Server
 tags: ["networking","security","vpn"]
-authors: ["James Stewart"]
-contributors: ["James Stewart"]
 ---
 
 ![Manage OpenVPN with OpenVPN Access Server](Install_OpenVPN_Access_Server_v2_smg.png "Manage OpenVPN with OpenVPN Access Server title graphic")

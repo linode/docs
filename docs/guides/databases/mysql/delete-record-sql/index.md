@@ -1,14 +1,14 @@
 ---
 slug: delete-record-sql
+title: "Developer’s Guide to the Delete Query in SQL"
+title_meta: "Using the Delete Command in SQL"
 description: 'Learn the SQL delete syntax and the step-by-step process to delete rows from tables in SQL.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2023-04-10
 keywords: ['delete record sql', 'delete all rows', 'how to delete row in sql', 'delete query in sql', 'sql delete syntax']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-10
-title_meta: "Using the Delete Command in SQL"
-title: "Developer’s Guide to the Delete Query in SQL"
-authors: ["Martin Heller"]
-contributors: ["Martin Heller"]
 ---
 
 The `DELETE` statement allows you to remove a row or rows from a database table using Structured Query Language (SQL). This guide explains the `DELETE` statement, ways to use it, and what can make a `DELETE` statement fail.

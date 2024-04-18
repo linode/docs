@@ -1,12 +1,14 @@
 ---
 slug: install-squirrelmail-on-ubuntu-16-04-or-debian-8
+title: Install SquirrelMail on Ubuntu 16.04 or Debian 8
 description: 'A guide to installing the SquirrelMail web client for email on Ubuntu or Debian 8.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-01-14
+modified: 2016-06-14
 keywords: ["squirrelmail", " squirrel mail", " debian", " debian 8", " mail client", " ubuntu", " ubuntu 16"]
 tags: ["debian","ubuntu","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-06-14
-published: 2014-01-14
-title: Install SquirrelMail on Ubuntu 16.04 or Debian 8
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
 relations:
@@ -15,8 +17,6 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/']
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 ![Install SquirrelMail on Ubuntu or Debian](Install_SquirrelMail_smg.jpg)

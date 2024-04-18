@@ -1,21 +1,21 @@
 ---
 slug: monitor-services-with-nagios-on-gentoo-linux
-deprecated: true
+title: Monitor Services with Nagios on Gentoo Linux
 description: 'Use Nagios to monitor services and send status updates on your Gentoo Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-15
+modified: 2013-10-01
+deprecated: true
 keywords: ["nagios", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/gentoo/','/uptime/monitoring/monitor-services-with-nagios-on-gentoo-linux/']
-modified: 2013-10-01
-published: 2010-11-15
-title: Monitor Services with Nagios on Gentoo Linux
 relations:
     platform:
         key: install-nagios-monitoring
         keywords:
             - distribution: Gentoo
 tags: ["monitoring"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

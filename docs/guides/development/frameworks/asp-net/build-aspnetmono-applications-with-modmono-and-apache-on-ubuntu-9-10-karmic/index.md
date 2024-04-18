@@ -1,21 +1,21 @@
 ---
 slug: build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic
-deprecated: true
+title: "Build ASP.NET Applications with mod_mono on Ubuntu 9.10"
 description: "This guide will show you how to use the Mono Project's Apache module to run Microsoft ASP.NET applications on Ubuntu 9.10 (Karmic) similar to Windows Server"
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-08-01
+modified: 2011-06-15
+deprecated: true
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic/','/websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic/','/frameworks/mod-mono/ubuntu-9-10-karmic/','/development/frameworks/asp-net/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic/']
-modified: 2011-06-15
-published: 2010-08-01
-title: "Build ASP.NET Applications with mod_mono on Ubuntu 9.10"
 relations:
     platform:
         key:  asp-mono-apache
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Brett Kaplan"]
-contributors: ["Brett Kaplan"]
 ---
 
 

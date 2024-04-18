@@ -1,13 +1,15 @@
 ---
 slug: a-beginners-guide-to-selinux-on-centos-7
+title: Getting Started with SELinux on CentOS 7
+title_meta: A Beginner's Guide to SELinux on CentOS 7
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2020-03-18
+modified: 2017-07-21
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
-modified: 2017-07-21
-published: 2020-03-18
-title: Getting Started with SELinux on CentOS 7
-title_meta: A Beginner's Guide to SELinux on CentOS 7
 aliases: ['/security/getting-started-with-selinux/','/security/selinux/a-beginners-guide-to-selinux-on-centos-7/']
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
@@ -18,8 +20,6 @@ relations:
         key: get-started-selinux
         keywords:
             - distribution: CentOS 7
-authors: ["Angel Guarisma"]
-contributors: ["Angel Guarisma"]
 ---
 
 ![Getting Started with SELinux](selinux_centos.jpg)

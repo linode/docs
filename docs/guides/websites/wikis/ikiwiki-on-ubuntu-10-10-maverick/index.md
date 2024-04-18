@@ -1,21 +1,21 @@
 ---
 slug: ikiwiki-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Ikiwiki on Ubuntu 10.10 (Maverick)'
 description: 'Using Ikiwiki on Ubuntu 10.10 (Maverick) to power a standard wiki implementation.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2012-10-08
+deprecated: true
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/ikiwiki-on-ubuntu-10-10-maverick/','/web-applications/wikis/ikiwiki/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2011-04-05
-title: 'Ikiwiki on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

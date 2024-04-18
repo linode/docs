@@ -1,15 +1,15 @@
 ---
 slug: how-to-undo-git-commit
-description: 'Wondering how to undo a git commit? Follow our step-by-step guide on the various methods you use to undo a commit. Some of the methods discussed include the git revert and the git reset command.'
-keywords: ['how to undo git commit','git revert commit','git undo local commit']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-08
 title: "Undo a Git Commit"
 title_meta: "Undo a Git Commit: A Step-by-Step Guide"
-external_resources:
-- '[Git documentation](https://git-scm.com/doc)'
+description: 'Wondering how to undo a git commit? Follow our step-by-step guide on the various methods you use to undo a commit. Some of the methods discussed include the git revert and the git reset command.'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
+published: 2022-07-08
+keywords: ['how to undo git commit','git revert commit','git undo local commit']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external_resources:
+- '[Git documentation](https://git-scm.com/doc)'
 ---
 
 [Git is one of the most common and versatile *version control systems* (VCS)](/docs/guides/svn-vs-git/#what-is-the-git-version-control-system), but it is not always simple and easy to use. You can run into trouble when you commit an undesirable change to a repository. There are several different strategies you can follow to restore your repository. This guide discusses how to undo a git commit and explains the advantages and any drawbacks to each approach.

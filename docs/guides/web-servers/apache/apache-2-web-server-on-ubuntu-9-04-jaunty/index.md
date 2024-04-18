@@ -1,21 +1,21 @@
 ---
 slug: apache-2-web-server-on-ubuntu-9-04-jaunty
+title: 'Apache 2 Web Server on Ubuntu 9.04 (Jaunty)'
 description: 'Instructions for getting started with the Apache web server on Ubuntu Jaunty.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-13
+modified: 2011-04-29
 keywords: ["Apache", "web sever", "Ubuntu Jaunty"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/','/web-servers/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/','/web-servers/apache/installation/ubuntu-9-04-jaunty/']
-modified: 2011-04-29
-published: 2009-08-13
 deprecated: true
-title: 'Apache 2 Web Server on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

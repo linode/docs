@@ -1,16 +1,16 @@
 ---
 slug: document-object-model
-description: "The DOM gives scripting languages, like JavaScript, access to an HTML document''s structure and content. This guide discusses accessing the DOM with JavaScript."
-keywords: ['what is the dom','javascript dom tutorial','what is document object model']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-15
 title: "An Introduction to the Document Object Model (DOM)"
 title_meta: "Accessing the Document Object Model with JavaScript"
+description: "The DOM gives scripting languages, like JavaScript, access to an HTML document''s structure and content. This guide discusses accessing the DOM with JavaScript."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-04-15
+keywords: ['what is the dom','javascript dom tutorial','what is document object model']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MDN Web Docs: Introduction to the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)'
 - '[MDN Web Docs: Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 The Document Object Model (DOM) is a language-agnostic interface that provides access to an HTML document's structure and content. JavaScript is often the language used to access the DOM in order to generate dynamic and interactive web pages.

@@ -1,12 +1,14 @@
 ---
 slug: how-to-install-anaconda
-description: "Learn how to install Anaconda, a Python/R distrihution designed for scientific computing, on Ubuntu."
-keywords: ['Data Science','Anaconda','Package Management','Python','Ruby','Ubuntu']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
-image: Anaconda.jpg
 title: "Installing Anaconda on Ubuntu"
 title_meta: "How to Install Anaconda on Ubuntu"
+description: "Learn how to install Anaconda, a Python/R distrihution designed for scientific computing, on Ubuntu."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-06-04
+keywords: ['Data Science','Anaconda','Package Management','Python','Ruby','Ubuntu']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: Anaconda.jpg
 external_resources:
 - '[Anaconda Documentation](https://docs.anaconda.com/anaconda/)'
 relations:
@@ -14,8 +16,6 @@ relations:
         key: how-to-install-anaconda
         keywords:
             - distribution: Ubuntu
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## Install Anaconda on Ubuntu

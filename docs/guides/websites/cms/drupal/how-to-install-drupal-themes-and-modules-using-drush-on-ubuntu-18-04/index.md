@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04
+title: Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
+title_meta: How to Install Drupal Themes & Modules on Ubuntu 18.04
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-12-05
+modified: 2020-03-11
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-11
-published: 2014-12-05
-title: Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
-title_meta: How to Install Drupal Themes & Modules on Ubuntu 18.04
 image: DrupalThemesMods_DrushUbuntu1804.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
@@ -19,8 +21,6 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and covering some basic administration tasks such as backup and migrate for Drupal websites.

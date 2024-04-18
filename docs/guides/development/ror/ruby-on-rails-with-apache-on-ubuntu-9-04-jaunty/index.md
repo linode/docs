@@ -1,14 +1,16 @@
 ---
 slug: ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty
+title: 'Ruby on Rails with Apache on Ubuntu 9.04 (Jaunty)'
 description: 'Using the Apache web server with Ubuntu 9.04 to serve Ruby on Rails applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-13
+modified: 2011-05-17
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/','/frameworks/ruby-on-rails-apache/ubuntu-9-04-jaunty/','/websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/']
-modified: 2011-05-17
-published: 2009-08-13
 deprecated: true
-title: 'Ruby on Rails with Apache on Ubuntu 9.04 (Jaunty)'
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
 relations:
@@ -16,8 +18,6 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

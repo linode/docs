@@ -1,14 +1,16 @@
 ---
 slug: install-a-chef-server-workstation-on-ubuntu-14-04
+title: 'Install a Chef Server Workstation on Ubuntu 14.04'
+description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu 14.04'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-06-10
 deprecated: true
 deprecated_link: 'applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/'
-description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu 14.04'
 keywords: ["chef", "chef installation", "configuration change management", "server automation", "chef server", "chef workstation", "chef-client", "knife.rb", "version control"]
 tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','/applications/configuration-management/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','/applications/chef/setting-up-chef-ubuntu-14-04/','/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/','/applications/configuration-management/chef/install-a-chef-server-workstation-on-ubuntu-14-04/']
-published: 2015-06-10
-title: 'Install a Chef Server Workstation on Ubuntu 14.04'
 external_resources:
  - '[Chef](http://www.chef.io)'
 relations:
@@ -16,8 +18,6 @@ relations:
         key: install-chef-workstation
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Elle Krout"]
-contributors: ["Elle Krout"]
 ---
 
 Chef is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.

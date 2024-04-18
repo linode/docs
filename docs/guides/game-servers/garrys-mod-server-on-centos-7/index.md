@@ -1,20 +1,20 @@
 ---
 slug: garrys-mod-server-on-centos-7
+title: 'Garry''s Mod on CentOS 7'
 description: 'This guide provides you with step-by-step instructions for deploying a Garrys Mod Server, which enables complete control of a video game engine, on CentOS 7.'
+authors: ["Julian Meyer"]
+contributors: ["Julian Meyer"]
+published: 2015-01-21
+modified: 2019-02-01
 keywords: ["garry''s mod", "centos", "centos 7"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/garrys-mod-server-on-centos-7/','/game-servers/garrys-mod-server-on-centos-7/']
-published: 2015-01-21
-modified: 2019-02-01
-title: 'Garry''s Mod on CentOS 7'
 external_resources:
 - '[SRCDS](http://www.srcds.com/)'
 - '[GMod Forums](http://facepunch.com/forum.php)'
 - '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
 dedicated_cpu_link: true
-authors: ["Julian Meyer"]
-contributors: ["Julian Meyer"]
 ---
 
 

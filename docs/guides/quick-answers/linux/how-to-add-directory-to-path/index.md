@@ -1,18 +1,18 @@
 ---
 slug: how-to-add-directory-to-path
+title: "Add a Directory to the PATH on Linux"
+title_meta: "How to Add a Directory to the PATH on Linux"
 description: "What is the PATH variable in Linux, and how does it work? Better still, how can you add your own directories to it? Find out in this tutorial, covering everything you need to know about the PATH variable and adding directories to it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-14
 keywords: ['linux path variable','linux path directory','add to linux path']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-14
-title: "Add a Directory to the PATH on Linux"
-title_meta: "How to Add a Directory to the PATH on Linux"
 external_resources:
 - '[Linuxize: How to Add a Directory to PATH in Linux](https://linuxize.com/post/how-to-add-directory-to-path-in-linux/)'
 - "[It's FOSS: How to Add a Directory to PATH in Linux](https://itsfoss.com/add-directory-to-path-linux/)"
 - '[How-to Geek: How to Add a Directory to Your $PATH in Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Have you ever wondered how certain executables on Linux can be accessed as simple commands from the command line? Have you wanted to be able to run a program on Linux without having to provide the entire path?

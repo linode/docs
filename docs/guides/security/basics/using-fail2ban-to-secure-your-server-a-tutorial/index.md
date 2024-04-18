@@ -1,17 +1,17 @@
 ---
+slug: using-fail2ban-to-secure-your-server-a-tutorial
 title: "Using Fail2ban to Secure Your Server"
 title_meta: "How to Use Fail2ban to Secure Your Server (A Tutorial)"
-slug: using-fail2ban-to-secure-your-server-a-tutorial
 description: "This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs, and detect automated attacks on your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-10-12
+modified: 2023-06-27
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
 aliases: ['/tools-reference/tools/using-fail2ban-to-block-network-probes/','/security/using-fail2ban-to-secure-your-server-a-tutorial/','/security/using-fail2ban-for-security/','/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/']
 bundles: ['debian-security', 'centos-security']
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-10-12
-modified: 2023-06-27
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is Fail2Ban

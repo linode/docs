@@ -1,21 +1,21 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-debian-5-lenny
-deprecated: true
+title: 'Use CouchDB for Document Based Data Storage on Debian 5 (Lenny)'
 description: 'An introduction and getting started guide for CouchDB on Debian 5 (Lenny) systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-08
+modified: 2012-10-03
+deprecated: true
 keywords: ["couchdb", "nosql", "json", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/debian-5-lenny/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-debian-5-lenny/']
-modified: 2012-10-03
-published: 2010-02-08
-title: 'Use CouchDB for Document Based Data Storage on Debian 5 (Lenny)'
 relations:
     platform:
         key: couchdb-document-data-storage
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

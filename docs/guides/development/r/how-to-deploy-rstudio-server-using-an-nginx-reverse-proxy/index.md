@@ -1,18 +1,18 @@
 ---
 slug: how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy
+title: 'How to Deploy RStudio Server Using an NGINX Reverse Proxy'
 description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-01-29
+modified: 2019-12-11
 keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
 tags: ["web server", "nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-12-11
-published: 2018-01-29
-title: 'How to Deploy RStudio Server Using an NGINX Reverse Proxy'
 audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
 aliases: ['/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/']
-authors: ["Sam Foo"]
-contributors: ["Sam Foo"]
 ---
 
 ![How to Deploy Rstudio using an NGINX reverse proxy](How_to_Deploy_RStudio_Server_Using_an_NGINX_Reverse_Proxy_smg.jpg)

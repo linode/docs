@@ -1,20 +1,20 @@
 ---
 slug: connect-to-server-over-ssh-on-mac
+title: "Connecting to a Remote Server Over SSH on a Mac"
+title_meta: "How to Connect to a Remote Server Over SSH on a Mac"
 description: "A tutorial outlining how to connect to a remote server over SSH on a Mac computer, including opening the terminal and structuring the ssh command."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-06-25
+modified: 2022-01-28
 keywords: ['ssh','linux','mac','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-25
-modified: 2022-01-28
-title: "Connecting to a Remote Server Over SSH on a Mac"
-title_meta: "How to Connect to a Remote Server Over SSH on a Mac"
 relations:
     platform:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Mac
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.

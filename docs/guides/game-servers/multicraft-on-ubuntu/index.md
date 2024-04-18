@@ -1,15 +1,17 @@
 ---
 slug: multicraft-on-ubuntu
+title: "Installing Multicraft on Ubuntu"
 description: "This guide shows how to install and configure MultiCraft, a control panel for single or multiple Minecraft servers, on a Linode running Ubuntu 20.04 LTS."
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2015-02-04
+modified: 2021-12-30
 keywords: ["minecraft", "ubuntu", "multicraft"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
  - '[Minecraft.net](https://minecraft.net/)'
-modified: 2021-12-30
-published: 2015-02-04
-title: "Installing Multicraft on Ubuntu"
 image: Installing_Multicraft_on_Ubuntu_smg.jpg
 aliases: ['/game-servers/multicraft-on-ubuntu/','/applications/game-servers/multicraft-on-ubuntu/']
 dedicated_cpu_link: true
@@ -18,8 +20,6 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Ubuntu
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide provides information to install Multicraft on a Linode running Ubuntu 20.04 LTS.

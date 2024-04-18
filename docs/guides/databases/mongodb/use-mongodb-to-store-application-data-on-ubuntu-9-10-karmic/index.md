@@ -1,21 +1,21 @@
 ---
 slug: use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Use MongoDB to Store Application Data on Ubuntu 9.10 (Karmic)'
 description: 'Install MongoDB for use in application development on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-24
+modified: 2011-04-29
+deprecated: true
 keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/ubuntu-9-10-karmic/','/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-published: 2010-03-24
-title: 'Use MongoDB to Store Application Data on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: use-mongodb-store-app-data
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

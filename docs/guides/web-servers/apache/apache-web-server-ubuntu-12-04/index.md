@@ -1,14 +1,16 @@
 ---
 slug: apache-web-server-ubuntu-12-04
-deprecated: true
+title: 'Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
 description: 'Install Apache on your Ubuntu 12.04 Server, configure virtual hosting, and set up module and scripting support.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-10
+modified: 2015-07-15
+deprecated: true
 keywords: ["apache", "ubuntu", "ubuntu 12.04", "precise", "pengolin", "apache web server", "web server"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-07-15
 aliases: ['/websites/apache/apache-web-server-ubuntu-12-04/','/web-servers/apache/apache-web-server-ubuntu-12-04/','/websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
-published: 2012-10-10
-title: 'Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
@@ -17,8 +19,6 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for running web servers.  This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.

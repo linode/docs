@@ -1,14 +1,16 @@
 ---
 slug: how-to-install-nginx-centos-8
+title: "Installing NGINX on CentOS 8"
+title_meta: "How to Install NGINX on CentOS 8"
 description: "Learn the basics of installing and configuring NGINX on your CentOS 8 server in this quick guide."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-04-16
+modified: 2020-02-14
 keywords: ["nginx", "load balancing", "centos", "centos 8", "web server", "static content", "install nginx"]
 tags: ["centos","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-14
-published: 2018-04-16
 image: L_NGINX_on_CentOS8.png
-title: "Installing NGINX on CentOS 8"
-title_meta: "How to Install NGINX on CentOS 8"
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 relations:
@@ -17,8 +19,6 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/nginx/how-to-install-nginx-centos-8/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is NGINX?

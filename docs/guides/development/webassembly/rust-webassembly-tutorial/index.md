@@ -1,17 +1,17 @@
 ---
 slug: rust-webassembly-tutorial
+title: Getting Started with WebAssembly Tutorial
+title_meta: A Rust and WebAssembly Tutorial
 description: "This guide explores what WebAssembly, sometimes called Wasm, is and how it can be used to develop web applications that run at near-native speeds with Rust."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-09
 keywords: ["webassembly","wasm","rust","web development","demo","tutorial"]
 tags: ['ubuntu', 'debian', 'rust']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-published: 2021-07-09
-title: Getting Started with WebAssembly Tutorial
-title_meta: A Rust and WebAssembly Tutorial
 external_resources:
 - '[WebAssembly](https://webassembly.org/)'
 - '[Rust and WebAssembly](https://rustwasm.github.io/docs/book)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 [WebAssembly](https://webassembly.org/) — sometimes shortened to Wasm — is a safe, low-level, portable code format. It results in compact binaries that can be run in web browsers with near-native efficiency. It allows languages like C/C++ and Rust to be compiled to run on the web and to do so alongside JavaScript.

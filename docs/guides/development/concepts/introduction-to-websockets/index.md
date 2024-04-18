@@ -1,20 +1,20 @@
 ---
 slug: introduction-to-websockets
+title: 'Introduction to WebSockets'
 description: 'This guide will give a brief introduction to WebSocket as well as introduce the reader to WebSocket API.'
+authors: ["Shivam Mishra"]
+contributors: ["Shivam Mishra"]
+published: 2018-01-05
+modified: 2018-01-02
 keywords: ["websocket", "sockets", "introduction to websockets", "full duplex"]
 tags: ["http", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-05
-modified: 2018-01-02
-title: 'Introduction to WebSockets'
 external_resources:
   - '[Vanessa Wang, *The Definitive Guide to HTML5 WebSocket*](https://www.apress.com/in/book/9781430247401)'
   - '[Introducing WebSockets](https://web.dev/websockets-basics/)'
   - '[The WebSocket Protocol](https://tools.ietf.org/html/rfc6455)'
 audiences: ["beginner"]
 aliases: ['/development/concepts/introduction-to-websockets/','/development/introduction-to-websockets/']
-authors: ["Shivam Mishra"]
-contributors: ["Shivam Mishra"]
 ---
 
 ## What are WebSockets?

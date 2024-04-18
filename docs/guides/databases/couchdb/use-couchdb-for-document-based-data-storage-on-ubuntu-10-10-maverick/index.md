@@ -1,21 +1,21 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Use CouchDB for Document Based Data Storage on Ubuntu 10.10 (Maverick)'
 description: 'An introduction and getting started guide for CouchDB on Ubuntu 10.10 (Maverick) systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-06
+modified: 2012-10-08
+deprecated: true
 keywords: ["couchdb", "nosql", "json", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-10-10-maverick/','/databases/couchdb/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2010-12-06
-title: 'Use CouchDB for Document Based Data Storage on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: couchdb-document-data-storage
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

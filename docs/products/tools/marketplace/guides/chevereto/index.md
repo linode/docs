@@ -1,10 +1,10 @@
 ---
+title: "Deploy Chevereto through the Linode Marketplace"
 description: "This guide shows you how to install Chevereto, a modern image sharing solution with drag-and-drop upload experience and more, using the Linode One-Click Marketplace."
-keywords: ['photo storage','images','Marketplace']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2022-05-17
-title: "Deploy Chevereto through the Linode Marketplace"
+keywords: ['photo storage','images','Marketplace']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Chevereto](https://chevereto.com/)'
 - '[Chevereto Documentation](https://chevereto.com/docs)'

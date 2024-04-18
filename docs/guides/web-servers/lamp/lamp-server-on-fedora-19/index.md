@@ -1,14 +1,16 @@
 ---
 slug: lamp-server-on-fedora-19
-deprecated: true
+title: LAMP Server on Fedora 19
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 19.'
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2013-11-18
+modified: 2014-04-11
+deprecated: true
 keywords: ["fedora 19 lamp","lamp server","linux lamp","fedora 19 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-fedora-19/','/web-servers/lamp/lamp-server-on-fedora-19/','/lamp-guides/fedora-19/']
-modified: 2014-04-11
-published: 2013-11-18
-title: LAMP Server on Fedora 19
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -19,8 +21,6 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 19
-authors: ["James Stewart"]
-contributors: ["James Stewart"]
 ---
 
 

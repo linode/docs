@@ -1,13 +1,13 @@
 ---
 slug: members-linode-com-migration
-description: "The members.linode.com and nodebalancer.linode.com are deprecated. Follow the steps in this guide to use the new domain for forward and reverse DNS."
-keywords: ['dns','members.linode.com','reverse dns']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-13
 title: "Migrating Away from members.linode.com and nodebalancer.linode.com"
 title_meta: "members.linode.com and nodebalancer.linode.com Migration"
+description: "The members.linode.com and nodebalancer.linode.com are deprecated. Follow the steps in this guide to use the new domain for forward and reverse DNS."
 authors: ["Linode"]
 contributors: ["Linode"]
+published: 2021-10-13
+keywords: ['dns','members.linode.com','reverse dns']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## What are members.linode.com and nodebalancer.linode.com?

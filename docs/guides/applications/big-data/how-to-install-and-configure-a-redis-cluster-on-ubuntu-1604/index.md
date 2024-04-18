@@ -1,18 +1,18 @@
 ---
 slug: how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604
+title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 description: 'This guide will show you how to set up a high performance Redis cluster using three Linode servers and promoting a replica to become a master node'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2017-08-14
+modified: 2021-05-17
 keywords: ["redis", "redis cluster installation", "data store", "cache", "sharding", "redis cluster setup", "redis cluster set up", "ubuntu"]
 tags: ["nosql","database","ubuntu","redis"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/big-data/redis-cluster/','/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/']
-modified: 2021-05-17
-published: 2017-08-14
-title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
  - '[Install and Configure Redis on CentOS 7](/docs/guides/install-and-configure-redis-on-centos-7/)'
-authors: ["Sam Foo"]
-contributors: ["Sam Foo"]
 ---
 
 ![How to Install and Configure a Redis Cluster on Ubuntu 16.04](Redis_Cluster.jpg)

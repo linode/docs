@@ -1,20 +1,20 @@
 ---
 slug: upgrade-to-ubuntu-16-04
+title: 'How to Upgrade to Ubuntu 16.04 LTS'
 description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system to the latest LTS (Long Term Support) version of Ubuntu - 16.04 LTS.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2016-04-26
+modified: 2017-03-15
 keywords: ["upgrading", "ubuntu", "16.04"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-03-15
-published: 2016-04-26
-title: 'How to Upgrade to Ubuntu 16.04 LTS'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-16-04/']
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 ![Upgrade to Ubuntu 16.04](How_to_Upgrade_to_Ubuntu_smg.jpg)

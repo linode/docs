@@ -1,11 +1,11 @@
 ---
-description: "Secure your Linode user account from unauthorized access by enabled 2FA (two-factor authentication)."
-keywords: ["security", "Linode Cloud Manager", "token"]
-tags: ["security","cloud manager"]
-published: 2022-06-27
-modified: 2023-08-15
 title: "Manage Two-Factor Authentication (2FA) on a User Account"
 title_meta: "Manage 2FA on a Linode User Account"
+description: "Secure your Linode user account from unauthorized access by enabled 2FA (two-factor authentication)."
+published: 2022-06-27
+modified: 2023-08-15
+keywords: ["security", "Linode Cloud Manager", "token"]
+tags: ["security","cloud manager"]
 aliases: ['/guides/2fa/']
 ---
 

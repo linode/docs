@@ -1,10 +1,10 @@
 ---
+title: "Deploy Webuzo through the Linode Marketplace"
 description: "This guide shows you how to deploy Webuzo from Softaculous, a LAMP stack control panel that allows you to deploy a growing number of applications and scripts."
-keywords: ['webuzo','control panel','dashboard','marketplace']
-tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-12-02
 modified: 2022-08-08
-title: "Deploy Webuzo through the Linode Marketplace"
+keywords: ['webuzo','control panel','dashboard','marketplace']
+tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[Webuzo Documentation](http://www.webuzo.com/docs)'
 - '[Softaculous Support](https://softaculous.deskuss.com)'

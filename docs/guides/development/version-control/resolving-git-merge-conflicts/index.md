@@ -1,14 +1,14 @@
 ---
 slug: resolving-git-merge-conflicts
+title: "Resolve Merge Conflicts in Git"
+title_meta: "How to Resolve Merge Conflicts in Git"
 description: 'This guide discusses Git merge conflicts, the reasons why they occur, and how to resolve merge conflicts.'
+authors: ["Stephen Savitzky"]
+contributors: ["Stephen Savitzky"]
+published: 2021-10-22
 keywords: ['how to resolve merge conflicts in git', 'git fix merge conflict', 'git continue merge after resolving conflicts']
 tags: ['version control system']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-22
-title: "Resolve Merge Conflicts in Git"
-title_meta: "How to Resolve Merge Conflicts in Git"
-authors: ["Stephen Savitzky"]
-contributors: ["Stephen Savitzky"]
 ---
 
 ## What Causes Merge Conflicts?

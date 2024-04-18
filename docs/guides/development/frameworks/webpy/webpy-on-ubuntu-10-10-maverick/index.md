@@ -1,21 +1,21 @@
 ---
 slug: webpy-on-ubuntu-10-10-maverick
+title: 'Web.py on Ubuntu 10.10 (Maverick)'
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-25
+modified: 2012-10-08
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/webpy-on-ubuntu-10-10-maverick/','/development/frameworks/webpy/webpy-on-ubuntu-10-10-maverick/','/development/frameworks/webpy-on-ubuntu-10-10-maverick/','/frameworks/webpy/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2011-01-25
-title: 'Web.py on Ubuntu 10.10 (Maverick)'
 deprecated: true
 relations:
     platform:
         key: webpy
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.

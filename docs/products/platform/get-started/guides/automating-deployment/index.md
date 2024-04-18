@@ -1,10 +1,10 @@
 ---
 title: Automate Cloud Resource Deployment
 description: 'This guide shows you how to automate server builds using Puppet and Chef cookbooks, golden disks and images, on a Linode running the Linux Operating System.'
-keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
-tags: ["linode platform","automation"]
 published: 2013-06-28
 modified: 2023-03-14
+keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
+tags: ["linode platform","automation"]
 aliases: ['/platform/automating-server-builds/','/guides/automating-server-builds/']
 ---
 

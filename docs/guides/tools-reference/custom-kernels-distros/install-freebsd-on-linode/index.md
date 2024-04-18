@@ -1,12 +1,14 @@
 ---
 slug: install-freebsd-on-linode
+title: 'Install FreeBSD on Linode'
 description: 'This guide will show you how to install FreeBSD, the free and open source operating system based on the Berkeley Software Software Distribution from the late 1970s.'
+authors: ["Rainbow"]
+contributors: ["Rainbow"]
+published: 2016-03-14
+modified: 2019-01-07
 keywords: ["freebsd", "bsd"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-07
-published: 2016-03-14
-title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
  - '[Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/)'
@@ -19,8 +21,6 @@ relations:
         keywords:
             - distribution: FreeBSD
 aliases: ['/tools-reference/custom-kernels-distros/install-freebsd-on-linode/']
-authors: ["Rainbow"]
-contributors: ["Rainbow"]
 ---
 
 ![Install FreeBSD on Linode](install-freebsd-on-linode.png "Install FreeBSD on Linode")

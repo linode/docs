@@ -1,17 +1,17 @@
 ---
 slug: ss
+title: 'Learning to Use the ss Tool to its Full Potential'
 description: 'An introduction to the ss utility.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-08-28
+modified: 2020-12-03
 keywords: ["UNIX", "shell", "AWK", "ss", "TCP/IP", "network", "socket"]
 tags: ["networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-08-28
-modified: 2020-12-03
-title: 'Learning to Use the ss Tool to its Full Potential'
 external_resources:
   - '[iproute2](https://en.wikipedia.org/wiki/Iproute2)'
 aliases: ['/networking/diagnostics/ss/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

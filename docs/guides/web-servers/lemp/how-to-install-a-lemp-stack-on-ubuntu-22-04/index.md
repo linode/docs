@@ -1,11 +1,13 @@
 ---
 slug: how-to-install-a-lemp-stack-on-ubuntu-22-04
-description: 'This guide provides some background about the Linux LEMP stack and explains how to install a LEMP stack on Ubuntu 22.04.'
-keywords: ['Ubuntu LEMP stack','LEMP stack Ubuntu','install LEMP stack','How to install a LEMP Stack on Ubuntu 22.04']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-13
 title: "Install a LEMP Stack on Ubuntu 22.04"
 title_meta: "How to Install a LEMP Stack on Ubuntu 22.04"
+description: 'This guide provides some background about the Linux LEMP stack and explains how to install a LEMP stack on Ubuntu 22.04.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-05-13
+keywords: ['Ubuntu LEMP stack','LEMP stack Ubuntu','install LEMP stack','How to install a LEMP Stack on Ubuntu 22.04']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ubuntu Documentation](https://ubuntu.com/server)'
 - '[PHP Website](https://www.php.net/)'
@@ -20,8 +22,6 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 22.04 LTS
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 aliases: ['/lemp-guides/ubuntu-12.04-precise-pangolin/']
 ---
 

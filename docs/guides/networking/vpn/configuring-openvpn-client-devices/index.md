@@ -1,11 +1,13 @@
 ---
 slug: configuring-openvpn-client-devices
+title: 'Configure OpenVPN Client Devices'
 description: 'This guide will show you how to install, configure, and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-09
+modified: 2018-02-26
 keywords: ["openvpn", "vpn", "vpn tunnel", "ios", "os x", "mac", "windows", "android"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-02-26
-published: 2015-12-09
-title: 'Configure OpenVPN Client Devices'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](https://www.tunnelblick.net/)'
@@ -13,8 +15,6 @@ external_resources:
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/configuring-openvpn-client-devices/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it's recommended that you first complete Parts [One](/docs/guides/set-up-a-hardened-openvpn-server/) and [Two](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/), this guide stands on its own as a general tutorial for configuring OpenVPN clients on various operating systems.

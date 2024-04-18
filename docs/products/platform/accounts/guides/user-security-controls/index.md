@@ -1,11 +1,11 @@
 ---
+title: "Security Controls for User Accounts"
 description: "Learn how to protect your Linode account using security measures and controls built-in to the Linode platform."
+published: 2022-06-24
+modified: 2023-08-15
 keywords: ["two-factor authentication", "password", "security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
 aliases: ['/linode-manager-security/','/security/authentication/linode-manager-security-controls/','/security/linode-manager-security-controls-new-manager/','/platform/manager/keep-your-linode-account-safe/','/security/linode-manager-security-controls/','/security/authentication/two-factor-authentication/linode-manager-security-controls/','/guides/linode-manager-security-controls/','/guides/user-security-controls/']
-published: 2022-06-24
-modified: 2023-08-15
-title: "Security Controls for User Accounts"
 ---
 
 To protect your Linode user account against unauthorized access, there are several security controls you can implement. This guide covers several of these controls, including 2FA, security questions, and phone verification.

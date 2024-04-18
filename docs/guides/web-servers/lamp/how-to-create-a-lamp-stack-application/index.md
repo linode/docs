@@ -3,12 +3,12 @@ slug: how-to-create-a-lamp-stack-application
 title: "How to Create a LAMP Stack on Linux"
 title_meta: "How to Create a LAMP Stack Application"
 description: 'Learn how to create a LAMP stack application on Linux. Read our guide to learn LAMP stack basics. '
-keywords: ['LAMP Stack Application', 'How to create a LAMP stack application', 'LAMP stack', 'LAMP stack on Linux']
-tags: ['linux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 published: 2023-04-05
+keywords: ['LAMP Stack Application', 'How to create a LAMP stack application', 'LAMP stack', 'LAMP stack on Linux']
+tags: ['linux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[LAMP stack](/docs/guides/web-servers/lamp/)'
 - '[Model-View-Controller](https://www.guru99.com/mvc-tutorial.html)'

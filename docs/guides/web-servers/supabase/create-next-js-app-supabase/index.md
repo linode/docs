@@ -1,17 +1,17 @@
 ---
 slug: create-next-js-app-supabase
-description: "Supabase gives you an effective Firebase alternative based on PostgresSQL, and includes a ready interface for user authentication and a REST API. This makes Supabase an outstanding backend, and pairs it well with frontend technologies like Next.js. Next.js itself pushes the offerings of React with the addition of server-side and static pre-rendering. Learn in this tutorial how you can get started using these two tools together."
-keywords: ['supabase nextjs example','supabase nextjs typescript','supabase next js api']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-08
 title: "Create a Next.js App with a Supabase Backend"
 title_meta: "How to Create a Next.js App with a Supabase Backend"
+description: "Supabase gives you an effective Firebase alternative based on PostgresSQL, and includes a ready interface for user authentication and a REST API. This makes Supabase an outstanding backend, and pairs it well with frontend technologies like Next.js. Next.js itself pushes the offerings of React with the addition of server-side and static pre-rendering. Learn in this tutorial how you can get started using these two tools together."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-08
+keywords: ['supabase nextjs example','supabase nextjs typescript','supabase next js api']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Supabase: Quickstart - Next.js](https://supabase.com/docs/guides/with-nextjs)'
 - '[freeCodeCamp: Full Stack Development with Next.js and Supabase – The Complete Guide](https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/)'
 - '[LogRocket: Build a Full-stack App with Next.js and Supabase](https://blog.logrocket.com/build-full-stack-app-next-js-supabase/)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Supabase offers an open source database solution complete with a REST API for accessing data. This makes Supabase more than just an outstanding database. It can function as a complete backend for many applications. Supabase abstracts API development and gives your application's frontend access to the data it needs.

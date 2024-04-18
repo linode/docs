@@ -1,10 +1,10 @@
 ---
+title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Django on a Linode Compute Instance. This provides you with a high performance web server to manage your Django application."
-keywords: ['web server','django','openlitespeed']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2022-03-08
-title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
+keywords: ['web server','django','openlitespeed']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[OpenLiteSpeed Django](https://docs.litespeedtech.com/cloud/images/django/)'
 aliases: ['/guides/deploying-openlitespeed-django-marketplace-app/','/guides/openlitespeed-django-marketplace-app/']

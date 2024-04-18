@@ -1,13 +1,16 @@
 ---
 slug: install-coreos-on-your-linode
-deprecated: true
+title: Install CoreOS on Your Linode
 description: 'CoreOS is a container-centric Linux distribution designed for clustered systems running in the cloud. This guide details installing CoreOS on a Linode.'
+authors: ["Michael Zuo"]
+contributors: ["Michael Zuo"]
+published: 2016-01-07
+modified: 2020-12-01
+deprecated: true
 keywords: ["coreos", "custom", "finnix", "lish"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-01-07
-modified: 2020-12-01
-title: Install CoreOS on Your Linode
+external_resources:
   - '[CoreOS official documentation pages](https://coreos.com/docs/)'
 relations:
     platform:
@@ -15,8 +18,6 @@ relations:
         keywords:
             - distribution: CoreOS
 aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
-authors: ["Michael Zuo"]
-contributors: ["Michael Zuo"]
 ---
 
 {{< note respectIndent=false >}}

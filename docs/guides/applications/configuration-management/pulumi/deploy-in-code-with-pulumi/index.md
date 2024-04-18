@@ -1,18 +1,18 @@
 ---
 slug: deploy-in-code-with-pulumi
+title: Getting Started with Pulumi
 description: 'Learn how to install Pulumi, import the Linode module for Pulumi, and write your first Pulumi programs.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-06-26
 keywords: ["pulumi", "configuration management", "infrastructure as code", "iac", "javascript", "python"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-06-26
-title: Getting Started with Pulumi
 external_resources:
 - '[Pulumi Documentation](https://www.pulumi.com/docs/)'
 - '[Pulumi API reference](https://www.pulumi.com/docs/languages-sdks/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
 aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is Pulumi?

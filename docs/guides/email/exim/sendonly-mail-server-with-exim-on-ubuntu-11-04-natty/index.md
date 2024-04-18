@@ -1,21 +1,21 @@
 ---
 slug: sendonly-mail-server-with-exim-on-ubuntu-11-04-natty
-deprecated: true
+title: 'Send-only Mail Server with Exim on Ubuntu 11.04 (Natty)'
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 11.04 (Natty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-06-14
+modified: 2013-02-18
+deprecated: true
 keywords: ["exim ubuntu 11.04", "exim", "send email ubuntu", "mail server", "linux mail", "smtp server", "ubuntu exim"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/sendonly-mail-server-with-exim-on-ubuntu-11-04-natty/','/email/exim/send-only-mta-ubuntu-11-04-natty/']
-modified: 2013-02-18
-published: 2011-06-14
-title: 'Send-only Mail Server with Exim on Ubuntu 11.04 (Natty)'
 relations:
     platform:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 11.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

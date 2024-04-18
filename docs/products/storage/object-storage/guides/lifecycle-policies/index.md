@@ -1,9 +1,9 @@
 ---
+title: "Lifecycle Policies"
 description: "Use lifecycle policies to manage deleting objects in Linode Object Storage."
-keywords: ['object','storage','lifecycle','policy','policies','delete','bucket','version','multipart']
 published: 2019-10-18
 modified: 2023-08-15
-title: "Lifecycle Policies"
+keywords: ['object','storage','lifecycle','policy','policies','delete','bucket','version','multipart']
 aliases: ['/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/','/platform/object-storage/lifecycle-policies/','/guides/lifecycle-policies/','/guides/how-to-manage-objects-with-lifecycle-policies/']
 tags: ["linode platform"]
 ---

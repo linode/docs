@@ -1,13 +1,15 @@
 ---
 slug: apache-tomcat-on-ubuntu-18-04
+title: 'Installing Apache Tomcat on Ubuntu 18.04'
+title_meta: 'How to Install Apache Tomcat on Ubuntu 18.04'
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-25
 keywords: ["apache tomcat ubuntu 18.04", "tomcat java", "java ubuntu 18.04", "tomcat ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-ubuntu-18-04/','/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-18-04/','/development/frameworks/apache-tomcat-on-ubuntu-18-04/']
-published: 2020-03-25
-title: 'Installing Apache Tomcat on Ubuntu 18.04'
-title_meta: 'How to Install Apache Tomcat on Ubuntu 18.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -20,8 +22,6 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

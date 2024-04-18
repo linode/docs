@@ -1,21 +1,21 @@
 ---
 slug: django-apache-and-modwsgi-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Django, Apache and mod_wsgi on Ubuntu 9.10 (Karmic)'
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.10 Karmic.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-18
+modified: 2011-05-17
+deprecated: true
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/','/development/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/','/development/frameworks/django/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/','/frameworks/django-apache-mod-wsgi/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-published: 2010-05-18
-title: 'Django, Apache and mod_wsgi on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: django-apache-modwsgi
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

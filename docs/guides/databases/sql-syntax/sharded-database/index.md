@@ -1,15 +1,15 @@
 ---
 slug: sharded-database
+title: "Database Sharding: Concepts, Examples, and Strategies"
 description: 'Database sharding divides data into smaller chunks and distributes it across different database nodes. Learn more about sharding practices and strategies.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-05-26
 keywords: ['sharded database','db sharding','sharding strategy','database sharding examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-26
-title: "Database Sharding: Concepts, Examples, and Strategies"
 external_resources:
 - '[Wikipedia page on database sharding](https://en.wikipedia.org/wiki/Shard_(database_architecture))'
 - '[MongoDB explanation of database sharding](https://www.mongodb.com/features/database-sharding-explained)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

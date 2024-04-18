@@ -1,22 +1,22 @@
 ---
 slug: lemp-server-on-centos-5
+title: LEMP Server on CentOS 5
+description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-27
+modified: 2013-09-23
 deprecated: true
 deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
-description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lemp/lemp-server-on-centos-5/','/lemp-guides/centos-5/','/websites/lemp/lemp-server-on-centos-5/']
-modified: 2013-09-23
-published: 2010-07-27
-title: LEMP Server on CentOS 5
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

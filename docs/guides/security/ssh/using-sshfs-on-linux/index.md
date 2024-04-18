@@ -1,19 +1,19 @@
 ---
 slug: using-sshfs-on-linux
+title: Using SSHFS to Mount Remote Directories
 description: 'This guide shows how to use SSHFS, Secure Shell FileSystem, a tool that allows users to securely access a remote file system over SSH via the command line interface.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-26
+modified: 2019-08-16
 keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 tags: ["networking","ssh","security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/using-sshfs-on-linux-and-macos-x/','/networking/ssh/using-sshfs-on-linux/','/networking/ssh-filesystems/']
-modified: 2019-08-16
-published: 2009-10-26
-title: Using SSHFS to Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
  - '[Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![SSHFS](sshfs_mount_remote.png)

@@ -1,20 +1,20 @@
 ---
 slug: freeipa-for-identity-management
+title: "Set Up a FreeIPA Server and Client"
+title_meta: "How to Set Up a FreeIPA Server and Client"
 description: "Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management."
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
+modified: 2022-11-29
 keywords: ["freeipa","identity management", "authentication","security"]
 aliases: ['/security/authentication/free-ipa-for-identity-management/','/security/free-ipa-for-identity-management/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: "Set Up a FreeIPA Server and Client"
-title_meta: "How to Set Up a FreeIPA Server and Client"
 external_resources:
  - '[FreeIPA Documentation](https://www.freeipa.org/page/Documentation)'
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
-published: 2021-03-26
-modified: 2022-11-29
 image: FreeIPA_IDandAuth.png
-authors: ["Hackersploit"]
-contributors: ["Hackersploit"]
 ---
 
 ## What is FreeIPA

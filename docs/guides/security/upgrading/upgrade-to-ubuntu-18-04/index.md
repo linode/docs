@@ -1,13 +1,15 @@
 ---
 slug: upgrade-to-ubuntu-18-04
+title: "Inline Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
+title_meta: "How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
 description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system to the latest LTS (Long Term Support) version of Ubuntu - 18.04 LTS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-04-27
+modified: 2021-10-26
 keywords: ["upgrading", "ubuntu", "18.04","bionic beaver"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-10-26
-published: 2018-04-27
-title: "Inline Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
-title_meta: "How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
 relations:
     platform:
         key: how-to-upgrade-ubuntu
@@ -15,8 +17,6 @@ relations:
             - distribution: Ubuntu 18.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-18-04/']
 image: upgrade-ubuntu-18-title.jpg
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Ubuntu 18.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2023. This guide shows how to upgrade your Linode from Ubuntu 16.04 (Xenial Xerus) or Ubuntu 17.10 (Artful Aardvark) to Ubuntu 18.04 (Bionic Beaver).

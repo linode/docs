@@ -1,16 +1,16 @@
 ---
 slug: how-to-configure-http-2-on-nginx
+title: "Configure HTTP/2 on NGINX"
+title_meta: "How to Configure HTTP/2 on NGINX"
 description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-07-16
 og_description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using NGINX on Debian.'
 keywords: ['nginx http2']
 tags: ['web server', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-16
 image: HowtoConfigureHTTP-2onNGINX.jpg
-title: "Configure HTTP/2 on NGINX"
-title_meta: "How to Configure HTTP/2 on NGINX"
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) updates the original *Hypertext Transfer Protocol* (HTTP) specification to offer improvements in efficiency and latency. The new version includes several other new features while maintaining compatibility with older browsers. Due to the clear advantages of HTTP/2, web servers should be upgraded to use the new version. This guide explains how to configure, use, and test HTTP/2 with an [*NGINX*](https://www.nginx.com/) server. For a deep-dive into the HTTP/2 protocol see our [An Introduction to HTTP/2](/docs/guides/introducing-http-2/) guide.

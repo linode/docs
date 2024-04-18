@@ -1,12 +1,12 @@
 ---
 slug: troubleshooting-network-issues
-description: 'Learn the basic differences between IPv4 & IPv6, and how to map IPv4 troubleshooting skills to IPv6 with the addition of IPv4-IPv6 example translation.'
-keywords: ['networking','troubleshooting','ipv4','ipv6']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-09
 title: "Troubleshooting Network Issues - IPv4 and IPv6"
+description: 'Learn the basic differences between IPv4 & IPv6, and how to map IPv4 troubleshooting skills to IPv6 with the addition of IPv4-IPv6 example translation.'
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
+published: 2022-09-09
+keywords: ['networking','troubleshooting','ipv4','ipv6']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 A successful internet circuit from host-to-host usually involves many components: from an application in one host, to an application in the desired target host. This tutorial covers troubleshooting connectivity between apps, and their hosts, whether over IPv4, IPv6, or an IPv6 tunnel over IPv4.

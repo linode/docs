@@ -1,11 +1,11 @@
 ---
-description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
-keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
-tags: ["monitoring","kubernetes","web application"]
-published: 2022-03-17
-modified: 2023-02-09
 title: "Manage an LKE Cluster Using the Kubernetes Dashboard"
 title_meta: "An Overview of the Kubernetes Dashboard on LKE"
+description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
+published: 2022-03-17
+modified: 2023-02-09
+keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
+tags: ["monitoring","kubernetes","web application"]
 external_resources:
 - '[Kubernetes Docs](https://kubernetes.io/docs/home/)'
 - '[Kubernetes Dashboard GitHub](https://github.com/kubernetes/dashboard)'

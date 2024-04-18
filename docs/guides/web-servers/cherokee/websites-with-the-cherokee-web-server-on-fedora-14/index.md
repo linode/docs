@@ -1,21 +1,21 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-fedora-14
-deprecated: true
+title: Websites with the Cherokee Web Server on Fedora 14
 description: 'Instructions for getting started with the Cherokee web server on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-27
+modified: 2013-10-07
+deprecated: true
 keywords: ["cherokee fedora 14", "cherokee web sever", "cherokee", "fedora 14"]
 tags: ["web server","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/','/web-servers/cherokee/installing-cherokee-fedora-14/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/']
-modified: 2013-10-07
-published: 2010-05-27
-title: Websites with the Cherokee Web Server on Fedora 14
 relations:
     platform:
         key: install-cherokee-server
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

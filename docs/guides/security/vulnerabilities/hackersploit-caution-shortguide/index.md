@@ -1,14 +1,14 @@
 ---
 slug: hackersploit-caution-shortguide
-keywords: []
-description: "Caution note that instructs readers to not run the commands in a guide on prohibited IPs and domains."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
 title: "HackerSploit Red Team Series Caution Note"
-headless: true
-show_on_rss_feed: false
+description: "Caution note that instructs readers to not run the commands in a guide on prohibited IPs and domains."
 authors: ["Linode"]
 contributors: ["Linode"]
+published: 2021-11-03
+keywords: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+headless: true
+show_on_rss_feed: false
 ---
 
 {{< note type="alert" respectIndent=false >}}

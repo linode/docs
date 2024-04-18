@@ -1,19 +1,19 @@
 ---
 slug: soap-vs-rest-api
+title: "What is the Difference Between SOAP and REST API?"
+title_meta: "SOAP vs REST API: Key Differences Explained"
 description: 'Comparing SOAP vs REST API? Learn more about what each technology is, the primary differences between SOAP and REST API, and the benefits both have to offer.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-03-14
 keywords: ['soap vs rest api', 'difference between soap and rest', 'soap rest', 'rest vs soap api']
 tags: ['web server', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-14
-title: "What is the Difference Between SOAP and REST API?"
-title_meta: "SOAP vs REST API: Key Differences Explained"
 external_resources:
 - '[SOAP Envelope definition](http://www.w3.org/2003/05/soap-envelope)'
 - '[WSDL page on Wikipedia](https://en.wikipedia.org/wiki/Web_Services_Description_Language)'
 - '[W3C Specification](https://www.w3.org/TR/soap12/)'
 - '[GitHub REST API](https://docs.github.com/en/rest)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 In web applications, information has to be frequently transferred between a client and an application server. To enforce standards, avoid confusion, and minimize duplication, these interactions typically follow a couple of widely-accepted, standardized approaches. The two most common methods are the *Representational State Transfer* (REST) architecture and *Simple Object Access Protocol* (SOAP). This guide compares REST vs SOAP, providing an overview of each technology and describing its advantages.

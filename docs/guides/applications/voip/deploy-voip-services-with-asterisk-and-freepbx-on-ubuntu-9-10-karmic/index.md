@@ -1,22 +1,22 @@
 ---
 slug: deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)'
 description: 'This guide will show you how to install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange, also known as a PBX, on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-23
+modified: 2013-08-02
+deprecated: true
 keywords: ["asterisk ubuntu 9.10", "asterisk", "asterisk linux", "freepbx", "freepbx ubuntu", "pbx", "voip"]
 tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic/','/communications/voip-services-ubuntu9-10/']
-modified: 2013-08-02
-published: 2010-04-23
-title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)'
 dedicated_cpu_link: true
 relations:
     platform:
         key: asterisk-freepbx-telephone
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Asterisk is an open source telephone solution that runs over the internet instead of running through copper lines like a normal phone would. It offers a variety of features such as voice mail and conference calling, much like a land line telephone can.

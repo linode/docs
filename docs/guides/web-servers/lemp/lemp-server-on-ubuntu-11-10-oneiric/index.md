@@ -1,21 +1,21 @@
 ---
 slug: lemp-server-on-ubuntu-11-10-oneiric
-deprecated: true
+title: 'LEMP Server on Ubuntu 11.10 (Oneiric)'
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-11-07
+modified: 2013-09-23
+deprecated: true
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-ubuntu-11-10-oneiric/','/lemp-guides/ubuntu-11-10-oneiric/','/web-servers/lemp/lemp-server-on-ubuntu-11-10-oneiric/']
-modified: 2013-09-23
-published: 2011-11-07
-title: 'LEMP Server on Ubuntu 11.10 (Oneiric)'
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 11.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

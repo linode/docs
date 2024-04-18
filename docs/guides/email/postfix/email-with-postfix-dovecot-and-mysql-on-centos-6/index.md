@@ -1,12 +1,14 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-centos-6
-deprecated: true
+title: 'Email with Postfix, Dovecot, and MySQL on CentOS 6'
 description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on CentOS 6.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-03-26
+deprecated: true
 keywords: ["postfix centos 6", "dovecot centos 6", "linux mail server", "email", "centos 6"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-03-26
-title: 'Email with Postfix, Dovecot, and MySQL on CentOS 6'
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
  - '[Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny)'
@@ -20,8 +22,6 @@ relations:
         keywords:
             - distribution: CentOS 6
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-6/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Email with Postfix, Dovecot, and MySQL on CentOS](Email-with-Postfix-Dovecot-and-MySQL-on-CentOS-smg.jpg)

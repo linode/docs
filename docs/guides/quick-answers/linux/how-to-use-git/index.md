@@ -1,19 +1,19 @@
 ---
 slug: how-to-use-git
+title: How to Use Git the Version Control System
 description: 'This Quick Answer guide explains how to use Git to create a repository, stage a commit, and then push that commit.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-19
+modified: 2017-07-17 Guarisma
 aliases: ['/quick-answers/linux/how-to-use-git/','/quick-answers/how-to-use-git/']
 keywords: ["Linux", "how to use Git", "github", "create git repo"]
 tags: ["version control system","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-07-17 Guarisma
-published: 2017-06-19
-title: How to Use Git the Version Control System
 external_resources:
 - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
 - '[Pro Git Book](https://git-scm.com/book/en/v2)'
 - '[Github Guides](https://guides.github.com/)'
-authors: ["Angel Guarisma"]
-contributors: ["Angel Guarisma"]
 ---
 
 Git is a [version control system](https://en.wikipedia.org/wiki/Version_control) that can be used to manage software projects. This guide's six steps will show you how to initialize a Git repository, stage files for a commit, and commit these files to a local Git repository. For fuller instruction, refer to our more robust guide on [Git Source Control Management](/docs/guides/how-to-install-git-on-linux-mac-and-windows/).

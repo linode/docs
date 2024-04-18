@@ -2,11 +2,11 @@
 slug: install-nagios-on-centos-8
 title: "How to Install Nagios on CentOS 8"
 description: "Nagios offers a robust server-monitoring system, complete with built-in interface and alert system. Learn how to install Nagios on your CentOS 8 and similar systems."
-keywords: ['install nagios centos','nagios centos tutorial','install nagios on rocky linux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
 contributors: ['Nathaniel Stickman']
 published: 2023-06-21
+keywords: ['install nagios centos','nagios centos tutorial','install nagios on rocky linux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Nagios Library: Nagios Core Documentation](https://library.nagios.com/library/products/nagios-core/documentation/)'
 - '[Nagios Documentation: Nagios Core 4 Documentation](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/)'

@@ -1,16 +1,16 @@
 ---
 slug: advanced-bash-scripting-2
-description: 'Part two series of the advanced Bash scripting guide expands on the previous Bash guides. In this guide, you learn advanced bash scripting, commands, debugging, and more.'
-keywords: ['Advanced bash scripting', 'Bash expressions', 'Bash functions', 'bash aliases', 'Bash debugging']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-30
 title: "Advanced Bash Scripting: Part 2"
 title_meta: "A Software Engineer's Guide to Advanced Bash Scripting: Part 2"
+description: 'Part two series of the advanced Bash scripting guide expands on the previous Bash guides. In this guide, you learn advanced bash scripting, commands, debugging, and more.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-03-30
+keywords: ['Advanced bash scripting', 'Bash expressions', 'Bash functions', 'bash aliases', 'Bash debugging']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[GNU Bash](https://www.gnu.org/software/bash/)'
 - '[Debugging Bash scripts](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_03.html)'
-authors: ["John Mueller"]
-contributors: ["John Mueller"]
 ---
 
 The previous part of this guide, [**Guide to Advanced Bash Scripting: Part 1**](/docs/guides/advanced-bash-scripting-1), describes the advanced Bash scripting concepts of Bash functions, list constructs, arrays, aliases, and regular expressions. This guide, the second part of this series, explains more advanced topics, including documents, Bash I/O redirection, subshells, restricted shells, process substitution, indirect references, and network programming. As well, this guide covers some Bash debugging techniques. If you're new to Bash, check out our [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/) and [Intermediate Guide to Bash Scripting](/docs/guides/an-intermediate-guide-to-bash-scripting/) before you begin this guide.

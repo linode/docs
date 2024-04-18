@@ -1,9 +1,9 @@
 ---
 title: "Manage Firewall Rules"
 description: "How to add rules to a Linode Cloud Firewall."
-aliases: ['/products/networking/cloud-firewall/guides/add-rules/','/products/networking/cloud-firewall/guides/edit-rules/','/products/networking/cloud-firewall/guides/delete-rules/']
 published: 2020-11-10
 modified: 2023-11-01
+aliases: ['/products/networking/cloud-firewall/guides/add-rules/','/products/networking/cloud-firewall/guides/edit-rules/','/products/networking/cloud-firewall/guides/delete-rules/']
 ---
 
 A Cloud Firewall can be configured with both *Inbound* and *Outbound* rules.

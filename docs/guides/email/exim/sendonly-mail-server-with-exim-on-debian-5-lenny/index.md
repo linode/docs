@@ -1,21 +1,21 @@
 ---
 slug: sendonly-mail-server-with-exim-on-debian-5-lenny
-deprecated: true
+title: 'Send-only Mail Server with Exim on Debian 5 (Lenny)'
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Debian Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-17
+modified: 2012-10-08
+deprecated: true
 keywords: ["exim", "mail server", "linux mail", "smtp server", "debian exim", "debian lenny"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/','/email/exim/send-only-mta-debian-5-lenny/']
-modified: 2012-10-08
-published: 2009-12-17
-title: 'Send-only Mail Server with Exim on Debian 5 (Lenny)'
 relations:
     platform:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -2,11 +2,11 @@
 slug: types-of-networks
 title: "Different Types of Computer Networks, Explained"
 description: "What are the different types of networks and what do they do? This guide discusses the main types of computer networks and what they’re used for."
-keywords: ['types of networks', 'networking type', 'network connection types', 'what type of network is the internet', 'type of computer networks']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
 contributors: ["David Robert Newman"]
 published: 2023-09-26
+keywords: ['types of networks', 'networking type', 'network connection types', 'what type of network is the internet', 'type of computer networks']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Networks vary widely in size and scope. Some are simple and highly localized. Others span the globe – and beyond, even going into space. Picking the right network depends on what and where you want to connect. Your type of application also matters in some cases; for example, there are special networks optimized just for storage devices.This guide describes 10 major network types and where each network might, or might not, make sense.

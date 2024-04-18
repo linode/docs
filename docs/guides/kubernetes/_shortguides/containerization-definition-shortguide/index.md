@@ -1,15 +1,15 @@
 ---
 slug: containerization-definition-shortguide
-description: 'Shortguide that displays the definition for containerization.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-12
 title: Containerization Definition
+description: 'Shortguide that displays the definition for containerization.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-12
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/containerization-definition-shortguide/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ### Containerization

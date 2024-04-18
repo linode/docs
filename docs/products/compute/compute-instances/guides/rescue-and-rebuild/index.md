@@ -1,10 +1,10 @@
 ---
 title: Rescue and Rebuild
 description: 'Learn how to rescue and rebuild a Compute Instance by using the recovery tools available in the Cloud Manager.'
-keywords: ["rescue", "rebuild"]
-tags: ["cloud manager"]
 published: 2012-05-31
 modified: 2023-09-07
+keywords: ["rescue", "rebuild"]
+tags: ["cloud manager"]
 image: rescue-rebuild.jpg
 aliases: ['/troubleshooting/rescue-and-rebuild-classic-manager/','/troubleshooting/rescue-and-rebuild/','/rescue-and-rebuild/','/troubleshooting/finnix-rescue-mode/','/guides/rescue-and-rebuild/']
 ---

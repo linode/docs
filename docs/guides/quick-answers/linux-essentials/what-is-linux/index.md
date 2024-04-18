@@ -1,14 +1,14 @@
 ---
 slug: what-is-linux
-description: 'This guide provides you with an overview of the Linux Operating System, including details about its history, the Kernel, development models, lifecycles, and more.'
-keywords: ['linux','unix','kernel','open source','free software']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-07-26
 title: "What is Linux?"
-tags: ["linux"]
-aliases: ['/quick-answers/linux-essentials/what-is-linux/']
+description: 'This guide provides you with an overview of the Linux Operating System, including details about its history, the Kernel, development models, lifecycles, and more.'
 authors: ["Linode"]
 contributors: ["Linode"]
+published: 2018-07-26
+keywords: ['linux','unix','kernel','open source','free software']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["linux"]
+aliases: ['/quick-answers/linux-essentials/what-is-linux/']
 ---
 
 Linux refers to the *Linux Kernel* plus all the tools, utilities and libraries running on top of the kernel, many of which are managed under the umbrella of the GNU project. Colloquially, Linux refers to an *operating system* (OS). There are Linux community members that find it more correct and precise to use the term [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html) over Linux alone as a name for the OS.

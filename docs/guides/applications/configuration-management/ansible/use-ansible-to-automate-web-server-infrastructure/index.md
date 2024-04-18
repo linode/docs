@@ -1,17 +1,17 @@
 ---
 slug: use-ansible-to-automate-web-server-infrastructure
+title: "Use Ansible to Automate Configuration of Web Server, Log Server, and Database Server"
+title_meta: "Automate Configuration of Cloud Servers with Ansible"
 description: 'Learn how to use Ansible to deploy two web servers along with a log server and a database server.'
+authors: ["Nygel Bennett"]
+contributors: ["Nygel Bennett"]
+published: 2021-12-03
 keywords: ["ansible", "playbook", "bash script", "linode cli", "apache", "mariadb", "rsyslog", "lamp", "python"]
 tags: ['automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-03
-title: "Use Ansible to Automate Configuration of Web Server, Log Server, and Database Server"
-title_meta: "Automate Configuration of Cloud Servers with Ansible"
 external_resources:
 - '[Ansible User Guide](https://docs.ansible.com/ansible/latest/user_guide/index.html)'
 - '[Introduction to Ansible Playbooks](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html)'
-authors: ["Nygel Bennett"]
-contributors: ["Nygel Bennett"]
 ---
 
 ## What is Ansible?

@@ -1,15 +1,15 @@
 ---
 slug: install-iredmail-on-ubuntu
+title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 description: 'This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.'
+authors: ["Nick Reichley"]
+contributors: ["Nick Reichley"]
+published: 2014-10-06
+modified: 2020-12-04
 keywords: ["email", "mail", "iredmail"]
 tags: ["mysql","email","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/installing-iredmail/','/email/iredmail/install-iredmail-on-ubuntu/','/email/iredmail/installing-iredmail/']
-modified: 2020-12-04
-published: 2014-10-06
-title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
-authors: ["Nick Reichley"]
-contributors: ["Nick Reichley"]
 ---
 
 

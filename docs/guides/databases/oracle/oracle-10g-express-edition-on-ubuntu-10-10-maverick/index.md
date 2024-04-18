@@ -1,21 +1,21 @@
 ---
 slug: oracle-10g-express-edition-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Oracle 10g Express Edition on Ubuntu 10.10 (Maverick)'
 description: 'Install Oracle 10g to power server-side applications and web apps on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2014-08-13
+deprecated: true
 keywords: ["oracle ubuntu maverick", "oracle 10g ubuntu 10.10", "oracle ubuntu 10.10", "oracle ubuntu", "oracle linux", "sql database", "relational database", "rdbms", "oracle 10g"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-10-maverick/','/databases/oracle/10g-ubuntu-10-10-maverick/']
-modified: 2014-08-13
-published: 2011-04-05
-title: 'Oracle 10g Express Edition on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: install-oracle10g-express
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,19 +1,19 @@
 ---
 slug: install-and-run-askbot-on-ubuntu-16-04
+title: 'How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04'
 description: 'This guide shows how to Install and Deploy an AskBot Question and Answer Forum with LetsEncrypt SSL.'
+authors: ["Gopal Raha"]
+contributors: ["Gopal Raha"]
+published: 2017-08-20
+modified: 2017-09-22
 keywords: ["askbot", "Gunicorn", "LetsEncrypt", "Python", "WSGI"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-22
-published: 2017-08-20
-title: 'How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04'
 external_resources:
  - '[AskBot Documentation](https://askbot.org/doc/index.html)'
  - '[AskBot Official Q&A Forum](https://askbot.org)'
  - '[AskBot Official Website](https://askbot.com)'
 aliases: ['/websites/forums/install-and-run-askbot-on-ubuntu-16-04/']
-authors: ["Gopal Raha"]
-contributors: ["Gopal Raha"]
 ---
 
 ![AskBot with Let's Encrypt on Ubuntu](AskBot.jpg)

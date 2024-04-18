@@ -1,21 +1,21 @@
 ---
 slug: ikiwiki-on-debian-5-lenny
-deprecated: true
+title: 'Ikiwiki on Debian 5 (Lenny)'
 description: 'Use Ikiwiki on Debian to power a standard wiki implementation.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-31
+modified: 2012-10-08
+deprecated: true
 keywords: ["ikiwiki debian lenny", "ikiwiki debian 5", "ikiwiki", "wiki", "perl", "git", "markdown", "debian"]
 tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/ikiwiki-on-debian-5-lenny/','/web-applications/wikis/ikiwiki/debian-5-lenny/']
-modified: 2012-10-08
-published: 2011-01-31
-title: 'Ikiwiki on Debian 5 (Lenny)'
 relations:
     platform:
         key: using-ikiwiki
         keywords:
            - distribution: Debian 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

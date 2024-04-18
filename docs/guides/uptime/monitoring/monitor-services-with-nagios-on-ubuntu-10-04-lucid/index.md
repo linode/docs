@@ -1,21 +1,21 @@
 ---
 slug: monitor-services-with-nagios-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Monitor Services with Nagios on Ubuntu 10.04 (Lucid)'
 description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.04 (Lucid) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-26
+modified: 2013-10-01
+deprecated: true
 keywords: ["nagios", "monitoring"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-10-04-lucid/','/server-monitoring/nagios/ubuntu-10-04-lucid/']
-modified: 2013-10-01
-published: 2010-05-26
-title: 'Monitor Services with Nagios on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

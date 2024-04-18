@@ -1,12 +1,14 @@
 ---
 slug: how-to-install-a-lamp-stack-on-debian-11
+title: How to Install a LAMP Stack on Debian 11
+title_meta: 'Install a LAMP Stack on Debian 11 (Bullseye)'
 description: 'Install a LAMP stack on a Debian 11. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2023-08-30
 keywords: ["debian 11 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 11", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-08-30
-title: How to Install a LAMP Stack on Debian 11
-title_meta: 'Install a LAMP Stack on Debian 11 (Bullseye)'
 image:
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
@@ -19,8 +21,6 @@ relations:
         keywords:
             - distribution: Debian 11
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-11/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 11 (Bullseye).

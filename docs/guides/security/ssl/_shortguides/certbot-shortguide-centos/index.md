@@ -1,14 +1,14 @@
 ---
 slug: certbot-shortguide-centos
-description: "Install Certbot to obtain TLS certificates on a CentOS 7 or Red Hat server."
-keywords: []
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-28
-aliases: ['/quick-answers/websites/certbot-shortguide-centos/']
 title: 'Install Certbot for TLS on CentOS'
-headless: true
+description: "Install Certbot to obtain TLS certificates on a CentOS 7 or Red Hat server."
 authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
+published: 2018-06-28
+keywords: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/quick-answers/websites/certbot-shortguide-centos/']
+headless: true
 ---
 
 1.  Enable the EPEL repository:

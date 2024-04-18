@@ -1,21 +1,21 @@
 ---
 slug: apache-2-web-server-on-centos-5
-deprecated: true
+title: Apache 2 Web Server on CentOS 5
 description: 'Instructions for getting started with the Apache web server on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-27
+modified: 2013-11-18
+deprecated: true
 keywords: ["Apache", "web sever", "CentOS 5"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/installation/centos-5/','/web-servers/apache/apache-2-web-server-on-centos-5/','/websites/apache/apache-2-web-server-on-centos-5/']
-modified: 2013-11-18
-published: 2009-07-27
-title: Apache 2 Web Server on CentOS 5
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

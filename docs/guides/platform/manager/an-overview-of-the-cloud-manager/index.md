@@ -1,16 +1,16 @@
 ---
 slug: an-overview-of-the-cloud-manager
+title: "An Overview of the Cloud Manager"
 description: "This guide provides you with an overview of the Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-12-20
+modified: 2023-09-20
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/']
-published: 2019-12-20
-modified: 2023-09-20
 image: AnOverviewoftheLinodeCloudManager.png
-title: "An Overview of the Cloud Manager"
 tags: ["linode platform","cloud manager"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, manage Kubernetes clusters, add backups to your Linodes, deploy Marketplace Apps, track event notifications, create Object Storage buckets, and more. The Cloud Manager is implemented solely atop our [public APIv4](/docs/api), which gives you access to all our latest products and services.

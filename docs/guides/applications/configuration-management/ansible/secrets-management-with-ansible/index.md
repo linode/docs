@@ -1,15 +1,15 @@
 ---
 slug: secrets-management-with-ansible
+title: "Secrets Management with Ansible"
 description: "Ansible is a powerful tool for automating server provisioning and management. But these tasks often require secrets like passwords and access tokens. To keep your secrets secure, you should implement secrets management with Ansible. Learn how to choose the best secrets management solution for your needs and how to get started using it with Ansible in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-12-08
 keywords: ['ansible secrets manager','ansible vault tutorial','ansible secrets best practices']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-08
-title: "Secrets Management with Ansible"
 external_resources:
 - '[Red Hat - Enable Sysadmin: Handling Secrets in Your Ansible Playbooks](https://www.redhat.com/sysadmin/ansible-playbooks-secrets)'
 - '[Ansible Documentation: Protecting Sensitive Data with Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
 

@@ -1,16 +1,16 @@
 ---
 slug: manage-an-ubuntu-9-10-karmic-vps-with-ispconfig
-deprecated: true
+title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 9.10 (Karmic) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-19
+modified: 2011-04-29
+deprecated: true
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/ubuntu-9-10-karmic/','/websites/cms/ispconfig/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/']
-modified: 2011-04-29
-published: 2010-04-19
-title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

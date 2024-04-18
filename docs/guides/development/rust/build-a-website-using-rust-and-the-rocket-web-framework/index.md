@@ -1,11 +1,13 @@
 ---
 slug: build-a-website-using-rust-and-the-rocket-web-framework
+title: "Build a Website Using Rust and the Rocket Web Framework"
 description: 'Learn what the Rocket framework is, what it does, how it works, and how to install and configure it.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
 keywords: ['rocket','rust','functional programming','web application','app framework','handlebars templates']
 tags: ['rust', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
-title: "Build a Website Using Rust and the Rocket Web Framework"
 external_resources:
 - '[Rockets releases page](https://github.com/SergioBenitez/Rocket/releases)'
 - '[Handlebars](https://handlebarsjs.com/)'
@@ -13,8 +15,6 @@ external_resources:
 - '[Handlebars language guide](https://handlebarsjs.com/guide/)'
 - '[Rusts learning page](https://www.rust-lang.org/learn)'
 
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Rust is a functional programming language noted for its high performance and capabilities in systems programming. However, with the *Rocket framework*, you can also use Rust for building full-functioning — and efficient — web applications.

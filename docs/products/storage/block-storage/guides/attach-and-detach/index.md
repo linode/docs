@@ -1,8 +1,8 @@
 ---
 title: "Attach and Detach a Volume"
 description: "Learn how to attach and detach existing Volumes to or from Compute Instances."
-aliases: ['/products/storage/block-storage/guides/attach-volume/','/products/storage/block-storage/guides/detach-volume/']
 modified: 2022-08-24
+aliases: ['/products/storage/block-storage/guides/attach-volume/','/products/storage/block-storage/guides/detach-volume/']
 ---
 
 Each Volume can to be attached to a single Compute Instance within the same data center, which enables that instance to read and write data to that Volume. Volumes can also be detached, and its data cannot be accessed until it is again attached to any Compute Instance within the same data center.

@@ -1,16 +1,16 @@
 ---
 slug: monitor-your-website-changes-with-huginn-agents
+title: "Monitor Your Website Changes with Huginn Agents"
+title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-09
 keywords: ['huginn website agent']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-09
-title: "Monitor Your Website Changes with Huginn Agents"
-title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 external_resources:
 - '[Huginn GitHub](https://github.com/huginn/huginn)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 [Huginn](https://github.com/huginn/huginn) provides an open-source and self-hosted system for automating online tasks. It is similar to tools like IFTTT and Zapier, but is more customizable. Huginn also gives you greater control by being hosted on your own server. This guide shows you how to set up your own Huginn instance and then provides a deep dive into configuring agents to send you notifications.

@@ -1,13 +1,15 @@
 ---
 slug: install-and-configure-owncloud-on-centos-stream-8
-description: "Simple, secure, and free, ownCloud is an excellent alternative to Dropbox. Here's how to install it on CentOS Stream 8."
-keywords: ['owncloud on Centos']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
-modified: 2022-11-16
-image: Install_ownCloud_CentOS_stream.png
 title: "Installing and Configuring ownCloud on CentOS Stream 8"
 title_meta: "How to Install and Configure ownCloud on CentOS Stream 8"
+description: "Simple, secure, and free, ownCloud is an excellent alternative to Dropbox. Here's how to install it on CentOS Stream 8."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-03-05
+modified: 2022-11-16
+keywords: ['owncloud on Centos']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: Install_ownCloud_CentOS_stream.png
 tags: ["centos"]
 aliases: ['/guides/how-to-install-owncloud-centos-stream-8/']
 relations:
@@ -15,8 +17,6 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: CentOS Stream 8
-authors: ["Jack Wallen"]
-contributors: ["Jack Wallen"]
 ---
 
 ## What is ownCloud?

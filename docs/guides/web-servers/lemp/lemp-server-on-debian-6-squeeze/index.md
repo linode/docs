@@ -1,22 +1,22 @@
 ---
 slug: lemp-server-on-debian-6-squeeze
+title: 'LEMP Server on Debian 6 (Squeeze)'
 description: 'Install web applications with "LEMP", a LAMP-like stack using nginx, MySQL, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-06-22
+modified: 2012-06-21
 keywords: ["nginx","lemp","lepp","perl","python","php","linux","web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lemp-guides/debian-6-squeeze/','/websites/lemp/lemp-server-on-debian-6-squeeze/','/web-servers/lemp/lemp-server-on-debian-6-squeeze/']
-modified: 2012-06-21
-published: 2011-06-22
 deprecated: true
 deprecated_link: web-servers/lemp/install-a-lemp-stack-on-debian/
-title: 'LEMP Server on Debian 6 (Squeeze)'
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x", providing the "E" in LEMP) which can increase the ability of the server to scale in response to demand.

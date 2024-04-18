@@ -1,21 +1,21 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-11-04-natty
-deprecated: true
+title: 'Nginx and Perl-FastCGI on Ubuntu 11.04 (Natty)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 11.04 (Natty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-05-03
+modified: 2012-10-31
+deprecated: true
 keywords: ["nginx perl ubuntu 11.04", "nginx perl fastcgi", "nginx ubuntu natty", "fastscgi perl", "nginx ubuntu"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/perl-fastcgi/ubuntu-11-04-natty/','/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/']
-modified: 2012-10-31
-published: 2011-05-03
-title: 'Nginx and Perl-FastCGI on Ubuntu 11.04 (Natty)'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 11.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

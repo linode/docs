@@ -1,12 +1,14 @@
 ---
 slug: install-nagios-on-debian-10-and-ubuntu-2004
+title: "Install Nagios on Debian 10 and Ubuntu 20.04"
+title_meta: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
 description: 'This guide shows you how to install Nagios, a widely-used free and open-source application for server monitoring, on both Debian 10 and Ubuntu 20.04 servers.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
 keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
 tags: ['ubuntu', 'debian', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
-title: "Install Nagios on Debian 10 and Ubuntu 20.04"
-title_meta: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
 external_resources:
 - '[Nagios](https://www.nagios.com/products/nagios-core/)'
 - '[installation guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu)'
@@ -16,8 +18,6 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 10 & Ubuntu 20.04
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Monitoring tools play an important part in effectively operating production servers. They can help you keep tabs on a server's status and quickly catch any issues that might arise. [Nagios](https://www.nagios.com/products/nagios-core/) is a popular solution, providing monitoring and alerts for your server and the applications and services running on it. The wide array of plugins available for Nagios make it adaptable to your needs.

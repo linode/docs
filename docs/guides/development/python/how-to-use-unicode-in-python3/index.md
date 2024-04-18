@@ -1,12 +1,14 @@
 ---
 slug: how-to-use-unicode-in-python3
+title: "How to Use Unicode in Python 3"
+title_meta: "Using Unicode in Python 3"
 description: 'This guide introduces the concept of Unicode to developers, explains how Python handles unicode, and demonstrates how to handle common errors'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-03-20
 keywords: ['Python unicode','Unicode python','Unicode error python','Python unicode to string']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-20
-title: "How to Use Unicode in Python 3"
-title_meta: "Using Unicode in Python 3"
 external_resources:
 - '[Python Unicode Documentation](https://docs.python.org/3/howto/unicode.html)'
 - '[Unicode site](https://home.unicode.org/)'
@@ -16,8 +18,6 @@ external_resources:
 - '[RFC 3629](https://datatracker.ietf.org/doc/html/rfc3629)'
 - '[An explanation of the Unicode standard](https://jkorpela.fi/unicode/guide.html)'
 - '[Python background on lexical analysis](https://docs.python.org/3/reference/lexical_analysis.html)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Most of the time, using [*Unicode*](https://home.unicode.org/) characters in Python does not require extra effort. However, sometimes encoding and decoding do not work properly, which results in errors. To resolve these issues, this guide helps you understand how Python encodes and decodes Unicode. Fortunately, the Python library includes some powerful and useful utilities and built-in functions to manage these tasks. This guide introduces Unicode and the [*UTF-8*](https://en.wikipedia.org/wiki/UTF-8) character encoding and explains how Python handles Unicode. It also discusses some common Python Unicode errors and demonstrates how to resolve them.

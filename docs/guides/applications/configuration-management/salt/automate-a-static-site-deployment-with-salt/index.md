@@ -1,22 +1,22 @@
 ---
 slug: automate-a-static-site-deployment-with-salt
+title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
+title_meta: "Automate Static Site Deployments with Salt and Git"
 description: "Learn how to use Salt to configure a static site webserver and use webhooks to automatically deploy new site content."
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-10-15
+modified: 2019-01-02
 keywords: ['salt','saltstack','github','webhooks','hugo','static site','deployment']
 tags: ["web server","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-15
-modified: 2019-01-02
 image: Automate-Static-Site-DeploymentswithSaltGitandWebhooks.png
-title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
-title_meta: "Automate Static Site Deployments with Salt and Git"
 external_resources:
 - '[Hugo Documentation](https://gohugo.io/documentation/)'
 - '[SaltStack Git Fileserver Documentation](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html#tutorial-gitfs)'
 - '[SaltStack Salt Formulas Documentation](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[GitHub Developer - Webhooks](https://developer.github.com/webhooks/)'
 aliases: ['/applications/configuration-management/salt/automate-a-static-site-deployment-with-salt/','/applications/configuration-management/automate-a-static-site-deployment-with-salt/']
-authors: ["Nathan Melehan"]
-contributors: ["Nathan Melehan"]
 ---
 
 This guide will walk through the deployment of a static site using [SaltStack](https://github.com/saltstack/salt), which is a flexible configuration management system. The configuration files created for Salt will be version controlled using Git. Updates to your static site's code will be automatically communicated to the production system using webhooks, an event notification system for the web.

@@ -1,15 +1,15 @@
 ---
 slug: pacman-package-manager
+title: "Using Pacman to Manage Packages in Arch"
+title_meta: "How to Manage Packages in Arch Using Pacman"
 description: "This guide walks you through the core features of Pacman and gives you an overview of common commands for using the application to install, upgrade, and remove packages."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-15
 keywords: ['arch','manjaro','package manager']
 tags: ['arch', 'manjaro']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-15
 image: UsingPacmantoManagePackagesinArchLinux.jpg
-title: "Using Pacman to Manage Packages in Arch"
-title_meta: "How to Manage Packages in Arch Using Pacman"
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Arch Linux uses binary packages in a `.tar.xz` format, and also provides a "ports" build system that facilitates building packages. Arch Linux runs on a *rolling release* schedule, which means packages are added to the main repository when they (and their dependencies) are ready for production. This means that there aren't release versions of Arch, as all systems, once upgraded, are equivalent. Therefore, administrators of Arch Linux must consider the output of `pacman` carefully before agreeing to upgrade or update any packages.

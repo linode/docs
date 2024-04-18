@@ -1,16 +1,16 @@
 ---
 slug: solving-real-world-problems-with-bash-scripts-a-tutorial
-description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
-keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-08-30
 title: A Tutorial for Solving Real World Problems with Bash Scripts
 title_meta: 'Solving Real World Problems With Bash Scripts - A Tutorial'
+description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-08-30
+keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 aliases: ['/development/bash/solving-real-world-problems-with-bash-scripts-a-tutorial/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

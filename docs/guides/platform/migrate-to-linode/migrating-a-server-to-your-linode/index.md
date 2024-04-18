@@ -1,17 +1,17 @@
 ---
 slug: migrating-a-server-to-your-linode
+title: Migrating a Server to Your Linode
+description: 'This guide provides guidelines and tips for migrating an existing Linux server from a local development VM or another hosting provider to a new Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-05-24
+modified: 2017-04-03
 deprecated: true
 deprecated_link: '/docs/guides/best-practices-when-migrating-to-linode/'
-description: 'This guide provides guidelines and tips for migrating an existing Linux server from a local development VM or another hosting provider to a new Linode.'
 keywords: ["migrate to linode", "linode migration", "migrate linux"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migration/migrate-server-to-linode/','/migrate-to-linode/disk-images/migrating-a-server-to-your-linode/','/platform/disk-images/migrating-a-server-to-your-linode/']
-modified: 2017-04-03
-published: 2012-05-24
-title: Migrating a Server to Your Linode
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 {{< note respectIndent=false >}}

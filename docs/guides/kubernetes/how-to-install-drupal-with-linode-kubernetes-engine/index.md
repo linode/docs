@@ -1,16 +1,16 @@
 ---
 slug: how-to-install-drupal-with-linode-kubernetes-engine
+title: "Installing Drupal on LKE"
+title_meta: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
 description: "Learn how to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites."
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2019-11-07
 keywords: ['kubernetes','drupal','websites', 'cms', 'k8s']
 tags: ["mysql","kubernetes","container","cms","drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-07
-title: "Installing Drupal on LKE"
-title_meta: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
 
 aliases: ['/kubernetes/how-to-install-drupal-with-linode-kubernetes-engine/']
-authors: ["Rajakavitha Kodhandapani"]
-contributors: ["Rajakavitha Kodhandapani"]
 ---
 
 [Drupal](https://www.drupal.org) is an advanced and powerful content management framework, built on the PHP scripting language and supported by a database engine like MySQL. Drupal provides a flexible system that can be used to manage websites for a variety of use cases. For example, you can create rich, interactive “community” websites with forums, user blogs, and private messaging.

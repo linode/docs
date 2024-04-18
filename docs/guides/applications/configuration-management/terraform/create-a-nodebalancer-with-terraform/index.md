@@ -1,12 +1,14 @@
 ---
 slug: create-a-nodebalancer-with-terraform
+title: "Create a NodeBalancer with Terraform"
 description: 'This guide provides you with step-by-step instructions for installing Terraform and utilizing the tool to create a NodeBalancer and Nodes for your Linodes.'
-keywords: ['terraform','nodebalancer','node','balancer','provider','linode']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-12-12
 modified: 2021-12-29
+keywords: ['terraform','nodebalancer','node','balancer','provider','linode']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: CreateaNodeBalancerwitTerraform.png
-title: "Create a NodeBalancer with Terraform"
 external_resources: 
 - '[Terraform Linode Provider Reference](https://www.terraform.io/docs/providers/linode/index.html)'
 - '[linode_nodebalancer Resource Reference](https://www.terraform.io/docs/providers/linode/r/nodebalancer.html)'
@@ -16,8 +18,6 @@ external_resources:
 - '[Terraform Random Provider Reference](https://www.terraform.io/docs/providers/random/index.html)'
 - '[Terraform Built-In Function Reference](https://www.terraform.io/docs/configuration/interpolation.html#supported-built-in-functions)'
 aliases: ['/applications/configuration-management/create-a-nodebalancer-with-terraform/','/applications/configuration-management/terraform/create-a-nodebalancer-with-terraform/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Terraform allows you to represent Infrastructure as Code (IaC). You can use it to manage infrastructure, speed up deployments, and share your infrastructure's configuration files within a team. In this guide you will use Terraform to create a NodeBalancer that distributes traffic between two Linodes.

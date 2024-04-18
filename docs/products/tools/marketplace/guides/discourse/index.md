@@ -1,10 +1,10 @@
 ---
+title: "Deploy Discourse through the Linode Marketplace"
 description: "In this guide, learn how to install Discourse, an open source discussion platform that provides powerful features using the Linode One-Click Marketplace."
-keywords: ['discourse','one-click', 'server']
-tags: ["ubuntu","one-click", "web applications","linode platform", "cloud manager"]
 published: 2020-11-19
 modified: 2022-03-08
-title: "Deploy Discourse through the Linode Marketplace"
+keywords: ['discourse','one-click', 'server']
+tags: ["ubuntu","one-click", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[About Discourse](https://discourse.org/about/)'
 - '[Discourse on Github](https://github.com/discourse/discourse)'

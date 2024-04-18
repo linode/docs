@@ -1,14 +1,16 @@
 ---
 slug: lamp-server-on-debian-5-lenny
-deprecated: true
+title: 'LAMP Server on Debian 5 (Lenny)'
 description: 'This guide shows you how to create a LAMP Stack, Linux, Apache, MySQL, PHP, a common web stack for running websites, applications, and more, on Debian 5 "Lenny".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-16
+modified: 2012-10-03
+deprecated: true
 keywords: ["Debian LAMP Server", "Debian LAMP guide", "LAMP howto"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/lamp-server-on-debian-5-lenny/','/websites/lamp/lamp-server-on-debian-5-lenny/','/lamp-guides/debian-5-lenny/']
-modified: 2012-10-03
-published: 2009-07-16
-title: 'LAMP Server on Debian 5 (Lenny)'
 external_resources:
   - '[Debian Linux Home Page](http://www.debian.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -19,8 +21,6 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

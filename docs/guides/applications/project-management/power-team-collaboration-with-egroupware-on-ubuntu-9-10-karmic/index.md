@@ -1,21 +1,21 @@
 ---
 slug: power-team-collaboration-with-egroupware-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Power Team Collaboration with eGroupware on Ubuntu 9.10 (Karmic)'
 description: 'This guide shows how to install and build a groupware system using eGroupware, which provides a group of server-side apps for collaboration on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-01
+modified: 2011-08-22
+deprecated: true
 keywords: ["groupware", "email", "collaboration", "ubuntu", "karmic"]
 tags: ["ubuntu", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-ubuntu-9-10-karmic/','/web-applications/project-management/egroupware/ubuntu-9-10-karmic/']
-modified: 2011-08-22
-published: 2010-02-01
-title: 'Power Team Collaboration with eGroupware on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: collaborate-with-egroupware
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems, including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups, all without the need to rely on a third-party vendor. As eGroupware provides its applications entirely independent of any third party service, the suite is a good option for organizations who need web-based groupware solutions, but do not want to rely on a third party provider for these services.

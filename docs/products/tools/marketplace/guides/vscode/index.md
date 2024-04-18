@@ -1,10 +1,10 @@
 ---
+title: "Deploy VS Code through the Linode Marketplace"
 description: "This guide shows you how to run VS Code Server in the browser to create, edit, and manipulate code by using the VS Code app from the Linode One-Click Marketplace."
-keywords: ['vscode', 'marketplace', 'vscode web browser']
-tags: ["debian","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-12-02
 modified: 2022-03-08
-title: "Deploy VS Code through the Linode Marketplace"
+keywords: ['vscode', 'marketplace', 'vscode web browser']
+tags: ["debian","marketplace", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[Code Server FAQ](https://github.com/cdr/code-server/blob/v3.7.4/doc/FAQ.md)'
 - '[Code Server Setup and Configuration Guide](https://github.com/cdr/code-server/blob/v3.7.4/doc/guide.md)'

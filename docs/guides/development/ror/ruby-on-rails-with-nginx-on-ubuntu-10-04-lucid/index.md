@@ -1,21 +1,21 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Ruby on Rails with Nginx on Ubuntu 10.04 (Lucid)'
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 10.04 operating system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-29
+modified: 2014-02-05
+deprecated: true
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-10-04-lucid/','/development/ror/ruby-on-rails-with-nginx-on-ubuntu-10-04-lucid/','/frameworks/ruby-on-rails-nginx/ubuntu-10-04-lucid/']
-modified: 2014-02-05
-published: 2010-07-29
-title: 'Ruby on Rails with Nginx on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

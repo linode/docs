@@ -1,10 +1,12 @@
 ---
 slug: how-to-install-postgresql-relational-databases-on-centos-7
+title: 'How to Install PostgreSQL Relational Databases on CentOS 7'
 description: 'The PostgreSQL relational database is a powerful open source database platform. Learn how to install it on CentOS 7 in this simple tutorial.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-12-12
 keywords: ["postgresql", "CentOS 7", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-12-12
-title: 'How to Install PostgreSQL Relational Databases on CentOS 7'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
@@ -15,8 +17,6 @@ relations:
             - distribution: CentOS 7
 aliases: ['/databases/postgresql/use-postgresql-relational-databases-on-centos-7/','/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/']
 tags: ["database","postgresql","centos"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your CentOS 7 Linode.

@@ -1,21 +1,21 @@
 ---
 slug: ssl-certificates-with-apache-2-on-fedora-14
-deprecated: true
+title: SSL Certificates with Apache 2 on Fedora 14
 description: 'This guide will assist you with enabling SSL for websites being served by the free and open-source Apache2 web server for better web security on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
+deprecated: true
 keywords: ["apache ssl", "ssl on fedora", "web server", "fedora 14"]
 tags: ["fedora","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-fedora-14/','/web-servers/apache/ssl-guides/fedora-14/']
-modified: 2013-10-04
-published: 2011-04-05
-title: SSL Certificates with Apache 2 on Fedora 14
 relations:
     platform:
         key: ssl-certificate-apache
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

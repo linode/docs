@@ -1,18 +1,18 @@
 ---
 slug: how-to-use-journalctl
+title: Use journalctl to View Your System's Logs
 description: This guide shows how to use journalctl to view, search, and filter your system's logs.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-09-05
 keywords: ["systemd","journalctl","logging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-09-05
-title: Use journalctl to View Your System's Logs
 external_resources:
   - '[journalctl man page](https://www.freedesktop.org/software/systemd/man/journalctl.html)'
   - '[systemd-journald man page](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html#)'
   - '[journald.conf man page](https://www.freedesktop.org/software/systemd/man/journald.conf.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-journalctl/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is journalctl?

@@ -1,14 +1,16 @@
 ---
 slug: monitor-services-with-nagios-on-ubuntu-12-04
-deprecated: true
+title: 'Monitor Services with Nagios on Ubuntu 12.04'
 description: 'Use Nagios to Monitor Services and Send Status Updates on Ubuntu 12.04 (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-11-07
+modified: 2013-04-05
+deprecated: true
 keywords: ["nagios", "monitor services", "ubuntu 12.04", "smtp", "pop3", "http", "icmp", "ssh", "notifications", "alerts"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04/']
-modified: 2013-04-05
-published: 2012-11-07
-title: 'Monitor Services with Nagios on Ubuntu 12.04'
 external_resources:
  - '[Nagios Home Page](http://www.nagios.org/)'
  - '[Nagios IRC Bot](http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)'
@@ -19,8 +21,6 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Nagios is a monitoring tool that allows you to monitor services on a single server or a pool of servers. It can keep an eye on a broad range of network services, including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.

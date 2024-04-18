@@ -1,20 +1,20 @@
 ---
 slug: how-to-install-python-on-centos-8
+title: "Installing Python 3 on CentOS 8"
+title_meta: "How to Install Python 3 on CentOS 8"
 description: 'CentOS 8 does not come with Python installed. This guide shows how to install Python 3.9 from source, or Python 3.6 from the CentOS package repository.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2021-02-12
 keywords: ['How to Install Python on CentOS 8','Python','Python 3','Python 2 end of life']
 tags: ['python', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-12
 image: InstallPython3_CentOS8.png
-title: "Installing Python 3 on CentOS 8"
-title_meta: "How to Install Python 3 on CentOS 8"
 relations:
     platform:
         key: how-to-install-python
         keywords:
             - distribution: CentOS 8
-authors: ["Angel Guarisma"]
-contributors: ["Angel Guarisma"]
 ---
 
 Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction. This abstraction makes writing and reading the code easier than other languages.

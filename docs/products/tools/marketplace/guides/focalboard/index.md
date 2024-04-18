@@ -1,10 +1,10 @@
 ---
+title: "Deploy Focalboard through the Linode Marketplace"
 description: "Deploy Focalboard on a Linode Compute Instance. This provides you with an open source alternative to the popular project management tool Trello."
-keywords: ['focalboard','project','productivity','kanban']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2023-10-27
-title: "Deploy Focalboard through the Linode Marketplace"
+keywords: ['focalboard','project','productivity','kanban']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Focalboard](https://www.focalboard.com/)'
 aliases: ['/guides/focalboard-marketplace-app/']

@@ -1,13 +1,13 @@
 ---
 slug: linux-navigation-commands
+title: "Navigate the Linux Terminal and File System"
 description: 'Learn how to navigate the Linux terminal and create and remove directories and files.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-10-08
 keywords: ['ls command','change directory in linux','cp command in linux']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-08
-title: "Navigate the Linux Terminal and File System"
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 For users more familiar with a graphical user interface (GUI), the Linux command line interface can initially appear daunting. It is not always apparent how to perform common file and directory operations. Fortunately, Linux commands are very powerful and flexible, and with some practice, you can accomplish any file management operation you want. This guide explains how to navigate the Linux file structure and how to perform common management operations on files and directories.

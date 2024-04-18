@@ -1,21 +1,21 @@
 ---
 slug: how-to-install-and-configure-wordpress
+title: How to Install and Configure WordPress
 description: 'This guide will show you how to install and optimize the WordPress blogging and CMS on your Linode from scratch using a LAMP setup on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-27
+modified: 2015-10-05
 keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", "how to install wordpress", "how to configure wordpress"]
 tags: ["lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/wordpress/','/websites/cms/wordpress/how-to-install-and-configure-wordpress/','/websites/cms/manage-web-content-with-wordpress/','/websites/cms/how-to-install-and-configure-wordpress/']
-modified: 2015-10-05
-published: 2010-07-27
-title: How to Install and Configure WordPress
 deprecated: true
 deprecated_link: websites/cms/install-wordpress-ubuntu-18-04/
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 WordPress is a popular, dynamic, blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.

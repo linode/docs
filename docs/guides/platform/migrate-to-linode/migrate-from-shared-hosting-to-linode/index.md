@@ -1,15 +1,15 @@
 ---
 slug: migrate-from-shared-hosting-to-linode
+title: Migrate from Shared Hosting to Linode
 description: 'Migrate your website from a shared host to a Linode cloud server running a LAMP stack.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-10-18
+modified: 2019-03-06
 keywords: ["shared hosting", "migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migrate-from-shared/','/migrate-to-linode/migrate-from-shared-hosting/','/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode/','/migrate-to-linode/migrate-from-shared-hosting-to-linode/']
-modified: 2019-03-06
-published: 2013-10-18
-title: Migrate from Shared Hosting to Linode
 tags: ["linode platform"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Migrate from Shared Hosting to Linode](migrate-from-shared-hosting-to-linode.png "Migrate from Shared Hosting to Linode")

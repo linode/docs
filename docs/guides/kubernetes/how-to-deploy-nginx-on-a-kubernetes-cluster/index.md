@@ -1,13 +1,15 @@
 ---
 slug: how-to-deploy-nginx-on-a-kubernetes-cluster
+title: 'How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster'
 description: 'This guide will show you how to install, configure and deploy NGINX on Kubernetes Cluster.'
+authors: ["Kiran Singh"]
+contributors: ["Kiran Singh"]
+published: 2017-11-27
+modified: 2021-08-13
 keywords: ["kubernetes","docker","container","deployment","nginx"]
 tags: ["docker","centos","kubernetes","ubuntu","nginx","debian","networking","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-13
-published: 2017-11-27
 image: DeployNGINX_Linode.png
-title: 'How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster'
 aliases: ['/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/','/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
 og_description: 'Kubernetes can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an NGINX service.'
 deprecated: true
@@ -18,8 +20,6 @@ external_resources:
 - '[Google Borg](https://research.google.com/pubs/pub43438.html)'
 - '[kubelet Definition](https://kubernetes.io/docs/admin/kubelet/)'
 - '[CNI Spec](https://github.com/containernetworking/cni/blob/master/SPEC.md)'
-authors: ["Kiran Singh"]
-contributors: ["Kiran Singh"]
 ---
 
 ![Kubernetes on Linode](Nginx_Kubernetes.jpg)

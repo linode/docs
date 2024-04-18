@@ -1,14 +1,14 @@
 ---
 slug: sql-grouping-and-totaling
+title: "Introduction to SQL Grouping and Totaling"
+title_meta: "SQL Grouping and Totaling"
 description: "SQL aggregate functions calculate a set of values by using grouping and totaling. This guide uses various examples to demonstrate how to calculate values using the Where and Having clauses."
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+published: 2022-03-18
 keywords: ['aggregate functions', 'group functions', 'where clause', 'having clause']
 tags: ['MySQL', 'PostgreSQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-18
-title: "Introduction to SQL Grouping and Totaling"
-title_meta: "SQL Grouping and Totaling"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 One of the most powerful aspects of SQL is the ability to perform data aggregation. Two of the most powerful SQL data aggregation tools are *grouping* and *totaling*. In this guide, you learn SQL data aggregation using grouping and totaling.

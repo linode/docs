@@ -1,10 +1,10 @@
 ---
-description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
-keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
-published: 2021-08-27
-modified: 2023-07-05
 title: "Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)"
 title_meta: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
+description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
+published: 2021-08-27
+modified: 2023-07-05
+keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
 linkTitle: Choosing Between Shared and Dedicated CPUs
 tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/','/guides/when-to-upgrade-to-dedicated-cpu/','/guides/comparing-shared-and-dedicated-cpus/']

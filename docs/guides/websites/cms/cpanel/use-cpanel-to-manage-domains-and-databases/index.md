@@ -1,18 +1,18 @@
 ---
 slug: use-cpanel-to-manage-domains-and-databases
+title: Use cPanel to Manage Domains and Databases
 description: 'This guide shows how to use cPanel, a popular web server control panel that makes it easy to manage server resources and services, like domains and databases.'
+authors: ["Chris C."]
+contributors: ["Chris C."]
+published: 2012-06-08
+modified: 2017-02-15
 keywords: ["cpanel", "database", "managing domain", "subdomain", "add-on domain", "parked domain", "phpmyadmin", "mysql", "create database", "manage database"]
 tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/','/websites/cms/managing-domains-and-databases/','/websites/cms/use-cpanel-to-manage-domains-and-databases/','/web-applications/control-panels/cpanel/managing-domains-and-databases/']
-modified: 2017-02-15
-published: 2012-06-08
-title: Use cPanel to Manage Domains and Databases
 external_resources:
  - '[cPanel Home Page](http://cpanel.net)'
  - '[cPanel Support](http://cpanel.net/support.html)'
-authors: ["Chris C."]
-contributors: ["Chris C."]
 ---
 
 [cPanel](http://cpanel.net) is a commercial web-based control panel that simplifies many common system administration tasks such as website creation, database deployment and management, and more. This guide shows you how to manage your domains and databases with your cPanel user account. All of these instructions pertain to the user login located at port 2086 (2087 for SSL connection).

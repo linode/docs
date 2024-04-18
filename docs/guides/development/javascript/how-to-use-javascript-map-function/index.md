@@ -1,14 +1,14 @@
 ---
 slug: how-to-use-javascript-map-function
+title: "Using the JavaScript map() Function: A Comprehensive Guide for Beginners"
+title_meta: "How to Use the JavaScript Map() Function to Transform Arrays"
 description: "Learn how to use JavaScript's map() function to manipulate and transform arrays in this beginner's tutorial."
+authors: ['Jeff Novotny']
+contributors: ['Jeff Novotny']
+published: 2023-04-03
 og_description: "Learn how to use JavaScript's map() function to manipulate and transform arrays in this beginner's tutorial."
 keywords: ['JavaScript map function','How to use JavaScript map function','what is map function']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-03
-title_meta: "How to Use the JavaScript Map() Function to Transform Arrays"
-title: "Using the JavaScript map() Function: A Comprehensive Guide for Beginners"
-authors: ['Jeff Novotny']
-contributors: ['Jeff Novotny']
 external_resources:
 - '[Mozilla Developers documentation for Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)'
 ---

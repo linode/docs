@@ -1,13 +1,13 @@
 ---
 slug: ransomware-attack
-description: 'A ransomware attack can encrypt files on a system, making them inaccessible. Find out more about these attacks, including prevention and recovery tips.'
-keywords: ['what is ransomware','ransomware definition','ransomware meaning']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-26
 title: "Ransomware Attack: What It Is and How to Prevent It "
 title_meta: "Ransomware Defined: What It Is and How to Prevent an Attack"
+description: 'A ransomware attack can encrypt files on a system, making them inaccessible. Find out more about these attacks, including prevention and recovery tips.'
 authors: ["David Strom"]
 contributors: ["David Strom"]
+published: 2022-01-26
+keywords: ['what is ransomware','ransomware definition','ransomware meaning']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Cybersecurity continues to be a challenge as adversaries come up with new and innovative ways to penetrate computer networks and steal data. One of the more popular attack methods is ransomware. There are tools to defend yourself against potential attack and techniques to strengthen your computer security posture.

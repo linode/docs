@@ -1,10 +1,10 @@
 ---
+title: "Deploy Harbor through the Linode Marketplace"
 description: "Deploy Harbor on a Linode Compute Instance. This provides you with an open source container registry that compliments the Linode Kubernetes Engine."
-keywords: ['harbor','container','container registry','docker']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2023-10-27
-title: "Deploy Harbor through the Linode Marketplace"
+keywords: ['harbor','container','container registry','docker']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Harbor](https://goharbor.io/)'
 aliases: ['/guides/deploying-harbor-marketplace-app/','/guides/harbor-marketplace-app/']

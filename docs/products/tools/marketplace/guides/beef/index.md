@@ -1,10 +1,10 @@
 ---
+title: "Deploy BeEF through the Linode Marketplace"
 description: "Deploy BeEF on a Linode Compute Instance. This provides you with a penetration testing tool that focuses on web-borne attacks against clients."
-keywords: ['security','vulnerability','penetration testing']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2024-04-16
-title: "Deploy BeEF through the Linode Marketplace"
+keywords: ['security','vulnerability','penetration testing']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[BeEF](https://beefproject.com/)'
 aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-app/']

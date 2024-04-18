@@ -1,10 +1,10 @@
 ---
+title: "Common Use Cases for Linode's VLAN Service"
 description: "Learn abut common use cases for Linode's VLAN (Virtual Local Area Network) service and how you might leverage it for your application."
+published: 2020-08-12
 image:
 keywords: ['vlan','virtual local area network','use case']
-published: 2020-08-12
 tags: ["security", "networking", "linode platform"]
-title: "Common Use Cases for Linode's VLAN Service"
 aliases: ['/guides/common-linode-vlan-use-cases/']
 ---
 

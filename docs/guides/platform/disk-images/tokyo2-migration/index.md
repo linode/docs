@@ -1,18 +1,18 @@
 ---
 slug: tokyo2-migration
+title: Migrating from Tokyo 1 to Tokyo 2
 description: Linode is retiring our Tokyo 1 data center, and this guide shows how to migrate to our new Tokyo 2 location.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-12-31
 keywords: ["tokyo 1", "tokyo 2", "migrate", "migration", "migrating", "data center"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-12-31
-title: Migrating from Tokyo 1 to Tokyo 2
 promo_default: false
 tags: ["linode platform"]
 aliases: ['/platform/tokyo2-migration/']
 _build:
   list: false
 noindex: true
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 In November 2016, Linode [announced and opened](https://blog.linode.com/2016/11/21/new-linode-datacenter-tokyo-2/) the Tokyo 2 data center. This is the second facility operated by Linode in the Tokyo region. Linode is now making preparations to retire the original Tokyo 1 facility. All Linodes hosted in this data center will be migrated to Tokyo 2. This guide is written to prepare customers for this migration and to make migrating easier.

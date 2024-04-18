@@ -1,19 +1,19 @@
 ---
 slug: deploy-volumes-with-the-linode-block-storage-csi-driver
+title: "Deploying Persistent Volume Claims with the Linode Block Storage CSI Driver"
+title_meta: "How to Deploy Persistent Volume Claims With Linode"
 description: "Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-04-18
+modified: 2020-07-29
 keywords: ['container','kubernetes','block','storage','volume','csi','interface','driver']
 tags: ["linode platform","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-04-18
-modified: 2020-07-29
-title: "Deploying Persistent Volume Claims with the Linode Block Storage CSI Driver"
-title_meta: "How to Deploy Persistent Volume Claims With Linode"
 external_resources:
 - '[Kubernetes PersistentVolumeClaims Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)'
 - '[Container Storage Interface (CSI) Spec](https://github.com/container-storage-interface/spec/blob/master/spec.md)'
 aliases: ['/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/','/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is the Linode Block Storage CSI Driver?

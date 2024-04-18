@@ -1,16 +1,16 @@
 ---
 slug: vsftpd-on-ubuntu-2004-installation-and-configuration
+title: "Install VSFTPD on Ubuntu 20.04"
+title_meta: "VSFTPD on Ubuntu 20.04: Installation and Configuration"
 description: 'Learn to install a VSFTPD server on Ubuntu 20.04 for FTP file transfers.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2021-12-14
 keywords: ['vsftpd','vstpd conf','vsftpd ubuntu']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-14
-title: "Install VSFTPD on Ubuntu 20.04"
-title_meta: "VSFTPD on Ubuntu 20.04: Installation and Configuration"
 external_resources:
 - '[VSFTPD.CONF man page](http://vsftpd.beasts.org/vsftpd_conf.html)'
-authors: ["Cameron Laird"]
-contributors: ["Cameron Laird"]
 ---
 
 ## What is VSFTPD?

@@ -1,21 +1,21 @@
 ---
 slug: websites-with-nginx-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Websites with nginx on Ubuntu 10.04 LTS (Lucid)'
 description: 'A basic guide to installing nginx from source on Ubuntu 10.04 LTS (Lucid)'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-29
+modified: 2013-10-07
+deprecated: true
 keywords: ["nginx", "nginx ubuntu 10.04", "http", "web servers", "ubuntu", "ubuntu l0.04", "ubuntu lucid"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/','/websites/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/installation/ubuntu-10-04-lucid/']
-modified: 2013-10-07
-published: 2010-04-29
-title: 'Websites with nginx on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

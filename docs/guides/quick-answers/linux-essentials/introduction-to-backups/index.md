@@ -1,16 +1,16 @@
 ---
 slug: introduction-to-backups
-keywords: ["backups", "snapshot", "Linode backup", "beginners"]
-description: This guide explains to new users why and how they should back up data on their Linodes.
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-05-18
 title: Introduction to Backups
+description: This guide explains to new users why and how they should back up data on their Linodes.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-05-18
+keywords: ["backups", "snapshot", "Linode backup", "beginners"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Backing Up Your Data](/docs/guides/backing-up-your-data/)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/introduction-to-backups/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Introduction to Backups](introduction-to-backups.png "Introduction to Backups")

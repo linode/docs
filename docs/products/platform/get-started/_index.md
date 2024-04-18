@@ -1,14 +1,14 @@
 ---
 title: "Getting Started on the Linode Platform"
+description: "Learn how to create an account and use the Linode Cloud Platform."
+published: 2018-11-05
+modified: 2023-09-20
 tab_group_main:
     is_root: true
     title: Get Started
     weight: 10
 keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
-description: "Learn how to create an account and use the Linode Cloud Platform."
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/products/platform/accounts/get-started/','/guides/getting-started/','/guides/platform/get-started/']
-published: 2018-11-05
-modified: 2023-09-20
 show_on_frontpage: true
 linkTitle: "Get Started"
 weight: 10

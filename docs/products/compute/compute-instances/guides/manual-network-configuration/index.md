@@ -1,8 +1,8 @@
 ---
-description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
-keywords: ["static", "ip address", "addresses"]
-published: 2023-09-05
 title: "Manual Network Configuration on a Compute Instance"
+description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
+published: 2023-09-05
+keywords: ["static", "ip address", "addresses"]
 tags: ["networking","linode platform"]
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/','/guides/linux-static-ip-configuration/','/guides/manual-network-configuration/']
 ---

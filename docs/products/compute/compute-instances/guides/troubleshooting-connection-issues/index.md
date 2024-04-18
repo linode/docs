@@ -1,10 +1,10 @@
 ---
 title: "Troubleshooting Basic Connection Issues on Compute Instances"
 description: 'Troubleshooting steps to help restore basic connectivity to your Linode when it is unresponsive.'
-keywords: ['linux','reboot','lish','troubleshoot','packet loss']
-tags: ["networking", "linode platform"]
 published: 2019-02-01
 modified: 2023-03-14
+keywords: ['linux','reboot','lish','troubleshoot','packet loss']
+tags: ["networking", "linode platform"]
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-basic-connection-issues/','/guides/troubleshooting-basic-connection-issues/','/troubleshooting/disaster-recovery-guide/','/guides/disaster-recovery-guide/']
 ---

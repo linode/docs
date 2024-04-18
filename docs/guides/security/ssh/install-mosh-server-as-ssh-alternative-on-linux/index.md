@@ -1,15 +1,15 @@
 ---
 slug: install-mosh-server-as-ssh-alternative-on-linux
+title: Install a Mosh Server as SSH Alternative on Linux
 description: Mosh is a free alternative to SSH. This guide will teach you how to install and configure Mosh on Linux distributions and your desktop.
+authors: ["Quintin Riis"]
+contributors: ["Quintin Riis"]
+published: 2013-01-20
+modified: 2017-08-18
 keywords: ["mosh", " ssh", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/ssh/install-mosh-server-as-ssh-alternative-on-linux/','/networking/mosh/','/networking/ssh/install-mosh-server-as-ssh-alternative-on-linux/','/tools-reference/ssh/mosh/','/networking/ssh/mosh/']
-modified: 2017-08-18
-published: 2013-01-20
-title: Install a Mosh Server as SSH Alternative on Linux
 tags: ["networking","ssh","security"]
-authors: ["Quintin Riis"]
-contributors: ["Quintin Riis"]
 ---
 
 ![Install a Mosh Server as SSH Alternative on Linux](mosh-server-ssh-alternative-title.jpg "Install a Mosh Server as SSH Alternative on Linux")

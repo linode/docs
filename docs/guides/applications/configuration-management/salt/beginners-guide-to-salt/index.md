@@ -1,18 +1,18 @@
 ---
 slug: beginners-guide-to-salt
+title: A Beginner's Guide to Salt
 description: 'A look into Salt''s primary components, features, and configurations for the new SaltStack user'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-10-16
+modified: 2019-01-02
 keywords: ["salt", "automation", "saltstack", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-02
 image: ABeginnersGuidetoSalt.png
-published: 2018-10-16
-title: A Beginner's Guide to Salt
 external_resources:
  - '[SaltStack Documentation](https://docs.saltproject.io/)'
 aliases: ['/applications/configuration-management/beginners-guide-to-salt/','/applications/configuration-management/salt/beginners-guide-to-salt/']
 tags: ["automation","salt"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [Salt](https://www.saltproject.io) (also referred to as *SaltStack*) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt *master* server manages one or more Salt *minion* servers. Two of Salt's primary jobs are:

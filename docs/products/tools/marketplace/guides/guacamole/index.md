@@ -1,10 +1,10 @@
 ---
+title: "Deploy Apache Guacamole through the Linode Marketplace"
 description: "Use the Guacamole Marketplace App to easily install the popular open source remote desktop and access your Linode from any device."
-keywords: ['guacamole', 'marketplace', 'remote desktop']
-tags: ["cloud-manager","linode platform","cms","marketplace"]
 published: 2020-12-11
 modified: 2023-03-14
-title: "Deploy Apache Guacamole through the Linode Marketplace"
+keywords: ['guacamole', 'marketplace', 'remote desktop']
+tags: ["cloud-manager","linode platform","cms","marketplace"]
 aliases: ['/platform/marketplace/guacamole/','/guides/deploy-guacamole-with-marketplace-apps/','/guides/guacamole-marketplace-app/']
 external_resources:
  - '[Guacamole Documentation](https://guacamole.apache.org/doc/gug/)'

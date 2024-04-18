@@ -1,13 +1,13 @@
 ---
 slug: installing-and-using-the-broot-command
-description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
-keywords: ['linux broot','linux directory tree','unix broot']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-24
 title: "Install and Use the broot Command"
 title_meta: "How to Install and Use the broot Command"
+description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
+published: 2021-09-24
+keywords: ['linux broot','linux directory tree','unix broot']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 The `broot` command provides a modern approach to generating directory trees on the Linux command line. It renders the tree in a succinct and intuitive layout that helps you navigate around your computer's directories. Additionally, `broot` offers advanced features for managing and retrieving details about your files and directories. This guide shows you how to install `broot` on your Linux system and get started using it.

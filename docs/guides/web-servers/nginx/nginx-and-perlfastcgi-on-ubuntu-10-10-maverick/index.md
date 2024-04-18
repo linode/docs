@@ -1,21 +1,21 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Nginx and Perl-FastCGI on Ubuntu 10.10 (Maverick)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-15
+modified: 2012-10-08
+deprecated: true
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 10.10", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-10-10-maverick/','/web-servers/nginx/perl-fastcgi/ubuntu-10-10-maverick/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2010-10-15
-title: 'Nginx and Perl-FastCGI on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

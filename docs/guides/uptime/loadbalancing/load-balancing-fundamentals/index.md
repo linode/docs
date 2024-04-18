@@ -2,11 +2,11 @@
 slug: load-balancing-fundamentals
 title: "Load Balancing Fundamentals: How Load Balancers Work"
 description: 'Discover the basics, advantages, and drawbacks of both static and dynamic load balancing algorithms to enhance your understanding of these essential tools.'
-keywords: ['load balancers','load balancing algorithms','types of load balancers','pros and cons of load balancing','round robin algorithm','least connections algorithm','weighted round robin','dynamic server weighting']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Newman"]
 contributors: ["David Newman"]
 published: 2024-01-16
+keywords: ['load balancers','load balancing algorithms','types of load balancers','pros and cons of load balancing','round robin algorithm','least connections algorithm','weighted round robin','dynamic server weighting']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 When dealing with an overloaded server, you have a few choices: go bigger or share the load. Going bigger, meaning increasing the server's resources, allows you to boost performance --- but only up to a certain point. After all, any one server’s resources are always finite. On the other hand, distributing workloads across multiple servers scale resources almost infinitely, while also increasing availability.

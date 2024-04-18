@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-the-lemp-stack-on-centos-8
+title: 'Installing the LEMP Stack on CentOS 8'
+title_meta: 'How to Install the LEMP Stack on CentOS 8'
 description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-04
+modified: 2020-03-18
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "centos"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-18
-published: 2018-06-04
-title: 'Installing the LEMP Stack on CentOS 8'
-title_meta: 'How to Install the LEMP Stack on CentOS 8'
 image: How-to-Install-LEMP-Stack-on-CentOS-8_1200x631.png
 relations:
     platform:
@@ -15,8 +17,6 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/lemp/how-to-install-the-lemp-stack-on-centos-8/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->

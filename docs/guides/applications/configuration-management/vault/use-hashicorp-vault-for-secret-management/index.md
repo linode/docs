@@ -1,10 +1,12 @@
 ---
 slug: use-hashicorp-vault-for-secret-management
+title: "Use HashiCorp Vault to Manage Secrets"
 description: 'How to configure, deploy, and use HashiCorp Vault to manage application secrets'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-03-30
 keywords: ['vault','secrets','secrets management','hcl','token','authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-03-30
-title: "Use HashiCorp Vault to Manage Secrets"
 external_resources:
 - '[Vault Documentation Overview](https://www.vaultproject.io/docs/)'
 - '[Vault Reference Architecture and Best Practices](https://learn.hashicorp.com/vault/day-one/ops-reference-architecture)'
@@ -12,8 +14,6 @@ external_resources:
 - '[Vault Auth Methods](https://www.vaultproject.io/docs/auth/index.html)'
 aliases: ['/applications/configuration-management/use-hashicorp-vault-for-secret-management/','/applications/configuration-management/vault/use-hashicorp-vault-for-secret-management/']
 tags: ["security","automation"]
-authors: ["Linode"]
-contributors: ["Linode"]
 tags: ["saas"]
 ---
 

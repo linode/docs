@@ -1,21 +1,21 @@
 ---
 slug: how-to-upgrade-to-ubuntu-14-04-lts
+title: 'How to Upgrade to Ubuntu 14.04 LTS'
 description: 'Our guide to upgrading to Ubuntu 14.04 LTS'
+authors: ["Dave Russell"]
+contributors: ["Dave Russell"]
+published: 2014-10-21
+modified: 2015-02-22
 keywords: ["upgrading", "ubuntu", "ubuntu 14.04"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true
-modified: 2015-02-22
-published: 2014-10-21
-title: 'How to Upgrade to Ubuntu 14.04 LTS'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-14-04-lts/']
-authors: ["Dave Russell"]
-contributors: ["Dave Russell"]
 ---
 
 ![How to Upgrade to Ubuntu 14.04 LTS](How_to_Upgrade_to_Ubuntu_1404_LTS_smg.jpg)

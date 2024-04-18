@@ -1,21 +1,21 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-fedora-14
-deprecated: true
+title: Use Unbound for Local DNS Resolution on Fedora 14
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-02
+modified: 2012-10-08
+deprecated: true
 keywords: ["fedora dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-fedora-14/','/dns-guides/unbound-dns-resolver-fedora-14/']
-modified: 2012-10-08
-published: 2011-02-02
-title: Use Unbound for Local DNS Resolution on Fedora 14
 relations:
     platform:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,21 +1,21 @@
 ---
 slug: ssl-certificates-with-apache-2-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'SSL Certificates with Apache 2 on Ubuntu 10.10 (Maverick)'
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-07
+modified: 2012-10-08
+deprecated: true
 keywords: ["apache ssl", "ssl ubuntu", "web sever", "ubuntu", "ubuntu maverick", "ubuntu 10.10"]
 tags: ["apache","security","ssl","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/ubuntu-10-10-maverick/','/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2010-12-07
-title: 'SSL Certificates with Apache 2 on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: ssl-certificate-apache
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

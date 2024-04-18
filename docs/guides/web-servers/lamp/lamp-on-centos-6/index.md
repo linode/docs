@@ -1,14 +1,16 @@
 ---
 slug: lamp-on-centos-6
-deprecated: true
+title: LAMP on CentOS 6
 description: 'This guide shows you how to create a LAMP Stack, Linux, Apache, MySQL, PHP, a common web stack for running websites, applications, and more, on CentOS 6.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2011-07-19
+modified: 2015-12-01
+deprecated: true
 keywords: ["LAMP", "CentOS", "CentOS 6", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-on-centos-6/','/lamp-guides/centos-6/','/websites/lamp/lamp-server-on-centos-6/','/web-servers/lamp/lamp-on-centos-6/']
-modified: 2015-12-01
-published: 2011-07-19
-title: LAMP on CentOS 6
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -19,8 +21,6 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 6
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 ![LAMP on CentOS 6](lamp-centos-6.png)

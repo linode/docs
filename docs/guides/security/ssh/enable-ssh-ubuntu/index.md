@@ -1,15 +1,15 @@
 ---
 slug: enable-ssh-ubuntu
-description: 'Want to learn how to enable SSH on Ubuntu? Read our guide to learn what SSH is and how you can install SSH on Ubuntu 20.04 LTS. ✓ Click here!'
-keywords: ['enable SSH ubuntu','ubuntu enable SSH','ubuntu SSH','install SSH ubuntu','ubuntu install SSH','enable SSH ubuntu 20.04','ubuntu install SSH server','SSH ubuntu','ubuntu enable SSH server','install SSH server ubuntu']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-08
 title: "How to Enable SSH on Ubuntu 20.04 LTS"
 title_meta: "Step-by-Step Guide: How to Enable SSH on Ubuntu"
-external_resources:
-- '[Ubuntu Server Documentation](https://ubuntu.com/server/docs/service-openssh)'
+description: 'Want to learn how to enable SSH on Ubuntu? Read our guide to learn what SSH is and how you can install SSH on Ubuntu 20.04 LTS. ✓ Click here!'
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
+published: 2023-03-08
+keywords: ['enable SSH ubuntu','ubuntu enable SSH','ubuntu SSH','install SSH ubuntu','ubuntu install SSH','enable SSH ubuntu 20.04','ubuntu install SSH server','SSH ubuntu','ubuntu enable SSH server','install SSH server ubuntu']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external_resources:
+- '[Ubuntu Server Documentation](https://ubuntu.com/server/docs/service-openssh)'
 ---
 
 On Linode's Ubuntu 20.04 LTS instances, the installation of `ssh` (client) and `sshd` (server) takes place when the instance is first started. The instructions that follow are to install the SSH if previously removed, or if a non-Linode installation is used. These instructions check if SSH services are correctly started on an Ubuntu instance. If `ssh` or `sshd` is not installed, instructions are supplied on how SSH (as OpenSSH) is installed on Ubuntu 20.04 LTS.

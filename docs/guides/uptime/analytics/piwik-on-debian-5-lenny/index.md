@@ -1,21 +1,21 @@
 ---
 slug: piwik-on-debian-5-lenny
-deprecated: true
+title: 'Piwik on Debian 5 (Lenny)'
 description: 'Get in-depth web analytics with Piwik, a self-hosted, open source solution on Debian Lenny.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2009-12-10
+modified: 2014-01-28
+deprecated: true
 keywords: ["open source analytics", "piwik debian", "piwik", "analytics", "debian. tracking", "statistics"]
 tags: ["debian","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/debian-5-lenny/','/uptime/analytics/piwik-on-debian-5-lenny/']
-modified: 2014-01-28
-published: 2009-12-10
-title: 'Piwik on Debian 5 (Lenny)'
 relations:
     platform:
         key: using-piwik-analytics
         keywords:
             - distribution: Debian 5
-authors: ["Stan Schwertly"]
-contributors: ["Stan Schwertly"]
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of control of the data collected from your visitors.

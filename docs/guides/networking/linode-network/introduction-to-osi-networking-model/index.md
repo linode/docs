@@ -1,10 +1,12 @@
 ---
 slug: introduction-to-osi-networking-model
+title: "An Introduction to the OSI Networking Model"
 description: 'This guide introduces and explains the levels of the OSI networking model and how to interact with the network architecture.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-11-01
 keywords: ['OSI network model','OSI networking','OSI levels','networking model']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-11-01
-title: "An Introduction to the OSI Networking Model"
 external_resources:
 - '[OSI Model on Wikipedia](https://en.wikipedia.org/wiki/OSI_model)'
 - '[Internet Protocol](https://en.wikipedia.org/wiki/Internet_protocol_suite)'
@@ -17,8 +19,6 @@ external_resources:
 - '[Ubuntu tcpdump man page](https://manpages.ubuntu.com/manpages/jammy/man8/tcpdump.8.html)'
 - '[Wikipedia List of IEEE 802 family of standards](https://en.wikipedia.org/wiki/IEEE_802)'
 - '[FileZilla](https://filezilla-project.org/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Computer networking is a complicated subject, with many interconnected layers and interactions. To help developers and engineers understand how the various networking components work together, several conceptual models have been developed. The [*Open Systems Interconnection*](https://en.wikipedia.org/wiki/OSI_model) (OSI) Model is a popular model that divides the networking stack into seven layers. This guide explains the OSI Model and describes each layer. It also lists the tools available for each layer and contrasts the OSI Model with the competing [*Internet Protocol suite*](https://en.wikipedia.org/wiki/Internet_protocol_suite).

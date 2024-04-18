@@ -1,9 +1,9 @@
 ---
+title: "Enable IP Sharing (Elastic IPs) in Atlanta through FRR"
 description: "This guide provides Linode users with steps to manually enable an Elastic IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center."
-keywords: ['networking','Elastic IP','keywords','and key phrases']
 published: 2020-06-02
 modified: 2022-01-11
-title: "Enable IP Sharing (Elastic IPs) in Atlanta through FRR"
+keywords: ['networking','Elastic IP','keywords','and key phrases']
 noindex: true
 _build:
   list: false

@@ -1,16 +1,16 @@
 ---
 slug: using-lists-and-sets-in-redis-database
+title: "Use Lists and Sets in Redis Database"
+title_meta: "How to Use  Lists and Sets in Redis Database"
 description: "Redis is a NoSQL database that is known for it support of various data types. This guide shows you how to use Lists and Sets for managing data in your Redis databases."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-01-21
 keywords: ['redis lists tutorial','redis lists vs sets','redis sets example']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-21
-title: "Use Lists and Sets in Redis Database"
-title_meta: "How to Use  Lists and Sets in Redis Database"
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source NoSQL database that provides performant storage for caching, messaging, and other contexts where speed and low latency are needed.

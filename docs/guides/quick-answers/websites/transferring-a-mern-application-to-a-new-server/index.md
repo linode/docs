@@ -1,17 +1,17 @@
 ---
 slug: transferring-a-mern-application-to-a-new-server
+title: "Transfer a MERN application to Linode's MERN Marketplace App"
 description: "This guide discusses guidelines for quickly transferring a MERN stack application over to Linode built with Linode's Marketplace App."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-02-25
 keywords: ['mern stack','node.js','javascript','mongodb']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-title: "Transfer a MERN application to Linode's MERN Marketplace App"
 external_resources:
 - '[MongoDB MERN Stack Explained](https://www.mongodb.com/mern-stack)'
 - '[Node.js](https://nodejs.org/en/)'
 - '[NPM](https://www.npmjs.com/)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [Linode Marketplace App](/docs/products/tools/marketplace/guides/mern-stack/) for the MERN stack (MongoDB, Express, React, Node.js) is a great way to create the base configuration equipped with all the essentials for a MERN stack quickly, however the Marketplace APP itself will still require tuning to host your MERN application. Transferring an application to a new host for example, can be a complex process depending on the specifics of your configuration. This guide was designed to serve as reference for users currently undergoing the migration process, and aims to clear up potential confusion and common issues that can occur.

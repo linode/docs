@@ -1,18 +1,18 @@
 ---
 slug: introduction-to-rsync
+title: Introduction to rsync
 description: 'This guide provides an introduction to rsync, the incremental file transfer utility.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-08
+modified: 2017-09-14
 keywords: ["rsync", "backup", "back up", "copy", "file transfer", "synchronize", "sync"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/introduction-to-rsync/','/linux-tools/utilities/rsync/']
-modified: 2017-09-14
-published: 2009-09-08
-title: Introduction to rsync
 external_resources:
  - '[rsync Linux Man Page](https://linux.die.net/man/1/rsync)'
  - '[Rsync tips at Calomel.org](https://calomel.org/rsync_tips.html)'
 tags: ["linux"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [Rsync](https://rsync.samba.org/) is a command line utility which synchronizes files and folders from one location to another. Some workflows that can be implemented using rsync are updating a production host from a development machine, or using a cron job to call rsync to regularly back up data to a storage location. You can even use rsync to [migrate your server to Linode](/docs/guides/migrating-a-server-to-your-linode/) from other providers.

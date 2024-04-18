@@ -1,12 +1,14 @@
 ---
 slug: securing-nginx-with-modsecurity
+title: Securing Nginx With ModSecurity
+title_meta: How to Secure Nginx With ModSecurity
 description: 'ModSecurity is a free web application firewall that can prevent attacks like XSS and SQL Injection. This guide shows how to install ModSecurity with NGINX.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["nginx security", "nginx best practices security", "secure nginx config"]
 tags: ["security","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-26
-title: Securing Nginx With ModSecurity
-title_meta: How to Secure Nginx With ModSecurity
 aliases: ['security/basics/securing-nginx-with-modsecurity/']
 image: SecureNginx_ModSecurity.png
 relations:
@@ -14,8 +16,6 @@ relations:
         key: securing-web-servers-with-modsecurity
         keywords:
             - web server: NGINX
-authors: ["Hackersploit"]
-contributors: ["Hackersploit"]
 ---
 
 ## What is ModSecurity?

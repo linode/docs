@@ -1,9 +1,9 @@
 ---
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
-keywords: ['networking']
 published: 2022-07-19
 modified: 2024-01-03
+keywords: ['networking']
 aliases: ['/guides/network-infrastructure-upgrades/']
 ---
 

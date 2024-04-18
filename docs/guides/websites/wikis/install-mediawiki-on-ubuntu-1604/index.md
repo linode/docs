@@ -1,13 +1,15 @@
 ---
 slug: install-mediawiki-on-ubuntu-1604
+title: Install MediaWiki on Ubuntu 16.04
 description: 'This guide will show you how to get started with the popular MediaWiki engine for powering wiki websites of all types and sizes on Ubuntu 16.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-30
+modified: 2019-08-23
 keywords: ["mediawiki", "wiki", "web-applications"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/install-mediawiki-on-ubuntu-1604/']
-modified: 2019-08-23
-published: 2009-09-30
-title: Install MediaWiki on Ubuntu 16.04
 deprecated: true
 deprecated_link: 'guides/how-to-install-mediawiki-ubuntu-2004/'
 external_resources:
@@ -19,8 +21,6 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: Ubuntu 16.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![mediawiki Banner](MediaWiki.jpg)

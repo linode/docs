@@ -1,14 +1,16 @@
 ---
 slug: discussion-forums-with-phpbb-on-centos-5
-deprecated: true
+title: Discussion Forums with phpBB on Centos 5
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Centos 5.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-04-02
+modified: 2011-05-09
+deprecated: true
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-phpbb-on-centos-5/','/web-applications/bulletin-boards/phpbb/centos-5/']
-modified: 2011-05-09
-published: 2010-04-02
-title: Discussion Forums with phpBB on Centos 5
 external_resources:
  - '[phpBB Styles Database](http://www.phpbb.com/styles/)'
  - '[Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)'
@@ -19,8 +21,6 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: CentOS 5
-authors: ["Stan Schwertly"]
-contributors: ["Stan Schwertly"]
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.

@@ -1,14 +1,14 @@
 ---
 slug: use-luks-for-full-disk-encryption
+title: How to Use LUKS for Full Disk Encryption on Linux
 description: This tutorial will guide you through creating a secure, LUKS-encrypted Debian installation.
+authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
+published: 2016-11-02
 aliases: ['/security/encryption/use-luks-for-full-disk-encryption/','/security/use-luks-for-full-disk-encryption/','/security/full-disk-encryption/']
 keywords: ["full disk encryption", "debian", "luks", "lassie"]
 tags: ["security","debian","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-11-02
-title: How to Use LUKS for Full Disk Encryption on Linux
-authors: ["Nick Brewer"]
-contributors: ["Nick Brewer"]
 ---
 
 ![How to Use LUKS for Full Disk Encryption on Linux](how-to-use-luks-for-full-disk-encryption-linux.jpg "How to Use LUKS for Full Disk Encryption on Linux")

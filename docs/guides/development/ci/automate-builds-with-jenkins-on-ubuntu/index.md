@@ -1,22 +1,22 @@
 ---
 slug: automate-builds-with-jenkins-on-ubuntu
+title: 'Automate Builds with Jenkins on Ubuntu 22.04'
+title_meta: 'How to Automate Builds with Jenkins on Ubuntu 22.04'
 description: 'This how-to guide lets you create easy automation workflows with Jenkins.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2017-11-14
+modified: 2023-01-06
 og_description: 'Jenkins builds pipelines that automate setup, testing and deploying applications. Following this guide will expedite your Continuous Integration and Continuous Delivery (CI/CD) process in a basic workflow.'
 keywords: ['jenkins','pipeline','ci','automation']
 aliases: ['/development/automate-builds-with-jenkins-on-ubuntu/','/development/ci/automate-builds-with-jenkins-on-ubuntu/']
 tags: ["automation","version control system","docker","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-14
-modified: 2023-01-06
-title: 'Automate Builds with Jenkins on Ubuntu 22.04'
-title_meta: 'How to Automate Builds with Jenkins on Ubuntu 22.04'
 external_resources:
  - '[Jenkins User Documentation](https://jenkins.io/doc/)'
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'
 audiences: ["intermediate"]
 dedicated_cpu_link: true
-authors: ["Damaso Sanoja"]
-contributors: ["Damaso Sanoja"]
 ---
 
 [Jenkins](https://jenkins.io) is an open-source automation server that allows you to build pipelines to automate the process of building, testing, and deploying applications. In this guide, you will implement a basic workflow to speed up your Continuous Integration and Continuous Delivery (CI/CD) process.

@@ -1,6 +1,6 @@
 ---
-description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 title: Tax Information
+description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 published: 2019-04-09
 modified: 2024-02-29
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]

@@ -1,10 +1,10 @@
 ---
+title: "Upgrade a Cluster to a Newer Kubernetes Version"
 description: 'This guide describes the process of upgrading LKE cluster versions to prevent any potential downtime due to an outdated configuration'
-keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
-tags: ["security", "kubernetes","container"]
 published: 2022-03-10
 modified: 2023-05-02
-title: "Upgrade a Cluster to a Newer Kubernetes Version"
+keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
+tags: ["security", "kubernetes","container"]
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'

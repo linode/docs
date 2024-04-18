@@ -1,21 +1,21 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-24
+modified: 2011-05-17
+deprecated: true
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-ubuntu-9-10-karmic/','/networking/openvpn/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-published: 2010-02-24
-title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,16 +1,16 @@
 ---
 slug: how-to-use-glances-system-monitoring
-description: "Learn about Glances, an open-source monitoring tool. With Glances, you get a huge range of information all fit together on a single screen, helping you keep up with your system at a glance."
-keywords: ['linux glances command','unix install glances','linux monitoring tools open source']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-30
 title: "Use Glances for System Monitoring on Linux"
 title_meta: "How to Use Glances for System Monitoring on Linux"
+description: "Learn about Glances, an open-source monitoring tool. With Glances, you get a huge range of information all fit together on a single screen, helping you keep up with your system at a glance."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-12-30
+keywords: ['linux glances command','unix install glances','linux monitoring tools open source']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Glances GitHub Repository](https://github.com/nicolargo/glances)'
 - '[Glances Official Documentation](https://glances.readthedocs.io/en/latest/index.html)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Glances is a Linux system monitoring dashboard that you can run from the command line or in your web browser. It aims to fit as much data as possible onto a single screen and dynamically adapts to the current screen size.

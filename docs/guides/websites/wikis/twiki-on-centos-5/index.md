@@ -1,21 +1,21 @@
 ---
 slug: twiki-on-centos-5
+title: TWiki on CentOS 5
 description: 'This guide will show you how to install and configure a structured wiki to share, store, and work with different types of information with TWiki on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/centos-5/','/websites/wikis/twiki-on-centos-5/']
-modified: 2013-10-04
-published: 2011-04-05
-title: TWiki on CentOS 5
 deprecated: true
 relations:
     platform:
         key: install-twiki
         keywords:
            - distribution: CentOS 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/guides/confluence-on-centos-5/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.

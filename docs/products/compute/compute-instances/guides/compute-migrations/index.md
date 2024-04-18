@@ -2,9 +2,9 @@
 slug: compute-migrations
 title: "Compute Migrations on Akamai Cloud"
 description: 'This guide reviews the various types of compute migrations available on the Akamai Cloud platform.'
+published: 2023-11-14
 keywords: ['migrate','migration','host']
 tags: ["linode platform","cloud manager"]
-published: 2023-11-14
 ---
 
 A migration occurs when a Compute Instance is moved from one physical host machine to another. This can happen within the same data center or across data centers. Migrations across data centers can be configured by customers in the Cloud Manager. All other types of migrations must be configured by a Linode or Akamai administrator.

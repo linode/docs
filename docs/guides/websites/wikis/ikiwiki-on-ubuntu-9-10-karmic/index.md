@@ -1,21 +1,21 @@
 ---
 slug: ikiwiki-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Ikiwiki on Ubuntu 9.10 (Karmic)'
 description: 'Using Ikiwiki on Ubuntu 9.10 (Karmic) to power a standard wiki implementation.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-23
+modified: 2011-04-29
+deprecated: true
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "karmic"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/ikiwiki/ubuntu-9-10-karmic/','/websites/wikis/ikiwiki-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-published: 2010-03-23
-title: 'Ikiwiki on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

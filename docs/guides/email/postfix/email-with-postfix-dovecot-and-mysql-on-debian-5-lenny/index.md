@@ -1,21 +1,21 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-debian-5-lenny
-deprecated: true
+title: 'Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)'
 description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on Debian 5 "Lenny".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-02-08
+modified: 2012-10-08
+deprecated: true
 keywords: ["postfix", "dovecot", "email", "debian", "lenny"]
 tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/','/email/postfix/dovecot-mysql-debian-5-lenny/']
-modified: 2012-10-08
-published: 2010-02-08
-title: 'Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)'
 relations:
     platform:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian 5
-authors: ["Brett Kaplan"]
-contributors: ["Brett Kaplan"]
 ---
 
 

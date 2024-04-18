@@ -1,18 +1,18 @@
 ---
 slug: install-php-fpm-and-apache-on-debian-8
+title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 description: 'Install PHP-FPM and Apache on Debian 8 for Improved Website Agility and Security'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2016-02-19
+modified: 2017-02-21
 keywords: ["php-fpm", "apache", "debian 8", "php5-mysql", "fastcgi", "php", "cgi", "mod_php", "php pool"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/install-php-fpm-and-apache-on-debian-8/','/web-servers/apache/install-php-fpm-and-apache-on-debian-8/']
-modified: 2017-02-21
-published: 2016-02-19
-title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[FastCGI Process Manager](http://php.net/manual/en/install.fpm.configuration.php)'
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 PHP-FPM is an implementation of the FastCGI protocol for PHP. This guide covers installing PHP-FPM for Apache on Debian 8 (Jessie).

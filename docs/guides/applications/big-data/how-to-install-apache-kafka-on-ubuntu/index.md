@@ -1,18 +1,18 @@
 ---
 slug: how-to-install-apache-kafka-on-ubuntu
+title: "Install and Configure Apache Kafka on Ubuntu"
+title_meta: "How to Install Apache Kafka on Ubuntu"
 description: "Learn how to install and configure Apache Kafka, a popular open-source platform for stream management and processing first developed by LinkedIn."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-06-11
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['ubuntu', 'kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-11
-title: "Install and Configure Apache Kafka on Ubuntu"
-title_meta: "How to Install Apache Kafka on Ubuntu"
 external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Downloads](https://kafka.apache.org/downloads)'
 - '[Apache Kafka Authentication page](https://www.apache.org/info/verification.html)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

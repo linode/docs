@@ -1,10 +1,10 @@
 ---
+title: "Deploy ClusterControl through the Linode Marketplace"
 description: "Manage the most popular open-source databases on-premise or in the cloud."
-keywords: ['database','cluster','backups','configuration management']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2022-05-17
-title: "Deploy ClusterControl through the Linode Marketplace"
+keywords: ['database','cluster','backups','configuration management']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
 external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'

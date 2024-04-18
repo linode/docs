@@ -1,19 +1,19 @@
 ---
 slug: creating-reading-and-writing-files-in-go-a-tutorial
-description: 'This guide provides you instructions for performing various file I/O operations in the Go programming language, such as verifying a path exists, and more.'
-keywords: ["Go", "File", "UNIX", "Input", "Output", "Golang"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-09-06
 title: 'Creating, Reading and Writing Files in Go'
 title_meta: 'Creating, Reading and Writing Files in Go - A Tutorial'
+description: 'This guide provides you instructions for performing various file I/O operations in the Go programming language, such as verifying a path exists, and more.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-09-06
+keywords: ["Go", "File", "UNIX", "Input", "Output", "Golang"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Go](https://golang.org)'
   - '[The os package](https://golang.org/pkg/os/)'
   - '[The io package](https://golang.org/pkg/io/)'
   - '[The viper package](https://github.com/spf13/viper)'
 aliases: ['/development/go/creating-reading-and-writing-files-in-go-a-tutorial/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

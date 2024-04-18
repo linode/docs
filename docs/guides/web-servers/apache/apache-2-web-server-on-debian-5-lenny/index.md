@@ -1,21 +1,21 @@
 ---
 slug: apache-2-web-server-on-debian-5-lenny
-deprecated: true
+title: 'Apache 2 Web Server on Debian 5 (Lenny)'
 description: 'Instructions for getting started with the Apache web server on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-27
+modified: 2012-10-08
+deprecated: true
 keywords: ["apache debian 5", "apache web server", "apache debian lenny", "web server", "apache on debian", "apache lenny"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-debian-5-lenny/','/web-servers/apache/installation/debian-5-lenny/','/web-servers/apache/apache-2-web-server-on-debian-5-lenny/']
-modified: 2012-10-08
-published: 2009-07-27
-title: 'Apache 2 Web Server on Debian 5 (Lenny)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

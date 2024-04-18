@@ -1,21 +1,21 @@
 ---
 slug: express-js-tutorial
+title: "Express JS Tutorial: Get Started Building a Website"
+title_meta: "Express JS Tutorial"
 description: 'This tutorial gives a complete overview of how Express JS works, including installation, configuration, templates engines and middleware capabilities.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-11
 keywords: ['express js','node.js','app framework','web application','install express','middleware','template engines']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-11
 image: EXPRESSJS.jpg
-title: "Express JS Tutorial: Get Started Building a Website"
-title_meta: "Express JS Tutorial"
 external_resources:
 - '[Express JS  official documentation](https://expressjs.com/en/4x/api.html)'
 - '[Express JS Template engines](https://expressjs.com/en/resources/template-engines.html)'
 - '[Express JS middleware functions guide](https://expressjs.com/en/guide/writing-middleware.html)'
 - '[MVC design pattern](https://github.com/expressjs/express/tree/master/examples/mvc)'
 
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 This Express JS tutorial shows you how to set up a basic Express JS website and explains its key features for managing web content and traffic.

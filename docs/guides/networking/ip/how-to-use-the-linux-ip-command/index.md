@@ -1,17 +1,17 @@
 ---
 slug: how-to-use-the-linux-ip-command
-description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options.'
-keywords: ['linux ip command','config ip command']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-16
 title: "Use the ip Command in Linux"
 title_meta: "How to Use the ip Command in Linux"
+description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-06-16
+keywords: ['linux ip command','config ip command']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ubuntu 22.04 Man page for the ip command](https://manpages.ubuntu.com/manpages/jammy/man8/ip.8.html)'
 - '[Internet Protocol Wikipedia page](https://en.wikipedia.org/wiki/Internet_Protocol)'
 - '[iproute2 Wikipedia page](https://en.wikipedia.org/wiki/Iproute2)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 The Linux `ip` command is a system tool for network administration, but it has many options and can be complicated. Fortunately, most users find the tool easier to use when they understand its main components. This guide explains how to configure a server using the `ip` command. It demonstrates how to accomplish common networking tasks and how to view the state of the network.

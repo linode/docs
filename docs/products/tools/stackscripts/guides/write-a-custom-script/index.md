@@ -1,10 +1,10 @@
 ---
 title: "Write a Custom Script for Use with StackScripts"
 description: "This guide details the StackScript system including script requirements, how to import an existing StackScript into a new StackScript, and more."
-keywords: ["automation", "scripts", "deployments", "instance"]
-tags: ["linode platform","automation","cloud manager"]
 published: 2020-05-21
 modified: 2022-11-30
+keywords: ["automation", "scripts", "deployments", "instance"]
+tags: ["linode platform","automation","cloud manager"]
 image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png
 aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/','/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
 ---

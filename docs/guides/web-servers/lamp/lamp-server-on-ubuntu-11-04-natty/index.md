@@ -1,14 +1,16 @@
 ---
 slug: lamp-server-on-ubuntu-11-04-natty
-deprecated: true
+title: 'LAMP Server on Ubuntu 11.04 (Natty)'
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.04 (Natty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-06-09
+modified: 2013-02-18
+deprecated: true
 keywords: ["ubuntu lamp server", "ubuntu 11.04 lamp", "natty lamp", "ubuntu web server", "ubuntu natty"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/ubuntu-11-04-natty/','/web-servers/lamp/lamp-server-on-ubuntu-11-04-natty/','/websites/lamp/lamp-server-on-ubuntu-11-04-natty/']
-modified: 2013-02-18
-published: 2011-06-09
-title: 'LAMP Server on Ubuntu 11.04 (Natty)'
 external_resources:
   - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -19,8 +21,6 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 11.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

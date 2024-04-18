@@ -1,10 +1,10 @@
 ---
+title: "Deploy MagicSpam through the Linode Marketplace"
 description: "This guide shows you how to install and configure MagicSpam, a powerful anti-spam and email security solution using the Linode One-Click App Marketplace."
-keywords: ['cPanel','Plesk','Email','Spam']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2024-01-22
-title: "Deploy MagicSpam through the Linode Marketplace"
+keywords: ['cPanel','Plesk','Email','Spam']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/deploying-magicspam-marketplace-app/','/guides/magicspam-marketplace-app/']
 external_resources:
 - '[MagicSpam](https://magicspam.com/)'

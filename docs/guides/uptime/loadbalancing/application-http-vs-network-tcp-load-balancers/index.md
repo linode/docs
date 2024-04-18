@@ -2,11 +2,11 @@
 slug: application-http-vs-network-tcp-load-balancers
 title: "Application (HTTP) vs Network (TCP) Load Balancers"
 description: 'Explore the differences between application-layer (HTTP) and transport-layer (TCP) load balancers. Learn how each functions, their key features, and when to choose one over the other.'
-keywords: ['load balancing protocols','http load balancing','tcp load balancing','application-layer load balancing','transport-layer load balancing']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2024-01-16
+keywords: ['load balancing protocols','http load balancing','tcp load balancing','application-layer load balancing','transport-layer load balancing']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Load balancing is the process of distributing client requests across multiple servers. Originally, load balancers were dedicated hardware appliances connected to physical servers in data centers. Today, software products such as [Akamai NodeBalancers](/docs/products/networking/nodebalancers/) perform the same role with cloud-based servers.

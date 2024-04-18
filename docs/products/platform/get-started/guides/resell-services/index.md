@@ -2,9 +2,9 @@
 title: "Resell Linode Services"
 title_meta: "How to Resell Linode Services"
 description: 'How to resell Linode services using the Linode API, and how to get started with the Linode referral program.'
-keywords: ['resell','linode','services','reseller','referral','code']
 published: 2019-01-31
 modified: 2023-07-24
+keywords: ['resell','linode','services','reseller','referral','code']
 tags: ["linode platform"]
 aliases: ['/platform/how-to-resell-linode-services/','/guides/how-to-resell-linode-services/']
 image: how-to-resell-linode-services.png

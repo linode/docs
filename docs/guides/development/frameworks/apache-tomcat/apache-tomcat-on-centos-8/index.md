@@ -1,14 +1,16 @@
 ---
 slug: apache-tomcat-on-centos-8
+title: 'Installing Apache Tomcat on CentOS 8'
+title_meta: 'How to Install Apache Tomcat on CentOS 8'
 description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by following this guide.'
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2020-03-25
 keywords: ["apache tomcat centos 8", "tomcat java", "java centos 8", "tomcat ubuntu"]
 tags: ["web applications","java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat-on-centos-8/','/development/frameworks/apache-tomcat/apache-tomcat-on-centos-8/','/websites/frameworks/apache-tomcat-on-centos-8/']
-published: 2020-03-25
 image: ApacheTomcat_CentOS8.png
-title: 'Installing Apache Tomcat on CentOS 8'
-title_meta: 'How to Install Apache Tomcat on CentOS 8'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -21,8 +23,6 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: CentOS 8
-authors: ["Rajakavitha Kodhandapani"]
-contributors: ["Rajakavitha Kodhandapani"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

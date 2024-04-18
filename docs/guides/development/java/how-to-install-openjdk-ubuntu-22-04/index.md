@@ -1,19 +1,19 @@
 ---
 slug: how-to-install-openjdk-ubuntu-22-04
+title: "How to Install OpenJDK on Ubuntu 22.04"
+title_meta: "Installing OpenJDK on Ubuntu 22.04"
 description: 'This guide explains how to install and test the Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on Ubuntu 22.04.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-03-20
 keywords: ['Java', 'OpenJDK', 'OpenJDK Ubuntu', 'How to install OpenJDK']
 tags: ['ubuntu', 'java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-20
-title: "How to Install OpenJDK on Ubuntu 22.04"
-title_meta: "Installing OpenJDK on Ubuntu 22.04"
 external_resources:
 - '[OpenJDK website](https://openjdk.java.net/)'
 - '[OpenJDK Development Guide](https://openjdk.java.net/guide/)'
 - '[Java development site](https://dev.java/)'
 - '[OpenJDK GA Release Archive](https://jdk.java.net/archive/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [OpenJDK](https://openjdk.java.net/) is a free, open-source, production-ready implementation of Java based on Oracle's commercial version of Java. This guide explains how to download and install OpenJDK on Ubuntu 22.04. It also demonstrates how to configure OpenJDK and write a short test script to validate the installation.

@@ -1,10 +1,12 @@
 ---
 slug: how-to-install-peertube
+title: "How to Install PeerTube"
 description: 'This guide explains how to download, install, and configure the federated video sharing application PeerTube.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-12-05
 keywords: ['what is PeerTube','configure PeerTube','install PeerTube','PeerTube configuration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-05
-title: "How to Install PeerTube"
 external_resources:
 - '[PeerTube](https://joinpeertube.org/)'
 - '[PeerTube documentation](https://docs.joinpeertube.org/)'
@@ -12,8 +14,6 @@ external_resources:
 - '[PeerTube installation instructions](https://docs.joinpeertube.org/install-any-os)'
 - '[PeerTube dependencies](https://docs.joinpeertube.org/dependencies)'
 - '[Certbot](https://certbot.eff.org/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 There is now increased interest in federated web applications as alternatives to the major social media sites. Federated servers operate independently in an interconnected manner. [PeerTube](https://joinpeertube.org/) is a distributed open source variation on YouTube. It allows users to share and enjoy videos without corporate interference or manipulative algorithms. This guide explains how to download, install, and configure a PeerTube instance on a Linode server.

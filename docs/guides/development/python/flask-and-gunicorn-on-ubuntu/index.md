@@ -1,21 +1,21 @@
 ---
 slug: flask-and-gunicorn-on-ubuntu
+title: "Deploying a Flask Application on Ubuntu"
+title_meta: "How to deploy a Flask Application on Ubuntu"
 description: 'This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode.'
+authors: ["Austin Balarin"]
+contributors: ["Austin Balarin"]
+published: 2019-10-10
+modified: 2020-07-11
 keywords: ['python','flask','gunicorn','nginx', 'flask deployment', 'python flask']
 tags: ["monitoring","python","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-10-10
-modified: 2020-07-11
-title: "Deploying a Flask Application on Ubuntu"
-title_meta: "How to deploy a Flask Application on Ubuntu"
 external_resources:
 - '[Python](https://www.python.org/)'
 - '[Flask](https://flask.palletsprojects.com/en/1.0.x/)'
 - '[NGINX](https://www.nginx.com/resources/wiki/)'
 - '[Gunicorn](http://docs.gunicorn.org/en/stable/)'
 aliases: ['/development/python/flask-and-gunicorn-on-ubuntu/']
-authors: ["Austin Balarin"]
-contributors: ["Austin Balarin"]
 ---
 
 Flask is a light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. After you have developed a Flask application in a local environment, you need to prepare the application's production environment in order to run the application and serve it to the users of the application through the internet.

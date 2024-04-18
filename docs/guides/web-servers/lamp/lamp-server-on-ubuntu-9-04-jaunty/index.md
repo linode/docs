@@ -1,14 +1,16 @@
 ---
 slug: lamp-server-on-ubuntu-9-04-jaunty
-deprecated: true
+title: 'LAMP Server on Ubuntu 9.04 (Jaunty)'
 description: 'This guide provides you with step-by-step instructions for installing a fully-featured LAMP (Linux, Apache, MySQL, LInux) stack on a Linode running Ubuntu 9.04 "Jaunty".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-16
+modified: 2011-05-02
+deprecated: true
 keywords: ["ubuntu lamp server", "ubuntu web server", "ubuntu jaunty"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-ubuntu-9-04-jaunty/','/lamp-guides/ubuntu-9-04-jaunty/','/web-servers/lamp/lamp-server-on-ubuntu-9-04-jaunty/']
-modified: 2011-05-02
-published: 2009-07-16
-title: 'LAMP Server on Ubuntu 9.04 (Jaunty)'
 external_resources:
   - '[Ubuntu Linux Home Page](http://www.ubuntu.com/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -19,8 +21,6 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

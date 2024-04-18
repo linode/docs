@@ -1,13 +1,13 @@
 ---
 slug: git-rebase-command
-description: 'This guide provides you with an introduction to the rebase command in Git and you will learn when to use these commands to rebuild your Git history.'
-keywords: ['git rebase', 'git rebase interactive']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-15
 title: "Using the Git Rebase Command"
 title_meta: "How to Use the Git Rebase Command"
+description: 'This guide provides you with an introduction to the rebase command in Git and you will learn when to use these commands to rebuild your Git history.'
 authors: ["Stephen Savitzky"]
 contributors: ["Stephen Savitzky"]
+published: 2021-10-15
+keywords: ['git rebase', 'git rebase interactive']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## What Does Git Rebase Do?

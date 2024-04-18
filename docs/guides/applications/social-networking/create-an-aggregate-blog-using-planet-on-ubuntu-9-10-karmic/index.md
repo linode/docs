@@ -1,14 +1,16 @@
 ---
 slug: create-an-aggregate-blog-using-planet-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Create an Aggregate Blog using Planet on Ubuntu 9.10 (Karmic)'
 description: 'This guide will show you how to use The Planet feed aggregator to provide overviews of a community by collecting community feeds on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-10
+modified: 2012-10-08
+deprecated: true
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/ubuntu-9-10-karmic/','/applications/social-networking/create-an-aggregate-blog-using-planet-on-ubuntu-9-10-karmic/']
-modified: 2012-10-08
-published: 2010-08-10
-title: 'Create an Aggregate Blog using Planet on Ubuntu 9.10 (Karmic)'
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
@@ -17,8 +19,6 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

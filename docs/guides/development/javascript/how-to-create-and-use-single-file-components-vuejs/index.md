@@ -1,11 +1,13 @@
 ---
 slug: how-to-create-and-use-single-file-components-vuejs
-description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
-keywords: ["vue js","javascript","vuejs","vuejs single file components","vuejs eventbus", "vuejs event bus"]
-license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-published: 2020-05-20
 title: "A Tutorial for Creating Single File Components in VueJS"
 title_meta: "How to Create Single File Components in VueJS (A Tutorial)"
+description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
+authors: ["Pavel Petrov"]
+contributors: ["Pavel Petrov"]
+published: 2020-05-20
+keywords: ["vue js","javascript","vuejs","vuejs single file components","vuejs eventbus", "vuejs event bus"]
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 external_resources:
   - "[VueJS](https://vuejs.org/)"
   - "[Vue CLI](https://cli.vuejs.org/)"
@@ -14,8 +16,6 @@ audiences: ["beginner"]
 languages: ["javascript"]
 tags: ["web applications"]
 aliases: ['/development/javascript/how-to-create-and-use-single-file-components-vuejs/']
-authors: ["Pavel Petrov"]
-contributors: ["Pavel Petrov"]
 ---
 
 When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](/docs/guides/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.

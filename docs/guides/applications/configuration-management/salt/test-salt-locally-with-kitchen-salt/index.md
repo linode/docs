@@ -1,12 +1,14 @@
 ---
 slug: test-salt-locally-with-kitchen-salt
+title: "Test Salt States Locally with KitchenSalt"
 description: 'This guide provides you with instructions for testing Salt states locally with Kitchen and kitchen-salt, utilities that let you test without a salt master or minions.'
-keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-10-15
 modified: 2019-01-02
+keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: TestSaltStatesLocallywithKitchenSalt.png
-title: "Test Salt States Locally with KitchenSalt"
 external_resources:
 - '[KitchenSalt Documentation](https://kitchen.saltproject.io/docs/file/README.rdoc)'
 - '[Kitchen Documentation](https://docs.chef.io/kitchen.html)'
@@ -15,8 +17,6 @@ external_resources:
 - '[Sample Pytest tests](https://github.com/gtmanfred/wordpress-formula/tree/master/tests/integration)'
 aliases: ['/applications/configuration-management/test-salt-locally-with-kitchen-salt/','/applications/configuration-management/salt/test-salt-locally-with-kitchen-salt/']
 tags: ["automation","salt"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 KitchenSalt allows you to use Test Kitchen to test your Salt configurations locally without a Salt master or minions. In this guide you will install KitchenSalt and use Docker to test a Salt state. This guide was created using a system running Ubuntu 18.04.

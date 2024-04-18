@@ -1,12 +1,14 @@
 ---
 slug: how-to-install-nodejs-and-nginx-on-debian-10
+title: Installing Node.js and NGINX on Debian 10
+title_meta: How to Install Node.js and NGINX on Debian 10
 description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a Debian 10 server.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-14
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "debian", " front-end requests", " back-end requests"]
 tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-14
-title: Installing Node.js and NGINX on Debian 10
-title_meta: How to Install Node.js and NGINX on Debian 10
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -23,8 +25,6 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-debian-10/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Node.js is an open-source JavaScript runtime environment that can serve dynamic and responsive content and is often used to create and serve web applications. When serving Node.js applications, NGINX is commonly used to create a reverse proxy that points at a running Node.js server. In this guide, you will install and configure NGINX on a Debian 10 Linode. NGINX will handle requests to static files, like `index.html` and also, create a reverse proxy to a Node.js server. You will then create a test JavaScript file in order to test your running Node.js server.

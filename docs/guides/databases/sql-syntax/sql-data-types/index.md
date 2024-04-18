@@ -1,14 +1,14 @@
 ---
 slug: sql-data-types
+title: "Introduction to SQL Data Types"
+title_meta: "SQL Data Types"
 description: 'SQL supports various data types including Binary, Numeric, and Character data types. This guide explains each data type''s storage requirements, syntax, and provides examples.'
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+published: 2022-03-11
 keywords: ['binary data type', 'numeric data type', 'character data type', 'date time data type']
 tags: ['MySQL', 'PostgreSQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-11
-title: "Introduction to SQL Data Types"
-title_meta: "SQL Data Types"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 Choosing the proper data type for a table column is an important decision. It reduces the need for data type conversions, enhances the performance of database queries, and minimizes storage requirements.

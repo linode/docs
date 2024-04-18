@@ -2,11 +2,11 @@
 title: Capture NGINX Metrics with Longview
 title_meta: Capture NGINX Metrics with Linode Longview
 description: 'This guide discusses the Linode Longview client, including how to configure Longview for the Nginx web server, how to interact with data from Longview, and more.'
+published: 2013-11-05
+modified: 2023-05-24
 keywords: ["Longview", " Nginx", " statistics", " HttpStubStatusModule"]
 tags: ["cloud manager","statistics","monitoring","linode platform","nginx"]
 aliases: ['/platform/longview/longview-app-for-nginx/','/longview/longview-for-nginx/','/platform/longview/what-is-the-linode-longview-app-for-nginx/','/guides/what-is-the-linode-longview-app-for-nginx/']
-published: 2013-11-05
-modified: 2023-05-24
 relations:
     platform:
         key: what-is-longview

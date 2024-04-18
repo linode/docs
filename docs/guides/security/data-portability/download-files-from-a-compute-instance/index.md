@@ -1,15 +1,15 @@
 ---
 slug: download-files-from-a-compute-instance
-description: "Learn how to download files, database dumps, or whole disks from your Linodes."
-keywords: ["download", "files", "disk", "ssh"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2023-07-07
-published: 2018-09-25
 title: Download Files from Your Compute Instance
-tags: ["security"]
-aliases: ['/security/data-portability/download-files-from-your-linode/','/guides/download-files-from-your-linode/']
+description: "Learn how to download files, database dumps, or whole disks from your Linodes."
 authors: ["Linode"]
 contributors: ["Linode"]
+published: 2018-09-25
+modified: 2023-07-07
+keywords: ["download", "files", "disk", "ssh"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["security"]
+aliases: ['/security/data-portability/download-files-from-your-linode/','/guides/download-files-from-your-linode/']
 ---
 
 Periodically, you may wish to download files from a Compute Instance to retain as a local backup or work on them locally. This guide covers the techniques and tools you can use to download your remote files to your local machine.

@@ -1,20 +1,20 @@
 ---
 slug: enabling-https-using-certbot-with-apache-on-ubuntu
+title: "Use Certbot to Enable HTTPS with Apache on Ubuntu"
 description: "Learn how to install and use Certbot with Apache on Ubuntu 20.04, which automates the process adding TLS/SSL to your websites."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-03-02
+modified: 2021-07-01
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'Apache']
 tags: ['ssl','apache','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-02
-modified: 2021-07-01
-title: "Use Certbot to Enable HTTPS with Apache on Ubuntu"
 aliases: ['/guides/how-to-install-certbot-for-apache-on-ubuntu-20-04/']
 relations:
     platform:
         key: how-to-use-certbot-with-apache
         keywords:
             - distribution: Ubuntu
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the Apache web server on Ubuntu 20.04 LTS and 18.04 LTS. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on Apache (or other web servers).

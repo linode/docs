@@ -1,13 +1,13 @@
 ---
 slug: how-to-use-docker-compose-v2
+title: "How to Use Docker Compose V2"
+description: 'This guide provides a brief introduction to Docker Compose V2 and explains how to install and use it.'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
-description: 'This guide provides a brief introduction to Docker Compose V2 and explains how to install and use it.'
+published: 2023-06-06
 keywords: ['Docker Compose V2', 'Install Docker Compose', 'Use Docker Compose', 'what is Docker Compose V2']
 tags: ['dokcer', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-06-06
-title: "How to Use Docker Compose V2"
 external_resources:
 - '[Docker Compose Overview](https://docs.docker.com/compose/)'
 - '[Docker Compose Configuration File Specification](https://docs.docker.com/compose/compose-file/)'

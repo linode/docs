@@ -1,14 +1,14 @@
 ---
 slug: history-of-machine-learning
+title: "The History of Machine Learning: A Comprehensive Overview"
+title_meta: "Machine Learning and Artificial Intelligence Background"
 description: 'Want to learn about the history of machine learning? Our comprehensive guide discusses all you need to know, including who invented it and its evolution.'
+authors: ["Pam Baker"]
+contributors: ["Pam Baker"]
+published: 2022-02-25
 keywords: ['machine learning history','when was machine learning invented','who invented machine learning']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-title: "The History of Machine Learning: A Comprehensive Overview"
-title_meta: "Machine Learning and Artificial Intelligence Background"
-authors: ["Pam Baker"]
-contributors: ["Pam Baker"]
 ---
 
 Machine learning (ML) is a subset of artificial intelligence (AI) and it is fast becoming the very backbone of most software today. It exists in several different forms from chatbots on websites and digital assistants like Siri and Alexa, to algorithms driving social media like Facebook, and a variety of office software. Machine learning is so prevalent that it is difficult to list all the places where it digitally resides and all the tasks it performs.

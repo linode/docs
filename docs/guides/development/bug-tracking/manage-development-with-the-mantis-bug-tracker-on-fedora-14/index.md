@@ -1,21 +1,21 @@
 ---
 slug: manage-development-with-the-mantis-bug-tracker-on-fedora-14
-deprecated: true
+title: Manage Development with the Mantis Bug Tracker on Fedora 14
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
+deprecated: true
 keywords: ["mantis", "mantis fedora", "mantis linux", "bug tracker", "development"]
 tags: ["fedora", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/bug-tracking/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/development/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/applications/development/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/web-applications/project-management/mantis/fedora-14/']
-modified: 2013-10-04
-published: 2011-04-05
-title: Manage Development with the Mantis Bug Tracker on Fedora 14
 relations:
     platform:
         key:  mantis-bug-tracker
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.

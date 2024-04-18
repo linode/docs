@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-a-lamp-stack-on-centos-8
+title: Installing a LAMP Stack on CentOS 8
+title_meta: How to Install a LAMP Stack on CentOS 8
 description: 'Install a LAMP stack on a CentOS 8 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-01
+modified: 2020-02-19
 keywords: ["LAMP", "CentOS", "CentOS 8", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-19
-published: 2015-12-01
-title: Installing a LAMP Stack on CentOS 8
-title_meta: How to Install a LAMP Stack on CentOS 8
 image: how-to-install-a-lamp-stack-on-centos-8.png
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
@@ -20,8 +22,6 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/','/lamp-guides/centos-5.3/index-print/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 8 Linode.

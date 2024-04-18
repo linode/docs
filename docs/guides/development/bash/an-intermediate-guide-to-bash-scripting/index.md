@@ -1,16 +1,16 @@
 ---
 slug: an-intermediate-guide-to-bash-scripting
-description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
-keywords: ["shell", "bash", "printf", "script"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-05
 title: 'Continuing with Bash Scripting'
 title_meta: 'An Intermediate Guide to Bash Scripting'
+description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-11-05
+keywords: ["shell", "bash", "printf", "script"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 aliases: ['/development/bash/an-intermediate-guide-to-bash-scripting/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 In the previous guide of this series, [Getting Started with Bash Scripting](/docs/guides/intro-bash-shell-scripting/), you learned Bash basics, like creating and using variables, getting user input, using environment variables, and more. In this guide, you will build off what you have already learned and put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories. Each section will provide a brief introduction to each concept and commands with a few examples that you can run to better understand its function.

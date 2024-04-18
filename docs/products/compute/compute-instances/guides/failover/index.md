@@ -1,9 +1,9 @@
 ---
 title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
-keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
 modified: 2024-02-20
+keywords: ['IP failover','IP sharing','elastic IP']
 aliases: ['/guides/ip-failover/']
 tags: ["media"]
 ---

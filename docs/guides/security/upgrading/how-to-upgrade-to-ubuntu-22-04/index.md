@@ -1,20 +1,20 @@
 ---
 slug: how-to-upgrade-to-ubuntu-22-04
-description: 'This guide explains how to upgrade inline from Ubuntu 20.04 or 21.04 to Ubuntu 22.04.'
-keywords: ['Upgrade Ubuntu','Upgrade from Ubuntu 20.04','Upgrade to Ubuntu 22.04','Ubuntu inline upgrade']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-11-07
-modified: 2023-03-29
 title: "Upgrade to Ubuntu 22.04 LTS"
 title_meta: "How to Upgrade to Ubuntu 22.04 LTS"
+description: 'This guide explains how to upgrade inline from Ubuntu 20.04 or 21.04 to Ubuntu 22.04.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-11-07
+modified: 2023-03-29
+keywords: ['Upgrade Ubuntu','Upgrade from Ubuntu 20.04','Upgrade to Ubuntu 22.04','Ubuntu inline upgrade']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ubuntu 22.04.1 LTS release](https://releases.ubuntu.com/22.04/)'
 - '[Ubuntu server documentation](https://ubuntu.com/server/docs)'
 - '[Ubuntu 22.04 release notes](https://discourse.ubuntu.com/t/jammy-jellyfish-release-notes/24668)'
 - '[Ubuntu Long Term Support Schedule](https://ubuntu.com/about/release-cycle)'
 - '[New features in Ubuntu 22.04](https://ubuntu.com/blog/ubuntu-22-04-lts-whats-new-linux-desktop)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 aliases: ['/upgrading/upgrade-to-ubuntu-12.04-precise/']
 ---
 

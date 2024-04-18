@@ -1,13 +1,15 @@
 ---
 slug: how-to-secure-wordpress
+title: Securing Wordpress
+title_meta: How to Secure Wordpress
 description: 'How to secure your WordPress installation with SSL, secure password policies, two factor authentication, backups, and a firewall.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2020-10-28
+modified: 2022-07-08
 keywords: ["how to secure wordpress site", "how to make wordpress site secure"]
 tags: ["wordpress","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-07-08
-published: 2020-10-28
-title: Securing Wordpress
-title_meta: How to Secure Wordpress
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -15,8 +17,6 @@ external_resources:
 - '[Installing Plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins)'
 aliases: ['/websites/cms/wordpress/how-to-secure-wordpress/']
 image: SecureWordpress.png
-authors: ["Hackersploit"]
-contributors: ["Hackersploit"]
 ---
 
 WordPress is a popular content management and website creation software system used by millions of users today. It's easy to use and offers thousands of plugins making it simple for non-developers to create beautiful websites without having to write a single line of code. This guide helps you keep your WordPress site secure with suggestions like installing SSL certificates, installing a firewall, enabling two-factor authentication, and more.

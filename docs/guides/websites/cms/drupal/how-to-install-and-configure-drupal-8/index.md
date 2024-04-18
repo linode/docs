@@ -1,16 +1,16 @@
 ---
 slug: how-to-install-and-configure-drupal-8
+title: Install and Configure Drupal 8
 description: 'This guide will show you how to install and configure the popular content management system, Drupal 8 on your Linode running Debian or Ubuntu..'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-11-19
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8"]
 tags: ["drupal","apache","lamp","php","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/install-and-configure-drupal-8/','/websites/cms/managing-web-content-with-drupal-8-beta/','/web-applications/cms-guides/drupal/','/websites/cms/drupal/how-to-install-and-configure-drupal-8/']
-published: 2015-11-19
 deprecated: true
 deprecated_link: 'websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10/'
-title: Install and Configure Drupal 8
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian or Ubuntu.

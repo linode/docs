@@ -1,18 +1,18 @@
 ---
 slug: generating-static-sites-with-gatsby
+title: "Generating Static Sites with Gatsby"
+title_meta: "How to Generate Static Sites with Gatsby"
 description: "Gatsby offers a static-site generation framework based on React. Take all of the advantages of React for designing frontends, and combine them with a rich set of features for generating static sites. Find out more about Gatsby and how to build and deploy your own websites with it in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-04-03
 keywords: ['what is gatsby js','gatsby static site generator tutorial','gatsby templates']
 tags: ['web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-03
-title: "Generating Static Sites with Gatsby"
-title_meta: "How to Generate Static Sites with Gatsby"
 external_resources:
 - '[Gatsby: Tutorial - Learn how Gatsby Works](https://www.gatsbyjs.com/docs/tutorial/)'
 - '[Ibaslogic: Gatsby Tutorial from Scratch: The Definitive Guide](https://ibaslogic.com/gatsby-tutorial-from-scratch-for-beginners/)'
 - '[LogRocket: Gatsby - The Ultimate Guide with Examples](https://blog.logrocket.com/gatsby-ultimate-guide-examples/)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Gatsby is a static-site generator built on React. It has all the performance benefits of static sites, backed by the feature-rich React library. Gatsby additionally supports an array of plugins and templates to further help you develop static sites.

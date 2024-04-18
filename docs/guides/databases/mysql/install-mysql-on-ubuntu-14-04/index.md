@@ -1,13 +1,15 @@
 ---
 slug: install-mysql-on-ubuntu-14-04
-deprecated: true
+title: 'Install MySQL on Ubuntu 14.04'
 description: 'This guide shows how to get started with the popular database app MySQL, as well as how to install the application on Ubuntu 14.04.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2012-10-08
+modified: 2015-08-26
+deprecated: true
 keywords: ["MySQL on Linux", "Ubuntu", "Ubuntu 14.04", "Linux", "MySQL", "install MySQL", "install MySQL on ubuntu", "mysqltuner", "MySQL tuner", "harden mysql", "root password", "sample table"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/how-to-install-mysql-on-ubuntu-14-04/','/databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/','/databases/mysql/ubuntu-14.04-trusty-pangolin/','/databases/mysql/install-mysql-on-ubuntu-14-04/']
-modified: 2015-08-26
-published: 2012-10-08
-title: 'Install MySQL on Ubuntu 14.04'
 external_resources:
  - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -19,8 +21,6 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 tags: ["ubuntu","database","mysql"]
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 ![Install MySQL on Ubuntu 14.04](install-mysql-on-ubuntu-1404.png "Install MySQL on Ubuntu 14.04")

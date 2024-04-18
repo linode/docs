@@ -1,16 +1,16 @@
 ---
 slug: how-to-install-bcc
+title: Installing BCC to Use eBPF Tracing Tools
 description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-08-27
 keywords: ["eBPF", "bcc", "tracing", "tools", "monitoring", "networking", "observability"]
 bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-27
-title: Installing BCC to Use eBPF Tracing Tools
 tags: ["networking","security"]
 external_resources:
 - '[iovisor](https://github.com/iovisor/bcc)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 ## Before You Begin
 

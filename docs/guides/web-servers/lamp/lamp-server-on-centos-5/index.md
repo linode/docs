@@ -1,14 +1,16 @@
 ---
 slug: lamp-server-on-centos-5
-deprecated: true
+title: LAMP Server on CentOS 5
 description: 'This guide shows you how to create a LAMP Stack, Linux, Apache, MySQL, PHP, a common web stack for running websites, applications, and more, on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-19
+modified: 2011-07-19
+deprecated: true
 keywords: ["LAMP", "CentOS", "CentOS 5"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-centos-5/','/lamp-guides/centos-5/','/web-servers/lamp/lamp-server-on-centos-5/']
-modified: 2011-07-19
-published: 2009-10-19
-title: LAMP Server on CentOS 5
 external_resources:
   - '[CentOS Linux Home Page](http://www.centos.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -19,8 +21,6 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

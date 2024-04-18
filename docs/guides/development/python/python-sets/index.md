@@ -1,14 +1,14 @@
 ---
 slug: python-sets
+title: "Getting Started with Python Sets and Python Set Operations"
+title_meta: "Introduction to Python Sets and Python Set Operations"
 description: "Learn what Python sets are and how to use them. Our comprehensive guide covers essential Python set operations like union, intersection, and difference."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-04-23
 keywords: ['python sets', 'python sets intersection', 'python sets operations']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-23
-title_meta: "Introduction to Python Sets and Python Set Operations"
-title: "Getting Started with Python Sets and Python Set Operations"
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 external_resources:
 - '[Python Documentation: Built-in Types — Set Types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset)'
 - '[W3 Schools: Python Sets](https://www.w3schools.com/python/python_sets.asp)'

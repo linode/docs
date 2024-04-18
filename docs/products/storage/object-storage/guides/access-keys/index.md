@@ -1,9 +1,9 @@
 ---
+title: "Manage Access Keys"
 description: "How to create an Access Key for use with Linode Object Storage."
-keywords: ['object storage']
 published: 2021-05-28
 modified: 2022-02-07
-title: "Manage Access Keys"
+keywords: ['object storage']
 aliases: ['/products/storage/object-storage/guides/generate-key-pair/','/products/storage/object-storage/guides/generate-access-keys/']
 ---
 

@@ -1,21 +1,21 @@
 ---
 slug: use-mongodb-to-store-application-data-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Use MongoDB to Store Application Data on Ubuntu 10.04 (Lucid)'
 description: 'Install MongoDB for use in application development on Ubuntu 10.04 (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-09-24
+deprecated: true
 keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-10-04-lucid/','/databases/mongodb/ubuntu-10-04-lucid/']
-modified: 2013-09-24
-published: 2010-05-03
-title: 'Use MongoDB to Store Application Data on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: use-mongodb-store-app-data
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

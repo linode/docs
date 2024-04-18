@@ -1,14 +1,16 @@
 ---
 slug: instant-messaging-services-with-openfire-on-centos-5
-deprecated: true
+title: Instant Messaging Services with Openfire on CentOS 5
 description: 'Getting started with Openfire on CentOS 5, an open source instant messaging server built on the XMPP/Jabber protocol.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-05
+modified: 2011-08-22
+deprecated: true
 keywords: ["openfire", "openfire centos", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/openfire/centos-5/','/applications/messaging/instant-messaging-services-with-openfire-on-centos-5/']
-modified: 2011-08-22
-published: 2010-08-05
-title: Instant Messaging Services with Openfire on CentOS 5
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -18,8 +20,6 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your CentOS 5 Linode.

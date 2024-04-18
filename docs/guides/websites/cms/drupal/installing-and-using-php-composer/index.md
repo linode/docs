@@ -1,18 +1,18 @@
 ---
 slug: installing-and-using-php-composer
+title: "Install and Use PHP Composer"
+title_meta: "How to Install and Use PHP Composer"
 description: 'In this guide, you learn how to install and use PHP Composer on a Linux system. You also learn how to install and update PHP packages using Composer.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-09-24
 keywords: ['composer update','php composer','php composer install','composer update single package']
 tags: ['php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-24
-title: "Install and Use PHP Composer"
-title_meta: "How to Install and Use PHP Composer"
 external_resources:
 - '[Composer](https://getcomposer.org/)'
 - '[Packagist](https://packagist.org/)'
 - '[Composer Documentation](https://getcomposer.org/doc/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [*PHP*](https://www.php.net/) is one of the most popular programming languages for web and internet-based applications. Due to the increasing complexity of these applications, third-party PHP packages have become increasingly popular. However, it can become difficult to manage the minimum version and dependencies for each package. [*Composer*](https://getcomposer.org/), which is a free open source package and dependency manager for PHP, can help oversee this situation. This guide explains how to install and update Composer and how to use it to install and update packages.

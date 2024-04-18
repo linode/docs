@@ -1,14 +1,16 @@
 ---
 slug: nginx-and-phpfastcgi-on-centos-5
-deprecated: true
+title: 'Nginx and PHP-FastCGI on CentOS 5'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-14
+modified: 2011-05-17
+deprecated: true
 keywords: ["nginx", "nginx centos 5", "nginx fastcgi", "nginx php"]
 tags: ["centos","web server","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-phpfastcgi-on-centos-5/','/web-servers/nginx/php-fastcgi/centos-5/','/websites/nginx/nginx-and-phpfastcgi-on-centos-5/']
-modified: 2011-05-17
-published: 2009-12-14
-title: 'Nginx and PHP-FastCGI on CentOS 5'
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
@@ -20,8 +22,6 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your CentOS 5 Linode.

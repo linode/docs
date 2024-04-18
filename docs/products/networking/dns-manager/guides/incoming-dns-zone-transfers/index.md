@@ -1,8 +1,8 @@
 ---
+title: "Incoming DNS Zone Transfers"
 description: "Learn how to import DNS records from external DNS providers by using AXFR transfers"
 published: 2022-10-28
 modified: 2022-11-08
-title: "Incoming DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 ---

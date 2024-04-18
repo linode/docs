@@ -1,14 +1,16 @@
 ---
 slug: secure-communications-with-openvpn-on-centos-6
-deprecated: true
+title: Secure Communications with OpenVPN on CentOS 6
 description: 'Use OpenVPN to securely connect separate networks on a CentOS 6 Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-25
+modified: 2013-12-23
+deprecated: true
 keywords: ["openvpn", "networking", "vpn", "centos"]
 tags: ["networking","security","vpn","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-centos-6/','/networking/openvpn/centos-6/']
-modified: 2013-12-23
-published: 2010-02-25
-title: Secure Communications with OpenVPN on CentOS 6
 external_resources:
  - '[Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
@@ -19,8 +21,6 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: CentOS 6
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.

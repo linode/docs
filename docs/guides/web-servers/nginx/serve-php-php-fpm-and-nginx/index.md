@@ -1,18 +1,18 @@
 ---
 slug: serve-php-php-fpm-and-nginx
+title: "Serve PHP with PHP-FPM and NGINX"
 description: "This guide provides you with information on how to proxy PHP requests with the NGINX web server and FastCGI by using PHP-FPM (Fast Process Manager)."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-02-19
+modified: 2021-12-29
 keywords: ["php", "php-fpm", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/serve-php-php-fpm-and-nginx/','/websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
-modified: 2021-12-29
-published: 2018-02-19
-title: "Serve PHP with PHP-FPM and NGINX"
 image: serve-php-with-phpfpm-and-nginx-smp.jpg
 external_resources:
  - '[PHP Manual](https://secure.php.net/docs.php)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.wikipedia.org/wiki/FastCGI) handler for [PHP](https://secure.php.net/) scripts and applications. It's commonly paired with web servers to serve applications which require a PHP framework, such as web forums or login gateways, while the web server returns HTML, JavaScript, and other non-PHP content.

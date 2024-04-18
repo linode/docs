@@ -1,21 +1,21 @@
 ---
 slug: use-mysql-relational-databases-on-ubuntu-8-04-hardy
-deprecated: true
+title: 'Use MySQL Relational Databases on Ubuntu 8.04 (Hardy)'
 description: 'Getting started with MySQL for web and server applications on Ubuntu Hardy.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-11
+modified: 2012-10-08
+deprecated: true
 keywords: ["MySQL on Linux", "MySQL Ubuntu", "MySQL Hardy", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/ubuntu-8-04-hardy/','/databases/mysql/use-mysql-relational-databases-on-ubuntu-8-04-hardy/']
-modified: 2012-10-08
-published: 2009-08-11
-title: 'Use MySQL Relational Databases on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Ubuntu 8.04
 tags: ["ubuntu","database","mysql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu Hardy Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.

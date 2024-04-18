@@ -1,10 +1,10 @@
 ---
 title: How to Choose a Data Center
 description: 'This article gives you information to help you determine which data center you should choose when deploying your website or app on a Compute Instance.'
-keywords: ["data center", "datacenter", "dc", "speed"]
-tags: ["linode platform"]
 published: 2018-10-31
 modified: 2024-04-03
+keywords: ["data center", "datacenter", "dc", "speed"]
+tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
 ---
 

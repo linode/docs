@@ -1,16 +1,16 @@
 ---
 slug: ossec-ids-debian-7
+title: Install and Configure OSSEC on Debian 7
 description: 'This guide shows how to install and configure OSSEC HIDS, an open-source, host-based intrusion detection system which provides advanced monitoring functions, on Debian 7.'
+authors: ["Sunday Ogwu-Chinuwa"]
+contributors: ["Sunday Ogwu-Chinuwa"]
+published: 2015-02-05
 keywords: ["IDS", " Intrusion Detection System"]
 aliases: ['/security/ossec-ids-debian-7/','/uptime/monitoring/ossec-ids-debian-7/']
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-02-05
-title: Install and Configure OSSEC on Debian 7
 external_resources:
  - '[OSSEC](https://ossec.github.io/)'
-authors: ["Sunday Ogwu-Chinuwa"]
-contributors: ["Sunday Ogwu-Chinuwa"]
 ---
 
 ![Install and Configure OSSEC on Debian 7](Install-and-Configure-OSSEC-on-Debian-7-smg.jpg)

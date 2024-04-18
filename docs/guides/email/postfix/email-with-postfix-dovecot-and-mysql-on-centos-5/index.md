@@ -1,14 +1,16 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-centos-5
-deprecated: true
+title: 'Email with Postfix, Dovecot and MySQL on CentOS 5'
 description: 'This guide shows how to setup your own private email server by installing the Postfix MTA (mail transfer agent) and Dovecot on a Linode running CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-06-24
+modified: 2015-03-26
+deprecated: true
 keywords: ["postfix centos 5", "dovecot centos 5", "linux mail server", "email", "centos5"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-5/','/email/postfix/dovecot-mysql-centos-5/']
-modified: 2015-03-26
-published: 2011-06-24
-title: 'Email with Postfix, Dovecot and MySQL on CentOS 5'
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
  - '[Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny)'
@@ -21,8 +23,6 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 5 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.

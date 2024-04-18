@@ -2,11 +2,11 @@
 slug: dnssec
 title: "How to Secure DNS with DNSSEC"
 description: "An explanation of DNSSEC, why it's important, and how to implement it."
-keywords: ['dns','security','dnssec','domain name','poison','cache']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
 contributors: ["David Robert Newman"]
 published: 2023-06-09
+keywords: ['dns','security','dnssec','domain name','poison','cache']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[DNSSEC - What Is It and Why Is It Important?](https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en)'
 - '[RFC 9364 DNS Security Extensions (DNSSEC)](https://www.rfc-editor.org/rfc/rfc9364)'

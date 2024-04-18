@@ -1,17 +1,17 @@
 ---
 slug: introduction-to-linux-administration
+title: Introduction to Linux Administration
 description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-05-31
 keywords: ["linux", "sysadmin", "administration"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-05-31
-title: Introduction to Linux Administration
 external_resources:
   - '[Linux System Administration Basics](/docs/guides/linux-system-administration-basics/)'
   - '[Linode API Documentation](/docs/api/)'
 aliases: ['/quick-answers/linux-essentials/introduction-to-linux-administration/']
-authors: ["Jared Kobos"]
-contributors: ["Jared Kobos"]
 ---
 
 Linode offers a flexible and customizable cloud platform for your applications. This has advantages in terms of cost and control, but also means that many services which are included in shared hosting need to be manually deployed and configured for your needs. If you are new to self-hosting, you may not know everything that needs to be done. This guide introduces the concepts and tools that you will need to be familiar with when hosting your own applications on a Linode.

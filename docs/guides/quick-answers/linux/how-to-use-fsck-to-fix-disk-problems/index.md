@@ -1,19 +1,19 @@
 ---
 slug: how-to-use-fsck-to-fix-disk-problems
+title: "Using fsck to Find and Repair Disk Errors and Bad Sectors"
+title_meta: "How to Use fsck to Check and Repair Disk Errors"
 description: "Having issues with your Linux installation? fsck might be able to help. This guide will walk you through the entire process involved in doing so."
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2018-04-27
+modified: 2018-09-20
 og_description: "fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-04-27
-modified: 2018-09-20
-title: "Using fsck to Find and Repair Disk Errors and Bad Sectors"
-title_meta: "How to Use fsck to Check and Repair Disk Errors"
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-fsck-to-fix-disk-problems/']
-authors: ["Edward Angert"]
-contributors: ["Edward Angert"]
 ---
 
 ![banner_image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg)

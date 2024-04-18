@@ -1,17 +1,17 @@
 ---
 slug: how-to-install-kubectl
+title: "Install kubectl"
 description: 'This short-guide will provide you with step-by-step instructions on how to install kubectl, the Kubernetes command-line utility, using homebrew or your package manager.'
-keywords: []
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2019-11-08
 modified: 2022-08-11
-title: "Install kubectl"
+keywords: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 show_on_rss_feed: false
 aliases: ['/applications/containers/kubernetes/how-to-install-kubectl/','/kubernetes/how-to-install-kubectl/']
 tags: ["kubernetes"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 **macOS:**

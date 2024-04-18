@@ -1,16 +1,16 @@
 ---
 slug: encrypt-data-disk-with-dm-crypt
+title: 'How to Encrypt Your Data with dm-crypt'
 description: "This guide shows how to use dm-crypt in plain mode or with LUKS to encrypt your data disk, partition or file container."
+authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
+published: 2017-12-18
+modified: 2022-11-22
 keywords: ['dm-crypt', 'encryption', 'encrypt', 'luks']
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-18
-modified: 2022-11-22
-title: 'How to Encrypt Your Data with dm-crypt'
 aliases: ['/security/encrypt-data-disk-with-dm-crypt/','/security/encryption/encrypt-data-disk-with-dm-crypt/']
 image: How_to_Encrypt_Your_Data_with_dm-crypt_smg.png
-authors: ["Alexandru Andrei"]
-contributors: ["Alexandru Andrei"]
 ---
 
 dm-crypt is a transparent disk encryption subsystem. In this guide you will learn how to encrypt disks, partition, swap and even use files as encrypted, and portable containers for your sensitive data.

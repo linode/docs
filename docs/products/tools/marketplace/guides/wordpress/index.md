@@ -1,10 +1,10 @@
 ---
+title: "Deploy WordPress through the Linode Marketplace"
 description: "WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using Marketplace Apps."
-keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
-tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 published: 2020-09-28
 modified: 2023-12-14
-title: "Deploy WordPress through the Linode Marketplace"
+keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
+tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 external_resources:
 - '[WordPress Codex (Documentation)](https://codex.wordpress.org/)'
 aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-marketplace-apps/','/guides/wordpress-marketplace-app/']

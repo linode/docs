@@ -1,21 +1,21 @@
 ---
 slug: connect-to-server-over-ssh-using-putty
+title: "Connecting to a Remote Server Over SSH using PuTTY"
+title_meta: "How to Connect to a Remote Server Over SSH using PuTTY"
 description: "A tutorial outlining how to connect to a remote server over SSH using PuTTY on Windows (or Linux)"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-06-25
+modified: 2022-01-28
 keywords: ['ssh','putty','windows','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-25
-modified: 2022-01-28
-title: "Connecting to a Remote Server Over SSH using PuTTY"
-title_meta: "How to Connect to a Remote Server Over SSH using PuTTY"
 aliases: ['/networking/ssh/ssh-connections-using-putty-on-windows/','/networking/using-putty/']
 relations:
     platform:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: PuTTY
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.

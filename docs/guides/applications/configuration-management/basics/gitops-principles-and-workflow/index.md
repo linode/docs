@@ -1,14 +1,14 @@
 ---
 slug: gitops-principles-and-workflow
+title: "GitOps: An Overview of Its Principles and Workflow"
+title_meta: "An Overview of GitOps Principles and Workflow"
 description: 'This guide provides an overview of GitOps, describes its workflow, and compares GitOps to DevOps and Kubernetes.'
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-12-17
 keywords: ['gitops vs devops', 'gitops and kubernetes', 'gitops workflow']
 tags: ['kubernetes', 'container', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-17
-title: "GitOps: An Overview of Its Principles and Workflow"
-title_meta: "An Overview of GitOps Principles and Workflow"
-authors: ["Jack Wallen"]
-contributors: ["Jack Wallen"]
 tags: ["saas"]
 ---
 

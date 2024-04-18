@@ -1,21 +1,21 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Using Apache for Proxy and Clustering Services on Ubuntu 10.10 (Maverick)'
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-06
+modified: 2012-10-08
+deprecated: true
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick/','/web-servers/apache/proxy-configuration/proxy-and-clustering-services-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2010-12-06
-title: 'Using Apache for Proxy and Clustering Services on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

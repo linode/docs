@@ -1,12 +1,14 @@
 ---
 slug: debian-5-lenny
-deprecated: true
+title: 'Use PostgreSQL Relational Databases on Debian 5 (Lenny)'
 description: 'Using the PostgreSQL relational database server with Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-08
+modified: 2012-10-03
+deprecated: true
 keywords: ["postgresql", "postgresql database", "postgresql on debian", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2012-10-03
-published: 2009-09-08
-title: 'Use PostgreSQL Relational Databases on Debian 5 (Lenny)'
 relations:
     platform:
         key: use-postrgesql-database
@@ -14,8 +16,6 @@ relations:
             - distribution: Debian 5
 tags: ["debian","database","postgresql"]
 aliases: ['/databases/postgresql/debian-5-lenny/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

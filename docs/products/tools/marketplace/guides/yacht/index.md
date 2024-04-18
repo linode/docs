@@ -1,11 +1,11 @@
 ---
+title: "Deploy Yacht through the Linode Marketplace"
 description: "Yacht is a web interface for managing Docker containers, with an emphasis on templating. Learn how to deploy Yacht on Linode using Marketplace Apps."
-keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
-tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
 published: 2021-02-23
 modified: 2023-10-27
+keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
+tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
 image: DeployYacht_marketplaceapps.png
-title: "Deploy Yacht through the Linode Marketplace"
 aliases: ['/guides/deploy-yacht-with-marketplace-apps/','/guides/yacht-marketplace-app/']
 external_resources:
 - '[Getting Started](https://yacht.sh/docs/Installation/Getting_Started)'

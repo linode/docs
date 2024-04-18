@@ -1,13 +1,15 @@
 ---
 slug: ubuntu-8-04-hardy
+title: 'Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)'
+description: 'Using the PostgreSQL relational database server with Ubuntu 8.04 (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-13
+modified: 2011-04-29
 deprecated: true
 deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
-description: 'Using the PostgreSQL relational database server with Ubuntu 8.04 (Hardy).'
 keywords: ["postgresql", "postgresql database", "postgresql on ubuntu", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-04-29
-published: 2009-09-13
-title: 'Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: use-postrgesql-database
@@ -15,8 +17,6 @@ relations:
             - distribution: Ubuntu 8.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-8-04-hardy/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

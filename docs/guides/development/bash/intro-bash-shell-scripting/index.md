@@ -1,15 +1,15 @@
 ---
 slug: intro-bash-shell-scripting
+title: 'Introduction to Bash Shell Scripting'
 description: 'An introduction to bash shell scripting, including variables, if statements, loops, how to get user input, and working with files and directories.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-09-27
 keywords: ["UNIX", "shell", "bash", "programming", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/bash/bash1/','/development/bash/intro-bash-shell-scripting/']
-published: 2019-09-27
-title: 'Introduction to Bash Shell Scripting'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

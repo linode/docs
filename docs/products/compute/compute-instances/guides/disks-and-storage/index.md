@@ -1,11 +1,11 @@
 ---
-description: "A guide for understanding how local storage works on a Linode and for help performing common tasks on a Linode's disks."
-keywords: ["disks", "storage", "disk space"]
-tags: ["linode platform","cloud manager"]
-modified: 2023-01-18
-published: 2021-04-30
 title: "Manage Disks and Storage on a Compute Instance"
 title_meta: "How to Manage Disks and Storage on a Compute Instance"
+description: "A guide for understanding how local storage works on a Linode and for help performing common tasks on a Linode's disks."
+published: 2021-04-30
+modified: 2023-01-18
+keywords: ["disks", "storage", "disk space"]
+tags: ["linode platform","cloud manager"]
 aliases: ['/guides/linode-disks/','/guides/disks-and-storage/','/guides/resize-a-linode-disk/']
 ---
 

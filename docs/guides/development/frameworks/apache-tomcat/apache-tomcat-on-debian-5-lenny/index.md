@@ -1,21 +1,21 @@
 ---
 slug: apache-tomcat-on-debian-5-lenny
-deprecated: true
+title: 'Apache Tomcat on Debian 5 (Lenny)'
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-23
+modified: 2012-10-08
+deprecated: true
 keywords: ["java", "apache tomcat", "java debian", "java lenny"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-debian-5-lenny/','/websites/frameworks/apache-tomcat-on-debian-5-lenny/','/development/frameworks/apache-tomcat-on-debian-5-lenny/','/frameworks/apache-tomcat/debian-5-lenny/']
-modified: 2012-10-08
-published: 2009-09-23
-title: 'Apache Tomcat on Debian 5 (Lenny)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

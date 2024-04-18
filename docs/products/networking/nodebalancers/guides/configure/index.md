@@ -1,8 +1,8 @@
 ---
 title: "Configuration Options for NodeBalancers"
 description: "Learn how to create a NodeBalancer, Linode's custom load balancing solution."
-keywords: ["load balancing", "nodebalancer"]
 published: 2022-10-07
+keywords: ["load balancing", "nodebalancer"]
 tags: ["linode platform","networking"]
 aliases: ['/nodebalancers/reference/','/platform/nodebalancer/nodebalancer-reference-guide-new-manager/','/platform/nodebalancer/nodebalancer-reference-guide/','/linode-platform/nodebalancer-reference/','/platform/nodebalancer/nodebalancer-reference-guide-classic-manager/','/guides/nodebalancer-reference-guide/']
 ---

@@ -1,19 +1,19 @@
 ---
 slug: curl-for-rest-api
-description: 'cURL is a data transfer application used to interact with APIs. This guide discusses using RESTful verbs, inspecting headers, and adding authorization to requests.'
-keywords: ['cURL API','Test API using curl','Curl for rest API','Curl restful api']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-01
 title: "Use cURL with RESTful APIs"
 title_meta: "How to Use  cURL with RESTful APIs"
+description: 'cURL is a data transfer application used to interact with APIs. This guide discusses using RESTful verbs, inspecting headers, and adding authorization to requests.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-07-01
+keywords: ['cURL API','Test API using curl','Curl for rest API','Curl restful api']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Wikipedia curl page](https://en.wikipedia.org/wiki/CURL)'
 - '[curl website](https://curl.se/)'
 - '[curl documentation](https://curl.se/docs/)'
 - '[curl GitHub page](https://github.com/curl/curl)'
 - '[GitHub REST API](https://docs.github.com/en/rest)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 In web programming, developers often have to interact with online databases. Many of these services provide a [*Representational State Transfer* (REST) API](https://en.wikipedia.org/wiki/Representational_state_transfer) that allows authorized users to read and write data. Fortunately, the [cURL](https://curl.se) application allows users to easily access REST APIs from the command line. This guide discusses how to use cURL to interrogate RESTful APIs. It also explains how `curl`, the command-line utility, uses RESTful verbs, and how to inspect headers and add authorization to requests.

@@ -1,20 +1,20 @@
 ---
 slug: visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh
+title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
+title_meta: "How to Visualize Server Security on CentOS 7"
 description: "Learn how to use the Elastic Stack to collect, log, and visualize security data and threat alerts through Wazuh, part of OSSEC Intrusion Detection."
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-10-17
+modified: 2019-01-31
 keywords: ["ossec", "elk stack", "elk,ossec-hids"]
 tags: ["monitoring","security","lemp","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-10-17
-modified: 2019-01-31
-title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
-title_meta: "How to Visualize Server Security on CentOS 7"
 external_resources:
   - '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
 dedicated_cpu_link: true
 aliases: ['/security/monitoring/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/','/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/']
-authors: ["Andrew Lescher"]
-contributors: ["Andrew Lescher"]
 ---
 
 ![Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh](elastic-stack-security-title.jpg "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh")

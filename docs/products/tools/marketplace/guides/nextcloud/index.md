@@ -1,9 +1,9 @@
 ---
+title: "Deploy Nextcloud through the Linode Marketplace"
 description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Marketplace App."
-keywords: ['Nextcloud','marketplace','file sharing']
 published: 2020-06-11
 modified: 2023-04-21
-title: "Deploy Nextcloud through the Linode Marketplace"
+keywords: ['Nextcloud','marketplace','file sharing']
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
 - '[Nextcloud AIO github](https://github.com/nextcloud/all-in-one)'

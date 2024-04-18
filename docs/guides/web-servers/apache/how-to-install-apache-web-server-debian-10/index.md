@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-apache-web-server-debian-10
+title: 'Installing Apache Web Server on Debian 10'
+title_meta: 'How to Install Apache Web Server on Debian 10'
 description: 'Install Apache on your Debian 10 server, configure virtual hosting, and set up modules and scripting.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-07-31
+modified: 2018-12-31
 keywords: ["apache", "debian", "debian 10", "http", "web server"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-31
-published: 2015-07-31
-title: 'Installing Apache Web Server on Debian 10'
-title_meta: 'How to Install Apache Web Server on Debian 10'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
@@ -18,8 +20,6 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/apache/how-to-install-apache-web-server-debian-10/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Debian 10.

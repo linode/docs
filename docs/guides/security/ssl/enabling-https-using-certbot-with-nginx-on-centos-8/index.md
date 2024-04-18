@@ -1,19 +1,19 @@
 ---
 slug: enabling-https-using-certbot-with-nginx-on-centos-8
+title: "Use Certbot to Enable HTTPS with NGINX on CentOS 8"
 description: "Learn how to install and use Certbot with NGINX on CentOS/RHEL 8, which automates the process adding TLS/SSL to your websites."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
 tags: ['ssl','nginx', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-title: "Use Certbot to Enable HTTPS with NGINX on CentOS 8"
 aliases: ['/quick-answers/websites/how-to-install-certbot-on-centos-8/','/quick-answers/websites/certbot/how-to-install-certbot-on-centos-8/','/guides/how-to-install-certbot-on-centos-8/']
 relations:
     platform:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: CentOS/RHEL 8
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the NGINX web server on CentOS 8, AlmaLinux 8, and Rocky Linux 8. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on NGINX (or other web servers).

@@ -1,21 +1,21 @@
 ---
 slug: email-with-postfix-courier-and-mysql-on-ubuntu-9-04-jaunty
-deprecated: true
+title: 'Email with Postfix, Courier and MySQL on Ubuntu 9.04 (Jaunty)'
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Ubuntu 9.04 (Jaunty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-14
+modified: 2011-05-17
+deprecated: true
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on ubuntu", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/courier-mysql-ubuntu-9-04-jaunty/','/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-04-jaunty/']
-modified: 2011-05-17
-published: 2009-09-14
-title: 'Email with Postfix, Courier and MySQL on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

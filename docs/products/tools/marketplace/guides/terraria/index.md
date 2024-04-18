@@ -1,9 +1,9 @@
 ---
+title: "Deploy Terraria through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying the two-dimensional sandbox survival game, Terraria, on a Linode using the One-Click Marketplace App."
-keywords: ['terraria','marketplace app', 'game server']
 published: 2019-04-05
 modified: 2024-01-22
-title: "Deploy Terraria through the Linode Marketplace"
+keywords: ['terraria','marketplace app', 'game server']
 external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]

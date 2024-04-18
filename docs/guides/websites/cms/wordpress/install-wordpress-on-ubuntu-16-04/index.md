@@ -1,11 +1,13 @@
 ---
 slug: install-wordpress-on-ubuntu-16-04
+title: Install WordPress on Ubuntu 16.04
 description: 'This guide will show you how to install and optimize the WordPress blogging and CMS on your Linode from scratch using a LAMP setup on Ubuntu 16.04.'
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2016-10-21
 keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
 tags: ["ubuntu","lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-10-21
-title: Install WordPress on Ubuntu 16.04
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -16,8 +18,6 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 aliases: ['/websites/cms/install-wordpress-on-ubuntu-16-04/','/websites/cms/wordpress/install-wordpress-on-ubuntu-16-04/']
-authors: ["Edward Angert"]
-contributors: ["Edward Angert"]
 ---
 
 In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.

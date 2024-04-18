@@ -1,17 +1,17 @@
 ---
 slug: create-physical-backups-of-your-mariadb-or-mysql-databases
+title: Create Physical Backups of your MariaDB or MySQL Databases
 description: "Create a physical MySQL backup databases by copying the relevant filesystem parts. Useful for recovering inaccessible databases."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-30
 keywords: ["mysql", "mariadb", backup", "back up", mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-30
-title: Create Physical Backups of your MariaDB or MySQL Databases
 external_resources:
  - '[Backup and Restore Overview; MariaDB Library](https://mariadb.com/kb/en/library/backup-and-restore-overview/)'
  - '[Database Backup Methods; MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/backup-methods.html)'
 tags: ["mariadb","database","mysql"]
 aliases: ['/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 While the `mysqldump` tool is the preferred backup method for a MariaDB or MySQL database or database system it only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, the database can still be copied directly.

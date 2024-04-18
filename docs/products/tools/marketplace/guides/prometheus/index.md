@@ -1,11 +1,11 @@
 ---
+title: "Deploy Prometheus through the Linode Marketplace"
 description: "Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Easily deploy Prometheus using Marketplace Apps."
-keywords: ['prometheus','monitoring','time series','metrics']
-tags: ["linode platform","monitoring","marketplace","cloud-manager"]
 published: 2020-03-12
 modified: 2022-03-08
+keywords: ['prometheus','monitoring','time series','metrics']
+tags: ["linode platform","monitoring","marketplace","cloud-manager"]
 image: Prometheus_oneclickapps.png
-title: "Deploy Prometheus through the Linode Marketplace"
 external_resources:
 - '[Getting Started with Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/)'
 - '[Prometheus Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)'

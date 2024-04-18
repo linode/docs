@@ -2,11 +2,11 @@
 title: "Setting Up and Securing a Compute Instance"
 title_meta: "How to Set Up and Secure a Compute Instance"
 description: "Learn how to set up and secure a new Compute Instance, including updating your software, creating a user account, and hardening SSH."
+published: 2022-02-25
+modified: 2024-01-04
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 bundles: ['centos-security', 'debian-security']
-published: 2022-02-25
-modified: 2024-01-04
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/','/guides/set-up-and-secure/']
 ---
 

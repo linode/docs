@@ -1,19 +1,19 @@
 ---
 slug: how-to-create-a-mern-stack-application
-description: "Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!"
-keywords: ['MERN Stack Application','How to create a MERN stack application','MERN stack','MERN stack application', 'learn Linux filesystem', 'MERN stack on Linux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-12
-modified: 2022-09-23
 title: "Create a MERN Stack Application"
 title_meta: "How to Create a MERN Stack on Linux"
+description: "Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!"
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2022-09-12
+modified: 2022-09-23
+keywords: ['MERN Stack Application','How to create a MERN stack application','MERN stack','MERN stack application', 'learn Linux filesystem', 'MERN stack on Linux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[How to Use MERN Stack: A Complete Guide](https://www.mongodb.com/languages/mern-stack-tutorial)'
 - '[The MERN stack: A complete tutorial](https://blog.logrocket.com/mern-stack-tutorial/)'
 - '[Learn the MERN Stack - Full Tutorial for Beginners (MongoDB, Express, React, Node.js) in 12Hrs (2021)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
 - '[Learn the MERN Stack - Full Tutorial (MongoDB, Express, React, Node.js)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
-authors: ["Cameron Laird"]
-contributors: ["Cameron Laird"]
 ---
 
 Of all the possible technical bases for a modern web site, ["MERN holds the leading position when it comes to popularity."](https://www.gkmit.co/blog/web-app-development/mean-vs-mern-stack-who-will-win-the-war-in-2021) This introduction makes you familiar with the essential tools used for a plurality of all web sites worldwide.

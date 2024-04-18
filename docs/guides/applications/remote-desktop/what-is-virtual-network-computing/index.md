@@ -1,14 +1,14 @@
 ---
 slug: what-is-virtual-network-computing
-description: "This guide discusses how a VNC system works to share screen graphics, how they're configured, and how you can secure yours."
-keywords: ['vnc', 'virtual network computing']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-11
-image: VNC.jpg
 title: "An Overview of VNC (Virtual Network Computing)"
-tags: ['linux']
+description: "This guide discusses how a VNC system works to share screen graphics, how they're configured, and how you can secure yours."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
+published: 2021-05-11
+keywords: ['vnc', 'virtual network computing']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: VNC.jpg
+tags: ['linux']
 ---
 
 ## Cross-Platform Remote Graphical Access: the VNC Viewer and VNC Server

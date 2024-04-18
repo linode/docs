@@ -1,20 +1,20 @@
 ---
 slug: install-and-configure-puppet
+title: Install and Configure Puppet
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu or CentOS servers.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-09-17
+modified: 2019-01-15
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/puppet/install-and-configure-puppet/','/applications/puppet/install-and-configure-puppet/','/applications/puppet/set-up-puppet-master-agent/','/websites/puppet/basic-puppet-setup-and-configuration/','/applications/configuration-management/install-and-configure-puppet/','/websites/puppet/manage-and-automate-systems-configuration-with-puppet/']
 deprecated: true
 deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
-modified: 2019-01-15
-published: 2015-09-17
-title: Install and Configure Puppet
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
-authors: ["Elle Krout"]
-contributors: ["Elle Krout"]
 ---
 
 [Puppet](https://puppet.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.

@@ -1,10 +1,10 @@
 ---
+title: "Deploy Odoo through the Linode Marketplace"
 description: "Learn how to deploy Odoo, a self-hosted business management software suite, on the Linode platform."
-keywords: ['odoo','business','crm','ecommerce']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2023-10-27
-title: "Deploy Odoo through the Linode Marketplace"
+keywords: ['odoo','business','crm','ecommerce']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Odoo](https://www.odoo.com/)'
 aliases: ['/guides/odoo-marketplace-app/']

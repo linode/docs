@@ -1,17 +1,17 @@
 ---
 slug: installing-supabase
-description: "This guide covers setting up a Supabase instance in Docker, accessing it with NGINX, and securing it with a free SSL certificate from Let’s Encrypt via Certbot. ✓ Click here!"
-keywords: ['install supabase','supabase firebase','supabase self host']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-01
 title: "Self-host Supabase with Docker"
 title_meta: "How to Self-host Supabase with Docker"
+description: "This guide covers setting up a Supabase instance in Docker, accessing it with NGINX, and securing it with a free SSL certificate from Let’s Encrypt via Certbot. ✓ Click here!"
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-09-01
+keywords: ['install supabase','supabase firebase','supabase self host']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Supabase: Self Hosting](https://supabase.com/docs/guides/hosting/overview)'
 - '[Scott Pritchard: Self-hosting with Supabase](https://dev.to/chronsyn/self-hosting-with-supabase-1aii)'
 - '[HowtoForge: How to Install Supabase with Docker on Debian 11](https://www.howtoforge.com/how-to-install-supabase-on-debian-11/)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Supabase is an open source Firebase alternative featuring a Postgres database, user authentication, and REST API capabilities. It offers a robust framework for creating the backend to Angular, React, Next.js, and other frontend applications.

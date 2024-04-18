@@ -1,15 +1,15 @@
 ---
 slug: app-security-testing-tools
+title: "An Overview of App Security Testing Tools"
+title_meta: "Getting Started with App Security Testing Tools "
 description: 'This guide provides an overview of different types of security testing tools with links to various application testing and shielding products. The testing tools discussed in this guide are use for static code security, dynamic code security, and mobile testing.'
+authors: ["David Strom"]
+contributors: ["David Strom"]
+published: 2021-06-21
 og_description:  'This guide provides an overview of different types of security testing tools with links to various application testing and shielding products. The testing tools discussed in this guide are use for static code security, dynamic code security, and mobile testing.'
 keywords: ['application security test tools']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-21
-title: "An Overview of App Security Testing Tools"
-title_meta: "Getting Started with App Security Testing Tools "
-authors: ["David Strom"]
-contributors: ["David Strom"]
 ---
 
 Application security testing products come in two basic groups and you need more than one. The umbrella groups: testing and shielding. The former run various automated and manual tests on your code to identify security weaknesses. The application shielding products are used to harden your apps to make attacks more difficult to implement. These products go beyond the testing process and are used to be more proactive in your protection and flag bad spots as you write the code within your development environment.

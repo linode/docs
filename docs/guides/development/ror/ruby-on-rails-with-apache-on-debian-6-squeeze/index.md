@@ -1,14 +1,16 @@
 ---
 slug: ruby-on-rails-with-apache-on-debian-6-squeeze
-deprecated: true
+title: 'Ruby on Rails with Apache on Debian 6 (Squeeze)'
 description: 'Using the Apache web server with Debian 6 Squeeze to serve Ruby on Rails applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-09-26
+deprecated: true
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/','/frameworks/ruby-on-rails-apache/debian-6-squeeze/','/websites/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/']
-modified: 2013-09-26
-published: 2011-04-05
-title: 'Ruby on Rails with Apache on Debian 6 (Squeeze)'
 external_resources:
 - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
 - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
@@ -19,8 +21,6 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

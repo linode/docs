@@ -1,21 +1,21 @@
 ---
 slug: ikiwiki-on-fedora-12
-deprecated: true
+title: Ikiwiki on Fedora 12
 description: 'Using Ikiwiki on Fedora 12 to power a standard wiki implementation.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-23
+modified: 2011-04-29
+deprecated: true
 keywords: ["ikiwiki", "fedora", "fedora 12", "wiki", "perl", "git", "markdown"]
 tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/ikiwiki/fedora-12/','/websites/wikis/ikiwiki-on-fedora-12/']
-modified: 2011-04-29
-published: 2010-03-23
-title: Ikiwiki on Fedora 12
 relations:
     platform:
         key: using-ikiwiki
         keywords:
            - distribution: Fedora 12
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

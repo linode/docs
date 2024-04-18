@@ -1,12 +1,12 @@
 ---
+title: "Understanding Events and the Activity Feed"
+title_meta: "What Are Cloud Manager Events and Activity Feeds"
 description: "Understanding events and a Linode's activity feed in the Linode Cloud Manager"
+published: 2019-12-26
+modified: 2021-08-25
 keywords: ["accounts", "passwords", "linode manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UnderstandingtheCloudManagerEventsandActivityFeeds.png
-title: "Understanding Events and the Activity Feed"
-title_meta: "What Are Cloud Manager Events and Activity Feeds"
-published: 2019-12-26
-modified: 2021-08-25
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/', '/guides/what-are-the-cloud-manager-events-and-activity-feeds/','/products/tools/cloud-manager/guides/cloud-email-notifications/','/guides/cloud-manager-events-and-activity-feeds/']
 ---

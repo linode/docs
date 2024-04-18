@@ -1,19 +1,19 @@
 ---
 slug: enabling-https-using-certbot-with-nginx-on-debian
+title: "Use Certbot to Enable HTTPS with NGINX on Debian"
 description: "Learn how to install and use Certbot with NGINX on Debian 10 and 9, which automates the process adding TLS/SSL to your websites."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 keywords: ["Debian", "Certbot", "TLS", "SSL", "HTTPS", "Encryption", "NGINX"]
 tags: ["debian", "ssl", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-title: "Use Certbot to Enable HTTPS with NGINX on Debian"
 aliases: ['/guides/how-to-install-certbot-on-debian-10/']
 relations:
     platform:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: Debian
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,13 +1,15 @@
 ---
 slug: ubuntu-9-04-jaunty
+title: 'Use PostgreSQL Relational Databases on Ubuntu 9.04 (Jaunty)'
+description: 'Using the PostgreSQL relational database server with Ubuntu 9.04 (Jaunty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-13
+modified: 2011-04-29
 deprecated: true
 deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
-description: 'Using the PostgreSQL relational database server with Ubuntu 9.04 (Jaunty).'
 keywords: ["postgresql", "postgresql database", "postgresql on ubuntu", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-04-29
-published: 2009-09-13
-title: 'Use PostgreSQL Relational Databases on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: use-postrgesql-database
@@ -15,8 +17,6 @@ relations:
             - distribution: Ubuntu 9.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-9-04-jaunty/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

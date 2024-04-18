@@ -1,20 +1,20 @@
 ---
 slug: secure-ssh-access-with-2fa
+title: "Use 2FA (Two-Factor Authentication) with SSH"
+title_meta: "Use 2FA with SSH to Prevent Unauthorized Access"
 description: "Learn how to prevent unauthorized access to your Linux server by enabling 2FA security on SSH."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-03
+modified: 2022-11-29
 keywords: ["2fa","two factor authentication", "ssh", "google authenticator"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-03
-modified: 2022-11-29
-title: "Use 2FA (Two-Factor Authentication) with SSH"
-title_meta: "Use 2FA with SSH to Prevent Unauthorized Access"
 linkTitle: "Use 2FA with SSH"
 external_resources:
 - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
 - '[Linux PAM Documentation](http://www.linux-pam.org/)'
 aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh/','/guides/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/two-factor-authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/guides/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/guides/use-2fa-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu/','/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu/','/guides/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu/','/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/','/guides/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/','/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/','/guides/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).

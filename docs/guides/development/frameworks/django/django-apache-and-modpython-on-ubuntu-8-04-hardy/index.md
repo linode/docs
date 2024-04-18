@@ -1,21 +1,21 @@
 ---
 slug: django-apache-and-modpython-on-ubuntu-8-04-hardy
-deprecated: true
+title: 'Django, Apache and mod_python on Ubuntu 8.04 (Hardy)'
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 8.04 (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-10
+modified: 2011-05-17
+deprecated: true
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 8.04", "hardy"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/','/frameworks/django-apache-mod-python/ubuntu-8-04-hardy/','/development/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/','/development/frameworks/django/django-apache-and-modpython-on-ubuntu-8-04-hardy/']
-modified: 2011-05-17
-published: 2009-09-10
-title: 'Django, Apache and mod_python on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

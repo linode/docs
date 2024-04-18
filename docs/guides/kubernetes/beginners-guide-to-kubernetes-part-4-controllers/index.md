@@ -1,18 +1,18 @@
 ---
 slug: beginners-guide-to-kubernetes-part-4-controllers
+title: "A Beginner's Guide to Kubernetes (Part 4): Controllers"
 description: "This is part four in a multi-part beginner's guide to Kubernetes where you will be introduced to another major part of Kubernetes - Controllers."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-29
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-29
-title: "A Beginner's Guide to Kubernetes (Part 4): Controllers"
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/','/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png)

@@ -1,14 +1,16 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7
-deprecated: true
+title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7'
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linode.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2013-08-22
+modified: 2014-02-17
+deprecated: true
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu precise", "12.04", "debian 7", "debian"]
 tags: ["networking","vpn","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/openvpn/ubuntu-12-04-precise/','/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/']
-modified: 2014-02-17
-published: 2013-08-22
-title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7'
 external_resources:
  - '[Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
@@ -19,8 +21,6 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.

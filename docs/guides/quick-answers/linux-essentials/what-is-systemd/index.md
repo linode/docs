@@ -1,17 +1,17 @@
 ---
 slug: what-is-systemd
+title: "What is systemd?"
 description: 'This guide provides you with an introduction to systemd, a Linux initialization system and service monitor daemon, as well as systemd unit files.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-09-12
 keywords: ['systemd','linux', 'init', 'unit files']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-09-12
-title: "What is systemd?"
 external_resources:
 - '[systemd Wiki](https://www.freedesktop.org/wiki/Software/systemd/)'
 - '[systemd GitHub](https://github.com/systemd/systemd)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-systemd/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 systemd is a Linux initialization system and service manager that includes features like on-demand starting of daemons, mount and automount point maintenance, snapshot support, and processes tracking using Linux control groups. systemd provides a logging daemon and other tools and utilities to help with common system administration tasks.

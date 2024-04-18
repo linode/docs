@@ -1,16 +1,16 @@
 ---
 slug: filezilla
+title: 'Transfer Files with FileZilla'
 description: 'Securely copying files to and from your Linode with FileZilla, a free and open source file transfer client for Linux, OS X, and Windows systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-10-13
+modified: 2019-01-15
 keywords: ["filezilla", "ftp", "scp", "sftp", "transfer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/file-transfer/filezilla/','/networking/file-transfer/transfer-files-filezilla/']
-modified: 2019-01-15
-published: 2014-10-13
-title: 'Transfer Files with FileZilla'
 external_resources:
  - '[FileZilla Documentation](https://wiki.filezilla-project.org/Documentation)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Transfer Files with FileZilla](transfer-files-with-filezilla.png "Transfer Files with FileZilla")

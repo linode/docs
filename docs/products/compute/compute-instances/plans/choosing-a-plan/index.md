@@ -1,11 +1,11 @@
 ---
 title: "Choosing a Compute Instance Type and Plan"
 title_meta: "How to Choose a Compute Instance Plan"
-linkTitle: "Choosing a Plan"
 description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
-keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 published: 2019-02-04
 modified: 2024-03-11
+linkTitle: "Choosing a Plan"
+keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-linode-plan/','/guides/choosing-a-compute-instance-plan/']
 ---

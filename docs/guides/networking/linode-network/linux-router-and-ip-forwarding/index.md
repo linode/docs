@@ -2,14 +2,13 @@
 slug: linux-router-and-ip-forwarding
 title: "Configure Linux as a Router (IP Forwarding)"
 description: "Learn how to set up a Linux server as a router, including configuring port forwarding and iptables."
+authors: ["Linode", "Nathaniel Stickman"]
+contributors: ["Linode", "Nathaniel Stickman"]
+published: 2022-09-30
+modified: 2024-02-14
 keywords: ["static", "ip address", "addresses"]
 tags: ["networking","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-30
-modified: 2024-02-14
-title: "Configure Linux as a Router (IP Forwarding)"
-authors: ["Linode", "Nathaniel Stickman"]
-contributors: ["Linode", "Nathaniel Stickman"]
 ---
 
 A computer network is a collection of computer systems that can communicate with each other. In order to communicate with a computer that's on a *different* network, a system needs a way to connect to that other network. A *router* is a system that acts as an intermediary between multiple different networks. It receives traffic from one network that is ultimately destined for another. It identifies where a particular packet should be delivered, then forwards that packet over the appropriate network interface.

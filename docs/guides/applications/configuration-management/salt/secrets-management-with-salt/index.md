@@ -1,13 +1,15 @@
 ---
 slug: secrets-management-with-salt
+title: "Secrets Management with Salt"
 description: 'Salt is a powerful configuration management tool. This guide provides you with an overview of available options to manage secrets with SaltStack.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-11-06
+modified: 2019-01-02
 keywords: ['salt','saltstack','secret','secure','management','sdb','gpg','vault']
 tags: ["security","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-11-06
-modified: 2019-01-02
 image: SecretsManagementwithSalt.png
-title: "Secrets Management with Salt"
 external_resources:
   - '[Salt Pillar Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/pillar.html)'
   - '[Using Environmental Variables in SLS Modules](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt3.html#using-environment-variables-in-sls-modules)'
@@ -15,8 +17,6 @@ external_resources:
   - '[Salt SDB Documentation](https://docs.saltproject.io/en/latest/topics/sdb/)'
   - '[Salt SDB Modules](https://docs.saltproject.io/en/latest/ref/sdb/all/index.html)'
 aliases: ['/applications/configuration-management/salt/secrets-management-with-salt/','/applications/configuration-management/secrets-management-with-salt/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Salt is a powerful configuration management tool which helps you manage your server deployments with configuration *state* files. These files are easily shared with others on your team and can be checked in to version control systems like Git.

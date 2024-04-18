@@ -1,18 +1,18 @@
 ---
 slug: python-for-and-while-loops
+title: "For and While Loops in Python 3"
+title_meta: "Using For and While Loops in Python 3"
 description: 'This guide covers using for and while loops in Python 3 and includes examples for looping through dictionaries and lists, and constructing do while loops.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-02-04
 keywords: ['Python for loop', 'Python while loop', 'Python for loop range', 'Python loop through dictionary']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-04
-title: "For and While Loops in Python 3"
-title_meta: "Using For and While Loops in Python 3"
 external_resources:
 - '[Python control flow documentation](https://docs.python.org/3/tutorial/controlflow.html)'
 - '[Python compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Programs often have to run the same commands over and over again. [Python](https://www.python.org/) provides two types of loop statements to handle two different situations. The Python `for` loop is used when the number of iterations is known before the loop starts running. In contrast, the Python `while` loop repeats as long as a certain condition is true. This tutorial describes how to use both types of loops and explains how to use Python for common scenarios like looping through a dictionary.

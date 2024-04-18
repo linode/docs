@@ -1,15 +1,15 @@
 ---
 slug: recovering-from-a-system-compromise
+title: Recovering from a System Compromise
 description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-26
+modified: 2018-04-18
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 tags: ["security","resolving","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/recovery/recovering-from-a-system-compromise/','/troubleshooting/compromise-recovery/','/security/recovering-from-a-system-compromise/']
-modified: 2018-04-18
-published: 2009-08-26
-title: Recovering from a System Compromise
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")

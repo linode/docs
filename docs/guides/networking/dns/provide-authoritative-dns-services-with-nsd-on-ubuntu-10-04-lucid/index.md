@@ -1,21 +1,21 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Authoritative DNS Services with NSD on Ubuntu 10.04'
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Ubuntu 10.04 "Lucid".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-12-06
+modified: 2013-09-25
+deprecated: true
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-04-lucid/','/dns-guides/nsd-authoritative-dns-ubuntu-10-04-lucid/']
-modified: 2013-09-25
-published: 2010-12-06
-title: 'Authoritative DNS Services with NSD on Ubuntu 10.04'
 relations:
     platform:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Brett Kaplan"]
-contributors: ["Brett Kaplan"]
 ---
 
 

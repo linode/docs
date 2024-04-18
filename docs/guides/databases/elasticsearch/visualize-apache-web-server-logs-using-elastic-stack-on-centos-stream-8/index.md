@@ -1,14 +1,16 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-centos-stream-8
+title: "Visualizing Apache Logs Using Elastic Stack on CentOS Stream 8"
+title_meta: "Visualizing Apache Logs With Elastic Stack on CentOS Stream 8"
 description: "This guide shows how to install all three components of Elastic Stack on CentOS to explore Apache web server logs in Kibana."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2021-03-05
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache centos stream 8", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
 image: VisApacheWSL_ES_CentOSStream8.png
-title: "Visualizing Apache Logs Using Elastic Stack on CentOS Stream 8"
-title_meta: "Visualizing Apache Logs With Elastic Stack on CentOS Stream 8"
 dedicated_cpu_link: true
 tags: ["centos","analytics","database","monitoring","apache"]
 relations:
@@ -16,8 +18,6 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: CentOS Stream 8
-authors: ["Tyler Langlois"]
-contributors: ["Tyler Langlois"]
 ---
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.

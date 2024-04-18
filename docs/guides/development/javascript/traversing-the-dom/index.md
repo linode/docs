@@ -1,17 +1,17 @@
 ---
 slug: traversing-the-dom
-description: "You can traverse the DOM with JavaScript using the document object''s built-in methods. Learn to use document object methods to access elements by ID, class name, and tag name. "
-keywords: ['navigating the dom','accessing the dom','dom tree javascript']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-22
 title: "Traverse the DOM with JavaScript"
 title_meta: "How to Traverse the DOM with JavaScript"
+description: "You can traverse the DOM with JavaScript using the document object''s built-in methods. Learn to use document object methods to access elements by ID, class name, and tag name. "
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-04-22
+keywords: ['navigating the dom','accessing the dom','dom tree javascript']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MDN Web Docs: Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)'
 - '[W3 Schools: HTML DOM querySelector() Method](https://www.w3schools.com/jsref/met_document_queryselector.asp)'
 - '[MDN Web Docs: Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 The Document Object Model (DOM) is an interface that gives scripting languages, like JavaScript, access to a web page's structure and content. You can learn more about the DOM and how it represents HTML in our guide [Introduction to the DOM](/docs/guides/document-object-model/).

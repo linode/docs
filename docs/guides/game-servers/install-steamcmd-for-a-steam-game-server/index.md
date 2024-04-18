@@ -1,18 +1,18 @@
 ---
 slug: install-steamcmd-for-a-steam-game-server
+title: 'Install SteamCMD for a Steam Game Server'
 description: 'Learn how to install SteamCMD for a Steam Game server and minimize your efforts to update the server files.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-02-15
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-02-15
-title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
  - '[Dedicated Steam Servers for Linux](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers)'
  - '[Steam Support: Required Ports for Steam](https://support.steampowered.com/kb_article.php)'
 aliases: ['/applications/game-servers/install-steamcmd-for-a-steam-game-server/','/game-servers/install-steamcmd-for-a-steam-game-server/']
 dedicated_cpu_link: true
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![SteamCMD](Install_SteamCMD_for_a_Steam_Game_Server_smg.jpg)

@@ -1,18 +1,18 @@
 ---
 slug: google-analytics-for-websites
+title: Google Analytics for Websites
 description: 'Get in-depth website visitor statistics with Google Analytics on your website.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-01-29
 keywords: ["analytics", "google analytics", "analytics", "tracking", "statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-01-29
-title: Google Analytics for Websites
 external_resources:
  - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
  - '[Google Analytics for WordPress](/docs/guides/google-analytics-on-wordpress/)'
 tags: ["statistics","analytics"]
 aliases: ['/uptime/analytics/google-analytics-for-websites/']
-authors: ["Elle Krout"]
-contributors: ["Elle Krout"]
 ---
 
 Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.

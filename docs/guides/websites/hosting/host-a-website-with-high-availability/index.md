@@ -1,11 +1,13 @@
 ---
 slug: host-a-website-with-high-availability
+title: 'Host a Website with High Availability'
 description: 'This article shows you how you to configure a high availability stack using GlusterFS replication on two Linodes for your application or website.'
-keywords: ["high availability", "web server", "failover"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
 published: 2016-07-12
 modified: 2023-04-11
-title: 'Host a Website with High Availability'
+keywords: ["high availability", "web server", "failover"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[GlusterFS](https://www.gluster.org/)'
 - '[Galera Cluster](https://galeracluster.com/)'
@@ -15,8 +17,6 @@ external_resources:
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
 tags: ["web server", "digital agencies", "ecommerce"]
 image: host-a-website-with-high-availability-title-graphic.jpg
-authors: ["Phil Zona"]
-contributors: ["Phil Zona"]
 ---
 
 {{< note type="warning" >}}

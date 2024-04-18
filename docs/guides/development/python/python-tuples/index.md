@@ -1,14 +1,14 @@
 ---
 slug: python-tuples
+title: "An Introduction to Python Tuples"
+title_meta: "Creating and Using Python Tuples"
 description: 'Learn to create a Python tuple by following this guide. You also learn the differences between lists and tuples, and how to convert a list into a tuple.'
+authors: ["Chelsea Troy"]
+contributors: ["Chelsea Troy"]
+published: 2022-02-25
 keywords: ['python create tuple','python tuple vs list','python list to tuple']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-title: "An Introduction to Python Tuples"
-title_meta: "Creating and Using Python Tuples"
-authors: ["Chelsea Troy"]
-contributors: ["Chelsea Troy"]
 ---
 
 A tuple is a built-in Python data structure that stores multiple comma-separated values. Tuples are an immutable *sequence* type that can store values of any data type. A mix of different data types can also be stored in a tuple. This guide describes the characteristics of tuples and shows you the various ways you can create a Python tuple.

@@ -1,21 +1,21 @@
 ---
 slug: use-mongodb-to-store-application-data-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Use MongoDB to Store Application Data on Ubuntu 10.10 (Maverick)'
 description: 'Install MongoDB for use in application development on Ubuntu 10.10 (Maverick)'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-12
+modified: 2012-10-03
+deprecated: true
 keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-10-10-maverick/','/databases/mongodb/ubuntu-10-10-maverick/']
-modified: 2012-10-03
-published: 2010-10-12
-title: 'Use MongoDB to Store Application Data on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: use-mongodb-store-app-data
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

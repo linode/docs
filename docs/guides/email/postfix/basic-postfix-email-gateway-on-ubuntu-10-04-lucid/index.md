@@ -1,21 +1,21 @@
 ---
 slug: basic-postfix-email-gateway-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Basic Postfix Email Gateway on Ubuntu 10.04 (Lucid)'
 description: 'In this tutorial, you will learn how to configure a Postfix MTA as a basic email gateway to send and receive email using POP, IMAP, and SMTP on Ubuntu 10.04 "Lucid".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-09
+modified: 2013-09-25
+deprecated: true
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/gateway-ubuntu-10-04-lucid/','/email/postfix/basic-postfix-email-gateway-on-ubuntu-10-04-lucid/']
-modified: 2013-09-25
-published: 2010-11-09
-title: 'Basic Postfix Email Gateway on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: basic-postifx-gateway
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

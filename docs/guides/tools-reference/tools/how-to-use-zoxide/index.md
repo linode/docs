@@ -1,12 +1,12 @@
 ---
 slug: how-to-use-zoxide
-description: "Learn how to use zoxide, a smart and fast alternative to cd. It ranks your most frequently used directories and matches them on minimal keywords for more efficient navigating."
-keywords: ['zoxide install','zoxide linux','zoxide rust']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-12
 title: "How to Install and Use zoxide on Linux"
+description: "Learn how to use zoxide, a smart and fast alternative to cd. It ranks your most frequently used directories and matches them on minimal keywords for more efficient navigating."
 authors: ['Nathaniel Stickman']
 contributors: ['Nathaniel Stickman']
+published: 2021-06-12
+keywords: ['zoxide install','zoxide linux','zoxide rust']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[GitHub: ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)'
 - '[GitHub: junegunn/fzf](https://github.com/junegunn/fzf)'

@@ -1,12 +1,14 @@
 ---
 slug: deploy-linodes-using-ansible
-description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
-keywords: ['ansible','Linode module','dynamic inventory','configuration management']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-06-04
-modified: 2021-12-30
 title: "Using the Linode Ansible Module to Deploy Linodes"
 title_meta: "How to use the Linode Ansible Module to Deploy Linodes"
+description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-06-04
+modified: 2021-12-30
+keywords: ['ansible','Linode module','dynamic inventory','configuration management']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true
 deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
 external_resources:
@@ -14,8 +16,6 @@ external_resources:
 aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/deploy-linodes-using-ansible/']
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
-authors: ["Linode"]
-contributors: ["Linode"]
 tags: ["saas"]
 ---
 

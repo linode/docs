@@ -1,10 +1,10 @@
 ---
+title: "Deploy NirvaShare through the Linode Marketplace"
 description: "This guide shows you how to deploy NirvaShare, a simplified and secure enterprise file sharing solution by using the Linode One-Click Marketplace App."
-keywords: ['storage','file sharing', 'backups']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2023-10-27
-title: "Deploy NirvaShare through the Linode Marketplace"
+keywords: ['storage','file sharing', 'backups']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/deploying-nirvashare-marketplace-app/','/guides/nirvashare-marketplace-app/']
 external_resources:
 - '[NirvaShare](https://nirvashare.com/)'

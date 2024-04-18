@@ -1,19 +1,19 @@
 ---
 slug: how-to-update-php-for-wordpress
+title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
+title_meta: "How to Update PHP for WordPress on Ubuntu 20.04"
 description: 'This guide will show you how and when to update your outdated and insecure versions of PHP without adversely affecting your WordPress website.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-08-06
 keywords: ['update php','update php wordpress','update php version','Ubuntu']
 tags: ['php', 'ubuntu', 'wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-06
 image: UpdatePHPforaMorePerformantWordPressonUbuntu2004.jpg
-title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
-title_meta: "How to Update PHP for WordPress on Ubuntu 20.04"
 external_resources:
 - '[WordPress](https://wordpress.org/)'
 - '[PHP](https://www.php.net/)'
 - '[phpMyAdmin](https://www.phpmyadmin.net/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [WordPress](https://wordpress.org/) is one of the most popular free web publishing tools available. Authoring content on WordPress is straightforward, however,  you need to perform regular maintenance on your WordPress site to keep it secure and up to date. One of those maintenance tasks is to regularly update [PHP](https://www.php.net/), which WordPress uses as a server-side programming language. This guide explains how and when to upgrade PHP without adversely affecting your site.

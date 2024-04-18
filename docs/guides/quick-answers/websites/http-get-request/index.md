@@ -3,11 +3,11 @@ slug: http-get-request
 title: "Understanding HTTP Requests: Structure, Methods & Examples"
 title_meta: "Guide to HTTP: GET Requests, POST Requests & More"
 description: 'The HTTP GET Request is one of many request methods. Read our guide to learn about HTTP request structures and how to send HTTP requests in Java. ✓ Click here!'
-keywords: ['http get request','example http request','http request example','http request format','http request response','http request line','http request headers list','make http request','how to send http request in java','http request structure']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2023-06-12
+keywords: ['http get request','example http request','http request example','http request format','http request response','http request line','http request headers list','make http request','how to send http request in java','http request structure']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MDN Web Docs: HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)'
 - '[IBM Documentation: HTTP requests](https://www.ibm.com/docs/en/cics-ts/5.3?topic=protocol-http-requests)'

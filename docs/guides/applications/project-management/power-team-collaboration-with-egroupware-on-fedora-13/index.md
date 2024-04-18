@@ -1,21 +1,21 @@
 ---
 slug: power-team-collaboration-with-egroupware-on-fedora-13
-deprecated: true
+title: Power Team Collaboration with eGroupware on Fedora 13
 description: 'This guide shows how you can build a collaborative groupware system to share information in your organization with the eGroupware software on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-09-16
+modified: 2013-10-04
+deprecated: true
 keywords: ["groupware", "email", "collaboration", "fedora"]
 tags: ["fedora", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-fedora-13/','/web-applications/project-management/egroupware/fedora-13/']
-modified: 2013-10-04
-published: 2010-09-16
-title: Power Team Collaboration with eGroupware on Fedora 13
 relations:
     platform:
         key: collaborate-with-egroupware
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

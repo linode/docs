@@ -1,16 +1,16 @@
 ---
 slug: netcat
+title: 'Learning to Use netcat to its Full Potential'
 description: 'This guide provides an introduction to Netcat, a simple UNIX utility that reads and writes data across connections, using either the TCP or UDP protocols.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-08-28
 keywords: ["UNIX", "TCP", "UDP", "netcat", "nc", "network"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-08-28
-title: 'Learning to Use netcat to its Full Potential'
 external_resources:
   - '[netcat](https://en.wikipedia.org/wiki/Netcat)'
 aliases: ['/networking/diagnostics/netcat/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 Netcat is a simple but handy UNIX utility that reads and writes data across network connections, using either TCP or UDP. The purpose of this guide is to help you learn the `netcat` command line utility and use it productively.

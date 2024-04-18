@@ -1,10 +1,12 @@
 ---
 slug: how-to-deploy-spring-boot-applications-nginx-ubuntu-22-04
+title: "Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
 description: 'This guide explains how to use Spring Boot and Gradle on Ubuntu 22.04 to quickly create a Java application.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-05-24
 keywords: ['spring boot','Java','spring boot gradle','tomcat server','ubuntu java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-24
-title: "Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
 external_resources:
 - '[Spring Boot](https://spring.io/projects/spring-boot/)'
 - '[Spring Framework](https://spring.io/projects/spring-framework/)'
@@ -22,8 +24,6 @@ relations:
         key: spring-boot-nginx
         keywords:
            - distribution: Ubuntu 22.04 LTS
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Java is a powerful and widely used programming language. Unfortunately, it is also very complex and some of the common Java IDEs are difficult to master. [Spring Boot](https://spring.io/projects/spring-boot/) and the [Spring Framework](https://spring.io/projects/spring-framework/) simplify the Java development environment and make it easier to create applications. This guide explains how to use Spring Boot tools to create a simple Java application that runs on an Apache Tomcat server. It also describes how to register the application as a service and make it available remotely through an NGINX reverse proxy.

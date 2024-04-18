@@ -1,18 +1,18 @@
 ---
 slug: how-to-deploy-an-nginx-container-with-docker
+title: 'How to Deploy an nginx Container with Docker on Linode'
 description: 'An introduction to deploying and using Docker containers on your Linode.'
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2017-07-19
 keywords: ["docker", "container", "dockerfile", "nginx container"]
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-07-19
-title: 'How to Deploy an nginx Container with Docker on Linode'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/how-to-deploy-an-nginx-container-with-docker/']
-authors: ["Jack Wallen"]
-contributors: ["Jack Wallen"]
 ---
 
 ![How to Deploy Docker Containers](deploy-container.jpg)

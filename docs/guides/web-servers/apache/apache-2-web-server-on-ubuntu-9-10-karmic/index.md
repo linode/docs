@@ -1,21 +1,21 @@
 ---
 slug: apache-2-web-server-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Apache 2 Web Server on Ubuntu 9.10 (Karmic)'
 description: 'Instructions for getting started with the Apache web server on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-29
+modified: 2011-05-17
+deprecated: true
 keywords: ["apache", "apache ubuntu 9.10", "apache ubuntu karmic", "web server", "apache on ubuntu", "apache karmic"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-9-10-karmic/','/web-servers/apache/installation/ubuntu-9-10-karmic/','/web-servers/apache/apache-2-web-server-on-ubuntu-9-10-karmic/']
-modified: 2011-05-17
-published: 2009-10-29
-title: 'Apache 2 Web Server on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

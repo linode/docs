@@ -1,20 +1,20 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze
-deprecated: true
+title: 'Authoritative DNS Services with NSD on Debian 6'
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Debian 6 "Squeeze".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2011-06-08
+deprecated: true
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze/','/dns-guides/nsd-authoritative-dns-debian-6-squeeze/']
-published: 2011-06-08
-title: 'Authoritative DNS Services with NSD on Debian 6'
 relations:
     platform:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Debian 6
-authors: ["Brett Kaplan"]
-contributors: ["Brett Kaplan"]
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.

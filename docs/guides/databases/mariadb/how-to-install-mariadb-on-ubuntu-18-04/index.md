@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-mariadb-on-ubuntu-18-04
+title: "Installing MariaDB on Ubuntu 18.04"
+title_meta: "How to Install MariaDB on Ubuntu 18.04"
 description: "MariaDB is a scalable, reliable SQL Server that can serve as a drop-in replacement for MySQL. Here's how to install and configure it on Ubuntu 18.04 LTS."
+authors: ["Ryan Syracuse"]
+contributors: ["Ryan Syracuse"]
+published: 2020-01-31
 keywords: ["mariadb", "Ubuntu 18.04", "ubuntu", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/mariadb-setup-ubuntu-18.04/','/databases/mariadb/how-to-install-mariadb-on-ubuntu-18-04/']
-published: 2020-01-31
 image: Installing_MariaDB_on_Ubuntu1804.png
-title: "Installing MariaDB on Ubuntu 18.04"
-title_meta: "How to Install MariaDB on Ubuntu 18.04"
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -18,8 +20,6 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 tags: ["ubuntu","mariadb","database"]
-authors: ["Ryan Syracuse"]
-contributors: ["Ryan Syracuse"]
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.

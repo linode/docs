@@ -2,11 +2,11 @@
 slug: run-shell-commands-with-cloud-init
 title: "Use Cloud-Init to Run Commands and Bash Scripts on First Boot"
 description: "In this tutorial, find out how you can use cloud-init to run shell commands and Bash scripts on first booting up a new server."
-keywords: ['cloud-init','cloudinit','bash','shell script']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2023-11-15
+keywords: ['cloud-init','cloudinit','bash','shell script']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Cloud-init Documentation - Examples: Run Commands on First Boot](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#run-commands-on-first-boot)'
 ---

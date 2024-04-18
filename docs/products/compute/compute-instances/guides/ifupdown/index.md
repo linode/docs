@@ -1,8 +1,8 @@
 ---
-description: "Learn how to configure networking using the ifupdown utility on Debian and older Ubuntu distributions"
-keywords: ["static", "ip address","ifupdown", "ifup", "ifdown"]
-published: 2022-05-25
 title: "Network Configuration Using ifupdown"
+description: "Learn how to configure networking using the ifupdown utility on Debian and older Ubuntu distributions"
+published: 2022-05-25
+keywords: ["static", "ip address","ifupdown", "ifup", "ifdown"]
 tags: ["networking","linode platform",]
 external_resources:
   - '[ifupdown documentation](https://manpages.debian.org/bullseye/ifupdown/interfaces.5.en.html)'

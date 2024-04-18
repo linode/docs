@@ -1,20 +1,20 @@
 ---
 slug: beginners-guide-to-go
-description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
-keywords: ['golang','go','command line arguments']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-11
-image: GettingStartedwithGo.png
 title: "Getting Started with Go"
 title_meta: "A Beginner's Guide to Go"
+description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2020-02-11
+keywords: ['golang','go','command line arguments']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: GettingStartedwithGo.png
 external_resources:
 - '[The Go Programming Language Specification](https://golang.org/ref/spec)'
 - '[Go](https://golang.org)'
 - '[Effective Go](https://golang.org/doc/effective_go.html)'
 - '[A Tour of Go](https://tour.golang.org/welcome/1)'
 aliases: ['/development/go/beginners-guide-to-go/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

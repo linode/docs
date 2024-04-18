@@ -1,13 +1,15 @@
 ---
 slug: email-with-citadel-on-ubuntu-14-04
-deprecated: true
+title: 'Email with Citadel on Ubuntu 14.04 LTS (Trusty Tahr)'
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 14.04 LTS (Truly Tahr) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-11-05
+modified: 2014-09-20
+deprecated: true
 keywords: ["citadel", "citadel ubuntu 14.04", "ubuntu 14.04 mail server", "groupware", "email server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2014-09-20
-published: 2012-11-05
-title: 'Email with Citadel on Ubuntu 14.04 LTS (Trusty Tahr)'
 external_resources:
  - '[Citadel Home Page](http://www.citadel.org/doku.php)'
  - '[Citadel FAQ](http://www.citadel.org/doku.php?id=faq:start)'
@@ -21,8 +23,6 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/citadel/email-with-citadel-on-ubuntu-14-04/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.

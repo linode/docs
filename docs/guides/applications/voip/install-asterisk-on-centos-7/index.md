@@ -1,12 +1,14 @@
 ---
 slug: install-asterisk-on-centos-7
+title: 'How to Install Asterisk on CentOS 7'
 description: 'This guide shows how to install Asterisk, the open-source private branch exchange (PBX) application for running your own VoIP services, on CentOS 7.'
+authors: ["Nick Rahl"]
+contributors: ["Nick Rahl"]
+published: 2015-09-30
+modified: 2020-12-03
 keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-09-30
-modified: 2020-12-03
-title: 'How to Install Asterisk on CentOS 7'
 dedicated_cpu_link: true
 relations:
     platform:
@@ -14,8 +16,6 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/applications/voip/install-asterisk-on-centos-7/']
-authors: ["Nick Rahl"]
-contributors: ["Nick Rahl"]
 ---
 
 

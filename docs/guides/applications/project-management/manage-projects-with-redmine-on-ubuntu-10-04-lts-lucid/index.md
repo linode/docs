@@ -1,21 +1,21 @@
 ---
 slug: manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)'
 description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 10.04 LTS (Lucid) Linode running nginx.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-29
+modified: 2011-06-07
+deprecated: true
 keywords: ["redmine", "redmine ubuntu 10.04", "redmine linux", "project management software", "redmine postgresql"]
 tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid/','/web-applications/project-management/redmine/ubuntu-10-04-lucid/']
-modified: 2011-06-07
-published: 2010-04-29
-title: 'Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide will help you install Redmine on your Ubuntu 10.04 LTS (Lucid) Linode. It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.

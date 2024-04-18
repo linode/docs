@@ -1,11 +1,13 @@
 ---
 slug: install-and-configure-owncloud-on-debian-10
-description: "A popular Dropbox alternative, ownCloud provides easy and secure file storage and file sharing. Here's how to install it on Debian 10."
-keywords: ['ownCloud on Debian']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-29
 title: "Installing and Configuring ownCloud on Debian 10"
 title_meta: "How to Install and Configure ownCloud on Debian 10"
+description: "A popular Dropbox alternative, ownCloud provides easy and secure file storage and file sharing. Here's how to install it on Debian 10."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-01-29
+keywords: ['ownCloud on Debian']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["debian"]
 aliases: ['/guides/how-to-install-owncloud-debian-10/']
 relations:
@@ -13,8 +15,6 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: Debian 10
-authors: ["Jack Wallen"]
-contributors: ["Jack Wallen"]
 ---
 
 ## What is ownCloud?

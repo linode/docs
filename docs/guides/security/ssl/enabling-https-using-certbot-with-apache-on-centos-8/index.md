@@ -1,18 +1,18 @@
 ---
 slug: enabling-https-using-certbot-with-apache-on-centos-8
+title: "Use Certbot to Enable HTTPS with Apache on CentOS 8"
 description: "Learn how to install and use Certbot with Apache on CentOS/RHEL 8, which automates the process adding TLS/SSL to your websites."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'Apache']
 tags: ['ssl','apache','centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-title: "Use Certbot to Enable HTTPS with Apache on CentOS 8"
 relations:
     platform:
         key: how-to-use-certbot-with-apache
         keywords:
             - distribution: CentOS/RHEL 8
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the Apache web server on CentOS 8, AlmaLinux 8, and Rocky Linux 8. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on Apache (or other web servers).

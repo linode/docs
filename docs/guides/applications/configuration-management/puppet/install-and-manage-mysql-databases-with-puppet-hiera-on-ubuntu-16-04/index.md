@@ -1,11 +1,13 @@
 ---
 slug: install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04
+title: "Manage MySQL Database with Puppet Hiera on Ubuntu 16.04"
 description: "Use this guide to install Puppet with MySQL modules and Puppet Hiera configuration manifests to manage MySQL in a variety of environments."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2017-09-11
 keywords: ["puppet installation", "configuration change management", "server automation", "mysql", "database", "hiera"]
 tags: ["database","ubuntu","automation","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-11
-title: "Manage MySQL Database with Puppet Hiera on Ubuntu 16.04"
 external_resources:
   - '[Puppet Labs](https://puppet.com/)'
   - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
@@ -20,8 +22,6 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/','/applications/configuration-management/puppet/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/']
-authors: ["Tyler Langlois"]
-contributors: ["Tyler Langlois"]
 ---
 
 

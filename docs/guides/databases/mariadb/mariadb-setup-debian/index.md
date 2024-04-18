@@ -1,12 +1,14 @@
 ---
 slug: mariadb-setup-debian
+title: How to Set Up MariaDB on Debian 9
 description: 'This guide shows how to install and configure the MariaDB database server on Debian 9.'
+authors: ["Nashruddin Amin"]
+contributors: ["Nashruddin Amin"]
+published: 2014-06-12
+modified: 2017-11-22
 og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.'
 keywords: ["mariadb", "debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-22
-published: 2014-06-12
-title: How to Set Up MariaDB on Debian 9
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -17,8 +19,6 @@ tags: ["debian","mariadb","database"]
 _build:
   list: false
 noindex: true
-authors: ["Nashruddin Amin"]
-contributors: ["Nashruddin Amin"]
 ---
 
 ![How to Set Up MariaDB on Debian 9](how-to-set-up-mariadb-on-debian-smg.jpg)

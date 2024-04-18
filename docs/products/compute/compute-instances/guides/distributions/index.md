@@ -1,10 +1,10 @@
 ---
-description: "A list of all the Linux distributions provided on the Linode Platform and advice for how to select a distribution for your next project."
-keywords: ["distro", "distribution", "operating system", "Linux"]
-published: 2019-07-15
-modified: 2023-12-19
 title: "Choosing a Linux Distribution"
 title_meta: "How to Choose a Linux Distribution"
+description: "A list of all the Linux distributions provided on the Linode Platform and advice for how to select a distribution for your next project."
+published: 2019-07-15
+modified: 2023-12-19
+keywords: ["distro", "distribution", "operating system", "Linux"]
 tags: ["linux"]
 aliases: ['/quick-answers/linux/choosing-a-distribution/','/guides/choosing-a-distribution/']
 ---

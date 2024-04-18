@@ -1,10 +1,10 @@
 ---
+title: "Access Buckets and Files through URLs"
 description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
-keywords: ['object','storage','bucket']
 published: 2020-01-22
 modified: 2024-02-20
+keywords: ['object','storage','bucket']
 image: AccessingObjectswithLinodeObjectStorage.png
-title: "Access Buckets and Files through URLs"
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/','/guides/how-to-access-objects-with-linode-object-storage/','/products/storage/object-storage/guides/access-objects/']
 ---

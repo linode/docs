@@ -1,18 +1,18 @@
 ---
 slug: troubleshooting-kubernetes
+title: "Troubleshoot Issues with Kubernetes"
 description: 'Learn frequently-used troubleshooting commands for Kubernetes and review common Kubernetes issues.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-29
 keywords: ['kubernetes','cluster','troubleshooting','k8s','kubectl']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-29
-title: "Troubleshoot Issues with Kubernetes"
 image: troubleshooting-kube.jpg
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Documentation - Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)'
 aliases: ['/kubernetes/troubleshooting-kubernetes/','/applications/containers/troubleshooting-kubernetes/','/applications/containers/kubernetes/troubleshooting-kubernetes/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 <!-- EDITOR'S NOTE: This guide is split into two halves:

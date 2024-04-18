@@ -1,17 +1,17 @@
 ---
 slug: how-to-deploy-a-static-site-on-linode-kubernetes-engine
+title: "Deploy a Static Site on Linode Kubernetes Engine"
 description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-11-12
+modified: 2020-12-03
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-12
-modified: 2020-12-03
-title: "Deploy a Static Site on Linode Kubernetes Engine"
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/static-site-linode-kubernetes-engine/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Linodes you want to add as worker nodes to your cluster.

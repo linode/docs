@@ -1,18 +1,18 @@
 ---
 slug: python-variables
+title: "Getting Started with Python Variables"
 description: "Variables form the backbone of programming. So how do they work and how do you use them effectively with Python? Find out in this guide covering Python variables from assignment through scope and type."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-04-04
 keywords: ['python variables', 'python variables naming convention', 'python variables case sensitive']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-04
-title: "Getting Started with Python Variables"
 external_resources:
 - '[W3 Schools: Python Variables](https://www.w3schools.com/python/python_variables.asp)'
 - '[Real Python: Variables in Python](https://realpython.com/python-variables/)'
 - '[GeeksforGeeks: Python Variables](https://www.geeksforgeeks.org/python-variables/)'
 - '[Tutorials Point: Python - Variable Types](https://www.tutorialspoint.com/python/python_variable_types.htm)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Variables are what make programs capable of meaningful action and complexity. Understandably, you want to know how they work for any language you are working with.

@@ -1,17 +1,17 @@
 ---
 slug: set-up-a-hardened-openvpn-server
+title: 'Set up a Hardened OpenVPN Server on Debian 9'
 description: 'This guide provides you with instructions on setting up a hardened and secure OpenVPN server so you can securely tunnel your traffic from anywhere on any device.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-09
+modified: 2019-01-29
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/','/networking/vpn/set-up-a-hardened-openvpn-server/']
-modified: 2019-01-29
-published: 2015-12-09
-title: 'Set up a Hardened OpenVPN Server on Debian 9'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [OpenVPN](https://openvpn.net/) is a tool for creating network tunnels between groups of computers that are not on the same local network. This is useful to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN encrypts all VPN traffic providing a secure connection between machines.

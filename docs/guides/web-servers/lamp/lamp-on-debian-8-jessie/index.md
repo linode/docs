@@ -1,12 +1,14 @@
 ---
 slug: lamp-on-debian-8-jessie
+title: 'LAMP on Debian 8 (Jessie)'
 description: 'Get your website or web application online by setting up Apache, MySQL, and PHP'
+authors: ["Elle K."]
+contributors: ["Elle K."]
+published: 2015-06-29
+modified: 2019-01-02
 keywords: ["debian 8 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 8", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-02
-published: 2015-06-29
-title: 'LAMP on Debian 8 (Jessie)'
 aliases: ['/websites/lamp/lamp-server-debian-8/','/websites/lamp/lamp-on-debian-8-jessie/','/web-servers/lamp/lamp-on-debian-8-jessie/']
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
@@ -18,8 +20,6 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 8
-authors: ["Elle K."]
-contributors: ["Elle K."]
 ---
 
 Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide shows you how to install a LAMP stack on Debian 8 (Jessie).

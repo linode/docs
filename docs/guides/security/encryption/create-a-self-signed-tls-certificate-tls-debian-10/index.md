@@ -1,13 +1,15 @@
 ---
 slug: create-a-self-signed-tls-certificate-tls-debian-10
+title: 'Creating a Self-Signed TLS Certificate on Debian 10'
+title_meta: 'How to Create a Self-Signed TLS Certificate on Debian 10'
 description: 'Self-signed TLS certificates are suitable for internal use within an organization. This guide shows how to create a certificate with OpenSSL on Debian 10.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-03-26
 keywords: ["debian tls certificate", "debian ssl certificate", "debian self certified"]
 tags: ["debian", "security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-debian-10/']
-published: 2021-03-26
-title: 'Creating a Self-Signed TLS Certificate on Debian 10'
-title_meta: 'How to Create a Self-Signed TLS Certificate on Debian 10'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:
@@ -15,8 +17,6 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: Debian 10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?

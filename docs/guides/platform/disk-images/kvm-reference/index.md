@@ -1,16 +1,16 @@
 ---
 slug: kvm-reference
+title: 'KVM Migration Reference'
 description: KVM Reference explains the differences when going from Xen to KVM virtualization.
+authors: ["Josh Sager"]
+contributors: ["Josh Sager"]
+published: 2015-06-15
+modified: 2020-12-01
 keywords: ["kvm", "kvm reference", "virtual machine mode", "kvm linode", "xen"]
 aliases: ['/platform/disk-images/kvm-reference/','/platform/kvm-reference/','/platform/kvm/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-01
-published: 2015-06-15
-title: 'KVM Migration Reference'
 tags: ["linode platform"]
 deprecated: true
-authors: ["Josh Sager"]
-contributors: ["Josh Sager"]
 ---
 
 Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.

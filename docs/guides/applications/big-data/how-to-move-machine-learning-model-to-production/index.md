@@ -1,12 +1,14 @@
 ---
 slug: how-to-move-machine-learning-model-to-production
+title: 'How to Move Your Machine Learning Model to Production'
 description: 'This guide will show you how to use an existing deep learning model as part of a production application using an API endpoint for a Flask app.'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2017-10-09
+modified: 2019-01-31
 keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
 og_description: 'Use a pre-trained deep learning model as part of a production application.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-10-09
-modified: 2019-01-31
-title: 'How to Move Your Machine Learning Model to Production'
 external_resources:
 - '[Miniconda](https://conda.io/miniconda.html)'
 - '[Keras Documentation](https://keras.io/)'
@@ -14,8 +16,6 @@ external_resources:
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/how-to-move-machine-learning-model-to-production/']
-authors: ["Jared Kobos"]
-contributors: ["Jared Kobos"]
 ---
 
 ![How to Move Your Machine Learning Model to Production](move-machine-learning-model-to-production.png "How to Move Your Machine Learning Model to Production")

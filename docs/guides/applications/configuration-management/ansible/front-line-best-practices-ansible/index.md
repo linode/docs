@@ -3,11 +3,11 @@ slug: front-line-best-practices-ansible
 title: "Best Practices for Ansible"
 title_meta: "Top 12 Ansible Best Practices"
 description: 'Discover Ansible best practices and proven techniques for project organization, playbook content, documentation, testing, validation, and security.'
-keywords: ['ansible best practices','ansible documentation','ansible testing','ansible playbook']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 published: 2023-11-28
+keywords: ['ansible best practices','ansible documentation','ansible testing','ansible playbook']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [Ansible](/docs/guides/applications/configuration-management/ansible/) is an important open source automation tool and platform. It is used for configuration management, application deployment, task automation, and [orchestration](https://www.databricks.com/glossary/orchestration) of complex workflows.

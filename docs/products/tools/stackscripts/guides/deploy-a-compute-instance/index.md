@@ -1,10 +1,10 @@
 ---
 title: Deploy a Compute Instance Using a StackScript
 description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
-keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
-tags: ["linode platform","automation","cloud manager"]
 published: 2020-04-22
 modified: 2023-02-02
+keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
+tags: ["linode platform","automation","cloud manager"]
 aliases: ['/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/','/guides/how-to-deploy-a-new-linode-using-a-stackscript/']
 ---
 

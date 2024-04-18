@@ -1,11 +1,11 @@
 ---
+title: "Deploy OpenVPN through the Linode Marketplace"
 description: "This guide shows you how to configure and deploy your own private and secure OpenVPN Server on a Linude using the One-Click Marketplace Application."
+published: 2019-04-05
+modified: 2024-01-30
 keywords: ['vpn','openvpn','tunnel','marketplace app']
 tags: ["ssl","cloud-manager","linode platform","security","marketplace","vpn"]
 bundles: ['network-security']
-published: 2019-04-05
-modified: 2024-01-30
-title: "Deploy OpenVPN through the Linode Marketplace"
 external_resources:
 - '[OpenVPN Community Resources](https://openvpn.net/community-resources/)'
 aliases: ['/platform/marketplace/marketplace-openvpn/', '/platform/one-click/one-click-openvpn/','/guides/one-click-openvpn/','/guides/marketplace-openvpn/','/guides/deploying-openvpn-marketplace-app/','/guides/openvpn-marketplace-app/']

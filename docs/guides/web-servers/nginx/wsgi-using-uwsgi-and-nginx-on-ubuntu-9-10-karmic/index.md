@@ -1,21 +1,21 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'WSGI using uWSGI and nginx on Ubuntu 9.10 (Karmic)'
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-10
+modified: 2011-04-29
+deprecated: true
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic/','/web-servers/nginx/python-uwsgi/ubuntu-9-10-karmic/']
-modified: 2011-04-29
-published: 2010-11-10
-title: 'WSGI using uWSGI and nginx on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,16 +1,16 @@
 ---
 slug: full-disk-encryption-xen
-deprecated: true
+title: Full Disk Encryption
 description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
+authors: ["Quintin Riis"]
+contributors: ["Quintin Riis"]
+published: 2013-07-05
+modified: 2020-12-01
+deprecated: true
 keywords: ['full disk encryption', 'debian', 'wheezy', 'security', 'cryptsetup']
 aliases: ['/security/full-disk-encryption-xen/','/security/encryption/full-disk-encryption-xen/']
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-01
-published: 2013-07-05
-title: Full Disk Encryption
-authors: ["Quintin Riis"]
-contributors: ["Quintin Riis"]
 ---
 
 Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered by authorized individuals. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will help you implement full disk encryption on a Linode running Debian 7 (Wheezy). You'll learn how to:

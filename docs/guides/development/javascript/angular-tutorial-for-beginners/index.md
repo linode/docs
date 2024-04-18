@@ -1,18 +1,18 @@
 ---
 slug: angular-tutorial-for-beginners
+title: "Build a Website with Angular (For Beginners)"
+title_meta: "How to Build a Website with Angular (For Beginners)"
 description: 'This guide covers the basics of building a website with Angular, including installation, setup, and the core concepts of Angular application design.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-10
 keywords: ['angular','node.js','typescript','web applications','app framework','open source']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-10
-title: "Build a Website with Angular (For Beginners)"
-title_meta: "How to Build a Website with Angular (For Beginners)"
 external_resources:
 - '[Angular](https://angular.io/)'
 - '[TypeScript](https://www.typescriptlang.org/)'
 - '[Angular docs](https://angular.io/docs)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Angular is a powerful open-source platform and framework for creating dynamic single-page applications. Written in TypeScript, Angular was built for modular web application clients, and helps to make application design clearer, and cleaner. In this guide, you can find instructions for installing Angular, setting up your first Angular application, and learning about its core concepts.

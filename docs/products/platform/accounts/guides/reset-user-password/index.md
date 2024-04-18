@@ -1,12 +1,12 @@
 ---
-description: "Learn how to change your user's password on a Linode account."
-keywords: ["password", "change password", "update password", "cloud manager"]
-tags: ["linode platform","cloud manager","security"]
-published: 2022-11-21
-modified: 2023-05-04
-image: L_ChangeYourPassword.png
 title: Reset Your User Password
 title_meta: Reset Your User Password on the Linode Platform
+description: "Learn how to change your user's password on a Linode account."
+published: 2022-11-21
+modified: 2023-05-04
+keywords: ["password", "change password", "update password", "cloud manager"]
+tags: ["linode platform","cloud manager","security"]
+image: L_ChangeYourPassword.png
 aliases: ['/quick-answers/linode-platform/how-to-change-your-password/', '/guides/how-to-change-your-password/']
 ---
 

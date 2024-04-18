@@ -1,16 +1,16 @@
 ---
 slug: install-mysql
+title: "Installing MySQL: A Definitive Guide"
 description: "Learn how to install MySQL on Linux (through your distribution's native repositories or by using MySQL's own), Windows, and macOS."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-07-01
+modified: 2023-05-30
 keywords: ['mysql','repository','database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-01
-modified: 2023-05-30
-title: "Installing MySQL: A Definitive Guide"
 external_resources:
 - '[Installing and Upgrading MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html)'
-authors: ["Linode"]
-contributors: ["Linode"]
 tags: ["saas"]
 ---
 

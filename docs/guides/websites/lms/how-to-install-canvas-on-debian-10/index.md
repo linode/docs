@@ -1,14 +1,16 @@
 ---
 slug: how-to-install-canvas-on-debian-10
+title: "Installing Canvas on Debian 10"
+title_meta: "How to Install Canvas on Debian 10"
 description: 'This guide will show you how to install, configure, and run the popular free and open source learning management system Canvas on Debian 10.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-28
 og_description: 'This guide will show you how to install the popular learning management system Canvas on Debian 10.'
 keywords: ['canvas','education','training','learning management system','lms','deploy on debian 10']
 tags: ['canvas', 'debian','apache','ssl','redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
 image: Canvas.jpg
-title: "Installing Canvas on Debian 10"
-title_meta: "How to Install Canvas on Debian 10"
 external_resources:
 - '[Canvas](https://www.instructure.com/canvas)'
 - '[open source](https://github.com/instructure/canvas-lms)'
@@ -25,8 +27,6 @@ relations:
         key: how-to-install-canvas
         keywords:
             - distribution: Debian 10
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a popular Learning Management System (LMS) noteworthy for its modern design and ease of use. A Canvas website gives you a comprehensive portal for education and training courses. It can manage both in-person and online courses, as well as hybrid courses that mix the two. Moreover, Canvas is [open source](https://github.com/instructure/canvas-lms). You can freely download and install an instance on your server.

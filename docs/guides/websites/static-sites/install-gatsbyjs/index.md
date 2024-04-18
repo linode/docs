@@ -1,14 +1,14 @@
 ---
 slug: install-gatsbyjs
-description: 'This guide shows how to create a CI/CD pipeline using the static-site generator Gatsby.js, Netlify to edit and preview, and Travis CI to deploy. '
-keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-09
 title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
 title_meta: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
-aliases: ['/websites/static-sites/install-gatsbyjs/']
+description: 'This guide shows how to create a CI/CD pipeline using the static-site generator Gatsby.js, Netlify to edit and preview, and Travis CI to deploy. '
 authors: ["Linode"]
 contributors: ["Linode"]
+published: 2018-08-09
+keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/websites/static-sites/install-gatsbyjs/']
 ---
 
 ![Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI](create-a-ci-cd-pipeline.png "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI")

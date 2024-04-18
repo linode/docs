@@ -1,11 +1,11 @@
 ---
-description: "Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up."
-keywords: ["reverse", "dns", "PTR"]
-tags: ["dns","networking","cloud manager","linode platform"]
-published: 2015-07-09
-modified: 2023-01-18
 title: "Configure rDNS (Reverse DNS) on a Compute Instance"
 title_meta: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
+description: "Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up."
+published: 2015-07-09
+modified: 2023-01-18
+keywords: ["reverse", "dns", "PTR"]
+tags: ["dns","networking","cloud manager","linode platform"]
 image: configure-your-linode-reverse-dns.jpg
 aliases: ['/networking/configure-your-linode-for-reverse-dns/','/networking/dns/setting-reverse-dns/','/networking/dns/configure-your-linode-for-reverse-dns/','/networking/setting-up-reverse-dns-lookup/','/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/','/guides/configure-your-linode-for-reverse-dns/','/guides/configure-rdns/']
 ---

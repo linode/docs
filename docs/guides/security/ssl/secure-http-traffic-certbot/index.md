@@ -1,19 +1,19 @@
 ---
 slug: secure-http-traffic-certbot
+title: Secure HTTP Traffic with Certbot
+description: "This quick answer shows how to use Certbot to secure your site's traffic via TLS."
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2018-06-27
+modified: 2020-12-02
 keywords: ["let's encrypt", "certbot", "ssl", "tls", "https"]
 tags: ["security", "web server"]
-description: "This quick answer shows how to use Certbot to secure your site's traffic via TLS."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-02
-published: 2018-06-27
-title: Secure HTTP Traffic with Certbot
 deprecated: true
 deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 aliases: ['/quick-answers/websites/secure-http-traffic-certbot/','/quick-answers/websites/certbot/secure-http-traffic-certbot/']
 external_resources:
   - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'
-authors: ["Edward Angert"]
-contributors: ["Edward Angert"]
 ---
 
 ## What is Certbot?

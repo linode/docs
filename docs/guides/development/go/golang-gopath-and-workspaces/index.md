@@ -1,14 +1,14 @@
 ---
 slug: golang-gopath-and-workspaces
+title: "The GOPATH in Golang"
+title_meta: "Golang’s GOPATH and Workspaces"
 description: 'The GOPATH in Golang is used to point to a Go Workspace. The Go Workspace is where you store your Go source code and binary executables. This guide takes a deep dive into the GOPATH.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2022-03-11
 keywords: ['gopath','what is go path ','set go path']
 tags: ['Go', 'Go Programming']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-11
-title: "The GOPATH in Golang"
-title_meta: "Golang’s GOPATH and Workspaces"
-authors: ["Cameron Laird"]
-contributors: ["Cameron Laird"]
 ---
 
 A team of Google employees [designed the Go programming language](https://qarea.com/blog/the-evolution-of-go-a-history-of-success) in 2007 to help developers make better use of high-performance, networked, multi-core computing chips. [Well over a million coders around the world](https://research.swtch.com/gophercount) now work in Go.

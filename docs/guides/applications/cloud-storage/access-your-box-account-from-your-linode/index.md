@@ -1,13 +1,13 @@
 ---
 slug: access-your-box-account-from-your-linode
-description: 'Box is a popular cloud storage and file sharing service. This article will show you how to access your Box account from your Linode using WebDAV.'
-keywords: ["box", "box.com", "cloud", "cloud storage", "file storage", "file", "webdav", "davfs", "davfs2"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-11-06
 title: 'Access Your Box.com Account from Your Linode'
-aliases: ['/applications/cloud-storage/access-your-box-account-from-your-linode/']
+description: 'Box is a popular cloud storage and file sharing service. This article will show you how to access your Box account from your Linode using WebDAV.'
 authors: ["Tyler Nelson"]
 contributors: ["Tyler Nelson"]
+published: 2015-11-06
+keywords: ["box", "box.com", "cloud", "cloud storage", "file storage", "file", "webdav", "davfs", "davfs2"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/applications/cloud-storage/access-your-box-account-from-your-linode/']
 ---
 
 

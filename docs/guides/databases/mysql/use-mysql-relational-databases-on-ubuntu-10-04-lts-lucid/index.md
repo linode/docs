@@ -1,21 +1,21 @@
 ---
 slug: use-mysql-relational-databases-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Use MySQL Relational Databases on Ubuntu 10.04'
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-30
+modified: 2013-09-24
+deprecated: true
 keywords: ["mysql ubuntu 10.04", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-ubuntu-10-04-lts-lucid/','/databases/mysql/ubuntu-10-04-lucid/']
-modified: 2013-09-24
-published: 2010-04-30
-title: 'Use MySQL Relational Databases on Ubuntu 10.04'
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","mysql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

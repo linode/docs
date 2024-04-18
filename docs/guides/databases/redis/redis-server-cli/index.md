@@ -1,16 +1,16 @@
 ---
 slug: redis-server-cli
+title: "Configure a Redis Server from the Command Line"
+title_meta: "How to Configure a Redis Server from the Command Line"
 description: "Redis provides a powerful command-line tool to view and update its configuration options. Learn how to use the Redis CLI set, get, and write commands to update your configurations."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-02-25
 keywords: ['redis configuration','redis command line','change redis settings']
 tags: ['ubuntu', 'debian', 'centos', 'fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-title: "Configure a Redis Server from the Command Line"
-title_meta: "How to Configure a Redis Server from the Command Line"
 external_resources:
 - '[Redis: Redis Configuration](https://redis.io/topics/config)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source NoSQL database boasting quick transactions and low latency. This guide shows you how to make and adjust settings for your Redis server from the command line.

@@ -1,21 +1,21 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Authoritative DNS Services with NSD on Ubuntu 10.10 '
 description: 'This guide shows how you can install and configure NSD, a lightweight name server daemon and alternative to BIND, to provide authoritative DNS on Ubuntu 10.10 "Maverick".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2011-01-25
+modified: 2012-10-08
+deprecated: true
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-10-maverick/','/dns-guides/nsd-authoritative-dns-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2011-01-25
-title: 'Authoritative DNS Services with NSD on Ubuntu 10.10 '
 relations:
     platform:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Brett Kaplan"]
-contributors: ["Brett Kaplan"]
 ---
 
 NSD is a light-weight yet full-featured open source name server daemon created to provide an alternative to BIND.

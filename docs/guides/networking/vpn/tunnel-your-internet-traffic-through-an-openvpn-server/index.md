@@ -1,17 +1,17 @@
 ---
 slug: tunnel-your-internet-traffic-through-an-openvpn-server
+title: 'Tunnel Your Internet Traffic Through an OpenVPN Server'
 description: 'Learn how to configure your OpenVPN server to tunnel your Internet traffic for better overall privacy and security.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-09
+modified: 2017-09-27
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-27
-published: 2015-12-09
-title: 'Tunnel Your Internet Traffic Through an OpenVPN Server'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 aliases: ['/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide will show you how to configure an OpenVPN server to forward incoming traffic to the internet, then route the responses back to the client.

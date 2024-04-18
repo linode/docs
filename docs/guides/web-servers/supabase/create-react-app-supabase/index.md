@@ -1,18 +1,18 @@
 ---
 slug: create-react-app-supabase
-description: "Supabase comes with a rich set of features, including a powerful database and a full REST API. This makes it a strong choice to act as a backend for many applications. Learn more about how to do just that with your own React application in this tutorial."
-keywords: ['supabase react example','supabase api','supabase vs firebase']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-08
 title: "Create a React App with a Supabase Backend"
 title_meta: "How to Create a React App with a Supabase Backend"
+description: "Supabase comes with a rich set of features, including a powerful database and a full REST API. This makes it a strong choice to act as a backend for many applications. Learn more about how to do just that with your own React application in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-08
+keywords: ['supabase react example','supabase api','supabase vs firebase']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Supabase: Quickstart - React](https://supabase.com/docs/guides/with-react)'
 - '[freeCodeCamp: How to Build a TodoApp Using ReactJS, NextJS, and Supabase](https://www.freecodecamp.org/news/how-to-build-a-todoapp-using-react-and-supabase/)'
 - '[Adeva: The Complete Tutorial to Building a CRUD App with React.js and Supabase](https://adevait.com/react/building-crud-app-with-react-js-supabase)'
 - '[GitHub: tmm/react-supabase](https://github.com/tmm/react-supabase)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 tags: ["digital agencies"]
 ---
 

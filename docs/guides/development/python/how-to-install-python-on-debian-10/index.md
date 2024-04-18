@@ -1,20 +1,20 @@
 ---
 slug: how-to-install-python-on-debian-10
+title: "Installing Python 3 on Debian 10"
+title_meta: "How to Install Python 3 on Debian 10"
 description: 'Python 3 is installed by default on Debian 10. This guide shows how to invoke Python 3 on Debian 10 and how to upgrade it from version 3.7 to 3.9.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2021-02-12
 keywords: ['How to Install Python on Debian','Python','Python3','Python 2 end of life']
 tags: ['python', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-12
 image: InstallPython3_Deb10.png
-title: "Installing Python 3 on Debian 10"
-title_meta: "How to Install Python 3 on Debian 10"
 relations:
     platform:
         key: how-to-install-python
         keywords:
             - distribution: Debian 10
-authors: ["Angel Guarisma"]
-contributors: ["Angel Guarisma"]
 ---
 
 Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction. This abstraction makes writing and reading the code easier than other languages.

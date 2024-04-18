@@ -1,15 +1,15 @@
 ---
 slug: configure-source-replica-replication-in-mysql
+title: "Configure Source-Replica Replication in MySQL"
 description: 'This guide explains how to configure source-replica data replication in the popular MySQL database application to keep copies of your database for emergencies.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-07-30
 keywords: ['mysql replication']
 tags: ['mysql', 'database', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-30
-title: "Configure Source-Replica Replication in MySQL"
 external_resources:
 - '[MySQL Documentation](https://dev.mysql.com/doc/refman/8.0/en/replication.html)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 

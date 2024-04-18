@@ -1,16 +1,16 @@
 ---
 slug: installing-and-using-gtop-on-linux
+title: "Install and Use gtop on Linux"
+title_meta: "How to Install and Use gtop on Linux"
 description: "Learn how to use gtop, a system monitoring dashboard for your Linux terminal."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-10-01
 keywords: ['gtop linux','gtop linux install','system monitor linux terminal']
 tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-01
-title: "Install and Use gtop on Linux"
-title_meta: "How to Install and Use gtop on Linux"
 external_resources:
 - '[gtop](https://github.com/aksakalli/gtop)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Gtop is a system monitoring dashboard for your terminal, with a rich graphical display. In this guide, you learn more about gtop and how it compares to the Linux utilities, top and htop. This guide also shows you how to install and get started using gtop on your Linux system.

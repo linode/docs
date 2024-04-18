@@ -1,21 +1,21 @@
 ---
 slug: webpy-on-ubuntu-12-04-precise-pangolin
+title: 'Web.py on Ubuntu 12.04 (Precise Pangolin)'
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 12.04 (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-25
+modified: 2013-09-27
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/','/frameworks/webpy/ubuntu-12-04-precise-pangolin/','/development/frameworks/webpy/webpy-on-ubuntu-12-04-precise-pangolin/','/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/']
-modified: 2013-09-27
-published: 2012-10-25
-title: 'Web.py on Ubuntu 12.04 (Precise Pangolin)'
 deprecated: true
 relations:
     platform:
         key: webpy
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit", web.py is a powerful option for developing systems for the web.

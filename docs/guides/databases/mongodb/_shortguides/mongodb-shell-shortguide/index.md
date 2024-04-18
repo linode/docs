@@ -1,15 +1,15 @@
 ---
 slug: mongodb-shell-shortguide
-description: 'Shortguide that provides basic information about MongoDB Shell'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-28
 title: MongoDB Shell Shortguide
+description: 'Shortguide that provides basic information about MongoDB Shell'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2023-02-28
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/mongodb-shell-shortguide/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 {{< note >}}

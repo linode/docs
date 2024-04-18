@@ -1,12 +1,14 @@
 ---
 slug: install-nagios-4-on-ubuntu-debian-8
+title: 'Install Nagios 4 on Ubuntu and Debian 8'
 description: 'This guide shows how to install Nagios, a widely used web-based tool that can monitor services and systems and notify you if they are offline or inaccessible.'
+authors: ["Paulo Telles"]
+contributors: ["Paulo Telles"]
+published: 2016-04-12
 keywords: ["nagios", "ubuntu", "monitoring", "install nagios", "nagios 4 ubuntu", "debian 8"]
 aliases: ['/uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/','/uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/','/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/']
 tags: ["debian","monitoring","lamp","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-04-12
-title: 'Install Nagios 4 on Ubuntu and Debian 8'
 external_resources:
  - '[Nagios Website](http://www.nagios.org/)'
  - '[Nagios Library](http://library.nagios.com/)'
@@ -15,8 +17,6 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 8
-authors: ["Paulo Telles"]
-contributors: ["Paulo Telles"]
 ---
 
 ![Install Nagios 4 on Ubuntu and Debian 8](Install_Nagios_4_smg.jpg)

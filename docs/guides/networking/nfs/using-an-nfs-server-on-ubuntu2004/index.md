@@ -1,19 +1,19 @@
 ---
 slug: using-an-nfs-server-on-ubuntu2004
+title: "Use an NFS Server on Ubuntu 20.04"
+title_meta: "How to Use an NFS Server on Ubuntu 20.04"
 description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-08-06
 keywords: ['NFS','file sharing','NFS server','mount point']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-06
 image: HowtoUseanNFSServeronUbuntu2004.jpg
-title: "Use an NFS Server on Ubuntu 20.04"
-title_meta: "How to Use an NFS Server on Ubuntu 20.04"
 external_resources:
 - '[RFC for NFS version 4.2](https://datatracker.ietf.org/doc/html/rfc7862)'
 - '[Linux NFS site](http://linux-nfs.org/wiki/index.php/Main_Page)'
 - '[Export options for NFS](http://nfs.sourceforge.net/nfs-howto/ar01s03.html)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 *Network File System* (NFS) is a distributed file system that allows users to access files over a network like files on their own system. The current version of NFS, which was originally developed by Sun Microsystems, is [NFS Version 4](https://datatracker.ietf.org/doc/html/rfc7862). NFS is an open standard that builds on the *Open Network Computing Remote Procedure Call* (ONC RPC) system. This guide provides a brief introduction to NFS and explains how to configure and use NFS on both server and client systems.

@@ -1,7 +1,7 @@
 ---
+title: "SOA Record"
 description: "Learn how to create SOA records using Linode's DNS Manager"
 published: 2022-10-28
-title: "SOA Record"
 keywords: ["dns"]
 tags: ["linode platform"]
 ---

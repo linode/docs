@@ -1,13 +1,15 @@
 ---
 slug: run-php-cgi-apache-centos-6
-deprecated: true
+title: Run PHP with CGI and Apache on CentOS 6
 description: 'This guide provides you with instructions for using PHP CGI to run PHP scripts as individuals users on your system for better security on and performance on CentOS 6.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-01-14
+deprecated: true
 keywords: ["php cgi", "php", "apache", "cgi", "http", "php scripts", "web apps", "web applications"]
 tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/centos-6/','/websites/apache/run-php-applications-under-cgi-with-apache-on-centos-6/','/web-servers/apache/run-php-cgi-apache-centos-6/','/websites/apache/run-php-cgi-apache-centos-6/']
-published: 2014-01-14
-title: Run PHP with CGI and Apache on CentOS 6
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)'
@@ -16,8 +18,6 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: CentOS 6
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the process of setting up Apache and PHP CGI.

@@ -1,17 +1,17 @@
 ---
 slug: freenas-blockstorage
+title: "Install FreeNAS on a Linode with Block Storage"
 description: "FreeNAS is network-attached storage software configured through a web interface.  Learn how to install FreeNAS and connect it to a Block Storage Volume."
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2018-05-07
+modified: 2018-05-17
 keywords: ["zfs","freenas","block storage","nas"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-17
-title: "Install FreeNAS on a Linode with Block Storage"
-published: 2018-05-07
 external_resources:
  - '[FreeNAS Volume Manager Manual](http://doc.freenas.org/11/storage.html)'
  - '[Available FreeNAS Plugins](http://doc.freenas.org/11/plugins.html#available-plugins)'
 aliases: ['/applications/cloud-storage/freenas-blockstorage/']
-authors: ["Edward Angert"]
-contributors: ["Edward Angert"]
 ---
 
 Network-attached storage (NAS) allows multiple client devices to access the connected storage media as though it's stored locally to the device. FreeNAS is FreeBSD-based NAS software, configurable via a browser interface.

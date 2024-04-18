@@ -1,11 +1,13 @@
 ---
 slug: how-to-install-and-set-up-hadoop-cluster
+title: 'How to Install and Set Up a 3-Node Hadoop Cluster'
 description: 'This Linode guide will show you how to install and set up a 3-node Hadoop cluster.'
-keywords: ["Hadoop", " YARN", " HDFS"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Florent Houbart"]
+contributors: ["Florent Houbart"]
 published: 2017-10-13
 modified: 2017-10-16
-title: 'How to Install and Set Up a 3-Node Hadoop Cluster'
+keywords: ["Hadoop", " YARN", " HDFS"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[YARN Command Reference](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html)'
 - '[HDFS Shell Documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)'
@@ -15,8 +17,6 @@ external_resources:
 - '[core-site.xml properties](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-common/yarn-default.xml)'
 tags: ["database"]
 aliases: ['/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/']
-authors: ["Florent Houbart"]
-contributors: ["Florent Houbart"]
 tags: ["saas"]
 ---
 

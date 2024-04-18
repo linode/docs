@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-wordprress-using-wp-cli-on-debian-9
+title: 'Install WordPress Using WP-CLI on Debian 9'
+title_meta: 'How to Install WordPress Using WP-CLI on Debian 9'
 description: 'Install WordPress Using WP-CLI on Debian 9'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-06
+modified: 2020-02-17
 keywords: ["install WP-CLI", "debian", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 tags: ["debian","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2020-02-17
-title: 'Install WordPress Using WP-CLI on Debian 9'
-title_meta: 'How to Install WordPress Using WP-CLI on Debian 9'
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
@@ -18,8 +20,6 @@ relations:
         keywords:
            - distribution: Debian 9
 aliases: ['/websites/cms/wp-cli/how-to-install-wordprress-using-wp-cli-on-debian-9/','/websites/cms/wordpress/how-to-install-wordprress-using-wp-cli-on-debian-9/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 WordPress is well-known for its rich content management feature set, ease of use, and quick installation time. The [WordPress command line interface (WP-CLI)](https://wp-cli.org/) provides useful commands and utilities to install, configure, and manage a WordPress site. This guide walks you through some common tasks you can complete using the WP-CLI.

@@ -1,17 +1,17 @@
 ---
 slug: using-xargs-with-examples
-description: 'Learn what the xargs command is, how it works, and a few of the many functions it can be used to perform within Linux. '
-keywords: ['xarg examples']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-17
 title: "Use the xargs Command"
 title_meta: "How to Use the xargs Command in Linux"
+description: 'Learn what the xargs command is, how it works, and a few of the many functions it can be used to perform within Linux. '
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-06-17
+keywords: ['xarg examples']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[The IEEE and Open Group Base Specification](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/xargs.html)'
 - '[The GNU organization reference page for `xargs`](https://www.gnu.org/software/findutils/manual/html_node/find_html/Invoking-xargs.html)'
 - '[Wikipedia Page on `xargs`](https://en.wikipedia.org/wiki/Xargs)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 The `xargs` command is a handy Linux utility that is used to convert input data into a string of arguments. `xargs`, which is short for "extended arguments", is available on all Linux distributions. Its most common use is to chain commands together. For example, `xargs` can accept standard input from an initial command and convert it into properly formatted arguments for subsequent commands. This guide explains how `xargs` works and when to use it, and provides some examples demonstrating how it is used.

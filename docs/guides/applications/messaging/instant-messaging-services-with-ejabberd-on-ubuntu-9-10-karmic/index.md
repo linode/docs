@@ -1,21 +1,21 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)'
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-09
+modified: 2012-10-31
+deprecated: true
 keywords: ["ejabberd", "ejabberd ubuntu karmic", "ejabberd ubuntu 9.10", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic/','/communications/xmpp/ejabberd/ubuntu-9-10-karmic/']
-modified: 2012-10-31
-published: 2009-11-09
-title: 'Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

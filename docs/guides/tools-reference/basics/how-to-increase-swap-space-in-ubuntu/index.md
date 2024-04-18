@@ -1,19 +1,19 @@
 ---
 slug: how-to-increase-swap-space-in-ubuntu
-description: 'Need to know how to increase swap space in Ubuntu? Guard yourself against out-of-memory errors and add swap space to your server today. ✓ Read more here!'
-keywords: ['how to increase swap space in ubuntu','ubuntu swap file','linux swap space size','create swap partition ubuntu']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-06
-modified: 2023-03-29
 title: "Step-by-Step Guide: How to Increase Swap Space in Ubuntu"
 title_meta: "Learn How to Create a Swap File in Ubuntu"
+description: 'Need to know how to increase swap space in Ubuntu? Guard yourself against out-of-memory errors and add swap space to your server today. ✓ Read more here!'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-12-06
+modified: 2023-03-29
+keywords: ['how to increase swap space in ubuntu','ubuntu swap file','linux swap space size','create swap partition ubuntu']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ubuntu SwapFAQ](https://help.ubuntu.com/community/SwapFaq)'
 - '[Linux man page for the dd command](https://pubs.opengroup.org/onlinepubs/7908799/xcu/dd.html)'
 - '[Ubuntu man page for the swapon command](https://manpages.ubuntu.com/manpages/focal/man8/swapon.8.html)'
 - '[Ubuntu man page for the mkswap command](http://manpages.ubuntu.com/manpages/focal/man8/mkswap.8.html)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Systems trying to run large, memory-intensive applications with limited RAM can run into serious issues. Operations might become very slow, and the application can sometimes freeze completely or crash with out-of-memory errors. One workaround for this issue is to create extra swap space on the hard drive. The application can use this extra memory supply when RAM is running low. This guide explains the concept of swap space, and demonstrates how to increase swap space on Ubuntu.

@@ -1,21 +1,21 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-8-04-hardy
-deprecated: true
+title: 'Installing Prosody XMPP Server on Ubuntu 8.04 (Hardy)'
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 8.04 (Hardy)'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-13
+modified: 2011-04-29
+deprecated: true
 keywords: ["prosody", "prosody ubuntu hardy", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-8-04-hardy/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-8-04-hardy/']
-modified: 2011-04-29
-published: 2009-10-13
-title: 'Installing Prosody XMPP Server on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

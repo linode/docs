@@ -1,12 +1,14 @@
 ---
 slug: how-to-configure-automated-security-updates-debian
+title: "Configuring Automated Security Updates on Debian"
+title_meta: "How to Configure Automated Security Updates on Debian"
 description: "In this tutorial, you will learn how to automate updates in Debian using the dnf-automatic tool or the Cockpit web applications."
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2020-10-22
 keywords: ["debian unattended-upgrades", "configuring unattended-upgrades"]
 tags: ["debian", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-10-22
-title: "Configuring Automated Security Updates on Debian"
-title_meta: "How to Configure Automated Security Updates on Debian"
 aliases: ['/security/basics/how-to-configure-automated-security-updates-debian/']
 relations:
     platform:
@@ -14,8 +16,6 @@ relations:
         keywords:
             - distribution: Debian
 image: Configuring_automated_security_updates_debian.png
-authors: ["Hackersploit"]
-contributors: ["Hackersploit"]
 ---
 
 Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Most users forget to do it, leaving them vulnerable to countless threats. Automate security (and other package) updates with the utility [Unattended Upgrades](https://wiki.debian.org/UnattendedUpgrades) on Debian.

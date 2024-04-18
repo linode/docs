@@ -1,21 +1,21 @@
 ---
 slug: redis-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Redis on Ubuntu 10.10 (Maverick)'
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 10.10 "Maverick".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-28
+modified: 2012-10-08
+deprecated: true
 keywords: ["redis ubuntu 10.10", "redis maverick", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-ubuntu-10-10-maverick/','/databases/redis/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2010-10-28
-title: 'Redis on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,9 +1,9 @@
 ---
+title: "Network Configuration Using systemd-networkd"
 description: "Learn how to configure networking using the systemd-networkd utility on Ubuntu, Arch, and other modern Linux distributions"
-keywords: ["static", "ip address", "systemd-networkd"]
 published: 2022-05-27
 modified: 2022-06-17
-title: "Network Configuration Using systemd-networkd"
+keywords: ["static", "ip address", "systemd-networkd"]
 tags: ["networking","linode platform"]
 aliases: ['/guides/systemd-networkd/']
 ---

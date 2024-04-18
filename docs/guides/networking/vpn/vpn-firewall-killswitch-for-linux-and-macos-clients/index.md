@@ -1,19 +1,19 @@
 ---
 slug: vpn-firewall-killswitch-for-linux-and-macos-clients
-description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
-keywords: ["vpn", "security"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-07-09
-published: 2017-09-29
 title: "Configuring a VPN Kill Switch on OpenVPN Clients Using iptables"
 title_meta: "How to Configure a VPN Kill Switch on OpenVPN Clients"
+description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-09-29
+modified: 2018-07-09
+keywords: ["vpn", "security"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
 - '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'
 tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/vpn-firewall-killswitch-for-linux-and-macos-clients/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 A virtual private network is often used to evade censorship, surveillance, or geolocation by routing internet traffic from your local device to the remote VPN server through an encrypted tunnel. In this scenario, the VPN server is the internet gateway for all connected client devices, and it forwards traffic from clients out to the internet, then receives and routes the traffic back to the client devices. However, there is always a risk that the VPN connection will unexpectedly drop, which can result in your traffic being communicated over the public internet instead of through the encrypted VPN connection.

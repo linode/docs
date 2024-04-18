@@ -1,14 +1,14 @@
 ---
 slug: how-to-use-head
+title: How to Use the Head Command
 description: 'View the beginning of a text file with the head command.'
+authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
+published: 2017-04-10
 keywords: ["linux", "how to", "head", "first lines", "file"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/linux/how-to-use-head/','/quick-answers/how-to-use-head/']
-published: 2017-04-10
-title: How to Use the Head Command
 tags: ["linux"]
-authors: ["Phil Zona"]
-contributors: ["Phil Zona"]
 ---
 
 <div class="wistia_responsive_padding" style="padding:56.0% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/0nhqzoqhea?videoFoam=true" title="Linode - How to use the head command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>

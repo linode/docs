@@ -1,18 +1,18 @@
 ---
 slug: using-podman
-description: "Podman has risen as a compelling alternative to Docker for deploying and managing containers. Podman stands out for its daemonless architecture, which gives it true rootless containers and heightened security. In this tutorial, find out all you need to get started installing and using Pdoman for running containers."
-keywords: ['what is podman','podman docker','podman tutorial']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-26
 title: "Install Podman for Running Containers"
 title_meta: "How to Install Podman for Running Containers"
+description: "Podman has risen as a compelling alternative to Docker for deploying and managing containers. Podman stands out for its daemonless architecture, which gives it true rootless containers and heightened security. In this tutorial, find out all you need to get started installing and using Pdoman for running containers."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-07-26
+keywords: ['what is podman','podman docker','podman tutorial']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Podman: Getting Started with Podman](https://podman.io/getting-started/)'
 - '[Red Hat Developer: Podman Basics: Resources for Beginners and Experts](https://developers.redhat.com/articles/2022/05/02/podman-basics-resources-beginners-and-experts#)'
 - '[Red Hat Developer: Podman and Buildah for Docker Users](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users#)'
 - '[phoenixNAP: Install Podman on Ubuntu](https://phoenixnap.com/kb/install-podman-on-ubuntu)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
 

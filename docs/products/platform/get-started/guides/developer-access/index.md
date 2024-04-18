@@ -1,10 +1,10 @@
 ---
 title: Grant a Developer Access a Compute Instance or Linode Account
 description: Shows how to create an account with access restrictions for developers and maintainers.
-keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
-tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
 published: 2018-07-26
 modified: 2024-03-11
+keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
+tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
 aliases: ['/platform/create-limited-developer-account/','/guides/create-limited-developer-account/']
 ---
 

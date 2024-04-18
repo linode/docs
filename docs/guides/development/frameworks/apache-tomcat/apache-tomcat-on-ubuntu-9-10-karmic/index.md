@@ -1,21 +1,21 @@
 ---
 slug: apache-tomcat-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Apache Tomcat on Ubuntu 9.10 (Karmic)'
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-23
+modified: 2011-04-29
+deprecated: true
 keywords: ["apache tomcat ubuntu 9.10", "java", "java ubuntu 9.10", "java servlets ubuntu karmic", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-9-10-karmic/','/development/frameworks/apache-tomcat-on-ubuntu-9-10-karmic/','/frameworks/apache-tomcat/ubuntu-9-10-karmic/','/websites/frameworks/apache-tomcat-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-published: 2010-07-23
-title: 'Apache Tomcat on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

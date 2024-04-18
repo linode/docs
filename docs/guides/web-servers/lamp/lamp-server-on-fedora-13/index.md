@@ -1,14 +1,16 @@
 ---
 slug: lamp-server-on-fedora-13
-deprecated: true
+title: LAMP Server on Fedora 13
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 13 powered Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-25
+modified: 2011-05-02
+deprecated: true
 keywords: ["fedora 13 lamp", "lamp server", "linux lamp", "fedora 13 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-fedora-13/','/lamp-guides/fedora-13/','/web-servers/lamp/lamp-server-on-fedora-13/']
-modified: 2011-05-02
-published: 2010-05-25
-title: LAMP Server on Fedora 13
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -19,8 +21,6 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

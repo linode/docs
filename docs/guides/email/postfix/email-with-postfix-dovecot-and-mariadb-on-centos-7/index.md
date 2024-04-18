@@ -1,20 +1,20 @@
 ---
 slug: email-with-postfix-dovecot-and-mariadb-on-centos-7
+title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on CentOS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-03-26
+modified: 2018-10-10
 keywords: ["postfix centos 7", "dovecot centos 7", "linux mail server", "email", "centos 7"]
 tags: ["centos","postfix","email","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/','/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-7/']
-modified: 2018-10-10
-published: 2015-03-26
-title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MariaDB (a drop-in replacement for MySQL) on CentOS 7. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.

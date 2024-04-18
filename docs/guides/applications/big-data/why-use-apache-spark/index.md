@@ -2,11 +2,11 @@
 slug: why-use-apache-spark
 title: "Why You Should Use Apache Spark for Data Analytics"
 description: 'This guide provides an introduction to the Apache Spark analytics engine and explains its advantages.'
-keywords: ['apache spark analytics','what is apache spark','apache spark advantages']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2023-08-19
+keywords: ['apache spark analytics','what is apache spark','apache spark advantages']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Apache Spark](https://spark.apache.org/)'
 - '[Apache Spark Examples](https://spark.apache.org/examples.html)'

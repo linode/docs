@@ -1,21 +1,21 @@
 ---
 slug: instant-messaging-services-with-openfire-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Instant Messaging Services with Openfire on Ubuntu 9.10'
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-29
+modified: 2012-10-03
+deprecated: true
 keywords: ["openfire", "openfire ubuntu 9.10", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-10-karmic/','/communications/xmpp/openfire/ubuntu-9-10-karmic/']
-modified: 2012-10-03
-published: 2009-10-29
-title: 'Instant Messaging Services with Openfire on Ubuntu 9.10'
 relations:
     platform:
         key: how-to-install-openfire
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

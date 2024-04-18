@@ -1,10 +1,10 @@
 ---
+title: "Deploy Redis through the Linode Marketplace"
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
-keywords: ['redis','data store','cluster','database']
-tags: ["linode platform","database","marketplace","cloud-manager"]
 published: 2020-03-13
 modified: 2022-03-08
-title: "Deploy Redis through the Linode Marketplace"
+keywords: ['redis','data store','cluster','database']
+tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'

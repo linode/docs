@@ -1,21 +1,21 @@
 ---
 slug: using-mysql-relational-databases-on-gentoo
-deprecated: true
+title: Using MySQL Relational Databases on Gentoo
 description: 'MySQL is a popular relational database management system used as a backend for countless websites. This guide shows how to use MySQL on the Gentoo linux distro.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-21
+modified: 2014-01-28
+deprecated: true
 keywords: ["MySQL", "Gentoo", "database", "rdbms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/using-mysql-relational-databases-on-gentoo/','/databases/mysql/gentoo/']
-modified: 2014-01-28
-published: 2011-01-21
-title: Using MySQL Relational Databases on Gentoo
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Gentoo
 tags: ["database","mysql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 MySQL is a relational database management system (RDBMS) that is used as a backend for countless web and server applications. Originally released in 1995, it remains a popular choice for developers as a database server.

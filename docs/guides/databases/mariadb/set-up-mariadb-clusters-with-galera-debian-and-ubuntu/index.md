@@ -1,17 +1,17 @@
 ---
 slug: set-up-mariadb-clusters-with-galera-debian-and-ubuntu
+title: Set Up MariaDB Clusters with Galera Debian and Ubuntu
 description: 'A guide to configuring MariaDB database replication with Galera on Debian and Ubuntu distributions.'
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2015-02-18
+modified: 2017-11-27
 keywords: ["mariadb", "mysql", "galera", "high availability", "HA", "cluster", "debian", "ubuntu"]
 aliases: ['/databases/mariadb/clustering-with-mariadb-and-galera/','/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-27
-published: 2015-02-18
-title: Set Up MariaDB Clusters with Galera Debian and Ubuntu
 external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
 tags: ["ubuntu","debian","mariadb","database"]
-authors: ["James Stewart"]
-contributors: ["James Stewart"]
 tags: ["ecommerce"]
 ---
 

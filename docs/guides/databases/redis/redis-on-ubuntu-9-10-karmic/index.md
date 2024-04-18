@@ -1,21 +1,21 @@
 ---
 slug: redis-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Redis on Ubuntu 9.10 (Karmic)'
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-05
+modified: 2011-04-29
+deprecated: true
 keywords: ["redis ubuntu 9.10", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-ubuntu-9-10-karmic/','/databases/redis/ubuntu-9-10-karmic/']
-modified: 2011-04-29
-published: 2010-08-05
-title: 'Redis on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

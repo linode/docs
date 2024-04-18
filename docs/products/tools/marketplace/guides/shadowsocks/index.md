@@ -1,11 +1,11 @@
 ---
+title: "Deploy Shadowsocks through the Linode Marketplace"
 description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the One-Click Marketplace App."
-keywords: ['shadowsocks','marketplace', 'server']
-tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 published: 2020-03-18
 modified: 2022-03-08
+keywords: ['shadowsocks','marketplace', 'server']
+tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 image: DeployShadowsocksServer_oneclickapps.png
-title: "Deploy Shadowsocks through the Linode Marketplace"
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'
 - '[Shadowsocks-libev Github](https://github.com/shadowsocks/shadowsocks-libev)'

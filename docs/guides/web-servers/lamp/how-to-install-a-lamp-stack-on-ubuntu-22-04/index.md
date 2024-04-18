@@ -1,11 +1,13 @@
 ---
 slug: how-to-install-a-lamp-stack-on-ubuntu-22-04
-description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
-keywords: ['Ubuntu LAMP stack','LAMP stack Ubuntu','install LAMP stack','how to install a LAMP Stack on Ubuntu 22.04']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-09
 title: "Install a LAMP Stack on Ubuntu 22.04"
 title_meta: "How to Install a LAMP Stack on Ubuntu 22.04"
+description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-05-09
+keywords: ['Ubuntu LAMP stack','LAMP stack Ubuntu','install LAMP stack','how to install a LAMP Stack on Ubuntu 22.04']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[LAMP Stack Wikipedia page](https://en.wikipedia.org/wiki/LAMP_(software_bundle))'
 - '[MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)'
@@ -19,8 +21,6 @@ relations:
         key: install-lamp-stack
         keywords:
            - distribution: Ubuntu 22.04
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 aliases: ['/lamp-guides/ubuntu-11.04-natty/']
 ---
 

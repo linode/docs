@@ -1,17 +1,17 @@
 ---
 slug: how-to-use-cd
-description: "Learn how to use the cd command to navigate to different directories inside of a Linux or macOS terminal."
-keywords: ["linux", "how to", "cd", "change directory"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-04-23
-published: 2020-06-22
-image: UseTheCDCommand.png
 title: "Using the cd Command to Navigate the Terminal"
 title_meta: "How to Use the cd Command to Navigate the Terminal"
-tags: ["linux"]
-aliases: ['/quick-answers/linux/how-to-use-cd/']
+description: "Learn how to use the cd command to navigate to different directories inside of a Linux or macOS terminal."
 authors: ["Linode"]
 contributors: ["Linode"]
+published: 2020-06-22
+modified: 2020-04-23
+keywords: ["linux", "how to", "cd", "change directory"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: UseTheCDCommand.png
+tags: ["linux"]
+aliases: ['/quick-answers/linux/how-to-use-cd/']
 ---
 
 ## What is cd?

@@ -1,11 +1,11 @@
 ---
-description: "Learn how to enable High Availability on Linode Kubernetes Engine."
-keywords: ['kubernetes', 'lke', 'high availability', 'ha']
-tags: ["networking","kubernetes","container","education"]
-published: 2021-11-04
-modified: 2023-12-18
 title: "High Availability (HA) Control Plane"
 title_meta: "High Availability (HA) Control Plane on LKE"
+description: "Learn how to enable High Availability on Linode Kubernetes Engine."
+published: 2021-11-04
+modified: 2023-12-18
+keywords: ['kubernetes', 'lke', 'high availability', 'ha']
+tags: ["networking","kubernetes","container","education"]
 aliases: ['/guides/enable-lke-high-availability/', '/products/compute/kubernetes/guides/enable-high-availability/']
 ---
 

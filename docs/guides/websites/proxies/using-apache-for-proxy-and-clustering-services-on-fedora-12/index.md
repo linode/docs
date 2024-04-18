@@ -1,21 +1,21 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-fedora-12
-deprecated: true
+title: Using Apache for Proxy and Cluster Services on Fedora 12
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-08
+modified: 2011-04-29
+deprecated: true
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-fedora-12/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-fedora-12/']
-modified: 2011-04-29
-published: 2010-03-08
-title: Using Apache for Proxy and Cluster Services on Fedora 12
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Fedora 12
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

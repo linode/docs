@@ -1,15 +1,15 @@
 ---
 slug: using-your-systems-hosts-file
+title: Using Your System's hosts File
 description: 'Mapping aliases, domains or hostnames to IP addresses using the system host file.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-09-14
+modified: 2019-01-28
 keywords: ["hosts", "hosts file", "hostname", "alias", "dnsec"]
 tags: ["dns","networking","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-28
-published: 2017-09-14
-title: Using Your System's hosts File
 aliases: ['/networking/dns/using-your-systems-hosts-file/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Using Your System's Hosts File](using-your-systems-hosts-files.jpg)

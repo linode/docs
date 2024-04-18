@@ -1,16 +1,16 @@
 ---
 slug: high-availability-wordpress
+title: "Deploy a High Availability WordPress Website on Linode"
 description: "This article shows you how you to configure a high availability WordPress website with a two-Linode cluster using MySQL replication and a NodeBalancer."
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2015-01-09
+modified: 2015-01-21
 keywords: ["wordpress", "mysql", "replication", "master-master", "high availability"]
 tags: ["debian","ubuntu","wordpress","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-01-21
-published: 2015-01-09
-title: "Deploy a High Availability WordPress Website on Linode"
 deprecated: true
 aliases: ['/websites/cms/high-availability-wordpress/','/websites/cms/wordpress/high-availability-wordpress/']
-authors: ["James Stewart"]
-contributors: ["James Stewart"]
 ---
 
 This guide configures a high availability WordPress site with a two-Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer front-end.

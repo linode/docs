@@ -1,15 +1,15 @@
 ---
 slug: namespaces-definition-shortguide
-description: 'Shortguide that displays the definition for Namespaces.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-12
 title: Namespaces Definition
+description: 'Shortguide that displays the definition for Namespaces.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-12
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/namespaces-definition-shortguide/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ### Namespaces

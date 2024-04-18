@@ -1,13 +1,15 @@
 ---
 slug: run-php-cgi-apache-ubuntu-12-04
-deprecated: true
+title: 'Run PHP with CGI and Apache on Ubuntu 12.04 LTS (Precise Pangolin)'
 description: 'This guide provides you with instructions for using PHP CGI to run PHP scripts as individuals users on your system for better security on and performance on Ubuntu 12.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-31
+deprecated: true
 keywords: ["php", "php cgi", "cgi", "apache", "php scripts", "web apps", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/apache/run-php-cgi-apache-ubuntu-12-04/','/web-servers/apache/php-cgi/ubuntu-12-04-precise-pangolin/','/websites/apache/run-php-cgi-apache-ubuntu-12-04/']
-published: 2012-10-31
-title: 'Run PHP with CGI and Apache on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)'
@@ -16,8 +18,6 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the process of setting up Apache and PHP CGI.

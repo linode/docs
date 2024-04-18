@@ -2,11 +2,11 @@
 slug: configure-and-secure-servers-with-cloud-init
 title: "Use Cloud-Init to Automatically Configure and Secure Your Servers"
 description: "Learn how you can use cloud-init to automate the process of configuring and securing a new cloud instance."
-keywords: ['cloud-init','cloudinit','metadata']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2023-11-15
+keywords: ['cloud-init','cloudinit','metadata']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 By using Akamai's Metadata service, you can automatically configure your new Compute Instances through cloud-init. This guide walks you through building a cloud-config file (for use with cloud-init) and deploying a Compute Instance using that configuration. It covers a series of recommended options for initializing and securing a Compute Instance. These configurations parallel the steps in our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Toward the end of the guide, you can see the [Complete Cloud-Config File](#complete-cloud-config-file) as well as steps for how to [Deploy an Instance with User Data](#deploy-an-instance-with-user-data).

@@ -1,21 +1,21 @@
 ---
 slug: apache-and-modwsgi-on-fedora-14
-deprecated: true
+title: 'Apache and mod_wsgi on Fedora 14'
 description: 'This guide shows you how to deploy Python apps, like Django, Web.py, Werkzug, and more using the Apache Web Server application and mod\_wsgi on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
+deprecated: true
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","fedora","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-and-modwsgi-on-fedora-14/','/web-servers/apache/apache-and-modwsgi-on-fedora-14/','/web-servers/apache/mod-wsgi/fedora-14/']
-modified: 2013-10-04
-published: 2011-04-05
-title: 'Apache and mod_wsgi on Fedora 14'
 relations:
     platform:
         key: apache-mod-wsgi
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

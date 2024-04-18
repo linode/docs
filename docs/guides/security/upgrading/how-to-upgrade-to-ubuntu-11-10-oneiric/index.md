@@ -1,21 +1,21 @@
 ---
 slug: how-to-upgrade-to-ubuntu-11-10-oneiric
-deprecated: true
+title: 'How to Upgrade to Ubuntu 11.10 (Oneiric)'
 description: 'How to upgrade from Ubuntu 11.04 (Natty) to Ubuntu 11.10 (Oneiric).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-10-13
+modified: 2013-05-10
+deprecated: true
 keywords: ["ubuntu 11.10 upgrade", "ubuntu oneiric upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-11-10-oneiric/','/upgrading/upgrade-to-ubuntu-11-10-oneiric/']
-modified: 2013-05-10
-published: 2011-10-13
-title: 'How to Upgrade to Ubuntu 11.10 (Oneiric)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 11.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

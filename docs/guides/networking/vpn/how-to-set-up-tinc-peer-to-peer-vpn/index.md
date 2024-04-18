@@ -1,15 +1,15 @@
 ---
 slug: how-to-set-up-tinc-peer-to-peer-vpn
+title: 'How to Set up tinc, a Peer-to-Peer VPN'
 description: 'This guide details how to set up tinc, an open-source, peer-to-peer VPN on your Linode.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2017-09-19
+modified: 2017-09-20
 keywords: ["VPN", "tinc", "Ubuntu", "security"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/how-to-set-up-tinc-peer-to-peer-vpn/']
-published: 2017-09-19
-modified: 2017-09-20
-title: 'How to Set up tinc, a Peer-to-Peer VPN'
-authors: ["Damaso Sanoja"]
-contributors: ["Damaso Sanoja"]
 ---
 
 

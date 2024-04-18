@@ -1,16 +1,16 @@
 ---
 slug: set-up-web-server-host-website
+title: "Set up a Web Server and Host a Website on Linode"
 description: "How to set up your first web server and point a domain name to your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-03-13
+modified: 2021-10-18
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","nginx","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-10-18
-published: 2012-03-13
-title: "Set up a Web Server and Host a Website on Linode"
 aliases: ['/websites/hosting/set-up-web-server-host-website/','/websites/set-up-web-server-host-website/']
 image: Hosting-a-Website-smg.jpg
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Hosting a Website](Hosting-a-Website-smg.jpg "Hosting a Website")

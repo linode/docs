@@ -1,13 +1,15 @@
 ---
 slug: create-a-python-virtualenv-on-ubuntu-18-04
+title: Creating a Python Virtual Environment on Ubuntu 18.04
+title_meta: How to Create a Python Virtual Environment on Ubuntu 18.04
 description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on Ubuntu 18.04 Linode.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-07
 keywords: ["python", "python virtual environment", "virtualenv", "ubuntu 18.04"]
 tags: ["python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-07
 image: Python_virtualenv_Ubuntu1804.png
-title: Creating a Python Virtual Environment on Ubuntu 18.04
-title_meta: How to Create a Python Virtual Environment on Ubuntu 18.04
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
@@ -18,8 +20,6 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/python/create-a-python-virtualenv-on-ubuntu-18-04/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is a Python Virtual Environment?

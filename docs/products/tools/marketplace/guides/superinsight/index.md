@@ -1,9 +1,9 @@
 ---
+title: "Deploy Superinsight DB through the Linode Marketplace"
 description: "Deploy Superinsight DB, a relational database for unstructured data, on the Linode platform."
+published: 2023-01-23
 keywords: ['superinsight','database','relational','unstructured','postgresql']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-01-23
-title: "Deploy Superinsight DB through the Linode Marketplace"
 external_resources:
 - '[Superinsight DB](https://github.com/superinsight/superinsight-db)'
 ---

@@ -1,17 +1,17 @@
 ---
 slug: using-phoenix-framework
-description: "Powered by high-performing Elixir, Phoenix uses the MVC framework pattern. Follow this tutorial to learn more about Phoenix and how to get started using it."
-keywords: ['phoenix framework tutorial','learn phoenix elixir','phoenix liveview']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-05
 title: "How to Use the Phoenix Framework"
 title_meta: "Using the Phoenix Framework"
+description: "Powered by high-performing Elixir, Phoenix uses the MVC framework pattern. Follow this tutorial to learn more about Phoenix and how to get started using it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-01-05
+keywords: ['phoenix framework tutorial','learn phoenix elixir','phoenix liveview']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Phoenix Project Documentation](https://hexdocs.pm/phoenix/Phoenix.html)'
 - '[Toptal: Meet Phoenix: A Rails-like Framework for Modern Web Apps on Elixir](https://www.toptal.com/phoenix/phoenix-rails-like-framework-web-apps)'
 - "[Educative: A Beginner's Guide to the Elixir Programming Language](https://www.educative.io/blog/elixir-functional-programming)"
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 Phoenix offers a web development framework similar to Ruby on Rails, Django, and others. However, the Phoenix framework is more performant because it is built on Elixir. The result is a smooth developer experience coupled with high performance.

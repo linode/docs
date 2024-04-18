@@ -1,20 +1,20 @@
 ---
 slug: how-to-deploy-kubernetes-on-linode-with-rancher-2-x
+title: 'Deploying Kubernetes on Linode with Rancher'
+title_meta: 'How to Deploy Kubernetes on Linode with Rancher'
 description: 'Create and manage Kubernetes clusters with Rancher and deploy apps from the Rancher app library.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-03-14
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["docker","kubernetes","container","ubuntu","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-03-14
-title: 'Deploying Kubernetes on Linode with Rancher'
-title_meta: 'How to Deploy Kubernetes on Linode with Rancher'
 aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
   - '[Linode CCM](https://github.com/linode/linode-cloud-controller-manager)'
   - '[Linode CSI](https://github.com/linode/linode-blockstorage-csi-driver)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Rancher title graphic.](rancher_title_graphic.png)

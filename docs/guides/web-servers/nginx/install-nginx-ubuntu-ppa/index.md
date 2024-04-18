@@ -1,17 +1,17 @@
 ---
 slug: install-nginx-ubuntu-ppa
-description: 'Shortguide for installing NGINX on Ubuntu.'
-keywords: []
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-04-23
-published: 2018-03-05
-headless: true
-show_on_rss_feed: false
 title: Install NGINX on Ubuntu from the Official NGINX Repository
-tags: ["web server","nginx"]
-aliases: ['/web-servers/nginx/install-nginx-ubuntu-ppa/']
+description: 'Shortguide for installing NGINX on Ubuntu.'
 authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
+published: 2018-03-05
+modified: 2018-04-23
+keywords: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+headless: true
+show_on_rss_feed: false
+tags: ["web server","nginx"]
+aliases: ['/web-servers/nginx/install-nginx-ubuntu-ppa/']
 ---
 
 These steps install NGINX Mainline on Ubuntu from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)* series.

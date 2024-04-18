@@ -1,10 +1,10 @@
 ---
+title: "Deploy a LEMP Stack through the Linode Marketplace"
 description: "This guide shows you how to use the Linode Marketplace to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode Compute Instance."
-keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
-tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
 published: 2020-03-11
 modified: 2022-03-08
-title: "Deploy a LEMP Stack through the Linode Marketplace"
+keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
+tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
 image: feature.png
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'

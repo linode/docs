@@ -1,21 +1,21 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-fedora-12
-deprecated: true
+title: Run PHP Applications under CGI with Apache on Fedora 12
 description: 'Methods for enabling dynamic content to run as individual users with PHP on Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-03
+modified: 2012-10-08
+deprecated: true
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","fedora","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/run-php-applications-under-cgi-with-apache-on-fedora-12/','/web-servers/apache/php-cgi/fedora-12/','/websites/apache/run-php-applications-under-cgi-with-apache-on-fedora-12/']
-modified: 2012-10-08
-published: 2010-02-03
-title: Run PHP Applications under CGI with Apache on Fedora 12
 relations:
     platform:
         key: php-cgi-apache
         keywords:
             - distribution: Fedora 12
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,14 +1,16 @@
 ---
 slug: ruby-on-rails-with-apache-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Ruby on Rails with Apache on Ubuntu 9.10 (Karmic)'
 description: 'Using the Apache web server with Ubuntu 9.10 to serve Ruby on Rails applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-29
+modified: 2011-05-17
+deprecated: true
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/','/frameworks/ruby-on-rails-apache/ubuntu-9-10-karmic/','/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/']
-modified: 2011-05-17
-published: 2010-07-29
-title: 'Ruby on Rails with Apache on Ubuntu 9.10 (Karmic)'
 external_resources:
     - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
     - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
@@ -19,8 +21,6 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

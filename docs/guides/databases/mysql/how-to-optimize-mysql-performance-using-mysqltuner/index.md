@@ -1,20 +1,20 @@
 ---
 slug: how-to-optimize-mysql-performance-using-mysqltuner
+title: How to Optimize MySQL Performance Using MySQLTuner
 description: 'This step-by-step guide shows you how to assess your MySQL database performance using MySQLTuner to ensure optimum resource usage.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-02-27
+modified: 2019-02-01
 keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
 aliases: ['/databases/mysql/mysql-performance-tuning-tutorial/','/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/','/databases/mysql/tuning-your-mysql-database/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-01
-published: 2015-02-27
-title: How to Optimize MySQL Performance Using MySQLTuner
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
  - '[MySQL Tuning Server Parameters](http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html)'
  - '[MySQLTuner](https://github.com/major/MySQLTuner-perl)'
 dedicated_cpu_link: true
 tags: ["database","mysql"]
-authors: ["Elle Krout"]
-contributors: ["Elle Krout"]
 ---
 
 Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/guides/tuning-your-apache-server/) to handle larger loads, it is beneficial to tune MySQL to additional connections.

@@ -1,21 +1,21 @@
 ---
 slug: sinatra-framework-and-nginx-on-debian-5-lenny
-deprecated: true
+title: 'Sinatra Framework and nginx on Debian 5 (Lenny)'
 description: 'This guide will show you how to deploy simple web applications with the free and open source Sinatra web development framework on Debian 5 "Lenny".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-21
+modified: 2012-10-08
+deprecated: true
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/','/frameworks/sinatra/debian-5-lenny/','/websites/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/','/development/frameworks/sinatra/sinatra-framework-and-nginx-on-debian-5-lenny/']
-modified: 2012-10-08
-published: 2011-01-21
-title: 'Sinatra Framework and nginx on Debian 5 (Lenny)'
 relations:
     platform:
         key: sinatra-nginx
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,13 +1,15 @@
 ---
 slug: install-vnc-on-ubuntu-16-04
+title: 'Install VNC on Ubuntu 16.04'
 description: 'This guide will show you how to install and configure VNC enabling you to remotely connect to a live desktop environment on your Linode on Ubuntu 16.04.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2016-06-21
+modified: 2017-11-27
 og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 keywords: ["vnc", "remote desktop", "ubuntu", "16.04"]
 tags: [ubuntu]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-27
-published: 2016-06-21
-title: 'Install VNC on Ubuntu 16.04'
 deprecated: true
 deprecated_link: 'applications/remote-desktop/install-vnc-on-ubuntu-18-04/'
 external_resources:
@@ -19,8 +21,6 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-16-04/']
-authors: ["Alex Fornuto"]
-contributors: ["Alex Fornuto"]
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.

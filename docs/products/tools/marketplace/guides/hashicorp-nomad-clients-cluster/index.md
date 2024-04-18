@@ -1,10 +1,10 @@
 ---
+title: "Deploy HashiCorp Nomad Clients Cluster through the Linode Marketplace"
 description: "Deploy HashiCorp Nomad Clients Cluster, a flexible scheduling and orchestration for diverse workloads, on Linode Compute Instances.'"
-keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-12
 modified: 2023-11-13
-title: "Deploy HashiCorp Nomad Clients Cluster through the Linode Marketplace"
+keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
+tags: ["marketplace", "linode platform", "cloud manager"]
 ---
 
 The [HashiCorp Nomad](https://www.nomadproject.io/) Clients Cluster deploys 3, 5 or 7 Compute Instances as clients to horizontally scale an *existing HashiCorp Nomad Cluster*. The plan type and size you select is applied to each individual instance.

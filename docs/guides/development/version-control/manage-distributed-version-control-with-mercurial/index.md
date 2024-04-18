@@ -1,18 +1,18 @@
 ---
 slug: manage-distributed-version-control-with-mercurial
+title: Manage Distributed Version Control with Mercurial
 description: 'Use the Mercurial version control system to manage source code in distributed environments.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-26
+modified: 2018-04-26
 keywords: ["version control", "hg", "mercurial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/manage-distributed-version-control-with-mercurial/','/linux-tools/version-control/mercurial/','/applications/development/manage-distributed-version-control-with-mercurial/']
-modified: 2018-04-26
-published: 2010-04-26
-title: Manage Distributed Version Control with Mercurial
 external_resources:
  - '[HG Init, a Guide by Joel Spolsky](http://hginit.com/)'
 audiences: ["beginner"]
 tags: ["version control system"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [Mercurial](https://www.mercurial-scm.org/) is one of the leading distributed version control systems which allows software developers and teams of collaborators to work on a common code base without the need to rely on a centralized server or constant network connection. Mercurial runs on multiple platforms and can be used to manage code projects on many different operating systems.

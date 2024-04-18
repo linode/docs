@@ -1,21 +1,21 @@
 ---
 slug: lemp-server-on-fedora-15
-deprecated: true
+title: LEMP Server on Fedora 15
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-06-24
+modified: 2012-06-21
+deprecated: true
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lemp-guides/fedora-15/','/websites/lemp/lemp-server-on-fedora-15/','/web-servers/lemp/lemp-server-on-fedora-15/']
-modified: 2012-06-21
-published: 2011-06-24
-title: LEMP Server on Fedora 15
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Fedora 15
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide will help you get up and running quickly with a LEMP (Linux, nginx, MySQL, PHP) stack on your Linode. If you haven't done so already, please follow the instructions in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) before proceeding. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).

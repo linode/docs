@@ -1,12 +1,14 @@
 ---
 slug: install-alpine-linux-on-your-linode
+title: 'Install Alpine Linux on your Linode'
 description: 'Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode'
+authors: ["Andrew Leap"]
+contributors: ["Andrew Leap"]
+published: 2016-09-22
+modified: 2018-12-18
 keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine linux", "alpine linux packages"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: 2018-12-18
-published: 2016-09-22
-title: 'Install Alpine Linux on your Linode'
 deprecated: True
 external_resources:
 - '[Alpine Linux](http://www.alpinelinux.org/)'
@@ -16,8 +18,6 @@ relations:
         keywords:
             - distribution: Alpine
 aliases: ['/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/']
-authors: ["Andrew Leap"]
-contributors: ["Andrew Leap"]
 ---
 
 ![Install Alpine Linux on your Linode](Install_Alpine_Linux_on_your_Linode_smg.png "Install Alpine Linux on your Linode")

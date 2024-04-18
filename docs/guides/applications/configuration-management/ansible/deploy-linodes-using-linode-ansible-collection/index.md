@@ -1,10 +1,12 @@
 ---
 slug: deploy-linodes-using-linode-ansible-collection
+title: "Use the Linode Ansible Collection to Deploy a Linode"
 description: "The Linode Ansible collection provides plugins for managing Linode services with Ansible. This guide shows how to install and use the Linode Ansible collection."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-07-14
 keywords: ['ansible','Linode Ansible Collection','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-14
-title: "Use the Linode Ansible Collection to Deploy a Linode"
 aliases: ['/guides/deploy-linodes-using-linode-collection/']
 external_resources:
 - '[Ansible Collections](https://github.com/ansible-collections/overview)'
@@ -12,8 +14,6 @@ external_resources:
 - '[Ansible Galaxy](https://galaxy.ansible.com/linode/cloud)'
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 tags: ["automation", "saas", "gaming"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Ansible is a popular open-source Infrastructure as Code (IaC) tool that can be used to complete common IT tasks like cloud provisioning and configuration management across a wide array of infrastructure components. Commonly seen as a solution to multi-cloud configurations, automation, and continuous delivery issues, Ansible is considered by many to be an industry standard in the modern cloud landscape.

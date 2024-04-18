@@ -1,12 +1,12 @@
 ---
-description: "Learn how to create and manage configuration profiles for a Compute Instance, including details on each setting and its recommended value."
-keywords: ["configuration profiles"]
-tags: ["linode platform","cloud manager"]
-published: 2021-04-30
-modified: 2024-01-30
-image: Linode-Configuration-Profiles.jpg
 title: "Manage Configuration Profiles on a Compute Instance"
 title_meta: "How to Manage Configuration Profiles on a Compute Instance"
+description: "Learn how to create and manage configuration profiles for a Compute Instance, including details on each setting and its recommended value."
+published: 2021-04-30
+modified: 2024-01-30
+keywords: ["configuration profiles"]
+tags: ["linode platform","cloud manager"]
+image: Linode-Configuration-Profiles.jpg
 aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/']
 ---
 

@@ -1,13 +1,13 @@
 ---
 slug: web-servers-list
-description: 'Use this helpful web servers list to build your website. Our guide includes a list of web server names and comparisons between them. Learn more here in this guide.'
-keywords: ['servers comparison','web server names','list of web servers']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-03
 title: "The Ultimate Web Servers List: 11 Popular Web Servers To Use Today"
 title_meta: "Web Server Software List and Servers Comparison"
+description: 'Use this helpful web servers list to build your website. Our guide includes a list of web server names and comparisons between them. Learn more here in this guide.'
 authors: ["Wayne Rash"]
 contributors: ["Wayne Rash"]
+published: 2021-12-03
+keywords: ['servers comparison','web server names','list of web servers']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 This is the web server list you’ve been looking for – the guide discusses the most popular web servers and their advantages.

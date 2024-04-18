@@ -1,18 +1,18 @@
 ---
 slug: google-analytics-on-wordpress
+title: Google Analytics for WordPress
 description: 'Get in-depth website visitor statistics with Google Analytics on your WordPress website.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-01-29
 keywords: ["analytics", "google analytics", "wordpress", "analytics", "tracking", "statistics"]
 tags: ["wordpress","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-01-29
-title: Google Analytics for WordPress
 external_resources:
  - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
  - '[Google Analytics for Websites](/docs/guides/google-analytics-for-websites/)'
 aliases: ['/uptime/analytics/google-analytics-on-wordpress/']
-authors: ["Elle Krout"]
-contributors: ["Elle Krout"]
 ---
 
 Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.

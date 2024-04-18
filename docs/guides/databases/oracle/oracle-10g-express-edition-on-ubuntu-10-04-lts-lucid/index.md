@@ -1,21 +1,21 @@
 ---
 slug: oracle-10g-express-edition-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Oracle 10g Express Edition on Ubuntu 10.04 LTS (Lucid)'
 description: 'Install Oracle 10g to power server-side applications and web apps on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-05
+modified: 2014-08-13
+deprecated: true
 keywords: ["oracle ubuntu 10.04", "oracle ubuntu", "oracle linux", "sql database", "relational database", "rdbms", "oracle 10g"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/10g-ubuntu-10-04-lucid/','/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-04-lts-lucid/']
-modified: 2014-08-13
-published: 2010-05-05
-title: 'Oracle 10g Express Edition on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: install-oracle10g-express
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Ubuntu 10.04 LTS (Lucid) Linode.

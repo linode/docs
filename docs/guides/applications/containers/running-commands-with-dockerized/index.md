@@ -2,11 +2,11 @@
 slug: running-commands-with-dockerized
 title: "How to Use Dockerized to Run Commands"
 description: "Dockerized packages together a set of useful command-line tools, allowing you to run commands without installing additional software. Learn more about Dockerized, including how to set up and start using it, in this guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2023-08-08
 keywords: ['docker run command', 'dockerized application', 'docker containerize command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 [Dockerized](https://github.com/datastack-net/dockerized) is a utility that runs common commands, interpreters, and other applications within a Docker container. This saves you from manually installing each command (and its dependencies) to your local system. Using Dockerized allows you to try out a new tool, leverage a tool for a one-off task, or ensure your team is using the same version of a tool.

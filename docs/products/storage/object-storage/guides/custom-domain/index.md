@@ -1,10 +1,10 @@
 ---
 title: "Configure a Custom Domain (with a TLS/SSL Certificate)"
 description: "Learn how to upload a custom SSL/TLS certificate to enable SSL on a bucket on Linode Object Storage."
-keywords: ['object','storage','object storage','s3','bucket']
-tags: ["linode platform","cloud manager"]
 published: 2022-02-07
 modified: 2023-08-22
+keywords: ['object','storage','object storage','s3','bucket']
+tags: ["linode platform","cloud manager"]
 aliases: ['/platform/object-storage/enable-ssl-for-object-storage/','/guides/enable-ssl-for-object-storage/']
 ---
 

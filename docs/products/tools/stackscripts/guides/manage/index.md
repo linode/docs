@@ -2,10 +2,10 @@
 title: Manage StackScripts
 title_meta: Manage StackScripts on the Linode Platform
 description: "Learn how to view, edit, and manage StackScripts on your Linode account."
-keywords: ["automation", "scripts", "deployments", "instance"]
-tags: ["linode platform","automation","cloud manager"]
 published: 2020-04-22
 modified: 2022-11-30
+keywords: ["automation", "scripts", "deployments", "instance"]
+tags: ["linode platform","automation","cloud manager"]
 aliases: ['/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/','/guides/creating-and-managing-stackscripts-a-tutorial/','/products/tools/stackscripts/guides/stackscripts-edit-stackscript/','/products/tools/stackscripts/guides/stackscripts-delete-stackscript/','/products/tools/stackscripts/guides/stackscripts-create-public-stackscript/']
 ---
 

@@ -1,12 +1,14 @@
 ---
 slug: how-to-install-tensorflow
+title: "Installing TensorFlow on Ubuntu 20.04"
+title_meta: "How to Install TensorFlow on Ubuntu 20.04"
 description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-02-08
 keywords: ['TensorFlow','installation','machine learning','and key phrases']
 tags: ['python', 'ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-08
-title: "Installing TensorFlow on Ubuntu 20.04"
-title_meta: "How to Install TensorFlow on Ubuntu 20.04"
 external_resources:
 - '[TensorFlow site](https://www.tensorflow.org/)'
 - '[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)'
@@ -17,8 +19,6 @@ external_resources:
 - '[Tools](https://www.tensorflow.org/resources/tools)'
 - '[TensorFlow community](https://www.tensorflow.org/community)'
 
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [*TensorFlow*](https://www.tensorflow.org/) is an open-source software library used for machine learning and to train *[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)*. Google developed TensorFlow for both research and production use, but it is now released under the Apache license. It is available for many operating systems, including the most common Linux distributions. For learning purposes, it is best to install TensorFlow in a Python virtual environment. TensorFlow is considered a good choice for those who are new to machine learning.

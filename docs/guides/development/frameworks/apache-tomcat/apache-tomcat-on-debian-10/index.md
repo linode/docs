@@ -1,14 +1,16 @@
 ---
 slug: apache-tomcat-on-debian-10
+title: 'Installing Apache Tomcat on Debian 10'
+title_meta: 'How to Install Apache Tomcat on Debian 10'
 description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-25
 keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat debian"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-debian-10/','/development/frameworks/apache-tomcat/apache-tomcat-on-debian-10/','/development/frameworks/apache-tomcat-on-debian-10/']
-published: 2020-03-25
 image: ApacheTomcat_Deb10.png
-title: 'Installing Apache Tomcat on Debian 10'
-title_meta: 'How to Install Apache Tomcat on Debian 10'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -21,8 +23,6 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Debian 10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

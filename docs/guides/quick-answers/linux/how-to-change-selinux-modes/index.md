@@ -1,19 +1,19 @@
 ---
 slug: how-to-change-selinux-modes
+title: "Changing SELinux Modes"
+title_meta: "How to Change SELinux Modes"
 description: "Security-Enhanced Linux works to filter system access. Learn how to switch between SELinux Modes, from full enforcement to completely disabled."
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-22
+modified: 2017-10-18
 keywords: ["selinux"]
 aliases: ['/quick-answers/linux/how-to-change-selinux-modes/','/quick-answers/linux/how-to-disable-selinux/']
 tags: ["fedora","centos","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-06-22
-modified: 2017-10-18
-title: "Changing SELinux Modes"
-title_meta: "How to Change SELinux Modes"
 external_resources:
 - '[Security Enhanced Linux User Guide, Red Hat](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/index.html)'
 - '[SELinux, CentOS Wiki](https://wiki.centos.org/HowTos/SELinux)'
-authors: ["Angel Guarisma"]
-contributors: ["Angel Guarisma"]
 ---
 
 [Security Enhanced Linux](https://selinuxproject.org/page/Main_Page) is a Linux security module for [mandatory](https://en.wikipedia.org/wiki/Mandatory_access_control) or [role-based](https://wiki.centos.org/HowTos/SELinux#head-91a597b2b6f140484d62d59a0b9a1dfea4dffc50) access control. SELinux is packaged with CentOS and Fedora by default, and can be running in one of three [modes](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Introduction-SELinux_Modes.html): *disabled*, *permissive* or *enforcing*.

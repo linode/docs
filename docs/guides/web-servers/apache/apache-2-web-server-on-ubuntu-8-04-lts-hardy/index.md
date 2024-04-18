@@ -1,21 +1,21 @@
 ---
 slug: apache-2-web-server-on-ubuntu-8-04-lts-hardy
-deprecated: true
+title: 'Apache 2 Web Server on Ubuntu 8.04 LTS (Hardy)'
 description: 'Instructions for getting started with the Apache web server on Ubuntu 8.04 LTS (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-11
+modified: 2011-05-17
+deprecated: true
 keywords: ["apache", "apache ubuntu 8.04", "apache ubuntu hardy", "web server", "apache on ubuntu", "apache hardy"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/installation/ubuntu-8-04-hardy/','/web-servers/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/','/websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
-modified: 2011-05-17
-published: 2009-08-11
-title: 'Apache 2 Web Server on Ubuntu 8.04 LTS (Hardy)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

@@ -1,15 +1,15 @@
 ---
 slug: getting-started-with-nginx-part-4-tls-deployment-best-practices
+title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
+title_meta: "Getting Started with NGINX: TLS Deployment Best Practices"
 description: "This is step four in our guide to Getting Started with NGINX where you will learn best practices, tips, and tricks, when you are deploying HTTPS websites and NGINX."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-02-09
 keywords: ["ssl", "tls", "nginx", "https", "certificate", "hsts", "ocsp", "http2"]
 tags: ["web server","http","nginx","security","ssl"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-ssl-and-tls-deployment-best-practices/','/web-servers/nginx/tls-deployment-best-practices-for-nginx/','/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/','/guides/tls-deployment-best-practices-for-nginx/']
-published: 2018-02-09
-title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
-title_meta: "Getting Started with NGINX: TLS Deployment Best Practices"
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![TLS Deployment Best Practices](getting-started-nginx-part-4-tls-deployment-best-practices.jpg)

@@ -1,15 +1,15 @@
 ---
 slug: k8s-alpha-deprecation-shortguide
-description: 'Shortguide that displays a deprecation notice where applied'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-03
 title: k8s-alpha deprecation Definition
+description: 'Shortguide that displays a deprecation notice where applied'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-03
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/k8s-alpha-deprecation-shortguide/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 {{< note type="alert" >}}

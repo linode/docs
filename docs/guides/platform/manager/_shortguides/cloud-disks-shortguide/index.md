@@ -1,16 +1,16 @@
 ---
 slug: cloud-disks-shortguide
-description: 'Shortguide that shows you how to find the Disks section of the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-22
 title: How to Find the Disks Section in the Cloud Manager
+description: 'Shortguide that shows you how to find the Disks section of the Cloud Manager.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-22
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-disks-shortguide/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 You can find your Linode's disks in the **Storage** tab of the Linode's detail page.

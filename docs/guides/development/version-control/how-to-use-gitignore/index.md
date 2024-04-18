@@ -1,15 +1,15 @@
 ---
 slug: how-to-use-gitignore
+title: "Use .gitignore to Ignore Specific Files and Folders"
 description: 'This guide explains the .gitignore file, describes how to create and update it, and documents its syntax'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-06-10
 keywords: ['gitignore','.gitignore','Gitignore syntax','How to add files to gitignore','What is gitignore']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-10
-title: "Use .gitignore to Ignore Specific Files and Folders"
 external_resources:
 - '[gitignore Documentation](https://git-scm.com/docs/gitignore)'
 - '[Git website](https://git-scm.com/)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [Git](https://git-scm.com/) is a powerful *version control system* (VCS). It allows developers to manage, coordinate, and control the contents of their workspaces, but is not without complexity. Git users often struggle with untracked local files that complicate the output of commands like `git status`. This guide explains the `.gitignore` file, which provides a handy workaround to this problem. It also describes how to create a `.gitignore` file, how to add files and folders to `gitignore`, and how to use its powerful syntax.

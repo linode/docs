@@ -1,14 +1,14 @@
 ---
 slug: python-arrays
-description: "Python arrays store collections of data. In this tutorial, learn what a Python array is, how it differs from a list, and how to add and remove elements from an array."
-keywords: ['python arrays','python arrays tutorial','python arrays vs lists']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-17
 title: "Python Arrays: What They Are and How to Use Them"
-external_resources:
-- '[Python Docs: array — Efficient arrays of numeric values](https://docs.python.org/3/library/array.html)'
+description: "Python arrays store collections of data. In this tutorial, learn what a Python array is, how it differs from a list, and how to add and remove elements from an array."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
+published: 2022-06-17
+keywords: ['python arrays','python arrays tutorial','python arrays vs lists']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external_resources:
+- '[Python Docs: array — Efficient arrays of numeric values](https://docs.python.org/3/library/array.html)'
 ---
 
 Python arrays provide an effective way to store multiple values of the same type in a single variable. In this tutorial, you learn what Python arrays are and how to use them, and the difference between Python lists and arrays. You also learn how to loop through an array, add and remove elements from an array, and how to combine the values stored in different arrays.

@@ -1,9 +1,9 @@
 ---
+title: "Deploy Joomla through the Linode Marketplace"
 description: "Deploy Joomla on a Linode Compute Instance. A content management system to ease administration overhead for your websites."
+published: 2022-03-29
 keywords: ['joomla','csm','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-03-29
-title: "Deploy Joomla through the Linode Marketplace"
 external_resources:
 - '[Joomla](https://www.joomla.org/)'
 ---

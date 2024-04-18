@@ -1,8 +1,8 @@
 ---
 title: "Change Longview Plan (Upgrade to Pro)"
 description: "Information on upgrading your Longview to a Pro plan or downgrading to the Free plan."
-keywords: ['longview','billing','pricing','price','limit','transfer', 'plan']
 published: 2023-05-24
+keywords: ['longview','billing','pricing','price','limit','transfer', 'plan']
 tags: ["linode platform","cloud manager","statistics","monitoring"]
 ---
 

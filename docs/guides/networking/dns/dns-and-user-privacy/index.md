@@ -2,11 +2,11 @@
 slug: dns-and-user-privacy
 title: "An Introduction to DNS and User Privacy"
 description: 'Discover how DNS impacts user privacy and explore solutions such as DNS over HTTPS (DoH) and DNS over TLS (DoT) to enhance security, protect data, and safeguard traffic.'
-keywords: ['dns and user privacy','dns','domain name service','user privacy','dns over tls','dns over http','dot/doh dns server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
 contributors: ["David Robert Newman"]
 published: 2023-06-09
+keywords: ['dns and user privacy','dns','domain name service','user privacy','dns over tls','dns over http','dot/doh dns server']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[RFC 9076: DNS Privacy Considerations](https://www.rfc-editor.org/rfc/rfc9076.html)'
 - '[DNS Privacy Project: Why Is DNS a Privacy Concern?](https://dnsprivacy.org/the_problem/)'

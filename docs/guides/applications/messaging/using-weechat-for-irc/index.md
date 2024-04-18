@@ -1,18 +1,18 @@
 ---
 slug: using-weechat-for-irc
+title: 'Using WeeChat for Internet Relay Chat'
 description: 'Use WeeChat and GNU Screen to create and maintain connections to IRC networks'
+authors: ["Samuel Damashek"]
+contributors: ["Samuel Damashek"]
+published: 2014-08-27
+modified: 2016-03-10
 keywords: ["weechat", "irc", "oftc", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-03-10
-published: 2014-08-27
-title: 'Using WeeChat for Internet Relay Chat'
 external_resources:
  - '[WeeChat Home Page](http://www.weechat.org/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
  - '[Screen for Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
 aliases: ['/applications/messaging/using-weechat-for-irc/']
-authors: ["Samuel Damashek"]
-contributors: ["Samuel Damashek"]
 ---
 
 

@@ -1,21 +1,21 @@
 ---
 slug: piwik-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Piwik on Ubuntu 10.04 (Lucid)'
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 10.04 (Lucid).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-12-06
+modified: 2013-10-01
+deprecated: true
 keywords: ["open source analytics", "piwik ubuntu 10.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/ubuntu-10-04-lucid/','/uptime/analytics/piwik-on-ubuntu-10-04-lucid/']
-modified: 2013-10-01
-published: 2010-12-06
-title: 'Piwik on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: using-piwik-analytics
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Stan Schwertly"]
-contributors: ["Stan Schwertly"]
 ---
 
 

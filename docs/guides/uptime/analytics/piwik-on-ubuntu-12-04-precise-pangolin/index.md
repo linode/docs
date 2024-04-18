@@ -1,21 +1,21 @@
 ---
 slug: piwik-on-ubuntu-12-04-precise-pangolin
-deprecated: true
+title: 'Piwik on Ubuntu 12.04 (Precise Pangolin)'
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 12.04 (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-10
+modified: 2014-01-28
+deprecated: true
 keywords: ["open source analytics", "piwik ubuntu 12.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/piwik-on-ubuntu-12-04-precise-pangolin/','/web-applications/analytics/piwik/ubuntu-12-04-precise-pangolin/']
-modified: 2014-01-28
-published: 2012-10-10
-title: 'Piwik on Ubuntu 12.04 (Precise Pangolin)'
 relations:
     platform:
         key: using-piwik-analytics
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program". As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.

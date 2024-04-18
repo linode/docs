@@ -1,15 +1,15 @@
 ---
 slug: troubleshooting-problems-with-postfix-dovecot-and-mysql
+title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
 description: 'This is a reference guide for testing and troubleshooting a email server running Postfix as it''s MTA, Dovecot as a POP3/IMAP server, and MySQL for database.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-07-22
+modified: 2014-03-24
 keywords: ["postfix", "dovecot", "mysql"]
 tags: ["mysql","postfix","email","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/','/email/postfix/troubleshooting/']
-modified: 2014-03-24
-published: 2013-07-22
-title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Troubleshooting Problems with Postfix, Dovecot, and MySQL](troubleshooting-problems-with-postfix-dovecot-and-mysql.jpg "Troubleshooting Problems with Postfix, Dovecot, and MySQL")

@@ -1,10 +1,10 @@
 ---
+title: "Deploy a LAMP Stack through the Linode Marketplace"
 description: "This guide shows you how to use the Linode Marketplace One-Click Application to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
-keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
-tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 published: 2019-03-26
 modified: 2023-06-06
-title: "Deploy a LAMP Stack through the Linode Marketplace"
+keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
+tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 external_resources:
 - '[Apache Getting Started](http://httpd.apache.org/docs/current/getting-started.html)'
 aliases: ['/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/','/platform/one-click/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-marketplace-apps/','/guides/lamp-stack-marketplace-app/']

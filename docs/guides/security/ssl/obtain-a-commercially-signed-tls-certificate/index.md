@@ -1,15 +1,15 @@
 ---
 slug: obtain-a-commercially-signed-tls-certificate
+title: 'Obtain a Commercially Signed TLS Certificate'
 description: 'This guide shows how to create a commercially-signed TLS certificate with OpenSSL.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-12-20
+modified: 2018-01-23
 keywords: ["ssl", "tls", "https", "certificate", "commercial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora/','/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/','/security/ssl/obtain-a-commercially-signed-tls-certificate/','/security/ssl/obtaining-a-commercial-ssl-certificate/','/security/ssl/obtaining-a-commercially-signed-ssl-certificate/']
-modified: 2018-01-23
-published: 2017-12-20
-title: 'Obtain a Commercially Signed TLS Certificate'
 tags: ["security","ssl"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Obtain a Commercially Signed TLS Certificate](Obtain-a-Commercially-Signed-TLS-Certificate-smg.jpg)

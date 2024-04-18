@@ -2,11 +2,11 @@
 slug: what-are-cloud-native-applications
 title: "What Are Cloud-Native Applications"
 description: 'Learn what cloud native means, and how cloud-native apps differ from traditional on-premises applications.'
-keywords: ['cloud-native applications','cloud native apps','microservices','kubernetes','docker']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 published: 2023-06-12
+keywords: ['cloud-native applications','cloud native apps','microservices','kubernetes','docker']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 "Cloud-native applications" is a term that has evolved as it has grown. As part of that growth, the [Cloud Native Computing Foundation](https://www.cncf.io/) (CNCF) was launched in 2015 by the Linux Foundation. It serves as a vendor-neutral platform for many projects around cloud-native apps, including Kubernetes, Prometheus, and Envoy.

@@ -1,15 +1,15 @@
 ---
 slug: how-to-work-with-mysql-subqueries
-description: 'A subquery is an SQL query that is nested within another query. This guide shows how to use correlated subqueries, as well as subqueries as derived tables.'
-keywords: ['MySQL', 'database', 'subqueries']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-04
 title: Working with MySQL Subqueries"
 title_meta: "How to Work with MySQL Subqueries"
-external_resources:
-- '[MySQL Subqueries](https://dev.mysql.com/doc/refman/8.0/en/subqueries.html)'
+description: 'A subquery is an SQL query that is nested within another query. This guide shows how to use correlated subqueries, as well as subqueries as derived tables.'
 authors: ["Francis Ndungu"]
 contributors: ["Francis Ndungu"]
+published: 2021-02-04
+keywords: ['MySQL', 'database', 'subqueries']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external_resources:
+- '[MySQL Subqueries](https://dev.mysql.com/doc/refman/8.0/en/subqueries.html)'
 ---
 
 A **subquery** is an SQL (Structured Query Language) query that is nested within another SQL query. The command that the subquery is nested in is referred to as the parent query. Subqueries are used to pre-process data that is used in the parent query. Subqueries can be applied in `SELECT`, `INSERT`, `UPDATE`, and `DELETE` operations.

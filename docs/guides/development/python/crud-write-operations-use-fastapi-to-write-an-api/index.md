@@ -1,14 +1,14 @@
 ---
 slug: crud-write-operations-use-fastapi-to-write-an-api
-description: "If you are familiar with FastAPI, you can use this guide to add CRUD write operations to your API."
-keywords: ['CRUD operations in Python']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-09
 title: "CRUD Write Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Write Operations: Using FastAPI to Write an API"
-tags: ["python", "django"]
+description: "If you are familiar with FastAPI, you can use this guide to add CRUD write operations to your API."
 authors: ["Chelsea Troy"]
 contributors: ["Chelsea Troy"]
+published: 2021-04-09
+keywords: ['CRUD operations in Python']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["python", "django"]
 ---
 
 FastAPI is a high-performance Python *micro-framework* designed to help developers build APIs quickly. Out-of-the-box, it generates interactive API documentation powered by the [Swagger UI](https://github.com/swagger-api/swagger-ui). This Python framework is minimal by default, but can be configured, and extended to fit your API's use case.

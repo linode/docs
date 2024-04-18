@@ -1,17 +1,17 @@
 ---
 slug: posthog-on-linode-kubernetes-engine-install
+title: "Track Funnel and Product Analytics With PostHog on LKE"
 description: 'PostHog is an all-in-one analytics tool that rivals Google Analytics. Learn how to self-host PostHog on LKE to measure and track usage and funnel statistics and insights.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-02-18
+modified: 2023-03-30
 keywords: ['PostHog','Product analytics','Funnel analysis','Install PostHog LKE','Install PostHog Linode']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-18
-modified: 2023-03-30
-title: "Track Funnel and Product Analytics With PostHog on LKE"
 external_resources:
 - '[PostHog site](https://posthog.com/)'
 - '[PostHog user guide](https://posthog.com/docs/user-guides)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [*PostHog*](https://posthog.com/) is an open-source product analytics tool that can replace Google Analytics. PostHog can be self-hosted on the [Linode Kubernetes Engine](/docs/products/compute/kubernetes/) (LKE) and installed using `kubectl` and [*Helm 3*](https://helm.sh/), a client that acts as a package manager for Kubernetes. PostHog offers a wide variety of features including funnel analysis, product use trends, and session recordings. This guide introduces PostHog and explains how to install and configure it on the LKE.

@@ -1,16 +1,16 @@
 ---
 slug: use-the-distribution-supplied-kernel-on-centos-6-with-grub-legacy
+title: 'Use the Distribution-Supplied Kernel on CentOS 6 with Grub Legacy'
 description: 'Configure your CentOS 6 Linode to use the distribution-supplied kernel'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-03-10
+modified: 2020-12-01
 keywords: ["centos 6", "custom kernel", "grub legacy"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-01
-published: 2017-03-10
-title: 'Use the Distribution-Supplied Kernel on CentOS 6 with Grub Legacy'
 deprecated: true
 aliases: ['/tools-reference/custom-kernels-distros/use-the-distribution-supplied-kernel-on-centos-6-with-grub-legacy/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide will show you how to install and use the distribution-supplied kernel for CentOS 6, with our **Grub Legacy** boot option.

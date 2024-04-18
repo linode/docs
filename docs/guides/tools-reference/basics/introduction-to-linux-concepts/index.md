@@ -1,19 +1,19 @@
 ---
 slug: introduction-to-linux-concepts
+title: Introduction to Linux Concepts
 description: 'An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-31
+modified: 2013-12-19
 keywords: ["Linux", "Unix-Like systems", "history"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/introduction-to-linux-concepts/','/tools-reference/introduction-to-linux-concepts/','/using-linux/linux-concepts/']
-modified: 2013-12-19
-published: 2009-08-31
-title: Introduction to Linux Concepts
 external_resources:
  - '[Using the Terminal](/docs/guides/using-the-terminal/)'
  - '[LAMP Guides](/docs/lamp-guides/)'
  - '[Package Management](/docs/guides/linux-package-management-overview/)'
 tags: ["linux"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Linodes run **Linux**. Linux is an operating system that works just like Windows and Mac OS X. As an operating system, Linux manages your Linode's hardware and provides services your other software needs to run.

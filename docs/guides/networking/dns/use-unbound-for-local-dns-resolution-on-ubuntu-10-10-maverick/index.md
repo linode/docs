@@ -1,21 +1,21 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Use Unbound for Local DNS Resolution on Ubuntu 10.10 (Maverick)'
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-02
+modified: 2012-10-08
+deprecated: true
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-10-10-maverick/','/dns-guides/unbound-dns-resolver-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-published: 2011-02-02
-title: 'Use Unbound for Local DNS Resolution on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

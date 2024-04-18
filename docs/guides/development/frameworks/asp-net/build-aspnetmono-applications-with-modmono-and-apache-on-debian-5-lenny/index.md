@@ -1,21 +1,21 @@
 ---
 slug: build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny
+title: "Build ASP.NET Applications with mod_mono and Apache on Debian 5"
 description: "This guide will show you how to use the Mono Project's Apache module to run Microsoft ASP.NET applications on Debian 5 (Lenny) similar to Windows Server."
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-08-05
+modified: 2013-09-27
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/asp-net/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/','/frameworks/mod-mono/debian-5-lenny/','/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/','/websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/']
-modified: 2013-09-27
-published: 2010-08-05
-title: "Build ASP.NET Applications with mod_mono and Apache on Debian 5"
 deprecated: true
 relations:
     platform:
         key:  asp-mono-apache
         keywords:
             - distribution: Debian 5
-authors: ["Brett Kaplan"]
-contributors: ["Brett Kaplan"]
 ---
 
 `mod_mono` is an Apache module that makes it possible to run ASP.NET applications in Linux environments running Apache. While ASP.NET is a Microsoft technology and is traditionally used with IIS, `mod_mono` has become a viable option for deploying ASP.NET applications on Linux. This guide is inspired by the [mod\_mono guide created by the Ubuntu Community](https://help.ubuntu.com/community/ModMono) and the [Mono Project's Apache and Mono document](http://mono-project.com/Mod_mono) with minor modifications. This guide does not cover installation and configuration of the Mono IDE which is used to develop ASP.NET applications on Linux. If you are interested in developing using Visual Studio for Mono, you can download a 30-day trial of the commercial Mono Tools plugin at the [Mono Tools for Visual Studio page](http://go-mono.com/monotools).

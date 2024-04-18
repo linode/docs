@@ -1,22 +1,22 @@
 ---
 slug: control-network-traffic-with-iptables
+title: A Tutorial for Controlling Network Traffic with iptables
+title_meta: Controlling Network Traffic with iptables - A Tutorial
 description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-30
+modified: 2017-02-28
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
 bundles: ['debian-security', 'centos-security', 'network-security']
-modified: 2017-02-28
-published: 2010-07-30
-title: A Tutorial for Controlling Network Traffic with iptables
-title_meta: Controlling Network Traffic with iptables - A Tutorial
 external_resources:
  - '[Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
  - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
 tags: ["networking","security"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 **iptables** is an application that allows users to configure specific rules that will be enforced by the kernel's `netfilter` framework. It acts as a packet filter and firewall that examines and directs traffic based on port, protocol and other criteria. This guide will focus on the configuration and application of iptables rulesets and will provide examples of ways they are commonly used.

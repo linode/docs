@@ -1,18 +1,18 @@
 ---
 slug: how-to-use-nslookup-command
-description: 'The nslookup command lets you quickly obtain DNS records. Learn how to use nslookup, including both interactive and non-interactive modes.'
-keywords: ['nslookup command','nslookup ip address','how to use nslookup','nslookup examples']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-01
 title: "Use the nslookup Command"
 title_meta: "A Complete Guide to the nslookup Command"
+description: 'The nslookup command lets you quickly obtain DNS records. Learn how to use nslookup, including both interactive and non-interactive modes.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-09-01
+keywords: ['nslookup command','nslookup ip address','how to use nslookup','nslookup examples']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[nslookup man page](https://manpages.ubuntu.com/manpages/bionic/man1/nslookup.1.html)'
 - '[Wikipedia nslookup page](https://en.wikipedia.org/wiki/Nslookup)'
 - '[Wikipedia Domain Name System page](https://en.wikipedia.org/wiki/Domain_Name_System)'
 - '[Microsoft nslookup documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 The `nslookup` command is a useful tool for investigating domain name propagation issues. It allows users to obtain information regarding domain names and IP addresses from the *Domain Name System* (DNS) infrastructure. This guide introduces and explains how to use the `nslookup` command, and provides several examples.

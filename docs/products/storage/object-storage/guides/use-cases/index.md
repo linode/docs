@@ -1,10 +1,10 @@
 ---
+title: "Use Cases for Object Storage"
 description: "This guide provides you with an introduction to Linode Object Storage and also offers you several practical use cases, as well as benefits and limitations."
-image: use-cases-for-linode-obj-storage.png
-keywords: ['object','storage','s3','use','case']
 published: 2019-08-26
 modified: 2023-03-31
-title: "Use Cases for Object Storage"
+image: use-cases-for-linode-obj-storage.png
+keywords: ['object','storage','s3','use','case']
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/object-storage-use-cases/','/guides/object-storage-use-cases/']
 ---

@@ -1,21 +1,21 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Manage Email Lists with GNU Mailman on Ubuntu 9.10 (Karmic)'
 description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-19
+modified: 2011-05-17
+deprecated: true
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic/','/email/mailman/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-published: 2010-03-19
-title: 'Manage Email Lists with GNU Mailman on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

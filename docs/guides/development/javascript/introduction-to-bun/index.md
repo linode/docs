@@ -1,16 +1,16 @@
 ---
 slug: introduction-to-bun
+title: "Introduction to the Bun JavaScript Runtime"
 description: "Bun introduces a JavaScript runtime with incredible speed and built-in bundling and transpiling. Bun thus offers simplified tooling and a sharp contender to the reigning Node.js and Deno runtimes. Learn more about Bun here and see how you can get started using it for your JavaScript projects."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-08-01
 keywords: ['bun javascript','javascript runtime','bun node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-01
-title: "Introduction to the Bun JavaScript Runtime"
 external_resources:
 - '[LogRocker: Bun - The JavaScript Runtime Taking on Node.js and Deno](https://blog.logrocket.com/bun-javascript-runtime-taking-node-js-deno/)'
 - '[The New Stack: Meet Bun - A JavaScript Runtime for the Whole Dev Lifecycle](https://thenewstack.io/meet-bun-a-javascript-runtime-for-the-whole-dev-lifecycle/)'
 - "[high0verEngineering: Let's Bun! - A New JavaScript Runtime](https://jenil777007.hashnode.dev/lets-bun)"
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 tags: ["digital agencies"]
 ---
 

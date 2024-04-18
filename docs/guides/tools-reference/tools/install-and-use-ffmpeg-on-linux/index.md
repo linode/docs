@@ -1,19 +1,19 @@
 ---
 slug: install-and-use-ffmpeg-on-linux
+title: "Install and Use FFmpeg on Linux"
+title_meta: "How to Install and Use FFmpeg on Linux"
 description: 'This guide will show you how to install FFmpeg, a utility that can transcode audio and video, cut and crop video, and integrates with Python.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-08-13
 keywords: ['FFmpeg python','FFmpeg concat','FFmpeg trim video','FFmpeg crop','FFmpeg cut','FFmpeg mkv to mp4']
 tags: ['linux', 'python', "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
 image: HowtoInstallandUseFFmpegonLinux.jpg
-title: "Install and Use FFmpeg on Linux"
-title_meta: "How to Install and Use FFmpeg on Linux"
 external_resources:
 - '[FFMpeg](http://ffmpeg.org/)'
 - '[FFmpeg-Python GitHub page](https://github.com/kkroening/ffmpeg-python)'
 - '[FFmpeg-Python examples page](https://github.com/kkroening/ffmpeg-python/tree/master/examples)'
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 [*FFMpeg*](http://ffmpeg.org/) is a free and open-source utility that is used for video and audio processing. It assists with the editing, reformatting, and conversion of audio, video, and multimedia files. FFmpeg contains a suite of libraries and programs that can be embedded into other media applications or function as a stand-alone command-line utility. This guide provides a brief introduction to FFmpeg. It also explains how to install FFmpeg and how to use FFmpeg to edit media files.

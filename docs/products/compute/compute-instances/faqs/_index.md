@@ -2,10 +2,10 @@
 title: "FAQs"
 title_meta: "FAQs for Compute Instances"
 description: "Find quick answers to some of the most commonly asked questions about Compute Instances."
-tab_group_main:
-    weight: 60
 published: 2009-11-16
 modified: 2023-01-18
+tab_group_main:
+    weight: 60
 aliases: ['/beginners-guide/','/platform/linode-beginners-guide/','/platform/billing-and-support/linode-beginners-guide/','/guides/linode-beginners-guide/']
 ---
 

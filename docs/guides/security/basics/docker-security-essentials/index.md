@@ -1,16 +1,16 @@
 ---
 slug: docker-security-essentials
+title: "An Overview of Docker Security Essentials"
 description: "This guide will show you the basics of securing Docker containers, including managing user access, preventing privilege escalations, and more."
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
+modified: 2021-08-09
 keywords: ["docker security", "docker container security", "docker security best practices"]
 tags: ["security", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-09
-published: 2021-03-26
-title: "An Overview of Docker Security Essentials"
 aliases: ['/security/basics/docker-security-essentials/']
 image: DockerSecurityEssentials.png
-authors: ["Hackersploit"]
-contributors: ["Hackersploit"]
 ---
 
 ## What is Docker?

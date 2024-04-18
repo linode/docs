@@ -1,17 +1,17 @@
 ---
 slug: how-to-install-streamlink-cli-on-ubuntu-macos
+title: "Install Streamlink CLI on Ubuntu and macOS"
+title_meta: "How to Install Streamlink CLI on Ubuntu and macOS"
 description: 'In this guide, you learn how to install and configure Streamlink on the macOS, Ubuntu, and Debian distributions'
+authors: ["Sandro Villinger"]
+contributors: ["Sandro Villinger"]
+published: 2021-09-03
 keywords: ['streamlink']
 tags: ['ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-03
-title: "Install Streamlink CLI on Ubuntu and macOS"
-title_meta: "How to Install Streamlink CLI on Ubuntu and macOS"
 external_resources:
 - "[Streamlink's Plugins documentation](https://streamlink.github.io/plugin_matrix.html)"
 - "[Streamlink's Player Options](https://streamlink.github.io/cli.html#positional-arguments)"
-authors: ["Sandro Villinger"]
-contributors: ["Sandro Villinger"]
 ---
 
 Streamlink lets you watch any stream inside your favorite media players such as [VLC](https://www.videolan.org/vlc/), [MPlayer](https://mplayerhq.hu/design7/news.html), and [QuickTime](https://support.apple.com/downloads/quicktime). You can watch [YouTube](https://www.youtube.com), [Twitch](https://www.twitch.tv), or [DailyMotion](https://www.dailymotion.com/us) video streams on your desktop instead of in your browser. Aside from a cleaner experience, streaming via any desktop player has far less impact on your PC's resources leading to smoother playback.

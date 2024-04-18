@@ -1,7 +1,7 @@
 ---
+title: "CNAME Records"
 description: "Learn how to create CNAME records using Linode's DNS Manager"
 published: 2022-10-28
-title: "CNAME Records"
 keywords: ["dns"]
 tags: ["linode platform"]
 ---

@@ -1,18 +1,18 @@
 ---
 slug: enabling-https-using-certbot-with-apache-on-debian
+title: "Use Certbot to Enable HTTPS with Apache on Debian"
 description: "Learn how to install and use Certbot with Apache on Debian 10 and 9, which automates the process adding TLS/SSL to your websites."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 keywords: ["Debian", "Certbot", "TLS", "SSL", "HTTPS", "Encryption", "Apache"]
 tags: ["debian", "ssl", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-title: "Use Certbot to Enable HTTPS with Apache on Debian"
 relations:
     platform:
         key: how-to-use-certbot-with-apache
         keywords:
             - distribution: Debian
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

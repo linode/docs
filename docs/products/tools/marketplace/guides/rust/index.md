@@ -1,9 +1,9 @@
 ---
+title: "Deploy Rust through the Linode Marketplace"
 description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
-keywords: ['rust','marketplace', 'server']
 published: 2019-03-25
 modified: 2022-03-08
-title: "Deploy Rust through the Linode Marketplace"
+keywords: ['rust','marketplace', 'server']
 external_resources:
 - '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
 tags: ["linode platform","marketplace","cloud-manager"]

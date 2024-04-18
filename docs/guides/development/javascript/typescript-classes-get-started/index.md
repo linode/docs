@@ -1,14 +1,14 @@
 ---
 slug: typescript-classes-get-started
+title: "Getting Started with Typescript Classes"
+title_meta: "TypeScript Classes: Get Started"
 description: 'This guide discusses TypeScript classes with information on initializers, constructors, member visibility, and more.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2021-10-29
 keywords: ['typescript classes']
 tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-29
-title: "Getting Started with Typescript Classes"
-title_meta: "TypeScript Classes: Get Started"
-authors: ["Martin Heller"]
-contributors: ["Martin Heller"]
 ---
 
 TypeScript support for classes was introduced in [ECMAScript 6 (ES6)](https://github.com/lukehoban/es6features#readme). Classes allow programmers to write their code following object-oriented programming (OOP) principles. Class-driven OOP reduces code repetition due to class inheritance and the usage of objects.

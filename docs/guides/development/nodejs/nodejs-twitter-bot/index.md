@@ -1,11 +1,13 @@
 ---
 slug: nodejs-twitter-bot
+title: "Make a Twitter Bot and Reply to Tweets in Node.js"
 description: "How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding."
+authors: ["Pj Metz"]
+contributors: ["Pj Metz"]
+published: 2021-07-23
 keywords: ["how to make a twitter bot", "node twitter", "reply bot twitter", "node twitter api tutorial"]
 tags: ["version control system", "javascript"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-23
-title: "Make a Twitter Bot and Reply to Tweets in Node.js"
 external_resources:
     - "[Documentation Home | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs)"
     - "[npm Docs](https://docs.npmjs.com/)"
@@ -16,8 +18,6 @@ external_resources:
     - "[GitHub Desktop](https://desktop.github.com/)"
     - "[Creating a new User in Ubuntu](https://youtu.be/fDHHKR0nVQg)"
     - "[FileZilla](/docs/guides/filezilla/)"
-authors: ["Pj Metz"]
-contributors: ["Pj Metz"]
 ---
 
 ## Introduction

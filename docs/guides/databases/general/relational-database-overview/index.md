@@ -1,13 +1,13 @@
 ---
 slug: relational-database-overview
+title: "Introduction to Relational Databases and RDBMSs"
 description: "An overview of relational databases, including relational database management systems and how they different from NoSQL databases."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-06-06
 keywords: ['what is mysql', 'sql vs mysql','mysql overview']
 tags: ['mysql', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-06
-title: "Introduction to Relational Databases and RDBMSs"
-authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
 ---
 
 Many programs need to save or store data for later use and read data that is recorded. Although there are many ways to do this, the most common approach is to use a *Relational Database Management System* (RDBMS). [MySQL](https://www.mysql.com/), [PostgreSQL](https://www.postgresql.org/), and [SQLite](https://www.sqlite.org/index.html) are a few industry-standard open-source RDBMSs that have been widely adopted by software development projects. This guide provides an overview of relational databases and RDBMS concepts.

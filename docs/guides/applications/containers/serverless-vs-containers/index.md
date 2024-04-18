@@ -2,11 +2,11 @@
 slug: serverless-vs-containers
 title: "Serverless vs Containers: Choose Which One to Use"
 description: 'What are the similarities and differences between serverless and containers? What should developers consider when choosing one?'
-keywords: ['serverless vs. containers','serverless computing','serverless applications','containers','microservices','serverless architecture','serverless web applications','backend services']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2023-05-02
+keywords: ['serverless vs. containers','serverless computing','serverless applications','containers','microservices','serverless architecture','serverless web applications','backend services']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Getting as much done in as little time, and with as little overhead as possible is an essential element of modern development. The end result needs to be easy to deploy, maintain, and debug. Plus, it all has to run in the cloud. That’s asking a lot, but both serverless applications and containers offer solutions. They’re both designed to replace virtual machines that require much more work on the organization’s part. Of the two, containers are a more robust solution that include everything needed to run an application, usually as a set of microservices. Meanwhile, serverless applications are less complex solutions that focus on application code that relies on services provided by a vendor API. There isn’t a right or wrong choice with either technology, simply the choice that benefits an organization most, as this guide explains.

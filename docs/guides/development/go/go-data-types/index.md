@@ -1,17 +1,17 @@
 ---
 slug: go-data-types
+title: "A Tutorial for Learning Go Data Types"
 description: "In this guide, we will walk you through the basics of the Go programming language, including pointers, available numeric types, arrays, slices, and maps."
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-03-19
 keywords: ["Go", "Golang", "Pointers", "Arrays", "Slices", "Maps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-03-19
-title: "A Tutorial for Learning Go Data Types"
 external_resources:
   - '[Go](https://golang.org)'
   - '[Go Packages](https://golang.org/pkg/)'
 image: GoDataTypes.png
 aliases: ['/development/go/go-data-types/']
-authors: ["Mihalis Tsoukalos"]
-contributors: ["Mihalis Tsoukalos"]
 ---
 
 This guide serves as an introduction to several useful data types in Go. Specifically, you'll learn about:

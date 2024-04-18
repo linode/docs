@@ -1,10 +1,10 @@
 ---
 title: "Troubleshooting Web Servers, Databases, and Other Services"
 description: "Troubleshooting steps for when you can't connect to a service that your Compute Instance runs."
-keywords: ['linux','reboot','lish','troubleshoot','website','webserver']
-tags: ["web server", "database", "networking"]
 published: 2019-02-01
 modified: 2023-03-14
+keywords: ['linux','reboot','lish','troubleshoot','website','webserver']
+tags: ["web server", "database", "networking"]
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-web-servers-databases-other-services/','/guides/troubleshooting-web-servers-databases-other-services/']
 ---

@@ -1,15 +1,15 @@
 ---
 slug: use-dig-to-perform-manual-dns-queries
+title: Use dig to Perform Manual DNS Queries
 description: 'Dig is a command line utility that helps diagnose DNS Issues. This guide shows how to use the utility to perform manual DNS queries and other lookups.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-13
+modified: 2018-05-22
 keywords: ["dig", "dns", "troubleshooting", "domain names"]
 tags: ["dns","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-dig-to-perform-manual-dns-queries/','/linux-tools/common-commands/dig/']
-modified: 2018-05-22
-published: 2010-10-13
-title: Use dig to Perform Manual DNS Queries
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ![Use dig to Perform Manual DNS Queries](use-dig-to-perform-manual-dns-queries.jpg "Use dig to Perform Manual DNS Queries")

@@ -1,11 +1,13 @@
 ---
 slug: when-and-why-to-use-docker
+title: "When and Why to Use Docker"
 description: 'This guide discusses the pros and cons of using Docker, and when Docker is a good choice for a project.'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2017-11-20
 keywords: ['docker','containers','docker hub']
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-20
-title: "When and Why to Use Docker"
 external_resources:
 - '[Docker](https://www.docker.com)'
 - '[Docker Hub](https://hub.docker.com)'
@@ -14,8 +16,6 @@ external_resources:
 - '[8 Docker Security Rules to Live By](https://www.infoworld.com/article/3154711/security/8-docker-security-rules-to-live-by.html)'
 - '[Your Software is Safer in Docker Containers](https://blog.docker.com/2016/08/software-security-docker-containers/)'
 aliases: ['/applications/containers/when-and-why-to-use-docker/']
-authors: ["Jared Kobos"]
-contributors: ["Jared Kobos"]
 ---
 
 ![When and Why to Use Docker](when-why-docker.jpg "When and Why to Use Docker")

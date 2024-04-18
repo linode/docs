@@ -1,21 +1,21 @@
 ---
 slug: monitoring-servers-with-munin-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Monitoring Servers with Munin on Ubuntu 10.04 (Lucid)'
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 10.04 (Lucid).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-05-20
+modified: 2013-10-01
+deprecated: true
 keywords: ["munin", "monitoring"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/munin/ubuntu-10-04-lucid/','/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-10-04-lucid/']
-modified: 2013-10-01
-published: 2010-05-20
-title: 'Monitoring Servers with Munin on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: install-munin-monitoring
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Stan Schwertly"]
-contributors: ["Stan Schwertly"]
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. For instance, if you need to monitor memory usage or resource consumption on a per-process level, a more precise monitoring tool like Munin might be helpful.

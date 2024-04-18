@@ -1,13 +1,15 @@
 ---
 slug: how-to-install-mariadb-on-centos-8
+title: "Installing MariaDB on CentOS 8"
+title_meta: "How to Install MariaDB on CentOS 8"
 description: "This guide shows how to install and configure the MariaDB server on CentOS 8."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-04
 og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on CentOS 8."
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-04
 image: Installing_MariaDB_on_CentOS8.png
-title: "Installing MariaDB on CentOS 8"
-title_meta: "How to Install MariaDB on CentOS 8"
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -19,8 +21,6 @@ relations:
             - distribution: CentOS 8
 tags: ["mariadb","database","centos"]
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-centos-8/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.

@@ -1,21 +1,21 @@
 ---
 slug: use-mysql-relational-databases-on-debian-6-squeeze
-deprecated: true
+title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
 description: 'Get started with MySQL for web and server applications on Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-26
+modified: 2014-01-14
+deprecated: true
 keywords: ["mysql debian 6", "mysql debian", "mysql debian squeeze", "mysql linux", "mysql linux Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-debian-6-squeeze/','/databases/mysql/debian-6-squeeze/']
-modified: 2014-01-14
-published: 2011-01-26
-title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Debian 6
 tags: ["debian","database","mysql"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

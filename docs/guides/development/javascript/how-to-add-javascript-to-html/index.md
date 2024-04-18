@@ -1,13 +1,13 @@
 ---
 slug: how-to-add-javascript-to-html
-description: "Wondering how to link javascript to HTML? Follow our step-by-step instructions, including examples, plus tips on how to add external javascript files."
-keywords: ['how to link javascript to html','link javascript to html','add javascript to html']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-05
 title: "Link JavaScript to HTML"
 title_meta: "An Essential Guide on How to Add JavaScript to HTML"
+description: "Wondering how to link javascript to HTML? Follow our step-by-step instructions, including examples, plus tips on how to add external javascript files."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
+published: 2022-05-05
+keywords: ['how to link javascript to html','link javascript to html','add javascript to html']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 JavaScript is a scripting language that is widely used to add dynamic functionality to a web page, alongside HTML and CSS. User triggered events, animations, and content updates are among some of the features on a web page that are powered by JavaScript. In order to use JavaScript on an HTML web page, you must use the `<script>` tag to either write your JavaScript code directly in your HTML markup or to link to an external JavaScript file. This guide shows you how to use the `<script>` tag to link JavaScript to an HTML page. You also learn about `<script>` tag attributes that help you optimize your web page's loading time.

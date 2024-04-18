@@ -1,21 +1,21 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy
-deprecated: true
+title: 'Instant Messaging Services with ejabberd on Ubuntu 8.04 (Hardy)'
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 8.04 (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-13
+modified: 2011-04-29
+deprecated: true
 keywords: ["ejabberd", "ejabberd ubuntu hardy", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy/','/communications/xmpp/ejabberd/ubuntu-8-04-hardy/']
-modified: 2011-04-29
-published: 2009-10-13
-title: 'Instant Messaging Services with ejabberd on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

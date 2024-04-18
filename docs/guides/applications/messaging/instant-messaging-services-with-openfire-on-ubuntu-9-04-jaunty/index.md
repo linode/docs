@@ -1,21 +1,21 @@
 ---
 slug: instant-messaging-services-with-openfire-on-ubuntu-9-04-jaunty
-deprecated: true
+title: 'Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty)'
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 9.04 (Jaunty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-19
+modified: 2011-04-29
+deprecated: true
 keywords: ["openfire", "openfire ubuntu 9.04", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/openfire/ubuntu-9-04-jaunty/','/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-04-jaunty/']
-modified: 2011-04-29
-published: 2009-09-19
-title: 'Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: how-to-install-openfire
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

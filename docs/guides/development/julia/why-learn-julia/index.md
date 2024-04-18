@@ -1,11 +1,13 @@
 ---
 slug: why-learn-julia
+title: Why You Should Learn Julia
 description: 'This guide introduces you to the main features, benefits, and limitations of the Julia language, and includes a brief section on installation and use.'
-keywords: ['data science','julia','python','why learn Julia']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-12-11
 modified: 2019-02-01
-title: Why You Should Learn Julia
+keywords: ['data science','julia','python','why learn Julia']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Julia](https://julialang.org/)'
 - '[Julia By Example](https://juliabyexample.helpmanual.io/)'
@@ -15,8 +17,6 @@ concentrations: ["Scientific Computing and Big Data"]
 languages: ["julia"]
 dedicated_cpu_link: true
 aliases: ['/development/julia/why-learn-julia/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 ![Why You Should Learn Julia](Why_You_Should_Learn_Julia_smg.jpg)
 

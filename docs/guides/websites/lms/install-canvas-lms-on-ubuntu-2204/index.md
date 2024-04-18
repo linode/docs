@@ -1,14 +1,14 @@
 ---
 slug: install-canvas-lms-on-ubuntu-2204
+title: How to Install Canvas on Ubuntu 22.04
+title_meta: Installing Canvas on Ubuntu 22.04
 description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Canvas on Ubuntu 22.04.'
-keywords: ['Install canvas lms', 'canvas lms', 'install canvas ubuntu 22.04', 'self-host canvas lms']
-tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2023-04-25
-title: How to Install Canvas on Ubuntu 22.04
-title_meta: Installing Canvas on Ubuntu 22.04
+keywords: ['Install canvas lms', 'canvas lms', 'install canvas ubuntu 22.04', 'self-host canvas lms']
+tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Canvas](https://www.instructure.com/canvas)'
 - '[What is Learning Management System](https://www.shareknowledge.com/blog/what-learning-management-system-and-why-do-i-need-one)'

@@ -1,13 +1,15 @@
 ---
 slug: ubuntu-9-10-karmic
+title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
+description: 'Using the PostgreSQL relational database server with Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-29
+modified: 2011-04-29
 deprecated: true
 deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
-description: 'Using the PostgreSQL relational database server with Ubuntu 9.10 (Karmic).'
 keywords: ["postgresql", "postgresql database", "postgresql ubuntu", "postgresql ubuntu 9.10", "postgresql ubuntu karmic", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-04-29
-published: 2009-10-29
-title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: use-postrgesql-database
@@ -15,8 +17,6 @@ relations:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-9-10-karmic/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 

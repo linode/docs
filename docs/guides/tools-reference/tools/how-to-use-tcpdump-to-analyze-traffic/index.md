@@ -1,19 +1,19 @@
 ---
 slug: how-to-use-tcpdump-to-analyze-traffic
-description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
-keywords: ['tcpdump examples','tcpdump linux','tcpdump network traffic']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-28
-modified: 2023-03-29
 title: "Use tcpdump to Analyze Network Traffic"
 title_meta: "How to Use tcpdump to Analyze Network Traffic"
+description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-10-28
+modified: 2023-03-29
+keywords: ['tcpdump examples','tcpdump linux','tcpdump network traffic']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[TCPDUMP & LIBPCAP](https://www.tcpdump.org/)'
 - "[Julia Evans: Let's Learn tcpdump](https://jvns.ca/tcpdump-zine.pdf)"
 - '[Geekflare: How to Capture and Analyze Network Traffic with tcpdump?](https://geekflare.com/tcpdump-examples/)'
 - '[Linux Hint: A Guide to Network Traffic Analysis Utility: TCPDUMP](https://linuxhint.com/tcpdump-beginner-guide/)'
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 ---
 
 The *tcpdump* tool provides a powerful command line option for network sniffing. With *tcpdump*, you can effectively capture and analyze network traffic, whether to diagnose network issues or to test network security.

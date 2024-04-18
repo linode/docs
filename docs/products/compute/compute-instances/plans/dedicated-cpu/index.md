@@ -1,9 +1,9 @@
 ---
 title: "Dedicated CPU Compute Instances"
-linkTitle: "Dedicated CPU"
 description: "Dedicated CPU Compute Instances are virtual machines that provide gauranteed CPU resources. They are ideal for a variety of production applications and CPU-intensive workloads."
 published: 2023-01-18
 modified: 2024-03-11
+linkTitle: "Dedicated CPU"
 aliases: ['/products/compute/dedicated-cpu/','/platform/dedicated-cpu/getting-started-with-dedicated-cpu/','/guides/getting-started-with-dedicated-cpu/','/platform/dedicated-cpu/dedicated-cpu-use-cases/','/guides/dedicated-cpu-use-cases/','/platform/dedicated-cpu/','/guides//platform/dedicated-cpu/']
 tags: ["media"]
 ---

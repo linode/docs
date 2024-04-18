@@ -1,17 +1,17 @@
 ---
 slug: redis-getting-started
+title: "Connect to Redis and Use The Redis Database"
+title_meta: "How to Connect to Redis and Use The Redis Database"
 description: "Learn how to start using Redis databases, connecting to a Redis server and working with data on it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-01-14
 keywords: ['connecting to redis server', 'how to create redis database', 'getting started with redis']
 tags: ['redis', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-14
-title: "Connect to Redis and Use The Redis Database"
-title_meta: "How to Connect to Redis and Use The Redis Database"
 external_resources:
 - '[Redis: Commands](https://redis.io/commands)'
 aliases: ['/guides/how-to-connect-to-redis/']
-authors: ["Nathaniel Stickman"]
-contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
 
