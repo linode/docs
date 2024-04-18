@@ -331,8 +331,8 @@ def sort_parameters():
 def main():
 
     #update_titles()
-    #remove_duplicate_parameters()
-    sort_parameters()
+    remove_duplicate_parameters()
+    #sort_parameters()
 
 if __name__ == "__main__":
     main()

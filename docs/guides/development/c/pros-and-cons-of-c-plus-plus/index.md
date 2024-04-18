@@ -3,7 +3,6 @@ slug: pros-and-cons-of-c-plus-plus
 title: "The Pros and Cons of C++"
 title_meta: "A Programmers’ Guide to C++: Advantages & Disadvantages"
 description: "As with any programming language, there are pros and cons of C++. Read our guide to find out whether you can benefit from learning C++. ✓ Click to learn more!"
-og_description: "As with any programming language, there are pros and cons of C++. Read our guide to find out whether you can benefit from learning C++. ✓ Click to learn more!"
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2022-04-01
