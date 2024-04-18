@@ -1,8 +1,6 @@
 ---
 title: "Using the AWS SDK for PHP with Object Storage"
 description: "Learn how to use the PHP AWS SDK with Linode's S3-compatible Object Storage."
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [AWS SDK for PHP](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/welcome.html) (GitHub: [aws/aws-sdk-php/](https://github.com/aws/aws-sdk-php)) includes an [S3 client](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/s3-multiregion-client.html) that enables access to Linode's S3-compatible Object Storage within a PHP application or script.

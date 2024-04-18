@@ -8,8 +8,6 @@ title: "Deploy Restyaboard through the Linode Marketplace"
 external_resources:
 - '[Restyaboard](https://restya.com/board)'
 aliases: ['/guides/deploying-restyaboard-marketplace-app/','/guides/restyaboard-marketplace-app/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [Restyaboard](https://restya.com/board) is an open-source alternative to Trello, but with smart additional features like offline sync, revisions, diff, nested comments, multiple view layouts, chat, and more. And since it is self-hosted, data, privacy, and IP security are under your full control.

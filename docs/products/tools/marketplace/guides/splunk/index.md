@@ -8,8 +8,6 @@ title: "Deploy Splunk through the Linode Marketplace"
 aliases: ['/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
 external_resources:
 - '[Splunk](http://splunk.com/)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Splunk is a powerful log analyzer that can be used to obtain insight into your infrastructure. Splunk collects, monitors, analyzes, and visualizes data from database applications, web servers, cloud networks, and a variety of other sources.

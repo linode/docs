@@ -7,8 +7,6 @@ published: 2012-06-04
 title: "Copy a Disk Over SSH"
 image: copying_a_disk_over_ssh_smg.png
 aliases: ['/migration/ssh-copy/','/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh/','/platform/disk-images/copying-a-disk-image-over-ssh/','/guides/copying-a-disk-image-over-ssh/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Piping SSH commands to utilities such as `dd`, `gzip`, or `rsync` is an easy way to copy a Compute Instance's data into a single file for later extraction. This can effectively back up your Compute Instance's disk or migrate your installed system to other instances.

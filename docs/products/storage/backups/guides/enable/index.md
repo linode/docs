@@ -2,8 +2,6 @@
 title: "Enable Backups"
 description: "How to enable the Linode Backup Service."
 aliases: ['/quick-answers/linode-platform/enable-backups-on-a-linode/', '/guides/enable-backups-on-a-linode/']
-authors: ["Linode"]
-contributors: ["Linode"]
 published: 2021-11-12
 ---
 

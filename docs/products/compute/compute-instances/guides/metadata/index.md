@@ -4,8 +4,6 @@ description: "Learn how to automate server provisioning on the Linode platform t
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
 modified: 2024-02-14
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide) and [StackScripts](/docs/products/tools/stackscripts/).

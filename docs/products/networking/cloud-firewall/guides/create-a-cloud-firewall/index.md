@@ -3,8 +3,6 @@ title: "Create a Cloud Firewall"
 modified: 2023-11-01
 aliases: ['/products/networking/cloud-firewall/guides/add-firewall/']
 description: "How to add a Linode Cloud Firewall."
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.

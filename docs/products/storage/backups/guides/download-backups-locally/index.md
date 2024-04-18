@@ -9,8 +9,6 @@ modified: 2023-07-07
 tags: ["security"]
 aliases: ['/security/data-portability/download-backups-locally/','/guides/download-backups-locally/']
 image: download-a-local-copy-of-your-linode-backup.png
-authors: ["Edward Angert"]
-contributors: ["Edward Angert"]
 ---
 
 The [Linode Backups](/docs/products/storage/backups/) service is used to create automatic and manual snapshots of your Compute Instances. A completed backup can be directly restored to the origin Compute Instance or to a new instance in the same data center. These workflows make it easy to revert to a working configuration if you run into any unexpected issues with your software.

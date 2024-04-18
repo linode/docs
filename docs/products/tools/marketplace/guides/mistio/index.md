@@ -8,8 +8,6 @@ title: "Deploy Mist.io through the Linode Marketplace"
 external_resources:
 - '[Mist.io Official](https://mist.io/)'
 aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platform/one-click/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-marketplace-apps/','/guides/mistio-marketplace-app/']
-authors: ["Linode"]
-contributors: ["Linode"]
 _build:
   list: false
 noindex: true

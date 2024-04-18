@@ -4,8 +4,6 @@ description: "Deploy SeaTable, a simple database management GUI, on a Linode Com
 keywords: ['SeaTable','Database','Web UI']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-06-26
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [SeaTable](https://seatable.io/) is a simple and flexible database management interface with native Python automation support. It is designed to mimic the user-friendly interfaces of common spreadsheet software (like Microsoft Excel and Google Sheets). SeaTable offers advanced data linking capabilities and allows for custom data organization and visualization.

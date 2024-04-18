@@ -8,8 +8,6 @@ title: "Deploy Gitlab through the Linode Marketplace"
 external_resources:
 - '[GitLab Administrator Documentation](https://docs.gitlab.com/ee/administration/)'
 aliases: ['/platform/one-click/deploy-gitlab-with-one-click-apps/','/guides/deploy-gitlab-with-one-click-apps/', '/platform/marketplace/deploy-gitlab-with-marketplace-apps/', '/guides/deploy-gitlab-with-marketplace-apps/','/guides/gitlab-marketplace-app/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [GitLab](https://about.gitlab.com/) is a complete solution for all aspects of your software development. At its core, GitLab serves as your centralized remote Git repository. GitLab also features built-in tools that represent every task in your development workflow, from planning to testing to releasing.

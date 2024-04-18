@@ -5,8 +5,6 @@ published: 2021-05-28
 modified: 2022-02-07
 title: "Manage Access Keys"
 aliases: ['/products/storage/object-storage/guides/generate-key-pair/','/products/storage/object-storage/guides/generate-access-keys/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 To start integrating Object Storage with your own applications, you need to create an *access key*. The access key provides access to buckets (and objects stored within those buckets). You can create many access keys, allowing you to create a unique one for each application or user. When an application or user no longer requires access, you can revoke that access key without affecting any other application.

@@ -6,8 +6,6 @@ tags: ["cloud manager","linode platform","networking","web applications"]
 published: 2022-10-07
 image: ProxyProtocol_NodeBalancers.png
 aliases: ['/platform/nodebalancer/nodebalancer-proxypass-configuration/','/guides/nodebalancer-proxypass-configuration/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 When a Linode NodeBalancer passes a request from a client to a backend Node, information regarding the original client is not included by default. While this is fine for many environments, your applications may require original client information such as IP address or port. For these cases, Linode NodeBalancers support **Proxy Protocol** for TCP connections so that you can pass client information to backend Nodes.

@@ -6,8 +6,6 @@ modified: 2023-04-23
 title: "Subscribe to Linode Status Updates"
 tags: ["linode platform"]
 aliases: ['/platform/linode-status-page/','/guides/linode-status-page/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [Status Page](https://status.linode.com/) provides real-time system status and maintenance updates via email. All customers are encouraged to subscribe to status notifications to stay up-to-date with any events that may impact our services. When you sign up for status updates, you can fine-tune which service updates you receive. These different topic areas are referred to as *components*. If, for example, all your services are restricted to the Newark data center, you may only wish to subscribe to the Newark component.

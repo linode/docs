@@ -5,8 +5,6 @@ keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "
 published: 2022-10-07
 tags: ["linode platform","networking"]
 aliases: ['/platform/nodebalancer/what-are-nodebalancers/','/guides/what-are-nodebalancers/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Load balancing allows you to distribute incoming network traffic across multiple servers so that no one server takes on all the demand. This allows high traffic sites and applications to field a large number of users without performance degradation. It also allows you to scale a site or application by adding more servers as your need grows, or remove them if your need diminishes.

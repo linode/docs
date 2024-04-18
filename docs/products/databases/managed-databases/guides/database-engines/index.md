@@ -3,8 +3,6 @@ title: "Database Engines and Plans"
 description: "Learn the differences between the database engines offered by Linode's Managed Database service."
 published: 2022-06-06
 modified: 2023-05-02
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

@@ -6,8 +6,6 @@ published: 2023-01-23
 title: "Deploy gopaddle through the Linode Marketplace"
 external_resources:
 - '[GoPaddle](https://gopaddle.io/)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [gopaddle](https://gopaddle.io/) is a low-code Internal Developer Platform (IDP) for Kubernetes developers and operators. It provides a self-service portal through which developers can scaffold code to containers, auto-generate YAML files, build Docker images, deploy applications on to Kubernetes, and manage the application life cycle centrally.

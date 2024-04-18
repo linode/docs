@@ -8,8 +8,6 @@ title: "Automatically Configure Networking on Compute Instances with Network Hel
 title_meta: "Automatically Configure Networking on Linode"
 aliases: ['/platform/network-helper-classic-manager/','/platform/network-helper/','/platform/network-helper-new-manager/','/guides/network-helper/']
 image: network-helper-title-graphic.jpg
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## Overview

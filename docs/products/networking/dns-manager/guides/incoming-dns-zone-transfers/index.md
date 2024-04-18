@@ -5,8 +5,6 @@ modified: 2022-11-08
 title: "Incoming DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Linode supports importing DNS records from external DNS providers in one of two ways:

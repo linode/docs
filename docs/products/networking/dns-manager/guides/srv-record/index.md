@@ -4,8 +4,6 @@ published: 2022-10-28
 title: "SRV Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## SRV Record Overview

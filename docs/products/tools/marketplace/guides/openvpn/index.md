@@ -9,8 +9,6 @@ title: "Deploy OpenVPN through the Linode Marketplace"
 external_resources:
 - '[OpenVPN Community Resources](https://openvpn.net/community-resources/)'
 aliases: ['/platform/marketplace/marketplace-openvpn/', '/platform/one-click/one-click-openvpn/','/guides/one-click-openvpn/','/guides/marketplace-openvpn/','/guides/deploying-openvpn-marketplace-app/','/guides/openvpn-marketplace-app/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 OpenVPN is a widely trusted, free, and open-source VPN (virtual private network) application that creates encrypted tunnels for secure data transfer between computers that are not on the same local network. Your traffic is encrypted by OpenVPN using [OpenSSL](https://www.openssl.org/). You can use OpenVPN to:

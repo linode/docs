@@ -4,8 +4,6 @@ description: "Learn how to view, manage, and delete your Longview Clients."
 keywords: ["system monitoring", "longview", "metrics"]
 published: 2023-05-24
 tags: ["linode platform","cloud manager","statistics","monitoring"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## View Longview Clients {#view-clients}

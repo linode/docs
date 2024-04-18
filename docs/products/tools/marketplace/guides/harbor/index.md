@@ -8,8 +8,6 @@ title: "Deploy Harbor through the Linode Marketplace"
 external_resources:
 - '[Harbor](https://goharbor.io/)'
 aliases: ['/guides/deploying-harbor-marketplace-app/','/guides/harbor-marketplace-app/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [Harbor](https://goharbor.io/) is an open source container registry platform, cloud-native content storage, and signing/scanning tool. Harbor enhances the open source Docker distribution by providing features like security, identification, and management. The image transfer efficiency can be improved by having a registry closer to the build and run environment. Harbor includes comprehensive security features like user administration, access control, and activity auditing, as well as image replication between registries.

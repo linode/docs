@@ -4,8 +4,6 @@ description: "Deploy MainConcept Plugins for FFmpeg demo, an enterprise ready se
 keywords: ['ffmpeg','encoding','decoding','video','vvc','hevc','avc','mpeg-h','xhe-aac','mpeg-2 ts']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [MainConcept Plugins for FFmpeg](https://www.mainconcept.com/ffmpeg) are media encoding tools that use advanced features such as Hybrid GPU acceleration, professional production format, xHE-AAC audio, and MPEG-H 3D audio content creation to help improve visual quality and performance. Use cases include both VOD and live production workflows.

@@ -1,8 +1,6 @@
 ---
 title: "Manage Access Controls"
 description: "Learn how to manage access controls on a Managed Database, including allowing connections from specific IP addresses."
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

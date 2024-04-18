@@ -10,8 +10,6 @@ external_resources:
 - '[Kubernetes Docs](https://kubernetes.io/docs/home/)'
 - '[Kubernetes Dashboard GitHub](https://github.com/kubernetes/dashboard)'
 aliases: ['/guides/using-the-kubernetes-dashboard-on-lke/','/products/compute/kubernetes/guides/access-kubernetes-dashboard/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is an industry standard open-source web-based user interface designed to be a visual hub for interacting with a Kubernetes cluster, allowing for a more intuitive interface for observing cluster objects, components, containers, applications, and more.

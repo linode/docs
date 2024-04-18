@@ -7,8 +7,6 @@ published: 2019-02-01
 modified: 2023-03-14
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-web-servers-databases-other-services/','/guides/troubleshooting-web-servers-databases-other-services/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other services running on your Compute Instance. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) and then return to this guide.

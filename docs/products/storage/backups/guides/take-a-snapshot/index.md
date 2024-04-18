@@ -1,8 +1,6 @@
 ---
 title: Take a Manual Snapshot
 description: "How to use the Backups Service to take a manual backup of a Linode Compute Instance."
-authors: ["Linode"]
-contributors: ["Linode"]
 published: 2021-11-12
 ---
 

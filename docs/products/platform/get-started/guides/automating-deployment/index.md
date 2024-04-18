@@ -6,8 +6,6 @@ tags: ["linode platform","automation"]
 published: 2013-06-28
 modified: 2023-03-14
 aliases: ['/platform/automating-server-builds/','/guides/automating-server-builds/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## Why You Should Automate Server Builds

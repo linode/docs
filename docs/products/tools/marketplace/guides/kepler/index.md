@@ -9,8 +9,6 @@ aliases: ['/guides/deploy-kepler-with-marketplace-apps/','/guides/kepler-marketp
 external_resources:
 - '[About Kepler](https://kepler.app)'
 - '[Kepler Community](https://help.kepler.app)'
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 [Kepler](https://www.kepler.app) is a powerful drag & drop WordPress website builder with all-new website style filters that instantly change the look and feel of your website.

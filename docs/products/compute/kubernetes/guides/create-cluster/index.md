@@ -3,8 +3,6 @@ title: Create a Cluster
 description: "Learn how to create a Kubernetes cluster on the Linode Kubernetes Engine (LKE)."
 aliases: ['/products/compute/kubernetes/guides/create-lke-cluster/']
 published: 2023-02-09
-authors: ["Linode"]
-contributors: ["Linode"]
 tags: ["managed hosting"]
 ---
 

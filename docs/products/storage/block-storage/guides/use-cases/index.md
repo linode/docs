@@ -6,8 +6,6 @@ modified: 2022-08-24
 title: "Common Use Cases for Block Storage"
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/block-storage-use-cases/','/guides/block-storage-use-cases/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## What is Block Storage

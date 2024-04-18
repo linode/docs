@@ -5,8 +5,6 @@ published: 2021-08-27
 title: Default Distro Packages on Linode
 aliases: ['/guides/platform/disk-images/','/guides/platform/disk-images/default-packages-on-linode-images/','/guides/default-packages-on-linode-images/']
 tags: ["linode platform","cloud manager"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Linode installs base Linux images to all distributions. This includes all of the packages included by the base image by default. However, this also includes images added by Linode to nearly all Distros which provide access to common tools and functionalities. The packages are tailored to help with systems administration in the cloud, and ensure that all Linode images work with all Linode products and services. Below is a list of the additional packages installed for all of our distributions.

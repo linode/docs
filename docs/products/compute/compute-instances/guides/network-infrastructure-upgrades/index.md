@@ -5,8 +5,6 @@ keywords: ['networking']
 published: 2022-07-19
 modified: 2024-01-03
 aliases: ['/guides/network-infrastructure-upgrades/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 Linode is rolling out networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.

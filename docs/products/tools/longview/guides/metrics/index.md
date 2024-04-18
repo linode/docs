@@ -4,8 +4,6 @@ description: "An overview of metrics collected by Longview, including how to vie
 keywords: ["system monitoring", "longview", "metrics"]
 published: 2023-05-24
 tags: ["linode platform","cloud manager","statistics","monitoring"]
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide provides an overview of the data and graphs available to you after successfully installing Longview on a Compute Instance or other Linux system.

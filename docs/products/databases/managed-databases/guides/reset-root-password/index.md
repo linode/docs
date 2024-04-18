@@ -1,8 +1,6 @@
 ---
 title: "Reset the Root Password"
 description: "Learn how to reset the root password on a Linode Managed Database."
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

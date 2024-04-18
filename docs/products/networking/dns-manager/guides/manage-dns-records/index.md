@@ -6,8 +6,6 @@ title: "Manage DNS Records"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-dns-records/','/products/networking/dns-manager/guides/edit-dns-records/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## View DNS Records

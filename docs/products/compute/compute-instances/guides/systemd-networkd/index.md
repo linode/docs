@@ -6,8 +6,6 @@ modified: 2022-06-17
 title: "Network Configuration Using systemd-networkd"
 tags: ["networking","linode platform"]
 aliases: ['/guides/systemd-networkd/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 The [systemd-networkd](https://wiki.archlinux.org/title/systemd-networkd) tool is a newer tool developed as part of systemd. Arch and modern versions of Ubuntu (17.10 and above) currently use systemd-networkd as their default network configuration software.

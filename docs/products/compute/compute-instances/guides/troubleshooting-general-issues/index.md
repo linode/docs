@@ -7,8 +7,6 @@ published: 2012-04-05
 modified: 2023-03-14
 bundles: ['troubleshooting']
 aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 This guide provides common troubleshooting scenarios you may encounter when managing your Compute Instance. Each troubleshooting section provides ways to further diagnose your issue and the corresponding steps, when applicable, to resolve the issue. We recommend using this guide in the following way:

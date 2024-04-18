@@ -12,8 +12,6 @@ relations:
         key: what-is-longview
         keywords:
             - distribution: Apache
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 In addition to capturing general system metrics, Longview can also be used to capture metrics for Apache. The Apache tab appears in the Cloud Manager when Longview detects that you have Apache installed on your system. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.

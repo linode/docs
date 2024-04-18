@@ -2,8 +2,6 @@
 title: "Send Email on the Linode Platform"
 description: "Learn about Linode's email policy, how to lift email restrictions, and best practices to implement when sending email."
 published: 2023-05-02
-authors: ["Linode"]
-contributors: ["Linode"]
 keywords: ["SMTP", "SMTP restrictions", "email restrictions"]
 ---
 

@@ -2,8 +2,6 @@
 image: UploadAnImage.png
 title: Upload an Image
 description: "How to upload an image with Linode Images."
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## Requirements and Considerations

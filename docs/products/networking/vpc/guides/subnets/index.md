@@ -2,8 +2,6 @@
 title: "Manage VPC Subnets"
 description: "Learn how to view, edit, and delete subnets within Akamai's VPC solution."
 published: 2024-01-30
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 A VPC contains one or more _subnets_, which are networks within the VPC whose services all share the same IPv4 CIDR range. Just like VPCs, subnets are restricted to a single data center. Multiple subnets can be added to isolate services that are used for certain functionality of an application (like frontend and backend services) or can segment a VPC and its attached services into different environments (such as development, staging, and production).

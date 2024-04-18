@@ -1,8 +1,6 @@
 ---
 title: Schedule Backups
 description: "How to schedule backups with the Linode Backup Service."
-authors: ["Linode"]
-contributors: ["Linode"]
 published: 2021-11-12
 ---
 

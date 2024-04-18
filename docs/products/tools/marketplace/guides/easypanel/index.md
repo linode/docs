@@ -4,8 +4,6 @@ keywords: ['easypanel','control panel','cpanel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-05-31
 title: "Deploy Easypanel through the Linode Marketplace"
-authors: ["Holden Morris"]
-contributors: ["Holden Morris"]
 ---
 
 [Easypanel](https://easypanel.io) is a modern server control panel built for quickly deploying web applications. Based on Docker, Easypanel allows for zero downtime deployments and push deployments through GitHub. It includes support for most popular web programming languages, including PHP, Python, Java, Go, Ruby, and Node.js.

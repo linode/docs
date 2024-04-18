@@ -4,8 +4,6 @@ title_meta: Manage Kubernetes Clusters on LKE
 description: "Learn how to view and manage your Kubernetes clusters on LKE."
 published: 2023-02-09
 aliases: ['/products/compute/kubernetes/guides/delete-cluster/']
-authors: ["Linode"]
-contributors: ["Linode"]
 ---
 
 ## View Kubernetes Clusters
