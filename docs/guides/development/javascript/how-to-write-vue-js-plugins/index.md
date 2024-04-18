@@ -4,8 +4,6 @@ description: 'Learn how to create your own Vue.js plugin with an easy-to-use pac
 keywords: ['vue','vue.js','plugin','directive', 'filter', 'mixin']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-09
-modified_by:
-  name: Linode
 title: "Write Your Own Vue.js Plugin"
 external_resources:
 - '[VueJS](https://vuejs.org/)'

@@ -6,8 +6,6 @@ keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/centos-5/','/databases/mongodb/use-mongodb-to-store-application-data-on-centos-5/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-03-24
 title: Use MongoDB to Store Application Data on CentOS 5
 relations:

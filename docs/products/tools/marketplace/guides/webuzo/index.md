@@ -4,8 +4,6 @@ keywords: ['webuzo','control panel','dashboard','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-12-02
 modified: 2022-08-08
-modified_by:
-  name: Linode
 title: "Deploy Webuzo through the Linode Marketplace"
 external_resources:
 - '[Webuzo Documentation](http://www.webuzo.com/docs)'

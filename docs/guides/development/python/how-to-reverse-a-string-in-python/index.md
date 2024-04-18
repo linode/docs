@@ -4,8 +4,6 @@ description: "Wondering how to reverse a string in python? Follow our step-by-st
 keywords: ['how to reverse a string in python','python reverse string','reverse string python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-13
-modified_by:
-  name: Linode
 title: "Reverse a String in Python"
 title_meta: "How to Reverse a String in Python"
 contributors: ["Nathaniel Stickman"]

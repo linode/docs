@@ -5,8 +5,6 @@ keywords: ["Linux", "Unix-Like systems", "history"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/introduction-to-linux-concepts/','/tools-reference/introduction-to-linux-concepts/','/using-linux/linux-concepts/']
 modified: 2013-12-19
-modified_by:
-  name: Linode
 published: 2009-08-31
 title: Introduction to Linux Concepts
 external_resources:

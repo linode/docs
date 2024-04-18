@@ -7,8 +7,6 @@ tags: ["automation", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-09
 modified: 2017-10-09
-modified_by:
-  name: Linode
 title: 'Use Nightmare.js to Automate Headless Browsing'
 external_resources:
   - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'

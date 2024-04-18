@@ -5,8 +5,6 @@ keywords: ['salt','saltstack','cli','command line','reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-03
 modified: 2019-01-02
-modified_by:
-  name: Linode
 title: "SaltStack Command Line Reference"
 external_resources:
 - '[SaltStack Command Line Documentation](https://docs.saltproject.io/en/latest/ref/cli/index.html)'

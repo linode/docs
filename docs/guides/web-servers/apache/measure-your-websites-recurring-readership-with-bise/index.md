@@ -5,8 +5,6 @@ keywords: ["Bise", "Apache", "Analytics", "Blogging"]
 tags: ["web server","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-17
-modified_by:
-  name: Linode
 title: "Measure a Website's Recurring Readership with Bise"
 image: MeasureWebsiteRecReader_Bise.png
 external_resources:

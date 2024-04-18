@@ -4,8 +4,6 @@ description: "Supabase comes with a rich set of features, including a powerful d
 keywords: ['supabase react example','supabase api','supabase vs firebase']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-08
-modified_by:
-  name: Nathaniel Stickman
 title: "Create a React App with a Supabase Backend"
 title_meta: "How to Create a React App with a Supabase Backend"
 external_resources:

@@ -5,8 +5,6 @@ keywords: ['apache https']
 tags: ['web server', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
-modified_by:
-  name: Linode
 title: "Configure HTTP/2 on Apache"
 title_meta: "How to Configure HTTP/2 on Apache"
 contributors: ["Jeff Novotny"]

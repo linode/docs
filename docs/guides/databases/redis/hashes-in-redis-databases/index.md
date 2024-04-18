@@ -5,8 +5,6 @@ keywords: ['redis hashes example', 'accessing redis hashes', 'get redis hashes a
 tags: ['redis server', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
-modified_by:
-  name: Nathaniel Stickman
 title: "Use Hashes in Redis Databases"
 title_meta: "How to Use Hashes in Redis Databases"
 external_resources:

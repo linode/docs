@@ -5,8 +5,6 @@ keywords: ["ufw", "uncomplicated firewall", "ubuntu ufw", "linux ufw", "ufw tuto
 bundles: ['debian-security', 'network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-08-12
-modified_by:
-  name: Linode
 published: 2015-11-17
 title: How to Configure a Firewall with UFW
 tags: ["networking","security"]

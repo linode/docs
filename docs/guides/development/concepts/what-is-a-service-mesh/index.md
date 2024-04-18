@@ -5,8 +5,6 @@ keywords: ['service mesh', 'what is a service mesh', 'microservices', 'service a
 tags: ['web applications', 'networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-22
-modified_by:
-  name: Linode
 title: "The Benefits of a Service Mesh"
 title_meta: "What is a Service Mesh?"
 external_resources:

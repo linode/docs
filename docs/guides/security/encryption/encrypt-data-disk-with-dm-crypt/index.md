@@ -6,8 +6,6 @@ tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-18
 modified: 2022-11-22
-modified_by:
-  name: Linode
 title: 'How to Encrypt Your Data with dm-crypt'
 aliases: ['/security/encrypt-data-disk-with-dm-crypt/','/security/encryption/encrypt-data-disk-with-dm-crypt/']
 image: How_to_Encrypt_Your_Data_with_dm-crypt_smg.png

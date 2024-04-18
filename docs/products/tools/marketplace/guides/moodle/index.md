@@ -4,8 +4,6 @@ keywords: ['learning','educator','management', and 'school']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2023-04-11
-modified_by:
-  name: Linode
 title: "Deploy Moodle through the Linode Marketplace"
 aliases: ['/guides/deploying-moodle-marketplace-app/','/guides/moodle-marketplace-app/']
 external_resources:

@@ -5,8 +5,6 @@ keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "insta
 tags: ["linode platform","security","networking","ssl"]
 published: 2015-09-01
 modified: 2023-04-18
-modified_by:
-  name: Linode
 aliases: ['/platform/nodebalancer/nodebalancer-ssl-configuration/','/guides/nodebalancer-ssl-configuration/']
 image: nodebalancer-ssl-configuration.png
 contributors: ["Linode"]

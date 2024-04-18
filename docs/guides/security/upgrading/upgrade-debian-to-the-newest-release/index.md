@@ -7,8 +7,6 @@ tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-11
 modified: 2018-12-14
-modified_by:
-  name: Linode
 title: "Upgrade Debian to the Newest Release"
 contributors: ["Linode"]
 ---

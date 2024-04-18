@@ -5,8 +5,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["python", "bash", "direnv", "automation"]
 tags: ["automation","python"]
 modified: 2018-11-06
-modified_by:
-  name: Leslie Salazar
 title: "Install direnv"
 published: 2018-06-12
 headless: true

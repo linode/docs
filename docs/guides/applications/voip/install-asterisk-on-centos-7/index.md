@@ -6,8 +6,6 @@ tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-30
 modified: 2020-12-03
-modified_by:
-    name: Linode
 title: 'How to Install Asterisk on CentOS 7'
 dedicated_cpu_link: true
 relations:

@@ -6,8 +6,6 @@ keywords: ["mysql fedora 14", "mysql linux", "mysql fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/fedora-14/','/databases/mysql/use-mysql-relational-databases-on-fedora-14/']
 modified: 2014-01-28
-modified_by:
-  name: Alex Fornuto
 published: 2010-12-07
 title: Use MySQL Relational Databases on Fedora 14
 relations:

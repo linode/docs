@@ -5,8 +5,6 @@ keywords: ['redis lists tutorial','redis lists vs sets','redis sets example']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
-modified_by:
-  name: Nathaniel Stickman
 title: "Use Lists and Sets in Redis Database"
 title_meta: "How to Use  Lists and Sets in Redis Database"
 external_resources:

@@ -5,8 +5,6 @@ keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["kubernetes","container","managed hosting","education", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
-modified_by:
-  name: Linode
 title: "A Beginner's Guide to Kubernetes (Series)"
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes/','/applications/containers/beginners-guide-to-kubernetes/','/kubernetes/beginners-guide-to-kubernetes/']
 concentrations: ["Kubernetes", "container"]

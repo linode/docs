@@ -4,8 +4,6 @@ description: "Kubernetes offers a powerful and popular solution for container or
 keywords: ['kubernetes vs nomad','nomad and kubernetes','nomad hashicorp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-24
-modified_by:
-  name: Nathaniel Stickman
 title: "Kubernetes vs Nomad"
 external_resources:
 - '[HashiCorp Developer: Nomad vs. Kubernetes](https://developer.hashicorp.com/nomad/docs/nomad-vs-kubernetes)'

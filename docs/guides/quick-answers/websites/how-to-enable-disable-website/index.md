@@ -5,8 +5,6 @@ keywords: ['enable website','disable website','apache','nginx']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
-modified_by:
-  name: Linode
 title: "Sites Enabled with NGINX or Apache"
 title_meta: "How to Enable Sites in NGINX or Apache"
 external_resources:

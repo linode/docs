@@ -6,8 +6,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-21
 modified: 2021-10-18
-modified_by:
-  name: Linode
 title: "Install an Odoo 11 Stack on Ubuntu 16.04"
 aliases: ['/websites/cms/install-an-odoo-11-stack-on-ubuntu-16-04/','/websites/erp/install-an-odoo-11-stack-on-ubuntu-16-04/']
 external_resources:

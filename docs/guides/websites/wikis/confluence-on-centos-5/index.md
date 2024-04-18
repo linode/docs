@@ -7,8 +7,6 @@ tags: ["wiki","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/confluence-on-centos-5/','/web-applications/wikis/confluence/centos-5/']
 modified: 2011-06-07
-modified_by:
-  name: Linode
 published: 2010-09-09
 title: Confluence on CentOS 5
 external_resources:

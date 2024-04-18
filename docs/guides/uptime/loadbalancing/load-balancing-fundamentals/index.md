@@ -6,8 +6,6 @@ keywords: ['load balancers','load balancing algorithms','types of load balancers
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Newman"]
 published: 2024-01-16
-modified_by:
-  name: Linode
 ---
 
 When dealing with an overloaded server, you have a few choices: go bigger or share the load. Going bigger, meaning increasing the server's resources, allows you to boost performance --- but only up to a certain point. After all, any one server’s resources are always finite. On the other hand, distributing workloads across multiple servers scale resources almost infinitely, while also increasing availability.

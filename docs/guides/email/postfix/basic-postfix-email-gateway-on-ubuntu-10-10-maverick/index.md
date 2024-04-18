@@ -6,8 +6,6 @@ tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/gateway-ubuntu-10-10-maverick/','/email/postfix/basic-postfix-email-gateway-on-ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-11-09
 title: 'Basic Postfix Email Gateway on Ubuntu 10.10 (Maverick)'
 deprecated: true

@@ -4,8 +4,6 @@ keywords: ['web server','cpanel','litespeed']
 tags: ["marketplace", "linode platform", "cloud manager","managed hosting"]
 published: 2021-11-12
 modified: 2022-05-17
-modified_by:
-  name: Linode
 title: "Deploy LiteSpeed cPanel through the Linode Marketplace"
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'

@@ -6,8 +6,6 @@ tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/ruby-on-rails-nginx/debian-7-wheezy/','/development/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/','/websites/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/']
 modified: 2014-12-09
-modified_by:
-  name: James Stewart
 published: 2014-02-11
 title: 'Ruby on Rails with Nginx on Debian 7 (Wheezy)'
 external_resources:

@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-ubuntu-10-10-maverick/','/lamp-guides/ubuntu-10-10-maverick/','/web-servers/lamp/lamp-server-on-ubuntu-10-10-maverick/']
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2010-10-13
 title: 'LAMP Server on Ubuntu 10.10 (Maverick)'
 external_resources:

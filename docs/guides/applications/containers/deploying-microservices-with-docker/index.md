@@ -5,9 +5,6 @@ og_description: 'This guide shows how to deploy a simple microservice using Dock
 keywords: ["docker", "nginx", "flask", "gunicorn", "redis", "postgresql", "microservice"]
 tags: ["postgresql","database","docker","container","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-01-04
-modified_by:
-  name: Bob Strecansky
 published: 2018-01-04
 title: 'How to Deploy Microservices with Docker'
 external_resources:

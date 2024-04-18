@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy/','/communications/xmpp/ejabberd/ubuntu-8-04-hardy/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-10-13
 title: 'Instant Messaging Services with ejabberd on Ubuntu 8.04 (Hardy)'
 relations:

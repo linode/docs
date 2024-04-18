@@ -5,8 +5,6 @@ keywords: ["Visualization", "R", "Python", "Perl", "pandas"]
 tags: ["python", "perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-27
-modified_by:
-  name: Linode
 title: 'An Overview of Open Source Data Visualization Tools'
 aliases: ['/development/data-visualization/visualize-history/','/development/visualize-history/']
 contributors: ["Mihalis Tsoukalos"]

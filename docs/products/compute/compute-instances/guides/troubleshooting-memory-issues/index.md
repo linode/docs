@@ -5,8 +5,6 @@ keywords: ["Linode troubleshooting", "Linux configuration","troubleshoot"]
 tags: ["networking", "mysql", "apache"]
 published: 2009-08-05
 modified: 2023-03-14
-modified_by:
-  name: Linode
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-memory-and-networking-issues/','/troubleshooting/memory-networking/','/guides/troubleshooting-memory-and-networking-issues/']
 ---

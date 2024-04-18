@@ -6,8 +6,6 @@ keywords: ["tar", "gnu tar", "gzip", "gnu zip", "tar.gz. tgz", "file archive", "
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/','/linux-tools/common-commands/tar-gzip/']
 modified: 2018-01-29
-modified_by:
-  name: Linode
 published: 2010-01-30
 title: Archiving and Compressing files with GNU Tar and GNU Zip
 external_resources:

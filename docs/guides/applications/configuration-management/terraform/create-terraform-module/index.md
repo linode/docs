@@ -6,8 +6,6 @@ tags: ["terraform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
 modified: 2021-06-01
-modified_by:
-  name: Linode
 image: create-a-terraform-module.png
 title: "Create a Terraform Module"
 title_meta: "How to Create a Terraform Module"

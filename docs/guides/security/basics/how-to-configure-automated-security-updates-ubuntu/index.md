@@ -5,8 +5,6 @@ keywords: ["ubuntu unattended-upgrades", "configuring unattended-upgrades"]
 tags: ["ubuntu", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-10-22
-modified_by:
-  name: Linode
 published: 2020-10-22
 title: "Configuring Automated Security Updates on Ubuntu"
 title_meta: "How to Configure Automated Security Updates on Ubuntu"

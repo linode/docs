@@ -5,8 +5,6 @@ keywords: ['what is grpc', 'grpc vs rest', 'grpc tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
-modified_by:
-  name: Linode
 title: "Use gRPC and Python for Remote Procedural Calls"
 external_resources:
 - '[gRPC](https://grpc.io/)'

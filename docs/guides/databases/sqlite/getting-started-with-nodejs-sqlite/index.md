@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 modified: 2022-01-14
 image: NodeSQLite.jpg
-modified_by:
-  name: Linode
 title: "Getting Started with Node.js SQLite"
 title_meta: "Node.js SQLite3: A Beginner's Guide to Installation & Usage"
 external_resources:

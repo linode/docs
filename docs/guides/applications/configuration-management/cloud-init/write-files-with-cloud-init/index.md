@@ -6,8 +6,6 @@ keywords: ['cloud-init','cloudinit','write files','sed']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-11-15
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation - Module Reference: Write Files](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#write-files)'
 - '[Cloud-init Documentation - Examples : Writing Out Arbitrary Files](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#writing-out-arbitrary-files)'

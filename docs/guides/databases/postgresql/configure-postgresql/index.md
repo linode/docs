@@ -5,8 +5,6 @@ og_description: 'PostgreSQL is a database server that focuses on standards compl
 keywords: ["postgresql", "clusters", "databases", "postgres", "database configuration", "database tuning", "configure postgres"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-07
-modified_by:
-  name: Linode
 published: 2017-12-07
 title: Configure PostgreSQL
 external_resources:

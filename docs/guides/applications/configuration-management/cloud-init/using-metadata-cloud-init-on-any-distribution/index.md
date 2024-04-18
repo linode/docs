@@ -6,8 +6,6 @@ keywords: ['cloud init','metadata','centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-12-19
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation](https://cloudinit.readthedocs.io/en/latest/)'
 ---

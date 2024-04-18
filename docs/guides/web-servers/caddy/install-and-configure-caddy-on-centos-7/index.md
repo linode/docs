@@ -6,8 +6,6 @@ tags: ["centos","web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
 modified: 2018-02-02
-modified_by:
-  name: Linode
 title: 'Install and Configure Caddy on CentOS 7'
 external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'

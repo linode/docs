@@ -6,8 +6,6 @@ tags: ["automation","salt","debian","centos","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-19
 modified: 2019-01-02
-modified_by:
-  name: Linode
 image: ConfigureApachewithSaltStack.png
 title: "Configure Apache with Salt Stack"
 external_resources:

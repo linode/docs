@@ -6,8 +6,6 @@ tags: ["postgresql", "nginx", "python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-30
 modified: 2018-01-30
-modified_by:
-  name: Linode
 title: "Viewing IoT Data with ThingsBoard"
 title_meta: "How to View IoT Data with ThingsBoard"
 external_resources:

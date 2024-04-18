@@ -4,8 +4,6 @@ description: 'This guide will show you how to install and configure the very pop
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "debian 10"]
 tags: ["drupal","apache","lamp","php","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
 published: 2020-02-18
 title: Install and Configure Drupal on Debian 10 (Buster)
 title_meta: How to Install and Configure Drupal on Debian 10

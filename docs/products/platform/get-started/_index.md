@@ -9,8 +9,6 @@ description: "Learn how to create an account and use the Linode Cloud Platform."
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/products/platform/accounts/get-started/','/guides/getting-started/','/guides/platform/get-started/']
 published: 2018-11-05
 modified: 2023-09-20
-modified_by:
-  name: Linode
 show_on_frontpage: true
 linkTitle: "Get Started"
 weight: 10

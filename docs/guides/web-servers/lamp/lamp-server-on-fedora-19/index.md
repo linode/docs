@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-fedora-19/','/web-servers/lamp/lamp-server-on-fedora-19/','/lamp-guides/fedora-19/']
 modified: 2014-04-11
-modified_by:
-  name: Alex Fornuto
 published: 2013-11-18
 title: LAMP Server on Fedora 19
 external_resources:

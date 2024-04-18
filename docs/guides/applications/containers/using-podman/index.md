@@ -4,8 +4,6 @@ description: "Podman has risen as a compelling alternative to Docker for deployi
 keywords: ['what is podman','podman docker','podman tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-26
-modified_by:
-  name: Nathaniel Stickman
 title: "Install Podman for Running Containers"
 title_meta: "How to Install Podman for Running Containers"
 external_resources:

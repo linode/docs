@@ -6,8 +6,6 @@ keywords: ["postfix centos 6", "dovecot centos 6", "linux mail server", "email",
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-03-26
-modified_by:
-  name: Elle Krout
 published: 2015-03-26
 title: 'Email with Postfix, Dovecot, and MySQL on CentOS 6'
 external_resources:

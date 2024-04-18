@@ -5,8 +5,6 @@ tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud mana
 published: 2020-09-28
 modified: 2024-03-13
 image: Deploy_Jitsi_oneclickapps.png
-modified_by:
-  name: Linode
 title: "Deploy Jitsi through the Linode Marketplace"
 external_resources:
 - '[About Jitsi](https://jitsi.org/about/)'

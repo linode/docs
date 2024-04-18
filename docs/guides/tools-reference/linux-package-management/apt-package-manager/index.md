@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-12
 image: UsingAPTtoManagePackagesinDebianandUbuntu.jpg
 modified: 2022-01-31
-modified_by:
-  name: Linode
 title: "Using APT to Manage Packages in Debian and Ubuntu"
 title_meta: "How to Use APT to Manage Packages in Debian and Ubuntu"
 aliases: ['/guides/using-apt-package-manager/']

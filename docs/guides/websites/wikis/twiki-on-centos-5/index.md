@@ -6,8 +6,6 @@ tags: ["wiki","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/centos-5/','/websites/wikis/twiki-on-centos-5/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: TWiki on CentOS 5
 deprecated: true

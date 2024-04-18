@@ -6,8 +6,6 @@ aliases: ['/websites/cms/drupal/themes-modules-backups-drupal-drush-on-debian-7/
 tags: ["drupal","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-12-05
-modified_by:
-    name: Linode
 published: 2014-12-05
 title: 'Themes, Modules, & Backups with Drupal Drush on Debian 7'
 deprecated: true

@@ -5,8 +5,6 @@ description: "Pipenv combines the functionality of Pip and Virtualenv into a sin
 og_description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-27
-modified_by:
-  name: Linode
 published: 2018-05-01
 title: "Using Pipenv to Manage Python Packages and Versions"
 title_meta: "How to Use Pipenv to Manage Python Packages and Versions"

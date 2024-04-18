@@ -6,8 +6,6 @@ tags: ["wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
 modified: 2023-01-31
-modified_by:
-  name: Linode
 title: "Deploy a WordPress Site Using Terraform and Linode StackScripts"
 external_resources:
 - '[Terraform Linode Provider](https://www.terraform.io/docs/providers/linode/index.html)'

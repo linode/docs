@@ -4,8 +4,6 @@ description: "Wondering how to link javascript to HTML? Follow our step-by-step 
 keywords: ['how to link javascript to html','link javascript to html','add javascript to html']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-05
-modified_by:
-  name: Linode
 title: "Link JavaScript to HTML"
 title_meta: "An Essential Guide on How to Add JavaScript to HTML"
 contributors: ["Nathaniel Stickman"]

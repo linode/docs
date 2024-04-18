@@ -5,8 +5,6 @@ keywords: ['npm','npm install','npm update']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
-modified_by:
-  name: Nathaniel Stickman
 title: "Install and Use the Node Package Manager (NPM) on Linux"
 external_resources:
 - '[NPM Docs](https://docs.npmjs.com/)'

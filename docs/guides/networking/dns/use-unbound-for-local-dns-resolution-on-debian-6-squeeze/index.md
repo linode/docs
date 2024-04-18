@@ -7,8 +7,6 @@ tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/unbound-dns-resolver-debian-6-squeeze/','/networking/dns/use-unbound-for-local-dns-resolution-on-debian-6-squeeze/']
 modified: 2011-05-13
-modified_by:
-  name: Linode
 published: 2011-02-15
 title: 'Use Unbound for Local DNS Resolution on Debian 6 (Squeeze)'
 relations:

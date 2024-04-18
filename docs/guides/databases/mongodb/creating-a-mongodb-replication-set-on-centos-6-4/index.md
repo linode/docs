@@ -6,8 +6,6 @@ description: "This guide will show you how to configure a MongoDB ReplSet on Cen
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/centos-6/','/databases/mongodb/creating-a-mongodb-replication-set-on-centos-6-4/']
-modified_by:
-  name: Linode
 published: 2014-04-09
 title: 'Creating a MongoDB Replication Set on CentOS 6.4'
 title_meta: 'How To Create a MongoDB Replication Set on CentOS 6.4'

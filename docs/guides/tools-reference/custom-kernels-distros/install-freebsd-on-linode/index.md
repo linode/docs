@@ -5,8 +5,6 @@ keywords: ["freebsd", "bsd"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-07
-modified_by:
-  name: Linode
 published: 2016-03-14
 title: 'Install FreeBSD on Linode'
 external_resources:

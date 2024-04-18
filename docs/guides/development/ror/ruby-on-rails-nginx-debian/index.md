@@ -7,8 +7,6 @@ tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-nginx-debian-8/','/development/ror/ruby-on-rails-nginx-debian/','/development/ror/ruby-on-rails-nginx-debian-8/']
 modified: 2017-12-28
-modified_by:
-  name: Jared Kobos
 published: 2015-06-25
 title: 'Ruby on Rails with NGINX On Debian 9'
 external_resources:

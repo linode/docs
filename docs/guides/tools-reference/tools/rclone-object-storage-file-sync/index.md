@@ -6,8 +6,6 @@ tags: ['ubuntu', 'cloud manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified: 2023-07-27
-modified_by:
-  name: Linode
 external_resources:
    - '[Rclone mount command Documentation](https://rclone.org/commands/rclone_mount/)'
    - '[Rclone copy command Documentation](https://rclone.org/commands/rclone_copy/)'

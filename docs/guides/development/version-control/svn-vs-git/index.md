@@ -5,8 +5,6 @@ keywords: ['svn vs git','git vs svn','subversion vs git']
 tags: ['version control system']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-13
-modified_by:
-  name: Linode
 title: "SVN vs Git: Which Version Control System Should You Use?"
 title_meta: "Git vs SVN: Pros and Cons of Each Version Control System"
 contributors: ["Nathaniel Stickman"]

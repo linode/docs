@@ -5,8 +5,6 @@ keywords: ["upgrading", "ubuntu", "18.04","bionic beaver"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-10-26
-modified_by:
-  name: Linode
 published: 2018-04-27
 title: "Inline Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
 title_meta: "How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"

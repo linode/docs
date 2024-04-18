@@ -6,8 +6,6 @@ keywords: ['types of networks', 'networking type', 'network connection types', '
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2023-09-26
-modified_by:
-  name: Linode
 ---
 
 Networks vary widely in size and scope. Some are simple and highly localized. Others span the globe – and beyond, even going into space. Picking the right network depends on what and where you want to connect. Your type of application also matters in some cases; for example, there are special networks optimized just for storage devices.This guide describes 10 major network types and where each network might, or might not, make sense.

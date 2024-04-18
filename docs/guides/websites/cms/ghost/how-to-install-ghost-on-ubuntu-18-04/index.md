@@ -6,8 +6,6 @@ keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "depl
 tags: ["nginx","ubuntu","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-10
-modified_by:
-  name: Linode
 published: 2020-02-10
 title: Installing Ghost CMS on Ubuntu 18.04 LTS
 title_meta: How to Install Ghost CMS on Ubuntu 18.04 LTS

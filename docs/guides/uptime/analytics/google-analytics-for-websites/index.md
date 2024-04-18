@@ -4,8 +4,6 @@ description: 'Get in-depth website visitor statistics with Google Analytics on y
 keywords: ["analytics", "google analytics", "analytics", "tracking", "statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-01-29
-modified_by:
-  name: Elle Krout
 published: 2015-01-29
 title: Google Analytics for Websites
 external_resources:

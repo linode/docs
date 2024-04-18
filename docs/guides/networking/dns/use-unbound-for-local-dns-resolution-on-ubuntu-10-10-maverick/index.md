@@ -7,8 +7,6 @@ tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-10-10-maverick/','/dns-guides/unbound-dns-resolver-ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2011-02-02
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 10.10 (Maverick)'
 relations:

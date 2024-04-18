@@ -4,8 +4,6 @@ description: "A popular Dropbox alternative, ownCloud provides easy and secure f
 keywords: ['ownCloud on Debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-29
-modified_by:
-  name: Linode
 title: "Installing and Configuring ownCloud on Debian 10"
 title_meta: "How to Install and Configure ownCloud on Debian 10"
 tags: ["debian"]

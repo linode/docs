@@ -6,8 +6,6 @@ og_description: 'Use a pre-trained deep learning model as part of a production a
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-09
 modified: 2019-01-31
-modified_by:
-  name: Linode
 title: 'How to Move Your Machine Learning Model to Production'
 external_resources:
 - '[Miniconda](https://conda.io/miniconda.html)'

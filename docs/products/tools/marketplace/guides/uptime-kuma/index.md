@@ -4,8 +4,6 @@ keywords: ['uptime','monitoring','ping']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2023-10-27
-modified_by:
-  name: Linode
 title: "Deploy Uptime Kuma through the Linode Marketplace"
 external_resources:
 - '[Uptime Kuma](https://github.com/louislam/uptime-kuma)'

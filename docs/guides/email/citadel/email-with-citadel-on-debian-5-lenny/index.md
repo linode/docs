@@ -7,8 +7,6 @@ tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/email-with-citadel-on-debian-5-lenny/','/email/citadel/debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2009-11-09
 title: 'Email with Citadel on Debian 5 (Lenny)'
 relations:

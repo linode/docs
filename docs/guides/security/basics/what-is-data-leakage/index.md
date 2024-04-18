@@ -5,8 +5,6 @@ og_description: 'Two to three sentences describing your guide when shared on soc
 keywords: ['what is data leak','dta leakage','data leakage machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-04
-modified_by:
-  name: Linode
 title: "What is Data Leakage? (Plus Detection and Protection Tips)"
 title_meta: "Data Leakage: Definition, Examples, & Protection Tips"
 external_resources:

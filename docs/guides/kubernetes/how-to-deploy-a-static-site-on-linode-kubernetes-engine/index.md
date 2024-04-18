@@ -6,8 +6,6 @@ tags: ["docker","version control system","kubernetes","container","linode platfo
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
 modified: 2020-12-03
-modified_by:
-  name: Linode
 title: "Deploy a Static Site on Linode Kubernetes Engine"
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'

@@ -4,8 +4,6 @@ description: "Implementing an efficient electronic document management system (E
 keywords: ['open source document management system','cloud document management system','cloud edms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-28
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Implement a Cloud-based Document Management System"
 tab_group_main:
   title: Guides

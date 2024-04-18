@@ -4,8 +4,6 @@ keywords: ['odoo','business','crm','ecommerce']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2023-10-27
-modified_by:
-  name: Linode
 title: "Deploy Odoo through the Linode Marketplace"
 external_resources:
 - '[Odoo](https://www.odoo.com/)'

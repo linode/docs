@@ -5,9 +5,6 @@ keywords: ['next js vs react', 'what is next js', 'set up a next js app']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-08
-modified_by:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 title: "Getting Started with Next.js"
 title_meta: "Create a Next.js App"
 external_resources:

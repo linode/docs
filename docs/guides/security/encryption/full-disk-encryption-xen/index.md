@@ -7,8 +7,6 @@ aliases: ['/security/full-disk-encryption-xen/','/security/encryption/full-disk-
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
-modified_by:
-  name: Linode
 published: 2013-07-05
 title: Full Disk Encryption
 contributors: ["Quintin Riis"]

@@ -5,8 +5,6 @@ keywords: ['hugo','static site','object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-09
 modified: 2023-08-15
-modified_by:
-  name: Linode
 title: "Deploy a Static Site using Hugo and Object Storage"
 external_resources:
 - '[Hugo Documentation](https://gohugo.io/documentation/)'

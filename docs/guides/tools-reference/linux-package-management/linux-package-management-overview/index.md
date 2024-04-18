@@ -5,8 +5,6 @@ keywords: ["dnf", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-09-05
 modified: 2022-05-12
-modified_by:
-  name: Linode
 image: OverviewofPackageManagementinLinux.jpg
 title: "An Overview of Package Management in Linux"
 tags: ["linux"]

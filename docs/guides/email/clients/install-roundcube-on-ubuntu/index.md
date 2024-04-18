@@ -7,8 +7,6 @@ tags: ["ubuntu","postfix","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-01
 modified: 2017-12-18
-modified_by:
-  name: 'Linode'
 title: 'Install Roundcube on Ubuntu 16.04'
 external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'

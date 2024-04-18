@@ -4,8 +4,6 @@ description: "Learn how to install and use the cheat command to view and manage 
 keywords: ['cheat linux commands','cheat linux install','linux cheat sheet app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-23
-modified_by:
-  name: Nathaniel Stickman
 title: "Install and Use the cheat Command on Linux"
 title_meta: "How to Install and Use the cheat Command on Linux"
 contributors: ["Nathaniel Stickman"]

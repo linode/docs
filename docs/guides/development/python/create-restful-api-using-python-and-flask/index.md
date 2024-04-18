@@ -5,8 +5,6 @@ keywords: ['python flask api']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
-modified_by:
-  name: Linode
 title: "Create a RESTful API Using Python and Flask"
 contributors: ["Chelsea Troy"]
 ---

@@ -5,8 +5,6 @@ keywords: ['Python for loop', 'Python while loop', 'Python for loop range', 'Pyt
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-04
-modified_by:
-  name: Linode
 title: "For and While Loops in Python 3"
 title_meta: "Using For and While Loops in Python 3"
 external_resources:

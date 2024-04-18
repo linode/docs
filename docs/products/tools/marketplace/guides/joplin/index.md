@@ -3,8 +3,6 @@ description: "Deploy Joplin on a Linode Compute Instance. Joplin is an open sour
 keywords: ['productivity','notes','docs']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-03-29
-modified_by:
-  name: Linode
 title: "Deploy Joplin through the Linode Marketplace"
 external_resources:
 - '[Joplin](https://joplinapp.org/)'

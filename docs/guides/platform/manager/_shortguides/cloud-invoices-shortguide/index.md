@@ -3,8 +3,6 @@ slug: cloud-invoices-shortguide
 description: 'Shortguide that shows you how to print an invoice in the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
 published: 2020-07-22
 title: How to Print an Invoice in the Cloud Manager
 keywords: ["cloud manager"]

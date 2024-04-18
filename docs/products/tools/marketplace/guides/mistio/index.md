@@ -4,8 +4,6 @@ keywords: [ 'mist.io', 'marketplace', 'server']
 tags: ["cloud-manager", "linode platform", "marketplace"]
 published: 2020-03-18
 modified: 2024-01-22
-modified_by:
-  name: Linode
 title: "Deploy Mist.io through the Linode Marketplace"
 external_resources:
 - '[Mist.io Official](https://mist.io/)'

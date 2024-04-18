@@ -6,8 +6,6 @@ tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-10-29
 modified: 2020-10-29
-modified_by:
-  name: Linode
 title: 'Logging and System Monitoring'
 aliases: ['/security/monitoring/logging-and-system-monitoring/']
 image: Logging_and_system_monitoring.png

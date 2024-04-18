@@ -4,8 +4,6 @@ description: 'This guide explains how to copy files and folders in Linux, includ
 keywords: ['Copy a file linux','Copying a file linux','Copying files linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-18
-modified_by:
-  name: Linode
 title: "Copy Files and Directories in Linux"
 title_meta: "How to Copy Files and Directories in Linux"
 external_resources:

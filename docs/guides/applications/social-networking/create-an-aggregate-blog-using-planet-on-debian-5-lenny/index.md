@@ -6,8 +6,6 @@ tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/debian-5-lenny/','/applications/social-networking/create-an-aggregate-blog-using-planet-on-debian-5-lenny/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-04-07
 title: 'Create an Aggregate Blog using Planet on Debian 5 (Lenny)'
 deprecated: true

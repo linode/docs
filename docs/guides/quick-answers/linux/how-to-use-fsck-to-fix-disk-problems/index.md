@@ -6,8 +6,6 @@ keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-27
 modified: 2018-09-20
-modified_by:
-  name: Linode
 title: "Using fsck to Find and Repair Disk Errors and Bad Sectors"
 title_meta: "How to Use fsck to Check and Repair Disk Errors"
 external_resources:

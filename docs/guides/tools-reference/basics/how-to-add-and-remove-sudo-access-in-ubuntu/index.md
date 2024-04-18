@@ -6,8 +6,6 @@ tags: ["Ubuntu","Linux","sudo","users"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-01
 modified: 2021-07-09
-modified_by:
-  name: Linode
 title: "Add and Remove sudo Access in Ubuntu"
 external_resources:
 - '[sudo home](https://www.sudo.ws/)'

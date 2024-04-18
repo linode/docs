@@ -4,8 +4,6 @@ description: "This article gives you step-by-step instructions for installing Ma
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-08-21
-modified_by:
-    name: Linode
 published: 2015-08-21
 title: "Installing MariaDB on CentOS 7"
 title_meta: "How to Install MariaDB on CentOS 7"

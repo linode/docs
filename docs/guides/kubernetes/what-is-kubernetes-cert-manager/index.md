@@ -5,8 +5,6 @@ keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke"
 tags: ["security","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-13
-modified_by:
-  name: Linode
 title: 'Understanding Kubernetes cert-manager'
 title_meta: 'What is Kubernetes cert-manager?'
 aliases: ['/kubernetes/deploy-and-manage-kubernetes-certificates-with-cert-manager/','/kubernetes/what-is-kubernetes-cert-manager/']

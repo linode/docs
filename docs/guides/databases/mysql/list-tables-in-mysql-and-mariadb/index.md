@@ -5,8 +5,6 @@ keywords: ['mysql list tables','mysql list table names','mysql list table fields
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-20
-modified_by:
-  name: Nathaniel Stickman
 title: "List Tables in MySQL and MariaDB"
 title_meta: "How to List Tables in MySQL and MariaDB"
 contributors: ["Nathaniel Stickman"]

@@ -7,8 +7,6 @@ tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/','/frameworks/apache-tomcat/ubuntu-9-04-jaunty/','/development/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/','/development/frameworks/apache-tomcat/installing-apache-tomcat-on-ubuntu-9-04-jaunty/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-08-06
 title: 'Installing Apache Tomcat on Ubuntu 9.04 (Jaunty)'
 relations:

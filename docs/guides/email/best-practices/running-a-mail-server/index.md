@@ -4,8 +4,6 @@ description: "Take control of your email with your own mail server. Learn how to
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
-modified_by:
-  name: Linode
 published: 2013-06-05
 modified: 2022-12-23
 title: "Running a Mail Server"

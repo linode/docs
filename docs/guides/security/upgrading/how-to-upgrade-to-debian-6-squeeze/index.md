@@ -7,8 +7,6 @@ tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/upgrading/upgrade-to-debian-6-squeeze/','/security/upgrading/how-to-upgrade-to-debian-6-squeeze/']
 modified: 2013-10-01
-modified_by:
-  name: Linode
 published: 2011-02-05
 title: 'How to Upgrade to Debian 6 (Squeeze)'
 relations:

@@ -7,8 +7,6 @@ tags: ["centos","web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/python-uwsgi/centos-5/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/']
 modified: 2011-05-09
-modified_by:
-  name: Linode
 published: 2010-11-10
 title: WSGI using uWSGI and nginx on CentOS 5
 relations:

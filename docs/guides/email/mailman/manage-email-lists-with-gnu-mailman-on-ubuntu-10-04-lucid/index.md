@@ -7,8 +7,6 @@ tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-10-04-lucid/','/email/mailman/ubuntu-10-04-lucid/']
 modified: 2013-09-26
-modified_by:
-  name: Linode
 published: 2010-08-05
 title: 'Manage Email Lists with GNU Mailman on Ubuntu 10.04 (Lucid)'
 relations:

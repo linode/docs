@@ -3,8 +3,6 @@ slug: a-beginners-guide-to-github
 description: "Learn how to submit new articles to the Linode Guides and Tutorials website, via the Linode Docs repository on GitHub."
 keywords: ["GitHub", "Git", "pull request", "Write For Linode", "article submissions", "linode guides and tutorials"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
 published: 2015-12-02
 title: "Getting Started with GitHub"
 title_meta: "A Beginner's Guide to GitHub"

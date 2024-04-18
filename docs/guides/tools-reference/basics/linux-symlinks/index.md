@@ -7,8 +7,6 @@ keywords: ['linux symlinks','symbolic link linux','soft link in linux','linux sy
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Stephen Satchell"]
 published: 2023-04-18
-modified_by:
-  name: Linode
 external_resources:
 - '[freeCodeCamp: Symlink Tutorial in Linux – How to Create and Remove a Symbolic Link](https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/)'
 - '[LinuxHint: Symbolic Link in Linux](https://linuxhint.com/symbolic-link-linux/)'

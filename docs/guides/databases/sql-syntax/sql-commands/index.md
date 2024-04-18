@@ -5,8 +5,6 @@ keywords: ['create table', 'alter table', 'drop table', 'ddl commands']
 tags: ['MySQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
-modified_by:
-  name: Linode
 title: "Introduction to SQL Commands"
 title_meta: "SQL Commands: Getting Started"
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]

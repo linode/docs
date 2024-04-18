@@ -5,8 +5,6 @@ keywords: ['mongodb indexing best practices', 'mongodb indexing tutorial', 'mong
 tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-28
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Use Indexes in MongoDB"
 title_meta: "MongoDB Indexing Explained"
 external_resources:

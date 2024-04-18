@@ -6,8 +6,6 @@ keywords: ["resources", "http", "files", "management", "mod_alias", "Alias", "ap
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/managing-resources-with-apache-modalias/','/web-servers/apache/configuration/managing-resources-with-apache-alias/','/web-servers/apache-tips-and-tricks/managing-resources-with-apache-modalias/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2010-02-24
 title: 'Managing Resources with Apache mod_alias'
 external_resources:

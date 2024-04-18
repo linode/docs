@@ -5,8 +5,6 @@ keywords: ["rsync", "backup", "back up", "copy", "file transfer", "synchronize",
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/introduction-to-rsync/','/linux-tools/utilities/rsync/']
 modified: 2017-09-14
-modified_by:
-  name: Linode
 published: 2009-09-08
 title: Introduction to rsync
 external_resources:

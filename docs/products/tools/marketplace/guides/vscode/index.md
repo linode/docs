@@ -4,8 +4,6 @@ keywords: ['vscode', 'marketplace', 'vscode web browser']
 tags: ["debian","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-12-02
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy VS Code through the Linode Marketplace"
 external_resources:
 - '[Code Server FAQ](https://github.com/cdr/code-server/blob/v3.7.4/doc/FAQ.md)'

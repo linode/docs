@@ -7,8 +7,6 @@ tags: ["monitoring","statistics","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitoring-server-with-munin-on-ubuntu-12-04-precise-pangolin/','/uptime/monitoring/deploy-munin-to-monitor-servers-on-ubuntu-12-04/','/server-monitoring/munin/ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-09
-modified_by:
-  name: Linode
 published: 2012-10-09
 title: 'Deploy Munin to Monitor Servers on Ubuntu 12.04'
 external_resources:

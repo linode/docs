@@ -5,8 +5,6 @@ keywords: ['scripting','automation','bash','open source']
 image: CommonUse_LinodeStackScripts.png
 published: 2020-05-21
 modified: 2022-11-30
-modified_by:
-  name: Linode
 tags: ["linode platform","automation"]
 aliases: ['/platform/stackscripts/common-stackscripts-use-cases/','/guides/common-stackscripts-use-cases/']
 ---

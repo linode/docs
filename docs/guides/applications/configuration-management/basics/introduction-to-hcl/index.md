@@ -4,8 +4,6 @@ description: 'This guide provides an introduction to HCL syntax and commonly use
 keywords: ["terraform", "hcl", "hashicorp", "orchestration", "HashiCorp Configuration Language"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-02-22
-modified_by:
-    name: Linode
 published: 2018-12-12
 title: "An Introduction to HashiCorp Configuration Language (HCL)"
 title_meta: Introduction to HashiCorp Configuration Language (HCL)

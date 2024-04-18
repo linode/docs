@@ -5,8 +5,6 @@ tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 published: 2020-03-18
 modified: 2022-03-08
 image: DeployShadowsocksServer_oneclickapps.png
-modified_by:
-  name: Linode
 title: "Deploy Shadowsocks through the Linode Marketplace"
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'

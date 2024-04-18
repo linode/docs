@@ -6,8 +6,6 @@ tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-apache-debian-8/','/websites/ror/ruby-on-rails-apache-debian-8/']
 modified: 2017-09-13
-modified_by:
-  name: Elle Krout
 published: 2013-07-13
 deprecated: true
 deprecated_link: 'development/ror/ruby-on-rails-apache-debian'

@@ -6,8 +6,6 @@ tags: ["container","docker","ssl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-07
 modified: 2018-12-14
-modified_by:
-  name: Linode
 title: "Deploy a Flask Application with Dokku"
 external_resources:
 - '[Dokku PaaS](http://dokku.viewdocs.io/dokku/)'

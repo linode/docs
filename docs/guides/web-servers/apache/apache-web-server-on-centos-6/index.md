@@ -7,8 +7,6 @@ tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-web-server-on-centos-6/','/web-servers/apache/installation/centos-6/','/websites/apache/apache-2-web-server-on-centos-6/']
 modified: 2018-12-31
-modified_by:
-  name: Linode
 published: 2013-11-11
 title: Apache Web Server on CentOS 6
 external_resources:

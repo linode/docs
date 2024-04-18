@@ -4,8 +4,6 @@ description: 'A cloud strategy roadmap outlines how your cloud adoption process 
 keywords: ['cloud implementation','cloud planning','cloud computing strategy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
-modified_by:
-  name: Linode
 title: "Develop a Cloud Implementation Strategy Roadmap"
 title_meta: "How to Develop a Cloud Implementation Strategy Roadmap"
 contributors: ["Jack Wallen"]

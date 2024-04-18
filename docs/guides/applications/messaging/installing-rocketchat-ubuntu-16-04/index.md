@@ -5,8 +5,6 @@ keywords: ["rocket.chat", "slack alternative", "chat", "xmpp"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-17
-modified_by:
-  name: Linode
 published: 2018-06-21
 title: 'Installing Rocket.Chat on Ubuntu 16.04'
 external_resources:

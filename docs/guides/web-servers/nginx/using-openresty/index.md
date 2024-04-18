@@ -5,8 +5,6 @@ keywords: ['what is openresty', 'openresty example', 'openresty vs nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ['Nathaniel Stickman']
 published: 2023-04-25
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Use the OpenResty Web Server"
 external_resources:
 - '[OpenResty: Getting Started](https://openresty.org/en/getting-started.html)'

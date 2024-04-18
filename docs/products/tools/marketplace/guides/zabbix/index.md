@@ -5,8 +5,6 @@ tags: ["marketplace", "networking", "linode platform", "cloud manager", "monitor
 published: 2021-02-23
 modified: 2022-08-23
 image: DeployZabbix_marketplaceapps.png
-modified_by:
-  name: Linode
 title: "Deploy Zabbix through the Linode Marketplace"
 external_resources:
 - '[Learn from documentation](https://www.zabbix.com/documentation/5.0/manual)'

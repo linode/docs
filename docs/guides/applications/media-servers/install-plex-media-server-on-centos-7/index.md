@@ -5,8 +5,6 @@ keywords: ["plex", "media", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-31
-modified_by:
-  name: Linode
 published: 2017-05-03
 title: Install Plex Media Server on CentOS 7
 external_resources:

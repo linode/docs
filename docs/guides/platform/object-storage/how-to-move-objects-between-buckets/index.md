@@ -6,8 +6,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-04
 modified: 2020-05-04
 image: Moving_Objects_Between_Buckets_in_Linode_Object_Storage_1200x631.png
-modified_by:
-  name: Linode
 title: "Moving Objects Between Buckets in Linode's Object Storage"
 title_meta: "How to Move Objects Between Buckets in Linode's Object Storage"
 external_resources:

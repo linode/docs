@@ -5,8 +5,6 @@ keywords: ["squirrelmail", " squirrel mail", " debian", " debian 8", " mail clie
 tags: ["debian","ubuntu","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-06-14
-modified_by:
-  name: Edward Angert
 published: 2014-01-14
 title: Install SquirrelMail on Ubuntu 16.04 or Debian 8
 external_resources:

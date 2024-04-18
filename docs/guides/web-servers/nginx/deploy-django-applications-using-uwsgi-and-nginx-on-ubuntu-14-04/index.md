@@ -5,8 +5,6 @@ keywords: ["django", "uwsgi", "nginx", "python"]
 tags: ["web server","ubuntu","python","nginx","django"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-11-25
-modified_by:
-  name: Sergey Pariev
 published: 2015-11-25
 title: "Deploy Django Apps with uWSGI and Nginx on Ubuntu 14.04"
 deprecated: True

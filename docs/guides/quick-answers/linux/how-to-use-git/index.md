@@ -5,9 +5,7 @@ aliases: ['/quick-answers/linux/how-to-use-git/','/quick-answers/how-to-use-git/
 keywords: ["Linux", "how to use Git", "github", "create git repo"]
 tags: ["version control system","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-07-17
-modified_by:
-  name: Angel Guarisma
+modified: 2017-07-17 Guarisma
 published: 2017-06-19
 title: How to Use Git the Version Control System
 external_resources:

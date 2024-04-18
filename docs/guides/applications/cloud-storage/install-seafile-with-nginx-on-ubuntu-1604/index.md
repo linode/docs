@@ -5,8 +5,6 @@ keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sha
 tags: ["ubuntu", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-06-21
-modified_by:
-  name: Linode
 published: 2017-05-23
 title: Install Seafile with NGINX on Ubuntu 16.04
 external_resources:

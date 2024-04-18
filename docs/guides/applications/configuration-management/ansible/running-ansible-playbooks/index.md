@@ -5,8 +5,6 @@ keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-06-01
 modified: 2015-09-21
-modified_by:
-    name: Linode
 title: Automate Server Configuration with Ansible Playbooks
 aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/','/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/']
 tags: ["automation"]

@@ -5,8 +5,6 @@ keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-08
 modified: 2022-08-11
-modified_by:
-  name: Linode
 title: "Install kubectl"
 headless: true
 show_on_rss_feed: false

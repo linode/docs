@@ -5,8 +5,6 @@ keywords: ["wordpress", "mysql", "replication", "master-master", "high availabil
 tags: ["debian","ubuntu","wordpress","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-01-21
-modified_by:
-  name: James Stewart
 published: 2015-01-09
 title: "Deploy a High Availability WordPress Website on Linode"
 deprecated: true

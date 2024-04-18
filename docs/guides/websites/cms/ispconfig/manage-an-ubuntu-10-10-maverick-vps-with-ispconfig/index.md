@@ -6,8 +6,6 @@ tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/ispconfig/ubuntu-10-10-maverick/','/websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/','/websites/cms/ispconfig/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-10-29
 title: 'Manage an Ubuntu 10.10 (Maverick) Linode with ISPConfig'
 deprecated: true

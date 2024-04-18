@@ -4,8 +4,6 @@ description: "Use the open-source pgAdmin program to securely manage remote Post
 keywords: ["pgadmin", "pgadmin windows", "postgresql gui", "postgresql windows", "manage postgresql databases", "ssh tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-05-12
-modified_by:
-  name: Linode
 published: 2010-04-28
 title: "Access PostgreSQL Database Remotely Using pgAdmin on Windows"
 title_meta: "Use pgAdmin to Connect to Remote Database on Windows"

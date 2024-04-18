@@ -5,8 +5,6 @@ keywords: ["magento", "centos", "e-commerce", "magento centos"]
 tags: ["centos", "lamp", "cms", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-12-28
-modified_by:
-  name: Phil Zona
 published: 2016-12-28
 title: Install Magento on CentOS 7
 external_resources:

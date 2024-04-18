@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-05-10
 aliases: ['/networking/diagnostics/deploy-ntopng-on-debian-8/','/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/']
 modified: 2018-04-16
-modified_by:
-  name: Linode
 title: 'Monitor Your Network with ntopng'
 contributors: ["Andrew Lescher"]
 ---

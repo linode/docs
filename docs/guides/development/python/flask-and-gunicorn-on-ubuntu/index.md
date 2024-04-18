@@ -6,8 +6,6 @@ tags: ["monitoring","python","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-10
 modified: 2020-07-11
-modified_by:
-  name: abalarin
 title: "Deploying a Flask Application on Ubuntu"
 title_meta: "How to deploy a Flask Application on Ubuntu"
 external_resources:

@@ -5,8 +5,6 @@ keywords: ["analytics", "google analytics", "wordpress", "analytics", "tracking"
 tags: ["wordpress","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-01-29
-modified_by:
-  name: Elle Krout
 published: 2015-01-29
 title: Google Analytics for WordPress
 external_resources:

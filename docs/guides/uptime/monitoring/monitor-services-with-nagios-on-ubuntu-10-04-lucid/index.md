@@ -7,8 +7,6 @@ tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-10-04-lucid/','/server-monitoring/nagios/ubuntu-10-04-lucid/']
 modified: 2013-10-01
-modified_by:
-  name: Linode
 published: 2010-05-26
 title: 'Monitor Services with Nagios on Ubuntu 10.04 (Lucid)'
 relations:

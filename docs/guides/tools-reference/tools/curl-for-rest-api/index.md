@@ -4,8 +4,6 @@ description: 'cURL is a data transfer application used to interact with APIs. Th
 keywords: ['cURL API','Test API using curl','Curl for rest API','Curl restful api']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-01
-modified_by:
-  name: Linode
 title: "Use cURL with RESTful APIs"
 title_meta: "How to Use  cURL with RESTful APIs"
 external_resources:

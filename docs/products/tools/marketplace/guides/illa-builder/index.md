@@ -4,8 +4,6 @@ description: "Deploy Illa Builder, an open-source low-code development tool, on 
 keywords: ['Illa','builder','low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-06-26
-modified_by:
-  name: Linode
 contributors: ["Linode"]
 ---
 

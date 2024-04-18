@@ -4,8 +4,6 @@ description: 'This guide provides you with an introduction to the Turing-complet
 keywords: ["UNIX", "shell", "AWK"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-30
-modified_by:
-  name: Linode
 title: 'Learn the AWK Programming Language'
 external_resources:
   - '[GNU awk](https://www.gnu.org/software/gawk/)'

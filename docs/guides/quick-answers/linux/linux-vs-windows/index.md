@@ -4,8 +4,6 @@ description: 'This guide discusses Linux vs. Windows, the difference between Lin
 keywords: ['windows vs linux ','linux or windows','is linux better than windows']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
-modified_by:
-  name: Linode
 title: "Linux vs. Windows: What’s the Difference?"
 title_meta: "What is the Difference Between Linux and Windows?"
 contributors: ["Tom Henderson"]

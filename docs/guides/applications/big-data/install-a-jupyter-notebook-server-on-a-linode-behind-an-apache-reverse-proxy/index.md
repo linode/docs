@@ -6,8 +6,6 @@ tags: ["ssl", "proxy", "apache"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2017-08-22
 modified: 2022-12-23
-modified_by:
-    name: Linode
 title: 'Installing a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
 title_meta: 'How to Install a Jupyter Notebook Server on a Reverse Proxy'
 external_resources:

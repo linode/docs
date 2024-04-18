@@ -5,8 +5,6 @@ tags: ["debian","ubuntu","marketplace", "web applications","linode platform", "c
 published: 2020-09-28
 modified: 2022-03-08
 image: DeployAzuraCast_OneClickApps.png
-modified_by:
-  name: Linode
 title: "Deploy AzuraCast through the Linode Marketplace"
 external_resources:
 - '[About AzuraCast](https://www.azuracast.com/about/)'

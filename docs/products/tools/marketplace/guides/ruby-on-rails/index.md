@@ -5,8 +5,6 @@ tags: ["ruby","linode platform","marketplace","cloud-manager"]
 published: 2020-03-11
 modified: 2022-03-08
 image: RubyonRails_oneclickapps.png
-modified_by:
-  name: Linode
 title: "Deploy Ruby on Rails through the Linode Marketplace"
 external_resources:
  - '[Ruby on Rails Documentation](https://guides.rubyonrails.org/)'

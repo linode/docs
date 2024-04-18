@@ -5,9 +5,7 @@ keywords: ["magento", "ubuntu", "e-commerce", "magento ubuntu"]
 tags: ["ubuntu", "ssl", "lamp", "cms","ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-29
-modified_by:
-  name: Andrew Lescher
-published: 2016-12-28T00:00:00.000Z
+published: 2016-12-28
 title: Install Magento on Ubuntu 18.04
 external_resources:
   - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'

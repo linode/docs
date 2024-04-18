@@ -5,8 +5,6 @@ keywords: ['angular','node.js','typescript','web applications','app framework','
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-10
-modified_by:
-  name: Nathaniel Stickman
 title: "Build a Website with Angular (For Beginners)"
 title_meta: "How to Build a Website with Angular (For Beginners)"
 external_resources:

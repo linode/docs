@@ -7,8 +7,6 @@ tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Jeff Novotny"]
 published: 2023-06-13
-modified_by:
-  name: Linode
 external_resources:
 - '[Grafana Labs](https://grafana.com/)'
 - '[Grafana Dashboard Library](https://grafana.com/grafana/dashboards/)'

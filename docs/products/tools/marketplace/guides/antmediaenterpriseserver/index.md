@@ -4,8 +4,6 @@ keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-03-29
 modified: 2024-04-16
-modified_by:
-  name: Linode
 title: "Deploy Ant Media Server Enterprise Edition through the Linode Marketplace"
 external_resources:
 - '[Ant Media](https://antmedia.io)'

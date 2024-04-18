@@ -7,8 +7,6 @@ tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/ispconfig/manage-a-debian-5-lenny-vps-with-ispconfig/','/websites/cms/manage-a-debian-5-lenny-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-04-19
 title: 'Manage a Debian 5 (Lenny) Linode with ISPConfig'
 relations:

@@ -5,8 +5,6 @@ keywords: ['web development languages','web design coding','website programming 
 tags: ['web applications', 'python', 'java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-24
-modified_by:
-  name: Linode
 title: "The Top 9 Web Development Languages You Need To Know"
 title_meta: "Programming Languages for Web Development"
 contributors: ["John Mueller"]

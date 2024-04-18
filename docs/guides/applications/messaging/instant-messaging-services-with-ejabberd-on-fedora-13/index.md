@@ -7,8 +7,6 @@ tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/ejabberd/fedora-13/','/applications/messaging/instant-messaging-services-with-ejabberd-on-fedora-13/']
 modified: 2013-09-24
-modified_by:
-  name: Linode
 published: 2010-09-13
 title: Instant Messaging Services with ejabberd on Fedora 13
 relations:

@@ -5,8 +5,6 @@ keywords: ['laravel','php','web application','web framework','deploy a website',
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
-modified_by:
-  name: Nathaniel Stickman
 title: "Build a Website Using the Laravel Framework"
 title_meta: "How to Create a Website Using Laravel"
 external_resources:

@@ -3,11 +3,8 @@ title: "Deploy Passbolt through the Linode Marketplace"
 description: "Learn how to deploy Passbolt, an open-source password manager, on the Akamai cloud computing platform."
 keywords: ['passbolt','password manager','security','authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
 published: 2024-03-19
 modified: 2024-03-22
-modified_by:
-  name: Linode
 aliases: ['/products/tools/marketplace/guides/deploy-passbolt-through-the-linode-marketplace/']
 ---
 

@@ -7,8 +7,6 @@ tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-phpbb-on-centos-5/','/web-applications/bulletin-boards/phpbb/centos-5/']
 modified: 2011-05-09
-modified_by:
-  name: Linode
 published: 2010-04-02
 title: Discussion Forums with phpBB on Centos 5
 external_resources:

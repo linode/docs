@@ -7,8 +7,6 @@ tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/','/websites/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/','/frameworks/ruby-on-rails-nginx/debian-5-lenny/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2009-08-21
 title: 'Ruby on Rails with Nginx on Debian 5 (Lenny)'
 relations:

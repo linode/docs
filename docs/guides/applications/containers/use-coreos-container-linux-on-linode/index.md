@@ -7,8 +7,6 @@ aliases: ['/platform/use-coreos-container-linux-on-linode/','/platform/using-cor
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-07-17
-modified_by:
-  name: Linode
 published: 2017-06-08
 title: Use CoreOS Container Linux on Linode
 contributors: ["Linode"]

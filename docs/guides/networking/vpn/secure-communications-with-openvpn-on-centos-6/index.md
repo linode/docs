@@ -7,8 +7,6 @@ tags: ["networking","security","vpn","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-centos-6/','/networking/openvpn/centos-6/']
 modified: 2013-12-23
-modified_by:
-  name: Linode
 published: 2010-02-25
 title: Secure Communications with OpenVPN on CentOS 6
 external_resources:

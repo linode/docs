@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/troubleshooting/troubleshooting-common-apache-issues/','/web-servers/apache/troubleshooting/']
 published: 2009-11-06
 modified: 2023-03-14
-modified_by:
-  name: Linode
 title: Troubleshooting Common Apache Issues
 image: troubleshooting-common-apache-issues.jpg
 external_resources:

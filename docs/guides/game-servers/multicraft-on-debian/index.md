@@ -8,8 +8,6 @@ external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
  - '[Minecraft.net](https://minecraft.net/)'
 modified: 2015-02-04
-modified_by:
-  name: Alex Fornuto
 deprecated: true
 published: 2015-02-04
 title: 'Installing Multicraft on Debian'

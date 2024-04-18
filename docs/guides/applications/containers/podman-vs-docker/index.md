@@ -4,8 +4,6 @@ description: "Containers offer portable, lightweight environments for developing
 keywords: ['podman vs docker','docker podman','podman vs docker performance']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-26
-modified_by:
-  name: Nathaniel Stickman
 title: "Podman vs Docker: Comparing the Two Containerization Tools"
 external_resources:
 - '[Red Hat Developer: Podman and Buildah for Docker Users](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users#)'

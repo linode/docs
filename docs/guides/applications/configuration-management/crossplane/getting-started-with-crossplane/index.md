@@ -6,8 +6,6 @@ keywords: ['crossplane kubernetes','crossplane examples','crossplane vs terrafor
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ['Nathaniel Stickman']
 published: 2023-06-12
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Crossplane: Documentation](https://docs.crossplane.io/)'
 ---

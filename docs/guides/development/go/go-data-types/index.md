@@ -4,8 +4,6 @@ description: "In this guide, we will walk you through the basics of the Go progr
 keywords: ["Go", "Golang", "Pointers", "Arrays", "Slices", "Maps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-19
-modified_by:
-  name: Linode
 title: "A Tutorial for Learning Go Data Types"
 external_resources:
   - '[Go](https://golang.org)'

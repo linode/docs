@@ -4,8 +4,6 @@ description: 'This guide introduces and explains the levels of the OSI networkin
 keywords: ['OSI network model','OSI networking','OSI levels','networking model']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-01
-modified_by:
-  name: Linode
 title: "An Introduction to the OSI Networking Model"
 external_resources:
 - '[OSI Model on Wikipedia](https://en.wikipedia.org/wiki/OSI_model)'

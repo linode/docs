@@ -7,8 +7,6 @@ tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django/django-apache-and-modwsgi-on-debian-5-lenny/','/frameworks/django-apache-mod-wsgi/debian-5-lenny/','/websites/frameworks/django-apache-and-modwsgi-on-debian-5-lenny/','/development/frameworks/django-apache-and-modwsgi-on-debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-05-11
 title: 'Django, Apache and mod_wsgi on Debian 5 (Lenny)'
 relations:

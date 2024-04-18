@@ -8,8 +8,6 @@ tab_group_main:
 aliases: ['/platform/api/linode-cli/','/cli/','/platform/linode-cli/','/platform/api/using-the-linode-cli/','/guides/using-the-linode-cli/','/guides/linode-cli/']
 published: 2018-06-29
 modified: 2022-05-02
-modified_by:
-  name: Linode
 ---
 
 ## Installing the Linode CLI

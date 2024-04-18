@@ -4,8 +4,6 @@ description: "JavaScript objects include key-value properties and methods and su
 keywords: ['javascript objects','javascript objects properties','javascript objects prototype']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-15
-modified_by:
-  name: Linode
 title: "An Introduction to Javascript Objects"
 title_meta: "A Javascript Objects Tutorial"
 external_resources:

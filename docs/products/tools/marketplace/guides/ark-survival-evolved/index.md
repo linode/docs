@@ -3,8 +3,6 @@ description: "Deploy a ARK: Survival Evolved Server on Linode using Marketplace 
 keywords: ['ark','survival evolved','marketplace apps', 'server']
 published: 2019-04-03
 modified: 2024-01-22
-modified_by:
-  name: Linode
 title: "Deploy an ARK Survival Evolved Server through the Linode Marketplace"
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'

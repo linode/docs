@@ -5,8 +5,6 @@ keywords: ['kubernetes','k8s','beginner','architecture','migrate','terraform','k
 tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-14
-modified_by:
-  name: Linode
 image: L_Migratefromk8s-alphaCLItoTerraform.png
 title: "Migrating from k8s-alpha CLI to Terraform"
 title_meta: "How to Migrate from k8s-alpha CLI to Terraform"

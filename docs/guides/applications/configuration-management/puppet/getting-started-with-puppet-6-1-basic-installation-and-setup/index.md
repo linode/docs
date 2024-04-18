@@ -5,8 +5,6 @@ keywords: ["puppet installation", "configuration change management", "server aut
 tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-15
-modified_by:
-    name: Linode
 published: 2019-01-15
 title: Getting Started with Puppet - Installation and Setup
 external_resources:

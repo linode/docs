@@ -6,8 +6,6 @@ description: 'This guide provides you with step-by-step instructions for creatin
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/debian-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/']
-modified_by:
-  name: Linode
 published: 2014-04-09
 title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
 title_meta: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'

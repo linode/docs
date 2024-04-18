@@ -5,8 +5,6 @@ keywords: ['database index', 'non-unique indexes', 'database performance']
 tags: ['MySQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
-modified_by:
-  name: Linode
 title: "An Introduction to SQL Indexes"
 title_meta: "How to Use SQL Indexes"
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]

@@ -6,8 +6,6 @@ tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/','/websites/cms/managing-domains-and-databases/','/websites/cms/use-cpanel-to-manage-domains-and-databases/','/web-applications/control-panels/cpanel/managing-domains-and-databases/']
 modified: 2017-02-15
-modified_by:
-  name: Linode
 published: 2012-06-08
 title: Use cPanel to Manage Domains and Databases
 external_resources:

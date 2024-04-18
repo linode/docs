@@ -6,8 +6,6 @@ keywords: ['jenkins ci/cd pipeline','jenkins kubernetes deployments','jenkins tu
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ['Nathaniel Stickman']
 published: 2023-05-17
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
   - '[Jenkins Blog: Create a New Jenkins Node, and Run Your Jenkins Agent as a Service](https://www.jenkins.io/blog/2022/12/27/run-jenkins-agent-as-a-service/)'
 ---

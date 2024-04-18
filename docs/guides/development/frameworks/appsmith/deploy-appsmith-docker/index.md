@@ -4,8 +4,6 @@ description: "Use Appsmith to quickly develop web frontends using a visual, drag
 keywords: ['appsmith tutorial','appsmith examples','install appsmith']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-24
-modified_by:
-  name: Nathaniel Stickman
 title: "Self-host Appsmith with Docker Compose"
 title_meta: "How to Self-host Appsmith with Docker Compose"
 external_resources:

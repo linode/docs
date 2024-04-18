@@ -4,8 +4,6 @@ keywords: ['saltcorn','database','development']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Saltcorn through the Linode Marketplace"
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'

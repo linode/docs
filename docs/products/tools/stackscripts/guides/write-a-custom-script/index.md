@@ -5,8 +5,6 @@ keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 published: 2020-05-21
 modified: 2022-11-30
-modified_by:
-  name: Linode
 image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png
 aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/','/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
 ---

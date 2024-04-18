@@ -4,8 +4,6 @@ keywords: ['web server','nodejs','openlitespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy OpenLiteSpeed Node.js through the Linode Marketplace"
 external_resources:
 - '[Node.js OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'

@@ -5,8 +5,6 @@ keywords: ["email", "postfix", "spf", "dkim", "debian 8", "opendkim", "dns", "dm
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-14
-modified_by:
-    name: Linode
 published: 2016-02-03
 title: 'Configure SPF and DKIM With Postfix on Debian 8'
 external_resources:

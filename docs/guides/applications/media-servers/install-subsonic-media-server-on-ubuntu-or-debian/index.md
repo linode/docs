@@ -6,8 +6,6 @@ aliases: ['/applications/media-servers/install-subsonic-media-server-on-ubuntu-o
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-31
-modified_by:
-  name: Linode
 published: 2015-02-02
 title: "Installing Subsonic Media Server on Ubuntu or Debian to Stream Music"
 title_meta: "How to Install Subsonic Media Server on Ubuntu or Debian"

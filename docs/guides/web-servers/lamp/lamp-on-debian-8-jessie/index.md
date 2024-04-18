@@ -5,8 +5,6 @@ keywords: ["debian 8 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian"
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-02
-modified_by:
-  name: Linode
 published: 2015-06-29
 title: 'LAMP on Debian 8 (Jessie)'
 aliases: ['/websites/lamp/lamp-server-debian-8/','/websites/lamp/lamp-on-debian-8-jessie/','/web-servers/lamp/lamp-on-debian-8-jessie/']

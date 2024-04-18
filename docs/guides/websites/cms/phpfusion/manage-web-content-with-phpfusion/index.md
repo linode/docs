@@ -6,8 +6,6 @@ tags: ["php","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/php-fusion/','/websites/cms/phpfusion/manage-web-content-with-phpfusion/','/websites/cms/manage-web-content-with-phpfusion/']
 modified: 2013-10-02
-modified_by:
-  name: Linode
 published: 2010-04-17
 title: 'Manage Web Content with PHP-Fusion'
 deprecated: true

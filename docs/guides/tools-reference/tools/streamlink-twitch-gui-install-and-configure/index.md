@@ -5,8 +5,6 @@ keywords: ['streamlink twitch gui']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-17
-modified_by:
-  name: Linode
 title: "Install and Configure the Streamlink Twitch GUI"
 title_meta: "How to Install and Configure the Streamlink Twitch GUI"
 contributors: ["Sandro Villinger"]

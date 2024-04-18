@@ -4,8 +4,6 @@ description: "This guide walks you through setting up a VPN kill switch with ipt
 keywords: ["vpn", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-07-09
-modified_by:
-  name: Linode
 published: 2017-09-29
 title: "Configuring a VPN Kill Switch on OpenVPN Clients Using iptables"
 title_meta: "How to Configure a VPN Kill Switch on OpenVPN Clients"

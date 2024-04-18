@@ -5,8 +5,6 @@ keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/using-irssi-for-internet-relay-chat/','/communications/irc/irssi/']
 modified: 2015-01-09
-modified_by:
-  name: Elle Krout
 published: 2010-03-29
 title: Using Irssi for Internet Relay Chat
 external_resources:

@@ -7,8 +7,6 @@ tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-debian-6-squeeze/','/development/frameworks/apache-tomcat-on-debian-6-squeeze/','/frameworks/apache-tomcat/debian-6-squeeze/','/development/frameworks/apache-tomcat/apache-tomcat-on-debian-6-squeeze/']
 modified: 2011-05-13
-modified_by:
-  name: Linode
 published: 2011-02-17
 title: 'Apache Tomcat on Debian 6 (Squeeze)'
 relations:

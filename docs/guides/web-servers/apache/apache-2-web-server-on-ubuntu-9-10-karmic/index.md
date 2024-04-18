@@ -7,8 +7,6 @@ tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-9-10-karmic/','/web-servers/apache/installation/ubuntu-9-10-karmic/','/web-servers/apache/apache-2-web-server-on-ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-10-29
 title: 'Apache 2 Web Server on Ubuntu 9.10 (Karmic)'
 relations:

@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-ssl-and-tls-deployment-best-practices/','/web-servers/nginx/tls-deployment-best-practices-for-nginx/','/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/','/guides/tls-deployment-best-practices-for-nginx/']
 published: 2018-02-09
 modified: 2018-02-09
-modified_by:
-  name: Linode
 title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
 title_meta: "Getting Started with NGINX: TLS Deployment Best Practices"
 contributors: ["Linode"]

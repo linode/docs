@@ -4,8 +4,6 @@ description: 'Use WeeChat and GNU Screen to create and maintain connections to I
 keywords: ["weechat", "irc", "oftc", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-03-10
-modified_by:
-    name: 'Linode'
 published: 2014-08-27
 title: 'Using WeeChat for Internet Relay Chat'
 external_resources:

@@ -3,8 +3,6 @@ slug: mongodb-shell-shortguide
 description: 'Shortguide that provides basic information about MongoDB Shell'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-28
-modified_by:
-  name: Linode
 title: MongoDB Shell Shortguide
 keywords: []
 headless: true

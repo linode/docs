@@ -3,8 +3,6 @@ slug: terraform-vs-helm
 title: "Comparing Terraform vs Helm: When to Use Each Tool"
 title_meta: "Terraform vs Helm (Comparison Guide): When to Use Each Tool"
 published: 2023-07-26
-modified_by:
-  name: Linode
 description: "Learn how Terraform and Helm can be used to manage your Kubernetes clusters, including the benefits (and downsides) of each and when to use each tool."
 keywords: ['terraform vs helm', 'helm charts vs terraform', 'kubernetes helm vs terraform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

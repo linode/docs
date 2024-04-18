@@ -3,8 +3,6 @@ description: "Configuring multiqueue NICs (Network Interface Controllers) on a L
 keywords: ['networking','multi-queue']
 published: 2021-07-01
 modified: 2023-03-03
-modified_by:
-  name: Linode
 title: "Configuring Multi-Queue NICs"
 title_meta: "How To Configure Multi-Queue NICs"
 image: NICS.jpg

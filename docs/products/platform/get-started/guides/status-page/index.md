@@ -3,8 +3,6 @@ description: 'Learn how to subscribe to Linode system status and maintenance upd
 keywords: ['linode','maintenance','incident','system', 'status']
 published: 2018-08-20
 modified: 2023-04-23
-modified_by:
-  name: Linode
 title: "Subscribe to Linode Status Updates"
 tags: ["linode platform"]
 aliases: ['/platform/linode-status-page/','/guides/linode-status-page/']

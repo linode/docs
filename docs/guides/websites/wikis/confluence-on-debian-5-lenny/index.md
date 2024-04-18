@@ -7,8 +7,6 @@ tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/confluence-on-debian-5-lenny/','/web-applications/wikis/confluence/debian-5-lenny/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-09-06
 title: 'Confluence on Debian 5 (Lenny)'
 relations:

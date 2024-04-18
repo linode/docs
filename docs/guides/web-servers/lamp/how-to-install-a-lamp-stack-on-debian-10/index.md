@@ -5,8 +5,6 @@ keywords: ["debian 10 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-19
-modified_by:
-  name: Linode
 published: 2015-06-29
 title: How to Install a LAMP Stack on Debian 10
 title_meta: 'Install a LAMP Stack on Debian 10 (Buster)'

@@ -5,8 +5,6 @@ description: "Use Glish (the Linode Graphical Shell) to access a desktop environ
 keywords: ["Console", "Shell", "glish", "desktop environment", "display manager"]
 published: 2015-08-28
 modified: 2022-10-12
-modified_by:
-  name: Linode
 tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
 contributors: ["Linode"]

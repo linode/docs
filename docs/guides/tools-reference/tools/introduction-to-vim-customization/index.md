@@ -5,8 +5,6 @@ keywords: ["vim", " editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-21
 modified: 2019-04-17
-modified_by:
-  name: 'Linode'
 title: 'Introduction To Vim Customization'
 external_resources:
  - '[Vim official home page](http://www.vim.org)'

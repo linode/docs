@@ -6,8 +6,6 @@ tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
 modified: 2019-12-03
-modified_by:
-  name: Linode
 title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
 title_meta: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
 relations:

@@ -6,8 +6,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/install-lamp-on-ubuntu-18-04/','/websites/lamp/install-lamp-on-ubuntu-16-04/','/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/']
 modified: 2017-07-28
-modified_by:
-  name: Edward Angert
 published: 2016-04-28
 title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 deprecated: true

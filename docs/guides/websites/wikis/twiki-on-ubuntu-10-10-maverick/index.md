@@ -7,8 +7,6 @@ tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/ubuntu-10-10-maverick/','/websites/wikis/twiki-on-ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2011-02-15
 title: 'TWiki on Ubuntu 10.10 (Maverick)'
 relations:

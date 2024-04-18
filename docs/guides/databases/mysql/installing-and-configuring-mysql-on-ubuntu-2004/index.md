@@ -5,8 +5,6 @@ keywords: ['mariadb vs mysql', 'install mysql linux', 'configure mysql linux']
 tags: ['mysql', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-29
-modified_by:
-  name: Linode
 title: "Installing and Configuring MySQL on Ubuntu 20.04"
 title_meta: "How to Install and configure MySQL on Ubuntu 20.04"
 external_resources:

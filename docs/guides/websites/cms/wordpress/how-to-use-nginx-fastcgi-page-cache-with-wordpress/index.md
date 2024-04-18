@@ -4,8 +4,6 @@ description: 'This guide explains how to enable NGINX page caching for WordPress
 keywords: ['NGINX caching','FastCGI cache','WordPress page cache','enable caching WordPress']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-21
-modified_by:
-  name: Linode
 title: "Use the Nginx FastCGI Page Cache With WordPress"
 title_meta: "How to Use the Nginx FastCGI Page Cache With WordPress"
 external_resources:

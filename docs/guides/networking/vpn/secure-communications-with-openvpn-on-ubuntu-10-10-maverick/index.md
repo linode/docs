@@ -7,8 +7,6 @@ tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-10-maverick/','/networking/openvpn/ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-11-29
 title: 'Secure Communications with OpenVPN on Ubuntu 10.10'
 relations:

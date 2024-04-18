@@ -6,8 +6,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-11-03
 modified: 2016-07-21
-modified_by:
-  name: Linode
 title: 'Install Odoo 9 ERP on Ubuntu 14.04'
 aliases: ['/websites/erp/install-odoo-9-erp-on-ubuntu-14-04/','/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/']
 external_resources:

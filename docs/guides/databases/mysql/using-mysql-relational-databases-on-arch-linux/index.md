@@ -6,8 +6,6 @@ keywords: ["mysql arch linux", "mysql linux", "arch linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/using-mysql-relational-databases-on-arch-linux/','/databases/mysql/arch-linux/']
 modified: 2014-01-23
-modified_by:
-  name: Alex Fornuto
 published: 2011-04-05
 title: Using MySQL Relational Databases on Arch Linux
 relations:

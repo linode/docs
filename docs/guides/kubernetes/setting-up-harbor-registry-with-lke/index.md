@@ -7,8 +7,6 @@ keywords: ['what is harbor registry','install harbor kubernetes','harbor vs dock
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-06-13
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Harbor Docs: Harbor Installation and Configuration](https://goharbor.io/docs/2.7.0/install-config/)'
 - '[Kubernetes: Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)'

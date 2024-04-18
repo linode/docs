@@ -6,8 +6,6 @@ tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true
 modified: 2015-02-22
-modified_by:
-  name: Dave Russell
 published: 2014-10-21
 title: 'How to Upgrade to Ubuntu 14.04 LTS'
 relations:

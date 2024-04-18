@@ -6,8 +6,6 @@ tags: ["lamp","ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/','/applications/configuration-management/create-puppet-module/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/','/applications/puppet/create-puppet-module/']
 modified: 2019-01-25
-modified_by:
-    name: Linode
 published: 2015-01-25
 title: Use Puppet Modules to Create a LAMP Stack
 relations:

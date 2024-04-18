@@ -5,8 +5,6 @@ keywords: ['what is open source software','open source software','keywords','ope
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
-modified_by:
-  name: Linode
 title: "What is Open Source Software?"
 title_meta: "Open Source Software Definition and Examples"
 contributors: ["Jack Wallen"]

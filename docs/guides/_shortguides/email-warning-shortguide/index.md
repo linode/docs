@@ -4,8 +4,6 @@ description: 'Shortguide that displays the warning note that email ports are blo
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-31
 modified: 2023-01-24
-modified_by:
-  name: Linode
 title: Email Port Blocking Alert
 keywords: []
 headless: true

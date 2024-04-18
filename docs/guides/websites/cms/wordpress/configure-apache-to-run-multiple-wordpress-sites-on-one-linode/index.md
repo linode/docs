@@ -6,8 +6,6 @@ tags: ["ubuntu","apache","lamp","wordpress","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/wordpress/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/','/websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/']
 modified: 2018-12-17
-modified_by:
-  name: Linode
 published: 2017-10-24
 title: Set Up Apache to Run Multiple WordPress Sites on a Single Linode
 external_resources:

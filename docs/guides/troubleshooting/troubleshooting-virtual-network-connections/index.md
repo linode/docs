@@ -5,8 +5,6 @@ keywords: ['troubleshoot vnc', 'troubleshoot linx', 'troubleshoot macOS', 'vnc e
 tags: ['vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-20
-modified_by:
-  name: Linode
 title: "Troubleshooting Virtual Network Connections"
 title_meta: "How to Troubleshoot Virtual Network Connections"
 contributors: ["Tom Henderson"]

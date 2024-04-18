@@ -6,8 +6,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/']
 published: 2019-12-20
 modified: 2023-09-20
-modified_by:
-  name: Linode
 image: AnOverviewoftheLinodeCloudManager.png
 title: "An Overview of the Cloud Manager"
 tags: ["linode platform","cloud manager"]

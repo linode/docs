@@ -5,8 +5,6 @@ keywords: ['fd linux command','find command linux','alternative to find','linux 
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
-modified_by:
-  name: Linode
 title: "Find Files With the fd Command"
 title_meta: "How to Find Files With the fd Command"
 external_resources:

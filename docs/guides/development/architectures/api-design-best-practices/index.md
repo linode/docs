@@ -4,8 +4,6 @@ description: "Searching for API design best practices to elevate your developmen
 keywords: ['api design best practices','api architecture','rest api design']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
-modified_by:
-  name: Nathaniel Stickman
 title: "API Design Best Practices: Elevate Your Development Process"
 title_meta: "REST API Best Practices for Design"
 external_resources:

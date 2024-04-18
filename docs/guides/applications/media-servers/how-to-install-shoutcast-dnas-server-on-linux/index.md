@@ -5,8 +5,6 @@ keywords: ["shoutcast", " internet radio", " streaming media", " streaming audio
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/media-servers/shoutcast/','/applications/media-servers/how-to-install-shoutcast-dnas-server-on-linux/','/communications/media-servers/shoutcast/']
 modified: 2019-03-25
-modified_by:
-  name: Linode
 published: 2012-06-07
 title: How to Install A SHOUTcast DNAS Server on Linux
 external_resources:

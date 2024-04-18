@@ -6,8 +6,6 @@ tags: ["web server","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-15
 modified: 2019-01-02
-modified_by:
-  name: Linode
 image: Automate-Static-Site-DeploymentswithSaltGitandWebhooks.png
 title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
 title_meta: "Automate Static Site Deployments with Salt and Git"

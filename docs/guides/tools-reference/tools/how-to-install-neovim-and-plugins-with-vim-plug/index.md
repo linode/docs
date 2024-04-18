@@ -7,8 +7,6 @@ aliases: ['/tools-reference/how-to-install-neovim-and-plugins-with-vim-plug/','/
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-02
 modified: 2022-12-27
-modified_by:
-  name: Linode
 title: How to Install NeoVim and Plugins with vim-plug
 external_resources:
  - '[NeoVim official website](https://neovim.io)'

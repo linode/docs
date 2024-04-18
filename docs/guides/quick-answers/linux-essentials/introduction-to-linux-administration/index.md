@@ -5,8 +5,6 @@ keywords: ["linux", "sysadmin", "administration"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-31
-modified_by:
-  name: Linode
 published: 2018-05-31
 title: Introduction to Linux Administration
 external_resources:

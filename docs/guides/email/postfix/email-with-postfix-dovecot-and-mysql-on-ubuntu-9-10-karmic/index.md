@@ -7,8 +7,6 @@ tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic/','/email/postfix/dovecot-mysql-ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-02-26
 title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 9.10 (Karmic)'
 relations:

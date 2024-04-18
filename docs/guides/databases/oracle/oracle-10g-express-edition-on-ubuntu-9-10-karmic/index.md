@@ -6,8 +6,6 @@ keywords: ["oracle ubuntu 9.10", "oracle ubuntu", "oracle linux", "sql database"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/10g-ubuntu-9-10-karmic/','/databases/oracle/oracle-10g-express-edition-on-ubuntu-9-10-karmic/']
 modified: 2014-08-13
-modified_by:
-  name: Linode
 published: 2010-05-09
 title: 'Oracle 10g Express Edition on Ubuntu 9.10 (Karmic)'
 relations:

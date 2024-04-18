@@ -5,8 +5,6 @@ keywords: ['linux path variable','linux path directory','add to linux path']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-14
-modified_by:
-  name: Nathaniel Stickman
 title: "Add a Directory to the PATH on Linux"
 title_meta: "How to Add a Directory to the PATH on Linux"
 external_resources:

@@ -4,8 +4,6 @@ keywords: ['harbor','container','container registry','docker']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2023-10-27
-modified_by:
-  name: Linode
 title: "Deploy Harbor through the Linode Marketplace"
 external_resources:
 - '[Harbor](https://goharbor.io/)'

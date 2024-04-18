@@ -5,8 +5,6 @@ keywords: ["python", "python virtual environment", "virtualenv", "ubuntu 18.04"]
 tags: ["python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-07
-modified_by:
-  name: Linode
 published: 2020-04-07
 image: Python_virtualenv_Ubuntu1804.png
 title: Creating a Python Virtual Environment on Ubuntu 18.04

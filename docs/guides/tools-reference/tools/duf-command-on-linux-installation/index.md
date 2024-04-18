@@ -5,8 +5,6 @@ keywords: ['duf linux','du linux','df linux', 'linux disk usage']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-11
-modified_by:
-  name: Nathaniel Stickman
 title: "Install and Use the duf Command on Linux"
 title_meta: "How to Install and Use the duf Command on Linux"
 contributors: ["Nathaniel Stickman"]

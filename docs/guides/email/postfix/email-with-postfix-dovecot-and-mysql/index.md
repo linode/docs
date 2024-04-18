@@ -5,8 +5,6 @@ keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", 
 tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-09-29
-modified_by:
-  name: Linode
 published: 2013-05-13
 title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
 title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"

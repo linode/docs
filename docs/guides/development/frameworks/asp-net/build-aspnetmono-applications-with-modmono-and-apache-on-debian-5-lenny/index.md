@@ -6,8 +6,6 @@ tags: ["web applications","apache","php","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/asp-net/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/','/frameworks/mod-mono/debian-5-lenny/','/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/','/websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/']
 modified: 2013-09-27
-modified_by:
-  name: Linode
 published: 2010-08-05
 title: "Build ASP.NET Applications with mod_mono and Apache on Debian 5"
 deprecated: true

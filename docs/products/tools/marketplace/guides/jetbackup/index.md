@@ -4,8 +4,6 @@ keywords: ['backups','cpanel', 'backup']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2022-05-17
-modified_by:
-  name: Linode
 title: "Deploy JetBackup through the Linode Marketplace"
 aliases: ['/guides/deploying-jetbackup-marketplace-app/','/guides/jetbackup-marketplace-app/']
 external_resources:

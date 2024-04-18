@@ -9,8 +9,6 @@ keywords: ['elastic', 'elasticsearch', 'plugins', 'search', 'analytics', 'search
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-09
 modified: 2019-01-31
-modified_by:
-  name: Linode
 title: "Installing and Using Elasticsearch Plugins"
 title_meta: "How to Install and Use Elasticsearch Plugins"
 dedicated_cpu_link: true

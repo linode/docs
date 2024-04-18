@@ -6,8 +6,6 @@ tags: ['python', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-12
 image: InstallPython3_Ubuntu2004.png
-modified_by:
-  name: Linode
 title: "Install Python 3 on Ubuntu 20.04"
 title_meta: "How to Install Python 3 on Ubuntu 20.04"
 relations:

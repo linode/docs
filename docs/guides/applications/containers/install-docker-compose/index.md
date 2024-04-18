@@ -5,8 +5,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "docker compose", "container"]
 tags: ["container", "docker"]
 modified: 2012-11-29
-modified_by:
-  name: Sam Foo
 title: "How to Install Docker Compose"
 contributors: ["Jared Kobos"]
 published: 2018-01-08

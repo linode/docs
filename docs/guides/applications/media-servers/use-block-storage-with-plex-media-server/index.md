@@ -5,8 +5,6 @@ keywords: ["plex", "streaming", "netflix", "roku", "block storage"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-31
-modified_by:
-  name: Linode
 published: 2018-03-01
 title: "Using a Block Storage Volume with Plex Media Server"
 title_meta: "How to Use a Block Storage Volume with Plex Media Server"

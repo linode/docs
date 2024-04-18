@@ -5,8 +5,6 @@ keywords: ['systemd','linux', 'init', 'unit files']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-09-12
 modified: 2018-09-12
-modified_by:
-  name: Linode
 title: "What is systemd?"
 external_resources:
 - '[systemd Wiki](https://www.freedesktop.org/wiki/Software/systemd/)'

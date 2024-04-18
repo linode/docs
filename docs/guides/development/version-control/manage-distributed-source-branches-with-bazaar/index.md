@@ -5,8 +5,6 @@ keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/manage-distributed-source-branches-with-bazaar/','/applications/development/manage-distributed-source-branches-with-bazaar/','/linux-tools/version-control/bazaar/']
 modified: 2011-05-23
-modified_by:
-  name: Linode
 published: 2010-01-18
 title: Manage Distributed Source Branches with Bazaar
 deprecated: true

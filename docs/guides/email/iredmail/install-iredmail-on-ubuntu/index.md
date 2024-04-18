@@ -6,8 +6,6 @@ tags: ["mysql","email","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/installing-iredmail/','/email/iredmail/install-iredmail-on-ubuntu/','/email/iredmail/installing-iredmail/']
 modified: 2020-12-04
-modified_by:
-  name: James Stewart
 published: 2014-10-06
 title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 contributors: ["Nick Reichley"]

@@ -6,8 +6,6 @@ tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-17
 modified: 2019-02-01
-modified_by:
-  name: Linode
 title: "Running a Half-Life 2 Deathmatch Server on Debian or Ubuntu"
 title_meta: "How to Run Half-Life 2 Deathmatch on Debian or Ubuntu"
 external_resources:

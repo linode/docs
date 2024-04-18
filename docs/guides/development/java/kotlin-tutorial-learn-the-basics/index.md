@@ -5,8 +5,6 @@ keywords: ['kotlin tutorial','kotlin function','kotlin class']
 tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
-modified_by:
-  name: Linode
 title: "Kotlin Tutorial: An Introduction to the Basics"
 title_meta: "Kotlin Tutorial: Learn the Basics"
 contributors: ["John Mueller"]

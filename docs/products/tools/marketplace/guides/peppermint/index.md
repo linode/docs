@@ -4,8 +4,6 @@ keywords: ["ticket management", "marketplace"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-03-31
 modified: 2023-10-27
-modified_by:
-  name: Linode
 title: "Deploy Peppermint through the Linode Marketplace"
 aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint-marketplace-app/']
 contributors: ["Linode"]

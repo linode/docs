@@ -4,8 +4,6 @@ description: 'This introduction to Python in ML and AI defines each one, examine
 keywords: ['ai python code','python for ai','why is python used for machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
-modified_by:
-  name: Linode
 title: "Python in ML: Why You Should Use Python for Machine Learning"
 title_meta: "Python Programming, Machine Learning, and AI"
 contributors: ["John Mueller"]

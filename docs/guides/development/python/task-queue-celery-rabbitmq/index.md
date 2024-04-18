@@ -5,8 +5,6 @@ keywords: ["celery", "Python", "tasks", "asynchronous", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-30
 modified: 2017-11-30
-modified_by:
-  name: Linode
 title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
 external_resources:
 - '[Celery Project page](http://www.celeryproject.org/)'

@@ -5,8 +5,6 @@ keywords: ['install appwrite','appwrite docs','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-03
 modified: 2023-04-04
-modified_by:
-  name: Nathaniel Stickman
 title: "Getting Started with Appwrite as a Backend Server"
 external_resources:
 - '[Appwrite Docs: Installation](https://appwrite.io/docs/installation)'

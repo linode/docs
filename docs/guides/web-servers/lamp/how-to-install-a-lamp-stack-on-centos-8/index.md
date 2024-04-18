@@ -5,8 +5,6 @@ keywords: ["LAMP", "CentOS", "CentOS 8", "apache", "mysql", "php", "centos lamp"
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-19
-modified_by:
-    name: Linode
 published: 2015-12-01
 title: Installing a LAMP Stack on CentOS 8
 title_meta: How to Install a LAMP Stack on CentOS 8

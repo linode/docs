@@ -6,8 +6,6 @@ description: "Learn how to set up a Minecraft server on Ubuntu or Debian. This g
 aliases: ['/applications/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-01-14
-modified_by:
-  name: Linode
 published: 2015-01-28
 title: "Setting up Minecraft Server on Ubuntu or Debian"
 title_meta: "How to Set Up a Minecraft Server on Ubuntu or Debian"

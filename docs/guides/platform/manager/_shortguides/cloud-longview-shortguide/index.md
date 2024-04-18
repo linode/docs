@@ -3,8 +3,6 @@ slug: cloud-longview-shortguide
 description: 'Shortguide that gives you an overview of the Longview section of the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
 published: 2020-07-22
 title: An Overview of the Longview Section in the Cloud Manager
 keywords: ["cloud manager"]

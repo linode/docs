@@ -5,8 +5,6 @@ keywords: ["burp suite", "burp", "proxy"]
 tags: ["linode platform","cloud manager","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-06
-modified_by:
-  name: Linode
 published: 2018-09-06
 title: 'Proxy Burp Suite Traffic Through a Linode'
 aliases: ['/quick-answers/linode-platform/proxy-burp-suite-traffic-through-a-linode/']

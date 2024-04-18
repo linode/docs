@@ -6,8 +6,6 @@ keywords: ["twiki", "wiki", "perl", "markdown"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/','/websites/wikis/twiki/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-03-31
 title: TWiki
 tags: ["wiki"]

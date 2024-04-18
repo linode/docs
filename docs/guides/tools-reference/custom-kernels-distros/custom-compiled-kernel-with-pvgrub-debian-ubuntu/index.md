@@ -7,8 +7,6 @@ keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom li
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
-modified_by:
-  name: Linode
 published: 2015-04-03
 title: 'Custom Compiled Kernel with PV-GRUB on Debian & Ubuntu'
 relations:

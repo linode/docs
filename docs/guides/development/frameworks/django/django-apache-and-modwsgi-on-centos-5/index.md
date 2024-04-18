@@ -7,8 +7,6 @@ tags: ["web applications","django","apache","python","centos","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/django-apache-and-modwsgi-on-centos-5/','/frameworks/django-apache-mod-wsgi/centos-5/','/development/frameworks/django-apache-and-modwsgi-on-centos-5/','/development/frameworks/django/django-apache-and-modwsgi-on-centos-5/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2010-05-18
 title: 'Django, Apache and mod_wsgi on CentOS 5'
 external_resources:

@@ -6,8 +6,6 @@ tags: ["ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/jupyter-nobook-on-jekyll/','/applications/project-management/jupyter-notebook-on-jekyll/']
 modified: 2017-11-06
-modified_by:
-  name: Linode
 published: 2017-11-06
 title: Display Jupyter Notebooks with Jekyll
 external_resources:

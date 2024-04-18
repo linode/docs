@@ -5,8 +5,6 @@ keywords: ["elastic", "filebeat", "metricbeat", "elasticsearch", "kibana", "dock
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-10
-modified_by:
-  name: Linode
 published: 2019-02-10
 title: Container Instrumentation with the Elastic Stack
 external_resources:

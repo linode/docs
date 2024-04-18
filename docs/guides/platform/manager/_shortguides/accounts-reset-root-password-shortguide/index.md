@@ -3,8 +3,6 @@ slug: accounts-reset-root-password-shortguide
 description: 'Shortguide that shows you how to reset the root password on a Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
 published: 2020-07-21
 title: Reset the Root Password on a Linode
 keywords: ["users", "permissions", "accounts", "passwords"]

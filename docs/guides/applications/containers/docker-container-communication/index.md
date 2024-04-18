@@ -7,8 +7,6 @@ tags: ["postgresql","database","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-28
 modified: 2017-11-29
-modified_by:
-  name: Jared Kobos
 title: "Connect Docker Containers"
 title_meta: "How to Connect Docker Containers"
 external_resources:

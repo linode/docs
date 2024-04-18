@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/mysql-master-master-replication/','/databases/mysql/mysql-master-master/','/databases/mysql/configure-master-master-mysql-database-replication/']
 published: 2014-12-24
 modified: 2023-04-04
-modified_by:
-  name: Linode
 title: "Configure Master-Master MySQL Database Replication"
 external_resources:
  - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'

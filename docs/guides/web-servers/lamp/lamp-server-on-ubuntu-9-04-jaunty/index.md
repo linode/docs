@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-ubuntu-9-04-jaunty/','/lamp-guides/ubuntu-9-04-jaunty/','/web-servers/lamp/lamp-server-on-ubuntu-9-04-jaunty/']
 modified: 2011-05-02
-modified_by:
-  name: Linode
 published: 2009-07-16
 title: 'LAMP Server on Ubuntu 9.04 (Jaunty)'
 external_resources:

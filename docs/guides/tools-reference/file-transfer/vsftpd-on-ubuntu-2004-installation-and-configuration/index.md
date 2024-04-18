@@ -5,8 +5,6 @@ keywords: ['vsftpd','vstpd conf','vsftpd ubuntu']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-14
-modified_by:
-  name: Linode
 title: "Install VSFTPD on Ubuntu 20.04"
 title_meta: "VSFTPD on Ubuntu 20.04: Installation and Configuration"
 external_resources:

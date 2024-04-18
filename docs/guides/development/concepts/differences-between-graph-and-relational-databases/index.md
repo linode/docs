@@ -7,8 +7,6 @@ keywords: ['graph database vs relational', 'graph database vs relational databas
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Jack Wallen"]
 published: 2023-11-15
-modified_by:
-  name: Linode
 ---
 
 Nearly every business depends on data. Data powers websites, desktops and mobile apps, predicts trends, collects information about clients and customers and keeps tabs on products and people. However, not all databases are created equal. Some databases, such as SQLite, are best suited for embedded devices or small collections of information. Others, like MongoDB, are better suited for enterprises dealing with massive amounts of data.

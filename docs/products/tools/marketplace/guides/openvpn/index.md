@@ -5,8 +5,6 @@ tags: ["ssl","cloud-manager","linode platform","security","marketplace","vpn"]
 bundles: ['network-security']
 published: 2019-04-05
 modified: 2024-01-30
-modified_by:
-  name: Linode
 title: "Deploy OpenVPN through the Linode Marketplace"
 external_resources:
 - '[OpenVPN Community Resources](https://openvpn.net/community-resources/)'

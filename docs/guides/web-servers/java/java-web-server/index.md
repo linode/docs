@@ -4,8 +4,6 @@ description: 'In Java, web servers are minimal HTTP static file servers storing 
 keywords: ['java web server', 'java http server', 'how to make a server in java', 'getting started with java', 'java web hosting', 'java web server tutorial', 'java side projects', 'server side programming java', 'java api server', 'server for java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-05
-modified_by:
-  name: Linode
 title_meta: "The Developer’s Guide to Java: Web Servers"
 title: "How to Make a Server in Java in 5 Easy Steps"
 external_resources:

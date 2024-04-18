@@ -7,8 +7,6 @@ tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','/development/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','/development/frameworks/sinatra/sinatra-framework-and-nginx-on-debian-6-squeeze/','/frameworks/sinatra/debian-6-squeeze/']
 modified: 2013-09-27
-modified_by:
-  name: Linode
 published: 2011-02-17
 title: 'Sinatra Framework and nginx on Debian 6 (Squeeze)'
 relations:

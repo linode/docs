@@ -6,8 +6,6 @@ tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/webpy-on-ubuntu-10-10-maverick/','/development/frameworks/webpy/webpy-on-ubuntu-10-10-maverick/','/development/frameworks/webpy-on-ubuntu-10-10-maverick/','/frameworks/webpy/ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2011-01-25
 title: 'Web.py on Ubuntu 10.10 (Maverick)'
 deprecated: true

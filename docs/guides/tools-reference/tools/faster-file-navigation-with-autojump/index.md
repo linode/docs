@@ -5,8 +5,6 @@ og_description: "Navigate files in the command line more efficiently with autoju
 keywords: ["autojump", "python", "command-line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-29
-modified_by:
-  name: Sam Foo
 published: 2017-12-29
 title: Faster File Navigation with autojump
 external_resources:

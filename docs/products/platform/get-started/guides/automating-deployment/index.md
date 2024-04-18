@@ -5,8 +5,6 @@ keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
 tags: ["linode platform","automation"]
 published: 2013-06-28
 modified: 2023-03-14
-modified_by:
-  name: Linode
 aliases: ['/platform/automating-server-builds/','/guides/automating-server-builds/']
 contributors: ["Linode"]
 ---

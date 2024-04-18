@@ -5,8 +5,6 @@ og_description: "MariaDB is a robust, scalable and reliable SQL Server that can 
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-04
-modified_by:
-    name: Linode
 published: 2020-02-04
 image: Installing_MariaDB_on_CentOS8.png
 title: "Installing MariaDB on CentOS 8"

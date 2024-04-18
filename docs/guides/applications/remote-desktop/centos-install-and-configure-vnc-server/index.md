@@ -6,8 +6,6 @@ keywords: ['centos vnc server']
 tags: ['networking', 'linux', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
-modified_by:
-  name: Nathaniel Stickman
 title: "Install and Configure VNC Server on Centos 8"
 external_resources:
 - '[TigerVNC documentation](https://tigervnc.org/doc/Xvnc.html)'

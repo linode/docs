@@ -5,8 +5,6 @@ keywords: ["ip address", "ip addresses", "address", "addresses"]
 tags: ["linode platform","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-21
-modified_by:
-  name: Linode
 published: 2017-09-21
 title: Find Your Linode's IP Address
 aliases: ['/quick-answers/linode-platform/find-your-linodes-ip-address-classic-manager/','/quick-answers/linode-platform/find-your-linodes-ip-address/']

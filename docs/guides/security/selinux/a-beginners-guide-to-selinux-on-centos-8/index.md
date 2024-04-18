@@ -6,8 +6,6 @@ bundles: ['centos-security']
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
-modified_by:
-  name: Linode
 title: "Getting Started with SELinux on CentOS 8"
 title_meta: "A Beginner's Guide to SELinux on CentOS 8"
 external_resources:

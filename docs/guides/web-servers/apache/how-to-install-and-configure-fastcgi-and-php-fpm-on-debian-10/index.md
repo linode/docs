@@ -6,8 +6,6 @@ keywords: ['list','of','keywords','and key phrases']
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
-modified_by:
-  name: Linode
 title: "Installing and Configuring FastCGI and PHP-FPM on Debian 10"
 title_meta: "How to Install FastCGI and PHP-FPM on Debian 10"
 relations:

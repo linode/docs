@@ -5,8 +5,6 @@ keywords: ["upgrade", "centos8", "centos7", "upgrade centos", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-01-23
-modified_by:
-  name: Linode
 published: 2020-01-23
 title: "Upgrading from CentOS 7 to CentOS 8"
 title_meta: 'How to Upgrade from CentOS 7 to CentOS 8'

@@ -5,8 +5,6 @@ keywords: ['python libraries for data science']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-11
-modified_by:
-  name: Linode
 title: "An Overview of Python Packages for Data Science"
 contributors: ["John Mueller"]
 ---

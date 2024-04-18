@@ -6,8 +6,6 @@ tags: ['mysql', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
 modified: 2022-06-06
-modified_by:
-  name: Linode
 title: "What Is MySQL: An Overview"
 title_meta: "An Overview of MySQL"
 external_resources:

@@ -7,8 +7,6 @@ tags: ["kubernetes","container","nginx","networking","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-17
 modified: 2021-06-25
-modified_by:
-  name: Linode
 title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
 title_meta: "Configure Load Balancing with TLS Encryption on Kubernetes"
 external_resources:

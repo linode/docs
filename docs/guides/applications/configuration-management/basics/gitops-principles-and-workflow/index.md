@@ -5,8 +5,6 @@ keywords: ['gitops vs devops', 'gitops and kubernetes', 'gitops workflow']
 tags: ['kubernetes', 'container', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
-modified_by:
-  name: Linode
 title: "GitOps: An Overview of Its Principles and Workflow"
 title_meta: "An Overview of GitOps Principles and Workflow"
 contributors: ["Jack Wallen"]

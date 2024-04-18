@@ -4,8 +4,6 @@ description: 'This guide provides you with instructions for creating tags and gr
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-22
-modified_by:
-  name: Linode
 title: "Tags and Groups"
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/tags-and-groups/']

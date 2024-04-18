@@ -5,8 +5,6 @@ keywords: ["arch lamp", "arch lamp stack", "lamp linux", "arch linode", "arch li
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-arch-linux/','/web-servers/lamp/lamp-server-on-arch-linux/','/lamp-guides/arch-linux-10-2013/','/lamp-guides/arch-linux/','/web-servers/lamp/how-to-install-a-lamp-stack-on-arch-linux/']
 modified: 2015-12-07
-modified_by:
-    name: Alex Fornuto
 published: 2013-10-07
 title: How to Install a LAMP Stack on Arch Linux
 external_resources:

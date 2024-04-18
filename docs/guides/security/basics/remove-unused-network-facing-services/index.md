@@ -6,8 +6,6 @@ tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-16
 modified: 2022-02-15
-modified_by:
-  name: Linode
 title: "Remove Unused Network-Facing Services"
 title_meta: "How to Remove Unused Network-Facing Services"
 contributors: ["Linode"]

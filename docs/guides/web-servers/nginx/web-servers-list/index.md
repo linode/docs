@@ -4,8 +4,6 @@ description: 'Use this helpful web servers list to build your website. Our guide
 keywords: ['servers comparison','web server names','list of web servers']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
-modified_by:
-  name: Linode
 title: "The Ultimate Web Servers List: 11 Popular Web Servers To Use Today"
 title_meta: "Web Server Software List and Servers Comparison"
 contributors: ["Wayne Rash"]

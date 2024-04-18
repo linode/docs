@@ -5,8 +5,6 @@ keywords: ['silver searcher ag','ag command linux','ack alternative']
 tags: ['ubuntu', 'debian', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
-modified_by:
-  name: Nathaniel Stickman
 title: "Install and Use Silver Searcher on Linux"
 title_meta: "How to Install and Use Silver Searcher on Linux"
 contributors: ["Nathaniel Stickman"]

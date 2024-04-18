@@ -5,8 +5,6 @@ keywords: ["ssl", "tls", "https", "certificate", "commercial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora/','/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu/','/security/ssl/obtain-a-commercially-signed-tls-certificate/','/security/ssl/obtaining-a-commercial-ssl-certificate/','/security/ssl/obtaining-a-commercially-signed-ssl-certificate/']
 modified: 2018-01-23
-modified_by:
-  name: Linode
 published: 2017-12-20
 title: 'Obtain a Commercially Signed TLS Certificate'
 tags: ["security","ssl"]

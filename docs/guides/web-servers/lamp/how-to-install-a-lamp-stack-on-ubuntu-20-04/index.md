@@ -6,8 +6,6 @@ aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-20-04/','/web
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-06-23
-modified_by:
-  name: Linode
 published: 2021-06-25
 title: 'How to Install a LAMP Stack on Ubuntu 20.04'
 title_meta: 'Installing a LAMP Stack on Ubuntu 20.04'

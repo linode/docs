@@ -6,8 +6,6 @@ keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "20.04"]
 tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-25
-modified_by:
-  name: Linode
 published: 2020-03-25
 image: InstallJavaDevKit11_Ubuntu2004.png
 title: Installing Java Development Kit 11 on Ubuntu 20.04

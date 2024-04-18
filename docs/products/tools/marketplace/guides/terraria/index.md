@@ -3,8 +3,6 @@ description: "This guide provides you with step-by-step instructions for deployi
 keywords: ['terraria','marketplace app', 'game server']
 published: 2019-04-05
 modified: 2024-01-22
-modified_by:
-  name: Linode
 title: "Deploy Terraria through the Linode Marketplace"
 external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'

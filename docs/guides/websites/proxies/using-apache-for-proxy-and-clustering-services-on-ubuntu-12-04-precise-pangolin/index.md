@@ -7,8 +7,6 @@ tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-ubuntu-12-04-precise-pangolin/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-18
-modified_by:
-  name: Linode
 published: 2012-10-18
 title: 'Using Apache for Proxy and Cluster Services on Ubuntu 12.04 '
 relations:

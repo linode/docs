@@ -4,8 +4,6 @@ description: 'A view in MySQL is a named query that can be triggered to display 
 keywords: ['mysql','database','views']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-01
-modified_by:
-  name: Linode
 title: "Using Views in a MySQL Database"
 title_meta: "How to Use Views in a MySQL Database"
 external_resources:

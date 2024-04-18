@@ -5,8 +5,6 @@ keywords: ['filesystem','backup','backups','restic','off-site backups','Object S
 tags: ['filesystem', 'backup', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-06-12
-modified_by:
-  name: Andy Heathershaw
 title: "Backup Your Linode's Filesystem to Linode Object Storage with Restic"
 external_resources:
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'

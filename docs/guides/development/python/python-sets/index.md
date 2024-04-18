@@ -5,8 +5,6 @@ keywords: ['python sets', 'python sets intersection', 'python sets operations']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-23
-modified_by:
-  name: Nathaniel Stickman
 title_meta: "Introduction to Python Sets and Python Set Operations"
 title: "Getting Started with Python Sets and Python Set Operations"
 contributors: ["Nathaniel Stickman"]

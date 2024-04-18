@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2012-10-03
 title: 'Installing Prosody XMPP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:

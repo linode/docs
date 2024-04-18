@@ -7,8 +7,6 @@ aliases: ['/networking/how-to-mount-nfs-shares-on-debian-9/','/networking/how-to
 tags: ["networking","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-07
-modified_by:
-  name: Linode
 published: 2014-02-27
 title: How to Mount NFS Shares on Debian 9
 contributors: ["Linode"]

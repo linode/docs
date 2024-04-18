@@ -6,8 +6,6 @@ tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-11-04-natty/','/web-servers/nginx/php-fastcgi/ubuntu-11-04-natty/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-11-04-natty/']
 modified: 2013-02-18
-modified_by:
-  name: Linode
 published: 2011-05-06
 title: 'Nginx and PHP-FastCGI on Ubuntu 11.04 (Natty)'
 deprecated: true

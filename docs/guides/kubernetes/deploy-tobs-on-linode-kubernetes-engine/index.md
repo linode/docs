@@ -7,8 +7,6 @@ tags: ["monitoring","kubernetes","container", "observability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-04
 modified: 2023-01-31
-modified_by:
-  name: Linode
 title: "Deploying TOBS (The Observability Stack) on LKE"
 title_meta: "How to Deploy TOBS (The Observability Stack) on LKE"
 external_resources:

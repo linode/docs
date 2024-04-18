@@ -8,8 +8,6 @@ aliases: ['/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-serv
 deprecated: true
 published: 2015-04-21
 modified: 2019-02-01
-modified_by:
-  name: Linode
 title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
 title_meta: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
 dedicated_cpu_link: true

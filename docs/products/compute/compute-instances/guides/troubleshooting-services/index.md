@@ -5,8 +5,6 @@ keywords: ['linux','reboot','lish','troubleshoot','website','webserver']
 tags: ["web server", "database", "networking"]
 published: 2019-02-01
 modified: 2023-03-14
-modified_by:
-  name: Linode
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-web-servers-databases-other-services/','/guides/troubleshooting-web-servers-databases-other-services/']
 contributors: ["Linode"]

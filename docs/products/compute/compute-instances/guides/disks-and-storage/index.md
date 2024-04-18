@@ -3,8 +3,6 @@ description: "A guide for understanding how local storage works on a Linode and 
 keywords: ["disks", "storage", "disk space"]
 tags: ["linode platform","cloud manager"]
 modified: 2023-01-18
-modified_by:
-  name: Linode
 published: 2021-04-30
 title: "Manage Disks and Storage on a Compute Instance"
 title_meta: "How to Manage Disks and Storage on a Compute Instance"

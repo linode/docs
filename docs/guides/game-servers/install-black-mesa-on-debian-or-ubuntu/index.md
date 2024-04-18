@@ -6,8 +6,6 @@ tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-26
 modified: 2019-02-01
-modified_by:
-  name: Linode
 title: 'Install Black Mesa on Debian or Ubuntu'
 external_resources:
 - '[BlackMesaSource.com](http://www.blackmesasource.com/)'

@@ -5,8 +5,6 @@ description: 'Using the PostgreSQL relational database server with Fedora 13.'
 keywords: ["postgresql fedora 13", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-05-28
 title: Use PostgreSQL Relational Databases on Fedora 13
 relations:

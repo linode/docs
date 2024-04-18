@@ -6,8 +6,6 @@ keywords: ['zypper','zypp','opensuse']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ['Nathaniel Stickman']
 published: 2023-09-05
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[openSUSE Wiki: Zypper Usage](https://en.opensuse.org/SDB:Zypper_usage)'
 - '[openSUSE Wiki: Zypper Manual](https://en.opensuse.org/SDB:Zypper_manual)'

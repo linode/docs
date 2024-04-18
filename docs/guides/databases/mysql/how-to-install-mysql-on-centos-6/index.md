@@ -6,8 +6,6 @@ keywords: ["MySQL on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MySQL
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/centos-6/','/databases/mysql/how-to-install-mysql-on-centos-6/','/databases/mysql/using-mysql-relational-databases-on-centos-6-4/']
 modified: 2017-09-05
-modified_by:
-  name: Linode
 published: 2014-01-22
 title: 'How to Install MySQL on CentOS 6'
 external_resources:

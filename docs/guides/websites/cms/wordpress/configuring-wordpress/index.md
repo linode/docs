@@ -7,8 +7,6 @@ tags: ["wordpress", "cms", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 image: HowtoConfigureWordpress.jpg
-modified_by:
-  name: Nathaniel Stickman
 title: "Best Practices for Configuring WordPress"
 external_resources:
 - '[WordPress Support: First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'

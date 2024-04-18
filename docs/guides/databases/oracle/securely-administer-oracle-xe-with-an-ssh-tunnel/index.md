@@ -5,8 +5,6 @@ keywords: ["Oracle tunnel", "Oracle over SSH", "SSH tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/ssh-tunnel/','/databases/oracle/securely-administer-oracle-xe-with-an-ssh-tunnel/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-01-28
 title: Securely Administer Oracle XE with an SSH Tunnel
 deprecated: true

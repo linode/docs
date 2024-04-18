@@ -8,8 +8,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-26
 image: VisApacheWSL_ES_Ubuntu1804.png
 modified: 2021-03-26
-modified_by:
-  name: Linode
 title: "Visualize Apache Logs With Elastic Stack on Ubuntu 18.04"
 dedicated_cpu_link: true
 tags: ["ubuntu","analytics","database","monitoring","apache","digital agencies"]

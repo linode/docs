@@ -5,8 +5,6 @@ keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
 published: 2012-05-31
 modified: 2023-09-07
-modified_by:
-  name: Linode
 image: rescue-rebuild.jpg
 aliases: ['/troubleshooting/rescue-and-rebuild-classic-manager/','/troubleshooting/rescue-and-rebuild/','/rescue-and-rebuild/','/troubleshooting/finnix-rescue-mode/','/guides/rescue-and-rebuild/']
 contributors: ["Linode"]

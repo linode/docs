@@ -4,8 +4,6 @@ description: "This guide shows you how to secure your memcached instance so it's
 keywords: ["memcached","deluge","amplification","memcrashed","denial","DoS","DDoS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-02
-modified_by:
-  name: Linode
 published: 2018-03-02
 title: Mitigating memcached Amplification Attacks
 tags: ["security"]

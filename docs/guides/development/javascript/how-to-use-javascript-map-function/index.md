@@ -5,8 +5,6 @@ og_description: "Learn how to use JavaScript's map() function to manipulate and 
 keywords: ['JavaScript map function','How to use JavaScript map function','what is map function']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-03
-modified_by:
-  name: Linode
 title_meta: "How to Use the JavaScript Map() Function to Transform Arrays"
 title: "Using the JavaScript map() Function: A Comprehensive Guide for Beginners"
 contributors: ['Jeff Novotny']

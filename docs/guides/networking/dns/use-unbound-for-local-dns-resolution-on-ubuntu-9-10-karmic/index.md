@@ -7,8 +7,6 @@ tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-9-10-karmic/','/dns-guides/unbound-dns-resolver-ubuntu-9-10-karmic/']
 modified: 2013-07-15
-modified_by:
-  name: Linode
 published: 2010-09-07
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 9.10'
 relations:

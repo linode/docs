@@ -5,8 +5,6 @@ keywords: ['What is Oauth2','How does Oauth2 work','Oauth2 flow','Oauth vs oauth
 tags: ['python', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-22
-modified_by:
-  name: Linode
 title: "What Is OAuth2 Authentication?"
 title_meta: "An Introduction to OAuth2 Authentication"
 external_resources:

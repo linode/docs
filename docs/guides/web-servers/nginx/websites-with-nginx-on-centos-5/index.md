@@ -7,8 +7,6 @@ tags: ["centos","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/installation/centos-5/','/web-servers/nginx/websites-with-nginx-on-centos-5/','/websites/nginx/websites-with-nginx-on-centos-5/']
 modified: 2014-03-27
-modified_by:
-  name: Alex Fornuto
 published: 2010-02-25
 title: Websites with Nginx on CentOS 5
 relations:

@@ -4,8 +4,6 @@ description: 'This guide shows how to install the popular and highly performant 
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-20
-modified_by:
-  name: Linode
 published: 2018-03-20
 title: Install NGINX on Debian from the NGINX Repository
 relations:

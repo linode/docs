@@ -5,8 +5,6 @@ keywords: ['IaC','Terraform','Ansible','configuration management', 'service orch
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-11
 image: ComparingTerraform_Ansible.png
-modified_by:
-  name: Linode
 title: "Terraform vs Ansible"
 title_meta: "Comparing Terraform and Ansible"
 external_resources:

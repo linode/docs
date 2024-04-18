@@ -5,8 +5,6 @@ keywords: ['typescript types']
 tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-29
-modified_by:
-  name: Linode
 title: "Getting Started with TypeScript Types"
 title_meta: "TypeScript Types: Get Started"
 contributors: ["Martin Heller"]

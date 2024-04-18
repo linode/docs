@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-on-ubuntu-14-04/','/websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/','/web-servers/lamp/lamp-on-ubuntu-14-04/','/websites/lamp/lamp-server-on-ubuntu-14-04/']
 modified: 2015-12-07
-modified_by:
-  name: Alex Fornuto
 published: 2015-01-28
 title: 'LAMP on Ubuntu 14.04'
 external_resources:

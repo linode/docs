@@ -6,8 +6,6 @@ tags: ["security","resolving","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/recovery/recovering-from-a-system-compromise/','/troubleshooting/compromise-recovery/','/security/recovering-from-a-system-compromise/']
 modified: 2018-04-18
-modified_by:
-  name: Linode
 published: 2009-08-26
 title: Recovering from a System Compromise
 contributors: ["Linode"]

@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-fedora-13/','/lamp-guides/fedora-13/','/web-servers/lamp/lamp-server-on-fedora-13/']
 modified: 2011-05-02
-modified_by:
-  name: Linode
 published: 2010-05-25
 title: LAMP Server on Fedora 13
 external_resources:

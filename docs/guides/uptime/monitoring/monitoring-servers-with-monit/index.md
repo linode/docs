@@ -5,8 +5,6 @@ keywords: ["installing Monit for server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-10-15
 modified: 2015-10-15
-modified_by:
-    name: Linode
 title: 'Installing Monit for Server Monitoring'
 external_resources:
  - '[Monit Documentation](https://mmonit.com/monit/documentation/monit.html)'

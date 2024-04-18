@@ -8,8 +8,6 @@ bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-08
 modified: 2021-10-15
-modified_by:
-  name: Linode
 title: "Set Up WireGuard VPN on Debian"
 relations:
     platform:

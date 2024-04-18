@@ -5,8 +5,6 @@ keywords: ['python testing frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-10
-modified_by:
-  name: Linode
 title: "An Overview of Python Testing Frameworks for Unit Testing"
 title_meta: "Python Testing Frameworks for Unit Testing"
 contributors: ["John Mueller"]

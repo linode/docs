@@ -5,8 +5,6 @@ keywords: ['deep learning frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
-modified_by:
-  name: Linode
 title: "An Overview of Deep Learning Frameworks"
 title_meta: "Deep Learning Frameworks Overview"
 contributors: ["Andy Patrizio"]

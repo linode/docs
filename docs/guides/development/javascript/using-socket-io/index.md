@@ -6,8 +6,6 @@ keywords: ['what is socket.io','socket.io vs websocket','socket.io node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-05-23
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Socket.IO: Get Started](https://socket.io/get-started/chat)'
 - '[Tutorials Point: Socket.IO Tutorial](https://www.tutorialspoint.com/socket.io/index.htm)'

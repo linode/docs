@@ -6,8 +6,6 @@ tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/install-and-configure-apache-on-centos-7/','/websites/apache/install-and-configure-apache-on-centos-7/']
 modified: 2021-01-29
-modified_by:
-    name: Geoffrey Sperl
 published: 2016-11-18
 title: How to Install Apache on CentOS 7
 external_resources:

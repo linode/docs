@@ -7,8 +7,6 @@ tags: ["centos","web server","perl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-perlfastcgi-on-centos-5/','/web-servers/nginx/perl-fastcgi/centos-5/','/websites/nginx/nginx-and-perlfastcgi-on-centos-5/','/websites/nginx/nginx-and-perlfastcgi-on-centos-5/index.cfm/']
 modified: 2011-07-20
-modified_by:
-  name: Linode
 published: 2009-12-16
 title: 'Nginx and Perl-FastCGI on CentOS 5'
 external_resources:

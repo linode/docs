@@ -4,8 +4,6 @@ description: "Appwrite provides an intuitive interface for creating a backend se
 keywords: ['appwrite react','appwrite tutorial','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-13
-modified_by:
-  name: Nathaniel Stickman
 title: "Create a React App with Appwrite"
 title_meta: "How to Create a React App with Appwrite"
 external_resources:

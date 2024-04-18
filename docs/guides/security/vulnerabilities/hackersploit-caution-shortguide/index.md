@@ -4,8 +4,6 @@ keywords: []
 description: "Caution note that instructs readers to not run the commands in a guide on prohibited IPs and domains."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-03
-modified_by:
-  name: Linode
 title: "HackerSploit Red Team Series Caution Note"
 headless: true
 show_on_rss_feed: false

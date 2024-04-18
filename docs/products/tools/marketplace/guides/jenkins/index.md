@@ -4,8 +4,6 @@ keywords: ['jenkins','marketplace','pipeline','continuous delivery']
 tags: ["linode platform","automation","marketplace","cloud-manager"]
 published: 2020-03-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Jenkins through the Linode Marketplace"
 external_resources:
 - '[Creating Your First Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/hello-world/)'

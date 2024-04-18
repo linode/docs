@@ -6,8 +6,6 @@ tags: ["web applications","lamp","php","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/cakephp/','/websites/frameworks/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp-on-debian-5-lenny/']
 modified: 2014-02-10
-modified_by:
-  name: Alex Fornuto
 published: 2010-05-26
 title: 'CakePHP on Debian 5 (Lenny)'
 deprecated: true

@@ -5,8 +5,6 @@ keywords: ["pv-grub", "pvgrub", "custom linux kernel", "custom linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/custom-instances/pv-grub-howto/','/platform/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/','/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/']
 modified: 2020-12-01
-modified_by:
-  name: James Stewart
 published: 2009-09-09
 title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
 deprecated: true

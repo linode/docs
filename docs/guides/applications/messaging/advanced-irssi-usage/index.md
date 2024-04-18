@@ -6,8 +6,6 @@ tags: ["perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/advanced-irssi-usage/','/communications/irc/advanced-irssi/']
 modified: 2018-04-10
-modified_by:
-  name: Linode
 published: 2010-03-29
 title: "Advanced Irssi Usage for IRC"
 external_resources:

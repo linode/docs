@@ -7,8 +7,6 @@ tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/ubuntu-9-10-karmic/','/uptime/analytics/piwik-on-ubuntu-9-10-karmic/']
 modified: 2011-04-27
-modified_by:
-  name: Linode
 published: 2009-12-23
 title: 'Piwik on Ubuntu 9.10 (Karmic)'
 relations:

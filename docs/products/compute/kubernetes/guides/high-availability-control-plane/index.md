@@ -4,8 +4,6 @@ keywords: ['kubernetes', 'lke', 'high availability', 'ha']
 tags: ["networking","kubernetes","container","education"]
 published: 2021-11-04
 modified: 2023-12-18
-modified_by:
-  name: Linode
 title: "High Availability (HA) Control Plane"
 title_meta: "High Availability (HA) Control Plane on LKE"
 aliases: ['/guides/enable-lke-high-availability/', '/products/compute/kubernetes/guides/enable-high-availability/']

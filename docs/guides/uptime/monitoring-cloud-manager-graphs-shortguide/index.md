@@ -3,8 +3,6 @@ slug: monitoring-cloud-manager-graphs-shortguide
 description: 'Shortguide that describes the Linode monitoring graphs in Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
 published: 2020-07-21
 title: Linode Cloud Manager Graphs
 keywords: ["monitoring"]

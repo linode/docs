@@ -5,8 +5,6 @@ keywords: ['typescript module', 'typescript import', 'typescript module exports'
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-08
-modified_by:
-  name: Linode
 title: "Get Started with TypeScript Modules"
 contributors: ["John Mueller"]
 ---

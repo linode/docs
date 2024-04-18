@@ -5,8 +5,6 @@ keywords: ['golang testing']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
-modified_by:
-  name: Linode
 title: "An Introduction to Golang Unit Testing"
 title_meta: "Golang Testing: Unit Testing Go Applications"
 contributors: ["Martin Heller"]

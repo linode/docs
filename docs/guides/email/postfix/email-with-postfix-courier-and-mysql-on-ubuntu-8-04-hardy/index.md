@@ -7,8 +7,6 @@ tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/courier-mysql-ubuntu-8-04-hardy/','/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-8-04-hardy/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-09-22
 title: 'Email with Postfix, Courier and MySQL on Ubuntu 8.04 (Hardy)'
 relations:

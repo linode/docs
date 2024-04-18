@@ -5,8 +5,6 @@ keywords: ['Python import module', 'Python modules', 'Python install module', 'P
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
-modified_by:
-  name: Linode
 title: "Install and Import Modules in Python 3"
 title_meta: "How to Install and Import Modules in Python 3"
 external_resources:

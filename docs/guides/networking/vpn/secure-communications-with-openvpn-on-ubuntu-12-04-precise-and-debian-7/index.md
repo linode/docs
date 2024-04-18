@@ -7,8 +7,6 @@ tags: ["networking","vpn","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/openvpn/ubuntu-12-04-precise/','/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/']
 modified: 2014-02-17
-modified_by:
-  name: Alex Fornuto
 published: 2013-08-22
 title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7'
 external_resources:

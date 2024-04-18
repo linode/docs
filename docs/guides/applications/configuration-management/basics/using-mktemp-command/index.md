@@ -5,8 +5,6 @@ keywords: ['mktemp', 'mktemp bash', 'mktemp directory', 'tmpdir']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-19
-modified_by:
-  name: Linode
 title: "Using mktemp Command to Create Temporary Files and Directories"
 title_meta: "How to Use the mktemp Command to Create Temporary Files and Directories"
 external_resources:

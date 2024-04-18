@@ -5,8 +5,6 @@ tags: ["cloud-manager","linode platform","security","marketplace","vpn"]
 bundles: ['network-security']
 published: 2019-03-28
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy WireGuard through the Linode Marketplace"
 external_resources:
 - '[WireGuard Quick Start](https://www.wireguard.com/quickstart/)'

@@ -3,8 +3,6 @@ description: "Deploy Kali Linux, a popular Linux distribution for penetration te
 keywords: ['kali','security','pentest']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-07-05
-modified_by:
-  name: Linode
 title: "Deploy Kali Linux through the Linode Marketplace"
 aliases: ['/products/tools/marketplace/guides/kalilinux/']
 contributors: ["Linode"]

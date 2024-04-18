@@ -7,8 +7,6 @@ tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/ikiwiki-on-fedora-13/','/web-applications/wikis/ikiwiki/fedora-13/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-09-15
 title: Ikiwiki on Fedora 13
 relations:

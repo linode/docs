@@ -6,8 +6,6 @@ tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-23
 image: MulticloudInfra_Terraform.png
-modified_by:
-  name: Linode
 title: "Creating a Multicloud Infrastructure Using Terraform"
 title_meta: "How to Create a Multicloud Infrastructure Using Terraform"
 external_resources:

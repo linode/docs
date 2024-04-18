@@ -6,8 +6,6 @@ aliases: ['/security/vulnerabilities/install-openvas-on-ubuntu-16-04/','/securit
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-12-19
-modified_by:
-  name: Linode
 published: 2017-02-06
 title: Install OpenVAS 8 on Ubuntu 16.04
 deprecated: true

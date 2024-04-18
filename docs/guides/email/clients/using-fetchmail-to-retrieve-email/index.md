@@ -5,8 +5,6 @@ keywords: ["mail", "fetchmail", "unix", "esr", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/clients/using-fetchmail-to-retrieve-email/','/email/fetchmail/']
 modified: 2013-09-11
-modified_by:
-  name: Linode
 published: 2010-01-07
 deprecated: true
 title: Using Fetchmail to Retrieve Email

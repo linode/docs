@@ -7,8 +7,6 @@ tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-01-07
 modified: 2020-12-01
-modified_by:
-  name: Linode
 title: Install CoreOS on Your Linode
   - '[CoreOS official documentation pages](https://coreos.com/docs/)'
 relations:

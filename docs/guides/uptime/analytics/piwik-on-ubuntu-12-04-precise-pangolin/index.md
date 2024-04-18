@@ -7,8 +7,6 @@ tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/piwik-on-ubuntu-12-04-precise-pangolin/','/web-applications/analytics/piwik/ubuntu-12-04-precise-pangolin/']
 modified: 2014-01-28
-modified_by:
-  name: Linode
 published: 2012-10-10
 title: 'Piwik on Ubuntu 12.04 (Precise Pangolin)'
 relations:

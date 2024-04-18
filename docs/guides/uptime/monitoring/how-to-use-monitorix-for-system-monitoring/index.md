@@ -6,8 +6,6 @@ tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 image: UseMonitorix_sysmon.png
-modified_by:
-  name: Linode
 title: "Using Monitorix for System Monitoring"
 title_meta: "How to Use Monitorix for System Monitoring"
 contributors: ["Steven J. Vaughan-Nichols"]

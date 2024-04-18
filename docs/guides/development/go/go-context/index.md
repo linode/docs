@@ -4,8 +4,6 @@ description: 'This article showcases some of the use cases of the context packag
 keywords: ["go", "golang", "context"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-31
-modified_by:
-  name: Linode
 title: 'Using the context Go package'
 external_resources:
   - '[The Go Programming Language Website](https://www.golang.com)'

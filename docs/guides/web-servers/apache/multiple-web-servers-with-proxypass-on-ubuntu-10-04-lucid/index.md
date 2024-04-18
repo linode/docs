@@ -7,8 +7,6 @@ tags: ["proxy","web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-10-04-lucid/','/websites/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-05-03
 title: 'Multiple Web Servers with ProxyPass on Ubuntu 10.04'
 relations:

@@ -6,8 +6,6 @@ keywords: ['introduction to dns on linux','domain name service','linux dns serve
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2023-06-09
-modified_by:
-  name: Linode
 external_resources:
 - '[Ubuntu: Domain Name Service (DNS)](https://ubuntu.com/server/docs/service-domain-name-service-dns)'
 - '[Red Hat: How to use the Linux BIND command to install and configure DNS](https://www.redhat.com/sysadmin/dns-configuration-introduction)'

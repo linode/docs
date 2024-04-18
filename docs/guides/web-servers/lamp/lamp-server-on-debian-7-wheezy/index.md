@@ -6,8 +6,6 @@ tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/lamp-server-on-debian-7-wheezy/','/lamp-guides/debian-7-wheezy/','/websites/lamp/lamp-server-on-debian-7-wheezy/']
 modified: 2015-12-01
-modified_by:
-  name: Alex Fornuto
 published: 2013-10-09
 title: 'LAMP Server on Debian 7 (Wheezy)'
 external_resources:

@@ -6,8 +6,6 @@ keywords: ["nagios", "server monitoring", "nagios linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/','/uptime/monitoring/nagios-server-monitoring/']
 modified: 2011-04-19
-modified_by:
-  name: Linode
 published: 2010-11-30
 title: Nagios Server Monitoring
 tags: ["monitoring"]

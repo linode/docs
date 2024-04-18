@@ -5,8 +5,6 @@ keywords: ["linux", "how to", "grep", "filter"]
 aliases: ['/quick-answers/linux/how-to-use-grep/','/quick-answers/how-to-use-grep/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-27
-modified_by:
-  name: Phil Zona
 published: 2017-04-10
 title: "Using the grep Command in Linux: Finding Text & Strings in Files"
 tags: ["linux"]

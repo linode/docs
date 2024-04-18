@@ -4,8 +4,6 @@ description: 'This guide provides you with instructions for installing, configur
 keywords: ["mongodb", "nosql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/clusters/','/databases/mongodb/build-database-clusters-with-mongodb/']
-modified_by:
-  name: Linode
 published: 2010-09-30
 title: Building Database Clusters with MongoDB
 title_meta: How To Build Database Clusters with MongoDB

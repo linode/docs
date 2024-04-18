@@ -3,8 +3,6 @@ description: "Deploy HashiCorp Nomad, a flexible scheduling and orchestration fo
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-08-09
-modified_by:
-  name: Linode
 title: "Deploy HashiCorp Nomad through the Linode Marketplace"
 contributors: ["Linode"]
 ---

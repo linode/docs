@@ -4,8 +4,6 @@ description: 'Learn how to install MySQL on CentOS 8 Linux on a cloud server wit
 keywords: ['Install MySQL on CentOS 8', 'Install MySQL on CentOS Stream 8', 'Install MySQL', 'CentOS 8', 'Connect MySQL to CentOS 8', 'Install MySQL server in Linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-11
-modified_by:
-  name: Linode
 title: "How to Install MySQL on CentOS 8"
 title_meta: "Installing MySQL on CentOS 8"
 external_resources:

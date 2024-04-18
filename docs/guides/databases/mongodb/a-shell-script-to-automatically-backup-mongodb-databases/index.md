@@ -5,8 +5,6 @@ keywords: ['bash','backup','mongodb','object storage','cron','linux']
 tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-04
-modified_by:
-  name: Linode
 title: "Automatically Backup Mongodb Databases Using Bash Scripting"
 external_resources:
 - '[MongoDB](https://www.mongodb.com/)'

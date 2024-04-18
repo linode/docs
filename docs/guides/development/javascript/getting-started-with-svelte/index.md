@@ -5,8 +5,6 @@ keywords: ['svelte guide', 'svelte javascript', 'svelte vs react']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ['Nathaniel Stickman']
 published: 2022-05-02
-modified_by:
-  name: Nathaniel Stickman
 title: "Getting Started with the Svelte Framework"
 external_resources:
 - '[Svelte: Documentation](https://svelte.dev/docs)'

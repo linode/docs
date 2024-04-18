@@ -5,8 +5,6 @@ keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
-modified_by:
-  name: Linode
 title: "A Beginner's Guide to Kubernetes (Part 1): Introduction"
 title_meta: "Kubernetes Explained: A Beginners Guide"
 concentrations: ["Kubernetes"]

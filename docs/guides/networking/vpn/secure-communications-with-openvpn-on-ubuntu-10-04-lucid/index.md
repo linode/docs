@@ -7,8 +7,6 @@ tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/openvpn/ubuntu-10-04-lucid/','/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-04-lucid/']
 modified: 2013-08-22
-modified_by:
-  name: Linode
 published: 2010-05-10
 title: 'Secure Communications with OpenVPN on Ubuntu 10.04 (Lucid)'
 relations:

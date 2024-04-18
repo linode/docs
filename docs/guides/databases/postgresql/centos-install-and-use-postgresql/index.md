@@ -6,8 +6,6 @@ tags: ["database","postgresql","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-02
 image: postgreSQL.jpg
-modified_by:
-  name: Linode
 title: "Install and Use PostgreSQL on CentOS 8"
 title_meta: "How to Install and Use PostgreSQL on CentOS 8"
 external_resources:

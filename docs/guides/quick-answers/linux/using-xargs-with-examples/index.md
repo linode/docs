@@ -4,8 +4,6 @@ description: 'Learn what the xargs command is, how it works, and a few of the ma
 keywords: ['xarg examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
-modified_by:
-  name: Linode
 title: "Use the xargs Command"
 title_meta: "How to Use the xargs Command in Linux"
 external_resources:

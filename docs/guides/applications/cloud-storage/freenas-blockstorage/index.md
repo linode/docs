@@ -4,8 +4,6 @@ description: "FreeNAS is network-attached storage software configured through a 
 keywords: ["zfs","freenas","block storage","nas"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-17
-modified_by:
-  name: Linode
 title: "Install FreeNAS on a Linode with Block Storage"
 published: 2018-05-07
 external_resources:

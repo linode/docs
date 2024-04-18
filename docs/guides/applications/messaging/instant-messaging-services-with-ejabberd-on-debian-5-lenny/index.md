@@ -7,8 +7,6 @@ tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-debian-5-lenny/','/communications/xmpp/ejabberd/debian-5-lenny/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2009-10-07
 title: 'Instant Messaging Services with ejabberd on Debian 5 (Lenny)'
 relations:

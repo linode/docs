@@ -5,9 +5,7 @@ keywords: ["CentOS", "install Java", "CENTOS", "Java JRE", "Java JDK"]
 tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/installing-java-on-centos/','/development/install-java-on-centos/','/development/java/install-java-on-centos/']
-modified: 2017-06-01
-modified_by:
-  name: Angel Guarisma
+modified: 2017-06-01 Guarisma
 published: 2017-06-01
 title: Install Java on Centos 7
 external_resources:

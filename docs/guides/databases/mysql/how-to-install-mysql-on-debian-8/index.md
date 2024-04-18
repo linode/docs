@@ -5,8 +5,6 @@ keywords: ["MySQL on Linux", "Debian 8", "Debian", "cloud", "cloud hosting", "Li
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/mysql-relational-databases-debian-8/','/databases/mysql/how-to-install-mysql-on-debian-8/']
 modified: 2015-08-26
-modified_by:
-  name: Linode
 published: 2015-06-12
 title: 'How to Install MySQL on Debian 8'
 external_resources:

@@ -4,8 +4,6 @@ description: 'What are the benefits of Linux? Linode experts give an overview of
 keywords: ['linux advantages','advantages linux','linux benefits']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
-modified_by:
-  name: Linode
 title: "10 Benefits of Linux You Need to Know"
 title_meta: "The Advantages of Linux and Why You Should Use It"
 contributors: ["John Mueller"]

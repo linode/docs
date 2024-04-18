@@ -7,8 +7,6 @@ tags: ["networking","security","vpn","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/openvpn/debian-5-lenny/','/networking/vpn/secure-communications-with-openvpn-on-debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-02-24
 title: 'Secure Communications with OpenVPN on Debian 5 (Lenny)'
 relations:

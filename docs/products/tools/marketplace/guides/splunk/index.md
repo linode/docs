@@ -4,8 +4,6 @@ keywords: ['monitoring','splunk', 'data solution']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-09-03
 modified: 2024-01-31
-modified_by:
-  name: Linode
 title: "Deploy Splunk through the Linode Marketplace"
 aliases: ['/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
 external_resources:

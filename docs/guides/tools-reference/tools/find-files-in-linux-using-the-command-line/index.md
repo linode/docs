@@ -6,8 +6,6 @@ tags: ["linux","find"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/filter-file-systems-with-the-find-command/','/tools-reference/tools/find-files-in-linux-using-the-command-line/','/linux-tools/common-commands/find/']
 modified: 2021-12-29
-modified_by:
-  name: Linode
 published: 2010-10-25
 title: "Find Files in Linux Using the Command Line"
 title_meta: "How to Find Files in Linux Using the Command Line"

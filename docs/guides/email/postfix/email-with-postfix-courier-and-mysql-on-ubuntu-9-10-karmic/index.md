@@ -6,8 +6,6 @@ tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/courier-mysql-ubuntu-9-10-karmic/','/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-10-29
 title: 'Email with Postfix, Courier and MySQL on Ubuntu 9.10 (Karmic)'
 deprecated: true

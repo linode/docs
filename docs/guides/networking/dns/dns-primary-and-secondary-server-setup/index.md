@@ -6,8 +6,6 @@ keywords: ['dns primary and secondary server setup','dns primary server','domain
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2023-06-09
-modified_by:
-  name: Linode
 external_resources:
 - '[Systran Box: Checking Your DNS Configuration In Linux: A Step-by-Step Guide](https://www.systranbox.com/checking-your-dns-configuration-in-linux-a-step-by-step-guide/)'
 - '[LinuxTeck: How to Install and configure Master /Slave DNS in Centos /RHEL 7.6](https://www.linuxteck.com/how-to-install-and-configure-master-slave-dns-in-centos-rhel-7-6/)'

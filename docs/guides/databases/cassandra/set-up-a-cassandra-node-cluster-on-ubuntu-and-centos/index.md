@@ -5,8 +5,6 @@ keywords: ["cassandra", " apache-cassandra", " centos 7", " ubuntu 16.04", " dat
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-06-24
 modified: 2022-05-16
-modified_by:
-  name: Linode
 title: "Setting Up a Cassandra Node Cluster "
 title_meta: "Set Up a Cassandra Node Cluster"
 aliases: ['/databases/cassandra/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/','/databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']

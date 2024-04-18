@@ -3,8 +3,6 @@ slug: all-linodes-kvm-shortguide
 description: 'Shortguide that displays the note that all Linodes are now KVM.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
-modified_by:
-  name: Heather Zoppetti
 published: 2020-12-01
 title: All Linodes Are Now KVM
 keywords: []

@@ -7,8 +7,6 @@ tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/','/email/postfix/dovecot-mysql-debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-02-08
 title: 'Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)'
 relations:

@@ -6,8 +6,6 @@ tags: ["version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-11
 modified: 2019-01-11
-modified_by:
-  name: Linode
 title: "Install GitLab with Docker"
 external_resources:
 - '[GitLab EE Docker Image](https://hub.docker.com/r/gitlab/gitlab-ee)'

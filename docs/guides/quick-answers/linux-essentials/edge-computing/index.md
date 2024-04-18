@@ -4,8 +4,6 @@ description: 'Edge computing allows computation and data storage to be expedited
 keywords: ['what is edge computing','edge computing definition','edge computing example']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
-modified_by:
-  name: Linode
 title: "What is Edge Computing and How Does It Work?"
 title_meta: "Edge Computing Architecture and Services Explained"
 contributors: ["Pam Baker"]

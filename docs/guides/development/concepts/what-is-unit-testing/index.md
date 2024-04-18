@@ -6,8 +6,6 @@ keywords: ['what is unit testing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-11
 image: UnderstandingUnitTesting.png
-modified_by:
-  name: Linode
 title: "Understanding Unit Testing"
 title_meta: "What is Unit Testing?"
 contributors: ["Martin Heller"]

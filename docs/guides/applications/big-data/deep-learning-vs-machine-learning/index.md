@@ -4,8 +4,6 @@ description: 'Comparing deep learning vs. machine learning? Find out what each t
 keywords: ['machine learning vs deep learning','difference between machine learning and deep learning','deep learning and machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-16
-modified_by:
-  name: Linode
 title: "Deep Learning vs. Machine Learning: What’s the Difference?"
 title_meta: "Differences Between Machine Learning and Deep Learning"
 contributors: ["Pam Baker"]

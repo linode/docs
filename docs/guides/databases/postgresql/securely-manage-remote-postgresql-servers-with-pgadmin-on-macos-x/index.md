@@ -4,8 +4,6 @@ description: "Use the Open-source PgAdmin Program to Securely Manage Remote Post
 keywords: ["pgadmin", "mac os x", "postgresql gui", "manage postgresql databases", "ssh tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-11-29
-modified_by:
-  name: Linode
 published: 2010-04-30
 title: "Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X"
 title_meta: "Connect to Remote PostgreSQL Servers with pgAdmin on Mac"

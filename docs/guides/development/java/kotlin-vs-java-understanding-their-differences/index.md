@@ -5,8 +5,6 @@ keywords: ['kotlin vs java', 'what is kotlin', 'what is kotlin used for']
 tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-17
-modified_by:
-  name: Linode
 title: "Kotlin vs. Java: Key Differences"
 title_meta: "Kotlin vs. Java: Understanding their Differences"
 contributors: ["Jack Wallen"]

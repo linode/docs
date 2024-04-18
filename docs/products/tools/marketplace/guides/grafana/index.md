@@ -4,8 +4,6 @@ keywords: ['grafana','monitoring','dashboard','marketplace']
 tags: ["linode platform","monitoring","marketplace","cloud-manager"]
 published: 2020-03-11
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Grafana through the Linode Marketplace"
 image: feature.png
 external_resources:

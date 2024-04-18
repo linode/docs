@@ -6,9 +6,6 @@ aliases: ['/websites/cms/drupal/update-and-secure-drupal-8-on-ubuntu/','/website
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true
 deprecated_link: 'websites/cms/drupal/how-to-update-drupal-8-on-ubuntu-18-04/'
-modified: 2016-05-11
-modified_by:
-    name: Edward Angert
 published: 2016-05-11
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 tags: ["drupal","cms"]

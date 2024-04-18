@@ -4,8 +4,6 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications", kepler]
 published: 2021-01-09
 modified: 2023-06-07
-modified_by:
-  name: Linode
 title: "Deploy Kepler through the Linode Marketplace"
 aliases: ['/guides/deploy-kepler-with-marketplace-apps/','/guides/kepler-marketplace-app/']
 external_resources:

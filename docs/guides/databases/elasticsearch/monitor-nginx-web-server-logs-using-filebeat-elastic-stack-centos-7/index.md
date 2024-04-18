@@ -7,8 +7,6 @@ keywords: ['nginx centos 7','elasticsearch','filebeat','metricbeat','beats','kib
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-13
 modified: 2019-01-31
-modified_by:
-  name: Linode
 title: "Monitoring NGINX Using the Elastic Stack on Centos 7"
 title_meta: "How to Monitor NGINX Using the Elastic Stack on CentOS 7"
 dedicated_cpu_link: true

@@ -7,8 +7,6 @@ tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/send-only-mta-ubuntu-10-04-lucid/','/email/exim/sendonly-mail-server-with-exim-on-ubuntu-10-04-lts-lucid/']
 modified: 2013-09-26
-modified_by:
-  name: Linode
 published: 2010-05-03
 title: 'Send-only Mail Server with Exim on Ubuntu 10.04 LTS (Lucid)'
 relations:

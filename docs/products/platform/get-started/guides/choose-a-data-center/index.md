@@ -5,8 +5,6 @@ keywords: ["data center", "datacenter", "dc", "speed"]
 tags: ["linode platform"]
 published: 2018-10-31
 modified: 2024-04-03
-modified_by:
-  name: Linode
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
 contributors: ["Linode"]
 ---

@@ -5,8 +5,6 @@ keywords: ['revert git commit','undo git commit','revert git commit after push']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-18
 modified: 2024-02-15
-modified_by:
-  name: Linode
 title: "Revert the Last Commit in Git"
 title_meta: "How to Revert the Last Commit in Git"
 external_resources:

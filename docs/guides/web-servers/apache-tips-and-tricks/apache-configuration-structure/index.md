@@ -5,8 +5,6 @@ keywords: ["apache", "httpd", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/apache-configuration-structure/','/websites/apache-tips-and-tricks/apache-configuration-structure/','/web-servers/apache/configuration/configuration-structure/']
 modified: 2018-03-06
-modified_by:
-  name: Linode
 published: 2010-02-24
 title: Apache Configuration Structure
 external_resources:

@@ -4,8 +4,6 @@ description: 'This guide provides you with a how-to reference on using top, a Li
 keywords: ["top", "htop", "iotop", "monitoring", "server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-02-19
-modified_by:
-  name: Elle Krout
 published: 2015-02-19
 title: Using top to Monitor Server Performance
 external_resources:

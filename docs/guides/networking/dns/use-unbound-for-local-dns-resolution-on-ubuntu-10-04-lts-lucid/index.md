@@ -7,8 +7,6 @@ tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/unbound-dns-resolver-ubuntu-10-04-lucid/','/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-10-04-lts-lucid/']
 modified: 2013-09-25
-modified_by:
-  name: Linode
 published: 2010-05-03
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 10.04 LTS (Lucid)'
 relations:

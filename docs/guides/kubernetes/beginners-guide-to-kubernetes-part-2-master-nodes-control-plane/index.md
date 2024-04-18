@@ -4,8 +4,6 @@ description: "This is part two in a multi-part beginner's guide to Kubernetes wh
 keywords: ['kubernetes','k8s','beginner','architecture']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
-modified_by:
-  name: Linode
 title: "A Beginner's Guide to Kubernetes (Part 2): Master, Nodes, and the Control Plane"
 concentrations: ["Kubernetes"]
 external_resources:

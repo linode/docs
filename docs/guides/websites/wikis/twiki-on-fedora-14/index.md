@@ -7,8 +7,6 @@ tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/twiki-on-fedora-14/','/web-applications/wikis/twiki/fedora-14/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: TWiki on Fedora 14
 relations:

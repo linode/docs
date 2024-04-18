@@ -4,8 +4,6 @@ description: 'This guide provides some background about the Linux LEMP stack and
 keywords: ['Ubuntu LEMP stack','LEMP stack Ubuntu','install LEMP stack','How to install a LEMP Stack on Ubuntu 22.04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-13
-modified_by:
-  name: Linode
 title: "Install a LEMP Stack on Ubuntu 22.04"
 title_meta: "How to Install a LEMP Stack on Ubuntu 22.04"
 external_resources:

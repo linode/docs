@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/ubuntu-9-10-karmic/','/applications/social-networking/create-an-aggregate-blog-using-planet-on-ubuntu-9-10-karmic/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-08-10
 title: 'Create an Aggregate Blog using Planet on Ubuntu 9.10 (Karmic)'
 external_resources:

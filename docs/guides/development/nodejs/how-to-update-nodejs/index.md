@@ -5,8 +5,6 @@ keywords: ['nodejs','version','upgrade','update','installation','n','npm','nvm']
 tags: ["node.js"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-09
-modified_by:
-  name: Linode
 title: "Update Node.js on Linux, macOS, and Windows"
 title_meta: "How to Update Node.js on Linux, macOS, and Windows"
 external_resources:

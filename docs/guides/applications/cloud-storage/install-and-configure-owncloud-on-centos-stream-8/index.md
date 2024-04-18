@@ -5,8 +5,6 @@ keywords: ['owncloud on Centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
 modified: 2022-11-16
-modified_by:
-  name: Linode
 image: Install_ownCloud_CentOS_stream.png
 title: "Installing and Configuring ownCloud on CentOS Stream 8"
 title_meta: "How to Install and Configure ownCloud on CentOS Stream 8"

@@ -12,8 +12,6 @@ description: "Shortguide"
 keywords: ["shortguide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-09
-modified_by:
-  name: Linode
 contributors: ["Linode"]
 ---
 

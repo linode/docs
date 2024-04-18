@@ -6,8 +6,6 @@ keywords: ["backup", "backups", "rsync", "restore", "local"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2023-07-07
-modified_by:
-  name: Linode
 tags: ["security"]
 aliases: ['/security/data-portability/download-backups-locally/','/guides/download-backups-locally/']
 image: download-a-local-copy-of-your-linode-backup.png

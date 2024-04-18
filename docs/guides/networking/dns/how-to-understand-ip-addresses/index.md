@@ -6,8 +6,6 @@ tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
 modified: 2022-09-23
-modified_by:
-  name: Linode
 title: "Understand and Use IP Addresses"
 title_meta: "How to Understand and Use IP Addresses"
 external_resources:

@@ -6,8 +6,6 @@ tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/manage-projects-with-redmine-on-ubuntu-11-04-natty/','/web-applications/project-management/redmine/ubuntu-11-04-natty/']
 modified: 2013-02-18
-modified_by:
-  name: Linode
 published: 2011-05-17
 title: 'Manage Projects with Redmine on Ubuntu 11.04 (Natty)'
 deprecated: true

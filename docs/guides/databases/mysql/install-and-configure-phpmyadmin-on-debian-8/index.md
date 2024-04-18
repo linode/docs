@@ -5,8 +5,6 @@ keywords: ["mysql", "phpmyadmin", "localhost phpmyadmin", "php mysql", "http loc
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/docs/databases/mysql/install-mysql-phpmyadmin-debian-8/','/databases/mysql/install-and-configure-phpmyadmin-on-debian-8/','/docs/databases/mysql/manage-mysql-phpmyadmin-debian-8/']
 modified: 2015-09-16
-modified_by:
-    name: Elle Krout
 published: 2014-01-02
 title: 'How to Install and Configure phpMyAdmin on Debian 8'
 relations:

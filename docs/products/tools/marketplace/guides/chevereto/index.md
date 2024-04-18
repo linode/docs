@@ -4,8 +4,6 @@ keywords: ['photo storage','images','Marketplace']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2022-05-17
-modified_by:
-  name: Linode
 title: "Deploy Chevereto through the Linode Marketplace"
 external_resources:
 - '[Chevereto](https://chevereto.com/)'

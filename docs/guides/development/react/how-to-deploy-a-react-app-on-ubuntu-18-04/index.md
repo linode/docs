@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-24
 modified: 2020-04-24
 image: Deploying_a_React_Application_on_Ubuntu_1804_1200x631.png
-modified_by:
-  name: Linode
 title: "Deploying a React Application on Ubuntu 18.04"
 title_meta: "How to Deploy a React Application on Ubuntu 18.04"
 external_resources:

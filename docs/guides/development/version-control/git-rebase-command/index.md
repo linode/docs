@@ -4,8 +4,6 @@ description: 'This guide provides you with an introduction to the rebase command
 keywords: ['git rebase', 'git rebase interactive']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-15
-modified_by:
-  name: Linode
 title: "Using the Git Rebase Command"
 title_meta: "How to Use the Git Rebase Command"
 contributors: ["Stephen Savitzky"]

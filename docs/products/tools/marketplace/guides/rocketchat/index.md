@@ -4,8 +4,6 @@ keywords: ['rocketchat','chat','slack','communication']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Rocket.Chat through the Linode Marketplace"
 external_resources:
 - '[Rocket.Chat](https://rocket.chat/)'

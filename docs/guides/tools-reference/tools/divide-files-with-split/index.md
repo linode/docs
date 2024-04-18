@@ -5,8 +5,6 @@ og_description: 'split is a Unix command line utility for dividing large files i
 keywords: ["split", "files", "unix", "command-line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-01-29
-modified_by:
-  name: Linode
 published: 2018-01-29
 title: How to Divide Files with split
 tags: ["linux"]

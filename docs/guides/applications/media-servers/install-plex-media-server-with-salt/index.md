@@ -6,8 +6,6 @@ tags: ["ubuntu", "salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-31
 modified: 2019-01-02
-modified_by:
-  name: Linode
 title: "Installing Plex Media Server on Ubuntu 18.04 Using Salt Masterless"
 title_meta: "How to Install Plex Media Server on Ubuntu 18.04 Using Salt"
 external_resources:

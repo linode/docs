@@ -7,8 +7,6 @@ tags: ["proxy","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-debian-5-lenny/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-debian-5-lenny/']
 modified: 2011-06-07
-modified_by:
-  name: Linode
 published: 2010-03-24
 title: 'Using Apache for Proxy and Clustering Services on Debian 5 (Lenny)'
 relations:

@@ -5,8 +5,6 @@ keywords: ["centos 6", "custom kernel", "grub legacy"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
-modified_by:
-  name: Nick Brewer
 published: 2017-03-10
 title: 'Use the Distribution-Supplied Kernel on CentOS 6 with Grub Legacy'
 deprecated: true

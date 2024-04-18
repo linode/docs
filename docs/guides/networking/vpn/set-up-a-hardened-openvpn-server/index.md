@@ -6,8 +6,6 @@ tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/','/networking/vpn/set-up-a-hardened-openvpn-server/']
 modified: 2019-01-29
-modified_by:
-  name: Linode
 published: 2015-12-09
 title: 'Set up a Hardened OpenVPN Server on Debian 9'
 external_resources:

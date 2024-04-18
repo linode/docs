@@ -8,8 +8,6 @@ tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migration/migrate-server-to-linode/','/migrate-to-linode/disk-images/migrating-a-server-to-your-linode/','/platform/disk-images/migrating-a-server-to-your-linode/']
 modified: 2017-04-03
-modified_by:
-  name: Nick Brewer
 published: 2012-05-24
 title: Migrating a Server to Your Linode
 contributors: ["Linode"]

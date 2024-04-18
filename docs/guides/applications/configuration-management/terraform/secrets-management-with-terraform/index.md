@@ -6,8 +6,6 @@ tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
 modified: 2021-08-13
-modified_by:
-  name: Linode
 image: SecretsManagementwithTerraform.png
 title: "Managing Secrets with Terraform"
 title_meta: "Secrets Management with Terraform"

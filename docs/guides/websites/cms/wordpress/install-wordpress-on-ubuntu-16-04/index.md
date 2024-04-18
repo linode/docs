@@ -5,8 +5,6 @@ keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPre
 tags: ["ubuntu","lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-10-21
-modified_by:
-  name: Edward Angert
 published: 2016-10-21
 title: Install WordPress on Ubuntu 16.04
 external_resources:

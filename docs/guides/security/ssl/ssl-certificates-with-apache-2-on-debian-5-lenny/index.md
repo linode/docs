@@ -6,8 +6,6 @@ tags: ["apache","security","ssl","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/debian-5-lenny/','/security/ssl/ssl-certificates-with-apache-2-on-debian-5-lenny/']
 modified: 2012-10-15
-modified_by:
-  name: Linode
 published: 2009-08-23
 title: 'SSL Certificates with Apache 2 on Debian 5 (Lenny)'
 deprecated: true

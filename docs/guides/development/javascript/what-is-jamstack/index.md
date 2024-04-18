@@ -5,8 +5,6 @@ keywords: ['jamstack','application architecture','web applications','static site
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
-modified_by:
-  name: Nathaniel Stickman
 title: "Getting Started with the Jamstack"
 title_meta: "An Introduction to the Jamstack"
 external_resources:

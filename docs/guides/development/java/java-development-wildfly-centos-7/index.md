@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-18
 aliases: ['/applications/development/java-development-wildfly-centos-7/','/development/java-development-wildfly-centos-7/','/development/java/java-development-wildfly-centos-7/']
 modified: 2015-09-18
-modified_by:
-    name: Linode
 title: 'Java Development with WildFly on CentOS 7'
 external_resources:
  - '[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)'

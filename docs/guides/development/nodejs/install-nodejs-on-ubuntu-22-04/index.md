@@ -4,8 +4,6 @@ description: 'You need to know how to install Node.JS on Ubuntu 22.04 Linux if y
 keywords: ['Install Node.js on Ubuntu 22.04','Node.js','Node.js Ubuntu 22.04','Ubuntu 22.04 Node.js','Install Node.js Linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-24
-modified_by:
-  name: Linode
 title: "How to Install Node.js on Ubuntu 22.04"
 title_meta: "Installing Node.js on Ubuntu 22.04"
 external_resources:

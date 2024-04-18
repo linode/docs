@@ -7,8 +7,6 @@ tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04/']
 modified: 2013-04-05
-modified_by:
-  name: Linode
 published: 2012-11-07
 title: 'Monitor Services with Nagios on Ubuntu 12.04'
 external_resources:

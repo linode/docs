@@ -4,8 +4,6 @@ keywords: ['akaunting','accounting','productivity']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-01-25
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Akaunting through the Linode Marketplace"
 external_resources:
 - '[Akaunting](https://akaunting.com)'

@@ -4,8 +4,6 @@ description: 'This quick answer guide explains how to use the echo command to vi
 keywords: ["linux", "how to", "echo"]
 aliases: ['quick-answers/how-to-use-echo/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
 published: 2021-03-05
 image: UseEchoCommand.png
 title: Using the echo Command

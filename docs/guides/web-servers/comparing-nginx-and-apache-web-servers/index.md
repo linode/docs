@@ -6,8 +6,6 @@ tags: ['apache','nginx','web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-15
 image: ApacheVsNginx.jpg
-modified_by:
-  name: Nathaniel Stickman
 title: "A Comparison of the NGINX and Apache Web Servers"
 title_meta: "Comparing the NGINX and Apache Web Servers"
 external_resources:

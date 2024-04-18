@@ -4,8 +4,6 @@ description: 'Learn the basic differences between IPv4 & IPv6, and how to map IP
 keywords: ['networking','troubleshooting','ipv4','ipv6']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-09
-modified_by:
-  name: Linode
 title: "Troubleshooting Network Issues - IPv4 and IPv6"
 contributors: ["Tom Henderson"]
 ---

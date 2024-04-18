@@ -7,8 +7,6 @@ tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/unbound-dns-resolver-ubuntu-11-04-natty/','/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-11-04-natty/']
 modified: 2013-02-18
-modified_by:
-  name: Linode
 published: 2011-06-08
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 11.04 (Natty)'
 relations:

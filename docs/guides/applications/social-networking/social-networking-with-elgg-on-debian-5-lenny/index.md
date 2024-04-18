@@ -6,8 +6,6 @@ tags: ["debian", "cms", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/elgg/','/applications/social-networking/social-networking-with-elgg-on-debian-5-lenny/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2009-12-08
 title: 'Social Networking with Elgg on Debian 5 (Lenny)'
 deprecated: true

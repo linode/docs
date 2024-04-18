@@ -4,8 +4,6 @@ description: This guide shows how to use journalctl to view, search, and filter 
 keywords: ["systemd","journalctl","logging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-05
-modified_by:
-  name: Linode
 published: 2018-09-05
 title: Use journalctl to View Your System's Logs
 external_resources:

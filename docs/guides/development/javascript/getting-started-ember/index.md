@@ -5,8 +5,6 @@ keywords: ['javascript ember tutorial', 'ember js examples', 'create ember proje
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-03
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Build a Website with the Ember Framework"
 title_meta: "Building a Website with the Ember Framework"
 external_resources:

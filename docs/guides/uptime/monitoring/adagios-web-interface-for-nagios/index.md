@@ -6,8 +6,6 @@ keywords: ['adagios tutorial','nagios monitoring','nagios web interface']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ['Nathaniel Stickman']
 published: 2023-06-21
-modified_by:
-  name: Linode
 external_resources:
 - '[GitHub: opinkerfi/adagios - Users Guide](https://github.com/opinkerfi/adagios/wiki/Users-guide)'
 - '[GitHub: opinkerfi/adagios - Using Adagios WEB API](https://github.com/opinkerfi/adagios/wiki/Using-Adagios-WEB-API)'

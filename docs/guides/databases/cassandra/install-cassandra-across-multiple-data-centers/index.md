@@ -6,8 +6,6 @@ keywords: ['install Cassandra','configure Cassandra','Cassandra CQL','create key
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Jeff Novotny"]
 published: 2023-08-22
-modified_by:
-  name: Linode
 external_resources:
 - '[Cassandra](https://cassandra.apache.org/_/index.html)'
 - '[Cassandra Documentation](https://cassandra.apache.org/doc/latest/)'

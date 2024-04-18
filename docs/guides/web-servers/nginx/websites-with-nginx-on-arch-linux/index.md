@@ -6,8 +6,6 @@ keywords: ["nginx arch linux", "nginx arch", "nginx", "http server", "web server
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/websites-with-nginx-on-arch-linux/','/web-servers/nginx/installation/arch-linux/','/websites/nginx/websites-with-nginx-on-arch-linux/']
 modified: 2014-03-27
-modified_by:
-  name: Alex Fornuto
 published: 2011-02-02
 title: Websites with NGINX on Arch Linux
 relations:

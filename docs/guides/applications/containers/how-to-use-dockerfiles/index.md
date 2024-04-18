@@ -5,8 +5,6 @@ keywords: ["docker", "container", "dockerfile","dockerfiles","docker image","doc
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-06-17
-modified_by:
-  name: Linode
 published: 2017-08-11
 title: 'How to Use a Dockerfile to Build a Docker Image.'
 title_meta: 'How to Use a Dockerfile to Build a Docker Image'

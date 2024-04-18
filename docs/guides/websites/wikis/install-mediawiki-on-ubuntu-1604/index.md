@@ -6,8 +6,6 @@ tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/install-mediawiki-on-ubuntu-1604/']
 modified: 2019-08-23
-modified_by:
-  name: Linode
 published: 2009-09-30
 title: Install MediaWiki on Ubuntu 16.04
 deprecated: true

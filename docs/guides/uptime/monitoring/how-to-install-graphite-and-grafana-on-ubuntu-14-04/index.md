@@ -6,8 +6,6 @@ aliases: ['/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/d
 tags: ["monitoring","postregsql","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-12-02
-modified_by:
-  name: Sergey Pariev
 published: 2015-12-02
 title: 'Deploy Graphite with Grafana on Ubuntu 14.04'
 deprecated: true

@@ -6,8 +6,6 @@ tags: ["web applications","apache","php","centos","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/symfony-on-centos-5/','/development/frameworks/symfony/symfony-on-centos-5/','/frameworks/symfony/']
 modified: 2013-09-27
-modified_by:
-  name: Linode
 published: 2010-06-08
 title: Symfony on CentOS 5
 deprecated: true

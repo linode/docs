@@ -5,8 +5,6 @@ keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
 modified: 2017-07-21
-modified_by:
-  name: Linode
 published: 2020-03-18
 title: Getting Started with SELinux on CentOS 7
 title_meta: A Beginner's Guide to SELinux on CentOS 7

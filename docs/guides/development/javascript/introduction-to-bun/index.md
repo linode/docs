@@ -4,8 +4,6 @@ description: "Bun introduces a JavaScript runtime with incredible speed and buil
 keywords: ['bun javascript','javascript runtime','bun node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-01
-modified_by:
-  name: Nathaniel Stickman
 title: "Introduction to the Bun JavaScript Runtime"
 external_resources:
 - '[LogRocker: Bun - The JavaScript Runtime Taking on Node.js and Deno](https://blog.logrocket.com/bun-javascript-runtime-taking-node-js-deno/)'

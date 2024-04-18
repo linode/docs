@@ -5,8 +5,6 @@ keywords: ["linux alias command"]
 aliases: ['/quick-answers/linux/how-to-use-the-linux-alias-command/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-11-06
-modified_by:
-  name: Heather Zoppetti
 published: 2020-11-17
 title: Using the Linux alias Command
 title_meta: How to Use the Linux alias Command

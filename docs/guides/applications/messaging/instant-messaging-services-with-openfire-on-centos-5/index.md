@@ -7,8 +7,6 @@ tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/openfire/centos-5/','/applications/messaging/instant-messaging-services-with-openfire-on-centos-5/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2010-08-05
 title: Instant Messaging Services with Openfire on CentOS 5
 external_resources:

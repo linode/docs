@@ -7,8 +7,6 @@ tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/installation/debian-7-wheezy/','/websites/apache/how-to-install-and-configure-the-apache-web-server-on-debian-7-wheezy/','/websites/apache/apache-2-web-server-on-debian-7-wheezy/','/websites/apache/apache-web-server-debian-7/','/web-servers/apache/apache-web-server-debian-7/']
 modified: 2018-12-31
-modified_by:
-  name: Linode
 published: 2013-09-05
 title: 'Apache Web Server on Debian 7 (Wheezy)'
 external_resources:

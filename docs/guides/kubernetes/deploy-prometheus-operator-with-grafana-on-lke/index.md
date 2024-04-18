@@ -7,8 +7,6 @@ tags: ["monitoring","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29
 image: DeployPromOp_Graf_LKE.png
-modified_by:
-  name: Linode
 title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
 title_meta: "How to Deploy Prometheus Operator and Grafana on LKE"
 external_resources:

@@ -7,8 +7,6 @@ tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-07-15
 aliases: ['/websites/apache/apache-web-server-ubuntu-12-04/','/web-servers/apache/apache-web-server-ubuntu-12-04/','/websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
-modified_by:
-  name: Linode
 published: 2012-10-10
 title: 'Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:

@@ -4,8 +4,6 @@ keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-11
 modified: 2023-11-13
-modified_by:
-  name: Linode
 title: "Deploy HashiCorp Nomad Cluster through the Linode Marketplace"
 contributors: ["Linode"]
 ---

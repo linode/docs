@@ -6,8 +6,6 @@ tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-06
 modified: 2018-12-27
-modified_by:
-  name: Linode
 title: 'Install Node.js from NodeSource on Debian or Ubuntu'
 headless: true
 aliases: ['/development/nodejs/install-nodejs-nodesource/']

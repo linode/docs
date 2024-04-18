@@ -5,8 +5,6 @@ keywords: ["spark", "hadoop", "yarn", "hdfs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-20
 modified: 2017-10-23
-modified_by:
-  name: Linode
 title: "Running Spark on Top of a Hadoop YARN Cluster"
 title_meta: "How to Run Spark on Top of a Hadoop YARN Cluster"
 external_resources:

@@ -4,8 +4,6 @@ description: 'Cobra is a popular Go package that lets you develop command line u
 keywords: ["go", "golang", "cobra", "programming", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-29
-modified_by:
-  name: Linode
 title: 'Using Cobra and Go to Create Command Line Utilities'
 external_resources:
   - '[Go](https://www.golang.com)'

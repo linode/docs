@@ -7,8 +7,6 @@ tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/','/frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-02-22
 title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
 relations:

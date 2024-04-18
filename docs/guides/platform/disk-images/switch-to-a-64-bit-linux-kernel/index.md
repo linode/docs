@@ -6,8 +6,6 @@ keywords: ["linux kernel", "64-bit", "switch kernel", "migrate", "disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/switching-kernels/','/migrate-to-linode/disk-images/switch-to-a-64-bit-linux-kernel/','/platform/disk-images/switch-to-a-64-bit-linux-kernel/','/migrate-to-linode/disk-images/switching-to-a-64bit-kernel/']
 modified: 2016-10-13
-modified_by:
-  name: Edward Angert
 published: 2014-04-14
 title: 'Switch to a 64-bit Linux Kernel'
 external_resources:

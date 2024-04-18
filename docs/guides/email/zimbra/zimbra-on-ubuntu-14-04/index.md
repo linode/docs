@@ -7,8 +7,6 @@ tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-10-01
 modified: 2015-10-01
-modified_by:
-    name: Linode
 title: 'Install Zimbra Open Source Edition on Ubuntu 14.04'
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'

@@ -6,8 +6,6 @@ aliases: ['/security/security-patches/meltdown-and-spectre/','/security/meltdown
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
 modified: 2018-11-08
-modified_by:
-  name: Linode
 title: 'What You Need to Do to Mitigate Meltdown and Spectre'
 promo_default: false
 external_resources:

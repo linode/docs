@@ -5,8 +5,6 @@ og_description: "Mastodon stores media attachments locally by default, which can
 keywords: ['mastodon object storage','how to use mastodon','mastodon s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-24
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Use Linode Object Storage with Mastodon"
 contributors: ["Nathaniel Stickman"]
 external_resources:

@@ -5,8 +5,6 @@ keywords: ['octant','kubernetes','cluster','graph','dashboard','troubleshoot']
 tags: ["monitoring","kubernetes","web application"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-06
-modified_by:
-  name: Linode
 image: using-octant-with-kube.jpg
 title: "A Overview of Using Octant with Kubernetes"
 title_meta: "How to Use Octant with Kubernetes (A Tutorial)"

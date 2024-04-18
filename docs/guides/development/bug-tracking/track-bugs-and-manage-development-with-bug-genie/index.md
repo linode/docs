@@ -6,8 +6,6 @@ tags: ["lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/track-bugs-and-manage-development-with-bug-genie/','/applications/development/track-bugs-and-manage-development-with-bug-genie/','/web-applications/project-management/bug-genie/','/development/bug-tracking/track-bugs-and-manage-development-with-bug-genie/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-05-03
 title: Track Bugs and Manage Development with Bug Genie
 deprecated: true

@@ -5,8 +5,6 @@ keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
 tags: ['ubuntu', 'debian', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
-modified_by:
-  name: Linode
 title: "Install Nagios on Debian 10 and Ubuntu 20.04"
 title_meta: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
 external_resources:

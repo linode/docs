@@ -6,8 +6,6 @@ keywords: ["nagios", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/gentoo/','/uptime/monitoring/monitor-services-with-nagios-on-gentoo-linux/']
 modified: 2013-10-01
-modified_by:
-  name: Linode
 published: 2010-11-15
 title: Monitor Services with Nagios on Gentoo Linux
 relations:

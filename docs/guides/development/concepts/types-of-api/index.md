@@ -4,8 +4,6 @@ description: "What are the different types of APIs and when should you use them?
 keywords: ['types of apis','api formats','api types']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-08
-modified_by:
-  name: Nathaniel Stickman
 title: "What are the Four Types of API Formats?"
 title_meta: "A Guide to API Formats: The Different Types of APIs"
 contributors: ["Nathaniel Stickman"]

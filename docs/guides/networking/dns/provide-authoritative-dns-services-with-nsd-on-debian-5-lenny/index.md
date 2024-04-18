@@ -7,8 +7,6 @@ tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-debian-5-lenny/','/dns-guides/nsd-authoritative-dns-debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-01-25
 title: 'Provide Authoritative DNS Services with NSD on Debian 5 (Lenny)'
 relations:

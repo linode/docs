@@ -6,8 +6,6 @@ tags: ['rtmp', 'stream', 'nginx', 'vlc', "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 image: StreamingServer.jpg
-modified_by:
-  name: Linode
 title: "Setting Up a Streaming RTMP Server"
 title_meta: "How to Set Up an RTMP Streaming Server"
 external_resources:

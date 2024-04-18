@@ -5,8 +5,6 @@ keywords: ["using fail2ban for SSH brute-force protection", "brute-force protect
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-10-13
-modified_by:
-  name: Linode
 published: 2020-10-13
 title: "Using Fail2Ban for SSH Brute-force Protection"
 title_meta: "How to Use Fail2Ban for SSH Brute-force Protection"

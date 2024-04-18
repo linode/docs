@@ -5,8 +5,6 @@ description: "Learn about the most popular database management systems and how t
 keywords: ['DBMS', 'managed database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-07-11
-modified_by:
-  name: Linode
 contributors: ["Linode"]
 ---
 

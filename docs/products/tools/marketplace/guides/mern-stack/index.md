@@ -4,8 +4,6 @@ keywords: ['mongodb','mern','react','express', 'web app']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 published: 2019-04-02
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy a MERN Stack through the Linode Marketplace"
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'

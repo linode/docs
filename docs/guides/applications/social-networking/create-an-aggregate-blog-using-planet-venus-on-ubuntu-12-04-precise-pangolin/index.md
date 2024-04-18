@@ -6,8 +6,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/ubuntu-12-04-precise-pangolin/','/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-12-04-precise-pangolin/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2012-10-22
 title: "Aggregate Content Using Planet Venus on Ubuntu 12.04"
 deprecated: true

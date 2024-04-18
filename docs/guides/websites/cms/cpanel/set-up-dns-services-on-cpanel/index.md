@@ -7,8 +7,6 @@ tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/set-up-dns-services-on-cpanel/','/websites/cms/cpanel/set-up-dns-services-on-cpanel/','/web-applications/control-panels/cpanel/dns-on-cpanel/']
 modified: 2021-10-21
-modified_by:
-  name: Linode
 published: 2011-11-04
 title: Setting up DNS Services on cPanel
 title_meta: Set Up DNS Services on cPanel

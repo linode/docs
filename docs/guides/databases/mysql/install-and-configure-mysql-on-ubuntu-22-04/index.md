@@ -5,8 +5,6 @@ keywords: ['Install MySQL ubuntu 22.04', 'Install MySQL server ubuntu', 'Install
 tags: ['mysql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-29
-modified_by:
-  name: Linode
 title: "Install and Configure MySQL on Ubuntu 22.04"
 title_meta: "How to Install and Configure MySQL on Ubuntu 22.04"
 external_resources:

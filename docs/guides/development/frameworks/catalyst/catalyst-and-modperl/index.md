@@ -6,8 +6,6 @@ tags: ["web applications","apache","perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/catalyst-and-modperl/','/websites/frameworks/catalyst-and-modperl/','/development/frameworks/catalyst/catalyst-and-modperl/','/frameworks/catalyst/']
 modified: 2013-09-27
-modified_by:
-  name: Linode
 published: 2010-01-29
 title: 'Catalyst and mod_perl'
 deprecated: true

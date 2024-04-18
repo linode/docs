@@ -8,8 +8,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
 image: VisApacheWSL_ES_CentOSStream8.png
 modified: 2021-03-05
-modified_by:
-  name: Linode
 title: "Visualizing Apache Logs Using Elastic Stack on CentOS Stream 8"
 title_meta: "Visualizing Apache Logs With Elastic Stack on CentOS Stream 8"
 dedicated_cpu_link: true

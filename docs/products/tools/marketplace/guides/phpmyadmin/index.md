@@ -4,8 +4,6 @@ keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
 tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
 published: 2020-09-28
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy phpMyAdmin through the Linode Marketplace"
 external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'

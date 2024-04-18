@@ -7,8 +7,6 @@ tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-03-12
 modified: 2018-12-04
-modified_by:
-  name: Angel
 title: 'Introduction to Nextcloud Talk'
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'

@@ -7,8 +7,6 @@ tags: ["debian", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/project-management/redmine/debian-6-squeeze/','/applications/project-management/manage-projects-with-redmine-on-debian-6-squeeze/']
 modified: 2011-06-07
-modified_by:
-  name: Linode
 published: 2011-05-16
 title: 'Manage Projects with Redmine on Debian 6 (Squeeze)'
 relations:

@@ -8,8 +8,6 @@ tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Tom Henderson"]
 published: 2023-06-21
-modified_by:
-  name: Linode
 ---
 
 ## What Are Windows Command-Line Tools?

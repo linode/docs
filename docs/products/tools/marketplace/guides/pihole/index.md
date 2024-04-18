@@ -4,8 +4,6 @@ keywords: ['pi-hole','adblocker','dns','sinkhole']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Pi-hole through the Linode Marketplace"
 external_resources:
 - '[Pi-hole](https://pi-hole.net/)'

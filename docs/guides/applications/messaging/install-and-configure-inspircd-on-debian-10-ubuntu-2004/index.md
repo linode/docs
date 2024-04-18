@@ -5,8 +5,6 @@ keywords: ['irc server', 'inspircd']
 tags: ['debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
-modified_by:
-  name: Linode
 title: "Install and Configure InspIRCd on Debian 10 and Ubuntu 20.04"
 external_resources:
 - '[InspIRCd configuration options](https://docs.inspircd.org/3/configuration/)'

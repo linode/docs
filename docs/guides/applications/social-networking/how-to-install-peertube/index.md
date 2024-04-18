@@ -4,8 +4,6 @@ description: 'This guide explains how to download, install, and configure the fe
 keywords: ['what is PeerTube','configure PeerTube','install PeerTube','PeerTube configuration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-05
-modified_by:
-  name: Linode
 title: "How to Install PeerTube"
 external_resources:
 - '[PeerTube](https://joinpeertube.org/)'

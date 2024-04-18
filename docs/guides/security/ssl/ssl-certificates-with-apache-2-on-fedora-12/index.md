@@ -7,8 +7,6 @@ tags: ["fedora","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/fedora-12/','/security/ssl/ssl-certificates-with-apache-2-on-fedora-12/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-02-26
 title: SSL Certificates with Apache 2 on Fedora 12
 relations:

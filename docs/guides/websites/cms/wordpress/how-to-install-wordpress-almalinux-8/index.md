@@ -6,8 +6,6 @@ keywords: ['wordpress almalinux']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
-modified_by:
-  name: Nathaniel Stickman
 title: "Install WordPress on AlmaLinux 8"
 title_meta: "How to Install WordPress on AlmaLinux 8"
 relations:

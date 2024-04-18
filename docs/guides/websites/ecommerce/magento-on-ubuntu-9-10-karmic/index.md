@@ -6,8 +6,6 @@ keywords: ["magento", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/magento-on-ubuntu-9-10-karmic/','/web-applications/e-commerce/magento/ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-02-05
 title: 'Magento on Ubuntu 9.10 (Karmic)'
 relations:

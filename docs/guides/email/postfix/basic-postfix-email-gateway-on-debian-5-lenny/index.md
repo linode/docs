@@ -7,8 +7,6 @@ tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/basic-postfix-email-gateway-on-debian-5-lenny/','/email/postfix/gateway-debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-06-23
 title: 'Basic Postfix Email Gateway on Debian 5 (Lenny)'
 relations:

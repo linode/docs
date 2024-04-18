@@ -6,8 +6,6 @@ tags: ["container","docker","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-29
 modified: 2018-01-16
-modified_by:
-  name: Linode
 title: 'How to Deploy Apps with Rancher'
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'

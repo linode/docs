@@ -6,8 +6,6 @@ keywords: ['rasa chatbot tutorial','rasa ai demo','rasa open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-05-23
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Rasa Docs: Introduction to Rasa Open Source & Rasa Pro](https://rasa.com/docs/rasa/)'
 - '[Towards Data Science: Effortlessly Build Chatbots With Rasa 2.0: A Step-by-step Tutorial](https://towardsdatascience.com/chatbots-made-easier-with-rasa-2-0-b999323cdde)'

@@ -5,8 +5,6 @@ keywords: ['bottom command in linux','bottom linux install','system monitor linu
 tags: ['linux', 'debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
-modified_by:
-  name: Linode
 title: "Install and Use bottom on Linux"
 title_meta: "How to Install and Use bottom on Linux"
 external_resources:

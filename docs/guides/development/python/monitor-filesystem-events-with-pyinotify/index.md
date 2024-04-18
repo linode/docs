@@ -5,8 +5,6 @@ keywords: ["inotify","pyinotify","monitoring","python","async"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-07
 modified: 2018-09-20
-modified_by:
-  name: Md. Sabuj Sarker
 title: 'Monitor Filesystem Events with Pyinotify'
 external_resources:
 - '[Pyinotify on Github](https://github.com/seb-m/pyinotify)'

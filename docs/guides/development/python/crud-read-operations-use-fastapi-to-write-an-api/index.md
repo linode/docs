@@ -6,8 +6,6 @@ keywords: ['python api framework fastapi rest']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10
 image: CRUD_readop_FastAPI.png
-modified_by:
-  name: Linode
 title: "CRUD Read Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Read Operations: Use FastAPI to Write an API"
 tags: ["python", "django"]

@@ -7,8 +7,6 @@ tags: ["ubuntu", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-ubuntu-9-10-karmic/','/web-applications/project-management/egroupware/ubuntu-9-10-karmic/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2010-02-01
 title: 'Power Team Collaboration with eGroupware on Ubuntu 9.10 (Karmic)'
 relations:

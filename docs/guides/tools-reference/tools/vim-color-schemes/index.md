@@ -4,8 +4,6 @@ description: "Vim includes support for practically limitless color schemes to co
 keywords: ['change vim color scheme','set vim color scheme','vim color scheme list']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-07
-modified_by:
-  name: Nathaniel Stickman
 title: "Set and Change Vim Color Schemes"
 title_meta: "How to Set and Change Vim Color Schemes"
 external_resources:

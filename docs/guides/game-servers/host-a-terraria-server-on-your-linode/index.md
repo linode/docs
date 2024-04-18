@@ -5,8 +5,6 @@ keywords: ["terraria", "steam", "minecraft", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-21
 modified: 2021-06-29
-modified_by:
-  name: Linode
 title: 'How to Setup a Terraria Linux Server'
 external_resources:
  - '[Terraria Wiki](http://terraria.gamepedia.com/Terraria_Wiki)'

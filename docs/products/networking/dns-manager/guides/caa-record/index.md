@@ -4,8 +4,6 @@ keywords: ["caa", "dns", "records", "subdomain", "domain"]
 tags: ["linode platform","cloud manager","dns"]
 published: 2019-07-31
 modified: 2022-10-28
-modified_by:
-  name: Linode
 title: "CAA Records"
 external_resources:
  - '[CAA Records, DNSimple](https://support.dnsimple.com/articles/caa-record/)'

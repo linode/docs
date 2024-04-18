@@ -3,8 +3,6 @@ slug: file-system-quotas
 description: 'How to set Filesystem Quotas on Ubuntu 22.04.'
 keywords: ["filesystem", "quotas", "disk space", "limit disk", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
 published: 2023-03-14
 title: 'Setting Filesystem Quotas on Ubuntu 22.04'
 title_meta: 'How To Set Filesystem Quotas on Ubuntu 22.04'

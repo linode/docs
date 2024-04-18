@@ -4,8 +4,6 @@ description: 'Disaster recovery allows for the continued use of IT infrastructur
 keywords: ['disaster recovery plan','define disaster recovery','disaster recovery definition']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
-modified_by:
-  name: Linode
 title: "Creating a Disaster Recovery Plan: A Definitive Guide"
 title_meta: "Disaster Recovery: What It Is and How to Create a Plan"
 contributors: ["Wayne Rash"]

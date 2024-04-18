@@ -6,9 +6,6 @@ tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7/','/websites/apache/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7/']
 published: 2017-03-30
-modified: 2017-03-30
-modified_by:
-    name: Nick Brewer
 title: 'Host Your Own RSS Reader with Tiny Tiny RSS on CentOS 7'
 external_resources:
  - '[Tiny Tiny RSS Installation Notes](https://tt-rss.org/gitlab/fox/tt-rss/wikis/InstallationNotes)'

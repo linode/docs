@@ -7,8 +7,6 @@ tags: ["docker", "container", "nginx", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-14
 modified: 2021-12-30
-modified_by:
-  name: Linode
 title: "Use a Linode for Web Development on Remote Devices"
 image: Linode_WebDev.jpg
 external_resources:

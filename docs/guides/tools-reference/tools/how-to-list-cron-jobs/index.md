@@ -4,8 +4,6 @@ description: 'This guide explains how to display currently scheduled cron jobs, 
 keywords: ['List cron job','View cron job','Display cron job','Cron job linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-14
-modified_by:
-  name: Linode
 title: "List Cron Jobs on Linux"
 title_meta: "How to List Cron Jobs on Linux"
 external_resources:

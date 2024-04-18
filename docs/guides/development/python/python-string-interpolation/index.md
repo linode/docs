@@ -5,8 +5,6 @@ keywords: ['python string interpolation','python3 string format','python string 
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-20
-modified_by:
-  name: Linode
 title: "Python String Interpolation"
 title_meta: "An Introduction to Python String Interpolation"
 contributors: ["John Mueller"]

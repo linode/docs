@@ -6,8 +6,6 @@ keywords: ['cloud-init','cloudinit','bash','shell script']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-11-15
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation - Examples: Run Commands on First Boot](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#run-commands-on-first-boot)'
 ---

@@ -5,8 +5,6 @@ keywords: ['python api framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10
 image: ChoosePythonAPI_fw.png
-modified_by:
-  name: Linode
 title: "An Overview of Python API Frameworks"
 title_meta: "How to Choose a Python API Framework"
 tags: ["python", "django"]

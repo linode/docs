@@ -5,8 +5,6 @@ keywords: ['TensorFlow','installation','machine learning','and key phrases']
 tags: ['python', 'ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-08
-modified_by:
-  name: Linode
 title: "Installing TensorFlow on Ubuntu 20.04"
 title_meta: "How to Install TensorFlow on Ubuntu 20.04"
 external_resources:

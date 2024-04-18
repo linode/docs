@@ -4,8 +4,6 @@ description: 'Searching for a cloud security checklist? We have the essential cl
 keywords: ['it security checklist best practices','it security best practices checklist','cloud assessment checklist']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
-modified_by:
-  name: Linode
 title: "An Essential Cloud Security Checklist (Plus Best Practices)"
 title_meta: "Cloud Security Best Practices Checklist"
 contributors: ["Andy Patrizio"]

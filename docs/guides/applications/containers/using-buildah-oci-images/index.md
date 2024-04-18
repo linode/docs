@@ -4,8 +4,6 @@ description: "Buildah is a powerful open-source tool for creating containers and
 keywords: ['buildah run','what is buildah','install buildah']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-26
-modified_by:
-  name: Nathaniel Stickman
 title: "Use Buildah to Build OCI Container Images"
 title_meta: "How to Use Buildah to Build OCI Container Images"
 external_resources:

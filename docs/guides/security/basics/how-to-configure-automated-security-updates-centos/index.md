@@ -5,8 +5,6 @@ keywords: ["centos automated security upgrades", "centos cockpit dashboard"]
 tags: ["centos", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-10-22
-modified_by:
-  name: Linode
 published: 2020-10-22
 title: "Configuring Automated Security Updates on CentOS"
 title_meta: "How to Configure Automated Security Updates on CentOS"

@@ -5,8 +5,6 @@ keywords: ["wget", "command line", "linux common commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/download-resources-from-the-command-line-with-wget/','/linux-tools/common-commands/wget/']
 modified: 2018-05-18
-modified_by:
-  name: Linode
 published: 2010-10-25
 title: Download Resources from the Command Line with wget
 tags: ["linux"]

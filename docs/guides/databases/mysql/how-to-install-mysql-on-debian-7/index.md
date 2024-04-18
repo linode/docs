@@ -5,8 +5,6 @@ keywords: ["MySQL on Linux", "Debian 7", "Debian Wheezy", "Debian", "cloud", "cl
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/debian-7-wheezy/','/databases/mysql/how-to-install-mysql-on-debian-7/','/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
 modified: 2017-09-05
-modified_by:
-  name: Linode
 published: 2014-01-14
 title: 'How to Install MySQL on Debian 7'
 external_resources:

@@ -5,8 +5,6 @@ keywords: ['SQL Joins', 'Cross Joins', 'Left Join', 'Right Join', 'Full Join']
 tags: ['mysql', 'postgresql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
-modified_by:
-  name: Linode
 title: "Introduction to SQL Joins"
 title_meta: "SQL Joins"
 

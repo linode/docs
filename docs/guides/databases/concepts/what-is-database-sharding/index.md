@@ -6,8 +6,6 @@ keywords: ['database sharding','database sharding vs partitioning','what is data
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2022-06-21
-modified_by:
-  name: Linode
 external_resources:
 - '[DigitalOcean: Understanding Database Sharding](https://www.digitalocean.com/community/tutorials/understanding-database-sharding)'
 - '[MongoDB: Database Sharding — Concepts and Examples](https://www.mongodb.com/features/database-sharding-explained)'

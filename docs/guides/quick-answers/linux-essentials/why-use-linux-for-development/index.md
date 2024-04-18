@@ -6,8 +6,6 @@ keywords: ['linux', 'development', 'dev', 'develop', 'developing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-07-11
 modified: 2018-07-11
-modified_by:
-  name: Linode
 title: Why Use Linux for Development?
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/why-use-linux-for-development/']

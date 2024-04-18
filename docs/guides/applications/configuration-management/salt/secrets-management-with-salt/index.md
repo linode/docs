@@ -6,8 +6,6 @@ tags: ["security","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-11-06
 modified: 2019-01-02
-modified_by:
-  name: Linode
 image: SecretsManagementwithSalt.png
 title: "Secrets Management with Salt"
 external_resources:

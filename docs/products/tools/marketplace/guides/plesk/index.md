@@ -4,8 +4,6 @@ keywords: ['plesk','marketplace', 'cms']
 tags: ["linode platform","cms","marketplace","cloud-manager"]
 published: 2019-03-25
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Plesk through the Linode Marketplace"
 external_resources:
  - '[Plesk Support](https://support.plesk.com/hc/en-us)'

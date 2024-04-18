@@ -4,8 +4,6 @@ keywords: ['gitlab','marketplace apps','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
 published: 2019-03-27
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Gitlab through the Linode Marketplace"
 external_resources:
 - '[GitLab Administrator Documentation](https://docs.gitlab.com/ee/administration/)'

@@ -7,8 +7,6 @@ tags: ["web server","python","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/','/web-servers/nginx/python-uwsgi/ubuntu-10-10-maverick/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-11-08
 title: 'WSGI using uWSGI and nginx on Ubuntu 10.10 (Maverick)'
 relations:

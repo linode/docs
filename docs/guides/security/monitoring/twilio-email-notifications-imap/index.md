@@ -5,8 +5,6 @@ keywords: ['twilio notify']
 tags: ['email']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
-modified_by:
-  name: Linode
 title: "Create an Email Notification System Using Twilio (IMAP)"
 relations:
   platform:

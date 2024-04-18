@@ -6,8 +6,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/ansible/getting-started-with-ansible/','/applications/configuration-management/getting-started-with-ansible/','/applications/configuration-management/ansible/getting-started-with-ansible/']
 published: 2018-03-21
 modified: 2019-06-19
-modified_by:
-    name: Ryan Syracuse
 title: "Getting Started With Ansible: Basic Installation and Setup"
 title_meta: "Getting Started with Ansible: Installation and Setup"
 external_resources:

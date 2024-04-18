@@ -5,8 +5,6 @@ keywords: ["mysql", "phpmyadmin", "sql", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-debian-5-lenny/','/databases/mysql/phpmyadmin-debian-5-lenny/']
 modified: 2014-01-22
-modified_by:
-  name: Alex Fornuto
 published: 2010-01-28
 title: 'Manage MySQL with phpMyAdmin on Debian 5 (Lenny)'
 deprecated: true

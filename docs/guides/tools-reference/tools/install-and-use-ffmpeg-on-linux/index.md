@@ -6,8 +6,6 @@ tags: ['linux', 'python', "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
 image: HowtoInstallandUseFFmpegonLinux.jpg
-modified_by:
-  name: Linode
 title: "Install and Use FFmpeg on Linux"
 title_meta: "How to Install and Use FFmpeg on Linux"
 external_resources:

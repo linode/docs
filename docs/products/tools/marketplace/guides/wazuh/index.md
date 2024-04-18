@@ -4,8 +4,6 @@ keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2023-09-11
-modified_by:
-  name: Linode
 title: "Deploy Wazuh through the Linode Marketplace"
 external_resources:
 - '[Wazuh](https://wazuh.com/)'

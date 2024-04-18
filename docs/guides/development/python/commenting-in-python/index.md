@@ -6,8 +6,6 @@ tags: ["python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 image: Python.jpg
-modified_by:
-  name: Linode
 title: "Creating Comments in Python"
 title_meta: "How to Comment in Python"
 external_resources:

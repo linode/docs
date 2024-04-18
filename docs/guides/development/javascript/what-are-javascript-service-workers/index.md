@@ -6,8 +6,6 @@ keywords: ['javascript service workers', 'service worker example']
 tags: ["web applications", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
 title: "Javascript Service Workers: An Introduction with Examples"
 title_meta: "What Are Javascript Service Workers?"
 external_resources:

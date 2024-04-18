@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-03
 image: UnmanagedKubernetesCluster_Terraform.png
 modified: 2021-03-11
-modified_by:
-  name: Linode
 title: "Provision Unmanaged Kubernetes Cluster using Terraform"
 title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
 external_resources:

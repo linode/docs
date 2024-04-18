@@ -6,8 +6,6 @@ aliases: ['/quick-answers/linux/linux-command-line-tips/','/quick-answers/linux-
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-04-13
 modified: 2017-07-17
-modified_by:
-  name: Edward Angert
 title: 'Linux Command Line Tips'
 tags: ["linux"]
 contributors: ["Edward Angert"]

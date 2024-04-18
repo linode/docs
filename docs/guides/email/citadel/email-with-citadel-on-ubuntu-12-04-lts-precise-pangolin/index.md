@@ -7,8 +7,6 @@ tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/ubuntu-12-04-precise-pangolin/','/email/citadel/email-with-citadel-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: 2014-08-15
-modified_by:
-  name: Alex Fornuto
 published: 2012-11-05
 title: 'Email with Citadel on Ubuntu 12.04 LTS (Precise Pangolin)'
 relations:

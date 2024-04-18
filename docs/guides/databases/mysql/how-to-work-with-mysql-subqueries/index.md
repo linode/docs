@@ -4,8 +4,6 @@ description: 'A subquery is an SQL query that is nested within another query. Th
 keywords: ['MySQL', 'database', 'subqueries']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-04
-modified_by:
-  name: Linode
 title: Working with MySQL Subqueries"
 title_meta: "How to Work with MySQL Subqueries"
 external_resources:

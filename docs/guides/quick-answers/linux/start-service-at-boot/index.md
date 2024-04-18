@@ -4,8 +4,6 @@ description: The systemd daemon allows you to control Linux system services. Thi
 keywords: ["systemd","service","enable service","Linux system service"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-01
-modified_by:
-  name: Linode
 published: 2018-05-01
 title: Use systemd to Start a Linux Service at Boot
 external_resources:

@@ -5,8 +5,6 @@ keywords: ["docker", "container", "docker image", "docker images", "docker conta
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-06-17
-modified_by:
-  name: Linode
 published: 2021-04-29
 image: DOCKERS.jpg
 title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'

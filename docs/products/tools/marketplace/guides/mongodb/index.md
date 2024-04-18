@@ -5,8 +5,6 @@ tags: ["linode platform","database","marketplace","cloud-manager"]
 published: 2020-03-11
 expiryDate: 2023-05-01
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy MongoDB through the Linode Marketplace"
 image: MongoDB_oneclickapps.png
 external_resources:

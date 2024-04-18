@@ -4,8 +4,6 @@ description: 'What is system design and why is it important? Read our guide to l
 keywords: ['system design', 'what is system design', 'system design basics', 'systems by design', 'learn system design', 'software system design', 'system design process', 'system design in software engineering', 'steps in system design', 'how to design a system']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-28
-modified_by:
-  name: Linode
 title: "A Software Engineer’s Guide to System Design"
 title_meta: "System Design 101: How to Design a System"
 external_resources:

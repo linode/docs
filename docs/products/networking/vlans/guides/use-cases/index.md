@@ -3,8 +3,6 @@ description: "Learn abut common use cases for Linode's VLAN (Virtual Local Area 
 image:
 keywords: ['vlan','virtual local area network','use case']
 published: 2020-08-12
-modified_by:
-  name: Linode
 tags: ["security", "networking", "linode platform"]
 title: "Common Use Cases for Linode's VLAN Service"
 aliases: ['/guides/common-linode-vlan-use-cases/']

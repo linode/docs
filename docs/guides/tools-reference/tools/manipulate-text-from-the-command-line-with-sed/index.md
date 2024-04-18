@@ -5,8 +5,6 @@ keywords: ["sed", "find and replace", "regular expression", "unix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/common-commands/sed/','/tools-reference/tools/manipulate-text-from-the-command-line-with-sed/']
 modified: 2017-03-23
-modified_by:
-  name: Linode
 published: 2010-07-01
 title: Manipulate Text from the Command Line with sed
 external_resources:

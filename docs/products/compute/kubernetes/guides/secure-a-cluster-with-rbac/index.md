@@ -4,8 +4,6 @@ keywords: ["Kubernetes", "cluster", "docker", "security", "permissions"]
 tags: ["security","nginx","kubernetes","container"]
 published: 2018-02-28
 modified: 2023-02-09
-modified_by:
-  name: Linode
 title: "Secure a Cluster with User Permissions and RBAC"
 aliases: ['/kubernetes/securing-an-LKE-cluster/','/guides/using-rbac-to-secure-an-lke-cluster/']
 concentrations: ["Kubernetes"]

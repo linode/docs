@@ -5,8 +5,6 @@ keywords: ["linode guide", "hosting a website", "website", "linode setup", " ins
 tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-14
-modified_by:
-    name: Linode
 published: 2020-04-14
 title: Installing Node.js and NGINX on Debian 10
 title_meta: How to Install Node.js and NGINX on Debian 10

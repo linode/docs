@@ -6,8 +6,6 @@ keywords: ['Wazuh', 'Wazuh Indexer', 'Wazuh Server', 'Install and Configure Wazu
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Martin Heller"]
 published: 2024-02-13
-modified_by:
-  name: Linode
 external_resources:
 - '[Wazuh installation assistant](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh)'
 - '[Wazuh Indexer](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/installation-assistant.html#wazuh-indexer-nodes-installation)'

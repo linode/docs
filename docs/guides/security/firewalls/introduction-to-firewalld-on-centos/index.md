@@ -7,8 +7,6 @@ tags: ["centos","networking","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-28
 modified: 2022-07-12
-modified_by:
-    name: Linode
 title: "Configure a Firewall with Firewalld"
 title_meta: "Configure a Firewall with Firewalld (Create and List Rules)"
 external_resources:

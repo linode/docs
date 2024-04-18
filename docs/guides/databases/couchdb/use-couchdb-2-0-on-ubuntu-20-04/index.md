@@ -5,8 +5,6 @@ keywords: ['couchdb','nosql','fauxton','database','ubuntu 20.04']
 tags: ['couchdb','fauxton', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
-modified_by:
-  name: Nathaniel Stickman
 title: "Using CouchDB 2.0 on Ubuntu 20.04"
 title_meta: "How to Use CouchDB 2.0 on Ubuntu 20.04"
 external_resources:

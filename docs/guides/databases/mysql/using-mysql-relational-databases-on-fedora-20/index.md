@@ -6,8 +6,6 @@ keywords: ["mysql fedora 20", "mysql linux", "mysql fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/fedora-20/','/databases/mysql/using-mysql-relational-databases-on-fedora-20/']
 modified: 2014-01-28
-modified_by:
-  name: Alex Fornuto
 published: 2014-01-28
 title: Using MySQL Relational Databases on Fedora 20
 relations:

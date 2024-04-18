@@ -7,8 +7,6 @@ tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/confluence/ubuntu-10-04-lucid/','/websites/wikis/confluence-on-ubuntu-10-04-lucid/']
 modified: 2011-06-07
-modified_by:
-  name: Linode
 published: 2010-09-05
 title: 'Confluence on Ubuntu 10.04 (Lucid)'
 relations:

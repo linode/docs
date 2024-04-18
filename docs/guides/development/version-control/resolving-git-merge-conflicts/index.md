@@ -5,8 +5,6 @@ keywords: ['how to resolve merge conflicts in git', 'git fix merge conflict', 'g
 tags: ['version control system']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-22
-modified_by:
-  name: Linode
 title: "Resolve Merge Conflicts in Git"
 title_meta: "How to Resolve Merge Conflicts in Git"
 contributors: ["Stephen Savitzky"]

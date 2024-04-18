@@ -6,8 +6,6 @@ tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
 modified: 2023-03-30
-modified_by:
-  name: Linode
 title: "Track Funnel and Product Analytics With PostHog on LKE"
 external_resources:
 - '[PostHog site](https://posthog.com/)'

@@ -4,8 +4,6 @@ description: "Shortguide list of support documentation for updating DNS records 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
 modified: 2018-09-27
-modified_by:
-  name: Nathan Melehan
 title: "Update DNS Records at Common Name Server Authorities"
 published: 2018-09-27
 headless: true

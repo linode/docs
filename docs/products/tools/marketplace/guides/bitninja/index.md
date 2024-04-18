@@ -4,8 +4,6 @@ keywords: ['spam','security','waf']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2024-01-22
-modified_by:
-  name: Linode
 title: "Deploy BitNinja through the Linode Marketplace"
 external_resources:
 - '[BitNinja](https://bitninja.com/)'

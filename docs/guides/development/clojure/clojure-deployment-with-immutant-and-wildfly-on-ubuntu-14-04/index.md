@@ -7,8 +7,6 @@ tags: ["java", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/clojure/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/','/applications/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/','/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/']
 modified: 2015-12-21
-modified_by:
-  name: Sergey Pariev
 published: 2016-02-18
 title: 'Deploy Clojure with Immutant and WildFly on Ubuntu 14.04'
 external_resources:

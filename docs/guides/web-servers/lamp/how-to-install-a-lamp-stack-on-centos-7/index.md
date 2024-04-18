@@ -5,8 +5,6 @@ keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-01-14
-modified_by:
-    name: Linode
 published: 2015-12-01
 title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
 title_meta: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"

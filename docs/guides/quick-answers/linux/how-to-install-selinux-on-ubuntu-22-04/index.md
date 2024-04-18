@@ -5,8 +5,6 @@ keywords: ['Selinux ubuntu','SELinux for ubuntu','Install selinux ubuntu','Disab
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-19
 modified: 2022-09-23
-modified_by:
-  name: Linode
 title: "Install SELinux on Ubuntu 22.04"
 title_meta: "How to Install SELinux on Ubuntu 22.04"
 relations:

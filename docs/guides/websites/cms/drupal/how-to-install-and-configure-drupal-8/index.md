@@ -6,8 +6,6 @@ tags: ["drupal","apache","lamp","php","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/install-and-configure-drupal-8/','/websites/cms/managing-web-content-with-drupal-8-beta/','/web-applications/cms-guides/drupal/','/websites/cms/drupal/how-to-install-and-configure-drupal-8/']
 modified: 2015-11-19
-modified_by:
-    name: Linode
 published: 2015-11-19
 deprecated: true
 deprecated_link: 'websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10/'

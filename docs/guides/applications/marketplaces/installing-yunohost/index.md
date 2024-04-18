@@ -6,8 +6,6 @@ keywords: ['yunohost install','yunohost apps','yunohost alternative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-05-02
-modified_by:
-  name: Linode
 external_resources:
 - '[YunoHost Documentation](https://yunohost.org/en?q=%2Fdocs)'
 - '[TechRepublic: What Is YunoHost, and How Do You Install It?](https://www.techrepublic.com/article/install-yunohost/)'

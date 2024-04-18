@@ -5,8 +5,6 @@ keywords: ['ansible','Linode Ansible Collection','dynamic inventory','configurat
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-14
 modified: 2022-07-14
-modified_by:
-  name: Linode
 title: "Use the Linode Ansible Collection to Deploy a Linode"
 aliases: ['/guides/deploy-linodes-using-linode-collection/']
 external_resources:

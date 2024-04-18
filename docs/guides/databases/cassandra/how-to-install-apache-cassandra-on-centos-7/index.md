@@ -5,8 +5,6 @@ keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " dat
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-06-12
 modified: 2022-05-16
-modified_by:
-  name: Linode
 title: "Installing Apache Cassandra on CentOS 7"
 title_meta: "How to Install Apache Cassandra on CentOS 7"
 relations:

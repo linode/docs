@@ -5,8 +5,6 @@ keywords: ['terraform', 'orchestration', 'linode provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-21
 modified: 2019-08-07
-modified_by:
-  name: Linode
 image: ABeginnersGuidetoTerraform.png
 title: "A Beginner's Guide to Terraform"
 external_resources:

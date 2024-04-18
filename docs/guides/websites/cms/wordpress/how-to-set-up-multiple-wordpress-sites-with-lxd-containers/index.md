@@ -6,8 +6,6 @@ tags: ["ubuntu", "php", "wordpress", "cms", "container", "nginx", "apache", "dat
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-16
 image: MultipleWPsites_LXDcont.png
-modified_by:
-  name: Linode
 title: "Setting Up Multiple WordPress Sites with LXD Containers"
 title_meta: "How to Set Up Multiple WordPress Sites with LXD Containers"
 external_resources:

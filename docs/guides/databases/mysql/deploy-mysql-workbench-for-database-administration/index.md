@@ -5,8 +5,6 @@ keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-04
 modified: 2018-12-10
-modified_by:
-    name: Linode
 title: 'Install MySQL Workbench for Database Administration'
 external_resources:
   - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'

@@ -7,8 +7,6 @@ tags: ["web applications","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-31
 modified: 2018-01-31
-modified_by:
-  name: Linode
 title: "Deploy a React Application on Linode"
 aliases: ['/development/react/deploy-a-react-app-on-linode/','/development/javascript/deploy-a-react-app-on-linode/']
 deprecated: true

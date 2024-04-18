@@ -7,8 +7,6 @@ tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/upgrading/upgrade-to-ubuntu-12-04-precise/','/security/upgrading/how-to-upgrade-to-ubuntu-12-04-precise/']
 modified: 2013-02-05
-modified_by:
-  name: Linode
 published: 2012-06-01
 title: 'How to Upgrade to Ubuntu 12.04 (Precise)'
 relations:

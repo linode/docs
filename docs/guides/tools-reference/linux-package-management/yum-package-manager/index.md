@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 image: YUM1.jpg
 modified: 2021-07-15
-modified_by:
-  name: Linode
 title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 aliases: ['/guides/how-to-use-yum/']

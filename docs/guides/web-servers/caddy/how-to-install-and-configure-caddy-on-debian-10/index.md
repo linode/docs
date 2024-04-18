@@ -5,8 +5,6 @@ keywords: ['web server','caddy','https','Caddyfile']
 tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-05
-modified_by:
-  name: Linode
 title: "Installing and Configuring the Caddy Web Server on Debian 10"
 title_meta: "How to Install the Caddy Web Server on Debian 10"
 image: CaddyWebServ_Deb10.png

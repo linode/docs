@@ -3,8 +3,6 @@ slug: tokyo2-migration
 description: Linode is retiring our Tokyo 1 data center, and this guide shows how to migrate to our new Tokyo 2 location.
 keywords: ["tokyo 1", "tokyo 2", "migrate", "migration", "migrating", "data center"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
 published: 2018-12-31
 title: Migrating from Tokyo 1 to Tokyo 2
 promo_default: false

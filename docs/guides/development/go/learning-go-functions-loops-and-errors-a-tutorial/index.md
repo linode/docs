@@ -4,8 +4,6 @@ description: 'Learn how to use loops, how to create functions, and how to handle
 keywords: ["Go", "Golang", "functions", "loops"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-13
-modified_by:
-  name: Linode
 title: 'A Tutorial for Learning Go Functions, Loops, and Errors'
 title_meta: 'Learning Go Functions, Loops, and Errors - A Tutorial'
 external_resources:

@@ -5,8 +5,6 @@ keywords: ["go", "golang", "server", "client", "TCP", "UDP", "programming", "cli
 tags: ["networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-06-26
-modified_by:
-  name: Linode
 title: 'Create a TCP and UDP Client and Server using Go'
 external_resources:
   - '[Go](https://www.golang.com)'

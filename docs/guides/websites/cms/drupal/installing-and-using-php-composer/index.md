@@ -5,8 +5,6 @@ keywords: ['composer update','php composer','php composer install','composer upd
 tags: ['php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
-modified_by:
-  name: Linode
 title: "Install and Use PHP Composer"
 title_meta: "How to Install and Use PHP Composer"
 external_resources:

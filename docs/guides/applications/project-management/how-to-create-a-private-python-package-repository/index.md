@@ -5,8 +5,6 @@ keywords: ["pip", "Python", "PyPA", "virtualenv", "package management"]
 tags: ["python", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-12
-modified_by:
-  name: Sam Foo
 published: 2017-09-15
 title: 'How to Create a Private Python Package Repository'
 external_resources:

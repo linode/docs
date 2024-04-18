@@ -4,8 +4,6 @@ description: "Nomad and Kubernetes each offer distinct and compelling approaches
 keywords: ['nomad on kubernetes','nomad kubernetes driver','nomad orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-20
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Use Nomad Alongside Kubernetes"
 external_resources:
 - '[HashiCorp Developer: Nomad - Supplement to Kubernetes](https://developer.hashicorp.com/nomad/docs/nomad-vs-kubernetes/supplement)'

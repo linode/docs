@@ -7,8 +7,6 @@ tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lighttpd/lighttpd-web-server-on-debian-5-lenny/','/web-servers/lighttpd/debian-5-lenny/','/web-servers/lighttpd/lighttpd-web-server-on-debian-5-lenny/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2009-08-06
 title: 'lighttpd Web Server on Debian 5 (Lenny)'
 relations:

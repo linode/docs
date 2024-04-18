@@ -5,8 +5,6 @@ keywords: ['tcpdump examples','tcpdump linux','tcpdump network traffic']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-28
 modified: 2023-03-29
-modified_by:
-  name: Nathaniel Stickman
 title: "Use tcpdump to Analyze Network Traffic"
 title_meta: "How to Use tcpdump to Analyze Network Traffic"
 external_resources:

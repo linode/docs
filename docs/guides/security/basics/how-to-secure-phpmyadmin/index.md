@@ -5,8 +5,6 @@ keywords: ["apache security", "apache best practices security", "secure phpMyAdm
 tags: ["security","web server","apache", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-03-26
-modified_by:
-  name: Linode
 published: 2021-03-26
 title: Securing phpMyAdmin
 title_meta: How to Secure phpMyAdmin

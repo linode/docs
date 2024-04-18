@@ -8,8 +8,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Jeff Novotny"]
 published: 2021-01-12
 modified: 2023-11-29
-modified_by:
-  name: Linode
 image: InstallandUseNVM.png
 external_resources:
 - '[NVM GitHub Page](https://github.com/nvm-sh/nvm)'

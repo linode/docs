@@ -6,8 +6,6 @@ tags: ["http", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-05
 modified: 2018-01-02
-modified_by:
-  name: Linode
 title: 'Introduction to WebSockets'
 external_resources:
   - '[Vanessa Wang, *The Definitive Guide to HTML5 WebSocket*](https://www.apress.com/in/book/9781430247401)'

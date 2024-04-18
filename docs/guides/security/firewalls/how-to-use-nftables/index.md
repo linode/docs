@@ -6,8 +6,6 @@ bundles: ['debian-security', 'centos-security', 'network-security']
 tags: ['ubuntu', 'centos', 'debian', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
 title: "Get Started with nftables"
 title_meta: "How to Use nftables"
 external_resources:

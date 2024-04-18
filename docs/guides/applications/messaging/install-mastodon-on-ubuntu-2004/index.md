@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: MASTODON2.jpg
 published: 2021-06-04
 modified: 2022-11-29
-modified_by:
-  name: Linode
 title: "Install a Mastodon Server on Ubuntu 20.04"
 title_meta: "How to Install a Mastodon Server on Ubuntu 20.04"
 contributors: ["Nathaniel Stickman"]

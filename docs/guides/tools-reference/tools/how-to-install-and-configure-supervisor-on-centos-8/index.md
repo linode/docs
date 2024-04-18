@@ -6,8 +6,6 @@ tags: ["linux", "automation", "monitoring", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-26
 image: InstallConfig_SupervisiorCentOS8.png
-modified_by:
-  name: Linode
 title: "Installing and Configuring Supervisor on CentOS 8"
 title_meta: "How to Install and Configure Supervisor on CentOS 8"
 external_resources:

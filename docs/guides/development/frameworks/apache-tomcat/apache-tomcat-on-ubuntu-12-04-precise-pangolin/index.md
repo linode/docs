@@ -7,8 +7,6 @@ tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/','/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-12-04-precise-pangolin/','/frameworks/apache-tomcat/ubuntu-12-04-precise-pangolin/','/development/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/']
 modified: 2012-11-13
-modified_by:
-  name: Linode
 published: 2012-11-13
 title: 'Apache Tomcat on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:

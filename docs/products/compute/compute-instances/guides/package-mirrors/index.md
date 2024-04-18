@@ -4,8 +4,6 @@ description: 'Linode offers public package mirrors for Ubuntu, Debian, and CentO
 keywords: ["package", "mirrors", "linode", "repository", "Debian", "Ubuntu", "CentOS", "yum", "apt-get"]
 published: 2014-02-11
 modified: 2023-03-14
-modified_by:
-  name: Linode
 tags: ["linode platform"]
 image: package_mirrors_smg.png
 aliases: ['/package-mirrors/','/platform/package-mirrors/','/guides/package-mirrors/']

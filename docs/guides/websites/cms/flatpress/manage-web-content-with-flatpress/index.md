@@ -6,8 +6,6 @@ tags: ["php","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-web-content-with-flatpress/','/websites/cms/flatpress/manage-web-content-with-flatpress/','/web-applications/cms-guides/flatpress/']
 modified: 2013-10-02
-modified_by:
-  name: Linode
 published: 2010-05-03
 title: Manage Web Content with FlatPress
 deprecated: true

@@ -4,8 +4,6 @@ description: "Knowing your Python version can make the difference between an app
 keywords: ['check python version','how to check python version','python version command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-15
-modified_by:
-  name: Nathaniel Stickman
 title: "Check Your Python Version"
 title_meta: "How to Check Which Python Version Is Installed"
 external_resources:

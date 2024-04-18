@@ -4,8 +4,6 @@ description: 'Learn how to view active processes on Linux via the command line w
 keywords: ['ps command in linux','procs command in linux','ps command alternative linux','Linux view process']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
-modified_by:
-  name: Linode
 title: "View Active Linux Processes Using procs"
 title_meta: "View Active Processes in Linux with the procs Command"
 external_resources:

@@ -4,8 +4,6 @@ keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
 tags: ["monitoring","kubernetes","web application"]
 published: 2022-03-17
 modified: 2023-02-09
-modified_by:
-  name: Linode
 title: "Manage an LKE Cluster Using the Kubernetes Dashboard"
 title_meta: "An Overview of the Kubernetes Dashboard on LKE"
 external_resources:

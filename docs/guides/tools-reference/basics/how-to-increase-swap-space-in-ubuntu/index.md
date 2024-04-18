@@ -5,8 +5,6 @@ keywords: ['how to increase swap space in ubuntu','ubuntu swap file','linux swap
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-06
 modified: 2023-03-29
-modified_by:
-  name: Linode
 title: "Step-by-Step Guide: How to Increase Swap Space in Ubuntu"
 title_meta: "Learn How to Create a Swap File in Ubuntu"
 external_resources:

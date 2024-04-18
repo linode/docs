@@ -5,8 +5,6 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-02-23
 modified: 2024-01-30
 image: DeployCyberPanel_marketplaceapps.png
-modified_by:
-  name: Linode
 title: "Deploy CyberPanel through the Linode Marketplace"
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'

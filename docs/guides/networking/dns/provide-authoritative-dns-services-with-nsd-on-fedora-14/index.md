@@ -7,8 +7,6 @@ tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-14/','/dns-guides/nsd-authoritative-dns-fedora-14/']
 modified: 2013-09-25
-modified_by:
-  name: Linode
 published: 2011-01-25
 title: Provide Authoritative DNS Services with NSD on Fedora 14
 relations:

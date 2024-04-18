@@ -6,8 +6,6 @@ keywords: ["mysql fedora 13", "mysql linux", "mysql fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-fedora-13/','/databases/mysql/fedora-13/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-05-28
 title: Use MySQL Relational Databases on Fedora 13
 relations:

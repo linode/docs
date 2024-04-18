@@ -7,8 +7,6 @@ tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/nginx/installation/ubuntu-12-04-precise-pangolin/','/web-servers/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/install-nginx-ubuntu-12-04/']
 modified: 2015-09-16
-modified_by:
-  name: Elle Krout
 published: 2012-10-24
 title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:

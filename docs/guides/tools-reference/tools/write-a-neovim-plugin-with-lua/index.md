@@ -6,8 +6,6 @@ keywords: ['write neovim plugin','neovim plugin development','neovim lua plugin'
 tags: ['neovim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
-modified_by:
-  name: Nathaniel Stickman
 title: "Write a Neovim Plugin with Lua"
 title_meta: "How to Write a Neovim Plugin with Lua"
 external_resources:

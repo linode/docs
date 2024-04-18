@@ -4,8 +4,6 @@ description: "GitLab Runners perform CI/CD tasks for your GitLab pipelines. From
 keywords: ['gitlab runner docker','what is gitlab runner','gitlab runner tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-22
-modified_by:
-  name: Linode
 contributors: [Nathaniel Stickman]
 title: "How to Use a GitLab Runner with Machine Driver and Object Storage"
 external_resources:

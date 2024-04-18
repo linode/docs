@@ -6,8 +6,6 @@ tags: ["debian", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/remote-desktops/running-graphic-software-on-your-linode-with-xforwarding-on-debian-7/','/applications/remote-desktop/running-graphic-software-xforwarding-debian/','/remote-desktops/x-forwarding-debian-7/']
 modified: 2014-04-25
-modified_by:
-  name: Alex Fornuto
 published: 2014-04-10
 title: 'Run Graphic Software on Your Linode with X-Forwarding on Debian'
 external_resources:

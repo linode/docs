@@ -6,8 +6,6 @@ keywords: ["osCommerce", "Fedora", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/oscommerce/fedora-13/','/websites/ecommerce/oscommerce-on-fedora-13/']
 modified: 2013-10-03
-modified_by:
-  name: Linode
 published: 2010-10-13
 title: osCommerce on Fedora 13
 relations:

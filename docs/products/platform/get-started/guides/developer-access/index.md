@@ -5,8 +5,6 @@ keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
 tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
 published: 2018-07-26
 modified: 2024-03-11
-modified_by:
-  name: Linode
 aliases: ['/platform/create-limited-developer-account/','/guides/create-limited-developer-account/']
 contributors: ["Edward Angert"]
 ---

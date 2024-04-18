@@ -6,8 +6,6 @@ keywords: ['cloud-based firewall','web application firewall','network firewall',
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2024-01-03
-modified_by:
-  name: Linode
 ---
 
 When it comes to network security, the age-old question is whether to deploy firewalls near your network perimeter, or close to your application servers. You can and should do both.

@@ -6,8 +6,6 @@ keywords: ["opencart", "ecommerce", "commerce", "store", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/opencart-on-fedora-15/','/web-applications/e-commerce/opencart/fedora-15/']
 modified: 2013-10-03
-modified_by:
-  name: Linode
 published: 2011-09-27
 title: OpenCart on Fedora 15
 relations:

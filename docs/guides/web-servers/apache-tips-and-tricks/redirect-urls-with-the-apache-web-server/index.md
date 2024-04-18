@@ -5,8 +5,6 @@ keywords: ["apache", "redirect", "mod_alias", "URLs", "REST"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/','/web-servers/apache/configuration/redirecting-urls/','/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/']
 modified: 2017-02-21
-modified_by:
-  name: Phil Zona
 published: 2009-10-13
 title: Redirect URLs with the Apache Web Server
 external_resources:

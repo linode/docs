@@ -4,8 +4,6 @@ keywords: ['Gitea','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
 published: 2021-01-04
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Gitea through the Linode Marketplace"
 external_resources:
 - '[Gitea Documentation](https://docs.gitea.io/)'

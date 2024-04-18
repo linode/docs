@@ -5,8 +5,6 @@ og_description: "This guide reviews different methods of backing up your Linode'
 keywords: ["backup", "backups", "rsync", "cron", "getting started"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-27
-modified_by:
-  name: Linode
 published: 2013-04-04
 title: Backing Up Your Data
 external_resources:

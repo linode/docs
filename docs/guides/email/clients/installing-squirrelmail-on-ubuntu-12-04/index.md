@@ -6,8 +6,6 @@ tags: ["ubuntu","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/clients/installing-squirrelmail-on-ubuntu-12-04/','/email/squirrelmail-ubuntu12-04/']
 modified: 2014-01-15
-modified_by:
-  name: Alex Fornuto
 published: 2014-01-14
 title: 'Installing SquirrelMail on Ubuntu 12.04'
 external_resources:

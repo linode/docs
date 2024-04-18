@@ -3,8 +3,6 @@ description: "A walkthrough on upgrading or downgrading a Compute Instance's pla
 keywords: ["upgrading", "resizing", "disk space"]
 tags: ["linode platform","cloud manager"]
 modified: 2023-10-31
-modified_by:
-  name: Linode
 published: 2017-02-14
 title: "Change Plans (Resize)"
 title_meta: "How to Resize a Compute Instance"

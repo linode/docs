@@ -5,8 +5,6 @@ keywords: ["askbot", "Gunicorn", "LetsEncrypt", "Python", "WSGI"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-22
-modified_by:
-  name: Linode
 published: 2017-08-20
 title: 'How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04'
 external_resources:

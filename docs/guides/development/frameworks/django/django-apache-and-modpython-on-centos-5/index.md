@@ -6,8 +6,6 @@ tags: ["web applications","django","apache","python","centos","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django-apache-and-modpython-on-centos-5/','/websites/frameworks/django-apache-and-modpython-on-centos-5/','/development/frameworks/django/django-apache-and-modpython-on-centos-5/','/frameworks/django-apache-mod-python/centos-5/']
 modified: 2013-09-27
-modified_by:
-  name: Linode
 published: 2010-02-03
 title: 'Django, Apache and mod_python on CentOS 5'
 deprecated: true

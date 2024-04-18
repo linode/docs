@@ -5,8 +5,6 @@ tags: ["debian","docker","marketplace", "web applications","linode platform", "c
 published: 2020-09-28
 modified: 2022-03-08
 image: Deploy_Plex_oneclickapps.png
-modified_by:
-  name: Linode
 title: "Deploy Plex Media Server through the Linode Marketplace"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'

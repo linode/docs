@@ -4,8 +4,6 @@ keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 published: 2020-03-13
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Redis through the Linode Marketplace"
 external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'

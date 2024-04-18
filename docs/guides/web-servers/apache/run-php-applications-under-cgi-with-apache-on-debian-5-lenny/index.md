@@ -7,8 +7,6 @@ tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/debian-5-lenny/','/websites/apache/run-php-applications-under-cgi-with-apache-on-debian-5-lenny/','/web-servers/apache/run-php-applications-under-cgi-with-apache-on-debian-5-lenny/']
 modified: 2014-01-13
-modified_by:
-  name: Linode
 published: 2009-12-18
 title: 'Run PHP Applications under CGI with Apache on Debian 5'
 relations:

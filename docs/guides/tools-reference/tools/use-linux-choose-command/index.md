@@ -4,8 +4,6 @@ description: "In this guide, learn about the Linux choose command. It’s a fast
 keywords: ['awk command unix','linux text processing commands','linux cut command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-30
-modified_by:
-  name: Nathaniel Stickman
 title: "Use the choose Command for Text Processing on Linux"
 contributors: ["Nathaniel Stickman"]
 ---

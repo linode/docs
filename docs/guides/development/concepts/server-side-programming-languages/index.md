@@ -7,8 +7,6 @@ keywords: ['server side programming languages','server side scripting languages'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Martin Heller"]
 published: 2023-05-02
-modified_by:
-  name: Linode
 external_resources:
 - '[Orient Software: Top 7 Server-side Scripting Languages](https://www.orientsoftware.com/blog/server-side-scripting-languages/)'
 - '[Qulix: Choosing the Best Server-Side Language in 2023](https://www.qulix.com/about/blog/the-best-server-side-language/)'

@@ -3,8 +3,6 @@ title: "Deploy a MongoDB Cluster through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
 published: 2023-03-20
 expiryDate: 2023-05-01
-modified_by:
-  name: Linode
 keywords: ['mongodb','marketplace', 'database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:

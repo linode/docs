@@ -7,8 +7,6 @@ tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise/','/communications/voip-services-ubuntu-12-04/']
 modified: 2014-06-17
-modified_by:
-  name: Alex Fornuto
 published: 2014-06-17
 title: 'Deploy VoIP Services with Asterisk and Freepbx on Ubuntu 12.04'
 external_resources:

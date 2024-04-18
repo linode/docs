@@ -4,8 +4,6 @@ description: "A how-to guide for performing an inline upgrade to Ubuntu 20.04 LT
 keywords: ["upgrading", "ubuntu", "20.04","focal fossa"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
 published: 2021-12-30
 title: "Inline Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
 title_meta: "How to Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"

@@ -5,8 +5,6 @@ keywords: ['maps','GIS','flask','mongodb', 'python']
 tags: ["web applications","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-21
-modified_by:
-  name: Linode
 image: L_CreateGISapp.png
 title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
 title_meta: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"

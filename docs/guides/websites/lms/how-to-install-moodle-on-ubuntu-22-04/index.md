@@ -4,8 +4,6 @@ description: 'This guide explains how to install the open source learning manage
 keywords: ['moodle ubuntu','how to install moodle','learning management system','lms ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-01
-modified_by:
-  name: Linode
 title: "Install Moodle on Ubuntu 22.04"
 title_meta: "How to Install Moodle on Ubuntu 22.04"
 external_resources:

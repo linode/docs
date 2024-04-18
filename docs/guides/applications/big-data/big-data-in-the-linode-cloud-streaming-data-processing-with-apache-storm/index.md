@@ -6,8 +6,6 @@ tags: ["analytics"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2016-10-25
 modified: 2019-01-31
-modified_by:
-    name: Phil Zona
 title: "Streaming Data Processing with Apache Storm"
 external_resources:
 - '[Apache Storm project website](http://storm.apache.org/)'

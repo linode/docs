@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic/','/communications/xmpp/ejabberd/ubuntu-9-10-karmic/']
 modified: 2012-10-31
-modified_by:
-  name: Linode
 published: 2009-11-09
 title: 'Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)'
 relations:

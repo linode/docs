@@ -7,8 +7,6 @@ tags: ["web server","apache","fedora","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/run-php-applications-under-cgi-with-apache-on-fedora-12/','/web-servers/apache/php-cgi/fedora-12/','/websites/apache/run-php-applications-under-cgi-with-apache-on-fedora-12/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-02-03
 title: Run PHP Applications under CGI with Apache on Fedora 12
 relations:

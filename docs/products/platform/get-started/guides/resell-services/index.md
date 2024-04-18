@@ -5,8 +5,6 @@ description: 'How to resell Linode services using the Linode API, and how to get
 keywords: ['resell','linode','services','reseller','referral','code']
 published: 2019-01-31
 modified: 2023-07-24
-modified_by:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/how-to-resell-linode-services/','/guides/how-to-resell-linode-services/']
 contributors: ["Linode"]

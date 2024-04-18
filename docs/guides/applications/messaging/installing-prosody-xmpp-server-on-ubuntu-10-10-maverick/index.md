@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-10-10-maverick/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-10-maverick/']
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2011-02-23
 title: 'Install Prosody XMPP Server on Ubuntu 10.10'
 relations:

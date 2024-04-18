@@ -5,8 +5,6 @@ keywords: ['nginx','web server']
 tags: ['ubuntu', 'nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
 title: "Installing and Using NGINX on Ubuntu 20.04"
 title_meta: "How to Install and Use NGINX on Ubuntu 20.04"
 external_resources:

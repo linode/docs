@@ -6,8 +6,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-28
 modified: 2016-03-17
-modified_by:
-    name: Linode
 title: 'Access Google Drive from Linode with Ubuntu 14.04'
 aliases: ['/applications/cloud-storage/access-google-drive-linode/']
 contributors: ["Scott Sumner"]

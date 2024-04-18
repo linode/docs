@@ -4,8 +4,6 @@ description: "Astro is a web development framework centered on content. With Ast
 keywords: ['astro website builder','astro web','astro framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-10
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Build a Website with Astro"
 title_meta: "Building a Website wtih Astro"
 external_resources:

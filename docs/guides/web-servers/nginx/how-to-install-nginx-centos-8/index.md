@@ -5,8 +5,6 @@ keywords: ["nginx", "load balancing", "centos", "centos 8", "web server", "stati
 tags: ["centos","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-14
-modified_by:
-  name: Linode
 published: 2018-04-16
 image: L_NGINX_on_CentOS8.png
 title: "Installing NGINX on CentOS 8"

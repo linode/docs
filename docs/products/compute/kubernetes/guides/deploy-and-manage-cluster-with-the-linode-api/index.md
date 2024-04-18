@@ -4,8 +4,6 @@ og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
 published: 2019-11-11
 modified: 2023-02-09
-modified_by:
-  name: Linode
 image: deploy-and-manage-cluster-copy.png
 title: "Deploy and Manage a Linode Kubernetes Engine (LKE) Cluster with the Linode API"
 title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"

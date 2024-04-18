@@ -6,8 +6,6 @@ aliases: ['/applications/containers/docker-commands-quick-reference-cheat-sheet/
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-18
-modified_by:
-  name: Linode
 published: 2015-03-30
 title: Docker Commands Quick Reference Cheat Sheet
 external_resources:

@@ -6,8 +6,6 @@ tags: ["monitoring","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 image: Deploy_Linkerd_2_with_Linode_Kubernetes_Engine_1200x631.png
-modified_by:
-  name: Linode
 title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
 title_meta: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
 external_resources:

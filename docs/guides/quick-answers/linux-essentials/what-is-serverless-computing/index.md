@@ -6,8 +6,6 @@ keywords: ['serverless computing']
 tags: ["linux", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-29
-modified_by:
-  name: Linode
 title: 'What is Serverless Computing?'
 contributors: ["Andy Patrizio"]
 ---

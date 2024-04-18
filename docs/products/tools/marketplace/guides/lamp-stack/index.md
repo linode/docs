@@ -4,8 +4,6 @@ keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
 tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 published: 2019-03-26
 modified: 2023-06-06
-modified_by:
-  name: Linode
 title: "Deploy a LAMP Stack through the Linode Marketplace"
 external_resources:
 - '[Apache Getting Started](http://httpd.apache.org/docs/current/getting-started.html)'

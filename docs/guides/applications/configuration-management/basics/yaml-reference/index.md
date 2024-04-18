@@ -5,8 +5,6 @@ keywords: ['yaml reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-09
 image: YAMLSyntaxRef.png
-modified_by:
-  name: Linode
 title: "A YAML Syntax reference."
 title_meta: "A YAML Syntax Reference"
 tags: ["automation"]

@@ -4,8 +4,6 @@ description: "Ansible is a powerful tool for automating server provisioning and 
 keywords: ['ansible secrets manager','ansible vault tutorial','ansible secrets best practices']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-08
-modified_by:
-  name: Nathaniel Stickman
 title: "Secrets Management with Ansible"
 external_resources:
 - '[Red Hat - Enable Sysadmin: Handling Secrets in Your Ansible Playbooks](https://www.redhat.com/sysadmin/ansible-playbooks-secrets)'

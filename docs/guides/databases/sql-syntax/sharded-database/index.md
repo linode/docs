@@ -4,8 +4,6 @@ description: 'Database sharding divides data into smaller chunks and distributes
 keywords: ['sharded database','db sharding','sharding strategy','database sharding examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-26
-modified_by:
-  name: Linode
 title: "Database Sharding: Concepts, Examples, and Strategies"
 external_resources:
 - '[Wikipedia page on database sharding](https://en.wikipedia.org/wiki/Shard_(database_architecture))'

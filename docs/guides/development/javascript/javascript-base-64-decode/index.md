@@ -4,8 +4,6 @@ description: 'Wondering how to encode and decode with base64 in JavaScript? Foll
 keywords: ['javascript base 64 decode','encode string javascript','base64 js']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-29
-modified_by:
-  name: Linode
 title: "JavaScript Decode Base64 String - A Developer’s Guide"
 title_meta: "How to Use JavaScript Base 64 to Decode and Encode"
 external_resources:

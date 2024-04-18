@@ -6,8 +6,6 @@ keywords: ['how to architect a serverless application','serverless','serverless 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["John Mueller"]
 published: 2023-05-16
-modified_by:
-  name: Linode
 external_resources:
 - '[Geeks4Geeks: Serverless Computing](https://www.geeksforgeeks.org/serverless-computing/)'
 - '[Geeks4Geeks: Why Serverless Apps?](https://www.geeksforgeeks.org/why-serverless-apps/)'

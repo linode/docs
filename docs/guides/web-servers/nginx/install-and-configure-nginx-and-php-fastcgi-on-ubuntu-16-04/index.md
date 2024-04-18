@@ -6,8 +6,6 @@ keywords: ["nginx", "ubuntu 16.04", "fastcgi", "php"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-09-13
-modified_by:
-  name: Edward Angert
 published: 2015-06-12
 title: 'Install and configure nginx and PHP-FastCGI on Ubuntu 16.04'
 external_resources:

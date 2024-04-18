@@ -4,8 +4,6 @@ description: 'This guide shows you how to create Git aliases using the Git confi
 keywords: ['git alias','git config alias']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
-modified_by:
-  name: Linode
 title: "Create Git Aliases to Quickly Run Git or Shell Commands"
 contributors: ["Stephen Savitzky"]
 ---

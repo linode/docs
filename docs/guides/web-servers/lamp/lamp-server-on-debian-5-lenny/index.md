@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/lamp-server-on-debian-5-lenny/','/websites/lamp/lamp-server-on-debian-5-lenny/','/lamp-guides/debian-5-lenny/']
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2009-07-16
 title: 'LAMP Server on Debian 5 (Lenny)'
 external_resources:

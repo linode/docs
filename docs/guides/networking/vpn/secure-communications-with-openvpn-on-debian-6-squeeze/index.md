@@ -6,8 +6,6 @@ tags: ["networking","security","vpn","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-debian-6-squeeze/','/networking/openvpn/debian-6-squeeze/']
 modified: 2013-08-22
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Secure Communications with OpenVPN on Debian 6 (Squeeze)'
 deprecated: true

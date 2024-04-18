@@ -5,8 +5,6 @@ keywords: ['caddy', 'install caddy', 'archlinux', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-14
 modified: 2021-12-30
-modified_by:
-  name: Linode
 title: "Install Caddy on Arch Linux"
 external_resources:
 - '[Caddy Official Documentation](https://caddyserver.com/docs)'

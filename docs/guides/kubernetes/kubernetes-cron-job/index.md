@@ -5,8 +5,6 @@ keywords: ['kubernetes cron job']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-20
-modified_by:
-  name: Linode
 title: "Create a Kubernetes CronJob"
 title_meta: "How to Create a Kubernetes CronJob"
 external_resources:

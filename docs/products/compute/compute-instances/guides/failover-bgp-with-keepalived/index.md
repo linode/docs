@@ -3,8 +3,6 @@ description: "This guide covers how to configure Keepalived with a simple health
 keywords: ['IP failover','keepalived','elastic IP']
 published: 2022-10-19
 modified: 2022-11-28
-modified_by:
-  name: Linode
 title: "Use Keepalived Health Checks with BGP-based Failover"
 aliases: ['/guides/keepalived-with-bgp-failover/']
 contributors: ["Linode"]

@@ -3,8 +3,6 @@ title: "Help & Support"
 description: "Information about Linode support, including the scope of support and how to get help."
 published: 2023-03-14
 modified: 2024-03-11
-modified_by:
-  name: Linode
 keywords: ["support", "tech support", "tickets", "help desk"]
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/support/','/support/','/platform/support/','/platform/billing-and-support/support-classic-manager/','/platform/billing-and-support/support-new-manager/','/guides/support/']

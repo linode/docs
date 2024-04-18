@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-15
 image: UsingPacmantoManagePackagesinArchLinux.jpg
 modified: 2021-07-15
-modified_by:
-  name: Linode
 title: "Using Pacman to Manage Packages in Arch"
 title_meta: "How to Manage Packages in Arch Using Pacman"
 contributors: ["Linode"]

@@ -7,8 +7,6 @@ tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/send-only-mta-debian-6-squeeze/','/email/exim/sendonly-mail-server-with-exim-on-debian-6-squeeze/']
 modified: 2011-05-13
-modified_by:
-  name: Linode
 published: 2011-02-15
 title: 'Send-only Mail Server with Exim on Debian 6 (Squeeze)'
 relations:

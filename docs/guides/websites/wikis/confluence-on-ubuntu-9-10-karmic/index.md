@@ -7,8 +7,6 @@ tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/confluence/ubuntu-9-10-karmic/','/websites/wikis/confluence-on-ubuntu-9-10-karmic/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-09-06
 title: 'Confluence on Ubuntu 9.10 (Karmic)'
 relations:

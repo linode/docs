@@ -7,8 +7,6 @@ tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/best-practices/installing-mail-filtering-for-ubuntu-12-04/','/email/postfix/clamav-spamassasin-ubuntu-12-04/','/email/installing-mail-filtering-for-ubuntu-12-04/']
 modified: 2014-04-04
-modified_by:
-  name: Alex Fornuto
 published: 2014-03-26
 title: 'Installing Mail Filtering for Ubuntu 12.04'
 external_resources:

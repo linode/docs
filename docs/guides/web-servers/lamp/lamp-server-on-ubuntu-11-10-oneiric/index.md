@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/lamp-server-on-ubuntu-11-10-oneiric/','/lamp-guides/ubuntu-11-10-oneiric/','/websites/lamp/lamp-server-on-ubuntu-11-10-oneiric/']
 modified: 2013-09-23
-modified_by:
-  name: Linode
 published: 2011-11-02
 title: 'LAMP Server on Ubuntu 11.10 (Oneiric)'
 external_resources:

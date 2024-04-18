@@ -5,8 +5,6 @@ keywords: ['canvas','education','training','learning management system','lms','i
 tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis', 'education']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
-modified_by:
-  name: Nathaniel Stickman
 title: "Installing Canvas on Ubuntu 20.04"
 title_meta: "How to Install Canvas LMS on Ubuntu 20.04"
 external_resources:

@@ -4,8 +4,6 @@ description: 'This guide will provide best practices when migrating GCP instance
 keywords: ['migrate','Google Cloud Platform','GCP','Linode']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-21
-modified_by:
-  name: Linode
 image: L_MigrateFromGCPtoLin.png
 title: 'Migrating a Google Cloud Platform VM Instance to Linode'
 title_meta: 'How to Migrate from Google Cloud Platform to Linode'

@@ -4,8 +4,6 @@ description: 'The nslookup command lets you quickly obtain DNS records. Learn ho
 keywords: ['nslookup command','nslookup ip address','how to use nslookup','nslookup examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-01
-modified_by:
-  name: Linode
 title: "Use the nslookup Command"
 title_meta: "A Complete Guide to the nslookup Command"
 external_resources:

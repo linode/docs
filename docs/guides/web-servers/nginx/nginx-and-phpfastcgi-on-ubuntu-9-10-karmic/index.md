@@ -6,8 +6,6 @@ tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/','/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-12-14
 title: 'Nginx and PHP-FastCGI on Ubuntu 9.10 (Karmic)'
 deprecated: true

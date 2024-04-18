@@ -6,8 +6,6 @@ keywords: ['forward proxy vpc','configure forward proxy firewall','access intern
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Jeff Novotny", "Matt Wildman"]
 published: 2024-02-14
-modified_by:
-  name: Linode
 ---
 
 Placing sensitive computing resources inside of a [*Virtual Private Cloud* (VPC)](https://en.wikipedia.org/wiki/Virtual_private_cloud) helps limit exposure and protect those systems. However, this also means it is impossible for these servers to directly access the internet without additional infrastructure. This limitation can be resolved through the use of a forward proxy, which acts as a gateway between the VPC and the public internet. This guide explains how to use a forward proxy to enable public internet access for devices within a VPC. It also demonstrates how to secure the VPC using an Akamai Cloud Firewall and how to provide applications with proxy access.

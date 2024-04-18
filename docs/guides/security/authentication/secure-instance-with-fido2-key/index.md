@@ -7,8 +7,6 @@ keywords: ['ssh','fido','security key','mobile','yubikey']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Bill Huang"]
 published: 2023-05-22
-modified_by:
-  name: Linode
 ---
 
 {{< note type="warning" >}}

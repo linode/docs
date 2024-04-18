@@ -6,11 +6,8 @@ tags: ["web applications","proxy","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/use-unicorn-and-nginx-on-ubuntu-14-04/','/development/ror/use-unicorn-and-nginx-on-ubuntu-14-04/']
 published: 2016-03-30
-modified: 2016-03-30
 deprecated: true
 deprecated_link: 'guides/use-unicorn-and-nginx-on-ubuntu-18-04/'
-modified_by:
-    name: Alex Fornuto
 title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 14.04"
 title_meta: "Deploy a Rails App with Unicorn and nginx on Ubuntu 14.04"
 external_resources:

@@ -3,8 +3,6 @@ description: "Learn how your Linode account's network transfer pool is calculate
 keywords: ["network","billing","account","transfer", "overage"]
 published: 2018-08-21
 modified: 2023-10-25
-modified_by:
-  name: Linode
 title: "Network Transfer Usage and Costs"
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/','/guides/network-transfer/']

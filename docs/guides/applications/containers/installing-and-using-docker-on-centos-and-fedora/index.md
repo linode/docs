@@ -5,8 +5,6 @@ keywords: ['docker','docker engine','containers']
 tags: ["docker","containers","centos","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-16
-modified_by:
-  name: Linode
 title: "Installing and Using Docker on CentOS and Fedora"
 title_meta: "How to Install and Use Docker on CentOS and Fedora"
 external_resources:

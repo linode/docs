@@ -5,8 +5,6 @@ keywords: ['linux','reboot','lish','troubleshoot','packet loss']
 tags: ["networking", "linode platform"]
 published: 2019-02-01
 modified: 2023-03-14
-modified_by:
-  name: Linode
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-basic-connection-issues/','/guides/troubleshooting-basic-connection-issues/','/troubleshooting/disaster-recovery-guide/','/guides/disaster-recovery-guide/']
 contributors: ["Linode"]

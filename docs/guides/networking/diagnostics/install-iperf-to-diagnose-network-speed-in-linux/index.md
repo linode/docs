@@ -6,8 +6,6 @@ aliases: ['/networking/diagnostics/diagnosing-network-speed-with-iperf/','/netwo
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-10
-modified_by:
-  name: Linode
 published: 2015-01-12
 title: Network Throughput Testing with iPerf
 contributors: ["Dave R."]

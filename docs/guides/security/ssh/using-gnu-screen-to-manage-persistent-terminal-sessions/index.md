@@ -5,8 +5,6 @@ keywords: ["screen", "gnu screen", "terminal", "console", "linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/utilities/screen/','/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/']
 modified: 2014-01-13
-modified_by:
-  name: Linode
 published: 2010-04-02
 title: Using GNU Screen to Manage Persistent Terminal Sessions
 external_resources:

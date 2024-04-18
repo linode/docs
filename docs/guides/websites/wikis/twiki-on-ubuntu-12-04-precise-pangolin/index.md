@@ -6,8 +6,6 @@ tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/ubuntu-12-04-lucid/','/websites/wikis/twiki-on-ubuntu-12-04-precise-pangolin/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2012-10-24
 title: 'TWiki on Ubuntu 12.04 (Precise Pangolin)'
 deprecated: true

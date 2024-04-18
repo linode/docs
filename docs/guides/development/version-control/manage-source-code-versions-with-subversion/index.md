@@ -6,8 +6,6 @@ keywords: ["svn", "version control", "source control management", "subversion"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/version-control/svn/','/development/version-control/manage-source-code-versions-with-subversion/','/applications/development/manage-source-code-versions-with-subversion/']
 modified: 2018-01-01
-modified_by:
-  name: Linode
 published: 2009-12-15
 title: Manage Source Code Versions with Subversion
 external_resources:

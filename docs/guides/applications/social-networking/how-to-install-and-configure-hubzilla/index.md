@@ -5,8 +5,6 @@ og_description: 'This guide provides an introduction to the distributed and dece
 keywords: ['Hubzilla','install Hubzilla','configure Hubzilla','Hubzilla federated']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-14
-modified_by:
-  name: Linode
 title: "Install and Configure Hubzilla"
 title_meta: "How to Install and Configure Hubzilla"
 external_resources:

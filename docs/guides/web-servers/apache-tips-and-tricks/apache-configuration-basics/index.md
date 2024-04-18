@@ -5,8 +5,6 @@ keywords: ["configuration", "apache", "web server", "virtual hosting", "http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/apache-configuration-basics/','/web-servers/apache/configuration/configuration-basics/','/web-servers/apache-tips-and-tricks/apache-configuration-basics/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2009-11-06
 title: Apache Configuration Basics
 external_resources:

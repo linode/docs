@@ -5,8 +5,6 @@ keywords: ["streisand", "vpn", "openvpn", "tor", "wireguard", "L2TP/IPSec", "Ope
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-12
 modified: 2017-10-13
-modified_by:
-  name: Linode
 title: 'How to Set Up a Streisand Gateway'
 external_resources:
   - '[Streisand Github repository](https://github.com/jlund/streisand)'

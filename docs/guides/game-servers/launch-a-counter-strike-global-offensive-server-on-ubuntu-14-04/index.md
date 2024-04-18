@@ -5,8 +5,6 @@ keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go",
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified_by:
-    name: Linode
 title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
 aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/','/applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
 external_resources:

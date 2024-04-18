@@ -7,8 +7,6 @@ tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-5/','/email/postfix/dovecot-mysql-centos-5/']
 modified: 2015-03-26
-modified_by:
-  name: Elle Krout
 published: 2011-06-24
 title: 'Email with Postfix, Dovecot and MySQL on CentOS 5'
 external_resources:

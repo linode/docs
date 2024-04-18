@@ -6,8 +6,6 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 tags: ["debian","drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-11-21
-modified_by:
-    name: Linode
 published: 2014-11-21
 title: 'Installing & Using Drupal Drush on Debian 7'
 deprecated: true

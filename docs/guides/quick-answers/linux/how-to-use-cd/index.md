@@ -4,8 +4,6 @@ description: "Learn how to use the cd command to navigate to different directori
 keywords: ["linux", "how to", "cd", "change directory"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-23
-modified_by:
-  name: Linode
 published: 2020-06-22
 image: UseTheCDCommand.png
 title: "Using the cd Command to Navigate the Terminal"

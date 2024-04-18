@@ -7,8 +7,6 @@ tags: ["web applications","django","apache","python","cms","fedora","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django-apache-and-modwsgi-on-fedora-14/','/development/frameworks/django/django-apache-and-modwsgi-on-fedora-14/','/frameworks/django-apache-mod-wsgi/fedora-14/']
 modified: 2013-09-26
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Django, Apache and mod_wsgi on Fedora 14'
 relations:

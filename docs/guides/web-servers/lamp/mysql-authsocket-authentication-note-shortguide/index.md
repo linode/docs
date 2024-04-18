@@ -3,8 +3,6 @@ slug: mysql-authsocket-authentication-note-shortguide
 description: 'Shortguide that describes how MySQL auth_socket authentication works.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-03
-modified_by:
-  name: Nathan Melehan
 published: 2018-08-03
 title: About MySQL auth_socket Authentication
 keywords: []

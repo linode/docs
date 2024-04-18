@@ -5,8 +5,6 @@ keywords: ["siege", "load testing", "benchmarking"]
 tags: ["linux","http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-02-18
-modified_by:
-  name: Elle Krout
 published: 2015-02-18
 title: Load Testing Web Servers with Siege
 external_resources:

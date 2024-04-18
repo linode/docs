@@ -4,8 +4,6 @@ description: 'This guide explains how to use the Python-Markdown library to conv
 keywords: ['Python-Markdown','What is Python-Markdown','Python-Markdown Library','Convert Markdown to HTML']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-21
-modified_by:
-  name: Linode
 title: "Use Python-Markdown to Convert Markdown to HTML"
 external_resources:
 - '[Python-Markdown website](https://python-markdown.github.io/index.html)'

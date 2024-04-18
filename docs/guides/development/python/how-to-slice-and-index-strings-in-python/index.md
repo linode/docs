@@ -5,8 +5,6 @@ keywords: ['Python slice string','Python string index','How to slice a string in
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
-modified_by:
-  name: Linode
 title: "Slicing and Indexing Strings in Python"
 title_meta: "How to Slice and Index Strings in Python"
 external_resources:

@@ -5,8 +5,6 @@ keywords: ["mosh", " ssh", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/ssh/install-mosh-server-as-ssh-alternative-on-linux/','/networking/mosh/','/networking/ssh/install-mosh-server-as-ssh-alternative-on-linux/','/tools-reference/ssh/mosh/','/networking/ssh/mosh/']
 modified: 2017-08-18
-modified_by:
-  name: Linode
 published: 2013-01-20
 title: Install a Mosh Server as SSH Alternative on Linux
 tags: ["networking","ssh","security"]

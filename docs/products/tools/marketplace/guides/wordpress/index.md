@@ -4,8 +4,6 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 published: 2020-09-28
 modified: 2023-12-14
-modified_by:
-  name: Linode
 title: "Deploy WordPress through the Linode Marketplace"
 external_resources:
 - '[WordPress Codex (Documentation)](https://codex.wordpress.org/)'

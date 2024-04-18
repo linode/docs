@@ -6,8 +6,6 @@ keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom li
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
-modified_by:
-  name: Linode
 published: 2010-07-17
 title: 'Custom Compiled Kernel with PV-GRUB on CentOS 7'
 relations:

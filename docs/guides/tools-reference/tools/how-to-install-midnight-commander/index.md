@@ -5,8 +5,6 @@ keywords: ["midnight commander", "file manager", "text user interface", "TUI"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-11
 modified: 2017-09-12
-modified_by:
-  name: Linode
 title: 'How to Use Midnight Commander, a Visual File Manager'
 external_resources:
  - '[Midnight Commander](https://midnight-commander.org/)'

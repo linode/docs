@@ -4,8 +4,6 @@ description: 'This guide explains the .gitignore file, describes how to create a
 keywords: ['gitignore','.gitignore','Gitignore syntax','How to add files to gitignore','What is gitignore']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10
-modified_by:
-  name: Linode
 title: "Use .gitignore to Ignore Specific Files and Folders"
 external_resources:
 - '[gitignore Documentation](https://git-scm.com/docs/gitignore)'

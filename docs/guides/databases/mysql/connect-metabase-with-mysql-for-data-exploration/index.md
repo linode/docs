@@ -4,8 +4,6 @@ description: 'This guide shows you how to connect to Metabase, a data exploratio
 keywords: ["visualization", "database", "query", "What is Metabase", "metabase", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-10
-modified_by:
-  name: Linode
 published: 2018-02-22
 title: 'Connect Metabase with MySQL for Data Exploration'
 external_resources:

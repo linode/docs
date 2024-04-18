@@ -9,8 +9,6 @@ title: "Using a YubiKey for 2FA when Logging in over SSH"
 title_meta: "How to Use a YubiKey for 2FA when Logging in over SSH"
 published: 2017-08-28
 modified: 2018-02-26
-modified_by:
-  name: Linode
 external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
 contributors: ["Huw Evans"]

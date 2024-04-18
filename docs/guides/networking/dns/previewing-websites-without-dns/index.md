@@ -5,8 +5,6 @@ keywords: ["dns", " website", " preview"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/preview-websites/','/networking/dns/previewing-websites-without-dns/','/networking/dns/previewing-websites-without-dns-classic-manager/']
 modified: 2018-05-22
-modified_by:
-  name: Linode
 published: 2014-01-16
 title: Previewing Websites Without DNS
 tags: ["dns","networking"]

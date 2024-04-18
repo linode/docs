@@ -6,8 +6,6 @@ tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 image: SSH.jpg
-modified_by:
-  name: Linode
 title: "Connecting to a Remote Server Over SSH"
 title_meta: "How to Connect to a Remote Server Over SSH"
 aliases: ['/guides/networking/ssh/connect-to-server-over-ssh/']

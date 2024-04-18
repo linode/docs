@@ -6,8 +6,6 @@ keywords: ["oracle debian lenny", "oracle debian", "oracle linux", "sql database
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/oracle-10g-express-edition-on-debian-5-lenny/','/databases/oracle/10g-debian-5-lenny/']
 modified: 2014-08-13
-modified_by:
-  name: Linode
 published: 2010-01-28
 title: 'Oracle 10g Express Edition on Debian 5 (Lenny)'
 relations:

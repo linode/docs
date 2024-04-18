@@ -4,8 +4,6 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
 modified: 2024-02-20
-modified_by:
-  name: Linode
 aliases: ['/guides/ip-failover/']
 contributors: ["Linode"]
 tags: ["media"]

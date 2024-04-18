@@ -3,8 +3,6 @@ description: "Learn how to use Linode's IP Sharing feature to configure ARP-base
 keywords: ['networking','IP failover','keepalived']
 published: 2021-11-19
 modified: 2022-03-23
-modified_by:
-  name: Linode
 title: "Configuring IP Failover using keepalived"
 external_resources:
 - '[keepalived Documentation](https://keepalived.readthedocs.io/en/latest/index.html)'

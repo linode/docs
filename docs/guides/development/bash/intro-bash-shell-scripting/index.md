@@ -5,8 +5,6 @@ keywords: ["UNIX", "shell", "bash", "programming", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/bash/bash1/','/development/bash/intro-bash-shell-scripting/']
 published: 2019-09-27
-modified_by:
-  name: Linode
 title: 'Introduction to Bash Shell Scripting'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'

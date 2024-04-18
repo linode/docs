@@ -5,8 +5,6 @@ keywords: ['difference between sed awk grep']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
-modified_by:
-  name: Linode
 title: "Learn to Process Text in Linux using Grep, sed, and AWK"
 title_meta: "Text Processing in Linux: Understanding Grep, sed, and AWK"
 contributors: ["Andy Lester"]

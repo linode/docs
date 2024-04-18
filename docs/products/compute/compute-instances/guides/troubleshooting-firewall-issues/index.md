@@ -4,8 +4,6 @@ description: This guide presents troubleshooting strategies for Compute Instance
 keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall","troubleshoot"]
 published: 2020-08-04
 modified: 2023-11-01
-modified_by:
-  name: Linode
 bundles: ['troubleshooting']
 image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/','/guides/troubleshooting-firewalls/']

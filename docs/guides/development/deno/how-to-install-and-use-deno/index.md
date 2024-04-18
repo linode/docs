@@ -6,8 +6,6 @@ keywords: ['what is Deno', 'Deno vs Node.js', 'install Deno', 'how to use Deno']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Jeff Novotny"]
 published: 2023-08-29
-modified_by:
-  name: Linode
 external_resources:
 - '[Deno website](https://deno.land/)'
 - '[Deno documentation](https://deno.land/manual@v1.29.1/introduction)'

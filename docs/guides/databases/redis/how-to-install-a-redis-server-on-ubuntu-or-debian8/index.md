@@ -5,8 +5,6 @@ keywords: ["redis", "redis ubuntu 14.04", "redis server", "redis ubuntu 16.04", 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/','/databases/redis/deploy-redis-on-ubuntu-or-debian/']
 modified: 2017-09-13
-modified_by:
-  name: Edward Angert
 published: 2016-04-20
 title: 'How to Install a Redis Server on Ubuntu or Debian 8'
 og_description: 'This tutorial guides you through installation and best practices of Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8'

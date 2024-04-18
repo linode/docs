@@ -8,8 +8,6 @@ tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lemp/lemp-server-on-centos-5/','/lemp-guides/centos-5/','/websites/lemp/lemp-server-on-centos-5/']
 modified: 2013-09-23
-modified_by:
-  name: Linode
 published: 2010-07-27
 title: LEMP Server on CentOS 5
 relations:

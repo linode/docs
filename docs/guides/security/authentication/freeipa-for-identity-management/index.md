@@ -12,8 +12,6 @@ external_resources:
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
 published: 2021-03-26
 modified: 2022-11-29
-modified_by:
-  name: Linode
 image: FreeIPA_IDandAuth.png
 contributors: ["Hackersploit"]
 ---

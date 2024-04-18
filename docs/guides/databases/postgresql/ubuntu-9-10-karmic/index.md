@@ -6,8 +6,6 @@ description: 'Using the PostgreSQL relational database server with Ubuntu 9.10 (
 keywords: ["postgresql", "postgresql database", "postgresql ubuntu", "postgresql ubuntu 9.10", "postgresql ubuntu karmic", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-10-29
 title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 relations:

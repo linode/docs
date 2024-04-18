@@ -5,8 +5,6 @@ keywords: ['gping linux','ping linux','ping linux alternatives']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-22
-modified_by:
-  name: Nathaniel Stickman
 title: "Install and Use gping on Linux"
 title_meta: "How to Install and Use gping on Linux"
 contributors: ["Nathaniel Stickman"]

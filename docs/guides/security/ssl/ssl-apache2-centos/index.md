@@ -5,8 +5,6 @@ keywords: ["apache SSL", "ssl on centos", "ssl on fedora", "ssl", "contos", "fed
 tags: ["fedora","lamp","centos","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-08-17
-modified_by:
-  name: Nick Brewer
 published: 2014-11-19
 title: 'SSL Certificates with Apache on CentOS 7'
 external_resources:

@@ -6,8 +6,6 @@ description: 'This guide will show you how to configure a MongoDB Replica Set (a
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04-precise/','/databases/mongodb/ubuntu-12/']
-modified_by:
-  name: Linode
 published: 2014-04-09
 title: 'Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
 title_meta: 'How To Create a MongoDB Replication Set on Ubuntu 12.04 (Precise)'

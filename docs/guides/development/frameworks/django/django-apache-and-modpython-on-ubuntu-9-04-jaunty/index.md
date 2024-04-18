@@ -7,8 +7,6 @@ tags: ["web applications","apache","django","mysql","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/django-apache-mod-python/ubuntu-9-04-jaunty/','/development/frameworks/django/django-apache-and-modpython-on-ubuntu-9-04-jaunty/','/websites/frameworks/django-apache-and-modpython-on-ubuntu-9-04-jaunty/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-08-31
 title: 'Django, Apache and mod_python on Ubuntu 9.04 (Jaunty)'
 relations:

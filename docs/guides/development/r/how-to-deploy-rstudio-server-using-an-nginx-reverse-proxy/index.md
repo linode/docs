@@ -5,8 +5,6 @@ keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
 tags: ["web server", "nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-12-11
-modified_by:
-  name: Linode
 published: 2018-01-29
 title: 'How to Deploy RStudio Server Using an NGINX Reverse Proxy'
 audiences: ["beginner"]

@@ -6,8 +6,6 @@ tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/track-bugs-and-manage-development-with-flyspray/','/development/bug-tracking/track-bugs-and-manage-development-with-flyspray/','/web-applications/project-management/flyspray/','/applications/development/track-bugs-and-manage-development-with-flyspray/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-05-03
 title: Track Bugs and Manage Development with Flyspray
 deprecated: true

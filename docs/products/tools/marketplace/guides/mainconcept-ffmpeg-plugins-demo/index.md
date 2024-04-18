@@ -4,8 +4,6 @@ description: "Deploy MainConcept Plugins for FFmpeg demo, an enterprise ready se
 keywords: ['ffmpeg','encoding','decoding','video','vvc','hevc','avc','mpeg-h','xhe-aac','mpeg-2 ts']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
-modified_by:
-  name: Linode
 contributors: ["Linode"]
 ---
 

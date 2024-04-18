@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-10-04-lucid/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-04-lucid/']
 modified: 2013-09-24
-modified_by:
-  name: Linode
 published: 2010-12-06
 title: 'Installing Prosody XMPP Server on Ubuntu 10.04 (Lucid)'
 relations:

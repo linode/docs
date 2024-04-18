@@ -7,8 +7,6 @@ tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/','/frameworks/ruby-on-rails-nginx/ubuntu-8-04-hardy/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-08-21
 title: 'Ruby on Rails with Nginx on Ubuntu 8.04 LTS (Hardy)'
 relations:

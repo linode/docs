@@ -5,8 +5,6 @@ keywords: ["ansible", "playbook", "bash script", "linode cli", "apache", "mariad
 tags: ['automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
-modified_by:
-  name: Nygel Bennett
 title: "Use Ansible to Automate Configuration of Web Server, Log Server, and Database Server"
 title_meta: "Automate Configuration of Cloud Servers with Ansible"
 external_resources:

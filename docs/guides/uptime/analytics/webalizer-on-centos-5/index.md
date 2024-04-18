@@ -7,8 +7,6 @@ tags: ["centos","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/webalizer-on-centos-5/','/web-applications/analytics/webalizer/centos-5/']
 modified: 2011-12-02
-modified_by:
-  name: Lee Matos
 published: 2010-04-17
 title: Webalizer on Centos 5
 external_resources:

@@ -5,8 +5,6 @@ keywords: ["minecraft", "mcmyadmin", "debian", "debian jessie", "debian wheezy",
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
-modified_by:
-  name: Linode
 published: 2015-02-05
 title: Installing McMyAdmin for Minecraft on Debian
 external_resources:

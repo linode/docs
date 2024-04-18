@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-10-karmic/','/communications/xmpp/openfire/ubuntu-9-10-karmic/']
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2009-10-29
 title: 'Instant Messaging Services with Openfire on Ubuntu 9.10'
 relations:

@@ -7,8 +7,6 @@ tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/how-to-install-a-webmin-control-panel-and-modules/','/websites/cms/webmin-control-panel/','/web-applications/control-panels/webmin/installing-webmin/']
 modified: 2017-11-10
-modified_by:
-  name: Linode
 published: 2014-10-08
 title: How to Install a Webmin Control Panel and Modules on Ubuntu 16.04
 external_resources:

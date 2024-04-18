@@ -6,8 +6,6 @@ aliases: ['/websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/','/websit
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-05-26
-modified_by:
-  name: Phil Zona
 published: 2016-05-19
 title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 title_meta: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'

@@ -4,8 +4,6 @@ keywords: ['storage','file sharing', 'backups']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2023-10-27
-modified_by:
-  name: Linode
 title: "Deploy NirvaShare through the Linode Marketplace"
 aliases: ['/guides/deploying-nirvashare-marketplace-app/','/guides/nirvashare-marketplace-app/']
 external_resources:

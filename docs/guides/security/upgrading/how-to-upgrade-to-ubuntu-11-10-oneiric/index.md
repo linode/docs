@@ -7,8 +7,6 @@ tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-11-10-oneiric/','/upgrading/upgrade-to-ubuntu-11-10-oneiric/']
 modified: 2013-05-10
-modified_by:
-  name: Linode
 published: 2011-10-13
 title: 'How to Upgrade to Ubuntu 11.10 (Oneiric)'
 relations:

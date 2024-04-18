@@ -5,8 +5,6 @@ keywords: ["redis", " centos 7", " redis cluster", " centos"]
 aliases: ['/databases/redis/deploy-redis-on-centos-7/','/databases/redis/install-and-configure-redis-on-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-02-20
-modified_by:
-  name: Nick Brewer
 published: 2016-04-20
 title: 'Install and Configure Redis on CentOS 7'
 external_resources:

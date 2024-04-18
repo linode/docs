@@ -5,8 +5,6 @@ keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
 aliases: ['/databases/mysql/mysql-performance-tuning-tutorial/','/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/','/databases/mysql/tuning-your-mysql-database/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
-modified_by:
-  name: Linode
 published: 2015-02-27
 title: How to Optimize MySQL Performance Using MySQLTuner
 external_resources:

@@ -7,8 +7,6 @@ tags: ["python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/python/create-a-python-virtualenv-on-ubuntu-1610/','/development/create-a-python-virtualenv-on-ubuntu-1610/']
 modified: 2017-08-14
-modified_by:
-  name: Linode
 published: 2017-08-13
 title: "Create a Python Virtual Environment on Ubuntu 16.10"
 external_resources:

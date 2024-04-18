@@ -6,8 +6,6 @@ tags: ["proxy","ubuntu","container","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
 modified: 2021-12-26
-modified_by:
-  name: Linode
 title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
 title_meta: "How to Set Up a Reverse Proxy to Host Websites in LXD"
 external_resources:

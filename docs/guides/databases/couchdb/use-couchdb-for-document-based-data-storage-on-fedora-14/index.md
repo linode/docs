@@ -6,8 +6,6 @@ keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-fedora-14/','/databases/couchdb/fedora-14/']
 modified: 2013-09-24
-modified_by:
-  name: Linode
 published: 2010-12-06
 title: Use CouchDB for Document Based Data Storage on Fedora 14
 relations:

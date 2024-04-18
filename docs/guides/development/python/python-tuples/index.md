@@ -5,8 +5,6 @@ keywords: ['python create tuple','python tuple vs list','python list to tuple']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
-modified_by:
-  name: Linode
 title: "An Introduction to Python Tuples"
 title_meta: "Creating and Using Python Tuples"
 contributors: ["Chelsea Troy"]

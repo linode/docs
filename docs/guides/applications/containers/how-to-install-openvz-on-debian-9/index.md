@@ -7,8 +7,6 @@ tags: ["container","docker","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-22
 modified: 2017-09-25
-modified_by:
-  name: Linode
 title: 'How to Install OpenVZ On Debian 9'
 external_resources:
   - '[Basic OpenVZ Operations](https://openvz.org/Basic_operations_in_OpenVZ_environment)'

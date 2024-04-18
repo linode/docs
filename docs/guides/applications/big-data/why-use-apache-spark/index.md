@@ -6,8 +6,6 @@ keywords: ['apache spark analytics','what is apache spark','apache spark advanta
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Jeff Novotny"]
 published: 2023-08-19
-modified_by:
-  name: Linode
 external_resources:
 - '[Apache Spark](https://spark.apache.org/)'
 - '[Apache Spark Examples](https://spark.apache.org/examples.html)'

@@ -5,8 +5,6 @@ keywords: ['kubernetes','istio','container','helm', 'k8s']
 tags: ["monitoring","networking","kubernetes","container", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
-modified_by:
-  name: Linode
 title: "Deploying Istio with Kubernetes"
 title_meta: "How to Deploy Istio with Kubernetes"
 external_resources:

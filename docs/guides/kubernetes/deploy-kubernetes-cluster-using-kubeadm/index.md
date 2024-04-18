@@ -6,8 +6,6 @@ tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-30
 modified: 2022-12-14
-modified_by:
-  name: Linode
 title: "Deploy a Kubernetes Cluster Using kubeadm"
 aliases: ['/kubernetes/getting-started-with-kubernetes/','/applications/containers/getting-started-with-kubernetes/','/applications/containers/kubernetes/getting-started-with-kubernetes/','/guides/getting-started-with-kubernetes/']
 concentrations: ["Kubernetes"]

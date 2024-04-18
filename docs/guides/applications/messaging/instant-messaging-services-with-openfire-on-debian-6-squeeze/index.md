@@ -7,8 +7,6 @@ tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze/','/communications/xmpp/openfire/debian-6-squeeze/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2011-02-24
 title: 'Instant Messaging Services with Openfire on Debian 6 (Squeeze)'
 relations:

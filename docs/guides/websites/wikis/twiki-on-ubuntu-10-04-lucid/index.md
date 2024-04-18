@@ -7,8 +7,6 @@ tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/twiki-on-ubuntu-10-04-lucid/','/web-applications/wikis/twiki/ubuntu-10-04-lucid/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2011-02-15
 title: 'TWiki on Ubuntu 10.04 (Lucid)'
 relations:

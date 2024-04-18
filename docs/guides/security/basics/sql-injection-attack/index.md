@@ -4,8 +4,6 @@ description: 'SQL injection is a type of attack that alters SQL queries. Learn a
 keywords: ['sql injection attack','sql injection example','what is a sql injection']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-03
-modified_by:
-  name: Linode
 title: "SQL Injection Attack: What It Is and How to Prevent It"
 title_meta: "What is SQL Injection? Attack Examples & Prevention Tips"
 external_resources:

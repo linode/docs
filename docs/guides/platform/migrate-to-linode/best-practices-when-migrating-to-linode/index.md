@@ -4,8 +4,6 @@ description: 'Best practices when migrating a website or other cloud service to 
 keywords: ["migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-03
-modified_by:
-  name: Linode
 published: 2018-07-31
 title: Best Practices when Migrating to Linode
 tags: ["linode platform"]

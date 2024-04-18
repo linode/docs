@@ -7,8 +7,6 @@ tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/ubuntu-10-04-lucid/','/uptime/analytics/piwik-on-ubuntu-10-04-lucid/']
 modified: 2013-10-01
-modified_by:
-  name: Linode
 published: 2010-12-06
 title: 'Piwik on Ubuntu 10.04 (Lucid)'
 relations:

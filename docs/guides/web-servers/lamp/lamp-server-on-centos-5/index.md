@@ -7,8 +7,6 @@ tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-centos-5/','/lamp-guides/centos-5/','/web-servers/lamp/lamp-server-on-centos-5/']
 modified: 2011-07-19
-modified_by:
-  name: Linode
 published: 2009-10-19
 title: LAMP Server on CentOS 5
 external_resources:

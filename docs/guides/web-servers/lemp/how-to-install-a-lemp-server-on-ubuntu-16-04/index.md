@@ -6,8 +6,6 @@ tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-ubuntu-16-04/','/web-servers/lemp/lemp-server-on-ubuntu-16-04/','/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-16-04/']
 modified: 2018-03-26
-modified_by:
-  name: Linode
 published: 2016-05-06
 title: 'Install a LEMP Stack on Ubuntu 16.04'
 relations:

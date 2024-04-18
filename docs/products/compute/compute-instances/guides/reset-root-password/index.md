@@ -5,8 +5,6 @@ keywords: ["linux", "linode", "cloud manager", "image"]
 tags: ["linode platform","cloud manager","security"]
 published: 2019-02-11
 modified: 2023-05-04
-modified_by:
-  name: Linode
 aliases: ['/quick-answers/linode-platform/reset-the-root-password-on-your-linode-classic-manager/','/quick-answers/linode-platform/reset-the-root-password-on-your-linode/','/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/','/guides/reset-the-root-password-on-your-linode/']
 ---
 

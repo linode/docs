@@ -6,8 +6,6 @@ tags: ['php', 'ubuntu', 'wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-06
 image: UpdatePHPforaMorePerformantWordPressonUbuntu2004.jpg
-modified_by:
-  name: Linode
 title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
 title_meta: "How to Update PHP for WordPress on Ubuntu 20.04"
 external_resources:

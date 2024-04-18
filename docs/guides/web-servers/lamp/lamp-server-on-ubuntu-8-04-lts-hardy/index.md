@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/','/lamp-guides/ubuntu-8-04-hardy/','/web-servers/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/']
 modified: 2011-05-02
-modified_by:
-  name: Linode
 published: 2009-07-16
 title: 'LAMP Server on Ubuntu 8.04 LTS (Hardy)'
 external_resources:

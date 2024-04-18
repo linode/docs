@@ -5,8 +5,6 @@ keywords: ['mongodb query examples','mongodb filter query','mongodb text search'
 tags: ['database', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-28
-modified_by:
-  name: Nathaniel Stickman
 title: "Navigate MongoDB and Query Your Data"
 external_resources:
 - '[MongoDB Manual: Query Documents](https://www.mongodb.com/docs/manual/tutorial/query-documents/)'

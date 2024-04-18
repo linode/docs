@@ -5,8 +5,6 @@ keywords: ['mcfly command','bash search history','terminal history','shell histo
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
-modified_by:
-  name: Linode
 title: "Install and Use McFly to Search Bash or ZSH History"
 title_meta: "Installing and Using McFly to Search Bash or ZSH History"
 external_resources:

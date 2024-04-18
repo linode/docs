@@ -5,8 +5,6 @@ keywords: ["kvm", "kvm reference", "virtual machine mode", "kvm linode", "xen"]
 aliases: ['/platform/disk-images/kvm-reference/','/platform/kvm-reference/','/platform/kvm/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
-modified_by:
-  name: Alex Fornuto
 published: 2015-06-15
 title: 'KVM Migration Reference'
 tags: ["linode platform"]

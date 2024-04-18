@@ -4,8 +4,6 @@ keywords: [ 'serverwand','marketplace','control panel','hosting']
 tags: ["cloud manager","linode platform", "marketplace"]
 published: 2021-02-23
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy ServerWand through the Linode Marketplace"
 external_resources:
 - '[ServerWand Pricing](https://serverwand.com/pricing)'

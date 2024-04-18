@@ -6,8 +6,6 @@ tags: ["web applications","java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat-on-centos-8/','/development/frameworks/apache-tomcat/apache-tomcat-on-centos-8/','/websites/frameworks/apache-tomcat-on-centos-8/']
 modified: 2020-03-25
-modified_by:
-  name: Linode
 published: 2020-03-25
 image: ApacheTomcat_CentOS8.png
 title: 'Installing Apache Tomcat on CentOS 8'

@@ -5,8 +5,6 @@ keywords: ["upgrading", "ubuntu", "16.04"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-03-15
-modified_by:
-  name: Nick Brewer
 published: 2016-04-26
 title: 'How to Upgrade to Ubuntu 16.04 LTS'
 relations:

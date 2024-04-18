@@ -7,8 +7,6 @@ tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/ruby-on-rails-apache/ubuntu-10-04-lucid/','/development/ror/ruby-on-rails-with-apache-on-ubuntu-10-04-lucid/','/websites/ror/ruby-on-rails-with-apache-on-ubuntu-10-04-lucid/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2010-08-02
 title: 'Ruby on Rails with Apache on Ubuntu 10.04 (Lucid)'
 external_resources:

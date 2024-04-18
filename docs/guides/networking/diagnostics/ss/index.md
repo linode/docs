@@ -6,8 +6,6 @@ tags: ["networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
 modified: 2020-12-03
-modified_by:
-  name: Linode
 title: 'Learning to Use the ss Tool to its Full Potential'
 external_resources:
   - '[iproute2](https://en.wikipedia.org/wiki/Iproute2)'

@@ -4,8 +4,6 @@ description: 'Shortguide for installing Java 8 JDK with the Oracle ppa repositor
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 modified: 2018-02-02
-modified_by:
-  name: Sam Foo
 title: "Install Java 8 JDK"
 published: 2018-01-09
 headless: true

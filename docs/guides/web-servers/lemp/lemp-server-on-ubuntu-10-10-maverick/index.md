@@ -7,8 +7,6 @@ tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lemp/lemp-server-on-ubuntu-10-10-maverick/','/websites/lemp/lemp-server-on-ubuntu-10-10-maverick/','/lemp-guides/ubuntu-10-10-maverick/']
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2010-11-22
 title: 'LEMP Server on Ubuntu 10.10 (Maverick)'
 relations:

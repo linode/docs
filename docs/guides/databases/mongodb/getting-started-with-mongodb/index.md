@@ -5,8 +5,6 @@ keywords: ['mongodb tutorial','getting started mongodb','basic mongodb commands'
 tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-28
-modified_by:
-  name: Nathaniel Stickman
 title: "Getting Started with MongoDB"
 external_resources:
 - '[MongoDB: Getting Started](https://www.mongodb.com/docs/manual/tutorial/getting-started/)'

@@ -8,8 +8,6 @@ modified: 2015-02-06
 external_resources:
  - '[Working with the Git Repository](/docs/guides/how-to-configure-git/)'
  - '[GitHub Help Pages](https://help.github.com/)'
-modified_by:
-  name: Linode
 published: 2015-02-06
 title: How to Install Git and Clone a GitHub Repository
 audiences: ["beginner"]

@@ -5,8 +5,6 @@ description: 'This guide provides you with step-by-step instructions for install
 keywords: ["postgresql", "postgresql database", "postgresql on centos", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2013-09-24
-modified_by:
-  name: Linode
 published: 2009-09-13
 title: Use PostgreSQL Relational Databases on CentOS 5
 relations:

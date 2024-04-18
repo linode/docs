@@ -5,8 +5,6 @@ keywords: ['packer terraform provider','terraform packer resource','linode packe
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-27
 modified: 2022-11-28
-modified_by:
-  name: Nathaniel Stickman
 title: "Deploy a Packer Image with Terraform"
 title_meta: "How to Deploy a Packer Image with Terraform"
 external_resources:

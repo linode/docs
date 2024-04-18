@@ -7,8 +7,6 @@ tags: ["web server","perl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-perlfastcgi-on-arch-linux/','/web-servers/nginx/perl-fastcgi/arch-linux/','/websites/nginx/nginx-and-perlfastcgi-on-arch-linux/']
 modified: 2013-10-07
-modified_by:
-  name: Linode
 published: 2011-02-03
 title: 'Nginx and Perl-FastCGI on Arch Linux'
 relations:

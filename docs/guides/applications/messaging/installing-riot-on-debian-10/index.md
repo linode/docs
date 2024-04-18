@@ -4,8 +4,6 @@ description: 'Riot is a secure instant messaging application built on Matrix pro
 keywords: ['riot', 'matrix', 'chat', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-05
-modified_by:
-  name: Linode
 title: "Install Riot on Debian 10"
 title_meta: "How to Install Riot on Debian 10"
 contributors: ["Dan Nielsen"]

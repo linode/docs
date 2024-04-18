@@ -4,8 +4,6 @@ description: 'This guide explains how to use Spring Boot and Gradle on Ubuntu 22
 keywords: ['spring boot','Java','spring boot gradle','tomcat server','ubuntu java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-24
-modified_by:
-  name: Linode
 title: "Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
 external_resources:
 - '[Spring Boot](https://spring.io/projects/spring-boot/)'

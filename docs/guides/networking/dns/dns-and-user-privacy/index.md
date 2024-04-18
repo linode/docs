@@ -6,8 +6,6 @@ keywords: ['dns and user privacy','dns','domain name service','user privacy','dn
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2023-06-09
-modified_by:
-  name: Linode
 external_resources:
 - '[RFC 9076: DNS Privacy Considerations](https://www.rfc-editor.org/rfc/rfc9076.html)'
 - '[DNS Privacy Project: Why Is DNS a Privacy Concern?](https://dnsprivacy.org/the_problem/)'

@@ -5,8 +5,6 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
 published: 2021-12-10
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy UTunnel VPN through the Linode Marketplace"
 external_resources:
 - '[UTunnel](https://www.utunnel.io/)'

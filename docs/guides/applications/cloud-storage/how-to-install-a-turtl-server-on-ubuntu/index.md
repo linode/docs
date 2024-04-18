@@ -5,8 +5,6 @@ keywords: ["install turtl", " cloud-based storage", " monitor system security", 
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-06
-modified_by:
-  name: Linode
 published: 2017-08-14
 title: 'How to Install a Turtl Server on Ubuntu'
 

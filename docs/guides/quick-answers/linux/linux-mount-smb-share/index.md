@@ -6,8 +6,6 @@ keywords: ['linux mount smb share', 'mount smb share linux', 'mount cifs', 'linu
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["John Mueller"]
 published: 2023-06-06
-modified_by:
-  name: Linode
 external_resources:
 - '[Server Message Block (SMB) share](https://docs.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)'
 - '[Common Internet File System (CIFS) utils](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cifs/d416ff7c-c536-406e-a951-4f04b2fd1d2b)'

@@ -5,8 +5,6 @@ tags: ["cloud-manager","linode platform","cms","django","marketplace","digital a
 published: 2020-03-11
 modified: 2024-04-16
 image: Django_oneclickapps.png
-modified_by:
-  name: Linode
 title: "Deploy Django through the Linode Marketplace"
 aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/', '/platform/one-click/deploying-django-with-one-click-apps/','/guides/how-to-deploy-django-with-one-click-apps/','/guides/how-to-deploy-django-with-marketplace-apps/','/guides/django-marketplace-app/']
 external_resources:

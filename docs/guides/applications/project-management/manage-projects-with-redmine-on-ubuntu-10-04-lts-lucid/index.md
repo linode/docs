@@ -7,8 +7,6 @@ tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid/','/web-applications/project-management/redmine/ubuntu-10-04-lucid/']
 modified: 2011-06-07
-modified_by:
-  name: Linode
 published: 2010-04-29
 title: 'Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)'
 relations:

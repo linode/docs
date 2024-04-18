@@ -3,8 +3,6 @@ title: Linode CLI (API v3 - Deprecated)
 description: 'This guide will show you how to use the Linode Command Line Interface v3 to reboot your Linode, update your MX record, manage Nodebalancers, and more.'
 published: 2014-01-27
 modified: 2022-11-30
-modified_by:
-  name: Alex Fornuto
 image: linode-cli.png
 deprecated: true
 deprecated_link: 'platform/api/linode-cli/'

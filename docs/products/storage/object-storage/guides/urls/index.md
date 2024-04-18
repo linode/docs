@@ -3,8 +3,6 @@ description: "Learn how to obtain URLs to objects within Linode's Object Storage
 keywords: ['object','storage','bucket']
 published: 2020-01-22
 modified: 2024-02-20
-modified_by:
-  name: Linode
 image: AccessingObjectswithLinodeObjectStorage.png
 title: "Access Buckets and Files through URLs"
 tags: ["linode platform"]

@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Linode"]
 published: 2010-06-30
 modified: 2023-11-14
-modified_by:
-  name: Linode
 external_resources:
   - '[Grep | Regular-Expressions.info](https://www.regular-expressions.info/grep.html)'
   - '[Perl Regular Expressions](https://perldoc.perl.org/perlre.html)'

@@ -4,8 +4,6 @@ description: "In this guide, we'll use an example of counting words in a corpus 
 keywords: ["big data", "spark", "nltk", "mapreduce", "pyspark", "hadoop"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-31
-modified_by:
-  name: Linode
 title: "Introduction to PySpark"
 published: 2018-02-05
 external_resources:

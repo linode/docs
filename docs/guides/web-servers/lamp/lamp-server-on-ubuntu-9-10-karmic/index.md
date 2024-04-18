@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/ubuntu-9-10-karmic/','/websites/lamp/lamp-server-on-ubuntu-9-10-karmic/','/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/']
 modified: 2011-05-02
-modified_by:
-  name: Linode
 published: 2009-10-29
 title: 'LAMP Server on Ubuntu 9.10 (Karmic)'
 external_resources:

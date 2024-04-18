@@ -5,8 +5,6 @@ keywords: ["WordPress", "wordpress on ubuntu", "WordPress on Linode", "how to co
 tags: ["ubuntu","lamp","wordpress","cms","lemp","mysql","php", "permalink"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-02-19
-modified_by:
-  name: Edward Angert
 published: 2018-06-04
 title: Install WordPress on Ubuntu 18.04
 external_resources:

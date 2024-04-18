@@ -5,8 +5,6 @@ tags: ["debian","marketplace", "web applications","linode platform", "cloud mana
 published: 2020-09-28
 modified: 2022-03-08
 image: Deploy_Virtualmin_oneclickapps.png
-modified_by:
-  name: Linode
 title: "Deploy Virtualmin through the Linode Marketplace"
 external_resources:
 - '[Virtualmin Documentation](https://www.virtualmin.com/documentation)'

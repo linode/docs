@@ -7,8 +7,6 @@ tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-debian-5-lenny/','/websites/frameworks/apache-tomcat-on-debian-5-lenny/','/development/frameworks/apache-tomcat-on-debian-5-lenny/','/frameworks/apache-tomcat/debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2009-09-23
 title: 'Apache Tomcat on Debian 5 (Lenny)'
 relations:

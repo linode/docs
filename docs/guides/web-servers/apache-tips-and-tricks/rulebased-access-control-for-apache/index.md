@@ -5,8 +5,6 @@ keywords: ["apache", "access control", "security", "http", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/configuration/rule-based-access-control/','/websites/apache-tips-and-tricks/rulebased-access-control-for-apache/','/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/']
 modified: 2017-08-30
-modified_by:
-  name: Linode
 published: 2009-12-07
 title: 'Rule-based Access Control for Apache'
 external_resources:

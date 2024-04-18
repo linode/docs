@@ -6,8 +6,6 @@ keywords: ["full disk encryption", "debian", "luks", "lassie"]
 tags: ["security","debian","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-11-02
-modified_by:
-  name: Linode
 published: 2016-11-02
 title: How to Use LUKS for Full Disk Encryption on Linux
 contributors: ["Nick Brewer"]

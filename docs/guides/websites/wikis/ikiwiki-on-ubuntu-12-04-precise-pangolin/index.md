@@ -6,8 +6,6 @@ tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/ikiwiki/ubuntu-12-04-precise-pangolin/','/websites/wikis/ikiwiki-on-ubuntu-12-04-precise-pangolin/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2012-10-18
 title: 'Ikiwiki on Ubuntu 12.04 (Precise Pangolin)'
 deprecated: true

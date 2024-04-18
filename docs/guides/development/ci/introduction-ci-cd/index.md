@@ -6,8 +6,6 @@ aliases: ['/development/ci/introduction-ci-cd/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-18
 modified: 2018-04-18
-modified_by:
-  name: Linode
 title: "Introduction to Continuous Integration and Continuous Delivery (CI/CD)"
 title_meta: "Overview of Continuous Integration and Continuous Delivery"
 external_resources:

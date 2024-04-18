@@ -5,8 +5,6 @@ keywords: ["chef", "automation", "chefdk", "chef server", "chef development kit"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/beginners-guide-chef/','/applications/chef/beginners-guide-chef/','/applications/configuration-management/chef/beginners-guide-chef/']
 modified: 2021-03-04
-modified_by:
-  name: Linode
 published: 2015-06-10
 title: A Beginner's Guide to Chef
 external_resources:

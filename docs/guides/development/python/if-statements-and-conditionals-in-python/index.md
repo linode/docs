@@ -5,8 +5,6 @@ keywords: ['Python conditional','Python if else','Python if statement']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-04
-modified_by:
-  name: Linode
 title: "If Statements and Chained Conditionals in Python 3"
 title_meta: "Using If Statements and Chained Conditionals in Python 3"
 external_resources:

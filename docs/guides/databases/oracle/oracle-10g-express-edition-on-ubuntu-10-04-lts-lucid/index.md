@@ -6,8 +6,6 @@ keywords: ["oracle ubuntu 10.04", "oracle ubuntu", "oracle linux", "sql database
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/10g-ubuntu-10-04-lucid/','/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-04-lts-lucid/']
 modified: 2014-08-13
-modified_by:
-  name: Linode
 published: 2010-05-05
 title: 'Oracle 10g Express Edition on Ubuntu 10.04 LTS (Lucid)'
 relations:

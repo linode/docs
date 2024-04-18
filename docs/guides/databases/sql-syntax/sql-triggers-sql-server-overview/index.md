@@ -8,8 +8,6 @@ keywords:
   - trigger statements
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2023-01-17
-modified_by:
-  name: Linode
 title_meta: An Introduction to SQL Triggers in SQL Server
 title: "SQL Triggers in SQL Server: An Overview"
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]

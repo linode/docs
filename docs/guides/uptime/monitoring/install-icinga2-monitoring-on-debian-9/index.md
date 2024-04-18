@@ -7,8 +7,6 @@ tags: ["debian","monitoring","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-12
 modified: 2017-12-12
-modified_by:
-  name: Linode
 title: 'Install Icinga 2 Monitoring on Debian 9'
 external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'

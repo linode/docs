@@ -6,8 +6,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-04-04
 modified: 2018-01-02
-modified_by:
-  name: Linode
 title: 'Install Odoo 10 on Ubuntu 16.04'
 aliases: ['/websites/cms/install-odoo-10-on-ubuntu-16-04/','/websites/erp/install-odoo-10-on-ubuntu-16-04/']
 external_resources:

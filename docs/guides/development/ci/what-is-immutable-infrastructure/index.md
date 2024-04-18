@@ -5,8 +5,6 @@ keywords: ['ci','automation','immutable', infrastructure]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-10
 modified: 2018-08-10
-modified_by:
-  name: Linode
 title: "Immutable Infrastructure"
 audiences: ["intermediate"]
 tags: ["automation"]

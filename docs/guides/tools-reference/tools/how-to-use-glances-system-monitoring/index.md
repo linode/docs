@@ -4,8 +4,6 @@ description: "Learn about Glances, an open-source monitoring tool. With Glances,
 keywords: ['linux glances command','unix install glances','linux monitoring tools open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-30
-modified_by:
-  name: Nathaniel Stickman
 title: "Use Glances for System Monitoring on Linux"
 title_meta: "How to Use Glances for System Monitoring on Linux"
 external_resources:

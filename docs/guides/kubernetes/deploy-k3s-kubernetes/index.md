@@ -5,8 +5,6 @@ keywords: ["rancher", "ubuntu", "18.04", "k3s", "kubernetes"]
 tags: ["mysql","kubernetes","database","container","postgresql","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-30
-modified_by:
-  name: Linode
 title: Deploy and Manage K3s (a Lightweight Kubernetes Distribution)
 image: DeployK3s_Linode.png
 external_resources:

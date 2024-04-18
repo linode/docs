@@ -4,8 +4,6 @@ keywords: ["cloud", "compute", "computing","What is cloud computing", "cloud com
 description: This guide explains a brief overview of what cloud computing is, summarizes types of cloud computing, and discusses why you should use it.
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-12
-modified_by:
-  name: Linode
 published: 2018-06-12
 title: What is Cloud Computing?
 title_meta: "What is Cloud Computing & Why Should You Use It?"

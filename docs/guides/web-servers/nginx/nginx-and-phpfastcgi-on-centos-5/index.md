@@ -7,8 +7,6 @@ tags: ["centos","web server","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-phpfastcgi-on-centos-5/','/web-servers/nginx/php-fastcgi/centos-5/','/websites/nginx/nginx-and-phpfastcgi-on-centos-5/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-12-14
 title: 'Nginx and PHP-FastCGI on CentOS 5'
 external_resources:

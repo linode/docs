@@ -5,8 +5,6 @@ keywords: ['websocket token authentication']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
-modified_by:
-  name: Linode
 title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
 title_meta: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
 external_resources:

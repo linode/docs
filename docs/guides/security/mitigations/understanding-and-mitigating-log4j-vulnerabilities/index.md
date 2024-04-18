@@ -4,8 +4,6 @@ description: 'Vulnerabilities in log4j are resulting in RCE exploits and more. T
 keywords: ["log4j","security","log4shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-12-17
-modified_by:
-  name: Linode
 published: 2021-12-17
 title: Understanding and Mitigating log4j Vulnerabilities
 tags: ["security"]

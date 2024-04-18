@@ -5,8 +5,6 @@ description: 'Using the PostgreSQL relational database server with Debian 5 (Len
 keywords: ["postgresql", "postgresql database", "postgresql on debian", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2009-09-08
 title: 'Use PostgreSQL Relational Databases on Debian 5 (Lenny)'
 relations:

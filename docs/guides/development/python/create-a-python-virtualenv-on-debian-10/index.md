@@ -5,8 +5,6 @@ keywords: ["python", "python virtual environment", "virtualenv", "debian 10"]
 tags: ["python","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-07
-modified_by:
-  name: Linode
 published: 2017-08-13
 image: Python_virtualenv_Deb10.png
 title: Creating a Python Virtual Environment on Debian 10

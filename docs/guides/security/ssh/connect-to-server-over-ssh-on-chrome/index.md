@@ -6,8 +6,6 @@ tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified: 2022-01-28
-modified_by:
-  name: Linode
 title: "Connecting to a Remote Server Over SSH on Chrome"
 title_meta: "How to Connect to a Remote Server Over SSH on Chrome"
 relations:

@@ -5,8 +5,6 @@ keywords: ['machine learning history','when was machine learning invented','who 
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
-modified_by:
-  name: Linode
 title: "The History of Machine Learning: A Comprehensive Overview"
 title_meta: "Machine Learning and Artificial Intelligence Background"
 contributors: ["Pam Baker"]

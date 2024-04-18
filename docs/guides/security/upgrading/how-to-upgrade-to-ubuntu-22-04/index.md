@@ -5,8 +5,6 @@ keywords: ['Upgrade Ubuntu','Upgrade from Ubuntu 20.04','Upgrade to Ubuntu 22.04
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-07
 modified: 2023-03-29
-modified_by:
-  name: Linode
 title: "Upgrade to Ubuntu 22.04 LTS"
 title_meta: "How to Upgrade to Ubuntu 22.04 LTS"
 external_resources:

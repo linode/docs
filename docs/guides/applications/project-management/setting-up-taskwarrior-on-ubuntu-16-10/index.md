@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/docs/applications/project-manager/setting-up-taskwarrior-on-ubuntu-16-04/','/applications/project-management/setting-up-taskwarrior-on-ubuntu-16-10/']
 modified: 2017-05-23
-modified_by:
-  name: Angel
 published: 2017-07-01
 title: 'Install Taskwarrior on Ubuntu 16.10'
 external_resources:

@@ -5,8 +5,6 @@ tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
 published: 2021-02-23
 modified: 2023-10-27
 image: DeployYacht_marketplaceapps.png
-modified_by:
-  name: Linode
 title: "Deploy Yacht through the Linode Marketplace"
 aliases: ['/guides/deploy-yacht-with-marketplace-apps/','/guides/yacht-marketplace-app/']
 external_resources:

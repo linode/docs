@@ -4,8 +4,6 @@ description: "This guide shows you how to use logwatch, a Linux utility used to 
 keywords: ["logwatch", "security", "logging", "audit", "logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-08-12
-modified_by:
-  name: Elle Krout
 published: 2015-08-12
 title: "Monitor System Logs with Logwatch"
 tags: ["monitoring"]

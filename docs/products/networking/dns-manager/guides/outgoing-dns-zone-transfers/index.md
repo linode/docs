@@ -2,8 +2,6 @@
 description: "How to transfer domain zones using the Linode DNS Manager."
 published: 2020-07-21
 modified: 2022-11-08
-modified_by:
-  name: Linode
 title: "Outgoing DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]

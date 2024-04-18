@@ -5,9 +5,6 @@ keywords: ["Varnish", "cache", "Nginx", "WordPress", "SSL", "PHP-FPM"]
 tags: ["wordpress", "ssl", "nginx"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2016-11-23
-modified: 2016-11-23
-modified_by:
-    name: Nick Brewer
 title: Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8
 external_resources:
  - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'

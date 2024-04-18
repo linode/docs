@@ -4,8 +4,6 @@ keywords: ['security','vulnerability','penetration testing']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2024-04-16
-modified_by:
-  name: Linode
 title: "Deploy BeEF through the Linode Marketplace"
 external_resources:
 - '[BeEF](https://beefproject.com/)'

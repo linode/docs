@@ -4,8 +4,6 @@ description: 'A docker container monitoring system tracks performance of contain
 keywords: ['docker monitoring','docker container monitoring ','container monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
-modified_by:
-  name: Linode
 title: "Monitoring Docker Containers: Benefits, Best Practices, and Must-Have Tools"
 title_meta: "Docker Container Monitoring Benefits and Tools"
 contributors: ["Steven J. Vaughan-Nichols"]

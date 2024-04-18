@@ -5,8 +5,6 @@ keywords: ['terraform','infrastructure','firewalls','orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29
 modified: 2022-11-29
-modified_by:
-  name: Linode
 title: "Deploy Secure Linodes using Cloud Firewalls and Terraform"
 image: feature.png
 external_resources:

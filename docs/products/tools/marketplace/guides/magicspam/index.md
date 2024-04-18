@@ -4,8 +4,6 @@ keywords: ['cPanel','Plesk','Email','Spam']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2024-01-22
-modified_by:
-  name: Linode
 title: "Deploy MagicSpam through the Linode Marketplace"
 aliases: ['/guides/deploying-magicspam-marketplace-app/','/guides/magicspam-marketplace-app/']
 external_resources:

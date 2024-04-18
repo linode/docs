@@ -6,8 +6,6 @@ tags: ["debian", "postgresql", "database", "cms", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-17
 modified: 2020-09-17
-modified_by:
-  name: Linode
 title: Installing an Odoo 13 Stack on Ubuntu 18.04
 title_meta: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
 image: InstallOdoo13Stack_Ubuntu1804.png

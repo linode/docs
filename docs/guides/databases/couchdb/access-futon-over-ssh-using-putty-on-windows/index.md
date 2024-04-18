@@ -5,8 +5,6 @@ keywords: ["futon", " couchdb", " apache", " ssh", " putty", " windows", " os x"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/securely-administer-couchdb-with-an-ssh-tunnel/','/databases/couchdb/ssh-tunnel/','/databases/couchdb/access-futon-over-ssh-using-putty-on-windows/']
 modified: 2017-07-19
-modified_by:
-  name: Linode
 published: 2010-02-04
 title: Access Futon Over SSH to Administer CouchDB
 external_resources:

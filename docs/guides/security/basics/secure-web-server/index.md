@@ -4,8 +4,6 @@ description: 'Developers must know how to properly secure web servers. ✓ Read 
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-06
-modified_by:
-  name: Linode
 title: "How to Secure Web Servers"
 title_meta: "Security in Web Applications: Best Practices"
 contributors: ["David Strom"]

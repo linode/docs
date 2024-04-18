@@ -4,8 +4,6 @@ keywords: ['restyaboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-01-25
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Restyaboard through the Linode Marketplace"
 external_resources:
 - '[Restyaboard](https://restya.com/board)'

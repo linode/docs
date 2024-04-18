@@ -4,8 +4,6 @@ description: 'Learn how to transfer files using SCP on Linux, and how SCP compar
 keywords: ['Scp command','Scp linux','Scp syntax','Scp example']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-14
-modified_by:
-  name: Linode
 title: "Transfer Files With the scp Command on Linux"
 title_meta: "How to Transfer Files With the scp Command on Linux"
 external_resources:

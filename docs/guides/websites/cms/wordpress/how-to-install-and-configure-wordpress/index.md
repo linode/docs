@@ -6,8 +6,6 @@ tags: ["lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/wordpress/','/websites/cms/wordpress/how-to-install-and-configure-wordpress/','/websites/cms/manage-web-content-with-wordpress/','/websites/cms/how-to-install-and-configure-wordpress/']
 modified: 2015-10-05
-modified_by:
-  name: Elle Krout
 published: 2010-07-27
 title: How to Install and Configure WordPress
 deprecated: true

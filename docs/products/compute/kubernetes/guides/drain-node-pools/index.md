@@ -3,8 +3,6 @@ description: "Learn how to drain a node pool in Linode Kubernetes Engine, create
 keywords: [drain, node pool, maintenance, upgrade, pod disruption]
 published: 2020-07-07
 modified: 2023-02-09
-modified_by:
-  name: Linode
 title: Drain a Node Pool
 title_meta: How to Drain a Node Pool in Linode Kubernetes Engine
 external_resources:

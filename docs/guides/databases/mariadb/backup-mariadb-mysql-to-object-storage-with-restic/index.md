@@ -5,8 +5,6 @@ keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Obj
 tags: ['mariadb', 'mysql', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-03
-modified_by:
-  name: Andy Heathershaw
 title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
 title_meta: "Backup MariaDB Databases to Linode Object Storage with Restic"
 external_resources:

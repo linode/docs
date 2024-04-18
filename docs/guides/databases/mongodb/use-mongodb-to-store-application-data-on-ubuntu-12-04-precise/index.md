@@ -6,8 +6,6 @@ keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/ubuntu-12-04-precise-pangolin/','/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-12-04-precise/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2012-10-08
 title: 'Use MongoDB to Store Application Data on Ubuntu 12.04'
 relations:

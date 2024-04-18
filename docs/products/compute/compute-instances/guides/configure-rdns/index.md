@@ -4,8 +4,6 @@ keywords: ["reverse", "dns", "PTR"]
 tags: ["dns","networking","cloud manager","linode platform"]
 published: 2015-07-09
 modified: 2023-01-18
-modified_by:
-  name: Linode
 title: "Configure rDNS (Reverse DNS) on a Compute Instance"
 title_meta: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
 image: configure-your-linode-reverse-dns.jpg

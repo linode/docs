@@ -5,8 +5,6 @@ keywords: ["control panel", "cpanel", "whm", "plesk", "vesta", "vestacp", "virtu
 tags: ["monitoring","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-01
-modified_by:
-  name: Linode
 published: 2018-08-01
 title: 'How to Choose a Control Panel'
 aliases: ['/websites/cms/basics/how-to-choose-a-control-panel/','/websites/cms/how-to-choose-a-control-panel/']

@@ -5,8 +5,6 @@ keywords: ["docker security", "docker container security", "docker security best
 tags: ["security", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-08-09
-modified_by:
-  name: Linode
 published: 2021-03-26
 title: "An Overview of Docker Security Essentials"
 aliases: ['/security/basics/docker-security-essentials/']

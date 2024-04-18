@@ -7,8 +7,6 @@ tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/ispconfig/manage-an-ubuntu-10-04-lucid-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/ubuntu-10-04-lucid/','/websites/cms/manage-an-ubuntu-10-04-lucid-vps-with-ispconfig/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-05-19
 title: 'Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig'
 relations:

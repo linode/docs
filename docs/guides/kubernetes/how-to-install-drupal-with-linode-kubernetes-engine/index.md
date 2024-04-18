@@ -5,8 +5,6 @@ keywords: ['kubernetes','drupal','websites', 'cms', 'k8s']
 tags: ["mysql","kubernetes","container","cms","drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
-modified_by:
-  name: Linode
 title: "Installing Drupal on LKE"
 title_meta: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
 

@@ -4,8 +4,6 @@ keywords: ['guacamole', 'marketplace', 'remote desktop']
 tags: ["cloud-manager","linode platform","cms","marketplace"]
 published: 2020-12-11
 modified: 2023-03-14
-modified_by:
-  name: Linode
 title: "Deploy Apache Guacamole through the Linode Marketplace"
 aliases: ['/platform/marketplace/guacamole/','/guides/deploy-guacamole-with-marketplace-apps/','/guides/guacamole-marketplace-app/']
 external_resources:

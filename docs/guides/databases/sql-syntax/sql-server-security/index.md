@@ -4,8 +4,6 @@ description: "Learn about the SQL Server security best practices and guidelines 
 keywords: ['sql server security']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2022-05-27
-modified_by:
-  name: Linode
 title: "Part 1: SQL Server Security Best Practices"
 title_meta: SQL Server Security Best Practices
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]

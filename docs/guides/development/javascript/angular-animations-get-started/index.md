@@ -4,8 +4,6 @@ description: 'Get started creating Angular animations using components, states, 
 keywords: ['angular animations', 'create angular component', 'angular animation trigger', 'angular animation states', 'angular animation transitions', 'toggle function']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-22
-modified_by:
-  name: Linode
 title: "Getting Started with Angular Animations"
 title_meta: "Angular Animations: Get Started"
 external_resources:

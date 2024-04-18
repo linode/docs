@@ -6,8 +6,6 @@ keywords: ["mod_evasive", "modevasive", "evasive", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/modevasive-on-apache/','/websites/apache-tips-and-tricks/modevasive-on-apache/','/web-servers/apache/mod-evasive/']
 modified: 2021-07-07
-modified_by:
-  name: Linode
 published: 2011-11-14
 title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
 title_meta: 'mod_evasive on Apache'

@@ -7,8 +7,6 @@ tags: ["web server","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/','/web-servers/cherokee/installing-cherokee-fedora-14/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/']
 modified: 2013-10-07
-modified_by:
-  name: Linode
 published: 2010-05-27
 title: Websites with the Cherokee Web Server on Fedora 14
 relations:

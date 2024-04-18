@@ -5,8 +5,6 @@ keywords: ["docker", "container", "dockerfile"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-06-28
-modified_by:
-  name: Linode
 published: 2017-06-28
 title: 'An Introduction to Docker'
 external_resources:

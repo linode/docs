@@ -5,8 +5,6 @@ keywords: ['what is apollo graphql', 'apollo graphql client', 'apollo graphql se
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
-modified_by:
-  name: Linode
 title: "GraphQL Apollo: An Introduction with Examples"
 title_meta: "An Introduction to GraphQL Apollo"
 external_resources:

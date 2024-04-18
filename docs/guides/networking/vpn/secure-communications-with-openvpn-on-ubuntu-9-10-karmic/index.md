@@ -7,8 +7,6 @@ tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-ubuntu-9-10-karmic/','/networking/openvpn/ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-02-24
 title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 relations:

@@ -6,8 +6,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/media-servers/install-plex-media-server-on-ubuntu-18-04/','/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/']
 modified: 2020-01-04
-modified_by:
-  name: Linode
 published: 2017-05-03
 title: 'How to Install Plex Media Server on Ubuntu 18.04'
 title_meta: 'Install Plex Media Server on Ubuntu 18.04'

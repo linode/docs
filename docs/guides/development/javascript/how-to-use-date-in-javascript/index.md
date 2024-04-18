@@ -6,8 +6,6 @@ tags: ["web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-23
 image: UsingDateinJavaScript.png
-modified_by:
-  name: Linode
 title: "Using the Date Object in JavaScript"
 title_meta: "How to Use the Date Object in JavaScript"
 external_resources:

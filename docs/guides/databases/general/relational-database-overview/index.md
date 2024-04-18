@@ -5,8 +5,6 @@ keywords: ['what is mysql', 'sql vs mysql','mysql overview']
 tags: ['mysql', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-06
-modified_by:
-  name: Linode
 title: "Introduction to Relational Databases and RDBMSs"
 contributors: ["Jeff Novotny"]
 ---

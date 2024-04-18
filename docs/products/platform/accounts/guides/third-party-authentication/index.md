@@ -4,8 +4,6 @@ keywords: ['tpa','third party authentication','github','account','password']
 tags: ["linode platform","security","cloud manager"]
 published: 2021-04-23
 modified: 2022-11-21
-modified_by:
-  name: Linode
 image: enable-tpa-hero.png
 title: "Enable Third Party Authentication on Your User Account"
 title_meta: "Enable Third Party Authentication on Your Linode User Account"

@@ -7,8 +7,6 @@ tags: ["ubuntu", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/remote-desktop/run-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04/','/applications/remote-desktop/running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04/','/remote-desktops/x-forwarding-ubuntu-12-04/']
 modified: 2014-04-25
-modified_by:
-  name: Alex Fornuto
 published: 2014-04-10
 title: 'Run Graphic Software on your Linode with X-Forwarding on Ubuntu 12.04'
 external_resources:

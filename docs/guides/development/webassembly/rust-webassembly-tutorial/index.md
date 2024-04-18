@@ -5,8 +5,6 @@ keywords: ["webassembly","wasm","rust","web development","demo","tutorial"]
 tags: ['ubuntu', 'debian', 'rust']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
 title: Getting Started with WebAssembly Tutorial
 title_meta: A Rust and WebAssembly Tutorial
 external_resources:

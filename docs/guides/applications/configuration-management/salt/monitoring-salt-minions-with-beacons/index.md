@@ -6,8 +6,6 @@ tags: ["monitoring","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-19
 modified: 2019-01-02
-modified_by:
-  name: Linode
 image: MonitoringSaltMinionswithBeacons.png
 title: "Monitoring Salt Minions with Beacons"
 external_resources:

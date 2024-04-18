@@ -7,8 +7,6 @@ tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/ubuntu-10-04-lucid/','/email/citadel/email-with-citadel-on-ubuntu-10-04-lts-lucid/']
 modified: 2013-09-25
-modified_by:
-  name: Linode
 published: 2010-05-09
 title: 'Email with Citadel on Ubuntu 10.04 LTS (Lucid)'
 relations:

@@ -5,8 +5,6 @@ keywords: ["Hadoop", " YARN", " HDFS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-13
 modified: 2017-10-16
-modified_by:
-  name: Linode
 title: 'How to Install and Set Up a 3-Node Hadoop Cluster'
 external_resources:
 - '[YARN Command Reference](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html)'

@@ -4,8 +4,6 @@ description: 'This guide explains how to install MongoDB on Ubuntu 20.04'
 keywords: ['install MongoDB','use MongoDB','configure MongoDB','what is MongoDB']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-12
-modified_by:
-  name: Linode
 title: "Installing MongoDB on Ubuntu 20.04"
 title_meta: "How to Install MongoDB on Ubuntu 20.04"
 external_resources:

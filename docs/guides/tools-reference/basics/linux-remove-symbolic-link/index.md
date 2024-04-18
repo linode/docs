@@ -7,8 +7,6 @@ keywords: ['linux remove symbolic link','remove symlink','remove symbolic link',
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Stephen Satchell"]
 published: 2023-04-18
-modified_by:
-  name: Linode
 external_resources:
 - '[LinuxHint: How Do I Remove a Symbolic Link in Linux?](https://linuxhint.com/remove-symbolic-link-linux/)'
 - '[nixCraft: How To: Linux Delete Symbolic Link Softlink](https://www.cyberciti.biz/faq/linux-remove-delete-symbolic-softlink-command/)'

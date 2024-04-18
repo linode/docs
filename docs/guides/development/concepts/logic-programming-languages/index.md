@@ -4,8 +4,6 @@ description: 'What is logic programming and what are its benefits? Get those ans
 keywords: ['logic programming languages', 'logical programs', 'logic programming examples', 'logic programming paradigm']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-04
-modified_by:
-  name: Linode
 title: "A Guide to Understanding Logic Programming"
 title_meta: "Logic Programming Languages: Use Cases, Examples, and Features"
 external_resources:

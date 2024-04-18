@@ -4,8 +4,6 @@ description: "Powered by high-performing Elixir, Phoenix uses the MVC framework 
 keywords: ['phoenix framework tutorial','learn phoenix elixir','phoenix liveview']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-05
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Use the Phoenix Framework"
 title_meta: "Using the Phoenix Framework"
 external_resources:

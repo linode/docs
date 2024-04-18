@@ -5,8 +5,6 @@ keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel", "MySQL client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/','/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/','/databases/mysql/mysql-ssh-tunnel/']
 modified: 2018-03-05
-modified_by:
-  name: Linode
 published: 2010-01-06
 title: Create an SSH Tunnel for MySQL Remote Access
 external_resources:

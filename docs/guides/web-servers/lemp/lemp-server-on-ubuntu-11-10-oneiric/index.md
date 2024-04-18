@@ -7,8 +7,6 @@ tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-ubuntu-11-10-oneiric/','/lemp-guides/ubuntu-11-10-oneiric/','/web-servers/lemp/lemp-server-on-ubuntu-11-10-oneiric/']
 modified: 2013-09-23
-modified_by:
-  name: Linode
 published: 2011-11-07
 title: 'LEMP Server on Ubuntu 11.10 (Oneiric)'
 relations:

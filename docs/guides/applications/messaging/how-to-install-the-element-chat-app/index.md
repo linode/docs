@@ -6,8 +6,6 @@ tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-07
 image: ElementChat.jpg
-modified_by:
-  name: Linode
 title: "Installing and Configuring the Element Chat Application"
 title_meta: "How to Install and Configure the Element Chat App"
 external_resources:

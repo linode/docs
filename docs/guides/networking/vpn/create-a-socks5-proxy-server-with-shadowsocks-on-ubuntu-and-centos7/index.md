@@ -8,8 +8,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/','/networking/vpn/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/']
 published: 2017-12-07
 modified: 2018-07-10
-modified_by:
-  name: Linode
 title: "Creating a SOCKSS Proxy Server with Shadowsocks"
 title_meta: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
 external_resources:

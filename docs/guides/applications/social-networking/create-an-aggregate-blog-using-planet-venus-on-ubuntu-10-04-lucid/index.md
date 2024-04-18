@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/ubuntu-10-04-lucid/','/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-10-04-lucid/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-08-10
 title: "Aggregate Content Using Planet Venus on Ubuntu 10.04"
 external_resources:

@@ -5,8 +5,6 @@ keywords: ['Install Chef','Configure Chef','Chef Ubuntu','Chef Server','Chef Wor
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-17
 modified: 2022-11-28
-modified_by:
-  name: Linode
 title: "Install Chef on Ubuntu 20.04"
 title_meta: "How to Install Chef on Ubuntu 20.04"
 external_resources:

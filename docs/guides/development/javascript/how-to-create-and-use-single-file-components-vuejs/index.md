@@ -4,8 +4,6 @@ description: "As a project grows, VueJS components can become hard to follow. Le
 keywords: ["vue js","javascript","vuejs","vuejs single file components","vuejs eventbus", "vuejs event bus"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-05-20
-modified_by:
-  name: Linode
 title: "A Tutorial for Creating Single File Components in VueJS"
 title_meta: "How to Create Single File Components in VueJS (A Tutorial)"
 external_resources:

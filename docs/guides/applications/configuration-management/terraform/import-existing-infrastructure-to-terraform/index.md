@@ -5,8 +5,6 @@ keywords: ['terraform','configuration management','import']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-17
 modified: 2020-12-03
-modified_by:
-  name: Linode
 image: ImportExistingInfrastructuretoTerraform.png
 title: "Import Existing Infrastructure to Terraform"
 external_resources:

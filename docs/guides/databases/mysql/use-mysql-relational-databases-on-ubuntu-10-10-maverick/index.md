@@ -6,8 +6,6 @@ keywords: ["mysql ubuntu 10.10", "mysql maverick", "mysql ubuntu", "mysql on lin
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-ubuntu-10-10-maverick/','/databases/mysql/ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-10-21
 title: 'Use MySQL Relational Databases on Ubuntu 10.10 (Maverick)'
 relations:

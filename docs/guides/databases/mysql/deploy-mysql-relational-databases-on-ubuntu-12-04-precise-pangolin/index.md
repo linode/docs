@@ -6,8 +6,6 @@ keywords: ["mysql", "ubuntu 12.04", "mysql ubuntu", "mysql on linux", "mysql Lin
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/using-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin/','/databases/mysql/deploy-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin/','/databases/mysql/ubuntu-12-04-precise-pangolin/']
 modified: 2015-09-11
-modified_by:
-    name: Linode
 published: 2012-10-08
 title: 'Deploy MySQL Relational Databases on Ubuntu 12.04'
 external_resources:

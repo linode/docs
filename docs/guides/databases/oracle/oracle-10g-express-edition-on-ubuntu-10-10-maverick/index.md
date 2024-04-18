@@ -6,8 +6,6 @@ keywords: ["oracle ubuntu maverick", "oracle 10g ubuntu 10.10", "oracle ubuntu 1
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-10-maverick/','/databases/oracle/10g-ubuntu-10-10-maverick/']
 modified: 2014-08-13
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Oracle 10g Express Edition on Ubuntu 10.10 (Maverick)'
 relations:

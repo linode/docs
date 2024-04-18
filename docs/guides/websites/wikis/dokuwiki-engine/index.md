@@ -6,8 +6,6 @@ tags: ["wiki","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/dokuwiki/','/websites/wikis/dokuwiki-engine/']
 modified: 2017-07-27
-modified_by:
-  name: Linode
 published: 2010-04-17
 title: DokuWiki Engine
 external_resources:

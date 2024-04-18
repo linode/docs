@@ -6,8 +6,6 @@ tags: ['linux', 'debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
 image: HowtoCheckandCleanaLinuxSystemsDiskSpace.jpg
-modified_by:
-  name: Nathaniel Stickman
 title: "Check and Clean a Linux System's Disk Space"
 title_meta: "How to Check and Clean a Linux System's Disk Space"
 contributors: ["Nathaniel Stickman"]

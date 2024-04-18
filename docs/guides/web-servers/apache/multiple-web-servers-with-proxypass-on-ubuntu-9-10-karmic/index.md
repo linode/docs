@@ -7,8 +7,6 @@ tags: ["proxy","web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/multiple-web-servers-with-proxypass-on-ubuntu-9-10-karmic/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic/','/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-9-10-karmic/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-02-04
 title: 'Multiple Web Servers with ProxyPass on Ubuntu 9.10'
 relations:

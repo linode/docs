@@ -7,8 +7,6 @@ tags: ["centos", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-centos-5/','/web-applications/project-management/egroupware/centos-5/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2010-02-03
 title: Power Team Collaboration with eGroupware on CentOS 5
 external_resources:

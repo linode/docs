@@ -5,8 +5,6 @@ keywords: ['what is static code analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-24
 image: StaticCodeAnalysis.png
-modified_by:
-  name: Linode
 title: "What is Static Code Analysis?"
 tags: ["automation"]
 contributors: ["Martin Heller"]

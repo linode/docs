@@ -4,8 +4,6 @@ keywords: ['rabbitmq', 'message broker', 'scheduling']
 tags: ["debian", "marketplace", "web applications", "linode platform", "cloud manager"]
 published: 2020-09-28
 modified: 2023-05-31
-modified_by:
-  name: Linode
 title: "Deploy RabbitMQ through the Linode Marketplace"
 external_resources:
 - '[RabbitMQ](https://www.rabbitmq.com/)'

@@ -8,8 +8,6 @@ tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
 modified: 2019-01-22
-modified_by:
-  name: Linode
 title: "Set Up WireGuard VPN on Ubuntu"
 relations:
     platform:

@@ -5,8 +5,6 @@ keywords: ['monitoring','observability']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-03-29
 modified: 2023-06-26
-modified_by:
-  name: Linode
 external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'

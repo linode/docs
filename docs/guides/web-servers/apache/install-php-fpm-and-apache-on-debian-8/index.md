@@ -6,8 +6,6 @@ tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/install-php-fpm-and-apache-on-debian-8/','/web-servers/apache/install-php-fpm-and-apache-on-debian-8/']
 modified: 2017-02-21
-modified_by:
-  name: Nick Brewer
 published: 2016-02-19
 title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:

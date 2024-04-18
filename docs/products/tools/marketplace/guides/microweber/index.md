@@ -3,8 +3,6 @@ description: "Deploy Microweber, an open-source, drag and drop website builder a
 keywords: ['Microweber','website builder','cms']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-09-06
-modified_by:
-  name: Linode
 title: "Deploy Microweber through the Linode Marketplace"
 contributors: ["Linode"]
 ---

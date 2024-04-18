@@ -5,8 +5,6 @@ keywords: ['ansible','Linode module','dynamic inventory','configuration manageme
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-06-04
 modified: 2021-12-30
-modified_by:
-  name: Linode
 title: "Using the Linode Ansible Module to Deploy Linodes"
 title_meta: "How to use the Linode Ansible Module to Deploy Linodes"
 deprecated: true

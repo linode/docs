@@ -1,8 +1,6 @@
 ---
 description: "Learn how to create domain zones to manage your DNS records using the Linode DNS Manager."
 modified: 2022-10-28
-modified_by:
-  name: Linode
 published: 2020-07-21
 title: "Create a Domain"
 keywords: ["dns"]

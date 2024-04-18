@@ -7,8 +7,6 @@ tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/ispconfig/fedora-14/','/websites/cms/manage-a-fedora-14-vps-with-ispconfig/','/websites/cms/ispconfig/manage-a-fedora-14-vps-with-ispconfig/']
 modified: 2013-10-03
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: Manage a Fedora 14 Linode with ISPConfig
 relations:

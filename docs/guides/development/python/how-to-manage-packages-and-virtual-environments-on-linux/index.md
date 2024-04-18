@@ -5,8 +5,6 @@ keywords: ['How to install python on linux','manage python environments in linux
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-12
-modified_by:
-  name: Linode
 title: "Managing Python Packages and Versions on Linux"
 title_meta: "How to Manage Python Packages and Versions on Linux"
 aliases: ['/development/python/how-to-manage-packages-and-virtual-environments-on-linux/']

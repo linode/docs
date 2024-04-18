@@ -4,8 +4,6 @@ description: "The cat command is one of the most frequently used commands in Lin
 keywords: ['linux cat command','cat linux','what is cat command linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-16
-modified_by:
-  name: Nathaniel Stickman
 title: "The Linux cat Command"
 external_resources:
 - '[phoenixNAP: How to Use Linux Cat Command (with Examples)](https://phoenixnap.com/kb/linux-cat-command)'

@@ -7,8 +7,6 @@ tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/websites-with-nginx-on-ubuntu-9-10-karmic/','/web-servers/nginx/websites-with-nginx-on-ubuntu-9-10-karmic/','/web-servers/nginx/installation/ubuntu-9-10-karmic/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-02-24
 title: 'Websites with nginx on Ubuntu 9.10 (Karmic)'
 relations:

@@ -6,8 +6,6 @@ keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/centos-5/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-centos-5/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-02-18
 title: Use CouchDB for Document Based Data Storage on CentOS 5
 external_resources:

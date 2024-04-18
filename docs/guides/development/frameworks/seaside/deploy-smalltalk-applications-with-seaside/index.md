@@ -6,8 +6,6 @@ tags: ["web applications","apache","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/deploy-smalltalk-applications-with-seaside/','/frameworks/seaside/','/websites/frameworks/deploy-smalltalk-applications-with-seaside/','/development/frameworks/seaside/deploy-smalltalk-applications-with-seaside/']
 modified: 2013-09-27
-modified_by:
-  name: Linode
 published: 2010-01-12
 title: Deploying Smalltalk Apps with Seaside on Debian 5
 title_meta: Deploy Smalltalk Applications with Seaside

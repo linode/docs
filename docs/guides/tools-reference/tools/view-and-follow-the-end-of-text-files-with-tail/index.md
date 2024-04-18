@@ -5,8 +5,6 @@ keywords: ["tail", "linux commands", "linux", "common commands", "unix", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/','/linux-tools/common-commands/tail/']
 modified: 2018-04-02
-modified_by:
-  name: Linode
 published: 2010-11-29
 title: View and Follow the End of Text Files with tail
 tags: ["linux"]

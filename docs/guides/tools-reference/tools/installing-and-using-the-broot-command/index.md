@@ -4,8 +4,6 @@ description: "Learn how to use broot on Linux, a tool for navigating directories
 keywords: ['linux broot','linux directory tree','unix broot']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
-modified_by:
-  name: Nathaniel Stickman
 title: "Install and Use the broot Command"
 title_meta: "How to Install and Use the broot Command"
 contributors: ["Nathaniel Stickman"]

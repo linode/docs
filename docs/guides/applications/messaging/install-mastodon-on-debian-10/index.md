@@ -6,8 +6,6 @@ tags: ['docker', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
 modified: 2022-11-29
-modified_by:
-  name: Linode
 image: MASTODON3.jpg
 title: "Install a Mastodon Server on Debian 10"
 title_meta: "How to Install a Mastodon Server on Debian 10"

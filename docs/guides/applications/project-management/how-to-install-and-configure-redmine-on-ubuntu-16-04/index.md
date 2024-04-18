@@ -6,8 +6,6 @@ tags: ["ubuntu", "nginx", "ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
 modified: 2018-03-28
-modified_by:
-  name: Linode
 title: 'How to Install and Configure Redmine on Ubuntu 16.04'
 external_resources:
 - '[Redmine Official Docs](https://www.redmine.org/guide/)'

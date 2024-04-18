@@ -7,8 +7,6 @@ tags: ["centos","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-centos/','/web-servers/ssl/ssl-certificates-with-apache-2-on-centos-5-6/','/security/ssl/ssl-certificates-with-apache-2-on-centos-5-6/','/web-servers/apache/ssl-guides/centos/']
 modified: 2014-10-21
-modified_by:
-  name: Dave Russell
 published: 2010-02-26
 title: 'SSL Certificates with Apache 2 on CentOS'
 relations:

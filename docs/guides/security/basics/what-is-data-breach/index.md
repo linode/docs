@@ -4,8 +4,6 @@ description: 'What is a data breach? And what causes a data breach? We provide t
 keywords: ['what is data leak','data breach definition','what is data breach']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
-modified_by:
-  name: Linode
 title: "What is a Data Breach?"
 title_meta: "Data Breach Definition and Protection Protocols"
 contributors: ["David Chernicoff"]

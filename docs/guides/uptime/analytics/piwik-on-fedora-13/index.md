@@ -7,8 +7,6 @@ tags: ["statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/piwik-on-fedora-13/','/web-applications/analytics/piwik/fedora-13/']
 modified: 2013-10-01
-modified_by:
-  name: Linode
 published: 2010-12-28
 title: Piwik on Fedora 13
 relations:

@@ -6,8 +6,6 @@ tags: ["drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/drupal/managing-web-content-with-drupal-7/','/websites/cms/managing-web-content-with-drupal-7/']
 modified: 2014-11-06
-modified_by:
-  name: Linode
 published: 2009-09-29
 title: Installing Drupal 7
 contributors: ["Linode"]

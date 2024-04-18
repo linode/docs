@@ -5,8 +5,6 @@ keywords: ['file system', 'unmount']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-15
 modified: 2023-11-14
-modified_by:
-  name: Linode
 title: "Mount a File System on Linux"
 title_meta: "How to Mount a File System on Linux"
 external_resources:

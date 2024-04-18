@@ -4,8 +4,6 @@ description: 'Shortguide for installing Elasticsearch on Debian systems'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["elasticsearch", "elastic stack"]
 modified: 2018-01-08
-modified_by:
-  name: Linode
 title: "Install Elasticsearch on Debian and Ubuntu"
 published: 2018-01-09
 headless: true

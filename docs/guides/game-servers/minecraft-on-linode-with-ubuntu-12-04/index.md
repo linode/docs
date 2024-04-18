@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/game-servers/minecraft-on-linode-with-ubuntu-12-04/','/applications/game-servers/minecraft-on-linode-with-ubuntu-12-04/','/web-applications/game-servers/minecraft-ubuntu12-04/']
 modified: 2013-10-01
-modified_by:
-  name: Linode
 published: 2013-09-30
 title: 'Minecraft on Linode with Ubuntu 12.04'
 dedicated_cpu_link: true

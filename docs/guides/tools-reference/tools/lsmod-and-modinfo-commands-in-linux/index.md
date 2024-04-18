@@ -5,8 +5,6 @@ keywords: ['kernel module','lsmod','modinfo']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
-modified_by:
-  name: Linode
 title: "​​How to Use the lsmod and modinfo Commands in Linux"
 title_meta: "Using The lsmod and modinfo Commands in Linux"
 contributors: ["Jack Wallen"]

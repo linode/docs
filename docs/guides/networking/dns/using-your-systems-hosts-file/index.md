@@ -5,8 +5,6 @@ keywords: ["hosts", "hosts file", "hostname", "alias", "dnsec"]
 tags: ["dns","networking","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-28
-modified_by:
-  name: Linode
 published: 2017-09-14
 title: Using Your System's hosts File
 aliases: ['/networking/dns/using-your-systems-hosts-file/']

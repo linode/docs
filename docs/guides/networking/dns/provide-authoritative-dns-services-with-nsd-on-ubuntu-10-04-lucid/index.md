@@ -7,8 +7,6 @@ tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-04-lucid/','/dns-guides/nsd-authoritative-dns-ubuntu-10-04-lucid/']
 modified: 2013-09-25
-modified_by:
-  name: Linode
 published: 2010-12-06
 title: 'Authoritative DNS Services with NSD on Ubuntu 10.04'
 relations:

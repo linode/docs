@@ -5,8 +5,6 @@ keywords: ["apache", "debian", "debian 10", "http", "web server"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-31
-modified_by:
-  name: Linode
 published: 2015-07-31
 title: 'Installing Apache Web Server on Debian 10'
 title_meta: 'How to Install Apache Web Server on Debian 10'

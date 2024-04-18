@@ -5,8 +5,6 @@ keywords: ['R', 'statistics', 'R Foundation', 'data visualization']
 tags: ["statistics", "ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2023-11-29
-modified_by:
-  name: Linode
 published: 2018-01-29
 title: 'How to install R on Ubuntu and Debian'
 audiences: ["beginner"]

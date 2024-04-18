@@ -6,8 +6,6 @@ tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/webpy/webpy-on-ubuntu-10-04-lucid/','/frameworks/webpy/ubuntu-10-04-lucid/','/websites/frameworks/webpy-on-ubuntu-10-04-lucid/','/development/frameworks/webpy-on-ubuntu-10-04-lucid/']
 modified: 2013-11-27
-modified_by:
-  name: Linode
 published: 2011-01-03
 title: 'Web.py on Ubuntu 10.04 (Lucid)'
 deprecated: true

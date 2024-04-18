@@ -7,8 +7,6 @@ tags: ["lemp","web server","php","mysql","nginx","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-fedora-13/','/web-servers/lemp/lemp-server-on-fedora-13/','/lemp-guides/fedora-13/']
 modified: 2011-05-03
-modified_by:
-  name: Linode
 published: 2010-06-30
 title: LEMP Server on Fedora 13
 relations:

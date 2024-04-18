@@ -4,8 +4,6 @@ description: 'What is the difference between TCP and UDP? This guide explains ho
 keywords: ['difference between tcp and udp','what is tcp and udp','tcp vs udp','tcp/udp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
-modified_by:
-  name: Linode
 title: "What is the Difference Between TCP and UDP? "
 title_meta: "The Difference Between TCP and UDP Explained | Linode"
 external_resources:

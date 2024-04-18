@@ -3,8 +3,6 @@ description: 'Having problems with your DNS records? This guide to help get your
 keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 tags: ["linode platform","resolving","cloud manager","dns"]
 modified: 2020-07-09
-modified_by:
-  name: Linode
 published: 2020-07-09
 title: Diagnose & Resolve DNS Records in DNS Manager
 title_meta: Troubleshooting DNS Records

@@ -4,8 +4,6 @@ description: 'This guide provides you instructions for performing various file I
 keywords: ["Go", "File", "UNIX", "Input", "Output", "Golang"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-06
-modified_by:
-  name: Linode
 title: 'Creating, Reading and Writing Files in Go'
 title_meta: 'Creating, Reading and Writing Files in Go - A Tutorial'
 external_resources:

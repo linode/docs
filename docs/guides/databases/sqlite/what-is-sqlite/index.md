@@ -5,8 +5,6 @@ keywords: ['what is sqlite']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09
 image: SQLiteOverview.png
-modified_by:
-  name: Linode
 title: "What is SQLite?"
 title_meta: "A SQLite Overview"
 tags: ["database"]

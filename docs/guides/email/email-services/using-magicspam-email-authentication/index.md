@@ -4,8 +4,6 @@ description: "Securing your email server with MagicSpam by using country authent
 keywords: ["magicspam", "email authentication", "email server security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2024-01-22
-modified_by:
-  name: Linode
 published: 2021-12-29
 title: "Using MagicSpam to Secure your Email Server"
 title_meta: "How to stop BEC and Compromised Accounts on cPanel or Plesk Server"

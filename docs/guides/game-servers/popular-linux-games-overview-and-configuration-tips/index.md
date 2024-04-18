@@ -5,8 +5,6 @@ keywords: ['best linux games']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
-modified_by:
-  name: Linode
 title: "An Overview of Popular Linux Games and Configuration Tips"
 title_meta: "Popular Linux Games and Configuration Tips"
 contributors: ["Sandro Villinger"]

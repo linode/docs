@@ -5,8 +5,6 @@ keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
 modified: 2023-04-11
-modified_by:
-  name: Linode
 title: 'Host a Website with High Availability'
 external_resources:
 - '[GlusterFS](https://www.gluster.org/)'

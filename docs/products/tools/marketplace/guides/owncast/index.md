@@ -4,8 +4,6 @@ keywords: ['live streaming','marketplace','web chat']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-03-31
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Owncast through the Linode Marketplace"
 external_resources:
 - '[Owncast](https://owncast.online/)'

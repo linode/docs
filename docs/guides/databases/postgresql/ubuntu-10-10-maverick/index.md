@@ -4,8 +4,6 @@ description: 'Using the PostgreSQL relational database server with Ubuntu 10.10 
 keywords: ["postgresql", "postgresql ubuntu 10.10", "postgreql maverick", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2010-10-25
 title: 'Use PostgreSQL Relational Databases on Ubuntu 10.10'
 deprecated: true

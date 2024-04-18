@@ -6,8 +6,6 @@ tags: ["monitoring","security","lemp","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-17
 modified: 2019-01-31
-modified_by:
-  name: Linode
 title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
 title_meta: "How to Visualize Server Security on CentOS 7"
 external_resources:

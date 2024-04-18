@@ -5,8 +5,6 @@ keywords: ['gopath','what is go path ','set go path']
 tags: ['Go', 'Go Programming']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
-modified_by:
-  name: Linode
 title: "The GOPATH in Golang"
 title_meta: "Golang’s GOPATH and Workspaces"
 contributors: ["Cameron Laird"]

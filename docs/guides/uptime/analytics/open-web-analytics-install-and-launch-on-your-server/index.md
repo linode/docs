@@ -5,9 +5,6 @@ keywords: ['open web analytics','owa','mysql','analytics']
 tags: ["centos","debian","ubuntu","analytics","statistics","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-01-05
-modified: 2016-01-05
-modified_by:
-    name: Alex Fornuto
 title: 'Open Web Analytics (OWA): Install & Launch on Your Server'
 external_resources:
  - '[OWA Website](http://www.openwebanalytics.com)'

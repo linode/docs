@@ -4,8 +4,6 @@ description: "What are the four major OOP principles? This guide will discuss ob
 keywords: ['oop principles','oop concepts','oop concepts in java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10
-modified_by:
-  name: Linode
 title: "A Guide to OOP Principles in Java"
 title_meta: "Object-Oriented Programming Concepts, Explained"
 external_resources:

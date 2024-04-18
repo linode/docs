@@ -6,8 +6,6 @@ tags: ["docker","linux","analytics","php","wordpress","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-26
 modified: 2018-06-26
-modified_by:
-  name: Linode
 title: 'How to Speed Up a WordPress Website'
 external_resources:
 - '[Finding Bottlenecks in WordPress Code](https://deliciousbrains.com/finding-bottlenecks-wordpress-code/)'

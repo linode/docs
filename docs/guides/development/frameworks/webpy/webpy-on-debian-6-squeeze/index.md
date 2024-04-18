@@ -6,8 +6,6 @@ tags: ["web applications","apache","python","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/webpy/webpy-on-debian-6-squeeze/','/frameworks/webpy/debian-6-squeeze/','/development/frameworks/webpy-on-debian-6-squeeze/','/websites/frameworks/webpy-on-debian-6-squeeze/']
 modified: 2013-09-27
-modified_by:
-  name: Linode
 published: 2011-02-17
 title: 'Web.py on Debian 6 (Squeeze)'
 deprecated: true

@@ -7,8 +7,6 @@ tags: ["apache","security","ssl","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/ubuntu-10-04-lucid/','/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-08-09
 title: 'SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)'
 relations:

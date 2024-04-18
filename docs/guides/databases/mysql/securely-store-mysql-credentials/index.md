@@ -5,8 +5,6 @@ keywords: ["mysql", "mariadb", "mysql_config_editor", "secure", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-01
 modified: 2022-07-01
-modified_by:
-  name: Linode
 title: "Securely Store MySQL Credentials with mysql_config_editor"
 external_resources:
  - '[mysql_config_editor documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html)'

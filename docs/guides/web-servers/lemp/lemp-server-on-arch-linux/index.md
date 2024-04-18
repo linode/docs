@@ -6,8 +6,6 @@ keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-arch-linux/','/web-servers/lemp/lemp-server-on-arch-linux/','/lemp-guides/arch-linux/']
 modified: 2012-06-21
-modified_by:
-  name: Linode
 published: 2010-07-08
 title: LEMP Server on Arch Linux
 relations:

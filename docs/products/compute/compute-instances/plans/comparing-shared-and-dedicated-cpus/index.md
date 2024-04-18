@@ -3,8 +3,6 @@ description: "A collection of diagnostic tasks that identify the potential for b
 keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
 published: 2021-08-27
 modified: 2023-07-05
-modified_by:
-  name: Linode
 title: "Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)"
 title_meta: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
 linkTitle: Choosing Between Shared and Dedicated CPUs

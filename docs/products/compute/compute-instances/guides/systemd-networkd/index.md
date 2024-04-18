@@ -3,8 +3,6 @@ description: "Learn how to configure networking using the systemd-networkd utili
 keywords: ["static", "ip address", "systemd-networkd"]
 published: 2022-05-27
 modified: 2022-06-17
-modified_by:
-  name: Linode
 title: "Network Configuration Using systemd-networkd"
 tags: ["networking","linode platform"]
 aliases: ['/guides/systemd-networkd/']

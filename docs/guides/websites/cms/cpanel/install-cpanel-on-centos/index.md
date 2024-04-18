@@ -6,8 +6,6 @@ tags: ["centos","cms","cpanel","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/cpanel/centos-6/','/websites/cms/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos-5/','/websites/cms/cpanel/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos/','/websites/cms/cpanel-on-centos-6-5/']
 modified: 2023-07-25
-modified_by:
-  name: Edward Angert
 published: 2016-09-07
 title: Install cPanel on CentOS
 external_resources:

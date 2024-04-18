@@ -6,8 +6,6 @@ tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
 modified: 2019-02-01
-modified_by:
-    name: Linode
 title: "Installing a Left 4 Dead 2 Multiplayer Server"
 title_meta: "How to Install a Left 4 Dead 2 Multiplayer Server"
 aliases: ['/game-servers/left-4-dead-2-multiplayer-server-installation/','/applications/game-servers/left-4-dead-2-multiplayer-server-installation/']

@@ -6,8 +6,6 @@ description: 'This guide shows you how to prepare a system for, then install and
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-09
 modified: 2021-06-22
-modified_by:
-    name: Linode
 title: 'How to Install farmOS - a Farm Recordkeeping Application'
 aliases: ['/applications/project-management/install-farmos/']
 contributors: ["Angel Guarisma"]

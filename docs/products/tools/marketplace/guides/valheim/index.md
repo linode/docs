@@ -4,8 +4,6 @@ keywords: ['gaming','game server','valheim']
 tags: ["linode platform", "cloud manager", "marketplace"]
 published: 2021-03-09
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Valheim through the Linode Marketplace"
 external_resources:
 - '[LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)'

@@ -6,8 +6,6 @@ tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-web-server-debian-8/','/web-servers/apache/apache-web-server-debian-8/']
 modified: 2018-12-31
-modified_by:
-  name: Linode
 published: 2015-06-29
 title: 'Apache Web Server on Debian 8 (Jessie)'
 external_resources:

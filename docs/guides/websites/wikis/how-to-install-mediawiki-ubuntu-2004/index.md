@@ -5,8 +5,6 @@ keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on ubuntu 20.04"]
 tags: ["ubuntu", "wiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-04
-modified_by:
-  name: Nathaniel Stickman
 title: "Installing MediaWiki on Ubuntu 20.04"
 title_meta: "How to Install MediaWiki on Ubuntu 20.04"
 external_resources:

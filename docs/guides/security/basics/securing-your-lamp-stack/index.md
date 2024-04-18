@@ -5,8 +5,6 @@ keywords: ["secure lamp stack", "how to make our lamp stack secure"]
 tags: ["lamp","security","web server","php","mysql","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-03-26
-modified_by:
-  name: Linode
 published: 2021-03-26
 title: Securing Your LAMP Stack
 title_meta: How to Secure Your LAMP Stack

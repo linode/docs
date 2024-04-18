@@ -4,8 +4,6 @@ keywords: ['kubernetes','terraform','infrastructure as code','container orchestr
 tags: ["linode platform","kubernetes","automation","managed hosting"]
 published: 2020-05-05
 modified: 2023-02-09
-modified_by:
-  name: Linode
 title: "Deploy a Linode Kubernetes Engine Cluster Using Terraform"
 image: deploy-lke-cluster-with-terraform.png
 external_resources:

@@ -6,8 +6,6 @@ description: 'This guide provides instructions for backing up your MySQL databas
 keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2013-09-11
-modified_by:
-  name: Linode
 published: 2010-04-19
 title: Back Up Your MySQL Databases
 external_resources:

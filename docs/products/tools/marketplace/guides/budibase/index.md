@@ -3,8 +3,6 @@ description: "Deploy Budibase, a low-code platform for building modern business 
 keywords: ['budibase','CRUD','low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-08-09
-modified_by:
-  name: Linode
 title: "Deploy Budibase through the Linode Marketplace"
 contributors: ["Linode"]
 ---

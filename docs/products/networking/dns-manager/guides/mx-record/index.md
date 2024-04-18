@@ -1,8 +1,6 @@
 ---
 description: "Learn how to create MX records using Linode's DNS Manager"
 published: 2022-10-28
-modified_by:
-  name: Linode
 title: "MX Records"
 keywords: ["dns"]
 tags: ["linode platform"]

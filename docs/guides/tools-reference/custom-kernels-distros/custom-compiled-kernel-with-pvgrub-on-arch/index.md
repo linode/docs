@@ -5,8 +5,6 @@ description: 'Instructions for configuring your Linode to run a custom compiled 
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", "arch"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
-modified_by:
-    name: Linode
 published: 2010-07-17
 title: 'Custom Compiled Kernel with PV-GRUB on Arch Linux'
 relations:

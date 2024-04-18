@@ -7,8 +7,6 @@ tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lemp-guides/ubuntu-12-04-precise-pangolin/','/websites/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/','/web-servers/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/']
 modified: 2013-09-12
-modified_by:
-  name: Linode
 published: 2012-10-09
 title: 'LEMP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:

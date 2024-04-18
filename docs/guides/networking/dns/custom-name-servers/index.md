@@ -5,8 +5,6 @@ keywords: ["dns"]
 tags: ["dns","networking","cpanel","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-22
-modified_by:
-  name: Linode
 title: Register Custom DNS Name Servers
 contributors: ["Linode"]
 ---

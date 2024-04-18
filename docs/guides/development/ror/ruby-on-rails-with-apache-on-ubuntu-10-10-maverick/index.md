@@ -6,8 +6,6 @@ tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-apache-on-ubuntu-10-10-maverick/','/frameworks/ruby-on-rails-apache/ubuntu-10-10-maverick/','/development/ror/ruby-on-rails-with-apache-on-ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2011-02-17
 title: 'Ruby on Rails with Apache on Ubuntu 10.10 (Maverick)'
 deprecated: true

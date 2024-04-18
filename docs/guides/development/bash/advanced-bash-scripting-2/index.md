@@ -4,8 +4,6 @@ description: 'Part two series of the advanced Bash scripting guide expands on th
 keywords: ['Advanced bash scripting', 'Bash expressions', 'Bash functions', 'bash aliases', 'Bash debugging']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-30
-modified_by:
-  name: Linode
 title: "Advanced Bash Scripting: Part 2"
 title_meta: "A Software Engineer's Guide to Advanced Bash Scripting: Part 2"
 external_resources:

@@ -7,8 +7,6 @@ tags: ["web applications","nginx","fedora","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/sinatra-framework-and-nginx-on-fedora-14/','/websites/frameworks/sinatra-framework-and-nginx-on-fedora-14/','/frameworks/sinatra/fedora-14/','/development/frameworks/sinatra/sinatra-framework-and-nginx-on-fedora-14/']
 modified: 2013-09-26
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: Sinatra Framework and nginx on Fedora 14
 relations:

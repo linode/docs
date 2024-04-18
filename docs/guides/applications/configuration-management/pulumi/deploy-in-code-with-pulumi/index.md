@@ -4,8 +4,6 @@ description: 'Learn how to install Pulumi, import the Linode module for Pulumi, 
 keywords: ["pulumi", "configuration management", "infrastructure as code", "iac", "javascript", "python"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
 published: 2019-06-26
 title: Getting Started with Pulumi
 external_resources:

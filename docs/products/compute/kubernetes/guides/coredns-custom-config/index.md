@@ -1,13 +1,10 @@
 ---
-slug: coredns-custom-config 
+slug: coredns-custom-config
 aliases: ['/guides/create-a-custom-coredns-configuration-in-linode-kubernetes-engine/']
 title: "Create A Custom CoreDNS Configuration"
 description: "Learn how to create a custom CoreDNS configuration for your cluster hosted through LKE."
 keywords: ['CoreDNS','Corefile','DNS']
-authors: ["Linode"]
 published: 2024-03-12
-modified_by:
-  name: Linode
 external_resources:
 - '[CoreDNS](https://coredns.io/)'
 - '[Corefile Explained](https://coredns.io/2017/07/23/corefile-explained/)'

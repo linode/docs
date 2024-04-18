@@ -5,8 +5,6 @@ keywords: ['kubernetes','kubeflow','machine learning','containers','tensorflow']
 tags: ["python","kubernetes","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-08
-modified_by:
-  name: Linode
 title: "Deploying Kubeflow on Linode Kubernetes Engine"
 title_meta: "How to Deploy Kubeflow on LKE (Linode Kubernetes Engine)"
 image: 'deploying_kubeflow_on_linode_kubernetes_engine.png'

@@ -6,8 +6,6 @@ keywords: ["couchdb", "nosql", "json", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/debian-5-lenny/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-debian-5-lenny/']
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2010-02-08
 title: 'Use CouchDB for Document Based Data Storage on Debian 5 (Lenny)'
 relations:

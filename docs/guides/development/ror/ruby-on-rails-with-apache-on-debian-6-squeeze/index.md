@@ -7,8 +7,6 @@ tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/','/frameworks/ruby-on-rails-apache/debian-6-squeeze/','/websites/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/']
 modified: 2013-09-26
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Ruby on Rails with Apache on Debian 6 (Squeeze)'
 external_resources:

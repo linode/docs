@@ -6,8 +6,6 @@ keywords: ["debian", "icinga", "monitoring", "icinga2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-28
 modified: 2017-12-19
-modified_by:
-  name: Linode
 title: 'Monitor Remote Hosts with Icinga'
 external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'

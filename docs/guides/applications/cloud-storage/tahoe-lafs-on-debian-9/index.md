@@ -7,8 +7,6 @@ tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-24
 modified: 2017-10-26
-modified_by:
-  name: Linode
 title: "Keep Your Data Private in the Cloud with Tahoe-LAFS"
 external_resources:
 - '[Tahoe-LAFS Project Page](https://tahoe-lafs.org/)'

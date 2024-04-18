@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/ubuntu-12-04-precise-pangolin/','/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/','/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/']
 modified: 2015-06-30
-modified_by:
-  name: Alex Fornuto
 published: 2012-10-03
 title: 'LAMP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:

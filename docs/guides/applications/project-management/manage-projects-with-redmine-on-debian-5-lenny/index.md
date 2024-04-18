@@ -7,8 +7,6 @@ tags: ["debian", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/manage-projects-with-redmine-on-debian-5-lenny/','/web-applications/project-management/redmine/debian-5-lenny/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-11-30
 title: 'Manage Projects with Redmine on Debian 5 (Lenny)'
 relations:

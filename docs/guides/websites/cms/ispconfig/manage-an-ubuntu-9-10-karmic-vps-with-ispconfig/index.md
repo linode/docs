@@ -7,8 +7,6 @@ tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/ubuntu-9-10-karmic/','/websites/cms/ispconfig/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-04-19
 title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
 contributors: ["Linode"]

@@ -2,8 +2,6 @@
 title: "Deploy a Redis Sentinel Cluster through the Linode Marketplace"
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 published: 2023-03-20
-modified_by:
-  name: Linode
 keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:

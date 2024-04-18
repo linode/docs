@@ -5,8 +5,6 @@ keywords: ["docker", "container", "docker swarm", "swarm manager", "swarm nodes"
 tags: ["ubuntu","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-28
-modified_by:
-  name: Linode
 published: 2017-09-18
 title: "Create a Docker Swarm Manager and Nodes on Linode"
 external_resources:

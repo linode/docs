@@ -4,8 +4,6 @@ keywords: ['database','postgresql','rdbms','relational database']
 tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 published: 2020-03-17
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy PostgreSQL through the Linode Marketplace"
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'

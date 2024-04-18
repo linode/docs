@@ -6,8 +6,6 @@ tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze/','/web-applications/cms-guides/mango/debian-6-squeeze/','/websites/cms/mango/manage-content-with-markdown-and-mango-on-debian-6-squeeze/']
 modified: 2013-10-02
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Manage Content with Markdown and Mango on Debian 6 (Squeeze)'
 deprecated: true

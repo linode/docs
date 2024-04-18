@@ -6,8 +6,6 @@ tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-11-09
 modified: 2019-02-01
-modified_by:
-    name: Linode
 title: "Installing and Configuring Mumble on Debian"
 title_meta: "How to Install and Configure Mumble on Debian"
 external_resources:

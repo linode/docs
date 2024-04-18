@@ -6,8 +6,6 @@ tags: ["database","ubuntu","automation","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-15
 modified: 2019-01-15
-modified_by:
-    name: Linode
 title: "Manage MySQL Database with Puppet Hiera on Ubuntu 18.04"
 external_resources:
   - '[Puppet Labs](https://puppet.com/)'

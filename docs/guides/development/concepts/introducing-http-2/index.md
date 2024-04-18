@@ -5,8 +5,6 @@ keywords: ['http2 vs http1']
 tags: ['web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
-modified_by:
-  name: Linode
 title: "An Introduction to HTTP/2"
 title_meta: "HTTP/2 vs. HTTP/1.1: Why You Should Use HTTP/2"
 contributors: ["Jeff Novotny"]

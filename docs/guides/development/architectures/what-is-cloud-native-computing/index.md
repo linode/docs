@@ -5,8 +5,6 @@ keywords: ['cloud native computing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-06-23
 image: CloudNativeComputing.png
-modified_by:
-  name: Linode
 title: "What is Cloud-Native Computing?"
 tags: ["container", "kubernetes"]
 contributors: ["Steven J. Vaughan-Nichols"]

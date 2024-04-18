@@ -4,8 +4,6 @@ description: "Countly Community Edition is a free open source alternative to Goo
 keywords: ['google analytics alternative','self hosted analytics','open source analytics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-23
-modified_by:
-  name: Nathaniel Stickman
 title: "Installing Countly Community Edition on Ubuntu 20.04"
 external_resources:
 - '[Countly: Community Edition](https://count.ly/community-edition)'

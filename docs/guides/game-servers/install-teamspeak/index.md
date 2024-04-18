@@ -6,8 +6,6 @@ aliases: ['/game-servers/install-teamspeak/','/applications/game-servers/install
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-07-23
 modified: 2019-02-01
-modified_by:
-    name: Linode
 title: 'Install a TeamSpeak Server on Linode'
 external_resources:
  - '[TeamSpeak KB](https://support.teamspeakusa.com/index.php?/Knowledgebase/List/Index/10/english)'

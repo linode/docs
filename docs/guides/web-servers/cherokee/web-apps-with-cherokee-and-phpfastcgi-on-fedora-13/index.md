@@ -7,8 +7,6 @@ tags: ["web server","fedora","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/','/websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/','/web-servers/cherokee/php-fastcgi-fedora-13/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-09-17
 title: 'Web Apps with Cherokee and PHP-FastCGI on Fedora 13'
 relations:

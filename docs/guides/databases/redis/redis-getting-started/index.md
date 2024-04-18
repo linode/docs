@@ -5,8 +5,6 @@ keywords: ['connecting to redis server', 'how to create redis database', 'gettin
 tags: ['redis', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-14
-modified_by:
-  name: Nathaniel Stickman
 title: "Connect to Redis and Use The Redis Database"
 title_meta: "How to Connect to Redis and Use The Redis Database"
 external_resources:

@@ -5,8 +5,6 @@ keywords: ["linode guide", "hosting a website", "website", "linode setup", " ins
 tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-04-11
-modified_by:
-    name: Linode
 published: 2015-01-14
 title: 'How to Install Node.js and NGINX on Debian 8'
 aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-debian/','/websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/index.cfm/','/websites/nodejs/nodejs-nginx-debian/','/websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/']

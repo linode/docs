@@ -4,8 +4,6 @@ description: 'What are the most common types of cyber attacks? This guide explai
 keywords: ['network attacks','types of cyber security attacks','system attack','cyber attack types']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
-modified_by:
-  name: Linode
 title: "Eight Common Types of Cyber Attacks and How to Prevent Them"
 title_meta: "What are the Most Common Cyber Attacks?"
 contributors: ["Andy Patrizio"]

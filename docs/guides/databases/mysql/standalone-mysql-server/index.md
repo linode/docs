@@ -5,8 +5,6 @@ description: 'Deploying a standalone MySQL database server on a separate Linode 
 keywords: ["mysql", "standalone myql", "separate mysql", "wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-09-30
 title: Standalone MySQL Server
 tags: ["database","mysql"]

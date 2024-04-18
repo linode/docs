@@ -4,8 +4,6 @@ description: 'This guide explains how to install and configure Cockpit, a system
 keywords: ['Cockpit linux','Linux cockpit','Cockpit server management','Cockpit ubuntu server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-04
-modified_by:
-  name: Linode
 title: "Monitor and Administer a Server with Cockpit"
 title_meta: "How to Monitor and Administer a Server with Cockpit"
 external_resources:

@@ -5,8 +5,6 @@ keywords: ["tcp wrappers", "security", "firewall", "acl", "access control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-04-30
 modified: 2015-04-30
-modified_by:
-  name: Elle Krout
 title: Protecting Your Linode with TCP Wrappers
 tags: ["networking","security"]
 aliases: ['/security/firewalls/protecting-your-linode-using-tcp-wrappers/']

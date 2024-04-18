@@ -5,8 +5,6 @@ keywords: ["dns", "record", "domain", "resolution"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/dns-records-an-introduction/','/networking/dns/introduction-to-dns-records/','/dns-guides/introduction-to-dns-records/','/dns-guides/introduction-to-dns/','/guides/dns-records-an-introduction/']
 modified: 2022-10-03
-modified_by:
-  name: Linode
 published: 2009-07-29
 title: "Overview of DNS and DNS Records"
 tags: ["dns","networking"]

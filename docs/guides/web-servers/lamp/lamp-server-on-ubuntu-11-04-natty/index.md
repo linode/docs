@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/ubuntu-11-04-natty/','/web-servers/lamp/lamp-server-on-ubuntu-11-04-natty/','/websites/lamp/lamp-server-on-ubuntu-11-04-natty/']
 modified: 2013-02-18
-modified_by:
-  name: Linode
 published: 2011-06-09
 title: 'LAMP Server on Ubuntu 11.04 (Natty)'
 external_resources:

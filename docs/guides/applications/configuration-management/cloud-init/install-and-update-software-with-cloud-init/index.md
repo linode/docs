@@ -6,8 +6,6 @@ keywords: ['cloud-init','cloudinit','apt','yum']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-11-15
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation - Module Reference: Package Update Upgrade Install](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#package-update-upgrade-install)'
 - '[Cloud-init Documentation - Cloud-config Examples: Install Arbitrary Packages](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#install-arbitrary-packages)'

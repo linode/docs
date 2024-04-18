@@ -6,8 +6,6 @@ keywords: ["linode transfer ownership", "transfer linode to another account", "l
 tags: ["cloud manager","linode platform","account"]
 published: 2021-03-10
 modified: 2023-11-15
-modified_by:
-  name: Linode
 image: TransferOwn_LinodeServ_ST.png
 aliases: ['/guides/platform/manager/service-transfers/', '/guides/service-transfers/']
 contributors: ["Linode"]

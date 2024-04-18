@@ -6,8 +6,6 @@ keywords: ["redis ubuntu 10.04", "redis lucid", "nosql", "database", "key-value 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/ubuntu-10-04-lucid/','/databases/redis/redis-on-ubuntu-10-04-lucid/']
 modified: 2013-09-24
-modified_by:
-  name: Linode
 published: 2010-07-28
 title: 'Redis on Ubuntu 10.04 (Lucid)'
 relations:

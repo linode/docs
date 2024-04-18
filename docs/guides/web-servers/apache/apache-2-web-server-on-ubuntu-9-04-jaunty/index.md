@@ -6,8 +6,6 @@ tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/','/web-servers/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/','/web-servers/apache/installation/ubuntu-9-04-jaunty/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-08-13
 deprecated: true
 title: 'Apache 2 Web Server on Ubuntu 9.04 (Jaunty)'

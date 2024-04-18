@@ -5,8 +5,6 @@ keywords: ["google email", "google apps", "google workspace", "G Suite"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/email-services/using-google-apps-for-email/','/email/google-mail/','/email/using-google-apps-for-email/','/guides/using-google-apps-for-email/']
 modified: 2021-06-22
-modified_by:
-  name: Linode
 published: 2014-08-05
 title: "Using Google Workspace for Email"
 title_meta: "How to Use Google Workspace for Email"

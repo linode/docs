@@ -6,8 +6,6 @@ keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress 
 tags: ['wordpress', 'cms', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-29
-modified_by:
-  name: Nathaniel Stickman
 title: "Install WordPress on Debian 10"
 title_meta: "How to Install WordPress on Debian 10"
 relations:

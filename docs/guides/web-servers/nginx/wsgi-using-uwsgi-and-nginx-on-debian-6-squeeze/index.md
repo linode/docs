@@ -7,8 +7,6 @@ tags: ["web server","python","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze/','/web-servers/nginx/python-uwsgi/debian-6-squeeze/']
 modified: 2011-05-09
-modified_by:
-  name: Linode
 published: 2011-02-23
 title: 'WSGI using uWSGI and nginx on Debian 6 (Squeeze)'
 relations:

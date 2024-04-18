@@ -5,8 +5,6 @@ keywords: ['groups', 'roles', 'permissions', 'grant permission', 'revoke permiss
 tags: ['MySQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-20
-modified_by:
-  name: Linode
 title: "SQL Database Security: User Management"
 title_meta: "SQL Security and User Management"
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]

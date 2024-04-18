@@ -6,8 +6,6 @@ description: 'The Ls command in Linux is useful for listing files and directorie
 keywords: ['ls command in linux','ls command','linux ls','linux ls command','what is ls','cmd ls','ls bash','ls output','linux ll command','linux ll']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Martin Heller"]
-modified_by:
-  name: Linode
 published: 2023-04-11
 external_resources:
 - '[freeCodeCamp: The Linux LS Command – How to List Files in a Directory + Option Flags](https://www.freecodecamp.org/news/the-linux-ls-command-how-to-list-files-in-a-directory-with-options/)'

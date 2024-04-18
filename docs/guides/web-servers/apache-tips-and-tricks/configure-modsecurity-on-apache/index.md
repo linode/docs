@@ -6,8 +6,6 @@ og_description: 'Besides providing logging capabilities, Mod_security, as a web-
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/modsecurity-on-apache/','/web-servers/apache/mod-security/','/web-servers/apache-tips-and-tricks/modsecurity-on-apache/','/web-servers/apache-tips-and-tricks/configure-modsecurity-on-apache/']
 modified: 2018-12-19
-modified_by:
-  name: Linode
 published: 2011-11-10
 title: 'How to Configure ModSecurity on Apache'
 external_resources:

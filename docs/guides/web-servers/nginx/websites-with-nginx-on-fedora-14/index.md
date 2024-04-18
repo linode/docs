@@ -7,8 +7,6 @@ tags: ["web server","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/websites-with-nginx-on-fedora-14/','/web-servers/nginx/websites-with-nginx-on-fedora-14/','/web-servers/nginx/installation/fedora-14/']
 modified: 2014-03-27
-modified_by:
-  name: Alex Fornuto
 published: 2010-12-07
 title: Websites with Nginx on Fedora 14
 relations:

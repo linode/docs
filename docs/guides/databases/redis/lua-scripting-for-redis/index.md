@@ -4,8 +4,6 @@ description: "In this tutorial learn how to start writing and using Lua scripts 
 keywords: ['redis lua scripts','redis lua script tutorial','redis lua examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-14
-modified_by:
-  name: Nathaniel Stickman
 title: "Writing Lua Scripts for a Redis Server"
 external_resources:
 - '[Redis: Scripting with Lua](https://redis.io/docs/manual/programmability/eval-intro/)'

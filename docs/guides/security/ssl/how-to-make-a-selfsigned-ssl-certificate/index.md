@@ -6,8 +6,6 @@ description: 'Creating an SSL certificate for personal or internal organizationa
 keywords: ["ssl certificate", "ssl cert", "self signed ssl", "ssl linux", "ssl cert linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-02
-modified_by:
-  name: Linode
 published: 2009-11-16
 title: 'How to Make a Self-Signed SSL Certificate'
 external_resources:

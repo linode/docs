@@ -7,8 +7,6 @@ tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic/','/communications/voip-services-ubuntu9-10/']
 modified: 2013-08-02
-modified_by:
-  name: Linode
 published: 2010-04-23
 title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)'
 dedicated_cpu_link: true

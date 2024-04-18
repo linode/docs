@@ -3,8 +3,6 @@ description: "Learn how to use Linode's IP Sharing feature to configure IP failo
 keywords: ['IP failover','elastic IP','frr','bgp']
 published: 2022-01-11
 modified: 2022-04-28
-modified_by:
-  name: Linode
 title: "Configuring IP Failover over BGP using FRR (Advanced)"
 external_resources:
 - '[FRRouting Documentation](http://docs.frrouting.org/en/latest/overview.html)'

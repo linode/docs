@@ -5,8 +5,6 @@ keywords: ['Nginx PHP-fpm','Apache php','Php 8','Php fpm','What is PHP?']
 tags: ['php', 'nginx', 'apache', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
-modified_by:
-  name: Linode
 title: "Install PHP 8 for Apache and NGINX on Ubuntu"
 title_meta: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
 external_resources:

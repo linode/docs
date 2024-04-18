@@ -5,8 +5,6 @@ keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go",
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-07
-modified_by:
-    name: Linode
 title: "Running a Counter Strike Global Offensive Server on Ubuntu 18.04"
 title_meta: "How to Run CS:GO Server on Ubuntu 18.04"
 aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/','/applications/game-servers/csgo-server-debian-ubuntu/']

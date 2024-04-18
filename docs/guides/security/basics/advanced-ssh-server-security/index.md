@@ -6,8 +6,6 @@ tags: ["ssh","security","linux"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-04-07
 modified: 2017-04-07
-modified_by:
-  name: Linode
 title: "Harden SSH Access with Advanced OpenSSH Features"
 external_resources:
  - '[OpenSSH](http://www.openssh.com/)'

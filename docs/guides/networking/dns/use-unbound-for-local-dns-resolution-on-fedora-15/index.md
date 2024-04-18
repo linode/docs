@@ -7,8 +7,6 @@ tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-fedora-15/','/dns-guides/unbound-dns-resolver-fedora-15/']
 modified: 2013-09-25
-modified_by:
-  name: Linode
 published: 2011-06-08
 title: Use Unbound for Local DNS Resolution on Fedora 15
 relations:

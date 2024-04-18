@@ -4,8 +4,6 @@ keywords: ['discourse','one-click', 'server']
 tags: ["ubuntu","one-click", "web applications","linode platform", "cloud manager"]
 published: 2020-11-19
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Discourse through the Linode Marketplace"
 external_resources:
 - '[About Discourse](https://discourse.org/about/)'

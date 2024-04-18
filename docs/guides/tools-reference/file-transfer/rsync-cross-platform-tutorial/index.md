@@ -5,8 +5,6 @@ keywords: ['remote sync', 'archive', 'recursion', 'synchronize directory structu
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-20
-modified_by:
-  name: Linode
 title: "Rsync Cross Platform Tutorial"
 title_meta: "Using the Rsync Cross Platform Command-Line Utility"
 external_resources:

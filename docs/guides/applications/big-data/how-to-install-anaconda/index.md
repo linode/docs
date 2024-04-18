@@ -5,8 +5,6 @@ keywords: ['Data Science','Anaconda','Package Management','Python','Ruby','Ubunt
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
 image: Anaconda.jpg
-modified_by:
-  name: Linode
 title: "Installing Anaconda on Ubuntu"
 title_meta: "How to Install Anaconda on Ubuntu"
 external_resources:

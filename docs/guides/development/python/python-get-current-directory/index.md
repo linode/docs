@@ -7,8 +7,6 @@ keywords: ['python change working directory', 'python get current directory', 'p
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Martin Heller"]
 published: 2023-06-12
-modified_by:
-  name: Linode
 ---
 
 Programs often need to look for, read, and write specific files in a special location. By convention, and with support from the operating system, programs maintain a current working directory used as the context for many of their files. There may also be fixed directories and files that are special to the program, such as the configuration files for editors and IDEs.

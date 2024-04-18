@@ -5,8 +5,6 @@ keywords: ["dns", "dnssec"]
 tags: ["dns","networking","cloud manager","linode platform"]
 aliases: ['/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/','/guides/common-dns-configurations/']
 modified: 2019-03-14
-modified_by:
-  name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
 contributors: ["Linode"]

@@ -6,8 +6,6 @@ tags: ["docker","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-30
 modified: 2021-03-04
-modified_by:
-  name: Linode
 title: Monitoring Your System with Graphite and a Grafana Dashboard
 title_meta: Monitor Your System with Graphite and a Grafana Dashboard
 external_resources:

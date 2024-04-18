@@ -6,8 +6,6 @@ keywords: ['nodejs typescript','node express server','tsconfig json']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-10
-modified_by:
-  name: Linode
 title: "Use Node.js, TypeScript, and Express to Build a Web Server"
 external_resources:
 - '[npm documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json)'

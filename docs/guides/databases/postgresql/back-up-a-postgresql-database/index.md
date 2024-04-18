@@ -6,8 +6,6 @@ keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-18
 modified: 2022-01-14
-modified_by:
-  name: Jared Kobos
 title: "Back up a PostgreSQL Database with pg_dump"
 external_resources:
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/9.1/static/)'

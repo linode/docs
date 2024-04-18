@@ -7,8 +7,6 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
-modified_by:
-  name: Linode
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'

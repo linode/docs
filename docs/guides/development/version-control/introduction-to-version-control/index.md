@@ -5,8 +5,6 @@ keywords: ["version control", "introduction to version control", "git", "introdu
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/intro-version-control/','/applications/development/introduction-to-version-control/','/development/version-control/introduction-to-version-control/']
 modified: 2013-09-18
-modified_by:
-  name: Linode
 published: 2013-09-18
 title: Introduction to Version Control
 external_resources:

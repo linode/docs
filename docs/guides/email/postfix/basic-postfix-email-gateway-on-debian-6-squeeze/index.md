@@ -6,8 +6,6 @@ tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/basic-postfix-email-gateway-on-debian-6-squeeze/','/email/postfix/gateway-debian-6-squeeze/']
 modified: 2013-09-25
-modified_by:
-  name: Linode
 published: 2011-02-17
 title: 'Basic Postfix Email Gateway on Debian 6 (Squeeze)'
 deprecated: true

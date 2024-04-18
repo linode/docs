@@ -6,8 +6,6 @@ keywords: ['what are pop and imap','mail transfers','pop imap tcp or udp','pop a
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2024-02-12
-modified_by:
-  name: Linode
 ---
 
 Universal email retrieval is all thanks to open standards. Regardless of the hardware and software used, email is accessed via one of two specifications: Post Office Protocol (POP) or Internet Message Access Protocol (IMAP).

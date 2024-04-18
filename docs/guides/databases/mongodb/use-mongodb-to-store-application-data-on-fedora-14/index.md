@@ -6,8 +6,6 @@ keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/fedora-14/','/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-14/']
 modified: 2013-09-24
-modified_by:
-  name: Linode
 published: 2010-11-23
 title: Use MongoDB to Store Application Data on Fedora 14
 relations:

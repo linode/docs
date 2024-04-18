@@ -6,8 +6,6 @@ tags: ['security']
 bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
-modified_by:
-  name: Linode
 title: "Network Security Tools and How They Help You"
 title_meta: "Network Security Software Tools and Devices"
 contributors: ["David Strom"]

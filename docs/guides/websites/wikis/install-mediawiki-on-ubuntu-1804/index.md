@@ -5,8 +5,6 @@ keywords: ["mediawiki", "wiki", "web-applications"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/mediawiki-engine/','/websites/wikis/install-mediawiki-on-ubuntu-1804/','/web-applications/wikis/mediawiki/']
-modified_by:
-  name: Linode
 published: 2019-08-28
 title: Install MediaWiki on Ubuntu 18.04
 external_resources:

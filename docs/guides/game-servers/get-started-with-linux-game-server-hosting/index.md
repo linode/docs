@@ -5,8 +5,6 @@ keywords: ['linux game server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-08
 image: LinuxGameServerHosting.png
-modified_by:
-  name: Linode
 title: "Getting Started with Linux Game Server Hosting"
 title_meta: "How to Get Started with Linux Game Server Hosting"
 contributors: ["Sandro Villinger"]

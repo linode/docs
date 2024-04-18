@@ -5,8 +5,6 @@ keywords: ['Dust linux', 'linux check disk space','Check disk usage Linux','Du r
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
-modified_by:
-  name: Linode
 title: "Check Disk Usage on Linux with the dust Command"
 title_meta: "Installing and Using dust on Linux"
 external_resources:

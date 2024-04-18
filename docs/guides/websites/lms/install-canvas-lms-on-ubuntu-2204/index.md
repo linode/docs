@@ -6,8 +6,6 @@ tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["John Mueller"]
 published: 2023-04-25
-modified_by:
-  name: Linode
 title: How to Install Canvas on Ubuntu 22.04
 title_meta: Installing Canvas on Ubuntu 22.04
 external_resources:

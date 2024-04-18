@@ -5,8 +5,6 @@ keywords: ["date", "time", "linux commands", "shell", "timey wimey"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/use-the-date-command-in-linux/','/linux-tools/common-commands/date/','/tools-reference/tools/linux-date-command/']
 modified: 2017-08-21
-modified_by:
-  name: Linode
 published: 2010-08-23
 title: How to Use the Date Command in Linux
 tags: ["linux"]

@@ -5,8 +5,6 @@ keywords: ['python stack', 'stack python syntax', 'stack in python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-04
-modified_by:
-  name: Nathaniel Stickman
 title: "Stack in Python: A Practical Guide to Getting Started"
 external_resources:
 - '[Python Documentation: More on Lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)'

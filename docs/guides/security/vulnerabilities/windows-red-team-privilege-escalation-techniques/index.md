@@ -5,8 +5,6 @@ keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-03
-modified_by:
-  name: Linode
 title: "Windows Red Team Privilege Escalation Techniques"
 contributors: ["HackerSploit"]
 ---

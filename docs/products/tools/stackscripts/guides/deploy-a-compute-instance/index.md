@@ -5,8 +5,6 @@ keywords: ["stackscripts", "automation", "script", "custom instance", "deploymen
 tags: ["linode platform","automation","cloud manager"]
 published: 2020-04-22
 modified: 2023-02-02
-modified_by:
-  name: Linode
 aliases: ['/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/','/guides/how-to-deploy-a-new-linode-using-a-stackscript/']
 ---
 

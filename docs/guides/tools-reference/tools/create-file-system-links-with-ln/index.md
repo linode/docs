@@ -5,8 +5,6 @@ keywords: ["linux", "common commands", "unix", "command line", "file systems"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/create-file-system-links-with-ln/','/linux-tools/common-commands/ln/']
 modified: 2018-03-12
-modified_by:
-  name: Linode
 published: 2010-10-11
 title: Create File System Links with ln
 external_resources:

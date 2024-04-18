@@ -5,8 +5,6 @@ keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-16
-modified_by:
-  name: Linode
 published: 2018-08-16
 title: "Installing a Mastodon Server on Ubuntu 16.04"
 title_meta: "How to Install a Mastodon Server on Ubuntu 16.04"

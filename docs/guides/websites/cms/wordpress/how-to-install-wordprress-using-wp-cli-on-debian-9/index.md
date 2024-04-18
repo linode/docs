@@ -6,8 +6,6 @@ tags: ["debian","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
 modified: 2020-02-17
-modified_by:
-    name: Linode
 title: 'Install WordPress Using WP-CLI on Debian 9'
 title_meta: 'How to Install WordPress Using WP-CLI on Debian 9'
 external_resources:

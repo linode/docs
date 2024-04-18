@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Linode"]
 published: 2010-07-01
 modified: 2023-11-14
-modified_by:
-  name: Linode
 external_resources:
  - '[Manage File Permission with Users and Groups](/docs/guides/linux-users-and-groups/)'
  - '[Administration Basics](/docs/guides/linux-system-administration-basics/)'

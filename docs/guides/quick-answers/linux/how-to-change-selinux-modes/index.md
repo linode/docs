@@ -7,8 +7,6 @@ tags: ["fedora","centos","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-06-22
 modified: 2017-10-18
-modified_by:
-  name: Linode
 title: "Changing SELinux Modes"
 title_meta: "How to Change SELinux Modes"
 external_resources:

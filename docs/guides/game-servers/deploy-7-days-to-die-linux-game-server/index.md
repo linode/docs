@@ -5,8 +5,6 @@ keywords: ['7 days to die Linux Server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-08
 image: Deploy7DtoD_Linux.png
-modified_by:
-  name: Linode
 title: "Deploying a 7 Days to Die Server on Linux"
 title_meta: "How to Deploy a 7 Days to Die Server on Linux"
 contributors: ["Sandro Villinger"]

@@ -5,8 +5,6 @@ keywords: ['moodle','education','training','learning management system','lms','i
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
-modified_by:
-  name: Nathaniel Stickman
 title: "Install Moodle on Ubuntu 20.04"
 title_meta: "How to Install Moodle on Ubuntu Server 20.04"
 external_resources:

@@ -7,8 +7,6 @@ tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/twiki-on-debian-5-lenny/','/web-applications/wikis/twiki/debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2011-01-28
 title: 'TWiki on Debian 5 (Lenny)'
 relations:

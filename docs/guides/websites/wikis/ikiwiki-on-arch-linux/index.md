@@ -6,8 +6,6 @@ keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/ikiwiki-on-arch-linux/','/web-applications/wikis/ikiwiki/arch-linux/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2011-02-23
 title: Ikiwiki on Arch Linux
 relations:

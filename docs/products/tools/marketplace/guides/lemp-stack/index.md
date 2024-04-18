@@ -4,8 +4,6 @@ keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
 tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
 published: 2020-03-11
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy a LEMP Stack through the Linode Marketplace"
 image: feature.png
 external_resources:

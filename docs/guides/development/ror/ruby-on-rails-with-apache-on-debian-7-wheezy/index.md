@@ -6,8 +6,6 @@ tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-apache-on-debian-7-wheezy/','/websites/ror/ruby-on-rails-with-apache-on-debian-7-wheezy/','/frameworks/ruby-on-rails-apache/debian-7-wheezy/']
 modified: 2013-09-13
-modified_by:
-  name: Linode
 published: 2013-09-13
 deprecated: true
 deprecated_link: 'development/ror/ruby-on-rails-apache-debian/'

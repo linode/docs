@@ -7,8 +7,6 @@ tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/email-and-calendars-with-zimbra-6-on-debian-5-lenny/','/email/zimbra/install-zimbra-debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-04-26
 title: 'Email and Calendars with Zimbra 6 on Debian 5 (Lenny)'
 relations:

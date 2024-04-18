@@ -7,8 +7,6 @@ tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/email-with-citadel-on-ubuntu-9-10-karmic/','/email/citadel/ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-11-09
 title: 'Email with Citadel on Ubuntu 9.10 (Karmic)'
 relations:

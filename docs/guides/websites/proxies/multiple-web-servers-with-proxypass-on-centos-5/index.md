@@ -7,8 +7,6 @@ tags: ["proxy","centos","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5/','/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/']
 modified: 2011-07-22
-modified_by:
-  name: Linode
 published: 2010-02-04
 title: Multiple Web Servers with ProxyPass on CentOS 5
 external_resources:

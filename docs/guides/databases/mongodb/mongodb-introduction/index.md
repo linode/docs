@@ -5,8 +5,6 @@ keywords: ['what is mongodb','mongodb vs sql','is mongodb a relational database'
 tags: ['mysql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-14
-modified_by:
-  name: Linode
 title: "What Is MongoDB and Why Use It?"
 title_meta: "Introduction to MongoDB and Its Use Cases"
 external_resources:

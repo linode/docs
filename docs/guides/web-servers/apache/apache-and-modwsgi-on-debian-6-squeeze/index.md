@@ -7,8 +7,6 @@ tags: ["web server","apache","debian","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-and-modwsgi-on-debian-6-squeeze/','/web-servers/apache/mod-wsgi/debian-6-squeeze/','/websites/apache/apache-and-modwsgi-on-debian-6-squeeze/']
 modified: 2012-01-26
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Apache and mod_wsgi on Debian 6 (Squeeze)'
 relations:

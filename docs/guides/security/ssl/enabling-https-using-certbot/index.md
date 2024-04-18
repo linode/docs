@@ -6,8 +6,6 @@ tags: ["ssl", "security", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
 image: CERTBOT.jpg
-modified_by:
-  name: Linode
 title: "Securing Web Traffic Using Certbot"
 title_meta: "Enabling HTTPS Using Certbot"
 contributors: ["Linode"]

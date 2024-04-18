@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-07-27
 modified: 2019-01-02
 deprecated: true
-modified_by:
-    name: Linode
 title: 'Pritunl VPN Server and Management Panel on Ubuntu 14.04'
 aliases: ['/networking/vpn/pritunl-vpn-ubuntu/']
 contributors: ["Andrew Gottschling"]

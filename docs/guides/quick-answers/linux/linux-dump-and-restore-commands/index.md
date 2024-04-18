@@ -6,8 +6,6 @@ keywords: ['install dump', 'dump levels', 'dump targets', 'perform full backup',
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["John Mueller"]
 published: 2023-05-02
-modified_by:
-  name: Linode
 external_resources:
 - '[Dump command in Linux](https://www.geeksforgeeks.org/dump-command-in-linux-with-examples/)'
 - '[Restore command in Linux](https://www.geeksforgeeks.org/restore-command-in-linux-with-examples/)'

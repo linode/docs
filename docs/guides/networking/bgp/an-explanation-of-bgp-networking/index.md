@@ -4,8 +4,6 @@ description: 'This guide discusses how BGP works and what role it can play in ne
 keywords: ['What is BGP','BGP routing','How does BGP work','BGP advantages and disadvantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-18
-modified_by:
-  name: Linode
 title: "An Explanation of BGP Networking"
 external_resources:
 - '[BGP RFC 4271](https://www.rfc-editor.org/rfc/rfc4271)'

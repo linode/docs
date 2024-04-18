@@ -3,8 +3,6 @@ description: "Deploy HashiCorp Vault, an open source, centralized secrets manage
 keywords: ['HashiCorp','vault','secrets',]
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-08-09
-modified_by:
-  name: Linode
 title: "Deploy HashiCorp Vault through the Linode Marketplace"
 contributors: ["Linode"]
 ---

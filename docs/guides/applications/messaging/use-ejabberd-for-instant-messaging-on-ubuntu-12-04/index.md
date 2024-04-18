@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/','/applications/messaging/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/','/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-31
-modified_by:
-  name: Linode
 published: 2012-10-31
 title: 'Use ejabberd for Instant Messaging on Ubuntu-12-04'
 external_resources:

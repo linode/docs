@@ -4,8 +4,6 @@ description: 'Comparing multicloud vs hybrid cloud? Discover their similarities,
 keywords: ['hybrid cloud vs multi cloud','hybrid vs multi cloud','multi-cloud vs hybrid cloud']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
-modified_by:
-  name: Linode
 title: "Multicloud vs. Hybrid Cloud: Differences Explained"
 title_meta: "What is the Difference Between Hybrid Cloud and Multicloud?"
 contributors: ["Jack Wallen"]

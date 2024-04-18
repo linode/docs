@@ -4,8 +4,6 @@ description: "Nomad provides workload orchestration, similar to Kubernetes, but 
 keywords: ['nomad cluster setup','nomad hashicorp','nomad docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-03
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Use Nomad for Container Orchestration"
 external_resources:
 - '[HashiCorp Developer: Nomad Tutorials - Get Started](https://developer.hashicorp.com/nomad/tutorials/get-started)'

@@ -7,8 +7,6 @@ tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/django-apache-mod-python/ubuntu-9-10-karmic/','/development/frameworks/django/django-apache-and-modpython-on-ubuntu-9-10-karmic/','/development/frameworks/django-apache-and-modpython-on-ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-02-05
 title: 'Django, Apache and mod_python on Ubuntu 9.10 (Karmic)'
 relations:

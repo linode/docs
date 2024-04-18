@@ -5,8 +5,6 @@ keywords: ["nginx security", "nginx best practices security", "secure nginx conf
 tags: ["security","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-03-26
-modified_by:
-  name: Linode
 published: 2021-03-26
 title: Securing Nginx With ModSecurity
 title_meta: How to Secure Nginx With ModSecurity

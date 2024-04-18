@@ -6,8 +6,6 @@ description: "Get help deciding which Compute Instance type is right for your us
 keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 published: 2019-02-04
 modified: 2024-03-11
-modified_by:
-    name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-linode-plan/','/guides/choosing-a-compute-instance-plan/']
 contributors: ["Linode"]

@@ -6,8 +6,6 @@ keywords: ["winscp", "ftp", "windows scp", "sftp", "windows sftp program"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/file-transfer/transfer-files-winscp/','/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2009-10-19
 title: Transfer Files with WinSCP on Windows
 contributors: ["Linode"]

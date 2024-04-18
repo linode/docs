@@ -6,8 +6,6 @@ tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-11
 image: EXPRESSJS.jpg
-modified_by:
-  name: Nathaniel Stickman
 title: "Express JS Tutorial: Get Started Building a Website"
 title_meta: "Express JS Tutorial"
 external_resources:

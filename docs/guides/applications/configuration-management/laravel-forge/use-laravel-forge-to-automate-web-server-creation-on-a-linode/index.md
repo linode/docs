@@ -5,8 +5,6 @@ keywords: ["content management", "web-server automation", "laravel", "php", "wor
 tags: ["automation", "php", "drupal", "wordpress", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-18
-modified_by:
-    name: Linode
 published: 2017-09-18
 title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 external_resources:

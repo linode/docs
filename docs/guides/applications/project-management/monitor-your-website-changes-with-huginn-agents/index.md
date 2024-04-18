@@ -5,8 +5,6 @@ keywords: ['huginn website agent']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
 title: "Monitor Your Website Changes with Huginn Agents"
 title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 external_resources:

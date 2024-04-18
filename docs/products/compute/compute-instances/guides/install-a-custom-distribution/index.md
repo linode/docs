@@ -4,8 +4,6 @@ keywords: ["custom distro", "custom distribution", "advanced Linux", "kvm"]
 tags: ["debian", "cloud manager"]
 published: 2017-03-02
 modified: 2023-01-18
-modified_by:
-  name: Linode
 title: "Install a Custom Linux Distribution on a Compute Instance"
 aliases: ['/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/','/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/','/guides/install-a-custom-distribution-on-a-linode/','/guides/install-a-custom-distribution/']
 image: install-a-custom-distribution-on-a-linode.png

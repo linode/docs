@@ -5,8 +5,6 @@ keywords: ['play framework']
 tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
-modified_by:
-  name: Nathaniel Stickman
 title: "Get Started Building a Website with the Play Framework"
 title_meta: "How to Build a Website using the Play Framework"
 external_resources:

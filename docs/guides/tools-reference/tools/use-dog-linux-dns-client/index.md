@@ -4,8 +4,6 @@ description: "Learn how to use the dog command-line DNS client, a modern and mor
 keywords: ['dog dns client','dig alternative linux','dig command examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-23
-modified_by:
-  name: Nathaniel Stickman
 title: "Use the Linux dog Command to Look Up DNS Records"
 contributors: ["Nathaniel Stickman"]
 ---

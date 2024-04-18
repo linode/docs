@@ -4,8 +4,6 @@ description: 'Wondering how to undo a git commit? Follow our step-by-step guide 
 keywords: ['how to undo git commit','git revert commit','git undo local commit']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-08
-modified_by:
-  name: Linode
 title: "Undo a Git Commit"
 title_meta: "Undo a Git Commit: A Step-by-Step Guide"
 external_resources:

@@ -4,8 +4,6 @@ description: "Supabase gives you an effective Firebase alternative based on Post
 keywords: ['supabase nextjs example','supabase nextjs typescript','supabase next js api']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-08
-modified_by:
-  name: Nathaniel Stickman
 title: "Create a Next.js App with a Supabase Backend"
 title_meta: "How to Create a Next.js App with a Supabase Backend"
 external_resources:

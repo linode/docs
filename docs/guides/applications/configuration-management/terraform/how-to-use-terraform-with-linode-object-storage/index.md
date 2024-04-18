@@ -5,8 +5,6 @@ keywords: ['Linode Terraform','Terraform Linode Object Storage','Install Terrafo
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-25
 modified: 2022-11-28
-modified_by:
-  name: Linode
 title: "Use Terraform With Linode Object Storage"
 title_meta: "How to Use Terraform With Linode Object Storage"
 external_resources:

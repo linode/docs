@@ -5,8 +5,6 @@ keywords: ['Python Boolean operators','Python logical operators','Python logical
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-04
-modified_by:
-  name: Linode
 title: "Boolean Variables, Operators, and Conditional Statements in Python"
 title_meta: "Using Boolean Variables, Operators, and Conditional Statements in Python"
 external_resources:

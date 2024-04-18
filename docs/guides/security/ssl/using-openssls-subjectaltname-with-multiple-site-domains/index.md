@@ -6,8 +6,6 @@ tags: ["apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/multipls-ssl-sites-using-subjectaltname/','/security/ssl/using-openssls-subjectaltname-with-multiple-site-domains/','/security/ssl-certificates/subject-alternate-names/', '/ssl-guides/subject-alt-name-ssl/']
 modified: 2017-11-27
-modified_by:
-  name: Lukas Sabota
 published: 2009-11-16
 title: Using OpenSSL's subjectAltName with Multiple Site Domains
 external_resources:

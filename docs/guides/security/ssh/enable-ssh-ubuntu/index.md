@@ -4,8 +4,6 @@ description: 'Want to learn how to enable SSH on Ubuntu? Read our guide to learn
 keywords: ['enable SSH ubuntu','ubuntu enable SSH','ubuntu SSH','install SSH ubuntu','ubuntu install SSH','enable SSH ubuntu 20.04','ubuntu install SSH server','SSH ubuntu','ubuntu enable SSH server','install SSH server ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-08
-modified_by:
-  name: Linode
 title: "How to Enable SSH on Ubuntu 20.04 LTS"
 title_meta: "Step-by-Step Guide: How to Enable SSH on Ubuntu"
 external_resources:

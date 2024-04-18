@@ -4,8 +4,6 @@ keywords: [ 'openlitespeed','marketplace','hosting']
 tags: ["cloud-manager","linode platform", "marketplace"]
 published: 2021-01-15
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
 external_resources:
 - '[OpenLiteSpeed Quick Start guide](https://docs.litespeedtech.com/cloud/images/wordpress/#quick-start)'

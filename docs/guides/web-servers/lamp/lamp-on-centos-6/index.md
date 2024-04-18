@@ -7,8 +7,6 @@ tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-on-centos-6/','/lamp-guides/centos-6/','/websites/lamp/lamp-server-on-centos-6/','/web-servers/lamp/lamp-on-centos-6/']
 modified: 2015-12-01
-modified_by:
-  name: Alex Fornuto
 published: 2011-07-19
 title: LAMP on CentOS 6
 external_resources:

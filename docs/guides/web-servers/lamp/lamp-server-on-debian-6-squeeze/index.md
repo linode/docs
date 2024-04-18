@@ -7,8 +7,6 @@ tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/debian-6-squeeze/','/websites/lamp/lamp-server-on-debian-6-squeeze/','/web-servers/lamp/lamp-server-on-debian-6-squeeze/']
 modified: 2013-10-09
-modified_by:
-  name: Linode
 published: 2011-02-23
 title: 'LAMP Server on Debian 6 (Squeeze)'
 external_resources:

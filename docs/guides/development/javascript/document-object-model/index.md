@@ -4,8 +4,6 @@ description: "The DOM gives scripting languages, like JavaScript, access to an H
 keywords: ['what is the dom','javascript dom tutorial','what is document object model']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-15
-modified_by:
-  name: Nathaniel Stickman
 title: "An Introduction to the Document Object Model (DOM)"
 title_meta: "Accessing the Document Object Model with JavaScript"
 external_resources:

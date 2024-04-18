@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-phpbb-on-ubuntu-10-04-lucid/','/web-applications/bulletin-boards/phpbb/ubuntu-10-04-lucid/']
 modified: 2013-10-01
-modified_by:
-  name: Linode
 published: 2010-09-22
 title: 'Discussion Forums with phpBB on Ubuntu 10.04 (Lucid)'
 relations:

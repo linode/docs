@@ -11,8 +11,6 @@ external_resources:
  - '[BungeeCord and Spigot Forums](https://www.spigotmc.org/)'
 published: 2015-09-09
 modified: 2021-06-11
-modified_by:
-    name: linode
 title: 'Setting up BungeeCord to Link Spigot Servers'
 title_meta: 'How to Set Up BungeeCord to Link Spigot Servers'
 aliases: ['/applications/game-servers/minecraft-with-bungee-cord/','/game-servers/minecraft-with-bungee-cord/']

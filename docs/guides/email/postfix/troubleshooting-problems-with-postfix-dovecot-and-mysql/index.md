@@ -6,8 +6,6 @@ tags: ["mysql","postfix","email","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/','/email/postfix/troubleshooting/']
 modified: 2014-03-24
-modified_by:
-  name: Linode
 published: 2013-07-22
 title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
 contributors: ["Linode"]

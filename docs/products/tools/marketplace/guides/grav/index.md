@@ -4,8 +4,6 @@ keywords: ['cms','blog','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Grav through the Linode Marketplace"
 external_resources:
 - '[Grav](https://getgrav.org/)'

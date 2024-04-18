@@ -7,8 +7,6 @@ tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/centos-6/','/websites/apache/run-php-applications-under-cgi-with-apache-on-centos-6/','/web-servers/apache/run-php-cgi-apache-centos-6/','/websites/apache/run-php-cgi-apache-centos-6/']
 modified: 2014-01-14
-modified_by:
-  name: Linode
 published: 2014-01-14
 title: Run PHP with CGI and Apache on CentOS 6
 external_resources:

@@ -6,8 +6,6 @@ tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/authentication/use-public-key-authentication-with-ssh/','/networking/ssh/use-public-key-authentication-with-ssh/']
 bundles: ['debian-security', 'centos-security', 'network-security']
-modified_by:
-  name: Linode
 published: 2011-04-05
 modified: 2023-08-10
 title: "Use SSH Public Key Authentication on Linux, macOS, and Windows"

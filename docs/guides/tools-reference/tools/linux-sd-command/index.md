@@ -4,8 +4,6 @@ description: "Learn how to use the sd command, an intuitive find-and-replace too
 keywords: ['sd command','sed alternative','sd command linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
-modified_by:
-  name: Nathaniel Stickman
 title: "Use the sd Command for Find and Replace on Linux"
 title_meta: "How to Use the sd Command for Find and Replace on Linux"
 external_resources:

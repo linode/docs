@@ -3,8 +3,6 @@ slug: monitoring-third-party-tools-shortguide
 description: 'Shortguide that describes monitoring third-party tools.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
 published: 2020-07-21
 title: Monitoring Third-Party Tools
 keywords: ["monitoring"]

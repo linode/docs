@@ -7,8 +7,6 @@ tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/','/frameworks/ruby-on-rails-nginx/ubuntu-12-04-precise/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/index.cfm/','/development/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/']
 modified: 2014-02-11
-modified_by:
-  name: Alex Fornuto
 published: 2014-02-05
 title: 'Ruby on Rails with Nginx on Ubuntu 12.04 LTS (Precise)'
 external_resources:

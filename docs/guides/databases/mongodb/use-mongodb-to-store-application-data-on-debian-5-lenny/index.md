@@ -6,8 +6,6 @@ keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/debian-5-lenny/','/databases/mongodb/use-mongodb-to-store-application-data-on-debian-5-lenny/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-02-03
 title: 'Use MongoDB to Store Application Data on Debian 5'
 relations:

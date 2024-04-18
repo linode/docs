@@ -11,8 +11,6 @@ external_resources:
  - '[Console commands on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Console_commands)'
  - '[Studio Wilpost on Epic Games and Steam crossplay](https://survivetheark.com/index.php?/forums/topic/539019-community-crunch-225-crystal-isles-anniversary-event-epic-games-store-and-more/)'
 modified: 2024-01-22
-modified_by:
-  name: Linode
 published: 2016-12-28
 title: "Creating a Dedicated ARK Server on Ubuntu"
 title_meta: "How to Create a Dedicated ARK Server on Ubuntu"

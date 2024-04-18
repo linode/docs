@@ -6,10 +6,6 @@ keywords: ["squid", "proxy", "ubuntu", "12.04", "http"]
 tags: ["proxy","web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-08-07
-modified_by:
-  name: Andhika Maheva Wicaksono
-  email: me@andhika.id
-  website: https://andhikamaheva.com
 published: 2014-03-03
 title: 'Creating an HTTP Proxy Using Squid on Ubuntu 12.04'
 external_resources:

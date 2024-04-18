@@ -5,8 +5,6 @@ keywords: ['open source versus closed source','open source vs. closed source','d
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
-modified_by:
-  name: Linode
 title: "Open Source vs. Closed Source: What’s the Difference?"
 title_meta: "What is the Difference Between Open Source and Closed Source?"
 contributors: ["Steven J. Vaughan-Nichols"]

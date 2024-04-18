@@ -2,8 +2,6 @@
 slug: kube-apiserver-definition-shortguide
 description: 'Shortguide that displays the definition for kube-apiserver.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Heather Zoppetti
 published: 2019-07-12
 title: kube-apiserver Definition
 keywords: []

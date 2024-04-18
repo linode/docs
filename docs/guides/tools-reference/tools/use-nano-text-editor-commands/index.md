@@ -5,8 +5,6 @@ keywords: ["nano", "text editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/using-nano/','/linux-tools/text-editors/nano/','/tools-reference/tools/use-nano-text-editor-commands/']
 modified: 2022-01-14
-modified_by:
-  name: Linode
 published: 2011-11-08
 title: "Using Nano Text Editor Commands in Linux"
 title_meta: "How to Use Nano Text Editor Commands in Linux"

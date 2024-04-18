@@ -4,8 +4,6 @@ description: 'This guide discusses priority queues and the PriorityQueue class i
 keywords: ['python queue','python priority queue','queue in python','get size of priority queue python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-17
-modified_by:
-  name: Linode
 title: "The Priority Queue in Python 3"
 title_meta: "What is the Python Priority Queue?"
 external_resources:

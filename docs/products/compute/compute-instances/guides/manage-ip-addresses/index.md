@@ -6,8 +6,6 @@ keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip addre
 tags: ["linode platform","cloud manager","networking"]
 published: 2016-08-23
 modified: 2024-01-30
-modified_by:
-  name: Linode
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
 contributors: ["Linode"]
 ---

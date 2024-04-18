@@ -6,8 +6,6 @@ keywords: ["LAMP","Gentoo Linux","Gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-gentoo/','/lamp-guides/gentoo-10-2013/','/web-servers/lamp/lamp-server-on-gentoo/']
 modified: 2014-02-10
-modified_by:
-  name: Alex Fornuto
 published: 2013-10-24
 title: LAMP Server on Gentoo
 external_resources:

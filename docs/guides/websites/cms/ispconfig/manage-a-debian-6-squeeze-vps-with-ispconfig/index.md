@@ -7,8 +7,6 @@ tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/ispconfig/debian-6-squeeze/','/websites/cms/manage-a-debian-6-squeeze-vps-with-ispconfig/','/websites/cms/ispconfig/manage-a-debian-6-squeeze-vps-with-ispconfig/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Manage a Debian 6 (Squeeze) Linode with ISPConfig'
 relations:

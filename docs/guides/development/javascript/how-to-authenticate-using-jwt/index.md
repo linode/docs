@@ -5,8 +5,6 @@ keywords: ['json web tokens','jwt','encoding jwt','decoding jwt','what is a jwt'
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
-modified_by:
-  name: Nathaniel Stickman
 title: "User Authentication with JWTs (JSON Web Tokens) in Express and Node.js"
 title_meta: "User Authentication with JWTs in Express and Node.js"
 external_resources:

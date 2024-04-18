@@ -5,8 +5,6 @@ keywords: ["htaccess", " apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-25
 modified: 2022-07-01
-modified_by:
-  name: Linode
 title: 'Enable and Set Up the .htaccess File on Apache'
 title_meta: 'How to Set Up the htaccess File on Apache'
 external_resources:

@@ -4,8 +4,6 @@ description: 'A shortguide that shows how to install Restic backup.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-24
-modified_by:
-  name: Andy Heathershaw
 title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false

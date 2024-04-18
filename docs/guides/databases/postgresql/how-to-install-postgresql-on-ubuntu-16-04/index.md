@@ -6,7 +6,6 @@ tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/','/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-30
-modified_by:
 published: 2016-05-20
 title: Installing PostgreSQL on Ubuntu 16.04
 title_meta: 'How to Install PostgreSQL on Ubuntu 16.04'

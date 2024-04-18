@@ -7,8 +7,6 @@ tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/','/web-servers/apache/mod-wsgi/ubuntu-12-04-precise-pangolin/','/web-servers/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/']
 modified: 2015-11-18
-modified_by:
-  name: Linode
 published: 2012-10-18
 title: 'Apache and mod_wsgi on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:

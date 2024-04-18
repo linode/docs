@@ -4,8 +4,6 @@ description: 'Learn the basics of distributed version control and source code ma
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "gitolite", "ubuntu", "debian", "arch", "gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-15
-modified_by:
-  name: Linode
 published: 2009-09-04
 title: Getting Started with Git
 external_resources:

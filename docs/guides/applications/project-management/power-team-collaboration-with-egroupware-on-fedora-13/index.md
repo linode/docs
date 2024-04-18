@@ -7,8 +7,6 @@ tags: ["fedora", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-fedora-13/','/web-applications/project-management/egroupware/fedora-13/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-09-16
 title: Power Team Collaboration with eGroupware on Fedora 13
 relations:

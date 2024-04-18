@@ -5,8 +5,6 @@ keywords: ['Java', 'OpenJDK', 'OpenJDK Ubuntu', 'How to install OpenJDK']
 tags: ['ubuntu', 'java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-20
-modified_by:
-  name: Linode
 title: "How to Install OpenJDK on Ubuntu 22.04"
 title_meta: "Installing OpenJDK on Ubuntu 22.04"
 external_resources:

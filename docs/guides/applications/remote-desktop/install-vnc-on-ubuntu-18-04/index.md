@@ -8,8 +8,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-06-21
 modified: 2023-06-27
-modified_by:
-  name: Linode
 deprecated: true
 deprecated_link: 'guides/install-vnc-on-ubuntu-20-04/'
 external_resources:

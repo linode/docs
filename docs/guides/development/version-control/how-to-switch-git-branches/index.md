@@ -6,8 +6,6 @@ tags: ["git", "version control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
 image: Git.jpg
-modified_by:
-  name: Linode
 title: "Switching Git Branches"
 title_meta: "How to Switch Git Branches"
 external_resources:

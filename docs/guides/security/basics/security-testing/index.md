@@ -4,8 +4,6 @@ description: 'Security testing is crucial for spotting and removing vulnerabilit
 keywords: ['security testing','application security testing','application security tools','security testing tools']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-29
-modified_by:
-  name: Linode
 title: "Application Security Testing: Fundamentals and Best Practices"
 title_meta: "Application Security Testing Tools"
 contributors: ["David Newman"]

@@ -6,8 +6,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-30
 image: L_Cass_on_Debian9.png
 modified: 2020-01-30
-modified_by:
-  name: Linode
 title: "Install Apache Cassandra on Debian 9"
 title_meta: "How to Install Apache Cassandra on Debian 9"
 external_resources:

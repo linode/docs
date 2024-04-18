@@ -7,8 +7,6 @@ tags: ["centos","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-centos-5/','/email/zimbra/email-and-calendars-with-zimbra-6-on-centos-5/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-09-13
 title: Email and Calendars with Zimbra 6 on CentOS 5
 external_resources:

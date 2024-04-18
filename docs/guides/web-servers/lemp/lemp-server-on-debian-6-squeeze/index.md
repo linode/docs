@@ -6,8 +6,6 @@ tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lemp-guides/debian-6-squeeze/','/websites/lemp/lemp-server-on-debian-6-squeeze/','/web-servers/lemp/lemp-server-on-debian-6-squeeze/']
 modified: 2012-06-21
-modified_by:
-  name: Linode
 published: 2011-06-22
 deprecated: true
 deprecated_link: web-servers/lemp/install-a-lemp-stack-on-debian/

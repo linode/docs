@@ -7,8 +7,6 @@ keywords: ['http get request','example http request','http request example','htt
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Tom Henderson"]
 published: 2023-06-12
-modified_by:
-  name: Linode
 external_resources:
 - '[MDN Web Docs: HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)'
 - '[IBM Documentation: HTTP requests](https://www.ibm.com/docs/en/cics-ts/5.3?topic=protocol-http-requests)'

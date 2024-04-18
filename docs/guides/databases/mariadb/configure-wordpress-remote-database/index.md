@@ -4,8 +4,6 @@ description: 'This guide shows how to configure WordPress to access a database o
 keywords: ["mariadb", "database", "mysql", "remote database", "remote db", "remote client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-11
-modified_by:
-  name: Linode
 published: 2018-06-25
 title: Configure WordPress to use a Remote Database
 external_resources:

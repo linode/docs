@@ -5,8 +5,6 @@ keywords: ["nginx", "load balancing", "debian", "debian 10", "web server", "stat
 tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-14
-modified_by:
-  name: Linode
 published: 2018-04-16
 image: L_NGINX_on_Debian10.png
 title: "Installing NGINX on Debian 10"

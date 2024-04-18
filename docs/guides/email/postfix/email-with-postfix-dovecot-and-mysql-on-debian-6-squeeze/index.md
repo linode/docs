@@ -7,8 +7,6 @@ tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/dovecot-mysql-debian-6-squeeze/','/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-6-squeeze/']
 modified: 2011-07-01
-modified_by:
-  name: Linode
 published: 2011-07-01
 title: 'Email with Postfix, Dovecot and MySQL on Debian 6 (Squeeze)'
 relations:

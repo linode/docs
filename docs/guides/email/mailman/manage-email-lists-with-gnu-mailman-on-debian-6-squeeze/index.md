@@ -7,8 +7,6 @@ tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/mailman/debian-6-squeeze/','/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/']
 modified: 2011-05-23
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Manage Email Lists with GNU Mailman on Debian 6'
 relations:

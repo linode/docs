@@ -7,8 +7,6 @@ tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic/','/email/exim/send-only-mta-ubuntu-9-10-karmic/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-12-17
 title: 'Send-only Mail Server with Exim on Ubuntu 9.10 (Karmic)'
 relations:

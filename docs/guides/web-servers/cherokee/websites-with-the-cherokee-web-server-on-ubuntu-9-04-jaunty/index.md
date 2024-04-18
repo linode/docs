@@ -7,8 +7,6 @@ tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/','/web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-09-14
 title: 'Websites with the Cherokee Web Server on Ubuntu 9.04 (Jaunty)'
 relations:

@@ -6,8 +6,6 @@ tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/social-networking/dolphin/','/web-applications/social-networking/dolphin/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2012-07-10
 title: Dolphin
 deprecated: true

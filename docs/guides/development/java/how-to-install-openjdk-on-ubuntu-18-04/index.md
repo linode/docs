@@ -8,8 +8,6 @@ tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-25
 image: Installing_Java_Development_Kit_11_on_Ubuntu1804_1200x631.png
-modified_by:
-  name: Linode
 published: 2020-03-25
 title: "Installing OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
 title_meta: "Install OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"

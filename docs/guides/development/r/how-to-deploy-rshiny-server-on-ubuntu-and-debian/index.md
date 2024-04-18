@@ -6,8 +6,6 @@ tags: ["web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-02-07
 modified: 2023-11-29
-modified_by:
-  name: Linode
 title: 'How to Deploy Interactive R Apps with Shiny Server'
 external_resources:
   - '[Shiny Server – Introduction](https://shiny.rstudio.com/articles/shiny-server.html)'

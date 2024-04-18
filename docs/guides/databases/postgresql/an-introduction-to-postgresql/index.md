@@ -5,8 +5,6 @@ keywords: ['postgresql vs mysql','what is postgresql?','difference between mysql
 tags: ['postgresql', 'mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
-modified_by:
-  name: Linode
 title: "What is PostgreSQL?"
 title_meta: "An Introduction to PostgreSQL"
 external_resources:

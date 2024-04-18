@@ -6,8 +6,6 @@ description: 'How to run a custom Linux distribution or pre-built Linux applianc
 keywords: ["custom distro", "custom distribution", "advanced Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/','/custom-instances/custom-distro-howto/']
-modified_by:
-  name: Linode
 modified: 2020-12-01
 title: Install a Custom Distribution on a Xen Linode
 contributors: ["Linode"]

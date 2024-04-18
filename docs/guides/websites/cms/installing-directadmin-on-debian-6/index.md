@@ -6,8 +6,6 @@ tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/installing-directadmin-on-debian-6/','/web-applications/control-panels/directadmin/installing-directadmin/']
 modified: 2013-10-03
-modified_by:
-  name: Linode
 published: 2011-11-02
 title: Installing DirectAdmin on Debian 6
 deprecated: true

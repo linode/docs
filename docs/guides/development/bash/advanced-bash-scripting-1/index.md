@@ -4,8 +4,6 @@ description: 'This guide expands on the previous Bash guides. You learn advanced
 keywords: ['advanced bash scripting', 'bash expressions', 'bash functions', 'bash aliases', 'bash debugging', 'bash list constructs']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-29
-modified_by:
-  name: Linode
 title: "Advanced Bash Scripting: Part 1"
 title_meta: "A Software Engineer's Guide to Advanced Bash Scripting: Part 1"
 external_resources:

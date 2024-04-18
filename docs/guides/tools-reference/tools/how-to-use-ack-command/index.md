@@ -5,8 +5,6 @@ keywords: ['ack command line', 'ack command in linux', 'ack command examples']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-20
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Use the ack Command on Linux"
 title_meta: "Using the ack Command on Linux"
 external_resources:

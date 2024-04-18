@@ -7,8 +7,6 @@ tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04/','/email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/','/email/exim/sendonly-mail-server-withexim-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: 2014-01-21
-modified_by:
-  name: Alex Fornuto
 published: 2012-11-12
 title: 'Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 '
 external_resources:

@@ -6,8 +6,6 @@ keywords: ['IaC','Terraform','Pulumi','comparison', 'service orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-22
 image: ComparingTerraform_Pulumi.png
-modified_by:
-  name: Linode
 title: "Pulumi vs Terraform"
 title_meta: "Comparing Pulumi and Terraform"
 external_resources:

@@ -6,8 +6,6 @@ tags: ["web server","fedora","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-phpfastcgi-on-fedora-12/','/web-servers/nginx/php-fastcgi/fedora-12/','/web-servers/nginx/nginx-and-phpfastcgi-on-fedora-12/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-03-11
 title: 'Nginx and PHP-FastCGI on Fedora 12'
 deprecated: true

@@ -6,8 +6,6 @@ tags: ["networking","ssh","security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/using-sshfs-on-linux-and-macos-x/','/networking/ssh/using-sshfs-on-linux/','/networking/ssh-filesystems/']
 modified: 2019-08-16
-modified_by:
-  name: Linode
 published: 2009-10-26
 title: Using SSHFS to Mount Remote Directories
 external_resources:

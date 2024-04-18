@@ -7,8 +7,6 @@ tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-debian-5-lenny/','/server-monitoring/cacti/debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-01-18
 title: 'Monitoring Resource Utilization with Cacti on Debian 5 (Lenny)'
 relations:

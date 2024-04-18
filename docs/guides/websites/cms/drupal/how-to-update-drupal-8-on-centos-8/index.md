@@ -5,8 +5,6 @@ keywords: ["cms", "apache", "php", "content management system", "drupal 8", "upd
 tags: ["drupal","centos","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-21
-modified_by:
-    name: Linode
 published: 2020-02-21
 image: Drupal8onCentOS8.png
 title: Update Drupal 8 on Centos 8

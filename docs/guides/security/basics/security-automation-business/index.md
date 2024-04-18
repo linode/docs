@@ -4,8 +4,6 @@ description: 'This guide discusses the security needs of today''s software and D
 keywords: ['security automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
-modified_by:
-  name: Linode
 title: "Security Automation for Today’s Modern Business"
 tags: ["security"]
 contributors: ["David Strom"]

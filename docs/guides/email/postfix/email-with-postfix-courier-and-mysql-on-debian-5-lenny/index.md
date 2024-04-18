@@ -6,8 +6,6 @@ tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-courier-and-mysql-on-debian-5-lenny/','/email/postfix/courier-mysql-debian-5-lenny/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-09-12
 title: 'Email with Postfix, Courier and MySQL on Debian 5 (Lenny)'
 deprecated: true

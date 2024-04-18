@@ -4,8 +4,6 @@ description: 'Learn how to remove untracked files in git using the git clean com
 keywords: ['Git remove untracked files','Remove untracked files git','Git remove all untracked files','How to remove untracked files in git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
-modified_by:
-  name: Linode
 title: "Remove Untracked Files in Git"
 external_resources:
 - '[Git clean documentation](https://git-scm.com/docs/git-clean)'

@@ -5,8 +5,6 @@ og_description: "As with any programming language, there are pros and cons of C+
 keywords: ['pros and cons of c++','advantages of c++','benefits of c++']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
-modified_by:
-  name: Nathaniel Stickman
 title_meta: "A Programmers’ Guide to C++: Advantages & Disadvantages"
 title: "The Pros and Cons of C++"
 external_resources:

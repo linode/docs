@@ -7,8 +7,6 @@ keywords: ['monitoring software','system monitoring software','best system monit
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2023-09-26
-modified_by:
-  name: Linode
 ---
 
 "You can’t manage what you can’t measure" is a business school axiom that applies equally well to the IT world. After all, a lack of visibility into key systems can lead to trouble.

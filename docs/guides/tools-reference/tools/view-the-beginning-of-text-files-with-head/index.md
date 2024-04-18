@@ -6,8 +6,6 @@ keywords: ["head", "linux", "utilities", "cli", "text files"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/view-the-beginning-of-text-files-with-head/','/linux-tools/common-commands/head/']
 modified: 2018-02-02
-modified_by:
-  name: Linode
 published: 2010-10-25
 title: View the Beginning of Text Files with head
 tags: ["linux"]

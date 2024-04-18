@@ -4,12 +4,9 @@ keywords: ['game servers','multiplayer','game']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2024-03-19
 modified: 2024-03-22
-modified_by:
-  name: Linode
 title: "Deploy LinuxGSM through the Linode Marketplace"
 external_resources:
 - '[LinuxGSM](https://linuxgsm.com/)'
-authors: ["Linode"]
 ---
 
 [LinuxGSM](https://linuxgsm.com/) is a command-line tool for managing game servers.

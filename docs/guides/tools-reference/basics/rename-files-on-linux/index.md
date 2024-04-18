@@ -5,8 +5,6 @@ keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-14
 modified: 2022-09-23
-modified_by:
-  name: Linode
 title: "Rename Files in Linux"
 title_meta: "How to Rename Files on Linux"
 contributors: ["Martin Heller"]

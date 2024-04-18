@@ -6,8 +6,6 @@ keywords: ['kompose kubernetes example','docker compose to kubernetes yaml','kom
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ['Nathaniel Stickman']
 published: 2023-08-09
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Kompose: Getting Started](https://kompose.io/getting-started/)'
 - '[Kubernetes: Translate a Docker Compose File to Kubernetes Resources](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)'

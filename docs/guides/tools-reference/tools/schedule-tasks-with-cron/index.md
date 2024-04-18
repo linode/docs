@@ -6,8 +6,6 @@ tags: ["automation","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/schedule-tasks-with-cron/','/linux-tools/utilities/cron/']
 modified: 2018-03-15
-modified_by:
-  name: Linode
 published: 2009-12-15
 title: "Using Cron to Schedule Tasks for Certain Times or Intervals"
 title_meta: "Cron Jobs: Schedule Tasks for Certain Times or Intervals"

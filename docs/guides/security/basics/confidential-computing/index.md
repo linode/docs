@@ -5,8 +5,6 @@ keywords: ['confidential computing']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-23
-modified_by:
-  name: Linode
 title: "Confidential Computing: A Collaborative Security Model for Data in Use"
 contributors: ["Pam Baker"]
 ---

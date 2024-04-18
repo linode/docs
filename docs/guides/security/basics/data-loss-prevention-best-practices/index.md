@@ -4,8 +4,6 @@ description: 'What is a data loss prevention (DLP)? This guide explains what it 
 keywords: ['dlp policy','data loss prevention policy','dlp controls']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
-modified_by:
-  name: Linode
 title: "Data Loss Prevention Best Practices: An In-Depth Guide"
 title_meta: "Data Loss Prevention Best Practices (with Examples)"
 contributors: ["Andy Patrizio"]

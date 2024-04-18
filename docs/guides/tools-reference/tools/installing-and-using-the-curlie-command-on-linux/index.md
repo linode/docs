@@ -5,8 +5,6 @@ keywords: ['linux curlie','httpie curlie','curl vs curlie']
 tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
-modified_by:
-  name: Linode
 title: "Install and Use the curlie Command on Linux"
 title_meta: "How to Install and Use the curlie Command on Linux"
 contributors: ["Nathaniel Stickman"]

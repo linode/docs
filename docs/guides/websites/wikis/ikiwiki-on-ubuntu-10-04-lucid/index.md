@@ -7,8 +7,6 @@ tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/ikiwiki-on-ubuntu-10-04-lucid/','/web-applications/wikis/ikiwiki/ubuntu-10-04-lucid/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Ikiwiki on Ubuntu 10.04 (Lucid)'
 relations:

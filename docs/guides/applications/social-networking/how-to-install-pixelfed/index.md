@@ -5,8 +5,6 @@ keywords: ['install Pixelfed', 'configure Pixelfed', 'How to install Pixelfed on
 tags: ['apache', 'nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-10
-modified_by:
-  name: Linode
 title: "How to Install and Configure Pixelfed"
 title_meta: "Installing and Configuring Pixelfed"
 external_resources:

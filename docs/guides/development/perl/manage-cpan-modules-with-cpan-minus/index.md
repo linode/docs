@@ -6,8 +6,6 @@ keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-20
 aliases: ['/development/manage-cpan-modules-with-cpan-minus/','/applications/development/manage-cpan-modules-with-cpan-minus/','/development/perl/manage-cpan-modules-with-cpan-minus/','/linux-tools/utilities/cpanm/']
-modified_by:
-  name: Linode
 published: 2010-04-12
 title: Manage CPAN Modules with cpanminus
 external_resources:

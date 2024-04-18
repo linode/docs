@@ -5,8 +5,6 @@ keywords: ["drupal", "cms", "content management system", "content management fra
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-11
-modified_by:
-    name: Linode
 published: 2014-12-05
 title: Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
 title_meta: How to Install Drupal Themes & Modules on Ubuntu 18.04

@@ -5,8 +5,6 @@ keywords: ["alias command bashrc"]
 aliases: ['/quick-answers/linux/how-to-add-linux-alias-command-in-bashrc-file/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-11-06
-modified_by:
-  name: Heather Zoppetti
 published: 2020-11-17
 title: Adding the Linux alias Command in the .bashrc File
 title_meta: "How to Add the Linux alias Command in the .bashrc File"

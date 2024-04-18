@@ -6,8 +6,6 @@ keywords: ['sonarqube tutorial','what is sonarqube','how to run sonarqube analys
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ['Nathaniel Stickman']
 published: 2023-04-08
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[SonarQube Documentation](https://docs.sonarqube.org/latest/)'
 ---

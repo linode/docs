@@ -4,8 +4,6 @@ description: 'Learn how to create a LEMP stack application on Linux. Read our gu
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-27
-modified_by:
-  name: Linode
 title: "Create a LEMP Stack Application"
 title_meta: "How to Create a LEMP Stack on Linux"
 contributors: ["Cameron Laird"]

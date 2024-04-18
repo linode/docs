@@ -6,8 +6,6 @@ keywords: ["mysql", "phpmyadmin", "sql", "ubuntu", "precise", "ubuntu 12.04", "l
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/phpmyadmin-ubuntu-12-04-precise/','/databases/mysql/install-mysql-phpmyadmin-on-ubuntu-12-04/','/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
 modified: 2015-09-16
-modified_by:
-    name: Linode
 published: 2013-09-12
 title: 'How to Install MySQL with phpMyAdmin on Ubuntu 12.04'
 external_resources:

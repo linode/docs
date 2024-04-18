@@ -7,8 +7,6 @@ tags: ['monitoring', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 image: MonitorandConfigureNagiosAlertsonDebianandUbuntu.jpg
-modified_by:
-  name: Linode
 title: "Configuring Nagios Alerts on Debian 10 and Ubuntu 20.04"
 title_meta: "Monitor and Configure Nagios Alerts on Debian 10 and Ubuntu 20.04"
 external_resources:

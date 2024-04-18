@@ -5,8 +5,6 @@ keywords: ["install znc", "irc bouncer", "znc on debian", "configure znc", "znc"
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-06-04
-modified_by:
-    name: 'Elle Krout'
 published: 2014-08-21
 title: 'Install ZNC from Source on Debian'
 aliases: ['/applications/messaging/install-znc-debian/']

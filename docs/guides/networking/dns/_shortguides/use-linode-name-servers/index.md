@@ -5,8 +5,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
 tags: ["dns","networking","linux platform"]
 modified: 2018-07-19
-modified_by:
-  name: Nathan Melehan
 title: "Use Linode's Nameservers"
 published: 2018-07-19
 headless: true

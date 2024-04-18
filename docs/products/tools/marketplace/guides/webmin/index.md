@@ -5,8 +5,6 @@ tags: ["debian","marketplace", "web applications","linode platform", "cloud mana
 published: 2020-09-28
 modified: 2022-03-08
 image: Deploy_Webmin_oneclickapps.png
-modified_by:
-  name: Linode
 title: "Deploy Webmin through the Linode Marketplace"
 external_resources:
 - '[Webmin Documentation](https://doxfer.webmin.com/Webmin/Main_Page)'

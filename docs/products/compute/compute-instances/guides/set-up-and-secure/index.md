@@ -7,8 +7,6 @@ tags: ["ssh","security"]
 bundles: ['centos-security', 'debian-security']
 published: 2022-02-25
 modified: 2024-01-04
-modified_by:
-  name: Linode
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/','/guides/set-up-and-secure/']
 contributors: ["Linode"]
 ---

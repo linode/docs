@@ -7,8 +7,6 @@ tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/apache-tomcat/ubuntu-8-04-hardy/','/websites/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/','/development/frameworks/apache-tomcat/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/','/development/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-09-23
 title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
 relations:

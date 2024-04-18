@@ -7,8 +7,6 @@ tags: ["web server","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid/']
 modified: 2013-10-07
-modified_by:
-  name: Linode
 published: 2010-06-11
 title: 'Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)'
 relations:

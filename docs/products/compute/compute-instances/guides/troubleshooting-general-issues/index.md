@@ -5,8 +5,6 @@ keywords: ['troubleshooting','troubleshoot']
 tags: ["linode platform"]
 published: 2012-04-05
 modified: 2023-03-14
-modified_by:
-  name: Linode
 bundles: ['troubleshooting']
 aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/']
 contributors: ["Linode"]

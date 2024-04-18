@@ -7,8 +7,6 @@ tags: ["fedora","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-courier-and-mysql-on-fedora-13/','/email/postfix/courier-mysql-fedora-13/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-06-02
 title: 'Email with Postfix, Courier and MySQL on Fedora 13'
 relations:

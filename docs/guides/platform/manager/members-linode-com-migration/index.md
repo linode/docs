@@ -4,8 +4,6 @@ description: "The members.linode.com and nodebalancer.linode.com are deprecated.
 keywords: ['dns','members.linode.com','reverse dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-13
-modified_by:
-  name: Linode
 title: "Migrating Away from members.linode.com and nodebalancer.linode.com"
 title_meta: "members.linode.com and nodebalancer.linode.com Migration"
 contributors: ["Linode"]

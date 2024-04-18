@@ -5,8 +5,6 @@ keywords: ['python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
-modified_by:
-  name: Linode
 title: "Python 3.9: Merge Dictionaries, Time Zone Support, and Type Annotations"
 title_meta: "Python 3.9: An Overview of New Features"
 external_resources:

@@ -4,8 +4,6 @@ keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
 tags: ["security", "kubernetes","container"]
 published: 2022-03-10
 modified: 2023-05-02
-modified_by:
-  name: Linode
 title: "Upgrade a Cluster to a Newer Kubernetes Version"
 concentrations: ["Kubernetes"]
 external_resources:

@@ -4,8 +4,6 @@ description: 'This guide will provide quick answers to common Cloud Manager erro
 keywords: ['error','account limit','limit','activated', 'before you can', 'please try again', 'open a support ticket']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-22
-modified_by:
-  name: Linode
 aliases: ['/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/','/quick-answers/linode-platform/understanding-cloud-manager-errors/']
 image: L_UnderstandCommonClManErrors.png
 title: "Understanding Common Cloud Manager Errors"

@@ -6,8 +6,6 @@ tags: ["centos", "security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-centos-8/']
 modified: 2021-03-26
-modified_by:
-  name: Linode
 published: 2021-03-26
 title: 'Creating a Self-Signed TLS Certificate on CentOS 8'
 title_meta: 'How to Create a Self-Signed TLS Certificate on CentOS 8'

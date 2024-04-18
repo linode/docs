@@ -6,8 +6,6 @@ tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
 modified: 2022-05-10
-modified_by:
-  name: Linode
 title: "Verifying the Authenticity of a Remote Server through Its SSH Key Fingerprint"
 title_meta: "Verifying the Authenticity of Remote Host (SSH Key Fingerprint)"
 contributors: ["Linode"]

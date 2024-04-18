@@ -7,8 +7,6 @@ tags: ['security','ssl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-11-05
 modified: 2020-11-05
-modified_by:
-  name: Linode
 title: "Secure Logstash Connections Using SSL Certificates"
 external_resources:
  - '[Logstash Home Page](https://www.elastic.co/logstash)'

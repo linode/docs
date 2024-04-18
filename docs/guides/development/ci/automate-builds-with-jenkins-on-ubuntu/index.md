@@ -8,8 +8,6 @@ tags: ["automation","version control system","docker","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
 modified: 2023-01-06
-modified_by:
-  name: Linode
 title: 'Automate Builds with Jenkins on Ubuntu 22.04'
 title_meta: 'How to Automate Builds with Jenkins on Ubuntu 22.04'
 external_resources:

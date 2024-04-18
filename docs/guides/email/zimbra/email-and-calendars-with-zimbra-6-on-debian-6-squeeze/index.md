@@ -7,8 +7,6 @@ tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-debian-6-squeeze/','/email/zimbra/email-and-calendars-with-zimbra-6-on-debian-6-squeeze/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2011-02-15
 title: 'Email and Calendars with Zimbra 6 on Debian 6 (Squeeze)'
 relations:

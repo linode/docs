@@ -6,8 +6,6 @@ keywords: ["redis ubuntu 12.04", "redis precise pangolin", "nosql", "database", 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-ubuntu-12-04-precise-pangolin/','/databases/redis/ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-25
-modified_by:
-  name: Linode
 published: 2012-10-25
 title: 'Redis on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:

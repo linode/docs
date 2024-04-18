@@ -5,8 +5,6 @@ keywords: ["puppet", "puppet configuration", "puppet linux", "configuration chan
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2010-06-13
 deprecated: true
 deprecated_link: applications/configuration-management/install-and-configure-puppet/

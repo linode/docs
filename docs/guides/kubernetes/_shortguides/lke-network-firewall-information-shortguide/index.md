@@ -5,8 +5,6 @@ keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-06
 modified: 2022-11-22
-modified_by:
-  name: Linode
 title: "Network and Filewall Information for Linode Kubernetes Engine Clusters"
 headless: true
 show_on_rss_feed: false

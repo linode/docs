@@ -4,8 +4,6 @@ description: 'In this guide, you will learn how about the components that make u
 keywords: ['vue js','javascript','vuejs','vuejs components', 'vuejs events', 'vuejs slots']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-14
-modified_by:
-  name: Linode
 image: BuildingandUsingVueJSComponents.png
 title: Building and Using VueJS Components
 title_meta: How to Build and Use VueJS Components (A Tutorial)

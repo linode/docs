@@ -4,8 +4,6 @@ description: 'Shortguide for installing NGINX on Ubuntu.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-04-23
-modified_by:
-  name: Linode
 published: 2018-03-05
 headless: true
 show_on_rss_feed: false

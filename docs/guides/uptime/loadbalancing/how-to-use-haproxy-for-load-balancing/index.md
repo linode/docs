@@ -6,8 +6,6 @@ tags: ["proxy", "ecommerce", "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-30
 modified: 2019-02-01
-modified_by:
-  name: Linode
 title: "Using HAProxy for Load Balancing"
 title_meta: "How to Use HAProxy for Load Balancing"
 external_resources:

@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
 modified: 2024-01-31
-modified_by:
-  name: Linode
 show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/docs/guides/a-beginners-guide-to-github/)'
@@ -60,8 +58,6 @@ keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
-modified_by:
-  name: Linode
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
@@ -322,8 +318,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Author's FirstName LastName`"]
 published: 2023-03-07
 modified: 2023-03-07
-modified_by:
-  name: Linode
 headless: true
 show_on_rss_feed: false
 ---

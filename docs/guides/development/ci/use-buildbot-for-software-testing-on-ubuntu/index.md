@@ -6,8 +6,6 @@ keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "bui
 tags: ["automation","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-10-18
-modified_by:
-  name: Linode
 published: 2018-09-06
 title: "Using Buildbot to Test Software on Ubuntu 18.04"
 title_meta: "Use Buildbot for Software Testing on Ubuntu 18.04"

@@ -4,8 +4,6 @@ description: 'Install a LAMP stack on a Debian 11. A LAMP stack includes Linux, 
 keywords: ["debian 11 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 11", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
 published: 2023-08-30
 title: How to Install a LAMP Stack on Debian 11
 title_meta: 'Install a LAMP Stack on Debian 11 (Bullseye)'

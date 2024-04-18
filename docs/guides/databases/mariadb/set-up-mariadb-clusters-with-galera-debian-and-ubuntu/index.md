@@ -5,8 +5,6 @@ keywords: ["mariadb", "mysql", "galera", "high availability", "HA", "cluster", "
 aliases: ['/databases/mariadb/clustering-with-mariadb-and-galera/','/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-27
-modified_by:
-  name: Linode
 published: 2015-02-18
 title: Set Up MariaDB Clusters with Galera Debian and Ubuntu
 external_resources:

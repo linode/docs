@@ -4,8 +4,6 @@ description: "Searching for the best open source content management systems (CMS
 keywords: ['top 10 open source cms','top open source content management systems','top opensource cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
-modified_by:
-  name: Linode
 title: "What Are the Best Open Source Content Management Systems?"
 title_meta: "The Top Open Source Content Management Systems"
 contributors: ["Steven J. Vaughan-Nichols"]

@@ -4,8 +4,6 @@ description: 'In this guide, you will learn more advanced methods of creating co
 keywords: ["shell", "bash", "printf", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
-modified_by:
-  name: Linode
 title: 'Continuing with Bash Scripting'
 title_meta: 'An Intermediate Guide to Bash Scripting'
 external_resources:

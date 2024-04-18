@@ -6,8 +6,6 @@ keywords: ['netplan','network configuration','ip address']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Linode","Nathaniel Stickman"]
 published: 2023-09-12
-modified_by:
-  name: Linode
 external_resources:
 - '[Netplan Documentation](https://netplan.readthedocs.io/en/stable/)'
 ---

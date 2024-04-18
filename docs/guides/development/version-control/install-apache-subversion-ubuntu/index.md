@@ -5,8 +5,6 @@ keywords: ['apache subversion', 'git', 'apache subversion vs git', 'apache subve
 tags: ['apache', 'ubuntu', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
-modified_by:
-  name: Linode
 title: "Install Apache Subversion on Ubuntu 20.04"
 title_meta: "How to Install Apache Subversion on Ubuntu 20.04"
 contributors: ["Tom Henderson"]

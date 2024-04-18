@@ -6,8 +6,6 @@ keywords: ["mysql", "phpmyadmin", "sql", "ubuntu", "precise", "ubuntu 14.04", "l
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/mysql-phpmyadmin-ubuntu-14-04/','/databases/mysql/install-mysql-phpmyadmin-ubuntu-14-04/']
 modified: 2017-08-01
-modified_by:
-    name: Linode
 published: 2013-09-12
 title: 'How to Install MySQL with phpMyAdmin on Ubuntu 14.04'
 external_resources:

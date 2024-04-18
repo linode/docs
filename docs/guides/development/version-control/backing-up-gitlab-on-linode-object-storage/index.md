@@ -5,8 +5,6 @@ keywords: ["git", "object-storage", "gitlab"]
 tags: ["version control system","email","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-10-27
-modified_by:
-  name: Linode
 published: 2021-10-27
 title: 'Backing up Gitlab on Linode Object Storage'
 contributors: ["Linode"]

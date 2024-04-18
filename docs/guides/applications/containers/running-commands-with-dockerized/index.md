@@ -3,8 +3,6 @@ slug: running-commands-with-dockerized
 title: "How to Use Dockerized to Run Commands"
 description: "Dockerized packages together a set of useful command-line tools, allowing you to run commands without installing additional software. Learn more about Dockerized, including how to set up and start using it, in this guide."
 published: 2023-08-08
-modified_by:
-  name: Linode
 keywords: ['docker run command', 'dockerized application', 'docker containerize command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]

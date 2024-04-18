@@ -6,8 +6,6 @@ keywords: ["MySQL on Linux", "MySQL Debian", "MySQL Lenny", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/debian-5-lenny/','/databases/mysql/use-mysql-relational-databases-on-debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2009-08-07
 title: 'Use MySQL Relational Databases on Debian 5 (Lenny)'
 relations:

@@ -7,8 +7,6 @@ tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-phpbb-on-fedora-14/','/web-applications/bulletin-boards/phpbb/fedora-14/']
 modified: 2013-10-01
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: Discussion Forums with phpBB on Fedora 14
 relations:

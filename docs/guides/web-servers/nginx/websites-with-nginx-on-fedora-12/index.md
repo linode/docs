@@ -7,8 +7,6 @@ tags: ["web server","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/websites-with-nginx-on-fedora-12/','/web-servers/nginx/installation/fedora-12/','/websites/nginx/websites-with-nginx-on-fedora-12/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-02-24
 title: Websites with nginx on Fedora 12
 relations:

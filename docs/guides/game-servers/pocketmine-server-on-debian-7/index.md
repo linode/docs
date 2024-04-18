@@ -8,8 +8,6 @@ external_resources:
  - '[PocketMine.net](https://www.pocketmine.net/)'
  - '[PocketMine Documentation](http://pocketmine-mp.readthedocs.org/en/latest/)'
 modified: 2019-02-01
-modified_by:
-  name: Linode
 published: 2015-04-02
 title: 'PocketMine Server on Debian 7'
 aliases: ['/game-servers/pocketmine-server-on-debian-7/','/applications/game-servers/pocketmine-server-on-debian-7/']

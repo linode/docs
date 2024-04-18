@@ -6,8 +6,6 @@ tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-16-04/','/websites/frameworks/apache-tomcat-on-ubuntu-16-04/','/development/frameworks/apache-tomcat-on-ubuntu-16-04/']
 modified: 2016-05-09
-modified_by:
-  name: Phil Zona
 published: 2016-05-09
 title: 'Installing Apache Tomcat on Ubuntu 16.04'
 title_meta: 'How to Install Apache Tomcat on Ubuntu 16.04'

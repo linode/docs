@@ -5,8 +5,6 @@ keywords: ["UNIX", "shell", "netstat", "TCP/IP", "UDP", "network", "sockets", "u
 tags: ["monitoring","networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-02
-modified_by:
-  name: Linode
 title: 'Inspecting Network Information with netstat'
 external_resources:
   - '[netstat](http://netstat.net/)'

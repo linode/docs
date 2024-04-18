@@ -7,8 +7,6 @@ tags: ["web applications","nginx","centos","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-nginx-on-centos-5/','/websites/ror/ruby-on-rails-with-nginx-on-centos-5/','/frameworks/ruby-on-rails-nginx/centos-5/']
 modified: 2011-07-20
-modified_by:
-  name: Linode
 published: 2009-08-21
 title: Ruby on Rails with Nginx on CentOS 5
 relations:

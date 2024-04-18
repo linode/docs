@@ -6,8 +6,6 @@ tags: ["web applications","apache","php","mysql","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/mod-mono/ubuntu-10-04-lucid/','/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid/','/development/frameworks/asp-net/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid/','/websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid/']
 modified: 2013-09-27
-modified_by:
-  name: Linode
 published: 2010-08-05
 title: "Build ASP.NET Applications with mod_mono on Ubuntu 10.04"
 deprecated: true

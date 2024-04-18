@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/','/using-linux/users-and-groups/']
 bundles: ['debian-security', 'centos-security']
 modified: 2021-01-07
-modified_by:
-  name: Linode
 published: 2009-08-31
 title: Linux Users and Groups
 external_resources:

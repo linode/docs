@@ -6,8 +6,6 @@ tags: ["docker","statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/zipkin-server-configuration-using-docker-and-mysql/','/uptime/zipkin-server-configuration-using-docker-and-mysql/']
 modified: 2017-10-27
-modified_by:
-  name: Luis Cortés
 published: 2017-10-04
 title: 'Zipkin Server Configuration Using Docker and MySQL'
 external_resources:

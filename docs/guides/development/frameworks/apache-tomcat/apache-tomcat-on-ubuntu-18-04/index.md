@@ -6,8 +6,6 @@ tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-ubuntu-18-04/','/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-18-04/','/development/frameworks/apache-tomcat-on-ubuntu-18-04/']
 modified: 2020-03-25
-modified_by:
-  name: Linode
 published: 2020-03-25
 title: 'Installing Apache Tomcat on Ubuntu 18.04'
 title_meta: 'How to Install Apache Tomcat on Ubuntu 18.04'

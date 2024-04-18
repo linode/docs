@@ -5,8 +5,6 @@ keywords: ["Scrapy", "Python", "crawling", "spider", "web scraping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-04
 modified: 2017-12-04
-modified_by:
-  name: Linode
 title: 'Use Scrapy to Extract Data From HTML Tags'
 external_resources:
 - '[Scrapy Project page](https://scrapy.org/)'

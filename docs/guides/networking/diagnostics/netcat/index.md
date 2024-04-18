@@ -5,8 +5,6 @@ keywords: ["UNIX", "TCP", "UDP", "netcat", "nc", "network"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
-modified_by:
-  name: Linode
 title: 'Learning to Use netcat to its Full Potential'
 external_resources:
   - '[netcat](https://en.wikipedia.org/wiki/Netcat)'

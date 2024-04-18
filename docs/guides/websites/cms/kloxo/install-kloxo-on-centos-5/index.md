@@ -6,8 +6,6 @@ tags: ["centos","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/kloxo/install-kloxo-on-centos-5/','/web-applications/control-panels/kloxo/installation/','/websites/cms/install-kloxo-on-centos-5/']
 modified: 2013-10-03
-modified_by:
-  name: Linode
 published: 2011-10-31
 title: Install Kloxo on CentOS 5
 deprecated: true

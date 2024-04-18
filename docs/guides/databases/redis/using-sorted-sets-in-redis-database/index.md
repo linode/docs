@@ -5,8 +5,6 @@ keywords: ['redis sorted set example','redis sorted set commands','how do redis 
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
-modified_by:
-  name: Nathaniel Stickman
 title: "Use Sorted Sets in Redis Databases"
 title_meta: "How to Use Sorted Sets in Redis Databases"
 external_resources:

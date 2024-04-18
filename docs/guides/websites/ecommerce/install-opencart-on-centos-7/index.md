@@ -6,8 +6,6 @@ tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/install-opencart-on-centos-7/','/web-applications/e-commerce/opencart/centos-7/','/websites/ecommerce/opencart-on-centos-7/']
 modified: 2017-08-21
-modified_by:
-  name: Jonathan Chun
 published: 2017-04-29
 title: How to Install OpenCart on CentOS 7
 external_resources:

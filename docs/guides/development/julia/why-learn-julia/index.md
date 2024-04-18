@@ -5,8 +5,6 @@ keywords: ['data science','julia','python','why learn Julia']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-11
 modified: 2019-02-01
-modified_by:
-  name: Linode
 title: Why You Should Learn Julia
 external_resources:
 - '[Julia](https://julialang.org/)'

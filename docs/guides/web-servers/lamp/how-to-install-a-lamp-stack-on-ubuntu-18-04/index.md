@@ -6,8 +6,6 @@ aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/','/web
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-08-27
-modified_by:
-  name: Linode
 published: 2018-06-04
 title: 'How to Install a LAMP Stack on Ubuntu 18.04'
 external_resources:

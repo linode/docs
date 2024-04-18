@@ -5,8 +5,6 @@ keywords: ["how to secure wordpress site", "how to make wordpress site secure"]
 tags: ["wordpress","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-07-08
-modified_by:
-  name: Linode
 published: 2020-10-28
 title: Securing Wordpress
 title_meta: How to Secure Wordpress

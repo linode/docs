@@ -3,8 +3,6 @@ slug: dhcp-ip-address-reference
 description: 'Shortguide that displays a list of all IP addresses used for configurations that rely on DHCP by their data center.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-09-10
-modified_by:
-  name: Ryan Syracuse
 published: 2021-09-10
 title: DHCP IP Address Reference
 keywords: [dhcp", "cloud firewall", "firewall", "networking"]

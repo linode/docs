@@ -4,8 +4,6 @@ description: "Want to migrate from AWS S3 to Linode Object Storage? This tutoria
 keywords: ['amazon s3 migrate files','aws s3 migrate object','linode object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-08
-modified_by:
-  name: Nathaniel Stickman
 title: "Migrate to Linode Object Storage"
 title_meta: "How to Migrate to Linode Object Storage"
 external_resources:

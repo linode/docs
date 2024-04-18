@@ -4,8 +4,6 @@ description: "Learn how to use structs in Go, including how structs use value se
 keywords: [" Structs", "Golang", "Go", "Pointers"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
-modified_by:
-  name: Linode
 image: ATutorialforLearningStructsinGo.png
 title: "A Tutorial for Learning Structs in Go"
 external_resources:

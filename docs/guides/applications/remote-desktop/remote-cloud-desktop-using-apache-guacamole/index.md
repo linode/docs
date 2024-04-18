@@ -5,8 +5,6 @@ keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS
 tags: ["docker", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-09-08
-modified_by:
-  name: Linode
 published: 2017-11-17
 title: "Using a Cloud Desktop on a Browser with Apache Guacamole"
 external_resources:

@@ -6,8 +6,6 @@ tags: ["ubuntu", "debian", "centos", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/cloud-storage/dropbox/','/web-applications/cloud-storage/dropbox/debian-7.4/']
 modified: 2015-06-29
-modified_by:
-    name: Linode
 published: 2014-04-30
 title: 'Installing and Configuring Dropbox'
 contributors: ["Linode"]

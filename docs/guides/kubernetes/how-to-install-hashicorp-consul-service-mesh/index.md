@@ -4,8 +4,6 @@ description: "This guide will show you how to install HashiCorp''s Consul servic
 keywords: ['what is consul hashicorp', 'how to install hashicorp consul']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
-modified_by:
-  name: Linode
 title: "Install HashiCorp Consul Service Mesh"
 title_meta: "How to Install HashiCorp Consul Service Mesh"
 external_resources:

@@ -4,8 +4,6 @@ keywords: ['cpanel','whm','hosting','manager']
 tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 published: 2020-03-13
 modified: 2022-05-31
-modified_by:
-  name: Linode
 title: "Deploy cPanel through the Linode Marketplace"
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'

@@ -5,8 +5,6 @@ keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "debian"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-18
-modified_by:
-  name: Rajakavitha Kodhandapani
 published: 2018-06-04
 title: 'Installing the LEMP Stack on Debian 10'
 title_meta: 'How to Install the LEMP Stack on Debian 10'

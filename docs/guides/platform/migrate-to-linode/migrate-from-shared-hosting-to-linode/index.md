@@ -5,8 +5,6 @@ keywords: ["shared hosting", "migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migrate-from-shared/','/migrate-to-linode/migrate-from-shared-hosting/','/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode/','/migrate-to-linode/migrate-from-shared-hosting-to-linode/']
 modified: 2019-03-06
-modified_by:
-  name: Linode
 published: 2013-10-18
 title: Migrate from Shared Hosting to Linode
 tags: ["linode platform"]

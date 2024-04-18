@@ -1,8 +1,6 @@
 ---
 description: "How to manage domains using the Linode DNS Manager."
 modified: 2022-10-28
-modified_by:
-  name: Linode
 published: 2020-07-21
 title: "Manage Domains"
 keywords: ["dns"]

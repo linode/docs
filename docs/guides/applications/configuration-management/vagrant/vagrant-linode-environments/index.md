@@ -4,9 +4,6 @@ description: 'This guide shows how to use Vagrant, a configuration management to
 keywords: ["linode", "vagrant", "content management", "management", "automation", "development", "ruby", "vagrantfile", "api", "apache"]
 tags: ["cms","automation","ruby","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-06-25
-modified_by:
-    name: Elle Krout
 published: 2015-06-25
 title: 'Using Vagrant to Manage Linode Environments'
 external_resources:

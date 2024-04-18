@@ -5,8 +5,6 @@ keywords: ["email", "getmail", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/getmail/','/email/clients/retrieve-email-using-getmail/']
 modified: 2017-08-22
-modified_by:
-  name: Linode
 published: 2010-02-01
 title: Retrieve Email Using Getmail
 external_resources:

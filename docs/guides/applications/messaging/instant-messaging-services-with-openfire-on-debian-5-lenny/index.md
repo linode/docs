@@ -7,8 +7,6 @@ tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-debian-5-lenny/','/communications/xmpp/openfire/debian-5-lenny/']
 modified: 2012-10-03
-modified_by:
-  name: Linode
 published: 2009-09-18
 title: 'Instant Messaging Services with Openfire on Debian 5 (Lenny)'
 relations:

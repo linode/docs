@@ -4,8 +4,6 @@ description: 'This guide will show you how to install, configure and deploy NGIN
 keywords: ["kubernetes","docker","container","deployment","nginx"]
 tags: ["docker","centos","kubernetes","ubuntu","nginx","debian","networking","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
 modified: 2021-08-13
 published: 2017-11-27
 image: DeployNGINX_Linode.png

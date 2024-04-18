@@ -5,8 +5,6 @@ keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on centos 8"]
 tags: ["centos", "wiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-04
-modified_by:
-  name: Nathaniel Stickman
 title: "Installing Mediawiki on CentOS 8"
 title_meta: "How to Install Mediawiki on CentOS 8"
 external_resources:

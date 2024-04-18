@@ -5,8 +5,6 @@ keywords: ['emacs','evil','text editor']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-05
 modified: 2018-06-05
-modified_by:
-  name: Linode
 title: "Navigate Emacs using Evil Mode"
 title_meta: "How to Navigate Emacs using Evil Mode"
 external_resources:

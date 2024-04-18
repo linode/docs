@@ -7,8 +7,6 @@ tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-10-10-maverick/','/server-monitoring/nagios/ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-11-15
 title: 'Monitor Services with Nagios on Ubuntu 10.10 (Maverick)'
 relations:

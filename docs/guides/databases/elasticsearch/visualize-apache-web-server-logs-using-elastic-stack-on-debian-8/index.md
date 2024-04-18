@@ -8,8 +8,6 @@ keywords: ["apache debian 8", "linux web server", "elasticsearch", "logstash", "
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-18
 modified: 2019-01-31
-modified_by:
-  name: Linode
 title: "Visualizing Apache Logs Using the Elastic Stack on Debian 8"
 title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 8"
 dedicated_cpu_link: true

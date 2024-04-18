@@ -6,8 +6,6 @@ keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "depl
 tags: ["nginx","mysql","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-10
-modified_by:
-  name: Linode
 published: 2020-02-10
 title: Installing Ghost CMS on Debian 10
 title_meta: How to Install Ghost CMS on Debian 10

@@ -4,8 +4,6 @@ description: "Linode Object Storage provides efficient S3-compatible storage. Cr
 keywords: ['enable cors s3','allow cors s3 bucket','cors policy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-25
-modified_by:
-  name: Nathaniel Stickman
 title: "Working with CORS Policies on Linode Object Storage"
 external_resources:
 - '[AWS Documentation - Amazon Simple Storage Service: Using Cross-origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html)'

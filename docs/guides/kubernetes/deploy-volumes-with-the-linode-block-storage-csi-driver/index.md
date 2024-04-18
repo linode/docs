@@ -6,8 +6,6 @@ tags: ["linode platform","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-18
 modified: 2020-07-29
-modified_by:
-  name: Linode
 title: "Deploying Persistent Volume Claims with the Linode Block Storage CSI Driver"
 title_meta: "How to Deploy Persistent Volume Claims With Linode"
 external_resources:

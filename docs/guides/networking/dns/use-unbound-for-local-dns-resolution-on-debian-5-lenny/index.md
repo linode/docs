@@ -7,8 +7,6 @@ tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-debian-5-lenny/','/dns-guides/unbound-dns-resolver-debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-01-22
 title: 'Use Unbound for Local DNS Resolution on Debian 5 (Lenny)'
 relations:

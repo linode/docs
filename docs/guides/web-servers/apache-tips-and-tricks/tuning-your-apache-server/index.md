@@ -5,8 +5,6 @@ keywords: ["configuration", "apache", "web server", "resource tuning"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/tuning-your-apache-server/','/web-servers/apache-tips-and-tricks/tuning-your-apache-server/']
 modified: 2019-02-01
-modified_by:
-  name: Linode
 published: 2015-02-27
 title: Tuning Your Apache Server
 external_resources:

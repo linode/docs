@@ -7,8 +7,6 @@ tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/run-php-applications-under-cgi-with-apache-on-debian-7-wheezy/','/web-servers/apache/php-cgi/debian-7-wheezy/','/web-servers/apache/run-php-cgi-apache-debian-7/','/websites/apache/run-php-cgi-apapache-debian-7/']
 modified: 2015-11-18
-modified_by:
-  name: Linode
 published: 2014-01-13
 title: 'Run PHP with CGI and Apache on Debian 7 (Wheezy)'
 external_resources:

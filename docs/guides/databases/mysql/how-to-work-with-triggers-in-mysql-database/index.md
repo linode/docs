@@ -4,8 +4,6 @@ description: 'In this guide, we will show you how to create triggers, pre-define
 keywords: ['mysql','database','triggers']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-21
-modified_by:
-  name: Linode
 title: "Working with Triggers in a MySQL Database"
 title_meta: "Working with Triggers in a MySQL Database - A Tutorial"
 image: L_TriggersMySQL_db.png

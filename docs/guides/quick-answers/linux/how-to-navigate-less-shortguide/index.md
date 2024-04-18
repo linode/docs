@@ -4,8 +4,6 @@ description: 'Table of key commands used for navigating output with the less com
 keywords: ["linux", "how to", "less", "key commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-05
-modified_by:
-  name: Nathan Melehan
 published: 2018-09-05
 title: Less Keyboard Navigation Commands
 headless: true

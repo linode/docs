@@ -6,8 +6,6 @@ tags: ["ubuntu","debian","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-ubuntu/','/security/ssl/ssl-apache2-debian-ubuntu/','/web-servers/apache/ssl-guides/ubuntu-12.04-precise-pangolin/']
 modified: 2021-12-29
-modified_by:
-  name: Nick Brewer
 published: 2014-11-19
 title: "SSL Certificates with Apache on Debian & Ubuntu"
 image: SSL_Certificates_with_Apache_on_Debian_Ubuntu_smg.jpg

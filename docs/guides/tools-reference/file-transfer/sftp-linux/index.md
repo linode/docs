@@ -5,8 +5,6 @@ keywords: ['what is sftp','SFTP commands','Sftp server','sftp vs ftps', 'scp vs 
 tags: ['linux', 'ssh']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
-modified_by:
-  name: Linode
 title: "Transfer Files with SFTP"
 title_meta: "How to Transfer Files with SFTP"
 external_resources:

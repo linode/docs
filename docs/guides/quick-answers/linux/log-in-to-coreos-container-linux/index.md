@@ -6,8 +6,6 @@ tags: ["container","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/linux/log-in-to-coreos-container-linux/','/quick-answers/log-in-to-coreos-container-linux/']
 modified: 2017-05-08
-modified_by:
-  name: Linode
 published: 2017-05-08
 title: Log in to CoreOS Container Linux
 contributors: ["Linode"]

@@ -7,8 +7,6 @@ tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/ubuntu-8-04-hardy/','/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/','/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-02-22
 title: 'Run PHP Applications under CGI with Apache on Ubuntu 8.04 (Hardy)'
 relations:

@@ -4,8 +4,6 @@ description: 'This guide will introduce you to the Go programming language and w
 keywords: ['golang','go','command line arguments']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-11
-modified_by:
-  name: Linode
 image: GettingStartedwithGo.png
 title: "Getting Started with Go"
 title_meta: "A Beginner's Guide to Go"

@@ -5,8 +5,6 @@ keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", 
 tags: ["drupal","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-02-15
-modified_by:
-  name: Linode
 published: 2014-10-17
 title: "Content Management Systems: An Overview"
 aliases: ['/websites/cms/cms-overview/','/websites/cms/basics/cms-overview/']

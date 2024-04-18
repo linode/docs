@@ -7,8 +7,6 @@ tags: ["debian","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/debian-5-lenny/','/uptime/analytics/piwik-on-debian-5-lenny/']
 modified: 2014-01-28
-modified_by:
-  name: Linode
 published: 2009-12-10
 title: 'Piwik on Debian 5 (Lenny)'
 relations:

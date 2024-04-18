@@ -5,8 +5,6 @@ keywords: ['what is vi','vi editor','text editor','vim']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
-modified_by:
-  name: Nathaniel Stickman
 title: "Getting Started Using Vi and Vim"
 title_meta: "What Is Vi?"
 external_resources:

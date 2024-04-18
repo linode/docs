@@ -5,8 +5,6 @@ keywords: ['python variables', 'python variables naming convention', 'python var
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-04
-modified_by:
-  name: Nathaniel Stickman
 title: "Getting Started with Python Variables"
 external_resources:
 - '[W3 Schools: Python Variables](https://www.w3schools.com/python/python_variables.asp)'

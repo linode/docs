@@ -7,8 +7,6 @@ tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/','/web-servers/cherokee/installing-cherokee-debian-5-lenny/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-09-10
 title: 'Websites with the Cherokee Web Server on Debian 5 (Lenny)'
 relations:

@@ -5,8 +5,6 @@ keywords: ['rocket','rust','functional programming','web application','app frame
 tags: ['rust', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
-modified_by:
-  name: Nathaniel Stickman
 title: "Build a Website Using Rust and the Rocket Web Framework"
 external_resources:
 - '[Rockets releases page](https://github.com/SergioBenitez/Rocket/releases)'

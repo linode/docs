@@ -5,8 +5,6 @@ keywords: ["Postfix", "Ubuntu", "Debian", "SMTP", "Gmail"]
 tags: ["debian","ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-06-22
-modified_by:
-  name: Linode
 published: 2016-12-13
 title: Configuring a Postfix Server to Send Email through Gmail or Google Workspace
 title_meta: How to Configure a Postfix Server to Send Email through Gmail

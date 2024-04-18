@@ -7,8 +7,6 @@ tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/apache/installation/ubuntu-10-04-lucid/','/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2010-04-29
 title: 'Apache 2 Web Server on Ubuntu 10.04 LTS (Lucid)'
 relations:

@@ -7,8 +7,6 @@ tags: ["fedora", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/bug-tracking/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/development/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/applications/development/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/web-applications/project-management/mantis/fedora-14/']
 modified: 2013-10-04
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: Manage Development with the Mantis Bug Tracker on Fedora 14
 relations:

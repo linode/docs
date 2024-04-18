@@ -5,8 +5,6 @@ description: 'Install NixOS, which is known for its declarative approach to conf
 keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Andrew Miller
 modified: 2023-07-11
 title: Install and Configure NixOS on a Linode
 external_resources:

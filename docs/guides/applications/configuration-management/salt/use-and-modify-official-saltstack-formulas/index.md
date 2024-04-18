@@ -5,8 +5,6 @@ keywords: ['salt', 'formulas', 'git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-11-12
 modified: 2019-01-02
-modified_by:
-  name: Linode
 image: UseandModifyOfficialSaltStackFormulas.png
 title: "Use and Modify Official SaltStack Formulas"
 external_resources:

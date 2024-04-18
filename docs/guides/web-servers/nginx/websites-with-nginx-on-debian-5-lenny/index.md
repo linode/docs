@@ -7,8 +7,6 @@ tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/websites-with-nginx-on-debian-5-lenny/','/web-servers/nginx/websites-with-nginx-on-debian-5-lenny/','/web-servers/nginx/installation/debian-5-lenny/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-02-24
 title: 'Websites with nginx on Debian 5 (Lenny)'
 relations:

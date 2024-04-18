@@ -7,8 +7,6 @@ tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/proxies/deploy-multiple-web-servers-with-proxypass-on-ubuntu-12-04/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-12-04-precise/','/websites/proxies/multiple-web-services-with-proxypass-on-ubuntu-12-04-precise-pangolin/']
 modified: 2012-11-07
-modified_by:
-  name: Linode
 published: 2012-11-07
 title: 'Deploy Multiple Web Servers with ProxyPass on Ubuntu 12.04'
 external_resources:

@@ -4,8 +4,6 @@ description: "Learn how to use zoxide, a smart and fast alternative to cd. It ra
 keywords: ['zoxide install','zoxide linux','zoxide rust']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-12
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Install and Use zoxide on Linux"
 contributors: ['Nathaniel Stickman']
 external_resources:

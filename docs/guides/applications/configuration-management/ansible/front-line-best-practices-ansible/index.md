@@ -7,8 +7,6 @@ keywords: ['ansible best practices','ansible documentation','ansible testing','a
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Cameron Laird"]
 published: 2023-11-28
-modified_by:
-  name: Linode
 ---
 
 [Ansible](/docs/guides/applications/configuration-management/ansible/) is an important open source automation tool and platform. It is used for configuration management, application deployment, task automation, and [orchestration](https://www.databricks.com/glossary/orchestration) of complex workflows.

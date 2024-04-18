@@ -7,8 +7,6 @@ tags: ["nginx","apache","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/plone/','/websites/cms/plone/manage-web-content-with-plone-on-debian-5-lenny/','/websites/cms/manage-web-content-with-plone-on-debian-5-lenny/']
 modified: 2011-06-03
-modified_by:
-  name: Linode
 published: 2010-01-29
 title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
 contributors: ["Linode"]

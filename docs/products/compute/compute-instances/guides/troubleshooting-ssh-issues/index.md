@@ -5,8 +5,6 @@ keywords: ['linux','reboot','lish','ssh','troubleshoot']
 tags: ["ssh"]
 published: 2019-02-01
 modified: 2023-03-14
-modified_by:
-  name: Linode
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-ssh/','/guides/troubleshooting-ssh/']
 contributors: ["Linode"]

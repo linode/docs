@@ -5,8 +5,6 @@ keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "centos"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-18
-modified_by:
-  name: Linode
 published: 2018-06-04
 title: 'Installing the LEMP Stack on CentOS 8'
 title_meta: 'How to Install the LEMP Stack on CentOS 8'

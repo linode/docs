@@ -6,8 +6,6 @@ tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/diagnostics/diagnosing-network-issues-with-mtr/','/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/','/troubleshooting/interpreting-mtr-reports/']
 modified: 2018-05-10
-modified_by:
-  name: Linode
 published: 2010-04-28
 title: Diagnosing Network Issues with MTR
 external_resources:

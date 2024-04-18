@@ -6,8 +6,6 @@ keywords: ["mysql ubuntu 10.04", "mysql ubuntu", "mysql on linux", "mysql Linode
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-ubuntu-10-04-lts-lucid/','/databases/mysql/ubuntu-10-04-lucid/']
 modified: 2013-09-24
-modified_by:
-  name: Linode
 published: 2010-04-30
 title: 'Use MySQL Relational Databases on Ubuntu 10.04'
 relations:

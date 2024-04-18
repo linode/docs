@@ -4,8 +4,6 @@ description: 'Learn how to convert various data types to other data types in Pyt
 keywords: ['convert data type python','How to convert data types in python','convert string to int python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-03
-modified_by:
-  name: Linode
 title: "Convert Data Types in Python"
 title_meta: "How to Convert Data Types in Python"
 external_resources:

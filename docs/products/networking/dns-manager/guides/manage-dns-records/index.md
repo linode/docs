@@ -1,8 +1,6 @@
 ---
 description: "How to add DNS records using the Linode DNS Manager."
 modified: 2023-02-09
-modified_by:
-  name: KincaidYang
 published: 2020-07-21
 title: "Manage DNS Records"
 keywords: ["dns"]

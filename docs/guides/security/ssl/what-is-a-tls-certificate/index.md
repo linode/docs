@@ -5,8 +5,6 @@ keywords: ['what is tls certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-16
 image: TLSCertificate.png
-modified_by:
-  name: Linode
 title: "Understanding TLS Certificates and Connections"
 title_meta: "What is a TLS Certificate?"
 tags: ['web server', 'ssl', 'security']

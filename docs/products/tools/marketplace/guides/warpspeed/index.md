@@ -5,8 +5,6 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
 published: 2021-11-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy WarpSpeed VPN through the Linode Marketplace"
 external_resources:
 - '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'

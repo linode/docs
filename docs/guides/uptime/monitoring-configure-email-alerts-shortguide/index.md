@@ -3,8 +3,6 @@ slug: monitoring-configure-email-alerts-shortguide
 description: 'Shortguide that describes how to configure monitoring email alerts in Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-08-08
-modified_by:
-  name: Heather Zoppetti
 published: 2020-07-21
 title: Configuring Linode Cloud Manager Email Alerts
 keywords: ["monitoring"]

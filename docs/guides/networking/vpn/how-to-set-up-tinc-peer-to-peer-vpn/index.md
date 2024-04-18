@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/how-to-set-up-tinc-peer-to-peer-vpn/']
 published: 2017-09-19
 modified: 2017-09-20
-modified_by:
-  name: Linode
 title: 'How to Set up tinc, a Peer-to-Peer VPN'
 contributors: ["Damaso Sanoja"]
 ---

@@ -5,8 +5,6 @@ keywords: ["how to make a twitter bot", "node twitter", "reply bot twitter", "no
 tags: ["version control system", "javascript"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
-modified_by:
-    name: Linode
 title: "Make a Twitter Bot and Reply to Tweets in Node.js"
 external_resources:
     - "[Documentation Home | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs)"

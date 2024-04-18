@@ -7,8 +7,6 @@ keywords: ['rename git branch','git rename branch','rename branch git','git rena
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Martin Heller"]
 published: 2023-04-25
-modified_by:
-  name: Linode
 external_resources:
 - '[Career Karma: How to Rename a Git Branch](https://careerkarma.com/blog/git-rename-branch/
 )'

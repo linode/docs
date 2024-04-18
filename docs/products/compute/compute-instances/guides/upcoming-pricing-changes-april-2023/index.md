@@ -3,8 +3,6 @@ keywords: ["april pricing update", "pricing", "pricing changes"]
 description: "Information related to the Akamai Compute pricing changes effective April 1st, 2023"
 published: 2023-03-01
 modified: 2023-03-31
-modified_by:
-  name: Linode
 title: "Recent Pricing Changes (Effective 4/1/2023)"
 contributors: ["Linode"]
 ---

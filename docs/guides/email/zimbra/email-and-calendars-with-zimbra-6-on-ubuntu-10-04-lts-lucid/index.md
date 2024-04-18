@@ -7,8 +7,6 @@ tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-ubuntu-10-04-lucid/','/email/zimbra/email-and-calendars-with-zimbra-6-on-ubuntu-10-04-lts-lucid/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-05-03
 title: 'Email and Calendars with Zimbra 6 on Ubuntu 10.04 LTS (Lucid)'
 relations:

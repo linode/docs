@@ -6,8 +6,6 @@ keywords: ['passwordless ssh', 'ssh linux', 'customize ssh', 'ssh google authent
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Tom Henderson"]
 published: 2023-06-12
-modified_by:
-  name: Linode
 ---
 
 SSH, the Secure SHell, is a popular software method of connecting two hosts over network circuits. SSH is flexible, encrypts inter-host communications, and users can be authenticated in several optional ways. Other apps, such as *scp*, *sftp*, and *rsync* can use SSH as an authenticated and encrypted network transport seamlessly between hosts.

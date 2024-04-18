@@ -8,8 +8,6 @@ tags: ["ubuntu","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-03-11
 modified: 2017-02-15
-modified_by:
-    name: Linode
 title: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
 external_resources:
  - '[WP-CLI Commands](http://wp-cli.org/commands/)'

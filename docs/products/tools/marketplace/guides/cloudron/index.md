@@ -4,8 +4,6 @@ keywords: ['cloudron','web apps','platform','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-12-15
 modified: 2023-01-30
-modified_by:
-  name: Linode
 title: "Deploy Cloudron through the Linode Marketplace"
 external_resources:
 - '[Cloudron Documentation](https://docs.cloudron.io)'

@@ -7,8 +7,6 @@ tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid/']
 modified: 2013-10-07
-modified_by:
-  name: Linode
 published: 2010-05-03
 title: 'Websites with the Cherokee Web Server on Ubuntu 10.04 LTS (Lucid)'
 relations:

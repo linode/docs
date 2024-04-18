@@ -5,8 +5,6 @@ keywords: ['python', 'how to write a python script', 'how to run a python script
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-03
-modified_by:
-  name: Linode
 title: "How to Write and Run a Python Script"
 external_resources:
 - '[Python.org web site](https://www.python.org/)'

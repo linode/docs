@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2024-01-31
 modified: 2024-02-05
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[LiveKit Docs](https://docs.livekit.io/realtime/)'
 ---

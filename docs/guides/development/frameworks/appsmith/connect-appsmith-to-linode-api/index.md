@@ -4,8 +4,6 @@ description: "Appsmith’s platform makes developing internal applications and d
 keywords: ['appsmith api','appsmith tutorial','appsmith dashboard']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-29
-modified_by:
-  name: Nathaniel Stickman
 title: "Connecting Appsmith to the Linode API"
 external_resources:
 - '[Appsmith: Connecting to REST APIs](https://docs.appsmith.com/core-concepts/connecting-to-data-sources/authentication)'

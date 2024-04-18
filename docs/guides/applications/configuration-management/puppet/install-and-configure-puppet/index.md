@@ -8,8 +8,6 @@ aliases: ['/applications/configuration-management/puppet/install-and-configure-p
 deprecated: true
 deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
 modified: 2019-01-15
-modified_by:
-    name: Linode
 published: 2015-09-17
 title: Install and Configure Puppet
 external_resources:

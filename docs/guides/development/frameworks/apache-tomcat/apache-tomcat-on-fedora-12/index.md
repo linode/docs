@@ -7,8 +7,6 @@ tags: ["web applications","java","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/apache-tomcat/fedora-12/','/development/frameworks/apache-tomcat-on-fedora-12/','/websites/frameworks/apache-tomcat-on-fedora-12/','/development/frameworks/apache-tomcat/apache-tomcat-on-fedora-12/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-07-23
 title: Apache Tomcat on Fedora 12
 relations:

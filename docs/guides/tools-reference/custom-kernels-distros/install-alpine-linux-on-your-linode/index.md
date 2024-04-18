@@ -5,8 +5,6 @@ keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine 
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 modified: 2018-12-18
-modified_by:
-  name: Linode
 published: 2016-09-22
 title: 'Install Alpine Linux on your Linode'
 deprecated: True

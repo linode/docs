@@ -4,8 +4,6 @@ description: 'This guide to software security best practices teaches you about t
 keywords: ['web application security best practices','application security best practices','software development security best practices']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
-modified_by:
-  name: Linode
 title: "The 14 Top Software Security Best Practices you Need to Implement Today"
 title_meta: "Software Security Best Practices"
 contributors: ["David Strom"]

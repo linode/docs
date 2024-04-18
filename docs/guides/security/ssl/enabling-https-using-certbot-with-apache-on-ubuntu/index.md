@@ -6,8 +6,6 @@ tags: ['ssl','apache','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-02
 modified: 2021-07-01
-modified_by:
-  name: Linode
 title: "Use Certbot to Enable HTTPS with Apache on Ubuntu"
 aliases: ['/guides/how-to-install-certbot-for-apache-on-ubuntu-20-04/']
 relations:

@@ -5,8 +5,6 @@ keywords: ['salt','execution module','saltstack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-22
 modified: 2019-01-02
-modified_by:
-  name: Linode
 image: CreateaSaltExecutionModule.png
 title: "Create a Salt Execution Module"
 external_resources:

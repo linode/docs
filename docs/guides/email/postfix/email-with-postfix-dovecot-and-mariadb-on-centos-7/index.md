@@ -6,8 +6,6 @@ tags: ["centos","postfix","email","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/','/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-7/']
 modified: 2018-10-10
-modified_by:
-  name: Linode
 published: 2015-03-26
 title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 external_resources:

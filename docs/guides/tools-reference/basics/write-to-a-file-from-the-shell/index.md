@@ -6,8 +6,6 @@ tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-12
 image: HowtoWritetoaFileFromtheShell.jpg
-modified_by:
-  name: Nathaniel Stickman
 title: "Write to a File From the Shell"
 title_meta: "How to Write to a File From the Shell"
 external_resources:

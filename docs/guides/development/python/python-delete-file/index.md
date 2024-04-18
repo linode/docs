@@ -7,8 +7,6 @@ keywords: ['python delete file', 'python remove file', 'python delete directory'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Stephen Satchell"]
 published: 2023-06-12
-modified_by:
-  name: Linode
 ---
 
 Many applications use temporary files to hold intermediate results in their execution. A program, for example, may process several gigabytes of data in multiple passes because trying to hold it all in memory can exceed the ability of the system, even with a large swap store. This is true when multiple copies of an application are running. Holding all the data in memory can slow down the application because the virtual memory system has to keep paging data in and out of working memory. When the application is finished with the temporary files, it’s a good idea to delete that working file, to free up the disk space.

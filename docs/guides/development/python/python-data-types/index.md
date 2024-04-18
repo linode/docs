@@ -5,8 +5,6 @@ keywords: ['python data types', 'python data types check', 'python data types ch
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-04
-modified_by:
-  name: Nathaniel Stickman
 title: "The Basics of Python Data Types"
 external_resources:
 - '[Python Documentation: Built-in Types](https://docs.python.org/3/library/stdtypes.html)'

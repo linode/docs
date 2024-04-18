@@ -4,8 +4,6 @@ description: 'This guide helps you understand iptables and explains what is ipta
 keywords: ['understanding iptables', 'what is iptables']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-10-07
-modified_by:
-  name: Linode
 published: 2020-10-07
 title: Understanding iptables
 title_meta: What is iptables

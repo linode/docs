@@ -5,8 +5,6 @@ keywords: ['what is gatsby js','gatsby static site generator tutorial','gatsby t
 tags: ['web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-03
-modified_by:
-  name: Nathaniel Stickman
 title: "Generating Static Sites with Gatsby"
 title_meta: "How to Generate Static Sites with Gatsby"
 external_resources:

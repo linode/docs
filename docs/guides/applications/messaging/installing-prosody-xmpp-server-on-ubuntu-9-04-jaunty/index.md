@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-9-04-jaunty/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-04-jaunty/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2009-10-13
 title: 'Installing Prosody XMPP Server on Ubuntu 9.04 (Jaunty)'
 relations:

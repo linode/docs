@@ -6,8 +6,6 @@ keywords: ["redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-debian-6-squeeze/','/databases/redis/debian-6-squeeze/']
 modified: 2013-07-07
-modified_by:
-  name: Linode
 published: 2011-04-05
 title: 'Redis on Debian 6 (Squeeze)'
 relations:

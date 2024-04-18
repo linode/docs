@@ -5,8 +5,6 @@ keywords: ['MERN Stack Application','How to create a MERN stack application','ME
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-12
 modified: 2022-09-23
-modified_by:
-  name: Linode
 title: "Create a MERN Stack Application"
 title_meta: "How to Create a MERN Stack on Linux"
 external_resources:

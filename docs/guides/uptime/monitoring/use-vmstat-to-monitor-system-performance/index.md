@@ -7,8 +7,6 @@ tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/use-vmstat-to-monitor-system-performance/','/linux-tools/common-commands/vmstat/']
 modified: 2021-02-19
-modified_by:
-  name: Linode
 published: 2010-10-13
 title: Use vmstat to Monitor System Performance
 external_resources:

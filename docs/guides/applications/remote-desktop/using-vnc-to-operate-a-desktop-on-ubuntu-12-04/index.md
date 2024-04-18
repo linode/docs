@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/remote-desktop/using-vnc-to-operate-a-desktop-on-ubuntu-12-04/','/remote-desktops/vnc-desktop-ubuntu-12-04/']
 modified: 2014-08-21
-modified_by:
-  name: James Stewart
 published: 2014-04-10
 title: 'Using VNC to Operate a Desktop on Ubuntu 12.04'
 external_resources:

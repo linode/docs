@@ -4,8 +4,6 @@ description: 'Common machine learning cyber attacks include evasion, poisoning, 
 keywords: ['machine learning cyber attacks','evasion attacks against machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-20
-modified_by:
-  name: Linode
 title: "The Most Common Cyber Attacks on Machine Learning Applications"
 title_meta: "Common Cyber Attacks on Machine Learning Applications"
 contributors: ["John Mueller"]

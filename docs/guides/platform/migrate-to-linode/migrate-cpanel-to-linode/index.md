@@ -5,8 +5,6 @@ keywords: ["cpanel", "transfer tool", "migrate", "website migration"]
 tags: ["cpanel","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2023-07-25
-modified_by:
-  name: Linode
 published: 2018-08-21
 title: How to Migrate a cPanel Server to Linode
 external_resources:

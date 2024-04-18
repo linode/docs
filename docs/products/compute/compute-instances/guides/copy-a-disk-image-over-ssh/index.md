@@ -3,8 +3,6 @@ description: "Create a disk image using dd and download it to another machine ov
 keywords: ["copy", "disk", "ssh", "dd"]
 tags: ["linode platform","ssh"]
 modified: 2020-12-04
-modified_by:
-  name: Linode
 published: 2012-06-04
 title: "Copy a Disk Over SSH"
 image: copying_a_disk_over_ssh_smg.png

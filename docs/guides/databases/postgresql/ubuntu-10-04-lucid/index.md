@@ -6,8 +6,6 @@ description: 'Using the PostgreSQL relational database server with Ubuntu 10.04 
 keywords: ["postgresql", "postgresql ubuntu 10.04", "postgreql lucid", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2013-09-24
-modified_by:
-  name: Linode
 published: 2010-04-29
 title: 'Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
 relations:

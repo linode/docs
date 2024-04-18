@@ -6,8 +6,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
 bundles: ['debian-security', 'centos-security', 'network-security']
 modified: 2017-02-28
-modified_by:
-  name: Linode
 published: 2010-07-30
 title: A Tutorial for Controlling Network Traffic with iptables
 title_meta: Controlling Network Traffic with iptables - A Tutorial

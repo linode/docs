@@ -4,8 +4,6 @@ description: 'Learn how to use Cloudflare with a website running on Linode.'
 keywords: ["cloudflare", "dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-26
-modified_by:
-  name: Nathan Melehan
 published: 2018-06-26
 title: "Set Up Cloudflare with Linode"
 title_meta: "How to Set Up Cloudflare with Linode"

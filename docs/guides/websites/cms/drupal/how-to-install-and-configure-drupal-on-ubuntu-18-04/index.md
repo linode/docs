@@ -4,8 +4,6 @@ description: 'This guide will show you how to install and configure the very pop
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04"]
 tags: ["drupal","ubuntu","apache","lamp","php","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
 published: 2020-02-18
 title: Install and Configure Drupal on Ubuntu 18.04
 title_meta: How to Install and Configure Drupal on Ubuntu 18.04 LTS

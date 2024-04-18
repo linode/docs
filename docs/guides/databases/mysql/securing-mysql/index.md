@@ -8,8 +8,6 @@ tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'Securing MySQL Server'
 title_meta: 'How to Secure MySQL Server'
-modified_by:
-  name: linode
 published: 2021-03-26
 image: SecureMySQLserver.png
 contributors: ["Hackersploit"]

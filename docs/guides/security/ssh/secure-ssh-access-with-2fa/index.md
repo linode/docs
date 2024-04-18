@@ -6,8 +6,6 @@ tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified: 2022-11-29
-modified_by:
-  name: Linode
 title: "Use 2FA (Two-Factor Authentication) with SSH"
 title_meta: "Use 2FA with SSH to Prevent Unauthorized Access"
 linkTitle: "Use 2FA with SSH"

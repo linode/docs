@@ -3,8 +3,6 @@ slug: cloud-oauth-apps-shortguide
 description: 'Shortguide that gives an overview of OAuth support in the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
 published: 2020-07-22
 title: An Overview of OAuth Support in the Cloud Manager
 keywords: ["cloud manager"]

@@ -7,8 +7,6 @@ tags: ["web server","perl","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/','/web-servers/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/','/web-servers/nginx/perl-fastcgi/debian-6-squeeze/']
 modified: 2011-05-10
-modified_by:
-  name: Linode
 published: 2011-02-17
 title: 'Nginx and Perl-FastCGI on Debian 6 (Squeeze)'
 relations:

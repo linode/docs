@@ -6,8 +6,6 @@ aliases: ['/websites/cms/drupal/how-to-install-drush-on-debian-10/','/websites/c
 tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-28
-modified_by:
-    name: Linode
 published: 2020-02-28
 title: Install Drush on Debian 10
 title_meta: How to Install Drush on Debian 10

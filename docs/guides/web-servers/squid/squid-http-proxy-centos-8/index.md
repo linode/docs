@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-14
 modified: 2020-04-14
 image: Creating_an_HTTP_Proxy_Using_Squid_on_Centos8_1200x631.png
-modified_by:
-  name: Rajakavitha Kodhandapani
 title: 'Creating an HTTP Proxy Using Squid on CentOS 8'
 title_meta: 'How to Create an HTTP Proxy Using Squid on CentOS 8'
 external_resources:

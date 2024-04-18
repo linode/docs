@@ -7,8 +7,6 @@ tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-web-server-on-ubuntu-14-04/','/websites/apache/apache-web-server-on-ubuntu-14-04/']
 modified: 2018-12-31
-modified_by:
-  name: Linode
 published: 2015-07-31
 title: 'Apache Web Server on Ubuntu 14.04 LTS'
 external_resources:

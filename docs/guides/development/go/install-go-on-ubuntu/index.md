@@ -7,8 +7,6 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-29
 modified: 2019-08-22
-modified_by:
-  name: Linode
 title: 'How to Install Go on Ubuntu'
 audiences: ["beginner"]
 languages: ["go"]

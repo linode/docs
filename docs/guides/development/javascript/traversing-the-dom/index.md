@@ -4,8 +4,6 @@ description: "You can traverse the DOM with JavaScript using the document object
 keywords: ['navigating the dom','accessing the dom','dom tree javascript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-22
-modified_by:
-  name: Linode
 title: "Traverse the DOM with JavaScript"
 title_meta: "How to Traverse the DOM with JavaScript"
 external_resources:

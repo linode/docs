@@ -5,8 +5,6 @@ keywords: ["linux", "how to", "grep", "wget"]
 aliases: ['/quick-answers/linux/how-to-use-wget/','/quick-answers/how-to-use-wget/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-06-12
-modified_by:
-  name: Angel
 published: 2017-06-19
 title: How to Use Wget
 title_meta: "How to Use Wget: Step-by-Step Guide"

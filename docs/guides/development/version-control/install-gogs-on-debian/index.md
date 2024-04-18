@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-10-09
 aliases: ['/development/version-control/install-gogs-on-debian-8-jessie/','/applications/development/install-gogs-on-debian-8-jessie/','/development/version-control/install-gogs-on-debian/','/applications/development/install-gogs-on-debian-jessie/']
 modified: 2017-11-09
-modified_by:
-    name: Linode
 title: 'Install Gogs on Debian 9 with nginx and PostgreSQL'
 external_resources:
     - '[Gogs official site](http://gogs.io)'

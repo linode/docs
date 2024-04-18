@@ -3,8 +3,6 @@ description: "This guide shows how you can deploy a NextCloud server to store im
 keywords: ['Nextcloud','marketplace','file sharing']
 published: 2020-06-11
 modified: 2023-04-21
-modified_by:
-  name: Linode
 title: "Deploy Nextcloud through the Linode Marketplace"
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'

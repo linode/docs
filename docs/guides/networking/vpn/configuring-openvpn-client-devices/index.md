@@ -4,8 +4,6 @@ description: 'This guide will show you how to install, configure, and fine-tune 
 keywords: ["openvpn", "vpn", "vpn tunnel", "ios", "os x", "mac", "windows", "android"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-02-26
-modified_by:
-  name: Linode
 published: 2015-12-09
 title: 'Configure OpenVPN Client Devices'
 external_resources:

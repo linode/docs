@@ -7,8 +7,6 @@ tags: ["ubuntu","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
 modified: 2018-08-10
-modified_by:
-    name: Linode
 title: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 deprecated: true
 noindex: true

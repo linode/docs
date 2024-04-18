@@ -5,8 +5,6 @@ keywords: ['benefits of open source','benefits of open source software','advanta
 tags: ['linux', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-24
-modified_by:
-  name: Linode
 title: "What are the Advantages of Open Source Software?"
 title_meta: "Open Source Software: Benefits Explained"
 contributors: ["Jack Wallen"]

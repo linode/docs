@@ -4,8 +4,6 @@ description: 'The PostgreSQL relational database is a powerful open source datab
 keywords: ["postgresql", "CentOS 7", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-12-12
-modified_by:
-  name: Nick Brewer
 published: 2016-12-12
 title: 'How to Install PostgreSQL Relational Databases on CentOS 7'
 external_resources:

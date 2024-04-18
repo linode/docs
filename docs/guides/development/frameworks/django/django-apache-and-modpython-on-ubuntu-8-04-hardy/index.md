@@ -7,8 +7,6 @@ tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/','/frameworks/django-apache-mod-python/ubuntu-8-04-hardy/','/development/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/','/development/frameworks/django/django-apache-and-modpython-on-ubuntu-8-04-hardy/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2009-09-10
 title: 'Django, Apache and mod_python on Ubuntu 8.04 (Hardy)'
 relations:

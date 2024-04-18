@@ -7,8 +7,6 @@ tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-nginx-on-ubuntu-10-10-maverick/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-10-10-maverick/','/frameworks/ruby-on-rails-nginx/ubuntu-10-10-maverick/']
 modified: 2012-10-08
-modified_by:
-  name: Linode
 published: 2010-12-06
 title: 'Ruby on Rails with Nginx on Ubuntu 10.10 (Maverick)'
 relations:

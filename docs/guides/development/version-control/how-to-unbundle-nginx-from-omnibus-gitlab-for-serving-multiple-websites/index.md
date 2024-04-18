@@ -6,8 +6,6 @@ tags: ["version control system","email","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['/applications/development/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/','/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/']
 modified: 2017-06-21
-modified_by:
-  name: Phil Zona
 published: 2016-02-29
 title: 'Unbundling NGINX from Omnibus Gitlab'
 title_meta: 'How to Unbundle NGINX from Omnibus GitLab'

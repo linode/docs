@@ -3,8 +3,6 @@ slug: install-steamcmd-for-a-steam-game-server
 description: 'Learn how to install SteamCMD for a Steam Game server and minimize your efforts to update the server files.'
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
 published: 2016-02-15
 title: 'Install SteamCMD for a Steam Game Server'
 external_resources:

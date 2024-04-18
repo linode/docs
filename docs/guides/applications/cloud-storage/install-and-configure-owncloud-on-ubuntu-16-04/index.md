@@ -5,9 +5,6 @@ keywords: ["owncloud", "install owncloud", "cloud storage ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-07
-modified: 2017-08-07
-modified_by:
-  name: Angel Guarisma
 title: "Installing and Configuring ownCloud on Ubuntu 16.04"
 title_meta: "How to Install and Configure ownCloud on Ubuntu 16.04"
 external_resources:

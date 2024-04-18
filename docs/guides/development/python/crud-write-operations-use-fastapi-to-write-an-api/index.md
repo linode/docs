@@ -4,8 +4,6 @@ description: "If you are familiar with FastAPI, you can use this guide to add CR
 keywords: ['CRUD operations in Python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09
-modified_by:
-  name: Linode
 title: "CRUD Write Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Write Operations: Using FastAPI to Write an API"
 tags: ["python", "django"]

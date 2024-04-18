@@ -5,8 +5,6 @@ keywords: ['ripgrep','Ripgrep ubuntu','Ripgrep examples']
 tags: ['ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
-modified_by:
-  name: Linode
 title: "Install and Use ripgrep"
 title_meta: "How to Install and Use ripgrep"
 external_resources:

@@ -7,8 +7,6 @@ tags: ["debian","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/webalizer-on-debian-5-lenny/','/web-applications/analytics/webalizer/debian-5-lenny/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-01-27
 title: 'Webalizer on Debian 5 (Lenny)'
 relations:

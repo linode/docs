@@ -5,8 +5,6 @@ keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-27
-modified_by:
-  name: Linode
 published: 2015-12-09
 title: 'Tunnel Your Internet Traffic Through an OpenVPN Server'
 external_resources:

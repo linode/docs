@@ -5,8 +5,6 @@ keywords: ['sql transactions', 'commit transaction', 'rollback transaction', 'SQ
 tags: ['mysql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-25
-modified_by:
-  name: Linode
 title: "SQL Transactions: An Introduction"
 title_meta: "A Primer on SQL Transactions"
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]

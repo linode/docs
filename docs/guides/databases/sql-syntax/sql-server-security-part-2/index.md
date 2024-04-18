@@ -5,8 +5,6 @@ keywords: ['SQL server authentication', 'Restrict SQL traffic', 'SQL Server Patc
 tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-12
-modified_by:
-  name: Linode
 title: "Part 2: SQL Server Security Best Practices"
 title_meta: "SQL Server Security Best Practices, Part 2"
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]

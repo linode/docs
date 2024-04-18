@@ -5,8 +5,6 @@ keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom 
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-08-01
-modified_by:
-  name: Linode
 published: 2017-08-01
 title: 'Custom Compiled Kernel on Debian & Ubuntu'
 relations:

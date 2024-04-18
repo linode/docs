@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-15
 image: UsingPortagetoManagePackagesinGentooLinux.jpg
 modified: 2021-07-15
-modified_by:
-  name: Linode
 title: "Using Portage to Manage Packages in Gentoo"
 title_meta: "How to Use Portage to Manage Packages in Gentoo"
 contributors: ["Linode"]

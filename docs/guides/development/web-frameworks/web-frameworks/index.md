@@ -4,8 +4,6 @@ description: 'Which web frameworks are the best? Check out this list of the best
 keywords: ['web frameworks', 'web development framework', 'backend frameworks', 'best framework for web', 'web app framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-08
-modified_by:
-  name: Linode
 title: "The Sixteen Most Popular Web Development Frameworks for Developers"
 external_resources:
 - '[Web 2.0](https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html)'

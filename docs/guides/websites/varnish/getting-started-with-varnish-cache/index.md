@@ -5,8 +5,6 @@ keywords: ["Varnish", "Ubuntu", "Debian", "Cache", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/varnish/getting-started-with-varnish-cache/','/web-servers/varnish/']
 modified: 2017-02-24
-modified_by:
-  name: Edward Angert
 published: 2014-02-05
 title: Getting Started with Varnish Cache
 external_resources:

@@ -4,8 +4,6 @@ keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 published: 2021-04-30
 modified: 2024-01-30
-modified_by:
-  name: Linode
 image: Linode-Configuration-Profiles.jpg
 title: "Manage Configuration Profiles on a Compute Instance"
 title_meta: "How to Manage Configuration Profiles on a Compute Instance"

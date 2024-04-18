@@ -6,8 +6,6 @@ keywords: ["mysql", "phpmyadmin", "sql", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/managing-mysql-with-phpmyadmin-on-centos-6-4/','/databases/mysql/phpmyadmin-centos-6/']
 modified: 2017-08-01
-modified_by:
-    name: Linode
 published: 2014-02-04
 title: 'How to Install and Configure phpMyAdmin on CentOS 6'
 external_resources:

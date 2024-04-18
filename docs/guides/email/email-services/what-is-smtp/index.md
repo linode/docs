@@ -6,8 +6,6 @@ keywords: ['what is smtp','mail transfers','smtp tcp or udp','smtp addressing','
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2024-01-17
-modified_by:
-  name: Linode
 ---
 
 Instant messaging, Slack, and Zoom may get all the attention lately, yet email has remained the most ubiquitous communication method of the Internet for decades. One open standard makes it possible for any user, on any platform, to exchange email with anyone else: the Simple Mail Transfer Protocol (SMTP). SMTP works as a universal mail carrier, connecting users around the world regardless of the hardware and software they use.

@@ -5,8 +5,6 @@ keywords: ["linode guide", "hosting a website", "website", "linode setup", " ins
 tags: ["centos", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-08-11
-modified_by:
-    name: Linode
 published: 2020-04-14
 title: How to Install Node.js and NGINX on CentOS 8
 title_meta: Installing Node.js and NGINX on CentOS 8

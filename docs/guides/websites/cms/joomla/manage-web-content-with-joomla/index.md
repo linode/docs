@@ -7,8 +7,6 @@ tags: ["cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/joomla/','/websites/cms/joomla/manage-web-content-with-joomla/','/websites/cms/manage-web-content-with-joomla/']
 modified: 2011-04-19
-modified_by:
-  name: Linode
 published: 2010-01-22
 title: 'Manage Web Content with Joomla!'
 contributors: ["Linode"]

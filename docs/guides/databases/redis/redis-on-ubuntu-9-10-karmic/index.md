@@ -6,8 +6,6 @@ keywords: ["redis ubuntu 9.10", "redis lucid", "nosql", "database", "key-value s
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-ubuntu-9-10-karmic/','/databases/redis/ubuntu-9-10-karmic/']
 modified: 2011-04-29
-modified_by:
-  name: Linode
 published: 2010-08-05
 title: 'Redis on Ubuntu 9.10 (Karmic)'
 relations:

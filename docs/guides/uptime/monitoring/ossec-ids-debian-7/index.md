@@ -6,8 +6,6 @@ aliases: ['/security/ossec-ids-debian-7/','/uptime/monitoring/ossec-ids-debian-7
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-02-05
-modified_by:
-  name: James Stewart
 published: 2015-02-05
 title: Install and Configure OSSEC on Debian 7
 external_resources:

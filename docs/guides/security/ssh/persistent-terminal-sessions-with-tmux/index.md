@@ -6,8 +6,6 @@ tags: ["networking","ssh","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-06
 modified: 2021-12-26
-modified_by:
-  name: Linode
 title: "Use tmux (a Terminal Multiplexer)"
 title_meta: "How to Use tmux (a Terminal Multiplexer)"
 image: tmux.jpg

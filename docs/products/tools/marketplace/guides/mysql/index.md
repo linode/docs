@@ -4,8 +4,6 @@ keywords: ['database','mysql','rdbms','relational database','mariadb']
 tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 published: 2020-03-13
 modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy MySQL/MariaDB through the Linode Marketplace"
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'

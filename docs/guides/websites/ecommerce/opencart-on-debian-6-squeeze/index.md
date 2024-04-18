@@ -6,8 +6,6 @@ keywords: ["opencart", "ecommerce", "commerce", "store", "debian", "squeeze"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/opencart/debian-6/','/websites/ecommerce/opencart-on-debian-6-squeeze/']
 modified: 2011-09-20
-modified_by:
-  name: Linode
 published: 2011-09-16
 title: 'OpenCart on Debian 6 (Squeeze)'
 relations:

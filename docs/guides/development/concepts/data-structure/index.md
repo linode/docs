@@ -4,8 +4,6 @@ description: 'What is a data structure? Read our guide to learn about why data s
 keywords: ['data structure','data structures definition','what are data structures','computer data structures']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10
-modified_by:
-  name: Linode
 title: "Data Structures in Computer Programming"
 title_meta: "Understanding Data Structures: Definition, Uses & Benefits"
 external_resources:

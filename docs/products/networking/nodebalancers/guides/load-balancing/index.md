@@ -3,8 +3,6 @@ title: "Introduction to Load Balancing"
 description: "This guide shows you how to use Linode NodeBalancers, which are services built for high availability and designed to be maintenance free once deployed."
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 published: 2022-10-07
-modified_by:
-  name: Linode
 tags: ["linode platform","networking"]
 aliases: ['/platform/nodebalancer/what-are-nodebalancers/','/guides/what-are-nodebalancers/']
 contributors: ["Linode"]

@@ -5,8 +5,6 @@ keywords: ['Python unicode','Unicode python','Unicode error python','Python unic
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-20
-modified_by:
-  name: Linode
 title: "How to Use Unicode in Python 3"
 title_meta: "Using Unicode in Python 3"
 external_resources:

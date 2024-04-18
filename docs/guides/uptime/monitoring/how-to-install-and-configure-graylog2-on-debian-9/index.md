@@ -7,8 +7,6 @@ tags: ["java","debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
 modified: 2019-01-31
-modified_by:
-  name: Linode
 title: 'How to Install and Configure Graylog2 on Debian 9'
 external_resources:
 - '[Graylog Server Documentation](http://docs.graylog.org/en/2.3/)'

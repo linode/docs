@@ -6,8 +6,6 @@ tags: ['centos', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
 image: MIGRATE.jpg
-modified_by:
-  name: Linode
 title: "Migrate From CentOS 8 to CentOS Stream"
 title_meta: "How to Migrate From CentOS 8 to CentOS Stream"
 external_resources:

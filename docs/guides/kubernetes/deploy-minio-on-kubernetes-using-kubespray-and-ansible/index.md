@@ -5,8 +5,6 @@ keywords: ['ansible', 'kubernetes', 'cluster', 's3', 'aws']
 tags: ["python","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-02-23
-modified_by:
-  name: Linode
 title: 'Deploy Minio on Kubernetes using Kubespray and Ansible'
 aliases: ['/applications/containers/deploy-minio-on-kubernetes-using-kubespray-and-ansible/','/kubernetes/deploy-minio-on-kubernetes-using-kubespray-and-ansible/','/applications/containers/kubernetes/deploy-minio-on-kubernetes-using-kubespray-and-ansible/']
 concentrations: ["Kubernetes"]

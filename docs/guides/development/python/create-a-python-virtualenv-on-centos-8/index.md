@@ -5,8 +5,6 @@ keywords: ["python", "python virtual environment", "virtualenv", "centos 8"]
 tags: ["python","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-07
-modified_by:
-  name: Linode
 published: 2017-08-13
 title: Creating a Python Virtual Environment on CentOS 8
 title_meta: How to Create a Python Virtual Environment on CentOS 8

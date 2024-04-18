@@ -6,8 +6,6 @@ keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-9-10-karmic/','/databases/mysql/phpmyadmin-ubuntu-9-10-karmic/']
 modified: 2011-05-17
-modified_by:
-  name: Linode
 published: 2010-04-17
 title: 'Manage MySQL with phpMyAdmin on Ubuntu 9.10 (Karmic)'
 external_resources:

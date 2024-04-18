@@ -6,8 +6,6 @@ keywords: ['cloud-based firewall','block malicious traffic','stop ddos attacks',
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["David Robert Newman"]
 published: 2023-11-28
-modified_by:
-  name: Linode
 ---
 
 Moving to the cloud has many advantages, including flexibility, reduced management overhead, performance, and security. [Cloud-based firewalls](/docs/products/networking/cloud-firewall/) can offer finer-grained access control and more comprehensive threat mitigation than their traditional hardware-based counterparts.

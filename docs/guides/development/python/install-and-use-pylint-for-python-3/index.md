@@ -6,8 +6,6 @@ tags: ['pylint','python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 image: Pylint.jpg
-modified_by:
-  name: Linode
 title: "Installing and Using Pylint for Python 3"
 title_meta: "How to Install and Use Pylint for Python 3"
 external_resources:

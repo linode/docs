@@ -6,8 +6,6 @@ keywords: ['nginx proxy manager tutorial','nginx proxy manager docker','nginx-pr
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributors: ["Nathaniel Stickman"]
 published: 2023-06-21
-modified_by:
-  name: Linode
 external_resources:
 - '[Nginx Proxy Manager: Full Setup Instructions](https://nginxproxymanager.com/setup/)'
 - '[Cloud Raya: Reverse Proxy Management Using Nginx Proxy Manager](https://cloudraya.com/knowledge-base/reverse-proxy-management-using-nginx-proxy-manager/)'

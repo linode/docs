@@ -6,8 +6,6 @@ keywords: ["osCommerce", "Debian", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/oscommerce-on-debian-5-lenny/','/web-applications/e-commerce/oscommerce/debian-5-lenny/']
 modified: 2011-08-22
-modified_by:
-  name: Linode
 published: 2010-01-22
 title: 'osCommerce on Debian 5 (Lenny)'
 relations:

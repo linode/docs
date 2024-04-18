@@ -4,8 +4,6 @@ description: 'Shortguide for installing NGINX on CentOS.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-19
-modified_by:
-  name: Linode
 published: 2018-03-19
 show_on_rss_feed: false
 headless: true

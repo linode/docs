@@ -4,8 +4,6 @@ description: "Learn how to set up te Beautiful Soup Python library to collect da
 keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
-modified_by:
-  name: Linode
 published: 2017-12-12
 title: "Scrape a Website with Beautiful Soup"
 title_meta: "How to Scrape a Website with Beautiful Soup"

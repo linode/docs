@@ -6,8 +6,6 @@ tags: ['awk']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
 image: FilterData.jpg
-modified_by:
-  name: Linode
 title: "Filter Data using AWK RegEx"
 title_meta: "How to Filter Data using AWK RegEx"
 contributors: ["Andy Lester"]

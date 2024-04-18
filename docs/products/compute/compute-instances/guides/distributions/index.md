@@ -3,8 +3,6 @@ description: "A list of all the Linux distributions provided on the Linode Platf
 keywords: ["distro", "distribution", "operating system", "Linux"]
 published: 2019-07-15
 modified: 2023-12-19
-modified_by:
-  name: Linode
 title: "Choosing a Linux Distribution"
 title_meta: "How to Choose a Linux Distribution"
 tags: ["linux"]

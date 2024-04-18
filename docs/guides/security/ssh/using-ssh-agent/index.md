@@ -4,8 +4,6 @@ description: "ssh-agent manages keys and passwords for SSH, and it can make conn
 keywords: ['start ssh agent','how to use ssh agent','ssh agent list keys']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-10
-modified_by:
-  name: Nathaniel Stickman
 title: "Use ssh-agent to Manage Private Keys"
 title_meta: "How to Use ssh-agent to Manage Private Keys"
 external_resources:

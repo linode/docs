@@ -6,8 +6,6 @@ description: 'This guide provides you with step-by-step instructions for install
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-29
 modified: 2018-06-29
-modified_by:
-  name: Linode
 title: Install Drupal with Docker Compose
 external_resources:
   - '[Official Drupal Image on Docker Hub](https://hub.docker.com/_/drupal/)'

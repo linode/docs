@@ -6,8 +6,6 @@ tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
 image: GNUMakeTutorial-LearntoAutomateTasks.jpg
-modified_by:
-  name: Linode
 title: "Use GNU Make to Automate Tasks"
 title_meta: "GNU Make Tutorial: Learn to Automate Tasks"
 contributors: ["Stephen Savitzky"]

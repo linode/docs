@@ -5,8 +5,6 @@ keywords: ["Apache Guacamole", "Docker", "VNC", "SSH"]
 tags: ["docker", "guacamole"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-10
-modified_by:
-  name: Linode
 title: "Installing Apache Guacamole through Docker"
 title_meta: "How to Install Apache Guacamole through Docker"
 external_resources:

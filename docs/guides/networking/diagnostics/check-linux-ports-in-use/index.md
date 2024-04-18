@@ -6,8 +6,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-25
 modified: 2022-01-14
 tags: ["networking","linux"]
-modified_by:
-  name: Linode
 title: "Checking Open and Listening Ports on Linux Using netstat and ss"
 title_meta: "Check Open and Listening Ports on Linux Using netstat and ss"
 contributors: ["Martin Heller"]

@@ -6,8 +6,6 @@ keywords: ["mysql debian 6", "mysql debian", "mysql debian squeeze", "mysql linu
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-debian-6-squeeze/','/databases/mysql/debian-6-squeeze/']
 modified: 2014-01-14
-modified_by:
-  name: Alex Fornuto
 published: 2011-01-26
 title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
 relations:

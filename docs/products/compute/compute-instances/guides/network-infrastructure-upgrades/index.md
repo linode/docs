@@ -4,8 +4,6 @@ description: "An overview of changes and actions that may be required in advance
 keywords: ['networking']
 published: 2022-07-19
 modified: 2024-01-03
-modified_by:
-  name: Linode
 aliases: ['/guides/network-infrastructure-upgrades/']
 contributors: ["Linode"]
 ---

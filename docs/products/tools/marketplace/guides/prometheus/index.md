@@ -5,8 +5,6 @@ tags: ["linode platform","monitoring","marketplace","cloud-manager"]
 published: 2020-03-12
 modified: 2022-03-08
 image: Prometheus_oneclickapps.png
-modified_by:
-  name: Linode
 title: "Deploy Prometheus through the Linode Marketplace"
 external_resources:
 - '[Getting Started with Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/)'

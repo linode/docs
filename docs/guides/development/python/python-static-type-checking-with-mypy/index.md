@@ -5,8 +5,6 @@ keywords: ['mypy static typing', 'mypy type aliases']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
-modified_by:
-  name: Linode
 title: "Use Mypy for Python Static Type Checking"
 title_meta: "Python Static Type Checking with Mypy"
 contributors: ["Cameron Laird"]

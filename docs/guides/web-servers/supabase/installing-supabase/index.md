@@ -4,8 +4,6 @@ description: "This guide covers setting up a Supabase instance in Docker, access
 keywords: ['install supabase','supabase firebase','supabase self host']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-01
-modified_by:
-  name: Nathaniel Stickman
 title: "Self-host Supabase with Docker"
 title_meta: "How to Self-host Supabase with Docker"
 external_resources:

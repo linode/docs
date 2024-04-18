@@ -5,8 +5,6 @@ keywords: ["Linux terminal", "terminal HOWTO", "Linode terminal tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/using-the-terminal/','/tools-reference/tools/using-the-terminal/','/tools-reference/ssh/using-the-terminal/','/using-linux/using-the-terminal/']
 modified: 2017-02-15
-modified_by:
-  name: Linode
 published: 2009-08-02
 title: Using the Terminal
 external_resources:

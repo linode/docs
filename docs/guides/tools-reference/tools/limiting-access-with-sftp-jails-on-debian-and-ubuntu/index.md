@@ -7,8 +7,6 @@ tags: ["ubuntu","debian","linux","ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/sftp-jails/','/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/']
 modified: 2018-01-29
-modified_by:
-  name: Linode
 published: 2010-01-06
 title: Limiting Access with SFTP Jails on Debian and Ubuntu
 external_resources:

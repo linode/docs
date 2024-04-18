@@ -4,8 +4,6 @@ description: "This guide shows you how to set up a highly available PostgreSQL c
 keywords: ["postgresql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-10-18
-modified_by:
-  name: Kulshekhar Kabra
 published: 2017-09-19
 title: "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy"
 title_meta: "How to Create PostgreSQL Cluster Using Patroni and HAProxy"

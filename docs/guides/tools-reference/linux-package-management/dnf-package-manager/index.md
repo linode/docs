@@ -6,8 +6,6 @@ tags: ['yum','dnf','centos','fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 modified: 2021-07-15
-modified_by:
-  name: Linode
 title: "Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
 title_meta: "How to Use DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
 aliases: ['/guides/how-to-use-yum-dnf/','/guides/how-to-use-dnf/']

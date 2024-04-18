@@ -5,8 +5,6 @@ keywords: ['typescript decorators']
 tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-28
-modified_by:
-  name: Linode
 title: "Getting Started with TypeScript Decorators"
 title_meta: "TypeScript Decorators: Getting Started"
 contributors: ["Martin Heller"]

@@ -4,8 +4,6 @@ description: 'This guide shows you how to install PyTorch on an Ubuntu 20.04 ser
 keywords: ['pytorch install','pytorch cpu','conda install pytorch','what is pytorch', 'uninstall pytorch']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
-modified_by:
-  name: Linode
 title: "Install PyTorch on Ubuntu 20.04"
 title_meta: "How to Install PyTorch on Ubuntu 20.04"
 contributors: ["Tom Henderson"]

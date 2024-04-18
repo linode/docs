@@ -6,8 +6,6 @@ keywords: ["zfs", "file system", "volume manager", "redundant", "silent corrupti
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-16
-modified_by:
-  name: Linode
 title: 'How to Use ZFS on Ubuntu 16.04'
 published: 2017-10-30
 external_resources:

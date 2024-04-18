@@ -5,8 +5,6 @@ keywords: ['gtop linux','gtop linux install','system monitor linux terminal']
 tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
-modified_by:
-  name: Linode
 title: "Install and Use gtop on Linux"
 title_meta: "How to Install and Use gtop on Linux"
 external_resources:

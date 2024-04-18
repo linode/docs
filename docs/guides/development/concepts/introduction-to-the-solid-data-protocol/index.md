@@ -5,8 +5,6 @@ keywords: ['solid protocol']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
-modified_by:
-  name: Linode
 title: "An Overview of the Solid Data Protocol"
 title_meta: "Introduction to the Solid Data Protocol"
 external_resources:

@@ -6,8 +6,6 @@ keywords: ['Docker Compose V2', 'Install Docker Compose', 'Use Docker Compose', 
 tags: ['dokcer', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-06-06
-modified_by:
-  name: Linode
 title: "How to Use Docker Compose V2"
 external_resources:
 - '[Docker Compose Overview](https://docs.docker.com/compose/)'

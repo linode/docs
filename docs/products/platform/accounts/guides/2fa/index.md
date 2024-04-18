@@ -4,8 +4,6 @@ keywords: ["security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
 published: 2022-06-27
 modified: 2023-08-15
-modified_by:
-  name: Linode
 title: "Manage Two-Factor Authentication (2FA) on a User Account"
 title_meta: "Manage 2FA on a Linode User Account"
 aliases: ['/guides/2fa/']

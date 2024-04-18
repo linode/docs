@@ -6,8 +6,6 @@ keywords: ['usermod','usermod linux','usermod command']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
-modified_by:
-  name: Nathaniel Stickman
 title: "An Overview of the usermod Command and How It's Used"
 title_meta: "What is usermod, and How do I Use It?"
 external_resources:
