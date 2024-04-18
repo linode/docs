@@ -2,11 +2,11 @@
 slug: set-up-wireguard-vpn-on-ubuntu
 title: "Set Up WireGuard VPN on Ubuntu"
 description: 'Wireguard encrypts your traffic quickly and safely, this guide will show you how to set up WireGuard VPN server and clients.'
+og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 authors: ["Sunit Nandi"]
 contributors: ["Sunit Nandi"]
 published: 2017-11-14
 modified: 2019-01-22
-og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn', 'ubuntu']
 bundles: ['network-security']
 tags: ["ubuntu","networking","security","vpn"]

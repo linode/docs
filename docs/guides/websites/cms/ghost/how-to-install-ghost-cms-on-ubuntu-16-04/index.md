@@ -2,10 +2,10 @@
 slug: how-to-install-ghost-cms-on-ubuntu-16-04
 title: How to Install Ghost CMS on Ubuntu 16.04
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 16.04'
+og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
 authors: ["Blago Eres"]
 contributors: ["Blago Eres"]
 published: 2017-09-12
-og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 16.04"]
 tags: ["nginx","ubuntu","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

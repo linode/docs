@@ -3,10 +3,10 @@ slug: deploy-prometheus-operator-with-grafana-on-lke
 title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
 title_meta: "How to Deploy Prometheus Operator and Grafana on LKE"
 description: 'Learn how to quickly deploy Prometheus Operator monitoring stack including Grafana on Linode Kubernetes Engine.'
+og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy Prometheus Operator monitoring stack including Grafana on Linode Kubernetes Engine.'
 authors: ["Ben Bigger"]
 contributors: ["Ben Bigger"]
 published: 2020-07-29
-og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy Prometheus Operator monitoring stack including Grafana on Linode Kubernetes Engine.'
 keywords: ['kubernetes', 'lke', 'prometheus', 'grafana']
 tags: ["monitoring","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

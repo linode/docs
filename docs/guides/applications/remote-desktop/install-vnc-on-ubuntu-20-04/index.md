@@ -2,11 +2,11 @@
 slug: install-vnc-on-ubuntu-20-04
 title: 'Install VNC on Ubuntu 20.04'
 description: 'This guide shows how to install and connect to a desktop environment on your Linode'
+og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2021-10-21
 modified: 2023-06-12
-og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 keywords: ["vnc", "remote desktop", "ubuntu", "20.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

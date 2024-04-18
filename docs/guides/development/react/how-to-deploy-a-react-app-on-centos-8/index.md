@@ -3,11 +3,11 @@ slug: how-to-deploy-a-react-app-on-centos-8
 title: "Deploying a React Application on CentOS 8"
 title_meta: "How to Deploy a React Application on CentOS 8"
 description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX.'
+og_description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-04-24
 modified: 2020-04-24
-og_description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX'
 keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

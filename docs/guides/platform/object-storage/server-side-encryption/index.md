@@ -3,11 +3,11 @@ slug: server-side-encryption
 title: "Using Server-Side Encryption with Linode Object Storage"
 title_meta: "How to Use Server-Side Encryption with Linode Object Storage"
 description: 'This guide teaches you how to secure your Linode Object Storage data with server-side encryption using an example script written in Python.'
+og_description: 'Learn how to secure your Linode Object Storage data with server-side encryption.'
 authors: ["Ben Bigger"]
 contributors: ["Ben Bigger"]
 published: 2020-08-14
 modified: 2023-08-15
-og_description: 'Learn how to secure your Linode Object Storage data with server-side encryption.'
 keywords: ['object','storage','security', 'sse-c', 'aes-256', 'terraform']
 tags: ["linode platform","python","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

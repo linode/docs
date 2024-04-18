@@ -2,11 +2,11 @@
 slug: install-vnc-on-ubuntu-18-04
 title: 'Install VNC on Ubuntu 18.04'
 description: 'This guide will show you how to install and configure VNC enabling you to remotely connect to a live desktop environment on your Linode on Ubuntu 18.04.'
+og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2016-06-21
 modified: 2023-06-27
-og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 keywords: ["vnc", "remote desktop", "ubuntu", "18.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

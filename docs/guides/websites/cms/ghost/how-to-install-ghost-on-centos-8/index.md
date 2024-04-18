@@ -3,10 +3,10 @@ slug: how-to-install-ghost-on-centos-8
 title: Installing Ghost CMS on CentOS 8
 title_meta: How to Install Ghost CMS on CentOS 8
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on CentOS 8.'
+og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running CentOS 8.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-02-10
-og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running CentOS 8.'
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on CentOS 8", "ghost cms"]
 tags: ["nginx","centos","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

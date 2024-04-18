@@ -3,10 +3,10 @@ slug: how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04
 title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
 title_meta: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
 description: 'This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode.'
+og_description: "This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode."
 authors: ["Sam Foo"]
 contributors: ["Sam Foo"]
 published: 2018-03-07
-og_description: "This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode."
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
 tags: ["web applications","java","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

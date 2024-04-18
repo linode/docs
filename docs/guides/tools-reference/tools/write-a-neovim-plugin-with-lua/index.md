@@ -3,10 +3,10 @@ slug: write-a-neovim-plugin-with-lua
 title: "Write a Neovim Plugin with Lua"
 title_meta: "How to Write a Neovim Plugin with Lua"
 description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to create a plugin using the Lua programming language."
+og_description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to make a plugin to start taking advantage of that."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2022-03-18
-og_description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to make a plugin to start taking advantage of that."
 keywords: ['write neovim plugin','neovim plugin development','neovim lua plugin']
 tags: ['neovim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

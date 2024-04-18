@@ -2,10 +2,10 @@
 slug: linode-object-storage-with-mastodon
 title: "How to Use Linode Object Storage with Mastodon"
 description: "Mastodon stores media attachments locally by default, which can make these static files difficult to manage and scale. Using object storage with Mastodon can remedy this and make your instance more efficient. Learn about how Linode Object Storage can be implemented with your Mastodon server in this tutorial."
+og_description: "Mastodon stores media attachments locally by default, which can make these static files difficult to manage and scale. Using object storage with Mastodon can remedy this and make your instance more efficient. Learn about how Linode Object Storage can be implemented with your Mastodon server in this tutorial."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2022-12-24
-og_description: "Mastodon stores media attachments locally by default, which can make these static files difficult to manage and scale. Using object storage with Mastodon can remedy this and make your instance more efficient. Learn about how Linode Object Storage can be implemented with your Mastodon server in this tutorial."
 keywords: ['mastodon object storage','how to use mastodon','mastodon s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

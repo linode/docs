@@ -2,10 +2,10 @@
 slug: secure-logstash-connections-using-ssl-certificates
 title: "Secure Logstash Connections Using SSL Certificates"
 description: 'This guide provides you with instructions for securing connections from Logstash, a server-side processing pipeline, using SSL certificates.'
+og_description: 'Secure Logstash connections using SSL certificates.'
 authors: ["Dan Nielsen"]
 contributors: ["Dan Nielsen"]
 published: 2020-11-05
-og_description: 'Secure Logstash connections using SSL certificates.'
 keywords: ['secure logstash with ssl', 'logstash ssl setup', 'logstash ssl certificate']
 tags: ['security','ssl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

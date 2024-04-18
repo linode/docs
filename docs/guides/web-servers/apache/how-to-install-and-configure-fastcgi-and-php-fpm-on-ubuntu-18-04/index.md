@@ -3,10 +3,10 @@ slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-ubuntu-18-04
 title: "Installing and Configuring FastCGI and PHP-FPM on Ubuntu 18.04"
 title_meta: "How to Install FastCGI and PHP-FPM on Ubuntu 18.04"
 description: 'This guide will show you how to install and configure mod_fcgid and PHP-FPM on Ubuntu 18.04.'
+og_description: 'This guide will show you how to install mod_fcgid and PHP-FPM on Ubuntu 18.04. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-02-27
-og_description: 'This guide will show you how to install mod_fcgid and PHP-FPM on Ubuntu 18.04. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
 keywords: ['list','of','keywords','and key phrases']
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

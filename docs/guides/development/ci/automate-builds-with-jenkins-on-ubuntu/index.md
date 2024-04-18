@@ -3,11 +3,11 @@ slug: automate-builds-with-jenkins-on-ubuntu
 title: 'Automate Builds with Jenkins on Ubuntu 22.04'
 title_meta: 'How to Automate Builds with Jenkins on Ubuntu 22.04'
 description: 'This how-to guide lets you create easy automation workflows with Jenkins.'
+og_description: 'Jenkins builds pipelines that automate setup, testing and deploying applications. Following this guide will expedite your Continuous Integration and Continuous Delivery (CI/CD) process in a basic workflow.'
 authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 published: 2017-11-14
 modified: 2023-01-06
-og_description: 'Jenkins builds pipelines that automate setup, testing and deploying applications. Following this guide will expedite your Continuous Integration and Continuous Delivery (CI/CD) process in a basic workflow.'
 keywords: ['jenkins','pipeline','ci','automation']
 aliases: ['/development/automate-builds-with-jenkins-on-ubuntu/','/development/ci/automate-builds-with-jenkins-on-ubuntu/']
 tags: ["automation","version control system","docker","ubuntu"]

@@ -2,11 +2,11 @@
 slug: backing-up-your-data
 title: Backing Up Your Data
 description: "This guide reviews different methods of backing up your Linode's data."
+og_description: "This guide reviews different methods of backing up your Linode's data. It also demonstrates making manual and automatic backups using rsync."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2013-04-04
 modified: 2017-12-27
-og_description: "This guide reviews different methods of backing up your Linode's data. It also demonstrates making manual and automatic backups using rsync."
 keywords: ["backup", "backups", "rsync", "cron", "getting started"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

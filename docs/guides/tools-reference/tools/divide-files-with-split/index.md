@@ -2,10 +2,10 @@
 slug: divide-files-with-split
 title: How to Divide Files with split
 description: 'Practical examples for using split to divide large files into multiple smaller files.'
+og_description: 'split is a Unix command line utility for dividing large files into smaller files. This guide provides basic and advanced examples along with explanations of the most common options and parameters.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-01-29
-og_description: 'split is a Unix command line utility for dividing large files into smaller files. This guide provides basic and advanced examples along with explanations of the most common options and parameters.'
 keywords: ["split", "files", "unix", "command-line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]

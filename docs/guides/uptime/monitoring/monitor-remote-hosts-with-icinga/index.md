@@ -2,11 +2,11 @@
 slug: monitor-remote-hosts-with-icinga
 title: 'Monitor Remote Hosts with Icinga'
 description: "This guide shows how to configure Icinga 2 to monitor remote systems on your Linode"
+og_description: "This guide will show you how to configure Icinga 2 to monitor your remote systems. Icinga 2 can monitor local and remote systems, and this guide shows you how to do both."
 authors: ["Matt Vass"]
 contributors: ["Matt Vass"]
 published: 2017-12-28
 modified: 2017-12-19
-og_description: "This guide will show you how to configure Icinga 2 to monitor your remote systems. Icinga 2 can monitor local and remote systems, and this guide shows you how to do both."
 keywords: ["debian", "icinga", "monitoring", "icinga2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

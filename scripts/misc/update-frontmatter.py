@@ -221,7 +221,7 @@ def sort_parameters():
                     title = ""
                     title_meta = ""
                     description = ""
-                    description_meta = ""
+                    og_description = ""
                     authors = ""
                     contributors = ""
                     modified = ""
@@ -254,8 +254,8 @@ def sort_parameters():
                             title_meta = line
                         elif line.startswith("description:"):
                             description = line
-                        elif line.startswith("description_meta:"):
-                            description_meta = line
+                        elif line.startswith("og_description:"):
+                            og_description = line
                         elif line.startswith("authors:"):
                             authors = line
                         elif line.startswith("contributors:"):
@@ -292,8 +292,8 @@ def sort_parameters():
                                         fp.write(title_meta)
                                     if not description == "":
                                         fp.write(description)
-                                    if not description_meta == "":
-                                        fp.write(description_meta)
+                                    if not og_description == "":
+                                        fp.write(og_description)
                                     if not authors == "":
                                         fp.write(authors)
                                     if not contributors == "":
@@ -310,7 +310,7 @@ def sort_parameters():
                                     continue
                                 elif line.startswith("description"):
                                     continue
-                                elif line.startswith("description_meta"):
+                                elif line.startswith("og_description"):
                                     continue
                                 elif line.startswith("authors"):
                                     continue

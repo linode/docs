@@ -3,10 +3,10 @@ slug: terraform-vs-pulumi
 title: "Pulumi vs Terraform"
 title_meta: "Comparing Pulumi and Terraform"
 description: 'This guide compares Terraform and Pulumi, with an explanation of how each tool works and what purpose it serves.'
+og_description: 'TThis guide compares Terraform and Pulumi, with an explanation of how each tool works and what purpose it serves.'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2021-03-22
-og_description: 'TThis guide compares Terraform and Pulumi, with an explanation of how each tool works and what purpose it serves.'
 keywords: ['IaC','Terraform','Pulumi','comparison', 'service orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ComparingTerraform_Pulumi.png

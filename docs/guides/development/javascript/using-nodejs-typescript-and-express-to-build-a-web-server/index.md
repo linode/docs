@@ -2,10 +2,10 @@
 slug: using-nodejs-typescript-and-express-to-build-a-web-server
 title: "Use Node.js, TypeScript, and Express to Build a Web Server"
 description: 'This guide shows you how to configure a Node.js, TypeScript, and Express dev environment, after which you will learn how to build a web server using Typescript.'
+og_description:  'This guide shows you how to configure a Node.js, TypeScript, and Express dev environment, after which you will learn how to build a web server using Typescript.'
 authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2021-09-10
-og_description:  'This guide shows you how to configure a Node.js, TypeScript, and Express dev environment, after which you will learn how to build a web server using Typescript.'
 keywords: ['nodejs typescript','node express server','tsconfig json']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

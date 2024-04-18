@@ -2,10 +2,10 @@
 slug: how-to-use-less
 title: How to Use the Less Command
 description: 'Use the less command to display file and command output one page at a time.'
+og_description: 'Use the less command to display file and command output one page at a time'
 authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 published: 2018-09-05
-og_description: 'Use the less command to display file and command output one page at a time'
 keywords: ["linux", "how to", "less", "page"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]

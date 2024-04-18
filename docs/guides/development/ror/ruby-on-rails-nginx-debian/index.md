@@ -2,11 +2,11 @@
 slug: ruby-on-rails-nginx-debian
 title: 'Ruby on Rails with NGINX On Debian 9'
 description: "This guide shows how to host a Ruby on Rails application on Debian using NGINX and Passenger."
+og_description: "This guide shows how to host a Ruby on Rails application on Debian using the NGINX web server and the Passenger app server."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2015-06-25
 modified: 2017-12-28
-og_description: "This guide shows how to host a Ruby on Rails application on Debian using the NGINX web server and the Passenger app server."
 keywords: ["ruby on rails", "ruby on nginx", "rails apps", "debian", "debian 9", " ruby", " nginx"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

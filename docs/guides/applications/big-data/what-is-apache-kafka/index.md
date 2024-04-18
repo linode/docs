@@ -3,10 +3,10 @@ slug: what-is-apache-kafka
 title: "An Introduction to Apache Kafka"
 title_meta: "What is Apache Kafka?"
 description: 'This guide provides you with an introduction to Kafka, an open-source platform for stream management and processing, excellent when real-time data streams are needed.'
+og_description:  'This guide provides you with an introduction to Kafka, an open-source platform for stream management and processing, excellent when real-time data streams are needed.'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2021-06-11
-og_description:  'This guide provides you with an introduction to Kafka, an open-source platform for stream management and processing, excellent when real-time data streams are needed.'
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

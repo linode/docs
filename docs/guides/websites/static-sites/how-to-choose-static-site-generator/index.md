@@ -2,10 +2,10 @@
 slug: how-to-choose-static-site-generator
 title: 'How to Choose a Static Site Generator'
 description: 'A static site generator helps you create professional-looking, responsive sites and blogs with minimal code.'
+og_description: "Use a static site generator to build professional websites without learning how to code. Our guide helps you choose a fast static site generator for your website or blog."
 authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 published: 2018-03-14
-og_description: "Use a static site generator to build professional websites without learning how to code. Our guide helps you choose a fast static site generator for your website or blog."
 keywords: ["static site", "static site generator", "ssg", "jekyll", "hugo", "gatsby", "hexo", "gitbook"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/static-sites/how-to-choose-static-site-generator/']

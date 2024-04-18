@@ -2,11 +2,11 @@
 slug: limiting-access-with-sftp-jails-on-debian-and-ubuntu
 title: Limiting Access with SFTP Jails on Debian and Ubuntu
 description: 'Restricting remote users to their home directories, only allowing access to SFTP for transferring files.'
+og_description: 'SFTP Jails restricits remote users to their home directories.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-01-06
 modified: 2018-01-29
-og_description: 'SFTP Jails restricits remote users to their home directories.'
 keywords: ["sftp", "sftp jail", "openssh", "ssh jail"]
 tags: ["ubuntu","debian","linux","ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

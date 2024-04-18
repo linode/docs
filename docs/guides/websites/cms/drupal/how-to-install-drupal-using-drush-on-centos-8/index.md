@@ -3,10 +3,10 @@ slug: how-to-install-drupal-using-drush-on-centos-8
 title: Install Drupal using Drush on CentOS 8
 title_meta: How to Install Drupal using Drush on CentOS 8
 description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on CentOS 8..'
+og_description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on CentOS 8.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-02-29
-og_description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on CentOS 8.'
 keywords: ["drupal", "cms", "content management system", "content management framework","drush", "centos"]
 tags: ["drupal","centos","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

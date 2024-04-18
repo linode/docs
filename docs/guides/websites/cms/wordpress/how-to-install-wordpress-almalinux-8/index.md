@@ -3,10 +3,10 @@ slug: how-to-install-wordpress-almalinux-8
 title: "Install WordPress on AlmaLinux 8"
 title_meta: "How to Install WordPress on AlmaLinux 8"
 description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8.'
+og_description: "This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2021-07-16
-og_description: "This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8."
 keywords: ['wordpress almalinux']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

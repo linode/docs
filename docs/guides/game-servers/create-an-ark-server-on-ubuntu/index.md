@@ -3,11 +3,11 @@ slug: create-an-ark-server-on-ubuntu
 title: "Creating a Dedicated ARK Server on Ubuntu"
 title_meta: "How to Create a Dedicated ARK Server on Ubuntu"
 description: "A guide on installing and configuring an Ark: Survival Evolved server, with its necessary dependencies, on Ubuntu."
+og_description: "How to install an Ark server on Ubuntu."
 authors: ["Nick Brewer"]
 contributors: ["Nick Brewer"]
 published: 2016-12-28
 modified: 2024-01-22
-og_description: "How to install an Ark server on Ubuntu."
 keywords: ["ark survival evolved", "ubuntu", "server"]
 tags: ["ubuntu","game servers"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

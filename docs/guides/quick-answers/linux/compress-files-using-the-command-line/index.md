@@ -3,10 +3,10 @@ slug: compress-files-using-the-command-line
 title: "Archive, Compress, and Extract Files in Linux Using the Command Line"
 title_meta: "How to Archive, Extract & Compress Files in Linux"
 description: "Tar, is a GNU utility that provides the ability to create tar archives, extract and compress files in Linux. Check out our step-by-step guide here"
+og_description: "This guide will detail how to compress and extract files using tar on the Unix filesystem"
 authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 published: 2018-02-01
-og_description: "This guide will detail how to compress and extract files using tar on the Unix filesystem"
 keywords: ["tar", "star", "GNU-Tar", "cryptocurrency"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]

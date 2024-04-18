@@ -3,10 +3,10 @@ slug: using-e2fsck-to-fix-ext-disk-issues
 title: "Using e2fsck to Find and Repair Disk Errors On ext File Systems"
 title_meta: "How to Use e2fsck to Check and Repair Disk Errors On ext File Systems"
 description: "Having issues with your Linux installation? Using e2fsck might be able to help. This guide will walk you through the entire process involved in checking the inegitry and repairing issues with ext filesystems using e2fsck."
+og_description: "e2fsck is the Linux ext file system consistency check utility. This guide shows how to use e2fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2022-04-05
-og_description: "e2fsck is the Linux ext file system consistency check utility. This guide shows how to use e2fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
 keywords: ["e2fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

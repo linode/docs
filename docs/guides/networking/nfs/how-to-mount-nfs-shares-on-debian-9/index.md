@@ -2,11 +2,11 @@
 slug: how-to-mount-nfs-shares-on-debian-9
 title: How to Mount NFS Shares on Debian 9
 description: 'This tutorial shows how to set up an NFS server and client for remote file access on Debian.'
+og_description: 'With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-02-27
 modified: 2017-11-07
-og_description: 'With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.'
 keywords: ["NFS", "network file system"]
 aliases: ['/networking/how-to-mount-nfs-shares-on-debian-9/','/networking/how-to-mount-nfs-shares-on-debian-8/','/networking/nfs/how-to-mount-nfs-shares-on-debian-9/','/networking/basic-nfs-configuration-on-debian-7/','/networking/file-transfer/basic-nfs-debian/']
 tags: ["networking","debian"]

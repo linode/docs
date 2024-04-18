@@ -2,10 +2,10 @@
 slug: what-is-serverless-computing
 title: 'What is Serverless Computing?'
 description: 'Serverless computing is an application deployment architecture where cloud resources are supplied on-demand.  Learn how it works and why people use it.'
+og_description:  'Serverless computing is an application deployment architecture where cloud resources are supplied on-demand.  Learn how it works and why people use it.'
 authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 published: 2020-01-29
-og_description:  'Serverless computing is an application deployment architecture where cloud resources are supplied on-demand.  Learn how it works and why people use it.'
 keywords: ['serverless computing']
 tags: ["linux", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

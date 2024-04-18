@@ -3,11 +3,11 @@ slug: use-buildbot-for-software-testing-on-ubuntu
 title: "Using Buildbot to Test Software on Ubuntu 18.04"
 title_meta: "Use Buildbot for Software Testing on Ubuntu 18.04"
 description: "This shows how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds."
+og_description: "Deploy self-hosted continuous integration using Buildbot."
 authors: ["Tyler Langlois"]
 contributors: ["Tyler Langlois"]
 published: 2018-09-06
 modified: 2021-10-18
-og_description: "Deploy self-hosted continuous integration using Buildbot."
 keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "build", "qa"]
 tags: ["automation","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

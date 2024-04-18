@@ -3,10 +3,10 @@ slug: how-to-install-wordpress-debian-10
 title: "Install WordPress on Debian 10"
 title_meta: "How to Install WordPress on Debian 10"
 description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Debian 10.'
+og_description: "This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Debian 10."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2021-05-29
-og_description: "This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Debian 10."
 keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms','install wordpress on debian 10']
 tags: ['wordpress', 'cms', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

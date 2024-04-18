@@ -2,10 +2,10 @@
 slug: configuring-wordpress
 title: "Best Practices for Configuring WordPress"
 description: "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
+og_description:  "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2021-07-16
-og_description:  "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
 keywords: ['wordpress configurations']
 tags: ["wordpress", "cms", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

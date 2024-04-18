@@ -2,6 +2,7 @@
 slug: ruby-on-rails-apache-debian-8
 title: 'Install Ruby on Rails with Apache on Debian 8'
 description: 'Using the Apache web server with Debian 8 Wheezy to serve Ruby on Rails applications.'
+og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2013-07-13
@@ -12,7 +13,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-apache-debian-8/','/websites/ror/ruby-on-rails-apache-debian-8/']
 deprecated: true
 deprecated_link: 'development/ror/ruby-on-rails-apache-debian'
-og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[mod_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
