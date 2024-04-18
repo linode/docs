@@ -5,7 +5,6 @@ description: 'This guide shows how to install and configure the popular open-sou
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/opencart/centos-6/','/websites/ecommerce/opencart-on-centos-6/']
-modified: 2011-09-20
 published: 2011-09-20
 title: OpenCart on CentOS 6
 relations:

@@ -2,7 +2,6 @@
 slug: cloud-disks-shortguide
 description: 'Shortguide that shows you how to find the Disks section of the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
 published: 2020-07-22
 title: How to Find the Disks Section in the Cloud Manager
 keywords: ["cloud manager"]

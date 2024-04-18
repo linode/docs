@@ -5,7 +5,6 @@ og_description: "e2fsck is the Linux ext file system consistency check utility. 
 keywords: ["e2fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-05
-modified: 2022-04-05
 title: "Using e2fsck to Find and Repair Disk Errors On ext File Systems"
 title_meta: "How to Use e2fsck to Check and Repair Disk Errors On ext File Systems"
 external_resources:

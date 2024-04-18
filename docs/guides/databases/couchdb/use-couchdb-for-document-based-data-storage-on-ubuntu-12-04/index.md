@@ -5,7 +5,6 @@ description: 'CouchDB is a non-relational document based database, also referred
 keywords: ["couchdb", "nosql", "json", "ubuntu", "futon"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04-precise-pangolin/','/databases/couchdb/ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-09
 published: 2012-10-09
 title: 'Use CouchDB for Document-Based Data Storage on Ubuntu 12.04'
 external_resources:

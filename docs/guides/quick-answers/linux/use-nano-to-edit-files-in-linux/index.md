@@ -5,7 +5,6 @@ keywords: ["nano", "terminal", "command line", "shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/use-nano-to-edit-files-in-linux/','/quick-answers/linux/use-nano-to-edit-files-in-linux/']
 published: 2017-05-04
-modified: 2017-05-04
 title: 'Use nano to Edit Files in Linux'
 external_resources:
  - '[Using nano](/docs/guides/use-nano-text-editor-commands/)'

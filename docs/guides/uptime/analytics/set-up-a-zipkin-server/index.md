@@ -5,7 +5,6 @@ keywords: ["zipkin", "tracking"]
 tags: ["statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/set-up-a-zipkin-server-with-sample-website-tracking/','/uptime/set-up-a-zipkin-server/','/uptime/analytics/set-up-a-zipkin-server/']
-modified: 2017-09-28
 published: 2017-09-28
 title: 'Set Up a Zipkin Server'
 external_resources:

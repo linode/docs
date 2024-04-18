@@ -5,7 +5,6 @@ keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-28
 image: ClearCacheAndCookies.png
-modified: 2018-06-28
 title: 'Clearing Cache and Cookies in a Browser'
 title_meta: 'How to Clear Cache and Cookies in a Browser'
 aliases: ['/quick-answers/websites/clear-cache-shortguide/']

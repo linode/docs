@@ -4,7 +4,6 @@ description: "AMP is a game server management panel. As the successor to McMyAdm
 keywords: ["minecraft", "McMyAdmin", "debian", "centos", "ubuntu", "debian 9"]
 tags: ["debian, ubuntu, centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-13
 published: 2021-08-13
 title: Installing AMP for Game Server Management
 external_resources:

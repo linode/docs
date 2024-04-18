@@ -6,7 +6,6 @@ keywords: ["zabbix", "server monitoring", "monitoring", "server monitor"]
 tags: ["php","monitoring","database","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/zabbix/','/uptime/monitoring/monitoring-servers-with-zabbix/']
-modified: 2012-08-20
 published: 2012-08-20
 title: Monitoring Servers with Zabbix
 authors: ["Chris Ciufo"]

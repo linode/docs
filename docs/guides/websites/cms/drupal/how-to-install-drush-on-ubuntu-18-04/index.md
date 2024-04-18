@@ -5,7 +5,6 @@ keywords: ["drupal", "cms", "content management system", "content management fra
 aliases: ['/websites/cms/drupal/how-to-install-drush-on-ubuntu-18-04/','/websites/cms/drupal/drush-drupal/how-to-install-drush-on-ubuntu-18-04/','/websites/cms/drush-drupal/']
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-29
 published: 2020-02-29
 title: Install Drush on Ubuntu 18.04
 title_meta: How to Install Drush on Ubuntu 18.04

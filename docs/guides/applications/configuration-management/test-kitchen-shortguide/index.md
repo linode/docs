@@ -4,7 +4,6 @@ description: 'Try this Salt Guide with KitchenSalt'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-11-09
-modified: 2018-11-09
 title: "Try This Salt Guide with KitchenSalt Shortguide"
 headless: true
 show_on_rss_feed: false

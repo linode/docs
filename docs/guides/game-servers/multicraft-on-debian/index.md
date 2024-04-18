@@ -7,7 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
  - '[Minecraft.net](https://minecraft.net/)'
-modified: 2015-02-04
 deprecated: true
 published: 2015-02-04
 title: 'Installing Multicraft on Debian'

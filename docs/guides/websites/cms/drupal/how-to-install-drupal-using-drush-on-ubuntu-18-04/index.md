@@ -4,7 +4,6 @@ description: 'This guide will show you how to install the popular content manage
 keywords: ["drupal", "cms", "content management system", "content management framework", "drush", "ubuntu"]
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-29
 published: 2020-02-29
 title: Install Drupal using Drush on Ubuntu 18.04
 title_meta: How to Install Drupal using Drush on Ubuntu 18.04

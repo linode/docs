@@ -6,7 +6,6 @@ keywords: ["phpBB", "forum software", "web applications", "PHP", "Ubuntu 12.04",
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/launch-discussion-forums-with-phpbb-on-ubuntu-12-04/','/websites/forums/discussion-forums-with-phpbb-on-ubuntu-12-04-precise-pangolin/','/web-applications/bulletin-boards/phpbb/ubuntu-12-04-precise-pangolin/']
-modified: 2012-11-08
 published: 2012-11-08
 title: 'Launch Discussion Forums with phpBB on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:

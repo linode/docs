@@ -6,7 +6,6 @@ keywords: ["uwsgi", "wsgi", "nginx", "python", "ubuntu", "install uwsgi", "deplo
 tags: ["web server","python","ubuntu","web applications","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','/websites/nginx/use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04/','/web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','/web-servers/nginx/use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04/','/websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/']
-modified: 2012-11-13
 published: 2012-11-13
 title: "Deploy Python Apps with uWSGI and Nginx on Ubuntu 12.04"
 relations:

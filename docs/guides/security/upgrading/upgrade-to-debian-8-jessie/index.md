@@ -5,7 +5,6 @@ description: 'This guide provides you with step-by-step instructions on how to u
 keywords: ["debian", "upgrade", "wheezy", "jessie"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-04-29
 published: 2015-04-29
 title: 'Upgrading to Debian 8 (Jessie)'
 relations:

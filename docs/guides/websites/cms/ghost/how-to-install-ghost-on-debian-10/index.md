@@ -5,7 +5,6 @@ og_description: 'Easily publish your own professional-looking blog using Ghost o
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on debian 10", "ghost cms"]
 tags: ["nginx","mysql","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-10
 published: 2020-02-10
 title: Installing Ghost CMS on Debian 10
 title_meta: How to Install Ghost CMS on Debian 10

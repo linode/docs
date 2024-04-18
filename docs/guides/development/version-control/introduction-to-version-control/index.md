@@ -4,7 +4,6 @@ description: 'This guide will help you get started with Version Control, a speci
 keywords: ["version control", "introduction to version control", "git", "introduction to git"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/intro-version-control/','/applications/development/introduction-to-version-control/','/development/version-control/introduction-to-version-control/']
-modified: 2013-09-18
 published: 2013-09-18
 title: Introduction to Version Control
 external_resources:

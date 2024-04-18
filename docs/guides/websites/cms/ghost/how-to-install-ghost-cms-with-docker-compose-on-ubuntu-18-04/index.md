@@ -5,7 +5,6 @@ keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "depl
 tags: ["nginx","ubuntu","docker","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/ghost/how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04/','/websites/cms/how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04/']
-modified: 2018-08-20
 published: 2018-08-20
 title: Installing Ghost CMS with Docker Compose on Ubuntu 18.04
 title_meta: How to Install Ghost CMS with Docker on Ubuntu 18.04

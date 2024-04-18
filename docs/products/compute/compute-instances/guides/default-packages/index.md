@@ -1,7 +1,6 @@
 ---
 description: "This guide contains a list of all default packages on Linode's Distribution Images."
 keywords: ["linux", "linode manager", "image", "cloud manager"]
-modified: 2021-08-27
 published: 2021-08-27
 title: Default Distro Packages on Linode
 aliases: ['/guides/platform/disk-images/','/guides/platform/disk-images/default-packages-on-linode-images/','/guides/default-packages-on-linode-images/']

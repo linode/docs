@@ -4,7 +4,6 @@ description: 'How to migrate a LAMP website from another hosting provider to Lin
 keywords: ["lamp", "migrate", "website migration"]
 tags: ["linode platform","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-07-31
 published: 2018-07-31
 title: How to Migrate a LAMP Website to Linode
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']

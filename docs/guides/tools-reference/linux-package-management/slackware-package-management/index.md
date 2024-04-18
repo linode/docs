@@ -6,7 +6,6 @@ tags: ['slackware']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-15
 image: Managing Packages in Slackware Linux.jpg
-modified: 2021-07-15
 title: "Managing Packages in Slackware"
 title_meta: "How to Manage Packages in Slackware"
 authors: ["Linode"]

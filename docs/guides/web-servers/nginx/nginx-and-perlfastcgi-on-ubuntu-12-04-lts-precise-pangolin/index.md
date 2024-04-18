@@ -6,7 +6,6 @@ keywords: ["nginx", "fastscgi perl", "nginx ubuntu 12.04", "nginx fastcgi", "ngi
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/perl-fastcgi/ubuntu-12-04-precise-pangolin/','/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-12-04-lts-precise-pangolin/']
-modified: 2012-10-31
 published: 2012-10-31
 title: 'Nginx and Perl-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:

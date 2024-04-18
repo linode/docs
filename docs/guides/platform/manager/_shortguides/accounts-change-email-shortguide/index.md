@@ -2,7 +2,6 @@
 slug: accounts-change-email-shortguide
 description: 'Shortguide that shows you how to change the email address on your account.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
 published: 2020-07-21
 title: Change Your Email Address on Your Account
 keywords: ["users", "permissions", "accounts", "passwords"]

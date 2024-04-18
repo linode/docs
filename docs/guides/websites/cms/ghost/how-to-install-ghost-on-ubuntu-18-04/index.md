@@ -5,7 +5,6 @@ og_description: 'Easily publish your own professional-looking blog using Ghost o
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 18.04", "ghost cms"]
 tags: ["nginx","ubuntu","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-10
 published: 2020-02-10
 title: Installing Ghost CMS on Ubuntu 18.04 LTS
 title_meta: How to Install Ghost CMS on Ubuntu 18.04 LTS

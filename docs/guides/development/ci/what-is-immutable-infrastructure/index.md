@@ -4,7 +4,6 @@ description: 'This guide provides you with an overview of immutable server infra
 keywords: ['ci','automation','immutable', infrastructure]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-10
-modified: 2018-08-10
 title: "Immutable Infrastructure"
 audiences: ["intermediate"]
 tags: ["automation"]

@@ -5,7 +5,6 @@ keywords: ["coreos", "container linux", "login", "core"]
 tags: ["container","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/linux/log-in-to-coreos-container-linux/','/quick-answers/log-in-to-coreos-container-linux/']
-modified: 2017-05-08
 published: 2017-05-08
 title: Log in to CoreOS Container Linux
 authors: ["Linode"]

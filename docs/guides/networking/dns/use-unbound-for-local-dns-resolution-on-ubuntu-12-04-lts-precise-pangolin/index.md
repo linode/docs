@@ -6,7 +6,6 @@ keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbo
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-12-04-lts-precise-pangolin/','/dns-guides/unbound-dns-resolver-ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-09
 published: 2012-10-09
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 12.04 LTS (Precise Pangolin)'
 relations:

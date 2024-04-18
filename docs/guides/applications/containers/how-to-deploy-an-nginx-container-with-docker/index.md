@@ -4,7 +4,6 @@ description: 'An introduction to deploying and using Docker containers on your L
 keywords: ["docker", "container", "dockerfile", "nginx container"]
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-07-19
 published: 2017-07-19
 title: 'How to Deploy an nginx Container with Docker on Linode'
 external_resources:

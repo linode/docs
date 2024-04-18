@@ -5,7 +5,6 @@ keywords: ["graphite", "grafana", "monitor", "monitoring", "monitoring tool", "a
 aliases: ['/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/']
 tags: ["monitoring","postregsql","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-12-02
 published: 2015-12-02
 title: 'Deploy Graphite with Grafana on Ubuntu 14.04'
 deprecated: true

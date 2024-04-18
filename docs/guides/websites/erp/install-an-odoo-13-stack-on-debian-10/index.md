@@ -5,7 +5,6 @@ keywords: ["Odoo 13 install Debian 10", "install open source cms erp debian"]
 tags: ["debian", "postgresql", "database", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09
-modified: 2021-04-09
 title: Installing an Odoo 13 Stack on Debian 10
 title_meta: 'How to Install an Odoo 13 Stack on Debian 10'
 image: install-an-odoo-13-stack-on-debian-10-using-linode.png

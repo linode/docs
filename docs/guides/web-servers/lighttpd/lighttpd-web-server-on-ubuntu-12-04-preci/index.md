@@ -6,7 +6,6 @@ keywords: ["lighttpd", "web server", "web hosting"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lighttpd/ubuntu-12-04-precise/','/web-servers/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/']
-modified: 2013-09-11
 published: 2013-09-11
 title: 'lighttpd Web Server on Ubuntu 12.04 (Precise)'
 external_resources:

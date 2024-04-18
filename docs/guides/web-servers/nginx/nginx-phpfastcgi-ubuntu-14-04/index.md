@@ -6,7 +6,6 @@ keywords: ["nginx", "nginx ubuntu 14.04", "nginx fastcgi", "nginx php", "php", "
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-phpfastcgi-ubuntu-14-04/']
-modified: 2015-06-12
 published: 2015-06-12
 title: 'Nginx and PHP-FastCGI on Ubuntu 14.04'
 external_resources:

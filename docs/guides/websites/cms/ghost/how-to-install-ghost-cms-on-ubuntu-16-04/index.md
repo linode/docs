@@ -5,7 +5,6 @@ og_description: 'Easily publish your own professional-looking blog using Ghost o
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 16.04"]
 tags: ["nginx","ubuntu","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-12
 published: 2017-09-12
 title: How to Install Ghost CMS on Ubuntu 16.04
 aliases: ['/websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/','/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04/','/websites/cms/ghost/how-to-install-ghost-cms-on-ubuntu-16-04/']

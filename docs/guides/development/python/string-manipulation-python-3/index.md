@@ -4,7 +4,6 @@ description: 'Strings are one of the most commonly used data types in Python. Th
 keywords: ["python", "string", "f string", "format string", "python 3"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-13
-modified: 2018-04-13
 title: 'String Manipulation in Python 3'
 external_resources:
 - '[Official f-strings Documentation](https://docs.python.org/3.6/reference/lexical_analysis.html#f-strings)'

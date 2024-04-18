@@ -5,7 +5,6 @@ keywords: ["eBPF", "bcc", "tracing", "tools", "monitoring", "networking", "obser
 bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
-modified: 2021-08-27
 title: Installing BCC to Use eBPF Tracing Tools
 tags: ["networking","security"]
 external_resources:

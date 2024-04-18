@@ -4,7 +4,6 @@ description: 'Use this text in the Before You Begin section of a Go guide to dir
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-08
-modified: 2020-02-08
 title: "Before You Begin Instructions for Installing Go"
 headless: true
 show_on_rss_feed: false

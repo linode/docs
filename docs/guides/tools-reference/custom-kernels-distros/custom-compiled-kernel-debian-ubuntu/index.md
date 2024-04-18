@@ -4,7 +4,6 @@ description: 'Instructions for compiling and configuring a custom kernel your De
 keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", "debian", "ubuntu"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-08-01
 published: 2017-08-01
 title: 'Custom Compiled Kernel on Debian & Ubuntu'
 relations:

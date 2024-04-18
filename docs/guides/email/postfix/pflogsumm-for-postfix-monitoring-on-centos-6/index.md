@@ -5,7 +5,6 @@ keywords: ["pflogsumm", " postfix", " monitoring", " mail server"]
 tags: ["centos","perl","monitoring","email","postfix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6/','/email/postfix/pflogsumm-centos-6/']
-modified: 2014-02-05
 published: 2014-02-05
 title: Pflogsumm for Postfix Monitoring on CentOS 6
 external_resources:

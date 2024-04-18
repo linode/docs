@@ -4,7 +4,6 @@ description: "This guide shows how to install and configure the MariaDB server o
 og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on CentOS 8."
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-04
 published: 2020-02-04
 image: Installing_MariaDB_on_CentOS8.png
 title: "Installing MariaDB on CentOS 8"

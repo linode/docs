@@ -5,7 +5,6 @@ og_description: "This guide shows you how to quickly create a Spring Boot applic
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
 tags: ["web applications","java","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-07
 published: 2018-03-07
 title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
 title_meta: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04

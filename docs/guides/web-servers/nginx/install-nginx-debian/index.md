@@ -3,7 +3,6 @@ slug: install-nginx-debian
 description: 'This guide shows how to install the popular and highly performant web server Nginx on your Linode server running the Linux Operating System.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-20
 published: 2018-03-20
 title: Install NGINX on Debian from the NGINX Repository
 relations:

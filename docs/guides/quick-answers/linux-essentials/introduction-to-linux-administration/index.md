@@ -4,7 +4,6 @@ description: This guide introduces important sysadmin concepts and tools for new
 keywords: ["linux", "sysadmin", "administration"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-31
 published: 2018-05-31
 title: Introduction to Linux Administration
 external_resources:

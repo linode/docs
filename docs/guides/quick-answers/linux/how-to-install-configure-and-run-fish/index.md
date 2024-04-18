@@ -4,7 +4,6 @@ description: 'This article gives you step-by-step instructions for installing an
 keywords: ["fish", "fish shell", "fish scripting", "bash", "command line shell", "The Friendly Interactive Shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-07-18
-modified: 2017-07-18
 title: 'How to Install, Configure and Run the Fish Shell'
 external_resources:
 - '[Fish Shell](https://fishshell.com/)'

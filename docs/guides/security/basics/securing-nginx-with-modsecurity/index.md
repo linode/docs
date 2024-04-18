@@ -4,7 +4,6 @@ description: 'ModSecurity is a free web application firewall that can prevent at
 keywords: ["nginx security", "nginx best practices security", "secure nginx config"]
 tags: ["security","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
 published: 2021-03-26
 title: Securing Nginx With ModSecurity
 title_meta: How to Secure Nginx With ModSecurity

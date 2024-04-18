@@ -4,7 +4,6 @@ description: 'This tutorial is an introduction to developing with Git and GitHub
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "github"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/developing-git-github/','/development/version-control/how-to-install-git-and-clone-a-github-repository/','/development/version-control/developing-git-github/']
-modified: 2015-02-06
 external_resources:
  - '[Working with the Git Repository](/docs/guides/how-to-configure-git/)'
  - '[GitHub Help Pages](https://help.github.com/)'

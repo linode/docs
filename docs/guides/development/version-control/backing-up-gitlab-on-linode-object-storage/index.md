@@ -4,7 +4,6 @@ description: "Use gitlab tooling and Linode Object Storage to seemlessly back up
 keywords: ["git", "object-storage", "gitlab"]
 tags: ["version control system","email","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-10-27
 published: 2021-10-27
 title: 'Backing up Gitlab on Linode Object Storage'
 authors: ["Linode"]

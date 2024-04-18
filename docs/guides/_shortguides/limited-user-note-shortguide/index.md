@@ -2,7 +2,6 @@
 slug: limited-user-note-shortguide
 description: 'Shortguide that displays the limited user note used in many guides.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
 published: 2018-08-03
 title: Limited User Alert
 keywords: []

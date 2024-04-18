@@ -3,7 +3,6 @@ slug: what-is-iptables
 description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
 keywords: ['understanding iptables', 'what is iptables']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-10-07
 published: 2020-10-07
 title: Understanding iptables
 title_meta: What is iptables

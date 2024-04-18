@@ -4,7 +4,6 @@ description: 'Use the less command to display file and command output one page a
 og_description: 'Use the less command to display file and command output one page at a time'
 keywords: ["linux", "how to", "less", "page"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-09-05
 published: 2018-09-05
 title: How to Use the Less Command
 tags: ["linux"]

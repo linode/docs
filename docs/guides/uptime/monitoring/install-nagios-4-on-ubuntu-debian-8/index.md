@@ -6,7 +6,6 @@ aliases: ['/uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/','/upti
 tags: ["debian","monitoring","lamp","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-04-12
-modified: 2016-04-12
 title: 'Install Nagios 4 on Ubuntu and Debian 8'
 external_resources:
  - '[Nagios Website](http://www.nagios.org/)'

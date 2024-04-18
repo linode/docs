@@ -4,7 +4,6 @@ description: In this guide, you will learn how to install, configure, and test N
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "ubuntu", " front-end requests", " back-end requests"]
 tags: ["ubuntu", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-04-14
 published: 2020-04-14
 title: Installing Node.js and NGINX on Ubuntu 18.04
 title_meta: How to Install Node.js and NGINX on Ubuntu 18.04

@@ -6,7 +6,6 @@ keywords: ["fedora", "lamp", "fedora 20 lamp", "lamp server", "linux lamp", "fed
 tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/lamp-server-on-fedora-20/','/lamp-guides/fedora-20/','/websites/lamp/lamp-server-on-fedora-20/']
-modified: 2014-04-11
 published: 2014-04-11
 title: LAMP Server on Fedora 20
 external_resources:

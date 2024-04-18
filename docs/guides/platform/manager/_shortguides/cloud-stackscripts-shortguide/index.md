@@ -2,7 +2,6 @@
 slug: cloud-stackscripts-shortguide
 description: 'Shortguide that gives you an overview of the StackScripts section of the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
 published: 2020-07-22
 title: An Overview of the StackScripts Section in the Cloud Manager
 keywords: ["cloud manager"]

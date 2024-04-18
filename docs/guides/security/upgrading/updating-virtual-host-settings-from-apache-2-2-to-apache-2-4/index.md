@@ -5,7 +5,6 @@ keywords: ["Apache 2.2", "Apache 2.4", "Ubuntu", "Debian", "CentOS", "Fedora", "
 tags: ["apache","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/','/web-servers/apache/2-2-2-4-upgrade/']
-modified: 2014-03-12
 published: 2014-03-12
 title: "Updating Virtual Host Settings For Apache 2.4"
 title_meta: "How to Update Virtual Host Settings For Apache 2.4"

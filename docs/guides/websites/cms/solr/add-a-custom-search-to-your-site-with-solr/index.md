@@ -5,7 +5,6 @@ keywords: ["solr", "enterprise search", "lucene", "web search"]
 tags: ["linux","java","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-13
-modified: 2017-09-13
 title: 'Add a Custom Search to your Site with Solr'
 external_resources:
   - '[Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/)'

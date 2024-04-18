@@ -5,7 +5,6 @@ og_description: "This guide will detail how to compress and extract files using 
 keywords: ["tar", "star", "GNU-Tar", "cryptocurrency"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-02-01
-modified: 2018-02-01
 title: "Archive, Compress, and Extract Files in Linux Using the Command Line"
 title_meta: "How to Archive, Extract & Compress Files in Linux"
 tags: ["linux"]

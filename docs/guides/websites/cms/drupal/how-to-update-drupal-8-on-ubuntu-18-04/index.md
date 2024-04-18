@@ -4,7 +4,6 @@ description: 'This guide will show you how to update your Drupal 8 installation 
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "update"]
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-21
 published: 2020-02-21
 image: Drupal8onUbuntu1804.png
 title: Update Drupal 8 on Ubuntu 18.04

@@ -4,7 +4,6 @@ description: 'Learn about some of the frequently-used fsck commands to check a s
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-30
-modified: 2018-04-30
 title: 'How to use fsck - Quick Answer'
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'

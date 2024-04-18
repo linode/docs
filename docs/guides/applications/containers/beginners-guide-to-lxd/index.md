@@ -5,7 +5,6 @@ keywords: ["container", "lxd", "lxc", "apache", "virtual machine", "virtualizati
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-01
-modified: 2019-05-01
 title: "A Beginner's Guide to LXD: Setting Up an Apache Web Server"
 title_meta: "How to Set Up an Apache Webserver in an LXD Container"
 external_resources:

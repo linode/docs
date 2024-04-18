@@ -4,7 +4,6 @@ description: 'How to configure, deploy, and use HashiCorp Vault to manage applic
 keywords: ['vault','secrets','secrets management','hcl','token','authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-30
-modified: 2019-03-30
 title: "Use HashiCorp Vault to Manage Secrets"
 external_resources:
 - '[Vault Documentation Overview](https://www.vaultproject.io/docs/)'

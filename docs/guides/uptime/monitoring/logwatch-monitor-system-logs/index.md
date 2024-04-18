@@ -3,7 +3,6 @@ slug: logwatch-monitor-system-logs
 description: "This guide shows you how to use logwatch, a Linux utility used to monitor system logs and create reports for critical and non-critical events."
 keywords: ["logwatch", "security", "logging", "audit", "logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-08-12
 published: 2015-08-12
 title: "Monitor System Logs with Logwatch"
 tags: ["monitoring"]

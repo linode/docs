@@ -4,7 +4,6 @@ description: 'This guide provides you with an overview of the Linux Operating Sy
 keywords: ['linux','unix','kernel','open source','free software']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-07-26
-modified: 2018-07-26
 title: "What is Linux?"
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-linux/']

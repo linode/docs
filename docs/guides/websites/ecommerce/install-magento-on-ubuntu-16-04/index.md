@@ -4,7 +4,6 @@ description: 'Install Magento Community Edition on Ubuntu 16.04 to manage your e
 keywords: ["magento", "ubuntu", "e-commerce", "magento ubuntu"]
 tags: ["ubuntu", "lamp", "ssl", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-12-28
 published: 2016-12-28
 title: Install Magento on Ubuntu 16.04
 external_resources:

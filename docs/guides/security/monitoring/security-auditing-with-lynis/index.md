@@ -5,7 +5,6 @@ keywords: ["linux log monitor", "linux system monitoring tools", "system monitor
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-10-29
-modified: 2020-10-29
 title: 'Security Auditing with Lynis'
 title_meta: 'Automated Security Auditing with Lynis'
 image: Security_auditing_with_Lynis.png

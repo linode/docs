@@ -5,7 +5,6 @@ keywords: ['mysql connect','remote database','mysql database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-01
-modified: 2022-07-01
 title: "Connect to a MySQL Database Using the mysql Command"
 aliases: ['/guides/connect-to-a-mysql-or-mariadb-database/']
 external_resources:

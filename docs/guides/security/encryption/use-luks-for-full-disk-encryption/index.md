@@ -5,7 +5,6 @@ aliases: ['/security/encryption/use-luks-for-full-disk-encryption/','/security/u
 keywords: ["full disk encryption", "debian", "luks", "lassie"]
 tags: ["security","debian","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-11-02
 published: 2016-11-02
 title: How to Use LUKS for Full Disk Encryption on Linux
 authors: ["Nick Brewer"]

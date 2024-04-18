@@ -5,7 +5,6 @@ keywords: ["socks", "proxy", "socks proxy", "tunnel", "tunnelling"]
 tags: ["networking","ssh","security","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/','/networking/socks-proxy/']
-modified: 2014-02-17
 published: 2014-02-17
 title: Setting up an SSH Tunnel with Your Linode for Safe Browsing
 external_resources:

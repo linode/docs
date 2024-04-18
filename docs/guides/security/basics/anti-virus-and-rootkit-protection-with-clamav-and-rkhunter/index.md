@@ -5,7 +5,6 @@ keywords: ["clamav setup", "linux rootkit detection"]
 bundles: ['debian-security', 'centos-security']
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-10-30
 published: 2020-10-30
 title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
 title_meta: Anti-Virus Protection with ClamAV and rkhunter

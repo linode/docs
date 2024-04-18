@@ -5,7 +5,6 @@ keywords: ["selenium", "node.js", " headless browser", "automation", "webdriver"
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-09
-modified: 2018-03-09
 title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
 title_meta: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
 external_resources:

@@ -7,7 +7,6 @@ tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-apache-debian/','/websites/ror/ruby-on-rails-apache-debian-9/','/frameworks/ruby-on-rails-apache/ubuntu-10.04-lucid/']
 published: 2018-03-12
-modified: 2018-03-12
 title: 'Install Ruby on Rails with Apache on Debian 9'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'

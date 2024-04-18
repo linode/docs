@@ -4,7 +4,6 @@ description: 'This guide shows how you can use ModSecurity, a free web applicati
 keywords: ["apache2 configure modsecurity", "apache2 modsecurity", "apache modsecurity"]
 tags: ["security","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
 published: 2021-03-26
 title: Securing Apache 2 With ModSecurity
 title_meta: How to Secure Apache 2 With ModSecurity

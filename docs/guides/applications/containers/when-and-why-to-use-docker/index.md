@@ -5,7 +5,6 @@ keywords: ['docker','containers','docker hub']
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-20
-modified: 2017-11-20
 title: "When and Why to Use Docker"
 external_resources:
 - '[Docker](https://www.docker.com)'

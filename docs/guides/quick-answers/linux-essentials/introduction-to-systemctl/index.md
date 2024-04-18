@@ -4,7 +4,6 @@ description: "Do you know what systemctl is? Our guide will cover how to use `sy
 keywords: ['systemctl','systemd','service','unit file','target']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-31
-modified: 2018-08-31
 title: "systemctl Commands: Restart, Reload, and Stop Service"
 external_resources:
 - '[Systemctl man page](https://www.freedesktop.org/software/systemd/man/systemctl.html)'

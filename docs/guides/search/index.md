@@ -5,7 +5,6 @@ description: 'Search the Linode Docs library'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-14
-modified: 2017-12-14
 title: "Search Linode Docs"
 show_on_rss_feed: false
 _build:

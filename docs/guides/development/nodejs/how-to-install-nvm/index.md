@@ -4,7 +4,6 @@ description: 'Shortguide for installing the Node Version Manager (NVM)'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nodejs", "version management"]
 tags: ["version control system"]
-modified: 2020-04-24
 title: "Install Node Version Manager (NVM)"
 published: 2020-04-24
 headless: true

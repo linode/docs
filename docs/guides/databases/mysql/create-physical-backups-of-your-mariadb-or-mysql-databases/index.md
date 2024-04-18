@@ -4,7 +4,6 @@ description: "Create a physical MySQL backup databases by copying the relevant f
 keywords: ["mysql", "mariadb", backup", "back up", mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-30
-modified: 2018-01-30
 title: Create Physical Backups of your MariaDB or MySQL Databases
 external_resources:
  - '[Backup and Restore Overview; MariaDB Library](https://mariadb.com/kb/en/library/backup-and-restore-overview/)'

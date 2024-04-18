@@ -4,7 +4,6 @@ description: Learn what's involved in installing OpenJDK on Debian 10, and how y
 keywords: ["java", "openjdk", "jdk", "11", "Debian", "10"]
 tags: ["java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-25
 image: Installing_Java_Development_Kit_11_on_Debian10_1200x631.png
 published: 2020-03-25
 title: Installing Java Development Kit 11 on Debian 10

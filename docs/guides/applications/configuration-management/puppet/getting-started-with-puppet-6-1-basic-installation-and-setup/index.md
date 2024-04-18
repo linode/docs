@@ -4,7 +4,6 @@ description: 'Basic instructions to set up and configure a Puppet master and age
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-15
 published: 2019-01-15
 title: Getting Started with Puppet - Installation and Setup
 external_resources:

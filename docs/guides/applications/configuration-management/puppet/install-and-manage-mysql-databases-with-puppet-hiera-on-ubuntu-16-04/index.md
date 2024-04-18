@@ -5,7 +5,6 @@ keywords: ["puppet installation", "configuration change management", "server aut
 tags: ["database","ubuntu","automation","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-11
-modified: 2017-09-11
 title: "Manage MySQL Database with Puppet Hiera on Ubuntu 16.04"
 external_resources:
   - '[Puppet Labs](https://puppet.com/)'

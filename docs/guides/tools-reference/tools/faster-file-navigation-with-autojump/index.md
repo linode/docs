@@ -4,7 +4,6 @@ description: 'autojump is a cd command that learns - jump to your most frequentl
 og_description: "Navigate files in the command line more efficiently with autojump, a tool that jumps to your most frequently accessed directories."
 keywords: ["autojump", "python", "command-line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-29
 published: 2017-12-29
 title: Faster File Navigation with autojump
 external_resources:

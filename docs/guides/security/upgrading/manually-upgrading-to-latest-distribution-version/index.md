@@ -4,7 +4,6 @@ description: "Outlines options when upgrading a Linux distribution to the next l
 keywords: ["upgrading", "ubuntu", "centos","debian"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-09-03
 published: 2021-09-03
 title: "Upgrading to the Latest Distribution (Clean Install)"
 title_meta: "How to Upgrade a Linux System to the Latest Distribution"

@@ -6,7 +6,6 @@ keywords: ["nightmare.js", " node.js", " headless browser", " automation"]
 tags: ["automation", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-09
-modified: 2017-10-09
 title: 'Use Nightmare.js to Automate Headless Browsing'
 external_resources:
   - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'

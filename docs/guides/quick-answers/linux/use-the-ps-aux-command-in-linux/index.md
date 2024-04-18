@@ -3,7 +3,6 @@ slug: use-the-ps-aux-command-in-linux
 keywords: ["ps aux command"]
 description: "The ps aux command is a tool that provides Linux system process information. This guide explain why that matters, and how to use it.'"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-01-25
 published: 2021-01-25
 title: Using the ps aux Command in Linux
 title_meta: How to Use the ps aux Command in Linux

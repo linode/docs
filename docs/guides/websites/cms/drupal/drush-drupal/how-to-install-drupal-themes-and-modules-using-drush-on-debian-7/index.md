@@ -5,7 +5,6 @@ keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", 
 aliases: ['/websites/cms/drupal/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-7/']
 tags: ["drupal","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2014-12-05
 published: 2014-12-05
 title: 'Themes, Modules, & Backups with Drupal Drush on Debian 7'
 deprecated: true

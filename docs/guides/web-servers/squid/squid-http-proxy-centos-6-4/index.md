@@ -6,7 +6,6 @@ keywords: ["squid", "proxy", "centos", "6.4", "http"]
 tags: ["proxy","web server","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/squid/squid-http-proxy-centos-6-4/','/web-servers/squid/squid-http-proxy-centos-6-4/']
-modified: 2014-03-03
 published: 2014-03-03
 title: 'Creating an HTTP Proxy Using Squid on CentOS 6.4'
 external_resources:

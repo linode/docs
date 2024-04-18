@@ -3,7 +3,6 @@ slug: top-htop-iotop
 description: 'This guide provides you with a how-to reference on using top, a Linux process manager and monitoring utilitie included with most distros, to monitor performance.'
 keywords: ["top", "htop", "iotop", "monitoring", "server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-02-19
 published: 2015-02-19
 title: Using top to Monitor Server Performance
 external_resources:

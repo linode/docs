@@ -5,7 +5,6 @@ og_description: "MariaDB is a robust, scalable and reliable SQL Server that can 
 keywords: ["mariadb", "Debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-9/','/databases/mariadb/mariadb-setup-debian/']
-modified: 2020-01-31
 published: 2020-01-31
 image: Installing_MariaDB_on_Debian9.png
 title: "Installing MariaDB on Debian 9"

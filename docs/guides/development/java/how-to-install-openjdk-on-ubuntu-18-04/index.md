@@ -6,7 +6,6 @@ keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "18.04"]
 aliases: ['/development/java/how-to-install-openjdk-on-ubuntu-18-04/','/development/java/install-java-on-ubuntu-18-04/']
 tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-25
 image: Installing_Java_Development_Kit_11_on_Ubuntu1804_1200x631.png
 published: 2020-03-25
 title: "Installing OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"

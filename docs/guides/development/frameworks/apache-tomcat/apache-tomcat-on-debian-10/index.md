@@ -5,7 +5,6 @@ keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat d
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-debian-10/','/development/frameworks/apache-tomcat/apache-tomcat-on-debian-10/','/development/frameworks/apache-tomcat-on-debian-10/']
-modified: 2020-03-25
 published: 2020-03-25
 image: ApacheTomcat_Deb10.png
 title: 'Installing Apache Tomcat on Debian 10'

@@ -4,7 +4,6 @@ description: 'This guide will show you how to configure Filebeat and Metricbeat 
 keywords: ["elastic", "filebeat", "metricbeat", "elasticsearch", "kibana", "docker", "container", "nginx"]
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-10
 published: 2019-02-10
 title: Container Instrumentation with the Elastic Stack
 external_resources:

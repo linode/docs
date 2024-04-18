@@ -4,7 +4,6 @@ description: 'This article shows you how you can use GPG, also known as GNU Priv
 keywords: ['gpg','security','cryptography','encrypt', 'decrypt']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-08
-modified: 2018-08-08
 title: "Use GPG Keys to Send Encrypted Messages"
 title_meta: "How to Use GPG Keys to Send Encrypted Messages"
 external_resources:

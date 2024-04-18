@@ -5,7 +5,6 @@ keywords: ["squid", "proxy", "debian", "10", "http"]
 tags: ["proxy","web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-14
-modified: 2020-04-14
 image: Creating_an_HTTP_Proxy_Using_Squid_on_Debian10_1200x631.png
 title: 'Creating an HTTP Proxy Using Squid on Debian 10'
 title_meta: 'How to Create an HTTP Proxy Using Squid on Debian 10'

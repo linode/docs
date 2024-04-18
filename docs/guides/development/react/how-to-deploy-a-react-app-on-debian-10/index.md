@@ -5,7 +5,6 @@ keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-24
-modified: 2020-04-24
 image: Deploying_a_React_Application_on_Debian_10_1200x631.png
 title: "Deploying a React Application on Debian 10"
 title_meta: "How to Deploy a React Application on Debian 10"

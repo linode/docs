@@ -5,7 +5,6 @@ keywords: ["oracle", "java", "JDK", "install java", "ubuntu"]
 tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/install-java-on-ubuntu-16-04/','/applications/development/install-java-on-ubuntu-16-04/','/development/java/install-java-on-ubuntu-16-04/']
-modified: 2017-05-30
 published: 2017-05-30
 title: 'Install Java on Ubuntu 16.04'
 external_resources:

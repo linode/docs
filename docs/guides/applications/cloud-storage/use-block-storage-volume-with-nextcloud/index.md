@@ -5,7 +5,6 @@ keywords: ["nextcloud", "cloud", "open source hosting", "block storage"]
 tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-17
-modified: 2018-04-17
 title: "Use a Block Storage Volume with Nextcloud"
 title_meta: "How to Use a Block Storage Volume with Nextcloud"
 external_resources:

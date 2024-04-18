@@ -5,7 +5,6 @@ keywords: ["yesod", "nginx", "mysql", "debian 7"]
 tags: ["web applications","nginx","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod/yesod-nginx-mysql-on-debian-7-wheezy/']
-modified: 2014-09-25
 published: 2014-09-25
 title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 external_resources:

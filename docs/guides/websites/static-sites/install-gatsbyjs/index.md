@@ -4,7 +4,6 @@ description: 'This guide shows how to create a CI/CD pipeline using the static-s
 keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-09
-modified: 2018-08-09
 title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
 title_meta: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
 aliases: ['/websites/static-sites/install-gatsbyjs/']

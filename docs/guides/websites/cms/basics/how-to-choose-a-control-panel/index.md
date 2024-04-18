@@ -4,7 +4,6 @@ description: 'Control panels offer simplfied GUIs for complicated Linux system a
 keywords: ["control panel", "cpanel", "whm", "plesk", "vesta", "vestacp", "virtualmin", "virtualmin pro", "webmin"]
 tags: ["monitoring","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-01
 published: 2018-08-01
 title: 'How to Choose a Control Panel'
 aliases: ['/websites/cms/basics/how-to-choose-a-control-panel/','/websites/cms/how-to-choose-a-control-panel/']

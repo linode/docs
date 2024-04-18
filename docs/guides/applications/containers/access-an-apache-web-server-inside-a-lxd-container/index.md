@@ -5,7 +5,6 @@ keywords: ["container", "lxd", "lxc", "virtual machine"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-02-12
-modified: 2018-02-12
 title: "Access an Apache Web Server Inside a LXD Container"
 external_resources:
   - '[LXD Introduction](https://linuxcontainers.org/lxd/)'

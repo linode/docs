@@ -4,7 +4,6 @@ description: 'This guide will show you how to tune PostgreSQL for better perform
 og_description: 'PostgreSQL is a database server that focuses on standards compliance. Follow this guide to optimize PostgreSQL performance.'
 keywords: ["postgresql", "clusters", "databases", "postgres", "database configuration", "database tuning", "configure postgres"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-07
 published: 2017-12-07
 title: Configure PostgreSQL
 external_resources:

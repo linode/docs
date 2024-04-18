@@ -4,7 +4,6 @@ description: 'This guide provides you with step-by-step instructions for getting
 keywords: ["go","golang","packages","export"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-06
-modified: 2018-06-06
 title: 'Getting Started with Go Packages'
 external_resources:
   - '[A Tour of Go](https://tour.golang.org/)'

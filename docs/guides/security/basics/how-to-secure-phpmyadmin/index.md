@@ -4,7 +4,6 @@ description: 'This guide shows how to secure phpMyAdmin. Learn how to change ali
 keywords: ["apache security", "apache best practices security", "secure phpMyAdmin config", "phpMyAdmin security"]
 tags: ["security","web server","apache", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
 published: 2021-03-26
 title: Securing phpMyAdmin
 title_meta: How to Secure phpMyAdmin

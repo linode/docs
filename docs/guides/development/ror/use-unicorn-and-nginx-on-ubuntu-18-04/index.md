@@ -6,7 +6,6 @@ tags: ["web applications","proxy","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04/','/websites/ror/use-unicorn-and-nginx-on-ubuntu-18-04/']
 published: 2020-01-03
-modified: 2020-01-03
 image: UseUnicornandNginxtoConfigureRubyon-RailsApplicationsonUbuntu1804.png
 title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 18.04"
 title_meta: "Deploy a Rails App with Unicorn and nginx on Ubuntu 18.04"

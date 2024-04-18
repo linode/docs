@@ -4,7 +4,6 @@ description: 'Combine the capabilities of the Akamai and Linode platforms to cre
 keywords: ["microsite", "cdn", "high availability"]
 tags: ["linode platform","akamai platform","web server","cdn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-10-13
 published: 2022-10-13
 title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
