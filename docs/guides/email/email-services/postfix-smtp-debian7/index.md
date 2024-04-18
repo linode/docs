@@ -10,7 +10,9 @@ keywords: ["Postfix", "Debian", "SMTP", "Email", "Mail"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-smtp-debian7/']
----{{< note >}}
+---
+
+{{< note >}}
 This guide was originally written for Debian 7. It has since been tested to work with Debian 9.
 {{< /note >}}
 
