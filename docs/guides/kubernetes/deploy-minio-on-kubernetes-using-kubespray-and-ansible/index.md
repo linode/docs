@@ -17,7 +17,7 @@ external_resources:
 authors: ["Sam Foo"]
 ---
 
-![Minio_Banner](Deploy_Minio.jpg)
+![Header image](Deploy_Minio.jpg "Deploy Minio on Kubernetes using Kubespray and Ansible")
 
 ## What is Minio?
 

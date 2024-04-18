@@ -224,7 +224,7 @@ Next, ensure that in your spigot.yml file you have set bungeecord to true
 
 {{< /file >}}
 
-After, you set the right values for bungeecord and ip_forward, restart the Spigot servers to enable IP forwarding.
+After, you set the right values for `bungeecord` and `ip_forward`, restart the Spigot servers to enable IP forwarding.
 
 ## Troubleshooting
 

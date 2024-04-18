@@ -8,13 +8,13 @@ published: 2015-04-14
 modified: 2019-02-01
 modified_by:
     name: Linode
-title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
+title: "Install Don't Starve Together Game Server on Ubuntu 14.04"
 aliases: ['/applications/game-servers/dont-starve-together-on-ubuntu/','/game-servers/install-dont-starve-together-game-server-on-ubuntu/','/applications/game-servers/install-dont-starve-together-game-server-on-ubuntu/']
 dedicated_cpu_link: true
 authors: ["Andrew Gottschling"]
 ---
 
-![banner_image](Install_Dont_Starve_Together_Game_Server_on_Ubuntu_smg.jpg)
+![Header image](Install_Dont_Starve_Together_Game_Server_on_Ubuntu_smg.jpg "Install Don't Starve Together Game Server on Ubuntu 14.04")
 
 [Don’t Starve Together](https://www.kleientertainment.com/games/dont-starve-together) is a multiplayer game written and published by Klei Entertainment, and is a multiplayer add- on to their single-player game Don’t Starve. This guide will explain how to prepare your Linode and install, then configure, Don’t Starve Together.
 

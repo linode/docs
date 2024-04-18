@@ -19,7 +19,7 @@ tags: ["python"]
 authors: ["Md. Sabuj Sarker"]
 ---
 
-![banner_image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg)
+![Header image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg "Monitor Filesystem Events with Pyinotify")
 
 File system monitoring through `inotify` can be interfaced through Python using `pyinotify`. This guide will demonstrate how to use a Python script to monitor a directory then explore practical uses by incorporating async modules or running additional threads.
 

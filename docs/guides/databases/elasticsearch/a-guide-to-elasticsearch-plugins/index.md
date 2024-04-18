@@ -19,7 +19,7 @@ aliases: ['/databases/elasticsearch/a-guide-to-elasticsearch-plugins/']
 authors: ["Tyler Langlois"]
 ---
 
-![banner_image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg)
+![Header image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg "How to Install and Use Elasticsearch Plugins")
 
 ## What are Elasticsearch Plugins?
 

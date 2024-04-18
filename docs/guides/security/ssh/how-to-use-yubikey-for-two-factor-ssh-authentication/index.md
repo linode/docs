@@ -16,7 +16,7 @@ external_resources:
 authors: ["Huw Evans"]
 ---
 
-![banner_image](How_to_use_a_YubiKey_for_Two_Factor_Secure_Shell_Authentication_smg.jpg)
+![Header image](How_to_use_a_YubiKey_for_Two_Factor_Secure_Shell_Authentication_smg.jpg "Using a YubiKey for 2FA when Logging in over SSH")
 
 ## What is Yubikey?
 

@@ -17,7 +17,7 @@ aliases: ['/quick-answers/linux/how-to-use-fsck-to-fix-disk-problems/']
 authors: ["Edward Angert"]
 ---
 
-![banner_image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg)
+![Header image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg "Using fsck to Find and Repair Disk Errors and Bad Sectors")
 
 This guide is part of a series on Linux commands and features. Not all commands may be relevant to Linode-specific hardware, and are included here to provide an easy to access reference for the Linux community. If you have a command or troubleshooting tip that would help others, please submit a pull request or comment.
 

@@ -123,21 +123,21 @@ It's located at: `/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server
 ### Maps
 
 Currently, there are 10 official maps in Black Mesa Dedicated Server:
-*   dm_bounce
-*   dm_chopper
-*   dm_crossfire
-*   dm_gasworks
-*   dm_lambdabunker
-*   dm_power
-*   dm_stack
-*   dm_stalkyard
-*   dm_subtransit
-*   dm_undertow
+*   `dm_bounce`
+*   `dm_chopper`
+*   `dm_crossfire`
+*   `dm_gasworks`
+*   `dm_lambdabunker`
+*   `dm_power`
+*   `dm_stack`
+*   `dm_stalkyard`
+*   `dm_subtransit`
+*   `dm_undertow`
 
 Three additional official maps are available in the Steam Workshop:
-*   [dm_boom](http://steamcommunity.com/sharedfiles/filedetails/?id=432070352)
-*   [dm_rail](http://steamcommunity.com/sharedfiles/filedetails/?id=432072942)
-*   [dm_shipping](http://steamcommunity.com/sharedfiles/filedetails/?id=432074065)
+*   [`dm_boom`](http://steamcommunity.com/sharedfiles/filedetails/?id=432070352)
+*   [`dm_rail`](http://steamcommunity.com/sharedfiles/filedetails/?id=432072942)
+*   [`dm_shipping`](http://steamcommunity.com/sharedfiles/filedetails/?id=432074065)
 
 ### Custom Maps
 

@@ -359,8 +359,8 @@ To finish the setup for your WordPress sites, complete the WordPress installatio
 
 | Website | Database Name | Username      | Password     | Database Host | Table Prefix |
 |---------|---------------|---------------|--------------|---------------|--------------|
-| https://apache1.example.com | wpApache1     | wpUserApache1 | Create a complex and unique password | db.lxd        | wp_          |
-| https://nginx1.example.com  | wpNginx1      | wpUserNginx1  | Create a complex and unique password | db.lxd        | wp_          |
+| https://apache1.example.com | wpApache1     | wpUserApache1 | Create a complex and unique password | db.lxd        | `wp_`          |
+| https://nginx1.example.com  | wpNginx1      | wpUserNginx1  | Create a complex and unique password | db.lxd        | `wp_`          |
 
 {{< note respectIndent=false >}}
 The passwords that you choose during the installation wizard should be unique and different from the passwords used in the earlier [database setup section](#configure-the-database-for-each-wordpress-installation).
