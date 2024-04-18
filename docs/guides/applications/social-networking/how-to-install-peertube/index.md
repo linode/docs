@@ -12,6 +12,7 @@ external_resources:
 - '[PeerTube installation instructions](https://docs.joinpeertube.org/install-any-os)'
 - '[PeerTube dependencies](https://docs.joinpeertube.org/dependencies)'
 - '[Certbot](https://certbot.eff.org/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

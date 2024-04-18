@@ -13,6 +13,7 @@ relations:
         key: how-to-install-python
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

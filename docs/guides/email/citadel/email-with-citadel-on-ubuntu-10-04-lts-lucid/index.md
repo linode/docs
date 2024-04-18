@@ -14,6 +14,7 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

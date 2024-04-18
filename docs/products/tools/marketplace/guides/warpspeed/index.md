@@ -9,6 +9,7 @@ title: "Deploy WarpSpeed VPN through the Linode Marketplace"
 external_resources:
 - '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'
 aliases: ['/guides/deploying-warpspeed-marketplace-app/','/guides/warpspeed-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -2,6 +2,7 @@
 title: "Troubleshooting Backups"
 title_meta: "Troubleshooting Issues with the Backup Service"
 description: "Get help diagnosing and solving issues related to the Linode Backup service, including backup failures and restore failures."
+authors: ["Linode"]
 contributors: ["Linode"]
 published: 2021-11-12
 modified: 2023-07-07

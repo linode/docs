@@ -9,6 +9,7 @@ published: 2021-06-04
 modified: 2022-11-29
 title: "Install a Mastodon Server on Ubuntu 20.04"
 title_meta: "How to Install a Mastodon Server on Ubuntu 20.04"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
@@ -26,6 +27,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -5,6 +5,7 @@ title_meta: "Install Harbor Registry and Deploy Images to Kubernetes"
 description: "Learn the benefits of Harbor vs Docker Hub, how to install the Harbor registry software in the cloud, and how to connect a Kubernetes cluster to the registry."
 keywords: ['what is harbor registry','install harbor kubernetes','harbor vs docker registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2023-06-13
 external_resources:

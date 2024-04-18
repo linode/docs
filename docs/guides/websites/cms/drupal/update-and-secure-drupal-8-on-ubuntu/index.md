@@ -9,6 +9,7 @@ deprecated_link: 'websites/cms/drupal/how-to-update-drupal-8-on-ubuntu-18-04/'
 published: 2016-05-11
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 tags: ["drupal","cms"]
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

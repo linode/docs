@@ -7,6 +7,7 @@ published: 2015-08-28
 modified: 2022-10-12
 tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
+authors: ["Linode"]
 contributors: ["Linode"]
 aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/','/guides/glish/']
 ---

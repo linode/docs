@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 title: "Security Automation for Today’s Modern Business"
 tags: ["security"]
+authors: ["David Strom"]
 contributors: ["David Strom"]
 ---
 

@@ -8,6 +8,7 @@ published: 2021-05-06
 modified: 2022-12-14
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-1/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

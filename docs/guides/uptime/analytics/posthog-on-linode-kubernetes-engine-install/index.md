@@ -10,6 +10,7 @@ title: "Track Funnel and Product Analytics With PostHog on LKE"
 external_resources:
 - '[PostHog site](https://posthog.com/)'
 - '[PostHog user guide](https://posthog.com/docs/user-guides)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

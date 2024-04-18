@@ -18,6 +18,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/apache/how-to-install-apache-web-server-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

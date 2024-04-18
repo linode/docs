@@ -9,6 +9,7 @@ aliases: ['/guides/deploy-kepler-with-marketplace-apps/','/guides/kepler-marketp
 external_resources:
 - '[About Kepler](https://kepler.app)'
 - '[Kepler Community](https://help.kepler.app)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

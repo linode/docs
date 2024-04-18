@@ -14,6 +14,7 @@ relations:
         key: webpy
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -8,6 +8,7 @@ title: "Use the Shebang in Bash and Python"
 title_meta: "How to Use the Shebang in Bash and Python"
 external_resources:
 - '[Wikipedia Shebang page](https://en.wikipedia.org/wiki/Shebang_(Unix))'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

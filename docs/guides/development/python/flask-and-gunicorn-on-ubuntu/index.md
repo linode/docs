@@ -14,6 +14,7 @@ external_resources:
 - '[NGINX](https://www.nginx.com/resources/wiki/)'
 - '[Gunicorn](http://docs.gunicorn.org/en/stable/)'
 aliases: ['/development/python/flask-and-gunicorn-on-ubuntu/']
+authors: ["Austin Balarin"]
 contributors: ["Austin Balarin"]
 ---
 

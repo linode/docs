@@ -9,6 +9,7 @@ external_resources:
 - '[AWS Documentation - Amazon Simple Storage Service: Using Cross-origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html)'
 - '[AWS Documentation - Amazon Simple Storage Service: Troubleshooting CORS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors-troubleshooting.html)'
 - '[DreamHost Knowledge Base: Configuring (CORS) on a DreamObjects Bucket](https://help.dreamhost.com/hc/en-us/articles/216201557-How-to-setup-Cross-Origin-Resource-Sharing-CORS-on-DreamObjects)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

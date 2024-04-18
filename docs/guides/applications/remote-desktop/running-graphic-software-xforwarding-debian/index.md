@@ -18,6 +18,7 @@ relations:
         key: forward-x11-gui
         keywords:
             - distribution: Debian
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

@@ -11,6 +11,7 @@ external_resources:
 - '[ParTech: Basic Principles of Object-oriented Programming](https://www.partech.nl/en/publications/2020/10/basic-principles-of-object-oriented-programming#:~:text=The%20basic%20principles%20of%20OOP,any%20object%2Doriented%20programming%20language.)'
 - '[Munish Chandel: What are Four Basic Principles of Object Oriented Programming?](https://medium.com/@cancerian0684/what-are-four-basic-principles-of-object-oriented-programming-645af8b43727)'
 - '[Key Lime Interactive: The Four Pillars of Object Oriented Programming](https://info.keylimeinteractive.com/the-four-pillars-of-object-oriented-programming)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

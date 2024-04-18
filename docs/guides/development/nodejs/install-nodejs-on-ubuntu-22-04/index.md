@@ -8,6 +8,7 @@ title: "How to Install Node.js on Ubuntu 22.04"
 title_meta: "Installing Node.js on Ubuntu 22.04"
 external_resources:
 - '[Installati.one: How To Install node-security on Ubuntu 22.04](https://installati.one/ubuntu/22.04/node-security/)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

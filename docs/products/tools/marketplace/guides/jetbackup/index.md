@@ -8,6 +8,7 @@ title: "Deploy JetBackup through the Linode Marketplace"
 aliases: ['/guides/deploying-jetbackup-marketplace-app/','/guides/jetbackup-marketplace-app/']
 external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

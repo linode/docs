@@ -15,6 +15,7 @@ external_resources:
   - '[Install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/)'
   - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
   - '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 ---
 

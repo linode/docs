@@ -14,6 +14,7 @@ relations:
         key: collaborate-with-egroupware
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -10,6 +10,7 @@ external_resources:
 - '[InspIRCd configuration options](https://docs.inspircd.org/3/configuration/)'
 - '[IRC help website](https://www.irchelp.org/)'
 - '[IRC networks and server lists](https://www.irchelp.org/networks/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

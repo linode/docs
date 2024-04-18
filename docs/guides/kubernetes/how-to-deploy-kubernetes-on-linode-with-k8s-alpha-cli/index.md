@@ -11,6 +11,7 @@ concentrations: ["Kubernetes"]
 deprecated: true
 external_resources:
   - '[Linode Kubernetes Tools](https://developers.linode.com/kubernetes/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 ![How to Deploy Kubernetes on Linode with the k8s-alpha CLI](how-to-deploy-kubernetes-on-linode.png)

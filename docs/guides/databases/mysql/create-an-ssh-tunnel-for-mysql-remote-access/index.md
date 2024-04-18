@@ -13,6 +13,7 @@ external_resources:
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[autossh](http://www.harding.motd.ca/autossh/)'
 tags: ["ssh","database","mysql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

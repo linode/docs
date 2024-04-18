@@ -8,6 +8,7 @@ title: "Deploy Pi-hole through the Linode Marketplace"
 external_resources:
 - '[Pi-hole](https://pi-hole.net/)'
 aliases: ['/guides/deploying-pihole-marketplace-app/','/guides/pihole-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -14,6 +14,7 @@ external_resources:
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
 dedicated_cpu_link: true
 aliases: ['/applications/media-servers/install-plex-media-server-with-salt/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

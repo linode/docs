@@ -6,6 +6,7 @@ published: 2020-08-31
 title: Data Visualization
 show_in_lists: true
 aliases: ['/development/data-visualization/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

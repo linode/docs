@@ -11,6 +11,7 @@ relations:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: Fedora
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

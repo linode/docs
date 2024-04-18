@@ -4,6 +4,7 @@ title: "Load Balancing Fundamentals: How Load Balancers Work"
 description: 'Discover the basics, advantages, and drawbacks of both static and dynamic load balancing algorithms to enhance your understanding of these essential tools.'
 keywords: ['load balancers','load balancing algorithms','types of load balancers','pros and cons of load balancing','round robin algorithm','least connections algorithm','weighted round robin','dynamic server weighting']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["David Newman"]
 contributors: ["David Newman"]
 published: 2024-01-16
 ---

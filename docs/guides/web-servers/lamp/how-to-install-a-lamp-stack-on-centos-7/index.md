@@ -20,6 +20,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 7
+authors: ["Joel Kruger"]
 contributors: ["Joel Kruger"]
 ---
 

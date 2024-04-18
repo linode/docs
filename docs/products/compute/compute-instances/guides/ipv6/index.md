@@ -10,6 +10,7 @@ external_resources:
  - '[IPv6 and IPv4 CIDR Chart (PDF)](https://www.ripe.net/about-us/press-centre/ipv6-chart_2015.pdf)'
 tags: ["networking","linode platform"]
 image: an-overview-of-ipv6-on-linode-title-graphic.jpg
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

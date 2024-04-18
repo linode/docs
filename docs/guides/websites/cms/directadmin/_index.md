@@ -6,5 +6,6 @@ aliases: ['/websites/cms/directadmin/','/web-applications/control-panels/directa
 modified: 2013-10-03
 published: 2011-11-02
 title: DirectAdmin
+authors: ["Jed Smith"]
 contributors: ["Jed Smith"]
 ---

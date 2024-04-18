@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/python/create-a-python-virtualenv-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

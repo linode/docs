@@ -9,6 +9,7 @@ external_resources:
 - '[Chevereto](https://chevereto.com/)'
 - '[Chevereto Documentation](https://chevereto.com/docs)'
 aliases: ['/guides/deploying-chevereto-marketplace-app/','/guides/chevereto-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

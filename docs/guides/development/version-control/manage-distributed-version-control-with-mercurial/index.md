@@ -11,6 +11,7 @@ external_resources:
  - '[HG Init, a Guide by Joel Spolsky](http://hginit.com/)'
 audiences: ["beginner"]
 tags: ["version control system"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

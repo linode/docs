@@ -8,6 +8,7 @@ published: 2021-12-23
 modified: 2022-01-07
 title: "Using the Linode API with Twilio"
 title_meta: "How to Use the Linode API with Twilio"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

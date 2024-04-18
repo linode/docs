@@ -8,6 +8,7 @@ modified: 2018-08-01
 published: 2018-08-01
 title: 'How to Choose a Control Panel'
 aliases: ['/websites/cms/basics/how-to-choose-a-control-panel/','/websites/cms/how-to-choose-a-control-panel/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

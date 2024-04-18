@@ -15,6 +15,7 @@ relations:
             - distribution: CentOS 7
 tags: ["web server","nginx"]
 aliases: ['/web-servers/nginx/install-nginx-centos/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
 title: "Kotlin Tutorial: An Introduction to the Basics"
 title_meta: "Kotlin Tutorial: Learn the Basics"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

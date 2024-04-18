@@ -11,6 +11,7 @@ external_resources:
 - '[Prometheus Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)'
 - '[Grafana Support for Prometheus](https://prometheus.io/docs/visualization/grafana/)'
 aliases: ['/platform/marketplace/how-to-deploy-prometheus-with-marketplace-apps/', '/platform/one-click/how-to-deploy-prometheus-with-one-click-apps/','/guides/how-to-deploy-prometheus-with-one-click-apps/','/guides/how-to-deploy-prometheus-with-marketplace-apps/','/guides/prometheus-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

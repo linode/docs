@@ -10,6 +10,7 @@ external_resources:
 - '[Flask Quickstart](https://flask.palletsprojects.com/en/1.1.x/quickstart/)'
 - '[Flask SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)'
 aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/platform/one-click/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-marketplace-apps/','/guides/flask-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

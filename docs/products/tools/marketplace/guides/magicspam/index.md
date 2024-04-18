@@ -8,6 +8,7 @@ title: "Deploy MagicSpam through the Linode Marketplace"
 aliases: ['/guides/deploying-magicspam-marketplace-app/','/guides/magicspam-marketplace-app/']
 external_resources:
 - '[MagicSpam](https://magicspam.com/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 _build:
   list: false

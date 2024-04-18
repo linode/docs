@@ -5,6 +5,7 @@ title_meta: "Guide to Removing Git Remote"
 description: 'How to remove a Git remote from a repository.'
 keywords: ['git remote remove origin','git remove remote','git remove origin','git delete remote','git remove upstream','remove remote origin','remove remote git','how to remove remote origin git','git remote delete','git remove remote repository']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2023-05-02
 external_resources:

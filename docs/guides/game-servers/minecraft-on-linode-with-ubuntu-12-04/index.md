@@ -15,6 +15,7 @@ relations:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

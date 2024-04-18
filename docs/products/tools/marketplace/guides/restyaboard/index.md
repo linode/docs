@@ -8,6 +8,7 @@ title: "Deploy Restyaboard through the Linode Marketplace"
 external_resources:
 - '[Restyaboard](https://restya.com/board)'
 aliases: ['/guides/deploying-restyaboard-marketplace-app/','/guides/restyaboard-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

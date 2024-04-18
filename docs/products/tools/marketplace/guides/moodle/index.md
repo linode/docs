@@ -8,6 +8,7 @@ title: "Deploy Moodle through the Linode Marketplace"
 aliases: ['/guides/deploying-moodle-marketplace-app/','/guides/moodle-marketplace-app/']
 external_resources:
 - '[Moodle](https://moodle.org/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

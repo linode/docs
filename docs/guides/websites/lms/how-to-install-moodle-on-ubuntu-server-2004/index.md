@@ -14,6 +14,7 @@ relations:
         key: how-to-install-moodle
         keywords:
             - distribution: Ubuntu 20.04 LTS
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

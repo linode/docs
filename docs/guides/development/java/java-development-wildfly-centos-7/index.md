@@ -18,6 +18,7 @@ relations:
         key: java-development-wildfly
         keywords:
             - distribution: CentOS 7
+authors: ["Ashraf Fouad"]
 contributors: ["Ashraf Fouad"]
 ---
 

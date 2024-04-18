@@ -17,6 +17,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 6
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

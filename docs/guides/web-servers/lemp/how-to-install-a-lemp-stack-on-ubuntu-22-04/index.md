@@ -20,6 +20,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 aliases: ['/lemp-guides/ubuntu-12.04-precise-pangolin/']
 ---

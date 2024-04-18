@@ -9,6 +9,7 @@ external_resources:
 - '[HashiCorp Developer: Nomad Tutorials - Get Started](https://developer.hashicorp.com/nomad/tutorials/get-started)'
 - '[Kevin Wang: My First Nomad Cluster](https://thekevinwang.com/2022/11/20/nomad-cluster/)'
 - '[Pavel Sklenar: Creating Two Node Nomad Cluster](https://blog.pavelsklenar.com/two-node-nomad-cluster/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

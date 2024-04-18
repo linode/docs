@@ -8,6 +8,7 @@ title: "Use .gitignore to Ignore Specific Files and Folders"
 external_resources:
 - '[gitignore Documentation](https://git-scm.com/docs/gitignore)'
 - '[Git website](https://git-scm.com/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

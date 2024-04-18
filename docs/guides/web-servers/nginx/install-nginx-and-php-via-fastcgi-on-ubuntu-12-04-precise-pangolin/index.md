@@ -14,6 +14,7 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

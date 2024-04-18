@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: Ubuntu
 image: Configuring_automated_security_updates_ubuntu.png
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

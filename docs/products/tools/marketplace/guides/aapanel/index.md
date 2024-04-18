@@ -9,6 +9,7 @@ aliases: ['/guides/deploying-aapanel-marketplace-app/','/guides/aapanel-marketpl
 external_resources:
 - '[aaPanel](https://www.aapanel.com/)'
 - '[aaPanel Documentation](https://doc.aapanel.com/web)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

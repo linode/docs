@@ -9,6 +9,7 @@ published: 2020-01-22
 modified: 2023-05-24
 image: TroubleshootLinodeLongview.png
 aliases: ['/platform/longview/troubleshooting-linode-longview/','/guides/troubleshooting-linode-longview/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

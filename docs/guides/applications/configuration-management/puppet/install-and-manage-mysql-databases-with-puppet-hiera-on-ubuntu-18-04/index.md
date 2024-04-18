@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/applications/configuration-management/puppet/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/','/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -23,6 +23,7 @@ external_resources:
 - '[Elements advanced configuration options](https://github.com/vector-im/element-web/blob/develop/docs/config.md)'
 - '[GitHub page](https://github.com/matrix-org/synapse)'
 
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

@@ -4,6 +4,7 @@ published: 2022-10-28
 title: "TXT Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

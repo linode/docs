@@ -12,6 +12,7 @@ external_resources:
  - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'
 tags: ["ubuntu","debian","database","mysql"]
 image: mysql-master-master-replication-title.jpg
+authors: ["James Stewart"]
 contributors: ["James Stewart"]
 ---
 

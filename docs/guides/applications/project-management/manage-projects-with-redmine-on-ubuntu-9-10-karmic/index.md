@@ -14,6 +14,7 @@ relations:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

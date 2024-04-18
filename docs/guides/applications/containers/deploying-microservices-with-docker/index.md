@@ -11,6 +11,7 @@ external_resources:
 - '[Github Repository for Example Microservice](https://github.com/bobstrecansky/flask-microservice)'
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 aliases: ['/applications/containers/deploying-microservices-with-docker/']
+authors: ["Bob Strecansky"]
 contributors: ["Bob Strecansky"]
 tags: ["saas"]
 ---

@@ -8,6 +8,7 @@ modified: 2018-03-20
 published: 2010-10-11
 title: "Using logrotate to Manage Log Files"
 title_meta: "How to Use logrotate to Manage Log Files"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

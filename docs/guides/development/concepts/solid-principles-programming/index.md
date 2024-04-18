@@ -10,6 +10,7 @@ external_resources:
 - '[Wikipedia article on SOLID Principles](https://en.wikipedia.org/wiki/SOLID)'
 - '[Robert Martin article on OOD Principles](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)'
 - '[Wikipedia page on Inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming))'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

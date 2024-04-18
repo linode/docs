@@ -8,6 +8,7 @@ published: 2021-06-21
 title: "Common Security Weaknesses in Web Applications (XSS and SQL Injections)"
 title_meta: "Common Security Weaknesses in Web Applications"
 aliases: ['/guides/understanding-total-app-security/']
+authors: ["David Strom"]
 contributors: ["David Strom"]
 ---
 

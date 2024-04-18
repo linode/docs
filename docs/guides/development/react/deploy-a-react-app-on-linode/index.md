@@ -17,6 +17,7 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
+authors: ["Phil Zona"]
 contributors: ["Phil Zona"]
 ---
 

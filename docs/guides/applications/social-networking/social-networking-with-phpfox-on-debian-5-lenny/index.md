@@ -9,6 +9,7 @@ modified: 2013-10-04
 published: 2010-08-13
 title: 'Social Networking with phpFox on Debian 5 (Lenny)'
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -6,6 +6,7 @@ published: 2009-12-17
 title: Exim Guides
 show_in_lists: true
 aliases: ['/email/exim/','/email/exim/send-only-mta-ubuntu-10.04-lucid/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -11,6 +11,7 @@ tags: ["ubuntu", "security"]
 image: SetUpVaultserver.png
 external_resources:
   - '[Vault Documentation](https://www.vaultproject.io/docs)'
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

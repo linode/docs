@@ -14,6 +14,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

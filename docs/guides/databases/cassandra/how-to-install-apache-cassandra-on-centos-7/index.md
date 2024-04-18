@@ -20,6 +20,7 @@ external_resources:
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
 tags: ["centos","database","nosql"]
 image: Apache_Cassandra.png
+authors: ["Andrew Lescher"]
 contributors: ["Andrew Lescher"]
 ---
 

@@ -8,6 +8,7 @@ published: 2022-01-28
 modified: 2022-05-10
 title: "Verifying the Authenticity of a Remote Server through Its SSH Key Fingerprint"
 title_meta: "Verifying the Authenticity of Remote Host (SSH Key Fingerprint)"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

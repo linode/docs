@@ -17,6 +17,7 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Lukas Sabota"]
 contributors: ["Lukas Sabota"]
 ---
 

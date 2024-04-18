@@ -8,6 +8,7 @@ title_meta: "The Developer’s Guide to Java: Web Servers"
 title: "How to Make a Server in Java in 5 Easy Steps"
 external_resources:
 - '[DZone: A Simple HTTP Server in Java](https://dzone.com/articles/simple-http-server-in-java)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

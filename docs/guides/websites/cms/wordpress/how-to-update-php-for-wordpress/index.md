@@ -12,6 +12,7 @@ external_resources:
 - '[WordPress](https://wordpress.org/)'
 - '[PHP](https://www.php.net/)'
 - '[phpMyAdmin](https://www.phpmyadmin.net/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

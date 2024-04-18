@@ -8,6 +8,7 @@ title: "Use the sd Command for Find and Replace on Linux"
 title_meta: "How to Use the sd Command for Find and Replace on Linux"
 external_resources:
 - '[GitHub: chmln/sd](https://github.com/chmln/sd)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -6,6 +6,7 @@ published: 2020-07-15
 title: Chef
 show_in_lists: true
 aliases: ['/applications/configuration-management/chef/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

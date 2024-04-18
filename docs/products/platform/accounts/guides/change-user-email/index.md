@@ -7,6 +7,7 @@ image: L_ChangeYourEmail.png
 title: Change Your Email Address
 title_meta: Change Your Email Address on a Linode Account
 aliases: ['/quick-answers/linode-platform/how-to-change-your-email/','/guides/how-to-change-your-email/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

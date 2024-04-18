@@ -18,6 +18,7 @@ external_resources:
 - '[Google Borg](https://research.google.com/pubs/pub43438.html)'
 - '[kubelet Definition](https://kubernetes.io/docs/admin/kubelet/)'
 - '[CNI Spec](https://github.com/containernetworking/cni/blob/master/SPEC.md)'
+authors: ["Kiran Singh"]
 contributors: ["Kiran Singh"]
 ---
 

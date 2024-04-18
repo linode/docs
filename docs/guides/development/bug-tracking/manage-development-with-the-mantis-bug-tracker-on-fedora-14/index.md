@@ -14,6 +14,7 @@ relations:
         key:  mantis-bug-tracker
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

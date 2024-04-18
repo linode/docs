@@ -8,6 +8,7 @@ published: 2021-03-10
 modified: 2023-11-15
 image: TransferOwn_LinodeServ_ST.png
 aliases: ['/guides/platform/manager/service-transfers/', '/guides/service-transfers/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

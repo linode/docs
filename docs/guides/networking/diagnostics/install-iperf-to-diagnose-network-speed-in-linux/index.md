@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-10
 published: 2015-01-12
 title: Network Throughput Testing with iPerf
+authors: ["Dave R."]
 contributors: ["Dave R."]
 ---
 

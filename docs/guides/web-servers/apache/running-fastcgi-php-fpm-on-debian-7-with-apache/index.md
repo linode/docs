@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
+authors: ["Jesin A"]
 contributors: ["Jesin A"]
 ---
 

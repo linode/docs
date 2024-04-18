@@ -9,6 +9,7 @@ modified: 2013-10-02
 published: 2009-07-23
 title: Manage Web Content with Movable Type
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

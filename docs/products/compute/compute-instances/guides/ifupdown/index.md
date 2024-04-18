@@ -7,6 +7,7 @@ tags: ["networking","linode platform",]
 external_resources:
   - '[ifupdown documentation](https://manpages.debian.org/bullseye/ifupdown/interfaces.5.en.html)'
 aliases: ['/guides/ifupdown/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
   - '[Quickstart: Compose and Wordpress | Docker Documentation](https://docs.docker.com/compose/wordpress/)'
 aliases: ['/quick-answers/linux/wordpress-with-docker-compose/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

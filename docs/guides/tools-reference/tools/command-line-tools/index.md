@@ -6,6 +6,7 @@ description: 'What are the most useful command line tools you need to know? Find
 keywords: ['command line tools', 'best command line tools for windows', 'best command line tools linux', 'useful command line tools']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2023-06-21
 ---

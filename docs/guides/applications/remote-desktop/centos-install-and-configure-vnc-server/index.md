@@ -15,6 +15,7 @@ relations:
         key: install-vnc
         keywords:
             - distribution: CentOS 8
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

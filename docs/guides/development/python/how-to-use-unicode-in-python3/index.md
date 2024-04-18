@@ -16,6 +16,7 @@ external_resources:
 - '[RFC 3629](https://datatracker.ietf.org/doc/html/rfc3629)'
 - '[An explanation of the Unicode standard](https://jkorpela.fi/unicode/guide.html)'
 - '[Python background on lexical analysis](https://docs.python.org/3/reference/lexical_analysis.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

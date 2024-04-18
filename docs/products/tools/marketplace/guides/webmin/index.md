@@ -11,6 +11,7 @@ external_resources:
 - '[Webmin on GitHub](https://github.com/webmin/webmin/commits/master)'
 - '[Webmin Tutorials](https://doxfer.webmin.com/Webmin/Tutorials)'
 aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webmin-with-one-click-apps/','/guides/how-to-deploy-webmin-with-one-click-apps/','/guides/how-to-deploy-webmin-with-marketplace-apps/','/platform/one-click/deploy-webmin-with-one-click-apps/','/guides/webmin-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

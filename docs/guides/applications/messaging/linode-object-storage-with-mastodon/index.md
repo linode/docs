@@ -6,10 +6,12 @@ keywords: ['mastodon object storage','how to use mastodon','mastodon s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-24
 title: "How to Use Linode Object Storage with Mastodon"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 external_resources:
 - '[Thomas Leister: Mastodon - Adding S3 Based Cloud Storage to Your Instance](https://thomas-leister.de/en/mastodon-s3-media-storage/)'
 - '[Mastodon: Proxying Object Storage through NGINX](https://docs.joinmastodon.org/admin/optional/object-storage-proxy/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

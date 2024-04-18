@@ -14,6 +14,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

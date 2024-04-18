@@ -14,6 +14,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

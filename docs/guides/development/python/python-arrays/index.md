@@ -7,6 +7,7 @@ published: 2022-06-17
 title: "Python Arrays: What They Are and How to Use Them"
 external_resources:
 - '[Python Docs: array — Efficient arrays of numeric values](https://docs.python.org/3/library/array.html)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/python/create-a-python-virtualenv-on-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Delete a Cloud Firewall
 description: "How to delete a Linode Cloud Firewall."
+authors: ["Linode"]
 contributors: ["Linode"]
 modified: 2023-12-12
 

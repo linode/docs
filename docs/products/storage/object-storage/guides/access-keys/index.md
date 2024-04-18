@@ -5,6 +5,7 @@ published: 2021-05-28
 modified: 2022-02-07
 title: "Manage Access Keys"
 aliases: ['/products/storage/object-storage/guides/generate-key-pair/','/products/storage/object-storage/guides/generate-access-keys/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

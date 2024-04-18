@@ -6,6 +6,7 @@ tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-08
 title: "Get Started with TypeScript Modules"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

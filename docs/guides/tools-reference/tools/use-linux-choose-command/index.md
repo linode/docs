@@ -5,6 +5,7 @@ keywords: ['awk command unix','linux text processing commands','linux cut comman
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-30
 title: "Use the choose Command for Text Processing on Linux"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

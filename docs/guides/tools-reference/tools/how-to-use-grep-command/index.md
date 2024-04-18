@@ -4,6 +4,7 @@ title: How to Use the Grep Command to Find Information in Files
 description: "An extensive guide on how to grep for text in files in Unix based systems. Understand search, match, and advanced regex to grep for text in files."
 keywords: ["how to use grep", "grep usage", "grep tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-06-30
 modified: 2023-11-14

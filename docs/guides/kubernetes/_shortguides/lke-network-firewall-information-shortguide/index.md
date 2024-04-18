@@ -10,6 +10,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["kubernetes"]
 aliases: ['/kubernetes/lke-network-firewall-information-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

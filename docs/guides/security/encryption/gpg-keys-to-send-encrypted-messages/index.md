@@ -12,6 +12,7 @@ external_resources:
 - '[The Mathematics of the RSA Public-Key Cryptosystem ](http://www.mathaware.org/mam/06/Kaliski.pdf)'
 tags: ["security"]
 aliases: ['/security/encryption/gpg-keys-to-send-encrypted-messages/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

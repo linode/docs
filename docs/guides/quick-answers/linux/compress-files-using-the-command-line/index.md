@@ -10,6 +10,7 @@ title: "Archive, Compress, and Extract Files in Linux Using the Command Line"
 title_meta: "How to Archive, Extract & Compress Files in Linux"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/compress-files-using-the-command-line/']
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

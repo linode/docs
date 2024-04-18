@@ -15,6 +15,7 @@ weight: 10
 icon: "book"
 show_on_rss_feed: false
 image: getting-started.jpg
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

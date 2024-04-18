@@ -11,6 +11,7 @@ external_resources:
  - '[Instructions for GPG 2.1](https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html)'
 modified: 2016-10-03
 published: 2016-10-03
+authors: ["Huw Evans"]
 contributors: ["Huw Evans"]
 ---
 

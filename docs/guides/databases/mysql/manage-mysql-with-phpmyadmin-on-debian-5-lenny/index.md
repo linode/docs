@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["ubuntu","php","database","mysql"]
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

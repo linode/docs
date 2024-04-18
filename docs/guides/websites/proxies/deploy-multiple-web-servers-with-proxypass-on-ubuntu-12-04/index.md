@@ -12,6 +12,7 @@ title: 'Deploy Multiple Web Servers with ProxyPass on Ubuntu 12.04'
 external_resources:
  - '[Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
  - '[Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)'
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

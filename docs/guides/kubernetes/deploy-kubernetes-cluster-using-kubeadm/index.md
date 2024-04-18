@@ -14,6 +14,7 @@ external_resources:
 - '[Kubernetes: Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)'
 - '[Kubernetes: Cluster Administration Overview](https://kubernetes.io/docs/concepts/cluster-administration/cluster-administration-overview/)'
 - '[Kubernetes: Securing a Cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

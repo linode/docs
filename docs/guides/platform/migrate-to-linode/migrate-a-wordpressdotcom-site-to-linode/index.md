@@ -10,6 +10,7 @@ title: How to Migrate a WordPress.com Website to Linode
 external_resources:
  - '[WordPress.com: Moving to Self-Hosted WordPress](https://move.wordpress.com/)'
 aliases: ['/platform/migrate-to-linode/migrate-a-wordpressdotcom-site-to-linode/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

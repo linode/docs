@@ -24,6 +24,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

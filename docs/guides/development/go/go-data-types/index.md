@@ -10,6 +10,7 @@ external_resources:
   - '[Go Packages](https://golang.org/pkg/)'
 image: GoDataTypes.png
 aliases: ['/development/go/go-data-types/']
+authors: ["Mihalis Tsoukalos"]
 contributors: ["Mihalis Tsoukalos"]
 ---
 

@@ -9,6 +9,7 @@ modified: 2022-11-22
 title: 'How to Encrypt Your Data with dm-crypt'
 aliases: ['/security/encrypt-data-disk-with-dm-crypt/','/security/encryption/encrypt-data-disk-with-dm-crypt/']
 image: How_to_Encrypt_Your_Data_with_dm-crypt_smg.png
+authors: ["Alexandru Andrei"]
 contributors: ["Alexandru Andrei"]
 ---
 

@@ -9,6 +9,7 @@ title_meta: "How to Use Glances for System Monitoring on Linux"
 external_resources:
 - '[Glances GitHub Repository](https://github.com/nicolargo/glances)'
 - '[Glances Official Documentation](https://glances.readthedocs.io/en/latest/index.html)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

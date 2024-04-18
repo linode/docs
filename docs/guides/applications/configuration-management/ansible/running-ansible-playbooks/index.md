@@ -8,6 +8,7 @@ modified: 2015-09-21
 title: Automate Server Configuration with Ansible Playbooks
 aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/','/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/']
 tags: ["automation"]
+authors: ["Joshua Lyman"]
 contributors: ["Joshua Lyman"]
 ---
 

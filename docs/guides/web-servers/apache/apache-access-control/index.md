@@ -13,6 +13,7 @@ external_resources:
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)'
  - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

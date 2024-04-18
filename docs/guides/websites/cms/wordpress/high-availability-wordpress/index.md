@@ -9,6 +9,7 @@ published: 2015-01-09
 title: "Deploy a High Availability WordPress Website on Linode"
 deprecated: true
 aliases: ['/websites/cms/high-availability-wordpress/','/websites/cms/wordpress/high-availability-wordpress/']
+authors: ["James Stewart"]
 contributors: ["James Stewart"]
 ---
 

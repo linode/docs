@@ -15,6 +15,7 @@ relations:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-10-10-maverick/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

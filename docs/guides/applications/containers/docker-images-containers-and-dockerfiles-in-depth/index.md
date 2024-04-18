@@ -12,6 +12,7 @@ external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
  - '[Docker Docs](http://docs.docker.com/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

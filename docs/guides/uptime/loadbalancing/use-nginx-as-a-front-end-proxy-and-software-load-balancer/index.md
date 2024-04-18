@@ -13,6 +13,7 @@ external_resources:
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
  - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 dedicated_cpu_link: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

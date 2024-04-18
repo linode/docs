@@ -11,6 +11,7 @@ external_resources:
   - '[Rancher Official Docs](https://rancher.com/docs/k3s/latest/en/)'
   - '[Kubernetes Official Docs] (https://kubernetes.io/docs/)'
 aliases: ['/kubernetes/how-to-deploy-k3s-on-linode/','/guides/how-to-deploy-k3s-on-linode/']
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

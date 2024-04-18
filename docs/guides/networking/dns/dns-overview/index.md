@@ -9,6 +9,7 @@ published: 2009-07-29
 title: "Overview of DNS and DNS Records"
 tags: ["dns","networking"]
 image: dns-records-an-introduction.png
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

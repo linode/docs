@@ -4,6 +4,7 @@ description: "This document provides details for the limited availability beta o
 published: 2023-04-17
 modified: 2024-02-14
 tags: ["linode platform"]
+authors: ["Linode"]
 contributors: ["Linode"]
 _build:
   list: false

@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

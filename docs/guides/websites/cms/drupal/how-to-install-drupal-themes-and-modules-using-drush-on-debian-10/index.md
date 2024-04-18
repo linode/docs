@@ -19,6 +19,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

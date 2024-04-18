@@ -8,6 +8,7 @@ published: 2018-09-25
 title: Download Files from Your Compute Instance
 tags: ["security"]
 aliases: ['/security/data-portability/download-files-from-your-linode/','/guides/download-files-from-your-linode/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 title: "An Overview of Deep Learning Frameworks"
 title_meta: "Deep Learning Frameworks Overview"
+authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 tags: ["saas"]
 ---

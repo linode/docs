@@ -4,6 +4,7 @@ title: "Install and Use the Deno Javascript Runtime (Node.js Alternative)"
 description: 'This guide introduces the Deno JavaScript runtime and compares it to Node.js. It also explains how to install and use Deno.'
 keywords: ['what is Deno', 'Deno vs Node.js', 'install Deno', 'how to use Deno']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2023-08-29
 external_resources:

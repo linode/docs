@@ -1,6 +1,7 @@
 ---
 title: Update Cloud Firewall Status
 description: "How to update the status of your Linode Cloud Firewall."
+authors: ["Linode"]
 contributors: ["Linode"]
 modified: 2023-11-06
 

@@ -10,6 +10,7 @@ title: Installing BCC to Use eBPF Tracing Tools
 tags: ["networking","security"]
 external_resources:
 - '[iovisor](https://github.com/iovisor/bcc)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 ## Before You Begin

@@ -21,6 +21,7 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","nosql"]
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

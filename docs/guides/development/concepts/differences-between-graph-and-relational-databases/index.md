@@ -5,6 +5,7 @@ title_meta: "Graph Databases vs. Relational Databases"
 description: 'This overview guide introduces the reader to Graph databases. Its discussion of relational databases helps the reader understand the unique advantages and use cases of Graph databases.'
 keywords: ['graph database vs relational', 'graph database vs relational database performance', 'when to use graph database vs relational ']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 published: 2023-11-15
 ---

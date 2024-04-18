@@ -12,6 +12,7 @@ external_resources:
   - '[How to Automate Builds with Jenkins on Ubuntu](/docs/guides/automate-builds-with-jenkins-on-ubuntu/)'
 audiences: ["foundational", "beginner"]
 tags: ["automation", "education"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

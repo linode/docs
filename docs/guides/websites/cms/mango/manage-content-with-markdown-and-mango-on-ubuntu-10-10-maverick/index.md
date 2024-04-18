@@ -14,6 +14,7 @@ relations:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Ubuntu 10.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

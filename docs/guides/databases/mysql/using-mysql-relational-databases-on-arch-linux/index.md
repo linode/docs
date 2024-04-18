@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["arch","database","mysql"]
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

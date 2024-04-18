@@ -12,6 +12,7 @@ external_resources:
 - '[Working with systemd targets](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/introduction-to-systemctl/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

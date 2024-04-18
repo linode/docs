@@ -12,6 +12,7 @@ external_resources:
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/how-to-deploy-an-nginx-container-with-docker/']
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

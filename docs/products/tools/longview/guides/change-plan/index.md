@@ -4,6 +4,7 @@ description: "Information on upgrading your Longview to a Pro plan or downgradin
 keywords: ['longview','billing','pricing','price','limit','transfer', 'plan']
 published: 2023-05-24
 tags: ["linode platform","cloud manager","statistics","monitoring"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

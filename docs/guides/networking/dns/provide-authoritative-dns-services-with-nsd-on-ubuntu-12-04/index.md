@@ -17,6 +17,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

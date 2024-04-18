@@ -10,6 +10,7 @@ external_resources:
 - '[GeeksForGeeks.org: Introduction to Visual Programming Language](https://www.geeksforgeeks.org/introduction-to-visual-programming-language/)'
 - '[PostScapes.com: Visual Programming Guide](https://www.postscapes.com/iot-visual-programming-tools/)'
 - '[OutSystems.com: What Is Visual Programming?](https://www.outsystems.com/glossary/what-is-visual-programming/)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

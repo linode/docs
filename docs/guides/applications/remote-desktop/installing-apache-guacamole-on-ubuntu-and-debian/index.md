@@ -9,6 +9,7 @@ title: "Installing Apache Guacamole on Ubuntu and Debian"
 title_meta: "How to Install Apache Guacamole on Ubuntu and Debian"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

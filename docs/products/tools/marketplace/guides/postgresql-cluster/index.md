@@ -7,6 +7,7 @@ tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -8,6 +8,7 @@ aliases: ['/quick-answers/linux/log-in-to-coreos-container-linux/','/quick-answe
 modified: 2017-05-08
 published: 2017-05-08
 title: Log in to CoreOS Container Linux
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

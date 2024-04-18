@@ -8,6 +8,7 @@ modified: 2018-06-28
 aliases: ['/quick-answers/websites/certbot-shortguide-centos/']
 title: 'Install Certbot for TLS on CentOS'
 headless: true
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

@@ -7,6 +7,7 @@ modified: 2024-04-11
 title: "Cloning a Compute Instance"
 title_meta: "How to Clone a Compute Instance"
 aliases: ['/migrate-to-linode/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode-classic-manager/','/guides/clone-your-linode/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

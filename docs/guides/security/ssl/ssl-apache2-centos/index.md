@@ -16,6 +16,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/security/ssl/ssl-apache2-centos/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ published: 2017-03-10
 title: 'Use the Distribution-Supplied Kernel on CentOS 6 with Grub Legacy'
 deprecated: true
 aliases: ['/tools-reference/custom-kernels-distros/use-the-distribution-supplied-kernel-on-centos-6-with-grub-legacy/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

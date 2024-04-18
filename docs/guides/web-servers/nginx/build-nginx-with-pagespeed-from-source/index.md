@@ -9,6 +9,7 @@ modified: 2018-02-12
 title: 'Build NGINX with PageSpeed From Source'
 dedicated_cpu_link: true
 tags: ["web server","nginx"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

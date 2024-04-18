@@ -10,6 +10,7 @@ title: Manipulate Text from the Command Line with sed
 external_resources:
  - '[Administration Basics](/docs/guides/linux-system-administration-basics/)'
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

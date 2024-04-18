@@ -12,6 +12,7 @@ external_resources:
   - '[How to Transfer Accounts and Configurations Between cPanel Servers](https://documentation.cpanel.net/display/CKB/How+to+Transfer+Accounts+and+Configurations+Between+cPanel+Servers)'
   - '[cPanel Documentation - Transfer Tool](https://documentation.cpanel.net/display/68Docs/Transfer+Tool)'
 aliases: ['/platform/migrate-to-linode/migrate-cpanel-to-linode/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

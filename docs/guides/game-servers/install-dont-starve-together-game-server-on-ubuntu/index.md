@@ -9,6 +9,7 @@ modified: 2019-02-01
 title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
 aliases: ['/applications/game-servers/dont-starve-together-on-ubuntu/','/game-servers/install-dont-starve-together-game-server-on-ubuntu/','/applications/game-servers/install-dont-starve-together-game-server-on-ubuntu/']
 dedicated_cpu_link: true
+authors: ["Andrew Gottschling"]
 contributors: ["Andrew Gottschling"]
 ---
 

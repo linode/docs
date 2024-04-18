@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-20
 title: "List Tables in MySQL and MariaDB"
 title_meta: "How to List Tables in MySQL and MariaDB"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

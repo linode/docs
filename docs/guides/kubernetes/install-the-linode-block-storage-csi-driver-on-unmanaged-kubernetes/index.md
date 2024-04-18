@@ -11,6 +11,7 @@ external_resources:
 - '[Kubernetes PersistentVolumeClaims Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)'
 - '[Container Storage Interface (CSI) Spec](https://github.com/container-storage-interface/spec/blob/master/spec.md)'
 aliases: ['/kubernetes/how-to-install-the-linode-block-storage-csi-driver/','/guides/how-to-install-the-linode-block-storage-csi-driver/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

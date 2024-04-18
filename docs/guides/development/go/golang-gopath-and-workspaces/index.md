@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 title: "The GOPATH in Golang"
 title_meta: "Golang’s GOPATH and Workspaces"
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

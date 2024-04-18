@@ -8,6 +8,7 @@ published: 2021-02-19
 image: UseSystemActivityReporter.png
 title: "Using the System Activity Reporter (sar)"
 title_meta: "How to Use the System Activity Reporter (sar)"
+authors: ["Steven J. Vaughan-Nichols"]
 contributors: ["Steven J. Vaughan-Nichols"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
 - '[Execution of Salt Modules From Within States](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.module.html#execution-of-salt-modules-from-within-states)'
 aliases: ['/applications/configuration-management/create-a-salt-execution-module/','/applications/configuration-management/salt/create-a-salt-execution-module/']
 tags: ["automation","salt"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

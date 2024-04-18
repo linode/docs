@@ -6,6 +6,7 @@ modified: 2024-02-13
 title: "Create a Compute Instance"
 title_meta: "Create a Compute Instance on the Linode Platform"
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

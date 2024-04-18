@@ -9,6 +9,7 @@ title: Less Keyboard Navigation Commands
 headless: true
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-navigate-less-shortguide/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

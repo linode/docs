@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/']
+authors: ["Todd Knarr"]
 contributors: ["Todd Knarr"]
 ---
 

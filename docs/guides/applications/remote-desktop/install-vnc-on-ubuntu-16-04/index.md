@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-16-04/']
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

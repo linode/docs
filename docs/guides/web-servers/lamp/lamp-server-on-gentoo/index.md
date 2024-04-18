@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Gentoo
 tags: ["web server","php","mysql","apache","lamp"]
+authors: ["James Stewart"]
 contributors: ["James Stewart"]
 ---
 

@@ -9,6 +9,7 @@ title: "Deploy OpenVPN through the Linode Marketplace"
 external_resources:
 - '[OpenVPN Community Resources](https://openvpn.net/community-resources/)'
 aliases: ['/platform/marketplace/marketplace-openvpn/', '/platform/one-click/one-click-openvpn/','/guides/one-click-openvpn/','/guides/marketplace-openvpn/','/guides/deploying-openvpn-marketplace-app/','/guides/openvpn-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

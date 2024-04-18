@@ -5,6 +5,7 @@ aliases: ['/websites/cherokee/','/web-servers/cherokee/']
 published: 2009-09-10
 title: Hosting Websites with Cherokee
 show_in_lists: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

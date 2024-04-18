@@ -2,6 +2,7 @@
 title: "Deploy an Image to an Existing Compute Instance"
 description: "Learn how to deploy an Image to an existing Linode Compute Instance by rebuilding it or adding a new disk."
 aliases: ['/guides/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

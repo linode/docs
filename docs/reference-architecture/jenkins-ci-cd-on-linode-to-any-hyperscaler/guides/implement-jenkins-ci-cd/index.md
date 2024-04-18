@@ -4,6 +4,7 @@ title: "How to Implement Jenkins CI/CD on Linode to Any Hyperscaler"
 description: "Jenkins allows you to effectively automate your building, testing, deployment, and more. Its many plugins and its flexible pipeline capabilities make Jenkins exceptional for CI/CD in any context and with any cloud providers. Learn how to implement a Jenkins CI/CD architecture on Linode, capable of builds and deployments to any hyperscaler."
 keywords: ['jenkins ci/cd pipeline','jenkins kubernetes deployments','jenkins tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ['Nathaniel Stickman']
 contributors: ['Nathaniel Stickman']
 published: 2023-05-17
 external_resources:

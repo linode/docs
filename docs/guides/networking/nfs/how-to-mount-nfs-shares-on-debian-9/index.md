@@ -9,6 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-07
 published: 2014-02-27
 title: How to Mount NFS Shares on Debian 9
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

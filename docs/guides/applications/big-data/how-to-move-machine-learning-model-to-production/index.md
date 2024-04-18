@@ -14,6 +14,7 @@ external_resources:
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/how-to-move-machine-learning-model-to-production/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

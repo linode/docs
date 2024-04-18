@@ -10,6 +10,7 @@ title_meta: "How to Install and Use ripgrep"
 external_resources:
 - '[Ripgrep GitHub site](https://github.com/BurntSushi/ripgrep)'
 - '[ripgrep blog](https://blog.burntsushi.net/ripgrep/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

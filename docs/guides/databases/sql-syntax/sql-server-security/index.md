@@ -6,6 +6,7 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2022-05-27
 title: "Part 1: SQL Server Security Best Practices"
 title_meta: SQL Server Security Best Practices
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 

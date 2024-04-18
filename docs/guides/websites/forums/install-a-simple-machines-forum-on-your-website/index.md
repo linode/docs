@@ -14,6 +14,7 @@ external_resources:
  - '[Modifications, Styles, and Upgrades](http://custom.simplemachines.org/)'
  - '[Functions Database](http://support.simplemachines.org/function_db/)'
  - '[SMF Community Forum](http://www.simplemachines.org/community/index.php)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

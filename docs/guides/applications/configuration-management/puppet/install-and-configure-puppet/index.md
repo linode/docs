@@ -13,6 +13,7 @@ title: Install and Configure Puppet
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
+authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 ---
 

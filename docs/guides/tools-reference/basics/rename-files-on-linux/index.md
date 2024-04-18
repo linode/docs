@@ -7,6 +7,7 @@ published: 2022-09-14
 modified: 2022-09-23
 title: "Rename Files in Linux"
 title_meta: "How to Rename Files on Linux"
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

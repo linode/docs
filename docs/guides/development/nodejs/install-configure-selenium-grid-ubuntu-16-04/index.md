@@ -18,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/development/nodejs/install-configure-selenium-grid-ubuntu-16-04/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

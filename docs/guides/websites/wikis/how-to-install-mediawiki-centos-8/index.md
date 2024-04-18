@@ -14,6 +14,7 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: CentOS 8
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

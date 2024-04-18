@@ -9,6 +9,7 @@ external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'
 aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-marketplace-apps/','/guides/phpmyadmin-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

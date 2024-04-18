@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Gentoo
 tags: ["database","mysql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

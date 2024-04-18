@@ -14,6 +14,7 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Fedora 12
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

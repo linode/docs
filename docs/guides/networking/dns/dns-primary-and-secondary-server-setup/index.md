@@ -4,6 +4,7 @@ title: "How to Configure DNS Primary and Secondary Servers"
 description: 'Enhance website reliability and performance by creating a secondary name server, along with a hidden primary, using NSD on Ubuntu. ✓ Click here!'
 keywords: ['dns primary and secondary server setup','dns primary server','domain name service','linux dns server','dns secondary server','configuring dns','install dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["David Robert Newman"]
 contributors: ["David Robert Newman"]
 published: 2023-06-09
 external_resources:

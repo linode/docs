@@ -12,6 +12,7 @@ external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
  - '[Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

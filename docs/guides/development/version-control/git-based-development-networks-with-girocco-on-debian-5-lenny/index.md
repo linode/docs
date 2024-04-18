@@ -9,6 +9,7 @@ modified: 2013-09-24
 published: 2010-06-23
 title: 'Git Based Development Networks with Girocco on Debian 5 (Lenny)'
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

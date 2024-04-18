@@ -9,6 +9,7 @@ title_meta: "A Software Engineer's Guide to Advanced Bash Scripting: Part 1"
 external_resources:
 - '[Bash cheat sheet](https://scilifelab.github.io/courses/ngsintro/1902/files/Bash_cheat_sheet_level2.pdf)'
 - '[GNU Bash](https://www.gnu.org/software/bash/)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

@@ -10,6 +10,7 @@ external_resources:
 - '[SSH Protocol](https://en.wikipedia.org/wiki/Secure_Shell_Protocol)'
 - '[SSH Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell_Protocol)'
 
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

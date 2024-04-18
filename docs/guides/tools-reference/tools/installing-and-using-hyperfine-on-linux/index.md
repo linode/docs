@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-22
 title: "Install and Use hyperfine on Linux"
 title_meta: "How to Install and Use hyperfine on Linux"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -14,6 +14,7 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

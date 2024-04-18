@@ -4,6 +4,7 @@ title: "Network Firewalls vs. Application Firewalls"
 description: 'Learn the differences between network and WAF firewalls that developers and administrators need to know when using firewalls to secure their workloads.'
 keywords: ['cloud-based firewall','web application firewall','network firewall','block malicious traffic','stop ddos attacks','unified threat manager','security tool','network security','application security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["David Robert Newman"]
 contributors: ["David Robert Newman"]
 published: 2024-01-03
 ---

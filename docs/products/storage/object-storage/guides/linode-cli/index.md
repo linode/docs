@@ -2,6 +2,7 @@
 title: "Using the Linode CLI with Object Storage"
 description: "Learn how to use the Linode CLI to manage Linode's own Object Storage solution."
 modified: 2023-06-27
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

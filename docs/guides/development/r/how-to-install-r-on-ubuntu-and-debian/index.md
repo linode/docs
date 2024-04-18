@@ -11,6 +11,7 @@ audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
 aliases: ['/development/r/how-to-install-r-on-ubuntu-and-debian/']
+authors: ["Sam Foo"]
 contributors: ["Sam Foo"]
 ---
 

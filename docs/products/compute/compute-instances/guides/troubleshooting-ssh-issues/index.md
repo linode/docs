@@ -7,6 +7,7 @@ published: 2019-02-01
 modified: 2023-03-14
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-ssh/','/guides/troubleshooting-ssh/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

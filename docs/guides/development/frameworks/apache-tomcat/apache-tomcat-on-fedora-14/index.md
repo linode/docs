@@ -14,6 +14,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

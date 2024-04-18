@@ -10,6 +10,7 @@ external_resources:
   - '[Backing Up Your Data](/docs/guides/backing-up-your-data/)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/introduction-to-backups/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

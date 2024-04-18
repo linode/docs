@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 tags: ["ubuntu","database","mysql"]
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

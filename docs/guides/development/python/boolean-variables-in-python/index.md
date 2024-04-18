@@ -10,6 +10,7 @@ title_meta: "Using Boolean Variables, Operators, and Conditional Statements in P
 external_resources:
 - '[Python Documentation on Value Comparisons](https://docs.python.org/3/reference/expressions.html#value-comparisons)'
 - '[Python documentation for compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

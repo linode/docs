@@ -9,6 +9,7 @@ title: "A Tutorial for Learning Structs in Go"
 external_resources:
   - '[Go](https://golang.org)'
 aliases: ['/development/go/go-structures/']
+authors: ["Mihalis Tsoukalos"]
 contributors: ["Mihalis Tsoukalos"]
 ---
 

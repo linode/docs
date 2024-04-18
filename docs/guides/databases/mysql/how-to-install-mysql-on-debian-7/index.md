@@ -20,6 +20,7 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","mysql"]
 deprecated: true
+authors: ["Mike Rosabal"]
 contributors: ["Mike Rosabal"]
 ---
 

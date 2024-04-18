@@ -4,6 +4,7 @@ keywords: ['Microweber','website builder','cms']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-09-06
 title: "Deploy Microweber through the Linode Marketplace"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

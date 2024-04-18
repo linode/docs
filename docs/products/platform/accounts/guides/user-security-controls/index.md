@@ -6,6 +6,7 @@ aliases: ['/linode-manager-security/','/security/authentication/linode-manager-s
 published: 2022-06-24
 modified: 2023-08-15
 title: "Security Controls for User Accounts"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

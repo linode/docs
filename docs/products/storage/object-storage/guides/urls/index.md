@@ -7,6 +7,7 @@ image: AccessingObjectswithLinodeObjectStorage.png
 title: "Access Buckets and Files through URLs"
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/','/guides/how-to-access-objects-with-linode-object-storage/','/products/storage/object-storage/guides/access-objects/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -8,6 +8,7 @@ image: ChoosePythonAPI_fw.png
 title: "An Overview of Python API Frameworks"
 title_meta: "How to Choose a Python API Framework"
 tags: ["python", "django"]
+authors: ["Chelsea Troy"]
 contributors: ["Chelsea Troy"]
 ---
 

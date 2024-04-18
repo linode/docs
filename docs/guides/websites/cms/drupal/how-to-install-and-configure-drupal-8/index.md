@@ -10,6 +10,7 @@ published: 2015-11-19
 deprecated: true
 deprecated_link: 'websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10/'
 title: Install and Configure Drupal 8
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

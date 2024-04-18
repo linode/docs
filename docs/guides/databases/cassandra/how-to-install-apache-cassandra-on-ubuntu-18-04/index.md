@@ -21,6 +21,7 @@ relations:
             - distribution: Ubuntu 18.04
 tags: ["ubuntu","database","nosql"]
 aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-ubuntu-18-04/','/databases/cassandra/deploy-scalable-cassandra/','/guides/deploy-scalable-cassandra/','/databases/deploy-scalable-cassandra/','/databases/cassandra/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/','/guides/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

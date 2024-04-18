@@ -6,6 +6,7 @@ modified: 2024-03-11
 keywords: ["support", "tech support", "tickets", "help desk"]
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/support/','/support/','/platform/support/','/platform/billing-and-support/support-classic-manager/','/platform/billing-and-support/support-new-manager/','/guides/support/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

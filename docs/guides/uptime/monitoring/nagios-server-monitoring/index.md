@@ -9,6 +9,7 @@ modified: 2011-04-19
 published: 2010-11-30
 title: Nagios Server Monitoring
 tags: ["monitoring"]
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

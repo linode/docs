@@ -9,6 +9,7 @@ title: "Use Sorted Sets in Redis Databases"
 title_meta: "How to Use Sorted Sets in Redis Databases"
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

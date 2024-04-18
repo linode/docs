@@ -10,6 +10,7 @@ title_meta: "An Introduction to OAuth2 Authentication"
 external_resources:
 - '[OAuth2 website](https://oauth.net/2/)'
 - '[OAuth2 libraries](https://oauth.net/code/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

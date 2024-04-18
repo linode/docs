@@ -12,6 +12,7 @@ deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 aliases: ['/quick-answers/websites/secure-http-traffic-certbot/','/quick-answers/websites/certbot/secure-http-traffic-certbot/']
 external_resources:
   - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

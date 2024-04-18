@@ -8,6 +8,7 @@ modified: 2018-07-26
 title: "What is Linux?"
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-linux/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -18,6 +18,7 @@ relations:
         key: how-to-install-drush
         keywords:
            - distribution: Ubuntu 18.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

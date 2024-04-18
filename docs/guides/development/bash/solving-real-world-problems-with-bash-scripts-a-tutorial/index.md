@@ -9,6 +9,7 @@ title_meta: 'Solving Real World Problems With Bash Scripts - A Tutorial'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 aliases: ['/development/bash/solving-real-world-problems-with-bash-scripts-a-tutorial/']
+authors: ["Mihalis Tsoukalos"]
 contributors: ["Mihalis Tsoukalos"]
 ---
 

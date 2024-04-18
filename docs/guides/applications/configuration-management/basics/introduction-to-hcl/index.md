@@ -11,6 +11,7 @@ external_resources:
     - '[HCL on GitHub](https://github.com/hashicorp/hcl)'
     - '[Terraform Official Documentation - Configuration Syntax](https://www.terraform.io/docs/configuration/syntax.html)'
 aliases: ['/applications/configuration-management/introduction-to-hcl/','/applications/configuration-management/basics/introduction-to-hcl/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

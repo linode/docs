@@ -9,6 +9,7 @@ published: 2018-09-27
 headless: true
 tags: ["dns","networking"]
 aliases: ['/networking/dns/update-dns-at-common-name-server-authorities/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

@@ -14,6 +14,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ modified: 2013-10-02
 published: 2010-05-03
 title: Manage Web Content with FlatPress
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

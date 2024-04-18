@@ -15,6 +15,7 @@ external_resources:
 - '[Sample Pytest tests](https://github.com/gtmanfred/wordpress-formula/tree/master/tests/integration)'
 aliases: ['/applications/configuration-management/test-salt-locally-with-kitchen-salt/','/applications/configuration-management/salt/test-salt-locally-with-kitchen-salt/']
 tags: ["automation","salt"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

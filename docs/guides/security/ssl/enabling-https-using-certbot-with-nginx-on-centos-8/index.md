@@ -12,6 +12,7 @@ relations:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: CentOS/RHEL 8
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

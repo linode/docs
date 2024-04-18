@@ -9,6 +9,7 @@ external_resources:
 - '[Owncast](https://owncast.online/)'
 - '[Owncast Github](https://github.com/owncast/owncast)'
 aliases: ['/guides/deploy-owncast-with-marketplace-apps/','/guides/owncast-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

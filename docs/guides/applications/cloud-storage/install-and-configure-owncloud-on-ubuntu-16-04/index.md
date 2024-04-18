@@ -16,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/']
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

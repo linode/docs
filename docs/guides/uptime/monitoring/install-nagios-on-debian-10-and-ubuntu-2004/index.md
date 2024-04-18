@@ -16,6 +16,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 10 & Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

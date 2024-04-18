@@ -22,6 +22,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: CentOS 8
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

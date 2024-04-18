@@ -12,6 +12,7 @@ title_meta: "How to Install Subsonic Media Server on Ubuntu or Debian"
 external_resources:
   - '[Subsonic official site](http://www.subsonic.org)'
 dedicated_cpu_link: true
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

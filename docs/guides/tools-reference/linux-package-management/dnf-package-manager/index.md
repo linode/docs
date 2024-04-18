@@ -13,6 +13,7 @@ external_resources:
 - '[Fedora Wiki: DNF](https://fedoraproject.org/wiki/DNF)'
 - '[DNF Automatic](https://dnf.readthedocs.io/en/latest/automatic.html)'
 - '[DNF Command Reference](https://dnf.readthedocs.io/en/latest/command_ref.html)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

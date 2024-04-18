@@ -14,6 +14,7 @@ external_resources:
  - '[The Official ClamAV Site](http://www.clamav.net/)'
  - '[Ubuntu Community Documentation](https://help.ubuntu.com/community/PostfixAmavisNew)'
  - '[Whitelisting and Blacklisting in Amavis](http://www.akadia.com/services/postfix_amavisd.html#Globally%20Sender%20Whitelists%20and%20Blacklists)'
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

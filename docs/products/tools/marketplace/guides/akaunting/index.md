@@ -8,6 +8,7 @@ title: "Deploy Akaunting through the Linode Marketplace"
 external_resources:
 - '[Akaunting](https://akaunting.com)'
 aliases: ['/guides/deploying-akaunting-marketplace-app/','/guides/akaunting-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

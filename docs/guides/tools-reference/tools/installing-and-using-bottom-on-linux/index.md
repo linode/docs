@@ -10,6 +10,7 @@ title_meta: "How to Install and Use bottom on Linux"
 external_resources:
 - '[bottom](https://clementtsang.github.io/bottom/0.6.3/)'
 - '[GitHub: ClementTsang/bottom](https://github.com/ClementTsang/bottom)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

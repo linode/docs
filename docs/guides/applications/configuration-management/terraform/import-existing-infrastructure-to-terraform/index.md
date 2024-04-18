@@ -11,6 +11,7 @@ external_resources:
 - '[Terraform Import Usage](https://www.terraform.io/docs/import/usage.html)'
 - '[Terraform Linode Instance Documentation](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 aliases: ['/applications/configuration-management/import-existing-infrastructure-to-terraform/','/applications/configuration-management/terraform/import-existing-infrastructure-to-terraform/']
+authors: ["Linode"]
 contributors: ["Linode"]
 tags: ["saas"]
 ---

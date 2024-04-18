@@ -15,6 +15,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/how-to-update-drupal-8-on-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

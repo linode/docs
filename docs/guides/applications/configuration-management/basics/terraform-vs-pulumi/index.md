@@ -11,6 +11,7 @@ title_meta: "Comparing Pulumi and Terraform"
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Pulumi](https://www.pulumi.com/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

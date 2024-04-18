@@ -6,6 +6,7 @@ published: 2022-02-22
 modified: 2022-03-08
 title: "Deploy Node.js through the Linode Marketplace"
 aliases: ['/guides/nodejs-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ published: 2017-08-14
 title: 'How to Install a Turtl Server on Ubuntu'
 
 aliases: ['/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/']
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

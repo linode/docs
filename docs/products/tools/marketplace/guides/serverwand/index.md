@@ -10,6 +10,7 @@ external_resources:
 - '[ServerWand Documentation](https://serverwand.com/docs/)'
 - '[ServerWand Blog](https://serverwand.com/blog/)'
 aliases: ['/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/platform/one-click/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-marketplace-apps/','/guides/serverwand-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

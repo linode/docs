@@ -8,6 +8,7 @@ title: "Deploy Focalboard through the Linode Marketplace"
 external_resources:
 - '[Focalboard](https://www.focalboard.com/)'
 aliases: ['/guides/focalboard-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

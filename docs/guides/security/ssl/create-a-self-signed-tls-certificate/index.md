@@ -8,6 +8,7 @@ modified: 2018-01-23
 published: 2018-01-09
 title: 'Create a Self-Signed TLS Certificate'
 tags: ["security","ssl"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

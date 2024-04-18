@@ -9,6 +9,7 @@ title: "Check Disk Usage on Linux with the dust Command"
 title_meta: "Installing and Using dust on Linux"
 external_resources:
 - '[Dust page on GitHub](https://github.com/bootandy/dust)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 title: "An Introduction to Python Tuples"
 title_meta: "Creating and Using Python Tuples"
+authors: ["Chelsea Troy"]
 contributors: ["Chelsea Troy"]
 ---
 

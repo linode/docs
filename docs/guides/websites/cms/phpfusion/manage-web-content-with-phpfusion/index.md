@@ -9,6 +9,7 @@ modified: 2013-10-02
 published: 2010-04-17
 title: 'Manage Web Content with PHP-Fusion'
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

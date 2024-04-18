@@ -6,6 +6,7 @@ tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
 published: 2018-07-26
 modified: 2024-03-11
 aliases: ['/platform/create-limited-developer-account/','/guides/create-limited-developer-account/']
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

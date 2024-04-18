@@ -20,6 +20,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

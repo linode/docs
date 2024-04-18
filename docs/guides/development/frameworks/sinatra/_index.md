@@ -6,6 +6,7 @@ published: 2020-08-31
 title: Sinatra
 show_in_lists: true
 aliases: ['/development/frameworks/sinatra/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

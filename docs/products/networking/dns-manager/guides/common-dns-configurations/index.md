@@ -7,6 +7,7 @@ aliases: ['/networking/dns/common-dns-configurations/','/dns-guides/configuring-
 modified: 2019-03-14
 published: 2015-01-20
 title: Common DNS Configurations
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

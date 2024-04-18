@@ -12,6 +12,7 @@ title_meta: "How to Change SELinux Modes"
 external_resources:
 - '[Security Enhanced Linux User Guide, Red Hat](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/index.html)'
 - '[SELinux, CentOS Wiki](https://wiki.centos.org/HowTos/SELinux)'
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

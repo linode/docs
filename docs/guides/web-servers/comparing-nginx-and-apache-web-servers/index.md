@@ -12,6 +12,7 @@ external_resources:
 - '[Apache HTTP Server](https://httpd.apache.org/)'
 - '[NGINX](https://nginx.org/)'
 
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

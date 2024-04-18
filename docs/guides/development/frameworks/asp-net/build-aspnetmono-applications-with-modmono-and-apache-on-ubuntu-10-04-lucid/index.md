@@ -14,6 +14,7 @@ relations:
         key:  asp-mono-apache
         keywords:
             - distribution: Ubuntuu 10.04
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

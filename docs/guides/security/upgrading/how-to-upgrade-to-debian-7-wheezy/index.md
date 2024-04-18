@@ -14,6 +14,7 @@ relations:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 7
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

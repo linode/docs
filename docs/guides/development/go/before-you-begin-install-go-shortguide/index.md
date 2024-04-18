@@ -9,6 +9,7 @@ title: "Before You Begin Instructions for Installing Go"
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/go/before-you-begin-install-go-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -15,6 +15,7 @@ external_resources:
  - '[Schedule Tasks With Cron](/docs/guides/schedule-tasks-with-cron/)'
  - '[MySQL''s Grant Statement, Official Documentation](http://dev.mysql.com/doc/refman/5.1/en/grant.html)'
 tags: ["database","mysql"]
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

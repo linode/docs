@@ -11,6 +11,7 @@ external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Downloads](https://kafka.apache.org/downloads)'
 - '[Apache Kafka Authentication page](https://www.apache.org/info/verification.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---

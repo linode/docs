@@ -8,6 +8,7 @@ title: DHCP IP Address Reference
 keywords: [dhcp", "cloud firewall", "firewall", "networking"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/dhcp-ip-address-reference/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -13,6 +13,7 @@ external_resources:
     - '[Boonex Home Page](http://www.boonex.com)'
     - '[Boonex Plug-in Market](http://www.boonex.com/market)'
     - '[Boonex Forums](http://www.boonex.com/forums/)'
+authors: ["Chris Ciufo"]
 contributors: ["Chris Ciufo"]
 ---
 

@@ -11,6 +11,7 @@ external_resources:
 - '[MySQL Trigger Syntax and Examples](https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/how-to-work-with-triggers-in-mysql-database/']
+authors: ["Francis Ndungu"]
 contributors: ["Francis Ndungu"]
 ---
 

@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 title: "How Cloud Containers Work And Their Benefits"
 title_meta: "Introduction to Containers in Cloud Computing"
+authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 ---
 

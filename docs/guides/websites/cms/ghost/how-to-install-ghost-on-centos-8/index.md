@@ -20,6 +20,7 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/ghost/how-to-install-ghost-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

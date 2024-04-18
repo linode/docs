@@ -19,6 +19,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

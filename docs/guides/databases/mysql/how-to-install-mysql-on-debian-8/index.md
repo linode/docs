@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 8
 tags: ["debian","database","mysql"]
+authors: ["Mike Rosabal"]
 contributors: ["Mike Rosabal"]
 ---
 

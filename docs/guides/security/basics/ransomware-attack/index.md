@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-26
 title: "Ransomware Attack: What It Is and How to Prevent It "
 title_meta: "Ransomware Defined: What It Is and How to Prevent an Attack"
+authors: ["David Strom"]
 contributors: ["David Strom"]
 ---
 

@@ -14,6 +14,7 @@ external_resources:
  - '[Portainer](https://portainer.io/)'
 audiences: ["beginner"]
 aliases: ['/development/tips-and-tricks/use-a-linode-for-web-development-on-remote-devices/','/development/use-a-linode-for-web-development-on-remote-devices/']
+authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 ---
 

@@ -23,6 +23,7 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
+authors: ["Jonathan Frederickson"]
 contributors: ["Jonathan Frederickson"]
 ---
 

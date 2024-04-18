@@ -14,6 +14,7 @@ external_resources:
 - '[Python data structure documentation](https://docs.python.org/3/tutorial/datastructures.html)'
 - '[Python top-level code environment documentation](https://docs.python.org/3/library/__main__.html)'
 - '[Python module documenation](https://docs.python.org/3/tutorial/modules.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

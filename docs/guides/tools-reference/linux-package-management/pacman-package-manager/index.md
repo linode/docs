@@ -9,6 +9,7 @@ image: UsingPacmantoManagePackagesinArchLinux.jpg
 modified: 2021-07-15
 title: "Using Pacman to Manage Packages in Arch"
 title_meta: "How to Manage Packages in Arch Using Pacman"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

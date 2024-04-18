@@ -9,6 +9,7 @@ title: "Deploy and Manage a Linode Kubernetes Engine (LKE) Cluster with the Lino
 title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

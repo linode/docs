@@ -15,6 +15,7 @@ external_resources:
 - '[Kafka Administration API](https://kafka.apache.org/27/javadoc/index.html)'
 - '[Kafka Documentation](https://kafka.apache.org/documentation/)'
 
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

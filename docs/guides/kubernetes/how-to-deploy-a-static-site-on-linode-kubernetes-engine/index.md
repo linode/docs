@@ -10,6 +10,7 @@ title: "Deploy a Static Site on Linode Kubernetes Engine"
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/static-site-linode-kubernetes-engine/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

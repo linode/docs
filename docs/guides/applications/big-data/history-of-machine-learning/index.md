@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 title: "The History of Machine Learning: A Comprehensive Overview"
 title_meta: "Machine Learning and Artificial Intelligence Background"
+authors: ["Pam Baker"]
 contributors: ["Pam Baker"]
 ---
 

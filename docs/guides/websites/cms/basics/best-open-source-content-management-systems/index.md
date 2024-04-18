@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
 title: "What Are the Best Open Source Content Management Systems?"
 title_meta: "The Top Open Source Content Management Systems"
+authors: ["Steven J. Vaughan-Nichols"]
 contributors: ["Steven J. Vaughan-Nichols"]
 ---
 

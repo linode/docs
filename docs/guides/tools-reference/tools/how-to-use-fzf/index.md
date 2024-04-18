@@ -5,6 +5,7 @@ keywords: ['command line search fzf','fzf bash','fzf vim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-06-12
 title: "How to Install and Use fzf on Linux"
+authors: ['Nathaniel Stickman']
 contributors: ['Nathaniel Stickman']
 external_resources:
 - '[GitHub: junegunn/fzf](https://github.com/junegunn/fzf)'

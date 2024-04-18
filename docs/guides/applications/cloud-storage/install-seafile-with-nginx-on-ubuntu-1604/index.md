@@ -10,6 +10,7 @@ title: Install Seafile with NGINX on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
 aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

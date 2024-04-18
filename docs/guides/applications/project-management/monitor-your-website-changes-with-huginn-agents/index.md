@@ -9,6 +9,7 @@ title: "Monitor Your Website Changes with Huginn Agents"
 title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 external_resources:
 - '[Huginn GitHub](https://github.com/huginn/huginn)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
 - '[The MERN stack: A complete tutorial](https://blog.logrocket.com/mern-stack-tutorial/)'
 - '[Learn the MERN Stack - Full Tutorial for Beginners (MongoDB, Express, React, Node.js) in 12Hrs (2021)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
 - '[Learn the MERN Stack - Full Tutorial (MongoDB, Express, React, Node.js)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

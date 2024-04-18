@@ -5,6 +5,7 @@ title_meta: "Log in to Compute Instances Using the Akamai MFA FIDO2 Authenticato
 description: "Learn how to access your Compute Instances using Akamai's own FIDO2 authentator and SSH agent."
 keywords: ['ssh','fido','security key','mobile','yubikey']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Bill Huang"]
 contributors: ["Bill Huang"]
 published: 2023-05-22
 ---

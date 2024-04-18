@@ -13,6 +13,7 @@ external_resources:
 - '[Vault Auth Methods](https://www.vaultproject.io/docs/auth/index.html)'
 aliases: ['/applications/configuration-management/use-hashicorp-vault-for-secret-management/','/applications/configuration-management/vault/use-hashicorp-vault-for-secret-management/']
 tags: ["security","automation"]
+authors: ["Linode"]
 contributors: ["Linode"]
 tags: ["saas"]
 ---

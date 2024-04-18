@@ -6,6 +6,7 @@ title: "Create a Domain"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-domains/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

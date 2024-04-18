@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 title: "Introduction to SQL Grouping and Totaling"
 title_meta: "SQL Grouping and Totaling"
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 

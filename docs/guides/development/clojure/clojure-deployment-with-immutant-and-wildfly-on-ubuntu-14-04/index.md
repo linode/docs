@@ -17,6 +17,7 @@ external_resources:
   - '[Script to install JBoss Wildfly 10.x as service in Linux](https://gist.github.com/sukharevd/6087988)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
+authors: ["Sergey Pariev"]
 contributors: ["Sergey Pariev"]
 ---
 

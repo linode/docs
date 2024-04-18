@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-20
 title: "The Most Common Cyber Attacks on Machine Learning Applications"
 title_meta: "Common Cyber Attacks on Machine Learning Applications"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

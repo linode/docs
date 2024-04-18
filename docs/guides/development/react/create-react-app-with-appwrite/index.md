@@ -10,6 +10,7 @@ external_resources:
 - '[Appwrite Docs: Getting Started for Web](https://appwrite.io/docs/getting-started-for-web)'
 - '[Github: Appwrite - Demos and Tutorials for Getting Started with Appwrite + React JS](https://github.com/appwrite/demos-for-react)'
 - '[Drishti Peshwani: Building a Web App with ReactJS and Appwrite](https://dev.to/drishtipeshwani/building-a-web-app-with-reactjs-and-appwrite-4cno)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 tags: ["ecommerce"]
 ---

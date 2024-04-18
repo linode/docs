@@ -8,6 +8,7 @@ title: "Deploy WordPress through the Linode Marketplace"
 external_resources:
 - '[WordPress Codex (Documentation)](https://codex.wordpress.org/)'
 aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-marketplace-apps/','/guides/wordpress-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

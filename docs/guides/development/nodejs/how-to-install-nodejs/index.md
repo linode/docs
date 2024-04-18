@@ -13,6 +13,7 @@ external_resources:
  - '[npm](https://www.npmjs.com/)'
 audiences: ["beginner"]
 languages: ["javascript"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

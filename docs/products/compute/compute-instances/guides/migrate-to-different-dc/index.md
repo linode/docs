@@ -6,6 +6,7 @@ title: Initiate a Cross Data Center Migration for a Compute Instance
 modified: 2023-09-21
 published: 2019-02-04
 aliases: ['/platform/disk-images/how-to-initiate-a-cross-data-center-migration-for-your-linode/','/platform/migrating-to-a-different-data-center/','/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

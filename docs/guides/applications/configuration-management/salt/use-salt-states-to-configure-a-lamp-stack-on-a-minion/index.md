@@ -9,6 +9,7 @@ modified: 2019-01-02
 image: UseSaltStatestoConfigureaLAMPStackonaMinion.png
 published: 2015-07-02
 title: Use Salt States to Configure a LAMP Stack on a Minion
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
  - '[MathJax](https://www.mathjax.org/)'
  - '[Jupyter Notebook](https://jupyter.org/)'
+authors: ["Sam Foo"]
 contributors: ["Sam Foo"]
 ---
 

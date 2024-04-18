@@ -14,6 +14,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -7,6 +7,7 @@ published: 2012-05-31
 modified: 2023-09-07
 image: rescue-rebuild.jpg
 aliases: ['/troubleshooting/rescue-and-rebuild-classic-manager/','/troubleshooting/rescue-and-rebuild/','/rescue-and-rebuild/','/troubleshooting/finnix-rescue-mode/','/guides/rescue-and-rebuild/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

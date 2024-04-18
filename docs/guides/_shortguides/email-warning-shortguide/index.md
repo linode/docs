@@ -9,6 +9,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/email-warning-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

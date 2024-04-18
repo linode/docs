@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-06
 title: "How to Secure Web Servers"
 title_meta: "Security in Web Applications: Best Practices"
+authors: ["David Strom"]
 contributors: ["David Strom"]
 ---
 

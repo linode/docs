@@ -15,6 +15,7 @@ external_resources:
 - '[Alertmanager Documentation](https://prometheus.io/docs/alerting/latest/alertmanager/)'
 - '[Grafana Tutorials](https://grafana.com/tutorials/)'
 aliases: ['/kubernetes/deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine/','/guides/deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine/']
+authors: ["Ben Bigger"]
 contributors: ["Ben Bigger"]
 ---
 

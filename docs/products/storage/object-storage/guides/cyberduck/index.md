@@ -1,6 +1,7 @@
 ---
 title: "Using Cyberduck with Object Storage"
 description: "Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage."
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

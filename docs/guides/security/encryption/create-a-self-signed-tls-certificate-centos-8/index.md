@@ -16,6 +16,7 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: CentOS 8
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -4,6 +4,7 @@ description: "Deploy Appwrite, an open-source Firebase alternative for Web, Mobi
 keywords: ['Appwrite','Firebase','backend', 'low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-06-26
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

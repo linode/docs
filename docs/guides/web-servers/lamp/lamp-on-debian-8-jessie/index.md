@@ -18,6 +18,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 8
+authors: ["Elle K."]
 contributors: ["Elle K."]
 ---
 

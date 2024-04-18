@@ -10,6 +10,7 @@ title: "What Is MySQL: An Overview"
 title_meta: "An Overview of MySQL"
 external_resources:
 - '[Official MySQL documentation](https://dev.mysql.com/doc/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

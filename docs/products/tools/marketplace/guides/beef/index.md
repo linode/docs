@@ -8,6 +8,7 @@ title: "Deploy BeEF through the Linode Marketplace"
 external_resources:
 - '[BeEF](https://beefproject.com/)'
 aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

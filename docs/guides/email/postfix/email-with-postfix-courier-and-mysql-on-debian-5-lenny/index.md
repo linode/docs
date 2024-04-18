@@ -14,6 +14,7 @@ relations:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

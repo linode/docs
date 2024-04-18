@@ -12,6 +12,7 @@ external_resources:
 - '[Linux man page for the dd command](https://pubs.opengroup.org/onlinepubs/7908799/xcu/dd.html)'
 - '[Ubuntu man page for the swapon command](https://manpages.ubuntu.com/manpages/focal/man8/swapon.8.html)'
 - '[Ubuntu man page for the mkswap command](http://manpages.ubuntu.com/manpages/focal/man8/mkswap.8.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

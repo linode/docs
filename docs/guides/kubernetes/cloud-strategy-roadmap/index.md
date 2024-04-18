@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
 title: "Develop a Cloud Implementation Strategy Roadmap"
 title_meta: "How to Develop a Cloud Implementation Strategy Roadmap"
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

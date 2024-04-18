@@ -4,6 +4,7 @@ keywords: ['budibase','CRUD','low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-08-09
 title: "Deploy Budibase through the Linode Marketplace"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -10,6 +10,7 @@ title: 'Install Odoo 9 ERP on Ubuntu 14.04'
 aliases: ['/websites/erp/install-odoo-9-erp-on-ubuntu-14-04/','/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/']
 external_resources:
  - '[Odoo User Documentation](https://doc.odoo.com/book/)'
+authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 ---
 

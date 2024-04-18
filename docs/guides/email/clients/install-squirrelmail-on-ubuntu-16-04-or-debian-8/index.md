@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/']
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

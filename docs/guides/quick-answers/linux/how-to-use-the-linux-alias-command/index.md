@@ -9,6 +9,7 @@ published: 2020-11-17
 title: Using the Linux alias Command
 title_meta: How to Use the Linux alias Command
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

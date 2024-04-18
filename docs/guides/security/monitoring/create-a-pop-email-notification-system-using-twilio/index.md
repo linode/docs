@@ -15,6 +15,7 @@ external_resources:
 - '[poplib — POP3 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/poplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 aliases: ['/guides/create-a-pop-email-notification-system-using-twilio/']
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

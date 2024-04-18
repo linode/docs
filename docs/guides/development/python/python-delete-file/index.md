@@ -5,6 +5,7 @@ title_meta: "Quick Guide to Python: Delete Files & Directories"
 description: 'In Python, delete file commands use functions from os, pathlib, and shutil modules. Read this guide to learn how to delete single files and entire directories. '
 keywords: ['python delete file', 'python remove file', 'python delete directory', 'python delete file if exists', 'python delete all files in directory']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Stephen Satchell"]
 contributors: ["Stephen Satchell"]
 published: 2023-06-12
 ---

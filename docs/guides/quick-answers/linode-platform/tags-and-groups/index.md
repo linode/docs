@@ -7,6 +7,7 @@ published: 2019-02-22
 title: "Tags and Groups"
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/tags-and-groups/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

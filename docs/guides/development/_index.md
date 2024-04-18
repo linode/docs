@@ -9,5 +9,6 @@ show_on_frontpage: true
 title_short: "Development"
 weight: 130
 icon: "code"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---

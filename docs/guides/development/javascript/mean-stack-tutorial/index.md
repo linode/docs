@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 title: "Create a MEAN Stack Application"
 title_meta: "MEAN Stack Tutorial: Create an Example Application"
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

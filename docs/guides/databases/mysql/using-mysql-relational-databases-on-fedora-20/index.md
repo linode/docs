@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Fedora 20
 tags: ["database","mysql","fedora"]
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

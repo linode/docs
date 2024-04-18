@@ -12,6 +12,7 @@ external_resources:
 - '[RFC for NFS version 4.2](https://datatracker.ietf.org/doc/html/rfc7862)'
 - '[Linux NFS site](http://linux-nfs.org/wiki/index.php/Main_Page)'
 - '[Export options for NFS](http://nfs.sourceforge.net/nfs-howto/ar01s03.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

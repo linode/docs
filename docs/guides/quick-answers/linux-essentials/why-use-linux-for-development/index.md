@@ -9,6 +9,7 @@ modified: 2018-07-11
 title: Why Use Linux for Development?
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/why-use-linux-for-development/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

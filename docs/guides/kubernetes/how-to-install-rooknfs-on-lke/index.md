@@ -9,6 +9,7 @@ title: "Setting Up Rook NFS for Persistent Storage on LKE"
 title_meta: "How to Set Up Rook NFS for Persistent Storage on LKE"
 aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE/']
 deprecated: true
+authors: ["Todd Becker"]
 contributors: ["Todd Becker"]
 ---
 

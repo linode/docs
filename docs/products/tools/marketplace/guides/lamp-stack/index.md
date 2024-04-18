@@ -8,6 +8,7 @@ title: "Deploy a LAMP Stack through the Linode Marketplace"
 external_resources:
 - '[Apache Getting Started](http://httpd.apache.org/docs/current/getting-started.html)'
 aliases: ['/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/','/platform/one-click/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-marketplace-apps/','/guides/lamp-stack-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

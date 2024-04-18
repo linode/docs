@@ -9,6 +9,7 @@ external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'
 aliases: ['/products/tools/marketplace/guides/antmediaenterpriseedition/','/guides/deploy-antmediaserver-with-marketplace-apps/','/guides/antmediaserver-marketplace-app/','/products/tools/marketplace/guides/antmediaserver/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -14,6 +14,7 @@ relations:
             - distribution: Debian/Ubuntu
 tags: ["database"]
 aliases: ['/databases/elasticsearch/install_elasticsearch_debian_ubuntu/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

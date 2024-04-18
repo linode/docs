@@ -8,6 +8,7 @@ aliases: ['/security/recovery/recovering-from-a-system-compromise/','/troublesho
 modified: 2018-04-18
 published: 2009-08-26
 title: Recovering from a System Compromise
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

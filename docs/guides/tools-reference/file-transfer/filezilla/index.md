@@ -9,6 +9,7 @@ published: 2014-10-13
 title: 'Transfer Files with FileZilla'
 external_resources:
  - '[FileZilla Documentation](https://wiki.filezilla-project.org/Documentation)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

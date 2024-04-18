@@ -11,6 +11,7 @@ external_resources:
 - '[Composer](https://getcomposer.org/)'
 - '[Packagist](https://packagist.org/)'
 - '[Composer Documentation](https://getcomposer.org/doc/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

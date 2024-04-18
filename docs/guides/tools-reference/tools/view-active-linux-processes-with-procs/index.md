@@ -10,6 +10,7 @@ external_resources:
 - '[Procs GitHub page](https://github.com/dalance/procs)'
 - '[Procs releases](https://github.com/dalance/procs/releases/tag/v0.11.10)'
 - '[Sample procs config files](https://github.com/dalance/procs/tree/master/config)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

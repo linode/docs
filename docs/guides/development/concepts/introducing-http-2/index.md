@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 title: "An Introduction to HTTP/2"
 title_meta: "HTTP/2 vs. HTTP/1.1: Why You Should Use HTTP/2"
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

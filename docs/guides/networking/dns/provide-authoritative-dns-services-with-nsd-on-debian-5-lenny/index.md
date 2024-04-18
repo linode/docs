@@ -14,6 +14,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Debian 5
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

@@ -19,6 +19,7 @@ relations:
         key: how-to-install-ghost-cms
         keywords:
            - distribution: Docker
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

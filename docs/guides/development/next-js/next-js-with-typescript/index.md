@@ -9,6 +9,7 @@ title_meta: "How to Build a Next.js App with Typescript"
 external_resources:
 - '[Next.js: TypeScript](https://nextjs.org/docs/basic-features/typescript)'
 - '[LogRocket: Using Next.js with TypeScript](https://blog.logrocket.com/using-next-js-with-typescript/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

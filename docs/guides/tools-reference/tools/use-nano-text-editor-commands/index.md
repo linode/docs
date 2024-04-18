@@ -9,6 +9,7 @@ published: 2011-11-08
 title: "Using Nano Text Editor Commands in Linux"
 title_meta: "How to Use Nano Text Editor Commands in Linux"
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

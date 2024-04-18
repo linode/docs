@@ -16,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
+authors: ["Bill Bardon"]
 contributors: ["Bill Bardon"]
 ---
 

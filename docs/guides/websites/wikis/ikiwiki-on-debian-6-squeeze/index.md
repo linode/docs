@@ -14,6 +14,7 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

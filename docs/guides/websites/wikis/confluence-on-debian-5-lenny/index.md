@@ -14,6 +14,7 @@ relations:
         key: using-confluence
         keywords:
            - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

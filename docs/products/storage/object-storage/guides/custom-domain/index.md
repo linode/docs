@@ -6,6 +6,7 @@ tags: ["linode platform","cloud manager"]
 published: 2022-02-07
 modified: 2023-08-22
 aliases: ['/platform/object-storage/enable-ssl-for-object-storage/','/guides/enable-ssl-for-object-storage/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ external_resources:
 - '[LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)'
 - '[Valheim official website](https://www.valheimgame.com/)'
 aliases: ['/guides/deploy-valheim-with-marketplace-apps/','/guides/valheim-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

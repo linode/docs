@@ -8,6 +8,7 @@ published: 2021-07-30
 image: GNUMakeTutorial-LearntoAutomateTasks.jpg
 title: "Use GNU Make to Automate Tasks"
 title_meta: "GNU Make Tutorial: Learn to Automate Tasks"
+authors: ["Stephen Savitzky"]
 contributors: ["Stephen Savitzky"]
 ---
 

@@ -14,6 +14,7 @@ relations:
             - distribution: CentOS
 tags: ["database"]
 aliases: ['/databases/elasticsearch/install_elasticsearch_centos/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

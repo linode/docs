@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-25
 title: "SQL Transactions: An Introduction"
 title_meta: "A Primer on SQL Transactions"
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 

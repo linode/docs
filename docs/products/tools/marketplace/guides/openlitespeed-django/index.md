@@ -8,6 +8,7 @@ title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
 external_resources:
 - '[OpenLiteSpeed Django](https://docs.litespeedtech.com/cloud/images/django/)'
 aliases: ['/guides/deploying-openlitespeed-django-marketplace-app/','/guides/openlitespeed-django-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

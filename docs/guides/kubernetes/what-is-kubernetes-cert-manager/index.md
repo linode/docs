@@ -10,6 +10,7 @@ title_meta: 'What is Kubernetes cert-manager?'
 aliases: ['/kubernetes/deploy-and-manage-kubernetes-certificates-with-cert-manager/','/kubernetes/what-is-kubernetes-cert-manager/']
 external_resources:
  - '[Cert-Manager Documentation](https://cert-manager.io/docs/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

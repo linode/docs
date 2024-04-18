@@ -11,6 +11,7 @@ external_resources:
  - '[CubeCoders Homepage](https://cubecoders.com/)'
  - '[AMP Wiki](https://github.com/CubeCoders/AMP/wiki)'
 dedicated_cpu_link: true
+authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
 ---
 

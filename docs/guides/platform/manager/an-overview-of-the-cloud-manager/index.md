@@ -9,6 +9,7 @@ modified: 2023-09-20
 image: AnOverviewoftheLinodeCloudManager.png
 title: "An Overview of the Cloud Manager"
 tags: ["linode platform","cloud manager"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

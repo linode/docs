@@ -7,6 +7,7 @@ modified: 2023-08-15
 title: "Manage Two-Factor Authentication (2FA) on a User Account"
 title_meta: "Manage 2FA on a Linode User Account"
 aliases: ['/guides/2fa/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

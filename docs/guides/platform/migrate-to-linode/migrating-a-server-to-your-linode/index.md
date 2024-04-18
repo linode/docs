@@ -10,6 +10,7 @@ aliases: ['/migration/migrate-server-to-linode/','/migrate-to-linode/disk-images
 modified: 2017-04-03
 published: 2012-05-24
 title: Migrating a Server to Your Linode
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/create-tag-and-upload-your-own-docker-image/']
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

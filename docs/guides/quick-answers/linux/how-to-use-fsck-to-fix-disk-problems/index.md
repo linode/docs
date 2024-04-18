@@ -12,6 +12,7 @@ external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-fsck-to-fix-disk-problems/']
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

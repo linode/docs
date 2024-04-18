@@ -6,6 +6,7 @@ aliases: ['/web-servers/apache/','/websites/apache/','/web-servers/apache/php-cg
 published: 2009-07-16
 title: Hosting Websites with Apache
 show_in_lists: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

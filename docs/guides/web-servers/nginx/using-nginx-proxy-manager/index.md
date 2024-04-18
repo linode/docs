@@ -4,6 +4,7 @@ title: "How to Expose Services with the Nginx Proxy Manager"
 description: "The Nginx Proxy Manager conveniently manages proxy hosts for your web services, whether on your home network or otherwise. Learn everything you need to know to get started with the Nginx Proxy Manager in this tutorial."
 keywords: ['nginx proxy manager tutorial','nginx proxy manager docker','nginx-proxy-manager github']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2023-06-21
 external_resources:

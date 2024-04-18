@@ -11,6 +11,7 @@ title: 'How to Install Go on Ubuntu'
 audiences: ["beginner"]
 languages: ["go"]
 aliases: ['/development/go/install-go-on-ubuntu/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

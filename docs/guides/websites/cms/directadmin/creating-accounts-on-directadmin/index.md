@@ -9,6 +9,7 @@ modified: 2013-10-03
 published: 2011-11-02
 title: Creating Accounts on DirectAdmin
 deprecated: true
+authors: ["Chris Ciufo"]
 contributors: ["Chris Ciufo"]
 ---
 

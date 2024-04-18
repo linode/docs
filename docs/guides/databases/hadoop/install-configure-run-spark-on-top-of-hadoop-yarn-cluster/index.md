@@ -12,6 +12,7 @@ external_resources:
 - '[Apache Hadoop project page](http://hadoop.apache.org/)'
 tags: ["ubuntu","debian","database","centos"]
 aliases: ['/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/']
+authors: ["Florent Houbart"]
 contributors: ["Florent Houbart"]
 ---
 

@@ -5,6 +5,7 @@ keywords: ['zoxide install','zoxide linux','zoxide rust']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-12
 title: "How to Install and Use zoxide on Linux"
+authors: ['Nathaniel Stickman']
 contributors: ['Nathaniel Stickman']
 external_resources:
 - '[GitHub: ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)'

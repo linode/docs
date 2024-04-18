@@ -12,6 +12,7 @@ external_resources:
 - '[WSDL page on Wikipedia](https://en.wikipedia.org/wiki/Web_Services_Description_Language)'
 - '[W3C Specification](https://www.w3.org/TR/soap12/)'
 - '[GitHub REST API](https://docs.github.com/en/rest)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

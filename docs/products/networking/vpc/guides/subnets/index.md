@@ -2,6 +2,7 @@
 title: "Manage VPC Subnets"
 description: "Learn how to view, edit, and delete subnets within Akamai's VPC solution."
 published: 2024-01-30
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

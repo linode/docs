@@ -14,6 +14,7 @@ relations:
         key:  asp-mono-apache
         keywords:
             - distribution: Debian 5
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

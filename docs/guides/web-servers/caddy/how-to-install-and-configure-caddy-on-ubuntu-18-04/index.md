@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

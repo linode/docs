@@ -10,6 +10,7 @@ title_meta: "A YAML Syntax Reference"
 tags: ["automation"]
 external_resources:
 - '[A brief YAML reference](https://camel.readthedocs.io/en/latest/yamlref.html)'
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

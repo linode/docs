@@ -11,6 +11,7 @@ external_resources:
 - '[Shadowsocks-libev Github](https://github.com/shadowsocks/shadowsocks-libev)'
 image: 'How_to_Deploy_a_Shadowsocks_Server_with_OneClick_Apps_1200x631.png'
 aliases: ['/platform/marketplace/deploy-shadowsocks-with-marketplace-apps/', '/platform/one-click/deploy-shadowsocks-with-one-click-apps/','/guides/deploy-shadowsocks-with-one-click-apps/','/guides/deploy-shadowsocks-with-marketplace-apps/','/guides/shadowsocks-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

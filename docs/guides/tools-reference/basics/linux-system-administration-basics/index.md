@@ -8,6 +8,7 @@ modified: 2021-05-14
 published: 2009-12-13
 title: "Linux System Administration Basics"
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

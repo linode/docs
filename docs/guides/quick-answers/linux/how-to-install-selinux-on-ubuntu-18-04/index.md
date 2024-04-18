@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 image: selinux-ubuntu-title.jpg
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

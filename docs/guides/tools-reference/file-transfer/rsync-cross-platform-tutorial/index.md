@@ -9,6 +9,7 @@ title: "Rsync Cross Platform Tutorial"
 title_meta: "Using the Rsync Cross Platform Command-Line Utility"
 external_resources:
 - '[Rsync options from Linux Man page](https://linux.die.net/man/1/rsync)'
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

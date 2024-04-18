@@ -10,6 +10,7 @@ external_resources:
 - '[The IEEE and Open Group Base Specification](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/xargs.html)'
 - '[The GNU organization reference page for `xargs`](https://www.gnu.org/software/findutils/manual/html_node/find_html/Invoking-xargs.html)'
 - '[Wikipedia Page on `xargs`](https://en.wikipedia.org/wiki/Xargs)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

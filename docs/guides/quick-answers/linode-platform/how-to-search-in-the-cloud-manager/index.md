@@ -9,6 +9,7 @@ title: "Searching in the Cloud Manager"
 title_meta: "How to Search in the Cloud Manager"
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

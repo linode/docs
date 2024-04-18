@@ -12,6 +12,7 @@ external_resources:
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
 aliases: ['/platform/marketplace/deploying-mongodb-with-marketplace-apps/', '/platform/one-click/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-marketplace-apps/','/guides/mongodb-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

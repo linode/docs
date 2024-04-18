@@ -4,6 +4,7 @@ title: "How to Install Cassandra Across Multiple Data Centers"
 description: 'This guide introduces the Cassandra distributed database and explains how to install, configure, and use it.'
 keywords: ['install Cassandra','configure Cassandra','Cassandra CQL','create keyspace Cassandra']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2023-08-22
 external_resources:

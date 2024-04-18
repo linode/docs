@@ -14,6 +14,7 @@ concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/task-queue-celery-rabbitmq/']
+authors: ["Florent Houbart"]
 contributors: ["Florent Houbart"]
 ---
 

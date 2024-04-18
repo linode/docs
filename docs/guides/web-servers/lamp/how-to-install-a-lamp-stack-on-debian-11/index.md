@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 11
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-11/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

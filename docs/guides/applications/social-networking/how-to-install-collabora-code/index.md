@@ -19,6 +19,7 @@ external_resources:
 - '[Collabora instructions for other Linux packages](https://www.collaboraoffice.com/code/linux-packages/)'
 - '[Collabora SDK documentation](https://sdk.collaboraonline.com/contents.html)'
 - '[Certbot](https://certbot.eff.org/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

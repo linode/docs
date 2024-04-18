@@ -12,6 +12,7 @@ deprecated: true
 deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/'
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

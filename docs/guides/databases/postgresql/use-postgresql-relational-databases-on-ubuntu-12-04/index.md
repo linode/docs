@@ -18,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","postgresql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

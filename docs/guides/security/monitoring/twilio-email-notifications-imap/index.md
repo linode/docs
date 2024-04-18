@@ -16,6 +16,7 @@ external_resources:
 - '[imaplib — IMAP4 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/imaplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 aliases: ['/guides/create-an-imap-email-notification-system-using-twilio/']
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

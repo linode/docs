@@ -21,6 +21,7 @@ relations:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu/Debian
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

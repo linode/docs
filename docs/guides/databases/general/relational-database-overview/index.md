@@ -6,6 +6,7 @@ tags: ['mysql', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-06
 title: "Introduction to Relational Databases and RDBMSs"
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

@@ -23,6 +23,7 @@ relations:
         key: how-to-install-wordpress
         keywords:
            - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

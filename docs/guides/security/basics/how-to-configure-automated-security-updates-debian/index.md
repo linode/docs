@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: Debian
 image: Configuring_automated_security_updates_debian.png
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

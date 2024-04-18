@@ -8,6 +8,7 @@ published: 2021-08-06
 image: HowtoRestartaLinuxServerfromtheCommandLine.jpg
 title: "Restart a Linux Server from the Command Line"
 title_meta: "Using the Linux Restart Command from the Command Line"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

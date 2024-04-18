@@ -8,6 +8,7 @@ modified: 2018-01-23
 published: 2010-11-29
 title: 'Manipulate Lists with sort and uniq'
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

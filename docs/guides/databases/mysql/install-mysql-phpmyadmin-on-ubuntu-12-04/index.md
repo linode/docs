@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","php","database","mysql"]
+authors: ["James Stewart"]
 contributors: ["James Stewart"]
 ---
 

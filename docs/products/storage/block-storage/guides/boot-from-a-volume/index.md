@@ -8,6 +8,7 @@ title: "Boot from a Block Storage Volume"
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/boot-from-block-storage-volume/','/guides/boot-from-block-storage-volume/']
 image: block-storage-title-graphic.png
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ title: "Using mktemp Command to Create Temporary Files and Directories"
 title_meta: "How to Use the mktemp Command to Create Temporary Files and Directories"
 external_resources:
 - '[Setting and Using Linux Environment Variables](/docs/guides/how-to-set-linux-environment-variables/)'
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

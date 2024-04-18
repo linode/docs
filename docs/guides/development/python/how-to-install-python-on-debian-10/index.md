@@ -13,6 +13,7 @@ relations:
         key: how-to-install-python
         keywords:
             - distribution: Debian 10
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

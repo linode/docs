@@ -10,6 +10,7 @@ external_resources:
  - '[Plesk Documentation](https://docs.plesk.com/en-US/obsidian/)'
  - '[Plesk Help Center](https://support.plesk.com/hc/en-us/categories/201413825-Technical-Questions)'
 aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guides/deploying-plesk-with-marketplace-apps/','/platform/one-click/deploy-plesk-with-one-click-apps/','/guides/deploy-plesk-with-one-click-apps/','/guides/plesk-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

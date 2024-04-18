@@ -11,6 +11,7 @@ title_meta: "How to Write to a File From the Shell"
 external_resources:
 - '[Here Documents](https://tldp.org/LDP/abs/html/here-docs.html)'
 - '[Sed](https://www.gnu.org/software/sed/manual/sed.html)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

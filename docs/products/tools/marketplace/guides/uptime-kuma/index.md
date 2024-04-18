@@ -8,6 +8,7 @@ title: "Deploy Uptime Kuma through the Linode Marketplace"
 external_resources:
 - '[Uptime Kuma](https://github.com/louislam/uptime-kuma)'
 aliases: ['/guides/uptimekuma-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

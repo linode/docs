@@ -11,6 +11,7 @@ external_resources:
 - '[Redis: SCAN](https://redis.io/commands/scan/)'
 - '[Linux Hint: How to Use Redis Scan](https://linuxhint.com/redis-scan/)'
 - '[ObjectRocket: SCAN Redis Command Examples](https://kb.objectrocket.com/redis/scan-redis-command-examples-509)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

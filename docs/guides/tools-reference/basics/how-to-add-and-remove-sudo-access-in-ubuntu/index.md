@@ -10,6 +10,7 @@ title: "Add and Remove sudo Access in Ubuntu"
 external_resources:
 - '[sudo home](https://www.sudo.ws/)'
 - '[sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

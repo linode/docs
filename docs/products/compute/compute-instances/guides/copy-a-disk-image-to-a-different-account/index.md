@@ -8,6 +8,7 @@ title: "Copying a Disk to a Different Account"
 title_meta: "How to Copy a Disk to a Different Account"
 image: copying_a_disk_to_a_differnet_account_smg.png
 aliases: ['/migration/copy-disk-image-different-account/','/linode-platform/manager/managing-disk-images/','/platform/disk-images/copying-a-disk-image-to-a-different-account/','/migrate-to-linode/disk-images/copying-a-disk-image-to-a-different-account/','/guides/copying-a-disk-image-to-a-different-account/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

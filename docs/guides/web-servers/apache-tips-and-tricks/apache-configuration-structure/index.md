@@ -12,6 +12,7 @@ external_resources:
  - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
  - '[Troubleshooting Apache](/docs/guides/troubleshooting-common-apache-issues/)'
 tags: ["web server","apache"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

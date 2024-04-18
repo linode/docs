@@ -11,6 +11,7 @@ title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
  - '[Install and Configure Redis on CentOS 7](/docs/guides/install-and-configure-redis-on-centos-7/)'
+authors: ["Sam Foo"]
 contributors: ["Sam Foo"]
 ---
 

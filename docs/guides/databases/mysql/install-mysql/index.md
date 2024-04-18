@@ -9,6 +9,7 @@ modified: 2023-05-30
 title: "Installing MySQL: A Definitive Guide"
 external_resources:
 - '[Installing and Upgrading MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html)'
+authors: ["Linode"]
 contributors: ["Linode"]
 tags: ["saas"]
 ---

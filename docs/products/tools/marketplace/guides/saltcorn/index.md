@@ -8,6 +8,7 @@ title: "Deploy Saltcorn through the Linode Marketplace"
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'
 aliases: ['/guides/saltcorn-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

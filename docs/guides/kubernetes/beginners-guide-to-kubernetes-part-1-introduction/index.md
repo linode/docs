@@ -12,6 +12,7 @@ external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/','/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

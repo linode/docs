@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
 title: "What is Edge Computing and How Does It Work?"
 title_meta: "Edge Computing Architecture and Services Explained"
+authors: ["Pam Baker"]
 contributors: ["Pam Baker"]
 ---
 

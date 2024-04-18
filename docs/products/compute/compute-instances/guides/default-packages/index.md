@@ -6,6 +6,7 @@ published: 2021-08-27
 title: Default Distro Packages on Linode
 aliases: ['/guides/platform/disk-images/','/guides/platform/disk-images/default-packages-on-linode-images/','/guides/default-packages-on-linode-images/']
 tags: ["linode platform","cloud manager"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

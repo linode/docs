@@ -14,6 +14,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

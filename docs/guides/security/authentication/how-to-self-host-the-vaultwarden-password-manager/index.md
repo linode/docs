@@ -8,6 +8,7 @@ title: "Self-Hosting the vaultwarden Password Manager"
 title_meta: "How to Self-Host the vaultwarden Password Manager"
 tags: ["ubuntu", "security", "web applications", "docker"]
 aliases: ["security/authentication/self-hosted-password-management-with-bitwarden-rs/", "/guides/how-to-self-host-the-bitwarden-rs-password-manager/", "security/authentication/how-to-self-host-the-bitwarden-rs-password-manager/"]
+authors: ["Tyler Langlois"]
 contributors: ["Tyler Langlois"]
 ---
 

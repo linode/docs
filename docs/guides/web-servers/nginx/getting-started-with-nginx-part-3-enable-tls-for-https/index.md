@@ -9,6 +9,7 @@ modified: 2018-02-09
 published: 2018-02-09
 title: "Getting Started with NGINX (Part 3): Enable TLS/SSL for HTTPS"
 title_meta: "Getting Started with NGINX: Enable TLS/SSL"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

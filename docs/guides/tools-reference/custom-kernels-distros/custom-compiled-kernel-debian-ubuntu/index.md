@@ -13,6 +13,7 @@ relations:
         keywords:
             - distribution: Debian/Ubuntu
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/']
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

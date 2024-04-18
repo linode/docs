@@ -9,6 +9,7 @@ aliases: ['/web-applications/cms-guides/joomla/','/websites/cms/joomla/manage-we
 modified: 2011-04-19
 published: 2010-01-22
 title: 'Manage Web Content with Joomla!'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

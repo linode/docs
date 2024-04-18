@@ -15,6 +15,7 @@ external_resources:
   - '[Configuring Carbon](http://graphite.readthedocs.org/en/latest/config-carbon.html)'
   - '[Installing Grafana on Debian/Ubuntu](http://docs.grafana.org/installation/debian/)'
   - '[Adding Graphite data source to Grafana](http://docs.grafana.org/datasources/graphite/)'
+authors: ["Sergey Pariev"]
 contributors: ["Sergey Pariev"]
 ---
 

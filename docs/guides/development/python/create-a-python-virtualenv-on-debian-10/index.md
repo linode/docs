@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/python/create-a-python-virtualenv-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

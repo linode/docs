@@ -25,6 +25,7 @@ relations:
         key: how-to-install-canvas
         keywords:
             - distribution: Debian 10
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

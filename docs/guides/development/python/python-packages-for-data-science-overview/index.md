@@ -6,6 +6,7 @@ tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-11
 title: "An Overview of Python Packages for Data Science"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

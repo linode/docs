@@ -19,6 +19,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -11,6 +11,7 @@ external_resources:
 - '[ack!: Documentation](https://beyondgrep.com/documentation/)'
 - '[DigitalOcean: How To Install and Use Ack, a Grep Replacement for Developers, on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-ack-a-grep-replacement-for-developers-on-ubuntu-14-04)'
 - '[Linux Shell Tips: How to Install and Use Ack Command in Linux with Examples](https://www.linuxshelltips.com/ack-command-in-linux/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

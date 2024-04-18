@@ -10,6 +10,7 @@ title_meta: "Installing and Using McFly to Search Bash or ZSH History"
 external_resources:
 - '[McFly GitHub site](https://github.com/cantino/mcfly)'
 - '[Homebrew](https://brew.sh/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

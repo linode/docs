@@ -10,6 +10,7 @@ published: 2009-12-15
 title: "Using Cron to Schedule Tasks for Certain Times or Intervals"
 title_meta: "Cron Jobs: Schedule Tasks for Certain Times or Intervals"
 image: schedule-tasks-with-cron.png
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

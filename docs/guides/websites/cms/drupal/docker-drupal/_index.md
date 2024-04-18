@@ -6,5 +6,6 @@ published: 2020-03-05
 show_in_lists: true
 title: Docker Compose
 aliases: ['/websites/cms/drupal/docker-drupal/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---

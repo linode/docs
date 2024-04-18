@@ -9,6 +9,7 @@ title_meta: "A Software Engineer's Guide to Advanced Bash Scripting: Part 2"
 external_resources:
 - '[GNU Bash](https://www.gnu.org/software/bash/)'
 - '[Debugging Bash scripts](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_03.html)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

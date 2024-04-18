@@ -9,6 +9,7 @@ title: "Using the JQ Command to Process JSON on the Command Line"
 title_meta: "How to Use JQ to Process JSON on the Command Line"
 external_resources:
 - '[The jq GitHub page](https://github.com/stedolan/jq)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

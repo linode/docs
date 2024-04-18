@@ -7,6 +7,7 @@ tab_group_main:
 keywords: ["managed", "managed services", "linode managed"]
 aliases: ['/products/services/managed/guides/sign-up/','/linode-managed/','/uptime/linode-managed/','/platform/linode-managed-classic-manager/','/platform/linode-managed/','/guides/linode-managed/']
 published: 2023-04-11
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

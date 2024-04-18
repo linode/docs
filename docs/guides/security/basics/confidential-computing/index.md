@@ -6,6 +6,7 @@ tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-23
 title: "Confidential Computing: A Collaborative Security Model for Data in Use"
+authors: ["Pam Baker"]
 contributors: ["Pam Baker"]
 ---
 

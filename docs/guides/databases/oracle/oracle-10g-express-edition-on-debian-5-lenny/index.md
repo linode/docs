@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["debian","database"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

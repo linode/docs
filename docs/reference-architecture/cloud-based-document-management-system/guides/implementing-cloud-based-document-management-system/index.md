@@ -8,6 +8,7 @@ title: "How to Implement a Cloud-based Document Management System"
 tab_group_main:
   title: Guides
   weight: 20
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

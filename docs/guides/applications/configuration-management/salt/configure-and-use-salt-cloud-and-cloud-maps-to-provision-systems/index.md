@@ -10,6 +10,7 @@ title: "Using Salt Cloud and Cloud Maps to Provision Systems"
 title_meta: "How to Use Salt Cloud and Cloud Maps to Provision Systems"
 aliases: ['/applications/configuration-management/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/','/applications/configuration-management/salt/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/']
 tags: ["automation","salt"]
+authors: ["Sergey Bulavintsev"]
 contributors: ["Sergey Bulavintsev"]
 ---
 

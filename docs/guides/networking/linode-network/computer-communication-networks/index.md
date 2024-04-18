@@ -10,6 +10,7 @@ external_resources:
 - '[Quizlet.com: IT110- 51 Chapter 7](https://quizlet.com/246864820/it110-51-chapter-7-flash-cards/)'
 - '[GCFGlobal.org: How do I connect to the Internet?](https://edu.gcfglobal.org/en/computerbasics/connecting-to-the-internet/1/)'
 - '[TutorialsPoint.com: Computer Network Components](https://www.tutorialspoint.com/Computer-Network-Components#:~:text=Computer%20networks%20components%20comprise%20both,are%20operating%20system%20and%20protocols.)'
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

@@ -9,6 +9,7 @@ modified: 2013-10-04
 published: 2010-05-10
 title: 'Question and Answer Communities with OSQA on Debian 5 (Lenny)'
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

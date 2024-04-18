@@ -10,6 +10,7 @@ published: 2015-12-09
 title: 'Set up a Hardened OpenVPN Server on Debian 9'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

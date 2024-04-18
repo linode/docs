@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 title: "Data Loss Prevention Best Practices: An In-Depth Guide"
 title_meta: "Data Loss Prevention Best Practices (with Examples)"
+authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 ---
 

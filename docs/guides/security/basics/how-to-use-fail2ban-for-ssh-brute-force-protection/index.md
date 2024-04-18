@@ -10,6 +10,7 @@ title: "Using Fail2Ban for SSH Brute-force Protection"
 title_meta: "How to Use Fail2Ban for SSH Brute-force Protection"
 image: fail2ban_bruteforceprotection.png
 aliases: ['/security/basics/how-to-use-fail2ban-for-ssh-brute-force-protection/']
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

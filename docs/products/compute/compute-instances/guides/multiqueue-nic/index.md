@@ -11,6 +11,7 @@ external_resources:
  - '[HOWTO for multiqueue network device support](https://www.kernel.org/doc/html/latest/networking/multiqueue.html)'
 tags: ["networking","linode platform"]
 aliases: ['/guides/multiqueue-nic/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

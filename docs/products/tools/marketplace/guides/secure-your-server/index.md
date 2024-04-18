@@ -4,6 +4,7 @@ keywords: ['security']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-01-24
 title: "Secure Your Server through the Linode Marketplace"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

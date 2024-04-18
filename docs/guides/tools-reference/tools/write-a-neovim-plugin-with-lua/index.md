@@ -12,6 +12,7 @@ external_resources:
 - '[Nvim Documentation: Lua](https://neovim.io/doc/user/lua.html)'
 - '[GitHub: jacobsimpson/nvim-example-lua-plugin](https://github.com/jacobsimpson/nvim-example-lua-plugin)'
 aliases: ['/guides/writing-a-neovim-plugin-with-lua/']
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -6,6 +6,7 @@ published: 2022-03-29
 title: "Deploy Joplin through the Linode Marketplace"
 external_resources:
 - '[Joplin](https://joplinapp.org/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

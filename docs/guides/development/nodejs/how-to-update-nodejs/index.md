@@ -9,6 +9,7 @@ title: "Update Node.js on Linux, macOS, and Windows"
 title_meta: "How to Update Node.js on Linux, macOS, and Windows"
 external_resources:
 - '[The Node.js homepage](https://nodejs.org/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

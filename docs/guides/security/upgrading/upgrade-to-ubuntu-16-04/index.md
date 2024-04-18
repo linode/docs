@@ -13,6 +13,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-16-04/']
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

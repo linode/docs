@@ -11,6 +11,7 @@ external_resources:
 - '[NGINX FastCGI module API](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html)'
 - '[NGINXHelper WordPress Plugin](https://wordpress.org/plugins/nginx-helper/)'
 - '[FastCGI Wikipedia page](https://en.wikipedia.org/wiki/FastCGI)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

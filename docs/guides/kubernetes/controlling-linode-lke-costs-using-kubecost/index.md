@@ -4,6 +4,7 @@ title: "Controlling Linode LKE Costs Using Kubecost"
 description: 'Discover how to optimize Linode LKE costs with Kubecost, a powerful tool automating Kubernetes container cost calculations.'
 keywords: ['Kubernetes costs', 'Kubernetes monitoring', 'Configuring Kubecost']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ['John Mueller', 'John Dutton']
 contributors: ['John Mueller', 'John Dutton']
 published: 2024-03-04
 external_resources:

@@ -14,6 +14,7 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Fedora 13
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

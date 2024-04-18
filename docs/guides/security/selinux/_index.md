@@ -7,6 +7,7 @@ published: 2020-03-18
 title: SELinux
 show_in_lists: true
 aliases: ['/security/selinux/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

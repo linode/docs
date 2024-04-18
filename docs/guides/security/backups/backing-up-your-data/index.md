@@ -12,6 +12,7 @@ external_resources:
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
 tags: ["security"]
 aliases: ['/security/backups/backing-up-your-data/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

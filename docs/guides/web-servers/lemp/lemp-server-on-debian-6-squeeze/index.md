@@ -15,6 +15,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

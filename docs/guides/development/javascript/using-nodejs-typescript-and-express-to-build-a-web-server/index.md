@@ -11,6 +11,7 @@ external_resources:
 - '[npm documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json)'
 - '[Express documentation](https://expressjs.com/en/guide/routing.html)'
 - "[TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig)"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

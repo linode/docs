@@ -13,6 +13,7 @@ external_resources:
 - '[Web Push](https://serviceworke.rs/web-push.html)'
 - '[Specifications and Examples](https://github.com/WICG/background-sync)'
 - '[Cache and Update](https://serviceworke.rs/strategy-cache-and-update.html)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

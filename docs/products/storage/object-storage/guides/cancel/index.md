@@ -1,6 +1,7 @@
 ---
 title: Cancel Object Storage
 description: "How to cancel the Linode Object Storage service."
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

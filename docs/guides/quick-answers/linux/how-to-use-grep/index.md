@@ -8,6 +8,7 @@ modified: 2017-11-27
 published: 2017-04-10
 title: "Using the grep Command in Linux: Finding Text & Strings in Files"
 tags: ["linux"]
+authors: ["Phil Zona"]
 contributors: ["Phil Zona"]
 ---
 

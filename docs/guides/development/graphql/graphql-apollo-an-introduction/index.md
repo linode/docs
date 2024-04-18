@@ -11,6 +11,7 @@ external_resources:
 - '[GraphQL](https://graphql.org/)'
 - '[Apollo](https://www.apollographql.com/)'
 - '[Apollo GraphQL documentation](https://www.apollographql.com/docs/)'
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

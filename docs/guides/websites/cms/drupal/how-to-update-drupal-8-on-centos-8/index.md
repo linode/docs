@@ -15,6 +15,7 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/drupal/how-to-update-drupal-8-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -5,5 +5,6 @@ aliases: ['/web-servers/apache-tips-and-tricks/','/web-servers/apache/configurat
 published: 2009-07-16
 title: Apache Tips & Tricks
 show_in_lists: true
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---

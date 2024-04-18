@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-24
 title: "The Top 9 Web Development Languages You Need To Know"
 title_meta: "Programming Languages for Web Development"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

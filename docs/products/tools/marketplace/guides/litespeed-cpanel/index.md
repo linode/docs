@@ -8,6 +8,7 @@ title: "Deploy LiteSpeed cPanel through the Linode Marketplace"
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
 aliases: ['/guides/deploying-litespeed-cpanel-marketplace-app/','/guides/litespeed-cpanel-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

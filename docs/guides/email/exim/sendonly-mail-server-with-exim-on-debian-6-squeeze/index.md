@@ -14,6 +14,7 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

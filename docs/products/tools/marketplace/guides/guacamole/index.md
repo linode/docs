@@ -8,6 +8,7 @@ title: "Deploy Apache Guacamole through the Linode Marketplace"
 aliases: ['/platform/marketplace/guacamole/','/guides/deploy-guacamole-with-marketplace-apps/','/guides/guacamole-marketplace-app/']
 external_resources:
  - '[Guacamole Documentation](https://guacamole.apache.org/doc/gug/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

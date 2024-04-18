@@ -18,6 +18,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/apache/how-to-install-apache-web-server-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

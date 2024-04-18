@@ -17,6 +17,7 @@ external_resources:
   - '[Try LXD Online](https://linuxcontainers.org/lxd/try-it/)'
   - '[NGINX Reverse Proxy Settings](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
 aliases: ['/applications/containers/beginners-guide-to-lxd/']
+authors: ["Simos Xenitellis"]
 contributors: ["Simos Xenitellis"]
 ---
 

@@ -7,6 +7,7 @@ tags: ["linode platform","cloud manager","networking"]
 published: 2016-08-23
 modified: 2024-01-30
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

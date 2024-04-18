@@ -10,6 +10,7 @@ title_meta: What is iptables
 tags: ['networking','security']
 image: "Understanding_iptables.png"
 aliases: ['/security/firewalls/what-is-iptables/']
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

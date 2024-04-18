@@ -10,6 +10,7 @@ headless: true
 show_on_rss_feed: false
 aliases: ['/applications/containers/kubernetes/how-to-install-kubectl/','/kubernetes/how-to-install-kubectl/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

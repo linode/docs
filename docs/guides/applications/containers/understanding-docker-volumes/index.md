@@ -9,6 +9,7 @@ title: "Understanding Docker Volumes"
 external_resources:
 - '[Use volumes at Docker Docs](https://docs.docker.com/storage/volumes/)'
 - '[Troubleshoot volume errors at Docker Docs](https://docs.docker.com/storage/troubleshooting_volume_errors/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

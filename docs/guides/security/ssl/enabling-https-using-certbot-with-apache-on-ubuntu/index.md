@@ -13,6 +13,7 @@ relations:
         key: how-to-use-certbot-with-apache
         keywords:
             - distribution: Ubuntu
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

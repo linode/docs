@@ -14,6 +14,7 @@ relations:
             - distribution: Debian 6
 tags: ["debian","database","postgresql"]
 aliases: ['/databases/postgresql/debian-6-squeeze/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

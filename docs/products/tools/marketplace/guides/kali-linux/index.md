@@ -5,6 +5,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-07-05
 title: "Deploy Kali Linux through the Linode Marketplace"
 aliases: ['/products/tools/marketplace/guides/kalilinux/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

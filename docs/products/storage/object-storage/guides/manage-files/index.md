@@ -2,6 +2,7 @@
 title: "Upload and Manage Files (Objects)"
 description: ""
 aliases: ['/products/storage/object-storage/guides/upload-objects/','/products/storage/object-storage/guides/delete-objects/','/products/storage/object-storage/guides/view-objects/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

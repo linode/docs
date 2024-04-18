@@ -17,6 +17,7 @@ external_resources:
 - '[Ubuntu tcpdump man page](https://manpages.ubuntu.com/manpages/jammy/man8/tcpdump.8.html)'
 - '[Wikipedia List of IEEE 802 family of standards](https://en.wikipedia.org/wiki/IEEE_802)'
 - '[FileZilla](https://filezilla-project.org/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

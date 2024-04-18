@@ -13,6 +13,7 @@ external_resources:
  - '[Apache Rewrite Guide](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)'
  - '[Redirect URLs with the Apache Web Server](/docs/guides/redirect-urls-with-the-apache-web-server/)'
 tags: ["web server","apache"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

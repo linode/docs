@@ -20,6 +20,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Jonathan Frederickson"]
 contributors: ["Jonathan Frederickson"]
 ---
 

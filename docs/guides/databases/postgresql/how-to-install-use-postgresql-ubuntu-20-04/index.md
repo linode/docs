@@ -15,6 +15,7 @@ relations:
         keywords:
            - distribution: Ubuntu 20.04
 tags: ["ubuntu", "postgresql"]
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

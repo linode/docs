@@ -20,6 +20,7 @@ relations:
         keywords:
             - distribution: CentOS 6.4
 tags: ["nosql","database","centos"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

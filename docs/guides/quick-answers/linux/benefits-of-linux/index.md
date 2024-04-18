@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 title: "10 Benefits of Linux You Need to Know"
 title_meta: "The Advantages of Linux and Why You Should Use It"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

@@ -21,6 +21,7 @@ relations:
 tags: ["database","mysql","centos"]
 aliases: ['/databases/mysql/how-to-install-mysql-on-centos-7/']
 image: how-to-install-mysql-on-centos-7.png
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

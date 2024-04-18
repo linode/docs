@@ -13,6 +13,7 @@ relations:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Ubuntu 9.10
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

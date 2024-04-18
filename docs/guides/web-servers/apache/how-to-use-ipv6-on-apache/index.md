@@ -15,6 +15,7 @@ external_resources:
 - '[NGINX Website](https://www.nginx.com/)'
 - '[NGINX Docs page](https://docs.nginx.com/)'
 - '[RHEL documentation to enable IPv6](https://access.redhat.com/solutions/347693)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

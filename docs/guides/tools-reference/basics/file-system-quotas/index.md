@@ -9,6 +9,7 @@ title_meta: 'How To Set Filesystem Quotas on Ubuntu 22.04'
 external_resources:
  - '[Official Documentation for Quota subsystem](https://www.kernel.org/doc/html/next/filesystems/quota.html)'
 tags: ["ubuntu","filesystem","limit disk"]
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

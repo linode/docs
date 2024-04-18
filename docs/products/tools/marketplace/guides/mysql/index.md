@@ -10,6 +10,7 @@ external_resources:
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
 - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 aliases: ['/platform/marketplace/deploy-mysql-with-marketplace-apps/', '/platform/one-click/deploy-mysql-with-one-click-apps/', '/guides/deploy-mysql-with-one-click-apps/', '/guides/deploy-mysql-with-marketplace-apps/','/guides/mysql-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

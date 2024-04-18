@@ -12,6 +12,7 @@ external_resources:
 - '[GitLab Docker Documentation](https://docs.gitlab.com/omnibus/docker/)'
 - '[GitLab SSL Configuration](https://docs.gitlab.com/omnibus/settings/ssl.html#lets-encrypt-integration)'
 aliases: ['/development/version-control/install-gitlab-with-docker/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

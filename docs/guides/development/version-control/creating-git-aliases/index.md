@@ -5,6 +5,7 @@ keywords: ['git alias','git config alias']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
 title: "Create Git Aliases to Quickly Run Git or Shell Commands"
+authors: ["Stephen Savitzky"]
 contributors: ["Stephen Savitzky"]
 ---
 

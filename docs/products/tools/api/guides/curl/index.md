@@ -2,6 +2,7 @@
 title: Send an API Request with cURL
 description: "Learn how to use cURL to send requests to endpoints on the Linode API."
 aliases: ['/products/tools/linode-api/guides/authenticate-requests/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

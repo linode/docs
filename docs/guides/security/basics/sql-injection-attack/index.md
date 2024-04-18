@@ -12,6 +12,7 @@ external_resources:
 - '[Netsparker SQL Injection Cheat Sheet](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet)'
 - '[OWASP Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)'
 - '[OWASP Security Code Review guide](https://owasp.org/www-project-code-review-guide/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

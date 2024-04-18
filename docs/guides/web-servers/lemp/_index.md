@@ -6,6 +6,7 @@ aliases: ['/websites/lemp/','/web-servers/lemp/','/lemp-guides/']
 published: 2010-06-29
 title: LEMP Guides
 show_in_lists: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

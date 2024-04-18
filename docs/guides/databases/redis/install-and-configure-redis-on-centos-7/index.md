@@ -18,6 +18,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 tags: ["nosql","database","centos"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

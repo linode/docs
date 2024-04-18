@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-12-04/']
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

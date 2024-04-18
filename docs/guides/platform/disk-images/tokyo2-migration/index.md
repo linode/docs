@@ -11,6 +11,7 @@ aliases: ['/platform/tokyo2-migration/']
 _build:
   list: false
 noindex: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

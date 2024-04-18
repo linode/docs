@@ -9,6 +9,7 @@ modified: 2014-01-28
 aliases: ['/applications/containers/docker.md/','/applications/containers/what-is-docker/','/containers/docker/']
 published: 2014-01-28
 title: Docker
+authors: ["Jon Chen"]
 contributors: ["Jon Chen"]
 ---
 

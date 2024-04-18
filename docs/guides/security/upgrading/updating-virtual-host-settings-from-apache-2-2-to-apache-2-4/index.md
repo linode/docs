@@ -11,6 +11,7 @@ title: "Updating Virtual Host Settings For Apache 2.4"
 title_meta: "How to Update Virtual Host Settings For Apache 2.4"
 external_resources:
  - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

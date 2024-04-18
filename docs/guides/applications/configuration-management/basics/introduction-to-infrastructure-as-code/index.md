@@ -9,6 +9,7 @@ title: "An Introduction to Infrastructure as Code"
 title_meta: "Introducing Infrastructure as Code"
 external_resources:
 - '[Infrastructure as Code on Wikipedia](https://en.wikipedia.org/wiki/Infrastructure_as_code)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

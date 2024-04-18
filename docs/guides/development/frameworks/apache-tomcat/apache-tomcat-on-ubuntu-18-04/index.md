@@ -21,6 +21,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

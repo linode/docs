@@ -12,6 +12,7 @@ external_resources:
  - '[LAMP Guides](/docs/lamp-guides/)'
  - '[Package Management](/docs/guides/linux-package-management-overview/)'
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -14,6 +14,7 @@ relations:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

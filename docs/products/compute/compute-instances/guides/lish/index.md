@@ -8,6 +8,7 @@ modified: 2024-02-14
 tags: ["linode platform","cloud manager"]
 image: using-the-linode-shell-lish.jpg
 aliases: ['/platform/manager/using-the-linode-shell-lish-classic-manager/','/platform/using-the-linode-shell-lish/','/networking/using-the-linode-shell-lish/','/using-lish-the-linode-shell/','/troubleshooting/using-lish-the-linode-shell/','/platform/manager/using-the-linode-shell-lish/','/guides/using-the-linode-shell-lish/','/guides/using-the-lish-console/','/guides/lish/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

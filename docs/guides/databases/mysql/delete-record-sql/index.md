@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-10
 title_meta: "Using the Delete Command in SQL"
 title: "Developer’s Guide to the Delete Query in SQL"
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

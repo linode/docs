@@ -7,6 +7,7 @@ published: 2012-06-04
 title: "Copy a Disk Over SSH"
 image: copying_a_disk_over_ssh_smg.png
 aliases: ['/migration/ssh-copy/','/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh/','/platform/disk-images/copying-a-disk-image-over-ssh/','/guides/copying-a-disk-image-over-ssh/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

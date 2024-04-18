@@ -11,6 +11,7 @@ title_meta: "How to Use the Date Object in JavaScript"
 external_resources:
 - '[MDN Web Docs | JavaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)'
 - '[MDN Web Docs | About JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/About_JavaScript)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

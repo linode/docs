@@ -18,6 +18,7 @@ relations:
         key: install-gogs
         keywords:
             - distribution: Debian 9
+authors: ["Nashruddin Amin"]
 contributors: ["Nashruddin Amin"]
 ---
 

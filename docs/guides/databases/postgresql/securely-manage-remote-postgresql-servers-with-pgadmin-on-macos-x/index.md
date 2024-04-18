@@ -12,6 +12,7 @@ external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

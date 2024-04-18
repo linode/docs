@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-15
 title: "Using the Git Rebase Command"
 title_meta: "How to Use the Git Rebase Command"
+authors: ["Stephen Savitzky"]
 contributors: ["Stephen Savitzky"]
 ---
 

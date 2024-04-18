@@ -21,6 +21,7 @@ relations:
         key: install-gitlab
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Nashruddin Amin"]
 contributors: ["Nashruddin Amin"]
 ---
 

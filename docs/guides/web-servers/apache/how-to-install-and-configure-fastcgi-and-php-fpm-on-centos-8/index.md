@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/apache/how-to-install-and-configure-fastcgi-and-php-fpm-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

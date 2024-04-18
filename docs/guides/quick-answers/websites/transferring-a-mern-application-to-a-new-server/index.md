@@ -10,6 +10,7 @@ external_resources:
 - '[MongoDB MERN Stack Explained](https://www.mongodb.com/mern-stack)'
 - '[Node.js](https://nodejs.org/en/)'
 - '[NPM](https://www.npmjs.com/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

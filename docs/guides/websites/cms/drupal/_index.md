@@ -6,5 +6,6 @@ published: 2020-02-18
 show_in_lists: true
 title: Drupal
 aliases: ['/websites/cms/drupal/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---

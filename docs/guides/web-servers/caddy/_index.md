@@ -5,6 +5,7 @@ published: 2017-11-06
 title: Caddy
 show_in_lists: true
 aliases: ['/web-servers/caddy/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

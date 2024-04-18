@@ -10,6 +10,7 @@ title: "Installing CouchDB 2.0 on Ubuntu 20.04"
 title_meta: "How to Install CouchDB 2.0 on Ubuntu 20.04"
 external_resources:
 - '[Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.html)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -14,6 +14,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/drupal/docker-drupal/how-to-install-drupal-with-docker-compose-debian-10/','/websites/cms/drupal/how-to-install-drupal-with-docker-compose-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

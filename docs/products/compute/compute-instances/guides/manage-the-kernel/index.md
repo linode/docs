@@ -7,6 +7,7 @@ modified: 2024-02-22
 title: "Manage the Kernel on a Compute Instance"
 title_meta: "How to Manage the Kernel on a Compute Instance"
 aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/','/platform/how-to-change-your-linodes-kernel/','/run-a-distribution-supplied-kernel-with-kvm/','/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','/platform/update-kernel/', '/guides/how-to-change-your-linodes-kernel/', '/guides/update-kernel/','/guides/managing-the-kernel-on-a-linode/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -7,6 +7,7 @@ published: 2021-02-24
 image: StaticCodeAnalysis.png
 title: "What is Static Code Analysis?"
 tags: ["automation"]
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

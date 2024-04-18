@@ -11,6 +11,7 @@ external_resources:
  - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
  - '[Linode Docs - CouchDB](/docs/databases/couchdb/)'
 tags: ["database"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

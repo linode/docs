@@ -9,6 +9,7 @@ title: "Configure a Redis Server from the Command Line"
 title_meta: "How to Configure a Redis Server from the Command Line"
 external_resources:
 - '[Redis: Redis Configuration](https://redis.io/topics/config)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

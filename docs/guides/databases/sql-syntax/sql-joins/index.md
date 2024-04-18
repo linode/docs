@@ -8,6 +8,7 @@ published: 2022-03-11
 title: "Introduction to SQL Joins"
 title_meta: "SQL Joins"
 
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 

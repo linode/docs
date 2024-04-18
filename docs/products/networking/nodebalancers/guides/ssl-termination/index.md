@@ -7,6 +7,7 @@ published: 2015-09-01
 modified: 2023-04-18
 aliases: ['/platform/nodebalancer/nodebalancer-ssl-configuration/','/guides/nodebalancer-ssl-configuration/']
 image: nodebalancer-ssl-configuration.png
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

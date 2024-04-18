@@ -7,6 +7,7 @@ published: 2021-04-09
 title: "CRUD Write Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Write Operations: Using FastAPI to Write an API"
 tags: ["python", "django"]
+authors: ["Chelsea Troy"]
 contributors: ["Chelsea Troy"]
 ---
 

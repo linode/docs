@@ -10,6 +10,7 @@ title_meta: "How to Create a Kubernetes CronJob"
 external_resources:
 - '[Define Environment Variables for a Container](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)'
 - '[CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)'
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

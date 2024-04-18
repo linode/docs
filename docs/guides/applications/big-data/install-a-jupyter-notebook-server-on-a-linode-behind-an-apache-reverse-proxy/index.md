@@ -14,6 +14,7 @@ external_resources:
  - '[Certbot](https://certbot.eff.org/)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/']
+authors: ["Sam Foo"]
 contributors: ["Sam Foo"]
 ---
 

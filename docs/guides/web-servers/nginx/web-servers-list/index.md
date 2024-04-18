@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 title: "The Ultimate Web Servers List: 11 Popular Web Servers To Use Today"
 title_meta: "Web Server Software List and Servers Comparison"
+authors: ["Wayne Rash"]
 contributors: ["Wayne Rash"]
 ---
 

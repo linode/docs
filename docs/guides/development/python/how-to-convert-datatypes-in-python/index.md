@@ -10,6 +10,7 @@ external_resources:
 - '[Python String documentation](https://docs.python.org/3/library/string.html)'
 - '[Standard Python types](https://docs.python.org/3/library/stdtypes.html)'
 - '[Advanced Python types](https://docs.python.org/3/library/datatypes.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

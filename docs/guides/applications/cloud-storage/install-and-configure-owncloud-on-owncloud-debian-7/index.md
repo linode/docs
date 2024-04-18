@@ -15,6 +15,7 @@ relations:
             - distribution: Debian 7
 aliases: ['/applications/cloud-storage/owncloud-debian-7/','/guides/owncloud-debian-7/']
 deprecated: true
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

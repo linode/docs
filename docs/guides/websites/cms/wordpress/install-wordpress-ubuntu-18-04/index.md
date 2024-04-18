@@ -17,6 +17,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/wordpress/install-wordpress-ubuntu-18-04/','/websites/cms/install-wordpress-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

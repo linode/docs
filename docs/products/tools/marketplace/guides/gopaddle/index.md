@@ -6,6 +6,7 @@ published: 2023-01-23
 title: "Deploy gopaddle through the Linode Marketplace"
 external_resources:
 - '[GoPaddle](https://gopaddle.io/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ aliases: ['/websites/proxies/multiple-web-servers-with-proxypass-on-debian-6-squ
 modified: 2011-04-29
 published: 2011-04-07
 title: 'Multiple Web Servers with ProxyPass on Debian 6 (Squeeze)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

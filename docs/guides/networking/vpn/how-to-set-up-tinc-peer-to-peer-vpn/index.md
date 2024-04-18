@@ -8,6 +8,7 @@ aliases: ['/security/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/vpn/how-
 published: 2017-09-19
 modified: 2017-09-20
 title: 'How to Set up tinc, a Peer-to-Peer VPN'
+authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 ---
 

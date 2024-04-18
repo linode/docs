@@ -9,6 +9,7 @@ published: 2018-02-09
 modified: 2018-02-09
 title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
 title_meta: "Getting Started with NGINX: TLS Deployment Best Practices"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

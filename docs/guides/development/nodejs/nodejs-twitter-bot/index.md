@@ -16,6 +16,7 @@ external_resources:
     - "[GitHub Desktop](https://desktop.github.com/)"
     - "[Creating a new User in Ubuntu](https://youtu.be/fDHHKR0nVQg)"
     - "[FileZilla](/docs/guides/filezilla/)"
+authors: ["Pj Metz"]
 contributors: ["Pj Metz"]
 ---
 

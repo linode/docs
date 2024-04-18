@@ -14,6 +14,7 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: PuTTY
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

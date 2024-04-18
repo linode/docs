@@ -18,6 +18,7 @@ relations:
         key: install-openjdk
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

@@ -8,6 +8,7 @@ published: 2021-03-05
 image: FilterData.jpg
 title: "Filter Data using AWK RegEx"
 title_meta: "How to Filter Data using AWK RegEx"
+authors: ["Andy Lester"]
 contributors: ["Andy Lester"]
 ---
 

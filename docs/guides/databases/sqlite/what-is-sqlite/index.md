@@ -8,6 +8,7 @@ image: SQLiteOverview.png
 title: "What is SQLite?"
 title_meta: "A SQLite Overview"
 tags: ["database"]
+authors: ["James Turner"]
 contributors: ["James Turner"]
 ---
 

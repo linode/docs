@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-17
 title: "Kubernetes Security Best Practices Overview"
 title_meta: "Kubernetes Security Best Practices"
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

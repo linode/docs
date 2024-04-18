@@ -4,6 +4,7 @@ description: "Learn how to create cloud-config files for use with cloud-init and
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
 modified: 2023-08-24
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

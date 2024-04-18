@@ -14,6 +14,7 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

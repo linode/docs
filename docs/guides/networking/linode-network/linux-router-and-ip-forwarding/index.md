@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-30
 modified: 2024-02-14
 title: "Configure Linux as a Router (IP Forwarding)"
+authors: ["Linode", "Nathaniel Stickman"]
 contributors: ["Linode", "Nathaniel Stickman"]
 ---
 

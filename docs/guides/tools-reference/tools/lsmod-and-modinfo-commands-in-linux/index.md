@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
 title: "​​How to Use the lsmod and modinfo Commands in Linux"
 title_meta: "Using The lsmod and modinfo Commands in Linux"
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

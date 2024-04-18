@@ -12,6 +12,7 @@ external_resources:
  - '[MySQL documentation: Database Backup Methods](https://dev.mysql.com/doc/refman/8.0/en/backup-methods.html)'
 tags: ["mariadb","database","mysql"]
 image: mysqldump-backup-title.jpg
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -8,6 +8,7 @@ modified: 2018-09-06
 published: 2018-09-06
 title: 'Proxy Burp Suite Traffic Through a Linode'
 aliases: ['/quick-answers/linode-platform/proxy-burp-suite-traffic-through-a-linode/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

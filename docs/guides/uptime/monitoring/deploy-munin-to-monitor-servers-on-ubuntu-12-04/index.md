@@ -20,6 +20,7 @@ relations:
         key: install-munin-monitoring
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

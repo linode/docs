@@ -9,6 +9,7 @@ title: "Install and Use the Linux bat Command"
 title_meta: "How to Install and Use the Linux bat Command"
 external_resources:
 - '[GitHub: sharpdp/bat](https://github.com/sharkdp/bat)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

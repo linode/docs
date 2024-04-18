@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 title: "An Introduction to Mock Testing Using the Python Unittest Library"
 title_meta: "Mock Testing Using the Python Unittest Library"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

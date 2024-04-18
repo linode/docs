@@ -12,6 +12,7 @@ external_resources:
  - '[GNU tar](http://www.gnu.org/software/tar/)'
  - '[GNU gzip](http://www.gzip.org/)'
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -13,6 +13,7 @@ external_resources:
  - '[SHOUTcast Broadcast Tools](http://www.shoutcast.com/broadcast-tools)'
  - '[SHOUTcast Transcoder MP3 Licensing](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding)'
 dedicated_cpu_link: true
+authors: ["Chris Ciufo"]
 contributors: ["Chris Ciufo"]
 ---
 

@@ -21,6 +21,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

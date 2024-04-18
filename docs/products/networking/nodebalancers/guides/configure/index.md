@@ -5,6 +5,7 @@ keywords: ["load balancing", "nodebalancer"]
 published: 2022-10-07
 tags: ["linode platform","networking"]
 aliases: ['/nodebalancers/reference/','/platform/nodebalancer/nodebalancer-reference-guide-new-manager/','/platform/nodebalancer/nodebalancer-reference-guide/','/linode-platform/nodebalancer-reference/','/platform/nodebalancer/nodebalancer-reference-guide-classic-manager/','/guides/nodebalancer-reference-guide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

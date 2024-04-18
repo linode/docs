@@ -10,6 +10,7 @@ title: Load Testing Web Servers with Siege
 external_resources:
  - '[Siege Home](http://www.joedog.org/siege-home)'
 aliases: ['/tools-reference/tools/load-testing-with-siege/']
+authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 ---
 

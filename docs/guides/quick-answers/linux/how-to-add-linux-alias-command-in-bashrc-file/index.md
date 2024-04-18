@@ -9,6 +9,7 @@ published: 2020-11-17
 title: Adding the Linux alias Command in the .bashrc File
 title_meta: "How to Add the Linux alias Command in the .bashrc File"
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

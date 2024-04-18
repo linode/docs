@@ -12,6 +12,7 @@ external_resources:
 - '[CentOS Stream Main Page](https://www.centos.org/centos-stream/)'
 - '[The CentOS Documentation Page](https://docs.centos.org/en-US/docs/)'
 - '[CentOS Project Contribution Page](https://wiki.centos.org/Contribute)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

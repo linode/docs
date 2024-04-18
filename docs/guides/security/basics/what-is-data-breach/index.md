@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
 title: "What is a Data Breach?"
 title_meta: "Data Breach Definition and Protection Protocols"
+authors: ["David Chernicoff"]
 contributors: ["David Chernicoff"]
 ---
 

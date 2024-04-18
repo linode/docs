@@ -18,6 +18,7 @@ relations:
         key: installing-and-using-docker
         keywords:
             - distribution: Ubuntu and Debian
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

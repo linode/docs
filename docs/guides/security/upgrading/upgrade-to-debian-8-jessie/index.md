@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/']
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

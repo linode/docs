@@ -4,6 +4,7 @@ title: "Introduction to DNS on Linux"
 description: 'Learn the basics of DNS on Linux by configuting a primary name server with NSD.'
 keywords: ['introduction to dns on linux','domain name service','linux dns server','dns server','configuring dns','install dns','flush dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["David Robert Newman"]
 contributors: ["David Robert Newman"]
 published: 2023-06-09
 external_resources:

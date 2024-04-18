@@ -12,6 +12,7 @@ external_resources:
 - '[curl documentation](https://curl.se/docs/)'
 - '[curl GitHub page](https://github.com/curl/curl)'
 - '[GitHub REST API](https://docs.github.com/en/rest)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

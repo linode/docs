@@ -16,6 +16,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 8
+authors: ["Paulo Telles"]
 contributors: ["Paulo Telles"]
 ---
 

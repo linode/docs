@@ -6,5 +6,6 @@ published: 2018-01-31
 title: Javascript
 show_in_lists: true
 aliases: ['/development/javascript/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---

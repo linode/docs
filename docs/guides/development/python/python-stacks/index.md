@@ -12,6 +12,7 @@ external_resources:
 - '[Real Python: How to Implement a Python Stack](https://realpython.com/how-to-implement-python-stack/)'
 - '[Programiz: Stack Data Structure](https://www.programiz.com/dsa/stack)'
 - '[Tutorials Point: Python Stack](https://www.tutorialspoint.com/python_data_structure/python_stack.htm)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

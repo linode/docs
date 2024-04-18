@@ -20,6 +20,7 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

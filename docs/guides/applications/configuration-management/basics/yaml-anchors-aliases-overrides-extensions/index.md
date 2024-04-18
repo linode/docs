@@ -12,6 +12,7 @@ external_resources:
 - '[Docker Compose](https://docs.docker.com/compose/)'
 - '[Quickstart-Compose and WordPress](https://docs.docker.com/compose/wordpress/)'
 
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

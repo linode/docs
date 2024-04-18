@@ -11,6 +11,7 @@ external_resources:
  - '[OpenSSH](http://www.openssh.com/)'
  - '[Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)'
 aliases: ['/security/advanced-ssh-server-security/','/security/basics/advanced-ssh-server-security/']
+authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 ---
 

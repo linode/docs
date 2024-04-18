@@ -22,6 +22,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/react/how-to-deploy-a-react-app-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

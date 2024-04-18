@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

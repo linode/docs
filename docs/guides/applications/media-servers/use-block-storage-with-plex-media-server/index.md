@@ -12,6 +12,7 @@ external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true
 aliases: ['/applications/media-servers/use-block-storage-with-plex-media-server/']
+authors: ["Sam Foo"]
 contributors: ["Sam Foo"]
 ---
 

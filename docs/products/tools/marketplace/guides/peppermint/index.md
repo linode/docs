@@ -6,6 +6,7 @@ published: 2021-03-31
 modified: 2023-10-27
 title: "Deploy Peppermint through the Linode Marketplace"
 aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

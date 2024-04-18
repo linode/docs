@@ -8,6 +8,7 @@ title: "How to Enable SSH on Ubuntu 20.04 LTS"
 title_meta: "Step-by-Step Guide: How to Enable SSH on Ubuntu"
 external_resources:
 - '[Ubuntu Server Documentation](https://ubuntu.com/server/docs/service-openssh)'
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

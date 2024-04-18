@@ -11,6 +11,7 @@ title: 'How to Make a Self-Signed SSL Certificate'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 tags: ["security","ssl"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

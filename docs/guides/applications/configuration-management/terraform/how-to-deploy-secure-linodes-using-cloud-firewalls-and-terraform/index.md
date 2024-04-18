@@ -10,6 +10,7 @@ image: feature.png
 external_resources:
 - '[Terraform Linode Provider Official Documentation](https://registry.terraform.io/providers/linode/linode/latest/docs)'
 aliases: ['/applications/configuration-management/terraform/how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform/']
+authors: ["Leslie Salazar"]
 contributors: ["Leslie Salazar"]
 tags: ["saas"]
 ---

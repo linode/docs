@@ -8,6 +8,7 @@ title: "Deploy Gitea through the Linode Marketplace"
 external_resources:
 - '[Gitea Documentation](https://docs.gitea.io/)'
 aliases: ['/guides/deploy-gitea-with-one-click-apps/', '/guides/deploy-gitea-with-marketplace-apps/', '/guides/deploy-Gitea-with-marketplace-apps/','/guides/gitea-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

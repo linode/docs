@@ -18,6 +18,7 @@ relations:
         key: how-to-install-ghost-cms
         keywords:
            - distribution: Ubuntu 16.04
+authors: ["Blago Eres"]
 contributors: ["Blago Eres"]
 ---
 

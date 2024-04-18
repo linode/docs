@@ -9,6 +9,7 @@ title: "Deploy CyberPanel through the Linode Marketplace"
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
 aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

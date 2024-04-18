@@ -9,6 +9,7 @@ published: 2015-03-12
 title: 'Team Fortress 2 on Debian and Ubuntu'
 aliases: ['/applications/game-servers/team-fortress2-on-debian-and-ubuntu/','/game-servers/team-fortress2-on-debian-and-ubuntu/']
 dedicated_cpu_link: true
+authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 ---
 

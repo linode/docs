@@ -16,6 +16,7 @@ external_resources:
  - '[Troubleshooting Apache](/docs/guides/troubleshooting-common-apache-issues/)'
  - '[Linode User Community](http://linode.com/community/)'
 tags: ["web server","apache"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

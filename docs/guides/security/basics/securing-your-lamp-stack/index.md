@@ -10,6 +10,7 @@ title: Securing Your LAMP Stack
 title_meta: How to Secure Your LAMP Stack
 aliases: ['security/basics/securing-your-lamp-stack/']
 image: SecureLAMPstack.png
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

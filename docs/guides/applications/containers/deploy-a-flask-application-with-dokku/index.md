@@ -11,6 +11,7 @@ external_resources:
 - '[Dokku PaaS](http://dokku.viewdocs.io/dokku/)'
 - '[Flask](http://flask.pocoo.org/)'
 aliases: ['/applications/containers/deploy-a-flask-application-with-dokku/']
+authors: ["Sam Foo"]
 contributors: ["Sam Foo"]
 ---
 

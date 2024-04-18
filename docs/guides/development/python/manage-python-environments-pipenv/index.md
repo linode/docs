@@ -12,6 +12,7 @@ audiences: ["beginner"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/manage-python-environments-pipenv/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

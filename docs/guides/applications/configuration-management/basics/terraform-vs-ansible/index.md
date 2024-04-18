@@ -10,6 +10,7 @@ title_meta: "Comparing Terraform and Ansible"
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Ansible](https://www.ansible.com/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

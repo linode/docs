@@ -14,6 +14,7 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

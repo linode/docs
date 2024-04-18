@@ -8,6 +8,7 @@ aliases: ['/tools-reference/file-transfer/transfer-files-with-cyberduck-on-mac-o
 modified: 2011-08-22
 published: 2009-11-13
 title: Transfer Files with Cyberduck on Mac OS X
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

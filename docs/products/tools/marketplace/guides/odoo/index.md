@@ -8,6 +8,7 @@ title: "Deploy Odoo through the Linode Marketplace"
 external_resources:
 - '[Odoo](https://www.odoo.com/)'
 aliases: ['/guides/odoo-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

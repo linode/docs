@@ -14,6 +14,7 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 10.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

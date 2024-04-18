@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-15
 title: "How Cryptography Enables Secure Communication"
 title_meta: "Understanding Cryptography’s Meaning and Function"
+authors: ["Pam Baker"]
 contributors: ["Pam Baker"]
 ---
 

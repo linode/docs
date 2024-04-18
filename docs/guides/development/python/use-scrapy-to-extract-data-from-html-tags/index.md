@@ -14,6 +14,7 @@ concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/use-scrapy-to-extract-data-from-html-tags/']
+authors: ["Florent Houbart"]
 contributors: ["Florent Houbart"]
 ---
 

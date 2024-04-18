@@ -16,6 +16,7 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: Ubuntu 18.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

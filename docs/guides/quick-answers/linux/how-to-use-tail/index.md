@@ -8,6 +8,7 @@ modified: 2017-04-10
 published: 2017-04-10
 title: How to Use the Tail Command
 tags: ["linux"]
+authors: ["Phil Zona"]
 contributors: ["Phil Zona"]
 ---
 

@@ -9,6 +9,7 @@ title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
 title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
 external_resources:
 - '[Introduction to StrongSwan](https://wiki.strongswan.org/projects/strongswan/wiki/IntroductionTostrongSwan)'
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

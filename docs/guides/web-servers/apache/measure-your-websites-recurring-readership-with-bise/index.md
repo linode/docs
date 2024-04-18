@@ -11,6 +11,7 @@ external_resources:
   - "[Bise's README file, containing concise instructions](https://github.com/jmacdotorg/bise/blob/master/README.md)"
   - "[Meditations upon Bise's motivations and intended use, written by its developer](https://fogknife.com/2018-01-17-more-thoughts-on-counting-blog-readership.html)"
 aliases: ['/web-servers/apache/measure-your-websites-recurring-readership-with-bise/']
+authors: ["Jason McIntosh"]
 contributors: ["Jason McIntosh"]
 ---
 

@@ -21,6 +21,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: CentOS 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

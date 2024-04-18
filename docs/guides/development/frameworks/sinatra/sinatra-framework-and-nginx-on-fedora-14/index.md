@@ -14,6 +14,7 @@ relations:
         key: sinatra-nginx
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

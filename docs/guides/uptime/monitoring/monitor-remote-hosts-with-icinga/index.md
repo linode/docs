@@ -11,6 +11,7 @@ external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/monitor-remote-hosts-with-icinga/']
+authors: ["Matt Vass"]
 contributors: ["Matt Vass"]
 ---
 

@@ -5,6 +5,7 @@ keywords: ['networking']
 published: 2022-07-19
 modified: 2024-01-03
 aliases: ['/guides/network-infrastructure-upgrades/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

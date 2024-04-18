@@ -8,6 +8,7 @@ title: "Undo a Git Commit"
 title_meta: "Undo a Git Commit: A Step-by-Step Guide"
 external_resources:
 - '[Git documentation](https://git-scm.com/doc)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

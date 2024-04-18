@@ -2,6 +2,7 @@
 title: "Manage Multiple Accounts with the Linode CLI"
 description: "How to use the Linode CLI to manage multiple Linode accounts."
 published: 2022-12-06
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

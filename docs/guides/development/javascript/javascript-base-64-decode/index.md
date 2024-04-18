@@ -11,6 +11,7 @@ external_resources:
 - '[RFC 4648 for Base64](https://datatracker.ietf.org/doc/html/rfc4648)'
 - '[Mozilla btoa documentation](https://developer.mozilla.org/en-US/docs/Web/API/btoa)'
 - '[Mozilla atob documentation](https://developer.mozilla.org/en-US/docs/Web/API/atob)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

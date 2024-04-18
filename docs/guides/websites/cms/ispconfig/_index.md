@@ -6,6 +6,7 @@ published: 2020-09-01
 title: ISPConfig
 show_in_lists: true
 aliases: ['/websites/cms/ispconfig/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

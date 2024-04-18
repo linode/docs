@@ -11,6 +11,7 @@ external_resources:
 - '[Real Python: Variables in Python](https://realpython.com/python-variables/)'
 - '[GeeksforGeeks: Python Variables](https://www.geeksforgeeks.org/python-variables/)'
 - '[Tutorials Point: Python - Variable Types](https://www.tutorialspoint.com/python/python_variable_types.htm)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

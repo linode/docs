@@ -9,6 +9,7 @@ title: 'Learning to Use netcat to its Full Potential'
 external_resources:
   - '[netcat](https://en.wikipedia.org/wiki/Netcat)'
 aliases: ['/networking/diagnostics/netcat/']
+authors: ["Mihalis Tsoukalos"]
 contributors: ["Mihalis Tsoukalos"]
 ---
 

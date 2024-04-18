@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/java/how-to-install-openjdk-on-debian-10/']
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

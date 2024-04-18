@@ -2,6 +2,7 @@
 title: "Manage SSH Keys"
 description: "Learn how to view, upload, and remove your public SSH keys in the Cloud Manager."
 aliases: ['/products/tools/cloud-manager/guides/manage-ssh-keys/']
+authors: ["Linode"]
 contributors: ["Linode"]
 published: 2022-03-18
 modified: 2023-05-22

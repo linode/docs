@@ -10,6 +10,7 @@ external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Kubernetes Changelog](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG)'
 aliases: ['/guides/upgrading-lke-minor-versions/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ title: "Getting Started Using Vi and Vim"
 title_meta: "What Is Vi?"
 external_resources:
 - '[Vim Fandom Page on Search and Replace](https://vim.fandom.com/wiki/Search_and_replace)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

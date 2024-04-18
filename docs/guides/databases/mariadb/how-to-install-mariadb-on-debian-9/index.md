@@ -20,6 +20,7 @@ relations:
         keywords:
             - distribution: Debian 9
 tags: ["debian","mariadb","database"]
+authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
 ---
 

@@ -13,6 +13,7 @@ external_resources:
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

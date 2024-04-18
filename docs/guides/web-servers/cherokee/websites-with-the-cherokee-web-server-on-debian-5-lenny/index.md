@@ -14,6 +14,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

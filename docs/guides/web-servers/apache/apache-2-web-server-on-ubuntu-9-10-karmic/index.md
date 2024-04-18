@@ -14,6 +14,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -11,6 +11,7 @@ external_resources:
  - '[MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/)'
  - '[Deploy MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/)'
 tags: ["ubuntu","database","mysql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

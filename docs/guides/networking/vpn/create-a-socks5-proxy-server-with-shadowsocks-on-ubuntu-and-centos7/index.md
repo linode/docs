@@ -13,6 +13,7 @@ title_meta: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
 external_resources:
  - '[Shadowsocks official](https://shadowsocks.org/)'
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
+authors: ["Andrew Lescher"]
 contributors: ["Andrew Lescher"]
 ---
 

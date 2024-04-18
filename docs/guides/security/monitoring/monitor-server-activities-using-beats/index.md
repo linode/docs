@@ -4,6 +4,7 @@ title: "How to Monitor Your Server Activities Using Beats"
 description: 'This guide introduces Elastic Beats (Filebeat, Metricbeat, Packetbeat, Auditbeat) and their use cases, helping you understand, configure, and monitor system metrics and logs efficiently.'
 keywords: ['Beats', 'Filebeat', 'Metricbeat', 'Server log monitoring', 'Viewing system metrics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2024-03-25
 external_resources:

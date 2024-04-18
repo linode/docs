@@ -12,6 +12,7 @@ external_resources:
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 tags: ["wordpress","mariadb","database"]
 aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

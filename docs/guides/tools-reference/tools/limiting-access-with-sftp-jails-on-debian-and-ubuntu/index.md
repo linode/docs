@@ -12,6 +12,7 @@ title: Limiting Access with SFTP Jails on Debian and Ubuntu
 external_resources:
 - '[OpenSSH Documentation](http://www.openssh.org/manual.html)'
 - '[An Introduction to Users and Groups](/docs/guides/linux-users-and-groups/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
 title: "Multicloud vs. Hybrid Cloud: Differences Explained"
 title_meta: "What is the Difference Between Hybrid Cloud and Multicloud?"
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

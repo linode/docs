@@ -10,6 +10,7 @@ external_resources:
 - '[Phoenix Project Documentation](https://hexdocs.pm/phoenix/Phoenix.html)'
 - '[Toptal: Meet Phoenix: A Rails-like Framework for Modern Web Apps on Elixir](https://www.toptal.com/phoenix/phoenix-rails-like-framework-web-apps)'
 - "[Educative: A Beginner's Guide to the Elixir Programming Language](https://www.educative.io/blog/elixir-functional-programming)"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["web server","php","mysql","apache","lamp"]
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

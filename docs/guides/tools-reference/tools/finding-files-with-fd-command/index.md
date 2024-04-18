@@ -9,6 +9,7 @@ title: "Find Files With the fd Command"
 title_meta: "How to Find Files With the fd Command"
 external_resources:
 - '[fd GitHub page](https://github.com/sharkdp/fd)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

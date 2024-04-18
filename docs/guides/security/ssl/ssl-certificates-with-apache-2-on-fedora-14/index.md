@@ -14,6 +14,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

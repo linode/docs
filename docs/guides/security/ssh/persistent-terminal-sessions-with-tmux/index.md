@@ -13,6 +13,7 @@ external_resources:
 - '[tmux Manual](http://man.openbsd.org/OpenBSD-current/man1/tmux.1)'
 - '[The Tao of tmux](https://leanpub.com/the-tao-of-tmux/read)'
 aliases: ['/networking/ssh/persistent-terminal-sessions-with-tmux/']
+authors: ["Alexandru Andrei"]
 contributors: ["Alexandru Andrei"]
 ---
 

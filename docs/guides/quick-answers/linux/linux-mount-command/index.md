@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-10
 title_meta: "Linux Mount Command: Mounting File Systems & Disks"
 title: "Quick Guide to the Linux Mount Command"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

@@ -14,6 +14,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

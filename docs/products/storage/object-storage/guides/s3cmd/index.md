@@ -2,6 +2,7 @@
 title: "Using S3cmd with Object Storage"
 description: "Learn how to use the S3cmd command-line tool with Linode's Object Storage."
 modified: 2023-02-10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -8,6 +8,7 @@ image: TLSCertificate.png
 title: "Understanding TLS Certificates and Connections"
 title_meta: "What is a TLS Certificate?"
 tags: ['web server', 'ssl', 'security']
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

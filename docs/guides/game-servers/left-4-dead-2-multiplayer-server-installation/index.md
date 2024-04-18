@@ -10,6 +10,7 @@ title: "Installing a Left 4 Dead 2 Multiplayer Server"
 title_meta: "How to Install a Left 4 Dead 2 Multiplayer Server"
 aliases: ['/game-servers/left-4-dead-2-multiplayer-server-installation/','/applications/game-servers/left-4-dead-2-multiplayer-server-installation/']
 dedicated_cpu_link: true
+authors: ["Andrew Gottschling"]
 contributors: ["Andrew Gottschling"]
 ---
 

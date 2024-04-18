@@ -4,6 +4,7 @@ title: "Application (HTTP) vs Network (TCP) Load Balancers"
 description: 'Explore the differences between application-layer (HTTP) and transport-layer (TCP) load balancers. Learn how each functions, their key features, and when to choose one over the other.'
 keywords: ['load balancing protocols','http load balancing','tcp load balancing','application-layer load balancing','transport-layer load balancing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
 contributors: ["Linode"]
 published: 2024-01-16
 ---

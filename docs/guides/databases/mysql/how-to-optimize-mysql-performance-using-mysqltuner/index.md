@@ -13,6 +13,7 @@ external_resources:
  - '[MySQLTuner](https://github.com/major/MySQLTuner-perl)'
 dedicated_cpu_link: true
 tags: ["database","mysql"]
+authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 ---
 

@@ -10,6 +10,7 @@ external_resources:
 - '[Managing Jenkins Masters and Nodes](https://jenkins.io/doc/book/managing/)'
 - '[Managing Jenkins Plugins](https://jenkins.io/doc/book/managing/plugins/)'
 aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jenkins-with-one-click-apps/','/guides/how-to-deploy-jenkins-with-one-click-apps/','/guides/how-to-deploy-jenkins-with-marketplace-apps/','/guides/jenkins-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

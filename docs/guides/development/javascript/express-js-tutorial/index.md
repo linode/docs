@@ -14,6 +14,7 @@ external_resources:
 - '[Express JS middleware functions guide](https://expressjs.com/en/guide/writing-middleware.html)'
 - '[MVC design pattern](https://github.com/expressjs/express/tree/master/examples/mvc)'
 
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

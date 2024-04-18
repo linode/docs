@@ -8,6 +8,7 @@ title: "Deploy Splunk through the Linode Marketplace"
 aliases: ['/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
 external_resources:
 - '[Splunk](http://splunk.com/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

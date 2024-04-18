@@ -18,6 +18,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/wordpress/how-to-install-wordpress-using-wp-cli-on-debian-10/','/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

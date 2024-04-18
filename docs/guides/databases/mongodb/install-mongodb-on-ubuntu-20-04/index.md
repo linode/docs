@@ -18,6 +18,7 @@ relations:
         key: how-to-install-mongodb
         keywords:
            - distribution: Ubuntu 20.04
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

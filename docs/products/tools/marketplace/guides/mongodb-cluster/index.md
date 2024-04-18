@@ -9,6 +9,7 @@ external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

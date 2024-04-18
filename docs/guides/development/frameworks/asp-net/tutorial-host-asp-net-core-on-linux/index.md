@@ -11,6 +11,7 @@ image: ASPNET.jpg
 external_resources:
 - '[Tutorial: Get Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)'
 - '[Microsofts ASP.NET Core Recommended Learning Path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

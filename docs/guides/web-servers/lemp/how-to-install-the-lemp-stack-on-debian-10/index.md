@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/lemp/how-to-install-the-lemp-stack-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

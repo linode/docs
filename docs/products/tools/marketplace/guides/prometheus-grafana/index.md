@@ -9,6 +9,7 @@ external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'
 aliases: ['/products/tools/marketplace/guides/prometheusgrafana']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

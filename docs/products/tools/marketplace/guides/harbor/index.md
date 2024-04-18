@@ -8,6 +8,7 @@ title: "Deploy Harbor through the Linode Marketplace"
 external_resources:
 - '[Harbor](https://goharbor.io/)'
 aliases: ['/guides/deploying-harbor-marketplace-app/','/guides/harbor-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

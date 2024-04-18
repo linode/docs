@@ -12,6 +12,7 @@ external_resources:
 - '[nftables](https://netfilter.org/projects/nftables/)'
 - '[nftables Address Families](https://wiki.nftables.org/wiki-nftables/index.php/Nftables_families)'
 - '[Configuring Chains in nftables](https://wiki.nftables.org/wiki-nftables/index.php/Configuring_chains)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

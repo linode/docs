@@ -8,6 +8,7 @@ image: enable-tpa-hero.png
 title: "Enable Third Party Authentication on Your User Account"
 title_meta: "Enable Third Party Authentication on Your Linode User Account"
 aliases: ['/platform/manager/third-party-authentication/','/guides/third-party-authentication/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

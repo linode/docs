@@ -10,6 +10,7 @@ _build:
 external_resources:
 - '[FRRouting Documentation](http://docs.frrouting.org/en/latest/overview.html)'
 aliases: ['/platform/manager/manually-enable-elastic-ip-on-your-linode/','/guides/manually-enable-elastic-ip-on-your-linode/','/guides/ip-sharing-atlanta/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

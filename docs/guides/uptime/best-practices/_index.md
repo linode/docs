@@ -6,6 +6,7 @@ published: 2020-08-31
 title: Uptime Best Practices
 show_in_lists: true
 aliases: ['/uptime/best-practices/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

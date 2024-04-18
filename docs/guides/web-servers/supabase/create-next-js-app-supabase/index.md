@@ -10,6 +10,7 @@ external_resources:
 - '[Supabase: Quickstart - Next.js](https://supabase.com/docs/guides/with-nextjs)'
 - '[freeCodeCamp: Full Stack Development with Next.js and Supabase – The Complete Guide](https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/)'
 - '[LogRocket: Build a Full-stack App with Next.js and Supabase](https://blog.logrocket.com/build-full-stack-app-next-js-supabase/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

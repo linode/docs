@@ -12,6 +12,7 @@ external_resources:
  - '[Subversion Project Homepage](http://subversion.tigris.org/)'
  - '[The Subversion Book from O''Reilly](http://svnbook.red-bean.com/)'
 tags: ["version control system"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

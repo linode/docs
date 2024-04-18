@@ -14,6 +14,7 @@ external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

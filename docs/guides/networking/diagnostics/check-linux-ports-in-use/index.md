@@ -8,6 +8,7 @@ modified: 2022-01-14
 tags: ["networking","linux"]
 title: "Checking Open and Listening Ports on Linux Using netstat and ss"
 title_meta: "Check Open and Listening Ports on Linux Using netstat and ss"
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

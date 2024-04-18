@@ -9,6 +9,7 @@ modified: 2022-12-14
 image: cd-presentation-header.png
 tags: ["kubernetes", "lke", "media"]
 aliases: ['/guides/lke-continuous-deployment-series/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

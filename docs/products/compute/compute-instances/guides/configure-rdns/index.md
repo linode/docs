@@ -8,6 +8,7 @@ title: "Configure rDNS (Reverse DNS) on a Compute Instance"
 title_meta: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
 image: configure-your-linode-reverse-dns.jpg
 aliases: ['/networking/configure-your-linode-for-reverse-dns/','/networking/dns/setting-reverse-dns/','/networking/dns/configure-your-linode-for-reverse-dns/','/networking/setting-up-reverse-dns-lookup/','/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/','/guides/configure-your-linode-for-reverse-dns/','/guides/configure-rdns/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

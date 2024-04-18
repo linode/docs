@@ -10,6 +10,7 @@ title_meta: "How to Mount a File System on Linux"
 external_resources:
 - '[An introduction to Linux filesystems](https://opensource.com/life/16/10/introduction-linux-filesystems)'
 - '[RHEL 8: Chapter 28. Mounting file systems](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/assembly_mounting-file-systems_managing-file-systems)'
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

@@ -13,6 +13,7 @@ external_resources:
 - '[Handlebars language guide](https://handlebarsjs.com/guide/)'
 - '[Rusts learning page](https://www.rust-lang.org/learn)'
 
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

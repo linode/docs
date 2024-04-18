@@ -9,6 +9,7 @@ image: feature.png
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'
 aliases: ['/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/', '/guides/deploy-lemp-stack-with-one-click-apps/','/guides/deploy-lemp-stack-with-marketplace-apps/','/guides/lemp-stack-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

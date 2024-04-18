@@ -8,6 +8,7 @@ title: "Deploy Cloudron through the Linode Marketplace"
 external_resources:
 - '[Cloudron Documentation](https://docs.cloudron.io)'
 aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cloudron-with-one-click-apps/','/guides/how-to-deploy-cloudron-with-one-click-apps/','/guides/deploy-cloudron-with-marketplace-apps/','/guides/cloudron-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

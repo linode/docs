@@ -12,6 +12,7 @@ external_resources:
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
 - '[Express.js Documentation Page](https://expressjs.com/)'
 
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

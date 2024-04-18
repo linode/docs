@@ -8,6 +8,7 @@ title: "Using Views in a MySQL Database"
 title_meta: "How to Use Views in a MySQL Database"
 external_resources:
 - '[MySQL - Using Views](https://dev.mysql.com/doc/refman/8.0/en/views.html)'
+authors: ["Francis Ndungu"]
 contributors: ["Francis Ndungu"]
 ---
 

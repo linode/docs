@@ -12,6 +12,7 @@ external_resources:
 - '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'
 tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/vpn-firewall-killswitch-for-linux-and-macos-clients/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

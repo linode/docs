@@ -5,6 +5,7 @@ keywords: ['networking','troubleshooting','ipv4','ipv6']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-09
 title: "Troubleshooting Network Issues - IPv4 and IPv6"
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

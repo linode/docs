@@ -14,6 +14,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

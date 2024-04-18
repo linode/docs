@@ -11,6 +11,7 @@ external_resources:
 - '[Working with MySQL stored procedures](https://dev.mysql.com/doc/connector-net/en/connector-net-tutorials-stored-procedures.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/how-to-create-and-use-mysql-stored-procedures/']
+authors: ["Francis Ndungu"]
 contributors: ["Francis Ndungu"]
 ---
 

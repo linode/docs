@@ -10,6 +10,7 @@ title_meta: "How to Use chroot for Testing on Ubuntu"
 external_resources:
 - '[Ubuntu Man Pages: schroot](https://manpages.ubuntu.com/manpages/focal/man1/schroot.1.html)'
 - '[Debian Wiki: schroot](https://wiki.debian.org/Schroot)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

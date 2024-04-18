@@ -12,6 +12,7 @@ external_resources:
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/','/guides/how-to-back-up-your-postgresql-database/']
 image: back-up-postgresql-database-title.jpg
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

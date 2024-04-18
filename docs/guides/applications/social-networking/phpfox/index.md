@@ -8,6 +8,7 @@ modified: 2013-10-04
 published: 2011-01-31
 title: phpFox
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

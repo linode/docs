@@ -9,6 +9,7 @@ modified: 2021-08-16
 published: 2012-03-13
 title: Hosting a Website on Ubuntu 18.04
 title_meta: How to Host a Website on Ubuntu 18.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

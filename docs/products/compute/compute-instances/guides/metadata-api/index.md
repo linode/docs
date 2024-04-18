@@ -2,6 +2,7 @@
 title: "How to Use the Metadata Service API"
 description: 'This guide provides a reference for using the Metadata service API directly.'
 keywords: ['cloud-init','api','metadata']
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2024-01-03
 ---

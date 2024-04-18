@@ -10,6 +10,7 @@ external_resources:
 - '[Ubuntu 22.04 Man page for the ip command](https://manpages.ubuntu.com/manpages/jammy/man8/ip.8.html)'
 - '[Internet Protocol Wikipedia page](https://en.wikipedia.org/wiki/Internet_Protocol)'
 - '[iproute2 Wikipedia page](https://en.wikipedia.org/wiki/Iproute2)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

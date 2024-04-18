@@ -11,6 +11,7 @@ external_resources:
 - '[Ember Guides: Introduction](https://guides.emberjs.com/release/tutorial/part-1/)'
 - '[MDN Web Docs: Getting Started with Ember](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Ember_getting_started)'
 - '[Tutorials Point: EmberJS Tutorial](https://www.tutorialspoint.com/emberjs/index.htm)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

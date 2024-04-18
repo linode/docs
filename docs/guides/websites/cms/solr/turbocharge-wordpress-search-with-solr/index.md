@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-04-03
 title: 'Turbocharge Your WordPress Search Using Solr'
 aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/websites/cms/turbocharge-wordpress-search-with-solr/']
+authors: ["Karthik Shiraly"]
 contributors: ["Karthik Shiraly"]
 ---
 

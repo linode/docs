@@ -19,6 +19,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 19
+authors: ["James Stewart"]
 contributors: ["James Stewart"]
 ---
 

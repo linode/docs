@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Fedora 14
 tags: ["fedora","database","nosql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

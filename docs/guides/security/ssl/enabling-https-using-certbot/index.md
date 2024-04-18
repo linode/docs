@@ -8,6 +8,7 @@ published: 2021-07-01
 image: CERTBOT.jpg
 title: "Securing Web Traffic Using Certbot"
 title_meta: "Enabling HTTPS Using Certbot"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

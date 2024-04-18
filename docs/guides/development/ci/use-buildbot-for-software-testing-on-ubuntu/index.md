@@ -20,6 +20,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/ci/use-buildbot-for-software-testing-on-ubuntu/']
+authors: ["Tyler Langlois"]
 contributors: ["Tyler Langlois"]
 ---
 

@@ -9,6 +9,7 @@ published: 2016-12-13
 title: Configuring a Postfix Server to Send Email through Gmail or Google Workspace
 title_meta: How to Configure a Postfix Server to Send Email through Gmail
 aliases: ['/email/email-services/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/','/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/', '/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

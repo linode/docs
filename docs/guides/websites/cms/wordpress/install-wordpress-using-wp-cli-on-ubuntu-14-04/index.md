@@ -17,6 +17,7 @@ relations:
         key: how-to-install-wordpress-using-wp-cli
         keywords:
            - distribution: Ubuntu 14.04
+authors: ["Navjot Singh"]
 contributors: ["Navjot Singh"]
 ---
 

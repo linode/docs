@@ -17,6 +17,7 @@ relations:
         key: install-java
         keywords:
             - distribution: CentOS 7
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

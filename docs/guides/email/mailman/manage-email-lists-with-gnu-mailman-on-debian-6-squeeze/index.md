@@ -14,6 +14,7 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/development/java/how-to-install-openjdk-on-centos-8/']
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

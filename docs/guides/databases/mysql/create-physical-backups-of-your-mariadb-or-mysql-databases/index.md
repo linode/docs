@@ -11,6 +11,7 @@ external_resources:
  - '[Database Backup Methods; MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/backup-methods.html)'
 tags: ["mariadb","database","mysql"]
 aliases: ['/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: FreeBSD
 aliases: ['/tools-reference/custom-kernels-distros/install-freebsd-on-linode/']
+authors: ["Rainbow"]
 contributors: ["Rainbow"]
 ---
 

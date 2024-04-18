@@ -14,6 +14,7 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

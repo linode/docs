@@ -12,6 +12,7 @@ image: troubleshooting-common-apache-issues.jpg
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

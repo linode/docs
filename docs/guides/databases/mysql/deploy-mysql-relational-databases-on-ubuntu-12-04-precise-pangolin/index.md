@@ -14,6 +14,7 @@ external_resources:
     - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
     - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 tags: ["ubuntu","database","mysql"]
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

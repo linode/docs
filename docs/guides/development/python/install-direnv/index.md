@@ -10,6 +10,7 @@ published: 2018-06-12
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/python/install-direnv/']
+authors: ["Leslie Salazar"]
 contributors: ["Leslie Salazar"]
 ---
 <!-- Start direnv shortguide. -->

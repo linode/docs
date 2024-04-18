@@ -11,6 +11,7 @@ title: DokuWiki Engine
 external_resources:
  - '[The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)'
  - '[Doku Wiki Manual](http://www.dokuwiki.org/manual)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

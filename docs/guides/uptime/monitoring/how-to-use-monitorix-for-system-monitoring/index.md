@@ -8,6 +8,7 @@ published: 2021-02-19
 image: UseMonitorix_sysmon.png
 title: "Using Monitorix for System Monitoring"
 title_meta: "How to Use Monitorix for System Monitoring"
+authors: ["Steven J. Vaughan-Nichols"]
 contributors: ["Steven J. Vaughan-Nichols"]
 ---
 

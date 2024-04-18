@@ -11,6 +11,7 @@ external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
 - '[Redis: Command Reference - Hashes](https://redis.io/commands#hash)'
 - '[Redis in Action: Hashes in Redis](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/1-2-4-hashes-in-redis/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---

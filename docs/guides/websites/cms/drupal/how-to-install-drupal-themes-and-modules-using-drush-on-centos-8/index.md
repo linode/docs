@@ -19,6 +19,7 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

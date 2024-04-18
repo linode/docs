@@ -5,6 +5,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: PostgreSQL
 show_in_lists: true
 aliases: ['/databases/postgresql/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

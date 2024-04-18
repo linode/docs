@@ -6,6 +6,7 @@ published: 2023-01-23
 title: "Deploy ONLYOFFICE Docs through the Linode Marketplace"
 external_resources:
 - '[ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

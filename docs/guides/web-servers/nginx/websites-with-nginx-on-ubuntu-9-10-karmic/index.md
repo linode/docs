@@ -14,6 +14,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

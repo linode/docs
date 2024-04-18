@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/lemp/how-to-install-the-lemp-stack-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

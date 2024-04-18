@@ -12,6 +12,7 @@ external_resources:
  - '[Understanding the Traceroute Command - Cisco Systems](http://www.cisco.com/en/US/products/sw/iosswrel/ps1831/products_tech_note09186a00800a6057.shtml#traceroute)'
  - '[Wikipedia article on traceroute](http://en.wikipedia.org/wiki/Trace_route)'
  - '[Traceroute by Exit109.com](http://www.exit109.com/~jeremy/news/providers/traceroute.html)'
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

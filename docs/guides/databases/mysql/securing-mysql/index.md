@@ -10,6 +10,7 @@ title: 'Securing MySQL Server'
 title_meta: 'How to Secure MySQL Server'
 published: 2021-03-26
 image: SecureMySQLserver.png
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 tags: ["saas"]
 ---

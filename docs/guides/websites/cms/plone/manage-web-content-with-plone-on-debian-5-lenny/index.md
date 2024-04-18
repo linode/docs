@@ -9,6 +9,7 @@ aliases: ['/web-applications/cms-guides/plone/','/websites/cms/plone/manage-web-
 modified: 2011-06-03
 published: 2010-01-29
 title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

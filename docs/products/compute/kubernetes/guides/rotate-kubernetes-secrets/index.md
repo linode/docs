@@ -2,6 +2,7 @@
 slug: rotate-kubernetes-secrets
 title: "Rotate Kubernetes Secrets"
 published: 2023-12-10
+authors: ["Linode"]
 contributors: ["Linode"]
 description: "Learn how to secure your cluster by rotating Kubernetes secrets."
 keywords: ["kubernetes", "linode kubernetes engine", "lke", "cluster", "cluster security", "secret", "secrets", "token", "tokens"]

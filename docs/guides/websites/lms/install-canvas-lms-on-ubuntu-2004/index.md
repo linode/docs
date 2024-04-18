@@ -22,6 +22,7 @@ relations:
         key: how-to-install-canvas
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

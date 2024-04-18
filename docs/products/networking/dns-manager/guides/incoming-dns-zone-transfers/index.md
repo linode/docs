@@ -5,6 +5,7 @@ modified: 2022-11-08
 title: "Incoming DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

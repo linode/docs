@@ -10,6 +10,7 @@ title_meta: "How to Install and configure MySQL on Ubuntu 20.04"
 external_resources:
 - '[MariaDB website](https://mariadb.com/)'
 - '[MySQL website](https://www.mysql.com/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

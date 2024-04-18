@@ -4,6 +4,7 @@ description: "Learn how to automate server provisioning on the Linode platform t
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
 modified: 2024-02-14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

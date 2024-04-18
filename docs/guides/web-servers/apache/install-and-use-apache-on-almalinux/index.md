@@ -14,6 +14,7 @@ external_resources:
 - '[AlmaLinux Wiki](https://wiki.almalinux.org/#about)'
 - '[AlmaLinux Forum](https://almalinux.discourse.group/)'
 - '[AlmaLinux GitHub Page](https://github.com/AlmaLinux)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

@@ -12,6 +12,7 @@ title: Linux Users and Groups
 external_resources:
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

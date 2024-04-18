@@ -18,6 +18,7 @@ relations:
         key: how-to-install-drush
         keywords:
            - distribution: Debian 10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

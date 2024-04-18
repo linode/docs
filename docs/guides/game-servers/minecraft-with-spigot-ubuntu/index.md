@@ -12,6 +12,7 @@ title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
 title_meta: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
 dedicated_cpu_link: true
 image: spigot-minecraft-ubuntu-title.jpg
+authors: ["Sam Mauldin"]
 contributors: ["Sam Mauldin"]
 ---
 

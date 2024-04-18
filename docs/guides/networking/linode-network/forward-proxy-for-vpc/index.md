@@ -4,6 +4,7 @@ title: "Configure a Forward Proxy to Enable Internet Access within a VPC"
 description: "This guide explains how to use a forward proxy to securely enable public internet access on Compute Instances located entirely behind a VPC."
 keywords: ['forward proxy vpc','configure forward proxy firewall','access internet from vpc','how to use forward proxy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jeff Novotny", "Matt Wildman"]
 contributors: ["Jeff Novotny", "Matt Wildman"]
 published: 2024-02-14
 ---

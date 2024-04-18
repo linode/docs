@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["web server","nginx"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

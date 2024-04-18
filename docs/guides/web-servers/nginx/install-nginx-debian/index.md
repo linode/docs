@@ -13,6 +13,7 @@ relations:
             - distribution: Debian 9
 tags: ["web server","nginx"]
 aliases: ['/web-servers/nginx/install-nginx-debian/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

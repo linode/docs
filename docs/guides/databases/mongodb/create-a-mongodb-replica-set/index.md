@@ -12,6 +12,7 @@ external_resources:
  - '[Geographically Distributed Replica Sets](https://docs.mongodb.com/manual/tutorial/deploy-geographically-distributed-replica-set/)'
 tags: ["ubuntu","database","nosql","centos"]
 aliases: ['/databases/mongodb/create-a-mongodb-replica-set/','/databases/mongodb/creating-a-mongodb-replication-set-on-centos-7/','/guides/creating-a-mongodb-replication-set-on-centos-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-16-04/','/guides/creating-a-mongodb-replication-set-on-ubuntu-16-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

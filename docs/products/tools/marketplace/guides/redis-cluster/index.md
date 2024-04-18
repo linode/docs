@@ -7,6 +7,7 @@ tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -15,6 +15,7 @@ external_resources:
 - '[SaltStack Salt Formulas Documentation](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[GitHub Developer - Webhooks](https://developer.github.com/webhooks/)'
 aliases: ['/applications/configuration-management/salt/automate-a-static-site-deployment-with-salt/','/applications/configuration-management/automate-a-static-site-deployment-with-salt/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

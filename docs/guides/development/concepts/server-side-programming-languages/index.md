@@ -5,6 +5,7 @@ title_meta: "Guide to the Best Server Side Scripting Languages"
 description: 'Which server side programming languages should you learn? Read our guide for the best server side languages.'
 keywords: ['server side programming languages','server side scripting languages','server side development','server side coding','best front end languages','best server side language','server side frameworks','most popular server side languages','server side web applications','server side web frameworks']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2023-05-02
 external_resources:

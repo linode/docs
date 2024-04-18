@@ -10,6 +10,7 @@ title: 'Add a Custom Search to your Site with Solr'
 external_resources:
   - '[Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/)'
 aliases: ['/websites/cms/solr/add-a-custom-search-to-your-site-with-solr/','/websites/cms/add-a-custom-search-to-your-site-with-solr/']
+authors: ["Andrew Lescher"]
 contributors: ["Andrew Lescher"]
 ---
 

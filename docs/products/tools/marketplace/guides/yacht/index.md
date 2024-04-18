@@ -9,6 +9,7 @@ title: "Deploy Yacht through the Linode Marketplace"
 aliases: ['/guides/deploy-yacht-with-marketplace-apps/','/guides/yacht-marketplace-app/']
 external_resources:
 - '[Getting Started](https://yacht.sh/docs/Installation/Getting_Started)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

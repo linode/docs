@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 title: "Install PyTorch on Ubuntu 20.04"
 title_meta: "How to Install PyTorch on Ubuntu 20.04"
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

@@ -8,6 +8,7 @@ aliases: ['/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysq
 modified: 2014-03-24
 published: 2013-07-22
 title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

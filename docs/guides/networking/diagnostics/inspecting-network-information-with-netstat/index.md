@@ -9,6 +9,7 @@ title: 'Inspecting Network Information with netstat'
 external_resources:
   - '[netstat](http://netstat.net/)'
 aliases: ['/networking/diagnostics/inspecting-network-connections-with-netstat/','/networking/diagnostics/inspecting-network-information-with-netstat/']
+authors: ["Mihalis Tsoukalos"]
 contributors: ["Mihalis Tsoukalos"]
 ---
 

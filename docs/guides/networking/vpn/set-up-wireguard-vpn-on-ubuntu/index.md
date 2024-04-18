@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-ubuntu/']
+authors: ["Sunit Nandi"]
 contributors: ["Sunit Nandi"]
 ---
 

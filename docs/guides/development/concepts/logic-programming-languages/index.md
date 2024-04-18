@@ -12,6 +12,7 @@ external_resources:
 - '[Prolog Wikipedia page](https://en.wikipedia.org/wiki/Prolog)'
 - '[Logic Programming Wikipedia page](https://en.wikipedia.org/wiki/Logic_programming)'
 - '[GNU Prolog page](http://www.gprolog.org/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

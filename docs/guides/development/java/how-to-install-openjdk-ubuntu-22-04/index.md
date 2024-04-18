@@ -12,6 +12,7 @@ external_resources:
 - '[OpenJDK Development Guide](https://openjdk.java.net/guide/)'
 - '[Java development site](https://dev.java/)'
 - '[OpenJDK GA Release Archive](https://jdk.java.net/archive/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

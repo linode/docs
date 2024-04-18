@@ -11,6 +11,7 @@ external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/configure-postgresql/']
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 tags: ["saas"]
 ---

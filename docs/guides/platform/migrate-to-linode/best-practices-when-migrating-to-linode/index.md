@@ -8,6 +8,7 @@ published: 2018-07-31
 title: Best Practices when Migrating to Linode
 tags: ["linode platform"]
 aliases: ['/platform/migrate-to-linode/best-practices-when-migrating-to-linode/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

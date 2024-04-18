@@ -10,6 +10,7 @@ title_meta: "How to Transfer Files with SFTP"
 external_resources:
 - '[Wikipedia SFTP Page](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)'
 - '[IETF Draft for SSH File Transfer Protocol](https://datatracker.ietf.org/doc/html/draft-ietf-secsh-filexfer-13)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

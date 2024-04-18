@@ -24,6 +24,7 @@ external_resources:
 - '[VideoLAN support page](https://www.videolan.org/support/)'
 - '[list of all of its ingest points](https://stream.twitch.tv/ingests/)'
 - '[NGINX GitHub page](https://github.com/arut/nginx-rtmp-module)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

@@ -5,6 +5,7 @@ title_meta: "How to Install and Use NVM (Node Version Manager)"
 description: 'Learn to use NVM to install Node.js on your computer. This guide shows you how to install and use NVM and how to install the LTS version of Node.js.'
 keywords: ['nvm install node', 'nvm install lts', 'node version manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2021-01-12
 modified: 2023-11-29

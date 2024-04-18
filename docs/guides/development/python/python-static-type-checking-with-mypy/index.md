@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 title: "Use Mypy for Python Static Type Checking"
 title_meta: "Python Static Type Checking with Mypy"
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

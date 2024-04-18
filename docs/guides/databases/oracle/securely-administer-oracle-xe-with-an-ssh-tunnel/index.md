@@ -12,6 +12,7 @@ external_resources:
  - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
 tags: ["ssh","database"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

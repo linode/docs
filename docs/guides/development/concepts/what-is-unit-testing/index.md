@@ -8,6 +8,7 @@ published: 2021-02-11
 image: UnderstandingUnitTesting.png
 title: "Understanding Unit Testing"
 title_meta: "What is Unit Testing?"
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

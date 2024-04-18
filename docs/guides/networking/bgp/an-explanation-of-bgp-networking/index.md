@@ -10,6 +10,7 @@ external_resources:
 - '[BGP for IPv6 RFC 2545](https://www.rfc-editor.org/rfc/rfc2545.html)'
 - '[MBGP RFC 4760](https://www.rfc-editor.org/rfc/rfc4760)'
 - '[Wikipedia page for the Border Gateway Protocol](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

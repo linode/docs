@@ -6,6 +6,7 @@ published: 2022-03-29
 title: "Deploy Joomla through the Linode Marketplace"
 external_resources:
 - '[Joomla](https://www.joomla.org/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

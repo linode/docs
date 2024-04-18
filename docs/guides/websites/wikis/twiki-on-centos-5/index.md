@@ -14,6 +14,7 @@ relations:
         key: install-twiki
         keywords:
            - distribution: CentOS 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

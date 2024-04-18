@@ -14,6 +14,7 @@ relations:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

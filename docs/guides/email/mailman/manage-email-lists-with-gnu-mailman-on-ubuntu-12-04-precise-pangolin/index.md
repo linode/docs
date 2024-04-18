@@ -14,6 +14,7 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

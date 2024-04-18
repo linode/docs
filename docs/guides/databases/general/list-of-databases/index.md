@@ -5,6 +5,7 @@ description: "Searching for a list of the most popular databases? Our article co
 keywords: ['database',database lists'','best database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

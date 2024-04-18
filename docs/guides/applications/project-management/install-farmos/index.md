@@ -8,6 +8,7 @@ published: 2017-09-09
 modified: 2021-06-22
 title: 'How to Install farmOS - a Farm Recordkeeping Application'
 aliases: ['/applications/project-management/install-farmos/']
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

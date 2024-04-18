@@ -6,6 +6,7 @@ published: 2020-09-01
 title: Plone
 show_in_lists: true
 aliases: ['/websites/cms/plone/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

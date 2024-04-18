@@ -14,6 +14,7 @@ relations:
         key:  mantis-bug-tracker
         keywords:
             - distribution: Debian 5
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

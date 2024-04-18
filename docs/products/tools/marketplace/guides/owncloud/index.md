@@ -6,6 +6,7 @@ keywords: ['owncloud','filesharing','collaboration']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[ownCloud](https://owncloud.com/)'
+authors: ["Holden Morris"]
 contributors: ["Holden Morris"]
 ---
 

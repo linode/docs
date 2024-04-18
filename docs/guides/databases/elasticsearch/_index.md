@@ -5,6 +5,7 @@ description: 'Learn how to use, install, configure and perform tasks on database
 Keywords: 'elasticsearch,what is elasticsearch,install elasticsearch'
 title: Elasticsearch Guides, Tutorials, and Resources – Linode
 aliases: ['/databases/elasticsearch/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

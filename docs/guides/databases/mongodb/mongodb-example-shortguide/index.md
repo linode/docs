@@ -10,6 +10,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["database"]
 aliases: ['/databases/mongodb/mongodb-example-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

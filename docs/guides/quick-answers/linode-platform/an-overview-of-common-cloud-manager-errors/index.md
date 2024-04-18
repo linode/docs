@@ -9,6 +9,7 @@ image: L_UnderstandCommonClManErrors.png
 title: "Understanding Common Cloud Manager Errors"
 title_meta: "An Overview of Common Cloud Manager Errors"
 tags: ["linode platform","cloud manager"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

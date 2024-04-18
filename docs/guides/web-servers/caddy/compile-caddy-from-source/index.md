@@ -10,6 +10,7 @@ external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
 tags: ["web server"]
 aliases: ['/web-servers/caddy/compile-caddy-from-source/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

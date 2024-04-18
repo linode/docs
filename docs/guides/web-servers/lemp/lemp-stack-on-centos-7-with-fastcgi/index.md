@@ -9,6 +9,7 @@ modified: 2021-12-29
 published: 2014-12-11
 title: "Install a LEMP Stack on CentOS 7"
 image: lemp-on-centos-7-title-graphic.jpg
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

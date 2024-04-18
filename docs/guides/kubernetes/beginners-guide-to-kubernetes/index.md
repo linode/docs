@@ -11,6 +11,7 @@ concentrations: ["Kubernetes", "container"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

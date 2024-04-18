@@ -14,6 +14,7 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

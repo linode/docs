@@ -17,6 +17,7 @@ tags: ["debian","mariadb","database"]
 _build:
   list: false
 noindex: true
+authors: ["Nashruddin Amin"]
 contributors: ["Nashruddin Amin"]
 ---
 

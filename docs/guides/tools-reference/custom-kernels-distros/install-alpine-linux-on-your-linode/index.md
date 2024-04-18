@@ -16,6 +16,7 @@ relations:
         keywords:
             - distribution: Alpine
 aliases: ['/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/']
+authors: ["Andrew Leap"]
 contributors: ["Andrew Leap"]
 ---
 

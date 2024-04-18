@@ -18,6 +18,7 @@ relations:
         keywords:
            - distribution: CentOS 7
 aliases: ['/websites/cms/wordpress/how-to-install-wordpress-using-wp-cli-on-centos-7/','/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-centos-7/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -7,6 +7,7 @@ tags: ["networking","linode platform"]
 external_resources:
   - '[NetworkManager documentation](https://networkmanager.dev/docs/api/latest/NetworkManager.conf.html)'
 aliases: ['/guides/networkmanager/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

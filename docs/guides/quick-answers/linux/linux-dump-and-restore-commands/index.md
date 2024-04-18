@@ -4,6 +4,7 @@ title: "Quick Guide to the Linux Dump and Restore Commands"
 description: 'This guide gives an overview of the "dump" and "restore" commands in Linux. It covers their basic functionalities, usage, and options, including dump levels, compression, and debug/verbose modes.'
 keywords: ['install dump', 'dump levels', 'dump targets', 'perform full backup', 'compress backup', 'restore backup']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2023-05-02
 external_resources:

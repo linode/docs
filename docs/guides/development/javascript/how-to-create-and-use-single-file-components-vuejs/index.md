@@ -14,6 +14,7 @@ audiences: ["beginner"]
 languages: ["javascript"]
 tags: ["web applications"]
 aliases: ['/development/javascript/how-to-create-and-use-single-file-components-vuejs/']
+authors: ["Pavel Petrov"]
 contributors: ["Pavel Petrov"]
 ---
 

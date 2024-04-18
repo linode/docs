@@ -7,6 +7,7 @@ published: 2020-07-15
 title: Configuration Management Basics
 show_in_lists: true
 aliases: ['/applications/configuration-management/basics/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

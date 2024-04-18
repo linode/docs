@@ -9,6 +9,7 @@ keywords: ["monitoring"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/uptime/monitoring-configure-email-alerts-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

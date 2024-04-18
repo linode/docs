@@ -8,6 +8,7 @@ modified: 2019-01-28
 published: 2017-09-14
 title: Using Your System's hosts File
 aliases: ['/networking/dns/using-your-systems-hosts-file/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -6,6 +6,7 @@ published: 2023-01-23
 title: "Deploy Superinsight DB through the Linode Marketplace"
 external_resources:
 - '[Superinsight DB](https://github.com/superinsight/superinsight-db)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

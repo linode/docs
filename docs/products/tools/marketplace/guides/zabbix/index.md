@@ -11,6 +11,7 @@ external_resources:
 - '[Purchase Technical Support contract](https://www.zabbix.com/support)'
 - '[Zabbix official Forum](https://www.zabbix.com/forum)'
 aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platform/one-click/deploy-zabbix-with-marketplace-apps/', '/guides/deploy-zabbix-with-marketplace-apps/','/guides/zabbix-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

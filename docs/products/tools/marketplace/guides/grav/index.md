@@ -8,6 +8,7 @@ title: "Deploy Grav through the Linode Marketplace"
 external_resources:
 - '[Grav](https://getgrav.org/)'
 aliases: ['/guides/grav-marketplace-app/']
+authors: ["Holden Morris"]
 contributors: ["Holden Morris"]
 ---
 

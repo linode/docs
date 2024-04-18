@@ -19,6 +19,7 @@ external_resources:
 - '[NumPy](https://numpy.org/)'
 - '[SciPy](https://scipy.org/)'
 - '[Python licensing site](https://docs.python.org/3/license.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

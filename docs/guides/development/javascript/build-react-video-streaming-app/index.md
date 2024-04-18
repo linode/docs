@@ -13,6 +13,7 @@ external_resources:
 - '[Adding captions and subtitles to HTML5 video](https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video)'
 tags: ["web applications"]
 aliases: ['/development/javascript/build-react-video-streaming-app/']
+authors: ["Deven Rathore"]
 contributors: ["Deven Rathore"]
 ---
 

@@ -9,6 +9,7 @@ aliases: ['/linux-tools/rdiff-backup/','/security/backups/using-rdiff-backup-wit
 modified: 2017-11-29
 published: 2009-09-14
 title: Using rdiff-backup with SSHFS
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

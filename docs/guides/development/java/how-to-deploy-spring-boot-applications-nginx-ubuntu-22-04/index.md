@@ -22,6 +22,7 @@ relations:
         key: spring-boot-nginx
         keywords:
            - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

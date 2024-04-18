@@ -2,6 +2,7 @@
 title: "Backend Nodes (Compute Instances)"
 description: "Instructions for adding and configuring backend nodes on a NodeBalancer"
 published: 2022-10-07
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

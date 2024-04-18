@@ -11,6 +11,7 @@ external_resources:
 - '[freeCodeCamp: How to Build a TodoApp Using ReactJS, NextJS, and Supabase](https://www.freecodecamp.org/news/how-to-build-a-todoapp-using-react-and-supabase/)'
 - '[Adeva: The Complete Tutorial to Building a CRUD App with React.js and Supabase](https://adevait.com/react/building-crud-app-with-react-js-supabase)'
 - '[GitHub: tmm/react-supabase](https://github.com/tmm/react-supabase)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 tags: ["digital agencies"]
 ---

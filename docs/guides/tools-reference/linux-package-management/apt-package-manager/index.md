@@ -10,6 +10,7 @@ modified: 2022-01-31
 title: "Using APT to Manage Packages in Debian and Ubuntu"
 title_meta: "How to Use APT to Manage Packages in Debian and Ubuntu"
 aliases: ['/guides/using-apt-package-manager/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

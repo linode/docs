@@ -13,6 +13,7 @@ external_resources:
 - '[Kubernetes Terraform installer for Linode Instances](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)'
 aliases: ['/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/']
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

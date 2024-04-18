@@ -9,6 +9,7 @@ title_meta: "How to Transfer Files With the scp Command on Linux"
 external_resources:
 - '[Ubuntu man page for scp](http://manpages.ubuntu.com/manpages/focal/man1/scp.1.html)'
 - '[TFTP RFC 1350](https://datatracker.ietf.org/doc/html/rfc1350)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

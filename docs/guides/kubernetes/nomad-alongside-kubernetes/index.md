@@ -8,6 +8,7 @@ title: "How to Use Nomad Alongside Kubernetes"
 external_resources:
 - '[HashiCorp Developer: Nomad - Supplement to Kubernetes](https://developer.hashicorp.com/nomad/docs/nomad-vs-kubernetes/supplement)'
 - '[GitHub: kelseyhightower/nomad-on-kubernetes - Tutorial on Running Nomad on Kubernetes](https://github.com/kelseyhightower/nomad-on-kubernetes)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

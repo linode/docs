@@ -11,6 +11,7 @@ modified: 2023-07-26
 title: "Setting Up a Private Docker Registry with LKE and Object Storage"
 title_meta: "How to Set Up a Docker Registry with LKE and Object Storage"
 aliases: ['/kubernetes/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/']
+authors: ["Leslie Salazar"]
 contributors: ["Leslie Salazar"]
 ---
 

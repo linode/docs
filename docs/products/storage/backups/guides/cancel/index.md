@@ -1,6 +1,7 @@
 ---
 title: Cancel Backups
 description: "How to cancel the Linode Backup Service."
+authors: ["Linode"]
 contributors: ["Linode"]
 published: 2021-11-12
 ---

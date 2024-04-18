@@ -8,6 +8,7 @@ title: "Deploy OpenLiteSpeed Rails through the Linode Marketplace"
 external_resources:
 - '[OpenLiteSpeed Rails](https://docs.litespeedtech.com/cloud/images/rails/)'
 aliases: ['/guides/deploying-openlitespeed-rails-marketplace-app/','/guides/openlitespeed-rails-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

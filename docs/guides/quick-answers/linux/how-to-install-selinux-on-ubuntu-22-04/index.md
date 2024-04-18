@@ -12,6 +12,7 @@ relations:
     key: how-to-install-selinux
     keywords:
       - distribution: Ubuntu 22.04
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

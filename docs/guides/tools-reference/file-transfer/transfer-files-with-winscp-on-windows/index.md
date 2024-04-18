@@ -8,6 +8,7 @@ aliases: ['/networking/file-transfer/transfer-files-winscp/','/tools-reference/f
 modified: 2011-08-22
 published: 2009-10-19
 title: Transfer Files with WinSCP on Windows
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

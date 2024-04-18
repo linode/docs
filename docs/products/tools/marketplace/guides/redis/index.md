@@ -9,6 +9,7 @@ external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'
 aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/platform/one-click/how-to-deploy-redis-with-one-click-apps/','/guides/how-to-deploy-redis-with-one-click-apps/','/guides/how-to-deploy-redis-with-marketplace-apps/','/guides/redis-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

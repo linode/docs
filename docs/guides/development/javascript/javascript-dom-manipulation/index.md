@@ -9,6 +9,7 @@ title_meta: "Manipulating the DOM with JavaScript"
 external_resources:
 - '[MDN Web Docs: Manipulating Documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)'
 - '[MDN Web Docs: Document](https://developer.mozilla.org/en-US/docs/Web/API/Document)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

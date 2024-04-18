@@ -16,6 +16,7 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Tyler Langlois"]
 contributors: ["Tyler Langlois"]
 ---
 

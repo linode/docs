@@ -5,6 +5,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/','/applications/social-networking/']
 published: 2010-03-01
 title: Social Networking
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

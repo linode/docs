@@ -9,6 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-07-17
 published: 2017-06-08
 title: Use CoreOS Container Linux on Linode
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

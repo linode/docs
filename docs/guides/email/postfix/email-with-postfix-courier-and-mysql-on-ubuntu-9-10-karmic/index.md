@@ -14,6 +14,7 @@ relations:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

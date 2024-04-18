@@ -13,6 +13,7 @@ external_resources:
 audiences: ["beginner"]
 languages: ["go"]
 aliases: ['/development/go/getting-started-with-go-packages/']
+authors: ["Kamesh Balasubramanian"]
 contributors: ["Kamesh Balasubramanian"]
 ---
 

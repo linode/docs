@@ -17,6 +17,7 @@ relations:
         key: how-to-install-plex
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Nick Brewer"]
 contributors: ["Nick Brewer"]
 ---
 

@@ -20,6 +20,7 @@ relations:
         key: unicorn-nginx
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

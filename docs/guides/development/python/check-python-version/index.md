@@ -9,6 +9,7 @@ title_meta: "How to Check Which Python Version Is Installed"
 external_resources:
 - '[phoenixNAP: How to Check Python Version in Linux, Mac, & Windows](https://phoenixnap.com/kb/check-python-version)'
 - '[LearnPython: How to Check Your Python Version](https://learnpython.com/blog/check-python-version/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

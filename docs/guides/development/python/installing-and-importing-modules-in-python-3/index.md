@@ -10,6 +10,7 @@ title_meta: "How to Install and Import Modules in Python 3"
 external_resources:
 - '[Python Documentation on Modules](https://docs.python.org/3/tutorial/modules.html)'
 - '[List of Python Built-in Modules](https://docs.python.org/3/py-modindex.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

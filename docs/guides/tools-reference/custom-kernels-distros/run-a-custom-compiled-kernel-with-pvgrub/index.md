@@ -8,6 +8,7 @@ aliases: ['/custom-instances/pv-grub-custom-compiled-kernel/','/tools-reference/
 modified: 2020-12-01
 published: 2010-07-17
 title: 'Run a Custom Compiled Kernel with PV-GRUB'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

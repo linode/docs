@@ -9,6 +9,7 @@ title: "Install and Use the Node Package Manager (NPM) on Linux"
 external_resources:
 - '[NPM Docs](https://docs.npmjs.com/)'
 - '[NPM dependencies](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

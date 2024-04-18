@@ -11,6 +11,7 @@ external_resources:
  - '[SaltStack Documentation](https://docs.saltproject.io/)'
 aliases: ['/applications/configuration-management/beginners-guide-to-salt/','/applications/configuration-management/salt/beginners-guide-to-salt/']
 tags: ["automation","salt"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

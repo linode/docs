@@ -9,6 +9,7 @@ modified: 2018-12-27
 title: 'Install Node.js from NodeSource on Debian or Ubuntu'
 headless: true
 aliases: ['/development/nodejs/install-nodejs-nodesource/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 title: "An Overview of App Security Testing Tools"
 title_meta: "Getting Started with App Security Testing Tools "
+authors: ["David Strom"]
 contributors: ["David Strom"]
 ---
 

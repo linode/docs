@@ -9,6 +9,7 @@ title: "Deploy Plex Media Server through the Linode Marketplace"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
 aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/guides/plex-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

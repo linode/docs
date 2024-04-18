@@ -12,6 +12,7 @@ external_resources:
 - '[Redmine Users Guide](https://www.redmine.org/projects/redmine/wiki/Getting_Started)'
 - "[Andrew Hosch's Guide on Redmine](http://www.untrustedconnection.com/2016/04/redmine-passenger-and-nginx-on-ubuntu.html)"
 aliases: ['/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/']
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

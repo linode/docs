@@ -21,6 +21,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/citadel/email-with-citadel-on-ubuntu-14-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

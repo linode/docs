@@ -10,6 +10,7 @@ external_resources:
 - '[Supabase: Self Hosting](https://supabase.com/docs/guides/hosting/overview)'
 - '[Scott Pritchard: Self-hosting with Supabase](https://dev.to/chronsyn/self-hosting-with-supabase-1aii)'
 - '[HowtoForge: How to Install Supabase with Docker on Debian 11](https://www.howtoforge.com/how-to-install-supabase-on-debian-11/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

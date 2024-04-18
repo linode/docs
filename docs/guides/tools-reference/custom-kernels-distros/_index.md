@@ -6,6 +6,7 @@ aliases: ['/custom-instances/','/tools-reference/custom-kernels-distros/', '/adv
 published: 2009-07-16
 title: Custom Kernels and Distributions
 show_in_lists: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

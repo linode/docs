@@ -13,6 +13,7 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Mac
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

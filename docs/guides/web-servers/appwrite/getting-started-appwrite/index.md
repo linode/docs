@@ -9,6 +9,7 @@ title: "Getting Started with Appwrite as a Backend Server"
 external_resources:
 - '[Appwrite Docs: Installation](https://appwrite.io/docs/installation)'
 - '[Appwrite Docs: Getting Started for Web](https://appwrite.io/docs/getting-started-for-web)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

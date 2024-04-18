@@ -7,6 +7,7 @@ modified: 2023-04-18
 title: "Deploy LiveSwitch through the Linode Marketplace"
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
+authors: ["Holden Morris"]
 contributors: ["Holden Morris"]
 ---
 

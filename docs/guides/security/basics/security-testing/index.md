@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-29
 title: "Application Security Testing: Fundamentals and Best Practices"
 title_meta: "Application Security Testing Tools"
+authors: ["David Newman"]
 contributors: ["David Newman"]
 ---
 

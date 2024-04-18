@@ -10,6 +10,7 @@ image: HowtoConfigureWordpress.jpg
 title: "Best Practices for Configuring WordPress"
 external_resources:
 - '[WordPress Support: First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

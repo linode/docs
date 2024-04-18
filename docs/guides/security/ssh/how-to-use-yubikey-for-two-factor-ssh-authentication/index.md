@@ -11,6 +11,7 @@ published: 2017-08-28
 modified: 2018-02-26
 external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
+authors: ["Huw Evans"]
 contributors: ["Huw Evans"]
 ---
 

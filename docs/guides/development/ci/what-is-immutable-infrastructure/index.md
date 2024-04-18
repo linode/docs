@@ -9,6 +9,7 @@ title: "Immutable Infrastructure"
 audiences: ["intermediate"]
 tags: ["automation"]
 aliases: ['/development/ci/what-is-immutable-infrastructure/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

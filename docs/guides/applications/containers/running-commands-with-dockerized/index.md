@@ -5,6 +5,7 @@ description: "Dockerized packages together a set of useful command-line tools, a
 published: 2023-08-08
 keywords: ['docker run command', 'dockerized application', 'docker containerize command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

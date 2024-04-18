@@ -17,6 +17,7 @@ relations:
         key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

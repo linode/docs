@@ -13,6 +13,7 @@ external_resources:
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

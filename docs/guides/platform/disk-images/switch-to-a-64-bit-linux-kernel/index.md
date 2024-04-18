@@ -12,6 +12,7 @@ external_resources:
  - '[ArchWiki](https://wiki.archlinux.org/index.php/Migrating_between_architectures)'
  - '[AskUbuntu](http://askubuntu.com/questions/81824/how-can-i-switch-a-32-bit-installation-to-a-64-bit-one)'
 tags: ["linode platform"]
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

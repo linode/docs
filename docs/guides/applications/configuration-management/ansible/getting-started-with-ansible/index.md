@@ -13,6 +13,7 @@ external_resources:
  - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 tags: ["automation"]
+authors: ["Joshua Lyman"]
 contributors: ["Joshua Lyman"]
 ---
 

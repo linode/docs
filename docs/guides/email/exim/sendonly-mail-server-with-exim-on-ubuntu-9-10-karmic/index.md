@@ -14,6 +14,7 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -27,6 +27,7 @@ relations:
         key: use-postrgesql-database
         keywords:
             - distribution: CentOS 8
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

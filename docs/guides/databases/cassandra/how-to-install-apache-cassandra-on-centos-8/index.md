@@ -21,6 +21,7 @@ relations:
             - distribution: CentOS 8
 tags: ["centos","database","nosql"]
 aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

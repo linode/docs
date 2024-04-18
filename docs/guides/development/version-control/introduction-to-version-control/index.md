@@ -11,6 +11,7 @@ external_resources:
  - '[Version Control Systems](/docs/development/version-control/)'
 audiences: ["foundational"]
 tags: ["version control system"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

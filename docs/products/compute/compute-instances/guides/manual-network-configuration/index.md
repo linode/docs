@@ -5,6 +5,7 @@ published: 2023-09-05
 title: "Manual Network Configuration on a Compute Instance"
 tags: ["networking","linode platform"]
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/','/guides/linux-static-ip-configuration/','/guides/manual-network-configuration/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

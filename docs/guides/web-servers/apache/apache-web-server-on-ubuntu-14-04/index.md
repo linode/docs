@@ -17,6 +17,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -10,6 +10,7 @@ published: 2014-02-17
 title: Setting up an SSH Tunnel with Your Linode for Safe Browsing
 external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
+authors: ["Arnaldo Ariel Arrieta"]
 contributors: ["Arnaldo Ariel Arrieta"]
 ---
 

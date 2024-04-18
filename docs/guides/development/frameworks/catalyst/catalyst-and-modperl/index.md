@@ -9,6 +9,7 @@ modified: 2013-09-27
 published: 2010-01-29
 title: 'Catalyst and mod_perl'
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

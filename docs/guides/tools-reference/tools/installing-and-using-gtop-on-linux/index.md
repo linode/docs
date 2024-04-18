@@ -9,6 +9,7 @@ title: "Install and Use gtop on Linux"
 title_meta: "How to Install and Use gtop on Linux"
 external_resources:
 - '[gtop](https://github.com/aksakalli/gtop)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

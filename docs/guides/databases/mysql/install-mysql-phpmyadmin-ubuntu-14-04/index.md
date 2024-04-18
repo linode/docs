@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 tags: ["ubuntu","php","database","mysql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

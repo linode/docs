@@ -6,6 +6,7 @@ tags: ["linode platform","monitoring"]
 description: "Learn how to investigate an unexpected shutdown and understand how Lassie, the Shutdown Watchdog, works to reboot your Compute Instances."
 aliases: ['/products/tools/monitoring/guides/monitoring-configure-watchdog/','/guides/lassie-shutdown-watchdog/']
 published: 2022-09-29 Docs
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

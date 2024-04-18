@@ -8,6 +8,7 @@ title: "Deploy Wazuh through the Linode Marketplace"
 external_resources:
 - '[Wazuh](https://wazuh.com/)'
 aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

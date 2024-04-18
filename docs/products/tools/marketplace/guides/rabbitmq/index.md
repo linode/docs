@@ -8,6 +8,7 @@ title: "Deploy RabbitMQ through the Linode Marketplace"
 external_resources:
 - '[RabbitMQ](https://www.rabbitmq.com/)'
 aliases: ['/platform/marketplace/deploy-rabbitmq-with-marketplace-apps/', '/platform/marketplace/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-server-with-marketplace-apps/','/guides/deploy-rabbitmq-with-marketplace-apps/','/guides/rabbitmq-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

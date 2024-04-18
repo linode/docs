@@ -11,6 +11,7 @@ external_resources:
 - '[Vim Tips Wiki: How to Write a Plugin](https://vim.fandom.com/wiki/How_to_write_a_plugin)'
 - '[IBM Developer: Scripting the Vim Editor](https://developer.ibm.com/articles/l-vim-script-1/)'
 - '[Vim Reference Manual: The Python Interface to Vim](https://vimhelp.org/if_pyth.txt.html)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

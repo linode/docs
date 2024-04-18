@@ -7,6 +7,7 @@ modified: 2023-11-01
 bundles: ['troubleshooting']
 image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/','/guides/troubleshooting-firewalls/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

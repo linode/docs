@@ -19,6 +19,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 20
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

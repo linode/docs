@@ -24,6 +24,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

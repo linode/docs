@@ -20,6 +20,7 @@ relations:
         key: unicorn-nginx
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Vaibhav Rajput"]
 contributors: ["Vaibhav Rajput"]
 ---
 

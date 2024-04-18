@@ -15,6 +15,7 @@ relations:
             - distribution: Ubuntu 18.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-18-04/']
 image: upgrade-ubuntu-18-title.jpg
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

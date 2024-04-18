@@ -11,6 +11,7 @@ title_meta: "How to Comment in Python"
 external_resources:
 - '[Python Software Foundation](https://www.python.org/)'
 - '[Python Programming at Wikibooks](https://en.wikibooks.org/wiki/Python_Programming)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

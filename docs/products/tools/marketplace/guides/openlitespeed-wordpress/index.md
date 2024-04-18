@@ -10,6 +10,7 @@ external_resources:
 - '[OpenLiteSpeed Knowledge Base](https://openlitespeed.org/kb/)'
 - '[OpenLiteSpeed Forum](https://forum.openlitespeed.org/)'
 aliases: ['/platform/marketplace/deploy-openlitespeed-with-marketplace-apps/', '/platform/one-click/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-marketplace-apps/', '/guides/openlitespeed-marketplace-app/','/guides/openlitespeed-wordpress-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

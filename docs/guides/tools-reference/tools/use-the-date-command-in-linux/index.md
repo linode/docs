@@ -8,6 +8,7 @@ modified: 2017-08-21
 published: 2010-08-23
 title: How to Use the Date Command in Linux
 tags: ["linux"]
+authors: ["Christopher S. Aker"]
 contributors: ["Christopher S. Aker"]
 ---
 

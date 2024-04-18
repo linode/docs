@@ -10,6 +10,7 @@ title_meta: "How to Create a Website Using Laravel"
 external_resources:
 - '[Laravel](https://laravel.com/)'
 - '[Laravels documentation](https://laravel.com/docs/)]'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

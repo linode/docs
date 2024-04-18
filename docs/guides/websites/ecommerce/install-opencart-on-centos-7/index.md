@@ -17,6 +17,7 @@ relations:
         key: how-to-install-opencart
         keywords:
            - distribution: CentOS 7
+authors: ["Jonathan Chun"]
 contributors: ["Jonathan Chun"]
 ---
 

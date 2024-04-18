@@ -13,6 +13,7 @@ external_resources:
  - '[Arch Wiki](https://wiki.archlinux.org/index.php/wget)'
  - '[Gentoo](https://packages.gentoo.org/packages/net-misc/wget)'
 tags: ["linux"]
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

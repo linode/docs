@@ -9,6 +9,7 @@ title: "Deploy Pritunl through the Linode Marketplace"
 external_resources:
 - '[Pritunl](https://pritunl.com/)'
 aliases: ['/guides/deploying-pritunl-marketplace-app/','/guides/pritunl-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

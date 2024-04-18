@@ -8,6 +8,7 @@ modified: 2022-10-13
 published: 2022-10-13
 title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

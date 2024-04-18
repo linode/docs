@@ -14,6 +14,7 @@ external_resources:
  - '[MongoDB Documentation for Auto Sharding Configuration](https://docs.mongodb.com/manual/sharding/)'
  - '[Configure MongoDB for SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/)'
 tags: ["ubuntu","database","nosql","centos","gaming"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

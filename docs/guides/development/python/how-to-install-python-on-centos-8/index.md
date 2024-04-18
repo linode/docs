@@ -13,6 +13,7 @@ relations:
         key: how-to-install-python
         keywords:
             - distribution: CentOS 8
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

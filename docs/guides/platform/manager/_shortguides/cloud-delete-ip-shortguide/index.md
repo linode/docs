@@ -10,6 +10,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-delete-ip-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

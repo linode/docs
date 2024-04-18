@@ -10,6 +10,7 @@ external_resources:
 - '[Appsmith: Setup Appsmith](https://docs.appsmith.com/setup)'
 - '[The New Stack: Appsmith, an Open Source Low-code Framework to Build Internal Apps](https://thenewstack.io/appsmith-an-open-source-low-code-framework-to-build-internal-apps/)'
 - '[Anamika: How to Deploy Appsmith on Private Instance Using Docker](https://dev.to/noviicee/how-to-deploy-appsmith-on-private-instance-using-docker-eig)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

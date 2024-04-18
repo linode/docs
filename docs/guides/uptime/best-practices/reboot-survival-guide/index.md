@@ -8,6 +8,7 @@ published: 2015-02-27
 title: "Reboot Survival Guide: Recover After an Unexpected Shutdown"
 aliases: ['/uptime/reboot-survival-guide/','/uptime/best-practices/reboot-survival-guide/']
 image: reboot-survival-guide.png
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

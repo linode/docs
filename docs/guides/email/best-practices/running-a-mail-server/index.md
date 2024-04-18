@@ -9,6 +9,7 @@ modified: 2022-12-23
 title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

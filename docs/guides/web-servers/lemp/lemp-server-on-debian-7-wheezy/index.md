@@ -21,6 +21,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 7
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

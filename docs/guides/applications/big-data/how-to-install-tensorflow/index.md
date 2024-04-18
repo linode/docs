@@ -17,6 +17,7 @@ external_resources:
 - '[Tools](https://www.tensorflow.org/resources/tools)'
 - '[TensorFlow community](https://www.tensorflow.org/community)'
 
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

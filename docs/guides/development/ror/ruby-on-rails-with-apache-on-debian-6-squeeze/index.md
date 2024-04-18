@@ -19,6 +19,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

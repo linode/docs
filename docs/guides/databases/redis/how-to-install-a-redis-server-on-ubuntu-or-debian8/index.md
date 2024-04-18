@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu/Debian
 tags: ["ubuntu","debian","database","nosql"]
+authors: ["Sergey Pariev"]
 contributors: ["Sergey Pariev"]
 ---
 

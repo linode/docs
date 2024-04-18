@@ -10,6 +10,7 @@ title_meta: "How to Connect to Redis and Use The Redis Database"
 external_resources:
 - '[Redis: Commands](https://redis.io/commands)'
 aliases: ['/guides/how-to-connect-to-redis/']
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---

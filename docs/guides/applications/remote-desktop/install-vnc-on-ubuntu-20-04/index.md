@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 20.04
 aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-21-04/', '/guides/install-vnc-on-ubuntu-21-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

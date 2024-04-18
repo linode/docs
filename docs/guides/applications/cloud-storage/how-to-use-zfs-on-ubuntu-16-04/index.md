@@ -12,6 +12,7 @@ external_resources:
  - '[Ubuntu ZFS wiki](https://wiki.ubuntu.com/Kernel/Reference/ZFS)'
  - '[RAID levels Wikipedia](https://en.wikipedia.org/wiki/Standard_RAID_levels)'
 aliases: ['/applications/cloud-storage/how-to-use-zfs-on-ubuntu-16-04/']
+authors: ["Alexandru Andrei"]
 contributors: ["Alexandru Andrei"]
 ---
 

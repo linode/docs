@@ -15,6 +15,7 @@ external_resources:
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
 tags: ["web server", "digital agencies", "ecommerce"]
 image: host-a-website-with-high-availability-title-graphic.jpg
+authors: ["Phil Zona"]
 contributors: ["Phil Zona"]
 ---
 

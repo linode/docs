@@ -4,6 +4,7 @@ description: "Learn how to view, create, and delete Object Storage buckets throu
 published: 2022-02-07
 modified: 2022-03-04
 aliases: ['/products/storage/object-storage/guides/create-bucket/','/products/storage/object-storage/guides/delete-bucket/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

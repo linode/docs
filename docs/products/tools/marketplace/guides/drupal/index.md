@@ -8,6 +8,7 @@ modified: 2023-09-11
 aliases: ['/platform/marketplace/deploying-drupal-with-marketplace-apps/','/platform/marketplace/how-to-deploy-drupal-with-marketplace-apps/', '/platform/one-click/deploying-drupal-with-one-click-apps/','/guides/deploying-drupal-with-one-click-apps/','/platform/one-click/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-marketplace-apps/','/guides/drupal-marketplace-app/']
 external_resources:
  - '[Drupal 9 Official Documentation](https://www.drupal.org/docs/understanding-drupal)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
  - '[AskBot Official Q&A Forum](https://askbot.org)'
  - '[AskBot Official Website](https://askbot.com)'
 aliases: ['/websites/forums/install-and-run-askbot-on-ubuntu-16-04/']
+authors: ["Gopal Raha"]
 contributors: ["Gopal Raha"]
 ---
 

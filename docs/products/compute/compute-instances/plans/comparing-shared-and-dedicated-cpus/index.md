@@ -8,6 +8,7 @@ title_meta: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
 linkTitle: Choosing Between Shared and Dedicated CPUs
 tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/','/guides/when-to-upgrade-to-dedicated-cpu/','/guides/comparing-shared-and-dedicated-cpus/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

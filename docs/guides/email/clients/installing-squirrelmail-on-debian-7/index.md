@@ -16,6 +16,7 @@ relations:
         key: how-to-install-squirrelmail
         keywords:
             - distribution: Debian 7
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

@@ -8,6 +8,7 @@ title: "Change Plans (Resize)"
 title_meta: "How to Resize a Compute Instance"
 image: resizing_a_linode.png
 aliases: ['/platform/disk-images/resizing-a-linode-classic-manager/','/resizing/','/platform/disk-images/resizing-a-linode/','/migrate-to-linode/disk-images/resizing-a-linode/','/guides/resizing-a-linode/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

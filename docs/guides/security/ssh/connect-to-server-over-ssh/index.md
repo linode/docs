@@ -9,6 +9,7 @@ image: SSH.jpg
 title: "Connecting to a Remote Server Over SSH"
 title_meta: "How to Connect to a Remote Server Over SSH"
 aliases: ['/guides/networking/ssh/connect-to-server-over-ssh/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

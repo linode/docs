@@ -11,6 +11,7 @@ external_resources:
 - '[GeeksForGeeks.org: 5 Common System Design Concepts for Interview Preparation](https://www.geeksforgeeks.org/5-common-system-design-concepts-for-interview-preparation/)'
 - '[GitHub.com/donnemartin: The System Design Primer](https://github.com/donnemartin/system-design-primer)'
 
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

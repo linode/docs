@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

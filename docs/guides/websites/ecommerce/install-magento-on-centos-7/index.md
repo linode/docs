@@ -16,6 +16,7 @@ relations:
         keywords:
            - distribution: CentOS 7
 aliases: ['/websites/ecommerce/install-magento-on-centos-7/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

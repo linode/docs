@@ -7,6 +7,7 @@ modified: 2023-12-18
 title: "High Availability (HA) Control Plane"
 title_meta: "High Availability (HA) Control Plane on LKE"
 aliases: ['/guides/enable-lke-high-availability/', '/products/compute/kubernetes/guides/enable-high-availability/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

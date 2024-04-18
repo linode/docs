@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/applications/configuration-management/chef/install-a-chef-server-workstation-on-ubuntu-18-04/','/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

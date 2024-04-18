@@ -12,6 +12,7 @@ external_resources:
   - '[DNS Records: An Introduction](/docs/guides/dns-overview/)'
 tags: ["dns","networking"]
 aliases: ['/networking/dns/how-to-set-up-cloudflare-with-linode/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

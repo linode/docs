@@ -18,6 +18,7 @@ relations:
         keywords:
            - distribution: Debian 9
 aliases: ['/websites/cms/wp-cli/how-to-install-wordprress-using-wp-cli-on-debian-9/','/websites/cms/wordpress/how-to-install-wordprress-using-wp-cli-on-debian-9/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

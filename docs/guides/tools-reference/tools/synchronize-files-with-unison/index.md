@@ -11,6 +11,7 @@ title: Synchronize Files with Unison
 external_resources:
  - '[Unison Project Home Page](http://www.cis.upenn.edu/~bcpierce/unison/)'
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ published: 2015-06-15
 title: 'KVM Migration Reference'
 tags: ["linode platform"]
 deprecated: true
+authors: ["Josh Sager"]
 contributors: ["Josh Sager"]
 ---
 

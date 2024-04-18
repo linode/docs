@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

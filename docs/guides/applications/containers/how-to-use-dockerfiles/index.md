@@ -13,6 +13,7 @@ external_resources:
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
  - '[Docker Docs](http://docs.docker.com/)'
 aliases: ['/applications/containers/how-to-use-dockerfiles/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 ![How to Use a Dockerfile](how-to-use-dockerfile.png "How to Use a Dockerfile")

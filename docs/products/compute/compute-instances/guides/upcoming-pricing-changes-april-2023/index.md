@@ -4,6 +4,7 @@ description: "Information related to the Akamai Compute pricing changes effectiv
 published: 2023-03-01
 modified: 2023-03-31
 title: "Recent Pricing Changes (Effective 4/1/2023)"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

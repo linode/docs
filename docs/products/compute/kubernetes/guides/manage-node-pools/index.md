@@ -3,6 +3,7 @@ title: Manage Nodes and Node Pools
 description: "How to add a Node Pool to a Linode Kubernetes Engine (LKE) cluster."
 published: 2023-02-09
 aliases: ['/products/compute/kubernetes/guides/add-node-pool/','/products/compute/kubernetes/guides/edit-remove-node-pools/','/products/compute/kubernetes/guides/enable-cluster-autoscaling/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

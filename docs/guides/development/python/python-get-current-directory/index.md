@@ -5,6 +5,7 @@ title_meta: "A Guide to Paths in Python: Get Working Directory"
 description: 'This guide provides information on how to retrieve the current working directory in Python using the os module. It covers the os.getcwd() function and provides sample code to demonstrate its usage.'
 keywords: ['python change working directory', 'python get current directory', 'python change directory', 'change directory python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2023-06-12
 ---

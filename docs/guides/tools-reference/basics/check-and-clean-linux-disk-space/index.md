@@ -8,6 +8,7 @@ published: 2021-08-13
 image: HowtoCheckandCleanaLinuxSystemsDiskSpace.jpg
 title: "Check and Clean a Linux System's Disk Space"
 title_meta: "How to Check and Clean a Linux System's Disk Space"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -6,6 +6,7 @@ published: 2009-09-13
 title: Zimbra Groupware
 show_in_lists: true
 aliases: ['/email/zimbra/','/email/zimbra/install-zimbra-ubuntu-10.04-lucid/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

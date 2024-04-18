@@ -8,6 +8,7 @@ title: "Remove Untracked Files in Git"
 external_resources:
 - '[Git clean documentation](https://git-scm.com/docs/git-clean)'
 - '[Git ignore documentation](https://git-scm.com/docs/gitignore)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

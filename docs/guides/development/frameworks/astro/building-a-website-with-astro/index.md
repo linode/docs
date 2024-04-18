@@ -10,6 +10,7 @@ external_resources:
 - '[Astro Docs: Getting Started](https://docs.astro.build/en/getting-started/)'
 - '[LogRocket: Using Astro and Netlify to Build and Deploy a Web App](https://blog.logrocket.com/astro-netlify-build-deploy-web-app/)'
 - '[CSS-Tricks: A Look at Building with Astro ](https://css-tricks.com/a-look-at-building-with-astro/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

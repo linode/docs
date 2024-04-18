@@ -14,6 +14,7 @@ external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'
  - '[DNS zone transfer](http://en.wikipedia.org/wiki/DNS_zone_transfer)'
+authors: ["Chris Ciufo"]
 contributors: ["Chris Ciufo"]
 ---
 

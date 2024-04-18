@@ -13,6 +13,7 @@ relations:
         key: how-to-install-opencart
         keywords:
            - distribution: CentOS 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
  - '[Terraria Wiki: Setting up a Terraria Server](http://terraria.gamepedia.com/Guide:Setting_up_a_Terraria_server)'
 aliases: ['/game-servers/host-a-terraria-server-on-your-linode/','/applications/game-servers/host-a-terraria-server-on-your-linode/']
 dedicated_cpu_link: true
+authors: ["Tyler Langlois"]
 contributors: ["Tyler Langlois"]
 ---
 

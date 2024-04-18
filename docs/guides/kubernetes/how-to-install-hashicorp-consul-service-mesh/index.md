@@ -10,6 +10,7 @@ external_resources:
 - '[Hashicorp Consul Overview](https://www.consul.io/)'
 - '[Consul and Kubernetes Deployment Guide](https://learn.hashicorp.com/tutorials/consul/kubernetes-deployment-guide?in=consul/kubernetes)'
 - '[Helm Chart Configuration](https://www.consul.io/docs/k8s/helm)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

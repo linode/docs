@@ -6,6 +6,7 @@ modified: 2023-04-23
 title: "Subscribe to Linode Status Updates"
 tags: ["linode platform"]
 aliases: ['/platform/linode-status-page/','/guides/linode-status-page/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

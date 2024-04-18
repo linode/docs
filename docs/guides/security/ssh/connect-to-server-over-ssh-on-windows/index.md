@@ -15,6 +15,7 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Windows
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

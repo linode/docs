@@ -15,6 +15,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: AlmaLinux 8
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

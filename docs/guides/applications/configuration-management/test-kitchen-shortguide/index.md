@@ -9,6 +9,7 @@ title: "Try This Salt Guide with KitchenSalt Shortguide"
 headless: true
 show_on_rss_feed: false
 aliases: ['/applications/configuration-management/test-kitchen-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

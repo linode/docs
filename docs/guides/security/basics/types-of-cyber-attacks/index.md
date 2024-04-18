@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
 title: "Eight Common Types of Cyber Attacks and How to Prevent Them"
 title_meta: "What are the Most Common Cyber Attacks?"
+authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 ---
 

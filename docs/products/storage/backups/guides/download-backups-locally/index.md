@@ -9,6 +9,7 @@ modified: 2023-07-07
 tags: ["security"]
 aliases: ['/security/data-portability/download-backups-locally/','/guides/download-backups-locally/']
 image: download-a-local-copy-of-your-linode-backup.png
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

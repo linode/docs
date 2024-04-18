@@ -9,6 +9,7 @@ title: "Installing Drupal on LKE"
 title_meta: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
 
 aliases: ['/kubernetes/how-to-install-drupal-with-linode-kubernetes-engine/']
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

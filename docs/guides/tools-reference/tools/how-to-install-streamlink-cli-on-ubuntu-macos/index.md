@@ -10,6 +10,7 @@ title_meta: "How to Install Streamlink CLI on Ubuntu and macOS"
 external_resources:
 - "[Streamlink's Plugins documentation](https://streamlink.github.io/plugin_matrix.html)"
 - "[Streamlink's Player Options](https://streamlink.github.io/cli.html#positional-arguments)"
+authors: ["Sandro Villinger"]
 contributors: ["Sandro Villinger"]
 ---
 

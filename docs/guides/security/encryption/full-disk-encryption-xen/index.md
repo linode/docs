@@ -9,6 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
 published: 2013-07-05
 title: Full Disk Encryption
+authors: ["Quintin Riis"]
 contributors: ["Quintin Riis"]
 ---
 

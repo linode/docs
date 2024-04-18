@@ -10,6 +10,7 @@ external_resources:
 - '[die.net: ssh-agent(1)](https://linux.die.net/man/1/ssh-agent)'
 - '[SSH: ssh-agent](https://www.ssh.com/academy/ssh/agent)'
 - '[Smallstep: SSH Agent Explained](https://smallstep.com/blog/ssh-agent-explained/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

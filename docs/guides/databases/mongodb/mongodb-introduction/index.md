@@ -11,6 +11,7 @@ external_resources:
 - '[MongoDB Basics Tutorial](https://university.mongodb.com/courses/M001/about)'
 - '[MongoDB Documentation](https://docs.mongodb.com/)'
 aliases: ['/guides/mongodb-and-its-use-cases/']
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

@@ -9,6 +9,7 @@ title: "Deploy UTunnel VPN through the Linode Marketplace"
 external_resources:
 - '[UTunnel](https://www.utunnel.io/)'
 aliases: ['/guides/deploying-utunnel-marketplace-app/','/guides/utunnel-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

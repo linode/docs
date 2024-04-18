@@ -14,6 +14,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

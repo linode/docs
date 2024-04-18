@@ -7,5 +7,6 @@ published: 2015-01-18
 title: Diagnostics and Testing
 show_in_lists: true
 aliases: ['/networking/diagnostics/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---

@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","nosql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

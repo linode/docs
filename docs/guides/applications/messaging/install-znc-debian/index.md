@@ -8,6 +8,7 @@ modified: 2015-06-04
 published: 2014-08-21
 title: 'Install ZNC from Source on Debian'
 aliases: ['/applications/messaging/install-znc-debian/']
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

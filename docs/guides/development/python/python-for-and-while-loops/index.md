@@ -11,6 +11,7 @@ external_resources:
 - '[Python control flow documentation](https://docs.python.org/3/tutorial/controlflow.html)'
 - '[Python compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

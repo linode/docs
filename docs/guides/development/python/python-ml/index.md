@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 title: "Python in ML: Why You Should Use Python for Machine Learning"
 title_meta: "Python Programming, Machine Learning, and AI"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

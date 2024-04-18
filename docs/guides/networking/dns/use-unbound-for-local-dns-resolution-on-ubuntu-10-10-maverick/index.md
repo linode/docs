@@ -14,6 +14,7 @@ relations:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

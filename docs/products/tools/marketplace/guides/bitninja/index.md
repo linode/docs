@@ -8,6 +8,7 @@ title: "Deploy BitNinja through the Linode Marketplace"
 external_resources:
 - '[BitNinja](https://bitninja.com/)'
 aliases: ['/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 _build:
   list: false

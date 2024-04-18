@@ -12,6 +12,7 @@ external_resources:
 - '[Hubzilla documentation](https://hubzilla.org/help/en/about/about)'
 - '[Hubzilla code base](https://framagit.org/hubzilla/core)'
 - '[Hubzilla user guide](https://hubzilla.org/help/en/member/member_guide#Overview)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

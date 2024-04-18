@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: CentOS 6
 tags: ["php","database","mysql","centos"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -7,6 +7,7 @@ modified: 2023-03-14
 tags: ["linode platform"]
 image: package_mirrors_smg.png
 aliases: ['/package-mirrors/','/platform/package-mirrors/','/guides/package-mirrors/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

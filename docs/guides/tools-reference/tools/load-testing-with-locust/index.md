@@ -4,6 +4,7 @@ title: "How to Load Test Your Applications with Locust"
 description: "Locust is an open-source tool for running distributed load tests based on plain Python scripts, making an exceptional solution, especially for CI/CD integration. Find out more and how to get started with Locus in this tutorial."
 keywords: ['locust load testing tutorial', 'locust example', 'locust download']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ['Nathaniel Stickman', 'John Dutton']
 contributors: ['Nathaniel Stickman', 'John Dutton']
 published: 2024-02-22
 external_resources:

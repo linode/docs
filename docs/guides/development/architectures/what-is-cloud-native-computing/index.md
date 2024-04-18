@@ -7,6 +7,7 @@ published: 2023-06-23
 image: CloudNativeComputing.png
 title: "What is Cloud-Native Computing?"
 tags: ["container", "kubernetes"]
+authors: ["Steven J. Vaughan-Nichols"]
 contributors: ["Steven J. Vaughan-Nichols"]
 ---
 

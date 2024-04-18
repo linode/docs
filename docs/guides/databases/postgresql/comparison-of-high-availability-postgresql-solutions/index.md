@@ -4,6 +4,7 @@ title: "A Comparison of High Availability PostgreSQL Solutions"
 description: 'This guide describes the high availability and resiliency options for PostgreSQL, with a survey of the three most common replication managers.'
 keywords: ['PostgreSQL high availability','high availability comparison PostgreSQL','PostgreSQL patroni','PostgreSQL repmgr','PostgreSQL paf']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2024-03-19
 external_resources:

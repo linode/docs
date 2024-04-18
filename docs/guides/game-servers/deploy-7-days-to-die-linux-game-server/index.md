@@ -7,6 +7,7 @@ published: 2021-03-08
 image: Deploy7DtoD_Linux.png
 title: "Deploying a 7 Days to Die Server on Linux"
 title_meta: "How to Deploy a 7 Days to Die Server on Linux"
+authors: ["Sandro Villinger"]
 contributors: ["Sandro Villinger"]
 ---
 

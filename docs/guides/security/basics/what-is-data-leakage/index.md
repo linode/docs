@@ -10,6 +10,7 @@ title_meta: "Data Leakage: Definition, Examples, & Protection Tips"
 external_resources:
 - '[Cybersecurity & Infrastructure Security Agency](https://www.cisa.gov/defining-insider-threats)'
 - '[Enterprise Data Loss Prevention (DLP) Reviews and Ratings](https://www.gartner.com/reviews/market/enterprise-data-loss-prevention)'
+authors: ["Wayne Rash"]
 contributors: ["Wayne Rash"]
 ---
 

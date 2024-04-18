@@ -6,6 +6,7 @@ published: 2020-09-01
 title: FlatPress
 show_in_lists: true
 aliases: ['/websites/cms/flatpress/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

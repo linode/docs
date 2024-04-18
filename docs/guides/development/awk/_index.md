@@ -6,6 +6,7 @@ published: 2020-08-31
 title: Awk
 show_in_lists: true
 aliases: ['/development/awk/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

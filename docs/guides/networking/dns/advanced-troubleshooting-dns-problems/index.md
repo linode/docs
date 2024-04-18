@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-20
 title: "Troubleshooting DNS Issues"
 bundles: ['troubleshooting']
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

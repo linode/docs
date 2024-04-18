@@ -11,6 +11,7 @@ external_resources:
 - '[systemd GitHub](https://github.com/systemd/systemd)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-systemd/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

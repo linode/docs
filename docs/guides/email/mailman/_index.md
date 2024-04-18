@@ -6,6 +6,7 @@ published: 2010-02-12
 title: Mailman Guides
 show_in_lists: true
 aliases: ['/email/mailman/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

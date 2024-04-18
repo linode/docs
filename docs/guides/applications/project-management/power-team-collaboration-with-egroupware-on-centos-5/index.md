@@ -18,6 +18,7 @@ relations:
         key: collaborate-with-egroupware
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

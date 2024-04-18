@@ -9,6 +9,7 @@ title_meta: "Angular Animations: Get Started"
 external_resources:
 - '[Introduction to Angular Animations](https://angular.io/guide/animations)'
 - '[Angular Components Overview](https://angular.io/guide/component-overview)'
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

@@ -10,6 +10,7 @@ external_resources:
   - '[Streisand Github repository](https://github.com/jlund/streisand)'
 tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/set-up-a-streisand-gateway/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

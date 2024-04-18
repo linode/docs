@@ -6,6 +6,7 @@ published: 2020-08-31
 title: CakePHP
 show_in_lists: true
 aliases: ['/development/frameworks/cakephp/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

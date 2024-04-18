@@ -14,6 +14,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

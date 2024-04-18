@@ -9,6 +9,7 @@ image: UseEchoCommand.png
 title: Using the echo Command
 title_meta: How to Use Echo
 tags: ["linux"]
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

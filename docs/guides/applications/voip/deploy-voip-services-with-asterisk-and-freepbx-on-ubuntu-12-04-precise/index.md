@@ -20,6 +20,7 @@ relations:
         key: asterisk-freepbx-telephone
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

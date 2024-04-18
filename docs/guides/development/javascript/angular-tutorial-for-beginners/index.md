@@ -11,6 +11,7 @@ external_resources:
 - '[Angular](https://angular.io/)'
 - '[TypeScript](https://www.typescriptlang.org/)'
 - '[Angular docs](https://angular.io/docs)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

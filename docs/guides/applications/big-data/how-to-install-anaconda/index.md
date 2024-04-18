@@ -14,6 +14,7 @@ relations:
         key: how-to-install-anaconda
         keywords:
             - distribution: Ubuntu
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

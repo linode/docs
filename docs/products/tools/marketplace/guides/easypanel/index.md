@@ -4,6 +4,7 @@ keywords: ['easypanel','control panel','cpanel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-05-31
 title: "Deploy Easypanel through the Linode Marketplace"
+authors: ["Holden Morris"]
 contributors: ["Holden Morris"]
 ---
 

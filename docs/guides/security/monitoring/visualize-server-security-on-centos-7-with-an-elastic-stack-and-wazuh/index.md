@@ -13,6 +13,7 @@ external_resources:
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
 dedicated_cpu_link: true
 aliases: ['/security/monitoring/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/','/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/']
+authors: ["Andrew Lescher"]
 contributors: ["Andrew Lescher"]
 ---
 

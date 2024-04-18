@@ -20,6 +20,7 @@ relations:
         key: how-to-install-moodle
         keywords:
             - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

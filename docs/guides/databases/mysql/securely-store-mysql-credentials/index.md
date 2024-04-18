@@ -9,6 +9,7 @@ title: "Securely Store MySQL Credentials with mysql_config_editor"
 external_resources:
  - '[mysql_config_editor documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html)'
 tags: ["mariadb","database","mysql"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -8,6 +8,7 @@ aliases: ['/web-applications/social-networking/planet/','/applications/social-ne
 modified: 2013-10-04
 published: 2010-08-05
 title: Planet Feed Aggregator
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

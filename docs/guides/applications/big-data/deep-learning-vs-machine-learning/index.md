@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-16
 title: "Deep Learning vs. Machine Learning: What’s the Difference?"
 title_meta: "Differences Between Machine Learning and Deep Learning"
+authors: ["Pam Baker"]
 contributors: ["Pam Baker"]
 ---
 

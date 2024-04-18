@@ -11,6 +11,7 @@ external_resources:
 - '[freeCodeCamp: REST API Best Practices – REST Endpoint Design Examples](https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/ )'
 - '[Swagger: Best Practices in API Design](https://swagger.io/resources/articles/best-practices-in-api-design/ )'
 - '[Stack Overflow Blog: Best Practices for REST API Design](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

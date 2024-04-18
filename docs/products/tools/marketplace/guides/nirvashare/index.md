@@ -8,6 +8,7 @@ title: "Deploy NirvaShare through the Linode Marketplace"
 aliases: ['/guides/deploying-nirvashare-marketplace-app/','/guides/nirvashare-marketplace-app/']
 external_resources:
 - '[NirvaShare](https://nirvashare.com/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

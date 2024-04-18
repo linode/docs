@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-14
 title: "Install and Use the Subversion CLI Client"
 title_meta: "How to Install and Use the Subversion CLI Client"
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

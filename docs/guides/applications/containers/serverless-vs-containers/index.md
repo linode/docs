@@ -4,6 +4,7 @@ title: "Serverless vs Containers: Choose Which One to Use"
 description: 'What are the similarities and differences between serverless and containers? What should developers consider when choosing one?'
 keywords: ['serverless vs. containers','serverless computing','serverless applications','containers','microservices','serverless architecture','serverless web applications','backend services']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2023-05-02
 ---

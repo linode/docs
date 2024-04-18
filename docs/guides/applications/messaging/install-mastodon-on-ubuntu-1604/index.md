@@ -21,6 +21,7 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

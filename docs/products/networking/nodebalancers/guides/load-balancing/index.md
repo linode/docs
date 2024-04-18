@@ -5,6 +5,7 @@ keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "
 published: 2022-10-07
 tags: ["linode platform","networking"]
 aliases: ['/platform/nodebalancer/what-are-nodebalancers/','/guides/what-are-nodebalancers/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

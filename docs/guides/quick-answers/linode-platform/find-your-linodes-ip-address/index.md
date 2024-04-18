@@ -8,6 +8,7 @@ modified: 2017-09-21
 published: 2017-09-21
 title: Find Your Linode's IP Address
 aliases: ['/quick-answers/linode-platform/find-your-linodes-ip-address-classic-manager/','/quick-answers/linode-platform/find-your-linodes-ip-address/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

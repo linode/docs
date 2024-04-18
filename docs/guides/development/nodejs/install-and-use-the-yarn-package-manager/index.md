@@ -9,6 +9,7 @@ title: "Install and Use the Yarn Package Manager"
 title_meta: "How to Install and Use the Yarn Package Manager"
 external_resources:
 - '[Yarn Classic Documentation](https://classic.yarnpkg.com/en/docs)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

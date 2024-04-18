@@ -12,6 +12,7 @@ external_resources:
 - '[VictoriaMetrics Articles](https://docs.victoriametrics.com/Articles.html)'
 - '[Grafana Dashboards for VictoriaMetrics](https://grafana.com/grafana/dashboards/10229)'
 aliases: ['/guides/deploying-victoriametrics-single-marketplace-app/','/guides/victoriametrics-single-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

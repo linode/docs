@@ -14,6 +14,7 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

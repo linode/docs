@@ -9,6 +9,7 @@ published: 2018-01-29
 title: How to Divide Files with split
 tags: ["linux"]
 aliases: ['/tools-reference/tools/divide-files-with-split/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

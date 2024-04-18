@@ -16,6 +16,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/applications/media-servers/install-plex-media-server-on-centos-7/']
+authors: ["Nick Brewer"]
 contributors: ["Nick Brewer"]
 ---
 

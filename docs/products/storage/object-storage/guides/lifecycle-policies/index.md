@@ -6,6 +6,7 @@ modified: 2023-08-15
 title: "Lifecycle Policies"
 aliases: ['/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/','/platform/object-storage/lifecycle-policies/','/guides/lifecycle-policies/','/guides/how-to-manage-objects-with-lifecycle-policies/']
 tags: ["linode platform"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

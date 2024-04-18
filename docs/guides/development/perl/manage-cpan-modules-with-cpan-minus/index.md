@@ -14,6 +14,7 @@ external_resources:
 audiences: ["beginner"]
 languages: ["perl"]
 tags: ["perl"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

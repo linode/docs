@@ -9,6 +9,7 @@ title: "Use gRPC and Python for Remote Procedural Calls"
 external_resources:
 - '[gRPC](https://grpc.io/)'
 - '[Google Developers Page for Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

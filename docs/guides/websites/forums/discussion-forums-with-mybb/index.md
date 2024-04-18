@@ -8,6 +8,7 @@ modified: 2013-10-01
 published: 2010-03-18
 title: Discussion Forums with MyBB
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -12,6 +12,7 @@ title_meta: "Configure Load Balancing with TLS Encryption on Kubernetes"
 external_resources:
 - '[NGINX Ingress Controller User Guide](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/)'
 aliases: ['/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

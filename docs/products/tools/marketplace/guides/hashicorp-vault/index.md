@@ -4,6 +4,7 @@ keywords: ['HashiCorp','vault','secrets',]
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-08-09
 title: "Deploy HashiCorp Vault through the Linode Marketplace"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

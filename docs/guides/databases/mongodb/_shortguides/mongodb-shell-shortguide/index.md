@@ -8,6 +8,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/mongodb-shell-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -8,6 +8,7 @@ aliases: ['/websites/cms/drupal/managing-web-content-with-drupal-7/','/websites/
 modified: 2014-11-06
 published: 2009-09-29
 title: Installing Drupal 7
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

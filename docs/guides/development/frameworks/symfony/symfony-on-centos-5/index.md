@@ -9,6 +9,7 @@ modified: 2013-09-27
 published: 2010-06-08
 title: Symfony on CentOS 5
 deprecated: true
+authors: ["Ozan Yerli"]
 contributors: ["Ozan Yerli"]
 ---
 

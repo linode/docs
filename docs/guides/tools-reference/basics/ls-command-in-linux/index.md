@@ -5,6 +5,7 @@ title_meta: "Ls Command in Linux: Listing Files & Directories"
 description: 'The Ls command in Linux is useful for listing files and directories, as well as displaying detailed info. ✓ Read our guide to learn how to use the Ls command!'
 keywords: ['ls command in linux','ls command','linux ls','linux ls command','what is ls','cmd ls','ls bash','ls output','linux ll command','linux ll']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2023-04-11
 external_resources:

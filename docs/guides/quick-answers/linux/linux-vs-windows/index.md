@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
 title: "Linux vs. Windows: What’s the Difference?"
 title_meta: "What is the Difference Between Linux and Windows?"
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

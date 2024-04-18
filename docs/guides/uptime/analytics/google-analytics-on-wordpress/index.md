@@ -12,6 +12,7 @@ external_resources:
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
  - '[Google Analytics for Websites](/docs/guides/google-analytics-for-websites/)'
 aliases: ['/uptime/analytics/google-analytics-on-wordpress/']
+authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 ---
 

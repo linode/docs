@@ -14,6 +14,7 @@ relations:
         key: using-piwik-analytics
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

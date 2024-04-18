@@ -10,6 +10,7 @@ modified: 2021-06-23
 title: "Installing PrestaShop on Ubuntu 16.04"
 title_meta: "How to Install PrestaShop on Ubuntu 16.04"
 aliases: ['/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/']
+authors: ["Alexandru Andrei"]
 contributors: ["Alexandru Andrei"]
 ---
 

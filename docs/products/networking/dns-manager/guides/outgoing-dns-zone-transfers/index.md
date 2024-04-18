@@ -6,6 +6,7 @@ title: "Outgoing DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/transfer-domain-zones/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

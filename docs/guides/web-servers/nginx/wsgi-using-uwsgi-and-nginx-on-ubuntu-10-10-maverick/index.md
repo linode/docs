@@ -14,6 +14,7 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

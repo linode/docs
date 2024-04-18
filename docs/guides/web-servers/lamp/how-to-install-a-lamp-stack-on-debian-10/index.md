@@ -20,6 +20,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

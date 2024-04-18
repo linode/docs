@@ -11,6 +11,7 @@ external_resources:
  - '[iotop](http://guichaz.free.fr/iotop/)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/top-htop-iotop/']
+authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 ---
 

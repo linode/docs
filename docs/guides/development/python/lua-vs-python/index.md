@@ -10,6 +10,7 @@ external_resources:
 - '[TutorialsPoint.com: Difference between Python and Lua](https://www.tutorialspoint.com/difference-between-python-and-lua)'
 - '[GeeksForGeeks.org: Difference between Python and Lua](https://www.geeksforgeeks.org/difference-between-python-and-lua-programming-language/)'
 - '[StackShare.io: Lua vs Python](https://stackshare.io/stackups/lua-vs-python)'
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

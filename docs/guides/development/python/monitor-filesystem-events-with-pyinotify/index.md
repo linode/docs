@@ -14,6 +14,7 @@ audiences: ["intermediate"]
 languages: ["python"]
 aliases: ['/development/monitor-filesystem-events-with-pyinotify/','/development/python/monitor-filesystem-events-with-pyinotify/']
 tags: ["python"]
+authors: ["Md. Sabuj Sarker"]
 contributors: ["Md. Sabuj Sarker"]
 ---
 

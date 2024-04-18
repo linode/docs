@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-10
 title: "An Overview of Python Testing Frameworks for Unit Testing"
 title_meta: "Python Testing Frameworks for Unit Testing"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

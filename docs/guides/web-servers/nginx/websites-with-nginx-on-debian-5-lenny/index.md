@@ -14,6 +14,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

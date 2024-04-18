@@ -6,6 +6,7 @@ modified: 2022-06-17
 title: "Network Configuration Using systemd-networkd"
 tags: ["networking","linode platform"]
 aliases: ['/guides/systemd-networkd/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

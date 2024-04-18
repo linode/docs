@@ -2,6 +2,7 @@
 title: Cancel Managed Services
 description: "Learn how to cancel Managed Services on your account."
 published: 2023-04-11
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

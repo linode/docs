@@ -8,6 +8,7 @@ title: "Deploy cPanel through the Linode Marketplace"
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

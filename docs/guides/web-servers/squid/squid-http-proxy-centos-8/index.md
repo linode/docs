@@ -20,6 +20,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/squid/squid-http-proxy-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

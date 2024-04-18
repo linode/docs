@@ -4,6 +4,7 @@ title: "Install and Configure Rocket.Chat as a Chat and Helpdesk Tool"
 description: "Learn how to deploy open-source Rocket.Chat on Akamai Cloud Computing, and use it as a business collaboration tool and customer service platform."
 keywords: ['open source helpdesk','self-hosted business communication platform','slack competitor']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ['Nathaniel Stickman', 'John Dutton']
 contributors: ['Nathaniel Stickman', 'John Dutton']
 published: 2024-03-05
 external_resources:

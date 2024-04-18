@@ -8,6 +8,7 @@ title: "Connecting Appsmith to the Linode API"
 external_resources:
 - '[Appsmith: Connecting to REST APIs](https://docs.appsmith.com/core-concepts/connecting-to-data-sources/authentication)'
 - '[Appsmith: Tutorials](https://docs.appsmith.com/tutorials)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

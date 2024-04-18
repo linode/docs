@@ -8,6 +8,7 @@ modified: 2018-07-31
 published: 2018-07-31
 title: How to Migrate a LAMP Website to Linode
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

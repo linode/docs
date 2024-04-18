@@ -1,6 +1,7 @@
 ---
 title: "Using the AWS SDK for PHP with Object Storage"
 description: "Learn how to use the PHP AWS SDK with Linode's S3-compatible Object Storage."
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

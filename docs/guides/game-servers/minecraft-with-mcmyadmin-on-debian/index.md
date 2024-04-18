@@ -11,6 +11,7 @@ external_resources:
  - '[McMyAdmin Home Page](https://mcmyadmin.com/)'
 aliases: ['/game-servers/minecraft-with-mcmyadmin-on-debian/','/applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 dedicated_cpu_link: true
+authors: ["James Stewart"]
 contributors: ["James Stewart"]
 ---
 

@@ -16,6 +16,7 @@ external_resources:
 - '[Terraform State Storage and Locking](https://www.terraform.io/docs/backends/state.html)'
 - '[GitHub Discussion - Storing Sensitive Values in State Files](https://github.com/hashicorp/terraform/issues/516)'
 aliases: ['/applications/configuration-management/terraform/secrets-management-with-terraform/','/applications/configuration-management/secrets-management-with-terraform/']
+authors: ["Linode"]
 contributors: ["Linode"]
 tags: ["saas"]
 ---

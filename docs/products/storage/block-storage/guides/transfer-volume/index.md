@@ -2,6 +2,7 @@
 title: "Transfer a Volume to a Different Compute Instance"
 description: "Learn how to transfer a Block Storage Volume to a different Compute Instance within the same data center."
 modified: 2022-08-24
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

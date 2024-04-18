@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-23
 title: "Basic Linux Commands: A Beginner’s Guide "
 title_meta: "A List of the Most Common Linux Commands"
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

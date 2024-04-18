@@ -8,6 +8,7 @@ published: 2021-02-12
 title: "Managing Python Packages and Versions on Linux"
 title_meta: "How to Manage Python Packages and Versions on Linux"
 aliases: ['/development/python/how-to-manage-packages-and-virtual-environments-on-linux/']
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

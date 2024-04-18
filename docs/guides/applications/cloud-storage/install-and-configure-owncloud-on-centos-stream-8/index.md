@@ -15,6 +15,7 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: CentOS Stream 8
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

@@ -10,6 +10,7 @@ title: "Use Paramiko and Python to SSH into a Server"
 title_meta: "How to Use Paramiko and Python to SSH into a Server"
 external_resources:
 - '[Paramiko GitHub](https://github.com/paramiko/paramiko)'
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 ---
 

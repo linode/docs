@@ -1,6 +1,7 @@
 ---
 title: "Using s4cmd with Object Storage"
 description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage."
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

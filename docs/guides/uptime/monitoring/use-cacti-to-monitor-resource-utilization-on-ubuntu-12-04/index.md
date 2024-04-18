@@ -18,6 +18,7 @@ relations:
         key: install-cacti-monitoring
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

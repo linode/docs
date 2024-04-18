@@ -9,6 +9,7 @@ image: CRUD_readop_FastAPI.png
 title: "CRUD Read Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Read Operations: Use FastAPI to Write an API"
 tags: ["python", "django"]
+authors: ["Chelsea Troy"]
 contributors: ["Chelsea Troy"]
 ---
 ## FastAPI Features

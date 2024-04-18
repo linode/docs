@@ -6,6 +6,7 @@ published: 2023-01-23
 title: "Deploy Passky through the Linode Marketplace"
 external_resources:
 - '[Passky](https://github.com/Rabbit-Company/Passky-Server)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

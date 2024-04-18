@@ -9,6 +9,7 @@ title: "Use Linode's Nameservers"
 published: 2018-07-19
 headless: true
 aliases: ['/networking/dns/use-linode-name-servers/']
+authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 ---
 

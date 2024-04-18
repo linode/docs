@@ -7,6 +7,7 @@ published: 2021-04-30
 title: "Manage Disks and Storage on a Compute Instance"
 title_meta: "How to Manage Disks and Storage on a Compute Instance"
 aliases: ['/guides/linode-disks/','/guides/disks-and-storage/','/guides/resize-a-linode-disk/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

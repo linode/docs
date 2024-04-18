@@ -19,6 +19,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

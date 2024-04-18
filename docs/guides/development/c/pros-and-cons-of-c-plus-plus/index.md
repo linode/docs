@@ -12,6 +12,7 @@ external_resources:
 - '[TechVidvan: Advantages and Disadvantages of C++](https://techvidvan.com/tutorials/cpp-pros-and-cons/)'
 - '[GeeksforGeeks: Advantages and Disadvantages of C++](https://www.geeksforgeeks.org/advantages-and-disadvantages-of-c/)'
 - '[TekSlate: Advantages and Disadvantages of C++ language](https://tekslate.com/c-explain-advantages-disadvantages)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

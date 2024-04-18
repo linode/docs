@@ -9,6 +9,7 @@ title: What is Cloud Computing?
 title_meta: "What is Cloud Computing & Why Should You Use It?"
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-cloud-computing/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

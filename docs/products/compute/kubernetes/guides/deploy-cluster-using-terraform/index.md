@@ -11,6 +11,7 @@ external_resources:
 - '[Deploying a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
 - '[Linode Provider Terraform Documentation](https://www.terraform.io/docs/providers/linode/index.html)'
 aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/','/guides/how-to-deploy-an-lke-cluster-using-terraform/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

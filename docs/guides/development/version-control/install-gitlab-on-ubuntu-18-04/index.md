@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/version-control/install-gitlab-on-ubuntu-18-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

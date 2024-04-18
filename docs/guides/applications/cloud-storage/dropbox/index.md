@@ -8,6 +8,7 @@ aliases: ['/applications/cloud-storage/dropbox/','/web-applications/cloud-storag
 modified: 2015-06-29
 published: 2014-04-30
 title: 'Installing and Configuring Dropbox'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

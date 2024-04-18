@@ -10,6 +10,7 @@ external_resources:
 - '[Create Grafana API tokens and dashboards for an organization](https://grafana.com/docs/grafana/latest/tutorials/api_org_token_howto/)'
 - '[Grafana Alerting and Engine Rules](https://grafana.com/docs/grafana/latest/alerting/rules/)'
 aliases: ['/platform/marketplace/how-to-deploy-grafana-with-marketplace-apps/', '/platform/one-click/how-to-deploy-grafana-with-one-click-apps/','/guides/how-to-deploy-grafana-with-one-click-apps/','/guides/how-to-deploy-grafana-with-marketplace-apps/','/guides/grafana-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ title: "The Benefits of a Service Mesh"
 title_meta: "What is a Service Mesh?"
 external_resources:
 - "[The Service Mesh: What Every Software Engineer Needs to Know about the World's Most Over-Hyped Technology](https://buoyant.io/service-mesh-manifesto/)"
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

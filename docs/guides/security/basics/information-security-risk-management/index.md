@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 title: "Build an Information Security Risk Management Program"
 title_meta: "A Guide to Risk Management in Information Technology"
+authors: ["David Strom"]
 contributors: ["David Strom"]
 ---
 

@@ -9,6 +9,7 @@ external_resources:
 - '[phoenixNAP: How to Use Linux Cat Command (with Examples)](https://phoenixnap.com/kb/linux-cat-command)'
 - '[Tecmint: 13 Basic Cat Command Examples in Linux](https://www.tecmint.com/13-basic-cat-command-examples-in-linux/)'
 - '[GeeksforGeeks: Cat Command in Linux with Examples](https://www.geeksforgeeks.org/cat-command-in-linux-with-examples/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

@@ -10,6 +10,7 @@ title_meta: "How to Enable Sites in NGINX or Apache"
 external_resources:
 - '[NGINX](https://www.nginx.com/)'
 - '[Apache Web Server](https://httpd.apache.org/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

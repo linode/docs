@@ -13,6 +13,7 @@ external_resources:
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-install-configure-and-run-fish/']
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

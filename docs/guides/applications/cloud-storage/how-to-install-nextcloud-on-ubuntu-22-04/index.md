@@ -25,6 +25,7 @@ relations:
         key: install-nextcloud
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

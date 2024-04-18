@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 title: "An Introduction to Golang Unit Testing"
 title_meta: "Golang Testing: Unit Testing Go Applications"
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

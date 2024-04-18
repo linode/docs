@@ -10,6 +10,7 @@ title: Create File System Links with ln
 external_resources:
   - '[What is the Difference Between a Hard Link and a Symbolic Link? (Ask Ubuntu)](https://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link)'
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

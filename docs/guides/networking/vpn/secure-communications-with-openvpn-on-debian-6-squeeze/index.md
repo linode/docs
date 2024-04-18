@@ -14,6 +14,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

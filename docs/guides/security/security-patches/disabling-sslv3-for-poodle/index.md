@@ -8,6 +8,7 @@ modified: 2018-09-20
 published: 2014-10-15
 title: Disabling SSLv3 for POODLE
 aliases: ['/security/security-patches/disabling-sslv3-for-poodle/']
+authors: ["Dave Russell"]
 contributors: ["Dave Russell"]
 ---
 

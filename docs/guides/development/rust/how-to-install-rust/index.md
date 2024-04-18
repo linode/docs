@@ -10,6 +10,7 @@ title: "Installing and Using Rust"
 title_meta: "How to Install and Use Rust"
 external_resources:
 - '[Rust Programming Language](https://www.rust-lang.org/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

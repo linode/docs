@@ -8,6 +8,7 @@ aliases: ['/networking/dns/use-dig-to-perform-manual-dns-queries/','/linux-tools
 modified: 2018-05-22
 published: 2010-10-13
 title: Use dig to Perform Manual DNS Queries
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

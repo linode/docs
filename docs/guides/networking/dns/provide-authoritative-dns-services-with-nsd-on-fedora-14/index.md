@@ -14,6 +14,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Fedora 14
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

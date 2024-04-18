@@ -11,6 +11,7 @@ external_resources:
 - '[Wikipedia page on data structures](https://en.wikipedia.org/wiki/Data_structure)'
 - '[Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)'
 
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

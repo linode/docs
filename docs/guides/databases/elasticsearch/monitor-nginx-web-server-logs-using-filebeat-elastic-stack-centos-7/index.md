@@ -12,6 +12,7 @@ title_meta: "How to Monitor NGINX Using the Elastic Stack on CentOS 7"
 dedicated_cpu_link: true
 tags: ["analytics","database","centos","monitoring"]
 aliases: ['/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/']
+authors: ["Tyler Langlois"]
 contributors: ["Tyler Langlois"]
 ---
 ![Monitor NGINX Logs with Elastic](Monitor_NGINX_Elastic.jpg)

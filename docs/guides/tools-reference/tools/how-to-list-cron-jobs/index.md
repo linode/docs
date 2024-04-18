@@ -10,6 +10,7 @@ external_resources:
 - '[Wikipedia Cron Page](https://en.wikipedia.org/wiki/Cron)'
 - '[Crontab Man Page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html)'
 - '[Ubuntu cron documentation](https://help.ubuntu.com/community/CronHowto)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

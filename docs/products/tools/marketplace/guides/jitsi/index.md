@@ -11,6 +11,7 @@ external_resources:
 - '[Jitsi Documentation](https://jitsi.github.io/handbook/docs/intro)'
 - '[Scale Your Jitsi Setup](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-scalable)'
 aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/','/platform/one-click/deploy-jitsi-with-one-click-apps/','/guides/how-to-deploy-jitsi-with-marketplace-apps/','/guides/jitsi-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

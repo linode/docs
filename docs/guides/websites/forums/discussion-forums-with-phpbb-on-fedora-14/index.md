@@ -14,6 +14,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Fedora 14
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

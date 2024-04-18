@@ -9,6 +9,7 @@ external_resources:
 - '[Redis: Scripting with Lua](https://redis.io/docs/manual/programmability/eval-intro/)'
 - '[Redis: EVAL](https://redis.io/commands/eval/)'
 - '[freeCodeCamp: A Quick Guide to Redis Lua Scripting](https://www.freecodecamp.org/news/a-quick-guide-to-redis-lua-scripting/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

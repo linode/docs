@@ -20,6 +20,7 @@ external_resources:
 - '[Linode Object Storage Cluster data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster)'
 - '[Linode Object Storage Bucket documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_bucket)'
 - '[Linode Object Storage Objects documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---

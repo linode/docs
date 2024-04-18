@@ -2,6 +2,7 @@
 title: "Define Access and Permissions using Bucket Policies"
 description: "Learn how to use bucket policies to set permissions and access controls within Object Storage"
 date: 2022-03-11
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

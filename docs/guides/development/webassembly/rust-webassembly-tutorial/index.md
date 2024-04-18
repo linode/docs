@@ -10,6 +10,7 @@ title_meta: A Rust and WebAssembly Tutorial
 external_resources:
 - '[WebAssembly](https://webassembly.org/)'
 - '[Rust and WebAssembly](https://rustwasm.github.io/docs/book)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

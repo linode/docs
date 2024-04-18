@@ -8,6 +8,7 @@ modified: 2020-12-01
 published: 2009-09-09
 title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

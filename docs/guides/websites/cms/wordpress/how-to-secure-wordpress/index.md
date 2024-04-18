@@ -15,6 +15,7 @@ external_resources:
 - '[Installing Plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins)'
 aliases: ['/websites/cms/wordpress/how-to-secure-wordpress/']
 image: SecureWordpress.png
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

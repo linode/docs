@@ -9,6 +9,7 @@ external_resources:
 - '[Red Hat Developer: Podman and Buildah for Docker Users](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users#)'
 - '[phoenixNAP: Podman vs Docker - Everything You Need to Know](https://phoenixnap.com/kb/podman-vs-docker)'
 - '[How-to Geek: What Is Podman and How Does It Differ from Docker?](https://www.howtogeek.com/devops/what-is-podman-and-how-does-it-differ-from-docker/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---

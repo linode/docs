@@ -18,6 +18,7 @@ relations:
         key: how-to-install-drush
         keywords:
            - distribution: CentOS 8
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -17,6 +17,7 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -17,6 +17,7 @@ relations:
             - distribution: CentOS 7
 tags: ["nosql","database","centos"]
 aliases: ['/databases/mongodb/install-mongodb-on-centos-7/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

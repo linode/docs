@@ -16,6 +16,7 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 aliases: ['/websites/ecommerce/install-magento-on-ubuntu-16-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

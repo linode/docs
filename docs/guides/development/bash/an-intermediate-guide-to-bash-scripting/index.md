@@ -9,6 +9,7 @@ title_meta: 'An Intermediate Guide to Bash Scripting'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 aliases: ['/development/bash/an-intermediate-guide-to-bash-scripting/']
+authors: ["Mihalis Tsoukalos"]
 contributors: ["Mihalis Tsoukalos"]
 ---
 

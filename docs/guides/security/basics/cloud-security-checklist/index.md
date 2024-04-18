@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
 title: "An Essential Cloud Security Checklist (Plus Best Practices)"
 title_meta: "Cloud Security Best Practices Checklist"
+authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 ---
 

@@ -6,6 +6,7 @@ aliases: ['/web-applications/wikis/','/websites/wikis/']
 published: 2010-03-01
 title: Wikis
 show_in_lists: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

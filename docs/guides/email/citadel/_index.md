@@ -6,6 +6,7 @@ published: 2009-07-16
 title: Citadel
 show_in_lists: true
 aliases: ['/email/citadel/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

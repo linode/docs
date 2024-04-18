@@ -13,6 +13,7 @@ external_resources:
 - '[Octant on GitHub](https://github.com/vmware-tanzu/octant)'
 - '[Octant on Twitter](https://twitter.com/projectoctant)'
 aliases: ['/applications/containers/kubernetes/using-octant-with-kubernetes-a-tutorial/','/kubernetes/using-octant-with-kubernetes-a-tutorial/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

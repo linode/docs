@@ -7,6 +7,7 @@ modified: 2023-01-18
 title: "Install a Custom Linux Distribution on a Compute Instance"
 aliases: ['/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/','/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/','/guides/install-a-custom-distribution-on-a-linode/','/guides/install-a-custom-distribution/']
 image: install-a-custom-distribution-on-a-linode.png
+authors: ["Nick Brewer"]
 contributors: ["Nick Brewer"]
 ---
 

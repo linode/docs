@@ -4,6 +4,7 @@ description: "Deploy MainConcept Live Encoder demo, an enterprise ready live enc
 keywords: ['encoder','video','live','rtmp','rtsp','rtp','udp','zixi','srt','mpeg-dash','hls']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

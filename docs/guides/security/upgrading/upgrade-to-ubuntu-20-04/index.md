@@ -13,6 +13,7 @@ relations:
         keywords:
             - distribution: Ubuntu 20.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-20-04/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

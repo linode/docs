@@ -11,6 +11,7 @@ external_resources:
  - '[rsync Linux Man Page](https://linux.die.net/man/1/rsync)'
  - '[Rsync tips at Calomel.org](https://calomel.org/rsync_tips.html)'
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

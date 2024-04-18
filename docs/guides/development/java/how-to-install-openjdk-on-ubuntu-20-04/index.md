@@ -18,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 20.04
 aliases: ['/development/java/how-to-install-openjdk-on-ubuntu-20-04/']
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
 - '[Python queue documentation](https://docs.python.org/3/library/queue.html)'
 - '[Python PriorityQueue documentation](https://docs.python.org/3/library/queue.html?highlight=priorityqueue#queue.PriorityQueue)'
 - '[Python heapq documentation](https://docs.python.org/3/library/heapq.html#priority-queue-implementation-notes)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

@@ -16,6 +16,7 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: Debian 10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

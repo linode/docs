@@ -4,6 +4,7 @@ title: "Quick Guide to SMTP: The Protocol That Powers Email"
 description: 'What is SMTP and how does it work? Simple Mail Transfer Protocol is the technology behind email communication. ✓ Learn how to use handy SMTP commands here!'
 keywords: ['what is smtp','mail transfers','smtp tcp or udp','smtp addressing','how does smtp work','full form of smtp','what is smtp used for','smtp protocol example','what does smtp do','smtp layer']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["David Robert Newman"]
 contributors: ["David Robert Newman"]
 published: 2024-01-17
 ---

@@ -14,6 +14,7 @@ external_resources:
 - '[Salt Apache_Site State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_site.html)'
 - '[Using Grains in SLS Modules](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt3.html#using-grains-in-sls-modules)'
 aliases: ['/applications/configuration-management/salt/configure-apache-with-salt-stack/','/applications/configuration-management/configure-apache-with-salt-stack/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

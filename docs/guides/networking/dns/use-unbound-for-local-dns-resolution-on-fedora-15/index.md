@@ -14,6 +14,7 @@ relations:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Fedora 15
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

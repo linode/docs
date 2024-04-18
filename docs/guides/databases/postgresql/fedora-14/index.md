@@ -14,6 +14,7 @@ relations:
             - distribution: Fedora 14
 tags: ["database","postgresql","fedora"]
 aliases: ['/databases/postgresql/fedora-14/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

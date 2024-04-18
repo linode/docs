@@ -13,6 +13,7 @@ external_resources:
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
 tags: ["email"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ modified: 2013-10-03
 published: 2011-11-02
 title: Installing DirectAdmin on Debian 6
 deprecated: true
+authors: ["Chris Ciufo"]
 contributors: ["Chris Ciufo"]
 ---
 

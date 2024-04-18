@@ -8,6 +8,7 @@ title: "Deploy ClusterControl through the Linode Marketplace"
 aliases: ['/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
 external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

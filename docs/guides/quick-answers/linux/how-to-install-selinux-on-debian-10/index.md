@@ -15,6 +15,7 @@ relations:
         key: how-to-install-selinux
         keywords:
             - distribution: Debian 10
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -15,6 +15,7 @@ relations:
         key: how-to-install-magento
         keywords:
            - distribution: CentOS 8
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

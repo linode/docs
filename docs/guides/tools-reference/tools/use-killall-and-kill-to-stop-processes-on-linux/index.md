@@ -8,6 +8,7 @@ modified: 2018-02-21
 published: 2010-11-29
 title: Use killall and kill Commands to Stop Processes on Linux
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
 title: "Use Bokeh and Python to Create Data Visualizations"
 title_meta: "Get Started With Bokeh and Python Data Visualizations"
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 ---
 

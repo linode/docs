@@ -10,6 +10,7 @@ title: "Connect to a MySQL Database Using the mysql Command"
 aliases: ['/guides/connect-to-a-mysql-or-mariadb-database/']
 external_resources:
 - '[MySQL Command-Line Client documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql.html)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

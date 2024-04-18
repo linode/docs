@@ -13,6 +13,7 @@ relations:
         key: how-to-install-magento
         keywords:
            - distribution: Debian 5
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

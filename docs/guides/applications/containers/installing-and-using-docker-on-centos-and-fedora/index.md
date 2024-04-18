@@ -16,6 +16,7 @@ relations:
         key: installing-and-using-docker
         keywords:
             - distribution: CentOS and Fedora
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

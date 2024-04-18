@@ -10,6 +10,7 @@ title: "Installing and Configuring Supervisor on CentOS 8"
 title_meta: "How to Install and Configure Supervisor on CentOS 8"
 external_resources:
 - '[Configuration File — Supervisor 4.2.1 documentation](http://supervisord.org/configuration.html)'
+authors: ["Dan Nielsen"]
 contributors: ["Dan Nielsen"]
 ---
 

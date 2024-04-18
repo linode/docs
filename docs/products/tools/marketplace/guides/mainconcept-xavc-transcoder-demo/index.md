@@ -4,6 +4,7 @@ description: "Deploy MainConcept XAVC Transcoder demo, an enterprise ready tool 
 keywords: ['transcoder','encoder','video','sony','xavc','xavc-intra','xavc long gop','xavc-s','rest api']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

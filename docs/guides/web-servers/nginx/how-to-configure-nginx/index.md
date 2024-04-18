@@ -10,6 +10,7 @@ published: 2010-01-18
 title: Complete Guide to NGINX Configuration
 title_meta: How to Configure NGINX
 tags: ["web server","nginx"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

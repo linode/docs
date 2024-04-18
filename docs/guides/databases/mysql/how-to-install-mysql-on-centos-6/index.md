@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: CentOS 6
 tags: ["database","mysql","centos"]
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

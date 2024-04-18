@@ -20,6 +20,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/squid/squid-http-proxy-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

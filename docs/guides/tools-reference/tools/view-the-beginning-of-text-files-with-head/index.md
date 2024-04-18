@@ -9,6 +9,7 @@ modified: 2018-02-02
 published: 2010-10-25
 title: View the Beginning of Text Files with head
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

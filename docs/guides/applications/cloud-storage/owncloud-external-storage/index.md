@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-15
 title: "Configure ownCloud to use External Storage"
 title_meta: "How to Configure ownCloud to use External Storage"
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

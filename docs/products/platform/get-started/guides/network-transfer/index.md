@@ -6,6 +6,7 @@ modified: 2023-10-25
 title: "Network Transfer Usage and Costs"
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/','/guides/network-transfer/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

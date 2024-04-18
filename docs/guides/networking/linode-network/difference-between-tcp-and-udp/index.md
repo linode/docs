@@ -9,6 +9,7 @@ title_meta: "The Difference Between TCP and UDP Explained | Linode"
 external_resources:
 - '[IETF TCP RFC 793](https://datatracker.ietf.org/doc/html/rfc793)'
 - '[IETF UDP RFC 768](https://datatracker.ietf.org/doc/html/rfc768)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

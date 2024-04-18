@@ -9,6 +9,7 @@ external_resources:
   - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
   - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'
 aliases: ['/guides/mastodon-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

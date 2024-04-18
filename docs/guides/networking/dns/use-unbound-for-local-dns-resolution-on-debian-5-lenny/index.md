@@ -14,6 +14,7 @@ relations:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

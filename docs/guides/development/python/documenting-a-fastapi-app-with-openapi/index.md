@@ -10,6 +10,7 @@ title: "Document a FastAPI App with OpenAPI"
 external_resources:
 - '[OpenAPI Swagger Specification](https://swagger.io/specification/)'
 - '[OpenAPI Specification (OAS)](https://spec.openapis.org/oas/v3.1.0)'
+authors: ["Chelsea Troy"]
 contributors: ["Chelsea Troy"]
 ---
 

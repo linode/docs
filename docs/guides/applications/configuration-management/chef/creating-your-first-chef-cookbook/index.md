@@ -14,6 +14,7 @@ external_resources:
  - '[About Knife](https://docs.chef.io/knife.html)'
  - '[About Nodes](https://docs.chef.io/nodes.html)'
 tags: ["automation"]
+authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 ---
 

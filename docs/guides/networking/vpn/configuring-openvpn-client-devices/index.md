@@ -13,6 +13,7 @@ external_resources:
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/configuring-openvpn-client-devices/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

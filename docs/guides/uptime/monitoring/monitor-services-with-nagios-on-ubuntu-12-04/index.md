@@ -19,6 +19,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

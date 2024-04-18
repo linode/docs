@@ -8,6 +8,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/orchestration-definition-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

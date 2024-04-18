@@ -8,6 +8,7 @@ modified: 2013-10-01
 published: 2010-05-03
 title: Discussion Forums with Vanilla Forums
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

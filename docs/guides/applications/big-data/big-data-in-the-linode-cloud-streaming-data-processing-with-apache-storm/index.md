@@ -13,6 +13,7 @@ external_resources:
 - '[Storm - Distributed and Fault-Tolerant Real-time Computation](http://www.infoq.com/presentations/Storm-Introduction)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm/']
+authors: ["Karthik Shiraly"]
 contributors: ["Karthik Shiraly"]
 ---
 

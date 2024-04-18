@@ -8,6 +8,7 @@ published: 2021-12-29
 title: "Using MagicSpam to Secure your Email Server"
 title_meta: "How to stop BEC and Compromised Accounts on cPanel or Plesk Server"
 tags: ["email"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -17,6 +17,7 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","mysql","php"]
 deprecated: true
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

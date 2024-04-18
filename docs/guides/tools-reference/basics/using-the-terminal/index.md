@@ -10,6 +10,7 @@ title: Using the Terminal
 external_resources:
  - '[Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)'
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

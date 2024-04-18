@@ -6,6 +6,7 @@ description: 'Learn how to create a LAMP stack application on Linux. Read our gu
 keywords: ['LAMP Stack Application', 'How to create a LAMP stack application', 'LAMP stack', 'LAMP stack on Linux']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 published: 2023-04-05
 external_resources:

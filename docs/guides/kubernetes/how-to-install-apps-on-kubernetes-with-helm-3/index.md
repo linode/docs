@@ -12,6 +12,7 @@ concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm Documentation](https://helm.sh/docs/)'
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -3,6 +3,7 @@ title: "Create a NodeBalancer"
 description: "Instructions on creating a NodeBalancer, Linode's load balancing solution."
 published: 2022-10-07
 modified: 2023-02-06
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

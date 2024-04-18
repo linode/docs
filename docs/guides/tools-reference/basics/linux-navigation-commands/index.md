@@ -6,6 +6,7 @@ tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-08
 title: "Navigate the Linux Terminal and File System"
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

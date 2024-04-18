@@ -8,6 +8,7 @@ title: "Deploy OpenLiteSpeed Node.js through the Linode Marketplace"
 external_resources:
 - '[Node.js OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'
 aliases: ['/guides/deploying-openlitespeed-nodejs-marketplace-app/','/guides/openlitespeed-nodejs-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

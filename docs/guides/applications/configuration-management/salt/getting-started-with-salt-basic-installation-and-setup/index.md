@@ -9,6 +9,7 @@ image: GettingStartedwithSalt.png
 published: 2015-09-22
 title: Getting Started with Salt - Basic Installation and Setup
 tags: ["automation","salt"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

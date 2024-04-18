@@ -16,6 +16,7 @@ relations:
         keywords:
             - distribution: NixOS
 aliases: ['/tools-reference/custom-kernels-distros/install-nixos-on-linode/']
+authors: ["Andrew Miller"]
 contributors: ["Andrew Miller"]
 ---
 

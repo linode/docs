@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/security/selinux/a-beginners-guide-to-selinux-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ title: 'Migrating a Google Cloud Platform VM Instance to Linode'
 title_meta: 'How to Migrate from Google Cloud Platform to Linode'
 tags: ["linode platform"]
 aliases: ['/platform/migrate-to-linode/how-to-migrate-from-gcp-to-linode/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ keywords: ["monitoring"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/uptime/monitoring-cloud-manager-graphs-shortguide/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -17,6 +17,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

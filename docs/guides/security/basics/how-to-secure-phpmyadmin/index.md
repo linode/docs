@@ -10,6 +10,7 @@ title: Securing phpMyAdmin
 title_meta: How to Secure phpMyAdmin
 aliases: ['/security/basics/how-to-secure-phpmyadmin/']
 image: Securing_phpMyAdmin.png
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

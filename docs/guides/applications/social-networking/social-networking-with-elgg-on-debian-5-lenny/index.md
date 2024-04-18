@@ -9,6 +9,7 @@ modified: 2013-10-04
 published: 2009-12-08
 title: 'Social Networking with Elgg on Debian 5 (Lenny)'
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -12,6 +12,7 @@ external_resources:
  - '[cPanel Home Page](https://cpanel.com)'
  - '[cPanel Support](https://cpanel.com/support)'
  - '[cPanel Documentation](https://documentation.cpanel.net)'
+authors: ["Chris Ciufo"]
 contributors: ["Chris Ciufo"]
 ---
 

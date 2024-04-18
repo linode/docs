@@ -9,6 +9,7 @@ modified: 2019-01-02
 image: UseSaltStatestoCreateLAMPStackandFail2banAcrossSaltminions.png
 published: 2015-07-02
 title: Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

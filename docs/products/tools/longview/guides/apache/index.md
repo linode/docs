@@ -12,6 +12,7 @@ relations:
         key: what-is-longview
         keywords:
             - distribution: Apache
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

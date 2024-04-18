@@ -16,6 +16,7 @@ relations:
         key: using-webalizer-analytics
         keywords:
             - distribution: CentOS 5
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

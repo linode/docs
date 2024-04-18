@@ -11,6 +11,7 @@ title: "Serve PHP with PHP-FPM and NGINX"
 image: serve-php-with-phpfpm-and-nginx-smp.jpg
 external_resources:
  - '[PHP Manual](https://secure.php.net/docs.php)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

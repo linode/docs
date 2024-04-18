@@ -19,6 +19,7 @@ relations:
         key:  mantis-bug-tracker
         keywords:
             - distribution: CentOS 5
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

@@ -16,6 +16,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Debian 8
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -4,6 +4,7 @@ published: 2022-10-28
 title: "CNAME Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

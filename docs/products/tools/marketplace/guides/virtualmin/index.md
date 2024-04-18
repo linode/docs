@@ -10,6 +10,7 @@ external_resources:
 - '[Virtualmin Documentation](https://www.virtualmin.com/documentation)'
 - '[Virtualmin Support](https://www.virtualmin.com/support)'
 aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/deploy-virtualmin-with-one-click-apps/','/guides/virtualmin-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

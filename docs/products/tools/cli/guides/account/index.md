@@ -3,6 +3,7 @@ title: "Linode CLI Commands for Account Management"
 description: "How to use the Linode CLI for Account management tasks."
 published: 2020-07-22
 modified: 2022-05-02
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

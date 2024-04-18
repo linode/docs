@@ -7,6 +7,7 @@ published: 2012-04-05
 modified: 2023-03-14
 bundles: ['troubleshooting']
 aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

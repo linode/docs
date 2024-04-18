@@ -2,6 +2,7 @@
 title: "Attach a VLAN to a Compute Instance"
 description: "Learn how to create a VLAN and attach it to a new or existing Compute Instance"
 modified: 2022-08-23
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

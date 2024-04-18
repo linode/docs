@@ -20,6 +20,7 @@ relations:
             - distribution: CentOS 8
 tags: ["mariadb","database","centos"]
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

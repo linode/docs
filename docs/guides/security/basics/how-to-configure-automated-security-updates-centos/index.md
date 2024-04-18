@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: CentOS
 image: Configuring_automated_security_updates_centos.png
+authors: ["Hackersploit"]
 contributors: ["Hackersploit"]
 ---
 

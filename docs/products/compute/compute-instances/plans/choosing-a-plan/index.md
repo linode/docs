@@ -8,6 +8,7 @@ published: 2019-02-04
 modified: 2024-03-11
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-linode-plan/','/guides/choosing-a-compute-instance-plan/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

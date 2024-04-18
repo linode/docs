@@ -4,6 +4,7 @@ published: 2023-02-03
 title: "A and AAAA Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ title: "Use Lists and Sets in Redis Database"
 title_meta: "How to Use  Lists and Sets in Redis Database"
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

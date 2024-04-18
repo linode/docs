@@ -6,6 +6,7 @@ published: 2023-01-23
 title: "Deploying Apache Airflow through the Linode Marketplace"
 external_resources:
 - '[Apache Airflow](https://airflow.apache.org/docs/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

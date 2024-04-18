@@ -24,6 +24,7 @@ relations:
         key: install-nodejs-nginx
         keywords:
             - distribution: Debian 8
+authors: ["Joe D."]
 contributors: ["Joe D."]
 ---
 

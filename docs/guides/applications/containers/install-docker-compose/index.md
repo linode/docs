@@ -6,10 +6,12 @@ keywords: ["docker", "docker compose", "container"]
 tags: ["container", "docker"]
 modified: 2012-11-29
 title: "How to Install Docker Compose"
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 published: 2018-01-08
 headless: true
 aliases: ['/applications/containers/install-docker-compose/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

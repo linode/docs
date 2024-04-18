@@ -9,6 +9,7 @@ modified: 2019-01-02
 deprecated: true
 title: 'Pritunl VPN Server and Management Panel on Ubuntu 14.04'
 aliases: ['/networking/vpn/pritunl-vpn-ubuntu/']
+authors: ["Andrew Gottschling"]
 contributors: ["Andrew Gottschling"]
 ---
 

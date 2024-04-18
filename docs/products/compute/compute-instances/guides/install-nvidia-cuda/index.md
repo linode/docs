@@ -5,6 +5,7 @@ description: "This guide provides step-by-step instructions for installing the N
 published: 2022-01-21
 modified: 2023-06-21
 aliases: ['/products/compute/gpu/guides/install-nvidia-drivers-with-cuda/','/products/compute/gpu/guides/install-nvidia-drivers-manually/','/products/compute/gpu/guides/install-nvidia-driver-dependencies/','/products/compute/gpu/guides/install-nvidia-cuda/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

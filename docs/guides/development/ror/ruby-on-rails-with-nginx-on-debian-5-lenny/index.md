@@ -14,6 +14,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

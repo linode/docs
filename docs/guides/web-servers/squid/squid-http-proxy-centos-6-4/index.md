@@ -16,6 +16,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: CentOS 6
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

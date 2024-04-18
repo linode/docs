@@ -8,6 +8,7 @@ published: 2021-07-30
 title: "Configure Source-Replica Replication in MySQL"
 external_resources:
 - '[MySQL Documentation](https://dev.mysql.com/doc/refman/8.0/en/replication.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---

@@ -14,6 +14,7 @@ external_resources:
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'
   - '[WSGI/Python Quickstart Guide](https://uwsgi-docs.readthedocs.org/en/latest/WSGIquickstart.html)'
   - '[nginx Configuration](/docs/guides/how-to-configure-nginx/)'
+authors: ["Sergey Pariev"]
 contributors: ["Sergey Pariev"]
 ---
 

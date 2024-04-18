@@ -9,6 +9,7 @@ published: 2014-08-05
 title: "Using Google Workspace for Email"
 title_meta: "How to Use Google Workspace for Email"
 tags: ["email"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

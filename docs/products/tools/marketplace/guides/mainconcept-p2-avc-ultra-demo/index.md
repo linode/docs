@@ -4,6 +4,7 @@ description: "Deploy MainConcept P2 AVC-ULTRA Transcoder demo, an enterprise rea
 keywords: ['transcoder','encoder','video','panasonic','p2 avc-ultra','p2 avc-intra','p2 avc longg','avc-intra rp2027','rest api']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-14
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

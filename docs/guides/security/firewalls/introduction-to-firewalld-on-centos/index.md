@@ -15,6 +15,7 @@ external_resources:
  - '[Fedora Wiki: Firewalld](https://fedoraproject.org/wiki/Firewalld)'
 aliases: ['/security/firewalls/introduction-to-firewalld-on-centos/']
 image: introduction-to-firewalld-on-centos.png
+authors: ["Florent Houbart"]
 contributors: ["Florent Houbart"]
 ---
 

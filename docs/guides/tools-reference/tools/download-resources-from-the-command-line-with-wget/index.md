@@ -8,6 +8,7 @@ modified: 2018-05-18
 published: 2010-10-25
 title: Download Resources from the Command Line with wget
 tags: ["linux"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

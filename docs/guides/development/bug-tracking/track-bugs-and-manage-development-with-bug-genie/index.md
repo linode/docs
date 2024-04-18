@@ -9,6 +9,7 @@ modified: 2013-10-04
 published: 2010-05-03
 title: Track Bugs and Manage Development with Bug Genie
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

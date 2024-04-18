@@ -16,6 +16,7 @@ external_resources:
 - '[First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
 - '[WordPress Support: WordPress Widgets](https://wordpress.org/support/article/wordpress-widgets/)'
 
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

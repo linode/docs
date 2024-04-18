@@ -8,6 +8,7 @@ modified: 2019-03-06
 published: 2013-10-18
 title: Migrate from Shared Hosting to Linode
 tags: ["linode platform"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

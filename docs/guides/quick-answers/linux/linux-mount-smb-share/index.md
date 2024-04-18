@@ -4,6 +4,7 @@ title: "Mount an SMB Share in Linux"
 description: "Learn how to mount a Windows directory in Linux using the SMB Protocol. This enables you to remotely access and modify you files."
 keywords: ['linux mount smb share', 'mount smb share linux', 'mount cifs', 'linux cifs mount']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2023-06-06
 external_resources:

@@ -14,6 +14,7 @@ external_resources:
 - '[Creating and importing projects in Jenkins X](https://jenkins-x.io/docs/create-project/creating/)'
 aliases: ['/kubernetes/how-to-deploy-jenkins-x-in-linode-kubernetes-engine/']
 deprecated: true
+authors: ["Daniele Polencic"]
 contributors: ["Daniele Polencic"]
 ---
 

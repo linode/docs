@@ -11,6 +11,7 @@ external_resources:
 - '[Wikipedia nslookup page](https://en.wikipedia.org/wiki/Nslookup)'
 - '[Wikipedia Domain Name System page](https://en.wikipedia.org/wiki/Domain_Name_System)'
 - '[Microsoft nslookup documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

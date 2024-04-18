@@ -10,6 +10,7 @@ published: 2020-04-24
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/nodejs/how-to-install-nvm/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

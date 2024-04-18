@@ -14,6 +14,7 @@ relations:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

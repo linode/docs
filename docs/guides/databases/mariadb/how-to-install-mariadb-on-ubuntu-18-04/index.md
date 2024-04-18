@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 tags: ["ubuntu","mariadb","database"]
+authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
 ---
 

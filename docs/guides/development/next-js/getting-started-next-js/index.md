@@ -11,6 +11,7 @@ external_resources:
 - '[Next.js: Introduction](https://nextjs.org/learn/foundations/about-nextjs)'
 - '[Next.js: Create a Next.js App](https://nextjs.org/learn/basics/create-nextjs-app)'
 - '[freeCodeCamp: Get Started with Next.js – The React Library your Project Needs](https://www.freecodecamp.org/news/nextjs-tutorial/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

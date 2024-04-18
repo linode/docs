@@ -24,6 +24,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-centos-8/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -10,6 +10,7 @@ published: 2018-01-30
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/java/install-java-jdk/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

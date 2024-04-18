@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-29
 title: "Getting Started with TypeScript Functions"
 title_meta: "TypeScript Functions: Getting Started"
+authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 ---
 

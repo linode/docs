@@ -6,6 +6,7 @@ published: 2023-01-23
 title: "Deploy Haltdos Community WAF through the Linode Marketplace"
 external_resources:
 - '[Haltdos Community WAF](https://docs.haltdos.com/community)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

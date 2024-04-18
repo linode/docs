@@ -9,6 +9,7 @@ title_meta: "How to Copy Files and Directories in Linux"
 external_resources:
 - '[man page for cp command](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cp.html)'
 - '[Ubuntu 22.04 documentation for the cp command](https://manpages.ubuntu.com/manpages/jammy/man1/cp.1.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

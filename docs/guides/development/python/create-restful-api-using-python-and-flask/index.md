@@ -6,6 +6,7 @@ tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 title: "Create a RESTful API Using Python and Flask"
+authors: ["Chelsea Troy"]
 contributors: ["Chelsea Troy"]
 ---
 

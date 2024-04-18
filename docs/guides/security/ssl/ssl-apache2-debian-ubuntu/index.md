@@ -16,6 +16,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Debian/Ubuntu
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

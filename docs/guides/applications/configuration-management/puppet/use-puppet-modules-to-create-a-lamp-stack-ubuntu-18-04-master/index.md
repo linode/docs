@@ -13,6 +13,7 @@ relations:
         key: install-puppet-lamp-master
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

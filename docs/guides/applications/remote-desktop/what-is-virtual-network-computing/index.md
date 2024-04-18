@@ -7,6 +7,7 @@ published: 2021-05-11
 image: VNC.jpg
 title: "An Overview of VNC (Virtual Network Computing)"
 tags: ['linux']
+authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 ---
 

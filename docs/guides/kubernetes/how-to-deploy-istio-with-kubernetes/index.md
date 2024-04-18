@@ -12,6 +12,7 @@ external_resources:
 - '[Istio Mesh Security](https://istio.io/docs/ops/configuration/security/)'
 - '[Istio Troubleshooting](https://istio.io/docs/ops/diagnostic-tools/)'
 aliases: ['/kubernetes/how-to-deploy-istio-with-kubernetes/','/applications/containers/kubernetes/how-to-deploy-istio-with-kubernetes/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

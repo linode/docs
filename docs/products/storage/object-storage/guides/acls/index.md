@@ -4,6 +4,7 @@ description: "Learn how to use ACLs to set permissions and access controls withi
 aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/', '/guides/how-to-use-object-storage-acls-and-bucket-policies/']
 published: 2019-12-16
 modified: 2022-03-11
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

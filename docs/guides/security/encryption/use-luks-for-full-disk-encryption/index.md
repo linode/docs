@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-11-02
 published: 2016-11-02
 title: How to Use LUKS for Full Disk Encryption on Linux
+authors: ["Nick Brewer"]
 contributors: ["Nick Brewer"]
 ---
 

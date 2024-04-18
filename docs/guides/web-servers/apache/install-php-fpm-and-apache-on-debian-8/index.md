@@ -11,6 +11,7 @@ title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[FastCGI Process Manager](http://php.net/manual/en/install.fpm.configuration.php)'
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

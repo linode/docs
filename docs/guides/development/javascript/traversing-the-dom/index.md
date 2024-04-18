@@ -10,6 +10,7 @@ external_resources:
 - '[MDN Web Docs: Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)'
 - '[W3 Schools: HTML DOM querySelector() Method](https://www.w3schools.com/jsref/met_document_queryselector.asp)'
 - '[MDN Web Docs: Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

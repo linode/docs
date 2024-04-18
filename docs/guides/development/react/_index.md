@@ -6,5 +6,6 @@ published: 2018-01-31
 title: React
 show_in_lists: true
 aliases: ['/development/react/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---

@@ -9,6 +9,7 @@ title: 'A Tutorial for Learning Adhoc Commands in Ansible'
 title_meta: 'Ansible Adhoc Commands - A Tutorial'
 aliases: ['/applications/configuration-management/ansible-adhoc-commands/','/applications/configuration-management/ansible/ansible-adhoc-commands/']
 tags: ["automation"]
+authors: ["Avi"]
 contributors: ["Avi"]
 ---
 

@@ -19,6 +19,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: CentOS 5
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

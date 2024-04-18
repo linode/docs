@@ -14,6 +14,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 11.04
+authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 ---
 

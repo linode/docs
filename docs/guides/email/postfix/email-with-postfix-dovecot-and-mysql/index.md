@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian and Ubuntu
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/','/email/postfix/dovecot-mysql-ubuntu-10.04-lucid/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -6,6 +6,7 @@ title: "Manage Domains"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/docs/products/networking/dns-manager/guides/remove-domains/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

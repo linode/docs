@@ -14,6 +14,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
+authors: ["Joe D."]
 contributors: ["Joe D."]
 ---
 

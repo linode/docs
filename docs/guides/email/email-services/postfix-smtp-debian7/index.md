@@ -8,6 +8,7 @@ modified: 2019-01-24
 published: 2014-05-30
 title: "Configure Postfix to Send Email Using External SMTP Servers"
 aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-smtp-debian7/']
+authors: ["Santiago Ti"]
 contributors: ["Santiago Ti"]
 ---
 {{< note respectIndent=false >}}

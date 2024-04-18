@@ -13,6 +13,7 @@ external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 - '[Official Hugo Documentation](https://gohugo.io/getting-started/installing/)'
 - '[Official Docker Documentation](https://docs.docker.com/docker-hub/builds/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -10,6 +10,7 @@ show_on_rss_feed: false
 title: Install NGINX on Ubuntu from the Official NGINX Repository
 tags: ["web server","nginx"]
 aliases: ['/web-servers/nginx/install-nginx-ubuntu-ppa/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

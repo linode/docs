@@ -15,6 +15,7 @@ external_resources:
  - '[The Open and Free Technology Community](https://www.oftc.net/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

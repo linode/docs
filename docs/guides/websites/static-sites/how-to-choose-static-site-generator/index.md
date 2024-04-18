@@ -8,6 +8,7 @@ modified: 2018-03-14
 published: 2018-03-14
 title: 'How to Choose a Static Site Generator'
 aliases: ['/websites/static-sites/how-to-choose-static-site-generator/']
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

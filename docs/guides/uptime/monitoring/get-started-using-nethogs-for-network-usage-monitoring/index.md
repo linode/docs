@@ -8,6 +8,7 @@ published: 2021-02-19
 image: UsingNethogs_NetworkMonitoring.png
 title: "Using Nethogs to Monitor Network Usage"
 title_meta: "How to Use Nethogs to Monitor Network Usage"
+authors: ["Steven J. Vaughan-Nichols"]
 contributors: ["Steven J. Vaughan-Nichols"]
 ---
 

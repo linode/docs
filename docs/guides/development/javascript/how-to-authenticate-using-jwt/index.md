@@ -10,6 +10,7 @@ title_meta: "User Authentication with JWTs in Express and Node.js"
 external_resources:
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
 - '[IANA JSON Web Token specifications](https://tools.ietf.org/html/rfc7519#section-4.1)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

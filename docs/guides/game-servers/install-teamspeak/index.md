@@ -11,6 +11,7 @@ external_resources:
  - '[TeamSpeak KB](https://support.teamspeakusa.com/index.php?/Knowledgebase/List/Index/10/english)'
  - '[Changing the serveradmin Password](https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/326/0/how-do-i-change-or-reset-the-password-of-the-serveradmin-server-query-account)'
 dedicated_cpu_link: true
+authors: ["Scott Sumner"]
 contributors: ["Scott Sumner"]
 ---
 

@@ -13,6 +13,7 @@ relations:
         key: how-to-install-opencart
         keywords:
            - distribution: Fedora 15
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

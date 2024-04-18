@@ -20,6 +20,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/ghost/how-to-install-ghost-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -16,6 +16,7 @@ external_resources:
 - '[Grafana Tutorials](https://grafana.com/tutorials/)'
 - '[TimescaleDB Documentation](https://docs.timescale.com/)'
 aliases: ['/kubernetes/deploy-tobs-on-linode-kubernetes-engine/']
+authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 ---
 

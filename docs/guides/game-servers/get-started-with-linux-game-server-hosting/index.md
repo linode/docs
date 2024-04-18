@@ -7,6 +7,7 @@ published: 2021-03-08
 image: LinuxGameServerHosting.png
 title: "Getting Started with Linux Game Server Hosting"
 title_meta: "How to Get Started with Linux Game Server Hosting"
+authors: ["Sandro Villinger"]
 contributors: ["Sandro Villinger"]
 ---
 

@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 9
 aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

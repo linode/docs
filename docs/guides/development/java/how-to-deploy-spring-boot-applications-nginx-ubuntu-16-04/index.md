@@ -22,6 +22,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/development/java/how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04/']
+authors: ["Sam Foo"]
 contributors: ["Sam Foo"]
 ---
 

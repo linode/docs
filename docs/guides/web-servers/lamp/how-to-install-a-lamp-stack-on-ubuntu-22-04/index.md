@@ -19,6 +19,7 @@ relations:
         key: install-lamp-stack
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 aliases: ['/lamp-guides/ubuntu-11.04-natty/']
 ---

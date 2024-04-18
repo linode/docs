@@ -8,6 +8,7 @@ published: 2018-05-10
 aliases: ['/networking/diagnostics/deploy-ntopng-on-debian-8/','/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/']
 modified: 2018-04-16
 title: 'Monitor Your Network with ntopng'
+authors: ["Andrew Lescher"]
 contributors: ["Andrew Lescher"]
 ---
 

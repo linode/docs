@@ -12,6 +12,7 @@ title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 aliases: ['/guides/how-to-use-yum/']
 external_resources:
 - '[YUM Package Manager](http://yum.baseurl.org/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

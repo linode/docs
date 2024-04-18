@@ -11,6 +11,7 @@ external_resources:
 - '[Linode Cloud Module](https://docs.saltproject.io/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
 aliases: ['/applications/configuration-management/salt-command-line-reference/','/applications/configuration-management/salt/salt-command-line-reference/']
 tags: ["automation","salt"]
+authors: ["Andy Stevens"]
 contributors: ["Andy Stevens"]
 ---
 

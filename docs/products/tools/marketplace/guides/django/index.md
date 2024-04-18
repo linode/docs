@@ -10,6 +10,7 @@ aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/
 external_resources:
  - '[The Django Project](https://www.djangoproject.com/)'
  - '[Django Documentation](https://docs.djangoproject.com/en/2.2/releases/)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ title: "Use Popeye to Check for Kubernetes Configuration Issues"
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Kubernetes Changelog](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG)'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

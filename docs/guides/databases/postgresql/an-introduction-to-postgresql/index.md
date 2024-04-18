@@ -9,6 +9,7 @@ title: "What is PostgreSQL?"
 title_meta: "An Introduction to PostgreSQL"
 external_resources:
 - '[PostgreSQL website](https://www.postgresql.org/)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 tags: ["saas"]
 ---

@@ -7,6 +7,7 @@ published: 2019-01-31
 modified: 2023-07-24
 tags: ["linode platform"]
 aliases: ['/platform/how-to-resell-linode-services/','/guides/how-to-resell-linode-services/']
+authors: ["Linode"]
 contributors: ["Linode"]
 image: how-to-resell-linode-services.png
 ---

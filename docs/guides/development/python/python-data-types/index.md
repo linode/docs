@@ -11,6 +11,7 @@ external_resources:
 - '[Real Python: Basic Data Types in Python](https://realpython.com/python-data-types/)'
 - '[Programiz: Python Data Types](https://www.programiz.com/python-programming/variables-datatypes)'
 - '[GeeksforGeeks: Python Data Types](https://www.geeksforgeeks.org/python-data-types/)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

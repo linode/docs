@@ -6,6 +6,7 @@ published: 2020-07-15
 title: Salt
 show_in_lists: true
 aliases: ['/applications/configuration-management/salt/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

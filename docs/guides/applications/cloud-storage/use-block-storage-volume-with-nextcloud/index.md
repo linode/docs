@@ -11,6 +11,7 @@ title_meta: "How to Use a Block Storage Volume with Nextcloud"
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 aliases: ['/applications/cloud-storage/use-block-storage-volume-with-nextcloud/']
+authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 ---
 

@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-08
 title: "What Is FTP and How Does It Work?"
 title_meta: "Quick Guide to FTP: File Transfer Protocol"
+authors: ["David Strom"]
 contributors: ["David Strom"]
 ---
 

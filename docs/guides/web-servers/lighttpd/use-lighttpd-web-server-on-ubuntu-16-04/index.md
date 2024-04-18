@@ -19,6 +19,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Dave Messina"]
 contributors: ["Dave Messina"]
 ---
 

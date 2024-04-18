@@ -9,6 +9,7 @@ aliases: ['/websites/cms/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/','/web
 modified: 2011-04-29
 published: 2010-04-19
 title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

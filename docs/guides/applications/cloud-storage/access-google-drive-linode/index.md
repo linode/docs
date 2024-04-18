@@ -8,6 +8,7 @@ published: 2015-09-28
 modified: 2016-03-17
 title: 'Access Google Drive from Linode with Ubuntu 14.04'
 aliases: ['/applications/cloud-storage/access-google-drive-linode/']
+authors: ["Scott Sumner"]
 contributors: ["Scott Sumner"]
 ---
 

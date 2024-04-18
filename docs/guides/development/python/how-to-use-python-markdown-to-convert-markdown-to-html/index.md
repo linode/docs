@@ -13,6 +13,7 @@ external_resources:
 - '[Markdown guide](https://www.markdownguide.org/)'
 - '[HTML Standard](https://html.spec.whatwg.org/)'
 - '[Python Input/Output documentation](https://docs.python.org/3/tutorial/inputoutput.html)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

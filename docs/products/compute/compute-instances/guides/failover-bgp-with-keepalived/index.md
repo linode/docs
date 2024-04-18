@@ -5,6 +5,7 @@ published: 2022-10-19
 modified: 2022-11-28
 title: "Use Keepalived Health Checks with BGP-based Failover"
 aliases: ['/guides/keepalived-with-bgp-failover/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

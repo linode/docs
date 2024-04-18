@@ -10,6 +10,7 @@ title_meta: "How to Use Redis Transaction Blocks"
 external_resources:
 - '[Redis: Transactions](https://redis.io/topics/transactions)'
 - '[Redis: Using Pipelining to Speedup Redis Queries](https://redis.io/topics/pipelining)'
+authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 ---
 

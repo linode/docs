@@ -12,6 +12,7 @@ external_resources:
 - '[FFMpeg](http://ffmpeg.org/)'
 - '[FFmpeg-Python GitHub page](https://github.com/kkroening/ffmpeg-python)'
 - '[FFmpeg-Python examples page](https://github.com/kkroening/ffmpeg-python/tree/master/examples)'
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

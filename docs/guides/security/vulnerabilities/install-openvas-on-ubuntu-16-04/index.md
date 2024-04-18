@@ -9,6 +9,7 @@ modified: 2016-12-19
 published: 2017-02-06
 title: Install OpenVAS 8 on Ubuntu 16.04
 deprecated: true
+authors: ["Phil Zona"]
 contributors: ["Phil Zona"]
 ---
 

@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-11
 modified: 2018-12-14
 title: "Upgrade Debian to the Newest Release"
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

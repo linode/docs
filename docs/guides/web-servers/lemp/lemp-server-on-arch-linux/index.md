@@ -14,6 +14,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["lemp","web server","php","mysql","nginx"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

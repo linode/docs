@@ -18,6 +18,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 7
+authors: ["James Stewart"]
 contributors: ["James Stewart"]
 ---
 

@@ -6,6 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-08
 title: "What Is a DNS Server?"
 title_meta: "How DNS Works: Step-by-Step Explanation"
+authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 ---
 

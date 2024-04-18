@@ -8,6 +8,7 @@ title: Working with MySQL Subqueries"
 title_meta: "How to Work with MySQL Subqueries"
 external_resources:
 - '[MySQL Subqueries](https://dev.mysql.com/doc/refman/8.0/en/subqueries.html)'
+authors: ["Francis Ndungu"]
 contributors: ["Francis Ndungu"]
 ---
 

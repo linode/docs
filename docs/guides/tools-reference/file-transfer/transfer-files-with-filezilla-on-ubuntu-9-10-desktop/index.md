@@ -9,6 +9,7 @@ aliases: ['/tools-reference/file-transfer/transfer-files-with-filezilla-on-ubunt
 modified: 2011-08-22
 published: 2009-11-13
 title: 'Transfer Files with Filezilla on Ubuntu 9.10 Desktop'
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

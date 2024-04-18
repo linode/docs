@@ -14,6 +14,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

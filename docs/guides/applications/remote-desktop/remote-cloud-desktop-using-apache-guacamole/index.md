@@ -11,6 +11,7 @@ external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
  - '[Apache Tomcat](https://tomcat.apache.org/)'
 aliases: ['/applications/remote-desktop/remote-desktop-using-apache-guacamole-on-docker/','/guides/remote-desktop-using-apache-guacamole-on-docker/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

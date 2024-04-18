@@ -12,6 +12,7 @@ relations:
         key: what-is-longview
         keywords:
             - distribution: NGINX
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

@@ -9,6 +9,7 @@ published: 2021-07-16
 image: HowtoConfigureHTTP-2onNGINX.jpg
 title: "Configure HTTP/2 on NGINX"
 title_meta: "How to Configure HTTP/2 on NGINX"
+authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 ---
 

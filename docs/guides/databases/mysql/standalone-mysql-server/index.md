@@ -9,6 +9,7 @@ published: 2009-09-30
 title: Standalone MySQL Server
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/standalone-mysql-server/']
+authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 ---
 

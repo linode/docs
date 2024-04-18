@@ -2,6 +2,7 @@
 title: "Client's IP Address Pass-through"
 description: "Learn the methods of retaining client connection details and passing them to backend nodes on a NodeBalancer"
 published: 2022-10-07
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

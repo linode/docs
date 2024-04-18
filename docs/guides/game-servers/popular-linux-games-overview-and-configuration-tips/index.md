@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 title: "An Overview of Popular Linux Games and Configuration Tips"
 title_meta: "Popular Linux Games and Configuration Tips"
+authors: ["Sandro Villinger"]
 contributors: ["Sandro Villinger"]
 ---
 

@@ -11,6 +11,7 @@ title_meta: "Machine Learning Training and Inference"
 external_resources:
 - '[How to Move Your Machine Learning Model to Production](/docs/guides/how-to-move-machine-learning-model-to-production/)'
 - '[Use Cases for Linode GPU Instances](/docs/products/compute/compute-instances/plans/gpu/)'
+authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 ---
 

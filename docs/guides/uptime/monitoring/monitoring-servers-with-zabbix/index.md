@@ -9,6 +9,7 @@ aliases: ['/server-monitoring/zabbix/','/uptime/monitoring/monitoring-servers-wi
 modified: 2012-08-20
 published: 2012-08-20
 title: Monitoring Servers with Zabbix
+authors: ["Chris Ciufo"]
 contributors: ["Chris Ciufo"]
 ---
 

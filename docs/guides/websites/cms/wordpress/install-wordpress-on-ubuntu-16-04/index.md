@@ -17,6 +17,7 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 aliases: ['/websites/cms/install-wordpress-on-ubuntu-16-04/','/websites/cms/wordpress/install-wordpress-on-ubuntu-16-04/']
+authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 ---
 

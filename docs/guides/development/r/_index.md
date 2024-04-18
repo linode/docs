@@ -6,5 +6,6 @@ published: 2018-01-29
 title: R
 show_in_lists: true
 aliases: ['/development/r/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---

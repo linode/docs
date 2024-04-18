@@ -15,6 +15,7 @@ external_resources:
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'
 audiences: ["intermediate"]
 dedicated_cpu_link: true
+authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 ---
 

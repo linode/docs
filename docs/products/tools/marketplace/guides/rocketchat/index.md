@@ -8,6 +8,7 @@ title: "Deploy Rocket.Chat through the Linode Marketplace"
 external_resources:
 - '[Rocket.Chat](https://rocket.chat/)'
 aliases: ['/guides/deploying-rocketchat-marketplace-app/','/guides/rocketchat-marketplace-app/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

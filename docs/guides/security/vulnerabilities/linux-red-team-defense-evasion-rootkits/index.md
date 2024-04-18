@@ -6,6 +6,7 @@ tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-03
 title: "Linux Red Team Defense Evasion - Rootkits"
+authors: ["HackerSploit"]
 contributors: ["HackerSploit"]
 ---
 

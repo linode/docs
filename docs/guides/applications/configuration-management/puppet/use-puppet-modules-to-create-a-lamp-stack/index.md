@@ -14,6 +14,7 @@ relations:
         key: install-puppet-lamp-master
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 ---
 

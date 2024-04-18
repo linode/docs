@@ -16,6 +16,7 @@ relations:
             - distribution: CentOS 7
 aliases: ['/databases/postgresql/use-postgresql-relational-databases-on-centos-7/','/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/']
 tags: ["database","postgresql","centos"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

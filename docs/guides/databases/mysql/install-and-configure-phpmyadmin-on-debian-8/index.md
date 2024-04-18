@@ -13,6 +13,7 @@ relations:
         keywords:
             - distribution: Debian 8
 tags: ["debian","database","mysql","php"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

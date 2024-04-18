@@ -5,6 +5,7 @@ tags: ["security", "networking", "linode platform"]
 published: 2021-04-07
 title: "Create a Private Network with VLANs Using Linode's API"
 aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/','/guides/how-to-create-a-private-network-with-linode-vlans-api/','/guides/vlan-api/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

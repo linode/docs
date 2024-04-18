@@ -16,6 +16,7 @@ relations:
         key: launch-counterstrike-server
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

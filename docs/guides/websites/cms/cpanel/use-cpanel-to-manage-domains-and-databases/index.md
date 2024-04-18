@@ -11,6 +11,7 @@ title: Use cPanel to Manage Domains and Databases
 external_resources:
  - '[cPanel Home Page](http://cpanel.net)'
  - '[cPanel Support](http://cpanel.net/support.html)'
+authors: ["Chris C."]
 contributors: ["Chris C."]
 ---
 

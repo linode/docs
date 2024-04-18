@@ -18,6 +18,7 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Debian
+authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 ---
 

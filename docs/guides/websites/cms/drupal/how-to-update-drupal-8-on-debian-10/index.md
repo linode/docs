@@ -16,6 +16,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/drupal/how-to-update-drupal-8-on-debian-10/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

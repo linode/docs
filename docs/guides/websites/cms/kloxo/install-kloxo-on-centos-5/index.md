@@ -9,6 +9,7 @@ modified: 2013-10-03
 published: 2011-10-31
 title: Install Kloxo on CentOS 5
 deprecated: true
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

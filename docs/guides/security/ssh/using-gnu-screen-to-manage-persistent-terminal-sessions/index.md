@@ -11,6 +11,7 @@ external_resources:
  - '[GNU Screen Home Page](http://www.gnu.org/software/screen/)'
  - '[GNU Screen Manual](http://www.gnu.org/software/screen/manual/html_node/index.html)'
 tags: ["networking","ssh","security"]
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

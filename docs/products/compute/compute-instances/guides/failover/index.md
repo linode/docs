@@ -5,6 +5,7 @@ keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
 modified: 2024-02-20
 aliases: ['/guides/ip-failover/']
+authors: ["Linode"]
 contributors: ["Linode"]
 tags: ["media"]
 ---

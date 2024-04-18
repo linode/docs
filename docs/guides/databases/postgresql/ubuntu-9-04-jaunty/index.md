@@ -15,6 +15,7 @@ relations:
             - distribution: Ubuntu 9.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-9-04-jaunty/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

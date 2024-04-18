@@ -17,6 +17,7 @@ relations:
         key: install-java
         keywords:
             - distribution: Debian 8
+authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 ---
 

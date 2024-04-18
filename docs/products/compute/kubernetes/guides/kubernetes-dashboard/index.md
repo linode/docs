@@ -10,6 +10,7 @@ external_resources:
 - '[Kubernetes Docs](https://kubernetes.io/docs/home/)'
 - '[Kubernetes Dashboard GitHub](https://github.com/kubernetes/dashboard)'
 aliases: ['/guides/using-the-kubernetes-dashboard-on-lke/','/products/compute/kubernetes/guides/access-kubernetes-dashboard/']
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 

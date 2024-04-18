@@ -20,6 +20,7 @@ relations:
         key: install-java
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Phil Zona"]
 contributors: ["Phil Zona"]
 ---
 

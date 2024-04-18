@@ -14,6 +14,7 @@ relations:
         key: how-to-install-prosody
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 contributors: ["Linode"]
 ---
 
