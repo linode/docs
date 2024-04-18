@@ -105,8 +105,7 @@ python_version = "3.6"
 {{< /file >}}
 
     Since no version was specified during when installing Numpy, the Pipfile specifies that any version (`"*"`) is acceptable. The specific version installed is recorded in `Pipfile.lock`.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you install a package in a directory that does not have a Pipfile, Pipenv will create a new environment in that directory automatically, using your system's default Python version. This means that the commands in this section can be condensed into two steps:
 
     pipenv install numpy

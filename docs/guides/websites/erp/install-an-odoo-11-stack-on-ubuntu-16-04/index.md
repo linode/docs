@@ -258,8 +258,7 @@ These settings are:
          -D /var/lib/postgresql/9.6/main/ -U replicauser -v -P
 
     You will be prompted with the `replicauser` password. Once the transfer is complete your **Standby** will be synchronized with the **Primary** database. This puts an exact replica of the Primary database on the Standby.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Do not start the Standby's PostgreSQL service until Step 3 of the next section, when all configuration is complete.
 {{< /note >}}
 
@@ -560,7 +559,6 @@ If all your tests pass, you can safely update your installation.
 2.  Apply the changes to your repository:
 
         sudo git reset --hard origin/11.0
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
 {{< /note >}}

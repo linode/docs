@@ -16,8 +16,7 @@ One of the most powerful aspects of SQL is the ability to perform data aggregati
 ## SQL Aggregate Functions
 
 In SQL, aggregation is the process of operating or calculating a set of values. The intent is to return a single summary value. SQL includes several very powerful Aggregate Functions such as `AVG()`, `COUNT()`, `SUM()`, `MAX()`, and `MIN()`. These functions, in turn, are most often found in SQL statements that implement a `GROUP BY` clause. However, these functions do not need to be associated with that clause.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Unless mentioned otherwise, all the database commands demonstrated in this guide work well on both **MySQL** and **PostgreSQL**.
 {{< /note >}}
 
@@ -142,8 +141,7 @@ You should see the following output:
 | ENG101 | 2022 | 95        |
 +--------+------+-----------+
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The example above is slightly more complex. You group by two columns instead of one (`CourseId` within `Year`). Hence, you calculate the average grade and group by `CSC101` for the year `2021` separately from the Average Grade for `CSC101` for the year `2022`. The course `CSC101` for Year `2022` is an aggregation of two rows, while all of the other Group By rows are an aggregation of one row. Additionally, from the concept of *Ordering* (`Order By` clause) you can display ordered results (sorted) by `Course` within a given Year.
 {{< /note >}}
 

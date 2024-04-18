@@ -25,8 +25,7 @@ aliases: ['/applications/configuration-management/puppet/install-and-manage-mysq
 [Puppet](https://puppet.com/) is a configuration management system that helps simplify the use and deployment of different types of software, making system administration more reliable and replicable. In this guide, we use Puppet to manage an installation of [MySQL](https://www.mysql.com/), a popular relational database used for applications such as WordPress, Ruby on Rails, and others. [Hiera](https://docs.puppet.com/hiera/) is a method of defining configuration values that Puppet will use to simplify MySQL configuration.
 
 In this guide, you'll use Puppet to deploy [modules](https://docs.puppet.com/puppet/latest/modules_fundamentals.html) on your server. At the end, you will have MySQL installed, configured, and ready to use for a variety of applications that require a database backend.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -20,8 +20,7 @@ Unison is a file synchronization tool that allows users to maintain two instance
 Before beginning this guide, we assume you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux system administration, we recommend considering the [introducing Linux concepts](/docs/guides/introduction-to-linux-concepts/) guide and the [administration basics](/docs/guides/linux-system-administration-basics/) guide. If you're simply looking to gain access to your Linode on your local system, you may want to consider deploying a [remote file system](/docs/guides/using-sshfs-on-linux/). Conversely, if you need a more complex backup system, your needs may be better served by an incremental backup system.
 
 ## Install Unison on a Linode
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Unison is no longer [maintained under active development](https://www.cis.upenn.edu/~bcpierce/unison/status.html).
 {{< /note >}}
 

@@ -50,8 +50,7 @@ You can run some of the components of your Canvas installation on separate machi
 {{< /note >}}
 
 1. Replace `example.com` in this guide with your server's domain name. You can complete the steps mentioned in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name for your Linode server.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

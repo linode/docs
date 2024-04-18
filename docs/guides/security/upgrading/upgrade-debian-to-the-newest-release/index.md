@@ -17,8 +17,7 @@ Debian repositories can be tracked either by codename (Wheezy, Jessie, etc.), or
 Linode offers Debian's [stable](https://wiki.debian.org/DebianStable) and [oldstable](https://wiki.debian.org/DebianOldStable) releases. When exclusively tracking the stable releases with APT, your system will upgrade whenever the stable release reaches its end of life. For example, if you're tracking the stable release of Debian 8 and it reaches its end of life, your system will make available a number of new packages which will upgrade you to Debian 9.
 
 On the other hand, if you're currently tracking repositories by codename, as Debian does by default, you will never upgrade beyond that codename release. This is the safest option and you can still manually upgrade to a newer Debian codename or release status name at any time.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 While upstream maintainers try to ensure cross-compatibility and problem-free upgrades, there is risk involved in upgrading operating system versions.
 {{< /note >}}
 

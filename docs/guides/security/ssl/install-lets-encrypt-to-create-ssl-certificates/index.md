@@ -19,8 +19,7 @@ aliases: ['/security/ssl/install-lets-encrypt-to-create-ssl-certificates/']
 ![Let's Encrypt](Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
 
 [Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 For most situations, the recommended method for installing Let's Encrypt certificates is the official [Certbot](https://certbot.eff.org/) tool. Certbot automates the process of obtaining and installing a certificate, and can also automatically update your web server configuration. The instructions in this guide install Let's Encrypt and add certificates manually, which is not necessary for most users.
 {{< /note >}}
 
@@ -170,8 +169,7 @@ IMPORTANT NOTES:
     {{< /output >}}
 
     Let's Encrypt has refreshed the lifespan of your certificates; in this example, March 31st, 2016 is the new expiration date.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Let's Encrypt certificates have a 90-day lifespan. [According to Let's Encrypt](https://letsencrypt.org/2015/11/09/why-90-days.html), this encourages automation and minimizes damage from key compromises. You can renew your certificates at any time during their lifespan.
 {{< /note >}}
 

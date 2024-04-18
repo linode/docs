@@ -110,8 +110,7 @@ Now, commit the changes:
     create mode 100644 file2.txt
     create mode 100644 file3.txt
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 `git add -A`, `git add .`, and `git add -u` can all be used to stage files for a commit.
  `git add -A` stages `a`ll of the files in the directory. `git add .` stages only the new and modified files, omitting  any deleted files. `git add -u` stages only the modified and deleted files, omitting any new files.
 {{< /note >}}

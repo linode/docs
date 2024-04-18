@@ -93,8 +93,7 @@ If no packet loss is detected, a support technician may ask you to run a faster 
 On some systems, using this flag may require administrative privileges:
 
     sudo mtr -rwc 50 -rw 198.51.100.0
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `r` option flag generates the report (short for `--report`).
 
 The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).

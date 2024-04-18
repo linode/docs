@@ -37,8 +37,7 @@ There is no cross-play between different platforms (Linux and Xbox, for example)
 1.  Ark will be installed through the Steam *command-line interface* (CLI). See our guide [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/) if you haven't installed Steam already.
 
 1.  To connect to your Ubuntu Ark server, you must have a copy of the [Ark: Survival Evolved](http://www.playark.com/) game client running on a local machine.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -156,8 +155,7 @@ ServerAdminPassword=example
 {{< /file >}}
 
 `ServerPassword` determines the password that users will be required to enter when connecting to your server. You can omit this line to allow access without a password. `ServerAdminPassword` specifies the administrative password that will be used when issuing [game commands](https://ark.wiki.gg/wiki/Console_commands).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you choose to use the `ServerPassword` option when connecting to the server, you will need to click on **Show Password Protected** in the client's filters.
 {{< /note >}}
 

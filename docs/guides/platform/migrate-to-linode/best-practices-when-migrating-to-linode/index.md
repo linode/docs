@@ -61,8 +61,7 @@ For further details on deploying your new Linux image, follow the [Getting Start
 Install the same software stack that is present on your current host on your new Linode. For guidance on how to set up different kinds of software, review Linode's [Guides & Tutorials](/docs/).
 
 If your host provides a shared environment and you're not sure which software is needed, ask your host if they can provide more information about the software they run. For example, WordPress sites are powered by PHP, a web server, and a database, so installing a [LAMP stack](/docs/guides/web-servers/lamp/) would be sufficient.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may want to install your software via a [configuration management tool](/docs/guides/applications/configuration-management/). Configuration management is a method for condensing your installation scripts into a *recipe* that can be run repeatedly. This results in the same deployment every time. Once you've written your recipes, configuration management can greatly speed up creating new deployments and maintenance of existing deployments. These tools also minimize the potential for human error.
 {{< /note >}}
 

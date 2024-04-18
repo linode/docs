@@ -23,8 +23,7 @@ aliases: ['/development/iot/install-thingsboard-iot-dashboard/']
 [ThingsBoard](https://thingsboard.io/) is an open source platform for collecting and visualizing data from Internet of Things devices. Data from any number of devices can be sent to a cloud server where it can be viewed or shared through a customizable dashboard.
 
 This guide will show how to install ThingsBoard on a Linode and use a Raspberry Pi to send simple telemetry data to a cloud dashboard.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide will use a Raspberry Pi 3 with a [Sense HAT](https://www.raspberrypi.org/products/sense-hat/). You can substitute any device capable of sending telemetry data, or use `curl` to experiment with ThingsBoard without using any external devices.
 {{< /note >}}
 
@@ -159,8 +158,7 @@ server {
 3.  After the device is added, click on its icon in the **Devices** menu. Click on **COPY ACCESS TOKEN** to copy the API key for this device (used below).
 
 ## Configure Raspberry Pi
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The following steps assume that you have terminal access to a Raspberry Pi, and that Sense HAT and its libraries are already configured. For more information on getting started with Sense HAT, see the Raspberry Pi [official documentation](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat). If you would prefer to use `curl` to send mock data to ThingsBoard, you can skip this section.
 {{< /note >}}
 
@@ -257,8 +255,7 @@ WantedBy=multi-user.target
         sudo systemctl status thingsdata.service
 
 ## Send Data with cURL
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Skip this section if you are using a Raspberry Pi.
 {{< /note >}}
 

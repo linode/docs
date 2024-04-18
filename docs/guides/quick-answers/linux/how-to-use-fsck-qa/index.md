@@ -22,8 +22,7 @@ On some systems, fsck runs automatically after an unclean shutdown or after a ce
 ## When to Use fsck
 
 Use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To run this utility you will want to boot into rescue mode. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{< /note >}}
 
@@ -48,8 +47,7 @@ devtmpfs         10M     0   10M   0% /dev
     Your primary disks should not appear in the list. As long as your device does not appear in the example output from the `df -h` command, you can run a filesystem check on it.
 
 ## How to Check for Errors on a Disk
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Never run fsck on a mounted disk. Do not continue unless you’re sure that the target disk is unmounted. You risk corrupting your file system and losing data if you run fsck on an active disk.
 {{< /note >}}
 

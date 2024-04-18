@@ -25,8 +25,7 @@ This guide makes three assumptions:
 *   You already have a [Linode account](https://login.linode.com/signup).
 *   You know how to sign in to the [Linode Cloud Manager](https://cloud.linode.com/).
 *   You have a basic knowledge of [how to use SSH](/docs/guides/use-public-key-authentication-with-ssh/).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 {{< /note >}}
 
@@ -67,8 +66,7 @@ If you have a MySQL or MariaDB database on your old server, you will also need t
 Linux and OS X can use [SCP](https://en.wikipedia.org/wiki/Secure_copy) natively from the command line. To download your site's public files to your local user's home directory using SCP:
 
     scp example_user@server_ip_address:/home/account_name/public_html ~/
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The exact location of your website's files may vary depending on your specific implementation. Contact your site's developer to confirm the location of your website's files.
 {{< /note >}}
 

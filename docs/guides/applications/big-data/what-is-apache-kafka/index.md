@@ -26,8 +26,7 @@ external_resources:
 Kafka can be thought of as a re-implementation, or an evolution of a traditional database for a streaming world. Whereas the databases you are probably familiar with store data in tables with well-defined attributes, keys, and schemas, Kafka is much more freeform. Kafka's purpose is to receive, store, and transmit a record of real-time [*events*](https://kafka.apache.org/intro#intro_concepts_and_terms).
 
 In a typical workflow, one or more producer applications send key-value messages about a pre-defined topic to a Kafka cluster. A cluster consists of one or more servers, which are also called *brokers*, and each cluster typically hosts messages for many topics. One of the brokers in the cluster receives these messages and writes them to a log file corresponding to the topic. These log files are called *partitions*, and topics usually contain several partitions. Messages might also get replicated to some of the other nodes within the cluster. Other processes known as consumers can then read and process the events in each partition. You can write these consumer and producer applications yourself or use third-party offerings.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 At the time of writing this guide, the version of Apache Kafka is release 2.7.
 {{< /note >}}
 

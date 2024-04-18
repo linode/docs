@@ -155,8 +155,7 @@ sdb    8:16   0  512M  0 disk [SWAP]
 To resize, delete, create, and move your file system partitions, use the `parted` command. To list known partition information, use the `-l` option:
 
     sudo parted -l
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If the `parted` command is not available on your Linux system, use your distribution's package manager to install it. For example, to install `parted` on an Ubuntu system, use the following command:
 
     sudo apt-get install parted
@@ -349,8 +348,7 @@ You can view all files in use by a specific process ID (PID) with the following 
 You can view a Linux system's connected USB devices using the `lsusb` command, as follows:
 
     lsusb
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If your system does not have the `lsusb` command installed, use your package manager to install it. For example, to install it on an Ubuntu 20.04 system, use the following command:
 
     sudo apt-get install usbutils
@@ -396,8 +394,7 @@ An example of this command's output is the following:
 The `dmidecode` command displays information detected about BIOS settings and inventory:
 
     dmidecode
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `dmidecode` command cannot change BIOS settings.
 {{< /note >}}
 
@@ -542,8 +539,7 @@ udp        0      0 0.0.0.0:68              0.0.0.0:*                           
 {{</ output >}}
 
 The `netstat` command has many powerful options to view information about different areas of your network. For a deeper dive, view our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Some Linux distributions use the `ss` command, a direct replacement for `netstat`.
 {{< /note >}}
 

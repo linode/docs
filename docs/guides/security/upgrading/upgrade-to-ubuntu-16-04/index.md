@@ -20,8 +20,7 @@ aliases: ['/security/upgrading/upgrade-to-ubuntu-16-04/']
 ![Upgrade to Ubuntu 16.04](How_to_Upgrade_to_Ubuntu_smg.jpg)
 
 Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Canonical until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
 
  - Create a new Linode with the latest disk template
@@ -33,8 +32,7 @@ The upgrade may be incomplete or your system may be corrupted if your internet c
 
 **Important:** Ubuntu 16.04 ships with OpenSSH 7.2p2, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

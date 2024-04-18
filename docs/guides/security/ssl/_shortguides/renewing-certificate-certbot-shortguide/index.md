@@ -41,7 +41,6 @@ Congratulations, all simulated renewals succeeded:
 To manually force Certbot to renew all certificates, use the `renew` command without any options.
 
     sudo certbot renew
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Certbot does not renew certificates unless they are scheduled to expire soon. However, adding the `--force-renewal` flag to the `renew` command forces all certificates to be renewed regardless of their status. However, there is usually no good reason to force renewals. Do not use the `force-renewal` option too frequently as this could exceed the Let's Encrypt [*rate limit*](https://letsencrypt.org/docs/rate-limits/) for a domain certificate.
 {{< /note >}}

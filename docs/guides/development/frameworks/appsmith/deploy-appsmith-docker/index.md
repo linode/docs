@@ -33,8 +33,7 @@ In this tutorial, learn how to get started with Appsmith by deploying your own s
     -   **AlmaLinux**, **CentOS Stream** (8 or later), **Fedora**, and **Rocky Linux**:
 
             sudo dnf upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -59,8 +58,7 @@ Appsmith, on the other hand, provides a solution to help developers build comple
 ## How to Deploy Appsmith with Docker
 
 The official method supported for deploying a self-hosted Appsmith instance is through Docker Compose. That is the method used here, with all the steps you need to get your own instance up and running.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 These steps have been tested on Ubuntu 22.04. However, the Docker commands should apply equally on other distributions, such as Debian and CentOS. The section on installing Docker also includes information on how to do so for these and other distributions.
 {{< /note >}}
 

@@ -48,8 +48,7 @@ The data that needs to be transferred includes:
 Your server may have relevant website data stored in other directories, but these are the common locations for most files in a LAMP deployment.
 
 Perform a *database dump* needs on your MySQL process prior to transferring the data. This will result in a file on disk that encapsulates your database data which can then be copied over the network as a normal file.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Stopping services on your current host will temporarily disable your website.
 {{< /note >}}
 

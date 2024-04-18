@@ -22,8 +22,7 @@ When working from the command line, it can be convenient to write to files witho
 ### The Regular Output Operator (`>`)
 
 You can use the regular output operator (`>`) to write text to a file. If it does not exist already, it creates the file.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Using the `>` operator on an existing file overwrites that file's contents.
 {{< /note >}}
 

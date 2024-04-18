@@ -32,8 +32,7 @@ You will need at least two Linodes for this guide. Complete the following steps 
 3.  Update your packages:
 
         sudo apt update && sudo apt upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In order to focus on tinc configuration, three assumptions are made:
 
 - There are no active firewalls on any server.
@@ -56,8 +55,7 @@ This is a straightforward setup involving only two instances, an application ser
 Before getting started, it's a good idea to make a cheat sheet for yourself listing each node's public IPv4 address, desired VPN address, VPN network name designation, and tinc-daemon name. The VPN address can be an arbitrary private network IPv4 address, the only rule to follow (if you want to avoid extra routing work) is that they must have the **same network prefix**, just like a typical LAN. VPN and daemon names must be unique and can't contain any spaces or special symbols. For the current use case, the following information will be used for tinc configuration:
 
 ![Two node VPN cheat-sheet](tinc-2-node-cheat-sheet.jpg)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Throughout this guide, replace the IP address for each server with the public IP address of the corresponding Linode.
 {{< /note >}}
 
@@ -230,8 +228,7 @@ WantedBy=multi-user.target
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A debug level of `3` was chosen in the `tincd` command. This will log all requests from other daemons and include an authentication chain between them. See the [tincd documentation](https://www.tinc-vpn.org/documentation/tincd.8) for more information about debug levels.
 {{< /note >}}
 

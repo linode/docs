@@ -54,8 +54,7 @@ Install the PostgreSQL database, Python, and other necessary server libraries:
         createuser odoo -U postgres -dRSP
 
 3.  Press **CTRL+D** to exit the `postgres` user session.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you want to run multiple Odoo instances on the same Linode remember to check your PostgreSQL client configuration file (as of the date this guide is published, located at `/etc/postgresql/9.5/main/pg_hba.conf`) and modify it according your needs.
 {{< /note >}}
 
@@ -64,8 +63,7 @@ If you want to run multiple Odoo instances on the same Linode remember to check 
 In order to separate Odoo from other services, create a new Odoo system user to run its processes:
 
     sudo adduser --system --home=/opt/odoo --group odoo
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you're running multiple Odoo versions on the same Linode, you may want to use different users and directories for each instance.
 {{< /note >}}
 
@@ -84,8 +82,7 @@ For logging, Ubuntu 16.04 uses `systemd` and `journald` by default. With that in
 Clone the Odoo files onto your server:
 
     sudo git clone https://www.github.com/odoo/odoo --depth 1 --branch 10.0 --single-branch /opt/odoo
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Using git offers great flexibility. When a new upgrade is available, pull the new branch. You can even install a different version alongside the production one, just change the destination directory and the `--branch X.x` flag. Before upgrading, remember to make a full backup of your database and custom files.
 {{< /note >}}
 
@@ -136,8 +133,7 @@ These commands use the `requirements.txt` files provided with your Odoo installa
 
         sudo cp /usr/local/bin/wkhtmltopdf /usr/bin
         sudo cp /usr/local/bin/wkhtmltoimage /usr/bin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 While wkhtmltopdf version 0.12.2.4 is available in the official Ubuntu 16.04 repository, we don't advise installing it from there due to the large number of dependencies including: `xserver`, `gstreamer`, `libcups`, `wayland`, `qt5` and many more. There isn't an official Xenial package from the project page yet, but the Trusty package from Ubuntu 14.04 is compatible as of this publication.
 {{< /note >}}
 

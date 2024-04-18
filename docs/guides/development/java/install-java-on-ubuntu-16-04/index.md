@@ -42,8 +42,7 @@ In this guide, we'll install the Oracle Java development kit for building Java a
 ## Install OpenJDK
 
 The OpenJDK, includes an open-source runtime environment and compiler. This allows you to develop your own Java applications and run them on your Linode.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This "Main" repository is maintained by Canonical, the company that maintains Ubuntu.
 {{< /note >}}
 
@@ -95,8 +94,7 @@ Many applications include code or configuration that references the `JAVA_HOME` 
     This should return the path to the Java binary.
 
 ## Oracle JDK
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 In April 2019, Oracle Java downloads now require logging into an Oracle account to download and update Java 8 due to a change in the Oracle JDK licensing terms. [Read the FAQ](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html) for more details.
 {{< /note >}}
 

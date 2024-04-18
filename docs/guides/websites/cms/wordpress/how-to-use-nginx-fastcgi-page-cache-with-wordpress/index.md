@@ -46,8 +46,7 @@ No additional components or applications are required to enable the NGINX cache.
 1.  Ensure WordPress is installed and updated. To install WordPress, review the Linode guide on [installing WordPress on Ubuntu](/docs/guides/how-to-install-wordpress-ubuntu-22-04/).
 
 1.  WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

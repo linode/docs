@@ -41,8 +41,7 @@ Restart Apache:
 Verify the version of ModSecurity is 2.8.0 or higher:
 
     apt-cache show libapache2-mod-security2
-
-{{< note respectIndent=false >}}
+{{< note >}}
 When listing all mods using `apachectl -M`, ModSecurity is listed under the name `security2_module`.
 {{< /note >}}
 

@@ -134,8 +134,7 @@ FcgidIOTimeout 300
 ## Configuring PHP Pools
 
 [PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run PHP files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
-
-{{< note respectIndent=false >}}
+{{< note >}}
  To create the example **bob** user, you can follow the steps outlined in our [Securing Your User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#centos-fedora) guide.
 {{< /note >}}
 

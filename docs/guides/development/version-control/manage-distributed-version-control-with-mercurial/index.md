@@ -35,8 +35,7 @@ tags: ["version control system"]
 
 
 ## Local Mercurial Workflows
-
-{{< note respectIndent=false >}}
+{{< note >}}
 All Mercurial commands in the shell environment begin with `hg` in reference to the abbreviation for the element Mercury.
 {{< /note >}}
 

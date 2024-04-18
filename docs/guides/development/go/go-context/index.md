@@ -34,8 +34,7 @@ In this guide you will learn:
 You will need to install a recent version of Go on your computer in order to follow the presented commands. Any Go version newer than 1.8 will do but it is considered a good practice to have the latest version of Go installed. You can check your Go version by executing `go version`.
 
 If you still need to install Go, you can follow our guide for Ubuntu installation [here](/docs/guides/install-go-on-ubuntu/).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -220,8 +219,7 @@ The calls to `time.Sleep()` simulate a program that is slow or an operation that
 ## Using Context for HTTP
 
 In this section of the guide you will learn how to timeout HTTP connections on the client side.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This example makes a request to a local web server. A suitable, simple web server is available via Python and can be started with the following commands:
 
 Python 3.X
@@ -462,7 +460,6 @@ key not found: notThere
 In order to share a common context among multiple processes, you will need to propagate that context on your own.
 
 The logic of this technique is based on the Go code of `more.go`. First use the `context.WithValue()` function to add your data into a context, serialize and send over HTTP, decode the data, get the context, and finally use `context.Value()` to check whether the desired key and desired values are in place or not.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `http.Request` type has the `Context()` method that returns the context of the request and the `WithContext()` method that according to the Go documentation *returns a shallow copy of r with its context changed to ctx*. You can learn more about both methods at https://golang.org/pkg/net/http/.
 {{< /note >}}

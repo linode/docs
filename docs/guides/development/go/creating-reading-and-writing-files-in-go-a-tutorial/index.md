@@ -19,8 +19,7 @@ aliases: ['/development/go/creating-reading-and-writing-files-in-go-a-tutorial/'
 ## Introduction
 
 This guide provides examples related to performing common file input and output operations in Go.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -84,8 +83,7 @@ Executing `doesItExist.go` will resemble the following output:
 {{< output >}}
 Path does not exist! stat /bin/What: no such file or directory
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The fact that a path does exist does not necessarily mean that it is a regular file or a directory. There exist additional tests and functions that will help you determine the kind of file you are dealing with.
 {{< /note >}}
 
@@ -130,8 +128,7 @@ Executing `isFile.go` will resemble the following output:
 /bin/ls is a regular file!
 {{< /output >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Most of the examples in this guide will not test whether the file that is going to be read exists in order to minimize the amount of code. The `os.Open()` function does some of this work, but in a less elegant way. However, on production code all necessary tests should be performed in order to avoid crashes and bugs in your software.
 {{< /note >}}
 
@@ -715,8 +712,7 @@ func main() {
 {{< /file >}}
 
 If you execute `cat.go` without any command line arguments, then the utility will just copy from standard input to standard output using the `io.Copy(os.Stdout, os.Stdin)` statement. However, if there are command-line arguments, then the program will process them all in the same order that they were given using the `printFile()` function.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 
 Command Line arguments when using `cat.go` will only be file paths. `cat.go` does not support the arguments you'd see with the traditional `cat` command, only the core functionality.
 

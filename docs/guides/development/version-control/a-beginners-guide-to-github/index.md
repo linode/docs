@@ -15,8 +15,7 @@ tags: ["version control system"]
 ![GitHub Beginner's Guide](github-beginners-guide.png "GitHub Beginner's Guide")
 
 Linode's Guides and Tutorials library is managed through the use of [Markdown files](https://en.wikipedia.org/wiki/Markdown) stored in a GitHub repository. In the interest of making submissions from outside contributors as easy as possible, this tutorial will walk you through submitting a new guide on our [public GitHub](https://github.com/linode/docs).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The Write For Linode freelance contributor program offers payment for new guides to qualified authors. Visit our [Write For Linode page](https://www.linode.com/lp/write-for-linode/) for a description of the program and for application instructions.
 {{< /note >}}
 
@@ -25,8 +24,7 @@ The Write For Linode freelance contributor program offers payment for new guides
 This guide assumes that you've signed up for a [GitHub account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide.
 
 This guide will also use [Hugo](https://gohugo.io) to create a new guide within the Linode library's repository, and Node.js and NPM to build a local development version of Linode's documentation website. Please visit the [Install Hugo](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-hugo) and [Install Node and NPM](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-node-and-npm) sections of our [CONTRIBUTING.md](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md) for installation instructions of those dependencies.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are following these instructions on a Windows system, all commands will need to be run via the [Git Bash console](http://git-scm.com/downloads).
 {{< /note >}}
 

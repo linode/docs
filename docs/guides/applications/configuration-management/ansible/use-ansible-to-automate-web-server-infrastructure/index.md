@@ -22,8 +22,7 @@ In this guide you:
 - Deploy and configure five Linodes. One is the Ansible control node and the others are worker nodes.
 - Configure and run an Ansible playbook that configures the worker nodes.
 - Test your running web servers and log server.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The example instructions in this guide create five, [1GB Linodes](https://www.linode.com/pricing). These add billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to delete them once you have finished this how-to guide.
 
 If you remove these resources afterward, you are only [billed for the time](/docs/products/platform/billing/) the resources were present on your account.
@@ -418,8 +417,7 @@ Use the command below to reboot the Linode either using the Linode CLI. You can 
     linode-cli linodes reboot LINODE_ID
 
 Use the command below to SSH into `vm1`.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Be sure to use the new user you created because the setup script disables root logins.
 {{< /note >}}
 

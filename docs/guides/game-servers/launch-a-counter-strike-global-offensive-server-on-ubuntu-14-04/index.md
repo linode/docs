@@ -31,8 +31,7 @@ relations:
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Counter Strike: Global Offensive](http://store.steampowered.com/app/730/). A game server token is required to host a public CS:GO server. Without the token, client connections are restricted to the LAN only.
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -19,8 +19,7 @@ Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postf
 
 {{< content "email-warning-shortguide" >}}
 
-## Before You Begin
-{{< note respectIndent=false >}}
+## Before You Begin{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

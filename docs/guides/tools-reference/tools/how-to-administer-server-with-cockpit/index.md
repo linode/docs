@@ -60,8 +60,7 @@ Other tools including Ansible, Strapi, and Portainer serve complementary roles. 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -182,8 +181,7 @@ Many server components can be configured directly from Cockpit without any Linux
 7.  To add a bridge or VLAN, use the corresponding button on the right side of the Networking window. For example, choose the **Add VLAN** button to add a VLAN. Then add the details about the new service. A bridge can be added through the **Add bridge** button.
 
     ![Cockpit VLAN screen](Cockpit-Add-VLAN.png)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To add a new server to Cockpit, click the arrow next to the user account details in the upper-left corner. You can either add a new host or select/search for an existing host.
 {{< /note >}}
 

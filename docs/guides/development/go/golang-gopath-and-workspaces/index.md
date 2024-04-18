@@ -64,8 +64,7 @@ Replace `/home/example_user/a_new_workspace` with your desired directory.
 You should add the `$GOPATH/bin` directory to your system `PATH`. This makes it so you do not have to enter the full path to a Go executable when running your Go apps in development.
 
     export PATH=$PATH:$(go env GOPATH)/bin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples below assume you are using the default location for your `GOPATH` (`/home/username/go`). If the `go` directory does not yet exist in your home folder, create it now.
 
     mkdir ~/go

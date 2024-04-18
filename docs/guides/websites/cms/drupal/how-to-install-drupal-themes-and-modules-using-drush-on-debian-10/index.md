@@ -45,8 +45,7 @@ Before installing themes, modules, and a backup system with Drush, make sure tha
 1.  Make sure that your system is up to date, using:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The Drush commands to download or enable themes and modules vary depending on the version of Drush that you have installed. This guide uses Drush 10.
 {{< /note >}}
 
@@ -109,7 +108,6 @@ It's always important to keep regular backups of a website. Backups protect you 
 1.  To configure backup and migrate, navigate to **Administration > Configuration > Development > Backup and Migrate**
 
 1. For a quick backup, select the type of **Backup Source** and select the **Backup Destination**, and click **Backup now**
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Always download a backup prior to updating or installing modules.
 {{< /note >}}

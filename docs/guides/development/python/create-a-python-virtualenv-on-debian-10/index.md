@@ -40,8 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< /note >}}
 
 ## Create a Python Virtual Environment
-
-{{< note respectIndent=false >}}
+{{< note >}}
 By default, [Python 3.7.3](https://docs.python.org/3.6/whatsnew/3.6.html) and [Python 2.7.16](https://docs.python.org/2.7/) are installed on Debian 10.
 {{< /note >}}
 

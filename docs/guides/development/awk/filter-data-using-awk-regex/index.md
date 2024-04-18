@@ -98,8 +98,7 @@ Please correct your error.
 Dave was error-prone.
 function display_user_error_to_screen()
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The pattern `/error/` does not match the string `Error` or `ERROR` because AWK's pattern matching is case-sensitive. You can override this by setting `IGNORECASE=1` at the beginning of your program.
 {{< /note >}}
 
@@ -378,8 +377,7 @@ dogs and cats
 Searching for patterns where you want to find literal metacharacters requires special care, and you must *escape* the metacharacter with a `\` backslash character. Otherwise, you get unwanted results.
 
 If you are looking for the string `/Mr. Jones/`, the `.` is interpreted as meaning *any single character*, even though it is obvious that you meant *a period at the end of `Mr.`*. For this reason, you must escape the `.` with a backslash. The updated pattern is `/Mr\. Smith/`.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If AWK gives you an error message about a pattern's syntax, the first thing you should check for is a metacharacter that perhaps you did not properly escape.
     {{< /note >}}
 
@@ -400,8 +398,7 @@ IPv4 addresses are a common target to search for in files. This expression finds
       /\<[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\>/
 
 The expression looks for four numbers of one to three digits, each separated by a single dot. However, the expression may match numbers that are not valid IPv4 addresses, like `10.21.5.784`, since 784 is larger than 255.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The above pattern begins and ends with the `\<` "beginning of the word" and `\>` "end of word" markers. Otherwise, you might match strings with more than three digits at the beginning or end of the IP address.
     {{< /note >}}
 

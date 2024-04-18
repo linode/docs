@@ -29,8 +29,7 @@ There are two different types of permissions that can be assigned to roles, user
 ## Implementation of Users, Groups, Roles, and Permissions
 
 When it comes to the management of users, groups, roles, and permissions, the concepts stated in the previous sections are quite uniform across SQL-based database management systems. What may differ are the names of commands and the syntax used by different SQL database implementations.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples below use Microsoft SQL Server syntax. All commands should be executed from the command line. The examples also assume that all server security hardening has already been implemented.
 {{< /note >}}
 
@@ -115,8 +114,7 @@ Tom grants necessary database entry permissions (`INSERT`, `UPDATE`, `DELETE`) o
     USE School;
     GRANT INSERT, UPDATE, DELETE ON Student TO DBEntry;
     GRANT INSERT, UPDATE, DELETE ON CourseTaken TO DBEntry;
-
-{{< note respectIndent=false >}}
+{{< note >}}
 After executing the above `GRANT` commands, John is permitted to `INSERT`, `UPDATE`, and `DELETE` data in the two database tables, but is not permitted to read (`SELECT`) from it.
 {{< /note >}}
 
@@ -125,8 +123,7 @@ Tom grants necessary database read permission (`SELECT`) on both database tables
     USE School;
     GRANT SELECT ON Student TO QueryReports;
     GRANT SELECT ON CourseTaken TO QueryReports;
-
-{{< note respectIndent=false >}}
+{{< note >}}
 After executing the above `GRANT` commands, Mary and Joan can only read the database tables (via the `SELECT` statement), but cannot manipulate the data (via the `INSERT`, `UPDATE`, or `DELETE` statements).
 {{< /note >}}
 

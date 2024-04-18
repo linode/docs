@@ -116,8 +116,7 @@ If you want to disable `.htaccess` files for a directory or tree of directories,
 AllowOverride None
 
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can specify `AllowOverride All` for a directory that falls within a directory where overrides have been disabled.
 {{< /note >}}
 

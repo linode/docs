@@ -20,8 +20,7 @@ Log4j is often included in software packages and tools without explicit mention,
 Before proceeding, it should be noted that the above mentioned log4j vulnerabilities  only impact versions of log4j using versions **log4j 2.x** and later, and patches are being rolled out by the Apache Foundation regularly. For any updates on these patches, it is recommended that users review Apache's [log4j Security Page](https://logging.apache.org/log4j/2.x/security.html) for additional information.
 
 The steps in this guide aim to empower you to proactively discover log4j vulnerabilities on your system, and mitigate them where needed.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For more information on how Linode has handled log4j vulnerabilities, and a detailed writeup on [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228) specifically, as well as mitigation steps, see our [Security Digest](https://www.linode.com/blog/security/linode-security-digest-log4j2/).
 {{< /note >}}
 
@@ -37,8 +36,7 @@ Searching for software affected by log4j is a good first step for identifying im
 - [Log4j-Detector](https://github.com/mergebase/log4j-detector): **log4j-detector** is an open source tool that performs local queries to detect versions of log4j that are vulnerable to both CVE-2021-44228 and CVE-2021-45046.
 - [Log4j RCE Exploitation Detection](https://gist.github.com/Neo23x0/e4c8b03ff8cdf1fa63b7d15db6e3860b): A list of commands compiled by security expert [Florian Roth](https://twitter.com/cyb3rops) built to help users identify exploitation attempts.
 - [Trivy](https://github.com/aquasecurity/trivy): Trivy is an image vulnerability scanning tool that includes log4j vulnerabilities, and can help users to identify log4j in containerized applications such as with [Docker](https://www.docker.com/) or [Kubernetes](https://kubernetes.io/)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Containerized applications using tools like Docker and Kubernetes may not be detected via the above methods if performed only from the host device, and identification steps should be performed directly from within containers.
 {{< /note >}}
 

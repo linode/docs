@@ -17,8 +17,7 @@ dedicated_cpu_link: true
 ---
 
 PocketMine is a third party server for the MineCraft - Pocket Edition game for [Android](https://play.google.com/store/apps/details?id=com.mojang.minecraftpe) and [iOS](https://itunes.apple.com/us/app/minecraft-pocket-edition/id479516143?mt=8). It features plugin support, allowing you to customize your gameplay with others. This guide details installing PocketMine on a Linode running Debian 7.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Minecraft - Pocket Edition is non-free software that you will need to purchase in order to take advantage of a PocketMine server.
 {{< /note >}}
 

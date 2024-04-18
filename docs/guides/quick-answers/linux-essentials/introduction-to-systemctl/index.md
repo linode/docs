@@ -18,8 +18,7 @@ aliases: ['/quick-answers/linux-essentials/introduction-to-systemctl/']
 ## What is systemctl?
 
 `systemctl` is a controlling interface and inspection tool for the widely-adopted init system and service manager systemd. This guide will cover how to use `systemctl` to manage systemd services, work with systemd Targets and extract meaningful information about your system's overall state.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -62,8 +61,7 @@ The above commands are good for managing a service in a single session, but many
 To disable the service from starting at boot, issue the `disable` command:
 
     sudo systemctl disable nginx
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `enable` command does not start the service in the current session, nor does `disable` stop the service in the current session. To enable/disable and start/stop a service simultaneously, combine the command with the `--now` switch:
 
     sudo systemctl enable nginx --now
@@ -100,8 +98,7 @@ You can also use `is-active`, `is-enabled`, and `is-failed` to monitor a service
 To view which `systemd` service units are currently active on your system, issue the following `list-units` command and filter by the service type:
 
     systemctl list-units --type=service
-
-{{< note respectIndent=false >}}
+{{< note >}}
 `list-units` is the default action for the `systemctl` command, so you can simply enter `systemctl` to retrieve a list of units.
 {{< /note >}}
 
@@ -237,8 +234,7 @@ To check which unit files depend on a service unit file, you can run the `list-d
     systemctl list-dependencies cron --reverse
 
 ### Editing a Unit File
-
-{{< note respectIndent=false >}}
+{{< note >}}
 While the particulars of unit file contents are beyond the scope of this article, there are a number of good resources online that describe them, such as the RedHat Customer Portal page on [Creating and Modifying systemd Unit Files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_files).
 {{< /note >}}
 

@@ -67,8 +67,7 @@ Direnv modifies the shell environment depending on your current directory. This 
 1. Use your text editor to add directory specific environment variables to the `.envrc` file.
 
         vim ~/my-project-directory/.envrc
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You must use bash syntax within `.envrc` file.
 {{< /note >}}
 

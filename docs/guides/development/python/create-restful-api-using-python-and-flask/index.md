@@ -16,8 +16,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 - GET a specific instance of a programming language
 - Filter the programming language resources based on the publication year field
 - POST, PUT, and DELETE a programming language instance
-
-{{< note respectIndent=false >}}
+{{< note >}}
 GET, POST, PUT, and DELETE are [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) used to perform an action on a resource.
 {{< /note >}}
 
@@ -26,8 +25,7 @@ GET, POST, PUT, and DELETE are [HTTP request methods](https://developer.mozilla.
 The REST protocol gives clients access to resources stored in a database and allows clients to perform operations on the stored data. The operations are known as *CRUD operations* (create, read, update, and delete). The following sections show you how to create the CRUD operations for your Flask web API.
 
 ### Install Flask
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This section makes use of the [virtualenv](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. Follow the installation steps in our [How to Create a Python Virtual Environment](/docs/guides/create-a-python-virtualenv-on-debian-10/) guide if you do not have virtualenv installed on your computer.
 {{< /note >}}
 
@@ -52,8 +50,7 @@ In order to run a Flask server, you install Flask first using the [Python Packag
 ### Create the List Endpoint in Flask
 
 RESTful services typically have two endpoints used to retrieve (GET) resources. One endpoint *lists* all resources or filters them according to some criterion. The second endpoint retrieves the *details* of a specific resource based on a unique identifier. In this section, you create two endpoints to GET resources from your API. This section may refer to these endpoints as the `list` and `details` endpoints.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 All the steps in this section edit the same file, `prog_lang_app.py`.
 {{< /note >}}
 

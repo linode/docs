@@ -29,8 +29,7 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 ## General Setup
 
 Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 {{< /note >}}
 
@@ -78,8 +77,7 @@ If everything is working, you should see ping replies. If not, go back and make 
 ## Manual Configuration
 
 The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots. Read the IPv6 documentation for your distribution before proceeding.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 When manually modifying your network configuration, always disable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
 {{< /note >}}
 

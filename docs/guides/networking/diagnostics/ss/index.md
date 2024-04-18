@@ -17,8 +17,7 @@ aliases: ['/networking/diagnostics/ss/']
 ## Introduction
 
 The study of socket connections is important for every UNIX and network administrator because it allows you to better understand your Linux system's status. Written by Alexey Kuznetosv to replace the famous `netstat` utility , the more capable `ss` (socket statistics) utility allows you to monitor TCP, UDP, and UNIX sockets. The purpose of this guide is to help you learn the `ss` utility and to use it as productively as possible.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Running `ss` without using the `sudo` utility results in different output. Practically, this means that running `ss` without root privileges displays the results available to the current user only. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -50,8 +49,7 @@ The `ss(8)` binary supports many command line options, including the following:
 | `-m` | The `-m` parameter tells `ss` to display socket memory usage information. |
 | `-p` | The `-p` parameter tells `ss` to display the process that is using a socket. |
 | `-D FILE` | The `-D` parameter tells `ss` to save the output in the `FILE` file. |
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `-A tcp` option is equivalent to `-t`, the `-A udp` option is equivalent to `-u` and the ` –A unix`
 option is equivalent to `-x`.
 {{< /note >}}
@@ -255,8 +253,7 @@ State  Recv-Q  Send-Q    Local Address:Port                  Peer Address:Port
 ESTAB  0       168       203-0-113-0.ip.linodeusercontent.com:ssh    ppp-2-86-7-61.home.otenet.gr:50939
 ESTAB  0       0         203-0-113-0.ip.linodeusercontent.com:https  ::ffff:216.244.66.228:37668
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A side effect of the `-r` command line option is that it slows the execution of the `ss` command due to the DNS lookups that need to be performed.
 {{< /note >}}
 
@@ -327,8 +324,7 @@ tcp    LISTEN  0       128     :::http             :::*               users:(("a
 State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port
 LISTEN  0       80      127.0.0.1:mysql     *:*
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `ss -t -a sport \> :1024` command can be also written as `ss -t -a sport '> :1024'`.
 {{< /note >}}
 

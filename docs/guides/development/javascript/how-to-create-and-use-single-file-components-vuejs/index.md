@@ -58,8 +58,7 @@ In this guide, you will learn:
 -   [How to prepare a development environment](#prepare-your-development-environment) for writing single file components with Vue CLI
 -   [How to build your first single file components](#building-your-first-single-file-components), and then [how to add interaction to the components](#adding-methods-to-the-components)
 -   [How to communicate between components via an event bus](#communication-between-components-via-an-event-bus)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can [download all of the example files for this guide here](vuejs-single-file-components.tar.gz).
 {{< /note >}}
 
@@ -135,8 +134,7 @@ We'll use this tool throughout this guide; to install it, run:
     sudo npm install -g @vue/cli
 
 The Vue CLI will now be available globally on your workstation (because the `-g` flag was used).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you're using [NVM](https://github.com/nvm-sh/nvm), you can install Vue CLI without `sudo`:
 
     npm install -g @vue/cli
@@ -154,8 +152,7 @@ Vue CLI v4.3.1
 ❯ default (babel, eslint)
 Manually select features
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can specify `--packageManager=yarn` if you prefer yarn to npm.
 {{< /note >}}
 
@@ -204,8 +201,7 @@ Let's look at the directory structure of the default application and go through 
     │   └── HelloWorld.vue
     └── main.js
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `-I node_modules` option will tell `tree` to ignore your `node_modules/` directory, which is where all of the node dependencies reside.
 {{< /note >}}
 
@@ -563,8 +559,7 @@ After creating `Star.vue` and `Summary.vue`, the application can be viewed in th
 ![Rating App - No Votes, Noninteractive](rating-app-no-votes-noninteractive.png "Rating App - No Votes, Noninteractive")
 
 Because there are no methods set on the components yet, it will not be interactive.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you're not still running `npm run serve` in your terminal, you'll need to re-run it from inside your project.
 {{< /note >}}
 

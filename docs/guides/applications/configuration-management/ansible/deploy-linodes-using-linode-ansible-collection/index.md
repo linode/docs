@@ -29,8 +29,7 @@ This guide shows how to:
 -  [Understand Ansible Fully Qualified Collection Namespaces](#understanding-fully-qualified-collection-namespaces)
 
 -  [Deploy a Linode instance](#deploy-a-linode-with-the-linode-ansible-collection) using Ansible and the Linode Ansible collection.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This guide’s example instructions create a [1GB Linode](https://www.linode.com/pricing/#compute-shared) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to delete the Linode when you have finished the guide.
 
 If you remove the resource, [you are only be billed for the hour(s) that the resources were present on your account](/docs/guides/understanding-billing-and-payments/).

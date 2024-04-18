@@ -190,8 +190,7 @@ An easy way to see which modules are installed is to run a list command on the d
 To enable an installed module, run the following command:
 
     a2enmod [module-name]
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In the `/etc/apache2/mods-available/` directory, files have `.load` and `.conf` extensions. Module names do not include the extensions.
 {{< /note >}}
 

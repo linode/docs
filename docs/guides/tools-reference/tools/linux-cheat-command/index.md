@@ -19,8 +19,7 @@ In this guide you learn more about the `cheat`command-line tool, including how t
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -75,8 +74,7 @@ Architecture:        x86_64
 ### Setting Up cheat
 
 On its own, `cheat` does not come with any cheat sheets. However, you can have `cheat` download a collection of community-sourced cheat sheets from the [`cheatsheets` project](https://github.com/cheat/cheatsheets). When you first run `cheat`, it prompts you about downloading the collection, as well as about creating a default configuration file.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To automatically download the community cheat sheets, `cheat` uses Git. If your system does not have Git installed, install it prior to following the steps below.
 
     sudo apt-get install git
@@ -183,8 +181,7 @@ You can combine query options, too, to make fine-tuned searches:
 ### Creating Your Own Cheat Sheets
 
 You can also use `cheat` to create cheat sheets of your own. The steps below create a cheat sheet for the `bat` command, a more-readable and modern clone of `cat`, as an example.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you think you may be interested in `bat`, check out our guide [How to Install and Use the Linux bat Command](/docs/guides/how-to-install-and-use-the-bat-command-on-linux/) to learn more.
 {{< /note >}}
 

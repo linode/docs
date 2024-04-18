@@ -39,8 +39,7 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 4.  Make a backup of your server's `sshd_config` file.
 
         sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.BACKUP
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -59,8 +58,7 @@ The `/etc/ssh/moduli` file ships with OpenSSH, so assuming two servers have the 
     ssh-keygen -G "${HOME}/moduli" -b 2048
     sudo ssh-keygen -T /etc/ssh/moduli -f "${HOME}/moduli"
     rm "${HOME}/moduli"
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Before running these commands on a production server, be aware that depending on the size of the keys you're generating, this will use significant CPU power and may take anywhere from a minute to several hours.
 {{< /note >}}
 

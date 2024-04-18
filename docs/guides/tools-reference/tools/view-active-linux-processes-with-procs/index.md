@@ -42,8 +42,7 @@ Because the `ps` command's output is relatively sparse, users often append the `
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -93,8 +92,7 @@ Use the following command to install procs using snap.
 {{< output >}}
 procs v0.11.8 from dalance installed
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 On certain Linux distributions, the default system package manager can be used to install procs:
 
 - For Fedora systems, use the command `sudo dnf install procs`.
@@ -286,8 +284,7 @@ align = "Right"
 1. Launch the procs application again. The new column should now appear as part of the display.
 
     ![procs with a new custom field](procs-custom-config.png)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 It can be somewhat difficult to change the configuration using the method outlined in this section. New columns must be added in a certain order and in the proper format. Procs silently ignores non-compliant or improperly formatted configuration. For a ready-made configuration file that displays most of the useful columns, use the standardized [*large.toml template file*](https://github.com/dalance/procs/blob/master/config/large.toml). It might be easier and less error-prone to start with this file and remove any unwanted columns or configuration.
 {{< /note >}}
 

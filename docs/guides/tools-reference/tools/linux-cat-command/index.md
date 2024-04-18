@@ -135,8 +135,7 @@ One more line of text to the example file.
 ## How to Apply Display Options in cat
 
 The *cat* command comes with several display options. These alter how the output is presented, which can make files easier to read or can fit specific use cases.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 These options affect the contents of files created (using `>`) or appended to (using `>>`) with the *cat* command. They modify the output of *cat*, and that output is what *cat* uses to give files content.
 
 For instance, take a case where you use the option for line numbers below (`-n`) while copying the contents of `example-file.txt` to a new file. This results in the line numbers being saved as part of the contents of the new file.

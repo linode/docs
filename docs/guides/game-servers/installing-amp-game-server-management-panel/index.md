@@ -17,8 +17,7 @@ dedicated_cpu_link: true
 [AMP](https://cubecoders.com/AMP) or **Application Management Panel** is a game server management panel. It provides a graphical overlay to simplify the deployment of game servers, and serves as the next iteration of the popular Minecraft server control panel [McMyAdmin](https://www.mcmyadmin.com/). AMP provides support for third party mods, heavy focus on security, and a sleek web interface for managing your server. This guide covers the installation and configuration of a new AMP server on most Linux distributions.
 
 While this guide will focus on installation on Debian and Ubuntu, the [same basic process](https://cubecoders.com/AMPInstall) can be applied to other distros with some minor adjustments.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 AMP is dependent on the [purchase of a separate license through CubeCoder's website](https://cubecoders.com/AMP#buyAMP).
 {{< /note >}}
 
@@ -72,8 +71,7 @@ When the installation script has completed, the following message will appear, p
 [Info] -- Do not close this terminal --
 [Info] Waiting for user to complete first-time setup in browser...
 {{< /output >}}
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 **Do Not** close the terminal or exit the script until the setup process is fully completed in the browser.
 {{< /note >}}
 

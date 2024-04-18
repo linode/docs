@@ -124,8 +124,7 @@ If your web server is configured to redirect all HTTP requests to HTTPS while us
 Setting up SSL on your origin server will enable you to use Cloudflare's *Full SSL* mode or *Full SSL (strict)* modes. If you already have SSL set up on the origin server, skip to Step 8 of this section.
 
 If you do not have a certificate for your origin server, Cloudflare provides an easy way of getting one via their own [*Origin CA*](https://blog.cloudflare.com/cloudflare-ca-encryption-origin/) (Certificate Authority). This certificate can be used with *Full SSL (strict)* mode.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Certificates from Cloudflare's Origin CA are only trusted within the Cloudflare network. You will need to obtain and install a new certificate if you stop using Cloudflare and have one of their certificate's installed on your origin server.
 {{< /note >}}
 
@@ -180,8 +179,7 @@ These certificates can be entirely administered through the Cloudflare website. 
 1. Provide the certificate hostnames. If ordering the $5/month plan, you can leave the generated values unchanged. Click **Next**.
 
 1. Cloudflare will validate the domain before ordering the certificate for your domain. When the validation is complete, click **Next** and provide a payment type to complete the purchase.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you would like to upload your own SSL certificate from another authority, click the **Upload Custom SSL Certificate** button in the Edge Certificates panel. This functionality requires that you subscribe to the Business Website Cloudflare tier.
 {{< /note >}}
 

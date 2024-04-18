@@ -73,8 +73,7 @@ Before installing GitLab you should consider how many users will collaborate on 
       ![GitLab welcome screen](gitlab-welcome.png)
 
 ## Configure SSL Encryption
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you did not generate an SSL certificate using Certbot prior to the installation of GitLab, you may need to first stop GitLab and then generate the SSL certificate to bypass any errors related to Certbot's certificate challenge. To stop GitLab run the following command:
 
       sudo gitlab-ctl stop

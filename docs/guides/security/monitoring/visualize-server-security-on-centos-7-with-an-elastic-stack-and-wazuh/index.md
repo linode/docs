@@ -548,8 +548,7 @@ Kibana's default access port, `5601`, must be opened for TCP traffic. Instructio
 **iptables**
 
     iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`.
 {{< /note >}}
 

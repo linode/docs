@@ -32,8 +32,7 @@ However, within a VM we can further install multiple WordPress instances, each i
 ## In this Guide
 
 This guide explains how to set up WordPress in LXD system containers. This demonstration shows how to host multiple and separate WordPress websites on a single server.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A 2GB Linode shared instance running Ubuntu 20.04 was used to test the instructions in this guide. A different server running a different operating system can be used, but you may need to adjust some instructions. In particular, the instructions for installing LXD may be different.
 {{< /note >}}
 
@@ -58,8 +57,7 @@ The guide is ordered as follows:
 1. Finally, you [complete the setup using the WordPress installation wizard](#complete-the-wordpress-installation-wizard).
 
 1. At the end, the guide presents how to [troubleshoot some common errors that you may run into during set up](#troubleshooting).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
 {{< /note >}}
 
@@ -142,8 +140,7 @@ To keep track of the details, a table is shown below for each database and corre
 |---------------|---------------------|---------------|--------------|
 | wpApache1     | apache1.lxd         | wpUserApache1 | Create a complex and unique password |
 | wpNginx1      | nginx1.lxd          | wpUserNginx1  | Create a complex and unique password |
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may also use arbitrary names for the database name and the username. Make sure you have listed the correct container name. Finally, change the password.
 {{< /note >}}
 
@@ -360,8 +357,7 @@ To finish the setup for your WordPress sites, complete the WordPress installatio
 |---------|---------------|---------------|--------------|---------------|--------------|
 | https://apache1.example.com | wpApache1     | wpUserApache1 | Create a complex and unique password | db.lxd        | wp_          |
 | https://nginx1.example.com  | wpNginx1      | wpUserNginx1  | Create a complex and unique password | db.lxd        | wp_          |
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The passwords that you choose during the installation wizard should be unique and different from the passwords used in the earlier [database setup section](#configure-the-database-for-each-wordpress-installation).
 {{< /note >}}
 
@@ -420,8 +416,7 @@ If your container is `nginx1`, then run the following command to view the curren
        lxc info nginx1
 
 The output should be similar the following. The current memory use in this example is 164MB while the peak memory use was a bit over 300MB.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Resources:
   Processes: 30
   Disk usage:

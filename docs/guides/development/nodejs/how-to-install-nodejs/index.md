@@ -36,8 +36,7 @@ Your distro's repos likely contain an LTS release of Node.js. This is a good sol
 *   You want to easily maintain uniformity among multiple Node.js servers.
 
 [NPM](#node-package-manager-npm) (Node Package Manager) is included with installations of Node.js by other methods. Here, however, `npm` is a separate package from `nodejs` and must be installed separately.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Node.js from the distro's repositories in Debian 7 or 8, or Ubuntu 12.04 or 14.04 conflict with the [Amateur Packet Radio Node program](https://packages.debian.org/jessie/node). In this scenario, calling Node.js requires that you use the command `nodejs -$option` instead of the standard `node -$option`. One workaround is to install the package `nodejs-legacy`, which maintains a symlink from `/usr/bin/node` to `/usr/bin/nodejs` so the normal `node` commands can be used.
 
 {{< /note >}}

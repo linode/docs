@@ -29,8 +29,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web s
 This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
 ![Install LAMP on Ubuntu 16.04](install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/guides/linux-users-and-groups/).
 
 Replace each instance of `example.com` in this guide with your site's domain name.

@@ -647,8 +647,7 @@ ssl_key = </etc/letsencrypt/live/example.com/privkey.pem
         sudo systemctl restart dovecot
 
 ## Test Your Configuration
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Given the possibility of hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
 {{< /note >}}
 

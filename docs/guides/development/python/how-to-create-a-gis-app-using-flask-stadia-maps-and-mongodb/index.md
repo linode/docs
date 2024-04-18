@@ -33,8 +33,7 @@ This guide assumes a basic familiarity with programming concepts, Python, HTML, 
     {{< /note >}}
 
 ### Before you Begin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was written using Python version 3.7.
 {{< /note >}}
 

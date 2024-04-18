@@ -77,7 +77,6 @@ The `-L` option forces symbolic links to be followed. This means if you tell the
 The `-P` option tells `cd` to use the physical directory structure and not to follow symbolic links. If you use this option, instead of navigating to where the symbolic link points to, you will change into the physical directory, if it exists. If the directory does not exist, the system will alert you with a `directory does not exist error` and you will remain in the current directory. For example, say you want to `cd` to a symbolic link `/var/example.com` that points to `/var/www/example.com`, you will simply change into the directory and not follow the link:
 
     cd -P /var/example.com
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If both `-L` and `-P` are specified, the `-P` option will be ignored.
 {{< /note >}}

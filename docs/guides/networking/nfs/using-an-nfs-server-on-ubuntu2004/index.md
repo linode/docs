@@ -57,8 +57,7 @@ Due to its flexibility, openness, and simple mechanisms, there are also some dra
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. To complete the server and client configuration, two Linodes are required. One Linode serves as the NFS host and server, while the other acts as a client. Note the IP addresses of both Linodes. Throughout the following sections, replace `server_ip_addr` with the IP address of the NFS server, and `client_ip_addr` with the address of the client.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -205,8 +204,7 @@ client_ip_addr(rw,wdelay,root_squash,no_subtree_check,sec=sys,rw,secure,root_squ
 ### Create an NFS Mount Point on the Client
 
 To access the export directory on the server, the client must first map the drive to a local directory. This directory is called a *mount point*. To create a mount point, create a new directory on the client and bind the server's export directory to it. Execute the following commands on the client to mount the server's export directory.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Use an empty directory for the mount point. Any pre-existing files or subdirectories in the mounted directory are hidden while the mount point is in use.
 {{< /note >}}
 

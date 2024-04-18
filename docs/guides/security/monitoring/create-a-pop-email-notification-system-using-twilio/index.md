@@ -442,8 +442,7 @@ The updated example code looks for email in the last full minute prior to when t
 - If an email arrived at 3:04:45PM, it is retrieved from the email server by the script. Because it is older than the script's timing interval, it is not forwarded to text.
 
 - If an email arrived at 3:06:15PM, it is retrieved from the email server by the script. However, it is not within the full minute that preceded the script's execution, so it is not forwarded to text.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The code is written in this way because cron jobs are not guaranteed to run at exactly the time they are scheduled. For example, a job that is scheduled every minute might run at 6 seconds past the minute at one iteration, and 9 seconds past the minute the next time. The amount of load that a system is under can affect this timing.
 
 If the code only checked the 60 seconds prior to the script execution time, then some emails may be missed as a result of inconsistent timing. By standardizing the interval for every script run, all emails should be intercepted over time.
@@ -745,8 +744,7 @@ This indicates that your email password or username are incorrect. Verify that y
 If the auto-forwarding system does not forward your Linode Alert emails, try running the script manually:
 
     python3 autoforward-email-to-text-message.py
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You need to set environment variables for the script in your terminal before running it. This is described in the [Run the Code](#run-the-code) section.
 {{< /note >}}
 

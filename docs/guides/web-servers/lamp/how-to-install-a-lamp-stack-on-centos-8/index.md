@@ -165,8 +165,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
 
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
 {{< /note >}}
 
@@ -190,8 +189,7 @@ ssh dhcpv6-client
         sudo firewall-cmd --zone=public --add-service=https
 
     Visit your domain or public IP to test the Apache server and view the default Apache page.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Rename Apache's default welcome page. When this file is present it will take precedence over other configurations via the `LocationMatch` directive.
 
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk

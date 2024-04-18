@@ -19,8 +19,7 @@ This guide configures a high availability WordPress site with a two-Linode clust
 
 This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -138,8 +137,7 @@ bind-address    = x.x.x.x
 ## Configure Apache
 
 The steps in this section will need to be performed on **both** of your Linodes.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For the following sections of this guide, replace "example.com" with your domain name.
 {{< /note >}}
 

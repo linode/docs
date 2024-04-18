@@ -56,8 +56,7 @@ ripgrep is usually available as part of the standard package for most Linux dist
 Ripgrep is available through APT for Ubuntu release 18.10 or higher as well as the newest release of Debian. To install ripgrep, use the following command.
 
     sudo apt-get install ripgrep
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To install ripgrep on earlier releases, see the [ripgrep installation instructions](https://github.com/BurntSushi/ripgrep#installation) for information on how to add the binary `.deb` file.
 {{< /note >}}
 
@@ -90,8 +89,7 @@ Ripgrep can also be installed using the popular [Homebrew](https://brew.sh/) pac
 ### Install ripgrep Using Cargo
 
 Because ripgrep is written in Rust, it can be installed using Cargo, Rust's package manager. If Rust is already installed on the system, then Cargo is already available. Otherwise, Cargo can be installed as a stand-alone utility using the command `sudo apt install cargo`. To install ripgrep using Cargo, run the following command.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To be able to run Cargo executables, add the line `export PATH=$PATH:$HOME/.cargo/bin` to the `.bashrc` file. Source the `.bashrc` file to apply the changes.
 {{< /note >}}
 
@@ -108,8 +106,7 @@ The ripgrep executable is known as `rg`. Most commands take the form of `rg <sea
 To see usage notes for `rg` and a list of all the options, use the `-help` option.
 
     rg -help
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples in the following section search the codebase of the open-source [PHP Composer](https://getcomposer.org/) application.
 {{< /note >}}
 

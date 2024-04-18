@@ -41,8 +41,7 @@ The `fd` command is available as part of the default packages on most Linux dist
 ### Ubuntu / Debian
 
 For release 19.04 and higher of Ubuntu, the fd application is available through APT. Ubuntu already has a package named `fd`, so the `fd` binary is referred to as `fdfind`. An alias must be added to use the `fd` command.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For information on installing fd on earlier releases of Ubuntu, see [*the fd GitHub page*](https://github.com/sharkdp/fd#installation).
 {{< /note >}}
 
@@ -89,8 +88,7 @@ On the Arch Linux distribution, the fd package can be installed from the officia
 On the Alpine distribution, the fd package can be installed using apk.
 
     apk add fd
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `fd` command can also be installed on macOS using Homebrew. Use the command `brew install fd`. For instructions on downloading, installing, and using Homebrew, see the [Homebrew webpage](https://brew.sh/).
 {{< /note >}}
 

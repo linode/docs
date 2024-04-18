@@ -15,8 +15,7 @@ aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/website
 The standard search that is built into WordPress does not provide the best search experience you can offer your visitors, given its inability to suggest search phrases, catch typos, understand word variations, organize and filter results, and index documents for search results. *Full text search engines* often offer these features and **Apache Solr** is a free, open-source option that does.
 
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -174,8 +173,7 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 ### Create a User Account and User Group for Solr
 
 For security purposes, Solr should run with its own user account and group.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The following commands should be run on the server where **Solr** is installed.
 {{< /note >}}
 
@@ -195,8 +193,7 @@ The following commands should be run on the server where **Solr** is installed.
 
 
 ### Configure Solr as a Startup Service
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Run the following commands on the server where **Solr** is installed.
 {{< /note >}}
 

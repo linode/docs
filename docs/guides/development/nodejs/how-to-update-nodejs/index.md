@@ -30,8 +30,7 @@ Node.js is a cross-platform runtime environment for server-side JavaScript appli
 
 5.  If you're using the installer to update, go to the Node.js downloads page to get the appropriate version. The most recent version of *long-term support* (LTS) is listed and you also have the option to choose a version in the *Current* section.
 ![The Node.js downloads page](nodejs-downloads-page.png)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 **Current** is for developers and development or testing environments that don't require the systems to be as stable or up and accessible. LTS is aimed at production environments that require stability and continued uptime. If you are unsure which you need, choose LTS.
 {{< /note >}}
 

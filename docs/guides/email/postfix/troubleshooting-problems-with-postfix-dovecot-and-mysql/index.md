@@ -318,8 +318,7 @@ For some troubleshooting scenarios, you may find that a top-down approach doesn'
 The bottom-up approach presented here breaks up the complex task of building a mail server into smaller chunks. This has two benefits. First, each section focuses on just a few mail server functions and includes fewer details, which makes it easier to understand. By the end of the project, you should have a deep understanding of how the mail server works. Second, each chunk adds a discrete amount of testable functionality to the mail server. This makes it easier to find errors by limiting the scope of their possible locations. For example, if your mail server was working after you completed "Basic Dovecot," but is failing its tests after "Virtual Domains and Users," you know that the error is related to something you did in that section.
 
 The second part of this guide presents a step-by-step mail server build organized by function, progressing from core functions to more peripheral ones, with tests at each step. You should have the [main setup guide](/docs/guides/email-with-postfix-dovecot-and-mysql/) open at the same time, because we will be referring back to it. As you read the main setup guide, you'll notice that we are installing items in a different order here. The main guide is designed for a streamlined approach that avoids editing the same file multiple times. This guide is focused on a deeper understanding of each component, so you will sometimes need to jump around to different sections of the main guide for reference. Once you successfully complete a stage, I suggest that you make a [system-level backup](/docs/products/storage/backups/) so you can get back to that point easily!
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Keep in mind that the earlier builds presented here are functional, but should not be considered production-ready for security and functionality reasons, mainly because passwords are sent in plain text, and/or outgoing SMTP is not enabled.
 {{< /note >}}
 
@@ -416,8 +415,7 @@ auth required pam_unix.so nullok account required pam_unix.so
 6.  Restart Dovecot.
 7.  Send yourself another test message.
 8.  Check your email. You can use either Telnet or a mail client. At this stage, your email address will be for your system user (<myuser@example.com>), and your username and password will be the same as they are for SSH (no `@example.com` part in the username at this stage). Your connection type will be standard (non-secure) and your password will be plain. You will probably have to set up your mail client manually, rather than through a wizard.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The Telnet and mail client tests will not work for `root`. Use a different system user.
 {{< /note >}}
 
@@ -839,8 +837,7 @@ smtps     inet  n       -       -       -       -       smtpd
 6.  Save the changes you've made to the `/etc/postfix/master.cf` file.
 7.  Restart Postfix.
 8.  Set up your mail client to connect to your Linode as an outgoing mail server. You should use TLS encryption, or STARTTLS if you have that option, over ports 25, 465, or 587. Your username and password are the same as they are for incoming mail. Try sending a test message.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You will no longer be able to use Telnet for testing. If you want to run a manual test for troubleshooting purposes, you can use [openssl](http://www.openssl.org/docs/apps/s_client.html) instead. Your command should look like this (you can test on ports 465 and 587 as well):
 
 openssl s_client -connect example.com:25 -starttls smtp

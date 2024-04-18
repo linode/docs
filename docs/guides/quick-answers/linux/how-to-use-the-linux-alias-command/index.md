@@ -105,8 +105,7 @@ For example, to remove the `update` temporary alias from [above](#create-a-tempo
 To remove all aliases:
 
     unalias -a
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Removing all aliases also removes the system default aliases.
 {{< /note >}}
 

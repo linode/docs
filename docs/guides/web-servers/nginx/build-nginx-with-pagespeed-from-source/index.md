@@ -70,8 +70,7 @@ configure arguments: --add-module=/root/incubator-pagespeed-ngx-latest-stable --
 ## Build NGINX and PageSpeed
 
 The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source) provides a bash script to automate the installation process.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The automated installation script will install several compilation tools needed to install PageSpeed. If you are using a production environment, ensure you uninstall any packages that are no longer needed after the installation has completed.
 {{< /note >}}
 

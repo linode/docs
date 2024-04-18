@@ -27,8 +27,7 @@ When your Python program needs to run an external password-dependent program, or
 You must install Paramiko on your system before being able to use it in your Python programs. Use the command below to install Paramiko with Pip:
 
     pip install paramiko
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are not familiar with Pip or do not have it installed on your system, see our [How to Manage Python Packages and Virtual Environments on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#how-pip-works) guide.
 {{< /note >}}
 

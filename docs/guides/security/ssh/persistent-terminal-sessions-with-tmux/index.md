@@ -80,8 +80,7 @@ There are three ways to issue commands to tmux:
 - **command line**: Commands can also be entered directly to the command line within a tmux session. Usually these commands are prefaced by `tmux`. The `tmux attach` command used in the previous section was an example of this type of command.
 
 Most tmux tasks can be accomplished using any of these three methods.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can change the prefix key by editing the `~/.tmux.conf` file. For the remainder of this guide, **Prefix** will be used to refer to either the default `CTRL+b` or the combination you have chosen in your configuration file.
 {{< /note >}}
 
@@ -154,8 +153,7 @@ Each window can be divided into multiple panes. This is useful when you want out
 Sometimes even multiple windows and panes aren't enough and you need to separate the layouts logically by grouping them into separate sessions. Open the command prompt with **Prefix** then **:**, then start a new session:
 
     new-session
-
-{{< note respectIndent=false >}}
+{{< note >}}
 It's also possible to type shorter versions of a command, for example: "new-se". But this will work only if there isn't another command that starts with the same string of characters.
 {{< /note >}}
 

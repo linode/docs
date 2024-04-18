@@ -36,16 +36,14 @@ Composer only works on PHP version 5.3.2 or above, although PHP 5.3.4 or higher 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
 1. Ensure PHP is already installed on the Linode. PHP 5.3.4 or above is required, but the latest version is recommended. Use the command `php -v` to determine the version of PHP that is installed.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install and Update PHP Composer
 
 The most common way of installing Composer is by using the installation program. However, it can also be installed from the source using Git or a similar system. The steps in this section explain how to download and install the latest version of Composer. The following instructions are geared towards Ubuntu users but are generally applicable towards most Linux distributions.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For information on the various installation options and how to install an earlier version of Composer, see the [Composer Download page](https://getcomposer.org/download/).
 {{< /note >}}
 
@@ -142,8 +140,7 @@ You are already using the latest available Composer version 2.1.6 (stable channe
 To use Composer with PHP, it is first necessary to define the required packages using the `require` command. This command also installs the package. The composer relies on the `composer.json` files to orchestrate the dependencies. This file describes the required version for each package and lists all of the dependencies. The `require` command automatically creates and updates `composer.json`, although it is possible to manually create and edit it.
 
 The steps in the following section illustrate how to create a small PHP project that generates a random number using a package chosen from Packagist. It also explains how to search Packagist for an appropriate package and how to add it to the project using Composer.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 These instructions are designed to explain how to keep track of PHP dependencies for use in your own project. If you intend to publish a package to Packagist, you must manually edit the `composer.json` file and add some information. For information on how to publish a PHP package through Packagist, see the "Publishing Packages" section of the [Packagist official documentation](https://packagist.org/).
 {{< /note >}}
 
@@ -227,8 +224,7 @@ print "\n ";
     {{< output >}}
 1bhf1Icu4IhHq4Xzto98PfC2tYCjaVcV
     {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If a `composer.json` file is already present, but the packages have not yet been installed, run `composer install` instead of `require`. If you are intending to publish the package on Packagist, create a detailed `composer.json` file before installing any packages. To generate this template, run `composer init`. For more information about the structure of the `composer.json` file, see the [Schema Documentation](https://getcomposer.org/doc/04-schema.md). Complete documentation can be found on the [Composer Website](https://getcomposer.org/doc/).
 {{< /note >}}
 

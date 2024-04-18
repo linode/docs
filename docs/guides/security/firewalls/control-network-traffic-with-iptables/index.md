@@ -132,8 +132,7 @@ Replacing a rule is similar to inserting, but instead uses `iptables -R`. For ex
 Deleting a rule is also done using the rule number. For example, to delete the rule we just inserted for port 8080:
 
     sudo iptables -D INPUT 7
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
 {{< /note >}}
 
@@ -288,8 +287,7 @@ This rule breaks down as follows:
 ## Basic iptables Rulesets for IPv4 and IPv6
 
 Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 **These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a demonstration.
 {{< /note >}}
 
@@ -384,8 +382,7 @@ COMMIT
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 [APT](http://linux.die.net/man/8/apt) attempts to resolve mirror domains to IPv6 as a result of `apt-get update`. If you choose to entirely disable and deny IPv6, this will slow down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.
 
 To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`.

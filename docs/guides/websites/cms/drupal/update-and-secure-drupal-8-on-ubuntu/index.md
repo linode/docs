@@ -33,8 +33,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 - This guide will use `sudo` wherever possible.
 - You may need additional firewall rules for your specific application.
 - Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Linode's IP address or domain name.

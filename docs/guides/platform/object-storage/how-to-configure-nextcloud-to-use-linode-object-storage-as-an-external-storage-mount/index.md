@@ -37,8 +37,7 @@ You can configure Nextcloud to enable external storage devices and services, lik
 ### Enable the External Storage App
 
 In this section you enable the *External Storage Support* Nextcloud app in order to use external storage sources.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You must belong to the `admin` user group in order to install the External storage support app.
 {{< /note >}}
 
@@ -61,8 +60,7 @@ You must belong to the `admin` user group in order to install the External stora
 ### Create a New Linode Object Storage External Storage Mount
 
 After enabling the External Storage Support app, you are now ready to add a new external storage mount. You configure the new external storage mount to use the Linode Object Storage service.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you have not yet [created an Object Storage access key](/docs/products/storage/object-storage/guides/access-keys/), you should do so now before proceeding with this section.
 {{< /note >}}
 

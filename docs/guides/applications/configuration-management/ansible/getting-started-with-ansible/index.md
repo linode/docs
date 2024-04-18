@@ -51,8 +51,7 @@ The examples in this guide provide a manual method to establish a basic connecti
     {{< /note >}}
 
 ## Before You Begin
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This guide's example instructions will create up to three billable Linodes on your account. If you do not want to keep using the example Linodes that you create, be sure to [delete them](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works.

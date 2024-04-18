@@ -50,8 +50,7 @@ A blank new file in the terminal similar to the following appears:
 ![new file in the terminal](new-file.png "A new file in the terminal with nano.")
 
 You can make changes to the file using the Nano editor. You may exit the file by pressing *Ctrl + X*. It prompts you to save the file and name it before you exit.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Nano only prompts you if actual changes were made to the file. If you didn't make any changes, you simply exit the editor and you get no prompts.
 {{< /note >}}
 

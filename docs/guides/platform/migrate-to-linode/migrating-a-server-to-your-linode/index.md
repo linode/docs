@@ -13,16 +13,14 @@ tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migration/migrate-server-to-linode/','/migrate-to-linode/disk-images/migrating-a-server-to-your-linode/','/platform/disk-images/migrating-a-server-to-your-linode/']
 ---
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The process for migrating a server image to your Linode will vary depending upon how the image was created. We recommend making an `.iso` file from your existing image, and then following the steps in our updated [custom distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/) guide to deploy it on a Linode. This guide is no longer being maintained, and the procedure outlined here is not recommended for new migrations.
 {{< /note >}}
 
 You can migrate an existing server to your Linode from another hosting provider or a local machine. This is a great option if you're moving to Linode from another hosting provider or if you've built a custom server on your local machine. You can even migrate virtualized servers created with products like VirtualBox or VMware. This guide shows you how to prepare the Linode to receive the files, copy the files from the existing server to the Linode, and then make the disks bootable.
 
 ![Migrating a Server to Your Linode](migrating_a_server_to_your_linode.png "Migrating a Server to Your Linode")
-
-{{< note respectIndent=false >}}
+{{< note >}}
 These instructions assume that you'll be working with a live server. If you can boot into an alternate environment, such as a live CD, you should do so. However, most hosting providers do not offer a bootable recovery or maintenance environment.
 {{< /note >}}
 
@@ -33,8 +31,7 @@ First you'll need to prepare the Linode to receive the files from the existing s
 ### Creating Disks
 
 Create two disks: one for the files on your existing server, and another for a swap disk. That way, the import from the existing server will be bootable. Here's how to create the disks:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 We assume that your existing server has a single root partition. If you have multiple partitions set up, you'll need to add extra disks to accommodate each partition.
 {{< /note >}}
 
@@ -112,8 +109,7 @@ Now it's time to copy the files from your existing server to your Linode. Here's
 2.  Enter the following command to initiate the copy, replacing `123.45.67.890` with your Linode's IP address. (For instructions on finding your Linode's IP address, see [Finding the IP Address](/docs/products/platform/get-started/#find-the-ip-address-of-your-linode).) :
 
         rsync --exclude="/sys/*" --exclude="/proc/*" -aHSKDvz -e ssh / root@123.45.67.890:/media/sda/
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you receive a message indicating that the rsync command couldn't be found, you'll need to install it by entering `apt-get install rsync` on Ubuntu or Debian. If you're using a different distribution, you may need to enter a different command.
 {{< /note >}}
 

@@ -35,8 +35,7 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure a Firewall for Terraria
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Terraria only uses IPv4 and does not use IPv6.
 {{< /note >}}
 
@@ -192,8 +191,7 @@ WantedBy=multi-user.target
 *   **ExecStart** instructs systemd to spawn a screen session containing the 64-bit `TerrariaServer` binary, which starts the daemon. `KillMode=none` is used to ensure that systemd does not prematurely kill the server before it has had a chance to save and shut down gracefully.
 
 *   **ExecStop** calls a script to send the `exit` command to Terraria, which tell the server to ensure that the world is saved before shutting down. In the next section, we'll create a script which will send the necessary commands to the running Terraria server.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This script is intended to save your world in the event that you reboot the operating system within the Linode. It is **not** intended to save your progress if you reboot your Linode from the Linode Manager. If you must reboot your Linode, first stop the Terraria service using `sudo systemctl stop terraria`. This will save your world, and then you can reboot from the Linode Manager.
 {{< /note >}}
 
@@ -232,8 +230,7 @@ This script permits you to both:
 
 *  Attach to the console for direct administration, and
 *  Send the console commands like `save` or `exit` while it's running without needing to attach at all (useful when services like systemd need to send server commands).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Throughout the rest of this guide, you may encounter "command not found" errors when running the `terrariad` command. This may result from the directory `/usr/local/bin/` not being found in the `$PATH` when running sudo commands, which can occur with some Linux distributions. You can work around this problem by calling the script with the full path. For example, instead of running `sudo terrariad attach`, use `sudo /usr/local/bin/terrariad attach`.
 {{< /note >}}
 

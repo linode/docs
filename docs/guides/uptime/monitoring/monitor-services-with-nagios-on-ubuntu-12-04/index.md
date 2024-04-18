@@ -41,16 +41,14 @@ Now you're ready to install Nagios. Here's how:
         sudo apt-get install -y nagios3
 
 3.  Enter an administrator password to complete the installation.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you do not already have an email server installed on your Linode, Postfix will be installed automatically. The *Internet Site* configuration will be used by default. You'll also have to enter a mail name for the system.
 {{< /note >}}
 
 ## Access the Nagios Web Interface
 
 You can now access the Nagios web interface for administration and reporting by visiting `http://example.com/nagios3/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios3/`, where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the `nagiosadmin` user you created earlier.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/guides/create-a-self-signed-tls-certificate/).
 {{< /note >}}
 

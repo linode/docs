@@ -19,8 +19,7 @@ external_resources:
 ---
 
 If you're running a mail server, it's a good idea to have spam and virus filtering. Spam can flood your users' inboxes, and those running insecure local PCs are susceptible to virus infection. Protecting your email server protects your clients and you. This guide goes through the installation and configuration of virus and spam filtering, using Amavis-new, ClamAV, and SpamAssassin.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This is a generic introductory guide. You are responsible for ensuring that your virus/spam filtering system meets the needs of your environment.
 {{< /note >}}
 
@@ -236,8 +235,7 @@ smtp-amavis     unix    -       -       -       -       2       smtp
 ## Testing ClamAV
 
 You'll want to test that your email server is removing malicious emails from your users' inboxes. [The European Expert Group For IT-Security](http://www.eicar.org/) has files available for download that will be seen by ClamAV as a virus. You can download these test virus files [here](http://www.eicar.org/85-0-Download.html).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Please be aware that if you are running antivirus software locally, it may block these test files. Be sure to read the `Important Note` section of the EICAR download page before you continue.
 {{< /note >}}
 

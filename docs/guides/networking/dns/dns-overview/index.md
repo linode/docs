@@ -44,8 +44,7 @@ You'll need to specify name servers on your domain registrar's website. They'll 
 ### DNS Records and Zone Files
 
 The next aspect of DNS management is specifying DNS records, which match domain names to IP addresses. The DNS records are then automatically bundled up into a zone file, which is what allows connecting devices to look up the correct IP address for your domain. If you decide to use Linode's name servers, our DNS Manager will help you create a default zone file. It contains records similar to the following:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also use trailing dots in domain names (for example, `example.com.`), which will make the name fully-qualified.
 {{< /note >}}
 
@@ -123,8 +122,7 @@ A *CNAME record* or *Canonical Name record* matches a domain or subdomain to a d
 With this setup, when `alias.com` is requested, the initial DNS lookup will find the CNAME entry with the target of `example.com`. A new DNS lookup will be started for `example.com`, which will find the IP address *12.34.56.78*. Finally, visitors to `alias.com` will be directed to `12.34.56.78`.
 
 CNAME records exist so that domains can have aliases. Some mail servers handle mail oddly for domains with CNAME records, so you should not use a CNAME record for a domain that gets email. Likewise, MX records cannot reference CNAME-defined hostnames. The target domain for a CNAME record should also have a normal A-record resolution. Chaining or looping CNAME records is not recommended.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In some cases, a CNAME record can be an effective way to redirect traffic from one domain to another while keeping the same URL. However, keep in mind that a CNAME record does not function the same way as a URL redirect. A CNAME record directs web traffic for a particular domain to the target domain's IP address. Once the visitor reaches that IP address, the web server's configuration will determine how the domain is handled. If that domain is not configured on the server, the server will simply display its default web page (if any). This may or may not be the web page for the target domain in the CNAME record, depending on how the server is configured.
 {{< /note >}}
 
@@ -154,8 +152,7 @@ Your MX records don't necessarily have to point to your Linode. If you're using 
     example.com         MX      30  mail_3.example.com
 
 In this example, if `mail_1.example.com` is down, mail will be delivered to `mail_2.example.com`. If `mail_2.example.com` is also down, mail will be delivered to `mail_3.example.com`.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you do not intend to accept any email through your domain, you can add a **Null MX** record, which is simply a specially formatted MX record. This is preferable to not adding any MX records, which causes the sender to still perform email delivery attempts on any A or AAAA records for that domain. A Null MX record tells the sending mail server to stop all delivery attempts, freeing up resources and allowing the sender to resolve any issues with the email address faster.
 
 The instructions for creating a Null MX record vary by DNS provider. For Linode's DNS Manager, the *Subdomain* (name) field should be blank, the *Preference* (priority) field should be 0, and the *Mail Server* field should be blank. This prevents you from creating any other MX records for the domain.
@@ -189,8 +186,7 @@ PTR records are usually set with your hosting provider. They are not part of you
 As a prerequisite for adding a PTR record, you need to create a valid, live A or AAAA record that points the desired domain to that IP. If you want an IPv4 PTR record, point the domain or subdomain to your Linode's IPv4 address. If you want an IPv6 PTR record, point the domain to your Linode's IPv6 address. Beyond that, IPv4 and IPv6 PTR records work the same way.
 
 For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/#setting-reverse-dns) guide.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 It's possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.
 {{< /note >}}
 
@@ -199,8 +195,7 @@ It's possible to have different IPs (including both IPv4 and IPv6 addresses) tha
 An *SOA record* or *Start of Authority record* labels a zone file with the name of the host where it was originally created. Next, it lists the contact email address for the person responsible for the domain. There are also various numbers, which we'll get into in detail in a moment. First, here's a typical SOA record:
 
     @   IN  SOA ns1.linode.com. admin.example.com. 2013062147 14400 14400 1209600 86400
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The administrative email address is written with a period (**.**) instead of an **@** symbol.
 {{< /note >}}
 
@@ -221,16 +216,14 @@ An *SPF record* or *Sender Policy Framework record* lists the designated mail se
 An SPF record for your domain tells other receiving mail servers which outgoing server(s) are valid sources of email so they can reject spoofed mail from your domain that has originated from unauthorized servers. A very basic SPF record looks like the following:
 
     example.com   TXT     "v=spf1 a ~all"
-
-{{< note respectIndent=false >}}
+{{< note >}}
 When applying TXT records using the [Linode DNS Manager](/docs/products/networking/dns-manager/), quotation marks `"` should not be applied in the example above.
 {{< /note >}}
 
 In your SPF record, you should list all the mail servers from which you send mail, and then exclude all the others. Your SPF record will have a domain or subdomain, type (which is TXT, or SPF if your name server supports it), and text (which starts with "v=spf1" and contains the SPF record settings).
 
 If your Linode is the only mail server you use, you should be able to use the example record above. With this SPF record, the receiving server will check the IP addresses of both the sending server and the IP address of example.com. If the IPs match, the check passes. If not, the check will soft fail (i.e., the message will be marked but will not automatically be rejected for failing the SPF check).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We recommend visiting [dmarcanalyzer.com](https://www.dmarcanalyzer.com/spf/how-to-create-an-spf-txt-record/) to learn how SPF records work and how to construct one that works for your setup
 {{< /note >}}
 
@@ -255,7 +248,6 @@ An example use of SRV records would be to set up [Federated VoIP](http://en.wiki
 ### TXT
 
 A *TXT record* or *text record* provides information about the domain in question to other resources on the internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In common DNS Configurations using TXT records, quotation marks `"` are applied. When applying TXT records using the [Linode DNS Manager](/docs/products/networking/dns-manager/), quotation marks `"` should not be applied in most scenarios, as they are added automatically in cases where they are needed.
 {{< /note >}}

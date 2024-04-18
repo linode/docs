@@ -10,7 +10,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 show_on_rss_feed: false
 ---
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 All labs and tests are to be conducted within the parameters outlined within the text. The use of other domains or IP addresses is prohibited.
 {{< /note >}}

@@ -85,8 +85,7 @@ The second example Playbook targets all hosts in the `marketing_servers` group a
 ## Web Server Setup with Ansible Playbooks
 
 In this example, you will create three different Playbooks to configure your Linode as a web server running a LAMP stack. You will also configure the Linode to add a limited user account. The Playbooks will provide basic configurations that you can expand on, if needed.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The Playbooks created in this section are for learning purpose and will not result in a fully hardened or secure server. To further secure your Linode, you can use Ansible's [firewalld module](https://docs.ansible.com/ansible/latest/modules/firewalld_module.html).
 {{< /note >}}
 

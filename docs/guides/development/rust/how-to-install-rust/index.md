@@ -21,8 +21,7 @@ This guide explains how to install [*Rust*](https://www.rust-lang.org/), a popul
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. For information about the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -33,8 +32,7 @@ Rust runs as quickly as C++ does, but is safer to use. This is because it emphas
 ## Installing Rust
 
 The typical, and most straightforward, way to install Rust is by using `rustup`. This is Rust's main installation program and version manager. These instructions are designed for Ubuntu, but are generally applicable to most Linux distributions.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To experiment with Rust before downloading it, try the [*Rust Playground*](https://play.rust-lang.org/). This is an open source educational program that allows beginners to write and run simple Rust programs.
 {{< /note >}}
 
@@ -79,8 +77,7 @@ rustc 1.50.0 (cb75ad5db 2021-02-10)
 export PATH="$HOME/.cargo/bin:$PATH"
 ...
     {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 It is also possible to use Git to install Rust. Clone the [Rust GitHub repository](https://github.com/rust-lang/rustup) and run `cargo run --release`. See the `rustup` [installation page](https://rust-lang.github.io/rustup/installation/other.html) for more information.
 {{< /note >}}
 

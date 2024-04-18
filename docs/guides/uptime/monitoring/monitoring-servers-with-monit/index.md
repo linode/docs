@@ -29,8 +29,7 @@ With Monit you get:
 * Automatic email alerts sent at event triggers.
 * Web interface for status monitoring.
 * Availability from main package repositories.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -64,8 +63,7 @@ Debian and Ubuntu automatically start and enable Monit after installation.
 
     sudo apt-get update && sudo apt-get upgrade
     sudo apt-get install monit
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Debian 10 does not include Monit in the standard repositories. In order to install Monit on Debian 10, you need to enable the `buster-backports` repository.
 
 To enable the Monit repository, include the following lines in the `/etc/apt/sources.list` file or create a new file ending in `.list` inside the `/etc/apt/sources.list.d/` directory:
@@ -155,8 +153,7 @@ You can optionally restrict web interface access to just your IP address.
 
     set httpd port 2812
         allow 10.0.0.1 (your ip address)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
 {{< /note >}}
 

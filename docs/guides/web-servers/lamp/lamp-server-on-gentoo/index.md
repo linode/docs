@@ -26,8 +26,7 @@ tags: ["web server","php","mysql","apache","lamp"]
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Gentoo Linux system.
 
 In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 {{< /note >}}
 

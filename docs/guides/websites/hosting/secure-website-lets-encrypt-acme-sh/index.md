@@ -88,8 +88,7 @@ v2.8.7
 ## Create an API token
 
 acme.sh can use the [Linode v4 API](/docs/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) product documentation to create a Linode API v4 token.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure the token you create has **Read/Write** access to **Domains**.
 {{< /note >}}
 
@@ -223,14 +222,12 @@ For example, to store your certificates in `/etc/ssl/example.com` and restart Ap
         --key-file /etc/ssl/example.com/example.com.key \
         --fullchain-file /etc/ssl/example.com/fullchain-example.com.cer \
         --reloadcmd "systemctl restart apache2"
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The target directory must exist first. To create it run the following command:
 
     mkdir -p /etc/ssl/example.com
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The example command uses certificate file system locations (`/etc/ssl/`) that are different from the examples in the [Configure your Web Server](#configure-your-web-server) section (which used the `/root/.acme.sh/` folder). If you want to copy this exact example command, make sure that your web server configurations use the correct locations.
 {{< /note >}}
 

@@ -55,8 +55,7 @@ Now we're going to install the PostgreSQL database and other necessary server li
 2.  Create the log directory:
 
         sudo mkdir /var/log/odoo
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In the scenario of running multiple Odoo versions on the same Linode you may want to use different users and directories for each instance.
 {{< /note >}}
 
@@ -69,8 +68,7 @@ In the scenario of running multiple Odoo versions on the same Linode you may wan
 2.  Clone the Odoo files on your server:
 
         sudo git clone https://www.github.com/odoo/odoo --depth 1 --branch 9.0 --single-branch .
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Using Git allows great flexibility because any time a new upgrade ,is available you only need to pull that branch, You can even install a different one alongside the production version; just change the destination directory and the  `--branch X.x` flag. Before performing any operation, remember to make a full backup of your database and custom files.
 {{< /note >}}
 
@@ -91,8 +89,7 @@ In the scenario of a testing or development environment you could create a user 
 {{< /note >}}
 
 4.  Press **CTRL+D** to exit from `postgres` user session.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you want to run multiple Odoo instances on the same Linode remember to check pg_hba.conf and change it according your needs.
 {{< /note >}}
 

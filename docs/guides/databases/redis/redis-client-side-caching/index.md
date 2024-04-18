@@ -36,8 +36,7 @@ This tutorial explains the concepts behind Redis's server-assisted client-side c
             sudo dnf upgrade
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -161,8 +160,7 @@ Among these is the ability to receive messages from an active client. Previously
 RESP3 makes it possible for a client to be simultaneously open for issuing commands and set to listen for incoming messages, like invalidation notices.
 
 By default, Redis clients start in the RESP2 protocol. Below, you can see steps for enabling RESP3 and using it for receiving invalidation messages on a Redis client.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Redis clients must be version 6 or later to use RESP3. Check your Redis version before proceeding:
 
     redis-cli --version

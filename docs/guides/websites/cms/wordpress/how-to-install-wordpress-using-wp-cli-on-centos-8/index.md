@@ -459,8 +459,7 @@ The procedure for installing and activating a theme is nearly identical to that 
 ### Update WordPress
 
 To update your WordPress site:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For more details on best practices when updating your WordPress site, see [WordPress' official documentation](https://wordpress.org/support/article/updating-wordpress/).
 {{< /note >}}
 

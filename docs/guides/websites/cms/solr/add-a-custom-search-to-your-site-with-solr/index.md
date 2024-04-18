@@ -24,8 +24,7 @@ Apache Solr is an open source search platform that provides administrators with 
 2.  Complete the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system and package repositories and install `wget`.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -121,8 +120,7 @@ Solr listens on port `8983` by default. Open the port to allow access to the web
 **iptables**
 
     iptables -A INPUT -p tcp --dport 8983 -j ACCEPT -m comment --comment "Solr port"
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Save your iptables rule using *iptables-persistent*, otherwise it will be lost on the next reboot.
 {{< /note >}}
 

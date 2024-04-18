@@ -23,8 +23,7 @@ The best way to know what occurs during a server reboot is to test for it. Durin
 ## When to Reboot
 
 In most cases a reboot is required when upgrading to a newer Linux kernel. By default, Linode configuration profiles are set to use the latest kernel available provided by Linode at each boot. If you've changed this option or are using a custom configuration, you're responsible for updating the kernel on your system.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Linode maintains an RSS feed and web page for cataloging current and deprecated Linux kernels. When the support status of a kernel changes, that change will always be recorded and be pushed out to RSS subscribers. See [Available Kernels](https://www.linode.com/kernels).
 {{< /note >}}
 
@@ -52,8 +51,7 @@ If you aren't implementing a system wide backups solution like Linode Backups, y
 ## Autostart Services
 
 For future reboots, ensure that any critical stack software is configured to start at boot. This differs depending on operating systems.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is a high-level overview, and does not discuss runlevels. Read more about runlevels [here](https://en.wikipedia.org/wiki/Runlevel).
 {{< /note >}}
 
@@ -168,8 +166,7 @@ Remember, if you use SSL certificates that require a passphrase, enter the passp
     OK: Pass Phrase Dialog successful.
 
 The console does not display any characters (ex: **\***) as you enter your passphrase.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you use full-disk encryption, enter your password in the LISH console after a reboot.
 {{< /note >}}
 
@@ -186,8 +183,7 @@ If you followed the [Creating a Firewall](/docs/products/compute/compute-instanc
 ## Load Balancing for Fault Tolerance
 
 If your system absolutely **cannot** afford any downtime, then scale the platform across multiple servers. Multi-server availability ensures that your service can remain live even if one of the servers goes down. The services and options for enabling highly available stacks are too numerous to detail here, but refer to these guides to get started with high availability:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can deploy your services to an additional Linode to enable high availability.  New Linodes will automatically be placed on known good hosts, and can ensure that vital services remain online throughout the reboot process.
 {{< /note >}}
 

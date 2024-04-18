@@ -73,8 +73,7 @@ This installs the specified modules to the system location (with `--sudo`), but 
 You can also specify the url of a Perl module and CPAN will fetch the module from that location, build the dependencies, and install it:
 
     cpanm --sudo https://cpan.metacpan.org/authors/id/O/OL/OLIVER/App-Netdisco-2.036011.tar.gz
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may need to run `cpanm Net::SSLeay` first in order to request a url with `https`.
 {{< /note >}}
 

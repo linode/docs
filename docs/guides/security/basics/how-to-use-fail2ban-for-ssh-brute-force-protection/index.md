@@ -18,8 +18,7 @@ Fail2Ban is an intrusion prevention framework written in Python that protects Li
 Brute-force attacks can be extremely powerful and may result in thousands of failed authentication attempts per day. It is therefore vital to understand how to protect your server from these attacks and how to block IP addresses. Fail2Ban allows you to automate the process of blocking brute-force attacks by limiting the number of failed authentication attempts a user can make before being blocked. This is extremely useful for servers that have user accounts that utilize passwords for remote authentication as opposed to SSH key-pair authentication.
 
 ## Before You Begin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide uses Ubuntu, but the commands are similar for other systems.
 {{< /note >}}
 
@@ -30,8 +29,7 @@ This guide uses Ubuntu, but the commands are similar for other systems.
 1.  Log into your Linode via SSH and update and upgrade.
 
         sudo apt update && sudo apt upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -67,8 +65,7 @@ total 68
 {{</ output >}}
 
 Fail2Ban uses the default configuration in the `jail.conf` file. However, it is not recommended to use the default configuration files as they can be overwritten by newer updates to the Fail2Ban package. The preferred approach to creating configurations for a particular service is by creating a new configuration file in the `/etc/fail2ban` directory with the `.local` extension.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A Fail2ban jail is a configuration file that contains filters or arguments that protect your system or a particular service
 {{< /note >}}
 

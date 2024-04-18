@@ -34,8 +34,7 @@ The Subversion server is a web-based repository consisting of a *trunk* and *bra
 There can be more than one client that accesses the server at the same time. The server instance must remain available and accessible to all clients. Both client and server can be hosted on the same Ubuntu 20.04 instance.
 
 This tutorial covers the steps for installing Subversion on **Ubuntu Server 20.04 LTS**. However, you can install Apache Subversion on Linux, macOS, and Windows systems.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Installing Apache Subversion on Ubuntu Server 20.04 LTS requires the installation of libraries used by Apache Subversion that are not found in the standard distribution of Ubuntu 20.04.
 {{< /note >}}
 
@@ -57,8 +56,7 @@ Apache Subversion provides a different workflow and version control methodology 
 ### Prerequisites
 
 The steps in this tutorial demonstrate how to use the APT package manager to install Apache Subversion. There are [pre-compiled binaries of SVN](https://subversion.apache.org/packages.html) available too.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Root or sudo permissions must be available to install Apache Subversion.
 {{< /note >}}
 
@@ -127,8 +125,7 @@ No user can link the SVN app with the repository until an administrative account
 Create a Subversion administrator user. Replace `<<admin_name>>` with the desired administrator name.
 
     htpasswd -cm /etc/apache2/dav_svn.passwd <<admin_name>>
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you select a strong and secure password for the administrator account.
 {{< /note >}}
 
@@ -196,8 +193,7 @@ AuthName "Subversion Repository"
 
 #</Location>
     {{</ file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may need to restart Subversion using systemctl for your configuration changes to take effect.
 {{< /note >}}
 
@@ -234,8 +230,7 @@ You can access your Subversion repository by pointing your browser to the Apache
     http://<<server IP or FQDN>>/svn/<<name of project>>
 
 This URL accesses the desired Subversion project. Ensure you replace all values with your own Subversion server's information.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A complete and in-depth discussion of Subversion commands, version control strategies, project skills, and steps can be found in [Subversion's documentation](https://svnbook.red-bean.com/).
 {{< /note >}}
 

@@ -34,8 +34,7 @@ It's regularly updated with security patches, and runs on the [grsecurity](https
 3.  The initial portion of this guide involves creating the disk images, so you make sure you have plenty of free space for them. A minimal installation of Alpine requires less than 1 GB, but depending on your needs, you may want to allow for more.
 
 4.  This guide assumes a consistent present working directory, meaning all commands should be run from the same directory. In most cases, it will be `/alpine` or a chroot of said directory.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 While this guide will provide you with a fully operational Alpine installation, be aware that Linode does not provide official support for Alpine Linux and cannot guarantee its stability or security. Please consider this before proceeding.
 {{< /note >}}
 

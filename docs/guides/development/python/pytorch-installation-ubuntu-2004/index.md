@@ -37,8 +37,7 @@ Optimizing a task may also require using external data sources. If using externa
         sudo apt install nvidia-cuda-toolkit
 
     For full instructions, see [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/compute-instances/guides/install-nvidia-cuda/).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
 {{< /note >}}
 

@@ -87,8 +87,7 @@ Create a configuration file for ntopng using the example below. Replace `192.0.2
 --disable-autologout # optional
 --disable-login=1 # optional
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The option flags commented with `# optional` are not mandatory. All flags requiring input must be followed by an `=` and a value.
 {{< /note >}}
 
@@ -148,8 +147,7 @@ If you want to see all host connections on a single page, set the number of rows
 ## Enable Alerts and Domain Blocking
 
 Ntopng provides a simple and convenient method for monitoring threats.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Ntopng does not replace core security features such as a properly configured firewall. It is meant to run in addition to an existing setup.
 {{< /note >}}
 

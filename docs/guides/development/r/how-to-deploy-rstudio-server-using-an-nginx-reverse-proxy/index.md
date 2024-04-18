@@ -133,7 +133,6 @@ server {
 6.  In a browser, navigate to the public IP or FDQN of your Linode. After logging in, the RStudio IDE should be available from your browser:
 
     ![Rstudio Screen](rstudio-server-page.png)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If Rstudio does not load in the browser, you may need to clear your browser cache.
 {{< /note >}}

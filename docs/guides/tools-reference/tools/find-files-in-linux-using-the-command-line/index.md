@@ -101,8 +101,7 @@ The commands run with the `-exec` are executed in the `find` process's root dire
 The `-exec` or `-execdir` options run without further prompts. If you prefer to be prompted before action is taken, replace `-exec` with `-ok` or `-execdir` with `-okdir`.
 
 ## How to Find and Delete a File in Linux
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Be very careful using this.
 {{< /note >}}
 

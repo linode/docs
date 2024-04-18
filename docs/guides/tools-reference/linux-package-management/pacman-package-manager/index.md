@@ -21,8 +21,7 @@ Before running the commands within this guide, you will need:
 1. **A system running Arch Linux** or an Arch-based distribution like Manjaro. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
@@ -106,8 +105,7 @@ The `Server =` and `Include =` lines are both optional, and the order indicates 
 ## The Arch Build System (ABS)
 
 The Arch Build System allows users to compile and install software not included in the Arch repository. This brief guide outlines the steps to building a package using the ABS.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 All commands explained here should be run as root unless otherwise specified.
 {{< /note >}}
 

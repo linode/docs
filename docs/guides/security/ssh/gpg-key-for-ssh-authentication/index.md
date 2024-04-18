@@ -23,8 +23,7 @@ The chief benefit of this method is that instead of having separate keys for GPG
 This guide will show you how to generate a GPG key, set up your computer to serve it in place of an SSH key, and put the new public key onto your server for authentication. It will also detail how to optionally move your GPG private key onto a smartcard or YubiKey to prevent authentication when the device isn't plugged into your computer.
 
 ## Before You Begin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide will only work on UNIX-based (Linux & OS X) machines! The process is very complicated on Windows but may be possible with some research.
 {{< /note >}}
 
@@ -39,8 +38,7 @@ You don't necessarily need to be familiar with [SSH public key authentication](/
 ## Generate a GPG Keypair
 
 This section explains how to generate a new GPG keypair. If you already have one, you may skip these steps, as the next section will include instructions for how to create a subkey to use specifically for authentication. You will just need the 8-digit ID for your existing key to do so.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 As an additional security measure, this process may be undertaken on an offline (non network-connected) machine or single-use Virtual Machine (VM). After installing the pre-requisite packages and *only* the pre-requisite packages, disconnect it from the network and continue with the steps below.
 {{< /note >}}
 
@@ -239,8 +237,7 @@ Your terminal should now look like this:
     Save changes? (y/N) y
 
 ### Secure Your GPG Key
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you'll need to use [Lish](/docs/products/compute/compute-instances/guides/lish/) to regain access.
 {{< /note >}}
 
@@ -277,16 +274,14 @@ Be sure to replace `key-id` with your own key ID.
 You can reimport it with the ever-handy `gpg2 --import key-file` command.
 
 ## Move Your Key to a Smartcard or YubiKey (Optional)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID Mode first. This can be done through the YubiKey Personalization Tool, or by running `ykpersonalise -m82`. `ykpersonalise` can be installed through your package manager.
 {{< /note >}}
 
 ### Secure Your Card
 
 It is assumed that you have already configured your card/YubiKey's (herein referred to as 'GPG device') owner information. It is highly recommended that you secure your card before you start this section.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Some of these commands may ask for a PIN or Admin PIN. The default PIN is usually `123456`, and the default Admin PIN is usually `12345678`. If these don't work, contact the manufacturer or review online documentation.
 {{< /note >}}
 
@@ -405,8 +400,7 @@ After all this, your output should resemble the following:
     gpg> save
 
 Congratulations! You've successfully transferred your authentication subkey to your device.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 If you weren't using a VM or offline machine, back up your local copies of the private keys, delete them, and ensure that the rest of the keys are still on the card.
 {{< /note >}}
 

@@ -118,7 +118,6 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MySQL password you used in the `docker-compose` file:
 
     ![Nextcloud database connection](connect-mysql-container.png "Nextcloud database connection")
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using a NGINX reverse proxy and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).
 {{< /note >}}

@@ -28,8 +28,7 @@ There are two main drawbacks of `lsof`. First, it can only display information a
 {{< /output >}}
 
 ## Before You Begin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Running `lsof` without root privileges only returns the results available to the current user. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -65,12 +64,10 @@ The `lsof(8)` binary supports a large number of command line options, including 
 | `+r TIME` | The `+r` command, with the `+` prefix, acts the same as the `-r` command, but exits its loop when it fails to find any open files. |
 | `-n` | The `-n` option prevents network numbers from being converted to host names. |
 | `-F CHARACTER` | The `-F` command instructs `lsof` to produce output that is suitable as input for other programs. For a complete explanation, consult the `lsof` manual entry. |
-
-{{< note respectIndent=false >}}
+{{< note >}}
 By default, the output of `lsof` includes the output of each one of its command line options, like a big logical expression with multiple OR logical operators between all the command line options. However, this default behavior can change with the use of the `-a` option.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For the full list of command line options supported by `lsof` and a more detailed explanation of the presented command line options, you should consult its manual page:
 
     man lsof
@@ -196,8 +193,7 @@ apache2    27828     www-data    6u    IPv6    8626157    0t0              TCP  
 apache2    27829     www-data    4u    IPv6    8626153    0t0              TCP      *:80 (LISTEN)
 apache2    27829     www-data    6u    IPv6    8626157    0t0              TCP      *:443 (LISTEN)
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You are allowed to place the `-a` option wherever you like as `lsof` still detects the relevant options.
 {{< /note >}}
 
@@ -260,8 +256,7 @@ p22361
 f3
 PTCP
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For the full list of options supported by `-F`, you should visit the manual page of `lsof`.
 {{< /note >}}
 
@@ -306,8 +301,7 @@ If you process the output of `lsof` with some traditional UNIX command line tool
 {{< output >}}
 sshd 109.74.193.253:22->2.86.23.29:60032
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `lsof -i -n -P` command can be also written as `lsof -i -nP` or alternatively as `lsof -nPi` – writing it as `lsof -inP` would generate a syntax error because `lsof` thinks that `np` is a parameter to `-i`.
 {{< /note >}}
 
@@ -538,8 +532,7 @@ Use the ``-h'' option to get more help information.
 ### Kill All Processes Owned by a User
 
 The following command kills all of the processes owned by the `www-data` user:
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Please be careful when combining `lsof` with the `kill(1)` command. Do not try to test similar commands on a live server unless you are absolutely certain you will not experience issues. For testing purposes you can use a disposable Docker image or something similar.
 {{< /note >}}
 

@@ -166,8 +166,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
 {{< /note >}}
 

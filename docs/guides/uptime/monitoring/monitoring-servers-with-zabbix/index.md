@@ -23,8 +23,7 @@ Installing the packages is faster and makes things easier to maintain, but the i
 ### Installing Packages
 
 If you're running Ubuntu or Debian and would like to install the Zabbix packages, follow these instructions:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Other distributions may also have packages for Zabbix. Check the distribution's website for more information.
 {{< /note >}}
 
@@ -41,8 +40,7 @@ Other distributions may also have packages for Zabbix. Check the distribution's 
         sudo apt-get install zabbix-agent
 
 Zabbix is now installed and running on your Linode.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
 {{< /note >}}
 
@@ -136,8 +134,7 @@ date.timezone = America/New_York
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can [use this webpage](http://php.net/manual/en/timezones.php) to find the correct date.timezone value.
 {{< /note >}}
 
@@ -373,8 +370,7 @@ Zabbix also has a front-end component that you'll want to install. These instruc
 ### Copying Files
 
 The Zabbix frontend is written in PHP. You'll want to copy the front-end files to your web server's public directory. Here's how to create a subdirectory and copy the Zabbix front-end files to it:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 We assume that you followed the Hosting a Website guide. If you're using a different DocumentRoot directive than /home/example\_user/public/example.com/public for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
 {{< /note >}}
 

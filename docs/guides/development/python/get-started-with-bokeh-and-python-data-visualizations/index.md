@@ -24,8 +24,7 @@ When you use Bokeh, you find that it produces beautiful interactive graphics wit
 ## Install Bokeh
 
 This section shows you how to install Bokeh using Pip and Anaconda or Miniconda.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are not familiar with Pip, see our [Managing Python Packages and Versions on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#what-is-pip) guide. To learn how to install Anaconda, see our [How to Install Anaconda on Ubuntu](/docs/guides/how-to-install-anaconda/) guide.
 {{< /note >}}
 

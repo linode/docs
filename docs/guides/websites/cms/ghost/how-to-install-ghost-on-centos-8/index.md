@@ -28,8 +28,7 @@ aliases: ['/websites/cms/ghost/how-to-install-ghost-on-centos-8/']
 ## In This Guide
 
 In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running CentOS 8, using NGINX, MariaDB, Node.js, NPM, and Ghost-CLI. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with your site’s domain name.

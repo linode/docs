@@ -57,8 +57,7 @@ In summary, SFTP is a good, all-purpose utility with more functionality than the
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -98,8 +97,7 @@ ssh.service - OpenBSD Secure Shell server
      Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
      Active: active (running) since Tue 2021-08-31 12:13:14 UTC; 46min ago
     {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Virtually all Linux distributions include SSH and SFTP as part of the default package. However, if the `sftp` command is not available, install the `ssh` package using `apt` or another package manager.
 {{< /note >}}
 

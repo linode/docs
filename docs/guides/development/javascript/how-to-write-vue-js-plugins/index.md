@@ -33,8 +33,7 @@ To use the plugin in the app, then call the global `Vue.use` method with the plu
 The options object in the second argument is available as the value of the `options` parameter in the `install` function.
 
 ## Creating a Simple Vue.js Plugin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The code below assumes that the Vue project is created by the [Vue CLI](https://cli.vuejs.org/).
 {{< /note >}}
 

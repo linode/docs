@@ -21,8 +21,7 @@ A common pattern for ending a process is though its Process ID (PID). There are 
 If the process name is known, `pgrep` will search currently running processes for the name:
 
     pgrep firefox
-
-{{< note respectIndent=false >}}
+{{< note >}}
 `pgrep` is not installed by default on MacOS. This can be installed along with `pkill` and `pfind` with [Homebrew](https://brew.sh/) via:
 
     brew install proctools

@@ -60,16 +60,14 @@ enable_parallelizing = y
 include_dir = /etc/monitorix/conf.d
 ...
 {{</ file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Debian and Ubuntu Linux systems contain an additional configuration file, `/etc/monitorix/conf.d/00-debian.conf`. This file includes Debian/Ubuntu-specific options and is read after the main Monitorix configuration file. This means any changes you make to the `/etc/monitorix/conf.d/00-debian.conf` supersede `monitorix.conf` options.
 {{< /note >}}
 
 1. Once you're done configuring Monitorix, restart the Monitorix service to enable your updates.
 
         sudo service monitorix restart
-
-{{< note respectIndent=false >}}
+{{< note >}}
 By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](/docs/guides/web-servers/apache/), [Lighttpd](/docs/guides/web-servers/lighttpd/), or Nginx web servers.
 {{< /note >}}
 

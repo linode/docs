@@ -22,8 +22,7 @@ Docker utilizes the host OS Kernel, which makes Docker containers more efficient
 ## Prerequisites and Requirements
 
 In order to secure Docker containers, you need to have a Linux server with Docker running. For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/products/tools/marketplace/guides/docker/). Otherwise, you can find instructions on how to manually install Docker in [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This demonstration has been performed on Ubuntu 18.04. All techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 

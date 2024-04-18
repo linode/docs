@@ -34,8 +34,7 @@ This guide will describe the installation and configuration of HAProxy for load-
         sudo apt-get update && sudo apt-get upgrade
 
 3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide to add private IP addresses and internally network your Linodes.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

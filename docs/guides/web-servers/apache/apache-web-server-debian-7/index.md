@@ -27,8 +27,7 @@ relations:
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This tutorial explains how to install and configure the Apache web server on Debian 7 (Wheezy).
 
 Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP) stack, you may want to consider using our [LAMP guide for Debian 7](/docs/guides/lamp-server-on-debian-7-wheezy/).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -38,8 +38,7 @@ The general consensus in the gaming community is that Debian or Ubuntu are the b
 ### Linode One-Click App Marketplace
 
 [Linode's One-Click App Marketplace](https://www.linode.com/marketplace/apps/) offers easy to deploy gaming servers for some games including [Ark](https://www.linode.com/marketplace/apps/linode/ark-game-server/), [Team Fortress 2](https://www.linode.com/marketplace/apps/linode/tf2-game-server/) and [Terraria](https://www.linode.com/marketplace/apps/linode/terraria-game-server/). You can refer to each [Marketplace App's Linode documentation](/docs/products/tools/marketplace/guides/) to learn how to deploy your game server, provide the appropriate configurations, and select the server's appropriate plan size.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can watch the developer Gardiner Bryant explaining [how to set up a Rust game server](https://www.youtube.com/watch?v=RPbIRbj0GyA) on Linode's YouTube channel.
 {{< /note >}}
 

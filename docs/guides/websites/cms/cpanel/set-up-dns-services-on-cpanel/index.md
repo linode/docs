@@ -106,8 +106,7 @@ Complete the following steps while you are logged in a `root` user in the WHM in
 You then want to begin adding your domains to the Linode DNS Manager as secondary zones.
 
 Complete the following steps using Linode Cloud Manager:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Creating a domain also creates its corresponding domain zone.
 {{< /note >}}
 

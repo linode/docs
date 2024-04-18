@@ -41,8 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< /note >}}
 
 ## Create a Python Virtual Environment
-
-{{< note respectIndent=false >}}
+{{< note >}}
 CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/guides/how-to-install-python-on-centos-8/)
 {{< /note >}}
 

@@ -31,8 +31,7 @@ This guide will assume you have two systems set up:
 Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide.
 
 The username for this limited user is assumed to be `example_user`. Replace all instances of `example_user` in this guide with your limited user's name. As well, the IP address of the remote system is assumed to be `192.0.2.4`, so replace all instances of this IP with your remote system's address.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 `sshfs` can be installed on any Linode distribution, so you can adapt this guide if you are not using Ubuntu.
 {{< /note >}}
 
@@ -53,8 +52,7 @@ The `sshfs` package is available with every Linux package manager. Use the comma
 ## Setting Up your Linux Client
 
 In order to mount file systems using SSHFS from a normal user account, you'll need to add the user to the `fuse` group first.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/docs/guides/linux-users-and-groups/) guide for a brief introduction.
 {{< /note >}}
 
@@ -78,8 +76,7 @@ If you are unfamiliar with users, groups, and file permissions, visit the [Users
 You can use the command `sshfs` to mount a remote filesystem. The syntax for mounting a filesystem with `sshfs` is:
 
     sshfs [user@]host:[directory] mountpoint [options]
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can read more about `sshfs` in the [sshfs manual](https://linux.die.net/man/1/sshfs).
 {{< /note >}}
 
@@ -106,8 +103,7 @@ To keep your server's directory mounted on your system through reboots, create a
 ### Set Up Key-Based Authentication for SSH
 
 When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This command will overwrite an existing RSA key pair, potentially locking you out of other systems.
 
 If you’ve already created a key pair, skip this step. To check for existing keys, run ls ~/.ssh/id_rsa*.

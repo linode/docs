@@ -13,8 +13,7 @@ aliases: ['/quick-answers/linux/delete-file-linux-command-line/']
 ---
 
 This guide shows how to use `rm` to remove files, directories, and other content from the command line in Linux.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To avoid creating examples that might remove important files, this Quick Answer uses variations of `filename.txt`. Adjust each command as needed.
 {{< /note >}}
 

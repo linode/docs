@@ -790,8 +790,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 - **SMTP:** Set the port to `587` and the SSL/Security settings to `STARTTLS` or equivalent.
 
 See [Install SquirrelMail on Ubuntu 16.04](/docs/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The Thunderbird email client will sometimes have trouble automatically detecting account settings when using Dovecot. After it fails to detect the appropriate account settings, you can set up your email account manually. Add in the appropriate information for each setting, using the above values, leaving no setting on **Auto** or **Autodetect**. Once you have entered all the information about your mail server and account, press **Done** rather **Re-Test** and Thunderbird should accept the settings and retrieve your mail.
 {{< /note >}}
 

@@ -67,8 +67,7 @@ PHP has only a few disadvantages. Some of these drawbacks include a lack of libr
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
 
 1. PHP is usually used in conjunction with a web server. An Apache or NGINX web server should already be installed on the Linode. See the Linode guides for [Apache](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) or [NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) for more information. Instructions for both servers are included in this guide. If `ufw` is enabled, ensure it allows web server access.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -256,8 +255,7 @@ To create and display the standard "PHP Info" page, follow the below steps:
 ## How to Update an Existing PHP Installation
 
 Earlier versions of PHP can easily be upgraded to version 8. All PHP-related packages should be upgraded at the same time. Otherwise, conflicts or crashes might occur. To determine whether the PHP 8.0 packages are present on the system or not, consult the [Add the PHP Repository](#add-the-php-repository) section of this guide. If the 8.0 package is not present, the `ondrej/php` repository must be installed first. The steps in this section explain how to upgrade PHP and PHP-FPM from version 7.4 to 8.0, using Apache as the webserver.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Because PHP version 8 has many changes, it is possible old code might not work after an upgrade. It is a good idea to test any websites and applications in a development environment before putting them into production. A list of non-backward-compatible changes is available on the [PHP GitHub repository](https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20).
 {{< /note >}}
 

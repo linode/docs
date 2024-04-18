@@ -22,8 +22,7 @@ tags: ["web server","apache"]
 Your Apache configuration settings have a major effect on your Linode's performance. There are several tools that can be used to further inspect your Apache server's performance and make informed decisions on how to begin tuning your Apache configurations. This guide will provide an overview of some process monitoring and system resource usage tools that can be used to inspect how Apache is affecting your Linode's performance. You will also learn about important Apache modules, like the Multi-Processing modules, that will allow you to make use of Apache's power and flexibility.
 
 ## Tools
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -135,8 +134,7 @@ Once you select your MPM, you will need to change the values inside the configur
 To use the worker or event modules, replace `<IfModule mpm_prefork_module>` with `<IfModule mpm_worker_module>` or `<IfModule mpm_event_module>`, respectively.
 
 Next, you should alter the module settings you added in the previous step. To do this, you should take into consideration what each value does, and how best to change it. It is recommended to make incremental changes to your configuration settings and then monitor the effects.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 After making alterations to the Apache configuration file, restart the service.
 
 - On Debian/Ubuntu:

@@ -31,8 +31,7 @@ This guide serves as an introduction to several useful data types in Go. Specifi
 If you're just starting with Go, we recommend reading our [Beginner's Guide to Go](/docs/guides/beginners-guide-to-go/) guide first.
 
 {{< content "before-you-begin-install-go-shortguide" >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
 
@@ -76,8 +75,7 @@ fmt.Println(anInteger)
 ### Pointers Example
 
 More complex examples of pointers are illustrated in `pointers.go`, including how a pointer can be used with a function:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For more information on how to use functions in Go, review our [functions, loops, and errors guide](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/).
 {{< /note >}}
 
@@ -335,8 +333,7 @@ Iterating through threeDimension:
 1 0 -2 4
 5 -1 7 0
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This example uses the `range` keyword and `for` loops to iterate through the elements of the `threeDimension` array. For more information on how to use loops in Go, review our [functions, loops, and errors guide](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/).
 {{< /note >}}
 
@@ -436,8 +433,7 @@ fmt.Println(anotherSlice)
 ### The Length and Capacity of a Slice
 
 The *length* of a slice is the same as the length of an array with the same number of elements, and it can be found using the `len()` function. The *capacity* of a slice is the current room that has been allocated for a slice, which can be found with the `cap()` function and may be greater than the length.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Arrays do not have a capacity property.
 {{< /note >}}
 
@@ -695,8 +691,7 @@ aSlice + aSlice:                 [-1 -2 -3 -1 -2 -3]
 Like arrays and slices, Go *maps* store collections of values, and maps are equivalent to the *hash tables* found in other programming languages. The main advantage of maps over arrays or slices is that they can use any data type as their index, while arrays or slices are always indexed with integers. A map's index is called a *map key* or just a *key*.
 
 Although Go maps do not exclude any data types from being used as keys, for a data type to be used as a key, it must be comparable to other values of the same type. This means that the Go compiler must be able to differentiate one key from another. In other words, the keys of a map must support the `==` and `!=` operators.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 While the `bool` data type is comparable, using it for the keys to a map will limit your options, as `true` and `false` are the only values available.
 {{< /note >}}
 

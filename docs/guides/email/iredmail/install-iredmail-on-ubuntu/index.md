@@ -149,14 +149,12 @@ By default, iRedMail generates a key and self-signed certificate for the mail se
 The process of obtaining a trusted certificate is outside the scope of this guide. You can follow the [Obtaining a Commercial TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) guide to obtain a certificate.
 
 The next section assumes you have the .key and .crt (or .pem) file in hand and are ready to go.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Be sure to apply for a certificate covering either your subdomain (mail.yourdomain.com) or a wildcard of your domain so all subdomains are covered.
 {{< /note >}}
 
 After first logging into the postmaster account, you should have two emails waiting for you. The first is titled "Helpful Links iRedMail" and the second is titled "Details of this iRedMail installation." In the second email, there are various file paths we need, since we are replacing the SSL certificate and need to know the DKIM public key for our DNS TXT entry. First up, certificate replacement.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For if your certificate issuer uses `.pem` files instead of `.crt`, be sure to replace the file extension in the instructions below.
 {{< /note >}}
 
@@ -379,8 +377,7 @@ For this reason, the author recommends turning this module off. Note, since bein
 ## Final Test and Conclusion
 
 As a final test, you can utilize a service such as [Mail Tester](http://www.mail-tester.com) to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of 10/10 on Mail Tester's site. If not, Mail Tester provides you with a report indicating what portion of your configuration needs improvement.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 While some DNS records update almost instantaneously, updates can take up to 24 hours to propagate. You may receive a lower score on these tests if your records have not yet updated.
 {{< /note >}}
 

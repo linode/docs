@@ -36,8 +36,7 @@ FreeBSD is often compared to Linux. So what's the difference?
 Briefly, Linux is a term used for a group of operating systems that all use the Linux kernel, GNU coreutils and various distribution-specific tools. Linux OS's are offered in *distributions* and usually released under the GNU General Public License. [CentOS](https://www.centos.org/), [Debian](https://www.debian.org/) and [Ubuntu](http://www.ubuntu.com/) make up Linode's *core distribution* offerings, while Arch, Gentoo, openSUSE and Slackware are other popular distributions also available with Linode.
 
 Though FreeBSD grew out of the original UNIX codebase, no UNIX code currently remains. Every part of FreeBSD is developed in the same source tree and code is released under the more permissive FreeBSD License as opposed to the GNU GPL's copyleft stance. More information on the differences between these operating systems is available in the FreeBSD [Quickstart Guide for Linux Users](https://www.freebsd.org/doc/en/articles/linux-users/article.html).
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/docs/products/storage/backups/) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
 {{< /note >}}
 

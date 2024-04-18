@@ -47,8 +47,7 @@ Although Go is not perfect, it has many advantages, including the following:
 ## Before You Begin
 
 {{< content "before-you-begin-install-go-shortguide" >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
 
@@ -220,8 +219,7 @@ The output from this program is:
 {{< output >}}
 0
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The zero value for a string variable is an empty string.
 {{< /note >}}
 

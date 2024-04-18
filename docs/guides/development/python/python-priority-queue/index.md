@@ -47,8 +47,7 @@ Queues are efficient in Python because they are implemented as heaps. A heap is 
 The two types of heaps are *max heaps* and *min heaps*. In a max heap, the value stored in the parent node is greater than the value stored in any of its child nodes. A min heap works in the opposite manner. The parent node contains a smaller value than any of its children. This relationship holds for each node at every level of the heap. This means values get progressively smaller at each lower layer in a max heap, or greater in a min heap.
 
 Heaps are a very efficient method for manipulating ordered data. They are particularly useful for retrieving the item with the highest or lowest value. In general, the algorithms used on a heap have either a constant or a [logarithmic time complexity](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time). This is very good because algorithmic growth increases fairly slowly as the size of the data set increases. And, of course, [constant-time algorithms](https://en.wikipedia.org/wiki/Time_complexity#Constant_time) do not increase at all.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In computer science, [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation) is used to describe how execution time increases with the size of the data set. Most heap operations have an O(log n) time complexity.
 {{< /note >}}
 
@@ -69,8 +68,7 @@ In computing situations, multi-threaded operating systems use priority queues. H
 In Python, it is possible to build your own priority queues using Python lists. However, it is better to use the built-in `PriorityQueue` class. This class supports all of the basic functions such as `put` and `get` in a very efficient manner. Python automatically inserts and removes entries based on their priority and maintains the internal structure of the queues.
 
 A Python priority queue always removes and returns the highest-priority item in the queue. If two items have the same priority, Python removes the item that arrived first. For a tuple having both priority and data fields, Python first compares the priority and then the data item.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To avoid using the data field in the comparison, enclose the `PriorityQueue` class in a wrapper and override its default behavior. Consult the [Python PriorityQueue class documentation](https://docs.python.org/3/library/queue.html?highlight=priorityqueue#queue.PriorityQueue) for more details about this technique.
 {{< /note >}}
 
@@ -103,8 +101,7 @@ The `PriorityQueue` class shares most of the same methods as the parent `Queue` 
 Developers can create a `PriorityQueue` object using the class constructor. At the same time, they can supply a parameter to set a maximum size for the queue. The following command creates a priority queue that can hold 100 objects.
 
     q = PriorityQueue(100)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples in this section assume the `PriorityQueue` class has already been imported using `from queue import PriorityQueue`.
 {{< /note >}}
 
@@ -116,8 +113,7 @@ The `PriorityQueue` interface is fairly straightforward to use. The following li
 - **maxsize**: This method returns the maximum size of the queue. If there is no maximum size, it returns `0`.
 - **put**: This method adds an item with the specified priority to the priority queue. Developers can add either a single value to function as the priority, or a tuple in the form `(priority_number, data)`. A Python tuple is an ordered and immutable list. Similarly to the `get` method, `block` and `timeout` parameters can be passed to the method. The defaults are `True` and `None`. If the queue is full, the `put` method blocks until it times out waiting for a slot to become available.
 - **qsize**: This method returns the number of items currently in the queue.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Some of the `PriorityQueue` commands, including `empty`, `full`, and `qsize` can be subject to race conditions when multiple processes are used.
 {{< /note >}}
 
@@ -201,8 +197,7 @@ True
     {{< /output >}}
 
 These instructions can be combined together to form the program `pri_queue.py`.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Do not name this program `queue.py`. This would conflict with the actual `queue` module and hide the actual interface. This bug generates the error `ImportError: cannot import name 'priorityQueue' from partially initialized module 'queue'` at runtime.
 {{< /note >}}
 

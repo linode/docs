@@ -25,8 +25,7 @@ relations:
 ---
 
 [Ruby on Rails](http://rubyonrails.org/) is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide describes the required process for deploying Ruby on Rails with [Phusion Passenger](https://www.phusionpassenger.com/) and the [Nginx](https://www.nginx.com/) web server on Debian 8.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

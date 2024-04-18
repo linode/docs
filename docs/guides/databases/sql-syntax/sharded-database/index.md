@@ -22,8 +22,7 @@ As databases grow larger, they can be scaled in one of two ways. *Vertical scali
 Data sharding is a common way of implementing horizontal scaling. Database sharding divides the table records in a database into smaller portions. Each section is a *shard*, and is stored on a different server. The database can be divided into shards based on different methods. In a simple implementation, the individual tables can be assigned to different shards. More often, the rows in a single table are divided between the shards.
 
 *Vertical partitioning* and *horizontal partitioning* are two different methods of partitioning tables into shards. Vertical partitioning assigns different columns within a table to different servers, but this technique is not widely used. In most cases, horizontal partitioning/sharding is used to implement sharding, and the two terms are often used interchangeably. Horizontal sharding divides the rows within a table amongst the different shards and keeps the individual table rows intact.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Vertical partitioning and horizontal partitioning should not be confused with vertical and horizontal scaling.
 {{< /note >}}
 
@@ -143,8 +142,7 @@ Hash sharding is more efficient than range sharding because a lookup table is no
 Hash sharding does not guarantee that the shards are destined to remain perfectly balanced. Patterns in the data still might lead to clustering, which can occur purely by chance. Hash sharding complicates the tasks of rebalancing and rebuilding the shards. To add more shards, it is usually necessary to re-merge all the data, recalculate the hashes, and reassign all the records.
 
 The following database sharding example demonstrates a simple hash sharing operation. It uses the simple hash function `store_ID % 3` to assign the records in the `store` database to one of three shards. The first step is to calculate a hash result for each entry.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The hash results are not actually stored inside the database. They are shown in the final column for clarity.
 {{< /note >}}
 

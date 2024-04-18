@@ -34,8 +34,7 @@ Throughout this guide you learn how to use FastAPI to create the following REST 
 {{< note type="secondary" title="REST API" isCollapsible=true >}}
 The [REST protocol](https://en.wikipedia.org/wiki/Representational_state_transfer) allows servers to expose data that a client can access and manipulate. This protocol allows clients to perform create, read, update, and delete (CRUD) operations.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide does not cover integrating FastAPI with a database. FastAPI uses an in-memory data store by default. However, you can integrate FastAPI with a [long list of different database providers](https://fastapi.tiangolo.com/tutorial/sql-databases/).
 {{< /note >}}
 

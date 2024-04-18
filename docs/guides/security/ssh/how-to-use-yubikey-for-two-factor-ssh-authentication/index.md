@@ -36,8 +36,7 @@ If you want to work through this guide but don't have a YubiKey, you can find on
         sudo apt-get update && sudo apt-get upgrade
 
 4. Test your YubiKey at [demo.yubico.com](https://demo.yubico.com) to make sure it's working correctly.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Replace each instance of `user@example.com` in this guide with your site's domain name and the appropriate user.
 {{< /note >}}
 

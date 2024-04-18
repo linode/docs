@@ -26,8 +26,7 @@ aliases: ['/email/citadel/email-with-citadel-on-ubuntu-14-04/']
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 There is a known bug that prevents Citadel from running properly on 32-bit Linodes. Please see [the Ubuntu bugtracker](https://bugs.launchpad.net/ubuntu/+source/citadel/+bug/911732) for more information.
 {{< /note >}}
 
@@ -36,8 +35,7 @@ There is a known bug that prevents Citadel from running properly on 32-bit Linod
 Before installing Citadel, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide also assumes that you wish to run Citadel by itself on this server on port 80 or 443 for browser-based access.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you intend to install Citadel alongside another web server package such as Apache or nginx, select the "internal" option when asked about web server integration. Be sure to specify unique ports for Citadel such as 8080 for HTTP or 4343 for HTTPS.
 {{< /note >}}
 

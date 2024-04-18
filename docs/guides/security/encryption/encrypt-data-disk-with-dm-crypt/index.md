@@ -22,8 +22,7 @@ dm-crypt is a transparent disk encryption subsystem. In this guide you will lear
 - When the virtual device is open, if an attacker manages to break into your server and gains access to the Linux kernel, he may be able to read from that device. While this is hard to do on a well-configured, secure, Linode, you can increase security by looking into ways to harden the Linux kernel (e.g. *grsecurity*) and/or *Mandatory Access Control* systems like *AppArmor* or *SELinux*.
 
 ## Before You Begin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -48,8 +47,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     ```command
     apt install cryptsetup
     ```
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Another way to set up an encrypted data partition is by attaching a [Block Storage](/docs/products/storage/block-storage/) volume to your Linode, and skipping the instructions for creating a filesystem and mounting the device, since that will be done on the virtual device mapped by dm-crypt.
 {{< /note >}}
 
@@ -72,8 +70,7 @@ The advantage of this command is that the file starts out by occupying 0 bytes o
 A benefit of using files as encrypted containers is that they're slightly easier to move around from system to system. But keep in mind that files are also more prone to being deleted accidentally.
 
 ## dm-crypt in Plain Mode vs dm-crypt with LUKS Extension
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 In plain mode, dm-crypt simply encrypts the device sector-by-sector, without adding any kind of headers or metadata. It's advised that beginners do not use this until they understand the risks.
 {{< /note >}}
 
@@ -105,8 +102,7 @@ Disadvantages of using LUKS:
 - The header contains the master key so if that is overwritten there is no way to recover your data.
 
 ## How to Use dm-crypt in Plain Mode without LUKS
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Remember to replace `sdX` with the name of the device you want to encrypt.
 {{< /note >}}
 
@@ -141,8 +137,7 @@ Remember to replace `sdX` with the name of the device you want to encrypt.
     ```command
     cd /root/ && umount /root/encrypted && cryptsetup close sdX-plain
     ```
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 As mentioned earlier, dm-crypt in plain mode doesn't check to see if you're using the same password or encryption settings every time. This exposes your server to the risk of being re-encrypted and having useful data overwritten. It's a good idea to routinely specify encryption settings on the command line every time you use dm-crypt in plain mode. Here's an example you can use: `cryptsetup --verify-passphrase --hash ripemd160 --cipher aes-cbc-essiv:sha256 --key-size 256 open --type plain /dev/sdX sdX-plain`
 {{< /note >}}
 
@@ -179,8 +174,7 @@ As mentioned earlier, dm-crypt in plain mode doesn't check to see if you're usin
     ```
 
 ### Backup and Restore the LUKS Header
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Follow these steps very carefully.
 {{< /note >}}
 

@@ -40,8 +40,7 @@ When merging two branches together using a merge commit, your local branch's com
 {{</ output >}}
 
 The `M` represents the merge commit that ties together the two branches. Once you've merged the two branches, you can either keep working on your branch, or merge it back into `main`.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This is considered a *fast-forward* merge because `main` is a direct ancestor of `M`. If you continue to work on your feature branch, you eventually have to make another merge with `main`. This makes it difficult for anyone reviewing your code to figure out exactly what changes you made.
 {{< /note >}}
 
@@ -62,8 +61,7 @@ After running the `git rebase main` command, your local branch's commit history 
 
 
 `B`, in the rebase diagram and `M`, in the merge diagram, are both snapshots of approximately the same state. What’s different about the two commit histories is the information available in each. `M` and its history record what everyone did – it’s a historical record of what work was done on the project. `B` and its history, on the other hand, tell the story of how the project was made. Typically, your Git repository's project leaders determine which method they prefer to use to combine changes between branches.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Rebasing rewrites your commit history. Never rebase a commit that somebody else might have based their work on. Only change your own local history. Don’t rebase anything that you’ve already pushed to an upstream branch.
 {{< /note >}}
 
@@ -72,8 +70,7 @@ Rebasing rewrites your commit history. Never rebase a commit that somebody else 
 During a Git rebase, all the committed changes made in your working feature branch are saved in a temporary area. The saved commits are all the commits made since your initial fork from the base branch. When rebasing you are generally rebasing onto an updated version of the original base branch.
 
 Then, the rebase does a hard reset to the head of the upstream branch in the local branch. This is effectively like running the `git reset --hard <upstream>` command. Next, the rebase applies the saved changes (stored in your commits) to the local branch. Any commits that introduce the same textual changes as a commit in the upstream branch are omitted.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The commits that are temporarily stored when rebasing are the same set of commits that are displayed when issuing the `git log <upstream>..HEAD` command.
 
 These are also the same set of commits that you would get from the `git log --patch --reverse <upstream>..HEAD` command.
@@ -194,8 +191,7 @@ pick f300b06 Add the screenshots for how-to-resolve-merge-conflicts
 {{</ output >}}
 
 The comment block at the end of the file describes the commands you can put in place of `pick` to make modifications. You can replace the full command with its first letter.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you don't modify the seven-digit commit IDs that are presented to you.
 {{< /note >}}
 

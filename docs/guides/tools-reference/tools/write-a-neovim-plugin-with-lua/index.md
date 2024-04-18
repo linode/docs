@@ -35,8 +35,7 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
     - On **AlmaLinux**, **CentOS** (8 or later), and **Fedora**, use the following command:
 
             sudo dnf upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

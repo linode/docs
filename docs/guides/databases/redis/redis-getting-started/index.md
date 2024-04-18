@@ -30,8 +30,7 @@ This tutorial gets you started using Redis. It explains how to connect to a Redi
 1. Replace `/etc/redis/redis.conf` throughout this guide with the actual location of your Redis server's configuration file.
 
     Generally, on **Debian** and **Ubuntu**, the location defaults to the above. On **AlmaLinux**, **CentOS**, and **Fedora**, the default location is usually `/etc/redis.conf`.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -184,8 +183,7 @@ Because there is no database creation as such in Redis, it also lacks database d
 However, you can clear out the data in a given database using the `FLUSHDB` command. This deletes all of the keys in the currently selected database.
 
     FLUSHDB
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The effects of this command are immediate and cannot be undone unless you have backed up your database.
 {{< /note >}}
 
@@ -273,8 +271,7 @@ Instead, you may want to use the following command for your production Redis ins
     BGSAVE
 
 It works like the `SAVE` command, but operates asynchronously, meaning that it does not tie up the server while the backup operation runs.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Because it is asynchronous, additional changes can be made to the database while `BGSAVE` runs. However, `BGSAVE` only saves changes up to the point when the command was run.
 {{< /note >}}
 

@@ -42,8 +42,7 @@ Some of the most popular FFmpeg features are as follows:
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -64,8 +63,7 @@ built with gcc 9 (Ubuntu 9.3.0-10ubuntu2)
 1. To verify the FFmpeg version, use the following command:
 
         ffmpeg -version
-
-{{< note respectIndent=false >}}
+{{< note >}}
 FFmpeg can also be compiled from the source code. This approach is recommended for advanced users who might want to modify or tinker with FFmpeg. For instructions on how to compile FFmpeg from source, consult the [official FFmpeg Compilation Guide](https://trac.ffmpeg.org/wiki/CompilationGuide).
 {{< /note >}}
 
@@ -112,8 +110,7 @@ For detailed information on stream specifiers, consult the [FFmpeg Documentation
 ## How to Use FFmpeg to Display File Information
 
 To display technical details about a file, use the `ffmpeg -i` command along with the file name. The `-hide_banner` option strips out any details about the FFmpeg application and libraries, and only displays the file information.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Sample files in various formats are available from the [File Samples Archive](https://filesamples.com/categories/video). These short clips are very useful for trying out the various FFmpeg capabilities.
 {{< /note >}}
 
@@ -228,8 +225,7 @@ video:22612kB audio:939kB subtitle:0kB other streams:0kB global headers:0kB muxi
 ## How to Crop a Video with FFmpeg
 
 FFmpeg provides a method for cropping videos. When using the `crop` filter, add the stream specifier `v` to indicate that only the video component should be edited. The dimensions and offset of the crop must be in the format `crop=w:h:x:y`. The `w` and `h` are the width and height, in pixels, of the section to crop out. Indicate the offset of the crop using `x` and `y` coordinates of the upper left corner.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The crop filter can negatively affect video quality.
 {{< /note >}}
 
@@ -305,7 +301,6 @@ To install FFmpeg-Python, follow the instructions below:
 
         pip install ffmpeg-python
 1. To use FFmpeg-Python in an existing Python project, import the package using the `import ffmpeg` directive.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The FFmpeg-Python developers have some code fragments on their GitHub page to help new developers get started. The [FFmpeg-Python examples page](https://github.com/kkroening/ffmpeg-python/tree/master/examples) has several useful routines, including complete `.py` sample files.
 {{< /note >}}

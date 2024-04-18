@@ -133,8 +133,7 @@ Note that if you install an updated kernel, you need to create a new `initrd` fi
 
 Congratulations, you've booted your Linode using a custom-compiled kernel!
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
 {{< /note >}}
 

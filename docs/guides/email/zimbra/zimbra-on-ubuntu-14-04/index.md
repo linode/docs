@@ -24,8 +24,7 @@ aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
 [Zimbra](https://www.zimbra.com/) is a complete mail server that provides a configured Postfix with OpenDKIM, Amavis, ClamAV, and Nginx, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.
 
 {{< content "email-warning-shortguide" >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -216,8 +215,7 @@ Zimbra provides two ways to manage configuration: a web console and the command 
 From the admin console you can configure default settings for new accounts (Zimbra calls this a Class Of Service, or COS), add and manage accounts, change passwords, and generally manage your mail server. The admin console has built-in descriptions for most settings. Click the label for the input item and a tool tip will appear. Click the **More** button below right and a more detailed note will be shown.
 
 ![Click label for a tool tip](Tooltip.png) ![Click More for details](Tooltipmore.png)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also reach the admin console if you are already logged in to your Zimbra webmail page. A drop-down menu beside your account name in the upper right of the window provides a link to the admin console.
 {{< /note >}}
 

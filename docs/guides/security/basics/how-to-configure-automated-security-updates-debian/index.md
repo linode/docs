@@ -29,8 +29,7 @@ Keeping your system up-to-date with the latest packages and security updates can
 1.  Log into your Linode via SSH and update and upgrade.
 
         sudo apt update && sudo apt upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
 {{< /note >}}
 
@@ -51,8 +50,7 @@ You can set up automated security updates on Debian by installing a helpful util
     This ensures that the service runs on system startup and is persistent throughout.
 
 1.  You now need to make changes to the configuration file. The default configuration file can be found here at `/etc/apt/apt.conf.d/50unattended-upgrades`. Open it with the text editor of your choice.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The unattended-upgrades package ignores lines that start with `//`, as that line is considered to be a comment. Therefore, if you want a repository to update automatically, you need to remove `//` from that line.
 {{< /note >}}
 

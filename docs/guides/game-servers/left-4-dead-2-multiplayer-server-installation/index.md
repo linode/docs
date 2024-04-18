@@ -26,8 +26,7 @@ You will need the following items to get started:
 - OPTIONAL (needed to test the server): A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/).
 - A Linode with at least 2GB of RAM and 10GB of free disk space.
 - An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/docs/products/platform/get-started/) guide for help configuring your Linode.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -67,8 +66,7 @@ If you've configured your firewall according to our [Securing Your Server](/docs
 {{< /note >}}
 
 ## Install SteamCMD and Left 4 Dead 2
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/guides/install-steamcmd-for-a-steam-game-server/).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4.
 {{< /note >}}
 

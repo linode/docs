@@ -46,8 +46,7 @@ When a request reaches the NGINX front-end proxy server, here's an overview of t
 ## Configure Apache for Port Listening
 
 In this section, you'll configure Apache to listen on an alternate port so it can respond to the NGINX front end.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide assumes you are using Apache 2.4. Some path names will be slightly different if you are using an older version.
 {{< /note >}}
 
@@ -279,8 +278,7 @@ upstream appcluster {
 
 
 Here, the `ip_hash` directive causes NGINX to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, NGINX will route those connections to an alternate component.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If a server needs to be taken offline for an extended period of time, append the `down` argument, as shown in the entry for `galloway.example.com:8801`. This will prevent missed connections from attempting to hit a component of the server which is down.
 {{< /note >}}
 

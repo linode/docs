@@ -15,16 +15,14 @@ aliases: ['/platform/custom-kernels-distros/running-a-custom-linux-distro-on-a-l
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.
 
 {{< content "all-linodes-kvm-shortguide" >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/).
 {{< /note >}}
 
 ## Creating the Virtual Machine
 
 We'll use a free virtualization suite called [VirtualBox](https://www.virtualbox.org/) to install a Linux distribution locally, but you can also use another virtualization package, such as VMware or Parallels. If you already have a Linux virtual machine that you'd like to run on your Linode, skip to [Booting the Virtual Machine with Finnix](#booting-the-virtual-machine-with-finnix) .
-
-{{< note respectIndent=false >}}
+{{< note >}}
 We're using Ubuntu 12.04 as the guest operating system in this guide, but you can install virtually any Linux distribution.
 {{< /note >}}
 

@@ -15,8 +15,7 @@ aliases: ['/security/upgrading/manually-upgrading-to-latest-distribution-version
 Software updates play a pivotally role in maintaining a Linux system. On a daily or weekly basis, this may involve performing a quick command to upgrade your existing packages (and their dependencies) as well as obtain any minor distribution releases (such as upgrading from Ubuntu 18.04.4 to 18.04.5). Every few years, however, Linux distributions reach their EOL (end of life) and the developers stop releasing regular security patches and software updates. When this happens, its highly recommended to upgrade to the newest major release for your distribution.
 
 This guide covers upgrading your existing system through performing a *clean installation* of your preferred distribution. In many cases, this is the upgrade path that's recommended by Linode, as it avoids many issues that arise during *inline* upgrades and allows you to skip directly to the newest distribution release (even if your system is several releases behind).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Regardless of your chosen upgrade path ([inline upgrade](#inline-upgrade) or [clean install](#clean-install)), knowledge of your application, your application stack, and general systems administration is important and will help contribute to a seamless and successful upgrade.
 {{< /note >}}
 
@@ -43,8 +42,7 @@ An inline (or in-place) upgrade involves upgrading your existing Linux system (o
 This entails deploying the desired distribution version to a new server, potentially manually installing any required packages, and then copying over your application data. Although upgrading through a clean installation is much more involved, it can be easier to troubleshoot any issues that arise. Another main benefit is that the new system will not have any extra packages or "digital residue" that may have accumulated over years of operating the original system. It also allows you to skip ahead to the newest distribution release, even if you are several releases behind. If you wish to upgrade through a clean installation, continue following this guide.
 
 *Consider a clean install when your system is several releases behind your distribution's latest version, when switching to a different distribution altogether, or when making major changes to your software stack.*
-
-{{< note respectIndent=false >}}
+{{< note >}}
 DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-terraform/) and [Ansible](/docs/guides/getting-started-with-ansible/)), container platforms ([Docker](/docs/guides/introduction-to-docker/)), and orchestration systems ([Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)) generally make deploying system updates much easier. If your application or DevOps process uses one of these tools, upgrading to the latest operating system may be as simply as adjusting a line in a configuration file. In those cases, consult the tool's documentation to learn more about targeting a newer Linux distribution.
 {{< /note >}}
 
@@ -135,8 +133,7 @@ Now that all required packages are installed on the new system, you need to copy
 - **Let's Encrypt certificates:** `/etc/letsencrypt/live/[website]/`
 
 These files can be copied over SCP, sFTP, another preferred file transfer utility, or even by using Block Storage Volumes. It's typically safe to copy the entire directory for websites and applications directly into the new system. For configuration files, however, consider if they already exist on the new server. If they do, you may wish to review each file *before overriding* them. These files may contain newer best practices or new required parameters. It is often best to import any of your changes into the newer configuration files instead of overriding them.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Before transferring data, you may want to place any applications in a *maintenance* mode to prevent changes to files or databases. If files do change during the transfer, there may be a chance of corruption or other undesired behavior.
 {{< /note >}}
 
@@ -161,8 +158,7 @@ Databases can be copied in much the same way as files. The major difference is t
 ## Transfer IPv4 Addresses
 
 After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#transferring-ip-addresses)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The Transfer IP functionality only works with IPv4 addresses and cannot transfer IPv6 addresses. If any of your systems, applications, or tools reference the IPv6 address of your original Linode, you will need to update those references with the new IPv6 address. Commonly, this means modifying the [AAAA DNS records](/docs/guides/dns-overview/#a-and-aaaa) on your domain(s).
 {{< /note >}}
 

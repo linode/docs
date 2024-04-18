@@ -20,8 +20,7 @@ dedicated_cpu_link: true
 ---
 
 After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/guides/minecraft-with-spigot-ubuntu/), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows simple and easy switching between the Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than a single Minecraft server instance.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -62,8 +61,7 @@ If you're using iptables or ufw to act as a firewall, you'll need to make a rule
 ### Configuring the Firewall on the Spigot Server Linodes
 
 For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord proxy handles the authentication. This can make the servers vulnerable to people connecting directly, as they can connect with any username, potentially allowing for connection as a user with administrative permissions. To prevent this, you can set up iptables to limit connections to only the BungeeCord server.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This section assumes that you've only got a Spigot server running on each Linode. If you have other services, you need to modify the rules to allow them to continue working.
 {{< /note >}}
 
@@ -99,8 +97,7 @@ If you've configured your `iptables` firewall by following the [Setting Up and S
 Log into the BungeeCord Linode as the `bungeecord` user created earlier, and download BungeeCord:
 
     wget -O BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This downloads the latest version of BungeeCord. You can find older versions for older Minecraft server versions, [here](http://ci.md-5.net/job/BungeeCord/).
 {{< /note >}}
 

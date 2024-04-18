@@ -53,8 +53,7 @@ To summarize, all files in a Git repository should eventually be handled in one 
 1.  It's also helpful to consult our guides on [Getting Started with Git](/docs/guides/how-to-configure-git/) and [How to Navigate the Linux Terminal and File System](/docs/guides/linux-navigation-commands/).
 
 1.  **Optional** Git must already be installed on the Linode before trying out the examples in this guide. The `git` package is often already pre-installed. To see if it is present, run the command `git --version`. If Git is already installed, this command displays the current version. If Git has not already been installed, use the command `sudo apt install git` to install it.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -75,8 +74,7 @@ fatal: clean.requireForce defaults to true and neither -i, -n, nor -f given; ref
 {{< /output >}}
 
 `git clean -f` is probably the most widely-used alternative. It forces Git to remove all untracked files with no further chance to refine or alter the operation. When it is finished, it displays a summary of the files it deleted. This command is functionally equivalent to manually deleting the files.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Always use `git clean` with caution. This operation cannot be undone.
 {{< /note >}}
 
@@ -194,8 +192,7 @@ git clean -f -d example
 ```
 
 `git config` allows users to change the default `git clean` behavior. This permits `git clean` to delete untracked files without appending the `-f` option. It effectively makes `git clean` equivalent to `git clean -f`. To add this option to the configuration file , use the command `git config clean.requireForce false`. See the Git documentation for more details about [Git Clean](https://git-scm.com/docs/git-clean).
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `-q` option runs `git clean` in quiet mode. This means `git clean` does not report the files it removes, but it still displays any errors.
 {{< /note >}}
 
@@ -380,8 +377,7 @@ The `.gitignore` file specifies which untracked files should be ignored. This is
 `git clean` typically ignores the files and filename patterns listed in the `.gitignore` file. This matches the behavior of other Git commands, which also ignore these files by default.
 
 However, this behavior can be overridden using either the `-x` or `-X` option. These options tell Git not to follow the standard ignore rules. This means Git can consider any files covered by `.gitignore`. However, they differ in how they handle other untracked files.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Git still respects any exclusion rules added with the `-e` option.
 {{< /note >}}
 

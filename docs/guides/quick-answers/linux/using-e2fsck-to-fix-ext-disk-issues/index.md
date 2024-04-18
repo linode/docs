@@ -21,8 +21,7 @@ aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
 **e2fsck** is a utility that examines `ext2`, `ext3`, and `ext4` filesystems for errors, and attempts to repair them if possible. It is the backend tool that the popular [fsck](/docs/guides/how-to-use-fsck-to-fix-disk-problems/) frontend utility calls for a combination of tasks related to `ext` filesystems.
 
 On some systems, e2fsck runs automatically after an unclean shutdown or after a certain number of reboots.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{< /note >}}
 
@@ -30,8 +29,7 @@ When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be 
 
 You can use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
 Unmount the disks you intend to work on before attempting to check or repair them.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Unmount the target disk first. You risk corrupting your file system and losing data if you run fsck on an active disk.
 {{< /note >}}
 

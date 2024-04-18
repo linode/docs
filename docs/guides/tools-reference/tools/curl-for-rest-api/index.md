@@ -23,8 +23,7 @@ In web programming, developers often have to interact with online databases. Man
 ### What is cURL?
 
 cURL stands for "Client URL" and is a data transfer application. It consists of two components, the `libcurl` client-side library and the `curl` command-line tool. cURL was originally designed to allow Linux IRC users to automate common tasks. However, it is now available for most operating systems and behaves similarly across platforms.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 cURL is the complete data transfer application, including the library, while `curl` is the command-line utility. The two terms are often used interchangeably. This guide mainly discusses the `curl` utility, which transmits commands directly to a remote REST API.
 {{< /note >}}
 
@@ -163,8 +162,7 @@ Either utility is fine for most simple HTTP requests and downloads. If you are f
 `curl` uses several HTTP commands to connect to remote REST APIs. These actions correspond to the different REST verbs. The syntax for RESTful requests is simple and straightforward and is similar to other `curl` requests. For thorough documentation on how to use `curl`, see the official [curl documentation](https://curl.se/docs/).
 
 To determine the URIs to use for each operation, consult the API documentation provided for the tool or service. As an example, the official [GitHub REST API](https://docs.github.com/en/rest) explains how to use the interface. When designing a REST interface, it is easy to test the API using `curl`.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The following examples use `example.com` in the instructions. Substitute `example.com` with your own URI.
 {{< /note >}}
 
@@ -195,8 +193,7 @@ To see one particular entry, append the `id` of the entry to retrieve. In this e
 The `POST` verb allows users to push data to a REST API and add new entries to the remote database. The data is specified as an argument for the `-d` option. The data should be in a format matching the request. In this case, the `-H` option informs the server the data is in `application/json` format. If a format is not specified, `curl` adds `Content-Type: application/x-www-form-urlencoded` to the HTTP header. This might cause problems on some servers.
 
 The server returns the new record, including the `id` of the new entry. The following command adds a new record to the application server.
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `curl` command infers this is a `POST` operation based on the other details. But it is considered good practice to explicitly state the verb as part of the `-X` option.
 {{< /note >}}
 
