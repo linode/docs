@@ -7,9 +7,8 @@ authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
 published: 2021-12-17
 keywords: ['gitops vs devops', 'gitops and kubernetes', 'gitops workflow']
-tags: ['kubernetes', 'container', 'monitoring']
+tags: ['kubernetes', 'container', 'monitoring','saas']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-tags: ["saas"]
 ---
 
 If you're a developer, chances are you know what [Git](/docs/guides/a-beginners-guide-to-github/) is. However, you may not be as familiar with *GitOps*. This guide gives you an understanding of GitOps, compares GitOps to DevOps, describes the GitOps workflow, and the tools often used with this methodology.

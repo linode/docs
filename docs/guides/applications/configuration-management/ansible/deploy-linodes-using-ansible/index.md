@@ -12,9 +12,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/deploy-linodes-using-ansible/']
-tags: ["automation"]
+tags: ["automation","saas"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
-tags: ["saas"]
 deprecated: true
 deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
 ---

@@ -8,14 +8,13 @@ contributors: ["Jeff Novotny"]
 published: 2021-07-30
 modified: 2022-09-23
 keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
-tags: ['networking']
+tags: ['networking','saas']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[RFC 791 for IP](https://datatracker.ietf.org/doc/html/rfc791)'
 - '[Wikipedia IPv4 Packet Description Page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
 - '[RFC 2460 for IPv6](https://datatracker.ietf.org/doc/html/rfc2460)'
 - '[Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html)'
-tags: ["saas"]
 ---
 
 The *Internet Protocol* (IP), as described in [RFC 791](https://datatracker.ietf.org/doc/html/rfc791), is the framework that underlies the behavior of the entire internet. The Internet Protocol Version 4 (IPv4) and Version 6 (IPv6) address systems are used to identify interfaces and locate hosts on the network. This allows hosts and routers to determine the path to another networking device and send packets to it. This guide outlines how to understand IP addresses, and how to describe and use them.

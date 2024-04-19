@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2019-07-08
 modified: 2021-10-15
 keywords: ['wireguard','vpn','debian']
-tags: ["networking","security","vpn","debian"]
+tags: ["networking","security","vpn","debian","saas"]
 bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:
@@ -17,7 +17,6 @@ relations:
         keywords:
             - distribution: Debian 9
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-debian/']
-tags: ["saas"]
 ---
 
 ## What is WireGuard?

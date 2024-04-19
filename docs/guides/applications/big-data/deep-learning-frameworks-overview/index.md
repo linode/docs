@@ -7,9 +7,8 @@ authors: ["Andy Patrizio"]
 contributors: ["Andy Patrizio"]
 published: 2021-08-27
 keywords: ['deep learning frameworks']
-tags: ['python']
+tags: ['python','saas']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-tags: ["saas"]
 ---
 
 ## What is Deep Learning?

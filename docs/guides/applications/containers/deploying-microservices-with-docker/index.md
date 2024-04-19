@@ -7,13 +7,12 @@ authors: ["Bob Strecansky"]
 contributors: ["Bob Strecansky"]
 published: 2018-01-04
 keywords: ["docker", "nginx", "flask", "gunicorn", "redis", "postgresql", "microservice"]
-tags: ["postgresql","database","docker","container","nginx"]
+tags: ["postgresql","database","docker","container","nginx","saas"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Github Repository for Example Microservice](https://github.com/bobstrecansky/flask-microservice)'
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 aliases: ['/applications/containers/deploying-microservices-with-docker/']
-tags: ["saas"]
 ---
 
 ![Deploying Microservices with Docker](how-to-deploy-microservices-with-docker-smg.jpg)

@@ -10,9 +10,8 @@ keywords: ["postgresql", "clusters", "databases", "postgres", "database configur
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
-tags: ["database","postgresql"]
+tags: ["database","postgresql","saas"]
 aliases: ['/databases/postgresql/configure-postgresql/']
-tags: ["saas"]
 ---
 
 ![Configure PostgreSQL](Configure_PostgreSQL.jpg)

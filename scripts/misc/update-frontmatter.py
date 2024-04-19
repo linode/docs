@@ -198,6 +198,51 @@ def remove_duplicate_parameters():
                                 fp.write(line)
 
 # ------------------
+# Finds duplicate front matter parameters
+# ------------------
+def find_duplicate_parameters():
+
+    # Iterate through each file in each docs directory
+    for dir in DOCS_DIR:
+        for root, dirs, files in os.walk(dir):
+            for file in files:
+
+                # The relative file path of the file
+                file_path = os.path.join(root, file)
+                path_segments = file_path.split("/")
+
+                # If the file is markdown...
+                if file.endswith('.md'):
+
+                    with open(file_path, "r") as fp:
+                        lines = fp.readlines()
+
+                    frontmatter = False
+                    yaml_token = "---"
+                    yaml_token_counter = 0
+                    update = False
+
+                    duplicate_tag = False
+                    tag_counter = 0
+
+                    # Iterates through each line of the file and locates
+                    # the title and description parameters.
+                    for i, line in enumerate(lines):
+                        if line.startswith(yaml_token) and yaml_token_counter == 0:
+                            yaml_token_counter += 1
+                            frontmatter = True
+                        elif line.startswith(yaml_token) and yaml_token_counter == 1:
+                            yaml_token_counter += 1
+                            frontmatter = False
+
+                        if frontmatter:
+                            if line.startswith("tags:"):
+                                tag_counter += 1
+
+                    if tag_counter >= 2:
+                        print(file_path)
+
+# ------------------
 # Reorder front matter
 # ------------------
 def sort_parameters():
@@ -350,7 +395,8 @@ def main():
 
     #update_titles()
     #remove_duplicate_parameters()
-    sort_parameters()
+    find_duplicate_parameters()
+    #sort_parameters()
 
 if __name__ == "__main__":
     main()
