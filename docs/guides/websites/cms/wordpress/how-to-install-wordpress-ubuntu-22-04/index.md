@@ -40,6 +40,7 @@ WordPress can be downloaded to an Ubuntu server using `wget`. It only requires m
 A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack includes the Linux operating system, the [Apache web server](https://httpd.apache.org/docs/2.4/), the [MySQL RDBMS](https://dev.mysql.com/), and the PHP programming language. A LEMP stack substitutes [NGINX](https://www.nginx.com/) (pronounced "engine-x") in place of Apache and sometimes uses the MariaDB database instead of MySQL. Either stack can be installed using the standard Ubuntu library. For information on [installing a LAMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/), see the Linode guide. There is also a Linode guide to [installing a LEMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lemp-stack-on-ubuntu-22-04/).
 
 For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
+
 {{< note >}}
 WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
@@ -51,6 +52,7 @@ WordPress sites are almost always accessed using a domain name. For more informa
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Fully configure a LAMP or LEMP stack on the Linode and confirm it is working properly.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -58,6 +60,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## How to Prepare the LAMP or LEMP Stack for WordPress
 
 To properly configure and use WordPress on Ubuntu, a LAMP or LEMP stack must already be installed and working. However, WordPress requires a few additional modifications to the various LAMP/LEMP Stack components. In the following examples, replace `example.com` with the actual domain name wherever it appears.
+
 {{< note >}}
 These instructions are designed for Ubuntu 22.04 LTS, but are generally valid for all recent Ubuntu releases.
 {{< /note >}}

@@ -52,6 +52,7 @@ external_resources:
 ## FileZilla with Public Key Authentication
 
 If you followed our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, you won't be able to connect to your Linode using a password. If you are using Linux or macOS, the SSH keypair generated while following that guide will be automatically used for authentication.
+
 {{< note >}}
 If you are using macOS, the passphrase for your key will need to be stored in your keychain to successfully connect using an SSH keypair. FileZilla will not be able to use a key that was generated without a passphrase to connect to your Linode.
 {{< /note >}}

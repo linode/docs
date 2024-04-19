@@ -20,6 +20,7 @@ dedicated_cpu_link: true
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Team Fortress 2](http://store.steampowered.com/app/440/).
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -103,6 +104,7 @@ The `motd_default.txt` file can contain HTML and is displayed as a website upon 
 ### Server.cfg
 
 The file `~/Steam/tf2/tf/cfg/server.cfg` is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game but we have a sample config file [here](/docs/assets/team_fortress_2_server_config.cfg) which you can edit for your own use.
+
 {{< note >}}
 For the configuration of this file, `0` means *off* and `1` means *on*.
 {{< /note >}}

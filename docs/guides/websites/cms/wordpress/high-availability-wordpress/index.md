@@ -137,6 +137,7 @@ bind-address    = x.x.x.x
 ## Configure Apache
 
 The steps in this section will need to be performed on **both** of your Linodes.
+
 {{< note >}}
 For the following sections of this guide, replace "example.com" with your domain name.
 {{< /note >}}

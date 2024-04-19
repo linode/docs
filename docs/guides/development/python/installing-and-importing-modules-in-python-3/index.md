@@ -23,6 +23,7 @@ A Python module is a file containing Python code. This file can potentially incl
 Python includes some built-in standard modules. These modules are part of the [*Python Standard Library*](https://docs.python.org/3/library/), also known as the Library Reference. Some popular modules include the Python `os` module, `time` module, and `math` module. But programmers can also build their own modules or use modules from other developers. Python modules can be imported into the main module or other stand-alone modules.
 
 Python modules are named the same way as other Python files. The filename for a module consists of the module name followed by the `.py` extension, for example, `module_name.py`. A module maintains its own [symbol table](https://docs.python.org/3/library/symtable.html), which serves as the global symbol table inside the module. Each module is also a Python namespace.
+
 {{< note >}}
 A Python namespace is a dictionary of the object names and the actual objects.
 {{< /note >}}
@@ -45,6 +46,7 @@ Some of the reasons to use Python modules include the following:
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -97,6 +99,7 @@ zope.interface         4.7.1
 If a module cannot be installed using `pip`, there is almost always a way to install it locally. To install a module locally, download it and run the associated `setup.py` script.
 
 The following example explains how to install the Python [kubernetes-client](https://github.com/kubernetes-client/python) module without using `pip`.
+
 {{< note >}}
 Like most modules nowadays, this module is also available through `pip`. It can be installed using `pip install kubernetes`. It is always worth verifying whether a module is available through `pip` first. The following instructions are provided as a resource for cases where the module can only be installed locally.
 {{< /note >}}

@@ -34,6 +34,7 @@ There are plenty of similar frameworks out there. What sets Express JS apart is 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Throughout, this guide uses `example-app` as the name of the Express JS application and `example.com` as the server domain name. Replace these with your preferred application name and your server's domain name, respectively.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

@@ -140,6 +140,7 @@ Once you have made the updates, restart your instance:
     sudo docker compose up -d
 
 After making the above preparations, you can access the Supabase interface remotely by navigating to port `3000` on your server's remote IP address. For instance, if your server's remote IP address is `192.0.2.0`, navigate in a web browser to `http://192.0.2.0:3000`.
+
 {{< note >}}
 You may need to open the port in your system's firewall. You can learn about how to do so through our guide on [securing your server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
 {{< /note >}}
@@ -276,6 +277,7 @@ server {
         sudo systemctl restart nginx
 
 Afterward, you should be able to access the Supabase dashboard without having to specify port `3000`.
+
 {{< note >}}
 Should you encounter a "bad gateway" error, your system may be denying NGINX due to SELinux rules. You can verify this by checking the NGINX logs at `/var/log/nginx/error.log` and looking for "Permission denied".
 
@@ -337,6 +339,7 @@ server {
         sudo systemctl start nginx
 
 Now, you can access your Supabase instance in a web browser via the HTTPS version of your domain. And you can be assured that your Supabase instance is secured using SSL certification.
+
 {{< note >}}
 You can optionally also add your server's remote IP address to the NGINX configuration above and use that as well. However, you may receive a certificate warning in your browser. This is because the certificate was issued for your server's domain name, not its IP address.
 {{< /note >}}

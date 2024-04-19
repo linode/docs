@@ -88,6 +88,7 @@ v2.8.7
 ## Create an API token
 
 acme.sh can use the [Linode v4 API](/docs/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) product documentation to create a Linode API v4 token.
+
 {{< note >}}
 Ensure the token you create has **Read/Write** access to **Domains**.
 {{< /note >}}

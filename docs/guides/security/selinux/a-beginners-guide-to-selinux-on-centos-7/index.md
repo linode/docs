@@ -121,6 +121,7 @@ SELinux status:                 disabled
 ### SELinux Modes
 
 When SELinux is enabled, it can run in either *enforcing* or *permissive* modes.
+
 {{< note >}}
 If SELinux is currently disabled, update your SELinux configuration file with the `SELINUX` directive set to `enabled`, then reboot your system, and SSH back into your Linode. These steps are outlined in the [SELinux States](#selinux-states) section of the guide.
 {{< /note >}}

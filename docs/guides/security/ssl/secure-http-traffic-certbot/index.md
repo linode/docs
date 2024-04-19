@@ -25,6 +25,7 @@ For most operating system and web server configurations, Certbot creates signed 
 ## Before You Begin
 
 Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/guides/dns-overview/#a-and-aaaa) DNS records that point to your Linode's public [IPv4 and IPv6 addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Consult our [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up a domain.
+
 {{< note >}}
 If you're using Apache, change each instance of `nginx` to `apache` in the following sections.
 {{< /note >}}

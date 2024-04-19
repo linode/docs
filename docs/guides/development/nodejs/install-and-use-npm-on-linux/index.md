@@ -29,6 +29,7 @@ One advantage to NPM is that it is the default package manager for Node.js. If y
 NPM is also the most popular Node.js package manager. With that popularity comes a wide range of coverage. You are more likely to find Node.js projects and examples that use NPM than you are to find ones using Yarn.
 
 Yarn was originally designed to address performance and security concerns in NPM. And while Yarn still outshines NPM in terms of speed, NPM has made vast security improvements that put it about even with Yarn.
+
 {{< note >}}
 You can learn more about Yarn in our [How to Install and Use the Yarn Package Manager](/docs/guides/install-and-use-the-yarn-package-manager) guide.
 

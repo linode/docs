@@ -30,6 +30,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 **Logstash** is a server-side data processing pipeline that consumes data from a variety of sources, transforms it, and then passes it to storage. This guide focuses on hardening Logstash inputs. Why might you want to harden the pipeline input? [Logstash](https://www.elastic.co/logstash) is often run as an internal network service, that is to say, it's not available outside of the local network to the broader internet. In those cases, access to the inputs is open and has no restrictions. However, there may be occasions where you need to communicate with a Logstash instance outside your local network. In that situation, you should protect the input traffic using SSL certificates.
 
 This guide explores how you can generate an organization certificate authority. The certificate authority can sign server and client certificates that are used in connection authentication.
+
 {{< note >}}
 The commands in this guide are for CentOS systems but they can easily be modified for other Linux distributions.
 {{< /note >}}
@@ -222,6 +223,7 @@ At this point you should be able to run Logstash, push a message, and see the ou
 ## Securing the Connection With Peer Verification
 
 You can stop here and use the setup as is, or proceed to setup peer verification. When using peer verification Logstash requires that incoming connections present their own certificate for verification rather than a username and password. You may find this method easier to script when automatically deploying hosts or applications that push messages to Logstash.
+
 {{< note >}}
 The remote client host needs copies of the organization certificate (`org_ca.crt`), organization certificate key (`org_ca.key`), and organization certificate serial number (`org_ca.serial`) to generate its certificate. These are all located in the `/etc/pki/tls/private` directory. Make sure to copy those files before proceeding. You may have to update the host permissions with `o+r` on to be able to use `scp` to copy them. Alternatively, you can generate the client certificate on the Logstash host and copy that to the client host when complete.
 {{< /note >}}

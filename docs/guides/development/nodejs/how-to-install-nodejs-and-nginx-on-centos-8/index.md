@@ -219,6 +219,7 @@ Now using node v12.16.2 (npm v6.14.4)
 ### Create a Test JavaScript File
 
 In the [Install and Configure NGINX](#install-and-configure-nginx) section you configured NGINX to listen on port `80` to serve its static content. You also configured a reverse proxy to your Linode's `localhost:3000` when a request for the `/test.js` file is made. In this section you will create the `test.js` file to be able to test your Node.js web server that you will create in the [next section](#create-your-the-node-js-web-server-file).
+
 {{< note >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{< /note >}}

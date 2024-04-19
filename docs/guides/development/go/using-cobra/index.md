@@ -19,6 +19,7 @@ You will need to install a recent version of Go on your computer in order to fol
 by executing `go version`.
 
 If you still need to install Go, you can follow our guide for Ubuntu installation [here](/docs/guides/install-go-on-ubuntu/).
+
 {{< note >}}
 This guide is written for a non-root user. Depending on your installation, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -76,6 +77,7 @@ Use "cobra [command] --help" for more information about a command.
 All Cobra projects follow the same development cycle. You first use the `cobra` tool to initialize
 a project, then you create commands and subcommands, and finally you make the desired changes to the
 generated Go source files in order to support the desired functionality.
+
 {{< note >}}
 The `cobra init` command stores Cobra projects inside `~/go/src`, which means that
 after executing `cobra init <project_name>` to create a new Cobra project, you will

@@ -28,6 +28,7 @@ With Monit you get:
 * Automatic email alerts sent at event triggers.
 * Web interface for status monitoring.
 * Availability from main package repositories.
+
 {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

@@ -25,6 +25,7 @@ CentOS Stream 8 marks a dramatic shift in philosophy for the CentOS Project team
 This decision repositions CentOS Stream as a community-based development platform where users can create new technologies and tools. Developers have more input into the direction of CentOS and RHEL, and all contributors have the opportunity to prioritize the features they need. CentOS Stream continuously delivers new features, improvements, and bug fixes, and provides a "first look" at upcoming RHEL versions.
 
 The current version of CentOS Stream is version 8. However, CentOS Stream 9 is currently expected to be ready in mid-2021. The maintenance life cycle for legacy CentOS releases is changing as well. CentOS 8 updates continue until December 31, 2021, which is much earlier than previously planned. CentOS Linux 9 is canceled. However, updates for CentOS 7 continue as planned until mid-2024.
+
 {{< note >}}
 In software engineering terms, the *upstream* direction is closer to the original source code, while *downstream* components are typically forks, rebuilds, or customizations. Previously, CentOS was built from RHEL and was downstream of it. However, CentOS is now upstream of RHEL. New versions of RHEL are based on CentOS Stream.
 {{< /note >}}
@@ -66,6 +67,7 @@ In response to these changes, [AlmaLinux](https://almalinux.org/) and [RockyLinu
 ## Migrate from CentOS 8 to CentOS Stream
 
 The `dnf` utility provides a simple, convenient, and trouble-free way to migrate from CentOS 8 to CentOS Stream. You can use `dnf` to download the new packages, swap and sync the streams, and remove any outdated components.
+
 {{< note >}}
 Alternatively, ISO images or RPM packages can be downloaded from [The CentOS Downloads Page](https://www.centos.org/download/). This page also describes alternative download sources, cloud and container images, export regulations, and explains how to download the raw source code.
 {{< /note >}}

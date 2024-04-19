@@ -16,6 +16,7 @@ deprecated: true
 ![Pritunl VPN Server and Management Panel on Ubuntu](Pritunl_VPN_Server_and_Management_Panel_on_Ubuntu_1404_smg.jpg)
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

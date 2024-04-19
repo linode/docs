@@ -29,6 +29,7 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 1. Install and configure Nagios. Follow the steps in the [Install Nagios on Debian 10 and Ubuntu 20.04](/docs/guides/install-nagios-on-debian-10-and-ubuntu-2004/) guide. Alternatively, the official [Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) provides steps for installing Nagios from source code on a wide range of Linux distributions.
 
 1. Replace `example.com` throughout this guide with your machine's domain name, and replace `fqdn.example.com` with your machine's fully qualified domain name (FQDN).
+
 {{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

@@ -15,6 +15,7 @@ aliases: ['/security/upgrading/manually-upgrading-to-latest-distribution-version
 Software updates play a pivotally role in maintaining a Linux system. On a daily or weekly basis, this may involve performing a quick command to upgrade your existing packages (and their dependencies) as well as obtain any minor distribution releases (such as upgrading from Ubuntu 18.04.4 to 18.04.5). Every few years, however, Linux distributions reach their EOL (end of life) and the developers stop releasing regular security patches and software updates. When this happens, its highly recommended to upgrade to the newest major release for your distribution.
 
 This guide covers upgrading your existing system through performing a *clean installation* of your preferred distribution. In many cases, this is the upgrade path that's recommended by Linode, as it avoids many issues that arise during *inline* upgrades and allows you to skip directly to the newest distribution release (even if your system is several releases behind).
+
 {{< note >}}
 Regardless of your chosen upgrade path ([inline upgrade](#inline-upgrade) or [clean install](#clean-install)), knowledge of your application, your application stack, and general systems administration is important and will help contribute to a seamless and successful upgrade.
 {{< /note >}}

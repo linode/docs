@@ -257,6 +257,7 @@ const b = new Box("hello!");
 {{</ file >}}
 
 Using Generics, you can create reusable components that can work with any data type without restricting to one data type. In the above example, the type of `const b` is `Box<string>`.
+
 {{< note >}}
 The members of a generic class that use the type can’t be "static". Generic classes are usually more efficient at runtime than classes that use variables of type `any`.
 {{< /note >}}

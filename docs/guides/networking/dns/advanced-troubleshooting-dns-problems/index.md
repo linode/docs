@@ -90,6 +90,7 @@ When a reply is returned, queries can be made to the server, in which case, skip
 If there is no reply using `ping`, then the circuit is unusable and the requested resolver is not responding. This can be because it’s under attack, dead, or offline. Specify another resolver/DNS server and repeat the attempt.
 
 An unusable circuit, or route to a DNS server, means that an Internet connection is down for the host making queries. If the circuit is up, another DNS server can be used, and must be placed in the host's settings. Reset the host to restart the network stack and read the new DNS server entry. Such alternate DNS Internet servers are `1.1.1.1` for Cloudflare, and `8.8.8.8` for Google.
+
 {{< note >}}
 The `traceroute` command line tool is also handy in network circuit analysis. It uses either an IP address or a Fully Qualified Domain Name (FQDN) to show latencies between the host and the desired IP address/FQDN.
 {{< /note >}}

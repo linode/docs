@@ -24,6 +24,7 @@ Graylog is a powerful, free, open-source log management and analysis tool that c
 Graylog uses Elasticsearch for searching and storing the log messages, and MongoDB to store the meta information and configuration. Graylog collects, indexes and analyzes the logs from various inputs and displays them through a web interface. Compared to other log monitoring tools, Graylog is a more finished and enterprise-ready tool out of the box.
 
 This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.
+
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

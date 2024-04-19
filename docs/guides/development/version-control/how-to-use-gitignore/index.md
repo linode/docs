@@ -13,6 +13,7 @@ external_resources:
 ---
 
 [Git](https://git-scm.com/) is a powerful *version control system* (VCS). It allows developers to manage, coordinate, and control the contents of their workspaces, but is not without complexity. Git users often struggle with untracked local files that complicate the output of commands like `git status`. This guide explains the `.gitignore` file, which provides a handy workaround to this problem. It also describes how to create a `.gitignore` file, how to add files and folders to `gitignore`, and how to use its powerful syntax.
+
 {{< note >}}
 Throughout this guide, `gitignore` refers to the `.gitignore` file. The full `.gitignore` name is always used in commands, outputs, and when referencing the full path of the file.
 {{< /note >}}
@@ -191,6 +192,7 @@ Untracked Files:
 ### How to Add Folders to gitignore
 
 `gitignore` can also be used to ignore entire directories, along with any files and subdirectories in the directory. To ignore a specific directory, append a `/` symbol to the end of the directory name.
+
 {{< note >}}
 If the `/` symbol is not added to the end of the rule, Git ignores all files and directories matching the pattern. `/` restricts the rule so it only applies to directories.
 {{< /note >}}
@@ -351,6 +353,7 @@ Untracked Files:
 ### The Negation Symbol
 
 The negation symbol removes some of the files or folders that match an earlier rule enforcing an ignored state. If the rule `*.bin` ignores all `.bin` files, then the rule `!a.bin` overrides this rule for `a.bin`. It tells Git to stop ignoring these files and move them back to the untracked state.
+
 {{< note >}}
 Some of the negated files can be returned to the ignored state using yet another rule later in the file. So it is possible to ignore a set of files `a`, then negate subset `b` out of `a`, then ignore subset `c` from `b`. It is possible to build a long chain of nested rules using this strategy. However, this structure can be difficult to debug and should normally be avoided.
 {{< /note >}}

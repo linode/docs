@@ -32,6 +32,7 @@ The `root` user is not active by default in Container Linux, so root login is no
 1.  At the `login:` prompt, enter `core`.
 
 2.  At the `password:` prompt, enter the `core` user's password you assigned when first having deployed Container Linux.
+
 {{< note >}}
 If you are not already familiar with the serial and graphical Linode shells, see the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) and [Access Your Linux Desktop Using Glish](/docs/products/compute/compute-instances/guides/glish/) guides.
 {{< /note >}}

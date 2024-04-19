@@ -65,6 +65,7 @@ total 68
 {{</ output >}}
 
 Fail2Ban uses the default configuration in the `jail.conf` file. However, it is not recommended to use the default configuration files as they can be overwritten by newer updates to the Fail2Ban package. The preferred approach to creating configurations for a particular service is by creating a new configuration file in the `/etc/fail2ban` directory with the `.local` extension.
+
 {{< note >}}
 A Fail2ban jail is a configuration file that contains filters or arguments that protect your system or a particular service
 {{< /note >}}

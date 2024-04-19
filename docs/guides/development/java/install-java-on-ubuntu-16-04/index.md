@@ -42,6 +42,7 @@ In this guide, we'll install the Oracle Java development kit for building Java a
 ## Install OpenJDK
 
 The OpenJDK, includes an open-source runtime environment and compiler. This allows you to develop your own Java applications and run them on your Linode.
+
 {{< note >}}
 This "Main" repository is maintained by Canonical, the company that maintains Ubuntu.
 {{< /note >}}

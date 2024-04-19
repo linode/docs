@@ -54,6 +54,7 @@ Install the PostgreSQL database, Python, and other necessary server libraries:
         createuser odoo -U postgres -dRSP
 
 3.  Press **CTRL+D** to exit the `postgres` user session.
+
 {{< note >}}
 If you want to run multiple Odoo instances on the same Linode remember to check your PostgreSQL client configuration file (as of the date this guide is published, located at `/etc/postgresql/9.5/main/pg_hba.conf`) and modify it according your needs.
 {{< /note >}}

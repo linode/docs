@@ -29,6 +29,7 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 ## General Setup
 
 Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
+
 {{< note >}}
 Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 {{< /note >}}

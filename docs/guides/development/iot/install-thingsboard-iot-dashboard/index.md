@@ -23,6 +23,7 @@ aliases: ['/development/iot/install-thingsboard-iot-dashboard/']
 [ThingsBoard](https://thingsboard.io/) is an open source platform for collecting and visualizing data from Internet of Things devices. Data from any number of devices can be sent to a cloud server where it can be viewed or shared through a customizable dashboard.
 
 This guide will show how to install ThingsBoard on a Linode and use a Raspberry Pi to send simple telemetry data to a cloud dashboard.
+
 {{< note >}}
 This guide will use a Raspberry Pi 3 with a [Sense HAT](https://www.raspberrypi.org/products/sense-hat/). You can substitute any device capable of sending telemetry data, or use `curl` to experiment with ThingsBoard without using any external devices.
 {{< /note >}}

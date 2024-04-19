@@ -28,6 +28,7 @@ Network communications are conceptualized in the *Internet Protocol Suite*, whic
 - **Internet Layer:** The layer right above the *Link layer* that establishes inter-networking and defines the network routing mechanisms and the address space.
 - **Transport Layer:** The third layer that establishes connectivity between hosts and handles task-specific data exchanges.
 - **Application Layer:** The top layer that provides services to the user using data from the network.
+
 {{< note >}}
 The networking layers are sometimes modeled by the seven-layer *Open Systems Interconnection Model* (OSI). The OSI model is very useful for network engineers but does not map as closely to today's internet.
 {{< /note >}}
@@ -60,6 +61,7 @@ RFC 791 defines the IP protocol's address system. This format is used for both t
 A server can offer different services at the same address based on the port number of the packet. To use a port number with an IP address, append a colon and the port number to the address. For example, to access the Remote Procedure Call agent at port `530`, use the address `198.51.100.25:530`. Different websites can be hosted on the same server using the same address. The web server delivers the appropriate page based on the domain name and the configuration of the virtual hosts.
 
 The Domain Name System (DNS) eliminates the need for users to know the IP address of the system they want to access. DNS servers translate the domain name to the associated IP address. This process is known as *resolving* the domain.
+
 {{< note >}}
 IP addresses beginning with the octets `198.51.100` are reserved for testing and documentation. The example used in this section is taken from this address space.
 {{< /note >}}
@@ -85,6 +87,7 @@ The *netmask* of an IP address is used to indicate its network component. If a b
 A *subnet* is a portion of a larger network. For instance, all addresses on the `198.51.100` network might be part of one subnet, while addresses starting with `198.51.101` might be on another. Subnets are used to further divide and compartmentalize the network, perhaps between business units or individual offices. Sometimes a network might have only one subnet, which contains all of the addresses in the network. Subnets can have any size and do not have to follow the format of any of the traditional classes. However, they do have to represent a contiguous range.
 
 The first address within a subnet is frequently used to identify the subnet itself. The final address in the space is used for the broadcast address. Typically, this is an address ending with the octet `255`, such as `198.51.100.255`. The broadcast address might be different in a small subnet that does not contain an address ending with the `255` octet.
+
 {{< note >}}
 At times, the term subnet is used to refer to the entire network, even if it is further subdivided into smaller networks. As well, the portion of an IP address describing the host is occasionally referred to as the *rest field*.
 {{< /note >}}

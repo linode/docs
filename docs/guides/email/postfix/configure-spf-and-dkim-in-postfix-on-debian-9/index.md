@@ -40,6 +40,7 @@ SPF (Sender Policy Framework) is a system that identifies to mail servers what h
 [DMARC (Domain Message Authentication, Reporting & Conformance)](http://dmarc.org/) allows you to advertise to mail servers the policies of your domain. The policies are regarding mails that fail SPF or DKIM validations. It also allows you to request reports on failed messages from receiving mail servers.
 
 The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions to configure the SPF policy agent and OpenDKIM into Postfix work on any distribution. You only need to make respective code adjustments for the package tool, and identify the exact path to the Unix socket file.
+
 {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -92,6 +93,7 @@ If you're using Linode's DNS Manager, go to the domain zone page for the selecte
 ![Linode DNS manager add SPF TXT record](spf-record.png)
 
 If your DNS provider allows it and DNS Manager doesn't, you should also add a record of type SPF. Provide the details in the same way as you did for the TXT record.
+
 {{< note >}}
 The values for the DNS records and for the rest of this guide are that works for Linode's DNS Manager. If you are using another provider, that respective system may require the values in a different style. For example *freedns.afraid.org* requires the values to be written in the style found in BIND zonefiles. Thus, the above SPF record's value need to be wrapped in double-quotes similar to: `"v=spf1 mx -all"`. You need to consult your DNS provider's documentation for the exact style required.
 {{< /note >}}

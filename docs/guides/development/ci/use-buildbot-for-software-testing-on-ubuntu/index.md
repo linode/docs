@@ -280,6 +280,7 @@ Now that Buildbot is installed, you can configure it to run builds. In this tuto
 ### Configuring GitHub
 
 Before creating the build configuration, fork the `linode/docs` repository into your GitHub account. This is the repository that will be used to run tests against. The repository will also require webhooks to be configured to send push or PR events to Buildbot.
+
 {{< note >}}
 The actions you take to fork, add webhook, and push changes to your fork of `linode/docs` will not affect the parent (or upstream), so you can safely experiment with it. Any changes you make to branches of your fork will remain separate until you submit a pull request to the original `linode/docs` repository.
 {{< /note >}}

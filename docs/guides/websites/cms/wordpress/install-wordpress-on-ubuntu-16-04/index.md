@@ -212,6 +212,7 @@ WordPress, and many of its plugins, use PHP extensions that you'll need to insta
         sudo apt install php7.0-xmlrpc
 
 These are only a few of the extensions you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as `php7.0-curl`, `php7.0-xml`, and `php7.0-mcrypt`. If you're having issues with a plugin or widget, check its documentation to see if a PHP extension is required.
+
 {{< note >}}
 The package names above assume you're working with PHP version 7.0. If you installed PHP 5 from the Ubuntu repositories, modify the commands to use the `php` prefix rather than `php7.0`. For example, instead of installing `php7.0-gd`, use `php-gd`.
 {{< /note >}}

@@ -38,6 +38,7 @@ Two Git repositories will be created: one will track changes to the Hugo site, a
 Two Linodes will be created: one will act as the Salt master, and the other as the Salt minion. This guide was tested under Debian 9, but the instructions may work with other distributions as well. The Salt minion will run the production webserver which serves the Hugo site, and the master will configure the minion's software. The minion will also run a webhook server which will receive code update notifications from GitHub.
 
 It is possible to run Salt in a [masterless mode](https://docs.saltproject.io/en/latest/topics/tutorials/quickstart.html), but using a Salt master will make it easier to expand on your deployment in the future.
+
 {{< note >}}
 The workflow described in this guide is similar to how Linode's own [Guides & Tutorials](https://github.com/linode/docs) website is developed and deployed.
 {{< /note >}}
@@ -483,6 +484,7 @@ The Salt minion's formula needs to be updated in order to serve the Hugo site. S
 -   Update the NGINX configuration to serve the built site.
 
 Some of the new state components will refer to data stored in [*Salt Pillar*](https://docs.saltproject.io/en/latest/topics/pillar/). Pillar is a Salt system that stores private data and other parameters that you don't want to list in your formulas. The Pillar data will be kept as a file on the Salt master and not checked into version control.
+
 {{< note >}}
 There are methods for securely checking this data into version control or using other backends to host the data, but those strategies are outside the scope of this guide.
 {{< /note >}}
@@ -541,6 +543,7 @@ hugo_site_repo:
 {{< /file >}}
 
 The final `hugo_site_repo` component in this snippet is responsible for cloning the example Hugo site repository from GitHub. This cloned repo is placed in the home directory of a system user that Salt creates in the preceding components. The clone command also recursively downloads the Cactus theme submodule.
+
 {{< note >}}
 The `- creates` declaration tells Salt that running the `cmd` command module will result in the creation of the file that's specified. If the state is applied again later, Salt will check if that file already exists. If it exists, Salt will *not* run the module again.
 

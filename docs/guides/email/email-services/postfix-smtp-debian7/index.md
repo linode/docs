@@ -85,6 +85,7 @@ myhostname = fqdn.example.com
 ### Configuring SMTP Usernames and Passwords
 
 Usernames and passwords are stored in the `/etc/postfix/sasl_passwd` file. In this section, you add your external mail provider credentials to the `sasl_passwd` Postfix configuration file.
+
 {{< note >}}
 The examples in this section provide the general steps to configure Postfix to use an external SMTP provider. If you want to use Mandrill or SendGrid as your SMTP provider, you can refer to the examples in the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide.
 {{< /note >}}
@@ -118,6 +119,7 @@ In the previous section you added plain text credentials to the `/etc/postfix/sa
 ### Configuring the Relay Server
 
 You are now ready to provide the configurations needed by Postfix to use the external SMTP server. This configuration tells Postfix to deliver mail indirectly via a relay host, which in this case, is an external SMTP server.
+
 {{< note >}}
 Refer to the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide for specific relay host configurations for Mandrill, and SendGrid.
 {{< /note >}}

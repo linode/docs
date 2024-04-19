@@ -19,6 +19,7 @@ aliases: ['/development/go/creating-reading-and-writing-files-in-go-a-tutorial/'
 ## Introduction
 
 This guide provides examples related to performing common file input and output operations in Go.
+
 {{< note >}}
 This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -712,6 +713,7 @@ func main() {
 {{< /file >}}
 
 If you execute `cat.go` without any command line arguments, then the utility will just copy from standard input to standard output using the `io.Copy(os.Stdout, os.Stdin)` statement. However, if there are command-line arguments, then the program will process them all in the same order that they were given using the `printFile()` function.
+
 {{< note >}}
 
 Command Line arguments when using `cat.go` will only be file paths. `cat.go` does not support the arguments you'd see with the traditional `cat` command, only the core functionality.

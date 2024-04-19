@@ -182,6 +182,7 @@ PasswordAuthentication No
         systemctl restart sshd
 
 1. Try accessing the target server without entering a password. Your private key should be used to authenticate the connection.
+
 {{< note >}}
 Some Linux systems include a tool named `ssh-copy-id` which further simplifies the process of copying a public key. To use this utility, run the command `ssh-copy-id <accountname>@<ip_address>`. After you enter your password, your public key is copied to the correct destination on the target server.
 {{< /note >}}

@@ -37,6 +37,7 @@ Protection of data stored with SQL Server depends upon the ability to authentica
 - [*SQL Server and Windows/Linux Authentication*](#sql-server-and-windowslinux-authentication-mode-mixed-mode) (also known as Mixed-mode)
 
 You are prompted to select one of these SQL Server authentication modes during SQL Server setup.
+
 {{< note >}}
 You can change the SQL Server authentication mode even after the initial installation decision has been made.
 {{< /note >}}
@@ -64,6 +65,7 @@ If you are using [SQL Server (mixed-mode) authentication](#sql-server-and-window
 1. Disable the account entirely, if you do not plan on using it.
 1. For the SA (or renamed) account, select a complex password, consisting of lower/upper case letters, numbers, and punctuation symbols.
 1. Do not allow applications to use the SA (or equivalently renamed) account in any of the application connection strings.
+
 {{< note >}}
 Any other user-based (lower-privileged) SQL Server accounts should also use complex, unique passwords.
 {{< /note >}}

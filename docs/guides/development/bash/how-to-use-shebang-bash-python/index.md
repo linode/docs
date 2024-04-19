@@ -65,6 +65,7 @@ The directive `#!/bin/false` is a special Shebang. It immediately exits and retu
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -78,6 +79,7 @@ To ensure the `sh` interpreter always processes a script, no matter what shell i
 ### Using a Shebang with an Absolute Path
 
 One common method to use a Shebang is to specify the full path to the interpreter on the first line of the file.
+
 {{< note >}}
 In this program, the line `ps h -p $$ -o args=''` prints out the name of the interpreter along with any arguments passed to it.
 {{< /note >}}

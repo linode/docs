@@ -31,6 +31,7 @@ This guide will assume you have two systems set up:
 Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide.
 
 The username for this limited user is assumed to be `example_user`. Replace all instances of `example_user` in this guide with your limited user's name. As well, the IP address of the remote system is assumed to be `192.0.2.4`, so replace all instances of this IP with your remote system's address.
+
 {{< note >}}
 `sshfs` can be installed on any Linode distribution, so you can adapt this guide if you are not using Ubuntu.
 {{< /note >}}
@@ -52,6 +53,7 @@ The `sshfs` package is available with every Linux package manager. Use the comma
 ## Setting Up your Linux Client
 
 In order to mount file systems using SSHFS from a normal user account, you'll need to add the user to the `fuse` group first.
+
 {{< note >}}
 If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/docs/guides/linux-users-and-groups/) guide for a brief introduction.
 {{< /note >}}

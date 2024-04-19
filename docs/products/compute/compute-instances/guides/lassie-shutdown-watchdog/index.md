@@ -74,6 +74,7 @@ The underlying cause of these issues can vary. The most helpful course of action
     - `/var/log/messages`: Various system notifications and messages typically recorded at boot.
 
     You may also want to review log files for any other software you have installed on your system that might be causing these issues.
+
 {{< note >}}
 Unexpected shutdowns are primarily caused by issues with the internal software configuration of a Compute Instance. To investigate these issues further, it is recommended that you reach out to your own system administrators or on our [Community Site](https://www.linode.com/community/questions/). These issues are generally [outside the scope](/docs/products/platform/get-started/guides/support/#scope-of-support) of the Linode Support team.
 {{< /note >}}

@@ -33,6 +33,7 @@ This guide provides an overview of both credential-based and rule-based access c
         hostname -f
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 

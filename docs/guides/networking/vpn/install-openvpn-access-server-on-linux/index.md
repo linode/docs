@@ -224,6 +224,7 @@ Resolve this by disabling compression. Go to the Admin UI and click **Advanced V
 ### OpenVPN User Management
 
 You can add additional users to your OpenVPN Access Server to enable auditing of connections to your VPN tunnel, and user level access control.
+
 {{< note >}}
 OpenVPN Access Server's free edition is limited to two users. If you require additional users for your VPN, you can view pricing details and purchase licenses at [OpenVPN's Website](https://openvpn.net/index.php/access-server/pricing.html)
 {{< /note >}}

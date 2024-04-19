@@ -20,6 +20,7 @@ relations:
 ---
 
 This guide explains how to install [*Magento*](https://magento.com/) on CentOS 8. Magento is a popular Open source e-commerce platform from Adobe. Magento uses *PHP*, *Elasticsearch*, and either a *MySQL* or *MariaDB* database system, along with a web server such as *Apache*. This guide focuses on how to install the free *Magento Open Source Edition*. Magento also offers *Magento Commerce* (with more extensive out of the box features and unlimited scaling), and the paid *Magento Commerce (On-Premises)* version with even more features and support.
+
 {{< note >}}
 Although this guide covers installation of Magento 2.4, version 2.3 is still available and fully supported.
 {{< /note >}}
@@ -33,6 +34,7 @@ Although this guide covers installation of Magento 2.4, version 2.3 is still ava
         sudo dnf update && sudo dnf upgrade
 
 1. This guide uses the sample domain name of `example.com` and a Magento root directory of `/var/www/html/example.com/public_html`, along with default username and password variables such as `magentouser` and `magentopassword`. Substitute your own values when you encounter these variables throughout the guide.
+
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -56,6 +58,7 @@ A complete Magento installation consists of the following high-level steps. Each
 7.  Complete the Magento post installation tasks.
 
 After these steps, you can set up your storefront and put your site into production.
+
 {{< note >}}
 This guide describes the process for a standard installation of the free version of Magento via the command-line. It assumes technical knowledge of CentOS essentials and some experience with software installation, as well as command-line access to the Magento server.
 {{< /note >}}
@@ -100,6 +103,7 @@ Magento can run on iOS 12 or later on the following platforms:
 2.  Confirm your host is running the latest version of CentOS 8 and update it if necessary.
 3.  Set up and test any load balancing configuration (if applicable).
 4.  Back up your system before proceeding with the installation so you can roll back if necessary.
+
 {{< note >}}
 We recommend you make a check point backup before installing and configuring the ancillary software components. Take another checkpoint before installing Magento.
 {{< /note >}}
@@ -370,6 +374,7 @@ Magento can be used with the following optional software components:
 ## Download and Extract the Software
 
 Magento software is available to download in several compression formats on [the Magento downloads page](https://magento.com/tech-resources/download).
+
 {{< note >}}
 You can also download Magento using Composer via the downloads page. Composer allows for extra configurability, but Composer is not required in order to download Magento.
 {{< /note >}}
@@ -508,6 +513,7 @@ The following optional configuration items can be used to customise your Elastic
 ### RabbitMQ and Locking Options
 
 Optional configuration parameters are available if you intend to use the RabbitMQ software or customizable locking. See the [Magento command line options page](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-install.html) for more information on these and all the other options.
+
 {{< note >}}
 The RabbitMQ options can only be used if you have installed the optional RabbitMQ software.
 {{< /note >}}

@@ -61,6 +61,7 @@ In your preferred text editor, open your Angular application's `/home/username/e
     {{</ file >}}
 
 The HTML that is animated is stored in the component's HTML template which is the `./app.component.html` file. You add the HTML code to this file in the next section.
+
 {{< note >}}
 Ensure that the top of your `app.component.ts` file includes the following import statements.
 

@@ -28,6 +28,7 @@ Before continuing with this guide, you need a website accessible over HTTP using
 2.  **A registered domain name with DNS records pointing to the IPv4 (and optionally IPv6) address of your server.** A domain can be obtained through any registrar and can utilize any DNS service, such as Linode's [DNS Manager](/docs/products/networking/dns-manager/). Review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide for more information on configuring DNS.
 
 3.  **The Apache web server software installed on your server and configured for your domain.** You can review the [Getting started with Apache HTTP Server](https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/) guide on Fedora's docs for information on installing and configuring Apache.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

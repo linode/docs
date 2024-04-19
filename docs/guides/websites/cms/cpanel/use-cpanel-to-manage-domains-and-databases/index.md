@@ -22,6 +22,7 @@ external_resources:
 ## Managing Domains
 
 Three types of domains can be associated with your cPanel account: main domains, add-on domains, and parked domains. Your main domain cannot be changed except by the reseller that owns your account or by root itself. Subdomains, add-on domains, and parked domains can be managed in the Domains section.
+
 {{< note >}}
 The Domains section also allows you to add or delete A or CNAME records to or from your domain. Any of the default entries would need to be modified by someone with the appropriate access (e.g., the reseller that owns your account or the root user).
 {{< /note >}}

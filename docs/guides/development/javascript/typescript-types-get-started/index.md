@@ -15,6 +15,7 @@ TypeScript supports various types including `string`, `number`, `boolean`, `enum
 ## Primitive Types
 
 The three essential primitive types in JavaScript and TypeScript are `string`, `number`, and `boolean`.
+
 {{< note >}}
 All three primitive types are spelled in lower-case. There are capitalized variants of these words that compile successfully in TypeScript. These are referred to as *boxed types*. When a primitive type is boxed it is "wrapped" in an object and can then behave like an object.
 {{< /note >}}
@@ -109,6 +110,7 @@ There are two ways you can declare an array in TypeScript. They are as follow:
 ## Object Types
 
 In TypeScript, you can create types from other types. The most common way to do this is with objects. Objects can be [*anonymous*](https://www.typescriptlang.org/docs/handbook/2/objects.html), [type *aliases*](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases), or [*interfaces*](https://www.typescriptlang.org/docs/handbook/2/objects.html#interfaces-vs-intersections).
+
 {{< note >}}
 Notice the difference in syntax when declaring an interface and a type alias. An interface declaration does not make use of the `=` sign.
 {{< /note >}}

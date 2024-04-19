@@ -88,6 +88,7 @@ This tutorial demonstrates the steps required to build a working gRPC applicatio
 This simple RPC application accepts a single request and returns a single response. No streams are involved in this application, but the guide explains how a stream-based method could work in each step. Both the server and client are implemented in Python, but any one of the supported languages could potentially be used on either side. Also, both the server and client here run on the same server in different code spaces. A more realistic server application would probably pull its data from an external database rather than a hard-coded dictionary.
 
 Extensive information about using gRPC with Python can be found in [gRPC's Python Documentation](https://grpc.io/docs/languages/python/). This page contains links to a series of resources, including the gRPC Python API and a basic tutorial.
+
 {{< note >}}
 The following example uses an insecure communication channel between the client and the server. To enhance the security of gRPC applications, consult the [gRPC Authentication Documentation](https://grpc.io/docs/guides/auth/).
 {{< /note >}}
@@ -108,6 +109,7 @@ This procedure is geared towards Ubuntu users but is generally applicable to all
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 {{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

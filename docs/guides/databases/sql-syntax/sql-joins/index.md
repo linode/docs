@@ -17,6 +17,7 @@ Traditionally, you pull data from two or more tables using a `WHERE` clause in a
 ## What is a SQL Join?
 
 In SQL, a `join` clause extends the capability of comparing and selecting rows from tables. It uses an algebraic process of combining rows from two or more tables based on a related column in those tables. By the ANSI-standard SQL definition, there are five types of Joins –**Cross Joins**, **Inner Joins**, **Left (Outer) Joins**, **Right(Outer) Joins**, and **Full (Outer) Joins**. These Joins are implemented across all relational database systems and are covered in the sections below.
+
 {{< note >}}
 Joins can be performed on any number of tables in a given query. For brevity and clarity, this guide discusses Joins applied to two tables.
 {{< /note >}}
@@ -126,6 +127,7 @@ The output of the above SQL code resembles the following:
 ### SQL Left (Outer) Join
 
 A Left Join returns a complete set of rows from the left table along with the matching rows from the right table. If there are no matching records, then `NULL` values are returned from the right table.
+
 {{< note >}}
 Some relational database implementations use the keywords “Left Outer Join”, as opposed to “Left Join”, but they are functionally equivalent.
 {{< /note >}}
@@ -159,6 +161,7 @@ The output of the above SQL code is as follows:
 ### SQL Right (Outer) Join
 
 A Right Join returns a complete set of rows from the right table and the matching rows from the left table. This is also known as a Right Outer Join. If there are no matching records, then `NULL` values are returned from the right table, for the affected rows in the left table.
+
 {{< note >}}
 Some relational database implementations use the keywords "Right Outer Join”, as opposed to "Right Join”, but they are functionally equivalent.
 {{< /note >}}
@@ -193,6 +196,7 @@ The output of the above SQL code is the following:
 ### SQL Full (Outer) Join
 
 A Full Join returns all rows from the left table, all rows from the right table. This is also known as also known as a Full Outer Join. A Full Join also returns all matching records from both tables where available. If there are no matching records, then `NULL` values are returned from the left table. It also returns `NULL` values from the right table.
+
 {{< note >}}
 Some relational database implementations use the keywords "Full Outer Join”, as opposed to "Full Join”, but they are functionally equivalent.
 {{< /note >}}

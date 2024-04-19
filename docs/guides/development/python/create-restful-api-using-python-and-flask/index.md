@@ -50,6 +50,7 @@ In order to run a Flask server, you install Flask first using the [Python Packag
 ### Create the List Endpoint in Flask
 
 RESTful services typically have two endpoints used to retrieve (GET) resources. One endpoint *lists* all resources or filters them according to some criterion. The second endpoint retrieves the *details* of a specific resource based on a unique identifier. In this section, you create two endpoints to GET resources from your API. This section may refer to these endpoints as the `list` and `details` endpoints.
+
 {{< note >}}
 All the steps in this section edit the same file, `prog_lang_app.py`.
 {{< /note >}}

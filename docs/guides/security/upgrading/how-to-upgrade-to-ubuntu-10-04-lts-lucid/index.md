@@ -112,6 +112,7 @@ Add the following line to your file:
 > dev /dev devtmpfs rw 0 0
 
 Save the file by entering `Ctrl+x` and agreeing to the changes. You may now reboot your Linode from the Linode Manager dashboard using its normal configuration profile.
+
 {{< note >}}
 If you're still having problems, verify that `Automount devtmpfs` is turned on.
 {{< /note >}}

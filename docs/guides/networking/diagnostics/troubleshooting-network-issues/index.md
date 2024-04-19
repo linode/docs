@@ -44,6 +44,7 @@ The boot process requires one of three types of suppliers of compliant address i
 DHCP clients are configured to receive their IPv4/IPv6-compliant address through the DHCP protocol from a downstream host. If the DHCP address server is offline, a usable address for the host network stack is not available until the working DHCP server is re-contacted by the DHCP client.
 
 The DHCP address must be delivered within an IPv4/IPv6 range that permits the host address to be routed through the next gateway/switch/router to other downstream gateways, then on to the Internet (or the target host if on a local or private network). Many hosts substitute an IPv4 address if they fail to procure a DHCP address in the `169.XXX.XXX.XXX` range, which is a point-to-point protocol for machine-to-machine connections not involving gateways.
+
 {{< note >}}
 A DHCP server may also consult a RADIUS server for information, but become unusable if the RADIUS server cannot be found. DHCP and RADIUS servers can be combined in the same device, and serve as combined proxy authentication (RADIUS) and supplicant provider (DHCP) when confirming network addresses and credentials.
 {{< /note >}}
@@ -148,6 +149,7 @@ Proxy control software requires testing when inappropriate blockage of site-to-s
 Successful proxy control requires a working network path to the proxy controller, often located in the cloud, and proxy control problems likely can’t be performed until the proxy is reached.
 
 Troubleshooting network control proxy software and its agent/linkage software requires the removal of proxy control. Test whether the proxy stack is delivering incorrect blocks or presenting problems to desired and permitted target sites. If the proxy can be removed, and communication is successful, then troubleshooting points to problems in the network control proxy software stack. Troubleshooting the network control proxy stack is usually performed by a trained administrator or network engineer familiar with the specific software stack.
+
 {{< note >}}
 If a proxy control is in the network circuit/stack, standard troubleshooting methods may fail. Only the proxy control vendor’s troubleshooting methods are successful in this case because the proxy controls the network circuits in non-standard ways.
 {{< /note >}}

@@ -37,6 +37,7 @@ While this tutorial is specifically concerned with the Linode API, similar steps
             sudo dnf upgrade
 
 1.  Follow our guide on [How to Self-host Appsmith with Docker Compose](/docs/guides/deploy-appsmith-docker) for steps to install Docker and start running an Appsmith instance on your own server.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

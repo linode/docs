@@ -16,6 +16,7 @@ One of the most powerful aspects of SQL is the ability to perform data aggregati
 ## SQL Aggregate Functions
 
 In SQL, aggregation is the process of operating or calculating a set of values. The intent is to return a single summary value. SQL includes several very powerful Aggregate Functions such as `AVG()`, `COUNT()`, `SUM()`, `MAX()`, and `MIN()`. These functions, in turn, are most often found in SQL statements that implement a `GROUP BY` clause. However, these functions do not need to be associated with that clause.
+
 {{< note >}}
 Unless mentioned otherwise, all the database commands demonstrated in this guide work well on both **MySQL** and **PostgreSQL**.
 {{< /note >}}

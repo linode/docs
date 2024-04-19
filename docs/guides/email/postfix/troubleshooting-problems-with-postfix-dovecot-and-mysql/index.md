@@ -415,6 +415,7 @@ auth required pam_unix.so nullok account required pam_unix.so
 6.  Restart Dovecot.
 7.  Send yourself another test message.
 8.  Check your email. You can use either Telnet or a mail client. At this stage, your email address will be for your system user (<myuser@example.com>), and your username and password will be the same as they are for SSH (no `@example.com` part in the username at this stage). Your connection type will be standard (non-secure) and your password will be plain. You will probably have to set up your mail client manually, rather than through a wizard.
+
 {{< note >}}
 The Telnet and mail client tests will not work for `root`. Use a different system user.
 {{< /note >}}
@@ -837,6 +838,7 @@ smtps     inet  n       -       -       -       -       smtpd
 6.  Save the changes you've made to the `/etc/postfix/master.cf` file.
 7.  Restart Postfix.
 8.  Set up your mail client to connect to your Linode as an outgoing mail server. You should use TLS encryption, or STARTTLS if you have that option, over ports 25, 465, or 587. Your username and password are the same as they are for incoming mail. Try sending a test message.
+
 {{< note >}}
 You will no longer be able to use Telnet for testing. If you want to run a manual test for troubleshooting purposes, you can use [openssl](http://www.openssl.org/docs/apps/s_client.html) instead. Your command should look like this (you can test on ports 465 and 587 as well):
 

@@ -617,6 +617,7 @@ This section of code defines a `pressSelect` function that sends new Tweets with
 ## Commit the Code and Push to GitHub
 
 Now that the bot code has been added to your workstation's copy of the repository, we should make a new *commit*. A commit in Git records your file changes in the version control history. After making the new commit, you can then **push** it to your repository on GitHub.
+
 {{< note >}}
 A commit that you make locally is not automatically synced to GitHub. The push operation demonstrated in this tutorial needs to be done manually.
 {{< /note >}}

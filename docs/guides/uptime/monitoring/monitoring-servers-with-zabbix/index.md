@@ -40,6 +40,7 @@ Other distributions may also have packages for Zabbix. Check the distribution's 
         sudo apt-get install zabbix-agent
 
 Zabbix is now installed and running on your Linode.
+
 {{< note >}}
 If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
 {{< /note >}}

@@ -19,6 +19,7 @@ aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian 10.
+
 {{< note >}}
 If you are not using Debian 10, you can view different Linux distribution versions of this guide in the [Drupal](/docs/websites/cms/drupal/) section of our documentation site.
 {{< /note >}}

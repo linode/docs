@@ -22,6 +22,7 @@ Angular is a powerful open-source platform and framework for creating dynamic si
 Angular is both a development platform and a framework for web application design. As a platform, Angular offers tools to make the development process run smoothly and easily. It also comes with a host of libraries that include features for streamlining your web application design. As a framework, Angular uses a component-based approach for making sophisticated and scalable web application clients. It is built around modular application design, making it easier to give your applications a clean and clear architecture.
 
 Angular uses [TypeScript](https://www.typescriptlang.org/), a programming language that extends JavaScript with strong typing. This can make your applications more transparent, legible, and helps you catch errors at compile time rather than run time. It may look unfamiliar at first, but many find that TypeScript makes their JavaScript programming more clear and less error-prone.
+
 {{< note >}}
 Angular should not be confused with [AngularJS](https://angularjs.org/), a front-end framework that aims to extend static HTML with dynamic features. Angular came about as the evolution of AngularJS — Angular is also known as Angular 2 for this reason.
 {{< /note >}}

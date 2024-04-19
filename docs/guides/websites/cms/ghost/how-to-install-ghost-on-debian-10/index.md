@@ -28,6 +28,7 @@ aliases: ['/websites/cms/ghost/how-to-install-ghost-on-debian-10/']
 ## In This Guide
 
 In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Debian 10, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 

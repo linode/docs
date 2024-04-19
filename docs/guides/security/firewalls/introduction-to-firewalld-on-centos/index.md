@@ -25,6 +25,7 @@ Working with firewalld has two main differences compared to directly controlling
 
 1.  Firewalld uses *zones* and *services* instead of chain and rules.
 2.  It manages rulesets dynamically, allowing updates without breaking existing sessions and connections.
+
 {{< note >}}
 While firewalld is a frontend for nftables/iptables and allows easier management of firewall rules, it is not a direct replacement for these utilities. Using nftables directly may provide you with more control. When using firewalld, its recommended to use `firewall-cmd` commands (instead of nftables or iptables commands) to interface directly with firewalld.
 {{< /note >}}

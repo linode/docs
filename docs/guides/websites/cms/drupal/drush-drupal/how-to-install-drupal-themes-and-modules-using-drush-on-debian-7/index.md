@@ -30,6 +30,7 @@ Before installing themes, modules, and a backup system with Drush, make sure tha
 3.  Configure a LAMP stack using the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
 
 4.  Install Drush and a Drupal website core with the [Installing & Using Drupal Drush on Debian 7](/docs/guides/how-to-install-drush-on-ubuntu-18-04/) guide.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

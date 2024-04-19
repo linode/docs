@@ -539,6 +539,7 @@ udp        0      0 0.0.0.0:68              0.0.0.0:*                           
 {{</ output >}}
 
 The `netstat` command has many powerful options to view information about different areas of your network. For a deeper dive, view our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/).
+
 {{< note >}}
 Some Linux distributions use the `ss` command, a direct replacement for `netstat`.
 {{< /note >}}

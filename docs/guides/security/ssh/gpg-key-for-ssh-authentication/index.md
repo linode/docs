@@ -281,6 +281,7 @@ If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID M
 ### Secure Your Card
 
 It is assumed that you have already configured your card/YubiKey's (herein referred to as 'GPG device') owner information. It is highly recommended that you secure your card before you start this section.
+
 {{< note >}}
 Some of these commands may ask for a PIN or Admin PIN. The default PIN is usually `123456`, and the default Admin PIN is usually `12345678`. If these don't work, contact the manufacturer or review online documentation.
 {{< /note >}}

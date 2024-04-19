@@ -95,6 +95,7 @@ in the current directory. This is necessary for executing any file that is not l
 in the `PATH`. The `PATH` *environment variable* contains a list of directories that
 bash will search through for executable commands. You can execute `echo $PATH` to find
 its current value.
+
 {{< note >}}
 The `#` character is used for adding single line comments in bash scripts. The bash shell
 also supports multi line comments, but they are not used as often, so it would be

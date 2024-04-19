@@ -179,6 +179,7 @@ These certificates can be entirely administered through the Cloudflare website. 
 1. Provide the certificate hostnames. If ordering the $5/month plan, you can leave the generated values unchanged. Click **Next**.
 
 1. Cloudflare will validate the domain before ordering the certificate for your domain. When the validation is complete, click **Next** and provide a payment type to complete the purchase.
+
 {{< note >}}
 If you would like to upload your own SSL certificate from another authority, click the **Upload Custom SSL Certificate** button in the Edge Certificates panel. This functionality requires that you subscribe to the Business Website Cloudflare tier.
 {{< /note >}}

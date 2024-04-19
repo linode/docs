@@ -89,6 +89,7 @@ const n = firstElement([1, 2, 3]);
 {{</ file >}}
 
 In this example, TypeScript infers the type of `<Type>` from the input array and propagates that to the return value. `["a", "b", "c"]` is an array of strings, so `s` is a string. `[1, 2, 3]` is an array of numbers, so `n` is a number.
+
 {{< note >}}
 You can also constrain generics using the [extends](https://www.typescriptlang.org/docs/handbook/2/functions.html#constraints) clause.
 {{< /note >}}

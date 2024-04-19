@@ -16,6 +16,7 @@ aliases: ['/development/go/go-structures/']
 ## Introduction
 
 Go's array, slice, and map types can be used to group multiple elements, but they cannot hold values of multiple data types. When you need to group different types of variables and create new data types, you can use *structs*.
+
 {{< note >}}
 Go does not have a concept of *classes* from other object oriented languages. Structs will be used in similar ways as classes, with important differences. For example, there is no class inheritance feature in Go.
 {{< /note >}}
@@ -33,6 +34,7 @@ In this guide you will:
 {{< content "before-you-begin-install-go-shortguide" >}}
 
 An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
+
 {{< note >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
@@ -512,6 +514,7 @@ func main() {
 {{< /file >}}
 
 This approach for creating new struct variables allows you to check whether the provided information is correct and valid in advance; for example, the above code checks the passed `employeeID` from lines 13 to 15. Additionally, with this approach you have a central point where struct fields are initialized, so if there is something wrong with your fields, you know exactly where to look.
+
 {{< note >}}
 For those of you with a C or C++ background, it is perfectly legal for a Go function to return the memory address of a local variable. Nothing gets lost, so everybody is happy!
 {{< /note >}}

@@ -131,6 +131,7 @@ After restarting Apache2, the homepage for phpMyAdmin, will be freely accessible
     http://<SERVER IP>/phpmyadmin
 
 Login can be completed using the credentials that were created at the prompt when installing phpMyAdmin.
+
 {{< note >}}
 While not included in this guide or a base installation of phpMyAdmin, it is strongly recommended that [SSL/TLS is installed](/docs/guides/ssl-apache2-debian-ubuntu/) before entering any credentials over `http`, using only `https` on port `443` instead.
 {{< /note >}}

@@ -41,6 +41,7 @@ To resolve this issue, Martin developed a set of principles for class design, pa
 Each of the SOLID principles of programming summarizes a best practice within software development. Although these ideas are interconnected, they can be analyzed and discussed one at a time. A short example is included in each section to help illustrate the main idea.
 
 Each principle represents a design goal, not an absolute law. Perfect adherence to every principle might not be possible in every case. Sometimes there might be valid reasons to take a different approach. But this should be only done after careful consideration, after determining the principle is impractical.
+
 {{< note >}}
 The examples in this section use Python-based pseudocode. They are designed to clearly demonstrate the principles rather than represent complete interfaces, executable code, or realistic programs.
 {{< /note >}}
@@ -191,6 +192,7 @@ Another way of phrasing this is:
 **Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it.**
 
 This principle emphasizes the importance of clean interfaces and "black box" design. Liskov's principle explains how inheritance should work in a properly-designed object-oriented design model. Any time a parent class can be used, a subclass must be able to replace it without any loss of functionality. Whenever a method expects an object from the base class, it should also be able to accept an object representing a subclass. The subclass must accept the same number of arguments and the return values from all methods must have the same type.
+
 {{< note >}}
 This is the most technical subject on the list and requires some background in object-oriented programming. For more information on inheritance and an introduction to the OOP concepts discussed in this section, see the [Wikipedia page on inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)).
 {{< /note >}}

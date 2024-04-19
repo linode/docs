@@ -58,6 +58,7 @@ Appsmith, on the other hand, provides a solution to help developers build comple
 ## How to Deploy Appsmith with Docker
 
 The official method supported for deploying a self-hosted Appsmith instance is through Docker Compose. That is the method used here, with all the steps you need to get your own instance up and running.
+
 {{< note >}}
 These steps have been tested on Ubuntu 22.04. However, the Docker commands should apply equally on other distributions, such as Debian and CentOS. The section on installing Docker also includes information on how to do so for these and other distributions.
 {{< /note >}}

@@ -64,6 +64,7 @@ The Linux version on Steam should run normally. However, some gamers have recent
 ## Rocket League
 
 Rocket League combines soccer with remote-controlled cars. Rocket League is no longer a small indie title, it’s one of the most played games ever. The game is addictive and supports a four-player co-op. It includes great graphics and an upbeat dance soundtrack.
+
 {{< note >}}
 The official support for Linux has been stopped, but the game still runs well although some features might not work anymore. You can still play locally with friends.
 {{< /note >}}

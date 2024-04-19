@@ -80,6 +80,7 @@ There are three ways to issue commands to tmux:
 - **command line**: Commands can also be entered directly to the command line within a tmux session. Usually these commands are prefaced by `tmux`. The `tmux attach` command used in the previous section was an example of this type of command.
 
 Most tmux tasks can be accomplished using any of these three methods.
+
 {{< note >}}
 You can change the prefix key by editing the `~/.tmux.conf` file. For the remainder of this guide, **Prefix** will be used to refer to either the default `CTRL+b` or the combination you have chosen in your configuration file.
 {{< /note >}}

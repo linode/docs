@@ -152,6 +152,7 @@ function runQueries(db) {
 {{< /file >}}
 
 The `all()` method of the sqlite3 returns an array of rows on success, or an error on failure.
+
 {{< note >}}
 It is good practice to parameterize the query by providing a list of substation values or an object with properties. Because it can be substituted using `$properyname` syntax. This avoids SQL injection hacks. See our guide [SQL Injection Attack: What It Is and How to Prevent It](/docs/guides/sql-injection-attack/) to learn more about this type security vulnerability.
 {{< /note >}}

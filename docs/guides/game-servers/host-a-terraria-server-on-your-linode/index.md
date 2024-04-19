@@ -230,6 +230,7 @@ This script permits you to both:
 
 *  Attach to the console for direct administration, and
 *  Send the console commands like `save` or `exit` while it's running without needing to attach at all (useful when services like systemd need to send server commands).
+
 {{< note >}}
 Throughout the rest of this guide, you may encounter "command not found" errors when running the `terrariad` command. This may result from the directory `/usr/local/bin/` not being found in the `$PATH` when running sudo commands, which can occur with some Linux distributions. You can work around this problem by calling the script with the full path. For example, instead of running `sudo terrariad attach`, use `sudo /usr/local/bin/terrariad attach`.
 {{< /note >}}

@@ -39,6 +39,7 @@ The setup in this guide requires the following *minimal* Linode specifications:
 * A Shared **1GB** Linode (Nanode) to install the Odoo 13 web application
 
 Your implementation may need more nodes or higher-memory plans. Your required server resources depend on the number of end-users you want to serve and the number of modules you plan to incorporate. If you're not sure what size server you need, you can always start with a lower resource tier and then [resize your Linodes](/docs/products/compute/compute-instances/guides/resize/) to a higher plan later on.
+
 {{< note >}}
 If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/).
 {{< /note >}}
@@ -121,6 +122,7 @@ In order to simplify communication between Linodes, set hostnames for each serve
 | PostgreSQL | postgresql | postgresql.yourdomain.com |
 
 On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to locate your addresses.
+
 {{< note >}}
 A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
 
@@ -214,6 +216,7 @@ Now that you finished PostgreSQL configuration you can start the `postgresql` se
 ## Odoo 13 Setup
 
 This section shows how to configure your Odoo 13 web application to work with the PostgreSQL database backend. Run the commands in this section on the Linode that you created for your Odoo application server.
+
 {{< note >}}
 Odoo 13 uses Python 3.6+ instead of Python 3.5. [Debian 10 servers run Python 3.7.3 by default](/docs/guides/how-to-install-python-on-debian-10/), so you should not have compatibility problems.
 {{< /note >}}

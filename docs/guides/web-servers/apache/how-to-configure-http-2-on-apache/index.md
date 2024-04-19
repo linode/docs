@@ -26,6 +26,7 @@ For more comprehensive information and a collection of resources about HTTP/2, s
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
+
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -42,6 +43,7 @@ The following high-level steps are involved in configuring HTTP/2 on [*Apache*](
 ### Install Apache
 
 Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/guides/apache-configuration-basics/) guide.
+
 {{< note >}}
 HTTP/2 support requires Apache version 2.4.17 or higher.
 {{< /note >}}

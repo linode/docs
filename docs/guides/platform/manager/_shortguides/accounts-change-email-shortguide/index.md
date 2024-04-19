@@ -14,6 +14,7 @@ aliases: ['/platform/manager/accounts-change-email-shortguide/']
 ---
 
 Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
+
 {{< note >}}
 Only full account access users can receive threshold notification emails.
 {{< /note >}}
@@ -30,6 +31,7 @@ Here's how to change a user's email from the **Users & Grants** page:
 1.  Click **Save**.
 
 The user's email address is now updated.
+
 {{< note >}}
 If you do not have full account access, you can view your user profile settings and update your email address by clicking on your username at the top of the Cloud Manager screen and selecting **Display**.
 {{< /note >}}

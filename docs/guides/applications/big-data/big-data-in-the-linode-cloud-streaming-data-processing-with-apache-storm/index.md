@@ -914,6 +914,7 @@ It's important to set this correctly to avoid critical cluster creation failures
 ## Start a Storm Cluster
 
 This section will explain how to start a Storm cluster. Doing so will also start any Zookeeper clusters on which it depends, so they do not need to be started separately.
+
 {{< note >}}
 When starting a cluster, you should have `clustermgr` authorization to the Cluster Manager Linode.
 {{< /note >}}

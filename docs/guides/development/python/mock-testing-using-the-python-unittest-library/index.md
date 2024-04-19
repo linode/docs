@@ -51,6 +51,7 @@ The [Python unittest mock object library](https://docs.python.org/3/library/unit
 ### Creating a New Mock Object
 
 Working with a mock is different from working with standard objects. A mock can perform assertions and create a consistent result by setting object methods to a particular value. Mock objects can also look for side effects that result from making particular calls. However, a mock isn’t real code. A mock object behaves like a "real" object, but doesn't alter your code. The following steps go through some mock object basics to exemplify what mocks can accomplish.
+
 {{< note >}}
 You can run the steps in the following sections using your computer's Python interpreter. To access the Python interpreter, issue the following command:
 

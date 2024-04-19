@@ -89,6 +89,7 @@ Ripgrep can also be installed using the popular [Homebrew](https://brew.sh/) pac
 ### Install ripgrep Using Cargo
 
 Because ripgrep is written in Rust, it can be installed using Cargo, Rust's package manager. If Rust is already installed on the system, then Cargo is already available. Otherwise, Cargo can be installed as a stand-alone utility using the command `sudo apt install cargo`. To install ripgrep using Cargo, run the following command.
+
 {{< note >}}
 To be able to run Cargo executables, add the line `export PATH=$PATH:$HOME/.cargo/bin` to the `.bashrc` file. Source the `.bashrc` file to apply the changes.
 {{< /note >}}

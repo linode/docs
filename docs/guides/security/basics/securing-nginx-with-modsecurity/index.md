@@ -31,6 +31,7 @@ In order to install and configure ModSecurity, you need to have a Linux server w
 - Nginx
 
 For instructions, see our guide on [How to Install NGINX on Ubuntu 18.04 LTS](/docs/guides/how-to-install-nginx-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
+
 {{< note >}}
 This demonstration has been performed on Ubuntu 18.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}

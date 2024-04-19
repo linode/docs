@@ -20,6 +20,7 @@ Log4j is often included in software packages and tools without explicit mention,
 Before proceeding, it should be noted that the above mentioned log4j vulnerabilities  only impact versions of log4j using versions **log4j 2.x** and later, and patches are being rolled out by the Apache Foundation regularly. For any updates on these patches, it is recommended that users review Apache's [log4j Security Page](https://logging.apache.org/log4j/2.x/security.html) for additional information.
 
 The steps in this guide aim to empower you to proactively discover log4j vulnerabilities on your system, and mitigate them where needed.
+
 {{< note >}}
 For more information on how Linode has handled log4j vulnerabilities, and a detailed writeup on [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228) specifically, as well as mitigation steps, see our [Security Digest](https://www.linode.com/blog/security/linode-security-digest-log4j2/).
 {{< /note >}}

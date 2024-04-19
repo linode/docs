@@ -235,6 +235,7 @@ smtp-amavis     unix    -       -       -       -       2       smtp
 ## Testing ClamAV
 
 You'll want to test that your email server is removing malicious emails from your users' inboxes. [The European Expert Group For IT-Security](http://www.eicar.org/) has files available for download that will be seen by ClamAV as a virus. You can download these test virus files [here](http://www.eicar.org/85-0-Download.html).
+
 {{< note >}}
 Please be aware that if you are running antivirus software locally, it may block these test files. Be sure to read the `Important Note` section of the EICAR download page before you continue.
 {{< /note >}}

@@ -40,6 +40,7 @@ No matter the purpose of the attack, it can inflict tremendous consequences upon
 - Hurt customer confidence and make it difficult for the organization to attract new clients and retain existing ones.
 
 Any organization can be targeted, even personal websites and small forums. According to the [*Wikipedia SQL Injection page*](https://en.wikipedia.org/wiki/SQL_injection), the average web application is attacked around four times per month. New exploits are always being developed, and it is difficult to design a truly bulletproof site. However, many hackers target sites indiscriminately using brute force. A database that has been secured through a few basic techniques is much more secure and difficult to compromise.
+
 {{< note >}}
 This guide is intended as an introduction to SQL injections and does not cover every possible type of attack. [Web security](/docs/guides/software-security-best-practices/) is a very complex field, and many possible attacks demand careful consideration. You should consult with web security professionals before launching any application that stores private personal or financial information.
 {{< /note >}}
@@ -87,6 +88,7 @@ Some out-of-band attacks might only work if certain features are enabled on the 
 ## SQL Injection Attack Examples
 
 Many SQL injection attacks take advantage of SQL keywords and syntax. The object is to use valid queries to get the database to operate in an undesirable manner. The particular details of these dangerous commands vary between the various RDBMS applications. However, most attacks use a few basic methods. The following SQL injection examples demonstrate some commonly used approaches.
+
 {{< note >}}
 Although the core SQL syntax is standardized, the implementation varies between RDBMS applications. The different database applications also offer unique enhancements and features. These might be more or less secure. Some of the following attacks might work on some databases and not others. Consult the database documentation for more details.
 {{< /note >}}

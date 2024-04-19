@@ -23,6 +23,7 @@ aliases: ['/websites/ecommerce/install-magento-on-ubuntu-18-04/']
 In this guide you'll learn how to install Magento on Ubuntu 18.04\. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.
 
 Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a [High Memory Linode](https://www.linode.com/pricing/).
+
 {{< note >}} This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.2.x. If you plan to use data, themes, and extensions from an older Magento site, be sure to check for compatibility issues between the two versions. {{< /note >}}
 
 ## Before You Begin
@@ -375,6 +376,7 @@ sudo find app/etc -type d -exec chmod g-ws {} \;
 ```
 
 Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed. Once you're ready to deploy your site into production mode, refer to [Magento's ownership and permissions guide](https://devdocs.magento.com/guides/v2.2/config-guide/prod/prod_file-sys-perms.html) for a more comprehensive set of recommendations.
+
 {{< note >}} If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/guides/linux-users-and-groups/). {{< /note >}}
 
 ### Secure your Site with SSL
@@ -382,6 +384,7 @@ Depending on whether you install custom themes or extensions, you may need to do
 Secure sockets layer (SSL) certificates are a vital part of e-commerce. They enable encrypted transmission of sensitive data, such as credit card numbers, that can be verified and trusted by clients. In fact, some payment vendors such as PayPal, require SSL certificates to be used for customer transactions.
 
 For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) and [using SSL certificates with Apache](/docs/guides/ssl-apache2-debian-ubuntu/).
+
 {{< note >}} Many payment vendors that require SSL do not support self-signed certificates. Depending on how you handle payments, it is likely you will need to purchase a commercially signed certificate.
 
 When you [configure Apache to use the SSL certificate](/docs/guides/ssl-apache2-centos/#configure-apache-to-use-the-ssl-certificate), if you installed Magento in a subdirectory of your site, and only want that section to be encrypted, make sure to modify your `<VirtualHost *:443>` block to match. {{< /note >}}

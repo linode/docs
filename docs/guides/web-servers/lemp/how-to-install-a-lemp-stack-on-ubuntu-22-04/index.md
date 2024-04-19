@@ -45,6 +45,7 @@ The LEMP stack consists of the following components:
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -52,6 +53,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## How to Install LEMP Stack on Ubuntu
 
 This section explains how to install and configure the LEMP Stack on Ubuntu 22.04 LTS. However, the instructions for the Ubuntu 20.04 LTS release are very similar. The LEMP stack is not available through Tasksel, so the individual components must be installed separately.
+
 {{< note >}}
 These instructions apply with or without a registered domain name. If the server is hosting a domain, a virtual host must be configured. For more information about domain names and how to point the domain to a Linode, consult the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}

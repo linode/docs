@@ -471,7 +471,6 @@ Rancher also provides an easy way to scale your app's deployments:
 
 1.  A second Pod appears in the **Pods by State** section on this page, that displays the status of the pod that is being created. Eventually, the new Pod is labelled as **Running**.
 
-
 {{< note >}}
 Rancher does not currently support interacting directly with Linode Volumes via its user interface. However, the scaling method described in this section of the guide will apply complete replication to your application and volumes.
 {{< /note >}}

@@ -16,6 +16,7 @@ deprecated: true
 This guide will show you how to install and use the distribution-supplied kernel for CentOS 6, with our **Grub Legacy** boot option.
 
 Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/products/platform/get-started/) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+
 {{< note >}}
 This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/) guide.
 {{< /note >}}

@@ -163,6 +163,7 @@ Now that you finished PostgreSQL configuration you can start the `postgresql` se
 ## Odoo 13 Setup
 
 Configure your Odoo 13 web application to work with the PostgreSQL database backend.
+
 {{< note >}}
 Odoo 13 uses Python 3.6+ instead of Python 3.5. If your server is running an older Ubuntu release, for instance 16.04, you will need to compile a newer Python version to meet this requirement.
 {{< /note >}}

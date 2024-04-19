@@ -50,6 +50,7 @@ You can set up automated security updates on Ubuntu by installing a helpful util
     This ensures that the service runs on system startup and is persistent throughout.
 
 1.  You now need to make changes to the configuration file. The default configuration file can be found here at `/etc/apt/apt.conf.d/50unattended-upgrades`. Open it with the text editor of your choice.
+
 {{< note >}}
 The unattended-upgrades package ignores lines that start with `//`, as that line is considered to be a comment. Therefore, if you want a repository to update automatically, you need to remove `//` from that line.
 {{< /note >}}

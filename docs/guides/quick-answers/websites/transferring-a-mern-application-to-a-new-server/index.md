@@ -45,6 +45,7 @@ The default `hello-world` Flask application included as part of the MERN Marketp
 ## Preparing for The Transfer
 
 Before, proceeding with any remote transfer, it is strongly recommended the original host that will be transferring data to the Linode has [Backups](/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for MongoDB should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
+
 {{< note >}}
 If using a Cloud-Native database like **MongoDB Atlas**, the steps for transferring your database may differ, and users should consult the documentation of their database host.
 {{< /note >}}
@@ -92,6 +93,7 @@ The packages installed using the `npm install` command will install all node mod
        sudo node server.js
 
 Once these steps are completed, your node configuration should successfully be running.
+
 {{< note >}}
 Some MERN applications are dependent on a specific version of Node in order to serve content. If you encounter errors related to your version of Node, you can additionally install tools like the [Node Version Manager(NVM)](/docs/guides/how-to-install-use-node-version-manager-nvm/) in order to easily switch to your needed version of Node.
 

@@ -50,6 +50,7 @@ To summarize, a `for` statement is used when the maximum number of iterations is
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -201,6 +202,7 @@ The loop has ended.
 Python can loop through a dictionary in much the same way it loops through a List. However, the structure of a dictionary is more complicated. A dictionary maps keys to values. Each dictionary item is a *key-value pair* which uses the key as its index. To be valid, a key must be comparable to other keys and cannot change. However, a value can be of any Python type, and types can be mixed within the same dictionary. A value can also be a sequential data type, such as a List or Tuple, or even another Dictionary.
 
 Beginning with release 3.6, Python iterates over dictionary keys in the same order the entries were created. The `for` loop provides the name of the next key, not the value. However, the value can be accessed using the indexing operator `[]`. To use the indexing operator, specify the name of the dictionary and append the indexing operator, placing the name of the key inside. The syntax for this operation is `dictionary_name[key]`. For example, if a dictionary named `citystates` contains a key named `Miami`, the associated value of `Miami` is retrieved using `citystates[Miami]`.
+
 {{< note >}}
 Earlier releases of Python often order dictionary entries differently.
 {{< /note >}}
@@ -225,6 +227,7 @@ The loop has ended.
 {{< /output >}}
 
 Every Python Dictionary has a built-in method named `.values`. To use the `.values` method, append an empty arguments list `()`. This function supplies a *view object* containing all the values from the Dictionary without the corresponding keys. This method is useful when a program does not require the keys, only the Dictionary values. Although a view object is not actually a List, a `for` loop can process it in the same way. The `for` loop iterates through the view, supplying the next value in the view each time the loop runs.
+
 {{< note >}}
 A view object is dynamic because it changes when the underlying object changes. However, it is possible to cast a view object into a non-dynamic List.
 {{< /note >}}
@@ -252,6 +255,7 @@ There is also a corresponding `.keys()` method that generates a view object cont
 {{< /note >}}
 
 The built-in `items` method generates a view object containing all the key-value pairs from a Python dictionary. Each pair is a *tuple* object. The values in a tuple can be separated using a technique known as *tuple unpacking*. To unpack a tuple, assign the tuple to a sequence of variables, separated by commas. The number of variables must match the number of items in the tuple. To assign the values of the two-item tuple `myTuple` to the variables `x` and `y`, use the statement `x, y = myTuple`. This assigns the first value in `myTuple` to `x` and the second value to `y`.
+
 {{< note >}}
 A tuple is an immutable collection of objects separated by commas. To learn more about Python tuples, see the [Python data structures documentation](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences).
 {{< /note >}}
@@ -281,6 +285,7 @@ Built-in Python dictionary methods, like `items()` can be used to efficiently lo
 The Python `break` statement immediately breaks out of the innermost `for` loop. It is often used to handle unexpected conditions or errors. For example, a loop might read data from a file and write it to a database. If the database suddenly becomes inaccessible, a `break` statement can immediately end the loop. Otherwise, the program would repeatedly keep timing out. It is better to give prompt feedback that something is not working.
 
 In the `loop_break.py` example file, the `break` statement terminates the loop when the factorial of the iterator exceeds `5000`. Based on the `start` and `end` values, the program is expected to loop through the code block five times. However, it stops after three cycles because the factorial of `7` is greater than the guard value of `5000`.
+
 {{< note >}}
 This program imports the built-in Python `math` module and uses the module's `factorial` function.
 {{< /note >}}
@@ -320,6 +325,7 @@ The header for a `while` statement is somewhat simpler than the `for` loop heade
 A `while` loop does not have an iterator or a range and does not assign any variables. It does not lend itself to handling a sequential data structure. It can be thought of as an "indefinite" `if` statement. Upon each iteration, Python evaluates the Boolean expression. If it is `True`, the code block is executed. If it is `False`, the `while` loop terminates and control flow passes to the first non-indented line following its code block. The conditional expression can use any of Python's logical or comparison operators, including `==`, `<=`, or `and`. If the expression is `False` the first time through the `while` loop, the loop never runs at all.
 
 As long as the Boolean expression remains `True`, the `while` statement keeps looping. To avoid an infinite loop, one of two events must happen. Either the conditional expression must eventually evaluate as `False`, or a `break` statement must be used inside the code block. For the expression to change, the code block must change one of the values used in the expression.
+
 {{< note >}}
 To forcibly break out of an infinite loop in a Python program, enter `Ctrl-C`. This only works when running in interactive mode or running a Python program from the command line.
 {{< /note >}}

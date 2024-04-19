@@ -134,6 +134,7 @@ We'll use this tool throughout this guide; to install it, run:
     sudo npm install -g @vue/cli
 
 The Vue CLI will now be available globally on your workstation (because the `-g` flag was used).
+
 {{< note >}}
 If you're using [NVM](https://github.com/nvm-sh/nvm), you can install Vue CLI without `sudo`:
 
@@ -559,6 +560,7 @@ After creating `Star.vue` and `Summary.vue`, the application can be viewed in th
 ![Rating App - No Votes, Noninteractive](rating-app-no-votes-noninteractive.png "Rating App - No Votes, Noninteractive")
 
 Because there are no methods set on the components yet, it will not be interactive.
+
 {{< note >}}
 If you're not still running `npm run serve` in your terminal, you'll need to re-run it from inside your project.
 {{< /note >}}

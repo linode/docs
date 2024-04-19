@@ -78,7 +78,6 @@ Now that you're able to access WHM, you can manage your server, install software
 - [Create a New Account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/): A cPanel account can be created for each *website* or each *client*. Once created, you can log in to cPanel directly, which is a streamlined interface for managing each web application, databases, and email accounts for a domain.
 - [The cPanel Interface (Jupiter theme)](https://docs.cpanel.net/cpanel/the-cpanel-interface/the-cpanel-interface-jupiter/): Learn the main functions of the cPanel interface, shown with the default Jupiter theme enabled.
 
-
 {{< note >}}
 ***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
 {{< /note >}}

@@ -128,6 +128,7 @@ Orchestration tools: [Pulumi](/docs/guides/deploy-in-code-with-pulumi/), [Terraf
 ### GCP Prerequisites
 
 This section contains all of the preparation steps that you will need to complete on the Google Cloud Platform and on your GCP instance in order to migrate your disk images to Linode. At a high-level, you will disable Google specific daemons running on your GCP instance, create and export an image of your instance, and store the image in a GCP object storage bucket.
+
 {{< note >}}
 While it is possible to migrate a GCP disk image to Linode, due to differences in low-level system configurations between GCP and Linode, you may encounter some unexpected results that require additional troubleshooting steps. Continue with this method only if you are confident in your understanding of the Google Cloud Platform, [GCP IAM roles](https://cloud.google.com/iam/docs/understanding-roles), and [GCP disks and images](https://cloud.google.com/solutions/image-management-best-practices).
 {{< /note >}}
@@ -156,6 +157,7 @@ The [Google Cloud SDK](https://cloud.google.com/sdk/docs/) gives you access to t
 ### Create a GCP Object Storage Bucket
 
 When you create an image of your GCP instance you will temporarily store it in a [GCP object storage bucket](#create-and-export-a-disk-image). Follow the steps in this section to create the GCP object storage bucket.
+
 {{< note >}}
 Using the GCP object storage service will incur additional charges outside of the cost of your GCP instance.
 {{< /note >}}
@@ -278,6 +280,7 @@ If your GCP instance was not created with IP forwarding enabled, then you may se
 
 #### Stop Your GCP Instance
 In order to create your instance's disk image in the next section, you will first need to stop the instance. This will prevent any new data from being written to the persistent disk.
+
 {{< note >}}
 GCP recommends stopping your instance prior to creating a disk image, however, it is possible to keep the instance running while you create your image. See their [official documentation](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#prepare_instance_for_image) for details.
 {{< /note >}}
@@ -345,6 +348,7 @@ You may need to respond to some command-line prompts before the image is exporte
 
 ### Prepare Your Linode
 In this section you will create a new Linode, add a new disk and configuration profile in order to boot the Linode from your GCP instance's image, import the GCP image to your Linode, and finally, boot your Linode using your GCP instance's image.
+
 {{< note >}}
 You will be importing your GCP image onto a *raw* disk with the *direct disk* boot option. This will result in a working custom installation; however, it will not support advanced Linode features such as [disk resizing](/docs/products/compute/compute-instances/guides/resize/) or the [Backup Service](/docs/products/storage/backups/) by default. These features require an `ext4` formatted disk.
 

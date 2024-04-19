@@ -189,6 +189,7 @@ ssh dhcpv6-client
         sudo firewall-cmd --zone=public --add-service=https
 
     Visit your domain or public IP to test the Apache server and view the default Apache page.
+
 {{< note >}}
 Rename Apache's default welcome page. When this file is present it will take precedence over other configurations via the `LocationMatch` directive.
 

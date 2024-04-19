@@ -51,6 +51,7 @@ Go's [`net` package](https://golang.org/pkg/net/) provides a portable interface 
 
 ### net Package Functions
 Use the table below as a quick reference for some of the `net` package functions used throughout this guide. To view all types and functions included in the `net` package, see [Golang's official documentation](https://golang.org/pkg/net/).
+
 {{< note >}}
 All versions of `net.Dial()` and `net.Listen()` return data types that implement the [`io.Reader`](https://golang.org/pkg/io/#Reader) and [`io.Writer`](https://golang.org/pkg/io/#Writer) interfaces. This means that you can use regular [File I/O](https://golang.org/pkg/io/) functions to send and receive data from a TCP/IP connection.
 {{< /note >}}
@@ -68,6 +69,7 @@ All versions of `net.Dial()` and `net.Listen()` return data types that implement
 ## Create a TCP Client and Server
 
 In this section, you will create a generic TCP client and server using Go. After creating the client and server, you will run them to test their connection with each other.
+
 {{< note >}}
 The [netcat command line utility](https://en.wikipedia.org/wiki/Netcat) can be used to test TCP/IP client and server connections.
 {{< /note >}}

@@ -134,6 +134,7 @@ Once you select your MPM, you will need to change the values inside the configur
 To use the worker or event modules, replace `<IfModule mpm_prefork_module>` with `<IfModule mpm_worker_module>` or `<IfModule mpm_event_module>`, respectively.
 
 Next, you should alter the module settings you added in the previous step. To do this, you should take into consideration what each value does, and how best to change it. It is recommended to make incremental changes to your configuration settings and then monitor the effects.
+
 {{< note >}}
 After making alterations to the Apache configuration file, restart the service.
 

@@ -29,6 +29,7 @@ Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki
 This guide explains how to install the latest, stable, and prepackaged version of Git on GNU/Linux, Mac OSX, and Windows, using their respective package managers. Git can also be [compiled from source and installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#_installing_from_source) on any operating system.
 
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
+
 {{< note >}}
 This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account.
 {{< /note >}}

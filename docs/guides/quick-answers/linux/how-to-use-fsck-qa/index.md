@@ -22,6 +22,7 @@ On some systems, fsck runs automatically after an unclean shutdown or after a ce
 ## When to Use fsck
 
 Use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
+
 {{< note >}}
 To run this utility you will want to boot into rescue mode. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{< /note >}}

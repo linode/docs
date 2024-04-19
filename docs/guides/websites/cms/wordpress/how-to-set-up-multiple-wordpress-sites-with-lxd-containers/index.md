@@ -32,6 +32,7 @@ However, within a VM we can further install multiple WordPress instances, each i
 ## In this Guide
 
 This guide explains how to set up WordPress in LXD system containers. This demonstration shows how to host multiple and separate WordPress websites on a single server.
+
 {{< note >}}
 A 2GB Linode shared instance running Ubuntu 20.04 was used to test the instructions in this guide. A different server running a different operating system can be used, but you may need to adjust some instructions. In particular, the instructions for installing LXD may be different.
 {{< /note >}}
@@ -57,6 +58,7 @@ The guide is ordered as follows:
 1. Finally, you [complete the setup using the WordPress installation wizard](#complete-the-wordpress-installation-wizard).
 
 1. At the end, the guide presents how to [troubleshoot some common errors that you may run into during set up](#troubleshooting).
+
 {{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
 {{< /note >}}
@@ -416,6 +418,7 @@ If your container is `nginx1`, then run the following command to view the curren
        lxc info nginx1
 
 The output should be similar the following. The current memory use in this example is 164MB while the peak memory use was a bit over 300MB.
+
 {{< note >}}
 Resources:
   Processes: 30

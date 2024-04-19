@@ -42,6 +42,7 @@ Local transfer options are Bluetooth, USB or some other external media. macOS ca
 ### Android
 
 There are two main options for an Android OpenVPN client. The first is *OpenVPN Connect* on [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn), the official client from OpenVPN Technologies, Inc., the parent company behind OpenVPN. The second option is *OpenVPN for Android* on both [Google Play](https://play.google.com/store/apps/details?id=de.blinkt.openvpn) and [F-droid](https://f-droid.org/packages/de.blinkt.openvpn/). The two clients are similar but OpenVPN for Android is open source, more feature-rich, and usually updated more often so we'll use it for this guide.
+
 {{< note >}}
 If you have a Windows computer or a Linux computer with the package `gvfs-backends` installed, you can connect the device by USB and it will be visible in the system's file manager as an external USB device. If you have macOS, you need to first install [Android File Transfer](https://android.com/filetransfer/).
 {{< /note >}}
@@ -78,6 +79,7 @@ If you have a Windows computer or a Linux computer with the package `gvfs-backen
 ### iOS
 
 *OpenVPN Connect* is used to manage OpenVPN connections in Apple's iOS for iPhones and iPads. We'll use iTunes to transfer the file to the iOS device from a computer running macOS or Windows. A Linux computer with the package `gvfs-backends` can mount the iOS device as external storage.
+
 {{< note >}}
 The following example was performed on iOS 9.0.2 and macOS 10.10 using iTunes 12 and OpenVPN Connect 1.0.5.
 {{< /note >}}

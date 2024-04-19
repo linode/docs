@@ -20,6 +20,7 @@ Recent enhancements to Python make static typing an option. Alternative syntaxes
 ## What is Mypy?
 
 Mypy is a tool used for static-type checking Python code. Python’s founder, [Guido van Rossum](https://gvanrossum.github.io/Resume.html), has worked for several years on Mypy. Mypy’s validation of statically typed Python can result in programs being more correct, readable, refactorable, and testable. If you want to use Python, and you want the advantages of static typing, then consider using Mypy. Alternatives to Mypy such as [Pyre](https://pyre-check.org/) exist, but Mypy is currently more popular in the Python community.
+
 {{< note >}}
 Statically typed languages have the reputation of being more difficult to learn. Converting existing Python code to statically typed code may be intimidating since many lines of code might need to change. This guide illustrates how to adapt an existing Python project to incrementally use Mypy and static typing.
 {{< /note >}}
@@ -103,6 +104,7 @@ Found 1 error in 1 file (checked 1 source file)
 {{</ output >}}
 
 The first line `def legal_name(first: str, last:str) -> str:` specifies that the function `legal_name()` expects arguments of type `string` and returns a value of type `string`. Mypy is able to detect that the function call's second argument does not fulfill the type annotation requirements. Without the type annotations, Mypy does not detect any issues with an argument of type `int`.
+
 {{< note >}}
 Use mypy's `--disallow-untyped-defs` command-line option, to enforce static typing on all function definitions. This option may be too strict if your Python project works with third-party libraries that do not use type annotations.
 {{< /note >}}

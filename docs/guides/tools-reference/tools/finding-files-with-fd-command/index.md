@@ -41,6 +41,7 @@ The `fd` command is available as part of the default packages on most Linux dist
 ### Ubuntu / Debian
 
 For release 19.04 and higher of Ubuntu, the fd application is available through APT. Ubuntu already has a package named `fd`, so the `fd` binary is referred to as `fdfind`. An alias must be added to use the `fd` command.
+
 {{< note >}}
 For information on installing fd on earlier releases of Ubuntu, see [*the fd GitHub page*](https://github.com/sharkdp/fd#installation).
 {{< /note >}}

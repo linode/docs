@@ -14,6 +14,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ## What Causes Merge Conflicts?
 
 A *merge conflict* occurs when two branches, in the process of being merged, include overlapping changes in a file. Git refers to this type of conflict as a *content conflict*. Another cause for a merge conflict is when one of the branches being merged modifies a file or directory and another branch deletes it. This type of merge conflict is referred to as a *delete/modify* conflict. A delete/modify merge conflict often occurs when a file is moved or renamed. Git has no way to distinguish between moving and renaming a file and from deleting a file. If a file is modified in one branch and moved in another branch, Git has no way to propagate the changes from the original file to the moved copy of the file.
+
 {{< note >}}
 If a file is deleted in one branch and isn’t modified in the other, the file is deleted during the merge. Since the file has been moved rather than deleted, this is typically the behavior you want.
 {{< /note >}}
@@ -114,6 +115,7 @@ Sometimes when resolving a merge conflict, you might inadvertently create new an
     git merge --abort
 
 This command brings your branch back to where it was before you started the merge. After aborting your merge, you can prevent conflicts by making additional changes to your files before you restart the merge. For example, rename a file in your branch to match its counterpart in the upstream branch. This prevents a delete/modify conflict.
+
 {{< note >}}
 Remember to commit or [stash](https://git-scm.com/docs/git-stash) any uncommitted changes in your working branch prior to starting a merge. Otherwise, `git merge --abort` may have trouble reconstructing the pre-merge state.
 {{< /note >}}

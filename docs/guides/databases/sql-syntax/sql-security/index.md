@@ -29,6 +29,7 @@ There are two different types of permissions that can be assigned to roles, user
 ## Implementation of Users, Groups, Roles, and Permissions
 
 When it comes to the management of users, groups, roles, and permissions, the concepts stated in the previous sections are quite uniform across SQL-based database management systems. What may differ are the names of commands and the syntax used by different SQL database implementations.
+
 {{< note >}}
 The examples below use Microsoft SQL Server syntax. All commands should be executed from the command line. The examples also assume that all server security hardening has already been implemented.
 {{< /note >}}

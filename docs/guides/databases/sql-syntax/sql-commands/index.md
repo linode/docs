@@ -49,6 +49,7 @@ From the command line, use the `CREATE TABLE` command followed by the name of th
     );
 
 The parenthesis encloses the table data, starting with a column that labels each row’s data. The next column indicates the data type that this row holds. `CHAR` indicates a fixed-length string data type and `VARCHAR` indicates a variable-length string data type. In the final column, the `NOT NULL` attribute ensures that a record cannot be added to the table if any of the `NOT NULL` columns do not have data associated with them.
+
 {{< note >}}
 The `CREATE TABLE` statement is delimited with a trailing semicolon (;), although it is possible that some commercial relational database systems may not require that delimiter.
 {{< /note >}}
@@ -79,6 +80,7 @@ Dropping a table deletes all the data in the table.
 ### How to Insert Data Into a Table in SQL
 
 To insert the data into the table, use the SQL `INSERT INTO` statement. To call this command, provide the table name and the list of row names (in parenthesis) that you want to insert the data into. This is followed by the `VALUES` keyword and the actual values (in parenthesis) that you wish to insert. The values are inserted into the rows in order of which they are called.
+
 {{< note >}}
 - SQL commands can be broken up across lines. The end of the SQL command is delimited by a semicolon (`;`).
 - The character data is delimited by an opening and closing apostrophe (`‘`), whereas numeric data is not.

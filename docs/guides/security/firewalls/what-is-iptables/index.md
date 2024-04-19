@@ -42,6 +42,7 @@ There are 5 main chains in iptables:
   - Forward: Forwards incoming packets from their source to destination (routing).
   - Prerouting: After the packet enters the network interface.
   - Postrouting: Before the packet leaves the network interface after the routing decision has been made.
+
 {{< note >}}
 The filter table is responsible for blocking or allowing connections and is the default filter used in iptables.
 {{< /note >}}

@@ -112,6 +112,7 @@ This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 3.  Update `/boot/grub/menu.lst` to use your newly built kernel and `initramfs` file.
 
 3.  Edit your Linode's configuration profile back to the previous setting.
+
 {{< note >}}
 Remember to check [Glish](/docs/products/compute/compute-instances/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 {{< /note >}}

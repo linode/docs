@@ -31,6 +31,7 @@ The `ip` command is part of the Linux [iproute2](https://en.wikipedia.org/wiki/I
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -47,6 +48,7 @@ Each of the Linux `ip` commands acts upon one or more *ip objects*. An ip object
 -   **rule (ru)**: This is a policy rule for routing packets. It controls the precedence of the routes in the routing database.
 
 Other ip objects include `addrlabel`, `l2tp`, `mroute` (for multicast route), `tunnel`, and `xfrm`, which is used by the *Internet Protocol Security* (IPsec) protocol. See the [Ubuntu ip documentation](https://manpages.ubuntu.com/manpages/jammy/man8/ip.8.html) for more information about the remaining ip objects.
+
 {{< note >}}
 Some of the objects in the `ip` command do not map perfectly to the terminology used in more casual discussions about networking. For instance, the term link often refers to a connection between two systems. The `link` ip object is usually called an interface. To avoid confusion, use the precise names of the ip objects when discussing the `ip` command.
 {{< /note >}}
@@ -111,6 +113,7 @@ Here are some of the more useful `ip` options.
 For a more thorough explanation of all `ip` options, see the [man page for the ip command](https://manpages.ubuntu.com/manpages/jammy/man8/ip.8.html).
 
 Because the `ip` command contains so many options, the following examples focus on some of the more common use cases.
+
 {{< note >}}
 Changes made using the `ip` command are not persistent across a system reboot. To automatically configure networking information, add the information to a startup script. Each distribution also provides a method to make networking changes using its system configuration files.
 {{< /note >}}
@@ -318,6 +321,7 @@ The `route` object allows users to view the routing tables. It is also used to a
 ### How to View Routing Information
 
 To view all routes installed in the routing database, use the `ip route show` command.
+
 {{< note >}}
 Many servers access the internet through a default gateway, resulting in relatively few routes. Even if `ip route show` only displays one or two routes, this does not usually indicate a problem.
 {{< /note >}}
@@ -393,6 +397,7 @@ fe80::1 dev eth0 lladdr 00:00:0c:9f:f0:02 router STALE
 ### How to Add and Delete Neighbor Information
 
 ARP information can be added and removed using `ip neigh add` and `ip neigh delete` commands.
+
 {{< note >}}
 The `delete` command is useful for flushing stale ARP or NDISC information. The `neigh add` command can add a permanent ARP entry between two nodes that are continually communicating and have fixed IP and MAC addresses. However, a static ARP entry can cause problems if the information ever changes. Use caution when adding any entries to these tables.
 {{< /note >}}

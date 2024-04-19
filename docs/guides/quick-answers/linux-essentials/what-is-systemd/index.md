@@ -21,6 +21,7 @@ systemd is a Linux initialization system and service manager that includes featu
 systemd is the default init system for the major Linux distributions but is backwards compatible with SysV init scripts. SysVinit is an initialization system which predates systemd and uses a simplified approach to service startup. systemd not only manages system initialization, but also provides alternatives for other well known utilities, like cron and syslog. Because systemd does several things within the Linux user space, many have criticized it for violating [the Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy), which emphasizes simplicity and modularity.
 
 This guide provides an introduction to systemd by taking a closer look at systemd units. The [Mount Units](/docs/guides/what-is-systemd/#mount-units) section will analyze a unit file that is shipped by default with systemd on an Ubuntu 18.04 system, while the [Timer Units](/docs/guides/what-is-systemd/#timer-units) section will create a custom unit file on the same system.
+
 {{< note >}}
 All examples in this guide were created with a Linode running Ubuntu 18.04.
 {{< /note >}}
@@ -152,6 +153,7 @@ A mount unit file must contain a `[Mount]` section. The example mount unit file 
 - The `What` option, which can be a partition name, path or UUID to mount.
 - The `Where` option declares an absolute path to a mount point. If the mount point does not exist, it will be created.
 - The `Type` option denotes the file system type.
+
 {{< note >}}
 The official systemd manual notes that configuring mount points through `/etc/fstab` is the recommended approach. systemd has a `system-fstab-generator` that translates the information in the fstab file into systemd mount and swap units at runtime.
 {{< /note >}}
@@ -169,6 +171,7 @@ You will need three separate files:
 - A script that will execute and create a backup for a MySQL database located in the `/usr/local/bin/` directory.
 - A service unit file, that will handle running the script.
 - A timer unit file, which will define when and how often the service will initialize.
+
 {{< note >}}
 Your script, service unit file, and timer unit file should all have `644` read and write permissions.
 {{< /note >}}

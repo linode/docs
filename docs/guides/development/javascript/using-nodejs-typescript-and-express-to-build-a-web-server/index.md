@@ -26,6 +26,7 @@ This guide shows you how to use TypeScript with two tools that are commonly used
 ## How to Set Up the TypeScript, Node.js, and Express Development Environment
 
 The majority of the steps in this guide are performed on your computer's local development environment. The following sections show you how to install TypeScript, Node.js, Express, and package dependencies on your computer. Any additional configuration steps required by each tool are also covered.
+
 {{< note >}}
 If you do not have Node.js and the node version manager (nvm) installed on your computer, follow our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide. The steps in this guide require a minimum Node.js version of 13.0.0.
 {{< /note >}}

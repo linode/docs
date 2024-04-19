@@ -34,6 +34,7 @@ This guide demonstrates:
 ## Before You Begin
 
 This guide assumes that you have access to a server running Ubuntu 20.04 that you can install the FTP server on and upload files to. To create a server on Linode, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Be sure to [add a limited Linux user](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to issue the commands in this guide from.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}

@@ -87,6 +87,7 @@ When the client receives the code, it asks the service's authorization server fo
 ### Step 3: Client and Resource Server
 
 In the final phase of the negotiation, the client presents the access token to the resource server, and requests access to the protected resource. If the access token is still valid, the server provides the client access to the account within the scope of the access grant.
+
 {{< note >}}
 Single-page applications, including those generated entirely through JavaScript, cannot securely maintain a secret client identity. In this case, the *Proof Key for Code Exchange* (PKCE) extension is used to dynamically generate a secret key for each request. There are some additional concerns for mobile applications. All applications can use PKCE to eliminate the possibility of the code being intercepted and to enhance security. Consult the [*OAuth2 specification*](https://oauth.net/2/) for more details.
 
@@ -98,6 +99,7 @@ Devices without a keyboard, such as smart televisions, typically implement OAuth
 Links to popular OAuth2 libraries are available in a variety of languages, including JavaScript, Python, and PHP, courtesy of the [*OAuth2 libraries directory*](https://oauth.net/code/). These libraries are divided into client libraries and server libraries. Client libraries are used by applications to access protected account services. There are also links to open source and commercial OAuth providers. It is best to use a library recommended by the OAuth site because other implementations might have security concerns or coding flaws.
 
 Due to a large number of libraries, this guide focuses on the high-level task of selecting, installing, and using an OAuth2 client library. In this section, a sample Python library is used as an example. Pseudocode is shown for each step, with a more detailed summary of the code at the end of this section. Some basic knowledge of Python is necessary to understand the code samples.
+
 {{< note >}}
 You must register the application with the service before accessing any account information. You must also register and submit a URL to redirect client traffic. After approving your registration, the application provides you with a client ID and secret. All applications must use HTTPS when transmitting and receiving OAuth2 messages.
 {{< /note >}}

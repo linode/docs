@@ -32,6 +32,7 @@ This guide will explore the options available when running `netstat` on Linux. `
 - [Multicast group membership](#multicast-group-membership)
 
 A list of the [command line options](#command-line-options) can be found below, and some [advanced examples of using netstat with the AWK command](#using-awk-to-process-netstat-output) will be introduced at the end of the guide.
+
 {{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -362,6 +363,7 @@ tcp6       0      0 [::]:https              [::]:*                  LISTEN      
 ### Show the PID and Program Name
 
 The `-p` option displays the process ID and program name that corresponds to a network connection or Unix socket.
+
 {{< note >}}
 `netstat` requires root privileges to show the PID and program name of processes that are not owned by your user.
 {{< /note >}}

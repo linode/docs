@@ -53,6 +53,7 @@ Some of Moodle's advantages are as follows:
 1.  To properly use Moodle, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
 1.  **(Optional)** A virtual host for the domain is not strictly required, but is recommended.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -60,6 +61,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Installing the Moodle Prerequisites
 
 In addition to a fully-configured LAMP stack, Moodle requires a few extra PHP modules and other packages. To install the additional components, follow these instructions.
+
 {{< note >}}
 Ubuntu 22.04 supports PHP 8.1 by default. However, Moodle is not compatible with PHP 8.1, so release 7.4 must be used instead. If PHP 8.1 is already installed on the Linode, you must install PHP 7.4 and configure it as the active release of PHP. PHP 7.3 is also supported, but 7.4 is highly recommended. See the [Moodle and PHP page](https://docs.moodle.org/dev/Moodle_and_PHP) for compatibility information.
 

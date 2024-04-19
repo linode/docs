@@ -26,6 +26,7 @@ The GitLab application has a number of services it depends on, including Postgre
 ### Choose An Appropriately Sized Linode
 
 GitLab is a resource-intensive application. To get the most out of GitLab, we recommend a Linode with at least 8GB of memory and at least 2 CPU cores. For more information on system requirements, visit the [GitLab Hardware Requirements page](https://docs.gitlab.com/ce/install/requirements.html#hardware-requirements).
+
 {{< note >}}
 This guide was written for and tested with Ubuntu 18.04. You may be able to adapt this guide to other operating systems supported by Docker. When following this guide under another OS, use the Docker [installation instructions](https://docs.docker.com/install/) for that OS.
 {{< /note >}}

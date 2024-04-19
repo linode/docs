@@ -36,6 +36,7 @@ Each DNS server maintains a list of mappings between domain names and their asso
 Typically a DNS responds to a request by retrieving information from its cache. The cache is updated when updates are received. If the domain name entry for a particular domain has been recently changed, the server might not have received the updated information yet. In this event, the `nslookup` command still receives the outdated information from the DNS. This allows users to see what the local DNS record points to and determine whether the DNS update has propagated fully.
 
 The `nslookup` command typically sends its request to the local DNS server. However, an alternate DNS can be specified, such as the root system within the DNS zone. Not all servers are accessible because many internal DNS systems are private and do not respond to external requests. Therefore, private DNS servers don't respond to external `nslookup` requests.
+
 {{< note >}}
 In actual practice, there are two types of DNS services. A recursive DNS service, also known as a *resolver*, maintains a cache of the domain name mappings, but does not process any updates.
 
@@ -60,6 +61,7 @@ A DNS server maintains several different types of domain records, covering topic
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -339,6 +341,7 @@ Address: 2620:0:862:ed1a::1
 {{< /output >}}
 
 For more information on the list of available `nslookup` options, consult the [Linux man page](https://manpages.ubuntu.com/manpages/bionic/man1/nslookup.1.html).
+
 {{< note >}}
 Most DNS requests are sent and received using TCP port 53. To request DNS information from a different port, use the `-port` flag, for example `nslookup -port=55  wikipedia.org`. In most cases DNS servers are configured to refuse these requests, resulting in the error message `communications error to 127.0.0.53#55: connection refused`.
 {{< /note >}}
@@ -346,6 +349,7 @@ Most DNS requests are sent and received using TCP port 53. To request DNS inform
 ## How to Use nslookup for Reverse Lookups
 
 Although `nslookup` can find the IP address for a domain, it can also reveal the domain mapped to an IP address. This is referred to as a *reverse DNS* lookup. To perform a reverse lookup, apply the `nslookup` command to the IP address under investigation. The following example illustrates how to find the domain that is mapped to the address `91.198.174.192`.
+
 {{< note >}}
 The output displays the IP address in reverse order, so `91.198.174.192` is transposed to `192.174.198.91` in the display. The octets are presented in reverse order due to complex technical reasons involving the `in-addr.arpa` domain tree specification.
 {{< /note >}}

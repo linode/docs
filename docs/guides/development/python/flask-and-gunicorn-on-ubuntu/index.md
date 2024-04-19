@@ -57,6 +57,7 @@ In this guide you complete the following:
 ## Copy the Flask App to Linode
 
 After creating the Flask application in the local development environment, you are now ready to deploy it to a production environment. You need to copy the local Flask application code to the Linode. You can accomplish this by either [cloning the GitHub project to the Linode](#clone-your-app-from-source-control) using Git or by using the [secure copy method](#secure-copy-your-app-from-a-local-machine) to directly transfer the application files to the Linode. This section provides steps for both options.
+
 {{< note >}}
 This guide's examples transfer the Flask application files to the Linode's `/home` directory. If you prefer, you can store the application files in a different directory, however, ensure you run the examples in the directory of the application.
 {{< /note >}}
@@ -146,6 +147,7 @@ server {
 ### Install Python and Packages
 
 To run the Flask application, you need to install Python, Flask, pip3 and any other required package dependencies on the Linode.
+
 {{< note >}}
 This guide was created using Python 3.6.8
 {{< /note >}}

@@ -26,6 +26,7 @@ Before we begin with the Drupal installation, there are few other guides that pr
 - If you want more information about installing [Apache](/docs/web-servers/apache/) or [the MySQL database](/docs/databases/mysql/), our guides provide some additional information regarding these dependencies.
 
 With these dependencies installed and running, we're ready to begin installing the Drupal content management system. We assume that you have a working SSH connection to your server and database credentials to access your database server.
+
 {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

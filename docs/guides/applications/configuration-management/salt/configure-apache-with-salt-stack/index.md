@@ -25,6 +25,7 @@ Salt is a powerful configuration management tool. In this guide you will create 
 You will need at least two Linodes with Salt installed. If you have not already, read our [Getting Started with Salt - Basic Installation and Setup Guide](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) and follow the instructions for setting up a Salt master and minion.
 
 The following steps will be performed on your Salt master.
+
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}

@@ -18,6 +18,7 @@ aliases: ['/uptime/analytics/google-analytics-on-wordpress/']
 Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.
 
 This guide provides three ways to add Google Analytics to WordPress: By directly adding the analytics code to your theme and two plugin options. Prior to using this guide, you should have completed our [Manage Web Content with WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide and have a fully configured WordPress website set up.
+
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -43,6 +44,7 @@ You are now set up with Google Analytics and can decide how to proceed with addi
 ## Add Google Analytics Through a Theme
 
 WordPress uses PHP includes, so adding a Google Analytics code is as easy as altering a single file in your WordPress theme.
+
 {{< note >}}
 This guide assumes you have configured your LAMP server as described in our guides, with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
 {{< /note >}}

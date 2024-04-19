@@ -26,6 +26,7 @@ A common problem when working with Salt's state files is the need access to sens
 ## Salt Pillar
 
 A primary method for storing secrets in Salt is to keep them in Salt's [*Pillar*](https://docs.saltproject.io/en/latest/topics/pillar/) feature. Salt Pillar is designed to maintain secrets and other variable information in a single location (generally, on the Salt master) and then deliver that information to specific minions. If you separate your secrets out from your states and into pillar files, you can ignore those files in your version control system.
+
 {{< note >}}
 In addition to storing secrets, Salt Pillar can also maintain non-sensitive data; for example, the versions of the packages you want to install on your minions. So, you may still want to track some pillar files in version control.
 
@@ -103,6 +104,7 @@ This approach requires that the GPG secret key is stored on your Salt master. It
 Salt comes with a database interface called *SDB* that was initially created to store non-minion-specific data, such as passwords. It was designed to connect to a package like Salt's [*keyring*](https://docs.saltproject.io/en/latest/ref/sdb/all/salt.sdb.keyring_db.html) module, but other options are available, such as [Consul](https://docs.saltproject.io/en/latest/ref/sdb/all/salt.sdb.consul.html) and [Vault](https://docs.saltproject.io/en/latest/ref/sdb/all/salt.sdb.vault.html#module-salt.sdb.vault).
 
 These databases are set up using a configuration profile in `/srv/salt/master.d`. To access data, you supply an `sdb://` url, such as `password: sdb://mysecrets/mypassword`. For more information on SDB, reference the [Salt SDB documentation](https://docs.saltproject.io/en/latest/topics/sdb/).
+
 {{< note >}}
 Salt also provides a module that allows [pillar data to be stored in Vault](https://docs.saltproject.io/en/latest/ref/pillar/all/salt.pillar.vault.html), as well as an execution module that includes [functions to interact with Vault](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.vault.html#vault-setup).
 {{< /note >}}

@@ -51,6 +51,7 @@ Unless mentioned otherwise, all the database commands demonstrated in this guide
     {{< /output >}}
 
 As you can see, the `BinaryCol` data is padded to the maximum column size with trailing zeros, but the `VarBinaryCol` data column is not. This is because the columns of `VarBinaryCol` are defined as variable length.
+
 {{< note >}}
 The maximum size (length) of Binary and VarBinary data types vary depending on the database implementation. They're generally quite large (over 8,000 bytes). Some database implementations have binary extensions to these core data types that can store data in sizes of multi-gigabytes.
 {{< /note >}}
@@ -202,6 +203,7 @@ The columns `LastName` and `Firstname` are declared type `Varchar`. This allows 
 ## SQL Date and Time Data Type
 
 The `DATETIME` data type is used to store the date and time values in the database. Values for the `DATETIME` data type use four bytes of storage for the date portion and four bytes for the time portion. The time portion of this data type specifies time with a granularity down to the number of milliseconds after midnight. Precision for this data type ranges from "January 1, 1753", to "December 31, 9999", with an accuracy of 3.33 milliseconds.
+
 {{< note >}}
 If you assign only the date value to a `DATETIME` data type column or variable, the time portion defaults to midnight.
 {{< /note >}}

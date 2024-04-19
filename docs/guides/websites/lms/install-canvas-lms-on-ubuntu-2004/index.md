@@ -45,6 +45,7 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
     You can run some of the components of your Canvas installation on separate machines to improve performance if needed. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more on what components can be installed independently. Be aware that this approach requires some additional configuration to enable communications between the components.
 
 1. Replace `example.com` in this guide with your server's domain name. You can complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name for your Linode server.
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
