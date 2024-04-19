@@ -3,7 +3,7 @@ description: "Deploy BeEF on a Linode Compute Instance. This provides you with a
 keywords: ['security','vulnerability','penetration testing']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
-modified: 2022-03-08
+modified: 2024-04-16
 modified_by:
   name: Linode
 title: "Deploy BeEF through the Linode Marketplace"
@@ -32,7 +32,6 @@ authors: ["Linode"]
 
 ### BeEF Options
 
-- **BeEF Password** *(required)*: Enter a *strong* password to use for the BeEF admin user.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}
@@ -53,22 +52,10 @@ authors: ["Linode"]
         ```command
         cat /home/$USERNAME/.credentials
         ```
-1. The completion message contains the *Endpoint* URL, as shown in the example below.
-
-    ```output
-    *********************************************************
-    Akamai Connected Cloud Beef Marketplace App
-    App URL: https://192-0-2-1.ip.linodeusercontent.com:3000/ui/panel
-    Credentials File: /home/$USERNAME/.credentials
-    Documentation: https://www.linode.com/marketplace/apps/linode/beef/
-    *********************************************************
-    ```
-
-1. Navigate to this URL in a web browser to display the login prompt.
 
     ![Screenshot of the BeEF login prompt](beef-login-prompt.png)
 
-1. Enter `beef` as the username and use the password you entered into the *BeEF Password* field when you created the Instance.
+1. Enter `beef` as the username and use the password in the /home/$USERNAME/.credentials file.
 
     {{< note >}}
     If you forget this password, run the following command when logged in through Lish or SSH:
