@@ -6,8 +6,7 @@ contributors: ["Linode"]
 published: 2019-07-29
 keywords: ["kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/kubernetes/','/applications/containers/kubernetes/']
+aliases: ['/kubernetes/','/applications/containers/kubernetes/','/guides/calico-secure-lke/']
 show_in_lists: true
-aliases: ['/guides/calico-secure-lke/']
 ---
 
