@@ -5,7 +5,7 @@ description: "This guide reviews how to replicate object storage bucket contents
 keywords: ['object storage','rclone','replication','cross-region','resilience','data replication','replicate','s3','clone']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Dutton","Brandon Kang"]
-published: 2024-04-18
+published: 2024-04-19
 modified_by:
   name: Linode
 
@@ -13,7 +13,7 @@ modified_by:
 
 Cross-region data replication has numerous potential benefits, including increased data availability, resilience and redundancy, improved application performance, meeting compliance needs, and more. With Object Storage, one way to achieve this is by using an open source file copying utility such as [rclone](https://rclone.org/) to replicate data across buckets in different regions.
 
-This guide outlines benefits and considerations for cross-region replication of Object Storage buckets, as well as provides ready-to-use scripts for replicating bucket contents from one bucket to another. Also included in this guide are steps to automate a syncing schedule with crontab after an initial sync with rclone.
+This guide outlines benefits and considerations for cross-region replication of Object Storage buckets, as well as provides ready-to-use scripts for replicating bucket contents from one bucket to another.
 
 ## Benefits of Data Replication Across Regions
 
@@ -31,25 +31,41 @@ This guide outlines benefits and considerations for cross-region replication of 
 
 - **Large file counts may take longer.** The solution in this guide uses the rclone utility to sync contents from one bucket to another, and the time it takes to complete depends on the amount of files being synced.
 
-- **The method in this guide syncs bucket contents automatically once.** In order to sync contents again, you may need to run the sync again manually or set up automated syncing (see [Set Up Recurring Syncs With Crontab](#set-up-recurring-syncs-with-crontab)).
+- **The method in this guide syncs bucket contents automatically once.** After the sync occurs, multiple buckets can be managed congruently to ensure consistency between bucket contents. This can be achieved by uploading and deleting objects at the same time via the Linode CLI, the Linode API, or other [Object Storage compatible tools](/docs/products/storage/object-storage/get-started/#object-storage-tools) such as s3cmd.
 
 - **One-way syncing.** The method in the provided scripts runs a one-way sync from a source bucket to a destination bucket.
 
 ## Failover With Akamai CDN
 
-The diagram below illustrates how regular replication of Object Storage data from one bucket to another has the ability to achieve a fail-over setup with Akamai’s CDN as a client front end. Using the failover functionality of [Global Traffic Manager (GTM)](https://www.akamai.com/products/global-traffic-management), client requests can be directed to, or cached from, alternative regions in the event the primary region is unavailable:
+The diagram below illustrates how replication of Object Storage data from one bucket to another has the ability to achieve a fail-over setup with Akamai’s CDN as a client front end. Using the failover functionality of [Global Traffic Manager (GTM)](https://www.akamai.com/products/global-traffic-management), client requests can be directed to, or cached from, alternative regions in the event the primary region is unavailable:
 
 1.  Akamai's CDN running Global Traffic Manager.
 
 2.  An Object Storage bucket located in the Osaka data center is used as the primary origin for Akamai's CDN to source and cache data.
 
-3.  To reduce syncing latency, a Compute Instance scheduled to perform a recurring rclone sync between buckets is also located in Osaka (the same as the origin bucket).
+3.  A second Object Storage bucket in the Washington, D.C. data center is set up as a destination bucket for the one-way rclone sync.
 
-4.  A second Object Storage bucket in the Washington, D.C. data center is set up as a destination bucket for the one-way rclone sync.
+4.  A Compute Instance running rclone performs a one-time, one-way sync between buckets. The instance is also located in Osaka (the same as the origin bucket) to reduce latency.
 
-5.  As needed, Global Traffic Manager can redirect to the second bucket in Washington, D.C. since it is being regularly synced with the primary bucket in Osaka.
+5.  As needed, Global Traffic Manager can redirect to the second bucket in Washington, D.C.
 
-![Failover with OBJ Replication](OBJ_replication_architecture.jpg "Failover with OBJ Replication")
+![Failover with OBJ Replication](OBJ_replication_architecture_edit.png "Failover with OBJ Replication")
+
+Consider the following CDN-level logic when implementing a failover setup:
+
+-   **Connection timeouts:** Access requests from the CDN to the bucket cannot be completed or take too long to complete.
+
+-   **404 responses:** The bucket can be accessed, but no files are present.
+
+-   **Zero bye content length:** A bucket is accessible, files are present, but file uploads can not be, or were not, completed.
+
+-   **Other negative responses:** Other 4XX permission denied or client issues, or 5XX server issues.
+
+{{< note title="Best Practice: Managing Multiple Buckets" >}}
+Storage owners are responsible for their own bucket management. To ensure continuity between bucket contents, additional buckets should be integrated with your system and managed similarly after an initial sync with the primary bucket.
+
+For example, if an application was previously set up to send and store logs to a single, primary bucket, the application should then be reconfigured to send logs to all buckets for ongoing redundancy.
+{{< /note >}}
 
 ## Replicating Bucket Contents Across Regions
 
@@ -141,9 +157,9 @@ $RCLONE_SYNC_COMMAND
 
 ## Alternative Script Deployment Methods
 
-Another method for running the rclone sync is to run the script functions automatically on a newly deployed Compute Instance. You can achieve this by using either our Metadata (recommended) or StackScripts services.
+Another method for running the rclone sync is to run the script functions automatically on a newly deployed Compute Instance. You can achieve this by using either our [Metadata](/docs/products/compute/compute-instances/guides/metadata/) (recommended) or [StackScripts](/docs/products/tools/stackscripts/) services.
 
-The first method below uses user data with our Metadata service during instance creation, and the second method uses StackScripts to create the new instance. In both methods, the script functions are run once automatically upon initial boot. To set up an automatic syncing schedule, see [Set Up Recurring Syncs With Crontab](#set-up-recurring-syncs-with-crontab).
+The first method below uses user data with our Metadata service during instance creation, and the second method uses StackScripts to create the new instance. In both methods, the script functions are run once automatically upon initial boot.
 
 ### Deploying with Metadata
 
@@ -308,64 +324,10 @@ The first method below uses user data with our Metadata service during instance 
 
 1.  Select **Create Linode**.
 
-## Set Up Recurring Syncs With Crontab
-
-{{< note type="alert" title="Before setting up a syncing schedule" >}}
-If you have a large amount of objects (over __), do not set up frequent cron jobs for recurring syncs as it could result in high, unexpected storage costs, negatively impact Akamai infrastructure, or negatively affect other customers.
-{{< /note >}}
-
-To run recurring, automated syncs using the replication script, you can configure the crontab utility to call on the script on a set schedule with cron jobs. To do this, you need to add a cron job entry to your system's crontab file located at `/etc/crontab`.
-
-Crontab uses five “fields” to determine the frequency of the job it needs to run. In order, the fields are defined by the following values:
-
-- Minutes (0-59)
-- Hours (0-23)
-- Days of the month (1-31)
-- Months (1-12)
-- Days of the week (0-6)
-
-### Creating the Crontab Entry
-
-1.  While logged into your Compute Instance, navigate to the directory where your script is located, and make the file executable. Replace {{< placeholder "SCRIPT_FILE.SH" >}} with the name of your script:
-
-    ```command
-    sudo chmod +x {{< placeholder "SCRIPT_FILE.SH" >}}
-    ```
-1.  Open your crontab file with a text editor. The below command opens the file with nano:
-
-    ```command
-    sudo nano /etc/crontab
-    ```
-1.  Add a cron job entry to the file.
-
-    Below is a sample entry that sets up a cron job for a weekly sync at 8:00 PM every Monday. `00` represents minute zero, `20` represents 8:00 PM (hour 20 on the 24 hour time scale), the first asterisk (`*`) is a placeholder for day values, the second asterisk (`*`) is a placeholder for month values, and the `1` represents Monday on a scale where Sunday is 0.
-
-    In the entry below, adjust your time frequency as needed, and replace the following:
-
-    - Replace {{< placeholder "USER" >}} with a system user that has permission to run the script
-    - Replace `/path/to/file/` with the absolute file path to your script
-    - Replace {{< placeholder "SCRIPT_FILE.SH" >}} with the full name of your script
-
-    ```command
-    00 20 * * 1       {{< placeholder "USER" >}}    /path/to/file/{{< placeholder "SCRIPT_FILE.SH" >}}
-    ```
-
-1.  Save your changes, and exit the text editor.
-
-1.  The script will run according to your set schedule.
-
-{{< note title="Tip: Allow time in between syncs" >}}
-Rclone reanalyzes bucket contents each time a sync job is run. To ensure ample amount of time for syncs to occur, it is not recommended to perform syncs too soon after one another.
-
-To ensure the health of our infrastructure, we do not recommend recurring syncs across buckets occurring more than 1x daily.
-{{< /note >}}
-
 ## Next Steps
 
-For more information on using rclone or scheduling tasks with cron, see the below links and documentation:
+For more information on using rclone or managing Object Storage, see the below links and documentation:
 
 - [Rclone official documentation](https://rclone.org/docs/)
 
-- [Using Cron to Schedule Tasks for Certain Times or Intervals](/docs/guides/schedule-tasks-with-cron/)
-
-- [Cron format helper](https://abunchofutils.com/u/computing/cron-format-helper/)
+- [Object Storage - Guides](/docs/products/storage/object-storage/guides/)
