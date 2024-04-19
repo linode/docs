@@ -10,12 +10,12 @@ keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/webpy/webpy-on-debian-5-lenny/','/frameworks/webpy/debian-5-lenny/','/development/frameworks/webpy-on-debian-5-lenny/','/websites/frameworks/webpy-on-debian-5-lenny/']
-deprecated: true
 relations:
     platform:
         key: webpy
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.

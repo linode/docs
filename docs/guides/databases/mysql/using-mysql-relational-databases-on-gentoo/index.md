@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-01-21
 modified: 2014-01-28
-deprecated: true
 keywords: ["MySQL", "Gentoo", "database", "rdbms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/using-mysql-relational-databases-on-gentoo/','/databases/mysql/gentoo/']
@@ -16,6 +15,7 @@ relations:
         keywords:
             - distribution: Gentoo
 tags: ["database","mysql"]
+deprecated: true
 ---
 
 MySQL is a relational database management system (RDBMS) that is used as a backend for countless web and server applications. Originally released in 1995, it remains a popular choice for developers as a database server.

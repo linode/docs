@@ -10,11 +10,11 @@ keywords: ["puppet installation", "configuration change management", "server aut
 tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/puppet/install-and-configure-puppet/','/applications/puppet/install-and-configure-puppet/','/applications/puppet/set-up-puppet-master-agent/','/websites/puppet/basic-puppet-setup-and-configuration/','/applications/configuration-management/install-and-configure-puppet/','/websites/puppet/manage-and-automate-systems-configuration-with-puppet/']
-deprecated: true
-deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
+deprecated: true
+deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
 ---
 
 [Puppet](https://puppet.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.

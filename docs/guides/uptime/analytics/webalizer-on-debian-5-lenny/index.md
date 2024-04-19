@@ -6,7 +6,6 @@ authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 published: 2010-01-27
 modified: 2011-05-17
-deprecated: true
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "debian"]
 tags: ["debian","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: using-webalizer-analytics
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.

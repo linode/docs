@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-07-16
 modified: 2011-05-02
-deprecated: true
 keywords: ["ubuntu 8.04 lamp", "lamp guide", "ubuntu lamp"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 8.04 (e.g. Hardy) system. The 8.04 release is considered a long term support release and the server edition will be supported until April of 2013.
 

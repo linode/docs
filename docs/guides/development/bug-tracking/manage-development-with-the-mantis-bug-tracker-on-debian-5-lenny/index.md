@@ -6,7 +6,6 @@ authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 published: 2010-02-16
 modified: 2011-04-29
-deprecated: true
 keywords: ["mantis", "mantis debian", "mantis linux", "bug tracker", "development"]
 tags: ["debian", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key:  mantis-bug-tracker
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.

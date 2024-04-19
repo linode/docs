@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05
 modified: 2013-09-26
-deprecated: true
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","nginx","fedora","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: sinatra-nginx
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 Sinatra is a simple lightweight framework for web application development in the Ruby programming language. Rather than providing a complete development system, Sinatra provides a basic URL-mapping system that developers can use to create powerful custom applications.
 

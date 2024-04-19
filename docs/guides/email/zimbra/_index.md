@@ -10,4 +10,3 @@ show_in_lists: true
 aliases: ['/email/zimbra/','/email/zimbra/install-zimbra-ubuntu-10.04-lucid/']
 ---
 
-

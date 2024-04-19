@@ -17,7 +17,6 @@ external_resources:
 - '[Apache virtual host documentation](http://httpd.apache.org/docs/current/vhosts/)'
 ---
 
-
 ![Set Up Apache to Run Multiple WordPress Sites on a Single Linode](Multiple_WordPress.jpg)
 
 ## What is WordPress?

@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-10-13
 modified: 2020-12-01
-deprecated: true
 keywords: ["ubuntu 10.10 upgrade", "ubuntu maverick upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

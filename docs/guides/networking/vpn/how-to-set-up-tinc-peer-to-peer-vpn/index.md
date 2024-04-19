@@ -12,7 +12,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/how-to-set-up-tinc-peer-to-peer-vpn/']
 ---
 
-
 ![How to Set up tinc, a Peer-to-Peer VPN](tinc.jpg "How to Set up tinc, a Peer-to-Peer VPN")
 
 Virtual Private Networks (VPN) are an essential part of any serious network security deployment plan. There are many open-source VPN options but one of them shines above the others: tinc. All VPNs behave as a secure tunnel between two points, but [tinc](https://www.tinc-vpn.org/) stands out for its "Peer-to-Peer" design. The design allows tinc users a great deal of flexibility, especially when planning a mesh-type network.

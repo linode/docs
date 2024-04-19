@@ -6,8 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-07-27
 modified: 2013-09-23
-deprecated: true
-deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,9 +15,9 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: CentOS 5
+deprecated: true
+deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
 ---
-
-
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 

@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-09-14
 modified: 2011-05-17
-deprecated: true
 keywords: ["zimbra on ubuntu", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your Ubuntu 8.04 (Hardy) Linode.
 

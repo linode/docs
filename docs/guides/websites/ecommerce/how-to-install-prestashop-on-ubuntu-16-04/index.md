@@ -14,7 +14,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/']
 ---
 
-
 ![How to Install PrestaShop of Ubuntu 16.04 LTS](PrestaShop.jpg)
 
 ## What is PrestaShop?

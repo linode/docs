@@ -6,7 +6,6 @@ authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 published: 2013-09-30
 modified: 2013-10-01
-deprecated: true
 keywords: ["minecraft", "ubuntu", "ubuntu precise", "12.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +16,7 @@ relations:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 This guide shows you how to set up a personal Minecraft server on a Linode running Ubuntu 12.04 LTS (64 bit).

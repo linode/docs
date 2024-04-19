@@ -16,7 +16,6 @@ dedicated_cpu_link: true
 aliases: ['/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/']
 ---
 
-
 ![HAProxy for Load Balancing](HAProxy.jpg)
 
 ## What is HAProxy?

@@ -10,7 +10,6 @@ keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/ubuntu-12-04-precise-pangolin/','/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-12-04-precise-pangolin/']
-deprecated: true
 external_resources:
     - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
     - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
@@ -19,6 +18,7 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 The Planet (Venus) Feed Aggregator takes a collection of RSS feeds and generates what its founders call a "River of News" feed that combines posts from all sources into a single coherent stream. Thus, this software is useful for providing a simple and consolidated overview of ongoing output from selected blogs. Written and configured in Python and run regularly using cron, Planet Venus is an updated variant of the popular Planet software.

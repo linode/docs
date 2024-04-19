@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-02
 modified: 2014-03-27
-deprecated: true
 keywords: ["nginx arch linux", "nginx arch", "nginx", "http server", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/websites-with-nginx-on-arch-linux/','/web-servers/nginx/installation/arch-linux/','/websites/nginx/websites-with-nginx-on-arch-linux/']
@@ -16,6 +15,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["web server","nginx"]
+deprecated: true
 ---
 
 Nginx is a lightweight and high performance web server, designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handling requests, NGINX uses an asynchronous event-driven model to provide more predictable performance under load.

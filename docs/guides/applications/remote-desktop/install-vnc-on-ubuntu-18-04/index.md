@@ -10,8 +10,6 @@ modified: 2023-06-27
 keywords: ["vnc", "remote desktop", "ubuntu", "18.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
-deprecated_link: 'guides/install-vnc-on-ubuntu-20-04/'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[RealVNC](https://www.realvnc.com/)'
@@ -21,6 +19,8 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-18-04/']
+deprecated: true
+deprecated_link: 'guides/install-vnc-on-ubuntu-20-04/'
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.

@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-09-07
 modified: 2013-07-15
-deprecated: true
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.

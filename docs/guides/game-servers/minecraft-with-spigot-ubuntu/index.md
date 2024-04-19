@@ -11,9 +11,9 @@ keywords: ["minecraft", "spigot"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
-deprecated: true
 dedicated_cpu_link: true
 image: spigot-minecraft-ubuntu-title.jpg
+deprecated: true
 ---
 
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.

@@ -8,12 +8,12 @@ published: 2016-02-25
 modified: 2020-12-02
 keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
-deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 tags: ["security","ssl"]
 aliases: ['/security/ssl/install-lets-encrypt-to-create-ssl-certificates/']
+deprecated: true
+deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 ---
 
 ![Let's Encrypt](Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)

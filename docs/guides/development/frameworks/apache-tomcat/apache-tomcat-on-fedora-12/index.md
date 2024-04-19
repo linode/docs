@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-07-23
 modified: 2011-04-29
-deprecated: true
 keywords: ["apache tomcat fedora 12", "java", "java fedora 12", "java servlets fedora 12", "java fedora"]
 tags: ["web applications","java","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Fedora 12
+deprecated: true
 ---
 
 Apache Tomcat is a free and open source software implementation for Java Servlets. It provides support for the Java Server Pages (JSP) that power many popular web-based applications.

@@ -11,7 +11,6 @@ tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: L_Migratefromk8s-alphaCLItoTerraform.png
 concentrations: ["Kubernetes"]
-deprecated: true
 external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 - '[Beginners Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)'
@@ -19,6 +18,7 @@ external_resources:
 aliases: ['/kubernetes/how-to-migrate-from-k8s-alpha-to-terraform/']
 _build:
   list: false
+deprecated: true
 ---
 
 The [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) is deprecated. On **March 31st, 2020**, it will be **removed** from the [linode-cli](https://github.com/linode/linode-cli). After March 31, 2020, you will no longer be able to create or manage clusters created by the k8s-alpha CLI plugin, however, you will still be able to successfully manage your clusters using the [Kubernetes Terraform installer for Linode Instances](https://github.com/linode/terraform-linode-k8s).

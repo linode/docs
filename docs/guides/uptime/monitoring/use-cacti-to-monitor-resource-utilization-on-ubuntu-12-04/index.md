@@ -5,7 +5,6 @@ description: 'Deploy Cacti, a Powerful Server-monitoring Solution That Uses SNMP
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-11
-deprecated: true
 keywords: ["Cacti", "Ubuntu", " Ubuntu 12.04", "SNMP", "spine", "client machine"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         key: install-cacti-monitoring
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](http://munin-monitoring.org/) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.

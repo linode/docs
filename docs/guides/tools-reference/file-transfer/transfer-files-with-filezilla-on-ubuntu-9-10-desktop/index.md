@@ -6,11 +6,11 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-11-13
 modified: 2011-08-22
-deprecated: true
 keywords: ["filezilla", "ftp", "linux scp", "sftp", "linux sftp program", "linux ftp"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/file-transfer/transfer-files-with-filezilla-on-ubuntu-9-10-desktop/','/networking/file-transfer/transfer-files-filezilla-ubuntu-9-10/']
+deprecated: true
 ---
 
 Filezilla is a free, open source file transfer program written for Linux, Mac OS X, and Windows systems. It implements several file transfer protocols, most notably SFTP via SSH. This tool allows you to securely transfer files to and from your Linode using an encrypted channel, avoiding the security problems and usability issues inherent in traditional FTP client/server systems. Filezilla can send both your login credentials and file transfers over the network securely encrypted (provided you're using SFTP), while standard FTP clients send this information as plaintext.

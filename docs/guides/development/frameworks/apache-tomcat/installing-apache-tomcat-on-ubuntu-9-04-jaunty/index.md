@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-08-06
 modified: 2011-04-29
-deprecated: true
 keywords: ["Tomcat", "Java", "Apache Tomcat", "Ubuntu Jaunty", "Ubuntu 9.04", "Tomcat Linode"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 9.04
+deprecated: true
 ---
-
-
 
 Apache Tomcat is an "[open source software implementation of the Java Servlet and JavaServer Pages technologies.](http://tomcat.apache.org/)" You may choose to use either the OpenJDK implementation or the Sun Microsystems implementation of Java when installing Tomcat.
 

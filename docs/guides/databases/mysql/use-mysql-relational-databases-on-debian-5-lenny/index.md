@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-08-07
 modified: 2012-10-08
-deprecated: true
 keywords: ["MySQL on Linux", "MySQL Debian", "MySQL Lenny", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/debian-5-lenny/','/databases/mysql/use-mysql-relational-databases-on-debian-5-lenny/']
@@ -16,6 +15,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","mysql"]
+deprecated: true
 ---
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian Lenny Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.

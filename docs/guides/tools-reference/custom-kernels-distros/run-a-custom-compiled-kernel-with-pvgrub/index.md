@@ -6,10 +6,10 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-07-17
 modified: 2020-12-01
-deprecated: true
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/custom-instances/pv-grub-custom-compiled-kernel/','/tools-reference/custom-kernels-distros/run-a-custom-compiled-kernel-with-pvgrub/','/platform/custom-kernels-distros/run-a-custom-compiled-kernel-with-pvgrub/']
+deprecated: true
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

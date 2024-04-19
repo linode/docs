@@ -6,7 +6,6 @@ authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 published: 2011-01-25
 modified: 2012-10-08
-deprecated: true
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
 
 NSD is a light-weight yet full-featured open source name server daemon created to provide an alternative to BIND.

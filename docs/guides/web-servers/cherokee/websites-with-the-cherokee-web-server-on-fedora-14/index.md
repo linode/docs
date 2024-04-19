@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-05-27
 modified: 2013-10-07
-deprecated: true
 keywords: ["cherokee fedora 14", "cherokee web sever", "cherokee", "fedora 14"]
 tags: ["web server","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions. This tutorial explains how to install and configure the Cherokee web server on Fedora 14. Installation will be performed through the terminal; please make sure you are logged into your Linode as root via SSH.
 

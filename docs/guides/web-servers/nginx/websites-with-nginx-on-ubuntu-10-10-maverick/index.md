@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-15
 modified: 2012-10-08
-deprecated: true
 keywords: ["nginx", "nginx ubuntu 10.10", "http", "web servers", "ubuntu", "ubuntu maverick"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 

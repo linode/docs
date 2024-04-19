@@ -16,7 +16,6 @@ external_resources:
 tags: ["automation"]
 ---
 
-
 *Chef* is a declarative configuration management and automation platform used to translate infrastructure into code. This enables a development and deployment process with better testing, efficient and predictable deployments, centralized versioning, and reproducible environments across all servers.
 
 ![Chef for beginners](a_beginners_guide_to_chef_smg.jpg)

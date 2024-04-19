@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05
 modified: 2013-10-02
-deprecated: true
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.
 

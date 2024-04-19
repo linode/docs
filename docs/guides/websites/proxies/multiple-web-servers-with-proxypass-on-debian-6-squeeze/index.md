@@ -6,11 +6,11 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-07
 modified: 2011-04-29
-deprecated: true
 keywords: ["apache", "proxypass", "apache on debian", "multiple web servers"]
 tags: ["proxy","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/proxies/multiple-web-servers-with-proxypass-on-debian-6-squeeze/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-6-squeeze/']
+deprecated: true
 ---
 
 In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.

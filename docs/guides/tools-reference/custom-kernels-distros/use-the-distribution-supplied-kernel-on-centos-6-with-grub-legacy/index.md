@@ -9,8 +9,8 @@ modified: 2020-12-01
 keywords: ["centos 6", "custom kernel", "grub legacy"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
 aliases: ['/tools-reference/custom-kernels-distros/use-the-distribution-supplied-kernel-on-centos-6-with-grub-legacy/']
+deprecated: true
 ---
 
 This guide will show you how to install and use the distribution-supplied kernel for CentOS 6, with our **Grub Legacy** boot option.

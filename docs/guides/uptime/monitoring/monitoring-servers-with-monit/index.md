@@ -14,7 +14,6 @@ tags: ["monitoring"]
 aliases: ['/uptime/monitoring/monitoring-servers-with-monit/']
 ---
 
-
 Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should.
 
 ![Installing Monit for Server Monitoring](monit_tg.png "Installing Monit for Server Monitoring")

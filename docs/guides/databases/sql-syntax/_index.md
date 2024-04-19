@@ -9,5 +9,3 @@ show_in_lists: true
 aliases: ['/databases/sql-syntax/']
 ---
 
-
-

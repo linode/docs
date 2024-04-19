@@ -9,10 +9,10 @@ keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", 
 aliases: ['/websites/cms/drupal/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-7/']
 tags: ["drupal","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
-deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/'
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
+deprecated: true
+deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/'
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and a manual backup system, covering some basic administration tasks for Drupal websites.

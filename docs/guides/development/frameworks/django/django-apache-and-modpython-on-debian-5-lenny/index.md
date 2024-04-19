@@ -10,12 +10,12 @@ keywords: ["django", "python", "apache", "mod\\_python"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django-apache-and-modpython-on-debian-5-lenny/','/frameworks/django-apache-mod-python/debian-5-lenny/','/websites/frameworks/django-apache-and-modpython-on-debian-5-lenny/','/development/frameworks/django/django-apache-and-modpython-on-debian-5-lenny/']
-deprecated: true
 relations:
     platform:
         key: django-apache-modpython
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.

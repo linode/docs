@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-09-23
 modified: 2011-04-29
-deprecated: true
 keywords: ["java", "apache tomcat", "java ubuntu", "java hardy"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 Apache Tomcat is a free and open source software implementation for JavaServlets. It provides support for Java Server Pages (JSP), which power many popular web-based applications. You may choose to run Tomcat with either Sun's Java implementation or the OpenJDK implementation of Java, and this document provides instructions for using either option.
 

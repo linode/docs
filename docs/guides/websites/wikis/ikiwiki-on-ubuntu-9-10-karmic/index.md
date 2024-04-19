@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-03-23
 modified: 2011-04-29
-deprecated: true
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "karmic"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which can be efficiently served with a basic web server. These are generated from a source directory that can be stored in the [version control](/docs/development/version-control/) system of your choice, though this guide assumes that you use [git](/docs/guides/how-to-configure-git/).
 

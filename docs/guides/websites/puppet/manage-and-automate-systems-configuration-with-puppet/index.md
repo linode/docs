@@ -9,8 +9,6 @@ modified: 2011-08-22
 keywords: ["puppet", "puppet configuration", "puppet linux", "configuration change management", "server automation"]
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
-deprecated_link: applications/configuration-management/install-and-configure-puppet/
 external_resources:
  - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'
  - '[Basic Puppet Configuration](http://docs.puppetlabs.com/guides/configuring.html)'
@@ -18,6 +16,8 @@ external_resources:
  - '[Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)'
  - '[Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)'
  - '[Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)'
+deprecated: true
+deprecated_link: applications/configuration-management/install-and-configure-puppet/
 ---
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.

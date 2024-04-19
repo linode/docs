@@ -10,4 +10,3 @@ aliases: ['/websites/ecommerce/','/web-applications/e-commerce/']
 show_in_lists: true
 ---
 
-

@@ -6,7 +6,6 @@ authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 published: 2014-03-03
 modified: 2016-08-07
-deprecated: true
 keywords: ["squid", "proxy", "ubuntu", "12.04", "http"]
 tags: ["proxy","web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-12-04/']
+deprecated: true
 ---
 
 ![Creating an HTTP Proxy Using Squid on Ubuntu 12.04](creating-an-http-proxy-with-squid-on-ubuntu-1204-title-graphic.jpg "Creating an HTTP Proxy Using Squid on Ubuntu 12.04")

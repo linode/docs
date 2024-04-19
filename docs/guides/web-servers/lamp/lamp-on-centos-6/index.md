@@ -6,7 +6,6 @@ authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 published: 2011-07-19
 modified: 2015-12-01
-deprecated: true
 keywords: ["LAMP", "CentOS", "CentOS 6", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +20,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 6
+deprecated: true
 ---
 
 ![LAMP on CentOS 6](lamp-centos-6.png)

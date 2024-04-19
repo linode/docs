@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-11-02
 modified: 2013-09-23
-deprecated: true
 keywords: ["ubuntu lamp server", "ubuntu 11.10 lamp", "oneiric lamp", "ubuntu web server", "ubuntu oneiric"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 11.10
+deprecated: true
 ---
-
-
 
 This guide provides step by step instructions for installing a full featured LAMP stack on an Ubuntu 11.10 (Oneiric) system. The 11.10 release will be supported with security updates until April of 2013.
 

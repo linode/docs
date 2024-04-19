@@ -18,7 +18,6 @@ relations:
 aliases: ['/applications/voip/install-asterisk-on-centos-7/']
 ---
 
-
 ![How to Install Asterisk on CentOS 7](how-to-install-asterisk-on-centos-7.jpg "How to Install Asterisk on CentOS 7")
 
 ## What is Asterisk?

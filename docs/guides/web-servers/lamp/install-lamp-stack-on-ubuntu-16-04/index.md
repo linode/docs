@@ -10,8 +10,6 @@ keywords: ["install lamp ubuntu 16.04", "apache install", "mysql install", "php 
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/install-lamp-on-ubuntu-18-04/','/websites/lamp/install-lamp-on-ubuntu-16-04/','/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/']
-deprecated: true
-deprecated_link: '/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -22,6 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
+deprecated_link: '/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/'
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps.

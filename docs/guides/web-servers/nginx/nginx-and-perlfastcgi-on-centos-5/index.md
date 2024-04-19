@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-12-16
 modified: 2011-07-20
-deprecated: true
 keywords: ["nginx", "nginx centos 5", "nginx fastcgi", "nginx perl"]
 tags: ["centos","web server","perl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,6 +21,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your CentOS 5 Linode.

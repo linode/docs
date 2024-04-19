@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-23
 modified: 2013-10-09
-deprecated: true
 keywords: ["debian 6 LAMP server", "debian LAMP guide", "LAMP howto"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Debian 6.0 (Squeeze) system. In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 

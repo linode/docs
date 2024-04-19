@@ -5,7 +5,6 @@ description: 'Serve dynamic websites and applications with the lightweight nginx
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-31
-deprecated: true
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 12.04", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +19,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.

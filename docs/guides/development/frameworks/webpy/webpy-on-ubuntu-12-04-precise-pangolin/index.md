@@ -10,12 +10,12 @@ keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/','/frameworks/webpy/ubuntu-12-04-precise-pangolin/','/development/frameworks/webpy/webpy-on-ubuntu-12-04-precise-pangolin/','/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/']
-deprecated: true
 relations:
     platform:
         key: webpy
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit", web.py is a powerful option for developing systems for the web.

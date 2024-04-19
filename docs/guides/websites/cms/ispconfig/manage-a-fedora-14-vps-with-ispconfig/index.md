@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05
 modified: 2013-10-03
-deprecated: true
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 

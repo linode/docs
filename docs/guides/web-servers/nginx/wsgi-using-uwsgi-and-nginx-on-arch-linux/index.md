@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-12-28
 modified: 2013-10-07
-deprecated: true
 keywords: ["uwsgi", "wsgi", "nginx", "python", "arch linux"]
 tags: ["web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Arch Linux
+deprecated: true
 ---
-
-
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 

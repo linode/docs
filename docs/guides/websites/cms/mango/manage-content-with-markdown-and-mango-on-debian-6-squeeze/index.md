@@ -10,12 +10,12 @@ keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze/','/web-applications/cms-guides/mango/debian-6-squeeze/','/websites/cms/mango/manage-content-with-markdown-and-mango-on-debian-6-squeeze/']
-deprecated: true
 relations:
     platform:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Debian 6
+deprecated: true
 ---
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.

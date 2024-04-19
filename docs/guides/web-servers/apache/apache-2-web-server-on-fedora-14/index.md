@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-12-07
 modified: 2013-10-04
-deprecated: true
 keywords: ["apache fedora 14", "fedora web server", "linux web server"]
 tags: ["web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Fedora 14. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 14](/docs/guides/lamp-server-on-fedora-14/).
 

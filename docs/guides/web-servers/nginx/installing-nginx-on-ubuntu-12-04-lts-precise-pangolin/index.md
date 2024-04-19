@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-24
 modified: 2015-09-16
-deprecated: true
 keywords: ["nginx", "nginx ubuntu 12.04", "http", "web servers", "ubuntu", "ubuntu l2.04", "ubuntu precise pangolin"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +20,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.

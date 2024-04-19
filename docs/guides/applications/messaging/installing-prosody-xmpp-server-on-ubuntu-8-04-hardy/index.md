@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-10-13
 modified: 2011-04-29
-deprecated: true
 keywords: ["prosody", "prosody ubuntu hardy", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 Prosody is a Lua-based XMPP/Jabber server, designed with minimalist ideas and goals. It has low resource requirements and is intended to be easy to configure and run. As a result, Prosody may not scale to the same level [ejabberd](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/guides/install-openfire-on-ubuntu-12-04-for-instant-messaging/) can. However, for most independent and small scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for XMPP development, or running an XMPP server for a very small base of users.
 

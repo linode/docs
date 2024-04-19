@@ -11,7 +11,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/websites/cms/turbocharge-wordpress-search-with-solr/']
 ---
 
-
 The standard search that is built into WordPress does not provide the best search experience you can offer your visitors, given its inability to suggest search phrases, catch typos, understand word variations, organize and filter results, and index documents for search results. *Full text search engines* often offer these features and **Apache Solr** is a free, open-source option that does.
 
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.

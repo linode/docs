@@ -5,7 +5,6 @@ description: 'This guide shows how to use Ejabberd, a Jabber daemon written in t
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-31
-deprecated: true
 keywords: ["ejabberd", "ejabberd ubuntu", "ejabberd ubuntu 12.04", "ejabberd on linux", "real-time messaging", "xmpp", "collaboration software", "chat software", "linux jabber server", "instant messaging", "jabber daemon", "erlang"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics because of the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads. Ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.

@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-02-26
 modified: 2011-04-29
-deprecated: true
 keywords: ["ssl", "apache ssl", "ssl on ubuntu", "web sever", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["apache","security","ssl","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 9.10 (Karmic) guide](/docs/web-servers/apache/installation/ubuntu-9-10-karmic). These steps should be performed via an SSH session to your Linode as the root user.
 

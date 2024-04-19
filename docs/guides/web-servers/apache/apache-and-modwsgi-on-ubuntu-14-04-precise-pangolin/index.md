@@ -5,7 +5,6 @@ description: 'In this tutorial, you will learn how to configure and deploy Pytho
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2015-11-18
-deprecated: true
 keywords: ["python", "apache", "mod\\_wsgi", "django"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -23,6 +22,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
 ---
 
 ![Apache and mod_wsgi on Ubuntu](Apache_and_mod_wsgi_on_Ubuntu_1404_Trusty_Tahr_smg.png)

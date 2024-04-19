@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-04-21
 modified: 2011-06-30
-deprecated: true
 keywords: ["nagios", "monitoring"]
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Nagios is an open source monitoring tool that monitors services within a server cluster. In addition to monitoring services such as SMTP/POP3 and HTTP, Nagios can also be used to check the health of the server itself.

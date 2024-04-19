@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-02-24
 modified: 2011-05-17
-deprecated: true
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 

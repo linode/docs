@@ -5,4 +5,3 @@ aliases: ['/platform/disk-images/','/migrate-to-linode/disk-images/']
 show_in_lists: true
 ---
 
-

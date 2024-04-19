@@ -6,7 +6,6 @@ authors: ["James Stewart"]
 contributors: ["James Stewart"]
 published: 2013-09-12
 modified: 2015-09-16
-deprecated: true
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu", "precise", "ubuntu 12.04", "lts", "ubuntu lts", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/phpmyadmin-ubuntu-12-04-precise/','/databases/mysql/install-mysql-phpmyadmin-on-ubuntu-12-04/','/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
@@ -19,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","php","database","mysql"]
+deprecated: true
 ---
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.

@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-10-29
 modified: 2011-05-17
-deprecated: true
 keywords: ["apache", "apache ubuntu 9.10", "apache ubuntu karmic", "web server", "apache on ubuntu", "apache karmic"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Ubuntu 9.10 (Karmic). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.10](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/).
 

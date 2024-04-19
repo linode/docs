@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-11-14
 modified: 2013-02-18
-deprecated: true
 keywords: ["munin", "monitoring", "ubuntu", " ubuntu 11.04", "natty", " ubuntu natty"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: install-munin-monitoring
         keywords:
             - distribution: Ubuntu 11.04
+deprecated: true
 ---
-
-
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. For instance, if you need to monitor memory usage or resource consumption on a per-process level, a more precise monitoring tool like Munin might be helpful.
 

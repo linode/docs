@@ -5,8 +5,6 @@ description: 'Using the PostgreSQL relational database server with Ubuntu 12.04 
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-08
-deprecated: true
-deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 keywords: ["postgresql", "ubuntu 12.04", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/postgresql/ubuntu-12-04-precise-pangolin/','/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-12-04/']
@@ -19,6 +17,8 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","postgresql"]
+deprecated: true
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 12.04 LTS (Precise Pangolin) Linode. We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.

@@ -15,7 +15,6 @@ external_resources:
 aliases: ['/applications/messaging/using-weechat-for-irc/']
 ---
 
-
 [WeeChat](https://weechat.org/) is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.
 
 Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as [Screen](https://www.gnu.org/software/screen/) or [tmux](/docs/guides/persistent-terminal-sessions-with-tmux/).

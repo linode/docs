@@ -6,7 +6,6 @@ authors: ["Christopher Piccini"]
 contributors: ["Christopher Piccini"]
 published: 2017-08-13
 modified: 2017-08-14
-deprecated: true
 keywords: ["python", "python virtual environment", "virtualenv"]
 tags: ["python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +19,7 @@ relations:
         key: python-virtual-env
         keywords:
             - distribution: Ubuntu 16.10
+deprecated: true
 ---
 
 ![Create a Python Virtual Environment on Ubuntu 16.10](python-ve-u16-title.jpg "Create a Python Virtual Environment on Ubuntu 16.10")

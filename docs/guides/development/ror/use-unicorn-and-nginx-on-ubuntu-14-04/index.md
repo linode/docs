@@ -10,8 +10,6 @@ keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 14.04", " ngi
 tags: ["web applications","proxy","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/use-unicorn-and-nginx-on-ubuntu-14-04/','/development/ror/use-unicorn-and-nginx-on-ubuntu-14-04/']
-deprecated: true
-deprecated_link: 'guides/use-unicorn-and-nginx-on-ubuntu-18-04/'
 external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 audiences: ["beginner"]
@@ -22,6 +20,8 @@ relations:
         key: unicorn-nginx
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
+deprecated_link: 'guides/use-unicorn-and-nginx-on-ubuntu-18-04/'
 ---
 
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 14.04.

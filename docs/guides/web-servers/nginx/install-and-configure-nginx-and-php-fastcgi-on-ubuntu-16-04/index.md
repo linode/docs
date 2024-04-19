@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2015-06-12
 modified: 2016-09-13
-deprecated: true
 keywords: ["nginx", "ubuntu 16.04", "fastcgi", "php"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +19,7 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low- and high-traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you install and run nginx with PHP via FastCGI on your Ubuntu 16.04 Linode.

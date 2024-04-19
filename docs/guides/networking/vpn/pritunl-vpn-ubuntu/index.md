@@ -9,8 +9,8 @@ modified: 2019-01-02
 keywords: ["pritunl", "vpn", "vpn server", "ubuntu", "ubuntu 14.04"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
 aliases: ['/networking/vpn/pritunl-vpn-ubuntu/']
+deprecated: true
 ---
 
 ![Pritunl VPN Server and Management Panel on Ubuntu](Pritunl_VPN_Server_and_Management_Panel_on_Ubuntu_1404_smg.jpg)

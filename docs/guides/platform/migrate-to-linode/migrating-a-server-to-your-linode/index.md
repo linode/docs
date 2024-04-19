@@ -6,12 +6,12 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-05-24
 modified: 2017-04-03
-deprecated: true
-deprecated_link: '/docs/guides/best-practices-when-migrating-to-linode/'
 keywords: ["migrate to linode", "linode migration", "migrate linux"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migration/migrate-server-to-linode/','/migrate-to-linode/disk-images/migrating-a-server-to-your-linode/','/platform/disk-images/migrating-a-server-to-your-linode/']
+deprecated: true
+deprecated_link: '/docs/guides/best-practices-when-migrating-to-linode/'
 ---
 {{< note >}}
 The process for migrating a server image to your Linode will vary depending upon how the image was created. We recommend making an `.iso` file from your existing image, and then following the steps in our updated [custom distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/) guide to deploy it on a Linode. This guide is no longer being maintained, and the procedure outlined here is not recommended for new migrations.

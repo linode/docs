@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-12-06
 modified: 2012-10-08
-deprecated: true
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Ubuntu 10.10 (Maverick).
 

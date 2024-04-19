@@ -4,14 +4,14 @@ description: 'This guide will show you how to use the Linode Command Line Interf
 published: 2014-01-27
 modified: 2022-11-30
 image: linode-cli.png
-deprecated: true
-deprecated_link: 'platform/api/linode-cli/'
 external_resources:
  - '[Github Linode CLI](https://github.com/linode/cli)'
  - '[Linode API Key](/docs/products/tools/api/guides/manage-api-tokens/)'
 keywords: ["linode cli", " command line interface", " man pages", " api key"]
 tags: ["linode platform"]
 aliases: ['/platform/api/using-the-linode-cli-api-v3/','/guides/using-the-linode-cli-api-v3/']
+deprecated: true
+deprecated_link: 'platform/api/linode-cli/'
 ---
 
 The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.

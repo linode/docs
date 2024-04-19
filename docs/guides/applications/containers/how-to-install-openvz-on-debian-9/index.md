@@ -16,7 +16,6 @@ external_resources:
 aliases: ['/applications/containers/how-to-install-openvz-on-debian-9/']
 ---
 
-
 ## What is OpenVZ?
 
 OpenVZ is a software-based OS virtualization tool enabling the deployment, management, and modification of isolated virtual Linux environments from within a host Linux distribution. An extensive array of prebuilt OS templates in a variety of Linux distributions allow users to rapidly download and deploy virtual environments with ease.

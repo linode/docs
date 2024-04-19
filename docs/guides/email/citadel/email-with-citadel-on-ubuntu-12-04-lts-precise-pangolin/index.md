@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-11-05
 modified: 2014-08-15
-deprecated: true
 keywords: ["citadel", "citadel ubuntu 12.04", "ubuntu 12.04 mail server", "groupware", "email server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.

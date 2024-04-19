@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-12-07
 modified: 2012-10-08
-deprecated: true
 keywords: ["apache tomcat ubuntu 10.10", "java", "java ubuntu 10.10", "java servlets ubuntu maverick", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You may choose to run applications within Tomcat using either the OpenJDK implementation or the Sun Microsystems/Oracle implementation of the Java development environment.
 

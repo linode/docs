@@ -6,7 +6,6 @@ authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 published: 2010-01-25
 modified: 2012-10-08
-deprecated: true
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.

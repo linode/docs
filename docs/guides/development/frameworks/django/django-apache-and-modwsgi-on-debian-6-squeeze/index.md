@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-17
 modified: 2011-05-13
-deprecated: true
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.

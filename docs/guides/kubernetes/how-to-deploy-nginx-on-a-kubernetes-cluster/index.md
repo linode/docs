@@ -12,14 +12,14 @@ tags: ["docker","centos","kubernetes","ubuntu","nginx","debian","networking","co
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: DeployNGINX_Linode.png
 aliases: ['/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/','/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
-deprecated: true
-deprecated_link: 'applications/containers/getting-started-with-kubernetes/'
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes](https://kubernetes.io/)'
 - '[Google Borg](https://research.google.com/pubs/pub43438.html)'
 - '[kubelet Definition](https://kubernetes.io/docs/admin/kubelet/)'
 - '[CNI Spec](https://github.com/containernetworking/cni/blob/master/SPEC.md)'
+deprecated: true
+deprecated_link: 'applications/containers/getting-started-with-kubernetes/'
 ---
 
 ![Kubernetes on Linode](Nginx_Kubernetes.jpg)

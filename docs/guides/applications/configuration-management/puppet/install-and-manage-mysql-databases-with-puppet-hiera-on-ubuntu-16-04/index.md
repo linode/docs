@@ -14,16 +14,15 @@ external_resources:
   - '[The Puppet Forge](https://forge.puppet.com/)'
   - '[Hiera documentation](https://docs.puppet.com/hiera/)'
   - '[Facter](https://puppet.com/docs/puppet/7/facter.html)'
-deprecated: true
-deprecated_link: 'applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/'
 relations:
     platform:
         key: install-puppet-mysql-hiera
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/','/applications/configuration-management/puppet/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/']
+deprecated: true
+deprecated_link: 'applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/'
 ---
-
 
 ![Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](manage-mysql-with-puppet-hiera.jpg "Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04")
 

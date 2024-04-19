@@ -11,16 +11,15 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/','/applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
 external_resources:
   - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
-deprecated: true
-deprecated_link: 'game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/'
 dedicated_cpu_link: true
 relations:
     platform:
         key: launch-counterstrike-server
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
+deprecated_link: 'game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/'
 ---
-
 
 [Counter Strike: Global Offensive](http://store.steampowered.com/app/730) (CS:GO) is a first-person shooter by Valve. Hosting your own server gives you full control over your game and game modes, so you can play the exact flavor of CS:GO you want. This guide contains instructions on how to download the dedicated server and launch the game server.
 

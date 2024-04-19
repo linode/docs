@@ -16,7 +16,6 @@ external_resources:
 aliases: ['/applications/cloud-storage/tahoe-lafs-on-debian-9/']
 ---
 
-
 ## What is Tahoe-LAFS?
 
 While Tahoe-LAFS might resemble other decentralized or distributed file system, like Gluster, Ceph or others, the problems it solves are different. The *Least Authority File Store* (LAFS) is designed with these things in mind:

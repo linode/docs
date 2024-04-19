@@ -5,7 +5,6 @@ description: 'This guide will show you how to configure the uWSGI server to depl
 authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 published: 2012-11-13
-deprecated: true
 keywords: ["uwsgi", "wsgi", "nginx", "python", "ubuntu", "install uwsgi", "deploy python applications with nginx", "virtual host"]
 tags: ["web server","python","ubuntu","web applications","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +14,7 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.

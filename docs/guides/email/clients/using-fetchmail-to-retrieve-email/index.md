@@ -9,12 +9,12 @@ modified: 2013-09-11
 keywords: ["mail", "fetchmail", "unix", "esr", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/clients/using-fetchmail-to-retrieve-email/','/email/fetchmail/']
-deprecated: true
 external_resources:
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
 tags: ["email"]
+deprecated: true
 ---
 
 ![Using Fetchmail to Retrieve Email](using-fetchmail-to-retrieve-email.jpg "Using Fetchmail to Retrieve Email")

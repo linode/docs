@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-02-05
 modified: 2011-05-17
-deprecated: true
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 9.10", "karmic"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
 

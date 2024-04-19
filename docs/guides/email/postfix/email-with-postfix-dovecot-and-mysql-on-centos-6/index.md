@@ -5,7 +5,6 @@ description: 'This guide provides you with step-by-step instructions for install
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2015-03-26
-deprecated: true
 keywords: ["postfix centos 6", "dovecot centos 6", "linux mail server", "email", "centos 6"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,6 +21,7 @@ relations:
         keywords:
             - distribution: CentOS 6
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-6/']
+deprecated: true
 ---
 
 ![Email with Postfix, Dovecot, and MySQL on CentOS](Email-with-Postfix-Dovecot-and-MySQL-on-CentOS-smg.jpg)

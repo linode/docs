@@ -10,12 +10,12 @@ keywords: ["cakephp", "cakephp debian", "php framework", "debian", "develop php"
 tags: ["web applications","lamp","php","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/cakephp/','/websites/frameworks/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp-on-debian-5-lenny/']
-deprecated: true
 relations:
     platform:
         key:  cake-php
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 CakePHP is a framework used to develop PHP applications quickly. Many people choose CakePHP because of the simple deployment process and extensive documentation available on the CakePHP website.

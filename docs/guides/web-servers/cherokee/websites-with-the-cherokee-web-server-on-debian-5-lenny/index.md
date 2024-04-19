@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-09-10
 modified: 2011-04-29
-deprecated: true
 keywords: ["cherokee", "web sever", "debian 5", "debian lenny"]
 tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.

@@ -6,10 +6,10 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-08-18
 modified: 2020-12-01
-deprecated: true
 keywords: ["custom distro", "custom distribution", "advanced Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/','/custom-instances/custom-distro-howto/']
+deprecated: true
 ---
 
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.

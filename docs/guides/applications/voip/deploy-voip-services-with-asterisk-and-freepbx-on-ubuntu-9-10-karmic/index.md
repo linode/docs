@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-04-23
 modified: 2013-08-02
-deprecated: true
 keywords: ["asterisk ubuntu 9.10", "asterisk", "asterisk linux", "freepbx", "freepbx ubuntu", "pbx", "voip"]
 tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +16,7 @@ relations:
         key: asterisk-freepbx-telephone
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
 
 Asterisk is an open source telephone solution that runs over the internet instead of running through copper lines like a normal phone would. It offers a variety of features such as voice mail and conference calling, much like a land line telephone can.

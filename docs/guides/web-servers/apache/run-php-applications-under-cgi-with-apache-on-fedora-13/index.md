@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-08-05
 modified: 2013-10-04
-deprecated: true
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","fedora","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges; it forces all scripts to be executed with the permissions of a shared user account, and is incompatible with some other Apache modules and processes. For example, in our experience `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/docs/development/ror/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes, using the method outlined below.
 

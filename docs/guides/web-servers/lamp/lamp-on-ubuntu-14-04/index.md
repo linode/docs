@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2015-01-28
 modified: 2015-12-07
-deprecated: true
 keywords: ["ubuntu lamp", "ubuntu 14.04 lamp", "lamp install", "ubuntu web server", "apache", "mysql", "php", "ubuntu 14.04"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +20,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
 ---
 
 ![Lamp on Ubuntu 14.04](lamp-on-ubuntu-1404-title-graphic.jpg "Lamp on Ubuntu 14.04")

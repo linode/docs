@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-06-23
 modified: 2012-10-08
-deprecated: true
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: basic-postifx-gateway
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 Postfix is an efficient, stable, and modern "Mail Transfer Agent" or MTA used for transmitting email messages between severs on the Internet. Most configurations involving Postfix combine the MTA with a server to allow users to download email using a protocol like IMAP or POP3. This document outlines a very simple configuration of Postfix that makes it possible to forward email, and deliver email to local mailboxes on your Linode instance. This guide *does not* provide any way to download this email or remotely access these mailboxes. In addition, this document provides instructions for sending email with this configuration. If you want to deploy a complete and fully featured email solution that includes the ability download locally delivered email, consider one of our other [postfix email guides](/docs/email/postfix/).
 

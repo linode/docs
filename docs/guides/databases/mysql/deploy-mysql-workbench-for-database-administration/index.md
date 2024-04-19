@@ -15,7 +15,6 @@ tags: ["database","mysql"]
 aliases: ['/databases/mysql/deploy-mysql-workbench-for-database-administration/']
 ---
 
-
 ![Deploy MySQL Workbench for Database Administration](deploy-mysql-workbench-for-database-administration.png "Deploy MySQL Workbench for Database Administration")
 
 This guide will show you how to get started using [MySQL Workbench](https://www.mysql.com/products/workbench/), a graphical tool for working with MySQL databases. Workbench is available for Linux, OS X and Windows, and runs directly on your desktop in a client/server model with your MySQL backend.

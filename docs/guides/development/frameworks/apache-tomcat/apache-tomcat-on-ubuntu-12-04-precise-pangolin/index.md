@@ -5,7 +5,6 @@ description: 'Instructions for installing the Apache Tomcat Java servlet engine 
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-11-13
-deprecated: true
 keywords: ["apache tomcat ubuntu 12.04", "java", "java ubuntu 12.04", "java servlets ubuntu lucid", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +17,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

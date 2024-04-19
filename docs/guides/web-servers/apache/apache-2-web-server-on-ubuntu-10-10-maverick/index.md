@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-12-06
 modified: 2012-10-08
-deprecated: true
 keywords: ["apache", "apache ubuntu 10.10", "apache ubuntu maverick", "web server", "apache on ubuntu", "apache maverick"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Ubuntu 10.10 (Maverick). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 10.10](/docs/guides/lamp-server-on-ubuntu-10-10-maverick/).
 

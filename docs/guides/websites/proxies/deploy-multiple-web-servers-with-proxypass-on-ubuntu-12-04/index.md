@@ -5,7 +5,6 @@ description: 'Deploy Separate Web Servers to Host Sites or Applications Using Pr
 authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 published: 2012-11-07
-deprecated: true
 keywords: ["apache", "proxypass", "apache on ubuntu", "multiple web servers", "lighttpd"]
 tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +12,7 @@ aliases: ['/websites/proxies/deploy-multiple-web-servers-with-proxypass-on-ubunt
 external_resources:
  - '[Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
  - '[Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)'
+deprecated: true
 ---
 
 In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.

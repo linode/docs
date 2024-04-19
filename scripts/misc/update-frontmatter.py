@@ -226,6 +226,8 @@ def sort_parameters():
                     contributors = ""
                     modified = ""
                     published = ""
+                    deprecated = ""
+                    deprecated_link = ""
 
                     frontmatter = False
                     yaml_token = "---"
@@ -264,6 +266,10 @@ def sort_parameters():
                             published = line
                         elif line.startswith("modified:"):
                             modified = line
+                        elif line.startswith("deprecated:"):
+                            deprecated = line
+                        elif line.startswith("deprecated_link:"):
+                            deprecated_link = line
 
                     # Reset the yaml token counter
                     yaml_token_counter = 0
@@ -280,6 +286,8 @@ def sort_parameters():
                             elif line.startswith(yaml_token) and yaml_token_counter == 1:
                                 yaml_token_counter += 1
                                 frontmatter = False
+                            elif line.startswith(yaml_token):
+                                yaml_token_counter += 1
 
                             if frontmatter:
                                 if line.startswith("---"):
@@ -320,8 +328,18 @@ def sort_parameters():
                                     continue
                                 elif line.startswith("modified"):
                                     continue
+                                elif line.startswith("deprecated:"):
+                                    continue
+                                elif line.startswith("deprecated_link:"):
+                                    continue
                                 else:
                                     fp.write(line)
+                            elif line.startswith(yaml_token) and yaml_token_counter == 2:
+                                if not deprecated == "":
+                                    fp.write(deprecated)
+                                if not deprecated_link == "":
+                                    fp.write(deprecated_link)
+                                fp.write("---\n")
                             else:
                                 fp.write(line)
 
@@ -331,8 +349,8 @@ def sort_parameters():
 def main():
 
     #update_titles()
-    remove_duplicate_parameters()
-    #sort_parameters()
+    #remove_duplicate_parameters()
+    sort_parameters()
 
 if __name__ == "__main__":
     main()

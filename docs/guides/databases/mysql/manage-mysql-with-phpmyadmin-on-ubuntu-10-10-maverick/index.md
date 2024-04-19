@@ -6,7 +6,6 @@ authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 published: 2011-01-10
 modified: 2013-09-24
-deprecated: true
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10.10-maverick/']
@@ -19,9 +18,8 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","php","database","mysql"]
+deprecated: true
 ---
-
-
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 

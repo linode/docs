@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-09-27
 modified: 2013-10-03
-deprecated: true
 keywords: ["opencart", "ecommerce", "commerce", "store", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/opencart-on-fedora-15/','/web-applications/e-commerce/opencart/fedora-15/']
@@ -15,9 +14,8 @@ relations:
         key: how-to-install-opencart
         keywords:
            - distribution: Fedora 15
+deprecated: true
 ---
-
-
 
 OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/products/platform/get-started/#setting-the-hostname).
 

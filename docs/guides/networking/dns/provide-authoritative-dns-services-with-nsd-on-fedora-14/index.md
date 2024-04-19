@@ -6,7 +6,6 @@ authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 published: 2011-01-25
 modified: 2013-09-25
-deprecated: true
 keywords: ["NSD", "DNS", "resolving", "Fedora 14", "networking"]
 tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.

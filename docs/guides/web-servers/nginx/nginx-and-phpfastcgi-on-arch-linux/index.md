@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-02
 modified: 2013-10-07
-deprecated: true
 keywords: ["nginx arch linux", "nginx arch", "nginx fastcgi", "nginx php"]
 tags: ["web server","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Arch Linux
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Arch Linux-powered Linode system.
 

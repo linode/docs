@@ -5,7 +5,6 @@ description: 'Configure the PhpBB System for Hosting Web-based Discussion Forums
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-11-08
-deprecated: true
 keywords: ["phpBB", "forum software", "web applications", "PHP", "Ubuntu 12.04", "precise pangolin"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +19,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.

@@ -6,10 +6,10 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-10-19
 modified: 2011-08-22
-deprecated: true
 keywords: ["winscp", "ftp", "windows scp", "sftp", "windows sftp program"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/file-transfer/transfer-files-winscp/','/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/']
+deprecated: true
 ---
 
 WinSCP is a free, open source file transfer program written for Microsoft Windows. It implements several file transfer protocols, most notably SFTP via SSH. This tool allows you to securely transfer files to and from your Linode using an encrypted channel, avoiding the security problems and usability issues inherent in traditional FTP client/server systems. WinSCP sends both your login credentials and file transfers over the network securely encrypted, while standard FTP clients send this information as plaintext.

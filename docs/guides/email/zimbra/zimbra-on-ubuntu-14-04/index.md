@@ -5,7 +5,6 @@ description: 'This guide shows how to install Zimbra, a complete self-hosted mai
 authors: ["Bill Bardon"]
 contributors: ["Bill Bardon"]
 published: 2015-10-01
-deprecated: true
 keywords: ["zimbra", "install zimbra", "mail server", "zimbra email", "zimbra email server", "mail zimbra", "open source guide", "zimbra open source", "postfix", "web mail", "opendkim", "amavis", "ubuntu tahr", "ubuntu 14.04", "ubuntu"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
+deprecated: true
 ---
 
 ![Install Zimbra on Ubuntu](Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)

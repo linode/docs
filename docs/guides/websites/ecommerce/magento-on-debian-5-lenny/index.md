@@ -6,7 +6,6 @@ authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 published: 2010-01-18
 modified: 2011-08-22
-deprecated: true
 keywords: ["Magento", "Debian", "ecommerce", "Store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/magento/debian-5-lenny/','/websites/ecommerce/magento-on-debian-5-lenny/']
@@ -15,6 +14,7 @@ relations:
         key: how-to-install-magento
         keywords:
            - distribution: Debian 5
+deprecated: true
 ---
 
 Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) and offers the user a wide variety of options.

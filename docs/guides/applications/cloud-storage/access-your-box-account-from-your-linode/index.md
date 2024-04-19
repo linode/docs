@@ -10,7 +10,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/cloud-storage/access-your-box-account-from-your-linode/']
 ---
 
-
 If you've discovered [Box](https://www.box.com/) then you know that it can be a great tool for storage, moving and managing files. The following tutorial helps you install and configure a free piece of software that facilitates Box access from your Linode.
 
 ## Before You Begin

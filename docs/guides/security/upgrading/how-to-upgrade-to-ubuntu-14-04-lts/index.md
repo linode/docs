@@ -9,13 +9,13 @@ modified: 2015-02-22
 keywords: ["upgrading", "ubuntu", "ubuntu 14.04"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-14-04-lts/']
+deprecated: true
 ---
 
 ![How to Upgrade to Ubuntu 14.04 LTS](How_to_Upgrade_to_Ubuntu_1404_LTS_smg.jpg)

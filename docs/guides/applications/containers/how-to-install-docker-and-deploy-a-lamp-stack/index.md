@@ -9,12 +9,12 @@ keywords: ["docker", "lamp", "LAMP", "ubuntu", "debian"]
 tags: ["lamp","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/containers/install-docker-and-lamp-stack/','/applications/containers/linode-lamp-container-docker/','/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/']
-deprecated: true
 external_resources:
  - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
+deprecated: true
 ---
 
 Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other.

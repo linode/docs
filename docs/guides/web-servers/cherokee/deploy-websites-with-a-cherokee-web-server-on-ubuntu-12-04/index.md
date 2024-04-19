@@ -5,7 +5,6 @@ description: 'This guide provides you with step-by-step instructions for deployi
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-10
-deprecated: true
 keywords: ["cherokee", "web sever", "ubuntu 12.04", "precise pangolin", "cherokee-admin"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +17,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.

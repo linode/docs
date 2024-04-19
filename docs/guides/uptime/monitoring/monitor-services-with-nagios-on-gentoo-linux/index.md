@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-11-15
 modified: 2013-10-01
-deprecated: true
 keywords: ["nagios", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/gentoo/','/uptime/monitoring/monitor-services-with-nagios-on-gentoo-linux/']
@@ -16,9 +15,8 @@ relations:
         keywords:
             - distribution: Gentoo
 tags: ["monitoring"]
+deprecated: true
 ---
-
-
 
 Nagios is a monitoring tool that makes it possible to monitor services on a single server or a pool of servers. It provides the capability to monitor a broad range of network services including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 

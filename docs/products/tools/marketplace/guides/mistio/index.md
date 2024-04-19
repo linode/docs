@@ -11,8 +11,8 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 _build:
   list: false
 noindex: true
-deprecated: true
 
+deprecated: true
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 Mist.io has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.

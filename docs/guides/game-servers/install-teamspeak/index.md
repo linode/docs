@@ -85,7 +85,6 @@ After TeamSpeak is downloaded, you're ready to start the server. TeamSpeak comes
                  loginname= "serveradmin", password= "RQkvl+Ip"
         ------------------------------------------------------------------
 
-
         ------------------------------------------------------------------
                               I M P O R T A N T
         ------------------------------------------------------------------

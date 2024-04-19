@@ -5,7 +5,6 @@ description: 'CouchDB is a non-relational document based database, also referred
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-09
-deprecated: true
 keywords: ["couchdb", "nosql", "json", "ubuntu", "futon"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04-precise-pangolin/','/databases/couchdb/ubuntu-12-04-precise-pangolin/']
@@ -18,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]
+deprecated: true
 ---
 
 CouchDB is a non-relational document based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language which supports an innovative concurrency model. While CouchDB does not use an SQL interface, it uses an HTTP interface and JSON as a data format for easy integration in application development.

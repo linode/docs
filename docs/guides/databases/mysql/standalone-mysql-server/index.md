@@ -6,11 +6,11 @@ authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 published: 2009-09-30
 modified: 2011-04-29
-deprecated: true
 keywords: ["mysql", "standalone myql", "separate mysql", "wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/standalone-mysql-server/']
+deprecated: true
 ---
 
 In some kinds of deployments, particularly where rich dynamic applications rely on a large database, separating the database server from the application server can permit your application to scale and accommodate a much larger user base. Designating a separate server to be used solely by MySQL will allow the application's web server to serve content more efficiently, while the database server will be able to respond more quickly.

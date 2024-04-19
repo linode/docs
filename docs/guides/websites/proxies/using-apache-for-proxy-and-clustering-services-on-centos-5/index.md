@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-03-22
 modified: 2011-04-29
-deprecated: true
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","centos","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: CentOS 5
+deprecated: true
 ---
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to mange clusters of web servers.

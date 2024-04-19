@@ -6,7 +6,6 @@ authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 published: 2009-12-23
 modified: 2011-04-27
-deprecated: true
 keywords: ["open source analytics", "piwik ubuntu 9.10", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: using-piwik-analytics
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.
 

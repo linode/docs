@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-01-13
 modified: 2015-11-18
-deprecated: true
 keywords: ["php cgi", "php", "apache", "cgi", "php scripts", "web apps", "web applications"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Debian 7
+deprecated: true
 ---
 
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the process of setting up Apache and PHP CGI.

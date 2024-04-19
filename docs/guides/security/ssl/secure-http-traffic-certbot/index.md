@@ -9,11 +9,11 @@ modified: 2020-12-02
 keywords: ["let's encrypt", "certbot", "ssl", "tls", "https"]
 tags: ["security", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
-deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 aliases: ['/quick-answers/websites/secure-http-traffic-certbot/','/quick-answers/websites/certbot/secure-http-traffic-certbot/']
 external_resources:
   - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'
+deprecated: true
+deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 ---
 
 ## What is Certbot?

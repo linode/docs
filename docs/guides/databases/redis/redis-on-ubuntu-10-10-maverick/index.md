@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-10-28
 modified: 2012-10-08
-deprecated: true
 keywords: ["redis ubuntu 10.10", "redis maverick", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-ubuntu-10-10-maverick/','/databases/redis/ubuntu-10-10-maverick/']
@@ -16,9 +15,8 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","nosql"]
+deprecated: true
 ---
-
-
 
 Redis is a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server on Ubuntu 10.10 (Maverick) and an overview of best practices for maintaining Redis instances.
 

@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-23
 modified: 2013-10-04
-deprecated: true
 keywords: ["apache debian 6", "apache debian squeeze", "linux web server", "apache on debian", "apache squeeze"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Debian 6 (Squeeze).
 

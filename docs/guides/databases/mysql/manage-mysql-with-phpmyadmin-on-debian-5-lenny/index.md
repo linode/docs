@@ -9,7 +9,6 @@ modified: 2014-01-22
 keywords: ["mysql", "phpmyadmin", "sql", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-debian-5-lenny/','/databases/mysql/phpmyadmin-debian-5-lenny/']
-deprecated: true
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
@@ -19,6 +18,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["ubuntu","php","database","mysql"]
+deprecated: true
 ---
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.

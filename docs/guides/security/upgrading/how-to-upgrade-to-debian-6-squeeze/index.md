@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-05
 modified: 2013-10-01
-deprecated: true
 keywords: ["debian upgrade", "upgrade distro", "squeeze upgrade", "squeeze"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
-
-
 
 This guide explains how to upgrade your system to Debian 6 (Squeeze) from Debian 5 (Lenny). Before you begin, you should make sure that you have a working backup or a copy of your data. If you haven't already done so, you will also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. You should be logged in as root while performing these steps.
 

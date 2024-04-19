@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-06-01
 modified: 2013-02-05
-deprecated: true
 keywords: ["upgrading", "ubuntu", "precise"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Ubuntu 12.04 is a long-term support (LTS) release that will be supported until April 2017. This guide explains how to upgrade your Linode from Ubuntu 10.04 LTS (Lucid) or Ubuntu 11.04 (Natty) to Ubuntu 12.04 LTS (Precise).

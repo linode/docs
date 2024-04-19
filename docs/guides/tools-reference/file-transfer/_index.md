@@ -10,4 +10,3 @@ aliases: ['/tools-reference/file-transfer/','/networking/file-transfer/']
 show_in_lists: true
 ---
 
-

@@ -6,7 +6,6 @@ authors: ["Navjot Singh"]
 contributors: ["Navjot Singh"]
 published: 2016-03-11
 modified: 2017-02-15
-deprecated: true
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 aliases: ['/websites/cms/wordpress/install-wordpress-using-wp-cli-on-ubuntu-14-04/','/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/']
 tags: ["ubuntu","wordpress","cms","lamp"]
@@ -19,9 +18,8 @@ relations:
         key: how-to-install-wordpress-using-wp-cli
         keywords:
            - distribution: Ubuntu 14.04
+deprecated: true
 ---
-
-
 
 Everyone is probably familiar with WordPress and its renowned 5-minute install routine. It's simple and works without fuss. But when you have multiple sites to manage, repeating the same routine can waste plenty of time which you could have used elsewhere.
 

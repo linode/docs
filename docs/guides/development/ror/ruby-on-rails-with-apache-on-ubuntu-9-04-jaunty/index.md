@@ -10,7 +10,6 @@ keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/','/frameworks/ruby-on-rails-apache/ubuntu-9-04-jaunty/','/websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/']
-deprecated: true
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
 relations:
@@ -18,9 +17,8 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 9.04
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement, dynamic, fully featured web applications quickly, written in the Ruby programing language.
 

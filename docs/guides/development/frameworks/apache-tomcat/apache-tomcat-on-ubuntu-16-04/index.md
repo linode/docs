@@ -16,13 +16,13 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["java"]
-deprecated: true
-deprecated_link: 'development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-18-04/'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
+deprecated_link: 'development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-18-04/'
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

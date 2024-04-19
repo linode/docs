@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05
 modified: 2014-08-13
-deprecated: true
 keywords: ["oracle ubuntu maverick", "oracle 10g ubuntu 10.10", "oracle ubuntu 10.10", "oracle ubuntu", "oracle linux", "sql database", "relational database", "rdbms", "oracle 10g"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-10-maverick/','/databases/oracle/10g-ubuntu-10-10-maverick/']
@@ -16,9 +15,8 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database"]
+deprecated: true
 ---
-
-
 
 Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Ubuntu 10.10 (Maverick) Linode.
 

@@ -15,7 +15,6 @@ tags: ["linux"]
 aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
 ---
 
-
 ## What is e2fsck?
 
 **e2fsck** is a utility that examines `ext2`, `ext3`, and `ext4` filesystems for errors, and attempts to repair them if possible. It is the backend tool that the popular [fsck](/docs/guides/how-to-use-fsck-to-fix-disk-problems/) frontend utility calls for a combination of tasks related to `ext` filesystems.

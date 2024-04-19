@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-12-17
 modified: 2011-04-29
-deprecated: true
 keywords: ["exim", "mail server", "linux mail", "smtp server", "ubuntu exim", "ubuntu 9.10"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Many Linux server applications need to send email; cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 9.10 (Karmic) Linode.
 

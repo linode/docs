@@ -6,7 +6,6 @@ authors: ["Michael Zuo"]
 contributors: ["Michael Zuo"]
 published: 2016-01-07
 modified: 2020-12-01
-deprecated: true
 keywords: ["coreos", "custom", "finnix", "lish"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +17,7 @@ relations:
         keywords:
             - distribution: CoreOS
 aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
+deprecated: true
 ---
 {{< note >}}
 CoreOS Container Linux is now available for deployment from the Linode Manager.

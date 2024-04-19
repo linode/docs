@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-10-19
 modified: 2011-07-19
-deprecated: true
 keywords: ["LAMP", "CentOS", "CentOS 5"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 5.6 system.
 

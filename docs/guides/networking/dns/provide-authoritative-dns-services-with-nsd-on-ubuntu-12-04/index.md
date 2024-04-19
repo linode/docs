@@ -5,7 +5,6 @@ description: 'Configure NSD to Handle DNS Queries on Ubuntu 12.04 (Precise Pango
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-09
-deprecated: true
 keywords: ["NSD", "DNS", "Ubuntu", "networking", "zone file", "name server daemon"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +17,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 NSD is a lightweight yet full-featured open-source name server daemon created to provide an alternative to BIND.

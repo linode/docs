@@ -10,12 +10,12 @@ keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/ispconfig/ubuntu-10-10-maverick/','/websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/','/websites/cms/ispconfig/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/']
-deprecated: true
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Ubuntu 10.10
+deprecated: true
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.

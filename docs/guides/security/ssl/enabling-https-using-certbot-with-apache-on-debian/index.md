@@ -15,7 +15,6 @@ relations:
             - distribution: Debian
 ---
 
-
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the Apache web server on Debian 10 and 9. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on Apache (or other web servers).
 
 **Supported distributions:** Debian 10 (Buster) and Debian 9 (Stretch). Debian 8 (Jessie) is no longer supported by Certbot.

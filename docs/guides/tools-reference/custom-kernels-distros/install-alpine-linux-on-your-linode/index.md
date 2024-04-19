@@ -9,7 +9,6 @@ modified: 2018-12-18
 keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine linux", "alpine linux packages"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-deprecated: True
 external_resources:
 - '[Alpine Linux](http://www.alpinelinux.org/)'
 relations:
@@ -18,6 +17,7 @@ relations:
         keywords:
             - distribution: Alpine
 aliases: ['/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/']
+deprecated: True
 ---
 
 ![Install Alpine Linux on your Linode](Install_Alpine_Linux_on_your_Linode_smg.png "Install Alpine Linux on your Linode")

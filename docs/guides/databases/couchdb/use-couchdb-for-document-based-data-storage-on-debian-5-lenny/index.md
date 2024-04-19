@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-02-08
 modified: 2012-10-03
-deprecated: true
 keywords: ["couchdb", "nosql", "json", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/debian-5-lenny/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-debian-5-lenny/']
@@ -16,9 +15,8 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","nosql"]
+deprecated: true
 ---
-
-
 
 CouchDB is a non-relational document-based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language which supports an innovative concurrency model. CouchDB does not use an SQL interface, opting for an HTTP interface and JSON as a data format for easy integration in application development.
 

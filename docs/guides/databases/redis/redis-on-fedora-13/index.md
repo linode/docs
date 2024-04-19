@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-08-05
 modified: 2011-04-29
-deprecated: true
 keywords: ["redis fedora 13", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-fedora-13/','/databases/redis/fedora-13/']
@@ -16,9 +15,8 @@ relations:
         keywords:
             - distribution: Fedora 13
 tags: ["nosql","database","fedora"]
+deprecated: true
 ---
-
-
 
 Redis is a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 

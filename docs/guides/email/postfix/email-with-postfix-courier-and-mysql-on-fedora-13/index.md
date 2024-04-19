@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-06-02
 modified: 2011-05-17
-deprecated: true
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on fedora 13", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["fedora","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
 

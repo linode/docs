@@ -21,7 +21,6 @@ external_resources:
 tags: ["web server","apache"]
 ---
 
-
 ![Rule-based Access Control for Apache](RBAC_Apache.jpg)
 Apache provides a number of tools that allow administrators to control access to specific resources provided by servers. You may already be familiar with [authentication based access controls](/docs/guides/apache-configuration-structure/), which requires that visitors authenticate to the server before gaining access to resources.
 

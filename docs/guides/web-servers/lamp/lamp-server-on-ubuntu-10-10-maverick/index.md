@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-10-13
 modified: 2012-10-03
-deprecated: true
 keywords: ["ubuntu lamp server", "ubuntu 10.10 lamp", "maverick lamp", "ubuntu web server", "ubuntu maverick"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 This guide provides step by step instructions for installing a full featured LAMP stack on an Ubuntu 10.10 (Maverick) system. The 10.10 release is the most current release of the Ubuntu operating system, and will be supported with security updates until April of 2012.
 

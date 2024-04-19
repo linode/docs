@@ -6,7 +6,6 @@ authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 published: 2011-04-05
 modified: 2013-10-01
-deprecated: true
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.
 

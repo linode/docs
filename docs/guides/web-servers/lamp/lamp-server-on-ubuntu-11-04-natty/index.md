@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-06-09
 modified: 2013-02-18
-deprecated: true
 keywords: ["ubuntu lamp server", "ubuntu 11.04 lamp", "natty lamp", "ubuntu web server", "ubuntu natty"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 11.04
+deprecated: true
 ---
-
-
 
 This guide provides step by step instructions for installing a full featured LAMP stack on an Ubuntu 11.04 (Natty) system. The 11.04 release will be supported with security updates until October of 2012.
 

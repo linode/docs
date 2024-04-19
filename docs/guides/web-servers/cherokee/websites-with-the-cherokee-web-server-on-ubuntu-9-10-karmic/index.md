@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-10-29
 modified: 2011-05-09
-deprecated: true
 keywords: ["cherokee", "web sever", "cherokee ubuntu 9.10", "cherokee ubuntu karmic", "ubuntu karmic"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
 

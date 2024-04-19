@@ -6,7 +6,6 @@ authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 published: 2013-08-22
 modified: 2014-02-17
-deprecated: true
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu precise", "12.04", "debian 7", "debian"]
 tags: ["networking","vpn","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +20,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.

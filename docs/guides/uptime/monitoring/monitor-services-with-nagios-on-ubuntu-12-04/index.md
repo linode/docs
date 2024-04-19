@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-11-07
 modified: 2013-04-05
-deprecated: true
 keywords: ["nagios", "monitor services", "ubuntu 12.04", "smtp", "pop3", "http", "icmp", "ssh", "notifications", "alerts"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +20,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Nagios is a monitoring tool that allows you to monitor services on a single server or a pool of servers. It can keep an eye on a broad range of network services, including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.

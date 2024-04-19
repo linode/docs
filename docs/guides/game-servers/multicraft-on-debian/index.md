@@ -11,7 +11,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
  - '[Minecraft.net](https://minecraft.net/)'
-deprecated: true
 aliases: ['/game-servers/multicraft-on-debian/','/applications/game-servers/multicraft-on-debian/']
 dedicated_cpu_link: true
 relations:
@@ -19,6 +18,7 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Debian
+deprecated: true
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.

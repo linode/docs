@@ -10,4 +10,3 @@ aliases: ['/websites/lamp/','/web-servers/lamp/','/lamp-guides/']
 show_in_lists: true
 ---
 
-

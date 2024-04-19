@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-03-19
 modified: 2011-05-17
-deprecated: true
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.
 

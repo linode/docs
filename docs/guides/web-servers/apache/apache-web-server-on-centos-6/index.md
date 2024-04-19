@@ -6,7 +6,6 @@ authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 published: 2013-11-11
 modified: 2018-12-31
-deprecated: true
 keywords: ["Apache", "web sever", "CentOS 6", "centos", "apache 2", "httpd"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 6
+deprecated: true
 ---
 
 ![Apache Web Server on CentOS 6](Apache_Web_Server_smg.jpg)

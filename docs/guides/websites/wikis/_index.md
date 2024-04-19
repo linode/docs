@@ -10,4 +10,3 @@ aliases: ['/web-applications/wikis/','/websites/wikis/']
 show_in_lists: true
 ---
 
-

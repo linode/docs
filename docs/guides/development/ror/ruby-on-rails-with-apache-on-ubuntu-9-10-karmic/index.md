@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-07-29
 modified: 2011-05-17
-deprecated: true
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 

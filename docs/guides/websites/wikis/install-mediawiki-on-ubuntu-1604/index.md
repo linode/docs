@@ -10,8 +10,6 @@ keywords: ["mediawiki", "wiki", "web-applications"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/install-mediawiki-on-ubuntu-1604/']
-deprecated: true
-deprecated_link: 'guides/how-to-install-mediawiki-ubuntu-2004/'
 external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'
  - '[What is Media Wiki](https://www.mediawiki.org/wiki/Manual:What_is_MediaWiki%3F)'
@@ -21,6 +19,8 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: Ubuntu 16.04
+deprecated: true
+deprecated_link: 'guides/how-to-install-mediawiki-ubuntu-2004/'
 ---
 
 ![mediawiki Banner](MediaWiki.jpg)

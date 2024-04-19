@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-10
 modified: 2015-07-15
-deprecated: true
 keywords: ["apache", "ubuntu", "ubuntu 12.04", "precise", "pengolin", "apache web server", "web server"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for running web servers.  This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.

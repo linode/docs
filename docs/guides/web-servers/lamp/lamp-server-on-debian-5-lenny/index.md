@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-07-16
 modified: 2012-10-03
-deprecated: true
 keywords: ["Debian LAMP Server", "Debian LAMP guide", "LAMP howto"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Debian 5.0 (Lenny) system.
 

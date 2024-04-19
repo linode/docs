@@ -10,12 +10,12 @@ keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", "how 
 tags: ["lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/wordpress/','/websites/cms/wordpress/how-to-install-and-configure-wordpress/','/websites/cms/manage-web-content-with-wordpress/','/websites/cms/how-to-install-and-configure-wordpress/']
-deprecated: true
-deprecated_link: websites/cms/install-wordpress-ubuntu-18-04/
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
+deprecated: true
+deprecated_link: websites/cms/install-wordpress-ubuntu-18-04/
 ---
 
 WordPress is a popular, dynamic, blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.

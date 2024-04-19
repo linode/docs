@@ -11,4 +11,3 @@ show_in_lists: true
 aliases: ['/guides/calico-secure-lke/']
 ---
 
-

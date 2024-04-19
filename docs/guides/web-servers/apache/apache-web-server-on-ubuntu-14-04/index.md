@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2015-07-31
 modified: 2018-12-31
-deprecated: true
 keywords: ["apache", "ubuntu", "ubuntu 14.04", "trusty tahr", "http", "web server"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
 ---
 
 ![How to Install and Configure Apache Web Server on Ubuntu 14.04 LTS](Apache_Web_Server_on_Ubuntu_1404_LTS_smg.jpg)

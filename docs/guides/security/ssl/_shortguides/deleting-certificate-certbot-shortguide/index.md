@@ -16,7 +16,6 @@ keywords: ["shortguide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-
 ## Deleting a TLS/SSL Certificate Using Certbot
 
 The `certbot revoke` command revokes a certificate and provides an option for deleting it. The `--cert-path` parameter must include the location of the certificate. Certbot indicated the certificate directory when it granted the certificate.

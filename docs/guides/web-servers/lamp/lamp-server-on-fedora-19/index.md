@@ -6,7 +6,6 @@ authors: ["James Stewart"]
 contributors: ["James Stewart"]
 published: 2013-11-18
 modified: 2014-04-11
-deprecated: true
 keywords: ["fedora 19 lamp","lamp server","linux lamp","fedora 19 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 19
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Fedora 19 system. In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 {{< note >}}

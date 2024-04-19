@@ -10,8 +10,6 @@ keywords: ["version control", "git", "gitlab", "ruby", "ruby on rails", "mysql",
 tags: ["version control system","email","ruby","nginx","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/','/gitlab-with-ubuntu/','/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/','/applications/development/gitlab-on-ubuntu-14-04/','/applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/']
-deprecated: true
-deprecated_link: development/version-control/install-gitlab-on-ubuntu-18-04/
 external_resources:
  - '[GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)'
  - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
@@ -23,8 +21,9 @@ relations:
         key: install-gitlab
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
+deprecated_link: development/version-control/install-gitlab-on-ubuntu-18-04/
 ---
-
 
 ![Install Gitlab on Ubuntu](Install_GitLab_smg.jpg)
 

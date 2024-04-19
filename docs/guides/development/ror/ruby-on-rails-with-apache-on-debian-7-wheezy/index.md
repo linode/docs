@@ -9,8 +9,6 @@ keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-apache-on-debian-7-wheezy/','/websites/ror/ruby-on-rails-with-apache-on-debian-7-wheezy/','/frameworks/ruby-on-rails-apache/debian-7-wheezy/']
-deprecated: true
-deprecated_link: 'development/ror/ruby-on-rails-apache-debian/'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
@@ -19,6 +17,8 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 7
+deprecated: true
+deprecated_link: 'development/ror/ruby-on-rails-apache-debian/'
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.

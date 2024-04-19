@@ -17,7 +17,6 @@ external_resources:
 tags: ["linux"]
 ---
 
-
 [GNU Wget](https://www.gnu.org/software/wget/) is a non-interactive tool for downloading files from the internet. Wget is a mature package with a robust set of features. Typically wget is used to retrieve the latest packages from HTTP or FTP repositories.
 
 The noninteractive nature of Wget makes it perfect for use in automatic scripts. This guide will walk you through downloading the [Linode Speed Test files](https://www.linode.com/speedtest) by using wget.

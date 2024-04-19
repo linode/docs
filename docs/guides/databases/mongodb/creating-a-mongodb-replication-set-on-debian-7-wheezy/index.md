@@ -6,8 +6,6 @@ description: 'This guide provides you with step-by-step instructions for creatin
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-04-09
-deprecated: true
-deprecated_link: 'guides/create-a-mongodb-replica-set/'
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/debian-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/']
@@ -23,6 +21,7 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","nosql"]
 deprecated: true
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.

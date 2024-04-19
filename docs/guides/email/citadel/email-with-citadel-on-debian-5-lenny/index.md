@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-11-09
 modified: 2012-10-08
-deprecated: true
 keywords: ["citadel", "debian mail server", "groupware", "email server", "email howto"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
 

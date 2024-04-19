@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2009-08-11
 modified: 2014-01-22
-deprecated: true
 keywords: ["MySQL on Linux", "MySQL CentOS", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/centos-5/','/databases/mysql/use-mysql-relational-databases-on-centos-5/']
@@ -16,9 +15,8 @@ relations:
         keywords:
             - distribution: CentOS 5
 tags: ["database","mysql","centos"]
+deprecated: true
 ---
-
-
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a CentOS 5 Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 

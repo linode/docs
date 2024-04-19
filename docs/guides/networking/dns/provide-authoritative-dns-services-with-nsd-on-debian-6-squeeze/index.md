@@ -5,7 +5,6 @@ description: 'This guide will show you to install and configure NSD, a lightweig
 authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 published: 2011-06-08
-deprecated: true
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +14,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.

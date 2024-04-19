@@ -6,7 +6,6 @@ authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 published: 2010-08-01
 modified: 2011-06-15
-deprecated: true
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key:  asp-mono-apache
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 `mod_mono` is an Apache module that makes it possible to run ASP.NET applications in Linux environments running Apache. While ASP.NET is a Microsoft technology and is traditionally used with IIS, `mod_mono` has become a viable option for deploying ASP.NET applications on Linux. This guide is largely based on the [mod\_mono guide from the Ubuntu Community](https://help.ubuntu.com/community/ModMono) and the [Mono Project's Apache and Mono document](http://mono-project.com/Mod_mono) with minor modifications. This guide does not cover installation and configuration of the Mono IDE which is used to develop ASP.NET applications on Linux. If you are interested in developing using Visual Studio for Mono, you can download a 30-day trial of the commercial Mono Tools plugin at the [Mono Tools for Visual Studio page](http://go-mono.com/monotools).
 

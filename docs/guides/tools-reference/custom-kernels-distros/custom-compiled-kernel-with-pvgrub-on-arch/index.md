@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-07-17
 modified: 2020-12-01
-deprecated: true
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", "arch"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:
@@ -15,6 +14,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-on-arch/']
+deprecated: true
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

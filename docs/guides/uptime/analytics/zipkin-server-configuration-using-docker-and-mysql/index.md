@@ -14,7 +14,6 @@ external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
 
-
 [Zipkin](http://zipkin.io/) is a used for capturing timing data, it also has a centralized repository, and a microweb server that allows you to display, and search through spans and traces of your distributed programs or websites.
 
 We can configure Zipkin by [deploying it in a Docker container](http://zipkin.io/pages/quickstart). Using this approach, we can match the latest version of Zipkin by just pulling down the latest images. You can Isolate the Docker service and dependencies to just the container(s), and chose where you want your data to persist. Most importantly, by using Docker, you can spend more time focused on data analysis, instead of spending time on configuring a Zipkin as a service.

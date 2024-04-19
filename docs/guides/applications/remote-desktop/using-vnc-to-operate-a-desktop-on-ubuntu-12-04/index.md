@@ -6,7 +6,6 @@ authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]
 published: 2014-04-10
 modified: 2014-08-21
-deprecated: true
 keywords: ["vnc", "remote desktop", "ubuntu", "12.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +18,7 @@ relations:
         key: install-vnc
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 ![Using VNC to Operate a Desktop on Ubuntu 12.04](using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg "Using VNC to Operate a Desktop on Ubuntu 12.04")

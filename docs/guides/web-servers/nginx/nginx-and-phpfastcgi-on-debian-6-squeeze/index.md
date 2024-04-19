@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-05-09
 modified: 2011-06-15
-deprecated: true
 keywords: ["nginx", "nginx debian 6", "nginx fastcgi", "nginx php"]
 tags: ["web server","debian","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +15,7 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Debian 6 (Squeeze) Linode.

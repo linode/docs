@@ -10,15 +10,13 @@ keywords: ["Apache", "web sever", "Ubuntu Jaunty"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/','/web-servers/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/','/web-servers/apache/installation/ubuntu-9-04-jaunty/']
-deprecated: true
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 9.04
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/guides/lamp-server-on-ubuntu-9-04-jaunty/).
 

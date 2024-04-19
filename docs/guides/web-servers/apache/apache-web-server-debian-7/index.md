@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2013-09-05
 modified: 2018-12-31
-deprecated: true
 keywords: ["apache", "apache 2", "debian", "debian 7", "wheezy", "apache web server"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +19,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Debian 7
+deprecated: true
 ---
 
 ![Apache Web Server on Debian](Apache_Web_Server_on_Debian_7_Wheezy_smg.jpg)

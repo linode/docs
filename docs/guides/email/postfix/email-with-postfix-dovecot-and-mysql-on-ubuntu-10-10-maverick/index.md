@@ -6,7 +6,6 @@ authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]
 published: 2010-10-12
 modified: 2012-10-08
-deprecated: true
 keywords: ["postfix ubuntu 10.10", "dovecot ubuntu 10.10", "ubuntu 10.10 mail server", "dovecot", "email", "ubuntu", "maverick"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,9 +15,8 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 The Postfix Mail Transfer Agent (MTA) is a high performance open source e-mail server system. This guide will help you get Postfix running on your Linode, using Dovecot for IMAP/POP3 service and MySQL to store information on virtual domains and users. This guide is largely based on Christoph Haas's great [ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny) and HowtoForge [Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny), with some packages omitted.
 

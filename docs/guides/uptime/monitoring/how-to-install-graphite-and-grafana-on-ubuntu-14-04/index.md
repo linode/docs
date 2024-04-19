@@ -9,15 +9,14 @@ keywords: ["graphite", "grafana", "monitor", "monitoring", "monitoring tool", "a
 aliases: ['/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/']
 tags: ["monitoring","postregsql","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
-deprecated_link: uptime/monitoring/install-graphite-and-grafana/
 external_resources:
   - '[Installing Graphite](http://graphite.readthedocs.org/en/latest/install.html)'
   - '[Configuring Carbon](http://graphite.readthedocs.org/en/latest/config-carbon.html)'
   - '[Installing Grafana on Debian/Ubuntu](http://docs.grafana.org/installation/debian/)'
   - '[Adding Graphite data source to Grafana](http://docs.grafana.org/datasources/graphite/)'
+deprecated: true
+deprecated_link: uptime/monitoring/install-graphite-and-grafana/
 ---
-
 
 ![Graphite with Grafana](Deploy_Graphite_smg.jpg)
 

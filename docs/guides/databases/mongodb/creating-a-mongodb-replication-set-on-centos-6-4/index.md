@@ -6,8 +6,6 @@ description: "This guide will show you how to configure a MongoDB ReplSet on Cen
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-04-09
-deprecated: true
-deprecated_link: 'guides/create-a-mongodb-replica-set/'
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/centos-6/','/databases/mongodb/creating-a-mongodb-replication-set-on-centos-6-4/']
@@ -22,6 +20,8 @@ relations:
         keywords:
             - distribution: CentOS 6.4
 tags: ["nosql","database","centos"]
+deprecated: true
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 ---
 
 MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.

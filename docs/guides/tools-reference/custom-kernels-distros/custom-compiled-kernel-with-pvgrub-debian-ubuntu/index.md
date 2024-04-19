@@ -6,7 +6,6 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2015-04-03
 modified: 2020-12-01
-deprecated: true
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu/','/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-7-ubuntu/']
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", "debian", "ubuntu"]
 tags: ["debian", "ubuntu"]
@@ -16,6 +15,7 @@ relations:
         key: custom-compiled-kernel-pvgrub
         keywords:
             - distribution: Debian/Ubuntu
+deprecated: true
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}
