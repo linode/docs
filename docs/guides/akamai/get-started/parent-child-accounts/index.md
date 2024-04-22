@@ -3,6 +3,7 @@ slug: parent-child-account
 description: 'Learn how parent and child accounts can help Akamai partners manage multiple accounts.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2024-04-23
+keywords: ["akamai partners", "parent", "child", "parent/child relationship"]
 modified_by:
   name: Linode
 published: 2022-04-23
@@ -74,7 +75,7 @@ When switching to a child account, you become the child account parent user. By 
 - Read/write permission for billing. This is the only permission that can’t be modified even by a child account admin.
 - Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them. 
 - No access to asset instances created after the creation of the parent/child relationship. The child account parent user needs to ask a child account admin to grant them access to new instances if necessary.
-- The [global permissions](https://www.linode.com/docs/products/platform/accounts/guides/user-permissions/) set off.
+- The [global permissions](/docs/products/platform/accounts/guides/user-permissions/) set off.
 
 A child account admin can change the child account parent user’s default permissions and expand or restrict its access to the child account, except for billing. If the child account admin provides the child account parent user with full access to the child account, the child account parent user can fully manage the account, including its users.
 
@@ -128,7 +129,7 @@ By default, a child account parent user user has:
 - Read/write permission for billing. This is the only permission that can’t be modified even by a child account admin.
 - Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them. 
 - No access to asset instances created after the creation of the parent/child relationship. The child account parent user needs to ask a child account admin to grant them access to new instances if necessary.
-- The [global permissions](https://www.linode.com/docs/products/platform/accounts/guides/user-permissions/) set off.
+- The [global permissions](/docs/products/platform/accounts/guides/user-permissions/) set off.
 
 As a child account admin you can change the default permissions of the child account parent user to expand or restrict access as you see fit, except for billing. If you provide the child account parent user with full access to the child account, it becomes the child account parent user with full access and can fully manage your child account, including its users.
 
