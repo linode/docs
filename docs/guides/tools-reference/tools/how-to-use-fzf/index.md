@@ -1,13 +1,12 @@
 ---
 slug: how-to-use-fzf
+title: "How to Install and Use fzf on Linux"
 description: "Learn how to use fzf, a command-line fuzzy finder that integrates with numerous tools to improve your searches."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-06-12
 keywords: ['command line search fzf','fzf bash','fzf vim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-06-12
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Install and Use fzf on Linux"
-authors: ['Nathaniel Stickman']
 external_resources:
 - '[GitHub: junegunn/fzf](https://github.com/junegunn/fzf)'
 - '[GitHub: junegunn/fzf — Advanced fzf Examples](https://github.com/junegunn/fzf/blob/master/ADVANCED.md)'

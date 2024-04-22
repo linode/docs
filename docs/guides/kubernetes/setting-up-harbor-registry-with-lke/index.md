@@ -3,12 +3,11 @@ slug: setting-up-harbor-registry-with-lke
 title: "Set Up a Self-Hosted Harbor Registry and Deploy Images to Kubernetes"
 title_meta: "Install Harbor Registry and Deploy Images to Kubernetes"
 description: "Learn the benefits of Harbor vs Docker Hub, how to install the Harbor registry software in the cloud, and how to connect a Kubernetes cluster to the registry."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-06-13
 keywords: ['what is harbor registry','install harbor kubernetes','harbor vs docker registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-06-13
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Harbor Docs: Harbor Installation and Configuration](https://goharbor.io/docs/2.7.0/install-config/)'
 - '[Kubernetes: Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)'

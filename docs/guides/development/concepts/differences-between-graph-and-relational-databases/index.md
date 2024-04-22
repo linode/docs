@@ -3,12 +3,11 @@ slug: differences-between-graph-and-relational-databases
 title: "The Differences Between Graph and Relational Databases"
 title_meta: "Graph Databases vs. Relational Databases"
 description: 'This overview guide introduces the reader to Graph databases. Its discussion of relational databases helps the reader understand the unique advantages and use cases of Graph databases.'
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2023-11-15
 keywords: ['graph database vs relational', 'graph database vs relational database performance', 'when to use graph database vs relational ']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jack Wallen"]
-published: 2023-11-15
-modified_by:
-  name: Linode
 ---
 
 Nearly every business depends on data. Data powers websites, desktops and mobile apps, predicts trends, collects information about clients and customers and keeps tabs on products and people. However, not all databases are created equal. Some databases, such as SQLite, are best suited for embedded devices or small collections of information. Others, like MongoDB, are better suited for enterprises dealing with massive amounts of data.

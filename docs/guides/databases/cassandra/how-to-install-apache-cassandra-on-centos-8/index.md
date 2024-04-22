@@ -1,15 +1,14 @@
 ---
 slug: how-to-install-apache-cassandra-on-centos-8
-description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for CentOS 8.'
-keywords: ["cassandra", " apache cassandra", " centos 7", "CentOS8", " database", " nosql"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-30
-image: L_Cass_on_CentOS8.png
-modified: 2020-01-30
-modified_by:
-  name: Linode
 title: "Install Apache Cassandra on CentOS 8"
 title_meta: "How to Install Apache Cassandra on CentOS 8"
+description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-30
+keywords: ["cassandra", " apache cassandra", " centos 7", "CentOS8", " database", " nosql"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: L_Cass_on_CentOS8.png
 external_resources:
    - '[Cassandra Documentation](http://cassandra.apache.org/doc/latest/)'
    - '[Cassandra cqlshrc File Configuration Overview](http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html)'
@@ -23,7 +22,6 @@ relations:
             - distribution: CentOS 8
 tags: ["centos","database","nosql"]
 aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-centos-8/']
-authors: ["Linode"]
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running CentOS 8. This tutorial will cover basic configuration options, as well as how to harden and secure your database.

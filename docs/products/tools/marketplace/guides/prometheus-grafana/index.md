@@ -1,17 +1,14 @@
 ---
 title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 description: "Deploy Prometheus & Grafana on a Linode Compute Instance. This application provides you with a reliable monitoring solution for all of your infrastructure. "
-keywords: ['monitoring','observability']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-03-29
 modified: 2023-06-26
-modified_by:
-  name: Linode
+keywords: ['monitoring','observability']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'
 aliases: ['/products/tools/marketplace/guides/prometheusgrafana']
-authors: ["Linode"]
 ---
 
 This Marketplace App installs both [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/), two open source tools that are commonly used together to collect and view data.

@@ -1,16 +1,13 @@
 ---
+title: "Deploy BeEF through the Linode Marketplace"
 description: "Deploy BeEF on a Linode Compute Instance. This provides you with a penetration testing tool that focuses on web-borne attacks against clients."
-keywords: ['security','vulnerability','penetration testing']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2024-04-16
-modified_by:
-  name: Linode
-title: "Deploy BeEF through the Linode Marketplace"
+keywords: ['security','vulnerability','penetration testing']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[BeEF](https://beefproject.com/)'
 aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [BeEF](https://beefproject.com/) (The Browser Exploitation Framework) is a penetration testing tool that focuses on the web browser. BeEF offers an efficient and affective penetration test tool to assess the actual security posture of a target environment by using client-side attack vectors. BeEF looks beyond just the network perimeter and client system. It allows you to examine exploitability within the context of the web browser.

@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-pixelfed
+title: "How to Install and Configure Pixelfed"
+title_meta: "Installing and Configuring Pixelfed"
 description: 'This guide explains how to install and configure the distributed photo-sharing site Pixelfed'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-04-10
 keywords: ['install Pixelfed', 'configure Pixelfed', 'How to install Pixelfed on Ubuntu']
 tags: ['apache', 'nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-10
-modified_by:
-  name: Linode
-title: "How to Install and Configure Pixelfed"
-title_meta: "Installing and Configuring Pixelfed"
 external_resources:
 - '[Pixelfed](https://pixelfed.org/)'
 - '[Pixelfed Documentation](https://docs.pixelfed.org/)'
@@ -16,7 +16,6 @@ external_resources:
 - '[Pixelfed Installation Details](https://docs.pixelfed.org/running-pixelfed/installation)'
 - '[A summary of Pixelfed features](https://pixelfed.org/features)'
 - '[Certbot](https://certbot.eff.org/)'
-authors: ["Jeff Novotny"]
 ---
 
 [Pixelfed](https://pixelfed.org/) is a decentralized federated application that allows users to share photos, art, and videos. This guide explains how to install and configure Pixelfed and provides details about all prerequisites.
