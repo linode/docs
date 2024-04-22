@@ -7,12 +7,13 @@ authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2022-03-04
 keywords: ['redis hashes example', 'accessing redis hashes', 'get redis hashes all key']
-tags: ['redis server', 'redis','saas']
+tags: ['redis server', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
 - '[Redis: Command Reference - Hashes](https://redis.io/commands#hash)'
 - '[Redis in Action: Hashes in Redis](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/1-2-4-hashes-in-redis/)'
+tags: ["saas"]
 ---
 
 Redis, the open-source NoSQL database, is frequently used for caching, messaging, and other storage needs where speed and low latency are required. Redis supports the hash data type which enables you to store field-value pairs of simple to highly complex data. This tutorial breakdown what Redis hashes are and walks you through examples of how to create, access, and modify hashes. This tutorial provides you with the tools to start using hashes in your Redis databases.

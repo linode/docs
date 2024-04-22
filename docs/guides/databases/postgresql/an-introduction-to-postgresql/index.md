@@ -7,10 +7,11 @@ authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2022-01-07
 keywords: ['postgresql vs mysql','what is postgresql?','difference between mysql and postgresql','postgres use cases']
-tags: ['postgresql', 'mysql', 'saas']
+tags: ['postgresql', 'mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[PostgreSQL website](https://www.postgresql.org/)'
+tags: ["saas"]
 ---
 
 [*PostgreSQL*](https://www.postgresql.org/) is an *object-relational database management system* (ORDBMS) that provides a powerful alternative to a traditional *relational database management system* (RDBMS). It combines relational and non-relational models to allow for more user flexibility and can handle more complex scenarios and unstructured data. This guide answers the question "What is PostgreSQL?" and outlines the differences between [MySQL](https://www.mysql.com/) and PostgreSQL. It also explains the different PostgreSQL use cases.

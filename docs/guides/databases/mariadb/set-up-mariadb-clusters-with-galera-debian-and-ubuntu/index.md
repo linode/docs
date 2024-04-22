@@ -11,7 +11,8 @@ aliases: ['/databases/mariadb/clustering-with-mariadb-and-galera/','/databases/m
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
-tags: ["ubuntu","debian","mariadb","database","ecommerce"]
+tags: ["ubuntu","debian","mariadb","database"]
+tags: ["ecommerce"]
 ---
 
 MariaDB replication with Galera adds redundancy for a site's database. With database replication, multiple servers act as a database cluster. Database clustering is particularly useful for high availability website configurations. This guide uses three separate Linodes to configure database replication, each with private IPv4 addresses on Debian and Ubuntu.

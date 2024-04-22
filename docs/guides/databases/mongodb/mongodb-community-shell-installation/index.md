@@ -6,8 +6,9 @@ authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2021-12-10
 keywords: ['mongodb community shell', 'mongosh', 'mongodb']
-tags: ['debian', 'database,'saas']
+tags: ['debian', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["saas"]
 ---
 
 MongoDB is a non-relational, document-oriented database that can operate over many hosts, database shards, and collections. A key feature of MongoDB is its ability to associate disparate data types and sources into quickly returned results that link data together. The MongoDB shell can be used to perform queries, update records, and find useful correlations among collections. The MongoDB Shell provides a command-line interface to your database and can run all MongoDB queries. It prints error messages, modifies data, and provide access to JavaScript using JSON queries. This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian. It also shows you how to connect to a MongoDB deployment and provides tips on using the MongoDB Shell with examples.

@@ -7,13 +7,14 @@ authors: ["Andy Heathershaw"]
 contributors: ["Andy Heathershaw"]
 published: 2020-12-03
 keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Object Storage']
-tags: ['mariadb', 'mysql', 'automation','saas']
+tags: ['mariadb', 'mysql', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[mysqldump - MariaDB Knowledge Base](https://mariadb.com/kb/en/mysqldump/)'
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
 - '[Removing snapshots according to a policy](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy)'
+tags: ["saas"]
 ---
 
 ## Introduction

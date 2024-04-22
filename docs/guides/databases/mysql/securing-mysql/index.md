@@ -9,9 +9,10 @@ published: 2021-03-26
 keywords: ["mysql", "security", "audit", "root", "database", "privilege"]
 aliases: ['/security/auditing/secure-and-audit-mysql-server/','/security/secure-and-audit-mysql-server/','/guides/how-to-secure-mysql-server/']
 bundles: ['debian-security', 'centos-security']
-tags: ["mysql","security","database","saas"]
+tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: SecureMySQLserver.png
+tags: ["saas"]
 ---
 
 ## MySQL

@@ -13,7 +13,8 @@ external_resources:
 - '[Vault Secrets Engines](https://www.vaultproject.io/docs/secrets/index.html)'
 - '[Vault Auth Methods](https://www.vaultproject.io/docs/auth/index.html)'
 aliases: ['/applications/configuration-management/use-hashicorp-vault-for-secret-management/','/applications/configuration-management/vault/use-hashicorp-vault-for-secret-management/']
-tags: ["security","automation","saas"]
+tags: ["security","automation"]
+tags: ["saas"]
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is a secrets management tool that helps to provide secure, automated access to sensitive data. Vault meets these use cases by coupling authentication methods (such as application tokens) to secret engines (such as simple key/value pairs) using policies to control how access is granted. In this guide, you will install, configure, and access Vault in an example deployment to illustrate Vault's features and API.

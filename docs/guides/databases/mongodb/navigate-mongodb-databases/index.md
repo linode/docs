@@ -6,11 +6,12 @@ authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2023-02-28
 keywords: ['mongodb query examples','mongodb filter query','mongodb text search']
-tags: ['database', 'nosql','saas']
+tags: ['database', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MongoDB Manual: Query Documents](https://www.mongodb.com/docs/manual/tutorial/query-documents/)'
 - '[MongoDB Guides: Read Data from MongoDB With Queries](https://www.mongodb.com/docs/guides/server/read_queries/)'
+tags: ["saas"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a flexible, NoSQL database solution which stores data as JSON-like documents. Compared to other database systems, MongoDB has much more to offer for effectively working with data. For those familiar with SQL, it may take some time and experience before feeling confident using MongoDB. This MongoDB tutorial shows you how to make more advanced queries. From querying arrays and nested objects to using comparative and logical operations, learn it all in this guide with practical examples.
