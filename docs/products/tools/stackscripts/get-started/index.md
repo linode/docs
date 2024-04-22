@@ -2,11 +2,11 @@
 title: Get Started
 title_meta: "Getting Started with StackScripts"
 description: "Get started with Linode StackScripts. Learn to create a StackScript and create a new Linode using a StackScript."
+published: 2022-11-30
+modified: 2023-09-18
 tab_group_main:
     weight: 20
-published: 2022-11-30
 tags: ["managed hosting"]
-modified: 2023-09-18
 ---
 
 {{< content "metadata-stackscripts-notice" >}}

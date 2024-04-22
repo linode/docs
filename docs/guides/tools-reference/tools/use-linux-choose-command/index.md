@@ -1,13 +1,12 @@
 ---
 slug: use-linux-choose-command
+title: "Use the choose Command for Text Processing on Linux"
 description: "In this guide, learn about the Linux choose command. It’s a fast and intuitive alternative to other command-line tools for text processing like awk and cut."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-12-30
 keywords: ['awk command unix','linux text processing commands','linux cut command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-30
-modified_by:
-  name: Nathaniel Stickman
-title: "Use the choose Command for Text Processing on Linux"
-authors: ["Nathaniel Stickman"]
 ---
 
 `choose` offers command-line text processing, like `cut` and `awk`, but with an emphasis on making the basics simple and intuitive. This Linux command is built on Rust, so it has fast performance. This guide shows you how to get started using the `choose` command on your Linux system.
@@ -18,7 +17,7 @@ authors: ["Nathaniel Stickman"]
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

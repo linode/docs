@@ -2,12 +2,11 @@
 slug: installing-yunohost
 title: "How to Install and Use YunoHost"
 description: "YunoHost simplifies self-hosting and server administration. It can install applications, provision users, control services, and more within a straightforward web UI. ✓ Click here to get started with YunoHost!"
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-05-02
 keywords: ['yunohost install','yunohost apps','yunohost alternative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-05-02
-modified_by:
-  name: Linode
 external_resources:
 - '[YunoHost Documentation](https://yunohost.org/en?q=%2Fdocs)'
 - '[TechRepublic: What Is YunoHost, and How Do You Install It?](https://www.techrepublic.com/article/install-yunohost/)'

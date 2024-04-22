@@ -47,11 +47,31 @@
   {{ end }}
 
   {{ if not $isLinodeAuthor }}
-    <h2 class="my-6">Contributions</h2>
-    <div class="grid mobile:grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-4">
-      {{ range .Pages }}
-        {{ partial "components/card.html" (dict "page" .) }}
+    {{ $contributions := slice }}
+    {{ $authorships := slice }}
+    {{ $term := .Data.Term | anchorize }}
+    {{ range .Pages }}
+      {{ if and .Params.authors (collections.In .Params.authors $term) }}
+        {{ $authorships = $authorships | append . }}
+      {{ else }}
+        {{ $contributions = $contributions | append . }}
       {{ end }}
-    </div>
+    {{ end }}
+    {{ with $authorships }}
+      <h2 class="my-6">Authored</h2>
+      <div class="grid mobile:grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-4">
+        {{ range . }}
+          {{ partial "components/card.html" (dict "page" .) }}
+        {{ end }}
+      </div>
+    {{ end }}
+    {{ with $contributions }}
+      <h2 class="my-6">Contributed</h2>
+      <div class="grid mobile:grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-4">
+        {{ range . }}
+          {{ partial "components/card.html" (dict "page" .) }}
+        {{ end }}
+      </div>
+    {{ end }}
   {{ end }}
 {{ end }}

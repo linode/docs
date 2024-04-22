@@ -3,7 +3,6 @@ title: "Create a Managed Database"
 description: "A walkthough on creating a Managed Database through the Cloud Manager"
 published: 2022-06-06
 modified: 2022-08-09
-authors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

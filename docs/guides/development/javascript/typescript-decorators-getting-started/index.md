@@ -1,15 +1,14 @@
 ---
 slug: typescript-decorators-getting-started
+title: "Getting Started with TypeScript Decorators"
+title_meta: "TypeScript Decorators: Getting Started"
 description: 'This guide discusses Decorators, an experimental TypeScript feature. You learn how to enable Decorators in TypeScript, and the syntax for creating Decorators.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2021-10-28
 keywords: ['typescript decorators']
 tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-28
-modified_by:
-  name: Linode
-title: "Getting Started with TypeScript Decorators"
-title_meta: "TypeScript Decorators: Getting Started"
-authors: ["Martin Heller"]
 ---
 
 [Decorators in TypeScript](https://www.typescriptlang.org/docs/handbook/decorators.html) provide a way to add both annotations and a meta-programming syntax for class declarations and members. They can annotate or modify classes or class members. Decorators can be chained or composed; that is, multiple decorators can be applied to a single declaration.

@@ -1,9 +1,9 @@
 ---
 title: "High Memory Compute Instances"
-linkTitle: "High Memory"
 description: "High Memory Linodes offer cost-effective fast data retrieval and in-memory processing."
 published: 2023-01-18
 modified: 2023-09-21
+linkTitle: "High Memory"
 aliases: ['/products/compute/high-memory/']
 ---
 

@@ -1,17 +1,16 @@
 ---
 slug: solving-real-world-problems-with-bash-scripts-a-tutorial
-description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
-keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-08-30
-modified_by:
-  name: Linode
 title: A Tutorial for Solving Real World Problems with Bash Scripts
 title_meta: 'Solving Real World Problems With Bash Scripts - A Tutorial'
+description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-08-30
+keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 aliases: ['/development/bash/solving-real-world-problems-with-bash-scripts-a-tutorial/']
-authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction
@@ -26,8 +25,7 @@ In this guide, you will find the following information about bash scripts:
 - [rotating log files](#rotating-log-files)
 - [solving other real world problems](#bash-scripts-for-administrators)
 - [additional examples](#additional-examples)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -72,8 +70,7 @@ Hello from f1!
 mySum = 3
 mySum = 8
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you want to check whether a function parameter exists or not, you can use the statement:
 
     if [ -z "$1" ]
@@ -231,8 +228,7 @@ Using default value for threshold!
 Threshold = 30
 WARNING: The partition "/dev/root" has used 61% of total available space - Date: Wed Aug 28 21:14:51 EEST 2019
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This script and others like it can be easily executed as cron jobs and automate tasks the UNIX way.
 {{< /note >}}
 
@@ -463,8 +459,7 @@ The output of `freqL.sh` will resemble the following:
    1 h
    1 a
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The file `text.txt` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `text.txt` file using a text editor of your choice.
 {{< /note >}}
 
@@ -563,8 +558,7 @@ The output of `tabs2spaces.sh` will resemble the following:
 {{< output >}}
 Converting textfile.txt.
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The file `textfile.txt` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `textfile.txt` file using a text editor of your choice.
 {{< /note >}}
 

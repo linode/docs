@@ -1,0 +1,18 @@
+{{/* See: https://github.com/linode/linode-docs-theme/issues/837 */}}
+{{- $statusCode := 301 -}}
+ruleName,path,result.redirectURL,result.statusCode
+{{ "" }}
+{{- range site.Pages -}}
+{{- $p := . }}
+{{- $pid :=  trim (strings.Replace .RelPermalink "/" "_" | anchorize) "_"  }}
+{{- with .Aliases -}}
+{{- range $i, $a := . -}}
+{{- $ruleName := printf "%s_%d" $pid  $i }}
+{{- $path := $a | strings.TrimPrefix "/" | relURL -}}
+{{if ne $path $p.RelPermalink }}
+{{- $redirectURL := $p.Permalink -}}
+{{ printf "%s,%s,%s,%d" $ruleName $path $redirectURL $statusCode }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
+{{- end -}}

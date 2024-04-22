@@ -1,11 +1,8 @@
 ---
 title: "How to Use the Metadata Service API"
 description: 'This guide provides a reference for using the Metadata service API directly.'
-keywords: ['cloud-init','api','metadata']
-authors: ["Nathaniel Stickman"]
 published: 2024-01-03
-modified_by:
-  name: Nathaniel Stickman
+keywords: ['cloud-init','api','metadata']
 ---
 
 Akamai's [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) offers an API for use in automated deployment configurations. Compatible versions of cloud-init can leverage the Metadata service to automatically configure new Compute Instances at deployment. However, the Metadata service's API can also be accessed directly. Doing so provides access to both instance and user data.
