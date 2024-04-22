@@ -13,7 +13,7 @@ authors: ["Linode"]
 promo_default: false
 ---
 ## Overview
-The parent and child accounts feature was designed with Akamai partners and their clients in mind. It allows partners to manage multiple end customers’ accounts with a single login to their company’s account. 
+The parent and child accounts feature was designed with Akamai partners and their clients in mind. It allows partners to manage multiple end customers’ accounts with a single login to their company’s account.
 
 {{< note type="secondary" >}}
 This feature is available only for Akamai partners and their end customers with an Akamai Cloud Computing contract. To learn more about it, contact your Akamai representative.
@@ -32,7 +32,7 @@ The parent and child accounts feature allows you, an Akamai partner (parent acco
 
 Child account users can monitor your actions on their account as all actions are logged and can be viewed in the Cloud Manager, either through the Events panel or the [Events](https://cloud.linode.com/events) page.
 
-The parent/child relationship doesn’t restrict the child account and its users from creating support tickets or signing up for managed services for their accounts. 
+The parent/child relationship doesn’t restrict the child account and its users from creating support tickets or signing up for managed services for their accounts.
 
 ### Terminology
 
@@ -43,7 +43,7 @@ In the context of your account type, you need to be familiar with the following 
 - *Parent account user with full access* (parent account admin) - an Akamai partner account owner who has access to child accounts by default. They manage permissions for other admins and child account users with limited access. They may provide full access to a parent account user with limited access who then also becomes a parent account admin.
 - *Parent account users with limited access* - users of a parent account that don’t have access to child accounts by default. Only the parent account admin may grant them access to all child accounts the parent account has a contractual parent/child relationship with. To learn more, see [Enable access to child accounts for parent account users with limited access](#enable-access-to-child-accounts-for-parent-account-users-with-limited-access).
 
-#### Parent/child relationship 
+#### Parent/child relationship
 In the context of the parent/child relationship, you need to be familiar with the following terms.
 ![Parent/child relationship terminolog](parent_child_term.png)
 - *Parent account* - your, Akamai partner, account.
@@ -56,7 +56,7 @@ One parent account may manage many child accounts.
 
 ### Enable access to child accounts for parent account users with limited access
 
-As a parent account admin, you can grant access to the child account for parent account users with limited access. 
+As a parent account admin, you can grant access to the child account for parent account users with limited access.
 
 On the User Permissions page, you have the additional general permission - **Enable child account access**.
 - This permission is available only for parent accounts.
@@ -73,7 +73,7 @@ To enable the access:
 
 When switching to a child account, you become the child account parent user. By default, you have:
 - Read/write permission for billing. This is the only permission that can’t be modified even by a child account admin.
-- Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them. 
+- Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them.
 - No access to asset instances created after the creation of the parent/child relationship. The child account parent user needs to ask a child account admin to grant them access to new instances if necessary.
 - The [global permissions](/docs/products/platform/accounts/guides/user-permissions/) set off.
 
@@ -89,13 +89,13 @@ To switch accounts:
 
     ![Account switch button](switch_account.png)
 
-1. Select an account from the list you want to switch to. 
+1. Select an account from the list you want to switch to.
 Now you act as the child account parent user. Note that you can click the **switch back to your account** link to switch back.
 
     ![switch back option](switch_back.png)
 
 ### Delete a parent account
-A parent account can be deleted only if all parent/child relationships are contractually removed from your parent account, meaning you don’t have active contracts with end customers. 
+A parent account can be deleted only if all parent/child relationships are contractually removed from your parent account, meaning you don’t have active contracts with end customers.
 
 Once this condition is met, to close an account:
 
@@ -123,11 +123,11 @@ In the context of the parent/child relationship, you need to be familiar with th
 - *Child account users with limited access* - non-admin users of your account whose permissions are managed by the child account admin.
 - *Child account parent user* - a single user representing all Akamai partner users who have access to this child account. It’s used to manage your child account. Depending on the access level and permissions provided by the child account admin, it may be a child account parent user with either full or limited access. To learn more, see [Manage account access and permissions for the child account parent user](#manage-account-access-and-permissions-for-the-child-account-parent-user).
 
-### Manage account access and permissions for the child account parent user 
+### Manage account access and permissions for the child account parent user
 
 By default, a child account parent user user has:
 - Read/write permission for billing. This is the only permission that can’t be modified even by a child account admin.
-- Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them. 
+- Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them.
 - No access to asset instances created after the creation of the parent/child relationship. The child account parent user needs to ask a child account admin to grant them access to new instances if necessary.
 - The [global permissions](/docs/products/platform/accounts/guides/user-permissions/) set off.
 
@@ -143,7 +143,7 @@ To manage access settings:
 1. In the **Specific Permissions** section, select the access level for each feature or use the **Set all permissions to** dropdown. Click **Save**.
 
 ### Delete a child account
-A child account admin can delete a child account only if the parent/child relationship is contractually removed, meaning you don’t have an active contract with an Akamai partner. 
+A child account admin can delete a child account only if the parent/child relationship is contractually removed, meaning you don’t have an active contract with an Akamai partner.
 
 Once this condition is met, to close an account:
 
