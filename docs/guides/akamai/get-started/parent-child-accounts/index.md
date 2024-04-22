@@ -19,7 +19,7 @@ This feature is available only for Akamai partners and their end customers with 
 
 {{< /note >}}
 
-Depending on whether you are an Akamai partner or a partner’s end customer, this feature has different implications. Select your role to go to content that applies to you.
+Depending on whether you're an Akamai partner or a partner’s end customer, this feature has different implications. Select your role to go to content that applies to you.
 - [I’m an Akamai partner](#for-akamai-partners).
 - [I’m a partner’s end customer](#for-end-customers).
 
@@ -27,7 +27,7 @@ Depending on whether you are an Akamai partner or a partner’s end customer, th
 ## For Akamai partners
 ### About the feature
 
-The parent and child accounts feature allows you, an Akamai partner (parent account holders), to switch between and manage your end customers’ accounts (child accounts) in Cloud Manager.
+The parent and child accounts feature allows you, an Akamai partner (parent account holder), to switch between and manage your end customers’ accounts (child accounts) in Cloud Manager.
 
 Child account users can monitor your actions on their account as all actions are logged and can be viewed in the Cloud Manager, either through the Events panel or the [Events](https://cloud.linode.com/events) page.
 
@@ -39,7 +39,7 @@ The parent/child relationship doesn’t restrict the child account and its users
 In the context of your account type, you need to be familiar with the following terms.
 ![Parent account terminology](parent_term.png)
 - *Parent account* - your, Akamai partner, account.
-- *Parent account user with full access* (parent account admin) - an Akamai partner account owner who has access to child accounts by default. They manage permissions for parent account users with limited access. The admin manages permissions for all other users and may provide full access to a parent account user with limited access who then also becomes a parent account admin.
+- *Parent account user with full access* (parent account admin) - an Akamai partner account owner who has access to child accounts by default. They manage permissions for other admins and child account users with limited access. They may provide full access to a parent account user with limited access who then also becomes a parent account admin.
 - *Parent account users with limited access* - users of a parent account that don’t have access to child accounts by default. Only the parent account admin may grant them access to all child accounts the parent account has a contractual parent/child relationship with. To learn more, see [Enable access to child accounts for parent account users with limited access](#enable-access-to-child-accounts-for-parent-account-users-with-limited-access).
 
 #### Parent/child relationship 
@@ -48,7 +48,7 @@ In the context of the parent/child relationship, you need to be familiar with th
 - *Parent account* - your, Akamai partner, account.
 - *Child account parent user* - a single user on a given child account that represents all parent account users with access to child accounts. It’s used to manage the child account. Depending on the access level and permissions provided by the child account admin, it may be a child account parent user with either full or limited access. To learn more, see [Switch accounts](#switch-accounts).
 - *Child account* - an account of your end customer.
-- *Child account users with full access* (child account admins) - users of the child account with full access to it. They manage permissions for all users on the account; other admins, child account users with limited access, and the child account parent user.  The only exception is billing, they have read-only access to it and they can’t modify the child account parent user’s read/write permission to it.
+- *Child account users with full access* (child account admins) - users of the child account with full access to it. They manage permissions for all users on the account; other admins, child account users with limited access, and the child account parent user.  The only exception is billing, child account admins have read-only access to it and they can’t modify the child account parent user’s read/write permission to it.
 - *Child account users with limited access* - non-admin users of the child account whose permissions are managed by the child account admin.
 
 One parent account may manage many child accounts.
@@ -57,7 +57,7 @@ One parent account may manage many child accounts.
 
 As a parent account admin, you can grant access to the child account for parent account users with limited access. 
 
-On the Grant&Access page, you have the additional General permission - **Allow access to child accounts**.
+On the User Permissions page, you have the additional general permission - **Enable child account access**.
 - This permission is available only for parent accounts.
 - Parent account users with limited access have this option disabled by default. They need to ask a parent account admin to enable this option for them.
 - It enables access to **all** child accounts the parent account has a contractual parent/child relationship with.
@@ -65,8 +65,8 @@ On the Grant&Access page, you have the additional General permission - **Allow a
 To enable the access:
 1. Log in to the [Cloud Manager](https://cloud.linode.com/).
 1. In the main menu, go to **Account**.
-1. In the **User & Grants** tab, next to the name of a parent user of interest, click **User permissions**.
-1. In the **General permissions** section, enable the **Allow access to child accounts** option. Click **Save**.
+1. In the **User & Grants** tab, next to the name of a parent account user with limited access, click **...** > **User Permissions**.
+1. In the **General Permissions** section, switch the **Enable child account access** option on. Click **Save**.
 
 ### Switch accounts
 
@@ -135,11 +135,11 @@ As a child account admin you can change the default permissions of the child acc
 To manage access settings:
 1. Log in to the [Cloud Manager](https://cloud.linode.com/).
 1. In the main menu, go to **Account**.
-1. In the **User & Grants** tab, in the **Parent user settings** table, next to the name of the parent user, click **User permissions**.
-1. In the **General permissions** section:
-    1. Select the permissions you want to grant. Remember that permissions with the $ symbol next to them, may incur additional charges. Note also the **Full account access** switch that gives the child account parent user full access to your account.
+1. In the **User & Grants** tab, in the **Parent User Settings** table, next to the name of the child account parent user, click **Manage Access**.
+1. In the **General Permissions** section:
+    1. Select the permissions you want to grant. Remember that permissions with the $ symbol next to them, may incur additional charges. Note also the **Full Account Access** switch that gives the child account parent user full access to your account.
     1. Click **Save**.
-1. In the **Specific permissions** section, select the access level for each feature or use the **Set all permissions to** dropdown. Click **Save**.
+1. In the **Specific Permissions** section, select the access level for each feature or use the **Set all permissions to** dropdown. Click **Save**.
 
 ### Delete a child account
 A child account admin can delete a child account only if the parent/child relationship is contractually removed, meaning you don’t have an active contract with an Akamai partner. 
