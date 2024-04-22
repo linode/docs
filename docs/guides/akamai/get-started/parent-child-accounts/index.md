@@ -1,5 +1,5 @@
 ---
-slug: parent-child-account
+slug: parent-child-accounts
 description: 'Learn how parent and child accounts can help Akamai partners manage multiple accounts.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2024-04-23
