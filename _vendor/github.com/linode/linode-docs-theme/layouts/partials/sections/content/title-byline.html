@@ -65,7 +65,7 @@
           {{ end }}
           {{ if .File }}
             {{ $path := .Params.path | default .File.Path }}
-            {{ $historyRef := printf "https://github.com/linode/docs/commits/develop/%s" $path }}
+            {{ $historyRef := printf "https://github.com/linode/docs/blob/develop/docs/%s" $path }}
             <a
               href="{{ $historyRef }}"
               class="inline-block mt-3 text-textcolor hover:text-gray-400  text-sm italic"
