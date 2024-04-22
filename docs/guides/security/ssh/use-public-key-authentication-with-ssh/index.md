@@ -4,7 +4,7 @@ title: "Use SSH Public Key Authentication on Linux, macOS, and Windows"
 title_meta: "How to Use SSH Public Key Authentication"
 description: "Understand SSH public key authentication and learn how to generate a key pair and upload your public key using Linux, macOS, and Windows."
 authors: ["Linode"]
-contributors: ["Linode"]
+contributors: ["Matt Wildman","Linode"]
 published: 2011-04-05
 modified: 2023-08-10
 keywords: ["ssh", "public key"]

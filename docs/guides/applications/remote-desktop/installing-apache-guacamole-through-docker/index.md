@@ -3,8 +3,8 @@ slug: installing-apache-guacamole-through-docker
 title: "Installing Apache Guacamole through Docker"
 title_meta: "How to Install Apache Guacamole through Docker"
 description: "Learn how to install Apache Guacamole (a remote access gateway for SSH, VNC, and other protocols) through Docker."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Matt Wildman", "Linode"]
+contributors: ["Matt Wildman", "Linode"]
 published: 2021-09-10
 keywords: ["Apache Guacamole", "Docker", "VNC", "SSH"]
 tags: ["docker", "guacamole"]

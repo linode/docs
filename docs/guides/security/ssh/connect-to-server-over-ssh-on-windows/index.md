@@ -3,8 +3,8 @@ slug: connect-to-server-over-ssh-on-windows
 title: "Connecting to a Remote Server Over SSH on Windows"
 title_meta: "How to Connect to a Remote Server Over SSH on Windows"
 description: "Read our guide on how to connect to a remote server over SSH on Windows, including opening the terminal & structuring the command. ✓ Click to read!"
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Matt Wildman","Linode"]
+contributors: ["Matt Wildman","Linode"]
 published: 2021-06-25
 modified: 2022-01-28
 keywords: ['ssh','linux','windows','connect to server over ssh','connect to linode over ssh']

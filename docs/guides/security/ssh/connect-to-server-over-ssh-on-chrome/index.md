@@ -3,8 +3,8 @@ slug: connect-to-server-over-ssh-on-chrome
 title: "Connecting to a Remote Server Over SSH on Chrome"
 title_meta: "How to Connect to a Remote Server Over SSH on Chrome"
 description: "A tutorial outlining how to connect to a remote server over SSH on ChromeOS or the Chrome web browser using the Secure Shell extension."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Matt Wildman","Linode"]
+contributors: ["Matt Wildman","Linode"]
 published: 2021-06-25
 modified: 2022-01-28
 keywords: ['ssh','secure shell', 'chromeos', 'chrome', 'connect to server over ssh','connect to linode over ssh']

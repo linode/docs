@@ -2,8 +2,8 @@
 slug: remote-cloud-desktop-using-apache-guacamole
 title: "Using a Cloud Desktop on a Browser with Apache Guacamole"
 description: "Instruction on using Apache Guacamole to access a remote server's virtual desktop from a browser."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Matt Wildman","Linode"]
+contributors: ["Matt Wildman","Linode"]
 published: 2017-11-17
 modified: 2021-09-08
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]

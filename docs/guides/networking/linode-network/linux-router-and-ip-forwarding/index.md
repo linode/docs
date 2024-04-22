@@ -2,8 +2,8 @@
 slug: linux-router-and-ip-forwarding
 title: "Configure Linux as a Router (IP Forwarding)"
 description: "Learn how to set up a Linux server as a router, including configuring port forwarding and iptables."
-authors: ["Linode", "Nathaniel Stickman"]
-contributors: ["Linode", "Nathaniel Stickman"]
+authors: ["Matt Wildman"]
+contributors: ["Matt Wildman", "Nathaniel Stickman"]
 published: 2022-09-30
 modified: 2024-02-14
 keywords: ["static", "ip address", "addresses"]

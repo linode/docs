@@ -3,8 +3,8 @@ slug: connect-to-server-over-ssh-on-mac
 title: "Connecting to a Remote Server Over SSH on a Mac"
 title_meta: "How to Connect to a Remote Server Over SSH on a Mac"
 description: "A tutorial outlining how to connect to a remote server over SSH on a Mac computer, including opening the terminal and structuring the ssh command."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Matt Wildman","Linode"]
+contributors: ["Matt Wildman","Linode"]
 published: 2021-06-25
 modified: 2022-01-28
 keywords: ['ssh','linux','mac','connect to server over ssh','connect to linode over ssh']
