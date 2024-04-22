@@ -17,55 +17,59 @@ This guide outlines benefits and considerations for cross-region replication of 
 
 ## Benefits of Data Replication Across Regions
 
-- **Failover and Disaster Recovery:** In the event of a disaster, regional outage, or maintenance, having copies of data stored in multiple regions ensures data availability and business continuity. If one region goes down, users and applications can still access data from another region.
+-   **Failover and Disaster Recovery:** In the event of a disaster, regional outage, or maintenance, having copies of data stored in multiple regions ensures data availability and business continuity. If one region goes down, users and applications can still access data from another region.
 
-- **Reduced Latency:** Bring data closer to end-users by replicating data to more than one geographical location. This can minimize latency and improve performance for applications and services that rely on object storage.
+-   **Reduced Latency:** Bring data closer to end-users by replicating data to more than one geographical location. This can minimize latency and improve performance for applications and services that rely on object storage.
 
-- **Compliance and Data Residency:** Some regulations or compliance requirements mandate that data be stored in specific geographic regions. Cross-region replication enables organizations to comply with these requirements while maintaining data availability and redundancy.
+-   **Compliance and Data Residency:** Some regulations or compliance requirements mandate that data be stored in specific geographic regions. Cross-region replication enables organizations to comply with these requirements while maintaining data availability and redundancy.
 
-- **Load Balancing:** Distributing data across multiple regions helps balance the load on individual storage systems and can improve overall system performance and scalability.
+-   **Load Balancing:** Distributing data across multiple regions helps balance the load on individual storage systems and can improve overall system performance and scalability.
 
 ## Considerations and Limitations
 
-- **Replication time may vary** depending on bucket regions and network performance.
+-   **Replication time may vary** depending on bucket regions and network performance.
 
-- **Large file counts may take longer.** The solution in this guide uses the rclone utility to sync contents from one bucket to another, and the time it takes to complete depends on the amount of files being synced.
+-   **Large file counts may take longer.** The solution in this guide uses the rclone utility to sync contents from one bucket to another, and the time it takes to complete depends on the amount of files being synced.
 
-- **The method in this guide syncs bucket contents automatically once.** After the sync occurs, multiple buckets can be managed congruently to ensure consistency between bucket contents. This can be achieved by uploading and deleting objects at the same time via the Linode CLI, the Linode API, or other [Object Storage compatible tools](/docs/products/storage/object-storage/get-started/#object-storage-tools) such as s3cmd.
+-   **The method in this guide syncs bucket contents automatically once.** After the sync occurs, multiple buckets can be managed congruently to ensure consistency between bucket contents. This can be achieved by uploading and deleting objects at the same time via the Linode CLI, the Linode API, or other [Object Storage compatible tools](/docs/products/storage/object-storage/get-started/#object-storage-tools) such as s3cmd.
 
-- **One-way syncing.** The method in the provided scripts runs a one-way sync from a source bucket to a destination bucket.
+-   **One-way syncing.** The method in the provided scripts runs a one-way sync from a source bucket to a destination bucket.
 
 ## Failover With Akamai CDN
 
-The diagram below illustrates how replication of Object Storage data from one bucket to another has the ability to achieve a fail-over setup with Akamai’s CDN as a client front end. Using the failover functionality of [Global Traffic Manager (GTM)](https://www.akamai.com/products/global-traffic-management), client requests can be directed to, or cached from, alternative regions in the event the primary region is unavailable:
+The diagram below illustrates how replication of Object Storage data from one bucket to another has the ability to achieve a failover setup with Akamai’s CDN as a client front end. In this scenario, client requests can be directed to, or cached from, alternate regions in the event the primary region is unavailable:
 
-1.  Akamai's CDN running Global Traffic Manager.
+-   Akamai's CDN used as a client front end.
 
-2.  An Object Storage bucket located in the Osaka data center is used as the primary origin for Akamai's CDN to source and cache data.
+-   An Object Storage bucket located in the Osaka data center is used as the primary origin for Akamai's CDN to source and cache data.
 
-3.  A second Object Storage bucket in the Washington, D.C. data center is set up as a destination bucket for the one-way rclone sync.
+-   A second Object Storage bucket in the Washington, D.C. data center is set up as a destination bucket for the one-way rclone sync.
 
-4.  A Compute Instance running rclone performs a one-time, one-way sync between buckets. The instance is also located in Osaka (the same as the origin bucket) to reduce latency.
+-   A Compute Instance running rclone performs a one-time, one-way sync between buckets. The instance is also located in Osaka (the same as the origin bucket) to reduce latency.
 
-5.  As needed, Global Traffic Manager can redirect to the second bucket in Washington, D.C.
+-   As needed, Global Traffic Manager can redirect to the second bucket in Washington, D.C.
 
 ![Failover with OBJ Replication](OBJ_replication_architecture_edit.png "Failover with OBJ Replication")
-
-Consider the following CDN-level logic when implementing a failover setup:
-
--   **Connection timeouts:** Access requests from the CDN to the bucket cannot be completed or take too long to complete.
-
--   **404 responses:** The bucket can be accessed, but no files are present.
-
--   **Zero bye content length:** A bucket is accessible, files are present, but file uploads can not be, or were not, completed.
-
--   **Other negative responses:** Other 4XX permission denied or client issues, or 5XX server issues.
 
 {{< note title="Best Practice: Managing Multiple Buckets" >}}
 Storage owners are responsible for their own bucket management. To ensure continuity between bucket contents, additional buckets should be integrated with your system and managed similarly after an initial sync with the primary bucket.
 
 For example, if an application was previously set up to send and store logs to a single, primary bucket, the application should then be reconfigured to send logs to all buckets for ongoing redundancy.
 {{< /note >}}
+
+### CDN Considerations
+
+Consider the following CDN-level logic when implementing a failover setup:
+
+-   **Failover logic:** Using Akamai's CDN, HTTP-based [site failover](https://techdocs.akamai.com/property-mgr/docs/site-failover) can be achieved to direct traffic to various backends based on configurable behaviors. Additionally, you can use Akamai [Global Traffic Manager (GTM)](https://www.akamai.com/products/global-traffic-management) to implement DNS-based failover logic.
+
+-   **Connection timeouts:** Access requests from the CDN to the bucket cannot be completed or take too long to complete.
+
+-   **404 responses:** The bucket can be accessed, but no files are present.
+
+-   **Zero byte content length:** A bucket is accessible, files are present, but file uploads can not be, or were not, completed.
+
+-   **Other negative responses:** Other 4XX permission denied or client issues, or 5XX server issues.
 
 ## Replicating Bucket Contents Across Regions
 
