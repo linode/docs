@@ -8,6 +8,7 @@ published: 2022-04-23
 title: Parent and Child Accounts for Akamai Partners
 aliases: ['/guides/akamai/get-started/parent-child-account/']
 authors: ["Linode"]
+contributors: ["Linode"]
 promo_default: false
 ---
 ## Overview
@@ -119,7 +120,7 @@ In the context of the parent/child relationship, you need to be familiar with th
 - **Child account**. Your, end customer’s, account.
 - **Child account users with full access** (child account admins). Users of your account with full access to it. They manage permissions for all users on the account; other admins, child account users with limited access, and the child account parent user.  The only exception is billing, they have read-only access to it and they can’t modify the child account parent user’s read/write permission to it.
 - **Child account users with limited access**. Non-admin users of your account whose permissions are managed by the child account admin.
-- **Child account parent user**. A single user representing all Akamai partner users who have access to this child account. It’s used to manage your child account. Depending on the access level and permissions provided by the child account admin, it can be a child account parent user with either full or limited access. To learn more, see [Manage account access and permissions for the child account parent user](#manage-account-access-and-permissions-for-the-child-account-parent-user).
+- **Child account parent user**. A single user representing all Akamai partner users who have access to this child account. It’s used to manage your child account. Depending on the access level and permissions provided by the child account admin, it can be a child account parent user with either full or limited access. To learn more, see [Manage account access and permissions for the child account parent user](#manage-account-access-and-permissions-for-the-child-account-parent-user). The child account parent user is created automatically based on your contract with an Akamai partner. The user exists on your account as long as you have a contractual relationship with your Akamai partner.
 
 ### Manage account access and permissions for the child account parent user
 
