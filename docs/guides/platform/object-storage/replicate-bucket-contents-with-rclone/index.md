@@ -5,9 +5,8 @@ description: "This guide reviews how to replicate object storage bucket contents
 keywords: ['object storage','rclone','replication','cross-region','resilience','data replication','replicate','s3','clone']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Dutton","Brandon Kang"]
+contributors: ["John Dutton","Brandon Kang"]
 published: 2024-04-23
-modified_by:
-  name: Linode
 
 ---
 
