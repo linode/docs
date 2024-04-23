@@ -2,7 +2,7 @@
 title: "Deploy Virtualmin through the Linode Marketplace"
 description: "Virtualmin is an open source control panel for web hosting management. Deploy a Virtualmin server using Linode''s Marketplace Apps."
 published: 2020-09-28
-modified: 2022-03-08
+modified: 2024-04-23
 keywords: ['virtualmin','control panel','dashboard','marketplace']
 tags: ["debian","marketplace", "web applications","linode platform", "cloud manager", "cms", "email"]
 image: Deploy_Virtualmin_oneclickapps.png
@@ -10,6 +10,7 @@ external_resources:
 - '[Virtualmin Documentation](https://www.virtualmin.com/documentation)'
 - '[Virtualmin Support](https://www.virtualmin.com/support)'
 aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/deploy-virtualmin-with-one-click-apps/','/guides/virtualmin-marketplace-app/']
+deprecated: true
 ---
 
 [Virtualmin](https://www.virtualmin.com) is an open source control panel for web hosting management. It offers an easy to use graphical interface for managing websites, email, and databases. It's built on top of and integrated with the popular Webmin.
