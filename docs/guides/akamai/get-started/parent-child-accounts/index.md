@@ -16,7 +16,7 @@ promo_default: false
 The parent and child accounts feature was designed with Akamai partners and their clients in mind. It allows partners to manage multiple end customers’ accounts with a single login to their company’s account.
 
 {{< note type="secondary" >}}
-This feature is available only for Akamai partners and their end customers with an Akamai Cloud Computing contract. To learn more about it, contact your Akamai representative.
+This feature is only available for Akamai partners and their end customers with an Akamai Cloud Computing contract. To learn more about it, contact your Akamai representative.
 
 {{< /note >}}
 
@@ -30,7 +30,7 @@ Depending on whether you're an Akamai partner or a partner’s end customer, thi
 
 The parent and child accounts feature allows you, an Akamai partner (parent account holder), to switch between and manage your end customers’ accounts (child accounts) in Cloud Manager.
 
-Child account users can monitor your actions on their account as all actions are logged and can be viewed in the Cloud Manager, either through the Events panel or the [Events](https://cloud.linode.com/events) page.
+Child account users can monitor your actions on their account. All actions are logged and can be viewed in Cloud Manager, either through the Events panel or the [Events](https://cloud.linode.com/events) page.
 
 The parent/child relationship doesn’t restrict the child account and its users from creating support tickets or signing up for managed services for their accounts.
 
@@ -39,18 +39,18 @@ The parent/child relationship doesn’t restrict the child account and its users
 #### Parent account
 In the context of your account type, you need to be familiar with the following terms.
 ![Parent account terminology](parent_term.png)
-- *Parent account* - your, Akamai partner, account.
-- *Parent account user with full access* (parent account admin) - an Akamai partner account owner who has access to child accounts by default. They manage permissions for other admins and child account users with limited access. They may provide full access to a parent account user with limited access who then also becomes a parent account admin.
-- *Parent account users with limited access* - users of a parent account that don’t have access to child accounts by default. Only the parent account admin may grant them access to all child accounts the parent account has a contractual parent/child relationship with. To learn more, see [Enable access to child accounts for parent account users with limited access](#enable-access-to-child-accounts-for-parent-account-users-with-limited-access).
+- **Parent account**. Your, Akamai partner, account.
+- **Parent account user with full access** (parent account admin). An Akamai partner account owner who has access to child accounts by default. They manage permissions for other admins and child account users with limited access. They may provide full access to a parent account user with limited access who then also becomes a parent account admin.
+- **Parent account users with limited access** Users of a parent account that don’t have access to child accounts by default. Only the parent account admin may grant them access to all child accounts the parent account has a contractual parent/child relationship with. To learn more, see [Enable access to child accounts for parent account users with limited access](#enable-access-to-child-accounts-for-parent-account-users-with-limited-access).
 
 #### Parent/child relationship
 In the context of the parent/child relationship, you need to be familiar with the following terms.
-![Parent/child relationship terminolog](parent_child_term.png)
-- *Parent account* - your, Akamai partner, account.
-- *Child account parent user* - a single user on a given child account that represents all parent account users with access to child accounts. It’s used to manage the child account. Depending on the access level and permissions provided by the child account admin, it may be a child account parent user with either full or limited access. To learn more, see [Switch accounts](#switch-accounts).
-- *Child account* - an account of your end customer.
-- *Child account users with full access* (child account admins) - users of the child account with full access to it. They manage permissions for all users on the account; other admins, child account users with limited access, and the child account parent user.  The only exception is billing, child account admins have read-only access to it and they can’t modify the child account parent user’s read/write permission to it.
-- *Child account users with limited access* - non-admin users of the child account whose permissions are managed by the child account admin.
+![Parent/child relationship terminology](parent_child_term.png)
+- **Parent account**. Your, Akamai partner, account.
+- **Child account parent user**. A single user on a given child account that represents all parent account users with access to child accounts. It’s used to manage the child account. Depending on the access level and permissions provided by the child account admin, it may be a child account parent user with either full or limited access. To learn more, see [Switch accounts](#switch-accounts).
+- **Child account**. An account belonging to your end customer.
+- **Child account users with full access** (child account admins). Users of the child account with full access to it. They manage permissions for all users on the account; other admins, child account users with limited access, and the child account parent user.  The only exception is billing, child account admins have read-only access to it and they can’t modify the child account parent user’s read/write permission to it.
+- **Child account users with limited access**. Non-admin users of the child account whose permissions are managed by the child account admin.
 
 One parent account may manage many child accounts.
 
@@ -109,19 +109,19 @@ Once this condition is met, to close an account:
 ### About the feature
 The parent and child accounts feature allows an Akamai partner (Parent account holder) to manage your account (Child account) in Cloud Manager.
 
-You can monitor Akamai partner’s actions on your account as all actions are logged and can be viewed in the Cloud Manager, either through the Events panel or the [Events](https://cloud.linode.com/events) page.
+You can monitor Akamai partner’s actions on your account. All actions are logged and can be viewed in Cloud Manager, either through the Events panel or the [Events](https://cloud.linode.com/events) page.
 
-The parent/child relationship doesn’t restrict your account and its users from creating support tickets or signing up for managed services for their accounts.
+The parent/child relationship doesn’t restrict your account and its users from creating support tickets or signing up for managed services.
 
 ### Terminology
 In the context of the parent/child relationship, you need to be familiar with the following terms.
-![Parent/child relationship terminolog](parent_child_term.png)
+![Parent/child relationship terminology](parent_child_term.png)
 
-- *Parent account* - a company account of your Akamai partner.
-- *Child account* - your, end customer’s, account.
-- *Child account users with full access* (child account admins) - users of your account with full access to it. They manage permissions for all users on the account; other admins, child account users with limited access, and the child account parent user.  The only exception is billing, they have read-only access to it and they can’t modify the child account parent user’s read/write permission to it.
-- *Child account users with limited access* - non-admin users of your account whose permissions are managed by the child account admin.
-- *Child account parent user* - a single user representing all Akamai partner users who have access to this child account. It’s used to manage your child account. Depending on the access level and permissions provided by the child account admin, it may be a child account parent user with either full or limited access. To learn more, see [Manage account access and permissions for the child account parent user](#manage-account-access-and-permissions-for-the-child-account-parent-user).
+- **Parent account**. A company account of your Akamai partner.
+- **Child account**. Your, end customer’s, account.
+- **Child account users with full access** (child account admins). Users of your account with full access to it. They manage permissions for all users on the account; other admins, child account users with limited access, and the child account parent user.  The only exception is billing, they have read-only access to it and they can’t modify the child account parent user’s read/write permission to it.
+- **Child account users with limited access**. Non-admin users of your account whose permissions are managed by the child account admin.
+- **Child account parent user**. A single user representing all Akamai partner users who have access to this child account. It’s used to manage your child account. Depending on the access level and permissions provided by the child account admin, it may be a child account parent user with either full or limited access. To learn more, see [Manage account access and permissions for the child account parent user](#manage-account-access-and-permissions-for-the-child-account-parent-user).
 
 ### Manage account access and permissions for the child account parent user
 
