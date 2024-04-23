@@ -5,7 +5,7 @@ description: "This guide reviews how to replicate object storage bucket contents
 keywords: ['object storage','rclone','replication','cross-region','resilience','data replication','replicate','s3','clone']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Dutton","Brandon Kang"]
-published: 2024-04-19
+published: 2024-04-23
 modified_by:
   name: Linode
 
@@ -39,15 +39,15 @@ This guide outlines benefits and considerations for cross-region replication of 
 
 The diagram below illustrates how replication of Object Storage data from one bucket to another has the ability to achieve a failover setup with Akamai’s CDN as a client front end. In this scenario, client requests can be directed to, or cached from, alternate regions in the event the primary region is unavailable:
 
--   Akamai's CDN used as a client front end.
+1.  Akamai's CDN used as a client front end.
 
--   An Object Storage bucket located in the Osaka data center is used as the primary origin for Akamai's CDN to source and cache data.
+1.  An Object Storage bucket located in the Osaka data center is used as the primary origin for Akamai's CDN to source and cache data.
 
--   A second Object Storage bucket in the Washington, D.C. data center is set up as a destination bucket for the one-way rclone sync.
+1.  A second Object Storage bucket in the Washington, D.C. data center is set up as a destination bucket for the one-way rclone sync.
 
--   A Compute Instance running rclone performs a one-time, one-way sync between buckets. The instance is also located in Osaka (the same as the origin bucket) to reduce latency.
+1.  A Compute Instance running rclone performs a one-time, one-way sync between buckets. The instance is also located in Osaka (the same as the origin bucket) to reduce latency.
 
--   As needed, Global Traffic Manager can redirect to the second bucket in Washington, D.C.
+1.  As needed, requests can be redirected to the second bucket in Washington, D.C.
 
 ![Failover with OBJ Replication](OBJ_replication_architecture_edit.png "Failover with OBJ Replication")
 
@@ -67,15 +67,13 @@ Consider the following CDN-level logic when implementing a failover setup:
 
 -   **404 responses:** The bucket can be accessed, but no files are present.
 
--   **Zero byte content length:** A bucket is accessible, files are present, but file uploads can not be, or were not, completed.
-
 -   **Other negative responses:** Other 4XX permission denied or client issues, or 5XX server issues.
 
 ## Replicating Bucket Contents Across Regions
 
 ### The Replication Script
 
-Below is a ready-to-use script for running a one-way sync to replicate contents of Object Storage buckets. The script installs and configures rclone, and then uses rclone to scan source bucket contents and run a one-time sync to a destination bucket. The sync can function between any two buckets regardless of region.
+Below is a ready-to-use script for running a one-way sync to replicate contents of Object Storage buckets. The script installs and configures rclone, then uses rclone to scan source bucket contents and run a one-time sync to a destination bucket. The sync can function between any two buckets regardless of region.
 
 ```file
 #!/bin/bash
@@ -142,9 +140,11 @@ $RCLONE_SYNC_COMMAND
 
 -   **Script location:** The script is designed to be run from a Compute Instance on a supported distribution by a user with sudo permissions.
 
+-   **Bucket access:** The script requires access to both your source and destination buckets via an access key and a secret key. If you do not have an access key or secret key for your buckets, follow the instructions for generating them in our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/#generate-an-access-key) guide.
+
 -   **Defining bucket information:** Prior to running the script, define the following variables at the top of the script (lines 3-13) with the corresponding information for your source and destination buckets. This can be done by typing in the required information between the quotation marks after each variable.
 
-    For example, if `{{< placeholder "jp-osa-1" >}}` is the region ID of your source bucket, you would type `{{< placeholder "jp-osa-1" >}}` between the quotation marks after the `SRC_REGION` variable: `SRC_REGION="{{< placeholder "jp-osa-1" >}}"`:
+    For example, if `{{< placeholder "jp-osa-1" >}}` is the region ID of your source bucket, you would type `{{< placeholder "jp-osa-1" >}}` between the quotation marks after the `SRC_REGION` variable: `SRC_REGION="{{< placeholder "jp-osa-1" >}}"`
 
     - `SRC_REGION`: The region ID of your source bucket
     - `SRC_BUCKET`: The label for your source bucket
@@ -175,7 +175,7 @@ The first method below uses user data with our Metadata service during instance 
 
     Stop when you get to the **Add User Data** section.
 
-1.  The **Add User Data** section works with our [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) and is compatible with cloud-config data or executable scripts (this method). Here is where you will add the contents of the script below so that it can be consumed by cloud-init when your instance boots for the first time:
+1.  The **Add User Data** section works with our Metadata service and is compatible with cloud-config data or executable scripts (this method). Here is where you will add the contents of the script below so that it can be consumed by cloud-init when your instance boots for the first time:
 
     ```file
     #!/bin/bash
@@ -317,8 +317,6 @@ The first method below uses user data with our Metadata service during instance 
     - Bucket name
     - Bucket access key
     - Bucket secret key
-
-    If you do not have an access key or secret key for your buckets, follow the instructions for generating them in our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/#generate-an-access-key) guide.
 
 1.  Select your deployment **Image**. This should be the same as the target image you selected when creating your StackScript.
 
