@@ -1,19 +1,16 @@
 ---
+title: "Deploy Webmin through the Linode Marketplace"
 description: "Webmin is an open source interface for Unix system administration. Deploy Webmin using Linode''s Marketplace Apps."
-keywords: ['webmin','system administration','marketplace']
-tags: ["debian","marketplace", "web applications","linode platform", "cloud manager", "cms", "email"]
 published: 2020-09-28
 modified: 2022-03-08
+keywords: ['webmin','system administration','marketplace']
+tags: ["debian","marketplace", "web applications","linode platform", "cloud manager", "cms", "email"]
 image: Deploy_Webmin_oneclickapps.png
-modified_by:
-  name: Linode
-title: "Deploy Webmin through the Linode Marketplace"
 external_resources:
 - '[Webmin Documentation](https://doxfer.webmin.com/Webmin/Main_Page)'
 - '[Webmin on GitHub](https://github.com/webmin/webmin/commits/master)'
 - '[Webmin Tutorials](https://doxfer.webmin.com/Webmin/Tutorials)'
 aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webmin-with-one-click-apps/','/guides/how-to-deploy-webmin-with-one-click-apps/','/guides/how-to-deploy-webmin-with-marketplace-apps/','/platform/one-click/deploy-webmin-with-one-click-apps/','/guides/webmin-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Webmin](http://www.webmin.com) is an open source interface for Unix system administration that offers an easy to use graphical interface for managing user accounts, DNS, file sharing, and more. Webmin alleviates the need to use the command line to edit Unix system configuration files and allows you to configure your system easily from a simple web interface.

@@ -1,14 +1,11 @@
 ---
-keywords: ["getting started", "deploy", "linode", "linux"]
+title: "Create a Compute Instance"
+title_meta: "Create a Compute Instance on the Linode Platform"
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
 modified: 2024-02-13
-modified_by:
-  name: Linode
-title: "Create a Compute Instance"
-title_meta: "Create a Compute Instance on the Linode Platform"
+keywords: ["getting started", "deploy", "linode", "linux"]
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
-authors: ["Linode"]
 ---
 
 This guide walks you through creating a Compute Instance (also frequently called a *Linode*) through the Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
@@ -72,7 +69,6 @@ You need to select a region before selecting your plan type. [Pricing](https://w
 Linode offers a few different instance types and plan sizes, each with a preset amount of hardware resources (such as vCPU cores, memory, and storage space). The table below displays a list of instance types along with their plan sizes and use cases.
 
 Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice on selecting the best plan for your needs, application’s requirements, and pricing considerations. Note that [pricing and plan](https://www.linode.com/pricing/) options may vary between data centers.
-
 
 {{< note >}}
 You can resize to a different plan size or instance type at any time. This means your aren't locked in to whichever plan you select here. See [Resizing a Compute Instance](/docs/products/compute/compute-instances/guides/resize/) for instructions.

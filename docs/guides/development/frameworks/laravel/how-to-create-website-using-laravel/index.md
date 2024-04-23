@@ -1,18 +1,17 @@
 ---
 slug: how-to-create-website-using-laravel
+title: "Build a Website Using the Laravel Framework"
+title_meta: "How to Create a Website Using Laravel"
 description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Build a Website Using the Laravel Framework"
-title_meta: "How to Create a Website Using Laravel"
 external_resources:
 - '[Laravel](https://laravel.com/)'
 - '[Laravels documentation](https://laravel.com/docs/)]'
-authors: ["Nathaniel Stickman"]
 ---
 
 [Laravel](https://laravel.com/) is a PHP web application framework boasting an elegant and expressive syntax. With Laravel, you can easily spin up a new website while also having the features and scalability to handle advanced and large-scale applications.
@@ -25,7 +24,7 @@ This guide walks you through the setup process for Laravel, then shows you how t
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

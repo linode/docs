@@ -3,15 +3,12 @@ title: "Deploy a Galera Cluster through the Linode Marketplace"
 description: "This guide shows how to deploy a MySQL/MariaDB Galera Cluster through the Linode Marketplace."
 published: 2023-03-20
 modified: 2024-04-04
-modified_by:
-  name: Linode
 keywords: ['database','mysql','rdbms','relational database','mariadb']
 tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
 - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
-authors: ["Linode"]
 ---
 
 Galera provides a performant MariaDB database solution with synchronous replication to achieve high availability. Galera is deployed with MariaDB, which is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB was originally based off of MySQL and maintains backwards compatibility.

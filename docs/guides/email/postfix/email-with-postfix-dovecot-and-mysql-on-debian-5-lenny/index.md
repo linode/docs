@@ -1,25 +1,22 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-debian-5-lenny
-deprecated: true
+title: 'Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)'
 description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on Debian 5 "Lenny".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-02-08
+modified: 2012-10-08
 keywords: ["postfix", "dovecot", "email", "debian", "lenny"]
 tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/','/email/postfix/dovecot-mysql-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-02-08
-title: 'Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)'
 relations:
     platform:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian 5
-authors: ["Brett Kaplan"]
+deprecated: true
 ---
-
-
 
 The Postfix Mail Transfer Agent (MTA) is a high performance open source e-mail server system. This guide will help you get Postfix running on your Linode, using Dovecot for IMAP/POP3 service and MySQL to store information on virtual domains and users. This guide is largely based on Christoph Haas's great [ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny) and HowtoForge [Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny), with some packages omitted.
 

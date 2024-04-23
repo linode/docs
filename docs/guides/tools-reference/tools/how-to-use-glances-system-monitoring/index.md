@@ -1,17 +1,16 @@
 ---
 slug: how-to-use-glances-system-monitoring
-description: "Learn about Glances, an open-source monitoring tool. With Glances, you get a huge range of information all fit together on a single screen, helping you keep up with your system at a glance."
-keywords: ['linux glances command','unix install glances','linux monitoring tools open source']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-30
-modified_by:
-  name: Nathaniel Stickman
 title: "Use Glances for System Monitoring on Linux"
 title_meta: "How to Use Glances for System Monitoring on Linux"
+description: "Learn about Glances, an open-source monitoring tool. With Glances, you get a huge range of information all fit together on a single screen, helping you keep up with your system at a glance."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-12-30
+keywords: ['linux glances command','unix install glances','linux monitoring tools open source']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Glances GitHub Repository](https://github.com/nicolargo/glances)'
 - '[Glances Official Documentation](https://glances.readthedocs.io/en/latest/index.html)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Glances is a Linux system monitoring dashboard that you can run from the command line or in your web browser. It aims to fit as much data as possible onto a single screen and dynamically adapts to the current screen size.
@@ -24,7 +23,7 @@ In this guide, learn how to install and get started with the Glances system moni
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

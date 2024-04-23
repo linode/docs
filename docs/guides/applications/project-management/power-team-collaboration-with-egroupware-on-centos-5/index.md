@@ -1,16 +1,15 @@
 ---
 slug: power-team-collaboration-with-egroupware-on-centos-5
-deprecated: true
+title: Power Team Collaboration with eGroupware on CentOS 5
 description: 'This guide shows how you can build a collaborative groupware system to share information in your organization with the eGroupware software on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-03
+modified: 2011-08-22
 keywords: ["groupware", "email", "collaboration", "centos"]
 tags: ["centos", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-centos-5/','/web-applications/project-management/egroupware/centos-5/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-02-03
-title: Power Team Collaboration with eGroupware on CentOS 5
 external_resources:
  - '[eGroupware Home Page](http://www.egroupware.org/)'
  - '[eGroupware Documentation](http://www.egroupware.org/wiki/)'
@@ -20,7 +19,7 @@ relations:
         key: collaborate-with-egroupware
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+deprecated: true
 ---
 
 The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems, including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups, all without the need to rely on a third-party vendor. As eGroupware provides its applications entirely independent of any third party service, the suite is a good option for organizations who need web-based groupware solutions, but do not want to rely on a third party provider for these services.

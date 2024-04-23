@@ -1,14 +1,11 @@
 ---
+title: Initiate a Cross Data Center Migration for a Compute Instance
 description: "Learn how to migrate a Compute Instance across data centers using the Cloud Manager."
+published: 2019-02-04
+modified: 2023-09-21
 keywords: ["choose", "help", "migration", "data center"]
 tags: ["linode platform","cloud manager"]
-title: Initiate a Cross Data Center Migration for a Compute Instance
-modified: 2023-09-21
-modified_by:
-  name: Linode
-published: 2019-02-04
 aliases: ['/platform/disk-images/how-to-initiate-a-cross-data-center-migration-for-your-linode/','/platform/migrating-to-a-different-data-center/','/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/']
-authors: ["Linode"]
 ---
 
 When a Compute Instance is created, it is stored on whichever data center was selected during the creation process. If you wish to change this data center, you can initiate a cross data center migration at any time. This moves your Compute Instance to whichever data center you wish.

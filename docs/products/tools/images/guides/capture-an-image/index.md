@@ -2,7 +2,6 @@
 title: Capture an Image
 description: "How to capture an Image from a Linode."
 modified: 2023-06-01
-authors: ["Linode"]
 ---
 
 ## Requirements and Considerations

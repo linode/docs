@@ -2,10 +2,10 @@
 title: Guides
 title_meta: "Guides and Tutorials for the Linode Marketplace"
 description: "A collection of guides to help you learn how to deploy each Marketplace App that Linode offers."
+modified: 2024-01-22
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
-modified: 2024-01-22
 ---
 
 ## Basics
@@ -22,7 +22,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 
 - [aaPanel](/docs/products/tools/marketplace/guides/aapanel/)
 - [Akaunting](/docs/products/tools/marketplace/guides/akaunting/)
-- [Ant Media Server](/docs/products/tools/marketplace/guides/antmediaserver/)
 - [Ant Media Server Enterprise Edition](/docs/products/tools/marketplace/guides/antmediaenterpriseserver/)
 - [Apache Airflow](/docs/products/tools/marketplace/guides/apache-airflow/)
 - [Appwrite](/docs/products/tools/marketplace/guides/appwrite/)
