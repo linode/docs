@@ -1,18 +1,17 @@
 ---
 slug: how-to-install-mysql-on-centos8
-description: 'Learn how to install MySQL on CentOS 8 Linux on a cloud server with cloud apps.'
-keywords: ['Install MySQL on CentOS 8', 'Install MySQL on CentOS Stream 8', 'Install MySQL', 'CentOS 8', 'Connect MySQL to CentOS 8', 'Install MySQL server in Linux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-11
-modified_by:
-  name: Linode
 title: "How to Install MySQL on CentOS 8"
 title_meta: "Installing MySQL on CentOS 8"
+description: 'Learn how to install MySQL on CentOS 8 Linux on a cloud server with cloud apps.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-10-11
+keywords: ['Install MySQL on CentOS 8', 'Install MySQL on CentOS Stream 8', 'Install MySQL', 'CentOS 8', 'Connect MySQL to CentOS 8', 'Install MySQL server in Linux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MySQL vs MariaDB](https://blog.devart.com/mysql-vs-mariadb.html)'
 - '[MariaDB vs MySQL compatibility](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
 - '[Introduction to Uncomplicated Firewall](https://www.linux.com/training-tutorials/introduction-uncomplicated-firewall-ufw/)'
-authors: ["John Mueller"]
 ---
 
 ## How to Install MySQL on CentOS Stream 8

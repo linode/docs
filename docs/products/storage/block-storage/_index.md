@@ -2,6 +2,7 @@
 title: Block Storage
 title_meta: "Block Storage Product Documentation"
 description: "Linode Block Storage is a scalable, high-speed, resilient and fault tolerant storage service."
+modified: 2024-04-15
 toc: true
 tab_group_main:
     is_root: true
@@ -10,7 +11,6 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Block Storage is a scalable, high-speed, and fault tolerant storage service used to add additional storage to a Linode Compute Instance."
-modified: 2024-04-15
 aliases: ['/platform/block-storage/how-to-use-block-storage-with-your-linode/','/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/','/platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/','/platform/how-to-use-block-storage-with-your-linode/','/platform/block-storage/','/guides/platform/block-storage/','/guides/how-to-use-block-storage-with-your-linode/']
 ---
 

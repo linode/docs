@@ -1,12 +1,11 @@
 ---
+title: "Deploy a Linode Kubernetes Engine Cluster Using Pulumi"
 description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Pulumi."
+authors: ["Pulumi"]
+contributors: ["Pulumi"]
+published: 2023-08-22
 keywords: ['kubernetes','pulumi','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation","managed hosting"]
-published: 2023-08-22
-authors: ["Pulumi"]
-modified_by:
-  name: Linode
-title: "Deploy a Linode Kubernetes Engine Cluster Using Pulumi"
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 external_resources:
 - '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'

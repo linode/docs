@@ -1,16 +1,14 @@
 ---
 slug: mitigating-memcached-amplification-attacks
+title: Mitigating memcached Amplification Attacks
 description: "This guide shows you how to secure your memcached instance so it's not exploited in any large-scale UDP reflection and amplification attacks across the internet."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-02
 keywords: ["memcached","deluge","amplification","memcrashed","denial","DoS","DDoS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-02
-modified_by:
-  name: Linode
-published: 2018-03-02
-title: Mitigating memcached Amplification Attacks
 tags: ["security"]
 aliases: ['/security/mitigations/mitigating-memcached-amplification-attacks/']
-authors: ["Linode"]
 ---
 
 ## What is Memcrashed?

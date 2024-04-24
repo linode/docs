@@ -1,17 +1,16 @@
 ---
 slug: check-python-version
-description: "Knowing your Python version can make the difference between an application running or frustratingly failing. Thankfully, there is a quick command, and even some Python script, to check your currently installed Python version. Find out all you need to know about getting your Python version in this guide."
-keywords: ['check python version','how to check python version','python version command']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-15
-modified_by:
-  name: Nathaniel Stickman
 title: "Check Your Python Version"
 title_meta: "How to Check Which Python Version Is Installed"
+description: "Knowing your Python version can make the difference between an application running or frustratingly failing. Thankfully, there is a quick command, and even some Python script, to check your currently installed Python version. Find out all you need to know about getting your Python version in this guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-08-15
+keywords: ['check python version','how to check python version','python version command']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[phoenixNAP: How to Check Python Version in Linux, Mac, & Windows](https://phoenixnap.com/kb/check-python-version)'
 - '[LearnPython: How to Check Your Python Version](https://learnpython.com/blog/check-python-version/)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Python reigns as one of the most popular programming languages, with a wide range of programs and developer tools relying on it. In fact, your system likely already has at least one version of Python installed.
