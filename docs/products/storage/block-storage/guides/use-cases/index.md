@@ -1,14 +1,11 @@
 ---
+title: "Common Use Cases for Block Storage"
 description: "Learn how people use Block Storage to expand their persistent storage on the Linode Platform."
-keywords: ['block','storage','use','cases']
 published: 2019-08-27
 modified: 2022-08-24
-modified_by:
-  name: Linode
-title: "Common Use Cases for Block Storage"
+keywords: ['block','storage','use','cases']
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/block-storage-use-cases/','/guides/block-storage-use-cases/']
-authors: ["Linode"]
 ---
 
 ## What is Block Storage

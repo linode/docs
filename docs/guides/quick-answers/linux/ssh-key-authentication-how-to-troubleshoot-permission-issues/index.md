@@ -1,18 +1,17 @@
 ---
 slug: ssh-key-authentication-how-to-troubleshoot-permission-issues
+title: "Troubleshoot SSH Key Authentication Issues"
 description: 'Learn the basics of SSH keys and how to troubleshoot the most common SSH permission issues in this short guide.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-06-17
 keywords: ['ssh key authentication', 'what is ssh', 'ssh keys']
 tags: ['ssh', 'web server', 'cloud manager', 'linode platform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-17
-modified_by:
-  name: Linode
-title: "Troubleshoot SSH Key Authentication Issues"
 external_resources:
 - '[SSH Protocol](https://en.wikipedia.org/wiki/Secure_Shell_Protocol)'
 - '[SSH Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell_Protocol)'
 
-authors: ["Jeff Novotny"]
 ---
 
 ## What is SSH (Secure Shell Protocol)?
@@ -184,6 +183,6 @@ PasswordAuthentication No
 
 1. Try accessing the target server without entering a password. Your private key should be used to authenticate the connection.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some Linux systems include a tool named `ssh-copy-id` which further simplifies the process of copying a public key. To use this utility, run the command `ssh-copy-id <accountname>@<ip_address>`. After you enter your password, your public key is copied to the correct destination on the target server.
 {{< /note >}}

@@ -2,12 +2,11 @@
 slug: using-nginx-proxy-manager
 title: "How to Expose Services with the Nginx Proxy Manager"
 description: "The Nginx Proxy Manager conveniently manages proxy hosts for your web services, whether on your home network or otherwise. Learn everything you need to know to get started with the Nginx Proxy Manager in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-06-21
 keywords: ['nginx proxy manager tutorial','nginx proxy manager docker','nginx-proxy-manager github']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-06-21
-modified_by:
-  name: Linode
 external_resources:
 - '[Nginx Proxy Manager: Full Setup Instructions](https://nginxproxymanager.com/setup/)'
 - '[Cloud Raya: Reverse Proxy Management Using Nginx Proxy Manager](https://cloudraya.com/knowledge-base/reverse-proxy-management-using-nginx-proxy-manager/)'

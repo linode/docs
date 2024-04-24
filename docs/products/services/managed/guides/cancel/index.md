@@ -2,7 +2,6 @@
 title: Cancel Managed Services
 description: "Learn how to cancel Managed Services on your account."
 published: 2023-04-11
-authors: ["Linode"]
 ---
 
 If you no longer need Linode's Managed Services offering, you can cancel it by [contacting the Support team](https://www.linode.com/support/). This removes all service monitors and any other data (such as saved credentials and contacts) that is stored as part of Managed Services. In addition to this, the following services are also affected:

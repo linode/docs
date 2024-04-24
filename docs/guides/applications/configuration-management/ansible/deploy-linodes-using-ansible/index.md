@@ -1,23 +1,22 @@
 ---
 slug: deploy-linodes-using-ansible
-description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
-keywords: ['ansible','Linode module','dynamic inventory','configuration management']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-06-04
-modified: 2021-12-30
-modified_by:
-  name: Linode
 title: "Using the Linode Ansible Module to Deploy Linodes"
 title_meta: "How to use the Linode Ansible Module to Deploy Linodes"
-deprecated: true
-deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
+description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-06-04
+modified: 2021-12-30
+keywords: ['ansible','Linode module','dynamic inventory','configuration management']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/deploy-linodes-using-ansible/']
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
-authors: ["Linode"]
 tags: ["saas"]
+deprecated: true
+deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
 ---
 
 {{< note >}}
@@ -70,8 +69,7 @@ The Ansible configuration file is used to adjust Ansible's default system settin
 - `/etc/ansible/ansible.cfg`
 
 In this section, you will create an Ansible configuration file and add options to disable host key checking, and to allow the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on permissions.
 {{< /note >}}
 

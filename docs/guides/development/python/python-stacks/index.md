@@ -1,20 +1,19 @@
 ---
 slug: python-stacks
+title: "Stack in Python: A Practical Guide to Getting Started"
 description: "Ever wondered what the stack data structure does? Curious about how you could use it in Python? Learn all about stacks in Python in this tutorial. It covers what stacks are and how they work, as well as Python stack implementations you can start using."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-04-04
 keywords: ['python stack', 'stack python syntax', 'stack in python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Stack in Python: A Practical Guide to Getting Started"
 external_resources:
 - '[Python Documentation: More on Lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)'
 - '[GeeksforGeeks: Stack in Python](https://www.geeksforgeeks.org/stack-in-python/)'
 - '[Real Python: How to Implement a Python Stack](https://realpython.com/how-to-implement-python-stack/)'
 - '[Programiz: Stack Data Structure](https://www.programiz.com/dsa/stack)'
 - '[Tutorials Point: Python Stack](https://www.tutorialspoint.com/python_data_structure/python_stack.htm)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Stacks are convenient data structures, collecting items in a last-in-first-out order like you see with many activity histories. But you may be wondering how exactly stacks work. Or you may be curious how you can start implementing a stack in Python.

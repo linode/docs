@@ -1,8 +1,9 @@
 ---
 title: VLANs
-linkTitle: VLANs
 title_meta: "VLAN Product Documentation"
 description: "Linode VLANs enable secure and private communication across Linodes within the same data center region. This free service is a great way to keep your cloud workloads secure. VLANs are easy to create using the Linode Cloud Manager, API, and CLI."
+modified: 2024-04-03
+linkTitle: VLANs
 bundles: ['network-security']
 tab_group_main:
     is_root: true
@@ -11,7 +12,6 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2024-04-03
 aliases: ['/guides/platform/vlan/']
 ---
 

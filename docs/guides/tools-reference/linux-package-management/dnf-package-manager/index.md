@@ -1,21 +1,20 @@
 ---
 slug: dnf-package-manager
+title: "Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
+title_meta: "How to Use DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
 description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). This guide walks you through the core features of DNF and common commands for using DNF to install, upgrade, and remove packages."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-21
+modified: 2021-07-15
 keywords: ['dnf','installing','updating','upgrading','uninstalling','removing','package repositories','fedora']
 tags: ['yum','dnf','centos','fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
-modified: 2021-07-15
-modified_by:
-  name: Linode
-title: "Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
-title_meta: "How to Use DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
 aliases: ['/guides/how-to-use-yum-dnf/','/guides/how-to-use-dnf/']
 external_resources:
 - '[Fedora Wiki: DNF](https://fedoraproject.org/wiki/DNF)'
 - '[DNF Automatic](https://dnf.readthedocs.io/en/latest/automatic.html)'
 - '[DNF Command Reference](https://dnf.readthedocs.io/en/latest/command_ref.html)'
-authors: ["Nathaniel Stickman"]
 ---
 
 *Dandified YUM*, or simply **DNF**, is the successor to the popular *Yellowdog Updater, Modified* package manager, more commonly known as **YUM**. Both DNF and YUM provide a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API.
@@ -38,7 +37,7 @@ Before running the commands within this guide, you will need:
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 

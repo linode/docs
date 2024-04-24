@@ -1,12 +1,11 @@
 ---
+title: "Deploy ONLYOFFICE Docs through the Linode Marketplace"
 description: "Learn how to deploy ONLYOFFICE Docs, an open-source office suite with web-based viewers and collaborative editors for text documents, spreadsheets, and presentations on the Linode platform."
+published: 2023-01-23
 keywords: ['onlyoffice','documents','collaboration','office suite']
 tags: ["marketplace", "linode platform", "cloud manager","education"]
-published: 2023-01-23
-title: "Deploy ONLYOFFICE Docs through the Linode Marketplace"
 external_resources:
 - '[ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer)'
-authors: ["Linode"]
 ---
 
 [ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer) is an open-source office suite that comprises web-based viewers and collaborative editors for text documents, spreadsheets, and presentations providing high compatibility with OOXML files (.docx, .xlsx, .pptx). Other popular formats such as .doc, .odt, .rtf, .txt, .pdf, .xls, .ods, .csv, .ppt, .odp, etc. are also supported.

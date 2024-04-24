@@ -3,8 +3,6 @@ title: "Create an OAuth App with the Linode Python API Library"
 description: 'Create an OAuth 2 app utilizing the Linode API through the Linode APIv4 Python library.'
 published: 2019-01-21
 modified: 2022-11-30
-modified_by:
-  name: Linode
 external_resources:
 - '[Linode APIv4 Python library documentation](https://linode-api4.readthedocs.io/en/latest/index.html)'
 - '[Linode APIv4 Python library example app repository](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode)'

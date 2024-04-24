@@ -1,16 +1,16 @@
 ---
 slug: how-to-set-up-minecraft-server-on-ubuntu-or-debian
-keywords: ["minecraft", "ubuntu", "debian"]
-tags: ["ubuntu", "debian"]
-description: "Learn how to set up a Minecraft server on Ubuntu or Debian. This guide shows you how to configure a Minecraft firewall to increase security. ✓ Read now!"
-aliases: ['/applications/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-01-14
-modified_by:
-  name: Linode
-published: 2015-01-28
 title: "Setting up Minecraft Server on Ubuntu or Debian"
 title_meta: "How to Set Up a Minecraft Server on Ubuntu or Debian"
+description: "Learn how to set up a Minecraft server on Ubuntu or Debian. This guide shows you how to configure a Minecraft firewall to increase security. ✓ Read now!"
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2015-01-28
+modified: 2022-01-14
+keywords: ["minecraft", "ubuntu", "debian"]
+tags: ["ubuntu", "debian"]
+aliases: ['/applications/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: How_to_Set_Up_a_Minecraft_Server_smg.jpg
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
@@ -23,7 +23,6 @@ relations:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu/Debian
-authors: ["Alex Fornuto"]
 ---
 
 Minecraft is one of the most popular games in the world. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
@@ -63,7 +62,7 @@ Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJ
 
     Assign a secure password, and configure any additional [SSH hardening](/docs/guides/use-public-key-authentication-with-ssh/) options at this time.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you have a firewall configured according to the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 
 `-A INPUT -p tcp --dport 25565 -j ACCEPT`
