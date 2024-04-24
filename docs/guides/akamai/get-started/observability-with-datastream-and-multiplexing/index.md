@@ -24,7 +24,7 @@ Below are the high-level steps on how to use multiplexing with Datastream 2 in a
 
 1.  Edge servers running Datastream 2 receive client requests.
 
-1.  Datastream 2 outputs log data as a single stream to an LKE cluster running a multiplexing software solution comprised of an ELK stack and Vector. **PLACEHOLDER** Monitoring and reporting software is configured for alerting.
+1.  Datastream 2 outputs log data as a single stream to an LKE cluster running a multiplexing software solution comprised of an ELK stack and Vector.
 
 1.  ELK and Vector ingest log data. Logs are analyzed, parsed, and output to user-defined object storage endpoints.
 
@@ -50,11 +50,11 @@ Multiplexing can help reduce these costs by sorting data ahead of time and direc
 
 ### Maintaining Observability With Distributed Architecture
 
-*Ensure logs are distributed wherever they are needed.*
+*Ensure varying log types are distributed wherever they are needed.*
 
 Distributed architecture is a standard for high availability, high volume applications. With distributed architecture comes multiple regions, multiple VPCs, multiple microservices, and the logs that come with each component. In addition to large volumes of data, this can result in complex monitoring and visibility needs that may vary from region to region.
 
-Coupling cloud-based multiplexing with Datastream 2 edge logging allows you to control exactly how logs are processed and distributed across multi-region infrastructure.
+Coupling cloud-based multiplexing with Datastream 2 edge logging allows you to control exactly how CDN, security, server-side, and other logs are processed and distributed across multi-region infrastructure.
 
 
 ### Integration and Migration Effort
