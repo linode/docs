@@ -45,7 +45,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Galera Cluster](/docs/products/tools/marketplace/guides/galera-cluster/)
 - [Gitea](/docs/products/tools/marketplace/guides/gitea/)
 - [Gitlab](/docs/products/tools/marketplace/guides/gitlab/)
-- [Gluster Cluster](/docs/products/tools/marketplace/guides/glusterfs-cluster/)
+- [GlusterFS Cluster](/docs/products/tools/marketplace/guides/glusterfs-cluster/)
 - [gopaddle](/docs/products/tools/marketplace/guides/gopaddle/)
 - [Grafana](/docs/products/tools/marketplace/guides/grafana/)
 - [Grav](/docs/products/tools/marketplace/guides/grav/)
