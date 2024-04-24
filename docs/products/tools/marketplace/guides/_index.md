@@ -23,6 +23,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [aaPanel](/docs/products/tools/marketplace/guides/aapanel/)
 - [Akaunting](/docs/products/tools/marketplace/guides/akaunting/)
 - [Ant Media Server Enterprise Edition](/docs/products/tools/marketplace/guides/antmediaenterpriseserver/)
+- [Ant Media Server](/docs/products/tools/marketplace/guides/antmediaserver/)
 - [Apache Airflow](/docs/products/tools/marketplace/guides/apache-airflow/)
 - [Appwrite](/docs/products/tools/marketplace/guides/appwrite/)
 - [AzuraCast](/docs/products/tools/marketplace/guides/azuracast/)
