@@ -16,17 +16,19 @@ Having real-time visibility into log data can help determine how applications ar
 
 One way to achieve an efficient, predictable, and cost-effective observability workflow is to implement a cloud-based multiplexing solution to ingest and parse log data before it’s sent to the relevant DevOps team. Combined with Akamai’s [Datastream 2](https://techdocs.akamai.com/datastream2/docs/welcome-datastream2) edge-based log reporting, multiplexing can help manage how and where logs are transmitted, improve data security, and reduce overall cost.
 
-This guide outlines the business challenges of observability workflows, integration and migration need-to-knows, and illustrates a working multiplexing reference architecture using [Linode Kubernetes Engine (LKE)](https://www.linode.com/docs/products/compute/kubernetes/) running [Elastic Stack (ELK)](https://www.elastic.co/elastic-stack/) and [Vector](https://vector.dev/).
+This guide outlines the business challenges of observability workflows, integration and migration need-to-knows, and illustrates a working multiplexing reference architecture using [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) running [Elastic Stack (ELK)](https://www.elastic.co/elastic-stack/) and [Vector](https://vector.dev/).
 
 ## Datastream 2 and Multiplexing Workflow
 
+Below are the high-level steps on how to use multiplexing with Datastream 2 in an observability workflow.
+
 1.  Edge servers running Datastream 2 receive client requests.
 
-1.  Datastream 2 outputs log data as a single stream to an LKE cluster running a multiplexing software solution comprised of an ELK stack and Vector.
+1.  Datastream 2 outputs log data as a single stream to an LKE cluster running a multiplexing software solution comprised of an ELK stack and Vector. **PLACEHOLDER** Monitoring and reporting software is configured for alerting.
 
 1.  ELK and Vector ingest log data. Logs are analyzed, parsed, and output to user-defined object storage endpoints.
 
-1.  Regional object storage buckets are used to store parsed log data.
+1.  Regional Object Storage buckets are used to store parsed log data.
 
 ## Overcoming Challenges
 
@@ -97,3 +99,5 @@ The below diagram uses a single-region, scalable LKE cluster running ELK and Vec
 -   **ELK:** A software stack comprised of Elasticsearch, Kibana, and Logstash. The ELK stack reliably and securely takes data from any source, in any format, and then searches, analyzes, and visualizes that data.
 
 -   **Vector:** Data parsing software used to collect, transform, and route input/output data, including logging information.
+
+-   **MONITORING/ALERTING SOFTWARE PLACEHOLDER**
