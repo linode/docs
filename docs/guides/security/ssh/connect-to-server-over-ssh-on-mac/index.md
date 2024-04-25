@@ -10,11 +10,11 @@ modified: 2024-04-25
 keywords: ['ssh','linux','mac','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-r/elations:
+relations:
     platform:
         key: connecting-to-server-over-ssh
         keywords:
-            - Environment: Mac
+            - Environment: macOS
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
