@@ -13,7 +13,7 @@
     {{- end -}}
   {{- end -}}
   {{- $objectID := (printf "%s" (replace .SectionsPath "/" " > ")) -}}
-  {{- $objectID =  strings.Trim $objectID " >" -}}
+  {{- $objectID =  $objectID | strings.TrimRight " >" -}}
   {{- $ordinal := 0 }}
   {{- with .Params.tab_group_main -}}
     {{/* This is set in products pages. */}}
