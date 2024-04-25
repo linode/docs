@@ -1,15 +1,15 @@
 ---
 slug: install-opencart-on-centos-7
+title: How to Install OpenCart on CentOS 7
 description: 'This tutorial will guide you through basic installation and set-up of popular ecommerce platform OpenCart on CentOS 7.'
+authors: ["Jonathan Chun"]
+contributors: ["Jonathan Chun"]
+published: 2017-04-29
+modified: 2017-08-21
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/install-opencart-on-centos-7/','/web-applications/e-commerce/opencart/centos-7/','/websites/ecommerce/opencart-on-centos-7/']
-modified: 2017-08-21
-modified_by:
-  name: Jonathan Chun
-published: 2017-04-29
-title: How to Install OpenCart on CentOS 7
 external_resources:
  - '[OpenCart Website](https://www.opencart.com)'
  - '[OpenCart Documentation](http://docs.opencart.com/)'
@@ -19,7 +19,6 @@ relations:
         key: how-to-install-opencart
         keywords:
            - distribution: CentOS 7
-authors: ["Jonathan Chun"]
 ---
 
 ![banner_image](How_to_Install_OpenCart_on_CentOS_smg.jpg)
@@ -99,7 +98,7 @@ Issue the following commands to download and unpack OpenCart into your web root 
 
 In the above example, replace `/var/www/html/example.com/public_html/` with your virtual host's web root and `2.3.0.2-compiled.zip` with the file name of the latest OpenCart release.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can find the latest version of OpenCart from their [Download Page](https://www.opencart.com/?route=cms/download).
 {{< /note >}}
 

@@ -1,21 +1,20 @@
 ---
 slug: sql-server-security
-description: "Learn about the SQL Server security best practices and guidelines to keep your server and data safe. For example, disable unused ports and SQL Server features."
-keywords: ['sql server security']
-license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-published: 2022-05-27
-modified_by:
-  name: Linode
 title: "Part 1: SQL Server Security Best Practices"
 title_meta: SQL Server Security Best Practices
+description: "Learn about the SQL Server security best practices and guidelines to keep your server and data safe. For example, disable unused ports and SQL Server features."
 authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+published: 2022-05-27
+keywords: ['sql server security']
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 ---
 
 SQL Server security is perhaps one of the most overlooked facets of database server maintenance. Without taking the necessary precautions, an instance of SQL Server can be ripe for abuse and failure.
 
 The [SQL Database Security: User Management](/docs/guides/sql-security/) guide discussed the logical implementation of users, groups, roles, and permissions, to enhance, or limit database user security. This guide is part one in a series of SQL Server security best practices, and it discusses a variety of important additional maintenance security topics.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To review the second set of security recommendations in this series, visit [Part 2: SQL Server Security Best Practices](/docs/guides/sql-server-security-part-2/).
 {{< /note >}}
 

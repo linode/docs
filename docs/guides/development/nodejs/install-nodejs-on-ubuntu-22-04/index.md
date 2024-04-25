@@ -1,16 +1,15 @@
 ---
 slug: install-nodejs-on-ubuntu-22-04
-description: 'You need to know how to install Node.JS on Ubuntu 22.04 Linux if you work on a cloud server with cloud apps. This tutorial gets you started? ✓ Click here!'
-keywords: ['Install Node.js on Ubuntu 22.04','Node.js','Node.js Ubuntu 22.04','Ubuntu 22.04 Node.js','Install Node.js Linux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-24
-modified_by:
-  name: Linode
 title: "How to Install Node.js on Ubuntu 22.04"
 title_meta: "Installing Node.js on Ubuntu 22.04"
+description: 'You need to know how to install Node.JS on Ubuntu 22.04 Linux if you work on a cloud server with cloud apps. This tutorial gets you started? ✓ Click here!'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-02-24
+keywords: ['Install Node.js on Ubuntu 22.04','Node.js','Node.js Ubuntu 22.04','Ubuntu 22.04 Node.js','Install Node.js Linux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Installati.one: How To Install node-security on Ubuntu 22.04](https://installati.one/ubuntu/22.04/node-security/)'
-authors: ["John Mueller"]
 ---
 
 Developers use [Node.js](https://nodejs.org/) to perform [many tasks](https://nodejs.org/en/about/). It's used to install other applications, run server-side code, and execute JavaScript for user environments such as web applications. This guide shows you how to install Node.js on Ubuntu 22.04.

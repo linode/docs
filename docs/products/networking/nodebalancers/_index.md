@@ -2,6 +2,7 @@
 title: NodeBalancers
 title_meta: "NodeBalancer Product Documentation"
 description: "Linode's managed cloud-based load balancing service, designed to provide high availability and horizontal scaling to any application."
+modified: 2023-11-14
 tab_group_main:
     is_root: true
     title: Overview
@@ -9,7 +10,6 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Managed cloud-based load balancing service that provides high availability and horizontal scaling to any application."
-modified: 2023-11-14
 aliases: ['/platform/nodebalancer/','/nodebalancers/','/guides/platform/nodebalancer/']
 ---
 

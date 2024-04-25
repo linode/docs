@@ -1,20 +1,19 @@
 ---
 slug: rclone-object-storage-file-sync
+title: "Use Rclone to Sync Files to Linode Object Storage"
+title_meta: "How to Use Rclone to Sync Files to Linode Object Storage"
 description: 'Learn how to use Rclone on Ubuntu 20.04 and macOS to sync and backup files to a Linode Object Storage Bucket. Rclone is a command-line alternative to the popular rsync tool.'
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2022-03-18
+modified: 2023-07-27
 keywords: ['rclone vs rsync', 'install rclone', 'configure rclone', 'rlone sync', 'rclone copy', 'rclone mount']
 tags: ['ubuntu', 'cloud manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-18
-modified: 2023-07-27
-modified_by:
-  name: Linode
 external_resources:
    - '[Rclone mount command Documentation](https://rclone.org/commands/rclone_mount/)'
    - '[Rclone copy command Documentation](https://rclone.org/commands/rclone_copy/)'
    - '[Rclone sync command Documentation](https://rclone.org/commands/rclone_sync/)'
-title: "Use Rclone to Sync Files to Linode Object Storage"
-title_meta: "How to Use Rclone to Sync Files to Linode Object Storage"
-authors: ["Jack Wallen"]
 ---
 
 ## What is Rclone?

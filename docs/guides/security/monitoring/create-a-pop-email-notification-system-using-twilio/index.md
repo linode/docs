@@ -1,13 +1,13 @@
 ---
 slug: create-a-pop-email-notification-system-using-twilio
+title: "Create an Email Notification System Using Twilio (POP)"
 description: "Linode sends system notifications via email. This guide shows how to use the Python imaplib module to intercept those emails and forward them to text messages with the Twilio API."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-02-25
 keywords: ['twilio notify']
 tags: ['email']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-modified_by:
-  name: Linode
-title: "Create an Email Notification System Using Twilio (POP)"
 relations:
   platform:
     key: twilio-email-notifications
@@ -17,7 +17,6 @@ external_resources:
 - '[poplib — POP3 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/poplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 aliases: ['/guides/create-a-pop-email-notification-system-using-twilio/']
-authors: ["John Mueller"]
 ---
 
 By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
@@ -444,7 +443,7 @@ The updated example code looks for email in the last full minute prior to when t
 
 - If an email arrived at 3:06:15PM, it is retrieved from the email server by the script. However, it is not within the full minute that preceded the script's execution, so it is not forwarded to text.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The code is written in this way because cron jobs are not guaranteed to run at exactly the time they are scheduled. For example, a job that is scheduled every minute might run at 6 seconds past the minute at one iteration, and 9 seconds past the minute the next time. The amount of load that a system is under can affect this timing.
 
 If the code only checked the 60 seconds prior to the script execution time, then some emails may be missed as a result of inconsistent timing. By standardizing the interval for every script run, all emails should be intercepted over time.
@@ -746,8 +745,7 @@ This indicates that your email password or username are incorrect. Verify that y
 If the auto-forwarding system does not forward your Linode Alert emails, try running the script manually:
 
     python3 autoforward-email-to-text-message.py
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You need to set environment variables for the script in your terminal before running it. This is described in the [Run the Code](#run-the-code) section.
 {{< /note >}}
 

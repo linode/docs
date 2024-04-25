@@ -1,9 +1,9 @@
 ---
 title: "Deploy SimpleX Chat on Linode through the Linode Marketplace"
 description: 'Deploy SimpleX Chat on Linode through the Linode Marketplace.'
+published: 2023-09-15
 keywords: [ 'simplex','chat', 'server']
 tags: ["cloud","linode platform", "marketplace"]
-published: 2023-09-15
 author:
   name: shum
   email: sh@simplex.chat
@@ -37,7 +37,7 @@ SimpleX Chat is a private messaging platform that uses temporary anonymous ident
 
 ### Linode Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
 ## Getting Started after Deployment

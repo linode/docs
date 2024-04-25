@@ -1,16 +1,13 @@
 ---
+title: "Deploy Uptime Kuma through the Linode Marketplace"
 description: "Deploy Uptime Kuma on a Linode Compute Instance. This provides you with an open source monitoring tool like 'Uptime Robot'."
-keywords: ['uptime','monitoring','ping']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2023-10-27
-modified_by:
-  name: Linode
-title: "Deploy Uptime Kuma through the Linode Marketplace"
+keywords: ['uptime','monitoring','ping']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Uptime Kuma](https://github.com/louislam/uptime-kuma)'
 aliases: ['/guides/uptimekuma-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Uptime Kuma](https://github.com/louislam/uptime-kuma) is an open source monitoring tool. It enables you to monitor services over HTTP/S, TCP, DNS, and other protocols. You can receive notification alerts of downtime and even create custom status pages for your users.
@@ -34,7 +31,7 @@ authors: ["Linode"]
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 

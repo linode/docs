@@ -1,16 +1,13 @@
 ---
+title: "Deploy Odoo through the Linode Marketplace"
 description: "Learn how to deploy Odoo, a self-hosted business management software suite, on the Linode platform."
-keywords: ['odoo','business','crm','ecommerce']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2023-10-27
-modified_by:
-  name: Linode
-title: "Deploy Odoo through the Linode Marketplace"
+keywords: ['odoo','business','crm','ecommerce']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Odoo](https://www.odoo.com/)'
 aliases: ['/guides/odoo-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company’s processes.
@@ -34,7 +31,7 @@ authors: ["Linode"]
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
