@@ -6,11 +6,11 @@ description: "A tutorial outlining how to connect to a remote server over SSH on
 authors: ["Matt Wildman","Linode"]
 contributors: ["Matt Wildman","Linode"]
 published: 2021-06-25
-modified: 2022-01-28
+modified: 2024-04-25
 keywords: ['ssh','linux','mac','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-relations:
+r/elations:
     platform:
         key: connecting-to-server-over-ssh
         keywords:
@@ -37,26 +37,26 @@ As alternatives to the Terminal app, other popular and highly customizable macOS
 
 ## Connecting to the Remote Server Over SSH
 
-1.  Within the terminal, enter the following command, replacing *[username]* with the username of the remote user and *[ip-address]* with the IP address or domain name of the remote server.
+1.  Within the terminal, enter the following command, replacing {{< placeholder "USERNAME" >}} with the username of the remote user and {{< placeholder "IP_ADDRESS" >}} with the IP address or domain name of the remote server.
 
     ```command
-    ssh [username]@[ip-address]
+    ssh {{< placeholder "USERNAME" >}}@{{< placeholder "IP_ADDRESS" >}}
     ```
 
     The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
     {{< note >}}
-    If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
+    If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace {{< placeholder "PORT_NUMBER" >}} with the port number that the remote SSH server is using.
 
     ```command
-    ssh [username]@[ip-address] -p [port-number]
+    ssh {{< placeholder "USERNAME" >}}@{{< placeholder "IP_ADDRESS" >}} -p {{< placeholder "PORT_NUMBER" >}}
     ```
     {{< /note >}}
 
 1.  When you connect with a server for the first time, the SSH client prompts you to check and verify the host key's fingerprint. This is normal, and results in output similar to:
 
     ```output
-    The authenticity of host ‘example.com (93.184.216.34)’ can't be established.
+    The authenticity of host ‘example.com (192.0.2.142)’ can't be established.
     ECDSA key fingerprint is SHA256:d029f87e3d80f8fd9b1be67c7426b4cc1ff47b4a9d0a84.
     Are you sure you want to continue connecting (yes/no)?
     ```
@@ -67,7 +67,7 @@ As alternatives to the Terminal app, other popular and highly customizable macOS
     If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when the remote host key changes. To fix this, revoke the key for that IP address.
 
     ```command
-    ssh-keygen -R 198.51.100.4
+    ssh-keygen -R {{< placeholder "IP_ADDRESS" >}}
     ```
     {{< /note >}}
 
@@ -85,7 +85,7 @@ After you are done, log out of the session by typing `exit`. The terminal then s
 
 ```output
 logout
-Connection to 93.184.216.34 closed.
+Connection to 192.0.2.142 closed.
 ```
 
 At this point, the shell prompt returns to the one for the local workstation and the terminal application can be closed if it's no longer needed.
@@ -96,23 +96,23 @@ Instead of using SSH to open your remote server's console, you can run commands 
 
 ### Sending a Single Command
 
-To run a single command on your remote server, use the following command. Replace *[username]* with the username of the remote user,  *[ip-address]* with the IP address or domain name of the remote server, and *[command]* with the command you wish to run.
+To run a single command on your remote server, use the following command. Replace {{< placeholder "USERNAME" >}} with the username of the remote user,  {{< placeholder "IP_ADDRESS" >}} with the IP address or domain name of the remote server, and {{< placeholder "COMMAND" >}} with the command you wish to run.
 
 ```command
-ssh [username]@[ip-address] [command]
+ssh {{< placeholder "USERNAME" >}}@{{< placeholder "IP_ADDRESS" >}} {{< placeholder "COMMAND" >}}
 ```
 
-As an example, running `ssh me@192.0.2.0 ls` lists all the files in the home directory of the user called `me`. This can be useful to find the uptime of the server (`ssh me@192.0.2.0 uptime`) or maybe determine its Linux distribution and version (`ssh me@192.0.2.0 lsb_release -a`).
+As an example, running `ssh me@192.0.2.142 ls` lists all the files in the home directory of the user called `me`. This can be useful to find the uptime of the server (`ssh me@192.0.2.142 uptime`) or maybe determine its Linux distribution and version (`ssh me@192.0.2.142 lsb_release -a`).
 
 ### Sending Multiple Commands
 
-To run multiple commands on your remote server (one after the other), use the following command. Replace *[command-1]*, *[command-2]*, and *[command-3]* with the commands you wish to run.
+To run multiple commands on your remote server (one after the other), use the following command. Replace {{< placeholder "COMMAND_1" >}}, {{< placeholder "COMMAND_2" >}}, and {{< placeholder "COMMAND_3" >}} with the commands you wish to run.
 
 ```command
-ssh [username]@[ip-address] "[command-1]; [command-2]; [command-3]"
+ssh {{< placeholder "USERNAME" >}}@{{< placeholder "IP_ADDRESS" >}} "{{< placeholder "COMMAND_1" >}}; {{< placeholder "COMMAND_2" >}}; {{< placeholder "COMMAND_3" >}}"
 ```
 
-The commands should be separated by a semi-colon (`;`) and all of the commands together should be surrounded by double quotation marks (`"`). For example, if you wanted to create a file named *bar.txt* in a directory called *foo* within the user **me**'s home directory, run: `ssh me@192.0.2.0 "mkdir foo; cd foo; touch bar.txt`.
+The commands should be separated by a semi-colon (`;`) and all of the commands together should be surrounded by double quotation marks (`"`). For example, if you wanted to create a file named *bar.txt* in a directory called *foo* within the user **me**'s home directory, run: `ssh me@192.0.2.142 "mkdir foo; cd foo; touch bar.txt`.
 
 ### Using sudo
 
