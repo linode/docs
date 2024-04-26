@@ -2,7 +2,7 @@
 title: "Deploy Prometheus through the Linode Marketplace"
 description: "Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Easily deploy Prometheus using Marketplace Apps."
 published: 2020-03-12
-modified: 2024-04-23
+modified: 2024-04-26
 
 keywords: ['prometheus','monitoring','time series','metrics']
 tags: ["linode platform","monitoring","marketplace","cloud-manager"]
@@ -12,9 +12,14 @@ external_resources:
 - '[Prometheus Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)'
 - '[Grafana Support for Prometheus](https://prometheus.io/docs/visualization/grafana/)'
 aliases: ['/platform/marketplace/how-to-deploy-prometheus-with-marketplace-apps/', '/platform/one-click/how-to-deploy-prometheus-with-one-click-apps/','/guides/how-to-deploy-prometheus-with-one-click-apps/','/guides/how-to-deploy-prometheus-with-marketplace-apps/','/guides/prometheus-marketplace-app/']
+_build:
+  list: false
+noindex: true
 deprecated: true
-deprecated_link: "products/tools/marketplace/guides/prometheus-grafana/"
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Prometheus has been removed from the App Marketplace and bundled with Grafana. This guide has been retained for reference only. For information on how to deploy and set up Prometheus, see the [Deploy Prometheus and Grafana through the Linode Marketplace](/docs/products/tools/marketplace/guides/prometheus-grafana/) guide.
+{{< /note >}}
 
 Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect metrics and receive alerts with this open-source monitoring tool. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
 

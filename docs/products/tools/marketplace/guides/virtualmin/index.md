@@ -10,8 +10,15 @@ external_resources:
 - '[Virtualmin Documentation](https://www.virtualmin.com/documentation)'
 - '[Virtualmin Support](https://www.virtualmin.com/support)'
 aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/deploy-virtualmin-with-one-click-apps/','/guides/virtualmin-marketplace-app/']
+_build:
+  list: false
+noindex: true
 deprecated: true
+
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Virtualmin has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
+{{< /note >}}
 
 [Virtualmin](https://www.virtualmin.com) is an open source control panel for web hosting management. It offers an easy to use graphical interface for managing websites, email, and databases. It's built on top of and integrated with the popular Webmin.
 

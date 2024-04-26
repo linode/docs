@@ -8,8 +8,15 @@ external_resources:
 - '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-rust-with-marketplace-apps/', '/platform/one-click/deploying-rust-with-one-click-apps/','/guides/deploying-rust-with-one-click-apps/', '/guides/deploying-rust-with-marketplace-apps/','/guides/rust-marketplace-app/']
+_build:
+  list: false
+noindex: true
 deprecated: true
+
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Rust has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
+{{< /note >}}
 
 [Rust](https://rust.facepunch.com/) is a multiplayer game where you play as a survivor that must work with or against other players to ensure your own survival. Players are able to steal, lie, cheat, or trick each other. You can build a shelter, hunt animals for food, craft weapons, craft armor, and much more.
 
