@@ -1,5 +1,5 @@
 ---
-title: Regions
 slug: regions
+title: Regions
 ---
 

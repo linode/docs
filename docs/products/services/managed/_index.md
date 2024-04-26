@@ -2,6 +2,8 @@
 title: Managed
 title_meta: "Linode Managed Service Product Documentation"
 description: "Linode Managed is a service that offers incident response, backups, and monitoring."
+published: 2023-04-11
+modified: 2024-03-11
 tab_group_main:
     is_root: true
     title: Overview
@@ -9,8 +11,6 @@ tab_group_main:
 cascade:
     product_description: "A suite of services that includes a robust monitoring system, 24/7 incident response, backups, and cPanel licenses."
 aliases: ['/guides/platform/managed/']
-published: 2023-04-11
-modified: 2024-03-11
 ---
 
 Downtime is expensive and puts your company’s reputation at risk. [Linode Managed](https://www.linode.com/products/managed/) helps minimize this risk through a suite of services and products aimed at monitoring your Compute Instances, minimizing downtime, protecting your data, and migrating to the Linode Platform.

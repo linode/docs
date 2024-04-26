@@ -1,18 +1,15 @@
 ---
+title: "Deploy Nextcloud through the Linode Marketplace"
 description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Marketplace App."
-keywords: ['Nextcloud','marketplace','file sharing']
 published: 2020-06-11
 modified: 2023-04-21
-modified_by:
-  name: Linode
-title: "Deploy Nextcloud through the Linode Marketplace"
+keywords: ['Nextcloud','marketplace','file sharing']
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
 - '[Nextcloud AIO github](https://github.com/nextcloud/all-in-one)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-marketplace-apps/','/guides/nextcloud-marketplace-app/']
 image: deploying_nextcloud_oca.png
-authors: ["Linode"]
 ---
 
 [Nextcloud](https://nextcloud.com/) is an open source solution to file hosting and sharing. With Nextcloud, you can synchronize files from a local computer to the Linode server and share them with collaborators. Nextcloud’s customizable security features and intuitive user interface help to keep files safe and easy to manage.

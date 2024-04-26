@@ -1,14 +1,14 @@
 ---
 slug: install-black-mesa-on-debian-or-ubuntu
+title: 'Install Black Mesa on Debian or Ubuntu'
 description: 'This guide shows you how to install Black Mesa, a third-party reproduction of the epic first-person shooter, Half-Life, on a Linode running Debian or Ubuntu.'
+authors: ["Davide Beatrici"]
+contributors: ["Davide Beatrici"]
+published: 2016-02-26
+modified: 2019-02-01
 keywords: ["black mesa", "steam", "steamcmd", "sourcemod", "metamod"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-02-26
-modified: 2019-02-01
-modified_by:
-  name: Linode
-title: 'Install Black Mesa on Debian or Ubuntu'
 external_resources:
 - '[BlackMesaSource.com](http://www.blackmesasource.com/)'
 - '[The Official Black Mesa Wiki](http://wiki.blackmesasource.com/)'
@@ -16,9 +16,7 @@ external_resources:
 - '[SourceMod.net](https://www.sourcemod.net)'
 aliases: ['/game-servers/install-black-mesa-on-debian-or-ubuntu/','/applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
 dedicated_cpu_link: true
-authors: ["Davide Beatrici"]
 ---
-
 
 This guide will show you how to set up your own [Black Mesa](https://blackmesasource.com/) server on a Linode running Debian or Ubuntu.
 
@@ -29,7 +27,7 @@ This guide will show you how to set up your own [Black Mesa](https://blackmesaso
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -70,8 +68,7 @@ From the SteamCMD guide, one additional step is needed specifically for Black Me
 2.  Run the Server:
 
         ./srcds_run -game bms +hostname "My Linode" +map gasworks +maxplayers 24
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The **game** parameter specifies the game's files directory; don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br><br>
 The **hostname** parameter specifies your server's name in the browser list. By default it's specified in server.cfg, so the +hostname parameter is overridden by it.<br><br>
 The **map** parameter specifies the map with which the server needs to start. You must write the name of the map file without the prefix.<br><br>
@@ -79,16 +76,14 @@ The **maxplayers** parameter specifies the maximum number of players allowed to 
 
 You can read the entire list of parameters on the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To keep the server running, execute it using [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/):
 
     screen ./srcds_run -game bms +map gasworks +maxplayers 24
 {{< /note >}}
 
 ## Configure a Black Mesa Dedicated Server
-
-{{< note respectIndent=false >}}
+{{< note >}}
 At the time of writing this guide, Black Mesa has yet to share with customers any official documentation regarding configurations.
 {{< /note >}}
 
@@ -111,8 +106,7 @@ mp_warmup_time 30                 --> Time before the match starts.
 
 {{< /file >}}
 
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The settings in **server.cfg** will override the ones that you specify (using parameters) when you start the server.
 {{< /note >}}
 
@@ -160,8 +154,7 @@ In the following example, maps that were downloaded from workshop to the list ar
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can find more maps in the [Steam Workshop](http://steamcommunity.com/workshop/browse/?appid=362890&requiredtags[]=Multiplayer).
 {{< /note >}}
 
@@ -223,8 +216,7 @@ screen -r "BMDS" -X stuff "./srcds_run -game bms +map gasworks +maxplayers 24\n"
 3.  Run the script:
 
         ./run.sh
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The **game** parameter specifies the game's files directory, don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br />
 The **hostname** parameter specifies your server's name in the browser list. By default it's specified in server.cfg, so the +hostname parameter is overridden by it.<br />
 The **map** parameter specifies with which map the server needs to start. You must write the name of the map file without the prefix.<br />
@@ -299,7 +291,7 @@ If you get similar output, it means that MetaMod and SourceMod are working.
 
 Now, SourceMod will be automatically loaded by MetaMod when starting the Black Mesa Dedicated Server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Read the [MetaMod Official Wiki](https://wiki.alliedmods.net/Category:Metamod:Source_Documentation) and the [SourceMod Official Wiki](https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation) for info about configurations, plug-ins, files, etc.
 {{< /note >}}
 

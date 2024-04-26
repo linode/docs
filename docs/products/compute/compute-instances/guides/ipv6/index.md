@@ -1,18 +1,15 @@
 ---
+title: "An Overview of IPv6 on Linode"
 description: "This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via the Cloud Manager."
-keywords: ["ipv6 networking", "IP configuration"]
-aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/','/guides/an-overview-of-ipv6-on-linode/']
 published: 2011-05-03
 modified: 2022-11-29
-modified_by:
-  name: Linode
-title: "An Overview of IPv6 on Linode"
+keywords: ["ipv6 networking", "IP configuration"]
+aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/','/guides/an-overview-of-ipv6-on-linode/']
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
  - '[IPv6 and IPv4 CIDR Chart (PDF)](https://www.ripe.net/about-us/press-centre/ipv6-chart_2015.pdf)'
 tags: ["networking","linode platform"]
 image: an-overview-of-ipv6-on-linode-title-graphic.jpg
-authors: ["Linode"]
 ---
 
 All Compute Instances are created with one IPv6 address, which is acquired by [*Stateless Address Autoconfiguration*](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_(SLAAC)) (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.

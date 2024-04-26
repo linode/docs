@@ -2,14 +2,11 @@
 title: "Managing IP Addresses on a Compute Instance"
 description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
-keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
-tags: ["linode platform","cloud manager","networking"]
 published: 2016-08-23
 modified: 2024-01-30
-modified_by:
-  name: Linode
+keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
+tags: ["linode platform","cloud manager","networking"]
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
-authors: ["Linode"]
 ---
 
 Each Linode Compute Instance is equipped with several IP addresses, which may enable it to be accessible over the public Internet and other Linode services or accessible just to other Compute Instances within a VPC. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.

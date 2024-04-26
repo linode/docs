@@ -2,12 +2,11 @@
 slug: install-and-update-software-with-cloud-init
 title: "Use Cloud-Init to Install and Update Software on New Servers"
 description: "Learn how you can use cloud-init to upgrade and install software automatically when initializing new servers."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-11-15
 keywords: ['cloud-init','cloudinit','apt','yum']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-11-15
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation - Module Reference: Package Update Upgrade Install](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#package-update-upgrade-install)'
 - '[Cloud-init Documentation - Cloud-config Examples: Install Arbitrary Packages](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#install-arbitrary-packages)'

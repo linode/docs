@@ -1,7 +1,6 @@
 ---
 title: Comparing Cloud Firewalls to Linux Firewall Software
 description: ""
-authors: ["Linode"]
 modified: 2023-11-01
 ---
 

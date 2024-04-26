@@ -1,9 +1,9 @@
 ---
 title: "Deploy SimpleX Chat on Linode through the Linode Marketplace"
 description: 'Deploy SimpleX Chat on Linode through the Linode Marketplace.'
+published: 2023-09-15
 keywords: [ 'simplex','chat', 'server']
 tags: ["cloud","linode platform", "marketplace"]
-published: 2023-09-15
 author:
   name: shum
   email: sh@simplex.chat

@@ -3,7 +3,6 @@ title: "Manage Backups"
 description: "Learn how to restore one of the available backups for a Managed Database."
 modified: 2022-07-01
 aliases: ['/products/databases/managed-databases/guides/restore-backup/']
-authors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

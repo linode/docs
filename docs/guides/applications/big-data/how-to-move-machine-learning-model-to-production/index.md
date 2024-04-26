@@ -1,14 +1,14 @@
 ---
 slug: how-to-move-machine-learning-model-to-production
+title: 'How to Move Your Machine Learning Model to Production'
 description: 'This guide will show you how to use an existing deep learning model as part of a production application using an API endpoint for a Flask app.'
-keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
 og_description: 'Use a pre-trained deep learning model as part of a production application.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 published: 2017-10-09
 modified: 2019-01-31
-modified_by:
-  name: Linode
-title: 'How to Move Your Machine Learning Model to Production'
+keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Miniconda](https://conda.io/miniconda.html)'
 - '[Keras Documentation](https://keras.io/)'
@@ -16,7 +16,6 @@ external_resources:
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/how-to-move-machine-learning-model-to-production/']
-authors: ["Jared Kobos"]
 ---
 
 ![How to Move Your Machine Learning Model to Production](move-machine-learning-model-to-production.png "How to Move Your Machine Learning Model to Production")
@@ -72,7 +71,7 @@ Keras is a deep learning library for Python. It provides an object-oriented inte
 
 Since developing and training a deep learning model is beyond the scope of this tutorial, the code below is provided without explanation. The model is a simplified version of the example from [Elite Data Science's excellent tutorial](https://elitedatascience.com/keras-tutorial-deep-learning-in-python). If you don't have a background in deep learning and are interested in learning more, you can complete that tutorial and then skip to the [Flask API](#flask-api) section of this guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5`
 {{< /note >}}
 

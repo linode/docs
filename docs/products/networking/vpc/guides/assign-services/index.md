@@ -3,7 +3,6 @@ title: "Assign a Compute Instance to a VPC"
 description: "Learn how to add Compute Instances to subnets on Akamai's VPC solution."
 published: 2024-01-30
 modified: 2024-02-14
-authors: ["Linode"]
 ---
 
 VPCs enable private communication between Compute Instances within a data center and are a critical component of many application architectures. Follow the instructions within this guide to add both new and existing Compute Instances to a VPC.
