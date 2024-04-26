@@ -48,7 +48,7 @@ The diagram below illustrates how replication of Object Storage data from one bu
 
 1.  As needed, requests can be redirected to the second bucket in Washington, D.C.
 
-![Failover with OBJ Replication](OBJ_replication_architecture_edit.png "Failover with OBJ Replication")
+![Failover with OBJ Replication](OBJ-CDN-failover-diagram.svg)
 
 {{< note title="Best Practice: Managing Multiple Buckets" >}}
 Storage owners are responsible for their own bucket management. To ensure continuity between bucket contents, additional buckets should be integrated with your system and managed similarly after an initial sync with the primary bucket.
