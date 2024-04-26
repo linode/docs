@@ -1,19 +1,13 @@
 ---
+title: "Deploy Jitsi Cluster through the Linode Marketplace"
 description: "Jitsi is an open source suite that helps you host your own virtual video conferences. Follow this guide to deploy Jitsi on Linode using Marketplace Apps."
+published: 2024-04-26
 keywords: ['jitsi','marketplace', 'server']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "ssl", "education"]
-published: 2020-09-28
-modified: 2024-03-13
-image: Deploy_Jitsi_oneclickcluster.png
-modified_by:
-  name: Linode
-title: "Deploy Jitsi Cluster through the Linode Marketplace"
 external_resources:
 - '[About Jitsi](https://jitsi.org/about/)'
 - '[Jitsi Documentation](https://jitsi.github.io/handbook/docs/intro)'
 - '[Scale Your Jitsi Setup](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-scalable)'
-aliases: ['/platform/marketplace/how-to-deploy-jitsi-cluster-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-cluster/','/platform/one-click/deploy-jitsi-with-one-click-cluster/','/guides/how-to-deploy-jitsi-with-marketplace-cluster/','/guides/jitsi-marketplace-cluster/']
-authors: ["Linode"]
 ---
 
 ## Cluster Deployment Architecture

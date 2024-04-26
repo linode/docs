@@ -1,18 +1,12 @@
 ---
+title: "Deploy GlusterFS Cluster through the Linode Marketplace"
 description: "GlusterFS is an open-source, distributed network filesystem designed to scale out and handle large amounts of data across compute instances. It replicates data across multiple GlusterFS servers into a single application mount point, allowing seamless access to files to client instances. With its flexible architecture and ability to replicate data across nodes, GlusterFS provides high availability and fault tolerance, making it suitable for cloud storage and high availability architectures."
+published: 2024-04-26
 keywords: ['glusterfs','gluster', 'marketplace', 'server']
 tags: ["ubuntu","marketplace", "web applications", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
-published: 2024-04-30
-modified: 2024-04-30
-image: Deploy_glusterfs_oneclickcluster.png
-modified_by:
-  name: Linode
-title: "Deploy GlusterFS Cluster through the Linode Marketplace"
 external_resources:
 - '[About GlusterFS](https://www.gluster.org/)'
 - '[GlusterFS Documentation](https://docs.gluster.org/en/latest/)'
-aliases: ['/platform/marketplace/how-to-deploy-glusterfs-cluster-with-marketplace-apps/', '/platform/one-click/how-to-deploy-glusterfs-with-one-click-cluster/','/platform/one-click/deploy-glusterfs-with-one-click-cluster/','/guides/how-to-deploy-glusterfs-with-marketplace-cluster/','/guides/glusterfs-marketplace-cluster/']
-authors: ["Linode"]
 ---
 
 ## Cluster Deployment Architecture
@@ -38,7 +32,7 @@ authors: ["Linode"]
 
 ### GlusterFS Options
 
-- **[Linode API Token](https://www.linode.com/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token):** The provisioner node will use an authenticated API token to create the additional components to the cluster. This is required to fully create the GlusterFS cluster.
+- **[Linode API Token](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token):** The provisioner node will use an authenticated API token to create the additional components to the cluster. This is required to fully create the GlusterFS cluster.
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}
 
