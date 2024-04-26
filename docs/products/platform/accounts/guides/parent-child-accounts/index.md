@@ -2,11 +2,11 @@
 slug: parent-child-accounts
 description: 'Learn how parent and child accounts can help Akamai partners manage multiple accounts.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2024-04-23
+modified: 2024-04-30
 keywords: ["akamai partners", "parent", "child", "parent/child relationship"]
-published: 2022-04-23
+published: 2024-04-23
 title: Parent and Child Accounts for Akamai Partners
-aliases: ['/guides/akamai/get-started/parent-child-account/']
+aliases: ['products/platform/accounts/guides/parent-child-accounts/']
 authors: ["Linode"]
 contributors: ["Linode"]
 promo_default: false
