@@ -30,6 +30,8 @@ Below are the high-level steps on how to use multiplexing with Datastream 2 in a
 
 1.  Regional Object Storage buckets are used to store parsed log data.
 
+![Datastream 2 and Multiplexing Workflow](Datastream-2-Multiplexing-Workflow.svg)
+
 ## Overcoming Challenges
 
 ### Managing Observability Needs Across Teams
@@ -81,7 +83,7 @@ The below diagram uses a single-region, scalable LKE cluster running ELK and Vec
 
 1.  **Regional buckets receive and store parsed logs.** Local log processing infrastructure consisting of object storage buckets and software ingest and store the parsed logs based on data identifiers given during the parsing process. These buckets are located in the same regions as SaaS clusters running the application queried by the end-user.
 
-[DIAGRAM]
+![Datastream 2 With Multiplexing Design Diagram](Datastream-Multiplexing-Diagram.svg)
 
 ### Systems and Components
 
