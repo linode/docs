@@ -1,26 +1,24 @@
 ---
 slug: upgrade-to-ubuntu-20-04
+title: "Inline Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
+title_meta: "How to Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
 description: "A how-to guide for performing an inline upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-12-30
 keywords: ["upgrading", "ubuntu", "20.04","focal fossa"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2021-12-30
-title: "Inline Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
-title_meta: "How to Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 20.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-20-04/']
-authors: ["Linode"]
 ---
 
 Ubuntu 20.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2025. Use this guide to upgrade your Linode from Ubuntu 18.04 (Bionic Beaver) or Ubuntu 19.10 (Eoan Ermine) to Ubuntu 20.04 (Focal Fossa).
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Inline distribution upgrades can yield unpredictable results. Before continuing, read through [Upgrading to the Latest Distribution (Clean Install)](/docs/guides/manually-upgrading-to-latest-distribution-version/) guide to learn more about your upgrade options. This guide also provides instructions to perform a clean install of the latest distribution version.
 
 The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/products/compute/compute-instances/guides/lish/) or [Glish](/docs/products/compute/compute-instances/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.

@@ -1,12 +1,9 @@
 ---
 title: "Deploy MainConcept XAVC Transcoder Demo through the Linode Marketplace"
 description: "Deploy MainConcept XAVC Transcoder demo, an enterprise ready tool to create Sony XAVC camera formats on a Linode Compute Instance."
+published: 2023-09-14
 keywords: ['transcoder','encoder','video','sony','xavc','xavc-intra','xavc long gop','xavc-s','rest api']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-09-14
-modified_by:
-  name: Linode
-authors: ["Linode"]
 ---
 
 The [MainConcept XAVC Transcoder](https://www.mainconcept.com/transcoders) from the Pro Camera Transcoders for Sony & Panasonic product line is an optimized Docker container for file-based transcoding to professional Sony camera formats such as XAVC-Intra, XAVC Long GOP, and XAVC-S. MainConcept XAVC Transcoder supports a wide range of input formats, and is ready-to-use out of the box. It can be controlled via command line, REST API, or various container management tools.

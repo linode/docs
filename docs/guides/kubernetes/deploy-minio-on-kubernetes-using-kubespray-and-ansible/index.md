@@ -1,20 +1,19 @@
 ---
 slug: deploy-minio-on-kubernetes-using-kubespray-and-ansible
+title: 'Deploy Minio on Kubernetes using Kubespray and Ansible'
 description: 'Learn how to use a combination of Kubespray and Ansible to provision a cluster and deploy Minio as a private cloud storage.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-02-23
 keywords: ['ansible', 'kubernetes', 'cluster', 's3', 'aws']
 tags: ["python","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-02-23
-modified_by:
-  name: Linode
-title: 'Deploy Minio on Kubernetes using Kubespray and Ansible'
 aliases: ['/applications/containers/deploy-minio-on-kubernetes-using-kubespray-and-ansible/','/kubernetes/deploy-minio-on-kubernetes-using-kubespray-and-ansible/','/applications/containers/kubernetes/deploy-minio-on-kubernetes-using-kubespray-and-ansible/']
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)'
 - '[Minio](https://www.minio.io/)'
 - '[Kubespray](https://github.com/kubernetes-incubator/kubespray)'
-authors: ["Sam Foo"]
 ---
 
 ![Minio_Banner](Deploy_Minio.jpg)

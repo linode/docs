@@ -1,16 +1,15 @@
 ---
 slug: view-and-follow-the-end-of-text-files-with-tail
+title: View and Follow the End of Text Files with tail
 description: 'This guide demonstrates the syntax and basic usage of the Linux utility tail, which you can use to view the end of text files, and also how to use follow mode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-29
+modified: 2018-04-02
 keywords: ["tail", "linux commands", "linux", "common commands", "unix", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/','/linux-tools/common-commands/tail/']
-modified: 2018-04-02
-modified_by:
-  name: Linode
-published: 2010-11-29
-title: View and Follow the End of Text Files with tail
 tags: ["linux"]
-authors: ["Linode"]
 ---
 
 ![View and Follow the End of Text Files with tail](view_and_follow_the_end_of_text_files_with_tail_smg.png)

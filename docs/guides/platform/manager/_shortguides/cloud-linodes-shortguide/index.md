@@ -1,18 +1,16 @@
 ---
 slug: cloud-linodes-shortguide
-description: 'Shortguide that gives an overview of the Linodes section of the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
 title: Overview of the Linode Section in the Cloud Manager
+description: 'Shortguide that gives an overview of the Linodes section of the Cloud Manager.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-22
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-linodes-shortguide/']
-authors: ["Linode"]
 ---
 
 The Linodes section of Cloud Manager allows you to create and manage your Linodes. Each Linode instance in Cloud Manager includes:

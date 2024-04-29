@@ -1,7 +1,13 @@
 ---
 slug: create-an-ark-server-on-ubuntu
+title: "Creating a Dedicated ARK Server on Ubuntu"
+title_meta: "How to Create a Dedicated ARK Server on Ubuntu"
 description: "A guide on installing and configuring an Ark: Survival Evolved server, with its necessary dependencies, on Ubuntu."
 og_description: "How to install an Ark server on Ubuntu."
+authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
+published: 2016-12-28
+modified: 2024-01-22
 keywords: ["ark survival evolved", "ubuntu", "server"]
 tags: ["ubuntu","game servers"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -10,15 +16,8 @@ external_resources:
  - '[Dedicated Server Setup on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Dedicated_server_setup)'
  - '[Console commands on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Console_commands)'
  - '[Studio Wilpost on Epic Games and Steam crossplay](https://survivetheark.com/index.php?/forums/topic/539019-community-crunch-225-crystal-isles-anniversary-event-epic-games-store-and-more/)'
-modified: 2024-01-22
-modified_by:
-  name: Linode
-published: 2016-12-28
-title: "Creating a Dedicated ARK Server on Ubuntu"
-title_meta: "How to Create a Dedicated ARK Server on Ubuntu"
 aliases: ['/applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/','/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/', '/guides/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
 dedicated_cpu_link: true
-authors: ["Nick Brewer"]
 ---
 
 This guide demonstrates how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode Compute Instance running a modern Ubuntu distribution.
@@ -39,7 +38,7 @@ There is no cross-play between different platforms (Linux and Xbox, for example)
 
 1.  To connect to your Ubuntu Ark server, you must have a copy of the [Ark: Survival Evolved](http://www.playark.com/) game client running on a local machine.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -158,7 +157,7 @@ ServerAdminPassword=example
 
 `ServerPassword` determines the password that users will be required to enter when connecting to your server. You can omit this line to allow access without a password. `ServerAdminPassword` specifies the administrative password that will be used when issuing [game commands](https://ark.wiki.gg/wiki/Console_commands).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you choose to use the `ServerPassword` option when connecting to the server, you will need to click on **Show Password Protected** in the client's filters.
 {{< /note >}}
 

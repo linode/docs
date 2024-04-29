@@ -1,19 +1,18 @@
 ---
 slug: how-to-use-yubikey-for-two-factor-ssh-authentication
+title: "Using a YubiKey for 2FA when Logging in over SSH"
+title_meta: "How to Use a YubiKey for 2FA when Logging in over SSH"
 description: "This guide shows you how to use a YubiKey for Two-Factor secure shell authentication - or make it the primary access method."
+authors: ["Huw Evans"]
+contributors: ["Huw Evans"]
+published: 2017-08-28
+modified: 2018-02-26
 keywords: ["ssh", "yubikey", "2fa", "2 factor authentication", "otp"]
 aliases: ['/security/how-to-use-yubikey-for-two-factor-ssh-authentication/','/security/authentication/two-factor-authentication/how-to-use-yubikey-for-two-factor-ssh-authentication/','/security/authentication/how-to-use-yubikey-for-two-factor-ssh-authentication/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-title: "Using a YubiKey for 2FA when Logging in over SSH"
-title_meta: "How to Use a YubiKey for 2FA when Logging in over SSH"
-published: 2017-08-28
-modified: 2018-02-26
-modified_by:
-  name: Linode
 external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
-authors: ["Huw Evans"]
 ---
 
 ![banner_image](How_to_use_a_YubiKey_for_Two_Factor_Secure_Shell_Authentication_smg.jpg)
@@ -38,7 +37,7 @@ If you want to work through this guide but don't have a YubiKey, you can find on
 
 4. Test your YubiKey at [demo.yubico.com](https://demo.yubico.com) to make sure it's working correctly.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Replace each instance of `user@example.com` in this guide with your site's domain name and the appropriate user.
 {{< /note >}}
 

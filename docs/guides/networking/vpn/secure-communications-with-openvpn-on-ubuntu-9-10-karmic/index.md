@@ -1,25 +1,22 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-24
+modified: 2011-05-17
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-ubuntu-9-10-karmic/','/networking/openvpn/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-02-24
-title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 

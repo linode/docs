@@ -2,12 +2,11 @@
 slug: implement-jenkins-ci-cd
 title: "How to Implement Jenkins CI/CD on Linode to Any Hyperscaler"
 description: "Jenkins allows you to effectively automate your building, testing, deployment, and more. Its many plugins and its flexible pipeline capabilities make Jenkins exceptional for CI/CD in any context and with any cloud providers. Learn how to implement a Jenkins CI/CD architecture on Linode, capable of builds and deployments to any hyperscaler."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-05-17
 keywords: ['jenkins ci/cd pipeline','jenkins kubernetes deployments','jenkins tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-05-17
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
   - '[Jenkins Blog: Create a New Jenkins Node, and Run Your Jenkins Agent as a Service](https://www.jenkins.io/blog/2022/12/27/run-jenkins-agent-as-a-service/)'
 ---

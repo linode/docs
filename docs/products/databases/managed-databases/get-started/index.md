@@ -2,9 +2,9 @@
 title: Get Started
 title_meta: "Getting Started with Managed Databases"
 description: "Learn how to quickly get up and running with the Managed Database service."
+modified: 2022-06-06
 tab_group_main:
     weight: 20
-modified: 2022-06-06
 ---
 
 {{< content "dbass-eos" >}}

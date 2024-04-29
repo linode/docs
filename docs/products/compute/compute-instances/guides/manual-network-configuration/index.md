@@ -1,13 +1,10 @@
 ---
-description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
-keywords: ["static", "ip address", "addresses"]
-published: 2023-09-05
-modified_by:
-  name: Linode
 title: "Manual Network Configuration on a Compute Instance"
+description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
+published: 2023-09-05
+keywords: ["static", "ip address", "addresses"]
 tags: ["networking","linode platform"]
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/','/guides/linux-static-ip-configuration/','/guides/manual-network-configuration/']
-authors: ["Linode"]
 ---
 
 Every Compute Instance is assigned several IP addresses, including a public IPv4 address and a public IPv6 [SLAAC](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) address. By default, a utility called [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) automatically configures these IP addresses within the network configuration files on the Compute Instance. While this is preferred in most cases, there are some situations which may require you to manually configure networking yourself. These situations include:
