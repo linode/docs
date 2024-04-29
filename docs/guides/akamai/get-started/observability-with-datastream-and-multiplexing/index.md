@@ -7,9 +7,6 @@ contributors: ["John Dutton"]
 published: 2024-04-23
 keywords: ['observability','datastream','datastream 2','visibility','multiplex','multiplexing','logs','log parsing','object storage','s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 Having real-time visibility into log data can help determine how applications are managed and infrastructure is scaled. Obtaining logs from numerous sources (CDN, security, server-side, and more) is pivotal to identifying and resolving end-user issues. However, this can result in a complex infrastructure setup with varying levels of visibility needs and high egress costs due to large volumes of data.
@@ -30,7 +27,7 @@ Below are the high-level steps on how to use multiplexing with Datastream 2 in a
 
 1.  Regional Object Storage buckets are used to store parsed log data.
 
-![Datastream 2 and Multiplexing Workflow](Datastream-2-Multiplexing-Workflow-Diagram.svg)
+![Datastream 2 and Multiplexing Workflow](Datastream-2-Multiplexing-Workflow.svg)
 
 ## Overcoming Challenges
 
