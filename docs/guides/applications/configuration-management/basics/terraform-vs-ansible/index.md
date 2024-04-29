@@ -1,18 +1,17 @@
 ---
 slug: terraform-vs-ansible
-description: 'This guide compares Ansible and Terraform, two utilities which automate the deployment of infrastructure using only code contained in playbooks or scripts.'
-keywords: ['IaC','Terraform','Ansible','configuration management', 'service orchestration']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-11
-image: ComparingTerraform_Ansible.png
-modified_by:
-  name: Linode
 title: "Terraform vs Ansible"
 title_meta: "Comparing Terraform and Ansible"
+description: 'This guide compares Ansible and Terraform, two utilities which automate the deployment of infrastructure using only code contained in playbooks or scripts.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-03-11
+keywords: ['IaC','Terraform','Ansible','configuration management', 'service orchestration']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: ComparingTerraform_Ansible.png
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Ansible](https://www.ansible.com/)'
-authors: ["Jeff Novotny"]
 ---
 
 To eliminate the problems associated with manual configuration, many tech firms have turned to *Infrastructure as Code* (IaC) tools to manage their networks. These tools use either scripts or configuration files to automate the provisioning and deployment of networks. The IaC market is very crowded, with many competitive products. Two of the most popular IaC tools are [*Terraform*](https://www.terraform.io/) from HashiCorp and Red Hat's [*Ansible*](https://www.ansible.com/). This guide compares Ansible and Terraform, with an explanation of how each product works and what purpose it serves.

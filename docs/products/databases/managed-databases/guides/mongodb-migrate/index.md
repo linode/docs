@@ -3,7 +3,6 @@ title: "Migrate a MongoDB Database to a Managed Database"
 description: "Learn how to migrate an existing MongoDB database to Linode's Managed Database service."
 published: 2022-06-17
 expiryDate: 2023-05-01
-authors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

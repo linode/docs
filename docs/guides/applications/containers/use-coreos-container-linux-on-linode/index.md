@@ -1,17 +1,16 @@
 ---
 slug: use-coreos-container-linux-on-linode
-deprecated: true
+title: Use CoreOS Container Linux on Linode
 description: This tutorial shows how to configure and use CoreOS Container Linux on Linode
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-06-08
+modified: 2017-07-17
 keywords: ["linux containers", "docker", "CoreOS"]
 aliases: ['/platform/use-coreos-container-linux-on-linode/','/platform/using-coreos-container-linux-on-your-linode/','/platform/using-coreos-container-linux-on-linode/','/applications/containers/use-coreos-container-linux-on-linode/']
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-07-17
-modified_by:
-  name: Linode
-published: 2017-06-08
-title: Use CoreOS Container Linux on Linode
-authors: ["Linode"]
+deprecated: true
 ---
 
 CoreOS Container Linux is a container-focused distribution, designed for clustered deployments, that provides automation, security, and scalability for applications. The operating system is heavily streamlined and considered minimal compared to traditional distributions, like Debian or Ubuntu. Rather than being part of the host operating system, CoreOS's runtime or development environment takes place inside a Linux container.

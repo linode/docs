@@ -1,17 +1,16 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-10
+title: "Visualizing Apache Logs Using the Elastic Stack on Debian 10"
+title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 10"
 description: "The Elastic Stack is an open-source solution to search, collect, and analyze data. Learn how to install it and explore Apache web server logs in Kibana."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2021-03-26
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache debian 10", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-26
 image: VisApacheWSL_ES_Deb10.png
-modified: 2021-03-26
-modified_by:
-  name: Linode
-title: "Visualizing Apache Logs Using the Elastic Stack on Debian 10"
-title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 10"
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring"]
 relations:
@@ -19,7 +18,6 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Debian 10
-authors: ["Tyler Langlois"]
 ---
 
 ## What is the Elastic Stack?

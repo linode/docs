@@ -1,22 +1,21 @@
 ---
 slug: webpy-on-ubuntu-10-04-lucid
+title: 'Web.py on Ubuntu 10.04 (Lucid)'
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 10.04 (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-03
+modified: 2013-11-27
 keywords: ["web.py","web applications","python","web frameworks"]
 tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/webpy/webpy-on-ubuntu-10-04-lucid/','/frameworks/webpy/ubuntu-10-04-lucid/','/websites/frameworks/webpy-on-ubuntu-10-04-lucid/','/development/frameworks/webpy-on-ubuntu-10-04-lucid/']
-modified: 2013-11-27
-modified_by:
-  name: Linode
-published: 2011-01-03
-title: 'Web.py on Ubuntu 10.04 (Lucid)'
-deprecated: true
 relations:
     platform:
         key: webpy
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit", web.py is a powerful option for developing systems for the web.

@@ -2,20 +2,19 @@
 slug: linode-writers-formatting-guide
 title: Linode Writer's Formatting Guide
 description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-01-15
+modified: 2024-04-18
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
-published: 2014-01-15
-modified: 2024-01-31
-modified_by:
-  name: Linode
 show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/docs/guides/a-beginners-guide-to-github/)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
-authors: ["Linode"]
 ---
 
 ![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png)
@@ -56,12 +55,11 @@ slug: {{ path.Base .File.Dir }}
 title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: {{ now.Format "2006-01-02" }}
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
-published: {{ now.Format "2006-01-02" }}
-modified_by:
-  name: Linode
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
@@ -319,11 +317,9 @@ title: "Install Python with Miniconda"
 description: 'A shortguide that shows how to install Python via Miniconda.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Author's FirstName LastName`"]
+contributors: ["Author's FirstName LastName`"]
 published: 2023-03-07
 modified: 2023-03-07
-modified_by:
-  name: Linode
 headless: true
 show_on_rss_feed: false
 ---
@@ -1030,7 +1026,7 @@ The second step is optional. If you do not follow this step, a profile page is s
 1.  On the guides you have written, update the `authors` frontmatter to reference your name. This should be formatted like:
 
     ```file
-    authors: ["FirstName LastName"]
+    contributors: ["FirstName LastName"]
     ```
 
 1.  (Optional) Create a new directory and Markdown file for your author page under the `docs/authors` directory in the docs repository. The new directory should named after you, with uppercase letters replaced by lower case, and spaces replaced by a dash. For example, an author with the name `Nathan Smith` would have a new profile page created at `docs/authors/nathan-smith/_index.md`.

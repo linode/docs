@@ -2,13 +2,10 @@
 title: "Deploy NATS through the Linode Marketplace"
 description: "Deploy NATS on a Linode Compute Instance. NATS is a connective technology responsible for addressing, discovery and exchanging of messages that drive the common patterns in distributed systems; asking and answering questions, aka services/microservices, and making and processing statements, or stream processing."
 published: 2024-02-20
-modified_by:
-  name: Linode
 keywords: ['cloud native','microservices','distributed systems', 'PubSub']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[NATS](https://nats.io/)'
-authors: ["Linode"]
 ---
 
 [NATS](https://docs.nats.io/nats-concepts/overview) is a connective technology built for the hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open-source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, and IoT.

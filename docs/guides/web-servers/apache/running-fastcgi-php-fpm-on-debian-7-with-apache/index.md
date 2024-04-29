@@ -1,6 +1,11 @@
 ---
 slug: running-fastcgi-php-fpm-on-debian-7-with-apache
+title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 description: 'This guide provides you with instructions on how to install and configure mod_fastcgi and PHP-FPM on Debian with the Apache web server on Debian 7.'
+authors: ["Jesin A"]
+contributors: ["Jesin A"]
+published: 2014-06-16
+modified: 2014-08-16
 keywords: ["apache", "fastcgi", "php-fpm", "php", "php pool"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -8,18 +13,12 @@ aliases: ['/websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/','/
 external_resources:
  - '[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)'
  - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
-modified: 2014-08-16
-modified_by:
-  name: Linode
-published: 2014-06-16
-title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 relations:
     platform:
         key: install-fastcgi-php-fpm
         keywords:
             - distribution: Debian 7
 deprecated: true
-authors: ["Jesin A"]
 ---
 
 ![Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache](running-mod-fastcgi-and-php-fpm-debian-7-apache.png)

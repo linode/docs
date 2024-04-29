@@ -1,5 +1,5 @@
 ---
-title: Profile
 slug: profile
+title: Profile
 ---
 

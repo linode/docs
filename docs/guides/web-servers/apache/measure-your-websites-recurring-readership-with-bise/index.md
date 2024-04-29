@@ -1,19 +1,18 @@
 ---
 slug: measure-your-websites-recurring-readership-with-bise
+title: "Measure a Website's Recurring Readership with Bise"
 description: "Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership."
+authors: ["Jason McIntosh"]
+contributors: ["Jason McIntosh"]
+published: 2020-08-17
 keywords: ["Bise", "Apache", "Analytics", "Blogging"]
 tags: ["web server","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-08-17
-modified_by:
-  name: Linode
-title: "Measure a Website's Recurring Readership with Bise"
 image: MeasureWebsiteRecReader_Bise.png
 external_resources:
   - "[Bise's README file, containing concise instructions](https://github.com/jmacdotorg/bise/blob/master/README.md)"
   - "[Meditations upon Bise's motivations and intended use, written by its developer](https://fogknife.com/2018-01-17-more-thoughts-on-counting-blog-readership.html)"
 aliases: ['/web-servers/apache/measure-your-websites-recurring-readership-with-bise/']
-authors: ["Jason McIntosh"]
 ---
 
 ## Introduction
@@ -33,8 +32,7 @@ Front page                 426       54
 From Twitter                39        1
 From web searches          910        6
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Bise assumes that the logs it analyzes are written in the [Common Log Format](https://en.wikipedia.org/wiki/Common_Log_Format). For example, Apache writes logs in this format by default.
 {{< /note >}}
 
@@ -123,7 +121,7 @@ Install Bise's prerequisites using `cpanm`:
 
             curl -fsSL https://cpanmin.us | perl - --sudo --installdeps .
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can leave out the `sudo` command or the `--sudo` option from the above commands. If you do, the libraries will be installed in your home directory's `perl5/` subdirectory, rather than installing them as root at system level. Doing so may require further configuration to allow `perl` to load libraries from that location. When run without `sudo`, the install command's output will show this further guidance.
 {{< /note >}}
 
@@ -153,7 +151,7 @@ By default, Bise looks for a config file in `../conf/conf.yaml`, relative to its
 
 You could further customize Bise's installation by moving the executable file found in `bin/bise` to some other location, such as `/usr/local/bin`. You would then need to run Bise with its `-c` command-line option. This option specifies a config-file path.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The rest of this guide will assume you're running Bise out of `bin/bise`, within the copy of its cloned or downloaded source directory.
 {{< /note >}}
 
@@ -181,8 +179,7 @@ Bise will scan the provided log files in order from newest to oldest. It will st
 For example, this command will run Bise with all your Apache server's access logs:
 
     bin/bise /var/log/apache2/*access.log*
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This example assumes that your access logs have the default locations and filename conventions.
 {{< /note >}}
 
@@ -208,7 +205,7 @@ Bise's output can be customized. The six rows in this table are defined by `conf
 
 By default, Apache keeps its log files visible to only administrative users. Your own user account might not have the right permissions to read them. Bise won't work until you resolve this situation.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you receive a `Permission denied` error when attempting to view the contents of your machine's log directory, then this is the case with your Apache setup:
 
     ls -l /var/log/apache2/
@@ -274,7 +271,7 @@ If you're happy with the behavior of the default rows, you can certainly continu
 
 There are four kinds of rows you can define, each of which examines a different part of your access logs. These correspond to the values for the `test_type` parameter: [path](#test-type-path), [path_regex](#test-type-path-regex), [referer_regex](#test-type-referer-regex), and [agent_regex](#test-type-agent-regex).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/guides/how-to-use-grep-command/#regular-expression-overview) before defining your own row definitions with any of these types.
 
 Note also that Bise ignores whitespace in regular expressions, allowing you to write more complex regexes with inline comments, as one of the examples below will illustrate.
@@ -404,7 +401,6 @@ The output will look similar to this:
     "end_time":"2020-05-04T18:02:18"
 }
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This example output has been formatted with line breaks and whitespace. By default, your output will appear as a single line.
 {{< /note >}}

@@ -1,5 +1,5 @@
 ---
-title: Linode Instances
 slug: linode-instances
+title: Linode Instances
 ---
 
