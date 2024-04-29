@@ -2,7 +2,7 @@
 title: Guides
 title_meta: "Guides and Tutorials for the Linode Marketplace"
 description: "A collection of guides to help you learn how to deploy each Marketplace App that Linode offers."
-modified: 2024-01-22
+modified: 2024-04-29
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
@@ -46,7 +46,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Gitea](/docs/products/tools/marketplace/guides/gitea/)
 - [Gitlab](/docs/products/tools/marketplace/guides/gitlab/)
 - [gopaddle](/docs/products/tools/marketplace/guides/gopaddle/)
-- [Grafana](/docs/products/tools/marketplace/guides/grafana/)
 - [Grav](/docs/products/tools/marketplace/guides/grav/)
 - [Guacamole](/docs/products/tools/marketplace/guides/guacamole/)
 - [Haltdos Community WAF](/docs/products/tools/marketplace/guides/haltdos-community-waf/)
@@ -97,7 +96,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [PostgreSQL](/docs/products/tools/marketplace/guides/postgresql/)
 - [PostgreSQL Cluster](/docs/products/tools/marketplace/guides/postgresql-cluster/)
 - [Pritunl](/docs/products/tools/marketplace/guides/pritunl/)
-- [Prometheus](/docs/products/tools/marketplace/guides/prometheus/)
 - [Prometheus and Grafana](/docs/products/tools/marketplace/guides/prometheus-grafana/)
 - [RabbitMQ](/docs/products/tools/marketplace/guides/rabbitmq/)
 - [Redis](/docs/products/tools/marketplace/guides/redis/)
@@ -105,7 +103,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Restyaboard](/docs/products/tools/marketplace/guides/restyaboard/)
 - [Rocket.Chat](/docs/products/tools/marketplace/guides/rocketchat/)
 - [Ruby on Rails](/docs/products/tools/marketplace/guides/ruby-on-rails/)
-- [Rust](/docs/products/tools/marketplace/guides/rust/)
 - [Saltcorn](/docs/products/tools/marketplace/guides/saltcorn/)
 - [SeaTable](/docs/products/tools/marketplace/guides/seatable/)
 - [Secure Your Server](/docs/products/tools/marketplace/guides/secure-your-server/)
@@ -115,13 +112,10 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Superinsight](/docs/products/tools/marketplace/guides/superinsight/)
 - [Uptime Kuma](/docs/products/tools/marketplace/guides/uptime-kuma/)
 - [UTunnel VPN](/docs/products/tools/marketplace/guides/utunnel/)
-- [Valheim](/docs/products/tools/marketplace/guides/valheim/)
 - [VictoriaMetrics Single](/docs/products/tools/marketplace/guides/victoriametrics-single/)
-- [Virtualmin](/docs/products/tools/marketplace/guides/virtualmin/)
 - [VS Code](/docs/products/tools/marketplace/guides/vscode/)
 - [WarpSpeed VPN](/docs/products/tools/marketplace/guides/warpspeed/)
 - [Wazuh](/docs/products/tools/marketplace/guides/wazuh/)
-- [Webmin](/docs/products/tools/marketplace/guides/webmin/)
 - [Webuzo](/docs/products/tools/marketplace/guides/webuzo/)
 - [WireGuard](/docs/products/tools/marketplace/guides/wireguard/)
 - [WooCommerce](/docs/products/tools/marketplace/guides/woocommerce/)

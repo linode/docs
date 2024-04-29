@@ -2,7 +2,7 @@
 title: "Deploy Rust through the Linode Marketplace"
 description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
 published: 2019-03-25
-modified: 2024-04-23
+modified: 2024-04-29
 keywords: ['rust','marketplace', 'server']
 external_resources:
 - '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
@@ -12,8 +12,8 @@ _build:
   list: false
 noindex: true
 deprecated: true
-
 ---
+
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 Rust has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
 {{< /note >}}

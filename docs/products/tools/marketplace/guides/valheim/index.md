@@ -2,7 +2,7 @@
 title: "Deploy Valheim through the Linode Marketplace"
 description: "Deploy Valheim, an open-world Viking themed survivial game, on Linode using Marketplace Apps."
 published: 2021-03-09
-modified: 2024-04-23
+modified: 2024-04-29
 keywords: ['gaming','game server','valheim']
 tags: ["linode platform", "cloud manager", "marketplace"]
 external_resources:
@@ -13,8 +13,8 @@ _build:
   list: false
 noindex: true
 deprecated: true
-
 ---
+
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 Valheim has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
 {{< /note >}}
