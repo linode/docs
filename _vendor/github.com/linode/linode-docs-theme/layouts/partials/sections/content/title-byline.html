@@ -20,18 +20,18 @@
     {{ else }}
       Updated
     {{ end }}
-    {{ $authors := partial "funcs/get-authors.html" . }}
+    {{ $contributors := partial "funcs/get-contributors.html" . }}
     <time datetime="{{ $date.Format site.Params.time_format_iso8601 }}"
       >{{ $date.Format site.Params.time_format_default }}</time
     >
-    {{ if (and (eq (len $authors.authors)  1) (not $authors.contributors)) }}
+    {{ if (and (eq (len $contributors.authors)  1) (not $contributors.contributors)) }}
       {{/* Single author, no contributors. */}}
-      {{ with (index $authors.authors 0) }}
+      {{ with (index $contributors.authors 0) }}
         {{ if $isModified }}<span class="ml-2">Originally authored&nbsp;</span>{{ end }}by
         {{ template "tbl-author-link" . }}
       {{ end }}
     {{ else }}
-      {{ $numContributions := add (len $authors.authors) (len $authors.contributors) }}
+      {{ $numContributions := add (len $contributors.authors) (len $contributors.contributors) }}
       <span x-data="{ open: false }" class="ml-2 relative inline-block">
         <a
           href="#"
@@ -45,18 +45,18 @@
           x-transition:enter
           x-show="open"
           x-cloak>
-          {{ if $authors.authors }}
+          {{ if $contributors.authors }}
             <p class="mb-1 leading-4">
-              {{ cond (eq (len $authors.authors) 1) "Author:" "Authors:" }}
-              {{ range $i, $e := $authors.authors -}}
+              {{ cond (eq (len $contributors.authors) 1) "Author:" "Authors:" }}
+              {{ range $i, $e := $contributors.authors -}}
                 {{- if $i -}},&nbsp;{{ end }}{{ template "tbl-author-link" . }}
               {{- end -}}
             </p>
           {{ end }}
-          {{ if $authors.contributors }}
+          {{ if $contributors.contributors }}
             <p class="mb-1 leading-6">
-              {{ if $authors.authors }}Other contributors:{{ end }}
-              {{ range $i, $e := $authors.contributors -}}
+              {{ if $contributors.authors }}Other contributors:{{ end }}
+              {{ range $i, $e := $contributors.contributors -}}
                 {{ if $i -}}
                   ,&nbsp;
                 {{ end }}{{ template "tbl-author-link" . -}}
@@ -65,7 +65,7 @@
           {{ end }}
           {{ if .File }}
             {{ $path := .Params.path | default .File.Path }}
-            {{ $historyRef := printf "https://github.com/linode/docs/blob/develop/docs/%s" $path }}
+            {{ $historyRef := printf "https://github.com/linode/docs/commits/develop/docs/%s" $path }}
             <a
               href="{{ $historyRef }}"
               class="inline-block mt-3 text-textcolor hover:text-gray-400  text-sm italic"
@@ -75,9 +75,9 @@
           {{ end }}
         </span>
       </span>
-      {{ if (and (eq (len $authors.authors)  1) (gt (len $authors.contributors) 1)) }}
+      {{ if (and (eq (len $contributors.authors)  1) (ge (len $contributors.contributors) 1)) }}
         {{/* Single author, multiple contributors. */}}
-        {{ $author := index  $authors.authors 0 }}
+        {{ $author := index  $contributors.authors 0 }}
         <span class="ml-2"
           >Originally authored by
           {{ template "tbl-author-link" $author }}</span
