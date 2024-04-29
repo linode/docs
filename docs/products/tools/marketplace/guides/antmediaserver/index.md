@@ -1,21 +1,32 @@
 ---
-title: "Deploy Ant Media Server Enterprise Edition through the Linode Marketplace"
-description: "Learn how to install and configure the Ant Media Server Enterprise Edition so you can stream video online using the Linode Marketplace App."
-published: 2022-03-29
+title: "Deploy Ant Media Server Community Edition through the Linode Marketplace"
+description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Linode One-Click Marketplace App.'
+published: 2021-03-30
 modified: 2024-04-24
 keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'
-aliases: ['/products/tools/marketplace/guides/antmediaenterpriseedition/']
+aliases: ['/guides/deploy-antmediaserver-with-marketplace-apps/','/guides/antmediaserver-marketplace-app/']
 ---
 
-[Ant Media Server](https://antmedia.io/) is an [open source](https://github.com/ant-media/Ant-Media-Server) video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Marketplace App installs the Enterprise Edition, which is equipped with more features and enhanced performance. See this [Comparison Chart](https://github.com/ant-media/Ant-Media-Server/wiki#community-edition--enterprise-edition) for details.
+[Ant Media Server](https://antmedia.io/) is an [open source](https://github.com/ant-media/Ant-Media-Server) video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Marketplace App installs the Community Edition.
 
-{{< note >}}
-The Enterprise Edition of Ant Media Server requires a valid license to use the software beyond the initial 14 day [free trial](https://antmedia.io/free-trial/) period. To purchase a license, visit [Ant Media's website](https://antmedia.io/#selfhosted) and select a plan that fits your needs. Licenses are not available directly through Linode. Alternatively, you can deploy the free [Ant Media Server Community Edition Marketplace App](/docs/products/tools/marketplace/guides/antmediaserver/).
-{{< /note >}}
+The Community Edition is a limited version of Ant Media Server Enterprise Edition and supports the following features.
+
+- Publish live streams with WebRTC, RTMP - Play Live and VoD streams with RTMP and HLS
+- RTMP, RTSP, MP4 and HLS Support
+- WebRTC to RTMP Adapter
+- 360 Degree Live & VoD Streams
+- Web Management Dashboard
+- IP Camera Support
+- Re-stream Remote Streams (IPTV)
+- Open Source https://github.com/ant-media/Ant-Media-Server
+- Simulcasting to Periscope
+- Your Live or VoD streams can play anywhere including mobile(Android, iOS) browsers.
+
+If you need adaptive streaming, cluster, load balancer, and hardware encoding, consider using the [Enterprise Edition](/docs/products/tools/marketplace/guides/antmediaenterpriseserver/).
 
 ## Deploying a Marketplace App
 
@@ -24,7 +35,7 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 {{< content "marketplace-verify-standard-shortguide">}}
 
 {{< note >}}
-**Estimated deployment time:** Ant Media Enterprise Server should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** Ant Media Server should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
 ## Configuration Options
