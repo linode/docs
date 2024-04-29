@@ -1,18 +1,16 @@
 ---
 slug: mongodb-example-shortguide
-description: 'Shortguide that displays usage example for MongoDB.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-11
-modified_by:
-  name: Heather Zoppetti
-published: 2020-03-11
 title: MongoDB Example
+description: 'Shortguide that displays usage example for MongoDB.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-11
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false
 tags: ["database"]
 aliases: ['/databases/mongodb/mongodb-example-shortguide/']
-authors: ["Linode"]
 ---
 
 Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](https://docs.mongodb.com/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.

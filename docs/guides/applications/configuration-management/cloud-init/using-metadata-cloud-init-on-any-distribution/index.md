@@ -2,12 +2,11 @@
 slug: using-metadata-cloud-init-on-any-distribution
 title: "Use Akamai's Metadata Service with Cloud-Init on Any Distribution"
 description: 'Take advantage of the Akamai Metadata service regardless of your distribution. Follow along to install cloud-init and create a template for deploying future instances with custom user data.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-12-19
 keywords: ['cloud init','metadata','centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-12-19
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation](https://cloudinit.readthedocs.io/en/latest/)'
 ---

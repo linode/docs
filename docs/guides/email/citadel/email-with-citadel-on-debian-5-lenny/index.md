@@ -1,25 +1,22 @@
 ---
 slug: email-with-citadel-on-debian-5-lenny
-deprecated: true
+title: 'Email with Citadel on Debian 5 (Lenny)'
 description: 'Setting up an email and groupware server using Citadel on a Debian 5 (Lenny) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-09
+modified: 2012-10-08
 keywords: ["citadel", "debian mail server", "groupware", "email server", "email howto"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/email-with-citadel-on-debian-5-lenny/','/email/citadel/debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-11-09
-title: 'Email with Citadel on Debian 5 (Lenny)'
 relations:
     platform:
         key: email-with-citadel
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
 

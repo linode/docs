@@ -1,14 +1,14 @@
 ---
 slug: install-and-use-apache-on-almalinux
+title: "Install and Use Apache on AlmaLinux"
+title_meta: "How to Install and Use Apache on AlmaLinux"
 description: 'This guide explains how to install, configure, and use Apache on AlmaLinux, a relatively new open source Linux distribution intended to replace CentOS.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-06-11
 keywords: ['AlmaLinux','Apache','installation','configuration']
 tags: ['apache', 'linux', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-11
-modified_by:
-  name: Linode
-title: "Install and Use Apache on AlmaLinux"
-title_meta: "How to Install and Use Apache on AlmaLinux"
 external_resources:
 - '[AlmaLinux OS](https://almalinux.org/)'
 - '[Apache web server](https://www.apache.org/)'
@@ -16,7 +16,6 @@ external_resources:
 - '[AlmaLinux Wiki](https://wiki.almalinux.org/#about)'
 - '[AlmaLinux Forum](https://almalinux.discourse.group/)'
 - '[AlmaLinux GitHub Page](https://github.com/AlmaLinux)'
-authors: ["Jeff Novotny"]
 ---
 
 [*AlmaLinux OS*](https://almalinux.org/) is a stable open-source Linux distribution that provides a new alternative to CentOS. As a downstream fork of the *Red Hat Enterprise Linux* (RHEL) codebase, AlmaLinux guarantees ongoing free availability. CloudLinux experts originally built and designed AlmaLinux, but it is now a community-led project. AlmaLinux supports the same software applications that CentOS does, including the [*Apache web server*](https://www.apache.org/). This guide explains how to install, configure, and use Apache on AlmaLinux.
@@ -38,7 +37,7 @@ As a potential replacement for CentOS, AlmaLinux provides many attractive sellin
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -83,7 +82,7 @@ Status: "Running, listening on: port 80"
 
 The `firewalld` service is already installed and enabled as part of AlmaLinux. Additional configuration is required to allow Apache connections to pass through the firewall.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 It is strongly recommended that you keep the firewall turned on.
 
 - To temporarily disable the firewall to debug a problem, enter the command `sudo systemctl stop firewalld`.
@@ -119,8 +118,7 @@ public (active)
   services: cockpit dhcpv6-client http https ssh
   ...
     {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition to `firewalld`, the security application SELinux comes pre-loaded with AlmaLinux. Under certain conditions, the two applications might conflict with one another. Verify the status of SELinux using the `sestatus` command. SELinux can be temporarily disabled for debugging purposes using the `sudo setenforce 0` command.
 {{< /note >}}
 

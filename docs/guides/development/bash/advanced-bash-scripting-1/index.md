@@ -1,17 +1,16 @@
 ---
 slug: advanced-bash-scripting-1
-description: 'This guide expands on the previous Bash guides. You learn advanced bash scripting, commands, debugging, and more.'
-keywords: ['advanced bash scripting', 'bash expressions', 'bash functions', 'bash aliases', 'bash debugging', 'bash list constructs']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-29
-modified_by:
-  name: Linode
 title: "Advanced Bash Scripting: Part 1"
 title_meta: "A Software Engineer's Guide to Advanced Bash Scripting: Part 1"
+description: 'This guide expands on the previous Bash guides. You learn advanced bash scripting, commands, debugging, and more.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-03-29
+keywords: ['advanced bash scripting', 'bash expressions', 'bash functions', 'bash aliases', 'bash debugging', 'bash list constructs']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Bash cheat sheet](https://scilifelab.github.io/courses/ngsintro/1902/files/Bash_cheat_sheet_level2.pdf)'
 - '[GNU Bash](https://www.gnu.org/software/bash/)'
-authors: ["John Mueller"]
 ---
 
 This guide expands extends the [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/) guide and our [Intermediate Guide to Bash Shell Scripting](/docs/guides/an-intermediate-guide-to-bash-scripting/) guide by demonstrating the use of Bash functions, list constructs, arrays, aliases, and regular expressions.

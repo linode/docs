@@ -3,12 +3,11 @@ slug: {{ path.Base .File.Dir }}
 title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: {{ now.Format "2006-01-02" }}
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
-published: {{ now.Format "2006-01-02" }}
-modified_by:
-  name: Linode
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'

@@ -2,12 +2,11 @@
 slug: manage-users-with-cloud-init
 title: "Use Cloud-Init to Manage Users on New Servers"
 description: "Follow along with this guide to use cloud-init for managing users and user groups on new servers."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-11-15
 keywords: ['cloud-init','cloudinit','users','groups']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-11-15
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Cloud-init Documentation - Module Reference: Users and Groups](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#users-and-groups)'
 ---

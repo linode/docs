@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-a-lamp-stack-on-centos-8
+title: Installing a LAMP Stack on CentOS 8
+title_meta: How to Install a LAMP Stack on CentOS 8
 description: 'Install a LAMP stack on a CentOS 8 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-01
+modified: 2020-02-19
 keywords: ["LAMP", "CentOS", "CentOS 8", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-19
-modified_by:
-    name: Linode
-published: 2015-12-01
-title: Installing a LAMP Stack on CentOS 8
-title_meta: How to Install a LAMP Stack on CentOS 8
 image: how-to-install-a-lamp-stack-on-centos-8.png
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
@@ -22,7 +22,6 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/','/lamp-guides/centos-5.3/index-print/']
-authors: ["Linode"]
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 8 Linode.
@@ -166,8 +165,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
 
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
 {{< /note >}}
 
@@ -192,7 +190,7 @@ ssh dhcpv6-client
 
     Visit your domain or public IP to test the Apache server and view the default Apache page.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Rename Apache's default welcome page. When this file is present it will take precedence over other configurations via the `LocationMatch` directive.
 
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk

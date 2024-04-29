@@ -1,17 +1,16 @@
 ---
 slug: redis-server-cli
+title: "Configure a Redis Server from the Command Line"
+title_meta: "How to Configure a Redis Server from the Command Line"
 description: "Redis provides a powerful command-line tool to view and update its configuration options. Learn how to use the Redis CLI set, get, and write commands to update your configurations."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-02-25
 keywords: ['redis configuration','redis command line','change redis settings']
 tags: ['ubuntu', 'debian', 'centos', 'fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-modified_by:
-  name: Nathaniel Stickman
-title: "Configure a Redis Server from the Command Line"
-title_meta: "How to Configure a Redis Server from the Command Line"
 external_resources:
 - '[Redis: Redis Configuration](https://redis.io/topics/config)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source NoSQL database boasting quick transactions and low latency. This guide shows you how to make and adjust settings for your Redis server from the command line.
@@ -34,7 +33,7 @@ Redis is an open-source NoSQL database boasting quick transactions and low laten
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and follow the appropriate steps.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

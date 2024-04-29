@@ -1,20 +1,19 @@
 ---
 slug: curl-for-rest-api
-description: 'cURL is a data transfer application used to interact with APIs. This guide discusses using RESTful verbs, inspecting headers, and adding authorization to requests.'
-keywords: ['cURL API','Test API using curl','Curl for rest API','Curl restful api']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-01
-modified_by:
-  name: Linode
 title: "Use cURL with RESTful APIs"
 title_meta: "How to Use  cURL with RESTful APIs"
+description: 'cURL is a data transfer application used to interact with APIs. This guide discusses using RESTful verbs, inspecting headers, and adding authorization to requests.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-07-01
+keywords: ['cURL API','Test API using curl','Curl for rest API','Curl restful api']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Wikipedia curl page](https://en.wikipedia.org/wiki/CURL)'
 - '[curl website](https://curl.se/)'
 - '[curl documentation](https://curl.se/docs/)'
 - '[curl GitHub page](https://github.com/curl/curl)'
 - '[GitHub REST API](https://docs.github.com/en/rest)'
-authors: ["Jeff Novotny"]
 ---
 
 In web programming, developers often have to interact with online databases. Many of these services provide a [*Representational State Transfer* (REST) API](https://en.wikipedia.org/wiki/Representational_state_transfer) that allows authorized users to read and write data. Fortunately, the [cURL](https://curl.se) application allows users to easily access REST APIs from the command line. This guide discusses how to use cURL to interrogate RESTful APIs. It also explains how `curl`, the command-line utility, uses RESTful verbs, and how to inspect headers and add authorization to requests.
@@ -25,7 +24,7 @@ In web programming, developers often have to interact with online databases. Man
 
 cURL stands for "Client URL" and is a data transfer application. It consists of two components, the `libcurl` client-side library and the `curl` command-line tool. cURL was originally designed to allow Linux IRC users to automate common tasks. However, it is now available for most operating systems and behaves similarly across platforms.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 cURL is the complete data transfer application, including the library, while `curl` is the command-line utility. The two terms are often used interchangeably. This guide mainly discusses the `curl` utility, which transmits commands directly to a remote REST API.
 {{< /note >}}
 
@@ -165,7 +164,7 @@ Either utility is fine for most simple HTTP requests and downloads. If you are f
 
 To determine the URIs to use for each operation, consult the API documentation provided for the tool or service. As an example, the official [GitHub REST API](https://docs.github.com/en/rest) explains how to use the interface. When designing a REST interface, it is easy to test the API using `curl`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The following examples use `example.com` in the instructions. Substitute `example.com` with your own URI.
 {{< /note >}}
 
@@ -197,7 +196,7 @@ The `POST` verb allows users to push data to a REST API and add new entries to t
 
 The server returns the new record, including the `id` of the new entry. The following command adds a new record to the application server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `curl` command infers this is a `POST` operation based on the other details. But it is considered good practice to explicitly state the verb as part of the `-X` option.
 {{< /note >}}
 

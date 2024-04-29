@@ -1,4 +1,4 @@
 ---
-title: VPCs
 slug: vpcs
+title: VPCs
 ---

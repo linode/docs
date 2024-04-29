@@ -3,15 +3,12 @@ title: Troubleshooting Longview
 title_meta: Troubleshooting Linode Longview
 description: 'Longview is a server monitoring client from Linode you can use to watch server performance. This guide describes the process of troubleshooting Longview.'
 og_description: "Learn how to troubleshoot Linode's Longview service."
-keywords: ["system monitoring", "longview", "metrics", "troubleshooting"]
-tags: ["resolving","cloud manager","statistics","monitoring","linode platform"]
 published: 2020-01-22
 modified: 2023-05-24
-modified_by:
-  name: Linode
+keywords: ["system monitoring", "longview", "metrics", "troubleshooting"]
+tags: ["resolving","cloud manager","statistics","monitoring","linode platform"]
 image: TroubleshootLinodeLongview.png
 aliases: ['/platform/longview/troubleshooting-linode-longview/','/guides/troubleshooting-linode-longview/']
-authors: ["Linode"]
 ---
 
 This guide discusses basic troubleshooting steps to help you diagnose and resolve any issues you may encounter while using Longview. If you're experiencing problems with the Longview client, follow the steps outlined in this guide to help determine the cause.
