@@ -1,12 +1,12 @@
 ---
 slug: replicate-bucket-contents-with-rclone
 title: "Replicate Object Storage Bucket Contents Across Regions With Rclone"
-description: "This guide reviews how to replicate object storage bucket contents from one region to another using provided scripts."
+description: "This guide reviews how to replicate object storage bucket contents from one region to another using provided scripts running rclone."
 keywords: ['object storage','rclone','replication','cross-region','resilience','data replication','replicate','s3','clone']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Dutton","Brandon Kang"]
 contributors: ["John Dutton","Brandon Kang"]
-published: 2024-04-23
+published: 2024-04-30
 
 ---
 
@@ -48,7 +48,7 @@ The diagram below illustrates how replication of Object Storage data from one bu
 
 1.  As needed, requests can be redirected to the second bucket in Washington, D.C.
 
-![Failover with OBJ Replication](OBJ-CDN-failover-diagram.svg)
+![Failover with OBJ Replication](OBJ-CDN-failover-diagram-cropped.svg)
 
 {{< note title="Best Practice: Managing Multiple Buckets" >}}
 Storage owners are responsible for their own bucket management. To ensure continuity between bucket contents, additional buckets should be integrated with your system and managed similarly after an initial sync with the primary bucket.
