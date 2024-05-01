@@ -1,19 +1,17 @@
 ---
 slug: secure-logstash-connections-using-ssl-certificates
+title: "Secure Logstash Connections Using SSL Certificates"
 description: 'This guide provides you with instructions for securing connections from Logstash, a server-side processing pipeline, using SSL certificates.'
 og_description: 'Secure Logstash connections using SSL certificates.'
+authors: ["Dan Nielsen"]
+contributors: ["Dan Nielsen"]
+published: 2020-11-05
 keywords: ['secure logstash with ssl', 'logstash ssl setup', 'logstash ssl certificate']
 tags: ['security','ssl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-11-05
-modified: 2020-11-05
-modified_by:
-  name: Linode
-title: "Secure Logstash Connections Using SSL Certificates"
 external_resources:
  - '[Logstash Home Page](https://www.elastic.co/logstash)'
  - '[Filebeat Overview](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)'
-authors: ["Dan Nielsen"]
 ---
 
 ## Before You Begin
@@ -23,8 +21,7 @@ authors: ["Dan Nielsen"]
 2.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 <!-- Include one of the following notes if appropriate. --->
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -34,7 +31,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 This guide explores how you can generate an organization certificate authority. The certificate authority can sign server and client certificates that are used in connection authentication.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The commands in this guide are for CentOS systems but they can easily be modified for other Linux distributions.
 {{< /note >}}
 
@@ -227,7 +224,7 @@ At this point you should be able to run Logstash, push a message, and see the ou
 
 You can stop here and use the setup as is, or proceed to setup peer verification. When using peer verification Logstash requires that incoming connections present their own certificate for verification rather than a username and password. You may find this method easier to script when automatically deploying hosts or applications that push messages to Logstash.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The remote client host needs copies of the organization certificate (`org_ca.crt`), organization certificate key (`org_ca.key`), and organization certificate serial number (`org_ca.serial`) to generate its certificate. These are all located in the `/etc/pki/tls/private` directory. Make sure to copy those files before proceeding. You may have to update the host permissions with `o+r` on to be able to use `scp` to copy them. Alternatively, you can generate the client certificate on the Logstash host and copy that to the client host when complete.
 {{< /note >}}
 

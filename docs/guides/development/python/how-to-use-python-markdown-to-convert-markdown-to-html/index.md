@@ -1,12 +1,12 @@
 ---
 slug: how-to-use-python-markdown-to-convert-markdown-to-html
+title: "Use Python-Markdown to Convert Markdown to HTML"
 description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-07-21
 keywords: ['Python-Markdown','What is Python-Markdown','Python-Markdown Library','Convert Markdown to HTML']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-21
-modified_by:
-  name: Linode
-title: "Use Python-Markdown to Convert Markdown to HTML"
 external_resources:
 - '[Python-Markdown website](https://python-markdown.github.io/index.html)'
 - '[Python-Markdown library reference](https://python-markdown.github.io/reference/)'
@@ -15,7 +15,6 @@ external_resources:
 - '[Markdown guide](https://www.markdownguide.org/)'
 - '[HTML Standard](https://html.spec.whatwg.org/)'
 - '[Python Input/Output documentation](https://docs.python.org/3/tutorial/inputoutput.html)'
-authors: ["Jeff Novotny"]
 ---
 
 The [*Markdown*](https://en.wikipedia.org/wiki/Markdown) markup language is a good choice for text formatting. Unfortunately, the Markdown syntax does not align with HTML conventions. Without further modification, Markdown can only be shared as plain text. The [*Python-Markdown*](https://python-markdown.github.io/index.html) library is an open source Python module that converts Markdown text into standards-compliant HTML markup. This guide explains how to install and use the Python-Markdown module and provides some background information about it.

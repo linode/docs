@@ -1,15 +1,14 @@
 ---
 slug: manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Manage MySQL with phpMyAdmin on Ubuntu 10.10 (Maverick)'
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface on Ubuntu 10.10 "Maverick".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2011-01-10
+modified: 2013-09-24
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10-10-maverick/']
-modified: 2013-09-24
-modified_by:
-  name: Linode
-published: 2011-01-10
-title: 'Manage MySQL with phpMyAdmin on Ubuntu 10.10 (Maverick)'
+aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10.10-maverick/']
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
@@ -19,10 +18,8 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","php","database","mysql"]
-authors: ["Brett Kaplan"]
+deprecated: true
 ---
-
-
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 

@@ -1,19 +1,18 @@
 ---
 slug: serve-php-php-fpm-and-nginx
+title: "Serve PHP with PHP-FPM and NGINX"
 description: "This guide provides you with information on how to proxy PHP requests with the NGINX web server and FastCGI by using PHP-FPM (Fast Process Manager)."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-02-19
+modified: 2021-12-29
 keywords: ["php", "php-fpm", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/serve-php-php-fpm-and-nginx/','/websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
-modified: 2021-12-29
-modified_by:
-  name: Linode
-published: 2018-02-19
-title: "Serve PHP with PHP-FPM and NGINX"
 image: serve-php-with-phpfpm-and-nginx-smp.jpg
 external_resources:
  - '[PHP Manual](https://secure.php.net/docs.php)'
-authors: ["Linode"]
 ---
 
 The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.wikipedia.org/wiki/FastCGI) handler for [PHP](https://secure.php.net/) scripts and applications. It's commonly paired with web servers to serve applications which require a PHP framework, such as web forums or login gateways, while the web server returns HTML, JavaScript, and other non-PHP content.
@@ -128,14 +127,15 @@ server {
     This only applicable if you allow users to upload or submit files to your site. Change the name of the directory from `uploads` to whatever suits your need.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
-  location ~* \.php$ {
-    if ($uri !~ "^/uploads/") {
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        }
-    include         fastcgi_params;
-    fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
-    fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
-  }
+  location ~ ^ /uploads/  {
+    try_files $uri =404;
+    }
+    location ~* \.php$ {
+    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+    }
 {{< /file >}}
 
 3.  Reload NGINX:

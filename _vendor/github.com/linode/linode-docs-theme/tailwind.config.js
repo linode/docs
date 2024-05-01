@@ -92,30 +92,27 @@ const em = (px, base) => `${round(px / base)}em`;
 const px = (px) => `${px}px`;
 
 module.exports = {
-	purge: {
-		enabled: process.env.HUGO_ENVIRONMENT === 'production',
-		mode: 'all',
-		preserveHtmlElements: false,
-		// TODO1 form
-		content: ['./hugo_stats.json'],
-		// Re. x-cloak: hugo_stats.json does not contain attribute name/values (coming in upcoming Hugo).
-		// th: fixed in latest Hugo.
-		// The /type/ is for @tailwindcss/forms plugin (Hugo does not currently record attribute values).
-		safelist: ['pl-1', 'pl-3', 'x-cloak', 'th', /^level-|^is-/, /type/],
-		options: {
-			defaultExtractor: (content) => {
-				let els = JSON.parse(content).htmlElements;
-				els = els.tags.concat(els.classes, els.ids);
-
-				// Transition classes used in JS only.
-				els = els.concat('transition-transform transition-opacity ease-out duration-500 sm:duration-700'.split(' '));
-				els = els.concat('opacity-0 transform mobile:-translate-x-8 sm:-translate-y-8'.split(' '));
-				els = els.concat('opacity-100 transform mobile:translate-x-0 sm:translate-y-0'.split(' '));
-
-				return els;
-			},
-		},
-	},
+	content: ['./hugo_stats.json'],
+	safelist: [
+		'duration-500',
+		'ease-out',
+		'mobile:-translate-x-8',
+		'mobile:translate-x-0',
+		'opacity-0',
+		'opacity-100',
+		'pl-1',
+		'pl-3',
+		'sm:-translate-y-8',
+		'sm:duration-700',
+		'sm:translate-y-0',
+		'th',
+		'transform',
+		'transform',
+		'transition-opacity',
+		'transition-transform',
+		'x-cloak',
+		'hover:border-b-gray-500',
+	],
 	corePlugins: {
 		container: false,
 	},
@@ -144,12 +141,6 @@ module.exports = {
 		customform,
 		typography,
 	],
-	variants: {
-		backgroundColor: ['first', 'odd', 'responsive', 'hover', 'focus'],
-		textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-		visibility: ['hover', 'group-hover'],
-		opacity: ['group-hover'],
-	},
 	important: '#ln-docs',
 	theme: {
 		extend: {
@@ -291,11 +282,12 @@ module.exports = {
 							paddingLeft: '1em',
 						},
 
-						'ul > li::before': {
-							backgroundColor: '#cbd5e0',
+						'ul > li::marker': {
+							color: '#cbd5e0',
+							fontSize: '1.05em',
 						},
 
-						'ol > li::before': {
+						'ol > li::marker': {
 							color: '#71809D',
 						},
 
@@ -307,10 +299,12 @@ module.exports = {
 						ol: {
 							marginTop: '1em',
 							marginBottom: '1em',
+							paddingLeft: '1em',
 						},
 						ul: {
 							marginTop: '1em',
 							marginBottom: '1em',
+							paddingLeft: '1em',
 						},
 						li: {
 							marginTop: '.5em',
@@ -359,20 +353,20 @@ module.exports = {
 							marginBottom: '1rem',
 						},
 						h2: {
-							fontSize: '1.5em',
+							fontSize: '1.75em',
 							lineHeight: '1.25',
 							letterSpacing: '-0.38px',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h3: {
-							fontSize: '1.25em',
+							fontSize: '1.5em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h4: {
-							fontSize: '1em',
+							fontSize: '1.25em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
@@ -425,10 +419,12 @@ module.exports = {
 						ol: {
 							marginTop: '1em',
 							marginBottom: '1em',
+							paddingLeft: '1em',
 						},
 						ul: {
 							marginTop: '1em',
 							marginBottom: '1em',
+							paddingLeft: '1em',
 						},
 						li: {
 							marginTop: '.5em',
@@ -470,20 +466,20 @@ module.exports = {
 							marginBottom: '1rem',
 						},
 						h2: {
-							fontSize: '1.5em',
+							fontSize: '1.75em',
 							lineHeight: '1.25',
 							letterSpacing: '-0.5px',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h3: {
-							fontSize: '1.25em',
+							fontSize: '1.5em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h4: {
-							fontSize: '1em',
+							fontSize: '1.25em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
@@ -523,14 +519,19 @@ module.exports = {
 						ol: {
 							marginTop: '1em',
 							marginBottom: '1em',
+							paddingLeft: '1em',
 						},
 						ul: {
 							marginTop: '1em',
 							marginBottom: '1em',
+							paddingLeft: '1em',
 						},
 						li: {
 							marginTop: '.5em',
 							marginBottom: '.5em',
+						},
+						'ul > li': {
+							paddingLeft: '.75em',
 						},
 						'> ul > li p': {
 							marginTop: '.5em',
@@ -566,13 +567,16 @@ module.exports = {
 			   Tablet: 768px … 991px
 			   Desktop: 992px … :infinity:
 			*/
-			xl: px(maxWidthXl),
-			lg: px(maxWidthLg), // Desktop
-			md: px(maxWidthMd),
-			sm: px(maxWidthSm),
-			small: { max: '991px' }, // Common term for mobile, tablets etc. They are small.
-			tablet: { min: '768px', max: '991px' },
+			/*
+			Order these from smallest first. 
+			*/
 			mobile: { max: '767px' },
+			tablet: { min: '768px', max: '991px' },
+			small: { max: '991px' }, // Common term for mobile, tablets etc. They are small.
+			sm: px(maxWidthSm),
+			md: px(maxWidthMd),
+			lg: px(maxWidthLg), // Desktop
+			xl: px(maxWidthXl),
 		},
 		fontSize: {
 			xxs: '0.65625rem',

@@ -40,6 +40,8 @@ swap:
   yaml: YAML
   urls: URLs
   uris: URIs
+  uuid: UUID
+  uuids: UUIDs
   Cuda: CUDA
   gpu: GPU
   stackscript: StackScript
@@ -49,3 +51,4 @@ swap:
   markdown: Markdown
   vuejs: VueJS
   vue: Vue
+  Sao Paulo: São Paulo

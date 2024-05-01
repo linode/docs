@@ -1,25 +1,22 @@
 ---
 slug: websites-with-nginx-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Websites with nginx on Ubuntu 10.04 LTS (Lucid)'
 description: 'A basic guide to installing nginx from source on Ubuntu 10.04 LTS (Lucid)'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-29
+modified: 2013-10-07
 keywords: ["nginx", "nginx ubuntu 10.04", "http", "web servers", "ubuntu", "ubuntu l0.04", "ubuntu lucid"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/','/websites/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/installation/ubuntu-10-04-lucid/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2010-04-29
-title: 'Websites with nginx on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load. This guide will help you get nginx up and running on your Ubuntu 10.04 LTS (Lucid) Linode.
 

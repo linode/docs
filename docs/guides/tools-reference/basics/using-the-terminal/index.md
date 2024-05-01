@@ -1,18 +1,17 @@
 ---
 slug: using-the-terminal
+title: Using the Terminal
 description: 'This guide shows how to access and use the command line interface, also known as the Shell, via a Terminal application like PuTTY to perform system admin tasks.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-02
+modified: 2017-02-15
 keywords: ["Linux terminal", "terminal HOWTO", "Linode terminal tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/using-the-terminal/','/tools-reference/tools/using-the-terminal/','/tools-reference/ssh/using-the-terminal/','/using-linux/using-the-terminal/']
-modified: 2017-02-15
-modified_by:
-  name: Linode
-published: 2009-08-02
-title: Using the Terminal
 external_resources:
  - '[Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)'
 tags: ["linux"]
-authors: ["Linode"]
 ---
 
 The shell, also known as the "command line interface" or "CLI"", is the primary method for interacting with remote Linux servers. The shell is a rich interface for manipulating your files, managing your system, and scripting common tasks. If you use Linux on your local machine you are likely already familiar with the terminal; Mac OS X users may be familiar with the command line from Terminal.app.
@@ -132,7 +131,7 @@ In the above example we searched a stream with the `grep` tool, which provides a
 
     grep "127.0.0.1" /etc/hosts
 
-Note that `grep` expects the search "patterns" to be basic regular expression (a pattern matching syntax). `grep` is very powerful and its full is beyond the scope of this document. Please refer to the manual page for more information (enter `man grep`.)
+Note that `grep` expects the search "patterns" to be basic regular expression (a pattern matching syntax). `grep` is a very powerful and its full is beyond the scope of this document. Please refer to the manual page for more information (enter `man grep`.)
 
 ### The Echo Command
 

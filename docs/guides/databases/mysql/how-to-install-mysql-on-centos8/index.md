@@ -1,18 +1,17 @@
 ---
 slug: how-to-install-mysql-on-centos8
-description: 'Learn how to install MySQL on CentOS 8 Linux on a cloud server with cloud apps.'
-keywords: ['Install MySQL on CentOS 8', 'Install MySQL on CentOS Stream 8', 'Install MySQL', 'CentOS 8', 'Connect MySQL to CentOS 8', 'Install MySQL server in Linux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-11
-modified_by:
-  name: Linode
 title: "How to Install MySQL on CentOS 8"
 title_meta: "Installing MySQL on CentOS 8"
+description: 'Learn how to install MySQL on CentOS 8 Linux on a cloud server with cloud apps.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-10-11
+keywords: ['Install MySQL on CentOS 8', 'Install MySQL on CentOS Stream 8', 'Install MySQL', 'CentOS 8', 'Connect MySQL to CentOS 8', 'Install MySQL server in Linux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MySQL vs MariaDB](https://blog.devart.com/mysql-vs-mariadb.html)'
 - '[MariaDB vs MySQL compatibility](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
 - '[Introduction to Uncomplicated Firewall](https://www.linux.com/training-tutorials/introduction-uncomplicated-firewall-ufw/)'
-authors: ["John Mueller"]
 ---
 
 ## How to Install MySQL on CentOS Stream 8
@@ -62,7 +61,7 @@ The steps in this section detail installing MySQL on [CentOS Stream 8](https://l
     sudo dnf upgrade
     ```
 
-    During the update process, you may be asked questions such as, if you want to use additional disk space. Also, a progress indicator is shown anytime the system performs an upgrade. Mostly, you see a message telling you that the upgrades completed at the same time as the updates, so there is nothing to upgrade.
+    During the update process, you may be asked questions such as if you want to use additional disk space. Also, a progress indicator is shown anytime the system performs an upgrade. Mostly, you see a message telling you that the upgrades completed at the same time as the updates, so there is nothing to upgrade.
 
 1.	MySQL 8 is conveniently provided as part of the default repositories for CentOS Stream 8. You can directly run the command for MySQL set up as below.
 

@@ -1,8 +1,7 @@
 ---
-image: UploadAnImage.png
 title: Upload an Image
 description: "How to upload an image with Linode Images."
-authors: ["Linode"]
+image: UploadAnImage.png
 ---
 
 ## Requirements and Considerations
@@ -38,7 +37,7 @@ After the image file has been created, it needs to be compressed using the gzip 
 
 -   **Linux and macOS**: Run the following command, replacing *[file.img.gz]* with the file name of your image. See [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/guides/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/) for additional information on gzip.
 
-        gzip [file.img] [file.img.gz]
+        gzip [file.img]
 
 -   **Windows**: Use a third party tool that supports gzip compression, such as [7-Zip](https://www.7-zip.org/).
 

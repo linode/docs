@@ -1,19 +1,18 @@
 ---
 slug: running-ansible-playbooks
+title: Automate Server Configuration with Ansible Playbooks
 description: 'An introduction to configuration management with the Ansible IT automation platform including installation, configuration and playbook set up.'
-keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Joshua Lyman"]
+contributors: ["Joshua Lyman"]
 published: 2015-06-01
 modified: 2015-09-21
-modified_by:
-    name: Linode
-title: Automate Server Configuration with Ansible Playbooks
-aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/']
+keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/','/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/']
 tags: ["automation"]
-authors: ["Joshua Lyman"]
 ---
 
-**Playbooks** define a set of tasks to be executed by Ansible on a group of managed nodes. While you can use Ansible to execute one-off tasks via the command line, Playbooks can be reused, shared across teams, version controlled, and support complex deployment and rollout requirements. You can use features such as, handlers, variables, templates, error handling, and control logic within your Playbooks to intelligently automate your IT processes across a fleet of hosts.
+**Playbooks** define a set of tasks to be executed by Ansible on a group of managed nodes. While you can use Ansible to execute one-off tasks via the command line, Playbooks can be reused, shared across teams, version controlled, and support complex deployment and rollout requirements. You can use features such as handlers, variables, templates, error handling, and control logic within your Playbooks to intelligently automate your IT processes across a fleet of hosts.
 
 ## Scope of this Guide
 
@@ -86,8 +85,7 @@ The second example Playbook targets all hosts in the `marketing_servers` group a
 ## Web Server Setup with Ansible Playbooks
 
 In this example, you will create three different Playbooks to configure your Linode as a web server running a LAMP stack. You will also configure the Linode to add a limited user account. The Playbooks will provide basic configurations that you can expand on, if needed.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The Playbooks created in this section are for learning purpose and will not result in a fully hardened or secure server. To further secure your Linode, you can use Ansible's [firewalld module](https://docs.ansible.com/ansible/latest/modules/firewalld_module.html).
 {{< /note >}}
 

@@ -1,16 +1,15 @@
 ---
 slug: using-magicspam-email-authentication
-description: "Securing your email server with MagicSpam by using country authentication, IP authentication, source based authentication, and other restrictions."
-keywords: ["magicspam", "email authentication", "email server security"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-12-29
-modified_by:
-  name: Linode
-published: 2021-12-29
 title: "Using MagicSpam to Secure your Email Server"
 title_meta: "How to stop BEC and Compromised Accounts on cPanel or Plesk Server"
-tags: ["email"]
+description: "Securing your email server with MagicSpam by using country authentication, IP authentication, source based authentication, and other restrictions."
 authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-12-29
+modified: 2024-01-22
+keywords: ["magicspam", "email authentication", "email server security"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["email"]
 ---
 
 [MagicSpam](https://magicspam.com/) is a powerful anti-spam and email security solution for Linux systems. It not only stops inbound spam from entering mailboxes but also provides email authentication security. This prevents email accounts from being compromised and abused by threat actors.
@@ -24,7 +23,7 @@ After a threat actor has compromised your email account, they can gain access to
 
 As an email end user, the consequences of having your email compromised can be very serious. After learning about your behaviors and relationships, threat actors can impersonate you. They can leverage the trust of your business partners,friends, and family. Influence them to transfer money, divulge private information, or even infect their machines with malware. Subsequently as the email administrator, the problems of your customers are your problems as well. Besides, dealing with angry customers with compromised accounts, the fallout from compromised accounts being used to send outbound spam effects your IP reputation negatively. This in turn creates more angry customers whose emails are rejected for delivery by other email servers and a whole new set of problems.
 
-Let’s learn how MagicSpam helps email administrators to avoid such a negative outcome and secure your email servers. If you do not yet have MagicSpam installed, you can deploy Linode's [MagicSpam Marketplace App](https://www.linode.com/marketplace/apps/magicspam/magicspam/).
+Let’s learn how MagicSpam helps email administrators to avoid such a negative outcome and secure your email servers.
 
 ## Country Authentication Restrictions
 

@@ -1,18 +1,17 @@
 ---
 slug: how-to-create-website-using-laravel
+title: "Build a Website Using the Laravel Framework"
+title_meta: "How to Create a Website Using Laravel"
 description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Build a Website Using the Laravel Framework"
-title_meta: "How to Create a Website Using Laravel"
 external_resources:
 - '[Laravel](https://laravel.com/)'
-- '[Laravels documentation](https://laravel.com/docs/8.x]'
-authors: ["Nathaniel Stickman"]
+- '[Laravels documentation](https://laravel.com/docs/)]'
 ---
 
 [Laravel](https://laravel.com/) is a PHP web application framework boasting an elegant and expressive syntax. With Laravel, you can easily spin up a new website while also having the features and scalability to handle advanced and large-scale applications.
@@ -25,7 +24,7 @@ This guide walks you through the setup process for Laravel, then shows you how t
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -41,7 +40,7 @@ This guide is written for non-root user. Commands that require elevated privileg
 
     - On Debian and Ubuntu, you can use:
 
-            sudo apt install php7.4 php7.4-bcmath php7.4-common php7.4-curl php7.4-json php7.4-mbstring php7.4-mysql php7.4-xml php7.4-zip openssl
+            sudo apt install php php-bcmath php-common php-curl php-json php-mbstring php-mysql php-xml php-zip php8.1-fpm openssl
 
     - On CentOS, you need to take the additional step of adding the [Remi repository](https://rpms.remirepo.net/), since the package manager's default repositories only include PHP version 7.2.
 
@@ -69,18 +68,11 @@ This guide is written for non-root user. Commands that require elevated privileg
         sudo mv composer.phar /usr/local/bin/composer
         sudo chmod +x /usr/local/bin/composer
 
-1. Run the Composer installer. The following commands download the installer, verify its SHA-384 key, and run the installation script if the key is valid.
-
-        php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-        php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-        php composer-setup.php
-        php -r "unlink('composer-setup.php');"
-
 ### Create a Laravel Project
 
 1. Create your Laravel application.
 
-        php composer.phar create-project laravel/laravel example-app
+        composer create-project laravel/laravel example-app
 
 1. Change into the directory created for the application.
 
@@ -97,7 +89,7 @@ Unless noted otherwise, all subsequent commands in this guide assume you are sti
     Artisan serves the application on `localhost:8000`. To visit the application remotely, you can use an SSH tunnel:
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **8000**.
-    - On OS X or Linux, use the example command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
+    - On OS X or Linux, use the example command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address. Ensure that you can access the server on port `8000` use the `sudo ufw allow 8000` to be enable access.
 
             ssh -L8000:localhost:8000 example-user@192.0.2.0
 

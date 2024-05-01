@@ -46,7 +46,7 @@
       :class="{ 'is-scroll-x' : $isScrollX() }"
       class="code {{ $mt }} {{ $class }} flex items-start justify-between overflow-x-auto"
       x-data>
-      <div class="" x-ref="code">
+      <div class="pr-2" x-ref="code">
         {{- highlight (trim $.inner "\n" ) $style "linenos=false" -}}
       </div>
       <div
