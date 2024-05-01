@@ -13,11 +13,7 @@ external_resources:
 - '[TiKV: Using TiKV Operator](https://tikv.org/docs/4.0/tasks/try/tikv-operator/)'
 ---
 
-SurrealDB offers a powerful alternative to traditional relational databases. Whether you want a database capable of inter-document relations or a full backend for your serverless web applications, SurrealDB is a great choice.
-
-SurrealDB has also been designed from the ground up to operate effectively in horizontally-scaling distributed environments. Along with its range of other features, this makes SurrealDB an excellent database and backend to scale with growing applications.
-
-This tutorial walks through setting up a SurrealDB instance in a distributed environment using Kubernetes for cluster deployment and TiKV for clustered persistence. This presents a straightforward, yet potent way to run a distributed SurrealDB server.
+SurrealDB is a powerful alternative to traditional relational databases. SurrealDB has been designed to operate effectively in horizontally-scaling distributed environments and is capable of inter-document relations and can operate as a backend for your serverless web applications. This tutorial walks through setting up a SurrealDB instance in a distributed environment using Kubernetes for cluster deployment and TiKV for clustered persistence.
 
 ## How to Deploy a SurrealDB Cluster
 
@@ -29,13 +25,13 @@ Typically, SurrealDB uses either in-memory or in-file storage, but SurrealDB als
 
 To get started, you need to have a Kubernetes cluster up and running, along with `kubectl` or a similar tool set up to manage the cluster. This tutorial provides commands specifically for `kubectl`.
 
-Linode offers the Linode Kubernetes Engine (LKE) as a convenient way to get started. You can deploy a cluster directly from the Linode Cloud Manager. Our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/) includes steps for deploying a new cluster and setting up a `kubectl` instance to manage it.
+Linode offers the Linode Kubernetes Engine (LKE) as a convenient way to get started. You can deploy a cluster directly from the Cloud Manager. Our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/) includes steps for deploying a new cluster and setting up a `kubectl` instance to manage it.
 
 The rest of this tutorial assumes you have a Kubernetes cluster up and running and configured for management with a local `kubectl` instance. The examples in this tutorial also assume that your cluster has three nodes, so adjust accordingly throughout if your cluster differs.
 
 Additionally, you need to have [Helm](https://helm.sh/) installed to follow along with this tutorial. Helm is used here to deploy TiKV to the cluster. To install Helm, follow the relevant section of our guide [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm).
 
-Also install SurrealDB on your local machine. You need it later in order to run `surreal` commands on the Kubernetes cluster via port forwarding. Follow the steps in the relevant section of our guide [Getting Started with SurrealDB](/docs/guides/getting-started-with-surrealdb/#how-to-install-surrealdb).
+Also, you must install SurrealDB on your local machine to run `surreal` commands on the Kubernetes cluster via port forwarding. Follow the steps in the relevant section of our guide [Getting Started with SurrealDB](/docs/guides/getting-started-with-surrealdb/#how-to-install-surrealdb).
 
 ### Deploying TiKV for Persistence
 

@@ -11,19 +11,7 @@ external_resources:
 - '[SurrealDB Documentation](https://surrealdb.com/docs)'
 ---
 
-SurrealDB provides a new approach to relational databases, with all-in-one database, API, and access control. Once a SurrealDB instance is up-and-running, you likely want to secure it. Luckily, SurrealDB comes with a suite of features to both secure an instance and provide powerful and flexible access control.
-
-Learn all about these features in this tutorial. See how to secure your instance with limited user logins and discover how SurrealDB can implement a custom user-management solution for your applications.
-
-## Before You Begin
-
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
+SurrealDB provides a new approach to relational databases, with all-in-one database, API, and access control. Once a SurrealDB instance is up-and-running, you likely want to secure it. Learn about SurrealDB's security features and best practices in this tutorial. See how to secure your instance with limited user logins and discover how SurrealDB can implement a custom user-management solution for your applications.
 
 ## How to Secure SurrealDB
 
@@ -482,16 +470,10 @@ The steps that follow use a couple of the SurrealDB query endpoints with the aut
 
 ## Conclusion
 
-You now have what you need to secure your SurrealDB instance and start managing user accounts.
-
-Creating limited user logins with `DEFINE LOGIN` provides a set of users to manage resources on a SurrealDB server. This allows you to run the server without the risky root user.
-
-Implementing scopes for user accounts goes even further. With scopes, a SurrealDB instance gains a complete process for user management that can be leveraged by web applications.
+You now have what you need to secure your SurrealDB instance and start managing user accounts. Creating limited user logins with `DEFINE LOGIN` provides a set of users to manage resources on a SurrealDB server. This allows you to run the server without the risky root user. Implementing scopes for user accounts goes even further. With scopes, a SurrealDB instance gains a complete process for user management that can be leveraged by web applications.
 
 With a secured SurrealDB server, you're in an excellent position to consider setting up SurrealDB for a particular use case. Get a head start by following along with one of our other guides on SurrealDB:
 
 -   [Building an Web Application on Top of SurrealDB](/docs/guides/surrealdb-for-web-applications)
-
 -   [Modeling Data with SurrealDB’s Inter-document Relations](/docs/guides/surrealdb-interdocument-modeling)
-
 -   [Deploying a SurrealDB Cluster](/docs/guides/deploy-surrealdb-cluster/)

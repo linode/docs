@@ -12,9 +12,7 @@ external_resources:
 - '[SurrealDB: RELATE Statement](https://surrealdb.com/docs/surrealql/statements/relate)'
 ---
 
-SurrealDB offers a versatile new approach to relational databases. A SurrealDB server includes a built-in API layer, often eliminating the need for server-side components in your application. With a high-performance architecture, real-time queries, and scalability, you can see why SurrealDB stands out.
-
-SurrealDB also leverages a multi-model approach to data. You can use whatever models fit your needs when storing and retrieving data, without meticulously planning out models in advance. For that, SurrealDB makes use of inter-document relations, and implements a highly-efficient core for managing relations.
+SurrealDB leverages a multi-model approach to data. You can use whatever models fit your needs when storing and retrieving data, without meticulously planning out models in advance. For that, SurrealDB makes use of inter-document relations, and implements a highly-efficient core for managing relations.
 
 Follow along with this tutorial to start making the most out of SurrealDB, and see how you can use its multi-model architecture. Learn about the concepts behind SurrealDB's inter-document relations, and walk through examples that put them into practice.
 

@@ -11,19 +11,13 @@ external_resources:
 - '[SurrealDB Documentation](https://surrealdb.com/docs)'
 ---
 
-SurrealDB offers a new approach to relational databases. It brings features like all-in-one handling of database, API, and security layers, real-time queries, and multi-model data storage. SurrealDB does all this while still retaining a familiar SQL-like language.
-
-In this tutorial, learn more about SurrealDB's offerings and how you can get started with this new database solution.
+[SurrealDB](https://surrealdb.com/) offers a new approach to relational databases. It brings features like all-in-one handling of database, API, and security layers, real-time queries, and multi-model data storage --- while still retaining a familiar SQL-like language. In this tutorial, learn more about SurrealDB's offerings and how you can get started with this new database solution.
 
 ## Why SurrealDB?
 
-[SurrealDB](https://surrealdb.com/) is an ambitious database solution combining a suite of compelling features. Keeping the familiarity of relational databases, SurrealDB adds multi-model and real-time queries, high scalability, and configuration of all schema layers in one place.
+SurrealDB serves as a complete database solution for serverless applications and for use cases that require a high degree of scalability. For serverless applications, SurrealDB's all-in-one schema handling lets you design APIs right alongside your databases. Web clients can then readily access those APIs, letting SurrealDB support Jamstack and other serverless web applications. SurrealDB has also been designed with scalability in mind. It is built on Rust, giving it high performance. SurrealDB's architecture and database handling places distributed systems at the forefront, making it ready for horizontal scaling.
 
-SurrealDB is an ideal solution in many cases for serverless applications and for use cases that require a high degree of scalability. For serverless applications, SurrealDB's all-in-one schema handling lets you design APIs right alongside your databases. Web clients can then readily access those APIs, letting SurrealDB support Jamstack and other serverless web applications.
-
-At the same time, SurrealDB has been designed with scalability in mind. It is built on Rust, giving it high performance. SurrealDB's architecture and database handling places distributed systems at the forefront, making it ready for horizontal scaling.
-
-Though not complete, here is a list of some of most compelling features that SurrealDB has to offer:
+Though not complete, here is a list of some of the features that SurrealDB offers:
 
 -   **Handling of database, API, and security layers all in one place.** SurrealDB does not require separate server-side applications to schematize and expose a client-facing API. You can do that from right within SurrealDB, providing support to serverless applications like those using the Jamstack architecture. Moreover, SurrealDB includes a robust access-control system. This further reduces the need to implement separate server-side tools and development.
 
@@ -116,13 +110,9 @@ SurrealDB can also be [run as a Docker container](https://surrealdb.com/docs/ins
 
 ## SurrealDB: The Basics
 
-With the SurrealDB server installed, you can begin to explore its many features. Follow along below to start running the SurrealDB server. Subsequent sections detail approaches for querying it from both the command line and HTTP requests.
-
-This tutorial explores SurrealDB's basics, and shows how its queries stand out from traditional SQL and relational databases. To learn more, check out the links to our other SurrealDB tutorials in the conclusion.
-
 ### Running the SurrealDB Server
 
-To start using SurrealDB, you must first start the database server. You can do this from the `surreal` binary's `start` command. However, before starting the server, you need to decide how to store data: in memory or in a file.
+To begin using SurrealDB, you must first start the database server. You can do this from the `surreal` binary's `start` command. However, before starting the server, you need to decide how to store data: in memory or in a file.
 
 Below are two versions of a basic command for starting up the SurrealDB server, one for each of the kinds of storage options:
 

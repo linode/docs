@@ -11,23 +11,9 @@ external_resources:
 - '[SurrealDB Documentation](https://surrealdb.com/docs)'
 ---
 
-SurrealDB offers a re-imagining of relational databases. With inter-document relations, a distributed architecture, and a modern yet familiar SQL-like language, SurrealDB has many reason to recommended it.
-
-However, SurrealDB also features a powerful all-in-one design. The SurrealDB server includes an API layer that can be schematized alongside the underlying database. This means that a go-between, server-side application is often no longer necessary. Most frontend applications can get all they need directly from SurrealDB's robust API.
-
-SurrealDB's approach is especially compelling with modern, adaptable architectures like Jamstack.
+The SurrealDB server includes an API layer that can be schematized alongside the underlying database. This means that a go-between, server-side application is often no longer necessary. Most frontend applications can get all they need directly from SurrealDB's robust API. SurrealDB's approach is especially compelling with modern, adaptable architectures like Jamstack.
 
 Learn more about SurrealDB's APIs and building frontend application with them in this tutorial. See how to set up a SurrealDB instance and example static frontend that leverages SurrealDB's all-in-one design.
-
-## Before You Begin
-
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
 
 ## How to Prepare SurrealDB
 
@@ -777,7 +763,7 @@ Further on you can find a suggestion for how to prepare the application for prod
 
 You should now see the login page for the example to-do list application:
 
-[![Example application login page](example-app-login_small.png)](example-app-login.png)
+![Example application login page](example-app-login.png)
 
 Use the **Sign Up** option to create a user account. From there, you should be logged in and viewing the to-do list page. You can add items using the form, which should produce a list of those items, like so:
 
