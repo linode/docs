@@ -35,9 +35,9 @@ This guide outlines benefits and considerations for cross-region replication of 
 
 ## Failover With Akamai CDN
 
-The diagram below illustrates how replication of Object Storage data from one bucket to another has the ability to achieve a failover setup with Akamai’s CDN as a client front end. In this scenario, client requests can be directed to, or cached from, alternate regions in the event the primary region is unavailable:
+The diagram below illustrates how replication of Object Storage data from one bucket to another has the ability to achieve a failover setup with Akamai’s CDN as a client frontend. In this scenario, client requests can be directed to, or cached from, alternate regions in the event the primary region is unavailable:
 
-1.  Akamai's CDN used as a client front end.
+1.  Akamai's CDN used as a client frontend.
 
 1.  An Object Storage bucket located in the Osaka data center is used as the primary origin for Akamai's CDN to source and cache data.
 
@@ -134,7 +134,7 @@ $RCLONE_SYNC_COMMAND
 
 ### Running the script
 
--   **Supported distribution images:** Ubuntu 16.04 LTS, Ubuntu 18.04 LTS, Ubuntu 20.04 LTS, Ubuntu 22.04 LTS, Ubuntu 22.10, Ubuntu 23.04, Ubuntu 23.10
+-   **Supported distributions:** Ubuntu (tested on Ubuntu 22.04 LTS)
 
 -   **Script location:** The script is designed to be run from a Compute Instance on a supported distribution by a user with sudo permissions.
 
