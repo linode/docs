@@ -1,22 +1,20 @@
 ---
 slug: how-to-install-docker-and-deploy-a-lamp-stack
+title: 'How to install Docker and deploy a LAMP Stack'
 description: 'This article gives you step-by-step instructions for installing Docker and using the application to create a LAMP stack within a Docker container.'
+authors: ["Joe D."]
+contributors: ["Joe D."]
+published: 2015-02-23
 keywords: ["docker", "lamp", "LAMP", "ubuntu", "debian"]
 tags: ["lamp","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/containers/install-docker-and-lamp-stack/','/applications/containers/linode-lamp-container-docker/','/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/']
-modified: 2015-02-23
-modified_by:
-  name: Linode
-published: 2015-02-23
-title: 'How to install Docker and deploy a LAMP Stack'
-deprecated: true
 external_resources:
  - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
-authors: ["Joe D."]
+deprecated: true
 ---
 
 Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other.

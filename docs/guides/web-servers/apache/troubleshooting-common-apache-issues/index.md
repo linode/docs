@@ -1,20 +1,19 @@
 ---
 slug: troubleshooting-common-apache-issues
+title: Troubleshooting Common Apache Issues
 description: 'How to identify and solve common configuration problems encountered when using Apache.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-06
+modified: 2023-03-14
 keywords: ["apache", "webserver", "httpd", "troubleshooting"]
 tags: ["apache", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/troubleshooting/troubleshooting-common-apache-issues/','/web-servers/apache/troubleshooting/']
-published: 2009-11-06
-modified: 2023-03-14
-modified_by:
-  name: Linode
-title: Troubleshooting Common Apache Issues
 image: troubleshooting-common-apache-issues.jpg
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
-authors: ["Linode"]
 ---
 
 This article provides troubleshooting guidelines for the [Apache web server](/docs/web-servers/apache/). Apache is a highly customizable tool for serving HTTP traffic. Because it allows for so many different configurations and settings in so many different places, sometimes Apache configuration can befuddle even advanced users.
@@ -161,7 +160,7 @@ httpd -S
 
 Make sure all your `<VirtualHost>` directives use IP addresses and port numbers that match the ones defined in the `NameVirtualHost` directives. For example, if you have set `NameVirtualHosts *:80`, then the virtual host configuration should begin with `<VirtualHost *:80>`. If you've set `NameVirtualHosts 123.234.123.234:80`, then the virtual host configuration should begin with `<VirtualHost 123.234.123.234:80>`. If you've set `NameVirtualHosts *`, then the virtual host configuration should begin with `<VirtualHost *>`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can have multiple `NameVirtualHost` values, which is what you'll need to do if you're running sites on multiple IPs and ports. Just make sure the `<VirtualHost>` configurations correspond to the configured `NameVirtualHost` directives.
 {{< /note >}}
 

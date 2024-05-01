@@ -2,11 +2,11 @@
 <div
   id="toc-component-main"
   data-testid="toc-main"
-  class="toc-main bg-white z-10 w-full h-full"
+  class="toc-main bg-white z-10 w-full mb-4"
   x-data="lncToc({setProgress: false, desktopOnly: true})"
   x-init="initToC()"
   x-show="enabled"
-  @scroll.window.debounce.10ms="onScroll()"
+  @scroll.window="onScroll()"
   @hashchange.window="onHashchange();">
   <h3 class="font-semibold uppercase mb-3">On this page</h3>
   <div class="toc__inner">

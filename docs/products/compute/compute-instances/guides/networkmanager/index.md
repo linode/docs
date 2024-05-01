@@ -1,15 +1,12 @@
 ---
-description: "Learn how to configure networking using the NetworkManager utility on CentOS, CentOS Stream, Fedora, and other modern Linux distributions"
-keywords: ["static", "ip address","NetworkManager"]
-published: 2022-05-27
-modified_by:
-  name: Linode
 title: "Network Configuration Using NetworkManager"
+description: "Learn how to configure networking using the NetworkManager utility on CentOS, CentOS Stream, Fedora, and other modern Linux distributions"
+published: 2022-05-27
+keywords: ["static", "ip address","NetworkManager"]
 tags: ["networking","linode platform"]
 external_resources:
   - '[NetworkManager documentation](https://networkmanager.dev/docs/api/latest/NetworkManager.conf.html)'
 aliases: ['/guides/networkmanager/']
-authors: ["Linode"]
 ---
 
 [NetworkManager](https://networkmanager.dev/) is a very popular network configuration utility and is used by default on Fedora, CentOS Stream, CentOS, AlmaLinux 8, and Rocky Linux 8. It can also be easily installed on Arch, Ubuntu, and other distributions.

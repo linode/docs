@@ -1,14 +1,13 @@
 ---
 slug: hackersploit-red-team-series
+title: "Hackersploit Red Team Series"
 description: 'Two to three sentences describing your guide.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Hackersploit Red Team Series"
-authors: ["HackerSploit"]
 ---
 
 The rate of data breaches and APT attacks has been rapidly increasing during the period of COVID-19. Organizations are starting to recognize that their IT infrastructure has weaknesses and vulnerabilities, at great expense to their operations and customer data. For medium to large enterprise organizations, a defense-in-depth strategy that includes testing your defenses is required. This is where red teaming comes into play.
