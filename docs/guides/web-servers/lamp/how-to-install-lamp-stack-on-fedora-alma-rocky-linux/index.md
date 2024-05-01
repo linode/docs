@@ -1,14 +1,12 @@
 ---
 slug: how-to-install-lamp-stack-on-fedora-alma-rocky-linux
-title: "How to Install LAMP Stack on Fedora, AlmaLinux, or Rocky Linux"
-description: 'This guide explains how to install a LAMP stack on Fedora and the AlmaLinux and Rocky Linux variants.'
-og_description: 'This guide explains how to install a LAMP stack on Fedora and the AlmaLinux and Rocky Linux variants.'
+title: "How to Install a LAMP Stack on Fedora, AlmaLinux, or Rocky Linux"
+description: "This guide explains how to install a LAMP stack on Fedora and the AlmaLinux and Rocky Linux variants."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2024-05-01
 keywords: ['LAMP stack Fedora','test LAMP stack','Apache Fedora','MariaDB PHP Fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-08-02
-modified_by:
-  name: Linode
 external_resources:
 - '[Apache HTTP server](https://httpd.apache.org/)'
 - '[MariaDB](https://mariadb.com/)'
@@ -17,6 +15,11 @@ external_resources:
 - '[MySQL](https://dev.mysql.com/)'
 - '[LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle))'
 - '[Apache Virtual Host documentation](https://httpd.apache.org/docs/current/vhosts/)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+           - distribution: Fedora 38
 ---
 
 The most common web architecture for Linux-based systems is the [*LAMP Stack*](https://en.wikipedia.org/wiki/LAMP_(software_bundle)). This stack includes all necessary components for a web application, including an operating system, web server, relational database, and programming language. This guide explains how to install and test a LAMP stack on the Fedora Linux platform and the related AlmaLinux and Rocky Linux distributions.
