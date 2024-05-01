@@ -2,12 +2,11 @@
 slug: load-testing-with-jmeter
 title: "How to Use JMeter to Load Test Your Applications"
 description: "Apache's JMeter is a robust open source tool for load testing web applications. Learn everything you need to get started using JMeter in this tutorial."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2024-05-01
 keywords: ['jmeter load testing','jmeter download','jmeter tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-04-23
-modified_by:
-  name: Linode
 external_resources:
 - '[Apache JMeter: Getting Started](https://jmeter.apache.org/usermanual/get-started.html)'
 - '[Wikipedia: Software Load Testing](https://en.wikipedia.org/wiki/Software_load_testing)'
@@ -32,8 +31,8 @@ The commands, file contents, and other instructions provided throughout this gui
 
 | Example Values: | Replace With: |
 | -- | -- |
-| `EXAMPLE_USER` | The username of the current user on your local machine. |
-| `apache-jmeter-5.6.2` | The actual version of JMeter you download, if different. |
+| {{< placeholder "EXAMPLE_USER" >}} | The username of the current user on your local machine. |
+| {{< placeholder "apache-jmeter-5.6.2" >}} | The actual version of JMeter you download, if different. |
 
 ## What Is Load Testing?
 
@@ -41,15 +40,11 @@ The commands, file contents, and other instructions provided throughout this gui
 
 Load tests most often use test plans to model both normal and peak traffic along with typical user behavior. From there, the load test should provide metrics on response times, resource usage, and more.
 
-The data gathered from load tests can be invaluable. It can show whether your infrastructure is enough to handle the expected traffic, or if you have more resources than you actually need.
-
-Using load testing to fine-tune your infrastructure and allocated resources can ensure more consistent user experiences and save money.
+The data gathered from load tests can be invaluable. It can show whether your infrastructure is enough to handle the expected traffic, or if you have more resources than you actually need.Using load testing to fine-tune your infrastructure and allocated resources can ensure more consistent user experiences and save money.
 
 ## Why Use JMeter?
 
-[Apache JMeter](https://jmeter.apache.org/index.html) is an open source load testing tool built entirely in Java. JMeter is a robust option for measuring and analyzing web application performance under various loads.
-
-JMeter is easy to get started with as it is both open source and widely used. This makes JMeter both accessible and price efficient, all while having the community support that comes with a popular open source solution.
+[Apache JMeter](https://jmeter.apache.org/index.html) is an open source load testing tool built entirely in Java. It's widely used, relatively easy to get started with, and serves as robust option for measuring and analyzing web application performance under various loads. It's also open source, which makes it both accessible and price efficient, all while having the community support that comes with a popular open source solution.
 
 ## How to Install JMeter
 
@@ -71,11 +66,11 @@ JMeter should be installed on the machine from which you want to run tests, not 
 
 1.  Download the JMeter binaries package from the [Apache JMeter download page](https://jmeter.apache.org/download_jmeter.cgi).
 
-    This tutorial uses the zip file with the binaries for JMeter `5.6.2`. If you download a different version be sure to replace the naming throughout this guide with the appropriate version.
+    This tutorial uses the zip file with the binaries for JMeter 5.6.2. If you download a different version be sure to replace the naming throughout this guide with the appropriate version.
 
 1.  **Optional:** To verify the file, use the link for the SHA512 corresponding to your download. Then follow the commands in the [Checking Hashes](https://www.apache.org/info/verification.html#CheckingHashes) section of Apache's documentation on verifying Apache software.
 
-1.  Extract the downloaded package to a directory you want your JMeter instance installed to. This tutorial assumes that you extract the package to your current user's home directory (e.g. `/home/EXAMPLE_USER/apache-jmeter-5.6.2` or `C:\Users\EXAMPLE_USER\apache-jmeter-5.6.2`).
+1.  Extract the downloaded package to a directory you want your JMeter instance installed to. This tutorial assumes that you extract the package to your current user's home directory (e.g. `/home/{{< placeholder "EXAMPLE_USER" >}}/{{< placeholder "apache-jmeter-5.6.2" >}}` or `C:\Users\{{< placeholder "EXAMPLE_USER" >}}\{{< placeholder "apache-jmeter-5.6.2" >}}`).
 
 1.  Locate the JMeter executable for your system within the `bin` subdirectory of the extracted directory.
 
@@ -88,19 +83,19 @@ JMeter should be installed on the machine from which you want to run tests, not 
     {{< tabs >}}
     {{< tab "Linux & macOS" >}}
     ```command
-    ~/apache-jmeter-5.6.2/bin/jmeter
+    ~/{{< placeholder "apache-jmeter-5.6.2" >}}/bin/jmeter
     ```
     {{< /tab >}}
     {{< tab "Windows" >}}
     ```command
-    C:\Users\EXAMPLE_USER\apache-jmeter-5.6.2\bin\jmeter.bat
+    C:\Users\{{< placeholder "EXAMPLE_USER" >}}\{{< placeholder "apache-jmeter-5.6.2" >}}\bin\jmeter.bat
     ```
     {{< /tab >}}
     {{< /tabs >}}
 
 You should see the JMeter GUI start up:
 
-[![The initial view of the JMeter GUI.](jmeter-startup_small.png)](jmeter-startup.png)
+![The initial view of the JMeter GUI.](jmeter-startup.png)
 
 {{< note >}}
 For Linux and macOS, you can follow our guide on how to [Add a Directory to the PATH on Linux](/docs/guides/how-to-add-directory-to-path/). Add the `bin` directory to your shell path to start up JMeter with the simpler `jmeter` command.
@@ -114,7 +109,7 @@ To help get started, this tutorial also includes steps for creating a simple web
 
 ### Preparing an Example Application
 
-To create a base web application to test with JMeter, follow the steps here on an application server. These steps specifically assume a Linode Compute Instance server. The instructions should work with most Debian-based and RHEL-derived distributions.
+To create a base web application to test with JMeter, follow the steps here on an application server. These steps specifically assume a Linode Compute Instance server is used. The instructions should work with most Debian-based and RHEL-derived distributions.
 
 1.  Follow our guide on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). NPM handles the installation of the application framework and its dependencies as well as running the example application itself.
 
@@ -142,9 +137,9 @@ To create a base web application to test with JMeter, follow the steps here on a
     npm run dev
     ```
 
-1.  To verify that the example application is running, open a web browser and navigate to port `3000` on your system's public IP address. For example, if your system's public IP address is `192.0.2.0`, you would navigate to `http://192.0.2.0:3000`.
+1.  To verify that the example application is running, open a web browser and navigate to port `3000` on your system's public IP address. For example, if your system's public IP address is `192.0.2.17`, you would navigate to `http://192.0.2.17:3000`.
 
-    [![The Next.js welcome page.](example-nextjs-app_small.png "The Next.js welcome page.")](example-nextjs-app.png)
+    ![Screenshot of the Next.js welcome page](example-nextjs-app.png)
 
 ### Creating a JMeter Test Plan
 
@@ -152,9 +147,7 @@ JMeter test plans are created within the JMeter GUI. From there, JMeter provides
 
 Learn more about building test plans in JMeter's [Building a Test Plan](https://jmeter.apache.org/usermanual/build-test-plan.html) documentation. For the particular kind of test plan shown here, also refer to JMeter's [Building a Web Test Plan](https://jmeter.apache.org/usermanual/build-web-test-plan.html) documentation.
 
-The example test plan developed in this section specifically models web application access by several simultaneous users. The test verifies that users are able to access the page and that the page delivers the expected content.
-
-From this base test, you can easily expand both the number of modeled users and extent of scenarios to fit your particular needs.
+The example test plan developed in this section specifically models web application access by several simultaneous users. The test verifies that users are able to access the page and that the page delivers the expected content. From this base test, you can easily expand both the number of modeled users and extent of scenarios to fit your particular needs.
 
 1.  In the JMeter GUI, choose **File** > **Templates** from the top menu bar.
 
@@ -180,11 +173,11 @@ From this base test, you can easily expand both the number of modeled users and 
 
 1.  Select the **HTTP Requests Default** item. This sets up the default values for HTTP requests made by the modeled users. Use the values listed below, leaving anything not mentioned at its default:
 
-    -   **Server Name or IP**: The public IP address or domain name for your web application (e.g. `192.0.2.0`)
+    -   **Server Name or IP**: The public IP address or domain name for your web application (e.g. `192.0.2.45`)
 
     -   **Port Number**: `3000`
 
-    [![Adjusting the HTTP request defaults for a JMeter test plan.](jmeter-http-defaults_small.png)](jmeter-http-defaults.png)
+    ![Adjusting the HTTP request defaults for a JMeter test plan.](jmeter-http-defaults.png)
 
 1.  **Optional:** Select the **Home Page** item. This defines a specific HTTP request to be made by the modeled users. For this example, you do not need to change anything. However, it's helpful to familiarize yourself with this item to understand how to customize it later.
 
@@ -206,7 +199,7 @@ From this base test, you can easily expand both the number of modeled users and 
     src/pages/index.tsx</code>
     ```
 
-    [![Adjusting the home page request assertion for a JMeter test plan](jmeter-assertion_small.png)](jmeter-assertion.png)
+    ![Adjusting the home page request assertion for a JMeter test plan](jmeter-assertion.png)
 
     This establishes a test condition that when a modeled user accesses the home page, they should have the given text within the response.
 
@@ -214,7 +207,7 @@ From this base test, you can easily expand both the number of modeled users and 
 
     -   On Linux & macOS: `~/build-web-test-plan.jmx`
 
-    -   On Windows: `C:\Users\EXAMPLE_USER\build-web-test-plan.jmx`
+    -   On Windows: `C:\Users\{{< placeholder "EXAMPLE_USER" >}}\build-web-test-plan.jmx`
 
 The test plan is now ready to run. Exit the JMeter GUI, and continue on to the next section to see how the test plan performs.
 
@@ -237,13 +230,13 @@ Use all of these together to run a load test using the test plan developed above
 {{< tabs >}}
 {{< tab "Linux & macOS" >}}
 ```command
-~/apache-jmeter-5.6.2/bin/jmeter -n -t ~/build-web-test-plan.jmx -l ~/build-web-test-logs.jtl -e -o ~/build-web-test-reports/
+~/{{< placeholder "apache-jmeter-5.6.2" >}}/bin/jmeter -n -t ~/build-web-test-plan.jmx -l ~/build-web-test-logs.jtl -e -o ~/build-web-test-reports/
 ```
 {{< /tab >}}
 {{< tab "Windows" >}}
 ```command
-C:\Users\EXAMPLE_USER\apache-jmeter-5.6.2\bin\jmeter -n -t C:\Users\EXAMPLE_USER\build-web-test-plan.jmx -l
-C:\Users\EXAMPLE_USER\build-web-test-logs.jtl -e -o C:\Users\EXAMPLE_USER\build-web-test-reports\
+C:\Users\{{< placeholder "EXAMPLE_USER" >}}\{{< placeholder "apache-jmeter-5.6.2" >}}\bin\jmeter -n -t C:\Users\{{< placeholder "EXAMPLE_USER" >}}\build-web-test-plan.jmx -l
+C:\Users\{{< placeholder "EXAMPLE_USER" >}}\build-web-test-logs.jtl -e -o C:\Users\{{< placeholder "EXAMPLE_USER" >}}\build-web-test-reports\
 ```{{< /tab >}}
 {{< /tabs >}}
 
@@ -262,7 +255,7 @@ Tidying up ...    @ 2023 Apr 20 15:56:03 CDT (1682024163082)
 
 When the load test finishes, the report is available as an HTML file located in the report directory specified in the command. Using the example above, the file is located at either `~/build-web-test-report/index.html` or `C:\Users\example-user\build-web-test-report\index.html`. Simply open the `index.html` file with a Web browser to view the report.
 
-[![JMeter test report](jmeter-report_small.png)](jmeter-report.png)
+![JMeter test report](jmeter-report.png)
 
 ## Conclusion
 
