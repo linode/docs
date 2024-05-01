@@ -3,12 +3,11 @@ slug: how-to-create-a-harperdb-cluster
 title: "How to Create a HarperDB Cluster"
 description: 'This guide explains how to configure HarperDB and how to create a multi-node cluster for data replication.'
 keywords: ['install HarperDB','configure HarperDB','HarperDB cluster','data replication HarperDB']
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2024-05-01
 tags: ['database', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-07-17
-modified_by:
-  name: Linode
 external_resources:
 - '[HarperDB](https://www.harperdb.io/)'
 - '[HarperDB API reference](https://api.harperdb.io/)'
