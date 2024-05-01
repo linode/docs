@@ -25,7 +25,7 @@ aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-ap
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Recommended plan:** All plan types and sizes can be used.
+- **Recommended plan:** For best results, 4GB Dedicated CPU or Shared Compute instance for BeEF
 
 ### BeEF Options
 
@@ -49,6 +49,7 @@ aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-ap
         ```command
         cat /home/$USERNAME/.credentials
         ```
+
 1. Open your web browser and navigate to `https://[domain]:3000/ui/panel`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the BeEF login prompt](beef-login-prompt.png)

@@ -2,7 +2,7 @@
 title: "Deploy WordPress through the Linode Marketplace"
 description: "WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using Marketplace Apps."
 published: 2020-09-28
-modified: 2023-12-14
+modified: 2024-04-16
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 external_resources:
@@ -37,7 +37,7 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 - **Website Title:** Enter a title for your WordPress site.
 
     {{< note >}}
-    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the WordPress deployment completes.
+    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/home/$USERNAME/.credentials` when the WordPress deployment completes.
     {{< /note >}}
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}
@@ -67,7 +67,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 ### Accessing the WordPress Admin Dashboard
 
-1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `https://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
 
@@ -85,7 +85,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 ### Viewing Your Website
 
-Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
+Open a web browser and navigate to `https://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
 
 ### Manually Configure a Domain
 
