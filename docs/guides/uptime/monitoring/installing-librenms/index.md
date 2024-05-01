@@ -2,13 +2,12 @@
 slug: installing-librenms
 title: "How to Install LibreNMS for Network Monitoring"
 description: "LibreNMS offers a full-featured open-source networking monitoring system, complete with auto-discovery and alerting. With this guide, find out how to install and start using LibreNMS on your Linux system."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2024-05-01
 keywords: ['librenms install', 'librenms docker', 'network monitoring tools']
 tags: ['networking', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-02-26
-modified_by:
-  name: Linode
 external_resources:
 - '[LibreNMS Docs](https://docs.librenms.org/)'
 - '[GitHub: librenms/docker](https://github.com/librenms/docker)'
