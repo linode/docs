@@ -1,20 +1,18 @@
 ---
 slug: jupyter-notebook-on-jekyll
+title: Display Jupyter Notebooks with Jekyll
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2017-11-06
 keywords: ["Jupyter", " ruby", " Jekyll"]
 tags: ["ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/jupyter-nobook-on-jekyll/','/applications/project-management/jupyter-notebook-on-jekyll/']
-modified: 2017-11-06
-modified_by:
-  name: Linode
-published: 2017-11-06
-title: Display Jupyter Notebooks with Jekyll
 external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
  - '[MathJax](https://www.mathjax.org/)'
  - '[Jupyter Notebook](https://jupyter.org/)'
-authors: ["Sam Foo"]
 ---
 
 ![Jupyter and Jekyll](jupyter_jekyll.jpg "Jupyter and Jekyll")

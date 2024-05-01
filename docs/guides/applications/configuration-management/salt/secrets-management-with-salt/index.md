@@ -1,15 +1,15 @@
 ---
 slug: secrets-management-with-salt
+title: "Secrets Management with Salt"
 description: 'Salt is a powerful configuration management tool. This guide provides you with an overview of available options to manage secrets with SaltStack.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-11-06
+modified: 2019-01-02
 keywords: ['salt','saltstack','secret','secure','management','sdb','gpg','vault']
 tags: ["security","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-11-06
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: SecretsManagementwithSalt.png
-title: "Secrets Management with Salt"
 external_resources:
   - '[Salt Pillar Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/pillar.html)'
   - '[Using Environmental Variables in SLS Modules](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt3.html#using-environment-variables-in-sls-modules)'
@@ -17,7 +17,6 @@ external_resources:
   - '[Salt SDB Documentation](https://docs.saltproject.io/en/latest/topics/sdb/)'
   - '[Salt SDB Modules](https://docs.saltproject.io/en/latest/ref/sdb/all/index.html)'
 aliases: ['/applications/configuration-management/salt/secrets-management-with-salt/','/applications/configuration-management/secrets-management-with-salt/']
-authors: ["Linode"]
 ---
 
 Salt is a powerful configuration management tool which helps you manage your server deployments with configuration *state* files. These files are easily shared with others on your team and can be checked in to version control systems like Git.
@@ -28,7 +27,7 @@ A common problem when working with Salt's state files is the need access to sens
 
 A primary method for storing secrets in Salt is to keep them in Salt's [*Pillar*](https://docs.saltproject.io/en/latest/topics/pillar/) feature. Salt Pillar is designed to maintain secrets and other variable information in a single location (generally, on the Salt master) and then deliver that information to specific minions. If you separate your secrets out from your states and into pillar files, you can ignore those files in your version control system.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition to storing secrets, Salt Pillar can also maintain non-sensitive data; for example, the versions of the packages you want to install on your minions. So, you may still want to track some pillar files in version control.
 
 To handle this distinction, you could create a special directory at `/srv/pillar/secrets` and add set your version control system to ignore that directory (when using Git, list this directory in your `.gitignore` file). Keep all sensitive data inside pillar files within this directory, and maintain non-sensitive data in pillar files in `/srv/pillar` or another subfolder.
@@ -51,8 +50,7 @@ base:
   'appserver':
     - app_secrets
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may want to create a `pillar.example` file (like those provided by Salt formulas) that lists all the known variable keys for your pillar but does not contain the actual secrets. If you check this file into your version control, other users that clone your states' repository can duplicate this example pillar file and more quickly set up their own deployments.
 {{< /note >}}
 
@@ -68,8 +66,7 @@ api_token:
     - name: /var/your_app/api_token
     - contents: {{ pillar['linode_api_token'] }}
 {{< /file >}}
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 There are times when pillar data could show up in the output that Salt generates, like when `file.managed` displays diffs of a modified file. To avoid displaying these diffs, you can set `file.managed`'s `show_diff` flag to false.
 {{< /note >}}
 
@@ -108,6 +105,6 @@ Salt comes with a database interface called *SDB* that was initially created to 
 
 These databases are set up using a configuration profile in `/srv/salt/master.d`. To access data, you supply an `sdb://` url, such as `password: sdb://mysecrets/mypassword`. For more information on SDB, reference the [Salt SDB documentation](https://docs.saltproject.io/en/latest/topics/sdb/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Salt also provides a module that allows [pillar data to be stored in Vault](https://docs.saltproject.io/en/latest/ref/pillar/all/salt.pillar.vault.html), as well as an execution module that includes [functions to interact with Vault](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.vault.html#vault-setup).
 {{< /note >}}

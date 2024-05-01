@@ -1,16 +1,15 @@
 ---
 slug: previewing-websites-without-dns
+title: Previewing Websites Without DNS
 description: 'A guide to testing a website for a domain before the DNS records are adjusted.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-01-16
+modified: 2018-05-22
 keywords: ["dns", " website", " preview"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/preview-websites/','/networking/dns/previewing-websites-without-dns/','/networking/dns/previewing-websites-without-dns-classic-manager/']
-modified: 2018-05-22
-modified_by:
-  name: Linode
-published: 2014-01-16
-title: Previewing Websites Without DNS
 tags: ["dns","networking"]
-authors: ["Linode"]
 ---
 
 ![Previewing Websites without DNS](Previewing_Websites_Without_DNS_smg.jpg)

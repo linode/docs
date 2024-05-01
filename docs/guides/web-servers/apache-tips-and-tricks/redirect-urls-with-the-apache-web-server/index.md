@@ -1,21 +1,20 @@
 ---
 slug: redirect-urls-with-the-apache-web-server
+title: Redirect URLs with the Apache Web Server
 description: 'An introduction to redirecting existing URLs to new resources with the Apache HTTP server.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-13
+modified: 2017-02-21
 keywords: ["apache", "redirect", "mod_alias", "URLs", "REST"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/','/web-servers/apache/configuration/redirecting-urls/','/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/']
-modified: 2017-02-21
-modified_by:
-  name: Phil Zona
-published: 2009-10-13
-title: Redirect URLs with the Apache Web Server
 external_resources:
  - '[Installing Apache](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Apache Redirect Guide](https://httpd.apache.org/docs/current/mod/mod_alias.html#redirect)'
  - '[Rewrite URLs with mod_rewrite and Apache](/docs/guides/rewrite-urls-with-modrewrite-and-apache/)'
 tags: ["web server","apache"]
-authors: ["Linode"]
 image: redirect-urls-with-the-apache-web-server.png
 ---
 

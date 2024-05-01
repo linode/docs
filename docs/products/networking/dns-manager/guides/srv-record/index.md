@@ -1,12 +1,9 @@
 ---
+title: "SRV Records"
 description: "Learn how to create SRV records using Linode's DNS Manager"
 published: 2022-10-28
-modified_by:
-  name: Linode
-title: "SRV Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
 ---
 
 ## SRV Record Overview

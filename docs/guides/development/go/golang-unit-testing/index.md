@@ -1,15 +1,14 @@
 ---
 slug: golang-unit-testing
+title: "An Introduction to Golang Unit Testing"
+title_meta: "Golang Testing: Unit Testing Go Applications"
 description: 'This guide provides an introduction to unit testing in the Go programming language. It also provides an example unit test from the Go testing package documentation.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2021-12-03
 keywords: ['golang testing']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-03
-modified_by:
-  name: Linode
-title: "An Introduction to Golang Unit Testing"
-title_meta: "Golang Testing: Unit Testing Go Applications"
-authors: ["Martin Heller"]
 ---
 
 Unit testing verifies the functionality of a specific section of code in isolation. In the Go language, `go test` is the built-in command that runs unit tests, example functions, and benchmarks; does code profiling, and performs code coverage analysis. This guide provides an introduction to unit testing in Go.
