@@ -1,11 +1,11 @@
 ---
-slug: how-to-create-a-harperdb-cluster
+slug: create-a-harperdb-cluster
 title: "How to Create a HarperDB Cluster"
 description: 'This guide explains how to configure HarperDB and how to create a multi-node cluster for data replication.'
-keywords: ['install HarperDB','configure HarperDB','HarperDB cluster','data replication HarperDB']
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2024-05-01
+keywords: ['install HarperDB','configure HarperDB','HarperDB cluster','data replication HarperDB']
 tags: ['database', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -26,7 +26,7 @@ HarperDB combines a flexible database, built-in API, and distribution logic into
 HarperDB is available through the HarperDB Cloud or as a self-hosted solution. The optional HarperDB Studio provides a visual GUI for storing or retrieving data but requires registration. Users can configure HarperDB through either the comprehensive API or the HarperDB CLI. Unfortunately, the CLI only supports a subset of the current functionality. API calls can be embedded into an application or sent as stand-alone requests using `curl` or a similar utility.
 
 {{< note >}}
-Users can send most SQL commands to HarperDB using the API. A full SQL parser is still under development but should be available in an upcoming release.
+Users can send most SQL commands to HarperDB using the API, though other query languages are preferred. Review [HarperDB SQL Guide](https://docs.harperdb.io/docs/developers/sql-guide) for more details.
 {{< /note >}}
 
 HarperDB is optimized for fast performance and scalability, with sub-millisecond latency between the API and data layer. NoSQL data can be accessed as quickly as SQL tables in traditional *relational database management systems* (RDBMS). HarperDB is particularly useful for gaming, media, manufacturing, status reporting, and real-time updates.
@@ -59,7 +59,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## How To Install HarperDB
 
-Run these instructions on every node in the cluster. These guidelines are designed for Ubuntu 22.04 LTS users but are similar to other Linux distributions. HarperDB is also available as a Docker container or as a `.tgz` file for offline installation. For more details on these options and the standard installation procedure, see the [HarperDB installation instructions](https://docs.harperdb.io/docs/install-harperdb).
+Run these instructions on every node in the cluster. Each cluster must contain at least two nodes. These guidelines are designed for Ubuntu 22.04 LTS users but are similar to other Linux distributions. HarperDB is also available as a Docker container or as a `.tgz` file for offline installation. For more details on these options and the standard installation procedure, see the [HarperDB installation instructions](https://docs.harperdb.io/docs/install-harperdb).
 
 1.  Ensure the system is up to date by executing the following command:
 
@@ -80,22 +80,17 @@ Run these instructions on every node in the cluster. These guidelines are design
     ssh username@system_IP
     ```
 
-1.  Use NVM to install Node.js. This command installs Node.js release 18, the current LTS release. It also installs the NPM package manager for Node.js.
+1.  Use NVM to install Node.js. This command installs Node.js release 20, the current LTS release as of this writing. It also installs the NPM package manager for Node.js.
 
     {{< note >}}
     HarperDB requires Node.js release 14 or higher.
     {{< /note >}}
 
     ```command
-    nvm install 18
+    nvm install 20
     ```
 
-    NVM sets release `18.17` as the default Node.js release.
-
-    ```output
-    Now using node v18.17.0 (npm v9.6.7)
-    Creating default alias: default -> 18 (-> v18.17.0)
-    ```
+    NVM installs the latest Node.js 20 LTS patch version and sets that as the default.
 
 1.  Create a swap file for the system.
 
@@ -525,7 +520,3 @@ The following example demonstrates how to create a schema, table, and subscripti
     ```output
     [{"weight":38,"id":1,"dog_name":"Penny","__updatedtime__":1690742615459.453,"__createdtime__":1690742615459.453,"age":7},{"weight":68,"id":2,"dog_name":"Rex","__updatedtime__":1690744053074.6084,"__createdtime__":1690744053074.6084,"age":2}]
     ```
-
-## Conclusion
-
-HarperDB is a flexible database solution with support for SQL and NoSQL tables. It allows individual database instances to be configured in a cluster, supporting data replication. Data replication operates on a per-table and per-node basis using either bidirectional or one-way updates. To install HarperDB, use the `npm install` command, then configure it from the command line. Schemas, tables, and subscriptions are managed using the HarperDB API. For more information on HarperDB, consult the [HarperDB developer documentation](https://docs.harperdb.io/docs/).
