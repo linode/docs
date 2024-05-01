@@ -1,25 +1,22 @@
 ---
 slug: redis-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Redis on Ubuntu 9.10 (Karmic)'
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-05
+modified: 2011-04-29
 keywords: ["redis ubuntu 9.10", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-ubuntu-9-10-karmic/','/databases/redis/ubuntu-9-10-karmic/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-08-05
-title: 'Redis on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Redis is a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 

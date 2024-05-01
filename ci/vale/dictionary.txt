@@ -97,6 +97,8 @@ async
 asynchrony
 atera
 atlanta
+Auditbeat
+auditd
 authdaemonrc
 authg
 authlib
@@ -170,6 +172,7 @@ basename
 bashrc
 bc
 bdd
+bellovin
 benchmarked
 barchart
 berkshelf
@@ -291,6 +294,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+cheswick
 Chevereto
 chgrp
 chipset
@@ -445,6 +449,7 @@ datadir
 datadog
 dataflow
 datagram
+datagrams
 dataplane
 dataplanes
 datalog
@@ -490,6 +495,7 @@ deprovisioning
 deque
 descolada
 descr
+deserialization
 deserialize
 despawn
 dest
@@ -637,6 +643,7 @@ examplesitename
 exampleuser
 exe
 executables
+execve
 exfiltrated
 exfiltrating
 exfiltration
@@ -700,6 +707,7 @@ filemask
 findtime
 finnix
 firefart
+firehose
 firewalld
 firewalled
 firewalling
@@ -730,6 +738,7 @@ Freemarker
 freenom
 fremont
 freshclam
+freshdesk
 friendica
 friendster
 frontend
@@ -757,6 +766,7 @@ gbps
 gcc
 gcloud
 gcm
+GDBs
 gdf
 geckodriver
 gem1
@@ -778,6 +788,7 @@ getpwent
 getters
 getty
 getuid
+geventhttpclient
 gfx
 gfxmode
 gianlucaborello
@@ -1243,6 +1254,8 @@ localdomain
 localhost
 localuser
 lockdown
+locustfile
+locustfiles
 lodash
 logallrefupdates
 logdir
@@ -1351,10 +1364,13 @@ metasploit
 meterpreter
 metorik
 metricbeat
+metricset
+metricsets
 metroid
 michael
 microblogging
 microblogs
+microsegmentation
 microservice
 microservices
 microsite
@@ -1362,6 +1378,7 @@ microsystems
 microweb
 Microweber
 middlebox
+middleboxes
 middleware
 mimikatz
 minecraft
@@ -1399,6 +1416,7 @@ mod_autoindex
 moddable
 modinfo
 modsecurity
+modularization
 Mojang
 moodle
 mongocryptd
@@ -1429,8 +1447,10 @@ msgid
 msgpack
 msmtp
 msps
+MTAs
 mtr
 mtu
+MUAs
 multiarch
 multibyte
 multicast
@@ -1528,6 +1548,7 @@ nfs
 nfsd
 nftables
 ng
+ngfws
 nginx
 ngular
 nginxdemos
@@ -1598,6 +1619,7 @@ OKConfig
 okta
 oldstable
 oldfashioned
+omnichannel
 onboarding
 oneof
 ons
@@ -1638,6 +1660,7 @@ owncloud
 pacman
 paas
 packagist
+Packetbeat
 paessler
 pagent
 pagespeed
@@ -1658,6 +1681,7 @@ parentheticals
 parsedate
 partitionless
 partyline
+Passbolt
 passcode
 passdb
 passlib
@@ -1669,9 +1693,11 @@ passwdfile
 passwordless
 patroni
 pathnames
+Paulo
 paypal
 PBCs
 pbr
+pbxs
 PDFs
 pem
 pentest
@@ -1687,6 +1713,7 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pg_auto_failover
 pg_dump
 pg_dumpall
 pg_restore
@@ -1762,6 +1789,7 @@ prepend
 prepended
 prepending
 prepends
+preprocess
 preprocessing
 preprocessors
 prerotate
@@ -1858,6 +1886,7 @@ readcaps
 reauthenticate
 reauthenticating
 readme
+READMEs
 readonly
 readwrite
 realtime
@@ -1907,11 +1936,12 @@ remediations
 remi
 remmina
 remotehost
-reparse
+reparseGDBs
 replicants
 replicaset
 replicationcontrollers
 replset
+repmgr
 repo
 repos
 reputational
@@ -2125,6 +2155,7 @@ smtpd
 smush
 smux
 snakeoil
+snapcraft
 snapd
 snipcart
 snmp
@@ -2172,6 +2203,7 @@ stalkyard
 stallman
 starkiller
 starttls
+statefulness
 statista
 statsd
 statusbar
@@ -2205,6 +2237,7 @@ sublanguage
 submenu
 subnet
 subnets
+subnetting
 subnetwork
 subprocess
 subprocesses
@@ -2233,6 +2266,7 @@ surbma
 suricata
 sury
 suse
+Sussman
 swappable
 swappiness
 svn
@@ -2281,6 +2315,7 @@ teleporting
 tensorflow
 terrahelp
 terraria
+Terrastories
 tessian
 testdb
 testdeep
@@ -2404,6 +2439,7 @@ uncommented
 uncommenting
 uncompress
 uncordoned
+undelete
 unencrypted
 unexported
 unformatted
@@ -2461,6 +2497,7 @@ ust
 utils
 UTunnel
 uuid
+uuids
 uwls
 uwsgi
 v1
@@ -2519,6 +2556,7 @@ vmstat
 vmui
 vmware
 vnc
+VPCs
 VPLs
 vpns
 vset
@@ -2528,6 +2566,7 @@ vuejs
 vvv
 vz
 vznetaddbr
+wafs
 walkthrough
 WAN
 WANs
@@ -2677,6 +2716,7 @@ zabbix
 zapier
 zcat
 zend
+zendesk
 zgrep
 zhao
 zigbee

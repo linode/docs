@@ -1,15 +1,14 @@
 ---
 slug: securing-apache2-with-modsecurity
+title: Securing Apache 2 With ModSecurity
+title_meta: How to Secure Apache 2 With ModSecurity
 description: 'This guide shows how you can use ModSecurity, a free web application firewall that can prevent attacks like XSS and SQL injection on your site, using Apache 2.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["apache2 configure modsecurity", "apache2 modsecurity", "apache modsecurity"]
 tags: ["security","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: Securing Apache 2 With ModSecurity
-title_meta: How to Secure Apache 2 With ModSecurity
 aliases: ['security/basics/securing-apache2-with-modsecurity/']
 image: SecureApache2_ModSecurity.png
 relations:
@@ -17,7 +16,6 @@ relations:
         key: securing-web-servers-with-modsecurity
         keywords:
             - web server: Apache 2
-authors: ["Hackersploit"]
 ---
 
 ## What is ModSecurity?

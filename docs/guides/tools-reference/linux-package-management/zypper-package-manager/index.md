@@ -2,12 +2,11 @@
 slug: zypper-package-manager
 title: "Use Zypper to Manage Packages in openSUSE"
 description: "In this guide, learn how to use Zypper, the default package manager on openSUSE. Follow along for the core commands in Zypper for installing, searching, and managing packages and working with repositories."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-09-05
 keywords: ['zypper','zypp','opensuse']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-09-05
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[openSUSE Wiki: Zypper Usage](https://en.opensuse.org/SDB:Zypper_usage)'
 - '[openSUSE Wiki: Zypper Manual](https://en.opensuse.org/SDB:Zypper_manual)'

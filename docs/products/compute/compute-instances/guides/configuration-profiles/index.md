@@ -1,16 +1,13 @@
 ---
-description: "Learn how to create and manage configuration profiles for a Compute Instance, including details on each setting and its recommended value."
-keywords: ["configuration profiles"]
-tags: ["linode platform","cloud manager"]
-published: 2021-04-30
-modified: 2023-09-11
-modified_by:
-  name: Linode
-image: Linode-Configuration-Profiles.jpg
 title: "Manage Configuration Profiles on a Compute Instance"
 title_meta: "How to Manage Configuration Profiles on a Compute Instance"
+description: "Learn how to create and manage configuration profiles for a Compute Instance, including details on each setting and its recommended value."
+published: 2021-04-30
+modified: 2024-01-30
+keywords: ["configuration profiles"]
+tags: ["linode platform","cloud manager"]
+image: Linode-Configuration-Profiles.jpg
 aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/']
-authors: ["Linode"]
 ---
 
 A **configuration profile** functions as a boot loader for a Compute Instance. It controls general boot settings, including the disk the instance will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the instance. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Compute Instances (see [Deploy an Image to a Disk on an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)) or to create custom software testing environments.
@@ -70,13 +67,16 @@ When adding or editing a configuration profile on a Compute Instance, the follow
     ```
     {{< /note >}}
 
--   **Network Interfaces:**  Assigns either a VLAN or the Public Internet to a network interface in Linux. There are a total of 3 available network interfaces: `eth0`, `eth1`, and `eth2`. If no VLANs are in use, the recommended setting is _Public Internet_ for `eth0` and _None_ for all other interfaces. See [Getting Started with VLANs](/docs/products/networking/vlans/get-started/).
+-   **Network Interfaces:** Configures network interfaces for the Public Internet, a [VPC](/docs/products/networking/vpc/), or a [VLAN](/docs/products/networking/vlans/). There are a total of 3 available network interfaces, which correspond to the devices assigned within the Linux system: `eth0`, `eth1`, and `eth2`. If no VLANs or VPCs are in use, the recommended setting is _Public Internet_ for `eth0` and _None_ for all other interfaces. When assigning an instance to a VPC, it's recommended to use `eth0` for the VPC interface. If public internet is required along with a VPC, configure the VPC interface as a 1:1 NAT with internet access (the _Assign a public IPv4 address for this Linode_ option under the VPC interface) instead of designating a separate network interface as _Public Intenet_. For more details on assigning a Compute Instance to a VPC or VLAN, review the appropriate documentation:
+
+    - [Assign a Compute Instance to a VPC](/docs/products/networking/vpc/guides/assign-services/)
+    - [Attach a VLAN to a Compute Instance](/docs/products/networking/vlans/guides/attach-to-compute-instance/)
 
 -   **Filesystem / Boot Helpers:** Various helper tasks that run when the Compute Instance is booted up. Recommended setting for all helpers: _Enabled_.
     - **Enable distro helper:** Helps maintain correct inittab/upstart console device.
     - **Disable `updatedb`:** Disables `updatedb` cron job to avoid disk thrashing.
     - **Enable modules.dep helper:** Creates a module dependency file for the kernel you run.
-    - **Auto-mount devtmpfs:** Controls if pv_ops kernels auto-mount devtmpfs at boot.
+    - **Auto-mount devtmpfs:** Controls if `pv_ops` kernels auto-mount devtmpfs at boot.
     - **Auto-configure networking:** Automatically configures static networking. See [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/).
 
 ## Create a Configuration Profile

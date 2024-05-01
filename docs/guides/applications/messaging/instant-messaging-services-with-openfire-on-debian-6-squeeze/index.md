@@ -1,22 +1,21 @@
 ---
 slug: instant-messaging-services-with-openfire-on-debian-6-squeeze
-deprecated: true
+title: 'Instant Messaging Services with Openfire on Debian 6 (Squeeze)'
 description: 'Get started with Openfire on Debian 6 (Squeeze), an open source instant messaging server built on the XMPP/Jabber protocol.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-24
+modified: 2011-05-17
 keywords: ["openfire debian 6", "openfire debian squeeze", "openfire linux", "linux xmpp", "instant messaging", "real-time messaging", "xmpp server", "chat software", "linux jabber server"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze/','/communications/xmpp/openfire/debian-6-squeeze/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2011-02-24
-title: 'Instant Messaging Services with Openfire on Debian 6 (Squeeze)'
 relations:
     platform:
         key: how-to-install-openfire
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+deprecated: true
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Debian 6 (Squeeze) Linode.

@@ -1,8 +1,9 @@
 ---
 title: Managed Databases
-linkTitle: Managed Databases
 title_meta: "Managed Databases Product Documentation"
 description: "Learn about Linode's Managed Database service, which provides fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
+modified: 2023-05-02
+linkTitle: Managed Databases
 tab_group_main:
     is_root: true
     title: Overview
@@ -11,7 +12,6 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2023-05-02
 ---
 
 {{< content "dbass-eos" >}}

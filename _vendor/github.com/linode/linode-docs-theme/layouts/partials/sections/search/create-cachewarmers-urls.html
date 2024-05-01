@@ -44,15 +44,9 @@
 
       {{ $targetPath := printf "cachewarmers/global/%s.json" $name }}
       {{ $res := index $data.results $i }}
-      {{ if eq $name "sectionsmeta" }}
-        {{/* Metadata for blog etc. sections. Merge with Hugo data. */}}
-        {{ $list := partial "sections/search/get-sections-meta.html" . }}
-        {{ $res2 := dict "hits" $list }}
-        {{ $res = merge $res $res2 }}
-      {{ end }}
       {{ $targetResource := resources.FromString $targetPath (jsonify $res) }}
       {{ if (ne hugo.Environment "development") }}
-        {{ $targetResource = $targetResource | minify | fingerprint }}
+        {{ $targetResource = $targetResource | minify }}
       {{ end }}
       {{ $v = merge $v (dict $name $targetResource.RelPermalink) }}
     {{ end }}
@@ -78,7 +72,7 @@
       {{ $targetPath := printf "cachewarmers/sections/%s.json" $name }}
       {{ $targetResource := resources.FromString $targetPath (jsonify $currentSectionData) }}
       {{ if (ne hugo.Environment "development") }}
-        {{ $targetResource = $targetResource | minify | fingerprint }}
+        {{ $targetResource = $targetResource | minify }}
       {{ end }}
       {{ $v = merge $v (dict $currentSection $targetResource.RelPermalink) }}
     {{ end }}

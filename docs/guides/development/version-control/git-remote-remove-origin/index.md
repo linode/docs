@@ -3,12 +3,11 @@ slug: git-remote-remove-origin
 title: "How to Remove a Remote Git"
 title_meta: "Guide to Removing Git Remote"
 description: 'How to remove a Git remote from a repository.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2023-05-02
 keywords: ['git remote remove origin','git remove remote','git remove origin','git delete remote','git remove upstream','remove remote origin','remove remote git','how to remove remote origin git','git remote delete','git remove remote repository']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Martin Heller"]
-published: 2023-05-02
-modified_by:
-  name: Linode
 external_resources:
 - '[DelftStack: Remove a Git Remote URL](https://www.delftstack.com/howto/git/how-to-remove-a-git-remote-url/)'
 - '[Stack Overflow: How to remove remote origin from a Git repository](https://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-a-git-repository)'

@@ -1,25 +1,22 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Using Apache for Proxy and Clustering Services on Ubuntu 10.04 (Lucid)'
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Ubuntu 10.04 (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-04
+modified: 2013-10-04
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-04-lucid/','/web-servers/apache/proxy-configuration/proxy-and-clustering-services-ubuntu-10-04-lucid/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-05-04
-title: 'Using Apache for Proxy and Clustering Services on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a frontend server to manage clusters of web servers.
 

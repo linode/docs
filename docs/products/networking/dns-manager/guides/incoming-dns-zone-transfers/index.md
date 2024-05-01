@@ -1,13 +1,10 @@
 ---
+title: "Incoming DNS Zone Transfers"
 description: "Learn how to import DNS records from external DNS providers by using AXFR transfers"
 published: 2022-10-28
 modified: 2022-11-08
-modified_by:
-  name: Linode
-title: "Incoming DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
-authors: ["Linode"]
 ---
 
 Linode supports importing DNS records from external DNS providers in one of two ways:

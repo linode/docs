@@ -2,10 +2,10 @@
 title: Get Started
 title_meta: "Getting Started with the Linode API"
 description: "Get started with the Linode API. Learn to get an access token, create an API token, authenticate requests, get configuration parameters, and build the final query."
-tab_group_main:
-    weight: 20
 published: 2020-09-11
 modified: 2022-12-06
+tab_group_main:
+    weight: 20
 aliases: ['/products/tools/linode-api/get-started/','/platform/api/getting-started-with-the-linode-api-classic-manager/','/platform/api/getting-started-with-the-linode-api-new-manager/','/platform/api/getting-started-with-the-linode-api/','/guides/getting-started-with-the-linode-api/','/products/tools/linode-api/guides/build-final-query/','/products/tools/linode-api/guides/get-config-parameters/']
 tags: ["managed hosting"]
 ---

@@ -1,14 +1,11 @@
 ---
-description: "Learn how your Linode account's network transfer pool is calculated and billed."
-keywords: ["network","billing","account","transfer", "overage"]
-published: 2018-08-21
-modified: 2023-09-21
-modified_by:
-  name: Linode
 title: "Network Transfer Usage and Costs"
+description: "Learn how your Linode account's network transfer pool is calculated and billed."
+published: 2018-08-21
+modified: 2023-10-25
+keywords: ["network","billing","account","transfer", "overage"]
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/','/guides/network-transfer/']
-authors: ["Linode"]
 ---
 
 ## Overview
@@ -25,7 +22,7 @@ The following Linode services consume network transfer and, in most cases, inclu
 
 - **NodeBalancers:** Consume network transfer but do not include a monthly transfer allowance.
 
-- **Object Storage:** Consumes network transfer and includes 1 TB of transfer allowance per month, regardless of usage.
+- **Object Storage:** Consumes network transfer and adds 1 TB of transfer allowance per month to your global network transfer pool.
 
 - **Managed Databases:** Does not consume network transfer or include a monthly transfer allowance.
 
@@ -53,7 +50,15 @@ Costs associated with network transfer can often be unexpected or confusing in a
 
 - Outbound transfer from Object Storage (over both public IPv6 and public IPv4), even to other Linode services within the same data center.
 
-All metered network transfer consumed by a service is counted toward either the global network transfer pool or its data center-specific pool (if that region tracks network transfer separately from the global pool). Any additional transfer usage that exceeds this monthly allotment starts at $0.005/GB (or $5/TB) depending on the service’s region. Additional transfer usage is charged at the end of the billing period.
+All metered network transfer consumed by a service is counted toward either the global network transfer pool or its data center-specific pool (if that region tracks network transfer separately from the global pool). Any additional transfer usage that exceeds this monthly allotment starts at $0.005/GB (or $5/TB) depending on the service’s region (see the table below). Additional transfer usage is charged at the end of the billing period.
+
+{{< table >}}
+| Data Center | Network Transfer overage cost per GB |
+| :-- | -- |
+| All data centers (except those listed below) | $0.005/GB |
+| Jakarta, Indonesia | $0.015/GB |
+| São Paulo, Brazil | $ 0.007/GB |
+{{< /table >}}
 
 {{< note >}}
 The combined monthly network transfer pools are typically enough to cover *most* common use cases for our services. You are only billed for additional network transfer if your usage exceeds the global or data center-specific pools during a billing period.

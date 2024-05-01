@@ -1,17 +1,16 @@
 ---
 slug: linux-package-management-overview
+title: "An Overview of Package Management in Linux"
 description: "Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers."
-keywords: ["dnf", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2023-09-05
 modified: 2022-05-12
-modified_by:
-  name: Linode
+keywords: ["dnf", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: OverviewofPackageManagementinLinux.jpg
-title: "An Overview of Package Management in Linux"
 tags: ["linux"]
 aliases: ['/guides/linux-package-management/','/tools-reference/basics/linux-package-management/','/tools-reference/linux-package-management/','/using-linux/package-management/']
-authors: ["Linode"]
 ---
 
 On Linux, software is typically built as a *package*, distributed through *repositories*, and managed on the end-user's system through *package managers*. Each Linux system typically contains thousands of packages, many of which are required dependencies for other packages.

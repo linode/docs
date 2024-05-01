@@ -1,15 +1,12 @@
 ---
-description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
-keywords: ['object','storage','bucket']
-published: 2020-01-22
-modified: 2023-10-12
-modified_by:
-  name: Linode
-image: AccessingObjectswithLinodeObjectStorage.png
 title: "Access Buckets and Files through URLs"
+description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
+published: 2020-01-22
+modified: 2024-02-20
+keywords: ['object','storage','bucket']
+image: AccessingObjectswithLinodeObjectStorage.png
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/','/guides/how-to-access-objects-with-linode-object-storage/','/products/storage/object-storage/guides/access-objects/']
-authors: ["Linode"]
 ---
 
 Linode's Object Storage service gives each bucket and file a unique URL. This URL is managed through the shared domain *\*.linodeobjects.com* and your files are encrypted through the use of HTTPS. By default, files are only visible by you (the owner) through the Cloud Manager or through other tools and applications using an access key with permissions to read (or read/write) the bucket.
@@ -39,6 +36,9 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 | Chicago, IL (USA) | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
 | Frankfurt (Germany) | `eu-central-1` | `https://eu-central-1.linodeobjects.com` |
 | Jakarta (Indonesia) | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
+| Los Angeles, CA (USA) | `us-lax-1` | `https://us-lax-1.linodeobjects.com` |
+| Madrid (Spain) | `es-mad-1` | `https://es-mad-1.linodeobjects.com` |
+| Miami, FL (USA) | `us-mia-1` | `https://us-mia-1.linodeobjects.com` |
 | Milan (Italy) | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
 | Newark, NJ (USA) | `us-east-1` | `https://us-east-1.linodeobjects.com` |
 | Osaka (Japan) | `jp-osa-1	` | `https://jp-osa-1.linodeobjects.com` |
@@ -47,7 +47,7 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 | Seattle, WA (USA) | `us-sea-1` | `https://us-sea-1.linodeobjects.com` |
 | Singapore | `ap-south-1` | `https://ap-south-1.linodeobjects.com` |
 | Stockholm (Sweden) | `se-sto-1` | `https://se-sto-1.linodeobjects.com` |
-| Washington, DC, USA | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
+| Washington, DC (USA) | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
 ## Bucket URL
 

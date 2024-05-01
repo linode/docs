@@ -2,12 +2,11 @@
 slug: dns-primary-and-secondary-server-setup
 title: "How to Configure DNS Primary and Secondary Servers"
 description: 'Enhance website reliability and performance by creating a secondary name server, along with a hidden primary, using NSD on Ubuntu. ✓ Click here!'
+authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
+published: 2023-06-09
 keywords: ['dns primary and secondary server setup','dns primary server','domain name service','linux dns server','dns secondary server','configuring dns','install dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
-published: 2023-06-09
-modified_by:
-  name: Linode
 external_resources:
 - '[Systran Box: Checking Your DNS Configuration In Linux: A Step-by-Step Guide](https://www.systranbox.com/checking-your-dns-configuration-in-linux-a-step-by-step-guide/)'
 - '[LinuxTeck: How to Install and configure Master /Slave DNS in Centos /RHEL 7.6](https://www.linuxteck.com/how-to-install-and-configure-master-slave-dns-in-centos-rhel-7-6/)'
@@ -21,7 +20,7 @@ Our guide [An Introduction to DNS on Linux](/docs/guides/introduction-to-dns-on-
 
 ## Before You Begin
 
-1.  Follow our Introduction to DNS on Linux(/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server (`ns1`).
+1.  Follow our [Introduction to DNS on Linux](/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server (`ns1`).
 
 1. Create two Compute instances for our secondary name servers. This guide requires two new Ubuntu 22.04 LTS instances (`ns2` and `ns3`) in addition to the primary name server (`ns1`).
 

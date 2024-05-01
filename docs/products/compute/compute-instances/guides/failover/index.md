@@ -1,13 +1,10 @@
 ---
 title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
-keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
-modified: 2023-10-12
-modified_by:
-  name: Linode
+modified: 2024-02-20
+keywords: ['IP failover','IP sharing','elastic IP']
 aliases: ['/guides/ip-failover/']
-authors: ["Linode"]
 tags: ["media"]
 ---
 
@@ -17,7 +14,7 @@ In cloud computing, *failover* is the concept of rerouting traffic to a backup s
 
 When hosting web-based services, the total uptime and availability of those services should be an important consideration. There’s always a possibility that your Compute Instance may become inaccessible, perhaps due to a spike in traffic, your own internal configuration issues, a natural disaster, or planned (or unplanned) maintenance. When this happens, any websites or services hosted on that instance would also stop working. Failover provides a mechanism for protecting your services against a single point of failure.
 
-The term *high availability* describes web application architectures that eliminate single points of failover, offering redundancy, monitoring, and failover to minimize downtime for your users. Adding a load balancing solution to your application’s infrastructure is commonly a key component of high availability. Managed solutions, like Linode’s NodeBalancers, combine load balancing with built-in IP address failover. However, self-hosted solutions like nginx or haproxy do not include built-in IP failover. Should the system running the load balancing software experience downtime, the entire application goes down. To prevent this, you need an additional server running your load balancing software and a mechanism to failover the IP address. On the Linode platform, this is accomplished through the IP Sharing feature and some additional software configuration.
+The term *high availability* describes web application architectures that eliminate single points of failure, offering redundancy, monitoring, and failover to minimize downtime for your users. Adding a load balancing solution to your application’s infrastructure is commonly a key component of high availability. Managed solutions, like Linode’s NodeBalancers, combine load balancing with built-in IP address failover. However, self-hosted solutions like nginx or haproxy do not include built-in IP failover. Should the system running the load balancing software experience downtime, the entire application goes down. To prevent this, you need an additional server running your load balancing software and a mechanism to failover the IP address. On the Linode platform, this is accomplished through the IP Sharing feature and some additional software configuration.
 
 {{< note >}}
 For many production applications, you may want to consider a load balancing tool that goes beyond basic failover. Linode's [NodeBalancers](/docs/products/networking/nodebalancers/) combines load balancing with built-in failover. If you are using self-hosted load balancing software, such as NGINX or [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/), on your own Compute Instances, you must use the IP Sharing feature to provide failover for IP addresses.
@@ -30,14 +27,17 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Data center | IP Sharing support | Failover method | Software | ID |
 | -- | -- | -- | -- | -- |
 | Amsterdam (Netherlands) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 22 |
-| Atlanta, GA (USA) | *Undergoing network upgrades* | - | - | 4 |
+| Atlanta, GA (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 4 |
 | Chennai (India) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 25 |
 | Chicago, IL (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
 | Dallas, TX (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 2 |
 | Frankfurt (Germany) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 10 |
 | Fremont, CA (USA) | *Undergoing network upgrades* | - | - | 3 |
 | Jakarta (Indonesia) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 29 |
+| Los Angeles, CA (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 30 |
 | London (United Kingdom) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 7 |
+| Madrid (Spain) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 24 |
+| Miami, FL (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 28 |
 | Milan (Italy) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 27 |
 | Mumbai (India) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 14 |
 | Newark, NJ (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 6 |
@@ -48,8 +48,8 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Singapore | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 9 |
 | Stockholm (Sweden) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 23 |
 | Sydney (Australia) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 16 |
-| Tokyo (Japan) | *Undergoing network upgrades* | - | - | 11 |
-| Toronto (Canada) | *Undergoing network upgrades* | - | - | 15 |
+| Tokyo (Japan) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 11 |
+| Toronto (Canada) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 15 |
 | Washington, DC (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
 
 {{< note >}}
