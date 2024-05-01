@@ -98,5 +98,3 @@ The below diagram uses a single-region, scalable LKE cluster running ELK and Vec
 -   **ELK:** A software stack comprised of Elasticsearch, Kibana, and Logstash. The ELK stack reliably and securely takes data from any source, in any format, and then searches, analyzes, and visualizes that data.
 
 -   **Vector:** Data parsing software used to collect, transform, and route input/output data, including logging information.
-
--   **MONITORING/ALERTING SOFTWARE PLACEHOLDER**
