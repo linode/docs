@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.174.0
+  version: 4.175.0
   title: Linode API
   license:
     name: Apache 2.0
@@ -75,8 +75,8 @@ info:
 
     Notes:
 
-    - With respect to the diagram in [section 1.2 of RFC 6749](https://tools.ietf.org/html/rfc6749#section-1.2), login.linode.com (referred to in this section as the *login server*)
-    is the Resource Owner and the Authorization Server; api.linode.com (referred to here as the *api server*) is the Resource Server.
+    - With respect to the diagram in [section 1.2 of RFC 6749](https://tools.ietf.org/html/rfc6749#section-1.2), login.linode.com (referred to in this section as the *login server*) is the Resource Owner and the Authorization Server; api.linode.com (referred to here as the *api server*) is the Resource Server.
+
     - The OAuth spec refers to the private and public workflows listed below as the [authorization code flow](https://tools.ietf.org/html/rfc6749#section-1.3.1) and [implicit flow](https://tools.ietf.org/html/rfc6749#section-1.3.2).
 
     | PRIVATE WORKFLOW | PUBLIC WORKFLOW |
@@ -473,9 +473,18 @@ paths:
       tags:
       - Account
       summary: Account Update
-      description: >
-        Updates contact and billing information
-        related to your Account.
+      description: |
+        Updates contact and billing information related to your account. If you exclude any properties from the request, the operation leaves them unchanged.
+
+        **Note:** When updating an account's `country` to "US", you'll get an error if the account's `zip` is not a valid US zip code.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+        
+        * You can't change the `company` for a parent account. Akamai uses this value to set the name for a child account parent user (proxy user) on any child account.
+
+        * Child account users can't run this operation. These users don't have access to billing-related operations.
       operationId: updateAccount
       x-linode-cli-action: update
       security:
@@ -484,11 +493,7 @@ paths:
         - account:read_write
       requestBody:
         description: |
-          Update contact and billing information.
-
-          Account properties that are excluded from a request remain unchanged.
-
-          When updating an Account's `country` to "US", an error is returned if the Account's `zip` is not a valid US zip code.
+          Updated contact and billing information.
         required: true
         content:
           application/json:
@@ -776,10 +781,20 @@ paths:
       - Account
       summary: Account Cancel
       description: >
-        Cancels an active Linode account. This action will cause
-        Linode to attempt to charge the credit card on file for the remaining
-        balance. An error will occur if Linode fails to charge the credit card
-        on file. Restricted users will not be able to cancel an account.
+        Cancels an active Linode account. Akamai attempts to charge the credit card on file for any remaining
+        balance. An error occurs if this charge fails.
+
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * A child account user can't cancel a child account.
+
+        * You can't cancel a parent account if it has an active child account.
+
+        * You need to work with your Akamai account team to dissolve any parent-child account relationships before you can fully cancel a child or parent account.
       operationId: cancelAccount
       x-linode-cli-action: cancel
       security:
@@ -849,6 +864,149 @@ paths:
         source: >
           linode-cli account cancel \
             --comments "I'm consolidating my accounts"
+  /account/child-accounts:
+    x-linode-cli-command: child-account
+    get:
+      x-linode-grant: child_account_access
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Account
+      summary: Child Account List
+      description: |
+        Returns a paginated list of basic information for the child accounts that exist for your parent account. See [Parent and Child Accounts for Akamai Partners](/docs/guides/parent-child-accounts/) for details on these accounts.
+
+        **Note:** This command can only be accessed by an unrestricted parent user, or restricted parent user with the `child_account_access` grant.
+      operationId: getChildAccounts
+      x-linode-cli-action:
+      - list
+      - ls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - child_account:read_only
+      responses:
+        '200':
+          description: Returns child-level accounts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChildAccount'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/account/child-accounts
+      - lang: CLI
+        source: >
+          linode-cli child-account list
+  /account/child-accounts/{euuid}:
+    x-linode-cli-command: child-account
+    parameters:
+      - name: euuid
+        in: path
+        description: The child account to look up. You can run the [Child Account List](#child-account-list) operation to find the applicable account and store its `euuid`.
+        required: true
+        schema:
+          type: string
+    get:
+      x-linode-grant: child_account_access
+      tags:
+      - Account
+      summary: Child Account View
+      description: >
+        View a specific child account based on its `euuid`. See [Parent and Child Accounts for Akamai Partners](/docs/guides/parent-child-accounts/) for details on these accounts.
+
+        **Note:** This command can only be accessed by an unrestricted user, or restricted user with the `child_account_access` grant.
+      operationId: viewChildAccount
+      x-linode-cli-action:
+      - view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - child_account:read_only
+      responses:
+        '200':
+          description: Returns the child-level account for a specified `euuid`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChildAccount'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/account/child-accounts/A1BC2DEF-34GH-567I-J890KLMN12O34P56
+      - lang: CLI
+        source: >
+          linode-cli child-account view A1BC2DEF-34GH-567I-J890KLMN12O34P56
+  /account/child-accounts/{euuid}/token:
+    x-linode-cli-command: child-account
+    parameters:
+      - name: euuid
+        in: path
+        description: The child account to look up. You can run the [Child Account List](#child-account-list) operation to find the applicable account and store its `euuid`.
+        required: true
+        schema:
+          type: string
+    post:
+      x-linode-grant: child_account_access
+      tags:
+      - Account
+      summary: Proxy User Token Create
+      description: |
+        Create a short-lived bearer token for a parent user on a child account, using the `euuid` of that child account. In the context of the API, a parent user on a child account is referred to as a "proxy user." When Akamai provisions your parent-child account environment, a proxy user is automatically set in the child account. It follows a specific naming convention:
+
+        <Parent account `company` name>_<SHA256 hash of parent `company` name and child account `euuid`>
+
+        **Note:** The variables above use only the first 15 and 16 characters of these values, respectively.
+
+        The token lets a parent account run API operations through the proxy user, as if they are a child user in the child account.
+
+        These points apply to the use of this operation:
+
+        * To create a token, a parent account user needs the `child_account_access` grant. This lets them use the proxy user on the child account. You can [view](#users-grants-view) a parent account user to check its `child_account_access` setting. To add this access, you can [update](#users-grants-update) the parent account user.
+
+        * The created token inherits the permissions of the proxy user. It will never have less.
+
+        * The API returns the raw token in the response. You can't get it again, so be sure to store it.
+
+        Example workflow:
+
+        1. [List child accounts](#child-account-list) and store the `euuid` for the applicable one.
+        2. Run this operation and store the `token` that's created for the proxy user.
+        3. As a parent account user with access to the proxy user in the child account, use this `token` to authenticate API operations, as if you were a child user.
+      operationId: createChildAccountToken
+      x-linode-cli-action:
+      - create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - child_account:read_write
+      responses:
+        '200':
+          description: Token created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyUserToken'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X POST \
+            https://api.linode.com/v4/account/child-accounts/A1BC2DEF-34GH-567I-J890KLMN12O34P56/token
+      - lang: CLI
+        source: >
+          linode-cli child-account create A1BC2DEF-34GH-567I-J890KLMN12O34P56
   /account/credit-card:
     x-linode-cli-command: account
     post:
@@ -1996,6 +2154,12 @@ paths:
         with a valid `zip` by using the Account Update ([PUT /account](/docs/api/account/#account-update)) endpoint.
 
         * A `payment_method_add` event is generated when a payment is successfully submitted.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+        
+        * Child account users can't run this operation. These users don't have access to billing-related operations.
       operationId: createPaymentMethod
       x-linode-cli-action: add
       security:
@@ -2244,6 +2408,12 @@ paths:
         * The requested amount is charged to the default Payment Method if no `payment_method_id` is specified.
 
         * A `payment_submitted` event is generated when a payment is successfully submitted.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * Child account users can't run this operation. These users don't have access to billing-related operations.
       operationId: createPayment
       x-linode-cli-action: payment-create
       security:
@@ -2256,7 +2426,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PaymentRequest'
+              properties:
+                usd:
+                  type: string
+                  pattern: ^\$?\d+\.\d{2}$
+                  description: |
+                    The amount in US Dollars of the Payment.
+
+                    * Can begin with or without `$`.
+                    * Commas (`,`) are not accepted.
+                    * Must end with a decimal expression, such as `.00` or `.99`.
+                    * Minimum: `$5.00` or the Account balance, whichever is lower.
+                    * Maximum: `$2000.00` or the Account balance up to `$50000.00`, whichever is greater.
+                  example: '$120.50'
+                payment_method_id:
+                  type: integer
+                  description: >
+                    The ID of the Payment Method to apply to the Payment.
+                  example: 123
       responses:
         '200':
           description: Payment submitted successfully.
@@ -2274,7 +2461,6 @@ paths:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $TOKEN" \
                 -X POST -d '{
-                    "cvv": "123",
                     "usd": "120.50",
                     "payment_method_id": 123
                 }' \
@@ -2282,7 +2468,6 @@ paths:
         - lang: CLI
           source: >
             linode-cli account payment-create \
-              --cvv 123 \
               --usd 120.50 \
               --payment_method_id 123
   /account/payments/{paymentId}:
@@ -2449,15 +2634,21 @@ paths:
         - Account
       summary: Promo Credit Add
       description: |
-        Adds an expiring Promo Credit to your account.
+        Adds an expiring Promo Credit to your account. The following restrictions apply:
 
-        The following restrictions apply:
+        * Your account needs to be less than 90 days old.
 
-        * Your account must be less than 90 days old.
-        * There must not be an existing Promo Credit already on your account.
-        * The requesting User must be unrestricted. Use the User Update
-          ([PUT /account/users/{username}](/docs/api/account/#user-update)) to change a User's restricted status.
-        * The `promo_code` must be valid and unexpired.
+        * You can't already have a Promo Credit on your account.
+
+        * The user making the request needs to be unrestricted. You can use the User Update (/docs/api/account/#user-update) operation to change a user's restricted status.
+
+        * The `promo_code` needs to be valid and unexpired.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * Child account users can't run this operation. These users don't have access to billing-related operations.
       operationId: createPromoCredit
       x-linode-cli-action: promo-add
       security:
@@ -2847,10 +3038,7 @@ paths:
       - Account
       summary: Account Settings Update
       description: >
-        Updates your Account settings.
-
-
-        To update your Longview subscription plan, send a request to [Update Longview Plan](/docs/api/longview/#longview-plan-update).
+        Updates your account settings. For a Longview subscription plan, see [Update Longview Plan](/docs/api/longview/#longview-plan-update).
       operationId: updateAccountSettings
       x-linode-cli-action: settings-update
       security:
@@ -2968,11 +3156,15 @@ paths:
       - Account
       summary: Users List
       description: |
-        Returns a paginated list of Users on your Account.
+        Returns a paginated list of all users on your account.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
 
-        Users may access all or part of your Account based on their restricted status and grants.  An unrestricted User may access everything on the account, whereas restricted User may only access entities or perform actions they've been given specific grants to.
+        A user can access all or part of an account based on their access status and grants:
+
+        * **Unrestricted access**. These users can access everything on an account.
+
+        * **Restricted access**. These users can only access entities or perform actions they've been given specific grants to.
       operationId: getUsers
       x-linode-cli-action:
         - list
@@ -2983,7 +3175,7 @@ paths:
         - account:read_only
       responses:
         '200':
-          description: A paginated list of Users.
+          description: A paginated list of users.
           content:
             application/json:
               schema:
@@ -2992,7 +3184,9 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/User'
+                      allOf:
+                        - $ref: '#/components/schemas/User'
+                        - $ref: '#/components/schemas/UserType'
                   page:
                     $ref: '#/components/schemas/PaginationEnvelope/properties/page'
                   pages:
@@ -3015,13 +3209,21 @@ paths:
       - Account
       summary: User Create
       description: |
-        Creates a User on your Account. Once created, a confirmation message containing
-        password creation and login instructions is sent to the User's email address.
+        Creates a user on your account. You determine the new user's account access by setting it to restricted or unrestricted and by defining its grants. After completion, the API sends a confirmation message containing password creation and login instructions to the user's `email` address.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
 
-        The User's account access is determined by whether or not they are restricted,
-        and what grants they have been given.
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * A parent account user can create new parent account users.
+
+        * A child account can [update](#user-update) the child account parent user (proxy user) to `unrestricted`. This gives the proxy user access to create new child account users.
+
+        * A child account user can create new child account users.
+
+        * You can't create a proxy user. The proxy user in a child account is predefined when you initially provision the parent-child relationship.
       operationId: createUser
       x-linode-cli-action: create
       security:
@@ -3079,9 +3281,9 @@ paths:
       - Account
       summary: User View
       description: |
-        Returns information about a single User on your Account.
+        Returns information about a single user on your account.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
       operationId: getUser
       x-linode-cli-action: view
       security:
@@ -3094,7 +3296,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/User'
+                    - $ref: '#/components/schemas/UserType'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -3111,12 +3316,20 @@ paths:
       - Account
       summary: User Update
       description: |
-        Update information about a User on your Account. This can be used to
-        change the restricted status of a User. When making a User restricted,
-        no grants will be configured by default and you must then set up grants
-        in order for the User to access anything on the Account.
+        Update information about a user on your account, including its restricted status. When setting a user to `restricted`, the API sets no grants for it. You need to set grants
+        so that user can access things on the account.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * You can't edit the `username` or `email` values for the child account parent user (proxy user). These are predefined for the proxy user when you initially provision the parent-child relationship. Only a proxy user's `restricted` status can be modified. This can only be done by an unrestricted child account user.
+
+        * A parent account using an unrestricted proxy user in a child account can modify the `username`, `email`, and `restricted` status for an existing child account user.
+
+        * A restricted account user--parent or child--can't change their user to `unrestricted`.
       operationId: updateUser
       x-linode-cli-action: update
       security:
@@ -3135,7 +3348,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                allOf:
+                - $ref: '#/components/schemas/User'
+                - $ref: '#/components/schemas/UserType'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -3161,11 +3376,17 @@ paths:
       - Account
       summary: User Delete
       description: |
-        Deletes a User. The deleted User will be immediately logged out and
-        may no longer log in or perform any actions. All of the User's Grants
-        will be removed.
+        Deletes a user. The API immediately logs the user out and removes all of its `grants`.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * You can't delete a child account parent user (proxy user). The API returns a 403 error if you target a proxy user with this operation.
+
+        * A parent account using an unrestricted proxy user can use this operation to delete a child account user.
       operationId: deleteUser
       x-linode-cli-action:
         - delete
@@ -3207,15 +3428,11 @@ paths:
       - Account
       summary: User's Grants View
       description: |
-        Returns the full grants structure for the specified account User
-        (other than the account owner, see below for details). This includes all entities
-        on the Account alongside the level of access this User has to each of them.
+        Returns the full grants structure for an account username you specify. This includes all entities on the account, and the level of access this user has to each of them.
 
-        This command can only be accessed by the unrestricted users of an account.
+        This doesn't apply to the account owner or the current authenticated user. You can use the [Grants List](/docs/api/profile/#grants-list) operation to view those grants. However, this doesn't show the entities that they *don't* have access to.
 
-        The current authenticated User, including the account owner, may view their
-        own grants at the [/profile/grants](/docs/api/profile/#grants-list)
-        endpoint, but will not see entities that they do not have access to.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
       operationId: getUserGrants
       x-linode-cli-action: grants
       x-linode-cli-skip: true
@@ -3247,12 +3464,22 @@ paths:
       - Account
       summary: User's Grants Update
       description: |
-        Update the grants a User has. This can be used to give a User access
-        to new entities or actions, or take access away.  You do not need to
-        include the grant for every entity on the Account in this request; any
-        that are not included will remain unchanged.
+        Update the grants a user has. This can be used to give a user access
+        to new entities or actions, or take access away.  You don't need to
+        include the grant for every entity on the account in this request. Any
+        that are not included remain unchanged.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * No child account user can modify the `account_access` grant for the child account parent user (proxy user).
+
+        * An unrestricted child account user can configure all other grants for the proxy user, via `global` object.
+
+        * An unrestricted child account user can enable the `account_access` grant for other child account users. However, enabled child users are still subject to child user restrictions--they can't perform write operations for any billing or account information.
       operationId: updateUserGrants
       x-linode-cli-action: update-grants
       x-linode-cli-skip: true
@@ -6613,7 +6840,7 @@ paths:
                     "subnet_id": 101,
                     "ipv4": {
                       "vpc": "10.0.1.2",
-                      "nat_1_1": "add"
+                      "nat_1_1": "any"
                     }
                   }
                 ],
@@ -15490,7 +15717,7 @@ paths:
               https://api.linode.com/v4/nodebalancers/12345/configs/4567/nodes
       - lang: CLI
         source: >
-          linode-cli nodebalancers node-update \
+          linode-cli nodebalancers node-create \
             12345 4567 \
             --address 192.168.210.120:80 \
             --label node54321 \
@@ -15592,7 +15819,7 @@ paths:
               https://api.linode.com/v4/nodebalancers/12345/configs/4567/nodes/54321
       - lang: CLI
         source: >
-          linode-cli nodebalancers node-create \
+          linode-cli nodebalancers node-update \
             12345 4567 54321 \
             --address 192.168.210.120:80 \
             --label node54321 \
@@ -17024,9 +17251,15 @@ paths:
       tags:
       - Profile
       summary: Profile Update
-      description: >
+      description: |
         Update information in your Profile.  This endpoint requires the
         "account:read_write" OAuth Scope.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * You can't edit the `email` for a child account parent user (proxy user). This value is fixed and set when you provision this environment.
       operationId: updateProfile
       x-linode-cli-action: update
       security:
@@ -17431,6 +17664,12 @@ paths:
         so be sure to take note of it. You may create a token with _at most_
         the scopes of your current token. The created token will be able to
         access your Account until the given expiry, or until it is revoked.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * If you're using a child account parent user (proxy user), you can't create this form of token. The only token available to a proxy user is one that lets you run operations in a child account. These are created via the [Proxy User Token Create](#proxy-user-token-create) operation.
       operationId: createPersonalAccessToken
       x-linode-cli-action: token-create
       security:
@@ -20429,7 +20668,7 @@ components:
         active_since:
           type: string
           format: date-time
-          description: The datetime of when the account was activated.
+          description: The date and time the account was activated.
           example: '2018-01-01T00:01:01'
           readOnly: true
         address_1:
@@ -20898,6 +21137,157 @@ components:
           description: The date-time of Account enrollment to the Beta Program.
           example: '2023-09-11T00:00:00'
           x-linode-cli-display: 6
+    ChildAccount:
+      type: object
+      description: Child account object
+      properties:
+        active_since:
+          type: string
+          format: date-time
+          description: The activation date and time for the child account.
+          example: '2018-01-01T00:01:01'
+          readOnly: true
+        address_1:
+          type: string
+          description: First line of this child account's billing address.
+          maxLength: 64
+          example: 123 Main Street
+          x-linode-filterable: true
+        address_2:
+          type: string
+          description: Second line of this child account's billing address, if applicable.
+          maxLength: 64
+          example: Suite A
+          x-linode-filterable: true
+        balance:
+          type: number
+          readOnly: true
+          description: This child account's balance, in US dollars.
+          example: 200
+          x-linode-cli-display: 4
+        balance_uninvoiced:
+          type: number
+          readOnly: true
+          description: >
+            This child account's current estimated invoice in US dollars. This is not
+            your final invoice balance. Transfer charges are not included in
+            the estimate.
+          example: 145
+          x-linode-cli-display: 4
+        billing_source:
+          type: string
+          readOnly: true
+          enum:
+            - external
+          description: |
+            The source of service charges for this account, as determined by its relationship with Akamai. The API returns a value of `external` to describe a child account in a parent-child account environment.
+          example: external
+        capabilities:
+          type: array
+          items:
+            type: string
+          description: >
+              A list of the capabilities the child account supports.
+          example:
+          - Linodes
+          - NodeBalancers
+          - Block Storage
+          - Object Storage
+          readOnly: true
+        city:
+          type: string
+          description: The city for this child account's billing address.
+          maxLength: 24
+          example: San Diego
+          x-linode-filterable: true
+        credit_card:
+          type: object
+          readOnly: true
+          description: Information for the credit card you've assigned to this child account.
+          properties:
+            last_four:
+              type: string
+              description: >
+                The last four digits of the credit card.
+              example: 1111
+            expiry:
+              type: string
+              description: The expiration month and year of the credit card.
+              example: 11/2024
+        company:
+          type: string
+          description: |
+            The company name for the owner of this child account. It can't include any of these characters: `<` `>` `(` `)` `"` `=`. You can't change this value yourself. We use it to create the proxy users that a parent account uses to access a child account. Talk to your account team if you need to change this value.
+          maxLength: 128
+          example: Acme
+          x-linode-filterable: true
+        country:
+          type: string
+          description: >
+            The two-letter ISO 3166 country code for this child account's billing address.
+          example: US
+          x-linode-filterable: true
+        email:
+          type: string
+          description: The email address of the owner of this child account.
+          maxLength: 128
+          example: john.smith@linode.com
+          x-linode-cli-display: 3
+          x-linode-filterable: true
+        first_name:
+          type: string
+          description: |
+            The first name of the owner of this child account. It can't include any of these characters: `<` `>` `(` `)` `"` `=`.
+          maxLength: 50
+          example: John
+          x-linode-cli-display: 1
+          x-linode-filterable: true
+        last_name:
+          type: string
+          description: |
+            The last name of the owner of this child account. It can't include any of these characters: `<` `>` `(` `)` `"` `=`.
+          maxLength: 50
+          example: Smith
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+        phone:
+          type: string
+          description: The phone number for the owner of this child account.
+          maxLength: 32
+          example: 858-555-1212
+          x-linode-filterable: true
+        state:
+          type: string
+          description: |
+            The state or province for the billing address (`address_1` and `address_2, if applicable`). If in the United States (US) or Canada (CA), this is the two-letter ISO 3166 State or Province code.
+
+            **Note:** If this is a US military address, use state abbreviations (AA, AE, AP).
+          maxLength: 24
+          example: CA
+          x-linode-filterable: true
+        tax_id:
+          type: string
+          description: >
+            The tax identification number for this child account. Use this for tax calculations in some countries.
+            If you live in a country that doesn't collect taxes, ensure this is an empty string (`""`).
+          maxLength: 25
+          example: ATU99999999
+        euuid:
+          type: string
+          description: >
+            An external, unique identifier that Akamai assigned to the child account.
+          format: uuid
+          readOnly: true
+          example: A1BC2DEF-34GH-567I-J890KLMN12O34P56
+        zip:
+          type: string
+          description: |
+            The zip code of this Account's billing address. The following restrictions apply:
+
+            - Can only contain ASCII letters, numbers, and hyphens (`-`).
+            - Can't contain more than 9 letter or number characters.
+          example: 92111-1234
+          x-linode-filterable: true
     CreditCard:
       type: object
       description: |
@@ -22906,10 +23296,14 @@ components:
               enum:
               - read_only
               - read_write
-              description: >
+              description: |
                 The level of access this User has to Account-level actions,
                 like billing information. A restricted User will never be able
                 to manage users.
+
+                **Parent and child accounts**
+
+                In a [parent and child account](/docs/guides/parent-child-accounts/) environment, this grant can be added to a child account user, to give the user `read-write` access. This gives the child user unrestricted access to expected management operations, such as creating other child users. However, child users don't have write access to billing operations. The API issues a specific error message if a write operation is attempted by a child user.
               example: read_only
             cancel_account:
               type: boolean
@@ -22946,6 +23340,12 @@ components:
             add_vpcs:
               type: boolean
               description: If true, this User may add VPCs.
+              example: true
+            child_account_access:
+              type: boolean
+              nullable: true
+              description: |
+                In a [parent and child account](/docs/guides/parent-child-accounts/) environment, this gives a parent account access to endpoints that can be used to manage child accounts. Unrestricted parent account users have access to this grant, while restricted parent users don't. An unrestricted parent user can set this to `true` to add this grant to a restricted parent user. Displayed as `null` for all non-parent accounts.
               example: true
         linode:
           type: array
@@ -27504,6 +27904,60 @@ components:
           description: >
             The service to which this promotion applies.
           example: "all"
+    ProxyUserToken:
+      type: object
+      description: >
+        The token generated manually for a child account so its proxy user can access the API and CLI without going through an OAuth login.
+      properties:
+        id:
+          type: integer
+          description: >
+            The proxy user token's unique ID, which can be used to revoke it.
+          example: 918
+          readOnly: true
+          x-linode-cli-display: 1
+        scopes:
+          type: string
+          format: oauth-scopes
+          description: >
+            The scopes this token was created with. Defaults to `*`. Proxy user tokens automatically inherit all the permissions of the proxy user.
+          example: '*'
+          readOnly: true
+          x-linode-cli-display: 3
+        created:
+          type: string
+          format: date-time
+          description: >
+            The date and time this token was created.
+          x-linode-filterable: true
+          example: 2024-05-01T00:01:01
+          readOnly: true
+          x-linode-cli-display: 4
+        label:
+          type: string
+          minLength: 1
+          maxLength: 100
+          description: >
+            The name of the token. The API automatically sets this to `<username>_<uid>_<time>`. It's composed of the `username` for your parent account user, the unique `uid` Akamai assigned to identify your user, and the `time` the API generated the token. This is for display purposes only, but you can use it to help track how you're using each proxy user token.
+          x-linode-filterable: true
+          example: parent1_1234_2024-05-01T00:01:01
+          x-linode-cli-display: 2
+        token:
+          type: string
+          description: |
+            The proxy user token that can be used to access the API and CLI. After you [create](#proxy-user-token-create) a token, you can see the full token
+            in the response. All other operations that contain this token only show the first 16 characters in their response.
+          example: abcdefghijklmnop
+          readOnly: true
+          x-linode-cli-display: 5
+        expiry:
+          type: string
+          format: date-time
+          description: >
+            When this token expires. This is default set to 15 minutes from the time of creation. Proxy user tokens can't be renewed. After this time, Akamai revokes the token and you need to generate a new one.
+          x-linode-cli-display: 6
+          example: '2024-05-01T00:16:01'
+          readOnly: true
     Region:
       type: object
       description: An area where Linode services are available.
@@ -28522,6 +28976,30 @@ components:
             The date this key was added.
           example: "2018-01-01T00:01:01"
           readOnly: true
+    UserType:
+      type: object
+      description: >
+        The type of user on an account. Mostly applies to the use of the parent and child accounts for Akamai partners functionality.
+      properties:
+        user_type:
+          type: string
+          readOnly: true
+          enum:
+          - parent
+          - child
+          - proxy
+          - default
+          description: |
+            If the user belongs to a [parent or child account](/docs/guides/parent-child-accounts/) relationship, this defines the user type in the respective account. Possible values include:
+
+            * `parent`. This is a user in an Akamai partner account. Akamai partners have a contractural relationship with their end customers, to sell Akamai services. This user can either have full access (a parent account admin user) or limited access. Limited users don't have access to manage child accounts, but they can be granted this access by an admin user.
+
+            * `child`. This is an Akamai partner's end customer user, in a child account. A child user can have either full or limited access. Full access lets the user manage other child users and the proxy user in a child account.
+
+            * `proxy`. This is a user on a child account that gives parent account users access to that child account. A parent account user with the `child_account_access` grant can [create a bearer token](#proxy-user-token-create) from the parent account. The parent user can use this token to run API operations from the child account, as if they were a child user.
+
+            * `default`. This applies to all regular, non-parent-child account users.
+          example: parent
     Vlans:
       type: object
       description: >
