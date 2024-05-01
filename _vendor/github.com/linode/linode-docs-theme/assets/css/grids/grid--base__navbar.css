@@ -37,6 +37,12 @@
   display: none;
 }
 
+@screen xl {
+  .grid--base #navbar__toc {
+    display: none;
+  }
+}
+
 .no-js .grid--base .navbar__explorer-toggle {
   display: none;
 }

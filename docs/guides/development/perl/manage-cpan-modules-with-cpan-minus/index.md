@@ -1,22 +1,21 @@
 ---
 slug: manage-cpan-modules-with-cpan-minus
+title: Manage CPAN Modules with cpanminus
 description: 'This guide shows how you can use cpanimus to easily install and manage Perl Modules with CPAN - the Comprehensive Perl Archive Network, a source for the latest Perl Modules.'
 og_description: "This guide shows how to use cpanminus to easily install and manage Perl modules."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-12
+modified: 2018-09-20
 keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-09-20
 aliases: ['/development/manage-cpan-modules-with-cpan-minus/','/applications/development/manage-cpan-modules-with-cpan-minus/','/development/perl/manage-cpan-modules-with-cpan-minus/','/linux-tools/utilities/cpanm/']
-modified_by:
-  name: Linode
-published: 2010-04-12
-title: Manage CPAN Modules with cpanminus
 external_resources:
  - '[cpanminus Documentation](http://search.cpan.org/~miyagawa/App-cpanminus-0.9929/lib/App/cpanminus.pm)'
  - '[cpanminus Development](http://github.com/miyagawa/cpanminus/)'
 audiences: ["beginner"]
 languages: ["perl"]
 tags: ["perl"]
-authors: ["Linode"]
 ---
 
 ![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)
@@ -74,8 +73,7 @@ This installs the specified modules to the system location (with `--sudo`), but 
 You can also specify the url of a Perl module and CPAN will fetch the module from that location, build the dependencies, and install it:
 
     cpanm --sudo https://cpan.metacpan.org/authors/id/O/OL/OLIVER/App-Netdisco-2.036011.tar.gz
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may need to run `cpanm Net::SSLeay` first in order to request a url with `https`.
 {{< /note >}}
 

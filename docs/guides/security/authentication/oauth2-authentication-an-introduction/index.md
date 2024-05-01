@@ -1,18 +1,17 @@
 ---
 slug: oauth2-authentication-an-introduction
+title: "What Is OAuth2 Authentication?"
+title_meta: "An Introduction to OAuth2 Authentication"
 description: 'This guide provides an introduction to Oauth2 authentication, flows, scopes, and libraries.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-10-22
 keywords: ['What is Oauth2','How does Oauth2 work','Oauth2 flow','Oauth vs oauth2']
 tags: ['python', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-22
-modified_by:
-  name: Linode
-title: "What Is OAuth2 Authentication?"
-title_meta: "An Introduction to OAuth2 Authentication"
 external_resources:
 - '[OAuth2 website](https://oauth.net/2/)'
 - '[OAuth2 libraries](https://oauth.net/code/)'
-authors: ["Jeff Novotny"]
 ---
 
 [*OAuth 2.0*](https://oauth.net/2/) is an authorization protocol that helps application users securely share access to their accounts. For example, with the help of OAuth 2.0, a social media app user can securely share their email contacts with the app. Providing account details directly to the application is highly problematic from the perspective of web security and privacy. OAuth2 allows users to grant limited access to their accounts with third-party applications without sharing any passwords. This guide discusses how OAuth2 works and compares it to other authorization frameworks.
@@ -89,7 +88,7 @@ When the client receives the code, it asks the service's authorization server fo
 
 In the final phase of the negotiation, the client presents the access token to the resource server, and requests access to the protected resource. If the access token is still valid, the server provides the client access to the account within the scope of the access grant.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Single-page applications, including those generated entirely through JavaScript, cannot securely maintain a secret client identity. In this case, the *Proof Key for Code Exchange* (PKCE) extension is used to dynamically generate a secret key for each request. There are some additional concerns for mobile applications. All applications can use PKCE to eliminate the possibility of the code being intercepted and to enhance security. Consult the [*OAuth2 specification*](https://oauth.net/2/) for more details.
 
 Devices without a keyboard, such as smart televisions, typically implement OAuth2 using a *device code*. The device code is used alongside a user code that is submitted elsewhere.
@@ -101,7 +100,7 @@ Links to popular OAuth2 libraries are available in a variety of languages, inclu
 
 Due to a large number of libraries, this guide focuses on the high-level task of selecting, installing, and using an OAuth2 client library. In this section, a sample Python library is used as an example. Pseudocode is shown for each step, with a more detailed summary of the code at the end of this section. Some basic knowledge of Python is necessary to understand the code samples.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You must register the application with the service before accessing any account information. You must also register and submit a URL to redirect client traffic. After approving your registration, the application provides you with a client ID and secret. All applications must use HTTPS when transmitting and receiving OAuth2 messages.
 {{< /note >}}
 

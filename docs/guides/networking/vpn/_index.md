@@ -5,4 +5,3 @@ aliases: ['/networking/openvpn/','/networking/vpn/']
 show_in_lists: true
 ---
 
-

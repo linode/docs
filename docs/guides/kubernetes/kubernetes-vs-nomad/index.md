@@ -1,18 +1,17 @@
 ---
 slug: kubernetes-vs-nomad
+title: "Kubernetes vs Nomad"
 description: "Kubernetes offers a powerful and popular solution for container orchestration. But HashiCorp's Nomad has also gained its own prominence as a simpler and more flexible option for workload orchestration. So what is the best orchestration tool? Find out more about both Nomad and Kubernetes and how they compare in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-01-24
 keywords: ['kubernetes vs nomad','nomad and kubernetes','nomad hashicorp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-24
-modified_by:
-  name: Nathaniel Stickman
-title: "Kubernetes vs Nomad"
 external_resources:
 - '[HashiCorp Developer: Nomad vs. Kubernetes](https://developer.hashicorp.com/nomad/docs/nomad-vs-kubernetes)'
 - '[NetApp BlueXP: Kubernetes vs. Nomad - Understanding the Tradeoffs](https://bluexp.netapp.com/blog/cvo-blg-kubernetes-vs-nomad-understanding-the-tradeoffs)'
 - '[Imaginary Cloud: Nomad vs. Kubernetes: Container Orchestration Tools Compared](https://www.imaginarycloud.com/blog/nomad-vs-kubernetes/)'
 - '[Qovery: Kubernetes vs Nomad: What to Choose in 2022?](https://www.qovery.com/blog/kubernetes-vs-nomad-what-to-choose-in-2022)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Kubernetes, through efficient container orchestration, has helped define how people think about managing application clusters. As a result, Kubernetes is now a widely adopted tool, with plenty of community support.
@@ -91,7 +90,7 @@ Below are just a few of the similarities, but they highlight key features that m
 
 -   **Rolling Deployments**: Nomad and Kubernetes support rolling upgrades that verify a deployment's health before replacing an old deployment, and each can automatically rollback changes if a deployment fails.
 
--   **External Storage Solutions**: Both Kubernetes and Nomad utilize the Container Storage Interface (CSI) standard, allowing them to leverage storage resources on cloud platforms that support CSI. Linode has its own CSI that you can learn more in our guide [How to Deploy Persistent Volume Claims with Linode](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/).
+-   **External Storage Solutions**: Both Kubernetes and Nomad utilize the Container Storage Interface (CSI) standard, allowing them to leverage storage resources on cloud platforms that support CSI. Linode has its own CSI that you can learn more in our guide [How to Deploy Persistent Volume Claims with Linode](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/).
 
 ### Differences
 

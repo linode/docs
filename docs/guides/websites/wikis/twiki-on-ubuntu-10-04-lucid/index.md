@@ -1,25 +1,22 @@
 ---
 slug: twiki-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'TWiki on Ubuntu 10.04 (Lucid)'
 description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Ubuntu 10.04 "Lucid".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-15
+modified: 2013-10-04
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/twiki-on-ubuntu-10-04-lucid/','/web-applications/wikis/twiki/ubuntu-10-04-lucid/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2011-02-15
-title: 'TWiki on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: install-twiki
         keywords:
            - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/guides/confluence-on-debian-5-lenny/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
 

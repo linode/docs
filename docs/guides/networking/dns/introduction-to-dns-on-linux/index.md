@@ -2,12 +2,11 @@
 slug: introduction-to-dns-on-linux
 title: "Introduction to DNS on Linux"
 description: 'Learn the basics of DNS on Linux by configuting a primary name server with NSD.'
+authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
+published: 2023-06-09
 keywords: ['introduction to dns on linux','domain name service','linux dns server','dns server','configuring dns','install dns','flush dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
-published: 2023-06-09
-modified_by:
-  name: Linode
 external_resources:
 - '[Ubuntu: Domain Name Service (DNS)](https://ubuntu.com/server/docs/service-domain-name-service-dns)'
 - '[Red Hat: How to use the Linux BIND command to install and configure DNS](https://www.redhat.com/sysadmin/dns-configuration-introduction)'
@@ -101,9 +100,9 @@ The above list is enough for a bare-bones setup, but other common RR types inclu
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. This guide is for Ubuntu 22.04 LTS instances.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. This guide is for Ubuntu 22.04 LTS instances.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file as follows:
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file as follows:
 
     ```file {title="/etc/hosts"}
     127.0.0.1 localhost

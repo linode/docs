@@ -1,17 +1,16 @@
 ---
 slug: what-is-vi
+title: "Getting Started Using Vi and Vim"
+title_meta: "What Is Vi?"
 description: "In this guide, you learn about the origin of the Vi editor and how to use different Vi editor commands, such as copy and paste, search and replace, and more."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-08-13
 keywords: ['what is vi','vi editor','text editor','vim']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
-modified_by:
-  name: Nathaniel Stickman
-title: "Getting Started Using Vi and Vim"
-title_meta: "What Is Vi?"
 external_resources:
 - '[Vim Fandom Page on Search and Replace](https://vim.fandom.com/wiki/Search_and_replace)'
-authors: ["Nathaniel Stickman"]
 ---
 
 You may have heard of the text editor Vi, and probably also its relative Vim. But what is Vi, and why do many users on Unix systems continue to use it? Keep reading to learn more about Vi and what sets this text editor apart. You can also find some help getting started using Vi.
