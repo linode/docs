@@ -2,12 +2,11 @@
 slug: getting-started-with-surrealdb
 title: "Getting Started with SurrealDB"
 description: "SurrealDB brings new features to the relational database model, with an emphasis on supporting serverless applications and distributed infrastructures. Learn about SurrealDB and how to get started using it in this tutorial."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2024-05-01
 keywords: ['surrealdb examples','surrealdb performance','surrealdb authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-05-16
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[SurrealDB Documentation](https://surrealdb.com/docs)'
 ---

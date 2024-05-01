@@ -2,12 +2,11 @@
 slug: surrealdb-for-web-applications
 title: "Building a Web Application on Top of SurrealDB"
 description: "SurrealDB handles database, API, and access control, making it is an exceptional solution for serverless web applications. Learn how to build a serverless, Jamstack application on a SurrealDB backend in this tutorial."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2024-05-01
 keywords: ['surrealdb tutorial','surrealdb deployment','surrealdb examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-06-09
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[SurrealDB Documentation](https://surrealdb.com/docs)'
 ---

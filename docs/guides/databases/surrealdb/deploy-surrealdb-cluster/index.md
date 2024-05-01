@@ -2,12 +2,11 @@
 slug: deploy-surrealdb-cluster
 title: "Deploying a SurrealDB Cluster on Kubernetes"
 description: "SurrealDB has been designed with distributed infrastructure in mind. With high-performance and scalable architecture, SurrealDB fits well on a Kubernetes cluster setup. In this tutorial, learn how to deploy your own SurrealDB instance with Docker and Kubernetes."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2024-05-01
 keywords: ['surrealdb docker','surrealdb cluster','surrealdb kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-05-30
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[SurrealDB Documentation](https://surrealdb.com/docs)'
 - '[SurrealDB: Run a Multi-node, Scalable Cluster with TiKV](https://surrealdb.com/docs/installation/running/tikv)'

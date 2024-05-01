@@ -2,12 +2,11 @@
 slug: surrealdb-interdocument-modeling
 title: "Modeling Data with SurrealDB’s Inter-document Relations"
 description: "One of SurrealDB's chief features is its multi-model approach. Using inter-document relations, you can model your data according to your needs, without having to design all of your models in advance. Find out more and see the examples is this tutorial."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2024-05-01
 keywords: ['surrealdb tutorial','surrealdb examples','surrealdb client']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-06-11
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[SurrealDB Documentation](https://surrealdb.com/docs)'
 - '[SurrealDB: RELATE Statement](https://surrealdb.com/docs/surrealql/statements/relate)'

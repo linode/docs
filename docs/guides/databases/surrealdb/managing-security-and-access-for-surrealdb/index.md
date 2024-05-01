@@ -2,12 +2,11 @@
 slug: managing-security-and-access-for-surrealdb
 title: "Managing Security and Access Control for SurrealDB"
 description: "Before moving to production, you need to secure your SurrealDB. Fortunately, SurrealDB features robust access control configurations and API. See how to lock-down your SurrealDB server and set up user access in this tutorial."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2024-05-01
 keywords: ['surrealdb tutorial','surrealdb client','surrealdb authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-05-24
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[SurrealDB Documentation](https://surrealdb.com/docs)'
 ---
