@@ -4,7 +4,7 @@ title: "Using Datastream 2 With Multiplexing for Observability"
 description: "This guide discusses how to achieve an observability workflow using Datastream 2 with multiplexing for log management."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
-published: 2024-04-23
+published: 2024-05-01
 keywords: ['observability','datastream','datastream 2','visibility','multiplex','multiplexing','logs','log parsing','object storage','s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
