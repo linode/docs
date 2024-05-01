@@ -4,7 +4,7 @@ title: "Transfer Files With the scp Command on Linux"
 title_meta: "How to Transfer Files With the scp Command on Linux"
 description: "Learn how to transfer files using SCP on Linux, and how SCP compares to other means of transferring files."
 authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny", "Adam Overa"]
 published: 2023-03-14
 modified: 2024-05-01
 keywords: ['Scp command','Scp linux','Scp syntax','Scp example']
@@ -24,8 +24,8 @@ SCP refers to both the protocol and the `scp` Linux utility. SCP replaced the or
 
 Before transferring the files, the client establishes an SCP connection to the remote server. By default, SCP connects using Transport Control Protocol (TCP) port `22`. The remote server then invokes the SCP process. SCP can operate in one of two modes:
 
--   **Source Mode**: Source mode accesses the requested source file from the file system and transmits it back to the client.
--   **Sink Mode**: Sink mode accepts the file from the client and saves it to the specified directory.
+- **Source Mode**: Source mode accesses the requested source file from the file system and transmits it back to the client.
+- **Sink Mode**: Sink mode accepts the file from the client and saves it to the specified directory.
 
 SCP uses the *Secure Shell* (SSH) protocol as a base layer. SSH authenticates the user and encrypts the data for transfer. In addition to encrypting the file contents, SCP also encrypts all passwords. Because the files are encrypted, they cannot be accessed via a man-in-the-middle attack.
 
@@ -86,10 +86,10 @@ The `scp` utility implements SCP on Linux systems. It is typically included as p
 
 The `scp` syntax is not as complex as it first appears. A typical `scp` command consists of the following components, in the order below:
 
--   The `scp` command keyword.
--   One or more options.
--   The path to the source file. For remote source files, the remote user account and host identifier must be specified. The full format for a remote source file is `username@hostid:file`.
--   The location of the destination directory. For a remote destination, a username and server name/IP are required. The format for a remote destination directory is `username@hostid:directory`.
+- The `scp` command keyword.
+- One or more options.
+- The path to the source file. For remote source files, the remote user account and host identifier must be specified. The full format for a remote source file is `username@hostid:file`.
+- The location of the destination directory. For a remote destination, a username and server name/IP are required. The format for a remote destination directory is `username@hostid:directory`.
 
 The `hostid` can be either a hostname or an IP address, and the remote `file` or `directory` must specify the full path.
 
@@ -101,14 +101,14 @@ scp [options] source_username@source_host:source_file dest_userid@dest_host:dest
 
 The `scp` command permits users to choose from a list of options. The most common `scp` options are as follows:
 
--   **-C**: Compress the file data.
--   **-i**: Use the specified private key for the remote system.
--   **-l**: Set a bandwidth limit for the file transfer.
--   **-P**: Use the specified port for SSH.
--   **-p**: Copy over the file modification and access time.
--   **-q**: Use quiet mode. Quiet mode suppresses the progress meter and informational messages, though error messages are still printed.
--   **-r**: Copy directories recursively.
--   **-v**: Print debug messages.
+- **-C**: Compress the file data.
+- **-i**: Use the specified private key for the remote system.
+- **-l**: Set a bandwidth limit for the file transfer.
+- **-P**: Use the specified port for SSH.
+- **-p**: Copy over the file modification and access time.
+- **-q**: Use quiet mode. Quiet mode suppresses the progress meter and informational messages, though error messages are still printed.
+- **-r**: Copy directories recursively.
+- **-v**: Print debug messages.
 
 To use `scp`, the user must have read access for the files they are transferring and write permission on the destination directory. For authentication purposes, either an SSH key or user password is required for the destination. For more information on SSH, see our guide on [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/).
 
@@ -120,12 +120,12 @@ Exercise a high degree of caution when using `scp`. It does not provide any warn
 
 The following principles apply when using `scp` to copy a file from the local host to a remote server:
 
--   Use the syntax `scp [options] local_directory/local_filename remote_username@remote_hostid:remote_target_directory`.
--   The full path of the remote directory must be specified. The local path can be either relative or absolute.
--   Include the name of the user account for the remote system.
--   The host can be identified by either its name or IP address.
--   A username or account is not required for the local file.
--   The user must have read access to the files being transferred, and write access to the destination directory.
+- Use the syntax `scp [options] local_directory/local_filename remote_username@remote_hostid:remote_target_directory`.
+- The full path of the remote directory must be specified. The local path can be either relative or absolute.
+- Include the name of the user account for the remote system.
+- The host can be identified by either its name or IP address.
+- A username or account is not required for the local file.
+- The user must have read access to the files being transferred, and write access to the destination directory.
 
 The following example copies a file named `file1.txt` to the `/example_backup1` directory on the destination server. It specifies a username for the destination server, along with an IP address for the destination. To use the `scp` command on Linux to transfer a local file, follow the steps below:
 
