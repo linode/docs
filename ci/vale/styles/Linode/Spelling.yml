@@ -1,4 +1,8 @@
 extends: spelling
 message: "Did you really mean '%s'?"
 level: error
-ignore: ci/vale/dictionary.txt
+filters:
+  # You could make this more specific using something
+  # like `\w+'s`, but this is what is was before.
+  - '\W'
+ignore: ../dictionary.txt

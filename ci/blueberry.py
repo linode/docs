@@ -24,7 +24,6 @@ from pathlib import Path
 # TODO:
 # Create a regex cookbook!
 
-
 REPORT_KEYS = ['files', 'excluded_files', 'directories']
 BASE_URL = 'http://localhost:1313/docs/'
 OPTIONAL_PARAMS = ['args', 'kwargs']
@@ -125,7 +124,8 @@ def valid_alias(file_yaml, **kwargs):
 def lowercase_filename(filepath):
     """File name must be all lowercase."""
     # Handle Windows filepaths. See https://stackoverflow.com/q/8384737
-    filename = ntpath.basename(str(filepath))
+    #filename = ntpath.basename(str(filepath))
+    filename, file_extension = os.path.splitext(str(filepath))
 
     # Cartesian product of filenames and extension
     # e.g. README.txt, README.md, CHANGELOG.txt, CHANGELOG.md ...
@@ -136,6 +136,8 @@ def lowercase_filename(filepath):
 
     if filename in exempt_files:
         return
+    elif filename is None:
+        return
     elif not filename.islower():
         return str(filepath), "File name must be all lowercase."
 
@@ -143,7 +145,7 @@ def lowercase_filename(filepath):
 @add_rule
 def lowercase_extension(filepath):
     """File extensions must be lowercase."""
-    filename, file_extension = os.path.splitext(filepath)
+    filename, file_extension = os.path.splitext(str(filepath))
     if file_extension != file_extension.lower():
         return str(filepath), "File extensions must be lowercase."
 
@@ -197,18 +199,34 @@ def check_hugo_version():
         print("Check if Hugo is installed.")
         sys.exit(1)
 
-def find_files(path='.', extension='md', recursive=False):
+def find_files(path='.', ignore_paths = [], extensions=['MD', 'md'], recursive=False):
     # Returns list of absolute paths
     p = Path(path).resolve()
     construct_path = ''
     if recursive:
        construct_path = '**/'
-    glob_path = '{}[!_]*.{}'.format(construct_path, extension)
-    return list(p.glob(glob_path))
+    list_of_files = list()
+    for extension in extensions:
+        glob_path = '{}[!_]*.{}'.format(construct_path, extension)
+        list_of_files.extend(p.glob(glob_path))
 
+    if ignore_paths:
+        # Map() returns an array like:
+        # ['/home/travis/build/linode/docs/ignored_dir1/', '/home/travis/build/linode/docs/ignored_dir2']
+        ignore_paths_resolved = list(map(lambda path: str(Path(path).resolve()), ignore_paths))
+        # Map() returns an array like:
+        # ['^/home/travis/build/linode/docs/ignored_dir1/*', '^/home/travis/build/linode/docs/ignored_dir2*']
+        ignore_paths_as_regexes = list(map(lambda path: "^{}.*".format(path), ignore_paths_resolved))
+        # ignore_path_regex_or looks like:
+        # '(^/home/travis/build/linode/docs/ignored_dir1/*|^/home/travis/build/linode/docs/ignored_dir2*)'
+        ignore_path_regex_or = '({})'.format("|".join(ignore_paths_as_regexes))
+        list_of_files = list(filter(lambda path: not re.match(ignore_path_regex_or, str(path)), list_of_files))
+
+    return list_of_files
 
 def readfile(filename, section=None):
     """Opens a filename and returns either yaml or content"""
+
     try:
         with open(filename, 'rb') as f:
             post = frontmatter.loads(f.read())
@@ -221,9 +239,10 @@ def readfile(filename, section=None):
                 # WARNING: Implicitly converts dates to datetime
                 return post.metadata
 
-    except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError):
+    except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError) as err:
         # Return Error; require utf-8
         # Should this sys.exit(1) here?
+        print(err)
         print(f"{filename} caused the Blueberry script to crash.")
         sys.exit(1)
 
@@ -301,13 +320,13 @@ class TestManager(object):
     # TODO:
     # Gracefully handle non-existent filepath
 
-    def __init__(self, input_dir='docs/', **kwargs):
+    def __init__(self, input_dir='docs/', ignore_paths=['docs/api/', 'docs/headless/', 'docs/products/', 'docs/reference-architecture/', 'docs/release-notes/'], **kwargs):
         self.input_dir = input_dir
-        self.files = find_files(path=input_dir, recursive=True)
+        self.files = find_files(path=input_dir, ignore_paths=ignore_paths, recursive=True)
 
     def __call__(self, input_dir, recursive=False):
         self.input_dir = input_dir
-        self.files = file_files(input_dir, recursive=recursive)
+        self.files = find_files(path=input_dir, ignore_paths=ignore_paths, recursive=True)
 
     def set_reporter(self, reporter):
         self._reporter = reporter

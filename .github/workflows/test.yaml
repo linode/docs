@@ -1,0 +1,86 @@
+name: CI Tests
+
+on: [pull_request]
+
+env:
+  hugo_image_cache_name: hugo-generated-images
+  hugo_image_cache_path: /home/runner/work/docs-publishing/docs-publishing/docs-repo/resources/_gen/images/
+
+jobs:
+  blueberry:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10.x'
+        architecture: 'x64'
+        cache: pip
+    - name: Install dependencies (Python)
+      run: |
+        pip install -r ./ci/requirements.txt
+    - name: blueberry
+      run: |
+        python ./ci/blueberry.py
+
+  vale:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+    - name: Get Changed Files
+      id: get_changed_files
+      uses: jitterbit/get-changed-files@v1
+      # The continue-on-error parameter is set to true as a
+      # workaround for the `head commit is not ahead of base
+      # commit` error that can appear when the PR branch is
+      # out of date.
+      continue-on-error: true
+      with:
+        format: 'json'
+    - name: Install more-utils
+      run: sudo apt-get install moreutils
+    - name: Select Files in Docs Dir
+      # This action filters the list of added and modified
+      # files to only the files that are in the docs/ subdirectory
+      # of the docs repo
+      id: select_docs_dir_files
+      run: |
+        docs_dir_files=$(echo $added_modified |  jq -c '[.[] | select(.|test("^docs/"))]')
+        echo "::set-output name=added_modified::$docs_dir_files"
+        echo "Added or modified files located within docs/ directory:"
+        echo $docs_dir_files | jq '.'
+      env:
+        added_modified: ${{ steps.get_changed_files.outputs.added_modified }}
+    - name: Vale
+      uses: errata-ai/vale-action@reviewdog
+      # Only run the Vale step if the list of added and modified
+      # files inside the docs directory is not empty. If we don't
+      # add this conditional, the Vale step hangs and never
+      # completes when it is passed the empty array.
+      if: ${{ '[]' != steps.select_docs_dir_files.outputs.added_modified }}
+      with:
+        version: 2.19.0
+        vale_flags: "--minAlertLevel=error --glob='!docs/authors/*'"
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  check-links:
+    name: Check Links (Markdown)
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10.x'
+        architecture: 'x64'
+        cache: pip
+    - name: Install dependencies (Python)
+      run: |
+        pip install -r ./ci/requirements.txt
+    - name: Run tests
+      run: python ./ci/check-links.py ${{ steps.files.outputs.all }}

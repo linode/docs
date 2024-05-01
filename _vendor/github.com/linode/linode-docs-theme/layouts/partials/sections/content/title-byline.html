@@ -1,0 +1,107 @@
+<h1
+  class="font-semibold leading-tight tracking-tight text-4xl text-titlecolor w-full">
+  {{ if and .Params.enable_h1 .Params.h1_title }}
+    {{ .Params.h1_title }}
+  {{ else }}
+    {{ .Title }}
+  {{ end }}
+</h1>
+<div class="mt-2">
+  {{/* Truncate the dates to 24h to allow for some edits (or date from Git commit) around the time of the publishDate and still get the text "Published". */}}
+  {{ $duration := time.ParseDuration "24h" }}
+  {{ $isModified := (.Lastmod.Truncate $duration).After (.PublishDate.Truncate $duration) }}
+  {{ $date := .Lastmod }}
+  {{ if not $isModified }}
+    {{ $date = .PublishDate }}
+  {{ end }}
+  <span class="pt-2 text-textcolor">
+    {{ if not $isModified }}
+      Published
+    {{ else }}
+      Updated
+    {{ end }}
+    {{ $contributors := partial "funcs/get-contributors.html" . }}
+    <time datetime="{{ $date.Format site.Params.time_format_iso8601 }}"
+      >{{ $date.Format site.Params.time_format_default }}</time
+    >
+    {{ if (and (eq (len $contributors.authors)  1) (not $contributors.contributors)) }}
+      {{/* Single author, no contributors. */}}
+      {{ with (index $contributors.authors 0) }}
+        {{ if $isModified }}<span class="ml-2">Originally authored&nbsp;</span>{{ end }}by
+        {{ template "tbl-author-link" . }}
+      {{ end }}
+    {{ else }}
+      {{ $numContributions := add (len $contributors.authors) (len $contributors.contributors) }}
+      <span x-data="{ open: false }" class="ml-2 relative inline-block">
+        <a
+          href="#"
+          :aria-label="open ? 'close' : 'open'"
+          @click.prevent="open = !open"
+          @click.away="open = false"
+          >{{ $numContributions }} Contributors
+        </a>
+        <span
+          class="inline-block z-10 w-96 min-h-32 overflow-auto border border-gray-300 bg-white absolute origin-top-right left-0 top-8 -mx-2 p-6"
+          x-transition:enter
+          x-show="open"
+          x-cloak>
+          {{ if $contributors.authors }}
+            <p class="mb-1 leading-4">
+              {{ cond (eq (len $contributors.authors) 1) "Author:" "Authors:" }}
+              {{ range $i, $e := $contributors.authors -}}
+                {{- if $i -}},&nbsp;{{ end }}{{ template "tbl-author-link" . }}
+              {{- end -}}
+            </p>
+          {{ end }}
+          {{ if $contributors.contributors }}
+            <p class="mb-1 leading-6">
+              {{ if $contributors.authors }}Other contributors:{{ end }}
+              {{ range $i, $e := $contributors.contributors -}}
+                {{ if $i -}}
+                  ,&nbsp;
+                {{ end }}{{ template "tbl-author-link" . -}}
+              {{- end }}
+            </p>
+          {{ end }}
+          {{ if .File }}
+            {{ $path := .Params.path | default .File.Path }}
+            {{ $historyRef := printf "https://github.com/linode/docs/commits/develop/docs/%s" $path }}
+            <a
+              href="{{ $historyRef }}"
+              class="inline-block mt-3 text-textcolor hover:text-gray-400  text-sm italic"
+              target="_blank"
+              >View edit history on GitHub →</a
+            >
+          {{ end }}
+        </span>
+      </span>
+      {{ if (and (eq (len $contributors.authors)  1) (ge (len $contributors.contributors) 1)) }}
+        {{/* Single author, multiple contributors. */}}
+        {{ $author := index  $contributors.authors 0 }}
+        <span class="ml-2"
+          >Originally authored by
+          {{ template "tbl-author-link" $author }}</span
+        >
+      {{ end }}
+    {{ end }}
+  </span>
+
+  <div class="hidden md:flex flex-initial float-right">
+    {{ $dropdowns := slice }}
+    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--github" "open" false "contentPartial" "sections/content/navbar__dropdown-github.html") }}
+    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--share"  "open" false "contentPartial" "sections/content/navbar__dropdown-share.html") }}
+    {{ partial "components/dropdowns.html" (dict "page" . "dropdowns" $dropdowns) }}
+  </div>
+</div>
+
+{{- define "tbl-author-link" -}}
+  {{- if .href -}}
+    {{- $isRemote := strings.HasPrefix .href "http" -}}<a
+      href="{{ .href }}"
+      {{ if $isRemote }}target="_blank"{{ end }}
+      >{{ .name }}</a
+    >
+  {{- else -}}
+    {{- .name -}}
+  {{- end -}}
+{{- end -}}

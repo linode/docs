@@ -7,6 +7,7 @@ public/
 .pynb_checkpoints
 .env
 .venv
+.vscode
 
 .DS_Store
 .DS_Store?
@@ -19,7 +20,7 @@ Thumbs.dbi
 
 *.7z
 *.dmg
-*.gz
+
 *.iso
 *.jar
 *.rar
@@ -35,3 +36,14 @@ Thumbs.dbi
 *.elc
 .\#*
 *.sublime-workspace
+node_modules
+public/
+resources/_gen/assets
+yarn.lock
+search_index/
+resources/_gen/images
+hugo_stats.json
+.hugo_build.lock
+redirects.conf
+scripts/duplicates.csv
+algolia_out/

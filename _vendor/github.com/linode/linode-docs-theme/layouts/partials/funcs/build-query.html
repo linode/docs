@@ -1,0 +1,16 @@
+{{ $pages := slice }}
+{{ $target := site.RegularPages }}
+{{ range . }}
+  {{ $temp := slice }}
+  {{ if .operator }}
+    {{ $temp = where $target .key .operator .match }}
+  {{ else }}
+    {{ $temp = where $target .key .match }}
+  {{ end }}
+  {{ if .and }}
+    {{ $pages = $pages | intersect $temp }}
+  {{ else }}
+    {{ $pages = $pages | union $temp }}
+  {{ end }}
+{{ end }}
+{{ return $pages }}

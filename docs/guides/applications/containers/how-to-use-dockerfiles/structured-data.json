@@ -1,0 +1,30 @@
+{
+  "@context": "http://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How Do Dockerfiles Work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Dockerfiles are scripts that carry out different commands and actions to create a Docker build image. Dockerfiles automate the image creation process and simplifies your deployment pipeline. A Docker container is created from a Docker image. A Docker registry is where your public or private Docker images are stored.</p><p>Once a Dockerfile is created, the administrator uses the docker build command to create an image based on the commands within the file. The commands and information within the dockerfile can be configured to use specific software versions and dependencies to ensure consistent and stable deployments.</p><p><br></p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do You Write Dockerfiles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>To create a Dockerfile, create an empty Dockerfile in your desired directory using the touch command.<span style=\"color: rgb(94, 96, 101); font-family: &quot;Source Sans Pro&quot;, system-ui, -apple-system, BlinkMacSystemFont, &quot;segoe ui&quot;, Roboto, &quot;helvetica neue&quot;, Arial, &quot;noto sans&quot;, sans-serif, &quot;apple color emoji&quot;, &quot;segoe ui emoji&quot;, &quot;segoe ui symbol&quot;, &quot;noto color emoji&quot;; font-size: 16px; background-color: rgb(250, 250, 252);\"> </span>You now have an empty Dockerfile in your directory. You can add commands to this fill to create your build image, however, it must include the following Docker build steps:</p><ol><li>FROM</li><li>MAINTAINER</li><li>RUN</li><li>CMD</li></ol><p><br></p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where Should You Store Your Dockerfile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Dockerfiles should be stored at the root of your project. For example, if you use your Dockerfile to create a container for a Geolocation app, and you develop your app locally in your home directory, your Dockerfile’s location may be stored in ~/geolocation-app/Dockerfile. When building your Docker image, you can specify where Docker should look for your Dockerfile using the -f option.</p>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+---
+# Warning: SentenceLength
+#
+# Counts words in a sentence and alerts if a sentence exceeds 25 words.
+#
+# Based on Vale rule from GitLab: https://gitlab.com/gitlab-org/gitlab/-/tree/master/doc/.vale/gitlab
+extends: occurrence
+message: 'Shorter sentences improve readability (max 25 words).'
+scope: sentence
+link: https://docs.gitlab.com/ee/development/documentation/styleguide.html#language
+level: warning
+max: 25
+token: \b(\w+)\b

@@ -1,0 +1,35 @@
+# Highlighting config (Pygments)
+# Styles created with
+# hugo gen chromastyles --style=github > assets/css/components/chroma.css
+# hugo gen chromastyles --style=monokai > assets/css/components/chroma_dark.css
+# Note that for the dark stylesheet, you need to do a search replace to prefix them with the .dark selector.
+[highlight]
+codeFences = true
+guessSyntax = false
+hl_Lines = ""
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = true
+noClasses = false
+style = "github"
+tabWidth = 4
+
+[tableOfContents]
+startLevel = 2
+endLevel = 4
+ordered = true
+
+[goldmark]
+
+[goldmark.parser]
+autoHeadingID = true
+autoHeadingIDType = "github"
+wrapStandAloneImageWithinParagraph = true
+[goldmark.parser.attribute]
+block = true
+title = true
+
+[goldmark.renderer]
+hardWraps = false
+unsafe = true
+xhtml = false

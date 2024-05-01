@@ -1,0 +1,39 @@
+vendorClosest = true
+
+# Mounts in this project.
+[[mounts]]
+source = "docs"
+target = "content"
+
+[[mounts]]
+source = "static"
+target = "static"
+
+[[mounts]]
+# To add it to the server watch list.
+source = "tailwind.config.js"
+target = "assets/css/tailwind.config.js"
+[[mounts]]
+source = "hugo_stats.json"
+target = "assets/watching/hugo_stats.json"
+
+[hugoVersion]
+extended = false
+min = "0.110.0"
+
+
+# The main theme.
+# Note that the theme itself contains the mount configuration.
+[[imports]]
+path = "github.com/linode/linode-docs-theme"
+
+
+# Linode's OpenAPI definition.
+[[imports]]
+path = "github.com/linode/linode-api-docs/v4"
+
+[[imports.mounts]]
+source = "openapi.yaml"
+target = "assets/api/openapi.yaml"
+
+
