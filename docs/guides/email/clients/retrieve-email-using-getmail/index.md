@@ -1,21 +1,20 @@
 ---
 slug: retrieve-email-using-getmail
+title: Retrieve Email Using Getmail
 description: 'This guide shows how-to configure getmail to download email from remote servers.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-01
+modified: 2017-08-22
 keywords: ["email", "getmail", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/getmail/','/email/clients/retrieve-email-using-getmail/']
-modified: 2017-08-22
-modified_by:
-  name: Linode
-published: 2010-02-01
-title: Retrieve Email Using Getmail
 external_resources:
  - '[Official Getmail Documentation](http://pyropus.ca/software/getmail/documentation.html)'
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
 tags: ["email"]
-authors: ["Linode"]
 ---
 
 Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/guides/using-fetchmail-to-retrieve-email/). Getmail provides a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers.

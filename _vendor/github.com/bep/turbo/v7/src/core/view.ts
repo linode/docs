@@ -1,22 +1,34 @@
-import { Renderer } from "./renderer"
+import { ReloadReason } from "./native/browser_adapter"
+import { Renderer, Render } from "./renderer"
 import { Snapshot } from "./snapshot"
 import { Position } from "./types"
 import { getAnchor } from "./url"
 
-export interface ViewDelegate<S extends Snapshot> {
-  allowsImmediateRender(snapshot: S, resume: (value: any) => void): boolean
-  viewRenderedSnapshot(snapshot: S, isPreview: boolean): void
-  viewInvalidated(): void
+export interface ViewRenderOptions<E> {
+  resume: (value?: any) => void
+  render: Render<E>
 }
 
-export abstract class View<E extends Element, S extends Snapshot<E> = Snapshot<E>, R extends Renderer<E, S> = Renderer<E, S>, D extends ViewDelegate<S> = ViewDelegate<S>> {
+export interface ViewDelegate<E extends Element, S extends Snapshot<E>> {
+  allowsImmediateRender(snapshot: S, options: ViewRenderOptions<E>): boolean
+  preloadOnLoadLinksForView(element: Element): void
+  viewRenderedSnapshot(snapshot: S, isPreview: boolean): void
+  viewInvalidated(reason: ReloadReason): void
+}
+
+export abstract class View<
+  E extends Element,
+  S extends Snapshot<E> = Snapshot<E>,
+  R extends Renderer<E, S> = Renderer<E, S>,
+  D extends ViewDelegate<E, S> = ViewDelegate<E, S>
+> {
   readonly delegate: D
   readonly element: E
   renderer?: R
   abstract readonly snapshot: S
   renderPromise?: Promise<void>
-  private resolveRenderPromise = (value: any) => {}
-  private resolveInterceptionPromise = (value: any) => {}
+  private resolveRenderPromise = (_value: any) => {}
+  private resolveInterceptionPromise = (_value: any) => {}
 
   constructor(delegate: D, element: E) {
     this.delegate = delegate
@@ -73,16 +85,18 @@ export abstract class View<E extends Element, S extends Snapshot<E> = Snapshot<E
     const { isPreview, shouldRender, newSnapshot: snapshot } = renderer
     if (shouldRender) {
       try {
-        this.renderPromise = new Promise(resolve => this.resolveRenderPromise = resolve)
+        this.renderPromise = new Promise((resolve) => (this.resolveRenderPromise = resolve))
         this.renderer = renderer
-        this.prepareToRenderSnapshot(renderer)
+        await this.prepareToRenderSnapshot(renderer)
 
-        const renderInterception = new Promise(resolve => this.resolveInterceptionPromise = resolve)
-        const immediateRender = this.delegate.allowsImmediateRender(snapshot, this.resolveInterceptionPromise)
+        const renderInterception = new Promise((resolve) => (this.resolveInterceptionPromise = resolve))
+        const options = { resume: this.resolveInterceptionPromise, render: this.renderer.renderElement }
+        const immediateRender = this.delegate.allowsImmediateRender(snapshot, options)
         if (!immediateRender) await renderInterception
 
         await this.renderSnapshot(renderer)
         this.delegate.viewRenderedSnapshot(snapshot, isPreview)
+        this.delegate.preloadOnLoadLinksForView(this.element)
         this.finishRenderingSnapshot(renderer)
       } finally {
         delete this.renderer
@@ -90,17 +104,17 @@ export abstract class View<E extends Element, S extends Snapshot<E> = Snapshot<E
         delete this.renderPromise
       }
     } else {
-      this.invalidate()
+      this.invalidate(renderer.reloadReason)
     }
   }
 
-  invalidate() {
-    this.delegate.viewInvalidated()
+  invalidate(reason: ReloadReason) {
+    this.delegate.viewInvalidated(reason)
   }
 
-  prepareToRenderSnapshot(renderer: R) {
+  async prepareToRenderSnapshot(renderer: R) {
     this.markAsPreview(renderer.isPreview)
-    renderer.prepareToRender()
+    await renderer.prepareToRender()
   }
 
   markAsPreview(isPreview: boolean) {

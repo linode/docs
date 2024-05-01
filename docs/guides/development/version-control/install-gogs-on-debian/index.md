@@ -1,15 +1,15 @@
 ---
 slug: install-gogs-on-debian
+title: 'Install Gogs on Debian 9 with nginx and PostgreSQL'
 description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
+authors: ["Nashruddin Amin"]
+contributors: ["Nashruddin Amin"]
+published: 2015-10-09
+modified: 2017-11-09
 keywords: ["gogs", "git", "golang", "nginx", " postgresql"]
 tags: ["debian","version control system","nginx","postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-10-09
 aliases: ['/development/version-control/install-gogs-on-debian-8-jessie/','/applications/development/install-gogs-on-debian-8-jessie/','/development/version-control/install-gogs-on-debian/','/applications/development/install-gogs-on-debian-jessie/']
-modified: 2017-11-09
-modified_by:
-    name: Linode
-title: 'Install Gogs on Debian 9 with nginx and PostgreSQL'
 external_resources:
     - '[Gogs official site](http://gogs.io)'
     - '[Gogs documentation](http://gogs.io/docs)'
@@ -20,9 +20,7 @@ relations:
         key: install-gogs
         keywords:
             - distribution: Debian 9
-authors: ["Nashruddin Amin"]
 ---
-
 
 [Gogs](http://gogs.io) is a self-hosted Git service, similar to GitLab. It is written in [Go](http://golang.org) and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repository, but don't want to pay for the private plans on other Git services.
 
@@ -30,7 +28,7 @@ authors: ["Nashruddin Amin"]
 
 This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
