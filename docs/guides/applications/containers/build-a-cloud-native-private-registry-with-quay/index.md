@@ -3,6 +3,7 @@ slug: build-a-cloud-native-private-registry-with-quay
 title: "How to Build a Cloud Native Private Registry With Quay"
 description: 'Learn how to create your own cloud-native private registry using Quay. This guide covers everything from setup to deployment on a CentOS Stream instance.'
 authors: ["John Mueller"]
+contributors: ["John Mueller"]
 published: 2024-05-02
 keywords: ['build cloud-native container registry with quay','red hat quay','centos stream','private container registry','cloud-native registry','secure private registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
