@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-debian-10
+title: Install Drupal Themes and Modules Using Drush on Debian 10
+title_meta: How to Install Drupal Using Drush on Debian 10
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Debian 10.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-12-05
+modified: 2020-03-11
 keywords: ["drupal", "cms", "content management system", "content management framework", "debian", "drush"]
 tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-11
-modified_by:
-    name: Linode
-published: 2014-12-05
-title: Install Drupal Themes and Modules Using Drush on Debian 10
-title_meta: How to Install Drupal Using Drush on Debian 10
 image: DrupalThemesMods_DrushDeb10.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
@@ -21,7 +21,6 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/']
-authors: ["Linode"]
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and covering some basic administration tasks such as backup and migrate for Drupal websites.
@@ -46,8 +45,7 @@ Before installing themes, modules, and a backup system with Drush, make sure tha
 1.  Make sure that your system is up to date, using:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The Drush commands to download or enable themes and modules vary depending on the version of Drush that you have installed. This guide uses Drush 10.
 {{< /note >}}
 
@@ -110,7 +108,6 @@ It's always important to keep regular backups of a website. Backups protect you 
 1.  To configure backup and migrate, navigate to **Administration > Configuration > Development > Backup and Migrate**
 
 1. For a quick backup, select the type of **Backup Source** and select the **Backup Destination**, and click **Backup now**
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Always download a backup prior to updating or installing modules.
 {{< /note >}}

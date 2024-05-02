@@ -19,7 +19,7 @@ Billing for Object Storage starts when it is enabled on your account, **regardle
 
 ## Generate an Access Key
 
-1. Log into the [Linode Cloud Manager](https://cloud.linode.com).
+1. Test - Log into the [Linode Cloud Manager](https://cloud.linode.com).
 
     {{< note >}}
     Object Storage is not available in the Linode Classic Manager.

@@ -1,20 +1,19 @@
 ---
 slug: how-to-deploy-istio-with-kubernetes
-description: 'This guide will show you how to deploy Istio, a powerful service mesh, or network of microservices, with it''s own API, within a Kubernetes environment.'
-keywords: ['kuberenetes','istio','container','helm', 'k8s']
-tags: ["monitoring","networking","kubernetes","container", "gaming"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-07
-modified_by:
-  name: Linode
 title: "Deploying Istio with Kubernetes"
 title_meta: "How to Deploy Istio with Kubernetes"
+description: 'This guide will show you how to deploy Istio, a powerful service mesh, or network of microservices, with it''s own API, within a Kubernetes environment.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-11-07
+keywords: ['kubernetes','istio','container','helm', 'k8s']
+tags: ["monitoring","networking","kubernetes","container", "gaming"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Istio](https://istio.io)'
 - '[Istio Mesh Security](https://istio.io/docs/ops/configuration/security/)'
 - '[Istio Troubleshooting](https://istio.io/docs/ops/diagnostic-tools/)'
 aliases: ['/kubernetes/how-to-deploy-istio-with-kubernetes/','/applications/containers/kubernetes/how-to-deploy-istio-with-kubernetes/']
-authors: ["Linode"]
 ---
 
 [Istio](https://istio.io) is a service mesh, or a network of microservices, that can handle tasks such as load balancing, service-to-service authentication, monitoring, and more. It does this by deploying sidecar proxies to intercept network data, which causes minimal disruption to your current application.

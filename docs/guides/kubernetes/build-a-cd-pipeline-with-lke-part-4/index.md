@@ -1,16 +1,15 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-4
-description: "In part four of our series on Kubernetes, you will learn how to deploy a simple application and discover how each of the components that are involved work together."
 title: "Building a CD Pipeline Using LKE (Part 4): Kubernetes Review"
-keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "In part four of our series on Kubernetes, you will learn how to deploy a simple application and discover how each of the components that are involved work together."
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2021-05-06
 modified: 2022-12-14
-modified_by:
-  name: Linode
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-4/']
-authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Kubernetes Review](cd-presentation-header-04-quick-kubernetes-review.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Kubernetes Review")

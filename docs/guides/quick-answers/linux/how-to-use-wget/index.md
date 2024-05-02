@@ -1,30 +1,27 @@
 ---
 slug: how-to-use-wget
+title: How to Use Wget
+title_meta: "How to Use Wget: Step-by-Step Guide"
 description: 'Knowing how to use wget to download files makes it easy to retrieve the latest packages from HTTP or FTP repositories. ✓ Read our guide to learn how'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-19
+modified: 2017-06-12
 keywords: ["linux", "how to", "grep", "wget"]
 aliases: ['/quick-answers/linux/how-to-use-wget/','/quick-answers/how-to-use-wget/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-12
-modified_by:
-  name: Angel
-published: 2017-06-19
-title: How to Use Wget
-title_meta: "How to Use Wget: Step-by-Step Guide"
 external_resources:
  - '[Windows Wget Download](http://gnuwin32.sourceforge.net/packages/wget.htm)'
  - '[Arch Wiki](https://wiki.archlinux.org/index.php/wget)'
  - '[Gentoo](https://packages.gentoo.org/packages/net-misc/wget)'
 tags: ["linux"]
-authors: ["Angel Guarisma"]
 ---
-
 
 [GNU Wget](https://www.gnu.org/software/wget/) is a non-interactive tool for downloading files from the internet. Wget is a mature package with a robust set of features. Typically wget is used to retrieve the latest packages from HTTP or FTP repositories.
 
 The noninteractive nature of Wget makes it perfect for use in automatic scripts. This guide will walk you through downloading the [Linode Speed Test files](https://www.linode.com/speedtest) by using wget.
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Depending on your operating system or distribution, you may need to download wget. Wget exists in every package manager and on every operating system. At the end of this guide
 you will find resources for getting wget on your machine.
 {{< /note >}}

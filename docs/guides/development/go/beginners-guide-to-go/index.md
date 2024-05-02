@@ -1,21 +1,20 @@
 ---
 slug: beginners-guide-to-go
-description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
-keywords: ['golang','go','command line arguments']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-11
-modified_by:
-  name: Linode
-image: GettingStartedwithGo.png
 title: "Getting Started with Go"
 title_meta: "A Beginner's Guide to Go"
+description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2020-02-11
+keywords: ['golang','go','command line arguments']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: GettingStartedwithGo.png
 external_resources:
 - '[The Go Programming Language Specification](https://golang.org/ref/spec)'
 - '[Go](https://golang.org)'
 - '[Effective Go](https://golang.org/doc/effective_go.html)'
 - '[A Tour of Go](https://tour.golang.org/welcome/1)'
 aliases: ['/development/go/beginners-guide-to-go/']
-authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction
@@ -49,7 +48,7 @@ Although Go is not perfect, it has many advantages, including the following:
 
 {{% content "before-you-begin-install-go-shortguide" %}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
 
@@ -221,8 +220,7 @@ The output from this program is:
 {{< output >}}
 0
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The zero value for a string variable is an empty string.
 {{< /note >}}
 

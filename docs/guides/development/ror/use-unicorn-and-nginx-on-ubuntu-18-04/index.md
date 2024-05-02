@@ -1,17 +1,16 @@
 ---
 slug: use-unicorn-and-nginx-on-ubuntu-18-04
+title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 18.04"
+title_meta: "Deploy a Rails App with Unicorn and nginx on Ubuntu 18.04"
 description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 18.04 '
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-03
 keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 18.04", " nginx", "reverse proxy", "ubuntu 18.04"]
 tags: ["web applications","proxy","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04/','/websites/ror/use-unicorn-and-nginx-on-ubuntu-18-04/']
-published: 2020-01-03
-modified: 2020-01-03
-modified_by:
-    name: Linode
 image: UseUnicornandNginxtoConfigureRubyon-RailsApplicationsonUbuntu1804.png
-title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 18.04"
-title_meta: "Deploy a Rails App with Unicorn and nginx on Ubuntu 18.04"
 external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 audiences: ["beginner"]
@@ -22,7 +21,6 @@ relations:
         key: unicorn-nginx
         keywords:
             - distribution: Ubuntu 18.04
-authors: ["Linode"]
 ---
 
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 18.04.
@@ -33,7 +31,7 @@ Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be 
 
 Before starting this guide, make sure that  you have read through and completed our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

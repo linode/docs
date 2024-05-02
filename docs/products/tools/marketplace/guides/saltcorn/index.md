@@ -1,16 +1,13 @@
 ---
+title: "Deploy Saltcorn through the Linode Marketplace"
 description: "Deploy Saltcorn on a Linode Compute Instance. This platform is made for building database web applications without writing a single line of code."
-keywords: ['saltcorn','database','development']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Saltcorn through the Linode Marketplace"
+keywords: ['saltcorn','database','development']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'
 aliases: ['/guides/saltcorn-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Saltcorn](https://saltcorn.com/) is an flexible open source no-code database application builder. You can use it to build web applications based on relational data with flexible views, data types, and layouts.

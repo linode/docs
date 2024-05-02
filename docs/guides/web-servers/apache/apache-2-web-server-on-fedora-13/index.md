@@ -1,25 +1,22 @@
 ---
 slug: apache-2-web-server-on-fedora-13
-deprecated: true
+title: Apache 2 Web Server on Fedora 13
 description: 'Instructions for getting started with the Apache web server on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-28
+modified: 2011-04-29
 keywords: ["apache fedora 13", "fedora web server", "linux web server"]
 tags: ["web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-fedora-13/','/web-servers/apache/apache-2-web-server-on-fedora-13/','/web-servers/apache/installation/fedora-13/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-05-28
-title: Apache 2 Web Server on Fedora 13
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Fedora 13. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 13](/docs/guides/lamp-server-on-fedora-13/).
 

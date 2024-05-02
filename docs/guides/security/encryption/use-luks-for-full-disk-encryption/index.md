@@ -1,16 +1,14 @@
 ---
 slug: use-luks-for-full-disk-encryption
+title: How to Use LUKS for Full Disk Encryption on Linux
 description: This tutorial will guide you through creating a secure, LUKS-encrypted Debian installation.
+authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
+published: 2016-11-02
 aliases: ['/security/encryption/use-luks-for-full-disk-encryption/','/security/use-luks-for-full-disk-encryption/','/security/full-disk-encryption/']
 keywords: ["full disk encryption", "debian", "luks", "lassie"]
 tags: ["security","debian","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-11-02
-modified_by:
-  name: Linode
-published: 2016-11-02
-title: How to Use LUKS for Full Disk Encryption on Linux
-authors: ["Nick Brewer"]
 ---
 
 ![How to Use LUKS for Full Disk Encryption on Linux](how-to-use-luks-for-full-disk-encryption-linux.jpg "How to Use LUKS for Full Disk Encryption on Linux")
@@ -21,8 +19,7 @@ Full disk encryption protects the information stored on your Linode's disks by c
 This guide will show you how to deploy a Linux distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that the respective distro's installer includes a LUKS encryption option.
 
 The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as *LVM on LUKS*, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to access all of the volumes within your encrypted disk.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots.
 
 Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/products/storage/backups/) can't mount encrypted disks.

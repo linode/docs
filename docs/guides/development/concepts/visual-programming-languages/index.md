@@ -1,18 +1,17 @@
 ---
 slug: visual-programming-languages
-description: 'Visual programming languages are one of the hardest programming languages to learn. ✓ Click here for an in-depth look, including pros and cons.'
-keywords: ['visual programming languages', 'hardest programming languages to learn', 'game programming languages', 'what best defines a “programming language”?', 'how to make a programming language', 'c programming language typing discipline', 'how to create a programming language', 'how is programming language created', 'most programming languages allow you to ask two or more questions in a single comparison', 'graphical programming languages']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-29
-modified_by:
-  name: Linode
 title: "The Developer’s Guide to Visual Programming Languages"
 title_meta: "Visual Programming Languages: Pros & Cons"
+description: 'Visual programming languages are one of the hardest programming languages to learn. ✓ Click here for an in-depth look, including pros and cons.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-12-29
+keywords: ['visual programming languages', 'hardest programming languages to learn', 'game programming languages', 'what best defines a “programming language”?', 'how to make a programming language', 'c programming language typing discipline', 'how to create a programming language', 'how is programming language created', 'most programming languages allow you to ask two or more questions in a single comparison', 'graphical programming languages']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[GeeksForGeeks.org: Introduction to Visual Programming Language](https://www.geeksforgeeks.org/introduction-to-visual-programming-language/)'
 - '[PostScapes.com: Visual Programming Guide](https://www.postscapes.com/iot-visual-programming-tools/)'
 - '[OutSystems.com: What Is Visual Programming?](https://www.outsystems.com/glossary/what-is-visual-programming/)'
-authors: ["John Mueller"]
 ---
 
 Most programming languages today are text-based, which means you type code that tells the computer what you want done. There are many paradigms for such code, with procedural, object-oriented, imperative, functional, and declarative being the most common. These paradigms all have one thing in common: the coder must think in an abstract way to turn human concepts into something the computer understands.

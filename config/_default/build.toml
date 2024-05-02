@@ -9,9 +9,3 @@ writeStats = true
 [[cachebusters]]
     source = "(postcss|tailwind)\\.config\\.js"
     target = "css"
-[[cachebusters]]
-    source = "assets/.*\\.(js|ts|jsx|tsx)"
-    target = "js"
-[[cachebusters]]
-    source = "assets/.*\\.(.*)$"
-    target = "$1"

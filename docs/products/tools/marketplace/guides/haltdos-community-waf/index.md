@@ -1,12 +1,11 @@
 ---
+title: "Deploy Haltdos Community WAF through the Linode Marketplace"
 description: "Learn how to deploy Haltdos Community WAF, a free web application firewall, on the Linode platform."
+published: 2023-01-23
 keywords: ['haltdos','firewall','security','web application firewall']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-01-23
-title: "Deploy Haltdos Community WAF through the Linode Marketplace"
 external_resources:
 - '[Haltdos Community WAF](https://docs.haltdos.com/community)'
-authors: ["Linode"]
 ---
 
 [Haltdos](https://www.haltdos.com/) Community Edition is a free user-friendly web application. It provides protection from OWASP 10 threats, XSS, SQL, and other web-based threats.

@@ -2,14 +2,11 @@
 title: "Deploy a PostgreSQL Cluster through the Linode Marketplace"
 description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
 published: 2023-03-20
-modified_by:
-  name: Linode
 keywords: ['database','postgresql','rdbms','relational database']
 tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
-authors: ["Linode"]
 ---
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.

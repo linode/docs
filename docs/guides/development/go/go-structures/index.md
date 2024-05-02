@@ -1,24 +1,23 @@
 ---
 slug: go-structures
+title: "A Tutorial for Learning Structs in Go"
 description: "Learn how to use structs in Go, including how structs use value semantics, how to handle pointers to structs, and how to associate methods with structs."
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-12-16
 keywords: [" Structs", "Golang", "Go", "Pointers"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-12-16
-modified_by:
-  name: Linode
 image: ATutorialforLearningStructsinGo.png
-title: "A Tutorial for Learning Structs in Go"
 external_resources:
   - '[Go](https://golang.org)'
 aliases: ['/development/go/go-structures/']
-authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction
 
 Go's array, slice, and map types can be used to group multiple elements, but they cannot hold values of multiple data types. When you need to group different types of variables and create new data types, you can use *structs*.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Go does not have a concept of *classes* from other object oriented languages. Structs will be used in similar ways as classes, with important differences. For example, there is no class inheritance feature in Go.
 {{< /note >}}
 
@@ -36,7 +35,7 @@ In this guide you will:
 
 An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
 
@@ -69,8 +68,7 @@ func main() {
     fmt.Println(mihalis)
 }
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
  Structs, in particular, and Go types, in general, are usually defined outside the `main()` function in order to have a global scope and be available to the entire Go package, unless you want to clarify that a type is only useful within the current scope and is not expected to be used elsewhere in your code.
 {{< /note >}}
 
@@ -129,8 +127,7 @@ The output of `employee.go` will be:
 {{< output >}}
 true
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Structs cannot be ordered with operators like greater-than  `>` or less-than `<`.
 {{< /note >}}
 
@@ -192,8 +189,7 @@ func main() {
     fmt.Println("My name is", mihalis.FirstName, "and my employee ID is", mihalis.employeeID)
 }
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In this example, `employee.go` is created within an `employee` directory.
 {{< /note >}}
 
@@ -519,7 +515,7 @@ func main() {
 
 This approach for creating new struct variables allows you to check whether the provided information is correct and valid in advance; for example, the above code checks the passed `employeeID` from lines 13 to 15. Additionally, with this approach you have a central point where struct fields are initialized, so if there is something wrong with your fields, you know exactly where to look.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For those of you with a C or C++ background, it is perfectly legal for a Go function to return the memory address of a local variable. Nothing gets lost, so everybody is happy!
 {{< /note >}}
 
@@ -586,8 +582,7 @@ func main() {
     prettyPrint(telephone)
 }
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `prettyPrint()` function is just used for printing the contents of a struct in a readable and pleasant way with the help of the `json.MarshalIndent()` function.
 {{< /note >}}
 

@@ -1,17 +1,14 @@
 ---
+title: "Deploy Plex Media Server through the Linode Marketplace"
 description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Marketplace Apps."
-keywords: ['streaming','plex','video','media server']
-tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-09-28
 modified: 2022-03-08
+keywords: ['streaming','plex','video','media server']
+tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
 image: Deploy_Plex_oneclickapps.png
-modified_by:
-  name: Linode
-title: "Deploy Plex Media Server through the Linode Marketplace"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
 aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/guides/plex-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich streaming platform that allows you to organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Marketplace App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this app.

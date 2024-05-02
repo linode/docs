@@ -1,21 +1,20 @@
 ---
 slug: how-to-use-dockerfiles
+title: 'How to Use a Dockerfile to Build a Docker Image.'
+title_meta: 'How to Use a Dockerfile to Build a Docker Image'
 description: 'A guide that introduces how to use a Dockerfile and provides examples on how to use it to build and run a Docker image on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-08-11
+modified: 2021-06-17
 keywords: ["docker", "container", "dockerfile","dockerfiles","docker image","docker images"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-06-17
-modified_by:
-  name: Linode
-published: 2017-08-11
-title: 'How to Use a Dockerfile to Build a Docker Image.'
-title_meta: 'How to Use a Dockerfile to Build a Docker Image'
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
  - '[Docker Docs](http://docs.docker.com/)'
 aliases: ['/applications/containers/how-to-use-dockerfiles/']
-authors: ["Linode"]
 ---
 ![How to Use a Dockerfile](how-to-use-dockerfile.png "How to Use a Dockerfile")
 

@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-and-configure-drupal-on-ubuntu-18-04
+title: Install and Configure Drupal on Ubuntu 18.04
+title_meta: How to Install and Configure Drupal on Ubuntu 18.04 LTS
 description: 'This guide will show you how to install and configure the very popular content management system, Drupal 8, on your Linode running Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-18
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04"]
 tags: ["drupal","ubuntu","apache","lamp","php","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
-published: 2020-02-18
-title: Install and Configure Drupal on Ubuntu 18.04
-title_meta: How to Install and Configure Drupal on Ubuntu 18.04 LTS
 image: L_Drupal_on_Ubuntu1804.png
 relations:
     platform:
@@ -16,7 +16,6 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/']
-authors: ["Linode"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Ubuntu 18.04.

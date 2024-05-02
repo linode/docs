@@ -1,0 +1,31 @@
+{{ if .Params.enableRelatedContent }}
+  <div
+    x-data="{ hits: [] }"
+    x-show="hits.length"
+    x-transition.opacity
+    x-init="$store.nav.recommendations.fetch(lnPageInfo.href, hits)"
+    x-cloak>
+    <div
+      class="bg-brand pull-out px-4 md:px-8 xl:px-4 py-4 mb-4 md:mx-4 xl:-mx-4 md:w-1/2 md:float-right xl:float-none xl:w-full border rounded-none md:rounded-md">
+      <h3 class="font-semibold uppercase text-white mb-6 mt-0" data-toc-ignore>
+        Related Content
+      </h3>
+      <div class="-mt-4">
+        <template x-for="item in hits">
+          <a
+            :href="item.href"
+            class="text-white text-base font-semibold mt-4 flex flex-row md:flex-col items-center md:items-start"
+            @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Related Content')">
+            <span
+              class="inline-block order-last md:order-first"
+              x-html="item.title"></span>
+            <span
+              x-text="item.docType"
+              class="inline-block capitalize bg-white text-titlecolor text-center border rounded-md mt-2 mr-3 px-2 py-1">
+            </span>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+{{ end }}

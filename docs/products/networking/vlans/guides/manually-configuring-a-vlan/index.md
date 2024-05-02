@@ -1,8 +1,8 @@
 ---
 title: Manually Configuring a VLAN on a Linode
+modified: 2022-08-23
 tab_group_main:
     weight: 20
-modified: 2022-08-23
 ---
 
 When a VLAN is assigned to a network interface and given an IPAM address, the Compute Instance should automatically be able to communicate over that private network. This is due to [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/), which is enabled by default on most instances. For compatible distributions, Network Helper adjusts the internal network configuration files. Any network interfaces defined in the Compute Instance's selected [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (including those with VLANs attached) are automatically configured.

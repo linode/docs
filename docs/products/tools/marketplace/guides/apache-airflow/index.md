@@ -1,12 +1,11 @@
 ---
+title: "Deploying Apache Airflow through the Linode Marketplace"
 description: "Deploy Apache Airflow on a Linode Compute Instance. This provides you with an open-source workflow management platform for data engineering pipelines."
+published: 2023-01-23
 keywords: ['airflow','workflow management','data engineering']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-01-23
-title: "Deploying Apache Airflow through the Linode Marketplace"
 external_resources:
 - '[Apache Airflow](https://airflow.apache.org/docs/)'
-authors: ["Linode"]
 ---
 
 [Apache Airflow](https://airflow.apache.org) is an open source workflow management platform for data engineering pipelines. You can use it to automate, orchestrate, and monitor workflows and data pipelines. One of Airflow’s greatest features is that you can create and execute workflows with code. When you use workflows that are powered by code, you can version control, collaborate on, and debug your workflows.

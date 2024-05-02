@@ -1,14 +1,13 @@
 ---
 slug: windows-red-team-credential-access-with-mimikatz
+title: "Windows Red Team Credential Access With Mimikatz"
 description: 'This guide covers the process of extracting cleartext passwords and hashes from Windows system by leveraging tools like Mimikatz.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Windows Red Team Credential Access With Mimikatz"
-authors: ["HackerSploit"]
 ---
 
 {{% content "hackersploit-red-team-series-note-shortguide" %}}

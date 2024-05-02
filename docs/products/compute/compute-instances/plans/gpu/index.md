@@ -1,15 +1,17 @@
 ---
 title: "GPU Compute Instances"
-linkTitle: "GPU"
 description: "Virtual machines equipped with NVIDIA Quadro GPUs that are ideal for complex processing and GPU-optimized workloads."
 published: 2023-01-18
-modified: 2023-02-14
+modified: 2024-03-11
+linkTitle: "GPU"
 aliases: ['/products/compute/gpu/','/platform/linode-gpu/why-linode-gpu/','/guides/why-linode-gpu/','/products/compute/gpu/guides/use-cases/']
 ---
 
 Scientists, artists, and engineers need access to significant parallel computational power. Linode offers GPU-optimized virtual machines accelerated by the NVIDIA Quadro RTX 6000, harnessing the power of CUDA, Tensor, and RT cores to execute complex processing, deep learning, and ray tracing workloads.
 
 **GPU plans are ideal for highly specialized workloads that would benefit from dedicated NVIDIA GPUs, including machine learning, AI, and data/graphics processing.**
+
+GPU plans are in limited availability.
 
 ## On-demand
 
@@ -52,7 +54,7 @@ Atlanta, GA, United States; Frankfurt, Germany; Newark, NJ, United States; Mumba
 | Outbound Network Transfer | 16 TB - 20 TB |
 | Outbound Network Bandwidth | 10 Gbps |
 
-Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCPU cores, 32 GB of memory, and 640 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page below to learn more about other instance types.
+Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCPU cores, 32 GB of memory, and 640 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.
 
 {{% content "gpu-deposit-shortguide" %}}
 

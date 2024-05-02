@@ -2,10 +2,10 @@
 title: "Get Started"
 title_meta: "Getting Started with the Linode Backup Service"
 description: "Get Started with the Linode Backup Service. Learn how to enable the Backup Service and manage your backups."
+published: 2021-11-12
 tab_group_main:
     weight: 20
 aliases: ['/products/storage/backups/guides/manage/']
-published: 2021-11-12
 ---
 
 ## Enabling the Backup Service
@@ -37,7 +37,7 @@ These backups can be managed in the Cloud Manager under the **Backups** tab for 
 
 This page also provides a few other options, detailed below:
 
-- **Manual Snaphot:** Creates a new manual snapshot, overwriting any existing one. See [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/).
+- **Manual Snapshot:** Creates a new manual snapshot, overwriting any existing one. See [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/).
 
 - **Settings:** Allows you to schedule when automatic backups are generated. See [Schedule Backups](/docs/products/storage/backups/guides/schedule/).
 

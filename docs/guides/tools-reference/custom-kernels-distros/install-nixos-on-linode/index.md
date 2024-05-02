@@ -1,14 +1,14 @@
 ---
 slug: install-nixos-on-linode
-published: 2017-06-16
+title: Install and Configure NixOS on a Linode
 description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
+authors: ["Andrew Miller"]
+contributors: ["Andrew Miller"]
+published: 2017-06-16
+modified: 2023-07-11
 keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Andrew Miller
-modified: 2023-07-11
-title: Install and Configure NixOS on a Linode
 external_resources:
  - '[NixOS](https://nixos.org/nixos/manual/)'
  - '[Nixpkgs](https://nixos.org/nixpkgs/manual/)'
@@ -18,7 +18,6 @@ relations:
         keywords:
             - distribution: NixOS
 aliases: ['/tools-reference/custom-kernels-distros/install-nixos-on-linode/']
-authors: ["Andrew Miller"]
 ---
 
 ![How to Install NixOS on Linode](nixos-title.png "How to Install NixOS on Linode")

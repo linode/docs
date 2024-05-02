@@ -1,17 +1,16 @@
 ---
 slug: running-a-mail-server
+title: "Running a Mail Server"
 description: "Take control of your email with your own mail server. Learn how to install and configure it on your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-06-05
+modified: 2022-12-23
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
-modified_by:
-  name: Linode
-published: 2013-06-05
-modified: 2022-12-23
-title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
-authors: ["Linode"]
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
@@ -55,7 +54,7 @@ There are several third-party mail services available:
 - [Postmark](https://postmarkapp.com/why?utm_source=linode&utm_medium=referral&utm_campaign=awareness)
 - [Fastmail](https://www.fastmail.com)
 - [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
-- [Mirosoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
+- [Microsoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
 If you decide to use an outside mail service, you will still need to set up [DNS](/docs/products/networking/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 

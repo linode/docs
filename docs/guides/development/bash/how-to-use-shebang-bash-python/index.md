@@ -1,16 +1,15 @@
 ---
 slug: how-to-use-shebang-bash-python
-description: 'This guide explains what a Shebang is and how to use it in a script'
-keywords: ['how to use Shebang','Shebang Python','Shebang Bash','what is a Shebang']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-02
-modified_by:
-  name: Linode
 title: "Use the Shebang in Bash and Python"
 title_meta: "How to Use the Shebang in Bash and Python"
+description: 'This guide explains what a Shebang is and how to use it in a script'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-08-02
+keywords: ['how to use Shebang','Shebang Python','Shebang Bash','what is a Shebang']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Wikipedia Shebang page](https://en.wikipedia.org/wiki/Shebang_(Unix))'
-authors: ["Jeff Novotny"]
 ---
 
 A [*Shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) directive, which always begins with the sequence `#!`, can sometimes be found on the first line of a Bash or Python script. In a Linux environment, the Shebang functions as an interpreter directive. This guide explains what a Shebang is and what advantages it provides. It also describes how to use a Shebang inside a Bash or Python script.
@@ -67,7 +66,7 @@ The directive `#!/bin/false` is a special Shebang. It immediately exits and retu
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -81,7 +80,7 @@ To ensure the `sh` interpreter always processes a script, no matter what shell i
 
 One common method to use a Shebang is to specify the full path to the interpreter on the first line of the file.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In this program, the line `ps h -p $$ -o args=''` prints out the name of the interpreter along with any arguments passed to it.
 {{< /note >}}
 
@@ -172,8 +171,7 @@ Interpreter test. The interpreter and arguments are:
 ps h -p $$ -o args=''
 /bin/bash -v ./shebang_absolute
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If the Shebang uses `env`, do not declare the option within the Shebang. Instead, use the declaration `set -v` to set the option on the next line.
 {{< /note >}}
 

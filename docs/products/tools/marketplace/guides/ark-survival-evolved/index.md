@@ -1,17 +1,22 @@
 ---
-description: "Deploy a ARK: Survival Evolved Server on Linode using Marketplace Apps."
-keywords: ['ark','survival evolved','marketplace apps', 'server']
-published: 2019-04-03
-modified: 2022-05-17
-modified_by:
-  name: Linode
 title: "Deploy an ARK Survival Evolved Server through the Linode Marketplace"
+description: "Deploy a ARK: Survival Evolved Server on Linode using Marketplace Apps."
+published: 2019-04-03
+modified: 2024-01-22
+keywords: ['ark','survival evolved','marketplace apps', 'server']
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/', '/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-marketplace-apps/','/guides/ark-survival-evolved-marketplace-app/']
-authors: ["Linode"]
+_build:
+  list: false
+noindex: true
+
+deprecated: true
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+ARK: Survival Evolved has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up ARK: Survival Evolved manually on a Compute Instance, see our [Creating a Dedicated ARK Server on Ubuntu](/docs/guides/create-an-ark-server-on-ubuntu) guide.
+{{< /note >}}
 
 [ARK: Survival Evolved](http://playark.com/ark-survival-evolved/) is a multiplayer action-survival game released in 2017. The game places you on a series of fictional islands inhabited by dinosaurs and other prehistoric animals. In ARK, the main objective is to survive. ARK is an ongoing battle where animals and other players have the ability to destroy you. To survive, you must build structures, farm resources, breed dinosaurs, and even set up trading hubs with neighboring tribes.
 

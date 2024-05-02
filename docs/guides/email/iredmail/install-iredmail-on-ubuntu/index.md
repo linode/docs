@@ -1,18 +1,16 @@
 ---
 slug: install-iredmail-on-ubuntu
+title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 description: 'This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.'
+authors: ["Nick Reichley"]
+contributors: ["Nick Reichley"]
+published: 2014-10-06
+modified: 2020-12-04
 keywords: ["email", "mail", "iredmail"]
 tags: ["mysql","email","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/installing-iredmail/','/email/iredmail/install-iredmail-on-ubuntu/','/email/iredmail/installing-iredmail/']
-modified: 2020-12-04
-modified_by:
-  name: James Stewart
-published: 2014-10-06
-title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
-authors: ["Nick Reichley"]
 ---
-
 
 ## Why Run a Mail Server?
 
@@ -151,13 +149,13 @@ The process of obtaining a trusted certificate is outside the scope of this guid
 
 The next section assumes you have the .key and .crt (or .pem) file in hand and are ready to go.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Be sure to apply for a certificate covering either your subdomain (mail.yourdomain.com) or a wildcard of your domain so all subdomains are covered.
 {{< /note >}}
 
 After first logging into the postmaster account, you should have two emails waiting for you. The first is titled "Helpful Links iRedMail" and the second is titled "Details of this iRedMail installation." In the second email, there are various file paths we need, since we are replacing the SSL certificate and need to know the DKIM public key for our DNS TXT entry. First up, certificate replacement.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For if your certificate issuer uses `.pem` files instead of `.crt`, be sure to replace the file extension in the instructions below.
 {{< /note >}}
 
@@ -381,7 +379,7 @@ For this reason, the author recommends turning this module off. Note, since bein
 
 As a final test, you can utilize a service such as [Mail Tester](http://www.mail-tester.com) to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of 10/10 on Mail Tester's site. If not, Mail Tester provides you with a report indicating what portion of your configuration needs improvement.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 While some DNS records update almost instantaneously, updates can take up to 24 hours to propagate. You may receive a lower score on these tests if your records have not yet updated.
 {{< /note >}}
 

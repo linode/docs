@@ -1,14 +1,11 @@
 ---
+title: "Deploy Joplin through the Linode Marketplace"
 description: "Deploy Joplin on a Linode Compute Instance. Joplin is an open source note-taking app."
+published: 2022-03-29
 keywords: ['productivity','notes','docs']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-03-29
-modified_by:
-  name: Linode
-title: "Deploy Joplin through the Linode Marketplace"
 external_resources:
 - '[Joplin](https://joplinapp.org/)'
-authors: ["Linode"]
 ---
 
 [Joplin](https://joplinapp.org/) is an open source application designed to take notes using the [Markdown format](https://joplinapp.org/markdown/). It is available on many different platforms, including Windows, macOS, Linux, Android, and iOS. To synchronize your notes across multiple devices, you need to enable synchronization. Synchronization can be facilitated through a service like Nextcloud, Dropbox, OneDrive, the Joplin Cloud, or the Joplin Server software. Our Joplin Marketplace App installs the Joplin Server software, enabling you to securely take control of your own data and enable synchronization between all of your devices.
@@ -25,15 +22,14 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Joplin Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
-- **Password for the postgres database** *(required)*: Enter the password you wish to use for the `joplin` database user.
 
-{{% content "marketplace-limited-user-fields-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 

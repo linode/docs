@@ -1,17 +1,16 @@
 ---
 slug: using-nomad-for-orchestration
+title: "How to Use Nomad for Container Orchestration"
 description: "Nomad provides workload orchestration, similar to Kubernetes, but with a higher degree of simplicity, flexibility, and scalability. Learn through this tutorial more about what Nomad is, how it works, and how you can deploy your own Nomad cluster for container orchestration."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-02-03
 keywords: ['nomad cluster setup','nomad hashicorp','nomad docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-03
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Use Nomad for Container Orchestration"
 external_resources:
 - '[HashiCorp Developer: Nomad Tutorials - Get Started](https://developer.hashicorp.com/nomad/tutorials/get-started)'
 - '[Kevin Wang: My First Nomad Cluster](https://thekevinwang.com/2022/11/20/nomad-cluster/)'
 - '[Pavel Sklenar: Creating Two Node Nomad Cluster](https://blog.pavelsklenar.com/two-node-nomad-cluster/)'
-authors: ["Nathaniel Stickman"]
 ---
 
 [Nomad](https://www.nomadproject.io/) is an open source workload orchestration and scheduling system that offers a simplified and flexible alternative to Kubernetes. Nomad can deploy and manage both containerized and non-containerized applications across efficient, highly scalable clusters. Nomad is part of the HashiCorp ecosystem, giving it built-in integration with tools like Consul, Terraform, and Vault. Learn more about Nomad and how it compares to Kubernetes in our guide [Kubernetes vs Nomad: Which Is Better?](/docs/guides/kubernetes-vs-nomad/).
@@ -219,9 +218,9 @@ Here's a rundown of what the Terraform script does:
 
 Follow the steps outlined here when ready to deploy your own Nomad cluster. These get Terraform set up, prepares the script, and starts provisioning the cluster.
 
-{{< caution >}}
+{{< note type="warning" >}}
 The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Install Terraform by following the [official installation guide](https://learn.hashicorp.com/tutorials/terraform/install-cli). This sets you up with the Terraform command line interface (CLI).
 
@@ -261,9 +260,9 @@ The configurations and commands used in this guide add multiple Linode instances
 
     -   `server_type` and `client_type` indicate the Linode instance types to use for the server and client nodes, respectively. The default provides a Dedicated 4GB instance for each Nomad server, as recommended, and a Linode (shared) 4GB instance for each Nomad client. Find a full list of the instance type designations via the [Linode types API](https://api.linode.com/v4/linode/types).
 
-    {{< caution >}}
-Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
-    {{< /caution >}}
+    {{< note type="warning" >}}
+    Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+    {{< /note >}}
 
 1.  Initialize the Terraform script, which installs the required provisioners, then apply the script to start the provisioning process:
 

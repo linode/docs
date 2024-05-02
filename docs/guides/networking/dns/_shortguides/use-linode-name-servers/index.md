@@ -1,17 +1,15 @@
 ---
 slug: use-linode-name-servers
+title: "Use Linode's Nameservers"
 description: "Shortguide for setting Linode's nameservers as the authoritative nameservers for a domain"
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-07-19
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
 tags: ["dns","networking","linux platform"]
-modified: 2018-07-19
-modified_by:
-  name: Nathan Melehan
-title: "Use Linode's Nameservers"
-published: 2018-07-19
 headless: true
 aliases: ['/networking/dns/use-linode-name-servers/']
-authors: ["Nathan Melehan"]
 ---
 
 ### (Optional) Prepare Your Domain Name to Move

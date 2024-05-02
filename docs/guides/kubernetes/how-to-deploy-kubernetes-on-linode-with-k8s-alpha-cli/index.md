@@ -1,19 +1,18 @@
 ---
 slug: how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli
+title: 'Deploy Kubernetes on Linode with the k8s-alpha CLI'
 description: 'This article gives you step-by-step instructions for deploying and managing Kubernetes clusters with the K8S-Alpha CLI, a plugin for the Linode CLI.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-04-29
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-04-29
-modified_by:
-  name: Linode
-title: 'Deploy Kubernetes on Linode with the k8s-alpha CLI'
 aliases: ['/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/']
 concentrations: ["Kubernetes"]
-deprecated: true
 external_resources:
   - '[Linode Kubernetes Tools](https://developers.linode.com/kubernetes/)'
-authors: ["Linode"]
+deprecated: true
 ---
 ![How to Deploy Kubernetes on Linode with the k8s-alpha CLI](how-to-deploy-kubernetes-on-linode.png)
 

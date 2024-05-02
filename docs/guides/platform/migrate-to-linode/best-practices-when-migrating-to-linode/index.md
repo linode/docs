@@ -1,16 +1,15 @@
 ---
 slug: best-practices-when-migrating-to-linode
+title: Best Practices when Migrating to Linode
 description: 'Best practices when migrating a website or other cloud service to Linode.'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-07-31
+modified: 2020-12-03
 keywords: ["migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-03
-modified_by:
-  name: Linode
-published: 2018-07-31
-title: Best Practices when Migrating to Linode
 tags: ["linode platform"]
 aliases: ['/platform/migrate-to-linode/best-practices-when-migrating-to-linode/']
-authors: ["Nathan Melehan"]
 ---
 
 This guide describes the recommended strategy for migrating your services from another host to Linode. The specific steps you need to carry out vary depending on the software you use. However, the high-level outline is generally the same regardless of the nature of your service. The [Migrate to Linode](/docs/guides/platform/migrate-to-linode/) section offers other guides which describe migrating particular services in more detail.
@@ -63,7 +62,7 @@ Install the same software stack that is present on your current host on your new
 
 If your host provides a shared environment and you're not sure which software is needed, ask your host if they can provide more information about the software they run. For example, WordPress sites are powered by PHP, a web server, and a database, so installing a [LAMP stack](/docs/guides/web-servers/lamp/) would be sufficient.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You may want to install your software via a [configuration management tool](/docs/guides/applications/configuration-management/). Configuration management is a method for condensing your installation scripts into a *recipe* that can be run repeatedly. This results in the same deployment every time. Once you've written your recipes, configuration management can greatly speed up creating new deployments and maintenance of existing deployments. These tools also minimize the potential for human error.
 {{< /note >}}
 

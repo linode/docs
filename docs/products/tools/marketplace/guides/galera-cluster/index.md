@@ -2,21 +2,19 @@
 title: "Deploy a Galera Cluster through the Linode Marketplace"
 description: "This guide shows how to deploy a MySQL/MariaDB Galera Cluster through the Linode Marketplace."
 published: 2023-03-20
-modified_by:
-  name: Linode
+modified: 2024-04-04
 keywords: ['database','mysql','rdbms','relational database','mariadb']
 tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
 - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
-authors: ["Linode"]
 ---
 
 Galera provides a performant MariaDB database solution with synchronous replication to achieve high availability. Galera is deployed with MariaDB, which is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB was originally based off of MySQL and maintains backwards compatibility.
 
 {{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MeriaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB through the Linode Marketplace](/docs/products/tools/marketplace/guides/mysql/).
+This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MariaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB through the Linode Marketplace](/docs/products/tools/marketplace/guides/mysql/).
 {{< /note >}}
 
 ## Deploying a Marketplace App

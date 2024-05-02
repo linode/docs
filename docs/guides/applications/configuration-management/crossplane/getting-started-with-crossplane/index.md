@@ -2,12 +2,11 @@
 slug: getting-started-with-crossplane
 title: "How to Use Crossplane"
 description: "Crossplane extends Kubernetes as a universal control plane. Learn more about what Crossplane has to offer and how you can start with it in this tutorial."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-06-12
 keywords: ['crossplane kubernetes','crossplane examples','crossplane vs terraform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-06-12
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Crossplane: Documentation](https://docs.crossplane.io/)'
 ---
@@ -111,9 +110,9 @@ To get started, this section walks through a fully-functioning example. The exam
 
 While relatively simple, this example provides a strong base model. You can easily build on the configurations here to make Crossplane work for a diverse range of infrastructure needs.
 
-{{< caution >}}
+{{< note type="warning" >}}
 The configurations and commands used in this guide add one or more Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
-{{< /caution >}}
+{{< /note >}}
 
 1. The provider allows you to deploy Akamai Cloud (formerly Linode) instances with Crossplane.
 

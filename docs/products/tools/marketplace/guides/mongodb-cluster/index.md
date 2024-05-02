@@ -3,15 +3,12 @@ title: "Deploy a MongoDB Cluster through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
 published: 2023-03-20
 expiryDate: 2023-05-01
-modified_by:
-  name: Linode
 keywords: ['mongodb','marketplace', 'database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
-authors: ["Linode"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).

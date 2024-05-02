@@ -1,9 +1,8 @@
 ---
 title: Configure Credentials for Managed Services
-linkTitle: Configure Credentials
 description: "Learn how to view, add, and edit credentials that the Support team can use when investigating an issue related to Linode Managed Services."
 published: 2023-04-11
-authors: ["Linode"]
+linkTitle: Configure Credentials
 ---
 
 Many of the applications running on your servers can only be accessed with the appropriate username and password combination. To provide Linode's staff with access to those applications, you should upload *credentials* for them to the Linode Cloud Manager. Once uploaded, you can also link credentials to specific Managed services to communicate which ones Linode Support should use when troubleshooting the service.

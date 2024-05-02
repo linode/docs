@@ -1,15 +1,14 @@
 ---
 slug: delete-record-sql
+title: "Developer’s Guide to the Delete Query in SQL"
+title_meta: "Using the Delete Command in SQL"
 description: 'Learn the SQL delete syntax and the step-by-step process to delete rows from tables in SQL.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2023-04-10
 keywords: ['delete record sql', 'delete all rows', 'how to delete row in sql', 'delete query in sql', 'sql delete syntax']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-10
-modified_by:
-  name: Linode
-title_meta: "Using the Delete Command in SQL"
-title: "Developer’s Guide to the Delete Query in SQL"
-authors: ["Martin Heller"]
 ---
 
 The `DELETE` statement allows you to remove a row or rows from a database table using Structured Query Language (SQL). This guide explains the `DELETE` statement, ways to use it, and what can make a `DELETE` statement fail.
@@ -20,9 +19,9 @@ The acronym CRUD refers to the four basic transactional operations in SQL: creat
 
 The `DELETE` statement removes a single row, a group of rows that meet some criteria, or all rows from a single database table. If the specified row does not exist, the `DELETE` statement fails. If the specified row does exist but has a foreign key constraint with an existing reference, the `DELETE` statement fails unless an `ON DELETE CASCADE` trigger applies.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Be cautious when executing `DELETE` statements, because they permanently remove database rows. The effects can be even more extensive when an `ON DELETE CASCADE` trigger exists. This is because if a row in a parent table is deleted, then all the corresponding records in the child table are automatically deleted.
-{{< /caution >}}
+{{< /note >}}
 
 This guide includes several verification techniques to ensure that you are deleting only the desired rows, and also ways to save rows elsewhere before removing them.
 

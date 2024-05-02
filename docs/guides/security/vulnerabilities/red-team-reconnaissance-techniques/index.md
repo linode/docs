@@ -1,14 +1,13 @@
 ---
 slug: red-team-reconnaissance-techniques
+title: "Red Team Reconnaissance Techniques"
 description: 'This guide covers the process of how to perform both passive and active reconnaissance for Red Team operations.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Red Team Reconnaissance Techniques"
-authors: ["HackerSploit"]
 ---
 
 {{% content "hackersploit-red-team-series-note-shortguide" %}}

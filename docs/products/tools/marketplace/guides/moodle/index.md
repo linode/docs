@@ -1,16 +1,13 @@
 ---
+title: "Deploy Moodle through the Linode Marketplace"
 description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using the Linode Marketplace."
-keywords: ['learning','educator','management', and 'school']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2023-04-11
-modified_by:
-  name: Linode
-title: "Deploy Moodle through the Linode Marketplace"
+keywords: ['learning','educator','management', and 'school']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/deploying-moodle-marketplace-app/','/guides/moodle-marketplace-app/']
 external_resources:
 - '[Moodle](https://moodle.org/)'
-authors: ["Linode"]
 ---
 
 Moodle is the most widely used open source learning management system. It is aimed to provide learners, educators, and administrators with a single robust, secure, and integrated solution to develop customized learning environments.

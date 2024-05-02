@@ -1,20 +1,18 @@
 ---
 slug: install-gitlab-with-docker
+title: "Install GitLab with Docker"
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode using the container application Docker.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-01-11
 keywords: ['gitlab', 'git', 'docker']
 tags: ["version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-01-11
-modified: 2019-01-11
-modified_by:
-  name: Linode
-title: "Install GitLab with Docker"
 external_resources:
 - '[GitLab EE Docker Image](https://hub.docker.com/r/gitlab/gitlab-ee)'
 - '[GitLab Docker Documentation](https://docs.gitlab.com/omnibus/docker/)'
 - '[GitLab SSL Configuration](https://docs.gitlab.com/omnibus/settings/ssl.html#lets-encrypt-integration)'
 aliases: ['/development/version-control/install-gitlab-with-docker/']
-authors: ["Linode"]
 ---
 
 ![Install GitLab with Docker](install-gitlab-with-docker.png "Install GitLab with Docker")
@@ -29,7 +27,7 @@ The GitLab application has a number of services it depends on, including Postgre
 
 GitLab is a resource-intensive application. To get the most out of GitLab, we recommend a Linode with at least 8GB of memory and at least 2 CPU cores. For more information on system requirements, visit the [GitLab Hardware Requirements page](https://docs.gitlab.com/ce/install/requirements.html#hardware-requirements).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was written for and tested with Ubuntu 18.04. You may be able to adapt this guide to other operating systems supported by Docker. When following this guide under another OS, use the Docker [installation instructions](https://docs.docker.com/install/) for that OS.
 {{< /note >}}
 
@@ -210,8 +208,7 @@ To start a stopped container, issue the `start` command by supplying the contain
 Once the container has stopped, you can remove the container using the `rm` command, again supplying the container ID or container name:
 
     sudo docker container rm gitlab-linode
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Removing the container will not delete your projects and repositories.
 {{< /note >}}
 
