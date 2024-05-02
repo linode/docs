@@ -1,25 +1,22 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Install Prosody XMPP Server on Ubuntu 10.10'
 description: 'This guide will show you how to install, configure, and setup a basic configuration of Prosody, a lightweight XMPP server on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-23
+modified: 2012-10-03
 keywords: ["prosody", "prosody ubuntu lucid", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-10-10-maverick/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-10-maverick/']
-modified: 2012-10-03
-modified_by:
-  name: Linode
-published: 2011-02-23
-title: 'Install Prosody XMPP Server on Ubuntu 10.10'
 relations:
     platform:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight. Prosody uses fewer resources than its counterparts and is designed to be easy to configure and run. [ejabberd](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/guides/install-openfire-on-ubuntu-12-04-for-instant-messaging/) may be better suited for larger applications, but for most independent and small scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for running an XMPP server for a very small base of users, or for XMPP development.
 
@@ -65,7 +62,7 @@ To allow Prosody to provide XMPP/jabber services for more than one domain, inser
 
 {{< file "/etc/prosody/prosody.cfg.lua" lua >}}
 VirtualHost "example.com"
-VirtaulHost "example.com"
+VirtualHost "example.com"
 VirtualHost "staff.example.com"
 
 {{< /file >}}

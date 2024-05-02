@@ -1,16 +1,15 @@
 ---
 slug: how-to-use-monitorix-for-system-monitoring
+title: "Using Monitorix for System Monitoring"
+title_meta: "How to Use Monitorix for System Monitoring"
 description: 'This guide will show you how to use Monitorx, a free and open-source monitoring tool to keep track of several Linux services and system resources.'
+authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
+published: 2021-02-19
 keywords: ['how to use monitorix']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
 image: UseMonitorix_sysmon.png
-modified_by:
-  name: Linode
-title: "Using Monitorix for System Monitoring"
-title_meta: "How to Use Monitorix for System Monitoring"
-authors: ["Steven J. Vaughan-Nichols"]
 ---
 
 [Monitorix](https://www.monitorix.org/) is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This Linux system monitoring tool is composed of two programs. The first, monitorix, is a system data logging daemon written in [Perl](/docs/guides/development/perl/). The second, its web interface, uses the CGI script, `monitorix.cgi`.
@@ -61,16 +60,14 @@ enable_parallelizing = y
 include_dir = /etc/monitorix/conf.d
 ...
 {{</ file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Debian and Ubuntu Linux systems contain an additional configuration file, `/etc/monitorix/conf.d/00-debian.conf`. This file includes Debian/Ubuntu-specific options and is read after the main Monitorix configuration file. This means any changes you make to the `/etc/monitorix/conf.d/00-debian.conf` supersede `monitorix.conf` options.
 {{< /note >}}
 
 1. Once you're done configuring Monitorix, restart the Monitorix service to enable your updates.
 
         sudo service monitorix restart
-
-{{< note respectIndent=false >}}
+{{< note >}}
 By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](/docs/guides/web-servers/apache/), [Lighttpd](/docs/guides/web-servers/lighttpd/), or Nginx web servers.
 {{< /note >}}
 

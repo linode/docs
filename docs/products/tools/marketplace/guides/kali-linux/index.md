@@ -1,13 +1,10 @@
 ---
+title: "Deploy Kali Linux through the Linode Marketplace"
 description: "Deploy Kali Linux, a popular Linux distribution for penetration testing and security research, on a Linode Compute Instance."
+published: 2022-07-05
 keywords: ['kali','security','pentest']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-07-05
-modified_by:
-  name: Linode
-title: "Deploy Kali Linux through the Linode Marketplace"
 aliases: ['/products/tools/marketplace/guides/kalilinux/']
-authors: ["Linode"]
 ---
 
 [Kali Linux](https://www.kali.org/) is a specialized Debian-based Linux distribution that has become an industry-standard tool for penetration testing. Kali Linux includes hundreds of free tools for reverse engineering, penetration testing, computer forensics, security audits, and more. It is open source and prioritizes simplicity. To learn more about Kali Linux and determine if its a viable solution for your workloads, see the following resources from its official documentation site:

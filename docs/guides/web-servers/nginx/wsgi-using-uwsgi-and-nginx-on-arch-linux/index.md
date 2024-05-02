@@ -1,25 +1,22 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-arch-linux
-deprecated: true
+title: WSGI using uWSGI and nginx on Arch Linux
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Arch Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-28
+modified: 2013-10-07
 keywords: ["uwsgi", "wsgi", "nginx", "python", "arch linux"]
 tags: ["web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-arch-linux/','/web-servers/nginx/python-uwsgi/arch-linux/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-arch-linux/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2010-12-28
-title: WSGI using uWSGI and nginx on Arch Linux
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Arch Linux
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 

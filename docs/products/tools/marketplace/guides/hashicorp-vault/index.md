@@ -1,12 +1,9 @@
 ---
+title: "Deploy HashiCorp Vault through the Linode Marketplace"
 description: "Deploy HashiCorp Vault, an open source, centralized secrets management system, on a Linode Compute Instance.'"
+published: 2022-08-09
 keywords: ['HashiCorp','vault','secrets',]
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-08-09
-modified_by:
-  name: Linode
-title: "Deploy HashiCorp Vault through the Linode Marketplace"
-authors: ["Linode"]
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.

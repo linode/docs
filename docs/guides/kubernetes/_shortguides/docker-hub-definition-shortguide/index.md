@@ -1,16 +1,15 @@
 ---
 slug: docker-hub-definition-shortguide
-description: 'Shortguide that displays the definition for Docker Hub.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Heather Zoppetti
-published: 2019-07-12
 title: Docker Hub Definition
+description: 'Shortguide that displays the definition for Docker Hub.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-12
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/docker-hub-definition-shortguide/']
-authors: ["Linode"]
 ---
 
 ### Docker Hub

@@ -2,15 +2,12 @@
 title: Transfer Services to a Different Account
 title_meta: How to Transfer Services to a Different Linode Account
 description: "Learn how to transfer ownership of Linode services to a different account."
+published: 2021-03-10
+modified: 2023-11-15
 keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
 tags: ["cloud manager","linode platform","account"]
-published: 2021-03-10
-modified: 2023-05-16
-modified_by:
-  name: Linode
 image: TransferOwn_LinodeServ_ST.png
 aliases: ['/guides/platform/manager/service-transfers/', '/guides/service-transfers/']
-authors: ["Linode"]
 ---
 
 Within the Linode Platform, Compute Instances can be transferred from one account to a different account. Here's an overview of this transfer process:
@@ -33,15 +30,15 @@ Each Compute Instance that you wish to transfer must have a unique label that is
 
 ## Sending Linode Services
 
-1. Click the [Account](https://cloud.linode.com/account) link in the sidebar.
+1.  Click the [Account](https://cloud.linode.com/account) link in the sidebar.
 
-1. Click the **Service Transfers** tab on the Account page.
+1.  Click the **Service Transfers** tab on the Account page.
 
-1. Click the **Make a Service Transfer** button on the Service Transfers page to begin.
+1.  Click the **Make a Service Transfer** button on the Service Transfers page to begin.
 
     ![Selecting 'Make a Service Transfer' initiates a transfer request.](make-transfer-start.png "Selecting 'Make a Service Transfer' initiates a transfer request.")
 
-1. Select the services to include in the transfer by checking the empty boxes next to them. Checking the box in the heading for a service type selects all of the services for that type. You can also use the search bar to filter services by label. As you select services, they are added to the **Service Transfer Summary**.
+1.  Select the services to include in the transfer by checking the empty boxes next to them. Checking the box in the heading for a service type selects all of the services for that type. You can also use the search bar to filter services by label. As you select services, they are added to the **Service Transfer Summary**.
 
     {{< note >}}
     Only Compute Instances can be transferred at this time.
@@ -51,7 +48,7 @@ Each Compute Instance that you wish to transfer must have a unique label that is
 
     ![Send the generated token to the recipient via email or other secure method.](make-transfer-token.png "Send the generated token to the recipient via email or other secure method.")
 
-1. If the request is successful, a summary window appears that contains a Service Transfer token and a sample message to send to the receiving account. A confirmation email is also sent to the sending account with details of the transfer, including the Service Transfer token.
+1.  If the request is successful, a summary window appears that contains a Service Transfer token and a sample message to send to the receiving account. A confirmation email is also sent to the sending account with details of the transfer, including the Service Transfer token.
 
     {{< note >}}
     Linode does not send the Service Transfer token on your behalf. You must send the token to the receiving account by email or other method.
@@ -73,18 +70,18 @@ Each Compute Instance that you wish to transfer must have a unique label that is
     Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they have been accepted by a receiving account. Take care when sharing your Service Transfer token, and only transmit it in a secure manner.
     {{< /note >}}
 
-1. If the request is unsuccessful, a list of conditions that are blocking the transfer displays on the Service Transfer page. These conditions must be corrected before the transfer can be created, and must be maintained for the transfer to be accepted. Here is a full list of conditions that must be met for a successful transfer request:
+1.  If the request is unsuccessful, a list of conditions that are blocking the transfer displays on the Service Transfer page. These conditions must be corrected before the transfer can be created, and must be maintained for the transfer to be accepted. Here is a full list of conditions that must be met for a successful transfer request:
 
-    - The sending account must not have a past due balance or active Terms of Service violation.
+    -   The sending account must not have a past due balance or active Terms of Service violation.
 
-    - The service must be owned by the sending account.
+    -   The service must be owned by the sending account.
 
-    - The service must not be assigned to another Service Transfer that is pending or that has been accepted and is
+    -   The service must not be assigned to another Service Transfer that is pending or that has been accepted and is
     incomplete.
 
-    - Compute Instances must not:
+    -   Compute Instances must not:
 
-        - be assigned to a NodeBalancer, Firewall, or Managed Service.
+        - be assigned to a NodeBalancer, Firewall, VLAN or Managed Service.
 
         - have any attached Block Storage Volumes.
 
@@ -94,33 +91,33 @@ Each Compute Instance that you wish to transfer must have a unique label that is
 
 ## Receiving Linode Services
 
-1. Click the [Account](https://cloud.linode.com/account) link in the sidebar.
+1.  Click the [Account](https://cloud.linode.com/account) link in the sidebar.
 
-1. Click the **Service Transfers** tab on the Account page.
+1.  Click the **Service Transfers** tab on the Account page.
 
-1. In the **Receive a Service Transfer** field, enter the Service Transfer token you have received from the sender and click the **Review Details** button.
+1.  In the **Receive a Service Transfer** field, enter the Service Transfer token you have received from the sender and click the **Review Details** button.
 
     ![Review the summary of Linode services to be transferred prior to accepting.](receive-transfer.png "Review the summary of Linode services to be transferred prior to accepting.")
 
-1. If the services are eligible for transfer, you are prompted to confirm responsibility for billing associated with those services. Billing begins for the receiving account after the transfer has been completed. Confirm billing responsibility and click **Accept Transfer** to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts.
+1.  If the services are eligible for transfer, you are prompted to confirm responsibility for billing associated with those services. Billing begins for the receiving account after the transfer has been completed. Confirm billing responsibility and click **Accept Transfer** to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts.
 
     {{< note >}}
     Service Transfers can take up to 3 hours to complete once they are accepted by the recipient. Once the transfer is complete, another confirmation email is sent to both the sending and receiving accounts. If the transfer fails, the sending account must initiate a new Service Transfer.
     {{< /note >}}
 
-1. If there are any conditions in place that are blocking the transfer, they are displayed on the Service Transfer page. These conditions must be corrected by the sending or receiving account as is applicable before the transfer can be accepted. Here is a full list of conditions that must be met for a successful transfer request:
+1.  If there are any conditions in place that are blocking the transfer, they are displayed on the Service Transfer page. These conditions must be corrected by the sending or receiving account as is applicable before the transfer can be accepted. Here is a full list of conditions that must be met for a successful transfer request:
 
-    - Only pending transfers can be accepted. A transfer cannot be accepted if it has expired or been cancelled.
+    -   Only pending transfers can be accepted. A transfer cannot be accepted if it has expired or been cancelled.
 
-    - The receiving account must have a registered payment method and must not have a past due balance or other account limitations making it ineligible to own the transferred services.
+    -   The receiving account must have a registered payment method and must not have a past due balance or other account limitations making it ineligible to own the transferred services.
 
-    - Both the sending and receiving accounts must not have any active Terms of Service violations.
+    -   Both the sending and receiving accounts must not have any active Terms of Service violations.
 
-    - The service must still be owned by the sending account.
+    -   The service must still be owned by the sending account.
 
-    - Compute Instances must not:
+    -   Compute Instances must not:
 
-        - be assigned to a NodeBalancer, Firewall, or Managed Service.
+        - be assigned to a NodeBalancer, Firewall, VLAN, or Managed Service.
 
         - have any attached Block Storage Volumes.
 
@@ -150,4 +147,4 @@ Cancellations are irreversible. Once cancelled, you must start a new Service Tra
 
 1. Under **Pending Service Transfers**, locate the transfer you wish to cancel, click the corresponding **Cancel** button, and confirm the cancellation. A confirmation email is sent to the sending account.
 
-    ![Your cancelled Service Transfers are listed on the Service Transfers page.](cancel-transfer.png "Your cancelled Service Transfers are listed on the Service Transfers page.")
+    ![Your cancelled Service Transfers are listed on the Service Transfers page.](cancel-transfer.png)

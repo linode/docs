@@ -1,18 +1,15 @@
 ---
+title: "Upgrade a Cluster to a Newer Kubernetes Version"
 description: 'This guide describes the process of upgrading LKE cluster versions to prevent any potential downtime due to an outdated configuration'
-keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
-tags: ["security", "kubernetes","container"]
 published: 2022-03-10
 modified: 2023-05-02
-modified_by:
-  name: Linode
-title: "Upgrade a Cluster to a Newer Kubernetes Version"
+keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
+tags: ["security", "kubernetes","container"]
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Kubernetes Changelog](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG)'
 aliases: ['/guides/upgrading-lke-minor-versions/']
-authors: ["Linode"]
 ---
 
 Kubernetes releases new software versions and patches on a regular cadence. These updates are integrated into LKE *after* they are released on upstream Kubernetes, which ensures they are properly tested on the Linode Platform. Kubernetes uses a semantic versioning system that includes three parts: x.y.z, where **x** is the *major* version, **y** is the *minor* version, and **z** is the *patch* version.
@@ -44,7 +41,7 @@ Kubernetes versions are also regularly *deprecated* on LKE. This prevents custom
 
 Changelogs for each new version of Kubernetes are published on the [Kubernetes CHANGELOG](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG) page on GitHub. To ensure a clean upgrade and eliminate potential issues, review the changelog entry that corresponds with the Kubernetes version to which your cluster will be upgraded. Since LKE clusters can only be upgraded one minor version at a time (i.e. v1.24.x to v1.25.x), you only need to review a single changelog entry.
 
-Each Kubernetes changelog entry includes patch versions and apha/development versions. It's recommended that you review every section titled `Changelog since vX.Y.Z` starting from your current Kubernetes version and continuing through the latest patch release for the version to which you'll be upgraded. Compare these changes with the components and configuration of your cluster to help identify any breaking changes or issues that may occur. Additionally, review any upgrade notes, known issues, deprecation notes, or API changes, all of which may appear alongside each changelog.
+Each Kubernetes changelog entry includes patch versions and alpha/development versions. It's recommended that you review every section titled `Changelog since vX.Y.Z` starting from your current Kubernetes version and continuing through the latest patch release for the version to which you'll be upgraded. Compare these changes with the components and configuration of your cluster to help identify any breaking changes or issues that may occur. Additionally, review any upgrade notes, known issues, deprecation notes, or API changes, all of which may appear alongside each changelog.
 
 The [Kubernetes Blog](https://kubernetes.io/blog/) may also include a post regarding changes in each version (such as the [Kubernetes Removals and Major Changes In 1.25](https://kubernetes.io/blog/2022/08/04/upcoming-changes-in-kubernetes-1-25/) post). These blog posts may be less detailed, but should be easier to understand so you can quickly identify major changes.
 
