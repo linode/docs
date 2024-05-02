@@ -2,14 +2,13 @@
 slug: how-to-use-fluentd-for-data-logging
 title: "How to Use Fluentd for Data Logging"
 title_meta: "Using Fluentd for Open Source Unified Data Logging"
-description: 'Discover the power of Fluentd for data logging. This guide introduces this open source tool, provides steps to install it, and a simple example to get you started.'
-og_description: 'Discover the power of Fluentd for data logging. This guide introduces this open source tool, provides steps to install it, and a simple example to get you started.'
+description: "Discover the power of Fluentd for data logging. This guide introduces this open source tool, provides steps to install it, and a simple example to get you started."
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2023-08-17
+modified: 2024-05-02
 keywords: ['fluentd for data logging','fluentd','open source data logging','unified logging layer','logging with json']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Tom Henderson"]
-published: 2023-08-17
-modified_by:
-  name: Linode
 external_resources:
 - '[Fluentd](https://www.fluentd.org/)'
 ---
