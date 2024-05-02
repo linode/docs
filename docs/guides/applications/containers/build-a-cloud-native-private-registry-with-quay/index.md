@@ -2,21 +2,19 @@
 slug: build-a-cloud-native-private-registry-with-quay
 title: "How to Build a Cloud Native Private Registry With Quay"
 description: 'Learn how to create your own cloud-native private registry using Quay. This guide covers everything from setup to deployment on a CentOS Stream instance.'
+authors: ["John Mueller"]
+published: 2024-05-02
 keywords: ['build cloud-native container registry with quay','red hat quay','centos stream','private container registry','cloud-native registry','secure private registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2024-03-24
-modified_by:
-  name: Linode
 ---
 
-Docker doesn’t provide long term storage or image distribution capabilities, so developers need something more. [Docker Registry](https://docs.docker.com/registry/) performs these tasks, and using it guarantees the same application runtime environment through virtualization. However, building an image can involve a significant time investment, which is where [Quay](https://www.redhat.com/en/resources/quay-datasheet) comes in. A registry like Quay can both build and store containers. You can then deploy these containers in a shorter time, and with less effort, than using Docker Registry. This guide explains how Quay can be an essential part of the development process and details how to deploy a Quay registry.
+Docker doesn’t provide long term storage or image distribution capabilities, so developers need something more. [Docker Registry](https://docs.docker.com/registry/) performs these tasks, and using it guarantees the same application runtime environment through virtualization. However, building an image can involve a significant time investment, which is where [Quay](https://www.redhat.com/en/resources/quay-datasheet) (pronounced *kway*) comes in. A registry like Quay can both build and store containers. You can then deploy these containers in a shorter time and with less effort than using Docker Registry. This guide explains how Quay can be an essential part of the development process and details how to deploy a Quay registry.
 
 ## What is Red Hat Quay?
 
 Red Hat Quay is a fault-tolerant and highly reliable registry equipped with the functionality needed to work in large-scale environments. Quay provides a purpose-built, centralized, and scalable registry platform that functions in a multi-cluster environment spanning multiple sites. Quay also analyzes container images for security vulnerabilities before you run them. This ensures that deployments spanning geographically separated areas don’t suffer from various forms of executable corruption. Also part of the security functionality, Quay offers granular access control. This means that developers working on a project adhere to the [principle of least privilege](https://www.paloaltonetworks.com/cyberpedia/what-is-the-principle-of-least-privilege), yet still have the rights needed to collaborate on tasks.
 
-## Considering the Quay Features
+## Quay Features
 
 Quay provides a wealth of features, broken down into the following categories:
 
@@ -377,17 +375,17 @@ It’s time to install a copy of Quay. This guide uses the free and open source 
 
     -   In the **Server Configuration** section, enter your Akamai Cloud Compute Instance's public IPv4 Address for the **Server Hostname** field:
 
-        ![The Server Configuration section of the Project Quay setup screen.](project-quay-setup-server-configuration.png "The Server Configuration section of the Project Quay setup screen.")
+        ![The Server Configuration section of the Project Quay setup screen.](project-quay-setup-server-configuration.png)
 
     -   In the **Database** section, select **Postgres** from the **Database Type** dropdown menu:
 
-        ![The Database section of the Project Quay setup screen.](project-quay-setup-database.png "The Database section of the Project Quay setup screen.")
+        ![The Database section of the Project Quay setup screen.](project-quay-setup-database.png)
 
         Enter your Akamai Cloud Compute Instance's public IPv4 Address for the **Database Server** field. Enter `quay_registry` for both the **Username** and **Database Name** fields. For the **Password** field, enter the password you chose in step three.
 
     -   In the **Redis** section, enter your Akamai Cloud Compute Instance's public IPv4 Address for the **Redis Hostname** field:
 
-        ![The Redis section of the Project Quay setup screen.](project-quay-setup-redis.png "The Redis section of the Project Quay setup screen.")
+        ![The Redis section of the Project Quay setup screen.](project-quay-setup-redis.png)
 
     {{< note >}}
     See [Chapter 4. Configuring Red Hat Quay](https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html/deploy_red_hat_quay_-_basic/configuring_red_hat_quay) of the official documentation for further options to configure your Quay instance.
@@ -430,15 +428,15 @@ Starting Quay like this provides you with a continuously scrolling screen of upd
 
 1.  With server now configured to work with Quay, access the registry at `http://YOUR_IP ADDRESS:8080/` in your web browser. During your first access, you see the Quay repository screen:
 
-    ![The Project Quay login screen.](project-quay-login-screen.png "The Project Quay login screen.")
+    ![The Project Quay login screen](project-quay-login-screen.png)
 
 1.  Click **Create Account** to create a new account. Once you create a new account, you see a new screen telling you that your account has no repositories:
 
-    ![The Project Quay new user empty repositories screen.](project-quay-new-user-empty-repositories-screen.png "The Project Quay new user empty repositories screen.")
+    ![The Project Quay new user empty repositories screen](project-quay-new-user-empty-repositories-screen.png)
 
 1.  Click **Creating a New Repository** to create your first repository. The next screen begins by asking you for a repository name, which must use a number or lowercase letter (uppercase letters may cause Quay to reject the name).
 
-    ![The Project Quay create repositories screen.](project-quay-create-repositories-screen.png "The Project Quay create repositories screen.")
+    ![The Project Quay create repositories screen](project-quay-create-repositories-screen.png)
 
 1.  Choose between a public or private repository, then click the associated **Create** button.
 
@@ -446,7 +444,7 @@ Starting Quay like this provides you with a continuously scrolling screen of upd
 
 1.  There is also a **Repository Settings** tab where you can configure the repository details. Part of these settings is to add or remove users and adjust specific repository rights: read, write, and admin. You can also configure events and notifications based on repository activity to keep everyone on the project informed about changes.
 
-    ![The Project Quay repository settings screen.](project-quay-repository-settings-screen.png "The Project Quay repository settings screen.")
+    ![The Project Quay repository settings screen](project-quay-repository-settings-screen.png)
 
 1.  To create additional repositories, click the **+** icon, then choose **New Repository** from the drop down list. [Chapter 1. Creating a repository](https://access.redhat.com/documentation/en-us/red_hat_quay/3.2/html/use_red_hat_quay/creating_a_repository) provides you with additional details on working with repositories using Quay.
 
