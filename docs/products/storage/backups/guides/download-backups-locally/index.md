@@ -1,17 +1,14 @@
 ---
-title: Download a Local Copy of a Backup
 slug: download-backups-locally
+title: Download a Local Copy of a Backup
 description: "This guide provides you with step-by-step instructions for downloading files (or entire disks) from backups stored within Backup service."
-keywords: ["backup", "backups", "rsync", "restore", "local"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2023-07-07
-modified_by:
-  name: Linode
+keywords: ["backup", "backups", "rsync", "restore", "local"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["security"]
 aliases: ['/security/data-portability/download-backups-locally/','/guides/download-backups-locally/']
 image: download-a-local-copy-of-your-linode-backup.png
-authors: ["Edward Angert"]
 ---
 
 The [Linode Backups](/docs/products/storage/backups/) service is used to create automatic and manual snapshots of your Compute Instances. A completed backup can be directly restored to the origin Compute Instance or to a new instance in the same data center. These workflows make it easy to revert to a working configuration if you run into any unexpected issues with your software.

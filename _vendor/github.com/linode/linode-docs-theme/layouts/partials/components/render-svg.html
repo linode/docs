@@ -1,0 +1,111 @@
+{{ $diagramDescriptionID := .url.Query.Get "diagram-description-id" }}
+
+
+<div class="h-96" x-data="{ visible: false }" x-intersect.once="visible = true">
+  <template x-if="visible">
+    <div
+      x-data="lnvSVGViewer({diagramDescriptionID: '{{ $diagramDescriptionID }}' })"
+      class="cursor-move h-full overflow-hidden relative large-diagram"
+      @dblclick="toggleModal()"
+      @click.once="activate()">
+      {{ template "render-svg-modal" }}
+      <div
+        class="large-diagram-buttons absolute right-10 bottom-10 z-20 flex flex-col">
+        <span class="isolate inline-flex rounded-md shadow-sm">
+          {{ template "render-svg-button" (dict "iconhref" "#icon--zoom-in" "onclick" "zoom(1)" "sronly" "Zoom in" "placement" "left" ) }}
+          {{ template "render-svg-button" (dict "iconhref" "#icon--zoom-out" "onclick" "zoom(-1)" "sronly" "Zoom out"  "placement" "right") }}
+        </span>
+        <span class="isolate inline-flex rounded-md shadow-sm mt-2">
+          {{ template "render-svg-button" (dict "iconhref" "#icon--arrow-left" "onclick" "pan('left')" "sronly" "Pan left" "placement" "left" ) }}
+          {{ template "render-svg-button" (dict "iconhref" "#icon--arrow-right" "onclick" "pan('right')" "sronly" "Pan right" "placement" "right" ) }}
+        </span>
+        <span class="isolate inline-flex rounded-md shadow-sm mt-2">
+          {{ template "render-svg-button" (dict "iconhref" "#icon--arrow-up" "onclick" "pan('up')" "sronly" "Pan up" "placement" "left" ) }}
+          {{ template "render-svg-button" (dict "iconhref" "#icon--arrow-down" "onclick" "pan('down')" "sronly" "Pan down" "placement" "right" ) }}
+        </span>
+        <span class="isolate inline-flex rounded-md shadow-sm mt-2">
+          {{ template "render-svg-button" (dict "iconhref" "#icon--expand" "onclick" "toggleModal" "sronly" "View large" "placement" "left" ) }}
+          {{ template "render-svg-button" (dict  "sronly" "Nothing" "placement" "right" ) }}
+        </span>
+      </div>
+      {{ template "render-svg-tooltip" }}
+      <div class="large-diagram-svg-container diagram-animate">
+        <div class="svg-container">
+          {{ .image.Content | safeHTML }}
+        </div>
+      </div>
+    </div>
+  </template>
+</div>
+{{ define "render-svg-button" }}
+  {{ $rstyles :="rounded-md" }}
+  {{ with .placement }}
+    {{ if eq . "left" }}
+      {{ $rstyles = "-ml-px rounded-l-md" }}
+    {{ end }}
+  {{ end }}
+  {{ if eq . "right" }}
+    {{ $rstyles = "rounded-r-md" }}
+  {{ end }}
+
+
+  <button
+    type="button"
+    {{ with .onclick }}@click.prevent.stop="{{ . }}"{{ end }}
+    class="{{ $rstyles }} relative inline-flex items-center bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
+    <span class="sr-only">{{ .sronly }}</span>
+    {{ with .iconhref }}
+      <svg class="fill-current h-5 w-5">
+        <use href="{{ . }}"></use>
+      </svg>
+    {{ else }}
+      <div class="h-5 w-5"></div>
+    {{ end }}
+  </button>
+{{ end }}
+
+{{ define "render-svg-tooltip" }}
+  <div
+    class="tooltip fixed z-50 bg-gray-200 p-4 m-10 rounded-md flex w-96"
+    x-transition.opacity
+    :style="tooltip.style"
+    x-show="tooltip.show">
+    <div class="tooltip-badge mr-4 mt-2">
+      <span
+        x-text="tooltip.number"
+        class="inline-flex items-center justify-center w-10 h-10 border-2 border-solid border-white rounded-full text-xl font-semibold bg-blue-500 text-white"></span>
+    </div>
+    <div class="tooltip-inner text-black" x-html="tooltip.content"></div>
+  </div>
+{{ end }}
+
+{{ define "render-svg-modal" }}
+  <div
+    x-show="showModal"
+    class="relative z-30"
+    aria-labelledby="Diagram"
+    role="dialog"
+    aria-modal="true">
+    <div class="fixed inset-0 bg-black/75 bg-opacity-75"></div>
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex min-h-full justify-center p-4 text-center items-center">
+        <div
+          @click.away="showModal = ! showModal; $event.preventDefault();"
+          @keydown.escape.window="showModal = false"
+          class="relative overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl sm:my-8 w-full sm:max-w-screen-xl sm:p-6">
+          <div class="svg-container-modal"></div>
+          <button
+            class="absolute top-5 right-5"
+            aria-label="close"
+            @click="showModal = false">
+            <svg
+              class="h-6 w-6 text-gray-700 hover:text-brand cursor-pointer"
+              style="top: 0rem; right: 0rem;">
+              <use href="#icon--times"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

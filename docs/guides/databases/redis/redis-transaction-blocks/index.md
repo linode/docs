@@ -1,18 +1,17 @@
 ---
 slug: redis-transaction-blocks
+title: "Use Redis Transaction Blocks"
+title_meta: "How to Use Redis Transaction Blocks"
 description: "Redis transaction blocks group commands and execute them sequential, as a unit. This guide teaches you how to create, execute, and cancel Redis transaction blocks."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-04-15
 keywords: ['redis transactions','redis multi vs pipeline','redis multi exec']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-15
-modified_by:
-  name: Nathaniel Stickman
-title: "Use Redis Transaction Blocks"
-title_meta: "How to Use Redis Transaction Blocks"
 external_resources:
 - '[Redis: Transactions](https://redis.io/topics/transactions)'
 - '[Redis: Using Pipelining to Speedup Redis Queries](https://redis.io/topics/pipelining)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source, in-memory database used for caching, messaging, and other storage tasks that benefit from fast execution and low latency. The Redis database supports a high degree of control over parallel executions that allow you to fine-tune its performance.
@@ -37,7 +36,7 @@ This guide walks you through using Redis's transaction blocks. Transaction block
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps written in this guide are for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

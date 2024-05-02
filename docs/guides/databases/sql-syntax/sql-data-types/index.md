@@ -1,15 +1,14 @@
 ---
 slug: sql-data-types
+title: "Introduction to SQL Data Types"
+title_meta: "SQL Data Types"
 description: 'SQL supports various data types including Binary, Numeric, and Character data types. This guide explains each data type''s storage requirements, syntax, and provides examples.'
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+published: 2022-03-11
 keywords: ['binary data type', 'numeric data type', 'character data type', 'date time data type']
 tags: ['MySQL', 'PostgreSQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-11
-modified_by:
-  name: Linode
-title: "Introduction to SQL Data Types"
-title_meta: "SQL Data Types"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 Choosing the proper data type for a table column is an important decision. It reduces the need for data type conversions, enhances the performance of database queries, and minimizes storage requirements.
@@ -21,8 +20,7 @@ In this guide, you explore the various data types that are used in relational da
 To store binary data (`0` or `1`), you use the `BINARY` and `VARBINARY` data types. The `BINARY` data type stores fixed-length binary data, while `VARBINARY` stores variable-length binary data. Both these data types are used to store strings of bits (`0`'s and `1`'s). Their values are assigned and retrieved using hexadecimal representation, which is indicated by a prefix of `0x`. The columns (or variables) of both the `Binary` and `VarBinary` data types are used to store the content of image files such as JPEG, BMP, document files, etc.
 
 For example, for a decimal value of `63`, its hexadecimal value is represented by `0x3F` and its binary bit string equivalent is `111111`. To understand the value of these binary strings and how they are stored, consider the example below:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Unless mentioned otherwise, all the database commands demonstrated in this guide work well on both **MySQL** and **PostgreSQL**.
 {{< /note >}}
 
@@ -54,7 +52,7 @@ Unless mentioned otherwise, all the database commands demonstrated in this guide
 
 As you can see, the `BinaryCol` data is padded to the maximum column size with trailing zeros, but the `VarBinaryCol` data column is not. This is because the columns of `VarBinaryCol` are defined as variable length.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The maximum size (length) of Binary and VarBinary data types vary depending on the database implementation. They're generally quite large (over 8,000 bytes). Some database implementations have binary extensions to these core data types that can store data in sizes of multi-gigabytes.
 {{< /note >}}
 
@@ -206,7 +204,7 @@ The columns `LastName` and `Firstname` are declared type `Varchar`. This allows 
 
 The `DATETIME` data type is used to store the date and time values in the database. Values for the `DATETIME` data type use four bytes of storage for the date portion and four bytes for the time portion. The time portion of this data type specifies time with a granularity down to the number of milliseconds after midnight. Precision for this data type ranges from "January 1, 1753", to "December 31, 9999", with an accuracy of 3.33 milliseconds.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you assign only the date value to a `DATETIME` data type column or variable, the time portion defaults to midnight.
 {{< /note >}}
 
@@ -231,8 +229,7 @@ The output resembles the following:
 | 1990-01-01 09:00:00  |
 +----------+-----------+
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Some SQL implementations support additional data types, which are either a subset, superset, or variant of all the above specified data types.
 {{< /note >}}
 
