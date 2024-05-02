@@ -1,13 +1,13 @@
 ---
 slug: how-to-install-and-use-replibyte
 title: "How to Install and Use Replibyte to Assist with Database Development"
-description: 'This guide explains how to use Replibyte to seed a database with transformed production data.'
+description: "This guide explains how to use Replibyte to seed a database with transformed production data."
+authors: ['Jeff Novotny']
+contributors: ['Jeff Novotny']
+published: 2023-02-24
+modified: 2024-05-02
 keywords: ['use Replibyte', 'install Replibyte', 'Replibyte Linux', 'transform database Replibyte']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Jeff Novotny']
-published: 2023-02-24
-modified_by:
-  name: Linode
 external_resources:
 - '[Replibyte Introduction](https://www.replibyte.com/docs/introduction)'
 - '[Replibyte GitHub page](https://github.com/Qovery/Replibyte)'
@@ -16,7 +16,7 @@ external_resources:
 - '[How to Use Replibyte Transformers](https://www.replibyte.com/docs/transformers)'
 ---
 
-Database testing is a critical component of the quality-assurance cycle, but using production data is inherently insecure. Additionally, the sheer volume of data can be difficult to work with. Unfortunately, it is difficult to create fake but realistic data, and the results might not be representative. [Replibyte](https://www.replibyte.com/docs/introduction), also known as RepliByte, allows users to transform their production data and use the results to seed a test database. This guide explains how to install Replibyte and how to use it to transform a dataset.
+Database testing is a critical component of the quality-assurance cycle, but using production data is inherently insecure. Additionally, the sheer volume of data can be difficult to work with. Unfortunately, it is difficult to create realistic "fake" data, and the results might not be representative. [Replibyte](https://www.replibyte.com/docs/introduction) (also stylized as *RepliByte*) allows users to transform their production data and use the results to seed a test database. This guide explains how to install Replibyte and how to use it to transform a dataset.
 
 ## What is Replibyte?
 
@@ -30,16 +30,16 @@ The complete Replibyte process from source to destination database follows the f
 
 1.  Replibyte accesses the *source* database and takes a full SQL dump of the data. The source database can either be on the same system or on a remote system.
 1.  Replibyte reads and parses the data.
-1.  **Optional** For some database types, Replibyte can scale the original data down to a fractional subset. This process shrinks the number of database entries to a certain percentage of the original. The subset operation is currently only supported on PostgreSQL.
+1.  (Optional) For some database types, Replibyte can scale the original data down to a fractional subset. This process shrinks the number of database entries to a certain percentage of the original. The subset operation is currently only supported on PostgreSQL.
 1.  Replibyte transforms the original database records, changing or hiding the values of one or more columns. These operations can obfuscate or trim the data, randomize strings, or auto-generate completely new values.
-1.  **Optional** Replibyte can compress the data to reduce storage requirements. It can also encrypt the modified data.
+1.  (Optional) Replibyte can compress the data to reduce storage requirements. It can also encrypt the modified data.
 1.  The modified data is known as the *dump data*. Replibyte writes this dump data to a *datastore*. A datastore can either reside on the local system or inside cloud storage. Along with the modified data, Replibyte creates an index file enumerating the conversions.
 1.  When requested, Replibyte retrieves the modified data and the index file from the datastore. It parses the index file and decrypts or decompresses it as required, restoring the dump data.
 1.  Replibyte copies the data to the destination database. The user can access this database like any other.
 
 Some of the features and advantages of Replibyte include the following:
 
--   It is easy to install and use. Replibyte is lightweight and stateless and does not require its own server or daemon.
+-   It is relatively easy to install and use. Replibyte is lightweight and stateless and does not require its own server or daemon.
 -   It supports MySQL/MariaDB, PostgreSQL, and MongoDB as the source/destination database for the backup and restore procedures. The [Replibyte Database Documentation page](https://www.replibyte.com/docs/databases) provides full information.
 -   It can store a datastore on either a local disk or in the cloud, including inside a Linode Object Storage solution. See the [Replibyte Datastore information](https://www.replibyte.com/docs/datastores) for more details about the possible cloud options.
 -   It supports a full complement of transformers. It can randomize a string, keep the first character only, or obfuscate data. It can also auto-generate an email address, first name, phone number, or credit card number. Fields can also be left at their original values to enable specific tests. Users are permitted to create custom transformers.
@@ -47,20 +47,20 @@ Some of the features and advantages of Replibyte include the following:
 -   For PostgreSQL only, a database subset feature allows users to limit the number of entries in a database. This feature is not yet supported on MySQL.
 -   It uses Zlib for compression and AES-256 for encryption.
 
-Replibyte does have a couple of limitations. It is currently not possible to copy the contents of the datastore directly into a local database, only a remote database. The only exception to this rule is if the local database instance is running inside a Docker container. The second limitation is the source database containing the original data and the destination database must have the same type. For instance, a transformed copy of a MySQL database can only be copied into another MySQL or MariaDB database.
+Replibyte does have a couple of limitations. As of this writing, it is not possible to copy the contents of the datastore directly into a local database, only a remote database. The only exception to this rule is if the local database instance is running inside a Docker container. The second limitation is the source database containing the original data and the destination database must have the same type. For instance, a transformed copy of a MySQL database can only be copied into another MySQL or MariaDB database.
 
 ## What are the Replibyte Transformer Types?
 
 Each transformer operates on the data in a different way. In most cases, a transformer randomizes, redacts, or hides the original data. However, the `transient` transformer is a "no-op" that leaves the original data intact. The transformer types are as follows.
 
-- **email**: Generates a valid email address.
-- **first-name**: Changes the existing value to a valid first name.
-- **phone-number**: Creates a valid phone number. This can only be applied to a string field, not an integer.
-- **random**: Randomizes a string, maintaining the same string length.
-- **keep-first-char**: Trims a value to its first letter only.
-- **credit-card**: Generates a credit card number in the correct format. This transformer can only act on strings, not integers.
-- **redacted**: Hides the original data using the `*` symbol.
-- **transient**: Leaves the original data unaltered. This must be applied to keys and to other columns that must remain legible.
+- `email`: Generates a valid email address.
+- `first-name`: Changes the existing value to a valid first name.
+- `phone-number`: Creates a valid phone number. This can only be applied to a string field, not an integer.
+- `random`: Randomizes a string, maintaining the same string length.
+- `keep-first-char`: Trims a value to its first letter only.
+- `credit-card`: Generates a credit card number in the correct format. This transformer can only act on strings, not integers.
+- `redacted`: Hides the original data using the `*` symbol.
+- `transient`: Leaves the original data unaltered. This must be applied to keys and to other columns that must remain legible.
 
 Transformers are applied on a per-column or per-key basis. The same transformer acts on the same column for all records inside a given table. For more information on transformers, along with examples of how to use them, see the [Replibyte transformer documentation](https://www.replibyte.com/docs/transformers).
 
@@ -208,7 +208,7 @@ Before proceeding, a database application must be installed on the system. To ac
 1.  Add the `source` configuration, including the attribute `connection_uri`. This value specifies the location of the source database. The value of `connection_uri` must follow the format `mysql://[user]:[password]@[host]:[port]/[database]`. To access the local database, use `127.0.0.1` for the `host`. For MariaDB or MySQL, the default port is `3306`. The example in this section uses the `userid` account to access the source database `sourcedb` from the local MariaDB application. Ensure the user has been granted access to the database. Substitute their user name for `userid` and their actual password for `password`.
 
     {{< note >}}
-To access a PostgreSQL or MongoDB database, the syntax is similar. For PostgreSQL, the correct syntax is `connection_uri: postgres://[user]:[password]@[host]:[port]/[database]`. For MongoDB, use the format `connection_uri: mongodb://[user]:[password]@[host]:[port]/[database]`.
+    To access a PostgreSQL or MongoDB database, the syntax is similar. For PostgreSQL, the correct syntax is `connection_uri: postgres://[user]:[password]@[host]:[port]/[database]`. For MongoDB, use the format `connection_uri: mongodb://[user]:[password]@[host]:[port]/[database]`.
     {{< /note >}}
 
     ```file {title="conf.yaml"}
@@ -219,7 +219,7 @@ To access a PostgreSQL or MongoDB database, the syntax is similar. For PostgreSQ
 1.  Replibyte typically transforms at least some data fields. Inside the source section, add a `transformers` key, which accepts an array. The first value in the array uses the `database` key to indicate the database to transform. The second key is the `table` key. It contains the name of the table to modify. The following example illustrates the first section of the `transformers` key. It stipulates the transformations to apply to the `patients` table inside the `sourcedb` database.
 
     {{< note >}}
-The file spacing and alignment must be very precise. If the alignment of the keys is not correct, Replibyte cannot parse the file. In the following example, the keys `database` and `table` must align. It is possible to specify multiple tables using this formatting.
+    The file spacing and alignment must be very precise. If the alignment of the keys is not correct, Replibyte cannot parse the file. In the following example, the keys `database` and `table` must align. It is possible to specify multiple tables using this formatting.
     {{< /note >}}
 
     ```file {title="conf.yaml"}
@@ -272,7 +272,7 @@ The file spacing and alignment must be very precise. If the alignment of the key
 1.  Add a section describing the `datastore`. This is where Replibyte stores the transformed SQL dump for later use. Begin this section with the keyword `datastore`. To instruct Replibyte to store the data locally, add the `local_disk` key. The value of `local_disk` is another key-value pair. The `dir` key indicates the name of the local directory. This directory must already exist before Replibyte is used. Within the YAML file, the `datastore` keyword must align with the `source` keyword.
 
     {{< note >}}
-For a full explanation of the configuration required to store the datastore in a cloud computing solution, see the [Replibyte Datastore documentation](https://www.replibyte.com/docs/datastores).
+    For a full explanation of the configuration required to store the datastore in a cloud computing solution, see the [Replibyte Datastore documentation](https://www.replibyte.com/docs/datastores).
     {{< /note >}}
 
     ```file {title="conf.yaml"}
@@ -414,4 +414,4 @@ Replibyte has several limitations. It cannot write the dump to a local database 
 
 ## Conclusion
 
-Replibyte transforms the data in a production database to help protect sensitive data. Several databases are supported, including MySQL/MariaDB, PostgreSQL, and MongoDB. Replibyte can create random strings, redact information, and create fake but valid names, emails, and credit card numbers. To install Replibyte, download the Replibyte archive from GitHub. Then create a YAML file indicating the source database and the transformations to perform. Replibyte transfers the transformed database dump to a datastore, which can be stored locally or in the cloud. Replibyte can later transfer the data from the datastore to a destination database. For more information on Replibyte, see the [Official Replibyte documentation](https://www.replibyte.com/docs/introduction).
+Replibyte transforms the data in a production database to help protect sensitive data. Several databases are supported, including MySQL/MariaDB, PostgreSQL, and MongoDB. Replibyte can create random strings, redact information, and create valid fake names, emails, and credit card numbers. To install Replibyte, download the Replibyte archive from GitHub. Then create a YAML file indicating the source database and the transformations to perform. Replibyte transfers the transformed database dump to a datastore, which can be stored locally or in the cloud. Replibyte can later transfer the data from the datastore to a destination database. For more information on Replibyte, see the [Official Replibyte documentation](https://www.replibyte.com/docs/introduction).
