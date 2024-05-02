@@ -147,7 +147,7 @@ This guide was created using Ansible 2.8.
 
 ## Configure Ansible
 
-By default, Ansible's configuration file location is `/etc/ansible/ansible.cfg`. In most cases, the default configurations are enough to get you started using Ansible. In this example, you will use Ansible's default configurations.
+In most cases, Ansible's default configurations are enough to get you started.
 
 1.  To view a list of all current configs available to your control node, use the `ansible-config` command line utility.
 
@@ -174,6 +174,15 @@ By default, Ansible's configuration file location is `/etc/ansible/ansible.cfg`.
       default: false
       ...
     ```
+    {{< note respectIndent=false >}}
+To make advanced configurations, you will need to edit the `ansible.cfg` file which can be generated using the following command:
+
+```command
+ansible-config init --disabled > ansible.cfg
+```
+
+In some installations, this file will already be available in the `/etc/ansible/` directory.
+    {{< /note >}}
 
 ### Create an Ansible Inventory
 
