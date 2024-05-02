@@ -1,15 +1,13 @@
 ---
 slug: ubuntu-10-04-lucid
-deprecated: true
-deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
+title: 'Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
 description: 'Using the PostgreSQL relational database server with Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-29
+modified: 2013-09-24
 keywords: ["postgresql", "postgresql ubuntu 10.04", "postgreql lucid", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2013-09-24
-modified_by:
-  name: Linode
-published: 2010-04-29
-title: 'Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: use-postrgesql-database
@@ -17,10 +15,9 @@ relations:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-10-04-lucid/']
-authors: ["Linode"]
+deprecated: true
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---
-
-
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 10.04 LTS (Lucid Linode. We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.
 

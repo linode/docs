@@ -1,22 +1,21 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-debian-5-lenny
-deprecated: true
+title: 'Using Apache for Proxy and Clustering Services on Debian 5 (Lenny)'
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-24
+modified: 2011-06-07
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-debian-5-lenny/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-debian-5-lenny/']
-modified: 2011-06-07
-modified_by:
-  name: Linode
-published: 2010-03-24
-title: 'Using Apache for Proxy and Clustering Services on Debian 5 (Lenny)'
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to manage clusters of web servers.

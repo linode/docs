@@ -1,25 +1,22 @@
 ---
 slug: apache-2-web-server-on-ubuntu-8-04-lts-hardy
-deprecated: true
+title: 'Apache 2 Web Server on Ubuntu 8.04 LTS (Hardy)'
 description: 'Instructions for getting started with the Apache web server on Ubuntu 8.04 LTS (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-11
+modified: 2011-05-17
 keywords: ["apache", "apache ubuntu 8.04", "apache ubuntu hardy", "web server", "apache on ubuntu", "apache hardy"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/installation/ubuntu-8-04-hardy/','/web-servers/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/','/websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-08-11
-title: 'Apache 2 Web Server on Ubuntu 8.04 LTS (Hardy)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Ubuntu 8.04 (Hardy). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 8.04](/docs/guides/lamp-server-on-ubuntu-8-04-lts-hardy/).
 

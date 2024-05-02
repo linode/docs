@@ -2,6 +2,7 @@
 title: "View Invoices and Payment History"
 description: "Review all invoices and payments on your Linode account."
 published: 2022-11-17
+modified: 2023-09-21
 ---
 
 All of your billing history, including previous invoices and payments, is accessible within the [Cloud Manager](https://cloud.linode.com/account/billing) on the **Billing & Payment History** section within the **Billing Info** page (see [Accessing Billing Information](/docs/products/platform/billing/guides/access-billing/)). By default, all transactions (both invoices and payments) from the last *6 months* are displayed. To customize this, use the dropdown menus on the top right of this section.
@@ -14,12 +15,11 @@ All of your billing history, including previous invoices and payments, is access
 - **From:** The date the service started billing during this billing cycle. This could either be the date and time this billing cycle started *or* the date and time the service was added to the account.
 - **To:** The date the service ended billing during this billing cycle. This could either be the date and time this billing cycle ended *or* the date and time the service was removed from the account.
 - **Quantity:** The number of hours the service is being billed.
+- **Region:** The data center and region ID for the service.
 - **Unit Price:** The hourly rate for this service.
 - **Amount:** The cost for this service excluding taxes.
 - **Taxes:** The taxes that are charged for this service.
 - **Total:** The cost for this service including taxes.
-
-![Viewing an invoice in the Cloud Manager](view-invoice.png)
 
 ## Downloading Invoices (PDF and CSV)
 

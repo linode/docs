@@ -1,20 +1,18 @@
 ---
 slug: install-gitlab-with-docker
+title: "Install GitLab with Docker"
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode using the container application Docker.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-01-11
 keywords: ['gitlab', 'git', 'docker']
 tags: ["version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-01-11
-modified: 2019-01-11
-modified_by:
-  name: Linode
-title: "Install GitLab with Docker"
 external_resources:
 - '[GitLab EE Docker Image](https://hub.docker.com/r/gitlab/gitlab-ee)'
 - '[GitLab Docker Documentation](https://docs.gitlab.com/omnibus/docker/)'
 - '[GitLab SSL Configuration](https://docs.gitlab.com/omnibus/settings/ssl.html#lets-encrypt-integration)'
 aliases: ['/development/version-control/install-gitlab-with-docker/']
-authors: ["Linode"]
 ---
 
 ![Install GitLab with Docker](install-gitlab-with-docker.png "Install GitLab with Docker")
@@ -29,7 +27,7 @@ The GitLab application has a number of services it depends on, including Postgre
 
 GitLab is a resource-intensive application. To get the most out of GitLab, we recommend a Linode with at least 8GB of memory and at least 2 CPU cores. For more information on system requirements, visit the [GitLab Hardware Requirements page](https://docs.gitlab.com/ce/install/requirements.html#hardware-requirements).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was written for and tested with Ubuntu 18.04. You may be able to adapt this guide to other operating systems supported by Docker. When following this guide under another OS, use the Docker [installation instructions](https://docs.docker.com/install/) for that OS.
 {{< /note >}}
 
@@ -90,7 +88,7 @@ After installing Docker, download the latest GitLab Enterprise Edition [Docker i
 
     sudo docker pull gitlab/gitlab-ee:latest
 
-{{< disclosure-note "Community Edition or Enterprise Edition?" >}}
+{{< note type="secondary" title="Community Edition or Enterprise Edition?" isCollapsible=true >}}
 The GitLab Enterprise Edition software does not actually require you to have a license to use it. If you do not supply a license after installation, it will automatically show you the GitLab Community Edition feature set instead.
 
 If you'd like, you can instead opt to download GitLab Community Edition. This will offer the same features as an unlicensed Enterprise Edition installation. The key difference between these software packages is that the features of the EE installation can be upgraded at any time by entering a license.
@@ -99,7 +97,7 @@ The primary reason someone might download the Community Edition is if they prefe
 
     sudo docker pull gitlab/gitlab-ce:latest
 
-{{< /disclosure-note >}}
+{{< /note >}}
 
 It may take a few minutes to download the image. When the download is complete, you can view a list of all installed Docker images with the `images` command:
 
@@ -122,25 +120,25 @@ In order to configure and run the GitLab container, you need to provide a few op
           --env GITLAB_OMNIBUS_CONFIG="external_url 'https://gitlab.example.com/';" \
           gitlab/gitlab-ee:latest
 
-    {{< disclosure-note "Descriptions for each option" >}}
-`--detach` runs the Docker container as a background process, as opposed to running it in the foreground.
+    {{< note type="secondary" title="Descriptions for each option" isCollapsible=true >}}
+    `--detach` runs the Docker container as a background process, as opposed to running it in the foreground.
 
-`--hostname` defines the container's internal hostname.
+    `--hostname` defines the container's internal hostname.
 
-`--publish` tells the container to publish ports, or ranges of ports, to the host. Because GitLab accepts connections on the HTTP (80), HTTPS (443), and SSH (22) ports, this option is declared three times. If you wanted to access GitLab from a non-standard port on your host, you would provide the host port first, and the container port second after the semi-colon. For instance if you wanted to access GitLab SSH on port 3333, you would write `--publish 3333:22`.
+    `--publish` tells the container to publish ports, or ranges of ports, to the host. Because GitLab accepts connections on the HTTP (80), HTTPS (443), and SSH (22) ports, this option is declared three times. If you wanted to access GitLab from a non-standard port on your host, you would provide the host port first, and the container port second after the semi-colon. For instance if you wanted to access GitLab SSH on port 3333, you would write `--publish 3333:22`.
 
-`--name` allows you to apply a label to your container, for use when referencing the container within a Docker network.
+    `--name` allows you to apply a label to your container, for use when referencing the container within a Docker network.
 
-`--restart` specifies a restart policy for the container. Here it is set to  `always`, meaning that the container, if exited, will automatically be restarted.
+    `--restart` specifies a restart policy for the container. Here it is set to  `always`, meaning that the container, if exited, will automatically be restarted.
 
-`--volume` defines the host mounted volumes the container uses to store persistent data. These three volumes store application data, log files, and configuration files. The value to the left of the semi-colon is the local location, and the value to the right is the container location.
+    `--volume` defines the host mounted volumes the container uses to store persistent data. These three volumes store application data, log files, and configuration files. The value to the left of the semi-colon is the local location, and the value to the right is the container location.
 
-`--env` supplies the variable `GITLAB_OMNIBUS_CONFIG`, which can hold a series of values, separated by a colon, that correspond to the [GitLab Omnibus configuration settings](https://docs.gitlab.com/omnibus/settings/configuration.html). In this case, an external URL is supplied. Some additional settings might include SMTP configuration values so that GitLab can send activity emails.
+    `--env` supplies the variable `GITLAB_OMNIBUS_CONFIG`, which can hold a series of values, separated by a colon, that correspond to the [GitLab Omnibus configuration settings](https://docs.gitlab.com/omnibus/settings/configuration.html). In this case, an external URL is supplied. Some additional settings might include SMTP configuration values so that GitLab can send activity emails.
 
-As of GitLab 10.7, if you provide an external URL with a HTTPS protocol, GitLab will automatically set up SSL certificates using Let's Encrypt, and all traffic will be forwarded to HTTPS. For more information about this functionality, read the [GitLab SSL Documentation](https://docs.gitlab.com/omnibus/settings/ssl.html#primary-gitlab-instance)
+    As of GitLab 10.7, if you provide an external URL with a HTTPS protocol, GitLab will automatically set up SSL certificates using Let's Encrypt, and all traffic will be forwarded to HTTPS. For more information about this functionality, read the [GitLab SSL Documentation](https://docs.gitlab.com/omnibus/settings/ssl.html#primary-gitlab-instance)
 
-As an alternative to specifying the `GITLAB_OMNIBUS_CONFIG` variable via the `--env` option, you can edit the GitLab configuration file directly. For more instructions on how to do that, visit the [Configure GitLab documentation](https://docs.gitlab.com/omnibus/docker/#configure-gitlab).
-{{< /disclosure-note >}}
+    As an alternative to specifying the `GITLAB_OMNIBUS_CONFIG` variable via the `--env` option, you can edit the GitLab configuration file directly. For more instructions on how to do that, visit the [Configure GitLab documentation](https://docs.gitlab.com/omnibus/docker/#configure-gitlab).
+    {{< /note >}}
 
 1.  In the above command, replace the values for the `--hostname` option and for the `external_url` configuration setting with the domain or subdomain for your GitLab site. If you did not set up DNS for your site, enter `http://your_linode_ip` (not `https`) for the `external_url` setting. Then, run the command.
 
@@ -210,8 +208,7 @@ To start a stopped container, issue the `start` command by supplying the contain
 Once the container has stopped, you can remove the container using the `rm` command, again supplying the container ID or container name:
 
     sudo docker container rm gitlab-linode
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Removing the container will not delete your projects and repositories.
 {{< /note >}}
 

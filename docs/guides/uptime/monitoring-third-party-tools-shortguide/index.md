@@ -1,17 +1,15 @@
 ---
 slug: monitoring-third-party-tools-shortguide
-description: 'Shortguide that describes monitoring third-party tools.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
 title: Monitoring Third-Party Tools
+description: 'Shortguide that describes monitoring third-party tools.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-21
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["monitoring"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/uptime/monitoring-third-party-tools-shortguide/']
-authors: ["Linode"]
 ---
 
 The graphs in the Linode Cloud Manager provide basic information for things like CPU utilization and bandwidth consumption. That's good information as far as it goes, but it won't sate the appetite of true geeks who crave detailed statistics on a server's disk, network, system, and service performance. For that kind of information, you'll need to install and configure a third-party performance monitoring tool.
