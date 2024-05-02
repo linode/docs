@@ -2,15 +2,12 @@
 title: Transfer Services to a Different Account
 title_meta: How to Transfer Services to a Different Linode Account
 description: "Learn how to transfer ownership of Linode services to a different account."
-keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
-tags: ["cloud manager","linode platform","account"]
 published: 2021-03-10
 modified: 2023-11-15
-modified_by:
-  name: Linode
+keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
+tags: ["cloud manager","linode platform","account"]
 image: TransferOwn_LinodeServ_ST.png
 aliases: ['/guides/platform/manager/service-transfers/', '/guides/service-transfers/']
-authors: ["Linode"]
 ---
 
 Within the Linode Platform, Compute Instances can be transferred from one account to a different account. Here's an overview of this transfer process:

@@ -2,19 +2,16 @@
 title: Capture MySQL Metrics with Longview
 title_meta: Capture MySQL Metrics with Linode Longview
 description:  "This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more."
+published: 2013-11-06
+modified: 2023-05-24
 keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 aliases: ['/longview/longview-for-mysql/','/platform/longview/longview-app-for-mysql/','/platform/longview/what-is-the-linode-longview-app-for-mysql/','/guides/what-is-the-linode-longview-app-for-mysql/']
-published: 2013-11-06
-modified: 2023-05-24
-modified_by:
-  name: Linode
 relations:
     platform:
         key: what-is-longview
         keywords:
             - distribution: MySQL
-authors: ["Linode"]
 ---
 
 

@@ -2,9 +2,9 @@
 title: Developers
 title_meta: "Developer Resources for VPC"
 description: "Use the Linode API v4 and the Linode CLI to create and manage VPCs."
+published: 2024-01-09
 tab_group_main:
     weight: 40
-published: 2024-01-09
 ---
 
 ## Linode CLI

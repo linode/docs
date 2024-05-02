@@ -21,7 +21,7 @@
   "authors": {
     "required": true,
     "type": "list",
-    "description": "An array of author names associated with the article. Each element in the array should be a string of the form `FirstName LastName`. The first element of the array will be displayed in the guide's byline. A profile page for the author will be displayed at /docs/authors/firstname-lastname/. To add biographical information to this page, create a markdown file at `/docs/authors/firstname-lastname/_index.md`. The Hugo archetype at `docs/authorpage.md` in this repo can be used to generate new author pages."
+    "description": "An array of author names associated with the article. Each element in the array should be a string of the form `FirstName LastName`. Each author listed in this array should also be listed in the `contributors` array."
   },
   "bundles": {
     "elements": false,
@@ -46,6 +46,11 @@
     "required": false,
     "type": "list",
     "description": "A list of development section concentrations. Case sensitive, capitalize words where appropriate. Could be one of: 'Scripting, Automation, and Build Tools', 'Web Applications', 'Unit Testing', or 'Scientific Computing and Big Data'"
+  },
+  "contributors": {
+    "required": true,
+    "type": "list",
+    "description": "An array of contributor names associated with the article. Each element in the array should be a string of the form `FirstName LastName`. A profile page for the contributor will be displayed at /docs/authors/firstname-lastname/. To add biographical information to this page, create a markdown file at `/docs/contributors/firstname-lastname/_index.md`. The Hugo archetype at `docs/authorpage.md` in this repo can be used to generate new contributor pages."
   },
   "comments": {
     "elements": false,
@@ -147,12 +152,6 @@
     "required": false,
     "type": "date",
     "description": "(DEPRECATED: Hugo now uses the date of the last Git commit) The date this guide was last modified. Should use the form YYYY-MM-DD."
-  },
-  "modified_by": {
-    "elements": false,
-    "required": true,
-    "type": "text",
-    "description": "Name of the writer who last modified this guide."
   },
   "notoc": {
     "elements": false,

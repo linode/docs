@@ -97,6 +97,8 @@ async
 asynchrony
 atera
 atlanta
+Auditbeat
+auditd
 authdaemonrc
 authg
 authlib
@@ -1363,6 +1365,8 @@ metasploit
 meterpreter
 metorik
 metricbeat
+metricset
+metricsets
 metroid
 michael
 microblogging
@@ -1657,6 +1661,7 @@ owncloud
 pacman
 paas
 packagist
+Packetbeat
 paessler
 pagent
 pagespeed
@@ -1785,6 +1790,7 @@ prepend
 prepended
 prepending
 prepends
+preprocess
 preprocessing
 preprocessors
 prerotate

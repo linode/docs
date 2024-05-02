@@ -1,5 +1,5 @@
 ---
-title: StackScripts
 slug: stackscripts
+title: StackScripts
 ---
 

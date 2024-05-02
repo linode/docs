@@ -1,5 +1,5 @@
 ---
-title: Domains
 slug: domains
+title: Domains
 ---
 

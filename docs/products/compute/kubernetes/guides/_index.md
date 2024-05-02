@@ -2,10 +2,10 @@
 title: Guides
 title_meta: "Guides and Tutorials for LKE (Linode Kubernetes Engine)"
 description: "A collection of guides to help you start deploying LKE clusters and using them to host your web applications and Cloud workloads"
-tab_group_main:
-    weight: 30
 published: 2020-06-02
 modified: 2023-02-09
+tab_group_main:
+    weight: 30
 ---
 
 ## Basics

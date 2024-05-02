@@ -2,12 +2,11 @@
 slug: what-is-smtp
 title: "Quick Guide to SMTP: The Protocol That Powers Email"
 description: 'What is SMTP and how does it work? Simple Mail Transfer Protocol is the technology behind email communication. ✓ Learn how to use handy SMTP commands here!'
+authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
+published: 2024-01-17
 keywords: ['what is smtp','mail transfers','smtp tcp or udp','smtp addressing','how does smtp work','full form of smtp','what is smtp used for','smtp protocol example','what does smtp do','smtp layer']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
-published: 2024-01-17
-modified_by:
-  name: Linode
 ---
 
 Instant messaging, Slack, and Zoom may get all the attention lately, yet email has remained the most ubiquitous communication method of the Internet for decades. One open standard makes it possible for any user, on any platform, to exchange email with anyone else: the Simple Mail Transfer Protocol (SMTP). SMTP works as a universal mail carrier, connecting users around the world regardless of the hardware and software they use.

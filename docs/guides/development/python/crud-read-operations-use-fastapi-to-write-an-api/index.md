@@ -1,17 +1,16 @@
 ---
 slug: crud-read-operations-use-fastapi-to-write-an-api
-description: 'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
-og_description:  'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
-keywords: ['python api framework fastapi rest']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-10
-image: CRUD_readop_FastAPI.png
-modified_by:
-  name: Linode
 title: "CRUD Read Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Read Operations: Use FastAPI to Write an API"
-tags: ["python", "django"]
+description: 'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
+og_description:  'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
 authors: ["Chelsea Troy"]
+contributors: ["Chelsea Troy"]
+published: 2021-03-10
+keywords: ['python api framework fastapi rest']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: CRUD_readop_FastAPI.png
+tags: ["python", "django"]
 ---
 ## FastAPI Features
 
@@ -35,8 +34,7 @@ Throughout this guide you learn how to use FastAPI to create the following REST 
 {{< note type="secondary" title="REST API" isCollapsible=true >}}
 The [REST protocol](https://en.wikipedia.org/wiki/Representational_state_transfer) allows servers to expose data that a client can access and manipulate. This protocol allows clients to perform create, read, update, and delete (CRUD) operations.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide does not cover integrating FastAPI with a database. FastAPI uses an in-memory data store by default. However, you can integrate FastAPI with a [long list of different database providers](https://fastapi.tiangolo.com/tutorial/sql-databases/).
 {{< /note >}}
 

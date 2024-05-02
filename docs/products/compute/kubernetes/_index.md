@@ -2,6 +2,8 @@
 title: Linode Kubernetes Engine
 title_meta: "Linode Kubernetes Engine (LKE) Product Documentation"
 description: "Linode Kubernetes Engine is a managed Kubernetes service that offers automatic backup and recovery and third party integration with popular k8s-related tools."
+published: 2020-06-02
+modified: 2023-09-21
 linkTitle: Kubernetes
 tab_group_main:
     is_root: true
@@ -9,8 +11,6 @@ tab_group_main:
     weight: 10
 cascade:
     product_description: "A managed Kubernetes service that enables you to easily control and scale your application's infrastructure."
-published: 2020-06-02
-modified: 2023-09-21
 ---
 
 The Linode Kubernetes Engine (LKE) is a managed container orchestration engine built on top of Kubernetes. LKE enables you to quickly deploy and manage your containerized applications without needing to build (and maintain) your own Kubernetes cluster. All LKE instances are equipped with a fully-managed control plane at no additional cost. Only pay for the worker nodes that run your application and any optional [NodeBalancers](/docs/products/networking/nodebalancers/) (load balancers) and [Block Storage volumes](/docs/products/storage/block-storage/) that your application uses.

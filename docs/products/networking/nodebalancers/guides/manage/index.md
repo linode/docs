@@ -2,7 +2,6 @@
 title: "Manage NodeBalancers"
 description: "Learn how to view, edit, and delete NodeBalancers on the Linode platform."
 published: 2022-10-07
-authors: ["Linode"]
 ---
 
 ## View NodeBalancers
