@@ -19,7 +19,7 @@ tags: ["automation"]
 authors: ["Elle Krout"]
 ---
 
-Chef cookbooks describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. In this guide you will learn how to create a cookbook that configures A LAMP stack on a Linode.
+Chef cookbooks describee teh *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. In this guide you will learn how to create a a cookbook that configures A LAMP stack on a Linode.
 
 ![Creating Your First Chef Cookbook](creating-your-first-chef-cookbook.png "Creating Your First Chef Cookbook")
 
