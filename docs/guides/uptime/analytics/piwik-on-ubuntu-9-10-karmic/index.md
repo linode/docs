@@ -1,25 +1,22 @@
 ---
 slug: piwik-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Piwik on Ubuntu 9.10 (Karmic)'
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 9.10 (Karmic).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2009-12-23
+modified: 2011-04-27
 keywords: ["open source analytics", "piwik ubuntu 9.10", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/ubuntu-9-10-karmic/','/uptime/analytics/piwik-on-ubuntu-9-10-karmic/']
-modified: 2011-04-27
-modified_by:
-  name: Linode
-published: 2009-12-23
-title: 'Piwik on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: using-piwik-analytics
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
-
-
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.
 

@@ -1,9 +1,8 @@
 ---
 title: Manage Contacts for Managed Services
-linkTitle: Manage Contacts
 description: "Learn how to add contacts and contact groups to Linode Managed Services."
 published: 2023-04-11
-authors: ["Linode"]
+linkTitle: Manage Contacts
 ---
 
 Service Monitors can be configured to email your team members in the event of an issue with your system. Team member contact information is stored as a *Contact* in Managed Services. Each Service Monitor can be attached to a *Contact Group*, each of which can contain one or more individual *Contacts*. Separate groups can be created for each different system or service.

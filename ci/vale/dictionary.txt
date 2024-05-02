@@ -23,6 +23,7 @@ adnanh
 adodb
 aes
 ag
+agentless
 ahci0
 Aho
 ahvz
@@ -96,6 +97,8 @@ async
 asynchrony
 atera
 atlanta
+Auditbeat
+auditd
 authdaemonrc
 authg
 authlib
@@ -111,6 +114,7 @@ autocompletion
 autoconfiguration
 autoconfigure
 autodiscover
+autodiscovery
 autohosting
 autoindex
 autojoin
@@ -168,6 +172,7 @@ basename
 bashrc
 bc
 bdd
+bellovin
 benchmarked
 barchart
 berkshelf
@@ -289,6 +294,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+cheswick
 Chevereto
 chgrp
 chipset
@@ -378,6 +384,7 @@ covid
 cpanel
 cpanminus
 cpu
+cpus
 CPython
 cqlsh
 cqlshrc
@@ -442,6 +449,7 @@ datadir
 datadog
 dataflow
 datagram
+datagrams
 dataplane
 dataplanes
 datalog
@@ -462,6 +470,7 @@ dbd
 dbs
 dbdir
 dbfiles
+DBMSs
 dbname
 dbserver
 dcid
@@ -486,6 +495,7 @@ deprovisioning
 deque
 descolada
 descr
+deserialization
 deserialize
 despawn
 dest
@@ -633,6 +643,7 @@ examplesitename
 exampleuser
 exe
 executables
+execve
 exfiltrated
 exfiltrating
 exfiltration
@@ -696,6 +707,7 @@ filemask
 findtime
 finnix
 firefart
+firehose
 firewalld
 firewalled
 firewalling
@@ -726,6 +738,7 @@ Freemarker
 freenom
 fremont
 freshclam
+freshdesk
 friendica
 friendster
 frontend
@@ -753,6 +766,7 @@ gbps
 gcc
 gcloud
 gcm
+GDBs
 gdf
 geckodriver
 gem1
@@ -774,6 +788,7 @@ getpwent
 getters
 getty
 getuid
+geventhttpclient
 gfx
 gfxmode
 gianlucaborello
@@ -1000,6 +1015,8 @@ inspec
 intel
 interconnectivity
 interdomain
+internets
+interoperate
 interoperation
 interruptible
 intra-application
@@ -1120,6 +1137,7 @@ keypair
 keypairs
 keysize
 keyspace
+keyspaces
 keystore
 kfctl
 khanaser
@@ -1138,6 +1156,7 @@ kloxo
 knockpy
 knowledgebase
 Kodu
+Kompose
 Konqueror
 konsole
 kotin
@@ -1236,6 +1255,8 @@ localhost
 localuser
 lockdown
 lockfile
+locustfile
+locustfiles
 lodash
 logallrefupdates
 logdir
@@ -1344,10 +1365,13 @@ metasploit
 meterpreter
 metorik
 metricbeat
+metricset
+metricsets
 metroid
 michael
 microblogging
 microblogs
+microsegmentation
 microservice
 microservices
 microsite
@@ -1355,6 +1379,7 @@ microsystems
 microweb
 Microweber
 middlebox
+middleboxes
 middleware
 mimikatz
 minecraft
@@ -1384,6 +1409,7 @@ mkpasswd
 mktemp
 mktime
 mkv
+MLlib
 mnesia
 mngtmpaddr
 moby
@@ -1391,6 +1417,7 @@ mod_autoindex
 moddable
 modinfo
 modsecurity
+modularization
 Mojang
 moodle
 mongocryptd
@@ -1420,8 +1447,11 @@ msg
 msgid
 msgpack
 msmtp
+msps
+MTAs
 mtr
 mtu
+MUAs
 multiarch
 multibyte
 multicast
@@ -1435,6 +1465,7 @@ Multiplo
 multiport
 multiprotocol
 multirepo
+multiset
 multisite
 multitenant
 multithreading
@@ -1487,6 +1518,7 @@ neomake
 neovim
 netblocks
 netboot
+netbrain
 netcat
 Netcraft
 netconfig
@@ -1518,6 +1550,7 @@ nfs
 nfsd
 nftables
 ng
+ngfws
 nginx
 ngular
 nginxdemos
@@ -1577,6 +1610,7 @@ nvm
 nvme
 oauth
 obfuscator
+observium
 octopress
 odoo
 offboarding
@@ -1587,6 +1621,7 @@ OKConfig
 okta
 oldstable
 oldfashioned
+omnichannel
 onboarding
 oneof
 ons
@@ -1627,6 +1662,8 @@ owncloud
 pacman
 paas
 packagist
+Packetbeat
+paessler
 pagent
 pagespeed
 palo
@@ -1646,6 +1683,7 @@ parentheticals
 parsedate
 partitionless
 partyline
+Passbolt
 passcode
 passdb
 passlib
@@ -1657,9 +1695,12 @@ passwdfile
 passwordless
 patroni
 pathnames
+Paulo
 paypal
 PBCs
 pbr
+pbxs
+PDFs
 pem
 pentest
 pentesting
@@ -1674,6 +1715,7 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pg_auto_failover
 pg_dump
 pg_dumpall
 pg_restore
@@ -1751,6 +1793,7 @@ prepend
 prepended
 prepending
 prepends
+preprocess
 preprocessing
 preprocessors
 prerotate
@@ -1830,6 +1873,7 @@ ramdisk
 randomart
 ransomwhere
 rasa
+raspbian
 rauth
 rbac
 rbenv
@@ -1838,12 +1882,15 @@ rce
 rclone
 rcon
 rdbadmin
+RDBMS
+RDBMSs
 rdiff
 reachability
 readcaps
 reauthenticate
 reauthenticating
 readme
+READMEs
 readonly
 readwrite
 realtime
@@ -1893,11 +1940,12 @@ remediations
 remi
 remmina
 remotehost
-reparse
+reparseGDBs
 replicants
 replicaset
 replicationcontrollers
 replset
+repmgr
 repo
 repos
 reputational
@@ -1930,6 +1978,7 @@ rkhunter
 rkt
 rmdir
 rmem
+rmms
 ro
 roadmunk
 Roblox
@@ -1948,6 +1997,7 @@ rpaf
 rpc
 rpcbind
 rpmforge
+rrdtool
 rrset
 rrsets
 rrsig
@@ -1992,6 +2042,7 @@ samy
 sandboxing
 sandcat
 sanitization
+São Paulo
 sar
 sasl
 sasl2
@@ -2092,6 +2143,7 @@ singapore
 sintra
 siri
 sitename
+Skitch
 sklearn
 slackpkg
 slackware
@@ -2107,6 +2159,7 @@ smtpd
 smush
 smux
 snakeoil
+snapcraft
 snapd
 snipcart
 snmp
@@ -2154,6 +2207,7 @@ stalkyard
 stallman
 starkiller
 starttls
+statefulness
 statista
 statsd
 statusbar
@@ -2187,6 +2241,7 @@ sublanguage
 submenu
 subnet
 subnets
+subnetting
 subnetwork
 subprocess
 subprocesses
@@ -2215,6 +2270,7 @@ surbma
 suricata
 sury
 suse
+Sussman
 swappable
 swappiness
 svn
@@ -2263,6 +2319,7 @@ teleporting
 tensorflow
 terrahelp
 terraria
+Terrastories
 tessian
 testdb
 testdeep
@@ -2387,6 +2444,7 @@ uncommented
 uncommenting
 uncompress
 uncordoned
+undelete
 unencrypted
 unexported
 unformatted
@@ -2444,6 +2502,7 @@ ust
 utils
 UTunnel
 uuid
+uuids
 uwls
 uwsgi
 v1
@@ -2500,7 +2559,9 @@ vmlinuz
 vms
 vmstat
 vmui
+vmware
 vnc
+VPCs
 VPLs
 vpns
 vset
@@ -2510,7 +2571,10 @@ vuejs
 vvv
 vz
 vznetaddbr
+wafs
 walkthrough
+WAN
+WANs
 Wappalyzer
 Warcraft
 wasn
@@ -2575,6 +2639,8 @@ wireshark
 whitebox
 wkhtmltopdf
 wkhtmltox
+WLAN
+WLANs
 wll
 wlp6s0
 wordcloud
@@ -2585,6 +2651,7 @@ wordlists
 wordpress
 worker1
 worker2
+workgroup
 wp
 wpuser
 writability
@@ -2611,6 +2678,7 @@ xkcd
 xlsx
 xlsxwriter
 xmail
+xmatters
 xming
 xml
 xmpp
@@ -2653,6 +2721,7 @@ zabbix
 zapier
 zcat
 zend
+zendesk
 zgrep
 zhao
 zigbee
@@ -2672,4 +2741,5 @@ zpool
 zsh
 zshrc
 zxvf
+ZYpp
 Zypper

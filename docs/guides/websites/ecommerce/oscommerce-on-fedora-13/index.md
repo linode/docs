@@ -1,24 +1,21 @@
 ---
 slug: oscommerce-on-fedora-13
-deprecated: true
+title: osCommerce on Fedora 13
 description: 'How to set up an online store using the open source osCommerce system on Fedora 13.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-10-13
+modified: 2013-10-03
 keywords: ["osCommerce", "Fedora", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/oscommerce/fedora-13/','/websites/ecommerce/oscommerce-on-fedora-13/']
-modified: 2013-10-03
-modified_by:
-  name: Linode
-published: 2010-10-13
-title: osCommerce on Fedora 13
 relations:
     platform:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Fedora 13
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
-
-
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.
 

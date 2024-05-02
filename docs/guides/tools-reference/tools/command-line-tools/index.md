@@ -3,13 +3,12 @@ slug: command-line-tools
 title: "Windows Command Line Tools: A Beginner’s Guide"
 title_meta: "The Best Command Line Tools for Windows"
 description: 'What are the most useful command line tools you need to know? Find out all you need to know with our beginner’s guide to command line tools.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2023-06-21
 keywords: ['command line tools', 'best command line tools for windows', 'best command line tools linux', 'useful command line tools']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Tom Henderson"]
-published: 2023-06-21
-modified_by:
-  name: Linode
 ---
 
 ## What Are Windows Command-Line Tools?
@@ -64,7 +63,7 @@ The `dir` command alone lists visible files in the current directory. Each optio
 | `/p`         | Pause display after 24 lines (for long listings)                                                                            |
 | `/w`         | Display in two columns (for long listings)                                                                                  |
 | `/d`         | Adds sorting by columns in wide format of `/w`                                                                              |
-| `/a`         | (By attribute): `:h` (hidden), `:n` (name), `:d` (date), `:s` (size), `:G` (Group directories first), `:e` (extension sorted by alpha), `:s` (system), `:a` (archive bit set), `:i` (not content indexed files), `:l` (reparse points)                                    |
+| `/a`         | (By attribute): `:h` (hidden), `:n` (name), `:d` (date), `:s` (size), `:G` (Group directories first), `:e` (extension sorted by alpha), `:s` (system), `:a` (archive bit set), `:i` (not content indexed files), `:l` (re-parse points)                                    |
 | `/o`         | (In sort order): `:e` (extension sorted by alpha), `:s` (system), `:a` (archive bit set), `:i` (not content indexed files), `:l` (smallest first). The "-" character reverses sort. Arguments can be added together in desired sort order with no spaces.                |
 | `/t`         | (Time field order): `:c` (created), `:a` (last accessed), `:w` (last written)                                               |
 | `/x`         | The 8.3 equivalent of long filenames                                                                                        |

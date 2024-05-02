@@ -1,6 +1,7 @@
-{{ $sourceMap := cond (ne hugo.Environment "development") "" "inline" }}
-{{ $opts := dict "sourceMap" $sourceMap "minify" (ne hugo.Environment "development") "target" "es2016" }}
+{{ $sourceMap := cond hugo.IsProduction "" "inline" }}
+{{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2016" }}
 {{- $js := resources.Get "jslibs/turbo/v7/index.ts" | js.Build $opts -}}
-{{- if (ne hugo.Environment "development") }}
+{{- if hugo.IsProduction }}
   {{ $js = $js | fingerprint }}
-{{ end -}}<script src="{{ $js.RelPermalink }}" {{ if (ne hugo.Environment "development") }} integrity="{{ $js.Data.Integrity }}" {{ end }} defer></script>
+{{ end -}}
+<script src="{{ $js.RelPermalink }}" {{ if hugo.IsProduction }} integrity="{{ $js.Data.Integrity }}" {{ end }} defer></script>
