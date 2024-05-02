@@ -15,19 +15,21 @@ external_resources:
 - '[Kruskal’s algorithm](https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/)'
 ---
 
-Graphical representations of data are an essential element of data presentation. Imagine how hard it would be to navigate a city using a list of street connections rather than the graphical equivalent of a map. Data graph structures provide a pictorial presentation of the connections between nodes on a network. These pictorial presentations find use in all sorts of ways in real life, such as the GPS map in your car or a troubleshooting display of the hardware on a network.
+Graphical representations of data are an essential element of data presentation. As an analogy to demonstrate this, imagine the difficulty in navigating a city using a list of street connections rather than the graphical equivalent of a map. Data graph structures provide a pictorial presentation of the connections between nodes on a network. These pictorial presentations find use in all sorts of ways in real life, such as the GPS map in your car or a troubleshooting display of the hardware on a network.
 
 ## Defining What a Graph Is All About
 
 A *graph* is a picture of interconnected data like the one shown in Figure 1. It usually relies on circles for nodes and lines to show the relationships between nodes. The nodes, also called vertices, are data points of some sort, such as a location in a city, a conversational hierarchy in email, or a list of data points as in Figure 1.
 
 ![Figure 1](Figure_1.png)
+{.flex .justify-center .items-center}
+
+*Figure 1*
+{.text-center}
 
 ### A Quick Overview of Graph Terminology
 
-It’s important to know graph terminology or you may get mired in a sea of nonsense words. This list provides a brief overview of handy graph terms to know:
-
-- **Node (vertex)**: A *data point* could be a letter, number, or special character and it may be the only element that defines nodes in a graph. When working with two-dimensional graphs, a *coordinate* provides an x and y location that orients the node with regard to other nodes in the graph space. The node normally has a name, often the data point value, to make referencing it easier.
+- **Node (vertex)**: A *data point* could be a letter, number, or special character and it may be the only element that defines nodes in a graph. When working with two-dimensional graphs, a *coordinate* provides an x and y location that orients the node with regard to other nodes in the graph space. The node normally has a name (often the data point value) to make referencing it easier.
 
 - **Edge**: A tuple containing two node names. The first node name in the tuple connects to the second node name. This preciseness of reference is important when working with *directed graphs*, those that show a direction of connection, such as that used on maps to indicate one-way streets.
 
@@ -37,9 +39,13 @@ It’s important to know graph terminology or you may get mired in a sea of nons
 
 ### Directed Versus Undirected Graphs
 
-Figure 2 shows an example of a graph with both directed and undirected elements. A dir*ected graph* is one in which a relationship between two adjacent nodes is one way, like the one-way streets on a map. An *undirected graph* is one in which there is a relationship in both directions between two adjacent nodes, such as the connection between B and C in Figure 2. In some graphs, you may actually see an undirected element shown as two edges with one edge pointing in one direction and the other edge pointing in the other direction. For example, a flow diagram would, of necessity, have to show two-way connections between nodes (such as valves). When a graph shows only undirected elements, the arrows are commonly left out, as shown in Figure 1.
+Figure 2 shows an example of a graph with both directed and undirected elements. A *directed graph* is one in which a relationship between two adjacent nodes is one way, like the one-way streets on a map. An *undirected graph* is one in which there is a relationship in both directions between two adjacent nodes, such as the connection between B and C in Figure 2. In some graphs, you may actually see an undirected element shown as two edges with one edge pointing in one direction and the other edge pointing in the other direction. For example, a flow diagram would, of necessity, have to show two-way connections between nodes (such as valves). When a graph shows only undirected elements, the arrows are commonly left out, as shown in Figure 1.
 
 ![Figure 2](Figure_2.png)
+{.flex .justify-center .items-center}
+
+*Figure 2*
+{.text-center}
 
 ## Essential Graph Algorithms and Approaches
 
@@ -47,18 +53,18 @@ Creating a data graph is only part of the task. The next step is to search, eval
 
 ### Depth First Search (DFS) Versus Breadth First Search (BFS)
 
-Finding what is needed is one of the primary goals of constructing a data graph. A *Depth First Search* (DFS) starts at an arbitrary point in a data graph, the source, and searches to the end of the data graph before it begins searching the next connection to the source. Using Figure 1 as a reference and A as the source, a DFS would search the nodes ABCDE first, then AC. A *Breadth First Search* (BFS) starts at an arbitrary point in a data graph and searches the neighboring nodes first, before moving on to the next level of nodes. Again using Figure 1 as a reference, the search pattern in this case would be AB, AC, and AE, then ACD and AED. There are advantages to each approach. This is how a DFS is commonly used:
+Finding what is needed is one of the primary goals of constructing a data graph. A *Depth First Search* (DFS) starts at an arbitrary point in a data graph, the source, and searches to the end of the data graph before it begins searching the next connection to the source. Using Figure 1 as a reference and A as the source, a DFS would search the nodes ABCDE first, then AC. This is how a DFS is commonly used:
 
 - Finding connected components
 - Performing topological sorting in a Directed Acyclic Graph (DAG)
 - Locating the bridges in a graph (such as the connection between A and C)
 - Solving puzzles with only one solution (such as a maze)
 
-This is how BFS is commonly used:
+A *Breadth First Search* (BFS) starts at an arbitrary point in a data graph and searches the neighboring nodes first, before moving on to the next level of nodes. Again using Figure 1 as a reference, the search pattern in this case would be AB, AC, and AE, then ACD and AED. There are advantages to each approach. This is how BFS is commonly used:
 
 - Performing memory garbage collection using [Cheney’s algorithm](https://www.cs.york.ac.uk/fp/cgo/lectures/chapter10.pdf)
 - Finding the shortest path between two points
-- Testing a data graph for [bipartness](https://www.techiedelight.com/bipartite-graph/)
+- Test if a data graph is [bipartite](https://www.techiedelight.com/bipartite-graph/)
 - Implementing a web crawler
 
 ### Understanding Directed Acyclic Graphs (DAGs) and Kahn’s Algorithm
@@ -78,6 +84,10 @@ To solve certain problems, such as laying new cable in a neighborhood, it’s es
 A *graph weight* is a measurement placed on an edge that indicates some type of cost for that edge as shown in Figure 3. It could be a distance, amount of fuel usage, time to travel, or anything else that the designer uses to compare the paths between two points. In Figure 3 the cost of going from A to E to D (a value of 10) is more than the cost of going from A to C to D (a value of 9), even though the result (the starting point is A and the ending point is D) and the number of nodes traversed is the same. Fortunately, it isn’t necessary to calculate these costs by hand. The Choosing Between Algorithms article describes how the use of the Dijkstra, Bellman-Ford, and Floyd-Warshall algorithms locate the shortest route between nodes.
 
 ![Figure 3](Figure_3.png)
+{.flex .justify-center .items-center}
+
+*Figure 3*
+{.text-center}
 
 ### Uses for Weighted Graphs
 

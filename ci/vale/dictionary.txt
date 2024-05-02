@@ -1447,6 +1447,8 @@ msgid
 msgpack
 msmtp
 msps
+MST
+MSTs
 MTAs
 mtr
 mtu
