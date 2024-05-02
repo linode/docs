@@ -13,17 +13,13 @@ external_resources:
 - '[Fluentd](https://www.fluentd.org/)'
 ---
 
-Fluentd is under the umbrella of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/projects/fluentd/) Graduated Hosted Projects. Fluentd is a data collector, log aggregator, and parsed data forwarder. Fluentd is an Apache 2-licensed free and open source project formed to aggregate logs from diverse sources, and is written in Ruby and C.
-
-Fluentd uses plug-ins to parse and reformat data flowing through the application. Plug-ins use JSON-formatted data concepts, allowing programmers can adapt specific applications as inputs or outputs by modifying existing plug-ins and their configurations.
-
-Fluentd is highly extensible, with over 1,000 plug-in modules available.
+Fluentd is an open source software under the umbrella of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/projects/fluentd/) Graduated Hosted Projects. It unifies data collection across multiple sources and agregates logs into structured JSON data for easy consumption. It's plug-in capable architecuter makes it compatible with a wide-range of applications and workflows, allowing it to parse and reformat a variety of data. Plug-ins use JSON-formatted data concepts, allowing programmers can adapt specific applications as inputs or outputs by modifying existing plug-ins and their configurations.
 
 ## What is a Unified Logging Layer?
 
 Fluentd takes diverse data input sources found in various application log types, parses this input, and renders a chosen uniform output stream. This data is then used by other applications and/or for uniform log archiving and further analysis. Fluentd uses *directives* that modify the flow to match expressions, control flow, and route flows.
 
-The Fluentd uniform output stream can be sent to many different application destinations. These include inputs to NoSQL and SQL databases, archival applications, and monitoring console apps. Fluentd unifies input logs and messages then outputs them in a configured, stratified stream specified by Fluentd and its plug-in configuration. Many plug-ins are available on GitHub.
+The Fluentd uniform output stream can be sent to many different application destinations. These include inputs to NoSQL and SQL databases, archival applications, and monitoring console apps. Fluentd unifies input logs and messages then outputs them in a configured, stratified stream specified by Fluentd and its plug-in configuration.
 
 Data outputs from Fluentd are handled similarly through administratively defined or standardized streams. These are set by program configuration, or a combination of Fluentd configuration and chosen plug-in options.
 
@@ -33,9 +29,7 @@ Several instances of Fluentd can run in parallelizing schemes on different hosts
 
 ## Fluentd Plug-Ins
 
-Input and output plug-ins are required to parse data flows through Fluentd. Choose your plug-ins and study their configuration files and options, then clear a network pathway for their data flow. The network delivery path must be reachable by the Fluentd instance/s, and congestion avoided.
-
-Fluentd plug-ins are categorized by *role*, of which there are nine:
+Input and output plug-ins are required to parse data flows through Fluentd. They are categorized by their *role*, listed below:
 
 -   Input
 -   Parser
@@ -183,7 +177,7 @@ Fluentd is deployed as a server application. There are two versions available: F
     sudo systemctl start td-agent.service
     ```
 
-1.  In order to survive a reboot, set the service to launch at startup:
+1.  In order to automatically start up when the system is rebooted, run the following command:
 
     ```command
     sudo systemctl enable td-agent.service
@@ -233,9 +227,9 @@ Fluentd is deployed as a server application. There are two versions available: F
 
 ## Syslog Application Example
 
-Ubuntu 20.04 LTS and 22.04 LTS Linodes have the remote syslog known as rsyslog pre-installed and it is used in this example.
+Ubuntu 20.04 LTS and 22.04 LTS Compute Instances have the remote syslog known as rsyslog pre-installed and it is used in this example. In this example, `rsyslog.conf` is modified to send log entries to the same port as the Fluentd `tg-agent` is set to listen.
 
-Once the Linode is started, login. In this example, `rsyslog.conf` is modified to send log entries to the same port as the Fluentd `tg-agent` is set to listen.
+1.  Log in to the system once it boots up.
 
 1.  Open `rsyslog.conf` in a text editor with root permissions:
 
