@@ -147,8 +147,6 @@ This guide was created using Ansible 2.8.
 
 ## Configure Ansible
 
-In most cases, Ansible's default configurations are enough to get you started.
-
 1.  To view a list of all current configs available to your control node, use the `ansible-config` command line utility.
 
     ```command
