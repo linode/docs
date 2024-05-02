@@ -1,13 +1,12 @@
 ---
 slug: working-with-graph-data-structures
 title: "Working with Graph Data Structures in the Real World"
-description: 'This comprehensive guide delves into graph terminology, essential algorithms, weighted graphs, and their real-world applications, providing valuable insights for effective data graph usage.'
+description: "This comprehensive guide delves into graph terminology, essential algorithms, weighted graphs, and their real-world applications, providing valuable insights for effective data graph usage."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2024-05-02
 keywords: ['Directed Versus Undirected Graphs', 'DFS vs BFS', 'Weighted Graphs', 'Minimum Spanning Trees']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2023-10-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Cheney’s algorithm](https://www.cs.york.ac.uk/fp/cgo/lectures/chapter10.pdf)'
 - '[Kahn’s algorithm](https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/)'
@@ -22,8 +21,7 @@ Graphical representations of data are an essential element of data presentation.
 
 A *graph* is a picture of interconnected data like the one shown in Figure 1. It usually relies on circles for nodes and lines to show the relationships between nodes. The nodes, also called vertices, are data points of some sort, such as a location in a city, a conversational hierarchy in email, or a list of data points as in Figure 1.
 
-![Figure 1](Figure_1.png "Figure 1")
-
+![Figure 1](Figure_1.png)
 
 ### A Quick Overview of Graph Terminology
 
@@ -41,8 +39,7 @@ It’s important to know graph terminology or you may get mired in a sea of nons
 
 Figure 2 shows an example of a graph with both directed and undirected elements. A dir*ected graph* is one in which a relationship between two adjacent nodes is one way, like the one-way streets on a map. An *undirected graph* is one in which there is a relationship in both directions between two adjacent nodes, such as the connection between B and C in Figure 2. In some graphs, you may actually see an undirected element shown as two edges with one edge pointing in one direction and the other edge pointing in the other direction. For example, a flow diagram would, of necessity, have to show two-way connections between nodes (such as valves). When a graph shows only undirected elements, the arrows are commonly left out, as shown in Figure 1.
 
-![Figure 2](Figure_2.png "Figure 2")
-
+![Figure 2](Figure_2.png)
 
 ## Essential Graph Algorithms and Approaches
 
@@ -80,7 +77,7 @@ To solve certain problems, such as laying new cable in a neighborhood, it’s es
 
 A *graph weight* is a measurement placed on an edge that indicates some type of cost for that edge as shown in Figure 3. It could be a distance, amount of fuel usage, time to travel, or anything else that the designer uses to compare the paths between two points. In Figure 3 the cost of going from A to E to D (a value of 10) is more than the cost of going from A to C to D (a value of 9), even though the result (the starting point is A and the ending point is D) and the number of nodes traversed is the same. Fortunately, it isn’t necessary to calculate these costs by hand. The Choosing Between Algorithms article describes how the use of the Dijkstra, Bellman-Ford, and Floyd-Warshall algorithms locate the shortest route between nodes.
 
-![Figure 3](Figure_3.png "Figure 3")
+![Figure 3](Figure_3.png)
 
 ### Uses for Weighted Graphs
 
