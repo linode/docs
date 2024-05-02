@@ -12,9 +12,9 @@ aliases: ['/products/tools/marketplace/guides/deploy-passbolt-through-the-linode
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Passbolt should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -27,7 +27,7 @@ aliases: ['/products/tools/marketplace/guides/deploy-passbolt-through-the-linode
 
 ### Passbolt Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -81,4 +81,4 @@ Regardless of how you configure your mail server, we suggest that you follow the
 ### Account Recovery
 If you ever need to recover your account, you will be prompted for the PGP private key block you downloaded after entering your passphrase for the first time.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

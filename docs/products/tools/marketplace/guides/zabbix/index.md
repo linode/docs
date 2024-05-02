@@ -32,11 +32,11 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 ### Zabbix Options
 
-- **Email Address:** *(required)* SOA adress for free Let's Encrypt SSL. 
+- **Email Address:** *(required)* SOA adress for free Let's Encrypt SSL.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}} 
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domains-field-shortguide">}}
+{{% content "marketplace-custom-domains-field-shortguide" %}}
 
 - **Zabbix Server Name:** Local hostname for Zabbix server. Defaults to `zabbix-server`
 

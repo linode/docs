@@ -85,7 +85,7 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 
 - [Managed Databases](https://www.linode.com/products/databases/): Reliable, performant, highly available, and fully managed database clusters to support production database workloads.
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
 **Storage**
 
