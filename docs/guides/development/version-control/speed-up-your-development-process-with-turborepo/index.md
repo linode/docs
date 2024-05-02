@@ -1,13 +1,13 @@
 ---
 slug: speed-up-your-development-process-with-turborepo
 title: "Speed up Your Development Process with Turborepo"
-description: 'Learn about Turborepo, the high-performance build system for JavaScript and TypeScript. Discover how it can help speed up your development process. ✓ Click here!'
+description: "Learn about Turborepo, the high-performance build system for JavaScript and TypeScript. Discover how it can help speed up your development process."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-06-27
+modified: 2024-05-02
 keywords: ['turborepo speeds up development process','monorepo','multirepo','remote scaling','polyrepo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2023-06-27
-modified_by:
-  name: Linode
 external_resources:
 - '[npm Docs: npm-prune](https://docs.npmjs.com/cli/v8/commands/npm-prune)'
 - '[Turbo Repo Docs](https://turbo.build/repo/docs)'
