@@ -1,31 +1,21 @@
 ---
 slug: how-to-install-and-configure-zsh-on-ubuntu
 title: "How to Install and Configure Zsh on Ubuntu"
-date: 2022-09-14T22:24:56-07:00
-draft: false
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide details how to install and configure zsh on linux. It breaks down how to change zsh themes and install the autosuggestions plugin.'
+authors: ["Amar Pan"]
+contributors: ["Amar Pan"]
+published: 2022-09-14
 keywords: ["zsh", "autosuggestions", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
-modified_by:
-  name: Linode
-title: 'How to Install and Configure Zsh on Ubuntu'
-contributor:
-  name: Amar Pan
-  link: https://www.linkedin.com/in/profpan396/
 external_resources:
   - '[Official Zsh Documentation](https://zsh.sourceforge.io/Doc/)'
   - '[Oh My Zsh Framework Documentation](https://github.com/ohmyzsh/ohmyzsh/wiki)'
   - '[List of Zsh Themes](https://github.com/ohmyzsh/ohmyzsh/wiki/themes)'
-
 ---
 
-Z Shell (zsh) is a popular alternative to the default command line bash shell due to its improved features like recursive path expansion, automatic spelling correction, and plug-in and theme support. 
+Z Shell (zsh) is a popular alternative to the default command line bash shell due to its improved features like recursive path expansion, automatic spelling correction, and plug-in and theme support.
 
-This guide will walk you through the process of installing and configuring zsh, including how to change themes and enable the time-saving autosuggestions plug-in. 
+This guide will walk you through the process of installing and configuring zsh, including how to change themes and enable the time-saving autosuggestions plug-in.
 
 ## Before You Begin
 
@@ -49,17 +39,17 @@ sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-You should now see the following prompt asking if you'd like to change your defaut shell to zsh. Type `y` to confirm. 
+You should now see the following prompt asking if you'd like to change your defaut shell to zsh. Type `y` to confirm.
 
 ![Oh My Shell Configuration Prompt](oh-my-zsh-config-prompt.png)
 
-Take a look at your new command line and you should notice the difference right away. 
+Take a look at your new command line and you should notice the difference right away.
 
 ![Zsh In Effect](zsh-in-effect.png)
 
 {{< note >}}
 
-If for any reason you need to switch back to the bash shell, use the following command: 
+If for any reason you need to switch back to the bash shell, use the following command:
 ```
 chsh -s $(which bash)
 ```
@@ -70,7 +60,7 @@ Run `echo $SHELL` to confirm the output is `/bin/bash`
 {{< /note >}}
 
 ## Change Zsh Theme
-By default, the zsh theme is set to `robbyrussell`, the name of the founder of Oh My Zsh. However, this is rather plain and there are over 100+ included themes with a wider assortment of colors and styles to choose from. 
+By default, the zsh theme is set to `robbyrussell`, the name of the founder of Oh My Zsh. However, this is rather plain and there are over 100+ included themes with a wider assortment of colors and styles to choose from.
 
 For example, here are 3 uniquely different themes to choose from:
 
@@ -120,8 +110,7 @@ source ~/.zshrc
     a. Change directories to the zsh themes folder:
     ```
     cd ~/.oh-my-zsh/themes
-    ``` 
-    
+    ```
 
     b. List the names of all the available themes:
     ```
@@ -129,7 +118,7 @@ source ~/.zshrc
     ```
 
 ## Enable Autosuggestions
-The autosuggestions plug-in is quite possibly the single most time-saving tool when coding. Instead of having to type the same command over and over again in full, this plug-in automatically suggests the rest of your command as you are typing, without even having to press `TAB`. 
+The autosuggestions plug-in is quite possibly the single most time-saving tool when coding. Instead of having to type the same command over and over again in full, this plug-in automatically suggests the rest of your command as you are typing, without even having to press `TAB`.
 
 For example, instead of having to type `git push origin main` every single time you wish to push a new commit, you can instead type `git push` and the command line will automatically show a preview of the rest of the suggested command based on your shell's history.
 
@@ -157,7 +146,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 
     d. Press `ESC` to leave Insert Mode and enter Command Mode.
 
-    d. Type `:wq` + `ENTER` to save and quit. 
+    d. Type `:wq` + `ENTER` to save and quit.
 
 4. Reload the command line for the changes to take effect:
 ```
