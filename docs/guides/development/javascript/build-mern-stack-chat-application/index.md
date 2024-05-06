@@ -1,13 +1,12 @@
 ---
 slug: build-mern-stack-chat-application
-authors: ["Nathaniel Stickman"]
+title: "Build a Basic Chat Application using the MERN Stack"
 description: "Learn how to develop a MERN stack app for an Ubuntu or Debian server."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-09-14
 keywords: ['mern stack','mern tutorial','mern app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-09-14
-modified_by:
-  name: Linode
-title: "Build a Basic Chat Application using the MERN Stack"
 external_resources:
 - '[MongoDB: How to Use MERN Stack](https://www.mongodb.com/languages/mern-stack-tutorial)'
 - '[Mozilla Developer Network Web Docs: Express Tutorial Part 3: Using a Database (with Mongoose)](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose)'

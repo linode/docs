@@ -1,13 +1,12 @@
 ---
 slug: deploy-a-mern-stack-application
-authors: ["Nathaniel Stickman", "Linode"]
+title: "Deploy a MERN Stack Application on Akamai"
 description: "Learn how to deploy a locally developed MERN stack app to Akamai two different ways."
+authors: ["Nathaniel Stickman", "Linode"]
+contributors: ["Nathaniel Stickman", "Linode"]
+published: 2023-09-14
 keywords: ['deploy react app','mern stack','how to deploy react app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-09-14
-modified_by:
-  name: Linode
-title: "Deploy a MERN Stack Application on Akamai"
 external_resources:
 - '[MongoDB: MERN Stack Explained](https://www.mongodb.com/mern-stack)'
 - '[GitHub: rfdickerson/mern-example: MERN Stack Starter](https://github.com/rfdickerson/mern-example)'

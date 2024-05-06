@@ -1,19 +1,18 @@
 ---
 slug: install-the-mern-stack
-description: "Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!"
-keywords: ['MERN Stack Application','How to create a MERN stack application','MERN stack','MERN stack application', 'learn Linux filesystem', 'MERN stack on Linux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "Install the MERN Stack and Create an Example Application"
+description: "Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics."
+authors: ["Cameron Laird", "Nathaniel Stickman"]
+contributors: ["Cameron Laird", "Nathaniel Stickman"]
 published: 2022-09-12
 modified: 2022-09-23
-modified_by:
-  name: Linode
-title: "Install the MERN Stack and Create an Example Application"
+keywords: ['MERN Stack Application','How to create a MERN stack application','MERN stack','MERN stack application', 'learn Linux filesystem', 'MERN stack on Linux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[How to Use MERN Stack: A Complete Guide](https://www.mongodb.com/languages/mern-stack-tutorial)'
 - '[The MERN stack: A complete tutorial](https://blog.logrocket.com/mern-stack-tutorial/)'
 - '[Learn the MERN Stack - Full Tutorial for Beginners (MongoDB, Express, React, NodeJS) in 12Hrs (2021)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
 - '[Learn the MERN Stack - Full Tutorial (MongoDB, Express, React, Node.js)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
-authors: ["Cameron Laird", "Nathaniel Stickman"]
 aliases: ['/guides/how-to-create-a-mern-stack-application/']
 ---
 
