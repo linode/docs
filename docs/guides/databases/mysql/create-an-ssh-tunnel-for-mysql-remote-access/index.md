@@ -1,19 +1,16 @@
 ---
 slug: create-an-ssh-tunnel-for-mysql-remote-access
-author:
-  name: Linode
-  email: docs@linode.com
+title: Create an SSH Tunnel for MySQL Remote Access
 description: 'This guide will show you how to gain remote access to your MySQL server and database through PuTTY or similar mysql-client using an SSH Tunnel.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-06
+modified: 2018-03-05
 keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel", "MySQL client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/','/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/','/databases/mysql/mysql-ssh-tunnel/']
-modified: 2018-03-05
-modified_by:
-  name: Linode
-published: 2010-01-06
-title: Create an SSH Tunnel for MySQL Remote Access
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty)'
+ - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[autossh](http://www.harding.motd.ca/autossh/)'
@@ -33,7 +30,7 @@ After following these instructions, you'll be able to connect to `localhost` on 
 
 ## Prerequisites
 
--   [MySQL](/docs/hosting-website#install-mysql) is installed.
+-   [MySQL](/docs/guides/hosting-a-website-ubuntu-18-04/#install-mysql) is installed.
 -   MySQL is configured to listen on `localhost` (127.0.0.1). This is enabled by default.
 
 ## How to Access MySQL Remotely by Creating an SSH Tunnel with PuTTY
@@ -62,7 +59,7 @@ First, you need to establish a basic connection to your Linode:
 
     ![An unknown host key warning in PuTTY on Windows.](362-putty-02-host-key-warning.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This warning appears because PuTTY wants you to verify that the server you're logging in to is who it says it is. It is unlikely, but possible, that someone could be eavesdropping on your connection and posing as your Linode. To verify the server, compare the key fingerprint shown in the PuTTY warning - the string of numbers and letters starting with **ssh-rsa** in the image above - with your Linode's public key fingerprint. To get your Linode's fingerprint, log in to your Linode via the Lish console (see the **Console** tab in the Linode Manager) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
@@ -95,7 +92,7 @@ This section will show you how to create an SSH tunnel to MySQL on Mac OS X or L
     `-L` - binds a local port to the remote host post.
     `-N` - means forwarding ports.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're already running a local MySQL server on your workstation, use a different local port (3307 is a common choice). Your new command would look like this:
 
     ssh user@example.com -L 3307:127.0.0.1:3306 -N

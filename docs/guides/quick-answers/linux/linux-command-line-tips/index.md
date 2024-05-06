@@ -1,21 +1,18 @@
 ---
 slug: linux-command-line-tips
-author:
-  name: Edward Angert
-  email: docs@linode.com
+title: 'Linux Command Line Tips'
 description: 'This guide provides readers with easy to remember commands and tricks that can save you a lot of time in the Linux Command Line Interface, also called Terminal.'
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2017-04-13
+modified: 2017-07-17
 keywords: ["terminal", "command line", "shell", "tips", "tricks", "easy linux", "cli"]
 aliases: ['/quick-answers/linux/linux-command-line-tips/','/quick-answers/linux-command-line-tips/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-04-13
-modified: 2017-07-17
-modified_by:
-  name: Edward Angert
-title: 'Linux Command Line Tips'
 tags: ["linux"]
 ---
 
-These are just a few of the many commands and tricks available in the Linux terminal. Visit our guide for a deeper [introduction to Linux concepts](/docs/tools-reference/introduction-to-linux-concepts/).
+These are just a few of the many commands and tricks available in the Linux terminal. Visit our guide for a deeper [introduction to Linux concepts](/docs/guides/introduction-to-linux-concepts/).
 
 ## Basic Linux Terminal Things to Know
 

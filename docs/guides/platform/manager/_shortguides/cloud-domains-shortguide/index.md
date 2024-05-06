@@ -1,15 +1,11 @@
 ---
 slug: cloud-domains-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that gives you an overview of the Domains section of the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
 title: An Overview of the Domains Section in the Cloud Manager
+description: 'Shortguide that gives you an overview of the Domains section of the Cloud Manager.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-22
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
@@ -23,6 +19,6 @@ The DNS Manager allows you to control and manage your domains. You can access th
 
 For more information on Cloud Manager's DNS Manager, see the following guides:
 
-- [DNS Manager](/docs/guides/dns-manager/).
-- [Common DNS Configurations](/docs/guides/common-dns-configurations/)
-- [Configure Your Linode for Reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/)
+- [DNS Manager](/docs/products/networking/dns-manager/).
+- [Common DNS Configurations](/docs/products/networking/dns-manager/guides/common-dns-configurations/)
+- [Configure Your Linode for Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/)

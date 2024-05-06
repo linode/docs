@@ -1,19 +1,14 @@
 ---
 slug: squid-http-proxy-centos-6-4
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Creating an HTTP Proxy Using Squid on CentOS 6.4'
 description: 'Use Squid to create an HTTP proxy server on your Linode running Centos 6.4'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-03-03
 keywords: ["squid", "proxy", "centos", "6.4", "http"]
 tags: ["proxy","web server","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/squid/squid-http-proxy-centos-6-4/','/web-servers/squid/squid-http-proxy-centos-6-4/']
-modified: 2014-03-03
-modified_by:
-  name: Alex Fornuto
-published: 2014-03-03
-title: 'Creating an HTTP Proxy Using Squid on CentOS 6.4'
 external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
 relations:
@@ -21,14 +16,15 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: CentOS 6
+deprecated: true
 ---
 
 ![HTTP Proxy Using Squid on CentOS](Creating_an_HTTP_Proxy_Using_Squid_on_CentOS_64_smg.jpg)
 
-Squid is a proxy/cache application with a variety of configurations and uses. This guide will cover using Squid as an HTTP proxy. Please note that unless you follow the last section of the guide [Anonymizing Traffic](#anonymizing-traffic), this will not anonymize your traffic to the outside world, as your originating IP address will still be sent in the X-Forwarded-For header. Additionally, the traffic is not encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guide to [Setting up an SSH Tunnel](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing) or [Deploy VPN Services with OpenVPN](/docs/networking/vpn/secure-communications-with-openvpn-on-centos-6).
+Squid is a proxy/cache application with a variety of configurations and uses. This guide will cover using Squid as an HTTP proxy. Please note that unless you follow the last section of the guide [Anonymizing Traffic](#anonymizing-traffic), this will not anonymize your traffic to the outside world, as your originating IP address will still be sent in the X-Forwarded-For header. Additionally, the traffic is not encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guide to [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy VPN Services with OpenVPN](/docs/guides/secure-communications-with-openvpn-on-centos-6/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing Squid

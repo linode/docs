@@ -1,19 +1,15 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7'
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linode.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2013-08-22
+modified: 2014-02-17
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu precise", "12.04", "debian 7", "debian"]
 tags: ["networking","vpn","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/openvpn/ubuntu-12-04-precise/','/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/']
-modified: 2014-02-17
-modified_by:
-  name: Alex Fornuto
-published: 2013-08-22
-title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7'
 external_resources:
  - '[Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
@@ -24,14 +20,15 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 
-Before installing OpenVPN, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [Introduction to Linux Concepts Guide](/docs/tools-reference/introduction-to-linux-concepts/), [Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [Administration Basics Guide](/docs/tools-reference/linux-system-administration-basics/). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/guides/set-up-and-secure/) article as well.
+Before installing OpenVPN, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [Introduction to Linux Concepts Guide](/docs/guides/introduction-to-linux-concepts/), [Beginner's Guide](/docs/products/compute/compute-instances/faqs/) and [Administration Basics Guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/) article as well.
 
 {{< note >}}
-For many private networking tasks, we suggest that you consider the functions of the OpenSSH package which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. For example, see [Using SSHFS on Linux and Mac OS X](/docs/networking/ssh/using-sshfs-on-linux/) or our guide on [Setting up an SSH Tunnel](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more information. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
+For many private networking tasks, we suggest that you consider the functions of the OpenSSH package which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. For example, see [Using SSHFS on Linux and Mac OS X](/docs/guides/using-sshfs-on-linux/) or our guide on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more information. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
 {{< /note >}}
 
 ## How OpenVPN Works
@@ -43,8 +40,7 @@ Once configured, the OpenVPN server encrypts traffic between your local computer
 With the additional configuration we will set up at the end of this guide, all traffic coming from your local computer can be tunneled through the VPN server. This can be used to circumvent local traffic restrictions, or to mask the traffic coming from your computer.
 
 ![Splash screen for TunnelBlick.](1360-FullTunneling.jpg)
-
- {{< note >}}
+{{< note >}}
 Please note that only one public IP address is required to use OpenVPN
 {{< /note >}}
 
@@ -112,7 +108,7 @@ With the certificate authority generated, you can generate the private key for t
 
         ./build-key client1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Anyone with access to `client1.key` will be able to access your VPN. To better protect against this scenario, you can issue `./build-key-pass client1` instead to build a client key which is encrypted with a passphrase.
 {{< /note >}}
 
@@ -139,13 +135,13 @@ This will be followed by a quantity of seemingly random output. Once it brings y
 
 Move all of the secure keys to their proper locations by following these instructions:
 
-1.  The `/etc/openvpn/easy-rsa/keys/` directory contains all of the keys and certificates for the server and its clients generated using the `easy-rsa` tools. Copy the following certificate and key files to the remote client machines, using **scp** or another [means of transferring](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server):
+1.  The `/etc/openvpn/easy-rsa/keys/` directory contains all of the keys and certificates for the server and its clients generated using the `easy-rsa` tools. Copy the following certificate and key files to the remote client machines, using **scp** or another [means of transferring](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server):
 
     -   `ca.crt`
     -   `client1.crt`
     -   `client1.key`
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Transfer these keys with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network. Typically we recommend that you encrypt the keys for transfer, either by using a protocol like SSH, or by encrypting them with the PGP tool.
 {{< /note >}}
 
@@ -335,7 +331,7 @@ exit 0
 
         apt-get install dnsmasq && dpkg-reconfigure resolvconf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using Debian 7, replace this command with `apt-get install dnsmasq resolvconf` and skip steps 7 through 9
 {{< /note >}}
 
@@ -382,7 +378,7 @@ dns-nameservers 97.107.133.4 207.192.69.4 207.192.69.5
 {{< /file >}}
 ~
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're not utilizing IPv6, you can omit the addresses starting with 2600:
 {{< /note >}}
 

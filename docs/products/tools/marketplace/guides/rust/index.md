@@ -1,22 +1,22 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Rust through the Linode Marketplace"
 description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
-keywords: ['rust','marketplace', 'server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying Rust through the Linode Marketplace"
-contributor:
-  name: Linode
+modified: 2024-04-29
+keywords: ['rust','marketplace', 'server']
 external_resources:
 - '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-rust-with-marketplace-apps/', '/platform/one-click/deploying-rust-with-one-click-apps/','/guides/deploying-rust-with-one-click-apps/', '/guides/deploying-rust-with-marketplace-apps/','/guides/rust-marketplace-app/']
+_build:
+  list: false
+noindex: true
+deprecated: true
 ---
+
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Rust has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
+{{< /note >}}
 
 [Rust](https://rust.facepunch.com/) is a multiplayer game where you play as a survivor that must work with or against other players to ensure your own survival. Players are able to steal, lie, cheat, or trick each other. You can build a shelter, hunt animals for food, craft weapons, craft armor, and much more.
 
@@ -28,13 +28,13 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Rust should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 8GB Dedicated CPU or Shared Compute Instance
 
 ### Rust Options
@@ -48,6 +48,8 @@ Hosting your own Rust server allows you to customize settings and curate the num
 - **Seed:** A random numeric seed used by the world generation algorithm to create a unique world. The maximum value is 4,294,967,295.
 - **Global Chat Enabled:** Enables global chat. Chat messages will be broadcast to all players.
 - **PvE Enabled:** Allow player vs. environment combat.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

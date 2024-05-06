@@ -1,19 +1,14 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-12-04-precise-pangolin
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Prosody XMPP Server on Ubuntu 12.04 (Precise Pangolin)'
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 12.04 (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-03
 keywords: ["prosody", "prosody ubuntu", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-03
-modified_by:
-  name: Linode
-published: 2012-10-03
-title: 'Installing Prosody XMPP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[The official Prosody server website](http://prosody.im/)'
  - '[Prosody Configuration Overview](http://prosody.im/doc/configure#overview)'
@@ -24,11 +19,12 @@ relations:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
-Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight. Prosody uses fewer resources than its counterparts and is designed to be easy to configure and run. [Ejabberd](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin) or [OpenFire](/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin) may be better suited for larger applications, but for most independent and small-scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for running an XMPP server for a very small base of users, or for XMPP development.
+Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight. Prosody uses fewer resources than its counterparts and is designed to be easy to configure and run. [Ejabberd](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/guides/install-openfire-on-ubuntu-12-04-for-instant-messaging/) may be better suited for larger applications, but for most independent and small-scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for running an XMPP server for a very small base of users, or for XMPP development.
 
-Before we begin with the installation and configuration of Prosody, we assume that you have a running and up-to-date installation of Ubuntu 12.04 (Precise Pangolin), have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and have logged in via SSH as root.
+Before we begin with the installation and configuration of Prosody, we assume that you have a running and up-to-date installation of Ubuntu 12.04 (Precise Pangolin), have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and have logged in via SSH as root.
 
 ## Adding Software Repositories
 
@@ -148,7 +144,7 @@ Component "conference.example.com" "muc"
 {{< /file >}}
 
 
-In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/dns-guides/introduction-to-dns/)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
+In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/guides/dns-overview/)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
 
 MUC, in contrast to many other common components in the XMPP world, is provided internally by Prosody. Other components, like transports to other services, run on an external interface. Each external component has its own host name, and provides a secret key which allows the central server to authenticate to it. See the following "aim.example.com" component as an example.
 
@@ -174,7 +170,7 @@ component_ports = { 8888, 8887 }
 
 The XMPP protocol supports "in-band" registration, where users can register for accounts with your server via the XMPP interface. However, this is often an undesirable function as it doesn't permit the server administrator the ability to moderate the creation of new accounts and can lead to spam-related problems. As a result, Prosody has this functionality disabled by default. While you can enable in-band registration, we recommend using the `prosodyctl` interface at the terminal prompt.
 
-If you're familiar with the `ejabberdctl` interface from [ejabberd,](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin/) `prosodyctl` mimics its counterpart as much as possible.
+If you're familiar with the `ejabberdctl` interface from [ejabberd,](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) `prosodyctl` mimics its counterpart as much as possible.
 
 To use `prosodyctl` to register a user, in this case `username@example.com`, issue the following command:
 

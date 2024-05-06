@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy ServerWand through the Linode Marketplace"
 description: "ServerWand is a magical control panel for managing websites and servers. Learn how to deploy ServerWand on Linode using Marketplace Apps."
-keywords: [ 'serverwand','marketplace','control panel','hosting']
-tags: ["cloud manager","linode platform", "marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying ServerWand through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: [ 'serverwand','marketplace','control panel','hosting']
+tags: ["cloud manager","linode platform", "marketplace"]
 external_resources:
 - '[ServerWand Pricing](https://serverwand.com/pricing)'
 - '[ServerWand Documentation](https://serverwand.com/docs/)'
@@ -28,13 +20,13 @@ aliases: ['/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/pl
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** ServerWand should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 18.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment

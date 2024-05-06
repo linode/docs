@@ -1,0 +1,71 @@
+name: Update Hugo image cache
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  cache-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: docs-repo
+
+      - name: Print current docs repo branch/ref/commit
+        working-directory: ./docs-repo
+        run: |
+          git status
+          git log -1
+
+      - name: List contents of images dir
+        continue-on-error: true
+        run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+
+      - name: Cache images dir
+        uses: actions/cache@v2
+        with:
+          path: ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+          key: ${{ vars.HUGO_IMAGE_CACHE_NAME }}-${{ github.run_id }}
+          restore-keys: |
+            ${{ vars.HUGO_IMAGE_CACHE_NAME }}
+
+      - name: List contents of images dir
+        continue-on-error: true
+        run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+
+      - name: Install dependencies (Node)
+        working-directory: ./docs-repo
+        run: npm ci
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: ${{ vars.HUGO_VERSION }}
+
+      - name: Build Hugo
+        working-directory: ./docs-repo
+        run: hugo --gc
+
+      - name: List existing Hugo image caches
+        run: |
+          curl \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/$GITHUB_REPOSITORY_OWNER/${GITHUB_REPOSITORY#*/}/actions/caches?key=${{ vars.HUGO_IMAGE_CACHE_NAME }} \
+          -o cache-list.json
+
+          echo "The following caches will be deleted:"
+          cat cache-list.json
+
+      - name: Delete existing Hugo image caches
+        run: |
+          for id in $(jq '.actions_caches[].id' cache-list.json); do
+            echo "Deleting cache with id $id"
+            curl \
+            -X DELETE \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/$GITHUB_REPOSITORY_OWNER/${GITHUB_REPOSITORY#*/}/actions/caches/$id
+          done

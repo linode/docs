@@ -1,33 +1,28 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-10-10-maverick
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with Nginx on Ubuntu 10.10 (Maverick)'
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 10.10 operating system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-06
+modified: 2012-10-08
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-nginx-on-ubuntu-10-10-maverick/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-10-10-maverick/','/frameworks/ruby-on-rails-nginx/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-12-06
-title: 'Ruby on Rails with Nginx on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Ubuntu 10.10 (Maverick).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#settingting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#settingting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -120,7 +115,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
 
 
 

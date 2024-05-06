@@ -1,21 +1,15 @@
 ---
 slug: install-dont-starve-together-game-server-on-ubuntu
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
 description: 'Install and Configure a Don''t Starve Together Multi-player Game Server for Ubuntu 14.04'
+authors: ["Andrew Gottschling"]
+contributors: ["Andrew Gottschling"]
+published: 2015-04-14
+modified: 2019-02-01
 keywords: ["don''t starve", "don''t starve together", "game servers", "games", "ubuntu", " ubuntu 14.04", "steam cmd", "steamcmd", "token"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-04-14
-modified: 2019-02-01
-modified_by:
-    name: Linode
-title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
 aliases: ['/applications/game-servers/dont-starve-together-on-ubuntu/','/game-servers/install-dont-starve-together-game-server-on-ubuntu/','/applications/game-servers/install-dont-starve-together-game-server-on-ubuntu/']
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 dedicated_cpu_link: true
 ---
 
@@ -28,10 +22,10 @@ dedicated_cpu_link: true
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Don’t Starve Together](http://store.steampowered.com/app/322330/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Don't Starve Together
@@ -79,7 +73,7 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update DST, run the above 4 commands again.
 {{< /note >}}
 
@@ -149,7 +143,7 @@ cd ./Steam/dstserver/bin
 screen -S "Don't Starve Together Server" ./dontstarve_dedicated_server_nullrenderer
 {{< /file >}}
 
-    When run, the script will change directories to `~/Steam/dstserver/bin` and execute DST in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
+    When run, the script will change directories to `~/Steam/dstserver/bin` and execute DST in a [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
 
 5.  Make the script executable:
 
@@ -163,7 +157,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
     ![DST Console.](DSTconsole.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you've never before played the game, you first need to click on **Play** and create an account.
 {{< /note >}}
 
@@ -200,9 +194,9 @@ If you've never before played the game, you first need to click on **Play** and 
 
         cd ~/ && ./startdst.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop DST.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

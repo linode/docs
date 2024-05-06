@@ -1,21 +1,14 @@
 ---
 slug: what-is-vi
-author:
-  name: Nathaniel Stickman
+title: "Getting Started Using Vi and Vim"
+title_meta: "What Is Vi?"
 description: "In this guide, you learn about the origin of the Vi editor and how to use different Vi editor commands, such as copy and paste, search and replace, and more."
-og_description: "In this guide, you learn about the origin of the Vi editor and how to use different Vi editor commands, such as copy and paste, search and replace, and more."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-08-13
 keywords: ['what is vi','vi editor','text editor','vim']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
-modified_by:
-  name: Nathaniel Stickman
-title: "What Is Vi?"
-h1_title: "Getting Started Using Vi and Vim"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Vim Fandom Page on Search and Replace](https://vim.fandom.com/wiki/Search_and_replace)'
 ---

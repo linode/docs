@@ -1,31 +1,25 @@
 ---
 slug: using-weechat-for-irc
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Using WeeChat for Internet Relay Chat'
 description: 'Use WeeChat and GNU Screen to create and maintain connections to IRC networks'
+authors: ["Samuel Damashek"]
+contributors: ["Samuel Damashek"]
+published: 2014-08-27
+modified: 2016-03-10
 keywords: ["weechat", "irc", "oftc", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-contributor:
-  name: Samuel Damashek
-modified: 2016-03-10
-modified_by:
-    name: 'Linode'
-published: 2014-08-27
-title: 'Using WeeChat for Internet Relay Chat'
 external_resources:
  - '[WeeChat Home Page](http://www.weechat.org/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
- - '[Screen for Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
+ - '[Screen for Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
 aliases: ['/applications/messaging/using-weechat-for-irc/']
 ---
 
-
 [WeeChat](https://weechat.org/) is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.
 
-Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as [Screen](https://www.gnu.org/software/screen/) or [tmux](/docs/networking/ssh/persistent-terminal-sessions-with-tmux/).
+Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as [Screen](https://www.gnu.org/software/screen/) or [tmux](/docs/guides/persistent-terminal-sessions-with-tmux/).
 
-WeeChat is usually run in a terminal emulator. It may be run either on your computer, a Linode instance, or any computer running a supported platform. If you run WeeChat on your Linode, you can access WeeChat at any time from any system simply by connecting via SSH and attaching to your Screen or tmux instance. This guide assumes you have read [Using The Terminal](/docs/networking/ssh/using-the-terminal/) and [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/), along with the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
+WeeChat is usually run in a terminal emulator. It may be run either on your computer, a Linode instance, or any computer running a supported platform. If you run WeeChat on your Linode, you can access WeeChat at any time from any system simply by connecting via SSH and attaching to your Screen or tmux instance. This guide assumes you have read [Using The Terminal](/docs/guides/using-the-terminal/) and [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/), along with the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
 ## What is IRC?
 
@@ -44,17 +38,17 @@ A user is often represented as `nickname!username@host`.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Using GNU Screen
 
-GNU Screen allows you to start WeeChat and leave it running, even if you disconnect from your Linode. We recommend running WeeChat in Screen, so our instructions include Screen-specific commands. For more information, see [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).
+GNU Screen allows you to start WeeChat and leave it running, even if you disconnect from your Linode. We recommend running WeeChat in Screen, so our instructions include Screen-specific commands. For more information, see [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/).
 
 ## Installing WeeChat
 

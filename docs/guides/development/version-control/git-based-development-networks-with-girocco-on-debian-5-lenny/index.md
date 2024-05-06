@@ -1,24 +1,21 @@
 ---
 slug: git-based-development-networks-with-girocco-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Git Based Development Networks with Girocco on Debian 5 (Lenny)'
 description: 'Use the Girocco engine from repo.or.cz to provide easy access to Git repositories.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-06-23
+modified: 2013-09-24
 keywords: ["git", "girocco", "gitweb", "project hosting", "social coding"]
 tags: ["version control system","email","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/application-stacks/git-repository-hosting/','/applications/development/git-based-development-networks-with-girocco-on-debian-5-lenny/','/development/version-control/git-based-development-networks-with-girocco-on-debian-5-lenny/']
-modified: 2013-09-24
-modified_by:
-  name: Linode
-published: 2010-06-23
-title: 'Git Based Development Networks with Girocco on Debian 5 (Lenny)'
 deprecated: true
 ---
 
 Girocco is the underlying engine created to power one of the first public git hosting services at [repo.or.cz](http://repo.or.cz/), and it allows users an easy to use web-based interface to create and view git repositories. Perhaps most excitingly, Girocco provides the ability to seamlessly "fork" an existing repository on the site and publish those changes without needing "push" access to the original repository, thus enabling a wide rage of distributed workflows and collaborative experiences.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to using git, you may also find our [introduction to git](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) a helpful prerequisite. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to using git, you may also find our [introduction to git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) a helpful prerequisite. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Install Prerequisites
 
@@ -37,7 +34,7 @@ This guide does not include explicit instructions for downloading and installing
 
     apt-get install mailx
 
-This will install the MTA "Exim." You can configure this MTA by issuing the following command and following the steps outlined in the [Exim send-only MTA guide](/docs/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/) guide:
+This will install the MTA "Exim." You can configure this MTA by issuing the following command and following the steps outlined in the [Exim send-only MTA guide](/docs/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/) guide:
 
     dpkg-reconfigure exim4-config
 
@@ -241,7 +238,7 @@ mount --bind /srv/repo/git /srv/repo/data/srv/git mount --bind /proc /srv/repo/d
 
 ## Configure Web Server
 
-For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/docs/tools-reference/linux-system-administration-basics#set-up-subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
+For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/docs/guides/linux-system-administration-basics/#set-up-subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
 
     a2enmod rewrite
     /etc/init.d/apache2 restart
@@ -281,9 +278,9 @@ You may wish to consult the following resources for additional information on th
 
 - [Girocco](http://repo.or.cz/w/girocco.git)
 - [Repo.or.cz](http://repo.or.cz/)
-- [Using Cron to Schedule Tasks](/docs/tools-reference/tools/schedule-tasks-with-cron/)
-- [Managing Permissions with Unix Users and Groups](/docs/tools-reference/linux-users-and-groups/)
-- [Using GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/)
+- [Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)
+- [Managing Permissions with Unix Users and Groups](/docs/guides/linux-users-and-groups/)
+- [Using GNU Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)
 
 
 

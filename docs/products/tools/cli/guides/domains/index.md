@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Linode CLI Commands for the DNS Manager"
 description: "How to use the Linode CLI to create and manage Domains and DNS records."
 published: 2020-07-20

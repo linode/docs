@@ -1,17 +1,14 @@
 ---
 slug: set-up-web-server-host-website
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Set up a Web Server and Host a Website on Linode"
 description: "How to set up your first web server and point a domain name to your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-03-13
+modified: 2021-10-18
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","nginx","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-10-18
-modified_by:
-  name: Linode
-published: 2012-03-13
-title: "Set up a Web Server and Host a Website on Linode"
 aliases: ['/websites/hosting/set-up-web-server-host-website/','/websites/set-up-web-server-host-website/']
 image: Hosting-a-Website-smg.jpg
 ---
@@ -22,7 +19,7 @@ image: Hosting-a-Website-smg.jpg
 
 Hosting a website is one of the most common uses for a Linode. A website can be anything from a single HTML file to an interactive application with multiple components, and the hosting process varies greatly depending on the type of website being served. This guide walks you through the process of setting up some of the most common simple website types.
 
-Complete the steps in our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide before you begin. The steps in this guide take you from a configured Linode to a fully functioning website.
+Complete the steps in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before you begin. The steps in this guide take you from a configured Linode to a fully functioning website.
 
 This guide is written for Debian 9 and Ubuntu 18.04. If you are using a different distribution, adapt the commands (e.g. using `yum` instead of `apt`).
 
@@ -34,7 +31,7 @@ The application you use to serve your website depends on the type of site. Find 
 
 If your website consists entirely of static files like HTML, CSS, JavaScript, and images, then you only need to set up a simple web server to serve the files. Static sites include everything from bare-bones HTML pages to much more complicated [React.js](/docs/guides/how-to-deploy-a-react-app-on-ubuntu-18-04/) apps. NGINX is a good choice for hosting this type of website.
 
-If you plan to host a simple site such as a blog or photo gallery, another option is to use a [static site generator](/docs/websites/static-sites/how-to-choose-static-site-generator/).
+If you plan to host a simple site such as a blog or photo gallery, another option is to use a [static site generator](/docs/guides/how-to-choose-static-site-generator/).
 
 1.  Install NGINX:
 
@@ -96,9 +93,9 @@ This configuration is sufficient to get you started. For more advanced options a
 
 ### LAMP Stack
 
-Other sites, such as [WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/), need a database in addition to a web server. This combination is known as a **stack**. WordPress is often used with the extremely popular LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
+Other sites, such as [WordPress](/docs/guides/install-wordpress-ubuntu-18-04/), need a database in addition to a web server. This combination is known as a **stack**. WordPress is often used with the extremely popular LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
 
-If you are using WordPress, another option is to use Docker. All of the components needed to run WordPress, along with WordPress itself, are bundled into a container that can be deployed with single command. See our [WordPress with Docker Compose](/docs/quick-answers/linux/wordpress-with-docker-compose/) guide for details. Official Docker images are also available for other CMS platforms including [Ghost](https://hub.docker.com/_/ghost/) and [Joomla](https://hub.docker.com/_/joomla/).
+If you are using WordPress, another option is to use Docker. All of the components needed to run WordPress, along with WordPress itself, are bundled into a container that can be deployed with single command. See our [WordPress with Docker Compose](/docs/guides/wordpress-with-docker-compose/) guide for details. Official Docker images are also available for other CMS platforms including [Ghost](https://hub.docker.com/_/ghost/) and [Joomla](https://hub.docker.com/_/joomla/).
 
 ### Other Site Types
 
@@ -113,8 +110,8 @@ Test your website(s) before you add DNS records and make the site available publ
 If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain in the **Domains** section of the Cloud Manager. If you don't know what DNS records to add, the DNS Manager can insert some basic records when you create the new domain.
 
 {{< note >}}
-Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/guides/dns-manager/) guide.
-{{</ note >}}
+Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/products/networking/dns-manager/) guide.
+{{< /note >}}
 
 1.  From the **Domains** section, click on **Create Domain**. The domain creation page is displayed.
 
@@ -122,7 +119,7 @@ Creating a domain also creates its corresponding domain zone. For a deep dive in
 
 1. If you want to add a *secondary zone* instead of a primary zone, click the **Secondary** radio button.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In order for your domain to function as a secondary zone within Linode's DNS servers, your primary DNS server must notify and allow AXFR requests from the following IP addresses:
 
     104.237.137.10
@@ -159,13 +156,13 @@ When you first create a domain, you'll need to add some DNS records. <!-- The DN
 
     ![This page allows you to create a new A/AAAA record.](domain-add-a-record.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The exact form fields will vary depending on the type of DNS record you select.
 {{< /note >}}
 
 1.  Enter a hostname in the **Hostname** field.
 
-1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) to find your Linode's IP address.
+1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/guides/find-your-linodes-ip-address/) to find your Linode's IP address.
 
 1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers. When the designated time to live is reached, the resolver must query the authoritative name servers for new records.
 

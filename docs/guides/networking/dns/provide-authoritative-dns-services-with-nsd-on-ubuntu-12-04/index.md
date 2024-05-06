@@ -1,19 +1,14 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Provide Authoritative DNS Services with NSD on Ubuntu 12.04'
 description: 'Configure NSD to Handle DNS Queries on Ubuntu 12.04 (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-09
 keywords: ["NSD", "DNS", "Ubuntu", "networking", "zone file", "name server daemon"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04-precise-pangolin/','/dns-guides/nsd-authoritative-dns-ubuntu-12-04-precise-pangolin/','/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04/']
-modified: 2012-10-09
-modified_by:
-  name: Linode
-published: 2012-10-09
-title: 'Provide Authoritative DNS Services with NSD on Ubuntu 12.04'
 external_resources:
  - '[NSD Homepage](http://nlnetlabs.nl/projects/nsd/)'
  - '[NSD Memory Usage Calculator](http://nlnetlabs.nl/projects/nsd/nsd-memsize.html)'
@@ -22,15 +17,16 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 NSD is a lightweight yet full-featured open-source name server daemon created to provide an alternative to BIND.
 
-Before beginning, you should be familiar with basic [DNS terminology and records](/docs/networking/dns/dns-records-an-introduction/). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
+Before beginning, you should be familiar with basic [DNS terminology and records](/docs/guides/dns-overview/). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -150,7 +146,7 @@ Rebuild the NSD database and restart the daemon with following command sequence:
 
 Rebuild the database and restart NSD each time you edit an existing zone or create a new one.
 
-Test the configuration and functionality of the DNS server using `dig`, which provides a [command line DNS client](/docs/networking/dns/use-dig-to-perform-manual-dns-queries/). If `dig` is not installed, install the utility by issuing the following command:
+Test the configuration and functionality of the DNS server using `dig`, which provides a [command line DNS client](/docs/guides/use-dig-to-perform-manual-dns-queries/). If `dig` is not installed, install the utility by issuing the following command:
 
     apt-get install dnsutils
 

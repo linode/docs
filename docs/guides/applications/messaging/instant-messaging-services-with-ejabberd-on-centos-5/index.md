@@ -1,19 +1,15 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Instant Messaging Services with ejabberd on CentOS 5
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-08
+modified: 2011-08-22
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/ejabberd/centos-5/','/applications/messaging/instant-messaging-services-with-ejabberd-on-centos-5/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2009-12-08
-title: Instant Messaging Services with ejabberd on CentOS 5
 external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -23,11 +19,12 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 Ejabberd, the "Erlang Jabber Daemon," is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some, mostly due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.
 
-This installation process assumes that you have a working installation of CentOS 5.4, that you've followed the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and that you are connected to your Linode via SSH as the root user. Once you've completed these requirements we can begin with the installation process.
+This installation process assumes that you have a working installation of CentOS 5.4, that you've followed the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and that you are connected to your Linode via SSH as the root user. Once you've completed these requirements we can begin with the installation process.
 
 ## XMPP/Jabber Basics
 
@@ -40,7 +37,7 @@ Though you can successfully run an XMPP server with only a passing familiarity o
     Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
 
 -   The XMPP system is federated by nature. Users with accounts on one server--if the server administrators allow it--can communicate with users on other servers. Without a centralized server, every XMPP server maintains the accounts and serves as the communication gateway for their own users. In the XMPP system there is no single point of failure, however each server administrator can decide how their server is going to participate in the federated network. For instance, to federate with Google's "GTalk" XMPP network, server administrators need to have server-to-server (s2s) SSL/TLS encryption enabled, while other servers don't always require this.
--   XMPP takes advantage of ["SRV" DNS Records](/docs/dns-guides/introduction-to-dns) to support the resolution of domains to the servers which provide DNS records.
+-   XMPP takes advantage of ["SRV" DNS Records](/docs/guides/dns-overview/) to support the resolution of domains to the servers which provide DNS records.
 
 ## Set the Hostname
 

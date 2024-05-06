@@ -1,20 +1,14 @@
 ---
 slug: install-and-run-askbot-on-ubuntu-16-04
-author:
-  name: Gopal Raha
-  email: gopalraha@outlook.com
+title: 'How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04'
 description: 'This guide shows how to Install and Deploy an AskBot Question and Answer Forum with LetsEncrypt SSL.'
+authors: ["Gopal Raha"]
+contributors: ["Gopal Raha"]
+published: 2017-08-20
+modified: 2017-09-22
 keywords: ["askbot", "Gunicorn", "LetsEncrypt", "Python", "WSGI"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-22
-modified_by:
-  name: Linode
-published: 2017-08-20
-title: 'How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04'
-contributor:
-  name: Gopal Raha
-  link: https://github.com/gopalraha
 external_resources:
  - '[AskBot Documentation](https://askbot.org/doc/index.html)'
  - '[AskBot Official Q&A Forum](https://askbot.org)'
@@ -32,14 +26,14 @@ In this guide, you'll install AskBot and deploy with **NGINX** as a web server, 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview/#add-records) guide.
+4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager > Get Started](/docs/products/networking/dns-manager/get-started/) guide.
 
 {{< note >}}
-Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dependencies and Create a Database
@@ -98,7 +92,7 @@ Throughout this guide, replace `example_user` with a non-root user with `sudo` a
 
         askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more detailed information about the arguments to `askbot-setup`, user the `-h` flag: `askbot-setup –h`.
 {{< /note >}}
 
@@ -120,7 +114,6 @@ For more detailed information about the arguments to `askbot-setup`, user the `-
          sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/example_user/askbot/settings.py
 
 ## Deploy AskBot with Let's Encrypt SSL
-
 {{< note >}}
 This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace `example.com` with your FQDN.
 {{< /note >}}
@@ -166,7 +159,7 @@ WantedBy=multi-user.target
         sudo systemctl daemon-reload
         sudo systemctl restart nginx
 
-5.  Use [Let's Encrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
+5.  Use [Let's Encrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/) to obtain an SSL certificate for your domain:
 
         sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
@@ -238,7 +231,7 @@ server {
 
     ![create an askbot admin account](askbot-2.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The first account created using the above method will be treated as an admin account. Any subsequent accounts will be normal accounts.
 {{< /note >}}
 

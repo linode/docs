@@ -1,19 +1,14 @@
 ---
 slug: use-and-modify-official-saltstack-formulas
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Use and Modify Official SaltStack Formulas"
 description: 'Learn how to use and modify official SaltStack formulas to manage your infrastructure.'
-keywords: ['salt', 'formulas', 'git']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-11-12
 modified: 2019-01-02
-modified_by:
-  name: Linode
+keywords: ['salt', 'formulas', 'git']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UseandModifyOfficialSaltStackFormulas.png
-title: "Use and Modify Official SaltStack Formulas"
-contributor:
-  name: Linode
 external_resources:
 - '[Salt Formulas](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[Git Fileserver Backend Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html)'
@@ -31,20 +26,20 @@ This guide will use GitHub to fork and modify SaltStack's [timezone formula](htt
 
 ## Before You Begin
 
-1. If you are new to SaltStack, read [A Beginner's Guide to Salt](/docs/applications/configuration-management/beginners-guide-to-salt/) to familiarize yourself with basic Salt concepts.
+1. If you are new to SaltStack, read [A Beginner's Guide to Salt](/docs/guides/beginners-guide-to-salt/) to familiarize yourself with basic Salt concepts.
 
-1. Download Git on your local computer by following our [How to Install Git on Linux, Mac or Windows](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide.
+1. Download Git on your local computer by following our [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide.
 
-1. Familiarize yourself with Git using our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
+1. Familiarize yourself with Git using our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
 
-1.  Make sure you have [configured git](/docs/development/version-control/how-to-configure-git/#configure-git) on your local computer.
+1.  Make sure you have [configured git](/docs/guides/how-to-configure-git/#configure-git) on your local computer.
 
-1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions: one running Ubuntu 18.04 and the second running CentOS 7.
+1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions: one running Ubuntu 18.04 and the second running CentOS 7.
 
-1.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Overview of the SaltStack Time Zone Formula
@@ -394,7 +389,7 @@ timezone:
     utc: True
     {{</ file >}}
 
-    The `timezone.sls` Pillar file was created from the `pillar.example` file provided in the SaltStack timezone formula. The example was modified to add Jinja control statements that will assign a different timezone on any minion that is a Debian family OS. You can replace any of the timezone `name` values to your preferred timezone or add additional Jinja logic, if necessary. For an introduction to Jinja, read the [Introduction to Jinja Templates for Salt](/docs/applications/configuration-management/introduction-to-jinja-templates-for-salt).
+    The `timezone.sls` Pillar file was created from the `pillar.example` file provided in the SaltStack timezone formula. The example was modified to add Jinja control statements that will assign a different timezone on any minion that is a Debian family OS. You can replace any of the timezone `name` values to your preferred timezone or add additional Jinja logic, if necessary. For an introduction to Jinja, read the [Introduction to Jinja Templates for Salt](/docs/guides/introduction-to-jinja-templates-for-salt/).
 
     You can also override any of the dictionary values defined in the `timezone/defaults.yaml` or `timezone/osfamilymap.yaml` in the Pillar file using Salt's lookup dictionary convention. For example, if you wanted to override the `pkgname` value defined in `timezone/defaults.yaml` your Pillar file might look like the following example:
 

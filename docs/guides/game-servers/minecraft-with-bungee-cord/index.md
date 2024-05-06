@@ -1,34 +1,28 @@
 ---
 slug: minecraft-with-bungee-cord
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Setting up BungeeCord to Link Spigot Servers'
+title_meta: 'How to Set Up BungeeCord to Link Spigot Servers'
 description: 'Learn how to set up BungeeCord to Link Spigot servers and setup IP routing with some basic troubleshooting'
+authors: ["Thomas Wemyss"]
+contributors: ["Thomas Wemyss"]
+published: 2015-09-09
+modified: 2021-06-11
 keywords: ["minecraft", "spigot", "bungeecord", "link", "bukkit", "25565", "minecraft servers", "linking minecraft servers", "how to set up bungeecord"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
- - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
+ - '[Minecraft Wiki](http://minecraft.wiki/w/Minecraft_Wiki)'
  - '[Official BungeeCord Site](https://www.spigotmc.org/wiki/bungeecord/)'
  - '[BungeeCord and Spigot Forums](https://www.spigotmc.org/)'
-published: 2015-09-09
-modified: 2021-06-11
-modified_by:
-    name: linode
-title: 'How to Set Up BungeeCord to Link Spigot Servers'
-h1_title: 'Setting up BungeeCord to Link Spigot Servers'
-contributor:
-    name: Thomas Wemyss
-    link: https://github.com/twemyss
 aliases: ['/applications/game-servers/minecraft-with-bungee-cord/','/game-servers/minecraft-with-bungee-cord/']
 dedicated_cpu_link: true
 ---
 
-After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/game-servers/minecraft-with-spigot-ubuntu), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows simple and easy switching between the Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than a single Minecraft server instance.
+After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/guides/minecraft-with-spigot-ubuntu/), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows simple and easy switching between the Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than a single Minecraft server instance.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Setting Up Your Linode
@@ -82,7 +76,7 @@ This section assumes that you've only got a Spigot server running on each Linode
 
         sudo iptables -A INPUT -p tcp -s `203.0.113.0` --dport 25565 -j ACCEPT
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're running other Spigot servers on the same Linode, then you need to run step 2 again, but changing `25565` to the port of the other servers.
 {{< /note >}}
 
@@ -96,8 +90,8 @@ If you're running other Spigot servers on the same Linode, then you need to run 
         sudo iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
         sudo iptables -A INPUT -j DROP
 
-    {{< note >}}
-If you've configured your `iptables` firewall by following the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) tutorial, then you need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
+    {{< note respectIndent=false >}}
+If you've configured your `iptables` firewall by following the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) tutorial, then you need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
 {{< /note >}}
 
 ## Installing BungeeCord
@@ -105,7 +99,6 @@ If you've configured your `iptables` firewall by following the [Setting Up and S
 Log into the BungeeCord Linode as the `bungeecord` user created earlier, and download BungeeCord:
 
     wget -O BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
-
 {{< note >}}
 This downloads the latest version of BungeeCord. You can find older versions for older Minecraft server versions, [here](http://ci.md-5.net/job/BungeeCord/).
 {{< /note >}}

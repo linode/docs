@@ -1,20 +1,17 @@
 ---
 slug: pocketmine-server-on-debian-7
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'PocketMine Server on Debian 7'
 description: 'A third party server for Minecraft Pocket Edition'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2015-04-02
+modified: 2019-02-01
 keywords: ["minecraft", "pocketmine", "debian"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[PocketMine.net](https://www.pocketmine.net/)'
  - '[PocketMine Documentation](http://pocketmine-mp.readthedocs.org/en/latest/)'
-modified: 2019-02-01
-modified_by:
-  name: Linode
-published: 2015-04-02
-title: 'PocketMine Server on Debian 7'
 aliases: ['/game-servers/pocketmine-server-on-debian-7/','/applications/game-servers/pocketmine-server-on-debian-7/']
 dedicated_cpu_link: true
 ---
@@ -27,7 +24,7 @@ Minecraft - Pocket Edition is non-free software that you will need to purchase i
 
 ## Prerequisites
 
-1.  Your Linode should already be configured per our [Getting Started](/docs/getting-started) guide, and secured per our [Securing Your Server](/docs/security/securing-your-server) guide.
+1.  Your Linode should already be configured per our [Getting Started](/docs/products/platform/get-started/) guide, and secured per our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2.  Ensure that your Linode is up to date:
 
@@ -41,8 +38,8 @@ Minecraft - Pocket Edition is non-free software that you will need to purchase i
 
         sudo adduser pocketmine
 
-    {{< note >}}
-If you've followed the steps in our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
+    {{< note respectIndent=false >}}
+If you've followed the steps in our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
 {{< /note >}}
 
 ## Installation
@@ -63,17 +60,17 @@ If you've followed the steps in our [Securing Your Server](/docs/security/securi
 
         screen ./start.sh
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you've used `su` to switch to the pocketmine user, you will get an error message stating `Cannot open your terminal '/dev/pts/0' - please check.` when attempting to start screen. You can resolve this by first running the command:
 
 script /dev/null
 {{< /note >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 PocketMine may not run properly on systems not running PHP7. You can manually install it, or modify `start.sh`, replacing all instances of `php7` with `php5`:
 
 sed -i -e 's/php7/php5/g' start.sh
-{{< /caution >}}
+{{< /note >}}
 
 2.  The set-up wizard will begin by asking you to select a language. Enter the two-character value for your language of choice, or just press **return** for English.
 

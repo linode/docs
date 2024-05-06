@@ -1,22 +1,15 @@
 ---
 slug: install-coreos-on-your-linode
-deprecated: true
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Install CoreOS on Your Linode
 description: 'CoreOS is a container-centric Linux distribution designed for clustered systems running in the cloud. This guide details installing CoreOS on a Linode.'
+authors: ["Michael Zuo"]
+contributors: ["Michael Zuo"]
+published: 2016-01-07
+modified: 2020-12-01
 keywords: ["coreos", "custom", "finnix", "lish"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-01-07
-modified: 2020-12-01
-modified_by:
-  name: Linode
-title: Install CoreOS on Your Linode
-contributor:
-  name: Michael Zuo
-  link:
-  external_resources:
+external_resources:
   - '[CoreOS official documentation pages](https://coreos.com/docs/)'
 relations:
     platform:
@@ -24,8 +17,8 @@ relations:
         keywords:
             - distribution: CoreOS
 aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
+deprecated: true
 ---
-
 {{< note >}}
 CoreOS Container Linux is now available for deployment from the Linode Manager.
 {{< /note >}}
@@ -37,10 +30,9 @@ CoreOS is not officially supported by Linode so there are limitations to using i
 *   The CoreOS installer creates a partition table on the disk image which interferes with the [Linode Backup](/docs/products/storage/backups/) service because the disk image is not be directly mountable.
 
 *   Unlike the case with most partitioned images, you *can* resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS resizes its root partition to fill the disk on next boot.
-
-{{< caution >}}
+{{< note type="alert" >}}
 These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/guides/recovering-from-a-system-compromise/#using-a-second-linode) and transfer your data after installation.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -65,10 +57,9 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
     ![Set /dev/sda to CoreOS disk image](coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/guides/using-the-lish-console/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
+5.  Use [Lish](/docs/products/compute/compute-instances/guides/lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
-
 {{< note >}}
 These commands should be run from a root prompt under Finnix through Lish.
 {{< /note >}}
@@ -106,7 +97,7 @@ ssh_authorized_keys:
 
         ./coreos-install -v -d /dev/sda -c cloud-config.yml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also supply any other options (see `coreos-install -h`). If you do not want verbose output, you can leave out the `-v` flag.
 {{< /note >}}
 

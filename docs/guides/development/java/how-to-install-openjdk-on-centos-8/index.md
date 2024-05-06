@@ -1,22 +1,15 @@
 ---
 slug: how-to-install-openjdk-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Installing Java Development Kit 11 on CentOS 8
+title_meta: How To Install Java Development Kit 11 on CentOS 8
 description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on CentOS 8.'
-og_description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on CentOS 8.'
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2020-03-25
 keywords: ["java", "openjdk", "jdk", "11", "CentOS", "8"]
 tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-25
-modified_by:
-  name: Linode
-published: 2020-03-25
-title: How To Install Java Development Kit 11 on CentOS 8
-h1_title: Installing Java Development Kit 11 on CentOS 8
 image: Installing_Java_Development_Kit_11_on_CentOS8_1200x631.png
-contributor:
-  name: Rajakavitha Kodhandapani
 audiences: ["beginner"]
 languages: ["java"]
 relations:
@@ -35,9 +28,9 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
 
-1.  Complete the sections of our guide on [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
+1.  Complete the sections of our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
 
 1.  Ensure your system is up-to-date:
 
@@ -53,7 +46,7 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
 
         sudo yum install java-11-openjdk
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 While you can run Java applications directly with the JRE, your applications will be compiled every time they are executed. This is generally slower than running applications that have already been compiled into Java bytecode, and may not be suitable if you plan to execute applications many times.
 {{< /note >}}
 
@@ -91,7 +84,7 @@ export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$PATH:$JAVA_HOME/bin
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using a shell other than Bash, such as [Zsh](https://github.com/ohmyzsh/ohmyzsh), you may need to add these lines in a different startup file instead. In the case of Zsh, this would be the `~/.zshrc` file.
 {{< /note >}}
 

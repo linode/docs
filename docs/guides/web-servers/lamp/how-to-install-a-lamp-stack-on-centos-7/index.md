@@ -1,19 +1,15 @@
 ---
 slug: how-to-install-a-lamp-stack-on-centos-7
-author:
-    name: Joel Kruger
-    email: docs@linode.com
+title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
+title_meta: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
 description: "Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP. ✓ Read now!"
+authors: ["Joel Kruger"]
+contributors: ["Joel Kruger"]
+published: 2015-12-01
+modified: 2022-01-14
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-01-14
-modified_by:
-    name: Linode
-published: 2015-12-01
-title: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
-h1_title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
-enable_h1: true
 aliases: ['/websites/lamp/lamp-on-centos-7/','/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/','/web-servers/lamp/lamp-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
@@ -32,7 +28,7 @@ A *LAMP stack* is a particular bundle of software packages commonly used for hos
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. Ensure that the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#set-the-hostname).
 
     Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 
@@ -43,8 +39,8 @@ A *LAMP stack* is a particular bundle of software packages commonly used for hos
 
         sudo yum update
 
-    {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 ## Apache
@@ -64,7 +60,7 @@ Install Apache using CentOS’s package manager.
 
 1.  Create a `httpd-mpm.conf` file and add the code in the example to turn off KeepAlive and adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As a best practice, you should create a backup of your Apache configuration file, before making any configuration changes to your Apache installation. To make a backup in your home directory:
 
     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
@@ -128,13 +124,13 @@ IncludeOptional sites-enabled/*.conf
 
         sudo systemctl reload httpd.service
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive an error when trying to reload your `httpd` service, follow the steps in the [Configure SELinux to Allow HTTP](#configure-selinux-to-allow-http) section and then reattempt to reload the service.
-    {{</ note >}}
+    {{< /note >}}
 
     Additional domains can be added to the `example.com.conf` file as needed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 {{< /note >}}
 
@@ -170,10 +166,9 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-
 {{< note >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
-{{</ note >}}
+{{< /note >}}
 
 ### Configure FirewallD to Allow HTTP Connections
 
@@ -194,11 +189,11 @@ ssh dhcpv6-client
 
     Visit your domain or public IP to test the Apache server and view the default Apache page.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Rename Apache's default welcome page. When this file is present it takes precedence over other configurations via the `LocationMatch` directive.
 
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk
-{{</ note >}}
+{{< /note >}}
 
 Once Apache has been installed and configured on your server, it is time to install PHP and the MySQL database on your CentOS 7 Linode.
 
@@ -261,7 +256,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that all lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 {{< /note >}}
 

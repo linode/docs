@@ -1,41 +1,35 @@
 ---
 slug: installing-riot-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install Riot on Debian 10"
+title_meta: "How to Install Riot on Debian 10"
 description: 'Riot is a secure instant messaging application built on Matrix protocol. This guide provides instructions to setup Riot / Matrix on Debian 10.'
-og_description: 'Riot is a secure instant messaging application built on Matrix protocol. This guide provides instructions to setup Riot / Matrix on Debian 10.'
+authors: ["Dan Nielsen"]
+contributors: ["Dan Nielsen"]
+published: 2021-02-05
 keywords: ['riot', 'matrix', 'chat', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-05
-modified_by:
-  name: Linode
-title: "Installing Riot on Debian 10"
-h1_title: "How to Install Riot on Debian 10"
-contributor:
-  name: Dan Nielsen
 ---
 
 **Riot** is an open source complete communication service. You can use Riot to chat, exchange files, make voice or video calls, and add bots; all while keeping control of your data. Riot is a [Matrix](https://matrix.org/clients/) web client.
 
 {{< note >}}
 Riot has been renamed to *Element*. You can read more about this name change on the [Element blog](https://element.io/blog/welcome-to-element/). This guide uses the Riot naming to refer to this Matrix web client.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
-If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide.
-{{</ note >}}
+    {{< note respectIndent=false >}}
+If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section of the guide.
+{{< /note >}}
 
 1.  To connect to the Synapse / Matrix services with a client other than Riot, you need a [Matrix client](https://matrix.org/clients/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Setup DNS
@@ -49,7 +43,7 @@ So in this example, create DNS records for:
 
 Set each of the above DNS records to the public IP address of the Linode instance.
 
-Refer to [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) for more information on configuring
+Refer to [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) for more information on configuring
 DNS entries or consult your DNS provider's documentation if using an external DNS provider.
 
 ## Install Riot

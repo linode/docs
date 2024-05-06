@@ -1,17 +1,14 @@
 ---
 slug: previewing-websites-without-dns
-author:
-  name: Linode
-  email: afornuto@linode.com
+title: Previewing Websites Without DNS
 description: 'A guide to testing a website for a domain before the DNS records are adjusted.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-01-16
+modified: 2018-05-22
 keywords: ["dns", " website", " preview"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/preview-websites/','/networking/dns/previewing-websites-without-dns/','/networking/dns/previewing-websites-without-dns-classic-manager/']
-modified: 2018-05-22
-modified_by:
-  name: Linode
-published: 2014-01-16
-title: Previewing Websites Without DNS
 tags: ["dns","networking"]
 ---
 
@@ -19,7 +16,7 @@ tags: ["dns","networking"]
 
 Previewing your website before updating your domain's nameservers allows you to stage and test your setup without redirecting viewers from your live site running on your old host. This is done with an entry to your local system's hosts file.
 
-A hosts file is used to map specific hostnames to IP addresses, and takes precedence over name resolution provided by DNS queries. By manually specifying an IP/hostname pair, web traffic sent to the given domain is directed to the given IP address, regardless of the domain's actual A records. If these terms are unfamiliar, see our [DNS](/docs/networking/dns/dns-records-an-introduction/) guide for more information.
+A hosts file is used to map specific hostnames to IP addresses, and takes precedence over name resolution provided by DNS queries. By manually specifying an IP/hostname pair, web traffic sent to the given domain is directed to the given IP address, regardless of the domain's actual A records. If these terms are unfamiliar, see our [DNS](/docs/guides/dns-overview/) guide for more information.
 
 ## Find Your Linode's IP Address
 

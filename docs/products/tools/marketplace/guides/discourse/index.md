@@ -1,16 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Discourse through the Linode Marketplace"
 description: "In this guide, learn how to install Discourse, an open source discussion platform that provides powerful features using the Linode One-Click Marketplace."
-keywords: ['discourse','one-click', 'server']
-tags: ["ubuntu","one-click", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-11-19
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying Discourse through the Linode Marketplace"
+keywords: ['discourse','one-click', 'server']
+tags: ["ubuntu","one-click", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[About Discourse](https://discourse.org/about/)'
 - '[Discourse on Github](https://github.com/discourse/discourse)'
@@ -18,7 +12,7 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/','/guides/deploy-discourse-with-marketplace-apps/','/guides/discourse-marketplace-app/']
 ---
 
-[Discourse](https://www.discourse.org/) is an open source discussion platform that provides a forum, mailing list, chat room, and more.
+[Discourse](https://www.discourse.org/) is a self-hosted open-source discussion platform that provides a forum, mailing list, chat room, and more.
 
 ## Before You Begin
 
@@ -26,9 +20,9 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
   - If you don't already have your domain hosted at Linode, the install creates A and AAAA domain records for you.
 
-    - This means you need a Linode API token. If you don't have a token, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing.
+    - This means you need a Linode API token. If you don't have a token, you must [create one](/docs/products/tools/api/get-started/#get-an-access-token) before continuing.
 
-    - Ensure that your domain registrar is [using Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain).
+    - Ensure that your domain registrar is [using Linode's name servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/).
 
   - Additionally, the SMTP user must be able to send email from `noreply@your-domain.com` for administrator account verification.
 
@@ -42,9 +36,9 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Discourse should be fully installed within 15-20 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -62,11 +56,13 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
 Discourse requires that you have a domain name and SMTP email. These fields are required for a successful installation and are marked *Required*. Additionally, the SMTP user must be able to send email from `noreply@your-fully-qualified-domain.com` for account verification.
 
-- **Linode API Token:** If you wish to use the Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. If this is provided along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/). If you do not provide this field, you need to manually configure your DNS records through your DNS provider and point them to the IP address of the new instance.
+- **Linode API Token:** If you wish to use the Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. If this is provided along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/). If you do not provide this field, you need to manually configure your DNS records through your DNS provider and point them to the IP address of the new instance.
 - **Subdomain:** The subdomain you wish to use, such as *www* for `www.example.com`.
 - **Domain:** The domain name you wish to use, such as *example.com*.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started After Deployment
 
@@ -74,10 +70,10 @@ Discourse is now installed and ready to use.
 
 1.  Your A and AAAA Domain records for the domain and subdomain, if you designated one, have been created and you should see them in the Cloud Manager.
 
-    - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain), confirm that there are now an entries for your domain and possible subdomain.
-    - [Configure rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Linode to point to `subdomain.your-domain.com` or `your-domain.com` if you did not enter a subdomain.
+    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there are now an entries for your domain and possible subdomain.
+    - [Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode to point to `subdomain.your-domain.com` or `your-domain.com` if you did not enter a subdomain.
 
-1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In the Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/guides/dns-manager/#add-dns-records) required to send email as specified by your email provider.
+1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In the Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/products/networking/dns-manager/guides/manage-dns-records/) required to send email as specified by your email provider.
 
 1.  You can now navigate to the Discourse app in your browser with the fully qualified domain name you entered during configuration, `https://subdomain.your-domain.com` or `https://your-domain.com`.
 
@@ -115,12 +111,12 @@ The Discourse Marketplace App installs the following software on your Linode:
 If you did not get a confirmation email during setup it could be caused by several issues.
 
 ### Check DNS Records
-Ensure that you have correctly setup the [email DNS records](/docs/guides/dns-manager/#add-dns-records) required to send email as specified from your email provider. The Installer does not do this for you as every email host has different required records and values.
+Ensure that you have correctly setup the [email DNS records](/docs/products/networking/dns-manager/guides/manage-dns-records/) required to send email as specified from your email provider. The Installer does not do this for you as every email host has different required records and values.
 
 ### Change the Confirmation Email Sender
 Discourse sends this email from `noreply@subdomain.your-domain.com`. The SMTP user you entered during setup must have permissions to send from this address. If this is not the case, and you did not receive the email, you can change this address in a configuration file.
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Change into the directory `/var/discourse/containers/`:
 
@@ -128,15 +124,15 @@ Discourse sends this email from `noreply@subdomain.your-domain.com`. The SMTP us
 
 1.  Edit the file `app.yml` with the text editor of your choice. Uncomment the following line and edit the email address to the email you wish to send the confirmation email from. The SMTP user must have permissions to send email from this address.
 
-    {{< file "/var/discourse/containers/app.yml" >}}
-...
+    ```file {title="/var/discourse/containers/app.yml"}
+    ...
 
-## If you want to set the 'From' email address for your first registration, uncomment and change:
-- exec: rails r "SiteSetting.notification_email='noreply@example.com'"
-## After getting the first signup email, re-comment the line. It only needs to run once.
+    ## If you want to set the 'From' email address for your first registration, uncomment and change:
+    - exec: rails r "SiteSetting.notification_email='noreply@example.com'"
+    ## After getting the first signup email, re-comment the line. It only needs to run once.
 
-...
-{{</ file >}}
+    ...
+    ```
 
 1.  Save the file and exit.
 

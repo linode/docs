@@ -1,20 +1,14 @@
 ---
 slug: install-and-configure-caddy-on-centos-7
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Install and Configure Caddy on CentOS 7'
 description: 'This guide will show you how to install and configure Caddy and run it as a systemd service.'
+authors: ["Konstantin Kuchinin"]
+contributors: ["Konstantin Kuchinin"]
+published: 2017-09-14
+modified: 2018-02-02
 keywords: ["caddy", "web server"]
 tags: ["centos","web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-14
-modified: 2018-02-02
-modified_by:
-  name: Linode
-title: 'Install and Configure Caddy on CentOS 7'
-contributor:
-  name: Konstantin Kuchinin
-  link: https://github.com/coocheenin
 external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
 relations:
@@ -25,18 +19,17 @@ relations:
 aliases: ['/web-servers/caddy/install-and-configure-caddy-on-centos-7/']
 ---
 
-
 ![Install Caddy on CentOS](Caddy.jpg)
 
 [Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  You need to register your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point your domain to your Linode.
+3.  You need to register your site's domain name and follow our [DNS Manager Overview](/docs/products/networking/dns-manager/#add-records) guide to point your domain to your Linode.
 
 4.  Update your system:
 

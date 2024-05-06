@@ -1,33 +1,28 @@
 ---
 slug: apache-2-web-server-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Apache 2 Web Server on CentOS 5
 description: 'Instructions for getting started with the Apache web server on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-27
+modified: 2013-11-18
 keywords: ["Apache", "web sever", "CentOS 5"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/installation/centos-5/','/web-servers/apache/apache-2-web-server-on-centos-5/','/websites/apache/apache-2-web-server-on-centos-5/']
-modified: 2013-11-18
-modified_by:
-  name: Linode
-published: 2009-07-27
-title: Apache 2 Web Server on CentOS 5
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
-
-
-This tutorial explains how to install and configure the Apache web server on CentOS 5. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for CentOS](/docs/lamp-guides/centos-5/).
+This tutorial explains how to install and configure the Apache web server on CentOS 5. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for CentOS](/docs/guides/lamp-server-on-centos-5/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -169,7 +164,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Generally, as specified above and in our [LAMP guide for CentOS 5.2](/docs/lamp-guides/centos-5/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
+Generally, as specified above and in our [LAMP guide for CentOS 5.2](/docs/guides/lamp-server-on-centos-5/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
 ## Install Apache Modules
 

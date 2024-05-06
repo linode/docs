@@ -1,20 +1,14 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Joomla through the Linode Marketplace"
 description: "Deploy Joomla on a Linode Compute Instance. A content management system to ease administration overhead for your websites."
+published: 2022-03-29
 keywords: ['joomla','csm','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-29
-modified_by:
-  name: Linode
-title: "Deploying Joomla through the Linode Marketplace"
 external_resources:
 - '[Joomla](https://www.joomla.org/)'
 ---
 
-Joomla is an advanced CMS (content management system) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](https://www.drupal.org/) and [WordPress](https://wordpress.org/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](https://rubyonrails.org/) and [Django](https://www.djangoproject.com/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end user's perspective and easy to administer and host.
+[Joomla](https://www.joomla.org/) is an advanced CMS (content management system) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](https://www.drupal.org/) and [WordPress](https://wordpress.org/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](https://rubyonrails.org/) and [Django](https://www.djangoproject.com/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end user's perspective and easy to administer and host.
 
 ## Deploying a Marketplace App
 
@@ -22,9 +16,9 @@ Joomla is an advanced CMS (content management system) used to facilitate the eas
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Joomla should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -38,13 +32,16 @@ Joomla is an advanced CMS (content management system) used to facilitate the eas
 - **MySQL User Password** *(required)*: The password for the `joomla` MySQL user.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
+
 {{< content "marketplace-custom-domain-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
 ### Accessing the Joomla Site
 
-1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 ### Setting Up Joomla
 
@@ -74,7 +71,7 @@ The first time you access your Joomla site, you are prompted to finish the Jooml
 
     ![Screenshot of a Joomla admin login form](joomla-admin-login.png)
 
-1. After logging in, the admin dashboard appears. From here, you can manage your site. This includes creating content, new users, adjusting the the templates, and *much* more. Check out [the official Joomla documentation](https://docs.joomla.org/Main_Page) to learn how to further utilize your Joomla instance.
+1. After logging in, the admin dashboard appears. From here, you can manage your site. This includes creating content, new users, adjusting the templates, and *much* more. Check out [the official Joomla documentation](https://docs.joomla.org/Main_Page) to learn how to further utilize your Joomla instance.
 
     ![Screenshot of a Joomla admin dashboard](joomla-admin-panel.png)
 

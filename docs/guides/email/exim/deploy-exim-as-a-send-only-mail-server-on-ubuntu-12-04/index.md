@@ -1,19 +1,15 @@
 ---
 slug: deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04
-deprecated: true
-author:
-  name: Lukas Sabota
-  email: docs@linode.com
+title: 'Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 '
 description: 'Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).'
+authors: ["Lukas Sabota"]
+contributors: ["Lukas Sabota"]
+published: 2012-11-12
+modified: 2014-01-21
 keywords: ["exim", "ubuntu 12.04", "send-only email", "mail server", "linux mail", "smtp server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04/','/email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/','/email/exim/sendonly-mail-server-withexim-on-ubuntu-12-04-lts-precise-pangolin/']
-modified: 2014-01-21
-modified_by:
-  name: Alex Fornuto
-published: 2012-11-12
-title: 'Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 '
 external_resources:
  - '[Exim Homepage](http://www.exim.org/)'
  - '[Email Guides](/docs/email/)'
@@ -22,17 +18,18 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Many Linux server applications need to send email. Cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.
 
 You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
-We assume that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
+We assume that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-wordpress-almalinux-8
-author:
-  name: Nathaniel Stickman
+title: "Install WordPress on AlmaLinux 8"
+title_meta: "How to Install WordPress on AlmaLinux 8"
 description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8.'
 og_description: "This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-16
 keywords: ['wordpress almalinux']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-16
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Install WordPress on AlmaLinux 8"
-h1_title: "Install WordPress on AlmaLinux 8"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 relations:
     platform:
         key: how-to-install-wordpress
@@ -31,14 +25,14 @@ WordPress is an open-source content management system (CMS). WordPress remains p
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up the Prerequisites
@@ -72,7 +66,7 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
 
 1. Complete the installation of a LAMP or LEMP stack by following the appropriate guide linked below. For each guide, skip the step on installing PHP/PHP-FPM, since you did that above. Additionally, replace `php` in any commands with `php74-php`. For example, change `php-fpm` and `php-mysqlnd` to `php74-php-fpm` and `php74-php-mysqlnd`, respectively.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Both of the guides linked below are for CentOS 8 rather than AlmaLinux 8. However, the steps in these guides have been tested and verified to work on AlmaLinux without requiring any changes.
     {{< /note >}}
 

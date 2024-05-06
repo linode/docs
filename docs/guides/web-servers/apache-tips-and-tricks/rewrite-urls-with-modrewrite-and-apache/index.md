@@ -1,22 +1,19 @@
 ---
 slug: rewrite-urls-with-modrewrite-and-apache
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Rewrite URLs with mod_rewrite and Apache'
 description: 'How to use the mod_rewrite engine to generate URLs with the Apache HTTP server.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-06
+modified: 2017-02-21
 keywords: ["mod_rewrite", "REST", "URLs", "redirect", "apache", "httpd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/','/web-servers/apache/configuration/rewriting-urls/','/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/']
-modified: 2017-02-21
-modified_by:
-  name: Phil Zona
-published: 2009-11-06
-title: 'Rewrite URLs with mod_rewrite and Apache'
 external_resources:
  - '[Installing Apache](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Apache Rewrite Guide](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)'
- - '[Redirect URLs with the Apache Web Server](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/)'
+ - '[Redirect URLs with the Apache Web Server](/docs/guides/redirect-urls-with-the-apache-web-server/)'
 tags: ["web server","apache"]
 ---
 
@@ -26,7 +23,7 @@ In this guide, you'll learn how to rewrite URLs with mod_rewrite and Apache. Rew
 
 ## Before You Begin
 
-1.  This guide assumes you have followed our [[Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](/docs/web-servers/apache/) or [LAMP stack guides](/docs/web-servers/lamp/).
+1.  This guide assumes you have followed our [[Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](/docs/web-servers/apache/) or [LAMP stack guides](/docs/web-servers/lamp/).
 
 2.  In this guide, we'll be modifying Apache configuration files, so be sure you have the proper permissions to do so.
 
@@ -83,7 +80,7 @@ This is useful when the locations of files on the file system do not correspond 
 
 ## Rewrite URLs Under Specific Conditions
 
-With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/) application:
+With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/guides/how-to-install-and-configure-wordpress/) application:
 
 {{< file "Apache Configuration Option for WordPress" apache >}}
 RewriteEngine On

@@ -1,18 +1,14 @@
 ---
 slug: creating-a-mongodb-replication-set-on-debian-7-wheezy
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
+title_meta: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
 description: 'This guide provides you with step-by-step instructions for creating and configuring a MongoDB ReplSet (replication set) for redundancy on Debian.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-04-09
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/debian-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/']
-modified_by:
-  name: Linode
-published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
-h1_title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
@@ -25,13 +21,14 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","nosql"]
 deprecated: true
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 ## Installing MongoDB
 

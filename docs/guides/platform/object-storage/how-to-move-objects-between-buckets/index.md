@@ -1,21 +1,14 @@
 ---
 slug: how-to-move-objects-between-buckets
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Moving Objects Between Buckets in Linode's Object Storage"
+title_meta: "How to Move Objects Between Buckets in Linode's Object Storage"
 description: "This guide shows you how to move your objects stored in Linode's Object Storage from one bucket to another."
-og_description: "This guide shows you how to move your objects stored in Linode's Object Storage from one bucket to another."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-05-04
 keywords: ['object','storage','bucket']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-05-04
-modified: 2020-05-04
 image: Moving_Objects_Between_Buckets_in_Linode_Object_Storage_1200x631.png
-modified_by:
-  name: Linode
-title: "How to Move Objects Between Buckets in Linode's Object Storage"
-h1_title: "Moving Objects Between Buckets in Linode's Object Storage"
-contributor:
-  name: Linode
 external_resources:
 - '[Cyberduck duck documentation](https://trac.cyberduck.io/wiki/help/en/howto/cli)'
 tags: ["linode platform"]
@@ -60,7 +53,7 @@ To transfer objects between two clusters, whether they are on the same account o
 
 {{< note >}}
 Transferring objects between two different connections creates a copy of the object(s). If you don't want the original files in the source bucket, you need to delete them after the transfer.
-{{</ note >}}
+{{< /note >}}
 
 1.  Open Cyberduck, click the **File** menu and select **New Browser**. A second interface window appears where you can create another connection.
 
@@ -71,10 +64,9 @@ Transferring objects between two different connections creates a copy of the obj
 1.  Drag the object from the source to the destination.
 
     ![Select Objects to Move Between Cyberduck Windows](copyObjectsBetweenBuckets.png "Select Objects to Move Between Cyberduck Windows")
-
 {{< note >}}
 You can easily copy multiple items, folders, or buckets by selecting everything you want to move and dragging the group. If you move a bucket to another bucket, it creates a folder with that bucket name.
-{{</ note >}}
+{{< /note >}}
 
 ## Cyberduck CLI
 
@@ -90,6 +82,6 @@ You can also use the Cyberduck CLI, duck, to move objects from one bucket to ano
 
 {{< note >}}
 The bucket source and destination names are the fully qualified names including the cluster name, for example: `us-east-1.linodeobjects.com/example_bucket`.
-{{</ note >}}
+{{< /note >}}
 
 

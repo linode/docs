@@ -1,21 +1,16 @@
 ---
 slug: set-up-wireguard-vpn-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Set Up WireGuard VPN on Ubuntu"
 description: 'Wireguard encrypts your traffic quickly and safely, this guide will show you how to set up WireGuard VPN server and clients.'
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
+authors: ["Sunit Nandi"]
+contributors: ["Sunit Nandi"]
+published: 2017-11-14
+modified: 2019-01-22
 keywords: ['wireguard','vpn', 'ubuntu']
 bundles: ['network-security']
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-14
-modified: 2019-01-22
-modified_by:
-  name: Linode
-title: "Set Up WireGuard VPN on Ubuntu"
-contributor:
-  name: Sunit Nandi
 relations:
     platform:
         key: setup-wireguard-vpn
@@ -29,18 +24,17 @@ aliases: ['/networking/vpn/set-up-wireguard-vpn-on-ubuntu/']
 The WireGuard configuration is as simple as setting up SSH. A connection is established by an exchange of public keys between server and client. Only a client that has its public key in its corresponding server configuration file is allowed to connect. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
 
 This guide will configure a simple peer connection between a Linode running Ubuntu 18.04, and a client. The client can be either your local computer or another Linode.
-
-{{< caution >}}
+{{< note type="alert" >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
 - You will need root access to your Linode, or a user account with `sudo` privilege.
-- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 {{< note >}}
-The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/platform/update-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/platform/update-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
+The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/products/compute/compute-instances/guides/manage-the-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/products/compute/compute-instances/guides/manage-the-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
 {{< /note >}}
 
 ## Install WireGuard
@@ -78,7 +72,7 @@ Setting up wireguard (0.0.20181218-wg1~bionic) ...
 Processing triggers for libc-bin (2.27-3ubuntu1) ...
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the installation completes but the output does not appear, your kernel is most likely not configured correctly. To double check, issue the `lsmod | grep wireguard` command. Its output should not be blank. Refer to the previous section to troubleshoot.
 {{< /note >}}
 
@@ -129,7 +123,7 @@ SaveConfig = true
 
         wg-quick up wg0
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `wg-quick` is a convenient wrapper for many of the common functions in `wg`. You can turn off the wg0 interface with `wg-quick down wg0`
 {{< /note >}}
 

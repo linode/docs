@@ -1,7 +1,7 @@
 {{ define "main" }}
   <div class="">
     {{ partial "sections/content/title-byline.html" . }}
-    <div x-ignore class="content prose prose-sm md:prose-lg max-w-none my-8">
+    <div x-ignore class="content prose prose-sm md:prose-lg max-w-content my-8">
       {{ .Content }}
       {{ partial "sections/content/more.html" . }}
     </div>
@@ -12,11 +12,20 @@
     <div>
       <p class="pt-2 md:pt-6 text-basicgray">
         This page was originally published on
-        <time datetime="{{ .PublishDate }}">
+        <time
+          datetime="{{ .PublishDate.Format site.Params.time_format_iso8601 }}">
           {{ .PublishDate.Format site.Params.time_format_default }}.
         </time>
       </p>
     </div>
+
+    {{ if .Params.enableRelatedContent }}
+      <div class="block my-8">
+        <h2 class="mb-4" id="related-content">Related Content</h2>
+        {{ partial "sections/navigation/recommendations-cards.html" . }}
+      </div>
+    {{ end }}
+
   </div>
 {{ end }}
 
@@ -25,8 +34,7 @@
   <div class="mt-6 flex flex-col">
     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-        <div
-          class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-md">
+        <div class="overflow-hidden shadow ring-1 ring-black/5 md:rounded-md">
           <table class="min-w-full divide-y divide-gray-300">
             <tbody class="">
               {{ range $i, $e := .values }}

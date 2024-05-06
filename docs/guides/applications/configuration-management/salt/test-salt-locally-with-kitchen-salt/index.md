@@ -1,17 +1,14 @@
 ---
 slug: test-salt-locally-with-kitchen-salt
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Test Salt States Locally with KitchenSalt"
 description: 'This guide provides you with instructions for testing Salt states locally with Kitchen and kitchen-salt, utilities that let you test without a salt master or minions.'
-keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-10-15
 modified: 2019-01-02
-modified_by:
-  name: Linode
+keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: TestSaltStatesLocallywithKitchenSalt.png
-title: "Test Salt States Locally with KitchenSalt"
 external_resources:
 - '[KitchenSalt Documentation](https://kitchen.saltproject.io/docs/file/README.rdoc)'
 - '[Kitchen Documentation](https://docs.chef.io/kitchen.html)'

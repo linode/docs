@@ -1,25 +1,19 @@
 ---
 slug: minecraft-with-spigot-ubuntu
-author:
-  name: Linode Community
-  email: contribute@linode.com
+title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
+title_meta: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
 description: 'This guide shows how to set up, configure, and customize a Minecraft game server using the Spigot application on a Linode running Ubuntu 14.04.'
+authors: ["Sam Mauldin"]
+contributors: ["Sam Mauldin"]
+published: 2015-04-21
+modified: 2019-02-01
 keywords: ["minecraft", "spigot"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
-published: 2015-04-21
-modified: 2019-02-01
-modified_by:
-  name: Linode
-title: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
-h1_title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
-enable_h1: true
-contributor:
-    name: Sam Mauldin
-    link: https://github.com/Sxw1212
 dedicated_cpu_link: true
 image: spigot-minecraft-ubuntu-title.jpg
+deprecated: true
 ---
 
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.
@@ -36,7 +30,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
         sudo apt install git openjdk-7-jre-headless
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your Linode is running Ubuntu 14.10 or higher, you can choose to install `openjdk-8-jre-headless` instead.
 {{< /note >}}
 
@@ -46,7 +40,7 @@ If your Linode is running Ubuntu 14.10 or higher, you can choose to install `ope
         OpenJDK Runtime Environment (IcedTea 2.5.4) (7u75-2.5.4-1~trusty1)
         OpenJDK 64-Bit Server VM (build 24.75-b04, mixed mode)
 
-1.  If you're running an IP tables firewall (as shown in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide), add an exception to your `iptables` rules:
+1.  If you're running an IP tables firewall (as shown in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide), add an exception to your `iptables` rules:
 
         sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
 
@@ -71,7 +65,7 @@ If your Linode is running Ubuntu 14.10 or higher, you can choose to install `ope
         wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         java -jar BuildTools.jar
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This may take approximately 10 minutes, depending in the size of the Linode you are building on.
 {{< /note >}}
 
@@ -127,7 +121,7 @@ eula=true
 su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 {{< /file >}}
 
-    This line will, at reboot, create a new [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session as the Minecraft user, and launch SpigotMC in it.
+    This line will, at reboot, create a new [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session as the Minecraft user, and launch SpigotMC in it.
 
 1.  Manually start Spigot:
 
@@ -135,7 +129,7 @@ su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 
     To access the console, type `screen -r` as your **minecraft** user (note if you `su` to the user, you will need to run `script /dev/null` before you can attach to the Screen session).
 
-    You can now follow the [Connecting to your Minecraft Server](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian#connect-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
+    You can now follow the [Connecting to your Minecraft Server](/docs/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
 
     To run admin commands during the game, first run `op username` from the console, replacing `username` with your in-game username. Have fun playing on your new Minecraft server!
 
@@ -166,7 +160,7 @@ Customize the server by editing values in `/home/minecraft/server/server.propert
 
         pvp=true
 
--	**Other**: See the [Minecraft](http://minecraft.gamepedia.com/Server.properties) wiki for more details.
+-	**Other**: See the [Minecraft](http://minecraft.wiki/w/Server.properties) wiki for more details.
 
 ### Plugins
 
@@ -176,7 +170,7 @@ Plugins can be found from the [Spigot Resources](http://www.spigotmc.org/resourc
 
         wget -P /home/minecraft/server/plugins/ --content-disposition <plugin url>
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When downloading plugins from Spigot, the `wget` flag `--content-disposition` will help ensure the plugin is downloaded with the correct filename.
 {{< /note >}}
 

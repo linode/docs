@@ -1,15 +1,11 @@
 ---
 slug: monitoring-third-party-tools-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes monitoring third-party tools.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
 title: Monitoring Third-Party Tools
+description: 'Shortguide that describes monitoring third-party tools.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-21
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["monitoring"]
 headless: true
 show_on_rss_feed: false

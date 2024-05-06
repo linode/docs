@@ -1,37 +1,32 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid
-deprecated: true
-author:
-  name: Brett Kaplan
-  email: bkaplan@linode.com
+title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 10.04 LTS (Lucid)'
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-05-09
+modified: 2013-05-13
 keywords: ["postfix ubuntu 10.04", "dovecot ubuntu 10.04", "ubuntu 10.04 mail server", "dovecot", "email", "ubuntu", "lucid"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/','/email/postfix/dovecot-mysql-ubuntu-10-04-lucid/']
-modified: 2013-05-13
-modified_by:
-  name: Linode
-published: 2010-05-09
-title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
-
-
 
 The Postfix Mail Transfer Agent (MTA) is a high performance open source e-mail server system. This guide will help you get Postfix running on your Linode, using Dovecot for IMAP/POP3 service and MySQL to store information on virtual domains and users. This guide is largely based on Christoph Haas's great [ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny) and HowtoForge [Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny), with some packages omitted.
 
-It is assumed that you have followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
+It is assumed that you have followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
 
 **NOTE: Please read all of the information presented in this guide carefully.** There are many files and commands that will need to be edited as part of the setup process: please do not simply copy and paste the example blocks.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

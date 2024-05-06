@@ -1,20 +1,14 @@
 ---
 slug: how-to-create-and-use-mysql-stored-procedures
-author:
-  name: Francis Ndungu
-  email: francisndungu83@gmail.com
+title: "Creating and Using MySQL Stored Procedures"
+title_meta: "Creating and Using MySQL Stored Procedures - A Tutorial"
 description: 'This guide will show you how to use MySQL stored procedures, which are user-defined SQL statements that are stored in a MySQL database on Linux.'
+authors: ["Francis Ndungu"]
+contributors: ["Francis Ndungu"]
+published: 2019-02-20
 keywords: ['mysql','stored procedures','database','database optimization']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-02-20
-modified_by:
-  name: Linode
-title: "Creating and Using MySQL Stored Procedures - A Tutorial"
-h1_title: "Creating and Using MySQL Stored Procedures"
 image: L_MySQLStoredProc.png
-contributor:
-  name: Francis Ndungu
-  link: https://twitter.com/francisndungu83
 external_resources:
 - '[Working with MySQL stored procedures](https://dev.mysql.com/doc/connector-net/en/connector-net-tutorials-stored-procedures.html)'
 tags: ["database","mysql"]
@@ -39,9 +33,9 @@ In this guide, you will:
 
 Make sure you have the following:
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.	A MySQL server and client installed on the Linode server. Installation guides for MySQL are available for different distributions in our [MySQL section](/docs/databases/mysql/).
 

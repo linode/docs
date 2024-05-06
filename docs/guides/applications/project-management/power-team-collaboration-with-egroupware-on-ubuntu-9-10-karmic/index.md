@@ -1,29 +1,26 @@
 ---
 slug: power-team-collaboration-with-egroupware-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Power Team Collaboration with eGroupware on Ubuntu 9.10 (Karmic)'
 description: 'This guide shows how to install and build a groupware system using eGroupware, which provides a group of server-side apps for collaboration on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-01
+modified: 2011-08-22
 keywords: ["groupware", "email", "collaboration", "ubuntu", "karmic"]
 tags: ["ubuntu", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-ubuntu-9-10-karmic/','/web-applications/project-management/egroupware/ubuntu-9-10-karmic/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-02-01
-title: 'Power Team Collaboration with eGroupware on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: collaborate-with-egroupware
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
 
 The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems, including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups, all without the need to rely on a third-party vendor. As eGroupware provides its applications entirely independent of any third party service, the suite is a good option for organizations who need web-based groupware solutions, but do not want to rely on a third party provider for these services.
 
-Before installing eGroupware, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you will need install a [LAMP stack](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/) as a prerequisite for installing eGroupware.
+Before installing eGroupware, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, you will need install a [LAMP stack](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/) as a prerequisite for installing eGroupware.
 
 ## Install eGroupware
 
@@ -88,7 +85,7 @@ Replace `/srv/example.com/public_html/` with the path to your virtual host's `Do
 
 When you have completed the initial "Header Setup," select the option to write the "header" file and then continue to the "Setup/Admin." Ensure that you've selected the correct "Domain" if you configured more than one. At this juncture you must install the eGroupware applications that you will expect to use. Select the proper character set and then select the button to "'Install' all applications." You can now "Recheck" your installation. Supply eGroupware with the configuration for your email server. Additionally, you will need to create an admin account for your eGroupware domain, which you can accomplish from this page.
 
-When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your eGroupware instance. If you wish to use eGroupware to help manage email, you will need to have a running email system. Consider running [Postfix with Courier and MySQL](/docs/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/).
+When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your eGroupware instance. If you wish to use eGroupware to help manage email, you will need to have a running email system. Consider running [Postfix with Courier and MySQL](/docs/guides/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/).
 
 ## More Information
 

@@ -1,18 +1,12 @@
 ---
 slug: what-is-systemd
-author:
-  name: Linode
-  email: docs@linode.com
+title: "What is systemd?"
 description: 'This guide provides you with an introduction to systemd, a Linux initialization system and service monitor daemon, as well as systemd unit files.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-09-12
 keywords: ['systemd','linux', 'init', 'unit files']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-09-12
-modified: 2018-09-12
-modified_by:
-  name: Linode
-title: "What is systemd?"
-contributor:
-  name: Linode
 external_resources:
 - '[systemd Wiki](https://www.freedesktop.org/wiki/Software/systemd/)'
 - '[systemd GitHub](https://github.com/systemd/systemd)'
@@ -26,11 +20,11 @@ systemd is a Linux initialization system and service manager that includes featu
 
 systemd is the default init system for the major Linux distributions but is backwards compatible with SysV init scripts. SysVinit is an initialization system which predates systemd and uses a simplified approach to service startup. systemd not only manages system initialization, but also provides alternatives for other well known utilities, like cron and syslog. Because systemd does several things within the Linux user space, many have criticized it for violating [the Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy), which emphasizes simplicity and modularity.
 
-This guide provides an introduction to systemd by taking a closer look at systemd units. The [Mount Units](/docs/quick-answers/linux-essentials/what-is-systemd/#mount-units) section will analyze a unit file that is shipped by default with systemd on an Ubuntu 18.04 system, while the [Timer Units](/docs/quick-answers/linux-essentials/what-is-systemd/#timer-units) section will create a custom unit file on the same system.
+This guide provides an introduction to systemd by taking a closer look at systemd units. The [Mount Units](/docs/guides/what-is-systemd/#mount-units) section will analyze a unit file that is shipped by default with systemd on an Ubuntu 18.04 system, while the [Timer Units](/docs/guides/what-is-systemd/#timer-units) section will create a custom unit file on the same system.
 
 {{< note >}}
 All examples in this guide were created with a Linode running Ubuntu 18.04.
-{{</ note >}}
+{{< /note >}}
 
 ## The Linux Boot Process and systemd
 
@@ -53,8 +47,7 @@ systemd introduces the concept of *systemd units* and there are several types, s
 
 Expand the note below for a comprehensive list of all available systemd unit types.
 
-{{< disclosure-note "systemd Unit Types">}}
-
+{{< note type="secondary" title="systemd Unit Types" isCollapsible=true >}}
 | Unit Type | File Extension | Description |
 | --------- | -------------- | ----------- |
 | Service unit | `.service` | A system service. |
@@ -69,8 +62,7 @@ Expand the note below for a comprehensive list of all available systemd unit typ
 | Socket unit |	`.socket` | An inter-process communication socket. |
 | Swap unit | `.swap` |	A swap device or a swap file. |
 | Timer unit | `.timer` | A systemd timer. |
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 For most distributions using systemd, unit files are stored in the following directories:
 
@@ -164,13 +156,13 @@ A mount unit file must contain a `[Mount]` section. The example mount unit file 
 
 {{< note >}}
 The official systemd manual notes that configuring mount points through `/etc/fstab` is the recommended approach. systemd has a `system-fstab-generator` that translates the information in the fstab file into systemd mount and swap units at runtime.
-{{</ note >}}
+{{< /note >}}
 
-There are many other unit file types available in systemd. Read the [Use systemd to Start a Linux Service at Boot](/docs/quick-answers/linux/start-service-at-boot/) guide to become more familiar with the service unit type.
+There are many other unit file types available in systemd. Read the [Use systemd to Start a Linux Service at Boot](/docs/guides/start-service-at-boot/) guide to become more familiar with the service unit type.
 
 ### Timer Units
 
-You can use systemd timer unit files to automate tasks, similarly to how [cron jobs](/docs/tools-reference/tools/schedule-tasks-with-cron/) are used. However, with timer units you will also have access to systemd's powerful logging capabilities.
+You can use systemd timer unit files to automate tasks, similarly to how [cron jobs](/docs/guides/schedule-tasks-with-cron/) are used. However, with timer units you will also have access to systemd's powerful logging capabilities.
 
 To better understand systemd timer units, this section will outline how a timer unit can be used to create periodic backups for a mysql database.
 
@@ -182,7 +174,7 @@ You will need three separate files:
 
 {{< note >}}
 Your script, service unit file, and timer unit file should all have `644` read and write permissions.
-{{</ note >}}
+{{< /note >}}
 
 Below is the script that creates a backup `.sql` file named for a database named `testdb`. The script will append a date and timestamp to the file name:
 
@@ -249,7 +241,7 @@ When you start the timer unit, systemd will start it right away. To do this, iss
 
 systemd makes common system administration tasks easier to manage with its `systemctl` and `journalctl` commands. `systemctl` can be used to gather detailed information about the overall state of your server and any individual unit type. It can stop and start the server and modify the system state. In the Timer Unit Files section `systemctl` is used to enable and start an individual timer unit. systemd can be used in a similar way for any unit.
 
-Read our *[Introduction to systemctl](/docs/quick-answers/linux-essentials/introduction-to-systemctl/)* guide for a deeper dive into this systemd tool.
+Read our *[Introduction to systemctl](/docs/guides/introduction-to-systemctl/)* guide for a deeper dive into this systemd tool.
 
 systemd's `journalctl` tool provides a centralized process and system logging tool. This command allows you to query the systemd journal, which creates and maintains indexed journals from logging information that is pooled from different areas within the system; areas like standard output and standard error of service units, log messages via syslog, and kernel log messages. In this way, system administrators can use a single tool to monitor and debug a server.
 

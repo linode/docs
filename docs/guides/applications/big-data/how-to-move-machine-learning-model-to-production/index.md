@@ -1,17 +1,14 @@
 ---
 slug: how-to-move-machine-learning-model-to-production
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: 'How to Move Your Machine Learning Model to Production'
 description: 'This guide will show you how to use an existing deep learning model as part of a production application using an API endpoint for a Flask app.'
-keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
 og_description: 'Use a pre-trained deep learning model as part of a production application.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 published: 2017-10-09
 modified: 2019-01-31
-modified_by:
-  name: Linode
-title: 'How to Move Your Machine Learning Model to Production'
+keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Miniconda](https://conda.io/miniconda.html)'
 - '[Keras Documentation](https://keras.io/)'
@@ -29,9 +26,9 @@ This guide will show you how to create a simple Flask API that will use machine 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 This guide uses Ubuntu 16.04 in the examples. Modify the commands as needed for your distribution. The scripts in this guide are written in Python 3, but should also work on Python 2.
 
@@ -56,7 +53,7 @@ You will be using Python both to create a model and to deploy the model to a Fla
 
         conda install keras tensorflow h5py pillow flask numpy
 
-If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) guide for more details.
+If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/docs/guides/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) guide for more details.
 
 ## Prepare a Model
 

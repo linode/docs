@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Linode CLI Commands for Compute Instances"
 description: "How to use the Linode CLI to create and manage Linode instances."
 published: 2020-07-22
@@ -59,8 +56,8 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
         linode-cli linodes disk-create $linode_id --size 2700 --root_pass mypassword --filesystem raw --no-defaults
 
     {{< note >}}
-Even if you set the `--filesystem` to `raw`, the defaults you specified when configuring the CLI will be used for setting a Linode's disk image for this disk, overriding the filesystem setting. To create a disk without the default image, using only the parameters you send in this command, use the `--no-defaults` flag.
-{{</ note >}}
+    Even if you set the `--filesystem` to `raw`, the defaults you specified when configuring the CLI will be used for setting a Linode's disk image for this disk, overriding the filesystem setting. To create a disk without the default image, using only the parameters you send in this command, use the `--no-defaults` flag.
+    {{< /note >}}
 
 1.  List all disks provisioned for a Linode:
 

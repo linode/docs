@@ -1,18 +1,14 @@
 ---
 slug: use-luks-for-full-disk-encryption
-author:
-  name: Nick Brewer
-  email: docs@linode.com
+title: How to Use LUKS for Full Disk Encryption on Linux
 description: This tutorial will guide you through creating a secure, LUKS-encrypted Debian installation.
+authors: ["Nick Brewer"]
+contributors: ["Nick Brewer"]
+published: 2016-11-02
 aliases: ['/security/encryption/use-luks-for-full-disk-encryption/','/security/use-luks-for-full-disk-encryption/','/security/full-disk-encryption/']
 keywords: ["full disk encryption", "debian", "luks", "lassie"]
 tags: ["security","debian","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-11-02
-modified_by:
-  name: Linode
-published: 2016-11-02
-title: How to Use LUKS for Full Disk Encryption on Linux
 ---
 
 ![How to Use LUKS for Full Disk Encryption on Linux](how-to-use-luks-for-full-disk-encryption-linux.jpg "How to Use LUKS for Full Disk Encryption on Linux")
@@ -23,29 +19,28 @@ Full disk encryption protects the information stored on your Linode's disks by c
 This guide will show you how to deploy a Linux distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that the respective distro's installer includes a LUKS encryption option.
 
 The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as *LVM on LUKS*, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to access all of the volumes within your encrypted disk.
-
-{{< caution >}}
+{{< note type="alert" >}}
 Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots.
 
-Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/platform/disk-images/linode-backup-service/) can't mount encrypted disks.
+Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/products/storage/backups/) can't mount encrypted disks.
 
-Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](/docs/platform/billing-and-support/support/).
-{{< /caution >}}
+Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](/docs/products/platform/get-started/guides/support/).
+{{< /note >}}
 
 ## Before you Begin
 
 1.  Create a Linode in the data center of your choice.
-
-2.  Determine the installation media you'll be using to deploy your custom distribution, and take note of its size. In this example, we're using Debian's [network boot](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/) option.
+2.  [Delete the disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) in the Linode that you created.
+3.  Determine the installation media you'll be using to deploy your custom distribution, and take note of its size. In this example, we're using Debian's [network boot](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/) option.
 
 ## Prepare Your Linode for Encrypted Debian Installation
 
-1.  [Create two raw disk images](/docs/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
+1.  [Create two raw disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 300MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. This will take up the rest of the free space available on your Linode.
 
-2.  [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
+2.  [Create two configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#creating-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
 
     **Installer profile**
 
@@ -62,18 +57,18 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
     - /dev/sda: *Boot* disk image.
     - root / boot device: Standard /dev/sda
 
-3.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish).
+3.  Boot into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
 
 4.  Once in Rescue Mode, download the Debian installation media and copy it to your *Installer* disk:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 {{< /note >}}
 
         wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
 
-5. Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from your Linode's Dashboard.
+5. Reboot into your *Installer* configuration profile, and open the [Glish](/docs/products/compute/compute-instances/guides/glish/) graphical console from your Linode's Dashboard.
 
 ## Install the Operating System
 
@@ -135,9 +130,9 @@ As an additional security step, you can use the keys provided in the same direct
 
     ![Debian 8 Encryption Passphrase Warning](fde-weak-passphrase-warning.png)
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you lose or forget this password, the data on this disk image will be **irrecoverable**.
-{{< /caution >}}
+{{< /note >}}
 
 14. Next you'll receive a full overview of the partitioning scheme being applied to your disk. Once you've confirmed the changes, select **Finish partitioning and write changes to disk**:
 
@@ -147,7 +142,7 @@ If you lose or forget this password, the data on this disk image will be **irrec
 
     ![Debian 8 Write Partition Confirmation](fde-disk-formatting.png)
 
-16. The installer will begin deploying the base system. Once it completes, you'll have the option to choose specific software packages. The only packages required for the server are `SSH server` and `standard system utilities`, but you can select additional options as needed. If you wish to make use of a graphical shell over [VNC](/docs/applications/remote-desktop/install-vnc-on-ubuntu-16-04/) or the Glish console, select the desktop environment of your choice. Once you've confirmed your selections, hit **Continue**:
+16. The installer will begin deploying the base system. Once it completes, you'll have the option to choose specific software packages. The only packages required for the server are `SSH server` and `standard system utilities`, but you can select additional options as needed. If you wish to make use of a graphical shell over [VNC](/docs/guides/install-vnc-on-ubuntu-16-04/) or the Glish console, select the desktop environment of your choice. Once you've confirmed your selections, hit **Continue**:
 
     ![Debian 8 Software Selection](fde-software-selection.png)
 
@@ -209,4 +204,4 @@ Your output will be similar to this:
     mode:    read/write
 
 
-You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to begin configuring your Linode.
+You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to begin configuring your Linode.

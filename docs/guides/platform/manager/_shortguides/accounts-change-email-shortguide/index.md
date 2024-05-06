@@ -1,15 +1,11 @@
 ---
 slug: accounts-change-email-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to change the email address on your account.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
 title: Change Your Email Address on Your Account
+description: 'Shortguide that shows you how to change the email address on your account.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-21
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
@@ -21,7 +17,7 @@ Use the **Users & Grants** page to modify the email address associated with a us
 
 {{< note >}}
 Only full account access users can receive threshold notification emails.
-{{</ note >}}
+{{< /note >}}
 
 Here's how to change a user's email from the **Users & Grants** page:
 
@@ -38,4 +34,4 @@ The user's email address is now updated.
 
 {{< note >}}
 If you do not have full account access, you can view your user profile settings and update your email address by clicking on your username at the top of the Cloud Manager screen and selecting **Display**.
-{{</ note >}}
+{{< /note >}}

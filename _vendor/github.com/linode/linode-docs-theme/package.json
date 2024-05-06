@@ -1,24 +1,41 @@
 {
-	"scripts": {},
-	"devDependencies": {
-		"@babel/cli": "^7.15.7",
-		"@babel/core": "^7.15.5",
-		"@babel/preset-env": "^7.15.6",
-		"@fullhuman/postcss-purgecss": "^4.0.3",
-		"@tailwindcss/forms": "^0.3.4",
-		"@tailwindcss/typography": "^0.4.1",
-		"autoprefixer": "^10.3.7",
-		"axe-core": "^4.3.3",
-		"core-js": "^3.18.1",
-		"cypress": "^6.9.1",
-		"cypress-axe": "^0.12.0",
-		"cypress-html-validate": "^2.1.1",
-		"html-validate": "^6.1.0",
-		"netlify-plugin-cache": "^1.0.3",
-		"netlify-plugin-debug-cache": "^1.0.3",
-		"postcss": "^8.3.9",
-		"postcss-cli": "^9.0.1",
-		"prettier-plugin-go-template": "^0.0.11",
-		"tailwindcss": "^2.2.16"
-	}
+  "comments": {
+    "dependencies": {},
+    "devDependencies": {
+      "@babel/cli": "project",
+      "@babel/core": "project",
+      "@babel/preset-env": "project",
+      "@tailwindcss/forms": "project",
+      "@tailwindcss/typography": "project",
+      "autoprefixer": "project",
+      "cypress": "project",
+      "cypress-axe": "project",
+      "cypress-html-validate": "project",
+      "html-validate": "project",
+      "postcss": "project",
+      "postcss-cli": "project",
+      "prettier": "project",
+      "prettier-plugin-go-template": "project",
+      "tailwindcss": "project"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "cypress": "^13.5.1",
+    "cypress-axe": "^1.5.0",
+    "cypress-html-validate": "^6.1.0",
+    "html-validate": "^8.7.1",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^9.0.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-go-template": "^0.0.15",
+    "tailwindcss": "^3.3.2"
+  },
+  "scripts": {}
 }

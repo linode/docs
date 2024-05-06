@@ -1,32 +1,29 @@
 ---
 slug: installing-squirrelmail-on-ubuntu-12-04
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Installing SquirrelMail on Ubuntu 12.04'
 description: 'A guide to installing the SquirrelMail web client for email on Ubuntu 12.04.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-01-14
+modified: 2014-01-15
 keywords: ["squirrelmail", "ubuntu", "12.04", "mail client"]
 tags: ["ubuntu","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/clients/installing-squirrelmail-on-ubuntu-12-04/','/email/squirrelmail-ubuntu12-04/']
-modified: 2014-01-15
-modified_by:
-  name: Alex Fornuto
-published: 2014-01-14
-title: 'Installing SquirrelMail on Ubuntu 12.04'
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
-deprecated: true
 relations:
     platform:
         key: how-to-install-squirrelmail
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
-SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide.
+SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installation
@@ -99,7 +96,7 @@ Alias /squirrelmail /usr/share/squirrelmail
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Apache is serving other virtual hosts you may need to adjust them and/or this file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
 {{< /note >}}
 

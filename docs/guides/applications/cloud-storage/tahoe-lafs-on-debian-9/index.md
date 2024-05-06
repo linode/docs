@@ -1,26 +1,20 @@
 ---
 slug: tahoe-lafs-on-debian-9
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Keep Your Data Private in the Cloud with Tahoe-LAFS"
 description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers."
+og_description: "Tahoe Least Authority File Store, or Tahoe-LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible. Use our guide to create, manage, and access a Tahoe-LAFS grid."
+authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
+published: 2017-10-24
+modified: 2017-10-26
 keywords: ["confidential", "encrypted", "integrity", "redundant", "private", "filesystem", "storage"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-10-24
-modified: 2017-10-26
-modified_by:
-  name: Linode
-title: 'How to Keep Your Data Private in the Cloud with Tahoe-LAFS'
-og_description: 'Tahoe Least Authority File Store, or Tahoe-LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible. Use our guide to create, manage, and access a Tahoe-LAFS grid.'
-contributor:
-  name: Alexandru Andrei
 external_resources:
 - '[Tahoe-LAFS Project Page](https://tahoe-lafs.org/)'
 - '[Tahoe-LAFS Documentation](http://tahoe-lafs.readthedocs.io)'
 aliases: ['/applications/cloud-storage/tahoe-lafs-on-debian-9/']
 ---
-
 
 ## What is Tahoe-LAFS?
 
@@ -45,12 +39,12 @@ All of these things make Tahoe-LAFS a good fit for securely storing sensitive da
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and a *Debian 9* Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and a *Debian 9* Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Server Requirements and Recommendations
@@ -157,7 +151,7 @@ Restart the service:
 Although the process can be automated so that you can easily expand your storage pool, set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the [Before You Begin](#before-you-begin) section apply here as well.
 
 {{< note >}}
-If you need large amounts of disk space, [configure block storage devices on your Linode](/docs/platform/how-to-use-block-storage-with-your-linode).
+If you need large amounts of disk space, [configure block storage devices on your Linode](/docs/products/storage/block-storage/).
 
 Configure block storage before the other steps in this section.
 
@@ -223,7 +217,7 @@ To confirm each successful setup instead of launching all instances before verif
 This StackScript relies on *icanhazip.com* to retrieve each Linode's external IP address. While the site has redundant servers, there is a chance it may unavailable at times.
 {{< /note >}}
 
-1.  [Familiarize yourself with StackScripts](/docs/platform/stackscripts), then navigate to the [StackScripts page](https://cloud.linode.com/stackscripts/index) to add a new StackScript.
+1.  [Familiarize yourself with StackScripts](/docs/products/tools/stackscripts/), then navigate to the [StackScripts page](https://cloud.linode.com/stackscripts/index) to add a new StackScript.
 
 2.  Select Debian 9 as the distribution and paste the following in the **Script** section:
 

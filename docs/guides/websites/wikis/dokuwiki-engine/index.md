@@ -1,18 +1,15 @@
 ---
 slug: dokuwiki-engine
-author:
-  name: Linode
-  email: docs@linode.com
+title: DokuWiki Engine
 description: 'This guide provides you with step-by-step instructions for installing the DocuWiki software for creating a fully featured Wiki for your organization.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-17
+modified: 2017-07-27
 keywords: ["wiki", "doku wiki", "php"]
 tags: ["wiki","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/dokuwiki/','/websites/wikis/dokuwiki-engine/']
-modified: 2017-07-27
-modified_by:
-  name: Linode
-published: 2010-04-17
-title: DokuWiki Engine
 external_resources:
  - '[The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)'
  - '[Doku Wiki Manual](http://www.dokuwiki.org/manual)'
@@ -22,7 +19,7 @@ DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage
 
 ![Build a Fully Featured Wiki with DokuWiki](dokuwiki_title_graphic.png)
 
-Before beginning the installation of DokuWiki, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before beginning the installation of DokuWiki, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Install Prerequisites
 
@@ -32,7 +29,7 @@ There are a few prerequisites that you will need before embarking on the install
     apt-get upgrade
     apt-get install php5 php-pear apache2 wget
 
-Additionally, you will likely want to configure your Apache instance for virtual hosting according to our guide for [name based virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny/). On CentOS and Fedora powered systems, issue the following commands to run system updates, install required prerequisites, and ensure that Apache will resume following the next reboot cycle:
+Additionally, you will likely want to configure your Apache instance for virtual hosting according to our guide for [name based virtual hosting](/docs/guides/apache-2-web-server-on-debian-5-lenny/). On CentOS and Fedora powered systems, issue the following commands to run system updates, install required prerequisites, and ensure that Apache will resume following the next reboot cycle:
 
     yum update
     yum install php php-pear httpd wget

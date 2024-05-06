@@ -1,29 +1,26 @@
 ---
 slug: manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: 'Manage Development with Mantis Bug Tracker on Debian 5'
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Debian 5 (Lenny).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-02-16
+modified: 2011-04-29
 keywords: ["mantis", "mantis debian", "mantis linux", "bug tracker", "development"]
 tags: ["debian", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/','/applications/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/','/development/bug-tracking/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/','/web-applications/project-management/mantis/debian-5-lenny/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-02-16
-title: 'Manage Development with the Mantis Bug Tracker on Debian 5 (Lenny)'
 relations:
     platform:
         key:  mantis-bug-tracker
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/tools-reference/linux-system-administration-basics/). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/docs/web-servers/lamp/lamp-server-on-debian-5-lenny/) as well as the [Exim guide](/docs/email/exim/send-only-mta-debian-5-lenny/) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/docs/guides/lamp-server-on-debian-5-lenny/) as well as the [Exim guide](/docs/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/) if you don't already have a means of sending mail from your server.
 
 ## Installing Prerequisites
 
@@ -58,7 +55,7 @@ Next, move the `mantisbt-1.2.1` directory to the `public_html` directory under t
     chmod -R 755 /srv/www/example.com/public_html/mantis/
     chmod 777 /srv/www/example.com/public_html/mantis/
 
-Visit the location of MantisBT in your browser. In this example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional information regarding MySQL, see the [MySQL guide](/docs/databases/mysql/use-mysql-relational-databases-on-debian-5-lenny/). At this point Mantis is installed and ready to configure.
+Visit the location of MantisBT in your browser. In this example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional information regarding MySQL, see the [MySQL guide](/docs/guides/use-mysql-relational-databases-on-debian-5-lenny/). At this point Mantis is installed and ready to configure.
 
 ## Configuring Mantis
 

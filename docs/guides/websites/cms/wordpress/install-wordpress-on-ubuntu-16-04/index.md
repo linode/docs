@@ -1,17 +1,13 @@
 ---
 slug: install-wordpress-on-ubuntu-16-04
-author:
-  name: Edward Angert
-  email: docs@linode.com
+title: Install WordPress on Ubuntu 16.04
 description: 'This guide will show you how to install and optimize the WordPress blogging and CMS on your Linode from scratch using a LAMP setup on Ubuntu 16.04.'
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2016-10-21
 keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
 tags: ["ubuntu","lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-10-21
-modified_by:
-  name: Edward Angert
-published: 2016-10-21
-title: Install WordPress on Ubuntu 16.04
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -27,9 +23,8 @@ aliases: ['/websites/cms/install-wordpress-on-ubuntu-16-04/','/websites/cms/word
 In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
 
 ![Install WordPress on Ubuntu 16.04](wordpress-ubuntu-16-04-title.png "Install WordPress on Ubuntu 16.04")
-
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
 
@@ -38,7 +33,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
--   This guide assumes you have followed the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and that your Linode's [hostname is set](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+-   This guide assumes you have followed the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and that your Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check your hostname run:
 
@@ -47,7 +42,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
     The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-16-04/) web stack.
+-   Configure a [LAMP](/docs/guides/install-lamp-stack-on-ubuntu-16-04/) or [LEMP](/docs/guides/how-to-install-a-lemp-server-on-ubuntu-16-04/) web stack.
 
 -   Make sure MySQL has a database set up for WordPress. If you do not have a WordPress database, create one:
 
@@ -105,7 +100,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
     WordPress will test the credentials and if authentication is successful, prompt you to **Run the install**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If WordPress doesn't display when you visit your domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in your site's home directory.
 {{< /note >}}
 

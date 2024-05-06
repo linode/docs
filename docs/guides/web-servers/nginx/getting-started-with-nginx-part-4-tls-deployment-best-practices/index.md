@@ -1,20 +1,15 @@
 ---
 slug: getting-started-with-nginx-part-4-tls-deployment-best-practices
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
+title_meta: "Getting Started with NGINX: TLS Deployment Best Practices"
 description: "This is step four in our guide to Getting Started with NGINX where you will learn best practices, tips, and tricks, when you are deploying HTTPS websites and NGINX."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-02-09
 keywords: ["ssl", "tls", "nginx", "https", "certificate", "hsts", "ocsp", "http2"]
 tags: ["web server","http","nginx","security","ssl"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-ssl-and-tls-deployment-best-practices/','/web-servers/nginx/tls-deployment-best-practices-for-nginx/','/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/','/guides/tls-deployment-best-practices-for-nginx/']
-published: 2018-02-09
-modified: 2018-02-09
-modified_by:
-  name: Linode
-title: "Getting Started with NGINX: TLS Deployment Best Practices"
-h1_title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
-enable_h1: true
 ---
 
 ![TLS Deployment Best Practices](getting-started-nginx-part-4-tls-deployment-best-practices.jpg)
@@ -31,10 +26,9 @@ enable_h1: true
         cp -r /etc/nginx/conf.d/ /etc/nginx/conf.d-backup-pt4
 
 - To enable any configuration changes you make, you need to run `nginx -s reload` as root.
-
-{{< caution >}}
+{{< note type="alert" >}}
 Most directives in this guide can be added either to NGINX's `http` block, or an individual site's `server` block. The exceptions are `add_header` directives, which are [not inherited](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#http-response-header-fields). If you're only hosting one website, or if you want all your hosted sites to have the same NGINX parameters, then adding all your `add_header` directives the `http` block is fine. If you intend to use different header options for different site configurations, [see here](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#http-response-header-fields) for a different approach.
-{{< /caution >}}
+{{< /note >}}
 
 ## Redirect Incoming HTTP Traffic HTTPS
 
@@ -109,7 +103,7 @@ A Diffie-Hellman parameter is a set of randomly generated data used when establi
 
         openssl genpkey -genparam -algorithm DH -out /root/certs/example.com/dhparam4096.pem -pkeyopt dh_paramgen_prime_len:4096
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 According to the [OpenSSL manual](https://wiki.openssl.org/index.php/Manual:Openssl(1)#STANDARD_COMMANDS), `genpkey -genparam` supersedes `dhparam`.
 {{< /note >}}
 

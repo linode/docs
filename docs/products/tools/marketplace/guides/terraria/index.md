@@ -1,22 +1,22 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Terraria through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying the two-dimensional sandbox survival game, Terraria, on a Linode using the One-Click Marketplace App."
-keywords: ['terraria','marketplace app', 'game server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying Terraria through the Linode Marketplace"
-contributor:
-  name: Linode
+modified: 2024-01-22
+keywords: ['terraria','marketplace app', 'game server']
 external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-terraria-with-marketplace-apps/', '/platform/one-click/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-marketplace-apps/','/guides/terraria-marketplace-app/']
+_build:
+  list: false
+noindex: true
+
+deprecated: true
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Terraria has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up Terraria manually on a Compute Instance, see our [How to Setup a Terraria Linux Server](/docs/guides/host-a-terraria-server-on-your-linode/) guide.
+{{< /note >}}
 
 Terraria is a two-dimensional sandbox game in which players explore the world, collect resources, build structures, and battle enemies in procedurally generated environments. In Terraria a player begins by digging for ore, and the further they dig the more adventure they find. Multiplayer mode can be either cooperative or PvP.
 
@@ -28,13 +28,13 @@ Hosting your own Terraria server gives you control over the world, the players, 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Terraria should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 8GB Dedicated CPU or Shared Compute Instance
 
 ### Terraria Options
@@ -49,13 +49,15 @@ Hosting your own Terraria server gives you control over the world, the players, 
 - **Port:** The port number that the game server listens on.
 - **Seed:** A [random seed](https://terraria.gamepedia.com/World_Seed) used by the world generation algorithm to create a unique world. For example: `qazwsx123`.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 After Terraria has finished installing, you will be able to access your server by copying your Linode's IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com) and then connecting to it within the game.
 
-{{< caution >}}
+{{< note type="alert" >}}
 You must disable Steam Guard to connect to your Terraria server. If you don't disable Steam Guard, you may be locked out of your account and will need to reset your password. To disable Steam Guard, navigate to the Steam Preferences menu, then open the **Account** pane. Click on **Manage Steam Guard Account Security**, then click on **Turn Steam Guard off**.
-{{</ caution >}}
+{{< /note >}}
 
 To find your Linode's IPv4 address and connect to it:
 

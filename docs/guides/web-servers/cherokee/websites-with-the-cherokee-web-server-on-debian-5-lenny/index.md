@@ -1,31 +1,28 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Websites with the Cherokee Web Server on Debian 5 (Lenny)'
 description: 'Instructions for getting started with the Cherokee web server on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-10
+modified: 2011-04-29
 keywords: ["cherokee", "web sever", "debian 5", "debian lenny"]
 tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/','/web-servers/cherokee/installing-cherokee-debian-5-lenny/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-09-10
-title: 'Websites with the Cherokee Web Server on Debian 5 (Lenny)'
 relations:
     platform:
         key: install-cherokee-server
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
 
 This tutorial explains how to install and configure the Cherokee web server on Debian 5 (Lenny). This guide targets Cherokee version 0.7.2 (provided by the Debian repositories as of this writing), but the install steps should be similar for later versions. We will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Debian 5 (Lenny) system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), we recommend that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Debian 5 (Lenny) system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), we recommend that you do so prior to following these instructions.
 
 ## Install Cherokee
 

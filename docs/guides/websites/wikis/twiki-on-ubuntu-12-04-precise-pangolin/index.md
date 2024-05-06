@@ -1,27 +1,24 @@
 ---
 slug: twiki-on-ubuntu-12-04-precise-pangolin
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'TWiki on Ubuntu 12.04 (Precise Pangolin)'
 description: 'Twiki is a robust wiki compared to other apps such as Confluence. This guide provides you with instructions for installing Twiki on Ubuntu 12.04 "Precise Pangolin".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-24
+modified: 2013-10-04
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/ubuntu-12-04-lucid/','/websites/wikis/twiki-on-ubuntu-12-04-precise-pangolin/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2012-10-24
-title: 'TWiki on Ubuntu 12.04 (Precise Pangolin)'
-deprecated: true
 relations:
     platform:
         key: install-twiki
         keywords:
            - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
-TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/websites/wikis/confluence-on-debian-5-lenny/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
+TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/guides/confluence-on-debian-5-lenny/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
 
 ## Prepare System and Install TWiki
 
@@ -142,7 +139,7 @@ Before you can proceed with the installation process, you will need to configure
 {{< /file >}}
 
 
-Add your local IP address to the `Allow from` directive in the `FilesMatch` block to allow access to the configuration scripts. For more information about access control with Apache, consider the [Rule Based Access Control](/docs/web-servers/apache/configuration/rule-based-access-control/) document.
+Add your local IP address to the `Allow from` directive in the `FilesMatch` block to allow access to the configuration scripts. For more information about access control with Apache, consider the [Rule Based Access Control](/docs/guides/rulebased-access-control-for-apache/) document.
 
 When you've completed these modifications, reload the web server configuration by issuing the following command:
 
@@ -170,5 +167,5 @@ You may wish to consult the following resources for additional information on th
 
 - [TWiki Project Upstream](http://twiki.org/)
 - [Apache HTTP Server Documentation](/docs/web-servers/apache/)
-- [Exim Send Only MTA](/docs/email/exim/send-only-mta-ubuntu-10-04-lucid/)
-- [Postfix Mail Gateway MTA](/docs/email/postfix/gateway-ubuntu-10-04-lucid/)
+- [Exim Send Only MTA](/docs/guides/sendonly-mail-server-with-exim-on-ubuntu-10-04-lts-lucid/)
+- [Postfix Mail Gateway MTA](/docs/guides/basic-postfix-email-gateway-on-ubuntu-10-04-lucid/)

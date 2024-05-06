@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Enable Backups"
 description: "How to enable the Linode Backup Service."
+published: 2021-11-12
 aliases: ['/quick-answers/linode-platform/enable-backups-on-a-linode/', '/guides/enable-backups-on-a-linode/']
 ---
 
@@ -19,7 +17,7 @@ The Backups service can be individually enabled on an existing Compute Instances
 
 1.  Click **Enable Backups**.
 
-    ![Enable Linode Backups by navigating to to the individual Linode's backup menu](enable-backups.png)
+    ![Enable Linode Backups by navigating to the individual Linode's backup menu](enable-backups.png)
 
 1.  A pop-up box is displayed confirming that you intend to enable backups for the specified monthly cost. Click **Enable Backups** to confirm.
 

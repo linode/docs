@@ -1,29 +1,26 @@
 ---
 slug: manage-development-with-the-mantis-bug-tracker-on-fedora-14
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Manage Development with the Mantis Bug Tracker on Fedora 14
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
 keywords: ["mantis", "mantis fedora", "mantis linux", "bug tracker", "development"]
 tags: ["fedora", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/bug-tracking/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/development/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/applications/development/manage-development-with-the-mantis-bug-tracker-on-fedora-14/','/web-applications/project-management/mantis/fedora-14/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: Manage Development with the Mantis Bug Tracker on Fedora 14
 relations:
     platform:
         key:  mantis-bug-tracker
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/tools-reference/linux-system-administration-basics/). Additionally, you'll need to have followed the [LAMP guide for Fedora 14](/docs/web-servers/lamp/lamp-server-on-fedora-14/) and be able to [send email from your Linode](/docs/tools-reference/linux-system-administration-basics/#send-email-from-your-server) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed the [LAMP guide for Fedora 14](/docs/guides/lamp-server-on-fedora-14/) and be able to [send email from your Linode](/docs/guides/linux-system-administration-basics/#send-email-from-your-server) if you don't already have a means of sending mail from your server.
 
 ## Installing Prerequisites
 
@@ -56,7 +53,7 @@ Next, we'll move the `mantisbt-1.2.4` directory to our `public_html` directory u
     mv mantisbt-1.2.4/ /srv/www/example.com/public_html/mantis
     chown -R apache:apache /srv/www/example.com/public_html/mantis/
 
-Visit the location of MantisBT in your browser. In our first example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional MySQL help, see our [MySQL guide](/docs/databases/mysql/use-mysql-relational-databases-on-fedora-13/). At this point Mantis is installed and ready to configure.
+Visit the location of MantisBT in your browser. In our first example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional MySQL help, see our [MySQL guide](/docs/guides/use-mysql-relational-databases-on-fedora-13/). At this point Mantis is installed and ready to configure.
 
 ## Configuring Mantis
 

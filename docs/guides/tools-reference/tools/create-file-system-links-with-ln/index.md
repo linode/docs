@@ -1,17 +1,14 @@
 ---
 slug: create-file-system-links-with-ln
-author:
-  name: Linode
-  email: docs@linode.com
+title: Create File System Links with ln
 description: 'This guide provides you with step-by-step instructions for creating hard and sym (symbolic) links with the ln command on the Linux operating system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-11
+modified: 2018-03-12
 keywords: ["linux", "common commands", "unix", "command line", "file systems"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/create-file-system-links-with-ln/','/linux-tools/common-commands/ln/']
-modified: 2018-03-12
-modified_by:
-  name: Linode
-published: 2010-10-11
-title: Create File System Links with ln
 external_resources:
   - '[What is the Difference Between a Hard Link and a Symbolic Link? (Ask Ubuntu)](https://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link)'
 tags: ["linux"]
@@ -19,7 +16,7 @@ tags: ["linux"]
 
 ![Create File System Links with ln](create_file_system_links_with_ln_smg.png)
 
-The `ln` command creates **links** which point to other objects in the file system. Links are similar to, but not the same as, **aliases**. Links may point to files, directories, or other links. Although improper use can lead to disorganization and confusion, links are useful for providing access to files and file system organization.
+The `ln` command creates **links** which point to other objects in the file system. Links are similar to (but not the same as) **aliases**. Links may point to files, directories, or other links. Although improper use can lead to disorganization and confusion, links are useful for providing access to files and file system organization.
 
 `ln` can create two different types of links:
 
@@ -34,7 +31,6 @@ The `ln` command creates **links** which point to other objects in the file syst
 `ln` uses a syntax that closely resembles tools like `cp` and `mv`:
 
     ln -s <from> <to>
-
 {{< note >}}
 The `-s` flag specifies a symbolic link. If this flag is omitted, a hard link is created by default.
 {{< /note >}}

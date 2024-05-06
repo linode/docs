@@ -1,20 +1,14 @@
 ---
 slug: web-programming-languages
-author:
-  name: John Mueller
+title: "The Top 9 Web Development Languages You Need To Know"
+title_meta: "Programming Languages for Web Development"
 description: 'This guide to web programming languages will help you understand how to perfect your web design coding. Learn which webpage languages are in demand today.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-11-24
 keywords: ['web development languages','web design coding','website programming language','website design languages']
 tags: ['web applications', 'python', 'java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-24
-modified_by:
-  name: Linode
-title: "Programming Languages for Web Development"
-h1_title: "The Top 9 Web Development Languages You Need To Know"
-enable_h1: true
-contributor:
-  name: John Mueller
-  link: http://www.johnmuellerbooks.com/
 ---
 
 Web development began as a process for structuring static content using HTML to make it easier to exchange. Adding style with CSS came next so that a web page could provide appealing content. These web pages were static and people wanted more. Web development is well beyond these simple beginnings today. Sometimes it’s hard to know when you’re using a web application or a desktop application, or a combination of the two. There are so many possibilities for content and presentation that it’s hard to know what to choose in the way of web programming languages. However, if you review what you want to do and why you want to do it, the choice of web programming languages quickly diminishes. The website programming language you choose affects what sorts of web design coding you can do.

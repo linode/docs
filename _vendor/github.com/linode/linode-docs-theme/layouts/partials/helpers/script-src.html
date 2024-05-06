@@ -2,7 +2,7 @@
 {{ $defer := true }}
 {{ $async := false }}
 {{ $params := dict }}
-{{ $sourceMap := cond hugo.IsProduction "" "inline" }}
+{{ $sourceMap := cond (ne hugo.Environment "development") "" "inline" }}
 {{ if reflect.IsMap $ }}
   {{ $js = .js }}
   {{ if .nodefer }}
@@ -11,14 +11,13 @@
   {{ if .async }}
     {{ $defer = false }}
     {{ $async = true }}
-  {{end }}
+  {{ end }}
   {{ with .params }}
     {{ $params = . }}
   {{ end }}
 {{ end }}
-{{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2016" "params" $params }}
+{{ $opts := dict "sourceMap" $sourceMap "minify" (ne hugo.Environment "development") "target" "es2016" "params" $params }}
 {{ $js := $js | js.Build $opts }}
-{{- if  hugo.IsProduction  }}
+{{- if  (ne hugo.Environment "development") }}
   {{ $js = $js | fingerprint }}
-{{ end -}}
-<script src="{{ $js.RelPermalink }}" {{ if  hugo.IsProduction  }} integrity="{{ $js.Data.Integrity }}" {{ end }}{{ if $defer }} defer{{ end}}{{ if $async }} async{{ end }}></script>
+{{ end -}}<script src="{{ $js.RelPermalink }}" {{ if  (ne hugo.Environment "development")  }} integrity="{{ $js.Data.Integrity }}" {{ end }}{{ if $defer }} defer{{ end}}{{ if $async }} async{{ end }}></script>

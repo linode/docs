@@ -1,18 +1,14 @@
 ---
 slug: managing-mysql-with-phpmyadmin-on-centos-6-4
-deprecated: true
-author:
-    name: Linode
-    email: docs@linode.com
+title: 'How to Install and Configure phpMyAdmin on CentOS 6'
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface on CentOS 6.4.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-02-04
+modified: 2017-08-01
 keywords: ["mysql", "phpmyadmin", "sql", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/managing-mysql-with-phpmyadmin-on-centos-6-4/','/databases/mysql/phpmyadmin-centos-6/']
-modified: 2017-08-01
-modified_by:
-    name: Linode
-published: 2014-02-04
-title: 'How to Install and Configure phpMyAdmin on CentOS 6'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
@@ -22,6 +18,7 @@ relations:
         keywords:
             - distribution: CentOS 6
 tags: ["php","database","mysql","centos"]
+deprecated: true
 ---
 
 ![Install and Configure phpMyAdmin on CentOS 6](how-to-install-and-configure-phpmyadmin-on-centos-6.png "Install and Configure phpMyAdmin on CentOS 6")
@@ -29,14 +26,14 @@ tags: ["php","database","mysql","centos"]
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -45,9 +42,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-1.  Set up a working LAMP stack. Please see the [LAMP on CentOS 6](/docs/websites/lamp/lamp-server-on-centos-6/) guide if needed.
+1.  Set up a working LAMP stack. Please see the [LAMP on CentOS 6](/docs/guides/lamp-on-centos-6/) guide if needed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 {{< /note >}}
 
@@ -57,7 +54,7 @@ If you have installed the `php-suhosin` package, there are some known issues whe
         wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
         sudo rpm -ivh epel-release*
 
-1.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on CentOS](/docs/security/ssl/ssl-apache2-centos) guide.
+1.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on CentOS](/docs/guides/ssl-apache2-centos/) guide.
 
 1.  Install the `mycrypt` PHP module:
 

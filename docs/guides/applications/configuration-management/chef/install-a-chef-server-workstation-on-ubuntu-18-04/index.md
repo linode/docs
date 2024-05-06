@@ -1,18 +1,15 @@
 ---
 slug: install-a-chef-server-workstation-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
+title_meta: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
 description: 'Instructions on how to configure a Chef server and a virtual workstation, and how to bootstrap a client node on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-06
+modified: 2019-12-03
 keywords: ["chef", "configuration management", "server automation", "chef server", "chef workstation", "chef-client"]
 tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2019-12-03
-modified_by:
-  name: Linode
-title: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
-h1_title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
 relations:
     platform:
         key: install-chef-workstation
@@ -27,19 +24,19 @@ aliases: ['/applications/configuration-management/chef/install-a-chef-server-wor
 
 This guide will show you how to create and configure a Chef server and workstation. You will also bootstrap a node to manage with Chef. This work will require three individual Linodes.
 
-See [A Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/) for an introduction to Chef concepts.
+See [A Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/) for an introduction to Chef concepts.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/#understanding-sudo) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/#understanding-sudo) guide.
 {{< /note >}}
 
 ## Prerequisites
 
 -  One 8GB Linode running Ubuntu 18.04. This Linode will host the Chef server.
-  - Assign a Domain to the Chef server. Ensure your domain has a corresponding domain zone, NS record, and A/AAA record. See the [DNS Manager guide](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) for details.
+  - Assign a Domain to the Chef server. Ensure your domain has a corresponding domain zone, NS record, and A/AAA record. See [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/) for details.
   - Ensure your Chef server's hostname is the same as its Domain name. Your Chef server will automatically create SSL certificates based on the Linode's hostname.
 -  Two 2 GB Linodes, each running Ubuntu 18.04. One Linode will host a workstation and the other a node to be managed by Chef.
--  The workstation and Chef server should be configured per the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Once your node is [bootstrapped](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/#bootstrap-a-node), you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work.
+-  The workstation and Chef server should be configured per the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Once your node is [bootstrapped](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/#bootstrap-a-node), you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work.
 -  Ensure that all servers are up-to-date:
 
         sudo apt update && sudo apt upgrade
@@ -86,9 +83,9 @@ In order to link workstations and nodes to the Chef server, create an administra
 
         sudo chef-server-ctl org-create ORG_NAME "ORG_FULL_NAME" --association_user USER_NAME --filename ~/.chef/ORG_NAME.pem
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `ORG_NAME` must be in all lower case.
-{{</ note >}}
+{{< /note >}}
 
     To view a list of all organizations on your Chef server, use the following command:
 
@@ -129,7 +126,7 @@ In this section, you will download and install the Chef Workstation package, whi
 ...
     {{</ file >}}
 
-1. Create a `.chef` subdirectory. The `.chef` subdirectory will store your [Knife](/docs/applications/configuration-management/beginners-guide-chef/#knife) configuration file and your `.pem` files that are used for RSA key pair authentication with the Chef server. Move into the `chef-repo` directory:
+1. Create a `.chef` subdirectory. The `.chef` subdirectory will store your [Knife](/docs/guides/beginners-guide-chef/#knife) configuration file and your `.pem` files that are used for RSA key pair authentication with the Chef server. Move into the `chef-repo` directory:
 
         mkdir ~/chef-repo/.chef
         cd chef-repo
@@ -142,13 +139,13 @@ Authentication between the Chef server and workstation and/or nodes is completed
 
         ssh-keygen -b 4096
 
-      Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh` before entering your passphrase.
+    Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh` before entering your passphrase.
 
-      {{< note >}}
-  If you have disabled SSH password authentication on your Chef server's Linode, as recommended by the [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) guide, re-enable SSH password authentication prior to performing these steps. Be sure to disable it again once you have added your workstation's public ssh key to the Chef server's Linode.
-      {{</ note >}}
+    {{< note respectIndent=false >}}
+  If you have disabled SSH password authentication on your Chef server's Linode, as recommended by the [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) guide, re-enable SSH password authentication prior to performing these steps. Be sure to disable it again once you have added your workstation's public ssh key to the Chef server's Linode.
+    {{< /note >}}
 
-      Upload your workstation's public key to the Linode hosting the Chef server. Ensure you replace `example_user` with the Chef server's user account and `192.0.2.0` with its IP address:
+    Upload your workstation's public key to the Linode hosting the Chef server. Ensure you replace `example_user` with the Chef server's user account and `192.0.2.0` with its IP address:
 
         ssh-copy-id example_user@192.0.2.0
 
@@ -231,9 +228,9 @@ cookbook_path            ["#{current_dir}/../cookbooks"]
         cd ..
         knife ssl fetch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The SSL certificates are generated during the installation of the Chef server. These certificates are self-signed, which means there isn’t a signing certificate authority (CA) to verify. The Chef server's hostname and FQDN should be the same so that the workstation can fetch and verify the SSL certificates. You can verify the Chef server's hostname and FQDN by running `hostname` and `hostname -f`, respectively. Consult the [Chef documentation](https://docs.chef.io/server_security.html#regenerate-certificates) for details on regenerating SSL certificates.
-{{</ note >}}
+{{< /note >}}
 
 1.  Confirm that `config.rb` is set up correctly by running the client list:
 
@@ -249,7 +246,7 @@ Bootstrapping a node installs the Chef client on the node and validates the node
 
 {{< note >}}
 If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pem` file has `700` permissions. See [Chef's troubleshooting](https://docs.chef.io/errors.html) guide for further information on diagnosing authentication errors.
-{{</ note >}}
+{{< /note >}}
 
 1. Update the `/etc/hosts` file on the *node* to identify the node, Chef server's domain name, and the workstation.
 

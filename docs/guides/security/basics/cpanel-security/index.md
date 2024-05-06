@@ -1,19 +1,13 @@
 ---
 slug: cpanel-security
-author:
-  name: Hackersploit
+title: cPanel Security
 description: 'cPanel is a control panel that provides simple and effective management for a web server. This guide shows how to secure a cPanel installation.'
-og_description: 'cPanel is a control panel that provides simple and effective management for a web server. This guide shows how to secure a cPanel installation.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["how to secure cpanel", "how to protect cpanel from hackers"]
 tags: ["security","cpanel","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: cPanel Security
-h1_title: cPanel Security
-enable_h1: true
 aliases: ['security/basics/securing-cpanel/']
 image: cPanelSecurity.png
 ---
@@ -37,7 +31,7 @@ In order to secure your cPanel account, you need to have a Linux server with the
 
 - cPanel
 
-For a quick an easy way to install cPanel on Linode, check out our guide on [How to Deploy cPanel with Marketplace Apps](/docs/guides/how-to-deploy-cpanel-with-marketplace-apps/).
+For a quick an easy way to install cPanel on Linode, check out our guide on [How to Deploy cPanel with Marketplace Apps](/docs/products/tools/marketplace/guides/cpanel/).
 
 Otherwise, you can find instructions on how to manually install cPanel in our guide on [How to Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/).
 
