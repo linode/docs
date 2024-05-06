@@ -1,16 +1,13 @@
 ---
 slug: configuring-openvpn-client-devices
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Configure OpenVPN Client Devices'
 description: 'This guide will show you how to install, configure, and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-09
+modified: 2018-02-26
 keywords: ["openvpn", "vpn", "vpn tunnel", "ios", "os x", "mac", "windows", "android"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-02-26
-modified_by:
-  name: Linode
-published: 2015-12-09
-title: 'Configure OpenVPN Client Devices'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](https://www.tunnelblick.net/)'
@@ -20,13 +17,13 @@ tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/configuring-openvpn-client-devices/']
 ---
 
-This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it's recommended that you first complete Parts [One](/docs/networking/vpn/set-up-a-hardened-openvpn-server) and [Two](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server), this guide stands on its own as a general tutorial for configuring OpenVPN clients on various operating systems.
+This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it's recommended that you first complete Parts [One](/docs/guides/set-up-a-hardened-openvpn-server/) and [Two](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/), this guide stands on its own as a general tutorial for configuring OpenVPN clients on various operating systems.
 
 ![Configuring OpenVPN Client Devices](configuring-openvpn-client-devices.png "Configuring OpenVPN Client Devices")
 
 ## Before You Begin
 
-You must already have the client files listed below ready to transfer to the device. **Each client** will need its own copies. If you need client credentials, see the [VPN Certificate Authority](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) area of part one of this series.
+You must already have the client files listed below ready to transfer to the device. **Each client** will need its own copies. If you need client credentials, see the [VPN Certificate Authority](/docs/guides/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) area of part one of this series.
 
   *  `client1.key`: Exclusive to this device.
   *  `client1.cert`: Exclusive to this device.
@@ -36,7 +33,7 @@ You must already have the client files listed below ready to transfer to the dev
 
 
 ## Transfer Client Credentials
-If you will be transferring client credentials to their respective devices over a network, you must use an encrypted transfer protocol such as [SCP or SFTP](/docs/tools-reference/linux-system-administration-basics#how-to-upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols transfer data in plaintext. Windows has no native SCP or SFTP support. See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) for transferring the VPN credentials from a Windows computer.
+If you will be transferring client credentials to their respective devices over a network, you must use an encrypted transfer protocol such as [SCP or SFTP](/docs/guides/linux-system-administration-basics/#how-to-upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols transfer data in plaintext. Windows has no native SCP or SFTP support. See [our Filezilla guide](/docs/guides/filezilla/) for transferring the VPN credentials from a Windows computer.
 
 Local transfer options are Bluetooth, USB or some other external media. macOS can use iTunes to connect with iOS devices, and a Linux computer needs the package `gvfs-backends` installed to mount Android and iOS devices as external storage.
 
@@ -95,31 +92,31 @@ The following example was performed on iOS 9.0.2 and macOS 10.10 using iTunes 12
 
 3.  Select the iPad or iPhone icon near the top-left of the menu bar.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If this is the first time connecting your iOS device to iTunes, you'll need to click the overflow menu (the three horizontal dots) and choose **Apps**, then click **Get Started**.
 {{< /note >}}
 
-    [![iTunes device summary](itunes-device-summary-small.png)](itunes-device-summary.png)
+    ![iTunes device summary](itunes-device-summary.png)
 
 4.  In the left sidebar, choose **Apps** and scroll down to the **File Sharing** category in the main window. You will see the OpenVPN Connect icon. Click it, and then click **Add** in the **OpenVPN Documents** box. Navigate to your `ta.key` file and `.opvn` client profile in Finder and drag them into the iTunes window. If you add them individually, add the key before the client profile or OpenVPN Connect will fail to find the key.
 
-    [![iTunes File Sharing](itunes-file-sharing-small.png)](itunes-file-sharing.png)
+    ![iTunes File Sharing](itunes-file-sharing.png)
 
 5.  Open the OpenVPN Connect app on the iOS device. You'll see an area saying that a new OpenVPN profile is available for import. Tap it to highlight the profile, then tap the green button to add it.
 
-    [![OpenVPN Connect import profile](openvpn-connect-itunes-import-profile-small.png)](openvpn-connect-itunes-import-profile.png)
+    ![OpenVPN Connect import profile](openvpn-connect-itunes-import-profile.png)
 
 6.  In the next screen, tap the **Connection** slider to connect to your VPN server.
 
-    [![OpenVPN Connect connection status](openvpn-connect-status-small.png)](openvpn-connect-status.png)
+    ![OpenVPN Connect connection status](openvpn-connect-status.png)
 
 7.  You'll see a notification prompt asking to allow OpenVPN to enable the connection. Choose **Yes**. iOS will be connected shortly after.
 
-    [![OpenVPN Connect, connected.](openvpn-ios-connected-small.png)](openvpn-ios-connected.png)
+    ![OpenVPN Connect, connected.](openvpn-ios-connected.png)
 
 8.  OpenVPN Connect's app settings can be used to further tweak the connection. For example, you can specify whether the VPN is to be used over WiFi connections, cellular, or both. See the [OpenVPN Connect iOS FAQ](https://docs.openvpn.net/docs/openvpn-connect/openvpn-connect-ios-faq.html) for an explanation of each option.
 
-    [![OpenVPN Connect settings.](openvpn-settings-ios-small.png)](openvpn-settings-ios.png)
+    ![OpenVPN Connect settings.](openvpn-settings-ios.png)
 
 9.  After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the client's VPN profile and no longer need to remain on its internal storage, which is readable by other applications.
 
@@ -159,7 +156,7 @@ These steps assume a distribution which uses NetworkManager. Depending on the Ne
 
 7.  The VPN client is now configured and ready to connect. How you do this will differ slightly by NetworkManager version, but after configuring the VPN, an entry for it will appear in the desktop environment's network menu.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before connecting for the first time, it's a good idea to run `sudo journalctl -f | grep vpn` or `sudo tail -f /var/log/syslog | grep vpn` in a terminal on your client. The command gives you a realtime output of OpenVPN's logging. If you experience connection problems, any errors will be visible in the journal or syslog.
 {{< /note >}}
 
@@ -179,7 +176,7 @@ Before connecting for the first time, it's a good idea to run `sudo journalctl -
 
     ![OpenVPN Windows TAP Installer](openvpn-windows-tap-installer.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 OpenVPN provides a GPG signature file to verify the installer's integrity and authenticity. You will additionally need to install [GnuPG](https://gnupg.org/) but verifying the installer is highly recommended.
 {{< /note >}}
 
@@ -207,15 +204,14 @@ OpenVPN provides a GPG signature file to verify the installer's integrity and au
     If the client device you're testing is using OpenVPN Connect with Google DNS fallback enabled, you may see Google in the results as well.
 
 3.  To ensure that no IPv6 traffic is coming from the VPN server, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
-
-{{< caution >}}
+{{< note type="alert" >}}
 If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.
-{{< /caution >}}
+{{< /note >}}
 
 
 ##  Revoke a VPN Client Certificate
 
-To revoke a client device's access to the VPN, SSH into your VPN server and go back to the EasyRSA root directory. The folder `~/ca` was used in the [VPN Certificate Authority](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) section of part one of this series so we'll continue with that location here.
+To revoke a client device's access to the VPN, SSH into your VPN server and go back to the EasyRSA root directory. The folder `~/ca` was used in the [VPN Certificate Authority](/docs/guides/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) section of part one of this series so we'll continue with that location here.
 
 1.  Change to the `easy-rsa` folder and source `vars`:
 

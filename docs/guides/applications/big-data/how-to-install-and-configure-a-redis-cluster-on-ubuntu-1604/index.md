@@ -1,22 +1,18 @@
 ---
 slug: how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604
-author:
-  name: Sam Foo
-  email: docs@linode.com
-description: 'Learn to set up a Redis cluster using three Linode servers and promoting a replica to become a master node with this guide. Redis is an in-memory key/value store offering high performance for caching and more.'
-og_description: 'Learn to set up a Redis cluster using three Linode servers and promoting a replica to become a master node with this guide. Redis is an in-memory key/value store offering high performance for caching and more.'
+title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
+description: 'This guide will show you how to set up a high performance Redis cluster using three Linode servers and promoting a replica to become a master node'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2017-08-14
+modified: 2021-05-17
 keywords: ["redis", "redis cluster installation", "data store", "cache", "sharding", "redis cluster setup", "redis cluster set up", "ubuntu"]
 tags: ["nosql","database","ubuntu","redis"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/big-data/redis-cluster/','/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/']
-modified: 2021-05-17
-modified_by:
-  name: Sam Foo
-published: 2017-08-14
-title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
- - '[Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7/)'
+ - '[Install and Configure Redis on CentOS 7](/docs/guides/install-and-configure-redis-on-centos-7/)'
 ---
 
 ![How to Install and Configure a Redis Cluster on Ubuntu 16.04](Redis_Cluster.jpg)
@@ -27,9 +23,9 @@ Redis as an in-memory store allows for extremely fast operations such as countin
 
 Prior to starting, we recommend familiarizing yourself with the following:
 
-* [Firewall settings using iptables or ufw](/docs/security/firewalls/configure-firewall-with-ufw/)
-* [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/)
-* [Master-Replicas Replication](/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
+* [Firewall settings using iptables or ufw](/docs/guides/configure-firewall-with-ufw/)
+* [Getting Started with VLANs](/docs/products/networking/vlans/get-started/)
+* [Master-Replicas Replication](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
 ### Redis Sentinel or Redis Cluster?
 
@@ -48,7 +44,7 @@ Depending on your version of Linux, it may be possible to install Redis through 
         sudo apt-get update && sudo apt-get upgrade
         sudo apt install make gcc libc6-dev tcl
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alternatively, you can install the "build-essential" meta-package to load the dependencies for Redis:
 
         sudo apt install build-essential tcl
@@ -98,13 +94,13 @@ cluster-config-file nodes-6379.conf
 cluster-node-timeout 15000
 {{< /file >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Without taking additional precautions, your Redis nodes may be exposed to the public internet via their respective public IP addresses. This means your nodes may be vulnerable to automated attacks. For more information, see [Redis Security](https://redis.io/topics/security).
 
 To protect your Redis cluster from outside threats, consider utilizing [Cloud Firewalls](/docs/products/networking/cloud-firewall/) or [VLANs](/docs/products/networking/vlans/) to limit access to your cluster Linodes.
 
 When using VLANs, replace `192.0.2.1` with the respective Linode's IPAM address in each configuration file.
-{{< /caution >}}
+{{< /note >}}
 
 3.  In `c_replica.conf`, the configuration is similar except for an update of the port number. `redis-cli` will be used later to configure this into a replica for the appropriate master.
 
@@ -126,7 +122,7 @@ cluster-node-timeout 15000
     |    2   |  6380  |  b_master.conf  | 6379    | a_replica.conf   |
     |    3   |  6381  |  c_master.conf  | 6380    | b_replica.conf   |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Each node in the Redis cluster requires that the defined port the port plus 10000 are open. For example, **Server 1** must have TCP ports 6379 and 16379 open for the master node, and TCP ports 6381 and 16381 open for the replica node. Ensure iptables or ufw is configured properly for each server.
 {{< /note >}}
 
@@ -168,8 +164,8 @@ At this point, each Linode hosts two independent master nodes. The Redis install
 
 1.  SSH into **Server 1**, then create a Redis cluster consisting of your three master nodes with the following command:
 
-    {{< note >}}
-If utilizing a [VLAN](/docs/guides/getting-started-with-vlans/), use each Linode's IPAM address.
+    {{< note respectIndent=false >}}
+If utilizing a [VLAN](/docs/products/networking/vlans/get-started/), use each Linode's IPAM address.
 {{< /note >}}
 
         redis-cli --cluster create \

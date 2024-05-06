@@ -1,6 +1,7 @@
 ---
 title: Cloud Manager
-description: "The Linode Cloud Manager gives you access to simple account management, user control and security, and performance monitoring; supports self-service data center migration; allows you to deploy one-click apps; and more."
+title_meta: "Linode Cloud Manager Product Documentation"
+description: "The Linode Cloud Manager gives you access to simple account management, user control and security, and performance monitoring; supports self-service data center migration; allows you to deploy Linode Marketplace apps; and more."
 tab_group_main:
     is_root: true
     title: Overview
@@ -36,10 +37,6 @@ Real-time analytics tracking, per-process and in aggregate, monitors the perform
 Share access to your Linodes with your team by adding multiple users. Controls are configurable for each individual user.
 
 Manage your API Keys and add personal access tokens for more control over your Linode services.
-
-## Release Notes
-
-https://developers.linode.com/changelog/cloud-manager/
 
 ## Pricing
 

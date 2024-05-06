@@ -1,22 +1,19 @@
 ---
 slug: disabling-sslv3-for-poodle
-author:
-  name: Dave Russell
-  email: drussell@linode.com
+title: Disabling SSLv3 for POODLE
 description: 'Instructions on disabling SSLv3 to protect against the POODLE vulnerability'
+authors: ["Dave Russell"]
+contributors: ["Dave Russell"]
+published: 2014-10-15
+modified: 2018-09-20
 keywords: ["sslv3", "poodle", "security", "patch", "ubuntu", "debian", "centos", "fedora"]
 tags: ["web server","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-09-20
-modified_by:
-  name: Dave Russell
-published: 2014-10-15
-title: Disabling SSLv3 for POODLE
 aliases: ['/security/security-patches/disabling-sslv3-for-poodle/']
 ---
 
 ![Disabling_sslv3_for_poodle](Disabling_SSLv3_for_POODLE_smg.jpg)
-Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, unlike [Heartbleed](/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability/) which was found in OpenSSL.
+Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, unlike [Heartbleed](/docs/guides/patching-openssl-for-the-heartbleed-vulnerability/) which was found in OpenSSL.
 
 SSL protocol 3.0 makes use of CBC-mode ciphers that allow for man-in-the-middle attacks using padding-oracle stacks. These attacks target the CBC ciphers to retrieve plain-text output from otherwise encrypted information.
 

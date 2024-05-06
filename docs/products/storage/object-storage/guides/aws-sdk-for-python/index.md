@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using the AWS SDK for Python (boto3) with Object Storage"
 description: "Learn how to use the Python AWS SDK with Linode's S3-compatible Object Storage."
+image: UsingAWSSDKforPythonboto3withObjectStorage.jpg
 ---
 
 Amazon's Python AWS SDK, called [boto3](https://github.com/boto/boto3), includes an [S3 client](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html) that enables access to Linode's S3-compatible Object Storage within a Python application or script.
@@ -28,16 +26,16 @@ See [Boto3 Docs > Quickstart](https://boto3.amazonaws.com/v1/documentation/api/l
 
 To access Object Storage buckets and objects, you'll first need to configure your credentials and initialize the S3 client session.
 
-1.  Generate an access key and secret key for Object Storage through the Cloud Manager by following the [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/) guide.
+1.  Generate an access key and secret key for Object Storage through the Cloud Manager by following the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
 
-2.  Add the following code to your python script, replacing `[access-key]` and `[secret-key]` with the values generated in the previous step. Also replace `[cluster-id]` with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
+2.  Add the following code to your python script, replacing `[access-key]` and `[secret-key]` with the values generated in the previous step. Also replace `[cluster-url]` with the cluster URL corresponding to the data center your buckets are located within (listed on the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page).
 
         import boto3
 
         linode_obj_config = {
             "aws_access_key_id": "[access-key]",
             "aws_secret_access_key": "[secret-key]",
-            "endpoint_url": "https://[cluster-id].linodeobjects.com",
+            "endpoint_url": "[cluster-url]",
         }
 
         client = boto3.client("s3", **linode_obj_config)
@@ -62,7 +60,7 @@ List all buckets on the account in the previously-specified cluster:
 
 ## Create a Bucket
 
-Creates a new bucket, in which you can store objects. For acceptable bucket labels, review [How to Use Object Storage > Bucket Names](https://www.linode.com/docs/guides/how-to-use-object-storage/#bucket-names). See [create_bucket()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.create_bucket) for additional details, syntax, and examples.
+Creates a new bucket, in which you can store objects. For acceptable bucket labels, review the [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/#create-a-bucket) guide. See [create_bucket()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.create_bucket) for additional details, syntax, and examples.
 
 ### Syntax
 
@@ -109,13 +107,13 @@ Outputs all the objects within a bucket (and with a certain prefix, if specified
 
 ### Examples
 
--  **List all objects:** List all objects within the bucket called "example-bucket":
+-   **List all objects:** List all objects within the bucket called "example-bucket":
 
         response = client.list_objects(Bucket='example-bucket')
         for object in response['Contents']:
             print(object['Key'])
 
--  **List all objects within a specific "folder":** List all objects stored in the "assets/" folder within the bucket called "example-bucket". Keep in mind that objects aren't actually stored in folders, but the [prefix value](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html) allows them to appear within a structure.
+-   **List all objects within a specific "folder":** List all objects stored in the "assets/" folder within the bucket called "example-bucket". Keep in mind that objects aren't actually stored in folders, but the [prefix value](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html) allows them to appear within a structure.
 
         response = client.list_objects(Bucket='example-bucket', Prefix='assets/')
         for object in response['Contents']:
@@ -138,17 +136,17 @@ Uploads a file as an object stored within the specified bucket. See [upload_file
 
 ### Examples
 
--  Upload the file "file.txt", which is located in the same directory as your python script, to the bucket called "example-bucket". Name this new object "file.txt", the same as the filename.
+-   Upload the file "file.txt", which is located in the same directory as your python script, to the bucket called "example-bucket". Name this new object "file.txt", the same as the filename.
 
         client.upload_file(Filename='file.txt', Bucket='example-bucket', Key='file.txt')
 
--  Upload the file "logo.jpg", located within a home folder, to the bucket called "example-bucket". Name this new object "images/logo.jpg", which allows it to be structured within a pseudo folder.
+-   Upload the file "logo.jpg", located within a home folder, to the bucket called "example-bucket". Name this new object "images/logo.jpg", which allows it to be structured within a pseudo folder.
 
         client.upload_file(Filename='/Users/user/logo.jpg', Bucket='example-bucket', Key='images/logo.jpg')
 
 ## Download an Object to a File
 
-Downloads the specified object to a new file on your system. See [download_file()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.download_file) for for additional details, syntax, and examples.
+Downloads the specified object to a new file on your system. See [download_file()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.download_file) for additional details, syntax, and examples.
 
 ### Syntax
 
@@ -169,7 +167,7 @@ Download the object "file.txt", stored within the bucket called "example-bucket"
 
 ## Delete an Object or Directory
 
-Deletes an object from a bucket. See [delete_object()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.delete_object) for for additional details, syntax, and examples.
+Deletes an object from a bucket. See [delete_object()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.delete_object) for additional details, syntax, and examples.
 
 ### Syntax
 

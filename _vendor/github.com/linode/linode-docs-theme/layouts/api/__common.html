@@ -1,18 +1,32 @@
 This template includes common API logic and functions.
-
 {{ define "partials/openapi3/get" }}
-  {{ $apiPath := "api/openapi.yaml"}}
-  {{ $api := resources.Get $apiPath }}
+  {{ $api := "" }}
+  {{ $spec := .Params.spec }}
+  {{ if $spec }}
+    {{ $api = .Resources.GetMatch $spec }}
+  {{ else }}
+    {{ $apiPath := "api/openapi.yaml" }}
+    {{ $api = resources.Get $apiPath }}
+  {{ end }}
   {{ if not $api }}
-    {{ errorf "%q not found" $apiPath }}
+    {{ errorf "spec not found" }}
   {{ else }}
     {{ $api = $api | openapi3.Unmarshal }}
   {{ end }}
   {{ return $api }}
 {{ end }}
 
+{{/* kin-openapi (the openAPI library Hugo uses) changed changed some types from map to a struct with a Map accessor. This was introduced in Hugo 0.121.0 */}}
+{{ define "partials/openapi3/to-map" }}
+  {{ $map := . }}
+  {{ if gt hugo.Version "0.120.4" }}
+    {{ $map = $map.Map }}
+  {{ end }}
+  {{ return $map }}
+{{ end }}
+
 {{ define "partials/openapi3/get-resource" }}
-  {{ $apiPath := "api/openapi.yaml"}}
+  {{ $apiPath := "api/openapi.yaml" }}
   {{ return (resources.Get $apiPath) }}
 {{ end }}
 
@@ -24,12 +38,54 @@ This template includes common API logic and functions.
   {{ return $title }}
 {{ end }}
 
-{{ define "openapi3/print-title"}}
+{{ define "openapi3/print-title" }}
   {{ $anchor := "" }}
   {{ if or (eq .level 2) (eq .level 3) }}
-    {{ $anchor = printf "<a class=\"\" href=\"#%s\"><svg class=\"ml-2 inline-block w-5 h-5\"><use href=\"#icon--hashtag\"></use></svg></a>" .id}}
+    {{ $ariaLabel := printf "%s: %s" .section .title }}
+    {{ $anchor = printf "<a class=\"\" href=\"#%s\" aria-label=\"%s\"><svg class=\"ml-2 inline-block w-5 h-5\"><use href=\"#icon--hashtag\"></use></svg></a>" .id $ariaLabel }}
   {{ end }}
   {{ printf "<h%d id='%s'>%s%s</h%d>" .level .id .title $anchor .level | safeHTML }}
+{{ end }}
+
+{{ define "partials/openapi3/algolia-operation-content-plain" }}
+  {{- $m := partial "openapi3/algolia-operation-content"  . -}}
+  {{- $s := newScratch -}}
+  {{- range $k, $v := $m -}}
+    {{- if reflect.IsSlice $v -}}
+      {{ printf "%s: " $k }}
+      {{- range $v -}}
+        {{- printf " %s" (. | plainify) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $v | plainify -}}
+    {{- end -}}
+  {{- end -}}
+{{ end }}
+
+{{ define "partials/openapi3/algolia-operation-content" }}
+  {{ $ctx := .Values }}
+  {{ $api := $ctx.api }}
+  {{ $p := $ctx.page }}
+  {{ $dot := $ctx.dot }}
+  {{ $op := $dot.o }}
+  {{ $result := newScratch }}
+  {{ with $op }}
+    {{ with .RequestBody }}
+      {{ with .Value }}
+        {{ with index .Content "application/json" }}
+          {{ with .Schema }}
+            {{ $.Set "dot" . }}
+            {{ $.Set "hideReadOnly" true }}
+            {{ $items := partial "openapi3/schema-to-plain-slice" $ }}
+            {{ $result.Set "Request Body" $items }}
+            {{ $.Set "hideReadOnly" false }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{/* We currently don't add the response body to the content/text field. See issue #795. */}}
+  {{ end }}
+  {{ return $result.Values }}
 {{ end }}
 
 {{ define "openapi3/print-operation" }}
@@ -43,18 +99,18 @@ This template includes common API logic and functions.
   {{ $op := $dot.o }}
   {{ $server := index $api.Servers 0 }}
   {{ $url := printf "%s%s" $server.URL $pathKey }}
-  
+  {{ $section := $p.LinkTitle }}
+
   {{ with $op }}
     {{ $action := .Summary | anchorize }}
     {{ $.Set "action" $action }}
-    {{ $.Set "debug"  (eq $action "list-tagged-objects") }}
     {{ with $op.Servers }}
       {{ $server = index . 0 }}
       {{ $url = printf "%s%s" $server.URL $pathKey }}
     {{ end }}
     {{ $isBeta := strings.Contains $url "beta/" }}
 
-    {{ template "openapi3/print-title" (dict "level" 2 "title" .Summary "id" (.Summary | anchorize) )}}
+    {{ template "openapi3/print-title" (dict "level" 2 "section" $section "title" .Summary "id" (.Summary | anchorize) ) }}
     <div class="code py-4 px-4 flex content-center justify-between">
       <div>
         <span class="bg-gray-300 font-semibold p-1 mr-2">
@@ -63,7 +119,8 @@ This template includes common API logic and functions.
         {{ $url }}
       </div>
       {{ if $isBeta }}
-        <div class="bg-orange-400 uppercase text-white text-sm font-semibold font-sans rounded p-1 w-24 text-center">
+        <div
+          class="bg-orange-400 uppercase text-white text-sm font-semibold font-sans rounded p-1 w-24 text-center">
           Beta
         </div>
       {{ end }}
@@ -71,16 +128,16 @@ This template includes common API logic and functions.
     <p>
       {{ .Description | $p.RenderString }}
     </p>
-    
+
     {{/* Authorizations */}}
-    {{ template "openapi3/print-title" (dict "level" 3 "title" "Authorizations" "id" (printf "%s__authorizations" $action ) )}}
+    {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Authorizations" "id" (printf "%s__authorizations" $action ) ) }}
 
     {{ $.Set "dot" .Security }}
     {{ template "openapi3/print-security" $ }}
-    
+
     {{/* Path parameters */}}
     {{ with $path.Parameters }}
-      {{ template "openapi3/print-title" (dict "level" 3 "title" "Path Parameters" "id" (printf "%s__path-parameters" $action  ) )}}
+      {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Path Parameters" "id" (printf "%s__path-parameters" $action  ) ) }}
       <table>
         {{ range . }}
           {{ $param := .Value }}
@@ -91,11 +148,9 @@ This template includes common API logic and functions.
                 {{ $param.Name }}
               </td>
               <td>
-                {{ template "openapi3/print-type-info" $schema  }}
+                {{ template "openapi3/print-type-info" $schema }}
                 {{ if $param.Required }}
-                  <span class="text-red-600">
-                    Required
-                  </span>
+                  <span class="text-red-600"> Required </span>
                 {{ end }}
                 {{ with $param.Description }}
                   <p>
@@ -108,20 +163,51 @@ This template includes common API logic and functions.
         {{ end }}
       </table>
     {{ end }}
-    
+
     {{/* Optional parameters. */}}
     {{ with .Parameters }}
-      {{ template "openapi3/print-title" (dict "level" 3 "title" "Query Parameters" "id" ( printf "%s__query-parameters" $action ) )}}
+      {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Query Parameters" "id" ( printf "%s__query-parameters" $action ) ) }}
       {{ $.Set "dot" . }}
       {{ template "openapi3/print-parameters" $ }}
     {{ end }}
-    
+
+    {{/* Code samples */}}
+    {{ if gt hugo.Version "0.111.3" }}
+      {{/* Hugo 0.112.0 updated kin-openapi, which had a breaking change: */}}
+      {{/* - the ExtensionProps is now just a map. */}}
+      {{/* - the code samples are now just strings, not raw JSON. */}}
+      {{ with .Extensions }}
+        {{ with index . "x-code-samples" }}
+          {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
+          {{ $samplesTabs := slice }}
+          {{ range . }}
+            {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+          {{ end }}
+          {{ $.Set "dot" $samplesTabs }}
+          {{ template "openapi3/component-tabs" $ }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ with .ExtensionProps.Extensions }}
+        {{ with index . "x-code-samples" }}
+          {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
+          {{ $samples := . | transform.Unmarshal }}
+          {{ $samplesTabs := slice }}
+          {{ range $samples }}
+            {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+          {{ end }}
+          {{ $.Set "dot" $samplesTabs }}
+          {{ template "openapi3/component-tabs" $ }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
     {{/* Optional Request body */}}
     {{ with .RequestBody }}
       {{ with .Value }}
-        {{ with index .Content "application/json"  }}
+        {{ with index .Content "application/json" }}
           {{ with .Schema }}
-            {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Body Schema" "id" (  printf "%s__request-body-schema" $action ) )}}
+            {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Request Body Schema" "id" (  printf "%s__request-body-schema" $action ) ) }}
             {{ $.Set "dot" . }}
             {{ $.Set "hideReadOnly" true }}
             {{ partial "openapi3/print-schema" $ }}
@@ -130,41 +216,27 @@ This template includes common API logic and functions.
         {{ end }}
       {{ end }}
     {{ end }}
-    
-    {{/* Code samples */}}
-    {{ with .ExtensionProps.Extensions }}
-      {{ with index . "x-code-samples" }}
-        {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Samples" "id" (printf "%s__request-samples" $action ) )}}
-        {{ $samples := . | transform.Unmarshal }}
-        {{ $samplesTabs := slice }}
-        {{ range $samples }}
-          {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
-        {{ end }}
-        {{ $.Set "dot" $samplesTabs }}
-        {{ template "openapi3/component-tabs" $ }}
-      {{ end }}
-    {{ end }}
-    
+
     {{/* Responses */}}
     {{ with .Responses }}
-      {{ template "openapi3/print-title" (dict "level" 3 "title" "Response Samples" "id" (printf "%s__response-samples" $action) )}}
+      {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Response Samples" "id" (printf "%s__response-samples" $action) ) }}
       {{ $responseTabs := slice }}
-      {{ range $k, $v := . }}
+      {{ range $k, $v :=  (partial "openapi3/to-map" .) }}
         {{ $.Set "dot" . }}
         {{ $.Set "title" $k }}
         {{ $responseTabs = $responseTabs | append (partial "openapi3/get-response-examples" $) }}
       {{ end }}
       {{ $.Set "dot" $responseTabs }}
       {{ template "openapi3/component-tabs" $ }}
-      {{ template "openapi3/print-title" (dict "level" 3 "title" "Responses" "id" (printf "%s__responses" $action) )}}
+      {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Responses" "id" (printf "%s__responses" $action) ) }}
       {{ $responseBodySchemaTabs := slice }}
-      {{ range $k, $v := . }}
+      {{ range $k, $v := (partial "openapi3/to-map" .) }}
         {{ $.Set "dot" .Value }}
         {{ $.Set "title" $k }}
         {{ $responseBodySchemaTabs = $responseBodySchemaTabs | append (partial "openapi3/print-response" $) }}
       {{ end }}
       {{ $.Set "dot" $responseBodySchemaTabs }}
-      {{ $.Set "nocode" true}}
+      {{ $.Set "nocode" true }}
       {{ template "openapi3/component-tabs" $ }}
     {{ end }}
   {{ end }}
@@ -190,19 +262,43 @@ This template includes common API logic and functions.
   {{ end }}
 {{ end }}
 
+{{ define "partials/openapi3/schema-to-plain-slice" }}
+  {{ $items := slice }}
+  {{- $ctx := .Values -}}
+  {{ $s := $ctx.dot }}
+  {{ $p := $ctx.page }}
+  {{ $.Set "oneOfPickFirst" false }}
+  {{ $required := newScratch }}
+  {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $required "dot" $s.Value ) }}
+  {{ $.Set "requiredMap" $required.Values }}
+  {{ $m := (partial "openapi3/schema-to-map" (dict "dollar" $ )) }}
+  {{ range $k, $v := $m.Properties }}
+    {{ $items = $items | append (printf "%s: %s" $k ( $v.Description | plainify)) }}
+  {{ end }}
+  {{ if not $m.Properties }}
+    {{ $items = $items | append ( $m.Description | plainify ) }}
+  {{ end }}
+  {{ return $items }}
+{{ end }}
+
 {{ define "partials/openapi3/print-schema" }}
   {{ $ctx := .Values }}
   {{ $s := $ctx.dot }}
   {{ $p := $ctx.page }}
+
   {{ $.Set "oneOfPickFirst" false }}
-  {{ $m := (partial "openapi3/schema-to-map" $)}}
-  
+  {{ $required := newScratch }}
+  {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $required "dot" $s.Value ) }}
+  {{/* warnf "%v" (debug.Dump $required.Values ) */}}
+  {{ $.Set "requiredMap" $required.Values }}
+  {{ $m := (partial "openapi3/schema-to-map" (dict "dollar" $ )) }}
+
   {{ if not $m.Properties }}
     <p>
-      {{  $m.Description | $p.RenderString }}
+      {{ $m.Description | $p.RenderString }}
     </p>
   {{ end }}
-  
+
   {{ $.Set "dot" $m }}
   {{ template "openapi3/print-schema-property" $ }}
 {{ end }}
@@ -219,9 +315,7 @@ This template includes common API logic and functions.
   {{ with $s.Description }}
     {{ $m.Set "Description" . }}
   {{ end }}
-  {{ with $s.Default }}
-    {{ $m.Set "Default" . }}
-  {{ end }}
+  {{ $m.Set "Default" $s.Default }}
   {{ with $s.Enum }}
     {{ $m.Set "Enum" . }}
   {{ end }}
@@ -231,9 +325,6 @@ This template includes common API logic and functions.
   {{ end }}
   {{ with $s.Type }}
     {{ $m.Set "Type" . }}
-  {{ end }}
-  {{ with $s.Required }}
-    {{ $m.Set "Required" . }}
   {{ end }}
   {{ with $s.Min }}
     {{ $m.Set "Min" . }}
@@ -256,41 +347,114 @@ This template includes common API logic and functions.
     {{ $filterable := eq (printf "%s" .) "true" }}
     {{ $m.Set "Filterable"  $filterable }}
   {{ end }}
+  {{ with (index $ext "x-linode-ref-meta") }}
+    {{ $meta :=  . | transform.Unmarshal }}
+    {{ $m.Set "RefMetaMap"  $meta }}
+  {{ end }}
+{{ end }}
+
+{{ define "partials/openapi3/schema-to-map-collect-required" }}
+  {{ $dollar := .dollar }}
+  {{ $ctx := $dollar.Values }}
+  {{ $s := .dot }}
+  {{ $path := .path | default "" }}
+
+  {{ range $s.AllOf }}
+    {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $dollar "path" $path "dot" .Value  ) }}
+  {{ end }}
+  {{ range $i, $e := $s.OneOf }}
+    {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $dollar "path" $path "ordinal" (add $i 1) "dot" .Value ) }}
+  {{ end }}
+
+  {{ $props := $s.Properties }}
+  {{ if eq $s.Type "array" }}
+    {{ $props = $s.Items.Value.Properties }}
+  {{ end }}
+
+  {{ range $k, $v := $props }}
+    {{ $ppath := path.Join $path $k }}
+    {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $dollar "path" $ppath "dot" $v.Value) }}
+  {{ end }}
+
+  {{ $requiredKey := path.Join "required" $path }}
+  {{ if $.ordinal }}
+    {{ $requiredKey = printf "%s-%d" $requiredKey $.ordinal }}
+  {{ end }}
+  {{ $required := $dollar.Get $requiredKey | default slice }}
+  {{ $required = $required | union $s.Required }}
+  {{ with $required }}
+    {{ $dollar.Set $requiredKey . }}
+  {{ end }}
+
+  {{ return "" }}
 {{ end }}
 
 {{ define "partials/openapi3/schema-to-map" }}
-  {{ $ctx := .Values }}
+  {{ $dollar := .dollar }}
+  {{ $path := .path | default "" }}
+  {{ $parent := .parent }}
+  {{ $ctx := $dollar.Values }}
+  {{ $requiredMap := $ctx.requiredMap }}
   {{ $p := $ctx.page }}
   {{ $s := $ctx.dot.Value }}
 
   {{ $m :=  newScratch }}
-  {{ $m.Set "Ref" $ctx.dot.Ref }}
-  {{ template "openapi3/schema-set-values-in-map" (dict "m" $m "s" $s )}}
+  {{ $ref := $ctx.dot.Ref }}
+  {{ $m.Set "Ref" $ref }}
+  {{ $refMetaMap := $ctx.refMetaMap | default dict }}
+  {{ $refMeta := index $refMetaMap  $ref | default (dict "name" ($ref | strings.TrimPrefix "#/components/schemas/")) }}
+  {{ $m.Set "RefMeta" $refMeta }}
+
+  {{ if and .isProperty $requiredMap }}
+    {{ $name := (path.Base $path) }}
+    {{ $base := (path.Dir $path) }}
+    {{ $requiredKey := (path.Join "required" $base) }}
+    {{ if $.ordinal }}
+      {{ $requiredKey = printf "%s-%d" $requiredKey $.ordinal }}
+    {{ end }}
+
+    {{ $required := index $requiredMap $requiredKey }}
+    {{ $m.Set "IsRequired" (in $required $name) }}
+  {{ end }}
+
+  {{ template "openapi3/schema-set-values-in-map" (dict "m" $m "s" $s ) }}
+  {{ with $m.Get "RefMetaMap" }}
+    {{ $dollar.Set "refMetaMap" . }}
+  {{ end }}
   {{ $props := $s.Properties }}
   {{ if eq $s.Type "array" }}
-    {{ $props = $s.Items.Value.Properties }}
-    {{ $m.Set "ValueType" $s.Items.Value.Type }}
+    {{ $arrschema := $s.Items.Value }}
+    {{ $props = $arrschema.Properties }}
+    {{ $m.Set "ValueType" $arrschema.Type }}
+    {{ range $arrschema.AllOf }}
+      {{ range $k, $v := .Value.Properties }}
+        {{ $dollar.Set "dot" $v }}
+        {{ $m.SetInMap "Properties" $k (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" (path.Join $path $k) "isProperty" true "ordinal" $.ordinal)) }}
+      {{ end }}
+    {{ end }}
   {{ end }}
+
   {{ range $k, $v := $props }}
-    {{ $.Set "dot" $v }}
-    {{ $m.SetInMap "Properties" $k (partial "openapi3/schema-to-map" $) }}
+    {{ $dollar.Set "dot" $v }}
+    {{ $m.SetInMap "Properties" $k (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" (path.Join $path $k) "isProperty" true "ordinal" $.ordinal)) }}
   {{ end }}
   {{ $values := $m.Values }}
   {{ range $s.AllOf }}
-    {{ $.Set "dot" . }}
-    {{ $nested := (partial "openapi3/schema-to-map" $) }}
+    {{ $dollar.Set "dot" . }}
+    {{ $nested := (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" $path)) }}
     {{ $values = merge $nested $values }}
   {{ end }}
   {{ if $s.OneOf }}
     {{ if $ctx.oneOfPickFirst }}
-      {{ $.Set "dot" (index $s.OneOf 0) }}
-      {{ $values =  partial "openapi3/schema-to-map" $  }}
+      {{ $dollar.Set "dot" (index $s.OneOf 0) }}
+      {{ $values =  partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" $path) }}
     {{ else }}
       {{/* Make this schema into a slice that can be toggled by the user. */}}
       {{ $slice := slice }}
-      {{ range $s.OneOf }}
-        {{ $.Set "dot" . }}
-        {{ $slice =  $slice | append (partial "openapi3/schema-to-map" $)  }}
+
+      {{ range $i, $e := $s.OneOf }}
+        {{ $dollar.Set "dot" . }}
+        {{ $slice =  $slice | append (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" $path "ordinal" (add $i 1))) }}
       {{ end }}
       {{ $values = $slice }}
     {{ end }}
@@ -299,40 +463,47 @@ This template includes common API logic and functions.
 {{ end }}
 
 {{ define "openapi3/print-type-info" }}
-  {{ $valueType := ""}}
+  {{ $valueType := "" }}
   {{ if reflect.IsMap . }}
     {{ $valueType = .ValueType }}
   {{ end }}
-  <code>{{ .Type }}{{ if eq .Type "array" }}{{ with $valueType }} of {{ . }}s {{ end }}{{ end }}{{ with .Format }} <{{ . }}>{{ end }}</code>
-  {{ if .Min}}
+  <code
+    >{{ .Type }}{{ if eq .Type "array" }}
+      {{ with $valueType }}of {{ . }}s{{ end }}
+    {{ end }}{{ with .Format }}<{{ . }}>{{ end }}</code
+  >
+  {{ if .Min }}
     {{ if not .Max }}
-      >= {{ .Min }}
+      >=
+      {{ .Min }}
     {{ else }}
       {{ .Min }}..{{ .Max }}
     {{ end }}
   {{ end }}
-  
+
   {{ if or .MinLength .MaxLength }}
     {{ if not .MinLength }}
-      <= {{ .MaxLength }}
+      <=
+      {{ .MaxLength }}
     {{ else }}
       {{ .MinLength }}..{{ .MaxLength }}
     {{ end }}
     characters
   {{ end }}
-  
+
+
   <div class="leading-6">
     {{ with .Enum }}
       Enum:
       {{ range . }}
         <code>{{ . }}</code>
       {{ end }}
-      
+
     {{ end }}
-    
-    {{ with .Default }}
+
+    {{ if or .Default (eq .Default false) }}
       Default:
-      <code>{{ . }}</code>
+      <code>{{ .Default }}</code>
     {{ end }}
   </div>
 {{ end }}
@@ -351,20 +522,16 @@ This template includes common API logic and functions.
         <td class="align-text-top">
           {{ $s := $param.Schema.Value }}
           <dl>
-            <dt>
-              Type:
-            </dt>
+            <dt>Type:</dt>
             <dd>
               {{ template "openapi3/print-type-info" $s }}
             </dd>
-            <dt>
-              Default:
-            </dt>
+            <dt>Default:</dt>
             <dd>
               {{ $s.Default }}
             </dd>
           </dl>
-          
+
           {{ with $param.Description }}
             <p>
               {{ . | $p.RenderString }}
@@ -379,36 +546,35 @@ This template includes common API logic and functions.
 {{ define "openapi3/print-schema-property" }}
   {{ $ctx := .Values }}
   {{ $s := $ctx.dot }}
-  {{ $.Set "owner" $s }}
-  
+
   {{ with $s.Properties }}
-    {{ $.Set "dot" .}}
+    {{ $.Set "dot" . }}
     {{ template "openapi3/print-schema-properties" $ }}
   {{ end }}
 {{ end }}
 
 {{ define "openapi3/print-schema-properties" }}
-  {{ $ctx := .Values}}
+  {{ $ctx := .Values }}
   {{ $p := $ctx.page }}
   {{ $s := $ctx.dot }}
   <table>
     {{ range $k, $v := $s }}
-      
+
       {{ if reflect.IsSlice $v }}
         {{/* This is a oneOf -- allow the user to select. */}}
         <tr>
-          <td>
+          <td colspan="2">
             {{ $oneOfTabs := slice }}
             {{ range $i, $e := $v }}
-              {{ $ref := .Ref | strings.TrimPrefix "#/components/schemas/" }}
-              {{ $.Set "dot" .}}
+              {{ $title := .RefMeta.name }}
+              {{ $.Set "dot" . }}
               {{ $.Set "k" $k }}
               {{ $tabSource := printf "<table>%s</table>" (partial "openapi3/print-schema-property-value" $) | safeHTML }}
-              {{ $oneOfTabs =  $oneOfTabs | append (dict "title" $ref "body" $tabSource ) }}
+              {{ $oneOfTabs =  $oneOfTabs | append (dict "title" $title "body" $tabSource ) }}
             {{ end }}
             {{ $.Set "dot" $oneOfTabs }}
             {{ $.Set "nocode" true }}
-            {{ template "openapi3/component-tabs" $}}
+            {{ template "openapi3/component-tabs" $ }}
           </td>
         </tr>
       {{ else }}
@@ -420,7 +586,6 @@ This template includes common API logic and functions.
       {{ end }}
     {{ end }}
   </table>
-  
 {{ end }}
 
 {{ define "partials/openapi3/print-schema-property-value" }}
@@ -431,23 +596,17 @@ This template includes common API logic and functions.
   <tr>
     <td class="align-text-top">
       <div class="flex flex-col">
-        <div class="font-semibold{{ if $s.Deprecated}} line-through{{ end }}">
+        <div class="font-semibold{{ if $s.Deprecated }}line-through{{ end }}">
           {{ $k }}
         </div>
-        {{ if $s.Filterable}}
-          <div class="">
-            Filterable
-          </div>
-        {{ end}}
-        {{ if $s.Nullable }}
-          <div class="">
-            Nullable
-          </div>
+        {{ if $s.Filterable }}
+          <div class="">Filterable</div>
         {{ end }}
-        {{ if in $ctx.owner.Required $k }}
-          <div class="text-red-500">
-            Required
-          </div>
+        {{ if $s.Nullable }}
+          <div class="">Nullable</div>
+        {{ end }}
+        {{ if $s.IsRequired }}
+          <div class="text-red-500">Required</div>
         {{ end }}
       </div>
     </td>
@@ -459,7 +618,8 @@ This template includes common API logic and functions.
         </p>
       {{ end }}
       {{ if $s.Deprecated }}
-        <div class="bg-orange-400 text-white text-sm font-semibold rounded p-1 w-24 text-center">
+        <div
+          class="bg-orange-400 text-white text-sm font-semibold rounded p-1 w-24 text-center">
           Deprecated
         </div>
       {{ end }}
@@ -473,8 +633,11 @@ This template includes common API logic and functions.
 
 {{ define "partials/openapi3/get-response-example-property" }}
   {{ $result := .Example }}
-  {{ with .Properties }}
-    {{ $result = partial "openapi3/get-response-example-properties" . }}
+  {{ $isSet := and ($result) (eq .Type "array") }}
+  {{ if not $isSet }}
+    {{ with .Properties }}
+      {{ $result = partial "openapi3/get-response-example-properties" . }}
+    {{ end }}
   {{ end }}
   {{ return $result }}
 {{ end }}
@@ -483,10 +646,10 @@ This template includes common API logic and functions.
   {{ $m := newScratch }}
   {{ range $k, $v := . }}
     {{ $res := (partial "openapi3/get-response-example-property" $v) }}
-    {{ if and (eq $v.Type "array") (not (reflect.IsSlice $res))}}
+    {{ if and (eq $v.Type "array") (not (reflect.IsSlice $res)) }}
       {{ $res = slice $res }}
     {{ end }}
-    {{ $m.Set $k $res  }}
+    {{ $m.Set $k $res }}
   {{ end }}
   {{ return $m.Values }}
 {{ end }}
@@ -502,15 +665,15 @@ This template includes common API logic and functions.
   {{ if $content }}
     {{ $.Set "dot" $content.Schema }}
     {{ $.Set "oneOfPickFirst" true }}
-    {{ $schema := partial "openapi3/schema-to-map" $ }}
+    {{ $schema := partial "openapi3/schema-to-map" (dict "dollar" $) }}
     {{ $body := "{}" }}
     {{ with $schema.Example }}
-      {{ $body = . | jsonify (dict "indent" "  ") }}
+      {{ $body = . | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
     {{ else }}
       {{ $properties := $schema.Properties }}
       {{ with $properties }}
         {{ $v :=  partial "openapi3/get-response-example-properties" $properties }}
-        {{ $body = $v | jsonify (dict "indent" "  ") }}
+        {{ $body = $v | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
       {{ end }}
     {{ end }}
     {{ $response.Set "body" $body }}
@@ -524,7 +687,7 @@ This template includes common API logic and functions.
   {{ $s := $ctx.dot }}
   {{ $response := newScratch }}
   {{ $response.Set "title" $ctx.title }}
-  {{ $response.Set "title2" ($s.Description | string)}}
+  {{ $response.Set "title2" ($s.Description | string) }}
   {{ $content := index $s.Content "application/json" }}
   {{ if $content }}
     {{ $schema := $content.Schema }}
@@ -536,14 +699,16 @@ This template includes common API logic and functions.
 {{ end }}
 
 {{ define "openapi3/component-tabs" }}
-  {{ $ctx := .Values}}
+  {{ $ctx := .Values }}
   {{ $dot := $ctx.dot }}
   <div class="border-b border-gray-200" x-data="{ active: 0 }">
     <nav class="">
       <div class="flex justify-start my-4">
         {{ range $i, $e := $dot }}
-          <button @click="active = {{ $i }}" :class="{ 'border-brand font-semibold': active==={{ $i }}, 'border-gray-300' : active !={{ $i }} }"
-                        class="hover:bg-green-200 hover:border-green-200 py-1 px-2 mt-0 border-b-2 uppercase truncate text-center text-md text-titlecolor letter-tight cursor-pointer focus:outline-none">
+          <button
+            @click="active = {{ $i }}"
+            :class="{ 'border-brand font-semibold': active==={{ $i }}, 'border-gray-300' : active !={{ $i }} }"
+            class="hover:bg-green-200 hover:border-green-200 py-1 px-2 mt-0 border-b-2 uppercase truncate text-center text-md text-titlecolor letter-tight cursor-pointer focus:outline-none">
             {{ $e.title }}
           </button>
         {{ end }}
@@ -571,25 +736,29 @@ This template includes common API logic and functions.
               <div class="font-semibold py-4">
                 {{ $e.title2 }}
               </div>
-              <div class="code my-4 dark flex items-start justify-between" x-data="lnh.CopyToClipBoard()">
+              <div class="code my-4 dark flex items-start justify-between">
                 <div x-ref="code">
                   {{- highlight $e.body $lang "linenos=false" -}}
                 </div>
-                <div class="w-10 pt-5" @click="copy($refs.code)">
+                <div
+                  class="w-10 pt-5 cursor-pointer"
+                  @click="$copy($refs.code)">
                   {{ $copyIcon }}
                 </div>
               </div>
             </div>
           </template>
-          
+
           {{ if $e.dump }}
             <template x-if="active === {{ $i }}">
               <div>
-                <div class="code my-4 dark flex items-start justify-between " x-data="lnh.CopyToClipBoard()">
+                <div class="code my-4 dark flex items-start justify-between ">
                   <div x-ref="code">
                     {{- highlight $e.body $lang "linenos=false" -}}
                   </div>
-                  <div class="w-10 pt-5" @click="copy($refs.code)">
+                  <div
+                    class="w-10 pt-5 cursor-pointer"
+                    @click="$copy($refs.code)">
                     {{ $copyIcon }}
                   </div>
                 </div>
@@ -606,9 +775,7 @@ This template includes common API logic and functions.
   {{ if . }}
     <div class="code">
       {{ warnf "DEBUG: REMOVE THE CALLER: %T" . }}
-      <span>
-        debug
-      </span>
+      <span> debug </span>
       {{- highlight (. | debug.Dump) "go" "linenos=false" -}}
     </div>
   {{ end }}
@@ -618,14 +785,10 @@ This template includes common API logic and functions.
   {{ if . }}
     {{ if not (.page.Scratch.Get "debugged") }}
       {{ .page.Scratch.Set "debugged" true }}
-      <h3>
-        Debug
-      </h3>
+      <h3>Debug</h3>
       <div class="code">
         {{ warnf "DEBUG: REMOVE THE CALLER: %T" .dump }}
-        <span>
-          debug
-        </span>
+        <span> debug </span>
         {{- highlight (.dump | debug.Dump) "go" "linenos=false" -}}
       </div>
     {{ end }}

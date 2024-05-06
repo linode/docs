@@ -1,25 +1,21 @@
 ---
 slug: how-to-understand-ip-addresses
-author:
-  name: Jeffery Novotny
-description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them. You also learn how to find your computer''s IP address.'
-og_description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them. You also learn how to find your computer''s IP address.'
+title: "Understand and Use IP Addresses"
+title_meta: "How to Understand and Use IP Addresses"
+description: "This guide will help you understand the Internet Protocol (IP) which underpins the entire Internet, as well as IP addresses, and how to describe and use them."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-07-30
+modified: 2022-09-23
 keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
 tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-30
-modified_by:
-  name: Linode
-title: "Understanding and Using IP Addresses"
-h1_title: "How to Understand and Use IP Addresses"
-enable_h1: true
-contributor:
-  name: Jeffery Novotny
 external_resources:
 - '[RFC 791 for IP](https://datatracker.ietf.org/doc/html/rfc791)'
 - '[Wikipedia IPv4 Packet Description Page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
 - '[RFC 2460 for IPv6](https://datatracker.ietf.org/doc/html/rfc2460)'
 - '[Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html)'
+tags: ["saas"]
 ---
 
 The *Internet Protocol* (IP), as described in [RFC 791](https://datatracker.ietf.org/doc/html/rfc791), is the framework that underlies the behavior of the entire internet. The Internet Protocol Version 4 (IPv4) and Version 6 (IPv6) address systems are used to identify interfaces and locate hosts on the network. This allows hosts and routers to determine the path to another networking device and send packets to it. This guide outlines how to understand IP addresses, and how to describe and use them.
@@ -146,9 +142,12 @@ Like IPv4, IPv6 has some reserved addresses. However, the larger address space a
 
 A variety of inter-operability approaches between IPv4 and IPv6 are sometimes used. IPv6 addresses can be encapsulated inside IPv4 packets. More commonly, IPv4 addresses are mapped to IPv6 addresses. The first 80 bits of these IPv6 addresses are set to `0`, with the next 16 bits set to `1`. The final 32 bits contain the original IPv4 address. An example of an address with this structure is `::ffff:c6:33:64:19/96`. However, most networks use parallel networks and routing stacks for IPv4 and IPv6.
 
-## How to Find Your IP Addresses
+## Finding Your IP Addresses via the Linux Command Line
+{{< note >}}
+If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
+{{< /note >}}
 
-1. On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.
+1.  On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.
 
         ip addr show
 
@@ -167,7 +166,7 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
        valid_lft 2591998sec preferred_lft 604798sec
     {{< /output >}}
 
-1. Use the following command to see the addresses without any interface information.
+1.  Use the following command to see the addresses without any interface information.
 
         hostname -I
 
@@ -179,10 +178,9 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
 
 1. On all systems with a browser, the local IP address can be found using Google Search. Type `what is my IP address` in the search bar. Google Search displays the public IP address in the results.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The actual IP address could be masked in certain circumstances, resulting in a different public IP address. With a proxy server, only the address of the proxy is shown. VPNs also hide the system address. Keeping your IP address hidden increases the security of your connection and computer.
     {{< /note >}}
-
 {{< note >}}
 The old `ifconfig` Linux command is now deprecated. It can still be used on Ubuntu by using `apt` to install `net-tools`, but this is not recommended.
 {{< /note >}}

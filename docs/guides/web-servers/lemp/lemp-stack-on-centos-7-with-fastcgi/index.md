@@ -1,22 +1,17 @@
 ---
 slug: lemp-stack-on-centos-7-with-fastcgi
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on CentOS 7.'
-og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on CentOS 7.'
+title: "Install a LEMP Stack on CentOS 7"
+description: "This guide shows how to install and configure a LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack on CentOS 7."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-12-11
+modified: 2021-12-29
 keywords: ["nginx", "lemp", "php", 'mariadb']
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/','/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/','/websites/lemp/lemp-server-on-centos-7-with-fastcgi/','/websites/lemp-guides/centos-7/']
-modified: 2018-03-26
-modified_by:
-    name: Linode
-published: 2014-12-11
-title: Install a LEMP Stack on CentOS 7
+image: lemp-on-centos-7-title-graphic.jpg
 ---
-
-![Install a LEMP Stack on CentOS](lemp-on-centos-7-title-graphic.jpg "Install a LEMP Stack on CentOS")
 
 ## What is a LEMP Stack?
 
@@ -24,8 +19,8 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
 ## Before You Begin
 
-1.  You will need root access to the system, or a user account with `sudo` privilege.
-2.  Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+1.  You need root access to the system or a user account with `sudo` privilege.
+2.  Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 3.  Update your system.
 
 ## Installation
@@ -40,7 +35,7 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
         sudo yum install mariadb-server php-mysql
 
-2.  Ensure MariaDB is running and and enabled to start automatically on reboot:
+2.  Ensure MariaDB is running and enabled to start automatically on reboot:
 
         sudo systemctl start mariadb
         sudo systemctl enable mariadb
@@ -83,7 +78,7 @@ quit
 
         sudo yum install php-fpm
 
-2.  Ensure PHP-FPM is running and and enabled to start automatically on reboots:
+2.  Ensure PHP-FPM is running and enabled to start automatically on reboots:
 
         sudo systemctl start php-fpm
         sudo systemctl enable php-fpm
@@ -147,6 +142,10 @@ server {
     -  `include fastcgi_params` tells NGINX to process a list of `fastcgi_param` variables at `/etc/nginx/fastcgi_params`.
 
     -  The `fastcgi_param` directives contain the [location](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#variables) (relative to the site's root directory) and file [naming convention](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_index) of PHP scripts to be served when called by NGINX.
+
+4.  To check the NGINX configuration file syntax by simply typing a command:
+
+        sudo nginx -t
 
 ## Test the LEMP Stack
 

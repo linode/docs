@@ -1,32 +1,29 @@
 ---
 slug: installing-squirrelmail-on-ubuntu-12-04
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Installing SquirrelMail on Ubuntu 12.04'
 description: 'A guide to installing the SquirrelMail web client for email on Ubuntu 12.04.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-01-14
+modified: 2014-01-15
 keywords: ["squirrelmail", "ubuntu", "12.04", "mail client"]
 tags: ["ubuntu","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/clients/installing-squirrelmail-on-ubuntu-12-04/','/email/squirrelmail-ubuntu12-04/']
-modified: 2014-01-15
-modified_by:
-  name: Alex Fornuto
-published: 2014-01-14
-title: 'Installing SquirrelMail on Ubuntu 12.04'
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
-deprecated: true
 relations:
     platform:
         key: how-to-install-squirrelmail
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
-SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide.
+SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installation
@@ -99,7 +96,7 @@ Alias /squirrelmail /usr/share/squirrelmail
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Apache is serving other virtual hosts you may need to adjust them and/or this file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
 {{< /note >}}
 
@@ -113,7 +110,7 @@ If Apache is serving other virtual hosts you may need to adjust them and/or this
 
 You should now be able to see SquirrelMail's default login page in your browser after navigating to your Linode's IP address:
 
-[![SquirrelMail Login Page.](1488-squirrelmail_login.png)](1488-squirrelmail_login.png)
+![SquirrelMail Login Page.](1488-squirrelmail_login.png)
 
 ## Configuring SquirrelMail
 
@@ -125,11 +122,11 @@ Before using SquirrelMail for the first time, it needs to be configured to acces
 
     This will bring up the menu shown below:
 
-    [![The squirrelmail-config main menu.](1490-squirrelmail-config_1.png)](1490-squirrelmail-config_1.png)
+    ![The squirrelmail-config main menu.](1490-squirrelmail-config_1.png)
 
 2.  There are many options to adjust here; too many for the scope of this guide. The only settings required to make SquirrelMail work are the `Server Settings`. Press `2` to bring up the Server Settings submenu:
 
-    [![squirrelmail-config server settings menu .](1491-squirrelmail-config_2.png)](1491-squirrelmail-config_2.png)
+    ![squirrelmail-config server settings menu .](1491-squirrelmail-config_2.png)
 
 3.  If your mail server is on the same Linode as your SquirrelMail installation, you may not need to make any adjustments to the default settings. Otherwise, adjust the **Domain**, **IMAP**, and **SMTP** settings to match the mail server you want to connect to. You can find additional configuration tips for this section from SquirrelMail's official documentation [here](http://squirrelmail.org/docs/admin/admin-5.html#ss5.3).
 4.  When done, press `S` to save your changes before exiting the menu by pressing Q to quit.
@@ -138,10 +135,10 @@ Before using SquirrelMail for the first time, it needs to be configured to acces
 
 1.  At this point you should be able to log in to the SquirrelMail Login page using your email credentials. Navigate in your web browser to the Linode's IP address, or domain name depending on how you've configured the virtual host:
 
-    [![SquirrelMail Login Page with a username and password.](1501-squirrelmail_login_filled2.png)](1498-squirrelmail_login_filled.png)
+    ![SquirrelMail Login Page with a username and password.](1498-squirrelmail_login_filled.png)
 
 2.  The interface layout follows standard email convention; all common functions should be easily accessible:
 
-    [![SquirrelMail Inbox view.](1500-squirrelmail_inbox2.png)](1499-squirrelmail_inbox.png)
+    ![SquirrelMail Inbox view.](1499-squirrelmail_inbox.png)
 
 3.  Once you're finished, you can sign out using the link in the upper-right corner. Always remember to sign out if you're using a public computer.

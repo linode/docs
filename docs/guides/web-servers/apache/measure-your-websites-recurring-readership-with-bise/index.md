@@ -1,23 +1,14 @@
 ---
 slug: measure-your-websites-recurring-readership-with-bise
-author:
-  name: Jason McIntosh
-  email: jmac@jmac.org
+title: "Measure a Website's Recurring Readership with Bise"
 description: "Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership."
-og_description: "Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership."
+authors: ["Jason McIntosh"]
+contributors: ["Jason McIntosh"]
+published: 2020-08-17
 keywords: ["Bise", "Apache", "Analytics", "Blogging"]
 tags: ["web server","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-08-17
-modified_by:
-  name: Linode
-title: "How to Measure a Website's Recurring Readership with Bise"
-h1_title: "Measuring your Website's Recurring Readership with Bise"
-enable_h1: true
-image: feature.png
-contributor:
-  name: Jason McIntosh
-  link: https://jmac.org/
+image: MeasureWebsiteRecReader_Bise.png
 external_resources:
   - "[Bise's README file, containing concise instructions](https://github.com/jmacdotorg/bise/blob/master/README.md)"
   - "[Meditations upon Bise's motivations and intended use, written by its developer](https://fogknife.com/2018-01-17-more-thoughts-on-counting-blog-readership.html)"
@@ -41,7 +32,6 @@ Front page                 426       54
 From Twitter                39        1
 From web searches          910        6
 {{< /output >}}
-
 {{< note >}}
 Bise assumes that the logs it analyzes are written in the [Common Log Format](https://en.wikipedia.org/wiki/Common_Log_Format). For example, Apache writes logs in this format by default.
 {{< /note >}}
@@ -80,11 +70,11 @@ To use Bise, you should have the following:
 
 * Access to those logs! Bise needs read-access to those log files in order to work. The [If You Don't Have Read-Access to the Logs](#if-you-don-t-have-read-access-to-the-logs) section will provide suggestions if you don't currently have read access.
 
-* [Cpanminus](/docs/development/perl/manage-cpan-modules-with-cpan-minus), to install Bise's prerequisite libraries.
+* [Cpanminus](/docs/guides/manage-cpan-modules-with-cpan-minus/), to install Bise's prerequisite libraries.
 
-* [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/), if you plan to run Bise on a regular schedule. Any Linux machine almost certainly has this installed as well.
+* [Cron](/docs/guides/schedule-tasks-with-cron/), if you plan to run Bise on a regular schedule. Any Linux machine almost certainly has this installed as well.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Any other scheduling software that can run command-line scripts for you will also work, but this guide will demonstrate using Bise with Cron, specifically.
 {{< /note >}}
 
@@ -99,8 +89,8 @@ At the time of this writing, Bise lacks any kind of one-step installation soluti
 
         git clone https://github.com/jmacdotorg/bise.git
 
-    {{< note >}}
-You can follow the [How to Install Git](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide if `git` is not installed on your system.
+    {{< note respectIndent=false >}}
+You can follow the [How to Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide if `git` is not installed on your system.
 {{< /note >}}
 
 1. In your terminal, set your current working directory to your new `bise` directory:
@@ -111,7 +101,7 @@ You can follow the [How to Install Git](https://www.linode.com/docs/development/
 
         cp conf/conf-example.yaml conf/conf.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, Bise expects to read its setup configuration from the `conf/conf.yaml` location. This will be explained further in the [Test Bise](#test-bise) section.
 {{< /note >}}
 
@@ -125,7 +115,7 @@ Install Bise's prerequisites using `cpanm`:
 
 - **If you do not have `cpanm` installed**, then you have two options:
 
-    * Install `cpanm`, as described in [this Linode guide](/docs/development/perl/manage-cpan-modules-with-cpan-minus/). Then, run the command described above.
+    * Install `cpanm`, as described in [this Linode guide](/docs/guides/manage-cpan-modules-with-cpan-minus/). Then, run the command described above.
 
     * Run this command, which will load and run a temporary copy of `cpanm` and then proceed to install Bise's dependencies:
 
@@ -189,7 +179,6 @@ Bise will scan the provided log files in order from newest to oldest. It will st
 For example, this command will run Bise with all your Apache server's access logs:
 
     bin/bise /var/log/apache2/*access.log*
-
 {{< note >}}
 This example assumes that your access logs have the default locations and filename conventions.
 {{< /note >}}
@@ -230,7 +219,7 @@ There are several ways to address this. These two methods assume that you have `
 
         sudo adduser [your-username] adm
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After adding yourself to the group, you will need to log out of the system and log back in again. Then, you can run Bise successfully.
 {{< /note >}}
 
@@ -283,7 +272,7 @@ If you're happy with the behavior of the default rows, you can certainly continu
 There are four kinds of rows you can define, each of which examines a different part of your access logs. These correspond to the values for the `test_type` parameter: [path](#test-type-path), [path_regex](#test-type-path-regex), [referer_regex](#test-type-referer-regex), and [agent_regex](#test-type-agent-regex).
 
 {{< note >}}
-Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/tools-reference/tools/how-to-grep-for-text-in-files/#regular-expression-overview) before defining your own row definitions with any of these types.
+Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/guides/how-to-use-grep-command/#regular-expression-overview) before defining your own row definitions with any of these types.
 
 Note also that Bise ignores whitespace in regular expressions, allowing you to write more complex regexes with inline comments, as one of the examples below will illustrate.
 {{< /note >}}
@@ -353,7 +342,7 @@ The configuration file lets you set these optional directives as well:
 
 ## Running Bise as a cron Task
 
-Once you have Bise creating meaningful reports about your website's readership, consider having your system run it regularly. For example, you could automatically run the report once a week. The [Cron utility](/docs/tools-reference/tools/schedule-tasks-with-cron/) can be used to schedule this task.
+Once you have Bise creating meaningful reports about your website's readership, consider having your system run it regularly. For example, you could automatically run the report once a week. The [Cron utility](/docs/guides/schedule-tasks-with-cron/) can be used to schedule this task.
 
 Cron's normal behavior is to mail you anything a scheduled program prints as output or error messages. So, you can use Cron to receive periodic emails about your website's readership levels.
 
@@ -412,7 +401,6 @@ The output will look similar to this:
     "end_time":"2020-05-04T18:02:18"
 }
 {{< /output >}}
-
 {{< note >}}
 This example output has been formatted with line breaks and whitespace. By default, your output will appear as a single line.
 {{< /note >}}

@@ -1,31 +1,28 @@
 ---
 slug: apache-tomcat-on-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache Tomcat on Debian 6 (Squeeze)'
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Debian 5 (Squeeze.)'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2011-05-13
 keywords: ["java", "apache tomcat", "java debian", "java lenny"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-debian-6-squeeze/','/development/frameworks/apache-tomcat-on-debian-6-squeeze/','/frameworks/apache-tomcat/debian-6-squeeze/','/development/frameworks/apache-tomcat/apache-tomcat-on-debian-6-squeeze/']
-modified: 2011-05-13
-modified_by:
-  name: Linode
-published: 2011-02-17
-title: 'Apache Tomcat on Debian 6 (Squeeze)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
 
 Apache Tomcat is a free and open source software implementation for JavaServlets. It provides support for Java Server Pages (JSP), which power many popular web-based applications. You may choose to run Tomcat with either Sun's Java implementation or the OpenJDK implementation of Java, and this document provides instructions for using either option.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,17 +1,13 @@
 ---
 slug: how-to-choose-a-control-panel
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
+title: 'How to Choose a Control Panel'
 description: 'Control panels offer simplfied GUIs for complicated Linux system administrastion tasks.'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-08-01
 keywords: ["control panel", "cpanel", "whm", "plesk", "vesta", "vestacp", "virtualmin", "virtualmin pro", "webmin"]
 tags: ["monitoring","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-01
-modified_by:
-  name: Linode
-published: 2018-08-01
-title: 'How to Choose a Control Panel'
 aliases: ['/websites/cms/basics/how-to-choose-a-control-panel/','/websites/cms/how-to-choose-a-control-panel/']
 ---
 
@@ -99,7 +95,7 @@ Each CPanel account is correlated with a primary domain that its services are as
 
 WHM is often used by web hosting resellers. In this capacity, you use WHM to create CPanel accounts on your Linode and sell access to them to clients. WHM allows you to create custom visual branding for the account so that you can represent your reselling business to your clients in their CPanel interface.
 
-CPanel's subscription cost starts at $20/month. When buying a subscription for use on a Linode, choose the [*VPS* license type](https://cpanel.com/pricing/). A free CPanel subscription is also included for each of your Linodes if you are a [Linode Managed](/managed/) subscriber.
+CPanel's subscription cost starts at $20/month. When buying a subscription for use on a Linode, choose the [*VPS* license type](https://cpanel.com/pricing/). A free CPanel subscription is also included for each of your Linodes if you are a [Linode Managed](https://www.linode.com/products/managed/) subscriber.
 
 CPanel offers a [community forum](https://forums.cpanel.net), [documentation library](https://documentation.cpanel.net), and [technical support](https://cpanel.com/support/) as part of your subscription.
 
@@ -127,7 +123,7 @@ Vesta is a free alternative that offers a [similar feature set](https://vestacp.
 
 While the core of Vesta is free, [paid commercial plugins](https://vestacp.com/pricing/) for two functions can be purchased: a web file manager and SFTP chroot restricted access. [Paid support](https://vestacp.com/new/support/) is available starting at $60/hour.
 
-Vesta offers a [community forum](https://forum.vestacp.com) and [documentation library](https://vestacp.com/docs/). [A demo site](https://demo.vestacp.com) is available for you test out Vesta's interfaces.
+Vesta offers a [community forum](https://forum.vestacp.com) and [documentation library](https://vestacp.com/docs/). [A demo site](https://vestacp.com/demo/) is available for you test out Vesta's interfaces.
 
 ### Virtualmin
 

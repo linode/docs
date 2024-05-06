@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using the AWS SDK for PHP with Object Storage"
 description: "Learn how to use the PHP AWS SDK with Linode's S3-compatible Object Storage."
 ---
@@ -30,9 +27,9 @@ See [AWS SDK for PHP Docs > Installing the SDK](https://docs.aws.amazon.com/sdk-
 
 To access Object Storage buckets and objects, you'll first need to configure your credentials and initialize the S3 client session.
 
-1.  Generate an access key and secret key for Object Storage through the Cloud Manager by following the [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/) guide.
+1.  Generate an access key and secret key for Object Storage through the Cloud Manager by following the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
 
-2.  Add the following code to your PHP script, replacing `[access-key]` and `[secret-key]` with the values generated in the previous step. Also replace `[cluster-id]` with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
+2.  Add the following code to your PHP script, replacing `[access-key]` and `[secret-key]` with the values generated in the previous step. Also replace `[cluster-url]` with the cluster URL corresponding to the data center your buckets are located within (listed on the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page).
 
         require 'vendor/autoload.php';
         use Aws\S3\S3Client;
@@ -42,7 +39,7 @@ To access Object Storage buckets and objects, you'll first need to configure you
         [
             'version' => 'latest',
             'region' => '',
-            'endpoint' => 'https://[cluster-id].linodeobjects.com',
+            'endpoint' => '[cluster-url]',
             'credentials' =>
             [
                 'key' => '[access-key]',
@@ -73,7 +70,7 @@ List all buckets on the account in the previously-specified cluster:
 
 ## Create a Bucket
 
-Creates a new bucket, in which you can store objects. For acceptable bucket labels, review [How to Use Object Storage > Bucket Names](https://www.linode.com/docs/guides/how-to-use-object-storage/#bucket-names). See [createBucket()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#createbucket) for additional details, syntax, and examples.
+Creates a new bucket, in which you can store objects. For acceptable bucket labels, review the [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/#create-a-bucket) guide. See [createBucket()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#createbucket) for additional details, syntax, and examples.
 
 ### Syntax
 
@@ -165,7 +162,7 @@ Uploads a file as an object stored within the specified bucket. See [putObject()
 
 ## Download an Object to a File
 
-Downloads the specified object to a new file on your system. See [getObject()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#getobject) for for additional details, syntax, and examples.
+Downloads the specified object to a new file on your system. See [getObject()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#getobject) for additional details, syntax, and examples.
 
 ### Syntax
 
@@ -187,7 +184,7 @@ Download the object "file.txt", stored within the bucket called "example-bucket"
 
 ## Delete an Object or Directory
 
-Deletes an object from a bucket. See [deleteObject()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html) for for additional details, syntax, and examples.
+Deletes an object from a bucket. See [deleteObject()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html) for additional details, syntax, and examples.
 
 ### Syntax
 

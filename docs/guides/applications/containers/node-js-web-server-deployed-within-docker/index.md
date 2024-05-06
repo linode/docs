@@ -1,17 +1,14 @@
 ---
 slug: node-js-web-server-deployed-within-docker
-author:
-  name: Joe D.
-  email: docs@linode.com
-description: 'Deploy a Node.js Server in a Docker Container.'
+title: 'Node.js Web Server Deployed within Docker'
+description: 'This guide shows you how to deploy a Node.js server inside of a Docker container, which is a technology platform for running containerized applications.'
+authors: ["Joe D."]
+contributors: ["Joe D."]
+published: 2015-03-23
+modified: 2018-01-18
 keywords: ["docker", "node.js", "node", "debian", "ubuntu", "web server", "javascript", "container"]
 tags: ["container","docker","web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-01-18
-modified_by:
-  name: Linode
-published: 2015-03-23
-title: 'Node.js Web Server Deployed within Docker'
 aliases: ['/applications/containers/node-js-web-server-deployed-within-docker/','/applications/containers/nodejs-node-js-web-server-docker-container/']
 external_resources:
 - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
@@ -47,7 +44,7 @@ Docker images made for one operating system can be used on servers running a dif
 
         docker run -d -p 80:3000 linode/server-node-js
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command runs the docker image as a daemon.
 {{< /note>}}
 

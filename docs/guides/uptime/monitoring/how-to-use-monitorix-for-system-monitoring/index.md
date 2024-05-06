@@ -1,26 +1,20 @@
 ---
 slug: how-to-use-monitorix-for-system-monitoring
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn@vna1.com
-description: "Monitorix is a free, open-source monitoring tool that keeps track of several Linux services and system resources. This guide walks you through all the basics."
+title: "Using Monitorix for System Monitoring"
+title_meta: "How to Use Monitorix for System Monitoring"
+description: 'This guide will show you how to use Monitorx, a free and open-source monitoring tool to keep track of several Linux services and system resources.'
+authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
+published: 2021-02-19
 keywords: ['how to use monitorix']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
-modified_by:
-  name: Linode
-title: "How to Use Monitorix for System Monitoring"
-h1_title: "Using Monitorix for System Monitoring"
-enable_h1: true
-contributor:
-  name: Steven J. Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
+image: UseMonitorix_sysmon.png
 ---
 
-[Monitorix](https://www.monitorix.org/) is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This Linux system monitoring tool is composed of two programs. The first, monitorix, is a system data logging daemon written in [Perl](https://www.linode.com/docs/guides/development/perl/). The second, its web interface, uses the CGI script, `monitorix.cgi`.
+[Monitorix](https://www.monitorix.org/) is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This Linux system monitoring tool is composed of two programs. The first, monitorix, is a system data logging daemon written in [Perl](/docs/guides/development/perl/). The second, its web interface, uses the CGI script, `monitorix.cgi`.
 
-Besides tracking Linux server elements such as overall system load, file system activity, and global kernel usage, Monitorix also tracks hardware data such as sub-system temperatures, battery status, and UPS statistics. It also monitors popular third-party Linux programs such as mail servers; [libvirt](https://libvirt.org/)-based virtual machines; and [MySQL](https://www.mysql.com/), [Nginx](https://www.linode.com/docs/guides/web-servers/nginx/), and [MongoDB](https://www.linode.com/docs/guides/databases/mongodb/) databases.
+Besides tracking Linux server elements such as overall system load, file system activity, and global kernel usage, Monitorix also tracks hardware data such as sub-system temperatures, battery status, and UPS statistics. It also monitors popular third-party Linux programs such as mail servers; [libvirt](https://libvirt.org/)-based virtual machines; and [MySQL](https://www.mysql.com/), [Nginx](/docs/guides/web-servers/nginx/), and [MongoDB](/docs/guides/databases/mongodb/) databases.
 
 Monitorix was originally designed for the [Red Hat Enterprise Linux](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) operating system family. Now, licensed under [GPLv2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html), it works on all major Linux server distributions. Beginning with version 3.0, Monitorix comes with its own web server, which is useful for remote Linux server monitoring. With its simple graphical interface, it's also good for interactive server monitoring.
 
@@ -28,16 +22,11 @@ Monitorix was originally designed for the [Red Hat Enterprise Linux](https://www
 
 If you are using a Linode, make sure you run the steps in this section to configure your Linode, secure your server, and update your system's packages.
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Installing Monitorix
-
 
 Monitorix is not installed on Linux servers by default. This section shows you how to install Monitorix on the Debian/Ubuntu Linux distributions.
 
@@ -71,18 +60,16 @@ enable_parallelizing = y
 include_dir = /etc/monitorix/conf.d
 ...
 {{</ file >}}
-
 {{< note >}}
 Debian and Ubuntu Linux systems contain an additional configuration file, `/etc/monitorix/conf.d/00-debian.conf`. This file includes Debian/Ubuntu-specific options and is read after the main Monitorix configuration file. This means any changes you make to the `/etc/monitorix/conf.d/00-debian.conf` supersede `monitorix.conf` options.
-{{</ note >}}
+{{< /note >}}
 
 1. Once you're done configuring Monitorix, restart the Monitorix service to enable your updates.
 
         sudo service monitorix restart
-
 {{< note >}}
-By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](https://www.linode.com/docs/guides/web-servers/apache/), [Lighttpd](https://www.linode.com/docs/guides/web-servers/lighttpd/), or Nginx web servers.
-{{</ note >}}
+By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](/docs/guides/web-servers/apache/), [Lighttpd](/docs/guides/web-servers/lighttpd/), or Nginx web servers.
+{{< /note >}}
 
 ## Getting started with Monitorix
 
@@ -90,9 +77,9 @@ Monitorix is meant to be used as an interactive program. It's not suitable for u
 
 1. To access the Monitorix interface running on your Linode, [find your Linode's IP address](/docs/guides/find-your-linodes-ip-address/). Open a browser window and navigate to the following URL, `http://192.0.2.0:8080/monitorix`. Replace `192.0.2.0` with your own IP address.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are running Monitorix on your computer, instead, navigate to `http://localhost:8080/monitorix`.
-{{</ note >}}
+{{< /note >}}
 
 1. Once you have accessed the Monitorix interface, select **All graphs** from the dropdown menu and click **Ok**.
 

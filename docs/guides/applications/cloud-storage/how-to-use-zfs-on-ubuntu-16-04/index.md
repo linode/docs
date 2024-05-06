@@ -1,21 +1,15 @@
 ---
 slug: how-to-use-zfs-on-ubuntu-16-04
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Alexandru Andrei
+title: 'How to Use ZFS on Ubuntu 16.04'
 description: 'How to use ZFS to store data redundantly and avoid silent data corruption.'
 og_description: 'The Z File System (ZFS) helps protect against silent data corruption while improving redundancy, read/write speeds, and compression. This guide shows how to use ZFS and configure vdevs on a Linode.'
+authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
+published: 2017-10-30
+modified: 2017-11-16
 keywords: ["zfs", "file system", "volume manager", "redundant", "silent corruption", "mirror", "raid", "pool"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-16
-modified_by:
-  name: Linode
-title: 'How to Use ZFS on Ubuntu 16.04'
-published: 2017-10-30
-expiryDate: 2019-10-30
 external_resources:
  - '[Ubuntu ZFS wiki](https://wiki.ubuntu.com/Kernel/Reference/ZFS)'
  - '[RAID levels Wikipedia](https://en.wikipedia.org/wiki/Standard_RAID_levels)'
@@ -139,33 +133,29 @@ Other types of virtual devices like cache and log can be used when dealing with 
 
 ## Before You Begin
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. While updating, if asked about a configuration change in GRUB's config file select **keep the local version currently installed**.
+
+    {{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide, deploy an Ubuntu 16.04 image and complete the steps for setting your Linode's hostname and timezone.
-
-2.  Update your system:
-
-        apt update && apt upgrade
-
-    If asked about a configuration change in GRUB's config file. Select **keep the local version currently installed**.
-
-3.  Install a metapackage that will pull in the latest Ubuntu provided kernel, geared towards virtual machines.
+1.  Install a metapackage that will pull in the latest Ubuntu provided kernel, geared towards virtual machines.
 
         apt install linux-image-virtual
 
-4.  You'll activate booting with GRUB later on, which has a default timeout of 10 seconds for user input. Change it to 0 and rebuild GRUB configuration files:
+1.  You'll activate booting with GRUB later on, which has a default timeout of 10 seconds for user input. Change it to 0 and rebuild GRUB configuration files:
 
         sed -i.bak 's/GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/' /etc/default/grub; update-grub
 
-5.  After deciding how to structure your ZFS build, follow the steps in this guide to [create new volumes and attach them to your Linode](/docs/platform/how-to-use-block-storage-with-your-linode/). Ignore the steps about creating a filesystem, mounting, editing `fstab`. ZFS will take care of that.
+1.  After deciding how to structure your ZFS build, follow the steps in this guide to [create new volumes and attach them to your Linode](/docs/products/storage/block-storage/guides/manage-volumes/). Ignore the steps about creating a filesystem, mounting, editing `fstab`. ZFS will take care of that.
 
-6.  Linode's kernels, booted by default, don't include the ZFS module you'll need so you have to switch to the kernel provided by Ubuntu. In your Linode's dashboard, click **Edit** to make changes to your Ubuntu configuration profile. Under **Boot settings**, change the **Kernel** to **GRUB 2**.
+1.  Linode's kernels, booted by default, don't include the ZFS module you'll need so you have to switch to the kernel provided by Ubuntu. In your Linode's dashboard, click **Edit** to make changes to your Ubuntu configuration profile. Under **Boot settings**, change the **Kernel** to **GRUB 2**.
 
     ![Changing Boot Settings](zfs-ubuntu-changing-boot-settings.png)
 
-7.  Reboot through the Linode Manager.
+1.  Reboot through the Linode Manager.
 
 ## Install ZFS and Create a Pool
 

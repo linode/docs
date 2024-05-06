@@ -1,22 +1,14 @@
 ---
 slug: how-to-install-wordpress-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "WordPress is an immensely popular and open-source content management system (CMS). It comes with access to an array of themes and plug-ins to make it your own. This guide helps you get a WordPress up and running on your Ubuntu 20.04 server."
-og_description: "WordPress is an immensely popular and open-source content management system (CMS). It comes with access to an array of themes and plug-ins to make it your own. This guide helps you get a WordPress up and running on your Ubuntu 20.04 server."
+title: "Install WordPress on Ubuntu 20.04"
+title_meta: "How to Install WordPress on Ubuntu 20.04"
+description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-27
 keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms']
 tags: ['wordpress', 'cms', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-27
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Install WordPress on Ubuntu 20.04"
-h1_title: "Install WordPress on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 relations:
     platform:
         key: how-to-install-wordpress
@@ -34,18 +26,14 @@ In this guide, learn how to install WordPress on your Ubuntu 20.04 server.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up the Prerequisites
@@ -58,7 +46,7 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
 
 1. Install and configure a LAMP or LEMP stack. For either stack, make sure that you are installing at least PHP version **7.4**. This is the default on Ubuntu 20.04. Additionally, make sure to replace all version numbers in the below guides with the number of the version you are installing.
 
-    - To create a LAMP stack, follow the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
+    - To create a LAMP stack, follow the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide.
 
     - To create a LEMP stack, follow the [How to Install the LEMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) guide.
 
@@ -157,7 +145,7 @@ FLUSH PRIVILEGES;
 define('FS_METHOD', 'direct');
     {{< /file >}}
 
-    [![WordPress's default, "Hello, World!" post.](wordpress-default-post_small.png)](wordpress-default-post.png)
+    ![WordPress's default, "Hello, World!" post.](wordpress-default-post.png)
 
 ## Conclusion
 

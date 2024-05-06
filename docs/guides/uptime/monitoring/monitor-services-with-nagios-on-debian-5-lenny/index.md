@@ -1,29 +1,26 @@
 ---
 slug: monitor-services-with-nagios-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Monitor Services with Nagios on Debian 5 (Lenny)'
 description: 'Use Nagios to monitor services and send status updates on your Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-21
+modified: 2011-06-30
 keywords: ["nagios", "monitoring"]
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/debian-5-lenny/','/uptime/monitoring/monitor-services-with-nagios-on-debian-5-lenny/']
-modified: 2011-06-30
-modified_by:
-  name: Linode
-published: 2010-04-21
-title: 'Monitor Services with Nagios on Debian 5 (Lenny)'
 relations:
     platform:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Nagios is an open source monitoring tool that monitors services within a server cluster. In addition to monitoring services such as SMTP/POP3 and HTTP, Nagios can also be used to check the health of the server itself.
 
-Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [getting started guide](/docs/getting-started/). Additionally, you will also need to have a functioning [LAMP stack](/docs/lamp-guides/debian-5-lenny) in order to use Nagios.
+Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, you will also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) in order to use Nagios.
 
 ## Prepare for Nagios Installation
 
@@ -125,7 +122,7 @@ Any errors will be shown in red. If everything is okay, you may issue the follow
 
 You may now access the web based administration and reporting tools by visiting `http://example.com/nagios/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios/` where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the nagiosadmin user you created earlier.
 
-**Please note:** The above example does not use SSL and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
+**Please note:** The above example does not use SSL and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/guides/create-a-self-signed-tls-certificate/).
 
 ## Configure Nagios Alerts
 

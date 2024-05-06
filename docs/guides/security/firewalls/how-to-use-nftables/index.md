@@ -1,22 +1,15 @@
 ---
 slug: how-to-use-nftables
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "nftables is replacing iptables, redesigned from the ground up. With it comes remarkable improvements but also changes in how you set up your packet rules. In this guide you learn about what nftables is and how it differs from iptables. You also get a hands-on look at how to use to create tables, rules, and chains."
-og_description: "nftables is replacing iptables, redesigned from the ground up. With it comes remarkable improvements but also changes in how you set up your packet rules. In this guide you learn about what nftables is and how it differs from iptables. You also get a hands-on look at how to use to create tables, rules, and chains."
+title: "Get Started with nftables"
+title_meta: "How to Use nftables"
+description: 'In this guide you will learn about what nftables is and how it differs from iptables, plus you""ll get a look at how to use and create tables, rules, and chains.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-09
 keywords: ['nftables']
+bundles: ['debian-security', 'centos-security', 'network-security']
 tags: ['ubuntu', 'centos', 'debian', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Use nftables"
-h1_title: "Get Started with nftables"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[nftables](https://netfilter.org/projects/nftables/)'
 - '[nftables Address Families](https://wiki.nftables.org/wiki-nftables/index.php/Nftables_families)'
@@ -57,22 +50,12 @@ Otherwise, you can manually install nftables using the following steps. These st
 
 ### Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, use these commands:
-
-            sudo apt update && sudo apt upgrade
-
-    - On CentOS, use these commands:
-
-            sudo yum update
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Installation Steps

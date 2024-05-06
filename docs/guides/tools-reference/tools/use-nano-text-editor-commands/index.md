@@ -1,20 +1,15 @@
 ---
 slug: use-nano-text-editor-commands
-author:
-  name: Linode
-  email: docs@linode.com
-description: This tutorial teaches you how to install the Nano text editor and use it to create and edit files in Linux.
-og_description: This tutorial teaches you how to install the Nano text editor and use it to create and edit files in Linux.
+title: "Using Nano Text Editor Commands in Linux"
+title_meta: "How to Use Nano Text Editor Commands in Linux"
+description: "This tutorial teaches you how to install the Nano text editor and use it to create and edit files in Linux."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-11-08
+modified: 2022-01-14
 keywords: ["nano", "text editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/using-nano/','/linux-tools/text-editors/nano/','/tools-reference/tools/use-nano-text-editor-commands/']
-modified: 2021-04-23
-modified_by:
-  name: Linode
-published: 2011-11-08
-title: How to Use Nano Text Editor Commands in Linux
-h1_title: Using Nano Text Editor Commands in Linux
-enable_h1: true
 tags: ["linux"]
 ---
 
@@ -26,7 +21,7 @@ Editing files in Linux using Nano is a popular option. Compared to other editors
 
 ## Installing the Nano Text Editor in Linux
 
-Nano is included with many Linux distributions by default, but some users may need to install it through the [package management](https://www.linode.com/docs/using-linux/package-management/) tool of the distribution.
+Nano is included with many Linux distributions by default. However, some users may need to install Nano on Linux using the [package management](/docs/guides/linux-package-management-overview/) tool of the distribution.
 
 **Debian/Ubuntu**:
 
@@ -38,7 +33,7 @@ Nano is included with many Linux distributions by default, but some users may ne
 
 ## Nano Command Keys
 
-When using nano, control characters (CTRL) are represented by a carat `(^)`. For example, if you wish to cut a line of text, you would use the *CTRL* key followed by the *K* key. This sequence of commands is represented as `^K` in nano. Some commands use the *Alt* key in order to function, which is represented by the letter *M*.
+When using nano commands, control characters (CTRL) are represented by a carat `(^)`. For example, if you wish to cut a line of text, you would use the *CTRL* key followed by the *K* key. This sequence of commands is represented as `^K` in nano. Some commands use the *Alt* key in order to function, which is represented by the letter *M*.
 
 A command represented as M-R in nano is performed by pressing the *Alt* key followed by the *R* key. Mac users may need to use the *Escape* (Esc) key instead of the *Alt* key to use these commands.
 
@@ -46,7 +41,7 @@ A command represented as M-R in nano is performed by pressing the *Alt* key foll
 
 ### Create a New File using Nano
 
-Typing `nano` without any arguments opens a blank file for editing:
+Typing `nano` in the terminal without any arguments opens a blank file for editing:
 
     nano
 
@@ -54,11 +49,11 @@ A blank new file in the terminal similar to the following appears:
 
 ![new file in the terminal](new-file.png "A new file in the terminal with nano.")
 
-You can make changes to the file. You may exit the file by pressing *Ctrl + X*. It prompts you to save the file and name it before you exit.
+You can make changes to the file using the Nano editor. You may exit the file by pressing *Ctrl + X*. It prompts you to save the file and name it before you exit.
 
 {{< note >}}
 Nano only prompts you if actual changes were made to the file. If you didn't make any changes, you simply exit the editor and you get no prompts.
-{{</ note >}}
+{{< /note >}}
 
 When prompted, select press *Y* and then write the name of the file.
 
@@ -108,7 +103,7 @@ This flag prevents nano from wrapping lines that are too long to fit on the scre
 
 ## Edit Files Using Nano Text Editor in Linux
 
-Type `nano` to enter nano text editor. Use the arrow keys to move the cursor. A partial menu of available commands appears at the bottom of the terminal window.
+Type `nano` to enter nano text editor. Use the arrow keys to move the cursor. A partial menu of available nano editor commands appear at the bottom of the terminal window.
 
 ### Cut and Paste Lines of Text Using Nano
 
@@ -116,7 +111,7 @@ To cut a line of text, use `^K`. To paste, move the cursor where you want the te
 
 ### Valid Shortcuts in Nano Text Editor
 
-To open up a list of commands in Nano, for example, in the `tutorial.txt` file, use *Ctrl+G*.
+To open up a list of Nano's commands in Linux, for example, in the `tutorial.txt` file, use *Ctrl+G*.
 
 Nano help menu appears and displays the following commands:
 

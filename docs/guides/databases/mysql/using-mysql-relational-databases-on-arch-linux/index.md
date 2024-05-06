@@ -1,27 +1,24 @@
 ---
 slug: using-mysql-relational-databases-on-arch-linux
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: Using MySQL Relational Databases on Arch Linux
 description: 'Getting started with MySQL for web and server applications on Arch Linux.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2011-04-05
+modified: 2014-01-23
 keywords: ["mysql arch linux", "mysql linux", "arch linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/using-mysql-relational-databases-on-arch-linux/','/databases/mysql/arch-linux/']
-modified: 2014-01-23
-modified_by:
-  name: Alex Fornuto
-published: 2011-04-05
-title: Using MySQL Relational Databases on Arch Linux
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Arch Linux
 tags: ["arch","database","mysql"]
+deprecated: true
 ---
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on Arch Linux. If you would like to deploy MySQL as part of an application stack, consider our [LEMP](/docs/lemp-guides/arch-linux/) and [LAMP guides](/docs/lamp-guides/).
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on Arch Linux. If you would like to deploy MySQL as part of an application stack, consider our [LEMP](/docs/guides/lemp-server-on-arch-linux/) and [LAMP guides](/docs/lamp-guides/).
 
 ## System Configuration
 
@@ -70,7 +67,7 @@ Consult the "More Information" section at the end of this tutorial for additiona
 
     /etc/rc.d/mysqld restart
 
-Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel/) for information on connecting to your databases with local clients.
+Please reference our [secure MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases with local clients.
 
 ## Use MySQL
 

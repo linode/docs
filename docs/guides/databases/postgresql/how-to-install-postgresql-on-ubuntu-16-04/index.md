@@ -1,18 +1,16 @@
 ---
 slug: how-to-install-postgresql-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: Installing PostgreSQL on Ubuntu 16.04
+title_meta: 'How to Install PostgreSQL on Ubuntu 16.04'
 description: 'A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions using Ubuntu 16.04 as an example.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-05-20
+modified: 2020-03-30
 keywords: ["postgresql", "ubuntu 16.04", "postgre", "postgresql database", "open source database", "relational database"]
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/','/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-30
-modified_by:
-published: 2016-05-20
-title: 'How to Install PostgreSQL on Ubuntu 16.04'
-h1_title: Installing PostgreSQL on Ubuntu 16.04
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
@@ -29,11 +27,12 @@ The [PostgreSQL](https://www.postgresql.org/) (also known as "Postgres") relatio
 
 ## Before You Begin
 
-1. Familiarize yourself with the [Getting Started guide](https://www.linode.com/docs/getting-started/) and complete the steps for setting the Linode’s hostname and timezone.
-1. Complete the sections of [Securing Your Server guide](https://www.linode.com/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
-1. Update the system: `sudo apt-get update && sudo apt-get upgrade`
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, visit the [Users and Groups guide](https://www.linode.com/docs/tools-reference/linux-users-and-groups/) for more information.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, visit the [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
 {{< /note >}}
 
 ## Installing PostgreSQL On Ubuntu 16.04
@@ -48,9 +47,9 @@ Install PostgreSQL from the Ubuntu package repository:
 
 By default, PostgreSQL creates a Linux user named "postgres" to access the database software.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The postgres user should not be used for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
-{{< /caution >}}
+{{< /note >}}
 
 1. Change the postgres user’s Linux password: `sudo passwd postgres`
 
@@ -60,7 +59,7 @@ The postgres user should not be used for other purposes (e.g. connecting to othe
          psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword';"
 
 {{< note >}}
-This user is distinct from the postgres Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases. The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](https://www.linode.com/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#secure-local-postgresql-access) for information about changing this setting.
+This user is distinct from the postgres Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases. The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#secure-local-postgresql-access) for information about changing this setting.
 {{< /note >}}
 
 ### Create a PostgreSQL Database
@@ -81,7 +80,7 @@ mytestdb=#
 
 ### Create Tables
 
-This section contains examples that create a test database with an employee’s first and last name, assigning each a unique key. When creating the tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](https://www.linode.com/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#create-a-database) section.
+This section contains examples that create a test database with an employee’s first and last name, assigning each a unique key. When creating the tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#create-a-database) section.
 
 1.  Create a table called “employees” in the test database:
 
@@ -257,5 +256,5 @@ local    all        all             peer
 ## Secure Remote PostgreSQL Access
 
 PostgreSQL listens for connections on localhost and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](https://www.linode.com/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/)
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](https://www.linode.com/docs/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/guides/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)

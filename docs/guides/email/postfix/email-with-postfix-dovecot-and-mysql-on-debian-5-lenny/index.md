@@ -1,37 +1,32 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-debian-5-lenny
-deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on Debian 5 (Lenny).'
+title: 'Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)'
+description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on Debian 5 "Lenny".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-02-08
+modified: 2012-10-08
 keywords: ["postfix", "dovecot", "email", "debian", "lenny"]
 tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/','/email/postfix/dovecot-mysql-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-02-08
-title: 'Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)'
 relations:
     platform:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 The Postfix Mail Transfer Agent (MTA) is a high performance open source e-mail server system. This guide will help you get Postfix running on your Linode, using Dovecot for IMAP/POP3 service and MySQL to store information on virtual domains and users. This guide is largely based on Christoph Haas's great [ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny) and HowtoForge [Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny), with some packages omitted.
 
-It is assumed that you have followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
+It is assumed that you have followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
 
 **NOTE: Please read all of the information presented in this guide carefully.** There are many files and commands that will need to be edited as part of the setup process: please do not simply copy and paste the example blocks.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -51,15 +46,15 @@ Issue the following command to get the required packages installed on your Linod
 
 This will install the Postfix mail server, the MySQL database server, the Dovecot IMAP and POP daemons, and several supporting packages that provide services related to authentication. You will be prompted to choose a root password for MySQL; make sure you select a strong password comprised of letters, numbers, and non-alphanumeric characters. Write this password down and keep it in a safe place for later reference.
 
-[![Setting the root password for MySQL on a Linode.](74-postfix-courier-mysql-01-mysql-root-password.png)](74-postfix-courier-mysql-01-mysql-root-password.png)
+![Setting the root password for MySQL on a Linode.](74-postfix-courier-mysql-01-mysql-root-password.png)
 
 Next, you'll be prompted to select the type of mail server configuration you want for your Linode. Select "Internet Site" and continue.
 
-[![Selecting the Postfix mail server configuration type on a Debian 5.0 (Lenny) Linode.](75-postfix-courier-mysql-02-mail-server-type-2.png)](75-postfix-courier-mysql-02-mail-server-type-2.png)
+![Selecting the Postfix mail server configuration type on a Debian 5.0 (Lenny) Linode.](75-postfix-courier-mysql-02-mail-server-type-2.png)
 
 Now you'll need to set the system mail name. This should be a fully qualified domain name (FQDN) that points to your Linode's IP address. This example uses an example organization's domain. You should set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name, while other domains you wish to host email for will be handled later through virtual domain setup steps.
 
-[![Selecting the Postfix system mail name on a Debian 5.0 (Lenny) Linode.](76-postfix-courier-mysql-02-mail-server-type-3.png)](76-postfix-courier-mysql-02-mail-server-type-3.png)
+![Selecting the Postfix system mail name on a Debian 5.0 (Lenny) Linode.](76-postfix-courier-mysql-02-mail-server-type-3.png)
 
 This completes the initial package configuration steps. Next, you'll set up a MySQL database to handle virtual domains and users.
 

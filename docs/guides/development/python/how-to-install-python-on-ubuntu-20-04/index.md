@@ -1,38 +1,31 @@
 ---
 slug: how-to-install-python-on-ubuntu-20-04
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
-description: 'Python 3 is installed by default on Ubuntu 20.04. This guide shows how to invoke Python 3 on Ubuntu 20.04 and how to install the python-is-python3 package.'
-og_description: 'Python 3 is installed by default on Ubuntu 20.04. This guide shows how to invoke Python 3 on Ubuntu 20.04 and how to install the python-is-python3 package.'
+title: "Install Python 3 on Ubuntu 20.04"
+title_meta: "How to Install Python 3 on Ubuntu 20.04"
+description: "Python 3 is installed by default on Ubuntu 20.04. This guide shows how to invoke Python 3 on Ubuntu 20.04 and how to install the python-is-python3 package."
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2020-02-12
 keywords: ['How to Install Python on Ubuntu','Python','Python3','Python 2 end of life']
 tags: ['python', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-12
-modified_by:
-  name: Linode
-title: "How to Install Python 3 on Ubuntu 20.04"
-h1_title: "Install Python 3 on Ubuntu 20.04"
-contributor:
-  name: Angel Guarisma
-  link: https://github.com/Guaris/
+image: InstallPython3_Ubuntu2004.png
 relations:
     platform:
         key: how-to-install-python
         keywords:
             - distribution: Ubuntu 20.04
-tags: ["python", "ubuntu"]
 ---
 
 Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction. This abstraction makes writing and reading the code easier than other languages.
 
-As of January 1, 2020, the official version of Python is Python 3. Python 2 is no longer a supported language. This guide walks you through installing the latest version of Python 3 on Debian 10. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html) on how to do so.
+As of January 1, 2020, the official version of Python is Python 3. Python 2 is no longer a supported language. This guide walks you through installing the latest version of Python 3 on Ubuntu 20.04. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html) on how to do so.
 
 ## Before You Begin
 
-1.  This guide assumes that you have access to a server or workstation running CentOS 8. To provision a Linode running CentOS 8, follow our [Getting Started](/docs/guides/getting-started/) guide.
+1.  This guide assumes that you have access to a server or workstation running Ubuntu 20.04 LTS. To provision a Linode running Ubuntu 20.04 LTS, follow our [Getting Started](/docs/products/platform/get-started/) guide.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system:
 

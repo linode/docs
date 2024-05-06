@@ -1,21 +1,15 @@
 ---
 slug: install-and-configure-owncloud-on-ubuntu-20-04
-author:
-  name: Jack Wallen
-  email: jlwallen@monkeypantz.net
+title: "Installing and Configuring ownCloud on Ubuntu 20.04"
+title_meta: "How to Install and Configure ownCloud on Ubuntu 20.04"
 description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
-og_description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-02-12
 keywords: ['ownCloud on Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-12
-modified_by:
-  name: Linode
-title: "How to Install and Configure ownCloud on Ubuntu 20.04"
-h1_title: "Installing and Configuring ownCloud on Ubuntu 20.04"
-enable_h1: true
+image: Install_ownCloud_Ubuntu2004.png
 tags: ["ubuntu"]
-contributor:
-  name: Jack Wallen
 aliases: ['/guides/how-to-install-owncloud-ubuntu-20-04/']
 relations:
     platform:
@@ -47,19 +41,19 @@ Why would you want to host your own cloud? Some common reasons are:
 
 This tutorial walks you through the steps to install ownCloud on Ubuntu 20.04, one of the most user-friendly server operating systems available. There are only a few steps to install ownCloud on Ubuntu 20.04. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
+{{< note >}}
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+{{< /note >}}
+
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/guides/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
-{{</ note >}}
+If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/products/networking/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
+{{< /note >}}
 
 ## Install ownCloud
 ### Install the LAMP Stack
@@ -84,7 +78,7 @@ ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section
 
         sudo mysql_secure_installation
 
-    During this process, the system asks if you want to enable the `VALIDATE PASSWORD COMPONENT`. This feature ensures that all created passwords are strong and unique. Answer `n` (as in "no"). When prompted, type and verify a new secure password for the MySQL admin user. You are then prompted to answer four questions, to all of which you should respond `y` (as in "yes").
+    You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 1. Install PHP and all the required PHP packages
 
@@ -137,12 +131,12 @@ At this point, the system is ready for ownCloud. Before you actually download th
 
         unzip owncloud-10.5.0.zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If necessary, install `unzip` with the command:
 
     sudo apt-get install zip -y
 
-{{</ note >}}
+{{< /note >}}
 
 1. When you unzip the file, a new directory named `owncloud` is created. Move the new directory to the Apache document `root`. This example uses the default directory for Apache site files:
 

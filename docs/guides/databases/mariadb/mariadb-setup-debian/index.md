@@ -1,30 +1,24 @@
 ---
 slug: mariadb-setup-debian
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: How to Set Up MariaDB on Debian 9
 description: 'This guide shows how to install and configure the MariaDB database server on Debian 9.'
 og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.'
+authors: ["Nashruddin Amin"]
+contributors: ["Nashruddin Amin"]
+published: 2014-06-12
+modified: 2017-11-22
 keywords: ["mariadb", "debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mariadb/mariadb-setup-debian/']
-modified: 2017-11-22
-contributor:
-    name: Nashruddin Amin
-    link: https://twitter.com/bsd_noobz
-modified_by:
-  name: Linode
-published: 2014-06-12
-title: How to Set Up MariaDB on Debian 9
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
-deprecated: true
 tags: ["debian","mariadb","database"]
 _build:
   list: false
 noindex: true
+deprecated: true
+deprecated_link: 'guides/how-to-install-mariadb-on-debian-9/'
 ---
 
 ![How to Set Up MariaDB on Debian 9](how-to-set-up-mariadb-on-debian-smg.jpg)
@@ -33,8 +27,8 @@ noindex: true
 
 MariaDB is a drop-in replacement for MySQL. It strives to be the logical choice for database professionals looking for a robust, scalable and reliable SQL Server. This guide will help beginners install and configure MariaDB on Debian 9 (Stretch).
 
- {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install MariaDB
@@ -64,7 +58,7 @@ In this section, you will install MariaDB and set the password for the MariaDB r
 
     You will be prompted to set a password for the MariaDB root user:
 
-    [![Set the password for root during MariaDB installation](1745-mariadb-set-root-password.png)](1745-mariadb-set-root-password.png)
+    ![Set the password for root during MariaDB installation](1745-mariadb-set-root-password.png)
 
     Choose a strong password to secure your server.
 
@@ -196,9 +190,9 @@ You will be asked to change the root password, remove anonymous users, disable r
 
 This section will demonstrate how to allow the previously created user, **testuser**, to connect to MariaDB remotely (by default, MariaDB will allow connections from only localhost).
 
- {{< caution >}}
-Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/docs/security/firewalls/iptables/) rules that allow connections only from specific IP addresses.
-{{< /caution >}}
+{{< note type="alert" >}}
+Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/docs/guides/control-network-traffic-with-iptables/) rules that allow connections only from specific IP addresses.
+{{< /note >}}
 
 1.  Log in to MariaDB as root:
 
