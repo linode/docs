@@ -4,14 +4,16 @@ title: "Ad-Tech on Akamai: Distributed Demand-Side Platform"
 description: "Details and architectures demonstrating the ability to host a distributed demand-side platform on Akamai cloud computing."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2024-05-01
+published: 2024-05-06
 keywords: ['observability','datastream','datastream 2','visibility','multiplex','multiplexing','logs','log parsing','object storage','s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Advertisers (and ad agencies) utilize demand-side platforms (DSPs) to engage in programmatic ad-buying. DSPs enable advertisers to configure their ad campaigns and place bids for ad inventory (ad space on a publisher’s website). As the volume of bids from advertisers and ad inventory from publishers increases, so does the complexity for processing bids and matching them to the available inventory. DSPs require performant and scalable cloud infrastructure to handle processing ad campaigns and submitting bids. In addition, latency within this infrastructure needs to be decreased at every step. Lower latency enables the ad to quickly load alongside the publisher's web page.
+Advertisers (and ad agencies) utilize demand-side platforms (DSPs) to engage in programmatic ad-buying. DSPs enable advertisers to configure their ad campaigns and place bids for ad inventory (ad space on a publisher’s website). As the volume of bids from advertisers and ad inventory from publishers increases, so does the complexity for processing bids and matching them to the available inventory.
 
-This guide covers a DSP solution that decentralizes key infrastructure components, including the frontend servers and real-time bidding (RTB) servers. Moving this infrastructure closer to users, coupled with adding a robust caching system for ad inventory and user profiles, overcomes the main challenges for ad serving, including low latency requirements and reduced egress fees.
+DSPs require performant and scalable cloud infrastructure to handle processing ad campaigns and submitting bids. In addition, latency within this infrastructure needs to be decreased at every step. Lower latency enables the ad to quickly load alongside the publisher's web page.
+
+This guide covers a DSP solution that decentralizes key infrastructure components, including the frontend servers and real-time bidding (RTB) servers. Moving this infrastructure closer to users, coupled with adding a robust caching system for ad inventory and user profiles, addresses the main challenges for ad serving, including low latency requirements and reduced egress fees.
 
 ## Overcoming Challenges
 
@@ -21,7 +23,9 @@ Like almost any specialized production workload, a distributed demand-side platf
 
 *Identify sources of high latency and minimize the latency impact of those components.*
 
-Ad serving requires significantly lower latency compared with many other systems. An ad needs to be selected for - and displayed to - the end-user as quickly as possible. Even small increases to latency can have large negative impacts to customer SLAs and end-user conversion rates. In many cases, a centralized ad serving infrastructure is the primary cause of high latency, though you should identify any other components in your existing system that may also be contributing to high latency. The distributed nature of this solution brings key components closer to the end-user, reducing latency compared to more traditional, centralized systems. In addition, failover is provided for each region and occurs quickly to reduce downtime and minimize impact to latency.
+Ad serving requires significantly lower latency compared with many other systems. An ad needs to be selected for - and displayed to - the end-user as quickly as possible. Even small increases to latency can have large negative impacts to customer SLAs and end-user conversion rates. In many cases, a centralized ad serving infrastructure is the primary cause of high latency, though you should identify any other components in your existing system that may also be contributing to high latency.
+
+The distributed nature of this solution brings key components closer to the end-user, reducing latency compared to more traditional, centralized systems. In addition, failover is provided for each region and occurs quickly to reduce downtime and minimize impact to latency.
 
 ### Cost sensitivity (low profit margins)
 
@@ -29,9 +33,9 @@ Ad serving requires significantly lower latency compared with many other systems
 
 Due to the relatively small profit margins in the ad serving space, cloud infrastructure costs directly impact profitability. Reducing cloud costs plays a critical role in infrastructure planning.
 
-One major source of infrastructure costs is egress fees. By hosting a distributed ad serving system on Akamai’s cloud computing platform, egress costs can be eliminated or significantly reduced compared to hyperscalers. The solution in this guide led to a 40% reduction in costs for one profiled customer.
+One major source of infrastructure costs is egress fees. By hosting a distributed ad serving system on Akamai’s Cloud Computing platform, egress costs can be eliminated or significantly reduced compared to hyperscalers. The solution in this guide led to a 40% reduction in costs for one profiled customer.
 
-Another cause of increased cloud costs and egress fees is a high amount of traffic. Decentralizing some components but not others can increase cross-region traffic when the distributed infrastructure is communicating with the centralized infrastructure. To limit egress fees, a caching system should be implemented on the distributed systems. Using this method, local instances sync critical data (like ad inventory and bids) to reduce network traffic to the centralized cloud. Also, because of Akamai’s global network and relationship with other hyperscalers, egress costs when transferring data stored centrally on another hyperscaler is also eliminated or reduced.
+Another cause of increased cloud costs and egress fees is a high amount of traffic. Decentralizing some components but not others can increase cross-region traffic when the distributed infrastructure is communicating with the centralized infrastructure. To limit egress fees associated with this traffic, a caching system should be implemented on the distributed systems. Using this method, local instances sync critical data (like ad inventory and bids) to reduce network traffic to the centralized cloud. Also, because of Akamai’s global network and relationship with other hyperscalers, egress costs when transferring data stored centrally on another hyperscaler is also eliminated or reduced.
 
 ### Integration and Migration Effort
 
@@ -59,7 +63,7 @@ The diagram below showcases the infrastructure components that enable a multi-re
 
 1.  When processing the bid, a local caching server is queried. This cache includes data from any centralized infrastructure, such as databases for ad inventory, user profiles, and more. This eliminates the delay associated with querying the centralized system of record on every single request.
 
-    1. The local cache is updated periodically. Data within the cache is refreshed to ensure the most up-to-date information is used.
+    1.  The local cache is updated periodically. Data within the cache is refreshed to ensure the most up-to-date information is used.
 
 1.  Information from the local cache is sent back to the bidding servers.
 
