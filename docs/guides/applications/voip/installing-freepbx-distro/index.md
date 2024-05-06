@@ -2,12 +2,11 @@
 slug: installing-freepbx-distro
 title: "How to Install FreePBX Distro on Akamai Cloud"
 description: "FreePBX is a Linux distribution hosting an open-source phone system and boasting a robust and extensive community. Learn in this tutorial how to deploy an Akamai Cloud instance with the FreePBX distribution."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-07-14
 keywords: ['freepbx hosting','what is pbx','pbx open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-07-14
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[FreePBX: Getting Started](https://www.freepbx.org/get-started/)'
 - '[FreePBX Wiki](https://wiki.freepbx.org/)'
@@ -69,7 +68,7 @@ To make the process of getting started easier and to help you see how FreePBX fi
 
     [![Installing the FreePBX distribution in a VM](vm-freepbx-install_small.png)](vm-freepbx-install.png)
 
-1.  Create an Akamai Compute Instance, replace the default main disk with an empty disk, and use the custom configuration profile detailed in the custom image deployment guide linked above.
+1.  Create a Compute Instance, replace the default main disk with an empty disk, and use the custom configuration profile detailed in the custom image deployment guide linked above.
 
 1.  Boot the Compute Instance into rescue mode. There, create a temporary password and temporarily start up the SSH service.
 
@@ -79,7 +78,7 @@ To make the process of getting started easier and to help you see how FreePBX fi
 
 After following the details of those steps as given in the guide linked above, your Compute Instance should be running the FreePBX distribution.
 
-To verify that, open the Akamai Cloud Manager, navigate to the page for the Compute Instance, and select **Launch LISH Console**. Select the **Glish** tab, and you should see output for the FreePBX system.
+To verify that, open the Cloud Manager, navigate to the page for the Compute Instance, and select **Launch LISH Console**. Select the **Glish** tab, and you should see output for the FreePBX system.
 
 ![A GLish console connected to the FreePBX distribution](glish-freepbx.png)
 

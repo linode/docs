@@ -2,15 +2,14 @@
 slug: deploying-custom-images
 title: "Deploying a Custom Image to Akamai Cloud"
 description: "Many images can be uploaded and run directly from the Akamai Cloud Manager, but others need additional steps to get up and running. Whether you want to run a custom Linux distribution or Windows, you can use this tutorial to deploy your virtual machine image to a fresh Compute Instance."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-07-14
 keywords: ['custom iso to cloud','linode windows 10 install','virtual machine cloud']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-07-14
-modified_by:
-  name: Nathaniel Stickman
 ---
 
-When you need to run a custom image on Akamai Cloud, most of the time the [image upload](/docs/products/tools/images/guides/upload-an-image/) feature provides a smooth solution. Upload an operating system's disk image, and in many cases Akamai Cloud can handle the deployment from there.
+When you need to run a custom image on Akamai Cloud Computing, most of the time the [image upload](/docs/products/tools/images/guides/upload-an-image/) feature provides a smooth solution. Upload an operating system's disk image, and in many cases Akamai Cloud can handle the deployment from there.
 
 But in some cases the system image you need to deploy needs some additional help. Whether the system has a complex installation or you need custom software before deployment, these images require more manual intervention.
 
@@ -32,7 +31,7 @@ In such cases, installing the image in a local virtual machine first can sideste
 
 ## How to Deploy a Virtual Machine Image to Akamai Cloud
 
-The process of deploying a custom image to a Compute Instance involves some coordinated steps between your local machine and your Akamai Cloud Manager. You need to set up the virtual machine locally and prepare a blank compute instance that can accept the image.
+The process of deploying a custom image to a Compute Instance involves some coordinated steps between your local machine and your Cloud Manager. You need to set up the virtual machine locally and prepare a blank compute instance that can accept the image.
 
 This tutorial gives the necessary steps in a generalized way, making them adaptable for a wide range of operating system images. Additionally, the steps are organized to help make the coordination between local and cloud setups relatively easy to discern and navigate.
 
@@ -98,7 +97,7 @@ As with all of the virtual machine steps, the details vary based on your chosen 
 
     [![Installing Windows 10 on the VM](vm-windows-setup_small.png)](vm-windows-setup.png)
 
-1.  Once the installation has finished, you should be taken into the operating system. Consider now how you intend to access the system from the Compute Instance. The Akamai Cloud Manager provides a Glish console, where you can access the system's desktop environment. But if you want remote access otherwise, you should install a VNC server or enable remote desktop on the system.
+1.  Once the installation has finished, you should be taken into the operating system. Consider now how you intend to access the system from the Compute Instance. The Cloud Manager provides a Glish console, where you can access the system's desktop environment. But if you want remote access otherwise, you should install a VNC server or enable remote desktop on the system.
 
     -   For Windows, you can enable remote desktop by following the [official documentation](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
 
@@ -124,7 +123,7 @@ The parallel steps on the cloud side of the process require you to create an emp
 
     ![Landing page for the Compute Instance in the Cloud Manager](cloud-manager-instance-main.png)
 
-1.  Once the instance has a *Running* status, power it down using the **Power Off** option within the Akamai Cloud Manager.
+1.  Once the instance has a *Running* status, power it down using the **Power Off** option within the Cloud Manager.
 
     ![Menu options for the Compute Instance in  the Cloud Manager](cloud-manager-instance-menu.png)
 
@@ -178,7 +177,7 @@ All of that leaves you with an empty Compute Instance, ready to be loaded with a
 
 Both sides of the setup have been prepared — the local virtual machine and the cloud instance. What remains requires you to coordinate both of these to transfer the virtual machine disk to the empty disk on the Compute Instance.
 
-This is where the [Finnix](https://www.finnix.org/) distribution comes in. Finnix works well as a boot manager and for boot utilities, and it is used for that purpose in the Akamai Compute Instances' rescue mode.
+This is where the [Finnix](https://www.finnix.org/) distribution comes in. Finnix works well as a boot manager and for boot utilities, and it is used for that purpose in the Compute Instances' rescue mode.
 
 Booting both the virtual machine and the cloud instance into live-booted Finnix systems allows you to sync the disks between the two locations. Afterward, your cloud instance can run the image you had prepared in the virtual machine.
 
@@ -192,7 +191,7 @@ What remains is to have a local copy of the Finnix system for live-booting with 
 
 To receive the virtual machine image from your local virtual machine, the Compute Instance needs to be running in rescue mode. Rescue mode runs a live Finnix system on the instance. The steps below then use this live system to allow temporary access to the empty disk you set up earlier.
 
-1.  Navigate back to the page for the empty Compute Instance in the Akamai Cloud Manager. Choose the **Rescue** option from the instance menu. This gives you a prompt to boot the instance into rescue mode.
+1.  Navigate back to the page for the empty Compute Instance in the Cloud Manager. Choose the **Rescue** option from the instance menu. This gives you a prompt to boot the instance into rescue mode.
 
     ![The Cloud Manager prompt for booting an instance into rescue mode](cloud-manager-instance-rescue-mode-prompt.png)
 
@@ -255,7 +254,7 @@ At this point, you should be done with the local virtual machine. Still, it is a
 
 Your custom image has now been deployed, and should be running on your Compute Instance. If you set up a remote desktop or VNC server, you should be able to access the cloud instance's desktop environment using that.
 
-But probably the quickest way to verify that the instance has deployed as expected is through the Akamai Cloud Manager. There, you can access the Glish console, which lets you access an instance's graphical output from within your browser. No need to manually set up a remote desktop or VNC.
+But probably the quickest way to verify that the instance has deployed as expected is through the Cloud Manager. There, you can access the Glish console, which lets you access an instance's graphical output from within your browser. No need to manually set up a remote desktop or VNC.
 
 The steps that follow show you how to access the instance's desktop environment, verifying the deployment, using the Glish console.
 
