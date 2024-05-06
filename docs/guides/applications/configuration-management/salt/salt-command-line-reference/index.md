@@ -1,22 +1,16 @@
 ---
 slug: salt-command-line-reference
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'A reference for the SaltStack command line interface.'
-keywords: ['salt','saltstack','cli','command line','reference']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "SaltStack Command Line Reference"
+description: 'The SaltStack is a powerful configuration management tool. This guide provides you with a reference for the SaltStack command line interface.'
+authors: ["Andy Stevens"]
+contributors: ["Andy Stevens"]
 published: 2018-10-03
 modified: 2019-01-02
-modified_by:
-  name: Linode
-title: "SaltStack Command Line Reference"
-contributor:
-    name: "Andy Stevens"
-    link: "https://github.com/andystevensname"
+keywords: ['salt','saltstack','cli','command line','reference']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[SaltStack Command Line Documentation](https://docs.saltstack.com/en/latest/ref/cli/index.html)'
-- '[Linode Cloud Module](https://docs.saltstack.com/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
+- '[SaltStack Command Line Documentation](https://docs.saltproject.io/en/latest/ref/cli/index.html)'
+- '[Linode Cloud Module](https://docs.saltproject.io/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
 aliases: ['/applications/configuration-management/salt-command-line-reference/','/applications/configuration-management/salt/salt-command-line-reference/']
 tags: ["automation","salt"]
 ---

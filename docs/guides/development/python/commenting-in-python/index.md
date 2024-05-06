@@ -1,19 +1,15 @@
 ---
 slug: commenting-in-python
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Creating Comments in Python"
+title_meta: "How to Comment in Python"
 description: 'A how-to guide on commenting in Python 3 correctly, with an additional portion discussing commenting incorrectly and why not to do that.'
-og_description: 'A how-to guide on commenting in Python 3 correctly, with an additional portion discussing commenting incorrectly and why not to do that.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-05-21
 keywords: ['python3', 'python', 'commenting', 'code', 'programming language']
 tags: ["python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
-modified_by:
-  name: Linode
-title: "How to Comment in Python"
-h1_title: "Creating Comments in Python"
-enable_h1: true
+image: Python.jpg
 external_resources:
 - '[Python Software Foundation](https://www.python.org/)'
 - '[Python Programming at Wikibooks](https://en.wikibooks.org/wiki/Python_Programming)'
@@ -26,9 +22,11 @@ Leaving informative comments on any code is important, as it helps others unders
 
 ## Before You Begin
 
-1.  This guide assumes you have a Linode set up. If not, then familiarize yourself with our [Getting Started](/docs/getting-started/) guide to create and complete the basic installation steps for your Linode.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  This guide assumes your Linode is running Python 3 or has a Python Virtual Environment installed. If not, then see our [Python guides](https://www.linode.com/docs/guides/development/python/) to find instructions for installing on your preferred Linux distribution.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+2.  This guide assumes your Linode is running Python 3 or has a Python Virtual Environment installed. If not, then see our [Python guides](/docs/guides/development/python/) to find instructions for installing on your preferred Linux distribution.
 
 2.  Finally, this guide assumes you have a basic knowledge of Python and are comfortable editing using a text editor. If you are new to Python, then see the Python Software Foundation's ["Python for Beginners"](https://www.python.org/about/gettingstarted/) guide for more information on what Python is, what it can do, and how to learn to use it.
 

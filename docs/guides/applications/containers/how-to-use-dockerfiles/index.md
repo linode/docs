@@ -1,19 +1,14 @@
 ---
 slug: how-to-use-dockerfiles
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-description: 'A guide that introduces how to use a Dockerfile and provides examples on how to use it to build and run a Docker Image on your Linode using CentOS 7.'
+title: "How to Use a Dockerfile to Build a Docker Image."
+description: "A guide that introduces how to use a Dockerfile and provides examples on how to use it to build and run a Docker image on your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-08-11
+modified: 2021-06-17
 keywords: ["docker", "container", "dockerfile","dockerfiles","docker image","docker images"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-28
-modified_by:
-  name: Linode
-published: 2017-08-11
-title: 'How to Use a Dockerfile to Build a Docker Image'
-h1_title: 'How to Use a Dockerfile to Build a Docker Image.'
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
@@ -26,9 +21,9 @@ A Dockerfile is a text file of a list of commands in an order. It is used to aut
 
 ## Before You Begin
 
-1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide and have a Linode or other Linux system running Docker. For information about installing Docker see, [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
-2.  This guide assumes that you are comfortable with the *command-line interface* (CLI) and working with programs through it.
+2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
 3.  Update the system with the package manager that it uses.
 
@@ -58,9 +53,12 @@ Each command doesn't need to be used. Next, is an example of how to use some of 
 
 To create the Dockerfile:
 
-1.  At the command prompt either via SSH or Lish in the Linode Manager, create and change to a new directory by typing `mkdir ~/mydockerbuild && cd ~/mydockerbuild`.
-    {{< note >}}
-This places the Docker build directory in the home directory. Do not store the Dockerfile in the home directory itself or the server's root directory. Instead create a separate directory and place all necessary files within it along with the Dockerfile.
+1.  At the command prompt (either via SSH or Lish in the Linode Manager), create and change to a new directory:
+
+        mkdir ~/mydockerbuild && cd ~/mydockerbuild
+
+    {{< note respectIndent=false >}}
+This places the Docker build directory in your home directory. As a matter of good practice, do not store the Dockerfile in your home directory itself or the server's root directory. Instead, create a separate directory and place all necessary files within it (alongside the Dockerfile) as shown in this guide.
 {{< /note >}}
 
 2.  Create the file by entering `touch Dockerfile`.

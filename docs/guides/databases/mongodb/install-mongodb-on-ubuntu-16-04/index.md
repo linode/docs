@@ -1,16 +1,13 @@
 ---
 slug: install-mongodb-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
+title_meta: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
 description: 'Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-05-20
 keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2016-05-20
-title: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
-h1_title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
@@ -36,16 +33,16 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [Hig
 
 ## Before You Begin
 
-- Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+- Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-- Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+- Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 - Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Add the MongoDB Repository

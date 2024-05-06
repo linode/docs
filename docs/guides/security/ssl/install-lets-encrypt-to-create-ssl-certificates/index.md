@@ -1,40 +1,33 @@
 ---
 slug: install-lets-encrypt-to-create-ssl-certificates
-author:
-  name: 'Linode Community'
-  email: 'docs@linode.com'
-description: "Let's Encrypt is an SSL certificate authority managed by the Internet Security Research Group. It utilizes the Automated Certificate Management Environment to automatically deploy browser-trusted SSL certificates to anyone for free."
-keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "Install Let's Encrypt to Create SSL Certificates"
+description: "This guide will show you how to install automation tool Certbot on the Ubuntu 18.04 distribution."
+authors: ["Sean Webber"]
+contributors: ["Sean Webber"]
 published: 2016-02-25
 modified: 2020-12-02
-modified_by:
-  name: 'Linode'
-title: "Install Let's Encrypt to Create SSL Certificates"
-contributor:
-  name: 'Sean Webber'
-  link: 'https://github.com/seanthewebber'
-deprecated: true
-deprecated_link: /guides/how-to-install-certbot-on-ubuntu-18-04/
+keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 tags: ["security","ssl"]
 aliases: ['/security/ssl/install-lets-encrypt-to-create-ssl-certificates/']
+deprecated: true
+deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 ---
 
 ![Let's Encrypt](Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
 
 [Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.
-
-{{< caution >}}
+{{< note type="alert" >}}
 For most situations, the recommended method for installing Let's Encrypt certificates is the official [Certbot](https://certbot.eff.org/) tool. Certbot automates the process of obtaining and installing a certificate, and can also automatically update your web server configuration. The instructions in this guide install Let's Encrypt and add certificates manually, which is not necessary for most users.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before you Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the steps in our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  Complete the steps in our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Update your server's software packages:
 
@@ -46,8 +39,8 @@ For most situations, the recommended method for installing Let's Encrypt certifi
 
         sudo apt update && sudo apt upgrade
 
-    {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Download and Install Let's Encrypt
@@ -78,7 +71,7 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
 
         sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 ACME version 2 now supports wildcard certificates for subdomains by using the DNS challenge. For more information on obtaining wildcards, visit the [Let's Encrypt documentation](https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578).
 {{< /note >}}
 

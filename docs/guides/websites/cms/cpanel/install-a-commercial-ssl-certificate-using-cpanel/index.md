@@ -1,18 +1,15 @@
 ---
 slug: install-a-commercial-ssl-certificate-using-cpanel
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
+title: Install a Commercial SSL Certificate Using cPanel
 description: 'Generate a CSR and install a commercial SSL certificate through the cPanel interface.'
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2011-09-27
+modified: 2017-04-28
 keywords: ["ssl", "ip"]
 tags: ["centos","cpanel","ssl","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/install-a-commercial-ssl-certificate-using-cpanel/','/websites/cms/cpanel/install-a-commercial-ssl-certificate-using-cpanel/','/web-applications/control-panels/cpanel/ssl-on-cpanel/']
-modified: 2017-04-28
-modified_by:
-  name: Jonathan Chun
-published: 2011-09-27
-title: Install a Commercial SSL Certificate Using cPanel
 external_resources:
  - '[cPanel Home Page](https://cpanel.com)'
  - '[cPanel Support](https://cpanel.com/support)'
@@ -23,20 +20,20 @@ external_resources:
 
 ## Before You Begin
 
-1.  This guide requires that you have cPanel/WHM installed and configured on your system. If you do not have it installed, follow our instructions on how to [Install cPanel on CentOS](/docs/websites/cms/install-cpanel-on-centos).
+1.  This guide requires that you have cPanel/WHM installed and configured on your system. If you do not have it installed, follow our instructions on how to [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/).
 
 2.  You should have a cPanel account created. If you have not created an account yet, reference the cPanel Documentation to learn how to [Create a New Account](https://documentation.cpanel.net/display/ALD/Create+a+New+Account).
 
 
 When you're ready to proceed, log into your cPanel account, go to the **Security** section, and click on **SSL/TLS**.
 
-[![cPanel SSL/TLS section.](SSLTLS-scaled.png)](SSLTLS.png)
+![cPanel SSL/TLS section.](SSLTLS.png)
 
 ## Create a Certificate Signing Request
 
 You will need a Certificate Signing Request to obtain an SSL certificate from any issuer. To generate your CSR, click on **Generate, view, or delete SSL certificate signing requests**. On this page, you will need to fill out the form with your information as requested and click on the **Create** button at the bottom:
 
-[![cPanel CSR form.](CSR-scaled.png)](CSR.png)
+![cPanel CSR form.](CSR.png)
 
 After you submit the CSR form, you will see several different sections. The ones you will need are:
 
@@ -54,7 +51,7 @@ With this information on hand, you can contact the certificate authority of choi
 
 Once you have obtained an SSL certificate from your issuer of choice, you can proceed to the installation by clicking **Manage SSL sites**. On this page, you will need to scroll down and select the domain you wish to install an SSL certificate on.
 
-[![cPanel Install SSL form.](InstallSSL-scaled.png)](InstallSSL.png)
+![cPanel Install SSL form.](InstallSSL.png)
 
 Paste the contents of your `.crt` file into the top box. Next, paste the encoded key from before into the **Private Key** section. Finally, if your Certificate Authority (SSL Issuer) provided you with intermediate certificates (usually a `.cabundle` file), paste the contents of that file into the final box labeled **Certificate Authority Bundle**.
 

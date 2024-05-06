@@ -1,19 +1,13 @@
 ---
 slug: introduction-to-vim-customization
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Introduction To Vim Customization'
 description: 'This how-to guide shows you how to configure the Vim text editor and begin to customize it.'
-keywords: ["vim", " editor"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
 published: 2017-08-21
 modified: 2019-04-17
-modified_by:
-  name: 'Linode'
-title: 'Introduction To Vim Customization'
-contributor:
-  name: 'Andrew Lescher'
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
+keywords: ["vim", " editor"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Vim official home page](http://www.vim.org)'
  - '[Vim-Config](http://vimconfig.com/)'
@@ -28,58 +22,60 @@ aliases: ['/tools-reference/tools/introduction-to-vim-customization/']
 
 ## What Is Vim?
 
-Vim is one of a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is unavoidable, Vim aims to be a hyperefficient text editor and provides an extensive plug-in system which can be configured to user preferences. It also supports  hundreds of programming languages and file extensions.
+Vim is one of a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is unavoidable, Vim aims to be a hyperefficient text editor. Vim provides an extensive plug-in system which can be configured to user preferences. It also supports hundreds of programming languages and file extensions.
 
-This guide details the configuration of the Vim text editor and aims at those who are interested in taking the next step into customization. An array of methods for customizing Vim's execution of certain tasks and response to user input will be introduced, along with a plug-in management system.
+This guide details the configuration of the Vim text editor and aims at those who are interested in taking the next step into customization. Methods for customizing Vim's execution of certain tasks and response to user input are introduced, along with a plug-in management system.
 
-Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently, as well as acquired exposure to managing external plug-ins.
+Fine-tune your Vim editor to behave more intelligently with this tutorial and acquire exposure to managing external plug-ins along the way.
 
 ## Before You Begin
 
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with the steps for editing documents with Vim.
 
-2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
-# Customize Your Vim Instance
+## Customize Your Vim Instance
 
-It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible - and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
+It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible and useful in certain situations. For example, you want some settings applied to all accounts on the system, but others applied exclusively to a user account.
 
-## Customize the Global *vimrc* File
+### Customize the Global *vimrc* File
 
-The configurations in this section will apply system-wide across all user accounts.
+The configurations in this section apply system-wide across all user accounts.
 
-1.  A default Vim installation will feature a file containing Vim's core global settings called *vimrc*. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your linux distribution.
+1.  A default Vim installation features a file containing Vim's core global settings called *vimrc*. This file is located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your Linux distribution.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
 {{< /note >}}
 
 2.  Open the *vimrc* file for editing. The file may syntactically differ between Linux distributions, but the core settings remain the same. In the file below, the segment containing the bulk of the configuration options is shown. Uncomment the lines whose behavior you wish to enable.
 
-{{< file "/etc/vimrc" vim >}}
-set showcmd› › " Show (partial) command in status line.
-set showmatch› › " Show matching brackets.
-set ignorecase›› " Do case insensitive matching
-set smartcase› › " Do smart case matching
-set incsearch› › " Incremental search
-set autowrite› › " Automatically save before commands like :next and :make
-set hidden›› " Hide buffers when they are abandoned
-set mouse=a› › " Enable mouse usage (all modes)
+    ```file {title="/etc/vimrc" lang="vim"}
+    set showcmd› › " Show (partial) command in status line.
+    set showmatch› › " Show matching brackets.
+    set ignorecase›› " Do case insensitive matching
+    set smartcase› › " Do smart case matching
+    set incsearch› › " Incremental search
+    set autowrite› › " Automatically save before commands like :next and :make
+    set hidden›› " Hide buffers when they are abandoned
+    set mouse=a› › " Enable mouse usage (all modes)
+    ```
 
-{{< /file >}}
+### Create a Local *.vimrc* File
 
+The configurations in this section applies only to the active user account.
 
-## Customize the Local *.vimrc* File
-
-The configurations in this section will apply only to the active user account.
-
-### Create **.vimrc**
-
-1.  During Vim's loading sequence, it will automatically check the current user's home directory for a *.vimrc* file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global *vimrc* file.
+During Vim's loading sequence, it automatically checks the current user's home directory for a *.vimrc* file. All settings specified in this file override explicitly contradicted settings in any previously loaded configuration files, which in this case is the global *vimrc* file.
 
 From your active Vim session, create a *.vimrc* file in your home directory. The contents below consist of basic configuration settings most users would find helpful when utilizing Vim in any circumstance. You may pick and choose which settings you would like to add to your personal *.vimrc* file.
 
-{{< file "~/.vimrc" vim >}}
+```file {title="~/.vimrc" lang="vim"}
 " Set compatibility to Vim only.
 set nocompatible
 
@@ -161,9 +157,7 @@ vnoremap <Space> zf
 " Automatically save and load folds
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
-
-{{< /file >}}
-
+```
 
 ## Integrate Plug-Ins
 
@@ -175,21 +169,29 @@ The most effective way to install and manage plug-ins requires the use of a plug
 
 1.  Install curl.
 
-     **Fedora/RHEL based**
+    -   **AlmaLinux / CentOS Stream / Fedora / Rocky Linux**
 
+        ```command
         sudo yum install curl
+        ```
 
-    **Debian based**
+    -   **Debian / Ubuntu**
 
+        ```command
         sudo apt install curl
+        ```
 
-    **Arch Linux**
+    -   **Arch Linux**
 
+        ```command
         sudo pacman -Syy curl
+        ```
 
 2.  Create the installation directories, download, and install Vim-Plug from Github.
 
-        sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    ```command
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    ```
 
 ### Install Your First Plug-In With Vim-Plug
 
@@ -197,46 +199,44 @@ Using a plug-in manager automates both the installation and setup of any plug-in
 
 1.  Create a separate file to manage your plug-ins, and a new directory to store them.
 
-        touch ~/.vimrc.plug
-        mkdir ~/vimplug-plugins
+    ```command
+    touch ~/.vimrc.plug
+    mkdir ~/vimplug-plugins
+    ```
 
 2.  Open *.vimrc* in the Vim editor and add the following text at the bottom to call the *.vimrc.plug* file.
 
-    {{< file "~/.vimrc" vim >}}
-. . .
- " Call the .vimrc.plug file
- if filereadable(expand("~/.vimrc.plug"))
-     source ~/.vimrc.plug
- endif
-
-{{< /file >}}
-
-
+    ```file {title="~/.vimrc" lang="vim"}
+    " Call the .vimrc.plug file
+    if filereadable(expand("~/.vimrc.plug"))
+        source ~/.vimrc.plug
+    endif
+    ```
 
 3.  Now, open the *.vimrc.plug* file in Vim. Populate the file with the contents below to add the *Fugitive Vim* plug-in, a Github wrapper. With this plug-in installed, you can now run a Git terminal from within Vim!
 
-     {{< note >}}
-Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
-{{< /note >}}
+    ```file {title="~/.vimrc.plug" lang="vim"}
+    call plug#begin('~/.vim/plugged')
 
-    {{< file "~/.vimrc.plug" vim >}}
-call plug#begin('~/.vim/plugged')
+    "Fugitive Vim Github Wrapper
+    Plug 'tpope/vim-fugitive'
 
-"Fugitive Vim Github Wrapper
-Plug 'tpope/vim-fugitive'
+    call plug#end()
+    ```
 
-call plug#end()
+    {{< note >}}
+    Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
+    {{< /note >}}
 
-{{< /file >}}
+    {{< note >}}
+    If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755`.
+    {{< /note >}}
 
+4.  After saving and closing the *.vimrc.plug* file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This opens the plug-in manager within Vim and proceeds to install all plug-ins listed in the **vimrc.plug* file. Installed plug-ins automatically load the next time Vim is started.
 
-     {{< note >}}
-If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755
-{{< /note >}}
-
-4.  After saving and closing the *.vimrc.plug* file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This will open the plug-in manager within Vim and proceed to install all plug-ins listed in the **vimrc.plug* file. Installed plug-ins will automatically load the next time Vim is started.
-
-        :PlugInstall
+    ```command
+    :PlugInstall
+    ```
 
 5.  Additional commands for managing plug-ins via Vim-Plug are listed below.
 
@@ -256,6 +256,6 @@ If after this step you receive an error similar to `E117 Unknown Function: plug#
 
 Many additional plug-ins and tools exist to enhance your Vim experience. The Vim official website and online wiki offer additional ways to customize Vim as well as fully documenting its available features and commands. If a visual and interactive approach to creating your .vimrc file is desired, the Vim-Config website simplifies the process and auto generates the file.
 
-One of the best places to search for additional plug-ins is on the VimAwesome website. Most of the plug-ins available for Vim are hosted there in a well-organized and easily searchable environment, along with instructions for installation for all the most popular plug-in management tools.
+One of the best places to search for additional plug-ins is on the VimAwesome website. Most of the plug-ins available for Vim are hosted there in a well-organized and easily searchable environment. It also features installation instructions for all of the most popular plug-in management tools.
 
 Lastly, if you want to gain a deeper understanding of Vim-Plug, the project's Github page is an excellent place to start. Links for all these websites are provided in the *External Resources* section.

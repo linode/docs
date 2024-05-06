@@ -1,24 +1,21 @@
 ---
 slug: how-to-upgrade-to-ubuntu-10-04-lts-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Ubuntu 10.04 LTS (Lucid)'
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-29
+modified: 2020-12-01
 keywords: ["ubuntu upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid/','/upgrading/upgrade-to-ubuntu-10-04-lucid/']
-modified: 2020-12-01
-modified_by:
-  name: Linode
-published: 2010-04-29
-title: 'How to Upgrade to Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}
@@ -101,7 +98,7 @@ If you were running Ubuntu 9.04 previously and have gone through this guide once
 
 ## Fixing a Broken System
 
-If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/troubleshooting/finnix-rescue-mode). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
+If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
 
     mount /dev/xvda
     nano /media/xvda/etc/fstab
@@ -116,7 +113,7 @@ Add the following line to your file:
 
 Save the file by entering `Ctrl+x` and agreeing to the changes. You may now reboot your Linode from the Linode Manager dashboard using its normal configuration profile.
 
- {{< note >}}
+{{< note >}}
 If you're still having problems, verify that `Automount devtmpfs` is turned on.
 {{< /note >}}
 

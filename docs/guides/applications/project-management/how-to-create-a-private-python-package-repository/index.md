@@ -1,17 +1,14 @@
 ---
 slug: how-to-create-a-private-python-package-repository
-author:
-  name: Sam Foo
-  email: sfoo@linode.com
-description: 'This tutorial will show how to create your own private, Python package repository.'
+title: 'How to Create a Private Python Package Repository'
+description: 'This tutorial will show how to create your own private, Python package repository. Learn everything you need to know about the process.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2017-09-15
+modified: 2017-09-12
 keywords: ["pip", "Python", "PyPA", "virtualenv", "package management"]
 tags: ["python", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-12
-modified_by:
-  name: Sam Foo
-published: 2017-09-15
-title: 'How to Create a Private Python Package Repository'
 external_resources:
  - '[pip](https://pip.readthedocs.io/en/stable/#)'
  - '[pypiserver Documentation](https://pypiserver.readthedocs.io/en/latest/)'
@@ -23,15 +20,15 @@ aliases: ['/applications/project-management/how-to-create-a-private-python-packa
 
 ## How Does Python Handle Package Management?
 
-Package management in Python is available through a variety of different tools:
+Package management in Python is available through a variety of different programming tools:
 
 - `Pip` remains one of the most popular choices because it virtually eliminates manual installs and updates of software packages to operating systems. `Pip` manages full lists of packages and their corresponding version numbers, which fosters precise duplication of entire package groups in a distinct, separate environment.
 
-- PyPI (Python Package Index) is a public repository of user-submitted packages that can be installed using `pip install package`. This guide breaks down the basic scaffolding of a Python package, then using PyPiServer, creates a private repository by uploading the package to a Linode.
+- PyPI (Python Package Index) is a public repository of user-submitted packages that can be installed using `pip install package`. This guide breaks down the basic scaffolding of a Python package, then using PyPiServer, creates a PyPi private repository by uploading the package to a Linode.
 
-### Before You Begin
+## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's timezone.
 
 2.  This guide assumes usage of Python 3 and a working installation of `pip` along with `setuptools`. Starting with Python 3.4, `pip` comes with the default installation. On Debian distributions, `pip` can be installed using the apt package manager with `sudo apt install python-pip`.
 
@@ -45,7 +42,7 @@ The basic scaffolding of a Python package is a `__init__.py` file containing cod
 
         mkdir linode_example
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters - unique to PyPI - and the underscore character to separate words if needed.
 {{< /note >}}
 
@@ -60,7 +57,7 @@ linode_example/
     README.md
 {{< /output >}}
 
-3.  Edit `setup.py` to contain basic information about your Python package:
+3.  Edit `setup.py` to contain basic information about your Python package repository:
 
     {{< file "linode_example/setup.py" >}}
 from setuptools import setup
@@ -75,9 +72,7 @@ setup(
     author_email='docs@linode.com',
     keywords=['pip','linode','example']
     )
-
 {{< /file >}}
-
 
 4.  Add an example function to `__init__.py`:
 
@@ -87,19 +82,16 @@ def hello_word():
 
 {{< /file >}}
 
-
 5.  The `setup.cfg` file lets PyPI know the README is a Markdown file:
 
     {{< file "setup.cfg" >}}
 [metadata]
 description-file = README.md
-
 {{< /file >}}
-
 
 6.  Optionally, add a `LICENSE.txt` or information to `README.md`. This is good documentation practices, and helpful if you ever plan to upload the Python package into the public PyPI repository.
 
-7.  The Python package needs to be compressed before it can be available for download on your server. Compress the package:
+7.  The Python package repository needs to be compressed before it can be available for download on your server. Compress the package:
 
         python setup.py sdist
 
@@ -124,8 +116,8 @@ Next, set up a server to host a package index. This guide will use `pypiserver`,
 
         pip install pypiserver
 
-    {{< note >}}
-Alternatively, [download pypiserver from Github](https://github.com/pypiserver/pypiserver), then navigate into the downloaded pypiserver directory and install with `python setup.py install`.
+    {{< note respectIndent=false >}}
+Alternatively, [download pypiserver from Github](https://github.com/pypiserver/pypiserver), then navigate into the downloaded pypiserver directory and install packages with `python setup.py install`.
 {{< /note >}}
 
 4.  Move `linode_example-0.1.tar.gz` into `~/packages`:
@@ -138,13 +130,13 @@ Alternatively, [download pypiserver from Github](https://github.com/pypiserver/p
 
 6.  Currently the server is listening on all IP addresses. In a web browser, navigate to `192.0.2.0:8080`, where `192.0.2.0` is the public IP of your Linode. The browser should display:
 
-    ![pypiserver_home](pypiserver.png)
+    ![pypiserver home](pypiserver.png "home page of the server")
 
     You are now able to install the `linode_example` package by declaring an external url `pip install --extra-index-url http://192.0.2.0:8080/simple/ --trusted-host 192.0.2.0 linode_example`.
 
 ## Authentication with Apache and passlib
 
-1.  Install Apache and `passlib` for password-based authentication for uploads. Make sure you are still in your activated virtual environment (`(venv)` should appear before the terminal prompt) and then execute the following:
+1.  Install Apache and `passlib` for password-based authentication for uploads. Make sure you are still in your activated virtual environment (`(venv)` should appear before the terminal prompt) and then execute the following commands:
 
         sudo apt install apache2
         pip install passlib
@@ -167,9 +159,7 @@ import pypiserver
 PACKAGES = '/absolute/path/to/packages'
 HTPASSWD = '/absolute/path/to/htpasswd.txt'
 application = pypiserver.app(root=PACKAGES, redirect_to_fallback=True, password_file=HTPASSWD)
-
 {{< /file >}}
-
 
 5.  Create a configuration file for the pypiserver located in `/etc/apache2/sites-available/`:
 
@@ -188,10 +178,9 @@ WSGIDaemonProcess pypiserver python-path=/absolute/path/to/packages:/absolute/pa
 
 {{< /file >}}
 
-
     The `Require ip 203.0.113.0` directive is an example IP restricting access to Apache. To grant open access, replace with `Require all granted`. For more complex access control rules, consult access control in the [Apache documentation](https://httpd.apache.org/docs/2.4/howto/access.html).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Depending on the version of Python and virtual environment path, the `WSGIDaemonProcess` directive may require a different path.
 {{< /note >}}
 
@@ -210,7 +199,8 @@ Depending on the version of Python and virtual environment path, the `WSGIDaemon
 
     The repository should be accessible through `192.0.2.0` by default on port 80, where `192.0.2.0` is the public of the Linode.
 
-# Download From a Client
+## Download From a Client
+
 Recall the rather long flags declared with `pip` in order to download from a specified repository. Creating a configuration file containing the IP of your public server will simplify usage.
 
 1.  On the client computer, create a `.pip` directory in the home directory. Inside this directory, create `pip.conf` with the following:
@@ -219,15 +209,13 @@ Recall the rather long flags declared with `pip` in order to download from a spe
 [global]
 extra-index-url = http://192.0.2.0:8080/
 trusted-host = 192.0.2.0
-
 {{< /file >}}
-
 
 2.  Install the `linode_example` package:
 
         pip install linode_example
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Both the terminal output and showing all packages with `pip list` will show that the underscore in the package name has transformed into a dash. This is expected because `setuptools` uses the `safe_name` utility. For an in-depth discussion about this, [see this mailing list thread](https://mail.python.org/pipermail/distutils-sig/2010-March/015650.html).
 {{< /note >}}
 
@@ -239,7 +227,8 @@ Both the terminal output and showing all packages with `pip list` will show that
     hello world
 {{< /output >}}
 
-# Upload Remotely Using Setuptools
+## Upload Remotely Using Setuptools
+
 Although it's possible to use `scp` to transfer tar.gz files to the repository, there are other tools such as `twine` and `easy_install` which can also be used.
 
 1.  On a client computer, create a new configuration file in the home directory called `.pypirc`. The remote repository will be called `linode`:
@@ -258,7 +247,6 @@ username: example_user
 password: mypassword
 
 {{< /file >}}
-
 
     Uploading to the official Python Package Index requires an account, although account information fields can be left blank. Replace *example_user* and *mypassword* with credentials defined through `htpasswd` from earlier.
 

@@ -1,21 +1,15 @@
 ---
 slug: how-to-use-linode-packer-builder
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. Using a single source configuration, you can generate identical machine images. Packer can then be used to install those images to your Linode.'
-og_description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. Using a single source configuration, you can generate identical machine images. Packer can then be used to install those images to your Linode.'
+title: "Using the Linode Packer Builder to Create Custom Images"
+title_meta: "How to Use the Linode Packer Builder"
+description: "Packer is a HashiCorp maintained open source tool for creating machine images. Here's how to use it."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-11-12
+modified: 2021-05-21
 keywords: ['packer hashicorp','hashicorp packer','image','machine image','immutable infrastructure','continuous delivery','ansible','ansible playbook','hashicorp terraform','hashicorp']
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-12
-modified: 2021-05-21
-modified_by:
-  name: Linode
-title: "How to Use the Linode Packer Builder"
-h1_title: "Use the Linode Packer Builder to Create Linode Images"
-contributor:
-  name: Linode
 aliases: ['/applications/configuration-management/how-to-use-linode-packer-builder/','/applications/configuration-management/packer/how-to-use-linode-packer-builder/']
 ---
 
@@ -23,13 +17,13 @@ aliases: ['/applications/configuration-management/how-to-use-linode-packer-build
 
 [Packer](https://www.packer.io/) is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the operating system, applications, application configurations, and data files that a virtual machine instance will run once it's deployed. Packer can be used in conjunction with common configuration management tools like Chef, Puppet, or Ansible to install software to your Linode and include those configurations into your image.
 
-Packer *templates* store the configuration parameters used for building an image. This standardizes the imaging building process and ensures that everyone using that template file will always create an identical image. For instance, this can help your team maintain an [immutable infrastructure](/docs/development/ci/what-is-immutable-infrastructure/) within your [continuous delivery](/docs/development/ci/introduction-ci-cd/#what-is-continuous-delivery) pipeline.
+Packer *templates* store the configuration parameters used for building an image. This standardizes the imaging building process and ensures that everyone using that template file will always create an identical image. For instance, this can help your team maintain an [immutable infrastructure](/docs/guides/what-is-immutable-infrastructure/) within your [continuous delivery](/docs/guides/introduction-ci-cd/#what-is-continuous-delivery) pipeline.
 
 ## The Linode Packer Builder
 
 In Packer's ecosystem, [builders](https://www.packer.io/docs/builders) are responsible for building a system and generating an image from that system. Packer has multiple different types of builders, with each one being used to create images for a specific platform.
 
-The [Linode builder](https://www.packer.io/docs/builders/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](/docs/products/tools/images/) on your account that can be used for rapidly deploying new Linodes.
+The [Linode builder](https://developer.hashicorp.com/packer/integrations/linode/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](/docs/products/tools/images/) on your account that can be used for rapidly deploying new Linodes.
 
 ## Before You Begin
 
@@ -37,13 +31,13 @@ This guide will walk you through the process of installing Packer, creating a  t
 
 1. Ensure you have access to [cURL](https://en.wikipedia.org/wiki/CURL) on your computer.
 
-1. Generate a Linode API v4 access token with read/write permission for both *Linodes* and *Images*. You can follow the [Get an Access Token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
+1. Generate a Linode API v4 access token with read/write permission for both *Linodes* and *Images*. You can follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide if you do not already have one.
 
 1. *Optional:* Set a variable named `TOKEN` in your shell environment by running the following command. Replace *x* with your own API token.
 
        export TOKEN=x
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some of the example commands provided in this guide will use this variable. If you do not set this variable, you will need to modify these commands by replacing `$TOKEN` with your API token.
 {{< /note >}}
 
@@ -79,8 +73,8 @@ Verify that Packer was successfully installed by running the command `packer --v
 Now that Packer is installed, you can make a Packer [template](https://www.packer.io/docs/templates). A template is a file that contains the configurations needed to build a machine image. A template can be formatted in [JSON](https://www.packer.io/docs/templates/legacy_json_templates) or [HCL2](https://www.packer.io/docs/templates/hcl_templates) (Hashicorp Configuration Language). As of Packer v1.7.0, the HCL2 template format is preferred and, as such, will be used in the examples within this guide.
 
 {{< note >}}
-The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for details about [hourly billing](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works).
-{{</ note >}}
+The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/products/platform/billing/) guide for details about how hourly billing works.
+{{< /note >}}
 
 ### Creating the Template File
 
@@ -132,7 +126,7 @@ The starting line of each `source` block will contain the builder plugin to be u
 
 #### Parameters for the Linode Builder
 
-This example uses the Linode Packer builder as a source. Each of the parameters within the `source` block are outlined on the [Linode Builder](https://www.packer.io/docs/builders/linode) page within Packer's documentation.
+This example uses the Linode Packer builder as a source. Each of the parameters within the `source` block are outlined on the [Linode Builder](https://developer.hashicorp.com/packer/integrations/linode/linode) page within Packer's documentation.
 
 - `image`: The ID of the "starter" image to use. This can be one of the official Linode images or any private custom images on your account. In this example, we'll use `linode/debian10` to specify the official Linode Debian 10 image. You can view all the images available to you by running the following curl command:
 
@@ -162,9 +156,9 @@ After the template file has been saved with your desired parameters, you're now 
 
        packer validate -var linode_api_token=$TOKEN example.pkr.hcl
 
-      {{< note >}}
-  To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
-      {{</ note >}}
+    {{< note respectIndent=false >}}
+To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
+    {{< /note >}}
 
 1. Build the image by running the `packer build` command below. Just like in the last step, if you did not set TOKEN as a variable in your shell environment, replace *$TOKEN* with your own Linode API token. This process may take a few minutes to complete.
 
@@ -174,11 +168,11 @@ After the template file has been saved with your desired parameters, you're now 
 
 ## Deploying a Linode with the New Image
 
-Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed a few ways:
+Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed in a few ways:
 
-- **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Linode](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
+- **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
 
-- **Linode CLI:** Use the Linode CLI through the command-line by following the [Using the Linode CLI](/docs/guides/linode-cli/) guide. The [Linode Instances](/docs/guides/linode-cli/#linode-instances) section of that guide will provide example commands. The command below will deploy a new Linode in the Newark data center. Replace *mypassword* with the root password you'd like to use and *linode/debian10* with the ID of your new image.
+- **Linode CLI:** Use the Linode CLI through the command-line by following the [Using the Linode CLI](/docs/products/tools/cli/get-started/) guide. The [Linode Instances](/docs/products/tools/cli/guides/linode-instances/) guide provides example commands. The command below will deploy a new Linode in the Newark data center. Replace *mypassword* with the root password you'd like to use and *linode/debian10* with the ID of your new image.
 
       linode-cli linodes create --root_pass mypassword --region us-east --image linode/debian10
 
@@ -200,7 +194,7 @@ Once the Packer build process completes, a new [Custom Image](/docs/products/too
 
 Packer is extremely powerful and customizable tool for creating images. The first template outlined in this guide is a minimalist example and doesn't showcase the true potential of Packer. To take things further, this section will cover integrating Packer with Ansible. Ansible is one of many different options available for customizing an image in Packer.
 
-Ansible is an automation tool for server provisioning, configuration, and management. Before continuing, follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide to install Ansible and familiarize yourself with basic Ansible concepts.
+Ansible is an automation tool for server provisioning, configuration, and management. Before continuing, follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/) guide to install Ansible and familiarize yourself with basic Ansible concepts.
 
 ### Creating the Ansible Playbook
 
@@ -271,7 +265,7 @@ A provisioner allows you to further configure your system by completing common s
 
 ### Building and Deploying the Image
 
-Follow the previous sections for [building the image](#building-the-image) and [deploying the image](deploying-a-linode-with-the-new-image). Once a new Linode is deployed using the newly created image, you should be able to log in to that Linode over ssh by running the following command. Replace *username* with the username you specified in the Ansible playbook and replace *192.0.2.0* with the IPv4 address of your new Linode.
+Follow the previous sections for [building the image](#building-the-image) and [deploying the image](#deploying-a-linode-with-the-new-image). Once a new Linode is deployed using the newly created image, you should be able to log in to that Linode over ssh by running the following command. Replace *username* with the username you specified in the Ansible playbook and replace *192.0.2.0* with the IPv4 address of your new Linode.
 
     ssh username@192.0.2.0
 
@@ -279,7 +273,7 @@ Follow the previous sections for [building the image](#building-the-image) and [
 
 If you'd like to learn how to use Terraform to deploy Linodes using your Packer created image, you can follow our Terraform guides to get started:
 
-* [A Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/)
-* [Create a Terraform Module](/docs/applications/configuration-management/create-terraform-module/)
-* [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)
+* [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)
+* [Create a Terraform Module](/docs/guides/create-terraform-module/)
+* [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)
 * [Introduction to HashiCorp Configuration Language (HCL)](/docs/applications/configuration-management/introduction-to-hcl/)

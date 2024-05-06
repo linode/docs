@@ -1,30 +1,26 @@
 ---
 slug: introduction-to-version-control
-author:
-  name: Linode
-  email: docs@linode.com
-description: Our guide to getting starting with version control
+title: Introduction to Version Control
+description: 'This guide will help you get started with Version Control, a special application that stores and manages each revision of the files that make up your codebase.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-09-18
 keywords: ["version control", "introduction to version control", "git", "introduction to git"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/intro-version-control/','/applications/development/introduction-to-version-control/','/development/version-control/introduction-to-version-control/']
-modified: 2013-09-18
-modified_by:
-  name: Linode
-published: 2013-09-18
-title: Introduction to Version Control
 external_resources:
  - '[Version Control Systems](/docs/development/version-control/)'
 audiences: ["foundational"]
 tags: ["version control system"]
 ---
 
-In the [Hosting a Website](/docs/websites/hosting-a-website/) guide, you learned how to host your website by installing and configuring a web server, database, and PHP. Now it's time to implement version control to protect your data and handle code updates smoothly. By the time you reach the end of this guide, you'll know how to use many of the version control methods and tools used by large organizations.
+In the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide, you learned how to host your website by installing and configuring a web server, database, and PHP. Now it's time to implement version control to protect your data and handle code updates smoothly. By the time you reach the end of this guide, you'll know how to use many of the version control methods and tools used by large organizations.
 
 ## Getting Started
 
 A *version control* system is a special application that stores and manages every revision of your files and code. Many developers and organizations use version control to collaborate on source code, manage releases, and roll back to previous versions when bugs are discovered.
 
-[![Version control overview.](1204-image_versioning_intro_1.jpg)](1204-image_versioning_intro_1.jpg)
+![Version control overview.](1204-image_versioning_intro_1.jpg)
 
 Setting up a version control system is easy. The hard part is learning to use it, and then incorporate it in your daily workflow. This section introduces version control and explains how you can apply it to your own projects. We'll walk you through all of the steps, from evaluating the different version control systems to creating and using a repository.
 
@@ -34,7 +30,7 @@ If you host a website or web-based application on your Linode, your users rely o
 
 Version control (also referred to as *revision control* or *source control*) is a file storage system that tracks every change made to a file and allows you to reverse or roll back those changes. For example, if you were editing a file on your personal computer and decided to delete a section of code, you could use version control to restore that section of code in the future - even weeks or months from now.
 
-[![A basic form of version control.](1203-image_versioning_basics_1.jpg)](1203-image_versioning_basics_1.jpg)
+![A basic form of version control.](1203-image_versioning_basics_1.jpg)
 
 Version control is also a great tool for individuals who need to work on the same files at the same time. With version control, they can *check out* the repository and then *commit* the changes when they're finished. If two individuals have modified the same file, the version control system can usually *merge* the changes, unless there's a *conflict*, in which case the user will need to manually combine the changes or favor one change over the other.
 
@@ -44,9 +40,9 @@ Version control also makes it easy to track changes. You can see who committed c
 
 There are several types of open source version control systems available. Each system has its own advantages and disadvantages, so you should do some research before making your selection. Here are three of the most popular:
 
--   **Git:** Designed and developed by Linus Torvalds for Linux kernel development, Git provides strong support for non-linear and distributed development. It's probably the most popular distributed revision control and source code management system. See the [Git documentation website](http://git-scm.com/) for more information. You can also read our guide to [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/).
--   **Subversion:** When it emerged in 2000, Subversion operated like [CVS](http://cvs.nongnu.org/) and added some of the features that were missing from CVS. It was the undisputed king of version control systems until Git emerged in 2005, and it's still very popular. It's now maintained by the Apache Software Foundation. You can read our guide to [Managing Source Code Versions with Subversion](/docs/development/version-control/manage-source-code-versions-with-subversion/).
--   **Mercurial:** This is another popular version control system that resembles Git. It doesn't enjoy quite as much popularity and community support as Git, but it's still a very capable and accessible system. You can read our guide [Managing Distributed Version Control with Mercurial](/docs/development/version-control/manage-distributed-version-control-with-mercurial/).
+-   **Git:** Designed and developed by Linus Torvalds for Linux kernel development, Git provides strong support for non-linear and distributed development. It's probably the most popular distributed revision control and source code management system. See the [Git documentation website](http://git-scm.com/) for more information. You can also read our guide to [Git Source Control Management](/docs/guides/how-to-install-git-on-linux-mac-and-windows/).
+-   **Subversion:** When it emerged in 2000, Subversion operated like [CVS](http://cvs.nongnu.org/) and added some of the features that were missing from CVS. It was the undisputed king of version control systems until Git emerged in 2005, and it's still very popular. It's now maintained by the Apache Software Foundation. You can read our guide to [Managing Source Code Versions with Subversion](/docs/guides/manage-source-code-versions-with-subversion/).
+-   **Mercurial:** This is another popular version control system that resembles Git. It doesn't enjoy quite as much popularity and community support as Git, but it's still a very capable and accessible system. You can read our guide [Managing Distributed Version Control with Mercurial](/docs/guides/manage-distributed-version-control-with-mercurial/).
 
 We'll use Git as an example in this guide. But don't let our decision influence you - there are plenty of other version control systems out there. Feel free to investigate other options if Git, Subversion, or Mercurial don't meet your needs for automating server builds and managing configurations.
 
@@ -60,7 +56,7 @@ This is the process most developers use to create, stage, and commit files to a 
 
 An illustrated overview of this process is shown below.
 
-[![An illustration of a sample version control system.](1205-image_versioning_workflow_1.jpg)](1205-image_versioning_workflow_1.jpg)
+![An illustration of a sample version control system.](1205-image_versioning_workflow_1.jpg)
 
 For an added layer of protection, you can store your files in *both* a local and a remote Git repository. This is ideal for developers who modify files on their local desktop computers and then need to transfer them to a server. Such a setup is beyond the scope of this guide, but the official Git website provides [some excellent instructions on this topic](http://git-scm.com/book/ch2-5.html).
 
@@ -68,7 +64,7 @@ For an added layer of protection, you can store your files in *both* a local and
 
 You can install Git on your desktop computer, your Linode, or both. Getting started with Git is easy. All you have to do is install Git on your Linode, create a repository, and make an initial commit. Here's how:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 2.  Install Git on your Linode by entering the following commands, one by one:
 
         sudo apt-get update
@@ -101,7 +97,7 @@ Now it's time to use what you've learned about version control and server builds
 
 To get started, you'll need to decide which environments you want to create and then set them up. We recommend creating three different environments, which should be suitable for most individual developers and small organizations. Larger companies will likely want and need several other environments, depending on the established teams and processes. Ideally, the environments you create should correspond to your workflow. For example, if your organization has a dedicated quality control department, you'll probably want to create an additional environment specifically for that department.
 
-[![An illustration of a sample deployment configuration.](1206-image_workflow_1.jpg)](1206-image_workflow_1.jpg)
+![An illustration of a sample deployment configuration.](1206-image_workflow_1.jpg)
 
 We recommend creating the following environments:
 

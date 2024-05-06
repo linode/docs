@@ -1,27 +1,24 @@
 ---
 slug: twiki-on-centos-5
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Install and configure a structured wiki with TWiki.'
+title: TWiki on CentOS 5
+description: 'This guide will show you how to install and configure a structured wiki to share, store, and work with different types of information with TWiki on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/centos-5/','/websites/wikis/twiki-on-centos-5/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: TWiki on CentOS 5
-deprecated: true
 relations:
     platform:
         key: install-twiki
         keywords:
            - distribution: CentOS 5
+deprecated: true
 ---
 
-TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/websites/wikis/confluence-on-centos-5). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
+TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/guides/confluence-on-centos-5/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
 
 ## Prepare System and Install TWiki
 
@@ -138,7 +135,7 @@ Before you can proceed with the installation process, you will need to configure
 {{< /file >}}
 
 
-Add your local IP address to the `Allow from` directive in the `FilesMatch` block to allow access to the configuration scripts. For more information about access control with Apache, consider the [Rule Based Access Control](/docs/web-servers/apache/configuration/rule-based-access-control) document.
+Add your local IP address to the `Allow from` directive in the `FilesMatch` block to allow access to the configuration scripts. For more information about access control with Apache, consider the [Rule Based Access Control](/docs/guides/rulebased-access-control-for-apache/) document.
 
 When you've completed these modifications, issue the following commands to start the web server for the first time and ensure that the server starts following the next reboot cycle:
 

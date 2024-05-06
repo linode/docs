@@ -1,21 +1,14 @@
 ---
 slug: owncloud-external-storage
-author:
-  name: Jack Wallen
-  email: jlwallen@monkeypantz.net
-description: 'ownCloud integrates with external storage solutions, like Linode''s S3-compatible Object Storage. Using ownCloud''s external storage feature expands the amount of storage available to your ownCloud instance. This guide shows you how to enable s3-compatible external storage using ownCloud''s Marketplace and Linode Object Storage. '
-og_description: 'ownCloud integrates with external storage solutions, like Linode''s S3-compatible Object Storage. Using ownCloud''s external storage feature expands the amount of storage available to your ownCloud instance. This guide shows you how to enable s3-compatible external storage using ownCloud''s Marketplace and Linode Object Storage.'
+title: "Configure ownCloud to use External Storage"
+title_meta: "How to Configure ownCloud to use External Storage"
+description: "This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-06-15
 keywords: ['ownCloud external storage', 'ownCloud s3']
 tags: ['marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-15
-modified_by:
-  name: Linode
-title: "Configuring ownCloud to use External Storage"
-h1_title: "How to Configure ownCloud to use External Storage"
-enable_h1: true
-contributor:
-  name: Jack Wallen
 ---
 
 ownCloud is an open-source file hosting and sharing solution. With ownCloud, you can sync files to a Linode hosted-instance and then collaborate on them with anyone around the world. ownCloud helps you create your own personal cloud, and includes plenty of installable apps and features for security, communication, and ease of use.
@@ -24,18 +17,21 @@ One feature found in ownCloud is the ability to connect an instance to Linode Ob
 
 ## Before You Begin
 
-1. Ensure you have a [running instance of ownCloud](/docs/guides/how-to-install-owncloud-ubuntu-20-04/) deployed on your Linode.
+1. Ensure you have a [running instance of ownCloud](/docs/guides/install-and-configure-owncloud-on-ubuntu-20-04/) deployed on your Linode.
+
+    {{< note >}}
+    To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+    {{< /note >}}
 
 1. Purchase an [enterprise license for ownCloud](https://doc.owncloud.com/server/admin_manual/enterprise/installation/install.html) (to enable the necessary external storage app).
 
-1. Enable the [Object Storage service](/docs/guides/how-to-use-object-storage/#enable-object-storage) for your Linode account.
-1. Generate a pair of [Object Storage access keys](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair).
+1. Generate a pair of [Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
 
 {{< note >}}
 - ownCloud requires the installation of two external storage applications to connect to an Object Storage service.
 
 - Once the ownCloud Marketplace external storage app is installed, you can configure a connection to your Linode Object Storage bucket.
-{{</ note >}}
+{{< /note >}}
 
 ## Configuring ownCloud
 

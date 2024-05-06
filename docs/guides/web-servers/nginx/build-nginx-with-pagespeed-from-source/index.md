@@ -1,17 +1,14 @@
 ---
 slug: build-nginx-with-pagespeed-from-source
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Compile NGINX to use the PageSpeed module.'
+title: 'Build NGINX with PageSpeed From Source'
+description: 'This guide provides you with step-by-step instructions for compiling the Nginx web server from scratch so you can use Google''s PageSpeed moduleon your website.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-02-01
+modified: 2018-02-12
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/','/web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1804/','/web-servers/nginx/build-nginx-with-pagespeed-from-source/']
-published: 2019-02-01
-modified: 2018-02-12
-modified_by:
-  name: Linode
-title: 'Build NGINX with PageSpeed From Source'
 dedicated_cpu_link: true
 tags: ["web server","nginx"]
 ---
@@ -27,9 +24,9 @@ There are currently two ways to get PageSpeed and NGINX working together:
 -  Compile NGINX with support for PageSpeed, then compile PageSpeed.
 -  Compile PageSpeed as a [dynamic module](https://www.nginx.com/blog/compiling-dynamic-modules-nginx-plus/) to use with NGINX, whether NGINX was installed from source or a binary.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Installing NGINX from source requires several manual installation steps and will require manual maintenance when performing tasks like version upgrades. To install NGINX using a package manager see the [NGINX](/docs/web-servers/nginx/) section.
-    {{</ note >}}
+    {{< /note >}}
 
 This guide will show how to compile both NGINX and PageSpeed. If you would prefer to use PageSpeed as a module for NGINX, see [this NGINX blog post](https://www.nginx.com/blog/optimize-website-google-pagespeed-dynamic-module-nginx-plus/) for instructions.
 
@@ -40,7 +37,7 @@ This guide will show how to compile both NGINX and PageSpeed. If you would prefe
 
 -  You will need root access to the system, or a user account with `sudo` privileges.
 
--  Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+-  Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 -  Update your system's packages.
 
@@ -76,7 +73,7 @@ The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ng
 
 {{< note >}}
 The automated installation script will install several compilation tools needed to install PageSpeed. If you are using a production environment, ensure you uninstall any packages that are no longer needed after the installation has completed.
-{{</ note >}}
+{{< /note >}}
 
 1.  If you plan to serve your website using TLS, install the SSL libraries needed to compile the HTTPS module for NGINX:
 
@@ -220,7 +217,7 @@ You can use NGINX's binary to control the process directly without making a star
 
 2.  In NGINX terminology, a *Server Block* equates to a website (similar to the *Virtual Host* in Apache terminology). Each NGINX site's configuration should be in its own file with the name formatted as `example.com.conf`, located at `/etc/nginx/conf.d/`.
 
-    If you followed this guide or our [Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) series, then your site's configuration will be in a `server` block in a file stored in `/etc/nginx/conf.d/`. If you do not have this setup, then you likely have the `server` block directly in `/etc/nginx/nginx.conf`. See *[Server Block Examples](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/)* in the NGINX docs for more info.
+    If you followed this guide or our [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) series, then your site's configuration will be in a `server` block in a file stored in `/etc/nginx/conf.d/`. If you do not have this setup, then you likely have the `server` block directly in `/etc/nginx/nginx.conf`. See *[Server Block Examples](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/)* in the NGINX docs for more info.
 
     Create a configuration file for your site with a basic server block inside:
 
@@ -302,7 +299,7 @@ server {
     }
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `RewriteLevel OptimizeForBandwidth` is a [safer choice](https://www.modpagespeed.com/doc/optimize-for-bandwidth) than the default CoreFilters rewrite level.
 {{< /note >}}
 

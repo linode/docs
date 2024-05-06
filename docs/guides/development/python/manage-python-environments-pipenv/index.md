@@ -1,17 +1,15 @@
 ---
 slug: manage-python-environments-pipenv
-author:
-  name: Jared Kobos
-  email: docs@linode.com
-keywords: ["python", "virtual environment", "pip","virtualenv","pipenv"]
-description: 'Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages.'
-og_description: 'Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-27
-modified_by:
-  name: Linode
+title: "Using Pipenv to Manage Python Packages and Versions"
+title_meta: "How to Use Pipenv to Manage Python Packages and Versions"
+description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool. Here's how to use it."
+og_description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages."
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 published: 2018-05-01
-title: Manage Python Packages and Virtual Environments with Pipenv
+modified: 2018-03-27
+keywords: ["python", "virtual environment", "pip","virtualenv","pipenv"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 audiences: ["beginner"]
 languages: ["python"]
 tags: ["python"]

@@ -1,20 +1,16 @@
 ---
 slug: google-analytics-for-websites
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
+title: Google Analytics for Websites
 description: 'Get in-depth website visitor statistics with Google Analytics on your website.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-01-29
 keywords: ["analytics", "google analytics", "analytics", "tracking", "statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-01-29
-modified_by:
-  name: Elle Krout
-published: 2015-01-29
-title: Google Analytics for Websites
 external_resources:
  - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
- - '[Google Analytics for WordPress](/docs/uptime/analytics/google-analytics-on-wordpress)'
+ - '[Google Analytics for WordPress](/docs/guides/google-analytics-on-wordpress/)'
 tags: ["statistics","analytics"]
 aliases: ['/uptime/analytics/google-analytics-for-websites/']
 ---
@@ -24,7 +20,7 @@ Google Analytics offers detailed statistics related to visitor traffic and sales
 Although Google Analytics provides a way to add the tracking code to your webpages, if you are not using PHP includes, Server Side Includes, or another form of layout template, the process can be tedious and inefficient. This guide provides two alternatives to inserting the Google Analytics tracking code to your website, depending on your website's set-up.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 This guide also assumes you have configured your Apache server as described in our [LAMP](/docs/websites/lamp/) guides with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
 {{< /note >}}
@@ -73,7 +69,7 @@ If your website is coded using PHP (your files will end in `.php`), you can add 
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you copy the above code, replace `UA-00000000-0` with your **tracking ID**.
 
 At this time you may want to consider enabling the *[demographics](https://support.google.com/analytics/answer/2819948?hl=en)* feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing `ga('create', 'UA-00000000-0', 'auto');` and `ga('send', 'pageview');`:
@@ -99,7 +95,7 @@ Should you decide to disable the demographics feature at a later date, simply re
 
         sed -i 's/<body>/<body><?php include_once("googleanalytics.php") ?>/g' *.php
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the `<body>` tag of your website contains other variables, please adjust the two instances of `<body>` in the above code to match your current coding.
 {{< /note >}}
 
@@ -143,7 +139,7 @@ ga('send', 'pageview');
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 At this time you may want to consider enabling the *[demographics](https://support.google.com/analytics/answer/2819948?hl=en)* feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing `ga('create', 'UA-00000000-0', 'auto');` and `ga('send', 'pageview');`:
 
     ga('require', 'displayfeatures');
@@ -155,7 +151,7 @@ Should you decide to disable the demographics feature at a later date, simply re
 
         sed -i 's@<head>@<head><script type="text/javascript" src="javascript/ga.js"></script>@g' *.html
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Change the `.html` ending to match the ending of your website's files.
 {{< /note >}}
 

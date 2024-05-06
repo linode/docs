@@ -1,0 +1,15 @@
+[guides-count]
+one = "One Guide"
+other = "{{ .Count }} Guides"
+
+[guides-count-available]
+one = "One Guide Available"
+other = "{{ .Count }} Guides Available"
+
+[products-count]
+one = "One Product"
+other = "{{ .Count }} Products"
+
+[products-count-available]
+one = "One Product Available"
+other = "{{ .Count }} Products Available"

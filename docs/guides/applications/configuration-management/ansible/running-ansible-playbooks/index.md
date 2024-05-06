@@ -1,23 +1,18 @@
 ---
 slug: running-ansible-playbooks
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: Automate Server Configuration with Ansible Playbooks
 description: 'An introduction to configuration management with the Ansible IT automation platform including installation, configuration and playbook set up.'
-keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Joshua Lyman"]
+contributors: ["Joshua Lyman"]
 published: 2015-06-01
 modified: 2015-09-21
-modified_by:
-    name: Linode
-title: Automate Server Configuration with Ansible Playbooks
-contributor:
-    name: Joshua Lyman
-    link: https://twitter.com/jlyman
-aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/']
+keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/','/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/']
 tags: ["automation"]
 ---
-**Playbooks** define a set of tasks to be executed by Ansible on a group of managed nodes. While you can use Ansible to execute one-off tasks via the command line, Playbooks can be reused, shared across teams, version controlled, and support complex deployment and rollout requirements. You can use features such as, handlers, variables, templates, error handling, and control logic within your Playbooks to intelligently automate your IT processes across a fleet of hosts.
+
+**Playbooks** define a set of tasks to be executed by Ansible on a group of managed nodes. While you can use Ansible to execute one-off tasks via the command line, Playbooks can be reused, shared across teams, version controlled, and support complex deployment and rollout requirements. You can use features such as handlers, variables, templates, error handling, and control logic within your Playbooks to intelligently automate your IT processes across a fleet of hosts.
 
 ## Scope of this Guide
 
@@ -29,15 +24,15 @@ This guide provides an introduction to Ansible Playbook concepts, like tasks, pl
 
 ## Before You Begin
 
-* If you are not familiar with Ansible, review the [Ansible Definitions](/docs/applications/configuration-management/getting-started-with-ansible/#what-is-ansible) section of the [Getting Started With Ansible](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
+* If you are not familiar with Ansible, review the [Ansible Definitions](/docs/guides/getting-started-with-ansible/#what-is-ansible) section of the [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide.
 
-* Install Ansible on your computer or a Linode following the steps in the [Set up the Control Node](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) section of our [Getting Started With Ansible](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
+* Install Ansible on your computer or a Linode following the steps in the [Set up the Control Node](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) section of our [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide.
 
-* Deploy a Linode running Debian 9 to manage with Ansible. All Playbooks created throughout this guide will be executed on this Linode. Follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) to learn how to establish a connection between the Ansible control node and your Linode.
+* Deploy a Linode running Debian 9 to manage with Ansible. All Playbooks created throughout this guide will be executed on this Linode. Follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) to learn how to establish a connection between the Ansible control node and your Linode.
 
-    {{< note >}}
-When following the [Getting Started with Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) guide to deploy a Linode, it is not necessary to add your Ansible control node's SSH key-pair to your managed Linode. This step will be completed using a Playbook later on in this guide.
-    {{</ note >}}
+    {{< note respectIndent=false >}}
+When following the [Getting Started with Ansible](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) guide to deploy a Linode, it is not necessary to add your Ansible control node's SSH key-pair to your managed Linode. This step will be completed using a Playbook later on in this guide.
+    {{< /note >}}
 
 ## Playbook Basics
 
@@ -46,8 +41,7 @@ Ansible Playbooks are written using YAML syntax, a declarative language, to desc
 ### Anatomy of a Playbook
 The example below displays the skeleton of a Playbook. At its most basic, a Playbook will define a group of target hosts, variables to use within the Playbook, a remote user to execute the tasks as, and a set of named tasks to execute using various [Ansible modules](https://docs.ansible.com/ansible/latest/modules/modules_by_category.html). This grouping within a Playbook is referred to as a **play** and a single Playbook can contain several plays.
 
-{{< disclosure-note "Common Ansible Modules">}}
-
+{{< note type="secondary" title="Common Ansible Modules" isCollapsible=true >}}
 | **Module** | **Usage** |
 | ---------------- | ------------- |
 | [command](http://docs.ansible.com/ansible/command_module.html) | Executes a command on a remote node. |
@@ -57,9 +51,7 @@ The example below displays the skeleton of a Playbook. At its most basic, a Play
 | [apt](http://docs.ansible.com/ansible/apt_module.html) | Manages apt packages on Debian or Ubuntu systems. |
 | [git](http://docs.ansible.com/ansible/apt_module.html) | Deploy software or files from git checkouts. |
 | [service](http://docs.ansible.com/ansible/apt_module.html) | Manage services on your remote node's system. Supports BSD init, OpenRC, SysV, Solaris SMF, systemd, upstart init systems.  |
-
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 {{< file "Playbook Skeleton" yaml >}}
 ---
@@ -93,10 +85,9 @@ The second example Playbook targets all hosts in the `marketing_servers` group a
 ## Web Server Setup with Ansible Playbooks
 
 In this example, you will create three different Playbooks to configure your Linode as a web server running a LAMP stack. You will also configure the Linode to add a limited user account. The Playbooks will provide basic configurations that you can expand on, if needed.
-
-  {{< caution >}}
+{{< note type="alert" >}}
 The Playbooks created in this section are for learning purpose and will not result in a fully hardened or secure server. To further secure your Linode, you can use Ansible's [firewalld module](https://docs.ansible.com/ansible/latest/modules/firewalld_module.html).
-{{< /caution >}}
+{{< /note >}}
 
 ### Add a Limited User Account
 
@@ -107,8 +98,8 @@ In this section you will create a Playbook to add a limited user account to your
 When creating a limited user account you are required to create a host login password for the new user. Since you should never include plaintext passwords in your Playbooks, in this section you will use the Python passlib library to create a password hash that you can securely include in your Playbook.
 
 {{< note >}}
-[Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) can also be used to encrypt sensitive data. This guide will not make use of Ansible Vault, however, you can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
-{{</ note >}}
+[Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) can also be used to encrypt sensitive data. This guide will not make use of Ansible Vault, however, you can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
+{{< /note >}}
 
 1. On your Ansible control node, create a password hash on your control node for Ansible to use in a later step. An easy method is to use Python's PassLib library, which can be installed with the following commands:
 
@@ -122,7 +113,7 @@ When creating a limited user account you are required to create a host login pas
 
 1. Create a password hash using passlib. Replace `myPlainTextPassword` with the password you'd like to use to access your Linode.
 
-        sudo python -c "from passlib.hash import sha512_crypt; print (sha512_crypt.encrypt('myPlainTextPassword'))"
+        sudo python -c "from passlib.hash import sha512_crypt; print (sha512_crypt.hash('myPlainTextPassword'))"
 
     A similar output will appear displaying a hash of your password:
     {{< output >}}
@@ -236,9 +227,9 @@ This next Playbook will take care of some common server setup tasks, such as set
 
 1. Run the `common_server_setup.yml` Playbook. The `--ask-become-pass` tells Ansible to ask you for the limited user account's password in order to `become` the sudo user and execute the Playbook via the limited user account.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, Ansible will use your current local system's username to authenticate to your Linode. If your local username is not the same as your Linode's limited user account name, you will need to pass the `-u` option along with the limited user account name to appropriately authenticate. Ensure you replace `limitedUserAccountName` with the limited user account name you created in the [Create the Limited User Account Playbook](#create-the-limited-user-account-playbook) section of the guide.
-    {{</ note >}}
+    {{< /note >}}
 
         ansible-playbook common_server_setup.yml --ask-become-pass -u limitedUserAccountName
 
@@ -257,9 +248,9 @@ You are now ready to create the `setup_webserver.yml` Playbook that will get you
       * `yourusername` with the username you created in the [Create the Limited User Account Playbook](#create-the-limited-user-account-playbook) section of the guide
       * In the `Create a new user for connections` task, replace the value of `password` with your desired password.
 
-        {{< note >}}
-In order to avoid using plain text passwords in your Playbooks, you can use [Ansible-Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) and variables to encrypt sensitive data. You can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
-        {{</ note >}}
+        {{< note respectIndent=false >}}
+In order to avoid using plain text passwords in your Playbooks, you can use [Ansible-Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) and variables to encrypt sensitive data. You can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
+        {{< /note >}}
 
         {{< file "setup_webserver.yml" yaml >}}
 ---
@@ -327,7 +318,7 @@ Now that you are familiar with Playbooks, you can continue to learn more about A
 * [Ansible Documentation](http://docs.ansible.com/ansible/index.html)
 * Important Next Topics:
   * [Users, and Switching Users](http://docs.ansible.com/ansible/playbooks_intro.html#hosts-and-users) and [Privilege Escalation](http://docs.ansible.com/ansible/become.html)
-  * [Handlers: Running Operations On Change](http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change)
-  * [Roles](http://docs.ansible.com/ansible/playbooks_roles.html)
-  * [Variables](http://docs.ansible.com/ansible/playbooks_variables.html)
+  * [Handlers: Running Operations On Change](https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html)
+  * [Roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
+  * [Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html)
   * [Playbook Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)

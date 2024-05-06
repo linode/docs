@@ -1,19 +1,13 @@
 ---
 slug: monitor-filesystem-events-with-pyinotify
-author:
-  name: Md. Sabuj Sarker
-  email: md.sabuj.sarker@gmail.com
+title: 'Monitor Filesystem Events with Pyinotify'
 description: 'Pyinotify is a Python library for using inotify, a Linux kernel subsystem for monitoring file system changes.'
-keywords: ["inotify","pyinotify","monitoring","python","async"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Md. Sabuj Sarker"]
+contributors: ["Md. Sabuj Sarker"]
 published: 2017-12-07
 modified: 2018-09-20
-modified_by:
-  name: Md. Sabuj Sarker
-title: 'Monitor Filesystem Events with Pyinotify'
-contributor:
-  name: Md. Sabuj Sarker
-  link: http://sabuj.me
+keywords: ["inotify","pyinotify","monitoring","python","async"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Pyinotify on Github](https://github.com/seb-m/pyinotify)'
 - '[Pyinotify API documentation](http://seb-m.github.com/pyinotify)'
@@ -185,7 +179,7 @@ Run the completed script and trigger the notifications.
 
     This output shows that the `ls` command involves three filesystem events. The `notification_dir` was opened, accessed, and then closed in non-writable mode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Observe that not only files are opened but also directories are opened too.
 {{< /note >}}
 

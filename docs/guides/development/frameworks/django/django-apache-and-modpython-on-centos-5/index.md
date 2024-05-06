@@ -1,24 +1,21 @@
 ---
 slug: django-apache-and-modpython-on-centos-5
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Installing and configuring the Django web application development framework for Apache on Centos 5.'
+title: 'Django, Apache and mod_python on CentOS 5'
+description: 'This guide will show you how to configure the Django web application development framework for Apache on Centos 5 so you can run Django Applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-03
+modified: 2013-09-27
 keywords: ["django", "python", "apache", "mod\\_python", "centos"]
 tags: ["web applications","django","apache","python","centos","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django-apache-and-modpython-on-centos-5/','/websites/frameworks/django-apache-and-modpython-on-centos-5/','/development/frameworks/django/django-apache-and-modpython-on-centos-5/','/frameworks/django-apache-mod-python/centos-5/']
-modified: 2013-09-27
-modified_by:
-  name: Linode
-published: 2010-02-03
-title: 'Django, Apache and mod_python on CentOS 5'
-deprecated: true
 relations:
     platform:
         key: django-apache-modpython
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
@@ -29,11 +26,11 @@ The EPEL effort is similar to the "backporting" efforts that exist in other dist
 
 There are many different ways to deploy Django applications that all have distinct advantages and disadvantages depending on the nature of your deployment. Our setup is designed to be fully functional and simple to set up for people who are new to systems administration. Nevertheless, Django is very flexible with regards to how applications are deployed; you can feel totally free to alter your approach as your needs and abilities change and grow.
 
-As a prerequisite for this guide, we assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date CentOS 5 system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/apache-2-web-server-on-centos-5/) and a functional [MySQL database](/docs/databases/mysql/use-mysql-relational-databases-on-centos-5/). With these prerequisites out of the way, we can begin installing tools for running Django applications on our server.
+As a prerequisite for this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have a running and up to date CentOS 5 system. Furthermore, you will want to have a running [Apache web server](/docs/guides/apache-2-web-server-on-centos-5/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-centos-5/). With these prerequisites out of the way, we can begin installing tools for running Django applications on our server.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -48,7 +45,7 @@ Before we begin to install packages we need to first install the EPEL repositori
 
 When you install your first package from EPEL, `yum` will ask you to import the PGP key for the EPEL repository. You should accept this request.
 
-Now we can install Django using the `yum` [package management](/docs/tools-reference/linux-package-management/) interface. The following command will also install required dependencies on your system:
+Now we can install Django using the `yum` [package management](/docs/guides/yum-package-manager/) interface. The following command will also install required dependencies on your system:
 
     yum update
     yum install mod_python Django
@@ -84,7 +81,7 @@ You may choose to install additional Python-related tools for your specific appl
 
 ## Configuring Apache
 
-With all of the dependencies installed, we must configure Apache for virtual hosting. If you're new to administering and configuring Apache web servers, please consider our documentation on [configuring and using the Apache HTTP server](/docs/web-servers/apache/). If you did not previously have Apache installed, it would have been installed when you installed the `mod_python` package. In these cases, [configure Apache for virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-centos-5/#configure-apache) before configuring Apache for Django.
+With all of the dependencies installed, we must configure Apache for virtual hosting. If you're new to administering and configuring Apache web servers, please consider our documentation on [configuring and using the Apache HTTP server](/docs/web-servers/apache/). If you did not previously have Apache installed, it would have been installed when you installed the `mod_python` package. In these cases, [configure Apache for virtual hosting](/docs/guides/apache-2-web-server-on-centos-5/#configure-apache) before configuring Apache for Django.
 
 You will want to insert a `Location` block inside the virtual hosting block for the domain where you want the Django application to run. The location block looks like this:
 

@@ -1,21 +1,15 @@
 ---
 slug: how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide will use Stadia Maps free tier plan and hosted vector map tiles to create a GIS web app using Flask. Your Flask application will use a MongoDB database to store GeoJSON data to display as markers on your Stadia Map powered map.'
+title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
+title_meta: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
+description: "This guide will use the Stadia Maps free tier plan and hosted vector map tiles to create a GIS web app using Flask."
+authors: ["Leslie Salazar"]
+contributors: ["Leslie Salazar"]
+published: 2020-01-21
 keywords: ['maps','GIS','flask','mongodb', 'python']
 tags: ["web applications","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-21
-modified_by:
-  name: Linode
-image: HowtoCreateaGISApplicationusingFlaskStadiaMapsandMongoDB.png
-title: "How to Create a GIS Application using Flask, Stadia Maps, and MongoDB"
-h1_title: "Create a GIS Application using Flask, Stadia Maps, and MongoDB"
-contributor:
-  name: Leslie Salazar
-  link: https://twitter.com/leslitasalazar?s=03
+image: L_CreateGISapp.png
 aliases: ['/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/']
 ---
 Geographic Information system (GIS) based applications require a beautiful mapping experience for users. [Stadia Maps](https://stadiamaps.com/) provides digital mapping that you can easily and affordably integrate into your web or mobile applications. They offer hosted map tiles, offline map tiles, static maps, and a few other [core products](https://stadiamaps.com/products/). If you would like to test their services, you can use a local development environment along with their free tier plan. For more details on pricing and service limits, see their [pricing plans](https://stadiamaps.com/pricing/).
@@ -34,15 +28,14 @@ The sections in this guide will cover the following topics:
 - Starting a local MongoDB instance and importing a data set to your database
 - Creating a Flask app that uses Stadia Maps to display your GeoJSON data as markers on your map.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide assumes a basic familiarity with programming concepts, Python, HTML, CSS, and JavaScript.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Before you Begin
-
 {{< note >}}
 This guide was written using Python version 3.7.
-{{</ note >}}
+{{< /note >}}
 
 1. You can optionally [create an account with Stadia maps](https://client.stadiamaps.com/signup/). When developing locally, you are not required to create an account with Stadia Maps. Once you are ready to deploy your app, you will be required to sign up and select an appropriate service plan.
 
@@ -77,7 +70,7 @@ Before creating your Flask App, you will set up your MongoDB database to store t
 
 1. Run your local MongoDB instance. The instance will need to run so that your Flask app can connect to your project's database. Follow  the steps in [MongoDB's official documentation](https://docs.mongodb.com/guides/server/install/#run-mongodb). These steps vary depending on your computer's operating system.
 
-1. In your `stadia-maps` project directory, create a file named `linodeStreetTrees.geojson` to store your GeoJSON data. Using the text editor of your choice, copy and paste the data located in [this linked file](/docs/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/linodeStreetTrees.geojson). Your file's final locations should be `~/stadia-maps/linodeStreetTrees.geojson`. You will use the data stored in your local file in the next step.
+1. In your `stadia-maps` project directory, create a file named `linodeStreetTrees.geojson` to store your GeoJSON data. Using the text editor of your choice, copy and paste the data located in [this linked file](linodeStreetTrees.geojson). Your file's final locations should be `~/stadia-maps/linodeStreetTrees.geojson`. You will use the data stored in your local file in the next step.
 
 1. Open a new terminal window and use the `mongoimport` command line tool to import your GeoJSON data to your database. The import will create a database and collection named `linodeStreetTrees` and will use the data stored in the `linodeStreetTrees.geojson` file to create your collection's documents. In MongoDB, databases hold collections of documents. Collections are analogous to tables in relational databases. Documents store data records of field-value pairs in BSON format, a binary representation of JSON.
 
@@ -300,7 +293,7 @@ You are now ready to run your Flask app locally to view your rendered Stadia Map
 
 ## Next Steps
 
-- Consult the [Prepare Your Production Environment](https://www.linode.com/docs/development/python/flask-and-gunicorn-on-ubuntu/#prepare-your-production-environment) section of our [Deploy A Flask Application on Ubuntu](/docs/development/python/flask-and-gunicorn-on-ubuntu/) guide to familiarize yourself with some of the tools you can use to prepare a Flask application for production.
+- Consult the [Prepare Your Production Environment](/docs/guides/flask-and-gunicorn-on-ubuntu/#prepare-the-production-environment) section of our [Deploy A Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide to familiarize yourself with some of the tools you can use to prepare a Flask application for production.
 
 - Adopt the example app to use a different data set. Many cities provide open GIS data that you can easily consume and create your own GIS app. See [Philadelphia's Open Data site](https://www.opendataphilly.org/) for possible sources.
 

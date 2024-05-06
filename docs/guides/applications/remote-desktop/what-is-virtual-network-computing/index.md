@@ -1,20 +1,14 @@
 ---
 slug: what-is-virtual-network-computing
-author:
-  name: Tom Henderson
-description: 'Virtual Network Computing (VNC) connects GUI screens between two networked computers, where a client controls a GUI on another machine, called a VNC server. This guide discusses how a VNC system works to share screen graphics, and also covers VNC security concerns.'
-og_description: 'Virtual Network Computing (VNC) connects GUI screens between two networked computers, where a client controls a GUI on another machine, called a VNC server. This guide discusses how a VNC system works to share screen graphics, and also covers VNC security concerns.'
+title: "An Overview of VNC (Virtual Network Computing)"
+description: "This guide discusses how a VNC system works to share screen graphics, how they're configured, and how you can secure yours."
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2021-05-11
 keywords: ['vnc', 'virtual network computing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-11
-modified_by:
-  name: Linode
-title: "A Virtual Network Computing (VNC) Overview?"
-h1_title: "What Is Virtual Network Computing (VNC)?"
+image: VNC.jpg
 tags: ['linux']
-enable_h1: true
-contributor:
-  name: Tom Henderson
 ---
 
 ## Cross-Platform Remote Graphical Access: the VNC Viewer and VNC Server

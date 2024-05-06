@@ -1,19 +1,14 @@
 ---
 slug: install-odoo-9-erp-on-ubuntu-14-04
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Odoo is an open-source suite of over 4,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
+title: 'Install Odoo 9 ERP on Ubuntu 14.04'
+description: 'This guide shows you how to install Odoo, a free and open-source suite of over 4,500 business utilities which you can install, by using Git source on Ubuntu 14.04.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2015-11-03
+modified: 2016-07-21
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-11-03
-modified: 2016-07-21
-modified_by:
-  name: Linode
-title: 'Install Odoo 9 ERP on Ubuntu 14.04'
-contributor:
-  name: Damaso Sanoja
 aliases: ['/websites/erp/install-odoo-9-erp-on-ubuntu-14-04/','/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/']
 external_resources:
  - '[Odoo User Documentation](https://doc.odoo.com/book/)'
@@ -29,9 +24,9 @@ This guide covers how to install and configure Odoo in just 35 minutes using Git
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifically for an Odoo production server.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifically for an Odoo production server.
 
 3.  Log in to your Linode via SSH and check for updates using `apt-get` package manager.
 
@@ -60,7 +55,6 @@ Now we're going to install the PostgreSQL database and other necessary server li
 2.  Create the log directory:
 
         sudo mkdir /var/log/odoo
-
 {{< note >}}
 In the scenario of running multiple Odoo versions on the same Linode you may want to use different users and directories for each instance.
 {{< /note >}}
@@ -91,7 +85,7 @@ Using Git allows great flexibility because any time a new upgrade ,is available 
 
 3.  You'll be prompted for a password, **save it**, we'll need it shortly.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In the scenario of a testing or development environment you could create a user with no password using `createuser odoo -U postgres -dRS`.
 {{< /note >}}
 
@@ -330,8 +324,8 @@ exit 0
 
 2.  A screen similar to this will show:
 
-    [![Odoo Db creation](odoo_db_creation.png)](odoo_db_creation.png)
+    ![Odoo Db creation](odoo_db_creation.png)
 
 3.  Congratulations, now you can create your first database and start using Odoo!
 
-    [![Odoo applications](odoo_applications.png)](odoo_applications.png)
+    ![Odoo applications](odoo_applications.png)

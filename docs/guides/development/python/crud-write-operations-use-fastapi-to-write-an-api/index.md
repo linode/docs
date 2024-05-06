@@ -1,21 +1,14 @@
 ---
 slug: crud-write-operations-use-fastapi-to-write-an-api
-author:
-  name: Chelsea Troy
-  email: heychelseatroy@gmail.com
-description: 'If you are familiar with FastAPI, you can use this guide to add CRUD write operations to your API. Throughout this guide you learn how to add create, update, and delete endpoints to an existing API. You also learn about RESTful web API conventions, like idempotence.'
-og_description: 'If you are familiar with FastAPI, you can use this guide to add CRUD write operations to your API. Throughout this guide you learn how to add create, update, and delete endpoints to an existing API. You also learn about RESTful web API conventions, like idempotence.'
+title: "CRUD Write Operations: How to Use FastAPI to Write an API"
+title_meta: "CRUD Write Operations: Using FastAPI to Write an API"
+description: "If you are familiar with FastAPI, you can use this guide to add CRUD write operations to your API."
+authors: ["Chelsea Troy"]
+contributors: ["Chelsea Troy"]
+published: 2021-04-09
 keywords: ['CRUD operations in Python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-09
-modified_by:
-  name: Linode
-title: "CRUD Write Operations: Use FastAPI to Write an API"
-h1_title: "CRUD Write Operations: How to Use FastAPI to Write an API"
 tags: ["python", "django"]
-contributor:
-  name: Chelsea Troy
-  link: twitter.com/HeyChelseaTroy
 ---
 
 FastAPI is a high-performance Python *micro-framework* designed to help developers build APIs quickly. Out-of-the-box, it generates interactive API documentation powered by the [Swagger UI](https://github.com/swagger-api/swagger-ui). This Python framework is minimal by default, but can be configured, and extended to fit your API's use case.
@@ -35,11 +28,11 @@ This guide shows you how to create write operations for your RESTful API. Its ex
 FastAPI requires the following items to be installed on your system:
 
 - Python 3.6+  and [pip](https://pypi.org/project/pip/)
-- [Gunicorn](https://www.linode.com/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
+- [Gunicorn](/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
 
 {{< note >}}
 If you have not followed the steps in the [CRUD Read Operations: Use FastAPI to Write an API](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/) guide, ensure that you have created a `main.py` file with [the code](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/main.py) included in the previous guide's examples.
-{{</ note >}}
+{{< /note >}}
 
 ### Install FastAPI and Hypercorn
 
@@ -126,9 +119,9 @@ async def update_programming_language(programming_language_id: int, updated_prog
    return updated_programming_language
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The update endpoint replaces the *entire object*. When a client sends a request to this endpoint, it needs to send the *entire updated object*. Your code can also be written to accept partial updates; that is, to only update the resource at the given id with the fields sent in the request body. With a partial updates implementation, the associated endpoint accepts the `PATCH` HTTP verb instead of `PUT`.
-{{</ note >}}
+{{< /note >}}
 
 ### Write the Delete Programming Languages Endpoint
 

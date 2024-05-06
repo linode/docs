@@ -1,26 +1,18 @@
 ---
 slug: filter-data-using-awk-regex
-author:
-  name: Andy Lester
-  email: andy@petdance.com
-description: 'AWK is a powerful tool used for text processing, and data retrieval. It''s support of regular expressions gives you even more power to process your text and data. This guide gives you an introduction to AWK and regex and also, includes useful examples, like finding an IP address, phone number, and dates.'
-og_description: 'AWK is a powerful tool used for text processing, and data retrieval. It''s support of regular expressions gives you even more power to process your text and data. This guide gives you an introduction to AWK and regex and also, includes useful examples, like finding an IP address, phone number, and dates.'
-description: 'Regular expressions are powerful—and awk regex makes them even more so.'
+title: "Filter Data using AWK RegEx"
+title_meta: "How to Filter Data using AWK RegEx"
+description: "AWK is a powerful tool used for text processing, and data retrieval. It's support of regular expressions gives you even more power to process your text and data. This guide gives you an introduction to AWK and regex and also, includes useful examples, like finding an IP address, phone number, and dates."
+authors: ["Andy Lester"]
+contributors: ["Andy Lester"]
+published: 2021-03-05
 keywords: ['awk regex']
 tags: ['awk']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
-modified_by:
-  name: Linode
-title: "Filter Data using AWK RegEx"
-h1_title: "How To Filter Data using AWK RegEx"
-enable_h1: true
-contributor:
-  name: Andy Lester
-  link: https://twitter.com/petdance
+image: FilterData.jpg
 ---
 
-AWK, named after the developers Aho, Weinberger, and Kernighan, is ideal for finding data in text files. Among its other virtues, the [AWK Programming Language](https://www.linode.com/docs/guides/introduction-to-awk/) is optimized to make this task as easy as possible.
+AWK, named after the developers Aho, Weinberger, and Kernighan, is ideal for finding data in text files. Among its other virtues, the [AWK Programming Language](/docs/guides/introduction-to-awk/) is optimized to make this task as easy as possible.
 
 ## How To Filter Data Using AWK RegEx
 
@@ -106,7 +98,6 @@ Please correct your error.
 Dave was error-prone.
 function display_user_error_to_screen()
 {{< /output >}}
-
 {{< note >}}
 The pattern `/error/` does not match the string `Error` or `ERROR` because AWK's pattern matching is case-sensitive. You can override this by setting `IGNORECASE=1` at the beginning of your program.
 {{< /note >}}
@@ -350,7 +341,7 @@ echo -e "grade:F\ngrade:Awful" | awk '/\<grade:[A-DF]\>/'
 grade:F
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 AWK uses different word boundary sequences compared to Perl and Perl Compatible Regular Expressions (PCRE). Perl uses `\b` for both the beginning and end of word boundaries.
     {{< /note >}}
 

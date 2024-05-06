@@ -1,10 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: Hadoop
+authors: ["Linode"]
+contributors: ["Linode"]
 keywords: ["hadoop", "distributed computing", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: Hadoop
 show_in_lists: true
 aliases: ['/databases/hadoop/']
 ---
