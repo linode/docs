@@ -1,18 +1,15 @@
 ---
 slug: how-to-use-git
-author:
-  name: Angel Guarisma
-  email: aguarisma@linode.com
+title: How to Use Git the Version Control System
 description: 'This Quick Answer guide explains how to use Git to create a repository, stage a commit, and then push that commit.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-19
+modified: 2017-07-17
 aliases: ['/quick-answers/linux/how-to-use-git/','/quick-answers/how-to-use-git/']
 keywords: ["Linux", "how to use Git", "github", "create git repo"]
 tags: ["version control system","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-07-17
-modified_by:
-  name: Angel Guarisma
-published: 2017-06-19
-title: How to Use Git the Version Control System
 external_resources:
 - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
 - '[Pro Git Book](https://git-scm.com/book/en/v2)'
@@ -113,7 +110,6 @@ Now, commit the changes:
     create mode 100644 file2.txt
     create mode 100644 file3.txt
 {{< /output >}}
-
 {{< note >}}
 `git add -A`, `git add .`, and `git add -u` can all be used to stage files for a commit.
  `git add -A` stages `a`ll of the files in the directory. `git add .` stages only the new and modified files, omitting  any deleted files. `git add -u` stages only the modified and deleted files, omitting any new files.

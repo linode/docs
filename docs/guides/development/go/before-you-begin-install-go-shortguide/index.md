@@ -1,16 +1,12 @@
 ---
 slug: before-you-begin-install-go-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Before You Begin Instructions for Installing Go"
 description: 'Use this text in the Before You Begin section of a Go guide to direct readers to how to install the Go language.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-08
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-08
-modified: 2020-02-08
-modified_by:
-  name: Linode
-title: "Before You Begin Instructions for Installing Go"
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/go/before-you-begin-install-go-shortguide/']

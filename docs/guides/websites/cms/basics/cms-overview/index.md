@@ -1,17 +1,14 @@
 ---
 slug: cms-overview
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Content Management Systems: An Overview"
 description: "An overview of the three content management systems that Linode supports"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-10-17
+modified: 2017-02-15
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framwork"]
 tags: ["drupal","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-02-15
-modified_by:
-  name: Linode
-published: 2014-10-17
-title: "Content Management Systems: An Overview"
 aliases: ['/websites/cms/cms-overview/','/websites/cms/basics/cms-overview/']
 ---
 
@@ -23,9 +20,9 @@ Even experienced programmers often choose using a CMS over coding a website. Con
 
 ## Content Management Systems on a Linode
 
-Linode has installation guides for [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [WordPress](/docs/websites/cms/manage-web-content-with-wordpress), and [Joomla](/docs/websites/cms/manage-web-content-with-joomla). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. For security, work through the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. And, finally for server configuration, create a LAMP stack with the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
+Linode has installation guides for [Drupal](/docs/guides/managing-web-content-with-drupal-7/), [WordPress](/docs/guides/how-to-install-and-configure-wordpress/), and [Joomla](/docs/guides/manage-web-content-with-joomla/). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. For security, work through the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. And, finally for server configuration, create a LAMP stack with the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
 
- {{< note >}}
+{{< note >}}
 A LAMP stack is a System Admin term for a web server using Linux, Apache, MySQL, and PHP. Linux is an operating system, Apache is web-server software, MySQL is a database, and PHP is a programming language. This is a common stack combination and supports many CMS applications.
 {{< /note >}}
 

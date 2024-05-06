@@ -1,20 +1,14 @@
 ---
 slug: beginners-guide-to-kubernetes-part-1-introduction
-author:
-  name: Andy Stevens
-  email: docs@linode.com
-description: 'This is part one of a multi-part beginner''s guide to Kubernetes where you will be introduced to the Kubernetes technology, as well as it''s components.'
+title: "A Beginner's Guide to Kubernetes (Part 1): Introduction"
+title_meta: "Kubernetes Explained: A Beginners Guide"
+description: "This is part one of a multi-part beginner's guide to Kubernetes where you will be introduced to the Kubernetes technology, as well as it's components."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-29
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-29
-modified_by:
-  name: Linode
-title: "Kubernetes Explained: A Beginners Guide"
-h1_title: "A Beginner's Guide to Kubernetes (Part 1): Introduction"
-enable_h1: true
-contributor:
-  name: Linode
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
@@ -25,7 +19,7 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-par
 {{< youtube 87FJQPorviM >}}
 
 {{< note >}}
-This is the first guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+This is the first guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
 *Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the [Go](http://golang.org) language, Kubernetes is quickly becoming the standard way to architect horizontally-scalable applications.
@@ -58,7 +52,7 @@ For more information on the types of commands and resources you can use with kub
 
 ## Next Steps
 
-To continue in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series, visit part 2:
+To continue in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series, visit part 2:
 
  - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) (You Are Here)
 

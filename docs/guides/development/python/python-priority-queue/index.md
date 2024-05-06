@@ -1,18 +1,13 @@
 ---
 slug: python-priority-queue
-author:
-  name: Jeff Novotny
+title: "The Priority Queue in Python 3"
+title_meta: "What is the Python Priority Queue?"
 description: 'This guide discusses priority queues and the PriorityQueue class in Python 3. This data structure allows you to sort items in a queue and return them in a desired order.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-06-17
 keywords: ['python queue','python priority queue','queue in python','get size of priority queue python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-17
-modified_by:
-  name: Linode
-title: "What is the Python Priority Queue?"
-h1_title: "The Priority Queue in Python 3"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Wikipedia page on priority queues](https://en.wikipedia.org/wiki/Priority_queue)'
 - '[Big O notation explanation](https://en.wikipedia.org/wiki/Big_O_notation)'
@@ -108,7 +103,6 @@ The `PriorityQueue` class shares most of the same methods as the parent `Queue` 
 Developers can create a `PriorityQueue` object using the class constructor. At the same time, they can supply a parameter to set a maximum size for the queue. The following command creates a priority queue that can hold 100 objects.
 
     q = PriorityQueue(100)
-
 {{< note >}}
 The examples in this section assume the `PriorityQueue` class has already been imported using `from queue import PriorityQueue`.
 {{< /note >}}
@@ -185,7 +179,7 @@ False
 
 1.  To remove all remaining entries from the priority queue, use a `while` loop. At the loop entrance, confirm whether the loop is empty or not. If the `empty` method returns false, then there are still entries remaining. In this scenario, the `get` method extracts the highest priority item from the queue. Collins has a higher priority and is popped from the queue before Wilson is.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If `get` is used on an empty queue with default settings, it is blocked until an item is available. To avoid deadlocks, it is important to either set the `block` parameter to `False` or to first verify whether the queue still contains more items.
     {{< /note >}}
 
@@ -206,10 +200,9 @@ True
     {{< /output >}}
 
 These instructions can be combined together to form the program `pri_queue.py`.
-
-{{< caution >}}
+{{< note type="alert" >}}
 Do not name this program `queue.py`. This would conflict with the actual `queue` module and hide the actual interface. This bug generates the error `ImportError: cannot import name 'priorityQueue' from partially initialized module 'queue'` at runtime.
-{{< /caution >}}
+{{< /note >}}
 
 {{< file "pri_queue.py" python >}}
 from queue import PriorityQueue

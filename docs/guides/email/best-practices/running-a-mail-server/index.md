@@ -1,38 +1,25 @@
 ---
 slug: running-a-mail-server
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Running a Mail Server"
 description: "Take control of your email with your own mail server. Learn how to install and configure it on your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-06-05
+modified: 2022-12-23
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
-modified_by:
-  name: Linode
-published: 2013-06-05
-modified: 2022-08-25
-title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
 
+{{< content "email-warning-shortguide" >}}
+
 ## Should You Run a Mail Server?
 
 If you do, you'll have control over your domain's email, but you'll also have to deal with the hassles associated with setting up a complex environment of software. Using a third-party mail service is easier, but you'll sacrifice control and flexibility. In this section, we consider the benefits and drawbacks to running your own mail server, as well as how to choose an [external mail service](#external-mail-services), if you decide to go that route.
-
-### Sending Email on Linode
-
-In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019.
-
-If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/guides/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/guides/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
-
-Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
-
-{{< note >}}
-If using multiple domains to send mail from a single Linode, rDNS will only need to be configured for one of the domains actively sending mail.
-{{< /note >}}
 
 ### Benefits
 
@@ -67,9 +54,9 @@ There are several third-party mail services available:
 - [Postmark](https://postmarkapp.com/why?utm_source=linode&utm_medium=referral&utm_campaign=awareness)
 - [Fastmail](https://www.fastmail.com)
 - [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
-- [Office 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
+- [Microsoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/guides/dns-manager/) for your mail and use the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/products/networking/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -104,7 +91,7 @@ Here are the most popular MTA services available:
 
 - [Courier Mail Server](http://www.courier-mta.org) comes with Courier-IMAP, which is the popular part of the Courier mail server suite, but Courier-MTA also includes mail relaying features. It's a simpler MTA but somewhat limited.
 - [Exim](http://www.exim.org) is modern and oriented towards flexibility. It's secure, but not quite as security-oriented as Postfix. It's very customizable, but is one of the most complex MTAs to configure.
-- [Postfix](http://www.postfix.org) is part of Linode's [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql). It's modern, security-oriented, and very flexible. It is slightly simpler to set up than Exim.
+- [Postfix](http://www.postfix.org) is part of Linode's [recommended mail server build](/docs/guides/email-with-postfix-dovecot-and-mysql/). It's modern, security-oriented, and very flexible. It is slightly simpler to set up than Exim.
 - [Qmail](http://cr.yp.to/qmail.html) is a modern MTAs and supports [Maildir-style](https://en.wikipedia.org/wiki/Maildir) directories. Qmail has not received an update since 2007, but remains very popular.
 - [Sendmail](http://www.sendmail.com/sm/open_source/) is a legacy MTA that has a large following and good support.
 - [Zimbra](http://www.zimbra.com) is an all-in-one mail service. Zimbra offers a simple install, but few configurable options.
@@ -178,7 +165,7 @@ Each MX record has a:
 | ------------ |:--------:|:----:|:----:| ----- | ----- |
 | example.com  | 86400  | MX | 10 | mail.example.com |
 
-When using Linode's [DNS Manager](/docs/guides/dns-manager/), point your MX records to your Linode mail server's FQDN. Make sure that your Linode mail server's domain or subdomain has a corresponding *A record* that points to the correct IP address.
+When using Linode's [DNS Manager](/docs/products/networking/dns-manager/), point your MX records to your Linode mail server's FQDN. Make sure that your Linode mail server's domain or subdomain has a corresponding *A record* that points to the correct IP address.
 
 To configure an MX record for a subdomain email address, use the "Subdomain" field when setting the MX record for your domain. For example, the address `user@sub.example.com` requires an MX record with a "Subdomain" value of `sub` under the `example.com` domain.
 
@@ -200,11 +187,11 @@ Make sure your SPF records are not too strict. If you accidentally exclude a leg
 
 #### Reverse DNS
 
-[Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns) for your mail server's domain or subdomain.
+[Set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your mail server's domain or subdomain.
 
 The reverse DNS for your mail server must match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner."
 
-If you need to check or set the hostname, see our [Getting Started](/docs/getting-started#setting-the-hostname) article.
+If you need to check or set the hostname, see our [Getting Started](/docs/products/platform/get-started/#setting-the-hostname) article.
 
 ## Spam and Virus Protection, Mail Clients, and More
 
@@ -253,7 +240,7 @@ Here are some of the typical mail ports:
 * `587`: SMTP (The preferred non-encrypted port for outgoing connections from mail clients. Use STARTTLS for encryption.)
 * `465`: SMTP (should only be used for legacy support)
 
-If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) for more information.
+If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for more information.
 
 ### Webmail
 

@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Webuzo through the Linode Marketplace"
 description: "This guide shows you how to deploy Webuzo from Softaculous, a LAMP stack control panel that allows you to deploy a growing number of applications and scripts."
-keywords: ['webuzo','control panel','dashboard','marketplace']
-tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-02
 modified: 2022-08-08
-modified_by:
-  name: Linode
-title: "Deploying Webuzo through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['webuzo','control panel','dashboard','marketplace']
+tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[Webuzo Documentation](http://www.webuzo.com/docs)'
 - '[Softaculous Support](https://softaculous.deskuss.com)'
@@ -27,9 +19,9 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Webuzo should be fully installed within 15-20 minutes after the Compute Instance has finished provisioning. During this time, the instance is rebooted once. This time frame depends on a variety of factors, including which data center has been selected.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -40,19 +32,21 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 After the deployment process has finished and your Compute Instance has rebooted, log in to the Webuzo Admin panel and complete a few post-installation steps. This includes adding a user, setting the domain (or IP), and optionally including a license key.
 
-1.  Access the Webuzo Admin panel by opening a web browser and navigating to the following URL: `http://[ip-address]:2004`, replacing *[ip-address]* with the IPv4 address or rDNS domain assigned to your new Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+1.  Access the Webuzo Admin panel by opening a web browser and navigating to the following URL: `http://[ip-address]:2004`, replacing *[ip-address]* with the IPv4 address or rDNS domain assigned to your new Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
 1. In the login screen that appears, enter your root user credentials and click **Login**.
 
     ![Screenshot of the Webuzo Admin Login page](webuzo-admin-login.png)
 
     {{< note >}}
-If you do not see the login screen, the deployment process may not yet be complete.
-{{</ note >}}
+    If you do not see the login screen, the deployment process may not yet be complete.
+    {{< /note >}}
 
 1.  Once logged in, the Admin panel should appear.
 

@@ -1,4 +1,14 @@
-/* Background */
+/* This file is (mostly) auto generated:
+
+  1. hugo gen chromastyles --style=monokai > assets/css/components/chroma_dark.css
+  2. Format with prettier.
+  3. Replace .chroma with .dark .chroma
+  4. Remove the .bg class (not used)
+
+Preserve this header.
+*/
+
+/* PreWrapper */
 .dark .chroma {
   color: #f8f8f2;
   background-color: #272822;
@@ -10,6 +20,9 @@
 .dark .chroma .err {
   color: #960050;
   background-color: #1e0010;
+}
+/* CodeLine */
+.dark .chroma .cl {
 }
 /* LineTableTD */
 .dark .chroma .lntd {
@@ -24,27 +37,30 @@
   padding: 0;
   margin: 0;
   border: 0;
-  width: auto;
-  overflow: auto;
-  display: block;
 }
 /* LineHighlight */
 .dark .chroma .hl {
-  display: block;
-  width: 100%;
   background-color: #ffffcc;
 }
 /* LineNumbersTable */
 .dark .chroma .lnt {
+  white-space: pre;
+  user-select: none;
   margin-right: 0.4em;
   padding: 0 0.4em 0 0.4em;
   color: #7f7f7f;
 }
 /* LineNumbers */
 .dark .chroma .ln {
+  white-space: pre;
+  user-select: none;
   margin-right: 0.4em;
   padding: 0 0.4em 0 0.4em;
   color: #7f7f7f;
+}
+/* Line */
+.dark .chroma .line {
+  display: flex;
 }
 /* Keyword */
 .dark .chroma .k {

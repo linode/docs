@@ -1,21 +1,15 @@
 ---
 slug: install-ntopng-for-network-monitoring-on-debian8
-author:
-  name: Andrew Lescher
-  email: docs@linode.com
+title: 'Monitor Your Network with ntopng'
 description: 'This Linode tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows.'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2018-05-10
+modified: 2018-04-16
 keywords: ["ntopng", "network monitor", "diagnostics"]
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-05-10
 aliases: ['/networking/diagnostics/deploy-ntopng-on-debian-8/','/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/']
-modified: 2018-04-16
-modified_by:
-  name: Linode
-title: 'Monitor Your Network with ntopng'
-contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
 ---
 
 ![Monitor Your Network with ntopng](monitor-your-network-with-ntopng.jpg "Monitor Your Network with ntopng")
@@ -93,7 +87,6 @@ Create a configuration file for ntopng using the example below. Replace `192.0.2
 --disable-autologout # optional
 --disable-login=1 # optional
 {{< /file >}}
-
 {{< note >}}
 The option flags commented with `# optional` are not mandatory. All flags requiring input must be followed by an `=` and a value.
 {{< /note >}}
@@ -147,17 +140,16 @@ If you want to group devices over the same network or host a home media server, 
 
     ![Currently open connections](ntopng-currently-open-connections.png "Currently open connections")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want to see all host connections on a single page, set the number of rows to display per page next to the filtering options above the table.
 {{< /note >}}
 
 ## Enable Alerts and Domain Blocking
 
 Ntopng provides a simple and convenient method for monitoring threats.
-
-{{< caution >}}
+{{< note type="alert" >}}
 Ntopng does not replace core security features such as a properly configured firewall. It is meant to run in addition to an existing setup.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Near the top of the web interface, scroll over **Settings** and select **Preferences**. Click on **Alerts** in the menu to the left. Click on **Enable Alerts** and choose which alerts you’d like to enable.
 

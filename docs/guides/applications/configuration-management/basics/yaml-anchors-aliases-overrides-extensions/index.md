@@ -1,22 +1,15 @@
 ---
 slug: yaml-anchors-aliases-overrides-extensions
-author:
-  name: Cameron Laird
-  email: claird@phaseit.net
+title: "YAML Anchors, Aliases, and Overrides"
+title_meta: "YAML Examples for Anchors, Aliases, and Overrides"
 description: 'This guide gives you examples for using YAML anchors, aliases, and overrides, which are features of the YAML language that help keep your code DRY.'
-og_description: 'This guide gives you examples for using YAML anchors, aliases, and overrides, which are features of the YAML language that help keep your code DRY.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2021-07-02
 keywords: ['YAML anchors']
 tags: ['docker', 'kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-02
 image: YAML.jpg
-modified_by:
-  name: Linode
-title: "YAML Examples for Anchors, Aliases, and Overrides"
-h1_title: "YAML Anchors, Aliases, and Overrides"
-enable_h1: true
-contributor:
-  name: Cameron Laird
 external_resources:
 - '[Docker Compose](https://docs.docker.com/compose/)'
 - '[Quickstart-Compose and WordPress](https://docs.docker.com/compose/wordpress/)'

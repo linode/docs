@@ -4,8 +4,8 @@
   "paths": {
    "*": [
     "*",
-    "../_vendor/github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3/packages/*",
-    "../_vendor/github.com/hotwired/turbo/src/*"
+    "../_vendor/github.com/bep/turbo/v7/src/*",
+    "../_vendor/github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3/packages/*"
    ]
   }
  }

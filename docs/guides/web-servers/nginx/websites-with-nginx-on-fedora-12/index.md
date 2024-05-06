@@ -1,33 +1,28 @@
 ---
 slug: websites-with-nginx-on-fedora-12
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Websites with nginx on Fedora 12
 description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-24
+modified: 2011-04-29
 keywords: ["nginx fedora 12", "nginx fedora", "nginx", "http", "web servers", "fedora 12"]
 tags: ["web server","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/websites-with-nginx-on-fedora-12/','/web-servers/nginx/installation/fedora-12/','/websites/nginx/websites-with-nginx-on-fedora-12/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-02-24
-title: Websites with nginx on Fedora 12
 relations:
     platform:
         key: websites-with-nginx
         keywords:
             - distribution: Fedora 12
+deprecated: true
 ---
-
-
 
 Nginx is a lightweight and high performance HTTP web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
 Although nginx is a relatively new entrant in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic and profile websites have begun to use nginx for its efficiency. At the same time, administrators of smaller systems have found nginx ideal for their systems for its slim memory footprint.
 
-Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing nginx from EPEL Packages
 

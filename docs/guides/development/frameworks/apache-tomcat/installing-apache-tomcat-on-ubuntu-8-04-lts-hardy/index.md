@@ -1,31 +1,26 @@
 ---
 slug: installing-apache-tomcat-on-ubuntu-8-04-lts-hardy
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
 description: 'Instructions for installing the Apache Tomcat Java Servlet engine on Ubuntu 8.04 LTS (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-23
+modified: 2011-04-29
 keywords: ["java", "apache tomcat", "java ubuntu", "java hardy"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/apache-tomcat/ubuntu-8-04-hardy/','/websites/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/','/development/frameworks/apache-tomcat/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/','/development/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-09-23
-title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 Apache Tomcat is a free and open source software implementation for JavaServlets. It provides support for Java Server Pages (JSP), which power many popular web-based applications. You may choose to run Tomcat with either Sun's Java implementation or the OpenJDK implementation of Java, and this document provides instructions for using either option.
 
-This guide assumes that you have a working installation of Ubuntu 8.04 (Hardy), and have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to get your system working and up to date. We also assume that you have a functional SSH connection and root access to your server.
+This guide assumes that you have a working installation of Ubuntu 8.04 (Hardy), and have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to get your system working and up to date. We also assume that you have a functional SSH connection and root access to your server.
 
 Tomcat version 6 was not included as part of Ubuntu Hardy because of concerns that because of how packages work, packaging Tomcat would introduce a unique class of bugs into it. In any case, installing without apt just adds a few extra steps, and is easily accomplished.
 

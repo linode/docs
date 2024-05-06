@@ -1,20 +1,15 @@
 ---
 slug: how-to-use-date-in-javascript
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Using the Date Object in JavaScript"
+title_meta: "How to Use the Date Object in JavaScript"
 description: In this quick overview of JavaScript's Date object, learn how to get dates, set dates, and compare dates using a simple HTML file.
-og_description: In this quick overview of JavaScript's Date object, learn how to get dates, set dates, and compare dates using a simple HTML file.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-04-23
 keywords: ['javascript','js','date','get date in javascript','set date in javascript','compare date in javascript']
 tags: ["web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-23
 image: UsingDateinJavaScript.png
-modified_by:
-  name: Linode
-title: "How to Use the Date Object in JavaScript"
-h1_title: "Using the Date Object in JavaScript"
-enable_h1: true
 external_resources:
 - '[MDN Web Docs | JavaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)'
 - '[MDN Web Docs | About JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/About_JavaScript)'

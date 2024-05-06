@@ -1,17 +1,14 @@
 ---
 slug: backing-up-your-data
-author:
-  name: Linode
-  email: docs@linode.com
+title: Backing Up Your Data
 description: "This guide reviews different methods of backing up your Linode's data."
 og_description: "This guide reviews different methods of backing up your Linode's data. It also demonstrates making manual and automatic backups using rsync."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-04-04
+modified: 2017-12-27
 keywords: ["backup", "backups", "rsync", "cron", "getting started"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-27
-modified_by:
-  name: Linode
-published: 2013-04-04
-title: Backing Up Your Data
 external_resources:
  - '[rsync Man Page](http://linux.die.net/man/1/rsync)'
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
@@ -98,14 +95,14 @@ To configure Linode's Backup Service for your Linode, follow [these instructions
 
 ### Linode's Disks
 
-You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
+You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
 
 -   **What**: Full-server file system backup.
 -   **When**: Duplicate disks are created manually. You have to shut down your server to make a new disk.
 -   **Where**: The disk is stored on your Linode.
 -   **Rotation**: Manual. The number of backups you can store at once depends on how small you make the disks.
 
-See [Managing Disks and Storage on a Linode](/docs/guides/disks-and-storage/) to learn more about disks.
+See [Managing Disks and Storage on a Linode](/docs/products/compute/compute-instances/guides/disks-and-storage/) to learn more about disks.
 
 ### Rsync
 
@@ -198,7 +195,7 @@ Follow these steps to make a manual backup of your Linode:
 
         rsync -ahvz user@production_server:/path/to/source/content /path/to/local/backup/storage/
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For a deeper explanation of the rsync command's options and arguments, and to learn how to customize the command, please see the [Understanding the Rsync Command](#understanding-the-rsync-command) section of this guide.
 {{< /note >}}
 
@@ -256,7 +253,7 @@ Follow these steps to set up automatic backups of your Linode to a Linux server:
 
         rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date -I)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For an explanation of the rsync command's options and arguments, and to learn how to customize the command, please see the [Understanding the Rsync Command](#understanding-the-rsync-command) section of this guide.
 {{< /note >}}
 
@@ -266,7 +263,7 @@ For an explanation of the rsync command's options and arguments, and to learn ho
 
         crontab -e
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If this is your first time running the command, select your favorite text editor.
 {{< /note >}}
 
@@ -274,7 +271,7 @@ If this is your first time running the command, select your favorite text editor
 
         0   3   *   *   *   rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date -I)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information about cron, and to learn how to create a custom schedule for your rsync command, see [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 
@@ -304,7 +301,6 @@ OS X users can also follow the instructions presented in the previous [Set Up Au
 Your final crontab entry in Step 9 should look like this:
 
     0      3       *       *       *       rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date +\%Y-\%m-\%d)
-
 {{< note >}}
 If you run into a permissions error with cron but not when you run the command manually, you might have a password on your SSH key which doesn't normally pop up because you have it stored in the Mac OS X keychain. You might want to set up a new OS X user with a passwordless key for the purpose of this cron job.
 {{< /note >}}
@@ -383,7 +379,7 @@ total size is 20.73K  speedup is 7.26
 
             rsync -hrtvz --chmod u+rwx --delete --link-dest=/cygdrive/c/Users/user/backups/public_orig user@production_server:~/public /cygdrive/c/Users/user/backups/public_%DATE:~10,4%-%DATE:~4,2%-%DATE:~7,2%
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 For a deeper explanation of the rsync command's options and arguments and customizing the command, please see the [Understand the Rsync Command](#understand-the-rsync-command) section of this guide.
 {{< /note >}}
 
@@ -446,7 +442,6 @@ Rsync is a powerful tool, but the half-dozen options in the example commands use
     rsync -ahvz user@production_server:/path/to/source/content /path/to/local/backup/storage/
 
 ### rsync
-
 {{< note >}}
 For a basic overview of rsync, [check out the manual page](http://linux.die.net/man/1/rsync).
 {{< /note >}}

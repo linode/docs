@@ -1,12 +1,12 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "PostgreSQL Extensions"
+title_meta: "Using PostgreSQL Extensions with Managed Databases"
 description: "Learn which PostgreSQL extensions are supported by Linode's Managed Database service and how to install them."
 published: 2022-06-06
-modified: 2022-08-23
+modified: 2023-04-27
 ---
+
+{{< content "dbass-eos" >}}
 
 The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions.
 
@@ -18,27 +18,31 @@ Many extensions can be viewed, installed, and removed directly from the PostgreS
 
 To view the extensions that are currently installed on your PostgreSQL Managed Database, run the `\dx` command at the prompt. The output should be similar to the following, displaying each extension along with its version number, schema, and a short description.
 
-{{< output >}}
+```output
      Name      | Version |   Schema   |          Description
 ---------------+---------+------------+--------------------------------
  plpgsql       | 1.0     | pg_catalog | PL/pgSQL procedural language
-{{</ output >}}
+```
 
 ### View Available Extensions
 
 To see a full list of all the extensions available for your version of PostgreSQL, run the following query. You can also review the [List of Available Extensions](#list-of-available-extensions) below.
 
-    SELECT * FROM pg_available_extensions;
+```command
+SELECT * FROM pg_available_extensions;
+```
 
-{{< caution >}}
+{{< note type="alert" >}}
 Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues.
-{{</ caution >}}
+{{< /note >}}
 
 ### Install an Extension
 
 To install one of the available extensions on your database, use the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
 
-    CREATE EXTENSION IF NOT EXISTS [extension_name];
+```command
+CREATE EXTENSION IF NOT EXISTS [extension_name];
+```
 
 If this command does not work, the extension may either not be compatible or it may need to be manually enabled on your Managed Database by our team. Review the [extensions list](#list-of-available-extensions) below.
 
@@ -46,15 +50,17 @@ If this command does not work, the extension may either not be compatible or it 
 
 To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs/current/sql-dropextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
 
-    DROP EXTENSION [extension_name];
+```command
+DROP EXTENSION [extension_name];
+```
 
 ## List of Available Extensions
 
 The table below lists all of the PostgreSQL extensions that may be supported by our Managed Database service, along with the compatible PostgreSQL versions.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues. Extensions that are known not to work, such as `adminpack`, have been marked as incompatible in the list below. If you encounter an extension that isn't working as expected due to permissions issues, our team can review the extension. Reach out to [Support](https://www.linode.com/support/) with the extension name, the name of the database for which you wish to use the extension, and your use case.
-{{</ caution >}}
+{{< /note >}}
 
 | Extension | Compatible PostgreSQL Version(s) | Description |
 | -- | -- | -- |
@@ -101,7 +107,7 @@ Linode does not provide superuser access to PostgreSQL Managed Databases. As suc
 | `pg_stat_statements` | 10, 11, 12, 13 | Track execution statistics of all SQL statements executed |
 | `pg_trgm` | 10, 11, 12, 13 | Text similarity measurement and index searching based on trigrams |
 | `pg_visibility` | 10, 11, 12, 13 | Examine the visibility map (VM) and page-level visibility info |
-| `pgaudit` | 10, 11, 12, 13 | Provides auditing functionality |
+| `pgaudit` (**incompatible**) | 10, 11, 12, 13 | Provides auditing functionality |
 | `pgcrypto` | 10, 11, 12, 13 | Cryptographic functions |
 | `pglogical` | 10, 11, 12, 13 | PostgreSQL Logical Replication |
 | `pglogical_origin` | 10, 11, 12, 13 | Dummy extension for compatibility when upgrading from Postgres 9.4 |

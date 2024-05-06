@@ -1,11 +1,10 @@
 ---
 title: Guides
-description: "Find guides on Block Storage basics, Volume management, and other related Block Storage topics."
+title_meta: "Guides and Tutorials for Block Storage"
+description: "A collection of product documentation for Block Storage, including how to manage volumes, attach volumes to Compute Instances, and more."
 tab_group_main:
     weight: 30
 ---
-
-{{< content "nvme-block-storage-notice-shortguide" >}}
 
 ## Basics
 
@@ -27,7 +26,7 @@ tab_group_main:
 
 - [Boot a Linode from a Block Storage Volume](/docs/products/storage/block-storage/guides/boot-from-a-volume/)
 
-- [Manage Block Storage Volumes with the Linode API](/docs/guides/create-block-storage-volumes-with-the-linode-api/)
+- [Manage Block Storage Volumes with the Linode API](/docs/products/tools/api/guides/block-storage/)
 
 ### Kubernetes
 

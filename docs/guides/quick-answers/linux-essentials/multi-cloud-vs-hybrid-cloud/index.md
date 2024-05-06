@@ -1,18 +1,13 @@
 ---
 slug: multi-cloud-vs-hybrid-cloud
-author:
-  name: Jack Wallen
+title: "Multicloud vs. Hybrid Cloud: Differences Explained"
+title_meta: "What is the Difference Between Hybrid Cloud and Multicloud?"
 description: 'Comparing multicloud vs hybrid cloud? Discover their similarities, differences, and the pros and cons of each approach. Find the right one for you by reading this guide.'
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2022-01-28
 keywords: ['hybrid cloud vs multi cloud','hybrid vs multi cloud','multi-cloud vs hybrid cloud']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-28
-modified_by:
-  name: Linode
-title: "What is the Difference Between Hybrid Cloud and Multicloud?"
-h1_title: "Multicloud vs. Hybrid Cloud: Differences Explained"
-enable_h1: true
-contributor:
-  name: Jack Wallen
 ---
 
 In the last couple of years, *the cloud* has become a ubiquitous term and piece of technology. But depending on who you ask, what is meant by "the cloud" can vary dramatically. For some, the cloud is only a way to store files and photos on a third-party service. For others, the cloud is a means to sync data between phones and desktops. Others look at the cloud as a method of serving applications to consumers and customers. As you keep climbing up the IT ladder, the definition gets more granular and more complicated.
@@ -42,7 +37,7 @@ Hybrid cloud computing is more complicated than multicloud for two reasons:
 - You must include a private cloud option.
 - You must be able to seamlessly combine both private and public options.
 
-For example, you have a service that you run on-premise. It's a containerized application, run via a private cloud, and your container database is served up via your in-house datacenter. That application runs well during non-peak periods. But during peak demand, your private cloud isn't capable of scaling to meet the higher demand.
+For example, you have a service that you run on-premise. It's a containerized application, run via a private cloud, and your container database is served up via your in-house data center. That application runs well during non-peak periods. But during peak demand, your private cloud isn't capable of scaling to meet the higher demand.
 
 To make that work, you employ frameworks and services that automatically shift the load from your in-house private cloud to your public cloud to handle the added demand. Once peak times end, the load shifts back to your private cloud.
 

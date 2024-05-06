@@ -1,19 +1,13 @@
 ---
 slug: inspecting-network-information-with-netstat
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
+title: 'Inspecting Network Information with netstat'
 description: 'A practical introduction to the netstat utility on Linux, including examples of the different options available.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-09-02
 keywords: ["UNIX", "shell", "netstat", "TCP/IP", "UDP", "network", "sockets", "unix sockets", "network connections", "network statistics"]
 tags: ["monitoring","networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-09-02
-modified_by:
-  name: Linode
-title: 'Inspecting Network Information with netstat'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[netstat](http://netstat.net/)'
 aliases: ['/networking/diagnostics/inspecting-network-connections-with-netstat/','/networking/diagnostics/inspecting-network-information-with-netstat/']
@@ -23,9 +17,9 @@ The `netstat` command line utility shows information about the network status of
 
 `netstat` is an older utility, and some components of its functionality have been superseded by newer tools, like the [`ss` command](/docs/guides/ss/). A primary benefit of using `netstat` is that it is frequently pre-installed on Linux systems, while other tools might not be. As well, many (but not all) of the command line options for `netstat` can be run without root privileges, so it can still be useful on a system where you do not have root or `sudo` privileges.
 
-{{< disclosure-note "Assumptions" >}}
+{{< note >}}
 This guide assumes some basic knowledge of networking in Linux, including network interfaces, routing tables, and network connections and sockets.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ## In This Guide
 
@@ -196,7 +190,6 @@ tcp        1      0 li140-253.members.:smtp 193.32.160.136:37752    CLOSE_WAIT
 tcp        1      0 li140-253.members.:smtp 193.32.160.136:49900    CLOSE_WAIT
 tcp        1      0 li140-253.members.:smtp 193.32.160.136:49900    CLOSE_WAIT
 {{< /output >}}
-
 {{< note >}}
 If you want to display IPv4 connections that are in both listening and non-listening state, add the `-a` command line option:
 
@@ -219,9 +212,8 @@ udp6       0      0 2a01:7e00::f03c:91f:ntp [::]:*
 udp6       0      0 localhost:ntp           [::]:*
 udp6       0      0 [::]:ntp                [::]:*
 {{< /output >}}
-
 {{< note >}}
-If you want to display IPv4 connections that are in both listening and non-listening state, add the `-a` command line option:
+If you want to display IPv6 connections that are in both listening and non-listening state, add the `-a` command line option:
 
     netstat -6a
 {{< /note >}}
@@ -274,11 +266,9 @@ tcp6       0      0 109.74.193.253:80       104.18.40.175:4436      SYN_RECV
 tcp6       0      0 109.74.193.253:80       104.18.40.175:17099     SYN_RECV
 tcp6       0      0 109.74.193.253:80       104.18.41.175:12892     SYN_RECV
 {{< /output >}}
-
 {{< note >}}
 The `-n` option in the previous command tells `netstat` to not resolve IP addresses to hostnames.
 {{< /note >}}
-
 {{< note >}}
 If you want to display both listening and non-listening TCP connections, add the `-a` command line option:
 
@@ -299,7 +289,6 @@ tcp        0      0 109.74.193.253:22       79.131.135.223:64917    ESTABLISHED
 tcp        1      0 109.74.193.253:25       193.32.160.136:37752    CLOSE_WAIT
 tcp        1      0 109.74.193.253:25       193.32.160.136:49900    CLOSE_WAIT
 {{< /output >}}
-
 {{< note >}}
 If you want to display both listening and non-listening IPv4 TCP connections, add the `-a` command line option:
 
@@ -346,7 +335,6 @@ udp6       0      0 2a01:7e00::f03c:91f:ntp [::]:*
 udp6       0      0 localhost:ntp           [::]:*
 udp6       0      0 [::]:ntp                [::]:*
 {{< /output >}}
-
 {{< note >}}
 To show only IPv4 or IPv6 UDP connections, combine `-u` with `-4` or `-6`:
 
@@ -394,7 +382,6 @@ tcp6       0      0 [::]:http               [::]:*                  LISTEN      
 tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      1008/sshd
 tcp6       0      0 [::]:https              [::]:*                  LISTEN      1808/apache2
 {{< /output >}}
-
 {{< note >}}
 In particular, the previous example's command is a fast way to learn about which networked services are running on your system.
 {{< /note >}}
@@ -720,7 +707,6 @@ eth0            1      ff02::202
 eth0            1      ff02::fb
 ...
 {{< /output >}}
-
 {{< note >}}
 The default output of `netstat -g` displays both IPv4 and IPv6 data.
 {{< /note >}}

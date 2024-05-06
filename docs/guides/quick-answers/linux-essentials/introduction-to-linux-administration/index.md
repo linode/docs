@@ -1,21 +1,16 @@
 ---
 slug: introduction-to-linux-administration
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: Introduction to Linux Administration
 description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
-og_description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-05-31
 keywords: ["linux", "sysadmin", "administration"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-31
-modified_by:
-  name: Linode
-published: 2018-05-31
-title: Introduction to Linux Administration
 external_resources:
   - '[Linux System Administration Basics](/docs/guides/linux-system-administration-basics/)'
-  - '[Linode API Documentation](https://developers.linode.com/)'
+  - '[Linode API Documentation](/docs/api/)'
 aliases: ['/quick-answers/linux-essentials/introduction-to-linux-administration/']
 ---
 
@@ -37,7 +32,7 @@ Making sure that all important data is backed up is one of a system administrato
 
 ## Monitoring and Diagnostic Tools
 
-The dashboard in the Linode Manager provides basic information about your Linode's status, CPU and memory usage, and network traffic. Linode also offers the [Longview](/docs/guides/what-is-longview/) service, which provides much more detailed insight into your Linode. Sometimes, however, issues will occur on your system and you will have to investigate to determine their cause.
+The dashboard in the Linode Manager provides basic information about your Linode's status, CPU and memory usage, and network traffic. Linode also offers the [Longview](/docs/products/tools/longview/get-started/) service, which provides much more detailed insight into your Linode. Sometimes, however, issues will occur on your system and you will have to investigate to determine their cause.
 
 Simple tools like `ping` and [MTR](/docs/guides/diagnosing-network-issues-with-mtr/), which are available on most Linux distributions, are helpful in diagnosing network issues. There are also [shell commands](/docs/guides/linux-system-administration-basics/#system-diagnostics) used for checking memory usage, disk allocation, and running processes.
 
@@ -67,8 +62,8 @@ For larger-scale projects, orchestration tools can be very helpful. These tools 
 
 ### Load Balancing
 
-In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a *load balancer*, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](/docs/guides/getting-started-with-nodebalancers/) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/) guide.
+In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a *load balancer*, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](/docs/products/networking/nodebalancers/get-started/) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/) guide.
 
 ### Set Up an Email Server
 
-With a Linode and a fully-qualified domain name (FQDN), you can set up a private email server with @your-domain.com addresses. Email server configuration can be quite complex, but fortunately there are free third-party solutions that can simplify the process. Start with our [Running a Mail Server](/docs/guides/running-a-mail-server/) guide, or consider [Mail-in-a-Box](/docs/guides/how-to-create-an-email-server-with-mail-in-a-box/) for an all-in-one solution.
+With a Linode and a fully-qualified domain name (FQDN), you can set up a private email server with @your-domain.com addresses. Email server configuration can be quite complex, but fortunately there are free third-party solutions that can simplify the process. Start with our [Running a Mail Server](/docs/guides/running-a-mail-server/) guide, or consider [Mail-in-a-Box](/docs/guides/mail-in-a-box-email-server/) for an all-in-one solution.

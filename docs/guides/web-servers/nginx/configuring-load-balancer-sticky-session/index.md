@@ -1,22 +1,15 @@
 ---
 slug: configuring-load-balancer-sticky-session
-author:
-  name: Martin Heller
-  email: martin.heller@gmail.com
+title: "Pros and Cons of Configuring a Load Balancer for Sticky Sessions"
+title_meta: "Pros and Cons of Using Sticky Sessions on a Load Balancer"
 description: "A sticky session creates a session object and storing it on the client or server.  We'll explain how that works, and the pros and cons of this approach."
 og_description: "When a web application needs to maintain state from one request to another, you should consider configuring your load balancer to use sticky sessions. A sticky session enables your load balancer to persist data by creating a session object and storing it on the client or server. This overview provides a definition for sticky sessions along with the pros and cons of using this common load balancer configuration."
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2021-02-23
 keywords: [‘loadbalancer sticky session']
 tags: ['nginx','networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-23
-modified_by:
-  name: Linode
-title: "Pros and Cons of Using Sticky Sessions on a Load Balancer"
-h1_title: "Pros and Cons of Configuring a Load Balancer for Sticky Sessions"
-enable_h1: true
-contributor:
-  name: Martin Heller
-  link: http://www.twitter.com/meheller
 ---
 
 ## What is Load Balancing and Why is it Necessary?
@@ -60,4 +53,4 @@ The popular open-source web server, [*NGINX*](/docs/guides/web-servers/nginx/), 
 
 Linode offers a load balancing service called [*NodeBalancers*](/docs/products/networking/nodebalancers/). Using load balancers as a service (LBaaS) to route your server's web traffic reduces the amount of configuration you need to worry about. This allows you to focus on developing your application, and take advantage of built-in point-and-click functionality.
 
-If you are using [Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) to run your containerized applications, load balancers help you expose your cluster's resources to the public internet and route traffic to your cluster's nodes. If you are using Linode's managed Kubernetes service, [LKE](https://www.linode.com/products/kubernetes/), you can configure NodeBalancers using [annotations](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations). You can also use [NGINX to configure load balancing via ingress on Kubernetes](https://www.nginx.com/blog/nginx-plus-ingress-controller-kubernetes-load-balancing/).
+If you are using [Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) to run your containerized applications, load balancers help you expose your cluster's resources to the public internet and route traffic to your cluster's nodes. If you are using Linode's managed Kubernetes service, [LKE](https://www.linode.com/products/kubernetes/), you can configure NodeBalancers using [annotations](/docs/products/compute/kubernetes/guides/load-balancing/#configuring-your-linode-nodebalancers-with-annotations). You can also use [NGINX to configure load balancing via ingress on Kubernetes](https://www.nginx.com/blog/nginx-plus-ingress-controller-kubernetes-load-balancing/).

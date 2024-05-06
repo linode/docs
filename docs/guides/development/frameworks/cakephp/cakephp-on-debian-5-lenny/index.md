@@ -1,29 +1,26 @@
 ---
 slug: cakephp-on-debian-5-lenny
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: 'CakePHP on Debian 5 (Lenny)'
 description: 'Installing and configuring CakePHP for developing PHP applications on your Debian 5 (Lenny) Linode.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-05-26
+modified: 2014-02-10
 keywords: ["cakephp", "cakephp debian", "php framework", "debian", "develop php"]
 tags: ["web applications","lamp","php","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/cakephp/','/websites/frameworks/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp-on-debian-5-lenny/']
-modified: 2014-02-10
-modified_by:
-  name: Alex Fornuto
-published: 2010-05-26
-title: 'CakePHP on Debian 5 (Lenny)'
-deprecated: true
 relations:
     platform:
         key:  cake-php
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 CakePHP is a framework used to develop PHP applications quickly. Many people choose CakePHP because of the simple deployment process and extensive documentation available on the CakePHP website.
 
-Before installing CakePHP, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) as well as our [LAMP guide](/docs/guides/lamp-server-on-debian-5-lenny/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing CakePHP, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) as well as our [LAMP guide](/docs/guides/lamp-server-on-debian-5-lenny/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installation
 

@@ -1,31 +1,26 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
+title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 9.10 (Karmic)'
 description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on Ubuntu 9.10 (Karmic).'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-02-26
+modified: 2011-05-17
 keywords: ["postfix ubuntu 9.10", "postfix karmic", "postfix dovecot", "ubuntu mail server", "linux mail server"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic/','/email/postfix/dovecot-mysql-ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-02-26
-title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 The Postfix Mail Transfer Agent (MTA) is a high performance open source e-mail server system. This guide will help you get Postfix running on your Linode, using Dovecot for IMAP/POP3 service and MySQL to store information on virtual domains and users. This guide is largely based on Christoph Haas's great [ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny) and HowtoForge [Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny), with some packages omitted.
 
-It is assumed that you have followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
+It is assumed that you have followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
 
 **NOTE: Please read all of the information presented in this guide carefully.** There are many files and commands that will need to be edited as part of the setup process: please do not simply copy and paste the example blocks.
 

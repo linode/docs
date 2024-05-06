@@ -1,4 +1,4 @@
-{{ $isTest := or (not hugo.IsProduction) (site.Params.TestEnv ) }}
+{{ $isTest := or (not (not site.IsServer)) (site.Params.TestEnv ) }}
 {{ if $isTest }}
   {{/* Only include this when doing local development or when in a test environment (e.g. Netlify). */}}
   {{/* This allows us to force setting the cookie consent by adding the __forceconsent=true query attribute. */}}
@@ -13,7 +13,7 @@
 {{ $options := dict "inlineImports" true }}
 {{ $styles := resources.Get "css/styles.css" }}
 {{ $styles = $styles | resources.PostCSS $options }}
-{{ if  hugo.IsProduction }}
+{{ if  (ne hugo.Environment "development") }}
   {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
 {{ end }}
 <link
@@ -34,7 +34,18 @@
   src="https://cdn.weglot.com/weglot.min.js"
   data-cfasync="false"
   defer></script>
-{{ $params := (dict "search_config" site.Params.search_config2 "weglot_api_key" site.Params.weglot_api_key "is_production" hugo.IsProduction "is_test" $isTest ) }}
-{{ partialCached "jslibs/turbo/script-src.html" "-" }}
+
+{{ $cacheWarmerUrls := (partialCached "sections/search/create-cachewarmers-urls.html" . ) }}
+{{ $params := (dict
+  "search_config" site.Params.search_config2
+  "weglot_api_key" site.Params.weglot_api_key
+  "trustarc_domain" site.Params.trustarc_domain
+  "page_title_suffix" site.Params.page_title_suffix
+  "search_cachewarmer_urls" $cacheWarmerUrls
+  "is_production" (ne hugo.Environment "development")
+  "is_test" $isTest )
+}}
+
+{{ partial "helpers/script-src.html" (dict "js" (resources.Get "jslibs/turbo/v7/index.ts") ) }}
 {{- $js := resources.Get "js/main/index.js" -}}
 {{ partial "helpers/script-src.html" (dict "js" $js "params" $params ) }}

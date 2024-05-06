@@ -1,17 +1,12 @@
 ---
 slug: string-manipulation-python-3
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: 'String Manipulation in Python 3'
 description: 'Strings are one of the most commonly used data types in Python. This guide will show how to create, manipulate, and format strings using Python 3.'
-og_description: 'Strings are one of the most commonly used data types in Python. This guide will show how to create, manipulate, and format strings using Python 3.'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-04-13
 keywords: ["python", "string", "f string", "format string", "python 3"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-04-13
-modified: 2018-04-13
-modified_by:
-  name: Linode
-title: 'String Manipulation in Python 3'
 external_resources:
 - '[Official f-strings Documentation](https://docs.python.org/3.6/reference/lexical_analysis.html#f-strings)'
 audiences: ["beginner"]

@@ -1,15 +1,11 @@
 ---
 slug: accounts-reset-root-password-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to reset the root password on a Linode.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
 title: Reset the Root Password on a Linode
+description: 'Shortguide that shows you how to reset the root password on a Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-21
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
@@ -28,4 +24,4 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 1.  Click **Save**. The Linode's dashboard appears.
 1.  Click **Power On** to turn on your Linode.
 
-Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/guides/using-the-lish-console/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.
+Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/products/compute/compute-instances/guides/lish/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.

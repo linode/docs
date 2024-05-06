@@ -1,19 +1,15 @@
 ---
 slug: lamp-server-on-ubuntu-8-04-lts-hardy
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LAMP Server on Ubuntu 8.04 LTS (Hardy)'
 description: 'How to install and configure configuring a LAMP stack with the Hardy Heron (8.04 LTS) release of Ubuntu Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-16
+modified: 2011-05-02
 keywords: ["ubuntu 8.04 lamp", "lamp guide", "ubuntu lamp"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/','/lamp-guides/ubuntu-8-04-hardy/','/web-servers/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/']
-modified: 2011-05-02
-modified_by:
-  name: Linode
-published: 2009-07-16
-title: 'LAMP Server on Ubuntu 8.04 LTS (Hardy)'
 external_resources:
 - '[Ubuntu Linux Home Page](http://www.ubuntu.com/)'
 - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'
@@ -24,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 8.04 (e.g. Hardy) system. The 8.04 release is considered a long term support release and the server edition will be supported until April of 2013.
 
@@ -34,7 +29,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). This guide assumes that you are logged in as the root superuser on your Linode.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). This guide assumes that you are logged in as the root superuser on your Linode.
 
 ## Install and Configure the Apache Web Server
 

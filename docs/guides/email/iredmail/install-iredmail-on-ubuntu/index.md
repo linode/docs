@@ -1,23 +1,16 @@
 ---
 slug: install-iredmail-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 description: 'This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.'
+authors: ["Nick Reichley"]
+contributors: ["Nick Reichley"]
+published: 2014-10-06
+modified: 2020-12-04
 keywords: ["email", "mail", "iredmail"]
 tags: ["mysql","email","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/installing-iredmail/','/email/iredmail/install-iredmail-on-ubuntu/','/email/iredmail/installing-iredmail/']
-contributor:
-    name: Nick Reichley
-    link: https://github.com/reichley
-modified: 2020-12-04
-modified_by:
-  name: James Stewart
-published: 2014-10-06
-title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 ---
-
 
 ## Why Run a Mail Server?
 
@@ -35,13 +28,13 @@ Before beginning this guide you should have:
 - An understanding of the [Linux command line](/docs/guides/using-the-terminal).
 - A Linode running Ubuntu 14.04.
 
-This guide assumes you've followed the Linode [Getting Started](/docs/guides/getting-started) documentation. If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
+This guide assumes you've followed the Linode [Getting Started](/docs/products/platform/get-started/) documentation. If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
 
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
 
 ### MX Record
 
-A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/docs/guides/dns-records-an-introduction/) page.
+A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/docs/guides/dns-overview/) page.
 
 ## Install iRedMail
 
@@ -78,7 +71,7 @@ A DNS MX record tells the internet where to send email directed at you domain. B
 
     The remainder of the installation refers to on-screen confirmation of default options and selections. With the exception of the backend and hostname selections, most users confirm the default options and continue the installation.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The next few steps were taken directly from the iRedMail [Ubuntu installation steps](https://docs.iredmail.org/install.iredmail.on.debian.ubuntu.html).
 {{< /note >}}
 
@@ -244,7 +237,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 #### rDNS
 
-To set your rDNS, check out the [Setting Reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
+To set your rDNS, check out the [Setting Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
 ### Apache Authentication Fix for Cluebringer and AWStats Login
 

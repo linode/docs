@@ -1,19 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Shadowsocks through the Linode Marketplace"
 description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the One-Click Marketplace App."
-keywords: ['shadowsocks','marketplace', 'server']
-tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
 modified: 2022-03-08
+keywords: ['shadowsocks','marketplace', 'server']
+tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 image: DeployShadowsocksServer_oneclickapps.png
-modified_by:
-  name: Linode
-title: "Deploying Shadowsocks through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'
 - '[Shadowsocks-libev Github](https://github.com/shadowsocks/shadowsocks-libev)'
@@ -29,9 +21,9 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Shadowsocks should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -41,6 +33,8 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 ### Shadowsocks Options
 
 - **Shadowsock Password** *(required)*: Enter a *strong* password for your Shadowsocks user.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

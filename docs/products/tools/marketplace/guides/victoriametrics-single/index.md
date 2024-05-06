@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy VictoriaMetrics Single through the Linode Marketplace"
 description: "Deploy VictoriaMetrics Single on a Linode Compute Instance. This provides you with an open source time series database and monitoring solution, designed to collect, store and process real-time metrics."
-keywords: ['victoriametrics','monitoring','metrics','data']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-25
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying VictoriaMetrics Single through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['victoriametrics','monitoring','metrics','data']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Victoriametrics](https://victoriametrics.com/)'
 - '[VictoriaMetrics documentation](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html)'
@@ -32,9 +24,9 @@ This Marketplace App deploys [VictoriaMetrics Single](https://docs.victoriametri
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** VictoriaMetrics should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,7 +35,7 @@ This Marketplace App deploys [VictoriaMetrics Single](https://docs.victoriametri
 
 ### VictoriaMetrics Options
 
-- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
+- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
 
 ## Getting Started after Deployment
 

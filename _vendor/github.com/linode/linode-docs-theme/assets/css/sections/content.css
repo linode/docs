@@ -29,7 +29,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   margin-bottom: 0;
 }
 
-.content a {
+.content a:not(.a--block) {
   @apply text-brand hover:text-green-400;
 }
 
@@ -91,6 +91,27 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   overflow: inherit;
 }
 
+.max-w-content {
+  @apply max-w-4xl;
+}
+
+/*  Chroma overrides. Keep them here as chroma.css is auto generated.  */
+.chroma .lntd:first-of-type {
+  border-right: 1px #dedee3 solid;
+  text-align: center;
+  margin: 0;
+}
+
+.chroma .lnt {
+  height: 100%;
+  display: block;
+}
+
+.chroma .hl {
+  display: block;
+  width: 100%;
+}
+
 .content .file tbody tr:first-child {
   border: none;
 }
@@ -116,14 +137,47 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   background-color: transparent;
 }
 
+.content div.overflow-table {
+  position: relative;
+  display: block;
+  overflow-x: auto;
+}
+
+.content div.overflow-table.first-sticky {
+}
+
+.content div.overflow-table.first-sticky table th:first-child,
+.content div.overflow-table.first-sticky table td:first-child {
+  @apply sticky left-0 z-auto bg-white;
+}
+
+.content div.overflow-table tbody tr {
+  @apply even:bg-opacity-50;
+}
+
+.content table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+}
+
 .content table {
   @apply border-collapse mobile:-mx-4;
+  border-style: hidden;
+}
+
+.content div.overflow-table > table {
+  @apply border-collapse mobile:mx-0;
   border-style: hidden;
 }
 
 @screen mobile {
   .content table {
     width: calc(100% + 2rem);
+  }
+
+  .content div.overflow-table table {
+    width: 100%;
   }
 }
 
@@ -147,16 +201,29 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   border-bottom-right-radius: 10px;
 }
 
+.content tbody tr {
+  @apply bg-selected;
+}
+
 .content tbody tr td {
-  @apply bg-selected border-b;
+  @apply border-b border-selected;
 }
 
 .content tbody td code {
   @apply bg-gray-300;
 }
 
-.chroma .lntable tbody td:first-child {
-  padding-left: 0;
+.content .chroma .lntable {
+  @apply w-full;
+}
+
+.chroma .lntd pre {
+  @apply px-0;
+}
+
+.chroma .line,
+.chroma .lnt {
+  @apply px-5;
 }
 
 .content img.marquee-img {
@@ -197,17 +264,36 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   }
 }
 
-/* Adjust anchor links vs fixed header height. */
-.content :target::before {
-  content: "";
-  display: block;
-  height: 80px;
-  margin: -80px 0 0;
-}
-
 /*
 Styles for use with API documentation
 */
 .api-documentation table {
   width: 100%;
+}
+
+.content .large-diagram {
+  counter-reset: l1;
+  counter-reset: l2;
+}
+
+.content .large-diagram ol {
+  list-style: none;
+}
+
+.content .large-diagram > li {
+  counter-increment: l1;
+}
+
+.content .large-diagram ol li > p::before {
+  counter-increment: l2;
+  content: counter(l1) counter(l2, lower-alpha) ". ";
+}
+
+.placeholder-shortcode {
+  @apply font-mono italic text-pink-500;
+  font-size: 0.8888em;
+}
+
+code .placeholder-shortcode {
+  font-size: 1em;
 }

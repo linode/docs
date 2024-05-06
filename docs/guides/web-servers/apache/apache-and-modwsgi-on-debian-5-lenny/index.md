@@ -1,27 +1,22 @@
 ---
 slug: apache-and-modwsgi-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache and mod_wsgi on Debian 5 (Lenny)'
 description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Debian 5 "Lenny"."'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2012-10-08
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","debian","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-and-modwsgi-on-debian-5-lenny/','/web-servers/apache/mod-wsgi/debian-5-lenny/','/web-servers/apache/apache-and-modwsgi-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-02-17
-title: 'Apache and mod_wsgi on Debian 5 (Lenny)'
 relations:
     platform:
         key: apache-mod-wsgi
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.
 

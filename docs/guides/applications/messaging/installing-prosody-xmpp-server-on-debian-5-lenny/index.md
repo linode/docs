@@ -1,29 +1,26 @@
 ---
 slug: installing-prosody-xmpp-server-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Prosody XMPP Server on Debian 5 (Lenny)'
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-13
+modified: 2011-08-22
 keywords: ["prosody", "prosody debian lenny", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/installing-prosody-xmpp-server-on-debian-5-lenny/','/communications/xmpp/prosody/debian-5-lenny/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2009-10-13
-title: 'Installing Prosody XMPP Server on Debian 5 (Lenny)'
 relations:
     platform:
         key: how-to-install-prosody
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Prosody is a lightweight and simple XMPP/Jabber server that aims to be easy to use. Written in the Lua programming language, it has minimal resource requirements and aims to be easy to configure and run. While Prosody may not be able to scale to the same extent as [ejabberd](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/guides/instant-messaging-services-with-openfire-on-debian-6-squeeze/), for many independent and small scale uses, Prosody may perform as well as "larger" servers while being more efficient with resources. If you're considering doing XMPP development, or running an XMPP server for a very small base of users, we recommend that you consider Prosody as a possible provider for this service.
 
-Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Debian Lenny, have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), and have logged in via SSH as root.
+Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Debian Lenny, have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and have logged in via SSH as root.
 
 ## Adding Software Repositories
 
@@ -137,7 +134,7 @@ Component "conference.example.com" "muc"
 {{< /file >}}
 
 
-In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/guides/dns-records-an-introduction/)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
+In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/guides/dns-overview/)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
 
 MUC, in contrast to many other common components in the XMPP world, is provided internally by Prosody. Other components, like transports to other services, run on an external interface. Each external component has its own host name, and provides a secret key which allows the central server to authenticate to it. See the following "aim.example.com" component as an example.
 

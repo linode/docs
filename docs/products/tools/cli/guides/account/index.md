@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Linode CLI Commands for Account Management"
 description: "How to use the Linode CLI for Account management tasks."
 published: 2020-07-22

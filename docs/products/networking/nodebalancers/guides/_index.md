@@ -1,34 +1,44 @@
 ---
 title: Guides
-description: "Learn the basics of Linode NodeBalancers. You can also find guides on using Developer Tools to create and manage Linode NodeBalancers."
+title_meta: "Guides and Tutorials for NodeBalancers"
+description: "A collection of guides on using NodeBalancers to load balance applications hosted on the Linode platform."
+modified: 2022-10-07
 tab_group_main:
     weight: 30
 ---
 
-## Building Blocks
+## Basics
 
-- [Configure a NodeBalancer](/docs/products/networking/nodebalancers/guides/configure/): Create a new NodeBalancer and configure it with a backend Linode.
+- [Introduction to Load Balancing](/docs/products/networking/nodebalancers/guides/load-balancing/): Learn the basics of load balancing and how NodeBalancers work.
 
-## Themes
+- [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/): Instructions for creating a new NodeBalancer.
 
-These additional guides explore targeted topics like creating a Linode NodeBalancer using a variety of tools and SSL Configuration.
+- [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/): View, edit, and manage NodeBalancers on your account.
 
-### NodeBalancer Basics
+## Configuration
 
-- [Understanding NodeBalancers](/docs/platform/nodebalancer/what-are-nodebalancers): Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.
+- [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/): Edit the port configurations on a NodeBalancer.
 
-- [Get Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/): Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.
+- [Backend Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/): Manage the settings for backend nodes.
 
-- [NodeBalancer Reference](/docs/guides/nodebalancer-reference-guide/): A NodeBalancer reference guide with helpful terms and settings.
+- [Available Protocols](/docs/products/networking/nodebalancers/guides/protocols/): A list of protocols supported by NodeBalancers
 
-### Developer Tools
+- [TLS/SSL Termination](/docs/products/networking/nodebalancers/guides/ssl-termination/): Instructions on configuring TLS/SSL certificates on a NodeBalancer.
 
-Use these tools to create a Linode NodeBalancer with tools outside of the Cloud Manager.
+- [Client IP Address Pass-through](/docs/products/networking/nodebalancers/guides/client-ip/): Learn the methods of retaining client connection details and passing them to backend nodes on a NodeBalancer.
 
-- [Configure NodeBalancers with the Linode API](/docs/guides/nodebalancers/)
+- [Proxy Protocol](/docs/products/networking/nodebalancers/guides/proxy-protocol/): Obtain information about a client when using the TCP protocol.
 
-- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/)
+## High Availability Concepts and Tutorials
+
+- [Introduction to High Availability](/docs/guides/introduction-to-high-availability/): Basic overview of high availability, covering redundancy, monitoring, and failover.
+
+- [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/): A walk-through on deploying a high availability web application using Gluster (file replication), Galera (MySQL database replication), and a NodeBalancer.
+
+## Automated Deployment Tutorials
+
+- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/products/compute/kubernetes/guides/load-balancing/)
 
 - [Create a NodeBalancer with Terraform](/docs/guides/create-a-nodebalancer-with-terraform/)
 
-- [Create and Configure a NodeBalancer with Pulumi](/docs/applications/configuration-management/deploy-in-code-with-pulumi/#create-and-configure-a-nodebalancer)
+- [Create and Configure a NodeBalancer with Pulumi](/docs/guides/deploy-in-code-with-pulumi/#create-and-configure-a-nodebalancer)

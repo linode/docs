@@ -1,19 +1,13 @@
 ---
 slug: install-gitlab-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title:  'Install GitLab on Ubuntu 18.04'
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 18.04, along with SSL.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-01-04
 keywords: ['git', 'gitlab', 'version control', 'ubuntu']
 tags: ["ssl","version control system","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-01-04
-modified: 2019-01-04
-modified_by:
-  name: Linode
-title:  'Install GitLab on Ubuntu 18.04'
-contributor:
-  name: Linode
 external_resources:
 - '[GitLab''s Official Documentation](https://docs.gitlab.com/ee/README.html)'
 - '[GitLab''s NGINX Configurations](https://docs.gitlab.com/omnibus/settings/nginx.html)'
@@ -40,11 +34,11 @@ Before installing GitLab you should consider how many users will collaborate on 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Add a domain zone, NS record, and A/AAA record for the domain you will use to access your GitLab installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your GitLab instance via your Linode’s IP address, you can skip this step.
+1.  Add a domain zone, NS record, and A/AAA record for the domain you will use to access your GitLab installation. See the [DNS Manager > Get Started](/docs/products/networking/dns-manager/get-started/) guide for details. If you will access your GitLab instance via your Linode’s IP address, you can skip this step.
 
 1.  [Create an SSL Certificate](/docs/guides/secure-http-traffic-certbot/), if you will be using SSL encryption for your domain (this is recommended). Be sure to note the location that Certbot uses to store all generated keys and issued certificates.
 
@@ -79,7 +73,6 @@ Before installing GitLab you should consider how many users will collaborate on 
       ![GitLab welcome screen](gitlab-welcome.png)
 
 ## Configure SSL Encryption
-
 {{< note >}}
 If you did not generate an SSL certificate using Certbot prior to the installation of GitLab, you may need to first stop GitLab and then generate the SSL certificate to bypass any errors related to Certbot's certificate challenge. To stop GitLab run the following command:
 
@@ -88,7 +81,7 @@ If you did not generate an SSL certificate using Certbot prior to the installati
 Once you are done generating the certificate, restart GitLab with the following command:
 
       sudo gitlab-ctl start
-{{</ note >}}
+{{< /note >}}
 
 1. Edit the `/etc/gitlab/gitlab.rb` to use HTTPS. This is done by modifying the value of `external_url` to use `https` instead of `http`:
 

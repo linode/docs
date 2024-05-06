@@ -1,18 +1,13 @@
 ---
 slug: kubernetes-reference
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Kubernetes Reference Guide"
 description: 'This guide provides you with a reference and glossary for terminology and concepts related to the Kubernetes application and infrastructure orchestration technology.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-12
 keywords: ['kubernetes','k8s','definitions']
 tags: ["docker","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-12
-modified_by:
-  name: Linode
-title: "Kubernetes Reference Guide"
-contributor:
-  name: Linode
 concentrations: ["Kubernetes"]
 image: kube-reference-guide.jpg
 external_resources:

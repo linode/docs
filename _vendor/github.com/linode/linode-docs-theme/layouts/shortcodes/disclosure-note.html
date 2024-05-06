@@ -1,8 +1,7 @@
+{{ warnf "DEPRECATION NOTICE: disclosure-note shortcode (replaced by note shortcode)\n%s" .Position }}
 {{ $text := .Inner | markdownify }}
-<blockquote
-  class="callout border-brand"
-  style="background-color: #F2F2F7; border-color: #D9DBE1;"
-  x-data="{ open: false }">
+{{ $title :=  (.Get 0) | default  "Disclosure Note" }}
+<blockquote class="disclosure callout" x-data="{ open: false }">
   <button
     type="button"
     @click="open = !open"
@@ -21,17 +20,10 @@
       </template>
     </div>
     <strong class="callout-title">
-      {{ default "Disclosure Note" (.Get 0) }}
+      {{ $title }}
     </strong>
   </button>
-  <div x-show="open" class="callout-body">
-    <div class="height-preservation-wrapper">
-      {{ $text }}
-    </div>
-  </div>
-  <div x-show="!open" class="callout-body">
-    <div class="height-preservation-wrapper">
-      {{ $text | truncate 100 }}
-    </div>
+  <div class="disclosure-content" :class="open ? 'open' : 'closed'">
+    {{ $text }}
   </div>
 </blockquote>

@@ -1,24 +1,21 @@
 ---
 slug: configure-a-firewall-with-arno-iptables-in-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Configure a Firewall with Arno Iptables in Debian 5'
 description: 'Protecting access to your Linode with the arno-iptables-firewall package.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-06
+modified: 2013-10-01
 keywords: ["arno-iptables-firewall", "Debian firewall", "Linux firewall", "networking"]
 tags: ["networking","security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/firewalls/arno-iptables-debian-5-lenny/','/security/firewalls/configure-a-firewall-with-arno-iptables-in-debian-5-lenny/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2009-08-06
-title: 'Configure a Firewall with Arno Iptables in Debian 5 (Lenny)'
 deprecated: true
 ---
 
 Firewall software is designed to limit access to network resources running on your Linode to authorized parties. Some services, such as a public web server, may be accessible to anyone. Others might be more restricted, such as an SSH daemon for remote system administration.
 
-This guide will help you get the `arno-iptables-firewall` package installed and configured under Debian 5 (Lenny). For purposes of this tutorial, we assume the user is logged in as root via SSH, and that the prerequisite steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) have already been followed.
+This guide will help you get the `arno-iptables-firewall` package installed and configured under Debian 5 (Lenny). For purposes of this tutorial, we assume the user is logged in as root via SSH, and that the prerequisite steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) have already been followed.
 
 ## Installing the Firewall
 

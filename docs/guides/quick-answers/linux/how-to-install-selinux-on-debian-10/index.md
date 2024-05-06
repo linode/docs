@@ -1,23 +1,17 @@
 ---
 slug: how-to-install-selinux-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install SELinux on Debian 10"
+title_meta: "How to Install SELinux on Debian 10"
 description: "Learn how to install SELinux and use it to protect the security of your Debian 10 system"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-17
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/how-to-install-selinux-on-debian-10/']
 bundles: ['debian-security']
 tags: ["debian","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2020-03-17
 image: InstallSELinux_Deb10.png
-contributor:
-  name: Linode
-title: "How to Install SELinux on Debian 10"
-h1_title: "Installing SELinux on Debian 10"
-enable_h1: true
 relations:
     platform:
         key: how-to-install-selinux
@@ -29,18 +23,18 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
-    {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+    {{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 1.  Update your system:
 
         sudo apt update
 
-    {{< note >}}
-The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
-    {{</ note >}}
+    {{< note respectIndent=false >}}
+The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+    {{< /note >}}
 
 ### Remove AppArmor
 
@@ -50,17 +44,17 @@ The Linode kernel does not support SELinux by default. If your system is running
 
 1.  Purge AppArmor from the system.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not purge AppArmor if you believe you may reuse it in the future.  If you would like to preserve your AppArmor configuration files, use the `remove` command, instead:
 
     sudo apt remove apparmor
-    {{< /caution >}}
+    {{< /note >}}
 
         sudo apt purge apparmor
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If after issuing the `purge  command you receive warnings about remaining AppArmor files or directories. You can remove them manually, if desired. This step is not necessary to get a working SELinux installation.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Update your system:
 
@@ -95,9 +89,9 @@ SE Linux is activated.  You may need to reboot now.
 
         sudo reboot
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After rebooting your system, SELinux should be enabled, but in *permissive mode*. Permissive mode means any actions that would have been disallowed are allowed, but logged in your system's audit log located in the `/var/log/audit/audit.log` file.
-   {{</ note >}}
+   {{< /note >}}
 
 1. Log back into your Linode via SSH. Replace `192.0.2.0` with your own Linode's IP address.
 
@@ -137,7 +131,7 @@ Max kernel policy version:      31
 SELINUX=enforcing
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have set SELinux to enforcing mode, ensure that your SSH port has access before logging out of your session.
 
     sudo semanage port -l | grep 'ssh'
@@ -151,7 +145,7 @@ ssh_port_t                     tcp      22
 If you do not see the this entry, open the port with the following command:
 
     sudo semanage port -a -t ssh_port_t -p tcp 22
-    {{</ note >}}
+    {{< /note >}}
 
 ## Next Steps
 After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) to learn the basics of SELinux security.

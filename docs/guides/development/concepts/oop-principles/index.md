@@ -1,18 +1,13 @@
 ---
 slug: oop-principles
-author:
-  name: Nathaniel Stickman
+title: "A Guide to OOP Principles in Java"
+title_meta: "Object-Oriented Programming Concepts, Explained"
 description: "What are the four major OOP principles? This guide will discuss object-oriented programming concepts and provide real-world examples."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-06-10
 keywords: ['oop principles','oop concepts','oop concepts in java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-10
-modified_by:
-  name: Linode
-title: "Object-Oriented Programming Concepts, Explained"
-h1_title: "A Guide to OOP Principles in Java"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[GeeksforGeeks: Object Oriented Programming (OOPs) Concept in Java](https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/)'
 - '[ParTech: Basic Principles of Object-oriented Programming](https://www.partech.nl/en/publications/2020/10/basic-principles-of-object-oriented-programming#:~:text=The%20basic%20principles%20of%20OOP,any%20object%2Doriented%20programming%20language.)'

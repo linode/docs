@@ -1,20 +1,14 @@
 ---
 slug: how-to-self-host-the-vaultwarden-password-manager
-author:
-  name: Tyler Langlois
+title: "Self-Hosting the vaultwarden Password Manager"
+title_meta: "How to Self-Host the vaultwarden Password Manager"
 description: "Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the vaultwarden project."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2021-02-19
 keywords: ["bitwarden self hosted", "free self hosted password manager", "self hosted password manager open source"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
-modified_by:
-  name: Linode
-title: "How to Self-Host the vaultwarden Password Manager"
-h1_title: "Self-Hosting the vaultwarden Password Manager"
-enable_h1: true
 tags: ["ubuntu", "security", "web applications", "docker"]
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 aliases: ["security/authentication/self-hosted-password-management-with-bitwarden-rs/", "/guides/how-to-self-host-the-bitwarden-rs-password-manager/", "security/authentication/how-to-self-host-the-bitwarden-rs-password-manager/"]
 ---
 
@@ -36,15 +30,15 @@ Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Lin
 
 ### Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone.
+1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting the hostname and timezone.
 
-1. Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide in order to harden the Linode against malicious users. This step is important to ensure Vaultwarden is secured.
+1. Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide in order to harden the Linode against malicious users. This step is important to ensure Vaultwarden is secured.
 
-   {{< note >}}
-If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide outlines different firewall software options.
-{{</ note >}}
+   {{< note respectIndent=false >}}
+If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section of the guide outlines different firewall software options.
+{{< /note >}}
 
-1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/guides/dns-records-an-introduction/#a-and-aaaa) DNS records that point to the public [IPv4 and IPv6 addresses](/docs/guides/managing-ip-addresses/) of the Linode. Consult the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
+1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/guides/dns-overview/#a-and-aaaa) DNS records that point to the public [IPv4 and IPv6 addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of the Linode. Consult the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
 
 ## Install Docker
 
@@ -141,9 +135,9 @@ example.com {
 }
 {{< /file >}}
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 The site name you choose in this file must match the desired URL that Vaultwarden is served under. When navigating to the web interface later in this guide, ensure that you type the same hostname chosen in this configuration file (in this example, `example.com`).
-{{</ note >}}
+{{< /note >}}
 
 
 1. Prepare a directory for Caddy in `/etc` to store state information such as Let's Encrypt certificates.
@@ -198,9 +192,9 @@ The site name you choose in this file must match the desired URL that Vaultwarde
 
    If you see the login page, congratulations! Vaultwarden is running and operational. The first step in using the password manager is to create an account. Do so by clicking on the **Create Account** button on the login page.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 Remember to navigate to the same name configured in your `Caddyfile` defined in the previous section of this guide. A mismatched hostname in your browser can cause TLS errors.
-{{</ note >}}
+{{< /note >}}
 
 1. A new page appears with several fields.
 
@@ -208,7 +202,7 @@ Remember to navigate to the same name configured in your `Caddyfile` defined in 
 
    Fill each field with the appropriate information, choosing a strong and secure master password.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 Although a user email is required at time of registration, by default, the deployment of Vaultwarden cannot send email without additional configuration. If you would like to configure SMTP in order to enable Vaultwarden to send email, follow [these instructions on the Vaultwarden wiki](https://github.com/dani-garcia/vaultwarden/wiki/SMTP-configuration). Use SMTP information from an SMTP provider when following the instructions.
 {{< /note >}}
 
@@ -243,7 +237,7 @@ Before relying on this service for any important data, you should take additiona
 
 1. Review the [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local file system path is used.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
 {{< /note >}}
 
@@ -302,9 +296,9 @@ WantedBy=multi-user.target
 
    This schedules the backup to occur at 4:00 in the time zone set for the Linode. You may alter this time to trigger at a desired time of day.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 The `Persistent=true` line instructs systemd to fire the timer if the timer was unable to trigger at its previous target time. For example, this could happen if the system was being rebooted.
-{{</ note >}}
+{{< /note >}}
 
 1. Start and enable this timer unit.
 
@@ -326,10 +320,9 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
 {{< /output >}}
 
    This indicates that a backup is taken in 5 hours and 50 minutes.
-
-{{< caution >}}
+{{< note type="alert" >}}
 Ensure that the backups are kept on a volume or host independent of the Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/products/storage/block-storage/) as one potential solution for permanent backup storage and archival.
-{{< /caution >}}
+{{< /note >}}
 
 ## Using Vaultwarden
 

@@ -1,18 +1,14 @@
 ---
 slug: apache-configuration-structure
-author:
-  name: Linode
-  email: docs@linode.com
+title: Apache Configuration Structure
 description: 'This is an introduction to the structure of the Apache web server configuration for maintaining granular configuration.'
-og_description: 'This is an introduction to the structure of the Apache web server configuration for maintaining granular configuration.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-24
+modified: 2018-03-06
 keywords: ["apache", "httpd", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/apache-configuration-structure/','/websites/apache-tips-and-tricks/apache-configuration-structure/','/web-servers/apache/configuration/configuration-structure/']
-modified: 2018-03-06
-modified_by:
-  name: Linode
-published: 2010-02-24
-title: Apache Configuration Structure
 external_resources:
  - '[Apache Installation](/docs/web-servers/apache/)'
  - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
@@ -120,10 +116,9 @@ If you want to disable `.htaccess` files for a directory or tree of directories,
 AllowOverride None
 
 {{< /file >}}
-
 {{< note >}}
 You can specify `AllowOverride All` for a directory that falls within a directory where overrides have been disabled.
-{{</ note >}}
+{{< /note >}}
 
 ## "Match" Directives and Regular Expressions
 

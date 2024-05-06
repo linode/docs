@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Linode CLI Commands for Support Tickets"
 description: "How to use the Linode CLI to submit and manage support tickets."
 published: 2020-07-22

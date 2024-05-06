@@ -1,35 +1,30 @@
 ---
 slug: apache-tomcat-on-fedora-14
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Apache Tomcat on Fedora 14
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-07
+modified: 2013-09-27
 keywords: ["apache tomcat fedora 14", "java", "java fedora 14", "java servlets fedora 14", "java fedora"]
 tags: ["web applications","java","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/apache-tomcat/fedora-14/','/development/frameworks/apache-tomcat-on-fedora-14/','/development/frameworks/apache-tomcat/apache-tomcat-on-fedora-14/','/websites/frameworks/apache-tomcat-on-fedora-14/']
-modified: 2013-09-27
-modified_by:
-  name: Linode
-published: 2010-12-07
-title: Apache Tomcat on Fedora 14
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 Apache Tomcat is a free and open source software implementation for Java Servlets. It provides support for the Java Server Pages (JSP) that power many popular web-based applications.
 
-This guide assumes that you have a working installation of Fedora 14, and that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+This guide assumes that you have a working installation of Fedora 14, and that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

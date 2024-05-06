@@ -1,17 +1,14 @@
 ---
 slug: team-fortress2-on-debian-and-ubuntu
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
+title: 'Team Fortress 2 on Debian and Ubuntu'
 description: 'A basic Team Fortress 2 server installation guide for Debian and Ubuntu'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-03-12
+modified: 2019-02-01
 keywords: ["team fortress 2", "team fortress", "steam", "ubuntu", "debian"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-01
-modified_by:
-  name: Linode
-published: 2015-03-12
-title: 'Team Fortress 2 on Debian and Ubuntu'
 aliases: ['/applications/game-servers/team-fortress2-on-debian-and-ubuntu/','/game-servers/team-fortress2-on-debian-and-ubuntu/']
 dedicated_cpu_link: true
 ---
@@ -73,7 +70,7 @@ From the SteamCMD guide, two additional steps are needed specifically for TF2.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update TF2, run the above 4 commands again.
 {{< /note >}}
 
@@ -139,9 +136,9 @@ screen -S "Team Fortress 2 Server" ./srcds_run -game tf +map ctf_2fort.bsp
 
         cd ~/ && ./starttf2.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop TF2.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

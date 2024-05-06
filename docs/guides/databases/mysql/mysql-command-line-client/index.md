@@ -1,16 +1,13 @@
 ---
 slug: mysql-command-line-client
-author:
-  name: Linode
+title: "Connect to a MySQL Database Using the mysql Command"
 description: "This guide shows you how to install and use the MySQL command-Line client to connect to a database and run SQL commands."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-07-01
 keywords: ['mysql connect','remote database','mysql database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-01
-modified: 2022-07-01
-modified_by:
-  name: Linode
-title: "Connect to a MySQL Database Using the mysql Command"
 aliases: ['/guides/connect-to-a-mysql-or-mariadb-database/']
 external_resources:
 - '[MySQL Command-Line Client documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql.html)'
@@ -20,7 +17,7 @@ This guide shows you how to connect to a MySQL database using [mysql](https://de
 
 {{< note >}}
 If you wish to connect to a Linode MySQL Managed Database, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide instead.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -48,9 +45,9 @@ The main purpose of the mysql utility is to connect to a MySQL database server a
 
         mysql -h [host] -p [port] -u [username] -p
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you wish to connect to a Linode MySQL Managed Database, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide instead.
-{{</ note >}}
+{{< /note >}}
 
 ## Common Command Options
 

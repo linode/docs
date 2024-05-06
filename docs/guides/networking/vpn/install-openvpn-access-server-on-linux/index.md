@@ -1,16 +1,14 @@
 ---
 slug: install-openvpn-access-server-on-linux
-author:
-    name: James Stewart
+title: Manage OpenVPN with OpenVPN Access Server
 description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2015-04-30
+modified: 2019-08-12
 keywords: ["openvpn", "vpn"]
 aliases: ['/networking/vpn/install-openvpn-access-server-on-linux/','/networking/vpn/openvpn-access-server/','/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-08-12
-modified_by:
-    name: Linode
-published: 2015-04-30
-title: Manage OpenVPN with OpenVPN Access Server
 tags: ["networking","security","vpn"]
 ---
 
@@ -25,9 +23,9 @@ OpenVPN Access Server requires a paid license to use more than two connected dev
 ## Before You Begin
 
 - Ensure that you have not already installed OpenVPN before starting this guide.
-- Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
-- Update your system. For more information, see [Install Software Updates](/docs/guides/set-up-and-secure/#perform-system-updates).
-- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/security/firewalls/configure-firewall-with-ufw/#add-rules).
+- Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+- Update your system. For more information, see [Install Software Updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#perform-system-updates).
+- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/guides/configure-firewall-with-ufw/#add-rules).
 
 
 ## Install OpenVPN Access Server
@@ -104,14 +102,14 @@ Client UI: https://192.0.2.0:943/
         echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.d/99-sysctl.conf
         sudo sysctl -p
 
-1.  OpenVPN does not support simultaneous tunnels over IPv4 and IPv6. Follow these steps to [disable IPv6](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) on your Linode.
+1.  OpenVPN does not support simultaneous tunnels over IPv4 and IPv6. Follow these steps to [disable IPv6](/docs/guides/set-up-a-hardened-openvpn-server/#disable-ipv6) on your Linode.
 
 1.  Log in to the Access Server Admin UI and go to **VPN Settings**. In the **Routing** section:
 
     - The option *"Should VPN clients have access to private subnets
 (non-public networks on the server side)?"* should be set to **No**.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes, using NAT** and specify the subnet.
 {{< /note >}}
 
@@ -121,7 +119,7 @@ If you wish to give VPN users access to services listening on your Linode's loca
 
     - The option *"Have clients use the same DNS servers as the Access Server host"* should be set to **Yes**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alternatively, you can manually set DNS resolvers of your choice which are pushed to VPN clients. Set the option *"Have clients use these DNS servers"*  to **Yes** and add a primary and secondary server.
 {{< /note >}}
 
@@ -184,8 +182,8 @@ Alternatively, you can manually set DNS resolvers of your choice which are pushe
 
     ![DMG Finder Window.](openvpn-download-profile-ubuntu.png)
 
-    {{< note >}}
-If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to use `cURL` or `wget` tool to download the appropriate profile. You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then pasting it at the end of a `cURL` or [wget](/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget) command.
+    {{< note respectIndent=false >}}
+If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to use `cURL` or `wget` tool to download the appropriate profile. You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then pasting it at the end of a `cURL` or [wget](/docs/guides/download-resources-from-the-command-line-with-wget/) command.
 {{< /note >}}
 
 1.  Copy the downloaded profile to your `/etc/openvpn` folder and rename it to `client.conf`. Replace `~/Downloads/client.ovpn` with the location of your download folder, if necessary.
@@ -208,10 +206,9 @@ If you are connecting a headless machine to your OpenVPN server, such as another
 1.  Choose **Extended test**. The resulting IP addresses should be for the DNS resolvers you chose for your client device.
 
 1.  To ensure that no IPv6 traffic is coming from the VPN server, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
-
-{{< caution >}}
+{{< note type="alert" >}}
 If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.
-{{< /caution >}}
+{{< /note >}}
 
 
 ### Compression
@@ -247,10 +244,9 @@ OpenVPN Access Server's free edition is limited to two users. If you require add
 ### Permit Autologin Profiles
 
 If you wish to configure autologin profiles, you will need to modify your user settings to allow autologin profiles to be displayed on the connections page.
-
-{{< caution >}}
+{{< note type="alert" >}}
 This configuration type can be useful for connecting other servers to your VPN on startup, or for configuring a system that will always route all of its traffic over the VPN automatically.  Utilizing this type of profile will cause all of your non-local traffic to be routed over the VPN automatically.  If you wish to enable and disable your VPN at will, you will want to utilize User or Server locked profiles instead.
-{{< /caution >}}
+{{< /note >}}
 
 1.  From the OpenVPN Access Server admin web interface, visit the User Permissions link.
 

@@ -1,31 +1,26 @@
 ---
 slug: piwik-on-fedora-13
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: Piwik on Fedora 13
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Fedora 13.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-12-28
+modified: 2013-10-01
 keywords: ["open source analytics", "piwik fedora 13", "piwik", "analytics", "centos", "tracking", "statistics"]
 tags: ["statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/piwik-on-fedora-13/','/web-applications/analytics/piwik/fedora-13/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2010-12-28
-title: Piwik on Fedora 13
 relations:
     platform:
         key: using-piwik-analytics
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 Piwik is a downloadable, open source (GPL licensed) web analytics software program. As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership and control of the data collected from your visitors.
 
-For the purpose of this guide, we assume that you have a running and functional server, and have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+For the purpose of this guide, we assume that you have a running and functional server, and have followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 Beyond the basics, Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Fedora 13 LAMP guide](/docs/guides/lamp-server-on-fedora-13/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 
@@ -59,7 +54,7 @@ You'll need to restart Apache after installing php-gd and modifying the PHP sett
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an "[A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa)" for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/guides/dns-manager/). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an "[A Record](/docs/guides/dns-overview/#a-and-aaaa)" for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/products/networking/dns-manager/). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
 We'll append the following virtual host to our `vhost.conf` file, located at `/etc/httpd/conf.d/vhost.conf`:
 

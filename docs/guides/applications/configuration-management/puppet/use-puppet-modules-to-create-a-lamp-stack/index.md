@@ -1,25 +1,21 @@
 ---
 slug: use-puppet-modules-to-create-a-lamp-stack
-author:
-    name: Elle Krout
-    email: ekrout@linode.com
+title: Use Puppet Modules to Create a LAMP Stack
 description: 'This guide will show you how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera on Ubuntu 14.04 LTS.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-11-12
 keywords: ["puppet", "automation", "puppet master", "puppet agent", "modules", "server automation", "configuration management"]
 tags: ["lamp","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack/']
-deprecated: true
-deprecated_link: 'applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/'
-modified: 2015-11-12
-modified_by:
-    name: Elle Krout
-published: 2015-11-12
-title: Use Puppet Modules to Create a LAMP Stack
 relations:
     platform:
         key: install-puppet-lamp-master
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
+deprecated_link: 'applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/'
 ---
 
 ![Use Puppet Modules to Create a LAMP Stack](Use_Puppet_Modules_to_Create_a_LAMP_Stack_smg.jpg)
@@ -131,7 +127,7 @@ class apache::params {
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/docs/assets/params.pp).
 {{< /note >}}
 
@@ -308,7 +304,7 @@ class apache::vhosts {
 
     Both distribution families call to the `file` resource and take on the title of the virtual host's location on the respective distribution. For Debian, this once more means referencing the `$servername` value. The `content` attribute calls to the respective templates.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Values containing variables, such as the name of the Debian file resource above, need to be wrapped in double quotes (`"`). Any variables in single quotes (`'`) are parsed exactly as written and will not pull in a variable.
 {{< /note >}}
 

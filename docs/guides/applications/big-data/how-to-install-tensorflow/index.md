@@ -1,22 +1,14 @@
 ---
 slug: how-to-install-tensorflow
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing TensorFlow on Ubuntu 20.04"
+title_meta: "How to Install TensorFlow on Ubuntu 20.04"
 description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
-og_description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-02-08
 keywords: ['TensorFlow','installation','machine learning','and key phrases']
 tags: ['python', 'ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-08
-modified_by:
-  name: Linode
-title: "How to Install TensorFlow on Ubuntu 20.04"
-h1_title: "Installing TensorFlow on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[TensorFlow site](https://www.tensorflow.org/)'
 - '[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)'
@@ -35,9 +27,9 @@ This guide describes how to install TensorFlow on Ubuntu 20.04, which is fully s
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -120,7 +112,7 @@ Setting up a virtual Python environment creates an isolated environment for your
 
         source ./venv/bin/activate
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This `source` command works for the `sh`, `bash`, and `zsh` shells. If you are using a `csh` or `tcsh` shell, activate the virtual environment with `source ./venv/bin/activate.csh`. You can determine the name of the shell you are running with the command `echo $0`.
 {{< /note >}}
 
@@ -140,7 +132,7 @@ This `source` command works for the `sh`, `bash`, and `zsh` shells. If you are u
 Successfully installed pip-21.0.1
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can exit the virtual environment at any time with the `deactivate` command. You can use the `source` command to reactivate it again later. We recommend remaining inside the virtual environment while you are using TensorFlow.
 {{< /note >}}
 
@@ -160,7 +152,7 @@ You can exit the virtual environment at any time with the `deactivate` command. 
 tensorflow             2.4.1
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can follow the below steps to install TensorFlow without using virtual environment, but it is **NOT** recommended.
 
 - Upgrade the Python-specific `pip` module with `python -m pip install --upgrade pip`
@@ -182,7 +174,7 @@ Be very careful not to upgrade your system's version of pip, because this is lik
 2.4.1
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your Linode is not running a GPU, you might receive a warning that `libcudart` or a similar GPU library could not be loaded. This message is expected when running a CPU powered Linode. In this case, you should expect to see an `info` message advising you to ignore the message in a non-GPU environment.
     {{< /note >}}
 
@@ -194,7 +186,7 @@ If your Linode is not running a GPU, you might receive a warning that `libcudart
 2.4.1
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
    You can use different log levels in place of '3' as shown below:
 
    `0` = all messages are logged (default behavior)
@@ -210,7 +202,7 @@ If your Linode is not running a GPU, you might receive a warning that `libcudart
 
         deactivate
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can always run `source ./venv/bin/activate` to enter into the virtual environment again.
     {{< /note >}}
 

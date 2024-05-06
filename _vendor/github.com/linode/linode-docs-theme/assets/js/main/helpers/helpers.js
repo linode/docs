@@ -88,6 +88,19 @@ export function isElementInViewport(el) {
 	);
 }
 
+// getScrollLeft returns the scrollLeft value needed to make the child element visible.
+export function getScrollLeft(parent, child) {
+	const parentRect = parent.getBoundingClientRect();
+	const childRect = child.getBoundingClientRect();
+
+	// If the child is already visible, return 0.
+	if (childRect.left >= parentRect.left && childRect.right <= parentRect.right) {
+		return 0;
+	}
+
+	return childRect.left - parentRect.left;
+}
+
 // getOffsetTop returns the distance from container down to el.
 export function getOffsetTop(container, el) {
 	var distance = 0;
@@ -145,12 +158,24 @@ export function getCurrentLangFromLocation() {
 	return '';
 }
 
+export function getIntParamFromLocation(param) {
+	let value = new URLSearchParams(window.location.search).get(param);
+	if (value) {
+		return parseInt(value, 10);
+	}
+	return 0;
+}
+
 export function isIterable(obj) {
 	return Symbol.iterator in Object(obj);
 }
 
 export function isMobile() {
 	return document.documentElement.clientWidth < 768;
+}
+
+export function isDesktop() {
+	return isScreenLargerThan(1279); // xl in Tailwind config.
 }
 
 export function isScreenLargerThan(px) {
@@ -168,6 +193,17 @@ export function isTouchDevice() {
 
 export function isTopBarPinned() {
 	return document.body.classList.contains('is-topbar-pinned');
+}
+
+export function updatePaginationParamInLocation(pageKey, pageNum, firstPage = 1) {
+	let url = new URL(window.location);
+	url.hash = '';
+	if (pageNum == firstPage) {
+		url.searchParams.delete(pageKey);
+	} else {
+		url.searchParams.set(pageKey, pageNum);
+	}
+	window.history.replaceState({ turbo: {} }, '', url);
 }
 
 export function walk(el, callback) {

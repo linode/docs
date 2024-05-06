@@ -1,27 +1,22 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with Nginx on Ubuntu 8.04 LTS (Hardy)'
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 8.04 LTS operating system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-21
+modified: 2011-04-29
 keywords: ["ruby on rails", "rails on ubuntu", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/','/frameworks/ruby-on-rails-nginx/ubuntu-8-04-hardy/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-08-21
-title: 'Ruby on Rails with Nginx on Ubuntu 8.04 LTS (Hardy)'
 relations:
     platform:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Ubuntu 8.04 LTS (Hardy).
 
@@ -138,7 +133,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
 
 
 

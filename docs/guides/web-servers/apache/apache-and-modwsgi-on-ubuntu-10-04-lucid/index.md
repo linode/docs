@@ -1,33 +1,28 @@
 ---
 slug: apache-and-modwsgi-on-ubuntu-10-04-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache and mod_wsgi on Ubuntu 10.04 (Lucid)'
 description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Ubuntu 10.04 "Lucid".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/mod-wsgi/ubuntu-10-04-lucid/','/web-servers/apache/apache-and-modwsgi-on-ubuntu-10-04-lucid/','/websites/apache/apache-and-modwsgi-on-ubuntu-10-04-lucid/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: 'Apache and mod_wsgi on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
-
-
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -162,7 +157,7 @@ You will need to restart the web server every time the `application.wsgi` file c
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
-- [Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)
+- [Deploy Django Applications with mod\_wsgi](/docs/guides/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)
 - [Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)
 - [Flask Framework](http://flask.pocoo.org/)
 - [Werkzug](http://werkzeug.pocoo.org/)

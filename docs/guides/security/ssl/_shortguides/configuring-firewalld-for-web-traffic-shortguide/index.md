@@ -1,4 +1,10 @@
 ---
+slug: configuring-firewalld-for-web-traffic-shortguide
+title: "Shortguide"
+description: "Shortguide"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 # Shortguide: Configuring Firewalld for Web Traffic
 
 headless: true
@@ -6,22 +12,13 @@ show_on_rss_feed: false
 
 # Ignore the below front matter. It is included to comply with existing tests.
 
-slug: configuring-firewalld-for-web-traffic-shortguide
-title: "Shortguide"
-description: "Shortguide"
 keywords: ["shortguide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-author:
-  name: Linode
-  email: docs@linode.com
-modified_by:
-  name: Linode
 ---
 
 ## Configuring Firewall Rules with Firewalld
 
-Any firewall configured on your server needs to allow connections over HTTPS (in addition to HTTP and any other services/ports you require). This section covers enabling and configuring [firewalld](https://firewalld.org/). Firewalld is the default firewall management tool on Fedora 18+, OpenSUSE 15+, and CentOS/RHEL 7/8, including derivatives like AlmaLinux 8 and Rocky Linux 8. Depending on the distribution, it operates as a front-end for either iptables or the newer nftables.
+Any firewall configured on your server needs to allow connections over HTTPS (in addition to HTTP and any other services/ports you require). This section covers enabling and configuring [firewalld](https://firewalld.org/). Firewalld is the default firewall management tool on Fedora 18+, openSUSE 15+, and CentOS/RHEL 7/8, including derivatives like AlmaLinux 8 and Rocky Linux 8. Depending on the distribution, it operates as a front-end for either iptables or the newer nftables.
 
 You can skip this section if you are using a different firewall (such as Linode's [Cloud Firewall](/docs/products/networking/cloud-firewall/) service), have already configured your firewall rules, or do not wish to use any firewall.
 

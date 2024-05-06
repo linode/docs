@@ -1,19 +1,15 @@
 ---
 slug: diagnosing-network-issues-with-mtr
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
+title: Diagnosing Network Issues with MTR
 description: MTR is a network diagnostic tool similar to ping and traceroute. This guide shows how to create and interpret MTR reports on your Linode or home computer.
-og_description: MTR is a network diagnostic tool similar to ping and traceroute. This guide shows how to create and interpret MTR reports on your Linode or home computer.
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-04-28
+modified: 2018-05-10
 keywords: ["mtr", "traceroute", "latency", "loss"]
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/diagnostics/diagnosing-network-issues-with-mtr/','/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/']
-modified: 2018-05-10
-modified_by:
-  name: Linode
-published: 2010-04-28
-title: Diagnosing Network Issues with MTR
+aliases: ['/networking/diagnostics/diagnosing-network-issues-with-mtr/','/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/','/troubleshooting/interpreting-mtr-reports/']
 external_resources:
  - '[Understanding the Traceroute Command - Cisco Systems](http://www.cisco.com/en/US/products/sw/iosswrel/ps1831/products_tech_note09186a00800a6057.shtml#traceroute)'
  - '[Wikipedia article on traceroute](http://en.wikipedia.org/wiki/Trace_route)'
@@ -24,7 +20,7 @@ external_resources:
 
 [MTR](http://www.bitwizard.nl/mtr/) is a powerful tool that enables administrators to diagnose and isolate networking errors and provide reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample as if augmenting `traceroute` with `ping` output. This document provides an in-depth overview of MTR, the data it generates, and how to interpret and draw conclusions based on the data provided by it.
 
-For a basic overview of network diagnostic techniques, see our introduction to [network diagnostics](/docs/tools-reference/linux-system-administration-basics/#network-diagnostics). If you are having general issues with your system, read our overview of general [system diagnostics](/docs/using-linux/administration-basics/#system-diagnostics).
+For a basic overview of network diagnostic techniques, see our introduction to [network diagnostics](/docs/guides/linux-system-administration-basics/#network-diagnostics). If you are having general issues with your system, read our overview of general [system diagnostics](/docs/guides/linux-system-administration-basics/#system-diagnostics).
 
 ## Network Diagnostics Background
 
@@ -97,7 +93,6 @@ If no packet loss is detected, a support technician may ask you to run a faster 
 On some systems, using this flag may require administrative privileges:
 
     sudo mtr -rwc 50 -rw 198.51.100.0
-
 {{< note >}}
 The `r` option flag generates the report (short for `--report`).
 

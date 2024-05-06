@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Custom Images"
 description: "Learn how to create and manage Linode Images and find guides on other related topics."
 tab_group_main:
     weight: 30
@@ -27,15 +28,15 @@ tab_group_main:
 
 ### Cloning and Disks
 
-- [Cloning a Linode](/docs/guides/clone-your-linode/)
+- [Cloning a Linode](/docs/products/compute/compute-instances/guides/clone-instance/)
 
-- [Linode Disks and Storage](/docs/guides/disks-and-storage/)
+- [Linode Disks and Storage](/docs/products/compute/compute-instances/guides/disks-and-storage/)
 
-- [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/)
+- [Linode Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/)
 
 ### Custom Distributions
 
-- [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution-on-a-linode/)
+- [Install a Custom Distribution on a Linode](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/)
 
 ### Migration
 

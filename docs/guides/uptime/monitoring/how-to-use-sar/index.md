@@ -1,22 +1,15 @@
 ---
 slug: how-to-use-sar
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn@vna1.com
+title: "Using the System Activity Reporter (sar)"
+title_meta: "How to Use the System Activity Reporter (sar)"
 description: "This guide shows you the basics of sar, the Linux system activity reporter, including installation, configuration, and basic commands."
+authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
+published: 2021-02-19
 keywords: ['sar command in linux']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
 image: UseSystemActivityReporter.png
-modified_by:
-  name: Linode
-title: "How to Use the System Activity Reporter (sar)"
-h1_title: "Using the System Activity Reporter (sar)"
-enable_h1: true
-contributor:
-  name: Steven J. Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
 ---
 
 The System Activity Reporter ([Sar](https://linux.die.net/man/1/sar)) is a utility program for analyzing Linux system performance. Sar is a do-it-all monitoring tool that is part of the [Sysstat system resource utilities package](https://github.com/sysstat/sysstat). Linux administrators should learn sar for its wide range of utility features. It measures CPU activity; memory/paging; interrupts; device load; network; process and thread allocation; and swap space utilization. Data is gathered in the `/proc` filesystem. By default, sar collects data once for every 10-minute mark of each hour. This guide shows you how to install and configure sar on your Debian or Ubuntu Linux system. You also learn several useful commands to get you started collecting data about your Linux system's activity.
@@ -25,9 +18,9 @@ The System Activity Reporter ([Sar](https://linux.die.net/man/1/sar)) is a utili
 
 If you are using a Linode, make sure you run the steps in this section to configure your Linode, secure your server, and update your system's packages.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install and Configure sar
 
@@ -82,9 +75,9 @@ PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
 
     By default, the `debian-sa1` script runs every 10 minutes and collects sar data for historical reference. This data is written to the `/var/log/sysstat/saXX` file, where `XX` is the day of the month. For example, if today is the 24th day of the month, `sa1` writes the sar data to `/var/log/sysstat/sa24`. To change the logging frequency to one minute, change `5-55/10` to `5-55/1`. To make it 2 minutes, change it to `5/55/2`, and so on.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note that the `/var/log/sysstat/saXX` is a binary file; a text editor can't display these files properly.
-{{</ note >}}
+{{< /note >}}
 
     Frequently-used variables are set in the `/etc/sysstat/sysstat` file. These include the length of time log files should be kept; when log files should be compressed; and which compression algorithm should be used. The example below displays a typical `/etc/sysstat/sysstat` file:
 

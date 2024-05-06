@@ -1,20 +1,14 @@
 ---
 slug: differences-between-grep-sed-awk
-author:
-  name: Andy Lester
+title: "Learn to Process Text in Linux using Grep, sed, and AWK"
+title_meta: "Text Processing in Linux: Understanding Grep, sed, and AWK"
 description: 'This guide introduces you to Grep, sed, and AWK, which are Linux tools used for text processing. It explains the differences between grep, sed, and AWK and provides beginner examples for each.'
-og_description: 'This guide introduces you to Grep, sed, and AWK, which are Linux tools used for text processing. It explains the differences between grep, sed, and AWK and provides beginner examples for each.'
+authors: ["Andy Lester"]
+contributors: ["Andy Lester"]
+published: 2021-08-27
 keywords: ['difference between sed awk grep']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-27
-modified_by:
-  name: Linode
-title: "Text Processing in Linux: Understanding Grep, sed, and AWK"
-h1_title: "Learn to Process Text in Linux using Grep, sed, and AWK"
-enable_h1: true
-contributor:
-  name: Andy Lester
 ---
 
 ## The Differences Between Grep, sed, and AWK
@@ -75,7 +69,6 @@ The output returns the 4 lines before the search term match:
 192.0.2.0 - - [17/May/2015:10:05:34 +0000] "GET /presentations/logstash-monitorama-2013/images/sad-medic.png HTTP/1.1" 200 430406 "http://semicomplete.com/presentations/logstash-monitorama-2013/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.51.100.0 Safari/537.36"
 192.0.2.0 - - [17/May/2015:10:05:57 +0000] "GET /presentations/logstash-monitorama-2013/css/fonts/Roboto-Bold.ttf HTTP/1.1" 200 38720 "http://semicomplete.com/presentations/logstash-monitorama-2013/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.51.100.0 Safari/537.36"
 {{< /output >}}
-
 {{< note >}}
 To highlight your search term, add the `--color` option to your grep command.
 {{< /note >}}
@@ -111,7 +104,7 @@ Then, search for "cats" in the existing list of files containing the word "dogs"
 
 The output displays a list of files that contain both.
 
-To learn more about grep and its command-line options, see our [How to Grep for Text in Files](/docs/guides/how-to-grep-for-text-in-files/) guide. The guide also shows you other useful operations, like [piping command outputs to grep](/docs/guides/how-to-grep-for-text-in-files/#piping-command-outputs-to-grep) and how to [recursively search through a directory tree](/docs/guides/how-to-grep-for-text-in-files/#the-grep-command).
+To learn more about grep and its command-line options, see our [How to Grep for Text in Files](/docs/guides/how-to-use-grep-command/) guide. The guide also shows you other useful operations, like [piping command outputs to grep](/docs/guides/how-to-use-grep-command/#piping-command-outputs-to-grep) and how to [recursively search through a directory tree](/docs/guides/how-to-use-grep-command/#the-grep-command).
 
 ## Sed Command
 

@@ -1,22 +1,22 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Mist.io through the Linode Marketplace"
 description: "This guide shows how you can deploy Mist.io, an open-source, multi-cloud management platform, on a Linode using the ONe-Click Marketplace Apps installer."
+published: 2020-03-18
+modified: 2024-01-22
 keywords: [ 'mist.io', 'marketplace', 'server']
 tags: ["cloud-manager", "linode platform", "marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-18
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying Mist.io through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Mist.io Official](https://mist.io/)'
 aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platform/one-click/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-marketplace-apps/','/guides/mistio-marketplace-app/']
+_build:
+  list: false
+noindex: true
+
+deprecated: true
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Mist.io has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
+{{< /note >}}
 
 [Mist.io](https://mist.io/) is an open source, multi-cloud management platform. Mist supports all popular infrastructure technologies including public clouds, private clouds, hypervisors, containers, and bare metal servers. It provides a unified interface for performing common management tasks like provisioning, orchestration, monitoring, automation, and cost analysis. It also comes with a RESTful API so you can easily integrate it in your existing workflows.
 
@@ -26,9 +26,9 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Mist.io should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -40,13 +40,15 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 - **Mist admin user's email** *(required)*: The e-mail address of the administrator. Used as a log-in credential similar to a username.
 - **Mist admin user's password** *(required)*: The password of the Mist.io administrator account.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 Once the Mist.io server is successfully created, a few additional steps must be completed to be able to begin using the application.
 
 ### Log In to Mist.io
 
-1. In a web browser, enter your Linode's [IP address](/docs/guides/find-your-linodes-ip-address/) or the [Domain](/docs/guides/dns-manager/) associated with it to access your Mist.io App's login screen.
+1. In a web browser, enter your Linode's [IP address](/docs/guides/find-your-linodes-ip-address/) or the [Domain](/docs/products/networking/dns-manager/) associated with it to access your Mist.io App's login screen.
 
 1. Click on the **Sign in** button at the top right of the page.
 

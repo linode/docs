@@ -2,7 +2,7 @@
 @import "grid--base__search-panel.css";
 
 .grid--base {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -169,4 +169,19 @@
 
 .grid--base .top--navbar-row {
   top: calc(var(--height-navbar-row) + 1px);
+}
+
+/* Alt header height if message banner is present */
+html.has-banner .grid--base {
+  --height-linode-menu-row: 111px; /* 61 + 50 */
+}
+@screen md {
+  html.has-banner .grid--base {
+    --height-linode-menu-row: 126px; /* 76 + 50 */
+  }
+}
+@screen lg {
+  html.has-banner .grid--base {
+    --height-linode-menu-row: 163px; /* 113 + 50 */
+  }
 }

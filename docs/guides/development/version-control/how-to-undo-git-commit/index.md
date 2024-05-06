@@ -1,19 +1,13 @@
 ---
 slug: how-to-undo-git-commit
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Undo a Git Commit"
+title_meta: "Undo a Git Commit: A Step-by-Step Guide"
 description: 'Wondering how to undo a git commit? Follow our step-by-step guide on the various methods you use to undo a commit. Some of the methods discussed include the git revert and the git reset command.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-07-08
 keywords: ['how to undo git commit','git revert commit','git undo local commit']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-08
-modified_by:
-  name: Linode
-title: "How to Undo a Commit in Git"
-h1_title: "How to Undo a Git Commit: A Step-by-Step Guide"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Git documentation](https://git-scm.com/doc)'
 ---
@@ -95,7 +89,7 @@ Third line of text for check-in 3.
 
         git reset --soft HEAD~1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is possible to undo multiple commits. Use either the commit identifier or the `HEAD~n` notation to identify the commit.
     {{< /note >}}
 
@@ -256,7 +250,6 @@ First line of text.
 Second line of text for check-in 2.
 Third attempt at line 3.
     {{< /file >}}
-
 {{< note >}}
 `git reset` can be used on a specific file to move a particular commit to the staging area. The syntax for this command is `git reset HEAD <filename>`. Although it can be used with any version from the repository, it is typically used with the `HEAD` version. In this case, it has the effect of aligning the local repository and the staging area. This is an efficient method of undoing uncommitted changes to the staging area. Subsequent changes must be staged again using `git add` before they can be committed.
 {{< /note >}}

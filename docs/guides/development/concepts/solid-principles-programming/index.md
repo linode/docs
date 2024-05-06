@@ -1,20 +1,13 @@
 ---
 slug: solid-principles-programming
-author:
-  name: Jeff Novotny
+title: "SOLID Principles in Programming: A Comprehensive Guide"
+title_meta: "SOLID Principles of Object-Oriented Programming"
 description: 'The SOLID principles in programming refer to the five principles of object-oriented class design. Learn more about each principle and its benefits here.'
-og_description: 'The SOLID principles in programming refer to the five principles of object-oriented class design. Learn more about each principle and its benefits here.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-03-04
 keywords: ['solid principles programming', 'solid principles', 'solid design principles', 'solid programming']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-04
-modified_by:
-  name: Linode
-title: "SOLID Principles of Object-Oriented Programming"
-h1_title: "SOLID Principles in Programming: A Comprehensive Guide"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Wikipedia article on SOLID Principles](https://en.wikipedia.org/wiki/SOLID)'
 - '[Robert Martin article on OOD Principles](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)'

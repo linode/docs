@@ -1,31 +1,28 @@
 ---
 slug: postfix-dovecot-and-system-user-accounts-on-ubuntu-10-04-lucid
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.04 (Lucid)'
 description: 'Use system user accounts, postfix, and dovecot to provide'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-09
+modified: 2013-09-25
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/postfix-dovecot-and-system-user-accounts-on-ubuntu-10-04-lucid/','/email/postfix/dovecot-system-users-ubuntu-10-04-lucid/']
-modified: 2013-09-25
-modified_by:
-  name: Linode
-published: 2010-11-09
-title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.04 (Lucid)'
-deprecated: true
 relations:
     platform:
         key: postfix-dovecot-user-accounts
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
 
-Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-04-lucid) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/guides/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/).
+Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/guides/basic-postfix-email-gateway-on-ubuntu-10-04-lucid/) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/guides/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -74,14 +71,14 @@ Issue the following command to start the SASL daemon for the first time:
 
 SSL or TLS provides a method of encrypting the communication between your remote users and your mail servers. While this does not encrypt your email messages from end to end, it does ensure that your login credentials are transmitted securely and that communications are secure between your client machine and the email server.
 
-Issue the following sequence of commands to install the prerequisites and [generate a self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate):
+Issue the following sequence of commands to install the prerequisites and [generate a self-signed SSL certificate](/docs/guides/create-a-self-signed-tls-certificate/):
 
     apt-get install openssl
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/ssl-mail.pem -keyout /etc/ssl/private/ssl-mail.key
 
 Be sure to generate a certificate with a "Common Name" that corresponds to the host name that your users will connect your mail server (e.g. `mail.example.com`).
 
-Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial ssl certificates](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) if you need a commercially verified certificate.
+Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial ssl certificates](/docs/guides/obtain-a-commercially-signed-tls-certificate/) if you need a commercially verified certificate.
 
 You can use any SSL certificate with Postfix. If you already have a commercial certificate or another SSL certificate for your web server, you can use these `.pem` and `.key` files.
 
@@ -89,7 +86,7 @@ You can use any SSL certificate with Postfix. If you already have a commercial c
 
 At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/guides/linux-users-and-groups/).
 
-Consider the [basic email gateway guide](/docs/email/postfix/gateway-ubuntu-10-04-lucid) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
+Consider the [basic email gateway guide](/docs/guides/basic-postfix-email-gateway-on-ubuntu-10-04-lucid/) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 
 ### Configure Mail Delivery
 
@@ -173,7 +170,7 @@ Remember that system user accounts may provide access to other services on the s
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic Email Gateway with Postfix on Ubuntu 10.04 (Lucid)](/docs/email/postfix/gateway-ubuntu-10-04-lucid)
+- [Basic Email Gateway with Postfix on Ubuntu 10.04 (Lucid)](/docs/guides/basic-postfix-email-gateway-on-ubuntu-10-04-lucid/)
 
 
 

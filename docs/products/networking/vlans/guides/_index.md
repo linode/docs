@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: "Follow our Virtual LAN guides to learn how to perform basic tasks using the Linode Cloud Manager, like creating a VLAN, attaching Linodes to your VLAN, viewing your VLAN's networking details, and more."
+title_meta: "Guides and Tutorials for VLANs"
+description: "A collection of guides to help instruct you how to use VLANs, like creating a VLAN, attaching Linodes to your VLAN, viewing your VLAN's networking details, and more."
 tab_group_main:
     weight: 30
 ---
@@ -20,3 +21,5 @@ tab_group_main:
 - [Manually Configuring a VLAN on a Linode](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/): Manually configure an attached VLAN by adjusting a Linode's internal network configuration files.
 
 - [Creating a Private Network Using Linode API and Linode VLAN](/docs/products/networking/vlans/guides/manage-vlans-using-linode-api/): This guide shows you how to create a VLAN and attach Linodes to it using the Linode APIv4.
+
+- [Configure Linux as a Router (IP Forwarding)](/docs/guides/linux-router-and-ip-forwarding/): In this tutorial, connect multiple Compute Instances to the same VLAN and learn how to configure one of them as a router. This allows some or all instances in the private network to share the same public IP address.

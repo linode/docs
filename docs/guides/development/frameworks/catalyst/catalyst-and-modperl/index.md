@@ -1,24 +1,21 @@
 ---
 slug: catalyst-and-modperl
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Catalyst and mod_perl'
 description: 'This guide provides you with step-by-step instructions for installing the Catalyst framework from a CPAN repository so you can build dynamic websites and applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-29
+modified: 2013-09-27
 keywords: ["Catalyst", "dynamic content", "web applications"]
 tags: ["web applications","apache","perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/catalyst-and-modperl/','/websites/frameworks/catalyst-and-modperl/','/development/frameworks/catalyst/catalyst-and-modperl/','/frameworks/catalyst/']
-modified: 2013-09-27
-modified_by:
-  name: Linode
-published: 2010-01-29
-title: 'Catalyst and mod_perl'
 deprecated: true
 ---
 
 The Catalyst web framework is a contemporary Perl-based MVC, or Model View Controller. Like similar projects such as [Django](/docs/frameworks/), [Ruby On Rails](/docs/development/ror/), and [Seaside](/docs/guides/deploy-smalltalk-applications-with-seaside/), Catalyst promotes efficient and rapid development, clear application logic, and web centric development paradigms. If you are used to developing applications with Perl and would like to develop modern web applications, you may consider using the Catalyst framework.
 
-In this document, we outline deploying applications developed with Catalyst using the Apache web server and the `mod_perl` method of running Perl applications embedded in the web server process. Before installing Catalyst, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+In this document, we outline deploying applications developed with Catalyst using the Apache web server and the `mod_perl` method of running Perl applications embedded in the web server process. Before installing Catalyst, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing Catalyst
 
@@ -160,9 +157,8 @@ Congratulations, you have now successfully configured a system for deploying Cat
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Catalyst Web Framework Home Page](http://www.catalystframework.org/)
+- [Catalyst Web Framework Home Page](http://catalyst.perl.org/)
 - [Catalyst Manual](http://search.cpan.org/dist/Catalyst-Manual/)
-- [Catalyst Getting Started Guide](http://dev.catalystframework.org/wiki/#Get_Started)
 
 
 

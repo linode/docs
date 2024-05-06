@@ -1,31 +1,26 @@
 ---
 slug: apache-tomcat-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache Tomcat on Ubuntu 9.10 (Karmic)'
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-23
+modified: 2011-04-29
 keywords: ["apache tomcat ubuntu 9.10", "java", "java ubuntu 9.10", "java servlets ubuntu karmic", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-9-10-karmic/','/development/frameworks/apache-tomcat-on-ubuntu-9-10-karmic/','/frameworks/apache-tomcat/ubuntu-9-10-karmic/','/websites/frameworks/apache-tomcat-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-07-23
-title: 'Apache Tomcat on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You may choose to run application within Tomcat using either the OpenJDK implementation or the Sun Microsystems implementation of the Java development environment.
 
-Before following this guide, ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/guides/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
+Before following this guide, ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
 
 ## Choose and Install Java Implementation
 

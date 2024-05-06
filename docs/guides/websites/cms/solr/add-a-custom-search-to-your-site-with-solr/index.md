@@ -1,20 +1,13 @@
 ---
 slug: add-a-custom-search-to-your-site-with-solr
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Add a Custom Search to your Site with Solr'
 description: 'Index and search your site''s content with Apache Solr, a custom, fast, enterprise-grade, open source search solution.'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-09-13
 keywords: ["solr", "enterprise search", "lucene", "web search"]
 tags: ["linux","java","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-13
-modified: 2017-09-13
-modified_by:
-  name: Linode
-title: 'Add a Custom Search to your Site with Solr'
-contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940
 external_resources:
   - '[Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/)'
 aliases: ['/websites/cms/solr/add-a-custom-search-to-your-site-with-solr/','/websites/cms/add-a-custom-search-to-your-site-with-solr/']
@@ -26,14 +19,14 @@ Apache Solr is an open source search platform that provides administrators with 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system and package repositories and install `wget`.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Java
@@ -128,7 +121,6 @@ Solr listens on port `8983` by default. Open the port to allow access to the web
 **iptables**
 
     iptables -A INPUT -p tcp --dport 8983 -j ACCEPT -m comment --comment "Solr port"
-
 {{< note >}}
 Save your iptables rule using *iptables-persistent*, otherwise it will be lost on the next reboot.
 {{< /note >}}
