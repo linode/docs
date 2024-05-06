@@ -1,17 +1,14 @@
 ---
 slug: beginners-guide-to-salt
-author:
-  name: Linode
-  email: docs@linode.com
+title: A Beginner's Guide to Salt
 description: 'A look into Salt''s primary components, features, and configurations for the new SaltStack user'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-10-16
+modified: 2019-01-02
 keywords: ["salt", "automation", "saltstack", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: ABeginnersGuidetoSalt.png
-published: 2018-10-16
-title: A Beginner's Guide to Salt
 external_resources:
  - '[SaltStack Documentation](https://docs.saltproject.io/)'
 aliases: ['/applications/configuration-management/beginners-guide-to-salt/','/applications/configuration-management/salt/beginners-guide-to-salt/']
@@ -63,9 +60,8 @@ The execution modules that Salt makes available represent system administration 
 -   Installing and uninstalling [software](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.pkg.html)
 
 -   Editing or creating configuration [files](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.file.html#module-salt.modules.file)
-
 {{< note >}}
-You can also [write your own](/docs/applications/configuration-management/create-a-salt-execution-module/) execution modules.
+You can also [write your own](/docs/guides/create-a-salt-execution-module/) execution modules.
 {{< /note >}}
 
 ### cmd.run
@@ -182,7 +178,6 @@ Groups of minions are specified under the environment, and states are listed for
 If you run the `state.apply` function with no arguments, then Salt will inspect the top file and apply all states within it according to the mapping you've created:
 
     salt '*' state.apply
-
 {{< note >}}
 This action is colloquially known as a [*highstate*](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt1.html#running-highstate).
 {{< /note >}}
@@ -319,7 +314,6 @@ install_apache:
     - name: apache
     {% endif %}
 {{< /file >}}
-
 {{< note >}}
 In addition to Salt's documentation on Jinja, the [official Jinja documentation](http://jinja.pocoo.org/docs/2.10/templates/) also details the template syntax.
 {{< /note >}}
@@ -332,6 +326,6 @@ Beacons can trigger [reactors](https://docs.saltproject.io/en/latest/topics/reac
 
 ## Getting Started with Salt
 
-Now that you're familiar with some of Salt's basic terminology and components, move on to our guide [Getting Started with Salt - Basic Installation and Setup](https://www.linode.com/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) to set up a configuration to start running commands and provisioning minion servers.
+Now that you're familiar with some of Salt's basic terminology and components, move on to our guide [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) to set up a configuration to start running commands and provisioning minion servers.
 
 The SaltStack documentation also contains a page of [best practices](https://docs.saltproject.io/en/latest/topics/best_practices.html) to be mindful of when working with Salt. You should review this page and implement those practices into your own workflow whenever possible.

@@ -1,18 +1,15 @@
 ---
 slug: lamp-on-ubuntu-14-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LAMP on Ubuntu 14.04'
 description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 14.04 long term support (LTS) system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-01-28
+modified: 2015-12-07
 keywords: ["ubuntu lamp", "ubuntu 14.04 lamp", "lamp install", "ubuntu web server", "apache", "mysql", "php", "ubuntu 14.04"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-on-ubuntu-14-04/','/websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/','/web-servers/lamp/lamp-on-ubuntu-14-04/','/websites/lamp/lamp-server-on-ubuntu-14-04/']
-modified: 2015-12-07
-modified_by:
-  name: Alex Fornuto
-published: 2015-01-28
-title: 'LAMP on Ubuntu 14.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -23,6 +20,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
 ---
 
 ![Lamp on Ubuntu 14.04](lamp-on-ubuntu-1404-title-graphic.jpg "Lamp on Ubuntu 14.04")
@@ -30,12 +28,12 @@ relations:
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows you how to install a LAMP stack on an Ubuntu 14.04 (LTS) server.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
 2.  Update your system:
 
@@ -103,7 +101,7 @@ There are several different ways to set up virtual hosts; however, below is the 
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 {{< /note >}}
 
@@ -116,7 +114,7 @@ The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained loggi
 
         sudo a2ensite example.com.conf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you later need to disable your website, run:
 
 a2dissite example.com.conf
@@ -182,7 +180,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure the lines above are uncommented. Commented lines begin with a semicolon (**;**).
 {{< /note >}}
 

@@ -1,18 +1,13 @@
 ---
 slug: how-to-monitor-containers-with-the-elastic-stack
-author:
-  name: Tyler Langlois
-  email: ty@tjll.net
-description: 'This tutorial will explain how to configure Filebeat and Metricbeat to monitor Docker container logs and metrics to be stored in Elasticsearch and visualized in Kibana.'
-og_description: 'Monitor Docker containers using the Elastic Stack.'
+title: Container Instrumentation with the Elastic Stack
+description: 'This guide will show you how to configure Filebeat and Metricbeat to montior Docker container logs & metrics for visualization with Elastic Stack in Kibana.'
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2019-02-10
 keywords: ["elastic", "filebeat", "metricbeat", "elasticsearch", "kibana", "docker", "container", "nginx"]
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-10
-modified_by:
-  name: Linode
-published: 2019-02-10
-title: Container Instrumentation with the Elastic Stack
 external_resources:
 - '[Filebeat Modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html)'
 - '[Metricbeat Modules](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html)'
@@ -27,21 +22,13 @@ The [Elastic Stack](https://www.elastic.co/products) can monitor a variety of da
 
 ## Before you Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running a recent Linux distribution (such as Ubuntu 18.04 LTS or CentOS 7), including setting the hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over SSH for the rest of this guide:
+1.  Follow our [UFW Guide](/docs/guides/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/guides/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over SSH for the rest of this guide:
 
         sudo ufw allow ssh
-
-1.  Ensure your system is up to date. On Debian-based systems, use:
-
-        sudo apt update && sudo apt upgrade
-
-    For rpm-based systems such as CentOS, use:
-
-        sudo yum update
 
 1.   Install Docker on your Linode by following [the installation guide from the Docker project](https://docs.docker.com/).
 
@@ -242,7 +229,7 @@ The following example demonstrates how Filebeat and Metricbeat automatically cap
 
     - Replace `<user@ip-address>` with the username and IP address of your Linode.
     - This forwards port 5601 locally to port 5601 on your Linode.
-    - A comprehensive guide to using SSH tunnels on a variety of platforms is available in our [Create an SSH Tunnel for MySQL guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/).
+    - A comprehensive guide to using SSH tunnels on a variety of platforms is available in our [Create an SSH Tunnel for MySQL guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/).
 
 1.  Browse to `http://localhost:5601` in your browser, which will display the following initial landing page for Kibana.
 
@@ -254,11 +241,11 @@ The following example demonstrates how Filebeat and Metricbeat automatically cap
 
 1.  Index Patterns dictate how Kibana understands indices that are present in Elasticsearch. In order for some visualizations to display properly, a default index pattern must first be configured. Select **filebeat-\*** on the left side of the page to configure the filebeat-* index pattern.
 
-    ![Kibana 6 Index Patterns](./kibana-filebeat-index.png "Kibana 6 Index Patterns")
+    ![Kibana 6 Index Patterns](kibana-filebeat-index.png "Kibana 6 Index Patterns")
 
 1.  Click the **star icon** in the upper right corner of the page to set this index pattern as the default in Kibana.
 
-    ![Kibana 6 Default Index Pattern](./kibana-filebeat-default.png "Kibana 6 Default Index Pattern")
+    ![Kibana 6 Default Index Pattern](kibana-filebeat-default.png "Kibana 6 Default Index Pattern")
 
     Kibana is now properly configured with a default index pattern.
 

@@ -1,39 +1,36 @@
 ---
 slug: check-linux-ports-in-use
-author:
-  name: Martin Heller
-  email: martin.heller@gmail.com
-description: 'Tools like netstat, ss, and lsof can help you find which ports are in use on your Linux system. This information helps you monitor your system''s active connections and ensure your system is secure. Use this guide for an introduction to these common Linux networking tools and find links to guides that dive a little bit deeper into each one.'
-og_description: 'Tools like netstat, ss, and lsof can help you find which ports are in use on your Linux system. This information helps you monitor your system''s active connections and ensure your system is secure. Use this guide for an introduction to these common Linux networking tools and find links to guides that dive a little bit deeper into each one.'
+title: "Checking Open and Listening Ports on Linux Using netstat and ss"
+title_meta: "Check Open and Listening Ports on Linux Using netstat and ss"
+description: "Tools like netstat, ss, & lsof can help you find which ports are in use on your Linux system. Use this guide for an introduction to Linux tools. ✓ Read now!"
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2021-02-25
+modified: 2022-01-14
 keywords: ['linux ports in use']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-25
 tags: ["networking","linux"]
-modified_by:
-  name: Linode
-title: "How to Check Which Ports Are in Use on Your Linux System"
-h1_title: "How to Check Which Ports Are in Use on Your Linux System"
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
 ---
 
-One step in securing a Linux computer system is identifying which ports are active. Your system's active ports give you information about which outside applications may be connected to your system. You can also discover if you are unintentionally exposing an application or service to the internet, like a MySQL database. There are several Linux tools that help you discover which ports are in use and identify both ends of active communications. This guide introduces three common tools you can use find the active ports on your Linux server or computer with links to guides that dive deeper into each tool.
+One step in securing a Linux computer system is identifying which ports are active. Your system's active ports give you information about which outside applications may be connected to your system. You can also discover if you are unintentionally exposing an application or service to the internet, like a MySQL database. There are several Linux tools that help you discover which ports are in use and identify both ends of active communications. This guide introduces three common tools you can use with links to guides that dive deeper into each tool.
 
 ## What is a Port in Computer Networking?
 
-Service names and port numbers are used to distinguish between different services that run over transport protocols. Common transport protocols are TCP, UDP, DCCP, and SCTP. These protocols enable communication between applications by establishing a connection and ensuring data is transmitted successfully.  Well-known port assignments, such as HTTP at port 80 over TCP and UDP, are listed at the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml). These port assignments help distinguish different types of network traffic across the same connection.
+Service names and port numbers are used to distinguish between different services that run over transport protocols. Common transport protocols are TCP, UDP, DCCP, and SCTP. These protocols enable communication between applications by establishing a connection and ensuring data is transmitted successfully. Well-known port assignments, such as HTTP at port 80 over TCP and UDP, are listed at the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml). These port assignments help distinguish different types of network traffic across the same connection.
 
-## Which Linux System Ports Are in Use?
+## How to Check Which Linux Ports Are in Use?
 
 Three tools to help you check ports in use on a Linux system are:
+
 - *netstat*: This tool shows your server's network status.
 -  *ss*: You can view socket statistics with the ss tool. For example, ss allows you to monitor TCP, UDP, and UNIX sockets.
 - *lsof*: This Linux utility lists open files. Since everything on a Linux system can be considered a file, lsof provides a lot of information on your entire system.
 
+While all three tools help you learn how to check if a port is open in Linux, each program has its own advantages and disadvantages. See the following examples to identify which tool is the best fit for your purpose.
+
 ### Using netstat
 
-This tool is great for inspecting the following areas of your Linux system:
+The netstat tool is great for inspecting the following areas of your Linux system:
 
 - Unix sockets and network connections
 - Routing tables
@@ -41,9 +38,9 @@ This tool is great for inspecting the following areas of your Linux system:
 - Network protocols
 - Multicast group membership
 
-Running `netstat` without any options displays all open sockets and network connections, which can generate a *lot* of output. You can control the output using netstat's command-line options. For example, to view the PID and program name for a system’s listening TCP connections, run netstat with the following command-line options:
+Running `netstat` without any options displays all open sockets and network connections. While this checks if a port is open in Linux, it can generate a *lot* of output. You can control the output using netstat's command-line options. For example, to view the PID and program name for a system’s listening TCP connections, run netstat with the following command-line options:
 
-        netstat -ltp
+    netstat -ltp
 
 The output resembles the following:
 
@@ -63,11 +60,11 @@ To learn how to install netstat, interpret its output, and view common command l
 
 ### Using ss
 
-The [**ss**](https://www.linode.com/docs/guides/ss/) tool was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
+Another way to have Linux check ports is via the [**ss**](/docs/guides/ss/) tool. `ss` was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
 
-Running the `ss` with no options displays TCP, UDP, and UNIX sockets. Similar to netstat, restrict the ss command's output by using command-line options. For example, to view all listening and non-listening TCP sockets issue the following command:
+Running the `ss` with no options displays TCP, UDP, and UNIX sockets. Similar to netstat, this unrestricted list can get quite big on busy machines, so it is useful to restrict the ss command's output by using command-line options. For example, to view all listening and non-listening TCP sockets issue the following command:
 
-        ss -t -a
+    ss -ta
 
 The output resembles the following:
 
@@ -88,13 +85,17 @@ LISTEN        0          511                        *:http                      
 LISTEN        0          128                     [::]:ssh                        [::]:*
 {{</ output >}}
 
+Using just the `-l` parameter tells ss to list all Linux's listening ports, which are omitted by default, making it easier to check for listening ports in Linux.
+
 To take a deeper dive into the ss tool, read our [Learning to Use the ss Tool to its Full Potential](/docs/guides/ss/) guide. This guide provides commands specific to each protocol, commands to view general statistics about a system's current connections, and ways to filter your output.
 
 ### Using lsof
 
-Since everything on a Linux system can be considered a file, the **lsof** tool can report on many aspects of a system, including open network interfaces and network connections. The lsof tool is preinstalled on many Linux distributions, so you may consider using it before a tool you need to install. One unique feature of the lsof tool is *repeat mode**. This mode allows you to run the `lsof` command continuously on a timed interval. When inspecting your system to find information about which ports are in use, lsof can return information about which user and processes are using a specific port. For example, when working with a local development environment you may want to find which localhost ports are currently in use. Use the following command to retrieve this information:
+Since everything on a Linux system can be considered a file, the **lsof** tool can report on many aspects of a system, including open network interfaces and network connections. By default, it will list open ports in Linux. The lsof tool is preinstalled on many Linux distributions, so you may consider using it before a tool you need to install.
 
-        lsof -i@localhost
+While one of the most frequent uses of `lsof` is determining which program listens to a given TCP port, one unique feature of the lsof tool is *repeat mode**. This mode allows you to run the `lsof` command continuously on a timed interval. When inspecting your system to find information about which ports are in use, lsof can return information about which user and processes are using a specific port. For example, when working with a local development environment you may want to find which localhost ports are currently in use. Use the following command to retrieve this information:
+
+    lsof -i@localhost
 
 The output returns a similar response:
 
@@ -108,4 +109,4 @@ hugo      57981     jdoe 8041u  IPv4 0x3dab8c45a423853b      0t0  TCP localhost:
 hugo      57981     jdoe 8042u  IPv4 0x3dab8c45a3a8e2db      0t0  TCP localhost:bmc_patroldb->localhost:51706 (ESTABLISHED)
 {{</ output >}}
 
-To learn more about the `lsof` command read our [How to List Open Files with lsof](/docs/guides/lsof/) guide. This guide provides information about command-line options, the anatomy of the lsof output, and filtering your output with regular expressions.
+`lsof` is a powerful diagnostic tool capable of a significant number of ways that you can combine its command line options to troubleshoot various issues. To learn more about the `lsof` command read our [How to List Open Files with lsof](/docs/guides/lsof/) guide. This guide provides information about command-line options, the anatomy of the lsof output, and filtering your output with regular expressions.

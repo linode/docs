@@ -1,17 +1,13 @@
 ---
 slug: connect-metabase-with-mysql-for-data-exploration
-author:
-  name: Sam Foo
-  email: docs@linode.com
-description: 'Metabase is a data exploration tool that makes analytics accessible to everyone even without knowledge of SQL. Connect Metabase to a local MySQL server and deploy through a reverse proxy on NGINX using this guide.'
-og_description: 'Metabase provides a clean interface to query data on your browser. Metabase offers functionality to analyze data without SQL, create dashboards, and track metrics. This guide shows how to connect MySQL to Metabase then deploy on NGINX through a reverse proxy'
+title: 'Connect Metabase with MySQL for Data Exploration'
+description: 'This guide shows you how to connect to Metabase, a data exploration tool that makes analytics easy, to a local MySQL server and deploy through a reverse proxy on NGINX.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-02-22
+modified: 2018-12-10
 keywords: ["visualization", "database", "query", "What is Metabase", "metabase", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-10
-modified_by:
-  name: Linode
-published: 2018-02-22
-title: 'Connect Metabase with MySQL for Data Exploration'
 external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
  - '[Metabase](https://metabase.com/)'

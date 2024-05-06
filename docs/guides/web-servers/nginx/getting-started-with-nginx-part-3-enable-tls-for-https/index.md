@@ -1,20 +1,15 @@
 ---
 slug: getting-started-with-nginx-part-3-enable-tls-for-https
-author:
-  name: Linode
-  email: docs@linode.com
-description: "Install a TLS certificate into NGINX for HTTPS access."
+title: "Getting Started with NGINX (Part 3): Enable TLS/SSL for HTTPS"
+title_meta: "Getting Started with NGINX: Enable TLS/SSL"
+description: "This is part three in our guide to Getting Started with Nginx where you will enable TLS/SSL for HTTPS on your web server and installing a SSL Certificate."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-02-09
 keywords: ["ssl", "tls", "nginx", "https", "certificate"]
 tags: ["ssl","web server","security","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl/enable-ssl-for-https-configuration-on-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','/security/ssl/ssl-certificates-with-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','/web-servers/nginx/enable-tls-on-nginx-for-https-connections/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','/websites/ssl/ssl-certificates-with-nginx.cfm/','/web-servers/nginx/configuration/ssl/','/guides/enable-tls-on-nginx-for-https-connections/']
-modified: 2018-02-09
-modified_by:
-  name: Linode
-published: 2018-02-09
-title: "Getting Started with NGINX: Enable TLS/SSL"
-h1_title: "Getting Started with NGINX (Part 3): Enable TLS/SSL for HTTPS"
-enable_h1: true
+aliases: ['/security/ssl/enable-ssl-for-https-configuration-on-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','/security/ssl/ssl-certificates-with-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','/web-servers/nginx/enable-tls-on-nginx-for-https-connections/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','/websites/ssl/ssl-certificates-with-nginx.cfm/','/web-servers/nginx/configuration/ssl/','/guides/enable-tls-on-nginx-for-https-connections/']
 ---
 
 ![Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](getting-started-with-nginx-part-3-smg.jpg)
@@ -30,7 +25,7 @@ A single NGINX installation can host multiple websites and any number of them ca
 
 * You will need root access to the system, or a user account with `sudo` privileges.
 
-* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. Alternatively, use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/security/ssl/create-a-self-signed-tls-certificate) or a [certificate signing request](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate).
+* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. Alternatively, use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/guides/create-a-self-signed-tls-certificate/) or a [certificate signing request](/docs/guides/obtain-a-commercially-signed-tls-certificate/).
 
 * If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. Verify in the output of `nginx -V`.
 

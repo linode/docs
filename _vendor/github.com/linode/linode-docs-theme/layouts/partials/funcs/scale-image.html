@@ -4,4 +4,4 @@
 {{ $resized1x := $.img.Resize (printf $imgFormatOptions $.width1x) }}
 {{ $resized2x := $.img.Resize (printf $imgFormatOptions $width2x) }}
 
-{{ return (dict "resized1x" $resized1x "resized2x" $resized2x  )}} 
+{{ return (dict "resized1x" $resized1x "resized2x" $resized2x  ) }}

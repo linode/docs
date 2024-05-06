@@ -1,18 +1,15 @@
 ---
 slug: running-graphic-software-xforwarding-debian
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Run Graphic Software on Your Linode with X-Forwarding on Debian'
 description: Forward the X11 Server Through SSH to Run GUI Applications from Your Linode
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-04-10
+modified: 2014-04-25
 keywords: ["x11", "debian", "debian 7", " debian 8", "x-forwarding", "ssh", "x over ssh"]
 tags: ["debian", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/remote-desktops/running-graphic-software-on-your-linode-with-xforwarding-on-debian-7/','/applications/remote-desktop/running-graphic-software-xforwarding-debian/','/remote-desktops/x-forwarding-debian-7/']
-modified: 2014-04-25
-modified_by:
-  name: Alex Fornuto
-published: 2014-04-10
-title: 'Run Graphic Software on Your Linode with X-Forwarding on Debian'
 external_resources:
  - '[Xming](http://www.straightrunning.com/XmingNotes/)'
  - '[Cygwin/X](http://x.cygwin.com/)'
@@ -28,7 +25,7 @@ relations:
 On occasion you may want to run an application that requires a graphic interface from your Linode. By using X forwarding, this is easy to accomplish.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install X11 on your Linode
@@ -85,8 +82,8 @@ Connecting from a Windows machine will depend on what software you have chosen. 
         sudo apt-get install iceweasel
         iceweasel &
 
-    [![Iceweasel, running on a Linode](1632-xforwarding3_small.png)](1633-xforwarding_3.png)
+    ![Iceweasel, running on a Linode](1633-xforwarding_3.png)
 
- {{< note >}}
+{{< note >}}
 More intense graphic software may lag when running in this fashion. Using a Linode in a data center geographically close to you can help reduce latency.
 {{< /note >}}

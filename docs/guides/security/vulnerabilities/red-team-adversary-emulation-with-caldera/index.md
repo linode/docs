@@ -1,20 +1,13 @@
 ---
 slug: red-team-adversary-emulation-with-caldera
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
+title: "Red Team Adversary Emulation with Caldera"
 description: 'This guide introduces you to Red Team operations takes you through the process of setting up and utilizing Caldera for adversary emulation.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Red Team Adversary Emulation with Caldera"
-h1_title: "Red Team Adversary Emulation with Caldera"
-enable_h1: true
-contributor:
-  name: HackerSploit
 external_resources:
 - '[Official Caldera documentation](https://caldera.readthedocs.io/en/latest/index.html)'
 ---
@@ -326,7 +319,7 @@ To deploy an agent:
 
 1. Choose an agent (Sandcat is a good one to start with) and a platform (operating system) as highlighted in the following screenshots.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note: Sandcat, also referred to as 54ndc47 is a remote access agent written in GoLang for cross platform compatibility, and is the agent we will deploy on the endpoint(s) we want to execute our operations against.
 {{< /note >}}
 

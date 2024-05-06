@@ -1,17 +1,14 @@
 ---
 slug: create-a-salt-execution-module
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Create a Salt execution module.'
-keywords: ['salt','execution module','saltstack']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "Create a Salt Execution Module"
+description: 'This guide provides you with step-by-step instructions for creating a Salt execution module, which is a Python module that runs on a Salt minion. '
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-10-22
 modified: 2019-01-02
-modified_by:
-  name: Linode
+keywords: ['salt','execution module','saltstack']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: CreateaSaltExecutionModule.png
-title: "Create a Salt Execution Module"
 external_resources:
 - '[Writing Execution Modules](https://docs.saltproject.io/en/latest/ref/modules/)'
 - '[Execution of Salt Modules From Within States](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.module.html#execution-of-salt-modules-from-within-states)'
@@ -23,10 +20,10 @@ A Salt *execution module* is a Python module that runs on a Salt minion. It perf
 
 ## Before You Begin
 
-If you haven't already, set up a Salt master and at least one Salt minion. You can follow the first few steps of our [Getting Started with Salt - Basic Installation and Setup](https://www.linode.com/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide.
+If you haven't already, set up a Salt master and at least one Salt minion. You can follow the first few steps of our [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prepare Salt

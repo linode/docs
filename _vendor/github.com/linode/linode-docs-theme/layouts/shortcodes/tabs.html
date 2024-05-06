@@ -1,0 +1,26 @@
+{{- $class := .Get "class" | default "" -}}
+{{/* overflow-anchor: none; greatly reduces flicker in Chrome when content in tabs above expands when active. */}}
+<div
+  x-cloak
+  x-data="lncTabs()"
+  class="{{ $class }}"
+  style="overflow-anchor: none;"
+  x-init="initTabs({{ $.Ordinal }})"
+  x-ref="tabs"
+  id="tabs-{{ .Ordinal }}">
+  <nav
+    class="-mb-px flex overflow-x-auto is-scroll-x"
+    aria-label="Tabs"
+    x-ref="tabsNav">
+    {{ .Inner }}
+  </nav>
+  <div class="border border-gray-500 p-4">
+    {{- range (.Scratch.Get "tabsContent") -}}
+      <div
+        x-ref="tabs-content-{{ .ordinal }}"
+        data-testid="tabs-content-{{ .ordinal }}">
+        {{ .content }}
+      </div>
+    {{- end -}}
+  </div>
+</div>

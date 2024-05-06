@@ -1,26 +1,18 @@
 ---
 slug: open-web-analytics-install-and-launch-on-your-server
-author:
-    name: Linode Community
-    email: contribute@linode.com
+title: 'Open Web Analytics (OWA): Install & Launch on Your Server'
 description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
-og_description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
+authors: ["Douglas Colby"]
+contributors: ["Douglas Colby"]
+published: 2016-01-05
 keywords: ['open web analytics','owa','mysql','analytics']
 tags: ["centos","debian","ubuntu","analytics","statistics","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-01-05
-modified: 2016-01-05
-modified_by:
-    name: Alex Fornuto
-title: 'Open Web Analytics (OWA): Install & Launch on Your Server'
-contributor:
-    name: Douglas Colby
 external_resources:
  - '[OWA Website](http://www.openwebanalytics.com)'
  - '[OWA Forum](http://www.openwebanalytics.com/?page_id=4)'
 aliases: ['/uptime/analytics/open-web-analytics-install-and-launch-on-your-server/']
 ---
-
 
 Open Web Analytics (OWA) is an open-source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
 
@@ -28,13 +20,13 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
 1.  This guide assumes that you have your Linode already set up and running, that you have followed:
 
-     - The [Getting Started](/docs/getting-started) guide.
-     - The [Securing Your Server](/docs/security/securing-your-server) guides.
-     - That the Linode's [hostname is set](/docs/getting-started#setting-the-hostname) and has a FQDN.
+     - The [Getting Started](/docs/products/platform/get-started/) guide.
+     - The [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+     - That the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname) and has a FQDN.
 
 
-    {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the **Networking** tab next to your public IP address.
 {{< /note >}}
@@ -56,7 +48,7 @@ Your server must be configured with a fully qualified domain name (FQDN) and not
 
             yum install httpd php php-mysql mysql-server mariadb-server
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command is designed to work with CentOS 6, which uses MySQL as the default database and CentOS 7 which uses MariaDB. You will get a notice when installing that the other package is not available.
 {{< /note >}}
 
@@ -130,7 +122,7 @@ FLUSH PRIVILEGES;
 
         wget https://github.com/padams/Open-Web-Analytics/archive/1.5.7.tar.gz
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Version 1.5.7 is the current version and may be different by the time you read this. Please check [The Open Web Analytics](http://www.openwebanalytics.com/) site for the latest information.
 {{< /note >}}
 
@@ -165,15 +157,15 @@ Version 1.5.7 is the current version and may be different by the time you read t
 
 2.  After clicking on **Let's Get Started**, you should see a configuration page for your OWA installation. OWA will automatically fill in the first field with the path to your OWA installation. You will need to fill in the other fields on the page with the information you set in the MySQL CLI:
 
-    [![Open Web Analytics set up screen.](owa-install_small.png)](owa-install.png)
+    ![Open Web Analytics set up screen.](owa-install.png)
 
 3.  Click **Continue...**.
 
 4.  Create a user account and define a domain to track. You will log in to see your OWA statistics through this user account.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This process will display your password in plaintext once complete. Be careful if performing these steps in a public location.
-{{< /caution >}}
+{{< /note >}}
 
 ## Using OWA
 
@@ -191,9 +183,9 @@ You will need to create site profiles and add JavaScript or PHP code to your web
 
 5.  On the resulting page you will see near the top a section named "Add a New Tracked Site Profile". Enter the domain name of the site you want to track and click Save Profile. The other two fields are for your information only and are, therefore, optional.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 You must click "Save Profile" before trying to enter any of the settings below this button. Failure to do so will result in a  blank white page and your new site not being added. Recovery simply requires a click of the back button in your browser.
-{{< /caution >}}
+{{< /note >}}
 
 6.  Click on "Reporting" in the top left corner to return to the Sites Roster page. In the list of tracked sites, find your new site and click "Get Tracking Code".
 

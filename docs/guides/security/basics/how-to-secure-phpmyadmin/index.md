@@ -1,19 +1,14 @@
 ---
 slug: how-to-secure-phpmyadmin
-author:
-  name: Hackersploit
+title: Securing phpMyAdmin
+title_meta: How to Secure phpMyAdmin
 description: 'This guide shows how to secure phpMyAdmin. Learn how to change aliases, set up password authentication, restrict access to specific IP addresses, and more.'
-og_description: 'This guide shows how to secure phpMyAdmin. Learn how to change aliases, set up password authentication, restrict access to specific IP addresses, and more.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["apache security", "apache best practices security", "secure phpMyAdmin config", "phpMyAdmin security"]
 tags: ["security","web server","apache", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: How to Secure phpMyAdmin
-h1_title: Securing phpMyAdmin
-enable_h1: true
 aliases: ['/security/basics/how-to-secure-phpmyadmin/']
 image: Securing_phpMyAdmin.png
 ---
@@ -62,7 +57,6 @@ The three pieces of software required are also commonly referred to as a LAMP st
     Optionally, install additional cURL, JSON, and CGI support:
 
         sudo apt install php-curl php-json php-cgi
-
 {{< note >}}
 This steps in this guide were tested only on Ubuntu 20.04. Different distros may require additional steps to successfully complete installation.
 {{< /note >}}
@@ -88,7 +82,6 @@ It is always recommended to create a separate database user for each application
 1. Exit MySQL by running the following command:
 
         exit
-
 {{< note >}}
 It is additionally recommended that root logins are disabled.
 {{< /note >}}
@@ -140,7 +133,7 @@ After restarting Apache2, the homepage for phpMyAdmin, will be freely accessible
 Login can be completed using the credentials that were created at the prompt when installing phpMyAdmin.
 
 {{< note >}}
-While not included in this guide or a base installation of phpMyAdmin, it is strongly recommended that [SSL/TLS is installed](https://www.linode.com/docs/guides/ssl-apache2-debian-ubuntu/) before entering any credentials over `http`, using only `https` on port `443` instead.
+While not included in this guide or a base installation of phpMyAdmin, it is strongly recommended that [SSL/TLS is installed](/docs/guides/ssl-apache2-debian-ubuntu/) before entering any credentials over `http`, using only `https` on port `443` instead.
 {{< /note >}}
 
 ## Changing phpMyAdmin Alias

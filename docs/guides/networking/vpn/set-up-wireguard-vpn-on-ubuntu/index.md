@@ -1,20 +1,16 @@
 ---
 slug: set-up-wireguard-vpn-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Set Up WireGuard VPN on Ubuntu"
 description: 'Wireguard encrypts your traffic quickly and safely, this guide will show you how to set up WireGuard VPN server and clients.'
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
-keywords: ['wireguard','vpn', 'ubuntu']
-tags: ["ubuntu","networking","security","vpn"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Sunit Nandi"]
+contributors: ["Sunit Nandi"]
 published: 2017-11-14
 modified: 2019-01-22
-modified_by:
-  name: Linode
-title: "Set Up WireGuard VPN on Ubuntu"
-contributor:
-  name: Sunit Nandi
+keywords: ['wireguard','vpn', 'ubuntu']
+bundles: ['network-security']
+tags: ["ubuntu","networking","security","vpn"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:
     platform:
         key: setup-wireguard-vpn
@@ -28,29 +24,36 @@ aliases: ['/networking/vpn/set-up-wireguard-vpn-on-ubuntu/']
 The WireGuard configuration is as simple as setting up SSH. A connection is established by an exchange of public keys between server and client. Only a client that has its public key in its corresponding server configuration file is allowed to connect. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
 
 This guide will configure a simple peer connection between a Linode running Ubuntu 18.04, and a client. The client can be either your local computer or another Linode.
-
-{{< caution >}}
+{{< note type="alert" >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
 - You will need root access to your Linode, or a user account with `sudo` privilege.
-- Set your system's [hostname](/docs/getting-started/#set-the-hostname).
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 {{< note >}}
-The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/platform/update-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/platform/update-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
+The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/products/compute/compute-instances/guides/manage-the-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/products/compute/compute-instances/guides/manage-the-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
 {{< /note >}}
 
 ## Install WireGuard
 
 1.  Add the Wireguard repository to your sources list. Apt will then automatically update the package cache.
 
-        sudo add-apt-repository ppa:wireguard/wireguard
+        echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable-wireguard.list
+        printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' > /etc/apt/preferences.d/limit-unstable
 
-1.  Install Wireguard. The `wireguard` package will install all necessary dependencies.
+1.  Ubuntu 18.04 ships with Linux kernel 4.15, so you need to install the hardware-enablement kernel first (HWE), which installs kernel 5.4 on your system.
 
-        sudo apt install wireguard
+       sudo apt update
+       sudo apt install linux-generic-hwe-18.04-edge
+
+1.  Restart the Ubuntu server and install WireGuard. Update the packages and install WireGuard and WireGuard tools. DKMS (Dynamic Kernel Module Support) will build the WireGuard kernel module.
+
+        sudo shutdown -r now
+        sudo apt install wireguard-dkms wireguard-tools
+
 
     DKMS will then build the Wireguard kernel module. If successful, you'll see the following output:
 
@@ -69,7 +72,7 @@ Setting up wireguard (0.0.20181218-wg1~bionic) ...
 Processing triggers for libc-bin (2.27-3ubuntu1) ...
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the installation completes but the output does not appear, your kernel is most likely not configured correctly. To double check, issue the `lsmod | grep wireguard` command. Its output should not be blank. Refer to the previous section to troubleshoot.
 {{< /note >}}
 
@@ -120,7 +123,7 @@ SaveConfig = true
 
         wg-quick up wg0
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `wg-quick` is a convenient wrapper for many of the common functions in `wg`. You can turn off the wg0 interface with `wg-quick down wg0`
 {{< /note >}}
 
@@ -163,6 +166,11 @@ wg0: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1420
 
 The process for setting up a client is similar to setting up the server. When using Ubuntu as your client's operating system, the only difference between the client and the server is the contents of the configuration file. If your client uses Ubuntu, follow the steps provided in the above sections and in this section. For installation instructions on other operating systems, see the [WireGuard docs](https://www.wireguard.com/install/).
 
+{{< note >}}
+You also need to install the `openresolv` package on the client to configure DNS server `sudo apt install openresolv`.
+{{< /note >}}
+
+
 1.  Generate a key pair for the client if you have not already:
 
         umask 077
@@ -178,7 +186,7 @@ Address = 10.0.0.2/24, fd86:ea04:1115::5/64
 
 ## Connect the Client and Server
 
-There are two ways to add peer information to WireGuard; this guide will demonstrate both methods.
+There are two ways to add peer information to WireGuard; this guide demonstrates both methods.
 
 {{< note >}}
 Stop the interface with `sudo wg-quick down wg0` on both the client and the server.

@@ -1,30 +1,27 @@
 ---
 slug: using-fetchmail-to-retrieve-email
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Manage email retrieval via multiple protocols with Fetchmail.'
+title: Using Fetchmail to Retrieve Email
+description: 'Fetchmail is a classic Linux utility used to fetch email from a remote server. This guide shows how to use this with multiple mail protocols, such as IMAP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-07
+modified: 2013-09-11
 keywords: ["mail", "fetchmail", "unix", "esr", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/clients/using-fetchmail-to-retrieve-email/','/email/fetchmail/']
-modified: 2013-09-11
-modified_by:
-  name: Linode
-published: 2010-01-07
-deprecated: true
-title: Using Fetchmail to Retrieve Email
 external_resources:
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
 tags: ["email"]
+deprecated: true
 ---
 
 ![Using Fetchmail to Retrieve Email](using-fetchmail-to-retrieve-email.jpg "Using Fetchmail to Retrieve Email")
 
 The `fetchmail` program is a classic UNIX and Unix-like utility used to retrieve email from remote servers and deliver it to local users on a server. There are a number of different scenarios where fetchmail is used. Fetchmail is a popular tool for manually downloading email from a POP or IMAP server for personal use on a local machine. Another common application uses fetchmail to create an "email gateway," where email is collected from a number of different accounts or from a large centralized server and provided to the user in a manageable situation.
 
-If you're new to Linode we always recommend completing our [getting started guide](/docs/getting-started/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/platform/billing-and-support/linode-beginners-guide/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
+If you're new to Linode we always recommend completing our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/products/compute/compute-instances/faqs/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
 
 ## Installing Fetchmail
 
@@ -79,7 +76,7 @@ In the first specification, fetchmail is told to check the `mail.example.com` se
 
 In the second example, a single account (i.e. `betty`) is retrieved from the remote server (i.e. `mail.dexample.org`) and passed to the MDA `procmail` utility. Additionally, account has the `sslproto` option is enabled to encrypt this traffic using `ssl`.
 
-Fetchmail requires that the `~/.fetchmailrc` file have the [access permissions](/docs/tools-reference/linux-users-and-groups/) of 600. Permissions of 600 equate to read and writeable by the user account which "owns" the file with no permissions granted to group or other users. To achieve this, issue the following command:
+Fetchmail requires that the `~/.fetchmailrc` file have the [access permissions](/docs/guides/linux-users-and-groups/) of 600. Permissions of 600 equate to read and writeable by the user account which "owns" the file with no permissions granted to group or other users. To achieve this, issue the following command:
 
     chmod 600 ~/.fetchmailrc
 

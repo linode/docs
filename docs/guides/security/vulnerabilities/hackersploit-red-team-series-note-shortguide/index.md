@@ -1,15 +1,12 @@
 ---
 slug: hackersploit-red-team-series-note-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-keywords: []
-description: "Note that links from guides within the HackerSploit Red Team series to the parent page for the series."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
 title: "HackerSploit Red Team Series Note"
+description: "Note that links from guides within the HackerSploit Red Team series to the parent page for the series."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-11-03
+keywords: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 show_on_rss_feed: false
 ---

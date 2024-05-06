@@ -1,16 +1,13 @@
 ---
 slug: install_elasticsearch_centos
-author:
-  name: Jared Kobos
-  email: sfoo@linode.com
+title: "Install Elasticsearch on Fedora, Red Hat, and CentOS"
 description: 'Shortguide for installing Elasticsearch on Fedora systems'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-01-09
+modified: 2018-01-08
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["elasticsearch", "elastic stack", "red hat", "centos"]
-modified: 2018-01-08
-modified_by:
-  name: Linode
-title: "Install Elasticsearch on Fedora, Red Hat, and CentOS"
-published: 2018-01-09
 headless: true
 relations:
     platform:

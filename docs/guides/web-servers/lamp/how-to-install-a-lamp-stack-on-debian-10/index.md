@@ -1,18 +1,15 @@
 ---
 slug: how-to-install-a-lamp-stack-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
+title: How to Install a LAMP Stack on Debian 10
+title_meta: 'Install a LAMP Stack on Debian 10 (Buster)'
 description: 'Install a LAMP stack on a Debian 10. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-06-29
+modified: 2020-02-19
 keywords: ["debian 10 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 10", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-19
-modified_by:
-  name: Linode
-published: 2015-06-29
-title: 'Install a LAMP Stack on Debian 10 (Buster)'
-h1_title: How to Install a LAMP Stack on Debian 10
 image: how-to-install-lamp-stack-on-debian-10.png
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
@@ -33,21 +30,21 @@ A *LAMP stack* is a particular bundle of software packages commonly used for hos
 
 Prior to installing your LAMP stack ensure that:
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. Ensure that the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#set-the-hostname).
 
     Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 
         hostname
         hostname -f
 
-    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+    {{< note respectIndent=false >}}If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 ## Apache
@@ -61,7 +58,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As a best practice, you should create a backup of your Apache configuration file, before making any configuration changes to your Apache installation. To make a backup in your home directory:
 
     cp /etc/apache2/apache2.conf ~/apache2.conf.backup
@@ -88,7 +85,7 @@ As a best practice, you should create a backup of your Apache configuration file
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These settings are good starting points, but they should be adjusted to best suit your deployment's needs.
 {{< /note >}}
 
@@ -179,7 +176,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
         sudo a2ensite example.com
         sudo a2ensite example.org
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you need to disable a site, you can use issue the following command:
 
     sudo a2dissite example.com
@@ -260,7 +257,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that all values are uncommented, by making sure they do not start with a semicolon (**;**).
 {{< /note >}}
 
@@ -269,7 +266,7 @@ Ensure that all values are uncommented, by making sure they do not start with a 
         sudo mkdir /var/log/php
         sudo chown www-data /var/log/php
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-gd php-mbstring php-xml php-xmlrpc`
     {{< /note >}}
 

@@ -1,22 +1,16 @@
 ---
 slug: install-and-configure-owncloud-on-centos-stream-8
-author:
-  name: Jack Wallen
-  email: jlwallen@monkeypantz.net
+title: "Installing and Configuring ownCloud on CentOS Stream 8"
+title_meta: "How to Install and Configure ownCloud on CentOS Stream 8"
 description: "Simple, secure, and free, ownCloud is an excellent alternative to Dropbox. Here's how to install it on CentOS Stream 8."
-og_description: "Simple, secure, and free, ownCloud is an excellent alternative to Dropbox. Here's how to install it on CentOS Stream 8."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-03-05
+modified: 2022-11-16
 keywords: ['owncloud on Centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
 image: Install_ownCloud_CentOS_stream.png
-modified_by:
-  name: Linode
-title: "How to Install and Configure ownCloud on CentOS Stream 8"
-h1_title: "Installing and Configuring ownCloud on CentOS Stream 8"
-enable_h1: true
 tags: ["centos"]
-contributor:
-  name: Jack Wallen
 aliases: ['/guides/how-to-install-owncloud-centos-stream-8/']
 relations:
     platform:
@@ -46,21 +40,21 @@ Why would you want to host your own cloud? Some common reasons are:
 - You own a small business and want to keep everything in-house.
 - You need an expandable storage solution.
 
-This tutorial walks you through the steps to install ownCloud on [CentOS Stream 8](https://www.centos.org/centos-stream/). There are only a few steps to install ownCloud on CentOS Stream 8. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](https://www.linode.com/docs/guides/how-to-install-a-lamp-stack-on-centos-8/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
+This tutorial walks you through the steps to install ownCloud on [CentOS Stream 8](https://www.centos.org/centos-stream/). There are only a few steps to install ownCloud on CentOS Stream 8. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
+
+{{< note >}}
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+{{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1.  Update your system:
-
-        sudo yum update
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/guides/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
-{{</ note >}}
+If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/products/networking/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
+{{< /note >}}
 
 ## Install ownCloud
 ### Install the LAMP Stack
@@ -70,18 +64,24 @@ ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section
 
 1. Install the Apache web server:
 
-        sudo dnf install httpd httpd-tools -y
+    ```command
+    sudo dnf install httpd httpd-tools -y
+    ```
 
 1. When the installation is complete, enable and start Apache:
 
-        sudo systemctl start httpd
-        sudo systemctl enable httpd
+    ```command
+    sudo systemctl start httpd
+    sudo systemctl enable httpd
+    ```
 
 1. Configure FirewallD to Allow HTTP and HTTPS Connections
 
-        sudo firewall-cmd --permanent --zone=public --add-service=http
-        sudo firewall-cmd --permanent --zone=public --add-service=https
-        sudo firewall-cmd --reload
+    ```command
+    sudo firewall-cmd --permanent --zone=public --add-service=http
+    sudo firewall-cmd --permanent --zone=public --add-service=https
+    sudo firewall-cmd --reload
+    ```
 
 1. Ensure you can reach the Apache server. Open a web browser, and enter in your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/). For example, enter in `http://192.0.2.0` and replace the IP address with your own. You should see the Apache welcome page.
 
@@ -89,18 +89,24 @@ ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section
 
 1. Install MariaDB:
 
-        sudo dnf install mariadb-server mariadb -y
+    ```command
+    sudo dnf install mariadb-server mariadb -y
+    ```
 
 1. Start and enable the database:
 
-       sudo systemctl start mariadb
-       sudo systemctl enable mariadb
+    ```command
+    sudo systemctl start mariadb
+    sudo systemctl enable mariadb
+    ```
 
 1. Set a MariaDB admin password and secure the installation. The command includes `mysql` even though we use MariaDB.
 
-        sudo mysql_secure_installation
+    ```command
+    sudo mysql_secure_installation
+    ```
 
-    During this process, the system asks if you want to enable the `VALIDATE PASSWORD COMPONENT`. This feature ensures that all created passwords are strong and unique. Answer `n` (as in "no"). When prompted, type and verify a new secure password for the MySQL admin user. You are then prompted to answer four questions, to all of which you should respond `y` (as in "yes").
+    You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 #### Install PHP
 
@@ -108,30 +114,40 @@ So far, you have installed the Apache web server, and MariaDB. Next up is the pr
 
 1. Add the EPEL repository to install the current version of PHP:
 
-        sudo dnf install epel-release -y
+    ```command
+    sudo dnf install epel-release -y
+    ```
 
 1. CentOS Stream installs PHP 7.2 by default, but PHP 7.4 (or higher) is required to use ownCloud. This requires a few steps. First, reset the PHP modules:
 
-        sudo dnf module reset php
+    ```command
+    sudo dnf module reset php
+    ```
 
 1. Enable PHP 7.4:
 
-        sudo dnf module enable php:7.4
-
+    ```command
+    sudo dnf module enable php:7.4
+    ```
 
 1. Install PHP and all the required PHP modules:
 
-        sudo dnf install php php-opcache php-gd php-curl php-mysqlnd php-intl php-json php-ldap php-mbstring php-mysqlnd php-xml php-zip -y
+    ```command
+    sudo dnf install php php-opcache php-gd php-curl php-mysqlnd php-intl php-json php-ldap php-mbstring php-mysqlnd php-xml php-zip -y
+    ```
 
 1. Restart and enable the PHP Fast Process Manager (PHP-FPM):
 
-        sudo systemctl start php-fpm
-        sudo systemctl enable php-fpm
+    ```command
+    sudo systemctl start php-fpm
+    sudo systemctl enable php-fpm
+    ```
 
 1. Enable SELinux to allow Apache to execute PHP code via PHP-FPM.:
 
-        sudo setsebool -P httpd execmem 1
-
+    ```command
+    sudo setsebool -P httpd_execmem 1
+    ```
 
 #### Create the ownCloud Database
 
@@ -139,52 +155,68 @@ Now that you have installed the prerequisites, it’s time to create the ownClou
 
 1. Access the MariaDB console:
 
-        sudo mysql -u root -p
+    ```command
+    sudo mysql -u root -p
+    ```
 
+1. Create your ownCloud database:
 
-1. create your ownCloud database:
-
-        CREATE DATABASE ownclouddb;
-
+    ```command
+    CREATE DATABASE ownclouddb;
+    ```
 
 1. Create a new user with the necessary privileges, including a strong and unique password. Be sure to substitute `PASSWORD` with your own password:
 
-        GRANT ALL ON ownclouddb.* TO 'ownclouduser'@'localhost' IDENTIFIED BY 'PASSWORD';
-
+    ```command
+    GRANT ALL ON ownclouddb.* TO 'ownclouduser'@'localhost' IDENTIFIED BY 'PASSWORD';
+    ```
 
 1. Flush your database's privileges:
 
-        FLUSH PRIVILEGES;
-
+    ```command
+    FLUSH PRIVILEGES;
+    ```
 
 1. Finally, exit the database console:
 
-        exit
+    ```command
+    exit
+    ```
 
 ### Download ownCloud
 
 At this point, the system is ready for ownCloud. Before you actually download the software, check the [ownCloud downloads page](https://owncloud.com/download-server/) to confirm the most recent version.
 
-1. Install the wget and unzip utilities on your CentOS Stream 8 system:
+1. Install the wget utility:
 
-       sudo yum install unzip wget
+    ```command
+    sudo yum install wget
+    ```
 
-1. Download ownCloud. As of writing this guide, the latest version is 10.5.0. Replace `10.5.0` with the version you want to download.
+1. Download the latest version of ownCloud. As of writing this guide, the latest version is 10.11.
 
-        wget https://download.owncloud.org/community/owncloud-10.5.0.zip
+    ```command
+    wget https://download.owncloud.com/server/stable/owncloud-complete-latest.tar.bz2
 
-1. Unzip the downloaded file:
+    ```
 
-        unzip owncloud-10.5.0.zip
+1. Extract the downloaded file:
 
-1. When you unzip the file, a new directory named `owncloud` is created. Move the new directory to the Apache document `root`. This example uses the default directory for Apache site files:
+    ```command
+    tar -xjf owncloud-complete-latest.tar.bz2
+    ```
 
-        sudo mv owncloud /var/www/html/
+1. When you extract the file, a new directory named `owncloud` is created. Move the new directory to the Apache document `root`. This example uses the default directory for Apache site files:
 
+    ```command
+    sudo mv owncloud /var/www/html/
+    ```
 
 1. Change the ownership of the `owncloud` directory:
 
-        sudo chown -R apache: /var/www/html/owncloud
+    ```command
+    sudo chown -R apache: /var/www/html/owncloud
+    ```
 
 ### Create an Apache Configuration File
 
@@ -192,36 +224,41 @@ Apache requires a [virtual host configuration file](https://httpd.apache.org/doc
 
 1. Create an Apache configuration file using the Nano text editor:
 
-        sudo nano /etc/httpd/conf.d/owncloud.conf
-
+    ```command
+    sudo nano /etc/httpd/conf.d/owncloud.conf
+    ```
 
 1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/guides/find-your-linodes-ip-address/):
 
-{{< file "/etc/httpd/conf.d/owncloud.conf">}}
-Alias /owncloud "/var/www/html/owncloud/"
-<Directory /var/www/html/owncloud/>
-  Options +FollowSymlinks
-  AllowOverride All
+    ```file {title="etc/httpd/conf.d/owncloud.conf"}
+    Alias /owncloud "/var/www/html/owncloud/"
+    <Directory /var/www/html/owncloud/>
+      Options +FollowSymlinks
+      AllowOverride All
 
- <IfModule mod_dav.c>
-  Dav off
- </IfModule>
+    <IfModule mod_dav.c>
+      Dav off
+    </IfModule>
 
- SetEnv HOME /var/www/html/owncloud
- SetEnv HTTP_HOME /var/www/html/owncloud
+    SetEnv HOME /var/www/html/owncloud
+    SetEnv HTTP_HOME /var/www/html/owncloud
 
-</Directory>
-{{</ file >}}
+    </Directory>
+    ```
 
-1. Save and close the file by typing **Ctrl + O** and then, **Ctrl + X**:
+1. Save and close the file by typing <kbd>Ctrl</kbd> + <kbd>O</kbd> and then <kbd>Ctrl</kbd> + <kbd>X</kbd>.
 
 1. Restart the Apache server:
 
-        sudo systemctl restart httpd
+    ```command
+    sudo systemctl restart httpd
+    ```
 
 1. Make sure that the Apache web server can write to the ownCloud directory:
 
-        sudo setsebool -P httpd_unified 1
+    ```command
+    sudo setsebool -P httpd_unified 1
+    ```
 
 ### Configure ownCloud
 
@@ -229,28 +266,29 @@ This section covers the web-based portion of the installation.
 
 1. Open a web browser and navigate to your site's domain, if it has been configured to use a domain name like, `http://example.com/owncloud`. If you configured Apache to point to your server's IP address, navigate to `http://192.0.2.0/owncloud` and replace the example IP address with your own. You should see the ownCloud web-based installer.
 
-{{< note >}}
-**Troubleshooting SELinux**
-
+    {{< note title="Troubleshooting SELinux">}}
 If you encounter permissions errors when navigating to your ownCloud instance in the web browser, it means you need to configure the SELinux. You can do so with the following commands:
 
-    su
-    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/data(/.*)?'
-    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/config(/.*)?'
-    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/apps(/.*)?'
-    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/apps-external(/.*)?'
-    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/.htaccess'
-    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/.user.ini'
-    restorecon -Rv '/var/www/html/owncloud/'
-    exit
+```command
+su
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/data(/.*)?'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/config(/.*)?'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/apps(/.*)?'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/apps-external(/.*)?'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/.htaccess'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/.user.ini'
+restorecon -Rv '/var/www/html/owncloud/'
+exit
+```
 
 If you continue to experience issues, you can temporarily disable SELinux.
 
-    sudo setenforce 0
+```command
+sudo setenforce 0
+```
 
 Refer to the [A Beginner's Guide to SELinux on CentOS 8](/docs/guides/a-beginners-guide-to-selinux-on-centos-8/) guide to learn more about SELinux.
-
-{{</ note >}}
+{{< /note >}}
 
 1. Once you access the web-based installer, type a username and password for the admin user; click the `Storage & Database` drop-down; and then click `MySQL/MariaDB`.
 

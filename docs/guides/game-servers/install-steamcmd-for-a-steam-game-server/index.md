@@ -1,15 +1,12 @@
 ---
 slug: install-steamcmd-for-a-steam-game-server
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Install SteamCMD for a Steam Game Server'
 description: 'Learn how to install SteamCMD for a Steam Game server and minimize your efforts to update the server files.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-02-15
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2016-02-15
-title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
  - '[Dedicated Steam Servers for Linux](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers)'
@@ -25,38 +22,28 @@ SteamCMD is a command-line version of the Steam client which works with games th
 This guide is intended to get you quickly up and running with SteamCMD on your Linode. See Valve's [SteamCMD wiki page](https://developer.valvesoftware.com/wiki/SteamCMD) for more information and advanced setups.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Update Your Operating System:
-
-    **CentOS**
-
-        sudo yum update
-
-    **Debian, Ubuntu**
-
-        sudo apt update && sudo apt upgrade
-
-1.  [Install the `screen` utility](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/#installing-gnu-screen), which will be used later when running SteamCMD. For more information about how screen works, review the rest of our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
+1.  [Install the `screen` utility](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/#installing-gnu-screen), which will be used later when running SteamCMD. For more information about how screen works, review the rest of our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
 
 ## Secure Your Game Server
 
-Game servers and clients are an especially ripe target for attack. Use our [Securing Your Server](/docs/security/securing-your-server/) guide to:
+Game servers and clients are an especially ripe target for attack. Use our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to:
 
-1.  [Add a limited Linux user](/docs/security/securing-your-server/#add-a-limited-user-account) to your server. Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
+1.  [Add a limited Linux user](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to your server. Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
 
-1.  [Harden SSH access](/docs/security/securing-your-server/#harden-ssh-access).
+1.  [Harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access).
 
-1.  [Remove unused network-facing services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  [Remove unused network-facing services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services).
 
-1.  If you are using [**iptables**](/docs/security/firewalls/control-network-traffic-with-iptables/) (which is set in Linode's Ubuntu and Debian images by default), follow the [Configure your Firewall Using IPTables](#configure-your-firewall-using-iptables) section.
+1.  If you are using [**iptables**](/docs/guides/control-network-traffic-with-iptables/) (which is set in Linode's Ubuntu and Debian images by default), follow the [Configure your Firewall Using IPTables](#configure-your-firewall-using-iptables) section.
 
-1.  If instead you are using [**firewalld**](/docs/security/firewalls/introduction-to-firewalld-on-centos/) (as in Linode's CentOS 7 and Fedora images), follow the [Configure your Firewall Using FirewallD](#configure-your-firewall-using-firewalld) section.
+1.  If instead you are using [**firewalld**](/docs/guides/introduction-to-firewalld-on-centos/) (as in Linode's CentOS 7 and Fedora images), follow the [Configure your Firewall Using FirewallD](#configure-your-firewall-using-firewalld) section.
 
 ### Configure your Firewall Using IPTables
 
@@ -116,7 +103,7 @@ COMMIT
 COMMIT
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
 
 Steam currently supports multiplayer play over IPv4 only, so a Steam server only needs basic IPv6 firewall rules, shown below.
@@ -127,7 +114,7 @@ Steam currently supports multiplayer play over IPv4 only, so a Steam server only
         sudo iptables-restore < ~/v4
         sudo ip6tables-restore < ~/v6
 
-1.  [Install iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables/#install-iptables-persistent). If you don't install this software, your firewall rules will not persist through reboots of your Linode.
+1.  [Install iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#install-iptables-persistent). If you don't install this software, your firewall rules will not persist through reboots of your Linode.
 
 1.  If iptables-persistent was already installed, reconfigure the package so that it recognizes your new rulesets:
 
@@ -186,13 +173,31 @@ SteamCMD can be installed via your distribution's [package manager](#from-packag
 
 Installing via the package manager allows you to more easily download updates and security patches, so we strongly recommend using this method if your distribution includes the SteamCMD package. The package is available for Ubuntu and Debian deployments.
 
--   **Ubuntu**
+-   **Ubuntu 20.04**
 
-    1.  Install the package:
+    1. Add the multiverse repository and the `i386` architecture:
+
+            sudo add-apt-repository multiverse
+            sudo dpkg --add-architecture i386
+
+    1. Update the repository to make sure new packages can be installed:
+
+            sudo apt update
+
+    1. Install the 32 bit libraries that steamcmd requires:
+
+            sudo apt install lib32gcc1 lib32stdc++6 libc6-i386 libcurl4-gnutls-dev:i386 libsdl2-2.0-0:i386
+
+
+    1.  Install the `steamcmd` package:
 
             sudo apt-get install steamcmd
 
-    1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
+        {{< note respectIndent=false >}}
+  In the window that appears, you may need to enter the keys `shift + tab` to select the `ok` option.
+        {{< /note >}}
+
+     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
             cd ~
             ln -s /usr/games/steamcmd steamcmd
@@ -213,6 +218,11 @@ deb-src http://mirrors.linode.com/debian stretch main non-free
             sudo apt update
             sudo apt-get install steamcmd
 
+        {{< note respectIndent=false >}}
+  In the window that appears following the command to install steamCMD, you may need to enter the keys `shift + tab` to select the `ok` option.
+        {{< /note >}}
+
+
     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
             cd ~
@@ -232,7 +242,7 @@ If your package manager does not include the `steamcmd` package, install it manu
 
             sudo apt-get install lib32gcc1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam game guides add [multiarch support](https://wiki.debian.org/Multiarch/HOWTO) only when a game requires it.
 {{< /note >}}
 
@@ -247,7 +257,6 @@ Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam
 1.  Extract the installation and runtime files:
 
         tar -xvzf steamcmd_linux.tar.gz
-
 {{< note >}}
 When running a Steam game, you may encounter the following error:
 
@@ -266,7 +275,7 @@ The game server will still operate despite this error, and it should be somethin
 
     If you have installed SteamCMD from repositories:
 
-        screen ~/.steam/steamcmd
+        screen ~/.steam/steamcmd/steamcmd.sh
 
     If you have installed SteamCMD manually:
 
@@ -307,15 +316,15 @@ The game server will still operate despite this error, and it should be somethin
 
         login example_user
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Some versions of the Steam CLI do **not** obfuscate passwords. If you're signing in with your Steam account, be aware of your local screen's security.
-{{< /caution >}}
+{{< /note >}}
 
 ## How Do I Update My SteamCMD Game Server?
 
 To update your SteamCMD server, follow these steps:
 
-1. Run SteamCMD: `steamcmd` or `screen ~/.steam/steamcmd`
+1. Run SteamCMD if it is not already running: `steamcmd`, `screen ~/.steam/steamcmd.sh`, or `screen ~/.steam/steamcmd/steamcmd.sh`.
 2. Login anonymously or with your Steam account (depending on the game server): `login anonymous` or `login $username`, replacing *$username* with your Steam username.
 3. Update the app: `app_update $app-id`, replacing *$app-id* with the app number/id of the game you wish to update.
 
@@ -325,7 +334,7 @@ To update your SteamCMD server, follow these steps:
 
 To exit the screen session which contains the Steam process *without* disrupting the Steam process, enter **Control+A** followed by **Control+D** on your keyboard. You can later return to the screen session by entering: `screen -r`
 
-For more information on managing your screen sessions, review our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
+For more information on managing your screen sessions, review our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
 
 ### Stop SteamCMD
 
@@ -344,7 +353,7 @@ You may encounter an error when installing or using SteamCMD. Some of these erro
         LinuxGSM Total:  68M
         Serverfiles:     40K
 
-    If you are trying to install a game that's larger than the `Available` disk space, you are going to see this error. Review your disk usage by running `df -h` and examine your [Linode's disk and storage](/docs/guides/disks-and-storage/) through the Cloud Manager. To overcome this error, you'll need to either remove files on your disk, [resize your disk](/docs/guides/resize-a-linode-disk/), or [resize your Linode](/docs/guides/resizing-a-linode/) to a larger plan.
+    If you are trying to install a game that's larger than the `Available` disk space, you are going to see this error. Review your disk usage by running `df -h` and examine your [Linode's disk and storage](/docs/products/compute/compute-instances/guides/disks-and-storage/) through the Cloud Manager. To overcome this error, you'll need to either remove files on your disk, [resize your disk](/docs/products/compute/compute-instances/guides/disks-and-storage/), or [resize your Linode](/docs/products/compute/compute-instances/guides/resize/) to a larger plan.
 - `ERROR! Failed to install app X (No subscription)` - This error code means that no authorized accounts on your SteamCMD owns the game. Verify the account on which you purchased the game and make sure that you are logged in using that account.
 - `Error! State is 0x402 after update job`  - Error code `0x402` could mean that either the update servers are down or you have an internet connectivity issue. Verify that your Linode has network connectivity by following the [Troubleshooting Basic Connection Issues
 ](/docs/guides/troubleshooting-basic-connection-issues/) guide.

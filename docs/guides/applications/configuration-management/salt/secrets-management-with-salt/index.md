@@ -1,20 +1,15 @@
 ---
 slug: secrets-management-with-salt
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'An overview of available options to manage secrets with SaltStack'
+title: "Secrets Management with Salt"
+description: 'Salt is a powerful configuration management tool. This guide provides you with an overview of available options to manage secrets with SaltStack.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-11-06
+modified: 2019-01-02
 keywords: ['salt','saltstack','secret','secure','management','sdb','gpg','vault']
 tags: ["security","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-11-06
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: SecretsManagementwithSalt.png
-title: "Secrets Management with Salt"
-contributor:
-  name: Linode
 external_resources:
   - '[Salt Pillar Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/pillar.html)'
   - '[Using Environmental Variables in SLS Modules](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt3.html#using-environment-variables-in-sls-modules)'
@@ -42,7 +37,7 @@ To handle this distinction, you could create a special directory at `/srv/pillar
 
 Pillar data is kept in `.sls` files which are written in the same YAML syntax as states. These are generally stored within `/srv/pillar` on the Salt master, but this location can be configured via the `pillar_roots` option in your master's configuration.
 
-For example, let's say your minion runs an application which accesses the [Linode API](https://developers.linode.com/api/v4). This example pillar file records your API token in a variable called `linode_api_token`:
+For example, let's say your minion runs an application which accesses the [Linode API](/docs/products/tools/api/). This example pillar file records your API token in a variable called `linode_api_token`:
 
 {{< file "/srv/pillar/app_secrets.sls" >}}
 linode_api_token: YOUR_API_TOKEN
@@ -55,7 +50,6 @@ base:
   'appserver':
     - app_secrets
 {{< /file >}}
-
 {{< note >}}
 You may want to create a `pillar.example` file (like those provided by Salt formulas) that lists all the known variable keys for your pillar but does not contain the actual secrets. If you check this file into your version control, other users that clone your states' repository can duplicate this example pillar file and more quickly set up their own deployments.
 {{< /note >}}
@@ -72,10 +66,9 @@ api_token:
     - name: /var/your_app/api_token
     - contents: {{ pillar['linode_api_token'] }}
 {{< /file >}}
-
-{{< caution >}}
+{{< note type="alert" >}}
 There are times when pillar data could show up in the output that Salt generates, like when `file.managed` displays diffs of a modified file. To avoid displaying these diffs, you can set `file.managed`'s `show_diff` flag to false.
-{{< /caution >}}
+{{< /note >}}
 
 ### Passing Pillar Data at the Command Line
 
@@ -114,4 +107,4 @@ These databases are set up using a configuration profile in `/srv/salt/master.d`
 
 {{< note >}}
 Salt also provides a module that allows [pillar data to be stored in Vault](https://docs.saltproject.io/en/latest/ref/pillar/all/salt.pillar.vault.html), as well as an execution module that includes [functions to interact with Vault](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.vault.html#vault-setup).
-{{</ note >}}
+{{< /note >}}

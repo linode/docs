@@ -1,19 +1,13 @@
 ---
 slug: cpanel-security
-author:
-  name: Hackersploit
+title: cPanel Security
 description: 'cPanel is a control panel that provides simple and effective management for a web server. This guide shows how to secure a cPanel installation.'
-og_description: 'cPanel is a control panel that provides simple and effective management for a web server. This guide shows how to secure a cPanel installation.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["how to secure cpanel", "how to protect cpanel from hackers"]
 tags: ["security","cpanel","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: cPanel Security
-h1_title: cPanel Security
-enable_h1: true
 aliases: ['security/basics/securing-cpanel/']
 image: cPanelSecurity.png
 ---
@@ -37,7 +31,7 @@ In order to secure your cPanel account, you need to have a Linux server with the
 
 - cPanel
 
-For a quick an easy way to install cPanel on Linode, check out our guide on [How to Deploy cPanel with Marketplace Apps](/docs/guides/how-to-deploy-cpanel-with-marketplace-apps/).
+For a quick an easy way to install cPanel on Linode, check out our guide on [How to Deploy cPanel with Marketplace Apps](/docs/products/tools/marketplace/guides/cpanel/).
 
 Otherwise, you can find instructions on how to manually install cPanel in our guide on [How to Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/).
 
@@ -107,7 +101,7 @@ You can specify SSH access through the use of SSH keys for authentication. This 
 
 1.  Click **Manage SSH Keys**.
 
-1.  You have the options of importing an already created key generating your own key pair. For guidance and information on using and creating SSH Keys, see our guide on [How to Use SSH Public Key Authentication on Linux, macOS, and Windows](https://www.linode.com/docs/guides/use-public-key-authentication-with-ssh/).
+1.  You have the options of importing an already created key generating your own key pair. For guidance and information on using and creating SSH Keys, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
     ![Select 'Generate a New Key' or 'Import Key'.](cpanel-ssh-access.png "Select 'Generate a New Key' or 'Import Key'.")
 

@@ -1,12 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2014-06-05
-description: 'Learn how to use, install, configure and perform tasks on database management platform Elasticsearch in these tutorials.'
-Keywords: 'elasticsearch,what is elasticsearch,install elasticsearch'
 title: Elasticsearch Guides, Tutorials, and Resources – Linode
+description: 'Learn how to use, install, configure and perform tasks on database management platform Elasticsearch in these tutorials.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-06-05
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+Keywords: 'elasticsearch,what is elasticsearch,install elasticsearch'
 aliases: ['/databases/elasticsearch/']
 ---
 

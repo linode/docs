@@ -1,30 +1,26 @@
 ---
 slug: high-availability-wordpress
-author:
-  name: James Stewart
-  email: jstewart@linode.com
-description: 'Configuring a highly available WordPress installation.'
+title: "Deploy a High Availability WordPress Website on Linode"
+description: "This article shows you how you to configure a high availability WordPress website with a two-Linode cluster using MySQL replication and a NodeBalancer."
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2015-01-09
+modified: 2015-01-21
 keywords: ["wordpress", "mysql", "replication", "master-master", "high availability"]
 tags: ["debian","ubuntu","wordpress","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-01-21
-modified_by:
-  name: James Stewart
-published: 2015-01-09
-title: "High Availability WordPress Hosting for Debian 7 and Ubuntu 14.04"
-deprecated: true
 aliases: ['/websites/cms/high-availability-wordpress/','/websites/cms/wordpress/high-availability-wordpress/']
+deprecated: true
 ---
 
 This guide configures a high availability WordPress site with a two-Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer front-end.
 
 ## Prerequisites
 
-This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/networking/remote-access/#adding-private-ip-addresses). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
-
+This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Required Software Packages
@@ -189,9 +185,9 @@ For the following sections of this guide, replace "example.com" with your domain
 {{< /file >}}
 
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
-{{< /caution >}}
+{{< /note >}}
 
 6.  Enable the new website by entering the following command:
 
@@ -224,15 +220,15 @@ The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ub
 
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 In order to ensure that each of your WordPress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to `localhost`.  This should be filled in by default.
-{{< /caution >}}
+{{< /note >}}
 
 5.  Configure your WordPress URL and Site Address via the General Settings in the WordPress admin interface. Ensure that your domain is configured in both fields.
 
-    [![WordPressURL](WP-site-address-rs.png)](WP-site-address.png)
+    ![WordPressURL](WP-site-address.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After completing your WordPress installation steps and logging in for the first time, you should reset permissions on your Document Root directory to ensure additional security. You can do so with the following command:
 
 

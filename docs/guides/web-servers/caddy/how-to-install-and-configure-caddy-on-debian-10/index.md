@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-and-configure-caddy-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing and Configuring the Caddy Web Server on Debian 10"
+title_meta: "How to Install the Caddy Web Server on Debian 10"
 description: "In this guide, you will install the Caddy web server on Debian 10. You will also configure Caddy to serve your site's domain over HTTPS."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-05
 keywords: ['web server','caddy','https','Caddyfile']
 tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-05
-modified_by:
-  name: Linode
-title: "How to Install the Caddy Web Server on Debian 10"
-h1_title: "Installing and Configuring the Caddy Web Server on Debian 10"
-enable_h1: true
 image: CaddyWebServ_Deb10.png
-contributor:
-  name: Linode
 relations:
     platform:
         key: install-caddy-server
@@ -28,11 +22,11 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-debian-10/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services).
 
-1.  Register (purchase) your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point the domain to your Linode.
+1.  Register (purchase) your site's domain name and follow our [DNS Manager Overview](/docs/products/networking/dns-manager/#add-records) guide to point the domain to your Linode.
 
 1.  Update your system:
 

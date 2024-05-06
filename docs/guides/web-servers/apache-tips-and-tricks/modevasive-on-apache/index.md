@@ -1,19 +1,16 @@
 ---
 slug: modevasive-on-apache
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
+title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
+title_meta: 'mod_evasive on Apache'
 description: 'Learn what mod_evasive is on an Apache web server, and understand how to configure and test it.'
 og_description: "Configure your Apache web server to evade DoS attacks with mod_evasive."
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2011-11-14
+modified: 2021-07-07
 keywords: ["mod_evasive", "modevasive", "evasive", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/modevasive-on-apache/','/websites/apache-tips-and-tricks/modevasive-on-apache/','/web-servers/apache/mod-evasive/']
-modified: 2021-07-07
-modified_by:
-  name: Linode
-published: 2011-11-14
-title: 'mod_evasive on Apache'
-h1_title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
 external_resources:
  - '[mod_evasive on GitHub](https://github.com/jzdziarski/mod_evasive)'
 tags: ["web server","apache"]
@@ -135,7 +132,7 @@ The blocking period is the amount of time (in seconds) that a client is blocked 
 
 If this value is set, an email is sent to the address specified whenever an IP address becomes blacklisted. A locking mechanism using /tmp prevents continuous emails from being sent.
 
- {{< note >}}
+{{< note >}}
 Be sure MAILER is set correctly in mod_evasive.c (or mod_evasive20.c). The default is "/bin/mail -t %s" where %s is used to denote the destination email address set in the configuration. If you are running on Linux or some other operating system with a different type of mailer, you need to change this.
 {{< /note >}}
 
@@ -144,7 +141,6 @@ Be sure MAILER is set correctly in mod_evasive.c (or mod_evasive20.c). The defau
 If this value is set, the system command specified is executed whenever an IP address becomes blocked. This is designed to enable system calls to ip filter or other tools. A locking mechanism using /tmp prevents continuous system calls. Use %s to denote the IP address of the blacklisted IP.
 
 ### DOSLogDir
-
 {{< note >}}
 This setting does not relate to logging for mod_evasive. Actions taken by mod_evasive appear on the syslog.
 {{< /note >}}
@@ -155,9 +151,9 @@ By default "/tmp" is used for locking mechanism, which opens some security issue
 
 ### Whitelisting IP Addresses
 
-IP addresses of trusted clients can be whitelisted to insure they are never denied. The purpose of whitelisting is to protect software, scripts, local searchbots, or other automated tools from being denied for requesting large amounts of data from the server. Whitelisting should *not* be used to add customer lists or anything of the sort, as this opens the server to abuse. This module is very difficult to trigger without performing some type of malicious attack, and for that reason it is more appropriate to allow the module to decide on its own whether or not an individual customer should be blocked.
+IP addresses of trusted clients can be allowed to insure they are never denied. The purpose of whitelisting is to protect software, scripts, local searchbots, or other automated tools from being denied for requesting large amounts of data from the server. Whitelisting should *not* be used to add customer lists or anything of the sort, as this opens the server to abuse. This module is very difficult to trigger without performing some type of malicious attack, and for that reason it is more appropriate to allow the module to decide on its own whether or not an individual customer should be blocked.
 
-To whitelist an address (or range) add an entry to the Apache configuration in the following fashion:
+To allow an address (or range) add an entry to the Apache configuration in the following fashion:
 
 {{< file "/etc/apache2/apache2.conf" >}}
 DOSWhitelist 127.0.0.1
@@ -213,7 +209,7 @@ for(0..100) {
 }
 {{< /file >}}
 
-If you don't have Pearl installed on your system, you can install it by running the following command on your terminal:
+If you don't have Perl installed on your system, you can install it by running the following command on your terminal:
 
 **Debian / Ubuntu:**
 
@@ -260,4 +256,4 @@ In the output above, the part that says `Blacklisting address 127.0.0.1: possibl
 
 ## How to Load Test mod_evasive
 
-Refer to our guide on [Load Testing with Siege](/docs/tools-reference/tools/load-testing-with-siege/) to test your site's performance. Before you attempt to DDoS yourself, be aware that you risk banning your own IP. Linode does not recommend testing any server that isn't your own.
+Refer to our guide on [Load Testing with Siege](/docs/guides/load-testing-with-siege/) to test your site's performance. Before you attempt to DDoS yourself, be aware that you risk banning your own IP. Linode does not recommend testing any server that isn't your own.

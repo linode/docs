@@ -1,19 +1,14 @@
 ---
 slug: install-a-chef-server-workstation-on-ubuntu-14-04
-deprecated: true
-deprecated_link: 'applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/'
-author:
-  name: Elle Krout
+title: 'Install a Chef Server Workstation on Ubuntu 14.04'
 description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu 14.04'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-06-10
 keywords: ["chef", "chef installation", "configuration change management", "server automation", "chef server", "chef workstation", "chef-client", "knife.rb", "version control"]
 tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','/applications/configuration-management/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','/applications/chef/setting-up-chef-ubuntu-14-04/','/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/','/applications/configuration-management/chef/install-a-chef-server-workstation-on-ubuntu-14-04/']
-modified: 2015-06-10
-modified_by:
-  name: Elle Krout
-published: 2015-06-10
-title: 'Install a Chef Server Workstation on Ubuntu 14.04'
 external_resources:
  - '[Chef](http://www.chef.io)'
 relations:
@@ -21,26 +16,28 @@ relations:
         key: install-chef-workstation
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
+deprecated_link: 'applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/'
 ---
 
 Chef is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.
 
 Chef is comprised of a Chef server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
-[![chef_graph-small.png](chef-graph-small.png)](chef_graph.png)
+![chef-graph.png](chef-graph.png)
 
 
 This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
 -	One 4GB Linode to host the Chef server, running Ubuntu 14.04
 -	Two Linodes of any size to host a workstation and a node, each running Ubuntu 14.04
--	Each Linode should be configured by following the [Getting Started](/docs/getting-started/) guide; also consider following the [Securing Your Sever](/docs/security/securing-your-server/) guide
+-	Each Linode should be configured by following the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide
 -	Each Linode needs to be configured to have a valid FQDN
 -	Ensure that all servers are up-to-date:
 

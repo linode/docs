@@ -1,19 +1,14 @@
 ---
 slug: getting-started-with-nginx-part-1-installation-and-basic-setup
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
+title_meta: "Getting Started with NGINX: Installation and Basic Setup"
 description: "An in-depth look at the NGINX web server. Includes assessment, installation, and configuration best practices."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-02-09
 keywords: ["nginx", "web server", "configure nginx", "optimize nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/configuration/ssl/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/','/guides/nginx-installation-and-basic-setup/']
-modified: 2018-02-09
-modified_by:
-  name: Linode
-published: 2018-02-09
-title: "Getting Started with NGINX: Installation and Basic Setup"
-h1_title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
-enable_h1: true
+aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/','/guides/nginx-installation-and-basic-setup/']
 tags: ["web server","nginx"]
 ---
 
@@ -24,7 +19,7 @@ This guide is the first of a four-part series. Parts One and Two will walk you t
 ## Before You Begin
 
 * You will need root access to the system, or a user account with `sudo` privilege.
-* Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+* Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 * Update your system.
 
 ## Install NGINX
@@ -129,7 +124,6 @@ Add a second `listen` directive for IPv6 to the `server` block of `/etc/nginx/co
 If your site uses SSL/TLS, you would add:
 
     listen [::]:443 ssl;
-
 {{< note >}}
 You can also specify your Linode's public IP addresses for NGINX to listen on. For example, the line would then be `listen 203.0.113.4:80;`.
 {{< /note >}}

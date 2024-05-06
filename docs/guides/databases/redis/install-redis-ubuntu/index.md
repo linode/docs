@@ -1,22 +1,16 @@
 ---
 slug: install-redis-ubuntu
-author:
-  name: Jeff Novotny
-description: 'Redis is typically used as a database, cache, and message broker. It''s open-source and serves as an in-memory data structure store. This guide discusses the advantages and disadvantages of Redis and installation and configuration steps on an Ubuntu 20.04 server.'
-og_description: 'Redis is typically used as a database, cache, and message broker. It''s open-source and serves as an in-memory data structure store. This guide discusses the advantages and disadvantages of Redis and installation and configuration steps on an Ubuntu 20.04 server.'
+title: "Install and Configure Redis on Ubuntu 20.04"
+title_meta: "How to Install and Configure Redis on Ubuntu 20.04"
+description: 'This guide shows you how to install and configure the open-source database, cache, and message broker application Redis, on Ubuntu 20.04 Server.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-07-02
 keywords: ['install redis ubuntu']
 tags: ['ubuntu', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-02
 image: REDIS.jpg
-modified_by:
-  name: Linode
-title: "Install and Configure Redis on Ubuntu 20.04"
-h1_title: "How to Install and Configure Redis on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+aliases: ['/databases/redis/ubuntu-12.04-precise-pangolin/']
 external_resources:
 - '[Redis](https://redis.io/)'
 - '[Redis commands](https://redis.io/commands)'
@@ -31,18 +25,12 @@ This guide explains how to install and perform the basic configuration of [*Redi
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-<!-- Include one of the following notes if appropriate. --->
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Redis Advantages and Disadvantages
@@ -275,7 +263,7 @@ Redis recommends several additional optimizations for the best performance. In a
     {{< file "/etc/sysctl.conf" >}}
 vm.overcommit_memory = 1
 {{< /file >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Enter the command `sysctl vm.overcommit_memory=1` to apply this setting immediately.
 {{< /note >}}
 1. Disable the transparent huge pages feature as this adversely affects Redis latency.

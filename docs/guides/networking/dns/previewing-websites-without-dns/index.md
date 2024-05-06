@@ -1,17 +1,14 @@
 ---
 slug: previewing-websites-without-dns
-author:
-  name: Linode
-  email: afornuto@linode.com
+title: Previewing Websites Without DNS
 description: 'A guide to testing a website for a domain before the DNS records are adjusted.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-01-16
+modified: 2018-05-22
 keywords: ["dns", " website", " preview"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/preview-websites/','/networking/dns/previewing-websites-without-dns/','/networking/dns/previewing-websites-without-dns-classic-manager/']
-modified: 2018-05-22
-modified_by:
-  name: Linode
-published: 2014-01-16
-title: Previewing Websites Without DNS
 tags: ["dns","networking"]
 ---
 
@@ -19,7 +16,7 @@ tags: ["dns","networking"]
 
 Previewing your website before updating your domain's nameservers allows you to stage and test your setup without redirecting viewers from your live site running on your old host. This is done with an entry to your local system's hosts file.
 
-A hosts file is used to map specific hostnames to IP addresses, and takes precedence over name resolution provided by DNS queries. By manually specifying an IP/hostname pair, web traffic sent to the given domain is directed to the given IP address, regardless of the domain's actual A records. If these terms are unfamiliar, see our [DNS](/docs/networking/dns/dns-records-an-introduction/) guide for more information.
+A hosts file is used to map specific hostnames to IP addresses, and takes precedence over name resolution provided by DNS queries. By manually specifying an IP/hostname pair, web traffic sent to the given domain is directed to the given IP address, regardless of the domain's actual A records. If these terms are unfamiliar, see our [DNS](/docs/guides/dns-overview/) guide for more information.
 
 ## Find Your Linode's IP Address
 
@@ -28,7 +25,7 @@ A hosts file is used to map specific hostnames to IP addresses, and takes preced
 3.  Select your Linode.
 4.  Click the **Networking** tab. The webpage shown below appears.
 
-    [![Networking Tab.](networking_ips.png)](networking_ips.png)
+    ![Networking Tab.](networking_ips.png)
 
 5.  Copy the addresses in the Public IP sections. In this example, the Linode's IPv4 address is `45.56.111.42` and its IPv6 address is `2600:3c03::f03c:91ff:fe7e:9675`.
 
@@ -40,11 +37,11 @@ You will need root access on Linux and macOS to edit the system's hosts file, or
 
 1.  Navigate to `C:\Windows\System32\Drivers\etc` in Windows Explorer.
 
-    [![The path to the hosts file in Windows.](1530-windows_hosts_small.png)](1529-windows_hosts.png)
+    ![The path to the hosts file in Windows.](1529-windows_hosts.png)
 
 2.  Open the `hosts` file. Unless you've opened it before and created a file type association, Windows will ask you what program to open it in. Any text editor will work. WordPad is included in Windows by default, and was selected in the image below.
 
-    [![Windows asks what program to open the file in.](1532-windows_hosts_wordpad_small.png)](1531-windows_hosts_wordpad.png)
+    ![Windows asks what program to open the file in.](1531-windows_hosts_wordpad.png)
 
 3.  Add the IPv4 or IPv6 address of your Linode, depending on which you'll be testing with (if not both), followed by the domain you want to test. For example:
 

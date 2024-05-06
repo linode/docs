@@ -1,29 +1,26 @@
 ---
 slug: nginx-and-phpfastcgi-on-fedora-13
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and PHP-FastCGI on Fedora 13'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Fedora 13'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-27
+modified: 2011-05-17
 keywords: ["nginx", "nginx fedora 13", "nginx fastcgi", "nginx php"]
 tags: ["web server","fedora","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-phpfastcgi-on-fedora-13/','/web-servers/nginx/php-fastcgi/fedora-13/','/web-servers/nginx/nginx-and-phpfastcgi-on-fedora-13/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-05-27
-title: 'Nginx and PHP-FastCGI on Fedora 13'
-deprecated: true
 relations:
     platform:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Fedora 13 Linode.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Basic System Configuration
 
@@ -132,7 +129,7 @@ After reviewing your configuration for potential security issues, issue the foll
     ln -s /etc/nginx/sites-available/www.example.com
     service nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/products/networking/dns-manager/guides/common-dns-configurations/) pointing your domain name to your Linode's IP address.
 
 ## Configure spawn-fcgi
 
@@ -168,5 +165,5 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
-- [Installing NGINX on Fedora 13](/docs/web-servers/nginx/installation/fedora-13)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Installing NGINX on Fedora 13](/docs/guides/websites-with-nginx-on-fedora-13/)
+- [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/)

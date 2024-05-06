@@ -1,20 +1,14 @@
 ---
 slug: deploy-7-days-to-die-linux-game-server
-author:
-  name: Sandro Villinger
-  email: webmaster@windows-tweaks.info
+title: "Deploying a 7 Days to Die Server on Linux"
+title_meta: "How to Deploy a 7 Days to Die Server on Linux"
 description: "This guide shows you how to easily install the popular online game 7 Days to Die using LinuxGSM."
+authors: ["Sandro Villinger"]
+contributors: ["Sandro Villinger"]
+published: 2021-03-08
 keywords: ['7 days to die Linux Server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-08
 image: Deploy7DtoD_Linux.png
-modified_by:
-  name: Linode
-title: "How to Deploy a 7 Days to Die Server on Linux"
-h1_title: "Deploying a 7 Days to Die Server on Linux"
-enable_h1: true
-contributor:
-  name: Sandro Villinger
 ---
 
 Even eight years after its release, the Zombie Horde Survival game [7 Days to Die](https://7daystodie.com/) (7DTD) is still going strong. Its community is active and the zombie fun hasn't stopped. The game is even better when you and your friends play on your own server, using your own rules. Plus, when you [host a game server yourself](/docs/guides/get-started-with-linux-game-server-hosting), you don't have to worry about lag time that can interrupt your gameplay. This guide shows you how to set up your own 7DTD server, using LinuxGSM.
@@ -23,19 +17,13 @@ Even eight years after its release, the Zombie Horde Survival game [7 Days to Di
 
 ## Before You Begin
 
-1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](https://www.linode.com/docs/guides/how-to-choose-a-linode-plan/) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
+1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 In order to play 7 Days to Die, you have to [purchase the game on Steam](https://store.steampowered.com/app/251570/7_Days_to_Die/).
-{{</ note >}}
+{{< /note >}}
 
 ## Deploy a Game Server Using LinuxGSM
 
@@ -45,7 +33,7 @@ The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) is a command-l
 
         sudo dpkg --add-architecture i386
         sudo apt update
-        sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 steamcmd telnet expect
+        sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux netcat-traditional lib32gcc-s1 lib32stdc++6 steamcmd telnet expect
 
     A prompt appears with the Steam EULA. To proceed, use your keyboard's **down arrow** key to read through the agreement. Then, use the **tab** key to select **<ok>**.
 
@@ -54,7 +42,7 @@ The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) is a command-l
         sudo adduser sdtdserver
         sudo adduser sdtdserver sudo
 
-1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](https://www.linode.com/docs/guides/getting-started/#log-in-using-ssh) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
+1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-filelog-in-using-ssh) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
 
         ssh sdtdserver@192.0.2.0
 
@@ -117,9 +105,9 @@ To start server type:
 
     Your output displays its status as **ONLINE**. This means you and your friends can start playing 7DTD.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Execute the `./sdtdserver` command to get a list of all available 7 Days to Die server commands.
-    {{</ note >}}
+    {{< /note >}}
 
 1. On your computer, use Steam to fire up the game and connect to your [Linode server's IP address](/docs/guides/find-your-linodes-ip-address/).
 

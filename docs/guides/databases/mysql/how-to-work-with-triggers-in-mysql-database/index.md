@@ -1,20 +1,14 @@
 ---
 slug: how-to-work-with-triggers-in-mysql-database
-author:
-  name: Francis Ndungu
-  email: francisndungu83@gmail.com
-description: 'A trigger is a pre-defined SQL command that is automatically executed when specific actions occur in the database. In this guide, we will walk you through the steps of creating and working with triggers in your MySQL database.'
+title: "Working with Triggers in a MySQL Database"
+title_meta: "Working with Triggers in a MySQL Database - A Tutorial"
+description: 'In this guide, we will show you how to create triggers, pre-defined SQL commands which automatically run under certain conditions, in your MySQL database. '
+authors: ["Francis Ndungu"]
+contributors: ["Francis Ndungu"]
+published: 2020-02-21
 keywords: ['mysql','database','triggers']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-21
-modified_by:
-  name: Linode
-title: "Working with Triggers in a MySQL Database - A Tutorial"
-h1_title: "Working with Triggers in a MySQL Database"
 image: L_TriggersMySQL_db.png
-contributor:
-  name: Francis Ndungu
-  link: https://twitter.com/francisndungu83
 external_resources:
 - '[MySQL Trigger Syntax and Examples](https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html)'
 tags: ["database","mysql"]
@@ -45,9 +39,9 @@ In this guide, you will learn:
 
 ## Before You Begin
 
-Make sure you have the following:
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  A configured Linode server. You can learn how to create and setup a Linode server by reading our [Getting Started with Linode](/docs/getting-started/) guide.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  A MySQL server and client installed on the Linode server. Installation guides for MySQL are available for different distributions in our [MySQL section](/docs/databases/mysql/).
 
@@ -480,7 +474,7 @@ A trigger can also be fired after an `UPDATE` event. We will see how we can leve
 
     This trigger records changes to a product's `retail_price` in the `products_price_history` table.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unlike previous examples, this trigger only has one statement in the trigger's body, so we do not need to change the `DELIMITER`.
 {{< /note >}}
 
@@ -560,6 +554,6 @@ Output:
 Query OK, 0 rows affected (0.00 sec)
 {{< /output >}}
 
-{{< caution >}}
+{{< note type="alert" >}}
 Be cautious when deleting tables associated with triggers. Once a table is dropped from the MySQL database, the related triggers are also automatically deleted.
-{{< /caution >}}
+{{< /note >}}

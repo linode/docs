@@ -1,24 +1,21 @@
 ---
 slug: manage-web-content-with-plone-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
 description: 'Using the Plone Content Management System, built on the Zope framework, to deploy complex and content rich sites on Debian 5 (Lenny) systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-29
+modified: 2011-06-03
 keywords: ["plone", "zope", "python", "debian", "web framework", "content management systems", "cms"]
 tags: ["nginx","apache","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/plone/','/websites/cms/plone/manage-web-content-with-plone-on-debian-5-lenny/','/websites/cms/manage-web-content-with-plone-on-debian-5-lenny/']
-modified: 2011-06-03
-modified_by:
-  name: Linode
-published: 2010-01-29
-title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
+deprecated: true
 ---
 
 Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers. Zope provides a vibrant architecture for building complex and usable tools in a Python and web-centric manner. Plone and Zope may strike systems administrators as unique in comparison to other content management systems because they generate content by modifying the behavior of the Zope application server while incoming requests are proxied through a front end server like [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx).
 
-Before installing the Plone content management system, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). At the end of this document, we will briefly discuss configuring the [Apache](/docs/web-servers/apache/) and [nginx](/docs/web-servers/nginx) web servers for use with Plone as a front end server.
+Before installing the Plone content management system, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). At the end of this document, we will briefly discuss configuring the [Apache](/docs/web-servers/apache/) and [nginx](/docs/web-servers/nginx) web servers for use with Plone as a front end server.
 
 ## Installing Plone
 
@@ -41,7 +38,7 @@ The installation interface will present several questions during the installatio
 
     /etc/init.d/zope2.10 start
 
-Now, assuming that you have an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
+Now, assuming that you have an [A Record](/docs/guides/dns-overview/#a-and-aaaa) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
 
 You can now proceed with the development of your Plone website!
 
@@ -51,11 +48,11 @@ Although the Plone application server is capable of generating and providing dyn
 
 ### Configuring an Apache Front End Proxy
 
-Begin by installing the Apache web server. You can read more about this process in our documentation for [installing Apache for Debian systems](/docs/web-servers/apache/installation/debian-5-lenny). Issue the following command:
+Begin by installing the Apache web server. You can read more about this process in our documentation for [installing Apache for Debian systems](/docs/guides/apache-2-web-server-on-debian-5-lenny/). Issue the following command:
 
     apt-get install apache2
 
-Edit the `/etc/apache2/mods-available/proxy.conf` file to properly configure the [ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny) as follows:
+Edit the `/etc/apache2/mods-available/proxy.conf` file to properly configure the [ProxyPass](/docs/guides/multiple-web-servers-with-proxypass-on-debian-5-lenny/) as follows:
 
 {{< file "/etc/apache2/mods-available/proxy.conf" apache >}}
 <IfModule mod_proxy.c>
@@ -168,8 +165,8 @@ Congratulations, you now have a fully functional Plone system that is ready for 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The Zope Book](http://docs.zope.org/zope2/zope2book//)
-- [Basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration)
-- [ProxyPass Apache to Multiple Webservers](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny)
+- [Basic nginx configuration](/docs/guides/how-to-configure-nginx/)
+- [ProxyPass Apache to Multiple Webservers](/docs/guides/multiple-web-servers-with-proxypass-on-debian-5-lenny/)
 
 
 

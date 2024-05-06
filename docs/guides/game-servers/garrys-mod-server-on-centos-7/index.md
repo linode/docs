@@ -1,28 +1,21 @@
 ---
 slug: garrys-mod-server-on-centos-7
-author:
-  name: Julian Meyer
-  email: --
-description: 'A Garrys Mod Server for CentOS 7.'
+title: 'Garry''s Mod on CentOS 7'
+description: 'This guide provides you with step-by-step instructions for deploying a Garrys Mod Server, which enables complete control of a video game engine, on CentOS 7.'
+authors: ["Julian Meyer"]
+contributors: ["Julian Meyer"]
+published: 2015-01-21
+modified: 2019-02-01
 keywords: ["garry''s mod", "centos", "centos 7"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/game-servers/garrys-mod-server-on-centos-7/','/web-applications/game-servers/minecraft-ubuntu12-04/','/game-servers/garrys-mod-server-on-centos-7/']
-published: 2015-01-21
-modified: 2019-02-01
-modified_by:
-  name: Linode
-title: 'Garry''s Mod on CentOS 7'
+aliases: ['/applications/game-servers/garrys-mod-server-on-centos-7/','/game-servers/garrys-mod-server-on-centos-7/']
 external_resources:
 - '[SRCDS](http://www.srcds.com/)'
 - '[GMod Forums](http://facepunch.com/forum.php)'
 - '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
-contributor:
-    name: Julian Meyer
-    link: https://github.com/jmeyer2k
 dedicated_cpu_link: true
 ---
-
 
 [Garry's Mod](http://www.garrysmod.com/) enables complete control and modification of the video game engine, Source Engine. With Garry's Mod, you can create almost any game you want. Setting up a Garry's Mod server is a great way to play with friends over the internet while maintaining control over the server.
 
@@ -32,10 +25,10 @@ This guide shows how to create, maintain, and secure a Garry's Mod server.
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Garry's Mod](http://store.steampowered.com/app/4000/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/game-servers/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Garry's Mod
@@ -79,7 +72,7 @@ From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update Gmod, run the above 4 commands again.
 {{< /note >}}
 
@@ -100,7 +93,7 @@ screen -S "Garry's Mod Server" ./srcds_run -game garrysmod +maxplayers 20 +map g
 {{< /file >}}
 
 
-    When run, the script will change directories to `~/Steam/gmod` and execute Garry's Mod in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) session. The `srcds_run` binary can take many more arguments which you can see at [Valve's Developer wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options#Source_Dedicated_Server).
+    When run, the script will change directories to `~/Steam/gmod` and execute Garry's Mod in a [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session. The `srcds_run` binary can take many more arguments which you can see at [Valve's Developer wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options#Source_Dedicated_Server).
 
 2.  Make the script executable:
 
@@ -165,9 +158,9 @@ writeip
 
         cd ~/ && ./startgmod.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop Gmod.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

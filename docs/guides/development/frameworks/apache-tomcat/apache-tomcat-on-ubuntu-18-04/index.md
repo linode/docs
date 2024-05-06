@@ -1,20 +1,15 @@
 ---
 slug: apache-tomcat-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Apache Tomcat on Ubuntu 18.04'
+title_meta: 'How to Install Apache Tomcat on Ubuntu 18.04'
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-25
 keywords: ["apache tomcat ubuntu 18.04", "tomcat java", "java ubuntu 18.04", "tomcat ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-ubuntu-18-04/','/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-18-04/','/development/frameworks/apache-tomcat-on-ubuntu-18-04/']
-modified: 2020-03-25
-modified_by:
-  name: Linode
-published: 2020-03-25
-title: 'How to Install Apache Tomcat on Ubuntu 18.04'
-h1_title: 'Installing Apache Tomcat on Ubuntu 18.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -33,9 +28,9 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 ## Before You Begin
 
-1.  Ensure that your system is up to date and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
+1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
 
-2.  Make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+2.  Make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
         hostname
         hostname -f
@@ -45,9 +40,8 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 3.  You should also make sure your system is up to date. Enter the following command and install any available updates:
 
         apt-get update && apt-get upgrade
-
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache Tomcat
@@ -56,7 +50,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
         sudo apt-get install tomcat9
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 OpenJDK will be installed as a dependency when you install the `tomcat9` package. The package `openjdk-11-jre-headless` is included with the `default-jre-headless` metapackage in Ubuntu.
 {{< /note >}}
 
@@ -87,10 +81,9 @@ If you installed the `tomcat9-admin` web application above, you can configure it
 <user username="username" password="password" roles="manager-gui,admin-gui"/>
 
 {{< /file >}}
-
 {{< note >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
-{{</ note >}}
+{{< /note >}}
 
 Restart the Tomcat server, which will allow these changes to take effect:
 

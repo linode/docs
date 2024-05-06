@@ -1,15 +1,11 @@
 ---
 slug: mongodb-example-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that displays usage example for MongoDB.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-11
-modified_by:
-  name: Heather Zoppetti
-published: 2020-03-11
 title: MongoDB Example
+description: 'Shortguide that displays usage example for MongoDB.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-11
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false
@@ -37,7 +33,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
     If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/manual/reference/method/db.createCollection/).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).
 {{< /note >}}
 
