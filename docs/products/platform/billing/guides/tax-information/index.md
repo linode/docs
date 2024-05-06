@@ -1,14 +1,11 @@
 ---
-description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 title: Tax Information
+description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 published: 2019-04-09
 modified: 2024-02-29
-modified_by:
-  name: Linode
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/billing-and-support/european-union-vat-linode-classic-manager/','/platform/billing-and-support/tax-information/','/platform/billing-and-support/tax-information-classic-manager/','/guides/tax-information/']
 tags: ["linode platform"]
-authors: ["Linode"]
 ---
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).

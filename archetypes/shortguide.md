@@ -3,11 +3,9 @@ title: "{{ replace .TranslationBaseName "-" " " | title }}"
 description: 'Two to three sentences describing your guide.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
+contributors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
 modified: {{ now.Format "2006-01-02" }}
-modified_by:
-  name: Linode
 headless: true
 show_on_rss_feed: false
 ---

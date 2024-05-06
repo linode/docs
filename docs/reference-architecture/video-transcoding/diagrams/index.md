@@ -1,12 +1,12 @@
 ---
 title: "Video Transcoding Reference Architecture"
 description: "A scalable, portable, and cost-effective media processing workflow using Akamai Cloud Compute, Linode Kubernetes Engine, Akamai CDN, and a GitHub Actions."
+published: 2023-12-19
 linkTitle: "Diagrams"
 license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)"
 tab_group_main:
     title: Diagrams
     weight: 20
-published: 2023-12-19
 ---
 
 The diagrams featured here provide different perspectives on the architecture of a video transcoding workflow:

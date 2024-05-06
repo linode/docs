@@ -2,8 +2,8 @@
 title: Cloud Firewall
 title_meta: "Cloud Firewall Product Documentation"
 description: "Linode Cloud Firewall offers a simple interface to protect your web apps. It is scalable security in seconds, allowing you to create custom firewall rules, making security more accessible."
-bundles: ['debian-security', 'centos-security', 'network-security']
 modified: 2023-11-01
+bundles: ['debian-security', 'centos-security', 'network-security']
 tab_group_main:
     is_root: true
     title: Overview

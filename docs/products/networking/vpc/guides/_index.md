@@ -2,10 +2,10 @@
 title: Guides
 title_meta: "Guides and Tutorials for VPCs"
 description: "A collection of guides to help instruct you how to use VPCs."
-tab_group_main:
-    weight: 30
 published: 2024-01-09
 modified: 2024-02-14
+tab_group_main:
+    weight: 30
 ---
 
 ## Basics

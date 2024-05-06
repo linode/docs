@@ -1,19 +1,18 @@
 ---
 slug: install-go-on-ubuntu
+title: 'How to Install Go on Ubuntu'
 description: 'This guide shows how to install the Go programming language on Ubuntu.'
 og_description: 'Go is a statically typed, compiled programming language developed by Google. This guide will show you how to install Go on Ubuntu.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-29
+modified: 2019-08-22
 keywords: ["Go", "Go Programming", "Golang", "Ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-29
-modified: 2019-08-22
-modified_by:
-  name: Linode
-title: 'How to Install Go on Ubuntu'
 audiences: ["beginner"]
 languages: ["go"]
 aliases: ['/development/go/install-go-on-ubuntu/']
-authors: ["Linode"]
 ---
 
 ![How to Install Go on Ubuntu](install-go-ubuntu-title.jpg "How to Install Go on Ubuntu")

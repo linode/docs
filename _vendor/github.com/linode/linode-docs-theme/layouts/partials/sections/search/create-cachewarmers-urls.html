@@ -46,7 +46,7 @@
       {{ $res := index $data.results $i }}
       {{ $targetResource := resources.FromString $targetPath (jsonify $res) }}
       {{ if (ne hugo.Environment "development") }}
-        {{ $targetResource = $targetResource | minify | fingerprint }}
+        {{ $targetResource = $targetResource | minify }}
       {{ end }}
       {{ $v = merge $v (dict $name $targetResource.RelPermalink) }}
     {{ end }}
@@ -72,7 +72,7 @@
       {{ $targetPath := printf "cachewarmers/sections/%s.json" $name }}
       {{ $targetResource := resources.FromString $targetPath (jsonify $currentSectionData) }}
       {{ if (ne hugo.Environment "development") }}
-        {{ $targetResource = $targetResource | minify | fingerprint }}
+        {{ $targetResource = $targetResource | minify }}
       {{ end }}
       {{ $v = merge $v (dict $currentSection $targetResource.RelPermalink) }}
     {{ end }}

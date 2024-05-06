@@ -2,13 +2,13 @@
 title: VPC
 title_meta: "VPC Product Documentation"
 description: "VPCs make it easy to create your own virtual private clouds on the Akamai cloud computing platform, providing an isolated network for your applications."
+published: 2024-02-06
+modified: 2024-02-12
 bundles: ['network-security']
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-published: 2024-02-06
-modified: 2024-02-12
 cascade:
     product_description: "A virtual private cloud enables private communication between Compute Instances, isolating your network traffic from other customers and the internet."
 ---

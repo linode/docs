@@ -2,12 +2,11 @@
 slug: backing-up-compute-instance-to-object-storage
 title: "Backing Up a Compute Instance to Object Storage"
 description: "Linode Object Storage is an efficient solution to store backups of Compute Instances. Learn how to create backups and store them in object storage buckets."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-09-08
 keywords: ['how to backup object storage','linux backup','snapshot object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-09-08
-modified_by:
-  name: Linode
 external_resources:
 - '[Oracle Cloud Infrastructure Documentation: Backing Up Snapshots to Object Storage Using rclone](https://docs.oracle.com/en-us/iaas/Content/File/Tasks/backing-up-snapshots-to-object-storage.htm)'
 - '[Ubuntu Forums: Heliode - Howto: Backup and Restore Your System!](https://ubuntuforums.org/showthread.php?t=35087)'

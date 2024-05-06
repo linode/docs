@@ -1,7 +1,6 @@
 ---
 title: "Resize A Database Cluster"
 description: "Learn how to resize your database cluster."
-authors: ["Linode"]
 published: 2024-04-09
 ---
 

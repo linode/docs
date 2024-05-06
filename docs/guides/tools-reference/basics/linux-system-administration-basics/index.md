@@ -1,16 +1,15 @@
 ---
 slug: linux-system-administration-basics
+title: "Linux System Administration Basics"
 description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-13
+modified: 2021-05-14
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-system-administration-basics/','/using-linux/administration-basics/','/tools-reference/linux-system-administration-basics/']
-modified: 2021-05-14
-modified_by:
-  name: Linode
-published: 2009-12-13
-title: "Linux System Administration Basics"
 tags: ["linux"]
-authors: ["Linode"]
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
@@ -282,8 +281,7 @@ You can quit at any time by pressing the `F10` or `Q` keys. There are a couple o
 Web developers and editors often use the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
 
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/guides/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/guides/introduction-to-rsync/) and [using SSH and the terminal](/docs/guides/using-the-terminal/).
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 If you are giving other users access to upload files to your server, consider the [security implications](/docs/products/compute/compute-instances/guides/set-up-and-secure/) of all additional access that you grant to third parties.
 {{< /note >}}
 

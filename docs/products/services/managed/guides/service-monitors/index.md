@@ -1,10 +1,9 @@
 ---
 title: Create and Edit Service Monitors for Managed Services
-linkTitle: Manage Service Monitors
 description: "Learn how to view, edit, and remove Service Monitors, which are used to monitor services on Compute Instances."
-aliases: ['/products/services/managed/guides/add-services/','/products/services/managed/guides/disable-a-service-monitor/','/products/services/managed/guides/reenable-a-service-monitor/','/products/services/managed/guides/remove-services/']
 published: 2023-04-11
-authors: ["Linode"]
+linkTitle: Manage Service Monitors
+aliases: ['/products/services/managed/guides/add-services/','/products/services/managed/guides/disable-a-service-monitor/','/products/services/managed/guides/reenable-a-service-monitor/','/products/services/managed/guides/remove-services/']
 ---
 
 Managed Services monitors the *services* running on your Compute Instances. Setting up services is an essential step in the configuration process.

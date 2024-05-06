@@ -1,20 +1,19 @@
 ---
 slug: how-to-use-fsck-to-fix-disk-problems
-description: "Having issues with your Linux installation? fsck might be able to help. This guide will walk you through the entire process involved in doing so."
-og_description: "fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
-keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-04-27
-modified: 2018-09-20
-modified_by:
-  name: Linode
 title: "Using fsck to Find and Repair Disk Errors and Bad Sectors"
 title_meta: "How to Use fsck to Check and Repair Disk Errors"
+description: "Having issues with your Linux installation? fsck might be able to help. This guide will walk you through the entire process involved in doing so."
+og_description: "fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2018-04-27
+modified: 2018-09-20
+keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-fsck-to-fix-disk-problems/']
-authors: ["Edward Angert"]
 ---
 
 ![Header image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg "Using fsck to Find and Repair Disk Errors and Bad Sectors")
@@ -27,7 +26,7 @@ fsck, short for file system consistency check, is a utility that examines the fi
 
 On some systems, fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 `fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{< /note >}}
 
@@ -35,8 +34,7 @@ On some systems, fsck runs automatically after an unclean shutdown or after a ce
 
 Use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
 Unmount the disks you intend to work on before attempting to check or repair them.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Unmount the target disk first. You risk corrupting your file system and losing data if you run fsck on an active disk.
 {{< /note >}}
 

@@ -1,16 +1,15 @@
 ---
 slug: lamp-on-ubuntu-14-04
-deprecated: true
+title: 'LAMP on Ubuntu 14.04'
 description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 14.04 long term support (LTS) system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-01-28
+modified: 2015-12-07
 keywords: ["ubuntu lamp", "ubuntu 14.04 lamp", "lamp install", "ubuntu web server", "apache", "mysql", "php", "ubuntu 14.04"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-on-ubuntu-14-04/','/websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/','/web-servers/lamp/lamp-on-ubuntu-14-04/','/websites/lamp/lamp-server-on-ubuntu-14-04/']
-modified: 2015-12-07
-modified_by:
-  name: Alex Fornuto
-published: 2015-01-28
-title: 'LAMP on Ubuntu 14.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -21,14 +20,14 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 ![Lamp on Ubuntu 14.04](lamp-on-ubuntu-1404-title-graphic.jpg "Lamp on Ubuntu 14.04")
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows you how to install a LAMP stack on an Ubuntu 14.04 (LTS) server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

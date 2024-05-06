@@ -1,14 +1,11 @@
 ---
+title: "Deploy Peppermint through the Linode Marketplace"
 description: "This guide shows how to install Peppermint, a ticket management system that allows teams to create tickets, and more, with the Linode One-Click Marketplace."
-keywords: ["ticket management", "marketplace"]
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-03-31
 modified: 2023-10-27
-modified_by:
-  name: Linode
-title: "Deploy Peppermint through the Linode Marketplace"
+keywords: ["ticket management", "marketplace"]
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Peppermint Ticket Management](https://peppermint.sh/) is a ticket management system that allows teams and solo users the ability create & track tickets, to-do items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.

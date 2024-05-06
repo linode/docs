@@ -1,20 +1,19 @@
 ---
 slug: monitor-linode-network-transfer-pool-with-twilio
+title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
+title_meta: "Use Twilio to Monitor Your Linode's Network Transfer Pool"
 description: "This guide shows you how to use Twilio and Linode's Python Library to receive alerts about your Linode's network transfer usage."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-01-07
 keywords: ['twilio notifications']
 tags: ['python', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-07
-modified_by:
-  name: Linode
-title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
-title_meta: "Use Twilio to Monitor Your Linode's Network Transfer Pool"
-authors: ["John Mueller"]
 ---
 
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/products/platform/get-started/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide.
 {{< /note >}}
 
