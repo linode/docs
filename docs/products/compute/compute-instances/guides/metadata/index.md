@@ -1,17 +1,12 @@
 ---
 title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
-keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
-modified: 2023-09-11
-modified_by:
-  name: Linode
-authors: ["Linode"]
+modified: 2024-02-14
+keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 ---
 
-{{< content "metadata-beta-notice" >}}
-
-When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide), and [StackScripts](/docs/products/tools/stackscripts/).
+When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide) and [StackScripts](/docs/products/tools/stackscripts/).
 
 ## Overview
 
@@ -32,12 +27,13 @@ Similar to Metadata, Linode's [StackScripts](/docs/products/tools/stackscripts/)
 
 ## Availability
 
-Akamai's Metadata service is available in beta and limited to select data centers. Additionally, user-submitted user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
+Akamai's Metadata service is available in select data centers. Additionally, user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
 
-- **Data centers:** Washington, DC (`us-iad`) and Paris (`fr-par`)
-- **Distributions:** Ubuntu 22.04 LTS and Ubuntu 20.04 LTS
+-   **Data centers:** Amsterdam (Netherlands), Chennai (India), Chicago (USA), Jakarta (Indonesia), Los Angeles (USA), Madrid (Spain), Miami (USA), Milan (Italy), Osaka (Japan), Paris (France), São Paulo (Brazil), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
 
-Additional regions and distributions may be added throughout the beta period. When selecting a distribution in the Cloud Manager, the following icon designates distributions that fully support the Metadata service:
+-   **Distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS, Debian 11
+
+When selecting a distribution in the Cloud Manager, the following icon designates distributions that fully support the Metadata service:
 
 ![Screenshot showing icon that indicates user data and cloud-init support for a distribution](cloud-init-supported-image.png)
 
@@ -164,7 +160,7 @@ Now, when you wish to deploy a new Compute Instance, you can select your custom 
 
 ## Access the Metadata Service API
 
-In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (`169.254.169.254` and `fd00:a9fe:a9fe::1`) and returns only instance data and user data for that Compute Instance.
+In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (`169.254.169.254` and `fd00:a9fe:a9fe::1`) and returns only instance data and user data for that Compute Instance. For more details on using the API, review the [How to Use the Metadata Service API](/docs/products/compute/compute-instances/guides/metadata-api/) guide.
 
 1.  Log in to a Compute Instance that has been deployed in a supported data center using a supported distribution image.
 

@@ -1,16 +1,16 @@
 ---
 slug: how-to-install-git-on-linux-mac-and-windows
+title: "Installing Git on Linux, Mac or Windows"
+title_meta: "Install Git on Linux, Mac or Windows: A How To"
 description: "Git is a popular distributed version control & source code management system. ✓ Here's how to install it on GNU/Linux, MacOSX, & Windows today!"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-04
+modified: 2022-01-14
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/git-source-control-management/','/development/version-control/how-to-install-git-on-mac-and-windows/','/development/version-control/how-to-install-git-on-linux-mac-and-windows/','/linux-tools/version-control/git/','/applications/development/git-source-control-management/']
-modified: 2022-01-14
-modified_by:
-  name: Linode
-published: 2009-09-04
 os: ["mac", "linux", "windows"]
-title: "Installing Git on Linux, Mac or Windows"
-title_meta: "Install Git on Linux, Mac or Windows: A How To"
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
@@ -18,7 +18,6 @@ external_resources:
  - '[GitHub Guides](https://guides.github.com/)'
 audiences: ["foundational"]
 tags: ["version control system"]
-authors: ["Linode"]
 ---
 
 ## Introduction to Installing Git
@@ -31,7 +30,7 @@ This guide explains how to install the latest, stable, and prepackaged version o
 
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account.
 {{< /note >}}
 

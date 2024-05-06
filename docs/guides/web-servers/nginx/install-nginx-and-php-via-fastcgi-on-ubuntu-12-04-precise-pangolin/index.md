@@ -1,22 +1,20 @@
 ---
 slug: install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin
-deprecated: true
+title: 'Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin)'
 description: 'This guide shows how to install the popular and highly performant web server Nginx, along with FastCGI and PHP on a Linode running Ubuntu 12.04 "Precise Pangolin".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-09
 keywords: ["nginx", "nginx ubuntu 12.04", "nginx fastcgi", "nginx php", "unix socket", "tcp socket", "php", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/how-to-install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','/web-servers/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-09
-modified_by:
-  name: Linode
-published: 2012-10-09
-title: 'Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin)'
 relations:
     platform:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.

@@ -1,14 +1,11 @@
 ---
 title: "Configure a Custom Domain (with a TLS/SSL Certificate)"
 description: "Learn how to upload a custom SSL/TLS certificate to enable SSL on a bucket on Linode Object Storage."
-keywords: ['object','storage','object storage','s3','bucket']
-tags: ["linode platform","cloud manager"]
 published: 2022-02-07
 modified: 2023-08-22
-modified_by:
-  name: Linode
+keywords: ['object','storage','object storage','s3','bucket']
+tags: ["linode platform","cloud manager"]
 aliases: ['/platform/object-storage/enable-ssl-for-object-storage/','/guides/enable-ssl-for-object-storage/']
-authors: ["Linode"]
 ---
 
 Linode's Object Storage service supports both shared and custom domain names. By default, files can be accessed through secured (HTTPS) URLs within the shared domain *\*.linodeobjects.com*. If you prefer, you can use a custom domain, such as a subdomain of *\*.example.com*. This guide walks you through the configuration of a custom domain and adding a TLS certificate to secure that custom domain. When configuring Linode services, this guide uses the Cloud Manager, though the [Linode CLI](/docs/products/tools/cli/get-started/) and the [Linode API](/docs/api/object-storage/) can be used instead.
@@ -23,7 +20,7 @@ When configuring Object Storage with a custom domain, you must use a fully quali
 
 ## Create a Bucket
 
-If you have not already done so, [create a bucket](/docs/products/storage/object-storage/guides/manage-buckets/). Since the intention is to use this bucket with a custom domain, the bucket must be labeled as your fully qualified domain name, such as `assets.example.com`. If your files already exist in a bucket that doesn't have this label, create a new bucket with this label and copy your files into it.
+If you have not already done so, [create a bucket](/docs/products/storage/object-storage/guides/manage-buckets/). Since the intention is to use this bucket with a custom domain, the bucket must be labeled as your fully qualified domain name, such as `assets.example.com`. If your files already exist in a bucket that doesn't have this label, create a new bucket with this label and copy or move your files into it. For more information, see [Moving Objects Between Buckets in Linode's Object Storage](/docs/guides/how-to-move-objects-between-buckets/).
 
 ## Configure DNS
 
@@ -54,7 +51,7 @@ Once your DNS has been configured, create (or purchase) a TLS/SSL certificate th
 
 1.  When prompted, enter the custom domain that you intend to use and have already configured (such as `assets.example.com`)
 
-1.  You are then requested to create a specific file with specific contents and make it accessible on your custom domain within a certain directory. If you've followed the previous steps in this guide, your custom domain now points to your bucket. This means you can create this file directly within your Object Storage account. To do this, you can use Cyberduck, the Linode CLI, s3cmd, s4cmd, or any other tool or application that integrates with Object Storage and as the ability to create folders and files.
+1.  You are then requested to create a specific file with specific contents and make it accessible on your custom domain within a certain directory. If you've followed the previous steps in this guide, your custom domain now points to your bucket. This means you can create this file directly within your Object Storage account. To do this, you can use [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck/), the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd/), or any other tool or application that integrates with Object Storage and as the ability to create folders and files.
 
 1.  Once the file has been created and is accessible, press enter within the certbot command line to continue. If certbot is able to successfully access that file, it generates the certificate along with its private key and saves them to your system:
 

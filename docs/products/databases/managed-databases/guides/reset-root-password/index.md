@@ -1,8 +1,9 @@
 ---
 title: "Reset the Root Password"
 description: "Learn how to reset the root password on a Linode Managed Database."
-authors: ["Linode"]
 ---
+
+{{< content "dbass-eos" >}}
 
 If you need to reset the root password on your Managed Database, you can do so through the Cloud Manager. This process assigns a new randomly generated password to the `linroot` user. This is helpful when someone should no longer have access to that user or if you believe your password may have been compromised.
 

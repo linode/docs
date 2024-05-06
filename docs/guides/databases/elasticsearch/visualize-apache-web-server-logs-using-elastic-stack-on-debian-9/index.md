@@ -1,18 +1,17 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-9
+title: "Visualizing Apache Logs Using the Elastic Stack on Debian 9"
+title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 9"
 description: "This guide will demonstrate how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs."
 og_description: "The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2021-03-05
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache debian 9", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
 image: VizApacheWSL_ElasticStack_Debian9.png
-modified: 2021-03-05
-modified_by:
-  name: Linode
-title: "Visualizing Apache Logs Using the Elastic Stack on Debian 9"
-title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 9"
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring","apache"]
 relations:
@@ -20,7 +19,6 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Debian 9
-authors: ["Tyler Langlois"]
 ---
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.

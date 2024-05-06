@@ -2,9 +2,9 @@
 title: "FAQs"
 title_meta: "FAQs for the Backup Service"
 description: "Find quick answers to some of the most commonly asked questions for Linode's Backup Service."
+published: 2023-07-07
 tab_group_main:
     weight: 60
-published: 2023-07-07
 ---
 
 ## Can I create more than one manual backup?

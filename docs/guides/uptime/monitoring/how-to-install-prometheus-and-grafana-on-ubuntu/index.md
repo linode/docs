@@ -2,13 +2,12 @@
 slug: how-to-install-prometheus-and-grafana-on-ubuntu
 title: "How to Install and Configure Prometheus and Grafana on Ubuntu"
 description: 'How to Install and Configure Prometheus and Grafana on Ubuntu'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-06-13
 keywords: ['Install Prometheus', 'Install Grafana', 'Install Node Exporter', 'Integrate Prometheus and Grafana', 'Download Grafana Dashboard for Prometheus']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-06-13
-modified_by:
-  name: Linode
 external_resources:
 - '[Grafana Labs](https://grafana.com/)'
 - '[Grafana Dashboard Library](https://grafana.com/grafana/dashboards/)'

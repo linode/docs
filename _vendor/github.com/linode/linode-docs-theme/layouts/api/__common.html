@@ -16,6 +16,15 @@ This template includes common API logic and functions.
   {{ return $api }}
 {{ end }}
 
+{{/* kin-openapi (the openAPI library Hugo uses) changed changed some types from map to a struct with a Map accessor. This was introduced in Hugo 0.121.0 */}}
+{{ define "partials/openapi3/to-map" }}
+  {{ $map := . }}
+  {{ if gt hugo.Version "0.120.4" }}
+    {{ $map = $map.Map }}
+  {{ end }}
+  {{ return $map }}
+{{ end }}
+
 {{ define "partials/openapi3/get-resource" }}
   {{ $apiPath := "api/openapi.yaml" }}
   {{ return (resources.Get $apiPath) }}
@@ -74,22 +83,7 @@ This template includes common API logic and functions.
         {{ end }}
       {{ end }}
     {{ end }}
-    {{ with .Responses }}
-      {{ with .Value }}
-        {{ $items := slice }}
-        {{ range $k, $v := . }}
-          {{ $.Set "dot" .Value }}
-          {{ $.Set "title" $k }}
-          {{ with index .Content "application/json" }}
-            {{ with .Schema }}
-              {{ $.Set "dot" . }}
-              {{ $items = $items | append (partial "openapi3/schema-to-plain-slice" $) }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-        {{ $result.Set "Response Body" $items }}
-      {{ end }}
-    {{ end }}
+    {{/* We currently don't add the response body to the content/text field. See issue #795. */}}
   {{ end }}
   {{ return $result.Values }}
 {{ end }}
@@ -110,7 +104,6 @@ This template includes common API logic and functions.
   {{ with $op }}
     {{ $action := .Summary | anchorize }}
     {{ $.Set "action" $action }}
-    {{ $.Set "debug"  (eq $action "list-tagged-objects") }}
     {{ with $op.Servers }}
       {{ $server = index . 0 }}
       {{ $url = printf "%s%s" $server.URL $pathKey }}
@@ -228,7 +221,7 @@ This template includes common API logic and functions.
     {{ with .Responses }}
       {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Response Samples" "id" (printf "%s__response-samples" $action) ) }}
       {{ $responseTabs := slice }}
-      {{ range $k, $v := . }}
+      {{ range $k, $v :=  (partial "openapi3/to-map" .) }}
         {{ $.Set "dot" . }}
         {{ $.Set "title" $k }}
         {{ $responseTabs = $responseTabs | append (partial "openapi3/get-response-examples" $) }}
@@ -237,7 +230,7 @@ This template includes common API logic and functions.
       {{ template "openapi3/component-tabs" $ }}
       {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Responses" "id" (printf "%s__responses" $action) ) }}
       {{ $responseBodySchemaTabs := slice }}
-      {{ range $k, $v := . }}
+      {{ range $k, $v := (partial "openapi3/to-map" .) }}
         {{ $.Set "dot" .Value }}
         {{ $.Set "title" $k }}
         {{ $responseBodySchemaTabs = $responseBodySchemaTabs | append (partial "openapi3/print-response" $) }}
@@ -640,8 +633,11 @@ This template includes common API logic and functions.
 
 {{ define "partials/openapi3/get-response-example-property" }}
   {{ $result := .Example }}
-  {{ with .Properties }}
-    {{ $result = partial "openapi3/get-response-example-properties" . }}
+  {{ $isSet := and ($result) (eq .Type "array") }}
+  {{ if not $isSet }}
+    {{ with .Properties }}
+      {{ $result = partial "openapi3/get-response-example-properties" . }}
+    {{ end }}
   {{ end }}
   {{ return $result }}
 {{ end }}

@@ -2,12 +2,12 @@
 title: Get Started
 title_meta: "Getting Started with VLANs"
 description: "Use the Linode Cloud Manager to create a VLAN and attach a Compute Instance to it. When a Compute Instance is attached to a VLAN and configured, it has access to the VLAN's secure and private network."
+published: 2021-04-28
+modified: 2022-08-23
 keywords: ['networking','vlan','private network']
 tags: ["security", "networking", "linode platform"]
 tab_group_main:
     weight: 20
-published: 2021-04-28
-modified: 2022-08-23
 aliases: ['/guides/getting-started-with-vlans/']
 ---
 
