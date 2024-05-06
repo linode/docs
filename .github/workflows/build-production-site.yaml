@@ -1,0 +1,236 @@
+name: Build production site
+
+on:
+  release:
+    types: [published]
+
+# This workflow builds the site with Hugo, compresses it, uploads it to an
+# object storage bucket, and updates the sandbox Algolia app to reflect the
+# content in the production version of the site. Another non-github.com delivery
+# system is responsible for deploying the compressed site to a production
+# webserver.
+#
+# This workflow is triggered whenever a release tag matching the `vX.Y.Z`
+# format is created on the docs repo.
+#
+# The working directory for this GitHub Action is under:
+# /home/runner/work/docs/docs/
+#
+# For this workflow, two repos are checked out:
+# - The github.com/linode/docs repo is checked out into the `docs-repo` folder
+# - The github.com/linode/linode-docs-theme repo is checked out into the
+#   `linode-docs-theme` folder.
+#
+# This workflow runs `hugo` to build the site inside the `docs-repo` folder.
+# The site is rendered into the `docs-repo/public/` directory. The workflow
+# uses SFTP to upload a tarball of this folder over to the destination web
+# servers.
+#
+# We check out the linode-docs-theme repo because it contains a
+# `linode_algolia_admin` tool that we use to update the Algolia search indices.
+#
+# Inside the docs repo, the go.mod file contains a reference to which git
+# commit of the linode-docs-theme is associated with the docs repo.
+# We inspect this file to get that commit hash before checking out the
+# linode-docs-theme repo.
+#
+# The following is a diagram of the above-mentioned repos and files. It does not
+# show all the files within those repositories:
+#
+# .
+#
+# ├── docs-repo
+# │   ├── go.mod
+# │   └── public
+# └── linode-docs-theme-repo
+#     └── scripts
+#         └── linode_algolia_admin
+
+jobs:
+  build-production-site:
+    if: github.repository_owner == 'linode'
+    runs-on: ubuntu-latest
+
+    environment:
+      name: build_production_site
+      url: ${{ vars.DOCS_WEBSITE_URL }}
+
+    steps:
+    - name: 1. Set up Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: ${{ vars.HUGO_VERSION }}
+
+    - name: 2. Checkout docs repo
+      uses: actions/checkout@v3
+      with:
+        path: 'docs-repo'
+        # ref: 'main'
+
+      # Debugging step so we can check if the right version
+      # of the docs repo is checked out
+    - name: (Debugging info) Print current docs repo branch/ref/commit
+      working-directory: ./docs-repo
+      run: |
+        git status
+        git log -1
+
+    - name: 3. Set up SSH agent (linode-docs-theme repo deploy key)
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.LINODE_DOCS_THEME_DEPLOY_KEY_FOR_DOCS_DEPLOY_GHA }}
+
+    - name: 4. Clone docs theme repo
+      run: |
+        git clone git@github.com:$GITHUB_REPOSITORY_OWNER/linode-docs-theme linode-docs-theme-repo
+
+    - name: 5. Get linode-docs-theme commit hash from docs go.mod
+      id: get-theme-version
+      working-directory: ./docs-repo
+      run: |
+        # `hugo mod graph` prints output that looks like:
+        # project github.com/linode/linode-docs-theme@v0.0.0-20230706164309-cc2dbdeb7143+vendor
+        # In this example, cc2dbdeb7143 is the relevant commit hash for the
+        # linode-docs-theme repo. The following commands grab the commit hash
+        # from the `hugo mod graph` string
+
+        LINODE_DOCS_THEME_VERSION=$(hugo mod graph | grep linode-docs-theme | cut -d '+' -f 1 | grep -o '[^-]*$')
+        echo "VERSION=$LINODE_DOCS_THEME_VERSION" >> $GITHUB_OUTPUT
+
+    - name: 6. Check out linode-docs-theme commit hash from docs go.mod
+      working-directory: ./linode-docs-theme-repo
+      run: |
+        git checkout ${{ steps.get-theme-version.outputs.VERSION }}
+
+      # Debugging step so we can check if the right version
+      # of the Algolia admin tool is checked out
+    - name: (Debugging info) Print Linode Algolia admin tool version
+      working-directory: ./linode-docs-theme-repo
+      run: |
+        cd scripts/linode_algolia_admin/
+        go run main.go version
+
+      # Debugging step that lists the Hugo-generated images
+      # directory *before* the imache cache restore step
+    - name: (Debugging info) List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+
+    - name: 7. Restore Hugo generated images cache
+      uses: ylemkimon/cache-restore@v2
+      with:
+        path: ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+        key: ${{ vars.HUGO_IMAGE_CACHE_NAME }}
+        restore-keys: ${{ vars.HUGO_IMAGE_CACHE_NAME }}
+
+      # Debugging step that lists the Hugo-generated images
+      # directory *after* the imache cache restore step,
+      # to make sure that the restore happened successfully
+    - name: (Debugging info) List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+
+    - name: 8. Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
+
+    - name: 9. Install dependencies (Node)
+      working-directory: ./docs-repo
+      run: npm ci
+
+    - name: 10. Build Hugo
+      env:
+        HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
+      working-directory: ./docs-repo
+      run: |
+        hugo config
+        hugo -b "${{ vars.DOCS_WEBSITE_URL }}" --gc --minify -d public
+
+      # Debugging step that lists the Hugo-rendered files
+      # to make sure the site was built
+    - name: (Debugging info) List rendered files
+      working-directory: ./docs-repo
+      run: |
+        sudo apt install -y tree
+        tree -L 1 public
+
+      # When Hugo builds, it renders search index data to a collection of
+      # data files under public/. This step uploads that data to the
+      # Algolia search backend
+    - name: 11. Update Algolia
+      working-directory: ./linode-docs-theme-repo
+      env:
+        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
+      run: |
+        cd scripts/linode_algolia_admin/
+
+        # Hugo renders the site to the `public` directory within the docs repo.
+        # This includes three files with Algolia index data:
+        # - public/index.json
+        # - public/api/index.json
+        # - public/data/sections/index.json
+        # The pushdocs command uploads this data to Algolia
+        go run main.go pushdocs -source-dir ../../../docs-repo/public
+
+        # The settings (e.g. ranking configuration) and synonyms for the
+        # linode-merged index are stored in version control, and the
+        # following command pushes those settings/synonyms to the Algolia app
+        go run main.go -indices linode-merged push -replace settings,synonyms
+
+        # The refresh-merge-and-push sequence assumes that the linode-wp and linode-community indices already exist in the Algolia app
+        go run main.go sequence refresh-merge-and-push
+
+      # Why build Hugo twice? In order to render the Explore Docs nav menu,
+      # Hugo downloads data from the Algolia search backend. However, the
+      # first time we build Hugo in this workflow, that data isn't up-to-date
+      # with new content we may be publishing. So, we build Hugo a second time
+      # after we have performed the previous Update Algolia step.
+      # In summary:
+      # - Build Hugo the first time in order to render the JSON search index
+      #   data files
+      # - Update Algolia with those data files
+      # - Build Hugo again so that the navigation UI can be rendered with that
+      #   updated info from Algolia
+      # It's a little redundant, but solves the chicken-or-egg problem
+    - name: 12. Build Hugo (second time)
+      env:
+        HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
+      working-directory: ./docs-repo
+      run: |
+        hugo config
+        hugo -b "${{ vars.DOCS_WEBSITE_URL }}" --gc --minify -d public
+
+      # The gitcommithash.txt file is used when the site is deployed to the
+      # webserver to verify that the deployment was successful.
+    - name: 13. Add gitcommithash.txt to rendered public/ folder
+      working-directory: ./docs-repo
+      run: |
+        echo $GITHUB_SHA > public/gitcommithash.txt
+
+      # Make a tarball of the site, because it will upload much, much quicker
+      # than the uncompressed rendered site. The commit for this workflow run
+      # is encoded in the name of the tarball.
+    - name: 14. Create tarball of docs website
+      run: |
+        tar --owner=${{ secrets.DOCS_WEBSITE_USER }} --group=${{ secrets.DOCS_WEBSITE_USER }} -czf docs-$GITHUB_SHA.tar.gz -C docs-repo/public/ .
+
+    - name: 15. Set up S3cmd CLI tool
+      uses: s3-actions/s3cmd@v1.5.0
+      with:
+        provider: linode
+        region: ${{ secrets.OBJ_REGION }}
+        access_key: ${{ secrets.OBJ_ACCESS_KEY }}
+        secret_key: ${{ secrets.OBJ_SECRET_KEY }}
+
+      # Upload the tarball to an object storage bucket. Another non-github.com
+      # delivery system is used to deploy this tarball to the prod webserver
+    - name: 16. Upload website tarball to object storage
+      run: |
+        echo "$(date +%s)" > build-date.txt # Print current Unix timestamp to a text file
+
+        s3cmd put docs-$GITHUB_SHA.tar.gz s3://${{ secrets.OBJ_BUCKET_NAME }}/prod/docs-$GITHUB_SHA/
+        s3cmd put build-date.txt s3://${{ secrets.OBJ_BUCKET_NAME }}/prod/docs-$GITHUB_SHA/

@@ -1,17 +1,16 @@
 ---
 slug: how-to-use-scp
-description: 'Learn how to transfer files using SCP on Linux, and how SCP compares to other means of transferring files.'
-keywords: ['Scp command','Scp linux','Scp syntax','Scp example']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-14
-modified_by:
-  name: Linode
 title: "Transfer Files With the scp Command on Linux"
 title_meta: "How to Transfer Files With the scp Command on Linux"
+description: 'Learn how to transfer files using SCP on Linux, and how SCP compares to other means of transferring files.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-03-14
+keywords: ['Scp command','Scp linux','Scp syntax','Scp example']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ubuntu man page for scp](http://manpages.ubuntu.com/manpages/focal/man1/scp.1.html)'
 - '[TFTP RFC 1350](https://datatracker.ietf.org/doc/html/rfc1350)'
-authors: ["Jeff Novotny"]
 ---
 
 Copying files to a remote computer is a very common task. There are many programs and utilities to accomplish this task, but not all of them are secure. A popular choice for more quickly and securely copying files is the Secure Copy Protocol (SCP). This guide describes how SCP works and explains how to use the `scp` command on Linux distributions. It also provides several `scp` examples, demonstrating several different scenarios.

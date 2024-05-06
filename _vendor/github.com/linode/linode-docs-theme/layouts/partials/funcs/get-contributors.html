@@ -1,0 +1,59 @@
+{{ $p := .Params }}
+{{/* Validation: */}}
+{{/* All items in the authors slice must also be present in the contributors slice. */}}
+{{ $ok := true }}
+{{ range $p.authors }}
+  {{ if not (collections.In $p.contributors .) }}
+    {{ $path := "" }}
+    {{ with $.File }}
+      {{ $path = .Filename }}
+    {{ else }}
+      {{ $path = $.Path }}
+    {{ end }}
+    {{ errorf "Author %q is not in the contributors list in %q" . $path }}
+    {{ $ok = false }}
+  {{ end }}
+{{ end }}
+
+{{ $authors := $p.authors  | default slice }}
+{{ $contributors := $p.contributors  | default slice }}
+{{ $authorNames := $authors }}
+{{ $contributorNames := $contributors | symdiff $authors }}
+
+{{ $authorItems := slice }}
+{{ $contributorItems := slice }}
+
+{{ if $ok }}
+  {{ range $authorNames }}
+    {{ with (site.GetPage (printf "/contributors/%s" ( . | anchorize))) }}
+      {{ $authorItems = $authorItems | append (dict "name" .Title "href" .RelPermalink) }}
+    {{ end }}
+  {{ end }}
+  {{ range $contributorNames }}
+    {{ with (site.GetPage (printf "/contributors/%s" ( . | anchorize))) }}
+      {{ $contributorItems = $contributorItems | append (dict "name" .Title "href" .RelPermalink) }}
+    {{ end }}
+  {{ end }}
+  {{ if and $p.author (not (or $authorItems $contributorItems)) }}
+    {{/* Legacy author and/or contributor fields.
+      1. Use the author name, if present. However, if the author's name contains Linode, then check to see if a contributor name is set, and use that instead if it is present.
+      2. If contributor link is present, set that as a link in the title byline. All links have been set to be HTTPS URLs, so we don't have to try and parse Twitter/Linkedin/etc @usernames.
+    */}}
+    {{ $author :=  $p.author }}
+    {{ $contributor :=  $p.contributor }}
+    {{ $name := $author.name }}
+    {{ if and (strings.Contains $name "Linode") $contributor }}
+      {{ with $contributor.name }}
+        {{ $name = . }}
+      {{ end }}
+    {{ end }}
+    {{ $href = "" }}
+    {{ with $contributor }}
+      {{ with .link }}
+        {{ $href  . }}
+      {{ end }}
+    {{ end }}
+    {{ $authorItems = $authorItems | append (dict "name" $name "href" $href) }}
+  {{ end }}
+{{ end }}
+{{ return (dict "authors" $authorItems "contributors" $contributorItems) }}

@@ -1,17 +1,14 @@
 ---
+title: "Deploy Mastodon through the Linode Marketplace"
 description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Marketplace."
+published: 2022-12-12
+modified: 2024-04-16
 keywords: ['social', 'messaging', 'mastodon']
 tags: ["linode platform","mastodon","marketplace","cloud-manager",]
-published: 2022-12-12
-modified: 2023-02-09
-modified_by:
-  name: Linode
-title: "Deploy Mastodon through the Linode Marketplace"
 external_resources:
   - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
   - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'
 aliases: ['/guides/mastodon-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Mastodon](https://docs.joinmastodon.org/) is an open-source and decentralized micro-blogging platform used to create a social network based on open web standards and principles. Like Twitter, it lets users follow other users and post text, photos, and video content. Unlike Twitter, Mastodon is decentralized, meaning that its content is not maintained by a central authority.
@@ -23,7 +20,8 @@ Mastodon servers range in size from small private instances to massive public in
 {{< content "email-warning-shortguide" >}}
 
 {{< note >}}
-The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section.
+The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section. Depending on a variety of factors, new and updated DNS records can take up to 48 hours to fully propagate, though it usually happens much sooner. The deployment fails if the DNS has still not been propagated.
+
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -36,10 +34,14 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 **Estimated deployment time:** Mastodon should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
-- **Supported distributions:** Debian 11
+## Configuration Options
+
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher
 
-### Configuration Options
+### Mastodon Options
+
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 - **Domain** (*required*): The domain name you wish to use for the mastodon server, such as *example.com*.
 - **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/).

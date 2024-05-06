@@ -1,7 +1,13 @@
 'use strict';
 
 import { getOffsetTop, isElementInViewport, isMobile } from '../helpers/index';
-import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from '../search/request';
+import {
+	newRequestCallback,
+	newRequestCallbackFactoryTarget,
+	SearchGroupIdentifier,
+	RequestCallBackStatus,
+} from '../search/request';
+import { isTopResultsPage } from '../search';
 import { newCreateHref } from './create-href';
 
 var debug = 0 ? console.log.bind(console, '[explorer]') : function () {};
@@ -226,80 +232,64 @@ export function newSearchExplorerController(searchConfig) {
 		noTransitions: true,
 
 		init: function () {
-			// This needs to be done AFTER Alpine has made its initial updates to the DOM.
-			this.$nextTick(() => {
-				templates = {
-					templateLoopRoot: this.$refs['templateLoopRoot'],
-					templateLoopNested: this.$refs['templateLoopNested'],
-					templateTree: this.$refs['templateTree'],
-				};
-				this.target = this.$refs['explorer'];
+			templates = {
+				templateLoopRoot: this.$refs['templateLoopRoot'],
+				templateLoopNested: this.$refs['templateLoopNested'],
+				templateTree: this.$refs['templateTree'],
+			};
+			this.target = this.$refs['explorer'];
 
-				// Open the explorer menu on load when not on mobile.
-				let shouldOpen = !isMobile();
+			// Open the explorer menu on load when not on mobile.
+			let shouldOpen = !isMobile();
+			let isSearchPage = isTopResultsPage();
+			if (isSearchPage) {
+				// Show it after we have the search results.
+				this.open = false;
+			}
 
-				// Prepare the DOM templates. The final render of the nodes is performed lazily on expansion.
-				this.render();
+			loadInitialData = (sectionKeys = []) => {
+				this.$store.search.withExplorerData(
+					(data) => {
+						this.data.initial = data;
+						this.load();
 
-				if (shouldOpen) {
-					onLoadNodeInfo = getActiveNodeInfo();
+						this.$watch('$store.search.results.main.result', (value) => {
+							debug('main result');
+							this.load();
+							this.open = true;
+						});
+					},
+					createExplorerNodeRequest,
+					sectionKeys
+				);
+			};
 
-					if (onLoadNodeInfo.branchKey) {
-						// Prewarm the query cache for all branchnodes from level 2 and down.
-						let preloadSearches = [];
-						let sections = onLoadNodeInfo.branchKey.split(' > ');
-						let currentKey = [];
-						for (let i = 0; i < sections.length; i++) {
-							currentKey.push(sections[i]);
-							if (i < startLevelRegularPages - 1) {
-								continue;
-							}
+			sectionKeys = [];
 
-							let section = currentKey.join(' > ');
-							let factory = {
-								status: function () {
-									return RequestCallBackStatus.Once;
-								},
-								create: function (query) {
-									return {
-										request: createExplorerNodeRequest(query, section),
-										callback: () => {
-											// This is just a cache warmer.
-										},
-									};
-								},
-							};
-							preloadSearches.push(newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.Main));
+			if (shouldOpen) {
+				onLoadNodeInfo = getActiveNodeInfo();
+				if (onLoadNodeInfo.branchKey) {
+					let sections = onLoadNodeInfo.branchKey.split(' > ');
+
+					let currentKey = [];
+					for (let i = 0; i < sections.length; i++) {
+						currentKey.push(sections[i]);
+						if (i < startLevelRegularPages - 1) {
+							continue;
 						}
-
-						this.$store.search.addSearches(...preloadSearches);
+						let section = currentKey.join(' > ');
+						sectionKeys.push(section);
 					}
 				}
-			});
-
-			this.$watch('$store.search.results.blank.result', (value) => {
-				debug('blank result');
-				this.load();
-			});
-
-			this.$watch('$store.search.results.main.result', (value) => {
-				debug('main result');
-				this.load();
-			});
+				loadInitialData(sectionKeys);
+			}
 
 			this.$watch('$store.nav.open.explorer', (value) => {
 				this.noTransitions = false;
 				if (value && !this.data.loaded) {
-					this.$store.search.withBlank();
+					loadInitialData();
 				}
 			});
-
-			if (this.$store.search.results.blank.loaded) {
-				this.load();
-			} else if (this.$store.nav.open.explorer) {
-				// Make sure we get the blank result set.
-				this.$store.search.withBlank();
-			}
 		},
 
 		isOpen: function () {
@@ -325,11 +315,8 @@ export function newSearchExplorerController(searchConfig) {
 			let shouldScroll = onLoadNodeInfo;
 
 			this.buildNodes();
-			this.filterNodes();
+			this.render();
 			this.data.loaded = true;
-			if (this.$store.search.results.main.loaded) {
-				this.load();
-			}
 
 			if (shouldScroll) {
 				var onLoadNodeInfoCopy = onLoadNodeInfo;
@@ -340,6 +327,7 @@ export function newSearchExplorerController(searchConfig) {
 
 			// Only needed on inital page load,
 			onLoadNodeInfo = null;
+			__stopWatch('explorer.loaded');
 		},
 
 		onTurbolinksBeforeVisit: function (data) {
@@ -396,8 +384,10 @@ export function newSearchExplorerController(searchConfig) {
 		},
 
 		render: function () {
+			let fragment = new DocumentFragment();
+			this.renderNodesRecursive(fragment, 1);
 			this.target.innerHTML = '';
-			this.renderNodesRecursive(this.target, 1);
+			this.target.appendChild(fragment);
 		},
 
 		renderNodesRecursive: function (ulEl, level) {
@@ -554,6 +544,41 @@ export function newSearchExplorerController(searchConfig) {
 			return n;
 		},
 
+		addPagesToNode: function (n, hits) {
+			let pages = [];
+			for (let item of hits) {
+				let href = item.href;
+				if (item.hierarchy && item.hierarchy.length) {
+					// This is the reference-section.
+					// All pages in a section shares the same href (the section),
+					// and the best match is selected while searching using Algolia's distinct keyword.
+					// This is the explorer, and we need to link to the detail page.
+					let last = item.hierarchy[item.hierarchy.length - 1];
+					href = last.href;
+				}
+				let active = href === window.location.pathname;
+
+				pages.push(
+					this.createNode({
+						parent: n,
+						section: n.section,
+						key: href,
+						href: href,
+						hit: item,
+						active: active,
+						ordinal: item.ordinal,
+						firstPublishedTime: item.firstPublishedTime,
+						name: item.linkTitle,
+						level: n.level + 1,
+						kind: 'page',
+						count: 0,
+					})
+				);
+			}
+
+			n.pages = pages;
+		},
+
 		// loadPages loads any leaf pages into node if not already loaded.
 		loadPages: function (node) {
 			let nodes = [];
@@ -578,41 +603,6 @@ export function newSearchExplorerController(searchConfig) {
 
 			var self = this;
 
-			const addPagesToNode = function (n, hits) {
-				let pages = [];
-				for (let item of hits) {
-					let href = item.href;
-					if (item.hierarchy && item.hierarchy.length) {
-						// This is the reference-section.
-						// All pages in a section shares the same href (the section),
-						// and the best match is selected while searching using Algolia's distinct keyword.
-						// This is the explorer, and we need to link to the detail page.
-						let last = item.hierarchy[item.hierarchy.length - 1];
-						href = last.href;
-					}
-					let active = href === window.location.pathname;
-
-					pages.push(
-						self.createNode({
-							parent: n,
-							section: n.section,
-							key: href,
-							href: href,
-							hit: item,
-							active: active,
-							ordinal: item.ordinal,
-							firstPublishedTime: item.firstPublishedTime,
-							name: item.linkTitle,
-							level: n.level + 1,
-							kind: 'page',
-							count: 0,
-						})
-					);
-				}
-
-				n.pages = pages;
-			};
-
 			nodes.forEach((node) => {
 				if (node.level < startLevelRegularPages) {
 					return;
@@ -622,14 +612,18 @@ export function newSearchExplorerController(searchConfig) {
 					status: function () {
 						return node.open ? RequestCallBackStatus.On : RequestCallBackStatus.Off;
 					},
-					create: function (query) {
-						return {
-							request: createExplorerNodeRequest(query, node.key),
-							callback: (result) => {
-								addPagesToNode(node, result.hits);
+					create: (query) => {
+						return newRequestCallback(
+							createExplorerNodeRequest(query, node.key),
+							(result) => {
+								this.addPagesToNode(node, result.hits);
 							},
-							pronto: true,
-						};
+							{
+								pronto: true,
+								query: query,
+								fileCacheID: node.key,
+							}
+						);
 					},
 				};
 
@@ -639,6 +633,10 @@ export function newSearchExplorerController(searchConfig) {
 
 		buildNodes: function () {
 			var result = this.getResult();
+			var openSections = {};
+			if (!this.data.loaded && this.data.initial) {
+				openSections = this.data.initial.sections;
+			}
 
 			var self = this;
 
@@ -709,6 +707,10 @@ export function newSearchExplorerController(searchConfig) {
 						hit: hit,
 					});
 
+					if (!n.disabled && onLoadNodeInfo && isSameOrBelowBranch(onLoadNodeInfo.branchKey, n.key)) {
+						n.open = true;
+					}
+
 					n.isDisabled = function () {
 						return this.disabled || this.count === 0;
 					};
@@ -755,6 +757,11 @@ export function newSearchExplorerController(searchConfig) {
 					n.showBorder2 = function () {
 						return this.level > 1 && this.open && this.hasOpenDescendants();
 					};
+
+					let childResults = openSections[kp.key];
+					if (childResults) {
+						self.addPagesToNode(n, childResults.hits);
+					}
 
 					this.nodes[kp.key] = n;
 				} else {
@@ -810,7 +817,7 @@ export function newSearchExplorerController(searchConfig) {
 			if (this.data.loaded) {
 				return this.$store.search.results.main.result;
 			}
-			return this.$store.search.results.blank.result;
+			return this.data.initial.blank.result;
 		},
 
 		// Update hidden state and facet counts based on a updated search result.
@@ -838,11 +845,6 @@ export function newSearchExplorerController(searchConfig) {
 
 			for (let k in this.data.nodes) {
 				let n = this.data.nodes[k];
-
-				if (!n.disabled && onLoadNodeInfo && isSameOrBelowBranch(onLoadNodeInfo.branchKey, n.key)) {
-					n.open = true;
-					n.loadPages();
-				}
 
 				if (!seen.has(n.key)) {
 					if (n.level === 1) {

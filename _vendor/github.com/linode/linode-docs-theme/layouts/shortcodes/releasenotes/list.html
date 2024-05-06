@@ -25,7 +25,7 @@
       <time datetime="{{ $date }}" class="text-gray-400">
         {{ $date.Format site.Params.time_format_default }}
       </time>
-      <div class="content prose prose-sm md:prose-lg max-w-none">
+      <div class="content prose prose-sm md:prose-lg max-w-content">
         {{ .Content }}
       </div>
     </div>
@@ -64,22 +64,23 @@
     {{ partial "releasenotes/list-pages-paginated-nav.html" (dict "class" "border-b border-divider mb-8") }}
     <template x-for="item in current()">
       <div class="mb-8">
-        <a :href="`#${item.id}`" class="group" class="mb-1 text-2xl"
-          ><h2 :id="item.id">
-            <span x-text="item.title"></span>
+        <a :href="`#${item.id}`" class="group" class="text-2xl"
+          ><h2 :id="item.id" class="mb-2">
+            <span x-text="item.title" data-testid="item-title"></span>
             <svg
               class="ml-2 inline-block w-5 h-5 text-brand group-hover:text-green-400">
               <use href="#icon--hashtag"></use>
-            </svg></h2
-        ></a>
+            </svg>
+          </h2>
+        </a>
         <span
-          class="text-gray-400"
+          class="text-gray-400 inline-block mb-4"
           x-text="item.version + ', '"
           x-show="item.version"></span>
         <time :datetime="item.date" class="text-gray-400" x-text="item.dateStr">
         </time>
         <div
-          class="content prose prose-sm md:prose-lg max-w-none"
+          class="content prose prose-sm md:prose-lg max-w-content"
           x-html="item.content"></div>
       </div>
     </template>
@@ -93,7 +94,7 @@
     class="py-3 flex items-center justify-between {{ .class }}"
     aria-label="Pagination">
     <div class="hidden sm:block">
-      <p class="text-sm text-textcolor font-medium" x-text="statusText()"></p>
+      <p class="text-sm text-textcolor font-medium" x-text="statusText()" data-testid="pagination-status"></p>
     </div>
     <div class="flex-1 flex justify-end">
       <button
@@ -101,6 +102,7 @@
         :disabled="currentPage() == 1"
         type="button"
         @click="first()"
+        data-testid="first"
         class="relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
         First
       </button>
@@ -109,6 +111,7 @@
         :disabled="currentPage() == 1"
         type="button"
         @click="prev()"
+        data-testid="prev"
         class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
         Previous
       </button>
@@ -117,6 +120,7 @@
         :disabled="currentPage() == pages.length"
         type="button"
         @click="next()"
+        data-testid="next"
         class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
         Next
       </button>
@@ -125,6 +129,7 @@
         :disabled="currentPage() == pages.length"
         type="button"
         @click="last()"
+        data-testid="last"
         class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
         Last
       </button>
@@ -132,6 +137,7 @@
         :disabled="false"
         type="button"
         @click="toggleAll()"
+        data-testid="toggle-all"
         x-text="showAll ? 'Less' : 'All'"
         class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none"></button>
     </div>

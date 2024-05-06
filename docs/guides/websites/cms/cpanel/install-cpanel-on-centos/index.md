@@ -1,33 +1,34 @@
 ---
 slug: install-cpanel-on-centos
+title: Install cPanel on CentOS
 description: 'This guide shows how to install cPanel, a leading server control panel that enables you to manage server services and install applications, on a Linode running CentOS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-09-07
+modified: 2023-07-25
 keywords: ["cpanel", "Linode control panel", "install cpanel", "cpanel centos"]
 tags: ["centos","cms","cpanel","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/cpanel/centos-6/','/websites/cms/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos-5/','/websites/cms/cpanel/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos/','/websites/cms/cpanel-on-centos-6-5/']
-modified: 2018-08-09
-modified_by:
-  name: Edward Angert
-published: 2016-09-07
-title: Install cPanel on CentOS
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'
-authors: ["Linode"]
+image: Install_cPanel_smg.jpg
 ---
-
-![Install cPanel on CentOS](Install_cPanel_smg.jpg)
 
 [cPanel](http://cpanel.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode.
 
-
-{{< note respectIndent=false >}}
-
+{{< note >}}
 **Linode does not sell cPanel licenses**
 
 You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.net/view/cpanel/license-options) or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](https://www.cpanel.com/support/) directly once you've purchased a license. This product **must** be installed on a freshly deployed CentOS Linode. These instructions should be performed as the `root` user via SSH.
 {{< /note >}}
 
+## Before You Begin
+
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide, selecting a Linux distribution that's supported by cPanel. This guide covers AlmaLinux 8, Rocky Linux 8, and CentOS 7 (though cPanel does not recommend using CentOS 7 for new installations). While Ubuntu 20.04 LTS is also supported, it is outside the scope of this guide. Review the [System Requirements](https://docs.cpanel.net/installation-guide/system-requirements/) page within cPanel's documentation for a current list of supported operating systems.
+
+1.  Use the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user with `sudo` privileges.
 
 ## DNS Prerequisites
 
@@ -43,7 +44,7 @@ CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed t
 
 ## Install cPanel
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,0 +1,143 @@
+{{- $index := slice -}}
+{{- $pages := where .Site.Pages "Type" "not in"  (slice "page" "json" "api" "authors" "release-notes" ) -}}
+{{- range $i, $p := $pages -}}
+  {{- $shouldAdd := true }}
+  {{- $img := partial "funcs/get-bundle-image.html" . -}}
+  {{- $thumb := $img -}}
+  {{- if ne $thumb.MediaType.SubType "svg" -}}
+    {{- $thumb = $img.Resize "640x jpg" -}}
+  {{- end -}}
+  {{- $excludeFromViews := .Params.excludeFromViews | default slice -}}
+  {{- $category := .Params.category -}}
+  {{ $tags := .Params.tags -}}
+  {{- $sections := slice -}}
+  {{- $section := "" }}
+  {{- if or (eq .Kind "taxonomy") (eq .Kind "term" ) }}
+    {{- $sections = slice -}}
+    {{/* We want the bundles to show in the Docs Type filter as bundles. */}}
+    {{- if ne .Section "bundles" }}
+      {{- $sections = $sections | append "taxonomies " }}
+    {{- end -}}
+    {{- $sections = slice -}}
+    {{- $sections = $sections | append .SectionsEntries -}}
+    {{- $section = replace (path.Join $sections) "/" " > " }}
+  {{- end -}}
+  {{- $owningSection := .CurrentSection -}}
+  {{- if .IsSection -}}
+    {{/* - Skip orphan/empty sections; that does not work with the left menu. - */}}
+    {{ $shouldAdd = .RegularPagesRecursive }}
+    {{- with .Parent.CurrentSection -}}
+      {{- $owningSection = . }}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $section -}}
+    {{- $entries := $owningSection.SectionsEntries -}}
+    {{- if $entries -}}
+      {{- $first := index $entries 0 -}}
+      {{- $rest := $entries | after 1 -}}
+      {{- if .IsSection -}}
+        {{- $first = printf "%s-branches" $first -}}
+      {{- end -}}
+      {{- $entries = slice $first | append $rest -}}
+    {{- end -}}
+    {{- $section = delimit $entries " > " }}
+  {{- end -}}
+  {{- $excerpt := "" -}}
+  {{- if .Params.description -}}
+    {{- $excerpt = .Params.description -}}
+  {{- else -}}
+    {{- $excerpt = .Summary -}}
+  {{- end -}}
+  {{- $ordinal := 0 }}
+  {{- with .Params.tab_group_main -}}
+    {{/* This is set in products pages. */}}
+    {{- $ordinal = .weight }}
+  {{- end -}}
+  {{ $href := .RelPermalink }}
+  {{ $hierarchy := slice }}
+  {{- if eq .Section "reference-architecture" }}
+    {{- $sections := partial "funcs/get-parent-sections" . -}}
+
+    {{- if gt (len $sections) 2 -}}
+
+      {{/* For the reference-architecture section we index all items with the first section's href and use the distinct feature in Algolia.
+
+        We store the page hierarchy down to this page as a JSON.
+
+        Note that we will probably use this hierarchy JSON for "hashlink" searches in the future.
+      */}}
+
+      {{ $sections = $sections | append $p }}
+
+      {{ range $i, $e := $sections }}
+        {{ if gt $i 1 }}
+          {{ $hierarchy = $hierarchy | append (dict "href" $e.RelPermalink "title" $e.Title "linkTitle" $e.LinkTitle) }}
+          {{ if eq $i 2 }}
+            {{ $href = $e.RelPermalink }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{- end -}}
+  {{- end -}}
+  {{- $shouldAdd = and $shouldAdd $section -}}
+  {{- $deprecated := cond (ne .Params.deprecated nil) .Params.deprecated false -}}
+  {{- $title := partial "funcs/get-page-title.html" . }}
+  {{- $objectID := (partial "funcs/get-objectid.html" . ) -}}
+  {{- $keywords := .Params.keywords | default slice }}
+  {{- $keywordsAlgolia := .Params.keywordsAlgolia | default slice }}
+  {{- $authors := .Params.authors | default slice }}
+  {{- $weightSearchBoost := .Params.weightSearchBoost | default false }}
+  {{- $titleH1 := .Params.h1_title | default "" }}
+  {{- $titleMeta := .Params.title_meta | default "" }}
+  {{- $titleSocial := .Params.title_social | default "" }}
+  {{- $dict := (dict
+    "objectID" $objectID
+    "ordinal" $ordinal
+    "thumbnailUrl" $thumb.RelPermalink
+    "section" $section
+    "isBranch" .IsNode
+    "category" $category
+    "tags" $tags
+    "excerpt" $excerpt
+    "title" $title
+    "linkTitle"  .LinkTitle
+    "href" $href
+    "lastUpdatedTime" .Lastmod.Unix
+    "firstPublishedTime" .PublishDate.Unix
+    "firstPublishedYear" .PublishDate.Year
+    "authors" $authors
+    "keywords" $keywords
+    "keywordsAlgolia" $keywordsAlgolia
+    "weightAge" (.Params.weightAge | default 0)
+    "weightSearchBoost" $weightSearchBoost
+    "deprecated" $deprecated
+    "hiddenguide" .Params.hiddenguide
+    "titleH1" $titleH1
+    "titleMeta" $titleMeta
+    "titleSocial" $titleSocial
+    "toc" (.TableOfContents | plainify | transform.HTMLUnescape  )
+    "excludeFromViews" $excludeFromViews
+    "hierarchy" $hierarchy )
+  -}}
+  {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
+  {{- $sectionPath := "" -}}
+  {{- if not $sections -}}
+    {{- $sections = $sections | append $owningSection.SectionsEntries -}}
+  {{- end -}}
+  {{- $isSection := .IsSection -}}
+  {{- range $i, $section := $sections -}}
+    {{- if not $sectionPath -}}
+      {{- $sectionPath = $section -}}
+    {{- else -}}
+      {{- $sectionPath = (printf "%s > %s" $sectionPath $section) -}}
+    {{- end -}}
+    {{- if and $isSection (eq $i 0) -}}
+      {{- $sectionPath = printf "%s-branches" $sectionPath -}}
+    {{- end -}}
+    {{- $dict = $dict | merge (dict (printf "section.lvl%d" $i) $sectionPath) -}}
+  {{- end -}}
+  {{- if $shouldAdd -}}
+    {{- $index = $index | append $dict -}}
+  {{- end -}}
+{{- end -}}
+{{ return $index -}}

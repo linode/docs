@@ -1,25 +1,22 @@
 ---
 slug: use-mysql-relational-databases-on-fedora-13
-deprecated: true
+title: Use MySQL Relational Databases on Fedora 13
 description: 'Getting started with MySQL for web and server applications on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-28
+modified: 2012-10-08
 keywords: ["mysql fedora 13", "mysql linux", "mysql fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-fedora-13/','/databases/mysql/fedora-13/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-05-28
-title: Use MySQL Relational Databases on Fedora 13
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Fedora 13
 tags: ["database","mysql","fedora"]
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Fedora 13 Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 

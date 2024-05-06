@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-and-use-nginx-on-ubuntu-20-04
+title: "Installing and Using NGINX on Ubuntu 20.04"
+title_meta: "How to Install and Use NGINX on Ubuntu 20.04"
 description: "Learn the basics of installing and configuring NGINX on your Ubuntu 20.04 server in this quick guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-09
 keywords: ['nginx','web server']
 tags: ['ubuntu', 'nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
-title: "Installing and Using NGINX on Ubuntu 20.04"
-title_meta: "How to Install and Use NGINX on Ubuntu 20.04"
 external_resources:
 - '[NGINX Documentation](https://nginx.org/en/docs/)'
 relations:
@@ -16,7 +16,6 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: Ubuntu 20.04
-authors: ["Nathaniel Stickman"]
 aliases: ['/web-servers/nginx/installation/ubuntu-10.04-lucid/','/web-servers/nginx/installation/ubuntu-12.04-precise-pangolin/']
 ---
 
@@ -28,7 +27,7 @@ aliases: ['/web-servers/nginx/installation/ubuntu-10.04-lucid/','/web-servers/ng
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

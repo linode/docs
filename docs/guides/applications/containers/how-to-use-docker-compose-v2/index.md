@@ -1,14 +1,13 @@
 ---
 slug: how-to-use-docker-compose-v2
-authors: ["Jeff Novotny"]
+title: "How to Use Docker Compose V2"
 description: 'This guide provides a brief introduction to Docker Compose V2 and explains how to install and use it.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-06-06
 keywords: ['Docker Compose V2', 'Install Docker Compose', 'Use Docker Compose', 'what is Docker Compose V2']
 tags: ['dokcer', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-06-06
-modified_by:
-  name: Linode
-title: "How to Use Docker Compose V2"
 external_resources:
 - '[Docker Compose Overview](https://docs.docker.com/compose/)'
 - '[Docker Compose Configuration File Specification](https://docs.docker.com/compose/compose-file/)'
@@ -66,12 +65,12 @@ Some applications also require a *Dockerfile*. This file explains how to build a
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Docker Compose and Docker Engine
@@ -136,7 +135,7 @@ To install both Docker Engine and Docker Compose, follow these steps.
     sudo docker run hello-world
     ```
 
-    If everything is installed correctly, Docker displays the message as as shown in the output below.
+    If everything is installed correctly, Docker displays the message as shown in the output below.
 
     ```output
     Hello from Docker!
