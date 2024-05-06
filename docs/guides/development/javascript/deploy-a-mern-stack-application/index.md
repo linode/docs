@@ -5,6 +5,7 @@ description: "Learn how to deploy a locally developed MERN stack app to Akamai t
 authors: ["Nathaniel Stickman", "Linode"]
 contributors: ["Nathaniel Stickman", "Linode"]
 published: 2023-09-14
+modified: 2024-05-06
 keywords: ['deploy react app','mern stack','how to deploy react app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -22,11 +23,11 @@ This guide helps you deploy your existing MERN stack project onto Akamai cloud c
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Update your system using the following command:
+1.  Update your system using the following command:
 
     ```command
     sudo apt update && sudo apt upgrade
@@ -55,9 +56,9 @@ As noted above, other variants exist, like the MEAN stack (which uses Angular) a
 
 To deploy a functional MERN stack on a server, select from one of the deployment options below:
 
--  **Linode Marketplace:** Deploy the [MERN App](https://www.linode.com/marketplace/apps/linode/mern/) through the Linode Marketplace to automatically install MongoDB, Node.JS, Express, and React. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the distribution images supported by the Marketplace App.
+- **Linode Marketplace:** Deploy the [MERN App](https://www.linode.com/marketplace/apps/linode/mern/) through the Linode Marketplace to automatically install MongoDB, Node.JS, Express, and React. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the distribution images supported by the Marketplace App.
 
--  **Manual Installation:** If you wish to have full control over application versions and the initial configuration, you can manually install all required components. To do so, follow the [Manually Install the MERN Stack](#manually-install-the-mern-stack) section below.
+- **Manual Installation:** If you wish to have full control over application versions and the initial configuration, you can manually install all required components. To do so, follow the [Manually Install the MERN Stack](#manually-install-the-mern-stack) section below.
 
 ### Manually Install the MERN Stack
 
@@ -146,15 +147,15 @@ If you have an existing MERN project using Express JS, you only need to install 
 
 Otherwise, you can add Express JS as a dependency to your NPM project using this command. This also adds the Mongoose module, which is typically the module used for connecting to MongoDB from Express JS.
 
-    ```command
-    npm install --save express mongoose
-    ```
+```command
+npm install --save express mongoose
+```
 
 If you are working on a Yarn project, use the command below instead:
 
-     ```command
-     yarn add express mongoose
-     ```
+```command
+yarn add express mongoose
+```
 
 Learn more about getting started with Express JS in our guide [Express JS Tutorial: Get Started Building a Website](/docs/guides/express-js-tutorial/).
 
@@ -164,15 +165,15 @@ As with Express JS, you only need to install your Node.js dependencies if you al
 
 Otherwise, you can add React to your NPM project with a command like the one here. This also includes the Axios module, typically used for communications between React and the Express JS server.
 
-    ```command
-    npm install --save react react-dom axios
-    ```
+```command
+npm install --save react react-dom axios
+```
 
 Alternatively, use a command like the next one if your project uses Yarn instead of NPM.
 
-    ```command
-    yarn add react react-dom axios
-    ```
+```command
+yarn add react react-dom axios
+```
 
 Find out more about building applications with React from the [official documentation](https://reactjs.org/docs/getting-started.html) and in our guide [Deploying a React Application on Debian 10](/docs/guides/how-to-deploy-a-react-app-on-debian-10/#create-an-example-react-app).
 
@@ -192,26 +193,26 @@ To follow along, you can download the [MERN stack starter](https://github.com/rf
 
 1.  Using `scp`, copy your project's directory to the server.
 
-    - On **Linux** and **macOS**, execute a command like the one below. Replace the path to your MERN project directory with the actual path. Likewise, replace `example-user` with your user on the server instance and `192.0.2.0` with the instance's IP address.
+    -   On **Linux** and **macOS**, execute a command like the one below. Replace the path to your MERN project directory with the actual path. Likewise, replace `example-user` with your user on the server instance and `192.0.2.0` with the instance's IP address.
 
         ```command
         scp -r ~/mern-example example-user@192.0.2.0:~/
         ```
 
-    - On **Windows**, you first need to open port **22** on the server instance. Log into your server instance, and use UFW to open port **22**.
+    -   On **Windows**, you first need to open port **22** on the server instance. Log into your server instance, and use UFW to open port **22**.
 
-       ```command
-       sudo ufw allow 22
-       sudo ufw reload
-       ```
+        ```command
+        sudo ufw allow 22
+        sudo ufw reload
+        ```
 
         The above commands require you to have the UFW utility installed. It comes pre-installed if you use the Linode Marketplace one-click app. Otherwise, you can learn how to use UFW from our [How to Secure Your Server](/docs/security/securing-your-server/) guide discussed above.
 
         You can now use `scp` from your Windows machine, with a command like the one below. Replace the path to your MERN project folder with the actual path. Likewise, replace `example-user` with your user on the server instance and `192.0.2.0` with the instance's IP address:
 
-            ```command
-            scp -r "C:\mern-example" example-user@192.0.2.0:~/
-            ```
+        ```command
+        scp -r "C:\mern-example" example-user@192.0.2.0:~/
+        ```
 
 1.  Delete the `node_modules` directory from the copy of the project on your server. It is best to reinstall these due to potential system differences affecting the modules. Replace the path given below with the actual path to your project's `node_modules` directory.
 
@@ -231,17 +232,17 @@ This first set of steps needs to be taken on your local machine. It sets up your
 
 1.  Ensure that Git is installed.
 
-    - On **Linux** systems, you can use your package manager. For instance, on **Debian** and **Ubuntu** use the following command:
+    -   On **Linux** systems, you can use your package manager. For instance, on **Debian** and **Ubuntu** use the following command:
 
-       ```command
-       sudo apt install git
-       ```
+        ```command
+        sudo apt install git
+        ```
 
-    - On **macOS**, running the Git command should prompt you to install Git if it is not already installed.
+    -   On **macOS**, running the Git command should prompt you to install Git if it is not already installed.
 
-       ```command
-       git --version
-       ```
+        ```command
+        git --version
+        ```
 
     - On **Windows**, download the Git binary from the [official website](https://git-scm.com/download/win).
 
@@ -313,17 +314,17 @@ These next steps then need to be taken on the server instance to pull down the p
 
 1.  Now that the files are on your server instance, you need to reinstall the project's Node.js modules. To do so, change into the project directory, and execute one of the commands below.
 
-    - If you used NPM to install modules, use the following command:
-
-       ```command
-       npm install
-       ```
-
-    - If you used Yarn to install modules, use the following command:
+    -   If you used NPM to install modules, use the following command:
 
         ```command
-       yarn
-       ```
+        npm install
+        ```
+
+    -   If you used Yarn to install modules, use the following command:
+
+        ```command
+        yarn
+        ```
 
     You can tell which one your project uses by searching its base directory. If you find a `yarn.lock` file, it should be a Yarn project. Otherwise, it should be an NPM project.
 

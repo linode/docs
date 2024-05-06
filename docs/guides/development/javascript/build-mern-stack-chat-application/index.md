@@ -5,6 +5,7 @@ description: "Learn how to develop a MERN stack app for an Ubuntu or Debian serv
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2023-09-14
+modified: 2024-05-06
 keywords: ['mern stack','mern tutorial','mern app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -20,11 +21,11 @@ This MERN tutorial helps you get started building a MERN app of your own for an 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Update your system using the following command:
+1.  Update your system using the following command:
 
     ```command
     sudo apt update && sudo apt upgrade
@@ -139,17 +140,17 @@ The next sections show you how to set these up for a basic chat application.
 
     This example creates a project directory under the current user's home directory and an Express JS subdirectory named `server`.
 
-      ```command
-      mkdir -p ~/example-mern-app/server
-      cd ~/example-mern-app/server
-      ```
+    ```command
+    mkdir -p ~/example-mern-app/server
+    cd ~/example-mern-app/server
+    ```
 
 1.  Initialize a Node.js project, and install Express JS. At the same time, install the Mongoose module for working with MongoDB:
 
-      ```command
-      npm init -y
-      npm install --save express mongoose
-      ```
+    ```command
+    npm init -y
+    npm install --save express mongoose
+    ```
 
 1.  Create an `index.js` file, and give it the contents shown below. The purpose of each part of this code is elaborated in comments within the code:
 

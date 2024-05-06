@@ -5,7 +5,7 @@ description: "Learn how to create a MERN stack application on Linux. Read our gu
 authors: ["Cameron Laird", "Nathaniel Stickman"]
 contributors: ["Cameron Laird", "Nathaniel Stickman"]
 published: 2022-09-12
-modified: 2022-09-23
+modified: 2024-05-06
 keywords: ['MERN Stack Application','How to create a MERN stack application','MERN stack','MERN stack application', 'learn Linux filesystem', 'MERN stack on Linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
