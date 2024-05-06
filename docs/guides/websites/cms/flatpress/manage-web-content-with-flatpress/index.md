@@ -1,18 +1,15 @@
 ---
 slug: manage-web-content-with-flatpress
-author:
-  name: Linode
-  email: docs@linode.com
+title: Manage Web Content with FlatPress
 description: 'Use the FlatPress blogging tool to manage your blog and manage web content.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-02
 keywords: ["flatpress", "cms", "php", "content management", "content management systems"]
 tags: ["php","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-web-content-with-flatpress/','/websites/cms/flatpress/manage-web-content-with-flatpress/','/web-applications/cms-guides/flatpress/']
-modified: 2013-10-02
-modified_by:
-  name: Linode
-published: 2010-05-03
-title: Manage Web Content with FlatPress
 deprecated: true
 ---
 

@@ -1,16 +1,13 @@
 ---
 slug: compile-caddy-from-source
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'This guide will explain how to build Caddy from source'
-keywords: ["caddy", "web server"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: 'How To Build Caddy From Source'
+description: 'This guide provides you with step-by-step instructions for building Caddy, the fast, open-source, security focused web server from source on Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2017-09-14
 modified: 2019-01-07
-modified_by:
-  name: Linode
-title: 'How To Build Caddy From Source'
+keywords: ["caddy", "web server"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
 tags: ["web server"]
@@ -19,58 +16,46 @@ aliases: ['/web-servers/caddy/compile-caddy-from-source/']
 
 [Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).
 
-Caddy has recently updated their license, clearly defining what is considered personal or enterprise use. A commercial license is now required for commercial or enterprise use, including any installation that uses precompiled Caddy binaries. However, because the project is Apache licensed, by building it from source you have access to the original, [Apache-licensed web server](https://twitter.com/mholt6/status/908041929438371840).
+## Before you Begin
 
-## Build Caddy from Source
 ### Install Go
 
-1. You will need a current version of Go installed on your Linode. Complete the steps in our guide on [installing Go](/docs/development/go/install-go-on-ubuntu/).
+1. You need the latest version of Go installed on your Linode. Complete the steps in our guide on [installing Go](/docs/guides/install-go-on-ubuntu/).
 
-1. Print your Go installation's current `$GOPATH`:
+### Install xcaddy
 
-        go env GOPATH
+Install the latest version of `xcaddy`, a command line tool that downloads and builds Caddy and its plugins for you easily.
 
-1. Set the transitional environment variable for Go modules.
+1. Download and install `xcaddy`:
 
-        cd $GOPATH/src
-        export GO111MODULE=on
+        sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/xcaddy/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/caddy-xcaddy.asc
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/xcaddy/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-xcaddy.list
+        sudo apt update
+        sudo apt install xcaddy
 
 ### Build Caddy
 
-* To build without plugins:
+1. Create a folder named `caddy` and go to the folder to install Caddy:
+        mkdir ~/caddy
+        cd ~/caddy
+* To build the latest version of Caddy without any plugins:
+        xcaddy build
 
-        go get github.com/caddyserver/caddy/caddy
+* To install Caddy with plugins use the `--with` option. For example:
 
-* To build custom Caddy with plugins:
-    1. Create a folder named `plugins` and add a `main.go` file with the following contents:
+        xcaddy build \
+          --with github.com/caddyserver/nginx-adapter \
+          --with github.com/caddyserver/ntlm-transport@v0.1.1```
 
-        {{< file "$GOPATH/plugins/main.go" >}}
-package main
+1. Move the `caddy` executable from the `caddy` folder to `/usr/bin` to install:
 
-import (
-  "github.com/caddyserver/caddy/caddy/caddymain"
+        sudo mv caddy /usr/bin
 
-  // plug in plugins here, for example:
-  // _ "import/path/here"
-)
+1. To verify the installation of caddy type:
+       caddy version
+    An output similar to the following appears:
 
-func main() {
-  // optional: disable telemetry
-  // caddymain.EnableTelemetry = false
-  caddymain.Run()
-}
-    {{< /file >}}
-    1. Create a new go module for Caddy:
+        v2.4.4 h1:QBsN1jXEsCqRpKPBb8ebVnBNgPxwL50HINWWTuZ7evU=
 
-            go mod init caddy
-    1. Download and save the packages in `$GOPATH/src/<import-path>`:
-
-            go get github.com/caddyserver/caddy
-    1. Install Caddy in `$GOPATH/bin`:
-
-            go install
-
-          {{< note >}} To install Caddy in the current directory you can run `go build`
-          {{< /note >}}
-
-Caddy is now installed on your Linode. Read our guide on [Installing and Configuring Caddy](/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7/) to learn more about Caddy.
+Caddy is now installed on your Linode. Read our guide on [Installing and Configuring Caddy](/docs/guides/install-and-configure-caddy-on-centos-7/) to learn more about Caddy.

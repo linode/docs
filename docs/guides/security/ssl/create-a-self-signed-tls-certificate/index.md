@@ -1,17 +1,14 @@
 ---
 slug: create-a-self-signed-tls-certificate
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Create a Self-Signed TLS Certificate'
 description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-09
+modified: 2018-01-23
 keywords: ["ssl", "tls", "https", "certificate", "self"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora/','/security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu/','/security/ssl/create-a-self-signed-tls-certificate/','/security/ssl/how-to-make-a-selfsigned-ssl-certificate/']
-modified: 2018-01-23
-modified_by:
-  name: Linode
-published: 2018-01-09
-title: 'Create a Self-Signed TLS Certificate'
+aliases: ['/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora/','/security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu/','/security/ssl/create-a-self-signed-tls-certificate/','/security/ssl/how-to-make-a-selfsigned-ssl-certificate/','/security/ssl-certificates/self-signed/']
 tags: ["security","ssl"]
 ---
 
@@ -19,7 +16,7 @@ tags: ["security","ssl"]
 
 ## What is a Self-Signed TLS Certificate?
 
-Self-signed TLS certificates are suitable for personal use or for applications that are used internally within an organization. If you intend to use your SSL certificate on a website, see our guide on enabling TLS for [NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) once you’ve completed the process outlined in this guide.
+Self-signed TLS certificates are suitable for personal use or for applications that are used internally within an organization. If you intend to use your SSL certificate on a website, see our guide on enabling TLS for [NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) once you’ve completed the process outlined in this guide.
 
 ## Create the Certificate
 

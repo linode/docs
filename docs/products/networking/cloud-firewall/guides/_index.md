@@ -1,35 +1,27 @@
 ---
 title: Guides
-description: "Product guides for Linode Cloud Firewall."
+title_meta: "Guides and Tutorials for Cloud Firewalls"
+description: "A collection of product guides to help you deploy and manage Cloud Firewalls."
 tab_group_main:
     weight: 30
 ---
 
-{{< note >}}
-Cloud Firewall is now in beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form) to test this feature before it's generally available. For more information visit the [Cloud Firewall](https://www.linode.com/products/firewall/) product page.
-{{</ note >}}
+## Basics
 
-## Building Blocks
+- [Get Started with Cloud Firewalls](/docs/products/networking/cloud-firewall/get-started/): Learn how to start using Cloud Firewalls.
 
-These introductory guides to Linode Cloud Firewall will help get you up and running with the service:
+- [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/): Learn how to deploy Linode's Cloud Firewall service.
 
-- [Add a New Firewall](/docs/products/networking/cloud-firewall/guides/add-firewall/): No firewalls are in use by default. New Cloud Firewalls can be created in the Cloud Manager
+- [Manage Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/): Define rules to accept or drop traffic.
 
-- [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/add-rules/): Add new Cloud Firewall Rules in the Cloud Manager.
+- [Apply a Cloud Firewall to a Compute Instance](/docs/products/networking/cloud-firewall/guides/apply-to-service/): Add (and remove) Compute Instances to your Cloud Firewalls.
 
-- [Assign a Firewall to a Linode](/docs/products/networking/cloud-firewall/guides/assign-firewall/): Assign a Firewall to any Linodes applicable using the Cloud Manager.
+- [Enable or Disable a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/update-status/): Configure the status of a Cloud Firewall.
 
-- [Delete a Firewall](/docs/products/networking/cloud-firewall/guides/delete-firewall/): Delete a Firewall that is no longer in use using the Cloud Manager.
+- [Delete a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/delete-firewall/): Remove a Cloud Firewall and its rules.
 
-- [Delete Rules](/docs/products/networking/cloud-firewall/guides/delete-rules/):
-Delete individual rules that are no longer needed using the Cloud Manager.
+## Going Further
 
-- [Edit Rules](/docs/products/networking/cloud-firewall/guides/edit-rules/): Edit predefined and custom Cloud Firewall Rules using the Cloud Manager.
+- [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/): Learn which firewall solution may work best for your use case.
 
-- [Update Firewall Status](/docs/products/networking/cloud-firewall/guides/update-status/): Disable or Enable a Cloud Firewall by setting the status in the Cloud Manager.
-
-### Cloud Firewall Basics
-
-- [Adding and Configuring Cloud Firewall](/docs/guides/getting-started-with-cloud-firewall/)
-
-- [Troubleshooting Firewalls](/docs/guides/troubleshooting-firewalls/)
+- [Troubleshooting Firewalls](/docs/products/compute/compute-instances/guides/troubleshooting-firewall-issues/): Information on troubleshooting any firewall service.

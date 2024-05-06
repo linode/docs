@@ -1,24 +1,21 @@
 ---
 slug: email-and-calendars-with-zimbra-6-on-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Email and Calendars with Zimbra 6 on Debian 6 (Squeeze)'
 description: 'Get started with the open source edition of Zimbra groupware on your Debian 6 (Squeeze) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-15
+modified: 2011-05-17
 keywords: ["zimbra debian 6", "zimbra squeeze", "zimbra on debian", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-debian-6-squeeze/','/email/zimbra/email-and-calendars-with-zimbra-6-on-debian-6-squeeze/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2011-02-15
-title: 'Email and Calendars with Zimbra 6 on Debian 6 (Squeeze)'
 relations:
     platform:
         key: zimbra-groupware
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get Zimbra Collaboration Suite - Open Source Edition installed on your Debian 6 (Squeeze) Linode.
@@ -43,7 +40,7 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
 {{< /file >}}
 
 
-Before proceeding with the rest of this guide, you should create a DNS entry for your system's FQDN (fully qualified domain name). This means you'll need to make sure "hostname.example.com" (substituting your FQDN) points to your Linode's IP address. Additionally, you should create or edit the MX record for your domain to use your FQDN as the host that handles your email. For more information on this topic, please refer to our guides on [DNS basics](/docs/dns-guides/introduction-to-dns) and the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
+Before proceeding with the rest of this guide, you should create a DNS entry for your system's FQDN (fully qualified domain name). This means you'll need to make sure "hostname.example.com" (substituting your FQDN) points to your Linode's IP address. Additionally, you should create or edit the MX record for your domain to use your FQDN as the host that handles your email. For more information on this topic, please refer to our guides on [DNS basics](/docs/guides/dns-overview/) and the [Linode DNS Manager](/docs/products/networking/dns-manager/guides/common-dns-configurations/).
 
 ## Install Prerequisite Packages
 

@@ -1,33 +1,28 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-fedora-14
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
+title: WSGI using uWSGI and nginx on Fedora 14
+description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-28
+modified: 2013-10-07
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/','/web-servers/nginx/python-uwsgi/fedora-14/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2010-12-28
-title: WSGI using uWSGI and nginx on Fedora 14
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -148,7 +143,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 
 ## Additional Application Servers
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/) for more information. For a basic example configuration, see the following example:
 
 {{< file "nginx configuration" nginx >}}
 upstream uwsgicluster {
@@ -185,6 +180,6 @@ In this example, we create the `uwsgicluster` upstream, which has five component
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Fedora 14](/docs/web-servers/nginx/installation/fedora-14)
-- [Deploy a LEMP Server on Fedora 14](/docs/lemp-guides/fedora-14/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+- [Installing Nginx on Fedora 14](/docs/guides/websites-with-nginx-on-fedora-14/)
+- [Deploy a LEMP Server on Fedora 14](/docs/guides/lemp-server-on-fedora-14/)
+- [Configure nginx Proxy Servers](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)

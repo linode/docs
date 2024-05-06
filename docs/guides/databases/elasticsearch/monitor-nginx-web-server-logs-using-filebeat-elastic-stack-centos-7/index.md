@@ -1,22 +1,16 @@
 ---
 slug: monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
-description: 'This guide will demonstrate how to use Elasticsearch, Filebeat, Metricbeat, and Kibana to monitor webserver logs and metrics.'
-og_description: 'The Elastic Stack provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install four components of the stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical NGINX webserver.'
+title: "Monitoring NGINX Using the Elastic Stack on Centos 7"
+title_meta: "How to Monitor NGINX Using the Elastic Stack on CentOS 7"
+description: "This guide shows how to install four components of Elastic Stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical NGINX webserver."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2017-12-13
+modified: 2019-01-31
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ['nginx centos 7','elasticsearch','filebeat','metricbeat','beats','kibana','elk stack','elastic stack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-13
-modified: 2019-01-31
-modified_by:
-  name: Linode
-title: 'Monitor an NGINX Web Server Using the Elastic Stack on Centos 7'
 dedicated_cpu_link: true
 tags: ["analytics","database","centos","monitoring"]
 aliases: ['/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/']
@@ -30,20 +24,16 @@ The [Elastic Stack](https://www.elastic.co/) is a set of open-source tools that 
 This guide will explain how to install different components of the stack in order to monitor a typical webserver. It will use version 6 of each of the tools in the Elastic Stack, which is a recent release featuring additional features and fixes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Follow the steps in our [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/) guide to set up a web server stack with NGINX on your CentOS host.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-4.  Update your system:
-
-        sudo yum update
+1.  Follow the steps in our [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/guides/lemp-stack-on-centos-7-with-fastcgi/) guide to set up a web server stack with NGINX on your CentOS host.
 
 ## Install OpenJDK 8
 
@@ -208,7 +198,7 @@ Replace `username` with your Linux user name and `<Linode public IP>` with the p
 Filebeat version 6 ships with the ability to use [modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html) in order to automate how logs are collected, indexed, and visualized. This guide will use the NGINX module in order to handle most of the necessary configuration in order to instruct the stack how to process system logs.
 
 {{< note >}}
-Your Linode should already have NGINX configured following the [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/) guide.
+Your Linode should already have NGINX configured following the [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/guides/lemp-stack-on-centos-7-with-fastcgi/) guide.
 {{< /note >}}
 
 1.  Using a text editor, create `/etc/filebeat/filebeat.yml` and add the following content:

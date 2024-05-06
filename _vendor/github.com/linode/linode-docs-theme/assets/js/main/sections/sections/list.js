@@ -1,27 +1,88 @@
 'use strict';
 
-import { setDocumentMeta } from '../../helpers/index';
+import { getIntParamFromLocation, setDocumentMeta, updatePaginationParamInLocation } from '../../helpers/index';
 import { newCreateHref } from '../../navigation/index';
-import { newDispatcher } from '../../search/index';
+import {
+	newRequestCallback,
+	newRequestCallbackFactoryTarget,
+	SearchGroupIdentifier,
+	RequestCallBackStatus,
+} from 'js/main/search/request';
 
-var debug = 0 ? console.log.bind(console, '[list]') : function() {};
+var debug = 0 ? console.log.bind(console, '[list]') : function () {};
 
 const searchName = 'search:data-categories-filtered';
+const pageKey = 'page';
 const designMode = false;
 
-export function newSectionsController(searchConfig) {
+export function newSectionsController(searchConfig, params) {
 	if (!searchConfig) {
 		throw 'newSectionsController: must provide searchConfig';
 	}
 
-	const dispatcher = newDispatcher();
 	const hrefFactory = newCreateHref(searchConfig);
 
+	const updateSearches = function (self, page) {
+		if (page < 1) {
+			page = 1;
+		}
+		let factory = {
+			status: function () {
+				return RequestCallBackStatus.Once;
+			},
+			create: (query) => {
+				let filters = `section.lvl${self.data.lvl}:'${self.key}'`;
+
+				encodeURIComponent(query.lndq);
+
+				let request = {
+					page: page - 1, // paginator is 1 based, Algolia is 0 based.
+					indexName: searchConfig.indexName(searchConfig.sections_merged.index_by_pubdate),
+					facets: ['section.*'],
+					filters: filters,
+					facetFilters: query.toFacetFilters(),
+					params: `query=${query.lndq}`,
+				};
+
+				return newRequestCallback(request, (result) => {
+					self.$store.search.withBlank(() => {
+						self.handleResult(result);
+						self.$nextTick(() => {
+							self.$store.nav.scrollToNavBarIfPinned();
+						});
+					});
+				});
+			},
+		};
+
+		self.$store.search.addSearches(newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.Main));
+	};
+
+	const activateSearches = function (self) {
+		self.$store.search.updateLocationWithQuery();
+		let page = getIntParamFromLocation(pageKey);
+		if (page < 1) {
+			page = 1;
+		}
+		self.data.page = page;
+		self.$watch('data.page', (value, oldValue) => {
+			if (value === oldValue) {
+				return;
+			}
+			updatePaginationParamInLocation(pageKey, value, 1);
+			updateSearches(self, value);
+		});
+
+		updateSearches(self, self.data.page);
+	};
+
 	function sortObject(obj, less) {
-		return Object.keys(obj).sort(less).reduce(function(result, key) {
-			result[key] = obj[key];
-			return result;
-		}, {});
+		return Object.keys(obj)
+			.sort(less)
+			.reduce(function (result, key) {
+				result[key] = obj[key];
+				return result;
+			}, {});
 	}
 
 	var sortOptions = [
@@ -32,15 +93,15 @@ export function newSectionsController(searchConfig) {
 			firstText: 'Ascending',
 			secondText: 'Descending',
 			enabled: true,
-			down: false
+			down: false,
 		},
 		{
 			title: 'Sort Alphabetically',
-			field: 'title',
+			field: 'linkTitle',
 			firstText: 'Ascending',
 			secondText: 'Descending',
 			enabled: false,
-			down: false
+			down: false,
 		},
 		{
 			title: 'Sort by Published date',
@@ -49,7 +110,7 @@ export function newSectionsController(searchConfig) {
 			secondText: 'Oldest first',
 			moreIsLess: true,
 			enabled: false,
-			down: false
+			down: false,
 		},
 		{
 			title: 'Sort by Modified date',
@@ -58,8 +119,8 @@ export function newSectionsController(searchConfig) {
 			secondText: 'Oldest first',
 			moreIsLess: true,
 			enabled: false,
-			down: false
-		}
+			down: false,
+		},
 	];
 
 	return {
@@ -76,147 +137,117 @@ export function newSectionsController(searchConfig) {
 
 			sorting: {
 				options: sortOptions,
-				open: false
-			}
+				open: false,
+			},
 		},
 		loaded: false, // if data is loaded from Algolia
 		status: { code: 200 }, // error state
 		data: {
 			result: {
-				hits: []
+				hits: [],
 			},
-			page: [],
+			page: 1, // For pagination.
 			meta: {
 				title: '',
-				excerpt: ''
+				excerpt: '',
 			},
 			key: '',
 			sections: [],
 			hitsBySection: {},
-			lvl: 0
+			lvl: 0,
 		},
 
-		init: function() {
-			if (designMode) {
-				this.uiState.listGuidesPerSection = true;
-				this.uiState.sorting.open = true;
-			}
+		init: function () {
+			return this.$nextTick(() => {
+				if (designMode) {
+					this.uiState.listGuidesPerSection = true;
+					this.uiState.sorting.open = true;
+				}
 
-			let parts = hrefFactory.sectionsFromPath();
+				let parts = hrefFactory.sectionsFromPath();
 
-			let last = parts[parts.length - 1];
-			let indexName = parts[0];
-			this.key = parts.join(' > ');
-			let sectionConfig = searchConfig.sections.find((s) => s.name === indexName);
-			if (!sectionConfig) {
-				throw `no search config found for section ${indexName}`;
-			}
-			this.data.lvl = parts.length - 1;
+				let last = parts[parts.length - 1];
+				let indexName = parts[0];
+				this.key = parts.join(' > ');
+				let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === indexName);
+				if (!sectionConfig) {
+					throw `no search config found for section ${indexName}`;
+				}
+				this.data.lvl = parts.length - 1;
+				this.data.sectionConfig = sectionConfig;
+				activateSearches(this);
+				this.data.meta.title = last.charAt(0).toUpperCase() + last.slice(1);
 
-			this.request = {
-				page: 0,
-				indexName: sectionConfig.index_by_pubdate || sectionConfig.index,
-				facets: [ 'section.*' ],
-				filters: `section.lvl${this.data.lvl}:'${this.key}'`
-			};
+				var self = this;
 
-			this.data.sectionConfig = sectionConfig;
-			this.data.meta.title = last.charAt(0).toUpperCase() + last.slice(1);
-
-			this.dispatchQuery();
-
-			var self = this;
-
-			this.uiState.sorting.sort = function(opt) {
-				this.options.forEach((o) => {
-					o.enabled = opt === o;
-				});
-
-				if (opt.sortSections) {
-					self.data.hitsBySection = sortObject(self.data.hitsBySection, (a, b) => {
-						if (opt.down) {
-							return a < b ? 1 : -1;
-						}
-						return a < b ? -1 : 1;
+				this.uiState.sorting.sort = function (opt) {
+					this.options.forEach((o) => {
+						o.enabled = opt === o;
 					});
-					return;
-				}
 
-				self.data.result.hits.sort((a, b) => {
-					let f1 = a[opt.field];
-					let f2 = b[opt.field];
-					if (f1 === f2) {
-						return 0;
+					if (opt.sortSections) {
+						self.data.hitsBySection = sortObject(self.data.hitsBySection, (a, b) => {
+							if (opt.down) {
+								return a < b ? 1 : -1;
+							}
+							return a < b ? -1 : 1;
+						});
+						return;
 					}
-					if ((opt.moreIsLess && !opt.down) || (!opt.moreIsLess && opt.down)) {
-						return f1 < f2 ? 1 : -1;
+
+					self.data.result.hits.sort((a, b) => {
+						let f1 = a[opt.field];
+						let f2 = b[opt.field];
+						if (f1 === f2) {
+							return 0;
+						}
+						if ((opt.moreIsLess && !opt.down) || (!opt.moreIsLess && opt.down)) {
+							return f1 < f2 ? 1 : -1;
+						}
+						return f1 < f2 ? -1 : 1;
+					});
+				};
+
+				this.uiState.showSectionsTiles = function () {
+					if (!self.loaded) {
+						return false;
 					}
-					return f1 < f2 ? -1 : 1;
-				});
-			};
+					return !this.listGuidesPerSection && !this.listGuides;
+				};
+				this.uiState.showGuidesWithSortOption = function () {
+					if (!self.loaded) {
+						return false;
+					}
+					return this.listGuidesPerSection && !this.listGuides;
+				};
+				this.uiState.showGuidesPerSection = function () {
+					return this.listGuidesPerSection && (!this.sorting.open || this.sorting.options[0].enabled);
+				};
+				this.uiState.showSortedGuideList = function () {
+					if (!self.loaded) {
+						return false;
+					}
+					return this.listGuidesPerSection && this.sorting.open && !this.sorting.options[0].enabled;
+				};
 
-			this.uiState.showSectionsTiles = function() {
-				if (!self.loaded) {
-					return false;
-				}
-				return !this.listGuidesPerSection && !this.listGuides;
-			};
-			this.uiState.showGuidesWithSortOption = function() {
-				if (!self.loaded) {
-					return false;
-				}
-				return this.listGuidesPerSection && !this.listGuides;
-			};
-			this.uiState.showGuidesPerSection = function() {
-				return this.listGuidesPerSection && (!this.sorting.open || this.sorting.options[0].enabled);
-			};
-			this.uiState.showSortedGuideList = function() {
-				if (!self.loaded) {
-					return false;
-				}
-				return this.listGuidesPerSection && (this.sorting.open && !this.sorting.options[0].enabled);
-			};
-
-			this.uiState.showGuidesTiles = function() {
-				if (!self.loaded) {
-					return false;
-				}
-				return this.listGuides;
-			};
+				this.uiState.showGuidesTiles = function () {
+					if (!self.loaded) {
+						return false;
+					}
+					return this.listGuides;
+				};
+			});
 		},
 
-		dispatchQuery: function() {
-			var currPath = window.location.pathname;
-			let opts = {
-				// This is used to apply the correct filters.
-				sectionConfig: this.data.sectionConfig,
-				requests: [ this.request ],
+		handleResult: function (result) {
+			debug('handleResult', result);
 
-				// Returns whether to cancel this subscription.
-				// We get refreshed search results on filter changes,
-				// but we don't need these when we're no longer on this page.
-				shouldCancel: function() {
-					return window.location.pathname !== currPath;
-				}
-			};
-			dispatcher.subscribe(searchName, opts, searchName);
-		},
-
-		receiveData: function(data) {
-			debug('receiveData', data);
-
-			let ns = data.namedSearches.get(searchName);
-			if (!ns) {
-				return;
-			}
-
-			this.data.result = ns.results[0];
-			this.data.sectionMetaMap = data.metaSearch;
-			let sectionMeta = this.data.sectionMetaMap.getSectionMeta(this.key);
+			this.data.result = result;
+			let sectionMeta = this.$store.search.results.blank.getSectionMeta(this.key);
 			if (sectionMeta) {
 				this.data.meta = sectionMeta;
 			} else {
-				if (!(this.data.results && this.data.results.nbHits)) {
+				if (!(this.data.result && this.data.result.nbHits)) {
 					this.status.code = 404;
 					this.status.message = 'Page Not Found';
 					return;
@@ -225,9 +256,17 @@ export function newSectionsController(searchConfig) {
 
 			this.status.code = 200;
 
+			let seoTitle = this.data.meta.title;
+
+			if (this.data.lvl == 0 && this.data.sectionConfig.seo_title_template) {
+				seoTitle = this.data.sectionConfig.seo_title_template;
+			} else if (this.data.sectionConfig.seo_title_template_category) {
+				seoTitle = this.data.sectionConfig.seo_title_template_category.replace('{category}', this.data.meta.title);
+			}
+
 			// Update <head>
 			setDocumentMeta({
-				title: this.data.meta.title
+				title: seoTitle + ' | ' + params.page_title_suffix,
 			});
 
 			let facets = this.data.result.facets;
@@ -242,7 +281,7 @@ export function newSectionsController(searchConfig) {
 				this.data.result.hits.sort((a, b) => (a.section < b.section ? -1 : 1));
 			}
 
-			let hitsBySection = this.data.result.hits.reduce(function(h, hit) {
+			let hitsBySection = this.data.result.hits.reduce(function (h, hit) {
 				h[hit.section] = (h[hit.section] || []).concat(hit);
 				return h;
 			}, {});
@@ -250,7 +289,7 @@ export function newSectionsController(searchConfig) {
 			this.data.hitsBySection = hitsBySection;
 
 			var self = this;
-			var assembleSections = function(parts) {
+			var assembleSections = function (parts) {
 				let sections = [];
 				if (!parts) {
 					return sections;
@@ -259,7 +298,7 @@ export function newSectionsController(searchConfig) {
 				for (let section of parts) {
 					sectionKeys.push(section);
 					let key = sectionKeys.join(' > ');
-					let sm = self.data.sectionMetaMap.getSectionMeta(key);
+					let sm = self.$store.search.results.blank.getSectionMeta(key);
 					if (sm) {
 						sections.push(sm);
 					}
@@ -267,7 +306,7 @@ export function newSectionsController(searchConfig) {
 				return sections;
 			};
 
-			this.data.sectionsFromKey = function(key) {
+			this.data.sectionsFromKey = function (key) {
 				return assembleSections(key.split(' > '));
 			};
 
@@ -281,8 +320,8 @@ export function newSectionsController(searchConfig) {
 				return;
 			}
 
-			let newSection = function(key, value) {
-				let m = self.data.sectionMetaMap.getSectionMeta(key);
+			let newSection = function (key, value) {
+				let m = self.$store.search.results.blank.getSectionMeta(key);
 				let s = { key, title: '', linkTitle: '', thumbnail: '', count: value };
 				s.href = hrefFactory.hrefSection(key);
 
@@ -291,6 +330,12 @@ export function newSectionsController(searchConfig) {
 					s.linkTitle = m.linkTitle || m.title;
 					s.thumbnail = m.thumbnail;
 					s.thumbnailInline = m.thumbnailInline || m.thumbnailinline;
+				}
+
+				if (s.linkTitle === '') {
+					// Missing metadata, create a title from the last part of the key.
+					let last = key.split(' > ').pop();
+					s.linkTitle = last.charAt(0).toUpperCase() + last.slice(1);
 				}
 
 				return s;
@@ -304,12 +349,16 @@ export function newSectionsController(searchConfig) {
 			this.loaded = true;
 		},
 
-		toggleShowGuides: function() {
-			let loadGuides = !this.uiState.listGuidesPerSection;
+		toggleShowGuides: function () {
 			this.uiState.listGuidesPerSection = !this.uiState.listGuidesPerSection;
-			if (loadGuides) {
-				this.dispatchQuery();
+		},
+
+		incrPage: function (num) {
+			let page = this.data.page + num;
+			if (page < 1) {
+				page = 1;
 			}
-		}
+			this.data.page = page;
+		},
 	};
 }

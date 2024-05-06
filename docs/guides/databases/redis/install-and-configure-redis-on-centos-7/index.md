@@ -1,17 +1,14 @@
 ---
 slug: install-and-configure-redis-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Install and Configure Redis on CentOS 7'
 description: 'A step-by-step guide to install and configure a Redis server and set up distributed data stores using master/slave replication on CentOS 7.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-04-20
+modified: 2017-02-20
 keywords: ["redis", " centos 7", " redis cluster", " centos"]
 aliases: ['/databases/redis/deploy-redis-on-centos-7/','/databases/redis/install-and-configure-redis-on-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-02-20
-modified_by:
-  name: Nick Brewer
-published: 2016-04-20
-title: 'Install and Configure Redis on CentOS 7'
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'
@@ -19,7 +16,7 @@ external_resources:
  - '[Redis Security](http://redis.io/topics/security)'
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: CentOS 7
 tags: ["nosql","database","centos"]
@@ -33,18 +30,14 @@ This document provides both instructions for deploying the Redis server, and an 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo yum update
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
-To utilize the [replication](/docs/databases/redis/install-and-configure-redis-on-centos-7/#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
+To utilize the [replication](/docs/guides/install-and-configure-redis-on-centos-7/#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
 {{< /note >}}
 
 ## Install Redis
@@ -123,7 +116,7 @@ vm.overcommit_memory = 1
 
 ### Additional Swap
 
-Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) in the Linode Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
+Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) in the Cloud Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
 
 ## Distributed Redis
 
@@ -145,9 +138,9 @@ To communicate over the private network, your master and slave Linodes must resi
 
 ###  Prepare Your Linodes
 
-1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/platform/disk-images/disk-images-and-configuration-profiles/#cloning-disks-and-configuration-profiles) option in the Linode Manager.
+1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) option in the Cloud Manager.
 
-2.  Configure [Private IP Addresses](/docs/networking/remote-access/#adding-private-ip-addresses) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
+2.  Configure [Private IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
 
 ### Configure the Master Linode
 
@@ -205,7 +198,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should control access to the Redis instance. Some recommended security steps include:
 
-- Set up a firewall using [your tool of choice](/docs/security/securing-your-server/#configure-a-firewall).
+- Set up a firewall using [your tool of choice](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
 
 - Encrypt Redis traffic using an SSH tunnel, or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

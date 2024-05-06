@@ -1,17 +1,14 @@
 ---
 slug: how-to-optimize-mysql-performance-using-mysqltuner
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
+title: How to Optimize MySQL Performance Using MySQLTuner
 description: 'This step-by-step guide shows you how to assess your MySQL database performance using MySQLTuner to ensure optimum resource usage.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-02-27
+modified: 2019-02-01
 keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
 aliases: ['/databases/mysql/mysql-performance-tuning-tutorial/','/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/','/databases/mysql/tuning-your-mysql-database/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-01
-modified_by:
-  name: Linode
-published: 2015-02-27
-title: How to Optimize MySQL Performance Using MySQLTuner
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
  - '[MySQL Tuning Server Parameters](http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html)'
@@ -20,19 +17,19 @@ dedicated_cpu_link: true
 tags: ["database","mysql"]
 ---
 
-Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads, it is beneficial to tune MySQL to additional connections.
+Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/guides/tuning-your-apache-server/) to handle larger loads, it is beneficial to tune MySQL to additional connections.
 
 ![Optimize MySQL Performance Using MySQLTuner](optimize_mysql_using_mysql_tuner_title_graphic.png)
 
 Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) for such setups.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Tools That Can Help Optimize MySQL
 
-In order to determine if your MySQL database needs to be reconfigured, it is best to look at how your resources are performing now. This can be done with the [top command](/docs/uptime/monitoring/top-htop-iotop) or with the Linode [Longview](/docs/platform/longview/longview) service. At the very least, you should familiarize yourself with the RAM and CPU usage of your server, which can be discovered with these commands:
+In order to determine if your MySQL database needs to be reconfigured, it is best to look at how your resources are performing now. This can be done with the [top command](/docs/guides/top-htop-iotop/) or with the Linode [Longview](/docs/products/tools/longview/get-started/) service. At the very least, you should familiarize yourself with the RAM and CPU usage of your server, which can be discovered with these commands:
 
     echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
     ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20
@@ -128,7 +125,7 @@ Changing the `key_buffer` allocates more memory to MySQL, which can substantiall
 According to MySQL's documentation, for servers with 256MB (or more) of RAM with many tables, a setting of 64M is recommended. Servers with 128MB of RAM and fewer tables can be set to 16M, the default value. Websites with even fewer resources and tables can have this value set lower.
 
 #### max_allowed_packet
-This parameter lets you set the maximum size of a sendable packet. A packet is a single SQL state, a single row being sent to a client, or a log being sent from a master to a slave. If you know that your MySQL server is going to be processing large packets, it is best to increase this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.
+This parameter lets you set the maximum size of a sendable packet. A packet is a single SQL state, a single row being sent to a client, or a log being sent from a source database to a replica. If you know that your MySQL server is going to be processing large packets, it is best to increase this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.
 
 #### thread_stack
 This value contains the stack size for each thread. MySQL considers the default value of the `thread_stack` variable sufficient for normal use; however, should an error relating to the `thread_stack` be logged, this can be increased.

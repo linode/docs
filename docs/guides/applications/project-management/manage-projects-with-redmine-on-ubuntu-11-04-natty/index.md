@@ -1,31 +1,28 @@
 ---
 slug: manage-projects-with-redmine-on-ubuntu-11-04-natty
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage Projects with Redmine on Ubuntu 11.04 (Natty)'
 description: 'Installing and configuring Redmine, an open source project management system, on an Ubuntu 11.04 LTS (Natty) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-05-17
+modified: 2013-02-18
 keywords: ["redmine", "redmine ubuntu 11.04", "redmine linux", "project management software", "redmine postgresql"]
 tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/manage-projects-with-redmine-on-ubuntu-11-04-natty/','/web-applications/project-management/redmine/ubuntu-11-04-natty/']
-modified: 2013-02-18
-modified_by:
-  name: Linode
-published: 2011-05-17
-title: 'Manage Projects with Redmine on Ubuntu 11.04 (Natty)'
-deprecated: true
 relations:
     platform:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Ubuntu 11.04
+deprecated: true
 ---
 
-This guide will help you install Redmine on your Ubuntu 11.04 (Natty) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
+This guide will help you install Redmine on your Ubuntu 11.04 (Natty) Linode. It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -267,41 +264,41 @@ Issue the following commands to install `exim4` and configure it for outgoing In
 
 Select "internet site" as the type of mail configuration to use:
 
-[![Exim general configuration on Ubuntu 11.04.](729-exim4-config-02.png)](729-exim4-config-02.png)
+![Exim general configuration on Ubuntu 11.04.](729-exim4-config-02.png)
 
 Specify your systems's fully qualified domain name as the system mail name:
 
-[![Exim system mail name configuration on Ubuntu 11.04.](730-exim4-config-03.png)](730-exim4-config-03.png)
+![Exim system mail name configuration on Ubuntu 11.04.](730-exim4-config-03.png)
 
 Enter "127.0.0.1" when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, we only want to listen on localhost.
 
-[![Exim IP address configuration on Ubuntu 11.04.](731-exim4-config-04.png)](731-exim4-config-04.png)
+![Exim IP address configuration on Ubuntu 11.04.](731-exim4-config-04.png)
 
 Enter "localhost.localdomain" and your fully qualified domain name when asked for the list of recipient domains.
 
-[![Exim destination domains configuration on Ubuntu 11.04.](732-exim4-config-05.png)](732-exim4-config-05.png)
+![Exim destination domains configuration on Ubuntu 11.04.](732-exim4-config-05.png)
 
 Relay domains and machines should be left blank.
 
-[![Exim relay domains configuration on Ubuntu 11.04.](733-exim4-config-06.png)](733-exim4-config-06.png)
+![Exim relay domains configuration on Ubuntu 11.04.](733-exim4-config-06.png)
 
-[![Exim relay machines configuration on Ubuntu 11.04.](734-exim4-config-07.png)](734-exim4-config-07.png)
+![Exim relay machines configuration on Ubuntu 11.04.](734-exim4-config-07.png)
 
 Specify "No" when asked about DNS queries.
 
-[![Exim DNS queries configuration on Ubuntu 11.04.](735-exim4-config-08.png)](735-exim4-config-08.png)
+![Exim DNS queries configuration on Ubuntu 11.04.](735-exim4-config-08.png)
 
 When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.
 
-[![Exim maildirs or mbox configuration on Ubuntu 11.04.](736-exim4-config-09.png)](736-exim4-config-09.png)
+![Exim maildirs or mbox configuration on Ubuntu 11.04.](736-exim4-config-09.png)
 
 Specify "No" when asked whether to split the configuration into smaller files.
 
-[![Exim config file splitting configuration on Ubuntu 11.04.](737-exim4-config-10.png)](737-exim4-config-10.png)
+![Exim config file splitting configuration on Ubuntu 11.04.](737-exim4-config-10.png)
 
 Enter "root" and an email address at your domain for the postmaster mail query.
 
-[![Exim postmaster configuration on Ubuntu 11.04.](738-exim4-config-11.png)](738-exim4-config-11.png)
+![Exim postmaster configuration on Ubuntu 11.04.](738-exim4-config-11.png)
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 

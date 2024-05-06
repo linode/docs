@@ -1,17 +1,14 @@
 ---
 slug: install-wordpress-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
-keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
-tags: ["ubuntu","lamp","wordpress","cms","lemp"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-04
-modified_by:
-  name: Edward Angert
-published: 2018-06-04
 title: Install WordPress on Ubuntu 18.04
+description: 'Install and optimize the WordPress blogging and content management system on a Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-04
+modified: 2021-02-19
+keywords: ["WordPress", "wordpress on ubuntu", "WordPress on Linode", "how to configure WordPress"]
+tags: ["ubuntu","lamp","wordpress","cms","lemp","mysql","php", "permalink"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -26,28 +23,28 @@ aliases: ['/websites/cms/wordpress/install-wordpress-ubuntu-18-04/','/websites/c
 
 ## What is WordPress?
 
-WordPress is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack. It features an extensive plugin framework and theme system that allows site owners to use its simple, yet powerful publishing tools.
+WordPress is a popular PHP-based dynamic content management system (CMS) focused on blogging. You can easily install WordPress on Ubuntu 18.04 because it is configured to work with Apache or NGINIX, MySql, PHP in a LAMP or a LEMP stack. It also features an extensive plugin framework, and theme system that allows site owners to use the simple and powerful publishing tools.
 
 <!-- ![Install WordPress on Ubuntu 18.04](wordpress-ubuntu-18-04-title.png "Install WordPress on Ubuntu 18.04") -->
 ![Install WordPress on Ubuntu](Install_WordPress_on_Ubuntu_smg.jpg)
 {{< content "limited-user-note-shortguide" >}}
 
-Replace each instance of `example.com` in this guide with your site's domain name or IP.
+Replace each instance of `example.com` in this guide with the domain name or IP address of the website.
 
-## Before You Begin
+## Before You Begin Installing WordPress
 
--   This guide assumes you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and that your Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+-   Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
-    To check your hostname run:
+    To check the hostname run:
 
         hostname
         hostname -f
 
-    The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
+    The first command outputs the short hostname; the second, a fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) web stack.
+-   Configure a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) web stack on Ubuntu 18.04 installation.
 
--   If you're running NGINX, edit the `location /` block of your configuration to set `index.php` as an index for the site:
+-   If you are running NGINX, edit the `location /` block of the configuration to set `index.php` as an index for the site:
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / {
@@ -56,7 +53,7 @@ location / {
 }
 {{< /file >}}
 
--    If you're using Apache, run the following commands to ensure that `mod_rewrite` is enabled:
+-    If you are using Apache, run the following commands to ensure that `mod_rewrite` is enabled:
 
         sudo a2enmod status
 
@@ -65,11 +62,11 @@ location / {
         sudo a2enmod rewrite
         sudo systemctl restart apache2
 
-## Install WordPress
+## Install WordPress on Ubuntu 18.04
 
-### Prepare the WordPress Database
+### Prepare the WordPress Database in MySQL
 
-WordPress stores blog posts and other content in your MySQL database, and you need to prepare the database before you can start using WordPress:
+WordPress stores blog posts and other content in a MySQL database, and you need to prepare the database before you can start using WordPress:
 
 1.  Log in to the MySQL command line as the root user:
 
@@ -81,7 +78,7 @@ WordPress stores blog posts and other content in your MySQL database, and you ne
 CREATE DATABASE wordpress;
 {{< /highlight >}}
 
-3.  Create a user and grant them privileges for the newly created `wordpress` database, replacing `wpuser` and `password` with the username and password you wish to use:
+3.  Create a user and grant privileges for the newly created `wordpress` database, replacing `wpuser` and `password` with the username and password you wish to use:
 
     {{< highlight sql >}}
 CREATE USER 'wpuser' IDENTIFIED BY 'password';
@@ -96,12 +93,12 @@ quit
 
 ### Download WordPress
 
-1.  Create a directory called `src` under your website's directory to store fresh copies of WordPress's source files. In this guide, the home directory `/var/www/html/example.com/` is used as an example. Navigate to that new directory:
+1.  Create a directory called `src` under the website's directory to store fresh copies of WordPress's source files. In this guide, the home directory `/var/www/html/example.com/` is used as an example. Navigate to that new directory:
 
         sudo mkdir -p /var/www/html/example.com/src/
         cd /var/www/html/example.com/src/
 
-2.  Set your web server's user, `www-data`, as the owner of your site's home directory:
+2.  Set the web server's user, `www-data`, as the owner of the home directory for the site:
 
         sudo chown -R www-data:www-data /var/www/html/example.com/
 
@@ -110,69 +107,69 @@ quit
         sudo wget http://wordpress.org/latest.tar.gz
         sudo -u www-data tar -xvf latest.tar.gz
 
-4.  Rename `latest.tar.gz` as `wordpress` followed by the date to store a backup of the original source files. This will be useful if you install new versions in the future and need to revert back to a previous release:
+4.  Rename `latest.tar.gz` as `wordpress` followed by the date to store a backup of the original source files. This is useful if you install new versions in the future and need to revert to a previous release:
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-5.  Create a `public_html` directory to be the root directory for WordPress. Move the WordPress files to your `public_html` folder:
+5.  Create a `public_html` directory as the root directory for WordPress. Move the WordPress files to the `public_html` folder:
 
         sudo mkdir /var/www/html/example.com/public_html/
         sudo mv wordpress/* ../public_html/
 
-6.  Give your web server ownership of the `public_html` folder:
+6.  Give the web server ownership of the `public_html` folder:
 
         sudo chown -R www-data:www-data /var/www/html/example.com/public_html
 
 ### Configure WordPress
 
-1.  Visit your domain in a web browser and follow the steps shown onscreen. Select your preferred language, review the information page and click the **Let's go!** button. Enter the database credentials that were set when you installed MySQL:
+1.  Visit the domain in a web browser and follow the steps shown onscreen. Select your preferred language, review the information page and click the **Let's go!** button. Enter the database credentials that were set when you installed MySQL:
 
     ![WordPress Setup: Configure Database](wordpress-setup-wizard-config-database.png)
 
-    WordPress will test the credentials and if authentication is successful, prompt you to **Run the install**.
+    WordPress tests the credentials and if authentication is successful, prompts you to **Run the install**.
 
-    {{< note >}}
-If WordPress doesn't display when you visit your domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in your site's home directory.
+    {{< note respectIndent=false >}}
+If WordPress doesn't display when you visit the domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in the site's home directory.
 {{< /note >}}
 
 2.  Fill out the administration information and click **Install WordPress**.
 
     ![WordPress Setup: Configure Site](wordpress-setup-wizard-config-site.png)
 
-    Click **Log In**, enter your credentials and proceed to the WordPress Dashboard.
+    Click **Log In**, enter the credentials and proceed to the WordPress Dashboard.
 
-3.  By default, WordPress will prompt you for FTP credentials when you install new themes or plugins. To bypass this, modify your `wp-config.php` file by adding the following lines:
+3.  By default, WordPress prompts you for FTP credentials when you install new themes or plugins. To bypass this, modify the `wp-config.php` file by adding the following lines:
 
     {{< file "/var/www/html/example.com/public_html/wp-config.php" php >}}
 /** Bypass FTP */
 define('FS_METHOD', 'direct');
 {{< /file >}}
 
-5.  To make changes to your site in the future, you can access the Dashboard of your WordPress site from the web interface by adding `/wp-admin` to your site's URL: `example.com/wp-admin`.
+5.  To make changes to the site in the future, you can access the Dashboard of the WordPress site from the web interface by adding `/wp-admin` to the site's URL: `example.com/wp-admin`.
 
 Congratulations! You have now successfully installed WordPress.
 
 ## Create WordPress Permalinks (Optional)
 
-*Permalink* is a portmanteau of the words *permanent* and *link*. Permalinks are URLs that are automatically created for specific posts or pages in WordPress so that you or others can link to them. WordPress's default settings assign post numbers as permalinks, meaning a link to a specific post would look like `example.com/?p=42`. To enforce a "prettier" permalink format, you'll need to make a few adjustments to Apache or nginx.
+*Permalink* is a portmanteau of the words *permanent* and *link*. Permalinks are URLs that are automatically created for specific posts or pages in WordPress so that you or others can link to them. WordPress's default settings assign post numbers as permalinks, meaning a link to a specific post would look like `example.com/?p=42`. To enforce a "prettier" permalink format, you need to make a few adjustments to Apache or nginx.
 
 For more information on permalinks, visit the [WordPress guide on permalinks](https://codex.wordpress.org/Using_Permalinks).
 
 To configure permalink settings:
 
-1.  Log in to the WordPress admin panel through your site's `/wp-admin` URL.
+1.  Log in to the WordPress admin panel through the site's `/wp-admin` URL.
 
-2.  Mouseover **Settings** in the menu on the left of your screen, then click **Permalinks**:
+2.  Mouseover **Settings** in the menu on the left of the screen, then click **Permalinks**:
 
     ![Wordpress Settings Permalinks](wordpress-settings-permalinks.png)
 
-3.  Select your preferred permalink style or create your own *Custom Structure* and click **Save Changes**
+3.  Select a preferred permalink style or create your own *Custom Structure* and click **Save Changes**
 
-4.  Configure your web server to allow WordPress to create the customized URLs using the appropriate section below.
+4.  Configure the web server to allow WordPress to create the customized URLs using the appropriate section below.
 
 ### Configure WordPress to Allow Permalinks on Apache
 
-Instruct Apache to allow individual sites to update the `.htaccess` file, by adding the following options to the *Directory* section in your virtual host configuration:
+Instruct Apache to allow individual sites to update the `.htaccess` file, by adding the following options to the *Directory* section in the virtual host configuration:
 
 {{< file "/etc/apache2/sites-available/example.com" apache >}}
 <Directory /var/www/html/example.com/public_html>
@@ -188,7 +185,7 @@ Reload Apache to enable the changes:
 
 ### Configure WordPress to Allow Permalinks on NGINX
 
-Direct nginx to check whether each permalink refers to an existing page. By default, nginx assumes that it doesn't, and returns a server-side 404. Update the following lines in the `location / {` block in your virtual host configuration:
+Direct nginx to check whether each permalink refers to an existing page. By default, nginx assumes that it doesn't, and returns a server-side 404. Update the following lines in the `location / {` block in the virtual host configuration:
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / {
@@ -217,24 +214,24 @@ upload_max_filesize = 2M
 
 ## Install Optional PHP Extensions
 
-WordPress, and many of its plugins, use PHP extensions that you'll need to install manually. This section is optional, but it will allow you to access some WordPress features you may not have with a basic PHP installation.
+WordPress, and many of its plugins, use PHP extensions that you need to install manually. This section is optional, but it allows you to access some WordPress features that you may not have with a basic PHP installation.
 
--   In order to modify photos or images in Wordpress, you'll need the PHP-GD extension. For example, when you upload an image to use as a header, you may need to crop the image to make it fit your page.
+-   In order to modify photos or images in Wordpress, you need the PHP-GD extension. For example, when you upload an image to use as a header, you may need to crop the image to make it fit the page.
 
-    To install the GD extension:
+To install the GD extension:
 
         sudo apt install php-gd
 
 -   For full non-English language support and to fix certain character encoding-related bugs, install the multibyte string (MBSTRING) extension.
 
-    To install MBSTRING:
+To install MBSTRING:
 
         sudo apt install php-mbstring
 
--   To use XML-RPC to access WordPress via the mobile app, or to use Jetpack, you'll need `php-xmlrpc`. For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support). For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
+-   To use XML-RPC to access WordPress with the mobile app, or to use Jetpack, you need `php-xmlrpc`. For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support). For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
 
-    To install the XML-RPC extension:
+To install the XML-RPC extension:
 
         sudo apt install php-xmlrpc
 
-These are only a few of the extensions you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as `php-curl`, and `php-xml`. If you have issues with a plugin or widget, check its documentation to see if a PHP extension is required.
+These are only a few of the extensions that you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as `php-curl`, and `php-xml`. If you have issues with a plugin or widget, check the official documentation of the plugin to see if a PHP extension is required.

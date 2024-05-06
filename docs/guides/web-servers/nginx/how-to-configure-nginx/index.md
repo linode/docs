@@ -1,40 +1,38 @@
 ---
 slug: how-to-configure-nginx
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'NGINX is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic NGINX parameters and conventions.'
+title: Complete Guide to NGINX Configuration
+title_meta: How to Configure NGINX
+description: 'Understand NGINX configuration for HTTP, Server blocks, Location blocks, Reverse proxy, and Load balancers with configuration examples.'
 og_description: 'NGINX is a high-performance web server that delivers large amounts of static content quickly. This tutorial will outline the basic NGINX parameters and conventions.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-18
+modified: 2018-12-18
 keywords: ["nginx", "web server", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/how-to-configure-nginx/','/websites/nginx/how-to-configure-nginx/','/web-servers/nginx/configuration/basic/','/websites/nginx/how-to-configure-nginx/index.cfm/','/websites/nginx/basic-nginx-configuration/index.cfm/','/websites/nginx/basic-nginx-configuration/']
-modified: 2018-12-18
-modified_by:
-  name: Linode
-published: 2010-01-18
-title: How to Configure NGINX
 tags: ["web server","nginx"]
 ---
 
 ![Introduction to NGINX](how_to_configure_nginx.png "Introduction to NGINX")
 
-[NGINX](https://www.nginx.com/) is a lightweight, high-performance web server designed for high-traffic use cases.
+[NGINX](https://www.nginx.com/) is a lightweight, high-performance web server designed for high-traffic use cases. The most common use cases are HTTP cache at scale, load balancing, and reverse proxy.
 
-One of NGINX's strongest features is the ability to efficiently serve static content such as HTML and media files. NGINX uses an asynchronous event-driven model which provides predictable performance under load.
+What makes NGINX stand apart is its capability to serve static content such as HTML and Media files effectively. It uses an event-driven model to provide predictable performance even when the load is high.
 
-NGINX hands off dynamic content to CGI, FastCGI, or other web servers such as Apache. This content is then passed back to NGINX for delivery to the client. This document will familiarize you with basic NGINX parameters and conventions.
+This guide shows you several different NGINX server configurations.
 
-## Directives, Blocks, and Contexts
+## NGINX Config: Directives, Blocks, and Contexts
 
-All NGINX configuration files are located in the `/etc/nginx/` directory. The primary configuration file is `/etc/nginx/nginx.conf`.
+The location of all NGINX configuration files is in the `/etc/nginx/` directory. The primary NGINX configuration file is `/etc/nginx/nginx.conf`.
 
-Configuration options in NGINX are called [directives](http://nginx.org/en/docs/dirindex.html). Directives are organized into groups known as **blocks** or **contexts**. The two terms are synonymous.
+To set NGINX configurations, use:
+  1. [directives](http://nginx.org/en/docs/dirindex.html) - they are NGINX configuration options. They tell NGINX to process actions or know a certain variable, such as where to log errors.
+  2. Blocks (also known as contexts) - Groups in which Directives are organized
 
-Lines preceded by a `#` character are comments and not interpreted by NGINX. Lines containing directives must end with a `;` or NGINX will fail to load the configuration and report an error.
+Note that any character after `#` in a line becomes a comment. And NGINX does not interpret it.
 
-Below is a condensed copy of the `/etc/nginx/nginx.conf` file that is included with installations from the NGINX repositories. The file starts with 4 directives: `user`, `worker_processes`, `error_log`, and `pid`. These are outside any specific block or context, so they're said to exist in the `main` context. The `events` and `http` blocks are areas for additional directives, and they also exist in the `main` context.
-
-See [the NGINX docs](https://nginx.org/en/docs/ngx_core_module.html) for explanations of these directives and others available in the `main` context.
+To better understand directives and blocks, take a look at the condensed copy of `/etc/nginx/nginx` conf below:
 
 {{< file "/etc/nginx/nginx.conf" >}}
 user  nginx;
@@ -54,9 +52,19 @@ http {
 {{< /file >}}
 
 
-## The http Block
+There are 4 directives provided in this snippet in the main context :
+  1. `user`
+  2. `worker_processes`
+  3. `error_log`
+  4. `pid`
 
-The `http` block contains directives for handling web traffic. These directives are often referred to as *universal* because they are passed on to all website configurations NGINX serves. See [the NGINX docs](https://nginx.org/en/docs/http/ngx_http_core_module.html) for a list of available directives for the `http` block.
+Additional directives can be placed inside of events{...}, http{...} and so on. To read more about directives, visit the [official NGINX documentation](https://nginx.org/en/docs/ngx_core_module.html).
+
+Let’s take a look at these blocks and their NGINX configurations.
+
+## NGINX Configuration - http Block
+
+http blocks contain directives to help manage web traffic. These directives are often universal as they are passed on to all website configurations NGINX serves. A list of available directives for http blocks are available on official NGINX http block documentation.
 
 {{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
@@ -80,18 +88,14 @@ http {
 }
 {{< /file >}}
 
+In the http block there’s an include directive that tells NGINX where website configuration files are located. The command changes depending upon your source of NGINX installation:
 
-## Server Blocks
+  1. Installation from official NGINX repository: include directive is `include /etc/nginx/conf.d/*.conf;`. Every website you host with NGINX gets it’s own configuration file in `/etc/nginx/conf.d/`, with names formatted as `example.com.conf`.
+  2. Installation from Debian or Ubuntu repositories: the include directive here would now be `include /etc/nginx/sites-enabled/*;` With site configuration file stored in `/etc/nginx/sites-available/`
 
-The `http` block above contains an `include` directive which tells NGINX where website configuration files are located.
+## NGINX Configuration - Server Blocks
 
--  If you installed from the official NGINX repository, this line will say `include /etc/nginx/conf.d/*.conf;` as it does in the `http` block above. Each website you host with NGINX should have its own configuration file in `/etc/nginx/conf.d/`, with the name formatted as `example.com.conf`. Sites which are disabled (not being served by NGINX) should be named `example.com.conf.disabled`.
-
--  If you installed NGINX from the Debian or Ubuntu repositories, this line will say `include /etc/nginx/sites-enabled/*;`. The `../sites-enabled/` folder contains symlinks to the site configuration files stored in `/etc/nginx/sites-available/`. Sites in `sites-available` can be disabled by removing the symlink to `sites-enabled`.
-
-- Depending on your installation source, you'll find an example configuration file at `/etc/nginx/conf.d/default.conf` or `etc/nginx/sites-enabled/default`.
-
-Regardless of the installation source, server configuration files will contain a `server` block (or blocks) for a website. For example:
+Regardless of the installation source, server configuration files contain a server block for a website. Here’s an example server block:
 
 {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
@@ -104,44 +108,37 @@ server {
 }
 
 {{</ file >}}
-### Listening Ports
 
-The `listen` directive tells NGINX the hostname/IP and the TCP port where it should listen for HTTP connections. The argument `default_server` means this virtual host will answer requests on port 80 that don't specifically match another virtual host's listen statement. The second statement listens over IPv6 and behaves similarly.
+There are several directives in this block that are worth taking a look at:
+  1. `listen` - tells NGINX the hostname/IP and the TCP port where it should listen for HTTP connections
+  2. `server_name`: allows multiple domains to be served from a single IP address. Ideally, it should be created per domain or site. Based on the request header it receives, the server decides which domain to serve.
 
-### Name-Based Virtual Hosting
+### NGINX Server Blocks Configuration
 
-The `server_name` directive allows multiple domains to be served from a single IP address. The server decides which domain to serve based on the request header it receives.
+Here are some examples for `server_name` NGINX configuration based on sites you want to host on the server.
 
-You typically should create one file per domain or site you want to host on your server. Here are some examples:
+Configuration for processing requests for both `example.com` and `www.example.com`:
 
-1.  Process requests for both `example.com` and `www.example.com`:
-
-    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
-server_name   example.com www.example.com;
+{{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+server_name example.com www.example.com;
 {{< /file >}}
 
-2.  The `server_name` directive can also use wildcards. `*.example.com` and `.example.com` both instruct the server to process requests for all subdomains of `example.com`:
+NGINX configuration example for processing requests for all subdomains for `example.com`:
 
-    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
-server_name   *.example.com;
-server_name   .example.com;
+{{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+server_name *.example.com;
+server_name .example.com;
 {{< /file >}}
 
+Configuration for processing requests of all domains that start with `example.`:
 
-3.  Process requests for all domain names beginning with `example.`:
-
-    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
-server_name   example.*;
-
+{{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+server_name example.*;
 {{< /file >}}
 
-NGINX allows you to specify server names that are not valid domain names. NGINX uses the name from the HTTP header to answer requests, regardless of whether the domain name is valid or not.
+## NGINX Configuration of Location Blocks
 
-Using non-domain hostnames is useful if your server is on a LAN, or if you already know all of the clients that will be making requests of the server. This includes front-end proxy servers with `/etc/hosts` entries configured for the IP address on which NGINX is listening.
-
-## Location Blocks
-
-The `location` setting lets you configure how NGINX will respond to requests for resources within the server. Just like the `server_name` directive tells NGINX how to process requests for the domain, `location` directives cover requests for specific files and folders, such as `http://example.com/blog/`. Here are some examples:
+`Location` directives cover requests for specific files and folders. It also allows NGINX to respond to requests for resources within the server. Here’s an NGINX location blocks configuration:
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / { }
@@ -152,35 +149,25 @@ location /planet/blog/ { }
 
 {{< /file >}}
 
+The locations are literal string matches, which means that a request to `http://example.com/planet/blog/` or `http://example.com/planet/blog/about/` is fulfilled by `location /planet/blog/` , even though `location /planet/`  also matches this request.
 
-The locations above are *literal string* matches, which match any part of an HTTP request that comes after the host segment:
+## Configuring NGINX location directive using regex match
 
-**Request:** `http://example.com/`
-
-**Returns:** Assuming that there is a `server_name` entry for `example.com`, the `location /` directive will determine what happens with this request.
-
-NGINX always fulfills requests using the most specific match:
-
-**Request:** `http://example.com/planet/blog/` or `http://example.com/planet/blog/about/`
-
-**Returns:** This is fulfilled by the `location /planet/blog/` directive because it is more specific, even though `location /planet/` also matches this request.
+When a  `location`  directive is followed by a tilde (~), NGINX server performs a regular expression (regex) match. NGINX uses [Perl Compatible Regular Expression (PCRE)](https://perldoc.perl.org/perlre) for regex. Here’s an example:
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ~ IndexPage\.php$ { }
 location ~ ^/BlogPlanet(/|/index\.php)$ { }
-
 {{< /file >}}
 
-When a `location` directive is followed by a tilde (**~**), NGINX performs a *regular expression* match. These matches are always case-sensitive. So, `IndexPage.php` would match the first example above, but `indexpage.php` would not. In the second example, the regular expression `^/BlogPlanet(/|index\.php)$` will match requests for `/BlogPlanet/` and `/BlogPlanet/index.php`, but **not** `/BlogPlanet`, `/blogplanet/`, or `/blogplanet/index.php`. NGINX uses [Perl Compatible Regular Expressions](http://perldoc.perl.org/perlre.html) (PCRE).
+If you want this match to be case-insensitive, configure your location directive by adding an asterisk to tilde(~*).
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ~* \.(pl|cgi|perl|prl)$ { }
 location ~* \.(md|mdwn|txt|mkdn)$ { }
-
 {{< /file >}}
 
-
-If you want matches to be case-*insensitive*, use a tilde with an asterisk (**~***). The examples above all specify how nginx should process requests that end in a particular file extension. In the first example, any file ending in: `.pl`, `.PL`, `.cgi`, `.CGI`, `.perl`, `.Perl`, `.prl`, and `.PrL` (among others) will match the request.
+Adding a caret and tilde(^!) to location directives tells NGINX if it matches a particular string stop searching for more specific matches. And to use the directives here instead.
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ^~ /images/IndexPage/ { }
@@ -188,63 +175,26 @@ location ^~ /blog/BlogPlanet/ { }
 
 {{< /file >}}
 
-Adding a caret and tilde (**^~**) to your `location` directives tells NGINX, if it matches a particular string, to stop searching for more specific matches and use the directives here instead. Other than that, these directives work like the literal string matches in the first group. Even if there's a more specific match later, if a request matches one of these directives, the settings here will be used. See below for more information about the order and priority of `location` directive processing.
+Finally, if you add an equals sign (=), this forces an exact match with the path requested and stops searching for more specific matches.
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location = / { }
-
 {{< /file >}}
 
+### Location Root and Index Configuration
 
-Finally, if you add an equals sign (**=**) to the `location` setting, this forces an exact match with the path requested and then stops searching for more specific matches. For instance, the final example will match only `http://example.com/`, not `http://example.com/index.html`. Using exact matches can speed up request times slightly, which can be useful if you have some requests that are particularly popular.
-
-Directives are processed in the following order:
-
-1.  Exact string matches are processed first. If a match is found, NGINX stops searching and fulfills the request.
-2.  Remaining literal string directives are processed next. If NGINX encounters a match where the **^~** argument is used, it stops here and fulfills the request. Otherwise, NGINX continues to process location directives.
-3.  All location directives with regular expressions (**~** and **~***) are processed. If a regular expression matches the request, nginx stops searching and fulfills the request.
-4.  If no regular expressions match, the most specific literal string match is used.
-
-Make sure each file and folder under a domain will match at least one `location` directive.
-
- {{< note >}}
-Nested location blocks are not recommended or supported.
-{{< /note >}}
-
-### Location Root and Index
-
-The `location` setting is another variable that has its own block of arguments.
-
-Once NGINX has determined which `location` directive best matches a given request, the response to this request is determined by the contents of the associated `location` directive block. Here's an example:
+`root` and `index` determine the content of the associated `location` directive block. Here’s an example:
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / {
     root html;
     index index.html index.htm;
 }
-
 {{< /file >}}
 
+In this example, the document root is located in the `html/` directory. Under the default installation prefix for the NGINX, the full path to this location is `/etc/nginx/html/`.
 
-In this example, the document root is located in the `html/` directory. Under the default installation prefix for NGINX, the full path to this location is `/etc/nginx/html/`.
-
-**Request:** `http://example.com/blog/includes/style.css`
-
-**Returns:** NGINX will attempt to serve the file located at `/etc/nginx/html/blog/includes/style.css`
-
- {{< note >}}
-You can use absolute paths for the `root` directive if desired.
-{{< /note >}}
-
-The `index` variable tells NGINX which file to serve if none is specified. For example:
-
-**Request:** `http://example.com`
-
-**Returns:** NGINX will attempt to serve the file located at `/etc/nginx/html/index.html`.
-
-If multiple files are specified for the `index` directive, NGINX will process the list in order and fulfill the request with the first file that exists. If `index.html` doesn't exist in the relevant directory, then `index.htm` will be used. If neither exists, a 404 message will be sent.
-
-Here's a more complex example, showcasing a set of `location` directives for a server responding to the domain `example.com`:
+Here’s a complex example that shows a set of `location` directives for a server responding to the domain  `example.com`:
 
 {{< file "/etc/nginx/sites-available/example.com location directive" nginx >}}
 location / {
@@ -262,30 +212,105 @@ location ~ \.pl$ {
 
 {{< /file >}}
 
+In this NGINX configuration, all requests that end in a `.pl` extension are handled by the second location block, which specifies a `fastcgi` handler for these requests. Otherwise, NGINX configuration uses the first location directive.
 
-In this example, all requests for resources that end in a `.pl` extension are handled by the second location block, which specifies a `fastcgi` handler for these requests. Otherwise, NGINX uses the first location directive. Resources are located on the file system at `/srv/www/example.com/public_html/`. If no file name is specified in the request, NGINX will look for and provide the `index.html` or `index.htm` file. If no `index` files are found, the server will return a 404 error.
+Let’s analyze how NGINX handles some requests based on this configuration:
+  1. `http://example.com/` is requested - if it exists NGINX returns `/srv/www/example.com/public_html/index.html`. If the file doesn’t exist, it serves `/srv/www/example.com/public_html/index.htm`. A 404 is returned if neither exist.
+  2. `http://example.com/blog/` is requested - if the file exists, `/srv/www/example.com/public_html/blog/index.html` is returned. If not, `/srv/www/example.com/public_html/blog/index.htm` is served instead. If neither exist, a 404 error is returned.
+  3. `http://example.com/tasks.pl` is requested -  NGINX uses FastCGI handler to execute the file at `/srv/www/example.com/public_html/tasks.pl`  and return the result.
+  4. `http://example.com/username/roster.pl` is requested - NGINX uses FastCGI handler to execute the file at `/srv/www/example.com/public_html/username/roster.pl` and return the result.
 
-Let's analyze what happens during a few requests:
+## NGINX Configuration of Reverse Proxy
 
-**Request:** `http://example.com/`
+NGINX reverse proxy acts as an intermediate proxy that takes a client request and passes it to the servers. From load balancing, increased security to higher performance - it is used for a range of use cases.
 
-**Returns:** `/srv/www/example.com/public_html/index.html` if it exists. If that file doesn't exist, it will serve `/srv/www/example.com/public_html/index.htm`. If neither exists, NGINX returns a 404 error.
+To get started with configuring a reverse proxy, follow these steps.
 
-**Request:** `http://example.com/blog/`
+1. If not already installed, install NGINX by
 
-**Returns:** `/srv/www/example.com/public_html/blog/index.html` if it exists. If that file doesn't exist, it will serve `/srv/www/example.com/public_html/blog/index.htm`. If neither exists, NGINX returns a 404 error.
+        apt update
+        apt  install nginx
 
-**Request:** `http://example.com/tasks.pl`
+    This installs NGINX web server.
 
-**Returns:** NGINX will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/tasks.pl` and return the result.
+2. Deactivate your virtual host. To deactivate your virtual host run
 
-**Request:** `http://example.com/username/roster.pl`
+        unlink /etc/nginx/sites-enabled/default
 
-**Returns:** NGINX will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/username/roster.pl` and return the result.
+3. Change your directory to /sites-available and create a reverse proxy there:
+
+        cd /etc/nginx/sites-available`
+        nano reverse-proxy.conf`
+
+4. Configure proxy server to redirect all requests on port 80 to a lightweight http server that listens to port 8000. To do that, write the following Nginx configuration:
+    {{< file >}}
+    server {
+      listen 80;
+      listen [::]:80;
+      access_log /var/log/nginx/reverse-access.log;
+      error_log /var/log/nginx/reverse-error.log;
+      location / {
+        proxy_pass http://127.0.0.1:8000;
+      }
+    }
+    {{< /file >}}
+
+5. Use the symbolic link and copy configuration from `/etc/nginx/sites-available` to `/etc/nginx/sites-enabled`:
+
+        ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
+
+6. Verify if NGINX is working:
+
+        nginx -t
+
+If you see a successful test message, NGINX reverse proxy is properly configured on your system.
+
+## Configuring Load Balance with NGINX
+
+We assume that you already have NGINX installed. If not, follow the steps from the previous section. To configure your NGINX and use it as a load balancer, add your backend servers to your configuration file first. Collect your server IPs that acts as load balancers:
+
+{{< file "load_balancer.conf" >}}
+upstream backend {
+  server 72.229.28.185;
+  server 72.229.28.186;
+  server 72.229.28.187;
+  server 72.229.28.188;
+  server 72.229.28.189;
+  server 72.229.28.190;
+}
+{{< /file >}}
+
+After upstream servers are defined, go to the location `/etc/nginx/sites-available/` and edit `load_balancer.conf`.
+
+{{< file "/etc/nginx/sites-available/load_balancer.conf" >}}
+upstream backend {
+  server 72.229.28.185;
+  server 72.229.28.186;
+  server 72.229.28.187;
+  server 72.229.28.188;
+  server 72.229.28.189;
+  server 72.229.28.190;
+}
+server {
+  listen 80;
+  server_name SUBDOMAIN.DOMAIN.TLD;
+  location / {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass https://backend;
+           }
+}
+{{< /file >}}
+
+Every time a request is made to port 80 to SUBDOMAIN.DOMAIN.LTD, request is routed to upstream servers.
+
+After done, execute this new configuration by reloading NGINX using
+
+    nginx -t
+    cd /etc/nginx/site-enabled/
+    ln -s ../sites-available/load_balancer.conf
+    systemctl reload nginx
 
 
-{{< community >}}
-* [Nginx troubleshooting](https://www.linode.com/community/questions/466/nginx-troubleshooting)
-* [Nginx font rules](https://www.linode.com/community/questions/16980/nginx-font-rules)
-* [How to set up SSL with NGINX](https://www.linode.com/community/questions/408/set-up-ssl-on-my-nginx-linode)
-{{< /community >}}
+You can further configure and optimize your load balancer by load balancing methods like Round Robin, Least connected, IP hash, and Weighted.

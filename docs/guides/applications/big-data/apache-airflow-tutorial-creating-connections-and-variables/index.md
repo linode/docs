@@ -1,27 +1,21 @@
 ---
 slug: apache-airflow-tutorial-creating-connections-and-variables
-author:
-  name: Angel D'az
-  email: angel@ocelotdata.com
-description: 'This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python.'
-og_description: 'This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python.'
+title: "Create Connections and Variables in Apache Airflow"
+description: "This guide introduces Airflow Variables and Connections and how to use the Airflow CLI to  create variables that you can encrypt and source control."
+og_description: "This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python."
+authors: ["Angel D'az"]
+contributors: ["Angel D'az"]
+published: 2020-03-30
 keywords: ['apache airflow tutorial', 'apache airflow features']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-30
-modified_by:
-  name: Angel D'az
-title: "An Apache Airflow Tutorial: How to Create Connections and Variables"
-h1_title: "An Apache Airflow Tutorial: Creating Connections and Variables"
-image: feature.png
-contributor:
-  name: Angel D'az
-  link: https://github.com/angelddaz/
+image: ApacheAirflowTut_CreateConn_Var.png
 external_resources:
 - '[Apache Airflow Official Documentation](https://airflow.apache.org/docs/stable/)'
 aliases: ['/applications/big-data/apache-airflow-tutorial-creating-connections-and-variables/']
 ---
 
 ## What is Apache Airflow?
+
 [Airflow](https://airflow.apache.org/) is an open source platform that you can use to automate, orchestrate, and monitor workflows and data pipelines. One of Airflow’s greatest features is that you can create and execute workflows with code. When you use workflows that are powered by code, you can version control, collaborate on, and debug your workflows.
 
 Airflow refers to workflows as *Directed Acyclic Graphs (DAGs)*. A DAG includes the sequence of tasks to execute along with the relationship between tasks and their dependencies. You can execute an [ETL process](https://en.wikipedia.org/wiki/Extract,_transform,_load) (extract, load, and transform data) with Airflow and also automate emails with CSV attachments, and create Machine Learning (ML) workflows.
@@ -30,7 +24,7 @@ You can connect your Airflow data sources to a central data *warehouse* so your 
 
 Airflow provides a [Python application programming interface (API)](https://airflow.apache.org/docs/stable/_api/index.html) that you can use to code your DAGs and call any connection scripts you create.
 
-### In this Guide
+## In this Guide
 
 This tutorial provides an introduction with basic examples to two fundamental Airflow concepts, *Variables* and *Connections*. You can incorporate the ideas covered in this guide into more sophisticated Python scripts when creating your DAGs and data pipelines.
 
@@ -41,7 +35,7 @@ In this Apache Airflow tutorial, you learn how to:
 
 ## Airflow Variables and Connections
 
-Airflow needs to access data from external sources, like [databases](https://www.linode.com/blog/marketplace-apps/new-web-development-and-database-marketplace-apps/), [APIs](https://developers.linode.com/api/v4), and [servers](https://www.linode.com/products/shared/). You use [Airflow *Connections*](https://airflow.apache.org/docs/stable/howto/connection/index.html) to create connections to your data sources. Your connections form the building blocks of your Airflow DAGs, because they define your data's sources, [staging area](https://airflow.apache.org/docs/stable/best-practices.html#staging-environment), and destination.
+Airflow needs to access data from external sources, like [databases](https://www.linode.com/blog/marketplace-apps/new-web-development-and-database-marketplace-apps/), [APIs](/docs/api/), and [servers](https://www.linode.com/products/shared/). You use [Airflow *Connections*](https://airflow.apache.org/docs/stable/howto/connection/index.html) to create connections to your data sources. Your connections form the building blocks of your Airflow DAGs, because they define your data's sources, [staging area](https://airflow.apache.org/docs/stable/best-practices.html#staging-environment), and destination.
 
 You use Airflow variables to store reusable values, like URIs, database usernames, configurations, and any other values required by your DAGs. The variables are stored in Airflow's metadata database.
 
@@ -80,9 +74,9 @@ Using a JSON file to load [Airflow variables](https://airflow.apache.org/docs/st
 dbname
     {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Airflow saves the passwords for connections and any variable values in plain text within the metadata database. See the [A Recommended Workflow for Sensitive Variables](#a-recommended-workflow-for-sensitive-variables) section for ways to keep your variables secure.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Create Your Connection Script
 

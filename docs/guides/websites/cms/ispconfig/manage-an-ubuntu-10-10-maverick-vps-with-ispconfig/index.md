@@ -1,29 +1,26 @@
 ---
 slug: manage-an-ubuntu-10-10-maverick-vps-with-ispconfig
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage an Ubuntu 10.10 (Maverick) Linode with ISPConfig'
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.10 (Maverick) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-29
+modified: 2012-10-08
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/ispconfig/ubuntu-10-10-maverick/','/websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/','/websites/cms/ispconfig/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-10-29
-title: 'Manage an Ubuntu 10.10 (Maverick) Linode with ISPConfig'
-deprecated: true
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Ubuntu 10.10
+deprecated: true
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
-Before beginning to follow this guide we assume that you have completed the [getting started guide](/docs/getting-started/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide assumes you are installing this on a clean system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.
 
@@ -46,7 +43,7 @@ You will be asked a series of questions during the installation; please refer to
 
 ## Install Amavisd-new and SpamAssassin
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     apt-get install amavisd-new spamassassin zoo unzip bzip2 arj nomarch lzop cabextract apt-listchanges libnet-ldap-perl libauthen-sasl-perl clamav-docs daemon libio-string-perl libio-socket-ssl-perl libnet-ident-perl zip libnet-dns-perl
 
@@ -67,7 +64,7 @@ Vlogger is a tool that logs information regarding Apache. Webalizer can then be 
 
     apt-get install vlogger webalizer
 
-More information on Webalizer can be found in our [Webalizer documentation](/docs/uptime/analytics/webalizer-on-debian-5-lenny/).
+More information on Webalizer can be found in our [Webalizer documentation](/docs/guides/webalizer-on-debian-5-lenny/).
 
 ## Install fail2ban
 
@@ -75,7 +72,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
     apt-get install fail2ban
 
-More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/).
+More information regarding fail2ban can be found in our [fail2ban guide](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ## Installing ISPConfig
 
@@ -114,7 +111,7 @@ You may wish to consult the following resources for additional information on th
 - [ISPConfig Home Page](http://www.ispconfig.org/)
 - [ISPConfig Support](http://www.ispconfig.org/page/en/support.html)
 - [ISPConfig Community](http://www.ispconfig.org/page/en/community.html)
-- [Limit User Access with SFTP Jails](/docs/security/sftp-jails)
+- [Limit User Access with SFTP Jails](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/)
 
 
 

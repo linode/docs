@@ -1,33 +1,30 @@
 ---
 slug: nginx-and-perlfastcgi-on-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on Debian 6 (Squeeze)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2011-05-10
 keywords: ["nginx perl debian 6", "nginx perl fastcgi", "nginx debian squeeze", "fastscgi perl", "nginx debian"]
 tags: ["web server","perl","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/','/web-servers/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/','/web-servers/nginx/perl-fastcgi/debian-6-squeeze/']
-modified: 2011-05-10
-modified_by:
-  name: Linode
-published: 2011-02-17
-title: 'Nginx and Perl-FastCGI on Debian 6 (Squeeze)'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Debian 6 (Squeeze) Linode.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -44,7 +41,7 @@ Issue the following commands to update your system and install the nginx web ser
 
 ## Configure DNS
 
-Create an "A" record pointing your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/dns-guides/configuring-dns-with-the-linode-manager) for instructions.
+Create an "A" record pointing your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/products/networking/dns-manager/guides/common-dns-configurations/) for instructions.
 
 ## Configure Virtual Hosting
 
@@ -184,4 +181,4 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/)

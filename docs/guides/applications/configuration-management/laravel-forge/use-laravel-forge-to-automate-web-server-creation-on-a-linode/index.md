@@ -1,17 +1,14 @@
 ---
 slug: use-laravel-forge-to-automate-web-server-creation-on-a-linode
-author:
-    name: Onwuka Gideon
-    email: dongidomed@gmail.com
+title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 description: 'This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.'
+authors: ["Onwuka Gideon"]
+contributors: ["Onwuka Gideon"]
+published: 2017-09-18
+modified: 2019-01-18
 keywords: ["content management", "web-server automation", "laravel", "php", "wordpress", "drupal", "cms", "joomla", "Laravel Forge"]
 tags: ["automation", "php", "drupal", "wordpress", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-18
-modified_by:
-    name: Linode
-published: 2017-09-18
-title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
 aliases: ['/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/','/applications/configuration-management/laravel-forge/use-laravel-forge-to-automate-web-server-creation-on-a-linode/']
@@ -31,11 +28,11 @@ Once your server has been created, deploying updates becomes as clear and painle
 
 1.  Sign up for a [Laravel Forge](https://forge.laravel.com/auth/register) account if you don't have one.
 
-1.  Create a Linode API key, which Laravel Forge will use to interface with your account. [Forge uses Linode's new APIv4](https://blog.laravel.com/forge-switching-to-the-new-linode-manager), and APIv4 tokens are created in the [Linode Cloud Manager](https://cloud.linode.com). Refer to the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) to learn how to create your key.
+1.  Create a Linode API key, which Laravel Forge will use to interface with your account. [Forge uses Linode's new APIv4](https://blog.laravel.com/forge-switching-to-the-new-linode-manager), and APIv4 tokens are created in the [Linode Cloud Manager](https://cloud.linode.com). Refer to the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to learn how to create your key.
 
 1.  If you don't have a registered domain name for your website, purchase one from a domain name registrar.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You will be able to set up a site without a domain name (by visiting your Linode's IP address directly), but you will only be able to use SSL with a domain.
 {{< /note >}}
 
@@ -112,7 +109,7 @@ If you do not want to use a domain with your website, you can configure the *def
 
 ### Add a New Site
 
-1.  Set up your DNS records for your domain. [Create a Domain Zone and an *A record*](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/) guide for instructions.
+1.  Set up your DNS records for your domain. [Create a Domain Zone and an *A record*](/docs/products/networking/dns-manager/get-started/) assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
 
     If you use another DNS provider, check their documentation for instructions.
 
@@ -146,7 +143,7 @@ If you do not want to use a domain with your website, you can configure the *def
 
     ![Git Repository Form](adding_git_repository.png "The form for adding a Git repository to your site")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not use [Composer](https://getcomposer.org), leave the **Install Composer Dependencies** option disabled, as it will cause errors for your deployment if enabled.
 {{< /note >}}
 
@@ -178,7 +175,7 @@ SSL (Secure Sockets Layer) is the standard security technology for establishing 
 
     ![Let's Encrypt Form](laravel_forge_adding_ssl.png "The form for adding Let's Encrypt to your site")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Let's Encrypt](https://letsencrypt.org) is a free and widely-trusted SSL certificate authority.
 {{< /note >}}
 

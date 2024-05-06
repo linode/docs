@@ -1,22 +1,19 @@
 ---
 slug: manage-source-code-versions-with-subversion
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Manage Source Code Versions with Subversion
 description: 'This guide shows how to manage source code with Subversion, an open source version control system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-15
+modified: 2018-01-01
 keywords: ["svn", "version control", "source control management", "subversion"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/version-control/svn/','/development/version-control/manage-source-code-versions-with-subversion/','/applications/development/manage-source-code-versions-with-subversion/']
-modified: 2018-01-01
-modified_by:
-  name: Linode
-published: 2009-12-15
-title: Manage Source Code Versions with Subversion
 external_resources:
  - '[Subversion Project Homepage](http://subversion.tigris.org/)'
  - '[The Subversion Book from O''Reilly](http://svnbook.red-bean.com/)'
 tags: ["version control system"]
+deprecated: true
 ---
 
 Subversion (SVN) is a centralized [version control system](https://en.wikipedia.org/wiki/Version_control). Used by software developers to track changes during the production and maintenance of a project. SVN is a familiar and standard component in many development tool chains. Subversion was developed as a replacement for the Concurrent Versions System (CVS). SVN attempts to fix many of the major problems with CVS without requiring any paradigm shifts in the way software is developed:
@@ -30,16 +27,16 @@ There are many options for accessing and managing Subversion repositories on loc
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Subversion
@@ -122,8 +119,8 @@ In cases where you're manipulating Subversion's data store (e.g. an upgrade or m
 
         svnadmin load /srv/svn/subversion-test-backup < /var/svn/subversion-test-1259853077.svn
 
-    {{< note >}}
-If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/linux-tools/utilities/cron).
+    {{< note respectIndent=false >}}
+If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 
 ## Use Subversion for Version Control
@@ -157,7 +154,7 @@ If you have prior experience using a CVS, you may already be familiar with many 
 - `svn copy` creates a copy of a file in a new location and name in the repository. In these circumstances Subversion treats the history of both files (previous to the copy) as a single series of changes.
 - `svn move` moves the specified file or files to a new location while retaining the history, despite the change in file name. Functionally, this is equivalent to running the `svn copy` command followed by the `svn delete` command.
 - `svn diff` displays the differences between two revisions in the repository. Without any arguments it displays the differences between the current status of the working copy (i.e. checkout) and the latest version of the repository.
-- `svn log` generates and displays the revision history of an the current directory in the filesystem. You may also specify a specific file name, for instance `svn log roster.txt` produces the revision history for the `roster.txt` file. You can also use `svn log` to access the revision history of a remote repository:
+- `svn log` generates and displays the revision history of the current directory in the filesystem. You may also specify a specific file name, for instance `svn log roster.txt` produces the revision history for the `roster.txt` file. You can also use `svn log` to access the revision history of a remote repository:
 
         svn log http://example.com/repos/subversion-test/files/txt/ roster.txt data.txt
 
@@ -236,15 +233,15 @@ If local system accounts need to access the repository, add those users to the g
 
         chmod -R +s /srv/svn/subversion-test
 
-    {{< caution >}}
-The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide for more information.
-{{< /caution >}}
+    {{< note type="alert" respectIndent=false >}}
+The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information.
+{{< /note >}}
 
 ### Configure the Apache Web Server
 
 This section demonstrates configuration for Debian and Ubuntu systems. Similar steps will work on other distributions. Please adjust accordingly.
 
-In this example, `subversion-test` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/web-servers/apache/apache-access-control/#access-control-lists-with-groups) to organize your users' access.
+In this example, `subversion-test` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/guides/apache-access-control/#access-control-lists-with-groups) to organize your users' access.
 
 1.  Enable the `mod_dav_svn` and `mod_dav` Apache modules. This will make it possible to use the `WebDAV` system to access the Subversion repository.
 
@@ -255,7 +252,7 @@ In this example, `subversion-test` corresponds to the name of the repository, an
 
         systemctl restart apache2
 
-3.  Configure HTTP AUTH passwords for Subversion users. You can read more about HTTP AUTH in our [Apache Authentication](/docs/web-servers/apache/apache-access-control/) guide. Store your `htpasswd` file for your Subversion repositories in a location such as:
+3.  Configure HTTP AUTH passwords for Subversion users. You can read more about HTTP AUTH in our [Apache Authentication](/docs/guides/apache-access-control/) guide. Store your `htpasswd` file for your Subversion repositories in a location such as:
 
         /srv/www/svn.example.com/subversion-test.htpasswd
 

@@ -1,24 +1,21 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use the GNU Mailman software to manage email listservs.'
+title: 'Manage Email Lists with GNU Mailman on Debian 6'
+description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Debian 6 "Squeeze".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2011-05-23
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/mailman/debian-6-squeeze/','/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/']
-modified: 2011-05-23
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: 'Manage Email Lists with GNU Mailman on Debian 6 (Squeeze)'
 relations:
     platform:
         key: use-gnu-mailman
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
 
 GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.
@@ -27,7 +24,7 @@ Be sure to review this guide in its entirety before beginning the procedure outl
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -51,7 +48,7 @@ During the Mailman installation, you will be required to specify the languages t
 
 ## Configure Mailman
 
-Consider the "[Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
+Consider the "[Configure Virtual Hosting](/docs/guides/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
     newlist mailman
 
@@ -62,7 +59,7 @@ During the list creation process, Mailman will prompt you for the administrators
 {{< /file >}}
 
 
-Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns/#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
+Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/guides/dns-overview/#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
 
 {{< file "/etc/postfix/master.cf" >}}
 mailman unix  -       n       n       -       -       pipe
@@ -158,7 +155,7 @@ POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']
 {{< /file >}}
 
 
-Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduction-to-dns#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
+Ensure that your domains have valid MX and [A Records](/docs/guides/dns-overview/#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
 
     newlist mailman
     /etc/init.d/postfix restart
@@ -173,7 +170,7 @@ From this point forward, you can create new lists by issuing `newlist` commands 
 
 ## Configuring Mailman with Alternate Mail Configurations
 
-If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/docs/email/postfix/dovecot-mysql-debian-6-squeeze/) or the [Postfix with Dovecot and System Users](/docs/email/postfix/dovecot-system-users-debian-6-squeeze/) configurations described in other documents, consider the following recommendations:
+If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql-on-debian-6-squeeze/) or the [Postfix with Dovecot and System Users](/docs/guides/postfix-dovecot-and-system-user-accounts-on-debian-6-squeeze/) configurations described in other documents, consider the following recommendations:
 
 Complete your basic mail configuration according to the appropriate guide before beginning to install and configure Mailman.
 

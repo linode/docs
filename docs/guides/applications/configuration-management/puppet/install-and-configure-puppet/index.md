@@ -1,26 +1,23 @@
 ---
 slug: install-and-configure-puppet
-author:
-    name: Elle Krout
-    email: ekrout@linode.com
+title: Install and Configure Puppet
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu or CentOS servers.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-09-17
+modified: 2019-01-15
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/puppet/install-and-configure-puppet/','/applications/puppet/install-and-configure-puppet/','/applications/puppet/set-up-puppet-master-agent/','/websites/puppet/basic-puppet-setup-and-configuration/','/applications/configuration-management/install-and-configure-puppet/','/websites/puppet/manage-and-automate-systems-configuration-with-puppet/']
+external_resources:
+    - '[Puppet Labs](https://puppet.com/)'
+    - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
 deprecated: true
 deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
-modified: 2019-01-15
-modified_by:
-    name: Linode
-published: 2015-09-17
-title: Install and Configure Puppet
-external_resources:
-    - '[Puppet Labs](https://puppetlabs.com/)'
-    - '[Puppet Open Source Documentation](https://docs.puppetlabs.com/puppet/)'
 ---
 
-[Puppet](https://puppetlabs.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.
+[Puppet](https://puppet.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.
 
 ![Install and Configure Puppet](install-puppet-title.png "Install and Configure Puppet")
 
@@ -36,9 +33,9 @@ Begin this guide as the `root` user. A limited user with administrative privileg
 
 1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](https://www.linode.com/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
 
-2.  Follow the [Getting Started](/docs/getting-started/) guide and ensure your Linodes are configured to use the same timezone.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and ensure your Linodes are configured to use the same timezone.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For ease of use, set the Puppet master server's hostname to `puppet`, and have a valid fully-qualified domain name (FQDN).
 
 To check your hostname, run `hostname` and to check your FQDN, run `hostname -f`.
@@ -50,22 +47,22 @@ To check your hostname, run `hostname` and to check your FQDN, run `hostname -f`
 
 1.  Install the `puppetlabs-release` repository into Ubuntu 16.04 and update your system. This process downloads a `.deb` file that will configure the repositories for you:
 
-        wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+        wget https://apt.puppet.com/puppetlabs-release-pc1-xenial.deb
         dpkg -i puppetlabs-release-pc1-xenial.deb
         apt update
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you wish to run another Linux distribution as your master server, the initial `.deb` file can be substituted for another distribution based on the following formats:
 
 **Red Hat-based systems:**
 
-`wget https://yum.puppetlabs.com/puppetlabs-release-pc1-OS-VERSION.noarch.rpm`
+`wget https://yum.puppet.com/puppetlabs-release-pc1-OS-VERSION.noarch.rpm`
 
 **Debian-based systems:**
 
-`wget https://apt.puppetlabs.com/puppetlabs-release-pc1-VERSION.deb`
+`wget https://apt.puppet.com/puppetlabs-release-pc1-VERSION.deb`
 
-Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppetlabs.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](/docs/tools-reference/linux-package-management/).
+Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppet.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](/docs/guides/linux-package-management-overview/).
 {{< /note >}}
 
 2.  Install the `puppetmaster-passenger` package:
@@ -110,9 +107,9 @@ On agent nodes running **CentOS 7** or other Red Hat systems, follow these steps
 
 1.  For **CentOS 7** only, add the Puppet Labs repository:
 
-        rpm -ivh https://yum.puppetlabs.com/el/7/products/x86_64/puppetlabs-release-22.0-2.noarch.rpm
+        rpm -ivh https://yum.puppet.com/el/7/products/x86_64/puppetlabs-release-22.0-2.noarch.rpm
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're on a Red Hat system other than CentOS 7, skip this step.
 {{< /note >}}
 
@@ -165,7 +162,7 @@ server=puppet.example.com
 
 ## Add Modules to Configure Agent Nodes
 
-Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
+Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
 {{< note >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.
@@ -255,7 +252,7 @@ class accounts {
 
     This command sequence tells Puppet that within the *accounts* module the variable `$rootgroup` should evaluate, using facter, the operating system family (`$osfamily`), and if the value returned is `Debian`, to set the `$rootgroup` value to `sudo`. If the value returned is `RedHat`, this same value should be set to `wheel`; otherwise, the `default` value will output a warning that the distribution selected is not supported by this module.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `user` definition will include the `$rootgroup`, and the Puppet Configuration Language executes code from top to bottom. You must define the `$rootgroup` *before* the `user` so that it can be accessed.
 {{< /note >}}
 
@@ -300,9 +297,9 @@ class accounts {
 {{< /file >}}
 
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The hashed password **must** be included in single quotes (').
-{{< /caution >}}
+{{< /note >}}
 
 9.  After saving your changes, use the puppet parser to ensure that the code is correct:
 
@@ -326,7 +323,7 @@ include accounts
 
         puppet apply --noop init.pp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `--noop` parameter prevents Puppet from actually running the module.
 {{< /note >}}
 
@@ -383,7 +380,7 @@ class accounts::ssh {
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `file` directory is omitted from the `source` line because the `files` folder is the default location of files. For more information on the format used to access resources in a module, refer to the [official Puppet module documentation](https://docs.puppet.com/puppet/3.8/modules_fundamentals.html#module-layout).
 {{< /note >}}
 
@@ -459,7 +456,7 @@ class accounts {
         sudo puppet apply --noop init.pp
         sudo puppet apply init.pp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may see the following line in your output when validating:
 
 `Error: Removing mount "files": /etc/puppet/files does not exist or is not a directory`
@@ -558,7 +555,7 @@ class firewall::pre {
 {{< /file >}}
 
 
-    Each rule is explained via commented text. More information can also be found on the [Puppet Forge Firewall](https://forge.puppetlabs.com/puppetlabs/firewall) page.
+    Each rule is explained via commented text. More information can also be found on the [Puppet Forge Firewall](https://forge.puppet.com/puppetlabs/firewall) page.
 
 4.  In the same directory create `post.pp`, which will run any firewall rules that need to be input last:
 

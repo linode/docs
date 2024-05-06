@@ -1,43 +1,35 @@
 ---
 slug: deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
+title: "Deploy Django Apps with uWSGI and Nginx on Ubuntu 14.04"
+description: 'This guide provides you with step-by-step instructions for deploying applications written in Django by using the uWSGI and Nginx web server on Ubuntu 14.04.'
+authors: ["Sergey Pariev"]
+contributors: ["Sergey Pariev"]
+published: 2015-11-25
 keywords: ["django", "uwsgi", "nginx", "python"]
 tags: ["web server","ubuntu","python","nginx","django"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-11-25
-modified_by:
-  name: Sergey Pariev
-published: 2015-11-25
-title: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
-contributor:
-  name: Sergey Pariev
-  link: https://twitter.com/spariev
-deprecated: True
 aliases: ['/web-servers/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/']
 external_resources:
   - '[Writing your first Django app Tutorial](https://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)'
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'
   - '[WSGI/Python Quickstart Guide](https://uwsgi-docs.readthedocs.org/en/latest/WSGIquickstart.html)'
-  - '[nginx Configuration](/docs/websites/nginx/how-to-configure-nginx)'
+  - '[nginx Configuration](/docs/guides/how-to-configure-nginx/)'
+deprecated: True
 ---
 
 [Django](https://www.djangoproject.com/) is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using [uWSGI](https://uwsgi-docs.readthedocs.org/) and [nginx](https://www.nginx.com/) on Ubuntu 14.04.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use an example account named `django`. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
+2.  This guide will use an example account named `django`. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install nginx, Python Tools and uWSGI
@@ -46,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get install build-essential nginx python-dev python-pip python-sqlite sqlite
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your application uses another database, skip installing `python-sqlite` and `sqlite`.
 {{< /note >}}
 
@@ -101,7 +93,7 @@ If your application uses another database, skip installing `python-sqlite` and `
 
     Visit `http://example.com:8080` in your browser to confirm that the sample application is set up correctly and working. You should see the Django test page:
 
-    [![Django test page.](django-test-page-small.png)](django-test-page.png)
+    ![Django test page.](django-test-page.png)
 
     Then stop development server with **Ctrl-C**.
 

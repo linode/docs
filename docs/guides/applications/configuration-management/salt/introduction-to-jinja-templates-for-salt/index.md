@@ -1,21 +1,17 @@
 ---
 slug: introduction-to-jinja-templates-for-salt
-author:
-  name: Linode
+title: "Introduction to Jinja Templates for Salt"
 description: 'An introduction to Jinja using Salt configuration management examples.'
-keywords: ['salt','jinja','configuration management']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-10-29
 modified: 2019-01-02
-modified_by:
-  name: Linode
+keywords: ['salt','jinja','configuration management']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: IntroductiontoJinjaTemplatesforSalt.png
-title: "Introduction to Jinja Templates for Salt"
-contributor:
-  name: Linode
 external_resources:
-- '[Salt Best Practices](https://docs.saltstack.com/en/latest/topics/best_practices.html#modularity-within-states)'
-- '[Salt States Tutorial](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html)'
+- '[Salt Best Practices](https://docs.saltproject.io/en/latest/topics/best_practices.html#modularity-within-states)'
+- '[Salt States Tutorial](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt1.html)'
 - '[Jinja Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/#import)'
 aliases: ['/applications/configuration-management/introduction-to-jinja-templates-for-salt/','/applications/configuration-management/salt/introduction-to-jinja-templates-for-salt/']
 tags: ["automation","salt"]
@@ -26,7 +22,7 @@ Jinja is a flexible templating language for Python that can be used to generate 
 
 Templating languages are well known within the context of creating web pages in a *Model View Controller* architecture. In this scenario the template engine processes source data, like the data found in a database, and a web template that includes a mixture of HTML and the templating language. These two pieces are then used to generate the final web page for users to consume. Templating languages, however, are not limited to web pages. Salt, a popular Python based configuration management software, supports Jinja to allow for abstraction and reuse within Salt state files and regular files.
 
-This guide will provide an overview of the Jinja templating language used primarily within Salt. If you are not yet familiar with Salt concepts, review the [Beginner's Guide to Salt](/docs/applications/configuration-management/beginners-guide-to-salt) before continuing. While you will not be creating Salt states of your own in this guide, it is also helpful to review the [Getting Started with Salt - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide.
+This guide will provide an overview of the Jinja templating language used primarily within Salt. If you are not yet familiar with Salt concepts, review the [Beginner's Guide to Salt](/docs/guides/beginners-guide-to-salt/) before continuing. While you will not be creating Salt states of your own in this guide, it is also helpful to review the [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide.
 
 ## Jinja Basics
 
@@ -63,7 +59,6 @@ Applications like Salt can define default behaviors for the Jinja templating eng
 #  trim_blocks: False
 #  lstrip_blocks: False
 {{</ file >}}
-
 {{< note >}}
 Before including Jinja in your Salt states, be sure to review the [Salt and Jinja Best Practices](#salt-and-jinja-best-practices) section of this guide to ensure that you are creating maintainable and readable Salt states. More advanced Salt tools and concepts can be used to improve the modularity and reusability of some of the Jinja and Salt state examples used throughout this guide.
 {{< /note >}}
@@ -104,19 +99,19 @@ Template variables are available via a template's context dictionary. A template
 
   Salt provides several context variables that are available by default to any Salt state file or file template:
 
-  - **Salt**: The `salt` variable provides a powerful set of [Salt library functions](https://docs.saltstack.com/en/latest/ref/modules/all/index.html#all-salt-modules).
+  - **Salt**: The `salt` variable provides a powerful set of [Salt library functions](https://docs.saltproject.io/en/latest/ref/modules/all/index.html#all-salt-modules).
 
         {{ salt['pw_user.list_groups']('jdoe') }}
 
     You can run `salt '*' sys.doc` from the Salt master to view a list of all available functions.
 
-  - **Opts**: The `opts` variable is a dictionary that provides access to the content of a Salt minion's [configuration file](https://docs.saltstack.com/en/latest/ref/internals/opts.html):
+  - **Opts**: The `opts` variable is a dictionary that provides access to the content of a Salt minion's [configuration file](https://docs.saltproject.io/en/latest/ref/internals/opts.html):
 
         {{ opts['log_file'] }}
 
     The location for a minion's configuration file is `/etc/salt/minion`.
 
-  - **Pillar**: The `pillar` variable is a dictionary used to access Salt's [pillar data](https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html):
+  - **Pillar**: The `pillar` variable is a dictionary used to access Salt's [pillar data](https://docs.saltproject.io/en/latest/topics/tutorials/pillar.html):
 
         {{ pillar['my_key'] }}
 
@@ -124,7 +119,7 @@ Template variables are available via a template's context dictionary. A template
 
         {{ salt['pillar.get']('my_key', 'default_value') }}
 
-  - **Grains**: The `grains` variable is a dictionary and provides access to minions' [grains data](https://docs.saltstack.com/en/latest/topics/grains/):
+  - **Grains**: The `grains` variable is a dictionary and provides access to minions' [grains data](https://docs.saltproject.io/en/latest/topics/grains/):
 
         {{ grains['shell'] }}
 
@@ -172,7 +167,7 @@ These chained filters will return a recursive list of all the files in the `/etc
   /etc/salt/pillar/device1.sls
   {{</ output >}}
 
-  For a complete list of all built in Jinja filters, refer to the [Jinja Template Design documentation](http://jinja.pocoo.org/docs/2.10/templates/#builtin-filters). Salt's official documentation includes a [list of custom Jinja filters](https://docs.saltstack.com/en/latest/topics/jinja/index.html#filters).
+  For a complete list of all built in Jinja filters, refer to the [Jinja Template Design documentation](http://jinja.pocoo.org/docs/2.10/templates/#builtin-filters). Salt's official documentation includes a [list of custom Jinja filters](https://docs.saltproject.io/en/latest/topics/jinja/index.html#filters).
 
 ### Macros
 
@@ -225,13 +220,12 @@ include:
 
 {% include 'users.sls' %}
 {{</ file >}}
-
 {{< note >}}
 A file referenced by the Jinja `include` tag needs to be specified by its [absolute path from Salt's `file_roots` setting](https://github.com/saltstack/salt/issues/15863#issuecomment-57823633); using a relative path from the current state file will generate an error. To include a file in the same directory as the current state file:
 
     {% include slspath + "/users.sls" %}
 
-Also note that [Salt has its own native `include` declaration](https://docs.saltstack.com/en/latest/ref/states/include.html) which is independent of Jinja's `include`.
+Also note that [Salt has its own native `include` declaration](https://docs.saltproject.io/en/latest/ref/states/include.html) which is independent of Jinja's `include`.
 {{< /note >}}
 
 **Import Context Behavior**
@@ -388,4 +382,4 @@ If Jinja is overused, its power and versatility can create unmaintainable Salt s
 
          {% import_yaml "users.yml" as users %}
 
-- Use Salt [Pillars](https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html) to store general or sensitive data as variables. Access these variables inside state files and template files.
+- Use Salt [Pillars](https://docs.saltproject.io/en/latest/topics/tutorials/pillar.html) to store general or sensitive data as variables. Access these variables inside state files and template files.

@@ -1,33 +1,28 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage Content with Markdown and Mango on Debian 5 (Lenny)'
 description: 'Mango publishes markdown documents from plain text files in a dynamic website.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-15
+modified: 2012-10-08
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/mango/debian-5-lenny/','/websites/cms/mango/manage-content-with-markdown-and-mango-on-debian-5-lenny/','/websites/cms/manage-content-with-markdown-and-mango-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-02-15
-title: 'Manage Content with Markdown and Mango on Debian 5 (Lenny)'
 relations:
     platform:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -164,21 +159,21 @@ The paths specified in this file are relative to the top level of the Django app
 
 All content with Mango exists in source as Markdown, a lightweight markup language that mirrors formatting conventions for plain text emails. Markdown is designed to be easy to read and write, and can be translated efficiently into high quality HTML. Consider the following example entry:
 
-{{< file >}}
-/srv/www/example.com/application/docs/first-post.text
-{{< /file >}}
+```file {title="/srv/www/example.com/application/docs/first-post.text"}
+date: 02 February 2011
+time: 08:06am
+tags: blog, meta, example
 
-> date: 02 February 2011 time: 08:06am tags: blog, meta, example
->
-> #### First Post
->
-> Welcome to Mango. If this page appears in full HTML glory (with **bold** and \_emphasized\_ text) then everything's probably working correctly. **Congratulations!**
->
-> \#\# More Details
->
-> Learn more about [mango](<http://mango.io>) and [Markdown][]!
->
-> [Markdown]:<http://daringfireball.net/projects/markdown/>
+#### First Post
+
+Welcome to Mango. If this page appears in full HTML glory (with **bold** and _emphasized_ text) then everything's probably working correctly. **Congratulations!**
+
+## More Details
+
+Learn more about [Markdown][]!
+
+[Markdown]:<http://daringfireball.net/projects/markdown/>
+```
 
 The first three lines of this file define header values that are processed by the Markdown implementation and used to control how Mango displays and organizes the posts. The format of the date and time fields is very strict, adhere to the format above. You may now visit your site at `http://example.com/`. To add new posts to your site, simply save files using the above format in the `content/` directory.
 
@@ -186,8 +181,6 @@ The first three lines of this file define header values that are processed by th
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Mango Home Page](http://mango.io/)
-- [Mango Documentation](http://mango.io/docs/)
 
 
 

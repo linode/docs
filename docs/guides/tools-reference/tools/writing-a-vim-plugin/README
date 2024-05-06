@@ -1,0 +1,25 @@
+# Example Plugin
+
+A plugin to provide an example for creating Vim plugins.
+
+## Installation
+
+1. Example Plugin requires that you have both [Python 3](https://wiki.python.org/moin/BeginnersGuide/Download) and [aspell](http://aspell.net/) installed on your system. On Linux, you can generally install these from your package manager. On macOS, you can install them via [Homebrew](https://brew.sh/). And on Windows, use the links here to locate downloads for the Windows versions.
+
+1. Use your favorite Vim plugin manager to add Example Plugin. With [vim-plug](https://github.com/junegunn/vim-plug), just add this line to your plugin configuration: `Plug 'example-user/example-plugin'`.
+
+## Usage
+
+Example Plugin comes with three functions:
+
+- `DisplayTime` shows you the current date and time. You can optionally pass it `"d"` as an argument to display only the date, or `"t"` to display only the time.
+- `DefineWord` fetches definitions from Wiktionary for the word under the cursor.
+- `AspellCheck` uses aspell to list spelling suggestions for the word under the cursor.
+
+You may want to map these to key bindings for easy access. Here are some example key bindings you can add to your `.vimrc`:
+
+    nnoremap <LEADER>zt :DisplayTime<CR>
+    nnoremap <LEADER>zd :DefineWord<CR>
+    nnoremap <LEADER>za :AspellCheck<CR>
+
+By default, the leader key is `\`, so this would let you access the functions by pressing **\** followed by **Z** followed by one other key.

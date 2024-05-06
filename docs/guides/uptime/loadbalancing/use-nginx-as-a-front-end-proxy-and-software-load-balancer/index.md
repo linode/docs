@@ -1,22 +1,19 @@
 ---
 slug: use-nginx-as-a-front-end-proxy-and-software-load-balancer
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use NGINX as a Front-end Proxy and Software Load-Balancer.'
+title: 'Use NGINX as a Front-end Proxy and Software Load Balancer'
+description: 'NGINX web server can function as a capable load balancer in addition to serving static and dynamic content. This guide shows how to use it as a front-end proxy as well.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-11
+modified: 2019-02-01
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 tags: ["nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','/websites/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/','/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
-modified: 2019-02-01
-modified_by:
-  name: Linode
-published: 2010-05-11
-title: 'Use NGINX as a Front-end Proxy and Software Load Balancer'
 external_resources:
  - '[NGINX Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
- - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 dedicated_cpu_link: true
 ---
 
@@ -24,19 +21,19 @@ The NGINX web server can act as a very capable software load balancer, in additi
 
 ![Use NGINX as a Front-end Proxy and Software Load Balancer](use_nginx_as_a_frontend_proxy_and_software_load_balancer.png "Use Nginx as a Front-end Proxy and Software Load Balancer")
 
-Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/development/frameworks/deploy-smalltalk-applications-with-seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using NGINX as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
+Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/guides/deploy-smalltalk-applications-with-seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using NGINX as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
 
-This document provides an overview of using NGINX as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring NGINX, please see our [Basic NGINX Configuration](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) guide. If you want a simple NGINX deployment with content that uses PHP or Perl scripts, consider following one of our [Installing NGINX](/docs/web-servers/nginx/) guides.
+This document provides an overview of using NGINX as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring NGINX, please see our [Basic NGINX Configuration](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) guide. If you want a simple NGINX deployment with content that uses PHP or Perl scripts, consider following one of our [Installing NGINX](/docs/web-servers/nginx/) guides.
 
 ## Before You Begin
 
 Ensure that you have completed the following:
 
--   Follow the [Getting Started](/docs/getting-started/) guide.
+-   Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 -   Install the [NGINX server](/docs/web-servers/nginx/).
--   Familiarize yourself with [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/).
+-   Familiarize yourself with [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/).
 
-If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [Administration Basics](/docs/tools-reference/linux-system-administration-basics/) guide.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/guides/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/products/compute/compute-instances/faqs/) and [Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
 
 ## Front-End Proxy Services with NGINX: How It Works
 
@@ -283,7 +280,7 @@ upstream appcluster {
 
 Here, the `ip_hash` directive causes NGINX to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, NGINX will route those connections to an alternate component.
 
- {{< note >}}
+{{< note >}}
 If a server needs to be taken offline for an extended period of time, append the `down` argument, as shown in the entry for `galloway.example.com:8801`. This will prevent missed connections from attempting to hit a component of the server which is down.
 {{< /note >}}
 
