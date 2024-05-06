@@ -23,9 +23,9 @@ A Dockerfile is a text file of a list of commands in an order. It is used to aut
 
 1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
-2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
+1.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
-3.  Update the system with the package manager that it uses.
+1.  Update the system with the package manager that it uses.
 
 ## How Does a Dockerfile Work?
 
@@ -55,37 +55,41 @@ To create the Dockerfile:
 
 1.  At the command prompt (either via SSH or Lish in the Linode Manager), create and change to a new directory:
 
-        mkdir ~/mydockerbuild && cd ~/mydockerbuild
+    ```command
+    mkdir ~/mydockerbuild && cd ~/mydockerbuild
+    ```
 
-    {{< note respectIndent=false >}}
-This places the Docker build directory in your home directory. As a matter of good practice, do not store the Dockerfile in your home directory itself or the server's root directory. Instead, create a separate directory and place all necessary files within it (alongside the Dockerfile) as shown in this guide.
-{{< /note >}}
+    {{< note >}}
+    This places the Docker build directory in your home directory. As a matter of good practice, do not store the Dockerfile in your home directory itself or the server's root directory. Instead, create a separate directory and place all necessary files within it (alongside the Dockerfile) as shown in this guide.
+    {{< /note >}}
 
-2.  Create the file by entering `touch Dockerfile`.
+1.  Create the file by entering `touch Dockerfile`.
 
-3.  Open the Dockerfile using the text editor of your choice, the command to type if you are using nano is `sudo nano Dockerfile`.
+1.  Open the Dockerfile using the text editor of your choice, the command to type if you are using nano is `sudo nano Dockerfile`.
 
-4.  Copy the following example into nano. This creates a Dockerfile that generates an Ubuntu image and simply prints "Hello, Sunshine!" when you run:
-    {{< file "Dockerfile" docker >}}
-FROM ubuntu
+1.  Copy the following example into nano. This creates a Dockerfile that generates an Ubuntu image and simply prints "Hello, Sunshine!" when you run:
 
-MAINTAINER linode
+    ```file {title="Dockerfile" lang=docker}
+    FROM ubuntu
 
-RUN apt-get update
+    MAINTAINER linode
 
-CMD ["echo", "Hello, Sunshine!"]
-{{< /file >}}
+    RUN apt-get update
 
-5.  Save the Dockerfile.
+    CMD ["echo", "Hello, Sunshine!"]
+    ```
 
-6.  Enter `cat Dockerfile` and ensure the text from above is included.
+1.  Save the Dockerfile.
+
+1.  Enter `cat Dockerfile` and ensure the text from above is included.
 
 ## Building a Docker Image from a Dockerfile
 
 Build the image from the Dockerfile using the `sudo docker build` command within the same directory by entering `sudo docker build -t example_image .`.
 
 The output should look something like this:
-    {{< output >}}
+
+```output
 Sending build context to Docker daemon  2.048kB
 Step 1/4 : FROM ubuntu
 latest: Pulling from library/ubuntu
@@ -94,13 +98,13 @@ latest: Pulling from library/ubuntu
 5e9250ddb7d0: Pull complete
 Digest: sha256:cf31af331f38d1d7158470e095b132acd126a7180a54f263d386da88eb681d93
 Status: Downloaded newer image for ubuntu:latest
- ---> 7e0aa2d69a15
+---> 7e0aa2d69a15
 Step 2/4 : MAINTAINER linode
- ---> Running in 1a67c8ac2958
+---> Running in 1a67c8ac2958
 Removing intermediate container 1a67c8ac2958
- ---> 49ce40cbee95
+---> 49ce40cbee95
 Step 3/4 : RUN apt-get update
- ---> Running in 91b5f90f9e15
+---> Running in 91b5f90f9e15
 Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [109 kB]
 Get:2 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [21.7 kB]
 Get:3 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]
@@ -121,23 +125,24 @@ Get:17 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages 
 Fetched 17.6 MB in 3s (6241 kB/s)
 Reading package lists...
 Removing intermediate container 91b5f90f9e15
- ---> 40d2978e2295
+---> 40d2978e2295
 Step 4/4 : CMD ["echo", "Hello, Sunshine!"]
- ---> Running in 5a07e8b4eccc
+---> Running in 5a07e8b4eccc
 Removing intermediate container 5a07e8b4eccc
- ---> ba6d90c3982b
+---> ba6d90c3982b
 Successfully built ba6d90c3982b
 Successfully tagged example_image:latest
-{{< /output >}}
+```
 
 The image has now been built from the Dockerfile.
 
 ## Running Your Docker Image
 
 Running the image you just created is as easy as typing `sudo docker run example_image`. The output looks similar to:
-{{< output >}}
+
+```output
 Hello, Sunshine!
-{{< /output >}}
+```
 
 {{< note >}}
 If the `sudo docker run` command is executed and the Docker image is not available in the current working directory, it is pulled from the Docker registry.
