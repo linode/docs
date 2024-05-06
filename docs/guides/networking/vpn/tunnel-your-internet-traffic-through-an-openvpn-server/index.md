@@ -1,18 +1,17 @@
 ---
 slug: tunnel-your-internet-traffic-through-an-openvpn-server
+title: 'Tunnel Your Internet Traffic Through an OpenVPN Server'
 description: 'Learn how to configure your OpenVPN server to tunnel your Internet traffic for better overall privacy and security.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-09
+modified: 2017-09-27
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-27
-modified_by:
-  name: Linode
-published: 2015-12-09
-title: 'Tunnel Your Internet Traffic Through an OpenVPN Server'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 aliases: ['/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/']
-authors: ["Linode"]
 ---
 
 This guide will show you how to configure an OpenVPN server to forward incoming traffic to the internet, then route the responses back to the client.
@@ -54,8 +53,7 @@ OpenVPN's server-side configuration file is: `/etc/openvpn/server.conf`, and req
 ## Append Networking Rules
 
 In [Part One](/docs/guides/set-up-a-hardened-openvpn-server/) of this series, we set iptables rules so the OpenVPN server could only accept client connections, SSH, and make system updates, all over IPv4. [IPv6 was disabled](/docs/guides/set-up-a-hardened-openvpn-server/#disable-ipv6) since OpenVPN doesn't support using both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent separately from your VPN's v4 tunnel.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The steps below will overwrite any custom IPv4 firewall rules you may have.
 {{< /note >}}
 

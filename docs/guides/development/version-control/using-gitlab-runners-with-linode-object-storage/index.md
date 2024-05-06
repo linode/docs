@@ -1,13 +1,12 @@
 ---
 slug: using-gitlab-runners-with-linode-object-storage
+title: "How to Use a GitLab Runner with Machine Driver and Object Storage"
 description: "GitLab Runners perform CI/CD tasks for your GitLab pipelines. From building to testing to deploying, GitLab Runners can spin up machines and run everything you need. And with Object Storage you have an effective method for caching resources between jobs. Learn more about GitLab Runners and how to set up your own in this tutorial."
+authors: [Nathaniel Stickman]
+contributors: [Nathaniel Stickman]
+published: 2023-01-22
 keywords: ['gitlab runner docker','what is gitlab runner','gitlab runner tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-22
-modified_by:
-  name: Linode
-authors: [Nathaniel Stickman]
-title: "How to Use a GitLab Runner with Machine Driver and Object Storage"
 external_resources:
 - '[GitLab Docs: GitLab Runner](https://docs.gitlab.com/runner/)'
 - '[GitLab Docs: Docker Machine Executor Autoscale Configuration](https://docs.gitlab.com/runner/configuration/autoscale.html)'

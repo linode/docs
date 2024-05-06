@@ -1,18 +1,15 @@
 ---
+title: "Upgrade a Cluster to a Newer Kubernetes Version"
 description: 'This guide describes the process of upgrading LKE cluster versions to prevent any potential downtime due to an outdated configuration'
-keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
-tags: ["security", "kubernetes","container"]
 published: 2022-03-10
 modified: 2023-05-02
-modified_by:
-  name: Linode
-title: "Upgrade a Cluster to a Newer Kubernetes Version"
+keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
+tags: ["security", "kubernetes","container"]
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Kubernetes Changelog](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG)'
 aliases: ['/guides/upgrading-lke-minor-versions/']
-authors: ["Linode"]
 ---
 
 Kubernetes releases new software versions and patches on a regular cadence. These updates are integrated into LKE *after* they are released on upstream Kubernetes, which ensures they are properly tested on the Linode Platform. Kubernetes uses a semantic versioning system that includes three parts: x.y.z, where **x** is the *major* version, **y** is the *minor* version, and **z** is the *patch* version.

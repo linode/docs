@@ -1,20 +1,19 @@
 ---
 slug: getting-started-with-nodejs-sqlite
+title: "Getting Started with Node.js SQLite"
+title_meta: "Node.js SQLite3: A Beginner's Guide to Installation & Usage"
 description: 'With npm and sqlite3, you can make your Node.js applications shine. This guide explains how you can install Node.js SQLite, create a SQLite database, create tables, and insert data.'
+authors: ["James Turner"]
+contributors: ["James Turner"]
+published: 2021-05-21
+modified: 2022-01-14
 keywords: ['nodejs sqlite']
 tags: ['nodejs', 'sqlite', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
-modified: 2022-01-14
 image: NodeSQLite.jpg
-modified_by:
-  name: Linode
-title: "Getting Started with Node.js SQLite"
-title_meta: "Node.js SQLite3: A Beginner's Guide to Installation & Usage"
 external_resources:
 - '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
 - '[Marvel Cinematic Universe](https://www.marvel.com/movies)'
-authors: ["James Turner"]
 ---
 
 ## Getting Started with Node.js and SQLite
@@ -154,7 +153,7 @@ function runQueries(db) {
 
 The `all()` method of the sqlite3 returns an array of rows on success, or an error on failure.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 It is good practice to parameterize the query by providing a list of substation values or an object with properties. Because it can be substituted using `$properyname` syntax. This avoids SQL injection hacks. See our guide [SQL Injection Attack: What It Is and How to Prevent It](/docs/guides/sql-injection-attack/) to learn more about this type security vulnerability.
 {{< /note >}}
 

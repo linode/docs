@@ -1,21 +1,20 @@
 ---
 slug: getting-started-with-ansible
+title: "Getting Started With Ansible: Basic Installation and Setup"
+title_meta: "Getting Started with Ansible: Installation and Setup"
 description: "In this guide, we'll show you how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server."
+authors: ["Joshua Lyman"]
+contributors: ["Joshua Lyman"]
+published: 2018-03-21
+modified: 2019-06-19
 keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/ansible/getting-started-with-ansible/','/applications/configuration-management/getting-started-with-ansible/','/applications/configuration-management/ansible/getting-started-with-ansible/']
-published: 2018-03-21
-modified: 2019-06-19
-modified_by:
-    name: Ryan Syracuse
-title: "Getting Started With Ansible: Basic Installation and Setup"
-title_meta: "Getting Started with Ansible: Installation and Setup"
 external_resources:
  - '[Ansible Home Page](http://www.ansible.com/home)'
  - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 tags: ["automation"]
-authors: ["Joshua Lyman"]
 ---
 
 ![Automatically Configure Servers with Ansible and Playbooks](automatically-configure-servers-with-ansible-title.jpg "Automatically Configure Servers with Ansible and Playbooks")
@@ -52,8 +51,7 @@ The examples in this guide provide a manual method to establish a basic connecti
     {{< /note >}}
 
 ## Before You Begin
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This guide's example instructions will create up to three billable Linodes on your account. If you do not want to keep using the example Linodes that you create, be sure to [delete them](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works.

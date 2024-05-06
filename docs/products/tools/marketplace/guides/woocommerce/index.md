@@ -1,10 +1,10 @@
 ---
+title: "Deploy WooCommerce through the Linode Marketplace"
 description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress through the Linode Marketplace."
-keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
-tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 published: 2019-04-02
 modified: 2023-06-06
-title: "Deploy WooCommerce through the Linode Marketplace"
+keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
+tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/','/platform/one-click/one-click-woocommerce/','/guides/how-to-deploy-woocommerce-with-one-click-apps/','/guides/how-to-deploy-woocommerce-with-marketplace-apps/','/guides/woocommerce-marketplace-app/']
 external_resources:
 - '[WooCommerce Docs](https://docs.woocommerce.com/)'

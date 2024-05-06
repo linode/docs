@@ -2,14 +2,11 @@
 title: "Access Your Desktop Environment Using Glish (Linode Graphical Shell)"
 title_meta: "Access Your Desktop Environment Using Glish"
 description: "Use Glish (the Linode Graphical Shell) to access a desktop environment, like Xfce or Gnome, on your web browser."
-keywords: ["Console", "Shell", "glish", "desktop environment", "display manager"]
 published: 2015-08-28
 modified: 2022-10-12
-modified_by:
-  name: Linode
+keywords: ["Console", "Shell", "glish", "desktop environment", "display manager"]
 tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
-authors: ["Linode"]
 aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/','/guides/glish/']
 ---
 

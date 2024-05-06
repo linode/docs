@@ -1,16 +1,15 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-13
-description: "In part 13 of our series on Kubernetes, you will learn how to deploy a pipeline using a self-hosted Gitlab instance from within your own Kubernetes cluster."
 title: "Building a CD Pipeline Using LKE (Part 13): CI/CD with GitLab"
-keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "In part 13 of our series on Kubernetes, you will learn how to deploy a pipeline using a self-hosted Gitlab instance from within your own Kubernetes cluster."
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2021-05-06
 modified: 2022-12-14
-modified_by:
-  name: Linode
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-13/']
-authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: CI/CD with GitLab](cd-presentation-header-13-ci-cd-with-gitlab.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: CI/CD with GitLab")

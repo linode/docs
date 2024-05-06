@@ -1,25 +1,22 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy
-deprecated: true
+title: 'Instant Messaging Services with ejabberd on Ubuntu 8.04 (Hardy)'
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 8.04 (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-13
+modified: 2011-04-29
 keywords: ["ejabberd", "ejabberd ubuntu hardy", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy/','/communications/xmpp/ejabberd/ubuntu-8-04-hardy/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-10-13
-title: 'Instant Messaging Services with ejabberd on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface, and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics, but mostly due to the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads: ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.
 

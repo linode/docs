@@ -1,21 +1,20 @@
 ---
 slug: how-to-self-host-the-vaultwarden-password-manager
-description: "Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the vaultwarden project."
-keywords: ["bitwarden self hosted", "free self hosted password manager", "self hosted password manager open source"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
-modified_by:
-  name: Linode
 title: "Self-Hosting the vaultwarden Password Manager"
 title_meta: "How to Self-Host the vaultwarden Password Manager"
+description: "Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the vaultwarden project."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2021-02-19
+keywords: ["bitwarden self hosted", "free self hosted password manager", "self hosted password manager open source"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["ubuntu", "security", "web applications", "docker"]
 aliases: ["security/authentication/self-hosted-password-management-with-bitwarden-rs/", "/guides/how-to-self-host-the-bitwarden-rs-password-manager/", "security/authentication/how-to-self-host-the-bitwarden-rs-password-manager/"]
-authors: ["Tyler Langlois"]
 ---
 
 The [Vaultwarden](https://github.com/dani-garcia/vaultwarden) project (formerly known as bitwarden_rs) provides a lightweight, single-process, API-compatible service alternative to [Bitwarden](https://bitwarden.com/). [Vaultwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. By running the vaultwarden service, you can use Bitwarden browser extensions and mobile applications backed by your server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 By self-hosting your password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within Vaultwarden. Before storing important information and credentials within the application, ensure that you are confident with the security of the server. Also, take the necessary backup measures mentioned in this tutorial.
 {{< /note >}}
 
@@ -321,8 +320,7 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
 {{< /output >}}
 
    This indicates that a backup is taken in 5 hours and 50 minutes.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Ensure that the backups are kept on a volume or host independent of the Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/products/storage/block-storage/) as one potential solution for permanent backup storage and archival.
 {{< /note >}}
 

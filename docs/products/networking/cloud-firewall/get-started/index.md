@@ -2,12 +2,12 @@
 title: Get Started
 title_meta: "Getting Started with Cloud Firewalls"
 description: "Get started with Linode Cloud Firewall. Learn to add a Cloud Firewall, assign a Cloud Firewall to a Linode, add and edit rules, update your Cloud Firewall status, and delete a Cloud Firewall."
+modified: 2023-11-01
 tab_group_main:
     weight: 20
 aliases: ['/platform/cloud-firewall/getting-started-with-cloud-firewall/','/guides/getting-started-with-cloud-firewall/']
 keywords: ["firewall", "cloud firewall", "security", "securing"]
 tags: ["cloud manager","linode platform","security","networking"]
-modified: 2023-11-01
 ---
 
 Linode’s free Cloud Firewall service can be used to create, configure, and add stateful network-based firewalls to Linode services. A Cloud Firewall is independent of the service it is attached to and can be applied to multiple services. Cloud Firewalls are compatible with Linode Compute Instances and NodeBalancers.

@@ -2,12 +2,11 @@
 slug: using-kompose-for-kubernetes
 title: "How to Use Kompose for Kubernetes Deployments"
 description: "Kompose helps users familiar with Docker Compose start deploying to Kubernetes by translating Docker Compose YAML files to Kubernetes resources. In this tutorial, find out more about Kompose and how to start using it for your Kubernetes deployments."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-08-09
 keywords: ['kompose kubernetes example','docker compose to kubernetes yaml','kompose github']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-08-09
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Kompose: Getting Started](https://kompose.io/getting-started/)'
 - '[Kubernetes: Translate a Docker Compose File to Kubernetes Resources](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)'

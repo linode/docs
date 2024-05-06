@@ -2,10 +2,10 @@
 title: Guides
 title_meta: "Guides and Tutorials for Compute Instances"
 description: "A collection of guides to help you start deploying Compute Instances and using them to host your web applications and Cloud workloads"
+modified: 2024-01-03
 tab_group_main:
     weight: 30
 aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-cpu/guides/','/products/compute/gpu/guides/','/products/compute/dedicated-cpu/guides/','/products/compute/high-memory/guides/']
-modified: 2024-01-03
 ---
 
 ## Basics

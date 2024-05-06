@@ -3,8 +3,6 @@ title: "Upgrade the Linode CLI to use Python 3"
 description: "The Linode Command Line Interface (CLI) can be supported by both Python 2.x and Python 3.x, however As Python 2 has reached an end of life it is recommended that users upgrade to Python 3 as soon as they are able. This guide outlines the simplest methods for upgrading python and the Linode CLI."
 published: 2022-01-14
 modified: 2022-11-30
-modified_by:
-  name: Linode
 external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
 keywords: ["api","linode api", "cli", "linode cli", "python cli"]
