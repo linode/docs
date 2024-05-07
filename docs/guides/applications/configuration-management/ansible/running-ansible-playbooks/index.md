@@ -141,7 +141,7 @@ In order to target your Linode in a Playbook, you will need to add it to your An
 
     {{< file "/etc/ansible/hosts" ini >}}
 [webserver]
-192.0.2.0
+192.0.2.17
 
 {{< /file >}}
 
