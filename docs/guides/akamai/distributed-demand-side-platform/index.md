@@ -5,7 +5,7 @@ description: "Details and architectures demonstrating the ability to host a dist
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2024-05-07
-keywords: ['observability','datastream','datastream 2','visibility','multiplex','multiplexing','logs','log parsing','object storage','s3']
+keywords: ['adtech','ad-tech','dsp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
