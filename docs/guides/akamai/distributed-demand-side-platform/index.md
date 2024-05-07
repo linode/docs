@@ -4,7 +4,7 @@ title: "Ad-Tech on Akamai: Distributed Demand-Side Platform"
 description: "Details and architectures demonstrating the ability to host a distributed demand-side platform on Akamai cloud computing."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2024-05-06
+published: 2024-05-07
 keywords: ['observability','datastream','datastream 2','visibility','multiplex','multiplexing','logs','log parsing','object storage','s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
@@ -39,7 +39,7 @@ Another cause of increased cloud costs and egress fees is a high amount of traff
 
 ### Integration and Migration Effort
 
-_Consider the amount of effort that infrastructure changes will create and design an architecture that reduces the effort wherever possible._
+*Consider the amount of effort that infrastructure changes will create and design an architecture that reduces the effort wherever possible.*
 
 When re-architecting an application, the amount of effort in designing and integrating the new systems --- as well as migrating to another provider --- can pose significant challenges. The solution in this guide requires moving only a part of the ad serving workflow to the Akamai platform, which means that many centralized components do not need to be migrated. The ad inventory system of record remains unchanged, as do other key databases. The amount of effort is greatly reduced compared to other possible solutions.
 
@@ -55,9 +55,9 @@ The diagram below showcases the infrastructure components that enable a multi-re
 
 1.  The request is routed to one of multiple compute regions (data centers). Since this is a distributed application, the request is routed through an intelligent DNS-based load balancing solution, such as Akamai [Global Traffic Manager (GTM)](https://www.akamai.com/products/global-traffic-management). The global load balancer determines which region can best serve the client's request. This takes into account location, performance, and availability. A load balancing solution like this is an ideal way to reduce latency (improves ad display speed) and increase resilience (one failure doesn’t affect all the capacity).
 
-1.  Local load balancers, such as a Compute Instance running HAProxy, route the request to one of several backend clusters. Multiple clusters are often used within a single region for redundancy and scaling. Orechestration platforms, such as [LKE](https://www.linode.com/products/kubernetes/), can be used to manage cluster infrastructure and operation.
+1.  Local load balancers, such as a Compute Instance running HAProxy, route the request to one of several backend clusters. Multiple clusters are often used within a single region for redundancy and scaling. Orchestration platforms, such as [LKE](https://www.linode.com/products/kubernetes/), can be used to manage cluster infrastructure and operation.
 
-1.  The frontend API gateway starts processing the request. These systems operate in front of the bidding servers to reduce egress and bid processing costs. These frontend servers are typically capable of applying business logic for communicating with ad-exchanges as well as bidding servers and any other microserices on the cluster.
+1.  The frontend API gateway starts processing the request. These systems operate in front of the bidding servers to reduce egress and bid processing costs. These frontend servers are typically capable of applying business logic for communicating with ad-exchanges as well as bidding servers and any other microservices on the cluster.
 
 1.  The frontend gateway sends the bid request to the bidding servers. During this bidding process, the bid is matched with local ad inventory and compared against other advertisers using the DSP’s platform.
 

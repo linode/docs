@@ -578,6 +578,7 @@ drush
 drwxr
 dshield
 dsn
+DSPs
 du
 duf
 ducati
@@ -839,6 +840,7 @@ graphql
 Grav
 Gravatar
 Gravatars
+Gravitee
 graylog
 graylog2
 greenbone
@@ -946,6 +948,7 @@ hyperefficient
 HyperLogLog
 hyperparameter
 hyperscaler
+hyperscalers
 hypervisor
 hypervisors
 IaC
@@ -2143,6 +2146,7 @@ Skitch
 sklearn
 slackpkg
 slackware
+SLAs
 slavedb
 sls
 smartcard
@@ -2404,6 +2408,7 @@ turtl
 tv
 tw
 twilio
+Tyk
 typecheck
 typeform
 txt
