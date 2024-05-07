@@ -412,6 +412,7 @@ Crossplane
 crosstab
 crowdsourced
 crowdsourcing
+CRDs
 CRM
 CRMs
 crt
