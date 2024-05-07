@@ -25,7 +25,7 @@ At a high level, video is handled by a transcoding service with the following wo
 
 ## Overcoming Challenges
 
-### Cost sensitivity
+### Cost Sensitivity
 
 *Identify significant sources of infrastructure costs and determine ways to reduce those costs.*
 
@@ -33,7 +33,7 @@ Because video transcoding is a compute-intensive process, compute resources are 
 
 After a video stream is transcoded by the transcoding service, it needs to be distributed by a content delivery network. This can also be a significant source of cost when there are egress fees between the transcoding service platform and the content delivery network. By selecting Akamai compute offerings for the transcoding service and using Akamai’s CDN, the egress fees for that traffic can be reduced by 100%.
 
-### Latency sensitivity
+### Latency Sensitivity
 
 *Identify sources of high latency and minimize the latency impact of those components.*
 
