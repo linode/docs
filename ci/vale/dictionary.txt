@@ -87,6 +87,7 @@ arping
 arptables
 arthashastra
 Asana
+ASCIIbetical
 aspell
 askbot
 aske
@@ -316,6 +317,7 @@ clearsign
 clearspace
 cleartext
 cli
+CLIs
 clickboard
 clickjacking
 client1
@@ -1050,6 +1052,8 @@ ipaserver
 ipchains
 ipconfig
 iperf
+iPads
+iPhones
 ips
 ipsec
 ipset
