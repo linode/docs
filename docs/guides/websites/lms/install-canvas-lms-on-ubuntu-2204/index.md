@@ -13,6 +13,11 @@ external_resources:
 - '[Canvas](https://www.instructure.com/canvas)'
 - '[What is Learning Management System](https://www.shareknowledge.com/blog/what-learning-management-system-and-why-do-i-need-one)'
 - '[PostgreSQL Client Authentication](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html)'
+relations:
+    platform:
+        key: how-to-install-canvas
+        keywords:
+            - distribution: Ubuntu 22.04
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a modern open-source Learning Management System (LMS) by Instructure, Inc. that helps makes distance learning possible. An LMS like Canvas is a software application or web-based technology that you use to plan, implement, and assess a specific learning process. This guide helps you install all of its prerequisites, install Canvas LMS on Ubuntu, perform required Canvas setups, ensure your Canvas setup is secure, and then access your Canvas setup. This guide uses the **Ubuntu 22.04** distribution.
