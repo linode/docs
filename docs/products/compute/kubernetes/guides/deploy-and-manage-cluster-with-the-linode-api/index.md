@@ -396,6 +396,79 @@ The response body resembles the following:
 Each Linode account has a limit to the number of resources they can deploy. This includes services, like Compute Instances, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/products/platform/get-started/guides/support/) if you believe this may be the case.
 {{< /note >}}
 
+### Add Kubernetes labels and taints to your LKE Node Pools
+
+You can optionally add custom labels and/or taints to all nodes in a LKE node pool with the `labels` and `taints` parameters when creating or updating a node pool.
+
+Defining the node labels and taints on a per-pool basis through the API has benefits over managing them manually with `kubectl`.
+* Custom labels and taints automatically apply to new nodes when a pool is recycled or scaled up (either manually or autoscaling).
+* LKE ensures that nodes have the desired taints in place before they become ready for pod scheduling, preventing newly created nodes from attracting workloads that don't have the intended tolerations.
+
+An example of creating a new node pool for a cluster with a custom taint and label.
+
+```command
+curl -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $TOKEN" \
+        -X POST -d '{
+        "type": "g6-standard-1",
+        "count": 3,
+        "taints": [
+            {
+                "key": "myapp.io/app",
+                "value": "test",
+                "effect": "NoSchedule"
+            }
+        ],
+        "labels": {
+            "myapp.io/app": "test"
+        }
+        }' https://api.linode.com/v4/lke/clusters/12345/pools
+```
+
+The `labels` field expects a dictionary object with one or more key-value pairs as [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/), adhering to the following restrictions:
+
+* A label's key and value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters each.
+* Optionally, the key can begin with a DNS subdomain prefix and a single '/', like 'example.com/my-app'.
+
+The `taints` field expects an array of one or more dictionary objects with the form of [Kubernetes node taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), adhering to the following restrictions:
+
+* A taint consists of a `key`, `value`, and `effect`.
+* The `key` value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 253 characters.
+* Optionally, the `key` value can begin with a DNS subdomain prefix and a single '/', like 'example.com/my-app'.
+* The `value` key is optional. If given, it must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters.
+* The `effect` value must be NoSchedule, PreferNoSchedule or NoExecute.
+
+{{< note >}}
+Taint and label values cannot contain `kubernetes.io` or `linode.com` domains as these are reserved for LKE's own usage.
+{{< /note >}}
+
+If you've already created a node pool with custom taints or labels and need to add or change them, you can do this by specifying the newly desired labels and taints during a node pool update. Following the node pool update example below in [Resize your LKE Node Pool](#resize-your-lke-node-pool), and add the labels and taints fields the same as you would during a create.
+
+Assuming that pool `196` is the pool we created in the previous example, updating might look like this:
+
+```command
+curl -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $TOKEN" \
+    -X PUT -d '{
+        "type": "g6-standard-1",
+        "count": 3,
+        "taints": [],
+        "labels": {
+            "myapp.io/app": "prod",
+            "example": "foo",
+        }
+    }' https://api.linode.com/v4/lke/clusters/12345/pools/196
+```
+
+The effect of this update on the pool nodes would be:
+* Removal of the "myapp.io/app" taint, by specifying an empty array.
+* Change the label "myapp.io/app" to have the value "prod" instead of "test"
+* Addition of a new label "example=foo".
+
+{{< note >}}
+When updating or adding labels and taints to an existing node pool it is not necessary to recycle, since the values are updated live on the running nodes.
+{{< /note >}}
+
 ### Resize your LKE Node Pool
 
 You can resize an LKE cluster's node pool to add or decrease its number of nodes. You need your cluster's ID and the node pool's ID in order to resize it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
