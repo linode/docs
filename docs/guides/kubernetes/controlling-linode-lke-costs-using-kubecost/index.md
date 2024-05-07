@@ -76,7 +76,7 @@ A quality monitoring plan takes the functionality of your tools, business needs,
 -   Capture historical data to make it possible to predict future performance based on expected conditions at specific times.
 -   Ensure that the user experience remains unaffected by monitoring and cost-control efforts.
 
-A key component of a good monitoring plan is alerting. When configuring alerts, keep these priciples in mind:
+A key component of a good monitoring plan is alerting. When configuring alerts, keep these principles in mind:
 
 -   Engineer alerts so that the overall number of alerts are kept at a minimum.
 -   Consider when and who should receive alerts.
@@ -101,7 +101,7 @@ The following components must be in place prior to installing Kubecost:
 ### Installing Kubecost
 
 {{< note title="Kubecost 2.0" >}}
-As of January 2024, the below instructions install Kubecost 2.0. See Kubecost's blog for more information about Kubecost 2.0, including functionality improvements: [Introducting Kubecost 2.0](https://blog.kubecost.com/blog/introducing-kubecost-2.0/)
+As of January 2024, the below instructions install Kubecost 2.0. See Kubecost's blog for more information about Kubecost 2.0, including functionality improvements: [Introducing Kubecost 2.0](https://blog.kubecost.com/blog/introducing-kubecost-2.0/)
 {{< /note >}}
 
 1.  Navigate to the [Kubecost registration page](https://www.kubecost.com/install#show-instructions) and complete the sign up steps by entering your email address. Once complete, you are brought to a page with Kubecost installation instructions. The instructions include a `kubecostToken` that is required for installation.
@@ -147,7 +147,7 @@ OpenCost is free, whereas Kubecost offers freemium and paid versions with differ
 
 [Loft](https://loft.sh/) is a control platform that operates on top of existing Kubernetes clusters. Loft works with individual clusters rather than residing outside clusters or relying on a separate engine. Loft has relatively simple setup and configuration processes, though it doesn't have the level of overview provided by Kubecost or OpenCost.
 
-Two areas of note for Loft are the sleep mode feature and accounting functionality. With sleep mode, Loft automatically puts idle namespaces to sleep based on user-provided critera, rather than only informing you of a cost problem. It also has the ability to delete namespances when they become old and unused. Accounting in Loft allows you to set quotas for each user, account, and team. Loft also offers enterprise-grade, multi-tenant access control, security, and fully automated tenant isolation, among other features.
+Two areas of note for Loft are the sleep mode feature and accounting functionality. With sleep mode, Loft automatically puts idle namespaces to sleep based on user-provided critera, rather than only informing you of a cost problem. It also has the ability to delete namespaces when they become old and unused. Accounting in Loft allows you to set quotas for each user, account, and team. Loft also offers enterprise-grade, multi-tenant access control, security, and fully automated tenant isolation, among other features.
 
 ### CAST AI
 

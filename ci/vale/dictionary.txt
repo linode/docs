@@ -87,6 +87,7 @@ arping
 arptables
 arthashastra
 Asana
+ASCIIbetical
 aspell
 askbot
 aske
@@ -316,6 +317,7 @@ clearsign
 clearspace
 cleartext
 cli
+CLIs
 clickboard
 clickjacking
 client1
@@ -335,6 +337,8 @@ clustermgr
 clustermgrguest
 cmd
 cmdmod
+CMS
+CMSs
 cmusieve
 cnf
 codebase
@@ -391,6 +395,8 @@ cqlshrc
 craftbukkit
 craigslist
 crashingdaily
+CRD
+CRDs
 createdt
 createfromstackscript
 crewless
@@ -405,6 +411,8 @@ Crossplane
 crosstab
 crowdsourced
 crowdsourcing
+CRM
+CRMs
 crt
 crypters
 crypto
@@ -536,6 +544,8 @@ distros
 dists
 django
 dkim
+DLC
+DLCs
 dlncr
 dmg
 dmitriy
@@ -598,6 +608,7 @@ ecto
 edmonds
 edu
 efi
+EGroupware
 ejabberd
 el6
 el7
@@ -730,6 +741,7 @@ fmt
 fn
 fpm
 fqdns
+FQCNs
 fragging
 framebuffer
 frakti
@@ -854,6 +866,9 @@ groupinfo
 grsecurity
 gsa
 gsad
+GSLT
+GSLTs
+GTalk
 gtop
 guacd
 gui
@@ -1041,6 +1056,8 @@ ipaserver
 ipchains
 ipconfig
 iperf
+iPads
+iPhones
 ips
 ipsec
 ipset
@@ -1061,6 +1078,7 @@ iso
 isort
 isoformat
 isp
+ISPConfig
 isps
 issuewild
 istioctl
@@ -1165,6 +1183,8 @@ Konqueror
 konsole
 kotin
 konversation
+KPI
+KPIs
 krita
 kroll
 ksmbd
@@ -1172,6 +1192,7 @@ ktor
 kube
 kubeadm
 kubeconfig
+Kubecost
 kubectl
 kubectx
 kubeflow
@@ -1417,6 +1438,14 @@ mnesia
 mngtmpaddr
 moby
 mod_autoindex
+mod_deflate
+mod_evasive
+mod_expires
+mod_perl
+mod_php
+mod_proxy
+mod_python
+mod_rewrite
 moddable
 modinfo
 modsecurity
@@ -1644,6 +1673,7 @@ openvpn
 openvz
 openzipkin
 Opin
+osCommerce
 ossec
 ostemplate
 osx
@@ -1731,6 +1761,7 @@ photoshop
 php
 php5
 php7
+phpFox
 phpmyadmin
 Phrack
 phusion
@@ -2196,6 +2227,7 @@ src
 srv
 sshd
 sshfs
+sshing
 sshpass
 ssi
 ssl
@@ -2354,6 +2386,7 @@ tincd
 tinydb
 tiobe
 titlebar
+TWiki
 tl
 tld
 TLDs
@@ -2520,6 +2553,7 @@ variadic
 varnishlog
 varonis
 vaultwarden
+vBulletin
 vcs
 vdev
 vdevs
@@ -2655,6 +2689,7 @@ worker1
 worker2
 workgroup
 wp
+WPSolr
 wpuser
 writability
 writecaps
@@ -2676,6 +2711,7 @@ xen
 xenial
 xerus
 Xfce
+XHProf
 xkcd
 xlsx
 xlsxwriter
