@@ -24,6 +24,8 @@ relations:
         key: how-to-install-canvas
         keywords:
             - distribution: Ubuntu 20.04
+deprecated: true
+deprecated_link: '/docs/guides/install-canvas-lms-on-ubuntu-2204/'
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a popular learning management system (LMS) noteworthy for its modern design and ease of use. Canvas provides a comprehensive website for education and training courses, whether those courses are in-person, online, or a mix of the two. Moreover, Canvas is [open source](https://github.com/instructure/canvas-lms). You can freely download and install an instance on your server, giving you a higher degree of control than with a hosted LMS.
@@ -108,7 +110,7 @@ Canvas specifically requires version **2.7** of Ruby, which the default package 
 
 1. Install Ruby and its development components:
 
-        sudo apt-get install ruby2.6 ruby2.6-dev zlib1g-dev libxml2-dev libsqlite3-dev postgresql libpq-dev  libxmlsec1-dev curl make g++
+        sudo apt-get install ruby2.7 ruby2.7-dev zlib1g-dev libxml2-dev libsqlite3-dev postgresql libpq-dev  libxmlsec1-dev curl make g++
 
 1. Install Bundler, which Canvas uses for managing its Ruby libraries ("Gems"). Canvas specifically calls for version **2.1.4** of Bundler:
 
