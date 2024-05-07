@@ -9,7 +9,7 @@ keywordsAlgolia = ["reference architecture"]
 [[cascade]]
 layout = "tabbed-section-layout"
 [cascade._target]
-path = "/reference-architecture/**"
+path = "/reference-architecture/*/**"
 +++
 
  <!--more-->

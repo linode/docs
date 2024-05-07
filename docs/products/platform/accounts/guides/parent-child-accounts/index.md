@@ -4,7 +4,7 @@ description: "Learn how parent and child accounts can help Akamai partners manag
 published: 2024-04-23
 modified: 2024-04-29
 keywords: ["akamai partners", "parent", "child", "parent/child relationship"]
-aliases: ['products/platform/accounts/guides/parent-child-accounts/']
+aliases: ['products/platform/accounts/guides/parent-child-accounts/','/guides/parent-child-accounts/']
 promo_default: false
 ---
 
