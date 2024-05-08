@@ -4,8 +4,6 @@ title_meta: "How to Cancel an Account on the Linode Platform"
 description: "Learn how to cancel a Linode account through the Cloud Manager."
 published: 2021-06-25
 modified: 2023-03-02
-modified_by:
-  name: Linode
 tags: ["linode platform","cloud manager"]
 aliases: ['/guides/how-to-cancel-your-account/','/quick-answers/linode-platform/cancel-your-account-shortguide/','/quick-answers/linode-platform/how-to-cancel-your-account/']
 ---

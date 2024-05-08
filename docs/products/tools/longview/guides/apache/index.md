@@ -2,19 +2,16 @@
 title: Capture Apache Metrics with Longview
 title_meta: Capture Apache Metrics with Linode Longview
 description: 'This guide discusses the Linode Longview client, including how to configure Longview for the Apache web server, how to interact with data from Longview, and more.'
+published: 2013-11-04
+modified: 2023-05-24
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 tags: ["apache","cloud manager","statistics","monitoring","linode platform"]
 aliases: ['/longview/longview-for-apache/','/platform/longview/what-is-the-linode-longview-app-for-apache/','/platform/longview/longview-app-for-apache/','/guides/what-is-the-linode-longview-app-for-apache/']
-published: 2013-11-04
-modified: 2023-05-24
-modified_by:
-  name: Linode
 relations:
     platform:
         key: what-is-longview
         keywords:
             - distribution: Apache
-authors: ["Linode"]
 ---
 
 In addition to capturing general system metrics, Longview can also be used to capture metrics for Apache. The Apache tab appears in the Cloud Manager when Longview detects that you have Apache installed on your system. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.

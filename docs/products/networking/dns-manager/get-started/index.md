@@ -2,9 +2,9 @@
 title: Get Started
 title_meta: "Getting Started with the Linode DNS Manager"
 description: "Learn how to get up and running with the Linode DNS Manager, including creating and importing domains."
+modified: 2023-03-16
 tab_group_main:
     weight: 20
-modified: 2023-03-16
 ---
 
 Linode's DNS Manager enables users to manage DNS records for each of their domains directly within the tools they already use: like the Cloud Manager, Linode CLI, or Linode API. It supports most common DNS record types, including A, AAAA (quad A), CNAME, MX, TXT, NS, SOA, SRV, and CAA. Follow this guide to learn how to start using the DNS Manager.

@@ -1,16 +1,14 @@
 ---
 slug: log-in-to-coreos-container-linux
+title: Log in to CoreOS Container Linux
 description: 'This quick answer guide will show you how to log in to CoreOS Container Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-05-08
 keywords: ["coreos", "container linux", "login", "core"]
 tags: ["container","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/linux/log-in-to-coreos-container-linux/','/quick-answers/log-in-to-coreos-container-linux/']
-modified: 2017-05-08
-modified_by:
-  name: Linode
-published: 2017-05-08
-title: Log in to CoreOS Container Linux
-authors: ["Linode"]
 ---
 
 The `root` user is not active by default in Container Linux, so root login is not available. Instead, log in as the `core` user.
@@ -35,6 +33,6 @@ The `root` user is not active by default in Container Linux, so root login is no
 
 2.  At the `password:` prompt, enter the `core` user's password you assigned when first having deployed Container Linux.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are not already familiar with the serial and graphical Linode shells, see the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) and [Access Your Linux Desktop Using Glish](/docs/products/compute/compute-instances/guides/glish/) guides.
 {{< /note >}}

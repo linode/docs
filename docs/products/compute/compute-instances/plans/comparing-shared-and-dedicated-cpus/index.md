@@ -1,16 +1,13 @@
 ---
-description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
-keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
-published: 2021-08-27
-modified: 2023-07-05
-modified_by:
-  name: Linode
 title: "Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)"
 title_meta: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
+description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
+published: 2021-08-27
+modified: 2023-07-05
+keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
 linkTitle: Choosing Between Shared and Dedicated CPUs
 tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/','/guides/when-to-upgrade-to-dedicated-cpu/','/guides/comparing-shared-and-dedicated-cpus/']
-authors: ["Linode"]
 ---
 
 Each Linode Compute Instance is equipped with shared CPU cores or dedicated CPU cores. Understanding the difference between these is key to determining the best plan for your workloads. This guide outlines those differences and aims to help you evaluate your current cloud workloads to determine if plans with dedicated CPU cores would be beneficial.

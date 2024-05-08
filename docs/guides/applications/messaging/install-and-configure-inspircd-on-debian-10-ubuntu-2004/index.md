@@ -1,18 +1,17 @@
 ---
 slug: install-and-configure-inspircd-on-debian-10-ubuntu-2004
+title: "Install and Configure InspIRCd on Debian 10 and Ubuntu 20.04"
 description: 'InspIRCd is a free and open-source IRC server. It is easy to set up, lightweight, and extensible through its modular design. This guide walks you through deploying your own InspIRCd server on Debian 10 or Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-02
 keywords: ['irc server', 'inspircd']
 tags: ['debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-02
-modified_by:
-  name: Linode
-title: "Install and Configure InspIRCd on Debian 10 and Ubuntu 20.04"
 external_resources:
 - '[InspIRCd configuration options](https://docs.inspircd.org/3/configuration/)'
 - '[IRC help website](https://www.irchelp.org/)'
 - '[IRC networks and server lists](https://www.irchelp.org/networks/)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Internet Relay Chat (IRC) is a real-time, text-based communication protocol with a long history of use for group chats and discussion forums. IRC networks — which can be made up of several independent servers — may each have numerous channels, with each channel functioning as a space for group chat.

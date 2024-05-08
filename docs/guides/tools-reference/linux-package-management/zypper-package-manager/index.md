@@ -2,12 +2,11 @@
 slug: zypper-package-manager
 title: "Use Zypper to Manage Packages in openSUSE"
 description: "In this guide, learn how to use Zypper, the default package manager on openSUSE. Follow along for the core commands in Zypper for installing, searching, and managing packages and working with repositories."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-09-05
 keywords: ['zypper','zypp','opensuse']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-09-05
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[openSUSE Wiki: Zypper Usage](https://en.opensuse.org/SDB:Zypper_usage)'
 - '[openSUSE Wiki: Zypper Manual](https://en.opensuse.org/SDB:Zypper_manual)'
@@ -195,7 +194,7 @@ Using the `addrepo` command, you can add an additional repository by its URL. Ex
 sudo zypper addrepo --refresh https://download.opensuse.org/repositories/devel:/languages:/php/openSUSE_Leap_15.5/ php
 ```
 
-The `--refresh` option enables autorefresh on the repository, which makes repository management easier. See the next section for more details.
+The `--refresh` option enables auto refresh on the repository, which makes repository management easier. See the next section for more details.
 
 Once you have added the repository, you can use the `search` command as shown earlier to see additional packages offered by the repository.
 
@@ -230,16 +229,16 @@ S | Name                         | Type       | Version           | Arch   | Rep
 
 Zypper does not usually require you to manually refresh repository metadata. This contrasts with some other package managers, like [APT](/docs/guides/apt-package-manager/), that require manual repository refreshes.
 
-Zypper accomplishes this with its *autorefresh* feature. This feature is enabled on all of the default repositories, and it ensures that the repositories are automatically refreshed whenever necessary.
+Zypper accomplishes this with its *auto refresh* feature. This feature is enabled on all of the default repositories, and it ensures that the repositories are automatically refreshed whenever necessary.
 
-Unless you need manual control of the refresh process for a repository, you should enable autorefresh whenever you add a new repository. This is done by using the `--refresh` option with the `addrepo` command, just as shown in the previous section.
+Unless you need manual control of the refresh process for a repository, you should enable auto refresh whenever you add a new repository. This is done by using the `--refresh` option with the `addrepo` command, just as shown in the previous section.
 
-If, however, you want to add a repository without autorefresh, you can do so by omitting the `-r` option when adding the repository.
+If, however, you want to add a repository without auto refresh, you can do so by omitting the `-r` option when adding the repository.
 
 ```command
 sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/php/openSUSE_Leap_15.5/ php
 ```
-Zypper includes a `refresh` command to allow you to manually refresh repositories for updated metadata. Doing so is an important step should you opt not to enable autorefresh on added repositories.
+Zypper includes a `refresh` command to allow you to manually refresh repositories for updated metadata. Doing so is an important step should you opt not to enable auto refresh on added repositories.
 
 ```command
 sudo zypper refresh php
