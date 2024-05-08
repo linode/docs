@@ -1,13 +1,13 @@
 ---
 slug: vitess-mysql-for-k8s-deployment-and-management
 title: "Vitess: MySQL for K8s Cluster Deployment, Management, and Scaling"
-description: 'This guide teaches you how to deploy and scale Vitess, which provides automatic sharding and other improvements for MySQL, on Akamai Cloud LKE.'
+description: "This guide teaches you how to deploy and scale Vitess, which provides automatic sharding and other improvements for MySQL, on Akamai Cloud LKE."
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2023-08-14
+modified: 2024-05-08
 keywords: ['Vitess', 'Percona Server', 'Kubernetes', 'Open source database cluster management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Martin Heller"]
-published: 2023-08-14
-modified_by:
-  name: Linode
 ---
 
 ## What is Vitess?
@@ -98,7 +98,7 @@ Add the `KUBECONFIG` environment variable to your local `.bashrc` file, or the e
 
 You need at least one MySQL client on your local machine. This example uses the [MySQL command line shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-install.html), but you might prefer a graphical client, such as [MySQL Workbench](https://www.mysql.com/products/workbench/). On a Mac, consider using [Homebrew](https://brew.sh/), to install the command line shell, which installs the server as well as the client.
 
-### Install vtctldclient Locally
+### Install `vtctldclient` Locally
 
 The simplest way to get the Vitess client is to install Vitess locally.
 
@@ -108,12 +108,11 @@ The simplest way to get the Vitess client is to install Vitess locally.
 
 - On another kind of system, either use [Docker](https://vitess.io/docs/17.0/get-started/local-docker/) or build Vitess from the source.
 
-
 ## Installing Vitess on LKE
 
 To install Vitess on LKE, follow the steps below:
 
-1. Clone the Vitess repository locally using the following command:
+1.  Clone the Vitess repository locally using the following command:
 
     ```command
     ~ % git clone https://github.com/vitessio/vitess
@@ -129,7 +128,7 @@ To install Vitess on LKE, follow the steps below:
     Resolving deltas: 100% (274143/274143), done.
     ```
 
-1. Use the `kubectl` command to install the Vitess k8s operator on your LKE cluster.
+1.  Use the `kubectl` command to install the Vitess k8s operator on your LKE cluster.
 
     ```command
     ~ % cd vitess/examples/operator
@@ -150,10 +149,9 @@ To install Vitess on LKE, follow the steps below:
     deployment.apps/vitess-operator created
     priorityclass.scheduling.k8s.io/vitess-operator-control-plane created
     priorityclass.scheduling.k8s.io/vitess created
-
     ```
 
-1. Bring up an initial cluster using the following commands:
+1.  Bring up an initial cluster using the following commands:
 
     -   List the files in the current directory that have the `.yaml` extension.
 
@@ -179,7 +177,7 @@ To install Vitess on LKE, follow the steps below:
 
           From the output above, `vitesscluster.planetscale.com/example created` indicates that a custom resource of kind, `VitessCluster` with the name `example` was successfully created. Similarly, `secret/example-cluster-config created` indicates that a Kubernetes Secret named `example-cluster-config` was created as a part of the VitessCluster setup.
 
-1. Wait a few minutes for the installation to finish, then check that all pods are running using the following command:
+1.  Wait a few minutes for the installation to finish, then check that all pods are running using the following command:
 
     ```command
     operator % kubectl get pods
@@ -200,7 +198,6 @@ To install Vitess on LKE, follow the steps below:
     example-zone1-vtctld-1d4dcad0-f69f4b48c-v6rvc                1/1     Running   3 (2m24s ago)   3m10s
     example-zone1-vtgate-bc6cde92-76c484f679-rkzw9               1/1     Running   2 (2m4s ago)    3m10s
     vitess-operator-59fd89bb55-xngll                             1/1     Running   0               11m
-
     ```
 
 ## Scaling Vitess on LKE
@@ -211,15 +208,15 @@ To scale Vitess, you need to add nodes to your cluster. To do this manually, use
 
 Before delving into the functionality of your Vitess cluster, it's essential to perform initial tests to ensure proper connectivity and functionality. This involves forwarding Kubernetes ports to your local machine, setting up aliases for convenient access, creating a schema, and establishing connections to the cluster services. The example below provides the comprehensive steps to test the capabilities of your Vitess deployment.
 
-1. To begin, establish a connection between the Kubernetes environment and your local machine. This allows you to interact with the cluster's services as if they were running on your local system.
+1.  To begin, establish a connection between the Kubernetes environment and your local machine. This allows you to interact with the cluster's services as if they were running on your local system.
 
-1. Use the `pf.sh` script [provided by Vitess](https://vitess.io/docs/17.0/get-started/operator/#setup-port-forward) to set up port forwarding from Kubernetes to your local machine by executing the following command:
+1.  Use the `pf.sh` script [provided by Vitess](https://vitess.io/docs/17.0/get-started/operator/#setup-port-forward) to set up port forwarding from Kubernetes to your local machine by executing the following command:
 
     ```command
     operator % ./pf.sh &
     ```
 
-1. Configure some convenient aliases for frequently used commands:
+1.  Configure some convenient aliases for frequently used commands:
 
     ```command
     alias vtctldclient="vtctldclient --server=localhost:15999"
@@ -241,7 +238,7 @@ Before delving into the functionality of your Vitess cluster, it's essential to 
     Hit Ctrl-C to stop the port forwards
     ```
 
-1. Create a schema using the `vtctldclient` tool by executing the following commands:
+1.  Create a schema using the `vtctldclient` tool by executing the following commands:
 
     ```command
     operator % vtctldclient ApplySchema --sql-file="create_commerce_schema.sql" commerce
@@ -293,7 +290,7 @@ Before delving into the functionality of your Vitess cluster, it's essential to 
 
     ```
 
-1. Establish a connection to the Vitess cluster's MySQL server by executing the following command:
+1.  Establish a connection to the Vitess cluster's MySQL server by executing the following command:
 
     ```command
     operator % mysql
@@ -325,8 +322,7 @@ Before delving into the functionality of your Vitess cluster, it's essential to 
 
     ```
 
-
-1. At this stage, you have successfully tested the connectivity and basic functionality of your Vitess cluster. You can proceed with more advanced workflows, such as [MoveTables](https://vitess.io/docs/17.0/user-guides/migration/move-tables/) to optimize data placement within your Vitess cluster. If necessary, you can also tear down the cluster using the following command:
+1.  At this stage, you have successfully tested the connectivity and basic functionality of your Vitess cluster. You can proceed with more advanced workflows, such as [MoveTables](https://vitess.io/docs/17.0/user-guides/migration/move-tables/) to optimize data placement within your Vitess cluster. If necessary, you can also tear down the cluster using the following command:
 
     ```command
     kubectl delete -f 101_initial_cluster.yaml

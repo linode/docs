@@ -672,6 +672,7 @@ facto
 fail2ban
 failback
 failover
+failovers
 failregex
 failregexs
 failsafe
@@ -2597,6 +2598,7 @@ virtualizing
 virtualmin
 Virustotal
 vishing
+Vitess
 Vixie
 vlan
 vlans
