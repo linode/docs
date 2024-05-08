@@ -1,27 +1,25 @@
 ---
 slug: launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04
+title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
 description: 'This guide shows you how to install and configure a Counter Strike: Global Offensive (CS:GO) server using SteamCMD and a dedicated Linode instance. '
+authors: ["Sam Mauldin"]
+contributors: ["Sam Mauldin"]
+published: 2016-02-25
 keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go", "csgo server", "csgo server hosting", "steam servers", "game servers", "games", "ubuntu", "ubuntu 14.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-02-25
-modified_by:
-    name: Linode
-title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
 aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/','/applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
 external_resources:
   - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
-deprecated: true
-deprecated_link: 'game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/'
 dedicated_cpu_link: true
 relations:
     platform:
         key: launch-counterstrike-server
         keywords:
             - distribution: Ubuntu 14.04
-authors: ["Sam Mauldin"]
+deprecated: true
+deprecated_link: 'game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/'
 ---
-
 
 [Counter Strike: Global Offensive](http://store.steampowered.com/app/730) (CS:GO) is a first-person shooter by Valve. Hosting your own server gives you full control over your game and game modes, so you can play the exact flavor of CS:GO you want. This guide contains instructions on how to download the dedicated server and launch the game server.
 
@@ -33,7 +31,7 @@ authors: ["Sam Mauldin"]
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

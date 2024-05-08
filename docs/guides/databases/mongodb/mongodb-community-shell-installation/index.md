@@ -1,14 +1,13 @@
 ---
 slug: mongodb-community-shell-installation
+title: "Install and Use the MongoDB Community Shell"
 description: 'This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian-based Linux systems.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2021-12-10
 keywords: ['mongodb community shell', 'mongosh', 'mongodb']
 tags: ['debian', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-10
-modified_by:
-  name: Linode
-title: "Install and Use the MongoDB Community Shell"
-authors: ["Tom Henderson"]
 tags: ["saas"]
 ---
 

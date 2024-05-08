@@ -6,7 +6,7 @@
         type="button"
         @click="open = !open"
         :class="{ 'bg-gray-300 rounded-tr-md border-gray-300/100': open }"
-        class="flex justify-between w-full px-4 py-3 leading-5 font-bold text-gray-700 focus:outline-none transition ease-in-out duration-100 "
+        class="flex justify-between w-full px-4 py-3 leading-5 font-semibold text-gray-700 focus:outline-none transition ease-in-out duration-100 "
         aria-expanded="true"
         aria-haspopup="true">
         <div class="grow text-right">
@@ -38,7 +38,7 @@
         <li class="">
           <a
             href="{{ .page.RelPermalink }}"
-            class="block text-right w-full px-4 py-2 leading-5 font-bold text-gray-700 focus:outline-none"
+            class="block text-right w-full px-4 py-2 leading-5 font-semibold text-gray-700 focus:outline-none"
             role="menuitem">
             {{ if eq .value "_parent" }}
               View all

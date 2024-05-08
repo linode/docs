@@ -1,25 +1,22 @@
 ---
 slug: secure-communications-with-openvpn-on-debian-5-lenny
-deprecated: true
+title: 'Secure Communications with OpenVPN on Debian 5 (Lenny)'
 description: 'Use OpenVPN to securely connect separate networks on a Debian 5 (Lenny) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-24
+modified: 2012-10-08
 keywords: ["openvpn", "networking", "vpn", "debian", "lenny"]
 tags: ["networking","security","vpn","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/openvpn/debian-5-lenny/','/networking/vpn/secure-communications-with-openvpn-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-02-24
-title: 'Secure Communications with OpenVPN on Debian 5 (Lenny)'
 relations:
     platform:
         key: secure-communications-openvpn
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely, but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 

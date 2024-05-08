@@ -1,5 +1,5 @@
 ---
-title: Networking
 slug: networking
+title: Networking
 ---
 

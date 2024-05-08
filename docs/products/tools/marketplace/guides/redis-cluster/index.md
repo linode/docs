@@ -2,14 +2,11 @@
 title: "Deploy a Redis Sentinel Cluster through the Linode Marketplace"
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 published: 2023-03-20
-modified_by:
-  name: Linode
 keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'
-authors: ["Linode"]
 ---
 
 [Redis](https://redis.io/) is an open-source, in-memory, data-structure store, with the optional ability to write and persist data to a disk, which can be used as a key-value database, cache, and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others.

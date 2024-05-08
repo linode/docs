@@ -5,6 +5,8 @@ tab_group_main:
     weight: 40
 ---
 
+{{< content "dbass-eos" >}}
+
 ## Blog Posts
 
 - [Popular Databases for Building Modern Linux Applications](https://www.linode.com/blog/databases/popular-databases-for-building-modern-linux-applications/)

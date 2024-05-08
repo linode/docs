@@ -1,15 +1,15 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql
+title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
+title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"
 description: "Learn how to set up an email server with Postfix, Dovecot and MySQL/MariaDB. Your step by step guide towards setting up a secure Postfix email server."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-05-13
+modified: 2022-09-29
 keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", "debian", "ubuntu", "dovecot 2"]
 tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-09-29
-modified_by:
-  name: Linode
-published: 2013-05-13
-title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
-title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
@@ -21,7 +21,6 @@ relations:
         keywords:
             - distribution: Debian and Ubuntu
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/','/email/postfix/dovecot-mysql-ubuntu-10.04-lucid/']
-authors: ["Linode"]
 ---
 
 In this guide, you'll learn how to set up a secure email server with Postfix, Dovecot, and MySQL (or its near drop-in replacement MariaDB). It covers how to set up user email accounts in MySQL and configure Postfix/Dovecot to send and receive email.
@@ -792,7 +791,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 
 See [Install SquirrelMail on Ubuntu 16.04](/docs/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Thunderbird email client will sometimes have trouble automatically detecting account settings when using Dovecot. After it fails to detect the appropriate account settings, you can set up your email account manually. Add in the appropriate information for each setting, using the above values, leaving no setting on **Auto** or **Autodetect**. Once you have entered all the information about your mail server and account, press **Done** rather **Re-Test** and Thunderbird should accept the settings and retrieve your mail.
 {{< /note >}}
 
