@@ -3,7 +3,6 @@ title: "Migrate a MySQL or MariaDB Database to a Managed Database"
 description: "Learn how to migrate an existing MySQL database to Linode's Managed Database service."
 published: 2022-02-23
 modified: 2022-06-30
-authors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

@@ -1,16 +1,13 @@
 ---
+title: "Deploy a LAMP Stack through the Linode Marketplace"
 description: "This guide shows you how to use the Linode Marketplace One-Click Application to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
-keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
-tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 published: 2019-03-26
 modified: 2023-06-06
-modified_by:
-  name: Linode
-title: "Deploy a LAMP Stack through the Linode Marketplace"
+keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
+tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 external_resources:
 - '[Apache Getting Started](http://httpd.apache.org/docs/current/getting-started.html)'
 aliases: ['/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/','/platform/one-click/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-marketplace-apps/','/guides/lamp-stack-marketplace-app/']
-authors: ["Linode"]
 ---
 
 A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com), [PHP](https://www.php.net)) stack is a popular, free, and open-source web software bundle used for hosting websites on Linux. This software environment is a foundation for popular PHP application frameworks like WordPress, Drupal, and Laravel. After you deploy your LAMP Marketplace App, you can upload your existing PHP application code to it or use a PHP framework to write a new application on your Linode.
@@ -35,7 +32,7 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
     {{< note >}}
-    The password for the MySQL root user is automatically generated and provided in the file `/root/.credentials` when the LAMP deployment completes.
+    The password for the MySQL root user is automatically generated and provided in the file `/home/$USERNAME/.credentials` when the LAMP deployment completes.
     {{< /note >}}
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}

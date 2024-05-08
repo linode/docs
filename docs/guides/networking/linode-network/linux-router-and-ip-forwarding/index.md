@@ -2,15 +2,13 @@
 slug: linux-router-and-ip-forwarding
 title: "Configure Linux as a Router (IP Forwarding)"
 description: "Learn how to set up a Linux server as a router, including configuring port forwarding and iptables."
+authors: ["Matt Wildman"]
+contributors: ["Matt Wildman","Nathaniel Stickman"]
+published: 2022-09-30
+modified: 2024-02-14
 keywords: ["static", "ip address", "addresses"]
 tags: ["networking","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-30
-modified: 2024-02-14
-modified_by:
-  name: Nathaniel Stickman
-title: "Configure Linux as a Router (IP Forwarding)"
-authors: ["Linode", "Nathaniel Stickman"]
 ---
 
 A computer network is a collection of computer systems that can communicate with each other. In order to communicate with a computer that's on a *different* network, a system needs a way to connect to that other network. A *router* is a system that acts as an intermediary between multiple different networks. It receives traffic from one network that is ultimately destined for another. It identifies where a particular packet should be delivered, then forwards that packet over the appropriate network interface.
@@ -40,16 +38,6 @@ Here are the basic steps needed to configure a Linux system as a router:
 1.  **[Define the Gateway](#define-the-gateway)** on each system *other than* the router. This gateway should point to the router's IP address on that network.
 
 Continue reading for detailed instructions on each of these steps.
-
-## Before You Begin
-
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
 
 ## Deploy Compute Instances
 

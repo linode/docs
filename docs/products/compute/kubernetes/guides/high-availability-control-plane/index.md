@@ -1,15 +1,12 @@
 ---
-description: "Learn how to enable High Availability on Linode Kubernetes Engine."
-keywords: ['kubernetes', 'lke', 'high availability', 'ha']
-tags: ["networking","kubernetes","container","education"]
-published: 2021-11-04
-modified: 2023-12-18
-modified_by:
-  name: Linode
 title: "High Availability (HA) Control Plane"
 title_meta: "High Availability (HA) Control Plane on LKE"
+description: "Learn how to enable High Availability on Linode Kubernetes Engine."
+published: 2021-11-04
+modified: 2023-12-18
+keywords: ['kubernetes', 'lke', 'high availability', 'ha']
+tags: ["networking","kubernetes","container","education"]
 aliases: ['/guides/enable-lke-high-availability/', '/products/compute/kubernetes/guides/enable-high-availability/']
-authors: ["Linode"]
 ---
 
 In Kubernetes, the control plane is the set of components that orchestrate the cluster and manage the worker nodes (Compute Instances) in that cluster and the pods (containers) within the worker nodes. The control plane components include the Kubernetes API server (`kube-apiserver`), etcd, the Kubernetes scheduler (`kube-scheduler`), the cloud controller manager (`cloud-controller-manager`), and the Kubernetes controller manager (`kube-controller-manager`).

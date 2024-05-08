@@ -2,10 +2,10 @@
 title: Guides
 title_meta: "Guides and Tutorials for the Linode Backup Service"
 description: "A collection of guides to help you learn how to get up and running with Linode's Backup Service, including enabling and scheduling backups."
-tab_group_main:
-    weight: 30
 published: 2021-11-12
 modified: 2023-07-07
+tab_group_main:
+    weight: 30
 ---
 
 ## Basics

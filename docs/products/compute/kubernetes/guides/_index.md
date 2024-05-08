@@ -2,10 +2,10 @@
 title: Guides
 title_meta: "Guides and Tutorials for LKE (Linode Kubernetes Engine)"
 description: "A collection of guides to help you start deploying LKE clusters and using them to host your web applications and Cloud workloads"
-tab_group_main:
-    weight: 30
 published: 2020-06-02
 modified: 2023-02-09
+tab_group_main:
+    weight: 30
 ---
 
 ## Basics
@@ -41,6 +41,8 @@ modified: 2023-02-09
 - [Secure a Cluster with User Permissions and RBAC](/docs/products/compute/kubernetes/guides/secure-a-cluster-with-rbac/)
 
 - [Drain Node Pools with kubectl](/docs/products/compute/kubernetes/guides/drain-node-pools/)
+
+- [Create a Custom CoreDNS Configuration](/docs/products/compute/kubernetes/guides/coredns-custom-config/)
 
 ## Going Further
 

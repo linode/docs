@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.171.0
+  version: 4.175.0
   title: Linode API
   license:
     name: Apache 2.0
@@ -75,8 +75,8 @@ info:
 
     Notes:
 
-    - With respect to the diagram in [section 1.2 of RFC 6749](https://tools.ietf.org/html/rfc6749#section-1.2), login.linode.com (referred to in this section as the *login server*)
-    is the Resource Owner and the Authorization Server; api.linode.com (referred to here as the *api server*) is the Resource Server.
+    - With respect to the diagram in [section 1.2 of RFC 6749](https://tools.ietf.org/html/rfc6749#section-1.2), login.linode.com (referred to in this section as the *login server*) is the Resource Owner and the Authorization Server; api.linode.com (referred to here as the *api server*) is the Resource Server.
+
     - The OAuth spec refers to the private and public workflows listed below as the [authorization code flow](https://tools.ietf.org/html/rfc6749#section-1.3.1) and [implicit flow](https://tools.ietf.org/html/rfc6749#section-1.3.2).
 
     | PRIVATE WORKFLOW | PUBLIC WORKFLOW |
@@ -473,9 +473,18 @@ paths:
       tags:
       - Account
       summary: Account Update
-      description: >
-        Updates contact and billing information
-        related to your Account.
+      description: |
+        Updates contact and billing information related to your account. If you exclude any properties from the request, the operation leaves them unchanged.
+
+        **Note:** When updating an account's `country` to "US", you'll get an error if the account's `zip` is not a valid US zip code.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+        
+        * You can't change the `company` for a parent account. Akamai uses this value to set the name for a child account parent user (proxy user) on any child account.
+
+        * Child account users can't run this operation. These users don't have access to billing-related operations.
       operationId: updateAccount
       x-linode-cli-action: update
       security:
@@ -484,11 +493,7 @@ paths:
         - account:read_write
       requestBody:
         description: |
-          Update contact and billing information.
-
-          Account properties that are excluded from a request remain unchanged.
-
-          When updating an Account's `country` to "US", an error is returned if the Account's `zip` is not a valid US zip code.
+          Updated contact and billing information.
         required: true
         content:
           application/json:
@@ -776,10 +781,20 @@ paths:
       - Account
       summary: Account Cancel
       description: >
-        Cancels an active Linode account. This action will cause
-        Linode to attempt to charge the credit card on file for the remaining
-        balance. An error will occur if Linode fails to charge the credit card
-        on file. Restricted users will not be able to cancel an account.
+        Cancels an active Linode account. Akamai attempts to charge the credit card on file for any remaining
+        balance. An error occurs if this charge fails.
+
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * A child account user can't cancel a child account.
+
+        * You can't cancel a parent account if it has an active child account.
+
+        * You need to work with your Akamai account team to dissolve any parent-child account relationships before you can fully cancel a child or parent account.
       operationId: cancelAccount
       x-linode-cli-action: cancel
       security:
@@ -849,6 +864,149 @@ paths:
         source: >
           linode-cli account cancel \
             --comments "I'm consolidating my accounts"
+  /account/child-accounts:
+    x-linode-cli-command: child-account
+    get:
+      x-linode-grant: child_account_access
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Account
+      summary: Child Account List
+      description: |
+        Returns a paginated list of basic information for the child accounts that exist for your parent account. See [Parent and Child Accounts for Akamai Partners](/docs/guides/parent-child-accounts/) for details on these accounts.
+
+        **Note:** This command can only be accessed by an unrestricted parent user, or restricted parent user with the `child_account_access` grant.
+      operationId: getChildAccounts
+      x-linode-cli-action:
+      - list
+      - ls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - child_account:read_only
+      responses:
+        '200':
+          description: Returns child-level accounts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChildAccount'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/account/child-accounts
+      - lang: CLI
+        source: >
+          linode-cli child-account list
+  /account/child-accounts/{euuid}:
+    x-linode-cli-command: child-account
+    parameters:
+      - name: euuid
+        in: path
+        description: The child account to look up. You can run the [Child Account List](#child-account-list) operation to find the applicable account and store its `euuid`.
+        required: true
+        schema:
+          type: string
+    get:
+      x-linode-grant: child_account_access
+      tags:
+      - Account
+      summary: Child Account View
+      description: >
+        View a specific child account based on its `euuid`. See [Parent and Child Accounts for Akamai Partners](/docs/guides/parent-child-accounts/) for details on these accounts.
+
+        **Note:** This command can only be accessed by an unrestricted user, or restricted user with the `child_account_access` grant.
+      operationId: viewChildAccount
+      x-linode-cli-action:
+      - view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - child_account:read_only
+      responses:
+        '200':
+          description: Returns the child-level account for a specified `euuid`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChildAccount'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/account/child-accounts/A1BC2DEF-34GH-567I-J890KLMN12O34P56
+      - lang: CLI
+        source: >
+          linode-cli child-account view A1BC2DEF-34GH-567I-J890KLMN12O34P56
+  /account/child-accounts/{euuid}/token:
+    x-linode-cli-command: child-account
+    parameters:
+      - name: euuid
+        in: path
+        description: The child account to look up. You can run the [Child Account List](#child-account-list) operation to find the applicable account and store its `euuid`.
+        required: true
+        schema:
+          type: string
+    post:
+      x-linode-grant: child_account_access
+      tags:
+      - Account
+      summary: Proxy User Token Create
+      description: |
+        Create a short-lived bearer token for a parent user on a child account, using the `euuid` of that child account. In the context of the API, a parent user on a child account is referred to as a "proxy user." When Akamai provisions your parent-child account environment, a proxy user is automatically set in the child account. It follows a specific naming convention:
+
+        <Parent account `company` name>_<SHA256 hash of parent `company` name and child account `euuid`>
+
+        **Note:** The variables above use only the first 15 and 16 characters of these values, respectively.
+
+        The token lets a parent account run API operations through the proxy user, as if they are a child user in the child account.
+
+        These points apply to the use of this operation:
+
+        * To create a token, a parent account user needs the `child_account_access` grant. This lets them use the proxy user on the child account. You can [view](#users-grants-view) a parent account user to check its `child_account_access` setting. To add this access, you can [update](#users-grants-update) the parent account user.
+
+        * The created token inherits the permissions of the proxy user. It will never have less.
+
+        * The API returns the raw token in the response. You can't get it again, so be sure to store it.
+
+        Example workflow:
+
+        1. [List child accounts](#child-account-list) and store the `euuid` for the applicable one.
+        2. Run this operation and store the `token` that's created for the proxy user.
+        3. As a parent account user with access to the proxy user in the child account, use this `token` to authenticate API operations, as if you were a child user.
+      operationId: createChildAccountToken
+      x-linode-cli-action:
+      - create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - child_account:read_write
+      responses:
+        '200':
+          description: Token created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyUserToken'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X POST \
+            https://api.linode.com/v4/account/child-accounts/A1BC2DEF-34GH-567I-J890KLMN12O34P56/token
+      - lang: CLI
+        source: >
+          linode-cli child-account create A1BC2DEF-34GH-567I-J890KLMN12O34P56
   /account/credit-card:
     x-linode-cli-command: account
     post:
@@ -1996,6 +2154,12 @@ paths:
         with a valid `zip` by using the Account Update ([PUT /account](/docs/api/account/#account-update)) endpoint.
 
         * A `payment_method_add` event is generated when a payment is successfully submitted.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+        
+        * Child account users can't run this operation. These users don't have access to billing-related operations.
       operationId: createPaymentMethod
       x-linode-cli-action: add
       security:
@@ -2244,6 +2408,12 @@ paths:
         * The requested amount is charged to the default Payment Method if no `payment_method_id` is specified.
 
         * A `payment_submitted` event is generated when a payment is successfully submitted.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * Child account users can't run this operation. These users don't have access to billing-related operations.
       operationId: createPayment
       x-linode-cli-action: payment-create
       security:
@@ -2256,7 +2426,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PaymentRequest'
+              properties:
+                usd:
+                  type: string
+                  pattern: ^\$?\d+\.\d{2}$
+                  description: |
+                    The amount in US Dollars of the Payment.
+
+                    * Can begin with or without `$`.
+                    * Commas (`,`) are not accepted.
+                    * Must end with a decimal expression, such as `.00` or `.99`.
+                    * Minimum: `$5.00` or the Account balance, whichever is lower.
+                    * Maximum: `$2000.00` or the Account balance up to `$50000.00`, whichever is greater.
+                  example: '$120.50'
+                payment_method_id:
+                  type: integer
+                  description: >
+                    The ID of the Payment Method to apply to the Payment.
+                  example: 123
       responses:
         '200':
           description: Payment submitted successfully.
@@ -2274,7 +2461,6 @@ paths:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $TOKEN" \
                 -X POST -d '{
-                    "cvv": "123",
                     "usd": "120.50",
                     "payment_method_id": 123
                 }' \
@@ -2282,7 +2468,6 @@ paths:
         - lang: CLI
           source: >
             linode-cli account payment-create \
-              --cvv 123 \
               --usd 120.50 \
               --payment_method_id 123
   /account/payments/{paymentId}:
@@ -2449,15 +2634,21 @@ paths:
         - Account
       summary: Promo Credit Add
       description: |
-        Adds an expiring Promo Credit to your account.
+        Adds an expiring Promo Credit to your account. The following restrictions apply:
 
-        The following restrictions apply:
+        * Your account needs to be less than 90 days old.
 
-        * Your account must be less than 90 days old.
-        * There must not be an existing Promo Credit already on your account.
-        * The requesting User must be unrestricted. Use the User Update
-          ([PUT /account/users/{username}](/docs/api/account/#user-update)) to change a User's restricted status.
-        * The `promo_code` must be valid and unexpired.
+        * You can't already have a Promo Credit on your account.
+
+        * The user making the request needs to be unrestricted. You can use the User Update (/docs/api/account/#user-update) operation to change a user's restricted status.
+
+        * The `promo_code` needs to be valid and unexpired.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * Child account users can't run this operation. These users don't have access to billing-related operations.
       operationId: createPromoCredit
       x-linode-cli-action: promo-add
       security:
@@ -2847,10 +3038,7 @@ paths:
       - Account
       summary: Account Settings Update
       description: >
-        Updates your Account settings.
-
-
-        To update your Longview subscription plan, send a request to [Update Longview Plan](/docs/api/longview/#longview-plan-update).
+        Updates your account settings. For a Longview subscription plan, see [Update Longview Plan](/docs/api/longview/#longview-plan-update).
       operationId: updateAccountSettings
       x-linode-cli-action: settings-update
       security:
@@ -2968,11 +3156,15 @@ paths:
       - Account
       summary: Users List
       description: |
-        Returns a paginated list of Users on your Account.
+        Returns a paginated list of all users on your account.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
 
-        Users may access all or part of your Account based on their restricted status and grants.  An unrestricted User may access everything on the account, whereas restricted User may only access entities or perform actions they've been given specific grants to.
+        A user can access all or part of an account based on their access status and grants:
+
+        * **Unrestricted access**. These users can access everything on an account.
+
+        * **Restricted access**. These users can only access entities or perform actions they've been given specific grants to.
       operationId: getUsers
       x-linode-cli-action:
         - list
@@ -2983,7 +3175,7 @@ paths:
         - account:read_only
       responses:
         '200':
-          description: A paginated list of Users.
+          description: A paginated list of users.
           content:
             application/json:
               schema:
@@ -2992,7 +3184,9 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/User'
+                      allOf:
+                        - $ref: '#/components/schemas/User'
+                        - $ref: '#/components/schemas/UserType'
                   page:
                     $ref: '#/components/schemas/PaginationEnvelope/properties/page'
                   pages:
@@ -3015,13 +3209,21 @@ paths:
       - Account
       summary: User Create
       description: |
-        Creates a User on your Account. Once created, a confirmation message containing
-        password creation and login instructions is sent to the User's email address.
+        Creates a user on your account. You determine the new user's account access by setting it to restricted or unrestricted and by defining its grants. After completion, the API sends a confirmation message containing password creation and login instructions to the user's `email` address.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
 
-        The User's account access is determined by whether or not they are restricted,
-        and what grants they have been given.
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * A parent account user can create new parent account users.
+
+        * A child account can [update](#user-update) the child account parent user (proxy user) to `unrestricted`. This gives the proxy user access to create new child account users.
+
+        * A child account user can create new child account users.
+
+        * You can't create a proxy user. The proxy user in a child account is predefined when you initially provision the parent-child relationship.
       operationId: createUser
       x-linode-cli-action: create
       security:
@@ -3079,9 +3281,9 @@ paths:
       - Account
       summary: User View
       description: |
-        Returns information about a single User on your Account.
+        Returns information about a single user on your account.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
       operationId: getUser
       x-linode-cli-action: view
       security:
@@ -3094,7 +3296,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/User'
+                    - $ref: '#/components/schemas/UserType'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -3111,12 +3316,20 @@ paths:
       - Account
       summary: User Update
       description: |
-        Update information about a User on your Account. This can be used to
-        change the restricted status of a User. When making a User restricted,
-        no grants will be configured by default and you must then set up grants
-        in order for the User to access anything on the Account.
+        Update information about a user on your account, including its restricted status. When setting a user to `restricted`, the API sets no grants for it. You need to set grants
+        so that user can access things on the account.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * You can't edit the `username` or `email` values for the child account parent user (proxy user). These are predefined for the proxy user when you initially provision the parent-child relationship. Only a proxy user's `restricted` status can be modified. This can only be done by an unrestricted child account user.
+
+        * A parent account using an unrestricted proxy user in a child account can modify the `username`, `email`, and `restricted` status for an existing child account user.
+
+        * A restricted account user--parent or child--can't change their user to `unrestricted`.
       operationId: updateUser
       x-linode-cli-action: update
       security:
@@ -3135,7 +3348,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                allOf:
+                - $ref: '#/components/schemas/User'
+                - $ref: '#/components/schemas/UserType'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -3161,11 +3376,17 @@ paths:
       - Account
       summary: User Delete
       description: |
-        Deletes a User. The deleted User will be immediately logged out and
-        may no longer log in or perform any actions. All of the User's Grants
-        will be removed.
+        Deletes a user. The API immediately logs the user out and removes all of its `grants`.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * You can't delete a child account parent user (proxy user). The API returns a 403 error if you target a proxy user with this operation.
+
+        * A parent account using an unrestricted proxy user can use this operation to delete a child account user.
       operationId: deleteUser
       x-linode-cli-action:
         - delete
@@ -3207,15 +3428,11 @@ paths:
       - Account
       summary: User's Grants View
       description: |
-        Returns the full grants structure for the specified account User
-        (other than the account owner, see below for details). This includes all entities
-        on the Account alongside the level of access this User has to each of them.
+        Returns the full grants structure for an account username you specify. This includes all entities on the account, and the level of access this user has to each of them.
 
-        This command can only be accessed by the unrestricted users of an account.
+        This doesn't apply to the account owner or the current authenticated user. You can use the [Grants List](/docs/api/profile/#grants-list) operation to view those grants. However, this doesn't show the entities that they *don't* have access to.
 
-        The current authenticated User, including the account owner, may view their
-        own grants at the [/profile/grants](/docs/api/profile/#grants-list)
-        endpoint, but will not see entities that they do not have access to.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
       operationId: getUserGrants
       x-linode-cli-action: grants
       x-linode-cli-skip: true
@@ -3247,12 +3464,22 @@ paths:
       - Account
       summary: User's Grants Update
       description: |
-        Update the grants a User has. This can be used to give a User access
-        to new entities or actions, or take access away.  You do not need to
-        include the grant for every entity on the Account in this request; any
-        that are not included will remain unchanged.
+        Update the grants a user has. This can be used to give a user access
+        to new entities or actions, or take access away.  You don't need to
+        include the grant for every entity on the account in this request. Any
+        that are not included remain unchanged.
 
-        This command can only be accessed by the unrestricted users of an account.
+        **Note:** This command can only be accessed by account users with *unrestricted* access.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * No child account user can modify the `account_access` grant for the child account parent user (proxy user).
+
+        * An unrestricted child account user can configure all other grants for the proxy user, via `global` object.
+
+        * An unrestricted child account user can enable the `account_access` grant for other child account users. However, enabled child users are still subject to child user restrictions--they can't perform write operations for any billing or account information.
       operationId: updateUserGrants
       x-linode-cli-action: update-grants
       x-linode-cli-skip: true
@@ -3859,6 +4086,19 @@ paths:
                   $ref: '#/components/schemas/DatabaseMySQLRequest/properties/allow_list'
                 updates:
                   $ref: '#/components/schemas/DatabaseMySQL/properties/updates'
+                type:
+                  type: string
+                  description: |
+                    Request re-sizing of your cluster to a Linode Type with more disk space. For example, you could request a Linode Type that uses a higher plan.
+
+                    * Needs to be a Linode Type with more disk space than your current Linode.
+
+                    * Resizing to a larger Linode Type can accrue additional cost. Review the `price` output in the [Types List](/docs/api/linode-types/#types-list) operation for more information.
+
+                    * You can't update the `allow_list` and set a new `type` in the same request.
+
+                    * Any active updates to your cluster need to complete before you can request a resize. The reverse is also true: An active resizing needs to complete before you can perform any other update.
+                  example: g6-standard-1
       responses:
         '200':
           description: Managed Database updated successfully.
@@ -3879,7 +4119,8 @@ paths:
                     "203.0.113.1",
                     "192.0.1.0/24"
                   ],
-                  "updates" = {
+                  "type": "g6-standard-1",
+                  "updates": {
                     "frequency": "monthly",
                     "duration": 3,
                     "hour_of_day": 12,
@@ -3894,6 +4135,7 @@ paths:
             --label example-db \
             --allow_list 203.0.113.1 \
             --allow_list 192.0.1.0/24 \
+            --type g6-standard-1 \
             --updates.frequency monthly \
             --updates.duration 3 \
             --updates.hour_of_day 12 \
@@ -4643,6 +4885,19 @@ paths:
                   $ref: '#/components/schemas/DatabasePostgreSQLRequest/properties/allow_list'
                 updates:
                   $ref: '#/components/schemas/DatabasePostgreSQL/properties/updates'
+                type:
+                  type: string
+                  description: |
+                    Request re-sizing of your cluster to a Linode Type with more disk space. For example, you could request a Linode Type that uses a higher plan.
+
+                    * Needs to be a Linode Type with more disk space than your current Linode.
+
+                    * Resizing to a larger Linode Type can accrue additional cost. Review the `price` output in the [Types List](/docs/api/linode-types/#types-list) operation for more information.
+
+                    * You can't update the `allow_list` and set a new `type` in the same request.
+
+                    * Any active updates to your cluster need to complete before you can request a resize. The reverse is also true: An active resizing needs to complete before you can perform any other update.
+                  example: g6-standard-1
       responses:
         '200':
           description: Managed Database updated successfully.
@@ -4663,7 +4918,8 @@ paths:
                     "203.0.113.1",
                     "192.0.1.0/24"
                   ],
-                  "updates" = {
+                  "type": "g6-standard-1",
+                  "updates": {
                     "frequency": "monthly",
                     "duration": 3,
                     "hour_of_day": 12,
@@ -4678,6 +4934,7 @@ paths:
             --label example-db \
             --allow_list 203.0.113.1 \
             --allow_list 192.0.1.0/24 \
+            --type g6-standard-1 \
             --updates.frequency monthly \
             --updates.duration 3 \
             --updates.hour_of_day 12 \
@@ -6583,7 +6840,7 @@ paths:
                     "subnet_id": 101,
                     "ipv4": {
                       "vpc": "10.0.1.2",
-                      "nat_1_1": "203.0.113.2"
+                      "nat_1_1": "any"
                     }
                   }
                 ],
@@ -8218,7 +8475,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Disk'
+              properties:
+                label:
+                  $ref: '#/components/schemas/Disk/properties/label'
       responses:
         '200':
           description: The updated Disk.
@@ -8520,8 +8779,10 @@ paths:
       tags:
       - Linode Instances
       summary: Networking Information List
-      description: >
+      description: |
         Returns networking information for a single Linode.
+
+        **Note:** If the target Linode has several configuration profiles that include a Virtual Private Cloud (VPC) interface, address information for all of VPCs will be listed in the response.
       operationId: getLinodeIPs
       x-linode-cli-action: ips-list
       security:
@@ -8563,13 +8824,13 @@ paths:
                         description: >
                           A list of private IP Address objects belonging to this Linode.
                         readOnly: true
-                      shared:
+                      vpc:
                         type: array
                         readOnly: true
                         items:
-                          $ref: '#/components/schemas/IPAddress'
+                          $ref: '#/components/schemas/IPAddressesVPCListResponse'
                         description: >
-                          A list of shared IP Address objects assigned to this Linode.
+                          A list of Virtual Private Cloud (VPC)-specific addresses or ranges for the Linode.
                       reserved:
                         type: array
                         readOnly: true
@@ -8577,6 +8838,13 @@ paths:
                           $ref: '#/components/schemas/IPAddress'
                         description: >
                           A list of reserved IP Address objects belonging to this Linode.
+                      shared:
+                        type: array
+                        readOnly: true
+                        items:
+                          $ref: '#/components/schemas/IPAddress'
+                        description: >
+                          A list of shared IP Address objects assigned to this Linode.
                   ipv6:
                     type: object
                     description: >
@@ -8602,7 +8870,7 @@ paths:
               https://api.linode.com/v4/linode/instances/123/ips
       - lang: CLI
         source: >
-          linode-cli linodes 123 ips-list
+          linode-cli linodes ips-list 123
     post:
       x-linode-grant: read_write
       tags:
@@ -14622,7 +14890,7 @@ paths:
       - NodeBalancers
       summary: NodeBalancer Create
       description: |
-        Creates a NodeBalancer in the requested Region.
+        Creates a NodeBalancer in the requested Region. Only available in [Regions](/docs/api/regions/#regions-list) with "NodeBalancers" in their `capabilities`.
 
         NodeBalancers require a port Config with at least one backend Node to start serving requests.
 
@@ -15449,7 +15717,7 @@ paths:
               https://api.linode.com/v4/nodebalancers/12345/configs/4567/nodes
       - lang: CLI
         source: >
-          linode-cli nodebalancers node-update \
+          linode-cli nodebalancers node-create \
             12345 4567 \
             --address 192.168.210.120:80 \
             --label node54321 \
@@ -15551,7 +15819,7 @@ paths:
               https://api.linode.com/v4/nodebalancers/12345/configs/4567/nodes/54321
       - lang: CLI
         source: >
-          linode-cli nodebalancers node-create \
+          linode-cli nodebalancers node-update \
             12345 4567 54321 \
             --address 192.168.210.120:80 \
             --label node54321 \
@@ -16983,9 +17251,15 @@ paths:
       tags:
       - Profile
       summary: Profile Update
-      description: >
+      description: |
         Update information in your Profile.  This endpoint requires the
         "account:read_write" OAuth Scope.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * You can't edit the `email` for a child account parent user (proxy user). This value is fixed and set when you provision this environment.
       operationId: updateProfile
       x-linode-cli-action: update
       security:
@@ -17390,6 +17664,12 @@ paths:
         so be sure to take note of it. You may create a token with _at most_
         the scopes of your current token. The created token will be able to
         access your Account until the given expiry, or until it is revoked.
+
+        **Parent and child accounts**
+
+        In a [parent and child account](/docs/guides/parent-child-accounts/) environment, the following apply:
+
+        * If you're using a child account parent user (proxy user), you can't create this form of token. The only token available to a proxy user is one that lets you run operations in a child account. These are created via the [Proxy User Token Create](#proxy-user-token-create) operation.
       operationId: createPersonalAccessToken
       x-linode-cli-action: token-create
       security:
@@ -19872,6 +20152,85 @@ paths:
             linode-cli vpcs update $vpcId \
               --description "A description of my VPC."
               --label cool-vpc
+  /vpcs/ips:
+    get:
+      x-linode-grant: read_only
+      tags:
+      - VPCs
+      summary: VPC IP Addresses List
+      servers:
+      - url: https://api.linode.com/v4
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Returns a paginated list of all VPC IP addresses and address ranges on your account.
+
+        **Note**: If a Linode has several configuration profiles that include a VPC interface, address information for all of them is listed in the response. Since VPCs can use the same address space, you may see duplicate IP addresses.
+      operationId: getAllVPCIPs
+      x-linode-cli-action:
+      - ip-list
+      - ip-ls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_only
+      responses:
+        '200':
+          description: A paginated list of VPC interface IP addresses.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAddressesVPCListResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/networking/vpcs/ips
+      - lang: CLI
+        source: >
+          linode-cli vpcs ip list
+  /vpcs/{vpcId}/ips:
+    parameters:
+    - $ref: '#/components/parameters/vpcId'
+    get:
+      tags:
+      - VPCs
+      summary: VPC IP Addresses View
+      servers:
+      - url: https://api.linode.com/v4
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Returns a paginated list of IP addresses for a single VPC.
+      operationId: getVPCIPs
+      x-linode-cli-action:
+        - ip-list
+        - ip-ls
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_only
+      responses:
+        '200':
+          description: The IP addresses for the requested VPC.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAddressesVPCListResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/vpcs/123/ips
+      - lang: CLI
+        source: >
+          linode-cli vpcs ip-list 123
   /vpcs/{vpcId}/subnets:
     x-linode-cli-command: vpcs
     parameters:
@@ -20309,7 +20668,7 @@ components:
         active_since:
           type: string
           format: date-time
-          description: The datetime of when the account was activated.
+          description: The date and time the account was activated.
           example: '2018-01-01T00:01:01'
           readOnly: true
         address_1:
@@ -20778,6 +21137,157 @@ components:
           description: The date-time of Account enrollment to the Beta Program.
           example: '2023-09-11T00:00:00'
           x-linode-cli-display: 6
+    ChildAccount:
+      type: object
+      description: Child account object
+      properties:
+        active_since:
+          type: string
+          format: date-time
+          description: The activation date and time for the child account.
+          example: '2018-01-01T00:01:01'
+          readOnly: true
+        address_1:
+          type: string
+          description: First line of this child account's billing address.
+          maxLength: 64
+          example: 123 Main Street
+          x-linode-filterable: true
+        address_2:
+          type: string
+          description: Second line of this child account's billing address, if applicable.
+          maxLength: 64
+          example: Suite A
+          x-linode-filterable: true
+        balance:
+          type: number
+          readOnly: true
+          description: This child account's balance, in US dollars.
+          example: 200
+          x-linode-cli-display: 4
+        balance_uninvoiced:
+          type: number
+          readOnly: true
+          description: >
+            This child account's current estimated invoice in US dollars. This is not
+            your final invoice balance. Transfer charges are not included in
+            the estimate.
+          example: 145
+          x-linode-cli-display: 4
+        billing_source:
+          type: string
+          readOnly: true
+          enum:
+            - external
+          description: |
+            The source of service charges for this account, as determined by its relationship with Akamai. The API returns a value of `external` to describe a child account in a parent-child account environment.
+          example: external
+        capabilities:
+          type: array
+          items:
+            type: string
+          description: >
+              A list of the capabilities the child account supports.
+          example:
+          - Linodes
+          - NodeBalancers
+          - Block Storage
+          - Object Storage
+          readOnly: true
+        city:
+          type: string
+          description: The city for this child account's billing address.
+          maxLength: 24
+          example: San Diego
+          x-linode-filterable: true
+        credit_card:
+          type: object
+          readOnly: true
+          description: Information for the credit card you've assigned to this child account.
+          properties:
+            last_four:
+              type: string
+              description: >
+                The last four digits of the credit card.
+              example: 1111
+            expiry:
+              type: string
+              description: The expiration month and year of the credit card.
+              example: 11/2024
+        company:
+          type: string
+          description: |
+            The company name for the owner of this child account. It can't include any of these characters: `<` `>` `(` `)` `"` `=`. You can't change this value yourself. We use it to create the proxy users that a parent account uses to access a child account. Talk to your account team if you need to change this value.
+          maxLength: 128
+          example: Acme
+          x-linode-filterable: true
+        country:
+          type: string
+          description: >
+            The two-letter ISO 3166 country code for this child account's billing address.
+          example: US
+          x-linode-filterable: true
+        email:
+          type: string
+          description: The email address of the owner of this child account.
+          maxLength: 128
+          example: john.smith@linode.com
+          x-linode-cli-display: 3
+          x-linode-filterable: true
+        first_name:
+          type: string
+          description: |
+            The first name of the owner of this child account. It can't include any of these characters: `<` `>` `(` `)` `"` `=`.
+          maxLength: 50
+          example: John
+          x-linode-cli-display: 1
+          x-linode-filterable: true
+        last_name:
+          type: string
+          description: |
+            The last name of the owner of this child account. It can't include any of these characters: `<` `>` `(` `)` `"` `=`.
+          maxLength: 50
+          example: Smith
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+        phone:
+          type: string
+          description: The phone number for the owner of this child account.
+          maxLength: 32
+          example: 858-555-1212
+          x-linode-filterable: true
+        state:
+          type: string
+          description: |
+            The state or province for the billing address (`address_1` and `address_2, if applicable`). If in the United States (US) or Canada (CA), this is the two-letter ISO 3166 State or Province code.
+
+            **Note:** If this is a US military address, use state abbreviations (AA, AE, AP).
+          maxLength: 24
+          example: CA
+          x-linode-filterable: true
+        tax_id:
+          type: string
+          description: >
+            The tax identification number for this child account. Use this for tax calculations in some countries.
+            If you live in a country that doesn't collect taxes, ensure this is an empty string (`""`).
+          maxLength: 25
+          example: ATU99999999
+        euuid:
+          type: string
+          description: >
+            An external, unique identifier that Akamai assigned to the child account.
+          format: uuid
+          readOnly: true
+          example: A1BC2DEF-34GH-567I-J890KLMN12O34P56
+        zip:
+          type: string
+          description: |
+            The zip code of this Account's billing address. The following restrictions apply:
+
+            - Can only contain ASCII letters, numbers, and hyphens (`-`).
+            - Can't contain more than 9 letter or number characters.
+          example: 92111-1234
+          x-linode-filterable: true
     CreditCard:
       type: object
       description: |
@@ -21770,7 +22280,7 @@ components:
             The interval, in seconds, at which a failed refresh should be retried.
 
             * Valid values are
-            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+            0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
             * Any other value is rounded up to the nearest valid value.
 
@@ -21802,7 +22312,7 @@ components:
             authoritative.
 
             * Valid values are
-            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+            0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
             * Any other value is rounded up to the nearest valid value.
 
@@ -21815,7 +22325,7 @@ components:
             The amount of time in seconds before this Domain should be refreshed.
 
             * Valid values are
-            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+            0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
             * Any other value is rounded up to the nearest valid value.
 
@@ -21829,7 +22339,7 @@ components:
             records may be cached by resolvers or other domain servers.
 
             * Valid values are
-            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+            0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
             * Any other value is rounded up to the nearest valid value.
 
@@ -22246,6 +22756,9 @@ components:
           - stackscript_update
           - stackscript_publicize
           - stackscript_revise
+          - subnet_create
+          - subnet_delete
+          - subnet_update
           - tag_create
           - tag_delete
           - tfa_disabled
@@ -22271,6 +22784,9 @@ components:
           - volume_update
           - volume_detach
           - volume_resize
+          - vpc_create
+          - vpc_delete
+          - vpc_update
           readOnly: true
           description: >
             The action that caused this Event. New actions may be added in the future.
@@ -22629,7 +23145,7 @@ components:
               - 198.51.100.2/32
             ipv6:
               description: |
-                A list of IPv6 addresses or networks. Addresses must be in IP/mask format. Must not be an empty list.
+                A list of IPv6 addresses or networks. Addresses must be in IP/mask format and must not include zone_id notation as described in [RFC 4007](https://www.rfc-editor.org/rfc/rfc4007). Must not be an empty list.
 
                 If "::/0" is included in this list, all IPv6 addresses are affected by this rule.
               type: array
@@ -22780,10 +23296,14 @@ components:
               enum:
               - read_only
               - read_write
-              description: >
+              description: |
                 The level of access this User has to Account-level actions,
                 like billing information. A restricted User will never be able
                 to manage users.
+
+                **Parent and child accounts**
+
+                In a [parent and child account](/docs/guides/parent-child-accounts/) environment, this grant can be added to a child account user, to give the user `read-write` access. This gives the child user unrestricted access to expected management operations, such as creating other child users. However, child users don't have write access to billing operations. The API issues a specific error message if a write operation is attempted by a child user.
               example: read_only
             cancel_account:
               type: boolean
@@ -22820,6 +23340,12 @@ components:
             add_vpcs:
               type: boolean
               description: If true, this User may add VPCs.
+              example: true
+            child_account_access:
+              type: boolean
+              nullable: true
+              description: |
+                In a [parent and child account](/docs/guides/parent-child-accounts/) environment, this gives a parent account access to endpoints that can be used to manage child accounts. Unrestricted parent account users have access to this grant, while restricted parent users don't. An unrestricted parent user can set this to `true` to add this grant to a restricted parent user. Displayed as `null` for all non-parent accounts.
               example: true
         linode:
           type: array
@@ -22964,21 +23490,23 @@ components:
           format: date-time
           nullable: true
           description: >
-            Only Images created automatically from a deleted Linode (type=automatic) will expire.
+            Only Images created automatically from a deleted Linode (type=automatic) will expire. `null` for private Images.
           example: null
           readOnly: true
         eol:
           type: string
           format: date-time
+          nullable: true
           description: >
-            The date of the public Image's planned end of life. `None` for private Images.
+            The date of the public Image's planned end of life. `null` for private Images.
           example: '2026-07-01T04:00:00'
           readOnly: true
         vendor:
           x-linode-filterable: true
           type: string
+          nullable: true
           description: >
-            The upstream distribution vendor. `None` for private Images.
+            The upstream distribution vendor. `null` for private Images.
           example: Debian
           readOnly: true
           x-linode-cli-display: 3
@@ -23418,7 +23946,6 @@ components:
                         format: ipv4
                         description: |
                           The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-              example: 192.0.2.1
     IPAddressesShareRequest:
       type: object
       description: A request object IP Addresses Share (POST /networking/ips/share)
@@ -23445,6 +23972,113 @@ components:
             * Can include both private and public IPv4 addresses.
             * You must have access to all of these addresses and they must be in the same Region as the primary Linode.
             * Enter an empty array to remove all shared IP addresses.
+    IPAddressesVPCListResponse:
+      description: The response data for the VPC IP Addresses List and View operations.
+      allOf:
+        - $ref: '#/components/schemas/PaginationEnvelope'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                description: >
+                  A VPC IP address that exists in Linode's system, specific to the response for the VPC IP Addresses List command. Returned as an empty set for Linodes that are not part of a VPC.
+                properties:
+                  active:
+                    type: boolean
+                    description: >
+                      Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
+                    example: true
+                    readOnly: true
+                    x-linode-filterable: true
+                  address:
+                    type: string
+                    format: ip
+                    description: >
+                      An IPv4 address configured for this VPC interface. Displayed as `null` if an `address_range`.
+                    example: 192.0.2.141
+                    nullable: true
+                    readOnly: true
+                    x-linode-cli-display: 1
+                  address_range:
+                    type: string
+                    description: >
+                      A range of IPv4 addresses configured for this VPC interface. Displayed as `null` if a single `address`.
+                    nullable: true
+                    readOnly: true
+                  config_id:
+                    type: integer
+                    description: >
+                      The globally general entity identifier for the Linode configuration profile where the VPC is included.
+                    example: 4567
+                    readOnly: true
+                    x-linode-filterable: true
+                  gateway:
+                    type: string
+                    format: ip
+                    description: >
+                      The default gateway for the VPC subnet that the IP or IP range belongs to.
+                    example: 192.0.2.1
+                    nullable: true
+                    readOnly: true
+                  interface_id:
+                    type: integer
+                    description: >
+                      The globally general API entity identifier for the Linode interface.
+                    example: 2435
+                    readOnly: true
+                  linode_id:
+                    type: integer
+                    description: >
+                      The identifier for the Linode the VPC interface currently belongs to.
+                    example: 123
+                    readOnly: true
+                    x-linode-cli-display: 6
+                    x-linode-filterable: true
+                  nat_1_1:
+                    type: string
+                    format: ip
+                    description: >
+                      The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn't used.
+                    example: null
+                    nullable: true
+                    readOnly: true
+                  prefix:
+                    type: integer
+                    description: >
+                      The number of bits set in the `subnet_mask`.
+                    example: 24
+                    nullable: true
+                    readOnly: true
+                  region:
+                    type: string
+                    description: >
+                      The region of the VPC.
+                    example: us-east
+                    readOnly: true
+                    x-linode-filterable: true
+                    x-linode-cli-display: 5
+                  subnet_id:
+                    type: integer
+                    nullable: false
+                    description: |
+                      The `id` of the VPC Subnet for this interface.
+                    example: 101
+                  subnet_mask:
+                    type: string
+                    format: ip
+                    description: >
+                       The mask that separates host bits from network bits for the `address` or `address_range`.
+                    example: 255.255.255.0
+                    readOnly: true
+                  vpc_id:
+                    type: integer
+                    description: >
+                      The unique globally general API entity identifier for the VPC.
+                    example: 7654
+                    readOnly: true
+                    x-linode-filterable: true
     IPAddressPrivate:
       type: object
       description: >
@@ -23515,7 +24149,7 @@ components:
     IPAddressV6LinkLocal:
       type: object
       description: >
-        A link-local IPv6 address that exists in Linode's system,.
+        A link-local IPv6 address that exists in Linode's system.
       properties:
         address:
           type: string
@@ -24409,6 +25043,8 @@ components:
                 * Setting the value to a specific public IPv4 address that is assigned to the Linode enables a 1:1 NAT between that address and the VPC Subnet IPv4 address.
                 * The public IPv4 address can't be shared with another Linode.
                 * If omitted, set to `null`, or set to an empty string (`""`), no 1:1 NAT is established.
+
+                **Note**: When creating a new compute-instance, you can't set this to a specific IPv4 address. When a new compute instance is created, the network establishes a public IPv4 address for it. Since this address doesn't exist yet, you can't include a custom IPv4 address to change it. Once your compute instances is created, you can [update your configuration profile interface](https://www.linode.com/docs/api/linode-instances/#configuration-profile-interface-update) to change the `nat_1_1` address.
               example: '203.0.113.2'
         # ipv6:
         #   type: object
@@ -24438,7 +25074,7 @@ components:
           type: array
           nullable: true
           description: |
-            An array of IPv4 CIDR VPC Subnet ranges that are routed to this Interface. **IPv6 ranges are also available to select participants in the Beta program.**
+            An array of IPv4 CIDR VPC Subnet ranges that are routed to this Interface.
 
             * Array items are only allowed for `vpc` type Interfaces.
             * This must be empty for non-`vpc` type Interfaces.
@@ -27268,6 +27904,60 @@ components:
           description: >
             The service to which this promotion applies.
           example: "all"
+    ProxyUserToken:
+      type: object
+      description: >
+        The token generated manually for a child account so its proxy user can access the API and CLI without going through an OAuth login.
+      properties:
+        id:
+          type: integer
+          description: >
+            The proxy user token's unique ID, which can be used to revoke it.
+          example: 918
+          readOnly: true
+          x-linode-cli-display: 1
+        scopes:
+          type: string
+          format: oauth-scopes
+          description: >
+            The scopes this token was created with. Defaults to `*`. Proxy user tokens automatically inherit all the permissions of the proxy user.
+          example: '*'
+          readOnly: true
+          x-linode-cli-display: 3
+        created:
+          type: string
+          format: date-time
+          description: >
+            The date and time this token was created.
+          x-linode-filterable: true
+          example: 2024-05-01T00:01:01
+          readOnly: true
+          x-linode-cli-display: 4
+        label:
+          type: string
+          minLength: 1
+          maxLength: 100
+          description: >
+            The name of the token. The API automatically sets this to `<username>_<uid>_<time>`. It's composed of the `username` for your parent account user, the unique `uid` Akamai assigned to identify your user, and the `time` the API generated the token. This is for display purposes only, but you can use it to help track how you're using each proxy user token.
+          x-linode-filterable: true
+          example: parent1_1234_2024-05-01T00:01:01
+          x-linode-cli-display: 2
+        token:
+          type: string
+          description: |
+            The proxy user token that can be used to access the API and CLI. After you [create](#proxy-user-token-create) a token, you can see the full token
+            in the response. All other operations that contain this token only show the first 16 characters in their response.
+          example: abcdefghijklmnop
+          readOnly: true
+          x-linode-cli-display: 5
+        expiry:
+          type: string
+          format: date-time
+          description: >
+            When this token expires. This is default set to 15 minutes from the time of creation. Proxy user tokens can't be renewed. After this time, Akamai revokes the token and you need to generate a new one.
+          x-linode-cli-display: 6
+          example: '2024-05-01T00:16:01'
+          readOnly: true
     Region:
       type: object
       description: An area where Linode services are available.
@@ -28286,6 +28976,30 @@ components:
             The date this key was added.
           example: "2018-01-01T00:01:01"
           readOnly: true
+    UserType:
+      type: object
+      description: >
+        The type of user on an account. Mostly applies to the use of the parent and child accounts for Akamai partners functionality.
+      properties:
+        user_type:
+          type: string
+          readOnly: true
+          enum:
+          - parent
+          - child
+          - proxy
+          - default
+          description: |
+            If the user belongs to a [parent or child account](/docs/guides/parent-child-accounts/) relationship, this defines the user type in the respective account. Possible values include:
+
+            * `parent`. This is a user in an Akamai partner account. Akamai partners have a contractural relationship with their end customers, to sell Akamai services. This user can either have full access (a parent account admin user) or limited access. Limited users don't have access to manage child accounts, but they can be granted this access by an admin user.
+
+            * `child`. This is an Akamai partner's end customer user, in a child account. A child user can have either full or limited access. Full access lets the user manage other child users and the proxy user in a child account.
+
+            * `proxy`. This is a user on a child account that gives parent account users access to that child account. A parent account user with the `child_account_access` grant can [create a bearer token](#proxy-user-token-create) from the parent account. The parent user can use this token to run API operations from the child account, as if they were a child user.
+
+            * `default`. This applies to all regular, non-parent-child account users.
+          example: parent
     Vlans:
       type: object
       description: >
@@ -28536,6 +29250,7 @@ components:
         #     * A VPC Subnet requires either `ipv4`, `ipv6`, or both.
         #     * In requests, only the prefix length is allowed, for example: `/64`. The address range is then automatically assigned.
         #     * Allowed prefix lengths: 64-125.
+        #     * Must not include zone_id notation as described in [RFC 4007](https://www.rfc-editor.org/rfc/rfc4007)
         #     * The range must not overlap with other Subnets on the same VPC.
         #   example: fd04:495a:691c:971c:0000:0000:0000:0000/64
         #   x-linode-cli-display: 4

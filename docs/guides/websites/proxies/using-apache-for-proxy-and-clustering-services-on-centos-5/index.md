@@ -1,16 +1,15 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-centos-5
-deprecated: true
+title: Using Apache for Proxy and Clustering Services on CentOS 5
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Centos 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-22
+modified: 2011-04-29
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","centos","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-centos-5/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-centos-5/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-03-22
-title: Using Apache for Proxy and Clustering Services on CentOS 5
 external_resources:
  - '[Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
  - '[Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)'
@@ -19,7 +18,7 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: CentOS 5
-authors: ["Linode"]
+deprecated: true
 ---
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to mange clusters of web servers.

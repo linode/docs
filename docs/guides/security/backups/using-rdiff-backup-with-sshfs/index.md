@@ -1,24 +1,23 @@
 ---
 slug: using-rdiff-backup-with-sshfs
-deprecated: true
+title: Using rdiff-backup with SSHFS
 description: 'Automating offsite backups with the open source rdiff-backup package and SSHFS for remote filesystem mounting.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-14
+modified: 2017-11-29
 keywords: ["rdiff-backup", "sshfs", "network backup", "linux backup"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/rdiff-backup/','/security/backups/using-rdiff-backup-with-sshfs/']
-modified: 2017-11-29
-modified_by:
-  name: Linode
-published: 2009-09-14
-title: Using rdiff-backup with SSHFS
-authors: ["Linode"]
+deprecated: true
 ---
 
 [Rdiff-backup](http://www.nongnu.org/rdiff-backup/docs.html) is an open source backup system that performs incremental, differential backups on a wide variety of platforms. Many people use rdiff-backup on both sides of a backup operation, but this can be problematic when different operating systems or rdiff-backup versions are in use.
 
 This guide will show you how to use rdiff-backup with [SSHFS](https://github.com/libfuse/sshfs) to pull data to the backup storage server, rather than pushing from the device you wish to back up. This eliminates the need to run rdiff-backup on the server being backed up. It is assumed you have a local machine such as a laptop or home workstation with data you want to back up to a remote server, which will be your Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Throughout this guide, *backup server* will be used to indicate the machine (probably your Linode) which will be running rdiff-backup. This is also where all copies of other machines' backup data will be stored.
 
 The machines with data being backed up *to* the backup server, will be referred to as a *remote device*. Each remote device also must have its own static IP address.

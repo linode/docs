@@ -1,17 +1,16 @@
 ---
 slug: inspecting-network-information-with-netstat
+title: 'Inspecting Network Information with netstat'
 description: 'A practical introduction to the netstat utility on Linux, including examples of the different options available.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-09-02
 keywords: ["UNIX", "shell", "netstat", "TCP/IP", "UDP", "network", "sockets", "unix sockets", "network connections", "network statistics"]
 tags: ["monitoring","networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-09-02
-modified_by:
-  name: Linode
-title: 'Inspecting Network Information with netstat'
 external_resources:
   - '[netstat](http://netstat.net/)'
 aliases: ['/networking/diagnostics/inspecting-network-connections-with-netstat/','/networking/diagnostics/inspecting-network-information-with-netstat/']
-authors: ["Mihalis Tsoukalos"]
 ---
 
 The `netstat` command line utility shows information about the network status of a workstation or server. `netstat` is available on Unix-like and Windows operating systems, with some differences in its usage between these systems.
@@ -34,7 +33,7 @@ This guide will explore the options available when running `netstat` on Linux. `
 
 A list of the [command line options](#command-line-options) can be found below, and some [advanced examples of using netstat with the AWK command](#using-awk-to-process-netstat-output) will be introduced at the end of the guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -191,8 +190,7 @@ tcp        1      0 li140-253.members.:smtp 193.32.160.136:37752    CLOSE_WAIT
 tcp        1      0 li140-253.members.:smtp 193.32.160.136:49900    CLOSE_WAIT
 tcp        1      0 li140-253.members.:smtp 193.32.160.136:49900    CLOSE_WAIT
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you want to display IPv4 connections that are in both listening and non-listening state, add the `-a` command line option:
 
     netstat -4a
@@ -214,8 +212,7 @@ udp6       0      0 2a01:7e00::f03c:91f:ntp [::]:*
 udp6       0      0 localhost:ntp           [::]:*
 udp6       0      0 [::]:ntp                [::]:*
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you want to display IPv6 connections that are in both listening and non-listening state, add the `-a` command line option:
 
     netstat -6a
@@ -269,12 +266,10 @@ tcp6       0      0 109.74.193.253:80       104.18.40.175:4436      SYN_RECV
 tcp6       0      0 109.74.193.253:80       104.18.40.175:17099     SYN_RECV
 tcp6       0      0 109.74.193.253:80       104.18.41.175:12892     SYN_RECV
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `-n` option in the previous command tells `netstat` to not resolve IP addresses to hostnames.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you want to display both listening and non-listening TCP connections, add the `-a` command line option:
 
     netstat -ta
@@ -294,8 +289,7 @@ tcp        0      0 109.74.193.253:22       79.131.135.223:64917    ESTABLISHED
 tcp        1      0 109.74.193.253:25       193.32.160.136:37752    CLOSE_WAIT
 tcp        1      0 109.74.193.253:25       193.32.160.136:49900    CLOSE_WAIT
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you want to display both listening and non-listening IPv4 TCP connections, add the `-a` command line option:
 
     netstat -t4a
@@ -341,8 +335,7 @@ udp6       0      0 2a01:7e00::f03c:91f:ntp [::]:*
 udp6       0      0 localhost:ntp           [::]:*
 udp6       0      0 [::]:ntp                [::]:*
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To show only IPv4 or IPv6 UDP connections, combine `-u` with `-4` or `-6`:
 
     netstat -u4
@@ -371,7 +364,7 @@ tcp6       0      0 [::]:https              [::]:*                  LISTEN      
 
 The `-p` option displays the process ID and program name that corresponds to a network connection or Unix socket.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 `netstat` requires root privileges to show the PID and program name of processes that are not owned by your user.
 {{< /note >}}
 
@@ -389,8 +382,7 @@ tcp6       0      0 [::]:http               [::]:*                  LISTEN      
 tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      1008/sshd
 tcp6       0      0 [::]:https              [::]:*                  LISTEN      1808/apache2
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In particular, the previous example's command is a fast way to learn about which networked services are running on your system.
 {{< /note >}}
 
@@ -715,8 +707,7 @@ eth0            1      ff02::202
 eth0            1      ff02::fb
 ...
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The default output of `netstat -g` displays both IPv4 and IPv6 data.
 {{< /note >}}
 

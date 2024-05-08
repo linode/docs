@@ -1,16 +1,19 @@
----
-title: Test Pages
-date: 2023-01-26
-noindex: true
-layout: content-only
-cascade:
-   noindex: true
-   date: 2023-01-26
-   _build:
-      render: always
-      list: never
-      publishResources: false
----
++++
+title   = "Test Pages"
+date    = "2023-01-26"
+noindex = true
+layout  = "content-only"
+[[cascade]]
+    noindex = true
+    type    = "testpages"
+[[cascade]]
+    [cascade._target]
+        environment = "production"
+    [cascade._build]
+        render           = "never"
+        list             = "never"
+        publishResources = false
++++
 
 This section contains pages used in tests. They get published, but are not listed anywhere (sitemap, search, etc.).
 

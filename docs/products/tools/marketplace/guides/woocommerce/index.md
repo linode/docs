@@ -1,10 +1,10 @@
 ---
+title: "Deploy WooCommerce through the Linode Marketplace"
 description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress through the Linode Marketplace."
-keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
-tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 published: 2019-04-02
 modified: 2023-06-06
-title: "Deploy WooCommerce through the Linode Marketplace"
+keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
+tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/','/platform/one-click/one-click-woocommerce/','/guides/how-to-deploy-woocommerce-with-one-click-apps/','/guides/how-to-deploy-woocommerce-with-marketplace-apps/','/guides/woocommerce-marketplace-app/']
 external_resources:
 - '[WooCommerce Docs](https://docs.woocommerce.com/)'
@@ -42,7 +42,7 @@ external_resources:
 - **Website Title:** Enter a title for your WordPress site.
 
     {{< note >}}
-    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/root/.credentials` when the WordPress deployment completes.
+    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/home/$USERNAME/.credentials` when the WordPress deployment completes.
     {{< /note >}}
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}
@@ -64,10 +64,10 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-1.  Once logged in, access the credentials file by runing the following command:
+1.  Once logged in, access the credentials file by running the following command:
 
     ```command
-    cat /root/.credentials
+    cat /home/$USERNAME/credentials
     ```
 
 1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.

@@ -2,15 +2,12 @@
 title: "Access Your System Console Using Lish (Linode Shell)"
 title_meta: "Access Your System Console Using Lish"
 description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
-keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 published: 2009-08-04
-modified: 2023-10-22
-modified_by:
-  name: Linode
+modified: 2024-02-14
+keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 tags: ["linode platform","cloud manager"]
 image: using-the-linode-shell-lish.jpg
 aliases: ['/platform/manager/using-the-linode-shell-lish-classic-manager/','/platform/using-the-linode-shell-lish/','/networking/using-the-linode-shell-lish/','/using-lish-the-linode-shell/','/troubleshooting/using-lish-the-linode-shell/','/platform/manager/using-the-linode-shell-lish/','/guides/using-the-linode-shell-lish/','/guides/using-the-lish-console/','/guides/lish/']
-authors: ["Linode"]
 ---
 
 The **Lish Console**, also called the *Linode Shell*, provides direct console access to all of your Compute Instances. Through Lish, you can easily access your Compute Instance's internal Linux system and run commands, install software, or configure applications. Lish is especially useful when you are not able to connect to your server through other means, such as SSH.
@@ -333,6 +330,20 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish/Glish Gateway:** `eu-west.webconsole.linode.com`
+
+#### Madrid (Spain)
+
+-   **Lish SSH Gateway:** `lish-es-mad.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:sIYL6fvcNZVz3pXa6fp6YNS4ITfcCTu918pH0dxmaL0 lish-es-mad.linode.com
+    ECDSA 256 SHA256:eSqy+KAkPlzqRxYnPzGKJXuVd6D5APZsM/qWAWVk5xs lish-es-mad.linode.com
+    ED25519 256 SHA256:Sm20p3dsXSoqdRF8RwehfHn2sJszSuP/Z454glxohbc lish-es-mad.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `es-mad.webconsole.linode.com`
 
 #### Miami, FL, USA
 
