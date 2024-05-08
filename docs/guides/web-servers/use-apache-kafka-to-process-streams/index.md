@@ -1,14 +1,12 @@
 ---
 slug: use-apache-kafka-to-process-streams
 title: "How to Process Streams Using Kafka"
-title_meta: "Use Apache Kafka to Process Streams"
 description: 'Two to three sentences describing your guide.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2024-05-08
 keywords: ['Kafka process streams', 'Apache Kafka', 'Kafka message broker', 'Kafka events', 'Kafka API', 'Kafka stream setup', 'Kafka tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Tom Henderson"]
-published: 2023-12-24
-modified_by:
-  name: Linode
 external_resources:
 - '[KStreams API](https://kafka.apache.org/35/documentation/streams/core-concepts)'
 - '[Commonly used logging facade in Java](https://www.slf4j.org/)'
@@ -24,7 +22,7 @@ Kafka can take many concurrent data sources, partition and order the messages, a
 
 Kafka’s API set is a jar or library that attaches Kafka to an application. The application processes data, calling the library to push information to or retrieve data from Kafka. It is built for speed and scale, and very little processing goes on inside Kafka. This allows a variety of applications to speak to one serialized data store, and an application may play several roles as a client, with Kafka as a server.
 
-In this application model, consumers can play dual roles as subsequent producers, publishing their processed results to other subscribers in the pub/sub model. Consumer-retrieved messages are processed and become a new Kafka produced input topic for another message consumer. This allows Kafka to be the immutable logkeeper of a variety of data at differing points of business data processing tasks through a transaction cycle.
+In this application model, consumers can play dual roles as subsequent producers, publishing their processed results to other subscribers in the pub/sub model. Consumer-retrieved messages are processed and become a new Kafka produced input topic for another message consumer. This allows Kafka to be the immutable log keeper of a variety of data at differing points of business data processing tasks through a transaction cycle.
 
 [Kafka is designed for speed, scale, and reliable distributed infrastructure](/docs/guides/what-is-apache-kafka/). It mimes and allies frameworks constructed with Big Data, complex multi-partner trading, log accumulation and processing, and traditional transaction tracking systems.
 
@@ -82,9 +80,9 @@ The Zookeeper process also keeps track of access control lists, failure detectio
 
 ## Kafka Events
 
-Kafka receives events. Many unbound events from the same Publisher are termed "streams". Events are messages sent to specific, pre-determined topics. The message sent by a Publisher application to the Kafka cluster becomes topic partitions that are in turn, copied to other brokers. Events are serialized on entrance to Kafka and deserialized upon exit from Kafka. The process of event serialization and deserialization (seder) is handled by applications through a function `serder()`.
+Kafka receives events. Many unbound events from the same Publisher are termed "streams". Events are messages sent to specific, pre-determined topics. The message sent by a Publisher application to the Kafka cluster becomes topic partitions that are in turn, copied to other brokers. Events are serialized on entrance to Kafka and deserialized upon exit from Kafka. The process of event serialization and deserialization (also referred to as *Ser/Des*) is handled by applications through the `Serdes()` function. (see Kafka's [Data Types and Serialization](https://kafka.apache.org/10/documentation/streams/developer-guide/datatypes) documentation).
 
-Partitions can be sent to multiple member broker targets in a cluster. When a broker member of a cluster becomes unavailable, or a new broker member comes online, the cluster is forced to rebalance the partitions striped across the cluster; a new leader may be elected in the process. To the producers and consumers, a cluster rebalance is a process whose sanity checks can be configured to suit the nature of the rebalancing. Partitions contain the same topic seder() values across brokers. This allows a broker failure within a cluster to produce correctly serialized data from other partitions.
+Partitions can be sent to multiple member broker targets in a cluster. When a broker member of a cluster becomes unavailable, or a new broker member comes online, the cluster is forced to rebalance the partitions striped across the cluster and a new leader may be elected in the process. To the producers and consumers, a cluster rebalance is a process whose sanity checks can be configured to suit the nature of the rebalancing. Partitions contain the same topic `Serdes()` values across brokers. This allows a broker failure within a cluster to produce correctly serialized data from other partitions.
 
 ## Kafka Producers
 
@@ -107,14 +105,13 @@ An event message consists of four elements:
 
 Every Kafka event is a simple key-value pair with optional headers and a time stamp. Keys and values are strings or integers. The time can be set explicitly by the Producer, or time stamped upon ingestion. Values can be also written in various formats including JSON and AVRO.
 
-
 If no key is sent by the Producer, the default strategy Kafka employs places topics round-robin in its broker topic partitions. If a key is sent, the key is hashed and its modulo specifies the number of partitions that Kafka allocates to a topic across the brokers in its cluster. Custom partitioning strategies make use of Kafka configuration to define partition quantity and allocation across a cluster.
 
 ## Stream Setup and Traffic Management
 
 Stream ingress and management to applications surrounding Kafka fall into two general categories: applications that push or are polled. There are different techniques used for each that help plan the scope of scale needs.
 
-Streaming devices and sources that are stateless, and can be buffered in applications prior to logging data to Kafka. This produces a predictable feed rate and duty cycle of transactions for an application, and data processing can take place *after* the stream(s) are fed to the Kafka log.
+Streaming devices and sources that are stateless can be buffered in applications prior to logging data to Kafka. This produces a predictable feed rate and duty cycle of transactions for an application, and data processing can take place *after* the stream(s) are fed to the Kafka log.
 
 The Kafka libraries for applications contain a class called Interface ProducerInterceptor, which can intercept and optionally mutate, typically through a transform or lambda, streamed data sources to process events sent to Kafka topics. This class allows capturing planned sources of unbound data streams, merging or joining them with other data sources in cadence, and placing them into the key/value pairs that Kafka messaging uses.
 
@@ -214,9 +211,9 @@ Records to become events are sent using the `send()` method:
 producer.send(producerRecord)
 ```
 
-Calling the `send()` method updates whatever the value(s) is of the value of producerRecord. At the end of the `send()` process, a `close()` method stops the producer and clears message buffers.
+Calling the `send()` method updates whatever the value(s) is of the value of `producerRecord`. At the end of the `send()` process, a `close()` method stops the producer and clears message buffers.
 
-The `send()` method setup requires that the producerRecord values are filled; and code for streams can setup up polling to fashion the value, a for-nect loop, do-while, or other function or method that fills in the producerRecord to be pushed by the `send()` method.
+The `send()` method setup requires that the `producerRecord` values are filled; and code for streams can setup up polling to fashion the value, a for-nect loop, do-while, or other function or method that fills in the `producerRecord` to be pushed by the `send()` method.
 
 The consumer functions use similar methods to get records, called by a `main()` method:
 
