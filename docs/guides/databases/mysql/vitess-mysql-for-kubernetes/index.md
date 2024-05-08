@@ -1,6 +1,6 @@
 ---
-slug: vitess-mysql-for-k8s-deployment-and-management
-title: "Vitess: MySQL for K8s Cluster Deployment, Management, and Scaling"
+slug: vitess-mysql-for-kubernetes
+title: "Using Vitess on Akamai Cloud: MySQL for Kubernetes"
 description: "This guide teaches you how to deploy and scale Vitess, which provides automatic sharding and other improvements for MySQL, on Akamai Cloud LKE."
 authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
@@ -12,58 +12,58 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## What is Vitess?
 
-Vitess is a database clustering system for horizontal scaling of MySQL, and Percona Server for MySQL, through generalized sharding. Sharding allows you to break up your database into partitions, which lets the sharded database store more data and offer higher performance.
+Vitess is a database clustering system for horizontal scaling of MySQL (and Percona Server for MySQL) through generalized sharding. Sharding allows you to break up your database into partitions, which lets the sharded database store more data and offer higher performance.
 
 Manual sharding is a fragile, time-consuming process for database developers and administrators, because the original database needs to be split up into multiple databases with the same schema, and the client software needs to know which shard(s) to query for any given SQL statement. Historically, when open source databases grew to the point where sharding was needed, many teams took that as a cue to migrate their data to an enterprise database, as the costs and effort of manual sharding were likely to exceed the costs and effort of the migration.
 
 Vitess started at YouTube in 2010 as a way to solve its MySQL scalability challenges, after going through an evolution involving read replicas, then more replicas, and then manual sharding. Vitess served all YouTube database traffic for over five years.
 
-Eventually, YouTube released Vitess to open source and it was adopted by the Cloud Native Compute Foundation (CNCF) in 2018. Kubernetes (k8s) is also a CNCF project, and Vitess supports deployment and scaling on k8s.
+Eventually, YouTube released Vitess to open source and it was adopted by the Cloud Native Compute Foundation (CNCF) in 2018. Kubernetes (*k8s*) is also a CNCF project, and Vitess supports deployment and scaling on Kubernetes.
 
 ## Vitess Features and Use Cases
 
-Vitess helps you with 3 major use cases:
+Vitess helps with 3 major use cases:
 
--   You can scale a SQL database by sharding it while keeping application changes to a minimum.
--   You can migrate from bare-metal or VMs to a private or public cloud.
--   You can deploy and manage a large number of SQL database instances.
+-   Scale a SQL database by sharding it while keeping application changes to a minimum.
+-   Migrate from bare-metal or VMs to a private or public cloud.
+-   Deploy and manage a large number of SQL database instances.
 
 Vitess features fall into 5 major areas.
 
-### Performance
+-   **Performance**
 
--   Connection pooling - Multiplex front-end application queries onto a pool of MySQL connections to optimize performance.
--   Query de-duping – Reuse the results of an in-flight query for any identical requests it receives while the in-flight query is still executing.
--   Transaction manager – Limit the number of concurrent transactions and manage timeouts to optimize overall throughput.
+    - **Connection pooling:** Multiplex front-end application queries onto a pool of MySQL connections to optimize performance.
+    - **Query de-duping:** Reuse the results of an in-flight query for any identical requests it receives while the in-flight query is still executing.
+    - **Transaction manager:** Limit the number of concurrent transactions and manage timeouts to optimize overall throughput.
 
-### Protection
+-   **Protection**
 
--   Query rewriting and sanitization – Add limits and avoid non-deterministic updates.
--   Query blocking – Customize rules to prevent potentially problematic queries from hitting your database.
--   Query killing – Terminate queries that take too long to return data.
--   Table ACLs – Specify access control lists (ACLs) for tables based on the connected user.
+    - **Query rewriting and sanitization:** Add limits and avoid non-deterministic updates.
+    - **Query blocking:** Customize rules to prevent potentially problematic queries from hitting your database.
+    - **Query killing:** Terminate queries that take too long to return data.
+    - **Table ACLs:** Specify access control lists (ACLs) for tables based on the connected user.
 
-### Monitoring
+-   **Monitoring**
 
-Performance analysis tools let you monitor, diagnose, and analyze your database performance.
+    Performance analysis tools let you monitor, diagnose, and analyze your database performance.
 
-### Topology Management Tools
+-   **Topology Management Tools**
 
--   Cluster management tools that handle planned and unplanned failovers
--   Web-based management GUI
--   Designed to work in multiple data centers/regions
+    - Cluster management tools that handle planned and unplanned failovers
+    - Web-based management GUI
+    - Designed to work in multiple data centers/regions
 
-### Sharding
+-   **Sharding**
 
--   Virtually seamless dynamic re-sharding
--   Vertical and Horizontal sharding support
--   Multiple sharding schemes, with the ability to plug in custom ones
+    - Virtually seamless dynamic re-sharding
+    - Vertical and Horizontal sharding support
+    - Multiple sharding schemes, with the ability to plug in custom ones
 
 ## Prerequisites
 
 Before you install Vitess on LKE, you need to create a basic Kubernetes cluster. Follow the generic instructions in our [LKE getting started guide](/docs/products/compute/kubernetes/get-started/). You also need to install `kubectl`, the `mysql client`, and `vtctldclient` locally.
 
-### Create K8s Cluster
+### Create an LKE (Kubernetes) Cluster
 
 The size of the [LKE cluster you create for Vitess](https://cloud.linode.com/kubernetes/create) depends on your planned database size and load. As a guideline, Vitess recommends 250 GB of storage per shard. Translated to LKE nodes, that corresponds to 16 GB shared CPU Linodes for a development database, which has 320 GB of storage and 6 CPUs. For a production database, that corresponds to 16 GB dedicated or premium CPU Linodes, which have 320 GB of storage and 8 CPUs. Start with 3 nodes in the cluster, and allow the cluster to add nodes as needed, whether for more speed or more storage capacity. Pick a region that is close to your client application or users; that may or may not be the region that has the lowest latency from your local computer.
 
@@ -245,7 +245,7 @@ Before delving into the functionality of your Vitess cluster, it's essential to 
     vtctldclient ApplyVSchema --vschema-file="vschema_commerce_initial.json" commerce
     ```
 
-    The output includes the details of the newly created VSchema object.
+    The output includes the details of the newly created `VSchema` object.
 
     ```output
     Handling connection for 15999
@@ -322,14 +322,12 @@ Before delving into the functionality of your Vitess cluster, it's essential to 
 
     ```
 
-1.  At this stage, you have successfully tested the connectivity and basic functionality of your Vitess cluster. You can proceed with more advanced workflows, such as [MoveTables](https://vitess.io/docs/17.0/user-guides/migration/move-tables/) to optimize data placement within your Vitess cluster. If necessary, you can also tear down the cluster using the following command:
+1.  At this stage, you have successfully tested the connectivity and basic functionality of your Vitess cluster. You can proceed with more advanced workflows, such as [MoveTables](https://vitess.io/docs/17.0/user-guides/migration/move-tables/) to optimize data placement within your Vitess cluster. After installation, you can forward the ports to your local machine and work with it as though it is an ordinary MySQL database.
+
+1.  If necessary, you can also tear down the cluster using the following command:
 
     ```command
     kubectl delete -f 101_initial_cluster.yaml
     ```
 
     For complete removal of the underlying Akamai Cloud Kubernetes Engine infrastructure, you can utilize the **Delete Cluster** option within the LKE control panel.
-
-## Conclusion
-
-You can install Vitess on LKE without a lot of fuss. After installation, you can forward the ports to your local machine and work with it as though it is an ordinary MySQL database.
