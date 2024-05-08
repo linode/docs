@@ -1,14 +1,13 @@
 ---
 slug: installing-and-configuring-neo4j-on-ubuntu-2204
 title: "Installing and Configuring Neo4j on Ubuntu 22.04"
-description: 'Neoj4 is the leading graph database available today. Learn how to install, configure, and use it on an Akamai cloud compute instance. ✓ Click here!'
-og_description: 'Neoj4 is the leading graph database available today. Learn how to install, configure, and use it on an Akamai cloud compute instance. ✓ Click here!'
+description: "Neoj4 is the leading graph database available today. Learn how to install, configure, and use it on an Akamai cloud compute instance."
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2023-09-29
+modified: 2023-05-08
 keywords: ['install neo4j','install neo4j ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Cameron Laird"]
-published: 2023-09-29
-modified_by:
-  name: Linode
 ---
 
 Ubuntu users have a choice between several reliable Database Management Systems. While Relational Database Management Systems enjoy longstanding market leadership positions, Graph Database Management Systems are greatly increasing in popularity. Neo4j is the leader among these, and this guide covers everything you need to install, configure, and begin using it on Ubuntu 22.04 LTS.
@@ -407,19 +406,19 @@ The previous sections cover the command-line `cypher-shell` as it is the most ba
 
 1.  Open a web browser on your local desktop and navigate to the following URL: `http://INSTANCE_1_PUBLIC_IP:7474`.
 
-    ![The Neo4j Browser Server Connect page.](Neo4j-Browser-Server-Connect.jpg "The Neo4j Browser Server Connect page.")
+    ![The Neo4j Browser Server Connect page.](Neo4j-Browser-Server-Connect.jpg)
 
 1.  Enter `neo4j` for `user` and your chosen password for `password` just as you did earlier through the command-line interface.
 
 1.  You should now see a set of quick links to the help topics **Getting started with Neo4j Browser**, **Try Neo4j with live data**, and **Cypher basics**:
 
-    ![The Neo4j Browser Play Start page.](Neo4j-Browser-Play-Start.jpg "The Neo4j Browser Play Start page.")
+    ![The Neo4j Browser Play Start page.](Neo4j-Browser-Play-Start.jpg)
 
 1.  In particular, select **Open guide** under **Try Neo4j with live data** and follow the directions there.
 
     The tutorial is *acting on your Neo4j installation*. You're creating, updating, and finding data in the same Neo4j instance created in previous sections.
 
-    ![Step two of the Neo4j Browser Try Live Data tutorial.](Neo4j-Browser-Try-Live-Data.jpg "Step two of the Neo4j Browser Try Live Data tutorial.")
+    ![Step two of the Neo4j Browser Try Live Data tutorial.](Neo4j-Browser-Try-Live-Data.jpg)
 
     After running the first command (step two), switch back to a cloud compute instance and open `cypher-shell` using one of the instructions above.
 
