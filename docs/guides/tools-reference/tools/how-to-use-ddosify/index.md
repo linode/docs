@@ -2,12 +2,12 @@
 slug: how-to-use-ddosify
 title: "How to Use Ddosify"
 description: 'This guide explains how to install Ddosify and how to use it to test a system response to a denial of service attack.'
+authors: ['Jeff Novotny']
+contributors: ['Jeff Novotny']
+published: 2023-02-13
+modified: 2024-05-09
 keywords: ['Ddosify', 'install Ddosify', 'Ddosify test DoS attack', 'how to use Ddosify']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Jeff Novotny']
-published: 2023-02-13
-modified_by:
-  name: Linode
 external_resources:
 - '[Ddosify website](https://ddosify.com/)'
 - '[Ddosify GitHub site and documentation](https://github.com/ddosify/ddosify)'
