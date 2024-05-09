@@ -2,12 +2,11 @@
 slug: using-kompose-for-kubernetes
 title: "How to Use Kompose for Kubernetes Deployments"
 description: "Kompose helps users familiar with Docker Compose start deploying to Kubernetes by translating Docker Compose YAML files to Kubernetes resources. In this tutorial, find out more about Kompose and how to start using it for your Kubernetes deployments."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-08-09
 keywords: ['kompose kubernetes example','docker compose to kubernetes yaml','kompose github']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-08-09
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Kompose: Getting Started](https://kompose.io/getting-started/)'
 - '[Kubernetes: Translate a Docker Compose File to Kubernetes Resources](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)'
@@ -17,9 +16,9 @@ Kompose is a tool that makes it easier to convert Docker Compose files into Kube
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Have an active Kubernetes cluster configured with `kubectl` or a similar tool. You can follow our [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/) guide to deploy an LKE cluster from the Linode Cloud Manager. The guide also includes steps for installing and configuring `kubectl` to manage the cluster.
 

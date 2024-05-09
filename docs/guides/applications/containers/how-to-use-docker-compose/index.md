@@ -1,16 +1,15 @@
 ---
 slug: how-to-use-docker-compose
+title: How to Use Docker Compose
 description: "How to Use Docker Compose"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-02
+modified: 2017-12-28
 keywords: ["docker", "compose"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-28
-modified_by:
-  name: Linode
-published: 2018-01-02
-title: How to Use Docker Compose
 aliases: ['/applications/containers/how-to-use-docker-compose/']
-authors: ["Linode"]
 ---
 
 ![How to Use Docker Compose](how-to-use-docker-compose-title.jpg "How to Use Docker Compose title graphic")

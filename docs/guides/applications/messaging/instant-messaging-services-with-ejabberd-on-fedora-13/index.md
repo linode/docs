@@ -1,25 +1,22 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-fedora-13
-deprecated: true
+title: Instant Messaging Services with ejabberd on Fedora 13
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-09-13
+modified: 2013-09-24
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/ejabberd/fedora-13/','/applications/messaging/instant-messaging-services-with-ejabberd-on-fedora-13/']
-modified: 2013-09-24
-modified_by:
-  name: Linode
-published: 2010-09-13
-title: Instant Messaging Services with ejabberd on Fedora 13
 relations:
     platform:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Ejabberd, the Erlang Jabber Daemon, is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.
 

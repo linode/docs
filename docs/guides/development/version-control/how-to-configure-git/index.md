@@ -1,13 +1,13 @@
 ---
 slug: how-to-configure-git
+title: Getting Started with Git
 description: 'Learn the basics of distributed version control and source code management tool Git in this guide.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-04
+modified: 2019-01-15
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "gitolite", "ubuntu", "debian", "arch", "gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-15
-modified_by:
-  name: Linode
-published: 2009-09-04
-title: Getting Started with Git
 external_resources:
  - '[Refspec Information](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
@@ -16,7 +16,6 @@ external_resources:
 audiences: ["foundational"]
 tags: ["version control system"]
 aliases: ['/development/version-control/how-to-configure-git/']
-authors: ["Linode"]
 ---
 
 ![Git Started Today](git_getting_started.png)
@@ -25,7 +24,7 @@ authors: ["Linode"]
 
 Git is a distributed version control system. Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system. This guide will walk you through the basics of getting started with Git, from installing the software to using basic commands on both local and remote repositories (repo).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
 {{< /note >}}
 
@@ -74,8 +73,7 @@ If you have an new or existing project and you want to start using Git to keep t
 After you have added the file, stage a commit and leave a commit message. Commit messages serve as a reminder of the changes that were made to a file:
 
     git commit -m "Initialized a Git repository for this project. Tracking changes to a file."
-
-{{< note respectIndent=false >}}
+{{< note >}}
 It's good practice to provide clear and descriptive commit messages for every commit you stage, as this helps collaborators to understand what a commit encompasses.
 {{< /note >}}
 
@@ -215,7 +213,7 @@ If you are collaborating with another developer, it is necessary to be able to r
 
 Git will grab the new code from the chosen remote repository branch and merge it into your local branch.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Sometimes two developers will edit the same section of a file at the same time and attempt to merge their changes into the codebase. When this happens, Git will throw an error called a *merge conflict*. Because Git will be unable to determine which set of changes is the correct set of changes, it will prompt you to fix the merge conflict before it moves forward with the merge.
 {{< /note >}}
 

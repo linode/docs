@@ -1,21 +1,20 @@
 ---
 slug: how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites
+title: 'Unbundling NGINX from Omnibus Gitlab'
+title_meta: 'How to Unbundle NGINX from Omnibus GitLab'
 description: 'Unbundle the default NGINX server from Omnibus Gitlab and install and configure your own to enable virtual hosting.'
+authors: ["Jordi Bassagañas"]
+contributors: ["Jordi Bassagañas"]
+published: 2016-02-29
+modified: 2017-06-21
 keywords: ["version control", "git", "gitlab", "install gitlab on ubuntu", "how to manage repositories with gitlab"]
 tags: ["version control system","email","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['/applications/development/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/','/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/']
-modified: 2017-06-21
-modified_by:
-  name: Phil Zona
-published: 2016-02-29
-title: 'Unbundling NGINX from Omnibus Gitlab'
-title_meta: 'How to Unbundle NGINX from Omnibus GitLab'
 external_resources:
  - '[Updating GitLab via Omnibus GitLab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md)'
  - '[Installing Passenger + NGINX](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'
 audiences: ["intermediate"]
-authors: ["Jordi Bassagañas"]
 ---
 
 Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.
@@ -35,8 +34,7 @@ Preconfigured software stacks sometimes bring a series of challenges to those wh
 4.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit our [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
 {{< /note >}}
 

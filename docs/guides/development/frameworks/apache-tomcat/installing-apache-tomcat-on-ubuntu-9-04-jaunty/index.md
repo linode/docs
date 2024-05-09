@@ -1,25 +1,22 @@
 ---
 slug: installing-apache-tomcat-on-ubuntu-9-04-jaunty
-deprecated: true
+title: 'Installing Apache Tomcat on Ubuntu 9.04 (Jaunty)'
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 9.04 (Jaunty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-06
+modified: 2011-04-29
 keywords: ["Tomcat", "Java", "Apache Tomcat", "Ubuntu Jaunty", "Ubuntu 9.04", "Tomcat Linode"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/','/frameworks/apache-tomcat/ubuntu-9-04-jaunty/','/development/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/','/development/frameworks/apache-tomcat/installing-apache-tomcat-on-ubuntu-9-04-jaunty/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-08-06
-title: 'Installing Apache Tomcat on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Apache Tomcat is an "[open source software implementation of the Java Servlet and JavaServer Pages technologies.](http://tomcat.apache.org/)" You may choose to use either the OpenJDK implementation or the Sun Microsystems implementation of Java when installing Tomcat.
 

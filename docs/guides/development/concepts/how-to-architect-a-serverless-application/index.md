@@ -2,12 +2,11 @@
 slug: how-to-architect-a-serverless-application
 title: "How to Architect a Serverless Application"
 description: 'Learn about back-end and front-end services, microservices, and serverless applications. Understand their strenghts and weaknesses to design the optimal solution.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-05-16
 keywords: ['how to architect a serverless application','serverless','serverless applications','architect a serverless application','microservices','collection of functions','serverless architecture','serverless web applications','backend services']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2023-05-16
-modified_by:
-  name: Linode
 external_resources:
 - '[Geeks4Geeks: Serverless Computing](https://www.geeksforgeeks.org/serverless-computing/)'
 - '[Geeks4Geeks: Why Serverless Apps?](https://www.geeksforgeeks.org/why-serverless-apps/)'

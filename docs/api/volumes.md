@@ -1,5 +1,5 @@
 ---
-title: Volumes
 slug: volumes
+title: Volumes
 ---
 
