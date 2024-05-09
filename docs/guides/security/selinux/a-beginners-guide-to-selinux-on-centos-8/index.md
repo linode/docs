@@ -1,15 +1,15 @@
 ---
 slug: a-beginners-guide-to-selinux-on-centos-8
+title: "Getting Started with SELinux on CentOS 8"
+title_meta: "A Beginner's Guide to SELinux on CentOS 8"
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-18
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS8"]
 bundles: ['centos-security']
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-18
-modified_by:
-  name: Linode
-title: "Getting Started with SELinux on CentOS 8"
-title_meta: "A Beginner's Guide to SELinux on CentOS 8"
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'
@@ -21,7 +21,6 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/security/selinux/a-beginners-guide-to-selinux-on-centos-8/']
-authors: ["Linode"]
 ---
 
 SELinux is a Mandatory Access Control (MAC) system, developed by the NSA. SELinux was developed as a replacement for Discretionary Access Control (DAC) that ships with most Linux distributions.
@@ -121,7 +120,7 @@ SELinux status:                 disabled
 
 When SELinux is enabled, it can run in either *enforcing* or *permissive* modes.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If SELinux is currently disabled, update your SELinux configuration file with the `SELINUX` directive set to `enabled`, then reboot your system, and SSH back into your Linode. These steps are outlined in the [SELinux States](#selinux-states) section of the guide.
 {{< /note >}}
 

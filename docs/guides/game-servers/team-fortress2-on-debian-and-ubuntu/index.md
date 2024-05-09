@@ -1,17 +1,16 @@
 ---
 slug: team-fortress2-on-debian-and-ubuntu
+title: 'Team Fortress 2 on Debian and Ubuntu'
 description: 'A basic Team Fortress 2 server installation guide for Debian and Ubuntu'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-03-12
+modified: 2019-02-01
 keywords: ["team fortress 2", "team fortress", "steam", "ubuntu", "debian"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-01
-modified_by:
-  name: Linode
-published: 2015-03-12
-title: 'Team Fortress 2 on Debian and Ubuntu'
 aliases: ['/applications/game-servers/team-fortress2-on-debian-and-ubuntu/','/game-servers/team-fortress2-on-debian-and-ubuntu/']
 dedicated_cpu_link: true
-authors: ["Elle Krout"]
 ---
 
 [Team Fortress 2](http://teamfortress.com/) is a team-based, first-person shooter, where you and a team of fellow players can play a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
@@ -22,7 +21,7 @@ authors: ["Elle Krout"]
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -106,7 +105,7 @@ The `motd_default.txt` file can contain HTML and is displayed as a website upon 
 
 The file `~/Steam/tf2/tf/cfg/server.cfg` is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game but we have a sample config file [here](/docs/assets/team_fortress_2_server_config.cfg) which you can edit for your own use.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For the configuration of this file, `0` means *off* and `1` means *on*.
 {{< /note >}}
 

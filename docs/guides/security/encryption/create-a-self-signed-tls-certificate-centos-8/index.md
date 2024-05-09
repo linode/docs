@@ -1,16 +1,15 @@
 ---
 slug: create-a-self-signed-tls-certificate-centos-8
+title: 'Creating a Self-Signed TLS Certificate on CentOS 8'
+title_meta: 'How to Create a Self-Signed TLS Certificate on CentOS 8'
 description: 'Self-signed TLS certificates are suitable for internal use within an organization. This guide shows how to create a certificate with OpenSSL on CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-03-26
 keywords: ["centos tls certificate", "centos ssl certificate", "centos self certified"]
 tags: ["centos", "security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-centos-8/']
-modified: 2021-03-26
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: 'Creating a Self-Signed TLS Certificate on CentOS 8'
-title_meta: 'How to Create a Self-Signed TLS Certificate on CentOS 8'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:
@@ -18,7 +17,6 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: CentOS 8
-authors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?
@@ -79,4 +77,4 @@ Email Address []:admin@example.com
 
         chmod 400 /root/certs/MyKey.key
 
-4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) **This is an important step. Do not skip it!**
+4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) **This is an important step. Do not skip it!**

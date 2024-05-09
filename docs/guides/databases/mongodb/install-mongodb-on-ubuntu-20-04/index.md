@@ -1,13 +1,13 @@
 ---
 slug: install-mongodb-on-ubuntu-20-04
-description: 'This guide explains how to install MongoDB on Ubuntu 20.04'
-keywords: ['install MongoDB','use MongoDB','configure MongoDB','what is MongoDB']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-12
-modified_by:
-  name: Linode
 title: "Installing MongoDB on Ubuntu 20.04"
 title_meta: "How to Install MongoDB on Ubuntu 20.04"
+description: 'This guide explains how to install MongoDB on Ubuntu 20.04'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-01-12
+keywords: ['install MongoDB','use MongoDB','configure MongoDB','what is MongoDB']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MongoDB](https://www.mongodb.com/)'
 - '[MongoDB Documentation](https://www.mongodb.com/docs/manual/introduction/)'
@@ -20,7 +20,6 @@ relations:
         key: how-to-install-mongodb
         keywords:
            - distribution: Ubuntu 20.04
-authors: ["Jeff Novotny"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a *NoSQL* database that provides an alternative to *Relational DataBase Management System* (RDBMS) applications such as MySQL and MariaDB. This guide introduces MongoDB and explains how to install the latest release on Ubuntu 20.04.

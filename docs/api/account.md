@@ -1,4 +1,4 @@
 ---
-title: Account
 slug: account
+title: Account
 ---

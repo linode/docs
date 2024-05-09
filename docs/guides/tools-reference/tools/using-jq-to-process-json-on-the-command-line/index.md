@@ -1,17 +1,16 @@
 ---
 slug: using-jq-to-process-json-on-the-command-line
+title: "Using the JQ Command to Process JSON on the Command Line"
+title_meta: "How to Use JQ to Process JSON on the Command Line"
 description: 'This guide shows you how to use the JQ command and includes installation instructions and examples.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-11-05
 keywords: ['jq command','linux jq','jq examples','jq filter']
 tags: ['linux', 'debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-05
-modified_by:
-  name: Linode
-title: "Using the JQ Command to Process JSON on the Command Line"
-title_meta: "How to Use JQ to Process JSON on the Command Line"
 external_resources:
 - '[The jq GitHub page](https://github.com/stedolan/jq)'
-authors: ["Jeff Novotny"]
 ---
 
 [*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and straightforward to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. Because this tool is advanced, it is important to become familiar with how JQ works before implementing it. This JQ tutorial introduces the jq application, explains how to install and use it, and shows JQ examples in order to understand its functionality. Continue reading to learn all about how to use jg!
@@ -230,7 +229,7 @@ The jq application provides a way of filtering out certain properties or array i
 
 To access a particular property within a JSON record, use the `.field` operator. Type the `.` character followed by the name of a field or object to access its value. The following command displays the values inside the `menu` object. All values, including nested fields and arrays, are displayed.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 From this point on, all examples use a local JSON file. However, the output can be piped to `jq` from `curl` or any other process in any of these examples.
 {{< /note >}}
 

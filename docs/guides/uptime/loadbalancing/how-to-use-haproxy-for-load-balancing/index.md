@@ -1,22 +1,20 @@
 ---
 slug: how-to-use-haproxy-for-load-balancing
+title: "Using HAProxy for Load Balancing"
+title_meta: "How to Use HAProxy for Load Balancing"
 description: "HAProxy allows a webserver to spread incoming requests across multiple endpoints. Learn how to install and configure HAProxy on a Linode."
+authors: ["Robert Hussey"]
+contributors: ["Robert Hussey"]
+published: 2017-10-30
+modified: 2019-02-01
 keywords: ["haproxy", "load balancing", "high availability"]
 tags: ["proxy", "ecommerce", "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-10-30
-modified: 2019-02-01
-modified_by:
-  name: Linode
-title: "Using HAProxy for Load Balancing"
-title_meta: "How to Use HAProxy for Load Balancing"
 external_resources:
 - '[HAProxy Documentation](http://www.haproxy.org/#docs)'
 dedicated_cpu_link: true
 aliases: ['/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/']
-authors: ["Robert Hussey"]
 ---
-
 
 ![HAProxy for Load Balancing](HAProxy.jpg)
 
@@ -36,7 +34,7 @@ This guide will describe the installation and configuration of HAProxy for load-
 
 3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide to add private IP addresses and internally network your Linodes.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,15 +1,27 @@
 import { FetchResponse } from "../http/fetch_response"
+import { Snapshot } from "../core/snapshot"
+import { LinkInterceptorDelegate } from "../core/frames/link_interceptor"
+import { FormSubmitObserverDelegate } from "../observers/form_submit_observer"
 
-export enum FrameLoadingStyle { eager = "eager", lazy = "lazy" }
+export enum FrameLoadingStyle {
+  eager = "eager",
+  lazy = "lazy",
+}
 
-export interface FrameElementDelegate {
+export type FrameElementObservedAttribute = keyof FrameElement & ("disabled" | "complete" | "loading" | "src")
+
+export interface FrameElementDelegate extends LinkInterceptorDelegate, FormSubmitObserverDelegate {
   connect(): void
   disconnect(): void
+  completeChanged(): void
   loadingStyleChanged(): void
   sourceURLChanged(): void
+  sourceURLReloaded(): Promise<void>
   disabledChanged(): void
-  formSubmissionIntercepted(element: HTMLFormElement, submitter?: HTMLElement): void
   loadResponse(response: FetchResponse): void
+  proposeVisitIfNavigatedWithAction(frame: FrameElement, element: Element, submitter?: HTMLElement): void
+  fetchResponseLoaded: (fetchResponse: FetchResponse) => void
+  visitCachedSnapshot: (snapshot: Snapshot) => void
   isLoading: boolean
 }
 
@@ -32,11 +44,11 @@ export interface FrameElementDelegate {
 export class FrameElement extends HTMLElement {
   static delegateConstructor: new (element: FrameElement) => FrameElementDelegate
 
-  loaded: Promise<FetchResponse | void> = Promise.resolve()
+  loaded: Promise<void> = Promise.resolve()
   readonly delegate: FrameElementDelegate
 
-  static get observedAttributes() {
-    return ["disabled", "loading", "src"]
+  static get observedAttributes(): FrameElementObservedAttribute[] {
+    return ["disabled", "complete", "loading", "src"]
   }
 
   constructor() {
@@ -52,15 +64,15 @@ export class FrameElement extends HTMLElement {
     this.delegate.disconnect()
   }
 
-  reload() {
-    const { src } = this;
-    this.src = null;
-    this.src = src;
+  reload(): Promise<void> {
+    return this.delegate.sourceURLReloaded()
   }
 
   attributeChangedCallback(name: string) {
     if (name == "loading") {
       this.delegate.loadingStyleChanged()
+    } else if (name == "complete") {
+      this.delegate.completeChanged()
     } else if (name == "src") {
       this.delegate.sourceURLChanged()
     } else {
@@ -176,7 +188,9 @@ export class FrameElement extends HTMLElement {
 
 function frameLoadingStyleFromString(style: string) {
   switch (style.toLowerCase()) {
-    case "lazy":  return FrameLoadingStyle.lazy
-    default:      return FrameLoadingStyle.eager
+    case "lazy":
+      return FrameLoadingStyle.lazy
+    default:
+      return FrameLoadingStyle.eager
   }
 }

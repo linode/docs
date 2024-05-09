@@ -3,12 +3,11 @@ slug: python-get-current-directory
 title: "How to Get the Current Directory in Python"
 title_meta: "A Guide to Paths in Python: Get Working Directory"
 description: 'This guide provides information on how to retrieve the current working directory in Python using the os module. It covers the os.getcwd() function and provides sample code to demonstrate its usage.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2023-06-12
 keywords: ['python change working directory', 'python get current directory', 'python change directory', 'change directory python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Martin Heller"]
-published: 2023-06-12
-modified_by:
-  name: Linode
 ---
 
 Programs often need to look for, read, and write specific files in a special location. By convention, and with support from the operating system, programs maintain a current working directory used as the context for many of their files. There may also be fixed directories and files that are special to the program, such as the configuration files for editors and IDEs.

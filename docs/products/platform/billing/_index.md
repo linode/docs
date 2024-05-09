@@ -2,16 +2,14 @@
 title: Billing
 title_meta: "Understanding How Billing Works on the Linode Platform"
 description: "Learn how Linode makes billing simple and easy so you easily anticipate your cloud infrastructure costs"
+published: 2019-10-25
+modified: 2023-09-20
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 keywords: ["billing", "payments"]
 aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/,'/guides/understanding-billing-and-payments/','/guides/platform/billing-and-support/']
-published: 2019-10-25
-modified: 2023-06-23
-modified_by:
-  name: Linode
 tags: ["linode platform"]
 ---
 
@@ -62,6 +60,12 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 ### Will I Be Billed For Powered Off or Unused Services?
 
 **Charges will accrue for any service present on an account, even if it is powered off or otherwise not actively being used.**  This includes Linode Compute Instances that have been powered off as the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/products/platform/billing/guides/stop-billing/) from your account.
+
+### Data Center-Specific Pricing
+
+In general, Linode plans and services are billed at the same, flat rate across data centers. However, services and network transfer in some newer data centers may be billed at separate rates due to higher region-based infrastructure costs.
+
+For more information about pricing in these regions, refer to our [Pricing](https://www.linode.com/pricing/) page.
 
 ## Payments
 

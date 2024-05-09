@@ -1,18 +1,17 @@
 ---
 slug: beginners-guide-to-terraform
+title: "A Beginner's Guide to Terraform"
 description: 'A look into Terraform''s primary components, features, and configurations for the new Terraform user'
-keywords: ['terraform', 'orchestration', 'linode provider']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-12-21
 modified: 2019-08-07
-modified_by:
-  name: Linode
+keywords: ['terraform', 'orchestration', 'linode provider']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ABeginnersGuidetoTerraform.png
-title: "A Beginner's Guide to Terraform"
 external_resources:
 - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 aliases: ['/applications/configuration-management/terraform/beginners-guide-to-terraform/','/applications/configuration-management/beginners-guide-to-terraform/']
-authors: ["Linode"]
 tags: ["saas"]
 ---
 

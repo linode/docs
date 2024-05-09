@@ -1,15 +1,14 @@
 ---
 slug: troubleshooting-virtual-network-connections
+title: "Troubleshooting Virtual Network Connections"
+title_meta: "How to Troubleshoot Virtual Network Connections"
 description: 'It is important to monitor all the network connections that are critical to your business. In this guide, you learn how to troubleshoot Virtual Network Connections for different operating systems.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2023-03-20
 keywords: ['troubleshoot vnc', 'troubleshoot linx', 'troubleshoot macOS', 'vnc encryption support']
 tags: ['vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-20
-modified_by:
-  name: Linode
-title: "Troubleshooting Virtual Network Connections"
-title_meta: "How to Troubleshoot Virtual Network Connections"
-authors: ["Tom Henderson"]
 ---
 
 Troubleshooting Virtual Network Connections (VNC) is a progression of tasks from checking network connections, VNC version compatibility, option tweaks interoperability, and encryption matches.
@@ -58,7 +57,7 @@ Successful messages are returned from each host indicating that the circuit port
 
 Similar to Windows VNC, a Mac connection must have a valid circuit connection between the VNC server and its client host. A Mac connection can use either use Apple’s Remote Desktop Software (RDS) or another VNC app like RealVNC or TigerVNC. Mac hosts also use the `ping` command to test the connection between their hosts.
 
-```commmand
+```command
 ping myhost.mynetwork.com:5901
 ```
 

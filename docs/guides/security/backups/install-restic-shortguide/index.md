@@ -1,15 +1,14 @@
 ---
 slug: install-restic-shortguide
+title: "Install Restic backup"
 description: 'A shortguide that shows how to install Restic backup.'
+authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
+published: 2020-07-24
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-24
-modified_by:
-  name: Andy Heathershaw
-title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false
-authors: ["Andy Heathershaw"]
 ---
 
 1. Download the latest version of Restic from [the Github Releases page](https://github.com/restic/restic/releases) (version 0.15.2 at the time of writing):

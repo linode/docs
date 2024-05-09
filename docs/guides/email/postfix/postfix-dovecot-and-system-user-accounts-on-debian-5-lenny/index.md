@@ -1,25 +1,22 @@
 ---
 slug: postfix-dovecot-and-system-user-accounts-on-debian-5-lenny
-deprecated: true
+title: 'Postfix, Dovecot, and System User Accounts on Debian 5'
 description: 'This guide shows how to use the user accounts you already have configured in Linux to send and receive email using the Postfix MTA and Dovecot IMAP/POP3 apps on Debian 5 "Lenny".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2012-10-08
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["ssl","debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/dovecot-system-users-debian-5-lenny/','/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-02-17
-title: 'Postfix, Dovecot, and System User Accounts on Debian 5'
 relations:
     platform:
         key: postfix-dovecot-user-accounts
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/guides/basic-postfix-email-gateway-on-debian-5-lenny/) document to install a more minimal email system.
 

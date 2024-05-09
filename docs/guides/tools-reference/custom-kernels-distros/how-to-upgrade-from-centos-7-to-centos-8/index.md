@@ -1,18 +1,16 @@
 ---
 slug: how-to-upgrade-from-centos-7-to-centos-8
+title: "Upgrading from CentOS 7 to CentOS 8"
+title_meta: 'How to Upgrade from CentOS 7 to CentOS 8'
 description: 'Instructions for upgrading from CentOS 7 to CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-23
 keywords: ["upgrade", "centos8", "centos7", "upgrade centos", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-01-23
-modified_by:
-  name: Linode
-published: 2020-01-23
-title: "Upgrading from CentOS 7 to CentOS 8"
-title_meta: 'How to Upgrade from CentOS 7 to CentOS 8'
 image: Upgrade_CentOS7_to_8.png
 aliases: ['/tools-reference/custom-kernels-distros/how-to-upgrade-from-centos-7-to-centos-8/']
-authors: ["Linode"]
 ---
 
 [CentOS](https://www.centos.org) is a Linux distribution derived from [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux). Some key features new for [CentOS 8](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS8.1905) are:
@@ -42,8 +40,7 @@ For this guide you will need a backup of your existing CentOS 7 installation. Yo
 - For alternative backups solutions, see our [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide.
 
 When creating your backup, it's recommended that you [Resize Your Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 
 It is important to note that automatic backups using Linode's Backup Service will be overwritten after between 8-14 days have passed. If you would like a backup of your Linode to be preserved for a longer time period, it is recommended that you take a [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) which will never expire unless manually overwritten.
 

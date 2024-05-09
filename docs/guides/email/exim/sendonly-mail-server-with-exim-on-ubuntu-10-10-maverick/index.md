@@ -1,25 +1,22 @@
 ---
 slug: sendonly-mail-server-with-exim-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Send-only Mail Server with Exim on Ubuntu 10.10 (Maverick)'
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-06
+modified: 2012-10-08
 keywords: ["exim", "exim ubuntu 10.10", "send email ubuntu", "mail server", "linux mail", "smtp server", "ubuntu exim"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/send-only-mta-ubuntu-10-10-maverick/','/email/exim/sendonly-mail-server-with-exim-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-12-06
-title: 'Send-only Mail Server with Exim on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Many Linux server applications need to send email; cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 10.10 (Maverick) Linode.
 
