@@ -1,19 +1,15 @@
 ---
 slug: lamp-server-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LAMP Server on Ubuntu 9.10 (Karmic)'
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-29
+modified: 2011-05-02
 keywords: ["ubuntu lamp server", "ubuntu 9.10 lamp", "karmic lamp", "ubuntu web server", "ubuntu karmic"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/ubuntu-9-10-karmic/','/websites/lamp/lamp-server-on-ubuntu-9-10-karmic/','/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/']
-modified: 2011-05-02
-modified_by:
-  name: Linode
-published: 2009-10-29
-title: 'LAMP Server on Ubuntu 9.10 (Karmic)'
 external_resources:
   - '[Ubuntu Linux Homepage](http://www.ubuntu.com/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'
@@ -24,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 This guide provides step by step instructions for installing a full featured LAMP stack on an Ubuntu 9.10 (Karmic) system. You will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 

@@ -1,19 +1,14 @@
 ---
 slug: writing-a-vim-plugin
-author:
-  name: Nathaniel Stickman
+title: "Write a Vim Plugin"
+title_meta: "How to Write a Vim Plugin"
 description: "The Vim text editor can be extended using plugins. This guide shows you how to create a Vim plugin using a Vim Script or an external interpreter like Python."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-03-18
 keywords: ['write vim plugin','create vim plugin','vim plugin python']
 tags: ['neovim', 'vim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-18
-modified_by:
-  name: Linode
-title: "Write a Vim Plugin"
-title_meta: "How to Write a Vim Plugin"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Vim Tips Wiki: How to Write a Plugin](https://vim.fandom.com/wiki/How_to_write_a_plugin)'
 - '[IBM Developer: Scripting the Vim Editor](https://developer.ibm.com/articles/l-vim-script-1/)'
@@ -39,8 +34,7 @@ In this tutorial, you learn how to write a Vim plugin of your own. The guide wal
     - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

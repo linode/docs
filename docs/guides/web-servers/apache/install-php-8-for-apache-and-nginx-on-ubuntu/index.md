@@ -1,19 +1,14 @@
 ---
 slug: install-php-8-for-apache-and-nginx-on-ubuntu
-author:
-  name: Jeff Novotny
+title: "Install PHP 8 for Apache and NGINX on Ubuntu"
+title_meta: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
 description: 'This guide shows you how to install PHP 8 and PHP-FPM for use with Apache and NGINX on an Ubuntu system.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-08-27
 keywords: ['Nginx PHP-fpm','Apache php','Php 8','Php fpm','What is PHP?']
 tags: ['php', 'nginx', 'apache', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-27
-modified_by:
-  name: Linode
-title: "Install PHP 8 for Apache and NGINX on Ubuntu"
-title_meta: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Introductory PHP tutorial](https://www.php.net/)'
 - '[Complete PHP Documentation](https://www.php.net/manual/en/)'
@@ -73,7 +68,7 @@ PHP has only a few disadvantages. Some of these drawbacks include a lack of libr
 
 1. PHP is usually used in conjunction with a web server. An Apache or NGINX web server should already be installed on the Linode. See the Linode guides for [Apache](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) or [NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) for more information. Instructions for both servers are included in this guide. If `ufw` is enabled, ensure it allows web server access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -262,7 +257,7 @@ To create and display the standard "PHP Info" page, follow the below steps:
 
 Earlier versions of PHP can easily be upgraded to version 8. All PHP-related packages should be upgraded at the same time. Otherwise, conflicts or crashes might occur. To determine whether the PHP 8.0 packages are present on the system or not, consult the [Add the PHP Repository](#add-the-php-repository) section of this guide. If the 8.0 package is not present, the `ondrej/php` repository must be installed first. The steps in this section explain how to upgrade PHP and PHP-FPM from version 7.4 to 8.0, using Apache as the webserver.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Because PHP version 8 has many changes, it is possible old code might not work after an upgrade. It is a good idea to test any websites and applications in a development environment before putting them into production. A list of non-backward-compatible changes is available on the [PHP GitHub repository](https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20).
 {{< /note >}}
 

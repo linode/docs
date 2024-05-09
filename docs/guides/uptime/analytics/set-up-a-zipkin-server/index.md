@@ -1,18 +1,14 @@
 ---
 slug: set-up-a-zipkin-server
-author:
-  name: Luis Cortes
-  email: docs@linode.com
+title: 'Set Up a Zipkin Server'
 description: 'This guide shows you how to use the Zipkin tracking system to collect and search timing data in order to identify latency problems on your website.'
+authors: ["Luis Cortés"]
+contributors: ["Luis Cortés"]
+published: 2017-09-28
 keywords: ["zipkin", "tracking"]
 tags: ["statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/set-up-a-zipkin-server-with-sample-website-tracking/','/uptime/set-up-a-zipkin-server/','/uptime/analytics/set-up-a-zipkin-server/']
-modified: 2017-09-28
-modified_by:
-  name: Luis Cortes
-published: 2017-09-28
-title: 'Set Up a Zipkin Server'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---

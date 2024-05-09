@@ -1,20 +1,15 @@
 ---
 slug: install-the-linode-ccm-on-unmanaged-kubernetes
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install the Linode CCM on an Unmanaged Kubernetes Cluster"
 description: "The Linode CCM uses Linode NodeBalancers to expose your cluster's services externally. Here's how to install it on an unmanaged Kubernetes cluster."
 og_description: "This guide includes steps for installing the Linode Cloud Controller Manager (CCM) on an unmanaged Kubernetes cluster. The Linode CCM allows you to use Linode NodeBalancers to expose your cluster's services externally. The steps in this guide are only necessary for specific use cases."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-16
 keywords: ['kubernetes','cloud controller manager','load balancing','nodebalancers']
 tags: ["docker","networking","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-16
 image: TutInstall_LinCCM_UnmanagedKubCluster.png
-modified_by:
-  name: Linode
-title: "Install the Linode CCM on an Unmanaged Kubernetes Cluster"
-contributor:
-  name: Linode
 aliases: ['/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/','/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/']
 ---
 

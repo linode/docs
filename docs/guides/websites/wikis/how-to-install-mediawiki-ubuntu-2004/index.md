@@ -1,20 +1,14 @@
 ---
 slug: how-to-install-mediawiki-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing MediaWiki on Ubuntu 20.04"
+title_meta: "How to Install MediaWiki on Ubuntu 20.04"
 description: 'This guide will show you how to install MediaWiki, a versatile, free and open-source application powering knowledge websites similar to Wikipedia, on Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-04
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on ubuntu 20.04"]
 tags: ["ubuntu", "wiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Installing MediaWiki on Ubuntu 20.04"
-title_meta: "How to Install MediaWiki on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[MediaWiki Installation Guide](https://www.mediawiki.org/wiki/Manual:Installation_guide)'
 relations:
@@ -32,7 +26,7 @@ relations:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

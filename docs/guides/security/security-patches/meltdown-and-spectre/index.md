@@ -1,17 +1,14 @@
 ---
 slug: meltdown-and-spectre
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'What You Need to Do to Mitigate Meltdown and Spectre'
 description: "This guide details the recent vulnerabilities disclosed by intel which affect processors installed in most devices from the last 23 years and what you can do about it."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-11
+modified: 2018-11-08
 keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 aliases: ['/security/security-patches/meltdown-and-spectre/','/security/meltdown-and-spectre/','/platform/meltdown_statement/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-11
-modified: 2018-11-08
-modified_by:
-  name: Linode
-title: 'What You Need to Do to Mitigate Meltdown and Spectre'
 promo_default: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'

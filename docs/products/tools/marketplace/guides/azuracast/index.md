@@ -1,17 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy AzuraCast through the Linode Marketplace"
 description: "AzuraCast is a self-hosted web radio station and management suite. Follow this guide to deploy AzuraCast on Linode using Marketplace Apps."
-keywords: ['azuracast','marketplace', 'server']
-tags: ["debian","ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
+keywords: ['azuracast','marketplace', 'server']
+tags: ["debian","ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 image: DeployAzuraCast_OneClickApps.png
-modified_by:
-  name: Linode
-title: "Deploy AzuraCast through the Linode Marketplace"
 external_resources:
 - '[About AzuraCast](https://www.azuracast.com/about/)'
 - '[Troubleshooting AzuraCast](https://www.azuracast.com/help/)'

@@ -1,18 +1,13 @@
 ---
 slug: computer-communication-networks
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Computers need this hardware to connect to a network. Can you guess what it is? ✓ Read our guide for information about computer communication networks today!'
-keywords: ['computers need this hardware to connect to a network', 'which of the following would not be a benefit of networking computers', 'which of the following are advantages of computer networks', 'is there a good reason to set up a network for two computers', 'define some advantages of computer networking', 'the most basic computer network can be described as', 'computer communication networks', 'is computer networking hard', 'what are at least four essential components of a computer network']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-29
-modified_by:
-  name: Linode
 title: "Everything You Need to Know about Computer Communication Networks"
 title_meta: "Quick Guide to Computer Communication Networks"
-contributor:
-  name: Tom Henderson
+description: 'Computers need this hardware to connect to a network. Can you guess what it is? ✓ Read our guide for information about computer communication networks today!'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2022-12-29
+keywords: ['computers need this hardware to connect to a network', 'which of the following would not be a benefit of networking computers', 'which of the following are advantages of computer networks', 'is there a good reason to set up a network for two computers', 'define some advantages of computer networking', 'the most basic computer network can be described as', 'computer communication networks', 'is computer networking hard', 'what are at least four essential components of a computer network']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Quizlet.com: IT110- 51 Chapter 7](https://quizlet.com/246864820/it110-51-chapter-7-flash-cards/)'
 - '[GCFGlobal.org: How do I connect to the Internet?](https://edu.gcfglobal.org/en/computerbasics/connecting-to-the-internet/1/)'

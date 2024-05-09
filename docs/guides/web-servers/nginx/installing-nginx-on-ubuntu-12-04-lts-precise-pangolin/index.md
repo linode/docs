@@ -1,19 +1,15 @@
 ---
 slug: installing-nginx-on-ubuntu-12-04-lts-precise-pangolin
-deprecated: true
-author:
-    name: Linode
-    email: docs@linode.com
+title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 description: 'A basic guide to installing nginx from source on Ubuntu 12.04 LTS (Precise Pangolin)'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-24
+modified: 2015-09-16
 keywords: ["nginx", "nginx ubuntu 12.04", "http", "web servers", "ubuntu", "ubuntu l2.04", "ubuntu precise pangolin"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/nginx/installation/ubuntu-12-04-precise-pangolin/','/web-servers/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/install-nginx-ubuntu-12-04/']
-modified: 2015-09-16
-modified_by:
-  name: Elle Krout
-published: 2012-10-24
-title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Linode nginx Documentation](/docs/web-servers/nginx/)'
  - '[nginx Community Documentation](http://wiki.nginx.org)'
@@ -24,11 +20,12 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

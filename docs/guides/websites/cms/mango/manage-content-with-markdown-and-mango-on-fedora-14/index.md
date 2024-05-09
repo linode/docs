@@ -1,27 +1,22 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-fedora-14
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Manage Content with Markdown and Mango on Fedora 14
 description: 'This guide will show you how Mango can publish markdown documents from plain text files into a fully customized and dynamic website using Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-02
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/mango/manage-content-with-markdown-and-mango-on-fedora-14/','/web-applications/cms-guides/mango/fedora-14/','/websites/cms/manage-content-with-markdown-and-mango-on-fedora-14/']
-modified: 2013-10-02
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: Manage Content with Markdown and Mango on Fedora 14
 relations:
     platform:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.
 
@@ -174,7 +169,7 @@ Welcome to Mango. If this page appears in full HTML glory (with **bold** and _em
 
 ## More Details
 
-Learn more about [mango](<http://mango.io>) and [Markdown][]!
+Learn more about [Markdown][]!
 
 [Markdown]:<http://daringfireball.net/projects/markdown/>
 ```
@@ -185,8 +180,6 @@ The first three lines of this file define header values that are processed by th
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Mango Home Page](http://mango.io/)
-- [Mango Documentation](http://mango.io/docs/)
 
 
 

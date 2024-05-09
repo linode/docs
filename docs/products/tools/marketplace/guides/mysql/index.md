@@ -1,16 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy MySQL/MariaDB through the Linode Marketplace"
 description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode One-Click Marketplace."
-keywords: ['database','mysql','rdbms','relational database','mariadb']
-tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy MySQL/MariaDB through the Linode Marketplace"
+keywords: ['database','mysql','rdbms','relational database','mariadb']
+tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'

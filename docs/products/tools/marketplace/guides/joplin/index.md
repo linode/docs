@@ -1,15 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Joplin through the Linode Marketplace"
 description: "Deploy Joplin on a Linode Compute Instance. Joplin is an open source note-taking app."
+published: 2022-03-29
 keywords: ['productivity','notes','docs']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-29
-modified_by:
-  name: Linode
-title: "Deploy Joplin through the Linode Marketplace"
 external_resources:
 - '[Joplin](https://joplinapp.org/)'
 ---
@@ -28,15 +22,14 @@ external_resources:
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Joplin Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
-- **Password for the postgres database** *(required)*: Enter the password you wish to use for the `joplin` database user.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 

@@ -1,27 +1,22 @@
 ---
 slug: ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)'
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 10.04 (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-09
+modified: 2013-10-04
 keywords: ["apache ssl", "ssl ubuntu", "web sever", "ubuntu", "ubuntu lucid", "ubuntu 10.04"]
 tags: ["apache","security","ssl","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/ubuntu-10-04-lucid/','/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-08-09
-title: 'SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: ssl-certificate-apache
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
-
-
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 10.04 LTS (Lucid) guide](/docs/web-servers/apache/installation/ubuntu-10-04-lucid). These steps should be performed via an SSH session to your Linode as the root user.
 

@@ -1,19 +1,14 @@
 ---
 slug: how-to-install-rooknfs-on-lke
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Setting Up Rook NFS for Persistent Storage on LKE"
+title_meta: "How to Set Up Rook NFS for Persistent Storage on LKE"
 description: 'How to install Rook NFS on LKE.'
+authors: ["Todd Becker"]
+contributors: ["Todd Becker"]
+published: 2021-08-13
 keywords: ['rooknfs','kubernetes', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
-modified_by:
-  name: Linode
-title: "Setting Up Rook NFS for Persistent Storage on LKE"
-title_meta: "How to Set Up Rook NFS for Persistent Storage on LKE"
-contributor:
-  name: Todd Becker
 aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE/']
 deprecated: true
 ---

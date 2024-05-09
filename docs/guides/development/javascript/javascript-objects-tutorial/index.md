@@ -1,18 +1,13 @@
 ---
 slug: javascript-objects-tutorial
-author:
-  name: Nathaniel Stickman
-description: "JavaScript objects include key-value properties and methods and support inheritance. This tutorial discusses JavaScript objects, object inheritance, and the keyword this."
-keywords: ['javascript objects','javascript objects properties','javascript objects prototype']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-15
-modified_by:
-  name: Linode
 title: "An Introduction to Javascript Objects"
 title_meta: "A Javascript Objects Tutorial"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+description: "JavaScript objects include key-value properties and methods and support inheritance. This tutorial discusses JavaScript objects, object inheritance, and the keyword this."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-04-15
+keywords: ['javascript objects','javascript objects properties','javascript objects prototype']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MDN Web Docs: Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)'
 - '[MDN Web Docs: Inheritance and the Prototype Chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)'

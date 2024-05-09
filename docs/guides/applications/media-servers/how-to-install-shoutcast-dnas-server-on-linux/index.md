@@ -1,17 +1,14 @@
 ---
 slug: how-to-install-shoutcast-dnas-server-on-linux
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
+title: How to Install A SHOUTcast DNAS Server on Linux
 description: 'This tutorial will guide you through setup and configuration of a SHOUTcast DNAS server for media streaming on Linux.'
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2012-06-07
+modified: 2019-03-25
 keywords: ["shoutcast", " internet radio", " streaming media", " streaming audio"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/media-servers/shoutcast/','/applications/media-servers/how-to-install-shoutcast-dnas-server-on-linux/','/communications/media-servers/shoutcast/']
-modified: 2019-03-25
-modified_by:
-  name: Linode
-published: 2012-06-07
-title: How to Install A SHOUTcast DNAS Server on Linux
 external_resources:
  - '[SHOUTcast Home Page](http://www.shoutcast.com)'
  - '[SHOUTcast Getting Started Guide](http://wiki.winamp.com/wiki/SHOUTcast_Getting_Started_Guide)'

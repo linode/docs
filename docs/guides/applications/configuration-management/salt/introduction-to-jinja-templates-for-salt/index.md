@@ -1,18 +1,14 @@
 ---
 slug: introduction-to-jinja-templates-for-salt
-author:
-  name: Linode
+title: "Introduction to Jinja Templates for Salt"
 description: 'An introduction to Jinja using Salt configuration management examples.'
-keywords: ['salt','jinja','configuration management']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-10-29
 modified: 2019-01-02
-modified_by:
-  name: Linode
+keywords: ['salt','jinja','configuration management']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: IntroductiontoJinjaTemplatesforSalt.png
-title: "Introduction to Jinja Templates for Salt"
-contributor:
-  name: Linode
 external_resources:
 - '[Salt Best Practices](https://docs.saltproject.io/en/latest/topics/best_practices.html#modularity-within-states)'
 - '[Salt States Tutorial](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt1.html)'
@@ -63,8 +59,7 @@ Applications like Salt can define default behaviors for the Jinja templating eng
 #  trim_blocks: False
 #  lstrip_blocks: False
 {{</ file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Before including Jinja in your Salt states, be sure to review the [Salt and Jinja Best Practices](#salt-and-jinja-best-practices) section of this guide to ensure that you are creating maintainable and readable Salt states. More advanced Salt tools and concepts can be used to improve the modularity and reusability of some of the Jinja and Salt state examples used throughout this guide.
 {{< /note >}}
 
@@ -225,8 +220,7 @@ include:
 
 {% include 'users.sls' %}
 {{</ file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A file referenced by the Jinja `include` tag needs to be specified by its [absolute path from Salt's `file_roots` setting](https://github.com/saltstack/salt/issues/15863#issuecomment-57823633); using a relative path from the current state file will generate an error. To include a file in the same directory as the current state file:
 
     {% include slspath + "/users.sls" %}

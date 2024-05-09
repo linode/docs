@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Saltcorn through the Linode Marketplace"
 description: "Deploy Saltcorn on a Linode Compute Instance. This platform is made for building database web applications without writing a single line of code."
-keywords: ['saltcorn','database','development']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Saltcorn through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['saltcorn','database','development']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'
 aliases: ['/guides/saltcorn-marketplace-app/']

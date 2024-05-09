@@ -1,18 +1,14 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use CouchDB for Document Based Data Storage on CentOS 5
 description: 'An introduction and getting started guide for CouchDB on CentOS 5 systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-18
+modified: 2011-04-29
 keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/centos-5/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-centos-5/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-02-18
-title: Use CouchDB for Document Based Data Storage on CentOS 5
 external_resources:
  - '[CouchDB Project](http://couchdb.apache.org/)'
  - '[CouchDB Community Wiki](http://wiki.apache.org/couchdb/)'
@@ -22,6 +18,7 @@ relations:
         keywords:
             - distribution: CentOS 5
 tags: ["centos","database","nosql"]
+deprecated: true
 ---
 
 CouchDB is a non-relational document based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language and uses an HTTP interface and JSON as a data format for easy integration in application development.

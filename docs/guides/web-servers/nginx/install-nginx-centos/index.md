@@ -1,18 +1,14 @@
 ---
 slug: install-nginx-centos
-author:
-  name: Linode
-  email: docs@linode.com
+title: Install NGINX on Ubuntu from the Official NGINX Repository
 description: 'Shortguide for installing NGINX on CentOS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-19
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-19
-modified_by:
-  name: Linode
-published: 2018-03-19
 show_on_rss_feed: false
 headless: true
-title: Install NGINX on Ubuntu from the Official NGINX Repository
 relations:
     platform:
         key: how-to-install-nginx

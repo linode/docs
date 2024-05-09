@@ -1,19 +1,15 @@
 ---
 slug: install-openfire-on-ubuntu-12-04-for-instant-messaging
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Install Openfire on Ubuntu 12.04 for Instant Messaging'
 description: 'This guide shows how to install the popular collaborative instant messaging app based on the XMPP protocol - Openfire - on a Linode running Ubuntu 12.04.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2012-11-13
+modified: 2016-03-14
 keywords: ["openfire", "ubuntu 12.04", "instant messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server", "JRE", "configure openfire"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin/','/applications/messaging/install-openfire-on-ubuntu-12-04-for-instant-messaging/','/communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/']
-modified: 2016-03-14
-modified_by:
-  name: Phil Zona
-published: 2012-11-13
-title: 'Install Openfire on Ubuntu 12.04 for Instant Messaging'
+aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin/','/applications/messaging/install-openfire-on-ubuntu-12-04-for-instant-messaging/','/communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/','/communications/xmpp/openfire/ubuntu-12.04-precise-pangolin/']
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -23,6 +19,7 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open-source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.

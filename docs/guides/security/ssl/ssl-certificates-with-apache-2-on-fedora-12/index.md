@@ -1,27 +1,22 @@
 ---
 slug: ssl-certificates-with-apache-2-on-fedora-12
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: SSL Certificates with Apache 2 on Fedora 12
 description: 'This guide will assist you with enabling SSL for websites being served by the free and open-source Apache2 web server for better web security on Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-26
+modified: 2011-04-29
 keywords: ["apache ssl", "ssl on fedora", "web server", "fedora 12"]
 tags: ["fedora","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/fedora-12/','/security/ssl/ssl-certificates-with-apache-2-on-fedora-12/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-02-26
-title: SSL Certificates with Apache 2 on Fedora 12
 relations:
     platform:
         key: ssl-certificate-apache
         keywords:
             - distribution: Fedora 12
+deprecated: true
 ---
-
-
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Fedora 12 guide](/docs/guides/apache-2-web-server-on-fedora-12/). These steps should be performed via an SSH session to your Linode as the root user.
 

@@ -1,28 +1,23 @@
 ---
 slug: lemp-server-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LEMP Server on Debian 5 (Lenny)'
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx,MySQL, PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-06-22
+modified: 2013-02-18
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lemp-guides/debian-5-lenny/','/websites/lemp/lemp-server-on-debian-5-lenny/','/web-servers/lemp/lemp-server-on-debian-5-lenny/']
-modified: 2013-02-18
-modified_by:
-  name: Linode
-published: 2010-06-22
-deprecated: true
-deprecated_link: 'web-servers/lemp/install-a-lemp-stack-on-debian/'
-title: 'LEMP Server on Debian 5 (Lenny)'
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 5
+deprecated: true
+deprecated_link: 'web-servers/lemp/install-a-lemp-stack-on-debian/'
 ---
-
-
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 

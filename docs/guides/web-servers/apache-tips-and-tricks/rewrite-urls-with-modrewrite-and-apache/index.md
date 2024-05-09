@@ -1,17 +1,14 @@
 ---
 slug: rewrite-urls-with-modrewrite-and-apache
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Rewrite URLs with mod_rewrite and Apache'
 description: 'How to use the mod_rewrite engine to generate URLs with the Apache HTTP server.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-06
+modified: 2017-02-21
 keywords: ["mod_rewrite", "REST", "URLs", "redirect", "apache", "httpd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/','/web-servers/apache/configuration/rewriting-urls/','/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/']
-modified: 2017-02-21
-modified_by:
-  name: Phil Zona
-published: 2009-11-06
-title: 'Rewrite URLs with mod_rewrite and Apache'
 external_resources:
  - '[Installing Apache](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/web-servers/lamp/)'

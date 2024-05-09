@@ -1,20 +1,14 @@
 ---
 slug: enabling-https-using-certbot-with-apache-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Use Certbot to Enable HTTPS with Apache on Ubuntu"
 description: "Learn how to install and use Certbot with Apache on Ubuntu 20.04, which automates the process adding TLS/SSL to your websites."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-03-02
+modified: 2021-07-01
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'Apache']
 tags: ['ssl','apache','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-02
-modified: 2021-07-01
-modified_by:
-  name: Linode
-title: "Use Certbot to Enable HTTPS with Apache on Ubuntu"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 aliases: ['/guides/how-to-install-certbot-for-apache-on-ubuntu-20-04/']
 relations:
     platform:
@@ -37,7 +31,7 @@ Before continuing with this guide, you need a website accessible over HTTP using
 
 3.  **The Apache web server software installed on your server and configured for your domain.** You can review the [How to Install Apache on Ubuntu 18.04 LTS](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) guide for information on installing and configuring Apache.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

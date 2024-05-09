@@ -1,27 +1,22 @@
 ---
 slug: monitor-services-with-nagios-on-ubuntu-10-10-maverick
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Monitor Services with Nagios on Ubuntu 10.10 (Maverick)'
 description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.10 (Maverick) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-15
+modified: 2012-10-08
 keywords: ["nagios", "monitoring"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-10-10-maverick/','/server-monitoring/nagios/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-11-15
-title: 'Monitor Services with Nagios on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 Nagios is a monitoring tool that makes it possible to monitor services on a single server or a pool of servers. It provides the capability to monitor a broad range of network services including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 

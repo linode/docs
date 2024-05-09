@@ -1,21 +1,15 @@
 ---
 slug: get-started-using-nethogs-for-network-usage-monitoring
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn@vna1.com
+title: "Using Nethogs to Monitor Network Usage"
+title_meta: "How to Use Nethogs to Monitor Network Usage"
 description: "Learn how to install and use Nethogs, a free and open-source program designed to track network usage"
+authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
+published: 2021-02-19
 keywords: ['how to use nethogs']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
 image: UsingNethogs_NetworkMonitoring.png
-modified_by:
-  name: Linode
-title: "Using Nethogs to Monitor Network Usage"
-title_meta: "How to Use Nethogs to Monitor Network Usage"
-contributor:
-  name: Steven J. Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
 ---
 
 [Nethogs](https://github.com/raboof/nethogs) is a free, open-source program used to track network usage. It extends the net top tool to track bandwidth by process. For example, `net top` may show that outbound traffic increased on a Linux server by protocol or subnet. But nethogs makes it easier for Linux administrators to identify which process is generating the usage spikes.

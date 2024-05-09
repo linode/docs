@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-openjdk-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Installing Java Development Kit 11 on CentOS 8
+title_meta: How To Install Java Development Kit 11 on CentOS 8
 description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on CentOS 8.'
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2020-03-25
 keywords: ["java", "openjdk", "jdk", "11", "CentOS", "8"]
 tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-25
-modified_by:
-  name: Linode
-published: 2020-03-25
-title: Installing Java Development Kit 11 on CentOS 8
-title_meta: How To Install Java Development Kit 11 on CentOS 8
 image: Installing_Java_Development_Kit_11_on_CentOS8_1200x631.png
-contributor:
-  name: Rajakavitha Kodhandapani
 audiences: ["beginner"]
 languages: ["java"]
 relations:

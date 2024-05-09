@@ -1,27 +1,22 @@
 ---
 slug: django-apache-and-modwsgi-on-fedora-14
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Django, Apache and mod_wsgi on Fedora 14'
 description: 'Installing and configuring the Django web application development framework for Apache on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-09-26
 keywords: ["django", "python", "apache", "mod_wsgi"]
 tags: ["web applications","django","apache","python","cms","fedora","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django-apache-and-modwsgi-on-fedora-14/','/development/frameworks/django/django-apache-and-modwsgi-on-fedora-14/','/frameworks/django-apache-mod-wsgi/fedora-14/']
-modified: 2013-09-26
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: 'Django, Apache and mod_wsgi on Fedora 14'
 relations:
     platform:
         key: django-apache-modwsgi
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 

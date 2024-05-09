@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using the AWS CLI with Object Storage"
 description: "Learn how to use the AWS CLI with Linode's S3-compatible Object Storage."
 date: 2022-03-11

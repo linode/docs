@@ -1,12 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Create a Managed Database"
 description: "A walkthough on creating a Managed Database through the Cloud Manager"
 published: 2022-06-06
 modified: 2022-08-09
 ---
+
+{{< content "dbass-eos" >}}
 
 This guide walks you through creating a Linode Managed Database through the Cloud Manager.
 
@@ -41,7 +40,7 @@ Select the **region** where the database cluster will reside. Regions correspond
 
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
-- [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/)
+- [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/)
 
 ## Choose a Plan
 

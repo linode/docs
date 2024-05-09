@@ -1,16 +1,13 @@
 ---
 slug: understanding-docker-volumes
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Understanding Docker Volumes"
 description: 'An explanation of Docker volumes, their use, and how to mount volumes and host system directories within a container.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-08-13
 keywords: ["docker", "volume", "docker volume", "docker volumes", "docker container", "docker containers", "docker volume", "docker volumes"]
 tags: ["volume","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
-modified_by:
-  name: Linode
-title: "Understanding Docker Volumes"
 external_resources:
 - '[Use volumes at Docker Docs](https://docs.docker.com/storage/volumes/)'
 - '[Troubleshoot volume errors at Docker Docs](https://docs.docker.com/storage/troubleshooting_volume_errors/)'

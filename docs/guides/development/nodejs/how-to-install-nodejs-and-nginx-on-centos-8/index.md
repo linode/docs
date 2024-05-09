@@ -1,18 +1,15 @@
 ---
 slug: how-to-install-nodejs-and-nginx-on-centos-8
-author:
-    name: Linode
-    email: docs@linode.com
+title: How to Install Node.js and NGINX on CentOS 8
+title_meta: Installing Node.js and NGINX on CentOS 8
 description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a CentOS 8 server.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-14
+modified: 2021-08-11
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "centos", " front-end requests", " back-end requests"]
 tags: ["centos", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-11
-modified_by:
-    name: Linode
-published: 2020-04-14
-title: How to Install Node.js and NGINX on CentOS 8
-title_meta: Installing Node.js and NGINX on CentOS 8
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -154,8 +151,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
         sudo systemctl restart nginx
 
 ## Create Your Site's Index File
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{< /note >}}
 
@@ -224,7 +220,7 @@ Now using node v12.16.2 (npm v6.14.4)
 
 In the [Install and Configure NGINX](#install-and-configure-nginx) section you configured NGINX to listen on port `80` to serve its static content. You also configured a reverse proxy to your Linode's `localhost:3000` when a request for the `/test.js` file is made. In this section you will create the `test.js` file to be able to test your Node.js web server that you will create in the [next section](#create-your-the-node-js-web-server-file).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{< /note >}}
 

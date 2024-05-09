@@ -1,27 +1,22 @@
 ---
 slug: email-and-calendars-with-zimbra-6-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Email and Calendars with Zimbra 6 on Debian 5 (Lenny)'
 description: 'Getting started with the open source edition of Zimbra groupware on your Debian 5 (Lenny) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-26
+modified: 2012-10-08
 keywords: ["zimbra debian 5", "zimbra lenny", "zimbra on debian", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/email-and-calendars-with-zimbra-6-on-debian-5-lenny/','/email/zimbra/install-zimbra-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-04-26
-title: 'Email and Calendars with Zimbra 6 on Debian 5 (Lenny)'
 relations:
     platform:
         key: zimbra-groupware
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your Debian 5 (Lenny) Linode.
 

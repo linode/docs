@@ -1,27 +1,20 @@
 ---
 slug: deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Django Apps with uWSGI and Nginx on Ubuntu 14.04"
 description: 'This guide provides you with step-by-step instructions for deploying applications written in Django by using the uWSGI and Nginx web server on Ubuntu 14.04.'
+authors: ["Sergey Pariev"]
+contributors: ["Sergey Pariev"]
+published: 2015-11-25
 keywords: ["django", "uwsgi", "nginx", "python"]
 tags: ["web server","ubuntu","python","nginx","django"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-11-25
-modified_by:
-  name: Sergey Pariev
-published: 2015-11-25
-title: "Deploy Django Apps with uWSGI and Nginx on Ubuntu 14.04"
-contributor:
-  name: Sergey Pariev
-  link: https://twitter.com/spariev
-deprecated: True
 aliases: ['/web-servers/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/']
 external_resources:
   - '[Writing your first Django app Tutorial](https://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)'
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'
   - '[WSGI/Python Quickstart Guide](https://uwsgi-docs.readthedocs.org/en/latest/WSGIquickstart.html)'
   - '[nginx Configuration](/docs/guides/how-to-configure-nginx/)'
+deprecated: True
 ---
 
 [Django](https://www.djangoproject.com/) is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using [uWSGI](https://uwsgi-docs.readthedocs.org/) and [nginx](https://www.nginx.com/) on Ubuntu 14.04.
@@ -35,8 +28,7 @@ external_resources:
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

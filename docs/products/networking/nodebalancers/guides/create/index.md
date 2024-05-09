@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Create a NodeBalancer"
 description: "Instructions on creating a NodeBalancer, Linode's load balancing solution."
 published: 2022-10-07
@@ -13,6 +10,7 @@ This guide walks you through creating a NodeBalancer through the Cloud Manager.
 1. [Open the Create NodeBalancer Form in the Cloud Manager](#open-the-create-nodebalancer-form-in-the-cloud-manager)
 1. [Set the Label](#set-the-label)
 1. [Select a Region](#select-a-region)
+1. [Assign a Cloud Firewall](#assign-a-cloud-firewall-optional)
 1. [Add and Configure Ports](#add-and-configure-ports)
 1. [Set Up Health Checks for Each Port](#set-up-health-checks-for-each-port)
 1. [Add Backend Nodes to Each Port](#add-backend-nodes-to-each-port)
@@ -32,11 +30,45 @@ Select the **region** where the NodeBalancer will reside. Regions correspond wit
 
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
-- [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/)
+- [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/)
+
+## Assign a Cloud Firewall (Optional)
+
+A NodeBalancer can only be attached to one active (enabled) Cloud Firewall at a time. You can attach the same Cloud Firewall to multiple NodeBalancers or other devices.
+
+Select the Cloud Firewall from the **Assign Firewall** pull down to use with the NodeBalancer.
+
+If the firewall doesn't exist yet, you can create the firewall using either the Firewall application, or the NodeBalancer application. Rules for the firewall, can only be added in the Firewall application.
+
+To create a firewall and add rules using the Firewall application, see [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) and [Add Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+
+To create a firewall using the NodeBalancer  application, in the *NodeBalancer Create* form click the **Create Firewall**. This displays the *Create Firewall* drawer. Configure the required field.
+
+| **Configuration** | **Description** |
+| --------------- | --------------- |
+| **Label** (Required)| The label is used as an identifier for this Cloud Firewall. |
+| **Additional Linodes** (Optional)| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can leave this blank if you do not yet wish to apply the Firewall to a Linode. |
+| **Additional NodeBalancers** (Optional) | The NodeBalancers on which to apply this Firewall. A list of all created NodeBalancers on your account are visible. You can leave this blank if you do not want to apply this Cloud Firewall to other NodeBalancers.|
+
+Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the the *Nodebalancers Create* form.
+
+{{< note >}}
+By default, a new Cloud Firewall accepts all inbound and outbound connections. Only inbound firewall rules apply to NodeBalancers. Custom rules can be added in the Firewall application as needed. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
+{{< /note >}}
+
+### Cloud Firewall Inbound Rules for NodeBalancer
+- Inbound rules limit incoming network connections to the NodeBalancer based on the port(s) and sources you configure.
+- The NodeBalancer accepts traffic and routes traffic on an internal network to backend targets. For this reason, only inbound firewall rules apply to NodeBalancer.
+- Inbound firewall rules such as IPv4 and IPv6 access control lists (ACLs) can be configured to *Accept* or *Drop* ingress traffic to the NodeBalancer.
+- NodeBalancers can accept TCP connections on all ports. When you add an inbound rule for a NodeBalancer in Cloud Firewall, select TCP as the transport layer protocol. UDP, ICMP, and IPENCAP are not currently supported on NodeBalancers.
+- The firewall is infront of the NodeBalancer and the assigned backend nodes. When both the NodeBalancer and its backend nodes have firewalls, the NodeBalancers inbound firewall rules are applied to incoming requests first, before the requests reach the backend nodes.
+- A backend node server (Linode) can have multiple IP addresses. The NodeBalancer firewall only controls inbound traffic to the backend nodes IPs that are assigned to the NodeBalancer. A service (Linode) can be accessed from any interface (not just the NodeBalancer). To filter traffic from other interfaces, backend Linodes require their own firewalls.
+
+![Figure of traffic going through firewall and NodeBalancer and traffic bypassing firewall and NodeBalancer](nb-firewall.jpg)
 
 ## Add and Configure Ports
 
-To start load balancing traffic, you need to define which ports the NodeBalancer should listen to and how the incoming traffic should be routed to the backend nodes. These ports can be configured within the **NodeBalancer Settings** area. By default, a single port configuration is visible in this area. Additional ports can be added by clicking the **Add another Configuration** button. See [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) for more details regarding each of these settings.
+To start load balancing traffic, you need to define which ports the NodeBalancer should listen to and how the incoming traffic should be routed to the backend nodes. These ports can be configured within the **NodeBalancer Settings** area. By default, a single port configuration is visible in this area. Additional ports can be added by clicking the **Add Another Configuration** button. See [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) for more details regarding each of these settings.
 
 - **Port:** Enter the *inbound* port the NodeBalancer should listen to. This can be any port from 1 through 65534 and should align with the port the client connects to. See [Configuration Options > Port](/docs/products/networking/nodebalancers/guides/configure/#port).
 - **Protocol:** Select *TCP*, *HTTP*, or *HTTPS*. For many applications, using *TCP* offers the most flexibility and allows for TLS pass through. Using *HTTP* and *HTTPS* offers some additional NodeBalancer options and allows for TLS termination. See [Configuration Options > Protocol](/docs/products/networking/nodebalancers/guides/configure/#protocol).

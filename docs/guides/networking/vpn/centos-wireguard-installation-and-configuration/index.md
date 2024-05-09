@@ -1,22 +1,16 @@
 ---
 slug: centos-wireguard-installation-and-configuration
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn01@gmail.com
+title: "Installing and Configuring WireGuard on CentOS 8"
+title_meta: "How to Install and Configure WireGuard on CentOS 8"
 description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
+authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
+published: 2021-05-21
 keywords: ['centos', 'wireguard', 'vpn']
 tags: ['wireguard', 'centos', 'vpn']
 bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
 image: WireGuard.jpg
-modified_by:
-  name: Linode
-title: "Installing and Configuring WireGuard on CentOS 8"
-title_meta: "How to Install and Configure WireGuard on CentOS 8"
-contributor:
-  name: Steven J Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
 external_resources:
 - '[WireGuard](https://www.wireguard.com/)'
 - '[WireGuard was merged into the Linux kernel 5.6](https://www.zdnet.com/article/linuxs-wireguard-vpn-is-here-and-ready-to-protect-you/)'

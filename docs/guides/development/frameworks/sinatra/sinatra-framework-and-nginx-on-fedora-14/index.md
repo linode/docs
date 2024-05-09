@@ -1,27 +1,22 @@
 ---
 slug: sinatra-framework-and-nginx-on-fedora-14
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Sinatra Framework and nginx on Fedora 14
 description: 'This guide will show you how to deploy simple web applications with the free and open source Sinatra web development framework on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-09-26
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","nginx","fedora","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/sinatra-framework-and-nginx-on-fedora-14/','/websites/frameworks/sinatra-framework-and-nginx-on-fedora-14/','/frameworks/sinatra/fedora-14/','/development/frameworks/sinatra/sinatra-framework-and-nginx-on-fedora-14/']
-modified: 2013-09-26
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: Sinatra Framework and nginx on Fedora 14
 relations:
     platform:
         key: sinatra-nginx
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 Sinatra is a simple lightweight framework for web application development in the Ruby programming language. Rather than providing a complete development system, Sinatra provides a basic URL-mapping system that developers can use to create powerful custom applications.
 

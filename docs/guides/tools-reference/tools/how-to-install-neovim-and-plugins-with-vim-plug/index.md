@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-neovim-and-plugins-with-vim-plug
-author:
-  name: Gabriel A. Cánepa
-  email: gacanepa@gmail.com
+title: How to Install NeoVim and Plugins with vim-plug
 description: 'This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace the vim text editor.'
 og_description: 'With refactored code and better, asynchronous plugin management, NeoVim is literally the future of vim. This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace vim to become your new favorite text editor.'
+authors: ["Gabriel Cánepa"]
+contributors: ["Gabriel Cánepa"]
+published: 2017-10-02
+modified: 2022-12-27
 keywords: ["neovim", "text", "editor", "vim", "nvim", "plugins"]
 aliases: ['/tools-reference/how-to-install-neovim-and-plugins-with-vim-plug/','/tools-reference/tools/how-to-install-neovim-and-plugins-with-vim-plug/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-10-02
-modified: 2022-12-27
-modified_by:
-  name: Linode
-title: How to Install NeoVim and Plugins with vim-plug
-contributor:
-  name: Gabriel Cánepa
-  link: https://twitter.com/gacanepa/
 external_resources:
  - '[NeoVim official website](https://neovim.io)'
  - '[Neovim-completion-manager](https://github.com/roxma/nvim-completion-manager)'

@@ -1,20 +1,14 @@
 ---
 slug: how-to-install-tensorflow
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing TensorFlow on Ubuntu 20.04"
+title_meta: "How to Install TensorFlow on Ubuntu 20.04"
 description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-02-08
 keywords: ['TensorFlow','installation','machine learning','and key phrases']
 tags: ['python', 'ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-08
-modified_by:
-  name: Linode
-title: "Installing TensorFlow on Ubuntu 20.04"
-title_meta: "How to Install TensorFlow on Ubuntu 20.04"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[TensorFlow site](https://www.tensorflow.org/)'
 - '[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)'
@@ -37,7 +31,7 @@ This guide describes how to install TensorFlow on Ubuntu 20.04, which is fully s
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

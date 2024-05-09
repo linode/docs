@@ -1,18 +1,19 @@
 ---
 title: "Redundant Cross-Data Center Applications"
-linkTitle: "Redundant Cross-Data Center Applications"
 description: "Guidance on how to create a segmented software-defined network using Linode VLANs and Wireguard to host inter-data center SaaS applications."
+published: 2022-09-28
+linkTitle: "Redundant Cross-Data Center Applications"
 license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)"
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-published: 2022-09-28
+tags: ["gaming"]
 ---
 
 ## Abstract
 
-Create a completely segmented software-defined network using Linode VLANs and Wireguard&#174; to host inter-data center Software as a Service (Saas) applications. 
+Create a completely segmented software-defined network using Linode VLANs and Wireguard&#174; to host inter-data center Software as a Service (Saas) applications.
 
 In this example, all nodes (the app and database) have their eth0 interface set to a L2 VLAN IP which will prevent the nodes from being generally accessible. Node interoperability is routed through the [Wireguard](https://www.wireguard.com/)&#174;/[NGINX](https://www.nginx.com/) gateway to facilitate external networking; this also allows the gateway to be used as a bastion/entry point to the VPC segments. Networking operability is created and defined during the provisioning process using [Terraform](https://www.terraform.io/) where each node runs Wireguard locally for intranet discovery. This allows nodes to talk to each other and know which is the gateway.
 

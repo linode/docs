@@ -1,27 +1,22 @@
 ---
 slug: email-with-citadel-on-ubuntu-10-04-lts-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Email with Citadel on Ubuntu 10.04 LTS (Lucid)'
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 10.04 LTS (Lucid) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-09
+modified: 2013-09-25
 keywords: ["citadel", "citadel ubuntu 10.04", "ubuntu 10.04 mail server", "groupware", "email server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/ubuntu-10-04-lucid/','/email/citadel/email-with-citadel-on-ubuntu-10-04-lts-lucid/']
-modified: 2013-09-25
-modified_by:
-  name: Linode
-published: 2010-05-09
-title: 'Email with Citadel on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
-
-
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
 

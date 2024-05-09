@@ -1,19 +1,16 @@
 ---
 slug: how-to-install-selinux-on-ubuntu-18-04
-author:
-  name: Angel
-  email: docs@linode.com
+title: "Install SELinux on Ubuntu 18.04"
+title_meta: "How to Install SELinux on Ubuntu 18.04"
 description: 'This guide shows you how to install SELinux on Ubuntu 18.04, enable SELinux policies, and disable SELinux.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-30
+modified: 2021-04-15
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-ubuntu-18-04/']
 tags: ["ubuntu","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-15
-modified_by:
-  name: Linode
-published: 2017-06-30
-title: "Install SELinux on Ubuntu 18.04"
-title_meta: "How to Install SELinux on Ubuntu 18.04"
 relations:
     platform:
         key: how-to-install-selinux
@@ -274,7 +271,7 @@ To disable all SELinux policies on Ubuntu temporarily, run the following command
 
 If you wish to permanently disable SELinux even when the system reboots, make changes to the `/etc/selinux/config` file and set SELINUX to disabled. Change the SELinux line as shown below:
 
-    SELINX=disbaled
+    SELINX=disabled
 
 And, now if you restart the system, SELinux and its policies won’t be in place anymore.
 

@@ -1,16 +1,13 @@
 ---
 slug: deploy-k3s-kubernetes
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
+title: Deploy and Manage K3s (a Lightweight Kubernetes Distribution)
 description: "K3s is a lightweight, highly-available Kubernetes distribution designed for production workloads. We'll show you how to install and deploy it on Linode."
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2020-04-30
 keywords: ["rancher", "ubuntu", "18.04", "k3s", "kubernetes"]
 tags: ["mysql","kubernetes","database","container","postgresql","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-30
-modified_by:
-  name: Linode
-title: Deploy and Manage K3s (a Lightweight Kubernetes Distribution)
 image: DeployK3s_Linode.png
 external_resources:
   - '[Rancher Official Docs](https://rancher.com/docs/k3s/latest/en/)'

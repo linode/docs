@@ -1,20 +1,14 @@
 ---
 slug: how-to-set-up-htaccess-on-apache
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use the Apache .htaccess file to configure a website on a per-directory basis. This guide shows you how to create and enable an .htaccess file and more.'
-keywords: ["htaccess", " apache"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-25
-modified: 2022-07-01
-modified_by:
-  name: Linode
 title: 'Enable and Set Up the .htaccess File on Apache'
 title_meta: 'How to Set Up the htaccess File on Apache'
-contributor:
-  name: Christopher Piccini
-  link: https://twitter.com/chrispiccini11
+description: 'Use the Apache .htaccess file to configure a website on a per-directory basis. This guide shows you how to create and enable an .htaccess file and more.'
+authors: ["Christopher Piccini"]
+contributors: ["Christopher Piccini"]
+published: 2017-09-25
+modified: 2022-07-01
+keywords: ["htaccess", " apache"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[HTTP Error and Status Codes](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)'
 - '[Apache .htaccess Documentation](https://httpd.apache.org/docs/current/howto/htaccess.html)'
@@ -36,7 +30,7 @@ An .htaccess file makes Apache web server configuration changes on a per-directo
 
 1.  Complete the Apache section in the [Install a Lamp Stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Throughout this guide, replace each instance of `testuser` with your custom user account. Replace each occurrence of `example.com` with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.
 {{< /note >}}
 
@@ -79,7 +73,7 @@ Apache's [mod_autoindex module](https://httpd.apache.org/docs/2.4/mod/mod_autoin
 
 One way to restrict a directory listing is through Apache's .htaccess file. This section shows you how to update an .htaccess file to disable directory listings.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 CMS systems such as [WordPress](/docs/guides/how-to-install-wordpress-ubuntu-2004/) create .htaccess configurations by default. This guide assumes that no .htaccess file exists. If you have not created an .htaccess file, follow the steps in the [Create the .htaccess File](/docs/guides/how-to-set-up-htaccess-on-apache/#create-the-htaccess-file) section of this guide.
 {{< /note >}}
 
@@ -96,7 +90,7 @@ Options -Indexes
 
 This section shows you how to restrict specific IPs from accessing your site. This is useful if you want to block certain visitors from viewing your site. You can also set this up to prevent certain IPs from accessing specific sections of your site.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Subdirectories inherit settings from a parent directory's .htaccess file. A parent directory's .htaccess file can be overridden by a subdirectory if it contains its own, separate .htaccess file. The examples in this section uses an .htaccess file located in a website's document root directory. If you have multiple .htaccess files, you should carefully consider in which .htaccess file you should each Apache directive you wish to use.
 {{< /note >}}
 
@@ -144,7 +138,7 @@ allow from 192.0.2
 
 You can redirect traffic using the .htaccess configuration file. In the below example, you update the .htaccess file for the root directory of your website to redirect a visitor to `http://example.com/test1/index.html` if they try to visit `http://example.com/main.html`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure that your website has a landing page. In the following steps, replace each instance of `main.html` with the landing page of your website.
 {{< /note >}}
 

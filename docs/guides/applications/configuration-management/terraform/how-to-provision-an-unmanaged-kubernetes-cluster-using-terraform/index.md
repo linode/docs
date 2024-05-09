@@ -1,21 +1,16 @@
 ---
 slug: how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Provision Unmanaged Kubernetes Cluster using Terraform"
+title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
 description: 'How to use kubectl, Terraform, and the Linode Terraform K8s module to create and configure Terraform configuration files and deploy a Kubernetes cluster.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-03
+modified: 2021-03-11
 keywords: ['terraform','kubernetes','orchestration','containers','k8s','kubectl','Kubernetes Terraform installer for Linode Instances','terraform-linode-k8s']
 tags: ["kubernetes", "terraform", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-03
 image: UnmanagedKubernetesCluster_Terraform.png
-modified: 2021-03-11
-modified_by:
-  name: Linode
-title: "Provision Unmanaged Kubernetes Cluster using Terraform"
-title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
-contributor:
-  name: Linode
 external_resources:
 - '[Kubernetes Terraform installer for Linode Instances](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)'
 aliases: ['/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/']

@@ -1,27 +1,22 @@
 ---
 slug: use-mysql-relational-databases-on-ubuntu-10-04-lts-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use MySQL Relational Databases on Ubuntu 10.04'
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-30
+modified: 2013-09-24
 keywords: ["mysql ubuntu 10.04", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-ubuntu-10-04-lts-lucid/','/databases/mysql/ubuntu-10-04-lucid/']
-modified: 2013-09-24
-modified_by:
-  name: Linode
-published: 2010-04-30
-title: 'Use MySQL Relational Databases on Ubuntu 10.04'
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","mysql"]
+deprecated: true
 ---
-
-
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.04 LTS (Lucid) Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
 

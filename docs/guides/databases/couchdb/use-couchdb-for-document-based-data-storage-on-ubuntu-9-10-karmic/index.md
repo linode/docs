@@ -1,27 +1,22 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use CouchDB for Document Based Data Storage on Ubuntu 9.10 (Karmic)'
 description: 'An introduction and getting started guide for CouchDB on Ubuntu 9.10 (Karmic) systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-18
+modified: 2011-04-29
 keywords: ["couchdb", "nosql", "json", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-9-10-karmic/','/databases/couchdb/ubuntu-9-10-karmic/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-02-18
-title: 'Use CouchDB for Document Based Data Storage on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: couchdb-document-data-storage
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","nosql"]
+deprecated: true
 ---
-
-
 
 CouchDB is a non-relational document based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language which supports an innovative concurrency model. While CouchDB does not use an SQL interface, it uses an HTTP interface and JSON as a data format for easy integration in application development.
 

@@ -1,20 +1,14 @@
 ---
 slug: how-to-install-apache-cassandra-on-debian-9
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for Debian 9.'
-keywords: ["cassandra", " apache cassandra", " centos 7", "Debian 9", " database", " nosql"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-30
-image: L_Cass_on_Debian9.png
-modified: 2020-01-30
-modified_by:
-  name: Linode
 title: "Install Apache Cassandra on Debian 9"
 title_meta: "How to Install Apache Cassandra on Debian 9"
-contributor:
-  name: Linode
+description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for Debian 9.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-30
+keywords: ["cassandra", " apache cassandra", " centos 7", "Debian 9", " database", " nosql"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: L_Cass_on_Debian9.png
 external_resources:
    - '[Cassandra Documentation](http://cassandra.apache.org/doc/latest/)'
    - '[Cassandra cqlshrc File Configuration Overview](http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html)'

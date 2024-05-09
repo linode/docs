@@ -1,19 +1,13 @@
 ---
 slug: vim-color-schemes
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Vim includes support for practically limitless color schemes to control syntax highlighting and adjust the editor’s readability. Learn how to customize Vim color schemes here."
-keywords: ['change vim color scheme','set vim color scheme','vim color scheme list']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-07
-modified_by:
-  name: Nathaniel Stickman
 title: "Set and Change Vim Color Schemes"
 title_meta: "How to Set and Change Vim Color Schemes"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+description: "Vim includes support for practically limitless color schemes to control syntax highlighting and adjust the editor’s readability. Learn how to customize Vim color schemes here."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-08-07
+keywords: ['change vim color scheme','set vim color scheme','vim color scheme list']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[phoenixNAP: How to Change and Use Vim Color Schemes](https://phoenixnap.com/kb/vim-color-schemes)'
 - '[Linux Hint: Vim Color Schemes](https://linuxhint.com/vim_color_schemes/)'

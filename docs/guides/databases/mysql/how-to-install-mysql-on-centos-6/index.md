@@ -1,18 +1,14 @@
 ---
 slug: how-to-install-mysql-on-centos-6
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'How to Install MySQL on CentOS 6'
 description: 'This article is a guide to getting started with the popular database management system software, MySQL, including how to install the service on CentOS 6.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-01-22
+modified: 2017-09-05
 keywords: ["MySQL on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/centos-6/','/databases/mysql/how-to-install-mysql-on-centos-6/','/databases/mysql/using-mysql-relational-databases-on-centos-6-4/']
-modified: 2017-09-05
-modified_by:
-  name: Linode
-published: 2014-01-22
-title: 'How to Install MySQL on CentOS 6'
 external_resources:
  - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -24,6 +20,7 @@ relations:
         keywords:
             - distribution: CentOS 6
 tags: ["database","mysql","centos"]
+deprecated: true
 ---
 
 ![How to Install MySQL on CentOS 6](How_to_Install_MySQL_on_CentOS_6_smg.jpg)

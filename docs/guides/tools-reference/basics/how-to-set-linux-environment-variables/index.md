@@ -1,20 +1,14 @@
 ---
 slug: how-to-set-linux-environment-variables
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Setting and Using Linux Environment Variables"
+title_meta: "How to Set and Use Linux Environment Variables"
 description: "This guide introduces you to Linux environment variables and explains the differences between shell variables and environment variables."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-04
 keywords: ['shell','bash','environment variables','command line','terminal','shell scripting']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Setting and Using Linux Environment Variables"
-title_meta: "How to Set and Use Linux Environment Variables"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 ---
 
 Your Linux shell has access to an environment that stores configuration values and other information in *environment variables*. Accessing these variables can be useful when working with shell commands. You can also set environment variables that can be accessed and used by your scripts, and applications. This guide walks you through the fundamentals of accessing, creating, and using environment variables.
@@ -25,7 +19,7 @@ Your Linux shell has access to an environment that stores configuration values a
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -115,8 +109,7 @@ Users unique identifier is: 1000
 To view a list of all (global) environment variables available to the current user, use the following command :
 
     printenv
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can pipe the output of the `printenv` command to the `less` utility to page through all your environment variables.
 
     printenv | less
@@ -145,8 +138,7 @@ Alternatively, you can use the `echo` command, and prepend the variable’s name
 To set the value of an existing environment variable type the variable name followed by the value you want to assign.
 
     EXAMPLE_VARIABLE='example value'
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If the environment variable does not already exist, it is created as a shell variable. You can promote the shell variable to an environment variable by exporting it. See the [How to Export Environment Variables](#how-to-export-environment-variables) section for details.
 {{< /note >}}
 
@@ -180,8 +172,7 @@ To assign multiple values to an environment variable use a list. Each value shou
 You can also append new items to lists. The example appends the `example-directory` located in the user's home directory to the `PATH` environment variable.
 
     export PATH=$PATH:$HOME/example-directory
-
-{{< note respectIndent=false >}}
+{{< note >}}
 `PATH` is a default environment variable that defines directories where your shell can look for executables. This variable allows you to run an executable without having to specify its path.
 {{< /note >}}
 
@@ -216,8 +207,7 @@ Create a new shell script file (`.sh`) in the `/etc/profile.d` directory. Add a 
 {{< file "/etc/profile.d/custom.sh">}}
 export EXAMPLE_VARIABLE='example value'
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also add environment variables to the `/etc/profile` or the `/etc/bashrc` files. However, your variables may not persist after upgrades to your shell package.
 {{< /note >}}
 
@@ -232,8 +222,7 @@ export APP_ENV="TEST"
 export APP_TEST_API="https://api.test.example.com/v1/customers"
 export APP_PROD_API="https://api.example.com/v1/customers"
 {{</ file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you reload your system's `profile` file to give your terminal session access to your new environment variables:
 
     source /etc/profile
@@ -257,8 +246,7 @@ Execute the file to view which environment and API URL is currently detected by 
 {{< output >}}
 Your current environment: TEST
 Your APIs URL: https://api.test.example.com/v1/customers
-{{</ output >}}
-{{< note respectIndent=false >}}
+{{</ output >}}{{< note >}}
 Depending on your system's configuration and installed version of Python, you may need to adjust the above command to explicitly use Python 3.
 
     python3 main.py

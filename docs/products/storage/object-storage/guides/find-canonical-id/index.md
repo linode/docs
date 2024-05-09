@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Find the Canonical User ID for an Account"
 description: "How to cancel the Linode Object Storage service."
 date: 2022-03-11

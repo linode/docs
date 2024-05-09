@@ -1,21 +1,15 @@
 ---
 slug: comparing-nginx-and-apache-web-servers
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "A Comparison of the NGINX and Apache Web Servers"
+title_meta: "Comparing the NGINX and Apache Web Servers"
 description: "Having trouble deciding between Apache or NGINX? Read through our comparison, and you'll know everything you need to make the best choice possible."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-03-15
 keywords: ['apache','nginx','web server','open source','vs','comparison']
 tags: ['apache','nginx','web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-15
 image: ApacheVsNginx.jpg
-modified_by:
-  name: Nathaniel Stickman
-title: "A Comparison of the NGINX and Apache Web Servers"
-title_meta: "Comparing the NGINX and Apache Web Servers"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Apache HTTP Server](https://httpd.apache.org/)'
 - '[NGINX](https://nginx.org/)'

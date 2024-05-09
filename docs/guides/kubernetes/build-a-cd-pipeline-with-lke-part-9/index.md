@@ -1,23 +1,20 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-9
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "In part nine of our series on Kubernetes, you will learn how to install the popular Traefik Ingress Controller and configure an Ingress with a YAML file."
 title: "Building a CD Pipeline Using LKE (Part 9): Installing Traefik"
-keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "In part nine of our series on Kubernetes, you will learn how to install the popular Traefik Ingress Controller and configure an Ingress with a YAML file."
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2021-05-06
 modified: 2022-12-14
-modified_by:
-  name: Linode
-contributor:
-  name: Linode
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-9/']
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing Traefik](cd-presentation-header-09-installing-traefik.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing Traefik")
+
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
 
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing Traefik (Slide #143)](https://2021-03-lke.container.training/#143)
 

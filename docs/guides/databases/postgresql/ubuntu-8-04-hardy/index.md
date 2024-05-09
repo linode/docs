@@ -1,17 +1,13 @@
 ---
 slug: ubuntu-8-04-hardy
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)'
 description: 'Using the PostgreSQL relational database server with Ubuntu 8.04 (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-13
+modified: 2011-04-29
 keywords: ["postgresql", "postgresql database", "postgresql on ubuntu", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-09-13
-title: 'Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: use-postrgesql-database
@@ -19,9 +15,9 @@ relations:
             - distribution: Ubuntu 8.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-8-04-hardy/']
+deprecated: true
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---
-
-
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 8.04 LTS (Hardy). We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.
 

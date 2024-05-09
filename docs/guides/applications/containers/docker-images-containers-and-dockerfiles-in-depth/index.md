@@ -1,18 +1,15 @@
 ---
 slug: docker-images-containers-and-dockerfiles-in-depth
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
 description: 'A guide that further introduces using a Dockerfile to build Docker Images and Docker Containers and provides examples on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-04-29
+modified: 2021-06-17
 keywords: ["docker", "container", "docker image", "docker images", "docker container", "docker containers"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-06-17
-modified_by:
-  name: Linode
-published: 2021-04-29
 image: DOCKERS.jpg
-title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'

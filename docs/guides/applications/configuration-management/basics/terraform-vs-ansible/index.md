@@ -1,20 +1,14 @@
 ---
 slug: terraform-vs-ansible
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide compares Ansible and Terraform, two utilities which automate the deployment of infrastructure using only code contained in playbooks or scripts.'
-keywords: ['IaC','Terraform','Ansible','configuration management', 'service orchestration']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-11
-image: ComparingTerraform_Ansible.png
-modified_by:
-  name: Linode
 title: "Terraform vs Ansible"
 title_meta: "Comparing Terraform and Ansible"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+description: 'This guide compares Ansible and Terraform, two utilities which automate the deployment of infrastructure using only code contained in playbooks or scripts.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-03-11
+keywords: ['IaC','Terraform','Ansible','configuration management', 'service orchestration']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: ComparingTerraform_Ansible.png
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Ansible](https://www.ansible.com/)'

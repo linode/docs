@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-the-element-chat-app
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing and Configuring the Element Chat Application"
+title_meta: "How to Install and Configure the Element Chat App"
 description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-04-07
 keywords: ['Element','Matrix-Synapse','installation','chat','messaging']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-07
 image: ElementChat.jpg
-modified_by:
-  name: Linode
-title: "Installing and Configuring the Element Chat Application"
-title_meta: "How to Install and Configure the Element Chat App"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Element](https://element.io/)'
 - '[Matrix](https://matrix.org/)'

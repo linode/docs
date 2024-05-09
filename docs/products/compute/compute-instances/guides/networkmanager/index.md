@@ -1,14 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
-description: "Learn how to configure networking using the NetworkManager utility on CentOS, CentOS Stream, Fedora, and other modern Linux distributions"
-keywords: ["static", "ip address","NetworkManager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-27
-modified_by:
-  name: Linode
 title: "Network Configuration Using NetworkManager"
+description: "Learn how to configure networking using the NetworkManager utility on CentOS, CentOS Stream, Fedora, and other modern Linux distributions"
+published: 2022-05-27
+keywords: ["static", "ip address","NetworkManager"]
 tags: ["networking","linode platform"]
 external_resources:
   - '[NetworkManager documentation](https://networkmanager.dev/docs/api/latest/NetworkManager.conf.html)'

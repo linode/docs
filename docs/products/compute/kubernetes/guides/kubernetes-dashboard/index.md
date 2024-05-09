@@ -1,17 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
-description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
-keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
-tags: ["monitoring","kubernetes","web application"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-17
-modified: 2023-02-09
-modified_by:
-  name: Linode
 title: "Manage an LKE Cluster Using the Kubernetes Dashboard"
 title_meta: "An Overview of the Kubernetes Dashboard on LKE"
+description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
+published: 2022-03-17
+modified: 2023-02-09
+keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
+tags: ["monitoring","kubernetes","web application"]
 external_resources:
 - '[Kubernetes Docs](https://kubernetes.io/docs/home/)'
 - '[Kubernetes Dashboard GitHub](https://github.com/kubernetes/dashboard)'

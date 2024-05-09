@@ -1,17 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Use Keepalived Health Checks with BGP-based Failover"
 description: "This guide covers how to configure Keepalived with a simple health check and enable it to control lelastic, a simple BGP daemon created for the Linode platform."
-keywords: ['IP failover','keepalived','elastic IP']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-19
 modified: 2022-11-28
-modified_by:
-  name: Linode
-title: "Use Keepalived Health Checks with BGP-based Failover"
-contributor:
-  name: Linode
+keywords: ['IP failover','keepalived','elastic IP']
 aliases: ['/guides/keepalived-with-bgp-failover/']
 ---
 

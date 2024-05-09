@@ -1,19 +1,14 @@
 ---
 slug: how-to-install-drupal-with-linode-kubernetes-engine
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Installing Drupal on LKE"
+title_meta: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
 description: "Learn how to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites."
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2019-11-07
 keywords: ['kubernetes','drupal','websites', 'cms', 'k8s']
 tags: ["mysql","kubernetes","container","cms","drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-07
-modified_by:
-  name: Linode
-title: "Installing Drupal on LKE"
-title_meta: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
-contributor:
-  name: Rajakavitha Kodhandapani
 
 aliases: ['/kubernetes/how-to-install-drupal-with-linode-kubernetes-engine/']
 ---

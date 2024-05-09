@@ -1,20 +1,14 @@
 ---
 slug: install-magento-2-4-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install Magento 2.4 on Centos 8"
 description: 'This guide describes how to install Magento 2.4 on CentOS8, including any configuration required by the LAMP stack and the Elasticsearch software.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-03-05
 keywords: ["magento", "centos", "e-commerce", "magento centos"]
 tags: ["centos", "lamp", "cms", "magento"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
 image: InstallMagento_CentOS8.png
-modified_by:
-  name: Linode
-title: "Install Magento 2.4 on Centos 8"
-contributor:
-  name: Jeffrey Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Magento site](https://magento.com/)'
 - '[Magento developer documentation](https://devdocs.magento.com/)'
@@ -27,7 +21,7 @@ relations:
 
 This guide explains how to install [*Magento*](https://magento.com/) on CentOS 8. Magento is a popular Open source e-commerce platform from Adobe. Magento uses *PHP*, *Elasticsearch*, and either a *MySQL* or *MariaDB* database system, along with a web server such as *Apache*. This guide focuses on how to install the free *Magento Open Source Edition*. Magento also offers *Magento Commerce* (with more extensive out of the box features and unlimited scaling), and the paid *Magento Commerce (On-Premises)* version with even more features and support.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Although this guide covers installation of Magento 2.4, version 2.3 is still available and fully supported.
 {{< /note >}}
 
@@ -41,7 +35,7 @@ Although this guide covers installation of Magento 2.4, version 2.3 is still ava
 
 1. This guide uses the sample domain name of `example.com` and a Magento root directory of `/var/www/html/example.com/public_html`, along with default username and password variables such as `magentouser` and `magentopassword`. Substitute your own values when you encounter these variables throughout the guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -65,7 +59,7 @@ A complete Magento installation consists of the following high-level steps. Each
 
 After these steps, you can set up your storefront and put your site into production.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide describes the process for a standard installation of the free version of Magento via the command-line. It assumes technical knowledge of CentOS essentials and some experience with software installation, as well as command-line access to the Magento server.
 {{< /note >}}
 
@@ -110,10 +104,9 @@ Magento can run on iOS 12 or later on the following platforms:
 3.  Set up and test any load balancing configuration (if applicable).
 4.  Back up your system before proceeding with the installation so you can roll back if necessary.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 We recommend you make a check point backup before installing and configuring the ancillary software components. Take another checkpoint before installing Magento.
 {{< /note >}}
-
 
 ## Install and Configure Prerequisite Components
 
@@ -125,12 +118,11 @@ Several other software components must be present and properly configured before
 
 Follow the instructions in the [How to Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide to install Apache, SQL, and PHP.
 
-{{< disclosure-note "Install PHP 7.4">}}
-        1. Enable the repositories by using: ```sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y```
-        2. List the available PHP version using: ``` sudo dnf module list php```
-        3. Enable the latest version of PHP using: ```sudo dnf module enable php:remi-7.4```
-{{< /disclosure-note >}}
-
+{{< note type="secondary" title="Install PHP 7.4" isCollapsible=true >}}
+1. Enable the repositories by using: ```sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y```
+2. List the available PHP version using: ``` sudo dnf module list php```
+3. Enable the latest version of PHP using: ```sudo dnf module enable php:remi-7.4```
+{{< /note >}}
 
 ### Web Server
 
@@ -198,12 +190,10 @@ Most payment processors and financial institutions do not recognise or accept se
         sudo systemctl start httpd.service
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you require more information on setting up Apache or configuring virtual hosts, consult Linode's [Apache on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 NGINX 1.x can also be used as the Magento web server.
 {{< /note >}}
 
@@ -294,8 +284,7 @@ error_log = /var/log/php/error.log
 
 Enable the PHP Opcache for better performance. This setting can be found and modified in `opcache.ini`.
 
-1.  Open the `opcache.ini` file. This file is usually found at `/etc/php.d/opcache.ini`, but you can find its exact location using the ```php --ini``` command.
-{{< note respectIndent=false >}}If you do not find the ```opcache.ini``` file, install it using ```sudo dnf install php-opcache```{{< /note >}}
+1.  Open the `opcache.ini` file. This file is usually found at `/etc/php.d/opcache.ini`, but you can find its exact location using the ```php --ini``` command.{{< note >}}If you do not find the ```opcache.ini``` file, install it using ```sudo dnf install php-opcache```{{< /note >}}
 
 2.  Set the `opcache.save_comments` variable to 1, uncommenting it if necessary:
 
@@ -386,7 +375,7 @@ Magento can be used with the following optional software components:
 
 Magento software is available to download in several compression formats on [the Magento downloads page](https://magento.com/tech-resources/download).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also download Magento using Composer via the downloads page. Composer allows for extra configurability, but Composer is not required in order to download Magento.
 {{< /note >}}
 
@@ -449,8 +438,7 @@ If the Magento and web server users are different, create a shared group for bot
 8.  Restart the web server again:
 
         sudo systemctl restart httpd.service
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Troubleshoot SELinux issues by changing `SELINUX=enforcing` to `SELINUX=permissive` in the `/etc/selinux/config` file. This setting relaxes security; it only logs potential violations. Ensure you understand all the security implications of this before changing this value on a production system. It is best to leave SELinux in enforcing mode and configure any exceptions on a case-by-case basis.
 {{< /note >}}
 
@@ -478,8 +466,7 @@ Troubleshoot SELinux issues by changing `SELINUX=enforcing` to `SELINUX=permissi
 5.  For ease of development, you can place your Magento application into development mode while you work on getting it running. See the post-installation section for information on placing your store into production mode.
 
         sudo bin/magento deploy:mode:set developer
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Store the `Magento Admin URI`, the `admin-user` name, and the `admin-password` in a safe place. You will require this information to access your Magento Admin page and administer your site. It is important you keep your admin information secure.
 {{< /note >}}
 
@@ -527,7 +514,7 @@ The following optional configuration items can be used to customise your Elastic
 
 Optional configuration parameters are available if you intend to use the RabbitMQ software or customizable locking. See the [Magento command line options page](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-install.html) for more information on these and all the other options.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The RabbitMQ options can only be used if you have installed the optional RabbitMQ software.
 {{< /note >}}
 
@@ -548,8 +535,7 @@ The following options can also be used with any command.
 | version | -V | Displays the version of the Magento application. |
 | ansi | n/a | This forces output into the ANSI format. |
 | no-ansi | n/a | This disables ANSI formatting. |
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can always rerun the Magento installation program later on to set new options or correct errors (for example, to add an optional component such as RabbitMQ). You can also reconfigure many options on the Magento Admin page.
 {{< /note >}}
 

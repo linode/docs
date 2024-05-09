@@ -1,20 +1,14 @@
 ---
 slug: ansible-adhoc-commands
-author:
-  name: Avi
-  email: avi.dunken1991@gmail.com
-description: 'In this tutorial, you will learn about several Ansible adhoc commands which are used by system and devops engineers to perform quick tasks and administer playbooks.'
-keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-06-11
-image: Learning_Adhoc_Commands_in_Ansible_1200x631.png
-modified_by:
-  name: Linode
 title: 'A Tutorial for Learning Adhoc Commands in Ansible'
 title_meta: 'Ansible Adhoc Commands - A Tutorial'
-contributor:
-  name: Avi
-  link: https://github.com/avidunken/
+description: 'In this tutorial, you will learn about several Ansible adhoc commands which are used by system and devops engineers to perform quick tasks and administer playbooks.'
+authors: ["Avi"]
+contributors: ["Avi"]
+published: 2020-06-11
+keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: Learning_Adhoc_Commands_in_Ansible_1200x631.png
 aliases: ['/applications/configuration-management/ansible-adhoc-commands/','/applications/configuration-management/ansible/ansible-adhoc-commands/']
 tags: ["automation"]
 ---
@@ -117,7 +111,7 @@ The `-f` option is used to define number of [forks](https://docs.ansible.com/ans
 {{< /note >}}
 
 {{< note >}}
-If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
+If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
 {{< /note >}}
 
 ## Collecting System Diagnostics

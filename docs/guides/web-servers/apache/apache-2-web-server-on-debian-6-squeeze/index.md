@@ -1,27 +1,22 @@
 ---
 slug: apache-2-web-server-on-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache 2 Web Server on Debian 6 (Squeeze)'
 description: 'Instructions for getting started with the Apache web server on Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-23
+modified: 2013-10-04
 keywords: ["apache debian 6", "apache debian squeeze", "linux web server", "apache on debian", "apache squeeze"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-debian-6-squeeze/','/web-servers/apache/installation/debian-6-squeeze/','/web-servers/apache/apache-2-web-server-on-debian-6-squeeze/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2011-02-23
-title: 'Apache 2 Web Server on Debian 6 (Squeeze)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Debian 6 (Squeeze).
 
@@ -193,8 +188,7 @@ An easy way to see which modules are installed is to run a list command on the d
 To enable an installed module, run the following command:
 
     a2enmod [module-name]
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In the `/etc/apache2/mods-available/` directory, files have `.load` and `.conf` extensions. Module names do not include the extensions.
 {{< /note >}}
 

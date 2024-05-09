@@ -1,27 +1,22 @@
 ---
 slug: websites-with-nginx-on-fedora-13
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Websites with nginx on Fedora 13
 description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-25
+modified: 2011-04-29
 keywords: ["nginx fedora 13", "nginx fedora", "nginx", "http", "web servers", "fedora 13"]
 tags: ["web server","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/websites-with-nginx-on-fedora-13/','/websites/nginx/websites-with-nginx-on-fedora-13/','/web-servers/nginx/installation/fedora-13/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-05-25
-title: Websites with nginx on Fedora 13
 relations:
     platform:
         key: websites-with-nginx
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 Nginx is a lightweight and high performance HTTP web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 

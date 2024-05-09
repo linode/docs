@@ -1,17 +1,14 @@
 ---
 slug: how-to-add-and-remove-sudo-access-in-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Add and Remove sudo Access in Ubuntu"
 description: 'A guide explaining how to add admin users, or give users sudo privledges, using Unbuntu 20.10 Groovy Gorilla as an example.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-04-01
+modified: 2021-07-09
 keywords: ['ubuntu','linux','sudo','sudoers','admin','admins','adding users to sudo','adding user to sudoers']
 tags: ["Ubuntu","Linux","sudo","users"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-01
-modified: 2021-07-09
-modified_by:
-  name: Linode
-title: "Add and Remove sudo Access in Ubuntu"
 external_resources:
 - '[sudo home](https://www.sudo.ws/)'
 - '[sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html)'
@@ -27,7 +24,7 @@ external_resources:
 
 1.  This guide assumes you are comfortable using the *command-line interface* (CLI) or have a graphical desktop environment to perform the tasks.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

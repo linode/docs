@@ -1,19 +1,14 @@
 ---
 slug: silver-searcher-on-linux
-author:
-  name: Nathaniel Stickman
+title: "Install and Use Silver Searcher on Linux"
+title_meta: "How to Install and Use Silver Searcher on Linux"
 description: "This guide shows you how to install and use the code-searching tool Silver Searcher. The Silver Searcher is a tool like ack that emphasizes speed and efficiency."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-11-05
 keywords: ['silver searcher ag','ag command linux','ack alternative']
 tags: ['ubuntu', 'debian', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-05
-modified_by:
-  name: Nathaniel Stickman
-title: "Install and Use Silver Searcher on Linux"
-title_meta: "How to Install and Use Silver Searcher on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 ---
 
 The Silver Searcher is a command-line tool for searching code. It is similar to the well-known `ack` command, but improves on performance and adds support for `.*ignore` files. In this guide, you learn more about Silver Searcher and how to install and get started using it on your Linux system.
@@ -24,7 +19,7 @@ The Silver Searcher is a command-line tool for searching code. It is similar to 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

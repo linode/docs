@@ -1,16 +1,14 @@
 ---
 slug: docker-security-essentials
-author:
-  name: Hackersploit
+title: "An Overview of Docker Security Essentials"
 description: "This guide will show you the basics of securing Docker containers, including managing user access, preventing privilege escalations, and more."
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
+modified: 2021-08-09
 keywords: ["docker security", "docker container security", "docker security best practices"]
 tags: ["security", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-09
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: "An Overview of Docker Security Essentials"
 aliases: ['/security/basics/docker-security-essentials/']
 image: DockerSecurityEssentials.png
 ---
@@ -25,7 +23,7 @@ Docker utilizes the host OS Kernel, which makes Docker containers more efficient
 
 In order to secure Docker containers, you need to have a Linux server with Docker running. For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/products/tools/marketplace/guides/docker/). Otherwise, you can find instructions on how to manually install Docker in [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This demonstration has been performed on Ubuntu 18.04. All techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 

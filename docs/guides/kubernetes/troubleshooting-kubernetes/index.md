@@ -1,16 +1,13 @@
 ---
 slug: troubleshooting-kubernetes
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Troubleshoot Issues with Kubernetes"
 description: 'Learn frequently-used troubleshooting commands for Kubernetes and review common Kubernetes issues.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-29
 keywords: ['kubernetes','cluster','troubleshooting','k8s','kubectl']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-29
-modified_by:
-  name: Linode
-title: "Troubleshoot Issues with Kubernetes"
 image: troubleshooting-kube.jpg
 concentrations: ["Kubernetes"]
 external_resources:
@@ -23,14 +20,14 @@ aliases: ['/kubernetes/troubleshooting-kubernetes/','/applications/containers/tr
 1. A reference for commands and options to use when debugging
 2. A list of common problems
 
-I can't really think of all the common problems that could might appear, so I've set up a few to start, and I'm imagining that the list could be expanded over time. We should consider advertising to Support that we would welcome JIRA tickets with recommendations to get addeed to the list, if they start to see certain problems more often. -->
+I can't really think of all the common problems that could might appear, so I've set up a few to start, and I'm imagining that the list could be expanded over time. We should consider advertising to Support that we would welcome JIRA tickets with recommendations to get added to the list, if they start to see certain problems more often. -->
 
 Troubleshooting issues with Kubernetes can be complex, and it can be difficult to account for all the possible error conditions you may see. This guide tries to equip you with the core tools that can be useful when troubleshooting, and it introduces some situations that you may find yourself in.
 
 {{< note title="Where to go for help outside this guide" isCollapsible=true >}}
 If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site and in `#linode` on the [Kubernetes Slack](http://slack.k8s.io/), where other Linode users (and the Kubernetes community) can offer advice.
 
-If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](/docs/guides/support/). Examples in this category include:
+If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](/docs/products/platform/get-started/guides/support/). Examples in this category include:
 
 - Kubernetes' API server not running. If kubectl does not respond as expected, this can indicate problems with the API server.
 
@@ -264,7 +261,7 @@ If you are not able to create new nodes in your cluster, you may see an error me
 Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
 ```
 
-This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/guides/support/#contacting-linode-support).
+This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
 
 ### Insufficient CPU or Memory
 

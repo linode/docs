@@ -1,18 +1,15 @@
 ---
 slug: apache-access-control
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache Access Control'
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-07
+modified: 2015-11-20
 keywords: ["access control", "http auth", "mod_auth", "http", "apache", "web server", "security"]
 tags: ["http","web server","apache","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/configuration/http-authentication/','/websites/apache/apache-access-control/','/web-servers/apache/apache-access-control/','/guides/authbased-access-control-with-apache/','/websites/apache/authbased-access-control-with-apache/','/web-servers/apache/authbased-access-control-with-apache/']
-modified: 2015-11-20
-modified_by:
-  name: Linode
-published: 2009-12-07
-title: 'Apache Access Control'
+aliases: ['/web-servers/apache/configuration/http-authentication/','/websites/apache/apache-access-control/','/web-servers/apache/apache-access-control/','/guides/authbased-access-control-with-apache/','/websites/apache/authbased-access-control-with-apache/','/web-servers/apache/authbased-access-control-with-apache/','/websites/authbased-access-control-with-apache/']
 external_resources:
  - '[Installation of the Apache web server](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
@@ -37,7 +34,7 @@ This guide provides an overview of both credential-based and rule-based access c
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 This guide uses the same example file paths as our [Apache on Debian 8](/docs/guides/apache-web-server-debian-8/) guide. Be sure to adjust for your distribution.

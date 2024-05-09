@@ -1,6 +1,7 @@
 import { isMobile } from '../helpers';
 import { getScrollPosNavbar } from './nav';
 import { AnalyticsEventsCollector } from './nav-analytics';
+import { RecommendationsFetcher } from './recommendations';
 import { initConsentManager } from '../components/index';
 
 export function newNavStore(searchConfig, searchStore, params, Alpine) {
@@ -46,6 +47,8 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 			performance: false,
 		},
 
+		recommendations: new RecommendationsFetcher(searchConfig),
+
 		init() {
 			const tabsKey = 'tabs';
 			const urlDelimiter = ',';
@@ -76,15 +79,14 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 					}
 					activeTabs.sort();
 					// Create a string from the list.
-					// Tilde is used as a separator because it's not allowed in tab ids.
 					let activeTabsString = activeTabs.join(urlDelimiter);
-
-					// Update the URL.
 
 					// Only update the URL if the tabs string has changed.
 					if (currentTabsString !== activeTabsString) {
-						url.searchParams.set(tabsKey, activeTabsString);
-						history.replaceState({ turbo: {} }, '', url);
+						let searchParams = new URLSearchParams(url.search);
+						searchParams.set(tabsKey, activeTabsString);
+						let newUrl = url.pathname + '?' + searchParams.toString();
+						history.replaceState({ turbo: {} }, '', newUrl);
 						debug('tabs', activeTabsString);
 					}
 				}
@@ -107,6 +109,7 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 						eventName: 'DOCS: Guide Load',
 					};
 					this.analytics.handler.pushItem(analyticsItem);
+					this.analytics.handler.startNewPage();
 				}
 			};
 
@@ -144,6 +147,15 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 			// Store the old so we can go back.
 			this.history.push(window.location.pathname);
 			history.pushState({}, '', href);
+		},
+
+		pushTopResults(queryString) {
+			// Add a noindex meta tag to the page so it doesn't get indexed.
+			let meta = document.createElement('meta');
+			meta.name = 'robots';
+			meta.content = 'noindex';
+			document.head.appendChild(meta);
+			this.pushState('/docs/topresults/' + queryString);
 		},
 
 		scrollToNavBarIfPinned() {

@@ -1,17 +1,14 @@
 ---
 slug: set-up-an-ipv6-tunnel-on-your-linode
-author:
-  name: Linode
-  email: docs@linode.com
+title: Set Up an IPv6 Tunnel on Your Linode
 description: 'This guide provides you with instructions on how to setup an IPv6 tunnel to connect your system to a network running on IPv4 and pass traffic from one to another.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-29
+modified: 2018-12-11
 keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/set-up-an-ipv6-tunnel-on-your-linode/','/networking/ipv6-tunnels/','/networking/linode-network/set-up-an-ipv6-tunnel-on-your-linode/']
-modified: 2018-12-11
-modified_by:
-  name: Linode
-published: 2011-04-29
-title: Set Up an IPv6 Tunnel on Your Linode
 tags: ["networking","linode platform"]
 ---
 
@@ -33,7 +30,7 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 
 Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 {{< /note >}}
 
@@ -81,8 +78,7 @@ If everything is working, you should see ping replies. If not, go back and make 
 ## Manual Configuration
 
 The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots. Read the IPv6 documentation for your distribution before proceeding.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 When manually modifying your network configuration, always disable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
 {{< /note >}}
 

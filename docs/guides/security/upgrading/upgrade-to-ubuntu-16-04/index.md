@@ -1,17 +1,14 @@
 ---
 slug: upgrade-to-ubuntu-16-04
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
+title: 'How to Upgrade to Ubuntu 16.04 LTS'
 description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system to the latest LTS (Long Term Support) version of Ubuntu - 16.04 LTS.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2016-04-26
+modified: 2017-03-15
 keywords: ["upgrading", "ubuntu", "16.04"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-03-15
-modified_by:
-  name: Nick Brewer
-published: 2016-04-26
-title: 'How to Upgrade to Ubuntu 16.04 LTS'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
@@ -23,8 +20,7 @@ aliases: ['/security/upgrading/upgrade-to-ubuntu-16-04/']
 ![Upgrade to Ubuntu 16.04](How_to_Upgrade_to_Ubuntu_smg.jpg)
 
 Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Canonical until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
 
  - Create a new Linode with the latest disk template
@@ -36,8 +32,7 @@ The upgrade may be incomplete or your system may be corrupted if your internet c
 
 **Important:** Ubuntu 16.04 ships with OpenSSH 7.2p2, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -67,7 +62,7 @@ It's a good idea to back up your Linode before performing a major upgrade. That 
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#applying-kernel-updates) for more information.
 
 ### Stop Services
 

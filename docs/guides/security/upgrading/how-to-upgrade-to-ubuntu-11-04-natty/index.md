@@ -1,27 +1,22 @@
 ---
 slug: how-to-upgrade-to-ubuntu-11-04-natty
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Ubuntu 11.04 (Natty)'
 description: 'How to upgrade from Ubuntu 10.10 (Maverick) to Ubuntu 11.04 (Natty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-28
+modified: 2013-05-10
 keywords: ["ubuntu 11.04 upgrade", "ubuntu natty upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-11-04-natty/','/upgrading/upgrade-to-ubuntu-11-04-natty/']
-modified: 2013-05-10
-modified_by:
-  name: Linode
-published: 2011-04-28
-title: 'How to Upgrade to Ubuntu 11.04 (Natty)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 11.04
+deprecated: true
 ---
-
-
 
 This guide explains how to upgrade your system to Ubuntu 11.04 (Natty) from Ubuntu 10.10 (Maverick). Before you begin, you should make sure that you have a working backup or a copy of your data. If you haven't already done so, you will also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. You should be logged in as root while performing these steps.
 

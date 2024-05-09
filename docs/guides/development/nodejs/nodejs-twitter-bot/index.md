@@ -1,19 +1,13 @@
 ---
 slug: nodejs-twitter-bot
-author:
-    name: Pj Metz
-    email: metz.pj@gmail.com
+title: "Make a Twitter Bot and Reply to Tweets in Node.js"
 description: "How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding."
+authors: ["Pj Metz"]
+contributors: ["Pj Metz"]
+published: 2021-07-23
 keywords: ["how to make a twitter bot", "node twitter", "reply bot twitter", "node twitter api tutorial"]
 tags: ["version control system", "javascript"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-23
-modified_by:
-    name: Linode
-title: "Make a Twitter Bot and Reply to Tweets in Node.js"
-contributor:
-    name: Pj Metz
-    link: https://www.metzinaround.com
 external_resources:
     - "[Documentation Home | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs)"
     - "[npm Docs](https://docs.npmjs.com/)"
@@ -624,7 +618,7 @@ This section of code defines a `pressSelect` function that sends new Tweets with
 
 Now that the bot code has been added to your workstation's copy of the repository, we should make a new *commit*. A commit in Git records your file changes in the version control history. After making the new commit, you can then **push** it to your repository on GitHub.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 A commit that you make locally is not automatically synced to GitHub. The push operation demonstrated in this tutorial needs to be done manually.
 {{< /note >}}
 

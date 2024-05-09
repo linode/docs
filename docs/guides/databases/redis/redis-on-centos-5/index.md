@@ -1,18 +1,14 @@
 ---
 slug: redis-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Redis on CentOS 5
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-05
+modified: 2013-07-07
 keywords: ["redis centos 5", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/centos-5/','/databases/redis/redis-on-centos-5/']
-modified: 2013-07-07
-modified_by:
-  name: Linode
-published: 2010-08-05
-title: Redis on CentOS 5
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'
@@ -24,6 +20,7 @@ relations:
         keywords:
             - distribution: CentOS 5
 tags: ["nosql","database","centos"]
+deprecated: true
 ---
 
 Redis a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.

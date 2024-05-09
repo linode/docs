@@ -1,19 +1,14 @@
 ---
 slug: using-sorted-sets-in-redis-database
-author:
-  name: Nathaniel Stickman
+title: "Use Sorted Sets in Redis Databases"
+title_meta: "How to Use Sorted Sets in Redis Databases"
 description: "Learn how to use Sorted Sets in your Redis databases, a powerful additional data type for ordered values. You also learn common commands needed to manage Sorted Sets."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-01-21
 keywords: ['redis sorted set example','redis sorted set commands','how do redis sorted sets work']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-21
-modified_by:
-  name: Nathaniel Stickman
-title: "Use Sorted Sets in Redis Databases"
-title_meta: "How to Use Sorted Sets in Redis Databases"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
 ---
@@ -30,7 +25,7 @@ Be sure to check out our other guides in this series, including our previous gui
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,20 +1,13 @@
 ---
 slug: pros-and-cons-of-c-plus-plus
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "The Pros and Cons of C++"
+title_meta: "A Programmers’ Guide to C++: Advantages & Disadvantages"
 description: "As with any programming language, there are pros and cons of C++. Read our guide to find out whether you can benefit from learning C++. ✓ Click to learn more!"
-og_description: "As with any programming language, there are pros and cons of C++. Read our guide to find out whether you can benefit from learning C++. ✓ Click to learn more!"
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-04-01
 keywords: ['pros and cons of c++','advantages of c++','benefits of c++']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-01
-modified_by:
-  name: Nathaniel Stickman
-title_meta: "A Programmers’ Guide to C++: Advantages & Disadvantages"
-title: "The Pros and Cons of C++"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Data Flair: Advantages and Disadvantages of C++ | Make your Next Move!](https://data-flair.training/blogs/advantages-and-disadvantages-of-cpp/)'
 - '[TechVidvan: Advantages and Disadvantages of C++](https://techvidvan.com/tutorials/cpp-pros-and-cons/)'

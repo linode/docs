@@ -1,18 +1,12 @@
 ---
 slug: implementing-cloud-based-document-management-system
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "How to Implement a Cloud-based Document Management System"
 description: "Implementing an efficient electronic document management system (EDMS) can give you a high performance, high availability solution for storing and processing documents. Learn about our architecture for a cloud-based document management system and how to implement your own in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-02-28
 keywords: ['open source document management system','cloud document management system','cloud edms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-28
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Implement a Cloud-based Document Management System"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 tab_group_main:
   title: Guides
   weight: 20

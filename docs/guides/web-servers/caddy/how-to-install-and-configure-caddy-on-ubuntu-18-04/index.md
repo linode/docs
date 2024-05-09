@@ -1,21 +1,16 @@
 ---
 slug: how-to-install-and-configure-caddy-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
+title_meta: "Install and Configure the Caddy Web Server on Ubuntu"
 description: "In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site's domain over HTTPS."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-05
+modified: 2022-02-04
 keywords: ['web server','caddy','https','Caddyfile']
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-05
-modified: 2022-02-04
-modified_by:
-  name: Linode
-title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
-title_meta: "Install and Configure the Caddy Web Server on Ubuntu"
 image: CaddyWebServ_Ubuntu1804.png
-contributor:
-  name: Linode
 relations:
     platform:
         key: install-caddy-server
@@ -43,7 +38,7 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-ubuntu-18-04
 1.  Download Caddy:
 
         sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
-        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/caddy-stable.asc
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
         curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
 
 1.  Install Caddy:

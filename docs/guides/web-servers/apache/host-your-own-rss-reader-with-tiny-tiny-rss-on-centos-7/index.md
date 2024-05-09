@@ -1,25 +1,17 @@
 ---
 slug: host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Host Your Own RSS Reader with Tiny Tiny RSS on CentOS 7'
 description: 'This article gives you step-by-step instructions on how you can self-host your own RSS reader on a Linode running CentOS 7 with the Tiny Tiny RSS app.'
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2017-03-30
 keywords: ["apache", "centos", "rss", "reader", "ttrss", "tt-rss"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7/','/websites/apache/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7/']
-published: 2017-03-30
-modified: 2017-03-30
-modified_by:
-    name: Nick Brewer
-title: 'Host Your Own RSS Reader with Tiny Tiny RSS on CentOS 7'
-contributor:
-  name: Tyler Langlois
-  link: https://github.com/tylerjl
 external_resources:
  - '[Tiny Tiny RSS Installation Notes](https://tt-rss.org/gitlab/fox/tt-rss/wikis/InstallationNotes)'
 ---
-
 
 [Tiny Tiny RSS](https://tt-rss.org/) (or tt-rss for short) is an open-source, self-hosted RSS reader that runs on PHP and a traditional SQL database. Running your own RSS aggregator puts you in control of your data, and Tiny Tiny RSS even supports [mobile apps](https://play.google.com/store/apps/details?id=org.ttrssreader) that connect to your server.
 

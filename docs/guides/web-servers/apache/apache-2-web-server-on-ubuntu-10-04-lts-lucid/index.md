@@ -1,27 +1,22 @@
 ---
 slug: apache-2-web-server-on-ubuntu-10-04-lts-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache 2 Web Server on Ubuntu 10.04 LTS (Lucid)'
 description: 'Instructions for getting started with the Apache web server on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-29
+modified: 2013-10-04
 keywords: ["apache", "apache ubuntu 10.04", "apache ubuntu lucid", "web server", "apache on ubuntu", "apache lucid"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/apache/installation/ubuntu-10-04-lucid/','/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-04-29
-title: 'Apache 2 Web Server on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Ubuntu 10.04 (Lucid). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 10.04](/docs/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/).
 

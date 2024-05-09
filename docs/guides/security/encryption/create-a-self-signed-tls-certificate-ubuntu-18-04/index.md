@@ -1,19 +1,15 @@
 ---
 slug: create-a-self-signed-tls-certificate-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Create a Self-Signed TLS Certificate on Ubuntu 18.04'
+title_meta: 'Creating a Self-Signed TLS Certificate on Ubuntu 18.04'
 description: 'This guide will show you how to create and install a self-signed TLS certificate by using the OpenSSL utility from the command line running on Ubuntu 18.04'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-03-26
 keywords: ["ubuntu tls certificate", "ubuntu ssl certificate", "ubuntu self certified"]
 tags: ["ubuntu", "security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-ubuntu-18-04/']
-modified: 2021-03-26
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: 'How to Create a Self-Signed TLS Certificate on Ubuntu 18.04'
-title_meta: 'Creating a Self-Signed TLS Certificate on Ubuntu 18.04'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:
@@ -81,4 +77,4 @@ Email Address []:admin@example.com
 
         chmod 400 /root/certs/MyKey.key
 
-4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) **This is an important step. Do not skip it!**
+4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) **This is an important step. Do not skip it!**

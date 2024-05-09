@@ -1,18 +1,13 @@
 ---
 slug: using-xargs-with-examples
-author:
-  name: Jeff Novotny
-description: 'Learn what the xargs command is, how it works, and a few of the many functions it can be used to perform within Linux. '
-keywords: ['xarg examples']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-17
-modified_by:
-  name: Linode
 title: "Use the xargs Command"
 title_meta: "How to Use the xargs Command in Linux"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+description: 'Learn what the xargs command is, how it works, and a few of the many functions it can be used to perform within Linux. '
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-06-17
+keywords: ['xarg examples']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[The IEEE and Open Group Base Specification](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/xargs.html)'
 - '[The GNU organization reference page for `xargs`](https://www.gnu.org/software/findutils/manual/html_node/find_html/Invoking-xargs.html)'

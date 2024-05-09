@@ -1,21 +1,16 @@
 ---
 slug: deploy-nginx-ingress-on-lke
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
+title_meta: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
 description: "Learn how to deploy an NGINX Ingress Controller on an LKE Kubernetes Cluster"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-11-12
+modified: 2023-03-14
 keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 'ingress','nginx']
 tags: ["nginx","networking","linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-12
-modified: 2022-01-18
-modified_by:
-  name: Linode
-title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
-title_meta: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
 image: nginx-ingress.png
-contributor:
-  name: Linode
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/','/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/']
@@ -286,7 +281,7 @@ If you would rather not continue using the cluster you just created, review the 
 
 ## Tear Down your LKE Cluster and NodeBalancer
 
-- To remove the NodeBalancer you created, all you need to do is delete the underlying Service. From your workstation:
+- To remove the NodeBalancer you created, delete the corresponding Kubernetes service using one of the commands below and then remove the NodeBalancer from your Linode account.
 
     ```command
     kubectl delete service nginx-ingress-controller
@@ -298,12 +293,10 @@ If you would rather not continue using the cluster you just created, review the 
     kubectl delete -f my-new-ingress.yaml
     ```
 
-- To remove the LKE Cluster and the associated nodes from your account, navigate to the [Linode Cloud Manager](https://cloud.linode.com):
+    {{< note type="warning" >}}
+    If you do not also remove the NodeBalancer from your Linode account, you will continue to be billed for the service. See [Manage NodeBalancers > Delete a NodeBalancer](/docs/products/networking/nodebalancers/guides/manage/#delete-a-nodebalancer) for instructions on removing the NodeBalancer in the Cloud Manager.
+    {{< /note >}}
 
-    1. Click on the **Kubernetes** link in the sidebar. A new page with a table which lists your clusters will appear.
+- To remove the LKE Cluster and the associated nodes from your account, follow the instructions within [Manage Kubernetes Clusters > Delete a Cluster](/docs/products/compute/kubernetes/guides/manage-clusters/#delete-a-cluster).
 
-    1. Click on the **more options elipsis** next to the cluster you would like to delete, and select **Delete**.
-
-    1. You will be prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
-
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context).
+- Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context).

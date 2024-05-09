@@ -1,18 +1,14 @@
 ---
 slug: get-started-with-bokeh-and-python-data-visualizations
-author:
-  name: John Mueller
+title: "Use Bokeh and Python to Create Data Visualizations"
+title_meta: "Get Started With Bokeh and Python Data Visualizations"
 description: 'This guide provides you with an overview of the utility Bokeh, which is an interactive visualization library written in Python and how to use it.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-10-01
 keywords: ['bokeh python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-01
-modified_by:
-  name: Linode
-title: "Use Bokeh and Python to Create Data Visualizations"
-title_meta: "Get Started With Bokeh and Python Data Visualizations"
-contributor:
-  name: John Mueller
 ---
 
 [Bokeh](https://bokeh.org/) is an interactive visualization library that focuses on browser output. This guide introduces you to Bokeh with example code that creates line and bar graphs.
@@ -29,7 +25,7 @@ When you use Bokeh, you find that it produces beautiful interactive graphics wit
 
 This section shows you how to install Bokeh using Pip and Anaconda or Miniconda.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are not familiar with Pip, see our [Managing Python Packages and Versions on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#what-is-pip) guide. To learn how to install Anaconda, see our [How to Install Anaconda on Ubuntu](/docs/guides/how-to-install-anaconda/) guide.
 {{< /note >}}
 

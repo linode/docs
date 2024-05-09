@@ -1,19 +1,14 @@
 ---
 slug: using-lists-and-sets-in-redis-database
-author:
-  name: Nathaniel Stickman
+title: "Use Lists and Sets in Redis Database"
+title_meta: "How to Use  Lists and Sets in Redis Database"
 description: "Redis is a NoSQL database that is known for it support of various data types. This guide shows you how to use Lists and Sets for managing data in your Redis databases."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-01-21
 keywords: ['redis lists tutorial','redis lists vs sets','redis sets example']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-21
-modified_by:
-  name: Nathaniel Stickman
-title: "Use Lists and Sets in Redis Database"
-title_meta: "How to Use  Lists and Sets in Redis Database"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
 ---
@@ -32,7 +27,7 @@ Also, check out our other guides in this series, including our previous guide on
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -83,7 +78,7 @@ For instance:
 
 As you can see from the `RPUSH` example above, the commands support adding multiple elements to a List at the same time.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In Redis, numbers are automatically converted to strings, though Redis also has a few special commands for handling strings that contain numbers. Like `INCR`, which increments the integer held in a string by one.
 {{< /note >}}
 

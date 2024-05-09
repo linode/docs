@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-mariadb-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing MariaDB on Ubuntu 18.04"
+title_meta: "How to Install MariaDB on Ubuntu 18.04"
 description: "MariaDB is a scalable, reliable SQL Server that can serve as a drop-in replacement for MySQL. Here's how to install and configure it on Ubuntu 18.04 LTS."
+authors: ["Ryan Syracuse"]
+contributors: ["Ryan Syracuse"]
+published: 2020-01-31
 keywords: ["mariadb", "Ubuntu 18.04", "ubuntu", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/mariadb-setup-ubuntu-18.04/','/databases/mariadb/how-to-install-mariadb-on-ubuntu-18-04/']
-modified: 2020-01-31
-contributor:
-    name: Ryan Syracuse
-modified_by:
-  name: Linode
-published: 2020-01-31
 image: Installing_MariaDB_on_Ubuntu1804.png
-title: "Installing MariaDB on Ubuntu 18.04"
-title_meta: "How to Install MariaDB on Ubuntu 18.04"
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'

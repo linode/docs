@@ -1,20 +1,14 @@
 ---
 slug: what-is-kubernetes-cert-manager
-author:
-  name: Linode
-  email: docs@linode.com
-contributor:
-  name: Linode
-  link: https://www.linode.com
-description: "Learn how cert-manager works, a tool on Kubernetes designed to assist with the deployment, configuration, and management of certificates on Kubernetes."
-keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster", "ssl", "certbot", "lets-encrypt", "tls"]
-tags: ["secuity","kubernetes"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-05-13
-modified_by:
-  name: Linode
 title: 'Understanding Kubernetes cert-manager'
 title_meta: 'What is Kubernetes cert-manager?'
+description: "Learn how cert-manager works, a tool on Kubernetes designed to assist with the deployment, configuration, and management of certificates on Kubernetes."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-05-13
+keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster", "ssl", "certbot", "lets-encrypt", "tls"]
+tags: ["security","kubernetes"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/kubernetes/deploy-and-manage-kubernetes-certificates-with-cert-manager/','/kubernetes/what-is-kubernetes-cert-manager/']
 external_resources:
  - '[Cert-Manager Documentation](https://cert-manager.io/docs/)'

@@ -1,21 +1,15 @@
 ---
 slug: how-to-set-up-multiple-wordpress-sites-with-lxd-containers
-author:
-  name: Simos Xenitellis
-  email: docs@linode.com
+title: "Setting Up Multiple WordPress Sites with LXD Containers"
+title_meta: "How to Set Up Multiple WordPress Sites with LXD Containers"
 description: 'This guide will show you how to install multiple WordPress sites using LXD containers, with a containerized reverse proxy server and a MySQL database on Linux.'
+authors: ["Simos Xenitellis"]
+contributors: ["Simos Xenitellis"]
+published: 2021-04-16
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization", "letsencrypt", "nginx", "apache2"]
 tags: ["ubuntu", "php", "wordpress", "cms", "container", "nginx", "apache", "database", "mysql", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-16
 image: MultipleWPsites_LXDcont.png
-modified_by:
-  name: Linode
-title: "Setting Up Multiple WordPress Sites with LXD Containers"
-title_meta: "How to Set Up Multiple WordPress Sites with LXD Containers"
-contributor:
-  name: Simos Xenitellis
-  link: https://blog.simos.info/
 external_resources:
   - '[LXD Introduction](https://linuxcontainers.org/lxd/)'
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
@@ -39,7 +33,7 @@ However, within a VM we can further install multiple WordPress instances, each i
 
 This guide explains how to set up WordPress in LXD system containers. This demonstration shows how to host multiple and separate WordPress websites on a single server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 A 2GB Linode shared instance running Ubuntu 20.04 was used to test the instructions in this guide. A different server running a different operating system can be used, but you may need to adjust some instructions. In particular, the instructions for installing LXD may be different.
 {{< /note >}}
 
@@ -65,7 +59,7 @@ The guide is ordered as follows:
 
 1. At the end, the guide presents how to [troubleshoot some common errors that you may run into during set up](#troubleshooting).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
 {{< /note >}}
 
@@ -148,8 +142,7 @@ To keep track of the details, a table is shown below for each database and corre
 |---------------|---------------------|---------------|--------------|
 | wpApache1     | apache1.lxd         | wpUserApache1 | Create a complex and unique password |
 | wpNginx1      | nginx1.lxd          | wpUserNginx1  | Create a complex and unique password |
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may also use arbitrary names for the database name and the username. Make sure you have listed the correct container name. Finally, change the password.
 {{< /note >}}
 
@@ -364,10 +357,10 @@ To finish the setup for your WordPress sites, complete the WordPress installatio
 
 | Website | Database Name | Username      | Password     | Database Host | Table Prefix |
 |---------|---------------|---------------|--------------|---------------|--------------|
-| https://apache1.example.com | wpApache1     | wpUserApache1 | Create a complex and unique password | db.lxd        | wp_          |
-| https://nginx1.example.com  | wpNginx1      | wpUserNginx1  | Create a complex and unique password | db.lxd        | wp_          |
+| https://apache1.example.com | wpApache1     | wpUserApache1 | Create a complex and unique password | db.lxd        | `wp_`          |
+| https://nginx1.example.com  | wpNginx1      | wpUserNginx1  | Create a complex and unique password | db.lxd        | `wp_`          |
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The passwords that you choose during the installation wizard should be unique and different from the passwords used in the earlier [database setup section](#configure-the-database-for-each-wordpress-installation).
 {{< /note >}}
 
@@ -427,7 +420,7 @@ If your container is `nginx1`, then run the following command to view the curren
 
 The output should be similar the following. The current memory use in this example is 164MB while the peak memory use was a bit over 300MB.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Resources:
   Processes: 30
   Disk usage:

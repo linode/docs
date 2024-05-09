@@ -1,23 +1,20 @@
 ---
 slug: dolphin
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
+title: Dolphin
 description: Dolphin is an open source software tool for building social networks. This guide will show how to install Dolphin on top of a LAMP stack.
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2012-07-10
+modified: 2013-10-04
 keywords: ["social network", "dolphin", "boonex"]
 tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/social-networking/dolphin/','/web-applications/social-networking/dolphin/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2012-07-10
-title: Dolphin
-deprecated: true
 external_resources:
     - '[Boonex Home Page](http://www.boonex.com)'
     - '[Boonex Plug-in Market](http://www.boonex.com/market)'
     - '[Boonex Forums](http://www.boonex.com/forums/)'
+deprecated: true
 ---
 
 [Dolphin](http://www.boonex.com/dolphin) is an open-source software package for building social networks, dating sites and niche communities. Dolphin's features include video chat, video messenger, iPhone app, Android App, Adobe AIR desktop app, groups, events, blogs, files, media sharing, a store, and more. Dolphin also allows developers to create plugins to add additional functionality or features. You can use the [Dolphin Market](http://www.boonex.com/market) to find extensions, design templates, mods, plugins, language packs and third party software integrations.

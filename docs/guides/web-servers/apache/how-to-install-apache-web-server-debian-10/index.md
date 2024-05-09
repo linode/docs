@@ -1,18 +1,15 @@
 ---
 slug: how-to-install-apache-web-server-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Apache Web Server on Debian 10'
+title_meta: 'How to Install Apache Web Server on Debian 10'
 description: 'Install Apache on your Debian 10 server, configure virtual hosting, and set up modules and scripting.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-07-31
+modified: 2018-12-31
 keywords: ["apache", "debian", "debian 10", "http", "web server"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-31
-modified_by:
-  name: Linode
-published: 2015-07-31
-title: 'Installing Apache Web Server on Debian 10'
-title_meta: 'How to Install Apache Web Server on Debian 10'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
@@ -29,7 +26,7 @@ The *Apache HTTP Web Sever* (Apache) is an open source web application for deplo
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

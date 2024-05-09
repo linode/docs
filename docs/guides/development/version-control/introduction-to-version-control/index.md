@@ -1,17 +1,13 @@
 ---
 slug: introduction-to-version-control
-author:
-  name: Linode
-  email: docs@linode.com
+title: Introduction to Version Control
 description: 'This guide will help you get started with Version Control, a special application that stores and manages each revision of the files that make up your codebase.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-09-18
 keywords: ["version control", "introduction to version control", "git", "introduction to git"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/intro-version-control/','/applications/development/introduction-to-version-control/','/development/version-control/introduction-to-version-control/']
-modified: 2013-09-18
-modified_by:
-  name: Linode
-published: 2013-09-18
-title: Introduction to Version Control
 external_resources:
  - '[Version Control Systems](/docs/development/version-control/)'
 audiences: ["foundational"]

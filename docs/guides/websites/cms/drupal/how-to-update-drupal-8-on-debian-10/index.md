@@ -1,20 +1,16 @@
 ---
 slug: how-to-update-drupal-8-on-debian-10
-author:
-    name: Linode
-    email: docs@linode.com
+title: Update Drupal 8 on Debian 10
+title_meta: How to Update Drupal 8 on Debian 10
 description: 'This guide will show you how to update your Drupal 8 installation running on a Debian 10 Linode.'
 og_description: 'This guide will show you how to update your Drupal 8 installation running on an Debian 10 Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-21
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "update"]
 tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-21
-modified_by:
-    name: Linode
-published: 2020-02-21
 image: Drupal8onDebian10.png
-title: Update Drupal 8 on Debian 10
-title_meta: How to Update Drupal 8 on Debian 10
 relations:
     platform:
         key: how-to-update-drupal-8

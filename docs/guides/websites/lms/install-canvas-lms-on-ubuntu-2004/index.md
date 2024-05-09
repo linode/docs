@@ -1,20 +1,14 @@
 ---
 slug: install-canvas-lms-on-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide will show you how to install Canvas, a learning management system that enables you to create a website for education or training courses, on Ubuntu 20.04.'
-keywords: ['canvas','education','training','learning management system','lms','install on ubuntu 20.04']
-tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
-modified_by:
-  name: Nathaniel Stickman
 title: "Installing Canvas on Ubuntu 20.04"
 title_meta: "How to Install Canvas LMS on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+description: 'This guide will show you how to install Canvas, a learning management system that enables you to create a website for education or training courses, on Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-28
+keywords: ['canvas','education','training','learning management system','lms','install on ubuntu 20.04']
+tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis', 'education']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Canvas](https://www.instructure.com/canvas)'
 - '[open source](https://github.com/instructure/canvas-lms)'
@@ -30,6 +24,8 @@ relations:
         key: how-to-install-canvas
         keywords:
             - distribution: Ubuntu 20.04
+deprecated: true
+deprecated_link: '/docs/guides/install-canvas-lms-on-ubuntu-2204/'
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a popular learning management system (LMS) noteworthy for its modern design and ease of use. Canvas provides a comprehensive website for education and training courses, whether those courses are in-person, online, or a mix of the two. Moreover, Canvas is [open source](https://github.com/instructure/canvas-lms). You can freely download and install an instance on your server, giving you a higher degree of control than with a hosted LMS.
@@ -52,7 +48,7 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
 
 1. Replace `example.com` in this guide with your server's domain name. You can complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name for your Linode server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -114,7 +110,7 @@ Canvas specifically requires version **2.7** of Ruby, which the default package 
 
 1. Install Ruby and its development components:
 
-        sudo apt-get install ruby2.6 ruby2.6-dev zlib1g-dev libxml2-dev libsqlite3-dev postgresql libpq-dev  libxmlsec1-dev curl make g++
+        sudo apt-get install ruby2.7 ruby2.7-dev zlib1g-dev libxml2-dev libsqlite3-dev postgresql libpq-dev  libxmlsec1-dev curl make g++
 
 1. Install Bundler, which Canvas uses for managing its Ruby libraries ("Gems"). Canvas specifically calls for version **2.1.4** of Bundler:
 

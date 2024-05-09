@@ -1,17 +1,13 @@
 ---
 slug: what-is-cryptography
-author:
-  name: Pam Baker
-description: 'What is cryptography in communication? Read our guide to learn more about cryptography in cyber security, how it works, and why it’s important.'
-keywords: ['what is cryptography','cryptography definition','cryptographic']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-15
-modified_by:
-  name: Linode
 title: "How Cryptography Enables Secure Communication"
 title_meta: "Understanding Cryptography’s Meaning and Function"
-contributor:
-  name: Pam Baker
+description: 'What is cryptography in communication? Read our guide to learn more about cryptography in cyber security, how it works, and why it’s important.'
+authors: ["Pam Baker"]
+contributors: ["Pam Baker"]
+published: 2022-04-15
+keywords: ['what is cryptography','cryptography definition','cryptographic']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Cryptography is a cornerstone of modern secure communication practices. From digital signatures to disk encryption, these everyday applications of cryptography enable users of the Internet, developers, and business to keep sensitive data private. This guide provides an overview of what cryptography is, a brief history of cryptography, and the differences between symmetric asymmetric encryption.

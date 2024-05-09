@@ -1,17 +1,13 @@
 ---
 slug: difference-between-tcp-and-udp
-author:
-  name: Jeff Novotny
-description: 'What is the difference between TCP and UDP? This guide explains how each works, the key differences between these two internet protocols. Learn more here.'
-keywords: ['difference between tcp and udp','what is tcp and udp','tcp vs udp','tcp/udp']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-25
-modified_by:
-  name: Linode
 title: "What is the Difference Between TCP and UDP? "
 title_meta: "The Difference Between TCP and UDP Explained | Linode"
-contributor:
-  name: Jeff Novotny
+description: 'What is the difference between TCP and UDP? This guide explains how each works, the key differences between these two internet protocols. Learn more here.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-03-25
+keywords: ['difference between tcp and udp','what is tcp and udp','tcp vs udp','tcp/udp']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[IETF TCP RFC 793](https://datatracker.ietf.org/doc/html/rfc793)'
 - '[IETF UDP RFC 768](https://datatracker.ietf.org/doc/html/rfc768)'

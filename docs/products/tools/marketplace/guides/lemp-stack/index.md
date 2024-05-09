@@ -1,19 +1,11 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy a LEMP Stack through the Linode Marketplace"
 description: "This guide shows you how to use the Linode Marketplace to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode Compute Instance."
-keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
-tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy a LEMP Stack through the Linode Marketplace"
+keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
+tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
 image: feature.png
-contributor:
-  name: Linode
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'
 aliases: ['/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/', '/guides/deploy-lemp-stack-with-one-click-apps/','/guides/deploy-lemp-stack-with-marketplace-apps/','/guides/lemp-stack-marketplace-app/']
@@ -33,15 +25,18 @@ The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysq
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** 1GB Shared Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ### LEMP Stack Options
 
-- **Database Root Password** *(required)*: The root password for your LEMP stack's MySQL database. This is not the same as the Linux root user password.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+    {{< note >}}
+    The password for the MySQL root user is automatically generated and provided in the file `/home/$USERNAME/.credentials` when the LEMP deployment completes.
+    {{< /note >}}
+
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
@@ -73,5 +68,9 @@ The LEMP Stack Marketplace App installs the following software on your Compute I
 | [**MySQL Server**](https://www.mysql.com) | Relational database. |
 | [**PHP 7.4**](https://www.php.net) | General purpose programming language. |
 | [**UFW (Uncomplicated Firewall)**](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) | Firewall utility. Ports 22/tcp and 80/tcp for IPv4 and IPv6 will allow outgoing and incoming traffic. |
+
+## Going Further
+
+- [Marketplace Apps Repository](https://github.com/linode-solutions/marketplace-apps): Review the deployment Ansible playbooks.
 
 {{< content "marketplace-update-note-shortguide">}}

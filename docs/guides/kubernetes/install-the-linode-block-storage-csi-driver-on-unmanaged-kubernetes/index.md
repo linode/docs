@@ -1,17 +1,14 @@
 ---
 slug: install-the-linode-block-storage-csi-driver-on-unmanaged-kubernetes
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install the Linode Block Storage CSI Driver on Kubernetes"
 description: 'How to Install the Linode Block Storage CSI Driver.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-29
+modified: 2020-12-02
 keywords: ['container','kubernetes','block','storage','volume','csi','interface','driver']
 tags: ["linode platform","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-29
-modified: 2020-12-02
-modified_by:
-  name: Linode
-title: "Install the Linode Block Storage CSI Driver on Kubernetes"
 external_resources:
 - '[Kubernetes PersistentVolumeClaims Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)'
 - '[Container Storage Interface (CSI) Spec](https://github.com/container-storage-interface/spec/blob/master/spec.md)'

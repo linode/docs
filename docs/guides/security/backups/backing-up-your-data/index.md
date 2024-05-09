@@ -1,17 +1,14 @@
 ---
 slug: backing-up-your-data
-author:
-  name: Linode
-  email: docs@linode.com
+title: Backing Up Your Data
 description: "This guide reviews different methods of backing up your Linode's data."
 og_description: "This guide reviews different methods of backing up your Linode's data. It also demonstrates making manual and automatic backups using rsync."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-04-04
+modified: 2017-12-27
 keywords: ["backup", "backups", "rsync", "cron", "getting started"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-27
-modified_by:
-  name: Linode
-published: 2013-04-04
-title: Backing Up Your Data
 external_resources:
  - '[rsync Man Page](http://linux.die.net/man/1/rsync)'
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
@@ -304,8 +301,7 @@ OS X users can also follow the instructions presented in the previous [Set Up Au
 Your final crontab entry in Step 9 should look like this:
 
     0      3       *       *       *       rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date +\%Y-\%m-\%d)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you run into a permissions error with cron but not when you run the command manually, you might have a password on your SSH key which doesn't normally pop up because you have it stored in the Mac OS X keychain. You might want to set up a new OS X user with a passwordless key for the purpose of this cron job.
 {{< /note >}}
 
@@ -446,8 +442,7 @@ Rsync is a powerful tool, but the half-dozen options in the example commands use
     rsync -ahvz user@production_server:/path/to/source/content /path/to/local/backup/storage/
 
 ### rsync
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For a basic overview of rsync, [check out the manual page](http://linux.die.net/man/1/rsync).
 {{< /note >}}
 

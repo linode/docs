@@ -1,17 +1,13 @@
 ---
 slug: create-a-simple-microsite
-author:
-  name: Linode
-  email: docs@linode.com
+title: Create a Simple Microsite
 description: 'Combine the capabilities of the Akamai and Linode platforms to create a complete end-to-end solution for a simple microsite.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-10-13
 keywords: ["microsite", "cdn", "high availability"]
 tags: ["linode platform","akamai platform","web server","cdn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-10-13
-modified_by:
-  name: Linode
-published: 2022-10-13
-title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
 ---
 
@@ -61,7 +57,7 @@ To avoid an unexpected bill make sure to delete this Linode Compute Instance onc
 
 1.  Log in to the [Linode Cloud Manager](https://login.linode.com/login) and select the **Marketplace** link from the left navigation menu. This displays the Linode Create page with the Marketplace tab pre-selected.
 
-    You can read [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/) to learn more about features and services available in Linode’s Cloud Manager.
+    You can read [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-cloud-manager/) to learn more about features and services available in Linode’s Cloud Manager.
 
 1.  Use the **Select an App** field to search for the Node.js Marketplace App and select it.
 
@@ -85,7 +81,7 @@ If you plan to utilize Linode DNS Manager, we recommend taking steps now familia
 
 1.  Enter a root password.
 
-1.  Select any SSH keys for root access. For more information, refer to the [Cloud Manager guide: Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/).
+1.  Select any SSH keys for root access. For more information, refer to the [Cloud Manager guide: Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/).
 
 1.  Select **Private IP** under **Add-ons**.
 

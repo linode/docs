@@ -1,16 +1,14 @@
 ---
 slug: install-openvpn-access-server-on-linux
-author:
-    name: James Stewart
+title: Manage OpenVPN with OpenVPN Access Server
 description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2015-04-30
+modified: 2019-08-12
 keywords: ["openvpn", "vpn"]
 aliases: ['/networking/vpn/install-openvpn-access-server-on-linux/','/networking/vpn/openvpn-access-server/','/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-08-12
-modified_by:
-    name: Linode
-published: 2015-04-30
-title: Manage OpenVPN with OpenVPN Access Server
 tags: ["networking","security","vpn"]
 ---
 
@@ -208,8 +206,7 @@ If you are connecting a headless machine to your OpenVPN server, such as another
 1.  Choose **Extended test**. The resulting IP addresses should be for the DNS resolvers you chose for your client device.
 
 1.  To ensure that no IPv6 traffic is coming from the VPN server, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.
 {{< /note >}}
 
@@ -228,7 +225,7 @@ Resolve this by disabling compression. Go to the Admin UI and click **Advanced V
 
 You can add additional users to your OpenVPN Access Server to enable auditing of connections to your VPN tunnel, and user level access control.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 OpenVPN Access Server's free edition is limited to two users. If you require additional users for your VPN, you can view pricing details and purchase licenses at [OpenVPN's Website](https://openvpn.net/index.php/access-server/pricing.html)
 {{< /note >}}
 
@@ -247,8 +244,7 @@ OpenVPN Access Server's free edition is limited to two users. If you require add
 ### Permit Autologin Profiles
 
 If you wish to configure autologin profiles, you will need to modify your user settings to allow autologin profiles to be displayed on the connections page.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This configuration type can be useful for connecting other servers to your VPN on startup, or for configuring a system that will always route all of its traffic over the VPN automatically.  Utilizing this type of profile will cause all of your non-local traffic to be routed over the VPN automatically.  If you wish to enable and disable your VPN at will, you will want to utilize User or Server locked profiles instead.
 {{< /note >}}
 

@@ -1,18 +1,15 @@
 ---
 slug: remove-unused-network-facing-services
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Remove Unused Network-Facing Services"
+title_meta: "How to Remove Unused Network-Facing Services"
 description: "Learn how to remove unused services that are exposed to the network and why you should."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-02-16
+modified: 2022-02-15
 keywords: ["security", "secure", "remove services"]
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-16
-modified: 2022-02-15
-modified_by:
-  name: Linode
-title: "Remove Unused Network-Facing Services"
-title_meta: "How to Remove Unused Network-Facing Services"
 ---
 
 Most Linux distributions install with running network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running processes and installed packages.
@@ -49,7 +46,7 @@ You will likely be administering your server primarily through an SSH connection
 
 However, some services are unnecessary and should be removed unless you have a specific need for them. Some examples could be [Exim](https://www.exim.org/), [Apache](https://httpd.apache.org/) and [RPC](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are using the [Apache](https://httpd.apache.org/) web server as part of your configuration, it is recommended in most cases to disable `Directory Listing` as this setting is enabled by default and can pose a security risk. For more information, see [Apache's Documentation](https://cwiki.apache.org/confluence/display/HTTPD/DirectoryListings).
 {{< /note >}}
 

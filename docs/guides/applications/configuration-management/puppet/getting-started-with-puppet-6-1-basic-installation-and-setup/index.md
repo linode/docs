@@ -1,17 +1,13 @@
 ---
 slug: getting-started-with-puppet-6-1-basic-installation-and-setup
-author:
-    name: Linode
-    email: docs@linode.com
+title: Getting Started with Puppet - Installation and Setup
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu and CentOS servers.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-01-15
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-15
-modified_by:
-    name: Linode
-published: 2019-01-15
-title: Getting Started with Puppet - Installation and Setup
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'

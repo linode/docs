@@ -1,27 +1,22 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Run PHP Applications under CGI with Apache on Debian 5'
 description: 'Methods for enabling dynamic content run as individual users with PHP on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-18
+modified: 2014-01-13
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/debian-5-lenny/','/websites/apache/run-php-applications-under-cgi-with-apache-on-debian-5-lenny/','/web-servers/apache/run-php-applications-under-cgi-with-apache-on-debian-5-lenny/']
-modified: 2014-01-13
-modified_by:
-  name: Linode
-published: 2009-12-18
-title: 'Run PHP Applications under CGI with Apache on Debian 5'
 relations:
     platform:
         key: php-cgi-apache
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 In most cases, we recommend using `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the Web Server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges; when the PHP interpreter is embedded in the web server process, PHP scripts are executed by and with the permissions of the web server's user. In smaller deployments, this is perfectly acceptable, but in larger deployments and operations it can create security risks. While Apache's `itk` message passing module (mpm) makes it possible to run Apache processes under user processes in a per-virtual host setup, this is incompatible with the embedded interpreter. The `itk` module is compatible with PHP running as a CGI process.
 

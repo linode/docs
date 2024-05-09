@@ -3,14 +3,12 @@ title: "Create an OAuth App with the Linode Python API Library"
 description: 'Create an OAuth 2 app utilizing the Linode API through the Linode APIv4 Python library.'
 published: 2019-01-21
 modified: 2022-11-30
-modified_by:
-  name: Linode
 external_resources:
 - '[Linode APIv4 Python library documentation](https://linode-api4.readthedocs.io/en/latest/index.html)'
 - '[Linode APIv4 Python library example app repository](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode)'
 image: how-to-create-an-oauth-app-with-the-linode-python-api-library.png
 keywords: ['linode','api','python','library','oauth']
-tags: ["linode platform","python"]
+tags: ["linode platform","python","managed hosting"]
 aliases: ['/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/']
 ---
 
@@ -186,21 +184,23 @@ When the user returns to your app from the Linode login page, they will be direc
 
 {{< note >}}
 Below is a list of available scopes:
-
-- OAuthScopes.Linodes
-- OAuthScopes.Domains
+- OAuthScopes.Linodes 
+- OAuthScopes.Domains 
 - OAuthScopes.StackScripts
-- OAuthScopes.Users
-- OAuthScopes.NodeBalancers
-- OAuthScopes.Tokens
-- OAuthScopes.IPs
-- OAuthScopes.Tickets
-- OAuthScopes.Clients
 - OAuthScopes.Account
-- OAuthScopes.Events
-- OAuthScopes.Volumes
+- OAuthScopes.NodeBalancers
+- OAuthScopes.Databases
+- OAuthScopes.IPs*
+- OAuthScopes.Firewall
+- OAuthScopes.LKE
+- OAuthScopes.Events 
+- OAuthScopes.Volumes 
+- OAuthScopes.LongView
+- OAuthScopes.ObjectStorage
+- OAuthScopes.Images
 
-Each scope is broken into five permissions: `view`, `create`, `modify`, `delete`, and `all`. The `all` permission encompasses the other four permissions.
+
+Each scope is broken into five permissions: `ready_only`, and `read_write`. For more information about the scopes and permissions see, [OAuth reference](/docs/api/#oauth-reference) documentation.
 {{< /note >}}
 
 ### Manage the OAuth 2 Callback URL

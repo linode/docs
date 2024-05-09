@@ -1,19 +1,14 @@
 ---
 slug: beginners-guide-to-kubernetes
-author:
-  name: Andy Stevens
-  email: docs@linode.com
-description: 'This is the main introduction page for the mutli-part series - An Introduction to Kubernetes Concepts and Components where you will learn about the various parts of Kubernetes.'
-keywords: ['kubernetes','k8s','beginner','architecture']
-tags: ["kubernetes","container"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-29
-modified_by:
-  name: Linode
 title: "A Beginner's Guide to Kubernetes (Series)"
+description: 'This is the main introduction page for the multi-part series - An Introduction to Kubernetes Concepts and Components where you will learn about the various parts of Kubernetes.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-29
+keywords: ['kubernetes','k8s','beginner','architecture']
+tags: ["kubernetes","container","managed hosting","education", "gaming"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes/','/applications/containers/beginners-guide-to-kubernetes/','/kubernetes/beginners-guide-to-kubernetes/']
-contributor:
-  name: Linode
 concentrations: ["Kubernetes", "container"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'

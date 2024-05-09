@@ -1,17 +1,14 @@
 ---
 slug: discussion-forums-with-fluxbb
-author:
-  name: Linode
-  email: docs@linode.com
+title: Discussion Forums with FluxBB
 description: 'Install the simple and lightweight Discussion forum FluxBB on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-01
 keywords: ["bulletin board", "forum", "discussion forum", "fluxbb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/bulletin-boards/fluxbb/','/websites/forums/discussion-forums-with-fluxbb/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2010-05-03
-title: Discussion Forums with FluxBB
 deprecated: true
 ---
 

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Manage Multiple Accounts with the Linode CLI"
 description: "How to use the Linode CLI to manage multiple Linode accounts."
 published: 2022-12-06

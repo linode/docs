@@ -1,27 +1,22 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-11-04-natty
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on Ubuntu 11.04 (Natty)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 11.04 (Natty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-05-03
+modified: 2012-10-31
 keywords: ["nginx perl ubuntu 11.04", "nginx perl fastcgi", "nginx ubuntu natty", "fastscgi perl", "nginx ubuntu"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/perl-fastcgi/ubuntu-11-04-natty/','/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/']
-modified: 2012-10-31
-modified_by:
-  name: Linode
-published: 2011-05-03
-title: 'Nginx and Perl-FastCGI on Ubuntu 11.04 (Natty)'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 11.04
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Ubuntu 11.04 (Natty) Linode.
 

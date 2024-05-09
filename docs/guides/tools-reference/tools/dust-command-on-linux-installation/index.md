@@ -1,19 +1,14 @@
 ---
 slug: dust-command-on-linux-installation
-author:
-  name: Jeff Novotny
+title: "Check Disk Usage on Linux with the dust Command"
+title_meta: "Installing and Using dust on Linux"
 description: 'Dust is a replacement for the Linux du command. In this guide, you learn how to use dust to view your Linux system''s disk usage.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-11-12
 keywords: ['Dust linux', 'linux check disk space','Check disk usage Linux','Du replacement']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-12
-modified_by:
-  name: Linode
-title: "Check Disk Usage on Linux with the dust Command"
-title_meta: "Installing and Using dust on Linux"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Dust page on GitHub](https://github.com/bootandy/dust)'
 ---
@@ -69,7 +64,7 @@ A good strategy is to use dust to get a quick overview of the system's disk spac
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

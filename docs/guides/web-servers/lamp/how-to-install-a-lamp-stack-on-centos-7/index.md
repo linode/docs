@@ -1,18 +1,15 @@
 ---
 slug: how-to-install-a-lamp-stack-on-centos-7
-author:
-    name: Joel Kruger
-    email: docs@linode.com
+title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
+title_meta: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
 description: "Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP. ✓ Read now!"
+authors: ["Joel Kruger"]
+contributors: ["Joel Kruger"]
+published: 2015-12-01
+modified: 2022-01-14
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-01-14
-modified_by:
-    name: Linode
-published: 2015-12-01
-title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
-title_meta: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
 aliases: ['/websites/lamp/lamp-on-centos-7/','/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/','/web-servers/lamp/lamp-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
@@ -169,8 +166,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
 {{< /note >}}
 

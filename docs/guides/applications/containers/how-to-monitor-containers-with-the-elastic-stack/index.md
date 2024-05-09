@@ -1,17 +1,13 @@
 ---
 slug: how-to-monitor-containers-with-the-elastic-stack
-author:
-  name: Tyler Langlois
-  email: ty@tjll.net
+title: Container Instrumentation with the Elastic Stack
 description: 'This guide will show you how to configure Filebeat and Metricbeat to montior Docker container logs & metrics for visualization with Elastic Stack in Kibana.'
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2019-02-10
 keywords: ["elastic", "filebeat", "metricbeat", "elasticsearch", "kibana", "docker", "container", "nginx"]
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-10
-modified_by:
-  name: Linode
-published: 2019-02-10
-title: Container Instrumentation with the Elastic Stack
 external_resources:
 - '[Filebeat Modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html)'
 - '[Metricbeat Modules](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html)'
@@ -245,11 +241,11 @@ The following example demonstrates how Filebeat and Metricbeat automatically cap
 
 1.  Index Patterns dictate how Kibana understands indices that are present in Elasticsearch. In order for some visualizations to display properly, a default index pattern must first be configured. Select **filebeat-\*** on the left side of the page to configure the filebeat-* index pattern.
 
-    ![Kibana 6 Index Patterns](./kibana-filebeat-index.png "Kibana 6 Index Patterns")
+    ![Kibana 6 Index Patterns](kibana-filebeat-index.png "Kibana 6 Index Patterns")
 
 1.  Click the **star icon** in the upper right corner of the page to set this index pattern as the default in Kibana.
 
-    ![Kibana 6 Default Index Pattern](./kibana-filebeat-default.png "Kibana 6 Default Index Pattern")
+    ![Kibana 6 Default Index Pattern](kibana-filebeat-default.png "Kibana 6 Default Index Pattern")
 
     Kibana is now properly configured with a default index pattern.
 

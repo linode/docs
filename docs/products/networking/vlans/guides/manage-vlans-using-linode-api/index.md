@@ -1,17 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Create a Private Network with VLANs Using Linode's API"
 description: "Want to create your own private networks in the cloud? Here's how you can use the Linode API to do so by attaching new and existing Linodes to VLANs."
+published: 2021-04-07
 keywords: ['linode vlan','linode vlan api']
 tags: ["security", "networking", "linode platform"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-07
-modified_by:
-  name: Linode
-title: "Create a Private Network with VLANs Using Linode's API"
-contributor:
-  name: Linode
 aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/','/guides/how-to-create-a-private-network-with-linode-vlans-api/','/guides/vlan-api/']
 ---
 

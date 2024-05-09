@@ -1,27 +1,22 @@
 ---
 slug: email-with-postfix-courier-and-mysql-on-fedora-13
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Email with Postfix, Courier and MySQL on Fedora 13'
 description: 'Install and configure the Postfix MTA to work with Courier and MySQL for virtual domains on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-06-02
+modified: 2011-05-17
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on fedora 13", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["fedora","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-courier-and-mysql-on-fedora-13/','/email/postfix/courier-mysql-fedora-13/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-06-02
-title: 'Email with Postfix, Courier and MySQL on Fedora 13'
 relations:
     platform:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
 

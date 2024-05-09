@@ -1,19 +1,14 @@
 ---
 slug: how-to-configure-http-2-on-apache
-author:
-  name: Jeff Novotny
+title: "Configure HTTP/2 on Apache"
+title_meta: "How to Configure HTTP/2 on Apache"
 description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-07-16
 keywords: ['apache https']
 tags: ['web server', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-16
-modified_by:
-  name: Linode
-title: "Configure HTTP/2 on Apache"
-title_meta: "How to Configure HTTP/2 on Apache"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 ---
 
 [*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) is an update to the original [*Hypertext Transfer Protocol*](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (HTTP) specification offering improvements in efficiency and latency. The new version, which adds several useful features, is compatible with browsers that only support HTTP/1. HTTP/2 has many advantages and no significant drawbacks, so upgrading to the new version is recommended. This guide explains how to configure and use HTTP/2 on an Apache server and how to test it is working.
@@ -32,7 +27,7 @@ For more comprehensive information and a collection of resources about HTTP/2, s
 
 1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -49,7 +44,7 @@ The following high-level steps are involved in configuring HTTP/2 on [*Apache*](
 
 Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/guides/apache-configuration-basics/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 HTTP/2 support requires Apache version 2.4.17 or higher.
 {{< /note >}}
 

@@ -1,18 +1,15 @@
 ---
 slug: configure-a-firewall-with-arno-iptables-in-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Configure a Firewall with Arno Iptables in Debian 5'
 description: 'Protecting access to your Linode with the arno-iptables-firewall package.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-06
+modified: 2013-10-01
 keywords: ["arno-iptables-firewall", "Debian firewall", "Linux firewall", "networking"]
 tags: ["networking","security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/firewalls/arno-iptables-debian-5-lenny/','/security/firewalls/configure-a-firewall-with-arno-iptables-in-debian-5-lenny/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2009-08-06
-title: 'Configure a Firewall with Arno Iptables in Debian 5'
 deprecated: true
 ---
 

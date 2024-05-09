@@ -1,16 +1,13 @@
 ---
 slug: enabling-https-using-certbot-with-nginx-on-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Use Certbot to Enable HTTPS with NGINX on CentOS 8"
 description: "Learn how to install and use Certbot with NGINX on CentOS/RHEL 8, which automates the process adding TLS/SSL to your websites."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
 tags: ['ssl','nginx', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-modified_by:
-  name: Linode
-title: "Use Certbot to Enable HTTPS with NGINX on CentOS 8"
 aliases: ['/quick-answers/websites/how-to-install-certbot-on-centos-8/','/quick-answers/websites/certbot/how-to-install-certbot-on-centos-8/','/guides/how-to-install-certbot-on-centos-8/']
 relations:
     platform:
@@ -33,7 +30,7 @@ Before continuing with this guide, you need a website accessible over HTTP using
 
 3.  **The NGINX web server software installed on your server and configured for your domain.** You can review the [How to Install NGINX on CentOS 8](/docs/guides/how-to-install-nginx-centos-8/) guide for information on installing and configuring NGINX.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

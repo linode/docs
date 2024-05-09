@@ -1,19 +1,15 @@
 ---
 slug: manage-development-with-the-mantis-bug-tracker-on-centos-5
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: Manage Development with the Mantis Bug Tracker on CentOS 5
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on CentOS 5.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2011-04-05
+modified: 2011-04-29
 keywords: ["mantis", "mantis fedora", "mantis linux", "bug tracker", "development"]
 tags: ["centos", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/manage-development-with-the-jmantis-bug-tracker-on-centos-5/','/web-applications/project-management/mantis/centos-5/','/applications/development/manage-development-with-the-mantis-bug-tracker-on-centos-5/','/development/bug-tracking/manage-development-with-the-mantis-bug-tracker-on-centos-5/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: Manage Development with the Mantis Bug Tracker on CentOS 5
 external_resources:
  - '[MantisBT Website](http://www.mantisbt.org/)'
  - '[MantisBT Plugin Page](http://deboutv.free.fr/mantis/)'
@@ -24,6 +20,7 @@ relations:
         key:  mantis-bug-tracker
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.

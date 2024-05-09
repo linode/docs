@@ -1,19 +1,14 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 description: "Deploy Prometheus & Grafana on a Linode Compute Instance. This application provides you with a reliable monitoring solution for all of your infrastructure. "
+published: 2022-03-29
+modified: 2024-04-29
 keywords: ['monitoring','observability']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-29
-modified_by:
-  name: Linode
-title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'
-aliases: ['/products/tools/marketplace/guides/prometheusgrafana']
+aliases: ['/products/tools/marketplace/guides/prometheusgrafana','/platform/marketplace/how-to-deploy-grafana-with-marketplace-apps/', '/platform/one-click/how-to-deploy-grafana-with-one-click-apps/','/guides/how-to-deploy-grafana-with-one-click-apps/','/guides/how-to-deploy-grafana-with-marketplace-apps/','/guides/grafana-marketplace-app/','/products/tools/marketplace/guides/grafana/','/platform/marketplace/how-to-deploy-prometheus-with-marketplace-apps/', '/platform/one-click/how-to-deploy-prometheus-with-one-click-apps/','/guides/how-to-deploy-prometheus-with-one-click-apps/','/guides/how-to-deploy-prometheus-with-marketplace-apps/','/guides/prometheus-marketplace-app/','/products/tools/marketplace/guides/prometheus/']
 ---
 
 This Marketplace App installs both [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/), two open source tools that are commonly used together to collect and view data.
@@ -34,7 +29,7 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Prometheus and Grafana Options
@@ -64,7 +59,9 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 1.  Once logged in, run the following command:
 
-        cat /root/credentials.txt
+    ```command
+    cat /root/credentials.txt
+    ```
 
 1. This displays the credentials and endpoint URL for both Prometheus and Grafana, as shown in the example output below.
 
@@ -85,19 +82,19 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 ### Add Prometheus as a Data Source to Grafana
 
-1. Log in to the Grafana frontend. See [Access Grafana and Prometheus](#access-grafana-and-prometheus).
+1.  Log in to the Grafana frontend. See [Access Grafana and Prometheus](#access-grafana-and-prometheus).
 
-1. On the main menu, hover over the gear icon to open the *Configuration* menu. Then click **Data Sources**.
+1.  On the main menu, hover over the gear icon to open the *Configuration* menu. Then click **Data Sources**.
 
     ![Screenshot of Grafana's configuration menu](grafana-menu.png)
 
-1. Within the *Data sources* page that appears, click the **Add data source** button.
+1.  Within the *Data sources* page that appears, click the **Add data source** button.
 
     ![Screenshot of the Data sources page](grafana-add-data-source.png)
 
-1. Select **Prometheus** from the *Time series database* section of the *Add data source* page.
+1.  Select **Prometheus** from the *Time series database* section of the *Add data source* page.
 
-1. A data source labeled *Prometheus* is automatically created and its configuration settings are now visible. Within the **URL** field, enter `http://localhost:9090/prometheus`. The rest of the settings can be adjusted as needed.
+1.  A data source labeled *Prometheus* is automatically created and its configuration settings are now visible. Within the **URL** field, enter `http://localhost:9090/prometheus`. The rest of the settings can be adjusted as needed.
 
     ![Screenshot of the Prometheus data source](grafana-prometheus-source.png)
 

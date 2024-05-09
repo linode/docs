@@ -1,19 +1,14 @@
 ---
 slug: sftp-linux
-author:
-  name: Jeff Novotny
+title: "Transfer Files with SFTP"
+title_meta: "How to Transfer Files with SFTP"
 description: 'Learn how to use SFTP commands to transfer files to and from Linux servers.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-10-01
 keywords: ['what is sftp','SFTP commands','Sftp server','sftp vs ftps', 'scp vs sftp']
 tags: ['linux', 'ssh']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-01
-modified_by:
-  name: Linode
-title: "Transfer Files with SFTP"
-title_meta: "How to Transfer Files with SFTP"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Wikipedia SFTP Page](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)'
 - '[IETF Draft for SSH File Transfer Protocol](https://datatracker.ietf.org/doc/html/draft-ietf-secsh-filexfer-13)'
@@ -63,7 +58,7 @@ In summary, SFTP is a good, all-purpose utility with more functionality than the
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -103,8 +98,7 @@ ssh.service - OpenBSD Secure Shell server
      Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
      Active: active (running) since Tue 2021-08-31 12:13:14 UTC; 46min ago
     {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Virtually all Linux distributions include SSH and SFTP as part of the default package. However, if the `sftp` command is not available, install the `ssh` package using `apt` or another package manager.
 {{< /note >}}
 

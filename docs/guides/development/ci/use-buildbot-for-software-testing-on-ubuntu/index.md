@@ -1,19 +1,16 @@
 ---
 slug: use-buildbot-for-software-testing-on-ubuntu
-author:
-  name: Tyler Langlois
-  email: ty@tjll.net
+title: "Using Buildbot to Test Software on Ubuntu 18.04"
+title_meta: "Use Buildbot for Software Testing on Ubuntu 18.04"
 description: "This shows how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds."
 og_description: "Deploy self-hosted continuous integration using Buildbot."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2018-09-06
+modified: 2021-10-18
 keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "build", "qa"]
 tags: ["automation","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-10-18
-modified_by:
-  name: Linode
-published: 2018-09-06
-title: "Using Buildbot to Test Software on Ubuntu 18.04"
-title_meta: "Use Buildbot for Software Testing on Ubuntu 18.04"
 external_resources:
 - '[Official Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
 - '[Buildbot Documentation](http://docs.buildbot.net/current/index.html)'
@@ -284,7 +281,7 @@ Now that Buildbot is installed, you can configure it to run builds. In this tuto
 
 Before creating the build configuration, fork the `linode/docs` repository into your GitHub account. This is the repository that will be used to run tests against. The repository will also require webhooks to be configured to send push or PR events to Buildbot.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The actions you take to fork, add webhook, and push changes to your fork of `linode/docs` will not affect the parent (or upstream), so you can safely experiment with it. Any changes you make to branches of your fork will remain separate until you submit a pull request to the original `linode/docs` repository.
 {{< /note >}}
 

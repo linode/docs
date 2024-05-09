@@ -1,18 +1,12 @@
 ---
 slug: connect-appsmith-to-linode-api
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Connecting Appsmith to the Linode API"
 description: "Appsmith’s platform makes developing internal applications and dashboards quicker and more convenient. A great way to start using Appsmith and to see what it can do is by making your own cloud manager with it. This tutorial shows you how to do that, connecting your self-hosted Appsmith instance with the Linode API."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-06-29
 keywords: ['appsmith api','appsmith tutorial','appsmith dashboard']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-29
-modified_by:
-  name: Nathaniel Stickman
-title: "Connecting Appsmith to the Linode API"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Appsmith: Connecting to REST APIs](https://docs.appsmith.com/core-concepts/connecting-to-data-sources/authentication)'
 - '[Appsmith: Tutorials](https://docs.appsmith.com/tutorials)'
@@ -24,7 +18,7 @@ You can learn more about Appsmith and how to host your own instance in our guide
 
 This tutorial covers everything you need to connect your Appsmith instance to the Linode API. With this, you can build your own Linode cloud manager or integrate Linode control into your application.
 
-While this tutorial is specifically concerned with the Linode API, similar steps can be readily adapted to numerous other APIs. By the end, you should be prepared to connect other Linode APIs (like those for Linode managed databases) or other external APIs.
+While this tutorial is specifically concerned with the Linode API, similar steps can be readily adapted to numerous other APIs. By the end, you should be prepared to connect other Linode APIs or other external APIs.
 
 ## Before You Begin
 
@@ -44,7 +38,7 @@ While this tutorial is specifically concerned with the Linode API, similar steps
 
 1.  Follow our guide on [How to Self-host Appsmith with Docker Compose](/docs/guides/deploy-appsmith-docker) for steps to install Docker and start running an Appsmith instance on your own server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,20 +1,14 @@
 ---
 slug: how-to-install-wordpress-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install WordPress on Ubuntu 20.04"
+title_meta: "How to Install WordPress on Ubuntu 20.04"
 description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-27
 keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms']
 tags: ['wordpress', 'cms', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-27
-modified_by:
-  name: Nathaniel Stickman
-title: "Install WordPress on Ubuntu 20.04"
-title_meta: "How to Install WordPress on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 relations:
     platform:
         key: how-to-install-wordpress
@@ -38,7 +32,7 @@ In this guide, learn how to install WordPress on your Ubuntu 20.04 server.
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

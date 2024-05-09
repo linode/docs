@@ -1,18 +1,15 @@
 ---
 slug: social-networking-with-phpfox-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Social Networking with phpFox on Debian 5 (Lenny)'
 description: 'Use phpFox to create and maintain a social networking platform on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-13
+modified: 2013-10-04
 keywords: ["phpfox", "social networking", "community"]
 tags: ["debian", "cms", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/social-networking/social-networking-with-phpfox-on-debian-5-lenny/','/web-applications/social-networking/phpfox/debian-5-lenny/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-08-13
-title: 'Social Networking with phpFox on Debian 5 (Lenny)'
 deprecated: true
 ---
 

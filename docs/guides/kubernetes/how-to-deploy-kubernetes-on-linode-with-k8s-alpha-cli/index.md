@@ -1,21 +1,18 @@
 ---
 slug: how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Deploy Kubernetes on Linode with the k8s-alpha CLI'
 description: 'This article gives you step-by-step instructions for deploying and managing Kubernetes clusters with the K8S-Alpha CLI, a plugin for the Linode CLI.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-04-29
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-04-29
-modified_by:
-  name: Linode
-title: 'Deploy Kubernetes on Linode with the k8s-alpha CLI'
 aliases: ['/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/']
 concentrations: ["Kubernetes"]
-deprecated: true
 external_resources:
   - '[Linode Kubernetes Tools](https://developers.linode.com/kubernetes/)'
+deprecated: true
 ---
 ![How to Deploy Kubernetes on Linode with the k8s-alpha CLI](how-to-deploy-kubernetes-on-linode.png)
 
@@ -179,7 +176,7 @@ You will need to run all of your k8s-alpha CLI commands from the terminal that y
     Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
     ```
 
-    If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/guides/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
+    If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/products/platform/get-started/guides/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
     {{< /note >}}
 
 1.  When the operation finishes, you will see options like the following:

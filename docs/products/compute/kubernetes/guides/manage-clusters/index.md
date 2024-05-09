@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Manage Kubernetes Clusters
 title_meta: Manage Kubernetes Clusters on LKE
 description: "Learn how to view and manage your Kubernetes clusters on LKE."

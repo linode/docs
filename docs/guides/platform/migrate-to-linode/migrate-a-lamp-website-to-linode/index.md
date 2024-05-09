@@ -1,17 +1,13 @@
 ---
 slug: migrate-a-lamp-website-to-linode
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
+title: How to Migrate a LAMP Website to Linode
 description: 'How to migrate a LAMP website from another hosting provider to Linode.'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-07-31
 keywords: ["lamp", "migrate", "website migration"]
 tags: ["linode platform","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-07-31
-modified_by:
-  name: Linode
-published: 2018-07-31
-title: How to Migrate a LAMP Website to Linode
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']
 ---
 
@@ -52,8 +48,7 @@ The data that needs to be transferred includes:
 Your server may have relevant website data stored in other directories, but these are the common locations for most files in a LAMP deployment.
 
 Perform a *database dump* needs on your MySQL process prior to transferring the data. This will result in a file on disk that encapsulates your database data which can then be copied over the network as a normal file.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Stopping services on your current host will temporarily disable your website.
 {{< /note >}}
 

@@ -1,27 +1,22 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-fedora-13
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use CouchDB for Document Based Data Storage on Fedora 13
 description: 'An introduction and getting started guide for CouchDB on Fedora 13 systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-27
+modified: 2011-04-29
 keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-fedora-13/','/databases/couchdb/fedora-13/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-05-27
-title: Use CouchDB for Document Based Data Storage on Fedora 13
 relations:
     platform:
         key: couchdb-document-data-storage
         keywords:
             - distribution: Fedora 13
 tags: ["fedora","database","nosql"]
+deprecated: true
 ---
-
-
 
 CouchDB is a non-relational, document based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang Programing language which supports an innovative concurrency model. While CouchDB does not use an SQL interface, it uses an HTTP interface and JSON as a data format for easy integration in application development.
 

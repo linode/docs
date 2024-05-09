@@ -1,17 +1,14 @@
 ---
 slug: custom-compiled-kernel-centos-7
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
+title: 'Custom Compiled Kernel on CentOS 7'
 description: 'Instructions for compiling and configuring a custom kernel on your CentOS 7 Linode'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2016-08-02
+modified: 2017-08-01
 keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-08-01
-modified_by:
-  name: Linode
-published: 2016-08-02
-title: 'Custom Compiled Kernel on CentOS 7'
 relations:
     platform:
         key: custom-compiled-kernel
@@ -136,8 +133,7 @@ Note that if you install an updated kernel, you need to create a new `initrd` fi
 
 Congratulations, you've booted your Linode using a custom-compiled kernel!
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
 {{< /note >}}
 

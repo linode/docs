@@ -1,20 +1,14 @@
 ---
 slug: rust-webassembly-tutorial
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Getting Started with WebAssembly Tutorial
+title_meta: A Rust and WebAssembly Tutorial
 description: "This guide explores what WebAssembly, sometimes called Wasm, is and how it can be used to develop web applications that run at near-native speeds with Rust."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-09
 keywords: ["webassembly","wasm","rust","web development","demo","tutorial"]
 tags: ['ubuntu', 'debian', 'rust']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
-title: Getting Started with WebAssembly Tutorial
-title_meta: A Rust and WebAssembly Tutorial
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[WebAssembly](https://webassembly.org/)'
 - '[Rust and WebAssembly](https://rustwasm.github.io/docs/book)'
@@ -32,7 +26,7 @@ This guide introduces some key concepts behind WebAssembly and gets you started 
 
 1. To make the guide more straightforward, its instructions just provide commands that work for Debian and Ubuntu Linux distribution. You may need to modify the commands given in many of the steps if you are using a different distribution.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,18 +1,15 @@
 ---
 slug: use-block-storage-with-plex-media-server
-author:
-  name: Sam Foo
-  email: docs@linode.com
+title: "Using a Block Storage Volume with Plex Media Server"
+title_meta: "How to Use a Block Storage Volume with Plex Media Server"
 description: "Combine Plex and Block Storage to make the most out of your media server by adding expandable storage. This guide will show you how."
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-03-01
+modified: 2019-01-31
 keywords: ["plex", "streaming", "netflix", "roku", "block storage"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-31
-modified_by:
-  name: Linode
-published: 2018-03-01
-title: "Using a Block Storage Volume with Plex Media Server"
-title_meta: "How to Use a Block Storage Volume with Plex Media Server"
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true

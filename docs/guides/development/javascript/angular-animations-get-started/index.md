@@ -1,18 +1,13 @@
 ---
 slug: angular-animations-get-started
-author:
-  name: Cameron Laird
-description: 'Get started creating Angular animations using components, states, triggers, and transitions. Learn the basics of animating an HTML div element with Angular.'
-keywords: ['angular animations', 'create angular component', 'angular animation trigger', 'angular animation states', 'angular animation transitions', 'toggle function']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-22
-modified_by:
-  name: Linode
 title: "Getting Started with Angular Animations"
 title_meta: "Angular Animations: Get Started"
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
+description: 'Get started creating Angular animations using components, states, triggers, and transitions. Learn the basics of animating an HTML div element with Angular.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2022-04-22
+keywords: ['angular animations', 'create angular component', 'angular animation trigger', 'angular animation states', 'angular animation transitions', 'toggle function']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Introduction to Angular Animations](https://angular.io/guide/animations)'
 - '[Angular Components Overview](https://angular.io/guide/component-overview)'
@@ -67,7 +62,7 @@ In your preferred text editor, open your Angular application's `/home/username/e
 
 The HTML that is animated is stored in the component's HTML template which is the `./app.component.html` file. You add the HTML code to this file in the next section.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure that the top of your `app.component.ts` file includes the following import statements.
 
 {{< file "/home/username/example-app/src/app/app.component.ts" >}}

@@ -1,21 +1,15 @@
 ---
 slug: centos-install-and-use-postgresql
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install and Use PostgreSQL on CentOS 8"
+title_meta: "How to Install and Use PostgreSQL on CentOS 8"
 description: 'This guide provides an introduction to installing PostgreSQL, an open source object-Relational Database Management System (RDBMS) on CentOS 8.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-02-02
 keywords: ['database','postgresql','centos', 'yum']
 tags: ["database","postgresql","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-02
 image: postgreSQL.jpg
-modified_by:
-  name: Linode
-title: "Install and Use PostgreSQL on CentOS 8"
-title_meta: "How to Install and Use PostgreSQL on CentOS 8"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[PostgreSQL](https://www.postgresql.org/)'
 - '[PostgreSQL Downloads Page](https://www.postgresql.org/ftp/source/)'

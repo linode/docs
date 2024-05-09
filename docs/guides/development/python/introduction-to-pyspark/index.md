@@ -1,16 +1,13 @@
 ---
 slug: introduction-to-pyspark
-author:
-  name: Sam Foo
-  email: docs@linode.com
+title: "Introduction to PySpark"
 description: "In this guide, we'll use an example of counting words in a corpus to learn the PySpark API."
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-02-05
+modified: 2019-01-31
 keywords: ["big data", "spark", "nltk", "mapreduce", "pyspark", "hadoop"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-31
-modified_by:
-  name: Linode
-title: "Introduction to PySpark"
-published: 2018-02-05
 external_resources:
 - '[AMPLab Paper on RDDs](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final138.pdf)'
 - '[Spark Documentation](https://spark.apache.org/)'

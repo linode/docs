@@ -1,17 +1,14 @@
 ---
 slug: manage-distributed-version-control-with-mercurial
-author:
-  name: Linode
-  email: docs@linode.com
+title: Manage Distributed Version Control with Mercurial
 description: 'Use the Mercurial version control system to manage source code in distributed environments.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-26
+modified: 2018-04-26
 keywords: ["version control", "hg", "mercurial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/manage-distributed-version-control-with-mercurial/','/linux-tools/version-control/mercurial/','/applications/development/manage-distributed-version-control-with-mercurial/']
-modified: 2018-04-26
-modified_by:
-  name: Linode
-published: 2010-04-26
-title: Manage Distributed Version Control with Mercurial
 external_resources:
  - '[HG Init, a Guide by Joel Spolsky](http://hginit.com/)'
 audiences: ["beginner"]
@@ -38,8 +35,7 @@ tags: ["version control system"]
 
 
 ## Local Mercurial Workflows
-
-{{< note respectIndent=false >}}
+{{< note >}}
 All Mercurial commands in the shell environment begin with `hg` in reference to the abbreviation for the element Mercury.
 {{< /note >}}
 

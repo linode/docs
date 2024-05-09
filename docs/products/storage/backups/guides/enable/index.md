@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Enable Backups"
 description: "How to enable the Linode Backup Service."
+published: 2021-11-12
 aliases: ['/quick-answers/linode-platform/enable-backups-on-a-linode/', '/guides/enable-backups-on-a-linode/']
 ---
 

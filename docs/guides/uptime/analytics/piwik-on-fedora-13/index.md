@@ -1,27 +1,22 @@
 ---
 slug: piwik-on-fedora-13
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: Piwik on Fedora 13
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Fedora 13.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-12-28
+modified: 2013-10-01
 keywords: ["open source analytics", "piwik fedora 13", "piwik", "analytics", "centos", "tracking", "statistics"]
 tags: ["statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/piwik-on-fedora-13/','/web-applications/analytics/piwik/fedora-13/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2010-12-28
-title: Piwik on Fedora 13
 relations:
     platform:
         key: using-piwik-analytics
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 Piwik is a downloadable, open source (GPL licensed) web analytics software program. As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership and control of the data collected from your visitors.
 

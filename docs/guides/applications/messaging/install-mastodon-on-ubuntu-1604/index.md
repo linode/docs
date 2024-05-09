@@ -1,18 +1,14 @@
 ---
 slug: install-mastodon-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Installing a Mastodon Server on Ubuntu 16.04"
+title_meta: "How to Install a Mastodon Server on Ubuntu 16.04"
 description: "Installation and basic usage guide of Mastodon, an open source alternative to Twitter."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-16
 keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-16
-modified_by:
-  name: Linode
-published: 2018-08-16
-title: "Installing a Mastodon Server on Ubuntu 16.04"
-title_meta: "How to Install a Mastodon Server on Ubuntu 16.04"
 external_resources:
 - '[Mastodon GitHub - Docker Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Docker-Guide.md)'
 - '[Mastodon GitHub - Production Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Production-guide.md)'

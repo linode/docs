@@ -1,15 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
-description: "Learn how to deploy ONLYOFFICE Docs, an open-source office suite with web-based viewers and collaborative editors for text documents, spreadsheets, and presentations on the Linode platform."
-keywords: ['onlyoffice','documents','collaboration','office suite']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-23
 title: "Deploy ONLYOFFICE Docs through the Linode Marketplace"
-contributor:
-  name: Linode
+description: "Learn how to deploy ONLYOFFICE Docs, an open-source office suite with web-based viewers and collaborative editors for text documents, spreadsheets, and presentations on the Linode platform."
+published: 2023-01-23
+keywords: ['onlyoffice','documents','collaboration','office suite']
+tags: ["marketplace", "linode platform", "cloud manager","education"]
 external_resources:
 - '[ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer)'
 ---
@@ -35,7 +29,7 @@ external_resources:
 
 - **JSON Web Token Validation**: Enables the JSON Web Token validation. This value set to true by default
 - **JSON Web Token Secret Key**: Defines the secret key to validate the JSON Web Token in the request to the ONLYOFFICE Docs. The default is a random value.
-- **ONLYOFFICE Docs Version**: Specifies the ONLYOFFICE Docs version. Check available versions on hub.docker onlyoffice/documentserver. Keep empty to install the latest.
+- **ONLYOFFICE Docs Version**: Specifies the ONLYOFFICE Docs version. Check available versions on Docker Hub [onlyoffice/documentserver](https://hub.docker.com/r/onlyoffice/documentserver/). Keep empty to install the latest.
 - **SSL Certificates**: If set to 'true', TLS/SSL certificates are generated automatically.
 - **Domain**: The Domain name for which TLS/SSL certificates are generated. If no value is entered, the Compute Instance's default rDNS value is used.
 - **Sub Domain**: The sub domain for which TLS/SSL certificates are generated. Optional.

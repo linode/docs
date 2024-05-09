@@ -1,25 +1,22 @@
 ---
 slug: minecraft-on-linode-with-ubuntu-12-04
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Minecraft on Linode with Ubuntu 12.04'
 description: 'This guide shows how you can install and configure Minecraft, a online game where everything is built from mineable blocks, on a Linode running Ubuntu 12.04.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2013-09-30
+modified: 2013-10-01
 keywords: ["minecraft", "ubuntu", "ubuntu precise", "12.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/game-servers/minecraft-on-linode-with-ubuntu-12-04/','/applications/game-servers/minecraft-on-linode-with-ubuntu-12-04/','/web-applications/game-servers/minecraft-ubuntu12-04/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2013-09-30
-title: 'Minecraft on Linode with Ubuntu 12.04'
 dedicated_cpu_link: true
 relations:
     platform:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 This guide shows you how to set up a personal Minecraft server on a Linode running Ubuntu 12.04 LTS (64 bit).
@@ -245,7 +242,7 @@ Once you’re ready to continue and have logged out of your server, log back in 
         2013-09-22 23:47:27 [INFO] Saving chunks for level 'world'/The End
         minecraft@li510-161:~$
 
-These next sections contain descriptions for certain files or directories in your `/minecraft` directory. These are not all the files that you may want to configure, nor are these complete descriptions. For more details, see the [Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki).
+These next sections contain descriptions for certain files or directories in your `/minecraft` directory. These are not all the files that you may want to configure, nor are these complete descriptions. For more details, see the [Minecraft Wiki](http://minecraft.wiki/w/Minecraft_Wiki).
 
 ### Edit the Configuration Files
 
@@ -281,14 +278,14 @@ Any time you modify these files while the game is running, you will need to stop
 -   `/world_nether`
 -   `/world_the_end`
 
-The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/products/storage/backups/) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://www.minecraftwiki.net/wiki/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
+The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/products/storage/backups/) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://minecraft.wiki/w/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
 
 ## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Official Minecraft Site](http://minecraft.net/)
-- [Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)
+- [Minecraft Wiki](http://minecraft.wiki/w/Minecraft_Wiki)
 - [Official CraftBukkit Site](http://dl.bukkit.org/)
 - [Bukkit Plugins](http://dev.bukkit.org/bukkit-plugins/)
 

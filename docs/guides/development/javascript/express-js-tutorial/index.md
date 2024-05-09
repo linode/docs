@@ -1,20 +1,15 @@
 ---
 slug: express-js-tutorial
-author:
-  name: Nathaniel Stickman
+title: "Express JS Tutorial: Get Started Building a Website"
+title_meta: "Express JS Tutorial"
 description: 'This tutorial gives a complete overview of how Express JS works, including installation, configuration, templates engines and middleware capabilities.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-11
 keywords: ['express js','node.js','app framework','web application','install express','middleware','template engines']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-11
 image: EXPRESSJS.jpg
-modified_by:
-  name: Nathaniel Stickman
-title: "Express JS Tutorial: Get Started Building a Website"
-title_meta: "Express JS Tutorial"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Express JS  official documentation](https://expressjs.com/en/4x/api.html)'
 - '[Express JS Template engines](https://expressjs.com/en/resources/template-engines.html)'
@@ -40,7 +35,7 @@ There are plenty of similar frameworks out there. What sets Express JS apart is 
 
 1. Throughout, this guide uses `example-app` as the name of the Express JS application and `example.com` as the server domain name. Replace these with your preferred application name and your server's domain name, respectively.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

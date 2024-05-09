@@ -1,24 +1,21 @@
 ---
 slug: nginx-and-phpfastcgi-on-ubuntu-11-04-natty
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and PHP-FastCGI on Ubuntu 11.04 (Natty)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 11.04 (Natty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-05-06
+modified: 2013-02-18
 keywords: ["nginx", "nginx ubuntu 11.04", "nginx fastcgi", "nginx php"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-11-04-natty/','/web-servers/nginx/php-fastcgi/ubuntu-11-04-natty/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-11-04-natty/']
-modified: 2013-02-18
-modified_by:
-  name: Linode
-published: 2011-05-06
-title: 'Nginx and PHP-FastCGI on Ubuntu 11.04 (Natty)'
-deprecated: true
 relations:
     platform:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Ubuntu 11.04
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Ubuntu 11.04 (Natty) Linode.

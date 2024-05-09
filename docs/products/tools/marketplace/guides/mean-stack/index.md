@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy a MEAN Stack through the Linode Marketplace"
 description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode's Marketplace Apps."
-keywords: ['mongodb','mean','angular','express', 'web app', 'node']
-tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy a MEAN Stack through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['mongodb','mean','angular','express', 'web app', 'node']
+tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'

@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Jenkins through the Linode Marketplace"
 description: "This guide shows how to install Jenkins, an open source automation tool which system administrators can use to build, test, and deploy your infrastructure."
-keywords: ['jenkins','marketplace','pipeline','continuous delivery']
-tags: ["linode platform","automation","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Jenkins through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['jenkins','marketplace','pipeline','continuous delivery']
+tags: ["linode platform","automation","marketplace","cloud-manager"]
 external_resources:
 - '[Creating Your First Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/hello-world/)'
 - '[Managing Jenkins Masters and Nodes](https://jenkins.io/doc/book/managing/)'

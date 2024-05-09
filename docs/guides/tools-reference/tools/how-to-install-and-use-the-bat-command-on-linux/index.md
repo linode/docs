@@ -1,20 +1,14 @@
 ---
 slug: how-to-install-and-use-the-bat-command-on-linux
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install and Use the Linux bat Command"
+title_meta: "How to Install and Use the Linux bat Command"
 description: "This guide shows you how to use the bat command, a clone of the default cat command that supports syntax highlighting and Git integration."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-09-17
 keywords: ['linux bat','linux bat command','linux cat vs bat']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-17
-modified_by:
-  name: Nathaniel Stickman
-title: "Install and Use the Linux bat Command"
-title_meta: "How to Install and Use the Linux bat Command"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[GitHub: sharpdp/bat](https://github.com/sharkdp/bat)'
 ---
@@ -27,7 +21,7 @@ The `bat` command is a clone of the ubiquitous `cat` command. It modernizes `cat
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Available Protocols"
 description: "Learn about each of the protocols that are available on NodeBalancers as well as the features and performance they offer."
 published: 2022-10-07

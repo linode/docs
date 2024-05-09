@@ -1,15 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Network Configuration Using systemd-networkd"
 description: "Learn how to configure networking using the systemd-networkd utility on Ubuntu, Arch, and other modern Linux distributions"
-keywords: ["static", "ip address", "systemd-networkd"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-27
 modified: 2022-06-17
-modified_by:
-  name: Linode
-title: "Network Configuration Using systemd-networkd"
+keywords: ["static", "ip address", "systemd-networkd"]
 tags: ["networking","linode platform"]
 aliases: ['/guides/systemd-networkd/']
 ---
@@ -17,7 +11,7 @@ aliases: ['/guides/systemd-networkd/']
 The [systemd-networkd](https://wiki.archlinux.org/title/systemd-networkd) tool is a newer tool developed as part of systemd. Arch and modern versions of Ubuntu (17.10 and above) currently use systemd-networkd as their default network configuration software.
 
 {{< note >}}
-Ubuntu also has utility called Netplan that serves as a frontend for configuring either systemd-networkd or NetworkManager. By default, NetworkHelper manages networking in Ubuntu using systemd-networkd though you can decide which one works best for your needs.
+By default, Linode's Network Helper tool manages networking in Ubuntu using systemd-networkd. Ubuntu also has utility called Netplan that serves as a frontend for configuring either systemd-networkd or NetworkManager. To use Netplan instead, review the [Network Configuration Using Netplan](/docs/products/compute/compute-instances/guides/netplan/) guide.
 {{< /note >}}
 
 {{< note >}}

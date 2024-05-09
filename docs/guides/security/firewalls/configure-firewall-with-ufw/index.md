@@ -1,17 +1,14 @@
 ---
 slug: configure-firewall-with-ufw
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
+title: How to Configure a Firewall with UFW
 description: 'Learn how to use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-11-17
+modified: 2019-08-12
 keywords: ["ufw", "uncomplicated firewall", "ubuntu ufw", "linux ufw", "ufw tutorial", "ubuntu firewall", "iptables", "networking", "firewalls", "filtering", "firewall setup", "ubuntu", "debian", "arch"]
 bundles: ['debian-security', 'network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-08-12
-modified_by:
-  name: Linode
-published: 2015-11-17
-title: How to Configure a Firewall with UFW
 tags: ["networking","security"]
 aliases: ['/security/firewalls/configure-firewall-with-ufw/']
 ---
@@ -20,7 +17,7 @@ aliases: ['/security/firewalls/configure-firewall-with-ufw/']
 
 UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian, or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are running Docker, by default Docker directly manipulates iptables. Any UFW rules that you specify do not apply to Docker containers.
 {{< /note >}}
 
@@ -77,8 +74,7 @@ Most systems need a only a small number of ports open for incoming connections, 
     sudo ufw default deny incoming
 
 The `ufw default` command also allows for the use of the `reject` parameter.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place. Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.
 {{< /note >}}
 
@@ -165,8 +161,7 @@ With your chosen rules in place, your initial run of `ufw status` will probably 
 Similarly, to disable UFW's rules:
 
     sudo ufw disable
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This still leaves the UFW service running and enabled on reboots.
 {{< /note >}}
 

@@ -1,20 +1,15 @@
 ---
 slug: create-a-multicloud-infrastructure-using-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Creating a Multicloud Infrastructure Using Terraform"
+title_meta: "How to Create a Multicloud Infrastructure Using Terraform"
 description: 'This guide shows you how to use Multicloud Terraform to provide a consistent workflow so you can manage infrastructure with only a few configuration files.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-04-23
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-23
 image: MulticloudInfra_Terraform.png
-modified_by:
-  name: Linode
-title: "Creating a Multicloud Infrastructure Using Terraform"
-title_meta: "How to Create a Multicloud Infrastructure Using Terraform"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Terraform Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs)'
@@ -27,6 +22,7 @@ external_resources:
 - '[DynamoDB service](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SettingUp.DynamoWebService.html)'
 - '[AWS Provider in the Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)'
 - '[Build, update, or destroy AWS infrastructure with Terraform](https://learn.hashicorp.com/collections/terraform/aws-get-started)'
+tags: ["saas"]
 ---
 
 [*Terraform*](https://www.terraform.io/) is an open-source tool that is built by [*HashiCorp*](https://www.hashicorp.com). Using the *HashiCorp Configuration Language* (HCL), you can automate deploying your infrastructure, and provisioning its resources.

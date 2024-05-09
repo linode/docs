@@ -1,27 +1,22 @@
 ---
 slug: set-up-a-lamp-server-on-gentoo
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Set Up a LAMP Server on Gentoo
 description: 'Creating a LAMP stack with Apache, MySQL, and PHP on a Gentoo Linux powered Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-12-02
+modified: 2013-10-24
 keywords: ["LAMP", "Gentoo Linux", "Gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/set-up-a-lamp-server-on-gentoo/','/web-servers/lamp/set-up-a-lamp-server-on-gentoo/','/lamp-guides/gentoo/']
-modified: 2013-10-24
-modified_by:
-  name: Linode
-published: 2011-12-02
-title: Set Up a LAMP Server on Gentoo
 external_resources:
   - '[Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
 tags: ["web server","php","mysql","apache","lamp"]
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Gentoo Linux system.
 

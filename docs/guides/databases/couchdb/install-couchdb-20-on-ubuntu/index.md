@@ -1,21 +1,15 @@
 ---
 slug: install-couchdb-20-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing CouchDB 2.0 on Ubuntu 20.04"
+title_meta: "How to Install CouchDB 2.0 on Ubuntu 20.04"
 description: 'This guide will show you how to install the noteworthy NoSQL database utility known for its scalability and fault tolerance, CouchDB 2.0 on Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-21
 keywords: ['couchdb','nosql','database','deploy on ubuntu 20.04']
 tags: ['couchdb','ubuntu','nosql','apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
 image: CouchDB.jpg
-modified_by:
-  name: Nathaniel Stickman
-title: "Installing CouchDB 2.0 on Ubuntu 20.04"
-title_meta: "How to Install CouchDB 2.0 on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.html)'
 ---

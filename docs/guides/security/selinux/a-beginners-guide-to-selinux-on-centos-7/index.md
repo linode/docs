@@ -1,18 +1,15 @@
 ---
 slug: a-beginners-guide-to-selinux-on-centos-7
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
+title: Getting Started with SELinux on CentOS 7
+title_meta: A Beginner's Guide to SELinux on CentOS 7
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2020-03-18
+modified: 2017-07-21
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
-modified: 2017-07-21
-modified_by:
-  name: Linode
-published: 2020-03-18
-title: Getting Started with SELinux on CentOS 7
-title_meta: A Beginner's Guide to SELinux on CentOS 7
 aliases: ['/security/getting-started-with-selinux/','/security/selinux/a-beginners-guide-to-selinux-on-centos-7/']
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
@@ -125,7 +122,7 @@ SELinux status:                 disabled
 
 When SELinux is enabled, it can run in either *enforcing* or *permissive* modes.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If SELinux is currently disabled, update your SELinux configuration file with the `SELINUX` directive set to `enabled`, then reboot your system, and SSH back into your Linode. These steps are outlined in the [SELinux States](#selinux-states) section of the guide.
 {{< /note >}}
 

@@ -1,22 +1,16 @@
 ---
 slug: automate-a-static-site-deployment-with-salt
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
+title_meta: "Automate Static Site Deployments with Salt and Git"
 description: "Learn how to use Salt to configure a static site webserver and use webhooks to automatically deploy new site content."
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-10-15
+modified: 2019-01-02
 keywords: ['salt','saltstack','github','webhooks','hugo','static site','deployment']
 tags: ["web server","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-15
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: Automate-Static-Site-DeploymentswithSaltGitandWebhooks.png
-title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
-title_meta: "Automate Static Site Deployments with Salt and Git"
-contributor:
-    name: "Nathan Melehan"
-    link: "https://github.com/nmelehan"
 external_resources:
 - '[Hugo Documentation](https://gohugo.io/documentation/)'
 - '[SaltStack Git Fileserver Documentation](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html#tutorial-gitfs)'
@@ -45,7 +39,7 @@ Two Linodes will be created: one will act as the Salt master, and the other as t
 
 It is possible to run Salt in a [masterless mode](https://docs.saltproject.io/en/latest/topics/tutorials/quickstart.html), but using a Salt master will make it easier to expand on your deployment in the future.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The workflow described in this guide is similar to how Linode's own [Guides & Tutorials](https://github.com/linode/docs) website is developed and deployed.
 {{< /note >}}
 
@@ -130,7 +124,7 @@ master: 192.0.2.2
 {{</ file >}}
 
     {{< note respectIndent=false >}}
-Linode does not charge for traffic within a datacenter across private IP addresses. If your Salt master and minion are in the same datacenter, and both have a private IP addresses, you can use your Salt master's private IP address in this step to avoid incurring data traffic charges.
+Linode does not charge for traffic within a data center across private IP addresses. If your Salt master and minion are in the same data center, and both have a private IP addresses, you can use your Salt master's private IP address in this step to avoid incurring data traffic charges.
 {{< /note >}}
 
 1.  Restart Salt on the minion:
@@ -491,7 +485,7 @@ The Salt minion's formula needs to be updated in order to serve the Hugo site. S
 
 Some of the new state components will refer to data stored in [*Salt Pillar*](https://docs.saltproject.io/en/latest/topics/pillar/). Pillar is a Salt system that stores private data and other parameters that you don't want to list in your formulas. The Pillar data will be kept as a file on the Salt master and not checked into version control.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 There are methods for securely checking this data into version control or using other backends to host the data, but those strategies are outside the scope of this guide.
 {{< /note >}}
 
@@ -550,7 +544,7 @@ hugo_site_repo:
 
 The final `hugo_site_repo` component in this snippet is responsible for cloning the example Hugo site repository from GitHub. This cloned repo is placed in the home directory of a system user that Salt creates in the preceding components. The clone command also recursively downloads the Cactus theme submodule.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `- creates` declaration tells Salt that running the `cmd` command module will result in the creation of the file that's specified. If the state is applied again later, Salt will check if that file already exists. If it exists, Salt will *not* run the module again.
 
 {{< /note >}}
@@ -773,8 +767,7 @@ base:
 On the Salt master, apply the new states to all minions:
 
     sudo salt '*' state.apply
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In this guide there is only one minion, but Salt can use shell-style globbing and regular expressions to [match against minion IDs](https://docs.saltproject.io/en/latest/topics/targeting/globbing.html) when you have more than one. For example, this command would run a highstate on all minions whose IDs begin with `hugo`:
 
     sudo salt 'hugo*' state.apply

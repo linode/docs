@@ -1,19 +1,14 @@
 ---
 slug: golang-gopath-and-workspaces
-author:
-  name: Cameron Laird
+title: "The GOPATH in Golang"
+title_meta: "Golang’s GOPATH and Workspaces"
 description: 'The GOPATH in Golang is used to point to a Go Workspace. The Go Workspace is where you store your Go source code and binary executables. This guide takes a deep dive into the GOPATH.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2022-03-11
 keywords: ['gopath','what is go path ','set go path']
 tags: ['Go', 'Go Programming']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-11
-modified_by:
-  name: Linode
-title: "The GOPATH in Golang"
-title_meta: "Golang’s GOPATH and Workspaces"
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
 ---
 
 A team of Google employees [designed the Go programming language](https://qarea.com/blog/the-evolution-of-go-a-history-of-success) in 2007 to help developers make better use of high-performance, networked, multi-core computing chips. [Well over a million coders around the world](https://research.swtch.com/gophercount) now work in Go.
@@ -69,8 +64,7 @@ Replace `/home/example_user/a_new_workspace` with your desired directory.
 You should add the `$GOPATH/bin` directory to your system `PATH`. This makes it so you do not have to enter the full path to a Go executable when running your Go apps in development.
 
     export PATH=$PATH:$(go env GOPATH)/bin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples below assume you are using the default location for your `GOPATH` (`/home/username/go`). If the `go` directory does not yet exist in your home folder, create it now.
 
     mkdir ~/go

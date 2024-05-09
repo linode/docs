@@ -1,19 +1,14 @@
 ---
 slug: mongodb-introduction
-author:
-  name: Jeff Novotny
+title: "What Is MongoDB and Why Use It?"
+title_meta: "Introduction to MongoDB and Its Use Cases"
 description: 'This article introduces MongoDB, explains how it differs from other SQL databases, and provides some use cases.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-01-14
 keywords: ['what is mongodb','mongodb vs sql','is mongodb a relational database','nosql']
 tags: ['mysql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-14
-modified_by:
-  name: Linode
-title: "What Is MongoDB and Why Use It?"
-title_meta: "Introduction to MongoDB and Its Use Cases"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny/
 external_resources:
 - '[MongoDB Basics Tutorial](https://university.mongodb.com/courses/M001/about)'
 - '[MongoDB Documentation](https://docs.mongodb.com/)'

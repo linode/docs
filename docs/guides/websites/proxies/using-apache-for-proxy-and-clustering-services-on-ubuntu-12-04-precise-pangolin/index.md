@@ -1,24 +1,20 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-ubuntu-12-04-precise-pangolin
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Using Apache for Proxy and Cluster Services on Ubuntu 12.04 '
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Ubuntu 12.04 (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-18
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-ubuntu-12-04-precise-pangolin/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-18
-modified_by:
-  name: Linode
-published: 2012-10-18
-title: 'Using Apache for Proxy and Cluster Services on Ubuntu 12.04 '
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a frontend server to manage clusters of web servers.

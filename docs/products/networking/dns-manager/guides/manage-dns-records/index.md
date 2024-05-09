@@ -1,14 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
-description: "How to add DNS records using the Linode DNS Manager."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2023-02-09
-modified_by:
-  name: KincaidYang
-published: 2020-07-21
 title: "Manage DNS Records"
+description: "How to add DNS records using the Linode DNS Manager."
+published: 2020-07-21
+modified: 2023-02-09
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-dns-records/','/products/networking/dns-manager/guides/edit-dns-records/']

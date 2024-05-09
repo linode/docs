@@ -1,22 +1,16 @@
 ---
 slug: how-to-install-canvas-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing Canvas on Debian 10"
+title_meta: "How to Install Canvas on Debian 10"
 description: 'This guide will show you how to install, configure, and run the popular free and open source learning management system Canvas on Debian 10.'
 og_description: 'This guide will show you how to install the popular learning management system Canvas on Debian 10.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-28
 keywords: ['canvas','education','training','learning management system','lms','deploy on debian 10']
 tags: ['canvas', 'debian','apache','ssl','redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
 image: Canvas.jpg
-modified_by:
-  name: Nathaniel Stickman
-title: "Installing Canvas on Debian 10"
-title_meta: "How to Install Canvas on Debian 10"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Canvas](https://www.instructure.com/canvas)'
 - '[open source](https://github.com/instructure/canvas-lms)'
@@ -57,7 +51,7 @@ You can run some of the components of your Canvas installation on separate machi
 
 1. Replace `example.com` in this guide with your server's domain name. You can complete the steps mentioned in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name for your Linode server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

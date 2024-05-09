@@ -1,17 +1,11 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy CyberPanel through the Linode Marketplace"
 description: "CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps."
+published: 2021-02-23
+modified: 2024-01-30
 keywords: ['cyberpanel','marketplace','server']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-23
-modified: 2023-02-02
 image: DeployCyberPanel_marketplaceapps.png
-modified_by:
-  name: Linode
-title: "Deploy CyberPanel through the Linode Marketplace"
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
 aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
@@ -31,8 +25,10 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used with CyberPanel.
+
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 ## Getting Started after Deployment
 

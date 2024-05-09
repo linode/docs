@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Deploy an Image to an Existing Compute Instance"
 description: "Learn how to deploy an Image to an existing Linode Compute Instance by rebuilding it or adding a new disk."
 aliases: ['/guides/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/']
@@ -28,7 +25,7 @@ A common method of deploying an Image is to rebuild an existing Compute Instance
 
     ![The 'Restore from Image' panel in the Cloud Manager](restore-from-image-panel.png)
 
-1. You are redirected to the dashboard page for that Linode and the **Rebuild** form is displayed with the chosen Image preselected. Complete the remainder of this form, making sure to select your desired **Root Password**, and any other options that may be needed. See [Rescue and Rebuild → Rebuilding](/docs/guides/rescue-and-rebuild/#rebuilding) for full instructions on rebuilding a Linode.
+1. You are redirected to the dashboard page for that Linode and the **Rebuild** form is displayed with the chosen Image preselected. Complete the remainder of this form, making sure to select your desired **Root Password**, and any other options that may be needed. See [Rescue and Rebuild → Rebuilding](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding) for full instructions on rebuilding a Linode.
 
 1. Click the **Rebuild Linode** button to rebuild the Linode. All existing disks will be deleted and a new disk will be created using the selected Image.
 

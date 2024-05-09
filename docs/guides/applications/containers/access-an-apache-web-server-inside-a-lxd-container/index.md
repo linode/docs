@@ -1,20 +1,13 @@
 ---
 slug: access-an-apache-web-server-inside-a-lxd-container
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Access an Apache Web Server Inside a LXD Container"
 description: "This guide will show you how to install and configure Apache Web Server inside of LXD container and then direct web traffic to the container."
+authors: ["Simos Xenitellis"]
+contributors: ["Simos Xenitellis"]
+published: 2018-02-12
 keywords: ["container", "lxd", "lxc", "virtual machine"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-02-12
-modified: 2018-02-12
-modified_by:
-  name: Linode
-title: "Access an Apache Web Server Inside a LXD Container"
-contributor:
-  name: Simos Xenitellis
-  link: https://blog.simos.info/
 external_resources:
   - '[LXD Introduction](https://linuxcontainers.org/lxd/)'
   - '[Blog post series on LXD 2.0](https://stgraber.org/2016/03/11/lxd-2-0-blog-post-series-012/)'

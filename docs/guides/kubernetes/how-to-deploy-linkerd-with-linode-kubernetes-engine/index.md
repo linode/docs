@@ -1,20 +1,15 @@
 ---
 slug: how-to-deploy-linkerd-with-linode-kubernetes-engine
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
+title_meta: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
 description: "Linkerd offers monitoring, reporting, and encrypted connections between Kubernetes service.. We'll show you how to deploy it to your LKE cluster."
+authors: ["Heather Zoppetti"]
+contributors: ["Heather Zoppetti"]
+published: 2019-11-07
 keywords: ['kubernetes','linkerd','container', 'service mesh', 'k8s']
 tags: ["monitoring","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-07
 image: Deploy_Linkerd_2_with_Linode_Kubernetes_Engine_1200x631.png
-modified_by:
-  name: Linode
-title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
-title_meta: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
-contributor:
-  name: Heather Zoppetti
 external_resources:
 - '[Linkerd](https://linkerd.io)'
 - '[Linkerd Documentation](https://linkerd.io/2/overview/)'
@@ -247,7 +242,7 @@ Linkerd comes with two dashboards, a Linkerd dashboard and the [Grafana](https:/
 1.  Start and view the Linkerd standalone dashboard that runs in the browser.
 
     ```command
-    linkerd dasboard &
+    linkerd dashboard &
     ```
 
     ```output

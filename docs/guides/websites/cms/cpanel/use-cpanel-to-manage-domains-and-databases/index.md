@@ -1,18 +1,15 @@
 ---
 slug: use-cpanel-to-manage-domains-and-databases
-author:
-  name: Chris C.
-  email: docs@linode.com
+title: Use cPanel to Manage Domains and Databases
 description: 'This guide shows how to use cPanel, a popular web server control panel that makes it easy to manage server resources and services, like domains and databases.'
+authors: ["Chris C."]
+contributors: ["Chris C."]
+published: 2012-06-08
+modified: 2017-02-15
 keywords: ["cpanel", "database", "managing domain", "subdomain", "add-on domain", "parked domain", "phpmyadmin", "mysql", "create database", "manage database"]
 tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/','/websites/cms/managing-domains-and-databases/','/websites/cms/use-cpanel-to-manage-domains-and-databases/','/web-applications/control-panels/cpanel/managing-domains-and-databases/']
-modified: 2017-02-15
-modified_by:
-  name: Linode
-published: 2012-06-08
-title: Use cPanel to Manage Domains and Databases
 external_resources:
  - '[cPanel Home Page](http://cpanel.net)'
  - '[cPanel Support](http://cpanel.net/support.html)'
@@ -26,7 +23,7 @@ external_resources:
 
 Three types of domains can be associated with your cPanel account: main domains, add-on domains, and parked domains. Your main domain cannot be changed except by the reseller that owns your account or by root itself. Subdomains, add-on domains, and parked domains can be managed in the Domains section.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Domains section also allows you to add or delete A or CNAME records to or from your domain. Any of the default entries would need to be modified by someone with the appropriate access (e.g., the reseller that owns your account or the root user).
 {{< /note >}}
 

@@ -1,19 +1,16 @@
 ---
 slug: manage-web-content-with-plone-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
 description: 'Using the Plone Content Management System, built on the Zope framework, to deploy complex and content rich sites on Debian 5 (Lenny) systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-29
+modified: 2011-06-03
 keywords: ["plone", "zope", "python", "debian", "web framework", "content management systems", "cms"]
 tags: ["nginx","apache","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/plone/','/websites/cms/plone/manage-web-content-with-plone-on-debian-5-lenny/','/websites/cms/manage-web-content-with-plone-on-debian-5-lenny/']
-modified: 2011-06-03
-modified_by:
-  name: Linode
-published: 2010-01-29
-title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
+deprecated: true
 ---
 
 Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers. Zope provides a vibrant architecture for building complex and usable tools in a Python and web-centric manner. Plone and Zope may strike systems administrators as unique in comparison to other content management systems because they generate content by modifying the behavior of the Zope application server while incoming requests are proxied through a front end server like [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx).

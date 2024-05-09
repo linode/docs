@@ -1,21 +1,15 @@
 ---
 slug: introduction-to-machine-learning-training-and-inference
-author:
-  name: Andy Patrizio
-  email: ndy@andypatrizio.com
-description: "Training and inference in machine learning each have their own requirements. We will walk you through the differences, along with hosting advice."
-og_description: "Training and inference are interconnected pieces of machine learning. Training refers to the process of creating machine learning algorithms. This process uses deep-learning frameworks, like Apache Spark, to process large data sets, and generate a trained model. Inference uses the trained models to process new data and generate useful predictions. Training and inference each have their own hardware and system requirements. This guide discusses reasons why you may choose to host your machine learning training and inference systems in the cloud versus on premises."
-keywords: ['cloud machine learning']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
-image: IntroMachineLearning_trainandinterference.png
-modified_by:
-  name: Linode
 title: "An Introduction to Machine Learning: Training and Inference"
 title_meta: "Machine Learning Training and Inference"
-contributor:
-  name: Andy Patrizio
-  link: https://twitter.com/apatrizio
+description: "Training and inference in machine learning each have their own requirements. We will walk you through the differences, along with hosting advice."
+og_description: "Training and inference are interconnected pieces of machine learning. Training refers to the process of creating machine learning algorithms. This process uses deep-learning frameworks, like Apache Spark, to process large data sets, and generate a trained model. Inference uses the trained models to process new data and generate useful predictions. Training and inference each have their own hardware and system requirements. This guide discusses reasons why you may choose to host your machine learning training and inference systems in the cloud versus on premises."
+authors: ["Andy Patrizio"]
+contributors: ["Andy Patrizio"]
+published: 2021-03-05
+keywords: ['cloud machine learning']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: IntroMachineLearning_trainandinterference.png
 external_resources:
 - '[How to Move Your Machine Learning Model to Production](/docs/guides/how-to-move-machine-learning-model-to-production/)'
 - '[Use Cases for Linode GPU Instances](/docs/products/compute/compute-instances/plans/gpu/)'

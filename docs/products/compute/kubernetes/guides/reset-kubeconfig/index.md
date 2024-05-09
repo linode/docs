@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Reset Kubeconfig
 description: "How to reset the kubeconfig for Linode Kubernetes Engine (LKE) clusters."
 published: 2022-03-10

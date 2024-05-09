@@ -1,20 +1,14 @@
 ---
 slug: manage-a-docker-cluster-with-kubernetes
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Manage a Docker Cluster with Kubernetes'
 description: 'Kubernetes makes it easy to manage containers across multiple servers. This guide shows how to manage Dockerized applications using Kubernetes.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2018-02-28
 keywords: ["Kubernetes", "cluster", "docker"]
 tags: ["docker","nginx","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-02-28
-modified_by:
-  name: Linode
-title: 'Manage a Docker Cluster with Kubernetes'
 aliases: ['/applications/containers/manage-a-docker-cluster-with-kubernetes/','/applications/containers/kubernetes/manage-a-docker-cluster-with-kubernetes/','/kubernetes/manage-a-docker-cluster-with-kubernetes/']
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'

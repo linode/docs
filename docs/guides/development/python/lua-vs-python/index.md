@@ -1,18 +1,13 @@
 ---
 slug: lua-vs-python
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Lua vs Python: Which One is Right for You?"
+title_meta: "How to Choose Between Lua vs Python"
 description: 'Should you learn Lua vs Python? Read our guide to learn the pros and cons of each language, how hard they are to learn, and more. ✓ Click here to learn more!'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2022-12-30
 keywords: ['lua vs python', 'what is lua used for', 'javascript python c while overtakes php', 'python about popular language', 'how long does it take to learn lua', 'micropython vs python', 'lua commands', 'is lua hard to learn', 'python vs kotlin', 'python vs other languages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-30
-modified_by:
-  name: Linode
-title_meta: "How to Choose Between Lua vs Python"
-title: "Lua vs Python: Which One is Right for You?"
-contributor:
-  name: Martin Heller
 external_resources:
 - '[TutorialsPoint.com: Difference between Python and Lua](https://www.tutorialspoint.com/difference-between-python-and-lua)'
 - '[GeeksForGeeks.org: Difference between Python and Lua](https://www.geeksforgeeks.org/difference-between-python-and-lua-programming-language/)'

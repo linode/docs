@@ -1,17 +1,13 @@
 ---
 slug: how-to-use-tail
-author:
-  name: Phil Zona
-  email: docs@linode.com
+title: How to Use the Tail Command
 description: 'View and follow the end of files with the tail command.'
+authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
+published: 2017-04-10
 keywords: ["linux", "how to", "tail", "last lines", "file"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/linux/how-to-use-tail/','/quick-answers/how-to-use-tail/']
-modified: 2017-04-10
-modified_by:
-  name: Phil Zona
-published: 2017-04-10
-title: How to Use the Tail Command
 tags: ["linux"]
 ---
 

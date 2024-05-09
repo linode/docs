@@ -1,21 +1,15 @@
 ---
 slug: what-is-a-tls-certificate
-author:
-  name: Tom Henderson
-  email: thenderson@extremelabs.com
-description: "Learn how TLS works, how it's used, and the key role it plays in secure web server communication."
-keywords: ['what is tls certificate']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-16
-image: TLSCertificate.png
-modified_by:
-  name: Linode
 title: "Understanding TLS Certificates and Connections"
 title_meta: "What is a TLS Certificate?"
+description: "Learn how TLS works, how it's used, and the key role it plays in secure web server communication."
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2021-04-16
+keywords: ['what is tls certificate']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: TLSCertificate.png
 tags: ['web server', 'ssl', 'security']
-contributor:
-  name: Tom Henderson
-  link: http://www.twitter.com/extremelabs
 ---
 
 ## Understanding the TLS Protocol

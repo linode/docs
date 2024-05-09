@@ -1,20 +1,14 @@
 ---
 slug: monitor-your-website-changes-with-huginn-agents
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Monitor Your Website Changes with Huginn Agents"
+title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-09
 keywords: ['huginn website agent']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
-title: "Monitor Your Website Changes with Huginn Agents"
-title_meta: "How to Monitor Your Website Changes with Huginn Agents"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Huginn GitHub](https://github.com/huginn/huginn)'
 ---

@@ -1,17 +1,13 @@
 ---
 slug: migrate-a-wordpressdotcom-site-to-linode
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
+title: How to Migrate a WordPress.com Website to Linode
 description: 'Shows how to export posts from a WordPress.com website and import them to WordPress on a Linode.'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-08-07
 keywords: ["wordpress", "wordpress.com", "migrate", "website migration"]
 tags: ["linode platform","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-07
-modified_by:
-  name: Linode
-published: 2018-08-07
-title: How to Migrate a WordPress.com Website to Linode
 external_resources:
  - '[WordPress.com: Moving to Self-Hosted WordPress](https://move.wordpress.com/)'
 aliases: ['/platform/migrate-to-linode/migrate-a-wordpressdotcom-site-to-linode/']
@@ -21,7 +17,7 @@ This guide describes how to export your content from WordPress.com and self-host
 
 Ubuntu 18.04 is used as the distribution for the new Linode deployment in this guide. If you'd like to choose another distribution, use the examples here as an approximation for the commands you'll need to run. You will also install either a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) environment on your new Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 WordPress.com's export feature will export pages, posts, and comments from your site, but it will not export your themes and widgets. You will need to customize your new self-hosted WordPress site's appearance after completing your migration.
 {{< /note >}}
 

@@ -1,12 +1,12 @@
 ---
 title: "Images"
+title_meta: "Custom Images Product Documentation"
 description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Compute Instances. They can be easily created by capturing a disk on an existing Instnace or uploading an image file."
+published: 2020-06-02
+modified: 2023-11-29
 keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/guides/linode-images/','/linode-images/','/platform/disk-images/linode-images/','/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/platform/disk-images/linode-images-new-manager/']
-published: 2020-06-02
-modified: 2022-07-12
 tab_group_main:
     is_root: true
     title: Overview
@@ -50,7 +50,7 @@ Recovery Images, which are generated automatically after a Compute Instance is d
 
 ## Technical Specifications
 
-- **Maximum image size:** A Custom Image can be up to **6 GB\*** in size.
+- **Maximum image size:** A Custom Image can be up to **6 GB\*** in size. When uploading a custom image, this is the maximum _uncompressed_ size.
 
 - **Account limits:** Each account can store up to **25\*** Custom Images, offering **150 GB\*** of combined storage for all images on the account.
 

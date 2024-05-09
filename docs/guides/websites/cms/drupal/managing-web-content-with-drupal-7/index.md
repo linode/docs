@@ -1,18 +1,15 @@
 ---
 slug: managing-web-content-with-drupal-7
-author:
-  name: Linode
-  email: docs@linode.com
+title: Installing Drupal 7
 description: 'Installing, configuring, and optimizing the Drupal content management framework on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-29
+modified: 2014-11-06
 keywords: ["drupal", "cms", "web framework", "web application", "php", "content management system", "content management framework"]
 tags: ["drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/drupal/managing-web-content-with-drupal-7/','/websites/cms/managing-web-content-with-drupal-7/']
-modified: 2014-11-06
-modified_by:
-  name: Linode
-published: 2009-09-29
-title: Installing Drupal 7
 ---
 
 Drupal is an advanced and powerful content management framework, built on the PHP scripting language and supported by a [database](/docs/databases/) engine like [MySQL](/docs/databases/mysql/). Drupal provides a flexible system that can be used to manage websites of all different types and profiles. Drupal is capable of providing the tools necessary to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal can also provide support for multifaceted personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
@@ -30,7 +27,7 @@ Before we begin with the Drupal installation, there are few other guides that pr
 
 With these dependencies installed and running, we're ready to begin installing the Drupal content management system. We assume that you have a working SSH connection to your server and database credentials to access your database server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

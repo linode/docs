@@ -1,17 +1,13 @@
 ---
 slug: custom-compiled-kernel-debian-ubuntu
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
+title: 'Custom Compiled Kernel on Debian & Ubuntu'
 description: 'Instructions for compiling and configuring a custom kernel your Debian or Ubuntu Linode'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2017-08-01
 keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", "debian", "ubuntu"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-08-01
-modified_by:
-  name: Linode
-published: 2017-08-01
-title: 'Custom Compiled Kernel on Debian & Ubuntu'
 relations:
     platform:
         key: custom-compiled-kernel

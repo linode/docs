@@ -1,16 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy phpMyAdmin through the Linode Marketplace"
 description: "Deploy phpMyAdmin on Linode using Marketplace Apps to administer your MySQL database with a convenient and powerful GUI web application."
-keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
-tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy phpMyAdmin through the Linode Marketplace"
+keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
+tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'

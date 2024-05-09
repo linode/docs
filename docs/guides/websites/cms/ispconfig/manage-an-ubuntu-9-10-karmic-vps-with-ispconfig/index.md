@@ -1,22 +1,17 @@
 ---
 slug: manage-an-ubuntu-9-10-karmic-vps-with-ispconfig
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 9.10 (Karmic) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-19
+modified: 2011-04-29
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/ubuntu-9-10-karmic/','/websites/cms/ispconfig/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-04-19
-title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
+deprecated: true
 ---
-
-
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
@@ -65,7 +60,7 @@ You will be asked a series of questions during the installation; please refer to
 
 ## Install Amavisd-new and SpamAssassin
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/guides/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     apt-get install amavisd-new spamassassin zoo unzip bzip2 arj nomarch lzop cabextract apt-listchanges libnet-ldap-perl libauthen-sasl-perl clamav-docs daemon libio-string-perl libio-socket-ssl-perl libnet-ident-perl zip libnet-dns-perl
 

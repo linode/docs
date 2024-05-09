@@ -1,18 +1,15 @@
 ---
 slug: install-a-commercial-ssl-certificate-using-cpanel
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
+title: Install a Commercial SSL Certificate Using cPanel
 description: 'Generate a CSR and install a commercial SSL certificate through the cPanel interface.'
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2011-09-27
+modified: 2017-04-28
 keywords: ["ssl", "ip"]
 tags: ["centos","cpanel","ssl","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/install-a-commercial-ssl-certificate-using-cpanel/','/websites/cms/cpanel/install-a-commercial-ssl-certificate-using-cpanel/','/web-applications/control-panels/cpanel/ssl-on-cpanel/']
-modified: 2017-04-28
-modified_by:
-  name: Jonathan Chun
-published: 2011-09-27
-title: Install a Commercial SSL Certificate Using cPanel
 external_resources:
  - '[cPanel Home Page](https://cpanel.com)'
  - '[cPanel Support](https://cpanel.com/support)'

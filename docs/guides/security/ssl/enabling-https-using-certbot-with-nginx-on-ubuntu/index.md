@@ -1,20 +1,15 @@
 ---
 slug: enabling-https-using-certbot-with-nginx-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to install and use Certbot with NGINX on Ubuntu 20.04, which automates the process adding TLS/SSL to your websites."
-keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
-tags: ['ssl','nginx', 'ubuntu']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-25
-image: SecureWeb.jpg
-modified: 2021-07-01
-modified_by:
-  name: Linode
 title: "Use Certbot to Enable HTTPS with NGINX on Ubuntu"
-contributor:
-  name: Jeff Novotny
+description: "Learn how to install and use Certbot with NGINX on Ubuntu 20.04, which automates the process adding TLS/SSL to your websites."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-02-25
+modified: 2021-07-01
+keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
+tags: ['ssl','nginx', 'ubuntu', "ecommerce"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: SecureWeb.jpg
 aliases: ['/guides/how-to-install-certbot-for-nginx-on-ubuntu-20-04/','/quick-answers/websites/certbot/how-to-install-certbot-on-ubuntu-18-04/','/quick-answers/websites/how-to-install-certbot-on-ubuntu-18-04/','/guides/how-to-install-certbot-on-ubuntu-18-04/']
 relations:
     platform:
@@ -22,7 +17,6 @@ relations:
         keywords:
             - distribution: Ubuntu
 ---
-
 
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the NGINX web server on Ubuntu 20.04 LTS and 18.04 LTS. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on NGINX (or other web servers).
 
@@ -38,7 +32,7 @@ Before continuing with this guide, you need a website accessible over HTTP using
 
 3.  **The NGINX web server software installed on your server and configured for your domain.** You can review the [How to Install NGINX on Ubuntu 18.04 LTS](/docs/guides/how-to-install-nginx-ubuntu-18-04/) guide for information on installing and configuring NGINX.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,19 +1,16 @@
 ---
 slug: create-a-python-virtualenv-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
+title: Creating a Python Virtual Environment on Debian 10
+title_meta: How to Create a Python Virtual Environment on Debian 10
 description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on Debian 10.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-08-13
+modified: 2020-04-07
 keywords: ["python", "python virtual environment", "virtualenv", "debian 10"]
 tags: ["python","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-04-07
-modified_by:
-  name: Linode
-published: 2017-08-13
 image: Python_virtualenv_Deb10.png
-title: Creating a Python Virtual Environment on Debian 10
-title_meta: How to Create a Python Virtual Environment on Debian 10
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
@@ -43,8 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< /note >}}
 
 ## Create a Python Virtual Environment
-
-{{< note respectIndent=false >}}
+{{< note >}}
 By default, [Python 3.7.3](https://docs.python.org/3.6/whatsnew/3.6.html) and [Python 2.7.16](https://docs.python.org/2.7/) are installed on Debian 10.
 {{< /note >}}
 
@@ -60,11 +56,13 @@ By default, [Python 3.7.3](https://docs.python.org/3.6/whatsnew/3.6.html) and [P
 
         virtualenv env
 
-    {{< disclosure-note "Change the Python Interpreter Version">}}
+    {{< note type="secondary" title="Change the Python Interpreter Version" isCollapsible=true >}}
 If you would like to create a virtual environment using Python3, use the `--python` option to pass the Python version you'd like to use.
 
+    ```command
     virtualenv --python=python3 env
-    {{</ disclosure-note >}}
+    ```
+    {{< /note >}}
 
     The command creates a new directory with the name you assigned to your virtual environment. This directory contains all of the isolated files, packages, modules, and executables that is used by your new environment.
 

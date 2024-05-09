@@ -1,17 +1,14 @@
 ---
 slug: install-wordpress-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: Install WordPress on Ubuntu 18.04
 description: 'Install and optimize the WordPress blogging and content management system on a Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-04
+modified: 2021-02-19
 keywords: ["WordPress", "wordpress on ubuntu", "WordPress on Linode", "how to configure WordPress"]
 tags: ["ubuntu","lamp","wordpress","cms","lemp","mysql","php", "permalink"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-02-19
-modified_by:
-  name: Edward Angert
-published: 2018-06-04
-title: Install WordPress on Ubuntu 18.04
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'

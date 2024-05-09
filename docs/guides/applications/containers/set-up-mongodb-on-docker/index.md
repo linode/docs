@@ -1,17 +1,14 @@
 ---
 slug: set-up-mongodb-on-docker
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Set Up MongoDB on Docker"
+title_meta: "How to Set Up MongoDB on Docker"
 description: 'A guide with examples explaining how to install MongoDB on a Docker container utilizing the MongoDB Docker Hub image.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-08-27
 keywords: ["docker", "mongodb", "mongodb container", "docker mongodb container", "install mongodb docker", "configure mongodb docker"]
 tags: ["container","docker","mongodb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-27
-modified_by:
-  name: Linode
-title: "Set Up MongoDB on Docker"
-title_meta: "How to Set Up MongoDB on Docker"
 external_resources:
 - '[MongoDB on Docker Hub](https://hub.docker.com/_/mongo/)'
 ---

@@ -1,17 +1,14 @@
 ---
 slug: how-to-install-drupal-with-docker-compose-ubuntu-18-04
-author:
-    name: Linode
-    email: docs@linode.com
+title: Installing Drupal with Docker Compose on Ubuntu 18.04
+title_meta: How to Install Drupal with Docker Compose on Ubuntu 18.04
 description: 'This guide will show you how to install Drupal 8, a popular free and open-source content management system, with Docker Compose on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-18
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04", "docker compose"]
 tags: ["drupal","docker","container","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
-published: 2020-02-18
-title: Installing Drupal with Docker Compose on Ubuntu 18.04
-title_meta: How to Install Drupal with Docker Compose on Ubuntu 18.04
 image: Drupal_DockerComp_Ubuntu1804.png
 relations:
     platform:

@@ -1,18 +1,15 @@
 ---
 slug: ruby-on-rails-with-nginx-on-debian-7-wheezy
-author:
-  name: Jonathan Frederickson
-  email: docs@linode.com
+title: 'Ruby on Rails with Nginx on Debian 7 (Wheezy)'
 description: Using the Ruby on Rails framework for Nginx web applications on Debian 7
+authors: ["Jonathan Frederickson"]
+contributors: ["Jonathan Frederickson"]
+published: 2014-02-11
+modified: 2014-12-09
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/ruby-on-rails-nginx/debian-7-wheezy/','/development/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/','/websites/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/']
-modified: 2014-12-09
-modified_by:
-  name: James Stewart
-published: 2014-02-11
-title: 'Ruby on Rails with Nginx on Debian 7 (Wheezy)'
 external_resources:
  - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'

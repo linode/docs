@@ -1,16 +1,10 @@
 ---
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
+title: "Deploy PostgreSQL through the Linode Marketplace"
 description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
-keywords: ['database','postgresql','rdbms','relational database']
-tags: ["linode platform","postgresql","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy PostgreSQL through the Linode Marketplace"
+keywords: ['database','postgresql','rdbms','relational database']
+tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'

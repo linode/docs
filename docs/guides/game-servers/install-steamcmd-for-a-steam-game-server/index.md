@@ -1,15 +1,12 @@
 ---
 slug: install-steamcmd-for-a-steam-game-server
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Install SteamCMD for a Steam Game Server'
 description: 'Learn how to install SteamCMD for a Steam Game server and minimize your efforts to update the server files.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-02-15
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2016-02-15
-title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
  - '[Dedicated Steam Servers for Linux](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers)'
@@ -24,7 +21,7 @@ SteamCMD is a command-line version of the Steam client which works with games th
 
 This guide is intended to get you quickly up and running with SteamCMD on your Linode. See Valve's [SteamCMD wiki page](https://developer.valvesoftware.com/wiki/SteamCMD) for more information and advanced setups.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -260,8 +257,7 @@ Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam
 1.  Extract the installation and runtime files:
 
         tar -xvzf steamcmd_linux.tar.gz
-
-{{< note respectIndent=false >}}
+{{< note >}}
 When running a Steam game, you may encounter the following error:
 
     /home/steam/.steam/sdk32/libsteam.so: cannot open shared object file: No such file or directory

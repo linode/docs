@@ -1,19 +1,12 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy MongoDB through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
-keywords: ['mongodb','marketplace', 'database']
-tags: ["linode platform","database","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy MongoDB through the Linode Marketplace"
+keywords: ['mongodb','marketplace', 'database']
+tags: ["linode platform","database","marketplace","cloud-manager"]
+expiryDate: 2023-05-01
 image: MongoDB_oneclickapps.png
-contributor:
-  name: Linode
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'

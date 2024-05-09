@@ -1,18 +1,13 @@
 ---
 slug: red-team-adversary-emulation-with-caldera
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
+title: "Red Team Adversary Emulation with Caldera"
 description: 'This guide introduces you to Red Team operations takes you through the process of setting up and utilizing Caldera for adversary emulation.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Red Team Adversary Emulation with Caldera"
-contributor:
-  name: HackerSploit
 external_resources:
 - '[Official Caldera documentation](https://caldera.readthedocs.io/en/latest/index.html)'
 ---

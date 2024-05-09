@@ -1,19 +1,14 @@
 ---
 slug: tldr-pages-on-linux
-author:
-  name: Nathaniel Stickman
+title: "Use tldr pages on Linux"
+title_meta: "How to Use tldr pages on Linux"
 description: "This guide shows you how to install tldr pages and use the tldr command-line tool. With tldr pages, you get a more approachable version of traditional man pages, making it easier to get started with new command-line tools."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-10-29
 keywords: ['install tldr','tldr pages linux','tldr man pages','tldr linux command']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-29
-modified_by:
-  name: Nathaniel Stickman
-title: "Use tldr pages on Linux"
-title_meta: "How to Use tldr pages on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 ---
 
 The [tldr pages project](https://tldr.sh/) seeks to improve and simplify the well-known man pages. tldr pages provide information on a wide range of Linux commands and include several options to interact with the information. Compared to man pages, each tldr page aims to be more intuitive and readable. When learning new Linux commands, tldr pages are an excellent resource.
@@ -26,7 +21,7 @@ In this guide, you learn more about the tldr pages project, how to install tldr 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

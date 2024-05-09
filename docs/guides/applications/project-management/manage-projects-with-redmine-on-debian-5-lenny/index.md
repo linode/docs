@@ -1,27 +1,22 @@
 ---
 slug: manage-projects-with-redmine-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage Projects with Redmine on Debian 5 (Lenny)'
 description: 'Installing and configuring Redmine, an open source project management system on a Debian 5 (Lenny) Linode running nginx.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-30
+modified: 2011-05-17
 keywords: ["redmine", "redmine debian", "redmine linux", "project management software", "redmine postgresql", "redmine linux"]
 tags: ["debian", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/manage-projects-with-redmine-on-debian-5-lenny/','/web-applications/project-management/redmine/debian-5-lenny/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-11-30
-title: 'Manage Projects with Redmine on Debian 5 (Lenny)'
 relations:
     platform:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 Redmine is a popular open source project management system. Written in Ruby on Rails, it gives teams the ability to track project objectives, integrates well with various source control systems, and includes customizable reporting functionality. This guide will help you install it on your Debian 5 (Lenny) Linode. We'll be using nginx with Phusion Passenger as the web server daemon for the site. If you already have the Apache web server installed, guidance will be provided for proxying incoming Redmine requests to nginx running on a different port.
 

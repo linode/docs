@@ -38,7 +38,7 @@ const onNavSearchResults = function (self, val, oldVal) {
 			if (queryString) {
 				queryString = '?' + queryString;
 			}
-			self.$store.nav.pushState('/docs/topresults/' + queryString);
+			self.$store.nav.pushTopResults(queryString);
 		}
 	}
 };
@@ -129,6 +129,7 @@ export function newNavController(weglot_api_key) {
 					eventName: 'DOCS: Guide Navigate',
 				};
 				this.$store.nav.analytics.handler.pushItem(analyticsItem);
+				this.$store.nav.analytics.handler.startNewPage();
 			}
 
 			/*
@@ -143,7 +144,8 @@ export function newNavController(weglot_api_key) {
 			}*/
 		},
 
-		onScroll: function () {
+		onScroll: function (e) {
+			this.$store.nav.analytics.onScroll();
 			let scrollpos = window.scrollY;
 			let scrollPosNavbar = getScrollPosNavbar();
 			if (scrollpos >= scrollPosNavbar) {

@@ -1,27 +1,22 @@
 ---
 slug: apache-2-web-server-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Apache 2 Web Server on CentOS 5
 description: 'Instructions for getting started with the Apache web server on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-27
+modified: 2013-11-18
 keywords: ["Apache", "web sever", "CentOS 5"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/installation/centos-5/','/web-servers/apache/apache-2-web-server-on-centos-5/','/websites/apache/apache-2-web-server-on-centos-5/']
-modified: 2013-11-18
-modified_by:
-  name: Linode
-published: 2009-07-27
-title: Apache 2 Web Server on CentOS 5
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on CentOS 5. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for CentOS](/docs/guides/lamp-server-on-centos-5/).
 

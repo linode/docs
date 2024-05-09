@@ -1,16 +1,13 @@
 ---
 slug: configuring-openvpn-client-devices
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Configure OpenVPN Client Devices'
 description: 'This guide will show you how to install, configure, and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-09
+modified: 2018-02-26
 keywords: ["openvpn", "vpn", "vpn tunnel", "ios", "os x", "mac", "windows", "android"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-02-26
-modified_by:
-  name: Linode
-published: 2015-12-09
-title: 'Configure OpenVPN Client Devices'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](https://www.tunnelblick.net/)'
@@ -46,7 +43,7 @@ Local transfer options are Bluetooth, USB or some other external media. macOS ca
 
 There are two main options for an Android OpenVPN client. The first is *OpenVPN Connect* on [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn), the official client from OpenVPN Technologies, Inc., the parent company behind OpenVPN. The second option is *OpenVPN for Android* on both [Google Play](https://play.google.com/store/apps/details?id=de.blinkt.openvpn) and [F-droid](https://f-droid.org/packages/de.blinkt.openvpn/). The two clients are similar but OpenVPN for Android is open source, more feature-rich, and usually updated more often so we'll use it for this guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you have a Windows computer or a Linux computer with the package `gvfs-backends` installed, you can connect the device by USB and it will be visible in the system's file manager as an external USB device. If you have macOS, you need to first install [Android File Transfer](https://android.com/filetransfer/).
 {{< /note >}}
 
@@ -83,7 +80,7 @@ If you have a Windows computer or a Linux computer with the package `gvfs-backen
 
 *OpenVPN Connect* is used to manage OpenVPN connections in Apple's iOS for iPhones and iPads. We'll use iTunes to transfer the file to the iOS device from a computer running macOS or Windows. A Linux computer with the package `gvfs-backends` can mount the iOS device as external storage.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The following example was performed on iOS 9.0.2 and macOS 10.10 using iTunes 12 and OpenVPN Connect 1.0.5.
 {{< /note >}}
 
@@ -207,8 +204,7 @@ OpenVPN provides a GPG signature file to verify the installer's integrity and au
     If the client device you're testing is using OpenVPN Connect with Google DNS fallback enabled, you may see Google in the results as well.
 
 3.  To ensure that no IPv6 traffic is coming from the VPN server, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.
 {{< /note >}}
 

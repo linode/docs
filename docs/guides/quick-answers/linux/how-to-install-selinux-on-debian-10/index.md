@@ -1,22 +1,17 @@
 ---
 slug: how-to-install-selinux-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install SELinux on Debian 10"
+title_meta: "How to Install SELinux on Debian 10"
 description: "Learn how to install SELinux and use it to protect the security of your Debian 10 system"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-17
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/how-to-install-selinux-on-debian-10/']
 bundles: ['debian-security']
 tags: ["debian","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2020-03-17
 image: InstallSELinux_Deb10.png
-contributor:
-  name: Linode
-title: "Install SELinux on Debian 10"
-title_meta: "How to Install SELinux on Debian 10"
 relations:
     platform:
         key: how-to-install-selinux

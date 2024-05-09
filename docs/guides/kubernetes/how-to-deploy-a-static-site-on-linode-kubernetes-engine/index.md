@@ -1,19 +1,14 @@
 ---
 slug: how-to-deploy-a-static-site-on-linode-kubernetes-engine
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy a Static Site on Linode Kubernetes Engine"
 description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-11-12
+modified: 2020-12-03
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-12
-modified: 2020-12-03
-modified_by:
-  name: Linode
-title: "Deploy a Static Site on Linode Kubernetes Engine"
-contributor:
-  name: Linode
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/static-site-linode-kubernetes-engine/']

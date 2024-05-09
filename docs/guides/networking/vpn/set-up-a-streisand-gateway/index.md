@@ -1,16 +1,13 @@
 ---
 slug: set-up-a-streisand-gateway
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: 'How to Set Up a Streisand Gateway'
 description: 'This guide shows how to create a Streisand gateway with automatically configured profiles for OpenVPN, ShadowSocks, WireGuard, Tor, etc.'
-keywords: ["streisand", "vpn", "openvpn", "tor", "wireguard", "L2TP/IPSec", "OpenConnect", "security"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 published: 2017-09-12
 modified: 2017-10-13
-modified_by:
-  name: Linode
-title: 'How to Set Up a Streisand Gateway'
+keywords: ["streisand", "vpn", "openvpn", "tor", "wireguard", "L2TP/IPSec", "OpenConnect", "security"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Streisand Github repository](https://github.com/jlund/streisand)'
 tags: ["networking","security","vpn"]
@@ -43,8 +40,7 @@ Streisand uses open-source platform [Ansible](https://www.ansible.com/) to autom
 
     ![Select API Tokens tab in My Profile Settings.](get-started-with-linode-api-my-profile-small.png "Select the API Tokens tab in My Profile Settings.")
 
-4.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
-{{< note respectIndent=false >}}
+4.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have.{{< note >}}
 **Read/Write** access for Linodes and IPs is sufficient to set up a Streisand gateway because you will be creating a new Streisand Linode server.
 {{< /note >}}
 
@@ -53,8 +49,7 @@ Streisand uses open-source platform [Ansible](https://www.ansible.com/) to autom
     When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Cloud Manager after closing the popup.**
 
 ## Install Ansible and its Dependencies
-
-{{< note respectIndent=false >}}
+{{< note >}}
 As of this writing, it is not possible to run Streisand on a Windows computer. If you do not have access to a Mac or Linux machine, you can connect to an existing Linode and complete the steps in this guide from your remote server. This will create an additional Linode.
 {{< /note >}}
 
@@ -114,18 +109,15 @@ You are now ready to run Streisand.
 3.  When prompted, choose Linode as your hosting provider. Choose a location for your gateway, then enter the API key you created earlier.
 
     ![Streisand API Prompt](api-prompt.png)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Choosing a server location near your home will help to reduce latency. However, if you intend to use your VPN to evade geolocation or avoid local internet restrictions, consider choosing a location in an appropriate country.
 {{< /note >}}
 
 Streisand will now execute a series of Ansible rules to create and configure a new Linode. This process can take a long time. (The [Streisand docs](https://github.com/jlund/streisand) say about ten minutes, but in some cases it can be longer). You may be prompted for confirmation or to provide additional information during the process.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Streisand will create a new Linode under your account early in the configuration process. If the script fails for any reason, or if you cancel it, check the [Linode Manager](https://cloud.linode.com/) and remove the new Linode if necessary.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You should not receive any errors during the install. If you receive an error related to `Alert_cpu_threshold must be between 0 and 2000`, visit this [link](https://github.com/jlund/streisand/issues/626#issuecomment-319812261) to address the issue.
 {{< /note >}}
 

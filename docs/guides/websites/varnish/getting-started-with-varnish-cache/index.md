@@ -1,19 +1,14 @@
 ---
 slug: getting-started-with-varnish-cache
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Getting Started with Varnish Cache
 description: Use Varnish Cache to increase your site's speed and optimize server resources
+authors: ["Kevin Cupp"]
+contributors: ["Kevin Cupp"]
+published: 2014-02-05
+modified: 2017-02-24
 keywords: ["Varnish", "Ubuntu", "Debian", "Cache", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/varnish/getting-started-with-varnish-cache/','/web-servers/varnish/']
-modified: 2017-02-24
-contributor:
-    name: Kevin Cupp
-modified_by:
-  name: Edward Angert
-published: 2014-02-05
-title: Getting Started with Varnish Cache
 external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
@@ -37,7 +32,7 @@ If your web server is nginx and you plan to use Varnish cache to serve WordPress
 
 3.  Install and configure a [web server](/docs/websites/) like Apache or nginx.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

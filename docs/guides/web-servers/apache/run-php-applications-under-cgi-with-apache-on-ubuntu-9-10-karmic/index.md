@@ -1,27 +1,22 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Run PHP Applications under CGI with Apache on Ubuntu 9.10 (Karmic)'
 description: 'Methods for enabling dynamic content run as individual users with PHP on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-17
+modified: 2012-10-08
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic/','/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic/','/web-servers/apache/php-cgi/ubuntu-9-10-karmic/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-02-17
-title: 'Run PHP Applications under CGI with Apache on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: php-cgi-apache
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges. When the PHP interpreter is embedded in the web server process, PHP scripts are executed by and with the permissions of the web server's user. In smaller deployments, this is perfectly acceptable, but in larger deployments and operations it can create security risks. While Apache's `itk` message passing module (mpm) makes it possible to run Apache processes under user processes in a per-virtual host setup, this is incompatible with the embedded interpreter. The `itk` module is compatible with PHP running as a CGI process.
 
@@ -66,7 +61,7 @@ If you have not already installed the Apache HTTP server, issue the following co
 
     apt-get install apache2
 
-You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/#configure_apache_for_named_based_virtual_hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/#configure-apache-for-named-based-virtual-hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     apt-get install php5-cgi
 

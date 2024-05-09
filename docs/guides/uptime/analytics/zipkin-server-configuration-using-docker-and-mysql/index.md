@@ -1,22 +1,18 @@
 ---
 slug: zipkin-server-configuration-using-docker-and-mysql
-author:
-  name: Luis Cortés
-  email: docs@linode.com
+title: 'Zipkin Server Configuration Using Docker and MySQL'
 description: 'This guide shows you how to use Zipkin in a docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems.'
+authors: ["Luis Cortés"]
+contributors: ["Luis Cortés"]
+published: 2017-10-04
+modified: 2017-10-27
 keywords: ["zipkin", "Docker", "tracking"]
 tags: ["docker","statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/zipkin-server-configuration-using-docker-and-mysql/','/uptime/zipkin-server-configuration-using-docker-and-mysql/']
-modified: 2017-10-27
-modified_by:
-  name: Luis Cortés
-published: 2017-10-04
-title: 'Zipkin Server Configuration Using Docker and MySQL'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
-
 
 [Zipkin](http://zipkin.io/) is a used for capturing timing data, it also has a centralized repository, and a microweb server that allows you to display, and search through spans and traces of your distributed programs or websites.
 

@@ -1,17 +1,14 @@
 ---
 slug: installing-rocketchat-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Rocket.Chat on Ubuntu 16.04'
 description: 'Installation and basic usage guide for Rocket.Chat, a lightweight XMPP server on Ubuntu 16.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-21
+modified: 2018-08-17
 keywords: ["rocket.chat", "slack alternative", "chat", "xmpp"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-17
-modified_by:
-  name: Linode
-published: 2018-06-21
-title: 'Installing Rocket.Chat on Ubuntu 16.04'
 external_resources:
  - '[Deploying Rocket.Chat on Ubuntu](https://rocket.chat/docs/installation/manual-installation/ubuntu/)'
  - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'

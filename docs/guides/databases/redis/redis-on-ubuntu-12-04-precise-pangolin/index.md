@@ -1,18 +1,13 @@
 ---
 slug: redis-on-ubuntu-12-04-precise-pangolin
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Redis on Ubuntu 12.04 (Precise Pangolin)'
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 12.04 "Precise Pangolin".'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2012-10-25
 keywords: ["redis ubuntu 12.04", "redis precise pangolin", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-ubuntu-12-04-precise-pangolin/','/databases/redis/ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-25
-modified_by:
-  name: Linode
-published: 2012-10-25
-title: 'Redis on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'
@@ -24,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]
+deprecated: true
 ---
 
 Redis is a high performance persistent key-value store and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.

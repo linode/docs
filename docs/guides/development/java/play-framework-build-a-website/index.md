@@ -1,19 +1,14 @@
 ---
 slug: play-framework-build-a-website
-author:
-  name: Nathaniel Stickman
+title: "Get Started Building a Website with the Play Framework"
+title_meta: "How to Build a Website using the Play Framework"
 description: "Learn how to get started creating Java and Scala web applications in this guide to the Play framework, complete with examples."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-17
 keywords: ['play framework']
 tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-17
-modified_by:
-  name: Nathaniel Stickman
-title: "Get Started Building a Website with the Play Framework"
-title_meta: "How to Build a Website using the Play Framework"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Play 2.8.x documentation](https://www.playframework.com/documentation/2.8.x/Home)'
 - '[Play official site](https://www.playframework.com/)'
@@ -31,7 +26,7 @@ This guide helps you learn more about the Play framework and how to get started 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,23 +1,20 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-6
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "In part six of our series on Kubernetes, you will learn how to access the sample application with a Domain, setup a Ingress Controller, and collect metrics."
 title: "Building a CD Pipeline Using LKE (Part 6): DNS, Ingress, and Metrics"
-keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "In part six of our series on Kubernetes, you will learn how to access the sample application with a Domain, setup a Ingress Controller, and collect metrics."
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2021-05-06
 modified: 2022-12-14
-modified_by:
-  name: Linode
-contributor:
-  name: Linode
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-6/']
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: DNS, Ingress, and Metrics](cd-presentation-header-06-dns-ingress-metrics.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: DNS, Ingress, and Metrics")
+
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
 
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: DNS, Ingress, Metrics (Slide #100)](https://2021-03-lke.container.training/#100)
 

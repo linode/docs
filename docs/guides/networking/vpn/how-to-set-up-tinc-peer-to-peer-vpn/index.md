@@ -1,22 +1,16 @@
 ---
 slug: how-to-set-up-tinc-peer-to-peer-vpn
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'How to Set up tinc, a Peer-to-Peer VPN'
 description: 'This guide details how to set up tinc, an open-source, peer-to-peer VPN on your Linode.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2017-09-19
+modified: 2017-09-20
 keywords: ["VPN", "tinc", "Ubuntu", "security"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/how-to-set-up-tinc-peer-to-peer-vpn/']
-published: 2017-09-19
-modified: 2017-09-20
-modified_by:
-  name: Linode
-title: 'How to Set up tinc, a Peer-to-Peer VPN'
-contributor:
-  name: Damaso Sanoja
 ---
-
 
 ![How to Set up tinc, a Peer-to-Peer VPN](tinc.jpg "How to Set up tinc, a Peer-to-Peer VPN")
 
@@ -37,8 +31,7 @@ You will need at least two Linodes for this guide. Complete the following steps 
 3.  Update your packages:
 
         sudo apt update && sudo apt upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In order to focus on tinc configuration, three assumptions are made:
 
 - There are no active firewalls on any server.
@@ -61,8 +54,7 @@ This is a straightforward setup involving only two instances, an application ser
 Before getting started, it's a good idea to make a cheat sheet for yourself listing each node's public IPv4 address, desired VPN address, VPN network name designation, and tinc-daemon name. The VPN address can be an arbitrary private network IPv4 address, the only rule to follow (if you want to avoid extra routing work) is that they must have the **same network prefix**, just like a typical LAN. VPN and daemon names must be unique and can't contain any spaces or special symbols. For the current use case, the following information will be used for tinc configuration:
 
 ![Two node VPN cheat-sheet](tinc-2-node-cheat-sheet.jpg)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Throughout this guide, replace the IP address for each server with the public IP address of the corresponding Linode.
 {{< /note >}}
 
@@ -235,8 +227,7 @@ WantedBy=multi-user.target
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A debug level of `3` was chosen in the `tincd` command. This will log all requests from other daemons and include an authentication chain between them. See the [tincd documentation](https://www.tinc-vpn.org/documentation/tincd.8) for more information about debug levels.
 {{< /note >}}
 

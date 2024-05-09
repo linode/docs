@@ -1,17 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Plex Media Server through the Linode Marketplace"
 description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Marketplace Apps."
-keywords: ['streaming','plex','video','media server']
-tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
+keywords: ['streaming','plex','video','media server']
+tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
 image: Deploy_Plex_oneclickapps.png
-modified_by:
-  name: Linode
-title: "Deploy Plex Media Server through the Linode Marketplace"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
 aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/guides/plex-marketplace-app/']

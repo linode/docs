@@ -1,19 +1,11 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy UTunnel VPN through the Linode Marketplace"
 description: "Deploy UTunnel VPN on a Linode Compute Instance. This provides you with a cloud-based subscription service that allows users to create VPN servers."
+published: 2021-12-10
+modified: 2022-03-08
 keywords: ['vpn','security','tunnel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-10
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy UTunnel VPN through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[UTunnel](https://www.utunnel.io/)'
 aliases: ['/guides/deploying-utunnel-marketplace-app/','/guides/utunnel-marketplace-app/']

@@ -1,17 +1,14 @@
 ---
 slug: use-nginx-reverse-proxy
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use NGINX as a Reverse Proxy
 description: 'Learn how to use NGINX as a reverse proxy. Understand how headers and buffers can help optimize your application’s performance.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-26
+modified: 2021-02-02
 keywords: ["nginx","reverse proxy","proxy","node.js"]
 tags: ["proxy","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-02-02
-modified_by:
-  name: Linode
-published: 2018-03-26
-title: Use NGINX as a Reverse Proxy
 external_resources:
   - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
 aliases: ['/web-servers/nginx/use-nginx-reverse-proxy/']

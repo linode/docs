@@ -1,18 +1,13 @@
 ---
 slug: linux-sd-command
-author:
-  name: Nathaniel Stickman
-description: "Learn how to use the sd command, an intuitive find-and-replace tool. It uses a standard regex syntax, and this among other features makes it an exceptional alternative to the sed command."
-keywords: ['sd command','sed alternative','sd command linux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-17
-modified_by:
-  name: Nathaniel Stickman
 title: "Use the sd Command for Find and Replace on Linux"
 title_meta: "How to Use the sd Command for Find and Replace on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+description: "Learn how to use the sd command, an intuitive find-and-replace tool. It uses a standard regex syntax, and this among other features makes it an exceptional alternative to the sed command."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-12-17
+keywords: ['sd command','sed alternative','sd command linux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[GitHub: chmln/sd](https://github.com/chmln/sd)'
 ---
@@ -27,7 +22,7 @@ In this guide you learn more about `sd` and how it compares to `sed`. You also l
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

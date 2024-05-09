@@ -1,16 +1,13 @@
 ---
 slug: create-a-mongodb-replica-set
-author:
-  name: Linode
-  email: docs@linode.com
-description: "This guide will show you how to configure a MongoDB replicat set on Ubuntu 16.04 and CentOS 7."
-keywords: ["mongodb", "nosql", "clusters", "replica set"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2016-12-02
 title: "Creating a MongoDB Replica Set"
 title_meta: "How To Create a MongoDB Replica Set"
+description: "This guide will show you how to configure a MongoDB replicat set on Ubuntu 16.04 and CentOS 7."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-12-02
+keywords: ["mongodb", "nosql", "clusters", "replica set"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/mongo/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/replication/)'
@@ -79,8 +76,6 @@ In this section you'll create a key file that will be used to secure authenticat
 
         openssl rand -base64 756 > mongo-keyfile
 
-    Once you've generated the key, copy it to each member of your replica set.
-
 2.  The rest of the steps in this section should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions. Create the `/opt/mongo` directory to store your key file:
 
         sudo mkdir /opt/mongo
@@ -89,6 +84,9 @@ In this section you'll create a key file that will be used to secure authenticat
 
         sudo mv ~/mongo-keyfile /opt/mongo
         sudo chmod 400 /opt/mongo/mongo-keyfile
+
+        {{< note >}} Ensure that you copy the same generated key, to each member of your replica set in the `mongo-keyfile` file under `/opt/mongo`.
+        {{< /note >}}
 
 4.  Update the ownership of your key file, so that it belongs to the MongoDB user. Use the appropriate command for your distribution:
 
@@ -104,7 +102,7 @@ In this section you'll create a key file that will be used to secure authenticat
 
 1.  On the Linode that you intend to use as the *primary* member of your replication set, log in to the `mongo` shell:
 
-        mongo
+        mongosh
 
 2.  Connect to the `admin` database:
 
@@ -146,7 +144,7 @@ Once you've made these changes, restart the `mongod` service:
 
 1.  Connect via SSH to the Linode that you intend to use as your *primary*. Once you're logged in, connect to the MongoDB shell using the [administrative user](#create-an-administrative-user) you created previously:
 
-        mongo -u mongo-admin -p --authenticationDatabase admin
+        mongosh -u mongo-admin -p --authenticationDatabase admin
 
     {{< note respectIndent=false >}}
 If your connection is refused, be sure that the address for localhost (`127.0.0.1`) is included in your configuration's `bindIp` value.

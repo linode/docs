@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Configure and Mount a Volume"
 description: "Learn how to create a file system on a Block Storage Volume and mount it to a Compute Instance."
 modified: 2022-08-24

@@ -1,18 +1,12 @@
 ---
 slug: use-scrapy-to-extract-data-from-html-tags
-author:
-  name: Florent Houbart
-  email: docs@linode.com
+title: 'Use Scrapy to Extract Data From HTML Tags'
 description: 'Scrapy is a Python framework for creating web scraping applications. This guide provides you with instructions for using it to scrape the web.'
+authors: ["Florent Houbart"]
+contributors: ["Florent Houbart"]
+published: 2017-12-04
 keywords: ["Scrapy", "Python", "crawling", "spider", "web scraping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-04
-modified: 2017-12-04
-modified_by:
-  name: Linode
-title: 'Use Scrapy to Extract Data From HTML Tags'
-contributor:
-  name: Florent Houbart
 external_resources:
 - '[Scrapy Project page](https://scrapy.org/)'
 - '[Official Scrapy Documentation](https://doc.scrapy.org/en/latest/index.html)'

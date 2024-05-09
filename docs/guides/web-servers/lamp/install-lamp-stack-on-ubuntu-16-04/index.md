@@ -1,20 +1,15 @@
 ---
 slug: install-lamp-stack-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-04-28
+modified: 2017-07-28
 keywords: ["install lamp ubuntu 16.04", "apache install", "mysql install", "php 7.0", "ubuntu 16.04 "]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/install-lamp-on-ubuntu-18-04/','/websites/lamp/install-lamp-on-ubuntu-16-04/','/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/']
-modified: 2017-07-28
-modified_by:
-  name: Edward Angert
-published: 2016-04-28
-title: 'How to Install a LAMP Stack on Ubuntu 16.04'
-deprecated: true
-deprecated_link: 'guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -25,6 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
+deprecated_link: '/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/'
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps.
@@ -32,8 +29,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web s
 This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
 ![Install LAMP on Ubuntu 16.04](install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/guides/linux-users-and-groups/).
 
 Replace each instance of `example.com` in this guide with your site's domain name.

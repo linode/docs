@@ -1,15 +1,11 @@
 ---
 slug: cloud-management-and-billing-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to access account management and billing in the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
 title: Access Account Management and Billing in the Cloud Manager
+description: 'Shortguide that shows you how to access account management and billing in the Cloud Manager.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-22
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
@@ -29,4 +25,4 @@ You can manage the following account and billing settings in the Account section
 - [Enable Backup auto enrollment for all new Linodes on your account](/docs/products/storage/backups/guides/enable/#auto-enroll-new-compute-instances-in-the-backup-service)
 - [Enable Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#global)
 - [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/)
-- [Add the Linode Managed service to your account](/docs/guides/linode-managed/#getting-started)
+- [Add the Linode Managed service to your account](/docs/products/services/managed/get-started/)

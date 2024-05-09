@@ -1,17 +1,14 @@
 ---
 slug: discussion-forums-with-vanilla-forums
-author:
-  name: Linode
-  email: docs@linode.com
+title: Discussion Forums with Vanilla Forums
 description: 'Install the lightweight Vanilla Forums software to power discussion forums on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-01
 keywords: ["vanilla", "bb", "fourms", "lamp", "discussion forums"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-vanilla-forums/','/web-applications/bulletin-boards/vanilla/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2010-05-03
-title: Discussion Forums with Vanilla Forums
 deprecated: true
 ---
 

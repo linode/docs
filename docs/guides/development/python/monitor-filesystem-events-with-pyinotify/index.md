@@ -1,19 +1,13 @@
 ---
 slug: monitor-filesystem-events-with-pyinotify
-author:
-  name: Md. Sabuj Sarker
-  email: md.sabuj.sarker@gmail.com
+title: 'Monitor Filesystem Events with Pyinotify'
 description: 'Pyinotify is a Python library for using inotify, a Linux kernel subsystem for monitoring file system changes.'
-keywords: ["inotify","pyinotify","monitoring","python","async"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Md. Sabuj Sarker"]
+contributors: ["Md. Sabuj Sarker"]
 published: 2017-12-07
 modified: 2018-09-20
-modified_by:
-  name: Md. Sabuj Sarker
-title: 'Monitor Filesystem Events with Pyinotify'
-contributor:
-  name: Md. Sabuj Sarker
-  link: http://sabuj.me
+keywords: ["inotify","pyinotify","monitoring","python","async"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Pyinotify on Github](https://github.com/seb-m/pyinotify)'
 - '[Pyinotify API documentation](http://seb-m.github.com/pyinotify)'
@@ -24,7 +18,7 @@ aliases: ['/development/monitor-filesystem-events-with-pyinotify/','/development
 tags: ["python"]
 ---
 
-![banner_image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg)
+![Header image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg "Monitor Filesystem Events with Pyinotify")
 
 File system monitoring through `inotify` can be interfaced through Python using `pyinotify`. This guide will demonstrate how to use a Python script to monitor a directory then explore practical uses by incorporating async modules or running additional threads.
 

@@ -1,20 +1,15 @@
 ---
 slug: restart-linux-server-from-the-command-line
-author:
-  name: Nathaniel Stickman
+title: "Restart a Linux Server from the Command Line"
+title_meta: "Using the Linux Restart Command from the Command Line"
 description: "This guide shows how you can restart your Linux system, a task you might need to do on occasion when installing or configuring new software or packages."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-08-06
 keywords: ['linux restart','linux restart command','restart linux server']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-06
 image: HowtoRestartaLinuxServerfromtheCommandLine.jpg
-modified_by:
-  name: Nathaniel Stickman
-title: "Restart a Linux Server from the Command Line"
-title_meta: "Using the Linux Restart Command from the Command Line"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 ---
 
 While your Linux server can run continuously for weeks or months, some configuration tasks may require a manual system reboot. This guide shows you how to restart a Linux server over SSH, using PuTTY, or on your server's console interface.
@@ -24,6 +19,7 @@ While your Linux server can run continuously for weeks or months, some configura
 Generally, you do not need to regularly restart your Linux server. It should be able to keep running for weeks or months, without needing to be "refreshed" with a reboot.
 
 However, several factors may make you want to restart your server. Some software installations require a manual reboot after installation, and some applications benefit from the system being periodically rebooted. There are also many administrative processes that require restarting the server for changes to take effect.
+Linode Compute Instances have a feature called Lassie (Linode Autonomous System Shutdown Intelligent rEbooter), also referred to as the Shutdown Watchdog. When this feature is enabled, a Compute Instance automatically reboots if it ever powers off unexpectedly. To have a normal `reboot` functionality, ensure that you have enabled this feature. For more information, see the [Shutdown Watchdog guide](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/).
 
 For those cases and others, it is helpful to know the available commands to quickly initiate a graceful system reboot.
 
@@ -69,8 +65,7 @@ Broadcast message from root@localhost on pts/0 (Wed 2021-06-30 19:15:00 UTC):
 Please wrap up your current tasks and save your work.
 The system is going down for reboot at Wed 2021-06-30 19:30:00 UTC!
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 While the time you give in the `shutdown` command is local time, it gets broadcast to users in UTC.
 {{< /note >}}
 

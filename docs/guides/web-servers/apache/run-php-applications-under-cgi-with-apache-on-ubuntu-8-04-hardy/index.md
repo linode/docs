@@ -1,27 +1,22 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Run PHP Applications under CGI with Apache on Ubuntu 8.04 (Hardy)'
 description: 'Methods for enabling dynamic content to run as individual users with PHP on Ubuntu 8.04 (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-22
+modified: 2012-10-08
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/ubuntu-8-04-hardy/','/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/','/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-02-22
-title: 'Run PHP Applications under CGI with Apache on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: php-cgi-apache
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges. When the PHP interpreter is embedded in the web server process, PHP scripts are executed by and with the permissions of the web server's user. In smaller deployments, this is perfectly acceptable, but in larger deployments and operations it can create security risks. While Apache's `itk` message passing module (mpm) makes it possible to run Apache processes under user processes in a per-virtual host setup, this is incompatible with the embedded interpreter. The `itk` module is compatible with PHP running as a CGI process.
 

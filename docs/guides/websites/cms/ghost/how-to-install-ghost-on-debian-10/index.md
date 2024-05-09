@@ -1,19 +1,15 @@
 ---
 slug: how-to-install-ghost-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
+title: Installing Ghost CMS on Debian 10
+title_meta: How to Install Ghost CMS on Debian 10
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Debian 10.'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running Debian 10.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-10
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on debian 10", "ghost cms"]
 tags: ["nginx","mysql","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-10
-modified_by:
-  name: Linode
-published: 2020-02-10
-title: Installing Ghost CMS on Debian 10
-title_meta: How to Install Ghost CMS on Debian 10
 image: GhostCMSonDebian10.png
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/setup/)'
@@ -33,7 +29,7 @@ aliases: ['/websites/cms/ghost/how-to-install-ghost-on-debian-10/']
 
 In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Debian 10, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with your site’s domain name.

@@ -1,18 +1,14 @@
 ---
 slug: kubernetes-cron-job
-author:
-  name: Martin Heller
+title: "Create a Kubernetes CronJob"
+title_meta: "How to Create a Kubernetes CronJob"
 description: 'This guide shows you how to create a Kubernetes CronJob, which you can use to automate and schedule various types of tasks on your Kubernetes clusters.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2021-08-20
 keywords: ['kubernetes cron job']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-20
-modified_by:
-  name: Linode
-title: "Create a Kubernetes CronJob"
-title_meta: "How to Create a Kubernetes CronJob"
-contributor:
-  name: Martin Heller
 external_resources:
 - '[Define Environment Variables for a Container](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)'
 - '[CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)'

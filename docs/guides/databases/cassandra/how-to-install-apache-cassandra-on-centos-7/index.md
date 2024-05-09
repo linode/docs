@@ -1,20 +1,14 @@
 ---
 slug: how-to-install-apache-cassandra-on-centos-7
-author:
-   name: Andrew Lescher
-   email: docs@linode.com
-description: 'This guide will show you how to deploy a scalable and development-driven NoSQL database with Apache Cassandra on a Linode running CentOS 7.'
-keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-06-12
-modified: 2022-05-16
-modified_by:
-  name: Linode
 title: "Installing Apache Cassandra on CentOS 7"
 title_meta: "How to Install Apache Cassandra on CentOS 7"
-contributor:
-   name: Andrew Lescher
-   link: https://www.linkedin.com/in/andrew-lescher-87027940/
+description: 'This guide will show you how to deploy a scalable and development-driven NoSQL database with Apache Cassandra on a Linode running CentOS 7.'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-06-12
+modified: 2022-05-16
+keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:
     platform:
         key: install-apache-cassandra

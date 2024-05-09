@@ -1,24 +1,21 @@
 ---
 slug: websites-with-nginx-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Websites with Nginx on CentOS 5
 description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-25
+modified: 2014-03-27
 keywords: ["nginx", "http", "web servers", "centos", "centos", "centos 5"]
 tags: ["centos","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/installation/centos-5/','/web-servers/nginx/websites-with-nginx-on-centos-5/','/websites/nginx/websites-with-nginx-on-centos-5/']
-modified: 2014-03-27
-modified_by:
-  name: Alex Fornuto
-published: 2010-02-25
-title: Websites with Nginx on CentOS 5
 relations:
     platform:
         key: websites-with-nginx
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.

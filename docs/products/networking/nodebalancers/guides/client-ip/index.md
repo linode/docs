@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Client's IP Address Pass-through"
 description: "Learn the methods of retaining client connection details and passing them to backend nodes on a NodeBalancer"
 published: 2022-10-07
@@ -22,7 +19,7 @@ You'll need to configure your web server software to use the XFF header.
 
 ### Apache
 
-If you're using the Apache web server, you can use the `mod_rpaf` to replace `REMOTE_ADDR` with the clent's IP address in the XFF header. After you install the module, you'll need to specify 192.168.255.0/24 as a proxy in `httpd.conf`.
+If you're using the Apache web server, you can use the `mod_rpaf` to replace `REMOTE_ADDR` with the client's IP address in the XFF header. After you install the module, you'll need to specify 192.168.255.0/24 as a proxy in `httpd.conf`.
 
 ### Nginx
 

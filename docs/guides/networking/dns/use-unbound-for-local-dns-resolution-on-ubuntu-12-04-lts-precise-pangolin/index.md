@@ -1,24 +1,20 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-ubuntu-12-04-lts-precise-pangolin
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use Unbound for Local DNS Resolution on Ubuntu 12.04 LTS (Precise Pangolin)'
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu 12.04 LTS (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-09
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-12-04-lts-precise-pangolin/','/dns-guides/unbound-dns-resolver-ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-09
-modified_by:
-  name: Linode
-published: 2012-10-09
-title: 'Use Unbound for Local DNS Resolution on Ubuntu 12.04 LTS (Precise Pangolin)'
 relations:
     platform:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.

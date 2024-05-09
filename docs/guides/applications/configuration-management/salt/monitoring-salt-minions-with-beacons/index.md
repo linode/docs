@@ -1,18 +1,15 @@
 ---
 slug: monitoring-salt-minions-with-beacons
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Monitoring Salt Minions with Beacons"
 description: 'This guide shows how to monitor Salt minions with beacons. Set up alerts for different system resources to notify you over a messaging service like Slack.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-10-19
+modified: 2019-01-02
 keywords: ['salt','saltstack','minion','minions','beacon','beacons','reactor','reactors','monitor','configuration drift','slack']
 tags: ["monitoring","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-19
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: MonitoringSaltMinionswithBeacons.png
-title: "Monitoring Salt Minions with Beacons"
 external_resources:
 - '[Salt Beacons Documentation](https://docs.saltproject.io/en/latest/topics/beacons/)'
 - '[Salt Beacon Modules](https://docs.saltproject.io/en/latest/ref/beacons/all/index.html)'
@@ -26,7 +23,7 @@ Every action performed by Salt, such as applying a highstate or restarting a min
 
 If you don't already have a Salt master and minion, follow the first steps in our [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

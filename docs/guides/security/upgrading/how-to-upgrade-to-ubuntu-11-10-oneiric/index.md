@@ -1,27 +1,22 @@
 ---
 slug: how-to-upgrade-to-ubuntu-11-10-oneiric
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Ubuntu 11.10 (Oneiric)'
 description: 'How to upgrade from Ubuntu 11.04 (Natty) to Ubuntu 11.10 (Oneiric).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-10-13
+modified: 2013-05-10
 keywords: ["ubuntu 11.10 upgrade", "ubuntu oneiric upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-11-10-oneiric/','/upgrading/upgrade-to-ubuntu-11-10-oneiric/']
-modified: 2013-05-10
-modified_by:
-  name: Linode
-published: 2011-10-13
-title: 'How to Upgrade to Ubuntu 11.10 (Oneiric)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 11.10
+deprecated: true
 ---
-
-
 
 This guide explains how to upgrade your system to Ubuntu 11.10 (Oneiric) from Ubuntu 11.04 (Natty). Before you begin, you should make sure that you have a working backup or a copy of your data. If you haven't already done so, you will also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. You should be logged in as root while performing these steps.
 

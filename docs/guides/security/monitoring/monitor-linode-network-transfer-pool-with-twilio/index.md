@@ -1,33 +1,29 @@
 ---
 slug: monitor-linode-network-transfer-pool-with-twilio
-author:
-  name: John Mueller
+title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
+title_meta: "Use Twilio to Monitor Your Linode's Network Transfer Pool"
 description: "This guide shows you how to use Twilio and Linode's Python Library to receive alerts about your Linode's network transfer usage."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-01-07
 keywords: ['twilio notifications']
 tags: ['python', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-07
-modified_by:
-  name: Linode
-title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
-title_meta: "Monitor your Linode's Network Transfer Pool"
-contributor:
-  name: John Mueller
 ---
 
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.
 
-{{< note respectIndent=false >}}
-For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide.
+{{< note >}}
+For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/products/platform/get-started/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide.
 {{< /note >}}
 
 It's important to keep track of how much bandwidth your account has. If you use more than your pool size in a given month, then you are billed an overage fee for that month. If you observe that you have used a high percentage of your transfer pool, then you can start to plan or budget for a possible transfer overage. Linode provides a few ways to monitor your transfer usage:
 
-- The [Cloud Manager](/docs/guides/network-transfer/#cloud-manager) displays your current transfer usage.
+- The [Cloud Manager](/docs/products/platform/get-started/guides/network-transfer/#cloud-manager) displays your current transfer usage.
 
-- The [Linode CLI](/docs/guides/network-transfer/#linode-cli) can report your current transfer usage.
+- The [Linode CLI](/docs/products/platform/get-started/guides/network-transfer/#linode-cli) can report your current transfer usage.
 
-- Linode sends [email alerts](/docs/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
+- Linode sends [email alerts](/docs/products/platform/get-started/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
 
 Using Twilio, you can also build a custom text message notification system for your transfer usage. Such a system would periodically send notifications to help you be aware of your transfer usage without manually checking on it. You can also configure the system to send notifications at custom transfer usage percents, instead of the standard 80%, 90%, and 100% Linode email alerts. This custom notification system relies on the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) of the Linode API.
 
@@ -97,13 +93,13 @@ except KeyError:
     sys.exit(1)
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-This code imports the relevant Linode and Twilio API modules. It also imports the `os` module, which can be used to read environment variables from your terminal. The module is used by the code example to load your API tokens and Twilio phone numbers. A later section in this guide shows how to set those environment variables before running the script.
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    This code imports the relevant Linode and Twilio API modules. It also imports the `os` module, which can be used to read environment variables from your terminal. The module is used by the code example to load your API tokens and Twilio phone numbers. A later section in this guide shows how to set those environment variables before running the script.
 
-Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
+    Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
 
-The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys.exit()` method immediately exits the script in this case.
-{{< /disclosure-note >}}
+    The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys.exit()` method immediately exits the script in this case.
+    {{< /note >}}
 
 ### Create Linode API and Twilio API Python Clients
 
@@ -129,7 +125,7 @@ account_network_transfer = linode_client.account.transfer()
 pool_used_ratio = account_network_transfer.used/account_network_transfer.quota
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 The first line queries the Linode API to get an object that contains information about your account's network transfer pool for the current month. The Python binding for the [Network Utilization View](/docs/api/account/#network-utilization-view) endpoint is accessed. The documentation for this endpoint shows the `account:read_only` authorization is needed to access it. This is why the Account resource was specified in the [Before You Begin](#get-a-linode-api-token) section.
 
 This endpoint returns an object that has three properties:
@@ -143,7 +139,7 @@ This endpoint returns an object that has three properties:
 The second line of this code computes the ratio of the used transfer amount to the total pool size. For example, if your account has a 1000GB pool, and you have used 250GB of the pool this month, then the `pool_used_ratio` is .25, or 25%.
 
 These properties and the computed `pool_used_ratio` are included in the text message body in the next section.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Prepare Twilio Text Message Body
 
@@ -157,7 +153,7 @@ summary_text = "Linode network transfer pool statistics"
 transfer_statistics_text = 'Used: %sGB\n' \
     'Transfer pool size: %sGB\n' \
     'Percent of pool used: %s%%\n\n' \
-    'https://www.linode.com/docs/guides/network-transfer/' % \
+    'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
     (account_network_transfer.used,
     account_network_transfer.quota,
     round(pool_used_ratio * 100, 4))
@@ -165,7 +161,7 @@ transfer_statistics_text = 'Used: %sGB\n' \
 message_text = ('%s:\n\n%s' % (summary_text, transfer_statistics_text))
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 The code in this snippet prepares the content that is used in the text message.
 
 - Lines 5-11: The properties from the account network transfer API object are inserted into the message, along with a link to our guide that explains how Linode's network transfer works.
@@ -175,7 +171,7 @@ The code in this snippet prepares the content that is used in the text message.
 - Line 13 combines a summary text string with the transfer statistics string.
 
 The `\n` character sequence appears in the message text strings. These characters [insert newlines in the message](https://support.twilio.com/hc/en-us/articles/223181468-How-do-I-Add-a-Line-Break-in-my-SMS-or-MMS-Message-).
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Create and Send a Text Message with Twilio
 
@@ -193,17 +189,17 @@ message = twilio_client.messages.create(
 print("Twilio message created with ID: %s" % (message.sid))
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-The `create` method tells the Twilio API to create *and* immediately send a new text message:
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    The `create` method tells the Twilio API to create *and* immediately send a new text message:
 
-- The text string from the last section is used as the body of the message.
+    - The text string from the last section is used as the body of the message.
 
-- The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
+    - The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
 
-- The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
+    - The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
 
-The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
-{{< /disclosure-note >}}
+    The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
+    {{< /note >}}
 
 1. After appending the above snippet, save the file and exit your text editor.
 
@@ -260,7 +256,7 @@ Used: 100GB
 Transfer pool size: 1000GB
 Percent of pool used: 10.0%
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
     If you receive an error message when you run the script, review the [Troubleshooting](#troubleshooting) section.
@@ -333,7 +329,7 @@ The cron job sends you a periodic message with your network transfer statistics,
 # transfer_statistics_text = 'Used: %sGB\n' \
 #     'Transfer pool size: %sGB\n' \
 #     'Percent of pool used: %s%%\n\n' \
-#     'https://www.linode.com/docs/guides/network-transfer/' % \
+#     'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
 #     (account_network_transfer.used,
 #     account_network_transfer.quota,
 #     round(pool_used_ratio * 100, 4))
@@ -372,7 +368,7 @@ if pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     transfer_statistics_text = 'Used: %sGB\n' \
         'Transfer pool size: %sGB\n' \
         'Percent of pool used: %s%%\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4))
@@ -382,17 +378,17 @@ if pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     send_message(message_text)
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-- Lines 3-10: To make the code a bit more readable, the create message request for the Twilio API is wrapped inside a new function called `send_message`. This function accepts the message body text that should be sent.
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    - Lines 3-10: To make the code a bit more readable, the create message request for the Twilio API is wrapped inside a new function called `send_message`. This function accepts the message body text that should be sent.
 
-- On line 12, a threshold ratio is defined. You can change this number to be any positive number. The default in the script is `.7`, or 70% of the transfer pool. Setting this to `1` would implement a 100% pool usage threshold.
+    - On line 12, a threshold ratio is defined. You can change this number to be any positive number. The default in the script is `.7`, or 70% of the transfer pool. Setting this to `1` would implement a 100% pool usage threshold.
 
-- On line 14, the computed `pool_used_ratio` is compared with the threshold ratio number.
+    - On line 14, the computed `pool_used_ratio` is compared with the threshold ratio number.
 
-- If it is greater, then the `send_message` function is called on line 28, and a text message is sent via Twilio.
+    - If it is greater, then the `send_message` function is called on line 28, and a text message is sent via Twilio.
 
-- The summary text used for the text message body (lines 15-16) is updated in this new section of code. The new summary text tells the user what the threshold ratio is and presents that ratio as a percentage.
-{{< /disclosure-note >}}
+    - The summary text used for the text message body (lines 15-16) is updated in this new section of code. The new summary text tells the user what the threshold ratio is and presents that ratio as a percentage.
+    {{< /note >}}
 
 1. After appending the above snippet, save the file.
 
@@ -409,7 +405,7 @@ Used: 800GB
 Transfer pool size: 1000GB
 Percent of pool used: 80.0%
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
 1. Your account may not have used more network transfer than the notification threshold. If you want to test the new code to make sure it works, you could temporarily change the value of the `USAGE_NOTIFICATION_THRESHOLD_RATIO` variable in the script to a lower number.
@@ -440,7 +436,7 @@ The cron job now uses a threshold ratio and only sends a text message if you hav
 #     transfer_statistics_text = 'Used: %sGB\n' \
 #         'Transfer pool size: %sGB\n' \
 #         'Percent of pool used: %s%%\n\n' \
-#         'https://www.linode.com/docs/guides/network-transfer/' % \
+#         'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
 #         (account_network_transfer.used,
 #         account_network_transfer.quota,
 #         round(pool_used_ratio * 100, 4))
@@ -467,7 +463,7 @@ if pool_used_ratio > OVERAGE_NOTIFICATION_THRESHOLD_RATIO:
         'Percent of pool used: %s%%\n' \
         'Overage amount: %sGB\n' \
         'Overage amount cost: $%s\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4),
@@ -485,7 +481,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     transfer_statistics_text = 'Used: %sGB\n' \
         'Transfer pool size: %sGB\n' \
         'Percent of pool used: %s%%\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4))
@@ -495,21 +491,21 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     send_message(message_text)
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-- Line 3 defines a new overage notification threshold ratio and sets it to `1` (representing 100% of your transfer pool size).
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    - Line 3 defines a new overage notification threshold ratio and sets it to `1` (representing 100% of your transfer pool size).
 
-- Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](/docs/guides/network-transfer/#usage-costs).
+    - Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](/docs/products/platform/get-started/guides/network-transfer/#usage-costs).
 
-- On line 6, the computed `pool_used_ratio` is compared with the overage threshold ratio number.
+    - On line 6, the computed `pool_used_ratio` is compared with the overage threshold ratio number.
 
-- If it is greater, then a different text message is prepared and sent in lines 6-24.
+    - If it is greater, then a different text message is prepared and sent in lines 6-24.
 
-- Line 7: the summary text is now prepended with `WARNING: `, to add extra emphasis for the message.
+    - Line 7: the summary text is now prepended with `WARNING: `, to add extra emphasis for the message.
 
-- The transfer statistics text now includes the overage amount of your network transfer (line 13), which is stored in the `billable` property of the network transfer API object (line 19). The overage fee is also included in the message (line 14). It is computed by multiplying the `billable` property with the overage cost per GB (line 20).
+    - The transfer statistics text now includes the overage amount of your network transfer (line 13), which is stored in the `billable` property of the network transfer API object (line 19). The overage fee is also included in the message (line 14). It is computed by multiplying the `billable` property with the overage cost per GB (line 20).
 
-- Lines 26-40 contain the same case as the code from the previous [Set a Notification Threshold](#set-a-notification-threshold) section. If you have not used more than 100% of your transfer, then a notice is still sent if you have used more than the original notification threshold.
-{{< /disclosure-note >}}
+    - Lines 26-40 contain the same case as the code from the previous [Set a Notification Threshold](#set-a-notification-threshold) section. If you have not used more than 100% of your transfer, then a notice is still sent if you have used more than the original notification threshold.
+    {{< /note >}}
 
 1. After appending the above snippet, save the file.
 
@@ -528,7 +524,7 @@ Percent of pool used: 150.0%
 Overage amount: 500GB
 Overage amount cost: $5.0
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
 1. Your account may not have used more than 100% of your network transfer pool. If you want to test the new code to make sure it works, you could temporarily change the value of the `OVERAGE_NOTIFICATION_THRESHOLD_RATIO` variable in the script to a lower number.

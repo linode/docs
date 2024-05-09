@@ -1,19 +1,16 @@
 ---
 slug: deploy-tobs-on-linode-kubernetes-engine
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
+title: "Deploying TOBS (The Observability Stack) on LKE"
+title_meta: "How to Deploy TOBS (The Observability Stack) on LKE"
 description: 'Learn how to quickly deploy TOBS (The Observability Stack), which includes Prometheus and Grafana, on Linode Kubernetes Engine.'
 og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy TOBS (The Observability Stack) on Linode Kubernetes Engine'
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2022-08-04
+modified: 2023-01-31
 keywords: ['kubernetes', 'lke', 'prometheus', 'grafana', 'timescaledb', 'opentelemetry', 'metrics', 'traces']
 tags: ["monitoring","kubernetes","container", "observability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-04
-modified: 2023-01-31
-modified_by:
-  name: Linode
-title: "Deploying TOBS (The Observability Stack) on LKE"
-title_meta: "How to Deploy TOBS (The Observability Stack) on LKE"
 external_resources:
 - '[TOBS Helm Chart on Github](https://github.com/timescale/tobs/tree/master/chart): Useful for reviewing configuration parameters and troubleshooting.'
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'
@@ -146,9 +143,9 @@ In this section, learn to deploy TOBS for individual/local access with `kubectl`
 
     | Resource     | Service Name                      | Port |
     | ------------ | ----------------------------------| ---- |
-    | Prometheus   | lke-monitor-kube-prometheus-prometheus   | 9090 |
-    | Alertmanager | lke-monitor-kube-prometheus-alertmanager | 9093 |
-    | Grafana      | lke-monitor-grafana               | 80   |
+    | Prometheus   | `lke-monitor-kube-prometheus-prometheus`   | 9090 |
+    | Alertmanager | `lke-monitor-kube-prometheus-alertmanager` | 9093 |
+    | Grafana      | `lke-monitor-grafana`               | 80   |
 
 1. Use `kubectl` [port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) to open a connection to a service, then access the service's interface by entering the corresponding address in your web browser:
 

@@ -1,21 +1,14 @@
 ---
 slug: install-icinga2-monitoring-on-debian-9
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Install Icinga 2 Monitoring on Debian 9'
 description: "This guide shows you how to install and configure Icinga 2 and Icinga Web 2 on Debian to monitor your Linode services and performance."
 og_description: "This guide will show you how to install and configure Icinga 2 to monitor your system"
+authors: ["Matt Vass"]
+contributors: ["Matt Vass"]
+published: 2017-12-12
 keywords: ["debian", "icinga", "monitoring", "icinga2"]
 tags: ["debian","monitoring","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-12
-modified: 2017-12-12
-modified_by:
-  name: Linode
-title: 'Install Icinga 2 Monitoring on Debian 9'
-contributor:
-  name: Matt Vass
-  link: mailto:linuxboxgo@gmail.com
 external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 aliases: ['/uptime/monitoring/install-icinga2-monitoring-on-debian-9/']

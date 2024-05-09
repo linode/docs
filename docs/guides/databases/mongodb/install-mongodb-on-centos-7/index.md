@@ -1,16 +1,13 @@
 ---
 slug: install-mongodb-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'This guide shows how to install Kloxo, the free web-based server control panel alternative to cPanel and Plesk, on a server running CentOS 7.'
-keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2016-12-30
 title: 'Installing MongoDB on CentOS 7'
 title_meta: 'How To Install MongoDB on CentOS 7'
+description: 'This guide shows how to install MongoDB, a document-oriented NoSQL database solution, on a server running CentOS 7.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-12-30
+keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](https://www.mongodb.com/)'

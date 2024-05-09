@@ -1,17 +1,12 @@
 ---
 slug: tags-and-groups
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Tags and Groups"
 description: 'This guide provides you with instructions for creating tags and groups in the Linode Cloud Manager to keep your Linodes and other services organized as needed.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-02-22
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-02-22
-modified_by:
-  name: Linode
-title: "Tags and Groups"
-contributor:
-  name: Linode
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/tags-and-groups/']
 ---

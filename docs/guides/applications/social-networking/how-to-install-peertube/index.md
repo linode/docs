@@ -1,17 +1,12 @@
 ---
 slug: how-to-install-peertube
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "How to Install PeerTube"
 description: 'This guide explains how to download, install, and configure the federated video sharing application PeerTube.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-12-05
 keywords: ['what is PeerTube','configure PeerTube','install PeerTube','PeerTube configuration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-05
-modified_by:
-  name: Linode
-title: "How to Install PeerTube"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[PeerTube](https://joinpeertube.org/)'
 - '[PeerTube documentation](https://docs.joinpeertube.org/)'

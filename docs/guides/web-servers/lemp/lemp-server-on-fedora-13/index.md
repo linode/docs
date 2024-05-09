@@ -1,27 +1,22 @@
 ---
 slug: lemp-server-on-fedora-13
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: LEMP Server on Fedora 13
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-06-30
+modified: 2011-05-03
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-fedora-13/','/web-servers/lemp/lemp-server-on-fedora-13/','/lemp-guides/fedora-13/']
-modified: 2011-05-03
-modified_by:
-  name: Linode
-published: 2010-06-30
-title: LEMP Server on Fedora 13
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 

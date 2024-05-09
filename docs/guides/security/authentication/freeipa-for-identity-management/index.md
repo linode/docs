@@ -1,21 +1,19 @@
 ---
 slug: freeipa-for-identity-management
-author:
-  name: Hackersploit
+title: "Set Up a FreeIPA Server and Client"
+title_meta: "How to Set Up a FreeIPA Server and Client"
 description: "Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management."
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
+modified: 2022-11-29
 keywords: ["freeipa","identity management", "authentication","security"]
 aliases: ['/security/authentication/free-ipa-for-identity-management/','/security/free-ipa-for-identity-management/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: "Set Up a FreeIPA Server and Client"
-title_meta: "How to Set Up a FreeIPA Server and Client"
 external_resources:
  - '[FreeIPA Documentation](https://www.freeipa.org/page/Documentation)'
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
-published: 2021-03-26
-modified: 2022-11-29
-modified_by:
-  name: Linode
 image: FreeIPA_IDandAuth.png
 ---
 
@@ -143,7 +141,7 @@ The admin ticket created with `kinit admin` is set to expire in 24 hours followi
 
 New users can be created with the above command at any time.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Kerberos tickets associated with these users will expire similarly to admin users. Basic syntax for creating new kerberos tickets is `kinit username`.
 {{< /note >}}
 
@@ -198,7 +196,7 @@ The kerberos admin server will be freely accessible via it's domain in a web bro
 
 Once logged in, you will have access to many of the tools and utilities available to FreeIPA from the command line directly on a more user friendly web interface.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide rely on a self-signed SSL certificate, and users may see an error message in their web browser claiming that the SSL certificate is not valid. While the self-signed certificate will not be recognized by any certificate authority, it will still provide TLS/SSL encryption. Due to this, the error message can be ignored.
 {{< /note >}}
 

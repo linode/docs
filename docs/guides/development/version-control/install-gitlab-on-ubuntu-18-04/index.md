@@ -1,19 +1,13 @@
 ---
 slug: install-gitlab-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title:  'Install GitLab on Ubuntu 18.04'
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 18.04, along with SSL.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-01-04
 keywords: ['git', 'gitlab', 'version control', 'ubuntu']
 tags: ["ssl","version control system","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-01-04
-modified: 2019-01-04
-modified_by:
-  name: Linode
-title:  'Install GitLab on Ubuntu 18.04'
-contributor:
-  name: Linode
 external_resources:
 - '[GitLab''s Official Documentation](https://docs.gitlab.com/ee/README.html)'
 - '[GitLab''s NGINX Configurations](https://docs.gitlab.com/omnibus/settings/nginx.html)'
@@ -79,8 +73,7 @@ Before installing GitLab you should consider how many users will collaborate on 
       ![GitLab welcome screen](gitlab-welcome.png)
 
 ## Configure SSL Encryption
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you did not generate an SSL certificate using Certbot prior to the installation of GitLab, you may need to first stop GitLab and then generate the SSL certificate to bypass any errors related to Certbot's certificate challenge. To stop GitLab run the following command:
 
       sudo gitlab-ctl stop

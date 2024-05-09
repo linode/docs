@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-a-redis-server-on-ubuntu-or-debian8
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'How to Install a Redis Server on Ubuntu or Debian 8'
 description: 'This guide will show you how to deploy the high performance Redis data-structure store application on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8.'
+og_description: 'This tutorial guides you through installation and best practices of Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8'
+authors: ["Sergey Pariev"]
+contributors: ["Sergey Pariev"]
+published: 2016-04-20
+modified: 2017-09-13
 keywords: ["redis", "redis ubuntu 14.04", "redis server", "redis ubuntu 16.04", "debian 8", "redis cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/','/databases/redis/deploy-redis-on-ubuntu-or-debian/']
-modified: 2017-09-13
-modified_by:
-  name: Edward Angert
-published: 2016-04-20
-title: 'How to Install a Redis Server on Ubuntu or Debian 8'
-og_description: 'This tutorial guides you through installation and best practices of Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8'
-contributor:
-  name: Sergey Pariev
-  link: https://twitter.com/spariev
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'
@@ -28,7 +22,6 @@ relations:
             - distribution: Ubuntu/Debian
 tags: ["ubuntu","debian","database","nosql"]
 ---
-
 
 ![Redis Server on Ubuntu or Debian](install-redis-server-ubuntu-debian.png "Redis Server on Ubuntu or Debian")
 

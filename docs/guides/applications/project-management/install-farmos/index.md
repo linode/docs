@@ -1,17 +1,14 @@
 ---
 slug: install-farmos
-author:
-  name: Angel G
-  email: docs@linode.com
-keywords: ["farmos", "Drupal", "LAMP"]
-tags: ["drupal", "lamp", "cms"]
+title: 'How to Install farmOS - a Farm Recordkeeping Application'
 description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, farmOS.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
 published: 2017-09-09
 modified: 2021-06-22
-modified_by:
-    name: Linode
-title: 'How to Install farmOS - a Farm Recordkeeping Application'
+keywords: ["farmos", "Drupal", "LAMP"]
+tags: ["drupal", "lamp", "cms"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/install-farmos/']
 ---
 

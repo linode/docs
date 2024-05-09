@@ -1,20 +1,14 @@
 ---
 slug: yesod-nginx-mysql-on-debian-7-wheezy
-author:
-  name: Si-Qi Liu
-  email: liusq@tsinghua.edu.cn
+title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 description: 'Installing the web framework Yesod with the server Nginx and MySQL on Debian 7'
+authors: ["Si-Qi Liu"]
+contributors: ["Si-Qi Liu"]
+published: 2014-09-25
 keywords: ["yesod", "nginx", "mysql", "debian 7"]
 tags: ["web applications","nginx","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod/yesod-nginx-mysql-on-debian-7-wheezy/']
-contributor:
-    name: Si-Qi Liu
-modified: 2014-09-25
-modified_by:
-  name: Linode
-published: 2014-09-25
-title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 external_resources:
  - '[Haskell Platform](http://www.haskell.org/platform/)'
  - '[Haskell Wiki for *cabal-install*](http://www.haskell.org/haskellwiki/Cabal-Install)'
@@ -29,10 +23,9 @@ relations:
 deprecated: true
 ---
 
-
 Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

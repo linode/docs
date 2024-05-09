@@ -1,21 +1,15 @@
 ---
 slug: left-4-dead-2-multiplayer-server-installation
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: "Installing a Left 4 Dead 2 Multiplayer Server"
+title_meta: "How to Install a Left 4 Dead 2 Multiplayer Server"
 description: "In this guide, learn how to install and configure a SteamCMD Left 4 Dead 2 server on Linode."
+authors: ["Andrew Gottschling"]
+contributors: ["Andrew Gottschling"]
+published: 2016-02-25
+modified: 2019-02-01
 keywords: ["left 4 dead", "l4d2", "game server", "steamCMD"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-02-25
-modified: 2019-02-01
-modified_by:
-    name: Linode
-title: "Installing a Left 4 Dead 2 Multiplayer Server"
-title_meta: "How to Install a Left 4 Dead 2 Multiplayer Server"
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 aliases: ['/game-servers/left-4-dead-2-multiplayer-server-installation/','/applications/game-servers/left-4-dead-2-multiplayer-server-installation/']
 dedicated_cpu_link: true
 ---
@@ -33,7 +27,7 @@ You will need the following items to get started:
 - A Linode with at least 2GB of RAM and 10GB of free disk space.
 - An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/docs/products/platform/get-started/) guide for help configuring your Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -73,8 +67,7 @@ If you've configured your firewall according to our [Securing Your Server](/docs
 {{< /note >}}
 
 ## Install SteamCMD and Left 4 Dead 2
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/guides/install-steamcmd-for-a-steam-game-server/).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4.
 {{< /note >}}
 

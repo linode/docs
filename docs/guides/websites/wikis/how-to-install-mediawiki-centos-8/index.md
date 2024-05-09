@@ -1,20 +1,14 @@
 ---
 slug: how-to-install-mediawiki-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing Mediawiki on CentOS 8"
+title_meta: "How to Install Mediawiki on CentOS 8"
 description: 'This guide will show you how to install MediaWiki, a versatile, free and open-source application powering knowledge websites similar to Wikipedia, on CentOS 8.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-04
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on centos 8"]
 tags: ["centos", "wiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Installing Mediawiki on CentOS 8"
-title_meta: "How to Install Mediawiki on CentOS 8"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[MediaWiki Installation Guide](https://www.mediawiki.org/wiki/Manual:Installation_guide)'
 relations:
@@ -32,7 +26,7 @@ relations:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

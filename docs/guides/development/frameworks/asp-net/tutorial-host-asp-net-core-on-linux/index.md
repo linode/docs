@@ -1,20 +1,15 @@
 ---
 slug: tutorial-host-asp-net-core-on-linux
-author:
-  name: Nathaniel Stickman
+title: "Tutorial: Hosting ASP.NET Core on Linux"
+title_meta: "An ASP.NET Core on Linux Tutorial"
 description: "This guide shows you how to install and get started with the .NET Core for building and hosting ASP.NET applications on Linux using NGINX as a web server and reverse proxy."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-02
 keywords: ['asp net core tutorial']
 tags: ['web applications', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-02
-modified_by:
-  name: Nathaniel Stickman
-title: "Tutorial: Hosting ASP.NET Core on Linux"
-title_meta: "An ASP.NET Core on Linux Tutorial"
 image: ASPNET.jpg
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Tutorial: Get Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)'
 - '[Microsofts ASP.NET Core Recommended Learning Path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path)'
@@ -32,7 +27,7 @@ This guide shows you how to install ASP.NET Core on your Linux server and how to
 
 1. This guide uses `example-app` as the name of the ASP.NET Core application and `example.com` as your server's domain name. Replace these with your preferred application name and actual server name, respectively.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are  written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

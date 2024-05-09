@@ -1,17 +1,13 @@
 ---
 slug: what-is-data-breach
-author:
-  name: David Chernicoff
-description: 'What is a data breach? And what causes a data breach? We provide the answers you need and explain the importance of data breach security.'
-keywords: ['what is data leak','data breach definition','what is data breach']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-25
-modified_by:
-  name: Linode
 title: "What is a Data Breach?"
 title_meta: "Data Breach Definition and Protection Protocols"
-contributor:
-  name: David Chernicoff
+description: 'What is a data breach? And what causes a data breach? We provide the answers you need and explain the importance of data breach security.'
+authors: ["David Chernicoff"]
+contributors: ["David Chernicoff"]
+published: 2022-03-25
+keywords: ['what is data leak','data breach definition','what is data breach']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 If you follow any form of tech media, you rarely go more than a day or two without hearing about some sort of data breach and its impact on business. Even mainstream media often finds itself reporting on data breaches because of the sometimes spectacular nature of the problem. The term data breach, however, is an exceptionally broad one. In essence, it refers to any action that results in the exposure of information to anyone who isn’t authorized to view or access that data.

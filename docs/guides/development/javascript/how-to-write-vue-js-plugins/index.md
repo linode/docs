@@ -1,18 +1,12 @@
 ---
 slug: how-to-write-vue-js-plugins
-author:
-  name: John Au-Yeung
-  email: docs@linode.com
+title: "Write Your Own Vue.js Plugin"
 description: 'Learn how to create your own Vue.js plugin with an easy-to-use package and add functionality to your Vue apps.'
+authors: ["John Au-Yeung"]
+contributors: ["John Au-Yeung"]
+published: 2021-02-09
 keywords: ['vue','vue.js','plugin','directive', 'filter', 'mixin']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-09
-modified_by:
-  name: Linode
-title: "Write Your Own Vue.js Plugin"
-contributor:
-  name: John Au-Yeung
-  link: https://twitter.com/AuMayeung
 external_resources:
 - '[VueJS](https://vuejs.org/)'
 tags: ["web applications"]
@@ -39,8 +33,7 @@ To use the plugin in the app, then call the global `Vue.use` method with the plu
 The options object in the second argument is available as the value of the `options` parameter in the `install` function.
 
 ## Creating a Simple Vue.js Plugin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The code below assumes that the Vue project is created by the [Vue CLI](https://cli.vuejs.org/).
 {{< /note >}}
 

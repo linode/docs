@@ -1,19 +1,13 @@
 ---
 slug: how-to-work-with-mysql-subqueries
-author:
-  name: Francis Ndungu
-  email: francisndungu83@gmail.com
-description: 'A subquery is an SQL query that is nested within another query. This guide shows how to use correlated subqueries, as well as subqueries as derived tables.'
-keywords: ['MySQL', 'database', 'subqueries']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-04
-modified_by:
-  name: Linode
 title: Working with MySQL Subqueries"
 title_meta: "How to Work with MySQL Subqueries"
-contributor:
-  name: Francis Ndungu
-  link: https://twitter.com/francisndungu83
+description: 'A subquery is an SQL query that is nested within another query. This guide shows how to use correlated subqueries, as well as subqueries as derived tables.'
+authors: ["Francis Ndungu"]
+contributors: ["Francis Ndungu"]
+published: 2021-02-04
+keywords: ['MySQL', 'database', 'subqueries']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MySQL Subqueries](https://dev.mysql.com/doc/refman/8.0/en/subqueries.html)'
 ---

@@ -1,17 +1,13 @@
 ---
 slug: google-analytics-on-wordpress
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
+title: Google Analytics for WordPress
 description: 'Get in-depth website visitor statistics with Google Analytics on your WordPress website.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-01-29
 keywords: ["analytics", "google analytics", "wordpress", "analytics", "tracking", "statistics"]
 tags: ["wordpress","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-01-29
-modified_by:
-  name: Elle Krout
-published: 2015-01-29
-title: Google Analytics for WordPress
 external_resources:
  - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
@@ -23,7 +19,7 @@ Google Analytics offers detailed statistics related to visitor traffic and sales
 
 This guide provides three ways to add Google Analytics to WordPress: By directly adding the analytics code to your theme and two plugin options. Prior to using this guide, you should have completed our [Manage Web Content with WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide and have a fully configured WordPress website set up.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -49,7 +45,7 @@ You are now set up with Google Analytics and can decide how to proceed with addi
 
 WordPress uses PHP includes, so adding a Google Analytics code is as easy as altering a single file in your WordPress theme.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide assumes you have configured your LAMP server as described in our guides, with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
 {{< /note >}}
 

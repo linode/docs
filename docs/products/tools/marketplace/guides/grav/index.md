@@ -1,19 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Grav through the Linode Marketplace"
 description: "Learn how to deploy Grav, a modern open source flat-file CMS, on a Linode Compute Instance."
-keywords: ['cms','blog','website']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Grav through the Linode Marketplace"
-contributor:
-  name: Holden Morris
-  link: https://github.com/hmorris3293
+keywords: ['cms','blog','website']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Grav](https://getgrav.org/)'
 aliases: ['/guides/grav-marketplace-app/']

@@ -1,17 +1,12 @@
 ---
 slug: introduction-to-osi-networking-model
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "An Introduction to the OSI Networking Model"
 description: 'This guide introduces and explains the levels of the OSI networking model and how to interact with the network architecture.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-11-01
 keywords: ['OSI network model','OSI networking','OSI levels','networking model']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-11-01
-modified_by:
-  name: Linode
-title: "An Introduction to the OSI Networking Model"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[OSI Model on Wikipedia](https://en.wikipedia.org/wiki/OSI_model)'
 - '[Internet Protocol](https://en.wikipedia.org/wiki/Internet_protocol_suite)'

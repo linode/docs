@@ -1,18 +1,15 @@
 ---
 slug: ssl-apache2-debian-ubuntu
-author:
-  name: Linode
-  email: docs@linode.com
+title: "SSL Certificates with Apache on Debian & Ubuntu"
 description: 'This guide provides you with step-by-step instructions on how to enable SSL to secure websites served through the Apache web server on Debian or Ubuntu.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-11-19
+modified: 2021-12-29
 keywords: ["apache SSL", "ssl on debian", "web server", "debian", "apache", "ssl", "ubuntu", "ssl on ubuntu"]
 tags: ["ubuntu","debian","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-ubuntu/','/security/ssl/ssl-apache2-debian-ubuntu/']
-modified: 2021-12-29
-modified_by:
-  name: Nick Brewer
-published: 2014-11-19
-title: "SSL Certificates with Apache on Debian & Ubuntu"
+aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-ubuntu/','/security/ssl/ssl-apache2-debian-ubuntu/','/web-servers/apache/ssl-guides/ubuntu-12.04-precise-pangolin/']
 image: SSL_Certificates_with_Apache_on_Debian_Ubuntu_smg.jpg
 external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -35,7 +32,7 @@ This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubun
 
 -  Follow our guide to obtain either a [self-signed](/docs/guides/create-a-self-signed-tls-certificate/) or [commercial](/docs/guides/obtain-a-commercially-signed-tls-certificate/) SSL certificate.
 
--  If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/guides/support/) to request an additional IP address.
+-  If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/products/platform/get-started/guides/support/) to request an additional IP address.
 
 ## Configure Apache to use the SSL Certificate
 

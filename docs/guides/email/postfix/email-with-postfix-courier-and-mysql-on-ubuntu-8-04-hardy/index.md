@@ -1,27 +1,22 @@
 ---
 slug: email-with-postfix-courier-and-mysql-on-ubuntu-8-04-hardy
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Email with Postfix, Courier and MySQL on Ubuntu 8.04 (Hardy)'
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Ubuntu 8.04 (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-22
+modified: 2011-05-17
 keywords: ["postfix", "courier", "mail server", "imap", "postfix ubuntu 8.04", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/courier-mysql-ubuntu-8-04-hardy/','/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-8-04-hardy/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-09-22
-title: 'Email with Postfix, Courier and MySQL on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
 

@@ -1,29 +1,23 @@
 ---
 slug: pritunl-vpn-ubuntu
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Pritunl VPN Server and Management Panel on Ubuntu 14.04'
 description: 'Set up Pritunl, an open source VPN server with an intuitive web interface'
+authors: ["Andrew Gottschling"]
+contributors: ["Andrew Gottschling"]
+published: 2015-07-27
+modified: 2019-01-02
 keywords: ["pritunl", "vpn", "vpn server", "ubuntu", "ubuntu 14.04"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-07-27
-modified: 2019-01-02
-deprecated: true
-modified_by:
-    name: Linode
-title: 'Pritunl VPN Server and Management Panel on Ubuntu 14.04'
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 aliases: ['/networking/vpn/pritunl-vpn-ubuntu/']
+deprecated: true
 ---
 
 ![Pritunl VPN Server and Management Panel on Ubuntu](Pritunl_VPN_Server_and_Management_Panel_on_Ubuntu_1404_smg.jpg)
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

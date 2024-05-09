@@ -1,14 +1,11 @@
 ---
 slug: k8s-alpha-deprecation-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that displays a deprecation notice where applied'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Ryan Syracuse
-published: 2020-01-03
 title: k8s-alpha deprecation Definition
+description: 'Shortguide that displays a deprecation notice where applied'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-03
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false

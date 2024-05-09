@@ -1,10 +1,11 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for the Linode API"
 description: "Learn the essential pieces to use the Linode API v4 and find guides on more advanced topics, like creating an OAuth app with the Linode Python API library."
-tab_group_main:
-    weight: 30
 published: 2020-09-11
 modified: 2022-11-30
+tab_group_main:
+    weight: 30
 aliases: ['/products/tools/linode-api/guides/']
 ---
 

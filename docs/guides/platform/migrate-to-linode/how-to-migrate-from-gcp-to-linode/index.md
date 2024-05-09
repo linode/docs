@@ -1,19 +1,14 @@
 ---
 slug: how-to-migrate-from-gcp-to-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide will provide best practices when migrating GCP instances to Linode.'
-keywords: ['migrate','Google Cloud Platform','GCP','Linode']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-21
-modified_by:
-  name: Linode
-image: L_MigrateFromGCPtoLin.png
 title: 'Migrating a Google Cloud Platform VM Instance to Linode'
 title_meta: 'How to Migrate from Google Cloud Platform to Linode'
-contributor:
-  name: Linode
+description: 'This guide will provide best practices when migrating GCP instances to Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-21
+keywords: ['migrate','Google Cloud Platform','GCP','Linode']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: L_MigrateFromGCPtoLin.png
 tags: ["linode platform"]
 aliases: ['/platform/migrate-to-linode/how-to-migrate-from-gcp-to-linode/']
 ---
@@ -134,13 +129,12 @@ Orchestration tools: [Pulumi](/docs/guides/deploy-in-code-with-pulumi/), [Terraf
 
 This section contains all of the preparation steps that you will need to complete on the Google Cloud Platform and on your GCP instance in order to migrate your disk images to Linode. At a high-level, you will disable Google specific daemons running on your GCP instance, create and export an image of your instance, and store the image in a GCP object storage bucket.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 While it is possible to migrate a GCP disk image to Linode, due to differences in low-level system configurations between GCP and Linode, you may encounter some unexpected results that require additional troubleshooting steps. Continue with this method only if you are confident in your understanding of the Google Cloud Platform, [GCP IAM roles](https://cloud.google.com/iam/docs/understanding-roles), and [GCP disks and images](https://cloud.google.com/solutions/image-management-best-practices).
 {{< /note >}}
 
 ### Install and Set Up gcloud
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you have already installed the Google Cloud SDK on your computer, you can skip this section.
 {{< /note >}}
 
@@ -164,7 +158,7 @@ The [Google Cloud SDK](https://cloud.google.com/sdk/docs/) gives you access to t
 
 When you create an image of your GCP instance you will temporarily store it in a [GCP object storage bucket](#create-and-export-a-disk-image). Follow the steps in this section to create the GCP object storage bucket.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Using the GCP object storage service will incur additional charges outside of the cost of your GCP instance.
 {{< /note >}}
 
@@ -287,7 +281,7 @@ If your GCP instance was not created with IP forwarding enabled, then you may se
 #### Stop Your GCP Instance
 In order to create your instance's disk image in the next section, you will first need to stop the instance. This will prevent any new data from being written to the persistent disk.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 GCP recommends stopping your instance prior to creating a disk image, however, it is possible to keep the instance running while you create your image. See their [official documentation](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#prepare_instance_for_image) for details.
 {{< /note >}}
 
@@ -355,7 +349,7 @@ You may need to respond to some command-line prompts before the image is exporte
 ### Prepare Your Linode
 In this section you will create a new Linode, add a new disk and configuration profile in order to boot the Linode from your GCP instance's image, import the GCP image to your Linode, and finally, boot your Linode using your GCP instance's image.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You will be importing your GCP image onto a *raw* disk with the *direct disk* boot option. This will result in a working custom installation; however, it will not support advanced Linode features such as [disk resizing](/docs/products/compute/compute-instances/guides/resize/) or the [Backup Service](/docs/products/storage/backups/) by default. These features require an `ext4` formatted disk.
 
 If you would like access to these features after completing your migration, ensure you complete the following steps:
@@ -381,7 +375,7 @@ When selecting your Linode's plan, if you want to have access to advanced featur
 
 1.  Once the Linode is finished provisioning, power it down. Click on the **Running** status at the top of the Cloud Manager and select **Power Off** from the drop down menu.
 
-1.  [Disable *Watchdog*](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog), also known as *Lassie*, which is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Click the **Settings** tab, then **Shutdown Watchdog**. Toggle the **Enabled** switch to **Disabled**.
+1.  [Disable *Watchdog*](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog), also known as *Lassie*, which is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Click the **Settings** tab, then **Shutdown Watchdog**. Toggle the **Enabled** switch to **Disabled**.
 
 1.  Disable your Linode's Auto Resize capability. Click the **Resize** tab and scroll to the bottom of the screen. Uncheck the box for **Auto Resize Disk**.
 
@@ -458,7 +452,7 @@ You may also need to update your SSH server's configuration file to temporarily 
 
           PasswordAuthentication yes
 
-See the [SSH guide](/docs/guides/troubleshooting-ssh/) for more SSH troubleshooting tips.
+See the [SSH guide](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for more SSH troubleshooting tips.
     {{< /note >}}
 
 ### Remove Google Packages
@@ -483,7 +477,7 @@ When you're done:
 - [Delete the original disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
 - [Resize your Linode](/docs/products/compute/compute-instances/guides/resize/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
 - [Delete the Configurations for the original Linode](/docs/products/compute/compute-instances/guides/configuration-profiles/#deleting-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
-- [Enable Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
+- [Enable Shutdown Watchdog](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
 
 ## Additional Migration Considerations
 

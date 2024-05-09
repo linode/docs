@@ -1,17 +1,14 @@
 ---
 slug: retrieve-email-using-getmail
-author:
-  name: Linode
-  email: docs@linode.com
+title: Retrieve Email Using Getmail
 description: 'This guide shows how-to configure getmail to download email from remote servers.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-01
+modified: 2017-08-22
 keywords: ["email", "getmail", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/getmail/','/email/clients/retrieve-email-using-getmail/']
-modified: 2017-08-22
-modified_by:
-  name: Linode
-published: 2010-02-01
-title: Retrieve Email Using Getmail
 external_resources:
  - '[Official Getmail Documentation](http://pyropus.ca/software/getmail/documentation.html)'
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'

@@ -1,9 +1,11 @@
 ---
 slug: how-to-deploy-the-elastic-stack-on-kubernetes
-author:
-  name: Tyler Langlois
-  email: ty@tjll.net
+title: "Deploy the Elastic Stack on Kubernetes"
+title_meta: "How to Deploy the Elastic Stack on Kubernetes"
 description: "Learn how to install components of the Elastic Stack like Elasticsearch and Kibana on Kubernetes."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2020-07-07
 keywords:
   [
     "elastic",
@@ -18,11 +20,6 @@ keywords:
   ]
 tags: ["monitoring","container","kubernetes","docker"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-published: 2020-07-07
-modified_by:
-  name: Linode
-title: "Deploy the Elastic Stack on Kubernetes"
-title_meta: "How to Deploy the Elastic Stack on Kubernetes"
 external_resources:
   - "[Elastic Documentation](https://www.elastic.co/guide/index.html)"
 aliases: ['/kubernetes/how-to-deploy-the-elastic-stack-on-kubernetes/','/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/']

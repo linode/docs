@@ -1,17 +1,14 @@
 ---
 slug: installing-apache-guacamole-on-ubuntu-and-debian
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Installing Apache Guacamole on Ubuntu and Debian"
+title_meta: "How to Install Apache Guacamole on Ubuntu and Debian"
 description: "Learn how to install Apache Guacamole (a remote access gateway for SSH, VNC, and other protocols) natively on Ubuntu and Debian."
+authors: ["Matt Wildman"]
+contributors: ["Matt Wildman"]
+published: 2021-09-13
 keywords: ["Apache Guacamole", "SSH"]
 tags: ["guacamole"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-13
-modified_by:
-  name: Linode
-title: "Installing Apache Guacamole on Ubuntu and Debian"
-title_meta: "How to Install Apache Guacamole on Ubuntu and Debian"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
 ---

@@ -1,19 +1,14 @@
 ---
 slug: how-to-install-streamlink-cli-on-ubuntu-macos
-author:
-  name: Sandro Villinger
+title: "Install Streamlink CLI on Ubuntu and macOS"
+title_meta: "How to Install Streamlink CLI on Ubuntu and macOS"
 description: 'In this guide, you learn how to install and configure Streamlink on the macOS, Ubuntu, and Debian distributions'
+authors: ["Sandro Villinger"]
+contributors: ["Sandro Villinger"]
+published: 2021-09-03
 keywords: ['streamlink']
 tags: ['ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-03
-modified_by:
-  name: Linode
-title: "Install Streamlink CLI on Ubuntu and macOS"
-title_meta: "How to Install Streamlink CLI on Ubuntu and macOS"
-contributor:
-  name: Sandro Villinger
-  link: https://twitter.com/sandrovillinger
 external_resources:
 - "[Streamlink's Plugins documentation](https://streamlink.github.io/plugin_matrix.html)"
 - "[Streamlink's Player Options](https://streamlink.github.io/cli.html#positional-arguments)"

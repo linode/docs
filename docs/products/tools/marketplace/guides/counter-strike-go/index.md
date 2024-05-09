@@ -1,15 +1,9 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Counter-Strike Global Offensive through the Linode Marketplace"
 description: "Deploy a Counter-Strike: Global Offensive server on Linode using Marketplace Apps."
-keywords: ['counter-strike','cs', 'go','marketplace']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-28
 modified: 2022-05-17
-modified_by:
-  name: Linode
-title: "Deploy Counter-Strike Global Offensive through the Linode Marketplace"
+keywords: ['counter-strike','cs', 'go','marketplace']
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
 tags: ["linode platform","marketplace","cloud-manager"]

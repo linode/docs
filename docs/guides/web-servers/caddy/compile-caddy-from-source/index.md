@@ -1,16 +1,13 @@
 ---
 slug: compile-caddy-from-source
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How To Build Caddy From Source'
 description: 'This guide provides you with step-by-step instructions for building Caddy, the fast, open-source, security focused web server from source on Linux.'
-keywords: ["caddy", "web server"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2017-09-14
 modified: 2019-01-07
-modified_by:
-  name: Linode
-title: 'How To Build Caddy From Source'
+keywords: ["caddy", "web server"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
 tags: ["web server"]

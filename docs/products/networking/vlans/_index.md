@@ -1,7 +1,9 @@
 ---
 title: VLANs
-linkTitle: VLANs
+title_meta: "VLAN Product Documentation"
 description: "Linode VLANs enable secure and private communication across Linodes within the same data center region. This free service is a great way to keep your cloud workloads secure. VLANs are easy to create using the Linode Cloud Manager, API, and CLI."
+modified: 2024-04-03
+linkTitle: VLANs
 bundles: ['network-security']
 tab_group_main:
     is_root: true
@@ -10,7 +12,6 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2023-02-23
 aliases: ['/guides/platform/vlan/']
 ---
 
@@ -28,7 +29,7 @@ Use the Cloud Manager to create a VLAN and assign Compute Instances. Create up t
 
 ### Reduce Network Transfer Costs
 
-Private network transfer is free. Any communication between Compute Instances over a VLAN does not count against the account's monthly [network transfer allowance](/docs/guides/network-transfer/).
+Private network transfer is free. Any communication between Compute Instances over a VLAN does not count against the account's monthly [network transfer allowance](/docs/products/platform/get-started/guides/network-transfer/).
 
 ### Part of a Flexible Custom VPC Solution
 
@@ -36,23 +37,12 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 
 ## Availability
 
-| Data center | Status |
-| -- | -- |
-| **Atlanta (Georgia, USA)** | **Available** |
-| Dallas (Texas, USA) | Not yet available |
-| **Frankfurt (Germany)** | **Available** |
-| Fremont (California, USA) | Not yet available |
-| **London (United Kingdom)** | **Available** |
-| **Mumbai (India)** | **Available** |
-| **Newark (New Jersey, USA)** | **Available** |
-| **Singapore** | **Available** |
-| **Sydney (Australia)** | **Available** |
-| Tokyo (Japan) | Not yet available |
-| **Toronto (Canada)** | **Available** |
+VLANs are available in all data centers.
+
 
 ## Pricing
 
-VLANs are free to use. Communication across your private network does not count against your [monthly network transfer usage](/docs/guides/network-transfer/).
+VLANs are free to use. Communication across your private network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/).
 
 ## Technical Specifications
 
@@ -63,7 +53,7 @@ VLANs are free to use. Communication across your private network does not count 
 - User assignable IPv4 addresses
 - Each account can maintain up to 10 VLANs per region
 - Each Compute Instance can belong to up to 3 VLANs
-- Network transfer over a VLAN does not count towards your account's [network transfer allowance](/docs/guides/network-transfer/)
+- Network transfer over a VLAN does not count towards your account's [network transfer allowance](/docs/products/platform/get-started/guides/network-transfer/)
 
 ## Additional Limits and Considerations
 

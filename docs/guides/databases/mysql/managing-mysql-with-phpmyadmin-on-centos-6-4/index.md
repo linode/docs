@@ -1,18 +1,14 @@
 ---
 slug: managing-mysql-with-phpmyadmin-on-centos-6-4
-deprecated: true
-author:
-    name: Linode
-    email: docs@linode.com
+title: 'How to Install and Configure phpMyAdmin on CentOS 6'
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface on CentOS 6.4.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-02-04
+modified: 2017-08-01
 keywords: ["mysql", "phpmyadmin", "sql", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/managing-mysql-with-phpmyadmin-on-centos-6-4/','/databases/mysql/phpmyadmin-centos-6/']
-modified: 2017-08-01
-modified_by:
-    name: Linode
-published: 2014-02-04
-title: 'How to Install and Configure phpMyAdmin on CentOS 6'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
@@ -22,6 +18,7 @@ relations:
         keywords:
             - distribution: CentOS 6
 tags: ["php","database","mysql","centos"]
+deprecated: true
 ---
 
 ![Install and Configure phpMyAdmin on CentOS 6](how-to-install-and-configure-phpmyadmin-on-centos-6.png "Install and Configure phpMyAdmin on CentOS 6")

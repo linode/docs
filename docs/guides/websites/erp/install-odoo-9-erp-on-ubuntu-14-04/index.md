@@ -1,19 +1,14 @@
 ---
 slug: install-odoo-9-erp-on-ubuntu-14-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Install Odoo 9 ERP on Ubuntu 14.04'
 description: 'This guide shows you how to install Odoo, a free and open-source suite of over 4,500 business utilities which you can install, by using Git source on Ubuntu 14.04.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2015-11-03
+modified: 2016-07-21
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-11-03
-modified: 2016-07-21
-modified_by:
-  name: Linode
-title: 'Install Odoo 9 ERP on Ubuntu 14.04'
-contributor:
-  name: Damaso Sanoja
 aliases: ['/websites/erp/install-odoo-9-erp-on-ubuntu-14-04/','/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/']
 external_resources:
  - '[Odoo User Documentation](https://doc.odoo.com/book/)'
@@ -60,8 +55,7 @@ Now we're going to install the PostgreSQL database and other necessary server li
 2.  Create the log directory:
 
         sudo mkdir /var/log/odoo
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In the scenario of running multiple Odoo versions on the same Linode you may want to use different users and directories for each instance.
 {{< /note >}}
 
@@ -75,7 +69,7 @@ In the scenario of running multiple Odoo versions on the same Linode you may wan
 
         sudo git clone https://www.github.com/odoo/odoo --depth 1 --branch 9.0 --single-branch .
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Using Git allows great flexibility because any time a new upgrade ,is available you only need to pull that branch, You can even install a different one alongside the production version; just change the destination directory and the  `--branch X.x` flag. Before performing any operation, remember to make a full backup of your database and custom files.
 {{< /note >}}
 
@@ -97,7 +91,7 @@ In the scenario of a testing or development environment you could create a user 
 
 4.  Press **CTRL+D** to exit from `postgres` user session.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you want to run multiple Odoo instances on the same Linode remember to check pg_hba.conf and change it according your needs.
 {{< /note >}}
 

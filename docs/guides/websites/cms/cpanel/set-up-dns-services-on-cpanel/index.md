@@ -1,20 +1,17 @@
 ---
 slug: set-up-dns-services-on-cpanel
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
+title: Setting up DNS Services on cPanel
+title_meta: Set Up DNS Services on cPanel
 description: 'This guide provides you with instructions for setting up DNS on cPanel, a commercial web-based control panel for servers that lets you manage your Linode.'
 og_description: "How to set up DNS on your cPanel server"
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2011-11-04
+modified: 2021-10-21
 keywords: ["DNS", "cPanel", "DNS on cPanel"]
 tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/set-up-dns-services-on-cpanel/','/websites/cms/cpanel/set-up-dns-services-on-cpanel/','/web-applications/control-panels/cpanel/dns-on-cpanel/']
-modified: 2021-10-21
-modified_by:
-  name: Linode
-published: 2011-11-04
-title: Setting up DNS Services on cPanel
-title_meta: Set Up DNS Services on cPanel
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'
@@ -109,8 +106,7 @@ Complete the following steps while you are logged in a `root` user in the WHM in
 You then want to begin adding your domains to the Linode DNS Manager as secondary zones.
 
 Complete the following steps using Linode Cloud Manager:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Creating a domain also creates its corresponding domain zone.
 {{< /note >}}
 

@@ -1,27 +1,22 @@
 ---
 slug: use-mysql-relational-databases-on-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
 description: 'Get started with MySQL for web and server applications on Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-26
+modified: 2014-01-14
 keywords: ["mysql debian 6", "mysql debian", "mysql debian squeeze", "mysql linux", "mysql linux Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-debian-6-squeeze/','/databases/mysql/debian-6-squeeze/']
-modified: 2014-01-14
-modified_by:
-  name: Alex Fornuto
-published: 2011-01-26
-title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Debian 6
 tags: ["debian","database","mysql"]
+deprecated: true
 ---
-
-
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian 6 (Squeeze) Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 

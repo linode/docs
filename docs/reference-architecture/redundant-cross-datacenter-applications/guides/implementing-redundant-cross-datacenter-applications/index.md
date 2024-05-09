@@ -1,17 +1,13 @@
 ---
 slug: implementing-redundant-cross-datacenter-applications
+title: "Implementing Redundant Cross-Data Center Applications"
+description: "The redundant cross–data center architecture utilizes WireGuard&#174; and Linode's VLAN service to run your SaaS applications on a segmented software-defined network. This tutorial walks you through how you can implement this architecture yourself, using Terraform provisioning and NGINX load balancing."
+published: 2023-03-08
 author:
   name: Linode Community
   email: docs@linode.com
-description: "The redundant cross–data center architecture utilizes WireGuard&#174; and Linode's VLAN service to run your SaaS applications on a segmented software-defined network. This tutorial walks you through how you can implement this architecture yourself, using Terraform provisioning and NGINX load balancing."
-og_description: "The redundant cross–data center architecture utilizes WireGuard&#174; and Linode's VLAN service to run your SaaS applications on a segmented software-defined network. This tutorial walks you through how you can implement this architecture yourself, using Terraform provisioning and NGINX load balancing."
 keywords: ['redundancy across data centers','data center redundancy','redundant cross region']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-11-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Implementing Redundant Cross-Data Center Applications"
-h1_title: "Implementing Redundant Cross-Data Center Applications"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -59,9 +55,9 @@ Terraform is a tool for automating the process of provisioning infrastructure. Y
 
 The steps below give you everything you need to run the Terraform script for implementing the infrastructure here. Afterwards, you can find a high-level breakdown of what the script does.
 
-{{< caution >}}
+{{< note type="warning" >}}
 The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Follow the Terraform [install guide](https://learn.hashicorp.com/tutorials/terraform/install-cli) to install the Terraform command line interface (CLI) for your system.
 
@@ -82,20 +78,20 @@ The configurations and commands used in this guide add multiple Linode instances
 
     -   The `password` value should be the root password you intend to use for the nodes in the infrastructure.
 
-    {{< caution >}}
-Sensitive infrastructure data (like passwords and tokens) are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
-    {{< /caution >}}
+    {{< note type="warning" >}}
+    Sensitive infrastructure data (like passwords and tokens) are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+    {{< /note >}}
 
     {{< note >}}
-The Terraform script assumes you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If not, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
+    The Terraform script assumes you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If not, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
 
-For instance, include a line like the following if your public key file is stored in the current user's home directory:
+    For instance, include a line like the following if your public key file is stored in the current user's home directory:
 
-```command
-ssh_key = "~/id_rsa.pub"
-```
+    ```command
+    ssh_key = "~/id_rsa.pub"
+    ```
 
-Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
+    Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
     {{< /note >}}
 
 1.  **Optional:** Adjust the `node_count` value to control the number of nodes created in each region. The script as it is does not work properly if anything other than two regions are specified, however, you can adjust the specific `regions` values.

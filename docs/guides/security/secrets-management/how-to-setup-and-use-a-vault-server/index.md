@@ -1,15 +1,13 @@
 ---
 slug: how-to-setup-and-use-a-vault-server
-author:
-  name: Hackersploit
-description: 'This guide will show you how to install Vault, a open source, centralized secrets management system which provides a secure and reliable way to manage secrets.'
-keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-26
-modified_by:
-  name: Linode
 title: "Setting Up and Using a Vault Server"
 title_meta: "How to Set Up and Use a Vault Server"
+description: 'This guide will show you how to install Vault, a open source, centralized secrets management system which provides a secure and reliable way to manage secrets.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
+keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/secrets-management/how-to-set-up-and-use-a-vault-server/']
 tags: ["ubuntu", "security"]
 image: SetUpVaultserver.png

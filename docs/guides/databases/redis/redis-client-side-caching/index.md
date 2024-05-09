@@ -1,22 +1,18 @@
 ---
 slug: redis-client-side-caching
-author:
-  name: Nathaniel Stickman
+title: "Use Redis for Client-Side Caching"
+title_meta: "How to Use Redis for Client-Side Caching"
 description: "Modern web applications rely on client-side caching to enhance its performance. This guide shows you how to use Redis for server-assisted client-side caching."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-04-08
 keywords: ['redis caching tutorial','redis server assisted client-side caching','how redis caching works']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-08
-modified_by:
-  name: Linode
-title: "Use Redis for Client-Side Caching"
-title_meta: "How to Use Redis for Client-Side Caching"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: Redis server-assisted client side caching](https://redis.io/topics/client-side-caching)'
 - '[MDN Web Docs: Client-side Storage](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage)'
+tags: ["saas"]
 ---
 
 Redis is an open-source in-memory database with a reputation for working exceptionally well for caching web application data. Redis's fast transactions and low latency help to increase application performance while its server-assisted caching feature makes client-side caching more efficient.
@@ -41,7 +37,7 @@ This tutorial explains the concepts behind Redis's server-assisted client-side c
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -166,7 +162,7 @@ RESP3 makes it possible for a client to be simultaneously open for issuing comma
 
 By default, Redis clients start in the RESP2 protocol. Below, you can see steps for enabling RESP3 and using it for receiving invalidation messages on a Redis client.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Redis clients must be version 6 or later to use RESP3. Check your Redis version before proceeding:
 
     redis-cli --version
