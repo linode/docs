@@ -1,13 +1,13 @@
 ---
 slug: manage-replication-failover-on-postgresql-cluster-using-repmgr
 title: "Manage Replication and Failover on a PostgreSQL Cluster Using repmgr"
-description: 'This guide explains how to configure a two-node PostgreSQL cluster using the repmgr replication manager.'
+description: "This guide explains how to configure a two-node PostgreSQL cluster using the repmgr replication manager."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny", "Adam Overa"]
+published: 2023-10-11
+modified: 2024-05-09
 keywords: ['postgresql cluster','configure cluster postgresql repmgr','repmgr replication manager','repmgr replication failover']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-10-11
-modified_by:
-  name: Linode
 external_resources:
 - '[PostgreSQL](https://www.postgresql.org/)'
 - '[PostgreSQL High Availability Documentation](https://www.postgresql.org/docs/current/high-availability.html)'
