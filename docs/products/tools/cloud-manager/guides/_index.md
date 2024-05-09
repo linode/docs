@@ -61,7 +61,7 @@ These additional guides help you with targeted topics like how to manage your ac
 
 ### Manage Your Account
 
-- [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/)
+- [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-cloud-manager/)
 
 - [Understanding Common Cloud Manager Errors](/docs/guides/an-overview-of-common-cloud-manager-errors/)
 

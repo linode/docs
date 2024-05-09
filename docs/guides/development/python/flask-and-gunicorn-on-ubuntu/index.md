@@ -1,22 +1,21 @@
 ---
 slug: flask-and-gunicorn-on-ubuntu
+title: "Deploying a Flask Application on Ubuntu"
+title_meta: "How to deploy a Flask Application on Ubuntu"
 description: 'This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode.'
+authors: ["Austin Balarin"]
+contributors: ["Austin Balarin"]
+published: 2019-10-10
+modified: 2020-07-11
 keywords: ['python','flask','gunicorn','nginx', 'flask deployment', 'python flask']
 tags: ["monitoring","python","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-10-10
-modified: 2020-07-11
-modified_by:
-  name: abalarin
-title: "Deploying a Flask Application on Ubuntu"
-title_meta: "How to deploy a Flask Application on Ubuntu"
 external_resources:
 - '[Python](https://www.python.org/)'
 - '[Flask](https://flask.palletsprojects.com/en/1.0.x/)'
 - '[NGINX](https://www.nginx.com/resources/wiki/)'
 - '[Gunicorn](http://docs.gunicorn.org/en/stable/)'
 aliases: ['/development/python/flask-and-gunicorn-on-ubuntu/']
-authors: ["Austin Balarin"]
 ---
 
 Flask is a light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. After you have developed a Flask application in a local environment, you need to prepare the application's production environment in order to run the application and serve it to the users of the application through the internet.
@@ -59,7 +58,7 @@ In this guide you complete the following:
 
 After creating the Flask application in the local development environment, you are now ready to deploy it to a production environment. You need to copy the local Flask application code to the Linode. You can accomplish this by either [cloning the GitHub project to the Linode](#clone-your-app-from-source-control) using Git or by using the [secure copy method](#secure-copy-your-app-from-a-local-machine) to directly transfer the application files to the Linode. This section provides steps for both options.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide's examples transfer the Flask application files to the Linode's `/home` directory. If you prefer, you can store the application files in a different directory, however, ensure you run the examples in the directory of the application.
 {{< /note >}}
 
@@ -149,7 +148,7 @@ server {
 
 To run the Flask application, you need to install Python, Flask, pip3 and any other required package dependencies on the Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was created using Python 3.6.8
 {{< /note >}}
 
@@ -191,8 +190,7 @@ Collecting flask-wtf (from -r flask_app/requirements.txt (line 4))
 Depending on the environment of the Flask application, there are different settings you may need to configure, like toggling the debug mode, setting the secret key, setting the database URI, etc. For more information on Flask's available configuration options see the [configuration docs](https://flask.palletsprojects.com/en/1.1.x/config/#builtin-configuration-values).
 
 In this section, you create a JSON file to store the configuration of the environment and then load that configuration into the Flask app. The configuration created in this section is a basic example of some Flask environment variables you might include in the application.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 You should keep sensitive configuration files **outside of source control**. If you source control the configuration file, which contains sensitive values, in a remote repository, then someone could access it and use that information to compromise security of the Linode server or the application. To keep the configuration file out of the Git repository, add it to the `.gitignore` file.
 {{< /note >}}
 

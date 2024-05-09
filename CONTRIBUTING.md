@@ -125,21 +125,21 @@ While macOS and Linux are preferred by most of the core Linode Docs team, it's a
 
 ## Fork and Clone the Linode Library
 
-All of our guides are stored in the [github.com/linode/docs](https://github.com/linode/docs) repository. You will need to clone this repository to your local computer.
+All of our guides are stored in the [github.com/linode/docs](https://github.com/linode/docs) repository. You will need to fork this repository and clone your fork to your local computer.
 
 For more information about using Git, refer to the [official Git documentation](https://git-scm.com/documentation). If you're a Git beginner, both [GitHub](https://guides.github.com/) and [GitLab](https://docs.gitlab.com/ee/gitlab-basics/README.html) offer excellent primers to get you started.
 
-1.  On Github, navigate to the [linode/docs](https://github.com/linode/docs) repository. Click fork on the top right corner.
+1.  On Github, navigate to the [linode/docs](https://github.com/linode/docs) repository. Click fork on the top right corner. When creating your fork, you only need to copy the develop branch.
 
-1.  Clone your fork of the repository using either the [HTTPS URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls) or the [SSH URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls). In the commands below, replace `USERNAME` with your GitHub username.
+1.  Clone your fork of the repository using either the [SSH URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls) or the  [HTTPS URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). In whichever command you run below, replace `USERNAME` with your GitHub username. Running either command creates a `linode-docs` directory in your terminal's working directory.
+
+    -   **SSH URL** (the preferred method): This requires that you have a public/private key pair installed on your local system. If you do not have one, [create one now](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key). Once you have a key pair, upload the public key to your GitHub account. For further instructions, see [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). When running the command below, you will be prompted for a password. Enter your SSH passphrase in this prompt.
+
+            git clone git@github.com:USERNAME/docs.git linode-docs
 
     -   **HTTPS URL:** When prompted for your password, enter your personal access token from GitHub. For instructions on creating this token, see [Creating a Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token).
 
             git clone https://github.com/USERNAME/docs linode-docs
-
-    -   **SSH URLs:** Before continuing with SSH URLs, you should first have a public/private key pair installed on your local system. Then, you must upload your public key to your GitHub account. When running the command below, you will be prompted for a password. Enter your SSH passphrase in this prompt. For further instructions, [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
-
-            git clone git@github.com:USERNAME/docs.git linode-docs
 
     This may take a few minutes to copy all of the files and images to your machine.
 
@@ -160,8 +160,21 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  Add the `linode/docs` repository that you forked from as the `upstream` [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) for your local repository:
 
-    - **HTTPS URL:** `git remote add upstream https://github.com/linode/docs.git`
     - **SSH URL:** `git remote add upstream git@github.com:linode/docs.git`
+    - **HTTPS URL:** `git remote add upstream https://github.com/linode/docs.git`
+
+1.  View your remote repositories by running:
+
+        git remote -v
+
+    This command outputs all remote repositories and should match the following.
+
+        origin	git@github.com:USERNAME/docs.git (fetch)
+        origin	git@github.com:USERNAME/docs.git (push)
+        upstream	git@github.com:linode/docs.git (fetch)
+        upstream	git@github.com:linode/docs.git (push)
+
+    Most importantly, the origin should be your fork and the upstream should be the `linode/docs` repository. If you cloned the repository (or added the `upstream` remote) using the HTTPS URLS, the output will use those URLs instead.
 
 1.  Install the Node dependencies for the repository:
 
@@ -256,20 +269,23 @@ This section takes you through the process of creating a new guide, using the to
 
 ## Write and Submit
 
-Your local Hugo development server has hot-reloading enabled, so you will be able to view changes to your guide as you save them. Please see our [Linode Writer's Formatting guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for more information.
+1.  Make edits or write new content using any text editor, though we recommend a code editor like [Visual Studio Code](https://code.visualstudio.com/). Your local Hugo development server has live preview functionality, so you will be able to view changes to your guide as you save them. Review our [Linode Writer's Formatting guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for more information on how to make edits and for formatting / style guidelines.
 
-Any images that you include in the guide should be added inside the same directory as the new `index.md` file. Images should be linked to using their filename as the relative URL: `![Image Title](image.png)`.
+    Any images that you include in the guide should be added inside the same directory as the new `index.md` file. Images should be linked to using their filename as the relative URL: `![Image Title](image.png)`. See the [Images](https://www.linode.com/docs/guides/linode-writers-formatting-guide/#images) section of the writer's formatting guide.
 
-1.  Commit your changes to your local branch:
+1.  Stage your changes to your local branch. As a best practice, use a command like `git status` to verify you're working out of the correct branch and view a list of files that have been changed. If the output shows only the files that you've explicitly edited, you can stage them all at once using `git add .` Otherwise, add each one individually by referencing the file path in that command.
 
         git add docs/guides/web-servers/nginx/how-to-install-nginx-on-debian/
+
+1.  Once the changes are staged, commit them using the command below. Your commit message should summarize the changes that were made.
+
         git commit -m "Initial draft of guide"
 
-1.  Push the local branch to your fork:
+1.  Push the local branch to your remote fork (the `origin` remote repository).
 
-        git push --set-upstream origin nginx-on-debian
+        git push origin nginx-on-debian
 
-1.  Go to `https://github.com/linode/docs` and open a pull request.
+1.  In your web browser, you can now navigate to `https://github.com/linode/docs` and open a pull request. When creating a pull request, provide a detailed overview of the changes.
 
 Your guide is now submitted. Thank you for contributing to Linode! A member of the content team will review your guide and contact you if any changes are required.
 

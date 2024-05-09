@@ -1,17 +1,16 @@
 ---
 slug: file-system-quotas
-description: 'How to set Filesystem Quotas on Ubuntu 22.04.'
-keywords: ["filesystem", "quotas", "disk space", "limit disk", "ubuntu"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2023-03-14
 title: 'Setting Filesystem Quotas on Ubuntu 22.04'
 title_meta: 'How To Set Filesystem Quotas on Ubuntu 22.04'
+description: 'How to set Filesystem Quotas on Ubuntu 22.04.'
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2023-03-14
+keywords: ["filesystem", "quotas", "disk space", "limit disk", "ubuntu"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Official Documentation for Quota subsystem](https://www.kernel.org/doc/html/next/filesystems/quota.html)'
 tags: ["ubuntu","filesystem","limit disk"]
-authors: ["Rajakavitha Kodhandapani"]
 ---
 
 In this guide, learn how to use quotas to limit the amount of disk space a user or group can use on a filesystem.

@@ -1,7 +1,6 @@
 ---
 title: "Use Cases for Managed Databases"
-description: "Learn about the many benefits and use cases for Managed Databaes, including disaster recover, cost reduction, and rapid deployment."
-authors: ["Linode"]
+description: "Learn about the many benefits and use cases for Managed Database, including disaster recover, cost reduction, and rapid deployment."
 ---
 
 {{< content "dbass-eos" >}}

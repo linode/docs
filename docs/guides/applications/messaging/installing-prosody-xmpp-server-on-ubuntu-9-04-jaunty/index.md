@@ -1,25 +1,22 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-9-04-jaunty
-deprecated: true
+title: 'Installing Prosody XMPP Server on Ubuntu 9.04 (Jaunty)'
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 9.04 (Jaunty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-13
+modified: 2011-04-29
 keywords: ["prosody", "prosody ubuntu jaunty", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-9-04-jaunty/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-04-jaunty/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-10-13
-title: 'Installing Prosody XMPP Server on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight. Prosody uses fewer resources than its counterparts and is designed to be easy to configure and run. [ejabberd](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/guides/install-openfire-on-ubuntu-12-04-for-instant-messaging/) may be better suited for larger applications, but for most independent and small scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for running an XMPP server for a very small base of users, or for XMPP development.
 

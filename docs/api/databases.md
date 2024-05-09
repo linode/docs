@@ -1,4 +1,4 @@
 ---
-title: Managed Databases
 slug: databases
+title: Managed Databases
 ---

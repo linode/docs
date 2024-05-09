@@ -1,9 +1,8 @@
 ---
 title: "Connect to a MongoDB Database"
-description: "Learn how to connect to a MongoDB Managed Databse through the command line or Compass"
+description: "Learn how to connect to a MongoDB Managed Database through the command line or Compass"
 published: 2022-06-06
 expiryDate: 2023-05-01
-authors: ["Linode"]
 ---
 
 {{< content "dbass-eos" >}}

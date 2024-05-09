@@ -1,15 +1,14 @@
 ---
 slug: create-restic-repository-shortguide
+title: "Install Restic backup"
 description: 'A shortguide that shows how to install Restic backup.'
+authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
+published: 2020-07-24
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-24
-modified_by:
-  name: Andy Heathershaw
-title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false
-authors: ["Andy Heathershaw"]
 ---
 
 {{< note >}}
@@ -52,7 +51,7 @@ Store this password securely and somewhere other than your Linode. Your backups 
 
 Your access key, secret key, and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples in this section use the Nano text editor. Refer to the [Nano Text Editor Commands](/docs/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
 {{< /note >}}
 

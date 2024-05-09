@@ -1,23 +1,20 @@
 ---
 title: "Getting Started on the Linode Platform"
+description: "Learn how to create an account and use the Linode Cloud Platform."
+published: 2018-11-05
+modified: 2023-09-20
 tab_group_main:
     is_root: true
     title: Get Started
     weight: 10
 keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
-description: "Learn how to create an account and use the Linode Cloud Platform."
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/products/platform/accounts/get-started/','/guides/getting-started/','/guides/platform/get-started/']
-published: 2018-11-05
-modified: 2023-09-20
-modified_by:
-  name: Linode
 show_on_frontpage: true
 linkTitle: "Get Started"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
 image: getting-started.jpg
-authors: ["Linode"]
 ---
 
 Our goal at Linode is to make cloud computing simple, accessible, and affordable. To this end, the Linode platform offers a variety of user-friendly cloud solutions, all of which have clear and predictable [pricing](https://www.linode.com/pricing/) and can be managed using an intuitive browser-based interface (the [Cloud Manager](https://www.linode.com/products/cloud-manager/)), the command line (the [Linode CLI](https://www.linode.com/products/cli/)), or programmatically through an API (the [Linode API](https://www.linode.com/products/linode-api/)). This guide covers signing up for a Linode account, accessing the Cloud Manager, creating your first services, and understanding how billing works.
@@ -64,7 +61,7 @@ Linode's [Cloud Manager](https://cloud.linode.com/) is the primary gateway to ou
 
 - [Help & Support](https://cloud.linode.com/support): Search through our guides, find answers on the Community Site, or open a ticket to reach our 24/7 award-winning [Support Team](https://www.linode.com/support-experience/).
 
-For a full overview of the Cloud Manager and its core features, see the [Overview of the Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/) guide.
+For a full overview of the Cloud Manager and its core features, see the [Overview of the Cloud Manager](/docs/guides/an-overview-of-the-cloud-manager/) guide.
 
 ## Create Your First Compute Instance
 

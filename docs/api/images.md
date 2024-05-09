@@ -1,5 +1,5 @@
 ---
-title: Images
 slug: images
+title: Images
 ---
 

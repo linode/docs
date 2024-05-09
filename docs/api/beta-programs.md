@@ -1,4 +1,4 @@
 ---
-title: Beta Programs
 slug: beta-programs
+title: Beta Programs
 ---

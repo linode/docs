@@ -1,15 +1,12 @@
 ---
 title: Troubleshooting General Issues on Compute Instances
 description: 'This guide provides you with a reference for common troubleshooting scenarios you may encounter when managing your Linode. Multiple sections are included.'
-keywords: ['troubleshooting','troubleshoot']
-tags: ["linode platform"]
 published: 2012-04-05
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ['troubleshooting','troubleshoot']
+tags: ["linode platform"]
 bundles: ['troubleshooting']
 aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/']
-authors: ["Linode"]
 ---
 
 This guide provides common troubleshooting scenarios you may encounter when managing your Compute Instance. Each troubleshooting section provides ways to further diagnose your issue and the corresponding steps, when applicable, to resolve the issue. We recommend using this guide in the following way:

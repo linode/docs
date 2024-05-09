@@ -2,6 +2,7 @@
 title: StackScripts
 title_meta: "StackScripts Product Documentation"
 description: "Linode StackScripts allow for quick and easy customization. Create your own and join the growing library of StackScripts."
+modified: 2023-09-18
 tab_group_main:
     is_root: true
     title: Overview
@@ -9,7 +10,6 @@ tab_group_main:
 cascade:
     product_description: "Custom deployment scripts used to install software or configure a system on new Compute Instances."
 aliases: ['/platform/stackscripts-classic-manager/','/platform/stackscripts/','/platform/stackscripts-new-manager/','/stackscripts/','/guides/platform/stackscripts/']
-modified: 2023-09-18
 ---
 
 {{< content "metadata-stackscripts-notice" >}}

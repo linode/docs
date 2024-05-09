@@ -1,12 +1,12 @@
 ---
 title: "Jenkins CI/CD on Linode to Any Hyperscaler"
 description: "A standard Jenkins CI/CD system that can be hosted within Linode and any outside hosting environment"
+published: 2022-09-08
 license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)"
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-published: 2022-09-08
 ---
 
 ## Abstract
