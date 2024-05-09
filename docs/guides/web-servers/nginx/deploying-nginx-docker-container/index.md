@@ -12,9 +12,7 @@ external_resources:
 - '[Nginx: Deploying NGINX and NGINX Plus with Docker](https://www.nginx.com/blog/deploying-nginx-nginx-plus-docker/)'
 ---
 
-[Nginx](https://www.nginx.com/) remains one of the most widely used and adaptable web servers around, frequently used for its reverse proxy and load balancer capabilities.
-
-With Docker, you can deploy your own Nginx server with a reduced administrative overhead. The portability and self-contained nature of Docker containers can make running and maintaining an Nginx server easier, and lead into scalable options like Kubernetes.
+[Nginx](https://www.nginx.com/) remains one of the most widely used and adaptable web servers around, frequently used for its reverse proxy and load balancer capabilities. With Docker, you can deploy your own Nginx server with a reduced administrative overhead. The portability and self-contained nature of Docker containers can make running and maintaining an Nginx server easier, and lead into scalable options like Kubernetes.
 
 Follow along with this tutorial to learn about the advantages of running Nginx via a Docker container and how to do that yourself.
 
@@ -46,11 +44,9 @@ Beyond this, a Dockerized Nginx instance can be a gateway to more complicated se
 
 To install Docker, follow the instructions in our guide on [Installing and Using Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/). Use the drop down at the top of the guide to select the appropriate distribution. The present tutorial assumes that you have followed the sections on:
 
--   Installing Docker Engine
-
--   Starting and Testing Docker
-
--   Using Docker with a Non-Root User
+- Installing Docker Engine
+- Starting and Testing Docker
+- Using Docker with a Non-Root User
 
 ## Deploying Nginx as a Docker Container
 
@@ -60,8 +56,6 @@ Continue on to the next section to advance your Nginx container instance with cu
 
 ### Starting the Nginx Container
 
-The simplest way to deploy Nginx with Docker is to run the default configuration immediately, with a single command.
-
 The standard method for deploying simple Nginx server within a Docker container uses Docker's `run` command. This command pulls the latest Nginx Docker image and starts running it immediately within a new container.
 
 ```command
@@ -70,11 +64,9 @@ docker run --name nginx-docker -p 80:80 -d nginx
 
 This example command includes several useful options for effectively leveraging your Nginx container:
 
--   `--name` allows you to name the container, here as `nginx-docker`.
-
--   `-p` defines a port mapping, with the container's port `80` mapped to the host machine's port `80`.
-
--   `-d` runs the container in *detached mode*, meaning that the container continues to run in the background until stopped.
+- `--name` allows you to name the container, here as `nginx-docker`.
+- `-p` defines a port mapping, with the container's port `80` mapped to the host machine's port `80`.
+- `-d` runs the container in *detached mode*, meaning that the container continues to run in the background until stopped.
 
 ```output
 Unable to find image 'nginx:latest' locally
