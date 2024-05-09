@@ -1,16 +1,13 @@
 ---
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
-keywords: ['networking']
 published: 2022-07-19
-modified: 2023-06-29
-modified_by:
-  name: Linode
+modified: 2024-01-03
+keywords: ['networking']
 aliases: ['/guides/network-infrastructure-upgrades/']
-authors: ["Linode"]
 ---
 
-Throughout 2022, Linode is rolling out networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.
+Linode is rolling out networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.
 
 For most customers, these upgrades are performed seamlessly behind the scenes. For customers that use certain features, such as IP Sharing and /116 IPv6 pools, there may be some changes that impact your current configuration. This document outlines what is changing, what data centers are impacted, and what, if anything, you may need to do in order to prepare for these upcoming changes.
 
@@ -34,11 +31,11 @@ The following is a list of breaking changes and any action that may be required 
 
 ## Which Data Centers Have Been Upgraded?
 
-Review the table below to learn which data centers have been upgraded with the latest network enhancements.
+Review the table below to learn which data centers have been upgraded with the latest network enhancements. This table covers the regions that existed at the start of this initiative. If a region is not listed, it was launched after this initiative began and, as such, already has the relevant network upgrades.
 
 | Data center | Upgrade Status |
 | -- | -- |
-| Atlanta (Georgia, USA) | *Undergoing network upgrades* |
+| **Atlanta (Georgia, USA)** | **Complete** |
 | **Dallas (Texas, USA)** | **Complete** |
 | **Frankfurt (Germany)** | **Complete** |
 | Fremont (California, USA) | *Undergoing network upgrades* |
@@ -47,8 +44,8 @@ Review the table below to learn which data centers have been upgraded with the l
 | **Newark (New Jersey, USA)** | **Complete** |
 | **Singapore** | **Complete** |
 | **Sydney (Australia)** | **Complete** |
-| Tokyo (Japan) | *Undergoing network upgrades* |
-| Toronto (Canada) | *Undergoing network upgrades* |
+| **Tokyo (Japan)** | **Complete** |
+| **Toronto (Canada)** | **Complete** |
 
 A status of **complete** indicates that all new Compute Instances (and *most* existing instances) are located on fully upgraded hardware. Compute Instances using legacy features, such as ARP-based failover and /116 ranges, may still be located on hardware that hasn't yet been upgraded. These customers have been notified and a migration timeline has been shared.
 

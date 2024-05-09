@@ -67,9 +67,7 @@
                     type="checkbox"
                     x-model="filter.allChecked"
                     @change="apply()" />
-                  <span
-                    x-bind:class="{ 'text-titlecolor':  !filter.allChecked, 'text-white': filter.allChecked }"
-                    class="text-xxs font-semibold">
+                  <span class="text-xxs font-semibold text-titlecolor">
                     All
                   </span>
                 </label>
@@ -87,8 +85,8 @@
                       x-model="checkbox.checked"
                       @change="apply()" />
                     <span
-                      x-bind:class="{ 'text-titlecolor':  !checkbox.checked && checkbox.count > 0, 'text-white': checkbox.checked, 'text-gray-400': !checkbox.checked && checkbox.count === 0 }"
-                      class="text-xxs font-semibold capitalize"
+                      x-bind:class="{ 'text-titlecolor':  checkbox.checked || (!checkbox.checked && checkbox.count > 0), 'text-gray-400': !checkbox.checked && checkbox.count === 0 }"
+                      class="text-xxs font-semibold"
                       style="letter-spacing: 0.07px;"
                       x-text="checkbox.title"></span>
                   </label>

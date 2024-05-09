@@ -1,14 +1,13 @@
 ---
 slug: install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04
+title: "Manage MySQL Database with Puppet Hiera on Ubuntu 18.04"
 description: "Use this guide to install Puppet with MySQL modules and Puppet Hiera configuration manifests to manage MySQL in a variety of environments on Ubuntu 18.04."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-01-15
 keywords: ["puppet installation", "configuration change management", "server automation", "mysql", "database", "hiera"]
 tags: ["database","ubuntu","automation","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-01-15
-modified: 2019-01-15
-modified_by:
-    name: Linode
-title: "Manage MySQL Database with Puppet Hiera on Ubuntu 18.04"
 external_resources:
   - '[Puppet Labs](https://puppet.com/)'
   - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
@@ -21,14 +20,13 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/applications/configuration-management/puppet/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/','/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/']
-authors: ["Linode"]
 ---
 
 [Puppet](https://puppet.com/) is a configuration management system that helps simplify the use and deployment of different types of software, making system administration more reliable and replicable. In this guide, we use Puppet to manage an installation of [MySQL](https://www.mysql.com/), a popular relational database used for applications such as WordPress, Ruby on Rails, and others. [Hiera](https://docs.puppet.com/hiera/) is a method of defining configuration values that Puppet will use to simplify MySQL configuration.
 
 In this guide, you'll use Puppet to deploy [modules](https://docs.puppet.com/puppet/latest/modules_fundamentals.html) on your server. At the end, you will have MySQL installed, configured, and ready to use for a variety of applications that require a database backend.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

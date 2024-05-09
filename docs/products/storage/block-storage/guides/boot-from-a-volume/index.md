@@ -1,16 +1,13 @@
 ---
+title: "Boot from a Block Storage Volume"
 description: "This guide provides you with instructions for booting a Compute Instance from a Block Storage Volume for use in an emergency or disaster recovery situation."
 og_description: "This guide shows how to boot a Linode from a Block Storage Volume."
-keywords: ["block storage","volume","media","storage","disk", "boot", "boot disk"]
-modified: 2022-08-24
-modified_by:
-  name: Linode
 published: 2018-05-04
-title: "Boot from a Block Storage Volume"
+modified: 2022-08-24
+keywords: ["block storage","volume","media","storage","disk", "boot", "boot disk"]
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/boot-from-block-storage-volume/','/guides/boot-from-block-storage-volume/']
 image: block-storage-title-graphic.png
-authors: ["Linode"]
 ---
 
 Linode’s Block Storage service allows you to attach additional storage volumes to your Compute Instances. In addition to storing files and media, you can also use a Volume as a boot disk. This can provide a low-cost way to maintain an image that can be quickly attached to a Compute Instance and booted up when needed.

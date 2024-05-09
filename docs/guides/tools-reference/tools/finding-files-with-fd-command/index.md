@@ -1,17 +1,16 @@
 ---
 slug: finding-files-with-fd-command
+title: "Find Files With the fd Command"
+title_meta: "How to Find Files With the fd Command"
 description: 'This guide shows you how to install and use the fd tool on a Linux system. fd is a user-friendly alternative to the find command.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-11-05
 keywords: ['fd linux command','find command linux','alternative to find','linux fd']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-05
-modified_by:
-  name: Linode
-title: "Find Files With the fd Command"
-title_meta: "How to Find Files With the fd Command"
 external_resources:
 - '[fd GitHub page](https://github.com/sharkdp/fd)'
-authors: ["Jeff Novotny"]
 ---
 
 Linux users typically rely upon the built-in [`find` command](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/find.html) to locate files and directories on their system. It provides a large number of powerful and useful options, but its default behavior often fails to provide intuitive results. The free open-source [*fd*](https://github.com/sharkdp/fd) utility provides a user-friendly alternative to the `find` command. It is more efficient and easier to use, with default behavior that is better suited for the majority of searches. This guide compares the `find` and `fd` commands and explains how to use and install the `fd` command on Linux systems.
@@ -43,7 +42,7 @@ The `fd` command is available as part of the default packages on most Linux dist
 
 For release 19.04 and higher of Ubuntu, the fd application is available through APT. Ubuntu already has a package named `fd`, so the `fd` binary is referred to as `fdfind`. An alias must be added to use the `fd` command.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For information on installing fd on earlier releases of Ubuntu, see [*the fd GitHub page*](https://github.com/sharkdp/fd#installation).
 {{< /note >}}
 
@@ -90,8 +89,7 @@ On the Arch Linux distribution, the fd package can be installed from the officia
 On the Alpine distribution, the fd package can be installed using apk.
 
     apk add fd
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `fd` command can also be installed on macOS using Homebrew. Use the command `brew install fd`. For instructions on downloading, installing, and using Homebrew, see the [Homebrew webpage](https://brew.sh/).
 {{< /note >}}
 

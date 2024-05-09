@@ -1,13 +1,12 @@
 ---
 slug: using-openresty
+title: "How to Use the OpenResty Web Server"
 description: "OpenResty extends on NGINX with Lua scripting and a collection of modules to make it easier to scale your web applications. Learn how to set up your own OpenResty server and take advantage of these features in this guide."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-04-25
 keywords: ['what is openresty', 'openresty example', 'openresty vs nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-04-25
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Use the OpenResty Web Server"
 external_resources:
 - '[OpenResty: Getting Started](https://openresty.org/en/getting-started.html)'
 - '[DigitalOcean: How to Use the OpenResty Web Framework for NGINX on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-use-the-openresty-web-framework-for-nginx-on-ubuntu-16-04)'

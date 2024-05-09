@@ -2,10 +2,10 @@
 title: Resources
 title_meta: "Resources for LKE (Linode Kubernetes Engine)"
 description: "Resources and other information related to Linode Kubernetes Engine (LKE) including videos, blog posts, community posts, customer stories, ebooks, and press releases."
-tab_group_main:
-    weight: 40
 published: 2020-06-02
 modified: 2023-02-09
+tab_group_main:
+    weight: 40
 ---
 
 ## Videos

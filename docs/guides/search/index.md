@@ -1,18 +1,16 @@
 ---
 slug: search
-layout: search
+title: "Search Linode Docs"
 description: 'Search the Linode Docs library'
+authors: ["Steven Jacobs"]
+contributors: ["Steven Jacobs"]
+published: 2017-12-14
+layout: search
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-14
-modified: 2017-12-14
-modified_by:
-  name: Steven Jacobs
-title: "Search Linode Docs"
 show_on_rss_feed: false
 _build:
   list: false
-authors: ["Steven Jacobs"]
 ---
 
 <!--
