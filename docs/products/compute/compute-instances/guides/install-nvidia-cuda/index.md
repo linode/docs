@@ -5,7 +5,6 @@ description: "This guide provides step-by-step instructions for installing the N
 published: 2022-01-21
 modified: 2023-06-21
 aliases: ['/products/compute/gpu/guides/install-nvidia-drivers-with-cuda/','/products/compute/gpu/guides/install-nvidia-drivers-manually/','/products/compute/gpu/guides/install-nvidia-driver-dependencies/','/products/compute/gpu/guides/install-nvidia-cuda/']
-authors: ["Linode"]
 ---
 
 To take advantage of the powerful parallel processing capabilities offered by GPU instances equipped with NVIDIA Quadro RTX cards, you first need to install NVIDIA's CUDA Toolkit. This guide walks you through deploying a GPU instance and installing the CUDA Toolkit.
@@ -68,3 +67,5 @@ To take advantage of the powerful parallel processing capabilities offered by GP
     1.  Run `nvidia-smi` to verify that the NVIDIA drivers and CUDA Toolkit are installed successfully. This command should output details about the driver version, CUDA version, and the GPU itself.
 
 1.  You should now be ready to run your CUDA-optimized workloads. You can optionally download NVIDIA's [CUDA code samples](https://github.com/nvidia/cuda-samples) and review CUDA's [Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html) to learn more about developing software to take advantage of a GPU instance.
+
+**Optional**: After you have completed the installation, you can [capture a custom image of the Compute Instance](/docs/products/tools/images/guides/capture-an-image/) and use it the next time you need to deploy a GPU instance.

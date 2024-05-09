@@ -1,14 +1,14 @@
 ---
 slug: install-freebsd-on-linode
+title: 'Install FreeBSD on Linode'
 description: 'This guide will show you how to install FreeBSD, the free and open source operating system based on the Berkeley Software Software Distribution from the late 1970s.'
+authors: ["Rainbow"]
+contributors: ["Rainbow"]
+published: 2016-03-14
+modified: 2019-01-07
 keywords: ["freebsd", "bsd"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-07
-modified_by:
-  name: Linode
-published: 2016-03-14
-title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
  - '[Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/)'
@@ -21,7 +21,6 @@ relations:
         keywords:
             - distribution: FreeBSD
 aliases: ['/tools-reference/custom-kernels-distros/install-freebsd-on-linode/']
-authors: ["Rainbow"]
 ---
 
 ![Install FreeBSD on Linode](install-freebsd-on-linode.png "Install FreeBSD on Linode")
@@ -37,8 +36,7 @@ FreeBSD is often compared to Linux. So what's the difference?
 Briefly, Linux is a term used for a group of operating systems that all use the Linux kernel, GNU coreutils and various distribution-specific tools. Linux OS's are offered in *distributions* and usually released under the GNU General Public License. [CentOS](https://www.centos.org/), [Debian](https://www.debian.org/) and [Ubuntu](http://www.ubuntu.com/) make up Linode's *core distribution* offerings, while Arch, Gentoo, openSUSE and Slackware are other popular distributions also available with Linode.
 
 Though FreeBSD grew out of the original UNIX codebase, no UNIX code currently remains. Every part of FreeBSD is developed in the same source tree and code is released under the more permissive FreeBSD License as opposed to the GNU GPL's copyleft stance. More information on the differences between these operating systems is available in the FreeBSD [Quickstart Guide for Linux Users](https://www.freebsd.org/doc/en/articles/linux-users/article.html).
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/docs/products/storage/backups/) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
 {{< /note >}}
 

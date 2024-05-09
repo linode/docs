@@ -2,12 +2,11 @@
 slug: getting-started-with-rasa
 title: "An Introduction to the Rasa Framework for Automated Chats"
 description: "Rasa is an open source machine learning framework for automating text and voice conversations. Learn all about Rasa and how to start using it in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-05-23
 keywords: ['rasa chatbot tutorial','rasa ai demo','rasa open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-05-23
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Rasa Docs: Introduction to Rasa Open Source & Rasa Pro](https://rasa.com/docs/rasa/)'
 - '[Towards Data Science: Effortlessly Build Chatbots With Rasa 2.0: A Step-by-step Tutorial](https://towardsdatascience.com/chatbots-made-easier-with-rasa-2-0-b999323cdde)'
@@ -20,9 +19,9 @@ In this tutorial, learn how to get started with Rasa. From installing the framew
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
