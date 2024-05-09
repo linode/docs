@@ -1,13 +1,13 @@
 ---
 slug: what-is-a-data-warehouse
 title: "What Is a Data Warehouse?"
-description: 'This guide explains what data warehousing is and what it is used for. It also provides some guidance on how to design a data warehouse.'
+description: "This guide explains what data warehousing is and what it is used for. It also provides some guidance on how to design a data warehouse."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-05-09
+modified: 2024-05-09
 keywords: ['data warehouse','what is a data warehouse','advantages of a data warehouse','design data warehouse']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-05-09
-modified_by:
-  name: Linode
 external_resources:
 - '[Data Warehouse on Wikipedia](https://en.wikipedia.org/wiki/Data_warehouse)'
 - '[Seven Steps of Data Warehousing](https://www.itprotoday.com/sql-server/7-steps-data-warehousing)'
