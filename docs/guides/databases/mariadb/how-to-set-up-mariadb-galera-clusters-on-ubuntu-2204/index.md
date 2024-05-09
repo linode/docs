@@ -1,20 +1,24 @@
 ---
-slug: how-to-set-up-mariadb-clusters-with-galera-and-ubuntu
-title: "How to Set up MariaDB Clusters with Galera and Ubuntu"
-description: 'This guide explains how to install and configure MariaDB clusters on Ubuntu 22.04 LTS using Galera.'
-og_description: 'This guide explains how to install and configure MariaDB clusters on Ubuntu 22.04 LTS using Galera.'
+slug: how-to-set-up-mariadb-galera-clusters-on-ubuntu-2204
+title: "How to Set up MariaDB Galera Clusters on Ubuntu 22.04"
+description: "This guide explains how to install and configure MariaDB clusters on Ubuntu 22.04 LTS using Galera."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-03-22
+modified: 2024-05-09
 keywords: ['install Galera Ubuntu','MariaDB Galera Cluster','MariaDB Galera Ubuntu','configure database cluster Galera']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-03-22
-modified_by:
-  name: Linode
 external_resources:
 - '[MariaDB Galera Cluster](https://mariadb.com/kb/en/galera-cluster/)'
 - '[MariaDB Galera Cluster Options](https://mariadb.com/kb/en/configuring-mariadb-galera-cluster/)'
 - '[Getting Started with Galera Cluster Guide](https://mariadb.com/kb/en/getting-started-with-mariadb-galera-cluster/)'
 - '[Galera Cluster Replication Fact Sheet](https://mariadb.com/kb/en/about-galera-replication/)'
 - '[Galera Cluster Known Limitations](https://mariadb.com/kb/en/mariadb-galera-cluster-known-limitations/)'
+relations:
+    platform:
+        key: mariadb-galera-clusters
+        keywords:
+            - distribution: Ubuntu 22.04
 ---
 
 Although MariaDB is a very reliable application, high-availability websites should consider database redundancy. Redundancy protects the database data from node failures and network problems. The [Galera Cluster extension for MariaDB](https://mariadb.com/kb/en/galera-cluster/) adds multi-master replication and redundancy, appearing as a unified database to the user. This guide provides some background on Galera Cluster and explains how to install and configure it on Ubuntu.
