@@ -1,12 +1,10 @@
 ---
 title: "Common Use Cases for StackScripts"
 description: "This guide covers some of the common use cases for Linode StackScripts along with limitations of the service."
-keywords: ['scripting','automation','bash','open source']
-image: CommonUse_LinodeStackScripts.png
 published: 2020-05-21
 modified: 2022-11-30
-modified_by:
-  name: Linode
+keywords: ['scripting','automation','bash','open source']
+image: CommonUse_LinodeStackScripts.png
 tags: ["linode platform","automation"]
 aliases: ['/platform/stackscripts/common-stackscripts-use-cases/','/guides/common-stackscripts-use-cases/']
 ---

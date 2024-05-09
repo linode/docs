@@ -1,16 +1,15 @@
 ---
 slug: upgrade-debian-to-the-newest-release
+title: "Upgrade Debian to the Newest Release"
 description: 'This guide provides you with step-by-step instructions for upgrading your Debian system to the latest Debian stable, or LTS (Long Term Support) release.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-12-11
+modified: 2018-12-14
 keywords: ['debian','upgrade','update']
 aliases: ['/security/upgrading/upgrade-debian-to-the-newest-release/']
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-12-11
-modified: 2018-12-14
-modified_by:
-  name: Linode
-title: "Upgrade Debian to the Newest Release"
-authors: ["Linode"]
 ---
 
 Debian repositories can be tracked either by codename (Wheezy, Jessie, etc.), or by status name (stable, testing, etc.). For example, Debian 9 Stretch is the *stable* release at the time of this writing; the status of Debian 8 (Jessie) is *oldstable*. Debian stable releases are eventually managed by the [Debian Long Term Support](https://wiki.debian.org/LTS/) (LTS) team for a total lifespan of about 5 years.
@@ -18,8 +17,7 @@ Debian repositories can be tracked either by codename (Wheezy, Jessie, etc.), or
 Linode offers Debian's [stable](https://wiki.debian.org/DebianStable) and [oldstable](https://wiki.debian.org/DebianOldStable) releases. When exclusively tracking the stable releases with APT, your system will upgrade whenever the stable release reaches its end of life. For example, if you're tracking the stable release of Debian 8 and it reaches its end of life, your system will make available a number of new packages which will upgrade you to Debian 9.
 
 On the other hand, if you're currently tracking repositories by codename, as Debian does by default, you will never upgrade beyond that codename release. This is the safest option and you can still manually upgrade to a newer Debian codename or release status name at any time.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 While upstream maintainers try to ensure cross-compatibility and problem-free upgrades, there is risk involved in upgrading operating system versions.
 {{< /note >}}
 

@@ -1,17 +1,16 @@
 ---
 slug: install-mysql
+title: "Installing MySQL: A Definitive Guide"
 description: "Learn how to install MySQL on Linux (through your distribution's native repositories or by using MySQL's own), Windows, and macOS."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-07-01
+modified: 2023-05-30
 keywords: ['mysql','repository','database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-01
-modified: 2023-05-30
-modified_by:
-  name: Linode
-title: "Installing MySQL: A Definitive Guide"
 external_resources:
 - '[Installing and Upgrading MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html)'
-authors: ["Linode"]
 tags: ["saas"]
 ---
 
@@ -35,6 +34,9 @@ For additional instructions on installing MySQL on any supported operating syste
 -   **Consider other deployment options, such as fully managed solutions or automated installations.**
 
     - [Linode MySQL Managed Databases](https://www.linode.com/products/mysql/): Fully managed database clusters, complete with automatic updates and backups, hosted on Linode's reliable platform.
+
+    {{< content "dbass-eos" >}}
+
     - [MySQL/MariaDB Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/): Deploy a new Compute Instance with either MySQL or MariaDB preinstalled.
 
 -   **Check to see if MySQL is already installed on your system.** To determine if MySQL is already installed, run the following command:

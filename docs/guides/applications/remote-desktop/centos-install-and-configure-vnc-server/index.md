@@ -1,14 +1,14 @@
 ---
 slug: centos-install-and-configure-vnc-server
+title: "Install and Configure VNC Server on Centos 8"
 description: 'This guide will show you how to install and configure a VNC server which you can remotely connect to and run a desktop environment with on CentOS 8.'
 og_description: 'This guide shows you how to install, configure, and use a VNC server to connect to a CentOS 8 remotely.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-02
 keywords: ['centos vnc server']
 tags: ['networking', 'linux', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-02
-modified_by:
-  name: Nathaniel Stickman
-title: "Install and Configure VNC Server on Centos 8"
 external_resources:
 - '[TigerVNC documentation](https://tigervnc.org/doc/Xvnc.html)'
 - '[RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)'
@@ -17,7 +17,6 @@ relations:
         key: install-vnc
         keywords:
             - distribution: CentOS 8
-authors: ["Nathaniel Stickman"]
 ---
 
 *Virtual Network Computing* (VNC) allows you to connect to and control a remote desktop environment. It is common to use VNC to operate your server with a full desktop experience. This guide walks you through the steps to install, configure, and use VNC on CentOS 8.
@@ -135,7 +134,7 @@ See [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/s
 
 1. Open the **Connections** menu, and select **Tunnels** from under the **SSH** section.
 
-1. Enter "5901" as the **Source port** and "userA@192.0.2.0" as the **Destination**. Beneath **Desination**, select **Local** and **Auto**.
+1. Enter "5901" as the **Source port** and "userA@192.0.2.0" as the **Destination**. Beneath **Destination**, select **Local** and **Auto**.
 
 1. Click **Add**, and the SSH tunnel begins running.
 

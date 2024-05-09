@@ -2,12 +2,11 @@
 slug: using-socket-io
 title: "How to Use WebSockets with Socket.IO"
 description: "Socket.IO builds on WebSockets to provide real-time, bidirectional communications. And Socket.IO brings in improvements in usage and consistency that make it stand out as a WebSocket alternative. Read this tutorial to find out how Socket.IO sets itself apart and how you can start using it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-05-23
 keywords: ['what is socket.io','socket.io vs websocket','socket.io node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-05-23
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Socket.IO: Get Started](https://socket.io/get-started/chat)'
 - '[Tutorials Point: Socket.IO Tutorial](https://www.tutorialspoint.com/socket.io/index.htm)'
@@ -19,9 +18,9 @@ Socket.IO provides applications real-time, bidirectional communications. It is s
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
