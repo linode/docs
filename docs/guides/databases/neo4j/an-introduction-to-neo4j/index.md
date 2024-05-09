@@ -1,15 +1,12 @@
 ---
 slug: an-introduction-to-neo4j
 title: "An Introduction to Neo4j"
-title_meta: "What Is Neo4j?"
-description: 'Neoj4 is a graph database that excels at complex datasets. Learn how it differs from relational databases like SQL and discover some practical use cases.'
-og_description: 'Neoj4 is a graph database that excels at complex datasets. Learn how it differs from relational databases like SQL and discover some practical use cases.'
+description: "Neoj4 is a graph database that excels at complex datasets. Learn how it differs from relational databases like SQL and discover some practical use cases."
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2023-09-29
 keywords: ['what is neo4j','what is neo4j used for','what is neo4j graph database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Cameron Laird"]
-published: 2023-09-29
-modified_by:
-  name: Linode
 ---
 
 Many of the world's largest organizations rely on Neo4j. This introduction explains Neo4j's role in managing modern databases and its advantages over other technologies.
