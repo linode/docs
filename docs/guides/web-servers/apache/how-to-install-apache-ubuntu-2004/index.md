@@ -28,7 +28,9 @@ The Apache HTTP Web Server — usually just called Apache — is one of the most
 
 1. Update your system:
 
-        sudo apt update && sudo apt upgrade
+    ```command
+    sudo apt update && sudo apt upgrade
+    ```
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -53,6 +55,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```command
     sudo systemctl enable apache2
     ```
+
 ## Managing Apache
 
 ### Apache Service
@@ -100,6 +103,7 @@ The Apache service runs on `systemd`, which can be used to manage the Apache ser
     ```command
     sudo systemctl reload apache2
     ```
+
 ### Apache Modules
 
 Apache can be extended and modified with modules. These range from modules that integrate interpreters like PHP and Python, enabling dynamic content, to modules that change Apache's fundamental model for handling connections. (See the next section for more on the latter type of modules, called [Multi-processing Modules](/docs/guides/how-to-install-apache-ubuntu-2004/#multi-processing-modules)).
@@ -137,6 +141,7 @@ Apache modules are typically installed via the package manager. After that, you 
     ```command
     sudo apache2ctl -M
     ```
+
 ## Multi-processing Modules
 
 Apache supports several models for handling connections through a particular kind of module: Multi-processing Modules (MPMs). On Ubuntu and many other Linux distributions, the `event` module is Apache's default MPM. This section provides an overview of each of the three MPMs available and gives you the necessary commands for using them.
@@ -180,6 +185,7 @@ This MPM is a multi-threaded hybrid. Like the `prefork` MPM, it consists of a pa
     ```command
     sudo systemctl restart apache2
     ```
+
 ### Event Module
 
 This MPM functions similarly to the `worker` MPM. However, it adds listener threads. These threads handle the task of waiting on incoming requests, which frees up worker threads to continue processing new requests.
