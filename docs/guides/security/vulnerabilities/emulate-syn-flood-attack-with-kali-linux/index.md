@@ -1,5 +1,5 @@
 ---
-slug: how-to-emulate-syn-flood-attack-with-kali-linux
+slug: emulate-syn-flood-attack-with-kali-linux
 title: "How to Emulate a SYN Flood Attack With Kali Linux"
 description: "This guide explains how to conduct a DDoS stress test using a SYN flood attack originating on Kali Linux."
 authors: ["Jeff Novotny"]
