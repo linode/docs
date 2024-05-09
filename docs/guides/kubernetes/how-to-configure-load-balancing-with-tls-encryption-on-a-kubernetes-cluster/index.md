@@ -1,20 +1,19 @@
 ---
 slug: how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster
+title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
+title_meta: "Configure Load Balancing with TLS Encryption on Kubernetes"
 description: "Learn how to use the NGINX Ingress Controller, cert-manager, and Linode NodeBalancers to expose a Kubernetes application externally via HTTPS."
 og_description: "This guide demonstrates how to use the NGINX Ingress Controller, cert-manager, and Linode NodeBalancers to expose a Kubernetes application externally via HTTPS. You will create an example application throughout this guide, but you can replace the example application with your Kubernetes Service and Deployment."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-17
+modified: 2021-06-25
 keywords: ['load balancers','kubernetes','pods','cloud controller manager']
 tags: ["kubernetes","container","nginx","networking","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-17
-modified: 2021-06-25
-modified_by:
-  name: Linode
-title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
-title_meta: "Configure Load Balancing with TLS Encryption on Kubernetes"
 external_resources:
 - '[NGINX Ingress Controller User Guide](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/)'
 aliases: ['/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/']
-authors: ["Linode"]
 ---
 
 This guide will use an example Kubernetes Deployment and Service to demonstrate how to route external traffic to a Kubernetes application over HTTPS. This is accomplished using the [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#using-helm), [cert-manager](https://cert-manager.io/docs/) and [Linode NodeBalancers](/docs/products/networking/nodebalancers/). The NGINX Ingress Controller uses Linode NodeBalancers, which are Linode's load balancing service, to route a Kubernetes Service's traffic to the appropriate backend Pods over HTTP and HTTPS. The cert-manager tool creates a Transport Layer Security (TLS) certificate from the [Let’s Encrypt](https://letsencrypt.org/) certificate authority (CA) providing secure HTTPS access to a Kubernetes Service.

@@ -1,25 +1,22 @@
 ---
 slug: installing-apache-tomcat-on-ubuntu-8-04-lts-hardy
-deprecated: true
+title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
 description: 'Instructions for installing the Apache Tomcat Java Servlet engine on Ubuntu 8.04 LTS (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-23
+modified: 2011-04-29
 keywords: ["java", "apache tomcat", "java ubuntu", "java hardy"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/apache-tomcat/ubuntu-8-04-hardy/','/websites/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/','/development/frameworks/apache-tomcat/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/','/development/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-09-23
-title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 8.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Apache Tomcat is a free and open source software implementation for JavaServlets. It provides support for Java Server Pages (JSP), which power many popular web-based applications. You may choose to run Tomcat with either Sun's Java implementation or the OpenJDK implementation of Java, and this document provides instructions for using either option.
 

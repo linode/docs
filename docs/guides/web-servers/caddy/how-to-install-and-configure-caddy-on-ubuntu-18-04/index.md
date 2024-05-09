@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-and-configure-caddy-on-ubuntu-18-04
+title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
+title_meta: "Install and Configure the Caddy Web Server on Ubuntu"
 description: "In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site's domain over HTTPS."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-05
+modified: 2022-02-04
 keywords: ['web server','caddy','https','Caddyfile']
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-05
-modified: 2022-02-04
-modified_by:
-  name: Linode
-title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
-title_meta: "Install and Configure the Caddy Web Server on Ubuntu"
 image: CaddyWebServ_Ubuntu1804.png
 relations:
     platform:
@@ -17,7 +17,6 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-ubuntu-18-04/']
-authors: ["Linode"]
 ---
 
 [Caddy](https://caddyserver.com/) is a fast, open-source, and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).

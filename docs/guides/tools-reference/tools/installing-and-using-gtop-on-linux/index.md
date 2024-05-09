@@ -1,17 +1,16 @@
 ---
 slug: installing-and-using-gtop-on-linux
+title: "Install and Use gtop on Linux"
+title_meta: "How to Install and Use gtop on Linux"
 description: "Learn how to use gtop, a system monitoring dashboard for your Linux terminal."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-10-01
 keywords: ['gtop linux','gtop linux install','system monitor linux terminal']
 tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-01
-modified_by:
-  name: Linode
-title: "Install and Use gtop on Linux"
-title_meta: "How to Install and Use gtop on Linux"
 external_resources:
 - '[gtop](https://github.com/aksakalli/gtop)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Gtop is a system monitoring dashboard for your terminal, with a rich graphical display. In this guide, you learn more about gtop and how it compares to the Linux utilities, top and htop. This guide also shows you how to install and get started using gtop on your Linux system.
@@ -22,7 +21,7 @@ Gtop is a system monitoring dashboard for your terminal, with a rich graphical d
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

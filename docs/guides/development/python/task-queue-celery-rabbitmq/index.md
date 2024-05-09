@@ -1,13 +1,12 @@
 ---
 slug: task-queue-celery-rabbitmq
+title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
 description: 'This guide provides you with instructions for configuring a task queue using Celery, a Python Task-Queue management app and RabbitMQ, an open-source messaging broker.'
+authors: ["Florent Houbart"]
+contributors: ["Florent Houbart"]
+published: 2017-11-30
 keywords: ["celery", "Python", "tasks", "asynchronous", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-30
-modified: 2017-11-30
-modified_by:
-  name: Linode
-title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
 external_resources:
 - '[Celery Project page](http://www.celeryproject.org/)'
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
@@ -16,7 +15,6 @@ concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/task-queue-celery-rabbitmq/']
-authors: ["Florent Houbart"]
 ---
 
 ![How to Set Up a Task Queue with Celery and RabbitMQ](how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)
@@ -31,7 +29,7 @@ Celery can be used in multiple configuration. Most frequent uses are horizontal 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -66,8 +64,7 @@ If other Python application are running on your host and you prefer to manage yo
 4. Install Celery in the virtual environment:
 
         pip install celery
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you use a virtual environment, don't forget to activate your environment with step 3 when working on your project. All command in this guide assume the Celery virtual environment is activated.
 {{< /note >}}
 
@@ -341,7 +338,7 @@ Celery's ease of use comes from the decorator `@task` that adds Celery methods t
 
 1.  [**Webhooks**](https://en.wikipedia.org/wiki/Webhook): Flower provides an API that allow you to interact with Celery by means of REST HTTP queries.
 
-2.  [**AMQP**](https://www.amqp.org/): The `@task` decorator sends message to the broker when you call celery methods like `.delay()`. Some languages provide modules that perform this task for you, including [node-celery](https://github.com/mher/node-celery) for NodeJS, or [celery-php](https://github.com/gjedeer/celery-php) for PHP.
+2.  [**AMQP**](https://www.amqp.org/): The `@task` decorator sends message to the broker when you call celery methods like `.delay()`. Some languages provide modules that perform this task for you, including [node-celery](https://github.com/mher/node-celery) for Node.js, or [celery-php](https://github.com/gjedeer/celery-php) for PHP.
 
 You can use `curl` to practice interacting how to use the Flower API.
 

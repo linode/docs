@@ -1,25 +1,22 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Secure Communications with OpenVPN on Ubuntu 10.04 (Lucid)'
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 10.04 (Lucid) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-10
+modified: 2013-08-22
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu lucid", "ubuntu 10.4"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/openvpn/ubuntu-10-04-lucid/','/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-04-lucid/']
-modified: 2013-08-22
-modified_by:
-  name: Linode
-published: 2010-05-10
-title: 'Secure Communications with OpenVPN on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 

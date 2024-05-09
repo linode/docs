@@ -1,20 +1,19 @@
 ---
 slug: yum-package-manager
+title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
+title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 description: "This guide walks you through the core features of YUM and commands for using YUM to install, upgrade, and remove packages on your system."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-21
+modified: 2021-07-15
 keywords: ['yum','installing','updating','upgrading','uninstalling','removing','package repositories','centos']
 tags: ['yum',centos',]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
 image: YUM1.jpg
-modified: 2021-07-15
-modified_by:
-  name: Linode
-title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
-title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 aliases: ['/guides/how-to-use-yum/']
 external_resources:
 - '[YUM Package Manager](http://yum.baseurl.org/)'
-authors: ["Nathaniel Stickman"]
 ---
 
 *Yellowdog Updater, Modified*, more commonly known as **YUM**, is a package management tool for a variety of Linux distributions. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). YUM is the default package manager for CentOS 7 as well as older versions of RHEL and Fedora. It has largely been replaced by it successor *Dandified YUM*, also called **DNF**, on most newer RPM-based distributions, including CentOS 8, RHEL 8, and Fedora 22 (and later). If you are interested in learning about the DNF package manager, see the [Using the DNF Package Manager](/docs/guides/dnf-package-manager/) guide.
@@ -29,7 +28,7 @@ Before running the commands within this guide, you will need:
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 

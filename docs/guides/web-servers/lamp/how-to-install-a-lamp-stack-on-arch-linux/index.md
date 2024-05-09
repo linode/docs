@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-a-lamp-stack-on-arch-linux
+title: How to Install a LAMP Stack on Arch Linux
 description: 'A simple tutorial on installing a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux-powered server.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2013-10-07
+modified: 2015-12-07
 keywords: ["arch lamp", "arch lamp stack", "lamp linux", "arch linode", "arch linux lamp", "arch linux", "arch", "lamp", "lamp stack", "apache", "mysql", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-arch-linux/','/web-servers/lamp/lamp-server-on-arch-linux/','/lamp-guides/arch-linux-10-2013/','/lamp-guides/arch-linux/','/web-servers/lamp/how-to-install-a-lamp-stack-on-arch-linux/']
-modified: 2015-12-07
-modified_by:
-    name: Alex Fornuto
-published: 2013-10-07
-title: How to Install a LAMP Stack on Arch Linux
 external_resources:
  - '[Arch Linux Wiki](http://wiki.ArchLinux.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -21,14 +21,13 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["web server","php","mysql","apache","lamp"]
-authors: ["Alex Fornuto"]
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack an Arch Linux server.
 
 Since Arch does not come in specific versions, this guide is up-to-date as of the December 2015 Arch update.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

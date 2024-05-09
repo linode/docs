@@ -1,19 +1,18 @@
 ---
 slug: deploy-in-code-with-pulumi
+title: Getting Started with Pulumi
 description: 'Learn how to install Pulumi, import the Linode module for Pulumi, and write your first Pulumi programs.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-06-26
 keywords: ["pulumi", "configuration management", "infrastructure as code", "iac", "javascript", "python"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
-published: 2019-06-26
-title: Getting Started with Pulumi
 external_resources:
-- '[Pulumi Documentation](https://pulumi.io/reference/)'
-- '[Pulumi API reference](https://pulumi.io/reference/pkg/)'
+- '[Pulumi Documentation](https://www.pulumi.com/docs/)'
+- '[Pulumi API reference](https://www.pulumi.com/docs/languages-sdks/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
 aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/']
-authors: ["Linode"]
 ---
 
 ## What is Pulumi?
@@ -36,11 +35,11 @@ In this guide you will learn how to:
 
 1. If you haven't yet, [create a Linode API token](/docs/products/tools/api/get-started/#create-an-api-token).
 
-1. [Create a free Pulumi account](https://app.pulumi.com/signup).
+1. [Create a free Pulumi Cloud account](https://app.pulumi.com/signup).
 
 1. Create a new Debian 9 Linode. Follow our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to deploy the Linode, and then follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
 
-1. Install Pulumi on your Linode using their installation script:
+1. [Install Pulumi](https://www.pulumi.com/docs/install/) on your Linode using their installation script:
 
         curl -fsSL https://get.pulumi.com | sh
 
@@ -63,11 +62,11 @@ In this guide you will learn how to:
 Once you have a Pulumi account, you will need to create an *access token* to use later.
 
 {{< note type="secondary" title="Why do I need a Pulumi access token?" isCollapsible=true >}}
-When Pulumi interprets the infrastructure programs that you write, it determines what cloud resources it needs to create in order to satisfy your program. Every time you run your program, [Pulumi stores the state](https://pulumi.io/reference/state/#state-and-backends) of these resources in a persistent backend. In subsequent updates to your infrastructure, Pulumi will compare your program with the recorded state so that it can determine which changes need to be made.
+When Pulumi interprets the infrastructure programs that you write, it determines what cloud resources it needs to create in order to satisfy your program. Every time you run your program, [Pulumi stores the state](https://www.pulumi.com/docs/concepts/state/) of these resources in a persistent backend. In subsequent updates to your infrastructure, Pulumi will compare your program with the recorded state so that it can determine which changes need to be made.
 
-By default, Pulumi securely stores this state information on a web backend hosted at [https://app.pulumi.com](https://app.pulumi.com). This service is free to start and offers paid tiers for teams and enterprises.
+By default, Pulumi securely stores this state information on the Pulumi Cloud, a web backend hosted at [https://app.pulumi.com](https://app.pulumi.com). This service is free to start and offers paid tiers for teams and enterprises.
 
-It is possible to opt-out of using the default web backend and use a filesystem-based backend instead. Review [Pulumi's documentation](https://pulumi.io/reference/state/#to-the-filesystem-backend) for instructions.
+It is possible to opt-out of using the default web backend and use a self-managed backend instead. Review [Pulumi's documentation](https://www.pulumi.com/docs/concepts/state/#using-a-self-managed-backend) for instructions.
 {{< /note >}}
 
 1. [Log into your Pulumi account](https://app.pulumi.com/signin). After you've logged in, click on the avatar graphic to the top right of the Pulumi dashboard, then click on the **Settings** option in the dropdown menu that appears:
@@ -87,7 +86,7 @@ It is possible to opt-out of using the default web backend and use a filesystem-
 Now that you have everything you need to begin using Pulumi, you can create a new Pulumi *project*.
 
 {{< note >}}
-A Pulumi [project](https://pulumi.io/reference/project/) is the folder structure which contains your Pulumi programs. Specifically, a project is any folder which contains a `Pulumi.yaml` metadata file.
+A Pulumi [project](https://www.pulumi.com/docs/concepts/projects/) is the folder structure which contains your Pulumi programs. Specifically, a project is any folder which contains a `Pulumi.yaml` metadata file.
 {{< /note >}}
 
 1. Pulumi requires an empty directory for each new project, so first you'll need to create one and make it your working directory:
@@ -108,7 +107,7 @@ A Pulumi [project](https://pulumi.io/reference/project/) is the folder structure
     - Enter a *stack* name of your choice, or leave blank to use the default option.
 
         {{< note type="secondary" title="What's a stack?" isCollapsible=true >}}
-        Multiple instances of your Pulumi programs can be created. For example, you may want to have separate instances for the development, staging, and production environments of your service. Or, you may create multiple instances of your service if you're offering it to different business clients. In Pulumi, these instances are referred to as [stacks](https://pulumi.io/tour/programs-stacks/).
+        Multiple instances of your Pulumi programs can be created. For example, you may want to have separate instances for the development, staging, and production environments of your service. Or, you may create multiple instances of your service if you're offering it to different business clients. In Pulumi, these instances are referred to as [stacks](https://www.pulumi.com/docs/concepts/stack/).
         {{< /note >}}
 
     - Enter your Linode API token.
@@ -147,13 +146,13 @@ const instance = new linode.Instance("my-instance", {
 exports.instanceLabel = instance.label;
 {{< /file >}}
 
-The file requires two JavaScript modules unique to Pulumi: Pulumi's SDK, and Pulumi's Linode integration. [Pulumi's API Reference Documentation](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/) serves as a reference for the JavaScript you'll see here. It also includes a library of several additional options that enable you to create configurations more specific to your use case.
+The file requires two JavaScript modules unique to Pulumi: Pulumi's SDK, and Pulumi's Linode integration. [Pulumi's API Reference Documentation](https://www.pulumi.com/registry/packages/linode/) serves as a reference for the JavaScript you'll see here. It also includes a library of several additional options that enable you to create configurations more specific to your use case.
 
 In this case, your file is only creating a single 1GB Linode (Nanode) instance in the Newark data center running Ubuntu 18.04.
 
 ### Create and Destroy Resources
 
--   Use [Pulumi's `preview` command](https://pulumi.io/reference/cli/pulumi_preview/) to test your code and make sure it's successfully able to create resources under your account.
+-   Use [Pulumi's `preview` command](https://www.pulumi.com/docs/cli/commands/pulumi_preview/) to test your code and make sure it's successfully able to create resources under your account.
 
         pulumi preview
 
@@ -168,7 +167,7 @@ In this case, your file is only creating a single 1GB Linode (Nanode) instance i
         Resources:
             + 2 to create
 
--   Use [Pulumi's `up` command](https://pulumi.io/reference/cli/pulumi_up/) to deploy your code to your Linode account:
+-   Use [Pulumi's `up` command](https://www.pulumi.com/docs/cli/commands/pulumi_up/) to deploy your code to your Linode account:
 
         pulumi up
 
@@ -178,14 +177,14 @@ This will create a new billable resource on your account.
 
     From here, you will be prompted to confirm the resource creation. Use your arrow keys to choose the `yes` option, hit `enter`, and you will see your resources being created. Once the process is completed, the Linode Label of your new Linode will be displayed. If you check your account manually through the [Cloud Manager](https://cloud.linode.com/), you can confirm that this Linode has been successfully created.
 
--   Since this Linode was only created as a test, you can safely delete it by entering [Pulumi's `destroy` command](https://pulumi.io/reference/cli/pulumi_destroy/):
+-   Since this Linode was only created as a test, you can safely delete it by entering [Pulumi's `destroy` command](https://www.pulumi.com/docs/cli/commands/pulumi_destroy/):
 
         pulumi destroy
 
     Follow the prompts, and you'll be able to see the resources being removed, similar to how we could see them being created.
 
     {{< note respectIndent=false >}}
-Many Pulumi commands will be logged on your Pulumi account. You can see this under the **Activity** tab of your project's stack in [Pulumi's Application Page](https://app.pulumi.com/).
+Many Pulumi commands will be logged on your Pulumi account. You can see this under the **Activity** tab of your project's stack in [Pulumi Cloud](https://app.pulumi.com/).
 {{< /note >}}
 
 ## Create and Configure a NodeBalancer
@@ -272,7 +271,7 @@ exports.nodeBalancerPort = nodeBalancerConfig.port;
 {{< /file >}}
 
     {{< note >}}
-    In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
+    In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://www.pulumi.com/registry/packages/linode/api-docs/stackscript/) directly in code, which can help you to automate your deployments even further.
 
     If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
     {{< /note >}}
@@ -309,7 +308,7 @@ Pulumi is a powerful tool with a vast number of possible configurations that can
 
 * Look at Pulumi's [examples](https://github.com/pulumi/examples) for more ideas regarding the things you can do with Pulumi.
 
-* Try using Pulumi with different languages like [Python](https://pulumi.io/reference/python/) or [TypeScript](https://pulumi.io/reference/javascript/#typescript)
+* Try using Pulumi with different languages like [Python](https://www.pulumi.com/docs/languages-sdks/python/) or [TypeScript](https://www.pulumi.com/docs/languages-sdks/javascript/)
 
 * Import Node.js tools like [Express](https://expressjs.com/) for even more elasticity with your code.
 

@@ -1,15 +1,14 @@
 ---
 slug: installing-and-using-hyperfine-on-linux
+title: "Install and Use hyperfine on Linux"
+title_meta: "How to Install and Use hyperfine on Linux"
 description: "Learn how to use hyperfine for benchmarking command-line tools on your Linux system."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-10-22
 keywords: ['hyperfine linux','install hyperfine','benchmarking linux']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-22
-modified_by:
-  name: Nathaniel Stickman
-title: "Install and Use hyperfine on Linux"
-title_meta: "How to Install and Use hyperfine on Linux"
-authors: ["Nathaniel Stickman"]
 ---
 
 hyperfine is a Linux tool used to benchmark command-line commands. It includes features to test the performance of individual commands, side by side. hyperfine stands out from similar tools by giving you fine-tuned control over the benchmarking process and advanced features for more effective testing.
@@ -22,7 +21,7 @@ In this guide, you learn what hyperfine is and how it compares to other tools. T
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
