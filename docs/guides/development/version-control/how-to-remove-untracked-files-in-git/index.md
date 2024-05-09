@@ -1,16 +1,15 @@
 ---
 slug: how-to-remove-untracked-files-in-git
+title: "Remove Untracked Files in Git"
 description: 'Learn how to remove untracked files in git using the git clean command.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-03-18
 keywords: ['Git remove untracked files','Remove untracked files git','Git remove all untracked files','How to remove untracked files in git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-18
-modified_by:
-  name: Linode
-title: "Remove Untracked Files in Git"
 external_resources:
 - '[Git clean documentation](https://git-scm.com/docs/git-clean)'
 - '[Git ignore documentation](https://git-scm.com/docs/gitignore)'
-authors: ["Jeff Novotny"]
 ---
 
 During the development process, programmers and other Git users often wind up with many old and unwanted files. These might include prototypes, test data, and computer-generated files. Although these files do not necessarily cause problems, deleting them increases efficiency and improves organization. The `git clean` command is the fastest, safest, and easiest way to delete these files. This guide explains how to use Git to remove untracked files and provides many examples demonstrating how to use `git clean`.
@@ -55,7 +54,7 @@ To summarize, all files in a Git repository should eventually be handled in one 
 
 1.  **Optional** Git must already be installed on the Linode before trying out the examples in this guide. The `git` package is often already pre-installed. To see if it is present, run the command `git --version`. If Git is already installed, this command displays the current version. If Git has not already been installed, use the command `sudo apt install git` to install it.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -76,8 +75,7 @@ fatal: clean.requireForce defaults to true and neither -i, -n, nor -f given; ref
 {{< /output >}}
 
 `git clean -f` is probably the most widely-used alternative. It forces Git to remove all untracked files with no further chance to refine or alter the operation. When it is finished, it displays a summary of the files it deleted. This command is functionally equivalent to manually deleting the files.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Always use `git clean` with caution. This operation cannot be undone.
 {{< /note >}}
 
@@ -196,7 +194,7 @@ git clean -f -d example
 
 `git config` allows users to change the default `git clean` behavior. This permits `git clean` to delete untracked files without appending the `-f` option. It effectively makes `git clean` equivalent to `git clean -f`. To add this option to the configuration file , use the command `git config clean.requireForce false`. See the Git documentation for more details about [Git Clean](https://git-scm.com/docs/git-clean).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `-q` option runs `git clean` in quiet mode. This means `git clean` does not report the files it removes, but it still displays any errors.
 {{< /note >}}
 
@@ -382,7 +380,7 @@ The `.gitignore` file specifies which untracked files should be ignored. This is
 
 However, this behavior can be overridden using either the `-x` or `-X` option. These options tell Git not to follow the standard ignore rules. This means Git can consider any files covered by `.gitignore`. However, they differ in how they handle other untracked files.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Git still respects any exclusion rules added with the `-e` option.
 {{< /note >}}
 

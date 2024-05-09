@@ -1,4 +1,4 @@
-.large-diagram-svg-container .bullet-animate {
+.large-diagram .bullet-animate {
   animation: ping-diagram 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   transform-origin: 50% 50%;
   transform-box: fill-box;
@@ -27,7 +27,7 @@
 @keyframes ping-diagram {
   75%,
   100% {
-    transform: scale(1.05);
-    opacity: 0.8;
+    transform: scale(2);
+    opacity: 0.01;
   }
 }

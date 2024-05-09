@@ -1,12 +1,9 @@
 ---
+title: "NS Records"
 description: "Learn how to create NS records using Linode's DNS Manager"
 published: 2022-10-28
-modified_by:
-  name: Linode
-title: "NS Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
 ---
 
 ## NS Overview

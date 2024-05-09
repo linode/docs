@@ -1,18 +1,17 @@
 ---
 slug: apt-package-manager
+title: "Using APT to Manage Packages in Debian and Ubuntu"
+title_meta: "How to Use APT to Manage Packages in Debian and Ubuntu"
 description: "This guide will teach you what APT is and walks you through the core features and common commands for using APT to manage packages on Linux."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-05-12
+modified: 2022-01-31
 keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','removing','package repositories','debian', 'ubuntu']
 tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-12
 image: UsingAPTtoManagePackagesinDebianandUbuntu.jpg
-modified: 2022-01-31
-modified_by:
-  name: Linode
-title: "Using APT to Manage Packages in Debian and Ubuntu"
-title_meta: "How to Use APT to Manage Packages in Debian and Ubuntu"
 aliases: ['/guides/using-apt-package-manager/']
-authors: ["Linode"]
 ---
 
 *Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Ubuntu, Debian, Kali Linux, and other Debian-based Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.
@@ -29,7 +28,7 @@ Before running the commands within this guide, you will need:
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
