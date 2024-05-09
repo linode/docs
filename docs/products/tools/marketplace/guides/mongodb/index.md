@@ -1,19 +1,17 @@
 ---
+title: "Deploy MongoDB through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
-keywords: ['mongodb','marketplace', 'database']
-tags: ["linode platform","database","marketplace","cloud-manager"]
 published: 2020-03-11
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy MongoDB through the Linode Marketplace"
+keywords: ['mongodb','marketplace', 'database']
+tags: ["linode platform","database","marketplace","cloud-manager"]
+expiryDate: 2023-05-01
 image: MongoDB_oneclickapps.png
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
 aliases: ['/platform/marketplace/deploying-mongodb-with-marketplace-apps/', '/platform/one-click/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-marketplace-apps/','/guides/mongodb-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).

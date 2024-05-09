@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: "Documentation for managing Linode accounts"
+title_meta: "Guides and Tutorials for Managing Linode Accounts"
+description: "A collection of documentation related to managing Linode accounts and users"
 tab_group_main:
     weight: 30
 date: 2022-11-21
@@ -32,3 +33,7 @@ date: 2022-11-21
 - [Manage User Permissions](/docs/products/platform/accounts/guides/user-permissions/): View, edit, and manage user permissions on your Linode account.
 
 - [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/): Add public keys to your user, which can be configured on the root user when deploying Compute Instances.
+
+## Akamai Partners
+
+- [Parent and Child Accounts for Akamai Partners](/docs/products/platform/accounts/guides/parent-child-accounts/): Learn how parent and child accounts can help Akamai partners manage multiple accounts.

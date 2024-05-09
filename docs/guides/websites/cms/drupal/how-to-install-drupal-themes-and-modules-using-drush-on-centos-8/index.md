@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-centos-8
+title: Install Drupal Themes and Modules Using Drush on CentOS 8
+title_meta: How to Install Drupal Themes and Modules Using Drush on CentOS 8
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-12-05
+modified: 2020-03-11
 keywords: ["drupal", "cms", "content management system", "content management framework", "centos", "drush"]
 tags: ["drupal","centos","apache","lamp","php","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-11
-modified_by:
-    name: Linode
-published: 2014-12-05
-title: Install Drupal Themes and Modules Using Drush on CentOS 8
-title_meta: How to Install Drupal Themes and Modules Using Drush on CentOS 8
 image: DrupalThemesMods_DrushCentOS8.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
@@ -21,7 +21,6 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/']
-authors: ["Linode"]
 ---
 
 [Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. This tutorial uses Drush to install themes and modules. It will also briefly cover backups and migrations for Drupal websites.
@@ -43,8 +42,7 @@ Before installing themes, modules, and a backup system using Drush, make sure th
 1.  Make sure that your system is up to date, using:
 
         sudo yum update
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The Drush commands to download or enable themes and modules vary depending on the version of Drush that you have installed. This guide uses Drush 10.
 {{< /note >}}
 
@@ -63,7 +61,7 @@ In this section you will download, enable, and set a Drupal theme using Drush.
          composer require drupal/bootstrap
 
     {{< note respectIndent=false >}}
-If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-centos-8/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on CentOS 8](/docs/guides/how-to-install-drupal-using-drush-on-centos-8/) guide.
+If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-centos-8/#setting-the-sites-ownership-and-permissions) section of the [Install Drupal using Drush on CentOS 8](/docs/guides/how-to-install-drupal-using-drush-on-centos-8/) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 
@@ -107,7 +105,6 @@ It's always important to keep regular backups of a website. Backups protect you 
 1.  To configure backup and migrate, navigate to **Administration > Configuration > Development > Backup and Migrate**
 
 2. For a quick backup, select the type of **Backup Source** and select the **Backup Destination**, and click **Backup now**
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Always download a backup prior to updating or installing modules.
 {{< /note >}}

@@ -1,12 +1,12 @@
 ---
 title: Backups
-description: "Linode Backup service is fully managed, easy, and configurable."
+title_meta: "Linode Backup Service Product Documentation"
+description: "Linode Backup service is a fully managed and easy to use backup service that's fully integrated into the Linode Platform."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
-    date: 2020-06-02
     product_description: "Fully managed automatic daily, weekly, and biweekly backups of your Linode Compute Instances."
 toc: true
 aliases: ['/security/backups/linode-backup-service/','/platform/disk-images/linode-backup-service-classic-manager/','/platform/backup-service/','/platform/linode-backup-service/','/platform/disk-images/linode-backup-service/','/platform/disk-images/linode-backup-service-new-manager/','/backup-service/','/guides/linode-backup-service/']

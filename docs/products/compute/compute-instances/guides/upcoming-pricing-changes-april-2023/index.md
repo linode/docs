@@ -1,12 +1,9 @@
 ---
-keywords: ["april pricing update", "pricing", "pricing changes"]
+title: "Recent Pricing Changes (Effective 4/1/2023)"
 description: "Information related to the Akamai Compute pricing changes effective April 1st, 2023"
 published: 2023-03-01
 modified: 2023-03-31
-modified_by:
-  name: Linode
-title: "Recent Pricing Changes (Effective 4/1/2023)"
-authors: ["Linode"]
+keywords: ["april pricing update", "pricing", "pricing changes"]
 ---
 
 New pricing for some Compute services has gone into effect starting April 1st 2023. This includes an increase in cost for most Shared and Dedicated CPU Compute Instance plans (excluding the $5/mo 1GB Shared plan), a decrease in cost of network transfer (egress) overage fees, and an increase in cost for additional IPv4 addresses. This page covers each pricing change so you know exactly what to expect on your invoice moving forward.
@@ -54,7 +51,7 @@ Each Compute Instance plan includes a certain allowance of outbound network tran
 
 Starting on April 1st 2023, the network transfer (egress) overage fees was cut in half, from $0.01/GB (previous fee) to $0.005/GB (new fee). The table below details this change.
 
-| | Previous Price | <span style="color:#02b159">New Price</span> |
+| Network Transfer Type | Previous Price | <span style="color:#02b159">New Price</span> |
 | -- | -- | -- |
 | Inbound network transfer (Ingress) | Free (no defined limit) | **<span style="color:#02b159">Free (no defined limit)</span>** |
 | Outbound network transfer (Egress) Overage | $0.01/GB | **<span style="color:#02b159">$0.005/GB</span>** |
@@ -63,7 +60,7 @@ Starting on April 1st 2023, the network transfer (egress) overage fees was cut i
 
 Each Compute Instance includes a free IPv4 address and IPv6 address. Additional IPv4 addresses can be purchased for a fee and added to an instance. Starting on April 1st 2023, the cost for each additional IP address increased from $1/mo to $2/mo.
 
-| | Previous Price | <span style="color:#02b159">New Price</span> |
+| IP Address Quantity | Previous Price | <span style="color:#02b159">New Price</span> |
 | -- | -- | -- |
 | First IPv4 Address | Free | **<span style="color:#02b159">Free</span>** |
 | Additional IPv4 Addresses | $1/mo | **<span style="color:#02b159">$2/mo</span>** |

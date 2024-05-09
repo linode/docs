@@ -3,7 +3,6 @@ title: Manage Nodes and Node Pools
 description: "How to add a Node Pool to a Linode Kubernetes Engine (LKE) cluster."
 published: 2023-02-09
 aliases: ['/products/compute/kubernetes/guides/add-node-pool/','/products/compute/kubernetes/guides/edit-remove-node-pools/','/products/compute/kubernetes/guides/enable-cluster-autoscaling/']
-authors: ["Linode"]
 ---
 
 **Nodes**, also known as *worker nodes*, are virtual machines (built on top of Compute Instances) that serve as hosts for your containerized applications (*pods*). A **node pool** is a group of nodes that all run the same applications and configuration. Each LKE cluster has at least one node pool but additional node pools can be deployed as needed.

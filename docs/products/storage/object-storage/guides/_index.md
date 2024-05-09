@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Object Storage"
 description: "Find guides on Linode Object Storage management, hosting a static site on Object Storage, access and permissions, and other related topics."
 tab_group_main:
     weight: 30
@@ -40,10 +41,10 @@ tags: ["education","media"]
 
 Guides for using Object Storage with various clients and command-line tools:
 
-- [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli): An easy to use command-line tool for use with Linode's own services.
-- [s3cmd](/docs/products/storage/object-storage/guides/s3cmd): One of the most common command-line tools for interacting with S3-compatible object storage solutions, including Linode Object Storage.
-- [s4cmd](/docs/products/storage/object-storage/guides/s4cmd): A faster alternative to the s3cmd command-line tool.
-- [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck): A cross-platform graphical interface for interacting with various cloud storage services.
+- [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/): An easy to use command-line tool for use with Linode's own services.
+- [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/): One of the most common command-line tools for interacting with S3-compatible object storage solutions, including Linode Object Storage.
+- [s4cmd](/docs/products/storage/object-storage/guides/s4cmd/): A faster alternative to the s3cmd command-line tool.
+- [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck/): A cross-platform graphical interface for interacting with various cloud storage services.
 
 ## AWS Tooling
 

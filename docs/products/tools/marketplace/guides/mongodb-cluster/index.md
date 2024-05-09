@@ -2,15 +2,13 @@
 title: "Deploy a MongoDB Cluster through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
 published: 2023-03-20
-modified_by:
-  name: Linode
+expiryDate: 2023-05-01
 keywords: ['mongodb','marketplace', 'database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
-authors: ["Linode"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
@@ -18,7 +16,7 @@ authors: ["Linode"]
 MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized, language-specific bindings that make it particularly attractive for use in custom application development and rapid prototyping. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.com/community/deployments) and is currently one of the most popular database engines across all systems.
 
 {{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MongoDB cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MongoDB on a single Compute Instance, see [Deploy MongoDB through the Linode Marketplace](/docs/products/tools/marketplace/guides/mongodb/).
+This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MongoDB cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items.
 {{< /note >}}
 
 ## Deploying a Marketplace App

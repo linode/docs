@@ -70,7 +70,7 @@ To Install the latest Node.js LTS release on Windows, navigate to the [downloads
 
 ### Install Hugo
 
-The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.105.0**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.116.1**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
 
 Note: If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
 
@@ -78,10 +78,10 @@ Note: If you observe any issues on a newer version, please [file an issue](https
 
 To install Hugo, download the appropriate binary for your system, extract it, and move it to a directory within your PATH.
 
-1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.105.0 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) under **Assets**.
+1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.116.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.116.1) under **Assets**.
 
-    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_extended_0.105.0_darwin-universal.tar.gz
-    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_extended_0.105.0_Linux-64bit.tar.gz
+    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_darwin-universal.tar.gz
+    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_Linux-64bit.tar.gz
 
     You can download this file through a terminal using the curl command, replacing [url] with the URL for your platform:
 
@@ -109,15 +109,15 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
     Make sure to also add the final `export PATH` line in the above snippet to your terminal's configuration file, like `~/.zshrc` on macOS.
 
-1. Test Hugo by running `hugo version`. This should output a long string indicating that version 0.105.0 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+1.  Test Hugo by running `hugo version`. This should output a long string indicating the version. If the correct version is not used, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
 
 #### Windows
 
 While macOS and Linux are preferred by most of the core Linode Docs team, it's also possible to use Hugo on Windows.
 
-1. Download the [hugo_0.105.0_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_0.105.0_Windows-64bit.zip) file. Additional files for other operating systems can be found on the [Hugo v0.105.0 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) under **Assets**.
+1.  Download the [hugo_extended_0.116.1_windows-amd64.zip](https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_windows-amd64.zip) file. Additional files for other operating systems can be found on the [Hugo v0.116.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.116.1) under **Assets**.
 
-1. Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
+1.  Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
 
 1.  Add the directory to your PATH. In powershell, this can be accomplished with the following command:
 
@@ -125,15 +125,21 @@ While macOS and Linux are preferred by most of the core Linode Docs team, it's a
 
 ## Fork and Clone the Linode Library
 
-All of our guides are stored in the [github.com/linode/docs](https://github.com/linode/docs) repository. You will need to clone this repository to your local computer.
+All of our guides are stored in the [github.com/linode/docs](https://github.com/linode/docs) repository. You will need to fork this repository and clone your fork to your local computer.
 
 For more information about using Git, refer to the [official Git documentation](https://git-scm.com/documentation). If you're a Git beginner, both [GitHub](https://guides.github.com/) and [GitLab](https://docs.gitlab.com/ee/gitlab-basics/README.html) offer excellent primers to get you started.
 
-1.  On Github, navigate to the [linode/docs](https://github.com/linode/docs) repository. Click fork on the top right corner.
+1.  On Github, navigate to the [linode/docs](https://github.com/linode/docs) repository. Click fork on the top right corner. When creating your fork, you only need to copy the develop branch.
 
-1.  Clone your fork of the repository. Replace `YOUR-USERNAME` with your Github username. This example creates a `linode-docs` directory:
+1.  Clone your fork of the repository using either the [SSH URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls) or the  [HTTPS URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). In whichever command you run below, replace `USERNAME` with your GitHub username. Running either command creates a `linode-docs` directory in your terminal's working directory.
 
-        git clone https://github.com/YOUR-USERNAME/docs linode-docs
+    -   **SSH URL** (the preferred method): This requires that you have a public/private key pair installed on your local system. If you do not have one, [create one now](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key). Once you have a key pair, upload the public key to your GitHub account. For further instructions, see [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). When running the command below, you will be prompted for a password. Enter your SSH passphrase in this prompt.
+
+            git clone git@github.com:USERNAME/docs.git linode-docs
+
+    -   **HTTPS URL:** When prompted for your password, enter your personal access token from GitHub. For instructions on creating this token, see [Creating a Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token).
+
+            git clone https://github.com/USERNAME/docs linode-docs
 
     This may take a few minutes to copy all of the files and images to your machine.
 
@@ -154,12 +160,58 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  Add the `linode/docs` repository that you forked from as the `upstream` [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) for your local repository:
 
-        git remote add upstream https://github.com/linode/docs.git
+    - **SSH URL:** `git remote add upstream git@github.com:linode/docs.git`
+    - **HTTPS URL:** `git remote add upstream https://github.com/linode/docs.git`
+
+1.  View your remote repositories by running:
+
+        git remote -v
+
+    This command outputs all remote repositories and should match the following.
+
+        origin	git@github.com:USERNAME/docs.git (fetch)
+        origin	git@github.com:USERNAME/docs.git (push)
+        upstream	git@github.com:linode/docs.git (fetch)
+        upstream	git@github.com:linode/docs.git (push)
+
+    Most importantly, the origin should be your fork and the upstream should be the `linode/docs` repository. If you cloned the repository (or added the `upstream` remote) using the HTTPS URLS, the output will use those URLs instead.
 
 1.  Install the Node dependencies for the repository:
 
-        npm install
+        npm ci
 
+## Tailwind v3 upgrade
+
+This section is only relevant to contributors who have previously worked on the docs repo prior to the Tailwind v3 upgrade (which occurred on July 6th, 2023 in docs release v1.252.0). After you merge in changes from this release (and onward), you will likely notice display issues when previewing the site locally. This is due to Tailwind v3 and the way it integrates with Hugo (and our theme). To complete the upgrade locally and fix any display issues, follow the steps below.
+
+1.  Upgrade Hugo to v0.116.1. On macOS, run the following commands in a temporary folder (not in your docs repo):
+
+        curl -OL https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_darwin-universal.tar.gz
+        tar -xvzf hugo_extended_0.116.1_darwin-universal.tar.gz
+        mv hugo /usr/local/bin
+
+    If you are using a different operating system, refer to the [Install Hugo](#install-hugo) section above.
+
+1.  Once hugo has been upgraded, navigate to your docs repo.
+
+1.  Make sure you are working with the latest commits in the docs repo.
+
+    - For the develop branch, run:
+
+            git pull upstream develop
+
+    - For any other branches you may be working on:
+
+            git merge upstream/develop
+
+1.  Within the docs repo, remove the current `node_modules` directory and then reinstall dependencies.
+
+        rm -rf node_modules
+        npm ci
+
+1.  Now, preview the site locally and verify that the site looks as expected in your web browser.
+
+        hugo server
 
 # Contributing to the Docs Library
 
@@ -217,20 +269,23 @@ This section takes you through the process of creating a new guide, using the to
 
 ## Write and Submit
 
-Your local Hugo development server has hot-reloading enabled, so you will be able to view changes to your guide as you save them. Please see our [Linode Writer's Formatting guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for more information.
+1.  Make edits or write new content using any text editor, though we recommend a code editor like [Visual Studio Code](https://code.visualstudio.com/). Your local Hugo development server has live preview functionality, so you will be able to view changes to your guide as you save them. Review our [Linode Writer's Formatting guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for more information on how to make edits and for formatting / style guidelines.
 
-Any images that you include in the guide should be added inside the same directory as the new `index.md` file. Images should be linked to using their filename as the relative URL: `![Image Title](image.png)`.
+    Any images that you include in the guide should be added inside the same directory as the new `index.md` file. Images should be linked to using their filename as the relative URL: `![Image Title](image.png)`. See the [Images](https://www.linode.com/docs/guides/linode-writers-formatting-guide/#images) section of the writer's formatting guide.
 
-1.  Commit your changes to your local branch:
+1.  Stage your changes to your local branch. As a best practice, use a command like `git status` to verify you're working out of the correct branch and view a list of files that have been changed. If the output shows only the files that you've explicitly edited, you can stage them all at once using `git add .` Otherwise, add each one individually by referencing the file path in that command.
 
         git add docs/guides/web-servers/nginx/how-to-install-nginx-on-debian/
+
+1.  Once the changes are staged, commit them using the command below. Your commit message should summarize the changes that were made.
+
         git commit -m "Initial draft of guide"
 
-1.  Push the local branch to your fork:
+1.  Push the local branch to your remote fork (the `origin` remote repository).
 
-        git push --set-upstream origin nginx-on-debian
+        git push origin nginx-on-debian
 
-1.  Go to `https://github.com/linode/docs` and open a pull request.
+1.  In your web browser, you can now navigate to `https://github.com/linode/docs` and open a pull request. When creating a pull request, provide a detailed overview of the changes.
 
 Your guide is now submitted. Thank you for contributing to Linode! A member of the content team will review your guide and contact you if any changes are required.
 

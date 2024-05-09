@@ -1,20 +1,19 @@
 ---
 slug: configure-master-master-mysql-database-replication
+title: "Configure Master-Master MySQL Database Replication"
 description: "Learn how to set up master-master MySQL databases replication in this simple step-by-step tutorial."
 og_description: "MySQL Master-Master replication adds speed and redundancy. With replication, two separate MySQL servers act as a cluster, particularly useful for high availability website configurations. Use this guide to configure database replication on your Linode."
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2014-12-24
+modified: 2023-04-04
 keywords: ["set up mysql", "replication", "master-master", "high availability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/mysql-master-master-replication/','/databases/mysql/mysql-master-master/','/databases/mysql/configure-master-master-mysql-database-replication/']
-published: 2014-12-24
-modified: 2023-04-04
-modified_by:
-  name: Linode
-title: "Configure Master-Master MySQL Database Replication"
 external_resources:
  - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'
 tags: ["ubuntu","debian","database","mysql"]
 image: mysql-master-master-replication-title.jpg
-authors: ["James Stewart"]
 ---
 
 ## What is MySQL Master-Master Replication?
@@ -120,34 +119,34 @@ mysql --version
 2.  Configure the replication users on each Linode. Replace `192.0.2.1` and `192.0.2.2` with the private IP address of the `Server 1` and `Server 2` Linodes and replace `password` with a strong password.
 
     {{< tabs >}}
-    {{% tab "MySQL 8 and later" %}}
-**Server 1**
+    {{< tab "MySQL 8 and later" >}}
+    **Server 1**
 
-```command
-CREATE USER 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
-GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.1';
-```
+    ```command
+    CREATE USER 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
+    GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.1';
+    ```
 
-**Server 2**
+    **Server 2**
 
-```command
-CREATE USER 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
-GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.2';
-```
-    {{% /tab %}}
-    {{% tab "MySQL 5.7 and earlier" %}}
-**Server 1**
+    ```command
+    CREATE USER 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
+    GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.2';
+    ```
+    {{< /tab >}}
+    {{< tab "MySQL 5.7 and earlier" >}}
+    **Server 1**
 
-```command
-GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.1' IDENTIFIED BY 'password';
-```
+    ```command
+    GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.1' IDENTIFIED BY 'password';
+    ```
 
-**Server 2**
+    **Server 2**
 
-```command
-GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.2' IDENTIFIED BY 'password';
-```
-    {{% /tab %}}
+    ```command
+    GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.2' IDENTIFIED BY 'password';
+    ```
+    {{< /tab >}}
     {{< /tabs >}}
 
 3.  Run the following command to test the configuration. Use the private IP address of the respective Linodes:
@@ -189,32 +188,32 @@ GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.0.2.2' IDENTIFIED BY 'passw
 2.  On `Server 2` at the MySQL prompt, set up the replica functionality for that database. Replace`192.0.2.1` with the private IP of `Server 1`. Also replace the value for `source_log_file` with the file value from the previous step, and the value for `source_log_pos` with the position value.
 
     {{< tabs >}}
-    {{% tab "MySQL 8.0.22 and later" %}}
-```command
-STOP REPLICA;
-CHANGE REPLICATION SOURCE TO
-    source_host='192.0.2.1',
-    source_port=3306,
-    source_user='replication',
-    source_password='password',
-    source_log_file='mysql-bin.000001',
-    source_log_pos=277;
-START REPLICA;
-```
-    {{% /tab %}}
-    {{% tab "MySQL 8.0.21 and earlier" %}}
-```command
-STOP SLAVE;
-CHANGE MASTER TO
-    master_host='192.0.2.1',
-    master_port=3306,
-    master_user='replication',
-    master_password='password',
-    master_log_file='mysql-bin.000001',
-    master_log_pos=277;
-START SLAVE;
-```
-    {{% /tab %}}
+    {{< tab "MySQL 8.0.22 and later" >}}
+    ```command
+    STOP REPLICA;
+    CHANGE REPLICATION SOURCE TO
+        source_host='192.0.2.1',
+        source_port=3306,
+        source_user='replication',
+        source_password='password',
+        source_log_file='mysql-bin.000001',
+        source_log_pos=277;
+    START REPLICA;
+    ```
+    {{< /tab >}}
+    {{< tab "MySQL 8.0.21 and earlier" >}}
+    ```command
+    STOP SLAVE;
+    CHANGE MASTER TO
+        master_host='192.0.2.1',
+        master_port=3306,
+        master_user='replication',
+        master_password='password',
+        master_log_file='mysql-bin.000001',
+        master_log_pos=277;
+    START SLAVE;
+    ```
+    {{< /tab >}}
     {{< /tabs >}}
 
 3.  On `Server 2`, query the master status. Again note the file and position values.

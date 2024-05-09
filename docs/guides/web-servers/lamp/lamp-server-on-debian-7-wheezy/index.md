@@ -1,15 +1,15 @@
 ---
 slug: lamp-server-on-debian-7-wheezy
+title: 'LAMP Server on Debian 7 (Wheezy)'
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-10-09
+modified: 2015-12-01
 keywords: ["debian 7 LAMP server", "debian LAMP guide", "LAMP howto", "debian", "debian 7", "lamp server", "lamp", "apache", "mysql", "php", "linux web"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/lamp-server-on-debian-7-wheezy/','/lamp-guides/debian-7-wheezy/','/websites/lamp/lamp-server-on-debian-7-wheezy/']
-modified: 2015-12-01
-modified_by:
-  name: Alex Fornuto
-published: 2013-10-09
-title: 'LAMP Server on Debian 7 (Wheezy)'
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -21,12 +21,11 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
-authors: ["Linode"]
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

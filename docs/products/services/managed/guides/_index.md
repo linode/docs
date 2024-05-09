@@ -1,9 +1,10 @@
 ---
 title: Guides
-description: "Learn how to sign up for Linode Managed, add new services, disable service monitoring, and more."
+title_meta: "Guides and Tutorials for the Linode Managed Service"
+description: "A collection of guides to help you learn how to sign up for Linode Managed, add new services, disable service monitoring, and more."
+published: 2023-04-11
 tab_group_main:
     weight: 30
-published: 2023-04-11
 ---
 
 ## Basics

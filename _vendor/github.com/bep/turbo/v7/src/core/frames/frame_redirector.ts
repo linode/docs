@@ -1,55 +1,77 @@
-import { FormInterceptor, FormInterceptorDelegate } from "./form_interceptor"
+import { FormSubmitObserver, FormSubmitObserverDelegate } from "../../observers/form_submit_observer"
 import { FrameElement } from "../../elements/frame_element"
 import { LinkInterceptor, LinkInterceptorDelegate } from "./link_interceptor"
-
-export class FrameRedirector implements LinkInterceptorDelegate, FormInterceptorDelegate {
+import { expandURL, getAction, locationIsVisitable } from "../url"
+import { Session } from "../session"
+export class FrameRedirector implements LinkInterceptorDelegate, FormSubmitObserverDelegate {
+  readonly session: Session
   readonly element: Element
   readonly linkInterceptor: LinkInterceptor
-  readonly formInterceptor: FormInterceptor
+  readonly formSubmitObserver: FormSubmitObserver
 
-  constructor(element: Element) {
+  constructor(session: Session, element: Element) {
+    this.session = session
     this.element = element
     this.linkInterceptor = new LinkInterceptor(this, element)
-    this.formInterceptor = new FormInterceptor(this, element)
+    this.formSubmitObserver = new FormSubmitObserver(this, element)
   }
 
   start() {
     this.linkInterceptor.start()
-    this.formInterceptor.start()
+    this.formSubmitObserver.start()
   }
 
   stop() {
     this.linkInterceptor.stop()
-    this.formInterceptor.stop()
+    this.formSubmitObserver.stop()
   }
 
-  shouldInterceptLinkClick(element: Element, url: string) {
+  shouldInterceptLinkClick(element: Element, _location: string, _event: MouseEvent) {
     return this.shouldRedirect(element)
   }
 
-  linkClickIntercepted(element: Element, url: string) {
+  linkClickIntercepted(element: Element, url: string, event: MouseEvent) {
     const frame = this.findFrameElement(element)
     if (frame) {
-      frame.setAttribute("reloadable", "")
-      frame.src = url
+      frame.delegate.linkClickIntercepted(element, url, event)
     }
   }
 
-  shouldInterceptFormSubmission(element: HTMLFormElement, submitter?: HTMLElement) {
-    return this.shouldRedirect(element, submitter)
+  willSubmitForm(element: HTMLFormElement, submitter?: HTMLElement) {
+    return (
+      element.closest("turbo-frame") == null &&
+      this.shouldSubmit(element, submitter) &&
+      this.shouldRedirect(element, submitter)
+    )
   }
 
-  formSubmissionIntercepted(element: HTMLFormElement, submitter?: HTMLElement) {
+  formSubmitted(element: HTMLFormElement, submitter?: HTMLElement) {
     const frame = this.findFrameElement(element, submitter)
     if (frame) {
-      frame.removeAttribute("reloadable")
-      frame.delegate.formSubmissionIntercepted(element, submitter)
+      frame.delegate.formSubmitted(element, submitter)
     }
+  }
+
+  private shouldSubmit(form: HTMLFormElement, submitter?: HTMLElement) {
+    const action = getAction(form, submitter)
+    const meta = this.element.ownerDocument.querySelector<HTMLMetaElement>(`meta[name="turbo-root"]`)
+    const rootLocation = expandURL(meta?.content ?? "/")
+
+    return this.shouldRedirect(form, submitter) && locationIsVisitable(action, rootLocation)
   }
 
   private shouldRedirect(element: Element, submitter?: HTMLElement) {
-    const frame = this.findFrameElement(element, submitter)
-    return frame ? frame != element.closest("turbo-frame") : false
+    const isNavigatable =
+      element instanceof HTMLFormElement
+        ? this.session.submissionIsNavigatable(element, submitter)
+        : this.session.elementIsNavigatable(element)
+
+    if (isNavigatable) {
+      const frame = this.findFrameElement(element, submitter)
+      return frame ? frame != element.closest("turbo-frame") : false
+    } else {
+      return false
+    }
   }
 
   private findFrameElement(element: Element, submitter?: HTMLElement) {

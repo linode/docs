@@ -1,17 +1,15 @@
 ---
 slug: monitoring-servers-with-zabbix
-deprecated: true
+title: Monitoring Servers with Zabbix
 description: 'This guide shows how to install and configure Zabbix, an open source software application that can monitor servers, networks, and applications.'
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2012-08-20
 keywords: ["zabbix", "server monitoring", "monitoring", "server monitor"]
 tags: ["php","monitoring","database","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/zabbix/','/uptime/monitoring/monitoring-servers-with-zabbix/']
-modified: 2012-08-20
-modified_by:
-  name: Linode
-published: 2012-08-20
-title: Monitoring Servers with Zabbix
-authors: ["Chris Ciufo"]
+deprecated: true
 ---
 
 Zabbix is an open source software application that can monitor servers, networks, and applications. You can use Zabbix with any of our plans, and it works on every Linux distribution we offer. Full hardware and software requirements can be found on the [Zabbix requirements page](http://www.zabbix.com/requirements.php).
@@ -25,8 +23,7 @@ Installing the packages is faster and makes things easier to maintain, but the i
 ### Installing Packages
 
 If you're running Ubuntu or Debian and would like to install the Zabbix packages, follow these instructions:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Other distributions may also have packages for Zabbix. Check the distribution's website for more information.
 {{< /note >}}
 
@@ -44,7 +41,7 @@ Other distributions may also have packages for Zabbix. Check the distribution's 
 
 Zabbix is now installed and running on your Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
 {{< /note >}}
 
@@ -114,7 +111,7 @@ Zabbix requires Apache and PHP to be installed. Here's how to install them:
 
         sudo apt-get install libmysqlclient-dev libcurl3-gnutls libcurl3-gnutls-dev
 
-4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts).
+4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server).
 
 The required applications, modules, and libraries have been installed on your Linode.
 
@@ -138,8 +135,7 @@ date.timezone = America/New_York
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can [use this webpage](http://php.net/manual/en/timezones.php) to find the correct date.timezone value.
 {{< /note >}}
 
@@ -375,8 +371,7 @@ Zabbix also has a front-end component that you'll want to install. These instruc
 ### Copying Files
 
 The Zabbix frontend is written in PHP. You'll want to copy the front-end files to your web server's public directory. Here's how to create a subdirectory and copy the Zabbix front-end files to it:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 We assume that you followed the Hosting a Website guide. If you're using a different DocumentRoot directive than /home/example\_user/public/example.com/public for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
 {{< /note >}}
 

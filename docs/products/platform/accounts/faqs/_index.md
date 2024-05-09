@@ -1,10 +1,11 @@
 ---
 title: "FAQs"
+title_meta: "FAQs for Creating and Managing Linode Accounts"
 description: "Find quick answers to some of the most commonly asked account and login questions."
-tab_group_main:
-    weight: 60
 published: 2023-03-08
 modified: 2023-03-14
+tab_group_main:
+    weight: 60
 ---
 
 ## I no longer remember my user password. How can I reset it?

@@ -1,20 +1,19 @@
 ---
 slug: write-a-neovim-plugin-with-lua
+title: "Write a Neovim Plugin with Lua"
+title_meta: "How to Write a Neovim Plugin with Lua"
 description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to create a plugin using the Lua programming language."
 og_description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to make a plugin to start taking advantage of that."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-03-18
 keywords: ['write neovim plugin','neovim plugin development','neovim lua plugin']
 tags: ['neovim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-18
-modified_by:
-  name: Nathaniel Stickman
-title: "Write a Neovim Plugin with Lua"
-title_meta: "How to Write a Neovim Plugin with Lua"
 external_resources:
 - '[Nvim Documentation: Lua](https://neovim.io/doc/user/lua.html)'
 - '[GitHub: jacobsimpson/nvim-example-lua-plugin](https://github.com/jacobsimpson/nvim-example-lua-plugin)'
 aliases: ['/guides/writing-a-neovim-plugin-with-lua/']
-authors: ["Nathaniel Stickman"]
 ---
 
 Neovim is an open source fork of the ubiquitous Vim text editor. It supports the [Lua programming language](https://www.lua.org/) which opens up vast possibilities for configuration, scripting, and plugin development. The Neovim community has created numerous plugins pushing the boundaries of the text editor's capabilities.
@@ -36,8 +35,7 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
     - On **AlmaLinux**, **CentOS** (8 or later), and **Fedora**, use the following command:
 
             sudo dnf upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

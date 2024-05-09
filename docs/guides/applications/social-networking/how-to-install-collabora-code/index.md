@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-collabora-code
+title: "Install and Configure Collabora CODE"
+title_meta: "Installing and Configuring Collabora CODE"
 description: 'This guide explains how to install and configure Collabora CODE and how to integrate it with Nextcloud'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-04-10
 keywords: ['install Collabora', 'configure Collabora', 'Collabora and Nextcloud', 'integrate Collabora into Nextcloud']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-10
-modified_by:
-  name: Linode
-title: "Install and Configure Collabora CODE"
-title_meta: "Installing and Configuring Collabora CODE"
 external_resources:
 - '[Collabora Office](https://www.collaboraoffice.com/)'
 - '[Collabora CODE](https://www.collaboraoffice.com/code/)'
@@ -21,7 +21,6 @@ external_resources:
 - '[Collabora instructions for other Linux packages](https://www.collaboraoffice.com/code/linux-packages/)'
 - '[Collabora SDK documentation](https://sdk.collaboraonline.com/contents.html)'
 - '[Certbot](https://certbot.eff.org/)'
-authors: ["Jeff Novotny"]
 ---
 
 [Collabora](https://www.collaboraoffice.com/) is a fully-featured open-source alternative to popular office suites such as Microsoft Office. The [*Collabora Online Development Edition*](https://www.collaboraoffice.com/code/) (CODE) edition is the online development version of Collabora. It is typically integrated into the front end of a file storage application such as [Nextcloud](https://nextcloud.com/). This guide explains how to download, install, and configure the CODE edition of Collabora. It also demonstrates how to connect Collabora and Nextcloud, both running on the same Linode, using the Nextcloud Hub.
@@ -85,7 +84,7 @@ Collabora CODE is more straightforward to install than Nextcloud. Typically, Col
 
 1.  Add the following information to the file and save it.
 
-    ```file {"title="/etc/apt/sources.list.d/collaboraonline.sources" lang="aconf"}
+    ```file {title="/etc/apt/sources.list.d/collaboraonline.sources" lang="aconf"}
     Types: deb
     URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-ubuntu2204
     Suites: ./

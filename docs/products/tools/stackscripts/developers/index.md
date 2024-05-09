@@ -1,9 +1,10 @@
 ---
 title: Developers
+title_meta: "Developer Resources for StackScripts"
 description: "Linode StackScripts are managed easily with developer tools like the Linode API or CLI."
+published: 2020-04-22
 tab_group_main:
     weight: 50
-published: 2020-04-22
 ---
 
 ## Linode API

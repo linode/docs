@@ -1,19 +1,20 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-3
-description: "In part three of our series on Kubernetes, you will learn about Managed clusters, as well as how to set them up using the Linode Kubernetes Engine (LKE)."
 title: "Building a CD Pipeline Using LKE (Part 3): Deploying the LKE Cluster"
-keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "In part three of our series on Kubernetes, you will learn about Managed clusters, as well as how to set them up using the Linode Kubernetes Engine (LKE)."
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2021-05-06
 modified: 2022-12-14
-modified_by:
-  name: Linode
+keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-3/']
-authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Deploying our LKE Cluster](cd-presentation-header-03-deploying-lke-cluster.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Deploy the Cluster")
+
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
 
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Deploying our LKE Cluster (Slide #51)](https://2021-03-lke.container.training/#51)
 

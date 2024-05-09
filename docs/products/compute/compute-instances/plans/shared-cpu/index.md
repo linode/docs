@@ -1,7 +1,9 @@
 ---
 title: "Shared CPU Compute Instances"
-linkTitle: "Shared CPU"
+description: "Learn about our Shared CPU Compute Instance plans, our most affordable virtual machines that offer a significant price-to-performance ratio."
 published: 2023-01-18
+modified: 2023-09-21
+linkTitle: "Shared CPU"
 aliases: ['/products/compute/shared-linodes/','/products/compute/shared-cpu/']
 ---
 
@@ -35,4 +37,4 @@ Shared CPU instances are available across [all regions](https://www.linode.com/g
 | Outbound Network Transfer | 1 TB - 20 TB |
 | Outbound Network Bandwidth | 1 Gbps - 12 Gbps |
 
-Pricing starts at $5 for a Shared CPU Compute Instance with 1 vCPU core, 1 GB of memory, and 25 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. See [Compute Instances Plan Types](/docs/products/compute/compute-instances/plans/) to learn more about other Instance types.
+Pricing starts at $5 for a Shared CPU Compute Instance with 1 vCPU core, 1 GB of memory, and 25 GB of SSD storage. Pricing may vary by region. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.
