@@ -1477,6 +1477,7 @@ mov
 movr
 mpapis
 mpm
+MPMs
 MRuby
 msfvenom
 msg

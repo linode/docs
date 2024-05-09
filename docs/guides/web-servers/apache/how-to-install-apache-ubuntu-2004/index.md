@@ -1,13 +1,14 @@
 ---
 slug: how-to-install-apache-ubuntu-2004
+title: "How to Install and Use the Apache on Ubuntu 20.04"
 description: "Apache is an open-source web server, the most widely used on Linux systems, with a modular design that makes it highly adaptable. This guide shows you how to install Apache on Ubuntu 20.04 and how to get started using it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-21
+modified: 2024-05-07
 keywords: ['apache','apache web server','apache http server','httpd','install apache on ubuntu']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Install and Use the Apache on Ubuntu 20.04"
 external_resources:
 - '[Apache HTTP Server Documentation](https://httpd.apache.org/docs/current/)'
 relations:
@@ -15,7 +16,6 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 20.04
-authors: ["Nathaniel Stickman"]
 ---
 
 The Apache HTTP Web Server — usually just called Apache — is one of the most widely used open-source web servers. It comes with a long history of success in a wide range of applications. In this guide, you can see how to install Apache on Ubuntu 20.04 and learn how to get started using it.
