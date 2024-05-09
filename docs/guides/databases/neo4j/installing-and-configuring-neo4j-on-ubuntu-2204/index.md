@@ -1,24 +1,24 @@
 ---
 slug: installing-and-configuring-neo4j-on-ubuntu-2204
 title: "Installing and Configuring Neo4j on Ubuntu 22.04"
-description: "Neoj4 is the leading graph database available today. Learn how to install, configure, and use it on an Akamai cloud compute instance."
+description: "Neoj4 is one of the leading graph database available. Learn how to install, configure, and use it on an Akamai cloud compute instance."
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
-published: 2023-09-29
-modified: 2023-05-08
+published: 2022-04-20
+modified: 2024-05-08
 keywords: ['install neo4j','install neo4j ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Ubuntu users have a choice between several reliable Database Management Systems. While Relational Database Management Systems enjoy longstanding market leadership positions, Graph Database Management Systems are greatly increasing in popularity. Neo4j is the leader among these, and this guide covers everything you need to install, configure, and begin using it on Ubuntu 22.04 LTS.
+While relational databases enjoy longstanding market leadership positions, graph databases are greatly increasing in popularity. Neo4j is the leader among these, and this guide covers everything you need to install, configure, and begin using it on Ubuntu 22.04 LTS.
 
 ## What Is Neo4j?
 
-Neoj4 is the [world's most popular graph database](https://db-engines.com/en/ranking/graph+dbms). Available under an [open source license](https://neo4j.com/licensing/), you can freely install Neo4j on Akamai cloud compute instances. Once in place, you can create high-performance database applications that emphasize the management of, and searches for, connected data. For example, which people have been co-workers of other people, or which documents share semantic content with other documents. Learn the key benefits of Neo4j in our [Introduction to Neo4j](/docs/guides/an-introduction-to-neo4j/) guide.
+Neoj4 is an incredibly popular graph database management system (*DBMS*). At the time of this writing, it is the *most* popular graph DBMS, according to [DB-engine's ranking](https://db-engines.com/en/ranking/graph+dbms). Available under an [open source license](https://neo4j.com/licensing/), you can freely install Neo4j on virtual machines, like Compute Instances. Once in place, you can create high-performance database applications that emphasize the management of, and searches for, connected data. For example, which people have been co-workers of other people, or which documents share semantic content with other documents. Learn the key benefits of Neo4j in our [Introduction to Neo4j](/docs/guides/an-introduction-to-neo4j/) guide.
 
 ## Before You Begin
 
-1.  If you have not already done so, create an Akamai account and Compute Instance. See our [Getting Started](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. You need two Ubuntu 22.04 LTS instances in the same datacenter. While it's possible to experiment with Neo4j on a single-core instance backed by one gigabyte of RAM, practical Neo4j applications generally occupy at least four cores and eight or more gigabytes of RAM. Also be sure to add a private IP address to both instances.
+1.  If you have not already done so, create a Linode account and several Compute Instances. See our [Getting Started](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. You need two Ubuntu 22.04 LTS instances in the same datacenter. While it's possible to experiment with Neo4j on a single-core instance backed by one gigabyte of RAM, practical Neo4j applications generally occupy at least four cores and eight or more gigabytes of RAM. Also be sure to add a private IP address to both instances.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
@@ -290,7 +290,7 @@ Below are the essential updates your Neo4j server needs to enable local network 
     ```
 
     {{< note >}}
-    If you're connecting to your Akamai compute instance via SSH, make sure to open port `22` before enabling UFW. Otherwise, your connection might be lost, leaving the LISH Console as the only way to log back in to your instance.
+    If you're connecting to your compute instance via SSH, make sure to open port `22` before enabling UFW. Otherwise, your connection might be lost, leaving the LISH Console as the only way to log back in to your instance.
 
     Use the following command to open the SSH port (`22`):
 
@@ -445,4 +445,4 @@ One of the many strengths of the Neo4j Browser is that it builds in [rich visual
 
 ## Conclusion
 
-You should now be able to install a Neo4j graph database on an Ubuntu 22.04 LTS Akamai cloud compute instance. You should also know the basics of Neo4j configuration, as well as how to open access across a local network or to a remote machine. Neo4j data can be entered and accessed using the `cyper-shell` command-line tool or via the graphical Neo4j Browser.
+You should now be able to install a Neo4j graph database on an Ubuntu 22.04 LTS compute instance. You should also know the basics of Neo4j configuration, as well as how to open access across a local network or to a remote machine. Neo4j data can be entered and accessed using the `cyper-shell` command-line tool or via the graphical Neo4j Browser.
