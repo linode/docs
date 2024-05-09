@@ -1,13 +1,13 @@
 ---
 slug: how-to-use-zabbix
 title: "How to Use Zabbix"
-description: 'This guide introduces the system monitoring application Zabbix, and explains how to perform some basic tasks.'
+description: "This guide introduces the system monitoring application Zabbix, and explains how to perform some basic tasks."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-06-23
+modified: 2024-05-09
 keywords: ['configure zabbix client','use zabbix','zabbix alerts','zabbix notifications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-06-23
-modified_by:
-  name: Linode
 external_resources:
 - '[Zabbix](https://www.zabbix.com/)'
 - '[Zabbix documentation](https://www.zabbix.com/documentation/6.0/en/manual)'
