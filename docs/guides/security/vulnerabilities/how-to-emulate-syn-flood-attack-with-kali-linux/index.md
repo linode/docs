@@ -1,14 +1,14 @@
 ---
 slug: how-to-emulate-syn-flood-attack-with-kali-linux
 title: "How to Emulate a SYN Flood Attack With Kali Linux"
-description: 'This guide explains how to conduct a DDoS stress test using a SYN flood attack originating on Kali Linux.'
+description: "This guide explains how to conduct a DDoS stress test using a SYN flood attack originating on Kali Linux."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-04-14
+modified: 2024-05-09
 keywords: ['DDoS stress test','SYN flood attack','Kali Linux flood attack','hping3 stress test']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-04-14
-modified_by:
-  name: Linode
 external_resources:
 - '[Kali Linux](https://www.kali.org/)'
 - '[Kali Linux Documentation](https://www.kali.org/docs/)'
