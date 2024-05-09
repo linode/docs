@@ -1,15 +1,13 @@
 ---
 slug: zimbra-on-ubuntu-14-04
-deprecated: true
+title: 'Install Zimbra Open Source Edition on Ubuntu 14.04'
 description: 'This guide shows how to install Zimbra, a complete self-hosted mail application, pre-configured with Postfix, OpenDKIM, Amavis, ClamAV and running on NGINX.'
+authors: ["Bill Bardon"]
+contributors: ["Bill Bardon"]
+published: 2015-10-01
 keywords: ["zimbra", "install zimbra", "mail server", "zimbra email", "zimbra email server", "mail zimbra", "open source guide", "zimbra open source", "postfix", "web mail", "opendkim", "amavis", "ubuntu tahr", "ubuntu 14.04", "ubuntu"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-10-01
-modified: 2015-10-01
-modified_by:
-    name: Linode
-title: 'Install Zimbra Open Source Edition on Ubuntu 14.04'
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
 relations:
@@ -18,7 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
-authors: ["Bill Bardon"]
+deprecated: true
 ---
 
 ![Install Zimbra on Ubuntu](Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)
@@ -26,8 +24,7 @@ authors: ["Bill Bardon"]
 [Zimbra](https://www.zimbra.com/) is a complete mail server that provides a configured Postfix with OpenDKIM, Amavis, ClamAV, and Nginx, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.
 
 {{< content "email-warning-shortguide" >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -218,8 +215,7 @@ Zimbra provides two ways to manage configuration: a web console and the command 
 From the admin console you can configure default settings for new accounts (Zimbra calls this a Class Of Service, or COS), add and manage accounts, change passwords, and generally manage your mail server. The admin console has built-in descriptions for most settings. Click the label for the input item and a tool tip will appear. Click the **More** button below right and a more detailed note will be shown.
 
 ![Click label for a tool tip](Tooltip.png) ![Click More for details](Tooltipmore.png)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also reach the admin console if you are already logged in to your Zimbra webmail page. A drop-down menu beside your account name in the upper right of the window provides a link to the admin console.
 {{< /note >}}
 

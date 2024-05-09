@@ -1,5 +1,5 @@
 ---
-title: Linode Types
 slug: linode-types
+title: Linode Types
 ---
 

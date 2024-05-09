@@ -1,27 +1,26 @@
 ---
 slug: how-to-change-selinux-modes
+title: "Changing SELinux Modes"
+title_meta: "How to Change SELinux Modes"
 description: "Security-Enhanced Linux works to filter system access. Learn how to switch between SELinux Modes, from full enforcement to completely disabled."
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-22
+modified: 2017-10-18
 keywords: ["selinux"]
 aliases: ['/quick-answers/linux/how-to-change-selinux-modes/','/quick-answers/linux/how-to-disable-selinux/']
 tags: ["fedora","centos","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-06-22
-modified: 2017-10-18
-modified_by:
-  name: Linode
-title: "Changing SELinux Modes"
-title_meta: "How to Change SELinux Modes"
 external_resources:
 - '[Security Enhanced Linux User Guide, Red Hat](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/index.html)'
 - '[SELinux, CentOS Wiki](https://wiki.centos.org/HowTos/SELinux)'
-authors: ["Angel Guarisma"]
 ---
 
 [Security Enhanced Linux](https://selinuxproject.org/page/Main_Page) is a Linux security module for [mandatory](https://en.wikipedia.org/wiki/Mandatory_access_control) or [role-based](https://wiki.centos.org/HowTos/SELinux#head-91a597b2b6f140484d62d59a0b9a1dfea4dffc50) access control. SELinux is packaged with CentOS and Fedora by default, and can be running in one of three [modes](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Introduction-SELinux_Modes.html): *disabled*, *permissive* or *enforcing*.
 
 Ideally, you want to keep SELinux in enforcing mode, but there may be times when you need to set it to permissive mode, or disable it altogether. Note that the *disabled* state means the daemon is still running and is still enforcing rules for [discretionary access control](https://en.wikipedia.org/wiki/Discretionary_access_control), however no MAC security policies are being used, and no violations are being logged.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To use SELinux on CentOS or Fedora, you must use the distribution-supplied *upstream* kernel (as opposed to the Linode-supplied kernel, which does not support SELinux). All recently created Linodes run an upstream kernel by default. Review the [How to Change your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) guide for more information on upstream kernels, the Linode kernel, and how to switch between them.
 {{< /note >}}
 

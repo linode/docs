@@ -1,22 +1,21 @@
 ---
 slug: manage-a-debian-6-squeeze-vps-with-ispconfig
-deprecated: true
+title: 'Manage a Debian 6 (Squeeze) Linode with ISPConfig'
 description: 'Installing and configuring the ISPConfig control panel to maintain your Debian 6 (Squeeze) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2011-04-29
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/ispconfig/debian-6-squeeze/','/websites/cms/manage-a-debian-6-squeeze-vps-with-ispconfig/','/websites/cms/ispconfig/manage-a-debian-6-squeeze-vps-with-ispconfig/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: 'Manage a Debian 6 (Squeeze) Linode with ISPConfig'
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Debian 6
-authors: ["Linode"]
+deprecated: true
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.

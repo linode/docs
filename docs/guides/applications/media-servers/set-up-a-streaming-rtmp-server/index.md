@@ -1,15 +1,15 @@
 ---
 slug: set-up-a-streaming-rtmp-server
+title: "Setting Up a Streaming RTMP Server"
+title_meta: "How to Set Up an RTMP Streaming Server"
 description: "Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-05-21
 keywords: ['RTMP','streaming','multi-streaming','NGINX']
 tags: ['rtmp', 'stream', 'nginx', 'vlc', "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
 image: StreamingServer.jpg
-modified_by:
-  name: Linode
-title: "Setting Up a Streaming RTMP Server"
-title_meta: "How to Set Up an RTMP Streaming Server"
 external_resources:
 - '[RTMP Specification](https://www.adobe.com/devnet/rtmp.html)'
 - '[OBS](https://obsproject.com/)'
@@ -26,7 +26,6 @@ external_resources:
 - '[VideoLAN support page](https://www.videolan.org/support/)'
 - '[list of all of its ingest points](https://stream.twitch.tv/ingests/)'
 - '[NGINX GitHub page](https://github.com/arut/nginx-rtmp-module)'
-authors: ["Jeff Novotny"]
 ---
 
 Live streaming has become an important way for creators, gamers, instructors, and media personalities to reach new audiences. Many live streamers are using sites such as Twitch and Facebook Live to stream. However, a *Real-Time Messaging Protocol* (RTMP) Streaming Server is another popular way to distribute live streams. RTMP allows you to send your stream to a central server, which can store it or retransmit it for audience playback.

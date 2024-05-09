@@ -1,16 +1,16 @@
 ---
 slug: secrets-management-with-terraform
+title: "Managing Secrets with Terraform"
+title_meta: "Secrets Management with Terraform"
 description: 'Learn everything you need to know about secrets management with Terraform.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-12-12
+modified: 2021-08-13
 keywords: ['terraform','secrets','secrets management','backend','hcl']
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-12-12
-modified: 2021-08-13
-modified_by:
-  name: Linode
 image: SecretsManagementwithTerraform.png
-title: "Managing Secrets with Terraform"
-title_meta: "Secrets Management with Terraform"
 external_resources:
 - '[Terraform Input Variable Configuration](https://www.terraform.io/docs/configuration/variables.html)'
 - '[Terraform Backend Configuration](https://www.terraform.io/docs/backends/config.html)'
@@ -18,7 +18,6 @@ external_resources:
 - '[Terraform State Storage and Locking](https://www.terraform.io/docs/backends/state.html)'
 - '[GitHub Discussion - Storing Sensitive Values in State Files](https://github.com/hashicorp/terraform/issues/516)'
 aliases: ['/applications/configuration-management/terraform/secrets-management-with-terraform/','/applications/configuration-management/secrets-management-with-terraform/']
-authors: ["Linode"]
 tags: ["saas"]
 ---
 

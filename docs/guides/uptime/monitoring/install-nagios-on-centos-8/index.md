@@ -2,12 +2,11 @@
 slug: install-nagios-on-centos-8
 title: "How to Install Nagios on CentOS 8"
 description: "Nagios offers a robust server-monitoring system, complete with built-in interface and alert system. Learn how to install Nagios on your CentOS 8 and similar systems."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-06-21
 keywords: ['install nagios centos','nagios centos tutorial','install nagios on rocky linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-06-21
-modified_by:
-  name: Linode
 external_resources:
 - '[Nagios Library: Nagios Core Documentation](https://library.nagios.com/library/products/nagios-core/documentation/)'
 - '[Nagios Documentation: Nagios Core 4 Documentation](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/)'
@@ -24,9 +23,9 @@ Learn how to get started with Nagios on CentOS, AlmaLinux, and Rocky Linux in th
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

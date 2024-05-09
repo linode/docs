@@ -1,18 +1,17 @@
 ---
 slug: how-to-install-hashicorp-consul-service-mesh
-description: "This guide will show you how to install HashiCorp''s Consul service mesh, which centralizes operational tasks around your apps services, on a Kubernetes Cluster."
-keywords: ['what is consul hashicorp', 'how to install hashicorp consul']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-23
-modified_by:
-  name: Linode
 title: "Install HashiCorp Consul Service Mesh"
 title_meta: "How to Install HashiCorp Consul Service Mesh"
+description: "This guide will show you how to install HashiCorp''s Consul service mesh, which centralizes operational tasks around your apps services, on a Kubernetes Cluster."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-23
+keywords: ['what is consul hashicorp', 'how to install hashicorp consul']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Hashicorp Consul Overview](https://www.consul.io/)'
 - '[Consul and Kubernetes Deployment Guide](https://learn.hashicorp.com/tutorials/consul/kubernetes-deployment-guide?in=consul/kubernetes)'
 - '[Helm Chart Configuration](https://www.consul.io/docs/k8s/helm)'
-authors: ["Nathaniel Stickman"]
 ---
 
 [Consul](https://www.consul.io/) is a service mesh offered by HashiCorp, with robust service discovery and diagnostic features for managing your application's services. You can learn more about service meshes in our guide [What Is a Service Mesh?](/docs/guides/what-is-a-service-mesh/). Consul offers a balanced approach between flexibility and usability that makes it a compelling option for managing your service-oriented applications.
