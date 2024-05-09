@@ -16,7 +16,7 @@ Linode's cloning feature allows you to duplicate a Compute Instance's disks (and
 This process copies all disks and configuration profiles to a newly created Compute Instance on your account.
 
 {{< note >}}
-Before continuing, it's recommended to power off the instance you would like to clone. This helps prevent data corruption.
+Before continuing, you should power off the instance you want to clone. This helps prevent data corruption.
 {{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com).
@@ -38,12 +38,13 @@ Before continuing, it's recommended to power off the instance you would like to 
 1. Complete the remainder of the form. Enter a label and select the region, the plan, and other options for the new Compute Instance.
 
     {{< note >}}
-    The plan's storage must be greater than the combined disk size of the original instance. If you wish to select a plan with less storage, you may need to [resize your disks](/docs/products/compute/compute-instances/guides/disks-and-storage/) before cloning.
+    * The plan's storage must be greater than the combined disk size of the original instance. If you wish to select a plan with less storage, you may need to [resize your disks](/docs/products/compute/compute-instances/guides/disks-and-storage/) before cloning.
+    * If the target compute instance is in a [placement group](/docs/products/compute-instances/guides/placement-groups), the clone isn't automatically included in the same placement group. You need to specify a placement group to include it in. The target placement group needs to have capacity to include a cloned compute instance and it needs to be in the same data center as the clone.
     {{< /note >}}
 
-1. Click the **Create Linode** button to start the cloning process. Cloning a Compute Instance can be much longer than creating a new instance based on a distribution image or custom image. The length of time depends on the size of the disks, among other factors. To keep track of the cloning progress, a status bar is displayed above the original Compute Instance with the percentage of completion.
+2. Click the **Create Linode** button to start the cloning process. Cloning a Compute Instance can be much longer than creating a new instance based on a distribution image or custom image. The length of time depends on the size of the disks, among other factors. To keep track of the cloning progress, a status bar is displayed above the original Compute Instance with the percentage of completion.
 
-1. Once the cloning process is complete, you need to power on the new Compute Instance to begin using it.
+3. Once the cloning process is complete, you need to power on the new Compute Instance to begin using it.
 
 {{< note >}}
 The new instance's IP address will be different than the original instance. If desired, you can transfer the IP address from the original Compute Instance to the new one. Swapping the IP address can prevent additional changes from being required, such as changing DNS records or the internal configuration of the new instance. See [Transferring IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#transferring-ip-addresses).

@@ -22,6 +22,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 - [Access Your Desktop Environment Using Glish (Linode Graphical Shell)](/docs/products/compute/compute-instances/guides/glish/)
 - [Reset Root Password](/docs/products/compute/compute-instances/guides/reset-root-password/)
 - [Clone a Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/)
+- [Physically group your compute instances to meet your need](/docs/products/compute/compute-instances/guides/placement-groups)
 - [Initiate a Cross Data Center Migration](/docs/products/compute/compute-instances/guides/migrate-to-different-dc/)
 - [Configure Email Alerts for Resource Usage on Compute Instances](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/)
 

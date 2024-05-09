@@ -10,19 +10,20 @@ aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cp
 
 This guide walks you through creating a Compute Instance (also frequently called a *Linode*) through the Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
 
-1. [Open the Create Form in the Cloud Manager](#open-the-create-form-in-the-cloud-manager)
-1. [Choose a Distribution, App, or Image](#choose-a-distribution-app-or-image)
-1. [Select a Region](#select-a-region)
-1. [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
-1. [Set the Label and Add Tags](#set-the-label-and-add-tags)
-1. [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
-1. [Assign to a VPC](#assign-to-a-vpc)
-1. [Assign to a Cloud Firewall](#assign-to-a-cloud-firewall)
-1. [Assign to a VLAN](#assign-to-a-vlan)
-1. [Configure Additional Options](#configure-additional-options)
-1. [Add User Data](#add-user-data)
-1. [Deploy the Instance](#deploy-the-instance)
-1. [Getting Started After Deployment](#getting-started-after-deployment)
+- [Open the Create Form in the Cloud Manager](#open-the-create-form-in-the-cloud-manager)
+- [Choose a Distribution, App, or Image](#choose-a-distribution-app-or-image)
+- [Select a Region](#select-a-region)
+- [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
+- [Set the Label and Add Tags](#set-the-label-and-add-tags)
+- [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
+- [Assign to a VPC (Optional) {#assign-to-a-vpc}](#assign-to-a-vpc-optional-assign-to-a-vpc)
+- [Assign to a Cloud Firewall (Optional) {#assign-to-a-cloud-firewall}](#assign-to-a-cloud-firewall-optional-assign-to-a-cloud-firewall)
+- [Assign to a VLAN (Optional) {#assign-to-a-vlan}](#assign-to-a-vlan-optional-assign-to-a-vlan)
+- [Assign to a Placement Group (Optional) {#assign-to-a-placement-group}](#assign-to-a-placement-group-optional-assign-to-a-placement-group)
+- [Configure Additional Options](#configure-additional-options)
+- [Add User Data](#add-user-data)
+- [Deploy the Instance](#deploy-the-instance)
+- [Getting Started After Deployment](#getting-started-after-deployment)
 
 ## Open the Create Form in the Cloud Manager
 
@@ -128,6 +129,18 @@ Add this Compute Instance to a secure private network. VLANs are available at no
 
 {{< note type="warning" title="Consider using a VPC instead of a VLAN" isCollapsible=true >}}
 In most cases, it's recommended to use a VPC over a VLAN. VPCs operate on a higher network layer and come with more IP addressing and IP routing functionality. Additionally, you can further segment out network traffic through subnets, each of which has its own CIDR range. Review [these differences](/docs/products/networking/vpc/#difference-between-private-network-options-vpcs-vlans-and-private-ips) to learn more.
+{{< /note >}}
+
+## Assign to a Placement Group (Optional) {#assign-to-a-placement-group}
+
+<div align=center>
+<img src="create-instance-pg.png" width=500 />
+</div>
+
+Add this Compute Instance to a Placement Group to manage its physical location in a data center ("region"). Placement Groups can be set up to group your compute instances close together to help with performance, or further apart to support high availability. Placement Groups are available at no additional cost, but they're not available in all regions. See [Work with Placement Groups](/docs/products/compute-instances/guides/placement-groups) to learn more.
+
+{{< note >}}
+If you don't have an existing Placement Group, you can click **Create Placement Group** to create a new one. This takes you to a separate interface, outside creating your compute instance. For ease of use, create your compute instances in a supported region, then later create a Placement Group and assign your compute instances to it.
 {{< /note >}}
 
 ## Configure Additional Options
