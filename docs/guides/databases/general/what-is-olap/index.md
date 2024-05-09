@@ -1,13 +1,13 @@
 ---
 slug: what-is-olap
 title: "What Is OLAP?"
-description: 'This guide describes what an OLAP server does and how it works within the context of a data warehouse.'
+description: "This guide describes what an OLAP server does and how it works within the context of a data warehouse."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-05-15
+modified: 2024-05-09
 keywords: ['OLAP','OLAP and Data Warehouse','Types of OLAP Servers','OLAP operations']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-05-15
-modified_by:
-  name: Linode
 external_resources:
 - '[Online Analytical Processing on Wikipedia](https://en.wikipedia.org/wiki/Online_analytical_processing)'
 - '[Dimensional Database Model on Wikipedia](https://en.wikipedia.org/wiki/Dimension_(data_warehouse))'
