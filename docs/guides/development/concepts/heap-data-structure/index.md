@@ -2,14 +2,13 @@
 slug: heap-data-structure
 title: "How to Use a Heap Data Structure"
 title_meta: "What is a Heap Data Structure? (And How to Use It)"
-description: 'What is a heap data structure? From a min-heap data structure to a max-heap data structure, we explain the algorithm and steps involved for each. ✓ Learn more!'
-og_description: 'What is a heap data structure? From a min-heap data structure to a max-heap data structure, we explain the algorithm and steps involved for each. ✓ Learn more!'
+description: "Learn more about heap data structures. From a min-heap data structure to a max-heap data structure, we explain the algorithm and steps involved for each."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-03-08
+modified: 2024-05-09
 keywords: ['heap data structure','heap c++','heaps']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[GeeksforGeeks: Heap Data Structure](https://www.geeksforgeeks.org/heap-data-structure/)'
 - '[Tutorials Point: Heap Data Structures](https://www.tutorialspoint.com/data_structures_algorithms/heap_data_structure.htm)'
