@@ -18,11 +18,7 @@ external_resources:
 
 With the right data structures, programmers are able to store and operate on data efficiently. Binary tree structures, like the heap data structure in particular, have proven effective for sorting values.
 
-So, what is a heap data structure, and how does it work?
-
-This tutorial explains heaps and explores the ideas behind them. Along the way, it provides illustrations and concrete examples in the form of code.
-
-By the end, you should know what heaps are and how to start working with them.
+This tutorial explains heaps and explores the ideas behind them. Along the way, it provides illustrations and concrete examples in the form of code. By the end, you should know what heaps are and how to start working with them.
 
 ## What Is a Heap Data Structure?
 
