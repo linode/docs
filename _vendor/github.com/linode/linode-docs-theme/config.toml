@@ -65,7 +65,7 @@ explorer_icon = "#icon-explorer--products"
 name = "guides"
 filters = "section.lvl0:guides"
 weight = 20
-title = "Guides"
+title = "Cloud Guides & Tutorials"
 noun = "Guide"
 explorer_icon = "#icon-explorer--guides"
 

@@ -291,6 +291,14 @@ module.exports = {
 							color: '#71809D',
 						},
 
+						'ol > li > ol': {
+							listStyleType: 'lower-latin',
+						},
+
+						'ol > li > ol > li > ol': {
+							listStyleType: 'lower-roman',
+						},
+
 						// new margins
 						p: {
 							marginTop: '1em',
