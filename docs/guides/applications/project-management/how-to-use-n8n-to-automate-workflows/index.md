@@ -250,7 +250,7 @@ The n8n interface can be somewhat overwhelming at first glance, so n8n provides 
 
 1.  Define the contents of each field. Drag the `customer_ID` variable on the left side of the screen into the **Customer ID** box in the "Customer Messenger" node. n8n expands the variable to the formula `fx {{ $json.customer_ID }}`.
 
-    ![Add the customer_id field to the customer messenger node](add-customer-id-customer-messenger-node.png)
+    ![Add the Customer ID field to the customer messenger node](add-customer-id-customer-messenger-node.png)
 
 1.  Hover over the **Message** text box and select the **Expression** tab to add an expression.
 
