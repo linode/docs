@@ -10,6 +10,7 @@ tags: ["php","monitoring","database","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/zabbix/','/uptime/monitoring/monitoring-servers-with-zabbix/']
 deprecated: true
+deprecated_link: /docs/guides/how-to-use-zabbix/
 ---
 
 Zabbix is an open source software application that can monitor servers, networks, and applications. You can use Zabbix with any of our plans, and it works on every Linux distribution we offer. Full hardware and software requirements can be found on the [Zabbix requirements page](http://www.zabbix.com/requirements.php).

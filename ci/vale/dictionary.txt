@@ -346,6 +346,8 @@ codec
 codefresh
 Codeone
 codepen
+Codership
+Cognos
 colab
 collabnet
 Collabora
@@ -672,6 +674,7 @@ facto
 fail2ban
 failback
 failover
+failovers
 failregex
 failregexs
 failsafe
@@ -1477,6 +1480,7 @@ mov
 movr
 mpapis
 mpm
+MPMs
 MRuby
 msfvenom
 msg
@@ -2597,6 +2601,7 @@ virtualizing
 virtualmin
 Virustotal
 vishing
+Vitess
 Vixie
 vlan
 vlans
