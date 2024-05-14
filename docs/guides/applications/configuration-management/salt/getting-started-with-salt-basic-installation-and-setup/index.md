@@ -1,17 +1,16 @@
 ---
 slug: getting-started-with-salt-basic-installation-and-setup
+title: Getting Started with Salt - Basic Installation and Setup
 description: 'Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-09-22
+modified: 2019-01-02
 keywords: ["salt", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/install-and-configure-salt-master-and-minion-servers/','/applications/salt/install-salt/','/applications/configuration-management/install-salt/','/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/','/applications/configuration-management/salt/getting-started-with-salt-basic-installation-and-setup/']
-modified: 2019-01-02
-modified_by:
-    name: Linode
 image: GettingStartedwithSalt.png
-published: 2015-09-22
-title: Getting Started with Salt - Basic Installation and Setup
 tags: ["automation","salt"]
-authors: ["Linode"]
 ---
 
 [Salt](https://saltproject.io/) is a Python-based configuration management platform designed to control a number of slave servers (called Minions in Salt terminology) from a single master server. This guide walks you through configuring a Salt Master and Minion, and is relevant to any supported Linux distribution.
@@ -34,8 +33,7 @@ authors: ["Linode"]
 
     curl -L https://bootstrap.saltproject.io -o install_salt.sh
     sudo sh install_salt.sh -P -M -N
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `-N` flag indicates not to install `salt-minion`, since this system is the Salt master.
 {{< /note >}}
 
@@ -61,8 +59,7 @@ interface: 203.0.113.0
         sudo systemctl restart salt-master
 
 **Salt Minions**
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This step must be performed on *each* Salt minion.
 {{< /note >}}
 

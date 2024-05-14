@@ -1,7 +1,7 @@
-import { FetchRequest, FetchMethod, fetchMethodFromString, FetchRequestHeaders } from "../../http/fetch_request"
+import { FetchRequest, FetchMethod, fetchMethodFromString } from "../../http/fetch_request"
 import { FetchResponse } from "../../http/fetch_response"
 import { expandURL } from "../url"
-import { dispatch } from "../../util"
+import { dispatch, getAttribute, getMetaContent, hasAttribute } from "../../util"
 import { StreamMessage } from "../streams/stream_message"
 
 export interface FormSubmissionDelegate {
@@ -12,9 +12,7 @@ export interface FormSubmissionDelegate {
   formSubmissionFinished(formSubmission: FormSubmission): void
 }
 
-export type FormSubmissionResult
-  = { success: boolean, fetchResponse: FetchResponse }
-  | { success: false, error: Error }
+export type FormSubmissionResult = { success: boolean; fetchResponse: FetchResponse } | { success: false; error: Error }
 
 export enum FormSubmissionState {
   initialized,
@@ -27,15 +25,23 @@ export enum FormSubmissionState {
 
 enum FormEnctype {
   urlEncoded = "application/x-www-form-urlencoded",
-  multipart  = "multipart/form-data",
-  plain      = "text/plain"
+  multipart = "multipart/form-data",
+  plain = "text/plain",
 }
 
+export type TurboSubmitStartEvent = CustomEvent<{ formSubmission: FormSubmission }>
+export type TurboSubmitEndEvent = CustomEvent<
+  { formSubmission: FormSubmission } & { [K in keyof FormSubmissionResult]?: FormSubmissionResult[K] }
+>
+
 function formEnctypeFromString(encoding: string): FormEnctype {
-  switch(encoding.toLowerCase()) {
-    case FormEnctype.multipart: return FormEnctype.multipart
-    case FormEnctype.plain:     return FormEnctype.plain
-    default:                    return FormEnctype.urlEncoded
+  switch (encoding.toLowerCase()) {
+    case FormEnctype.multipart:
+      return FormEnctype.multipart
+    case FormEnctype.plain:
+      return FormEnctype.plain
+    default:
+      return FormEnctype.urlEncoded
   }
 }
 
@@ -44,16 +50,35 @@ export class FormSubmission {
   readonly formElement: HTMLFormElement
   readonly submitter?: HTMLElement
   readonly formData: FormData
+  readonly location: URL
   readonly fetchRequest: FetchRequest
   readonly mustRedirect: boolean
   state = FormSubmissionState.initialized
   result?: FormSubmissionResult
+  originalSubmitText?: string
 
-  constructor(delegate: FormSubmissionDelegate, formElement: HTMLFormElement, submitter?: HTMLElement, mustRedirect = false) {
+  static confirmMethod(
+    message: string,
+    _element: HTMLFormElement,
+    _submitter: HTMLElement | undefined
+  ): Promise<boolean> {
+    return Promise.resolve(confirm(message))
+  }
+
+  constructor(
+    delegate: FormSubmissionDelegate,
+    formElement: HTMLFormElement,
+    submitter?: HTMLElement,
+    mustRedirect = false
+  ) {
     this.delegate = delegate
     this.formElement = formElement
     this.submitter = submitter
     this.formData = buildFormData(formElement, submitter)
+    this.location = expandURL(this.action)
+    if (this.method == FetchMethod.get) {
+      mergeFormDataEntries(this.location, [...this.body.entries()])
+    }
     this.fetchRequest = new FetchRequest(this, this.method, this.location, this.body, this.formElement)
     this.mustRedirect = mustRedirect
   }
@@ -64,12 +89,13 @@ export class FormSubmission {
   }
 
   get action(): string {
-    const formElementAction = typeof this.formElement.action === 'string' ? this.formElement.action : null
-    return this.submitter?.getAttribute("formaction") || this.formElement.getAttribute("action") || formElementAction || ""
-  }
+    const formElementAction = typeof this.formElement.action === "string" ? this.formElement.action : null
 
-  get location(): URL {
-    return expandURL(this.action)
+    if (this.submitter?.hasAttribute("formaction")) {
+      return this.submitter.getAttribute("formaction") || ""
+    } else {
+      return this.formElement.getAttribute("action") || formElementAction || ""
+    }
   }
 
   get body() {
@@ -84,13 +110,13 @@ export class FormSubmission {
     return formEnctypeFromString(this.submitter?.getAttribute("formenctype") || this.formElement.enctype)
   }
 
-  get isIdempotent() {
-    return this.fetchRequest.isIdempotent
+  get isSafe() {
+    return this.fetchRequest.isSafe
   }
 
   get stringFormData() {
-    return [ ...this.formData ].reduce((entries, [ name, value ]) => {
-      return entries.concat(typeof value == "string" ? [[ name, value ]] : [])
+    return [...this.formData].reduce((entries, [name, value]) => {
+      return entries.concat(typeof value == "string" ? [[name, value]] : [])
     }, [] as [string, string][])
   }
 
@@ -98,6 +124,15 @@ export class FormSubmission {
 
   async start() {
     const { initialized, requesting } = FormSubmissionState
+    const confirmationMessage = getAttribute("data-turbo-confirm", this.submitter, this.formElement)
+
+    if (typeof confirmationMessage === "string") {
+      const answer = await FormSubmission.confirmMethod(confirmationMessage, this.formElement, this.submitter)
+      if (!answer) {
+        return
+      }
+    }
+
     if (this.state == initialized) {
       this.state = requesting
       return this.fetchRequest.perform()
@@ -115,19 +150,27 @@ export class FormSubmission {
 
   // Fetch request delegate
 
-  prepareHeadersForRequest(headers: FetchRequestHeaders, request: FetchRequest) {
-    if (!request.isIdempotent) {
+  prepareRequest(request: FetchRequest) {
+    if (!request.isSafe) {
       const token = getCookieValue(getMetaContent("csrf-param")) || getMetaContent("csrf-token")
       if (token) {
-        headers["X-CSRF-Token"] = token
+        request.headers["X-CSRF-Token"] = token
       }
-      headers["Accept"] = [ StreamMessage.contentType, headers["Accept"] ].join(", ")
+    }
+
+    if (this.requestAcceptsTurboStreamResponse(request)) {
+      request.acceptResponseType(StreamMessage.contentType)
     }
   }
 
-  requestStarted(request: FetchRequest) {
+  requestStarted(_request: FetchRequest) {
     this.state = FormSubmissionState.waiting
-    dispatch("turbo:submit-start", { target: this.formElement, detail: { formSubmission: this } })
+    this.submitter?.setAttribute("disabled", "")
+    this.setSubmitsWith()
+    dispatch<TurboSubmitStartEvent>("turbo:submit-start", {
+      target: this.formElement,
+      detail: { formSubmission: this },
+    })
     this.delegate.formSubmissionStarted(this)
   }
 
@@ -158,14 +201,53 @@ export class FormSubmission {
     this.delegate.formSubmissionErrored(this, error)
   }
 
-  requestFinished(request: FetchRequest) {
+  requestFinished(_request: FetchRequest) {
     this.state = FormSubmissionState.stopped
-    dispatch("turbo:submit-end", { target: this.formElement, detail: { formSubmission: this, ...this.result }})
+    this.submitter?.removeAttribute("disabled")
+    this.resetSubmitterText()
+    dispatch<TurboSubmitEndEvent>("turbo:submit-end", {
+      target: this.formElement,
+      detail: { formSubmission: this, ...this.result },
+    })
     this.delegate.formSubmissionFinished(this)
   }
 
+  // Private
+
+  setSubmitsWith() {
+    if (!this.submitter || !this.submitsWith) return
+
+    if (this.submitter.matches("button")) {
+      this.originalSubmitText = this.submitter.innerHTML
+      this.submitter.innerHTML = this.submitsWith
+    } else if (this.submitter.matches("input")) {
+      const input = this.submitter as HTMLInputElement
+      this.originalSubmitText = input.value
+      input.value = this.submitsWith
+    }
+  }
+
+  resetSubmitterText() {
+    if (!this.submitter || !this.originalSubmitText) return
+
+    if (this.submitter.matches("button")) {
+      this.submitter.innerHTML = this.originalSubmitText
+    } else if (this.submitter.matches("input")) {
+      const input = this.submitter as HTMLInputElement
+      input.value = this.originalSubmitText
+    }
+  }
+
   requestMustRedirect(request: FetchRequest) {
-    return !request.isIdempotent && this.mustRedirect
+    return !request.isSafe && this.mustRedirect
+  }
+
+  requestAcceptsTurboStreamResponse(request: FetchRequest) {
+    return !request.isSafe || hasAttribute("data-turbo-stream", this.submitter, this.formElement)
+  }
+
+  get submitsWith() {
+    return this.submitter?.getAttribute("data-turbo-submits-with")
   }
 }
 
@@ -174,8 +256,8 @@ function buildFormData(formElement: HTMLFormElement, submitter?: HTMLElement): F
   const name = submitter?.getAttribute("name")
   const value = submitter?.getAttribute("value")
 
-  if (name && value != null && formData.get(name) != value) {
-    formData.append(name, value)
+  if (name) {
+    formData.append(name, value || "")
   }
 
   return formData
@@ -192,11 +274,20 @@ function getCookieValue(cookieName: string | null) {
   }
 }
 
-function getMetaContent(name: string) {
-  const element: HTMLMetaElement | null = document.querySelector(`meta[name="${name}"]`)
-  return element && element.content
-}
-
 function responseSucceededWithoutRedirect(response: FetchResponse) {
   return response.statusCode == 200 && !response.redirected
+}
+
+function mergeFormDataEntries(url: URL, entries: [string, FormDataEntryValue][]): URL {
+  const searchParams = new URLSearchParams()
+
+  for (const [name, value] of entries) {
+    if (value instanceof File) continue
+
+    searchParams.append(name, value)
+  }
+
+  url.search = searchParams.toString()
+
+  return url
 }

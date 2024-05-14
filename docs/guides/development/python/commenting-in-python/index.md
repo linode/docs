@@ -1,19 +1,18 @@
 ---
 slug: commenting-in-python
+title: "Creating Comments in Python"
+title_meta: "How to Comment in Python"
 description: 'A how-to guide on commenting in Python 3 correctly, with an additional portion discussing commenting incorrectly and why not to do that.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-05-21
 keywords: ['python3', 'python', 'commenting', 'code', 'programming language']
 tags: ["python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
 image: Python.jpg
-modified_by:
-  name: Linode
-title: "Creating Comments in Python"
-title_meta: "How to Comment in Python"
 external_resources:
 - '[Python Software Foundation](https://www.python.org/)'
 - '[Python Programming at Wikibooks](https://en.wikibooks.org/wiki/Python_Programming)'
-authors: ["Linode"]
 ---
 
 Python was developed in the late 1980s, released in 1991, and is an interpreted, high-level and general-purpose programming language that emphasizes code readability. Python 3, released in 2008, is the current version.

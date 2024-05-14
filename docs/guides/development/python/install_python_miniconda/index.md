@@ -1,18 +1,17 @@
 ---
 slug: install_python_miniconda
+title: "Install Python 3 with Miniconda"
 description: 'Shortguide for installing Python 3 with Miniconda'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-01-09
+modified: 2017-01-08
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["python 3", "miniconda", "continuum"]
-modified: 2017-01-08
-modified_by:
-  name: Sam Foo
-title: "Install Python 3 with Miniconda"
-published: 2018-01-09
 headless: true
 show_on_rss_feed: false
 tags: ["python"]
 aliases: ['/development/python/install_python_miniconda/']
-authors: ["Jared Kobos"]
 ---
 <!-- Installation instructions for Python 3. -->
 

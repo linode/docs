@@ -1,16 +1,14 @@
 ---
 slug: apache-tomcat-on-ubuntu-12-04-precise-pangolin
-deprecated: true
+title: 'Apache Tomcat on Ubuntu 12.04 (Precise Pangolin)'
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 12.04 (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-11-13
 keywords: ["apache tomcat ubuntu 12.04", "java", "java ubuntu 12.04", "java servlets ubuntu lucid", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/','/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-12-04-precise-pangolin/','/frameworks/apache-tomcat/ubuntu-12-04-precise-pangolin/','/development/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/']
-modified: 2012-11-13
-modified_by:
-  name: Linode
-published: 2012-11-13
-title: 'Apache Tomcat on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -19,7 +17,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
@@ -45,8 +43,7 @@ You should also make sure your system is up to date. Enter the following command
 To install Tomcat, issue the following command:
 
     apt-get install tomcat6
-
-{{< note respectIndent=false >}}
+{{< note >}}
 OpenJDK will be installed as a dependency when you install the `tomcat6` package. OpenJDK is pulled in by the `default-java` meta package in Ubuntu.
 {{< /note >}}
 

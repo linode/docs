@@ -3,13 +3,12 @@ slug: install-dotnet-on-ubuntu
 title: "Install the .NET Runtime (or SDK) on Ubuntu 22.04"
 title_meta: "How to Install the .NET Runtime (or SDK) on Ubuntu 22.04"
 description: 'Learn how to install the .NET 6 SDK or runtime on Ubuntu and understand its limitations, requirements, and security implications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2023-06-13
 keywords: ['dotnet on Ubuntu 22.04', 'dotnet runtime', 'install dotnet', 'enable dotnet ubuntu 22.04', 'install dotnet server ubuntu']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
-published: 2023-06-13
-modified_by:
-  name: Linode
 ---
 
 Microsoft [.NET](https://dotnet.microsoft.com/en-us/) (pronounced *dot net* and sometimes written as *dotnet*) is a free and open-source platform for building, distributing, and running software applications. Developers can write code for their applications in multiple languages (including C# and Visual Basic) and target any operating system that supports .NET (including Windows, Linux, and macOS). Using the .NET platform (and it's many available libraries and app models), developers can create command-line apps, web applications (with [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet)), cross-platform mobile and desktop applications (with [.NET MAUI](https://dotnet.microsoft.com/en-us/apps/maui)), and much more.
