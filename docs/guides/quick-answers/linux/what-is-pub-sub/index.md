@@ -1,13 +1,13 @@
 ---
 slug: what-is-pub-sub
 title: "What Is Publisher Subscriber Model?"
-description: 'Explore the Publisher/Subscriber (Pub/Sub) model in-depth, from its fundamental concepts to dynamic scaling, practical implementation using PyPubSub, and understanding its place in modern communication architectures.'
+description: "Explore the Publisher/Subscriber (Pub/Sub) model in-depth, from its fundamental concepts to dynamic scaling, practical implementation using PyPubSub, and understanding its place in modern communication architectures."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-08-08
+modified: 2024-05-14
 keywords: ['Publisher/Subscriber model', 'Messaging patterns', 'Message queuing vs. Pub/Sub', 'Pub/Sub benefits and limitations']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2023-08-08
-modified_by:
-  name: Linode
 external_resources:
 - '[PyPubSub](https://pypubsub.readthedocs.io/en/v4.0.3/)'
 - '[Pub/sub Basic Setup](https://pypubsub.readthedocs.io/en/v4.0.3/installation.html)'
