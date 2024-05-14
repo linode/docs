@@ -1,13 +1,13 @@
 ---
 slug: how-to-use-n8n-to-automate-workflows
 title: "How to Use n8n to Automate Business Workflows"
-description: 'This guide provides an introduction to n8n, explains how to run it, and demonstrates how to build a simple workflow.'
+description: "This guide provides an introduction to n8n, explains how to run it, and demonstrates how to build a simple workflow."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-06-16
+modified: 2024-05-14
 keywords: ['n8n workflow','run n8n','n8n Docker','build workflow with n8n','n8n library']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-06-16
-modified_by:
-  name: Linode
 external_resources:
 - '[n8n website](https://n8n.io/)'
 - '[n8n documentation](https://docs.n8n.io/)'
