@@ -12,7 +12,7 @@ external_resources:
 - '[Scale Your Jitsi Setup](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-scalable)'
 aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/','/platform/one-click/deploy-jitsi-with-one-click-apps/','/guides/how-to-deploy-jitsi-with-marketplace-apps/','/guides/jitsi-marketplace-app/']
 ---
-
+!["Jitsi Start a Meeting"](Deploy_Jitsi_oneclickapps.png "Jitsi Start a Meeting")
 [Jitsi](https://jitsi.org) is a suite of open source projects that allows you to host your own virtual video conferences.
 
 ## Deploying a Marketplace App
@@ -27,7 +27,7 @@ aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Suggested minimum plan:** All plan types and sizes can be used. For best results, use a 8GB Dedicated CPU or Shared Compute Instance when hosting large meetings or multiple simultaneous meetings.
 
 ### Jitsi Options

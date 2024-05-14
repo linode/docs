@@ -16,7 +16,7 @@ external_resources:
 - '[Kubespray](https://github.com/kubernetes-incubator/kubespray)'
 ---
 
-![Minio_Banner](Deploy_Minio.jpg)
+![Header image](Deploy_Minio.jpg "Deploy Minio on Kubernetes using Kubespray and Ansible")
 
 ## What is Minio?
 

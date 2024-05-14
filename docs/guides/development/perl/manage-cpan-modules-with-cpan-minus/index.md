@@ -18,7 +18,7 @@ languages: ["perl"]
 tags: ["perl"]
 ---
 
-![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)
+![Header image](Manage_CPAN_Modules_with_cpanminus_smg.jpg "Manage CPAN Modules with cpanminus")
 
 CPAN, the Comprehensive Perl Archive Network, is the primary source for publishing and fetching the latest modules and libraries for the Perl programming language. The default method for installing Perl modules, using the **CPAN Shell**, provides users with a great deal of power and flexibility, but this comes at the cost of a complex configuration and an inelegant default setup.
 

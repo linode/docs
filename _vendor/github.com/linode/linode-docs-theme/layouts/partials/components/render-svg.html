@@ -52,6 +52,7 @@
   <button
     type="button"
     {{ with .onclick }}@click.prevent.stop="{{ . }}"{{ end }}
+    @dblclick.prevent.stop=""
     class="{{ $rstyles }} relative inline-flex items-center bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
     <span class="sr-only">{{ .sronly }}</span>
     {{ with .iconhref }}

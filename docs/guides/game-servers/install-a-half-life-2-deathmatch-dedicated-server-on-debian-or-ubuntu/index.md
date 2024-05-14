@@ -203,14 +203,14 @@ sv_password "MyLinode"
 
 There are eight (8) official maps in Half-Life 2: Deathmatch. A preview of each map is available on [Combine OverWiki's official page](http://combineoverwiki.net/wiki/Half-Life_2:_Deathmatch#Maps):
 
-*   dm_lockdown
-*   dm_overwatch
-*   dm_powerhouse
-*   dm_resistance
-*   dm_runoff
-*   dm_steamlab
-*   dm_underpass
-*   halls3
+*  `dm_lockdown`
+*   `dm_overwatch`
+*   `dm_powerhouse`
+*   `dm_resistance`
+*   `dm_runoff`
+*   `dm_steamlab`
+*   `dm_underpass`
+*   `halls3`
 
 Half-Life 2 Deathmatch requires that custom maps be in specific locations based on their type:
 
