@@ -58,7 +58,6 @@ Many communication technologies are dedicated solely to communication. A pub/sub
 -   Connectivity to other APIs
 -   Workflow management
 
-
 ### Dynamic vs Static Scaling
 
 Modern pub/sub setups rely on dynamic scaling, whereas older configurations used static scaling. The difference is that with an older system, the system was set up and configured to accommodate a specific number of connections, even if all those connections weren’t being used at a particular time. This means that there weren’t enough connections during peak request times causing delays, and too many connections during quieter times wasting money and resources. A dynamic setup automatically resizes itself to meet the needs of the moment, which creates a flexible, cost-saving environment with low latency.
@@ -74,8 +73,11 @@ This section uses a third-party Pub/Sub library called [PyPubSub](https://pypubs
 To install PyPubSub, open a terminal window and connect to your Linode. The example is using an Ubuntu 22.04 LTS configuration with Python 3.9.
 
 1.  Type `sudo apt update` and press **Enter** to look for updates.
+
 1.  Type ``sudo apt -y upgrade`` and press **Enter** to perform any required upgrades. At this point, you may have to close the terminal window, perform a reboot of your system, and then reopen the terminal window to ensure that any upgrades have taken effect. This avoids problems later).
+
 1.  Type `sudo apt install -y python3-pip` and press **Enter** to install the [Package Installer for Python (PIP)](https://pip.pypa.io/en/stable/) utility.
+
 1.  Type `pip install pypubsub` and press **Enter** to install PyPubSub. Create a Python application to test your installation.
 
 ### Create a Test Application
@@ -132,7 +134,6 @@ Topic B Content
 
 Listener B received message topic:  C Topic
 Topic C Content
-
 ```
 
 Each subscriber receives only the topics of interest. If the publisher sends a message to `TopicD`, no one is going to receive it. Likewise, even if a subscriber subscribes to `TopicE`, it receives nothing until the publisher actually outputs it.

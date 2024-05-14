@@ -1993,6 +1993,7 @@ repmgr
 repo
 repos
 reputational
+requestor
 reseller's
 resharding
 resilvering
@@ -2411,6 +2412,7 @@ tmp
 tmux
 tock
 todo
+Todoist
 togami
 tokenization
 tokenize
