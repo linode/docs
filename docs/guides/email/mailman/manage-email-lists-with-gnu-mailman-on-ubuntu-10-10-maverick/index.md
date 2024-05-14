@@ -1,25 +1,22 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Manage Email Lists with GNU Mailman on Ubuntu 10.10'
 description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Ubuntu 10.10 "Maverick".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-06
+modified: 2012-10-08
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/mailman/ubuntu-10-10-maverick/','/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-12-06
-title: 'Manage Email Lists with GNU Mailman on Ubuntu 10.10'
 relations:
     platform:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.
 

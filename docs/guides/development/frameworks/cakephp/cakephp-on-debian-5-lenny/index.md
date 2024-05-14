@@ -1,22 +1,21 @@
 ---
 slug: cakephp-on-debian-5-lenny
+title: 'CakePHP on Debian 5 (Lenny)'
 description: 'Installing and configuring CakePHP for developing PHP applications on your Debian 5 (Lenny) Linode.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-05-26
+modified: 2014-02-10
 keywords: ["cakephp", "cakephp debian", "php framework", "debian", "develop php"]
 tags: ["web applications","lamp","php","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/cakephp/','/websites/frameworks/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp-on-debian-5-lenny/']
-modified: 2014-02-10
-modified_by:
-  name: Alex Fornuto
-published: 2010-05-26
-title: 'CakePHP on Debian 5 (Lenny)'
-deprecated: true
 relations:
     platform:
         key:  cake-php
         keywords:
             - distribution: Debian 5
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
 
 CakePHP is a framework used to develop PHP applications quickly. Many people choose CakePHP because of the simple deployment process and extensive documentation available on the CakePHP website.

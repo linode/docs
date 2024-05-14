@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-wordpress-using-wp-cli-on-debian-10
+title: 'Install WordPress Using WP-CLI on Debian 10'
+title_meta: 'How to Install WordPress Using WP-CLI on Debian 10'
 description: 'Install WordPress Using WP-CLI on Debian 10'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-06
+modified: 2020-02-17
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 tags: ["debian","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2020-02-17
-modified_by:
-    name: Linode
-title: 'Install WordPress Using WP-CLI on Debian 10'
-title_meta: 'How to Install WordPress Using WP-CLI on Debian 10'
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
@@ -20,7 +20,6 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/wordpress/how-to-install-wordpress-using-wp-cli-on-debian-10/','/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-debian-10/']
-authors: ["Linode"]
 ---
 
 WordPress is well-known for its rich content management feature set, ease of use, and quick installation time. The [WordPress command line interface (WP-CLI)](https://wp-cli.org/) provides useful commands and utilities to install, configure, and manage a WordPress site. This guide walks you through some common tasks you can complete using the WP-CLI.
@@ -427,8 +426,7 @@ The procedure for installing and activating a theme is nearly identical to that 
 ### Update WordPress
 
 To update your WordPress site:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For more details on best practices when updating your WordPress site, see [WordPress' official documentation](https://wordpress.org/support/article/updating-wordpress/).
 {{< /note >}}
 

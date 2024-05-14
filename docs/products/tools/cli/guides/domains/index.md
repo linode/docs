@@ -3,7 +3,6 @@ title: "Linode CLI Commands for the DNS Manager"
 description: "How to use the Linode CLI to create and manage Domains and DNS records."
 published: 2020-07-20
 modified: 2022-05-02
-authors: ["Linode"]
 ---
 
 1.  List the Domains on your account:

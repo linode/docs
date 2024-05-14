@@ -1,3 +1,4 @@
+{{ warnf "DEPRECATION NOTICE: disclosure-note shortcode (replaced by note shortcode)\n%s" .Position }}
 {{ $text := .Inner | markdownify }}
 {{ $title :=  (.Get 0) | default  "Disclosure Note" }}
 <blockquote class="disclosure callout" x-data="{ open: false }">

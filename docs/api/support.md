@@ -1,5 +1,5 @@
 ---
-title: Support
 slug: support
+title: Support
 ---
 

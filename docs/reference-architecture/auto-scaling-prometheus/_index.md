@@ -1,12 +1,12 @@
 ---
 title: "Autoscaling on Linode using Prometheus"
 description: "Guidance on IaaS primitives, open source software, and architecture design to implement a highly available and production ready Cloud-based document management system."
+published: 2023-03-30
 license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)"
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-published: 2023-03-30
 ---
 
 ## Abstract
@@ -17,7 +17,7 @@ Cloud-based highly available workloads often need to scale horizontally when fac
 
 ### Figure 1: A Common Highly Available Application Architecture
 
-!["Traditional implementation"](diagrams/traditional-cloud-build-implementation.png)
+!["Traditional implementation"](traditional-cloud-build-implementation.png)
 
 Figure 1 illustrates a common highly available application runtime that includes a delivery pipeline for developers to build the application, integration with [Linode API](/docs/products/tools/api/) through our [Terraform provider](https://registry.terraform.io/namespaces/linode), [Ansible community package](https://github.com/linode/ansible_linode), or [Linode CLI](/docs/products/tools/cli/). The system baseline illustrated here uses GitHub for source control management (although GitLab, Bitbucket, or other SCMs that Jenkins supports would work as well), Jenkins deployed on Compute Instances (Linode virtual machines), and using Object Storage as a artifact repository. For additional practical details on setting Jenkins up, see How to [Automate Builds with Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/).
 
@@ -25,7 +25,7 @@ This use case assumes a web service deployed in a highly available configuration
 
 ## Figure 2: Auto-Scaling Application Architecture with Prometheus
 
-!["Autoscaling with Prometheus diagram"](diagrams/auto-scaling-with-prometheus.png)
+!["Autoscaling with Prometheus diagram"](auto-scaling-with-prometheus.png)
 
 Figure 2 illustrates a system architecture where data flow triggers the Compute Instances to automatically scale up or scale down. This auto scaling architecture introduces a tool called [Prometheus](https://prometheus.io/) to help monitor the system and trigger events that will ultimately be received by our CI/CD pipeline to help properly scale the system.
 

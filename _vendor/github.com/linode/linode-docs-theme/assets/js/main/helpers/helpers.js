@@ -158,6 +158,14 @@ export function getCurrentLangFromLocation() {
 	return '';
 }
 
+export function getIntParamFromLocation(param) {
+	let value = new URLSearchParams(window.location.search).get(param);
+	if (value) {
+		return parseInt(value, 10);
+	}
+	return 0;
+}
+
 export function isIterable(obj) {
 	return Symbol.iterator in Object(obj);
 }
@@ -185,6 +193,17 @@ export function isTouchDevice() {
 
 export function isTopBarPinned() {
 	return document.body.classList.contains('is-topbar-pinned');
+}
+
+export function updatePaginationParamInLocation(pageKey, pageNum, firstPage = 1) {
+	let url = new URL(window.location);
+	url.hash = '';
+	if (pageNum == firstPage) {
+		url.searchParams.delete(pageKey);
+	} else {
+		url.searchParams.set(pageKey, pageNum);
+	}
+	window.history.replaceState({ turbo: {} }, '', url);
 }
 
 export function walk(el, callback) {
