@@ -2,7 +2,6 @@
 title: Cloud Load Balancer (Beta)
 title_meta: "Load Balancer Product Documentation"
 description: "Performant, reliable, and scalable load balancer to make smarter, performance, content-based, and custom decisions to manage and accelerate traffic between clients and their distributed applications."
-modified: 2024-03-14
 tab_group_main:
     is_root: true
     title: Overview
@@ -10,6 +9,7 @@ tab_group_main:
 cascade:
     date: 2023-11-15
     product_description: "Scalable and configurable layer 4 and 7 load balancer to manage and accelerate traffic globally between clients and your distributed applications."
+modified: 2024-03-14
 aliases: ['/platform/cloud-load-balancer/','/loadbalancers/','/guides/platform/cloud-load-balancer/']
 ---
 
