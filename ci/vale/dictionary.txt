@@ -346,6 +346,7 @@ codec
 codefresh
 Codeone
 codepen
+Cognos
 colab
 collabnet
 Collabora
