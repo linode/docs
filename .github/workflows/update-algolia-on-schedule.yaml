@@ -47,7 +47,7 @@ jobs:
     - name: Set up Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.116.1'
+        hugo-version: '0.125.7'
 
     - name: Checkout docs repo
       uses: actions/checkout@v3
