@@ -2,7 +2,7 @@
 title: "Deploy WordPress through the Linode Marketplace"
 description: "WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using Marketplace Apps."
 published: 2020-09-28
-modified: 2024-04-16
+modified: 2024-05-14
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 external_resources:
@@ -45,6 +45,7 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
+- **Prometheus Exporter:** Option to include built in Prometheus endpoints for Node Exporter and MySQLd Exporter. See [Prometheus Exporters](https://prometheus.io/docs/instrumenting/exporters/).
 
 ## Getting Started After Deployment
 
