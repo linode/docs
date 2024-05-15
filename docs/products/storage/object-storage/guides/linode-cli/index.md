@@ -2,7 +2,6 @@
 title: "Using the Linode CLI with Object Storage"
 description: "Learn how to use the Linode CLI to manage Linode's own Object Storage solution."
 modified: 2023-06-27
-authors: ["Linode"]
 ---
 
 The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over the Linode account. For interacting with Object Storage, there are two separate commands within the Linode CLI.

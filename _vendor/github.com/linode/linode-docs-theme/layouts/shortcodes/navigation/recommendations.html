@@ -1,0 +1,5 @@
+{{ if .Page.Params.enableRelatedContent }}
+  <div class="block xl:hidden">
+    {{ partial "sections/navigation/recommendations-box.html" .Page }}
+  </div>
+{{ end }}

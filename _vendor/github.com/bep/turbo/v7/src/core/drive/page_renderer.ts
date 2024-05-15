@@ -1,17 +1,43 @@
 import { Renderer } from "../renderer"
 import { PageSnapshot } from "./page_snapshot"
+import { ReloadReason } from "../native/browser_adapter"
+import { activateScriptElement, waitForLoad } from "../../util"
 
 export class PageRenderer extends Renderer<HTMLBodyElement, PageSnapshot> {
+  static renderElement(currentElement: HTMLBodyElement, newElement: HTMLBodyElement) {
+    if (document.body && newElement instanceof HTMLBodyElement) {
+      document.body.replaceWith(newElement)
+    } else {
+      document.documentElement.appendChild(newElement)
+    }
+  }
+
   get shouldRender() {
     return this.newSnapshot.isVisitable && this.trackedElementsAreIdentical
   }
 
-  prepareToRender() {
-    this.mergeHead()
+  get reloadReason(): ReloadReason {
+    if (!this.newSnapshot.isVisitable) {
+      return {
+        reason: "turbo_visit_control_is_reload",
+      }
+    }
+
+    if (!this.trackedElementsAreIdentical) {
+      return {
+        reason: "tracked_element_mismatch",
+      }
+    }
+  }
+
+  async prepareToRender() {
+    await this.mergeHead()
   }
 
   async render() {
-    this.replaceBody()
+    if (this.willRender) {
+      await this.replaceBody()
+    }
   }
 
   finishRendering() {
@@ -33,17 +59,18 @@ export class PageRenderer extends Renderer<HTMLBodyElement, PageSnapshot> {
     return this.newSnapshot.element
   }
 
-  mergeHead() {
-    this.copyNewHeadStylesheetElements()
+  async mergeHead() {
+    const mergedHeadElements = this.mergeProvisionalElements()
+    const newStylesheetElements = this.copyNewHeadStylesheetElements()
     this.copyNewHeadScriptElements()
-    this.removeCurrentHeadProvisionalElements()
-    this.copyNewHeadProvisionalElements()
+    await mergedHeadElements
+    await newStylesheetElements
   }
 
-  replaceBody() {
-    this.preservingPermanentElements(() => {
+  async replaceBody() {
+    await this.preservingPermanentElements(async () => {
       this.activateNewBody()
-      this.assignNewBody()
+      await this.assignNewBody()
     })
   }
 
@@ -51,16 +78,59 @@ export class PageRenderer extends Renderer<HTMLBodyElement, PageSnapshot> {
     return this.currentHeadSnapshot.trackedElementSignature == this.newHeadSnapshot.trackedElementSignature
   }
 
-  copyNewHeadStylesheetElements() {
+  async copyNewHeadStylesheetElements() {
+    const loadingElements = []
+
     for (const element of this.newHeadStylesheetElements) {
+      loadingElements.push(waitForLoad(element as HTMLLinkElement))
+
       document.head.appendChild(element)
     }
+
+    await Promise.all(loadingElements)
   }
 
   copyNewHeadScriptElements() {
     for (const element of this.newHeadScriptElements) {
-      document.head.appendChild(this.createScriptElement(element))
+      document.head.appendChild(activateScriptElement(element))
     }
+  }
+
+  async mergeProvisionalElements() {
+    const newHeadElements = [...this.newHeadProvisionalElements]
+
+    for (const element of this.currentHeadProvisionalElements) {
+      if (!this.isCurrentElementInElementList(element, newHeadElements)) {
+        document.head.removeChild(element)
+      }
+    }
+
+    for (const element of newHeadElements) {
+      document.head.appendChild(element)
+    }
+  }
+
+  isCurrentElementInElementList(element: Element, elementList: Element[]) {
+    for (const [index, newElement] of elementList.entries()) {
+      // if title element...
+      if (element.tagName == "TITLE") {
+        if (newElement.tagName != "TITLE") {
+          continue
+        }
+        if (element.innerHTML == newElement.innerHTML) {
+          elementList.splice(index, 1)
+          return true
+        }
+      }
+
+      // if any other element...
+      if (newElement.isEqualNode(element)) {
+        elementList.splice(index, 1)
+        return true
+      }
+    }
+
+    return false
   }
 
   removeCurrentHeadProvisionalElements() {
@@ -82,17 +152,13 @@ export class PageRenderer extends Renderer<HTMLBodyElement, PageSnapshot> {
 
   activateNewBodyScriptElements() {
     for (const inertScriptElement of this.newBodyScriptElements) {
-      const activatedScriptElement = this.createScriptElement(inertScriptElement)
+      const activatedScriptElement = activateScriptElement(inertScriptElement)
       inertScriptElement.replaceWith(activatedScriptElement)
     }
   }
 
-  assignNewBody() {
-    if (document.body && this.newElement instanceof HTMLBodyElement) {
-      document.body.replaceWith(this.newElement)
-    } else {
-      document.documentElement.appendChild(this.newElement)
-    }
+  async assignNewBody() {
+    await this.renderElement(this.currentElement, this.newElement)
   }
 
   get newHeadStylesheetElements() {

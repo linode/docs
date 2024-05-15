@@ -1,18 +1,15 @@
 ---
+title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed on a Linode Compute Instance. This provides you with a high performance web server to manage your WordPress site."
-keywords: [ 'openlitespeed','marketplace','hosting']
-tags: ["cloud-manager","linode platform", "marketplace"]
 published: 2021-01-15
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
+keywords: [ 'openlitespeed','marketplace','hosting']
+tags: ["cloud-manager","linode platform", "marketplace"]
 external_resources:
 - '[OpenLiteSpeed Quick Start guide](https://docs.litespeedtech.com/cloud/images/wordpress/#quick-start)'
 - '[OpenLiteSpeed Knowledge Base](https://openlitespeed.org/kb/)'
 - '[OpenLiteSpeed Forum](https://forum.openlitespeed.org/)'
 aliases: ['/platform/marketplace/deploy-openlitespeed-with-marketplace-apps/', '/platform/one-click/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-marketplace-apps/', '/guides/openlitespeed-marketplace-app/','/guides/openlitespeed-wordpress-marketplace-app/']
-authors: ["Linode"]
 ---
 
 This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for Wordpress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.

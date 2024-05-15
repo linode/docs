@@ -1,16 +1,15 @@
 ---
 slug: create-an-aggregate-blog-using-planet-on-debian-5-lenny
+title: 'Create an Aggregate Blog using Planet on Debian 5 (Lenny)'
 description: 'This guide will show you how to use The Planet feed aggregator to provide overviews of a community by collecting community feeds on Debian 5 "Lenny".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-07
+modified: 2013-10-04
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/debian-5-lenny/','/applications/social-networking/create-an-aggregate-blog-using-planet-on-debian-5-lenny/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-04-07
-title: 'Create an Aggregate Blog using Planet on Debian 5 (Lenny)'
-deprecated: true
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
@@ -19,7 +18,7 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
 
 The Planet Feed Aggregator takes a collection of RSS feeds and generates what its founders call a "River of News" feed that combines posts from all sources into a single coherent stream. Thus, this software is useful for providing a simple and consolidated overview of ongoing output from selected blogs. Written and configured in Python and run regularly using cron, Planet is easy to configure and use.

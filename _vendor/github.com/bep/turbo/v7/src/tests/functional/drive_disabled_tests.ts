@@ -1,42 +1,60 @@
-import { TurboDriveTestCase } from "../helpers/turbo_drive_test_case"
+import { test } from "@playwright/test"
+import { assert } from "chai"
+import {
+  getFromLocalStorage,
+  nextBody,
+  nextEventOnTarget,
+  pathname,
+  searchParams,
+  setLocalStorageFromEvent,
+  visitAction,
+} from "../helpers/page"
 
-export class DriveDisabledTests extends TurboDriveTestCase {
-  path = "/src/tests/fixtures/drive_disabled.html"
+const path = "/src/tests/fixtures/drive_disabled.html"
 
-  async setup() {
-    await this.goToLocation(this.path)
-  }
+test.beforeEach(async ({ page }) => {
+  await page.goto(path)
+})
 
-  async "test drive disabled by default; click normal link"() {
-    this.clickSelector("#drive_disabled")
-    await this.nextBody
-    this.assert.equal(await this.pathname, this.path)
-    this.assert.equal(await this.visitAction, "load")
-  }
+test("test drive disabled by default; click normal link", async ({ page }) => {
+  await page.click("#drive_disabled")
+  await nextBody(page)
 
-  async "test drive disabled by default; click link inside data-turbo='true'"() {
-    this.clickSelector("#drive_enabled")
-    await this.nextBody
-    this.assert.equal(await this.pathname, this.path)
-    this.assert.equal(await this.visitAction, "advance")
-  }
+  assert.equal(pathname(page.url()), path)
+  assert.equal(await visitAction(page), "load")
+})
 
-  async "test drive disabled by default; submit form inside data-turbo='true'"() {
-    await this.remote.execute(() => {
-      addEventListener("turbo:submit-start", () => document.documentElement.setAttribute("data-form-submitted", ""), { once: true })
-    })
-    this.clickSelector("#no_submitter_drive_enabled a#requestSubmit")
-    await this.nextBody
-    this.assert.ok(await this.formSubmitted)
-    this.assert.equal(await this.pathname, "/src/tests/fixtures/form.html")
-    this.assert.equal(await this.visitAction, "advance")
-    this.assert.equal(await this.getSearchParam("greeting"), "Hello from a redirect")
-  }
+test("test drive disabled by default; click link inside data-turbo='true'", async ({ page }) => {
+  await page.click("#drive_enabled")
+  await nextBody(page)
 
-  get formSubmitted(): Promise<boolean> {
-    return this.hasSelector("html[data-form-submitted]")
-  }
-}
+  assert.equal(pathname(page.url()), path)
+  assert.equal(await visitAction(page), "advance")
+})
 
+test("test drive disabled by default; submit form inside data-turbo='true'", async ({ page }) => {
+  await setLocalStorageFromEvent(page, "turbo:submit-start", "formSubmitted", "true")
 
-DriveDisabledTests.registerSuite()
+  await page.click("#no_submitter_drive_enabled a#requestSubmit")
+  await nextBody(page)
+
+  assert.ok(await getFromLocalStorage(page, "formSubmitted"))
+  assert.equal(pathname(page.url()), "/src/tests/fixtures/form.html")
+  assert.equal(await visitAction(page), "advance")
+  assert.equal(await searchParams(page.url()).get("greeting"), "Hello from a redirect")
+})
+
+test("test drive disabled by default; links within <turbo-frame> navigate with Turbo", async ({ page }) => {
+  await page.click("#frame a")
+  await nextEventOnTarget(page, "frame", "turbo:frame-render")
+})
+
+test("test drive disabled by default; forms within <turbo-frame> navigate with Turbo", async ({ page }) => {
+  await page.click("#frame button")
+  await nextEventOnTarget(page, "frame", "turbo:frame-render")
+})
+
+test("test drive disabled by default; slot within <turbo-frame> navigate with Turbo", async ({ page }) => {
+  await page.click("#frame-navigation-with-slot")
+  await nextEventOnTarget(page, "frame", "turbo:frame-render")
+})

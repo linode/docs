@@ -1,15 +1,14 @@
 ---
 slug: install-countly-analytics
+title: "Installing Countly Community Edition on Ubuntu 20.04"
 description: "Countly Community Edition is a free open source alternative to Google Analytics for your online properties. Install it with the help of this guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-08-23
 keywords: ['google analytics alternative','self hosted analytics','open source analytics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-23
-modified_by:
-  name: Nathaniel Stickman
-title: "Installing Countly Community Edition on Ubuntu 20.04"
 external_resources:
 - '[Countly: Community Edition](https://count.ly/community-edition)'
-authors: ["Nathaniel Stickman"]
 tags: ["digital agencies"]
 ---
 
@@ -32,8 +31,7 @@ This tutorial shows you how to start using Countly for your analytics needs. Cou
     ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf upgrade
     ```
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

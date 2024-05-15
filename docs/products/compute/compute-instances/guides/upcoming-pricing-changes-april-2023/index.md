@@ -1,12 +1,9 @@
 ---
-keywords: ["april pricing update", "pricing", "pricing changes"]
+title: "Recent Pricing Changes (Effective 4/1/2023)"
 description: "Information related to the Akamai Compute pricing changes effective April 1st, 2023"
 published: 2023-03-01
 modified: 2023-03-31
-modified_by:
-  name: Linode
-title: "Recent Pricing Changes (Effective 4/1/2023)"
-authors: ["Linode"]
+keywords: ["april pricing update", "pricing", "pricing changes"]
 ---
 
 New pricing for some Compute services has gone into effect starting April 1st 2023. This includes an increase in cost for most Shared and Dedicated CPU Compute Instance plans (excluding the $5/mo 1GB Shared plan), a decrease in cost of network transfer (egress) overage fees, and an increase in cost for additional IPv4 addresses. This page covers each pricing change so you know exactly what to expect on your invoice moving forward.
