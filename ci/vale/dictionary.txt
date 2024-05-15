@@ -1645,6 +1645,7 @@ nullable
 nullval
 num
 numpy
+NUnit
 nvidia
 nvim
 nvm
