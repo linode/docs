@@ -1,16 +1,15 @@
 ---
 slug: install-znc-debian
+title: 'Install ZNC from Source on Debian'
 description: 'This guide shows how to install the open-source application ZNC, a IRC bouncer designed to run on a server that remains connected to IRC, on a Linode.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-08-21
+modified: 2015-06-04
 keywords: ["install znc", "irc bouncer", "znc on debian", "configure znc", "znc"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-06-04
-modified_by:
-    name: 'Elle Krout'
-published: 2014-08-21
-title: 'Install ZNC from Source on Debian'
 aliases: ['/applications/messaging/install-znc-debian/']
-authors: ["Alex Fornuto"]
 ---
 
 ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages. With ZNC, a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide, ZNC will be installed from source and then configured.

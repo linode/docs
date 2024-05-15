@@ -2,9 +2,9 @@
 title: Get Started
 title_meta: "Getting Started with Longview"
 description: "Learn how to create a Longview Client, install the Longview Agent, and start capturing metrics for your Linux system"
+published: 2023-05-24
 tab_group_main:
     weight: 20
-published: 2023-05-24
 aliases: ['/platform/longview/longview/','/platform/longview/what-is-longview/','/uptime/longview/','/longview/','/guides/what-is-longview/']
 ---
 

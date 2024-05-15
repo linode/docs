@@ -1,29 +1,28 @@
 ---
 slug: how-to-install-and-configure-wordpress
+title: How to Install and Configure WordPress
 description: 'This guide will show you how to install and optimize the WordPress blogging and CMS on your Linode from scratch using a LAMP setup on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-27
+modified: 2015-10-05
 keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", "how to install wordpress", "how to configure wordpress"]
 tags: ["lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/wordpress/','/websites/cms/wordpress/how-to-install-and-configure-wordpress/','/websites/cms/manage-web-content-with-wordpress/','/websites/cms/how-to-install-and-configure-wordpress/']
-modified: 2015-10-05
-modified_by:
-  name: Elle Krout
-published: 2010-07-27
-title: How to Install and Configure WordPress
-deprecated: true
-deprecated_link: websites/cms/install-wordpress-ubuntu-18-04/
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
-authors: ["Linode"]
+deprecated: true
+deprecated_link: websites/cms/install-wordpress-ubuntu-18-04/
 ---
 
 WordPress is a popular, dynamic, blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
 
 If you're using Ubuntu 16.04, please use our guide on how to [Install WordPress on Ubuntu 16.04](/docs/guides/install-wordpress-on-ubuntu-16-04/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

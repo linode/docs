@@ -1,35 +1,34 @@
 ---
 slug: power-team-collaboration-with-egroupware-on-centos-5
-deprecated: true
-description: 'This guide shows how you can build a collaborative groupware system to share information in your organization with the eGroupware software on CentOS 5.'
+title: Power Team Collaboration with EGroupware on CentOS 5
+description: 'This guide shows how you can build a collaborative groupware system to share information in your organization with the EGroupware software on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-03
+modified: 2011-08-22
 keywords: ["groupware", "email", "collaboration", "centos"]
 tags: ["centos", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-centos-5/','/web-applications/project-management/egroupware/centos-5/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-02-03
-title: Power Team Collaboration with eGroupware on CentOS 5
 external_resources:
- - '[eGroupware Home Page](http://www.egroupware.org/)'
- - '[eGroupware Documentation](http://www.egroupware.org/wiki/)'
- - '[eGroupware Applications](http://www.egroupware.org/applications)'
+ - '[EGroupware Home Page](http://www.egroupware.org/)'
+ - '[EGroupware Documentation](http://www.egroupware.org/wiki/)'
+ - '[EGroupware Applications](http://www.egroupware.org/applications)'
 relations:
     platform:
         key: collaborate-with-egroupware
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+deprecated: true
 ---
 
-The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems, including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups, all without the need to rely on a third-party vendor. As eGroupware provides its applications entirely independent of any third party service, the suite is a good option for organizations who need web-based groupware solutions, but do not want to rely on a third party provider for these services.
+The EGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems, including the calendar, CRM, and email systems. EGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups, all without the need to rely on a third-party vendor. As EGroupware provides its applications entirely independent of any third party service, the suite is a good option for organizations who need web-based groupware solutions, but do not want to rely on a third party provider for these services.
 
-Before installing eGroupware, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).Additionally, you will need install a [LAMP stack](/docs/guides/lamp-server-on-centos-5/) as a prerequisite for installing eGroupware.
+Before installing EGroupware, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).Additionally, you will need install a [LAMP stack](/docs/guides/lamp-server-on-centos-5/) as a prerequisite for installing EGroupware.
 
-## Install eGroupware
+## Install EGroupware
 
-In this guide, we will be installing eGroupware from the packages provided by the eGroupware project and built by the openSUSE build service for CentOS 5. We've chosen to install using this method in an effort to ensure greater stability, easy upgrade paths, and a more straight forward installation process. Begin the installation by issuing the following commands to initialize the eGroupware repositories:
+In this guide, we will be installing EGroupware from the packages provided by the EGroupware project and built by the openSUSE build service for CentOS 5. We've chosen to install using this method in an effort to ensure greater stability, easy upgrade paths, and a more straight forward installation process. Begin the installation by issuing the following commands to initialize the EGroupware repositories:
 
     yum update
     yum install wget
@@ -37,15 +36,15 @@ In this guide, we will be installing eGroupware from the packages provided by th
     wget http://download.opensuse.org/repositories/server:/eGroupWare/CentOS_5/server:eGroupWare.repo
     yum update
 
-Now you can issue the following command to install eGroupware and other required packages:
+Now you can issue the following command to install EGroupware and other required packages:
 
-    yum install eGroupware mysql-server
+    yum install EGroupware mysql-server
 
-Congratulations, you've now installed eGroupware!
+Congratulations, you've now installed EGroupware!
 
-## Configure Access to eGroupware
+## Configure Access to EGroupware
 
-The configuration options for eGroupware are located in the file `/etc/httpd/conf.d/egroupware`. Add the following line to your virtual hosting configuration:
+The configuration options for EGroupware are located in the file `/etc/httpd/conf.d/egroupware`. Add the following line to your virtual hosting configuration:
 
 {{< file "Apache Virtual Hosting Configuration" apache >}}
 Alias /egroupware /usr/share/egroupware
@@ -53,18 +52,18 @@ Alias /egroupware /usr/share/egroupware
 {{< /file >}}
 
 
-When inserted into the virtual hosting configuration for `example.com`, accessing the URL `http://example.com/egroupware/` will allow you to access your eGroupware site. If you do not have virtual hosting configured, eGroupware will be accessible at `/egroupware` of the default Apache host.
+When inserted into the virtual hosting configuration for `example.com`, accessing the URL `http://example.com/egroupware/` will allow you to access your EGroupware site. If you do not have virtual hosting configured, EGroupware will be accessible at `/egroupware` of the default Apache host.
 
-Before continuing with the installation of eGroupware, issue the following commands to start the webserver and database server for the first time. Furthermore the `chkconfig` commands will ensure that these services are initiated following reboots:
+Before continuing with the installation of EGroupware, issue the following commands to start the webserver and database server for the first time. Furthermore the `chkconfig` commands will ensure that these services are initiated following reboots:
 
     /etc/init.d/httpd start
     /etc/init.d/mysqld start
     chkconfig mysqld on
     chkconfig httpd on
 
-## Configure eGroupware
+## Configure EGroupware
 
-Before we begin the configuration of eGroupware, we need to ensure that a number of directories exist for use by eGroupware. Issue the following sequence of commands:
+Before we begin the configuration of EGroupware, we need to ensure that a number of directories exist for use by EGroupware. Issue the following sequence of commands:
 
     mkdir -p /srv/www/example.com/backup
     mkdir -p /srv/www/example.com/tmp
@@ -73,6 +72,6 @@ Before we begin the configuration of eGroupware, we need to ensure that a number
     chown apache:apache -R /srv/www/example.com/tmp
     chown apache:apache -R /srv/www/example.com/files
 
-Visit `http://example.com/egroupware/setup/` in your web browser to begin the setup process presented by the eGroupware application. When you have completed the initial "Header Setup" process, select the option to write the "header" file and then continue to the "Setup/Admin." Ensure that you've selected the correct "Domain" if you configured more than one. At this juncture, you must install the eGroupware applications that you will expect to use. Select the proper character set and select the button to "'Install' all applications." You can now "Recheck" your installation. In the "Configuration" setup page, supply eGroupware with paths to the `backup/` `tmp/` and `files/` directory created above. Additionally, you will need to create an admin account for your eGroupware domain, which you can accomplish from this Setup Domain page.
+Visit `http://example.com/egroupware/setup/` in your web browser to begin the setup process presented by the EGroupware application. When you have completed the initial "Header Setup" process, select the option to write the "header" file and then continue to the "Setup/Admin." Ensure that you've selected the correct "Domain" if you configured more than one. At this juncture, you must install the EGroupware applications that you will expect to use. Select the proper character set and select the button to "'Install' all applications." You can now "Recheck" your installation. In the "Configuration" setup page, supply EGroupware with paths to the `backup/` `tmp/` and `files/` directory created above. Additionally, you will need to create an admin account for your EGroupware domain, which you can accomplish from this Setup Domain page.
 
-When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your eGroupware instance. If you wish to use eGroupware to help manage email, you will need to have a running email system.
+When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your EGroupware instance. If you wish to use EGroupware to help manage email, you will need to have a running email system.

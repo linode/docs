@@ -1,18 +1,17 @@
 ---
 slug: apache-airflow-tutorial-creating-connections-and-variables
+title: "Create Connections and Variables in Apache Airflow"
 description: "This guide introduces Airflow Variables and Connections and how to use the Airflow CLI to  create variables that you can encrypt and source control."
 og_description: "This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python."
+authors: ["Angel D'az"]
+contributors: ["Angel D'az"]
+published: 2020-03-30
 keywords: ['apache airflow tutorial', 'apache airflow features']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-30
-modified_by:
-  name: Angel D'az
-title: "Create Connections and Variables in Apache Airflow"
 image: ApacheAirflowTut_CreateConn_Var.png
 external_resources:
 - '[Apache Airflow Official Documentation](https://airflow.apache.org/docs/stable/)'
 aliases: ['/applications/big-data/apache-airflow-tutorial-creating-connections-and-variables/']
-authors: ["Angel D'az"]
 ---
 
 ## What is Apache Airflow?

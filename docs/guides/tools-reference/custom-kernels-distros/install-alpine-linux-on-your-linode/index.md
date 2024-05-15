@@ -1,15 +1,14 @@
 ---
 slug: install-alpine-linux-on-your-linode
+title: 'Install Alpine Linux on your Linode'
 description: 'Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode'
+authors: ["Andrew Leap"]
+contributors: ["Andrew Leap"]
+published: 2016-09-22
+modified: 2018-12-18
 keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine linux", "alpine linux packages"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: 2018-12-18
-modified_by:
-  name: Linode
-published: 2016-09-22
-title: 'Install Alpine Linux on your Linode'
-deprecated: True
 external_resources:
 - '[Alpine Linux](http://www.alpinelinux.org/)'
 relations:
@@ -18,7 +17,7 @@ relations:
         keywords:
             - distribution: Alpine
 aliases: ['/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/']
-authors: ["Andrew Leap"]
+deprecated: True
 ---
 
 ![Install Alpine Linux on your Linode](Install_Alpine_Linux_on_your_Linode_smg.png "Install Alpine Linux on your Linode")
@@ -35,8 +34,7 @@ It's regularly updated with security patches, and runs on the [grsecurity](https
 3.  The initial portion of this guide involves creating the disk images, so you make sure you have plenty of free space for them. A minimal installation of Alpine requires less than 1 GB, but depending on your needs, you may want to allow for more.
 
 4.  This guide assumes a consistent present working directory, meaning all commands should be run from the same directory. In most cases, it will be `/alpine` or a chroot of said directory.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 While this guide will provide you with a fully operational Alpine installation, be aware that Linode does not provide official support for Alpine Linux and cannot guarantee its stability or security. Please consider this before proceeding.
 {{< /note >}}
 

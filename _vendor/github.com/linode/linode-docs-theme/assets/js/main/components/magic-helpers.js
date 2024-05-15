@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile } from '../helpers';
+import { isDesktop, isMobile } from '../helpers';
 
 export function alpineRegisterMagicHelpers(Alpine) {
 	// $copy is a magic helper that copys the content of the current or the supplied element to the clipboard.
@@ -36,6 +36,13 @@ export function alpineRegisterMagicHelpers(Alpine) {
 	Alpine.magic('isMobile', (currentEl) => {
 		return function () {
 			return isMobile();
+		};
+	});
+
+	// $isDesktop magic helpers that reports whether this is a desktop (larger) device.
+	Alpine.magic('isDesktop', (currentEl) => {
+		return function () {
+			return isDesktop();
 		};
 	});
 }

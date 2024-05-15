@@ -1,14 +1,14 @@
 ---
 slug: create-a-nodebalancer-with-terraform
+title: "Create a NodeBalancer with Terraform"
 description: 'This guide provides you with step-by-step instructions for installing Terraform and utilizing the tool to create a NodeBalancer and Nodes for your Linodes.'
-keywords: ['terraform','nodebalancer','node','balancer','provider','linode']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-12-12
 modified: 2021-12-29
-modified_by:
-  name: Linode
+keywords: ['terraform','nodebalancer','node','balancer','provider','linode']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: CreateaNodeBalancerwitTerraform.png
-title: "Create a NodeBalancer with Terraform"
 external_resources: 
 - '[Terraform Linode Provider Reference](https://www.terraform.io/docs/providers/linode/index.html)'
 - '[linode_nodebalancer Resource Reference](https://www.terraform.io/docs/providers/linode/r/nodebalancer.html)'
@@ -18,7 +18,6 @@ external_resources:
 - '[Terraform Random Provider Reference](https://www.terraform.io/docs/providers/random/index.html)'
 - '[Terraform Built-In Function Reference](https://www.terraform.io/docs/configuration/interpolation.html#supported-built-in-functions)'
 aliases: ['/applications/configuration-management/create-a-nodebalancer-with-terraform/','/applications/configuration-management/terraform/create-a-nodebalancer-with-terraform/']
-authors: ["Linode"]
 ---
 
 Terraform allows you to represent Infrastructure as Code (IaC). You can use it to manage infrastructure, speed up deployments, and share your infrastructure's configuration files within a team. In this guide you will use Terraform to create a NodeBalancer that distributes traffic between two Linodes.
@@ -247,7 +246,7 @@ resource "random_string" "password" {
 
     In addition to the variables you defined above, there is also a `random_string` resource with the label `password`. This resource is provided by the [Random provider](https://www.terraform.io/docs/providers/random/index.html), and will generate a random string of 32 characters, including uppercase characters, lowercase characters, and numbers. This string will be the root password for your backend Nodes. If you would rather have exact control over your passwords, you can define a password here in `variables.tf` and set the value for that password in `terraform.tfvars` in the next step.
 
-1.  Create the `terraform.tfvars` file and supply values for the `token`, `region`, and `node_count` variables. This example uses the `us-east` regional datacenter, and the `node_count` is two.
+1.  Create the `terraform.tfvars` file and supply values for the `token`, `region`, and `node_count` variables. This example uses the `us-east` data center and the `node_count` is two.
 
     {{< file "terraform.tfvars" >}}
 token = "your_api_token"
@@ -261,7 +260,7 @@ node_count = 2
 If you want to use an input variable's default value defined in the `variables.tf` file, you can omit providing a value for that variable in the `terraform.tfvars` file.
     {{< /note >}}
 
-    Feel free to change any of the values in the `terraform.tfvars` file to your liking. For a list of regional datacenter IDs, you can use the cURL command to query the API:
+    Feel free to change any of the values in the `terraform.tfvars` file to your liking. For a list of data center IDs, you can use the cURL command to query the API:
 
         curl https://api.linode.com/v4/regions
 

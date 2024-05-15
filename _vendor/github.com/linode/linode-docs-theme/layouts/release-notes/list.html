@@ -5,7 +5,7 @@
 {{ define "main" }}
   <div class="flex flex-wrap-reverse items-center">
     <h1
-      class="font-bold leading-tight tracking-tight text-4xl text-titlecolor mr-10">
+      class="font-semibold leading-tight tracking-tight text-4xl text-titlecolor mr-10">
       {{ partial "funcs/get-page-title-h1.html" . }}
     </h1>
 
@@ -23,12 +23,12 @@
       {{ template "releasenotes/dropdown.html" (dict "text" $currentText "items" $items) }}
     </div>
   </div>
-  <div class="content prose prose-sm md:prose-lg max-w-none mt-8">
+  <div class="content prose prose-sm md:prose-lg max-w-content mt-8">
     {{ .Content }}
-  </div>
-  <div class="mt-8">
-    {{ $jsonPath := printf "%sindex.json" .RelPermalink }}
-    {{ partial "releasenotes/list-pages-paginated.html" (dict "pages" .RegularPagesRecursive "key"  $jsonPath ) }}
+    <div class="mt-8">
+      {{ $jsonPath := printf "%sindex.json" .RelPermalink }}
+      {{ partial "releasenotes/list-pages-paginated.html" (dict "pages" .RegularPagesRecursive "key"  $jsonPath ) }}
+    </div>
   </div>
 {{ end }}
 

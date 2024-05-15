@@ -1,15 +1,14 @@
 ---
 slug: owncloud-external-storage
+title: "Configure ownCloud to use External Storage"
+title_meta: "How to Configure ownCloud to use External Storage"
 description: "This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-06-15
 keywords: ['ownCloud external storage', 'ownCloud s3']
 tags: ['marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-15
-modified_by:
-  name: Linode
-title: "Configure ownCloud to use External Storage"
-title_meta: "How to Configure ownCloud to use External Storage"
-authors: ["Jack Wallen"]
 ---
 
 ownCloud is an open-source file hosting and sharing solution. With ownCloud, you can sync files to a Linode hosted-instance and then collaborate on them with anyone around the world. ownCloud helps you create your own personal cloud, and includes plenty of installable apps and features for security, communication, and ease of use.
