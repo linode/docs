@@ -43,10 +43,10 @@ Because Dagger is a relatively new application, it does not yet have an extensiv
 
 Due to Dagger's multi-language support, developers can code their pipeline in their favorite language. It potentially provides the opportunity to use the same programming language as the one used to develop the application. The Dagger SDK/API is available in the following languages:
 
--   **Python**
--   **Go**
--   **Node.js**
--   **GraphQL**
+- **Python**
+- **Go**
+- **Node.js**
+- **GraphQL**
 
 Dagger recommends the Go SDK for those who are unsure which SDK to use. The GraphQL API is language agnostic. It can serve as a low-level framework for those who want to use a language without its own API.
 
@@ -101,7 +101,7 @@ Dagger requires the use of Docker. This guide uses the Python SDK to compose the
     ```command
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get update
+    sudo apt update
     ```
 
 1.  Install the latest release of Docker Engine and CLI, along with some related packages:
@@ -232,6 +232,7 @@ The Dagger client enables users to create a multi-stage Python program to define
     ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="19"}
     runner = source.with_workdir("/src").with_exec(["npm", "install"])
     ```
+
 1.  The final section of the Python script automatically runs a test suite against the application. This command uses the `with_exec` method again, with `npm test --watchAll=false` as the test command. If an error results, details are printed to the console via the `stderr` stream and the pipeline terminates. At the end of the file, add a call to the `main` routine:
 
     ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="21"}
