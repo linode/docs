@@ -85,31 +85,31 @@ In addition to the main A/AAAA records for the primary domain, Postal requires a
 
 To enable a successful Postal deployment, create the following records. For the entirety of this section, replace `example.com` with the name of your domain wherever it occurs.
 
-- **A/AAAA Record(s):** Although the base domain can be used as the main Postal domain, it is a better idea to create a `postal` subdomain for the mail server. To create this domain, add an A record for `postal.example.com` and point it at the IPv4 address of the Linode. Create an AAAA Ipv6 DNS record for the `postal.example.com` address and point it at the Ipv6 address.
+-   **A/AAAA Record(s):** Although the base domain can be used as the main Postal domain, it is a better idea to create a `postal` subdomain for the mail server. To create this domain, add an A record for `postal.example.com` and point it at the IPv4 address of the Linode. Create an AAAA Ipv6 DNS record for the `postal.example.com` address and point it at the Ipv6 address.
 
-- **SPF Record:** An SPF record is a type of DNS *text* (TXT) record. It confirms a given server is allowed to send mail from a domain. Although this record is technically not mandatory, mail from a domain without this record might be recorded as spam and discarded. Create a TXT record for the domain `spf.postal.example.com`, and add the following `Value` to the record. Replace `ipv4address` and `ipv6address` with the correct addresses for the domain in the following string.
+-   **SPF Record:** An SPF record is a type of DNS *text* (TXT) record. It confirms a given server is allowed to send mail from a domain. Although this record is technically not mandatory, mail from a domain without this record might be recorded as spam and discarded. Create a TXT record for the domain `spf.postal.example.com`, and add the following `Value` to the record. Replace `ipv4address` and `ipv6address` with the correct addresses for the domain in the following string.
 
     ```command
     v=spf1 ip4:ipv4address ip6:ipv6address ~all
     ```
 
-- **Main Domain SPF record**: The entire `postal` domain also requires an SPF record. This record must reference the `spf.postal` record created in the previous step. Create a TXT record for the `postal.example.com` domain and provide the following `Value`, replacing `example.com` with the real domain name.
+-   **Main Domain SPF record**: The entire `postal` domain also requires an SPF record. This record must reference the `spf.postal` record created in the previous step. Create a TXT record for the `postal.example.com` domain and provide the following `Value`, replacing `example.com` with the real domain name.
 
     ```command
     v=spf1 a mx include:spf.postal.example.com ~all
     ```
 
-- **Return Path (RP) Records:** For outgoing messages, Postal populates the `MAIL_FROM` field with the name of the return path domain. Create an A record for the `rp.postal.example.com` domain and point it at the IPv4 address of the server. Create a corresponding AAAA record for the same `rp.postal.example.com` domain and set the value to the IPv6 address of the server. The return path domain requires another SPF/TXT record. Create a TXT record for `rp.postal.example.com` and add the following information. This domain name must match the domain name of the original SPF record.
+-   **Return Path (RP) Records:** For outgoing messages, Postal populates the `MAIL_FROM` field with the name of the return path domain. Create an A record for the `rp.postal.example.com` domain and point it at the IPv4 address of the server. Create a corresponding AAAA record for the same `rp.postal.example.com` domain and set the value to the IPv6 address of the server. The return path domain requires another SPF/TXT record. Create a TXT record for `rp.postal.example.com` and add the following information. This domain name must match the domain name of the original SPF record.
 
     ```command
     v=spf1 a mx include:spf.postal.example.com ~all
     ```
 
-- **Route Domain (MX) Record:** A *Mail Exchange* (MX) record indicates the mail servers for a domain. Any email messages intended for addresses within this domain are sent to this server. Create a `MX` record for the `postal.example.com` domain. For the `Mail Server` field, enter `postal.example.com`. For the `subdomain` field, also enter `postal.example.com`. As in the rest of these examples, replace `example.com` with your domain name. For the `Preference`, enter `10`.
+-   **Route Domain (MX) Record:** A *Mail Exchange* (MX) record indicates the mail servers for a domain. Any email messages intended for addresses within this domain are sent to this server. Create a `MX` record for the `postal.example.com` domain. For the `Mail Server` field, enter `postal.example.com`. For the `subdomain` field, also enter `postal.example.com`. As in the rest of these examples, replace `example.com` with your domain name. For the `Preference`, enter `10`.
 
-- **Return Path Domain Key Records:** Postal also requires a TXT record for a `postal._domainkey.postal.example.com` domain. However, this record cannot be created yet. It requires an internal value from Postal that is only generated after Postal is installed. Therefore, the guide explains how to add this record at a later time.
+-   **Return Path Domain Key Records:** Postal also requires a TXT record for a `postal._domainkey.postal.example.com` domain. However, this record cannot be created yet. It requires an internal value from Postal that is only generated after Postal is installed. Therefore, the guide explains how to add this record at a later time.
 
-- **CNAME Record**: A CNAME record helps improve the deliverability of incoming mail. It maps an alias to a real hostname. Create a CNAME record for the `psrp.postal.example.com` domain. Set the alias to `rp.postal.example.com`.
+-   **CNAME Record**: A CNAME record helps improve the deliverability of incoming mail. It maps an alias to a real hostname. Create a CNAME record for the `psrp.postal.example.com` domain. Set the alias to `rp.postal.example.com`.
 
 ### How to Install Docker
 
@@ -118,7 +118,7 @@ Follow these steps to install Docker and prepare the system for Postal. These st
 1.  Ensure the system packages are up to date.
 
     ```command
-    sudo apt-get update -y && sudo apt-get upgrade -y
+    sudo apt update -y && sudo apt upgrade -y
     ```
 
 1.  Ensure any pre-existing releases of Docker and related components are removed.
@@ -130,7 +130,7 @@ Follow these steps to install Docker and prepare the system for Postal. These st
 1.  Install the additional packages required to run Docker. These packages might already be installed.
 
     ```command
-    sudo apt-get install ca-certificates curl gnupg lsb-release
+    sudo apt install ca-certificates curl gnupg lsb-release
     ```
 
 1.  Add the official Docker GPG key.
@@ -149,18 +149,18 @@ Follow these steps to install Docker and prepare the system for Postal. These st
 1.  Update the new package.
 
     {{< note >}}
-If any error occurs during this step, it might be due to incorrect file permissions for the public key. To correct this problem, run the command `sudo chmod a+r /etc/apt/keyrings/docker.gpg`.
+    If any error occurs during this step, it might be due to incorrect file permissions for the public key. To correct this problem, run the command `sudo chmod a+r /etc/apt/keyrings/docker.gpg`.
     {{< /note >}}
 
     ```command
-    sudo apt-get update
+    sudo apt update
     ```
 
 1.  Install Docker Engine, Docker Compose, and some other supporting utilities.
 
     ```command
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-    sudo apt-get install docker-compose
+    sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    sudo apt install docker-compose
     ```
 
 1.  To validate the Docker installation, run the `hello-world` image using `docker run`. If the installation is successful, the output should contain `Hello from Docker!`.
@@ -215,10 +215,12 @@ Postal requires some additional configuration before it can be used. Several uti
 1.  Use the `postal bootstrap` tool to generate several configuration files. Supply the domain name for Postal as an argument. In the following command, replace `postal.example.com` with the actual domain name.
 
     {{< note >}}
-This is the domain created in the "A/AAAA Record(s)" step of [How to Configure DNS Records for the Postal Mail Server](/docs/guides/how-to-install-and-use-postal/#how-to-configure-dns-records-for-postal) section.
+    This is the domain created in the "A/AAAA Record(s)" step of [How to Configure DNS Records for the Postal Mail Server](/docs/guides/how-to-install-and-use-postal/#how-to-configure-dns-records-for-postal) section.
     {{< /note >}}
 
-        sudo postal bootstrap postal.example.com
+    ```command
+    sudo postal bootstrap postal.example.com
+    ```
 
     ```output
     Latest version is: 2.1.2
@@ -370,7 +372,7 @@ Before sending any mail, use the Postal web interface to create organizations, s
 
     ![The Postal Configure Mail Server Page](Configure-Mail-Server.png)
 
-7.  Postal confirms the mail server is now ready to go.
+1.  Postal confirms the mail server is now ready to go.
 
     ![The Postal Configure Mail Server Dashboard](Mail-Server-Dashboard.png)
 
@@ -382,13 +384,13 @@ Before sending any mail, use the Postal web interface to create organizations, s
 
     ![The Postal Create Domain Page Part 2](Create-Domain2.png)
 
-1. The Postal dashboard displays a list of mandatory and optional DNS records to add. Most of these domains were created earlier. However, a DKIM record is still required. This record contains a public authentication key to validate the integrity and identity of emails sent from the server.
+1.  The Postal dashboard displays a list of mandatory and optional DNS records to add. Most of these domains were created earlier. However, a DKIM record is still required. This record contains a public authentication key to validate the integrity and identity of emails sent from the server.
 
     Make a note of the DKIM domain name Postal is looking for. In this example, the domain is `postal-snzWLL._domainkey.postal.example.com`, although the string `snzWLL` should be different for each server. Return to the Linode Dashboard and add a TXT record for the suggested domain. Paste the text supplied by Postal (beginning with `v=DKIM1`) into the `Value` field of the form. Add another domain for the return path key. This domain has the format `postal-snzWLL._domainkey.rp.postal.example.com` domain, with `rp` between `domainkey` and `postal`. Enter the same information for the `Value`.
 
     ![The Postal DKIM Key](DKIM-Record.png)
 
-1. For additional confirmation, click the `Check my records are correct` near the top of the page. Postal performs a quick verification of the DNS configuration and displays its results. For accurate test results, ensure the test domain propagates first. If Postal reports any errors, review all DNS records and ensure they were added correctly.
+1.  For additional confirmation, click the `Check my records are correct` near the top of the page. Postal performs a quick verification of the DNS configuration and displays its results. For accurate test results, ensure the test domain propagates first. If Postal reports any errors, review all DNS records and ensure they were added correctly.
 
     ![Check Postal Records](Postal-Check-Records.png)
 
