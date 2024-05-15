@@ -38,7 +38,7 @@ One advantage of Go is that it has standardized testing built into its core, eve
 
 To begin unit testing in Go, start with a small Go program. Once you understand the basics of the application, you're ready to test it.
 
-1. Create a file named `hello-world.go` and add the following code:
+1.  Create a file named `hello-world.go` and add the following code:
 
     ```file {title="hello-world.go" lang="go"}
     package main
@@ -65,7 +65,7 @@ To begin unit testing in Go, start with a small Go program. Once you understand 
     }
     ```
 
-1. Execute the program by running the following command:
+1.  Execute the program by running the following command:
 
     ```command
     go run hello-world.go
@@ -77,7 +77,7 @@ To begin unit testing in Go, start with a small Go program. Once you understand 
     Hello, World.
     ```
 
-1. Execute a variation of the program by running the following command:
+1.  Execute a variation of the program by running the following command:
 
     ```command
     go run hello-world.go Dylan
@@ -96,7 +96,7 @@ This small program takes a name as input, formats a greeting based on the name, 
 
 To focus on the middle operation of formatting a greeting based on the name, create a unit test to verify that the formatted greeting includes the provided name for different possible names.
 
-1. One of Go's mechanisms for the management of sources is the *module*. A Go-based application and its associated tests typically appear as parts of a module. Start by creating a module for this exercise using the following `mod` command:
+1.  One of Go's mechanisms for the management of sources is the *module*. A Go-based application and its associated tests typically appear as parts of a module. Start by creating a module for this exercise using the following `mod` command:
 
     ```command
     go mod init hello-world
@@ -108,7 +108,7 @@ To focus on the middle operation of formatting a greeting based on the name, cre
     go: creating new go.mod: module hello-world
     ```
 
-1. With the module defined, implement the unit test by creating a file named `hello-world_test.go` with the following contents:
+1.  With the module defined, implement the unit test by creating a file named `hello-world_test.go` with the following contents:
 
     ```file {title="hello-world_test.go" lang="go"}
     package main
@@ -131,7 +131,7 @@ To focus on the middle operation of formatting a greeting based on the name, cre
 
     This unit test formats the greeting for the names `World`, `Dylan`, and `Erin` and verifies that each greeting contains the respective name. If any of these confirmations fail, the unit test prints a notice indicating that the expected name was not found in the greeting and exits with an error condition.
 
-1. Run the test by executing the following command:
+1.  Run the test by executing the following command:
 
     ```command
     go test
