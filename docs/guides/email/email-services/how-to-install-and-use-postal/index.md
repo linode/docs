@@ -1,13 +1,13 @@
 ---
 slug: how-to-install-and-use-postal
 title: "How to Install and Use Postal"
-description: 'This guide explains how to install, configure, and use the self-hosted Postal mail server.'
+description: "This guide explains how to install, configure, and use the self-hosted Postal mail server."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-01-05
+modified: 2024-05-15
 keywords: ['what is Postal', 'install Postal', 'configure Postal', 'Postal DNS']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-01-05
-modified_by:
-  name: Linode
 external_resources:
 - '[Postal GitHub site](https://github.com/postalserver/postal)'
 - '[Postal Documentation](https://docs.postalserver.io/)'
