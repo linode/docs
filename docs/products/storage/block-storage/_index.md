@@ -2,6 +2,7 @@
 title: Block Storage
 title_meta: "Block Storage Product Documentation"
 description: "Linode Block Storage is a scalable, high-speed, resilient and fault tolerant storage service."
+modified: 2024-04-15
 toc: true
 tab_group_main:
     is_root: true
@@ -10,7 +11,6 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Block Storage is a scalable, high-speed, and fault tolerant storage service used to add additional storage to a Linode Compute Instance."
-modified: 2023-02-10
 aliases: ['/platform/block-storage/how-to-use-block-storage-with-your-linode/','/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/','/platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/','/platform/how-to-use-block-storage-with-your-linode/','/platform/block-storage/','/guides/platform/block-storage/','/guides/how-to-use-block-storage-with-your-linode/']
 ---
 
@@ -41,11 +41,11 @@ Block Storage is available across [all regions](https://www.linode.com/global-in
 
 ## Plans and Pricing
 
-Block Storage Volumes cost $0.10/GB per month ($0.00015/GB per hour) and can range from 10 GB to 10,000 GB in size.
+Block Storage Volumes start at $0.10/GB per month ($0.00015/GB per hour) and can range from 10 GB to 10 TB in size. [Pricing](https://www.linode.com/pricing/) for Block Storage may vary between data centers.
 
 ## Technical Specifications
 
-- Minimum size for a Volume is 10GB and the maximum size is 10,240 GB (10 TB).
+- Minimum size for a Volume is 10 GB and the maximum size is 10,240 GB (10 TB).
 - Backed by high speed NVMe storage in *most* data centers, excluding Fremont.
 - **Throughput**: Up to 350 MB/s sustained and 525 MB/s in 60 second bursts
 - **IOPS**: Up to 8,000 sustained and 12,000 in 60 second bursts
@@ -53,8 +53,12 @@ Block Storage Volumes cost $0.10/GB per month ($0.00015/GB per hour) and can ran
 
 ## Limits and Considerations
 
-- To attach a Volume, both the Volume and the Compute Instance must be located in the same data center. Migrating a Volume to a different data center is not directly available at this time. See [Transfer Block Storage Data between Data Centers](/docs/products/storage/block-storage/guides/transfer-volume-data-between-data-centers/) for a work-around.
+- A Compute Instance can have multiple Volumes attached to it, but a Volume can only be attached to one Compute Instance at a time. To attach a Volume, both the Volume and the Compute Instance must be located in the same data center. Migrating a Volume to a different data center is not directly available at this time. See [Transfer Block Storage Data between Data Centers](/docs/products/storage/block-storage/guides/transfer-volume-data-between-data-centers/) for a work-around.
 
-- A combined total of 8 storage devices can be attached to a Compute Instance at the same time, including local disks and Block Storage Volumes.
+- A combined total of 8 storage devices can be attached to a Compute Instance at the same time, including local disks and Block Storage Volumes. For example, if your Compute Instance has two main disks, root and swap, you can attach no more than 6 additional volumes to this Compute Instance.
+
+- The maximum combined capacity limit of all volumes on an account across all regions is 100 TiB. If you plan on exceeding this amount, contact [Support](https://www.linode.com/support/) to request an increase. In your request, please provide the capacity limit you are requesting for each region you plan to use.
+
+- You can attach Block Storage volumes to a Compute Instance in Full Virtualization mode only after you Power Off the Compute Instance. For further steps, see [Attach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/).
 
 - Our Backup Service does not cover Block Storage Volumes. You must manage [your own backups](/docs/guides/backing-up-your-data/) if you wish to backup data stored on your Volumes.

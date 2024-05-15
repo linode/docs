@@ -1,17 +1,16 @@
 ---
 slug: set-up-web-server-host-website
+title: "Set up a Web Server and Host a Website on Linode"
 description: "How to set up your first web server and point a domain name to your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-03-13
+modified: 2021-10-18
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","nginx","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-10-18
-modified_by:
-  name: Linode
-published: 2012-03-13
-title: "Set up a Web Server and Host a Website on Linode"
 aliases: ['/websites/hosting/set-up-web-server-host-website/','/websites/set-up-web-server-host-website/']
 image: Hosting-a-Website-smg.jpg
-authors: ["Linode"]
 ---
 
 ![Hosting a Website](Hosting-a-Website-smg.jpg "Hosting a Website")
@@ -110,7 +109,7 @@ Test your website(s) before you add DNS records and make the site available publ
 
 If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain in the **Domains** section of the Cloud Manager. If you don't know what DNS records to add, the DNS Manager can insert some basic records when you create the new domain.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/products/networking/dns-manager/) guide.
 {{< /note >}}
 

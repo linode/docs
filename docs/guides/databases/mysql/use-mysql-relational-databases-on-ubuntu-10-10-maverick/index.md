@@ -1,25 +1,22 @@
 ---
 slug: use-mysql-relational-databases-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Use MySQL Relational Databases on Ubuntu 10.10 (Maverick)'
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.10 Maverick'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-21
+modified: 2012-10-08
 keywords: ["mysql ubuntu 10.10", "mysql maverick", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/use-mysql-relational-databases-on-ubuntu-10-10-maverick/','/databases/mysql/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-10-21
-title: 'Use MySQL Relational Databases on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","mysql"]
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.10 (Maverick) Linode. It is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 

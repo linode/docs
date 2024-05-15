@@ -4,8 +4,9 @@ title_meta: "Using PostgreSQL Extensions with Managed Databases"
 description: "Learn which PostgreSQL extensions are supported by Linode's Managed Database service and how to install them."
 published: 2022-06-06
 modified: 2023-04-27
-authors: ["Linode"]
 ---
+
+{{< content "dbass-eos" >}}
 
 The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions.
 

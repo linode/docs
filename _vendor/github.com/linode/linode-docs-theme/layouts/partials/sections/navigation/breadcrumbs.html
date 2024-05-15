@@ -33,7 +33,7 @@
       </li>
       <template x-for="(b, i) in data.breadcrumbs.sections" :key="b.href">
         <li class="flex items-center mt-1">
-          <a x-text="b.linkTitle" :href="b.href" class="truncate"></a>
+          <a x-html="b.linkTitle" :href="b.href" class="truncate"></a>
           <template x-if="i < (data.breadcrumbs.sections.length - 1)">
             {{ template "breadcrumbs-arrow" . }}
           </template>

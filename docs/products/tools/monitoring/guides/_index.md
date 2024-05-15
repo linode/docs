@@ -39,14 +39,14 @@ These additional guides help you with targeted topics like how to use command li
 
 - [Monitor Your System with Graphite and a Grafana Dashboard](/docs/guides/install-graphite-and-grafana/)
 
-- [Longview Pricing and Plans](/docs/guides/linode-longview-pricing-and-plans/)
+- [Longview Pricing and Plans](/docs/products/tools/longview/)
 
-- [Understanding Linode Longview](/docs/guides/what-is-longview/)
+- [Understanding Linode Longview](/docs/products/tools/longview/get-started/)
 
-- [Troubleshoot Linode Longview](/docs/guides/troubleshooting-linode-longview/)
+- [Troubleshoot Linode Longview](/docs/products/tools/longview/guides/troubleshooting/)
 
-- [Using the Linode Longview App for MySQL](/docs/guides/what-is-the-linode-longview-app-for-mysql/)
+- [Using the Linode Longview App for MySQL](/docs/products/tools/longview/guides/mysql/)
 
-- [Using the Linode Longview App for Apache](/docs/guides/what-is-the-linode-longview-app-for-apache/)
+- [Using the Linode Longview App for Apache](/docs/products/tools/longview/guides/apache/)
 
-- [Using the Linode Longview App for Nginx](/docs/guides/what-is-the-linode-longview-app-for-nginx/)
+- [Using the Linode Longview App for Nginx](/docs/products/tools/longview/guides/nginx/)

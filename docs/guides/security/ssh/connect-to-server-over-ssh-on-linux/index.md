@@ -1,22 +1,21 @@
 ---
 slug: connect-to-server-over-ssh-on-linux
+title: "Connecting to a Remote Server Over SSH on Linux"
+title_meta: "How to Connect to a Remote Server Over SSH on Linux"
 description: "A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-06-25
+modified: 2022-01-28
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-25
-modified: 2022-01-28
 image: SSHLINUX.jpg
-modified_by:
-  name: Linode
-title: "Connecting to a Remote Server Over SSH on Linux"
-title_meta: "How to Connect to a Remote Server Over SSH on Linux"
 relations:
     platform:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Linux
-authors: ["Linode"]
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
@@ -121,7 +120,7 @@ The commands should be separated by a semi-colon (`;`) and all of the commands t
 
 ### Using sudo
 
-It's recommended to disable root access over SSH and only log in to your remote server through a limited user account. However, some commands require elevated privileges, which can usually be accomplished by prepending the command with `sudo`. If you attempt to do this while running commands directly through the SSH command, you may receive an error such as "no tty present" or there isn't a "stable CLI interface". To run the `sudo` command in these instances, use the `-t` option, which forces a psuedo-terminal allocation. For example, to update your packages on a Debian-based system, run `ssh linode@example.com -t "sudo apt update"`.
+It's recommended to disable root access over SSH and only log in to your remote server through a limited user account. However, some commands require elevated privileges, which can usually be accomplished by prepending the command with `sudo`. If you attempt to do this while running commands directly through the SSH command, you may receive an error such as "no tty present" or there isn't a "stable CLI interface". To run the `sudo` command in these instances, use the `-t` option, which forces a pseudo-terminal allocation. For example, to update your packages on a Debian-based system, run `ssh linode@example.com -t "sudo apt update"`.
 
 ## Going Further
 

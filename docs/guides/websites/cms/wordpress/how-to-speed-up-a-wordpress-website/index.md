@@ -1,14 +1,13 @@
 ---
 slug: how-to-speed-up-a-wordpress-website
+title: 'How to Speed Up a WordPress Website'
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-06-26
 keywords: ["htaccess", "apache", "wordpress"]
 tags: ["docker","linux","analytics","php","wordpress","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-26
-modified: 2018-06-26
-modified_by:
-  name: Linode
-title: 'How to Speed Up a WordPress Website'
 external_resources:
 - '[Finding Bottlenecks in WordPress Code](https://deliciousbrains.com/finding-bottlenecks-wordpress-code/)'
 - '[Profiling with XHProf and XHGUI](https://www.engineyard.com/blog/topic/profiling-with-xhprof-and-xhgui)'
@@ -16,7 +15,6 @@ external_resources:
 - '[XHGUI](https://github.com/perftools/xhgui)'
 - '[How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)'
 aliases: ['/websites/cms/how-to-speed-up-a-wordpress-website/','/websites/cms/wordpress/how-to-speed-up-a-wordpress-website/']
-authors: ["Nathan Melehan"]
 ---
 
 ## Goals For This Guide

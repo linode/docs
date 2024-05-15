@@ -2,6 +2,14 @@
   x-data="{ visible: false }"
   x-intersect.once="visible = true"
   data-testid="image-modal">
+  <template x-if="!visible">
+    {{ $pix := resources.Get "images/pix.gif" }}
+    <div class="w-full bg-gray-200 rounded-lg">
+      <img
+        src="{{ $pix.RelPermalink }}"
+        style="width: 100%; aspect-ratio: {{ $.scaled.resized1x.Width }} / {{ $.scaled.resized1x.Height }};" />
+    </div>
+  </template>
   <template x-if="visible">
     <div x-data="{ open: false, hover:false, src: '' }">
       <figure
@@ -65,6 +73,7 @@
               <img
                 src="{{ .img.RelPermalink }}"
                 alt="{{ $.alt }}"
+                title="{{ $.title }}"
                 class="w-full rounded-xl shadow-lg"
                 @click.away="open = false" />
             </template>

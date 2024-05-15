@@ -1,20 +1,18 @@
 ---
 slug: pros-and-cons-of-c-plus-plus
+title: "The Pros and Cons of C++"
+title_meta: "A Programmers’ Guide to C++: Advantages & Disadvantages"
 description: "As with any programming language, there are pros and cons of C++. Read our guide to find out whether you can benefit from learning C++. ✓ Click to learn more!"
-og_description: "As with any programming language, there are pros and cons of C++. Read our guide to find out whether you can benefit from learning C++. ✓ Click to learn more!"
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-04-01
 keywords: ['pros and cons of c++','advantages of c++','benefits of c++']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-01
-modified_by:
-  name: Nathaniel Stickman
-title_meta: "A Programmers’ Guide to C++: Advantages & Disadvantages"
-title: "The Pros and Cons of C++"
 external_resources:
 - '[Data Flair: Advantages and Disadvantages of C++ | Make your Next Move!](https://data-flair.training/blogs/advantages-and-disadvantages-of-cpp/)'
 - '[TechVidvan: Advantages and Disadvantages of C++](https://techvidvan.com/tutorials/cpp-pros-and-cons/)'
 - '[GeeksforGeeks: Advantages and Disadvantages of C++](https://www.geeksforgeeks.org/advantages-and-disadvantages-of-c/)'
 - '[TekSlate: Advantages and Disadvantages of C++ language](https://tekslate.com/c-explain-advantages-disadvantages)'
-authors: ["Nathaniel Stickman"]
 ---
 
 C++ stands as one of the oldest and most pervasive programming languages around. And with good reason. Its low-level control and high speed make it the top player for systems programming and other areas that demand tight efficiency.

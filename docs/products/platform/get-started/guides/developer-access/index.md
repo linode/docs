@@ -1,14 +1,11 @@
 ---
 title: Grant a Developer Access a Compute Instance or Linode Account
 description: Shows how to create an account with access restrictions for developers and maintainers.
+published: 2018-07-26
+modified: 2024-03-11
 keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
 tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
-published: 2018-07-26
-modified: 2023-03-14
-modified_by:
-  name: Linode
 aliases: ['/platform/create-limited-developer-account/','/guides/create-limited-developer-account/']
-authors: ["Edward Angert"]
 ---
 
 One of the most powerful features of Linode's unmanaged service is the amount of control Linode users have over their account and the software installed on their systems. If you're a business owner that does not have expertise with installing or maintaining software on Linux, or if you do have experience with Linux but don't have the time to set up a new server, then contracting with a developer or administrator is a popular way to get your services up and running.
@@ -19,7 +16,7 @@ When you hire someone to work on your Linode, there are a variety of ways to gra
 
 This guide explains and answers some of the most frequently asked questions about account access. The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 
-For security and privacy, [Linode Support](/docs/products/platform/get-started/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](https://www.linode.com/products/pro-services/) team that can be hired to help with projects.
+For security and privacy, [Linode Support](/docs/products/platform/get-started/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house Professional Services team that can be hired to help with projects. You can reach out to that team through the [Contact Sales](https://www.linode.com/company/contact/) form.
 
 {{< note >}}
 The following sections include commands that show how to manipulate credentials on your Compute Instances, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.
@@ -42,7 +39,7 @@ Keep your account administrator credentials secret. When hiring an external indi
 Useful *Global Grants* for a limited access user might include the ability to:
 
 - Add a [NodeBalancer](/docs/products/networking/nodebalancers/).
-- Add [Longview](/docs/guides/what-is-longview/) clients.
+- Add [Longview](/docs/products/tools/longview/get-started/) clients.
 - Use the [DNS Manager](/docs/products/networking/dns-manager/) to add domains.
 - Create [StackScripts](/docs/products/tools/stackscripts/).
 - Create [Images](/docs/products/tools/images/).

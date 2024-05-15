@@ -2,19 +2,16 @@
 title: Capture Apache Metrics with Longview
 title_meta: Capture Apache Metrics with Linode Longview
 description: 'This guide discusses the Linode Longview client, including how to configure Longview for the Apache web server, how to interact with data from Longview, and more.'
+published: 2013-11-04
+modified: 2023-05-24
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 tags: ["apache","cloud manager","statistics","monitoring","linode platform"]
 aliases: ['/longview/longview-for-apache/','/platform/longview/what-is-the-linode-longview-app-for-apache/','/platform/longview/longview-app-for-apache/','/guides/what-is-the-linode-longview-app-for-apache/']
-published: 2013-11-04
-modified: 2023-05-24
-modified_by:
-  name: Linode
 relations:
     platform:
         key: what-is-longview
         keywords:
             - distribution: Apache
-authors: ["Linode"]
 ---
 
 In addition to capturing general system metrics, Longview can also be used to capture metrics for Apache. The Apache tab appears in the Cloud Manager when Longview detects that you have Apache installed on your system. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
@@ -155,7 +152,7 @@ You should now be able to see Longview data for Apache. If that's not the case, 
 
     You'll see the current version of Apache listed on the upper left hand side of the page.
 
-    Hover over a data point to see the exact numbers for that time. With [Longview Pro](/docs/guides/linode-longview-pricing-and-plans/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
+    Hover over a data point to see the exact numbers for that time. With [Longview Pro](/docs/products/tools/longview/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
 
 ### Requests
 
@@ -182,19 +179,19 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your system's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/guides/what-is-longview/#overview).
+The **CPU** graph shows the percentage of your system's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/guides/what-is-longview/#overview).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/guides/what-is-longview/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/get-started/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your system spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/guides/what-is-longview/#processes).
+The **Process Count** graph shows the total number of processes on your system spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/get-started/#processes).
 
 ## Troubleshooting
 

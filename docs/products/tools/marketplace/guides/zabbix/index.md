@@ -1,19 +1,16 @@
 ---
+title: "Deploy Zabbix through the Linode Marketplace"
 description: "Zabbix is an enterprise-class, open source, distributed monitoring solution. Learn how to deploy Zabbix on Linode using Marketplace Apps."
+published: 2021-02-23
+modified: 2024-04-17
 keywords: ['monitoring','networking','incident response']
 tags: ["marketplace", "networking", "linode platform", "cloud manager", "monitoring"]
-published: 2021-02-23
-modified: 2022-08-23
 image: DeployZabbix_marketplaceapps.png
-modified_by:
-  name: Linode
-title: "Deploy Zabbix through the Linode Marketplace"
 external_resources:
 - '[Learn from documentation](https://www.zabbix.com/documentation/5.0/manual)'
 - '[Purchase Technical Support contract](https://www.zabbix.com/support)'
 - '[Zabbix official Forum](https://www.zabbix.com/forum)'
 aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platform/one-click/deploy-zabbix-with-marketplace-apps/', '/guides/deploy-zabbix-with-marketplace-apps/','/guides/zabbix-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Zabbix](https://www.zabbix.com/) is an enterprise-class, open-source, distributed monitoring solution. Designed as an all-in-one monitoring solution, Zabbix can track performance and availability of network servers, devices, services, and other IT resources. Zabbix empowers administrators to quickly respond to incidents with on-screen display capabilities and alerts by email, SMS, or Jabber. Users can also collect, store, manage, and analyze information received from IT infrastructure. Actively used by SMBs and large enterprises across all industries and in almost every country, Zabbix has a robust community driving its continued development.
@@ -30,43 +27,46 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 8 Stream
-- **Recommended minimum plan:** All plan types and sizes can be used.
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Suggested minimum plan:** All plan types and sizes can be used.
 
 ### Zabbix Options
 
-- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
+- **Email Address:** *(required)* SOA adress for free Let's Encrypt SSL. 
+
+{{< content "marketplace-required-limited-user-fields-shortguide">}} 
+
+{{< content "marketplace-custom-domains-field-shortguide">}}
+
+- **Zabbix Server Name:** Local hostname for Zabbix server. Defaults to `zabbix-server`
 
 ## Getting Started after Deployment
 
 ### Access your Zabbix App
 
-After Zabbix has finished installing, you must first obtain the login credentials for Zabbix. You can then use these credentials to log in to your Zabbix App via a web browser.
+After Zabbix has finished installing, you must first obtain the login credentials. You can then use these credentials to log in to your Zabbix App via a web browser.
 
-1.  From your terminal, log into your new Compute Instance as the `root` user with the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
+1.  From your terminal, log into your new Compute Instance as the `root` user, or the `sudo` user created during deployment. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
     ```command
     ssh root@192.0.2.1
     ```
 
-1. The Zabbix welcome banner should appear immediately after logging in. Make a note of the username and password as these are used in a later step.
+1. Output the generated Zabbix credentials by using the following command, replacing `$USERNAME` with the `sudo` user created while deploying the Compute Instance.
 
-    ```output
-    ********************************************************************************
-    Zabbix frontend credentials:
-    Username: Admin
-    Password: abcdef0123456789
-    To learn about available professional services, including technical suppport and training, please visit https://www.zabbix.com/services
-    Official Zabbix documentation available at https://www.zabbix.com/documentation/current/
-    Note! Do not forget to change timezone PHP variable in /etc/php.d/99-zabbix.ini file.
-    ********************************************************************************
+    ```command
+    cat /home/$USERNAME/.credentials
+
+    Sudo Username: sudo_user
+    Sudo Password: dX4ietUrbuYhWOOtbFJKYyRRM
+    Zabbix Admin GUI Username: Admin
+    Zabbix Admin GUI Password: hTEoofieRkqqcVvtp9sqVskDbygwaMZXfKUMNbiyHZiRT
+    Zabbix DB User: zabbix
+    Zabbix DB Password: elua1U25uQesggMt2hhNOB33H3Egec53OJQlUwsDKENOFS
+    MySQL Root Password: fpzdhOpcyw0arno6pw9SGr5vlRiu4GeyrH45kFlypXKrR
     ```
 
-1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `http://[ip-address]`, replacing *[ip-address]* with the IPv4 address or rDNS domain assigned to your new Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
-
-    {{< note >}}
-    Zabbix uses a self-signed certificate. Because it is not signed by a common Certificate Authority, your browser may warn you about the security of the connection and require you to add a security exception.
-    {{< /note >}}
+1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `https://[domain]`, replacing *[domain]* with the rDNS domain assigned to your new Compute Instance, or the custom domain entered on deployment. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
     ![A screenshot of the Zabbix log in prompt](zabbix-login.png)
 

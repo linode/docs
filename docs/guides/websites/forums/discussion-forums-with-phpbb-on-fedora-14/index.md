@@ -1,25 +1,22 @@
 ---
 slug: discussion-forums-with-phpbb-on-fedora-14
-deprecated: true
+title: Discussion Forums with phpBB on Fedora 14
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Fedora 14.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2011-04-05
+modified: 2013-10-01
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-phpbb-on-fedora-14/','/web-applications/bulletin-boards/phpbb/fedora-14/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: Discussion Forums with phpBB on Fedora 14
 relations:
     platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Fedora 14
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
-
-
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.
 
