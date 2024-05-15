@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-wordpress-almalinux-8
+title: "Install WordPress on AlmaLinux 8"
+title_meta: "How to Install WordPress on AlmaLinux 8"
 description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8.'
 og_description: "This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-16
 keywords: ['wordpress almalinux']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-16
-modified_by:
-  name: Nathaniel Stickman
-title: "Install WordPress on AlmaLinux 8"
-title_meta: "How to Install WordPress on AlmaLinux 8"
 relations:
     platform:
         key: how-to-install-wordpress
@@ -19,7 +19,6 @@ external_resources:
 - '[First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
 - '[WordPress Support: WordPress Widgets](https://wordpress.org/support/article/wordpress-widgets/)'
 
-authors: ["Nathaniel Stickman"]
 ---
 
 WordPress is an open-source content management system (CMS). WordPress remains perhaps the most popular CMS for blogging, which was its original use case. Its effectiveness as a CMS has also made it useful for an array of websites where strong content management is crucial. WordPress also boasts an extensive library of themes, plug-ins, and widgets to meet your website's needs and make it your own. In this guide, you learn how to install WordPress on your AlmaLinux 8 server.
@@ -32,7 +31,7 @@ WordPress is an open-source content management system (CMS). WordPress remains p
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

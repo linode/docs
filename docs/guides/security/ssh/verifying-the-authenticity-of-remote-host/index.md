@@ -1,16 +1,15 @@
 ---
 slug: verifying-the-authenticity-of-remote-host
+title: "Verifying the Authenticity of a Remote Server through Its SSH Key Fingerprint"
+title_meta: "Verifying the Authenticity of Remote Host (SSH Key Fingerprint)"
 description: "A tutorial outlining how and why you should verify a host key's fingerprint when connecting to a server over a new SSH connection."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-01-28
+modified: 2022-05-10
 keywords: ['ssh','linux','mac','connect to server over ssh','fingerprint']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-28
-modified: 2022-05-10
-modified_by:
-  name: Linode
-title: "Verifying the Authenticity of a Remote Server through Its SSH Key Fingerprint"
-title_meta: "Verifying the Authenticity of Remote Host (SSH Key Fingerprint)"
-authors: ["Linode"]
 ---
 
 ## Warning: The Authenticity of Host Can't Be Established

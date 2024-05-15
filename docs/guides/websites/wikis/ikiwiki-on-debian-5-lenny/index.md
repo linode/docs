@@ -1,25 +1,22 @@
 ---
 slug: ikiwiki-on-debian-5-lenny
-deprecated: true
+title: 'Ikiwiki on Debian 5 (Lenny)'
 description: 'Use Ikiwiki on Debian to power a standard wiki implementation.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-31
+modified: 2012-10-08
 keywords: ["ikiwiki debian lenny", "ikiwiki debian 5", "ikiwiki", "wiki", "perl", "git", "markdown", "debian"]
 tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/ikiwiki-on-debian-5-lenny/','/web-applications/wikis/ikiwiki/debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-01-31
-title: 'Ikiwiki on Debian 5 (Lenny)'
 relations:
     platform:
         key: using-ikiwiki
         keywords:
            - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/guides/how-to-configure-git/) for version control, and either the [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx/) web server.
 

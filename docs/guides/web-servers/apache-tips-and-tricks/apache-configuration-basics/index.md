@@ -1,14 +1,14 @@
 ---
 slug: apache-configuration-basics
+title: Apache Configuration Basics
 description: An advanced overview of configuration for the Apache web server including virtual hosts and configuration file management
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-06
+modified: 2011-08-22
 keywords: ["configuration", "apache", "web server", "virtual hosting", "http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/apache-configuration-basics/','/web-servers/apache/configuration/configuration-basics/','/web-servers/apache-tips-and-tricks/apache-configuration-basics/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2009-11-06
-title: Apache Configuration Basics
 external_resources:
  - '[Apache Installation](/docs/websites/apache/)'
  - '[LAMP stack guides](/docs/websites/lamp/)'
@@ -19,7 +19,6 @@ external_resources:
  - '[Apache Control Interface](http://httpd.apache.org/docs/2.2/programs/apachectl.html)'
  - '[HTTP Command](http://httpd.apache.org/docs/2.2/programs/httpd.html)'
 tags: ["web server","apache"]
-authors: ["Linode"]
 ---
 
 ![Apache Configuration Basics](Apache_Configuration_Basics_smg.png)

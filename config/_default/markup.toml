@@ -22,9 +22,12 @@ ordered = true
 [goldmark]
 
 [goldmark.parser]
-attribute = true
 autoHeadingID = true
 autoHeadingIDType = "github"
+wrapStandAloneImageWithinParagraph = true
+[goldmark.parser.attribute]
+block = true
+title = true
 
 [goldmark.renderer]
 hardWraps = false

@@ -1,12 +1,9 @@
 ---
+title: "A and AAAA Records"
 description: "Learn how to create A and AAAA records using Linode's DNS Manager"
 published: 2023-02-03
-modified_by:
-  name: KincaidYang
-title: "A and AAAA Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
 ---
 
 ## A and AAAA Overview

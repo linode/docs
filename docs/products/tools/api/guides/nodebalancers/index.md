@@ -3,8 +3,6 @@ title: "Configure NodeBalancers with the Linode API"
 description: "This guide demonstrates the API calls needed to add and configure a NodeBalancer through the Linode API"
 published: 2018-04-05
 modified: 2022-11-30
-modified_by:
-  name: Linode
 image: configure-nodebalancers-with-the-linode-api.png
 external_resources:
   - '[Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/)'

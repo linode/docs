@@ -1,6 +1,5 @@
-{{- $isNotDev := (ne hugo.Environment "development") -}}
+{{- $isProd := hugo.IsProduction -}}
 {{/* The js.Build step is (currently) just there to create a IIFE module, see https://github.com/instantpage/instant.page/issues/81 */}}
 {{- $js := resources.Get "jslibs/instantpage/instantpage.js" | js.Build -}}
-{{- if $isNotDev }}
-  {{ $js = $js | minify | fingerprint }}
-{{ end -}}<script src="{{ $js.RelPermalink }}" {{ if $isNotDev }} integrity="{{ $js.Data.Integrity }}" {{ end }}></script>
+{{- if $isProd }}{{ $js = $js | minify | fingerprint }}{{ end -}}
+<script src="{{ $js.RelPermalink }}" {{ if $isProd }} integrity="{{ $js.Data.Integrity }}" {{ end }}></script>

@@ -1,17 +1,16 @@
 ---
 slug: using-cobra
+title: 'Using Cobra and Go to Create Command Line Utilities'
 description: 'Cobra is a popular Go package that lets you develop command line utilities with commands, subcommands, and more. This guide shows how to use the app.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2017-11-29
 keywords: ["go", "golang", "cobra", "programming", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
-modified_by:
-  name: Linode
-title: 'Using Cobra and Go to Create Command Line Utilities'
 external_resources:
   - '[Go](https://www.golang.com)'
   - '[Cobra](https://github.com/spf13/cobra)'
 aliases: ['/development/go/using-cobra/']
-authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Before You Begin
@@ -21,7 +20,7 @@ by executing `go version`.
 
 If you still need to install Go, you can follow our guide for Ubuntu installation [here](/docs/guides/install-go-on-ubuntu/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Depending on your installation, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -79,7 +78,7 @@ All Cobra projects follow the same development cycle. You first use the `cobra` 
 a project, then you create commands and subcommands, and finally you make the desired changes to the
 generated Go source files in order to support the desired functionality.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `cobra init` command stores Cobra projects inside `~/go/src`, which means that
 after executing `cobra init <project_name>` to create a new Cobra project, you will
 need to change to the new directory.
@@ -119,8 +118,7 @@ output of the `tree(1)` command:
 
 1 directory, 6 files
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 `Tree` is not installed by default on many distributions. You can install it manually using your package manager, or skip the steps that use it if you feel comfortable with your understanding of your directory structure. If you're using the `apt` package manager, tree can be installed with the following command:
 
     sudo apt install tree
@@ -660,8 +658,7 @@ and generate the same output:
 {{< output >}}
     delete called
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Although all three aliases are equivalent and execute the same code, the
 internal representation of the `delete` command is only defined by `deleteCmd`.
 {{< /note >}}

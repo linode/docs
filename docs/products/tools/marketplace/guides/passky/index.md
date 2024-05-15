@@ -1,12 +1,11 @@
 ---
+title: "Deploy Passky through the Linode Marketplace"
 description: "Learn how to deploy Passky, a lightweight, open-source password manager, on the Linode platform."
+published: 2023-01-23
 keywords: ['passky','password manager','security','authentication']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-01-23
-title: "Deploy Passky through the Linode Marketplace"
 external_resources:
 - '[Passky](https://github.com/Rabbit-Company/Passky-Server)'
-authors: ["Linode"]
 ---
 
 [Passky](https://github.com/Rabbit-Company/Passky-Server) is a simple, modern, lightweight and open-source password manager.

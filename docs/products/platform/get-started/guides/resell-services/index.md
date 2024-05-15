@@ -2,18 +2,15 @@
 title: "Resell Linode Services"
 title_meta: "How to Resell Linode Services"
 description: 'How to resell Linode services using the Linode API, and how to get started with the Linode referral program.'
-keywords: ['resell','linode','services','reseller','referral','code']
 published: 2019-01-31
-modified: 2023-03-14
-modified_by:
-  name: Linode
+modified: 2023-07-24
+keywords: ['resell','linode','services','reseller','referral','code']
 tags: ["linode platform"]
 aliases: ['/platform/how-to-resell-linode-services/','/guides/how-to-resell-linode-services/']
-authors: ["Linode"]
 image: how-to-resell-linode-services.png
 ---
 
-Linode warmly welcomes and encourages the reselling of our services to third-party customers. Anyone can resell Linode services. We offer discounted pricing for resellers. If you are interested in discounted pricing, please contact `partnerships@linode.com`. This guide will walk you through the process of becoming a reseller.
+Linode welcomes partners and encourages the reselling of our services to third-party customers. Anyone can resell Linode services and discounted pricing is offered to resellers. If you are interested in becoming a reseller and learning more about discounted pricing, please contact our team through the [Partner form](https://www.linode.com/partners/apply/) or by emailing partners@linode.com. This guide provides more information about our partner program and outlines the process of becoming a reseller.
 
 ## What is a Reseller
 
@@ -21,11 +18,11 @@ A reseller is any person or entity that charges a third party for Linode service
 
 There are a variety of reasons one might want to resell Linode services. One of the most common reasons developers and engineers become resellers is that they use Linode to test, develop, and/or host their client's websites and apps, and in doing so need to bill those clients for charges accrued by the Linode services that power this business. Specific examples of this pattern include:
 
--   An agency that creates custom WordPress installations for their customers on Linode.
+- An agency that creates custom WordPress installations for their customers on Linode.
 
--   An app developer that uses Linode to host their customer's database.
+- An app developer that uses Linode to host their customer's database.
 
--   A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/content/cloudnet/) for an in-depth look at why they chose to partner with Linode.
+- A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/content/cloudnet/) for an in-depth look at why they chose to partner with Linode.
 
 ## Referral Program
 

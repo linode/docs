@@ -1,16 +1,15 @@
 ---
 slug: sql-joins
+title: "Introduction to SQL Joins"
+title_meta: "SQL Joins"
 description: 'SQL Joins are used to compare and select rows from tables. This guide discusses Cross Joins, Inner Joins, Left Joins, Right Joins, and Full Joins and provides examples for each SQL Join.'
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+published: 2022-03-11
 keywords: ['SQL Joins', 'Cross Joins', 'Left Join', 'Right Join', 'Full Join']
 tags: ['mysql', 'postgresql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-11
-modified_by:
-  name: Linode
-title: "Introduction to SQL Joins"
-title_meta: "SQL Joins"
 
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 Traditionally, you pull data from two or more tables using a `WHERE` clause in a query. But in a relational database system (RDBMS), this can be achieved using a single `SELECT` query. This is the true power of relational database systems. In this guide, you learn about SQL Joins, a powerful way to compare and select rows and tables.
@@ -19,7 +18,7 @@ Traditionally, you pull data from two or more tables using a `WHERE` clause in a
 
 In SQL, a `join` clause extends the capability of comparing and selecting rows from tables. It uses an algebraic process of combining rows from two or more tables based on a related column in those tables. By the ANSI-standard SQL definition, there are five types of Joins –**Cross Joins**, **Inner Joins**, **Left (Outer) Joins**, **Right(Outer) Joins**, and **Full (Outer) Joins**. These Joins are implemented across all relational database systems and are covered in the sections below.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Joins can be performed on any number of tables in a given query. For brevity and clarity, this guide discusses Joins applied to two tables.
 {{< /note >}}
 
@@ -41,8 +40,7 @@ This guide uses two tables, `Employees` and `Address`, respectively, to demonstr
     | 2 | New Jersey |
     | 3 | Idaho |
     | 4 | Hawaii |
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Unless mentioned otherwise, all the commands in this guide work well on both **MySQL** and **PostgreSQL** databases.
 {{< /note >}}
 
@@ -51,8 +49,7 @@ Unless mentioned otherwise, all the commands in this guide work well on both **M
 Also known as a *Cartesian Join*, Cross Joins occur when you specify multiple tables as a source for your `SELECT` column list. In this case, you leave out the `WHERE` clause join expression to match rows on. The result set contains a row for every combination of rows between the tables. In a two-table scenario, every row in one table is paired with every row of the other table. The resulting product is known as the *Cartesian Product* of the two tables. The syntax for a Cross Join is the following:
 
     (# Rows in Table A) TIMES (# of Rows in Table B)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In set theory, the Cartesian Product is a multiplication operation that generates all ordered pairs of the given sets. For example, consider set `A` with elements `{a,b}` and set `B` with elements `{1,2,3}`. The Cartesian Product of `A` and `B` is denoted by `AxB` and the result is the following:
 
     AxB ={(a,1), (a,2), (a,3), (b,1), (b,2), (b,3)}
@@ -131,7 +128,7 @@ The output of the above SQL code resembles the following:
 
 A Left Join returns a complete set of rows from the left table along with the matching rows from the right table. If there are no matching records, then `NULL` values are returned from the right table.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some relational database implementations use the keywords “Left Outer Join”, as opposed to “Left Join”, but they are functionally equivalent.
 {{< /note >}}
 
@@ -165,7 +162,7 @@ The output of the above SQL code is as follows:
 
 A Right Join returns a complete set of rows from the right table and the matching rows from the left table. This is also known as a Right Outer Join. If there are no matching records, then `NULL` values are returned from the right table, for the affected rows in the left table.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some relational database implementations use the keywords "Right Outer Join”, as opposed to "Right Join”, but they are functionally equivalent.
 {{< /note >}}
 
@@ -200,7 +197,7 @@ The output of the above SQL code is the following:
 
 A Full Join returns all rows from the left table, all rows from the right table. This is also known as also known as a Full Outer Join. A Full Join also returns all matching records from both tables where available. If there are no matching records, then `NULL` values are returned from the left table. It also returns `NULL` values from the right table.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some relational database implementations use the keywords "Full Outer Join”, as opposed to "Full Join”, but they are functionally equivalent.
 {{< /note >}}
 
@@ -231,8 +228,7 @@ The output of the above SQL code is the following:
 +------------+----------------+
 
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 During Join calculations, if you compare table data with `NULL` values, they do not match one another. Hence, `NULL` values are only returned as part of Join results and are ignored during Join calculations.
 {{< /note >}}
 

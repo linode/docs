@@ -3,12 +3,11 @@ slug: setting-up-harbor-registry-with-lke
 title: "Set Up a Self-Hosted Harbor Registry and Deploy Images to Kubernetes"
 title_meta: "Install Harbor Registry and Deploy Images to Kubernetes"
 description: "Learn the benefits of Harbor vs Docker Hub, how to install the Harbor registry software in the cloud, and how to connect a Kubernetes cluster to the registry."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-06-13
 keywords: ['what is harbor registry','install harbor kubernetes','harbor vs docker registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-06-13
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Harbor Docs: Harbor Installation and Configuration](https://goharbor.io/docs/2.7.0/install-config/)'
 - '[Kubernetes: Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)'
@@ -92,11 +91,11 @@ If you use another DNS manager but would like to start using the Linode DNS Mana
 
 For this tutorial, the Harbor server is run on a compute instance. Follow these instructions to create the instance:
 
-1. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to create the instance. Instructions for installing Harbor on Debian, Ubuntu, CentOS, and Fedora are included in this guide.
+1. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create the instance. Instructions for installing Harbor on Debian, Ubuntu, CentOS, and Fedora are included in this guide.
 
     Images stored with the registry are kept in the compute instance's included [persistent storage](/docs/products/compute/compute-instances/guides/disks-and-storage/#understanding-storage). Different instance plans have different amounts of included storage. You should pick a plan whose storage can accommodate the total size of the images you want to store. Review the [pricing page](/pricing/) to determine which plan has enough storage for you. If you intend to use this server for testing and learning, a plan with minimal specs is adequate.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system,create a limited user account, and harden SSH access. You may also wish to set the timezone and configure your hostname.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system,create a limited user account, and harden SSH access. You may also wish to set the timezone and configure your hostname.
 
 ### Install Docker and Docker Compose
 

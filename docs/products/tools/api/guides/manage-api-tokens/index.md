@@ -2,7 +2,6 @@
 title: Manage Personal Access Tokens
 description: "Learn how to view, create, and revoke personal access tokens, which provide authorization to the Linode API"
 aliases: ['/products/tools/linode-api/guides/get-access-token/','/guides/api-key/','/api/key/','/platform/api/api-key/','/products/tools/linode-api/guides/revoke-access-token/','/products/tools/cloud-manager/guides/cloud-api-keys/']
-authors: ["Linode"]
 ---
 
 ## View Personal Access Tokens
