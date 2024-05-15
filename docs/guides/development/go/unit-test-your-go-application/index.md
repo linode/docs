@@ -1,13 +1,13 @@
 ---
 slug: unit-test-your-go-application
 title: "How to Unit Test Your Go Application"
-description: 'Master the art of unit testing in Go with this comprehensive guide, covering essential techniques, best practices, and practical examples to ensure reliable and maintainable code.'
-keywords: ['list', 'of', 'keywords', 'and key phrases']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "Master the art of unit testing in Go with this comprehensive guide, covering essential techniques, best practices, and practical examples to ensure reliable and maintainable code."
 authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
 published: 2023-07-09
-modified_by:
-  name: Linode
+modified: 2024-05-15
+keywords: ['go', 'unit tests']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[What is Golang used for?](https://www.trio.dev/blog/what-is-golang-used-for)'
 - '[Insights into mocking techniques](https://www.myhatchpad.com/insight/mocking-techniques-for-go/)'
