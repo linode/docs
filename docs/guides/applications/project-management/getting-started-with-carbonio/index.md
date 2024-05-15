@@ -1,13 +1,13 @@
 ---
 slug: getting-started-with-carbonio
+title: "Getting Started with the Carbonio Collaboration System on Ubuntu 20.04"
 description: "Carbonio is an open-source collaboration platform by Zextras. With Carbonio, you get a collaboration suite with email, contacts, calendar, and collaborative file management. All with the flexibility and freedom of open source. In this guide, learn everything you need to get started with Carbonio on your system."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-03
+modified: 2024-05-15
 keywords: ['carbonio community edition', 'carbonio collaboration', 'self-host collaboration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-03
-modified_by:
-  name: Linode
-title: "Getting Started with the Carbonio Collaboration System on Ubuntu 20.04"
-authors: ["Nathaniel Stickman"]
 external_resources:
 - '[Carbonio Community Edition Documentation](https://docs.zextras.com/carbonio-ce/html/index.html)'
 - '[Opensource.com: Get Started with Carbonio, an Open Source Collaboration Platform](https://opensource.com/article/22/3/open-source-collaboration-carbonio)'
