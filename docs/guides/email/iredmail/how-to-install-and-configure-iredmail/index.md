@@ -1,13 +1,13 @@
 ---
 slug: how-to-install-and-configure-iredmail
 title: "How to Install and Configure iRedMail"
-description: 'This guide explains how to install and configure the iRedMail mail server, including instructions on the DNS records to create.'
+description: "This guide explains how to install and configure the iRedMail mail server, including instructions on the DNS records to create."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-02-17
+modified: 2024-05-15
 keywords: ['configure iRedMail', 'install iRedMail', 'how to set up iRedMail','iRedMail Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-02-17
-modified_by:
-  name: Linode
 external_resources:
 - '[iRedMail website](https://www.iredmail.org/)'
 - '[iRedMail tutorials and documentation](https://docs.iredmail.org/index.html)'
