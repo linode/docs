@@ -1,13 +1,13 @@
 ---
 slug: create-a-dagger-pipeline
 title: "How to Create a Dagger Pipeline on Akamai"
-description: 'This guide explains how to create a CI/CD pipeline using Dagger and the Dagger Python SDK.'
+description: "This guide explains how to create a CI/CD pipeline using Dagger and the Dagger Python SDK."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-08-19
+modified: 2024-05-15
 keywords: ['dagger sdk','how to use dagger','dagger python','ci/cd pipeline dagger']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-08-19
-modified_by:
-  name: Linode
 external_resources:
 - '[Dagger](https://dagger.io/)'
 - '[Dagger Documentation](https://docs.dagger.io/)'
