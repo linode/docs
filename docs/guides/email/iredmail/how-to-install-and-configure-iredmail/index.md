@@ -15,6 +15,11 @@ external_resources:
 - '[iRedMail DNS instructions](https://docs.iredmail.org/setup.dns.html)'
 - '[Certbot](https://certbot.eff.org/)'
 - '[Mail Tester](https://www.mail-tester.com/)'
+relations:
+    platform:
+        key: iredmail
+        keywords:
+            - distribution: Ubuntu 22.04
 ---
 
 [iRedMail](https://www.iredmail.org/) is a free open-source email server application. It is a self-administered and controlled alternative to cloud-based mail applications. Self-hosted mail servers have the advantage of being completely private and free of corporate interference. iRedMail is relatively lightweight and easy to install and use compared to other mail servers. This guide explains how to install, configure, and use the iRedMail mail server. It also provides an overview of the *Domain Name System* (DNS) records required to properly operate the server and send/receive email.
@@ -42,7 +47,7 @@ iRedMail includes the following features and enhancements:
 
 1.  A Linode can only send and receive emails if TCP port 25 is enabled. This is the well-known port for *Simple Mail Transfer Protocol* (SMTP). iRedMail sends outgoing emails and listens for incoming mail on this port. Contact Linode support to determine whether this port is restricted on your server.
 
-1.  iRedMail requires at least four GB of RAM, but high-volume production servers require even more. Ensure enough storage is available for the number of users and storage policies you intend to support. For best results, install iRedMail on a fresh server with no other components or configuration. Otherwise, conflicts might occur. Ensure the user and group IDs `2000`, `2001`, and `2002` are not in use.
+1.  iRedMail requires at least 4 GB of RAM, but high-volume production servers require even more. Ensure enough storage is available for the number of users and storage policies you intend to support. For best results, install iRedMail on a fresh server with no other components or configuration. Otherwise, conflicts might occur. Ensure the user and group IDs `2000`, `2001`, and `2002` are not in use.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -59,7 +64,7 @@ To install iRedMail, first download the executable, then run the installation sc
 1.  Ensure the system is up to date.
 
     ```command
-    sudo apt-get update -y && sudo apt-get upgrade -y
+    sudo apt update -y && sudo apt upgrade -y
     ```
 
 1.  Set the system hostname using the `hostnamectl` command. The hostname must match the name of the `mail` subdomain, for instance, `mail.example.com`.
@@ -86,7 +91,7 @@ The old hostname remains visible inside the current session. To see the updated 
 1.  Install some additional utilities required by the iRedMail installation script. These programs might already be installed as part of the default Ubuntu package.
 
     ```command
-    sudo apt-get install gzip dialog
+    sudo apt install gzip dialog
     ```
 
 1.  Visit the [iRedMail downloads page](https://www.iredmail.org/download.html) to determine the latest stable release. The release number is shown inside a green box near the top of this page.
@@ -94,7 +99,7 @@ The old hostname remains visible inside the current session. To see the updated 
 1.  Download the archive for the intended release from GitHub. In the following example, replace `1.6.2` with the actual release number. For example, to download release `1.6.1`, use the address `https://github.com/iredmail/iRedMail/archive/refs/tags/1.6.1.tar.gz`.
 
     {{< note >}}
-Download the archive to a suitable location, for example, a new subdirectory in the user's home directory.
+    Download the archive to a suitable location, for example, a new subdirectory in the user's home directory.
     {{< /note >}}
 
     ```command
@@ -333,9 +338,9 @@ Several DNS records must be added before the main server can send and receive ma
 
 1.  Create an `A` record for the `mail` subdomain. For the `example.com` domain, this subdomain is `mail.example.com`. Set the IP address to point to the IPv4 address of the Linode hosting iRedMail. To use IPv6 addressing, create a different `AAAA` record and point it toward the IPv6 address of the system.
 
-{{< note >}}
-Always create an IPv4 `A` record even if using IPv6. Not all mail servers can use IPv6 addressing.
-{{< /note >}}
+    {{< note >}}
+    Always create an IPv4 `A` record even if using IPv6. Not all mail servers can use IPv6 addressing.
+    {{< /note >}}
 
 1.  Create a `MX` record. This record defines the mail server for a particular domain. Other mail servers query these records to determine how to route the mail. In the Linode domain manager, create a `MX` record for the domain. Set the value of the `Mail Server` to `mail.example.com`, substituting the actual domain name for `example.com`. Leave the `TTL` and `Preference` values at the default settings. Leave the `Subdomain` value blank.
 
@@ -385,7 +390,7 @@ Always create an IPv4 `A` record even if using IPv6. Not all mail servers can us
     ![Create a DMARC Record](Create-Dmarc-Record.png)
 
     {{< note >}}
-It might take a few hours or even a day for all records to propagate across the internet. If the initial tests in the next section are not successful, try again later. For more information on setting up the DNS records, see the [iRedMail DNS instructions](https://docs.iredmail.org/setup.dns.html).
+    It might take a few hours or even a day for all records to propagate across the internet. If the initial tests in the next section are not successful, try again later. For more information on setting up the DNS records, see the [iRedMail DNS instructions](https://docs.iredmail.org/setup.dns.html).
     {{< /note >}}
 
 ## How to Use iRedMail

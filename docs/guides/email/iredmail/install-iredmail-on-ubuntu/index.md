@@ -10,6 +10,13 @@ keywords: ["email", "mail", "iredmail"]
 tags: ["mysql","email","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/installing-iredmail/','/email/iredmail/install-iredmail-on-ubuntu/','/email/iredmail/installing-iredmail/']
+relations:
+    platform:
+        key: iredmail
+        keywords:
+            - distribution: Ubuntu 14.04
+deprecated: true
+deprecated_link: /docs/guides/how-to-install-and-configure-iredmail/
 ---
 
 ## Why Run a Mail Server?
