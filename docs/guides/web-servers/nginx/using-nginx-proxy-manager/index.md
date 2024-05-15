@@ -2,12 +2,11 @@
 slug: using-nginx-proxy-manager
 title: "How to Expose Services with the Nginx Proxy Manager"
 description: "The Nginx Proxy Manager conveniently manages proxy hosts for your web services, whether on your home network or otherwise. Learn everything you need to know to get started with the Nginx Proxy Manager in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-06-21
 keywords: ['nginx proxy manager tutorial','nginx proxy manager docker','nginx-proxy-manager github']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-06-21
-modified_by:
-  name: Linode
 external_resources:
 - '[Nginx Proxy Manager: Full Setup Instructions](https://nginxproxymanager.com/setup/)'
 - '[Cloud Raya: Reverse Proxy Management Using Nginx Proxy Manager](https://cloudraya.com/knowledge-base/reverse-proxy-management-using-nginx-proxy-manager/)'
@@ -21,9 +20,9 @@ This tutorial introduces the Nginx Proxy Manager and illustrates how to start us
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

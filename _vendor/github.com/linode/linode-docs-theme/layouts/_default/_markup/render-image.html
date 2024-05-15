@@ -1,11 +1,28 @@
-{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- $url := urls.Parse (.Destination | strings.TrimPrefix "./") -}}
+{{- $destination := $url.Path -}}
+{{- $img := .Page.Resources.GetMatch $destination -}}
+{{ if and $img  (eq $img.MediaType.SubType "svg") }}
+{{ partial "components/render-svg.html" (dict "ctx" $ "image" $img "url" $url) }}
+{{ else }}
 {{ $width := "" }}
 {{ $height := "" }}
+{{ $title := $.Title }}
+{{ $alt := $.PlainText }}
+{{ if not $title }}
+  {{ $title = $alt }}
+{{ end }}
+{{ if not $title }}
+  {{ $title = "Image" }}
+{{ end }}
+{{ if not $alt }}
+  {{ $alt = $title }}
+{{ end }}
 {{- if $img -}}
   {{ $width = $img.Width }}
   {{ $height = $img.Height }}
   {{- if le $img.Width 694  }}
   {{/* Leave smaller images as-is. */}}
+  {{ $destination  = $img.RelPermalink }}
   {{ $img = "" }}
   {{ end }}
 {{- end -}}
@@ -17,17 +34,6 @@
     {{ $widthFull := 1600 }}
     {{ $width2x := 1388 }}
     {{ $width1x := 694 }}
-    {{ $title := $.Title }}
-    {{ $alt := $.PlainText }}
-    {{ if not $title }}
-      {{ $title = $alt }}
-    {{ end }}
-    {{ if not $title }}
-      {{ $title = "Image" }}
-    {{ end }}
-    {{ if not $alt }}
-      {{ $alt = $title }}
-    {{ end }}
     {{ if gt (len $imgFull.Content) 100000 }}
       {{/* Also scale the "full sized" version that the user gets when clicking on the image. */}}
       {{ $imgFormatOptions := "%dx jpg #FAFAFC q71" }}
@@ -47,5 +53,10 @@
     {{ end }}
   {{ end }}
 {{- else -}}
-  <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" width="{{ $width }}" height="{{ $height }}">
+  {{ if and  (not (strings.HasPrefix $destination "http"))  (not (strings.HasPrefix $destination "/docs"))}}
+  {{/* Assume these are stored in /static. */}}
+  {{ $destination =  ($destination | relURL) }}
+  {{ end }}
+  <img src="{{ $destination | safeURL }}" alt="{{ $alt }}" title="{{ $title }}" width="{{ $width }}" height="{{ $height }}">
+{{- end -}}
 {{- end -}}

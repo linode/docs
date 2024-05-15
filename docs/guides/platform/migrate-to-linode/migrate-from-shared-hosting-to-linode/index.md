@@ -1,16 +1,15 @@
 ---
 slug: migrate-from-shared-hosting-to-linode
+title: Migrate from Shared Hosting to Linode
 description: 'Migrate your website from a shared host to a Linode cloud server running a LAMP stack.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-10-18
+modified: 2019-03-06
 keywords: ["shared hosting", "migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migrate-from-shared/','/migrate-to-linode/migrate-from-shared-hosting/','/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode/','/migrate-to-linode/migrate-from-shared-hosting-to-linode/']
-modified: 2019-03-06
-modified_by:
-  name: Linode
-published: 2013-10-18
-title: Migrate from Shared Hosting to Linode
 tags: ["linode platform"]
-authors: ["Linode"]
 ---
 
 ![Migrate from Shared Hosting to Linode](migrate-from-shared-hosting-to-linode.png "Migrate from Shared Hosting to Linode")
@@ -27,7 +26,7 @@ This guide makes three assumptions:
 *   You know how to sign in to the [Linode Cloud Manager](https://cloud.linode.com/).
 *   You have a basic knowledge of [how to use SSH](/docs/guides/use-public-key-authentication-with-ssh/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 {{< /note >}}
 
@@ -68,8 +67,7 @@ If you have a MySQL or MariaDB database on your old server, you will also need t
 Linux and OS X can use [SCP](https://en.wikipedia.org/wiki/Secure_copy) natively from the command line. To download your site's public files to your local user's home directory using SCP:
 
     scp example_user@server_ip_address:/home/account_name/public_html ~/
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The exact location of your website's files may vary depending on your specific implementation. Contact your site's developer to confirm the location of your website's files.
 {{< /note >}}
 

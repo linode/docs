@@ -2,12 +2,11 @@
 slug: adagios-web-interface-for-nagios
 title: "Setting Up the Adagios Web Interface for Nagios"
 description: "Adagios provides a clean and simplified approach to using the Nagios server-monitoring system. Learn everything you need to get started with Adagios in this tutorial."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-06-21
 keywords: ['adagios tutorial','nagios monitoring','nagios web interface']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-06-21
-modified_by:
-  name: Linode
 external_resources:
 - '[GitHub: opinkerfi/adagios - Users Guide](https://github.com/opinkerfi/adagios/wiki/Users-guide)'
 - '[GitHub: opinkerfi/adagios - Using Adagios WEB API](https://github.com/opinkerfi/adagios/wiki/Using-Adagios-WEB-API)'
@@ -19,9 +18,9 @@ In this tutorial, learn how to get started with Adagios on a CentOS Stream 8 or 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Your Linode Compute Instance needs to be running CentOS 8 or a comparable distribution. The instructions in this tutorial have been specifically tested on CentOS 8, but should be compatible with systems like AlmaLinux 8 and Rocky Linux 8 as well.
 

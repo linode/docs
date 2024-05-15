@@ -1,16 +1,15 @@
 ---
 slug: how-to-use-grep
+title: "Using the grep Command in Linux: Finding Text & Strings in Files"
 description: "Use the grep command to filter output from administrative commands, so you get only relevant data. This guide shows you how. ✓ Click to learn today!"
+authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
+published: 2017-04-10
+modified: 2017-11-27
 keywords: ["linux", "how to", "grep", "filter"]
 aliases: ['/quick-answers/linux/how-to-use-grep/','/quick-answers/how-to-use-grep/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-27
-modified_by:
-  name: Phil Zona
-published: 2017-04-10
-title: "Using the grep Command in Linux: Finding Text & Strings in Files"
 tags: ["linux"]
-authors: ["Phil Zona"]
 ---
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/pz2xgdch29?videoFoam=true" title="Linode - How to use the grep command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
@@ -33,4 +32,4 @@ In this guide, you'll learn how to use the `grep` command. When performing admin
 
     This example will search the `/etc/ssh/sshd_config` file for strings of alphabetic characters that are 16-20 characters long, but you can use any regex pattern you like.
 
-These are simply a few basic ways to use `grep`. Many other options exist, and in combination with other tools, it serves as an invaluable utility for performing administrative tasks on your Linode. For more information on some of `grep`'s advanced features, check out our guide on how to [search and filter text with grep](/docs/guides/how-to-grep-for-text-in-files/).
+These are simply a few basic ways to use `grep`. Many other options exist, and in combination with other tools, it serves as an invaluable utility for performing administrative tasks on your Linode. For more information on some of `grep`'s advanced features, check out our guide on how to [search and filter text with grep](/docs/guides/how-to-use-grep-command/).

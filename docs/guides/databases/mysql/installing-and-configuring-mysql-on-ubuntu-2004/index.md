@@ -1,18 +1,17 @@
 ---
 slug: installing-and-configuring-mysql-on-ubuntu-2004
+title: "Installing and Configuring MySQL on Ubuntu 20.04"
+title_meta: "How to Install and configure MySQL on Ubuntu 20.04"
 description: "This guide hows you how to install and configure MySQL server on Ubuntu 20.04 Linux"
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-11-29
 keywords: ['mariadb vs mysql', 'install mysql linux', 'configure mysql linux']
 tags: ['mysql', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-29
-modified_by:
-  name: Linode
-title: "Installing and Configuring MySQL on Ubuntu 20.04"
-title_meta: "How to Install and configure MySQL on Ubuntu 20.04"
 external_resources:
 - '[MariaDB website](https://mariadb.com/)'
 - '[MySQL website](https://www.mysql.com/)'
-authors: ["Jeff Novotny"]
 ---
 
 Ubuntu users have a choice between two reliable *Relational Database Management Systems* (RDBMS), [*MySQL*](https://www.mysql.com/) and [*MariaDB*](https://mariadb.com/). MySQL has a long-standing edge in popularity, but there has been increased interest in MariaDB due to its performance advantages and added features. This guide compares the two database systems and provides instructions on how to install and use MySQL on Ubuntu 20.04.

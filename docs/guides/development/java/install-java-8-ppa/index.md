@@ -1,18 +1,17 @@
 ---
 slug: install-java-8-ppa
+title: "Install Java 8 JDK"
 description: 'Shortguide for installing Java 8 JDK with the Oracle ppa repositories.'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-01-09
+modified: 2018-02-02
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
-modified: 2018-02-02
-modified_by:
-  name: Sam Foo
-title: "Install Java 8 JDK"
-published: 2018-01-09
 headless: true
 show_on_rss_feed: false
 tags: ["java"]
 aliases: ['/development/java/install-java-8-ppa/']
-authors: ["Jared Kobos"]
 ---
 The steps in this section will install the Java 8 JDK on Ubuntu 16.04. For other distributions, see the [official docs](https://docs.oracle.com/javase/8/docs/technotes/guides/install/linux_jdk.html#BJFGGEFG).
 

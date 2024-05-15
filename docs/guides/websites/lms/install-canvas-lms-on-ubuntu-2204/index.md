@@ -1,19 +1,23 @@
 ---
 slug: install-canvas-lms-on-ubuntu-2204
+title: How to Install Canvas on Ubuntu 22.04
+title_meta: Installing Canvas on Ubuntu 22.04
 description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Canvas on Ubuntu 22.04.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-04-25
 keywords: ['Install canvas lms', 'canvas lms', 'install canvas ubuntu 22.04', 'self-host canvas lms']
 tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2023-04-25
-modified_by:
-  name: Linode
-title: How to Install Canvas on Ubuntu 22.04
-title_meta: Installing Canvas on Ubuntu 22.04
 external_resources:
 - '[Canvas](https://www.instructure.com/canvas)'
 - '[What is Learning Management System](https://www.shareknowledge.com/blog/what-learning-management-system-and-why-do-i-need-one)'
 - '[PostgreSQL Client Authentication](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html)'
+relations:
+    platform:
+        key: how-to-install-canvas
+        keywords:
+            - distribution: Ubuntu 22.04
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a modern open-source Learning Management System (LMS) by Instructure, Inc. that helps makes distance learning possible. An LMS like Canvas is a software application or web-based technology that you use to plan, implement, and assess a specific learning process. This guide helps you install all of its prerequisites, install Canvas LMS on Ubuntu, perform required Canvas setups, ensure your Canvas setup is secure, and then access your Canvas setup. This guide uses the **Ubuntu 22.04** distribution.
@@ -30,7 +34,7 @@ Before you can clone and install Canvas, you must ensure certain prerequisite ap
 
 The following sections help you install the software you need before you can clone and install Canvas. Here is a quick list of the software and versions used for this guide:
 
-- Ruby [version 2.7 minimum](https://github.com/instructure/canvas-lms/wiki/Quick-Start#dependency-installation), version 3.0 and above are untested
+- Ruby [version 3.1 minimum](https://github.com/instructure/canvas-lms/wiki/Quick-Start#dependency-installation).
 - Apache version 2.4.52
 - Passenger version 6.0.10
 - Git version 2.34.1
@@ -151,10 +155,6 @@ The steps in this section explain how to install Ruby using the Ruby Environment
 
     If you have an old version of Ruby, you can upgrade it using the procedure explained in this section and select the version needed for the Canvas LMS installation.
 
-    {{< note type="warning">}}
-    You must use Ruby version 2.7.x, rather than version 3 and above. Version 3 is untested with Canvas and may cause problems.
-    {{< /note >}}
-
 1. Obtain the Rbenv installation script using the following command:
 
     ```command
@@ -189,21 +189,21 @@ The steps in this section explain how to install Ruby using the Ruby Environment
     ```
 
     {{< note>}}
-    You should see the Ruby version 2.7.6 is on the list.
+    You should see the Ruby version 3.1.3 is on the list.
     {{< /note >}}
 
-1. Install the 2.7.6 version of Ruby used for this guide using the following command. The installation process takes several minutes to complete the installation.
+1. Install the 3.1.3 version of Ruby used for this guide using the following command. The installation process takes several minutes to complete the installation.
 
     ```command
-    rbenv install 2.7.6 --verbose
+    rbenv install 3.1.3 --verbose
     ```
 
     Eliminate the `--verbose` switch if you don’t want to see the installation process taking place.
 
-1. Select the 2.7.6 version of Ruby using the following command:
+1. Select the 3.1.3 version of Ruby using the following command:
 
     ```command
-    export RBENV_VERSION=2.7.6
+    export RBENV_VERSION=3.1.3
     ```
 
 1. Verify the Ruby installation using the following command:
@@ -229,7 +229,7 @@ Once you have the above prerequisites installed, follow the steps below to insta
 1. Add the specific version of Ruby Bundler to your Ruby by running the following command:
 
     ```command
-    sudo gem install bundler --version 2.2.19
+    sudo gem install bundler
     ```
 
     You should see an output as shown below:
@@ -237,10 +237,6 @@ Once you have the above prerequisites installed, follow the steps below to insta
     ```output
     1 gem installed
     ```
-
-    {{< note>}}
-    Using other installation methods tends to overwrite your Ruby installation with a 3.x version.
-    {{< /note >}}
 
 1. You can check if the Bundler is installed correctly by running the following command:
 
@@ -250,7 +246,7 @@ Once you have the above prerequisites installed, follow the steps below to insta
     You should see an output as shown below:
 
     ```output
-    Bundler version 2.2.19
+    Bundler version 2.4.5
     ```
 
 1. Verify that installing Bundler didn’t update Ruby by running the following command:
@@ -261,7 +257,7 @@ Once you have the above prerequisites installed, follow the steps below to insta
     You should see an output as shown below:
 
     ```output
-    2.7.6
+    3.1.3
     ```
 
 ### Install Apache and Passenger

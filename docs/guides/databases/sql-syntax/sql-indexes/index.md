@@ -1,15 +1,14 @@
 ---
 slug: sql-indexes
+title: "An Introduction to SQL Indexes"
+title_meta: "How to Use SQL Indexes"
 description: 'SQL indexes are used to improve a database''s performance during query lookups. This guide discusses unique indexes, primary keys, and composite primary keys.'
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+published: 2022-03-25
 keywords: ['database index', 'non-unique indexes', 'database performance']
 tags: ['MySQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-25
-modified_by:
-  name: Linode
-title: "An Introduction to SQL Indexes"
-title_meta: "How to Use SQL Indexes"
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 In relational database systems, a *database index* is an extremely powerful tool for data retrieval. In this guide, you learn about unique indexes, primary keys, and composite primary keys.
@@ -53,8 +52,7 @@ You should see the following output:
 | 333333333 | Hansen   | Robert    |
 +-----------+----------+-----------+
 {{</ output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Unless mentioned otherwise, all the commands in this guide work well on both **MySQL** and **PostgreSQL** databases.
 {{< /note >}}
 
@@ -70,8 +68,7 @@ CREATE TABLE Student (
 );
 
     CREATE UNIQUE INDEX SSIndex ON Student (SSNumber);
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Both the SQL commands above are delimited by a semicolon (;), which is compatible with most relational database systems. `SSNumber` is specifically designated as the table’s primary key.
 {{< /note >}}
 

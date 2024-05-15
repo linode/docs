@@ -1,25 +1,22 @@
 ---
 slug: email-with-citadel-on-ubuntu-9-04-jaunty
-deprecated: true
+title: 'Email with Citadel on Ubuntu 9.04 (Jaunty)'
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 9.04 (Jaunty) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-09
+modified: 2011-05-17
 keywords: ["citadel", "ubuntu 9.04 mail server", "groupware", "email server", "email howto"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/email-with-citadel-on-ubuntu-9-04-jaunty/','/email/citadel/ubuntu-9-04-jaunty/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-11-09
-title: 'Email with Citadel on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
 

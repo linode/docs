@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-nextcloud-on-ubuntu-22-04
-description: 'This guide introduces the productivity website Nextcloud and explains how to install and configure it on Ubuntu 22.04.'
-keywords: ['Nextcloud Ubuntu','what is Nextcloud','how to install nextcloud','Ubuntu configure Nextcloud','download Nextcloud Ubuntu']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-07
-modified: 2022-11-28
-modified_by:
-  name: Linode
 title: "Install Nextcloud on Ubuntu 22.04"
 title_meta: "How to Install Nextcloud on Ubuntu 22.04"
+description: 'This guide introduces the productivity website Nextcloud and explains how to install and configure it on Ubuntu 22.04.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-06-07
+modified: 2022-11-28
+keywords: ['Nextcloud Ubuntu','what is Nextcloud','how to install nextcloud','Ubuntu configure Nextcloud','download Nextcloud Ubuntu']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Nextcloud website](https://nextcloud.com/)'
 - '[Nextcloud documentation](https://docs.nextcloud.com/server/24/admin_manual/contents.html)'
@@ -27,7 +27,6 @@ relations:
         key: install-nextcloud
         keywords:
            - distribution: Ubuntu 22.04
-authors: ["Jeff Novotny"]
 ---
 
 [Nextcloud](https://nextcloud.com/) is a free and open source application for storing and sharing files. It allows approved users to access documents and pictures online from a central location. Nextcloud is considered a strong alternative to Dropbox and Google Drive. This guide explains how to download, install, and configure Nextcloud on Ubuntu 22.04 LTS. It also explains how to configure an Ubuntu LAMP stack to support Nextcloud.
@@ -58,7 +57,7 @@ See the [Nextcloud feature comparison](https://nextcloud.com/compare/) for a mor
 
 1. To properly use Nextcloud and secure the installation with HTTPS, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -66,7 +65,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Nextcloud requires a LAMP stack to work properly. This section provides instructions on how to install the Apache web server, MariaDB RDBMS, and the PHP programming languages. While these instructions are geared towards Ubuntu 22.04 users, they are also broadly applicable to Ubuntu 20.04.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Nextcloud only recently added support for PHP 8.1 in version 24. PHP 8.1 is the default PHP library package in Ubuntu 22.04. Earlier versions of Nextcloud must use PHP 7.4. This might require a downgrade of the local PHP packages.
 {{< /note >}}
 
@@ -258,7 +257,7 @@ When MariaDB is installed, create a new database for Nextcloud to use. It is als
 
 Nextcloud uses the PHP programming language. Nextcloud version 24 supports PHP release 8.1. This is also the default release of PHP in the Ubuntu packages, so the regular `php` package can be installed. However, PHP 7.4 is required to use earlier versions of Nextcloud.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To install PHP 7.4, substitute `php7.4` in place of `php` for all packages. For example, `php-cli` becomes `php7.4-cli`.
 {{< /note >}}
 

@@ -1,14 +1,11 @@
 ---
 title: Automate Cloud Resource Deployment
 description: 'This guide shows you how to automate server builds using Puppet and Chef cookbooks, golden disks and images, on a Linode running the Linux Operating System.'
-keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
-tags: ["linode platform","automation"]
 published: 2013-06-28
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
+tags: ["linode platform","automation"]
 aliases: ['/platform/automating-server-builds/','/guides/automating-server-builds/']
-authors: ["Linode"]
 ---
 
 ## Why You Should Automate Server Builds
@@ -42,7 +39,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 
 ### Restore a Golden Image
 
-1. Copy the duplicate disk to your other Compute Instances, either using [the Linode API](/docs/api/linode-instances/#disk-clone) or [manually](/docs/products/compute/compute-instances/guides/copy-a-disk-image-to-a-different-account/#copying-the-disk). If you're using a Linode Backups snapshot, you would [restore it](/docs/products/storage/backups/guides/restore-to-an-existing-linode/) to the desired Compute Instances.
+1. Copy the duplicate disk to your other Compute Instances, either using [the Linode API](/docs/api/linode-instances/#disk-clone) or [manually](/docs/products/compute/compute-instances/guides/copy-a-disk-image-to-a-different-account/#copying-the-disk). If you're using a Linode Backups snapshot, you would [restore it](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) to the desired Compute Instances.
 
 1. Create [configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) on those additional Compute Instances to boot using the duplicated disk.
 1. Any user credentials from the golden image will also be on the duplicated disks so you should change the new system's root password.
