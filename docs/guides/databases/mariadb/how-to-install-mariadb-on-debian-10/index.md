@@ -6,6 +6,7 @@ description: "Want to replace MySQL? Read through this guide, which explains how
 authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
 published: 2020-01-31
+modified: 2024-05-16
 keywords: ["mariadb", "Debian 10", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-10/','/databases/mariadb/mariadb-setup-debian-10/']
@@ -55,7 +56,7 @@ Allowing unrestricted access to MariaDB on a public IP not advised but you may c
 
 ### MariaDB Client
 
-The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal using the `mariadb` command.
+The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal using the `mariadb` command. Review the official [MariaDB Command-Line Client](https://mariadb.com/kb/en/mariadb-command-line-client/) guide for more details on this command.
 
 ### Root Login
 
