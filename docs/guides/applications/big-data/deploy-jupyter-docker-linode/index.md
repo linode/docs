@@ -1,13 +1,13 @@
 ---
 slug: deploy-jupyter-docker-linode
 title: "Deploy a Docker Multi-Container Application to Linode"
-description: 'Jupyter and Docker workflows streamline collaboration across development environments. Find out how to deploy your workflow to Linode in this tutorial.'
+description: "Jupyter and Docker workflows streamline collaboration across development environments. Find out how to deploy your workflow to Linode in this tutorial."
+authors: ["Brian John"]
+contributors: ["Brian John"]
+published: 2023-03-07
+modified: 2024-05-16
 keywords: ['jupyter','docker','deploy','linode']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Brian John"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Jupyter](https://jupyter.org/)'
 - '[Docker](https://www.docker.com/)'

@@ -1,13 +1,13 @@
 ---
 slug: manage-jupyter-data-docker
 title: "Managing Jupyter Data in Docker Images and Containers"
-description: 'Work with large Jupyter datasets inside Docker containers, images, and volumes. Our tutorial shows how to easily manage and share your data.'
+description: "Work with large Jupyter datasets inside Docker containers, images, and volumes. Our tutorial shows how to easily manage and share your data."
+authors: ["Brian John"]
+contributors: ["Brian John"]
+published: 2023-03-07
+modified: 2024-05-16
 keywords: ['jupyter','docker','data','management','containers','images','volumes','bind mounts']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Brian John"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Jupyter](https://jupyter.org/)'
 - '[Docker](https://www.docker.com/)'

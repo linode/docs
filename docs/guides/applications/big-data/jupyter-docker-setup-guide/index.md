@@ -1,13 +1,13 @@
 ---
 slug: jupyter-docker-setup-guide
 title: "How to Set Up Jupyter with Docker"
-description: 'Jupyter and Docker revolutionized collaborative workflows involving code. This guide introduces both technologies and provides detailed setup steps.'
+description: "Jupyter and Docker revolutionized collaborative workflows involving code. This guide introduces both technologies and provides detailed setup steps."
+authors: ["Brian John"]
+contributors: ["Brian John"]
+published: 2023-03-07
+modified: 2024-05-16
 keywords: ['jupyter','docker','workflows','setup','guide']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Brian John"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Jupyter](https://jupyter.org/)'
 - '[Docker](https://www.docker.com/)'

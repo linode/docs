@@ -1,13 +1,13 @@
 ---
 slug: multi-container-orchestration-docker-compose
 title: "Simplify Multi-Container Orchestration with Docker Compose"
-description: 'Simplify multi-container orchestration using Docker Compose. Learn how with the Jupyter and MySQL demonstration covered in this guide.'
+description: "Simplify multi-container orchestration using Docker Compose. Learn how with the Jupyter and MySQL demonstration covered in this guide."
+authors: ["Brian John"]
+contributors: ["Brian John"]
+published: 2023-03-07
+modified: 2024-05-16
 keywords: ['jupyter','docker','compose','container','orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Brian John"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Jupyter](https://jupyter.org/)'
 - '[Docker](https://www.docker.com/)'

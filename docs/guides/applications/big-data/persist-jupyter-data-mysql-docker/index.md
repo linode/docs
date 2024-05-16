@@ -1,13 +1,13 @@
 ---
 slug: persist-jupyter-data-mysql-docker
 title: "Advanced Jupyter Data Persistence with MySQL and Docker"
-description: 'Take advantage of persistent data storage for Jupyter applications using MySQL and Docker. Learn how in this advanced step-by-step walkthrough.'
+description: "Take advantage of persistent data storage for Jupyter applications using MySQL and Docker. Learn how in this advanced step-by-step walkthrough."
+authors: ["Brian John"]
+contributors: ["Brian John"]
+published: 2023-03-07
+modified: 2024-05-16
 keywords: ['jupyter','docker','data','persistence','storage','mysql','containers']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Brian John"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Jupyter](https://jupyter.org/)'
 - '[Docker](https://www.docker.com/)'
