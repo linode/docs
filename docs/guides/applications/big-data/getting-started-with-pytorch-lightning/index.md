@@ -1,13 +1,13 @@
 ---
 slug: getting-started-with-pytorch-lightning
 title: "Getting Started With PyTorch Lightning"
-description: 'This guide explains the PyTorch Lightning developer framework and covers general optimizations for its use on Linode GPU cloud instances.'
+description: "This guide explains the PyTorch Lightning developer framework and covers general optimizations for its use on Linode GPU cloud instances."
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2023-08-22
+modified: 2024-05-16
 keywords: ['pytorch lightning','training datasets','python pytorch','pytorch lightning','neural networks','machine modeling','nn','ai research','gpu','nn modeling','ml','neural network modeling','pytorch optimization','pytorch lightning optimization','pytorch storage','pytorch lightning modeling','pytorch lightning s3','pytorch lightning gpu','pytorch lightning staging','pytorch lightning cost savings']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Tom Henderson"]
-published: 2023-08-22
-modified_by:
-  name: Linode
 external_resources:
 - '[PyTorch](https://pytorch.org/)'
 - '[Lightning AI](https://lightning.ai/)'
