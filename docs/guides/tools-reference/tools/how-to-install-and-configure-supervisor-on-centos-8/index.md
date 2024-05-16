@@ -1,25 +1,24 @@
 ---
 slug: how-to-install-and-configure-supervisor-on-centos-8
+title: "Installing and Configuring Supervisor on CentOS 8"
+title_meta: "How to Install and Configure Supervisor on CentOS 8"
 description: "Supervisor is a process control system that's often used for services without management scripts. This guide shows how to configure Supervisor on CentOS 8."
+authors: ["Dan Nielsen"]
+contributors: ["Dan Nielsen"]
+published: 2021-02-26
 keywords: ['centos', 'system', 'supervisor', 'supervisord']
 tags: ["linux", "automation", "monitoring", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-26
 image: InstallConfig_SupervisiorCentOS8.png
-modified_by:
-  name: Linode
-title: "Installing and Configuring Supervisor on CentOS 8"
-title_meta: "How to Install and Configure Supervisor on CentOS 8"
 external_resources:
 - '[Configuration File — Supervisor 4.2.1 documentation](http://supervisord.org/configuration.html)'
-authors: ["Dan Nielsen"]
 ---
 
 [**Supervisor**](http://supervisord.org/) is a process control system based on the client/server model. It can be used to simplify process management by providing a centralized location for process control. It's most often deployed to control services that don't have initialization, auto-start, or management scripts. Remote process control is also supported via [Remote Procedure Calls](https://man7.org/linux/man-pages/man3/rpc.3.html), or RPC.
 
 As an example, if you have written a custom Node.js web application, Supervisor could be used to ensure that it starts on boot. As well, Supervisor could restart the application if it quits unexpectedly.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide uses a Python program called `app.py` as an example for process control. Supervisor can control Python applications, Node.js applications, or programs written in other languages or runtimes.
 {{< /note >}}
 
@@ -283,8 +282,7 @@ A full list of actions and other `supervisorctl` documentation can be found at [
 ## Enabling HTTP Access (Optional)
 
 You may want to add HTTP access to `supervisord`, either to enable the web interface or to allow remote RPC calls.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Enabling HTTP access exposes `supervisord` to the internet at large. If you choose to enable HTTP access, make sure to configure firewall rules that limit access to trusted IPs. As well, configure a user name and a long, complex, and unique password for service access.
 {{< /note >}}
 

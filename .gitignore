@@ -7,6 +7,7 @@ public/
 .pynb_checkpoints
 .env
 .venv
+.vscode
 
 .DS_Store
 .DS_Store?

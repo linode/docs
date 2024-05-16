@@ -3,7 +3,7 @@ Make it so the main content column slides over on mobile and
 does not get too small on desktop.
 */
 .main__inner {
-  min-width: 100vw;
+  min-width: 100%;
 }
 
 @screen md {

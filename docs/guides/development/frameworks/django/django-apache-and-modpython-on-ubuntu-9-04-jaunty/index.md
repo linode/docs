@@ -1,22 +1,21 @@
 ---
 slug: django-apache-and-modpython-on-ubuntu-9-04-jaunty
-deprecated: true
+title: 'Django, Apache and mod_python on Ubuntu 9.04 (Jaunty)'
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.04 (Jaunty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-31
+modified: 2011-05-17
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 9.04", "jaunty"]
 tags: ["web applications","apache","django","mysql","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/django-apache-mod-python/ubuntu-9-04-jaunty/','/development/frameworks/django/django-apache-and-modpython-on-ubuntu-9-04-jaunty/','/websites/frameworks/django-apache-and-modpython-on-ubuntu-9-04-jaunty/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-08-31
-title: 'Django, Apache and mod_python on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 9.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.

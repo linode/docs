@@ -1,21 +1,18 @@
 ---
 slug: open-web-analytics-install-and-launch-on-your-server
+title: 'Open Web Analytics (OWA): Install & Launch on Your Server'
 description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
+authors: ["Douglas Colby"]
+contributors: ["Douglas Colby"]
+published: 2016-01-05
 keywords: ['open web analytics','owa','mysql','analytics']
 tags: ["centos","debian","ubuntu","analytics","statistics","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-01-05
-modified: 2016-01-05
-modified_by:
-    name: Alex Fornuto
-title: 'Open Web Analytics (OWA): Install & Launch on Your Server'
 external_resources:
  - '[OWA Website](http://www.openwebanalytics.com)'
  - '[OWA Forum](http://www.openwebanalytics.com/?page_id=4)'
 aliases: ['/uptime/analytics/open-web-analytics-install-and-launch-on-your-server/']
-authors: ["Douglas Colby"]
 ---
-
 
 Open Web Analytics (OWA) is an open-source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
 

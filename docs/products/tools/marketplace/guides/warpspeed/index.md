@@ -1,17 +1,14 @@
 ---
+title: "Deploy WarpSpeed VPN through the Linode Marketplace"
 description: "Deploy WarpSpeed on a Linode Compute Instance. This provides you with one of the fastest, easiest to use, and most secure VPN gateway software."
+published: 2021-11-12
+modified: 2022-03-08
 keywords: ['vpn','security','tunnel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
-published: 2021-11-12
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy WarpSpeed VPN through the Linode Marketplace"
 external_resources:
 - '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'
 aliases: ['/guides/deploying-warpspeed-marketplace-app/','/guides/warpspeed-marketplace-app/']
-authors: ["Linode"]
 ---
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.

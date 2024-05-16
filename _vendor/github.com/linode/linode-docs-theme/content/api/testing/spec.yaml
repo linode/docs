@@ -5,15 +5,15 @@ info:
   description: |
     Test API schema
 servers:
-- url: https://api.linode.com/v4
+  - url: https://api.linode.com/v4
 tags:
-- name: Account
-  description: Test tag
+  - name: Account
+    description: Test tag
 paths:
   /account:
     post:
       tags:
-      - Account
+        - Account
       summary: Test Endpoint
       description: This is only a test
       requestBody:
@@ -28,29 +28,99 @@ paths:
                   type: array
                   description: Example array. Items should follow.
                   items:
-                    $ref: '#/components/schemas/ExampleOne'
+                    $ref: "#/components/schemas/ExampleOne"
+                testinterfaces:
+                  $ref: "#/components/schemas/TestConfigInterfaces"
       responses:
-        '200':
+        "200":
           description: Success!
           content:
             application/json:
               schema:
-                type: object
+                properties:
+                  testinterfaces:
+                    $ref: "#/components/schemas/TestConfigInterfaces"
 components:
   schemas:
     ExampleOne:
       allOf:
-      - $ref: '#/components/schemas/ExampleTwo'
-      - type: object
-        description: Example 1 Object
-        properties:
-          test1:
-            type: string
-            description: test 1
+        - $ref: "#/components/schemas/ExampleTwo"
+        - type: object
+          description: Example 1 Object
+          properties:
+            test1:
+              type: string
+              description: test 1
     ExampleTwo:
       description: Example 2 Object
       properties:
         test2:
           type: string
           description: test 2
-    
+    TestConfigInterface:
+      type: object
+      description: >
+        The Network Interface.
+      properties:
+        id:
+          readOnly: true
+          type: integer
+          description: The unique ID representing this interface.
+          example: 101
+          x-linode-cli-display: 1
+        label:
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: "[a-zA-Z0-9-]+"
+          x-linode-filterable: true
+          nullable: true
+          description: |
+            The name of this interface.
+          x-linode-cli-display: 2
+        ipam_address:
+          type: string
+          format: ip/netmask
+          nullable: true
+          description: |
+            This Network Interface's private IP address in Classless Inter-Domain Routing (CIDR) notation.
+          example: "10.0.0.1/24"
+        purpose:
+          type: string
+          enum:
+            - public
+            - vlan
+          description: |
+            The type of interface.
+          example: vlan
+          x-linode-cli-display: 3
+    TestConfigInterfaces:
+      type: array
+      items:
+        $ref: "#/components/schemas/TestConfigInterface"
+      minItems: 1
+      maxItems: 3
+      uniqueItems: true
+      required:
+        - purpose
+      description: |
+        An array of Network Interfaces to add to this Linode's Configuration Profile.
+      example:
+        - {
+            "id": 101,
+            "purpose": "public",
+            "ipam_address": null,
+            "label": null,
+          }
+        - {
+            "id": 102,
+            "purpose": "vlan",
+            "ipam_address": "10.0.0.1/24",
+            "label": "vlan-1",
+          }
+        - {
+            "id": 103,
+            "purpose": "vlan",
+            "ipam_address": "10.0.0.2/24",
+            "label": "vlan-2",
+          }
