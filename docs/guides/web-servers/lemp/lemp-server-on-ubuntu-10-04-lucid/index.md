@@ -1,25 +1,22 @@
 ---
 slug: lemp-server-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'LEMP Server on Ubuntu 10.04 (Lucid)'
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-06-29
+modified: 2013-09-23
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-ubuntu-10-04-lucid/','/lemp-guides/ubuntu-10-04-lucid/','/web-servers/lemp/lemp-server-on-ubuntu-10-04-lucid/']
-modified: 2013-09-23
-modified_by:
-  name: Linode
-published: 2010-06-29
-title: 'LEMP Server on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 

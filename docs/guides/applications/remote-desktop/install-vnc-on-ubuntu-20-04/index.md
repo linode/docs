@@ -1,15 +1,15 @@
 ---
 slug: install-vnc-on-ubuntu-20-04
+title: 'Install VNC on Ubuntu 20.04'
 description: 'This guide shows how to install and connect to a desktop environment on your Linode'
 og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-10-21
+modified: 2023-06-12
 keywords: ["vnc", "remote desktop", "ubuntu", "20.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-21
-modified: 2023-06-12
-modified_by:
-  name: Linode
-title: 'Install VNC on Ubuntu 20.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[TigerVNC](https://tigervnc.org/)'
@@ -19,7 +19,6 @@ relations:
         keywords:
             - distribution: Ubuntu 20.04
 aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-21-04/', '/guides/install-vnc-on-ubuntu-21-04/']
-authors: ["Linode"]
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.

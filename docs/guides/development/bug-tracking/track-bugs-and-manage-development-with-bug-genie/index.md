@@ -1,17 +1,16 @@
 ---
 slug: track-bugs-and-manage-development-with-bug-genie
+title: Track Bugs and Manage Development with Bug Genie
 description: 'Install the advanced bug tracking and issue management software Bug Genie on your Linode to manage projects.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-04
 keywords: ["bug tracking", "issue tracking", "feature development", "bug genie", "the bug genie"]
 tags: ["lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/track-bugs-and-manage-development-with-bug-genie/','/applications/development/track-bugs-and-manage-development-with-bug-genie/','/web-applications/project-management/bug-genie/','/development/bug-tracking/track-bugs-and-manage-development-with-bug-genie/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-05-03
-title: Track Bugs and Manage Development with Bug Genie
 deprecated: true
-authors: ["Linode"]
 ---
 
 Bug Genie is an issue tracking system used to help manage all phases of the development process, including planning, bug tracking, feature development, and overall project management. Bug Genie also provides the ability to generate sophisticated reports and graphs to help project leaders and stakeholders gain a rich understanding of the ongoing state and progress of projects' development.

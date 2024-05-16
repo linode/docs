@@ -1,15 +1,12 @@
 ---
-description: "Learn how to configure networking using the ifupdown utility on Debian and older Ubuntu distributions"
-keywords: ["static", "ip address","ifupdown", "ifup", "ifdown"]
-published: 2022-05-25
-modified_by:
-  name: Linode
 title: "Network Configuration Using ifupdown"
+description: "Learn how to configure networking using the ifupdown utility on Debian and older Ubuntu distributions"
+published: 2022-05-25
+keywords: ["static", "ip address","ifupdown", "ifup", "ifdown"]
 tags: ["networking","linode platform",]
 external_resources:
   - '[ifupdown documentation](https://manpages.debian.org/bullseye/ifupdown/interfaces.5.en.html)'
 aliases: ['/guides/ifupdown/']
-authors: ["Linode"]
 ---
 
 The [ifupdown](https://manpages.debian.org/bullseye/ifupdown/ifup.8.en.html) package is an older network configuration software that's still used by Debian and older Ubuntu distributions (such as 16.04 LTS and earlier).

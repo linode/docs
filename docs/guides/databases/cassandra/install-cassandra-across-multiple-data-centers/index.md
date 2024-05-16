@@ -2,12 +2,11 @@
 slug: install-cassandra-across-multiple-data-centers
 title: "How to Install Cassandra Across Multiple Data Centers"
 description: 'This guide introduces the Cassandra distributed database and explains how to install, configure, and use it.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-08-22
 keywords: ['install Cassandra','configure Cassandra','Cassandra CQL','create keyspace Cassandra']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-08-22
-modified_by:
-  name: Linode
 external_resources:
 - '[Cassandra](https://cassandra.apache.org/_/index.html)'
 - '[Cassandra Documentation](https://cassandra.apache.org/doc/latest/)'
@@ -63,14 +62,14 @@ Cassandra is usually not the best choice for small or little-used data sets, or 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Each data center should have at least two nodes. Cassandra recommends at least 4GB of memory for all nodes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Cassandra
@@ -82,7 +81,7 @@ To install Cassandra, follow these steps. Unless otherwise specified, execute th
 1.  Ensure the system is up to date. Reboot the system if necessary:
 
     ```command
-    sudo apt- update -y && sudo apt upgrade -y
+    sudo apt update -y && sudo apt upgrade -y
     ```
 
 1.  Cassandra requires the use of a Java runtime. There are several different versions of Java to choose from, including OpenJDK and Oracle Java. This guide uses OpenJDK 11. Install OpenJDK using `apt`:

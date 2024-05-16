@@ -1,19 +1,16 @@
 ---
-description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
-keywords: ['networking','multi-queue']
-published: 2021-07-01
-modified: 2023-03-03
-modified_by:
-  name: Linode
 title: "Configuring Multi-Queue NICs"
 title_meta: "How To Configure Multi-Queue NICs"
+description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
+published: 2021-07-01
+modified: 2023-03-03
+keywords: ['networking','multi-queue']
 image: NICS.jpg
 external_resources:
  - '[KVM Multi-Queue documentation and performance](https://www.linux-kvm.org/page/Multiqueue)'
  - '[HOWTO for multiqueue network device support](https://www.kernel.org/doc/html/latest/networking/multiqueue.html)'
 tags: ["networking","linode platform"]
 aliases: ['/guides/multiqueue-nic/']
-authors: ["Linode"]
 ---
 
 Multi-queue NICs (network interface cards) are supported on all Compute Instances that have 2 or more CPU cores (vCPUs). This feature provides multiple receive (RX) and transmit (TX) queues, assigns them to different network interrupts, and balances them over multiple vCPUs. Historically, this traffic was all handled by a single vCPU core. Depending on the server's workload and network traffic, multi-queue can dramatically enhance network performance.

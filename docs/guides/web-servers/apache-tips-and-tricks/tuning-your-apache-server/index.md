@@ -1,21 +1,20 @@
 ---
 slug: tuning-your-apache-server
+title: Tuning Your Apache Server
 description: 'This guide provides you with information on tuning the performance and configuration of your Apache web server to optimize the load times of your website.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-02-27
+modified: 2019-02-01
 keywords: ["configuration", "apache", "web server", "resource tuning"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/tuning-your-apache-server/','/web-servers/apache-tips-and-tricks/tuning-your-apache-server/']
-modified: 2019-02-01
-modified_by:
-  name: Linode
-published: 2015-02-27
-title: Tuning Your Apache Server
 external_resources:
  - '[Apache Performance Tuning](https://httpd.apache.org/docs/2.4/misc/perf-tuning.html)'
  - '[Apache MPM Common Directives](http://httpd.apache.org/docs/2.4/mod/mpm_common.html)'
  - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
 dedicated_cpu_link: true
 tags: ["web server","apache"]
-authors: ["Elle Krout"]
 ---
 
 ![Tuning Your Apache Server](tuning-your-apache-server.png "Tuning Your Apache Server")
@@ -23,8 +22,7 @@ authors: ["Elle Krout"]
 Your Apache configuration settings have a major effect on your Linode's performance. There are several tools that can be used to further inspect your Apache server's performance and make informed decisions on how to begin tuning your Apache configurations. This guide will provide an overview of some process monitoring and system resource usage tools that can be used to inspect how Apache is affecting your Linode's performance. You will also learn about important Apache modules, like the Multi-Processing modules, that will allow you to make use of Apache's power and flexibility.
 
 ## Tools
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -98,7 +96,7 @@ The Apache2Buddy script, similar to [MySQLTuner](/docs/guides/how-to-optimize-my
 
 Apache version 2.4 offers three Multi Processing Modules (MPM) for managing your settings. Each module creates child processes, but differs in how they handle threads.
 
-{{< disclosure-note "Back up your Apache configuration file">}}
+{{< note type="warning" >}}
 Before making any changes to your Apache configuration, be sure to back up the configuration file:
 
  - On Debian/Ubuntu:
@@ -108,7 +106,7 @@ Before making any changes to your Apache configuration, be sure to back up the c
 - On CentOS/Fedora:
 
         cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ### Prefork
 The prefork module creates a number of child processes at launch, each child handles only one thread. Since these processes deal solely with one thread at a time, request speed can suffer should there be too many concurrent requests. When this occurs, some requests essentially have to wait in line to be acted upon. To handle this, you can increase the number of child processes that are spawned, however, this increases the amount of RAM being used. Prefork is the safest module, and should be used when using non-thread-safe libraries.
@@ -137,7 +135,7 @@ To use the worker or event modules, replace `<IfModule mpm_prefork_module>` with
 
 Next, you should alter the module settings you added in the previous step. To do this, you should take into consideration what each value does, and how best to change it. It is recommended to make incremental changes to your configuration settings and then monitor the effects.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 After making alterations to the Apache configuration file, restart the service.
 
 - On Debian/Ubuntu:

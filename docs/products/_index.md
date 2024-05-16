@@ -13,7 +13,7 @@ layout = "tabbed-section-layout"
 [cascade._target]
 # The section rendering for individual product pages uses the tabbed layout
 kind = "section"
-path = "/products/*/*/**"
+path = "/products/*/**"
 +++
 
  <!--more-->

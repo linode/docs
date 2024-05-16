@@ -2,12 +2,11 @@
 slug: adagios-web-interface-for-nagios
 title: "Setting Up the Adagios Web Interface for Nagios"
 description: "Adagios provides a clean and simplified approach to using the Nagios server-monitoring system. Learn everything you need to get started with Adagios in this tutorial."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-06-21
 keywords: ['adagios tutorial','nagios monitoring','nagios web interface']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-06-21
-modified_by:
-  name: Linode
 external_resources:
 - '[GitHub: opinkerfi/adagios - Users Guide](https://github.com/opinkerfi/adagios/wiki/Users-guide)'
 - '[GitHub: opinkerfi/adagios - Using Adagios WEB API](https://github.com/opinkerfi/adagios/wiki/Using-Adagios-WEB-API)'

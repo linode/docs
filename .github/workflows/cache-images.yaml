@@ -5,12 +5,6 @@ on:
     branches:
       - develop
 
-env:
-  repo_name: docs
-  repo_owner: linode
-  hugo_image_cache_name: hugo-generated-images
-  hugo_image_cache_path: /home/runner/work/docs/docs/docs-repo/resources/_gen/images/
-
 jobs:
   cache-images:
     runs-on: ubuntu-latest
@@ -27,19 +21,19 @@ jobs:
 
       - name: List contents of images dir
         continue-on-error: true
-        run: ls -al ${{ env.hugo_image_cache_path }}
+        run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
 
       - name: Cache images dir
         uses: actions/cache@v2
         with:
-          path: ${{ env.hugo_image_cache_path }}
-          key: ${{ env.hugo_image_cache_name }}-${{ github.run_id }}
+          path: ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+          key: ${{ vars.HUGO_IMAGE_CACHE_NAME }}-${{ github.run_id }}
           restore-keys: |
-            ${{ env.hugo_image_cache_name }}
+            ${{ vars.HUGO_IMAGE_CACHE_NAME }}
 
       - name: List contents of images dir
         continue-on-error: true
-        run: ls -al ${{ env.hugo_image_cache_path }}
+        run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
 
       - name: Install dependencies (Node)
         working-directory: ./docs-repo
@@ -48,7 +42,7 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.116.1'
+          hugo-version: ${{ vars.HUGO_VERSION }}
 
       - name: Build Hugo
         working-directory: ./docs-repo
@@ -59,7 +53,7 @@ jobs:
           curl \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ env.repo_owner }}/${{ env.repo_name }}/actions/caches?key=${{ env.hugo_image_cache_name }} \
+          https://api.github.com/repos/$GITHUB_REPOSITORY_OWNER/${GITHUB_REPOSITORY#*/}/actions/caches?key=${{ vars.HUGO_IMAGE_CACHE_NAME }} \
           -o cache-list.json
 
           echo "The following caches will be deleted:"
@@ -73,5 +67,5 @@ jobs:
             -X DELETE \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ env.repo_owner }}/${{ env.repo_name }}/actions/caches/$id
+            https://api.github.com/repos/$GITHUB_REPOSITORY_OWNER/${GITHUB_REPOSITORY#*/}/actions/caches/$id
           done

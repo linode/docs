@@ -26,6 +26,13 @@ click_analytics = true
 explorer_max_leafnodes = 50
 hits_per_page = 10
 
+[params.search_config2.recommendations]
+# We currently don't have a test environment filled with recommendation data.
+app_id = "KGUN8FAIPF"
+api_key = "d364d8e601808b96178d0776ed43b2c9"
+target_index = "linode-merged"
+
+
 # Holds configuration for the index with all of the sections merged in.
 [params.search_config2.sections_merged]
 name = "merged"
@@ -58,7 +65,7 @@ explorer_icon = "#icon-explorer--products"
 name = "guides"
 filters = "section.lvl0:guides"
 weight = 20
-title = "Guides"
+title = "Cloud Guides & Tutorials"
 noun = "Guide"
 explorer_icon = "#icon-explorer--guides"
 
@@ -108,13 +115,6 @@ noun = "Resource"
 seo_title_template = "Cloud Computing Resources | Linode"
 seo_title_template_category = "Cloud Computing {category} | Linode"
 explorer_icon = "#icon-explorer--resources"
-
-[params.search_config2.sections.community]
-name = "community"
-filters = "objectType:question"
-weight = 70
-title = "Q&A"
-explorer_icon = "#icon-explorer--qa"
 
 [module]
 [[module.mounts]]

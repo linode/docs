@@ -1,25 +1,22 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-fedora-14
-deprecated: true
+title: WSGI using uWSGI and nginx on Fedora 14
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-28
+modified: 2013-10-07
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/','/web-servers/nginx/python-uwsgi/fedora-14/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2010-12-28
-title: WSGI using uWSGI and nginx on Fedora 14
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 

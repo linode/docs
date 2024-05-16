@@ -1,15 +1,14 @@
 ---
 slug: deploy-7-days-to-die-linux-game-server
-description: "This guide shows you how to easily install the popular online game 7 Days to Die using LinuxGSM."
-keywords: ['7 days to die Linux Server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-08
-image: Deploy7DtoD_Linux.png
-modified_by:
-  name: Linode
 title: "Deploying a 7 Days to Die Server on Linux"
 title_meta: "How to Deploy a 7 Days to Die Server on Linux"
+description: "This guide shows you how to easily install the popular online game 7 Days to Die using LinuxGSM."
 authors: ["Sandro Villinger"]
+contributors: ["Sandro Villinger"]
+published: 2021-03-08
+keywords: ['7 days to die Linux Server']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: Deploy7DtoD_Linux.png
 ---
 
 Even eight years after its release, the Zombie Horde Survival game [7 Days to Die](https://7daystodie.com/) (7DTD) is still going strong. Its community is active and the zombie fun hasn't stopped. The game is even better when you and your friends play on your own server, using your own rules. Plus, when you [host a game server yourself](/docs/guides/get-started-with-linux-game-server-hosting), you don't have to worry about lag time that can interrupt your gameplay. This guide shows you how to set up your own 7DTD server, using LinuxGSM.
@@ -22,7 +21,7 @@ Even eight years after its release, the Zombie Horde Survival game [7 Days to Di
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In order to play 7 Days to Die, you have to [purchase the game on Steam](https://store.steampowered.com/app/251570/7_Days_to_Die/).
 {{< /note >}}
 
@@ -34,7 +33,7 @@ The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) is a command-l
 
         sudo dpkg --add-architecture i386
         sudo apt update
-        sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 steamcmd telnet expect
+        sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux netcat-traditional lib32gcc-s1 lib32stdc++6 steamcmd telnet expect
 
     A prompt appears with the Steam EULA. To proceed, use your keyboard's **down arrow** key to read through the agreement. Then, use the **tab** key to select **<ok>**.
 
