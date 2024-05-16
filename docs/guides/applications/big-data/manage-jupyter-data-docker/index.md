@@ -270,7 +270,7 @@ The container is also running in detached mode using the `--detach` or `-d` flag
 
 1.  Open the link in a Web browser to access the JupyterLab UI:
 
-    [![The JupyterLab UI Launcher page.](JupyterLab-Launcher_small.png "The JupyterLab UI Launcher page")](JupyterLab-Launcher.png)
+    ![The JupyterLab UI Launcher page.](JupyterLab-Launcher.png)
 
 #### Writing Data
 
@@ -286,7 +286,7 @@ Now write data to the container's `outputs` folder, which persists data to the a
     dataframe.to_csv("outputs/Motorized-Foot-Scooter-Trips-2020.csv", index=False)
     ```
 
-    [![The computation.ipynb notebook file open in JupyterLab.](Computation-Notebook-JupyterLab_small.png "The computation.ipynb notebook file open in JupyterLab.")](Computation-Notebook-JupyterLab.png)
+    ![The computation.ipynb notebook file open in JupyterLab.](Computation-Notebook-JupyterLab.png)
 
 1.  Press the play button to run the code. You should get the following error message:
 
@@ -478,7 +478,7 @@ In order to fix the file permissions, you need to update the `Dockerfile`.
 
     This time there should be no error and a new the `Motorized-Foot-Scooter-Trips-2020.csv` file should now be in the `outputs` folder
 
-    [![The Motorized-Foot-Scooter-Trips-2020.csv file in the outputs folder.](Motorized-Foot-Scooter-Trips-2020-File-JupyterLab_small.png "The Motorized-Foot-Scooter-Trips-2020.csv file in the outputs folder.")](Motorized-Foot-Scooter-Trips-2020-File-JupyterLab.png)
+    ![The Motorized-Foot-Scooter-Trips-2020.csv file in the outputs folder.](Motorized-Foot-Scooter-Trips-2020-File-JupyterLab.png)
 
 1.  When done, close the Web browser and return to the local machine terminal.
 

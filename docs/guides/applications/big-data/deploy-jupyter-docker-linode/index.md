@@ -42,7 +42,7 @@ Docker Hub serves as a community of repositories where Docker users create, test
 
 1.  Log in to your Docker Hub account and click on the **Repositories** navigation bar to create a new repository using a repository name and an optional description. You should see a UI similar to:
 
-    [![The Docker Hub user repository page.](Docker-Hub-User-Repos_small.png "The Docker Hub user repository page.")](Docker-Hub-User-Repo.png)
+    ![The Docker Hub user repository page.](Docker-Hub-User-Repo.png)
 
 1.  Open Docker Desktop, sign in with your Docker Hub account credentials, and follow the instructions to configure it.
 
@@ -122,7 +122,7 @@ Docker Hub serves as a community of repositories where Docker users create, test
 
     Once completed, your Docker Hub repository should look like this:
 
-    [![The example Jupyter project user repository on Docker Hub.](Project-Jupyter-User-Repor-Docker-Hub_small.png "The example Juoyter project user repository on Docker Hub.")](Project-Jupyter-User-Repor-Docker-Hub.png)
+    ![The example Jupyter project user repository on Docker Hub.](Project-Jupyter-User-Repor-Docker-Hub.png)
 
 1.  To pull this image from Docker Hub, use the `docker pull` command using the syntax `docker pull YOUR_DOCKER_HUB_USERNAME/REPOSITORY_NAME:` as follows:
 
@@ -214,7 +214,7 @@ Use the following procedures to get started with Linode's Marketplace and deploy
 
 1.  Click the **Create Linode** button to create a Linode compute instance with Docker installed and ready-to-use upon completion. The Linode compute instance dashboard should look similar to:
 
-    [![The Linode dashboard of the newly created Docker instance.](Linode-Docker-Instance_small.png "The Linode dashboard of the newly created Docker instance.")](Linode-Docker-Instance.png)
+    ![The Linode dashboard of the newly created Docker instance.](Linode-Docker-Instance.png)
 
 1.  Launch the **LISH(Linode Shell)** console to access the Docker compute instance with the login as `root` and the root password you provided during setup.
 
@@ -359,11 +359,11 @@ Use the following procedures to get started with Linode's Marketplace and deploy
 
 1.  To view the Jupyter UI, open the `http://127.0.0.1:8888/lab?token=XXXX` link in a Web browser, but replace `127.0.0.1` with the Linode's IP address following the syntax `http://LINODE_IP_ADDRESS:8888/lab?token=XXXX`:
 
-    [![The Jupyter Launcher, or primary dashboard page.](Jupyter-Dashboard_small.png "The Jupyter Launcher, or primary dashboard page.")](Jupyter-Dashboard.png)
+    ![The Jupyter Launcher, or primary dashboard page.](Jupyter-Dashboard.png)
 
 1.  Double-click on the `computation.ipynb` notebook in the left pane to open it:
 
-    [![The empty computation.ipynb notebook file open in Jupyter.](Computation-Notebook_small.png "The empty computation.ipynb notebook file open in Jupyter.")](Computation-Notebook.png)
+    ![The empty computation.ipynb notebook file open in Jupyter.](Computation-Notebook.png)
 
 1.  Test the containerized database hosted on Linode by persisting data to it. Paste the following code into the `computation.ipynb` notebook then press the play button to run it:
 
@@ -478,7 +478,7 @@ Use the following procedures to get started with Linode's Marketplace and deploy
 
 Everything works as it should, fully containerized and cloud-hosted on Linode. You can observe the application's resources utilization, work load, network traffic, and configuration from the Linode compute instance's dashboard:
 
-[![The Linode Cloud Instance Dashboard.](Linode-Cloud-Instance-Dashboard_small.png "The Linode Cloud Instance Dashboard.")](Linode-Cloud-Instance-Dashboard.png)
+![The Linode Cloud Instance Dashboard.](Linode-Cloud-Instance-Dashboard.png)
 
 ## Conclusion
 

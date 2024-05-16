@@ -41,7 +41,7 @@ Using the example of a Jupyter/MySQL workflow, learn how Docker Compose can quic
 
     1.  Now remove all stopped containers, all unused networks, images without no associated containers, and build cache:
 
-        ```command {title=Local Machine Terminal"}
+        ```command {title="Local Machine Terminal"}
         docker system prune -a
         ```
     {{< /note >}}
@@ -250,7 +250,7 @@ Since login credentials are stored in the `docker-compose.yaml` file, having thi
 
     You should see the `outputs` folder and `computation.ipynb` notebook in the left pane:
 
-    [![The JupyterLab UI dashboard open in a Web browser.](Jupyter-Lab-UI-Docker-Compose_small.png "The JupyterLab UI dashboard open in a Web browser.")](Jupyter-Lab-UI-Docker-Compose.png)
+    ![The JupyterLab UI dashboard open in a Web browser.](Jupyter-Lab-UI-Docker-Compose.png)
 
     Voila! You now have a running containerized Jupyter environment persisting data to a containerized MySQL database.
 

@@ -140,11 +140,11 @@ A local setup builds an understanding of how Jupyter interacts with a MySQL data
 
 1.  Your system's default Web browser should open with the Jupyter UI dashboard. If not, open the `http://127.0.0.1:8888/lab?token=XXXX` link in the output:
 
-    [![The locally installed Jupyter UI open in a Web browser.](jupyter-ui-local_small.png "The locally installed Jupyter UI open in a Web browser.")](jupyter-ui-local.png)
+    ![The locally installed Jupyter UI open in a Web browser.](jupyter-ui-local.png)
 
 1.  Locate the `computation.ipynb` file in the left-hand pane and double-click to open it.
 
-    [![The computation.ipynb notebook open in the locally installed Jupyter instance.](computation-notebook-local_small.png "The computation.ipynb notebook open in the locally installed Jupyter instance.")](computation-notebook-local.png)
+    ![The computation.ipynb notebook open in the locally installed Jupyter instance.](computation-notebook-local.png)
 
 1.  Download the example dataset by inputting the following code into the file then pressing the play button in the upper toolbar:
 
@@ -197,11 +197,11 @@ A local setup builds an understanding of how Jupyter interacts with a MySQL data
 
 1.  Open MySQL Workbench and select the plus button to create a connection for the user defined when during the MySQL installation.
 
-    [![The MySQL Workbench new connection setup window.](mysql-workbench-connection-setup_small.png "The MySQL Workbench new connection setup window.")](mysql-workbench-connection-setup.png)
+    ![The MySQL Workbench new connection setup window.](mysql-workbench-connection-setup.png)
 
 1.  Open the new connection and select the right arrow next to **Administration** in the left pane to change it to **Schemas**. This shows the empty **scooter_trips** database running on `localhost` at port `3306`:
 
-    [![The empty scooter-trips database in MySQL Workbench.](mysql-workbench-scootertrips_small.png "The empty scooter-trips database in MySQL Workbench.")](mysql-workbench-scootertrips.png)
+    ![The empty scooter-trips database in MySQL Workbench.](mysql-workbench-scootertrips.png)
 
 1.  Now create an empty table with the column names of the imported data, then write its content into the newly created table as follows:
 
@@ -243,7 +243,7 @@ A local setup builds an understanding of how Jupyter interacts with a MySQL data
 
 1.  Open MySQL Workbench and click the arrows next to **scooter_trips** and then **Tables** to view the new `Motorized_Foot_Scooter_Trips_2020` table:
 
-    [![The empty Motorized_Foot_Scooter_Trips_2020 table inside the scooter-trips database in MySQL Workbench.](mysql-workbench-motorized-foot-scooter-trips-2020_small.png "The empty Motorized_Foot_Scooter_Trips_2020 table inside the scooter-trips database in MySQL Workbench.")](mysql-workbench-motorized-foot-scooter-trips-2020.png)
+    ![The empty Motorized_Foot_Scooter_Trips_2020 table inside the scooter-trips database in MySQL Workbench.](mysql-workbench-motorized-foot-scooter-trips-2020.png)
 
 1.  Next, write the content of the output data into this empty table as follows:
 
@@ -264,7 +264,7 @@ A local setup builds an understanding of how Jupyter interacts with a MySQL data
 
 1.  When complete, right-click the `Motorized_Foot_Scooter_Trips_2020` table in MySQL Workbench and choose **Select Rows - Limit 1000** to view this change in the table:
 
-    [![The full Motorized_Foot_Scooter_Trips_2020 table inside the scooter-trips database in MySQL Workbench.](mysql-workbench-scootertrips-2020-full_small.png "The full Motorized_Foot_Scooter_Trips_2020 table inside the scooter-trips database in MySQL Workbench.")](mysql-workbench-scootertrips-2020-full.png)
+    ![The full Motorized_Foot_Scooter_Trips_2020 table inside the scooter-trips database in MySQL Workbench.](mysql-workbench-scootertrips-2020-full.png)
 
     Data has been successfully persisted from the local Jupyter instance to the local MySQL database.
 
@@ -505,7 +505,7 @@ The local scenario can be expanded to a containerized notebook environment, but 
 
     If the above code was executed with no errors, this empty table can be viewed on the MySQL Workbench:
 
-    [![The empty Motorized_Foot_Scooter_Trips_2021 table inside the scooter-trips database in MySQL Workbench.](mysql-workbench-motorized-foot-scooter-trips-2021_small.png "The empty Motorized_Foot_Scooter_Trips_2021 table inside the scooter-trips database in MySQL Workbench.")](mysql-workbench-motorized-foot-scooter-trips-2021.png)
+    ![The empty Motorized_Foot_Scooter_Trips_2021 table inside the scooter-trips database in MySQL Workbench.](mysql-workbench-motorized-foot-scooter-trips-2021.png)
 
     The empty table from the container has persisted from the running container to the local MySQL database. Both the table generated from the locally running notebook as well as from the container can be seen.
 
@@ -526,11 +526,11 @@ The local scenario can be expanded to a containerized notebook environment, but 
 
     This writes data from the output data to the respective columns in the MySQL table. View this change to the table in MySQL Workbench:
 
-    [![The full Motorized_Foot_Scooter_Trips_2021 table inside the scooter-trips database in MySQL Workbench.](mysql-workbench-motorized-foot-scooter-trips-2021-full_small.png "The full Motorized_Foot_Scooter_Trips_2021 table inside the scooter-trips database in MySQL Workbench.")](mysql-workbench-motorized-foot-scooter-trips-2021-full.png)
+    ![The full Motorized_Foot_Scooter_Trips_2021 table inside the scooter-trips database in MySQL Workbench.](mysql-workbench-motorized-foot-scooter-trips-2021-full.png)
 
 1.  When finished, close MySQL Workbench and the Web browser and return to the local machine terminal. Stop the container using the container ID from earlier with a command like this:
 
-    ```command {title="Local Machine Terminal}
+    ```command {title="Local Machine Terminal"}
     docker stop CONTAINER_ID
     ```
 

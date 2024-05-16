@@ -33,7 +33,7 @@ The Jupyter architecture is comprised of three key components:
 
 1.  **Kernel Protocol**: The foundational supported languages by Jupyter are (Ju)lia, (Py)thon, and e(R). However, it now supports over 40 programming languages via the use of language-specific kernels (execution environments). The kernel protocol tells the Jupyter server to execute code with the required kernel via ZeroMQ.
 
-[![The Jupyter Architecture](Jupyter-Architecture_small.png "The Jupyter Architecture")](Jupyter-Architecture.png)
+![The Jupyter Architecture](Jupyter-Architecture.png)
 
 Jupyter has two notebook variations, Jupyter notebook and JupyterLab. With the former being the classic, and the latter being the next-generation environment for notebooks, code, and data. Both use the same Jupyter server and file format, making it flexible to switch between both interfaces. However, JupyterLab is destined to replace the classic Jupyter notebooks, as it expands the traditional notebook's scope of functionality.
 
@@ -246,12 +246,12 @@ Working with Docker, it's not necessary to set up Jupyter locally. Instead, Jupy
 
 1.  Use a Web browser to open the JupyterLab UI at the `http://127.0.0.1:8888/lab?token=XXXX` URL as shown above. The token is passed as a URL parameter, and the value is generated when the Jupyter server starts running with the default token authentication enabled. Upon successful launch, the JupyterLab should have an interface like this:
 
-    [![The JupyterLab UI in a Web browser.](JupyterLab-UI_small.jpg "The JupyterLab UI in a web browser.")](JupyterLab-UI.jpg)
+    ![The JupyterLab UI in a Web browser.](JupyterLab-UI.jpg)
 
     {{< note >}}
     The notebook UI can be accessed directly at `http://127.0.0.1:8888/lab`. However, this asks for the authentication token (which can be copied from the terminal) to log in as seen below:
 
-    [![The Jupyter Docker Stacks Authentication Page.](Jupyter-Docker-Stacks-Authentication-Page_small.png "The Jupyter Docker Stacks Authentication Page.")](Jupyter-Docker-Stacks-Authentication-Page.png)
+    ![The Jupyter Docker Stacks Authentication Page.](Jupyter-Docker-Stacks-Authentication-Page.png)
     {{< /note >}}
 
     {{< note >}}
@@ -312,7 +312,7 @@ In the previous section, the Jupyter development environment was built from an A
 
     The various images are distinguishable by their respective environment content. A comprehensive explanation of these differences can be found on the [Jupyter Docker Stack documentation](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html). The hierarchy (build dependencies) and relationship of these images is shown below:
 
-    [![The Jupyter Docker Stack hierarchy.](Jupyter-Docker-Stack-Hierarchy_small.png "The Jupyter Docker Stack hierarchy.")](Jupyter-Docker-Stack-Hierarchy.png)
+    ![The Jupyter Docker Stack hierarchy.](Jupyter-Docker-Stack-Hierarchy.png)
 
 1.  Next, run a Jupyter Docker Stack notebook container. A local Docker container can be launched from any notebook image through the Docker CLI using the following the syntax `docker run -it -p HOST_PORT:8888 NOTEBOOK_IMAGE`. For example, use the following command to launch a `datascience-notebook` container:
 
@@ -338,7 +338,7 @@ In the previous section, the Jupyter development environment was built from an A
 
 1.  Open a web browser to access the resulting notebook UI of the `datascience-notebook` via `http://127.0.0.1:8888/lab?token=XXXX`, which contains libraries for data science computation in the Julia, Python, and R languages. Jupyter Docker Stacks notebook images also simplify the notebook file system with a working directory of `work`.
 
-    [![The Jupyter Docker Stacks datascience-notebook UI.](Jupyter-Docker-Stacks-datascience-notebook-UI_small.png "The Jupyter Docker Stacks datascience-notebook UI.")](Jupyter-Docker-Stacks-datascience-notebook-UI.png)
+    ![The Jupyter Docker Stacks datascience-notebook UI.](Jupyter-Docker-Stacks-datascience-notebook-UI.png)
 
 1.  When finished, close the browser. Return to the terminal and press <kbd>CTRL</kbd>+<kbd>C</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd> to stop the server.
 
@@ -438,7 +438,7 @@ In this section, learn to build a Docker image based on the Jupyter Docker Stack
 
 1.  The JupyterLab UI can be accessed in a Web browser via the `http://127.0.0.1:8888/lab?token=XXXX` URL:
 
-    [![The Jupyter Dockerfile Notebook UI.](Jupyter-Dockerfile-Notebook-UI_small.png "The Jupyter Dockerfile Notebook UI.")](Jupyter-Dockerfile-Notebook-UI.png)
+    ![The Jupyter Dockerfile Notebook UI.](Jupyter-Dockerfile-Notebook-UI.png)
 
 1.  Next, verify if the packages are installed in the container environment by default. Open the **Terminal** entry from **Other** section in the JupyterLab UI Launcher and use the following command to check the list of `conda` packages:
 
@@ -448,7 +448,7 @@ In this section, learn to build a Docker image based on the Jupyter Docker Stack
 
     The `geospatial` packages should be visible as follows:
 
-    [![The Jupyter Dockerfile Notebook UI Terminal.](Jupyter-Dockerfile-Notebook-UI-Terminal_small.png "The Jupyter Dockerfile Notebook UI Terminal.")](Jupyter-Dockerfile-Notebook-UI-Terminal.png)
+    ![The Jupyter Dockerfile Notebook UI Terminal.](Jupyter-Dockerfile-Notebook-UI-Terminal.png)
 
     {{< note >}}
     The versions of the `geopandas` and `gdal` libraries shown are from the time of writing, and are subject to change.
@@ -590,7 +590,7 @@ This section relies on previous knowledge to build images with pre-load requirem
 
 1.  Use a Web browser to access the JupyterLab UI via the `http://127.0.0.1:8888/lab?token=XXXX` URL. It should have the `computation.ipynb` notebook and `Dockerfile` pre-loaded in the container as shown below:
 
-    [![The Jupyter Dockerfile Notebook UI Terminal.](Jupyter-Dockerfile-Notebook-UI-Preloaded.png "The Jupyter Dockerfile Notebook UI Terminal.")](Jupyter-Dockerfile-Notebook-UI-Preloaded.png)
+    ![The Jupyter Dockerfile Notebook UI Terminal.](Jupyter-Dockerfile-Notebook-UI-Preloaded.png)
 
 1.  When finished, close the browser. Return to the terminal and press <kbd>CTRL</kbd>+<kbd>C</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd> to stop the server.
 
