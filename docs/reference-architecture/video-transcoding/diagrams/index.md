@@ -91,7 +91,7 @@ A system is set up to allow observability of the content workflows. Content dist
 **Figure 3** represents a built-out, detailed reference architecture implementation. It includes:
 
 - A CI/CD workflow using GitOps (located at bottom of diagram). The reference architecture also includes deployment automation using GitHub for source code and GitHub Actions for continuous delivery.
-- A media processing lifecycle management workflow application, built with Linode Kubernetes Engine using [Argo Events](https://argoproj.github.io/events/) and [Argo Workflows](https://argoproj.github.io/workflows/). The components of Argo are configured with YAML files that can be applied through [Kubectl](https://kubernetes.io/docs/reference/kubectl/) or through [Argo CLI](https://argoproj.github.io/argo-workflows/walk-through/argo-cli/).
+- A media processing lifecycle management workflow application, built with Linode Kubernetes Engine using [Argo Events](https://argoproj.github.io/events/) and [Argo Workflows](https://argoproj.github.io/workflows/). The components of Argo are configured with YAML files that can be applied through [kubectl](https://kubernetes.io/docs/reference/kubectl/) or through [Argo CLI](https://argoproj.github.io/argo-workflows/walk-through/argo-cli/).
 - Content distribution using Akamai CDN.
 
 The deployment method for this architecture uses [Terraform](https://www.terraform.io/) and [Helm Charts](https://helm.sh/). Linode supports Terraform through the [Linode Terraform Provider](https://www.linode.com/products/linode-terraform-provider/), and Argo supports the [Argo Events Helm Chart and Argo Workflow Helm Chart](https://github.com/argoproj/argo-helm) for application deployment.
