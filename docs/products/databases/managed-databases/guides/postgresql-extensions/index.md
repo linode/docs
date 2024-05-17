@@ -6,7 +6,7 @@ published: 2022-06-06
 modified: 2023-04-27
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions.
 

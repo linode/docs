@@ -19,7 +19,7 @@ Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client 
 
 In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Workspace. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/docs/guides/postfix-smtp-debian7/) guide.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 

@@ -20,7 +20,7 @@ Full disk encryption protects the information stored on your Linode's disks by c
 -   Configure services and networking
 -   Boot from the encrypted images
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 ## Potential Drawbacks
 

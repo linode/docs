@@ -34,11 +34,11 @@ The installation process requires the installation of Scala, which has Java JDK 
 
 ### Miniconda
 
-{{< content "install_python_miniconda" >}}
+{{% content "install_python_miniconda" %}}
 
 ### Java JDK 8
 
-{{< content "install-java-8-ppa" >}}
+{{% content "install-java-8-ppa" %}}
 
 ### Scala
 

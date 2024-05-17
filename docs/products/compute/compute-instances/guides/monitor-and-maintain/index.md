@@ -43,15 +43,15 @@ To turn Lassie on and off, see the [Recover from Unexpected Shutdowns with Lassi
 
 ### Cloud Manager
 
-{{< content "monitoring-cloud-manager-graphs-shortguide" >}}
+{{% content "monitoring-cloud-manager-graphs-shortguide" %}}
 
 ### Configure Cloud Manager Email Alerts
 
-{{< content "monitoring-configure-email-alerts-shortguide" >}}
+{{% content "monitoring-configure-email-alerts-shortguide" %}}
 
 ### Use Third-Party Tools
 
-{{< content "monitoring-third-party-tools-shortguide" >}}
+{{% content "monitoring-third-party-tools-shortguide" %}}
 
 ## Linode Managed
 

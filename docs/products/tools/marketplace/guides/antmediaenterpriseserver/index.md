@@ -19,9 +19,9 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Ant Media Enterprise Server should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -36,11 +36,11 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 
 - **SOA email address:** Enter the email address that should be used for the SSL generation.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -65,4 +65,4 @@ For more on Ant Media Server, check out the following resources:
 - [Ant Media Server wiki](https://github.com/ant-media/Ant-Media-Server/wiki)
 - [Publishing a Live Stream](https://github.com/ant-media/Ant-Media-Server/wiki/Publishing-Live-Streams)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

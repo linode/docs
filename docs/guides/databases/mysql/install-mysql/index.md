@@ -35,7 +35,7 @@ For additional instructions on installing MySQL on any supported operating syste
 
     - [Linode MySQL Managed Databases](https://www.linode.com/products/mysql/): Fully managed database clusters, complete with automatic updates and backups, hosted on Linode's reliable platform.
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
     - [MySQL/MariaDB Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/): Deploy a new Compute Instance with either MySQL or MariaDB preinstalled.
 

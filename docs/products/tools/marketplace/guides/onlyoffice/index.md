@@ -12,9 +12,9 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{<note>}}
 **Estimated deployment time:** ONLYOFFICE Docs should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -46,4 +46,4 @@ external_resources:
 
 For more information on ONLYOFFICE configurations please see the [documentation](https://helpcenter.onlyoffice.com/userguides/docs-index.aspx).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

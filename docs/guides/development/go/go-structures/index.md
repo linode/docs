@@ -31,7 +31,7 @@ In this guide you will:
 
 ## Before You Begin
 
-{{< content "before-you-begin-install-go-shortguide" >}}
+{{% content "before-you-begin-install-go-shortguide" %}}
 
 An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
 

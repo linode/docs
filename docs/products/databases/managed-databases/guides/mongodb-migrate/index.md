@@ -5,7 +5,7 @@ published: 2022-06-17
 expiryDate: 2023-05-01
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 This guide covers how to migrate an existing MongoDB database to a Managed Database using the `mongodump` and `mongorestore` utilities.
 

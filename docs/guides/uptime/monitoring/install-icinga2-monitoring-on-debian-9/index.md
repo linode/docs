@@ -24,7 +24,7 @@ Icinga 2 can be configured to monitor internal systems' state and check the load
 
 This guide shows how to install and configure the latest version of Icinga 2 web monitoring tool on Debian 9 to monitor network infrastructure.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 

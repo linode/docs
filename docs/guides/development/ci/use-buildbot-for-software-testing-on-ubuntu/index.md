@@ -176,7 +176,7 @@ c['www']['change_hook_dialects'] = {
 
 Buildbot is now running and listening on HTTP without encryption. To secure the connection, install NGINX to terminate SSL and reverse proxy traffic to the Buildbot master process.
 
-{{< content "install-nginx-ubuntu-ppa" >}}
+{{% content "install-nginx-ubuntu-ppa" %}}
 
 Now that NGINX is installed, configure NGINX to talk to the local Buildbot port. NGINX will listen for SSL traffic using the Let's Encrypt certificate for your domain.
 

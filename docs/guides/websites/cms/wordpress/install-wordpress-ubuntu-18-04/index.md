@@ -27,7 +27,7 @@ WordPress is a popular PHP-based dynamic content management system (CMS) focused
 
 <!-- ![Install WordPress on Ubuntu 18.04](wordpress-ubuntu-18-04-title.png "Install WordPress on Ubuntu 18.04") -->
 ![Install WordPress on Ubuntu](Install_WordPress_on_Ubuntu_smg.jpg)
-{{< content "limited-user-note-shortguide" >}}
+{{% content "limited-user-note-shortguide" %}}
 
 Replace each instance of `example.com` in this guide with the domain name or IP address of the website.
 

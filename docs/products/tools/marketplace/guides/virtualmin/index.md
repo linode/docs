@@ -24,9 +24,9 @@ Virtualmin has been removed from the App Marketplace and can no longer be deploy
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Virtualmin should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -39,7 +39,7 @@ Virtualmin has been removed from the App Marketplace and can no longer be deploy
 
 ### Virtualmin Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 - **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
 
 #### Additional Security Configuration
@@ -47,12 +47,12 @@ Virtualmin has been removed from the App Marketplace and can no longer be deploy
 - **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
 - **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **SOA Email for your domain** The email address to register as your Start of Authority (SOA). This field is required for creating DNS records for a new domain.
 - **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-overview/#mx) for the purpose of sending emails from your instance.
 - **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-overview/#spf) for the purpose of sending emails from your instance.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -88,4 +88,4 @@ Virtualmin is now installed and ready to use.
 
     ![Virtualmin Virtual Servers Page](virtualmin-virtual-servers-page.png "Virtualmin Virtual Servers Page")
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

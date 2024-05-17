@@ -230,4 +230,4 @@ Sharding can be accomplished using range sharding, hash sharding, or directory-b
 
 A sharded database can be implemented using multiple Linode servers. Linode allows you to configure a full web application on a powerful Linux operating system running the industry-standard LAMP stack. Choose from a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative. Similarly, you can also use [Linode's Managed Database service](/docs/products/databases/managed-databases/) to deploy a database cluster without the need to install and maintain the database infrastructure.
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}

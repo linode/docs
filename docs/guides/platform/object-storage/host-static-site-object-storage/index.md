@@ -235,7 +235,7 @@ Before proceeding with this section ensure that you have already created your Ob
 Buckets names must be unique within the Object Storage cluster. You might find the bucket name `my-bucket` is already in use by another Linode customer, in which case you need to choose a new bucket name.
 {{< /note >}}
 
-    {{< content "object-storage-cluster-shortguide" >}}
+    {{% content "object-storage-cluster-shortguide" %}}
 
 1.  Initialize your Object Storage bucket as a website. You must tell your bucket which files to serve as the index page and the error page for your static site. This is done with the `--ws-index` and `--ws-error` options:
 

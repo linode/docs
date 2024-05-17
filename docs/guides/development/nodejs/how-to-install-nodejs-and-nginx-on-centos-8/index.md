@@ -44,7 +44,7 @@ Don't forget to update your Linode's `/etc/hosts` file with its public IP addres
 
         sudo yum install -y policycoreutils-python-utils
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install and Configure NGINX
 
@@ -133,7 +133,7 @@ http {
         sudo setsebool -P httpd_can_network_connect on
     {{< /note >}}
 
-    {{< content "cloud-firewall-shortguide" >}}
+    {{% content "cloud-firewall-shortguide" %}}
 
 1.  Verify that there are no syntax errors in your site's configuration file.
 

@@ -16,9 +16,9 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** RabbitMQ should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -34,7 +34,7 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 - **RabbitMQ Username** *(required)*: The username for accessing the rabbitMQ management console.
 - **RabbitMQ Password** *(required)*: The user password for SSH access to the Linode.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -52,4 +52,4 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
     ![Screenshot of the RabbitMQ Management Console](rabbitmq-dashboard.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

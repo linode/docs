@@ -16,9 +16,9 @@ This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteS
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenLiteSpeed WordPress should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -70,4 +70,4 @@ The OpenLiteSpeed WordPress Marketplace App installs the following required soft
 | [**WordPress**](https://wordpress.org/) | Popular content management system (CMS) for building websites. |
 | [**LiteSpeed Cache**](https://www.litespeedtech.com/products/cache-plugins/wordpress-acceleration) | Cache management plugin for WordPress. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -17,9 +17,9 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Nomad Clients Cluster should be fully installed within 15-20 minutes after the Compute Instances have finished provisioning.
@@ -31,7 +31,7 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 - **Recommended plan**: Nomad clients can be of any size.
 - **Region**: The region you select should be the same as your existing Nomad Cluster.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ### Nomad Client Options
 
@@ -57,4 +57,4 @@ After deployment, you can confirm your clients have been successfully added to y
 
 Please see [HashiCorp Nomad Cluster](/docs/products/tools/marketplace/guides/hashicorp-nomad-cluster/) for information on accessing the Nomad Web UI and managing your cluster.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
