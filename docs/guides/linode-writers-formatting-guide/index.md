@@ -345,8 +345,12 @@ show_on_rss_feed: false
 To use this shortguide in another guide, use the following syntax:
 
 ```file {title="sample_embedding_guide/index.md"}
-{{</* content "install_python_miniconda" */>}}
+{{%/* content "install_python_miniconda" */%}}
 ```
+
+{{< note >}}
+Be sure to use the `%` delimiter inside the surrounding `{{ }}` braces for `content` shortcodes.
+{{< /note >}}
 
 ### Files
 
