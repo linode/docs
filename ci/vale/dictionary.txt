@@ -2916,3 +2916,6 @@ zshrc
 zxvf
 ZYpp
 Zypper
+CTAs
+OCAs
+Vite
