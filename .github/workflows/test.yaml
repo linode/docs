@@ -31,6 +31,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: errata-ai/vale-action@reviewdog
+        with:
+          files: docs
+          vale_flags: "--minAlertLevel=error --glob='!docs/authors/*'"
 
   vale2:
     runs-on: ubuntu-latest
