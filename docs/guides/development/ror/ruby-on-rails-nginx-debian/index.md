@@ -63,7 +63,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Use the Ruby Version Manager (RVM) to install Ruby. Be sure to install a Ruby version that is compatible with the version of Rails in your Gemfile. This guide will use Rails 5.1.4 and Ruby 2.4.2.
 
-{{< content "install-ruby-with-rvm" >}}
+{{% content "install-ruby-with-rvm" %}}
 
 ### Install Rails
 

@@ -23,7 +23,7 @@ In this guide, you'll learn how to set up a secure virtual user mail server with
 
 For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 
@@ -59,7 +59,7 @@ Verify that the `hosts` file contains a line for the Linode's public IP address 
 
 You will need to install a SSL certificate on your mail server prior to completing the [Dovecot](#dovecot) configuration steps. The SSL certificate will authenticate the identity of the mail server to users and encrypt the transmitted data between the user's mail client and the mail server.
 
-{{< content "certbot-shortguide-centos" >}}
+{{% content "certbot-shortguide-centos" %}}
 
 Make a note of the certificate and key locations on the Linode. You will need the path to each during the [Dovecot](#dovecot) configuration steps.
 

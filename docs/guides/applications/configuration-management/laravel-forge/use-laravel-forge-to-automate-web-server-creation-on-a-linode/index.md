@@ -113,7 +113,7 @@ If you do not want to use a domain with your website, you can configure the *def
 
     If you use another DNS provider, check their documentation for instructions.
 
-    {{< content "update-dns-at-common-name-server-authorities" >}}
+    {{% content "update-dns-at-common-name-server-authorities" %}}
 
 1.  From the **Servers** menu in the top navigation bar, choose your new server. If you don't see this menu yet, refresh your browser window:
 

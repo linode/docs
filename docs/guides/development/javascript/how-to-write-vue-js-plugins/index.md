@@ -319,7 +319,7 @@ export default {
 </script>
 {{< /file >}}
 
-In the code above, you defined a filter called 'timeString' with the function returning a time string if it is the value passed in is an instance of the `Date` object.
+In the code above, you defined a filter called `timeString` with the function returning a time string if it is the value passed in is an instance of the `Date` object.
 
 In `App`'s template, you applied the `timeString` filter on `new Date()`, which is the date object with the current date and time, with the pipe operator.
 

@@ -7,7 +7,7 @@ og_description: 'This guide will show you how to install mod_fcgid and PHP-FPM o
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-02-27
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['fastcgi','php-fpm']
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:

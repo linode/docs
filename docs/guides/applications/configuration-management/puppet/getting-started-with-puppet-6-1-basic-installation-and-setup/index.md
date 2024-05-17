@@ -93,7 +93,7 @@ Throughout this guide, commands and code snippets will reference the values disp
 
     If you don't use Linode's name servers for your domain, consult your name server authority's website for instructions on how to edit your DNS records.
 
-    {{< content "update-dns-at-common-name-server-authorities" >}}
+    {{% content "update-dns-at-common-name-server-authorities" %}}
 
 ## Puppet Master
 

@@ -577,9 +577,9 @@ The example code is similar to the code from the previous section. The updated l
 
     - Line 61: The last (or second) element of the array is stripped of whitespace, leaving just the RFC-822 datetime string.
 
-    - Line 62: The [parsedate_tz](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_tz) method of the Python email module is used to convert the datetime string to a 10-tuple representing the datetime that preserves timezone information.
+    - Line 62: The [`parsedate_tz`](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_tz) method of the Python email module is used to convert the datetime string to a 10-tuple representing the datetime that preserves timezone information.
 
-    - Line 63: The [mktime_tz](https://docs.python.org/3/library/email.utils.html#email.utils.mktime_tz) method of the Python email module accepts the 10-tuple datetime and returns a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
+    - Line 63: The [`mktime_tz`](https://docs.python.org/3/library/email.utils.html#email.utils.mktime_tz) method of the Python email module accepts the 10-tuple datetime and returns a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
 
 - Lines 64-70 are executed if the code that parses the received date generates any errors. In this case, information about the email is printed to your terminal and the `continue` statement is used to skip that email in the loop.
 

@@ -7,7 +7,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-02-27
 modified: 2021-12-29
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['fast-cgi','php-fpm']
 tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:

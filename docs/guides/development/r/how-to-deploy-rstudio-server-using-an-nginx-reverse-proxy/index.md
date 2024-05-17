@@ -33,7 +33,7 @@ The steps in this guide are for Ubuntu 16.04 and should be adapted to your speci
 
         wget https://download2.rstudio.org/rstudio-server-1.1.414-amd64.deb
 
-2.  Install and use the gDebi package installer for the downloaded Debian package file:
+2.  Install and use the GDebi package installer for the downloaded Debian package file:
 
         sudo apt install gdebi
         sudo gdebi rstudio-server-1.1.414-amd64.deb

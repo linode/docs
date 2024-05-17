@@ -5,7 +5,7 @@ tab_group_main:
     weight: 40
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 ## Blog Posts
 

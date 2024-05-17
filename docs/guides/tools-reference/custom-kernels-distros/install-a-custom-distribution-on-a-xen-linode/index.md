@@ -14,7 +14,8 @@ deprecated: true
 
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
+
 {{< note >}}
 This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/).
 {{< /note >}}

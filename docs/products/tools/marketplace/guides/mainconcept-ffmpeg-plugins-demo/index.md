@@ -25,9 +25,9 @@ The versions of MainConcept Plugins for FFmpeg included in this deployment are f
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MainConcept Plugins for FFmpeg should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -40,7 +40,7 @@ The versions of MainConcept Plugins for FFmpeg included in this deployment are f
 
 ### MainConcept Plugins for FFmpeg Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -86,4 +86,4 @@ For more information on using MainConcept Plugins for FFmpeg, including command 
 
 For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

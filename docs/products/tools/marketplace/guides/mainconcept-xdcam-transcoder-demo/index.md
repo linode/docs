@@ -14,9 +14,9 @@ This version of the XDCAM Transcoder is a free version that demonstrates how Mai
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MainConcept XDCAM Transcoder should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -31,8 +31,8 @@ This version of the XDCAM Transcoder is a free version that demonstrates how Mai
 
 - **API Port** : Sets the port for the HTTP REST API endpoint. Defaults to port 8080.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -70,4 +70,4 @@ Parameters for various options can be configured by editing the `properties.txt`
 
 For additional usage information and formatting guidelines, please see the official documentation for MainConcept XDCAM Transcoder by navigating to [MainConcept's Transcoders page](https://www.mainconcept.com/transcoders), and selecting **XDCAM Transcoder**. For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

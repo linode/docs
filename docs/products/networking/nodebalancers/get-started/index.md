@@ -22,7 +22,7 @@ To start using a NodeBalancer and benefiting from load balancing, your applicati
 
 - **Database replication:** *How will you maintain consistency between multiple databases?* Consider the suggested architecture and available tooling for the database software you intend to use. Linode [Managed Databases](/docs/products/databases/managed-databases/), when deployed with high availability enabled, are a great fully-managed solution. Alternatively, [Galera](https://galeracluster.com/) is a self-hosted option that can be used with MySQL.
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
 In some simple applications, the servers that store your application's code can also store its files and databases. For more complex applications, you may want to consider designating separate application servers, file servers, and database servers. The application servers (where the web server software and application code resides) operate as the backends to the NodeBalancer. The file servers and database servers can be built on cloud-based solutions (like Managed Databases) or self-hosted software on Compute Instances.
 

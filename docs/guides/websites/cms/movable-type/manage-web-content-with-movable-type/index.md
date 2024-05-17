@@ -41,7 +41,7 @@ Next, we'll make sure Apache knows where CGI scripts are allowed to be run.
 {{< /file >}}
 
 
-We've added a line to the `<VirtualHost>` section of our site's Apache configuration file which uses "AddHandler" to tell Apache how to treat files that end in `.pl` or `.cgi`. We've added a \<Directory\> section as well to allow CGI scripts to be run from the public\_html directory. Reload Apache as follows:
+We've added a line to the `<VirtualHost>` section of our site's Apache configuration file which uses "AddHandler" to tell Apache how to treat files that end in `.pl` or `.cgi`. We've added a \<Directory\> section as well to allow CGI scripts to be run from the `public_html` directory. Reload Apache as follows:
 
     /etc/init.d/apache2 reload
 
@@ -117,7 +117,7 @@ Bring up your website in your favorite browser, and you'll be greeted by the Mov
 -   Username: bamboo
 -   Password: [from mysql setup]
 
-After basic configuration is complete, you'll be asked to enter a username, display name, and email address for your Movable Type administrator account. Choose a strong password to protect your account. When asked to choose a "Blog URL" you may want to make it the base URL of your site ("example.com" in our case), and for "Publishing Path" you may want to enter the path to your public\_html directory (`/srv/www/example.com/public_html/` in our case). Alternately, you can accept the defaults provided to host the system under a subdirectory of your site's root. You're done!
+After basic configuration is complete, you'll be asked to enter a username, display name, and email address for your Movable Type administrator account. Choose a strong password to protect your account. When asked to choose a "Blog URL" you may want to make it the base URL of your site ("example.com" in our case), and for "Publishing Path" you may want to enter the path to your `public_html` directory (`/srv/www/example.com/public_html/` in our case). Alternately, you can accept the defaults provided to host the system under a subdirectory of your site's root. You're done!
 
 ## Monitor for Software Updates and Security Notices
 
@@ -129,6 +129,3 @@ Please monitor the following [Movable Type mailing lists](http://www.movabletype
 -   [Movable Type Announcements List](https://movabletype.org/news/)
 
 When upstream sources offer new releases, repeat the instructions for installing the Movable software as needed. These practices are crucial for the ongoing security and functioning of your system.
-
-
-

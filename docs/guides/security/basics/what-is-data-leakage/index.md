@@ -3,7 +3,6 @@ slug: what-is-data-leakage
 title: "What is Data Leakage? (Plus Detection and Protection Tips)"
 title_meta: "Data Leakage: Definition, Examples, & Protection Tips"
 description: 'Data leakage detection in machine learning involves leaking information results in overestimation of scores. Get examples plus detection and prevention tips.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
 authors: ["Wayne Rash"]
 contributors: ["Wayne Rash"]
 published: 2022-02-04

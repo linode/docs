@@ -12,7 +12,7 @@ tags: ["ubuntu", "security", "web applications", "docker"]
 aliases: ["security/authentication/self-hosted-password-management-with-bitwarden-rs/", "/guides/how-to-self-host-the-bitwarden-rs-password-manager/", "security/authentication/how-to-self-host-the-bitwarden-rs-password-manager/"]
 ---
 
-The [Vaultwarden](https://github.com/dani-garcia/vaultwarden) project (formerly known as bitwarden_rs) provides a lightweight, single-process, API-compatible service alternative to [Bitwarden](https://bitwarden.com/). [Vaultwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. By running the vaultwarden service, you can use Bitwarden browser extensions and mobile applications backed by your server.
+The [Vaultwarden](https://github.com/dani-garcia/vaultwarden) project (formerly known as Bitwarden_RS) provides a lightweight, single-process, API-compatible service alternative to [Bitwarden](https://bitwarden.com/). [Vaultwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. By running the vaultwarden service, you can use Bitwarden browser extensions and mobile applications backed by your server.
 
 {{< note >}}
 By self-hosting your password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within Vaultwarden. Before storing important information and credentials within the application, ensure that you are confident with the security of the server. Also, take the necessary backup measures mentioned in this tutorial.

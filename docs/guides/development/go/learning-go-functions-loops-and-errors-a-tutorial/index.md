@@ -25,7 +25,8 @@ After you've learned the syntax of a simple "Hello World" script in Go, you'll l
 
 If you're just starting with Go, we recommend reading our [Beginner's Guide to Go](/docs/guides/beginners-guide-to-go/) guide first.
 
-{{< content "before-you-begin-install-go-shortguide" >}}
+{{% content "before-you-begin-install-go-shortguide" %}}
+
 {{< note >}}
 This guide was written with Go version 1.13.
 {{< /note >}}

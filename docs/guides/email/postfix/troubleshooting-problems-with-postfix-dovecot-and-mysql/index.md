@@ -18,7 +18,7 @@ This guide is a companion to the [Postfix, Dovecot, and MySQL](/docs/guides/emai
 
 The first section, Troubleshooting Checklist, has a top-down approach to troubleshooting that will help you find specific errors for your mail server. The second section, Step-by-Step Configuration, uses a bottom-up approach that shows you how to get a basic mail server functioning and then gradually add more features.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Troubleshooting Checklist
 

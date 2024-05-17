@@ -31,7 +31,7 @@ This guide shows how to install and test a LAMP stack on Ubuntu 20.04 (LTS).
 
 <!-- ![Install LAMP on Ubuntu 20.04](install-lamp-on-ubuntu-20-04.png "Install LAMP on Ubuntu 20.04") -->
 
-{{< content "limited-user-note-shortguide" >}}
+{{% content "limited-user-note-shortguide" %}}
 
 Replace each instance of `example.com` in this guide with your site's domain name or IP.
 
@@ -207,7 +207,7 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
         sudo mysql -u root
 
-    {{< content "mysql-authsocket-authentication-note-shortguide" >}}
+    {{% content "mysql-authsocket-authentication-note-shortguide" %}}
 
 1.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`. Be sure to enter your own password. This should be different from the root password for MySQL:
 

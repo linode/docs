@@ -15,9 +15,9 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Redis should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -30,12 +30,12 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 
 ### Redis Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -59,4 +59,4 @@ There are several types of Redis configurations you can use. For example, you ca
 - Read the [Redis Quickstart](https://redis.io/topics/quickstart) to learn about securing Redis and installing client libraries to use Redis with your applications.
 - Refer to the [Redis configuration documentation](https://redis.io/topics/config) to learn about the Redis configuration file.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
