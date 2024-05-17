@@ -16,7 +16,7 @@ external_resources:
 - '[How to Use Replibyte Transformers](https://www.replibyte.com/docs/transformers)'
 ---
 
-Database testing is a critical component of the quality-assurance cycle, but using production data is inherently insecure. Additionally, the sheer volume of data can be difficult to work with. Unfortunately, it is difficult to create realistic "fake" data, and the results might not be representative. [Replibyte](https://www.replibyte.com/docs/introduction) (also stylized as *RepliByte*) allows users to transform their production data and use the results to seed a test database. This guide explains how to install Replibyte and how to use it to transform a dataset.
+Database testing is a critical component of the quality-assurance cycle, but using production data is inherently insecure. Additionally, the sheer volume of data can be difficult to work with. Unfortunately, it is difficult to create realistic "fake" data, and the results might not be representative. [Replibyte](https://www.replibyte.com/docs/introduction) (also stylized as *RepliByte*) allows users to transform their production data and use the results to seed a test database. This guide explains how to install Replibyte and how to use it to transform a dataset the the mainteaince.
 
 ## What is Replibyte?
 
