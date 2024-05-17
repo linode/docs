@@ -6,7 +6,7 @@ description: 'Developers must know how to properly secure web servers. ✓ Read 
 authors: ["David Strom"]
 contributors: ["David Strom"]
 published: 2023-01-06
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['web server security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
