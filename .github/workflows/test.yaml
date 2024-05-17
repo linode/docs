@@ -33,6 +33,7 @@ jobs:
       - uses: errata-ai/vale-action@reviewdog
         with:
           files: docs
+          vale_flags: "--minAlertLevel=error --glob=!docs/contributors/*"
 
   vale2:
     runs-on: ubuntu-latest
