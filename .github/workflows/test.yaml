@@ -34,6 +34,7 @@ jobs:
         with:
           files: docs
           vale_flags: "--glob=!docs/contributors/*"
+          fail_on_error: true
 
   vale2:
     name: Vale (files changes in this PR)
