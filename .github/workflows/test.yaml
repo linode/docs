@@ -26,16 +26,17 @@ jobs:
         python ./ci/blueberry.py
 
   vale:
-    name: runner / vale
+    name: Vale (all files)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: errata-ai/vale-action@reviewdog
         with:
           files: docs
-          vale_flags: "--minAlertLevel=error --glob=!docs/contributors/*"
+          vale_flags: "--glob=!docs/contributors/*"
 
   vale2:
+    name: Vale (files changes in this PR)
     runs-on: ubuntu-latest
     steps:
     - name: Checkout docs repo
@@ -72,7 +73,7 @@ jobs:
       # completes when it is passed the empty array.
       if: ${{ '[]' != steps.select_docs_dir_files.outputs.added_modified }}
       with:
-        vale_flags: "--minAlertLevel=error --glob=!docs/contributors/*"
+        vale_flags: "--glob=!docs/contributors/*"
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
