@@ -269,7 +269,7 @@ reports:
 
 If you're happy with the behavior of the default rows, you can certainly continue using them as-is! You can also modify or remove these report-row directives, or add new ones, depending upon your needs.
 
-There are four kinds of rows you can define, each of which examines a different part of your access logs. These correspond to the values for the `test_type` parameter: [path](#test-type-path), [path_regex](#test-type-path-regex), [referer_regex](#test-type-referer-regex), and [agent_regex](#test-type-agent-regex).
+There are four kinds of rows you can define, each of which examines a different part of your access logs. These correspond to the values for the `test_type` parameter: [`path`](#test_type-path), [`path_regex`](#test_type-path_regex), [`referer_regex`](#test_type-referer_regex), and [`agent_regex`](#test_type-agent_regex).
 
 {{< note >}}
 Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/guides/how-to-use-grep-command/#regular-expression-overview) before defining your own row definitions with any of these types.
@@ -279,7 +279,7 @@ Note also that Bise ignores whitespace in regular expressions, allowing you to w
 
 Let's step through the file's available `test_type` configuration directives, and then examine the [other configuration options](#other-configuration-options).
 
-### test_type: path
+### `test_type`: path
 
 Row definitions with a `test_type` set to `path` will count any access whose requested URL path matches the value of `test`, exactly.
 
@@ -291,7 +291,7 @@ The following row definition will count any request for the path `/`, and only t
   test: /
 {{< /file >}}
 
-### test_type: path_regex
+### `test_type`: `path_regex`
 
 Counts any access whose requested URL path matches the value of `test`, evaluated as a regular expression.
 
@@ -308,7 +308,7 @@ The following "All visitors" definition from the default configuration will matc
 
 As noted earlier, Bise's regular expression processor ignores whitespace, allowing configuration files to add newlines and commentary in the middle of regexes like this.
 
-### test_type: referer_regex
+### `test_type`: `referer_regex`
 
 Counts any access whose referer URL matches the value of `test`, evaluated as a regular expression.
 
@@ -320,7 +320,7 @@ This line from the default configuration will count any visit that arrived by wa
   test: \bt\.co\b
 {{< /file >}}
 
-### test_type: agent_regex
+### `test_type`: `agent_regex`
 
 Counts any access whose User-agent string matches the value of `test`, evaluated as a regular expression.
 

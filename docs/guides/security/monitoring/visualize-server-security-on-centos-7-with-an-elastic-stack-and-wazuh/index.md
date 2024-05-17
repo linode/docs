@@ -429,10 +429,10 @@ server {
 
         httpd -M
 
-    - proxy_module
-    - lbmethod_byrequests_module
-    - proxy_balancer_module
-    - proxy_http_module
+    - `proxy_module`
+    - `lbmethod_byrequests_module`
+    - `proxy_balancer_module`
+    - `proxy_http_module`
 
 1. Enable the necessary mods in Apache. Open `00-proxy.conf` and verify that the lines below are included:
 

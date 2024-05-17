@@ -83,6 +83,7 @@ architected
 architecting
 aren
 argv
+arpack
 arping
 arptables
 arthashastra
@@ -90,6 +91,7 @@ Asana
 ASCIIbetical
 askbot
 aske
+ASNs
 ASPcore
 aspell
 Astra
@@ -310,6 +312,8 @@ chrooted
 chrooting
 CIDRs
 cifs_utils
+CIOs
+CISOfy
 citad
 cjones
 clamav
@@ -338,6 +342,7 @@ clustermgrguest
 cmd
 cmdmod
 CMS
+CMSMap
 CMSs
 cmusieve
 cnf
@@ -426,6 +431,7 @@ cryptocurrency
 csharp
 csharpserver
 csi
+CSPs
 csr
 css
 csum
@@ -436,6 +442,8 @@ ctx
 cuda
 curlie
 cutover
+CVEs
+cwRsync
 Cybeats
 cyber
 cyberattack
@@ -551,6 +559,7 @@ django
 dkim
 DLC
 DLCs
+DLLs
 dlncr
 dmg
 dmitriy
@@ -558,9 +567,11 @@ dmz
 dnf
 dns
 dns_linode
+DNSdumpster
 dnsleaktest
 dnsmasq
 DNSPerf
+DNSRecon
 dockercompose
 dockerfile
 dockerfiles
@@ -579,6 +590,7 @@ domain3
 domainkey
 domainname
 donenfeld
+dotCover
 dotdeb
 dotenv
 dotfiles
@@ -615,6 +627,7 @@ edu
 efi
 EGroupware
 ejabberd
+EKGs
 el6
 el7
 elasticsearch
@@ -628,6 +641,7 @@ embeddable
 emisoft
 emojivoto
 emscripten
+EMTs
 ender
 enduser
 enix
@@ -639,6 +653,8 @@ epel
 equifax
 erb
 erlang
+ERPs
+ERs
 esc
 eslint
 esm
@@ -755,6 +771,7 @@ framesets
 freedns
 freeipa
 Freemarker
+freemium
 freenom
 fremont
 freshclam
@@ -787,6 +804,7 @@ gcc
 gcloud
 gcm
 GDBs
+GDebi
 gdf
 geckodriver
 gem1
@@ -851,6 +869,7 @@ goto
 gpasswd
 gpc
 gpg
+GPGTools
 gping
 GPUs
 gradle
@@ -878,6 +897,7 @@ GTalk
 gtop
 guacd
 gui
+GUIs
 gunicorn
 gz
 gzip
@@ -943,6 +963,7 @@ howto
 howtoforge
 howtogeek
 href
+HRMs
 htaccess
 htcache
 htdocs
@@ -1071,6 +1092,7 @@ ipv4
 ipv6
 ipwl
 ipytest
+IPython
 irc
 irchelp
 ircname
@@ -1101,6 +1123,7 @@ javascript
 JBoss
 jdbc
 jdk
+JDKs
 Jellyfin
 jenkinsfile
 jenkinsx
@@ -1122,6 +1145,7 @@ journaling
 jpetazzo
 jpg
 jq
+jQuery
 jre
 JRuby
 js
@@ -1378,6 +1402,7 @@ mcrypt
 mcy
 md5
 md5sum
+MDAs
 mdev
 mediawiki
 megatrends
@@ -1442,19 +1467,25 @@ mkpasswd
 mktemp
 mktime
 mkv
+MLib
 MLlib
 mnesia
 mngtmpaddr
 moby
 mod_autoindex
+mod_cluster
 mod_deflate
 mod_evasive
 mod_expires
+mod_fastcgi
+mod_fcgid
+mod_jk
 mod_perl
 mod_php
 mod_proxy
 mod_python
 mod_rewrite
+mod_wsgi
 moddable
 modinfo
 modsecurity
@@ -1647,18 +1678,23 @@ nullable
 nullval
 num
 numpy
+NUnit
 nvidia
 nvim
 nvm
 nvme
+NVTs
 oauth
 obfuscator
 observium
 octopress
+ODMs
 odoo
+OEMs
 offboarding
 oftc
 ohai
+OIDs
 ok
 OKConfig
 okta
@@ -1684,11 +1720,13 @@ openvpn
 openvz
 openzipkin
 Opin
+ORMs
 osCommerce
 ossec
 ostemplate
 osx
 otomen
+OTPs
 outdented
 outdents
 outputter
@@ -1763,6 +1801,7 @@ pg_auto_failover
 pg_dump
 pg_dumpall
 pg_restore
+pgAdmin
 pgpass
 Phalcon
 pharmer
@@ -1773,11 +1812,13 @@ php
 php5
 php7
 phpFox
+PHPMailer
 phpmyadmin
 Phrack
 phusion
 pid
 pidfile
+PIDs
 pingable
 pinterest
 pipefs
@@ -1905,6 +1946,7 @@ pythonic
 qemu
 qmail
 qmgr
+QRadar
 quadro
 qualys
 quickconnect
@@ -1930,6 +1972,7 @@ RDBMS
 RDBMSs
 rdiff
 reachability
+reactively
 readcaps
 readme
 READMEs
@@ -2041,6 +2084,7 @@ routings
 rpaf
 rpc
 rpcbind
+RPCs
 rpmforge
 rrdtool
 rrset
@@ -2233,6 +2277,7 @@ spm
 spork
 spotify
 sql
+SQLi
 SQLmap
 sqlplus
 sqreen
@@ -2240,6 +2285,7 @@ sqrt_multiply
 squirrelmail
 src
 srv
+SSGs
 sshd
 sshfs
 sshing
@@ -2310,6 +2356,7 @@ suExec
 suhosin
 suid
 sukharev
+SUnit
 supabase
 Superinsight
 superset
@@ -2383,6 +2430,7 @@ tgz
 thanos
 thawte
 theano
+theHarvester
 theming
 thingsboard
 Thonny
@@ -2428,6 +2476,7 @@ toolstrip
 tooltip
 tooltips
 torvalds
+TOTPs
 towson
 trac
 traceroute
@@ -2449,6 +2498,7 @@ truststore
 tt
 ttl
 ttpd
+TTPs
 ttrss
 tty
 tumblr
@@ -2616,6 +2666,7 @@ vmstat
 vmui
 vmware
 vnc
+VNode
 VPCs
 VPLs
 vpns
@@ -2652,6 +2703,7 @@ webmin
 webpack
 webpages
 webpy
+WEBrick
 webroot
 webroots
 webserver
@@ -2707,6 +2759,7 @@ worker1
 worker2
 workgroup
 wp
+WPScan
 WPSolr
 wpuser
 writability
@@ -2740,6 +2793,9 @@ xml
 xmpp
 xms
 xmx
+XPath
+XQuartz
+XQuery
 xr
 xrdb
 xresources
@@ -2748,6 +2804,7 @@ xsetroot
 xstartup
 xsys
 xtables
+xUnit
 xvda
 xvdb
 xvdc

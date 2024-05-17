@@ -127,10 +127,10 @@ http {
         sudo firewall-cmd --zone=public --permanent --add-service=https
         sudo firewall-cmd --reload
 
-    {{< note respectIndent=false >}}
-If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
+    {{< note >}}
+    If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
 
-    sudo setsebool -P httpd_can_network_connect on
+        sudo setsebool -P httpd_can_network_connect on
     {{< /note >}}
 
     {{< content "cloud-firewall-shortguide" >}}

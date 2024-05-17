@@ -188,7 +188,7 @@ As far as disadvantages, PostgreSQL suffers a few, such as:
 
 - More complicated than MySQL.
 - Slower than MySQL.
-- No easy way to migrate data from other RDBMSes.
+- No easy way to migrate data from other RDBMSs.
 - Poor data compression.
 - Complicated horizontal scaling.
 - Poor clustering support.

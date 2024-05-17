@@ -46,7 +46,7 @@ Installing pyinotify within a virtual environment is highly recommended. This gu
 
 ### Create an Event Processor
 
-Similar to events in inotify, the Python implementation will be through an `EventProcessor` object with method names containing "process_" that is appended before the event name. For example, `IN_CREATE` in pyinotify though the `EventProcessor` will be `process_IN_CREATE`. The table below lists the inotify events used in this guide. In depth descriptions can be found in the [man pages of inotify](http://man7.org/linux/man-pages/man7/inotify.7.html).
+Similar to events in inotify, the Python implementation will be through an `EventProcessor` object with method names containing `process_` that is appended before the event name. For example, `IN_CREATE` in pyinotify though the `EventProcessor` will be `process_IN_CREATE`. The table below lists the inotify events used in this guide. In depth descriptions can be found in the [man pages of inotify](http://man7.org/linux/man-pages/man7/inotify.7.html).
 
 | Inotify Events      | Description                                                              |
 | ------------------- |:------------------------------------------------------------------------ |

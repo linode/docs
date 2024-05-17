@@ -29,7 +29,7 @@ This guide uses an example database for a school to further demonstrate the SQL 
 
 The example assumes that there are three students in the school, each of which has completed two courses. The sample data is shown in the table below:
 
-| SSNumber | LastName | FirstName | CourseId | NumericGrade | YearTaken |
+| `SSNumber` | `LastName` | `FirstName` | `CourseId` | `NumericGrade` | `YearTaken` |
 |:-:|:-:|:-:|:-:|:-:|:-:|
 | 111111111 | Smith | John | CSC101 | 98 | 2021 |
 | 111111111 | Smith | John | ENG101 | 95 | 2022 |

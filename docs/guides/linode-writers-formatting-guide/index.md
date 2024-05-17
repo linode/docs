@@ -690,7 +690,7 @@ There are four unique types of notes: **primary**, **secondary**, **warning**, a
 
 -   **Primary** (type is unset or `type="primary"`, title defaults to "Note"): Used for additional related information that does not fit with the rest of the document. Can include alternative suggestions or solutions, developer tips, or general best practices that are not critical to the success of the task at hand.
 
-    {{< note title="Best Practice: Use Passsword Generators" >}}
+    {{< note title="Best Practice: Use Password Generators" >}}
     When creating root, user, or other passwords, you can increase security by using a password generator such as [1Password](https://www.1password.com) to create and save complex, encrypted passwords.
     {{< /note >}}
 

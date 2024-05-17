@@ -227,7 +227,7 @@ Rook NFS allows remote hosts to mount filesystems over a network and interact wi
     kubectl apply -f ~/nfs/cluster/examples/kubernetes/nfs/rbac.yaml
     ```
 
-1.  Edit the PVC portion of the default NFS server manifests in the `nfs.yaml` file before initializing the NFS server. The provided NFS manifest has two changes that need to be made. The first is the storage class for the PVC is left off, which assumes the default storage class. This can be explicitly defined to "linode-block-storage-retain" instead of assuming the default storage class. Secondly the accessModes is set to ReadWriteMany and the Linode block storage does not support ReadWriteMany. This should be changed to ReadWriteOnce.
+1.  Edit the PVC portion of the default NFS server manifests in the `nfs.yaml` file before initializing the NFS server. The provided NFS manifest has two changes that need to be made. The first is the storage class for the PVC is left off, which assumes the default storage class. This can be explicitly defined to "linode-block-storage-retain" instead of assuming the default storage class. Secondly the `accessModes` is set to `ReadWriteMany` and the Linode block storage does not support `ReadWriteMany`. This should be changed to `ReadWriteOnce`.
 
     ```file {title="/nfs/cluster/examples/kubernetes/nfs/nfs.yaml" lang=yaml}
     ---
