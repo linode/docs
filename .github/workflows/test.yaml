@@ -26,6 +26,13 @@ jobs:
         python ./ci/blueberry.py
 
   vale:
+    name: runner / vale
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: errata-ai/vale-action@reviewdog
+
+  vale2:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout docs repo
