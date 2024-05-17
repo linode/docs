@@ -1,7 +1,7 @@
 ---
 slug: use-apache-kafka-to-process-streams
 title: "How to Process Streams Using Kafka"
-description: 'Two to three sentences describing your guide.'
+description: 'Learn to develop process streams with Apache Kafka. This tutorial covers Kafka message broker setup, handling Kafka events, and using the Kafka API.'
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2024-05-17
