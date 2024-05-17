@@ -101,11 +101,11 @@ proxy_cache one;
 
         find /var/www/example.com/cache/ -type f -delete
 
-    If you want more than just a basic cache clear, you can use the [proxy_cache_purge](https://www.nginx.com/products/nginx/caching/#purging) directive.
+    If you want more than just a basic cache clear, you can use the [`proxy_cache_purge`](https://www.nginx.com/products/nginx/caching/#purging) directive.
 
 ## HTTP Response Header Fields
 
-Use [*add_header*](https://nginx.org/en/docs/http/ngx_http_headers_module.html) directives in your configuration carefully. Unlike other directives, an `add_header` directive is not inherited from parent configuration blocks. If you have the directive in both, an `add_header` directive in a `server` block will override any in your `http` area.
+Use [`add_header`](https://nginx.org/en/docs/http/ngx_http_headers_module.html) directives in your configuration carefully. Unlike other directives, an `add_header` directive is not inherited from parent configuration blocks. If you have the directive in both, an `add_header` directive in a `server` block will override any in your `http` area.
 
 For this reason, you should include them in one of two different ways:
 

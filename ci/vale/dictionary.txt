@@ -65,6 +65,7 @@ anycasted
 anycasting
 ap
 apache2
+APCu
 apfs
 api
 apis
@@ -256,6 +257,7 @@ cachable
 cacheable
 caddy
 caddyfile
+cAdvisor
 caffe
 cakey
 calc
@@ -346,6 +348,7 @@ CMSMap
 CMSs
 cmusieve
 cnf
+CNNs
 codebase
 codec
 codefresh
@@ -396,6 +399,7 @@ coverity
 covid
 cpanel
 cpanminus
+cPHulk
 cpu
 cpus
 CPython
@@ -480,6 +484,7 @@ datasource
 datastax
 datastore
 datastores
+Datastream
 datetime
 datetimeformat
 dav
@@ -490,6 +495,7 @@ dbconfig
 dbd
 dbdir
 dbfiles
+DBMail
 DBMSs
 dbname
 dbs
@@ -635,6 +641,7 @@ elgg
 elif
 elisp
 elpaso
+ELRepo
 emacs
 email2email
 embeddable
@@ -796,6 +803,7 @@ gamepad
 gamepedia
 gameplay
 gandi
+GANs
 gartner
 gatik
 gatsby
@@ -1112,6 +1120,7 @@ istio
 istioctl
 iterable
 iterables
+iTerm
 itk
 ivanti
 jamstack
@@ -1130,6 +1139,7 @@ jenkinsx
 jessie
 jetpack
 jez
+JIDs
 jira
 jitsi
 jk
@@ -1244,6 +1254,7 @@ lbmethod
 ld
 lda
 ldap
+LDAs
 le
 leds
 lego
@@ -1346,6 +1357,7 @@ lugano
 luminus
 lunasec
 Lutz
+LWRPs
 lxd
 lxml
 lynis
@@ -1472,6 +1484,7 @@ MLlib
 mnesia
 mngtmpaddr
 moby
+mod_alias
 mod_autoindex
 mod_cluster
 mod_deflate
@@ -1480,11 +1493,15 @@ mod_expires
 mod_fastcgi
 mod_fcgid
 mod_jk
+mod_mono
 mod_perl
 mod_php
 mod_proxy
 mod_python
 mod_rewrite
+mod_setenvif
+mod_ssi
+mod_status
 mod_wsgi
 moddable
 modinfo
@@ -1512,8 +1529,10 @@ mouseover
 mov
 movr
 mpapis
+MPlayer
 mpm
 MPMs
+MRs
 MRuby
 msfvenom
 msg
@@ -1526,6 +1545,7 @@ MTAs
 mtr
 mtu
 MUAs
+MUCs
 multiarch
 multibyte
 multicast
@@ -1549,6 +1569,7 @@ musl
 mutator
 mutliverse
 mv
+MXNet
 myapp
 myblog
 mydestination
@@ -1583,6 +1604,7 @@ nanode
 nanodes
 nast
 natively
+NATted
 nawk
 nbox
 ncdu
@@ -1612,6 +1634,7 @@ netplan
 netsh
 netstat
 netstumbler
+NETtalk
 netuser
 networkd
 neurophysiologist
@@ -1638,6 +1661,7 @@ nixpkgs
 nlris
 nmap
 nmcli
+NNs
 noarch
 node1
 node2
@@ -1723,6 +1747,7 @@ Opin
 ORMs
 osCommerce
 ossec
+OStatus
 ostemplate
 osx
 otomen
@@ -1782,6 +1807,7 @@ paypal
 PBCs
 pbr
 pbxs
+pCloud
 PDFs
 pem
 pentest
@@ -1864,6 +1890,7 @@ powercfg
 powershell
 ppa
 pparadis
+PPAs
 ppc64el
 pre
 pre4
@@ -1986,6 +2013,7 @@ rebase
 rebased
 rebases
 rebasing
+rEbooter
 rebootuser
 rebranded
 recompiles
@@ -2067,6 +2095,7 @@ rkt
 rmdir
 rmem
 rmms
+RNNs
 ro
 roadmunk
 Roblox
@@ -2086,6 +2115,7 @@ rpc
 rpcbind
 RPCs
 rpmforge
+RPMs
 rrdtool
 rrset
 rrsets
@@ -2497,6 +2527,7 @@ trojan
 truststore
 tt
 ttl
+TTLs
 ttpd
 TTPs
 ttrss
@@ -2530,6 +2561,7 @@ udp
 ufw
 ui
 uidl
+UIs
 umount
 un
 unaliased
@@ -2567,6 +2599,7 @@ unmounting
 unmounts
 unopinionated
 unoptimized
+unparsed
 unpatched
 unregister
 unrendered
@@ -2670,6 +2703,8 @@ VNode
 VPCs
 VPLs
 vpns
+vQmod
+vServers
 vset
 vswap
 vue

@@ -259,7 +259,7 @@ Start php-fastcgi and nginx by issuing the following commands:
 
 ## Test PHP with FastCGI
 
-Create a file called "test.php" in your site's "public\_html" directory with the following contents:
+Create a file called "test.php" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/www/public\\_html/test.php" php >}}
 <?php phpinfo(); ?>

@@ -350,15 +350,15 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
 
     You should see a similar output:
 
-    {{<output>}}
-simple-linode-29 | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python"
-    },
-    "changed": false,
-    "ping": "pong"
-}
-{{</output>}}
+    ```output
+    simple-linode-29 | SUCCESS => {
+        "ansible_facts": {
+            "discovered_interpreter_python": "/usr/bin/python"
+        },
+        "changed": false,
+        "ping": "pong"
+    }
+    ```
 
 ###  Plugin Parameters
 

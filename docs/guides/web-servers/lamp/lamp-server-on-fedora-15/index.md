@@ -201,7 +201,7 @@ If you need support for MySQL in PHP, then you must install the php5-mysql packa
 
     yum install php-mysql
 
-You can test PHP by creating a file with the following contents under your "public\_html" directory:
+You can test PHP by creating a file with the following contents under your `public_html` directory:
 
 {{< file "/srv/www/example.com/public\\_html/test.php" php >}}
 <?php phpinfo(); ?>

@@ -462,7 +462,7 @@ Troubleshoot SELinux issues by changing `SELINUX=enforcing` to `SELINUX=permissi
 3.  Here is an example of a sample installation. Replace `db-password` and `db-user` with the user name and password you created for MySQL earlier. Create a unique and strong password for the `admin-password`. Replace `your_URL_or_domain` with the proper `base-url` as described above. See the table following this section for more information on each option.
 
         bin/magento setup:install --admin-firstname="Magento" --admin-lastname="User" --admin-email="user@example.com" --admin-user="Magentouser" --admin-password="password" --db-name="magento" --db-host="localhost" --db-user="magento" --db-password="password" --language=en_US --currency=USD --timezone=Europe/London --cleanup-database --base-url=http://"your_URL_or_domain"
-4.  Wait for Magento to complete its installation. This typically takes 5 to 10 minutes. Upon completion, the program displays a "Success" message as well as a `Magento Admin URI` key. The URI provides access to the Magento Admin page. The label begins with "admin_", followed by a six-digit alphanumerical sequence.
+4.  Wait for Magento to complete its installation. This typically takes 5 to 10 minutes. Upon completion, the program displays a "Success" message as well as a `Magento Admin URI` key. The URI provides access to the Magento Admin page. The label begins with `admin_`, followed by a six-digit alphanumerical sequence.
 5.  For ease of development, you can place your Magento application into development mode while you work on getting it running. See the post-installation section for information on placing your store into production mode.
 
         sudo bin/magento deploy:mode:set developer
