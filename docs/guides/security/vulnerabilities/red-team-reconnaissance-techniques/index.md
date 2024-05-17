@@ -664,7 +664,7 @@ We can also automate active recon with Amass, this can be done by running the in
 
 #### Amass Reports
 
-Amass reports can be generated through the use of the viz subcommand. The viz subcommand allows you to create enlightening network graph visualizations that add structure to the information gathered. This subcommand only leverages the 'output_directory' and remote graph database settings from the configuration file.
+Amass reports can be generated through the use of the viz subcommand. The viz subcommand allows you to create enlightening network graph visualizations that add structure to the information gathered. This subcommand only leverages the `output_directory` and remote graph database settings from the configuration file.
 
 You can generate reports by specifying the viz subcommand and your preferred output format as highlighted in the following command:
 

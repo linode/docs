@@ -53,7 +53,7 @@ In order to successfully execute the commands in this guide, you will need to ru
 
         curl -o repo_key http://rpm.datastax.com/rpm/repo_key
 
-1.  The key should now be contained in a file called "repo_key". Install the key with the package manager:
+1.  The key should now be contained in a file called `repo_key`. Install the key with the package manager:
 
         sudo rpm --import repo_key
 

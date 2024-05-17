@@ -92,7 +92,7 @@ The following procedures outline the process of elevating privileges by bypassin
 
         search bypassuac
 
-    As highlighted in the following screenshot, we will be utilizing the “bypassuac_injection_winsxs” module as it is the only module that works on Windows 10 systems.
+    As highlighted in the following screenshot, we will be utilizing the `bypassuac_injection_winsxs` module as it is the only module that works on Windows 10 systems.
 
     ![search bypassuac output](search-bypassuac-output.png "search bypassuac output")
 
@@ -233,7 +233,7 @@ We can begin the process by following the outlined procedures:
 
     As shown in the following screenshot, we are able to identify the “NT AUTHORITY\SYSTEM” token.
 
-    ![list_tokens output](list-tokens-output.png "list_tokens output")
+    ![Screenshot of terminal output](list-tokens-output.png)
 
 1. We can impersonate the “NT AUTHORITY\SYSTEM” token by running the following command:
 

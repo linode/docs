@@ -266,13 +266,13 @@ You should not store production database data inside a Docker container. Contain
         psql -U postgres -f backup.sql postgres
         exit
 
-5.  Run the node image again. This time, instead of `--add-host`, use the `--link` option to connect the container to pg_container:
+5.  Run the node image again. This time, instead of `--add-host`, use the `--link` option to connect the container to `pg_container`:
 
         docker run -d --name node_container --link=pg_container:database node_image
 
     This will link the `pg_container` under the hostname `database`.
 
-6.  Open `/etc/hosts` in node_container to confirm that the link has been made:
+6.  Open `/etc/hosts` in `node_container` to confirm that the link has been made:
 
         docker exec -it node_container cat /etc/hosts
 

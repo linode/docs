@@ -88,17 +88,17 @@ This can be done by following the steps outlined below:
 
         show tables;
 
-    As shown in the following screenshot, this will output a list of all the tables in the WordPress database, in this case, we are interested in the wp_users table.
+    As shown in the following screenshot, this will output a list of all the tables in the WordPress database, in this case, we are interested in the `wp_users` table.
 
     ![MySQL show tables output](mysql-show-tables-output.png "MySQL show tables output")
 
-5. We can dump the contents of the wp_users table by running the following command:
+5. We can dump the contents of the `wp_users` table by running the following command:
 
         select * from wp_users;
 
     As shown in the following screenshot, this will output a list of WordPress user accounts, their IDs, and their corresponding password hashes.
 
-    ![MySQL select from wp_users table output](mysql-select-from-wp-users-table-output.png "MySQL select from wp_users table output")
+    ![MySQL select from users table output](mysql-select-from-wp-users-table-output.png)
 
     Given the fact that we have already cracked the password for the user “michael”, we can turn our attention to cracking the password hash for the user “steven”.
 

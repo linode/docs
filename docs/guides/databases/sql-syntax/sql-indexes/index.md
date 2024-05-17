@@ -60,6 +60,7 @@ Unless mentioned otherwise, all the commands in this guide work well on both **M
 
 As an example, assume that a school keeps track of its students in a table named `Student`. This table has associated columns named `Student`, `SSNumber`, `LastName`, and `FirstName`. From these columns, `Student` is the primary key column as it uniquely identifies each row of data in the `Student` table. Create a unique index (`SSIndex`) on the `SSNumber` column, to facilitate rapid retrieval of data from the table. The following SQL DDL command is used to perform this query:
 
+```command
 CREATE TABLE Student (
   SSNumber CHAR(9) NOT NULL,
   LastName VARCHAR(30) NOT NULL,
@@ -68,6 +69,8 @@ CREATE TABLE Student (
 );
 
     CREATE UNIQUE INDEX SSIndex ON Student (SSNumber);
+```
+
 {{< note >}}
 Both the SQL commands above are delimited by a semicolon (;), which is compatible with most relational database systems. `SSNumber` is specifically designated as the table’s primary key.
 {{< /note >}}

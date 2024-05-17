@@ -119,24 +119,24 @@ For distributions with different init systems:
 When changing values in the `my.cnf` file, be sure that the line you are changing hasn't been commented out with the pound (`#`) prefix.
 {{< /note >}}
 
-#### key_buffer
+#### `key_buffer`
 Changing the `key_buffer` allocates more memory to MySQL, which can substantially speed up your databases, assuming you have the memory free. The `key_buffer` size should generally take up no more than 25 percent of the system memory when using the MyISAM table engine, and up to 70 percent for InnoDB. If the value is set too high, resources are wasted.
 
 According to MySQL's documentation, for servers with 256MB (or more) of RAM with many tables, a setting of 64M is recommended. Servers with 128MB of RAM and fewer tables can be set to 16M, the default value. Websites with even fewer resources and tables can have this value set lower.
 
-#### max_allowed_packet
+#### `max_allowed_packet`
 This parameter lets you set the maximum size of a sendable packet. A packet is a single SQL state, a single row being sent to a client, or a log being sent from a source database to a replica. If you know that your MySQL server is going to be processing large packets, it is best to increase this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.
 
-#### thread_stack
+#### `thread_stack`
 This value contains the stack size for each thread. MySQL considers the default value of the `thread_stack` variable sufficient for normal use; however, should an error relating to the `thread_stack` be logged, this can be increased.
 
-#### thread_cache_size
+#### `thread_cache_size`
 If `thread_cache_size` is "turned off" (set to 0), then any new connection being made needs a new thread created for it. When the connections disengage the thread is destroyed. Otherwise, this value sets the number of unused threads to store in a cache until they need to be used for a connection. Generally this setting has little affect on performance, unless you are receiving hundreds of connections per minute, at which time this value should be increased so the majority of connections can be made on cached threads.
 
-#### max_connections
+#### `max_connections`
 This parameter sets the maximum amount of *concurrent* connections. It is best to consider the maximum amount of connections you have had in the past before setting this number, so you'll have a buffer between that upper number and the `max_connections` value. Note, this does not indicate the maximum amount of *users* on your website at one time; rather it shows the maximum amount of users making *requests* concurrently.
 
-#### table_cache
+#### `table_cache`
 This value should be kept higher than your `open_tables` value. To determine this value use:
 
 {{< highlight sql >}}

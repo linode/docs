@@ -548,7 +548,7 @@ The example code is similar to the code from the previous section. The updated l
 
 - Line 69 uses the dictionary interface of the email.message.Message object to retrieve a string that represents the date and time of the email. For the example email in the previous section, this was equal to `Tue, 7 Dec 2021 12:45:10 -0500 (EST)`.
 
-- Line 70 uses the [parsedate_to_datetime](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_to_datetime) function of the Python email module to convert the datetime string to a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
+- Line 70 uses the [`parsedate_to_datetime`](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_to_datetime) function of the Python email module to convert the datetime string to a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
 
 - Line 71 gets the Unix timestamp from the datetime object.
 
