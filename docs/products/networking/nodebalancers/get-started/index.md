@@ -38,7 +38,7 @@ If you are using a Cloud Firewall with this NodeBalancer, have the name of the f
 
 Once your application has been deployed on multiple Compute Instances, you are ready to create the NodeBalancer. Simple instructions have been provided below. For complete instructions, see the [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/) guide.
 
-1. Log in to [Cloud Manager](https://cloud.linode.com), select **NodeBalancers** from the left menu, and click the **Create NodeBalancer** button. This displays the *Nodebalancers Create* form.
+1. Log in to [Cloud Manager](https://cloud.linode.com), select **NodeBalancers** from the left menu, and click the **Create NodeBalancer** button. This displays the *NodeBalancers Create* form.
 
 1. Enter a **Label** for the NodeBalancer, as well as any **Tags** that may help you organize this new NodeBalancer with other services on your account.
 
@@ -54,7 +54,7 @@ Once your application has been deployed on multiple Compute Instances, you are r
     | **Additional Linodes** (Optional)| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can leave this blank if you do not yet wish to apply the Firewall to a Linode. |
     | **Additional NodeBalancers** (Optional) | The NodeBalancers on which to apply this Firewall. A list of all created NodeBalancers on your account are visible. You can leave this blank if you do not want to apply this Cloud Firewall to other NodeBalancers.|
 
-    Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the the *Nodebalancers Create* form.
+    Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the *NodeBalancers Create* form.
 
     {{< note >}}
     By default, a new Cloud Firewall accepts all inbound and outbound connections. Only inbound firewall rules apply to NodeBalancers, see [Cloud Firewall Inbound Rules for NodeBalancer](/docs/products/networking/nodebalancers/guides/create/#cloud-firewall-inbound-rules-for-nodebalancer). Custom rules can be added as needed in the Firewall application. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).

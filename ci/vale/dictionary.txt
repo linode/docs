@@ -351,6 +351,7 @@ cnf
 CNNs
 codebase
 codec
+codecs
 codefresh
 Codeone
 codepen
@@ -386,6 +387,7 @@ coose
 copr
 copyfrom
 copyto
+Corefile
 corepack
 coreutils
 coroutine
@@ -437,6 +439,7 @@ csharpserver
 csi
 CSPs
 csr
+CSRs
 css
 csum
 csv
@@ -491,9 +494,11 @@ dav
 davfs
 davfs2
 db8
+DBAs
 dbconfig
 dbd
 dbdir
+DBeaver
 dbfiles
 DBMail
 DBMSs
@@ -562,6 +567,7 @@ distro
 distros
 dists
 django
+DJs
 dkim
 DLC
 DLCs
@@ -602,6 +608,7 @@ dotenv
 dotfiles
 dotnet
 doveadm
+downscaled
 dpkg
 dport
 dragos
@@ -623,6 +630,8 @@ e2fsck
 ea04
 ead
 Easypanel
+eBook
+eBooks
 ebtables
 ebuild
 ecommerce
@@ -789,6 +798,7 @@ frontend
 frontmatter
 froud
 froxlor
+FRRouting
 fs
 fsck
 fstab
@@ -931,6 +941,7 @@ hashmark
 hasn
 hba
 hd0
+HDDs
 hdfs
 healthcheck
 healthtech
@@ -1015,6 +1026,7 @@ icmpv6
 idempotence
 ident
 identrust
+iDimensionz
 idlist
 ie
 iface
@@ -1048,6 +1060,7 @@ inet6
 infector
 infographic
 infosec
+ingester
 ingestible
 ingressgateway
 ini
@@ -1409,6 +1422,7 @@ mbits
 mBlock
 mbox
 Mbps
+MBps
 mbstrings
 mcrypt
 mcy
@@ -1654,6 +1668,7 @@ ngrok
 ngular
 ngx
 nickcolor
+NICs
 Nikto
 Nirvashare
 nixcraft
@@ -1694,6 +1709,7 @@ ns2
 nsd4
 nsinit
 nslookup
+NSoft
 ntop
 ntopng
 ntp
@@ -2181,6 +2197,7 @@ schroot
 schtasks
 scikit
 scm
+SCMs
 scp
 scrapy
 screenrc
@@ -2315,6 +2332,7 @@ sqrt_multiply
 squirrelmail
 src
 srv
+SSDs
 SSGs
 sshd
 sshfs
@@ -2515,6 +2533,7 @@ traefik
 transcode
 transcoded
 transcoder
+transcoders
 transcodes
 transcoding
 transpiled
@@ -2568,6 +2587,8 @@ unaliased
 uname
 unarchive
 unary
+unassign
+unassigning
 unban
 unbans
 unbilled
@@ -2614,6 +2635,7 @@ untrusted
 unversioned
 unvetted
 upbound
+upscaled
 upserted
 upsize
 uri
@@ -2655,6 +2677,8 @@ varnishlog
 varonis
 vaultwarden
 vBulletin
+vCPU
+vCPUs
 vcs
 vdev
 vdevs
@@ -2878,6 +2902,7 @@ zimbra
 zipkin
 zipkinhost
 zix
+Zixi
 zkcluster1root
 zlib
 znc
@@ -2891,4 +2916,3 @@ zshrc
 zxvf
 ZYpp
 Zypper
-SCMs

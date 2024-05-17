@@ -38,7 +38,7 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 - **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. Please note that the sudo password is automatically created and stored in the `~/.deployment_secrets.txt` file. See [Accessing the Nomad Web UI](#accessing-the-nomad-web-ui) below.
 
-- **Email Address** *(required)*: A valid SOA email address for auto-generated LetsEncrypt SSL.
+- **Email Address** *(required)*: A valid SOA email address for auto-generated Let's Encrypt SSL.
 
 - **Add SSH Keys to all nodes?** If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 

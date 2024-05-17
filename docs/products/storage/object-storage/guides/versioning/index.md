@@ -88,7 +88,7 @@ Run the `list-object-versions` command, replacing *[cluster-url]* with the clust
 
 If running this command with the prefix option set to the `example-file.txt` file with two versions, the output is similar to the following:
 
-{{<output>}}
+```output
 {
     "Versions": [
         {
@@ -119,7 +119,7 @@ If running this command with the prefix option set to the `example-file.txt` fil
         }
     ]
 }
-{{</output>}}
+```
 
 Each version is listed, along with its individual object metadata.
 
