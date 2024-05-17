@@ -73,7 +73,7 @@ jobs:
       if: ${{ '[]' != steps.select_docs_dir_files.outputs.added_modified }}
       with:
         version: 2.19.0
-        vale_flags: "--minAlertLevel=error --glob='!docs/authors/*'"
+        vale_flags: "--minAlertLevel=error --glob=!docs/contributors/*"
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
