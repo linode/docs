@@ -45,7 +45,7 @@ Checking the status of the SSH server requires using `systemctl` to query the st
 To check the status of the SSH server:
 
 ```command
-sudo systemctl status SSH
+sudo systemctl status ssh
 ```
 
 The status should appear:

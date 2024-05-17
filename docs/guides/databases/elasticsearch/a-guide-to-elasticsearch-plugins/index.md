@@ -18,7 +18,7 @@ tags: ["ubuntu","debian","database","java"]
 aliases: ['/databases/elasticsearch/a-guide-to-elasticsearch-plugins/']
 ---
 
-![banner_image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg)
+![Header image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg "How to Install and Use Elasticsearch Plugins")
 
 ## What are Elasticsearch Plugins?
 

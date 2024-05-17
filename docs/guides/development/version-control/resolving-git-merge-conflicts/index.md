@@ -252,9 +252,9 @@ The chapter on [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advan
 
 The first command configures Git to use VS Code as your default merge tool. The second command tells Git how to run VS Code, since Git is not aware of VS Code unless configured to use it.
 
-The `--wait` option is specific to VSCode, and tells it to wait until you explicitly exit rather than moving to the background.
+The `--wait` option is specific to VS Code, and tells it to wait until you explicitly exit rather than moving to the background.
 
-VSCode gives you three different ways of viewing a merge conflict:
+VS Code gives you three different ways of viewing a merge conflict:
 
 ![An example Git merge conflict in the VS Code text editor.](vscode-file-view-wide.png)
 
