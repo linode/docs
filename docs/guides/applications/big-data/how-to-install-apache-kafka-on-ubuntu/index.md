@@ -30,7 +30,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 ## A Summary of the Apache Kafka Installation Process
 
-A complete Kafka installation consists of the high-level steps listed below. Each step is described in a separate section. These instructions are designed for Ubuntu 20.04 but are generally valid for any Debian-based Linux distribution.
+A complete Kafka installation consists of the high-level steps listed below. Each step is described in a separate section. These instructions are designed for Ubuntu 24.04 but are generally valid for any Debian-based Linux distribution.
 
 1.  Install Java
 1.  Download and Install Apache Kafka
@@ -53,7 +53,7 @@ You must install Java before you can use Apache Kafka. This guide explains how t
 1. Install OpenJDK with `apt`.
 
     ```command
-    sudo apt install openjdk-11-jdk
+    sudo apt install openjdk-21-jdk
     ```
 
 1. Confirm you installed the expected version of Java.
@@ -65,21 +65,21 @@ You must install Java before you can use Apache Kafka. This guide explains how t
    Java returns some basic information about the installation. The information can vary based on the version you have installed.
 
     ```output
-    openjdk version "11.0.9.1" 2020-11-04
-    OpenJDK Runtime Environment (build 11.0.9.1+1-Ubuntu-0ubuntu1.20.04)
-    OpenJDK 64-Bit Server VM (build 11.0.9.1+1-Ubuntu-0ubuntu1.20.04, mixed mode, sharing)
+    openjdk 21.0.3 2024-04-16
+    OpenJDK Runtime Environment (build 21.0.3+9-Ubuntu-1ubuntu1)
+    OpenJDK 64-Bit Server VM (build 21.0.3+9-Ubuntu-1ubuntu1, mixed mode, sharing)
     ```
 
 ## Download and Install Apache Kafka
 
-Tar archives for Apache Kafka can be downloaded directly from the Apache Site and installed with the process outlined in this section. The name of the Kafka download varies based on the release version. Substitute the name of your own file wherever you see `kafka_2.13-2.7.0.tgz`.
+Tar archives for Apache Kafka can be downloaded directly from the Apache Site and installed with the process outlined in this section. The name of the Kafka download varies based on the release version. Substitute the name of your own file wherever you see `kafka_2.13-3.7.0.tgz`.
 
 1.  Navigate to the [Apache Kafka Downloads page](https://kafka.apache.org/downloads) and choose the Kafka release you want. We recommend choosing the latest version, which is currently Apache Kafka 2.7. This link takes you to a landing page where you can use either HTTP or FTP to download the tar file.
 
 1.  If you downloaded the software onto a different computer than the host, transfer the Apache Kafka files to the host via `scp`, `ftp`, or another file transfer method. Replace the `user` and `yourhost` values with your user name and host IP address:
 
     ```command
-    scp /localpath/kafka_2.13-2.7.0.tgz user@192.0.2.0:~/
+    scp /localpath/kafka_2.13-3.7.0.tgz user@192.0.2.0:~/
     ```
 
     {{< note >}}
@@ -90,13 +90,13 @@ Tar archives for Apache Kafka can be downloaded directly from the Apache Site an
     Execute the following command to generate a checksum for the tar file:
 
     ```command
-    gpg --print-md SHA512 kafka_2.13-2.7.0.tgz
+    gpg --print-md SHA512 kafka_2.13-3.7.0.tgz
     ```
 
     Compare the output from this command against the contents of the `SHA512` file. The two checksums should match. This step does not confirm the authenticity of the file, only its validity. The checksum output has the following format:
 
     ```output
-    kafka_2.13-2.7.0.tgz: F3DD1FD8 8766D915 0D3D395B 285BFA75 F5B89A83 58223814
+    kafka_2.13-3.7.0.tgz: F3DD1FD8 8766D915 0D3D395B 285BFA75 F5B89A83 58223814
                           90C8428E 6E568889 054DDB5F ADA1EB63 613A6441 989151BC
                           7C7D6CDE 16A871C6 674B909C 4EDD4E28
     ```
@@ -112,7 +112,7 @@ Tar archives for Apache Kafka can be downloaded directly from the Apache Site an
     -   Use `gpg` to verify the signature.
 
         ```command
-        gpg --verify kafka_2.13-2.7.0.tgz.asc  kafka_2.13-2.7.0.tgz
+        gpg --verify kafka_2.13-3.7.0.tgz.asc  kafka_2.13-3.7.0.tgz
         ```
 
     -   The output should list the actual RSA key and the person who signed it.
@@ -131,31 +131,30 @@ Tar archives for Apache Kafka can be downloaded directly from the Apache Site an
 1.  Extract the files with the `tar` utility. After the extraction process is complete, either delete the archive or store it in a secure place elsewhere on your system.
 
     ```command
-    tar -zxvf kafka_2.13-2.7.0.tgz
+    tar -zxvf kafka_2.13-3.7.0.tgz
     ```
 
 1.  **Optional**: Create a new centralized directory for Kafka and move the extracted files to this new Kafka home directory.
 
     ```command
     sudo mkdir /home/kafka
-    sudo mv kafka_2.13-2.7.0 /home/kafka
+    sudo mv kafka_2.13-3.7.0 /home/kafka
     ```
 
 ## Run Kafka
 
 Kafka can be launched directly from the command line. You must launch the Zookeeper module before running Kafka.
 
-1.  Review the settings contained in the `kafka_2.13-2.7.0/config/server.properties` file within your Kafka directory. For now, the default settings are fine. But we recommend you set the `delete.topic.enable` attribute to `true` at the end of the file. This allows you to delete any topics you might create during testing.
+1.  Review the settings contained in the `kafka_2.13-3.7.0/config/server.properties` file within your Kafka directory. For now, the default settings are fine. But we recommend you set the `delete.topic.enable` attribute to `true` at the end of the file. This allows you to delete any topics you might create during testing.
 
-    ```file {title="/home/kafka/kafka_2.13-2.7.0/config/server.properties"}
-    ...
+    ```file {title="/home/kafka/kafka_2.13-3.7.0/config/server.properties"}
     delete.topic.enable = true
     ```
 
 1.  Change to the Kafka home directory and start Zookeeper.
 
     ```command
-    cd /home/kafka/kafka_2.13-2.7.0/
+    cd /home/kafka/kafka_2.13-3.7.0/
     bin/zookeeper-server-start.sh config/zookeeper.properties
     ```
 
@@ -166,7 +165,7 @@ Kafka can be launched directly from the command line. You must launch the Zookee
 1.  Open a new console session and launch Kafka.
 
     ```command
-    cd /home/kafka/kafka_2.13-2.7.0/
+    cd /home/kafka/kafka_2.13-3.7.0/
     bin/kafka-server-start.sh config/server.properties
     ```
 
@@ -176,36 +175,42 @@ Before you can send any events to Kafka, you must create a topic to contain the 
 
 1.  Open a new console session.
 
-1.  Change the directory to your Kafka directory and create a new topic named `test-events`.
+1.  Change the directory to your Kafka directory and create a new topic named `test-events`:
 
     ```command
-    cd /home/kafka/kafka_2.13-2.7.0/
+    cd /home/kafka/kafka_2.13-3.7.0/
     bin/kafka-topics.sh --create --topic test-events --bootstrap-server localhost:9092
     ```
 
-    Kafka confirms the topic has been created.
+    Kafka confirms the topic has been created:
 
     ```output
     Created topic test-events.
     ```
 
-1. Generate a list of all the topics on the cluster with the `--list` option. You should see `test-events` listed in the output.
+1. Generate a list of all the topics on the cluster with the `--list` option:
 
     ```command
     bin/kafka-topics.sh --list --bootstrap-server localhost:9092
     ```
 
-1.  Use the `describe` flag to display all information about the new topic.
+    You should see `test-events` listed in the output:
+
+    ```output
+    test-events
+    ```
+
+1.  Use the `describe` flag to display all information about the new topic:
 
     ```command
     bin/kafka-topics.sh --describe --topic test-events --bootstrap-server localhost:9092
     ```
 
-    Kafka returns a summary of the topic, including the number of partitions and the replication factor.
+    Kafka returns a summary of the topic, including the number of partitions and the replication factor:
 
     ```output
-    CTopic: test-events PartitionCount: 1 ReplicationFactor: 1 Configs:
-    Topic: test-events Partition: 0 Leader: 0 Replicas: 0 Isr: 0
+    Topic: test-events	TopicId: URC3EPiqTUW2fBkJuW5AYQ	PartitionCount: 1	ReplicationFactor: 1	Configs:
+	    Topic: test-events	Partition: 0	Leader: 0	Replicas: 0	Isr: 0
     ```
 
 ## Writing and Reading Kafka Events
@@ -215,7 +220,7 @@ Kafka's command-line interface allows you to quickly test out the new topic. Use
 1.  Open a new console session for the producer and change the directory to the Kafka root directory.
 
     ```command
-    cd /home/kafka/kafka_2.13-2.7.0/
+    cd /home/kafka/kafka_2.13-3.7.0/
     ```
 
 1.  Configure a producer and specify a topic for its events. You are not creating any events yet, only a client with the ability to send events. Kafka returns a prompt `>` indicating the producer is ready.
@@ -235,7 +240,7 @@ Kafka's command-line interface allows you to quickly test out the new topic. Use
 1.  Open a new console session to run the consumer and change the directory to the root Kafka directory.
 
     ```command
-    cd /home/kafka/kafka_2.13-2.7.0/
+    cd /home/kafka/kafka_2.13-3.7.0/
     ```
 
 1.  Create the consumer, specifying the `test-events` topic it should read from. The `--from-beginning` flag indicates it should read all events starting from the beginning of the topic.
@@ -314,11 +319,15 @@ wordCounts.toStream().to("streams-wordcount-output", Produced.with(Serdes.String
 1.  Create a topic on the Kafka cluster to store the sample word count data.
 
     ```command
-    cd /home/kafka/kafka_2.13-2.7.0/
+    cd /home/kafka/kafka_2.13-3.7.0/
     bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --topic streams-plaintext-input
     ```
 
-    Kafka confirms it has created the topic.
+    Kafka confirms it has created the topic:
+
+    ```output
+    Created topic streams-plaintext-input.
+    ```
 
 1.  Create a second topic to store the output of the Kafka Streams application. Set the cleanup policy to compact entries, so only the updated word counts are stored.
 
@@ -326,7 +335,11 @@ wordCounts.toStream().to("streams-wordcount-output", Produced.with(Serdes.String
     bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --topic streams-wordcount-output --config cleanup.policy=compact
     ```
 
-    Kafka again confirms it has created the topic.
+    Kafka again confirms it has created the topic:
+
+    ```ouptut
+    Created topic streams-wordcount-output.
+    ```
 
 1.  Run the `WordCountDemo` application.
 
@@ -337,12 +350,14 @@ wordCounts.toStream().to("streams-wordcount-output", Produced.with(Serdes.String
 1.  Launch a producer to send test data to the WordCountDemo stream as `streams-plaintext-input` events.
 
     ```command
+    cd /home/kafka/kafka_2.13-3.7.0/
     bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic streams-plaintext-input
     ```
 
 1.  Create a consumer to listen to the `streams-wordcount-output` stream. This stream contains the updated results of the `WordCountDemo` application. Set the formatting properties as follows to create more legible output.
 
     ```command
+    cd /home/kafka/kafka_2.13-3.7.0/
     bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic streams-wordcount-output --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
     ```
 
@@ -355,11 +370,11 @@ wordCounts.toStream().to("streams-wordcount-output", Produced.with(Serdes.String
 1.  Verify the word counts are displayed in the consumer window.
 
     ```output
-    this 1
-    is 1
-    not 1
-    the 1
-    end 1
+    this    1
+    is      1
+    not     1
+    the     1
+    end     1
     ```
 
 1.  Use the producer to write more test input.
@@ -371,11 +386,11 @@ wordCounts.toStream().to("streams-wordcount-output", Produced.with(Serdes.String
 1.  Review the new output from the consumer. Notice how the word counts have been updated.
 
     ```output
-    the 2
-    end 2
-    of 1
-    the 3
-    line 1
+    the     2
+    end     2
+    of      1
+    the     3
+    line    1
     ```
 
 1.  When you are finished with the demo, use `Ctrl-C` to stop the producer, the consumer, and the WordCountDemo application.
@@ -383,6 +398,10 @@ wordCounts.toStream().to("streams-wordcount-output", Produced.with(Serdes.String
 ## Create System Files for Zookeeper and Kafka
 
 Until now, you have been starting Zookeeper and Kafka from the command line inside the Kafka directory. This is perfectly acceptable, but it is much easier to create entries for them inside `/etc/systemd/system/` and start them with `systemctl enable`.
+
+{{< note >}}
+If Kafka and Zookeeper are still running, shut them down them with the <kbd>CTRL</kbd>+<kbd>C</kbd> key combination prior following the steps below.
+{{< /note >}}
 
 1.  Create a system file for Zookeeper called `/etc/systemd/system/zookeeper.service`.
 
@@ -392,7 +411,7 @@ Until now, you have been starting Zookeeper and Kafka from the command line insi
 
 1.  Edit the file and add the following information. Use the location of your Kafka directory in the path names.
 
-    ````file {title="/etc/systemd/system/zookeeper.service"}
+    ```file {title="/etc/systemd/system/zookeeper.service"}
     [Unit]
     Description=Apache Zookeeper Server
     Requires=network.target remote-fs.target
@@ -400,8 +419,8 @@ Until now, you have been starting Zookeeper and Kafka from the command line insi
 
     [Service]
     Type=simple
-    ExecStart=/home/kafka/kafka_2.13-2.7.0/bin/zookeeper-server-start.sh /home/kafka/kafka_2.13-2.7.0/config/zookeeper.properties
-    ExecStop=/home/kafka/kafka_2.13-2.7.0/bin/zookeeper-server-stop.sh
+    ExecStart=/home/kafka/kafka_2.13-3.7.0/bin/zookeeper-server-start.sh /home/kafka/kafka_2.13-3.7.0/config/zookeeper.properties
+    ExecStop=/home/kafka/kafka_2.13-3.7.0/bin/zookeeper-server-stop.sh
 
     Restart=on-abnormal
 
@@ -425,9 +444,9 @@ Until now, you have been starting Zookeeper and Kafka from the command line insi
 
     [Service]
     Type=simple
-    Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
-    ExecStart=/home/kafka/kafka_2.13-2.7.0/bin/kafka-server-start.sh /home/kafka/kafka_2.13-2.7.0/config/server.properties
-    ExecStop=/home/kafka/kafka_2.13-2.7.0/bin/kafka-server-stop.sh
+    Environment="JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64"
+    ExecStart=/home/kafka/kafka_2.13-3.7.0/bin/kafka-server-start.sh /home/kafka/kafka_2.13-3.7.0/config/server.properties
+    ExecStop=/home/kafka/kafka_2.13-3.7.0/bin/kafka-server-stop.sh
 
     Restart=on-abnormal
 
