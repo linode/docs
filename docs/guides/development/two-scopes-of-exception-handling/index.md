@@ -9,7 +9,7 @@ keywords: ['Exception Handling', 'Precise Exception Handling', 'Exception Hierar
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Exception handling, or error handling, is an aspect of programming that is often misunderstood and improperly implemented. This guide aims to provide you with the necessary knowledge to become proficient in handling exceptions in popular programming languages such as C#, JavaScript, Python, Rust, and SQL. The goal is to enable you to write precise code.
+Exception handling, or error handling, is an aspect of programming that is often misunderstood and improperly implemented. This guide aims to provide you with the necessary knowledge to become proficient in handling exceptions in popular programming languages such as C#, JavaScript, Python, Rust, and SQL.
 
 ## What Does Exception-Handling Mean?
 
@@ -49,7 +49,6 @@ However, there is an alternative and more user-friendly approach to exception ha
 
 While using whatever is available at the beginning of a programming assignment is fine, it's crucial to progressively refine the implementation and restrict exception handlers to tasks they perform best. This includes presenting meaningful and user-friendly messages when something goes wrong, enhancing the overall user experience.
 
-
 ## Time and Space: The Prominence of Exceptions
 
 The concept of exception handling in programming is both overused and, at the same time, arguably underused. This intriguing paradox arises due to the fundamental user-interface dilemma faced by developers.
@@ -58,11 +57,9 @@ On one hand, exception handling is often overused, with programmers incorporatin
 
 On the other hand, the importance of exception handling is often underestimated. Exception handling plays a vital role in enhancing the overall user experience, especially during the initial interactions with the application. The value of an application lies in its power and efficiency over time, but users' impressions and attitudes are primarily shaped by their first few experiences with the application. During these initial moments, users are likely to encounter exceptions more frequently as they explore the features and functionalities. Handling these exceptions effectively is crucial to ensuring a positive user experience.
 
-
 The tension between exception handling and the development of the happy path is a common challenge faced in writing good applications. Even in well-designed programs, the exception-handling code often dominates the size of the happy paths, whether measured in lines or pages. While the goal is to perfect the application's happy path, users' first impressions are significantly influenced by how the application handles exceptions.
 
 It is worth noting that a lack of knowledge and underutilization of automated testing is a common hindrance faced by many programmers, and testing exceptions are even less well-developed.
-
 
 ## Precision in Error-Handling: Avoiding Overly-General Exceptions
 
@@ -106,7 +103,7 @@ The line `Catch (or trap) with precision.` is included as a comment in the code,
 
 In exception handling, it is not always necessary for each individual exception handler to explicitly resolve every possible exception. Instead, what is crucial is to have a well-defined architecture that includes a plan for handling any remnant exceptions that might "bubble up" to the top level of the application. The default behavior in most programming languages is to display inscrutable tracebacks when encountering unhandled exceptions. However, a more proactive and efficient approach is to specify how the application should handle uncategorized situations at the project level and then implement that behavior.
 
-It's important to acknowledge that as the application evolves, the incidence of truly unknown exceptions is likely to decrease significantly. When developers encounter and resolve exceptions, those situations become known and are no longer classified as unknown. By investing time and effort into handling unknowns effectively, developers can gradually turn them into knowns, improving the overall stability and reliability of the application.
+It's important to acknowledge that as the application evolves, the incidence of truly unknown exceptions is likely to decrease significantly. When developers encounter and resolve exceptions, those situations become known and are no longer classified as unknown. By investing time and effort into handling unknowns effectively, developers can gradually turn them into known exceptions, improving the overall stability and reliability of the application.
 
 ## Balance Your Exception Hierarchy
 
@@ -117,7 +114,6 @@ Modern programming languages often provide the flexibility for programmers to cu
 Exception handling is complex; catching exceptions with precision is essential at all levels; top-level handlers must resolve all exceptions. Performance impacts of built-in handlers vary among languages; inner loops might need lightweight custom syntax or elevated handlers. Specialized attention to exception handling is crucial.
 
 Scope and scale present a final challenge in exception handling. Many languages impose performance penalties on built-in exception handlers. The straightforward style suitable for most handlers may be unsuitable for inner loops invoked thousands of times per second. Resolving this requires extending the language with a customized, lightweight exception syntax or using a slightly more involved handler above the heavily-executed loop. Languages differ in performance, syntax, and expectations, making answers language-specific. The main point endures: specialized attention is essential for exception handling's sufficient complexity.
-
 
 ## Conclusion
 

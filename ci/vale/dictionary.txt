@@ -2479,6 +2479,7 @@ torvalds
 TOTPs
 towson
 trac
+tracebacks
 traceroute
 trackbar
 traefik
@@ -2540,6 +2541,7 @@ unban
 unbans
 unbilled
 unbundle
+uncategorized
 uncheck
 unchecking
 uncomment
@@ -2548,6 +2550,7 @@ uncommenting
 uncompress
 uncordoned
 undelete
+underutilization
 unencrypted
 unexported
 unformatted
