@@ -60,7 +60,7 @@ This guide follows Strapi's Node.js setup process, Strapi's preferred installati
 
 Strapi runs as a Node.js project, which this guide sets up using the Node Package Manager (NPM). Once you run the Strapi project-setup script, you can start running your instance and create your administrator user.
 
-1. Install the appropriate version of Node using NVM. Follow along with our [Installing and Using NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide, and then use the following command to install Node:
+1.  Install the appropriate version of Node using NVM. Follow along with our [Installing and Using NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide, and then use the following command to install Node:
 
     ```command
     nvm install node
@@ -72,11 +72,11 @@ Strapi runs as a Node.js project, which this guide sets up using the Node Packag
     nvm install 18
     ```
 
-1. Install Python if you intend to use SQLite for Strapi's database. This is the default behavior with Strapi, and the database used in this guide's example. But Strapi also supports other databases, from MySQL to PostgreSQL.
+1.  Install Python if you intend to use SQLite for Strapi's database. This is the default behavior with Strapi, and the database used in this guide's example. But Strapi also supports other databases, from MySQL to PostgreSQL.
 
     Refer to our [Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/) guide for steps to install Python on your system. Use the dropdown at the top of the guide to select the appropriate distribution for you.
 
-1. Run the Strapi installation script. This uses NPM to run the script, creating the base Strapi project.
+1.  Run the Strapi installation script. This uses NPM to run the script, creating the base Strapi project.
 
     ```command
     npx create-strapi-app@latest example-strapi --quickstart --no-run
@@ -84,7 +84,7 @@ Strapi runs as a Node.js project, which this guide sets up using the Node Packag
 
     The `--quickstart` option has the Strapi project use the default database type, SQLite. Remove this option, and the script prompts you to select a supported database type. In that case, you need to be sure to have the appropriate database installed with its initial setup.
 
-1. Start up Strapi using NPM.
+1.  Start up Strapi using NPM.
 
     ```command
     npm run develop
@@ -139,9 +139,9 @@ However, Strapi's administrator interface requires some additional configuration
 
 These steps use `example.com` as the access point, so replace this with your server's actual domain name or public IP address. The steps also keep the default Strapi port, `1337`, and you need to replace that as well according to your needs.
 
-1. Stop your Strapi instance. You can do so with the <kbd>Ctrl</kbd> + <kbd>C</kbd> key combination.
+1.  Stop your Strapi instance. You can do so with the <kbd>Ctrl</kbd> + <kbd>C</kbd> key combination.
 
-1. Open the `config/server.js` file, and add a `url` line like the one shown below. This example has Strapi refer to the `PUBLIC_URL` environment variable or use as `localhost` address if the variable is not present.
+1.  Open the `config/server.js` file, and add a `url` line like the one shown below. This example has Strapi refer to the `PUBLIC_URL` environment variable or use as `localhost` address if the variable is not present.
 
     ```file {title="config/server.js" lang="js"}
     module.exports = ({ env }) => ({
@@ -151,7 +151,7 @@ These steps use `example.com` as the access point, so replace this with your ser
       [...]
     ```
 
-1. Open the `.env` file for the Strapi project, and add the line shown here to the file's end. Strapi loads its environment variables from this file at start up.
+1.  Open the `.env` file for the Strapi project, and add the line shown here to the file's end. Strapi loads its environment variables from this file at start up.
 
     ```file {title=".env" lang=""}
     [...]
@@ -167,9 +167,9 @@ These steps use `example.com` as the access point, so replace this with your ser
 
     However, for convenience, the rest of this guide assumes you are using the default port `1337`.
 
-1. Open the port you are using to access Strapi in your system's firewall.
+1.  Open the port you are using to access Strapi in your system's firewall.
 
-    - On **Debian** and **Ubuntu**, manage firwall rules using UFW. Learn more about UFW in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). With UFW configured and running, you should be able to open the necessary port using the following command:
+    - On **Debian** and **Ubuntu**, manage firewall rules using UFW. Learn more about UFW in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). With UFW configured and running, you should be able to open the necessary port using the following command:
 
         ```command
         sudo ufw allow 1337/tcp
@@ -182,13 +182,13 @@ These steps use `example.com` as the access point, so replace this with your ser
         sudo firewall-cmd --reload
         ```
 
-1. Rebuild the Strapi administrator panel using its `build` NPM command. Rebuilding is necessary for the modifications to Strapi's public URL.
+1.  Rebuild the Strapi administrator panel using its `build` NPM command. Rebuilding is necessary for the modifications to Strapi's public URL.
 
     ```command
     npm run build
     ```
 
-1. Start up Strapi again using the following command:
+1.  Start up Strapi again using the following command:
 
     ```command
     npm run develop
@@ -243,7 +243,7 @@ The Content-type Builder is only accessible while running Strapi in `develop` mo
 
 For applications that need content in sets — like blogs — you should at least have a collection type. The example later on also uses Strapi for its homepage content, so these steps also set up a single type for that.
 
-1. Create a `Post` collection type. Navigate to **Content-type Builder**, and select the **Create new collection type** option from the inner left menu. Enter `Post` for the **Display name** field, and the API-related fields should populate on their own. Click **Continue**.
+1.  Create a `Post` collection type. Navigate to **Content-type Builder**, and select the **Create new collection type** option from the inner left menu. Enter `Post` for the **Display name** field, and the API-related fields should populate on their own. Click **Continue**.
 
     [![Strapi content builder for a "Post" collection](strapi-builder-post-1_small.png)](strapi-builder-post-1.png)
 
@@ -257,7 +257,7 @@ For applications that need content in sets — like blogs — you should at leas
 
     Click **Save** from the upper right. Strapi restarts to apply the changes you have made.
 
-1. Create a `Homepage` single type. Navigate to **Content-type Builder**, and select the **Create new single type** option from the inner left menu. Enter `Homepage` for the **Display name** field, and as before the API-related fields should automatically populate. Click **Continue**.
+1.  Create a `Homepage` single type. Navigate to **Content-type Builder**, and select the **Create new single type** option from the inner left menu. Enter `Homepage` for the **Display name** field, and as before the API-related fields should automatically populate. Click **Continue**.
 
     [![Strapi content builder for a "Home" single](strapi-builder-home_small.png)](strapi-builder-home.png)
 
@@ -273,7 +273,7 @@ The Content Manager is where you can work with content in any of the given conte
 
 For the example here, you should provide some content for the *Homepage* single type and at least one entry for the *Post* collection type. This way, the example website to leverage the Strapi content later has some illustrative content to display.
 
-1. Add content for the *Homepage* single type. Navigate to the **Content Manager**, and select **Homepage** from the **Single Types** section of the inner left menu.
+1.  Add content for the *Homepage* single type. Navigate to the **Content Manager**, and select **Homepage** from the **Single Types** section of the inner left menu.
 
     Recall from above that this single type has two fields: **name** and **description**. For **name** field, this guide uses `Example Site` and for **description** field, it uses `Welcome to your example website, featuring content from Strapi!`.
 
@@ -281,7 +281,7 @@ For the example here, you should provide some content for the *Homepage* single 
 
     Click **Save** from the upper right to save the changes you have made. Then, click **Publish** from the upper right to move the entry from *Draft* to *Published* status.
 
-1. Add content entries for the *Post* collection type. Navigate to the **Content Manager**, and select **Post** from the **Collection Types** section of the inner left menu. Click **Create new entry**, and complete the form to add a new *post* item.
+1.  Add content entries for the *Post* collection type. Navigate to the **Content Manager**, and select **Post** from the **Collection Types** section of the inner left menu. Click **Create new entry**, and complete the form to add a new *post* item.
 
     [![Adding a new Post entry to Strapi](strapi-post-entry_small.png)](strapi-post-entry.png)
 
@@ -303,9 +303,9 @@ You could explore the examples in this guide by creating a *Public* role with re
 
 However, a more illustrative example for this guide has Strapi generate an API token with the specific permissions the example application needs — and no more.
 
-1. From the Strapi administrator panel, navigate to **Settings** > **API Tokens**, and select **Create new API token** from the upper right.
+1.  From the Strapi administrator panel, navigate to **Settings** > **API Tokens**, and select **Create new API token** from the upper right.
 
-1. Complete the resulting form to create an API token to be used in the example application further on.
+1.  Complete the resulting form to create an API token to be used in the example application further on.
 
     The guide's examples assume the following settings, leaving everything else at default values.
 
@@ -321,9 +321,9 @@ However, a more illustrative example for this guide has Strapi generate an API t
 
         - **Post**: *find*
 
-        - **Content-type-builder**: *getComponents*, *getComponent*, *getContentTypes*, *getContentType*
+        - **Content-type-builder**: `getComponents`, `getComponent`, `getContentTypes`, `getContentType`
 
-1. Click **Save**, and Strapi displays your new token. Be sure to copy this token, as Strapi does not allow you to look it up later.
+1.  Click **Save**, and Strapi displays your new token. Be sure to copy this token, as Strapi does not allow you to look it up later.
 
 You can test your token and access to the Strapi REST API using cURL. Here is an example cURL command that uses the API token to fetch all posts. Replace `http://example.com:1337` with your actual Strapi address and `<STRAPI_API_TOKEN>` with you actual API token.
 
@@ -378,19 +378,15 @@ curl http://example.com:1337/api/posts -H "Authorization: bearer <STRAPI_API_TOK
 
 ## How to Use Strapi in Your Projects
 
-You have your own Strapi CMS operating now. With Strapi, you have a range of ways you can use the managed content in your applications — from REST and GraphQL APIs to specialized libraries.
+You have your own Strapi CMS operating now. With Strapi, you have a range of ways you can use the managed content in your applications — from REST and GraphQL APIs to specialized libraries. The rest of this guide gives you a sound working example for using your Strapi CMS for website content using a modern frontend framework.
 
-The rest of this guide gives you a sound working example for using your Strapi CMS for website content using a modern frontend framework.
-
-The example uses [Next.js](https://nextjs.org/) to build a website. You can learn more about Next.js in our [Getting Started with Next.js](/docs/guides/getting-started-next-js/) guide.
-
-But the example uses straightforward HTTP calls and concepts that should make everything readily adaptable to most any other framework.
+The example uses [Next.js](https://nextjs.org/) to build a website. You can learn more about Next.js in our [Getting Started with Next.js](/docs/guides/getting-started-next-js/) guide. But the example uses straightforward HTTP calls and concepts that should make everything readily adaptable to most any other framework.
 
 ### Setting Up an Example Project
 
 For the example website, you need to use NPM to create a new Next.js project. Then, after installing some additional dependencies to the project, you can use the code provided here to create a Strapi-based blog.
 
-1. Create a new Next.js project, then change into its directory. This example names the project `example-nextjs` and stores the project in the current user's home directory.
+1.  Create a new Next.js project, then change into its directory. This example names the project `example-nextjs` and stores the project in the current user's home directory.
 
     ```command
     cd ~/
@@ -404,22 +400,22 @@ For the example website, you need to use NPM to create a new Next.js project. Th
     You may need to install Git for the script to run. You should be able to do so from your system's package manager: `sudo apt install git` on **Debian** and **Ubuntu** and `sudo dnf install git` on **CentOS** and similar systems.
     {{< /note >}}
 
-1. Install the Axios and React Markdown packages to the project. Axios facilitates HTTP calls, and React Markdown can convert Markdown content from Strapi to webpage content.
+1.  Install the Axios and React Markdown packages to the project. Axios facilitates HTTP calls, and React Markdown can convert Markdown content from Strapi to webpage content.
 
     ```command
     npm install --save axios react-markdown
     ```
 
-1. Create a `.env.local` file in the base of the project directory. This file just needs two variables, as shown in the example below. Replace the `STRAPI_ADDRESS` value with your actual Strapi address, and replace the `STRAPI_AUTH_HEADER` value with your actual Strapi API token.
+1.  Create a `.env.local` file in the base of the project directory. This file just needs two variables, as shown in the example below. Replace the `STRAPI_ADDRESS` value with your actual Strapi address, and replace the `STRAPI_AUTH_HEADER` value with your actual Strapi API token.
 
     ```file {title=".env.local"}
     STRAPI_ADDRESS='http://example.com:1337'
     STRAPI_AUTH_HEADER='bearer <STRAPI_API_TOKEN>'
     ```
 
-1. Download the [zip file](example-nextjs-pages.zip) containing the page-related code for the example application. Below you can find a breakdown of some representative files from this code.
+1.  Download the [zip file](example-nextjs-pages.zip) containing the page-related code for the example application. Below you can find a breakdown of some representative files from this code.
 
-1. Make sure the zip file is in your project's base directory. Then remove the default `app/` directory, and extract the `pages/` directory from the zip file.
+1.  Make sure the zip file is in your project's base directory. Then remove the default `app/` directory, and extract the `pages/` directory from the zip file.
 
     ```command
     rm -r app/
@@ -428,7 +424,7 @@ For the example website, you need to use NPM to create a new Next.js project. Th
 
 At this point, the example project is ready. You can look at the content of the files within the `pages/` directory to get a sense of how the application works. The following breaks down some representative files from the project to show how it integrates with your Strapi CMS API.
 
-- The Next.js application employs API routes to connect to the Strapi REST API. Each of the endpoints operates almost identically to the others in this case, simply varying the Strapi endpoints they point to. For illustration, here is the `/api/home` route, which fetches information for the website homepage.
+-   The Next.js application employs API routes to connect to the Strapi REST API. Each of the endpoints operates almost identically to the others in this case, simply varying the Strapi endpoints they point to. For illustration, here is the `/api/home` route, which fetches information for the website homepage.
 
     ```file {title="pages/api/home.js" lang="js"}
     // Import Axios for handling HTTP requests.
@@ -453,7 +449,7 @@ At this point, the example project is ready. You can look at the content of the 
 
     The endpoint for fetching a particular post — `pages/api/[postId]` — varies slightly, adding a path variable for indicating the requested post ID.
 
-- The Next.js pages themselves call to the Next.js API endpoints while loading. The pages each store the response data within state variables, which they then use to display the content.
+-   The Next.js pages themselves call to the Next.js API endpoints while loading. The pages each store the response data within state variables, which they then use to display the content.
 
     The below is the more complicated of these pages, as it fetches website information and uses a variable from the path to fetch post content. This page also leverages the React Markdown module for rendering Markdown content, a convenient format and one frequently used with CMSs.
 
@@ -540,14 +536,14 @@ Now you can start running everything together. The steps below have you start ru
 
 From there, you can navigate the example website to see how it renders your Strapi content.
 
-1. Start up your Strapi instance. Above used development mode, but for demonstration this example can use the production mode for Strapi.
+1.  Start up your Strapi instance. Above used development mode, but for demonstration this example can use the production mode for Strapi.
 
     ```command
     cd ~/example-strapi
     npm run start
     ```
 
-1. Start up the Next.js application.
+1.  Start up the Next.js application.
 
     ```command
     cd ~/example-nextjs
@@ -562,7 +558,7 @@ From there, you can navigate the example website to see how it renders your Stra
     info  - Loaded env from /home/example-user/example-nextjs/.env.local
     ```
 
-1. Access the Next.js website via a web browser. To access the website remotely, there are two ready options.
+1.  Access the Next.js website via a web browser. To access the website remotely, there are two ready options.
 
     - Using an SSH tunnel. Follow steps in our guide on [accessing Futon over SSH](/docs/guides/access-futon-over-ssh-using-putty-on-windows/#establish-an-ssh-connection), being sure to replace the port number in that guide (`5984`) with the website port, `3000`.
 
