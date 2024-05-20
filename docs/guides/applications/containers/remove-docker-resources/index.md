@@ -2,13 +2,12 @@
 slug: remove-docker-resources
 title: "How to Remove Docker Images, Containers, and Volumes"
 description: "Looking to remove resources from your Docker instance? Look no further than our guide on how to remove Docker images, containers, and volumes."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2022-02-21
 keywords: ['docker remove image', 'docker remove container', 'docker remove volume']
 tags: ['docker', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2022-02-21
-modified_by:
-  name: Linode
 external_resources:
 - '[DigitalOcean: How To Remove Docker Images, Containers, and Volumes](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes)'
 - '[freeCodeCamp: How to Remove Images and Containers in Docker](https://www.freecodecamp.org/news/how-to-remove-images-in-docker/)'
