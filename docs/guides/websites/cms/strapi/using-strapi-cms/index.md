@@ -2,13 +2,12 @@
 slug: using-strapi-cms
 title: "How to Use Strapi for Content Management"
 description: "Strapi provides a flexible, and open-source, headless CMS solution, ready to take on your content management needs. Find out more and learn how you can get started with Strapi in this guide."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-05-07
 keywords: ['strapi guide','open source headless cms','strapi hosting']
 tags: ['cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-05-07
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
 - '[Strapi Documentation](https://docs.strapi.io/)'
 - '[Jamstack: Strapi](https://jamstack.org/headless-cms/strapi/)'
