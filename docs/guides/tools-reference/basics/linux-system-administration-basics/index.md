@@ -680,7 +680,7 @@ Although limited in their capabilities, CNAMEs can be quite useful in some situa
 
 When [reading domain names](/docs/guides/dns-overview/#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-Follow these steps to [create and host a sub-domain](/docs/products/networking/dns-manager/guides/common-dns-configurations/#configuring-subdomains):
+Follow these steps to [create and host a sub-domain](/docs/products/networking/dns-manager/guides/common-dns-configurations/#configure-subdomains):
 
 1.  First, create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/products/networking/dns-manager/). You may host the DNS for your domain with any provider you choose.
 

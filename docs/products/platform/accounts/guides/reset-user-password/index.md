@@ -23,7 +23,7 @@ If you want to change your password, or you forgot your password and need a new 
 1.  Enter your username in the **Username** field.
 
     {{< note >}}
-    If you've forgotten your Linode Cloud Manager username, see [Recovering a Lost Username](/docs/products/platform/accounts/guides/manage-users/#recovering-a-lost-username).
+    If you've forgotten your Linode Cloud Manager username, see [Recovering a Lost Username](/docs/products/platform/accounts/guides/manage-users/#recover-a-lost-username).
     {{< /note >}}
 
 1.  Click the **Reset password** button.

@@ -106,7 +106,7 @@ At this point, you should stop as many services as possible on the existing serv
 Now it's time to copy the files from your existing server to your Linode. Here's how:
 
 1.  Connect to your existing server via SSH and log in as `root`.
-2.  Enter the following command to initiate the copy, replacing `123.45.67.890` with your Linode's IP address. (For instructions on finding your Linode's IP address, see [Finding the IP Address](/docs/products/platform/get-started/#find-the-ip-address-of-your-linode).) :
+2.  Enter the following command to initiate the copy, replacing `123.45.67.890` with your Linode's IP address. (For instructions on finding your Linode's IP address, see [Finding the IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).) :
 
         rsync --exclude="/sys/*" --exclude="/proc/*" -aHSKDvz -e ssh / root@123.45.67.890:/media/sda/
 {{< note >}}

@@ -47,7 +47,7 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 ### Revoke a User's Access to the Linode Account
 
-1. If you suspect that the user may have access to the Cloud Manager password, [change that first](/docs/products/platform/accounts/guides/manage-users/#changing-your-linode-manager-password).
+1. If you suspect that the user may have access to the Cloud Manager password, [change that first](/docs/products/platform/accounts/guides/reset-user-password/).
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
 
@@ -60,7 +60,7 @@ The primary method for directly administering files and software on a Compute In
 For the steps in this section, [connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
 {{< note >}}
-If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
+If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/reset-user-password/).
 {{< /note >}}
 
 ### Who Has SSH Access to Your Compute Instance?
