@@ -209,8 +209,8 @@ Before you can send any events to Kafka, you must create a topic to contain the 
     Kafka returns a summary of the topic, including the number of partitions and the replication factor:
 
     ```output
-    Topic: test-events	TopicId: URC3EPiqTUW2fBkJuW5AYQ	PartitionCount: 1	ReplicationFactor: 1	Configs:
-	    Topic: test-events	Partition: 0	Leader: 0	Replicas: 0	Isr: 0
+    Topic: test-events  TopicId: URC3EPiqTUW2fBkJuW5AYQ PartitionCount: 1   ReplicationFactor: 1    Configs:
+        Topic: test-events  Partition: 0    Leader: 0   Replicas: 0 Isr: 0
     ```
 
 ## Writing and Reading Kafka Events
