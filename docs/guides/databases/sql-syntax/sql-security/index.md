@@ -3,8 +3,8 @@ slug: sql-security
 title: "SQL Database Security: User Management"
 title_meta: "SQL Security and User Management"
 description: 'SQL database security relies on user management, permissions, groups, and roles. This guide discusses each of these aspects of SQL database security with examples.'
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
 published: 2022-05-20
 keywords: ['groups', 'roles', 'permissions', 'grant permission', 'revoke permission']
 tags: ['MySQL']
