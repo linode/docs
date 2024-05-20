@@ -2,14 +2,12 @@
 slug: golang-vs-rust
 title: "A Guide to Rust vs. Golang: Performance and Uses"
 title_meta: "Golang vs. Rust: Which Should You Use?"
-description: 'Which is better: Golang vs. Rust? Choosing between Rust or Go for your next project depends on a few different factors. ✓ Learn which one is right for you here!'
-og_description: 'Which is better: Golang vs. Rust? Choosing between Rust or Go for your next project depends on a few different factors. ✓ Learn which one is right for you here!'
+description: "Which is better: Golang vs. Rust? Choosing between Rust or Go for your next project depends on a few different factors."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-07
 keywords: ['golang vs rust','rust vs go','go vs rust']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Clockwise: Go vs. Rust Performance Comparison — The Basics](https://www.getclockwise.com/blog/rust-vs-go)'
 - '[LogRocket: When to Use Rust and When to Use Go](https://blog.logrocket.com/when-to-use-rust-and-when-to-use-golang/)'
