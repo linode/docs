@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-nodejs-and-nginx-on-centos-8
+title: How to Install Node.js and NGINX on CentOS 8
+title_meta: Installing Node.js and NGINX on CentOS 8
 description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a CentOS 8 server.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-14
+modified: 2021-08-11
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "centos", " front-end requests", " back-end requests"]
 tags: ["centos", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-11
-modified_by:
-    name: Linode
-published: 2020-04-14
-title: How to Install Node.js and NGINX on CentOS 8
-title_meta: Installing Node.js and NGINX on CentOS 8
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -26,7 +26,6 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-centos-8/']
-authors: ["Linode"]
 ---
 
 Node.js is an open-source JavaScript runtime environment that can serve dynamic and responsive content and is often used to create and serve web applications. When serving Node.js applications, NGINX is commonly used to create a reverse proxy that points at a running Node.js server. In this guide, you will install and configure NGINX on a CentOS 8 Linode. NGINX will handle requests to static files, like `index.html` and also, create a reverse proxy to a Node.js server. You will then create a test JavaScript file in order to test your running Node.js server.
@@ -45,7 +44,7 @@ Don't forget to update your Linode's `/etc/hosts` file with its public IP addres
 
         sudo yum install -y policycoreutils-python-utils
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install and Configure NGINX
 
@@ -128,13 +127,13 @@ http {
         sudo firewall-cmd --zone=public --permanent --add-service=https
         sudo firewall-cmd --reload
 
-    {{< note respectIndent=false >}}
-If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
+    {{< note >}}
+    If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
 
-    sudo setsebool -P httpd_can_network_connect on
+        sudo setsebool -P httpd_can_network_connect on
     {{< /note >}}
 
-    {{< content "cloud-firewall-shortguide" >}}
+    {{% content "cloud-firewall-shortguide" %}}
 
 1.  Verify that there are no syntax errors in your site's configuration file.
 
@@ -152,8 +151,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
         sudo systemctl restart nginx
 
 ## Create Your Site's Index File
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{< /note >}}
 
@@ -222,7 +220,7 @@ Now using node v12.16.2 (npm v6.14.4)
 
 In the [Install and Configure NGINX](#install-and-configure-nginx) section you configured NGINX to listen on port `80` to serve its static content. You also configured a reverse proxy to your Linode's `localhost:3000` when a request for the `/test.js` file is made. In this section you will create the `test.js` file to be able to test your Node.js web server that you will create in the [next section](#create-your-the-node-js-web-server-file).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{< /note >}}
 

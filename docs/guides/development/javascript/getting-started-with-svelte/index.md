@@ -1,13 +1,12 @@
 ---
 slug: getting-started-with-svelte
+title: "Getting Started with the Svelte Framework"
 description: "The Svelte framework handles frontend development by shifting work to the build step, giving you small and fast application bundles without a virtual DOM. Learn all about Svelte, what sets it apart, and how to start using it in this guide."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2022-05-02
 keywords: ['svelte guide', 'svelte javascript', 'svelte vs react']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2022-05-02
-modified_by:
-  name: Nathaniel Stickman
-title: "Getting Started with the Svelte Framework"
 external_resources:
 - '[Svelte: Documentation](https://svelte.dev/docs)'
 - '[SvelteKit Docs: Introduction](https://kit.svelte.dev/docs/introduction)'
@@ -21,9 +20,9 @@ Through this guide, learn more about what sets the Svelte framework apart and ho
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

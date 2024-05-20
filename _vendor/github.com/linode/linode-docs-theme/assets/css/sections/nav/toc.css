@@ -30,7 +30,7 @@ nav.toc li > a {
 
 @screen mobile {
   nav.toc li.level-2 {
-    position: relative;
+    @apply truncate relative;
   }
   nav.toc li.level-2 > a {
     @apply pr-10;
@@ -54,7 +54,7 @@ nav.toc li.active > a {
 /* LEVEL 2 */
 nav.toc li.level-2 > a {
   @apply font-semibold text-xs text-titlecolor;
-  list-style-type: decimal-leading-zero;
+  list-style-type: none;
 }
 
 /* LEVEL 3,4 */
@@ -71,4 +71,24 @@ nav.toc li.level-3 > a {
 nav.toc li.level-4 > a {
   @apply pl-12;
   list-style-type: upper-roman;
+}
+
+/* The ToC in the main content area. */
+.toc-main li {
+  @apply mb-0;
+}
+.toc-main li > ol > li {
+  @apply mt-0;
+}
+
+.toc-main li.level-3 {
+  @apply ml-4;
+}
+
+.toc-main li > a {
+  @apply block text-sm leading-5 font-normal pb-0.5 pt-0.5 text-textcolor hover:text-black focus:text-black;
+}
+
+.toc-main li.active > a {
+  @apply text-brand;
 }

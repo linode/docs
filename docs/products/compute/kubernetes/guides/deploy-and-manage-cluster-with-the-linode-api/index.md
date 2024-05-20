@@ -1,17 +1,14 @@
 ---
-description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
-og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
-keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
-published: 2019-11-11
-modified: 2023-02-09
-modified_by:
-  name: Linode
-image: deploy-and-manage-cluster-copy.png
 title: "Deploy and Manage a Linode Kubernetes Engine (LKE) Cluster with the Linode API"
 title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
+description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
+og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
+published: 2019-11-11
+modified: 2023-02-09
+keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
+image: deploy-and-manage-cluster-copy.png
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 tags: ["kubernetes"]
-authors: ["Linode"]
 ---
 
 An LKE cluster can be deployed in one of several ways:
@@ -55,7 +52,7 @@ This guide covers how to use the Linode API to:
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ## Create an LKE Cluster
 
@@ -644,7 +641,7 @@ curl -H "Authorization: Bearer $TOKEN" \
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Where to Go From Here?
 

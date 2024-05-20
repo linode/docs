@@ -1,22 +1,21 @@
 ---
 slug: kvm-reference
+title: 'KVM Migration Reference'
 description: KVM Reference explains the differences when going from Xen to KVM virtualization.
+authors: ["Josh Sager"]
+contributors: ["Josh Sager"]
+published: 2015-06-15
+modified: 2020-12-01
 keywords: ["kvm", "kvm reference", "virtual machine mode", "kvm linode", "xen"]
 aliases: ['/platform/disk-images/kvm-reference/','/platform/kvm-reference/','/platform/kvm/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-01
-modified_by:
-  name: Alex Fornuto
-published: 2015-06-15
-title: 'KVM Migration Reference'
 tags: ["linode platform"]
 deprecated: true
-authors: ["Josh Sager"]
 ---
 
 Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 ## What's Changed?
 
@@ -42,13 +41,12 @@ On KVM Linodes, the console device moves from *hvc0* in Xen to *ttyS0* .
 
 Virtual machine mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. The differences are listed below:
 
-|         | Paravirtualization  | Full-virtualization   |
-|---------|:--------------------|:----------------------|
-| Block   | Virtio SCSI         | IDE                   |
-| Net     | Virtio Net          | e1000                 |
-| Serial  | ttyS0               | ttyS0                 |
-
-{{< note respectIndent=false >}}
+| Device Type | Paravirtualization | Full-virtualization |
+| -- | -- | -- |
+| Block | Virtio SCSI | IDE |
+| Net | Virtio Net | e1000 |
+| Serial | ttyS0 | ttyS0 |
+{{< note >}}
 If you're unfamiliar with these distinctions, choose paravirtualization
 {{< /note >}}
 
@@ -115,7 +113,7 @@ This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 
 3.  Edit your Linode's configuration profile back to the previous setting.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Remember to check [Glish](/docs/products/compute/compute-instances/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 {{< /note >}}
 

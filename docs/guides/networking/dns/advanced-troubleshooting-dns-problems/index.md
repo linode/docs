@@ -1,14 +1,13 @@
 ---
 slug: advanced-troubleshooting-dns-problems
+title: "Troubleshooting DNS Issues"
 description: 'Sometimes DNS problems require advanced troubleshooting techniques. This guide covers helpful command line tools like dig, nslookup, and ping, along with hosts files and A records. ✓ Click here!'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2022-09-20
 keywords: ['troubleshooting','dns','dns troubleshooting']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-20
-modified_by:
-  name: Linode
-title: "Troubleshooting DNS Issues"
 bundles: ['troubleshooting']
-authors: ["Tom Henderson"]
 ---
 
 The most common DNS error is a simple typo, whether it’s from the client or the server. Typos and other incorrect DNS data cause many problems. Even when data is correct, DNS can still be a difficult protocol to troubleshoot.
@@ -92,7 +91,7 @@ If there is no reply using `ping`, then the circuit is unusable and the requeste
 
 An unusable circuit, or route to a DNS server, means that an Internet connection is down for the host making queries. If the circuit is up, another DNS server can be used, and must be placed in the host's settings. Reset the host to restart the network stack and read the new DNS server entry. Such alternate DNS Internet servers are `1.1.1.1` for Cloudflare, and `8.8.8.8` for Google.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `traceroute` command line tool is also handy in network circuit analysis. It uses either an IP address or a Fully Qualified Domain Name (FQDN) to show latencies between the host and the desired IP address/FQDN.
 {{< /note >}}
 

@@ -1,12 +1,11 @@
 ---
+title: "Deploying Apache Airflow through the Linode Marketplace"
 description: "Deploy Apache Airflow on a Linode Compute Instance. This provides you with an open-source workflow management platform for data engineering pipelines."
+published: 2023-01-23
 keywords: ['airflow','workflow management','data engineering']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-01-23
-title: "Deploying Apache Airflow through the Linode Marketplace"
 external_resources:
 - '[Apache Airflow](https://airflow.apache.org/docs/)'
-authors: ["Linode"]
 ---
 
 [Apache Airflow](https://airflow.apache.org) is an open source workflow management platform for data engineering pipelines. You can use it to automate, orchestrate, and monitor workflows and data pipelines. One of Airflow’s greatest features is that you can create and execute workflows with code. When you use workflows that are powered by code, you can version control, collaborate on, and debug your workflows.
@@ -17,9 +16,9 @@ To learn more about Airflow and determine if it's the right tool for you, read t
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{<note>}}
 **Estimated deployment time:** Apache Airflow should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -34,11 +33,11 @@ To learn more about Airflow and determine if it's the right tool for you, read t
 
 - **Email Address** *(required)*: The email address to use for generating SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 

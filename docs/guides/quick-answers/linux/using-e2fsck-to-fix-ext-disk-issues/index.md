@@ -1,22 +1,19 @@
 ---
 slug: using-e2fsck-to-fix-ext-disk-issues
-description: "Having issues with your Linux installation? Using e2fsck might be able to help. This guide will walk you through the entire process involved in checking the inegitry and repairing issues with ext filesystems using e2fsck."
-og_description: "e2fsck is the Linux ext file system consistency check utility. This guide shows how to use e2fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
-keywords: ["e2fsck", "file system", "disk repair", "troubleshoot"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-05
-modified: 2022-04-05
-modified_by:
-  name: Linode
 title: "Using e2fsck to Find and Repair Disk Errors On ext File Systems"
 title_meta: "How to Use e2fsck to Check and Repair Disk Errors On ext File Systems"
+description: "Having issues with your Linux installation? Using e2fsck might be able to help. This guide will walk you through the entire process involved in checking the inegitry and repairing issues with ext filesystems using e2fsck."
+og_description: "e2fsck is the Linux ext file system consistency check utility. This guide shows how to use e2fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-04-05
+keywords: ["e2fsck", "file system", "disk repair", "troubleshoot"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[e2fsck on man7.org](https://man7.org/linux/man-pages/man8/e2fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
-authors: ["Linode"]
 ---
-
 
 ## What is e2fsck?
 
@@ -24,7 +21,7 @@ authors: ["Linode"]
 
 On some systems, e2fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{< /note >}}
 
@@ -32,8 +29,7 @@ When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be 
 
 You can use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
 Unmount the disks you intend to work on before attempting to check or repair them.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Unmount the target disk first. You risk corrupting your file system and losing data if you run fsck on an active disk.
 {{< /note >}}
 

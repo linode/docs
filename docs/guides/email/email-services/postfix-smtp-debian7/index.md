@@ -1,18 +1,18 @@
 ---
 slug: postfix-smtp-debian7
+title: "Configure Postfix to Send Email Using External SMTP Servers"
 description: "Learn how to configure Postfix to send email using external SMTP servers like Mandrill, and SendGrid. ✓ Click here to learn more!"
+authors: ["Santiago Ti"]
+contributors: ["Santiago Ti"]
+published: 2014-05-30
+modified: 2019-01-24
 keywords: ["Postfix", "Debian", "SMTP", "Email", "Mail"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-24
-modified_by:
-  name: Linode
-published: 2014-05-30
-title: "Configure Postfix to Send Email Using External SMTP Servers"
 aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-smtp-debian7/']
-authors: ["Santiago Ti"]
 ---
-{{< note respectIndent=false >}}
+
+{{< note >}}
 This guide was originally written for Debian 7. It has since been tested to work with Debian 9.
 {{< /note >}}
 
@@ -20,7 +20,7 @@ You may want to configure Postfix to use an external SMTP provider like Mandrill
 
 ![Configure Postfix to Send Mail Using an External SMTP Server](external_smtp_tg.png "Configure Postfix to Send Mail Using an External SMTP Server")
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## What is Postfix Used For?
 
@@ -41,8 +41,7 @@ At a high-level Postfix configuration involves the following steps:
 1. Set up Postfix with Mandrill, and SendGrid
 
 ## Postfix Configuration
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you’re using Gmail or Google Workspace, see our [Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu/) guide instead.
 {{< /note >}}
 
@@ -87,7 +86,7 @@ myhostname = fqdn.example.com
 
 Usernames and passwords are stored in the `/etc/postfix/sasl_passwd` file. In this section, you add your external mail provider credentials to the `sasl_passwd` Postfix configuration file.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples in this section provide the general steps to configure Postfix to use an external SMTP provider. If you want to use Mandrill or SendGrid as your SMTP provider, you can refer to the examples in the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide.
 {{< /note >}}
 
@@ -121,7 +120,7 @@ In the previous section you added plain text credentials to the `/etc/postfix/sa
 
 You are now ready to provide the configurations needed by Postfix to use the external SMTP server. This configuration tells Postfix to deliver mail indirectly via a relay host, which in this case, is an external SMTP server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Refer to the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide for specific relay host configurations for Mandrill, and SendGrid.
 {{< /note >}}
 

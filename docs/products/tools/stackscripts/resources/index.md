@@ -2,9 +2,9 @@
 title: Resources
 title_meta: "Resources for StackScripts"
 description: "Resources and other information related to Linode StackScripts including blog posts, community posts, and press releases."
+published: 2020-04-22
 tab_group_main:
     weight: 40
-published: 2020-04-22
 ---
 
 ## Blog Posts

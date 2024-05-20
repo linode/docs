@@ -1,19 +1,18 @@
 ---
 slug: red-team-reconnaissance-techniques
+title: "Red Team Reconnaissance Techniques"
 description: 'This guide covers the process of how to perform both passive and active reconnaissance for Red Team operations.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Red Team Reconnaissance Techniques"
-authors: ["HackerSploit"]
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 
@@ -665,7 +664,7 @@ We can also automate active recon with Amass, this can be done by running the in
 
 #### Amass Reports
 
-Amass reports can be generated through the use of the viz subcommand. The viz subcommand allows you to create enlightening network graph visualizations that add structure to the information gathered. This subcommand only leverages the 'output_directory' and remote graph database settings from the configuration file.
+Amass reports can be generated through the use of the viz subcommand. The viz subcommand allows you to create enlightening network graph visualizations that add structure to the information gathered. This subcommand only leverages the `output_directory` and remote graph database settings from the configuration file.
 
 You can generate reports by specifying the viz subcommand and your preferred output format as highlighted in the following command:
 

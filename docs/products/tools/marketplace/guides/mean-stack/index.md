@@ -1,12 +1,10 @@
 ---
+title: "Deploy a MEAN Stack through the Linode Marketplace"
 description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode's Marketplace Apps."
-keywords: ['mongodb','mean','angular','express', 'web app', 'node']
-tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 published: 2020-03-17
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy a MEAN Stack through the Linode Marketplace"
+keywords: ['mongodb','mean','angular','express', 'web app', 'node']
+tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
@@ -14,7 +12,6 @@ external_resources:
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
 - '[PM2 Getting Started](https://pm2.keymetrics.io/docs/usage/quick-start/)'
 aliases: ['/platform/marketplace/deploy-mean-with-marketplace-apps/', '/platform/one-click/deploy-mean-with-one-click-apps/', '/guides/deploy-mean-with-one-click-apps/','/guides/deploy-mean-with-marketplace-apps/','/guides/mean-stack-marketplace-app/']
-authors: ["Linode"]
 ---
 
 A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications:
@@ -33,9 +30,9 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The MEAN stack should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -50,11 +47,11 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -90,4 +87,4 @@ Open your web browser and navigate to `https://[domain]`, where *[domain]* can b
 | **NGINX** | Web server |
 | **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22, 80, and 443 for IPv4 and IPv6 are set to allow traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
