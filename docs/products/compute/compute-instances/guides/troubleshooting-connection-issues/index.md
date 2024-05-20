@@ -65,7 +65,7 @@ If your Compute Instance isn't booting normally, you will not be able to rely on
 
 When you boot into Rescue Mode, you are booting your Compute Instance into the [Finnix recovery Linux distribution](https://www.finnix.org). This Finnix image includes a working network configuration, and you will be able to mount your Compute Instance's disks from this environment, which means that you will be able to access your files.
 
-1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode). If your Compute Instance does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
+1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode). If your Compute Instance does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
 
 1.  Connect to Rescue Mode via the Lish console as you would normally. You will not be required to enter a username or password to start using the Lish console while in Rescue Mode.
 
@@ -212,7 +212,7 @@ If your report does not look like any of the previous examples, read through the
 
 If your MTR indicates a configuration issue within your Compute Instance, you can confirm the problem by using Rescue Mode:
 
-1.  Reboot your Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode).
+1.  Reboot your Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode).
 
 1.  Run another MTR report from your computer to your Compute Instance's IP address.
 

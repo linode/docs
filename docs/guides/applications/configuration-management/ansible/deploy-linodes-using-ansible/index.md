@@ -57,7 +57,7 @@ The steps outlined in this guide require [Ansible version 2.8](https://github.co
 
 -   Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide if you do not already have one.
 
-- [Create an authentication Key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) if your computer does not already have one.
+- [Create an authentication Key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key) if your computer does not already have one.
 
 ## Configure Ansible
 

@@ -143,7 +143,7 @@ Let's take a closer look at each block in the configuration file:
     `ssh_key = chomp(file("~/.ssh/id_rsa.pub"))` uses Terraform's built-in `file()` function to provide a local file path to the public SSH key's location. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
     {{< note >}}
-    If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair).
+    If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key).
     {{< /note >}}
 
 1. The `random_string` resource can be used to create a random string of 32 characters. The `linode_instance` resource will use it to create a root user password:

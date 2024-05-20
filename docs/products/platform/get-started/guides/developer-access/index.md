@@ -57,7 +57,7 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 The primary method for directly administering files and software on a Compute Instance is through SSH. SSH is a service that runs on a system and listens for and accepts remote terminal connections. Once an SSH connection is opened, a user can issue commands to your server. **Your Compute Instance's SSH users are not the same as your Cloud Manager users.**
 
-For the steps in this section, [connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
+For the steps in this section, [connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
 {{< note >}}
 If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).

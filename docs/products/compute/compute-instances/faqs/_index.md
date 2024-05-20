@@ -62,7 +62,7 @@ Please refer to our guide on [Linux package management](/docs/guides/linux-packa
 
 ## How do I add another IP address?
 
-You may add an [additional public IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Compute Instance in the Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/) or enable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your instance before it can be used.
+You may add an [additional public IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Compute Instance in the Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/) or enable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) and reboot your instance before it can be used.
 
 {{< note >}}
 We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager explaining the reason for the new IP.
