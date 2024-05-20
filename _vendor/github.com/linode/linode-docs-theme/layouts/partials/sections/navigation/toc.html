@@ -4,7 +4,7 @@
   class="bg-white z-10 w-full h-full border-l-gray--md"
   x-data="lncToc({ level2Only: {{ $level2Only }}})"
   x-init="initToC()"
-  @scroll.window.debounce.10ms="onScroll()"
+  @scroll.window="onScroll()"
   @hashchange.window="onHashchange();">
   <div
     x-show="enabled"

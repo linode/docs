@@ -1,22 +1,21 @@
 ---
 slug: piwik-on-centos-5
-deprecated: true
+title: Piwik on CentOS 5
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on CentOS 5.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-02-22
+modified: 2014-01-28
 keywords: ["open source analytics", "piwik centos 5", "piwik", "analytics", "centos", "tracking", "statistics"]
 tags: ["centos","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/piwik-on-centos-5/','/web-applications/analytics/piwik/centos-5/']
-modified: 2014-01-28
-modified_by:
-  name: Linode
-published: 2010-02-22
-title: Piwik on CentOS 5
 relations:
     platform:
         key: using-piwik-analytics
         keywords:
             - distribution: CentOS 5
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." An alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership and control of the data collected from your visitors.

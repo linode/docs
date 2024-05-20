@@ -1,20 +1,19 @@
 ---
 slug: mysqldump-backups
+title: "Backing Up MySQL Databases Using mysqldump"
 description: "Learn how to use mysqldump to back up MySQL (and MariaDB) database clusters, individual databases, and tables."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-30
+modified: 2022-07-01
 keywords: ["mysql", "mariadb", "backup", "back up", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/backup-options/','/security/backups/back-up-your-mysql-databases/','/databases/mysql/back-up-your-mysql-databases/','/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/','/guides/use-mysqldump-to-back-up-mysql-or-mariadb/']
-published: 2018-01-30
-modified: 2022-07-01
-modified_by:
-  name: Linode
-title: "Backing Up MySQL Databases Using mysqldump"
 external_resources:
  - '[mysqldump documentation](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html)'
  - '[MySQL documentation: Database Backup Methods](https://dev.mysql.com/doc/refman/8.0/en/backup-methods.html)'
 tags: ["mariadb","database","mysql"]
 image: mysqldump-backup-title.jpg
-authors: ["Linode"]
 ---
 
 [MySQL](http://www.mysql.com/) (and [MariaDB](https://mariadb.com/)) include the [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` creates a *logical backup* and generates the SQL statements needed to reproduce the original database structure and data.
@@ -26,6 +25,8 @@ Since the mysqldump utility needs to connect to the database, the database manag
 ## Before You Begin
 
 - **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://www.linode.com/products/mysql/), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/).
+
+    {{% content "dbass-eos" %}}
 
 -   **Log in to the system where you intend to capture or store your backups.** This system needs a MySQL command-line client installed (which should come with the mysqldump utility). Run the following command to verify that mysqldump is installed:
 

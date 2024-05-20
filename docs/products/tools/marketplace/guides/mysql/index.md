@@ -1,27 +1,24 @@
 ---
+title: "Deploy MySQL/MariaDB through the Linode Marketplace"
 description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode One-Click Marketplace."
-keywords: ['database','mysql','rdbms','relational database','mariadb']
-tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 published: 2020-03-13
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy MySQL/MariaDB through the Linode Marketplace"
+keywords: ['database','mysql','rdbms','relational database','mariadb']
+tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
 - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 aliases: ['/platform/marketplace/deploy-mysql-with-marketplace-apps/', '/platform/one-click/deploy-mysql-with-one-click-apps/', '/guides/deploy-mysql-with-one-click-apps/', '/guides/deploy-mysql-with-marketplace-apps/','/guides/mysql-marketplace-app/']
-authors: ["Linode"]
 ---
 
 MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. In Debian 9, MySQL is replaced with MariaDB as the default database system. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL. It is maintained and developed by the MariaDB Foundation.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MySQL should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -40,11 +37,11 @@ MySQL is an open-source database management system that uses a relational databa
 - **MySQL User Password** *(required)*: The user password for your MySQL database.
 - **Create Database** *(required)*: The database on your MySQL.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -147,7 +144,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on MySQL/MariaDB, checkout the following guides:
 

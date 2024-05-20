@@ -1,19 +1,18 @@
 ---
 slug: how-to-use-nslookup-command
-description: 'The nslookup command lets you quickly obtain DNS records. Learn how to use nslookup, including both interactive and non-interactive modes.'
-keywords: ['nslookup command','nslookup ip address','how to use nslookup','nslookup examples']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-01
-modified_by:
-  name: Linode
 title: "Use the nslookup Command"
 title_meta: "A Complete Guide to the nslookup Command"
+description: 'The nslookup command lets you quickly obtain DNS records. Learn how to use nslookup, including both interactive and non-interactive modes.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-09-01
+keywords: ['nslookup command','nslookup ip address','how to use nslookup','nslookup examples']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[nslookup man page](https://manpages.ubuntu.com/manpages/bionic/man1/nslookup.1.html)'
 - '[Wikipedia nslookup page](https://en.wikipedia.org/wiki/Nslookup)'
 - '[Wikipedia Domain Name System page](https://en.wikipedia.org/wiki/Domain_Name_System)'
 - '[Microsoft nslookup documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup)'
-authors: ["Jeff Novotny"]
 ---
 
 The `nslookup` command is a useful tool for investigating domain name propagation issues. It allows users to obtain information regarding domain names and IP addresses from the *Domain Name System* (DNS) infrastructure. This guide introduces and explains how to use the `nslookup` command, and provides several examples.
@@ -38,7 +37,7 @@ Typically a DNS responds to a request by retrieving information from its cache. 
 
 The `nslookup` command typically sends its request to the local DNS server. However, an alternate DNS can be specified, such as the root system within the DNS zone. Not all servers are accessible because many internal DNS systems are private and do not respond to external requests. Therefore, private DNS servers don't respond to external `nslookup` requests.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In actual practice, there are two types of DNS services. A recursive DNS service, also known as a *resolver*, maintains a cache of the domain name mappings, but does not process any updates.
 
 In many networks, a resolver initially handles DNS queries. If it does not have the information, perhaps because the entry has aged out, it forwards the request to an authoritative DNS. Authoritative DNS systems maintain the master DNS records and are responsible for keeping the tables updated. The authoritative DNS returns the IP address to the resolver, which relays it back to the original web server. The resolver also caches the mapping for future requests.
@@ -63,7 +62,7 @@ A DNS server maintains several different types of domain records, covering topic
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -92,8 +91,7 @@ To use `nslookup` interactively, simply enter the command `nslookup` from a term
 {{< output >}}
 >
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you receive an error message when running the `nslookup` command, the network services might have been stopped. Reboot the system to reinitialize the process.
 {{< /note >}}
 
@@ -114,8 +112,7 @@ Address: 91.198.174.192
 Name:	dyna.wikimedia.org
 Address: 2620:0:862:ed1a::1
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This answer is said to be `non-authoritative` because it is provided by the local DNS, not the DNS associated with the domain.
 {{< /note >}}
 
@@ -290,8 +287,7 @@ google.com	nameserver = ns2.google.com.
 
 Authoritative answers can be found from:
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Some domains are not configured to return all information in response to this request, and only return the name servers. In this case, you must request each type of record separately.
 {{< /note >}}
 
@@ -346,7 +342,7 @@ Address: 2620:0:862:ed1a::1
 
 For more information on the list of available `nslookup` options, consult the [Linux man page](https://manpages.ubuntu.com/manpages/bionic/man1/nslookup.1.html).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Most DNS requests are sent and received using TCP port 53. To request DNS information from a different port, use the `-port` flag, for example `nslookup -port=55  wikipedia.org`. In most cases DNS servers are configured to refuse these requests, resulting in the error message `communications error to 127.0.0.53#55: connection refused`.
 {{< /note >}}
 
@@ -354,7 +350,7 @@ Most DNS requests are sent and received using TCP port 53. To request DNS inform
 
 Although `nslookup` can find the IP address for a domain, it can also reveal the domain mapped to an IP address. This is referred to as a *reverse DNS* lookup. To perform a reverse lookup, apply the `nslookup` command to the IP address under investigation. The following example illustrates how to find the domain that is mapped to the address `91.198.174.192`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The output displays the IP address in reverse order, so `91.198.174.192` is transposed to `192.174.198.91` in the display. The octets are presented in reverse order due to complex technical reasons involving the `in-addr.arpa` domain tree specification.
 {{< /note >}}
 

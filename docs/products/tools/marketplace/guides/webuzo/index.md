@@ -1,26 +1,23 @@
 ---
+title: "Deploy Webuzo through the Linode Marketplace"
 description: "This guide shows you how to deploy Webuzo from Softaculous, a LAMP stack control panel that allows you to deploy a growing number of applications and scripts."
-keywords: ['webuzo','control panel','dashboard','marketplace']
-tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-12-02
 modified: 2022-08-08
-modified_by:
-  name: Linode
-title: "Deploy Webuzo through the Linode Marketplace"
+keywords: ['webuzo','control panel','dashboard','marketplace']
+tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[Webuzo Documentation](http://www.webuzo.com/docs)'
 - '[Softaculous Support](https://softaculous.deskuss.com)'
 aliases: ['/platform/marketplace/how-to-deploy-webuzo-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webuzo-with-one-click-apps/','/guides/how-to-deploy-webuzo-with-one-click-apps/','/guides/deploy-webuzo-with-marketplace-apps/','/guides/webuzo-marketplace-app/']
-authors: ["Linode"]
 ---
 
 Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control panel that allows you to deploy a growing number of applications and scripts on your server with a single click.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Webuzo should be fully installed within 15-20 minutes after the Compute Instance has finished provisioning. During this time, the instance is rebooted once. This time frame depends on a variety of factors, including which data center has been selected.
@@ -33,9 +30,9 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 ### Webuzo Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -77,4 +74,4 @@ Once Webuzo is fully installed, you can start using it by accessing both the Adm
 
     ![Webuzo Enduser Panel](webuzo-enduser-panel.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

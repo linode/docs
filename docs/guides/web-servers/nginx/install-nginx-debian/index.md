@@ -1,13 +1,12 @@
 ---
 slug: install-nginx-debian
+title: Install NGINX on Debian from the NGINX Repository
 description: 'This guide shows how to install the popular and highly performant web server Nginx on your Linode server running the Linux Operating System.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-20
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-20
-modified_by:
-  name: Linode
-published: 2018-03-20
-title: Install NGINX on Debian from the NGINX Repository
 relations:
     platform:
         key: how-to-install-nginx
@@ -15,7 +14,6 @@ relations:
             - distribution: Debian 9
 tags: ["web server","nginx"]
 aliases: ['/web-servers/nginx/install-nginx-debian/']
-authors: ["Linode"]
 ---
 
 These instructions install NGINX Mainline on Debian 9 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)* series.

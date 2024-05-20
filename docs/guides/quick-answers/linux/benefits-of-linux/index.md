@@ -1,14 +1,13 @@
 ---
 slug: benefits-of-linux
-description: 'What are the benefits of Linux? Linode experts give an overview of Linux, what it’s good for and why it’s important. Learn more about the pros of Linux.'
-keywords: ['linux advantages','advantages linux','linux benefits']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-11
-modified_by:
-  name: Linode
 title: "10 Benefits of Linux You Need to Know"
 title_meta: "The Advantages of Linux and Why You Should Use It"
+description: 'What are the benefits of Linux? Linode experts give an overview of Linux, what it’s good for and why it’s important. Learn more about the pros of Linux.'
 authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-03-11
+keywords: ['linux advantages','advantages linux','linux benefits']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Operating systems, such as Linux, provide an interface between the application software and the underlying hardware. The best operating systems remain invisible to the user, which is where the benefits of Linux first come into play. However, an operating system has to go further in ensuring that the user’s data remains secure and that applications play together nicely, which is another advantage of Linux. This guide examines the advantages of Linux and why you might consider using it as your operating system.

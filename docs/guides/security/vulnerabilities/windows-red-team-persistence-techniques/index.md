@@ -1,19 +1,18 @@
 ---
 slug: windows-red-team-persistence-techniques
+title: "Windows Red Team Persistence Techniques"
 description: 'This guide covers the process of setting up and maintaining persistent access on Windows targets.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Windows Red Team Persistence Techniques"
-authors: ["HackerSploit"]
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 
@@ -92,7 +91,7 @@ In our case, the target is running Windows 10, as a result, we can utilize the B
 
     ![Empire client info command output](empire-client-info-command-output.png "Empire client info command output")
 
-    As highlighted in the preceding screenshot the “high_integrity” option for our agent is set to “0”, this means that our agent is not a high integrity agent and we do not have administrative privileges.
+    As highlighted in the preceding screenshot the `high_integrity` option for our agent is set to “0”, this means that our agent is not a high integrity agent and we do not have administrative privileges.
 
 1. Given that our target is running Windows 10, we can utilize the “powershell/privesc/bypassuac” empire module to obtain an elevated agent, this can be done by running the following command:
 
@@ -113,7 +112,7 @@ In our case, the target is running Windows 10, as a result, we can utilize the B
 
 The persistence/userland/* modules allow for reboot-persistence from userland (i.e. without needing administrative privileges). If a Listener is specified, then the staging code for an Empire agent is automatically generated and used as the script logic to trigger. If an ExtFile is specified (e.g. if you wanted to generate a PowerBreach backdoor and use that instead), then the file is encoded appropriately and used instead.
 
-The modules are broken up by trigger mechanism, and each one has various storage locations specifiable within it. For userland modules, the storage locations are in the registry (within the HKCU hive), in an alternate-data-stream, or within the Application event log. Full cleanup is available if you specify theCleanup command, which will remove the specified trigger and stored script logic. Note: if the logic is stored in the application event log, this stored script logic won’t be cleared.
+The modules are broken up by trigger mechanism, and each one has various storage locations specifiable within it. For userland modules, the storage locations are in the registry (within the HKCU hive), in an alternate-data-stream, or within the Application event log. Full cleanup is available if you specify the Cleanup command, which will remove the specified trigger and stored script logic. Note: if the logic is stored in the application event log, this stored script logic won’t be cleared.
 
 In this case, we will take a look at how to use the “powershell/persistence/userland/registry” module on the unprivileged agent. The persistence/userland/* modules allow for reboot-persistence from userland (i.e. without needing administrative privileges).
 
@@ -179,7 +178,7 @@ Adversaries may create a local account to maintain access to victim systems. Loc
 
 We can add a local user to the Administrative group on the Windows target as a means of maintaining access to the target, this can be done by utilizing the “powershell/persistence/misc/add_netuser” module.
 
-1. The first step will involve interacting with the agent and selecting the ”add_netuser” module, this can be done by running the following commands:
+1. The first step will involve interacting with the agent and selecting the `add_netuser` module, this can be done by running the following commands:
 
         interact <AGENT-ID>/<NAME>
         usemodule powershell/persistence/misc/add_netuser
