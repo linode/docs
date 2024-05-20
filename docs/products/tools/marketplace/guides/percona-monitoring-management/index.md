@@ -34,9 +34,9 @@ For a more detailed information on PMM's architecture see [Percona's official do
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** PMM should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -190,7 +190,7 @@ The Percona (PMM) Marketplace App installs the following required software on yo
 | [**PMM Server**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/docker.html) | PMM Server is the central part of PMM that aggregates collected data and presents it in the form of tables, dashboards, and graphs in a web interface.  |
 | [**Grafana**](https://grafana.com/) | Grafana is the visualization tool used by PMM to provides charts, graphs, and alerts for the databases that are being monitored. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 ## Next Steps
 

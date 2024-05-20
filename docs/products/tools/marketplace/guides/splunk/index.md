@@ -12,13 +12,13 @@ external_resources:
 
 Splunk is a powerful log analyzer that can be used to obtain insight into your infrastructure. Splunk collects, monitors, analyzes, and visualizes data from database applications, web servers, cloud networks, and a variety of other sources.
 
-The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akamai SIEM integration](https://techdocs.akamai.com/siem-integration/docs/akamai-siem-integration-for-splunk-and-cef-syslog) on deployment. For details on generating valid tokens, see [create authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials). 
+The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akamai SIEM integration](https://techdocs.akamai.com/siem-integration/docs/akamai-siem-integration-for-splunk-and-cef-syslog) on deployment. For details on generating valid tokens, see [create authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials).
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Splunk should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -38,12 +38,12 @@ The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akam
 - **Luna Hostname**: Akamai Luna Hostname
 - **Akamai Security Configuration ID**: Akamai Security Configuration ID
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -66,4 +66,4 @@ You will be presented a login field where you can enter the credentials you prev
 
 Now that you’ve accessed your dashboard, checkout [the official Splunk documentation](https://docs.splunk.com/Documentation/Splunk) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

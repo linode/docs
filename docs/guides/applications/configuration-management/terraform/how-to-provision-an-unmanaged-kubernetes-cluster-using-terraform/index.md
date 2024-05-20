@@ -72,7 +72,7 @@ Then, reinitialize `~/.bashrc` file for the changes to take effect.
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ### SSH Agent
 

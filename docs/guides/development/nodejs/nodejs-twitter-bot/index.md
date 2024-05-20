@@ -991,7 +991,7 @@ To keep your bot running uninterrupted, you can start a Screen session. [Screen]
 
 ## Troubleshooting
 
-### Troubleshooting consumer_key Twit Config Error
+### Troubleshooting `consumer_key` Twit Config Error
 
 When starting the bot, you may see an error like this:
 
@@ -1074,10 +1074,10 @@ This error indicates that incorrect keys were copied into your `.env` file. You 
 
 | .env Key Name | Twitter Developer Portal Credential Name |
 |---------------|------------------------------------------|
-| consumer_key  | API Key                                  |
-| consumer_secret | API Secret Key                         |
-| access_token | Access Token                              |
-| access_token_secret | Access Token Secret                |
+| `consumer_key`  | API Key                                  |
+| `consumer_secret` | API Secret Key                         |
+| `access_token` | Access Token                              |
+| `access_token_secret` | Access Token Secret                |
 
 If you're not sure whether your keys are correct, you can regenerate them inside the Twitter developer portal. See the [Regenerate API Keys and Tokens](https://developer.twitter.com/en/docs/authentication/guides/authentication-best-practices) section of Twitter's documentation for instructions.
 

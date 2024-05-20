@@ -25,7 +25,7 @@ Since you have full root access to your Compute Instance's system, you're free t
 
 ## How can I send and receive email with my Compute Instance?
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 If you'd prefer to leave the management of your email to a third party, you may follow our [Google Workspace](/docs/guides/using-google-workspace-for-email/) guide. Those desiring to operate their own mail server will find these guides helpful:
 

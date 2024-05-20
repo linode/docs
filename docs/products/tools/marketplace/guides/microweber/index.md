@@ -14,9 +14,9 @@ When self-hosting Microweber, you are responsible for the security of your serve
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Microweber should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -45,4 +45,4 @@ When self-hosting Microweber, you are responsible for the security of your serve
 
     ![Screenshot of the Microweber dashboard](Microweber-dashboard.jpg)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -17,9 +17,9 @@ aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/'
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Ruby on Rails should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -135,7 +135,7 @@ For more information on setting up a more substantial application, refer to the 
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on Ruby on Rails, checkout the following guides:
 

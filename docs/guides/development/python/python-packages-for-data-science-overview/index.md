@@ -52,7 +52,7 @@ The [SciPy library](https://docs.scipy.org/doc/scipy/reference/) provides you wi
 - Multidimensional image processing (`scipy.ndimage`)
 - File IO (`scipy.io`)
 
-The main issue with having a single coordinator for everything is that it becomes somewhat cumbersome to manage and load times can be high. Also, you lose sight of the low-level details and start to wonder just what is going on under the hood. There are times when the package can be a little counterintuitive and confusing, such as the [Sparse eigenvalue](https://docs.scipy.org/doc/scipy/reference/tutorial/arpack.html) support, which requires the [ARnoldi PACKage (ARPACK)](https://people.sc.fsu.edu/~jburkardt/f_src/arpack/arpack.html) FORTRAN package and FORTAN knowledge.
+The main issue with having a single coordinator for everything is that it becomes somewhat cumbersome to manage and load times can be high. Also, you lose sight of the low-level details and start to wonder just what is going on under the hood. There are times when the package can be a little counterintuitive and confusing, such as the [Sparse eigenvalue](https://docs.scipy.org/doc/scipy/reference/tutorial/arpack.html) support, which requires the [arpack](https://people.sc.fsu.edu/~jburkardt/f_src/arpack/arpack.html) FORTRAN package and FORTAN knowledge.
 
 ## Pandas
 

@@ -60,7 +60,7 @@ This guide shows you how to:
 
 You should have `kubectl` installed on your local workstation. `kubectl` is the command line interface for Kubernetes, and allows you to remotely connect to your Kubernetes cluster to perform tasks.
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ### Install Git
 
@@ -68,7 +68,7 @@ To perform some of the commands in this guide you need to have Git installed on 
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Sign up for a Docker Hub Account
 
@@ -510,7 +510,7 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Next Steps
 

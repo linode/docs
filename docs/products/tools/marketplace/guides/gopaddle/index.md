@@ -16,9 +16,9 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{<note>}}
 **Estimated deployment time:** gopaddle should be fully installed within 15-20 minutes after the Compute Instance has finished provisioning.
@@ -86,4 +86,4 @@ Under Templates, the Marketplace Applications hosts a variety of pre-built Kuber
 
 For more information on gopaddle configurations, please see the [documentation](https://help.gopaddle.io).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

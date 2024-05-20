@@ -18,9 +18,9 @@ Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Cloudron should be fully installed within 10-12 minutes after the Compute Instance has finished provisioning.
@@ -31,7 +31,7 @@ Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www
 - **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -55,4 +55,4 @@ The Cloudron application is served on the Linode, however it still requires a fe
 
     ![Cloudron Post-Setup Wizard](cloudron-post-setup.png "Cloudron Post Setup")
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

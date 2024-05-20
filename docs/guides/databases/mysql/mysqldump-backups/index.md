@@ -26,7 +26,7 @@ Since the mysqldump utility needs to connect to the database, the database manag
 
 - **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://www.linode.com/products/mysql/), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/).
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
 -   **Log in to the system where you intend to capture or store your backups.** This system needs a MySQL command-line client installed (which should come with the mysqldump utility). Run the following command to verify that mysqldump is installed:
 

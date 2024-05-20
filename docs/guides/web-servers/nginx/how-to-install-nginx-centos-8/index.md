@@ -37,7 +37,7 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
         sudo dnf install -y policycoreutils-python-utils
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install NGINX
 

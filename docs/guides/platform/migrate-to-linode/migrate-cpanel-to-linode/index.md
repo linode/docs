@@ -147,7 +147,7 @@ The [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-d
 
 After completing the cPanel migration, update your DNS records to reflect your new Linode's IP. Once this is done, site visitors will start loading your cPanel accounts' services from your new Linode.
 
-{{< content "use-linode-name-servers" >}}
+{{% content "use-linode-name-servers" %}}
 
 ## Update WHM Hostname
 

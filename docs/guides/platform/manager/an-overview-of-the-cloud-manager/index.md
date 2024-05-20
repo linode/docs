@@ -25,35 +25,35 @@ This guide provides an overview of the features and services available in the Cl
 
 ## Linodes
 
-{{< content "cloud-linodes-shortguide" >}}
+{{% content "cloud-linodes-shortguide" %}}
 
 ### Find Your Disks
 
-{{< content "cloud-disks-shortguide" >}}
+{{% content "cloud-disks-shortguide" %}}
 
 ### Reboot Your Linode
 
-{{< content "cloud-reboot-shortguide" >}}
+{{% content "cloud-reboot-shortguide" %}}
 
 ### Delete a Public IP Address
 
-{{< content "cloud-delete-ip-shortguide" >}}
+{{% content "cloud-delete-ip-shortguide" %}}
 
 ## Volumes
 
-{{< content "cloud-volumes-shortguide" >}}
+{{% content "cloud-volumes-shortguide" %}}
 
 ## Object Storage
 
-{{< content "cloud-object-storage-shortguide" >}}
+{{% content "cloud-object-storage-shortguide" %}}
 
 ## NodeBalancers
 
-{{< content "cloud-nodebalancers-shortguide" >}}
+{{% content "cloud-nodebalancers-shortguide" %}}
 
 ## Domains (DNS Manager)
 
-{{< content "cloud-domains-shortguide" >}}
+{{% content "cloud-domains-shortguide" %}}
 
 ### Zone Files
 
@@ -70,35 +70,35 @@ The Cloud Manager automatically ensures that your Domain's zone file does not co
 
 ## Longview
 
-{{< content "cloud-longview-shortguide" >}}
+{{% content "cloud-longview-shortguide" %}}
 
 ## Marketplace
 
-{{< content "cloud-marketplace-shortguide" >}}
+{{% content "cloud-marketplace-shortguide" %}}
 
 ## Kubernetes
 
-{{< content "cloud-kubernetes-shortguide" >}}
+{{% content "cloud-kubernetes-shortguide" %}}
 
 ## StackScripts
 
-{{< content "cloud-stackscripts-shortguide" >}}
+{{% content "cloud-stackscripts-shortguide" %}}
 
 ## Images
 
-{{< content "cloud-images-shortguide" >}}
+{{% content "cloud-images-shortguide" %}}
 
 ## Account (Management and Billing)
 
-{{< content "cloud-management-and-billing-shortguide" >}}
+{{% content "cloud-management-and-billing-shortguide" %}}
 
 ### Find Credit Remaining
 
-{{< content "cloud-credits-shortguide" >}}
+{{% content "cloud-credits-shortguide" %}}
 
 ### Printing an Invoice
 
-{{< content "cloud-invoices-shortguide" >}}
+{{% content "cloud-invoices-shortguide" %}}
 
 ### Password Management
 
@@ -132,15 +132,15 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 ### API Keys / API Tokens
 
-{{< content "cloud-api-keys-shortguide" >}}
+{{% content "cloud-api-keys-shortguide" %}}
 
 ### OAuth Apps
 
-{{< content "cloud-oauth-apps-shortguide" >}}
+{{% content "cloud-oauth-apps-shortguide" %}}
 
 ### Manage Email Event Notifications
 
-{{< content "cloud-email-notifications-shortguide" >}}
+{{% content "cloud-email-notifications-shortguide" %}}
 
 ## User Interface Enhancements
 

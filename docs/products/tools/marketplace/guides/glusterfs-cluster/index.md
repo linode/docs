@@ -17,12 +17,12 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
-**Estimated deployment time:** You GlusterFS cluster should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning. 
+**Estimated deployment time:** You GlusterFS cluster should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
 ## Configuration Options
@@ -34,9 +34,9 @@ external_resources:
 
 - **[Linode API Token](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token):** The provisioner node will use an authenticated API token to create the additional components to the cluster. This is required to fully create the GlusterFS cluster.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 - **List of IP addresses to whitelist:** A list of IP address that will be whitelisted to the GlusterFS cluster. These should be client IPs that will mount GlusterFS. SSL certificates will be created for the provided IP addresses.
 
 ## Getting Started After Deployment
@@ -117,4 +117,4 @@ The GlusterFS Marketplace App installs the following software on your Linode:
 | [**GlusterFS**](https://www.gluster.org/) | Distributed network filesystem. |
 | [**Firewalld**](https://firewalld.org/) | Firewalls to restrict port-level access to the cluster |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

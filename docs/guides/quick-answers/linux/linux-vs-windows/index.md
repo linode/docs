@@ -46,7 +46,7 @@ Microsoft Windows does not publish the source to the operating system kernel, or
 
 ## Evolving GUIs: Linux vs. Microsoft
 
-Most GUIs find their origin in the [Smalltalk programming language](https://en.wikipedia.org/wiki/Smalltalk), along with Windows GUI, macOS, and XWindows roots. In the race between Windows and Linux, Windows continues to improve its GUI software, and developers are familiar with Windows GUI programming. Microsoft makes up for scripting and macro execution by adapting its PowerShell language and APIs to match the rich scripting infrastructure in Unix variants, in this case, Linux.
+Most GUIs find their origin in the [Smalltalk programming language](https://en.wikipedia.org/wiki/Smalltalk), along with Windows GUI, macOS, and X Windows roots. In the race between Windows and Linux, Windows continues to improve its GUI software, and developers are familiar with Windows GUI programming. Microsoft makes up for scripting and macro execution by adapting its PowerShell language and APIs to match the rich scripting infrastructure in Unix variants, in this case, Linux.
 
 Linux functions on 32-64 bit platforms and is less captive to different hardware platforms, providing consistency in GUI and compatibility across a wide variety of desktop hardware, including Intel, AMD, ARM, RISC-V, and other families. Older Linux versions lack many of the applications that made Windows popular. This is a problem now largely solved. Graphics, video editing, CAD, and other applications can be found on Linux using various GUIs.
 

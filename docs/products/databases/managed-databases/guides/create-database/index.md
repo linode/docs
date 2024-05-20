@@ -5,7 +5,7 @@ published: 2022-06-06
 modified: 2022-08-09
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 This guide walks you through creating a Linode Managed Database through the Cloud Manager.
 

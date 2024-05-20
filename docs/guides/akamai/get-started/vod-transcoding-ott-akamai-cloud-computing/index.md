@@ -43,7 +43,7 @@ Low latency is critical for video streaming services. To enable low latency, tra
 
 This solution creates a video transcoding service on the Akamai Cloud Computing platform. The cloud transcoding service is composed of multiple compute instances working in parallel to handle the transcoding load. Object storage locations store content uploaded to the transcoding service and videos that have been transcoded. Transcoded video streams are distributed by the Akamai CDN to audiences.
 
-![Video on demand transcoding design digram](vod-design-diagram.jpg "A design diagram for a video on demand transcoding service that ingests video from object storage and outputs transcoded video to a CDN")
+![Video on demand transcoding design diagram](vod-design-diagram.jpg "A design diagram for a video on demand transcoding service that ingests video from object storage and outputs transcoded video to a CDN")
 
 1. Raw live or on-demand videos are uploaded to an object storage location that houses incoming videos that require processing.
 1. This location is monitored by the transcoding cluster for any new uploads.

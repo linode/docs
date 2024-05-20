@@ -144,7 +144,7 @@ In this section you will install GitLab and make some configuration changes.
 
         sudo nano config/gitlab.yml
 
-   You need to change the value of host to the fully-qualified domain of your server. Also set the email_from and support_email to the email addresses intended for GitLab.
+   You need to change the value of host to the fully-qualified domain of your server. Also set the `email_from` and `support_email` to the email addresses intended for GitLab.
 
    {{< file "/home/git/gitlab/config/gitlab.yml" >}}
 production: &base

@@ -34,7 +34,7 @@ First, you need to create a Linode account to start using our services. If you a
 
 1.  Enter your email address, a unique username, and a strong password. Alternatively, you can sign up using your existing Google or GitHub account. When using another provider, you are prompted for a username in a separate step.
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 1.  A confirmation email is sent to your email address shortly after. Click the link in that email to confirm your email address.
 
@@ -48,7 +48,7 @@ First, you need to create a Linode account to start using our services. If you a
 
 1.  Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 Once your account has been created, consider **enabling 2FA** to prevent unauthorized access. Anyone that has access to your account may be able to delete your services, add new ones, and reset the root password on your Compute Instances to gain access to them. See [Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/) for instructions on enabling 2FA. If you are logging in with a third party provider, consider adding 2FA through that provider.
 
 ## Navigate the Cloud Manager
@@ -85,7 +85,7 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 
 - [Managed Databases](https://www.linode.com/products/databases/): Reliable, performant, highly available, and fully managed database clusters to support production database workloads.
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
 **Storage**
 

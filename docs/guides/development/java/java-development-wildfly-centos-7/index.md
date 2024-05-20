@@ -297,8 +297,8 @@ echo "Done."
 4.  You will need to add to add management user (Web and/or CLI) to be able to access the management console, this can be simply done by running the command simply run the shell script in `/opt/wildfly/bin/add-user.sh`:
 
     1.  **Select option a for Management user.**
-    2.  **Username:** type_the_username
-    3.  **Password:** type_the_password
+    2.  **Username:** Type the username
+    3.  **Password:** Type the password
     4.  **What groups do you want this user to belong to?:** Leave empty and click Enter
     5.  **About to add user ... Is this correct?:** yes
     6.  **Is this new user going to be used for one AS process to connect to another AS process:** yes (Just in-case, we need this in the future, i.e. domain setup).

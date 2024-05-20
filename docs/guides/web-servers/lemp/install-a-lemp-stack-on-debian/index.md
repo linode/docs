@@ -31,7 +31,7 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 ### NGINX
 
-{{< content "install-nginx-debian" >}}
+{{% content "install-nginx-debian" %}}
 
 ### MariaDB
 

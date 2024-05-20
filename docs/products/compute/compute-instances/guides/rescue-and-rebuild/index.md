@@ -381,7 +381,7 @@ To use the Rebuild feature:
 
 1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 1.  Click on **Rebuild** button after completing the form:
 

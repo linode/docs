@@ -35,7 +35,7 @@ This guide will first describe [when policies are enforced](#when-policies-are-e
 
 Lifecycle policies are triggered starting at midnight of the Object Storage cluster's local time. This means that if you set a lifecycle policy of **one day**, the objects will be deleted **the midnight after they become 24 hours old**.
 
-{{< content "object-storage-cluster-shortguide" >}}
+{{% content "object-storage-cluster-shortguide" %}}
 
 For example, if an object is created at 5PM on January 1, it will reach 24 hours in age at 5PM on January 2. The policy will then be enforced on the object at 12AM on January 3.
 

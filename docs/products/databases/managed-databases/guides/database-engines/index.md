@@ -5,7 +5,7 @@ published: 2022-06-06
 modified: 2023-05-02
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 When deploying a Managed Database, you are able to select from a variety of database engines and plans. While each database engine enables you to store data, application compatibility and the way in which they store and access data can vary greatly. This guide aims to provide more information on each database engine, the reasons you might choose one over the other, and advice on selecting an appropriate plan size.
 

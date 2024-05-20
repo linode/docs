@@ -25,9 +25,9 @@ Install Valheim on Linode with the Valheim Game Server Marketplace App to maximi
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Valheim should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -50,7 +50,7 @@ Install Valheim on Linode with the Valheim Game Server Marketplace App to maximi
 - **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
 - **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -65,4 +65,4 @@ For more on Valheim, check out the following resources:
 - [LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)
 - [Valheim official website](https://www.valheimgame.com/)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -4,7 +4,7 @@ description: "Learn how to resize your database cluster."
 published: 2024-04-09
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 You can upscale database clusters to adapt them to your needs. Clusters can’t be downscaled.
 
