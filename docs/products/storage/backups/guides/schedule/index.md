@@ -1,7 +1,7 @@
 ---
 title: Schedule Backups
 description: "How to schedule backups with the Linode Backup Service."
-authors: ["Linode"]
+published: 2021-11-12
 ---
 
 The Backup service will generate automatic backups according to the schedule that you specify.

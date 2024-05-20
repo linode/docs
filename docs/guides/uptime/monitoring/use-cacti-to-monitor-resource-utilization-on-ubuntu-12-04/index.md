@@ -1,16 +1,14 @@
 ---
 slug: use-cacti-to-monitor-resource-utilization-on-ubuntu-12-04
-deprecated: true
+title: 'Use Cacti to Monitor Resource Utilization on Ubuntu 12.04'
 description: 'Deploy Cacti, a Powerful Server-monitoring Solution That Uses SNMP to Track Resource Usage on Ubuntu 12.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-11
 keywords: ["Cacti", "Ubuntu", " Ubuntu 12.04", "SNMP", "spine", "client machine"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/use-cacti-to-monitor-resource-utilization-on-ubuntu-12-04/','/server-monitoring/cacti/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-12-04-precise/']
-modified: 2012-10-11
-modified_by:
-  name: Linode
-published: 2012-10-11
-title: 'Use Cacti to Monitor Resource Utilization on Ubuntu 12.04'
 external_resources:
  - '[Cacti Website](http://www.cacti.net/index.php)'
  - '[Cacti Users Plugin Community](http://cactiusers.org/index.php)'
@@ -20,7 +18,7 @@ relations:
         key: install-cacti-monitoring
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](http://munin-monitoring.org/) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.
@@ -95,7 +93,7 @@ This section is optional and for those looking to use Cacti to monitor additiona
 
 Since snmpd binds to localhost by default, we'll need to edit the `/etc/snmp/snmpd.conf`  file to allow snmpd to serve requests on other interfaces. Please note that  allowing snmpd to run on a public IP address will have security implications,  such as allowing anyone with your IP address to access the snmp daemon running  on your Linode. If you choose to allow snmp to listen on all interfaces, we  strongly recommend [implementing firewall rules](/docs/security/firewalls/) that  restrict access to only specific ip addresses that you control.
 
-Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the agentAddress as all  interfaces. The `Agent Behavior` section should now resemble the following:
+Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the `agentAddress` as all  interfaces. The `Agent Behavior` section should now resemble the following:
 
 
 {{<file "/etc/snmp/snmpd.conf">}}

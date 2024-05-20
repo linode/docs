@@ -1,12 +1,10 @@
 ---
 title: Reset the Root Password on a Compute Instance
 description: "Change the root user password for the Linux environment running on a Compute Instance."
-keywords: ["linux", "linode", "cloud manager", "image"]
-tags: ["linode platform","cloud manager","security"]
 published: 2019-02-11
 modified: 2023-05-04
-modified_by:
-  name: Linode
+keywords: ["linux", "linode", "cloud manager", "image"]
+tags: ["linode platform","cloud manager","security"]
 aliases: ['/quick-answers/linode-platform/reset-the-root-password-on-your-linode-classic-manager/','/quick-answers/linode-platform/reset-the-root-password-on-your-linode/','/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/','/guides/reset-the-root-password-on-your-linode/']
 ---
 
@@ -28,7 +26,7 @@ All Compute Instances deployed using one of Linode's [official distribution imag
 
 1.  Enter a new password for the root user in the **New Root Password** field.
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 1.  Click **Save** to make the change.
 

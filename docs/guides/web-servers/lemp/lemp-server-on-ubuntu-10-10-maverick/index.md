@@ -1,25 +1,22 @@
 ---
 slug: lemp-server-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'LEMP Server on Ubuntu 10.10 (Maverick)'
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-22
+modified: 2012-10-03
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lemp/lemp-server-on-ubuntu-10-10-maverick/','/websites/lemp/lemp-server-on-ubuntu-10-10-maverick/','/lemp-guides/ubuntu-10-10-maverick/']
-modified: 2012-10-03
-modified_by:
-  name: Linode
-published: 2010-11-22
-title: 'LEMP Server on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP". The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 

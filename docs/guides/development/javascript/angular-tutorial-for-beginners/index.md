@@ -1,19 +1,18 @@
 ---
 slug: angular-tutorial-for-beginners
+title: "Build a Website with Angular (For Beginners)"
+title_meta: "How to Build a Website with Angular (For Beginners)"
 description: 'This guide covers the basics of building a website with Angular, including installation, setup, and the core concepts of Angular application design.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-10
 keywords: ['angular','node.js','typescript','web applications','app framework','open source']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-10
-modified_by:
-  name: Nathaniel Stickman
-title: "Build a Website with Angular (For Beginners)"
-title_meta: "How to Build a Website with Angular (For Beginners)"
 external_resources:
 - '[Angular](https://angular.io/)'
 - '[TypeScript](https://www.typescriptlang.org/)'
 - '[Angular docs](https://angular.io/docs)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Angular is a powerful open-source platform and framework for creating dynamic single-page applications. Written in TypeScript, Angular was built for modular web application clients, and helps to make application design clearer, and cleaner. In this guide, you can find instructions for installing Angular, setting up your first Angular application, and learning about its core concepts.
@@ -24,7 +23,7 @@ Angular is both a development platform and a framework for web application desig
 
 Angular uses [TypeScript](https://www.typescriptlang.org/), a programming language that extends JavaScript with strong typing. This can make your applications more transparent, legible, and helps you catch errors at compile time rather than run time. It may look unfamiliar at first, but many find that TypeScript makes their JavaScript programming more clear and less error-prone.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Angular should not be confused with [AngularJS](https://angularjs.org/), a front-end framework that aims to extend static HTML with dynamic features. Angular came about as the evolution of AngularJS — Angular is also known as Angular 2 for this reason.
 {{< /note >}}
 

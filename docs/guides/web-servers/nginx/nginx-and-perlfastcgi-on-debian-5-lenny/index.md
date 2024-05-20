@@ -1,25 +1,22 @@
 ---
 slug: nginx-and-perlfastcgi-on-debian-5-lenny
-deprecated: true
+title: 'Nginx and Perl-FastCGI on Debian 5 (Lenny)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-16
+modified: 2012-10-08
 keywords: ["nginx", "fastcgi perl", "nginx debian", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-debian-5-lenny/','/web-servers/nginx/nginx-and-perlfastcgi-on-debian-5-lenny/','/web-servers/nginx/perl-fastcgi/debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-12-16
-title: 'Nginx and Perl-FastCGI on Debian 5 (Lenny)'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI.
 

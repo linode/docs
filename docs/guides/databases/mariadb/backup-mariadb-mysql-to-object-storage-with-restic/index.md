@@ -1,20 +1,19 @@
 ---
 slug: backup-mariadb-mysql-to-object-storage-with-restic
+title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
+title_meta: "Backup MariaDB Databases to Linode Object Storage with Restic"
 description: 'Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your MariaDB (or MySQL) databases onto Linode Object Storage.'
+authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
+published: 2020-12-03
 keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Object Storage']
 tags: ['mariadb', 'mysql', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-12-03
-modified_by:
-  name: Andy Heathershaw
-title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
-title_meta: "Backup MariaDB Databases to Linode Object Storage with Restic"
 external_resources:
 - '[mysqldump - MariaDB Knowledge Base](https://mariadb.com/kb/en/mysqldump/)'
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
 - '[Removing snapshots according to a policy](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy)'
-authors: ["Andy Heathershaw"]
 tags: ["saas"]
 ---
 
@@ -44,7 +43,7 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/products/storage/object-storage/guides/manage-buckets/) guide if you do not already have one.
 
-    {{< content "object-storage-cancellation-shortguide" >}}
+    {{% content "object-storage-cancellation-shortguide" %}}
 
 1.  [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
 
@@ -60,11 +59,11 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 ## Install Restic
 
-{{< content "install-restic-shortguide" >}}
+{{% content "install-restic-shortguide" %}}
 
 ## Create the Restic Repository
 
-{{< content "create-restic-repository-shortguide" >}}
+{{% content "create-restic-repository-shortguide" %}}
 
 ## Backup All Databases
 

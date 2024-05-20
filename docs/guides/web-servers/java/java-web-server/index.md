@@ -1,16 +1,15 @@
 ---
 slug: java-web-server
+title: "How to Make a Server in Java in 5 Easy Steps"
+title_meta: "The Developer’s Guide to Java: Web Servers"
 description: 'In Java, web servers are minimal HTTP static file servers storing web content. ✓ Learn the basics of Java HTTP servers and how to make a server in Java.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-01-05
 keywords: ['java web server', 'java http server', 'how to make a server in java', 'getting started with java', 'java web hosting', 'java web server tutorial', 'java side projects', 'server side programming java', 'java api server', 'server for java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-05
-modified_by:
-  name: Linode
-title_meta: "The Developer’s Guide to Java: Web Servers"
-title: "How to Make a Server in Java in 5 Easy Steps"
 external_resources:
 - '[DZone: A Simple HTTP Server in Java](https://dzone.com/articles/simple-http-server-in-java)'
-authors: ["John Mueller"]
 ---
 
 Everyone likes the idea of reducing their workload when possible, yet the need to perform basic functionality arises almost constantly. Often, developers end up doing a lot of work for what seems like little return, especially when it comes to basic web design. You don’t need a full-fledged web server to perform quick checks for things like connectivity or to ensure basic functionality. This is where Java 18’s newfound web functionality comes into play. Java 18 sets up and configures a basic Java web server you can use for simple tasks. It only takes a matter of minutes, rather than hours, and it’s a pretty straightforward process. This guide demonstrates how to work with Java 18’s web functionality to create a server in Java. It also covers how to use the `jwebserver` command line tool.
@@ -69,7 +68,7 @@ These steps show how to install the Oracle Java Development Kit (JDK) 18 on an U
 
 1.  If there are packages to upgrade, do so:
 
-    ```commandd
+    ```command
     sudo apt -y upgrade
     ```
 

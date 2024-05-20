@@ -1,12 +1,9 @@
 ---
+title: "Deploy Microweber through the Linode Marketplace"
 description: "Deploy Microweber, an open-source, drag and drop website builder and CMS on a Linode Compute Instance."
+published: 2022-09-06
 keywords: ['Microweber','website builder','cms']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-09-06
-modified_by:
-  name: Linode
-title: "Deploy Microweber through the Linode Marketplace"
-authors: ["Linode"]
 ---
 
 [Microweber](https://microweber.org/) is an open-source, drag and drop website builder and CMS based on the Laravel PHP Framework. It includes features for e-commerce, live editing, file management, design customization, and has plugins for both cPanel and Plesk.
@@ -17,9 +14,9 @@ When self-hosting Microweber, you are responsible for the security of your serve
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Microweber should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -48,4 +45,4 @@ When self-hosting Microweber, you are responsible for the security of your serve
 
     ![Screenshot of the Microweber dashboard](Microweber-dashboard.jpg)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

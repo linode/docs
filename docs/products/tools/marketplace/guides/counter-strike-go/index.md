@@ -1,16 +1,13 @@
 ---
+title: "Deploy Counter-Strike Global Offensive through the Linode Marketplace"
 description: "Deploy a Counter-Strike: Global Offensive server on Linode using Marketplace Apps."
-keywords: ['counter-strike','cs', 'go','marketplace']
 published: 2019-03-28
 modified: 2022-05-17
-modified_by:
-  name: Linode
-title: "Deploy Counter-Strike Global Offensive through the Linode Marketplace"
+keywords: ['counter-strike','cs', 'go','marketplace']
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-marketplace-apps/','/guides/counter-strike-go-marketplace-app/']
-authors: ["Linode"]
 ---
 
 {{< youtube aSivuBZxUgw >}}
@@ -21,9 +18,9 @@ This Marketplace App deploys the CS:GO server software through [LinuxGSM](https:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Counter-Strike Global Offensive should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
@@ -47,7 +44,7 @@ This Marketplace App deploys the CS:GO server software through [LinuxGSM](https:
 - **Buy Anywhere:** When enabled, allows teams to buy equipment from outside buy zones.
 - **Friendly Fire Enabled:** Friendly fire allows teammates to damage and kill each other.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -88,4 +85,4 @@ The CS:GO Marketplace App installs the following required software on your Linod
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 27015, 27020/udp, 27005/udp, will allow outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

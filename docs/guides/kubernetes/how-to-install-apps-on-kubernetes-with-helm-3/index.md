@@ -1,20 +1,19 @@
 ---
 slug: how-to-install-apps-on-kubernetes-with-helm-3
+title: 'Installing Apps on Kubernetes with Helm 3'
+title_meta: 'How to Install Apps on Kubernetes with Helm 3'
 description: 'Learn how to install apps on your K8s cluster with Helm 3, a popular package management system for Kubernetes.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-12-06
 keywords: ["helm", "kubernetes", "container", "k8s"]
 tags: ["kubernetes","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-12-06
-modified_by:
-  name: Linode
-title: 'Installing Apps on Kubernetes with Helm 3'
-title_meta: 'How to Install Apps on Kubernetes with Helm 3'
 aliases: ['/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','/applications/containers/how-to-install-apps-on-kubernetes-with-helm/','/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm Documentation](https://helm.sh/docs/)'
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
-authors: ["Linode"]
 ---
 
 ![How to Install Apps on Kubernetes with Helm](how-to-install-apps-on-kubernetes-with-helm.png)
@@ -103,7 +102,7 @@ The Helm client software issues commands to your cluster. You run the client sof
 
 1. You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with [Linode's Kubernetes Engine](/docs/products/compute/kubernetes/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier (g6-standard-2) or higher. This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6 and later.
 
-    {{< content "k8s-alpha-deprecation-shortguide" >}}
+    {{% content "k8s-alpha-deprecation-shortguide" %}}
 
     {{< note >}}
     This guide's example instructions will also result in the creation of a Block Storage Volume and a NodeBalancer, which are also billable resources. If you do not want to keep using the example application after you finish reviewing your guide, make sure to [delete](#delete-a-release) these resources afterward.
@@ -202,7 +201,7 @@ The [`helm install` command](https://helm.sh/docs/intro/using_helm/#helm-install
     mariadb.mariadbRootPassword: "secretpassword"
     ```
 
-    Replace the value for `ghostHost` with a domain or subdomain that you own and would like to assign to the app; the value for `ghostEmail` with your email; the values for `ghostUsername` and `ghostPassword` with the credentials you wish to use for logging into your site; and the value for `mariabd.mariadbRootPassword` for the password you wish to use for logging into the database.
+    Replace the value for `ghostHost` with a domain or subdomain that you own and would like to assign to the app; the value for `ghostEmail` with your email; the values for `ghostUsername` and `ghostPassword` with the credentials you wish to use for logging into your site; and the value for `mariadb.mariadbRootPassword` for the password you wish to use for logging into the database.
 
     {{< note >}}
     If you don't own a domain name and won't continue to use the Ghost website after finishing this guide, you can make up a domain for this configuration file.

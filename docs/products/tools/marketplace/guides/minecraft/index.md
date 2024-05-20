@@ -1,11 +1,11 @@
 ---
+title: "Deploy a Minecraft Server through the Linode Marketplace"
 description: "This guide shows you how to deploy a Minecraft Server on a Linode using the One-Click Marketplace App so you can create your own world on your own or with friends."
-keywords: ['minecraft','marketplace', 'server']
 published: 2019-04-01
 modified: 2022-04-01
-title: "Deploy a Minecraft Server through the Linode Marketplace"
+keywords: ['minecraft','marketplace', 'server']
 external_resources:
-- '[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server)'
+- '[Minecraft Wiki](https://minecraft.wiki/w/Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-marketplace-apps/','/guides/deploy-minecraft-marketplace-app/','/guides/minecraft-marketplace-app/']
 image: deploy-a-minecraft-server-with-oneclick-apps.png
@@ -15,9 +15,9 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Minecraft should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -44,7 +44,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 - **PvP Enabled:** Enables player versus player combat on the server. *Advanced Configuration*.
 - **Force Game Mode Enabled:** Forces players to join the server's default game mode. `false` allows players to join with their previous game mode. `true` forces the default game mode.
 - **World Type:** Type of world to generate. *Default* = standard, *flat* = featureless and flat, *largebiomes* = larger biomes, *amplified* = larger height limit. *Advanced Configuration*.
-- **World Seed:** A random value used by Minecraft's world generation algorithm to create a unique world. For example: `qazwsx123`. See [Minecraft's Gamepedia](https://minecraft.gamepedia.com/Seed_(level_generation)) entry on seeds for more information. *Advanced Configuration*.
+- **World Seed:** A random value used by Minecraft's world generation algorithm to create a unique world. For example: `qazwsx123`. See [Minecraft Wiki](https://minecraft.wiki/w/Seed_(level_generation)) entry on seeds for more information. *Advanced Configuration*.
 - **Spawn Animals Enabled:** Determines if animals (sheep, chickens, squid, etc.) spawn. *Advanced Configuration*.
 - **Spawn Monsters Enabled:** Determines if monsters (creepers, skeletons, spiders, etc.) spawn. *Advanced Configuration*.
 - **Spawn NPCs Enabled:** Determines if villagers spawn. *Advanced Configuration*.
@@ -67,7 +67,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 - **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
 - **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -107,4 +107,4 @@ After installation you can change your Minecraft options by customizing the syst
 
     The files to configure the world options are also located in your home directory: `~/serverfiles`. Here you find `server.properties`, `banned-ips.json`, and more. The name of the world you created during installation has a folder here as well. Inside this folder are other configuration files for that specific world.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
