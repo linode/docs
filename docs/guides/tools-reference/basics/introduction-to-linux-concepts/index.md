@@ -356,7 +356,7 @@ Sometimes you want to run a program on an as-needed basis. For example, you migh
 
 1. Use the `cd` command to move into the directory where the script is located.
 
-1. Run `ls -l directory` to check that your user account has [execute permissions](/docs/guides/introduction-to-linux-concepts/#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#what-are-user-and-group-permissions) guide.
+1. Run `ls -l directory` to check that your user account has [execute permissions](/docs/guides/introduction-to-linux-concepts/#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#chmod-command) guide.
 
 1.  Run the script with the following syntax:
 

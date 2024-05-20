@@ -230,7 +230,7 @@ Once you have generated your original MTR and your reverse MTR, [open a Linode s
 
 If you have determined that your network configuration is the cause of the problem, review the following troubleshooting suggestions. If you make any changes in an attempt to fix the issue, you can test those changes with these steps:
 
-1. Run another MTR report (or [ping](/docs/guides/troubleshooting-overview/#can-you-ping-the-linode) the Compute Instance) from your computer to your Compute Instance's IP.
+1. Run another MTR report (or [ping](/docs/guides/linux-ping-command/) the Compute Instance) from your computer to your Compute Instance's IP.
 
 1. If the report shows no packet loss but you still can't access SSH or other services, this result indicates that your network connection is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services).
 

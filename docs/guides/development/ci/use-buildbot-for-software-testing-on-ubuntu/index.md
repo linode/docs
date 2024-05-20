@@ -49,7 +49,7 @@ Replace each instance of `example.com` in this guide with your Buildbot site's d
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
     {{< note respectIndent=false >}}
-  The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#configure-buildbot-master#setup-buildbot-master-web-interface) section of the guide.
+  The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#set-up-the-buildbot-master-web-interface) section of the guide.
     {{< /note >}}
 
 ## Install Buildbot
@@ -247,7 +247,7 @@ server {
 
     Your continuous integration test server is now up and running.
 
-1. Ensure that you can log into your Buildbot instance with the admin credentials you created in the [Configure Buildbot Master](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#configure-buildbot-master) section. Click on the top right hand dropdown menu entitled **Anonymous** and then, click on **Login**. A *Sign In* modal will appear. Enter your credentials to log in to Buildbot as the admin user.
+1. Ensure that you can log into your Buildbot instance with the admin credentials you created in the [Configure Buildbot Master](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#set-up-the-buildbot-master-web-interface) section. Click on the top right hand dropdown menu entitled **Anonymous** and then, click on **Login**. A *Sign In* modal will appear. Enter your credentials to log in to Buildbot as the admin user.
 
 ### Install the Buildbot Worker
 

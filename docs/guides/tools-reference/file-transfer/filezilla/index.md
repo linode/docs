@@ -57,7 +57,7 @@ If you followed our [Securing Your Server](/docs/products/compute/compute-instan
 If you are using macOS, the passphrase for your key will need to be stored in your keychain to successfully connect using an SSH keypair. FileZilla will not be able to use a key that was generated without a passphrase to connect to your Linode.
 {{< /note >}}
 
-If you are using Windows, you'll need to follow a few additional steps to enable key based authentication. The instructions below assume that you have already completed the guide for [generating your SSH key with Putty](/docs/guides/use-public-key-authentication-with-ssh/#windows-operating-system).
+If you are using Windows, you'll need to follow a few additional steps to enable key based authentication. The instructions below assume that you have already completed the guide for [generating your SSH key with Putty](/docs/guides/use-public-key-authentication-with-ssh/#public-key-authentication-with-putty-on-windows).
 
 1.  Install Pageant from the [Putty site](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 

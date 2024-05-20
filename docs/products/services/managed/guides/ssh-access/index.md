@@ -52,7 +52,7 @@ Installing the public SSH key for the `root` user is the easiest way to add Lino
         ```
 
         {{< note title="Note for using a limited user" isCollapsible=true >}}
-        In general, [sudo privileges](/docs/guides/linux-users-and-groups/#understanding-sudo) are needed to run many of the troubleshooting commands our Support Team might use. Whenever possible, you should grant the limited user sudo privileges. The [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution).
+        In general, [sudo privileges](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) are needed to run many of the troubleshooting commands our Support Team might use. Whenever possible, you should grant the limited user sudo privileges. The [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution).
 
         After adding the limited user account to the sudo group, you need to either provide the user's password to the Support Team (see [Add Credentials](#adding-service-credentials)) or enable passwordless sudo by following the instructions below.
 

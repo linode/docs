@@ -60,7 +60,7 @@ The following software is needed on your workstation to complete the tutorial:
 
 The original [nvm](https://github.com/nvm-sh/nvm) software project is used on **Unix, Linux, and macOS**:
 
-1. Follow the [Installing and Configuring NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
+1. Follow the [Install NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
 
 1. Run this command from your terminal. This installs the latest version of Node.js and npm:
 

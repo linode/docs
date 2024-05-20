@@ -124,7 +124,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
     ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)
 
 1.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
-1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/guides/troubleshooting-overview/#is-the-compute-instance-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
+1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 1.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/guides/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are often a source of excessive I/O. You may need to stop and/or reconfigure the application.
 
     {{< note >}}

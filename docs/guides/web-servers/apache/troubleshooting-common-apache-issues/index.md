@@ -22,7 +22,7 @@ In this guide, you'll start with some basic troubleshooting steps and then proce
 
 ## Is Apache Running?
 
-First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/guides/troubleshooting-overview/#is-the-web-server-running).
+First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/products/compute/compute-instances/guides/troubleshooting-services/#check-if-the-service-is-running).
 
 If it isn't, go ahead and restart Apache, as explained in the next section.
 

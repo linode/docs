@@ -106,7 +106,7 @@ An *AAAA record* is just like an A record, but for IPv6 IP addresses. A typical 
 
 An *AXFR record* is a type of DNS record used for DNS replication, although there are more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a slave DNS server to replicate the zone file from a master DNS server.
 
-For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, see our [guide on configuring DNS in cPanel](/docs/guides/set-up-dns-services-on-cpanel/#using-linode-s-dns-manager-as-a-slave).
+For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, see our [guide on configuring DNS in cPanel](/docs/guides/set-up-dns-services-on-cpanel/#using-linodes-dns-manager-as-a-secondary-server).
 
 ### CAA
 
