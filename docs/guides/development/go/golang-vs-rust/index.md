@@ -15,9 +15,7 @@ external_resources:
 - '[Trio: Golang vs. Rust: Which Programming Language To Choose in 2022?](https://trio.dev/blog/golang-vs-rust)'
 ---
 
-Rust and Go are fast, compelling, and modern alternatives to programming languages like C/C++. Both provide built-in concurrency models to take advantage of multiple CPUs.
-
-But which one is best, Rust or Go? More importantly, which one is right for you?
+Rust and Go are fast, compelling, and modern alternatives to programming languages like C/C++. Both provide built-in concurrency models to take advantage of multiple CPUs. But is there a clear advantage to either Rust or Go that makes one a better programming language? More importantly, which one is right for your use case?
 
 This tutorial helps to answer those questions. Continue reading to learn the core characteristics of each language along with their strengths and weaknesses. Discover what contexts each excels in and where to make the most of them.
 
