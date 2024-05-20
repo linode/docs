@@ -139,7 +139,7 @@ When a Compute Instance is powered on or rebooted, it uses the settings stored w
 
 ## Clone a Configuration Profile and the Attached Disks
 
-A configuration profile, along with any attached disks, can be duplicated to any *other* Compute Instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) for instructions.
+A configuration profile, along with any attached disks, can be duplicated to any *other* Compute Instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance) for instructions.
 
 ## Delete a Configuration Profile
 

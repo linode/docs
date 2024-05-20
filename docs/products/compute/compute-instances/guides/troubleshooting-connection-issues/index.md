@@ -81,7 +81,7 @@ If your Compute Instance can't boot, then it may have experienced filesystem cor
 
 1. If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Compute Instance](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
-1. If the filesystem check reports errors that it has fixed, try rebooting your Compute Instance under your normal [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-compute-instance-running).
+1. If the filesystem check reports errors that it has fixed, try rebooting your Compute Instance under your normal [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#boot-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-compute-instance-running).
 
 1. If the filesystem check does not report any errors, there may be another reason for your booting issues. Continue to [inspecting your system and kernel logs](#inspect-system-and-kernel-logs).
 

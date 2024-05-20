@@ -29,7 +29,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 1. Remove any system users you don't want to appear on your duplicated systems.
 
 1. Shut down the Compute Instance and either:
-    - [Clone the disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#cloning-a-disk).
+    - [Clone the disk](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance).
     - Alternatively, [take a snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) of the disk with Linode Backups.
 
 1. Store your golden image. This can be done in a variety of ways. A few examples are:
@@ -46,7 +46,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 
 1. Update the new Compute Instance's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-filesetting-the-hostname).
 
-1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/#static-network-configuration) on your duplicated disks.
+1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/) on your duplicated disks.
 
 ## Third-Party Tools
 

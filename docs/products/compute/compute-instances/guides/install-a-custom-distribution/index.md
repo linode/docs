@@ -37,7 +37,7 @@ First, create the Compute Instance and add the necessary disks and configuration
 
 1. Click the **Create** button to create the Compute Instance. Once it has been created, you should be taken to its dashboard page.
 
-1. Navigate to the **Storage** tab and create two disks on your new Compute Instance. One disk is for the installer image itself and the other is where the system will be installed. The settings for each of these disks are outlined below. See the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) guide for additional instructions.
+1. Navigate to the **Storage** tab and create two disks on your new Compute Instance. One disk is for the installer image itself and the other is where the system will be installed. The settings for each of these disks are outlined below. See the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) guide for additional instructions.
 
     ![Screenshot of the Storage tab with the disks created](custom-distro-disks.png "Screenshot of the Storage tab with the disks created, according to the specifications in the following bullet points")
 

@@ -53,7 +53,7 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 
 - [Introduction to Rsync](/docs/guides/introduction-to-rsync/): Using `rsync` to mirror files to another server.
 - [Using Rdiff-backup with SSHFS](/docs/guides/using-rdiff-backup-with-sshfs/): An easy approach to using the `rdiff-backup` utility to maintain differential backups.
-- [Cloning a Disk](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode): Creating an exact copy of a disk in the Cloud Manager.
+- [Cloning a Disk](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance): Creating an exact copy of a disk in the Cloud Manager.
 - [Copying a Disk Over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/): How to download an exact binary image of your Compute Instance's disk over SSH.
 
 ## How can I install software on my Compute Instance?

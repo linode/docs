@@ -194,4 +194,4 @@ If you recently upgraded your plan, your Compute Instance won't be able to take 
 
     ![Disk storage allocation](disk-storage-allocation.png)
 
-    Follow our steps for [resizing a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.
+    Follow our steps for [resizing a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) to take advantage of the extra space.

@@ -46,7 +46,7 @@ Begin by creating the Linode and making some preliminary changes.
 
 1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
-2.  [Create two disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk); both should be in the RAW format.
+2.  [Create two disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk); both should be in the RAW format.
 
     - The first should be a 1024 MB image labeled *Installer*.
     - The second should use the Linode's remaining space. Label it *FreeBSD*.

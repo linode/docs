@@ -214,7 +214,7 @@ The software packages you install is available as long as the Compute Instance i
 ### Mounting Disks
 
 {{< note >}}
-Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#update-your-fstab) guide.
+Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#additional-system-configuration) guide.
 {{< /note >}}
 
 By default, your disks are not mounted when your Compute Instance boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
@@ -358,9 +358,9 @@ The Cloud Manager provides a *Rebuild* feature performs the following two action
     {{< note type="alert" >}}
     If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
 
-    If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
+    If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-    The Compute Instance needs to have some amount of unallocated disk space in order to provision a new distribution. If the instance does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Compute Instance](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
+    The Compute Instance needs to have some amount of unallocated disk space in order to provision a new distribution. If the instance does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) to free up space or [resize your Compute Instance](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
     {{< /note >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
