@@ -1,13 +1,12 @@
 ---
 slug: two-scopes-of-exception-handling
 title: "Two Scopes of Exception-Handling"
-description: 'Explore best practices and strategies to effectively manage exceptions, optimize application performance, and prioritize user experience.'
+description: "Explore best practices and strategies to effectively manage exceptions, optimize application performance, and prioritize user experience."
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2023-07-16
 keywords: ['Exception Handling', 'Precise Exception Handling', 'Exception Hierarchy', 'Unspecified Exceptions', 'Application Scope and Scale']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Cameron Laird"]
-published: 2023-07-16
-modified_by:
-  name: Linode
 ---
 
 Exception handling, or error handling, is an aspect of programming that is often misunderstood and improperly implemented. This guide aims to provide you with the necessary knowledge to become proficient in handling exceptions in popular programming languages such as C#, JavaScript, Python, Rust, and SQL. The goal is to enable you to write precise code.
