@@ -179,11 +179,11 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your system's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **CPU** graph shows the percentage of your system's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Disk IO
 
@@ -191,7 +191,7 @@ The **Disk IO** graph shows the amount of input to and output from the disk caus
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your system spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/get-started/#processes).
+The **Process Count** graph shows the total number of processes on your system spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/guides/metrics/#processes).
 
 ## Troubleshooting
 

@@ -184,7 +184,7 @@ Let's take a closer look at each block in the configuration file:
 
     - To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 20.04](https://cloud.linode.com/stackscripts/998743) StackScript adapted by the Linode user [hmorris](https://cloud.linode.com/stackscripts/community?query=username%3Ahmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
 
-        StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/products/tools/stackscripts/#variables-and-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
+        StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/products/tools/stackscripts/guides/write-a-custom-script/#declare-user-defined-fields-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
 
         The StackScript is responsible for installing WordPress on your Compute Instance along with all other requirements, such as installing Apache, configuring Apache, configuring the Virtual Hosts file, and installing MySQL.
 

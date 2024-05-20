@@ -166,11 +166,11 @@ The **Workers** graph shows all of the NGINX workers at the selected time. The w
 
 ### CPU
 
-The **CPU** graph shows the percentage of your system's CPU being used by NGINX at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **CPU** graph shows the percentage of your system's CPU being used by NGINX at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### RAM
 
-The **RAM** graph shows the amount of RAM or memory being used by NGINX at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **RAM** graph shows the amount of RAM or memory being used by NGINX at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Disk IO
 
@@ -178,7 +178,7 @@ The **Disk IO** graph shows the amount of input to and output from the disk caus
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your system spawned by NGINX at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/get-started/#processes).
+The **Process Count** graph shows the total number of processes on your system spawned by NGINX at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/guides/metrics/#processes).
 
 ## Troubleshooting
 
@@ -200,7 +200,7 @@ To fix this, follow these steps:
     sudo systemctl restart nginx
     ```
 
-1. Check the status page location, and make sure it's available over Port 80. The default location Longview checks is `http://127.0.0.1/nginx_status` on localhost, but NGINX doesn't typically have a status page location set up by default. In the NGINX configuration file (typically `/etc/nginx/nginx.conf`) or in a [separate site configuration file](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#host-multiple-websites), this is designated with the lines in the example file below. If your configuration file does not contain these lines, add them to the file within the `http` block. For more details, see the [Manual Configuration](/docs/products/tools/longview/guides/nginx/#manual-configuration-all-distributions) section of this guide.
+1. Check the status page location, and make sure it's available over Port 80. The default location Longview checks is `http://127.0.0.1/nginx_status` on localhost, but NGINX doesn't typically have a status page location set up by default. In the NGINX configuration file (typically `/etc/nginx/nginx.conf`) or in a [separate site configuration file](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#host-multiple-websites), this is designated with the lines in the example file below. If your configuration file does not contain these lines, add them to the file within the `http` block. For more details, see the [Manual Configuration](#manual-configuration) section of this guide.
 
     ```file {title="/etc/nginx/nginx.conf"}
     server {

@@ -152,11 +152,11 @@ The **Aborted** graph shows the number of aborted MySQL connections and clients 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your system's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **CPU** graph shows the percentage of your system's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### RAM
 
-The **RAM** graph shows the amount of RAM or memory being used by MySQL at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **RAM** graph shows the amount of RAM or memory being used by MySQL at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Disk IO
 
@@ -164,7 +164,7 @@ The **Disk IO** graph shows the amount of input to and output from the disk caus
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your system spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/get-started/#processes).
+The **Process Count** graph shows the total number of processes on your system spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/guides/metrics/#processes).
 
 ## Troubleshooting
 
