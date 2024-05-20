@@ -117,16 +117,6 @@ export function getOffsetTop(container, el) {
 	return distance < 0 ? 0 : distance;
 }
 
-// withBoundingClientRect calls the callback with the boundingClientRect of the element.
-export function withBoundingClientRect(el, callback) {
-	const observer = new IntersectionObserver((entries) => {
-		bounds = entries[0].boundingClientRect;
-		callback(bounds);
-		observer.disconnect();
-	});
-	observer.observe(el);
-}
-
 export function setIsTranslating(el, timeout = 1000) {
 	let currentLang = getCurrentLang();
 	if (!currentLang || currentLang == 'en') {
@@ -168,12 +158,24 @@ export function getCurrentLangFromLocation() {
 	return '';
 }
 
+export function getIntParamFromLocation(param) {
+	let value = new URLSearchParams(window.location.search).get(param);
+	if (value) {
+		return parseInt(value, 10);
+	}
+	return 0;
+}
+
 export function isIterable(obj) {
 	return Symbol.iterator in Object(obj);
 }
 
 export function isMobile() {
 	return document.documentElement.clientWidth < 768;
+}
+
+export function isDesktop() {
+	return isScreenLargerThan(1279); // xl in Tailwind config.
 }
 
 export function isScreenLargerThan(px) {
@@ -191,6 +193,17 @@ export function isTouchDevice() {
 
 export function isTopBarPinned() {
 	return document.body.classList.contains('is-topbar-pinned');
+}
+
+export function updatePaginationParamInLocation(pageKey, pageNum, firstPage = 1) {
+	let url = new URL(window.location);
+	url.hash = '';
+	if (pageNum == firstPage) {
+		url.searchParams.delete(pageKey);
+	} else {
+		url.searchParams.set(pageKey, pageNum);
+	}
+	window.history.replaceState({ turbo: {} }, '', url);
 }
 
 export function walk(el, callback) {

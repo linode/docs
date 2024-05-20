@@ -1,16 +1,14 @@
 ---
 slug: creating-a-mongodb-replication-set-on-debian-7-wheezy
-deprecated: true
-deprecated_link: 'guides/create-a-mongodb-replica-set/'
+title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
+title_meta: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
 description: 'This guide provides you with step-by-step instructions for creating and configuring a MongoDB ReplSet (replication set) for redundancy on Debian.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-04-09
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/debian-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/']
-modified_by:
-  name: Linode
-published: 2014-04-09
-title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
-title_meta: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
@@ -23,7 +21,7 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","nosql"]
 deprecated: true
-authors: ["Linode"]
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.

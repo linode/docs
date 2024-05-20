@@ -1,14 +1,11 @@
 ---
+title: Initiate a Cross Data Center Migration for a Compute Instance
 description: "Learn how to migrate a Compute Instance across data centers using the Cloud Manager."
+published: 2019-02-04
+modified: 2023-09-21
 keywords: ["choose", "help", "migration", "data center"]
 tags: ["linode platform","cloud manager"]
-title: Initiate a Cross Data Center Migration for a Compute Instance
-modified: 2023-01-18
-modified_by:
-  name: Linode
-published: 2019-02-04
 aliases: ['/platform/disk-images/how-to-initiate-a-cross-data-center-migration-for-your-linode/','/platform/migrating-to-a-different-data-center/','/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/']
-authors: ["Linode"]
 ---
 
 When a Compute Instance is created, it is stored on whichever data center was selected during the creation process. If you wish to change this data center, you can initiate a cross data center migration at any time. This moves your Compute Instance to whichever data center you wish.
@@ -44,6 +41,8 @@ Migrating your Compute Instance to a new data center will result in a number of 
 
 - Migrations will include a period of downtime while your data is transferred. This estimate varies depending on your total disk size and the speeds expected between each data center. A calculated estimate will be displayed within the "Caution" message displayed before moving forward with your migration.
 
+- Pricing may vary between data centers. Services and network transfer in some newer data centers are billed at separate rates due to higher region-based infrastructure costs. Before you migrate from one region to another, you must confirm any applicable price differences that will occur as a result of the migration. See our [Pricing](https://www.linode.com/pricing/) page for a complete list of pricing and plan options.
+
 ## Migrating to a New Data Center
 
 1. Log in to the [Cloud Manager](https://www.cloud.linode.com) and click on the **Linodes** link in the sidebar.
@@ -59,3 +58,7 @@ Migrating your Compute Instance to a new data center will result in a number of 
 1. Under **Configure Migration**, select the destination region. This will be the data center that the Compute Instance is migrated to.
 
 1. Click on the **Enter Migration Queue** button, which closes the form and enters the Compute Instance into the migration queue. You can monitor the progress of your migration from both within the list of Compute Instances and the Compute Instance's dashboard. Your instance will return to its previous state (powered on or off) once the migration has completed.
+
+{{< note >}}
+If migrating to a data center with different plan pricing, a note will display the difference in price prior to migrating.
+{{< /note >}}

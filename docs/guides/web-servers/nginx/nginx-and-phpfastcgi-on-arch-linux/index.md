@@ -1,25 +1,22 @@
 ---
 slug: nginx-and-phpfastcgi-on-arch-linux
-deprecated: true
+title: 'Nginx and PHP-FastCGI on Arch Linux'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Arch Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-02
+modified: 2013-10-07
 keywords: ["nginx arch linux", "nginx arch", "nginx fastcgi", "nginx php"]
 tags: ["web server","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/php-fastcgi/arch-linux/','/web-servers/nginx/nginx-and-phpfastcgi-on-arch-linux/','/websites/nginx/nginx-and-phpfastcgi-on-arch-linux/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2011-02-02
-title: 'Nginx and PHP-FastCGI on Arch Linux'
 relations:
     platform:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Arch Linux
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Arch Linux-powered Linode system.
 

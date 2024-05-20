@@ -2,10 +2,10 @@
 title: Get Started
 title_meta: "Getting Started with LKE (Linode Kubernetes Engine)"
 description: "Get Started with the Linode Kubernetes Engine with this quick start guide. Install kubectl, create an LKE Cluster, and access and download your kubeconfig."
-tab_group_main:
-    weight: 20
 published: 2020-06-02
 modified: 2023-02-09
+tab_group_main:
+    weight: 20
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
 tags: ["linode platform","kubernetes","cloud manager"]
 aliases: ['/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/','/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/','/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/','/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/']
@@ -87,7 +87,7 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Next Steps
 

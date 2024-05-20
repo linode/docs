@@ -1,8 +1,8 @@
-import { Action, isAction } from "../types"
-import { FetchMethod } from "../../http/fetch_request"
+import { Action } from "../types"
+import { getVisitAction } from "../../util"
 import { FetchResponse } from "../../http/fetch_response"
 import { FormSubmission } from "./form_submission"
-import { expandURL, getAnchor, getRequestURL, Locatable } from "../url"
+import { expandURL, getAnchor, getRequestURL, Locatable, locationIsVisitable } from "../url"
 import { Visit, VisitDelegate, VisitOptions } from "./visit"
 import { PageSnapshot } from "./page_snapshot"
 
@@ -23,7 +23,11 @@ export class Navigator {
 
   proposeVisit(location: URL, options: Partial<VisitOptions> = {}) {
     if (this.delegate.allowsVisitingLocationWithAction(location, options.action)) {
-      this.delegate.visitProposedToLocation(location, options)
+      if (locationIsVisitable(location, this.view.snapshot.rootLocation)) {
+        this.delegate.visitProposedToLocation(location, options)
+      } else {
+        window.location.href = location.toString()
+      }
     }
   }
 
@@ -31,7 +35,7 @@ export class Navigator {
     this.stop()
     this.currentVisit = new Visit(this, expandURL(locatable), restorationIdentifier, {
       referrer: this.location,
-      ...options
+      ...options,
     })
     this.currentVisit.start()
   }
@@ -40,11 +44,7 @@ export class Navigator {
     this.stop()
     this.formSubmission = new FormSubmission(this, form, submitter, true)
 
-    if (this.formSubmission.isIdempotent) {
-      this.proposeVisit(this.formSubmission.fetchRequest.url, { action: this.getActionForFormSubmission(this.formSubmission) })
-    } else {
-      this.formSubmission.start()
-    }
+    this.formSubmission.start()
   }
 
   stop() {
@@ -75,7 +75,7 @@ export class Navigator {
 
   formSubmissionStarted(formSubmission: FormSubmission) {
     // Not all adapters implement formSubmissionStarted
-    if (typeof this.adapter.formSubmissionStarted === 'function') {
+    if (typeof this.adapter.formSubmissionStarted === "function") {
       this.adapter.formSubmissionStarted(formSubmission)
     }
   }
@@ -84,12 +84,18 @@ export class Navigator {
     if (formSubmission == this.formSubmission) {
       const responseHTML = await fetchResponse.responseHTML
       if (responseHTML) {
-        if (formSubmission.method != FetchMethod.get) {
+        const shouldCacheSnapshot = formSubmission.isSafe
+        if (!shouldCacheSnapshot) {
           this.view.clearSnapshotCache()
         }
 
-        const { statusCode } = fetchResponse
-        const visitOptions = { response: { statusCode, responseHTML } }
+        const { statusCode, redirected } = fetchResponse
+        const action = this.getActionForFormSubmission(formSubmission)
+        const visitOptions = {
+          action,
+          shouldCacheSnapshot,
+          response: { statusCode, responseHTML, redirected },
+        }
         this.proposeVisit(fetchResponse.location, visitOptions)
       }
     }
@@ -101,9 +107,9 @@ export class Navigator {
     if (responseHTML) {
       const snapshot = PageSnapshot.fromHTMLString(responseHTML)
       if (fetchResponse.serverError) {
-        await this.view.renderError(snapshot)
+        await this.view.renderError(snapshot, this.currentVisit)
       } else {
-        await this.view.renderPage(snapshot)
+        await this.view.renderPage(snapshot, false, true, this.currentVisit)
       }
       this.view.scrollToTop()
       this.view.clearSnapshotCache()
@@ -116,7 +122,7 @@ export class Navigator {
 
   formSubmissionFinished(formSubmission: FormSubmission) {
     // Not all adapters implement formSubmissionFinished
-    if (typeof this.adapter.formSubmissionFinished === 'function') {
+    if (typeof this.adapter.formSubmissionFinished === "function") {
       this.adapter.formSubmissionFinished(formSubmission)
     }
   }
@@ -134,11 +140,13 @@ export class Navigator {
   locationWithActionIsSamePage(location: URL, action?: Action): boolean {
     const anchor = getAnchor(location)
     const currentAnchor = getAnchor(this.view.lastRenderedLocation)
-    const isRestorationToTop = action === 'restore' && typeof anchor === 'undefined'
+    const isRestorationToTop = action === "restore" && typeof anchor === "undefined"
 
-    return action !== "replace" &&
+    return (
+      action !== "replace" &&
       getRequestURL(location) === getRequestURL(this.view.lastRenderedLocation) &&
       (isRestorationToTop || (anchor != null && anchor !== currentAnchor))
+    )
   }
 
   visitScrolledToSamePageLocation(oldURL: URL, newURL: URL) {
@@ -155,9 +163,7 @@ export class Navigator {
     return this.history.restorationIdentifier
   }
 
-  getActionForFormSubmission(formSubmission: FormSubmission): Action {
-    const { formElement, submitter } = formSubmission
-    const action = submitter?.getAttribute("data-turbo-action") || formElement.getAttribute("data-turbo-action")
-    return isAction(action) ? action : "advance"
+  getActionForFormSubmission({ submitter, formElement }: FormSubmission): Action {
+    return getVisitAction(submitter, formElement) || "advance"
   }
 }
