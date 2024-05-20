@@ -1,15 +1,13 @@
 ---
 slug: benefits-of-functional-programming
-title: "When & Why to Use Functional Programming"
-title_meta: "Examining the Benefits of Functional Programming"
-description: 'What are the benefits of functional programming? Learn what functional programming is used for, when to use it, and the benefits of learning it. ✓ Click here!'
-og_description: 'What are the benefits of functional programming? Learn what functional programming is used for, when to use it, and the benefits of learning it. ✓ Click here!'
+title: "Examining the Benefits of Functional Programming"
+title_meta: "When & Why to Use Functional Programming"
+description: "What are the benefits of functional programming? Learn what functional programming is used for, when to use it, and the benefits of learning it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-07
 keywords: ['benefits of functional programming','advantages of functional programming','when to use functional programming']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Qvault: Top 8 Benefits of Functional Programming](https://qvault.io/clean-code/benefits-of-functional-programming/)'
 - '[Stack Overflow Questions: What Are the Benefits of Functional Programming?](https://stackoverflow.com/questions/128057/what-are-the-benefits-of-functional-programming)'
@@ -17,9 +15,7 @@ external_resources:
 - '[Unthinkable: 7 Unbeatable Advantages of Functional Programming](https://www.unthinkable.co/blog-post/7-unbeatable-advantages-of-functional-programming/)'
 ---
 
-While not talked about frequently, functional programming has a lot to offer. It is ideal for program transparency, concurrency, and debugging.
-
-So, when should you use functional programming, and what are some specific benefits it offers? Find out in this tutorial. Learn what functional programming is, explore its benefits, and discover its best use cases.
+While not talked about frequently, functional programming has a lot to offer. It is ideal for program transparency, concurrency, and debugging. This tutorial provides instruction on when to use functional programming and the specific benefits it offers. Learn what functional programming is, explore its benefits, and discover its best use cases.
 
 ## What Is Functional Programming?
 
