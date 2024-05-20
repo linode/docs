@@ -44,7 +44,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 1. Create [configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) on those additional Compute Instances to boot using the duplicated disk.
 1. Any user credentials from the golden image will also be on the duplicated disks so you should change the new system's root password.
 
-1. Update the new Compute Instance's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-filesetting-the-hostname).
+1. Update the new Compute Instance's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/) on your duplicated disks.
 

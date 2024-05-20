@@ -269,7 +269,7 @@ localhost                  : ok=3    changed=1    unreachable=0    failed=0    s
 | `root_pass` | string | The password for the root user. If not specified, will be generated. This generated password will be available in the task success JSON.</br></br> The root password must conform to the following constraints: </br></br> &bull; May only use alphanumerics, punctuation, spaces, and tabs.</br>&bull; Must contain at least two of the following characters classes: upper-case letters, lower-case letters, digits, punctuation. |
 | `state` | string, *required* | The desired instance state. The accepted values are `absent` and `present`. |
 | `tags` | list | The user-defined labels attached to Linodes. Tags are used for grouping Linodes in a way that is relevant to the user. |
-| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
+| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#compute-resources) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 
 ## The Linode Dynamic Inventory Plugin
 
